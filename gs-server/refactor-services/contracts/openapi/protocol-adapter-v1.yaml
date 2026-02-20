@@ -1,0 +1,169 @@
+openapi: 3.0.3
+info:
+  title: ABS Protocol Adapter API
+  version: 1.0.0
+  description: Adapter boundary contract for bank-level JSON/XML mode and JSON hash verification policy.
+servers:
+  - url: http://localhost:18078
+paths:
+  /health:
+    get:
+      summary: Service health
+      responses:
+        '200':
+          description: OK
+  /api/v1/protocol/routing/decision:
+    get:
+      summary: Evaluate canary routing decision for protocol adapter
+      parameters:
+        - in: query
+          name: bankId
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Routing decision payload
+  /api/v1/protocol/banks/settings:
+    get:
+      summary: List effective bank protocol settings
+      parameters:
+        - in: query
+          name: bankId
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Settings list
+  /api/v1/protocol/banks/{bankId}/settings:
+    get:
+      summary: Get effective bank protocol settings
+      parameters:
+        - in: path
+          name: bankId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Bank settings
+        '400':
+          description: Validation error
+    post:
+      summary: Update bank protocol settings
+      parameters:
+        - in: path
+          name: bankId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankProtocolSettingsPatch'
+      responses:
+        '200':
+          description: Updated settings
+        '400':
+          description: Validation error
+  /api/v1/protocol/requests/normalize:
+    post:
+      summary: Normalize inbound request and evaluate JSON hash/replay policy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProtocolNormalizeRequest'
+      responses:
+        '200':
+          description: Normalized request accepted
+        '401':
+          description: Missing authentication hash in ENFORCE mode
+        '403':
+          description: Hash validation failed in ENFORCE mode
+        '409':
+          description: Replay check failed in ENFORCE mode
+  /api/v1/protocol/events:
+    get:
+      summary: List recent protocol adapter events
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Event list
+components:
+  schemas:
+    BankProtocolSettingsPatch:
+      type: object
+      properties:
+        performedBy:
+          type: string
+        protocolMode:
+          type: string
+          enum: [XML, JSON]
+        jsonSecurity:
+          type: object
+          properties:
+            hash:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                headerName:
+                  type: string
+                enforcementMode:
+                  type: string
+                  enum: [OFF, SHADOW, ENFORCE]
+                secretRef:
+                  type: string
+                exemptEndpoints:
+                  type: array
+                  items:
+                    type: string
+                getHashRules:
+                  type: object
+                  additionalProperties:
+                    type: array
+                    items:
+                      type: string
+            replay:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                windowSeconds:
+                  type: integer
+                nonceTtlSeconds:
+                  type: integer
+    ProtocolNormalizeRequest:
+      type: object
+      required: [bankId, method]
+      properties:
+        bankId:
+          type: string
+        method:
+          type: string
+        endpoint:
+          type: string
+        traceId:
+          type: string
+        sessionId:
+          type: string
+        operationId:
+          type: string
+        headers:
+          type: object
+          additionalProperties: true
+        query:
+          type: object
+          additionalProperties: true
+        payload:
+          type: object
+          additionalProperties: true
+        rawBody:
+          type: string

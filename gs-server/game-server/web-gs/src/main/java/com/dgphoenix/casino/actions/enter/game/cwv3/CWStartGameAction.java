@@ -4,6 +4,9 @@ import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.actions.enter.AccountInfoAndSessionInfoPair;
 import com.dgphoenix.casino.actions.enter.LanguageDetector;
 import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
+import com.dgphoenix.casino.actions.enter.game.routing.GameplayOrchestratorRoutingBridge;
+import com.dgphoenix.casino.actions.enter.game.routing.ProtocolAdapterRoutingBridge;
+import com.dgphoenix.casino.actions.enter.game.routing.SessionServiceRoutingBridge;
 import com.dgphoenix.casino.cassandra.persist.CassandraPlayerSessionState;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
@@ -71,6 +74,14 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
         try {
             long now = System.currentTimeMillis();
             BankInfo bankInfo = BankInfoCache.getInstance().getBankInfo(actionForm.getBankId());
+            SessionServiceRoutingBridge.RouteDecision sessionRouteDecision =
+                    SessionServiceRoutingBridge.getInstance().decide(actionForm.getBankId());
+            request.setAttribute(SessionServiceRoutingBridge.REQUEST_ROUTE_ATTRIBUTE, sessionRouteDecision.getReason());
+            getLog().debug("CWStartGameAction process: session route decision bankId={}, route={}, reason={}, endpoint={}",
+                    actionForm.getBankId(),
+                    sessionRouteDecision.isRouteToSessionService(),
+                    sessionRouteDecision.getReason(),
+                    sessionRouteDecision.getEndpoint());
             StatisticsManager.getInstance().updateRequestStatistics("CWStartGameAction process 1",
                     System.currentTimeMillis() - now);
             now = System.currentTimeMillis();
@@ -296,6 +307,56 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                 SessionInfo sessionInfo = infoPair.getSessionInfo();
                 String sessionId = sessionInfo != null ? sessionInfo.getSessionId() : null;
                 String privateRoomId = sessionInfo != null ? sessionInfo.getPrivateRoomId() : null;
+                boolean multiplayerRoute = GameServer.getInstance().isMultiplayerGame(gameId);
+
+                GameplayOrchestratorRoutingBridge.RouteDecision gameplayRouteDecision =
+                        GameplayOrchestratorRoutingBridge.getInstance().decide(actionForm.getBankId(), multiplayerRoute);
+                request.setAttribute(GameplayOrchestratorRoutingBridge.REQUEST_ROUTE_ATTRIBUTE,
+                        gameplayRouteDecision.getReason());
+                getLog().debug("CWStartGameAction process: gameplay route decision bankId={}, gameId={}, route={}, reason={}, endpoint={}, isMultiplayer={}",
+                        actionForm.getBankId(),
+                        gameId,
+                        gameplayRouteDecision.isRouteToGameplayService(),
+                        gameplayRouteDecision.getReason(),
+                        gameplayRouteDecision.getEndpoint(),
+                        multiplayerRoute);
+
+                ProtocolAdapterRoutingBridge.RouteDecision protocolRouteDecision =
+                        ProtocolAdapterRoutingBridge.getInstance().decide(actionForm.getBankId());
+                request.setAttribute(ProtocolAdapterRoutingBridge.REQUEST_ROUTE_ATTRIBUTE,
+                        protocolRouteDecision.getReason());
+                getLog().debug("CWStartGameAction process: protocol route decision bankId={}, route={}, reason={}, endpoint={}",
+                        actionForm.getBankId(),
+                        protocolRouteDecision.isRouteToProtocolAdapter(),
+                        protocolRouteDecision.getReason(),
+                        protocolRouteDecision.getEndpoint());
+
+                SessionServiceRoutingBridge.getInstance().shadowCreateSession(
+                        sessionRouteDecision,
+                        actionForm.getBankId(),
+                        sessionId,
+                        externalId,
+                        gameId,
+                        mode == null ? null : mode.name()
+                );
+
+                GameplayOrchestratorRoutingBridge.getInstance().shadowLaunchIntent(
+                        gameplayRouteDecision,
+                        actionForm.getBankId(),
+                        sessionId,
+                        gameId,
+                        mode == null ? null : mode.name()
+                );
+
+                ProtocolAdapterRoutingBridge.getInstance().shadowNormalizeStartGame(
+                        protocolRouteDecision,
+                        actionForm.getBankId(),
+                        sessionId,
+                        gameId,
+                        mode == null ? null : mode.name(),
+                        lang,
+                        newGamesRouteEnabled ? "new-games" : "legacy-gs"
+                );
 
                 if (StringUtils.isTrimmedEmpty(lang)) {
                     lang = newGamesRouteEnabled ? "en" : LanguageDetector.getAlternateLanguage(bankInfo, gameId, accountInfo);

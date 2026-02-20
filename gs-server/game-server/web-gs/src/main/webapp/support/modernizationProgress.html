@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GS Modernization Progress</title>
+  <link rel="stylesheet" href="/support/css/bootstrap.min.css" />
+  <style>
+    body { background: #f5f7fa; padding: 16px; }
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    .cardx {
+      background: #fff;
+      border: 1px solid #d9e1ea;
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+    .meta { color: #567; font-size: 12px; }
+    .prog {
+      background: #e6edf5;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 12px;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+    .bar {
+      background: linear-gradient(90deg, #0d6efd, #19a974);
+      height: 100%;
+      transition: width 0.2s ease;
+    }
+    .item-row {
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      gap: 8px;
+      align-items: center;
+      border-bottom: 1px dashed #eef2f7;
+      padding: 6px 0;
+    }
+    .item-row:last-child { border-bottom: none; }
+    .status-pill {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 10px;
+      border: 1px solid #ccd8e5;
+      color: #334;
+      background: #f8fafc;
+      text-transform: uppercase;
+    }
+    .status-done { background: #e9f8ef; border-color: #9ed8b3; }
+    .status-in_progress { background: #fff8e8; border-color: #e8d0a0; }
+    .status-planned { background: #f0f3f8; border-color: #d5ddeb; }
+    .status-blocked { background: #fdecec; border-color: #e7b8b8; }
+    .small-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .footer-note { color: #6a7280; font-size: 12px; margin-top: 8px; }
+    .outbox-grid {
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 8px;
+    }
+    .outbox-cell {
+      border: 1px solid #d9e1ea;
+      border-radius: 6px;
+      background: #f8fbff;
+      padding: 8px;
+    }
+    .outbox-value { font-size: 18px; font-weight: 700; color: #123; }
+    .outbox-key { font-size: 12px; color: #456; }
+    .outbox-trend {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 11px;
+      border: 1px solid #d5ddeb;
+      border-radius: 10px;
+      padding: 1px 7px;
+      text-transform: uppercase;
+      background: #f0f3f8;
+    }
+    .trend-stable { background: #e9f8ef; border-color: #9ed8b3; }
+    .trend-rising { background: #fdecec; border-color: #e7b8b8; }
+    .trend-falling { background: #eef6ff; border-color: #b9d3ef; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="cardx">
+      <h2 style="margin-top:0;">GS Modernization Visual Progress</h2>
+      <div id="meta" class="meta"></div>
+      <div class="prog"><div id="overallBar" class="bar" style="width:0%"></div></div>
+      <div id="overallText" style="font-weight:600"></div>
+      <div class="small-actions" style="margin-top:10px;">
+        <button class="btn btn-default btn-sm" id="showAll">Show All</button>
+        <button class="btn btn-default btn-sm" id="showOpen">Show Open</button>
+        <button class="btn btn-default btn-sm" id="showDone">Show Done</button>
+        <button class="btn btn-warning btn-sm" id="resetLocal">Reset Local Checks</button>
+      </div>
+      <div class="footer-note">
+        Source status comes from checklist JSON. Outbox health card is from outbox-health JSON. Checkbox toggles are local to your browser/session.
+      </div>
+    </div>
+
+    <div id="outboxHealth"></div>
+    <div id="sections"></div>
+  </div>
+
+  <script id="embedded-checklist" type="application/json">
+{
+  "project": "GS Modernization Program",
+  "updatedAt": "2026-02-20",
+  "sections": [
+    {
+      "id": "legacy-parity",
+      "title": "Legacy Functionality Parity",
+      "items": [
+        {"id": "lp-start-launch", "label": "Launch flow parity (start -> template -> game handoff)", "status": "done", "evidence": "docs/11-game-launch-forensics.md"},
+        {"id": "lp-wallet-contract", "label": "Wallet auth/balance/bet/refund contract parity", "status": "done", "evidence": "docs/23-phase-0-baseline-and-parity-capture.md"},
+        {"id": "lp-history-flow", "label": "History flow parity (launch, settle, history, reconnect)", "status": "done", "evidence": "docs/phase0/parity-execution/phase0-reconnect-facade-fallback-20260220-141948.md"},
+        {"id": "lp-frb-flow", "label": "FRB/bonus parity suite stabilized", "status": "in_progress", "evidence": "docs/phase0/parity-execution/"},
+        {"id": "lp-protocol-casino", "label": "Casino-side protocol compatibility maintained", "status": "done", "evidence": "docs/23-phase-0-baseline-and-parity-capture.md"},
+        {"id": "lp-mp-compatible", "label": "Multiplayer legacy compatibility maintained", "status": "in_progress", "evidence": "docs/11-game-launch-forensics.md"}
+      ]
+    },
+    {
+      "id": "architecture",
+      "title": "Target Architecture Milestones",
+      "items": [
+        {"id": "ar-strangler", "label": "Phased strangler migration (no big-bang rewrite)", "status": "done", "evidence": "docs/18-architecture-recommendations-modernization-plan.md"},
+        {"id": "ar-facade-entry", "label": "Compatibility facade retained at entry points", "status": "done", "evidence": "docs/phase5-session-canary-runtime-activation-20260220-143713.md"},
+        {"id": "ar-kafka-backbone", "label": "Kafka backbone active for new services", "status": "done", "evidence": "docs/phase5-session-outbox-relay-foundation-20260220-145547.md"},
+        {"id": "ar-outbox-pattern", "label": "Outbox pattern in extracted services", "status": "done", "evidence": "docs/phase5-session-replay-window-and-report-20260220-153020.md"},
+        {"id": "ar-outbox-canary-gate", "label": "Outbox DLQ/replay trend gates for canary rollout", "status": "done", "evidence": "docs/26-bank-canary-policy-v1.md"},
+        {"id": "ar-observability", "label": "Trace/correlation baseline", "status": "in_progress", "evidence": "docs/29-trace-correlation-standard-v1.md"},
+        {"id": "ar-canary-policy", "label": "Canary-by-bank routing policy defined", "status": "done", "evidence": "docs/35-session-service-canary-routing-policy.md"},
+        {"id": "ar-canary-decision", "label": "Canary routing decision endpoint implemented", "status": "done", "evidence": "gs-server/refactor-services/session-service/src/server.js"}
+      ]
+    },
+    {
+      "id": "service-extraction",
+      "title": "Service Extraction Progress (required order)",
+      "items": [
+        {"id": "se-config-service", "label": "1) Config Service extracted and running", "status": "done", "evidence": "docs/33-phase3-config-service-foundation.md"},
+        {"id": "se-session-service", "label": "2) Session Service extracted and running", "status": "done", "evidence": "docs/34-phase5-session-service-foundation.md"},
+        {"id": "se-gameplay-orchestrator", "label": "3) Gameplay Orchestrator extraction", "status": "in_progress", "evidence": "docs/phase5-gameplay-orchestrator-canary-hook-20260220-160030.md"},
+        {"id": "se-wallet-adapter", "label": "4) Wallet Adapter extraction", "status": "in_progress", "evidence": "docs/phase5-wallet-adapter-scaffold-20260220-161000.md"},
+        {"id": "se-bonus-service", "label": "5) Bonus/FRB Service extraction", "status": "in_progress", "evidence": "docs/phase5-bonus-frb-service-scaffold-20260220-161500.md"},
+        {"id": "se-history-service", "label": "6) History Service extraction", "status": "in_progress", "evidence": "docs/phase5-history-service-scaffold-20260220-162000.md"},
+        {"id": "se-mp-service", "label": "7) Multiplayer Service extraction", "status": "in_progress", "evidence": "docs/39-phase6-multiplayer-boundary-and-bypass-v1.md"}
+      ]
+    },
+    {
+      "id": "integration-and-protocol",
+      "title": "Integration and Protocol Enhancements",
+      "items": [
+        {"id": "ip-json-xml-mode", "label": "Per-bank protocol mode (JSON/XML) design", "status": "in_progress", "evidence": "docs/49-phase4-protocol-adapter-wallet-shadow-hook-20260220-173737.md"},
+        {"id": "ip-host-centralization", "label": "No hardcoded hosts, centralized cluster config", "status": "done", "evidence": "docs/31-cluster-hosts-centralization-and-portal-visibility.md"},
+        {"id": "ip-startgame-alias", "label": "Endpoint modernization alias (startgame) without breaking legacy", "status": "done", "evidence": "docs/phase0/parity-execution/phase0-startgame-alias-20260220-105011.md"},
+        {"id": "ip-websocket-spec", "label": "WebSocket integration spec for 1st/3rd party games", "status": "done", "evidence": "docs/25-game-integration-interface-and-websocket-protocol-v1.md"},
+        {"id": "ip-openapi-contracts", "label": "Versioned OpenAPI contracts for extracted services", "status": "done", "evidence": "gs-server/refactor-services/contracts/openapi/"}
+      ]
+    },
+    {
+      "id": "platform-upgrades",
+      "title": "Platform and Data Upgrades",
+      "items": [
+        {"id": "pu-cassandra-upgrade", "label": "Cassandra upgrade rehearsal + cutover plan", "status": "in_progress", "evidence": "docs/40-phase7-cassandra-upgrade-plan-v1.md"},
+        {"id": "pu-precision-audit", "label": "Precision/min-bet modernization to support 0.001", "status": "planned", "evidence": "docs/19-requirements-from-user.md"},
+        {"id": "pu-branding-wave", "label": "Legacy namespace cleanup wave (ABS mapping)", "status": "in_progress", "evidence": "docs/18-architecture-recommendations-modernization-plan.md"},
+        {"id": "pu-security-hardening", "label": "Dependency and security hardening for new services", "status": "in_progress", "evidence": "docs/33-phase3-config-service-foundation.md"}
+      ]
+    },
+    {
+      "id": "operator-ux",
+      "title": "Operator UX and Governance",
+      "items": [
+        {"id": "ux-config-portal", "label": "User-friendly GS config portal baseline", "status": "done", "evidence": "gs-server/game-server/web-gs/src/main/webapp/support/configPortal.jsp"},
+        {"id": "ux-workflow-scaffold", "label": "Draft/validate/approve/publish/rollback scaffold", "status": "done", "evidence": "docs/32-gs-config-portal-all-levels-spec.md"},
+        {"id": "ux-service-bridge", "label": "Portal workflow bridge to Config Service (feature-flagged)", "status": "done", "evidence": "docs/33-phase3-config-service-foundation.md"},
+        {"id": "ux-persistent-approvals", "label": "Cross-session persistent approvals and audit trail", "status": "planned", "evidence": "docs/32-gs-config-portal-all-levels-spec.md"},
+        {"id": "ux-rollback-guardrails", "label": "Publish rollback guardrails + canary controls", "status": "in_progress", "evidence": "docs/35-session-service-canary-routing-policy.md"}
+      ]
+    }
+  ]
+}
+  </script>
+
+  <script id="embedded-outbox-health" type="application/json">
+{
+  "updatedAt": "2026-02-20T16:10:00Z",
+  "source": "embedded-manual-snapshot",
+  "windowMinutes": 15,
+  "thresholds": {
+    "maxNew": 10,
+    "maxRetry": 2,
+    "maxDlq": 0,
+    "maxReplay429PerHour": 3
+  },
+  "sample": {
+    "new": 0,
+    "retry": 0,
+    "dlq": 0,
+    "replay429LastHour": 0
+  },
+  "trend": {
+    "new": "stable",
+    "retry": "stable",
+    "dlq": "stable",
+    "replay429": "stable"
+  }
+}
+  </script>
+
+  <script>
+    const CHECKLIST_URL = 'data/modernization-checklist.json';
+    const OUTBOX_HEALTH_URL = 'data/session-outbox-health.json';
+    const OVERRIDE_KEY = 'gs_modernization_progress_overrides_v1';
+
+    let viewMode = 'all';
+    let model = null;
+    let outboxHealth = null;
+    let overrides = {};
+
+    function loadOverrides() {
+      try {
+        overrides = JSON.parse(localStorage.getItem(OVERRIDE_KEY) || '{}');
+      } catch (e) {
+        overrides = {};
+      }
+    }
+
+    function saveOverrides() {
+      localStorage.setItem(OVERRIDE_KEY, JSON.stringify(overrides));
+    }
+
+    function isChecked(item) {
+      if (Object.prototype.hasOwnProperty.call(overrides, item.id)) {
+        return !!overrides[item.id];
+      }
+      return item.status === 'done';
+    }
+
+    function setChecked(itemId, checked) {
+      overrides[itemId] = checked;
+      saveOverrides();
+      render();
+    }
+
+    function pct(done, total) {
+      if (!total) return 0;
+      return Math.round((done / total) * 100);
+    }
+
+    function filtered(sectionItems) {
+      if (viewMode === 'all') return sectionItems;
+      return sectionItems.filter((item) => {
+        const checked = isChecked(item);
+        return viewMode === 'done' ? checked : !checked;
+      });
+    }
+
+    function unique(values) {
+      return [...new Set(values.filter(Boolean))];
+    }
+
+    function buildChecklistUrls() {
+      const fromCurrent = new URL(CHECKLIST_URL, window.location.href).toString();
+      const fromSupportRoot = `${window.location.origin}/support/data/modernization-checklist.json`;
+      const fromGsContext = `${window.location.origin}/gs/support/data/modernization-checklist.json`;
+      return unique([fromCurrent, fromSupportRoot, fromGsContext]);
+    }
+
+    function buildOutboxHealthUrls() {
+      const fromCurrent = new URL(OUTBOX_HEALTH_URL, window.location.href).toString();
+      const fromSupportRoot = `${window.location.origin}/support/data/session-outbox-health.json`;
+      const fromGsContext = `${window.location.origin}/gs/support/data/session-outbox-health.json`;
+      return unique([fromCurrent, fromSupportRoot, fromGsContext]);
+    }
+
+    function loadEmbeddedChecklist() {
+      const node = document.getElementById('embedded-checklist');
+      if (!node) return null;
+      try {
+        const data = JSON.parse(node.textContent || '{}');
+        if (data && data.sections) {
+          data.__source = 'embedded-checklist';
+          return data;
+        }
+      } catch (err) {
+        return null;
+      }
+      return null;
+    }
+
+    function loadEmbeddedOutboxHealth() {
+      const node = document.getElementById('embedded-outbox-health');
+      if (!node) return null;
+      try {
+        const data = JSON.parse(node.textContent || '{}');
+        if (data && data.thresholds && data.sample) {
+          data.__source = 'embedded-outbox-health';
+          return data;
+        }
+      } catch (err) {
+        return null;
+      }
+      return null;
+    }
+
+    async function fetchChecklistModel() {
+      if (window.location.protocol === 'file:') {
+        const embedded = loadEmbeddedChecklist();
+        if (embedded) return embedded;
+      }
+
+      const urls = buildChecklistUrls();
+      let lastError = 'unknown';
+
+      for (const url of urls) {
+        try {
+          const response = await fetch(url, {
+            cache: 'no-store',
+            credentials: 'same-origin'
+          });
+          if (!response.ok) {
+            lastError = `${url} -> HTTP ${response.status}`;
+            continue;
+          }
+          const data = await response.json();
+          data.__source = url;
+          return data;
+        } catch (err) {
+          lastError = `${url} -> ${String(err)}`;
+        }
+      }
+
+      const embedded = loadEmbeddedChecklist();
+      if (embedded) {
+        embedded.__source = `embedded-checklist (after fetch failures)`;
+        return embedded;
+      }
+
+      throw new Error(`Failed to fetch checklist. Last error: ${lastError}`);
+    }
+
+    async function fetchOutboxHealthModel() {
+      if (window.location.protocol === 'file:') {
+        const embedded = loadEmbeddedOutboxHealth();
+        if (embedded) return embedded;
+      }
+
+      const urls = buildOutboxHealthUrls();
+      let lastError = 'unknown';
+
+      for (const url of urls) {
+        try {
+          const response = await fetch(url, {
+            cache: 'no-store',
+            credentials: 'same-origin'
+          });
+          if (!response.ok) {
+            lastError = `${url} -> HTTP ${response.status}`;
+            continue;
+          }
+          const data = await response.json();
+          if (data && data.thresholds && data.sample) {
+            data.__source = url;
+            return data;
+          }
+          lastError = `${url} -> missing required fields`;
+        } catch (err) {
+          lastError = `${url} -> ${String(err)}`;
+        }
+      }
+
+      const embedded = loadEmbeddedOutboxHealth();
+      if (embedded) {
+        embedded.__source = 'embedded-outbox-health (after fetch failures)';
+        return embedded;
+      }
+
+      throw new Error(`Failed to fetch outbox health. Last error: ${lastError}`);
+    }
+
+    function renderOutboxHealth() {
+      const outboxEl = document.getElementById('outboxHealth');
+      if (!outboxEl) return;
+      if (!outboxHealth) {
+        outboxEl.innerHTML = '';
+        return;
+      }
+
+      const sample = outboxHealth.sample || {};
+      const thresholds = outboxHealth.thresholds || {};
+      const trend = outboxHealth.trend || {};
+      const updatedAt = outboxHealth.updatedAt || '-';
+      const source = outboxHealth.__source || outboxHealth.source || OUTBOX_HEALTH_URL;
+      const windowMinutes = outboxHealth.windowMinutes || 15;
+
+      const healthRows = [
+        {
+          key: 'NEW backlog',
+          value: sample.new,
+          threshold: `<= ${thresholds.maxNew}`,
+          trendValue: trend.new || '-'
+        },
+        {
+          key: 'RETRY backlog',
+          value: sample.retry,
+          threshold: `<= ${thresholds.maxRetry}`,
+          trendValue: trend.retry || '-'
+        },
+        {
+          key: 'DLQ events',
+          value: sample.dlq,
+          threshold: `<= ${thresholds.maxDlq}`,
+          trendValue: trend.dlq || '-'
+        },
+        {
+          key: 'Replay 429/hour',
+          value: sample.replay429LastHour,
+          threshold: `<= ${thresholds.maxReplay429PerHour}`,
+          trendValue: trend.replay429 || '-'
+        }
+      ];
+
+      const rowHtml = healthRows.map((row) => {
+        const trendClass = `trend-${String(row.trendValue).toLowerCase()}`;
+        return `
+          <div class="outbox-cell">
+            <div class="outbox-key">${row.key}</div>
+            <div class="outbox-value">${row.value ?? '-'}</div>
+            <div class="meta">threshold ${row.threshold}</div>
+            <span class="outbox-trend ${trendClass}">${row.trendValue}</span>
+          </div>
+        `;
+      }).join('');
+
+      outboxEl.innerHTML = `
+        <div class="cardx">
+          <h4 style="margin-top:0;">Session Outbox Canary Health</h4>
+          <div class="meta">Window: ${windowMinutes} minutes | updated: ${updatedAt} | source: ${source}</div>
+          <div class="outbox-grid">${rowHtml}</div>
+        </div>
+      `;
+    }
+
+    function render() {
+      if (!model) return;
+      const sectionsEl = document.getElementById('sections');
+      const metaEl = document.getElementById('meta');
+      const overallBar = document.getElementById('overallBar');
+      const overallText = document.getElementById('overallText');
+
+      let all = 0;
+      let done = 0;
+      model.sections.forEach((section) => {
+        section.items.forEach((item) => {
+          all += 1;
+          if (isChecked(item)) done += 1;
+        });
+      });
+      const overallPct = pct(done, all);
+      overallBar.style.width = overallPct + '%';
+      overallText.textContent = `${done}/${all} completed (${overallPct}%)`;
+      metaEl.textContent = `${model.project} | checklist updated: ${model.updatedAt} | source: ${model.__source || CHECKLIST_URL}`;
+      renderOutboxHealth();
+
+      sectionsEl.innerHTML = '';
+      model.sections.forEach((section) => {
+        const sectionDone = section.items.filter(isChecked).length;
+        const sectionPct = pct(sectionDone, section.items.length);
+
+        const card = document.createElement('div');
+        card.className = 'cardx';
+
+        const h = document.createElement('h4');
+        h.textContent = section.title;
+        h.style.marginTop = '0';
+        card.appendChild(h);
+
+        const progress = document.createElement('div');
+        progress.className = 'prog';
+        progress.innerHTML = `<div class="bar" style="width:${sectionPct}%"></div>`;
+        card.appendChild(progress);
+
+        const ptxt = document.createElement('div');
+        ptxt.className = 'meta';
+        ptxt.textContent = `${sectionDone}/${section.items.length} completed (${sectionPct}%)`;
+        card.appendChild(ptxt);
+
+        const listWrap = document.createElement('div');
+        const visible = filtered(section.items);
+
+        visible.forEach((item) => {
+          const row = document.createElement('div');
+          row.className = 'item-row';
+
+          const cb = document.createElement('input');
+          cb.type = 'checkbox';
+          cb.checked = isChecked(item);
+          cb.addEventListener('change', () => setChecked(item.id, cb.checked));
+
+          const txt = document.createElement('div');
+          txt.innerHTML = `<div>${item.label}</div><div class="meta">evidence: ${item.evidence || '-'}</div>`;
+
+          const st = document.createElement('span');
+          st.className = `status-pill status-${item.status}`;
+          st.textContent = item.status.replace('_', ' ');
+
+          row.appendChild(cb);
+          row.appendChild(txt);
+          row.appendChild(st);
+          listWrap.appendChild(row);
+        });
+
+        if (!visible.length) {
+          const empty = document.createElement('div');
+          empty.className = 'meta';
+          empty.style.marginTop = '8px';
+          empty.textContent = 'No items in current filter.';
+          listWrap.appendChild(empty);
+        }
+
+        card.appendChild(listWrap);
+        sectionsEl.appendChild(card);
+      });
+    }
+
+    async function init() {
+      loadOverrides();
+      const [checklistResult, outboxResult] = await Promise.allSettled([
+        fetchChecklistModel(),
+        fetchOutboxHealthModel()
+      ]);
+      if (checklistResult.status !== 'fulfilled') {
+        throw checklistResult.reason;
+      }
+      model = checklistResult.value;
+      if (outboxResult.status === 'fulfilled') {
+        outboxHealth = outboxResult.value;
+      }
+      render();
+
+      document.getElementById('showAll').addEventListener('click', () => { viewMode = 'all'; render(); });
+      document.getElementById('showOpen').addEventListener('click', () => { viewMode = 'open'; render(); });
+      document.getElementById('showDone').addEventListener('click', () => { viewMode = 'done'; render(); });
+      document.getElementById('resetLocal').addEventListener('click', () => {
+        localStorage.removeItem(OVERRIDE_KEY);
+        overrides = {};
+        render();
+      });
+    }
+
+    init().catch((err) => {
+      document.getElementById('outboxHealth').innerHTML = '';
+      document.getElementById('sections').innerHTML = `<div class="cardx"><strong>Failed to load checklist:</strong> ${String(err)}</div>`;
+    });
+  </script>
+</body>
+</html>

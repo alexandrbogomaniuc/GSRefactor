@@ -4,6 +4,13 @@ services:
   gs:
     build: ../configs/gs
     image: refactor-jetty-gs
+    environment:
+      - CASSANDRA_HOST=${CASSANDRA_HOST}
+      - CASSANDRA_PORT=${CASSANDRA_PORT}
+      - ZOOKEEPER_HOST=${ZOOKEEPER_HOST}
+      - ZOOKEEPER_PORT=${ZOOKEEPER_PORT}
+      - KAFKA_HOST=${KAFKA_HOST}
+      - KAFKA_PORT=${KAFKA_PORT}
     volumes:
       - "../../../../Doker/runtime-gs/webapps/gs:/var/lib/jetty/webapps"
       - "../../../../Doker/runtime-gs/logs/gs:/www/logs/tomcat.gs"
@@ -34,17 +41,17 @@ services:
       - zookeeper
       - kafka
     command: >
-      sh -lc "sed -i 's#<hosts>.*</hosts>#<hosts>c1:9042</hosts>#' /app/target/web-mp-casino/WEB-INF/classes/mp-keyspace-config.xml
+      sh -lc "sed -i 's#<hosts>.*</hosts>#<hosts>${CASSANDRA_HOST}:${CASSANDRA_PORT}</hosts>#' /app/target/web-mp-casino/WEB-INF/classes/mp-keyspace-config.xml
       && java -DMP_SERVER_ID=1
       -DHOSTNAME=mp-refactor-1
-      -DSERVER_VM_IP=mp
+      -DSERVER_VM_IP=${MP_HOST}
       -Dserver.host=0.0.0.0
-      -Dserver.port=6300
+      -Dserver.port=${MP_PORT}
       -Dserver.jetty.host=0.0.0.0
-      -Dserver.jetty.port=6301
+      -Dserver.jetty.port=${MP_JETTY_PORT}
       -Dserver.jetty.webroot=file:/app/target/web-mp-casino/
-      -Dkafka.hosts=kafka:9092
-      -Dzookeeper.connect=zookeeper:2181
+      -Dkafka.hosts=${KAFKA_HOST}:${KAFKA_PORT}
+      -Dzookeeper.connect=${ZOOKEEPER_HOST}:${ZOOKEEPER_PORT}
       -Dzookeeper.pool-size=1
       -Dzookeeper.server-id-path=/mp_refactor
       -Dzookeeper.server-id-pool-path=/mp_refactor/pool
@@ -82,10 +89,10 @@ services:
       - zookeeper
     environment:
       - KAFKA_BROKER_ID=1
-      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ZOOKEEPER_CONNECT=${ZOOKEEPER_HOST}:${ZOOKEEPER_PORT}
       - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:19092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${KAFKA_HOST}:${KAFKA_PORT},PLAINTEXT_HOST://${KAFKA_EXTERNAL_HOST}:${KAFKA_EXTERNAL_PORT}
       - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
       - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
       - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1
@@ -108,9 +115,140 @@ services:
     depends_on:
       - gs
 
+  config-service:
+    build: ../../../refactor-services/config-service
+    image: refactor-config-service
+    environment:
+      - PORT=${CONFIG_SERVICE_PORT}
+      - SERVICE_NAME=config-service
+    volumes:
+      - refactor-config-service-data:/data
+    ports:
+      - "${CONFIG_SERVICE_PORT}:${CONFIG_SERVICE_PORT}"
+    networks:
+      - refactor-network
+
+  session-service:
+    build: ../../../refactor-services/session-service
+    image: refactor-session-service
+    environment:
+      - PORT=${SESSION_SERVICE_PORT}
+      - SERVICE_NAME=session-service
+      - SESSION_SERVICE_ROUTE_ENABLED=${SESSION_SERVICE_ROUTE_ENABLED}
+      - SESSION_SERVICE_CANARY_BANKS=${SESSION_SERVICE_CANARY_BANKS}
+      - SESSION_SERVICE_KAFKA_BROKERS=${SESSION_SERVICE_KAFKA_BROKERS}
+      - SESSION_SERVICE_OUTBOX_TOPIC=${SESSION_SERVICE_OUTBOX_TOPIC}
+      - SESSION_SERVICE_OUTBOX_DLQ_TOPIC=${SESSION_SERVICE_OUTBOX_DLQ_TOPIC}
+      - SESSION_SERVICE_OUTBOX_RELAY_ENABLED=${SESSION_SERVICE_OUTBOX_RELAY_ENABLED}
+      - SESSION_SERVICE_OUTBOX_RELAY_POLL_MS=${SESSION_SERVICE_OUTBOX_RELAY_POLL_MS}
+      - SESSION_SERVICE_OUTBOX_MAX_ATTEMPTS=${SESSION_SERVICE_OUTBOX_MAX_ATTEMPTS}
+      - SESSION_SERVICE_OUTBOX_RETRY_BASE_MS=${SESSION_SERVICE_OUTBOX_RETRY_BASE_MS}
+      - SESSION_SERVICE_OUTBOX_BATCH_LIMIT=${SESSION_SERVICE_OUTBOX_BATCH_LIMIT}
+      - SESSION_SERVICE_OUTBOX_REPLAY_MAX_COUNT=${SESSION_SERVICE_OUTBOX_REPLAY_MAX_COUNT}
+      - SESSION_SERVICE_OUTBOX_REPLAY_WINDOW_SECONDS=${SESSION_SERVICE_OUTBOX_REPLAY_WINDOW_SECONDS}
+    volumes:
+      - refactor-session-service-data:/data
+    ports:
+      - "${SESSION_SERVICE_PORT}:${SESSION_SERVICE_PORT}"
+    networks:
+      - refactor-network
+
+  gameplay-orchestrator:
+    build: ../../../refactor-services/gameplay-orchestrator
+    image: refactor-gameplay-orchestrator
+    environment:
+      - PORT=${GAMEPLAY_ORCHESTRATOR_PORT}
+      - SERVICE_NAME=gameplay-orchestrator
+      - GAMEPLAY_ORCHESTRATOR_ROUTE_ENABLED=${GAMEPLAY_ORCHESTRATOR_ROUTE_ENABLED}
+      - GAMEPLAY_ORCHESTRATOR_CANARY_BANKS=${GAMEPLAY_ORCHESTRATOR_CANARY_BANKS}
+    volumes:
+      - refactor-gameplay-orchestrator-data:/data
+    ports:
+      - "${GAMEPLAY_ORCHESTRATOR_PORT}:${GAMEPLAY_ORCHESTRATOR_PORT}"
+    networks:
+      - refactor-network
+
+  wallet-adapter:
+    build: ../../../refactor-services/wallet-adapter
+    image: refactor-wallet-adapter
+    environment:
+      - PORT=${WALLET_ADAPTER_PORT}
+      - SERVICE_NAME=wallet-adapter
+      - WALLET_ADAPTER_ROUTE_ENABLED=${WALLET_ADAPTER_ROUTE_ENABLED}
+      - WALLET_ADAPTER_CANARY_BANKS=${WALLET_ADAPTER_CANARY_BANKS}
+    volumes:
+      - refactor-wallet-adapter-data:/data
+    ports:
+      - "${WALLET_ADAPTER_PORT}:${WALLET_ADAPTER_PORT}"
+    networks:
+      - refactor-network
+
+  bonus-frb-service:
+    build: ../../../refactor-services/bonus-frb-service
+    image: refactor-bonus-frb-service
+    environment:
+      - PORT=${BONUS_FRB_SERVICE_PORT}
+      - SERVICE_NAME=bonus-frb-service
+      - BONUS_FRB_SERVICE_ROUTE_ENABLED=${BONUS_FRB_SERVICE_ROUTE_ENABLED}
+      - BONUS_FRB_SERVICE_CANARY_BANKS=${BONUS_FRB_SERVICE_CANARY_BANKS}
+    volumes:
+      - refactor-bonus-frb-service-data:/data
+    ports:
+      - "${BONUS_FRB_SERVICE_PORT}:${BONUS_FRB_SERVICE_PORT}"
+    networks:
+      - refactor-network
+
+  history-service:
+    build: ../../../refactor-services/history-service
+    image: refactor-history-service
+    environment:
+      - PORT=${HISTORY_SERVICE_PORT}
+      - SERVICE_NAME=history-service
+      - HISTORY_SERVICE_ROUTE_ENABLED=${HISTORY_SERVICE_ROUTE_ENABLED}
+      - HISTORY_SERVICE_CANARY_BANKS=${HISTORY_SERVICE_CANARY_BANKS}
+    volumes:
+      - refactor-history-service-data:/data
+    ports:
+      - "${HISTORY_SERVICE_PORT}:${HISTORY_SERVICE_PORT}"
+    networks:
+      - refactor-network
+
+  protocol-adapter:
+    build: ../../../refactor-services/protocol-adapter
+    image: refactor-protocol-adapter
+    environment:
+      - PORT=${PROTOCOL_ADAPTER_PORT}
+      - SERVICE_NAME=protocol-adapter
+      - PROTOCOL_ADAPTER_ROUTE_ENABLED=${PROTOCOL_ADAPTER_ROUTE_ENABLED}
+      - PROTOCOL_ADAPTER_CANARY_BANKS=${PROTOCOL_ADAPTER_CANARY_BANKS}
+      - PROTOCOL_ADAPTER_DEFAULT_MODE=${PROTOCOL_ADAPTER_DEFAULT_MODE}
+      - PROTOCOL_ADAPTER_BANK_MODES=${PROTOCOL_ADAPTER_BANK_MODES}
+      - PROTOCOL_ADAPTER_JSON_HASH_ENABLED=${PROTOCOL_ADAPTER_JSON_HASH_ENABLED}
+      - PROTOCOL_ADAPTER_JSON_HASH_HEADER=${PROTOCOL_ADAPTER_JSON_HASH_HEADER}
+      - PROTOCOL_ADAPTER_JSON_HASH_ENFORCEMENT_MODE=${PROTOCOL_ADAPTER_JSON_HASH_ENFORCEMENT_MODE}
+      - PROTOCOL_ADAPTER_JSON_HASH_EXEMPT_ENDPOINTS=${PROTOCOL_ADAPTER_JSON_HASH_EXEMPT_ENDPOINTS}
+      - PROTOCOL_ADAPTER_JSON_GET_HASH_RULES=${PROTOCOL_ADAPTER_JSON_GET_HASH_RULES}
+      - PROTOCOL_ADAPTER_JSON_REPLAY_ENABLED=${PROTOCOL_ADAPTER_JSON_REPLAY_ENABLED}
+      - PROTOCOL_ADAPTER_JSON_REPLAY_WINDOW_SECONDS=${PROTOCOL_ADAPTER_JSON_REPLAY_WINDOW_SECONDS}
+      - PROTOCOL_ADAPTER_JSON_NONCE_TTL_SECONDS=${PROTOCOL_ADAPTER_JSON_NONCE_TTL_SECONDS}
+      - PROTOCOL_ADAPTER_JSON_SECRET_REFS=${PROTOCOL_ADAPTER_JSON_SECRET_REFS}
+    volumes:
+      - refactor-protocol-adapter-data:/data
+    ports:
+      - "${PROTOCOL_ADAPTER_PORT}:${PROTOCOL_ADAPTER_PORT}"
+    networks:
+      - refactor-network
+
 networks:
   refactor-network:
     driver: bridge
 
 volumes:
   refactor-cassandra-data:
+  refactor-config-service-data:
+  refactor-session-service-data:
+  refactor-gameplay-orchestrator-data:
+  refactor-wallet-adapter-data:
+  refactor-bonus-frb-service-data:
+  refactor-history-service-data:
+  refactor-protocol-adapter-data:

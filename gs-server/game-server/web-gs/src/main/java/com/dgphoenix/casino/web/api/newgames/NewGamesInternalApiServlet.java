@@ -1,6 +1,7 @@
 package com.dgphoenix.casino.web.api.newgames;
 
 import com.dgphoenix.casino.account.AccountManager;
+import com.dgphoenix.casino.actions.enter.game.routing.ProtocolAdapterRoutingBridge;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
@@ -185,6 +186,9 @@ public class NewGamesInternalApiServlet extends HttpServlet {
             return new SessionContext(sessionInfo, accountInfo, state);
         });
 
+        shadowProtocolWalletNormalize(context.accountInfo.getBankId(), body.sessionId, body.roundId,
+                context.reserveState.walletOperationId, body.betAmount, WalletCallType.RESERVE, request);
+
         writeJson(response, HttpServletResponse.SC_OK, createReserveResponse(
                 context.reserveState.walletOperationId, getCurrentBalance(context.accountInfo)));
     }
@@ -251,6 +255,9 @@ public class NewGamesInternalApiServlet extends HttpServlet {
             }
             return new SessionContext(sessionInfo, accountInfo, reserveState);
         });
+
+        shadowProtocolWalletNormalize(context.accountInfo.getBankId(), body.sessionId, body.roundId,
+                body.walletOperationId, body.winAmount, WalletCallType.SETTLE, request);
 
         writeJson(response, HttpServletResponse.SC_OK, createSettleResponse(getCurrentBalance(context.accountInfo)));
     }
@@ -444,6 +451,32 @@ public class NewGamesInternalApiServlet extends HttpServlet {
             return;
         }
         accountInfo.setBalance(balance);
+    }
+
+    private void shadowProtocolWalletNormalize(long bankId,
+                                               String sessionId,
+                                               String roundId,
+                                               String walletOperationId,
+                                               Long amount,
+                                               WalletCallType callType,
+                                               HttpServletRequest request) {
+        try {
+            ProtocolAdapterRoutingBridge.RouteDecision routeDecision =
+                    ProtocolAdapterRoutingBridge.getInstance().decide(bankId);
+            ProtocolAdapterRoutingBridge.getInstance().shadowNormalizeWalletOperation(
+                    routeDecision,
+                    bankId,
+                    sessionId,
+                    roundId,
+                    walletOperationId,
+                    amount == null ? 0L : amount.longValue(),
+                    callType == WalletCallType.RESERVE ? "reserve" : "settle",
+                    resolveTraceId(request)
+            );
+        } catch (Exception e) {
+            LOG.warn("NGS protocol-adapter wallet shadow failed (ignored): bankId={}, callType={}, reason={}",
+                    bankId, callType, e.getMessage());
+        }
     }
 
     private long getCurrentBalance(AccountInfo accountInfo) {
