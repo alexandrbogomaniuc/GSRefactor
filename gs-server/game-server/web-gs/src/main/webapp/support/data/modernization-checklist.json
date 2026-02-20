@@ -154,7 +154,7 @@
           "id": "ip-json-xml-mode",
           "label": "Per-bank protocol mode (JSON/XML) design",
           "status": "in_progress",
-          "evidence": "docs/49-phase4-protocol-adapter-wallet-shadow-hook-20260220-173737.md"
+          "evidence": "docs/50-phase4-json-xml-parity-check-script-20260220-174057.md"
         },
         {
           "id": "ip-host-centralization",
