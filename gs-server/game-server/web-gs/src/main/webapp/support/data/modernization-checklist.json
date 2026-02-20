@@ -241,6 +241,12 @@
           "evidence": "docs/33-phase3-config-service-foundation.md"
         },
         {
+          "id": "ux-cluster-key-descriptions",
+          "label": "Portal includes human-readable cluster setting descriptions",
+          "status": "done",
+          "evidence": "docs/56-cluster-config-portal-descriptions-20260220-180900.md"
+        },
+        {
           "id": "ux-persistent-approvals",
           "label": "Cross-session persistent approvals and audit trail",
           "status": "planned",

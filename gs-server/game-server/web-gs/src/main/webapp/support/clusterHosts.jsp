@@ -16,9 +16,15 @@
     <p>Source: <code>cluster-hosts.properties</code> (classpath)</p>
     <%
         Properties props = new Properties();
+        Properties descriptions = new Properties();
         try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("cluster-hosts.properties")) {
             if (is != null) {
                 props.load(is);
+            }
+        }
+        try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("cluster-hosts-descriptions.properties")) {
+            if (is != null) {
+                descriptions.load(is);
             }
         }
         List<String> keys = new ArrayList<>(props.stringPropertyNames());
@@ -32,6 +38,7 @@
         <tr>
             <th>Key</th>
             <th>Value</th>
+            <th>Description</th>
         </tr>
         </thead>
         <tbody>
@@ -39,6 +46,7 @@
         <tr>
             <td><code><%= key %></code></td>
             <td><code><%= props.getProperty(key) %></code></td>
+            <td><%= descriptions.getProperty(key, "") %></td>
         </tr>
         <% } %>
         </tbody>

@@ -3097,3 +3097,18 @@
   - explicit preflight blocker signal now exists before gameplay canary runs.
 - Next step:
   - once runtime is started, run readiness script then gameplay canary with `--require-redis-hit=true`.
+
+### 2026-02-20 18:06-18:09 UTC
+- Improved operator UX for cluster configuration visibility:
+  - added key description catalog: `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/resources/cluster-hosts-descriptions.properties`
+  - updated `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/clusterHosts.jsp` to display `Key | Value | Description`.
+- Updated checklist with new UX milestone evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/56-cluster-config-portal-descriptions-20260220-180900.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+- Verification:
+  - checklist JSON parse passed,
+  - `rg` confirms description resource loading and Description column rendering.
+- Result:
+  - portal now explains cluster-level settings directly for operators.
+- Next step:
+  - add the same description pattern to bank-level setting categories inside `configPortal.jsp`.
