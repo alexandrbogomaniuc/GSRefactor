@@ -154,7 +154,7 @@
           "id": "ip-json-xml-mode",
           "label": "Per-bank protocol mode (JSON/XML) design",
           "status": "in_progress",
-          "evidence": "docs/50-phase4-json-xml-parity-check-script-20260220-174057.md"
+          "evidence": "docs/51-phase4-runtime-evidence-pack-tooling-20260220-174731.md"
         },
         {
           "id": "ip-host-centralization",
