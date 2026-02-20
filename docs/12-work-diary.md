@@ -2359,3 +2359,15 @@
   - third-party providers now have executable self-check baseline for WS message contract shape.
 - Next:
   - align this smoke harness with full JSON Schema validation engine in CI.
+
+### 2026-02-20 09:52-09:53 UTC
+- Added explicit architecture decision record for Redis usage in GS modernization:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/28-redis-state-blob-and-deterministic-math-adr-v1.md`
+- Decision summary captured:
+  - Redis approved as ephemeral cache for `stateBlob`, `lastSeq`, and idempotency response cache.
+  - Redis is not source-of-truth for wallet/financial ledger.
+  - rollback path documented via feature flag fallback to durable recovery path.
+- Result:
+  - user tip on deterministic math + state blob is now integrated as a formal, guarded architecture decision.
+- Next:
+  - wire Redis key conventions and fallback metrics into observability standards.
