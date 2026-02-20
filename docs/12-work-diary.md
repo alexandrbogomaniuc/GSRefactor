@@ -2371,3 +2371,14 @@
   - user tip on deterministic math + state blob is now integrated as a formal, guarded architecture decision.
 - Next:
   - wire Redis key conventions and fallback metrics into observability standards.
+
+### 2026-02-20 09:53-09:55 UTC
+- Added observability foundation artifact:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/29-trace-correlation-standard-v1.md`
+- Defined concrete transport mappings and enforcement for mandatory fields:
+  - `traceId`, `sessionId`, `bankId`, `gameId`, `operationId`, `configVersion` across HTTP, WebSocket, Kafka, and structured logs.
+- Included rollout steps and SLO validation thresholds for missing correlation data.
+- Result:
+  - Phase 2 baseline now has a concrete correlation contract aligned with architecture requirements.
+- Next:
+  - implement facade-level injection/propagation hooks in GS runtime code paths.
