@@ -5,10 +5,10 @@ Dev_new/
 **/node_modules/
 Casino side/
 Doker/
-client/.gitignore
-client/dragonstone/
-client/revengeofra/
-client/sectorx/
-client/sectorx_btg/
+legacy-games-client/.gitignore
+legacy-games-client/dragonstone/
+legacy-games-client/revengeofra/
+legacy-games-client/sectorx/
+legacy-games-client/sectorx_btg/
 Casino side/**/.git/
 Casino side/**/.idea/

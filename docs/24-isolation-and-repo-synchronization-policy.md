@@ -15,7 +15,7 @@ Last updated: 2026-02-19 UTC
 
 ## 2.1 Change scope policy
 - Active modernization code changes are limited to `gs-server` unless explicitly approved otherwise.
-- `client`, `mp-server`, `new-games-*`, `cm-module` are treated as baseline reference assets in this phase.
+- `legacy-games-client`, `mp-server`, `new-games-*`, `cm-module` are treated as baseline reference assets in this phase.
 
 ## 3. Source Copy Baseline
 Copied from upper baseline into `Dev_new` for isolation:

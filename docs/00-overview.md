@@ -35,6 +35,6 @@ Ground-truth overview of the GS/MP platform and runtime dependencies.
   - `/Users/alexb/Documents/Dev/readme all you need to know from md files/New Game requirements to work with bsg GS/Game_Client_Requirements_MAIN-1.pdf`
 
 ## Source Repositories
-- /Users/alexb/Documents/Dev/mq-gs-clean-version
-- /Users/alexb/Documents/Dev/mq-mp-clean-version
-- /Users/alexb/Documents/Dev/mq-client-clean-version
+- /Users/alexb/Documents/Dev/Dev_new/gs-server
+- /Users/alexb/Documents/Dev/Dev_new/mp-server
+- /Users/alexb/Documents/Dev/Dev_new/legacy-games-client
