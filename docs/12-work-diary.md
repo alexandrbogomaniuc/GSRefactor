@@ -2382,3 +2382,22 @@
   - Phase 2 baseline now has a concrete correlation contract aligned with architecture requirements.
 - Next:
   - implement facade-level injection/propagation hooks in GS runtime code paths.
+
+### 2026-02-20 09:58-10:01 UTC
+- Implemented GS correlation propagation filter (Phase 2 execution item):
+  - new file: `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/filters/CorrelationContextFilter.java`
+  - wiring: `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/web.xml`
+- Behavior added (backward-compatible):
+  - reads correlation IDs from headers/params (`X-Trace-Id`, `X-Session-Id`, `X-Bank-Id`, `X-Game-Id`, `X-Operation-Id`, `X-Config-Version`),
+  - generates `traceId` if missing,
+  - sets request attributes (`traceId`, `sessionId`, `bankId`, `gameId`, `operationId`, `configVersion`),
+  - echoes response headers for trace/session/operation/config,
+  - propagates values into log4j2 `ThreadContext` with safe restore in `finally`.
+- Verification evidence:
+  - attempted compile: `mvn -f game-server/pom.xml -pl common-gs,web-gs -DskipTests compile`.
+  - result: build blocked by unresolved private artifacts (`gsn-common`, `common-wallet`, `gsn-promo-core`, `gsn-common-persisters`) not available in central.
+  - unaffected conformance smoke still passing: `gs-server/deploy/scripts/ws-contract-smoke.sh` -> `Conformance smoke passed: 5 file(s)`.
+- Result:
+  - correlation standard is now implemented at GS entry boundary without protocol contract changes.
+- Next:
+  - validate headers at runtime through `refactor` container once local build/deploy path with private dependencies is available.

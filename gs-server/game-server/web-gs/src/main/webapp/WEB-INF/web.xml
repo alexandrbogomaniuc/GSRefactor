@@ -301,6 +301,19 @@
     </servlet-mapping>
 
     <filter>
+        <filter-name>CorrelationContextFilter</filter-name>
+        <filter-class>com.dgphoenix.casino.filters.CorrelationContextFilter</filter-class>
+        <async-supported>true</async-supported>
+    </filter>
+    <filter-mapping>
+        <filter-name>CorrelationContextFilter</filter-name>
+        <url-pattern>*.servlet</url-pattern>
+        <url-pattern>*.game</url-pattern>
+        <url-pattern>*.do</url-pattern>
+        <url-pattern>/gs-internal/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
         <filter-name>HttpCallInfoFilter</filter-name>
         <filter-class>com.dgphoenix.casino.filters.HttpCallInfoFilter</filter-class>
     </filter>

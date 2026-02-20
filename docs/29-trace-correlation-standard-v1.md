@@ -84,6 +84,12 @@ Sample:
 2. Phase B: propagate to wallet adapter/history events and Kafka outbox.
 3. Phase C: enforce strict validation and alerting.
 
+## Implementation Status
+- Phase A is in progress in GS:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/filters/CorrelationContextFilter.java`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/web.xml`
+- Runtime validation is pending refactor deployment with private build dependencies.
+
 ## Related artifacts
 - `/Users/alexb/Documents/Dev/Dev_new/docs/27-error-taxonomy-v1.md`
 - `/Users/alexb/Documents/Dev/Dev_new/docs/26-bank-canary-policy-v1.md`
