@@ -107,6 +107,79 @@ public final class GameplayOrchestratorRoutingBridge {
                 bankId, sessionId, httpResult.status, httpResult.body);
     }
 
+    public void shadowWagerIntent(RouteDecision decision,
+                                  long bankId,
+                                  String sessionId,
+                                  long gameId,
+                                  String operationId,
+                                  String roundId,
+                                  String currency,
+                                  long amount,
+                                  String traceId) {
+        shadowFinancialIntent(decision, "wager", bankId, sessionId, gameId, operationId, roundId, currency, amount, traceId);
+    }
+
+    public void shadowSettleIntent(RouteDecision decision,
+                                   long bankId,
+                                   String sessionId,
+                                   long gameId,
+                                   String operationId,
+                                   String roundId,
+                                   String currency,
+                                   long amount,
+                                   String traceId) {
+        shadowFinancialIntent(decision, "settle", bankId, sessionId, gameId, operationId, roundId, currency, amount, traceId);
+    }
+
+    private void shadowFinancialIntent(RouteDecision decision,
+                                       String intentType,
+                                       long bankId,
+                                       String sessionId,
+                                       long gameId,
+                                       String operationId,
+                                       String roundId,
+                                       String currency,
+                                       long amount,
+                                       String traceId) {
+        if (decision == null || !decision.routeToGameplayService) {
+            return;
+        }
+        if (isBlank(sessionId) || gameId <= 0 || isBlank(operationId) || isBlank(roundId) || amount <= 0) {
+            LOG.debug("gameplay-orchestrator shadow {} skipped: bankId={}, sessionId={}, gameId={}, operationId={}, roundId={}, amount={}",
+                    intentType, bankId, sessionId, gameId, operationId, roundId, amount);
+            return;
+        }
+
+        Config config = loadConfig();
+        if (!config.valid) {
+            LOG.debug("gameplay-orchestrator shadow {} skipped: config unavailable", intentType);
+            return;
+        }
+
+        String payload = "{"
+                + "\"bankId\":\"" + escapeJson(String.valueOf(bankId)) + "\","
+                + "\"sessionId\":\"" + escapeJson(sessionId) + "\","
+                + "\"gameId\":\"" + escapeJson(String.valueOf(gameId)) + "\","
+                + "\"operationId\":\"" + escapeJson(operationId) + "\","
+                + "\"roundId\":\"" + escapeJson(roundId) + "\","
+                + "\"currency\":\"" + escapeJson(isBlank(currency) ? "USD" : currency) + "\","
+                + "\"amount\":" + amount + ","
+                + "\"metadata\":{"
+                + "\"source\":\"ngs-internal-api\","
+                + "\"traceId\":\"" + escapeJson(nullToEmpty(traceId)) + "\""
+                + "}"
+                + "}";
+
+        HttpResult httpResult = postJson(config.baseUrl() + "/api/v1/gameplay/" + intentType + "-intents", payload);
+        if (httpResult.status >= 200 && httpResult.status < 300) {
+            LOG.debug("gameplay-orchestrator shadow {} ok: bankId={}, sessionId={}, operationId={}, status={}, body={}",
+                    intentType, bankId, sessionId, operationId, httpResult.status, httpResult.body);
+            return;
+        }
+        LOG.warn("gameplay-orchestrator shadow {} failed, fallback to legacy only: bankId={}, sessionId={}, operationId={}, status={}, body={}",
+                intentType, bankId, sessionId, operationId, httpResult.status, httpResult.body);
+    }
+
     private Boolean fetchRemoteDecision(Config config, String bankIdValue, boolean isMultiplayer) {
         HttpURLConnection conn = null;
         try {

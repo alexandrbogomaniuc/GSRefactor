@@ -3210,3 +3210,21 @@
   - support UI navigation is now faster between progress/docs/runbook/config pages.
 - Next step:
   - commit and push this UX checkpoint, then proceed with next service extraction increment.
+
+### 2026-02-20 18:38-18:44 UTC
+- Extended Phase 5 gameplay extraction to shadow New Games financial intents (reserve/settle) in fail-open mode.
+- Code updates:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/routing/GameplayOrchestratorRoutingBridge.java`
+    - added `shadowWagerIntent` and `shadowSettleIntent`.
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java`
+    - added `shadowGameplayFinancialIntent(...)` and wired calls after successful reserve/settle.
+- Added evidence doc and checklist pointer:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/63-phase5-gameplay-financial-shadow-hook-20260220-184300.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+- Verification:
+  - checklist JSON parse passed,
+  - `rg` confirms financial-intent hook callsites and bridge methods.
+- Result:
+  - gameplay canary shadow path now covers both launch and wallet financial operations.
+- Next step:
+  - commit and push this extraction increment, then extend canary probe to assert financial intent counters.

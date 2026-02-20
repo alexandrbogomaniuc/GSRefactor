@@ -1,6 +1,7 @@
 package com.dgphoenix.casino.web.api.newgames;
 
 import com.dgphoenix.casino.account.AccountManager;
+import com.dgphoenix.casino.actions.enter.game.routing.GameplayOrchestratorRoutingBridge;
 import com.dgphoenix.casino.actions.enter.game.routing.ProtocolAdapterRoutingBridge;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
@@ -188,6 +189,10 @@ public class NewGamesInternalApiServlet extends HttpServlet {
 
         shadowProtocolWalletNormalize(context.accountInfo.getBankId(), body.sessionId, body.roundId,
                 context.reserveState.walletOperationId, body.betAmount, WalletCallType.RESERVE, request);
+        shadowGameplayFinancialIntent(context.accountInfo.getBankId(), body.sessionId, context.reserveState.gameId,
+                context.reserveState.walletOperationId, body.roundId, body.betAmount, WalletCallType.RESERVE,
+                context.accountInfo.getCurrency() != null ? context.accountInfo.getCurrency().getCode() : "USD",
+                request);
 
         writeJson(response, HttpServletResponse.SC_OK, createReserveResponse(
                 context.reserveState.walletOperationId, getCurrentBalance(context.accountInfo)));
@@ -258,6 +263,10 @@ public class NewGamesInternalApiServlet extends HttpServlet {
 
         shadowProtocolWalletNormalize(context.accountInfo.getBankId(), body.sessionId, body.roundId,
                 body.walletOperationId, body.winAmount, WalletCallType.SETTLE, request);
+        shadowGameplayFinancialIntent(context.accountInfo.getBankId(), body.sessionId, context.reserveState.gameId,
+                body.walletOperationId, body.roundId, body.winAmount, WalletCallType.SETTLE,
+                context.accountInfo.getCurrency() != null ? context.accountInfo.getCurrency().getCode() : "USD",
+                request);
 
         writeJson(response, HttpServletResponse.SC_OK, createSettleResponse(getCurrentBalance(context.accountInfo)));
     }
@@ -475,6 +484,49 @@ public class NewGamesInternalApiServlet extends HttpServlet {
             );
         } catch (Exception e) {
             LOG.warn("NGS protocol-adapter wallet shadow failed (ignored): bankId={}, callType={}, reason={}",
+                    bankId, callType, e.getMessage());
+        }
+    }
+
+    private void shadowGameplayFinancialIntent(long bankId,
+                                               String sessionId,
+                                               int gameId,
+                                               String walletOperationId,
+                                               String roundId,
+                                               Long amount,
+                                               WalletCallType callType,
+                                               String currencyCode,
+                                               HttpServletRequest request) {
+        try {
+            GameplayOrchestratorRoutingBridge.RouteDecision routeDecision =
+                    GameplayOrchestratorRoutingBridge.getInstance().decide(bankId, false);
+            if (callType == WalletCallType.RESERVE) {
+                GameplayOrchestratorRoutingBridge.getInstance().shadowWagerIntent(
+                        routeDecision,
+                        bankId,
+                        sessionId,
+                        gameId,
+                        walletOperationId,
+                        roundId,
+                        currencyCode,
+                        amount == null ? 0L : amount.longValue(),
+                        resolveTraceId(request)
+                );
+            } else {
+                GameplayOrchestratorRoutingBridge.getInstance().shadowSettleIntent(
+                        routeDecision,
+                        bankId,
+                        sessionId,
+                        gameId,
+                        walletOperationId,
+                        roundId,
+                        currencyCode,
+                        amount == null ? 0L : amount.longValue(),
+                        resolveTraceId(request)
+                );
+            }
+        } catch (Exception e) {
+            LOG.warn("NGS gameplay-orchestrator shadow failed (ignored): bankId={}, callType={}, reason={}",
                     bankId, callType, e.getMessage());
         }
     }
