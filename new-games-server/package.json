@@ -1,0 +1,27 @@
+{
+  "name": "new-games-server",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "test": "tsx --test test/*.test.ts",
+    "perf:smoke": "tsx scripts/perf-smoke.ts",
+    "runtime:proof-pack": "bash scripts/perf-proof-pack.sh",
+    "runtime:build-bundle": "bash scripts/build-gs-runtime-bundle.sh",
+    "runtime:deploy-gs": "bash scripts/deploy-gs-runtime.sh",
+    "runtime:e2e": "bash scripts/runtime-e2e.sh",
+    "runtime:status": "bash scripts/runtime-status.sh"
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.5.0",
+    "fastify": "^4.28.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "tsx": "^4.19.2",
+    "typescript": "^5.8.2"
+  }
+}

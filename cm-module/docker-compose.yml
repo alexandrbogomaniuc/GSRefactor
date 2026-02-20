@@ -1,0 +1,17 @@
+services:
+  cm-module:
+    build:
+      context: /Users/alexb/Documents/Dev/cm-module
+      dockerfile: Dockerfile
+    container_name: cm-module
+    restart: unless-stopped
+    environment:
+      CM_PORT: "7070"
+      CM_CASSANDRA_CONTAINER: "gp3-c1-1"
+      CM_CORE_FILE: "/app/data/cm-core.json"
+      CM_MIRROR_FILE: "/app/data/cm-mirror.json"
+    ports:
+      - "18070:7070"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /Users/alexb/Documents/Dev/cm-module/data:/app/data

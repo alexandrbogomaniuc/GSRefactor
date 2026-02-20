@@ -9,6 +9,7 @@ Define one stable integration contract so games can communicate with GS orchestr
 ## 2. Integration Model
 - GS remains orchestration authority for session, wallet, bonus/FRB, history, and policy.
 - Game engine remains deterministic outcome producer and UI runtime.
+- Math/outcome service must be functional: same `seed + state + input` always returns the same output.
 - Integration is split into:
   - Launch contract (HTTP redirect/payload),
   - Gameplay contract (HTTP and/or WebSocket messages),
@@ -106,6 +107,19 @@ Rules:
 2. GS returns `SESSION_SYNC` with authoritative unresolved operations.
 3. Client must reconcile to GS state before allowing new bet action.
 4. Recovery timeout and max reconnect attempts are bank-configurable.
+
+## 9.1 Redis role (recommended)
+Use Redis as a fast operational state cache, not as financial source-of-truth.
+
+Recommended Redis keys:
+1. `session:{sessionId}:stateBlob` (TTL): lightweight reconnect state snapshot.
+2. `op:{operationId}:result` (TTL): idempotency response cache for duplicate retries.
+3. `session:{sessionId}:lastSeq` (TTL): websocket replay/reorder anchor.
+
+Rules:
+1. Redis loss must not lose money state; DB/outbox/event log must fully reconstruct.
+2. State blob is optimization for low-latency resume, not canonical ledger.
+3. Every blob should include `configVersion` and `updatedAt` for safe reconciliation.
 
 ## 10. Third-Party Provider Requirements
 Mandatory deliverables from provider:

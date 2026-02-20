@@ -1,0 +1,9 @@
+LaunchStatus=302
+LaunchLocation=http://localhost:5174/?gameId=00010&ngsContract=v1&gameIdNumeric=10&MODE=real&GAMESERVERID=1&ngsApiUrl=http%3A%2F%2Flocalhost%3A6400&LANG=en&BANKID=6274&SID=1_803ce7035199561daba60000019cbbcd_UVUDalRVAAs9FRYXGA9WVmgCXlwBRVtCUQ&gsInternalBaseUrl=http%3A%2F%2Flocalhost%3A81
+SID=1_803ce7035199561daba60000019cbbcd_UVUDalRVAAs9FRYXGA9WVmgCXlwBRVtCUQ
+GSValidateStatus=200
+Open={"status":200,"balance":59964,"playerId":"bav_game_session_001","requestCounter":0,"gameId":10}
+Place={"status":200,"roundId":"b60820ca4d31d6b1","balance":59864,"requestCounter":1,"totalWinAmount":800}
+Collect={"status":200,"roundId":"b60820ca4d31d6b1","balance":60664,"winAmount":800,"requestCounter":2}
+History={"status":200,"historyCount":1,"requestCounter":3}
+E2E OK

@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casino Manager</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="login-screen" class="screen active">
+      <div class="auth-card">
+        <img src="/assets/betonline-logo.svg" alt="BetOnline" class="auth-logo" />
+        <h1>Casino Manager</h1>
+        <p class="muted">Please sign in</p>
+        <form id="login-form">
+          <label>Login</label>
+          <input id="login-username" type="text" value="root" required />
+          <label>Password</label>
+          <input id="login-password" type="password" value="root" required />
+          <button type="submit">Sign In</button>
+        </form>
+        <p id="login-error" class="error"></p>
+      </div>
+    </div>
+
+    <div id="password-screen" class="screen">
+      <div class="auth-card">
+        <img src="/assets/betonline-logo.svg" alt="BetOnline" class="auth-logo" />
+        <h1>Change Password</h1>
+        <p class="muted">First login requires password update.</p>
+        <form id="password-form">
+          <label>Old Password</label>
+          <input id="old-password" type="password" required />
+          <label>New Password</label>
+          <input id="new-password" type="password" required />
+          <button type="submit">Update Password</button>
+        </form>
+        <p id="password-error" class="error"></p>
+        <p id="password-success" class="success"></p>
+      </div>
+    </div>
+
+    <div id="app-screen" class="screen">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <img src="/assets/betonline-logo.svg" alt="BetOnline" class="brand-logo" />
+          <div class="brand-title">Casino Manager</div>
+        </div>
+        <div class="topbar-right">
+          <span id="hello-user" class="muted"></span>
+          <span class="divider">|</span>
+          <span class="muted">UTC</span>
+          <span class="divider">|</span>
+          <span class="muted">Help</span>
+          <span class="divider">|</span>
+          <button id="logout-btn" class="link-btn">Log Out</button>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <h2>Menu</h2>
+          <div id="menu-tree" class="menu-tree"></div>
+        </aside>
+
+        <main class="content">
+          <section class="card status-card">
+            <h3>Environment</h3>
+            <div class="status-grid">
+              <div><strong>Container:</strong> <span id="status-service"></span></div>
+              <div><strong>Cassandra:</strong> <span id="status-cassandra"></span></div>
+              <div><strong>User:</strong> <span id="status-user"></span></div>
+              <div><strong>Auth:</strong> <span id="status-auth"></span></div>
+              <div><strong>CM Core DB:</strong> <span id="status-core-db"></span></div>
+              <div><strong>CM Mirror DB:</strong> <span id="status-mirror-db"></span></div>
+            </div>
+          </section>
+
+          <section class="workspace-tabs" id="workspace-tabs"></section>
+
+          <section class="card workspace-card">
+            <p id="workspace-subtitle" class="muted"></p>
+
+            <section id="panel-user-list" class="panel">
+              <h2>User List</h2>
+              <form id="user-filter-form" class="grid-form">
+                <div class="field field-wide">
+                  <label for="uf-level">User Type</label>
+                  <select id="uf-level"></select>
+                </div>
+              </form>
+              <div class="toolbar">
+                <button id="user-search-btn" type="button">Search</button>
+                <button id="user-export-btn" type="button">Export</button>
+              </div>
+              <p id="user-list-meta" class="muted"></p>
+              <p id="user-list-error" class="error"></p>
+              <div class="table-wrap">
+                <table id="user-list-table"></table>
+              </div>
+            </section>
+
+            <section id="panel-user-common" class="panel hidden">
+              <h2>User Common Info</h2>
+              <div class="toolbar dropdown-toolbar">
+                <div class="dropdown" id="uc-view-dropdown">
+                  <button id="uc-view-btn" type="button">View ▾</button>
+                  <div id="uc-view-menu" class="dropdown-menu hidden">
+                    <button type="button" data-view="common">Common Info</button>
+                    <button type="button" data-view="sessions">Session Info</button>
+                    <button type="button" data-view="ips">IPs Info</button>
+                    <button type="button" data-view="history">Object change history</button>
+                  </div>
+                </div>
+
+                <div class="dropdown" id="uc-actions-dropdown">
+                  <button id="uc-actions-btn" type="button">Actions ▾</button>
+                  <div id="uc-actions-menu" class="dropdown-menu hidden"></div>
+                </div>
+              </div>
+
+              <p id="uc-message" class="muted"></p>
+              <p id="uc-error" class="error"></p>
+
+              <div id="uc-common-view">
+                <div class="user-header-card">
+                  <div class="avatar">👤</div>
+                  <div>
+                    <div class="label">User login</div>
+                    <div id="uc-login" class="user-login">-</div>
+                  </div>
+                  <div class="status-box">
+                    <div class="label">Status</div>
+                    <div id="uc-status">-</div>
+                  </div>
+                </div>
+
+                <div class="split-cards">
+                  <div class="info-card">
+                    <h3>User Information</h3>
+                    <div class="kv"><span>Roles</span><strong id="uc-roles">-</strong></div>
+                    <div class="kv"><span>Email</span><strong id="uc-email">-</strong></div>
+                    <div class="kv"><span>Comment</span><strong id="uc-comment">-</strong></div>
+                    <div class="kv"><span>Last modified by</span><strong id="uc-last-modified">-</strong></div>
+                  </div>
+
+                  <div class="info-card">
+                    <h3>Activity</h3>
+                    <div class="kv"><span>Number of sessions</span><strong id="uc-number-sessions">0</strong></div>
+                    <div class="kv"><span>Last Log Date</span><strong id="uc-last-log-date">-</strong></div>
+                    <div class="kv"><span>Last session length</span><strong id="uc-last-session-length">-</strong></div>
+                    <div class="kv"><span>IP/Hostname</span><strong id="uc-ip-hostname">-</strong></div>
+                    <div class="kv"><span>Total time</span><strong id="uc-total-time">-</strong></div>
+                    <div class="kv"><span>Average length</span><strong id="uc-average-length">-</strong></div>
+                  </div>
+                </div>
+
+                <div class="toolbar">
+                  <button id="uc-edit-btn" type="button">Edit User</button>
+                </div>
+              </div>
+
+              <div id="uc-table-view" class="hidden">
+                <div class="table-wrap">
+                  <table id="uc-data-table"></table>
+                </div>
+              </div>
+            </section>
+
+            <section id="panel-player-search" class="panel hidden">
+              <h2>Player Search</h2>
+              <form id="player-search-form" class="grid-form">
+                <div class="field">
+                  <label for="ps-cluster">Cluster ID</label>
+                  <input id="ps-cluster" type="text" value="1" />
+                </div>
+                <div class="field">
+                  <label for="ps-subcasino-list">Subcasino IDs (csv)</label>
+                  <input id="ps-subcasino-list" type="text" placeholder="507" />
+                </div>
+                <div class="field">
+                  <label for="ps-bank-list">Bank IDs (csv)</label>
+                  <input id="ps-bank-list" type="text" value="6274" />
+                </div>
+                <div class="field">
+                  <label for="ps-nickname">Nickname</label>
+                  <input id="ps-nickname" type="text" />
+                </div>
+                <div class="field">
+                  <label for="ps-extid">Search by Ext. ID</label>
+                  <input id="ps-extid" type="text" />
+                </div>
+                <div class="field">
+                  <label for="ps-account-id">Account ID</label>
+                  <input id="ps-account-id" type="text" />
+                </div>
+                <div class="field">
+                  <label for="ps-reg-after">Registered After (iso/ms)</label>
+                  <input id="ps-reg-after" type="text" />
+                </div>
+                <div class="field">
+                  <label for="ps-reg-before">Registered Before (iso/ms)</label>
+                  <input id="ps-reg-before" type="text" />
+                </div>
+                <div class="field">
+                  <label for="ps-account-status">Account Locked Status</label>
+                  <select id="ps-account-status">
+                    <option value="-1">All</option>
+                    <option value="false">Active</option>
+                    <option value="true">Locked by Admin</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="ps-main-per-page">Rows per page</label>
+                  <input id="ps-main-per-page" type="text" value="20" />
+                </div>
+                <div class="field checkbox-field">
+                  <label><input id="ps-fuzzy-search" type="checkbox" /> Fuzzy search</label>
+                </div>
+              </form>
+              <div class="toolbar">
+                <button id="player-search-btn" type="button">Search</button>
+                <button id="player-export-btn" type="button">Export</button>
+              </div>
+              <p id="player-search-meta" class="muted"></p>
+              <p id="player-search-error" class="error"></p>
+              <div class="table-wrap">
+                <table id="player-search-table"></table>
+              </div>
+            </section>
+
+            <section id="panel-player-summary" class="panel hidden">
+              <h2>Summary Info</h2>
+              <div class="toolbar dropdown-toolbar">
+                <div class="dropdown" id="psm-actions-dropdown">
+                  <button id="psm-actions-btn" type="button">Actions ▾</button>
+                  <div id="psm-actions-menu" class="dropdown-menu hidden"></div>
+                </div>
+                <div class="dropdown" id="psm-view-dropdown">
+                  <button id="psm-view-btn" type="button">View ▾</button>
+                  <div id="psm-view-menu" class="dropdown-menu hidden"></div>
+                </div>
+              </div>
+
+              <p id="psm-message" class="muted"></p>
+              <p id="psm-error" class="error"></p>
+
+              <div id="psm-summary-view">
+                <div class="user-header-card">
+                  <div class="avatar">👤</div>
+                  <div>
+                    <div class="label">Player login</div>
+                    <div id="psm-login" class="user-login">-</div>
+                  </div>
+                  <div class="status-box">
+                    <div class="label">Status</div>
+                    <div id="psm-status">-</div>
+                  </div>
+                </div>
+
+                <div class="split-cards three-cols">
+                  <div class="info-card">
+                    <h3>Summary</h3>
+                    <div class="kv"><span>Player Name</span><strong id="psm-player-name">-</strong></div>
+                    <div class="kv"><span>Ext. ID</span><strong id="psm-extid">-</strong></div>
+                    <div class="kv"><span>Cluster</span><strong id="psm-cluster">-</strong></div>
+                    <div class="kv"><span>SubCasino</span><strong id="psm-subcasino">-</strong></div>
+                    <div class="kv"><span>Bank</span><strong id="psm-bank">-</strong></div>
+                    <div class="kv"><span>Tester</span><strong id="psm-tester">-</strong></div>
+                  </div>
+
+                  <div class="info-card">
+                    <h3>Financial</h3>
+                    <div class="kv"><span>Balance</span><strong id="psm-balance">-</strong></div>
+                    <div class="kv"><span>Total Bets</span><strong id="psm-total-bets">-</strong></div>
+                    <div class="kv"><span>Total Payout</span><strong id="psm-total-payout">-</strong></div>
+                    <div class="kv"><span>Game Revenue</span><strong id="psm-game-revenue">-</strong></div>
+                    <div class="kv"><span>Currency</span><strong id="psm-currency">-</strong></div>
+                  </div>
+
+                  <div class="info-card">
+                    <h3>Activity</h3>
+                    <div class="kv"><span>Account ID</span><strong id="psm-account-id">-</strong></div>
+                    <div class="kv"><span>Registration Date</span><strong id="psm-reg-date">-</strong></div>
+                    <div class="kv"><span>Type</span><strong id="psm-type">-</strong></div>
+                    <div class="kv"><span>Last log</span><strong id="psm-last-log">-</strong></div>
+                    <div class="kv"><span>Rounds Count</span><strong id="psm-rounds">-</strong></div>
+                    <div class="kv"><span>Game sessions</span><strong id="psm-game-sessions">-</strong></div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="psm-game-filter-wrap" class="hidden">
+                <form id="psm-game-filter-form" class="grid-form compact-grid">
+                  <div class="field">
+                    <label for="psm-date-from">Date from</label>
+                    <input id="psm-date-from" type="datetime-local" />
+                  </div>
+                  <div class="field">
+                    <label for="psm-date-to">Date to</label>
+                    <input id="psm-date-to" type="datetime-local" />
+                  </div>
+                  <div class="field">
+                    <label for="psm-player-mode">Player Mode</label>
+                    <select id="psm-player-mode">
+                      <option value="0">Cash</option>
+                      <option value="1">Bonus</option>
+                      <option value="2">Free Rounds</option>
+                      <option value="3">Tournament</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="psm-platform">Platform</label>
+                    <select id="psm-platform">
+                      <option value="-1">All</option>
+                      <option value="1">Flash</option>
+                      <option value="2">Win 32</option>
+                      <option value="3">Air</option>
+                      <option value="4">Mobile</option>
+                      <option value="5">Android</option>
+                      <option value="6">iOS</option>
+                      <option value="7">Windows Phone</option>
+                      <option value="8">Vault</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="psm-game-type">Game Type</label>
+                    <select id="psm-game-type">
+                      <option value="-1">All</option>
+                      <option value="1">Slots</option>
+                      <option value="2">Table</option>
+                      <option value="3">Keno</option>
+                      <option value="4">Video poker</option>
+                      <option value="5">Soft games</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="psm-is-jackpot">Is Jackpot</label>
+                    <select id="psm-is-jackpot">
+                      <option value="-1">All</option>
+                      <option value="false">Is non-Jackpot</option>
+                      <option value="true">Is Jackpot</option>
+                    </select>
+                  </div>
+                  <div class="field checkbox-field">
+                    <label><input id="psm-show-by-sessions" type="checkbox" /> View through the sessions</label>
+                  </div>
+                </form>
+                <div class="toolbar">
+                  <button id="psm-game-search-btn" type="button">Search</button>
+                </div>
+              </div>
+
+              <div id="psm-table-view" class="hidden">
+                <div class="table-wrap">
+                  <table id="psm-data-table"></table>
+                </div>
+              </div>
+            </section>
+
+            <section id="panel-create-user" class="panel hidden">
+              <h2>Create User</h2>
+              <form id="create-user-form" class="grid-form">
+                <div class="field">
+                  <label for="cu-login">Login</label>
+                  <input id="cu-login" type="text" required />
+                </div>
+                <div class="field">
+                  <label for="cu-email">Email</label>
+                  <input id="cu-email" type="email" required />
+                </div>
+                <div class="field field-wide">
+                  <label for="cu-comment">Comment</label>
+                  <input id="cu-comment" type="text" />
+                </div>
+                <div class="field checkbox-field">
+                  <label><input id="cu-general" type="checkbox" /> General user</label>
+                </div>
+                <div class="field checkbox-field">
+                  <label><input id="cu-include-future" type="checkbox" /> Include all future banks</label>
+                </div>
+                <div class="field">
+                  <label for="cu-password">Initial password (optional)</label>
+                  <input id="cu-password" type="text" placeholder="auto-generated if empty" />
+                </div>
+                <div class="field field-wide">
+                  <label for="cu-roles">Roles</label>
+                  <select id="cu-roles" multiple required></select>
+                </div>
+                <div id="cu-scope" class="scope-grid">
+                  <div class="field">
+                    <label for="cu-clusters">Clusters</label>
+                    <select id="cu-clusters" multiple></select>
+                  </div>
+                  <div class="field">
+                    <label for="cu-subcasinos">Subcasinos</label>
+                    <select id="cu-subcasinos" multiple></select>
+                  </div>
+                  <div class="field">
+                    <label for="cu-banks">Banks</label>
+                    <select id="cu-banks" multiple></select>
+                  </div>
+                </div>
+              </form>
+              <div class="toolbar">
+                <button id="create-user-btn" type="button">Create User</button>
+              </div>
+              <p id="create-user-error" class="error"></p>
+              <p id="create-user-success" class="success"></p>
+            </section>
+
+            <section id="panel-role-list" class="panel hidden">
+              <h2>Role List</h2>
+              <div class="toolbar">
+                <button id="role-refresh-btn" type="button">Refresh</button>
+              </div>
+              <p id="role-list-meta" class="muted"></p>
+              <p id="role-list-error" class="error"></p>
+              <div class="table-wrap">
+                <table id="role-list-table"></table>
+              </div>
+            </section>
+
+            <section id="panel-create-role" class="panel hidden">
+              <h2>Create Role</h2>
+              <form id="create-role-form" class="grid-form">
+                <div class="field">
+                  <label for="cr-name">Role Name</label>
+                  <input id="cr-name" type="text" required />
+                </div>
+                <div class="field field-wide">
+                  <label for="cr-description">Description</label>
+                  <input id="cr-description" type="text" />
+                </div>
+                <div class="field checkbox-field field-wide">
+                  <label><input id="cr-nonrestricted" type="checkbox" checked /> Role is available for all users</label>
+                </div>
+                <div id="cr-scope" class="scope-grid hidden">
+                  <div class="field">
+                    <label for="cr-clusters">Clusters</label>
+                    <select id="cr-clusters" multiple></select>
+                  </div>
+                  <div class="field">
+                    <label for="cr-subcasinos">Subcasinos</label>
+                    <select id="cr-subcasinos" multiple></select>
+                  </div>
+                  <div class="field">
+                    <label for="cr-banks">Banks</label>
+                    <select id="cr-banks" multiple></select>
+                  </div>
+                </div>
+                <div class="field field-wide">
+                  <label>Permissions</label>
+                  <div id="cr-permissions" class="permissions-grid"></div>
+                </div>
+              </form>
+              <div class="toolbar">
+                <button id="create-role-btn" type="button">Create Role</button>
+              </div>
+              <p id="create-role-error" class="error"></p>
+              <p id="create-role-success" class="success"></p>
+            </section>
+
+            <section id="panel-reports" class="panel hidden">
+              <h2>Reports</h2>
+              <div class="report-toolbar">
+                <label for="report-select">Report</label>
+                <select id="report-select"></select>
+                <button id="run-report-btn" type="button">Run</button>
+              </div>
+              <form id="report-form" class="report-form"></form>
+              <p id="report-error" class="error"></p>
+              <div id="report-meta" class="muted"></div>
+              <div class="table-wrap">
+                <table id="report-table"></table>
+              </div>
+            </section>
+          </section>
+        </main>
+      </div>
+      <footer class="footer-note">© 2019-2026 Casino Manager. All Rights Reserved.</footer>
+    </div>
+
+    <div id="edit-user-modal" class="modal hidden">
+      <div class="modal-overlay" id="edit-user-cancel-overlay"></div>
+      <div class="modal-card">
+        <div class="modal-head">
+          <h2>Edit User</h2>
+        </div>
+        <div class="modal-body">
+          <form id="edit-user-form" class="grid-form">
+            <div class="field">
+              <label for="eum-login">Login</label>
+              <input id="eum-login" type="text" required />
+            </div>
+            <div class="field">
+              <label for="eum-email">Email</label>
+              <input id="eum-email" type="email" required />
+            </div>
+            <div class="field field-wide">
+              <label for="eum-comment">Comment</label>
+              <input id="eum-comment" type="text" />
+            </div>
+            <div class="field checkbox-field">
+              <label><input id="eum-general" type="checkbox" /> General user</label>
+            </div>
+            <div class="field checkbox-field">
+              <label><input id="eum-include-future" type="checkbox" /> Include all future banks</label>
+            </div>
+            <div class="field field-wide">
+              <label for="eum-roles">Roles</label>
+              <select id="eum-roles" multiple required></select>
+            </div>
+            <div id="eum-scope" class="scope-grid">
+              <div class="field">
+                <label for="eum-clusters">Clusters</label>
+                <select id="eum-clusters" multiple></select>
+              </div>
+              <div class="field">
+                <label for="eum-subcasinos">Subcasinos</label>
+                <select id="eum-subcasinos" multiple></select>
+              </div>
+              <div class="field">
+                <label for="eum-banks">Banks</label>
+                <select id="eum-banks" multiple></select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-actions">
+          <button id="edit-user-save-btn" type="button">Change</button>
+          <button id="edit-user-cancel-btn" type="button" class="secondary-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="award-bonus-modal" class="modal hidden">
+      <div class="modal-overlay" id="award-bonus-overlay"></div>
+      <div class="modal-card">
+        <div class="modal-head">
+          <h2 id="award-bonus-title">Award Bonus</h2>
+        </div>
+        <div class="modal-body">
+          <form id="award-bonus-form" class="grid-form">
+            <div class="field">
+              <label for="ab-type">Type</label>
+              <select id="ab-type">
+                <option value="0">Deposits</option>
+                <option value="1">Slots deposits</option>
+                <option value="2">Loss</option>
+                <option value="3">Prize</option>
+                <option value="4">Promo</option>
+                <option value="5">Special</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="ab-amount">Amount</label>
+              <input id="ab-amount" type="number" step="0.01" min="0.01" value="10" />
+            </div>
+            <div class="field">
+              <label for="ab-rollover-multiplier">Rollover Multiplier</label>
+              <input id="ab-rollover-multiplier" type="number" step="0.01" min="0.01" value="2" />
+            </div>
+            <div class="field">
+              <label for="ab-rollover">Rollover</label>
+              <input id="ab-rollover" type="number" step="0.01" readonly />
+            </div>
+            <div class="field">
+              <label for="ab-cap-multiplier">Max Win Cap Multiplier</label>
+              <input id="ab-cap-multiplier" type="number" step="0.01" min="0" value="0" />
+            </div>
+            <div class="field">
+              <label for="ab-max-win-cap">Max Win Cap</label>
+              <input id="ab-max-win-cap" type="number" step="0.01" min="0" value="0" />
+            </div>
+            <div class="field">
+              <label for="ab-start-time">Start date</label>
+              <input id="ab-start-time" type="datetime-local" />
+            </div>
+            <div class="field">
+              <label for="ab-expiration-time">Expiration date</label>
+              <input id="ab-expiration-time" type="datetime-local" />
+            </div>
+            <div class="field">
+              <label for="ab-game-limit-type">Available games</label>
+              <select id="ab-game-limit-type">
+                <option value="0">All Games</option>
+                <option value="1">All except</option>
+                <option value="2">Only specified</option>
+              </select>
+            </div>
+            <div class="field field-wide">
+              <label for="ab-game-list">Game IDs (csv)</label>
+              <input id="ab-game-list" type="text" placeholder="838,829" />
+            </div>
+            <div class="field field-wide">
+              <label for="ab-description">Description</label>
+              <input id="ab-description" type="text" />
+            </div>
+            <div class="field">
+              <label for="ab-released-type">Autoreleased</label>
+              <select id="ab-released-type">
+                <option value="true">AUTO</option>
+                <option value="false">MANUAL</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-actions">
+          <button id="award-bonus-submit-btn" type="button">Award</button>
+          <button id="award-bonus-cancel-btn" type="button" class="secondary-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="award-frbonus-modal" class="modal hidden">
+      <div class="modal-overlay" id="award-frbonus-overlay"></div>
+      <div class="modal-card">
+        <div class="modal-head">
+          <h2 id="award-frbonus-title">Award Free Round Bonus</h2>
+        </div>
+        <div class="modal-body">
+          <form id="award-frbonus-form" class="grid-form">
+            <div class="field">
+              <label for="afb-rounds">Rounds</label>
+              <input id="afb-rounds" type="number" step="1" min="1" value="5" />
+            </div>
+            <div class="field">
+              <label for="afb-bet-type">FRB Bet Type</label>
+              <select id="afb-bet-type">
+                <option value="1">Default Bet</option>
+                <option value="2">Fixed Bet for Single Game</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="afb-game-limit-type">Available games</label>
+              <select id="afb-game-limit-type">
+                <option value="0">All Games</option>
+                <option value="1">All except</option>
+                <option value="2">Only specified</option>
+              </select>
+            </div>
+            <div class="field field-wide">
+              <label for="afb-game-list">Game IDs (csv)</label>
+              <input id="afb-game-list" type="text" placeholder="838,829" />
+            </div>
+            <div class="field">
+              <label for="afb-single-game">Single Game ID (for fixed bet)</label>
+              <input id="afb-single-game" type="number" step="1" min="1" />
+            </div>
+            <div class="field">
+              <label for="afb-start-time">Start time</label>
+              <input id="afb-start-time" type="datetime-local" />
+            </div>
+            <div class="field">
+              <label for="afb-expiration-time">Expiration time</label>
+              <input id="afb-expiration-time" type="datetime-local" />
+            </div>
+            <div class="field">
+              <label for="afb-award-duration-days">Award duration (days)</label>
+              <input id="afb-award-duration-days" type="number" step="1" min="0" />
+            </div>
+            <div class="field">
+              <label for="afb-fr-chips">FR chips</label>
+              <input id="afb-fr-chips" type="number" step="0.01" min="0.01" value="10" />
+            </div>
+            <div class="field">
+              <label for="afb-max-win-cap">Max win cap</label>
+              <input id="afb-max-win-cap" type="number" step="0.01" min="0" value="0" />
+            </div>
+            <div class="field field-wide">
+              <label for="afb-description">Description</label>
+              <input id="afb-description" type="text" />
+            </div>
+          </form>
+        </div>
+        <div class="modal-actions">
+          <button id="award-frbonus-submit-btn" type="button">Award</button>
+          <button id="award-frbonus-cancel-btn" type="button" class="secondary-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

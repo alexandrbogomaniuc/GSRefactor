@@ -1,0 +1,11 @@
+{
+  "name": "cm-module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Casino Manager runnable prototype (auth + Cassandra-backed read APIs)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "smoke": "bash scripts/smoke.sh"
+  }
+}

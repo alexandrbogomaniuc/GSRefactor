@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "lastUpdate": "2026-02-19T13:45:16.265Z",
+  "reports": {
+    "userList": {
+      "updatedAt": "2026-02-19T13:44:56.870Z",
+      "sourceTable": "cm_core.users",
+      "filters": {
+        "login": null,
+        "email": null,
+        "status": null,
+        "userLevel": null,
+        "clusterId": null,
+        "subcasinoId": null,
+        "bankList": []
+      },
+      "count": 1,
+      "rows": [
+        {
+          "rowNumber": 1,
+          "login": "root",
+          "email": "root@localhost",
+          "roles": "SUPER_ADMIN",
+          "lastUpdate": "19 Feb 2026 13:44:56",
+          "lastLoggedIn": "19 Feb 2026 13:44:56",
+          "status": "ACTIVE",
+          "loggedIn": true,
+          "timeSinceLogin": "0s",
+          "userLevel": "General",
+          "enable2fa": false,
+          "status2fa": "Disabled"
+        }
+      ]
+    },
+    "playerSearch": {
+      "updatedAt": "2026-02-19T13:45:16.265Z",
+      "sourceTable": "rcasinoscks.accountcf_ext + rcasinoscks.accountcf + rcasinoks.gamesessioncf",
+      "filters": {
+        "clusterId": 1,
+        "subcasinoList": [],
+        "bankList": [
+          6274
+        ],
+        "nickName": null,
+        "accountId": null,
+        "extId": null,
+        "fuzzySearch": false,
+        "regAfterTime": null,
+        "regBeforeTime": null,
+        "accountStatus": null,
+        "mainPerPage": 20
+      },
+      "count": 1,
+      "rows": [
+        {
+          "rowNumber": 1,
+          "accountId": 40962,
+          "accountName": "bav_game_session_001",
+          "accountNickname": "bav_game_session_001",
+          "externalId": "bav_game_session_001",
+          "subcasinoId": 507,
+          "subcasinoName": "MQ TECNOLOGIA",
+          "bankId": 6274,
+          "bankName": "TEST_BAV",
+          "accountStatus": "Active",
+          "totalAccountSessionCount": 68,
+          "totalBetsCount": 88,
+          "totalIncome": 7183.6,
+          "gameRevenue": 558.06,
+          "balance": 659.54,
+          "lastPlatform": "FLASH",
+          "lastPlatformId": 1,
+          "lastLoginTime": "19 Feb 2026 12:48:36",
+          "registrationTime": "10 Feb 2026 08:56:06",
+          "currencyId": null,
+          "currencyCode": "USD",
+          "totalRecords": 1
+        }
+      ]
+    }
+  }
+}

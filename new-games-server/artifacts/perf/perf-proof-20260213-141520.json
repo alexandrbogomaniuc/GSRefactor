@@ -1,0 +1,28 @@
+{
+  "target": {
+    "players": 200,
+    "betsPerSecond": 100
+  },
+  "config": {
+    "baseUrl": "http://127.0.0.1:6400",
+    "sessions": 200,
+    "roundsPerSession": 2,
+    "concurrency": 40,
+    "betAmount": 100
+  },
+  "totals": {
+    "rounds": 400,
+    "durationSec": 0.18,
+    "achievedBetsPerSec": 2261.88
+  },
+  "placebet": {
+    "p50": 8.86,
+    "p95": 14.32,
+    "p99": 15.37
+  },
+  "collect": {
+    "p50": 7.71,
+    "p95": 16.77,
+    "p99": 16.99
+  }
+}

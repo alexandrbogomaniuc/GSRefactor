@@ -31,6 +31,10 @@ Baseline commit: `2fcdd18293654eb97fbefda4ad857e8c1ed6e894`
 4. M5 is prerequisite for multiplayer split (M6), precision (M8), and large-scale rename (M9).
 5. Cassandra upgrade (M7) only after parity + observability + idempotent core paths are in place.
 
+## Runtime State Guidance
+- Add Redis as fast ephemeral state for reconnect/idempotency caches (`stateBlob`, `lastSeq`, `operation replay`).
+- Keep financial truth in durable ledger/outbox stores; Redis is optimization only.
+
 ## Risk Register
 
 | ID | Risk | Severity | Impact | Mitigation | Early Signal |

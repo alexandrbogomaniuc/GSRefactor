@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BETONLINE Plinko - New Games</title>
+  </head>
+  <body>
+    <div id="preloader" aria-live="polite">
+      <div class="preloader-card">
+        <img id="preloader-logo" src="/brand/betonline-wordmark.svg" alt="BetOnline" />
+        <p id="preloader-title">BETONLINE PLINKO CUP</p>
+        <div class="preloader-orbs" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="preloader-rings" aria-hidden="true">
+          <span></span><span></span>
+        </div>
+        <div class="preloader-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+          <span class="preloader-progress-bar"></span>
+        </div>
+        <p id="preloader-text">Initializing game runtime...</p>
+      </div>
+    </div>
+
+    <div id="app-shell" class="app-loading">
+      <header id="top-bar">
+        <div class="top-brand">
+          <img id="brand-logo" src="/brand/betonline-wordmark.svg" alt="BetOnline" />
+          <div>
+            <h1>Plinko Cup</h1>
+            <p class="sub">New Games Runtime + GS Core</p>
+          </div>
+        </div>
+        <div id="top-meta">Local Runtime</div>
+      </header>
+
+      <div id="game-layout">
+        <aside id="hud">
+          <section class="panel">
+            <h2>Round Setup</h2>
+
+            <label>
+              Session Id
+              <input id="session-id" value="demo_session_000001" />
+            </label>
+
+            <label>
+              Bet Amount
+              <input id="bet-amount" type="number" min="100" step="100" value="100" />
+            </label>
+
+            <div class="split three">
+              <label>
+                Risk
+                <select id="risk">
+                  <option value="low">Low</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High</option>
+                </select>
+              </label>
+
+              <label>
+                Rows
+                <select id="rows">
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7" selected>7</option>
+                  <option value="8">8</option>
+                </select>
+              </label>
+
+              <label>
+                Ball Speed
+                <select id="animation-speed">
+                  <option value="0.75">Calm</option>
+                  <option value="1" selected>Normal</option>
+                  <option value="1.3">Fast</option>
+                  <option value="1.6">Turbo</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="check">
+              <input id="sound-enabled" type="checkbox" checked />
+              Sound Effects
+            </label>
+
+            <details class="physics-tuning">
+              <summary>Physics Tuning</summary>
+              <div class="split four tuning-grid">
+                <label>
+                  Bounce
+                  <input id="tune-bounce" type="range" min="0.1" max="0.6" step="0.01" value="0.46" />
+                  <span id="tune-bounce-value">0.46</span>
+                </label>
+                <label>
+                  Row Impulse
+                  <input id="tune-row-impulse" type="range" min="4" max="28" step="1" value="18" />
+                  <span id="tune-row-impulse-value">18</span>
+                </label>
+                <label>
+                  Bucket Pull
+                  <input id="tune-bucket-pull" type="range" min="0" max="0.003" step="0.0001" value="0.0012" />
+                  <span id="tune-bucket-pull-value">0.0012</span>
+                </label>
+                <label>
+                  Peg Nudge
+                  <input id="tune-peg-nudge" type="range" min="0" max="24" step="1" value="22" />
+                  <span id="tune-peg-nudge-value">22</span>
+                </label>
+              </div>
+            </details>
+
+            <p id="paytable-preview" class="paytable-preview"></p>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Auto Bet</h2>
+              <strong id="autobet-progress">Idle</strong>
+            </div>
+
+            <div class="split">
+              <label>
+                Rounds
+                <input id="auto-rounds" type="number" min="1" max="200" value="10" />
+              </label>
+              <label>
+                Interval (ms)
+                <input id="auto-interval" type="number" min="0" max="10000" value="120" />
+              </label>
+            </div>
+
+            <label class="check">
+              <input id="auto-skip-animation" type="checkbox" />
+              Fast visual mode in Auto Bet
+            </label>
+
+            <div class="buttons compact">
+              <button id="autobet-start">Start Auto</button>
+              <button id="autobet-stop" class="danger" disabled>Stop</button>
+            </div>
+          </section>
+
+          <section class="panel panel-history">
+            <div class="panel-head">
+              <h2>History</h2>
+              <button id="history-refresh" class="ghost">Sync</button>
+            </div>
+            <div id="history-list" class="history-list"></div>
+          </section>
+
+          <details class="panel rules">
+            <summary>Rules</summary>
+            <ul>
+              <li>Drop ball = `placebet` then `collect`.</li>
+              <li>Higher risk increases variance in multipliers.</li>
+              <li>Rows control board depth, slot count, payout profile, and win probabilities.</li>
+              <li>Pin and bucket effects mirror result path feedback.</li>
+            </ul>
+          </details>
+
+          <pre id="status">Ready.</pre>
+        </aside>
+
+        <main id="stage-wrap">
+          <div id="stage-headline">
+            <strong>BETONLINE PLINKO CUP</strong>
+            <span id="stage-clock">--:--:--</span>
+          </div>
+        </main>
+      </div>
+
+      <footer id="bottom-bar">
+        <div class="bottom-stats">
+          <div class="stat-chip"><span>Balance</span><strong id="balance">-</strong></div>
+          <div class="stat-chip"><span>Counter</span><strong id="request-counter">-</strong></div>
+          <div class="stat-chip"><span>Last Round</span><strong id="round-id">-</strong></div>
+          <div class="stat-chip"><span>Last Win</span><strong id="last-win">-</strong></div>
+          <div class="stat-chip"><span>Total Win</span><strong id="total-win">-</strong></div>
+        </div>
+        <div class="bottom-actions">
+          <button id="spin">Drop Ball</button>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

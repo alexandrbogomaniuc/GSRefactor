@@ -1,0 +1,8 @@
+TimestampUTC=2026-02-13T08:22:12Z
+Containers:
+failed to connect to the docker API at unix:///Users/alexb/.docker/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /Users/alexb/.docker/run/docker.sock: connect: no such file or directory
+GSInternalValidateGetStatus=000
+LaunchStatus=skipped (set PROBE_LAUNCH=1 to execute launch check)
+NGSHealthStatus=200
+failed to connect to the docker API at unix:///Users/alexb/.docker/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /Users/alexb/.docker/run/docker.sock: connect: no such file or directory
+LatestGameplayTransactions=skipped (DB container not running)

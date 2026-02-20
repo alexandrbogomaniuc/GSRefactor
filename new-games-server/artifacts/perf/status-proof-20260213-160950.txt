@@ -1,0 +1,19 @@
+TimestampUTC=2026-02-13T16:09:51Z
+Containers:
+casino_side|Up 8 hours
+gp3-static-1|Up 8 hours
+gp3-mp-1|Up 5 hours
+casino_mysql|Up 8 hours (healthy)
+gp3-gs-1|Up 8 hours
+gp3-kafka-1|Up 8 hours
+gp3-c1-1|Up 8 hours
+gp3-zookeeper-1|Up 8 hours
+GSInternalValidateGetStatus=405
+LaunchStatus=skipped (set PROBE_LAUNCH=1 to execute launch check)
+NGSHealthStatus=200
+LatestGameplayTransactions:
+871|win|2.00|1770998990754147|2026-02-13 16:09:50
+870|bet|1.00|1770998990754147|2026-02-13 16:09:50
+869|win|0.50|1770997697902784|2026-02-13 15:48:18
+868|bet|1.00|1770997697902784|2026-02-13 15:48:17
+867|win|1.00|1770997693525780|2026-02-13 15:48:13
