@@ -2289,3 +2289,19 @@
   - refactor runtime is bootstrapped and Phase 0 has first real HTTP pass evidence.
 - Next:
   - fill wallet fixture values and execute `P0-WA-01`/`P0-SE-01` in run mode.
+
+### 2026-02-20 09:44-09:45 UTC
+- Hardened Phase 0 harness contract checks in isolated `Dev_new` GS scope:
+  - updated `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase0-parity-harness.sh` to validate response body patterns (`PASS_CONTRACT`/`FAIL_CONTRACT`) instead of HTTP status only.
+- Executed run-mode parity against refactor stack:
+  - command: `gs-server/deploy/scripts/phase0-parity-harness.sh --mode run --base-url http://127.0.0.1:18080 --fixture-file docs/phase0/parity-fixture.env.example`
+  - evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-parity-20260220-094449.md`
+- Observed corrected result:
+  - `P0-LA-01` now `FAIL_CONTRACT (200)` because body contains `Bank is incorrect` (`P0-LA-01-20260220-094449.body.txt`).
+  - `P0-WA-01` and `P0-SE-01` remain skipped due missing wallet fixture values.
+- Updated baseline doc:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/23-phase-0-baseline-and-parity-capture.md` now marks prior HTTP-only pass as superseded and records contract-level failure evidence.
+- Result:
+  - parity evidence quality improved; false-positive launch pass eliminated.
+- Next:
+  - load valid canary fixture values for refactor bank and execute wager/settle parity run mode.

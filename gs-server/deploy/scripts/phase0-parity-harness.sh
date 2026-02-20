@@ -7,18 +7,18 @@ OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution"
 FIXTURE_FILE=""
 TIMEOUT_SEC=20
 
-BANK_ID=""
-GAME_ID=""
-TOKEN=""
-LANG_CODE="en"
-GAME_MODE="real"
+BANK_ID="${BANK_ID:-}"
+GAME_ID="${GAME_ID:-}"
+TOKEN="${TOKEN:-}"
+LANG_CODE="${LANG_CODE:-en}"
+GAME_MODE="${GAME_MODE:-real}"
 
-USER_ID=""
-CURRENCY=""
-WAGER_AMOUNT=""
-SETTLE_AMOUNT=""
-EXT_BONUS_ID=""
-BONUS_HASH=""
+USER_ID="${USER_ID:-}"
+CURRENCY="${CURRENCY:-}"
+WAGER_AMOUNT="${WAGER_AMOUNT:-}"
+SETTLE_AMOUNT="${SETTLE_AMOUNT:-}"
+EXT_BONUS_ID="${EXT_BONUS_ID:-}"
+BONUS_HASH="${BONUS_HASH:-}"
 
 print_help() {
   cat <<USAGE
@@ -73,20 +73,6 @@ if [[ -n "$FIXTURE_FILE" ]]; then
   source "$FIXTURE_FILE"
 fi
 
-# Apply env/fixture values if present
-BANK_ID="${BANK_ID:-$BANK_ID}"
-GAME_ID="${GAME_ID:-$GAME_ID}"
-TOKEN="${TOKEN:-$TOKEN}"
-LANG_CODE="${LANG_CODE:-$LANG_CODE}"
-GAME_MODE="${GAME_MODE:-$GAME_MODE}"
-
-USER_ID="${USER_ID:-$USER_ID}"
-CURRENCY="${CURRENCY:-$CURRENCY}"
-WAGER_AMOUNT="${WAGER_AMOUNT:-$WAGER_AMOUNT}"
-SETTLE_AMOUNT="${SETTLE_AMOUNT:-$SETTLE_AMOUNT}"
-EXT_BONUS_ID="${EXT_BONUS_ID:-$EXT_BONUS_ID}"
-BONUS_HASH="${BONUS_HASH:-$BONUS_HASH}"
-
 TIMESTAMP="$(date -u +%Y%m%d-%H%M%S)"
 mkdir -p "$OUT_DIR"
 REPORT_FILE="$OUT_DIR/phase0-parity-${TIMESTAMP}.md"
@@ -119,6 +105,8 @@ run_case() {
   local url="$4"
   local body="$5"
   local has_required="$6"
+  local success_pattern="$7"
+  local fail_pattern="$8"
 
   local cmd="curl -sS -m ${TIMEOUT_SEC} -X ${method} '${url}'"
   if [[ -n "$body" ]]; then
@@ -148,7 +136,15 @@ run_case() {
   fi
 
   if [[ "$http_code" =~ ^[23] ]]; then
-    append_row "$test_id" "$flow" "PASS_HTTP" "$http_code" "\`$(basename "$body_file")\`"
+    if [[ -n "$fail_pattern" ]] && rg -qi "$fail_pattern" "$body_file"; then
+      append_row "$test_id" "$flow" "FAIL_CONTRACT" "$http_code" "\`$(basename "$body_file")\`"
+      return 0
+    fi
+    if [[ -n "$success_pattern" ]] && ! rg -qi "$success_pattern" "$body_file"; then
+      append_row "$test_id" "$flow" "FAIL_CONTRACT" "$http_code" "\`$(basename "$body_file")\`"
+      return 0
+    fi
+    append_row "$test_id" "$flow" "PASS_CONTRACT" "$http_code" "\`$(basename "$body_file")\`"
   else
     append_row "$test_id" "$flow" "FAIL_HTTP" "$http_code" "\`$(basename "$body_file")\`"
   fi
@@ -167,14 +163,14 @@ build_required_flag() {
 
 LAUNCH_URL="${BASE_URL}/cwstartgamev2.do?bankId=${BANK_ID}&gameId=${GAME_ID}&mode=${GAME_MODE}&token=${TOKEN}&lang=${LANG_CODE}"
 LAUNCH_REQUIRED=$(build_required_flag "$BANK_ID" "$GAME_ID" "$TOKEN")
-run_case "P0-LA-01" "Launch" "GET" "$LAUNCH_URL" "" "$LAUNCH_REQUIRED"
+run_case "P0-LA-01" "Launch" "GET" "$LAUNCH_URL" "" "$LAUNCH_REQUIRED" "template\\.jsp|sid=|web_socket_url" "bank is incorrect|casino is incorrect|invalid parameters|http error|404 not found|exception"
 
 WAGER_URL="${BASE_URL}/bscheck.do?bankId=${BANK_ID}&gameId=${GAME_ID}&userId=${USER_ID}&currency=${CURRENCY}&amount=${WAGER_AMOUNT}&extBonusId=${EXT_BONUS_ID}&hash=${BONUS_HASH}"
 WAGER_REQUIRED=$(build_required_flag "$BANK_ID" "$GAME_ID" "$USER_ID" "$CURRENCY" "$WAGER_AMOUNT" "$EXT_BONUS_ID" "$BONUS_HASH")
-run_case "P0-WA-01" "Wager" "GET" "$WAGER_URL" "" "$WAGER_REQUIRED"
+run_case "P0-WA-01" "Wager" "GET" "$WAGER_URL" "" "$WAGER_REQUIRED" "<code>0</code>|errorCode\\s*=\\s*\"0\"" "Invalid parameters|<code>610</code>|errorCode\\s*=\\s*\"610\"|Bank is incorrect"
 
 SETTLE_URL="${BASE_URL}/bsaward.do?bankId=${BANK_ID}&gameId=${GAME_ID}&userId=${USER_ID}&currency=${CURRENCY}&amount=${SETTLE_AMOUNT}&extBonusId=${EXT_BONUS_ID}&hash=${BONUS_HASH}"
 SETTLE_REQUIRED=$(build_required_flag "$BANK_ID" "$GAME_ID" "$USER_ID" "$CURRENCY" "$SETTLE_AMOUNT" "$EXT_BONUS_ID" "$BONUS_HASH")
-run_case "P0-SE-01" "Settle" "GET" "$SETTLE_URL" "" "$SETTLE_REQUIRED"
+run_case "P0-SE-01" "Settle" "GET" "$SETTLE_URL" "" "$SETTLE_REQUIRED" "<code>0</code>|errorCode\\s*=\\s*\"0\"" "Invalid parameters|<code>610</code>|errorCode\\s*=\\s*\"610\"|Bank is incorrect"
 
 echo "Report generated: $REPORT_FILE"

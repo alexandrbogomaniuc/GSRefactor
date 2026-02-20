@@ -133,6 +133,13 @@ Required invariants:
 ### Run-mode after isolated refactor stack startup
 - Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-parity-20260220-094035.md`
 - Observed:
-  - `P0-LA-01`: `PASS_HTTP (200)` with body artifact `P0-LA-01-20260220-094035.body.txt`,
+  - `P0-LA-01`: `PASS_HTTP (200)` with body artifact `P0-LA-01-20260220-094035.body.txt` (HTTP-only check, now superseded),
+  - `P0-WA-01`: `SKIPPED_MISSING_FIXTURE`,
+  - `P0-SE-01`: `SKIPPED_MISSING_FIXTURE`.
+
+### Run-mode after contract-level checks (corrected)
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-parity-20260220-094449.md`
+- Observed:
+  - `P0-LA-01`: `FAIL_CONTRACT (200)`; response body contains legacy error page text `Bank is incorrect` (`P0-LA-01-20260220-094449.body.txt`),
   - `P0-WA-01`: `SKIPPED_MISSING_FIXTURE`,
   - `P0-SE-01`: `SKIPPED_MISSING_FIXTURE`.
