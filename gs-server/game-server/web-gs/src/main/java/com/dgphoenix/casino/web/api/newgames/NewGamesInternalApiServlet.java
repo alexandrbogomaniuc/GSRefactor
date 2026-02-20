@@ -3,6 +3,7 @@ package com.dgphoenix.casino.web.api.newgames;
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.actions.enter.game.routing.GameplayOrchestratorRoutingBridge;
 import com.dgphoenix.casino.actions.enter.game.routing.ProtocolAdapterRoutingBridge;
+import com.dgphoenix.casino.actions.enter.game.routing.WalletAdapterRoutingBridge;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
@@ -189,6 +190,10 @@ public class NewGamesInternalApiServlet extends HttpServlet {
 
         shadowProtocolWalletNormalize(context.accountInfo.getBankId(), body.sessionId, body.roundId,
                 context.reserveState.walletOperationId, body.betAmount, WalletCallType.RESERVE, request);
+        shadowWalletAdapterOperation(context.accountInfo.getBankId(), body.sessionId, body.roundId,
+                String.valueOf(context.accountInfo.getId()), context.reserveState.walletOperationId,
+                context.accountInfo.getCurrency() != null ? context.accountInfo.getCurrency().getCode() : "USD",
+                body.betAmount, "reserve", request);
         shadowGameplayFinancialIntent(context.accountInfo.getBankId(), body.sessionId, context.reserveState.gameId,
                 context.reserveState.walletOperationId, body.roundId, body.betAmount, WalletCallType.RESERVE,
                 context.accountInfo.getCurrency() != null ? context.accountInfo.getCurrency().getCode() : "USD",
@@ -263,6 +268,10 @@ public class NewGamesInternalApiServlet extends HttpServlet {
 
         shadowProtocolWalletNormalize(context.accountInfo.getBankId(), body.sessionId, body.roundId,
                 body.walletOperationId, body.winAmount, WalletCallType.SETTLE, request);
+        shadowWalletAdapterOperation(context.accountInfo.getBankId(), body.sessionId, body.roundId,
+                String.valueOf(context.accountInfo.getId()), body.walletOperationId,
+                context.accountInfo.getCurrency() != null ? context.accountInfo.getCurrency().getCode() : "USD",
+                body.winAmount, "settle", request);
         shadowGameplayFinancialIntent(context.accountInfo.getBankId(), body.sessionId, context.reserveState.gameId,
                 body.walletOperationId, body.roundId, body.winAmount, WalletCallType.SETTLE,
                 context.accountInfo.getCurrency() != null ? context.accountInfo.getCurrency().getCode() : "USD",
@@ -485,6 +494,36 @@ public class NewGamesInternalApiServlet extends HttpServlet {
         } catch (Exception e) {
             LOG.warn("NGS protocol-adapter wallet shadow failed (ignored): bankId={}, callType={}, reason={}",
                     bankId, callType, e.getMessage());
+        }
+    }
+
+    private void shadowWalletAdapterOperation(long bankId,
+                                              String sessionId,
+                                              String roundId,
+                                              String accountId,
+                                              String walletOperationId,
+                                              String currencyCode,
+                                              Long amount,
+                                              String operationType,
+                                              HttpServletRequest request) {
+        try {
+            WalletAdapterRoutingBridge.RouteDecision routeDecision =
+                    WalletAdapterRoutingBridge.getInstance().decide(bankId);
+            WalletAdapterRoutingBridge.getInstance().shadowWalletOperation(
+                    routeDecision,
+                    bankId,
+                    sessionId,
+                    roundId,
+                    accountId,
+                    walletOperationId,
+                    currencyCode,
+                    amount == null ? 0L : amount.longValue(),
+                    operationType,
+                    resolveTraceId(request)
+            );
+        } catch (Exception e) {
+            LOG.warn("NGS wallet-adapter shadow failed (ignored): bankId={}, operationType={}, reason={}",
+                    bankId, operationType, e.getMessage());
         }
     }
 

@@ -130,7 +130,7 @@
           "id": "se-wallet-adapter",
           "label": "4) Wallet Adapter extraction",
           "status": "in_progress",
-          "evidence": "docs/phase5-wallet-adapter-scaffold-20260220-161000.md"
+          "evidence": "docs/66-phase5-wallet-runtime-evidence-pack-tooling-20260220-185700.md"
         },
         {
           "id": "se-bonus-service",

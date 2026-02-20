@@ -139,7 +139,7 @@
             <tr>
                 <td>Phase 5 - Core Extraction</td>
                 <td>Session/gameplay/wallet/bonus/history scaffolds and canary tooling</td>
-                <td><code>docs/34-phase5-session-service-foundation.md</code><br/><code>docs/53-phase5-gameplay-redis-state-blob-foundation-20260220-183300.md</code><br/><code>docs/58-phase5-gameplay-runtime-evidence-pack-tooling-20260220-180700.md</code><br/><code>docs/phase5/</code></td>
+                <td><code>docs/34-phase5-session-service-foundation.md</code><br/><code>docs/53-phase5-gameplay-redis-state-blob-foundation-20260220-183300.md</code><br/><code>docs/58-phase5-gameplay-runtime-evidence-pack-tooling-20260220-180700.md</code><br/><code>docs/65-phase5-wallet-adapter-shadow-hook-and-canary-20260220-185600.md</code><br/><code>docs/66-phase5-wallet-runtime-evidence-pack-tooling-20260220-185700.md</code><br/><code>docs/phase5/</code></td>
             </tr>
             <tr>
                 <td>Phase 6 - Multiplayer Separation</td>

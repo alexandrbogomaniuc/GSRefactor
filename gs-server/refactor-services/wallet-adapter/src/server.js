@@ -3,12 +3,38 @@ const store = require('./store');
 
 const PORT = Number(process.env.PORT || 18075);
 const SERVICE_NAME = process.env.SERVICE_NAME || 'wallet-adapter';
+const ROUTE_ENABLED = String(process.env.WALLET_ADAPTER_ROUTE_ENABLED || 'false').toLowerCase() === 'true';
+const CANARY_BANKS = String(process.env.WALLET_ADAPTER_CANARY_BANKS || '')
+  .split(',')
+  .map((v) => v.trim())
+  .filter((v) => v.length > 0);
 
 const app = express();
 app.use(express.json({ limit: '2mb' }));
 
 app.get('/health', (_req, res) => {
-  res.json({ status: 'ok', service: SERVICE_NAME, now: new Date().toISOString() });
+  res.json({
+    status: 'ok',
+    service: SERVICE_NAME,
+    now: new Date().toISOString(),
+    routeEnabled: ROUTE_ENABLED,
+    canaryBanks: CANARY_BANKS
+  });
+});
+
+app.get('/api/v1/wallet/routing/decision', (req, res) => {
+  const bankId = String(req.query.bankId || '').trim();
+  const bankCanary = bankId.length > 0 && CANARY_BANKS.includes(bankId);
+  const routeToWalletAdapter = ROUTE_ENABLED && bankCanary;
+  const reason = !ROUTE_ENABLED ? 'route_disabled' : (bankCanary ? 'eligible' : 'bank_not_in_canary');
+
+  res.json({
+    routeEnabled: ROUTE_ENABLED,
+    canaryBanks: CANARY_BANKS,
+    bankId,
+    routeToWalletAdapter,
+    reason
+  });
 });
 
 app.post('/api/v1/wallet/reserve', (req, res) => {

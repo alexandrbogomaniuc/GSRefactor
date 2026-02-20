@@ -3244,3 +3244,32 @@
   - canary tooling now matches gameplay extraction scope (launch + financial + state blob).
 - Next step:
   - commit/push this increment and then refresh phase5 evidence-pack report after runtime availability.
+
+### 2026-02-20 18:51-18:59 UTC
+- Implemented wallet-adapter Phase 5 canary shadow extraction increment.
+- Added GS wallet-adapter routing bridge and New Games reserve/settle shadow hooks:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/routing/WalletAdapterRoutingBridge.java`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java`
+- Extended wallet-adapter service API:
+  - added `GET /api/v1/wallet/routing/decision` in `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/wallet-adapter/src/server.js`
+  - updated contract/readme.
+- Added wallet canary/readiness/evidence tooling:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-adapter-canary-probe.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-runtime-readiness-check.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-runtime-evidence-pack.sh`
+- Added docs/checklist updates:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/65-phase5-wallet-adapter-shadow-hook-and-canary-20260220-185600.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/66-phase5-wallet-runtime-evidence-pack-tooling-20260220-185700.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase5/wallet/phase5-wallet-runtime-evidence-20260220-184505.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+  - runbook/docs pages updated and runtime support copies synced.
+- Verification:
+  - `bash -n` passed for all new wallet scripts,
+  - `--help` passed for wallet scripts,
+  - wallet readiness/evidence run executed and produced blocker report (wallet/gs/docker unavailable),
+  - checklist JSON parse passed,
+  - `node --check` passed for wallet-adapter server.
+- Result:
+  - Wallet-adapter extraction now has GS shadow integration + executable canary/evidence workflow.
+- Next step:
+  - commit and push this wallet-adapter checkpoint; then continue with Bonus/FRB service shadow verification.

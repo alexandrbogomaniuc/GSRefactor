@@ -59,6 +59,11 @@
                 <td><span class="label label-default">latest report captured</span></td>
                 <td><code>docs/phase5/gameplay/phase5-gameplay-runtime-evidence-20260220-180650.md</code></td>
             </tr>
+            <tr>
+                <td>Phase 5 wallet evidence</td>
+                <td><span class="label label-warning">NOT_READY (last known)</span></td>
+                <td><code>docs/phase5/wallet/phase5-wallet-runtime-evidence-20260220-184505.md</code></td>
+            </tr>
             </tbody>
         </table>
         <p class="small-note">
@@ -94,6 +99,21 @@
 </code></pre>
         <p class="small-note">
             Output reports: <code>docs/phase5/gameplay/phase5-gameplay-runtime-evidence-*.md</code>
+        </p>
+    </div>
+
+    <div class="section">
+        <h4>Phase 5 Wallet Adapter Runtime Check</h4>
+        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-runtime-readiness-check.sh
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-runtime-evidence-pack.sh \
+  --bank-id 6275 \
+  --transport host \
+  --gs-base-url http://127.0.0.1:18081 \
+  --wallet-base-url http://127.0.0.1:18075
+</code></pre>
+        <p class="small-note">
+            Output reports: <code>docs/phase5/wallet/phase5-wallet-runtime-evidence-*.md</code>
         </p>
     </div>
 

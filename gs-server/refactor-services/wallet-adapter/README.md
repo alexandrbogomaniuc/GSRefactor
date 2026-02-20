@@ -6,6 +6,7 @@ Phase 5 scaffold service for wallet financial operation intents behind compatibi
 - Idempotent reserve/settle/refund operation contract.
 - Local operation store and outbox tracking for async relay integration.
 - No cutover from legacy wallet path.
+- Canary routing decision endpoint by bank profile.
 
 ## Non-goals
 - No direct external wallet call yet.
@@ -19,6 +20,7 @@ PORT=18075 npm start
 
 ## Endpoints
 - `GET /health`
+- `GET /api/v1/wallet/routing/decision?bankId=6275`
 - `POST /api/v1/wallet/reserve`
 - `POST /api/v1/wallet/settle`
 - `POST /api/v1/wallet/refund`
