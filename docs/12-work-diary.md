@@ -2339,3 +2339,23 @@
   - third-party integration track now has concrete, versioned schema artifacts instead of only narrative spec.
 - Next:
   - implement provider conformance harness skeleton against these schemas.
+
+### 2026-02-20 09:50-09:52 UTC
+- Added provider-facing WS conformance smoke harness:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/ws-contract-smoke.sh`
+- Added canonical sample payloads for v1 contract:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/examples/bet_request.valid.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/examples/settle_request.valid.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/examples/reconnect_request.valid.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/examples/error.valid.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/examples/session_sync.valid.json`
+- Updated schema README and interface protocol document:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/README.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/25-game-integration-interface-and-websocket-protocol-v1.md`
+- Validation evidence:
+  - command: `gs-server/deploy/scripts/ws-contract-smoke.sh`
+  - output: `Conformance smoke passed: 5 file(s)`.
+- Result:
+  - third-party providers now have executable self-check baseline for WS message contract shape.
+- Next:
+  - align this smoke harness with full JSON Schema validation engine in CI.

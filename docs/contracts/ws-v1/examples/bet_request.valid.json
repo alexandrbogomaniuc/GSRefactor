@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "type": "BET_REQUEST",
+  "traceId": "trc-1001",
+  "sessionId": "sid-9001",
+  "bankId": "6274",
+  "gameId": "838",
+  "operationId": "op-bet-001",
+  "timestamp": "2026-02-20T09:50:00Z",
+  "seq": 10,
+  "payload": {
+    "roundId": "rnd-001",
+    "amount": "0.300",
+    "currency": "USD",
+    "betLines": 30
+  }
+}

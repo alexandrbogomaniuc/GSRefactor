@@ -175,5 +175,6 @@ Operational telemetry:
    - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/abs-gs-v1-error.schema.json`
    - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/abs-gs-v1-session-sync.schema.json`
 2. Build provider sandbox endpoint with automated conformance suite.
+   Status: in progress. Smoke harness published at `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/ws-contract-smoke.sh` with sample payloads in `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/examples/`.
 3. Add contract test harness for top games and canary banks.
 4. Implement API key + provider registry with version and capability metadata.

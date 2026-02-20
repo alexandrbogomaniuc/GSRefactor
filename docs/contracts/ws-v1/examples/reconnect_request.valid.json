@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "type": "RECONNECT_REQUEST",
+  "traceId": "trc-1003",
+  "sessionId": "sid-9001",
+  "bankId": "6274",
+  "gameId": "838",
+  "timestamp": "2026-02-20T09:50:20Z",
+  "seq": 12,
+  "payload": {
+    "lastAckSeq": 11,
+    "lastKnownOperationId": "op-bet-001",
+    "clientBuild": "abs-client-1.2.0"
+  }
+}

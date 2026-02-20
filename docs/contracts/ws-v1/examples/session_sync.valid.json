@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "type": "SESSION_SYNC",
+  "traceId": "trc-1005",
+  "sessionId": "sid-9001",
+  "bankId": "6274",
+  "gameId": "838",
+  "timestamp": "2026-02-20T09:50:40Z",
+  "seq": 14,
+  "payload": {
+    "lastAppliedSeq": 13,
+    "balance": {
+      "amount": "99.750",
+      "currency": "USD"
+    },
+    "openOperations": [
+      {
+        "operationId": "op-bet-002",
+        "state": "RESERVED"
+      }
+    ]
+  }
+}

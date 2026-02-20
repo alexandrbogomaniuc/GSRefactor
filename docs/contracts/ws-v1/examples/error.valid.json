@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "type": "ERROR",
+  "traceId": "trc-1004",
+  "sessionId": "sid-9001",
+  "bankId": "6274",
+  "gameId": "838",
+  "timestamp": "2026-02-20T09:50:30Z",
+  "seq": 13,
+  "payload": {
+    "code": "ABS-VAL-610",
+    "category": "validation",
+    "message": "Invalid parameters",
+    "retryable": false
+  }
+}
