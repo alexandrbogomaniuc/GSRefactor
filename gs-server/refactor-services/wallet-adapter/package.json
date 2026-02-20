@@ -1,0 +1,13 @@
+{
+  "name": "abs-wallet-adapter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Refactor Wallet Adapter scaffold",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "4.21.2"
+  }
+}

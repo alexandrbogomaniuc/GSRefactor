@@ -1,0 +1,63 @@
+openapi: 3.0.3
+info:
+  title: ABS History Service API
+  version: 1.0.0
+  description: History service scaffold for append and query operations.
+servers:
+  - url: http://localhost:18077
+paths:
+  /health:
+    get:
+      summary: Service health
+      responses:
+        '200':
+          description: OK
+  /api/v1/history/records:
+    post:
+      summary: Append history record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoryRecordRequest'
+      responses:
+        '200':
+          description: History record accepted
+        '400':
+          description: Validation error
+    get:
+      summary: Query history records
+      parameters:
+        - in: query
+          name: bankId
+          schema:
+            type: string
+        - in: query
+          name: sessionId
+          schema:
+            type: string
+        - in: query
+          name: eventType
+          schema:
+            type: string
+      responses:
+        '200':
+          description: History records list
+components:
+  schemas:
+    HistoryRecordRequest:
+      type: object
+      required: [bankId, sessionId, operationId, eventType]
+      properties:
+        bankId:
+          type: string
+        sessionId:
+          type: string
+        operationId:
+          type: string
+        eventType:
+          type: string
+        payload:
+          type: object
+          additionalProperties: true

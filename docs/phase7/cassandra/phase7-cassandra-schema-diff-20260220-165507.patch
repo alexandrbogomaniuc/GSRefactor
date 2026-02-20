@@ -1,0 +1,5 @@
+--- /tmp/phase7-schema-a.cql	2026-02-20 16:55:00
++++ /tmp/phase7-schema-b.cql	2026-02-20 16:55:07
+@@ -1 +1 @@
+-CREATE KEYSPACE ks WITH replication = {'class':'SimpleStrategy','replication_factor':1};
++CREATE KEYSPACE ks2 WITH replication = {'class':'SimpleStrategy','replication_factor':1};

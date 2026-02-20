@@ -1,0 +1,31 @@
+{
+  "updatedAt": "2026-02-20T16:10:00Z",
+  "source": "manual-snapshot",
+  "windowMinutes": 15,
+  "thresholds": {
+    "maxNew": 10,
+    "maxRetry": 2,
+    "maxDlq": 0,
+    "maxReplay429PerHour": 3
+  },
+  "sample": {
+    "new": 0,
+    "retry": 0,
+    "dlq": 0,
+    "replay429LastHour": 0
+  },
+  "trend": {
+    "new": "stable",
+    "retry": "stable",
+    "dlq": "stable",
+    "replay429": "stable"
+  },
+  "commands": {
+    "alertCheck": "/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-session-outbox-alert-check.sh --max-new 10 --max-retry 2 --max-dlq 0 --sample-count 4 --sample-interval-sec 300",
+    "replayReport": "/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-session-dlq-report.sh --limit 20"
+  },
+  "notes": [
+    "DLQ must remain zero during canary window.",
+    "If trend turns rising for NEW/RETRY, trigger rollback decision gate."
+  ]
+}

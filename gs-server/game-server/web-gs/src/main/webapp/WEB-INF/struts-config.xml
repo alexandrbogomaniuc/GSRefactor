@@ -35,6 +35,7 @@
 
         <form-bean name="CWStartGameForm" type="com.dgphoenix.casino.forms.game.cw.CWStartGameForm" />
         <form-bean name="CWStartGameFormV2" type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameForm"/>
+        <form-bean name="CWStartGameBySessionForm" type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameBySessionForm"/>
         <form-bean name="GetBalanceForm" type="com.dgphoenix.casino.actions.api.GetBalanceForm"/>
         <form-bean name="CWGuestLoginForm" type="com.dgphoenix.casino.actions.enter.cw.CWGuestLoginForm"/>
 
@@ -398,6 +399,16 @@
 
         <action path="/cwstartgamev2"
                 type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameAction" name="CWStartGameFormV2"
+                validate="true" input="/error_pages/error.jsp" scope="request">
+        </action>
+
+        <action path="/startgame"
+                type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameAction" name="CWStartGameFormV2"
+                validate="true" input="/error_pages/error.jsp" scope="request">
+        </action>
+
+        <action path="/cwstartgame"
+                type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameAction" name="CWStartGameBySessionForm"
                 validate="true" input="/error_pages/error.jsp" scope="request">
         </action>
 

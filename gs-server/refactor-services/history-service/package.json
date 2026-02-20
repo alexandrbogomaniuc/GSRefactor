@@ -1,0 +1,13 @@
+{
+  "name": "abs-history-service",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Refactor History Service scaffold",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "4.21.2"
+  }
+}

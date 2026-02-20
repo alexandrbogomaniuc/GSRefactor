@@ -21,6 +21,13 @@ wait_for_service() {
   echo "${service_name} startup completed successfully --- OK"
 }
 
-wait_for_service "Cassandra" "c1" "9042"
-wait_for_service "ZooKeeper" "zookeeper" "2181"
-wait_for_service "Kafka" "kafka" "9092"
+CASSANDRA_HOST="${CASSANDRA_HOST:-c1}"
+CASSANDRA_PORT="${CASSANDRA_PORT:-9042}"
+ZOOKEEPER_HOST="${ZOOKEEPER_HOST:-zookeeper}"
+ZOOKEEPER_PORT="${ZOOKEEPER_PORT:-2181}"
+KAFKA_HOST="${KAFKA_HOST:-kafka}"
+KAFKA_PORT="${KAFKA_PORT:-9092}"
+
+wait_for_service "Cassandra" "${CASSANDRA_HOST}" "${CASSANDRA_PORT}"
+wait_for_service "ZooKeeper" "${ZOOKEEPER_HOST}" "${ZOOKEEPER_PORT}"
+wait_for_service "Kafka" "${KAFKA_HOST}" "${KAFKA_PORT}"

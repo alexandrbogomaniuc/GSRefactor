@@ -1,0 +1,13 @@
+{
+  "name": "abs-gameplay-orchestrator",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Refactor Gameplay Orchestrator scaffold",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "4.21.2"
+  }
+}

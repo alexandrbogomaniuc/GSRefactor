@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<BSGSYSTEM><TIME>Fri Feb 20 11:20:30 UTC 2026</TIME>
+    <REQUEST>
+        <GAMEID>838</GAMEID>
+        <BANKID>6274</BANKID>
+        <AMOUNT>0.1</AMOUNT>
+        <EXTBONUSID>1</EXTBONUSID>
+        <CURRENCY>USD</CURRENCY>
+        <USERID>bav_game_session_001</USERID>
+        <HASH>5d474b00d88e1b8de0a14c9174d9e599</HASH>
+    </REQUEST>
+    <RESPONSE><RESULT>ERROR</RESULT>
+    <DESCRIPTION>Invalid parameters</DESCRIPTION>
+    <CODE>610</CODE>
+    </RESPONSE>
+</BSGSYSTEM>

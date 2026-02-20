@@ -1,0 +1,124 @@
+openapi: 3.0.3
+info:
+  title: ABS Wallet Adapter API
+  version: 1.0.0
+  description: Wallet operation adapter scaffold for reserve/settle/refund intents.
+servers:
+  - url: http://localhost:18075
+paths:
+  /health:
+    get:
+      summary: Service health
+      responses:
+        '200':
+          description: OK
+  /api/v1/wallet/reserve:
+    post:
+      summary: Accept reserve operation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WalletOperationRequest'
+      responses:
+        '200':
+          description: Reserve accepted
+        '400':
+          description: Validation error
+  /api/v1/wallet/settle:
+    post:
+      summary: Accept settle operation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WalletOperationRequest'
+      responses:
+        '200':
+          description: Settle accepted
+        '400':
+          description: Validation error
+  /api/v1/wallet/refund:
+    post:
+      summary: Accept refund operation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WalletOperationRequest'
+      responses:
+        '200':
+          description: Refund accepted
+        '400':
+          description: Validation error
+  /api/v1/wallet/operations:
+    get:
+      summary: List wallet operations
+      parameters:
+        - in: query
+          name: bankId
+          schema:
+            type: string
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum: [reserve, settle, refund]
+        - in: query
+          name: status
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Operations list
+  /api/v1/outbox:
+    get:
+      summary: List outbox events
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Outbox list
+  /api/v1/outbox/{eventId}/ack:
+    post:
+      summary: Mark outbox event as sent
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event acknowledged
+        '404':
+          description: Not found
+components:
+  schemas:
+    WalletOperationRequest:
+      type: object
+      required: [bankId, sessionId, roundId, accountId, operationId, currency, amount]
+      properties:
+        bankId:
+          type: string
+        sessionId:
+          type: string
+        roundId:
+          type: string
+        accountId:
+          type: string
+        operationId:
+          type: string
+        currency:
+          type: string
+        amount:
+          type: number
+        metadata:
+          type: object
+          additionalProperties: true

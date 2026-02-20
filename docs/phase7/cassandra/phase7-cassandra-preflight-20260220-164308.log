@@ -1,0 +1,5 @@
+== Phase7 Cassandra preflight ==
+timestamp_utc=2026-02-20T16:43:08Z
+container=refactor-c1-1
+
+-- release version --

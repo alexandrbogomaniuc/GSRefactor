@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<BSGSYSTEM><TIME>Fri Feb 20 11:20:01 UTC 2026</TIME>
+    <REQUEST>
+        <GAMEID>838</GAMEID>
+        <BANKID>999999</BANKID>
+        <AMOUNT>0.1</AMOUNT>
+        <EXTBONUSID>1</EXTBONUSID>
+        <CURRENCY>USD</CURRENCY>
+        <USERID>invalid_user</USERID>
+        <HASH>deadbeef</HASH>
+    </REQUEST>
+    <RESPONSE><RESULT>ERROR</RESULT>
+    <DESCRIPTION>Invalid parameters</DESCRIPTION>
+    <CODE>610</CODE>
+    </RESPONSE>
+</BSGSYSTEM>

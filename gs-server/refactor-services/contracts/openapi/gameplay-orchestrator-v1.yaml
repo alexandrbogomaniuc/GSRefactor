@@ -1,0 +1,155 @@
+openapi: 3.0.3
+info:
+  title: ABS Gameplay Orchestrator API
+  version: 1.0.0
+  description: Gameplay intent orchestration scaffold behind compatibility facade.
+servers:
+  - url: http://localhost:18074
+paths:
+  /health:
+    get:
+      summary: Service health
+      responses:
+        '200':
+          description: OK
+  /api/v1/gameplay/routing/decision:
+    get:
+      summary: Routing decision by bank
+      parameters:
+        - in: query
+          name: bankId
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: isMultiplayer
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Routing decision
+  /api/v1/gameplay/launch-intents:
+    post:
+      summary: Accept launch intent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LaunchIntentRequest'
+      responses:
+        '200':
+          description: Launch intent accepted
+        '400':
+          description: Validation error
+  /api/v1/gameplay/wager-intents:
+    post:
+      summary: Accept wager intent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FinancialIntentRequest'
+      responses:
+        '200':
+          description: Wager intent accepted
+        '400':
+          description: Validation error
+  /api/v1/gameplay/settle-intents:
+    post:
+      summary: Accept settle intent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FinancialIntentRequest'
+      responses:
+        '200':
+          description: Settle intent accepted
+        '400':
+          description: Validation error
+  /api/v1/gameplay/intents:
+    get:
+      summary: List accepted intents
+      parameters:
+        - in: query
+          name: bankId
+          schema:
+            type: string
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum: [launch, wager, settle]
+        - in: query
+          name: status
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Intents list
+  /api/v1/outbox:
+    get:
+      summary: List outbox events
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Outbox list
+  /api/v1/outbox/{eventId}/ack:
+    post:
+      summary: Mark outbox event as sent
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event acknowledged
+        '404':
+          description: Not found
+components:
+  schemas:
+    LaunchIntentRequest:
+      type: object
+      required: [bankId, sessionId, gameId, operationId]
+      properties:
+        bankId:
+          type: string
+        sessionId:
+          type: string
+        gameId:
+          type: string
+        operationId:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
+    FinancialIntentRequest:
+      type: object
+      required: [bankId, sessionId, gameId, operationId, roundId, currency, amount]
+      properties:
+        bankId:
+          type: string
+        sessionId:
+          type: string
+        gameId:
+          type: string
+        operationId:
+          type: string
+        roundId:
+          type: string
+        currency:
+          type: string
+        amount:
+          type: number
+        metadata:
+          type: object
+          additionalProperties: true

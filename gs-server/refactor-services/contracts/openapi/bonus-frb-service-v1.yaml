@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: ABS Bonus FRB Service API
+  version: 1.0.0
+  description: Bonus/FRB service scaffold for check/consume/release operations.
+servers:
+  - url: http://localhost:18076
+paths:
+  /health:
+    get:
+      summary: Service health
+      responses:
+        '200':
+          description: OK
+  /api/v1/bonus/frb/check:
+    get:
+      summary: Check FRB state
+      parameters:
+        - in: query
+          name: bankId
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: accountId
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: frbId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: FRB state
+        '400':
+          description: Validation error
+  /api/v1/bonus/frb/consume:
+    post:
+      summary: Consume FRB
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FrbActionRequest'
+      responses:
+        '200':
+          description: FRB consumed
+        '400':
+          description: Validation error
+  /api/v1/bonus/frb/release:
+    post:
+      summary: Release FRB
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FrbActionRequest'
+      responses:
+        '200':
+          description: FRB released
+        '400':
+          description: Validation error
+  /api/v1/bonus/frb:
+    get:
+      summary: List FRB records
+      parameters:
+        - in: query
+          name: bankId
+          schema:
+            type: string
+        - in: query
+          name: accountId
+          schema:
+            type: string
+      responses:
+        '200':
+          description: FRB list
+components:
+  schemas:
+    FrbActionRequest:
+      type: object
+      required: [bankId, accountId, frbId, operationId]
+      properties:
+        bankId:
+          type: string
+        accountId:
+          type: string
+        frbId:
+          type: string
+        operationId:
+          type: string

@@ -15,5 +15,5 @@ Optional:
 - Body: `correlation-body-<timestamp>.txt`
 
 ## Current baseline
-- Latest known baseline: `correlation-probe-20260220-100539.md`
-- Status: request path is reachable, correlation echo headers are not present yet (pre-deploy baseline).
+- Latest known validation: `correlation-probe-20260220-104035.md`
+- Status: request path reachable and correlation echo headers are `PASS`.

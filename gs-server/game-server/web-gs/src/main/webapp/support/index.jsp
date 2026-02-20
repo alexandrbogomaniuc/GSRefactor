@@ -64,6 +64,80 @@
         </li>
 
         <li class="list-group-item nav">
+            <h3>Cluster Hosts Config</h3>
+            <div class="container col-xs-12">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Deployed:</td>
+                        <td>copy, live</td>
+                    </tr>
+                    <tr>
+                        <td>URL:</td>
+                        <td><%=scheme%>://[host]/support/clusterHosts.jsp</td>
+                    </tr>
+                </table>
+                <div class="panel panel-info">
+                    <div class="panel-heading descr-toggle" onclick="toggleDescription(this)">Cluster Hosts Config Description</div>
+                    <div class="panel-body descr">
+                        Centralized host/port values used by refactor deployment.
+                        Example link:
+                        <a href="/support/clusterHosts.jsp"><%=scheme%>://<%=serverName%>/support/clusterHosts.jsp</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="list-group-item nav">
+            <h3>GS Configuration Portal</h3>
+            <div class="container col-xs-12">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Deployed:</td>
+                        <td>copy, live</td>
+                    </tr>
+                    <tr>
+                        <td>URL:</td>
+                        <td><%=scheme%>://[host]/support/configPortal.jsp</td>
+                    </tr>
+                </table>
+                <div class="panel panel-info">
+                    <div class="panel-heading descr-toggle" onclick="toggleDescription(this)">GS Configuration Portal Description</div>
+                    <div class="panel-body descr">
+                        Unified operator portal for configuration levels:
+                        cluster hosts, bank settings catalog, and effective bank values.
+                        Example link:
+                        <a href="/support/configPortal.jsp"><%=scheme%>://<%=serverName%>/support/configPortal.jsp</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="list-group-item nav">
+            <h3>Modernization Progress Dashboard</h3>
+            <div class="container col-xs-12">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Deployed:</td>
+                        <td>copy, live</td>
+                    </tr>
+                    <tr>
+                        <td>URL:</td>
+                        <td><%=scheme%>://[host]/support/modernizationProgress.html</td>
+                    </tr>
+                </table>
+                <div class="panel panel-info">
+                    <div class="panel-heading descr-toggle" onclick="toggleDescription(this)">Modernization Progress Dashboard Description</div>
+                    <div class="panel-body descr">
+                        Temporary visual tracker for legacy coverage, milestones, and phase progress.
+                        It includes checkboxes and section/overall progress bars.
+                        Example link:
+                        <a href="/support/modernizationProgress.html"><%=scheme%>://<%=serverName%>/support/modernizationProgress.html</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="list-group-item nav">
             <h3>Cache Viewer</h3>
             <div class="container col-xs-12">
                 <table class="table table-bordered">

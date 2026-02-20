@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Error</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <style>
+        
+        body {background-color: white; color: black;}
+        #center {color: black;}
+    </style>
+
+    <script>
+        function hidescrollbar() {
+            var agent = navigator.userAgent;
+            if (agent.indexOf("MSIE") != -1) {
+                document.body.scroll = "no";
+            } else {
+                document.documentElement.style.overflow = 'hidden';
+            }
+        }
+
+        function sendRedirect(url) {
+            window.location = url;
+        }
+    </script>
+
+</head>
+<body>
+<script>
+    var submitBtnClicked = false;
+
+
+    hidescrollbar();
+</script><br/><br/>
+<div id="center" align=center>
+            <div>Bank is incorrect</div>
+                    </div>
+    <br/><br/><br/><br/>
+</body>
+</html>

@@ -1,0 +1,209 @@
+openapi: 3.0.3
+info:
+  title: ABS Session Service API
+  version: 1.0.0
+  description: Versioned idempotent session lifecycle API for GS modernization.
+servers:
+  - url: http://localhost:18073
+paths:
+  /health:
+    get:
+      summary: Service health
+      responses:
+        '200':
+          description: OK
+  /api/v1/routing/decision:
+    get:
+      summary: Evaluate canary routing decision for bank
+      parameters:
+        - in: query
+          name: bankId
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Routing decision payload
+  /api/v1/sessions:
+    get:
+      summary: List sessions
+      parameters:
+        - in: query
+          name: bankId
+          schema:
+            type: string
+        - in: query
+          name: status
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session list
+  /api/v1/sessions/{bankId}/{sessionId}:
+    get:
+      summary: Get session
+      parameters:
+        - in: path
+          name: bankId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: sessionId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session details
+        '404':
+          description: Not found
+  /api/v1/sessions/create:
+    post:
+      summary: Create session (idempotent by operationId)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionRequest'
+      responses:
+        '200':
+          description: Session created or replayed
+        '400':
+          description: Validation error
+        '409':
+          description: Conflict
+  /api/v1/sessions/touch:
+    post:
+      summary: Touch session (idempotent by operationId)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TouchSessionRequest'
+      responses:
+        '200':
+          description: Session touched or replayed
+        '400':
+          description: Validation error
+        '404':
+          description: Not found
+        '409':
+          description: Session already closed
+  /api/v1/sessions/close:
+    post:
+      summary: Close session (idempotent by operationId)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloseSessionRequest'
+      responses:
+        '200':
+          description: Session closed or replayed
+        '400':
+          description: Validation error
+        '404':
+          description: Not found
+  /api/v1/outbox:
+    get:
+      summary: List outbox events
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Outbox list
+  /api/v1/outbox/replay-report:
+    get:
+      summary: Outbox replay and DLQ summary report
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Replay report
+  /api/v1/outbox/{eventId}/ack:
+    post:
+      summary: Mark outbox event as sent
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event acknowledged
+        '404':
+          description: Not found
+  /api/v1/outbox/{eventId}/requeue:
+    post:
+      summary: Requeue DLQ outbox event to NEW state
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: reason
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event requeued
+        '404':
+          description: Not found
+        '409':
+          description: Event is not in DLQ status or replay limit reached
+        '429':
+          description: Replay window active
+components:
+  schemas:
+    CreateSessionRequest:
+      type: object
+      required: [bankId, sessionId, userId, gameId, operationId]
+      properties:
+        bankId:
+          type: string
+        sessionId:
+          type: string
+        userId:
+          type: string
+        gameId:
+          type: string
+        operationId:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
+    TouchSessionRequest:
+      type: object
+      required: [bankId, sessionId, operationId]
+      properties:
+        bankId:
+          type: string
+        sessionId:
+          type: string
+        operationId:
+          type: string
+    CloseSessionRequest:
+      type: object
+      required: [bankId, sessionId, operationId]
+      properties:
+        bankId:
+          type: string
+        sessionId:
+          type: string
+        operationId:
+          type: string
+        reason:
+          type: string

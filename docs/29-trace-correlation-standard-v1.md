@@ -85,14 +85,14 @@ Sample:
 3. Phase C: enforce strict validation and alerting.
 
 ## Implementation Status
-- Phase A is in progress in GS:
+- Phase A is implemented in GS:
   - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/filters/CorrelationContextFilter.java`
   - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/web.xml`
 - Validation harness:
   - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase2-correlation-probe.sh`
-- Current runtime baseline evidence (before new GS build deploy):
-  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase2/correlation-probes/correlation-probe-20260220-100710.md`
-  - result: request processed, correlation echo headers not present yet.
+- Current runtime validation evidence (deployed in refactor runtime):
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase2/correlation-probes/correlation-probe-20260220-104035.md`
+  - result: `X-Trace-Id`, `X-Session-Id`, `X-Operation-Id`, `X-Config-Version` echo validation all `PASS`.
 
 ## Related artifacts
 - `/Users/alexb/Documents/Dev/Dev_new/docs/27-error-taxonomy-v1.md`

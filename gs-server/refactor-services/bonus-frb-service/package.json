@@ -1,0 +1,13 @@
+{
+  "name": "abs-bonus-frb-service",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Refactor Bonus/FRB Service scaffold",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "4.21.2"
+  }
+}

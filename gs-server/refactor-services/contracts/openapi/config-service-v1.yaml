@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: ABS Config Service API
+  version: 1.0.0
+  description: Versioned configuration draft/workflow service for GS modernization.
+servers:
+  - url: http://localhost:18072
+paths:
+  /health:
+    get:
+      summary: Service health
+      responses:
+        '200':
+          description: OK
+  /api/v1/config/drafts:
+    get:
+      summary: List drafts
+      parameters:
+        - in: query
+          name: bankId
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Draft list
+    post:
+      summary: Save draft
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveDraftRequest'
+      responses:
+        '200':
+          description: Draft saved
+        '400':
+          description: Validation error
+  /api/v1/config/drafts/{draftVersion}:
+    get:
+      summary: Get draft by version
+      parameters:
+        - in: path
+          name: draftVersion
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Draft object
+        '404':
+          description: Not found
+  /api/v1/config/workflow/{action}:
+    post:
+      summary: Apply workflow transition
+      parameters:
+        - in: path
+          name: action
+          required: true
+          schema:
+            type: string
+            enum: [validate, approve, publish, rollback]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowRequest'
+      responses:
+        '200':
+          description: Transition applied
+        '400':
+          description: Bad request
+        '404':
+          description: Draft not found
+        '409':
+          description: Invalid transition
+  /api/v1/outbox:
+    get:
+      summary: List outbox events
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Outbox list
+  /api/v1/outbox/{eventId}/ack:
+    post:
+      summary: Mark outbox event as sent
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event acknowledged
+        '404':
+          description: Not found
+components:
+  schemas:
+    SaveDraftRequest:
+      type: object
+      required: [draftVersion, bankId, performedBy]
+      properties:
+        draftVersion:
+          type: string
+        bankId:
+          type: string
+        performedBy:
+          type: string
+        changeReason:
+          type: string
+        payload:
+          type: object
+          additionalProperties: true
+    WorkflowRequest:
+      type: object
+      required: [draftVersion, performedBy]
+      properties:
+        draftVersion:
+          type: string
+        performedBy:
+          type: string
+        note:
+          type: string

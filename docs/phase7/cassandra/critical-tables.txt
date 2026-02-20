@@ -1,0 +1,6 @@
+# keyspace.table
+rcasinoscks.accountcf
+rcasinoscks.accountcf_ext
+rcasinoscks.gamesessioncf
+rcasinoscks.commonwalletcf
+rcasinoscks.frbonuscf

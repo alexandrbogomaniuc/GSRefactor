@@ -2,6 +2,7 @@ FROM nginx:1.13.10
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY games /etc/nginx/sites-enabled/games
+COPY cluster-hosts.inc /etc/nginx/cluster-hosts.inc
 
 RUN echo "deb [trusted=yes] http://archive.debian.org/debian stretch main contrib non-free" > /etc/apt/sources.list
 

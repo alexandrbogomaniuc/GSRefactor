@@ -1,37 +1,58 @@
+<%@ page import="java.io.InputStream" %>
+<%@ page import="java.util.LinkedHashMap" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Properties" %>
 <%
-    Map<String, String> localClusterMap = new HashMap<>();
-    Map<String, String> copyClusterMap = new HashMap<>();
-    Map<String, String> liveClusterMap = new HashMap<>();
+    Map<String, String> localClusterMap = new LinkedHashMap<String, String>();
+    Map<String, String> copyClusterMap = new LinkedHashMap<String, String>();
+    Map<String, String> liveClusterMap = new LinkedHashMap<String, String>();
 
-    localClusterMap.put("SB LOCAL", "http://gs1.sb.dgphoenix.com");
-    localClusterMap.put("GP3 LOCAL", "http://gs1-gp3.dgphoenix.com:8080");
-    localClusterMap.put("STRESS LOCAL", "http://gs1-stress.dgphoenix.com");
-    localClusterMap.put("STRESS LOCAL 2", "http://gs1-stc2.dgphoenix.com");
+    Properties clusterProps = new Properties();
+    try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("cluster-hosts.properties")) {
+        if (is != null) {
+            clusterProps.load(is);
+        }
+    } catch (Exception ignore) {
+    }
 
-    copyClusterMap.put("GP3 COPY", "https://gs1-gp3.discreetgaming.com");
-    copyClusterMap.put("SB COPY", "https://gs1-sb.discreetgaming.com");
-    copyClusterMap.put("GP3 BETA", "https://gs1-beta.discreetgaming.com");
-    copyClusterMap.put("AAMS COPY", "https://gs1-aams.discreetgaming.com");
-    copyClusterMap.put("NG COPY", "https://gs1-ng-copy.nucleusgaming.com:1443");
-    localClusterMap.put("STRESS COPY", "http://gs1-stc.dgphoenix.com");
+    loadClusterEntries(clusterProps.getProperty("TEMPLATE_MANAGER_LOCAL_CLUSTERS"), localClusterMap);
+    loadClusterEntries(clusterProps.getProperty("TEMPLATE_MANAGER_COPY_CLUSTERS"), copyClusterMap);
+    loadClusterEntries(clusterProps.getProperty("TEMPLATE_MANAGER_LIVE_CLUSTERS"), liveClusterMap);
 
-    liveClusterMap.put("SB LIVE", "http://gs1-sb.betsoftgaming.com");
-    liveClusterMap.put("GP3 LIVE", "http://gs1-gp3.betsoftgaming.com");
-    liveClusterMap.put("C2SS LIVE", "http://gs1-c2ss.betsoftgaming.com");
-    liveClusterMap.put("188BET LIVE", "http://gs1.188bet.betsoftgaming.com");
-    liveClusterMap.put("C2188BET LIVE", "https://gs1-c2188bet.betsoftgaming.com:1443");
-    liveClusterMap.put("GSN LIVE", "https://gs1.gsn.betsoftgaming.com");
-    liveClusterMap.put("LGA LIVE", "https://gs1-lga.betsoftgaming.com");
-    liveClusterMap.put("C2LGA LIVE", "https://gs2-c2lga.betsoftgaming.com:1443");
-    liveClusterMap.put("C2LGA2 LIVE", "https://gs1-c2lga2.betsoftgaming.com:1443/");
-    liveClusterMap.put("AAMS LIVE", "https://gs1-aams.betsoftgaming.com:1443");
-    liveClusterMap.put("DEMO CLUSTER LIVE", "http://gs1-democluster.betsoftgaming.com");
-    liveClusterMap.put("LAPTOP LIVE", "http://gs1-laptop.betsoftgaming.com");
-    liveClusterMap.put("NG LIVE", "https://gs1-ng.nucleusgaming.com:1443");
+    String currentAddress = request.getScheme() + "://" + request.getServerName();
+    int port = request.getServerPort();
+    boolean includePort = ("http".equalsIgnoreCase(request.getScheme()) && port != 80)
+            || ("https".equalsIgnoreCase(request.getScheme()) && port != 443);
+    if (includePort) {
+        currentAddress += ":" + port;
+    }
+    if (localClusterMap.isEmpty()) {
+        localClusterMap.put("CURRENT CLUSTER", currentAddress);
+    }
+%>
 
-    liveClusterMap.put("MQ LIVE", "http://gs1-gp3.maxquest.com");
+<%!
+    private void loadClusterEntries(String raw, Map<String, String> target) {
+        if (raw == null) {
+            return;
+        }
+        String[] entries = raw.split(";");
+        for (String entry : entries) {
+            String normalized = entry == null ? "" : entry.trim();
+            if (normalized.isEmpty()) {
+                continue;
+            }
+            int splitIndex = normalized.indexOf('|');
+            if (splitIndex <= 0 || splitIndex >= normalized.length() - 1) {
+                continue;
+            }
+            String label = normalized.substring(0, splitIndex).trim();
+            String url = normalized.substring(splitIndex + 1).trim();
+            if (!label.isEmpty() && !url.isEmpty()) {
+                target.put(label, url);
+            }
+        }
+    }
 %>
 
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<BSGSYSTEM><TIME>Fri Feb 20 13:33:47 UTC 2026</TIME>
+    <REQUEST>
+        <EXTBONUSID>1</EXTBONUSID>
+        <BANKID>999999</BANKID>
+        <HASH>deadbeef</HASH>
+    </REQUEST>
+    <RESPONSE><RESULT>ERROR</RESULT>
+    <DESCRIPTION>Invalid parameters</DESCRIPTION>
+    <CODE>610</CODE>
+    </RESPONSE>
+</BSGSYSTEM>

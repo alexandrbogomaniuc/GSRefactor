@@ -16,6 +16,13 @@ CURRENCY="USD"
 WAGER_AMOUNT="0.1"
 SETTLE_AMOUNT="0.1"
 
+BSAWARD_AMOUNT="10000"
+BSAWARD_GAMES="all"
+BSAWARD_GAME_IDS=""
+BSAWARD_EXP_DATE="$(date -u -v+30d +%d.%m.%Y 2>/dev/null || date -u -d '+30 day' +%d.%m.%Y 2>/dev/null || echo '31.12.2099')"
+BSAWARD_TYPE="Deposit"
+BSAWARD_MULTIPLIER="2"
+
 usage() {
   cat <<USAGE
 Usage:
@@ -34,6 +41,12 @@ Optional:
   --currency VALUE            Default: USD
   --wager-amount VALUE        Default: 0.1
   --settle-amount VALUE       Default: 0.1
+  --bsaward-amount VALUE      Default: 10000
+  --bsaward-games VALUE       Default: all
+  --bsaward-game-ids VALUE    Default: game-id value
+  --bsaward-exp-date DD.MM.YYYY  Default: +30 days UTC
+  --bsaward-type VALUE        Default: Deposit
+  --bsaward-multiplier VALUE  Default: 2
   --out-file PATH             Default: /Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-fixture.env
 USAGE
 }
@@ -50,6 +63,12 @@ while [[ $# -gt 0 ]]; do
     --currency) CURRENCY="$2"; shift 2 ;;
     --wager-amount) WAGER_AMOUNT="$2"; shift 2 ;;
     --settle-amount) SETTLE_AMOUNT="$2"; shift 2 ;;
+    --bsaward-amount) BSAWARD_AMOUNT="$2"; shift 2 ;;
+    --bsaward-games) BSAWARD_GAMES="$2"; shift 2 ;;
+    --bsaward-game-ids) BSAWARD_GAME_IDS="$2"; shift 2 ;;
+    --bsaward-exp-date) BSAWARD_EXP_DATE="$2"; shift 2 ;;
+    --bsaward-type) BSAWARD_TYPE="$2"; shift 2 ;;
+    --bsaward-multiplier) BSAWARD_MULTIPLIER="$2"; shift 2 ;;
     --out-file) OUT_FILE="$2"; shift 2 ;;
     -h|--help) usage; exit 0 ;;
     *)
@@ -68,15 +87,41 @@ for required in BANK_ID GAME_ID TOKEN EXTERNAL_BANK_ID EXT_BONUS_ID BONUS_PASS_K
   fi
 done
 
-HASH_OUTPUT="$("${ROOT_DIR}/gs-server/deploy/scripts/phase0-bonus-hash-helper.sh" \
+if [[ -z "${BSAWARD_GAME_IDS}" ]]; then
+  BSAWARD_GAME_IDS="${GAME_ID}"
+fi
+if [[ -z "${USER_ID}" ]]; then
+  USER_ID="${TOKEN}"
+fi
+
+BSCHECK_HASH_OUTPUT="$("${ROOT_DIR}/gs-server/deploy/scripts/phase0-bonus-hash-helper.sh" \
   --mode check \
   --ext-bonus-id "${EXT_BONUS_ID}" \
   --external-bank-id "${EXTERNAL_BANK_ID}" \
   --bonus-pass-key "${BONUS_PASS_KEY}")"
 
-BONUS_HASH="$(echo "${HASH_OUTPUT}" | awk -F= '/^HASH=/{print $2}')"
-if [[ -z "${BONUS_HASH}" ]]; then
-  echo "Failed to compute BONUS_HASH" >&2
+BSCHECK_HASH="$(echo "${BSCHECK_HASH_OUTPUT}" | awk -F= '/^HASH=/{print $2}')"
+if [[ -z "${BSCHECK_HASH}" ]]; then
+  echo "Failed to compute BSCHECK_HASH" >&2
+  exit 1
+fi
+
+BSAWARD_HASH_OUTPUT="$("${ROOT_DIR}/gs-server/deploy/scripts/phase0-bonus-hash-helper.sh" \
+  --mode award \
+  --user-id "${USER_ID}" \
+  --external-bank-id "${EXTERNAL_BANK_ID}" \
+  --type "${BSAWARD_TYPE}" \
+  --amount "${BSAWARD_AMOUNT}" \
+  --multiplier "${BSAWARD_MULTIPLIER}" \
+  --games "${BSAWARD_GAMES}" \
+  --game-ids "${BSAWARD_GAME_IDS}" \
+  --exp-date "${BSAWARD_EXP_DATE}" \
+  --ext-bonus-id "${EXT_BONUS_ID}" \
+  --bonus-pass-key "${BONUS_PASS_KEY}")"
+
+BSAWARD_HASH="$(echo "${BSAWARD_HASH_OUTPUT}" | awk -F= '/^HASH=/{print $2}')"
+if [[ -z "${BSAWARD_HASH}" ]]; then
+  echo "Failed to compute BSAWARD_HASH" >&2
   exit 1
 fi
 
@@ -94,7 +139,19 @@ CURRENCY=${CURRENCY}
 WAGER_AMOUNT=${WAGER_AMOUNT}
 SETTLE_AMOUNT=${SETTLE_AMOUNT}
 EXT_BONUS_ID=${EXT_BONUS_ID}
-BONUS_HASH=${BONUS_HASH}
+
+# Bonus flow fixtures
+BSCHECK_HASH=${BSCHECK_HASH}
+BSAWARD_HASH=${BSAWARD_HASH}
+BSAWARD_AMOUNT=${BSAWARD_AMOUNT}
+BSAWARD_GAMES=${BSAWARD_GAMES}
+BSAWARD_GAME_IDS=${BSAWARD_GAME_IDS}
+BSAWARD_EXP_DATE=${BSAWARD_EXP_DATE}
+BSAWARD_TYPE=${BSAWARD_TYPE}
+BSAWARD_MULTIPLIER=${BSAWARD_MULTIPLIER}
+
+# Backward-compat alias
+BONUS_HASH=${BSCHECK_HASH}
 
 # Deterministic negative-case probes
 NEG_BANK_ID=999999

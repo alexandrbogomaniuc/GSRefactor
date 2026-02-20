@@ -1,6 +1,6 @@
 # Phase 0 - Baseline and Parity Capture (Started)
 
-Last updated: 2026-02-19 UTC
+Last updated: 2026-02-20 UTC
 Baseline commit: `2fcdd18293654eb97fbefda4ad857e8c1ed6e894`
 
 ## 1) Endpoint/Protocol Inventory (Initial Freeze)
@@ -13,7 +13,7 @@ Baseline commit: `2fcdd18293654eb97fbefda4ad857e8c1ed6e894`
 
 | Domain | Endpoints / Routes | Contract Mode | Compatibility Rule |
 |---|---|---|---|
-| Launch | `/cwstartgamev2.do`, `/bsstartgame.do`, `/cwstartgameidfrb.do`, `/restartgame.do` | HTTP query -> redirect/template payload | request keys and launch branching remain stable |
+| Launch | `/cwstartgamev2.do`, `/startgame` (proxy alias), `/bsstartgame.do`, `/cwstartgameidfrb.do`, `/restartgame.do` | HTTP query -> redirect/template payload | request keys and launch branching remain stable |
 | Game list | `/gamelistExt.do`, `/frbgamelist.do` | HTTP response (legacy format) | no semantic drift in enabled/visible games |
 | Wager/settle wallet bridge | `/bscheck.do`, `/bsaward.do`, `/bscancel.do` | XML-centric legacy responses | preserve response codes/messages by scenario |
 | FRB | `/frbcheck.do`, `/frbaward.do`, `/frbcancel.do`, `/frbinfo.do`, `/frbhistory.do` | XML-centric legacy responses | preserve FRB state transitions and status codes |
@@ -152,3 +152,51 @@ Required invariants:
   - `P0-SE-00`: `PASS_CONTRACT (200)` with XML error code `610` (`Invalid parameters`),
   - `P0-LA-01`: remains `FAIL_CONTRACT (200)` until valid canary launch fixture is aligned for refactor runtime,
   - `P0-WA-01` / `P0-SE-01`: still `SKIPPED_MISSING_FIXTURE`.
+
+### Current parity baseline (run-mode, fixture-aligned)
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-parity-20260220-115751.md`
+- Fixture: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-fixture.env` (bank `271`, token `test_user_271`)
+- Observed:
+  - `P0-LA-01`: `PASS_CONTRACT`,
+  - `P0-LA-02`: `PASS_CONTRACT`,
+  - `P0-LA-03`: `PASS_CONTRACT`,
+  - `P0-WA-01`: `PASS_CONTRACT` (`<RESULT>OK</RESULT>`),
+  - `P0-WA-00`: `PASS_CONTRACT`,
+  - `P0-SE-01`: `PASS_CONTRACT` (idempotent duplicate award accepted: `CODE=641` / `already exists`),
+  - `P0-SE-00`: `PASS_CONTRACT`.
+
+### Facade-path parity validation (clean `/startgame` alias)
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-parity-browser-facade-20260220-135127.md`
+- Probe context: browser-origin checks from `http://localhost:18080` (refactor static facade with valid host context).
+- Observed:
+  - `P0-LA-01`: `PASS_CONTRACT` (`/cwstartgamev2.do`, HTTP `200`),
+  - `P0-LA-02`: `PASS_CONTRACT` (invalid launch semantics preserved, HTTP `200`),
+  - `P0-LA-03`: `PASS_CONTRACT` (`/startgame`, HTTP `200`),
+  - `P0-WA-01`: `PASS_CONTRACT`,
+  - `P0-WA-00`: `PASS_CONTRACT`,
+  - `P0-SE-01`: `PASS_CONTRACT`,
+  - `P0-SE-00`: `PASS_CONTRACT`.
+- Compatibility note:
+  - clean alias `/startgame` is validated on facade path (`localhost:18080`);
+  - direct GS core path remains `.do`-routed (`/startgame.do` available for core-only checks).
+
+### History/Reconnect probe (facade path)
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-history-reconnect-browser-probe-20260220-135651.md`
+- Observed:
+  - `P0-HI-01`: `PASS_PROBE` (`/vabs/historyByRound.do?ROUNDID=1`, deterministic not-found page),
+  - `P0-HI-02`: `PASS_PROBE` (`/vabs/historyByToken.do?token=dummy`, deterministic error page),
+  - `P0-HI-03`: `PASS_PROBE` (`/cwstarthistory.do?bankId=271&token=test_user_271`, deterministic error page),
+  - `P0-RC-01`: `FAIL_ROUTE` (`/restartgame.do` redirects to missing `/cwstartgame.do` path on current runtime),
+  - `P0-RC-02`: `FAIL_HTTP` (`/restartgame.do` invalid bank produced HTTP `500`, NPE in `RestartGameAction`).
+- Fix status:
+  - source remediation prepared for restart parity gap (`/cwstartgame` compatibility mapping + invalid-bank guard),
+  - runtime re-check pending rebuild/redeploy of refactor GS.
+
+### Reconnect stabilization via facade fallback (runtime)
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-reconnect-facade-fallback-20260220-141948.md`
+- Observed:
+  - `P0-RC-01`: `PASS_CONTRACT` on facade (`/restartgame.do` valid session now returns `200`, launch page),
+  - `P0-RC-02`: `PASS_CONTRACT` on facade boundary (`/restartgame.do` invalid bank no longer exposes raw `500`; returns controlled error page `200`),
+  - legacy `/cwstartgame.do` compatibility endpoint now resolves to launch (`200`) through facade mapping.
+- Remaining backend task:
+  - keep source-level `RestartGameAction` null-bank guard as authoritative fix after GS rebuild/redeploy (facade fallback is compatibility bridge, not final backend remediation).

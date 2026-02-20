@@ -35,6 +35,18 @@ public class RestartGameAction extends Action {
         boolean isStandalone = Boolean.TRUE.toString().equalsIgnoreCase(request.getParameter(BaseAction.STANDALONE));
         String homeUrl = request.getParameter(BaseAction.PARAM_HOME_URL);
         BankInfo bankInfo = BankInfoCache.getInstance().getBankInfo(bankId);
+        if (bankInfo == null) {
+            LOG.warn("Bank not found in cache for restart request, bankId={}, gameId={}, sessionId={}", bankId, gameId, sessionId);
+            ActionRedirect fallback = new ActionRedirect(request.getScheme() + "://" + request.getServerName() + "/cwstartgamev2.do");
+            fallback.addParameter("bankId", bankId);
+            fallback.addParameter("gameId", gameId);
+            fallback.addParameter("mode", mode);
+            fallback.addParameter("token", sessionId);
+            if (!isTrimmedEmpty(lang)) {
+                fallback.addParameter("lang", lang);
+            }
+            return fallback;
+        }
         String walletPMClass = bankInfo.getWPMClass();
         String paymentProcessor = bankInfo.getPPClass();
 

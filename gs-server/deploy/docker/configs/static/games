@@ -1,18 +1,128 @@
-upstream gs_backend {
-	server gs:8080;
-}
-
 server {
 
 	listen 80; ## listen for ipv4
 
 	server_name localhost 127.0.0.1;
+	resolver 127.0.0.11 ipv6=off valid=30s;
+	include /etc/nginx/cluster-hosts.inc;
 
 	access_log /var/log/nginx/games.access.log main buffer=32k;
 
 	location /static {
 		root /www/html/repo/static-gp3/;
 		expires 7d;
+	}
+
+	location = /startgame {
+		proxy_set_header Host $host;
+		proxy_set_header proxy_scheme http;
+		proxy_pass http://$gs_backend_host:$gs_backend_port/cwstartgamev2.do$is_args$args;
+		proxy_hide_header Location;
+		proxy_intercept_errors on;
+		recursive_error_pages on;
+		error_page 301 302 303 307 308 = @follow_gs_redirect;
+		proxy_next_upstream error invalid_header http_500 http_503 http_502;
+		proxy_read_timeout 120s;
+		proxy_http_version 1.1;
+		proxy_buffering on;
+	}
+
+	location = /restartgame.do {
+		proxy_set_header Host $host;
+		proxy_set_header proxy_scheme http;
+		proxy_pass http://$gs_backend_host:$gs_backend_port$uri$is_args$args;
+		proxy_hide_header Location;
+		proxy_intercept_errors on;
+		recursive_error_pages on;
+		error_page 301 302 303 307 308 = @follow_gs_redirect;
+		error_page 500 = @restartgame_fallback;
+		proxy_next_upstream error invalid_header http_500 http_503 http_502;
+		proxy_read_timeout 120s;
+		proxy_http_version 1.1;
+		proxy_buffering on;
+	}
+
+	location @restartgame_fallback {
+		internal;
+
+		set $compat_args $args;
+		if ($compat_args ~* ^(.*)sessionId=([^&]+)(.*)$) {
+			set $compat_args $1token=$2$3;
+		}
+
+		proxy_set_header Host $host;
+		proxy_set_header proxy_scheme http;
+		proxy_pass http://$gs_backend_host:$gs_backend_port/cwstartgamev2.do$is_args$compat_args;
+		proxy_hide_header Location;
+		proxy_intercept_errors on;
+		recursive_error_pages on;
+		error_page 301 302 303 307 308 = @follow_gs_redirect;
+		proxy_next_upstream error invalid_header http_500 http_503 http_502;
+		proxy_read_timeout 120s;
+		proxy_http_version 1.1;
+		proxy_buffering on;
+	}
+
+	location = /cwstartgame.do {
+		set $compat_args $args;
+		if ($compat_args ~* ^(.*)sessionId=([^&]+)(.*)$) {
+			set $compat_args $1token=$2$3;
+		}
+		proxy_set_header Host $host;
+		proxy_set_header proxy_scheme http;
+		proxy_pass http://$gs_backend_host:$gs_backend_port/cwstartgamev2.do$is_args$compat_args;
+		proxy_hide_header Location;
+		proxy_intercept_errors on;
+		recursive_error_pages on;
+		error_page 301 302 303 307 308 = @follow_gs_redirect;
+		proxy_next_upstream error invalid_header http_500 http_503 http_502;
+		proxy_read_timeout 120s;
+		proxy_http_version 1.1;
+		proxy_buffering on;
+	}
+
+	location ~ ^/(cwstartgamev2\.do|cwstartgame\.do|bsstartgame\.do|btbstartgame\.do)$ {
+		proxy_set_header Host $host;
+		proxy_set_header proxy_scheme http;
+		proxy_pass http://$gs_backend_host:$gs_backend_port$uri$is_args$args;
+		proxy_hide_header Location;
+		proxy_intercept_errors on;
+		recursive_error_pages on;
+		error_page 301 302 303 307 308 = @follow_gs_redirect;
+		proxy_next_upstream error invalid_header http_500 http_503 http_502;
+		proxy_read_timeout 120s;
+		proxy_http_version 1.1;
+		proxy_buffering on;
+	}
+
+	location @follow_gs_redirect {
+		internal;
+
+		set $redirect_target $upstream_http_location;
+		if ($redirect_target ~* ^https?://[^/]+(/.*)$) {
+			set $redirect_target $1;
+		}
+		if ($redirect_target ~* ^/cwstartgame\.do\?(.*)$) {
+			set $redirect_target /cwstartgamev2.do?$1;
+		}
+		if ($redirect_target ~* ^/cwstartgamev2\.do\?(.*)sessionId=([^&]+)(.*)$) {
+			set $redirect_target /cwstartgamev2.do?$1token=$2$3;
+		}
+		if ($redirect_target = "") {
+			set $redirect_target /;
+		}
+
+		proxy_set_header Host $host;
+		proxy_set_header proxy_scheme http;
+		proxy_pass http://$gs_backend_host:$gs_backend_port$redirect_target;
+		proxy_hide_header Location;
+		proxy_intercept_errors on;
+		recursive_error_pages on;
+		error_page 301 302 303 307 308 = @follow_gs_redirect;
+		proxy_next_upstream error invalid_header http_500 http_503 http_502;
+		proxy_read_timeout 120s;
+		proxy_http_version 1.1;
+		proxy_buffering on;
 	}
 
 	location / {
@@ -22,7 +132,7 @@ server {
 
 		location ~ /services {
 			proxy_set_header proxy_scheme http;
-			proxy_pass http://gs_backend;
+			proxy_pass http://$gs_backend_host:$gs_backend_port$request_uri;
 			proxy_next_upstream error invalid_header http_500 http_503 http_502;
 			proxy_read_timeout 120s;
 			proxy_http_version 1.1;
@@ -30,14 +140,14 @@ server {
 		}
 
 		location /webSocket {
-			proxy_pass http://gs_backend;
+			proxy_pass http://$gs_backend_host:$gs_backend_port$request_uri;
 			proxy_http_version 1.1;
 			proxy_set_header Upgrade "websocket";
 			proxy_set_header Connection "upgrade";
 		}
 
 		location /tournamentWebSocket {
-		    proxy_pass http://gs_backend;
+		    proxy_pass http://$gs_backend_host:$gs_backend_port$request_uri;
 		    proxy_http_version 1.1;
             proxy_set_header Upgrade "websocket";
             proxy_set_header Connection "upgrade";
@@ -53,7 +163,7 @@ server {
 		index index.html index.htm;
 		proxy_set_header Host $host;
 		proxy_set_header proxy_scheme http;
-		proxy_pass http://gs_backend;
+		proxy_pass http://$gs_backend_host:$gs_backend_port$request_uri;
 		proxy_next_upstream error invalid_header http_500 http_503 http_502;
 		# proxy_next_upstream http_503 http_502;
 		proxy_read_timeout 120s;
