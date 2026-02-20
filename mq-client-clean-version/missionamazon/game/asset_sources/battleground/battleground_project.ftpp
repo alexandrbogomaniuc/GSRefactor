@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "version": "0.6.7"
+  },
+  "savePath": "E:\\MAXQUEST\\source\\VagrantProjects\\mq-client\\missionamazon\\game\\assets\\images\\2\\battleground",
+  "images": [],
+  "folders": [
+    "E:/MAXQUEST/source/VagrantProjects/mq-client/missionamazon/game/asset_sources/battleground",
+    "E:/MAXQUEST/source/VagrantProjects/mq-client/missionamazon/game/asset_sources/tutorial"
+  ],
+  "packOptions": {
+    "textureName": "battleground_atlas",
+    "textureFormat": "png",
+    "removeFileExtension": true,
+    "prependFolderName": true,
+    "base64Export": false,
+    "tinify": false,
+    "tinifyKey": "",
+    "scale": 1,
+    "filter": "none",
+    "exporter": "pixi.js",
+    "fileName": "pack-result",
+    "savePath": "E:\\MAXQUEST\\source\\VagrantProjects\\mq-client\\missionamazon\\game\\assets\\images\\2\\battleground",
+    "width": 1024,
+    "height": 1024,
+    "fixedSize": true,
+    "powerOfTwo": true,
+    "padding": 0,
+    "extrude": 0,
+    "allowRotation": true,
+    "allowTrim": true,
+    "trimMode": "crop",
+    "alphaThreshold": "0",
+    "detectIdentical": true,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit"
+  }
+}

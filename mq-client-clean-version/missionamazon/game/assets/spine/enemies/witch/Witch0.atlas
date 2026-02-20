@@ -1,0 +1,48 @@
+
+Witch0.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0_body
+  rotate: true
+  xy: 4, 124
+  size: 128, 263
+  orig: 128, 263
+  offset: 0, 0
+  index: -1
+0_head
+  rotate: false
+  xy: 345, 46
+  size: 54, 75
+  orig: 54, 75
+  offset: 0, 0
+  index: -1
+0_lf_arm
+  rotate: false
+  xy: 271, 4
+  size: 70, 117
+  orig: 70, 117
+  offset: 0, 0
+  index: -1
+0_lf_leg
+  rotate: true
+  xy: 4, 70
+  size: 50, 181
+  orig: 50, 181
+  offset: 0, 0
+  index: -1
+0_rt_arm
+  rotate: true
+  xy: 271, 125
+  size: 127, 216
+  orig: 127, 216
+  offset: 0, 0
+  index: -1
+0_rt_leg
+  rotate: true
+  xy: 4, 19
+  size: 47, 174
+  orig: 47, 174
+  offset: 0, 0
+  index: -1

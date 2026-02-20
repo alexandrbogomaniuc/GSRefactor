@@ -1,0 +1,20 @@
+
+Snake315.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+left/body
+  rotate: false
+  xy: 2, 78
+  size: 874, 36
+  orig: 874, 36
+  offset: 0, 0
+  index: -1
+left/head
+  rotate: false
+  xy: 2, 2
+  size: 105, 74
+  orig: 105, 74
+  offset: 0, 0
+  index: -1

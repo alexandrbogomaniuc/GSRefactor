@@ -1,0 +1,234 @@
+var WinCoin =
+{
+  "frames": {
+    "coin_frame_0.png": {
+      "frame": {
+        "x": 1,
+        "y": 1,
+        "w": 26,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 17,
+        "y": 0,
+        "w": 26,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 59,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin_frame_1.png": {
+      "frame": {
+        "x": 1,
+        "y": 62,
+        "w": 44,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 0,
+        "w": 44,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 59,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin_frame_2.png": {
+      "frame": {
+        "x": 29,
+        "y": 1,
+        "w": 54,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 0,
+        "w": 54,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 59,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin_frame_3.png": {
+      "frame": {
+        "x": 47,
+        "y": 62,
+        "w": 59,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 59,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 59,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin_frame_4.png": {
+      "frame": {
+        "x": 85,
+        "y": 1,
+        "w": 59,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 59,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 59,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin_frame_5.png": {
+      "frame": {
+        "x": 108,
+        "y": 62,
+        "w": 58,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 0,
+        "w": 58,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 59,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin_frame_6.png": {
+      "frame": {
+        "x": 146,
+        "y": 1,
+        "w": 49,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 0,
+        "w": 49,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 59,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin_frame_7.png": {
+      "frame": {
+        "x": 168,
+        "y": 62,
+        "w": 34,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 13,
+        "y": 0,
+        "w": 34,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 59,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin_frame_8.png": {
+      "frame": {
+        "x": 197,
+        "y": 1,
+        "w": 17,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 21,
+        "y": 0,
+        "w": 17,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 59,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com/",
+    "version": "0.3.3",
+    "image": "coin_spin.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 256,
+      "h": 128
+    },
+    "scale": 2
+  }
+}
+
+export default WinCoin;

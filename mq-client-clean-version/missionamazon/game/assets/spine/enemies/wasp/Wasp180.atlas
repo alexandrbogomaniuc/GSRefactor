@@ -1,0 +1,97 @@
+
+Wasp180.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180/Body
+  rotate: false
+  xy: 277, 177
+  size: 75, 74
+  orig: 75, 74
+  offset: 0, 0
+  index: -1
+180/Head
+  rotate: true
+  xy: 427, 94
+  size: 47, 74
+  orig: 47, 74
+  offset: 0, 0
+  index: -1
+180/Hip
+  rotate: true
+  xy: 369, 145
+  size: 106, 124
+  orig: 106, 124
+  offset: 0, 0
+  index: -1
+180/Leg_L1
+  rotate: false
+  xy: 144, 7
+  size: 73, 82
+  orig: 73, 82
+  offset: 0, 0
+  index: -1
+180/Leg_L2
+  rotate: true
+  xy: 4, 4
+  size: 77, 64
+  orig: 77, 64
+  offset: 0, 0
+  index: -1
+180/Leg_L3
+  rotate: false
+  xy: 72, 5
+  size: 68, 76
+  orig: 68, 76
+  offset: 0, 0
+  index: -1
+180/Leg_R1
+  rotate: true
+  xy: 277, 104
+  size: 69, 60
+  orig: 69, 60
+  offset: 0, 0
+  index: -1
+180/Leg_R2
+  rotate: false
+  xy: 427, 25
+  size: 71, 65
+  orig: 71, 65
+  offset: 0, 0
+  index: -1
+180/Leg_R3
+  rotate: false
+  xy: 369, 67
+  size: 54, 74
+  orig: 54, 74
+  offset: 0, 0
+  index: -1
+180/Wing_L
+  rotate: false
+  xy: 221, 7
+  size: 144, 93
+  orig: 144, 93
+  offset: 0, 0
+  index: -1
+180/Wing_L_Blurred
+  rotate: true
+  xy: 155, 104
+  size: 147, 118
+  orig: 147, 118
+  offset: 0, 0
+  index: -1
+180/Wing_R
+  rotate: true
+  xy: 103, 93
+  size: 158, 48
+  orig: 158, 48
+  offset: 0, 0
+  index: -1
+180/Wing_R_Blurred
+  rotate: true
+  xy: 4, 85
+  size: 166, 95
+  orig: 166, 95
+  offset: 0, 0
+  index: -1

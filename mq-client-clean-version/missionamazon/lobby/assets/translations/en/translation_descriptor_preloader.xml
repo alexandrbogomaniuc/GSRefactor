@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<td>
+	<fonts>
+		<font name="fnt_nm_barlow" url="[root_resources_path]translations/en/fonts/barlow_medium_en.ttf"/>
+		<font name="fnt_nm_barlow_semibold" url="[root_resources_path]translations/en/fonts/barlow_semibold_en.ttf"/>
+		<font name="fnt_nm_barlow_bold" url="[root_resources_path]translations/en/fonts/barlow_bold_en.ttf"/>
+	</fonts>
+	
+	<tasds>
+		<tad id="TALobbyPreloaderLogo" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MAX DUEL DRAGONSTONE</source_meaning>
+				<translated_meaning>MAX DUEL DRAGONSTONE</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/logo.png"/>
+		</tad>
+
+		<tad id="TALobbyPreloaderLogoBattleground" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BATTLEGROUND</source_meaning>
+				<translated_meaning>BATTLEGROUND</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="430" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/logo_btg.png"/>
+		</tad>
+
+		<tad id="TAPreloaderBrand" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BETSOFT GAMING</source_meaning>
+				<translated_meaning>BETSOFT GAMING</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="256" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="right" v="top"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/brand.png"/>
+		</tad>
+
+
+		<!--TEASERS... -->
+		<tad id="TAPreloderTeaser0" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Collect Three of a Kind Gems to win a prize!</source_meaning>
+				<translated_meaning>Collect Three of a Kind Gems to win a prize!</translated_meaning>
+			</meaning>
+			<area x="-90" y="0" w="180" h="75">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="14" color="0Xffffff">
+				</font>
+				<content>Collect Three &#010;of a Kind Gems&#010;to win a prize!</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloderTeaser1" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Shoot Weapon Carrier to win Special Weapons!</source_meaning>
+				<translated_meaning>Shoot Weapon Carrier to win Special Weapons!</translated_meaning>
+			</meaning>
+			<area x="-90" y="0" w="180" h="75">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="14" color="0Xffffff">
+				</font>
+				<content>Shoot Weapon Carrier&#010;to win&#010;Special Weapons!</content>
+			</txt>
+		</tad>
+		<tad id="TAPreloderTeaser2" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Legends walk with the hordes! Take down epic bosses for massive points!</source_meaning>
+				<translated_meaning>Legends walk with the hordes! Take down epic bosses for massive points!</translated_meaning>
+			</meaning>
+			<area x="-90" y="0" w="180" h="75">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="14" color="0Xffffff">
+					<stroke color="0x000000" thickness="1"/>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>Legends walk with the hordes!&#010;Take down epic bosses&#010;for massive points!</content>
+			</txt>
+		</tad>
+		<!--...TEASERS-->
+		
+		<!--BATTLEGROUND TEASERS...-->
+		
+		<tad id="TAPreloderTeaserBattleground0" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Go against up to 5 players every 90 seconds, get the HIGHEST score and WIN round prize!</source_meaning>
+				<translated_meaning>Go against up to 5 players every 90 seconds, get the HIGHEST score and WIN round prize!</translated_meaning>
+			</meaning>
+			<area x="-90" y="0" w="180" h="75">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="14" color="0Xffffff">
+					<stroke color="0x000000" thickness="1"/>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>Go against up to 5 players every&#010;90 seconds, get the HIGHEST&#010;score and WIN round prize!</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloderTeaserBattleground1" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Collect Gems to Instantly Win Points!</source_meaning>
+				<translated_meaning>Collect Gems to Instantly Win Points!</translated_meaning>
+			</meaning>
+			<area x="-90" y="0" w="180" h="75">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="14" color="0Xffffff">
+					<stroke color="0x000000" thickness="1"/>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>Collect Gems to&#010;Instantly Win Points!</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloderTeaserBattleground2" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Legends walk with the hordes! Take down epic bosses for massive points!</source_meaning>
+				<translated_meaning>Legends walk with the hordes! Take down epic bosses for massive points!</translated_meaning>
+			</meaning>
+			<area x="-90" y="0" w="180" h="75">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="14" color="0Xffffff">
+					<stroke color="0x000000" thickness="1"/>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>Legends walk with the hordes!&#010;Take down epic bosses&#010;for massive points!</content>
+			</txt>
+		</tad>
+		<!--...BATTLEGROUND TEASERS-->
+
+		<tad id="TALoadedGameCore" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Loading game core 1/2</source_meaning>
+				<translated_meaning>Loading game core 1/2</translated_meaning>
+			</meaning>
+			<area x="-150" y="-10" w="300" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="15" color="0xffffff">
+				</font>
+				<content>Loading game core 1/2</content>
+			</txt>
+		</tad>	
+
+		<tad id="TAPreloderPlayNow" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>PLAY NOW</source_meaning>
+				<translated_meaning>PLAY NOW</translated_meaning>
+			</meaning>
+			<area x="-80" y="-22" w="160" h="34">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="19" color="0x000000">
+				</font>
+				<content>PLAY NOW</content>
+			</txt>
+		</tad>
+
+
+		<tad id="TADialogMessageNetworkError" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>A network error has occurred. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>A network error has occurred. Please try again and contact customer support if the error persists.</translated_meaning>
+			</meaning>
+			<!--<area x="-140" y="-75" w="280" h="118">-->
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>A network error has occurred.&#010;Please try again and contact&#010;customer support if the error&#010;persists.</content>
+			</txt>
+		</tad>
+	</tasds>
+</td>

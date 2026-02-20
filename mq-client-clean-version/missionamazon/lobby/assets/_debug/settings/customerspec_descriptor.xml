@@ -1,0 +1,23 @@
+﻿<SETTINGS>
+	<DEBUGGING>
+		<FPS_INDICATOR ENABLED="true"/>
+	</DEBUGGING>
+	
+	<GAME_SETTINGS>
+		<CURRENCY 		USE="false"/>
+		<AUTOPLAY 		ENABLE = "true"/>
+		<DOUBLEUP 		ENABLE = "true"/>
+		<BALANCE_FIELD	ENABLE = "true"/>
+		<BRAND 			ENABLE = "true" PRIORITY = "1"/>
+		<CINEMATIC 		ENABLE = "true"/>
+	</GAME_SETTINGS>
+	
+	<URLS>
+		<ASSET TYPE="dialog_images" 		URL_BASE="_standard/"/>
+		<ASSET TYPE="error_code_xml" 		URL_BASE="_standard/"/>
+		<ASSET TYPE="dialogs_xml" 			URL_BASE="_standard/"/>
+		<ASSET TYPE="bg_notifications_xml" 	URL_BASE="_standard/"/>
+		<ASSET TYPE="currency_symbol_font" 	URL_BASE="_fonts/balance_currency/"/>
+		<ASSET TYPE="shell_settings" 		URL_BASE="_standard"/>
+	</URLS>
+</SETTINGS>

@@ -1,0 +1,48 @@
+
+Golem270.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+270_body
+  rotate: true
+  xy: 306, 8
+  size: 214, 257
+  orig: 214, 257
+  offset: 0, 0
+  index: -1
+270_head
+  rotate: true
+  xy: 927, 126
+  size: 96, 80
+  orig: 96, 80
+  offset: 0, 0
+  index: -1
+270_lf_arm
+  rotate: false
+  xy: 2, 2
+  size: 302, 220
+  orig: 302, 220
+  offset: 0, 0
+  index: -1
+270_lf_leg
+  rotate: true
+  xy: 750, 132
+  size: 90, 175
+  orig: 90, 175
+  offset: 0, 0
+  index: -1
+270_rt_arm
+  rotate: false
+  xy: 565, 60
+  size: 183, 162
+  orig: 183, 162
+  offset: 0, 0
+  index: -1
+270_rt_leg
+  rotate: true
+  xy: 750, 51
+  size: 79, 156
+  orig: 79, 156
+  offset: 0, 0
+  index: -1

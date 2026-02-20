@@ -1,0 +1,76 @@
+
+Ape0.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0_body
+  rotate: false
+  xy: 2, 66
+  size: 232, 188
+  orig: 232, 188
+  offset: 0, 0
+  index: -1
+0_head
+  rotate: false
+  xy: 701, 119
+  size: 134, 135
+  orig: 134, 135
+  offset: 0, 0
+  index: -1
+0_lf_arm
+  rotate: true
+  xy: 450, 116
+  size: 138, 249
+  orig: 138, 249
+  offset: 0, 0
+  index: -1
+0_lf_foot
+  rotate: false
+  xy: 2, 2
+  size: 66, 62
+  orig: 66, 62
+  offset: 0, 0
+  index: -1
+0_lf_foreleg
+  rotate: false
+  xy: 314, 2
+  size: 67, 65
+  orig: 67, 65
+  offset: 0, 0
+  index: -1
+0_lf_leg
+  rotate: true
+  xy: 450, 24
+  size: 90, 108
+  orig: 90, 108
+  offset: 0, 0
+  index: -1
+0_rt_arm
+  rotate: true
+  xy: 236, 69
+  size: 185, 212
+  orig: 185, 212
+  offset: 0, 0
+  index: -1
+0_rt_foot
+  rotate: true
+  xy: 950, 167
+  size: 87, 59
+  orig: 87, 59
+  offset: 0, 0
+  index: -1
+0_rt_foreleg
+  rotate: false
+  xy: 236, 2
+  size: 76, 65
+  orig: 76, 65
+  offset: 0, 0
+  index: -1
+0_rt_leg
+  rotate: false
+  xy: 837, 159
+  size: 111, 95
+  orig: 111, 95
+  offset: 0, 0
+  index: -1

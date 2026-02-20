@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>MAX DUEL</title>
+
+	<meta http-equiv="Content-Type" content="text/html, charset=utf-8" />
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="MobileOptimized" content="960" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<meta charset="utf-8"/>
+
+	<script>
+		(function(){
+			window.gameEnvReady = false;
+			function onGameEnvReady()
+			{
+				window.removeEventListener('load', onGameEnvReady);
+				window.gameEnvReady = true;
+			}
+
+			if (!!window.addEventListener)
+			{
+				window.addEventListener("load", onGameEnvReady);
+			}
+
+			var l_xhr = new XMLHttpRequest();
+			l_xhr.open('GET', 'version.json?t=' + (new Date().getTime()), true);
+			l_xhr.onload = function ()
+			{
+				var lVersion_str = JSON.parse(l_xhr.response).version;
+				loadScript('validator.js', lVersion_str, loadLobby.bind(this, lVersion_str));
+			}
+			l_xhr.send();
+
+			function loadLobby(version)
+			{
+				var lPlatformInfo_obj = window.getPlatformInfo ? window.getPlatformInfo() : {};
+				if (lPlatformInfo_obj.supported)
+				{
+					loadScript('game.js', version);
+				}
+			}
+
+			function loadScript(src, version, onLoadHandler)
+			{
+				var lScript_e = document.createElement('script');
+				lScript_e.type = 'text/javascript';
+				lScript_e.src = src + (version ? '?version=' + version : '');
+				lScript_e.async = false;
+				if (onLoadHandler)
+				{
+					lScript_e.onload = onLoadHandler;
+				}
+				document.head.appendChild(lScript_e);
+			}
+		})();
+	</script>
+
+	<style type="text/css">
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: black;
+		}
+
+		html {
+			touch-action: pan-x pan-y; /*Enable single-finger horizontal and vertical panning gestures. Prevent zooming.*/
+  			height: 100%;
+			-webkit-user-select: none; /*prevent text selection*/
+			-moz-user-select: none; /*prevent text selection*/
+			user-select: none; /*prevent text selection*/
+			-webkit-tap-highlight-color: transparent;
+			-webkit-text-size-adjust: none;
+			-moz-text-size-adjust: none;
+			text-size-adjust: none;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		function getParams() {
+			let params = {
+				'noFRB': 'false',
+				'JS_BUYIN_FUNC_NAME':"openCashier",
+				'JS_HISTORY':"openHistory",
+				'JS_HOME':"openHome",
+				'MQ_TIMER_FREQ':"15",
+				'TEST_SYSTEM': "true",
+				'MQ_TIMER_OFFSET':"420",
+				'MQ_UPDATE_BALANCE_FREQ':"8000",
+				'gameId': '862',
+				'MQ_WEAPONS_MODE': 'LOOT_BOX',
+				'MQ_WEAPONS_SAVING_ALLOWED': 'true',
+				'MQ_CLIENT_ERROR_HANDLING': 'true',
+				'DISABLE_MQ_BACKGROUND_LOADING': 'false',
+				'DISABLE_MQ_AUTOFIRING': 'false',
+				'commonPathForActionGames': 'https://default-beta.discreetgaming.com/html5pc/actiongames/common/',
+				'commonPathForActionGames': 'https://default-beta.discreetgaming.com/html5pc/actiongames/common/',
+				'ROOMS_SORT_ORDER': 'ASC',
+				'isBattleGroundGame': 'true',
+				'battlegroundBuyIn': '1000',
+				//'continueIncompleteRound': 'true',
+				'privateRoomId': 'AgRaDlVQAwkBXkUGXS5scwNRDEYCUlMFXQcHXFY',
+			};
+
+			let bonusId = extractParam(window.location.href, "BonusId");
+			if (!isNaN(bonusId) && bonusId > -1)
+			{
+				params.bonusId = bonusId;
+			}
+			
+			let tournamentId = extractParam(window.location.href, "tournamentId");
+			if (!isNaN(tournamentId) && tournamentId > -1)
+			{
+				params.tournamentId = tournamentId;
+			}
+
+			return params;
+		}
+
+		function getLobbyPath() {
+			return '/';
+		}
+
+		function getGamePath() {
+			return 'http://127.0.0.1:8081/';
+		}
+
+		function openCashier() {
+			window.open('https://google.com?q=desktop_cashier');
+		}
+
+		function openHistory() {
+			window.open('https://google.com?q=desktop_history');
+		}
+
+		function openHome() {
+			window.open('http://google.com?q=desktop_home');
+		}
+		
+		function openMQBLobby() {
+			window.location = "https://html5.org/?desktopHomeUrl";
+		}
+
+		function getCustomerspecDescriptorStoragePathURL() {
+			return "/html5pc/common/default/settings/";
+		}
+
+		function parseParams(url) {
+			var params = {};
+			var parser = document.createElement('a');
+			parser.href = url;
+			var query = parser.search.substring(1);
+			var vars = query.split('&');
+			for (var i = 0; i < vars.length; i++) {
+				var pair = vars[i].split('=');
+				params[pair[0]] = decodeURIComponent(pair[1]);
+			}
+			return params;
+		};
+
+		function extractParam(url, name) {
+			let params = parseParams(url);
+			for (let prop in params)
+			{
+				if (prop == name)
+				{
+					return params[prop];
+				}
+			}
+			return undefined;
+		}
+
+	</script>
+</body>
+
+</html>

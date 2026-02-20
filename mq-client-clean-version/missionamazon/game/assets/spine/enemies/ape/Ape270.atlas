@@ -1,0 +1,76 @@
+
+Ape270.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+270_body
+  rotate: true
+  xy: 2, 4
+  size: 248, 265
+  orig: 248, 265
+  offset: 0, 0
+  index: -1
+270_head
+  rotate: false
+  xy: 609, 170
+  size: 146, 82
+  orig: 146, 82
+  offset: 0, 0
+  index: -1
+270_lf_arm
+  rotate: false
+  xy: 269, 47
+  size: 191, 205
+  orig: 191, 205
+  offset: 0, 0
+  index: -1
+270_lf_foot
+  rotate: true
+  xy: 950, 164
+  size: 88, 51
+  orig: 88, 51
+  offset: 0, 0
+  index: -1
+270_lf_foreleg
+  rotate: true
+  xy: 757, 165
+  size: 87, 95
+  orig: 87, 95
+  offset: 0, 0
+  index: -1
+270_lf_leg
+  rotate: false
+  xy: 609, 84
+  size: 123, 84
+  orig: 123, 84
+  offset: 0, 0
+  index: -1
+270_rt_arm
+  rotate: false
+  xy: 462, 52
+  size: 145, 200
+  orig: 145, 200
+  offset: 0, 0
+  index: -1
+270_rt_foot
+  rotate: false
+  xy: 269, 2
+  size: 71, 43
+  orig: 71, 43
+  offset: 0, 0
+  index: -1
+270_rt_foreleg
+  rotate: true
+  xy: 342, 7
+  size: 38, 55
+  orig: 38, 55
+  offset: 0, 0
+  index: -1
+270_rt_leg
+  rotate: false
+  xy: 854, 165
+  size: 94, 87
+  orig: 94, 87
+  offset: 0, 0
+  index: -1

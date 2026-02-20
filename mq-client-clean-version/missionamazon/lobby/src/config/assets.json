@@ -1,0 +1,738 @@
+{
+    "images":  [
+                   {
+                       "name":  "lobby/battleground/back_to_lobby_button_base",
+                       "src":  "lobby/battleground/back_to_lobby_button_base.png",
+                       "width":  115,
+                       "height":  25,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/battleground/back_to_lobby_button_base_gray",
+                       "src":  "lobby/battleground/back_to_lobby_button_base_gray.png",
+                       "width":  115,
+                       "height":  25,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/battleground/confirm_buy_in/return_to_lobby_button",
+                       "src":  "dialogs/battleground/confirm_buy_in/return_to_lobby_button.png",
+                       "width":  147,
+                       "height":  40,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/battleground/active_btn",
+                       "src":  "lobby/battleground/active_btn.png",
+                       "width":  182,
+                       "height":  54,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/battleground/close_button",
+                       "src":  "lobby/battleground/close_button.png",
+                       "width":  13,
+                       "height":  13,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/battleground/separate_line",
+                       "src":  "dialogs/battleground/separate_line.png",
+                       "width":  106,
+                       "height":  1,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                        "name":  "dialogs/battleground/caf_room_manager/crown",
+                        "src":  "dialogs/battleground/caf_room_manager/crown.png",
+                        "width":  22,
+                        "height":  16,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/toggle_up",
+                        "src":  "dialogs/battleground/caf_room_manager/toggle_up.png",
+                        "width":  22,
+                        "height":  16,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/toggle_down",
+                        "src":  "dialogs/battleground/caf_room_manager/toggle_down.png",
+                        "width":  22,
+                        "height":  16,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/green_marker",
+                        "src":  "dialogs/battleground/caf_room_manager/green_marker.png",
+                        "width":  22,
+                        "height":  16,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/red_marker",
+                        "src":  "dialogs/battleground/caf_room_manager/red_marker.png",
+                        "width":  22,
+                        "height":  16,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/line_hr_white",
+                        "src":  "dialogs/battleground/caf_room_manager/line_hr_white.png",
+                        "width":  1,
+                        "height":  21,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/player_ready",
+                        "src":  "dialogs/battleground/caf_room_manager/player_ready.png",
+                        "width":  12,
+                        "height":  12,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/player_not_ready",
+                        "src":  "dialogs/battleground/caf_room_manager/player_not_ready.png",
+                        "width":  12,
+                        "height":  12,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/player_red_x",
+                        "src":  "dialogs/battleground/caf_room_manager/player_red_x.png",
+                        "width":  12,
+                        "height":  12,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/player_zzz",
+                        "src":  "dialogs/battleground/caf_room_manager/player_zzz.png",
+                        "width":  12,
+                        "height":  12,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/player_clock",
+                        "src":  "dialogs/battleground/caf_room_manager/player_clock.png",
+                        "width":  8,
+                        "height":  12,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/kick_button",
+                        "src":  "dialogs/battleground/caf_room_manager/kick_button.png",
+                        "width":  42,
+                        "height":  23,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/invite_button",
+                        "src":  "dialogs/battleground/caf_room_manager/invite_button.png",
+                        "width":  50,
+                        "height":  23,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/row_manager",
+                        "src":  "dialogs/battleground/caf_room_manager/row_manager.png",
+                        "width":  224,
+                        "height":  26.5,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/row_manager_friends",
+                        "src":  "dialogs/battleground/caf_room_manager/row_manager_friends.png",
+                        "width":  224,
+                        "height":  26.5,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/friends_frame_colapsed",
+                        "src":  "dialogs/battleground/caf_room_manager/friends_frame_colapsed.png",
+                        "width":  224,
+                        "height":  224,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/friends_frame_search",
+                        "src":  "dialogs/battleground/caf_room_manager/friends_frame_search.png",
+                        "width":  224,
+                        "height":  224,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/friends_frame_expanded",
+                        "src":  "dialogs/battleground/caf_room_manager/friends_frame_expanded.png",
+                        "width":  224,
+                        "height":  224,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/row_not_manager",
+                        "src":  "dialogs/battleground/caf_room_manager/row_not_manager.png",
+                        "width":  224,
+                        "height":  26.5,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                    {
+                        "name":  "dialogs/battleground/caf_room_manager/man_icon",
+                        "src":  "dialogs/battleground/caf_room_manager/man_icon.png",
+                        "width":  22,
+                        "height":  16,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                   {
+                       "name":  "dialogs/battleground/no_weapons_fired/active_button",
+                       "src":  "dialogs/battleground/no_weapons_fired/active_button.png",
+                       "width":  174.5,
+                       "height":  47.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/battleground/no_weapons_fired/no_active_button",
+                       "src":  "dialogs/battleground/no_weapons_fired/no_active_button.png",
+                       "width":  189,
+                       "height":  41,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/battleground/not_enough_players/active_button",
+                       "src":  "dialogs/battleground/not_enough_players/active_button.png",
+                       "width":  164,
+                       "height":  48.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/battleground/not_enough_players/no_active_button",
+                       "src":  "dialogs/battleground/not_enough_players/no_active_button.png",
+                       "width":  164,
+                       "height":  48.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/battleground/frame",
+                       "src":  "dialogs/battleground/frame.png",
+                       "width":  422,
+                       "height":  299.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/back",
+                       "src":  "lobby/back.jpg",
+                       "width":  960,
+                       "height":  540,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/player_info_background",
+                       "src":  "lobby/player_info_background.png",
+                       "width":  503,
+                       "height":  89,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/button_incons/list_button",
+                       "src":  "lobby/button_incons/list_button.png",
+                       "width":  8,
+                       "height":  8,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                        "name":  "lobby/button_incons/lobby_room_level_1",
+                        "src":  "lobby/button_incons/lobby_room_level_1.png",
+                        "width":  142.5,
+                        "height":  210.5,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                   {
+                       "name":  "lobby/button_incons/lobby_room_level_2",
+                       "src":  "lobby/button_incons/lobby_room_level_2.png",
+                       "width":  142.5,
+                       "height":  210.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/button_incons/lobby_room_level_3",
+                       "src":  "lobby/button_incons/lobby_room_level_3.png",
+                       "width":  138,
+                       "height":  238,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/button_incons/lobby_room_level_4",
+                       "src":  "lobby/button_incons/lobby_room_level_4.png",
+                       "width":  138,
+                       "height":  238,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/button_incons/lobby_room_level_5",
+                       "src":  "lobby/button_incons/lobby_room_level_5.png",
+                       "width":  146,
+                       "height":  238,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/button_incons/lobby_room_level_6",
+                       "src":  "lobby/button_incons/lobby_room_level_6.png",
+                       "width":  179,
+                       "height":  306,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/button_incons/shadow_circle",
+                       "src":  "lobby/button_incons/shadow_circle.png",
+                       "width":  285,
+                       "height":  285,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/rooms_arrow",
+                       "src":  "lobby/rooms_arrow.png",
+                       "width":  28,
+                       "height":  48,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/rooms_arrow_glow",
+                       "src":  "lobby/rooms_arrow_glow.jpg",
+                       "width":  64,
+                       "height":  64,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/edit_btn",
+                       "src":  "lobby/edit_btn.png",
+                       "width":  86.5,
+                       "height":  24.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "common_btn_group",
+                       "src":  "common_panel/btn_group.png",
+                       "width":  16,
+                       "height":  16,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "common_btn_home",
+                       "src":  "common_panel/btn_home.png",
+                       "width":  15,
+                       "height":  12,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_btn_history",
+                       "src":  "common_panel/btn_history.png",
+                       "width":  12,
+                       "height":  12,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_btn_info",
+                       "src":  "common_panel/btn_info.png",
+                       "width":  9,
+                       "height":  12,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_btn_quests",
+                       "src":  "common_panel/btn_achievements.png",
+                       "width":  14,
+                       "height":  13,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_btn_back",
+                       "src":  "common_panel/btn_back.png",
+                       "width":  13,
+                       "height":  12,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_btn_settings",
+                       "src":  "common_panel/btn_settings.png",
+                       "width":  11,
+                       "height":  12,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_btn_fire_settings",
+                       "src":  "common_panel/btn_fire_settings.png",
+                       "width":  15,
+                       "height":  11,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_balance_icon",
+                       "src":  "common_panel/balance_icon.png",
+                       "width":  19,
+                       "height":  15,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "common_win_icon",
+                       "src":  "common_panel/win_icon.png",
+                       "width":  26,
+                       "height":  26,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_time_icon",
+                       "src":  "common_panel/time_icon.png",
+                       "width":  12,
+                       "height":  12,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_panel/flare",
+                       "src":  "common_panel/flare.jpg",
+                       "width":  69,
+                       "height":  55.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "settings/back",
+                       "src":  "settings/back.png",
+                       "width":  512,
+                       "height":  389,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "settings/icon",
+                       "src":  "settings/icon.png",
+                       "width":  21,
+                       "height":  22.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "settings/toggle_button/on_btn",
+                       "src":  "settings/toggle_button/on_btn.png",
+                       "width":  93.5,
+                       "height":  21,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1188
+                   },
+                   {
+                       "name":  "settings/toggle_button/off_btn",
+                       "src":  "settings/toggle_button/off_btn.png",
+                       "width":  94,
+                       "height":  20,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "settings/bar",
+                       "src":  "settings/bar.png",
+                       "width":  220,
+                       "height":  15.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "settings/slider_back",
+                       "src":  "settings/slider_back.png",
+                       "width":  220,
+                       "height":  15.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "profile/icon",
+                       "src":  "profile/icon.png",
+                       "width":  19,
+                       "height":  17.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/back",
+                       "src":  "dialogs/back.png",
+                       "width":  677,
+                       "height":  399.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/mid_round_exit_icon",
+                       "src":  "dialogs/mid_round_exit_icon.png",
+                       "width":  24,
+                       "height":  21.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/force_sit_out/back",
+                       "src":  "dialogs/force_sit_out/back.png",
+                       "width":  357,
+                       "height":  255,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/compensation_dialog_gackground",
+                       "src":  "dialogs/compensation_dialog_gackground.png",
+                       "width":  322,
+                       "height":  168,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/force_sit_out/icon",
+                       "src":  "dialogs/force_sit_out/icon.png",
+                       "width":  26,
+                       "height":  23,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/active_btn",
+                       "src":  "dialogs/active_btn.png",
+                       "width":  100,
+                       "height":  30,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/deactive_btn",
+                       "src":  "dialogs/deactive_btn.png",
+                       "width":  100,
+                       "height":  30,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/line",
+                       "src":  "dialogs/line.png",
+                       "width":  592,
+                       "height":  1.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/exit_btn",
+                       "src":  "dialogs/exit_btn.png",
+                       "width":  16,
+                       "height":  16,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "tutorial/spot_example",
+                       "src":  "tutorial/spot_example.png",
+                       "width":  256,
+                       "height":  106,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "profile/avatar",
+                       "src":  "profile/avatar.png",
+                       "width":  806.5,
+                       "height":  802,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   }
+               ],
+    "sounds":  [
+                   {
+                       "name":  "mq_gui_button_generic_ui",
+                       "src":  [
+                                   "mq_gui_button_generic_ui_high.mp3",
+                                   "mq_gui_button_generic_ui_high.mp4",
+                                   "mq_gui_button_generic_ui_high.ogg",
+                                   "mq_gui_button_generic_ui_low.mp3",
+                                   "mq_gui_button_generic_ui_low.mp4",
+                                   "mq_gui_button_generic_ui_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  168,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  50
+                                 }
+                   },
+                   {
+                       "name":  "mq_gui_slider",
+                       "src":  [
+                                   "mq_gui_slider_high.mp3",
+                                   "mq_gui_slider_high.mp4",
+                                   "mq_gui_slider_high.ogg",
+                                   "mq_gui_slider_low.mp3",
+                                   "mq_gui_slider_low.mp4",
+                                   "mq_gui_slider_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  287,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  50
+                                 }
+                   },
+                   {
+                       "name":  "mq_gui_launch",
+                       "src":  [
+                                   "mq_gui_launch_high.mp3",
+                                   "mq_gui_launch_high.mp4",
+                                   "mq_gui_launch_high.ogg",
+                                   "mq_gui_launch_low.mp3",
+                                   "mq_gui_launch_low.mp4",
+                                   "mq_gui_launch_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  677,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  51
+                                 }
+                   }
+               ],
+    "fonts":  [
+                  {
+                      "name":  "fnt_nm_arial_currency",
+                      "src":  "currency.ttf"
+                  }
+              ]
+}

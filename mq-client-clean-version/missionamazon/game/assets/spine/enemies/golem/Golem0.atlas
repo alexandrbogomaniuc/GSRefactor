@@ -1,0 +1,48 @@
+
+Golem0.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0_body
+  rotate: false
+  xy: 2, 2
+  size: 218, 244
+  orig: 218, 244
+  offset: 0, 0
+  index: -1
+0_head
+  rotate: true
+  xy: 402, 88
+  size: 100, 103
+  orig: 100, 103
+  offset: 0, 0
+  index: -1
+0_lf_arm
+  rotate: false
+  xy: 313, 190
+  size: 179, 311
+  orig: 179, 311
+  offset: 0, 0
+  index: -1
+0_lf_leg
+  rotate: false
+  xy: 222, 71
+  size: 77, 175
+  orig: 77, 175
+  offset: 0, 0
+  index: -1
+0_rt_arm
+  rotate: false
+  xy: 2, 248
+  size: 309, 253
+  orig: 309, 253
+  offset: 0, 0
+  index: -1
+0_rt_leg
+  rotate: false
+  xy: 301, 26
+  size: 99, 162
+  orig: 99, 162
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,49 @@
+{
+	"skeleton": {
+		"hash": "clMq3YlWBP9Vf6bG3UeAjXtn288",
+		"spine": "3.6.52",
+		"width": 273,
+		"height": 144,
+		"images": "./images/"
+	},
+	"bones": [
+		{
+			"name": "root"
+		},
+		{
+			"name": "bone",
+			"parent": "root",
+			"x": 0,
+			"y": 0
+		},
+		{
+			"name": "laser0",
+			"parent": "bone",
+			"length": 100,
+			"rotation": 0,
+			"x": 0,
+			"y": 0
+		}
+	],
+	"slots": [
+		{
+			"name": "laser0",
+			"bone": "laser0",
+			"color": "ffffffff",
+			"attachment": "laser0"
+		}
+	],
+	"skins": {
+		"default": {
+			"laser0": {
+				"laser0": {
+					"width": 273,
+					"height": 144
+				}
+			}
+		}
+	},
+	"animations": {
+		"0_walk": {}
+	}
+}

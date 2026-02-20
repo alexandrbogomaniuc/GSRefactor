@@ -1,0 +1,48 @@
+
+Frog270.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+270/arm_lf
+  rotate: false
+  xy: 702, 329
+  size: 201, 104
+  orig: 201, 104
+  offset: 0, 0
+  index: -1
+270/arm_rt
+  rotate: false
+  xy: 554, 241
+  size: 90, 58
+  orig: 90, 58
+  offset: 0, 0
+  index: -1
+270/body
+  rotate: false
+  xy: 316, 66
+  size: 236, 233
+  orig: 236, 233
+  offset: 0, 0
+  index: -1
+270/head
+  rotate: false
+  xy: 2, 2
+  size: 144, 141
+  orig: 144, 141
+  offset: 0, 0
+  index: -1
+270/leg_lf
+  rotate: false
+  xy: 2, 145
+  size: 312, 288
+  orig: 312, 288
+  offset: 0, 0
+  index: -1
+270/leg_rt
+  rotate: false
+  xy: 316, 301
+  size: 384, 132
+  orig: 384, 132
+  offset: 0, 0
+  index: -1

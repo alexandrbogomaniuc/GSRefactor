@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<td>
+	<fonts>
+	</fonts>
+
+	<tasds>
+		<tad id="TAPaytablePageKillsCriticalHit" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>CRITICAL HIT</source_meaning>
+				<translated_meaning>CRITICAL HIT</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="332" h="306">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/critical_hit.png"/>
+		</tad>
+
+		<tad id="TAPaytablePageKillsCriticalHitBattleground" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>CRITICAL HIT</source_meaning>
+				<translated_meaning>CRITICAL HIT</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="332" h="306">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/critical_hit_battleground.png"/>
+		</tad>
+	</tasds>
+</td>

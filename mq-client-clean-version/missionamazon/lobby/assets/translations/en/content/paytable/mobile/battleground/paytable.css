@@ -1,0 +1,1178 @@
+.help {
+	margin-top: -10px;
+}
+
+.timerText {
+	margin-top: -8px;
+}
+
+.timer {
+	margin: 0 auto;
+	font-size: 16px;
+}
+
+.paytable_container
+{
+	padding: 0;
+	margin: 0 auto;
+	font-size: 12px;
+	font-family: "fnt_nm_barlow";
+	font-weight: 100;
+	letter-spacing: 0.03em;
+	color: #ffffff;
+	line-height: 1.5;
+	overflow: hidden;
+}
+
+.paytable_container span {
+	display: block;
+	-webkit-text-size-adjust: 100%;
+}
+
+/*MAIN SECTIONS, BLOCKS... */
+
+.paytable_container div[section] {
+	padding: 40px 40px;
+}
+
+.paytable_container div[block],
+.paytable_container span[block]  {
+	padding: 40px 0;
+}
+
+.paytable_container .grey_section {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+/*...MAIN SECTIONS, BLOCKS*/
+
+
+/* MAIN ALIGNMENTS... */
+.paytable_container .center
+{
+	text-align: center;
+}
+
+.paytable_container .left
+{
+	text-align: left;
+}
+
+.paytable_container .right
+{
+	text-align: right;
+}
+
+.paytable_container .vertical_centered_outer {
+	position: relative;
+}
+
+.paytable_container .vertical_centered_inner {
+	top: 50%;
+	transform: translateY(-50%);
+	position: absolute;
+	white-space: nowrap;
+}
+/* ...MAIN ALIGNMENTS */
+
+
+/* MAIN OFFSETS... */
+.paytable_container .vertical_offset_60 {
+	min-height: 60px;
+}
+
+.paytable_container .vertical_offset_45 {
+	min-height: 45px;
+}
+
+.paytable_container .vertical_offset_20 {
+	min-height: 20px;
+}
+/* ...MAIN OFFSETS*/
+
+
+/* MAIN TEXTS STYLES... */
+/*** FONT SIZES... ***/
+.paytable_container .header {
+	font-size: 31px;
+}
+
+.paytable_container .big_header {
+	font-size: 26px;
+	padding-top: 10px;
+	font-family: "fnt_nm_barlow_semibold";
+	-webkit-transform: translateZ(0);
+}
+
+.paytable_container .description_bold {
+	display: inline;
+	font-family: "fnt_nm_barlow_bold";
+	color: white;
+}
+
+/*** ...FONT SIZES ***/
+
+/*** FONT COLORS... ***/
+.paytable_container .orange {
+	color: #fccc32;
+}
+
+.paytable_container .light_grey {
+	color: #acacac;
+}
+/*** ...FONT COLORS ***/
+
+/*...MAIN TEXTS STYLES*/
+
+
+/* PAYOUTS STYLE... */
+.paytable_container .payout_outer {
+	width: 95px;
+	height: 47px;
+	background-color: rgba(0, 0, 0, 0.5);
+	margin: 0 auto;
+	position: relative;
+}
+
+/* ...PAYOUTS STYLE */
+
+
+.paytable_container .section_5 .payout_outer {
+	width: 130px;
+	height: 57px;
+	background-color: rgba(0, 0, 0, 0.5);
+	margin-top: 20px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.paytable_container .section_6 .payout_outer {
+	width: 115px;
+	height: 57px;
+	background-color: rgba(255, 255, 255, 0.1);
+	margin-top: 30px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+
+/*PAGES SPECIFIC...*/
+#rare_gems,
+#unstable_avatar,
+#how_to_play,
+#enemie_hp_and_victory,
+#enemy_spells,
+#kills{
+	margin-top: 5px;
+}
+
+#noSkillNecessaryDescriptionElement .max_shots_value,
+#noSkillNecessaryDescriptionElement .shots_text {
+	display: inline;
+}
+
+#enemies {
+	margin-top: 2px;
+}
+
+#how_to_play .row{
+	padding-left: 40px;
+	padding-right: 40px;
+	margin-top: -5px;
+}
+
+#how_to_play .title{
+	position: relative;
+	font-family: "fnt_nm_barlow_semibold";
+	font-size: 12px;
+	padding: 10px;
+	padding-top: 5px;
+}
+
+#how_to_play .icon{
+	margin-top: -22px;
+}
+
+#how_to_play .weapon_indicator{
+	position: absolute;
+	margin-top: 38px;
+}
+
+#how_to_play .description {
+	font-size: 10px;
+	font-family: "fnt_nm_barlow_regular";
+	margin-top: -129px;
+	text-align: justify;
+	padding-left: 20px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+	width: 290px;
+}
+
+#how_to_play .bottom_description{
+	text-align: center;
+	margin-top: 4px;
+}
+
+#enemies2 .enemy {
+	text-align: center;
+	padding-left: 4px;
+	padding-right: 4px;
+	margin-top: 40px;
+	display: inline-block;
+}
+
+#enemies .enemy {
+	text-align: center;
+	padding-left: 3px;
+	padding-right: 3px;
+	margin-top: 10px;
+	display: inline-block;
+}
+
+#enemies2 .gun ,
+#enemies .gun {
+	position: absolute;
+	margin-top: -30px;
+	margin-left: -8px;
+}
+
+#enemies2 .gun_capture ,
+#enemies .gun_capture {
+	position: absolute;
+	font-family: "fnt_nm_barlow_bold";
+	font-size: 10px;
+	width: 99px;
+	margin-top: 35px;
+	margin-left: -6px;
+	color: #acacac;
+}
+
+#enemies2 .row {
+	align-items: center;
+	justify-content: center;
+	margin-left: 15px;
+	padding-bottom: 15px;
+}
+#enemies .row{
+	align-items: center;
+	justify-content: center;
+	margin-left: 15px;
+	margin-top: 5px;
+	padding-bottom: 20px;
+}
+
+#enemies2 .enemy_capture ,
+#enemies .enemy_capture {
+	position: absolute;
+	font-family: "fnt_nm_barlow_semibold";
+	font-size: 7.5px;
+	width: 106px;
+	margin-top: 5px;
+	margin-left: 1px;
+	text-shadow: black 0 1px 3px;
+	text-align: center;
+}
+
+#enemies2 .enemy_HP_block ,
+#enemies .enemy_HP_block {
+	position: relative;
+	width: 105px;
+	margin-top: -38px;
+}
+
+#enemies .col-9,
+#enemies2 .col-9 {
+	width: 75%;
+	margin-top: -15px;
+}
+
+#enemies2 .enemy_info{
+	position: absolute;
+	margin-top: 5px;
+	text-align: center;
+}
+
+#enemies .enemy_info {
+	position: absolute;
+	margin-top: 9px;
+	text-align: center;
+}
+
+#enemies2 .enemy_info_capture{
+	position: absolute;
+	font-family: "fnt_nm_barlow_regular";
+	color: #c9ffa0;
+	font-size: 8px;
+	width: 110px;
+	line-height: 9px;
+	margin-left: -3px;
+	margin-top: -2px;
+	text-align: center;
+}
+
+#enemies .enemy_info_capture {
+	position: absolute;
+	font-family: "fnt_nm_barlow_regular";
+	color: #c9ffa0;
+	font-size: 8px;
+	width: 110px;
+	line-height: 9px;
+	text-align: center;
+}
+
+#enemies2 .rare_label ,
+#enemies .rare_label {
+	font-family: "fnt_nm_barlow_bold";
+	margin-top: -49px;
+	margin-left: 73px;
+	font-size: 9px;
+	color: black;
+}
+#enemies2 .enemy_rare_payout {
+
+	font-family: "fnt_nm_barlow_bold";
+	font-size: 9px;
+	text-shadow: black 0 1px 3px;
+	position: relative;
+	color: #e2fbbf;
+	white-space: nowrap;
+	margin-top: 6px;
+}
+
+#enemies2 .enemy_payout ,
+#enemies .enemy_payout {
+	font-family: "fnt_nm_barlow_bold";
+	font-size: 9px;
+	text-shadow: black 0 1px 3px;
+	position: relative;
+	color: #e2fbbf;
+	white-space: nowrap;
+	margin-top: 8px;
+}
+
+#enemies .enemy_values_text,
+#enemies2 .enemy_values_text,
+#enemy_spells .enemy_values_text,
+#rare_gems .enemy_values_text{
+	font-family: "fnt_nm_barlow_bold";
+	color: #acacac;
+	font-size: 11px;
+	text-shadow: black 0 1px 3px;
+	text-align: center;
+	display: inline-block;
+	width: 80px;
+}
+
+.enemy_values_text_coin{
+	font-family: "fnt_nm_barlow_bold";
+	color: #acacac;
+	font-size: 11px;
+	text-shadow: black 0 1px 3px;
+	text-align: center;
+	position: relative;
+	left: 32px;
+	top: 155px;
+	width:150px;
+	transform: translate(-50%, 100%);
+	vertical-align: top;
+	line-height: 13px;
+}
+
+#enemies #stake_indicator_text,
+#enemies2 #stake_indicator_text,
+#rare_gems #stake_lb_indicator_text{
+	display: inline;
+	color: #ffc70f;
+}
+
+#enemies #stake_bet_level_value,
+#enemies2 #stake_2_bet_level_value,
+#enemy_spells #stake_se_bet_level_value,
+#rare_gems #stake_lb_bet_level_value {
+	display: inline-block;
+	color: #fccc32;
+}
+
+#enemy_spells .texture{
+	position: absolute;
+	z-index: -1;
+	transform: scale(2.035);
+	margin-top: 117px;
+	margin-left: 235px;
+}
+
+#enemy_spells .goblins{
+	position: absolute;
+	margin-top: 25px;
+	margin-left: 125px;
+}
+
+#enemy_spells .teleport{
+	position: absolute;
+	margin-top: 25px;
+	margin-left: 300px;
+}
+
+#enemy_spells .possession{
+	position: absolute;
+	margin-top: 25px;
+	margin-left: 475px;
+}
+
+#enemy_spells .rage{
+	position: absolute;
+	margin-top: 25px;
+	margin-left: 650px;
+}
+
+#enemy_spells .goblins_text,
+#enemy_spells .teleport_text,
+#enemy_spells .possession_text,
+#enemy_spells .rage_text{
+	position: absolute;
+	margin-left: -70px;
+	width: 300px;
+}
+
+#enemy_spells .goblins_capture,
+#enemy_spells .teleport_capture,
+#enemy_spells .possession_capture,
+#enemy_spells .rage_capture{
+	font-family: "fnt_nm_barlow_semibold";
+	color: #ffc70f;
+	font-size: 14px;
+	text-shadow: black 0 1px 3px;
+	text-align: center;
+}
+
+#enemy_spells .goblins_specific,
+#enemy_spells .teleport_specific,
+#enemy_spells .possession_specific,
+#enemy_spells .rage_specific{
+	font-family: "fnt_nm_barlow";
+	color: #e3e3e3;
+	font-size: 9px;
+	text-shadow: black 0 1px 3px;
+	text-align: center;
+}
+
+#legendary_enemies{
+	margin-left: 30px;
+}
+
+#legendary_enemies .spirit_specter{
+	position: absolute;
+	margin-top: -30px;
+	margin-left: 120px;
+}
+
+#legendary_enemies .fire_specter{
+	position: absolute;
+	margin-top: -30px;
+	margin-left: 360px;
+}
+
+#legendary_enemies .lightning_specter{
+	position: absolute;
+	margin-top: -30px;
+	margin-left: 606px;
+}
+
+#legendary_enemies .primal_king_text{
+	position: absolute;
+	margin-left: -7px;
+	width: 300px;
+}
+
+#legendary_enemies .stone_guardian_text{
+	position: absolute;
+	margin-left: -10px;
+	width: 300px;
+}
+
+#legendary_enemies .spider_queen_text{
+	position: absolute;
+	margin-left: -22px;
+	width: 300px;
+}
+
+#legendary_enemies .primal_king_capture,
+#legendary_enemies .stone_guardian_capture,
+#legendary_enemies .spider_queen_capture{
+	font-family: "fnt_nm_barlow_bold";
+	color: #ffffff;
+	width: 300px;
+	margin-top:168px;
+	font-size: 14px;
+	text-shadow: 2px 1px 3px black;
+	text-align: center;
+}
+
+#legendary_enemies .fire_specter_specific,
+#legendary_enemies .lightning_specter_specific,
+#legendary_enemies .spirit_specter_specific{
+	font-family: "fnt_nm_barlow_regular";
+	color: #e3e3e3;
+	font-size: 10px;
+	text-shadow: black 0 1px 3px;
+	text-align: center;
+}
+
+#legendary_enemies .enemy_payout {
+	font-family: "fnt_nm_barlow_bold";
+	color: #ffffff;
+	text-shadow: 0 0 2px #ffe900;
+	-webkit-background-clip: text;
+		-moz-background-clip: text;
+			background-clip: text;
+	margin-top:-236px;
+}
+
+#legendary_enemies .description_top {
+	font-size: 10.5px;
+	font-family: "fnt_nm_barlow_bold";
+	line-height: 18px;
+	text-align: center;
+	margin-left: 49px;
+	margin-right: 49px;
+	margin-top: 10px;
+}
+
+#legendary_enemies .description_down {
+	font-size: 12px;
+	font-family: "fnt_nm_barlow_bold";
+	line-height: 18px;
+	text-align: center;
+	margin-left: 49px;
+	margin-right: 49px;
+	margin-top: 305px;
+}
+
+#rare_gems.row{
+	align-items: center;
+	justify-content: center;
+	margin-top: -20px;
+}
+
+
+#rare_gems .description {
+	font-size: 11px;
+	font-family: "fnt_nm_barlow_bold";
+	line-height: 18px;
+	text-align: center;
+	margin-left: 49px;
+	margin-right: 49px;
+}
+
+#rare_gems .boss{
+	position: absolute;
+	margin-left: 260px;
+	margin-top: -58px;
+}
+
+#rare_gems .boss_capture {
+	position: absolute;
+	font-family: "fnt_nm_barlow_bold";
+	color: #ffffff;
+	font-size: 9px;
+	margin-top: -257px;
+	margin-left: 340px;
+	text-align: right;
+	letter-spacing: 1px;
+}
+
+#rare_gems .sapphire{
+    margin-top: -33px;
+	margin-left: 69px;
+}
+
+#rare_gems .topaz{
+	margin-top: -45.5px;
+    margin-left: 207px;
+}
+
+#rare_gems .emerald{
+    margin-top: -44.5px;
+    margin-left: 337px;
+}
+
+#rare_gems .ruby{
+    margin-top: -45px;
+    margin-left: 486px;
+}
+
+#rare_gems .diamond{
+    margin-top: -45px;
+    margin-left: 599px;
+}
+
+#rare_gems .sapphire_caption{
+	font-size: 15px;
+	margin-top: -17px;
+	padding-left: 93px;
+	font-family: "fnt_nm_barlow_bold";
+}
+
+#rare_gems .topaz_caption{
+	font-size: 15px;
+	margin-top: -4px;
+	padding-left: 103px;
+	font-family: "fnt_nm_barlow_bold";
+}
+
+#rare_gems .emerald_caption{
+	font-size: 15px;
+	margin-top: -4px;
+	padding-left: 103px;
+	font-family: "fnt_nm_barlow_bold";
+}
+
+#rare_gems .ruby_caption{
+	font-size: 15px;
+	margin-top: -14px;
+	padding-left: 103px;
+	font-family: "fnt_nm_barlow_bold";
+}
+
+#rare_gems .diamond_caption{
+	font-size: 15px;
+	margin-top: -24px;
+	padding-left: 103px;
+	font-family: "fnt_nm_barlow_bold";
+}
+
+#rare_gems .gem_paid_0{
+	font-size: 15px;
+	font-family: "fnt_nm_barlow_bold";
+	white-space: nowrap;
+    width: 206px;
+    text-align: center;
+	padding-left: 51px;
+}
+
+#rare_gems .gem_paid_1{
+	font-size: 15px;
+	font-family: "fnt_nm_barlow_bold";
+	white-space: nowrap;
+    width: 206px;
+    text-align: center;
+	padding-left: 49px;
+}
+
+#rare_gems .gem_paid_2{
+	font-size: 15px;
+	font-family: "fnt_nm_barlow_bold";
+	white-space: nowrap;
+	width: 206px;
+    text-align: center;
+    padding-left: 66px;
+}
+
+#rare_gems .gem_paid_3{
+	font-size: 15px;
+	font-family: "fnt_nm_barlow_bold";
+	white-space: nowrap;
+    width: 206px;
+    text-align: center;
+	padding-left: 37px;
+}
+
+#rare_gems .gem_paid_4{
+	font-size: 15px;
+	font-family: "fnt_nm_barlow_bold";
+	white-space: nowrap;
+    width: 206px;
+    text-align: center;
+	padding-left: 66px;
+}
+
+#rare_gems .gems{
+	margin-top: -302px;
+    margin-left: 79px;
+}
+
+#rare_gems .enemy_payout {
+	position: absolute;
+	font-family: "fnt_nm_barlow_bold";
+	color: #d8ecf7;
+	font-size: 10.5px;
+	width: 180px;
+	margin-top: -245px;
+	left: 222px;
+	text-align: right;
+	line-height: 10px
+}
+
+#rare_gems .enemy_values_block{
+	position: absolute;
+	margin-top: 84px;
+	margin-left: 0px;
+}
+
+
+#rare_gems .description_specific{
+	font-size: 10px;
+	font-family: "fnt_nm_barlow_bold";
+	line-height: 17px;
+	text-align: center;
+	color: #acacac;
+	margin-top: 245px;
+}
+
+
+#weapons .description {
+	font-size: 11px;
+	font-family: "fnt_nm_barlow_bold";
+	text-align: center;
+	padding-left: 60px;
+	padding-right: 60px;
+	line-height: 16pt;
+	margin-top: 8px;
+	line-height: 11pt;
+}
+
+#weapons .texture{
+	position: absolute;
+	z-index: -1;
+	transform: scale(2.035);
+	margin-top: 121px;
+	margin-left: 235px;
+}
+
+#weapons .turret{
+	margin-top: -205px;
+	margin-left: -192px;
+	text-align: center;
+}
+
+#weapons .turret_img {
+    margin-top: 112px;
+    margin-left: 342px;
+}
+
+#weapons #back{
+	position: absolute;
+	z-index: -1;
+	transform: scale(2.03);
+	margin-left: 467px;
+	margin-top: 240px;
+}
+
+#weapons .turret_caption{
+	position: absolute;
+	margin-top: -183px;
+	margin-left: 506px;
+	text-align: center;
+	width: 300px;
+	font-family: "fnt_nm_barlow_bold";
+	font-size: 11px;
+	color: #ffffff;
+}
+
+#weapons .turret_available{
+	position: absolute;
+    margin-top: -165px;
+	margin-left: 402px;
+	text-align: center;
+	width: 500px;
+	font-family: "fnt_nm_barlow_regular";
+	font-size: 10px;
+}
+
+
+#special_weapons .description {
+	font-size: 10.5px;
+	font-family: "fnt_nm_barlow";
+	text-align: center;
+	padding-left: 30px;
+	padding-right: 30px;
+	line-height: 13pt;
+	margin-top: 25px;
+}
+
+#special_weapons .description_down {
+	font-size: 11px;
+	font-family: "fnt_nm_barlow";
+	text-align: center;
+	padding-left: 60px;
+	padding-right: 60px;
+	line-height: 14pt;
+	margin-top: 7px;
+	width:1000px;
+	line-height: 13pt;
+}
+
+#special_weapons .description_downside {
+	font-size: 10.3px;
+	font-family: "fnt_nm_barlow";
+	text-align: center;
+	padding-left: 60px;
+	padding-right: 60px;
+	margin-top: 29px;
+	line-height: 13pt;
+}
+
+#special_weapons .row{
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-top: 10px;
+	padding-bottom: 90px;
+	justify-content: center;
+}
+
+#special_weapons .col-2{
+	width: 19.5%;
+}
+
+#special_weapons .weapon_block{
+	margin-top: -191px;
+}
+
+#special_weapons .weapon_icon{
+	height: 91px;
+}
+
+#special_weapons .title{
+	font-family: "fnt_nm_barlow_semibold";
+	font-size: 11px;
+	margin-top: -5px;
+}
+
+#special_weapons .weapon_description{
+	font-size: 8.5px;
+	font-family: "fnt_nm_barlow_regular";
+	margin-top: 5px;
+	margin-left: 15px;
+	line-height: 12px;
+	width: 140px;
+	height: 54px;
+}
+
+#special_weapons .block{
+	display: inline-block;
+}
+
+#special_weapons .cost_description{
+	font-size: 9px;
+	font-family: "fnt_nm_barlow_bold";
+}
+
+#special_weapons .cost_value_description{
+	font-size: 13px;
+	font-family: "fnt_nm_barlow_bold";
+	color: #fccc32;
+}
+
+#special_weapons .sw_info{
+	margin-top: -76px;
+}
+
+#kills .description {
+	font-size: 11px;
+	font-family: "fnt_nm_barlow_regular";
+	margin-top: 250px;
+	margin-left: 22px;
+	margin-right: 22px;
+	text-align: center;
+}
+
+#kills .screenshot{
+	position: absolute;
+	left: 300px;
+	top: 50px;
+	z-index: -1;
+}
+
+#kills .row{
+	padding-right: 25px;
+	padding-left: 25px;
+	margin-top: 40px;
+	justify-content: center;
+}
+
+#kills .icon{
+	margin-top: -13px;
+	margin-left: -82px;
+}
+
+#kills #back{
+	position: absolute;
+	z-index: -1;
+	transform: scale(1.015);
+	margin-left: 7px;
+	margin-top: -36px;
+}
+
+#mobile_controls_1 #back,
+#controls_1 #back{
+	position: absolute;
+	z-index: -1;
+	transform: scale(1.015);
+	margin-left: 7px;
+	margin-top: 4px;
+}
+
+
+#mobile_controls_1 .line,
+#controls_1 .line{
+	border-right: 1px solid white;
+	height: 346px;
+	position: absolute;
+	margin-left: 200px;
+	opacity: 0.2;
+}
+
+#mobile_controls_1 .line_weight,
+#controls_1 .line_weight{
+	border-right: 1px solid white;
+	height: 346px;
+	position: absolute;
+	margin-left: 275px;
+	opacity: 0.2;
+}
+
+
+#controls_1 .line{
+	margin-left: 200px;
+}
+
+#controls_1 .line_weight{
+	margin-left: 270px;
+}
+
+#controls_1 .line_weight_less{
+	border-right: 1px solid white;
+	height: 346px;
+	position: absolute;
+	margin-left: 262px;
+	opacity: 0.2;
+}
+
+#mobile_controls_1 .row,
+#controls_1 .row {
+    padding-top: 93px;
+    padding-left: 16px;
+    padding-right: 38px;
+}
+
+#mobile_controls_1 .title,
+#controls_1 .title{
+	text-align: left;
+	display: flex;
+}
+
+#mobile_controls_1 .title_capture,
+#controls_1 .title_capture{
+	font-family: "fnt_nm_barlow_semibold";
+	color: white;
+	font-size: 12px;
+	margin-top: 4px;
+}
+
+#mobile_controls_1 .description,
+#controls_1 .description{
+	text-align: left;
+	font-family: "fnt_nm_barlow_regular";
+	font-size: 11px;
+	margin-top: 6px;
+	width: 145px;
+}
+
+#controls_1 .description1{
+	text-align: left;
+	font-family: "fnt_nm_barlow_regular";
+	font-size: 11px;
+	margin-top: 6px;
+	width: 300px;
+}
+
+#controls_1 .description2{
+	text-align: left;
+	font-family: "fnt_nm_barlow_regular";
+	font-size: 11px;
+	margin-top: 6px;
+	width: 250px;
+}
+
+#mobile_controls_1 .description1{
+	text-align: left;
+	font-family: "fnt_nm_barlow_regular";
+	font-size: 11px;
+	margin-top: 6px;
+	width: 105px;
+}
+
+#mobile_controls_1 .row_content,
+#controls_1 .row_content{
+	padding: 12px;
+}
+
+#mobile_controls_1 .cost_value_description,
+#controls_1 .cost_value_description{
+	font-size: 12px;
+	z-index: 5;
+	text-shadow:
+	0px 1px #383838, 0px .5px #383838,
+	1px 1px #383838, 1px .5px #383838,
+	-1px 1px #383838, -1px .5px #383838,
+
+	0px 2px black, 0px 1.5px black,
+	1px 2px black, 1px 1.5px black,
+	2px 2px black, 2px 1.5px black,
+	-2px 2px black, -2px 1.5px black,
+	0px 3px black, 0px 2.5px black,
+	1px 3px black, 1px 2.5px black,
+	2px 3px black, 2px 2.5px black,
+	-2px 3px black, -2px 2.5px black;
+	text-align: center;
+	font-family: "fnt_nm_barlow_bold";
+}
+#controls_1 .controls_paid_0{
+	margin-top: -23px;
+	margin-left: -13px;
+}
+
+#controls_1 .controls_paid_1{
+	margin-top: -73px;
+	margin-left: -43px;
+}
+
+#controls_1 .controls_paid_2{
+	margin-top: -31px;
+	margin-left: -43px;
+}
+
+#controls_1 .controls_paid_3{
+	margin-top: -23px;
+	margin-left: -32px;
+}
+
+#controls_1 .controls_paid_4{
+	margin-top: -55px;
+	margin-left: -35px;
+}
+
+#controls_1 .controls_paid_5{
+	margin-top: -26px;
+	margin-left: -3px;
+}
+
+#mobile_controls_1 .controls_mobile_paid_0{
+	margin-top: -23px;
+	margin-left: -13px;
+}
+
+#mobile_controls_1 .controls_mobile_paid_1{
+	margin-top: -73px;
+	margin-left: -43px;
+}
+
+#mobile_controls_1 .controls_mobile_paid_2{
+	margin-top: -31px;
+	margin-left: -44px;
+}
+
+#mobile_controls_1 .controls_mobile_paid_3{
+	margin-top: -23px;
+	margin-left: -32px;
+}
+
+#mobile_controls_1 .controls_mobile_paid_4{
+	margin-top: -55px;
+	margin-left: -35px;
+}
+
+#mobile_controls_1 .controls_mobile_paid_5{
+	margin-top: -26px;
+	margin-left: -3px;
+}
+
+#mobile_controls_1 .sw_8,
+#controls_1 .sw_8{
+	position: absolute;
+	margin-left: 7px;
+	margin-top: -2px;
+}
+
+
+
+#mobile_controls_1 .sw_7,
+#controls_1 .sw_7{
+	position: absolute;
+	margin-left: 0px;
+	margin-top: 85px;
+}
+#mobile_controls_1 .sw_1,
+#controls_1 .sw_1{
+	position: absolute;
+	margin-left: 3px;
+	margin-top: 47px;
+}
+
+#mobile_controls_1 .sw_3,
+#controls_1 .sw_3{
+	position: absolute;
+	margin-left: 0px;
+	margin-top: 148px;
+}
+
+#mobile_controls_1 .sw_4,
+#controls_1 .sw_4{
+	position: absolute;
+	margin-left: 1px;
+	margin-top: 225px;
+}
+
+#mobile_controls_1 .weapon_capture,
+#controls_1 .weapon_capture {
+	position: absolute;
+	margin-top: 0px;
+	margin-left: 112px;
+	text-align: left;
+}
+
+#mobile_controls_1 .weapon_description,
+#controls_1 .weapon_description {
+	position: absolute;
+	margin-top: 40px;
+	margin-left: 112px;
+	width: 130px;
+}
+
+#mobile_controls_1 .turret_img,
+#controls_1 .turret_img {
+	width: 88px;
+	margin-top: 26px;
+	margin-left: -30px;
+}
+
+#controls_1 .description_italic {
+	display: inline;
+	font-family: "fnt_nm_barlow_italic";
+}
+/*...PAGES SPECIFIC*/
+
+/* ADDITIONAL... */
+.row {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+#controls_1 .col-2 {width: 25%;}
+#controls_1 .col-3 {width: 30%;}
+#mobile_controls_1 .col-3 {width: 21%}
+#mobile_controls_1 .col-2 {width: 16%}
+
+/* ...ADDITIONAL*/

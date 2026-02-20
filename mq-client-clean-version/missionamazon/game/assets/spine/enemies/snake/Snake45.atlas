@@ -1,0 +1,20 @@
+
+Snake45.png
+size: 128,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+down/body
+  rotate: false
+  xy: 2, 2
+  size: 40, 373
+  orig: 40, 373
+  offset: 0, 0
+  index: -1
+down/head
+  rotate: false
+  xy: 44, 239
+  size: 81, 136
+  orig: 81, 136
+  offset: 0, 0
+  index: -1

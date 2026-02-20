@@ -1,0 +1,159 @@
+{
+	"images": [
+		{
+			"name": "preloader/back",
+			"src": "preloader/back.jpg",
+			"width": 960,
+			"height": 565,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/back_btg",
+			"src": "preloader/back_btg.jpg",
+			"width": 960,
+			"height": 540,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "common_btn_sound_off",
+			"src": "preloader/btn_sound_off.png",
+			"width": 13,
+			"height": 11,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_btn_sound_on",
+			"src": "preloader/btn_sound_on.png",
+			"width": 13,
+			"height": 11,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "preloader/loading_bar/back",
+			"src": "preloader/loading_bar/back.png",
+			"width": 427,
+			"height": 29,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/loading_bar/fill",
+			"src": "preloader/loading_bar/fill.png",
+			"width": 408,
+			"height": 14,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/teasers/teaser_0",
+			"src": "preloader/teasers/teaser_0.png",
+			"width": 168,
+			"height": 150,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/teasers/teaser_1",
+			"src": "preloader/teasers/teaser_1.png",
+			"width": 168,
+			"height": 150,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/teasers/teaser_2",
+			"src": "preloader/teasers/teaser_2.png",
+			"width": 168,
+			"height": 150,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/teasers/teaser_0_btg",
+			"src": "preloader/teasers/teaser_0_btg.png",
+			"width": 168,
+			"height": 150,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/teasers/teaser_1_btg",
+			"src": "preloader/teasers/teaser_1_btg.png",
+			"width": 168,
+			"height": 150,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/teasers/teaser_2_btg",
+			"src": "preloader/teasers/teaser_2_btg.png",
+			"width": 168,
+			"height": 150,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/tips_base",
+			"src": "preloader/tips_base.png",
+			"width": 274.5,
+			"height": 240,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/tips_base_btg",
+			"src": "preloader/tips_base_btg.png",
+			"width": 191.5,
+			"height": 174.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/play_now_button_base_disabled",
+			"src": "preloader/play_now_button_base_disabled.png",
+			"width": 169,
+			"height": 47,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/play_now_button_base_enabled",
+			"src": "preloader/play_now_button_base_enabled.png",
+			"width": 169,
+			"height": 47,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/play_now_button_base_selected",
+			"src": "preloader/play_now_button_base_selected.png",
+			"width": 169,
+			"height": 47,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		}
+	]
+}

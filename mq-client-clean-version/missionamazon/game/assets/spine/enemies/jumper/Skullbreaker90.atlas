@@ -1,0 +1,48 @@
+
+Skullbreaker90.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+90_body
+  rotate: true
+  xy: 2, 2
+  size: 121, 266
+  orig: 121, 266
+  offset: 0, 0
+  index: -1
+90_head
+  rotate: false
+  xy: 885, 30
+  size: 62, 93
+  orig: 62, 93
+  offset: 0, 0
+  index: -1
+90_lf_arm
+  rotate: true
+  xy: 784, 26
+  size: 97, 99
+  orig: 97, 99
+  offset: 0, 0
+  index: -1
+90_lf_leg
+  rotate: true
+  xy: 270, 37
+  size: 86, 174
+  orig: 86, 174
+  offset: 0, 0
+  index: -1
+90_rt_arm
+  rotate: true
+  xy: 635, 50
+  size: 73, 147
+  orig: 73, 147
+  offset: 0, 0
+  index: -1
+90_rt_leg
+  rotate: true
+  xy: 446, 61
+  size: 62, 187
+  orig: 62, 187
+  offset: 0, 0
+  index: -1

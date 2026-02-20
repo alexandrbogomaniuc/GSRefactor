@@ -1,0 +1,76 @@
+
+Ape90.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+90_body
+  rotate: false
+  xy: 2, 55
+  size: 247, 189
+  orig: 247, 189
+  offset: 0, 0
+  index: -1
+90_head
+  rotate: false
+  xy: 700, 106
+  size: 145, 138
+  orig: 145, 138
+  offset: 0, 0
+  index: -1
+90_lf_arm
+  rotate: true
+  xy: 501, 58
+  size: 186, 197
+  orig: 186, 197
+  offset: 0, 0
+  index: -1
+90_lf_foot
+  rotate: false
+  xy: 2, 2
+  size: 88, 51
+  orig: 88, 51
+  offset: 0, 0
+  index: -1
+90_lf_foreleg
+  rotate: false
+  xy: 368, 27
+  size: 84, 75
+  orig: 84, 75
+  offset: 0, 0
+  index: -1
+90_lf_leg
+  rotate: false
+  xy: 847, 150
+  size: 124, 94
+  orig: 124, 94
+  offset: 0, 0
+  index: -1
+90_rt_arm
+  rotate: true
+  xy: 251, 104
+  size: 140, 248
+  orig: 140, 248
+  offset: 0, 0
+  index: -1
+90_rt_foot
+  rotate: false
+  xy: 700, 41
+  size: 74, 63
+  orig: 74, 63
+  offset: 0, 0
+  index: -1
+90_rt_foreleg
+  rotate: false
+  xy: 776, 34
+  size: 71, 70
+  orig: 71, 70
+  offset: 0, 0
+  index: -1
+90_rt_leg
+  rotate: false
+  xy: 251, 10
+  size: 115, 92
+  orig: 115, 92
+  offset: 0, 0
+  index: -1

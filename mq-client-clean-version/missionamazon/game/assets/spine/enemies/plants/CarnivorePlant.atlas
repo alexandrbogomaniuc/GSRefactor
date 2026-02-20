@@ -1,0 +1,62 @@
+
+CarnivorePlant.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 4, 232
+  size: 683, 765
+  orig: 683, 765
+  offset: 0, 0
+  index: -1
+head_base
+  rotate: false
+  xy: 4, 4
+  size: 198, 224
+  orig: 198, 224
+  offset: 0, 0
+  index: -1
+head_front
+  rotate: true
+  xy: 691, 548
+  size: 449, 300
+  orig: 449, 300
+  offset: 0, 0
+  index: -1
+head_front_closed
+  rotate: false
+  xy: 691, 109
+  size: 282, 435
+  orig: 282, 435
+  offset: 0, 0
+  index: -1
+Vines
+  rotate: false
+  xy: 1597, 449
+  size: 366, 339
+  orig: 366, 339
+  offset: 0, 0
+  index: -1
+Vines 2
+  rotate: false
+  xy: 1028, 362
+  size: 565, 426
+  orig: 565, 426
+  offset: 0, 0
+  index: -1
+head_back
+  rotate: false
+  xy: 1028, 28
+  size: 450, 330
+  orig: 450, 330
+  offset: 0, 0
+  index: -1
+head_back_closed
+  rotate: false
+  xy: 1482, 4
+  size: 275, 354
+  orig: 275, 354
+  offset: 0, 0
+  index: -1

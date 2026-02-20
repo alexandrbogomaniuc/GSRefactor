@@ -1,0 +1,48 @@
+
+Skullbone270.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+270_body
+  rotate: true
+  xy: 157, 143
+  size: 78, 155
+  orig: 78, 155
+  offset: 0, 0
+  index: -1
+270_head
+  rotate: true
+  xy: 151, 2
+  size: 70, 85
+  orig: 70, 85
+  offset: 0, 0
+  index: -1
+270_lf_arm
+  rotate: false
+  xy: 2, 80
+  size: 153, 141
+  orig: 153, 141
+  offset: 0, 0
+  index: -1
+270_lf_leg
+  rotate: true
+  xy: 314, 163
+  size: 58, 158
+  orig: 58, 158
+  offset: 0, 0
+  index: -1
+270_rt_arm
+  rotate: true
+  xy: 157, 74
+  size: 67, 123
+  orig: 67, 123
+  offset: 0, 0
+  index: -1
+270_rt_leg
+  rotate: true
+  xy: 2, 29
+  size: 49, 147
+  orig: 49, 147
+  offset: 0, 0
+  index: -1

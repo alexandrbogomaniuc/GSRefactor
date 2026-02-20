@@ -1,0 +1,55 @@
+
+Witch90.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+90_body
+  rotate: true
+  xy: 4, 117
+  size: 134, 271
+  orig: 134, 271
+  offset: 0, 0
+  index: -1
+90_head
+  rotate: false
+  xy: 383, 59
+  size: 61, 77
+  orig: 61, 77
+  offset: 0, 0
+  index: -1
+90_lf_arm
+  rotate: false
+  xy: 311, 58
+  size: 68, 78
+  orig: 68, 78
+  offset: 0, 0
+  index: -1
+90_lf_leg
+  rotate: true
+  xy: 4, 4
+  size: 53, 174
+  orig: 53, 174
+  offset: 0, 0
+  index: -1
+90_rt_arm
+  rotate: true
+  xy: 187, 57
+  size: 56, 120
+  orig: 56, 120
+  offset: 0, 0
+  index: -1
+90_rt_leg
+  rotate: true
+  xy: 4, 61
+  size: 52, 179
+  orig: 52, 179
+  offset: 0, 0
+  index: -1
+90_staff
+  rotate: true
+  xy: 279, 140
+  size: 111, 221
+  orig: 111, 221
+  offset: 0, 0
+  index: -1

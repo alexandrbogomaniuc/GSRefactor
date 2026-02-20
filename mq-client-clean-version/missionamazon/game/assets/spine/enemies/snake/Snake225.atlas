@@ -1,0 +1,20 @@
+
+Snake225.png
+size: 512,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+up/body
+  rotate: true
+  xy: 2, 14
+  size: 35, 435
+  orig: 35, 435
+  offset: 0, 0
+  index: -1
+up/head
+  rotate: false
+  xy: 439, 2
+  size: 66, 47
+  orig: 66, 47
+  offset: 0, 0
+  index: -1

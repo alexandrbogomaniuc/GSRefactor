@@ -1,0 +1,31 @@
+{
+	"images": [
+		{
+			"name": "profile/slider/slider_back",
+			"src": "profile/slider/slider_back.png",
+			"width": 220,
+			"height": 14.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "profile/slider/slider_track",
+			"src": "profile/slider/slider_track.png",
+			"width": 58.5,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},		
+		{
+			"name": "profile/fare",
+			"src": "profile/fare.jpg",
+			"width": 222,
+			"height": 147,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		}
+	]
+}

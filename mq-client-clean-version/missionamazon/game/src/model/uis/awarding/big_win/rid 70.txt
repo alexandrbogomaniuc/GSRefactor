@@ -1,0 +1,371 @@
+{
+	"enemyId": 595,
+	"weaponId": 20,
+	"x": 687.2667604313174,
+	"y": 484.662447257384,
+	"isPaidSpecialShot": false,
+	"weaponPrice": 1,
+	"class": "Shot",
+	"rid": 70,
+	"date": 1642489491867
+}
+
+{
+	"seatId": 0,
+	"damage": 0.0,
+	"win": 19800.0,
+	"awardedWeaponId": -1,
+	"usedSpecialWeapon": 20,
+	"remainingSWShots": 4,
+	"score": 0.0,
+	"enemy": {
+		"id": 595,
+		"typeId": 9,
+		"speed": 9.0,
+		"awardedPrizes": "",
+		"awardedSum": 0.0,
+		"energy": 1.0,
+		"fullEnergy": 1.0,
+		"skin": 1,
+		"parentEnemyId": -1,
+		"members": [],
+		"swarmId": 0,
+		"swarmType": 0
+	},
+	"hit": true,
+	"awardedWeaponShots": 0,
+	"killed": true,
+	"lastResult": false,
+	"multiplierPay": 0,
+	"killBonusPay": 0.0,
+	"serverAmmo": 1982,
+	"bossNumberShots": 0,
+	"currentWin": 47400.0,
+	"hvEnemyId": -1,
+	"x": 687.2668,
+	"y": 484.66245,
+	"mineId": "",
+	"newFreeShots": 0,
+	"newFreeShotsSeatId": 0,
+	"hitResultBySeats": {
+		"0": [
+			{
+				"id": 0,
+				"value": "19800.0"
+			}
+		]
+	},
+	"instanceKill": false,
+	"chMult": 1,
+	"awardedWeapons": [],
+	"needExplode": false,
+	"isExplode": false,
+	"gems": [
+		0,
+		0,
+		0,
+		0
+	],
+	"enemyId": 595,
+	"shotEnemyId": 595,
+	"betLevel": 3,
+	"isPaidSpecialShot": false,
+	"moneyWheelWin": 0.0,
+	"enemiesInstantKilled": {},
+	"enemiesWithUpdatedMode": [],
+	"bulletId": "",
+	"nextBetLevel": -1,
+	"gemsPayout": 0.0,
+	"currentPowerUpMultiplier": 3,
+	"date": 1642489491870,
+	"rid": 70,
+	"class": "Hit"
+}
+
+{
+	"seatId": 0,
+	"damage": 0.0,
+	"win": 7200.0,
+	"awardedWeaponId": -1,
+	"usedSpecialWeapon": 20,
+	"remainingSWShots": 4,
+	"score": 0.0,
+	"enemy": {
+		"id": 542,
+		"typeId": 5,
+		"speed": 3.200000047683716,
+		"awardedPrizes": "",
+		"awardedSum": 0.0,
+		"energy": 1.0,
+		"fullEnergy": 1.0,
+		"skin": 0,
+		"parentEnemyId": -1,
+		"members": [],
+		"swarmId": 102,
+		"swarmType": 1
+	},
+	"hit": true,
+	"awardedWeaponShots": 0,
+	"killed": true,
+	"lastResult": false,
+	"multiplierPay": 0,
+	"killBonusPay": 0.0,
+	"serverAmmo": 1982,
+	"bossNumberShots": 0,
+	"currentWin": 54600.0,
+	"hvEnemyId": -1,
+	"x": 687.2668,
+	"y": 484.66245,
+	"mineId": "",
+	"newFreeShots": 0,
+	"newFreeShotsSeatId": 0,
+	"hitResultBySeats": {
+		"0": [
+			{
+				"id": 0,
+				"value": "7200.0"
+			}
+		]
+	},
+	"instanceKill": false,
+	"chMult": 1,
+	"awardedWeapons": [],
+	"needExplode": false,
+	"isExplode": false,
+	"gems": [
+		0,
+		0,
+		0,
+		0
+	],
+	"enemyId": 542,
+	"shotEnemyId": 595,
+	"betLevel": 3,
+	"isPaidSpecialShot": false,
+	"moneyWheelWin": 0.0,
+	"enemiesInstantKilled": {},
+	"enemiesWithUpdatedMode": [],
+	"bulletId": "",
+	"nextBetLevel": -1,
+	"gemsPayout": 0.0,
+	"currentPowerUpMultiplier": 3,
+	"date": 1642489491870,
+	"rid": 70,
+	"class": "Hit"
+}
+
+{
+	"seatId": 0,
+	"damage": 0.0,
+	"win": 7200.0,
+	"awardedWeaponId": -1,
+	"usedSpecialWeapon": 20,
+	"remainingSWShots": 4,
+	"score": 0.0,
+	"enemy": {
+		"id": 543,
+		"typeId": 5,
+		"speed": 3.200000047683716,
+		"awardedPrizes": "",
+		"awardedSum": 0.0,
+		"energy": 1.0,
+		"fullEnergy": 1.0,
+		"skin": 0,
+		"parentEnemyId": -1,
+		"members": [],
+		"swarmId": 102,
+		"swarmType": 1
+	},
+	"hit": true,
+	"awardedWeaponShots": 0,
+	"killed": true,
+	"lastResult": false,
+	"multiplierPay": 0,
+	"killBonusPay": 0.0,
+	"serverAmmo": 1982,
+	"bossNumberShots": 0,
+	"currentWin": 61800.0,
+	"hvEnemyId": -1,
+	"x": 687.2668,
+	"y": 484.66245,
+	"mineId": "",
+	"newFreeShots": 0,
+	"newFreeShotsSeatId": 0,
+	"hitResultBySeats": {
+		"0": [
+			{
+				"id": 0,
+				"value": "7200.0"
+			}
+		]
+	},
+	"instanceKill": false,
+	"chMult": 1,
+	"awardedWeapons": [],
+	"needExplode": false,
+	"isExplode": false,
+	"gems": [
+		0,
+		0,
+		0,
+		0
+	],
+	"enemyId": 543,
+	"shotEnemyId": 595,
+	"betLevel": 3,
+	"isPaidSpecialShot": false,
+	"moneyWheelWin": 0.0,
+	"enemiesInstantKilled": {},
+	"enemiesWithUpdatedMode": [],
+	"bulletId": "",
+	"nextBetLevel": -1,
+	"gemsPayout": 0.0,
+	"currentPowerUpMultiplier": 3,
+	"date": 1642489491871,
+	"rid": 70,
+	"class": "Hit"
+}
+
+{
+	"seatId": 0,
+	"damage": 0.0,
+	"win": 7200.0,
+	"awardedWeaponId": -1,
+	"usedSpecialWeapon": 20,
+	"remainingSWShots": 4,
+	"score": 0.0,
+	"enemy": {
+		"id": 537,
+		"typeId": 5,
+		"speed": 3.200000047683716,
+		"awardedPrizes": "",
+		"awardedSum": 0.0,
+		"energy": 1.0,
+		"fullEnergy": 1.0,
+		"skin": 0,
+		"parentEnemyId": -1,
+		"members": [],
+		"swarmId": 103,
+		"swarmType": 1
+	},
+	"hit": true,
+	"awardedWeaponShots": 0,
+	"killed": true,
+	"lastResult": false,
+	"multiplierPay": 0,
+	"killBonusPay": 0.0,
+	"serverAmmo": 1982,
+	"bossNumberShots": 0,
+	"currentWin": 69000.0,
+	"hvEnemyId": -1,
+	"x": 687.2668,
+	"y": 484.66245,
+	"mineId": "",
+	"newFreeShots": 0,
+	"newFreeShotsSeatId": 0,
+	"hitResultBySeats": {
+		"0": [
+			{
+				"id": 0,
+				"value": "7200.0"
+			}
+		]
+	},
+	"instanceKill": false,
+	"chMult": 1,
+	"awardedWeapons": [],
+	"needExplode": false,
+	"isExplode": false,
+	"gems": [
+		0,
+		0,
+		0,
+		0
+	],
+	"enemyId": 537,
+	"shotEnemyId": 595,
+	"betLevel": 3,
+	"isPaidSpecialShot": false,
+	"moneyWheelWin": 0.0,
+	"enemiesInstantKilled": {},
+	"enemiesWithUpdatedMode": [],
+	"bulletId": "",
+	"nextBetLevel": -1,
+	"gemsPayout": 0.0,
+	"currentPowerUpMultiplier": 3,
+	"date": 1642489491871,
+	"rid": 70,
+	"class": "Hit"
+}
+
+{
+	"seatId": 0,
+	"damage": 0.0,
+	"win": 1800.0,
+	"awardedWeaponId": -1,
+	"usedSpecialWeapon": 20,
+	"remainingSWShots": 4,
+	"score": 0.0,
+	"enemy": {
+		"id": 590,
+		"typeId": 6,
+		"speed": 5.46553897857666,
+		"awardedPrizes": "",
+		"awardedSum": 0.0,
+		"energy": 1.0,
+		"fullEnergy": 1.0,
+		"skin": 2,
+		"parentEnemyId": -1,
+		"members": [],
+		"swarmId": 201,
+		"swarmType": 2
+	},
+	"hit": true,
+	"awardedWeaponShots": 0,
+	"killed": true,
+	"lastResult": false,
+	"multiplierPay": 0,
+	"killBonusPay": 0.0,
+	"serverAmmo": 1982,
+	"bossNumberShots": 0,
+	"currentWin": 70800.0,
+	"hvEnemyId": -1,
+	"x": 687.2668,
+	"y": 484.66245,
+	"mineId": "",
+	"newFreeShots": 0,
+	"newFreeShotsSeatId": 0,
+	"hitResultBySeats": {
+		"0": [
+			{
+				"id": 0,
+				"value": "1800.0"
+			}
+		]
+	},
+	"instanceKill": false,
+	"chMult": 1,
+	"awardedWeapons": [],
+	"needExplode": false,
+	"isExplode": false,
+	"gems": [
+		0,
+		0,
+		0,
+		0
+	],
+	"enemyId": 590,
+	"shotEnemyId": 595,
+	"betLevel": 3,
+	"isPaidSpecialShot": false,
+	"moneyWheelWin": 0.0,
+	"enemiesInstantKilled": {},
+	"enemiesWithUpdatedMode": [],
+	"bulletId": "",
+	"nextBetLevel": -1,
+	"gemsPayout": 0.0,
+	"currentPowerUpMultiplier": 3,
+	"date": 1642489491871,
+	"rid": 70,
+	"class": "Hit"
+}

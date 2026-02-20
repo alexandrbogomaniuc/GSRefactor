@@ -1,0 +1,44 @@
+{
+	"name": "max_quest",
+	"version": "0.0.1",
+	"description": "Max Quest",
+	"main": "src/index.js",
+	"author": "Dev",
+	"license": "ISC",
+	"dependencies": {
+		"brim": "^1.0.11",
+		"css-loader": "^3.6.0",
+		"mustache": "^2.3.2",
+		"odometer": "^0.4.8",
+		"scream": "^2.7.0",
+		"style-loader": "^0.23.1",
+		"vue": "^2.6.12",
+		"vue-loader": "^15.9.3",
+		"vue-template-compiler": "^2.6.12"
+	},
+	"devDependencies": {
+		"@webpack-cli/serve": "^1.0.1",
+		"babel-core": "^6.24.1",
+		"babel-loader": "^7.1.5",
+		"babel-polyfill": "^6.26.0",
+		"babel-preset-es2015": "^6.24.1",
+		"babel-preset-stage-0": "^6.24.1",
+		"copy-webpack-plugin": "^4.6.0",
+		"dom-loader": "^1.0.4",
+		"expose-loader": "^0.7.3",
+		"html-webpack-include-assets-plugin": "2.0.0",
+		"html-webpack-plugin": "^4.5.0",
+		"raw-loader": "^0.5.1",
+		"webpack": "^4.44.2",
+		"webpack-cli": "^4.0.0",
+		"webpack-obfuscator": "^2.5.0",
+		"webpack-dev-server": "^3.11.0",
+		"javascript-obfuscator": "^2.6.1",
+		"eslint": "^7.14.0",
+		"eslint-config-google": "^0.14.0"
+	},
+	"scripts": {
+		"start": "webpack serve --host 0.0.0.0",
+		"build": "webpack --config webpack.config.build.js"
+	}
+}

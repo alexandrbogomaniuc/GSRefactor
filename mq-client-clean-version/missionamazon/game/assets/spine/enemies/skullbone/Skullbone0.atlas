@@ -1,0 +1,48 @@
+
+Skullbone0.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0_body
+  rotate: true
+  xy: 195, 34
+  size: 75, 166
+  orig: 75, 166
+  offset: 0, 0
+  index: -1
+0_head
+  rotate: false
+  xy: 802, 29
+  size: 81, 80
+  orig: 81, 80
+  offset: 0, 0
+  index: -1
+0_lf_arm
+  rotate: true
+  xy: 2, 2
+  size: 107, 191
+  orig: 107, 191
+  offset: 0, 0
+  index: -1
+0_lf_leg
+  rotate: true
+  xy: 363, 50
+  size: 59, 159
+  orig: 59, 159
+  offset: 0, 0
+  index: -1
+0_rt_arm
+  rotate: true
+  xy: 675, 37
+  size: 72, 125
+  orig: 72, 125
+  offset: 0, 0
+  index: -1
+0_rt_leg
+  rotate: true
+  xy: 524, 52
+  size: 57, 149
+  orig: 57, 149
+  offset: 0, 0
+  index: -1

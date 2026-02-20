@@ -1,0 +1,23 @@
+{
+	"size": {
+		"width": 960,
+		"height": 540
+	},
+	"margin": {
+		"bottom": 25
+	},
+	"audio": {
+		"channels": {
+			"music": 1,
+			"fx": 15,
+			"gun": 15,
+			"coin": 15,
+			"boss": 15,
+			"gui": 15
+		},
+		"stereo": true
+	},
+	"scales": [2],
+	"transparentStage": false,
+	"noCheckOrientation": false
+}

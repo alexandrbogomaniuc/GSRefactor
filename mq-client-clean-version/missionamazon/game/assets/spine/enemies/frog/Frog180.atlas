@@ -1,0 +1,48 @@
+
+Frog180.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180/arm_lf
+  rotate: true
+  xy: 2, 14
+  size: 90, 57
+  orig: 90, 57
+  offset: 0, 0
+  index: -1
+180/arm_rt
+  rotate: false
+  xy: 810, 144
+  size: 208, 110
+  orig: 208, 110
+  offset: 0, 0
+  index: -1
+180/body
+  rotate: true
+  xy: 389, 16
+  size: 238, 234
+  orig: 238, 234
+  offset: 0, 0
+  index: -1
+180/head
+  rotate: false
+  xy: 810, 2
+  size: 145, 140
+  orig: 145, 140
+  offset: 0, 0
+  index: -1
+180/leg_lf
+  rotate: false
+  xy: 2, 106
+  size: 385, 148
+  orig: 385, 148
+  offset: 0, 0
+  index: -1
+180/leg_rt
+  rotate: false
+  xy: 625, 11
+  size: 183, 243
+  orig: 183, 243
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,13 @@
+
+Atrillery0.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+atrillery0
+  rotate: false
+  xy: 0, 0
+  size: 133, 200
+  orig: 133, 200
+  offset: 0, 0
+  index: -1

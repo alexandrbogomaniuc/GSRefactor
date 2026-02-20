@@ -1,0 +1,43 @@
+---
+  - name: Uploading lobby
+    copy:
+      src: "{{ build_root }}/max-quest-mission-amazon-lobby.tar.gz"
+      dest: "/home/users/{{ user }}/deploy/max-quest-mission-amazon-lobby.tar.gz"
+
+  - name: Uploading game
+    copy:
+      src: "{{ build_root }}/max-quest-mission-amazon-game.tar.gz"
+      dest: "/home/users/{{ user }}/deploy/max-quest-mission-amazon-game.tar.gz"
+
+  - name: Removing old backup
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/missionamazon/_backup"
+      state: absent
+
+  - name: Creating dir for backup
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/missionamazon/_backup"
+      state: directory
+
+  - name: Creating lobby backup
+    shell: "mv /www/html/{{ lobby_name }}/html5pc/actiongames/missionamazon/lobby/ /www/html/{{ lobby_name }}/html5pc/actiongames/missionamazon/_backup/lobby/"
+
+  - name: Creating dir for lobby
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/missionamazon/lobby/"
+      state: directory
+
+  - name: Extracting lobby
+    shell: "tar -xzf /home/users/{{ user }}/deploy/max-quest-mission-amazon-lobby.tar.gz -C /www/html/{{ lobby_name }}/html5pc/actiongames/missionamazon/lobby/"
+
+  - name: Creating game backup
+    shell: "mv /www/html/{{ lobby_name }}/html5pc/actiongames/missionamazon/game/ /www/html/{{ lobby_name }}/html5pc/actiongames/missionamazon/_backup/game/"
+
+  - name: Creating dir for game
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/missionamazon/game/"
+      state: directory
+
+  - name: Extracting game
+    shell: "tar -xzf /home/users/{{ user }}/deploy/max-quest-mission-amazon-game.tar.gz -C /www/html/{{ lobby_name }}/html5pc/actiongames/missionamazon/game/"
+

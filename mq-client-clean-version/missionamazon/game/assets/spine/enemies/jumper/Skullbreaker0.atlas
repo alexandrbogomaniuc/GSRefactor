@@ -1,0 +1,48 @@
+
+Skullbreaker0.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0_body
+  rotate: true
+  xy: 2, 2
+  size: 116, 274
+  orig: 116, 274
+  offset: 0, 0
+  index: -1
+0_head
+  rotate: false
+  xy: 907, 24
+  size: 64, 94
+  orig: 64, 94
+  offset: 0, 0
+  index: -1
+0_lf_arm
+  rotate: true
+  xy: 654, 31
+  size: 87, 146
+  orig: 87, 146
+  offset: 0, 0
+  index: -1
+0_lf_leg
+  rotate: true
+  xy: 278, 55
+  size: 63, 193
+  orig: 63, 193
+  offset: 0, 0
+  index: -1
+0_rt_arm
+  rotate: true
+  xy: 802, 16
+  size: 102, 103
+  orig: 102, 103
+  offset: 0, 0
+  index: -1
+0_rt_leg
+  rotate: true
+  xy: 473, 50
+  size: 68, 179
+  orig: 68, 179
+  offset: 0, 0
+  index: -1

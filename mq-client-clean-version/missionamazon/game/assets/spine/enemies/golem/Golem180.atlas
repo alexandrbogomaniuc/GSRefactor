@@ -1,0 +1,48 @@
+
+Golem180.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180_body
+  rotate: false
+  xy: 306, 7
+  size: 219, 242
+  orig: 219, 242
+  offset: 0, 0
+  index: -1
+180_head
+  rotate: false
+  xy: 878, 171
+  size: 99, 78
+  orig: 99, 78
+  offset: 0, 0
+  index: -1
+180_lf_arm
+  rotate: false
+  xy: 527, 96
+  size: 175, 153
+  orig: 175, 153
+  offset: 0, 0
+  index: -1
+180_lf_leg
+  rotate: true
+  xy: 527, 17
+  size: 77, 157
+  orig: 77, 157
+  offset: 0, 0
+  index: -1
+180_rt_arm
+  rotate: false
+  xy: 2, 2
+  size: 302, 247
+  orig: 302, 247
+  offset: 0, 0
+  index: -1
+180_rt_leg
+  rotate: true
+  xy: 704, 150
+  size: 99, 172
+  orig: 99, 172
+  offset: 0, 0
+  index: -1

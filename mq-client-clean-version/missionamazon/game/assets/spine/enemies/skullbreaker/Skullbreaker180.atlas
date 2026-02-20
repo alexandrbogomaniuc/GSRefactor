@@ -1,0 +1,48 @@
+
+Skullbreaker180.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180_body
+  rotate: false
+  xy: 2, 2
+  size: 159, 238
+  orig: 159, 238
+  offset: 0, 0
+  index: -1
+180_head
+  rotate: false
+  xy: 608, 148
+  size: 97, 92
+  orig: 97, 92
+  offset: 0, 0
+  index: -1
+180_lf_arm
+  rotate: false
+  xy: 515, 103
+  size: 91, 137
+  orig: 91, 137
+  offset: 0, 0
+  index: -1
+180_lf_leg
+  rotate: false
+  xy: 445, 51
+  size: 68, 189
+  orig: 68, 189
+  offset: 0, 0
+  index: -1
+180_rt_arm
+  rotate: false
+  xy: 163, 35
+  size: 190, 205
+  orig: 190, 205
+  offset: 0, 0
+  index: -1
+180_rt_leg
+  rotate: false
+  xy: 355, 37
+  size: 88, 203
+  orig: 88, 203
+  offset: 0, 0
+  index: -1

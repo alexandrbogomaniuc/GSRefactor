@@ -1,0 +1,54 @@
+PoisonPlant.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bulb_3
+  rotate: false
+  xy: 4, 478
+  size: 595, 402
+  orig: 595, 402
+  offset: 0, 0
+  index: -1
+bulb_back1
+  rotate: false
+  xy: 345, 223
+  size: 187, 251
+  orig: 187, 251
+  offset: 0, 0
+  index: -1
+bulb_back2
+  rotate: false
+  xy: 603, 638
+  size: 336, 242
+  orig: 336, 242
+  offset: 0, 0
+  index: -1
+bulb_core2
+  rotate: true
+  xy: 127, 39
+  size: 158, 212
+  orig: 158, 212
+  offset: 0, 0
+  index: -1
+bulb_front1
+  rotate: false
+  xy: 127, 201
+  size: 214, 273
+  orig: 214, 273
+  offset: 0, 0
+  index: -1
+bulb_front2
+  rotate: false
+  xy: 603, 510
+  size: 209, 124
+  orig: 209, 124
+  offset: 0, 0
+  index: -1
+stem3
+  rotate: false
+  xy: 4, 4
+  size: 119, 470
+  orig: 119, 470
+  offset: 0, 0
+  index: -1

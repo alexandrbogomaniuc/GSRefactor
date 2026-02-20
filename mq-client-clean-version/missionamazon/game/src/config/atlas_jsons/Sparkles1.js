@@ -1,0 +1,160 @@
+const Sparkles1 = {
+	"frames": {
+		"MQ_A_TreasureSystem_example_00135": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 490,
+				"h": 506
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 1368,
+				"y": 290,
+				"w": 490,
+				"h": 506
+			},
+			"sourceSize": {
+				"w": 1920,
+				"h": 1080
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_A_TreasureSystem_example_00136": {
+			"frame": {
+				"x": 1,
+				"y": 509,
+				"w": 341,
+				"h": 292
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 1469,
+				"y": 388,
+				"w": 341,
+				"h": 292
+			},
+			"sourceSize": {
+				"w": 1920,
+				"h": 1080
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_A_TreasureSystem_example_00137": {
+			"frame": {
+				"x": 493,
+				"y": 1,
+				"w": 312,
+				"h": 300
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 1487,
+				"y": 385,
+				"w": 312,
+				"h": 300
+			},
+			"sourceSize": {
+				"w": 1920,
+				"h": 1080
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_A_TreasureSystem_example_00138": {
+			"frame": {
+				"x": 1,
+				"y": 803,
+				"w": 299,
+				"h": 248
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 1495,
+				"y": 398,
+				"w": 299,
+				"h": 248
+			},
+			"sourceSize": {
+				"w": 1920,
+				"h": 1080
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_A_TreasureSystem_example_00139": {
+			"frame": {
+				"x": 344,
+				"y": 509,
+				"w": 301,
+				"h": 251
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 1494,
+				"y": 398,
+				"w": 301,
+				"h": 251
+			},
+			"sourceSize": {
+				"w": 1920,
+				"h": 1080
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_A_TreasureSystem_example_00140": {
+			"frame": {
+				"x": 807,
+				"y": 1,
+				"w": 295,
+				"h": 249
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 1493,
+				"y": 400,
+				"w": 295,
+				"h": 249
+			},
+			"sourceSize": {
+				"w": 1920,
+				"h": 1080
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		}
+	},
+	"meta": {
+		"app": "http://free-tex-packer.com/",
+		"version": "0.3.3",
+		"image": "texture-1.jpg",
+		"format": "RGB888",
+		"size": {
+			"w": 2048,
+			"h": 2048
+		},
+		"scale": 2
+	}
+}
+export default Sparkles1;

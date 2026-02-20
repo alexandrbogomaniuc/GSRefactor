@@ -1,0 +1,223 @@
+
+Scorpion0.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/arm_left1
+  rotate: false
+  xy: 754, 218
+  size: 76, 34
+  orig: 76, 34
+  offset: 0, 0
+  index: -1
+0/arm_left2
+  rotate: true
+  xy: 467, 157
+  size: 56, 37
+  orig: 56, 37
+  offset: 0, 0
+  index: -1
+0/arm_right1
+  rotate: false
+  xy: 95, 43
+  size: 87, 52
+  orig: 87, 52
+  offset: 0, 0
+  index: -1
+0/arm_right2
+  rotate: false
+  xy: 831, 223
+  size: 80, 29
+  orig: 80, 29
+  offset: 0, 0
+  index: -1
+0/body
+  rotate: false
+  xy: 1, 96
+  size: 190, 156
+  orig: 190, 156
+  offset: 0, 0
+  index: -1
+0/leg_left_bot1
+  rotate: true
+  xy: 1, 1
+  size: 19, 59
+  orig: 19, 59
+  offset: 0, 0
+  index: -1
+0/leg_left_bot2
+  rotate: false
+  xy: 192, 101
+  size: 49, 90
+  orig: 49, 90
+  offset: 0, 0
+  index: -1
+0/leg_left_bot3
+  rotate: false
+  xy: 192, 192
+  size: 100, 60
+  orig: 100, 60
+  offset: 0, 0
+  index: -1
+0/leg_left_bot4
+  rotate: false
+  xy: 293, 199
+  size: 107, 53
+  orig: 107, 53
+  offset: 0, 0
+  index: -1
+0/leg_left_top1
+  rotate: true
+  xy: 355, 68
+  size: 52, 27
+  orig: 52, 27
+  offset: 0, 0
+  index: -1
+0/leg_left_top2
+  rotate: false
+  xy: 567, 167
+  size: 64, 47
+  orig: 64, 47
+  offset: 0, 0
+  index: -1
+0/leg_left_top3
+  rotate: true
+  xy: 242, 107
+  size: 84, 50
+  orig: 84, 50
+  offset: 0, 0
+  index: -1
+0/leg_left_top4
+  rotate: false
+  xy: 1, 21
+  size: 93, 74
+  orig: 93, 74
+  offset: 0, 0
+  index: -1
+0/leg_right_bot1
+  rotate: true
+  xy: 383, 99
+  size: 58, 41
+  orig: 58, 41
+  offset: 0, 0
+  index: -1
+0/leg_right_bot2
+  rotate: false
+  xy: 501, 215
+  size: 95, 37
+  orig: 95, 37
+  offset: 0, 0
+  index: -1
+0/leg_right_bot3
+  rotate: false
+  xy: 95, 7
+  size: 65, 35
+  orig: 65, 35
+  offset: 0, 0
+  index: -1
+0/leg_right_bot4
+  rotate: false
+  xy: 293, 80
+  size: 61, 40
+  orig: 61, 40
+  offset: 0, 0
+  index: -1
+0/leg_right_top1
+  rotate: false
+  xy: 383, 62
+  size: 37, 36
+  orig: 37, 36
+  offset: 0, 0
+  index: -1
+0/leg_right_top2
+  rotate: false
+  xy: 983, 188
+  size: 40, 64
+  orig: 40, 64
+  offset: 0, 0
+  index: -1
+0/leg_right_top3
+  rotate: true
+  xy: 597, 215
+  size: 37, 79
+  orig: 37, 79
+  offset: 0, 0
+  index: -1
+0/leg_right_top4
+  rotate: true
+  xy: 401, 214
+  size: 38, 99
+  orig: 38, 99
+  offset: 0, 0
+  index: -1
+0/pincer_left1
+  rotate: false
+  xy: 293, 158
+  size: 95, 40
+  orig: 95, 40
+  offset: 0, 0
+  index: -1
+0/pincer_left2
+  rotate: false
+  xy: 677, 215
+  size: 76, 37
+  orig: 76, 37
+  offset: 0, 0
+  index: -1
+0/pincer_right1
+  rotate: false
+  xy: 293, 121
+  size: 89, 36
+  orig: 89, 36
+  offset: 0, 0
+  index: -1
+0/pincer_right2
+  rotate: false
+  xy: 467, 111
+  size: 48, 45
+  orig: 48, 45
+  offset: 0, 0
+  index: -1
+0/stinger
+  rotate: false
+  xy: 425, 111
+  size: 41, 51
+  orig: 41, 51
+  offset: 0, 0
+  index: -1
+0/tail1
+  rotate: true
+  xy: 912, 198
+  size: 54, 70
+  orig: 54, 70
+  offset: 0, 0
+  index: -1
+0/tail2
+  rotate: true
+  xy: 401, 163
+  size: 50, 65
+  orig: 50, 65
+  offset: 0, 0
+  index: -1
+0/tail3
+  rotate: false
+  xy: 690, 160
+  size: 55, 54
+  orig: 55, 54
+  offset: 0, 0
+  index: -1
+0/tail4
+  rotate: false
+  xy: 632, 165
+  size: 57, 49
+  orig: 57, 49
+  offset: 0, 0
+  index: -1
+0/tail5
+  rotate: false
+  xy: 505, 163
+  size: 61, 51
+  orig: 61, 51
+  offset: 0, 0
+  index: -1

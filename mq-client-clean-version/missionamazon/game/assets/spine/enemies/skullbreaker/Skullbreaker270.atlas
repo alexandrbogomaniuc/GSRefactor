@@ -1,0 +1,48 @@
+
+Skullbreaker270.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+270_body
+  rotate: true
+  xy: 224, 24
+  size: 157, 236
+  orig: 157, 236
+  offset: 0, 0
+  index: -1
+270_head
+  rotate: false
+  xy: 849, 104
+  size: 84, 77
+  orig: 84, 77
+  offset: 0, 0
+  index: -1
+270_lf_arm
+  rotate: true
+  xy: 676, 87
+  size: 94, 171
+  orig: 94, 171
+  offset: 0, 0
+  index: -1
+270_lf_leg
+  rotate: true
+  xy: 462, 21
+  size: 85, 187
+  orig: 85, 187
+  offset: 0, 0
+  index: -1
+270_rt_arm
+  rotate: false
+  xy: 2, 2
+  size: 220, 179
+  orig: 220, 179
+  offset: 0, 0
+  index: -1
+270_rt_leg
+  rotate: true
+  xy: 462, 108
+  size: 73, 212
+  orig: 73, 212
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>MAX DUEL</title>
+
+	<meta http-equiv="Content-Type" content="text/html, charset=utf-8" />
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="MobileOptimized" content="960" />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+	
+	<meta charset="utf-8"/>
+
+	<script>
+		window.gameEnvReady = false;
+		function onGameEnvReady() 
+		{
+			window.removeEventListener('load', onGameEnvReady);
+			window.gameEnvReady = true;
+		}
+		
+		if (!!window.addEventListener)
+		{
+			window.addEventListener("load", onGameEnvReady);
+		}
+			
+		var l_xhr = new XMLHttpRequest();
+		l_xhr.open('GET', 'version.json?t=' + (new Date().getTime()), true);
+		l_xhr.onload = function ()
+		{
+			var l_obj = JSON.parse(l_xhr.response);
+			loadScript('validator.js', l_obj.version);
+			loadScript('game.js', l_obj.version);
+		}
+		l_xhr.send();
+
+		
+		function loadScript(src, version)
+		{
+			var lScript_e = document.createElement('script');
+			lScript_e.type = 'text/javascript';
+			lScript_e.src = src + (version ? '?version=' + version : '');
+			lScript_e.async = false;
+			lScript_e.onerror = onScripLoadingError;
+			document.head.appendChild(lScript_e);
+		}
+
+		function onScripLoadingError() 
+		{
+			window.parent.postMessage(JSON.stringify({type: 'onScriptLoadError'}), '*');
+		}
+
+	</script>
+
+	<style type="text/css">
+		html {
+			touch-action: pan-x pan-y; /*Enable single-finger horizontal and vertical panning gestures. Prevent zooming.*/
+			height: 100%;
+		}
+	</style>
+
+</head>
+
+<body style="padding: 0; margin: 0; background-color: black">
+
+</body>
+
+</html>

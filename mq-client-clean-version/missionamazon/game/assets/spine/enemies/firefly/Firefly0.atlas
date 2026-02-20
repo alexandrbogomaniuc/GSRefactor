@@ -1,0 +1,104 @@
+
+WaspCluster_0.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/Body
+  rotate: false
+  xy: 255, 26
+  size: 75, 76
+  orig: 75, 76
+  offset: 0, 0
+  index: -1
+0/Head
+  rotate: true
+  xy: 4, 4
+  size: 47, 72
+  orig: 47, 72
+  offset: 0, 0
+  index: -1
+0/Hip
+  rotate: false
+  xy: 142, 67
+  size: 109, 140
+  orig: 109, 140
+  offset: 0, 0
+  index: -1
+0/Leg_L1
+  rotate: false
+  xy: 328, 126
+  size: 73, 99
+  orig: 73, 99
+  offset: 0, 0
+  index: -1
+0/Leg_L2
+  rotate: false
+  xy: 405, 134
+  size: 79, 91
+  orig: 79, 91
+  offset: 0, 0
+  index: -1
+0/Leg_L3
+  rotate: false
+  xy: 334, 23
+  size: 67, 99
+  orig: 67, 99
+  offset: 0, 0
+  index: -1
+0/Leg_R1
+  rotate: false
+  xy: 255, 106
+  size: 69, 101
+  orig: 69, 101
+  offset: 0, 0
+  index: -1
+0/Leg_R2
+  rotate: false
+  xy: 405, 42
+  size: 71, 88
+  orig: 71, 88
+  offset: 0, 0
+  index: -1
+0/Leg_R3
+  rotate: false
+  xy: 445, 302
+  size: 54, 88
+  orig: 54, 88
+  offset: 0, 0
+  index: -1
+0/Wing_L
+  rotate: true
+  xy: 389, 229
+  size: 161, 52
+  orig: 161, 52
+  offset: 0, 0
+  index: -1
+0/Wing_L_Blurred
+  rotate: false
+  xy: 305, 394
+  size: 163, 114
+  orig: 163, 114
+  offset: 0, 0
+  index: -1
+0/Wing_R
+  rotate: false
+  xy: 305, 250
+  size: 80, 140
+  orig: 80, 140
+  offset: 0, 0
+  index: -1
+0/Wing_R_Blurred
+  rotate: false
+  xy: 4, 55
+  size: 134, 152
+  orig: 134, 152
+  offset: 0, 0
+  index: -1
+wasp_glow
+  rotate: false
+  xy: 4, 211
+  size: 297, 297
+  orig: 297, 297
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,48 @@
+
+Skullbone90.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+90_body
+  rotate: false
+  xy: 156, 71
+  size: 79, 159
+  orig: 79, 159
+  offset: 0, 0
+  index: -1
+90_head
+  rotate: false
+  xy: 347, 153
+  size: 71, 77
+  orig: 71, 77
+  offset: 0, 0
+  index: -1
+90_lf_arm
+  rotate: false
+  xy: 2, 71
+  size: 152, 159
+  orig: 152, 159
+  offset: 0, 0
+  index: -1
+90_lf_leg
+  rotate: false
+  xy: 288, 84
+  size: 57, 146
+  orig: 57, 146
+  offset: 0, 0
+  index: -1
+90_rt_arm
+  rotate: true
+  xy: 2, 2
+  size: 67, 147
+  orig: 67, 147
+  offset: 0, 0
+  index: -1
+90_rt_leg
+  rotate: false
+  xy: 237, 71
+  size: 49, 159
+  orig: 49, 159
+  offset: 0, 0
+  index: -1

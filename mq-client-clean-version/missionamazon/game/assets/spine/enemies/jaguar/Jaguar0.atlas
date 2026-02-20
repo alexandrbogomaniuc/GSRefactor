@@ -1,0 +1,55 @@
+
+Jaguar0.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0_b_lf_leg
+  rotate: true
+  xy: 633, 170
+  size: 72, 123
+  orig: 72, 123
+  offset: 0, 0
+  index: -1
+0_b_rt_leg
+  rotate: true
+  xy: 758, 179
+  size: 63, 86
+  orig: 63, 86
+  offset: 0, 0
+  index: -1
+0_body
+  rotate: false
+  xy: 2, 68
+  size: 197, 174
+  orig: 197, 174
+  offset: 0, 0
+  index: -1
+0_f_lf_leg
+  rotate: true
+  xy: 477, 154
+  size: 88, 154
+  orig: 88, 154
+  offset: 0, 0
+  index: -1
+0_f_rt_leg
+  rotate: false
+  xy: 334, 117
+  size: 141, 125
+  orig: 141, 125
+  offset: 0, 0
+  index: -1
+0_head
+  rotate: false
+  xy: 201, 71
+  size: 131, 171
+  orig: 131, 171
+  offset: 0, 0
+  index: -1
+0_tail
+  rotate: false
+  xy: 2, 2
+  size: 149, 64
+  orig: 149, 64
+  offset: 0, 0
+  index: -1

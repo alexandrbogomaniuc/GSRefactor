@@ -1,0 +1,48 @@
+
+Frog0.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/arm_lf
+  rotate: true
+  xy: 313, 2
+  size: 204, 227
+  orig: 204, 227
+  offset: 0, 0
+  index: -1
+0/arm_rt
+  rotate: false
+  xy: 2, 262
+  size: 314, 216
+  orig: 314, 216
+  offset: 0, 0
+  index: -1
+0/body
+  rotate: false
+  xy: 318, 208
+  size: 237, 179
+  orig: 237, 179
+  offset: 0, 0
+  index: -1
+0/head
+  rotate: true
+  xy: 557, 242
+  size: 145, 133
+  orig: 145, 133
+  offset: 0, 0
+  index: -1
+0/leg_lf
+  rotate: false
+  xy: 318, 389
+  size: 383, 89
+  orig: 383, 89
+  offset: 0, 0
+  index: -1
+0/leg_rt
+  rotate: false
+  xy: 2, 46
+  size: 309, 214
+  orig: 309, 214
+  offset: 0, 0
+  index: -1

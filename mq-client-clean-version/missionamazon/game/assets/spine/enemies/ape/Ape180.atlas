@@ -1,0 +1,76 @@
+
+Ape180.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180_body
+  rotate: true
+  xy: 2, 2
+  size: 249, 264
+  orig: 249, 264
+  offset: 0, 0
+  index: -1
+180_head
+  rotate: false
+  xy: 672, 142
+  size: 149, 109
+  orig: 149, 109
+  offset: 0, 0
+  index: -1
+180_lf_arm
+  rotate: true
+  xy: 461, 112
+  size: 139, 209
+  orig: 139, 209
+  offset: 0, 0
+  index: -1
+180_lf_foot
+  rotate: false
+  xy: 946, 204
+  size: 64, 47
+  orig: 64, 47
+  offset: 0, 0
+  index: -1
+180_lf_foreleg
+  rotate: true
+  xy: 358, 6
+  size: 48, 53
+  orig: 48, 53
+  offset: 0, 0
+  index: -1
+180_lf_leg
+  rotate: false
+  xy: 563, 20
+  size: 93, 90
+  orig: 93, 90
+  offset: 0, 0
+  index: -1
+180_rt_arm
+  rotate: false
+  xy: 268, 56
+  size: 191, 195
+  orig: 191, 195
+  offset: 0, 0
+  index: -1
+180_rt_foot
+  rotate: false
+  xy: 268, 13
+  size: 88, 41
+  orig: 88, 41
+  offset: 0, 0
+  index: -1
+180_rt_foreleg
+  rotate: true
+  xy: 461, 28
+  size: 82, 100
+  orig: 82, 100
+  offset: 0, 0
+  index: -1
+180_rt_leg
+  rotate: false
+  xy: 823, 168
+  size: 121, 83
+  orig: 121, 83
+  offset: 0, 0
+  index: -1

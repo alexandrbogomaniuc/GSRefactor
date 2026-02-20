@@ -1,0 +1,55 @@
+
+Jaguar270.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+270_b_lf_leg
+  rotate: false
+  xy: 411, 105
+  size: 82, 129
+  orig: 82, 129
+  offset: 0, 0
+  index: -1
+270_b_rt_leg
+  rotate: false
+  xy: 302, 27
+  size: 86, 113
+  orig: 86, 113
+  offset: 0, 0
+  index: -1
+270_body
+  rotate: true
+  xy: 2, 25
+  size: 209, 160
+  orig: 209, 160
+  offset: 0, 0
+  index: -1
+270_f_lf_leg
+  rotate: false
+  xy: 271, 142
+  size: 138, 92
+  orig: 138, 92
+  offset: 0, 0
+  index: -1
+270_f_rt_leg
+  rotate: false
+  xy: 390, 27
+  size: 96, 76
+  orig: 96, 76
+  offset: 0, 0
+  index: -1
+270_head
+  rotate: true
+  xy: 164, 103
+  size: 131, 105
+  orig: 131, 105
+  offset: 0, 0
+  index: -1
+270_tail
+  rotate: true
+  xy: 164, 2
+  size: 99, 136
+  orig: 99, 136
+  offset: 0, 0
+  index: -1

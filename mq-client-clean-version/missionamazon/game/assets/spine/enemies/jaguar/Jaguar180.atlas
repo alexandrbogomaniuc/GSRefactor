@@ -1,0 +1,55 @@
+
+Jaguar180.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180_b_lf_leg
+  rotate: true
+  xy: 2, 2
+  size: 75, 121
+  orig: 75, 121
+  offset: 0, 0
+  index: -1
+180_b_rt_leg
+  rotate: true
+  xy: 353, 91
+  size: 69, 125
+  orig: 69, 125
+  offset: 0, 0
+  index: -1
+180_body
+  rotate: false
+  xy: 2, 79
+  size: 188, 172
+  orig: 188, 172
+  offset: 0, 0
+  index: -1
+180_f_lf_leg
+  rotate: false
+  xy: 321, 15
+  size: 86, 74
+  orig: 86, 74
+  offset: 0, 0
+  index: -1
+180_f_rt_leg
+  rotate: false
+  xy: 353, 162
+  size: 137, 89
+  orig: 137, 89
+  offset: 0, 0
+  index: -1
+180_head
+  rotate: false
+  xy: 192, 42
+  size: 127, 95
+  orig: 127, 95
+  offset: 0, 0
+  index: -1
+180_tail
+  rotate: false
+  xy: 192, 139
+  size: 159, 112
+  orig: 159, 112
+  offset: 0, 0
+  index: -1

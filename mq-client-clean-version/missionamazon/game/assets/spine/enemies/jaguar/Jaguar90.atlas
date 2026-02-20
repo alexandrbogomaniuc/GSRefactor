@@ -1,0 +1,55 @@
+
+Jaguar90.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+90_b_lf_leg
+  rotate: false
+  xy: 2, 2
+  size: 81, 84
+  orig: 81, 84
+  offset: 0, 0
+  index: -1
+90_b_rt_leg
+  rotate: true
+  xy: 682, 164
+  size: 90, 105
+  orig: 90, 105
+  offset: 0, 0
+  index: -1
+90_body
+  rotate: false
+  xy: 2, 88
+  size: 228, 166
+  orig: 228, 166
+  offset: 0, 0
+  index: -1
+90_f_lf_leg
+  rotate: false
+  xy: 543, 150
+  size: 137, 104
+  orig: 137, 104
+  offset: 0, 0
+  index: -1
+90_f_rt_leg
+  rotate: true
+  xy: 369, 153
+  size: 101, 172
+  orig: 101, 172
+  offset: 0, 0
+  index: -1
+90_head
+  rotate: false
+  xy: 232, 93
+  size: 135, 161
+  orig: 135, 161
+  offset: 0, 0
+  index: -1
+90_tail
+  rotate: true
+  xy: 789, 162
+  size: 92, 99
+  orig: 92, 99
+  offset: 0, 0
+  index: -1

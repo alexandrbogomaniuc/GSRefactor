@@ -1,0 +1,139 @@
+
+Ant180.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+270/antenna_left
+  rotate: false
+  xy: 4, 171
+  size: 193, 81
+  orig: 193, 81
+  offset: 0, 0
+  index: -1
+270/antenna_right
+  rotate: false
+  xy: 775, 166
+  size: 93, 86
+  orig: 93, 86
+  offset: 0, 0
+  index: -1
+270/body
+  rotate: false
+  xy: 193, 57
+  size: 124, 82
+  orig: 124, 82
+  offset: 0, 0
+  index: -1
+270/body2
+  rotate: false
+  xy: 4, 4
+  size: 109, 81
+  orig: 109, 81
+  offset: 0, 0
+  index: -1
+270/head
+  rotate: false
+  xy: 663, 179
+  size: 108, 73
+  orig: 108, 73
+  offset: 0, 0
+  index: -1
+270/leg_left_bot1
+  rotate: false
+  xy: 201, 143
+  size: 142, 109
+  orig: 142, 109
+  offset: 0, 0
+  index: -1
+270/leg_left_bot2
+  rotate: true
+  xy: 347, 142
+  size: 56, 151
+  orig: 56, 151
+  offset: 0, 0
+  index: -1
+270/leg_left_bot3
+  rotate: true
+  xy: 347, 202
+  size: 50, 160
+  orig: 50, 160
+  offset: 0, 0
+  index: -1
+270/leg_left_top1
+  rotate: true
+  xy: 117, 8
+  size: 77, 54
+  orig: 77, 54
+  offset: 0, 0
+  index: -1
+270/leg_left_top2
+  rotate: false
+  xy: 175, 12
+  size: 77, 41
+  orig: 77, 41
+  offset: 0, 0
+  index: -1
+270/leg_left_top3
+  rotate: false
+  xy: 446, 64
+  size: 74, 74
+  orig: 74, 74
+  offset: 0, 0
+  index: -1
+270/leg_right_bot1
+  rotate: true
+  xy: 872, 125
+  size: 51, 66
+  orig: 51, 66
+  offset: 0, 0
+  index: -1
+270/leg_right_bot2
+  rotate: false
+  xy: 321, 69
+  size: 121, 69
+  orig: 121, 69
+  offset: 0, 0
+  index: -1
+270/leg_right_bot3
+  rotate: false
+  xy: 4, 89
+  size: 185, 78
+  orig: 185, 78
+  offset: 0, 0
+  index: -1
+270/leg_right_top1
+  rotate: false
+  xy: 968, 172
+  size: 47, 80
+  orig: 47, 80
+  offset: 0, 0
+  index: -1
+270/leg_right_top2
+  rotate: false
+  xy: 872, 180
+  size: 92, 72
+  orig: 92, 72
+  offset: 0, 0
+  index: -1
+270/leg_right_top3
+  rotate: false
+  xy: 511, 210
+  size: 148, 42
+  orig: 148, 42
+  offset: 0, 0
+  index: -1
+270/mouth_left
+  rotate: false
+  xy: 306, 22
+  size: 26, 31
+  orig: 26, 31
+  offset: 0, 0
+  index: -1
+270/mouth_right
+  rotate: false
+  xy: 256, 14
+  size: 46, 39
+  orig: 46, 39
+  offset: 0, 0
+  index: -1
