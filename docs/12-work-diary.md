@@ -2401,3 +2401,19 @@
   - correlation standard is now implemented at GS entry boundary without protocol contract changes.
 - Next:
   - validate headers at runtime through `refactor` container once local build/deploy path with private dependencies is available.
+
+### 2026-02-20 10:01-10:06 UTC
+- Added executable Phase 2 probe harness:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase2-correlation-probe.sh`
+- Started isolated refactor stack and stabilized static upstream routing:
+  - `docker compose -p refactor up -d` from `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor`
+  - initial probes returned `502` due static upstream stale target after GS recreate,
+  - resolved by `docker restart refactor-static-1`.
+- Captured post-stabilization baseline probe:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase2/correlation-probes/correlation-probe-20260220-100539.md`
+  - HTTP `200` with legacy error page body (`Bank is incorrect`),
+  - echo headers currently `FAIL` for all correlation keys (expected before deploying new GS build).
+- Result:
+  - phase2 probe path is now operational and produces deterministic evidence artifacts.
+- Next:
+  - deploy GS image containing `CorrelationContextFilter` and rerun probe to verify header echoes pass.
