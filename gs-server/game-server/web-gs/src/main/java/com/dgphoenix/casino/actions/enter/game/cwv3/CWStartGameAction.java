@@ -5,6 +5,7 @@ import com.dgphoenix.casino.actions.enter.AccountInfoAndSessionInfoPair;
 import com.dgphoenix.casino.actions.enter.LanguageDetector;
 import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
 import com.dgphoenix.casino.actions.enter.game.routing.GameplayOrchestratorRoutingBridge;
+import com.dgphoenix.casino.actions.enter.game.routing.MultiplayerServiceRoutingBridge;
 import com.dgphoenix.casino.actions.enter.game.routing.ProtocolAdapterRoutingBridge;
 import com.dgphoenix.casino.actions.enter.game.routing.SessionServiceRoutingBridge;
 import com.dgphoenix.casino.cassandra.persist.CassandraPlayerSessionState;
@@ -309,6 +310,23 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                 String privateRoomId = sessionInfo != null ? sessionInfo.getPrivateRoomId() : null;
                 boolean multiplayerRoute = GameServer.getInstance().isMultiplayerGame(gameId);
 
+                MultiplayerServiceRoutingBridge.RouteDecision multiplayerServiceRouteDecision =
+                        MultiplayerServiceRoutingBridge.getInstance().decide(
+                                actionForm.getBankId(),
+                                gameId,
+                                sessionId,
+                                multiplayerRoute
+                        );
+                request.setAttribute(MultiplayerServiceRoutingBridge.REQUEST_ROUTE_ATTRIBUTE,
+                        multiplayerServiceRouteDecision.getReason());
+                getLog().debug("CWStartGameAction process: multiplayer route decision bankId={}, gameId={}, route={}, reason={}, endpoint={}, bankMultiplayerEnabled={}",
+                        actionForm.getBankId(),
+                        gameId,
+                        multiplayerServiceRouteDecision.isRouteToMultiplayerService(),
+                        multiplayerServiceRouteDecision.getReason(),
+                        multiplayerServiceRouteDecision.getEndpoint(),
+                        multiplayerServiceRouteDecision.isBankMultiplayerEnabled());
+
                 GameplayOrchestratorRoutingBridge.RouteDecision gameplayRouteDecision =
                         GameplayOrchestratorRoutingBridge.getInstance().decide(actionForm.getBankId(), multiplayerRoute);
                 request.setAttribute(GameplayOrchestratorRoutingBridge.REQUEST_ROUTE_ATTRIBUTE,
@@ -338,6 +356,16 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                         externalId,
                         gameId,
                         mode == null ? null : mode.name()
+                );
+
+                MultiplayerServiceRoutingBridge.getInstance().shadowSessionSync(
+                        multiplayerServiceRouteDecision,
+                        actionForm.getBankId(),
+                        sessionId,
+                        externalId,
+                        gameId,
+                        privateRoomId,
+                        "LAUNCH_SYNC"
                 );
 
                 GameplayOrchestratorRoutingBridge.getInstance().shadowLaunchIntent(

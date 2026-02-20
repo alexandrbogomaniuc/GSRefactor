@@ -3375,3 +3375,23 @@
   - Runtime remains `NOT_READY` in this environment due endpoint/docker access blockers.
 - Next step:
   - commit this Phase 6 scaffold batch and continue with GS compatibility-facade shadow hook to multiplayer-service decision endpoint.
+
+### 2026-02-20 19:09-19:19 UTC
+- Added GS compatibility-facade shadow integration for new multiplayer-service.
+- Implementation updates:
+  - Added routing bridge:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/routing/MultiplayerServiceRoutingBridge.java`
+  - Wired launch path decision + shadow sync:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java`
+  - Added Phase 6 bridge evidence doc and updated portal/checklist references:
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/73-phase6-gs-multiplayer-shadow-bridge-20260220-191800.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+- Evidence:
+  - `rg` confirms decision + shadow calls in `CWStartGameAction`.
+  - `git diff --check` passed.
+  - Support runtime copies resynced under `.../Doker/runtime-gs/webapps/gs/ROOT/support`.
+- Result:
+  - Phase 6 now includes GS-side fail-open shadow bridge for multiplayer-service behind canary and bank capability checks.
+- Next step:
+  - bundle remaining Phase 6 changes into a commit and queue push retry when network resolution for github.com is available.
