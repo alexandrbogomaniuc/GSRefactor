@@ -143,3 +143,12 @@ Required invariants:
   - `P0-LA-01`: `FAIL_CONTRACT (200)`; response body contains legacy error page text `Bank is incorrect` (`P0-LA-01-20260220-094449.body.txt`),
   - `P0-WA-01`: `SKIPPED_MISSING_FIXTURE`,
   - `P0-SE-01`: `SKIPPED_MISSING_FIXTURE`.
+
+### Deterministic negative-path parity probes (run-mode)
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-parity-20260220-094709.md`
+- Observed:
+  - `P0-LA-02`: `PASS_CONTRACT (200)` with expected error semantics for invalid launch inputs,
+  - `P0-WA-00`: `PASS_CONTRACT (200)` with XML error code `610` (`Invalid parameters`),
+  - `P0-SE-00`: `PASS_CONTRACT (200)` with XML error code `610` (`Invalid parameters`),
+  - `P0-LA-01`: remains `FAIL_CONTRACT (200)` until valid canary launch fixture is aligned for refactor runtime,
+  - `P0-WA-01` / `P0-SE-01`: still `SKIPPED_MISSING_FIXTURE`.

@@ -21,3 +21,7 @@ gs-server/deploy/scripts/phase0-parity-harness.sh \
 ## Output
 - Reports: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-parity-<timestamp>.md`
 - HTTP response snippets (run mode): `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/P0-*.body.txt`
+
+## Notes
+- Harness now validates response body contracts (`PASS_CONTRACT` / `FAIL_CONTRACT`), not HTTP status alone.
+- Deterministic negative probes (`P0-LA-02`, `P0-WA-00`, `P0-SE-00`) run without wallet-positive fixture data and provide a stable baseline.

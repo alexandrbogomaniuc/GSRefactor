@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://abs.example/contracts/ws-v1/abs-gs-v1-session-sync.schema.json",
+  "title": "ABS GS SESSION_SYNC v1",
+  "allOf": [
+    {
+      "$ref": "./abs-gs-v1-envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "SESSION_SYNC"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "lastAppliedSeq",
+            "balance"
+          ],
+          "properties": {
+            "lastAppliedSeq": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "balance": {
+              "type": "object",
+              "required": [
+                "amount",
+                "currency"
+              ],
+              "properties": {
+                "amount": {
+                  "type": "string",
+                  "pattern": "^-?\\d+(\\.\\d{1,6})?$"
+                },
+                "currency": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{3}$"
+                }
+              }
+            },
+            "openOperations": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "operationId",
+                  "state"
+                ],
+                "properties": {
+                  "operationId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "state": {
+                    "type": "string",
+                    "enum": [
+                      "INIT",
+                      "RESERVED",
+                      "SETTLED",
+                      "CANCELED",
+                      "FAILED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

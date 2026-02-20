@@ -20,6 +20,10 @@ SETTLE_AMOUNT="${SETTLE_AMOUNT:-}"
 EXT_BONUS_ID="${EXT_BONUS_ID:-}"
 BONUS_HASH="${BONUS_HASH:-}"
 
+NEG_BANK_ID="${NEG_BANK_ID:-999999}"
+NEG_GAME_ID="${NEG_GAME_ID:-838}"
+NEG_TOKEN="${NEG_TOKEN:-invalid_token}"
+
 print_help() {
   cat <<USAGE
 Usage: $(basename "$0") [options]
@@ -34,7 +38,8 @@ Options:
 
 Fixture keys (env file or environment):
   BANK_ID, GAME_ID, TOKEN, LANG_CODE, GAME_MODE,
-  USER_ID, CURRENCY, WAGER_AMOUNT, SETTLE_AMOUNT, EXT_BONUS_ID, BONUS_HASH
+  USER_ID, CURRENCY, WAGER_AMOUNT, SETTLE_AMOUNT, EXT_BONUS_ID, BONUS_HASH,
+  NEG_BANK_ID, NEG_GAME_ID, NEG_TOKEN
 USAGE
 }
 
@@ -165,12 +170,21 @@ LAUNCH_URL="${BASE_URL}/cwstartgamev2.do?bankId=${BANK_ID}&gameId=${GAME_ID}&mod
 LAUNCH_REQUIRED=$(build_required_flag "$BANK_ID" "$GAME_ID" "$TOKEN")
 run_case "P0-LA-01" "Launch" "GET" "$LAUNCH_URL" "" "$LAUNCH_REQUIRED" "template\\.jsp|sid=|web_socket_url" "bank is incorrect|casino is incorrect|invalid parameters|http error|404 not found|exception"
 
+LAUNCH_NEG_URL="${BASE_URL}/cwstartgamev2.do?bankId=${NEG_BANK_ID}&gameId=${NEG_GAME_ID}&mode=${GAME_MODE}&token=${NEG_TOKEN}&lang=${LANG_CODE}"
+run_case "P0-LA-02" "LaunchInvalidParams" "GET" "$LAUNCH_NEG_URL" "" "yes" "bank is incorrect|casino is incorrect|invalid parameters|error" "template\\.jsp|sid=|web_socket_url"
+
 WAGER_URL="${BASE_URL}/bscheck.do?bankId=${BANK_ID}&gameId=${GAME_ID}&userId=${USER_ID}&currency=${CURRENCY}&amount=${WAGER_AMOUNT}&extBonusId=${EXT_BONUS_ID}&hash=${BONUS_HASH}"
 WAGER_REQUIRED=$(build_required_flag "$BANK_ID" "$GAME_ID" "$USER_ID" "$CURRENCY" "$WAGER_AMOUNT" "$EXT_BONUS_ID" "$BONUS_HASH")
 run_case "P0-WA-01" "Wager" "GET" "$WAGER_URL" "" "$WAGER_REQUIRED" "<code>0</code>|errorCode\\s*=\\s*\"0\"" "Invalid parameters|<code>610</code>|errorCode\\s*=\\s*\"610\"|Bank is incorrect"
 
+WAGER_NEG_URL="${BASE_URL}/bscheck.do?bankId=${NEG_BANK_ID}&gameId=${NEG_GAME_ID}&userId=invalid_user&currency=USD&amount=0.1&extBonusId=1&hash=deadbeef"
+run_case "P0-WA-00" "WagerInvalidParams" "GET" "$WAGER_NEG_URL" "" "yes" "invalid parameters|<code>610</code>|errorCode\\s*=\\s*\"610\"|bank is incorrect|casino is incorrect" "<code>0</code>|errorCode\\s*=\\s*\"0\""
+
 SETTLE_URL="${BASE_URL}/bsaward.do?bankId=${BANK_ID}&gameId=${GAME_ID}&userId=${USER_ID}&currency=${CURRENCY}&amount=${SETTLE_AMOUNT}&extBonusId=${EXT_BONUS_ID}&hash=${BONUS_HASH}"
 SETTLE_REQUIRED=$(build_required_flag "$BANK_ID" "$GAME_ID" "$USER_ID" "$CURRENCY" "$SETTLE_AMOUNT" "$EXT_BONUS_ID" "$BONUS_HASH")
 run_case "P0-SE-01" "Settle" "GET" "$SETTLE_URL" "" "$SETTLE_REQUIRED" "<code>0</code>|errorCode\\s*=\\s*\"0\"" "Invalid parameters|<code>610</code>|errorCode\\s*=\\s*\"610\"|Bank is incorrect"
+
+SETTLE_NEG_URL="${BASE_URL}/bsaward.do?bankId=${NEG_BANK_ID}&gameId=${NEG_GAME_ID}&userId=invalid_user&currency=USD&amount=0.1&extBonusId=1&hash=deadbeef"
+run_case "P0-SE-00" "SettleInvalidParams" "GET" "$SETTLE_NEG_URL" "" "yes" "invalid parameters|<code>610</code>|errorCode\\s*=\\s*\"610\"|bank is incorrect|casino is incorrect" "<code>0</code>|errorCode\\s*=\\s*\"0\""
 
 echo "Report generated: $REPORT_FILE"

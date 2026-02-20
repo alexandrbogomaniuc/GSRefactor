@@ -2305,3 +2305,37 @@
   - parity evidence quality improved; false-positive launch pass eliminated.
 - Next:
   - load valid canary fixture values for refactor bank and execute wager/settle parity run mode.
+
+### 2026-02-20 09:46-09:48 UTC
+- Extended parity harness with deterministic negative-contract probes:
+  - `P0-LA-02` (invalid launch params), `P0-WA-00` (invalid wager params), `P0-SE-00` (invalid settle params).
+  - updated fixture template with optional `NEG_BANK_ID/NEG_GAME_ID/NEG_TOKEN`.
+- Executed run mode against refactor stack:
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-parity-20260220-094709.md`
+  - body evidence: `P0-WA-00-20260220-094709.body.txt` and `P0-SE-00-20260220-094709.body.txt` show XML `CODE=610` (`Invalid parameters`).
+- Updated docs:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/23-phase-0-baseline-and-parity-capture.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/README.md`
+- Result:
+  - Phase 0 now has stable negative-path contract probes runnable without wallet-positive fixture setup.
+- Next:
+  - obtain/align positive wallet fixture values for canary bank and execute `P0-WA-01`/`P0-SE-01` pass/fail baseline.
+
+### 2026-02-20 09:48-09:50 UTC
+- Published concrete WebSocket contract schemas for third-party game integration (`abs.gs.v1`):
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/abs-gs-v1-envelope.schema.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/abs-gs-v1-bet-request.schema.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/abs-gs-v1-settle-request.schema.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/abs-gs-v1-reconnect-request.schema.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/abs-gs-v1-error.schema.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/abs-gs-v1-session-sync.schema.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/README.md`
+- Updated protocol document to link published schemas:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/25-game-integration-interface-and-websocket-protocol-v1.md`.
+- Validation evidence:
+  - command: `for f in docs/contracts/ws-v1/*.json; do python3 -m json.tool "$f" >/dev/null; done`
+  - result: `json schemas validated`.
+- Result:
+  - third-party integration track now has concrete, versioned schema artifacts instead of only narrative spec.
+- Next:
+  - implement provider conformance harness skeleton against these schemas.

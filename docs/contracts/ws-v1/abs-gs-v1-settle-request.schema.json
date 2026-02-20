@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://abs.example/contracts/ws-v1/abs-gs-v1-settle-request.schema.json",
+  "title": "ABS GS SETTLE_REQUEST v1",
+  "allOf": [
+    {
+      "$ref": "./abs-gs-v1-envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "required": [
+        "operationId"
+      ],
+      "properties": {
+        "type": {
+          "const": "SETTLE_REQUEST"
+        },
+        "operationId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "roundId",
+            "amount",
+            "currency",
+            "resultType"
+          ],
+          "properties": {
+            "roundId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "amount": {
+              "type": "string",
+              "pattern": "^-?\\d+(\\.\\d{1,6})?$"
+            },
+            "currency": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            },
+            "resultType": {
+              "type": "string",
+              "enum": [
+                "WIN",
+                "LOSE",
+                "PUSH",
+                "CANCEL"
+              ]
+            },
+            "metadata": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

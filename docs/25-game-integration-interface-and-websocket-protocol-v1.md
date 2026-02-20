@@ -166,6 +166,14 @@ Operational telemetry:
 
 ## 15. Recommended Next Implementation Steps
 1. Publish JSON schema files for envelope + each message type.
+   Status: completed (v1 draft) at `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/`.
+   Key files:
+   - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/abs-gs-v1-envelope.schema.json`
+   - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/abs-gs-v1-bet-request.schema.json`
+   - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/abs-gs-v1-settle-request.schema.json`
+   - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/abs-gs-v1-reconnect-request.schema.json`
+   - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/abs-gs-v1-error.schema.json`
+   - `/Users/alexb/Documents/Dev/Dev_new/docs/contracts/ws-v1/abs-gs-v1-session-sync.schema.json`
 2. Build provider sandbox endpoint with automated conformance suite.
 3. Add contract test harness for top games and canary banks.
 4. Implement API key + provider registry with version and capability metadata.
