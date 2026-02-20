@@ -18,6 +18,19 @@ gs-server/deploy/scripts/phase0-parity-harness.sh \
   --fixture-file docs/phase0/parity-fixture.env
 ```
 
+## Fixture bootstrap helper
+Generate `docs/phase0/parity-fixture.env` with deterministic `BONUS_HASH`:
+```bash
+cd /Users/alexb/Documents/Dev/Dev_new
+gs-server/deploy/scripts/phase0-fixture-bootstrap.sh \
+  --bank-id 6274 \
+  --game-id 838 \
+  --token bav_game_session_001 \
+  --external-bank-id 6274 \
+  --ext-bonus-id 1 \
+  --bonus-pass-key <BANK_BONUS_PASS_KEY>
+```
+
 ## Output
 - Reports: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-parity-<timestamp>.md`
 - HTTP response snippets (run mode): `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/P0-*.body.txt`

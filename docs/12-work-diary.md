@@ -2448,3 +2448,16 @@
   - fixture generation for bonus hash is now deterministic and reproducible.
 - Next:
   - wire helper output into `parity-fixture.env` preparation for `P0-WA-01/P0-SE-01`.
+
+### 2026-02-20 10:09-10:10 UTC
+- Added fixture bootstrap automation for Phase 0 run-mode setup:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase0-fixture-bootstrap.sh`
+- Bootstrap script composes `docs/phase0/parity-fixture.env` and computes `BONUS_HASH` using GS-aligned helper logic.
+- Updated runbook usage:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/README.md`.
+- Validation evidence:
+  - command generated `/tmp/parity-fixture.test.env` with deterministic hash and fixture fields.
+- Result:
+  - canary fixture preparation is now scriptable and repeatable for parity runs.
+- Next:
+  - run parity harness using generated fixture once real bank bonus pass key and valid user fixture are provided.
