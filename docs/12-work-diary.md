@@ -3305,3 +3305,36 @@
   - Current environment remains `NOT_READY` due unavailable endpoints/docker socket.
 - Next step:
   - Continue Phase 5 by wiring history-service shadow hooks and adding history runtime readiness/evidence-pack scripts for bank `6275`.
+
+### 2026-02-20 18:54-19:01 UTC
+- Continued Phase 5 extraction on History service after Bonus/FRB checkpoint.
+- Implementation updates:
+  - Added GS fail-open history bridge + hook from New Games history-write path:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/routing/HistoryServiceRoutingBridge.java`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java`
+  - Added history-service routing decision endpoint and docs/contracts updates:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/history-service/src/server.js`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/history-service/README.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/contracts/openapi/history-service-v1.yaml`
+  - Added history canary/readiness/evidence-pack scripts:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-history-canary-probe.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-history-runtime-readiness-check.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-history-runtime-evidence-pack.sh`
+  - Added docs and wired support portal/checklist evidence:
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/69-phase5-history-shadow-hook-and-canary-20260220-191000.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/70-phase5-history-runtime-evidence-pack-tooling-20260220-191100.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+- Evidence:
+  - `bash -n` passed for all three history scripts.
+  - `--help` passed for canary/readiness/evidence-pack scripts.
+  - `node --check .../history-service/src/server.js` passed.
+  - `git diff --check` passed (no whitespace issues).
+  - `phase5-history-runtime-evidence-pack.sh` produced report:
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/phase5/history/phase5-history-runtime-evidence-20260220-190016.md`
+- Result:
+  - History extraction now matches gameplay/wallet/bonus pattern: GS fail-open shadowing, bank canary routing decision, and one-command runtime evidence collection.
+  - Current environment remains `NOT_READY` due unavailable endpoints/docker socket.
+- Next step:
+  - finalize and commit this history checkpoint; retry push when network access to github.com is available.

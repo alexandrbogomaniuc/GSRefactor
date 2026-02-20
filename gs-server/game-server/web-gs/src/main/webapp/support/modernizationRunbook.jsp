@@ -69,6 +69,11 @@
                 <td><span class="label label-warning">NOT_READY (last known)</span></td>
                 <td><code>docs/phase5/bonus-frb/phase5-bonus-frb-runtime-evidence-20260220-185313.md</code></td>
             </tr>
+            <tr>
+                <td>Phase 5 history evidence</td>
+                <td><span class="label label-warning">NOT_READY (last known)</span></td>
+                <td><code>docs/phase5/history/phase5-history-runtime-evidence-20260220-190016.md</code></td>
+            </tr>
             </tbody>
         </table>
         <p class="small-note">
@@ -133,6 +138,20 @@
 </code></pre>
         <p class="small-note">
             Output reports: <code>docs/phase5/bonus-frb/phase5-bonus-frb-runtime-evidence-*.md</code>
+        </p>
+    </div>
+
+    <div class="section">
+        <h4>Phase 5 History Runtime Check</h4>
+        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-history-runtime-readiness-check.sh
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-history-runtime-evidence-pack.sh \
+  --bank-id 6275 \
+  --transport host \
+  --history-base-url http://127.0.0.1:18077
+</code></pre>
+        <p class="small-note">
+            Output reports: <code>docs/phase5/history/phase5-history-runtime-evidence-*.md</code>
         </p>
     </div>
 

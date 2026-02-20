@@ -2,6 +2,7 @@ package com.dgphoenix.casino.web.api.newgames;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.actions.enter.game.routing.GameplayOrchestratorRoutingBridge;
+import com.dgphoenix.casino.actions.enter.game.routing.HistoryServiceRoutingBridge;
 import com.dgphoenix.casino.actions.enter.game.routing.ProtocolAdapterRoutingBridge;
 import com.dgphoenix.casino.actions.enter.game.routing.WalletAdapterRoutingBridge;
 import com.dgphoenix.casino.common.SessionHelper;
@@ -286,11 +287,13 @@ public class NewGamesInternalApiServlet extends HttpServlet {
         requireNotEmpty(body.roundId, "roundId is required");
         requireNotEmpty(body.eventType, "eventType is required");
 
-        executeForSession(body.sessionId, false, (sessionInfo, accountInfo) -> {
+        SessionContext context = executeForSession(body.sessionId, false, (sessionInfo, accountInfo) -> {
             LOG.info("NGS_HISTORY_WRITE sid={}, accountId={}, roundId={}, eventType={}, data={}",
                     body.sessionId, accountInfo.getId(), body.roundId, body.eventType, body.data);
-            return null;
+            return new SessionContext(sessionInfo, accountInfo);
         });
+
+        shadowHistoryWrite(context.accountInfo.getBankId(), body.sessionId, body.roundId, body.eventType, request);
 
         writeJson(response, HttpServletResponse.SC_OK, Collections.singletonMap("ok", true));
     }
@@ -567,6 +570,30 @@ public class NewGamesInternalApiServlet extends HttpServlet {
         } catch (Exception e) {
             LOG.warn("NGS gameplay-orchestrator shadow failed (ignored): bankId={}, callType={}, reason={}",
                     bankId, callType, e.getMessage());
+        }
+    }
+
+    private void shadowHistoryWrite(long bankId,
+                                    String sessionId,
+                                    String roundId,
+                                    String eventType,
+                                    HttpServletRequest request) {
+        try {
+            HistoryServiceRoutingBridge.RouteDecision routeDecision =
+                    HistoryServiceRoutingBridge.getInstance().decide(bankId);
+            String operationId = "ngs-history-" + sessionId + "-" + roundId + "-" + eventType;
+            HistoryServiceRoutingBridge.getInstance().shadowAppendRecord(
+                    routeDecision,
+                    bankId,
+                    sessionId,
+                    roundId,
+                    eventType,
+                    operationId,
+                    resolveTraceId(request)
+            );
+        } catch (Exception e) {
+            LOG.warn("NGS history-service shadow failed (ignored): bankId={}, eventType={}, reason={}",
+                    bankId, eventType, e.getMessage());
         }
     }
 
