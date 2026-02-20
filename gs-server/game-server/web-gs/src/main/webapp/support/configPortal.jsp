@@ -466,7 +466,10 @@
 
     <div class="section">
         <h4>Level 1: Cluster Hosts</h4>
-        <p class="small-note">Source: <code>cluster-hosts.properties</code> on classpath.</p>
+        <p class="small-note">
+            Source: <code>cluster-hosts.properties</code> on classpath.
+            Detailed key descriptions: <a href="/support/clusterHosts.jsp">/support/clusterHosts.jsp</a>
+        </p>
         <% if (clusterKeys.isEmpty()) { %>
         <div class="alert alert-danger">cluster-hosts.properties is missing or empty.</div>
         <% } else { %>
@@ -549,6 +552,23 @@
     <div class="section">
         <h4>Level 2: Bank Settings Catalog</h4>
         <p class="small-note">Auto-generated from <code>BankInfo</code> annotated keys and descriptions.</p>
+        <table class="table table-bordered table-condensed">
+            <thead>
+            <tr>
+                <th style="width:220px;">Category</th>
+                <th>Meaning</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr><td><code>Wallet</code></td><td>Balance/auth/settlement and financial routing controls.</td></tr>
+            <tr><td><code>Bonus/FRB</code></td><td>Free rounds, bonus wallet, and bonus validation controls.</td></tr>
+            <tr><td><code>Multiplayer</code></td><td>Lobby, room, and websocket multiplayer behavior.</td></tr>
+            <tr><td><code>Integration URL</code></td><td>Outbound endpoint addresses used for partner integrations.</td></tr>
+            <tr><td><code>Game Limits</code></td><td>Bet/min/max operational boundaries per bank/game.</td></tr>
+            <tr><td><code>Legacy MQ</code></td><td>Legacy-era keys still supported for compatibility mapping.</td></tr>
+            <tr><td><code>General</code></td><td>Cross-cutting settings not specific to one domain.</td></tr>
+            </tbody>
+        </table>
         <table class="table table-bordered table-striped table-condensed">
             <thead>
             <tr>

@@ -247,6 +247,12 @@
           "evidence": "docs/56-cluster-config-portal-descriptions-20260220-180900.md"
         },
         {
+          "id": "ux-bank-category-guide",
+          "label": "Portal includes bank setting category guide for operators",
+          "status": "done",
+          "evidence": "docs/57-config-portal-category-guide-20260220-181200.md"
+        },
+        {
           "id": "ux-persistent-approvals",
           "label": "Cross-session persistent approvals and audit trail",
           "status": "planned",

@@ -3112,3 +3112,18 @@
   - portal now explains cluster-level settings directly for operators.
 - Next step:
   - add the same description pattern to bank-level setting categories inside `configPortal.jsp`.
+
+### 2026-02-20 18:09-18:12 UTC
+- Enhanced config portal usability for non-developer operators:
+  - added Level 1 link to full cluster key descriptions page,
+  - added Level 2 bank setting category guide table in `configPortal.jsp`.
+- Artifacts:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/57-config-portal-category-guide-20260220-181200.md`
+  - checklist milestone `ux-bank-category-guide` marked done.
+- Verification:
+  - checklist JSON parse passed,
+  - `rg` confirms new guidance text in `configPortal.jsp`.
+- Result:
+  - portal now explains config categories and navigation path to key descriptions more clearly.
+- Next step:
+  - add phase-level docs index page in portal for quick access to modernization evidence by phase.
