@@ -3,5 +3,12 @@
 tmp/
 Dev_new/
 **/node_modules/
+Casino side/
+Doker/
+client/.gitignore
+client/dragonstone/
+client/revengeofra/
+client/sectorx/
+client/sectorx_btg/
 Casino side/**/.git/
 Casino side/**/.idea/
