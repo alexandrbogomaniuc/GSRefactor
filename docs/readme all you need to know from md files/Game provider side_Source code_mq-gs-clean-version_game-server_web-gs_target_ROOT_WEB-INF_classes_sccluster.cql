@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS RCasinoSCKS.PaymentTransactionCF;
+DROP TABLE IF EXISTS RCasinoKS.MinMaxWalletCF;

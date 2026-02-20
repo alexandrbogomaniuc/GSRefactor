@@ -1,0 +1,113 @@
+<%@ page import="com.dgphoenix.casino.common.web.BaseAction" %>
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="com.dgphoenix.casino.common.util.logkit.ThreadLog" %>
+<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="java.util.TimeZone" %>
+<%@ page import="java.util.SimpleTimeZone" %>
+<%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
+<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
+<%@ page import="com.google.gson.Gson" %>
+<%@ page import="static org.apache.http.entity.ContentType.APPLICATION_JSON" %>
+<%@ page import="com.dgphoenix.casino.common.config.HostConfiguration" %>
+<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+<% 
+    String cdnUrl = request.getParameter(BaseAction.KEY_CDN);
+    HostConfiguration hostConfig = ApplicationContextHelper.getBean(HostConfiguration.class);
+    String scheme = request.getScheme();
+    String fwdScheme = request.getHeader("X-Forwarded-Proto");
+    if (fwdScheme != null) { scheme = fwdScheme; } else if (hostConfig != null && hostConfig.isProductionCluster()) { scheme = "https"; }
+    if (StringUtils.isTrimmedEmpty(cdnUrl)) { cdnUrl = "localhost"; }
+    String serverName = request.getServerName();
+    int serverPort = request.getServerPort();
+    String contextPath = request.getContextPath();
+    String lobbyUrl = scheme + "://" + cdnUrl;
+    String serverUrl = scheme + "://" + serverName + ((serverPort == 80 || serverPort == 443) ? "" : (":" + serverPort));
+    String sessionErrorURL = serverUrl + "/error_pages/sessionerror.jsp";
+    String bankId = request.getParameter(BaseAction.BANK_ID_ATTRIBUTE);
+    if (bankId == null) { bankId = request.getParameter("bankId"); }
+    if (StringUtils.isTrimmedEmpty(bankId)) { ThreadLog.error("MQ TMPL: bankId missing"); response.sendRedirect(sessionErrorURL); return; }
+    long lbankId = Long.parseLong(bankId);
+    BankInfo bankInfo = BankInfoCache.getInstance().getBankInfo(lbankId);
+    String homeURL = request.getParameter(BaseAction.PARAM_HOME_URL);
+    if (StringUtils.isTrimmedEmpty(homeURL)) { homeURL = StringUtils.isTrimmedEmpty(bankInfo.getHomeURL()) ? "" : bankInfo.getHomeURL(); }
+    String sessionId = request.getParameter(BaseAction.SESSION_ID_ATTRIBUTE);
+    if (StringUtils.isTrimmedEmpty(sessionId)) { ThreadLog.error("MQ TMPL: No SID"); response.sendRedirect(sessionErrorURL); return; }
+    String gameId = request.getParameter(BaseAction.GAME_ID_ATTRIBUTE);
+    if (StringUtils.isTrimmedEmpty(gameId)) { ThreadLog.error("MQ TMPL: No GID"); response.sendRedirect(sessionErrorURL); return; }
+    String webSocketUrl = request.getParameter(BaseAction.WEB_SOCKET_URL);
+    if (webSocketUrl == null || webSocketUrl.trim().isEmpty()) { String wsScheme = "https".equals(scheme) ? "wss" : "ws"; webSocketUrl = wsScheme + "://" + serverName + ":" + serverPort + contextPath + "/webSocket"; }
+    String timeZoneName = bankInfo.getTimeZone();
+    Integer offset = null;
+    if (timeZoneName != null) { TimeZone timeZone = SimpleTimeZone.getTimeZone(timeZoneName); if (timeZone != null) { offset = timeZone.getOffset(System.currentTimeMillis()) / 60000; } }
+    BaseGameInfoTemplate bgInfo = BaseGameInfoTemplateCache.getInstance().getBaseGameInfoTemplateById(Long.parseLong(gameId));
+    boolean tripleMaxBlast = bgInfo.getGameId() == 875;
+    String swfLocation = bgInfo.getSwfLocation();
+    String gamePath = StringUtils.isTrimmedEmpty(swfLocation) ? "/html5pc/shooter/" : swfLocation;
+    String gameFolder = bgInfo.getMultiplayerGameFolderName();
+    String templateJsPath = lobbyUrl + gamePath + (StringUtils.isTrimmedEmpty(gameFolder) ? "lobby" : gameFolder);
+    String cdnUrls = bankInfo.getCdnUrls();
+    String lang = request.getParameter(BaseAction.LANG_ID_ATTRIBUTE); if (lang == null) { lang = ""; }
+    String mode = request.getParameter(BaseAction.GAMEMODE_ATTRIBUTE); if (mode == null) { mode = ""; }
+    String serverId = request.getParameter(BaseAction.GAMESERVERID_ATTRIBUTE); if (serverId == null) { serverId = ""; }
+    ThreadLog.info("MQ TMPL: DEBUG - serverName=" + serverName + " , serverPort=" + serverPort);
+    String wsUrlCheck = request.getParameter("websocket"); if (wsUrlCheck == null) { wsUrlCheck = request.getParameter(BaseAction.WEB_SOCKET_URL); } if (wsUrlCheck == null) { wsUrlCheck = webSocketUrl; }
+    String wsUrl = wsUrlCheck != null ? wsUrlCheck : "";
+    String gameQuery = "bankId=" + URLEncoder.encode(bankId, "UTF-8") + "&gameId=" + URLEncoder.encode(gameId, "UTF-8") + "&sessionId=" + URLEncoder.encode(sessionId, "UTF-8") + "&lang=" + URLEncoder.encode(lang, "UTF-8") + "&mode=" + URLEncoder.encode(mode, "UTF-8") + "&serverId=" + URLEncoder.encode(serverId, "UTF-8") + "&websocket=" + URLEncoder.encode(wsUrl, "UTF-8");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%=bgInfo.getTitle()%></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>html, body { padding: 0; margin: 0; background-color: black; }</style>
+</head>
+<body>
+    <script src="<%=templateJsPath%>/pixi.min.js"></script>
+    <script>
+        console.log('[PIXI-CHECK] PIXI version:', window.PIXI ? window.PIXI.VERSION : 'NOT FOUND');
+        window.gameConfig = { 'bankId': '<%=bankId%>', 'sessionId': '<%=sessionId%>', 'gameId': '<%=gameId%>', 'lang': '<%=lang%>', 'mode': '<%=mode%>', 'websocket': '<%=wsUrl%>', 'serverId': '<%=serverId%>', 'getGamePath': '<%=lobbyUrl%><%=gamePath%>game/?bankId=<%=bankId%>&gameId=<%=gameId%>&mode=<%=mode%>&lang=<%=lang%>&sessionId=<%=sessionId%>&serverId=<%=serverId%>', 'getLobbyPath': '<%=lobbyUrl%><%=gamePath%>lobby/' };
+        (function() {
+            window.gameEnvReady = false;
+            window.addEventListener("load", function() { window.gameEnvReady = true; console.log('[LOADER] gameEnvReady = true'); });
+            var l_xhr = new XMLHttpRequest();
+            l_xhr.open('GET', '<%=templateJsPath%>/version.json?t=' + (new Date().getTime()), true);
+            l_xhr.onload = function() {
+                var v = JSON.parse(l_xhr.response).version;
+                var s = document.createElement('script'); s.src = '<%=templateJsPath%>/validator.js?v=' + v; s.onload = function() {
+                    console.log('[LOADER] validator.js loaded');
+                    var g = document.createElement('script'); g.src = '<%=templateJsPath%>/game.js?v=' + v; g.onload = function() { console.log('[LOADER] game.js loaded'); }; document.head.appendChild(g);
+                }; document.head.appendChild(s);
+            }; l_xhr.send();
+        })();
+        function getParams() {
+            return {
+                'bankId': '<%=bankId%>', 'sessionId': '<%=sessionId%>', 'gameId': '<%=gameId%>', 'lang': '<%=lang%>', 'mode': '<%=mode%>', 'websocket': '<%=wsUrl%>', 'serverId': '<%=serverId%>',
+                <% if (tripleMaxBlast) { %> 'isTripleMaxBlast': 'true', <% } %>
+                <% if (!StringUtils.isTrimmedEmpty(homeURL)) { %> 'JS_HOME': 'openHome', <% } %>
+                'CUSTOMER_SETTINGS_URL': '<%=lobbyUrl%><%=bankInfo.getCustomerSettingsUrl()%>',
+                'MQ_HELP_PATH': '<%=lobbyUrl%>/flash/shell/global_shell/rules/aams/',
+                <% if (offset != null) { %> 'MQ_TIMER_OFFSET': '<%=offset%>', <% } %>
+                'MQ_TIMER_FREQ': '15',
+                <% if (GameServerConfiguration.getInstance().isTestSystem()) { %> 'TEST_SYSTEM': true, <% } %>
+                'MQ_WEAPONS_MODE': '<%=bankInfo.getMaxQuestWeaponMode().name()%>',
+                'MQ_WEAPONS_SAVING_ALLOWED': '<%=bankInfo.isRoundWinsWithoutBetsAllowed()%>',
+                'MQ_CLIENT_ERROR_HANDLING': <%=GameServerConfiguration.getInstance().isTestSystem()%>,
+                'DISABLE_MQ_BACKGROUND_LOADING': '<%=bankInfo.isMQBackgroundLoadingDisabled()%>',
+                'DISABLE_MQ_AUTOFIRING': '<%=false%>',
+                'CW_SEND_REAL_BET_WIN': '<%=bankInfo.isCWSendRealBetWin()%>',
+                'commonPathForActionGames': '<%=lobbyUrl%>/html5pc/actiongames/common/',
+                'ROOMS_SORT_ORDER': '<%=bankInfo.getMQRoomsSortOrder()%>',
+                'CLIENT_LOG_LEVEL': '<%=bankInfo.getMQClientLogLevel().name()%>'
+            };
+        }
+        function openHome() { if (window.parent != null) { window.parent.location = "<%=homeURL%>"; } else { window.location = "<%=homeURL%>"; } }
+        function getLobbyPath() { return '<%=lobbyUrl%><%=gamePath%>lobby/'; }
+        function getGamePath() { return '<%=lobbyUrl%><%=gamePath%>game/?<%=gameQuery%>'; }
+        function getCustomerspecDescriptorStoragePathURL() { return "<%=lobbyUrl%><%=bankInfo.getCustomerSettingsHtml5Pc()%>"; }
+    </script>
+</body>
+</html>

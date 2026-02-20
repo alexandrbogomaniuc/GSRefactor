@@ -1,0 +1,2169 @@
+D	Project	Category	View Status	Date Submitted	Last Update
+0023991	MaxQuest Brand		public	2023-03-30 12:14	2024-02-19 10:01
+Reporter	vik.mqb	Assigned To	vik.mqb	 
+Priority	high	Severity	major	Reproducibility	have not tried
+Status	 assigned	Resolution	open	 
+Summary	0023991: [MQ TECNOLOGIA] - Full Access to MQ games source code and servers
+Description	
+We need access to MQ games and it source code.
+Please let me know if this is doable or you will need to move game to separate instance, for us to be able to access.
+
+Tags	No tags attached.
+Attach Tags	
+(Separate by ",") 
+ 
+Existing tags
+ 
+ Relationships
+Current issue   
+related to
+ 
+ 
+ Users monitoring this issue
+User List	Sasha , vik.mqb 
+
+ 
+ Add Note
+View Status	private
+Note	
+Upload Files
+Maximum size: 5,120 KiB	
+
+Attach files by dragging & dropping, selecting or pasting them.
+ Activities
+ val
+
+ 2024-02-19 10:01
+
+manager    ~0329381
+
+ Last edited: 2024-02-19 10:01
+
+Product team needs to check current status of Dead Mans Cove game.
+
+It's very old game, that was updated last time at the beginning of 2021. It had not applied latest changes for more than 3 years (as new shooting model, battleground and many other minor updates). We planned to remake it from the of one of the latest game from the scratch - that's how many differences between these generations of MQ games.
+
+Where is it available for playing?
+
+We have no MQ games available more (neither on Copy or Beta systems).
+So you need to launch them locally or deploy on your servers.
+
+Also, can you please share source code in code?
+
+We prepared the latest frontend sources of this game and uploaded it to git - see mq-client-deadmanscove-2021.zip
+Provided backend sources should already keep this game inside.
+Note: to build and run frontend part of this game, you need to use legacy common instead (was uploaded nearby).
+
+ vik.mqb
+
+ 2024-02-16 12:15
+
+reporter    ~0329292
+
+ Last edited: 2024-02-19 10:01
+
+Product team needs to check current status of Dead Mans Cove game. Where is it available for playing?
+
+Also, can you please share source code in code?
+
+ vik.mqb
+
+ 2024-02-16 12:13
+
+reporter    ~0329291
+
+ Last edited: 2024-02-19 10:01
+
+All changes related to cancel round in MBC you should see at com.betsoft.casino.mp.maxblastchampions.model.WaitingPlayersGameState
+processCancelCrashMultiplierAndGetMessage()
+processCancelCrashMultiplier()
+
+During cancel of round all bets are removed, and their sums are added at com.betsoft.casino.mp.maxblastchampions.model.Seat.canceledBetAmount
+(see method cancelCrashBet())
+
+Thank you
+
+ val
+
+ 2024-02-01 07:26
+
+manager    ~0327991
+
+ Last edited: 2024-02-19 10:01
+
+In crash games battleground, when there are no other players, we return back the player bet, but we are sending this value in WIN and realBet parameter, which is wrong and not the same as in other battleground games.
+Now we need to set that on betResult we return unused bet as a WIN parameter and realBet to be zero.
+How can we do it? Which class handles it?
+
+All changes related to cancel round in MBC you should see at com.betsoft.casino.mp.maxblastchampions.model.WaitingPlayersGameState
+processCancelCrashMultiplierAndGetMessage()
+processCancelCrashMultiplier()
+
+During cancel of round all bets are removed, and their sums are added at com.betsoft.casino.mp.maxblastchampions.model.Seat.canceledBetAmount
+(see method cancelCrashBet())
+
+ vik.mqb
+
+ 2024-01-31 12:03
+
+reporter    ~0327896
+
+ Last edited: 2024-02-19 10:01
+
+In crash games battleground, when there are no other players, we return back the player bet, but we are sending this value in WIN and realBet parameter, which is wrong and not the same as in other battleground games.
+Now we need to set that on betResult we return unused bet as a WIN parameter and realBet to be zero.
+
+How can we do it? Which class handles it?
+
+ vik.mqb
+
+ 2024-01-31 11:59
+
+reporter    ~0327894
+
+ Last edited: 2024-02-19 10:01
+
+Any existing MQ game could be added and configured the same manner as SP versions of DS, MA or SX. If you need details, please concrete what you need to know.
+However note that mentioned game is out of dated (last update was at the beginning of 2021), has no last gameplay changes and no BTG mode.
+
+Ok, thank you
+
+ val
+
+ 2024-01-24 10:44
+
+manager    ~0327171
+
+ Last edited: 2024-02-19 10:01
+
+How can we add new game, for example Revenge of Ra and configuration for it?
+Any existing MQ game could be added and configured the same manner as SP versions of DS, MA or SX. If you need details, please concrete what you need to know.
+However note that mentioned game is out of dated (last update was at the beginning of 2021), has no last gameplay changes and no BTG mode.
+
+Did you use sticky sessions on the load balancers?
+Sticky sessions was turned on, but not used on this project. Lobby socket connection can be established with any node. Game socket connection is established with exact node where is certain game room.
+
+ vik.mqb
+
+ 2024-01-24 08:46
+
+reporter    ~0327154
+
+ Last edited: 2024-02-19 10:01
+
+I have couple of questions, if you can help me with:
+
+How can we add new game, for example Revenge of Ra and configuration for it?
+
+Did you use sticky sessions on the load balancers?
+
+ val
+
+ 2023-12-08 10:48
+
+manager    ~0323719
+
+ Last edited: 2024-02-19 10:01
+
+We would like to store analytical data in PostgresSQL. How can we implement the same data layer as you are using for Greenplum?
+I understand that MQ games had this ability before but it was removed when MQ games were separated from Betsoft system.
+Can you please share the code that was used for storing data in another database?
+
+We can't share requested code as it's the part of another product - Casino Manager.
+
+ vik.mqb
+
+ 2023-12-08 10:25
+
+reporter    ~0323717
+
+ Last edited: 2024-02-19 10:01
+
+Seems you incorrectly understood us.
+To provide you proper recommendation with further development, we need to know all recent requirements to project, learn new technologies possible to be used, etc. In fact it means return to development process. But we are not participating in MQ development more, we just help you to understand with our sources or something we had been worked with. Finally we simply have no resources for such kind of work at present. You need to research it yourself.
+
+We would like to store analytical data in PostgresSQL. How can we implement the same data layer as you are using for Greenplum?
+
+I understand that MQ games had this ability before but it was removed when MQ games were separated from Betsoft system.
+Can you please share the code that was used for storing data in another database?
+
+ val
+
+ 2023-11-29 10:49
+
+manager    ~0322695
+
+ Last edited: 2024-02-19 10:01
+
+We had no need to do that before, we also have no practice of it and need to investigate this question first. Thus unfortunately we can't recommend you something concrete.
+
+Ok. Please let me know when you have more info, as we need to do it properly and not oversee something.
+
+Seems you incorrectly understood us.
+To provide you proper recommendation with further development, we need to know all recent requirements to project, learn new technologies possible to be used, etc. In fact it means return to development process. But we are not participating in MQ development more, we just help you to understand with our sources or something we had been worked with. Finally we simply have no resources for such kind of work at present. You need to research it yourself.
+
+ vik.mqb
+
+ 2023-11-28 12:14
+
+reporter    ~0322604
+
+ Last edited: 2024-02-19 10:01
+
+We had no need to do that before, we also have no practice of it and need to investigate this question first. Thus unfortunately we can't recommend you something concrete.
+
+Ok. Please let me know when you have more info, as we need to do it properly and not oversee something.
+
+ val
+
+ 2023-11-28 08:29
+
+manager    ~0322544
+
+ Last edited: 2024-02-19 10:01
+
+We are migrating to Google cloud and we plan to use monitoring, analytical and BI services from Google, which needs to read and access the data from Cassandra database.
+For this purpose we will need to change serialization of the data from Binary to JSON
+How can we do this?
+What are your guides and recommendations for it?
+
+We had no need to do that before, we also have no practice of it and need to investigate this question first. Thus unfortunately we can't recommend you something concrete.
+
+ vik.mqb
+
+ 2023-11-27 22:43
+
+reporter    ~0322507
+
+ Last edited: 2024-02-19 10:01
+
+Cassandra is majorly used as persistence layer for Hazelcast on MQ part, and to store players history, game settings and licencees on GS part.
+For CM we use Greenplum.
+
+Ok, thank you.
+
+We are migrating to Google cloud and we plan to use monitoring, analytical and BI services from Google, which needs to read and access the data from Cassandra database.
+For this purpose we will need to change serialization of the data from Binary to JSON
+
+How can we do this?
+What are your guides and recommendations for it?
+
+ val
+
+ 2023-11-24 12:56
+
+manager    ~0322369
+
+ Last edited: 2024-02-19 10:01
+
+Database for games is usually used for historical data and analytics. What was the purpose of using Cassandra DB?
+Which DB are you using for CM and what is the data structure in this case?
+
+Cassandra is majorly used as persistence layer for Hazelcast on MQ part, and to store players history, game settings and licencees on GS part.
+For CM we use Greenplum.
+
+ vik.mqb
+
+ 2023-11-24 07:46
+
+reporter    ~0322329
+
+ Last edited: 2024-02-19 10:01
+
+Cassandra is a very specific DB with limited functionality. It allows to make only simple requests to it, without any analytics or complex queries. Thus there is no sense to keep data by fields, to the detriment of the performance and storage.
+
+Database for games is usually used for historical data and analytics.
+What was the purpose of using Cassandra DB?
+
+For analytics we have another BSG product - Casino Manager. Data is replicated from GS to CM at application level.
+
+Which DB are you using for CM and what is the data structure in this case?
+
+ val
+
+ 2023-11-24 05:21
+
+manager    ~0322322
+
+ Last edited: 2024-02-19 10:01
+
+We noticed that you were storing data in Cassandra in binary format. This way we are not able to query the database.
+Was there a reason why binary format for data was used?
+How can we build custom queries for analytics to Cassandra?
+
+Cassandra is a very specific DB with limited functionality. It allows to make only simple requests to it, without any analytics or complex queries. Thus there is no sense to keep data by fields, to the detriment of the performance and storage.
+
+For analytics we have another BSG product - Casino Manager. Data is replicated from GS to CM at application level.
+
+ vik.mqb
+
+ 2023-11-23 12:24
+
+reporter    ~0322297
+
+ Last edited: 2024-02-19 10:01
+
+We noticed that you were storing data in Cassandra in binary format. This way we are not able to query the database.
+
+Was there a reason why binary format for data was used?
+
+How can we build custom queries for analytics to Cassandra?
+
+ val
+
+ 2023-11-07 11:54
+
+manager    ~0320789
+
+ Last edited: 2024-02-19 10:01
+
+How can we test from IDE?
+
+If you use IntelliJ IDEA, you just need to open TestModel.java and choose "Run TestModel.main()" in context menu.
+
+Thank you. This tool looks like it is for SectorX Battleground. How can we test singleplayer version?
+
+Provided script runs RTP tests for SP version. BTG version was not required to be tested RTP.
+
+ vik.mqb
+
+ 2023-11-07 11:19
+
+reporter    ~0320763
+
+ Last edited: 2024-02-19 10:01
+
+You may start test directly in IDEa (it does not require specific configuration),
+
+How can we test from IDE?
+
+or via script like next one (for Linux):
+https://www.dropbox.com/scl/fi/zfxpd5nq1zph3qcyldpy0/sectorxtest.zip?rlkey=daiokqezt9e7m3kwbvkwmmm6x&dl=0
+
+Thank you. This tool looks like it is for SectorX Battleground. How can we test singleplayer version?
+
+ val
+
+ 2023-11-07 05:29
+
+manager    ~0320712
+
+ Last edited: 2024-02-19 10:01
+
+How can we test math and RTP?
+We see there is a tool for testing. Can you explain how to configure it and use it?
+Here is an example of a class that we found and need help with: <skipped...>
+
+You may start test directly in IDEa (it does not require specific configuration), or via script like next one (for Linux):
+https://www.dropbox.com/scl/fi/zfxpd5nq1zph3qcyldpy0/sectorxtest.zip?rlkey=daiokqezt9e7m3kwbvkwmmm6x&dl=0
+
+ vik.mqb
+
+ 2023-11-06 11:18
+
+reporter    ~0320657
+
+ Last edited: 2024-02-19 10:01
+
+How can we test math and RTP?
+
+We see there is a tool for testing. Can you explain how to configure it and use it?
+
+Here is an example of a class that we found and need help with:
+
+public static void main(String[] args) throws Exception {
+...
+boolean debug = false;
+int cntPlayers = 1;
+boolean needSaveToFile = false;
+String idEnemiesForShooting = "57,100"; /1,2,3,4,5,6,7,8,9,10,11,12,13,15,15,16,57,100,32/
+int numberOfEnemies = 1;
+int coinInCents = 2;
+int cntRealShotsRequired = 1000000;
+int betLevel = 1;
+for (String arg : args) {
+String[] params = arg.split("=");
+switch (params[0]) {
+case "debug":
+debug = params[1].equals("true");
+break;
+case "cntPlayers":
+cntPlayers = Integer.parseInt(params[1]);
+break;
+case "betLevel":
+betLevel = Integer.parseInt(params[1]);
+break;
+case "idEnemiesForShooting":
+idEnemiesForShooting = params[1];
+break;
+case "numberOfEnemies":
+numberOfEnemies = Integer.parseInt(params[1]);
+break;
+case "needSaveToFile":
+needSaveToFile = params[1].equals("true");
+break;
+case "coinInCents":
+coinInCents = Integer.parseInt(params[1]);
+break;
+case "cntRealShotsRequired":
+cntRealShotsRequired = Integer.parseInt(params[1]);
+break;
+default:
+break;
+}
+}
+...
+
+ vik.mqb
+
+ 2023-11-06 11:16
+
+reporter    ~0320656
+
+ Last edited: 2024-02-19 10:01
+
+The game was finished and provided to Live systems (like 188Bet). But later there were a lot of significant and conceptual changes in MQS (since Dragonstone), like BTG/CAF mode or some gameplay updates, so we considered this version of the game as legacy.
+
+Thank you
+
+ val
+
+ 2023-11-03 12:39
+
+manager    ~0320629
+
+ Last edited: 2024-02-19 10:01
+
+Can you also provide the latest status (or document) for "Rise of the mummy" game?
+
+The game was finished and provided to Live systems (like 188Bet). But later there were a lot of significant and conceptual changes in MQS (since Dragonstone), like BTG/CAF mode or some gameplay updates, so we considered this version of the game as legacy.
+
+ vik.mqb
+
+ 2023-11-03 11:44
+
+reporter    ~0320601
+
+ Last edited: 2024-02-19 10:01
+
+added to git (see mq-client-revengeofra-20221031.zip)
+
+Source received. Thank you
+
+Can you also provide the latest status (or document) for "Rise of the mummy" game?
+
+ val
+
+ 2023-11-03 08:04
+
+manager    ~0320542
+
+ Last edited: 2024-02-19 10:01
+
+Can you please provide all source code for "Rise of the mummy" game?
+
+added to git (see mq-client-revengeofra-20221031.zip)
+
+ vik.mqb
+
+ 2023-11-02 12:20
+
+reporter    ~0320458
+
+ Last edited: 2024-02-19 10:01
+
+Can you please provide all source code for "Rise of the mummy" game?
+
+ vik.mqb
+
+ 2023-10-30 07:18
+
+reporter    ~0320051
+
+ Last edited: 2024-02-19 10:01
+
+I can not use "sudo" as it is asking for password.
+Can you please provide me the password?
+
+Sudo access is granted by RSA. Thank you
+
+ vik.mqb
+
+ 2023-10-27 16:20
+
+reporter    ~0320021
+
+ Last edited: 2024-02-19 10:01
+
+access for login:vik via public key
+
+I can not use "sudo" as it is asking for password.
+
+Can you please provide me the password?
+
+ val
+
+ 2023-10-27 11:16
+
+manager    ~0319967
+
+ Last edited: 2024-02-19 10:01
+
+LSA had granted access to you on MQB Live cluster:
+
+gs1-mqb.maxquest.com 162.210.192.172:222
+gs2-mqb.maxquest.com 199.115.116.11:222
+gs3-mqb.maxquest.com 23.105.164.249:222
+games-mqb.maxquest.com 108.62.117.46:222
+default-mqb.maxquest.com 108.62.117.47:222
+access for login:vik via public key
+note: default-mqb.maxquest.com has the same physical place as games-mqb.maxquest.com, so you need to update just one of them
+
+ vik.mqb
+
+ 2023-10-27 10:53
+
+reporter    ~0319961
+
+ Last edited: 2024-02-19 10:01
+
+Could you clarify for what resource you need access? May you provide example of IP to one node?
+
+I need root access for these:
+
+162.210.192.172 gs1-mqb.maxquest.com
+199.115.116.11 gs2-mqb.maxquest.com
+23.105.164.249 gs3-mqb.maxquest.com
+108.62.117.46 games-mqb.maxquest.com
+108.62.117.47 default-mqb.maxquest.com
+
+ val
+
+ 2023-10-27 10:11
+
+manager    ~0319954
+
+ Last edited: 2024-02-19 10:01
+
+Can you please create account for me for all nodes for mqb.maxquest.com?
+
+Could you clarify for what resource you need access? May you provide example of IP to one node?
+
+ vik.mqb
+
+ 2023-10-26 15:42
+
+reporter    ~0319898
+
+ Last edited: 2024-02-19 10:01
+
+Can you please create account for me for all nodes for mqb.maxquest.com?
+
+ val
+
+ 2023-10-23 11:21
+
+manager    ~0319378
+
+ Last edited: 2024-02-19 10:01
+
+We have configure the domains properly and now it works..
+
+Ok
+
+ vik.mqb
+
+ 2023-10-23 10:59
+
+reporter    ~0319376
+
+ Last edited: 2024-02-19 10:01
+
+When we start battleground games, we pass homeUrl parameter, but it is not applied to "Back to lobby" button.
+...
+How can we configure "Back to lobby" button to use the value from homeUrl parameter?
+
+This is done, no need to reply. We have configure the domains properly and now it works..
+
+ vik.mqb
+
+ 2023-10-20 11:45
+
+reporter    ~0319228
+
+ Last edited: 2024-02-19 10:01
+
+When we start battleground games, we pass homeUrl parameter, but it is not applied to "Back to lobby" button.
+
+https://default-test.maxquest.com/battlegroundstartgamev2.do?gameId=856&bankId=6275&mode=real&token=c1466871255ea723cfca211785a9d406&buyIn=200000&homeUrl=https://test.maxquest.com/app/dashboard/battlegrounds
+302 ->
+https://default-test.maxquest.com/real/mp/template.jsp?gameId=856&homeUrl=https%3A%2F%2Ftest.maxquest.com%2Fapp%2Fdashboard%2Fbattlegrounds&battlegroundBuyIn=200000&MODE=real&GAMESERVERID=3&WEB_SOCKET_URL=wss%3A%2F%2Fgames-mp-test.maxquest.com%2Fwebsocket%2Fmplobby&LANG=en&continueIncompleteRound=&BANKID=6275&SID=3_e1935950d4d247b21f420000018ba6ad_SlsMDWNuLyUaMyorCA5vTVRqLwYaCRk-EFgcHwIECg4C
+
+How can we configure "Back to lobby" button to use the value from homeUrl parameter?
+
+ vik.mqb
+
+ 2023-10-20 11:41
+
+reporter    ~0319225
+
+ Last edited: 2024-02-19 10:01
+
+We don't use special tools for this purposes, just cat and tail commands.
+
+Ok, thanks
+
+ val
+
+ 2023-10-18 11:11
+
+manager    ~0318948
+
+ Last edited: 2024-02-19 10:01
+
+Which tool should we use to monitor and analyze logs?
+
+We don't use special tools for this purposes, just cat and tail commands.
+
+ vik.mqb
+
+ 2023-10-17 16:46
+
+reporter    ~0318844
+
+ Last edited: 2024-02-19 10:01
+
+Which tool should we use to monitor and analyze logs?
+
+ val
+
+ 2023-10-12 13:10
+
+manager    ~0318394
+
+ Last edited: 2024-02-19 10:01
+
+We fetched new archives from git and started testing.
+For now we tested Dragonstone only. mp4 files are there and the game works good on Safari now.
+
+Ok
+
+But we experiencing another issue with new Dragonstone game client - when host loads the game and get to Ready screen, it has option to KICK himself, which is not present on Beta and not in the CAF specs.
+https://www.dropbox.com/scl/fi/fk76gk7ti4v7i3olr5nz3/Screenshot-2023-10-11-at-21.40.56.png?rlkey=xl1owidc46q2jn6ff4q1xyw28&dl=0
+
+Seems you didn't receive "isOwner":true in GetRoomInfoResponse of mpgame connection.
+It doesn't look like client side issue, so you need to debug server part on your side, to find out why mentioned property is absent for Host player.
+
+ vik.mqb
+
+ 2023-10-11 21:12
+
+reporter    ~0318267
+
+ Last edited: 2024-02-19 10:01
+
+You have already received requested sources via git - commit bf2c314 ("mq-client-sources", 2023-07-05), and wrote about in this thread (post 0023991:0309177). Also there were instruction how to build this sources, to deploy them on server.
+Also we recently push the final fixes for XS BTG to git - commit 4c1f20e ("update for SX BTG", 2023-10-05), and wrote about it to Ana via mail at 5 Oct 2023.
+
+We fetched new archives from git and started testing.
+For now we tested Dragonstone only. mp4 files are there and the game works good on Safari now.
+
+But we experiencing another issue with new Dragonstone game client - when host loads the game and get to Ready screen, it has option to KICK himself, which is not present on Beta and not in the CAF specs.
+
+https://www.dropbox.com/scl/fi/fk76gk7ti4v7i3olr5nz3/Screenshot-2023-10-11-at-21.40.56.png?rlkey=xl1owidc46q2jn6ff4q1xyw28&dl=0
+
+ val
+
+ 2023-10-11 11:50
+
+manager    ~0318216
+
+ Last edited: 2024-02-19 10:01
+
+You can also reproduce the issue by running in guest mode
+http://default-test.maxquest.com/cwguestlogin.do?bankId=6275&gameId=838&lang=en
+
+The issue that it's miss mp4 sound files for Safari (e.g.: http://default-test.maxquest.com/html5pc/actiongames/dragonstone/lobby/assets/sounds/stereo/mq_mus_lobby_bg_high.mp4). We checked on server - there are only mp3/ogg formats. But it should contain mp3/mp4/ogg. You need to properly re-deliver provided content on your test server.
+
+Can you please provide source code for all MQ games clients, but versions that are deployed to Beta server?
+
+You have already received requested sources via git - commit bf2c314 ("mq-client-sources", 2023-07-05), and wrote about in this thread (post 0023991:0309177). Also there were instruction how to build this sources, to deploy them on server.
+Also we recently push the final fixes for XS BTG to git - commit 4c1f20e ("update for SX BTG", 2023-10-05), and wrote about it to Ana via mail at 5 Oct 2023.
+
+So on Beta there are next versions:
+
+DS = 1.1.42 (14.06) / 1.1.61 (29.06) that match to mq-client-20230705.zip\dragonstone\lobby\version.json and mq-client-20230705.zip\dragonstone\game\version.json
+MA = 1.1.36 (14.06) / 1.1.59 (22.06) that match to mq-client-20230705.zip\missionamazon\lobby\version.json and mq-client-20230705.zip\missionamazon\game\version.json
+SX SP = 0.0.37 (17.06) / 0.0.157 (5.07) that match to mq-client-20230705.zip\sectorx\lobby\version.json and mq-client-20230705.zip\sectorx\game\version.json
+SX BTG = 0.0.27 (14.06) / 0.0.99 (12.07) that match to mq-client-sectorx_btg-20230712.zip\sectorx_btg\lobby\version.json and mq-client-sectorx_btg-20230712.zip\sectorx_btg\game\version.json
+ vik.mqb
+
+ 2023-10-10 15:21
+
+reporter    ~0318121
+
+ Last edited: 2024-02-19 10:01
+
+Can you please provide source code for all MQ games clients, but versions that are deployed to Beta server?
+
+ vik.mqb
+
+ 2023-10-10 12:30
+
+reporter    ~0318075
+
+ Last edited: 2024-02-19 10:01
+
+We just retested again and the issue is present on Safari - IOS and MacOS.
+
+https://www.dropbox.com/scl/fi/zxiyw4x8z3jczjt0b28ji/Screenshot-2023-10-10-at-13.27.36.png?rlkey=9xs9ctfwgvcniis27rmwvuiw8&dl=0
+
+You can also reproduce the issue by running in guest mode
+http://default-test.maxquest.com/cwguestlogin.do?bankId=6275&gameId=838&lang=en
+
+ val
+
+ 2023-10-10 11:35
+
+manager    ~0318046
+
+ Last edited: 2024-02-19 10:01
+
+We have issues with Dragonstone and Mission Amazon version from repo.
+When have deployed them successfully and they work good on Desktop.
+On mobile, we get network error.
+This issue is not present on games versions on Beta server.
+
+How can we debug this?
+Where can we find service or class which is handling mobile?
+
+Server part does not consider the platform that run the game.
+It sounds like some client part problem. Maybe some discrepancies of static content remained.
+1) Have you any errors in console (Dev Tools)?
+2) Have you this issue with other games (e.g. SX)?
+3) Have you this issue on different devices?
+4) Have you this issue both on MQB Test and Prod systems?
+
+ vik.mqb
+
+ 2023-10-10 10:40
+
+reporter    ~0318025
+
+ Last edited: 2024-02-19 10:01
+
+We have issues with Dragonstone and Mission Amazon version from repo.
+When have deployed them successfully and they work good on Desktop.
+
+On mobile, we get network error.
+
+This issue is not present on games versions on Beta server.
+
+How can we debug this?
+Where can we find service or class which is handling mobile?
+
+ val
+
+ 2023-10-06 13:20
+
+manager    ~0317756
+
+ Last edited: 2024-02-19 10:01
+
+How can we configure Private rooms for SectorX BTG?
+Does it have the support implemented?
+
+CAF was not implemented for SX BTG before sources transfer.
+
+ vik.mqb
+
+ 2023-10-06 12:08
+
+reporter    ~0317729
+
+ Last edited: 2024-02-19 10:01
+
+How can we configure Private rooms for SectorX BTG?
+Does it have the support implemented?
+
+ vik.mqb
+
+ 2023-10-06 12:07
+
+reporter    ~0317728
+
+ Last edited: 2024-02-19 10:01
+
+You provided logs from GS, but didn't from MQ (the most informative part, especially for MQ specific functionality).
+Please provide logs from www/logs/tomcat.mp.
+Also it will be useful to get parameters from getParams() on the template.jsp (press ctrl+U to open page sources).
+
+This is fixed by deploying newest game client version. Thank you for the help!
+
+ val
+
+ 2023-10-04 12:15
+
+manager    ~0317471
+
+ Last edited: 2024-02-19 10:01
+
+You provided logs from GS, but didn't from MQ (the most informative part, especially for MQ specific functionality).
+Please provide logs from www/logs/tomcat.mp.
+Also it will be useful to get parameters from getParams() on the template.jsp (press ctrl+U to open page sources).
+
+ vik.mqb
+
+ 2023-10-03 21:16
+
+reporter    ~0317384
+
+ Last edited: 2024-02-19 10:01
+
+The only way to debug such cases to reproduce this issue on local (via docker) or to debug thru logs on remote server. But for second option you need to deploy it on your server first, with your version of sources. Because presently you start the game on Beta, where is deployed our GS (with different from yours version) and our MQ (without opportunity to add trace messages by your side).
+
+We have deployed complete MQ sources on remote servers and configured wallet for Canex.
+All games work good.
+
+I have tried to start Private room again but it gets stuck on Confirm buyin dialog, which should not be presented. We should have new dialog where all friends are displayed with Ready button.
+
+I was starting Private room with this url:
+https://default-test.maxquest.com/battlegroundstartprivategame.do?mmcToken=d47b1297fe3287f4911f507b1273d23b&mqcToken=d47b1297fe3287f4911f507b1273d23b&privateRoomId=Ox5aG1NCEVwGXUUBKTp6EAReAkYOUVMHUAgBXw&lang=en&homeUrl=home
+Here are the logs for one game session from all 3 GS nodes and Canex wallet service:
+
+https://www.dropbox.com/scl/fi/6xhx7m4yzylazl0a9708e/gs1.log?rlkey=0i10xm1oxdkzn9gdrbuuqjc5m&dl=0
+https://www.dropbox.com/scl/fi/j09j4qib7ocirplmrjdeh/gs2.log?rlkey=b1zfym1onuo64s9h1a717xoh3&dl=0
+https://www.dropbox.com/scl/fi/bbp5kiygpro9qjp6amrf0/gs3.log?rlkey=8ya9mqdi0rtf4t63txdf3qyhr&dl=0
+https://www.dropbox.com/scl/fi/85x58dpxoebedt97t057u/wallet.log?rlkey=xlqb81e0r1iq5ufinvhq74qra&dl=0
+
+and here are the messages from Lobby and Game Websockets:
+
+https://www.dropbox.com/scl/fi/r04ivku8lnozohbm0dx0t/mplobby-websocket.json?rlkey=ho0ofn9k9596azfv9ocpww8e1&dl=0
+https://www.dropbox.com/scl/fi/hli1lo2sj2hptkyeobskl/mpgame-websocket-1.json?rlkey=2sfxfwjd06nxi2uodpgpkh8hl&dl=0
+https://www.dropbox.com/scl/fi/vdewse4oevs7eeoh9v01u/mpgame-websocket-2.json?rlkey=tc2sxcm3l0vwyx3pijlne65yr&dl=0
+
+It would be great if you could help us debug this
+
+ val
+
+ 2023-10-03 12:37
+
+manager    ~0317348
+
+ Last edited: 2024-02-19 10:01
+
+We have issues playing private room.
+<skipped...>
+Game loads and when we click "Confirm buyin", game is stuck with fog screen. When we switch to another tab and get back it show "The map is loading..." for 1 second and then shows fog again.
+There are no errors in console.
+We did not find any error in logs also.
+How can we debug this?
+
+The only way to debug such cases to reproduce this issue on local (via docker) or to debug thru logs on remote server. But for second option you need to deploy it on your server first, with your version of sources. Because presently you start the game on Beta, where is deployed our GS (with different from yours version) and our MQ (without opportunity to add trace messages by your side).
+
+ vik.mqb
+
+ 2023-10-02 23:38
+
+reporter    ~0317249
+
+ Last edited: 2024-02-19 10:01
+
+We have issues playing private room.
+
+We get Private room Id with this:
+https://default-test.maxquest.com/getPrivateRoomId?token=b3328a679848bef33df7419338bac55d&gameId=856&bankId=6275&buyIn=200000
+and get success response:
+
+<GetPrivateRoomIdOkResult>
+<result>OK</result>
+<privateRoomId>Ox5aG1NCEVwGXUUBKTp6EAReAkYOUVMHUAgBXw</privateRoomId>
+</GetPrivateRoomIdOkResult>
+
+We start private room with no errors with this url:
+https://default-test.maxquest.com/battlegroundstartprivategame.do?mmcToken=8da7cc5a4ae28b4a887144ad220dad5a&mqcToken=8da7cc5a4ae28b4a887144ad220dad5a&privateRoomId=Ox5aG1NCEVwGXUUBKTp6EAReAkYOUVMHUAgBXw&lang=en&homeUrl=home
+Game loads and when we click "Confirm buyin", game is stuck with fog screen. When we switch to another tab and get back it show "The map is loading..." for 1 second and then shows fog again.
+
+There are no errors in console.
+We did not find any error in logs also.
+
+How can we debug this?
+
+ vik.mqb
+
+ 2023-09-26 14:40
+
+reporter    ~0316659
+
+ Last edited: 2024-02-19 10:01
+
+Next assumption - please check you didn't start url twice on mobile layout. Otherwise first link becomes invalid with mentioned error (session expired). And this fault may be done for certain game only (on web side).
+
+Thanks for the note, we will check this also.
+
+We managed to fix the issue by deploying the same game version that is on Beta right now.
+
+ val
+
+ 2023-09-26 12:44
+
+manager    ~0316632
+
+ Last edited: 2024-02-19 10:01
+
+It happens only with SectorX BTG and only on mobile device.
+Every other game works good and SectorX BTG works good on desktop.
+We use the same launch url for all BTG games
+
+Next assumption - please check you didn't start url twice on mobile layout. Otherwise first link becomes invalid with mentioned error (session expired). And this fault may be done for certain game only (on web side).
+
+ vik.mqb
+
+ 2023-09-25 13:58
+
+reporter    ~0316535
+
+ Last edited: 2024-02-19 10:01
+
+I have created new account for you that you can use with Canex website and test games:
+
+canexuser@dgphoenix.com
+123456
+
+ vik.mqb
+
+ 2023-09-25 12:56
+
+reporter    ~0316511
+
+ Last edited: 2024-02-19 10:01
+
+Do you use correct launch url, with battlegroundstartgamev2.do?
+Does it happen only when you launch SX BTG on mobile? Or on desktop too?
+DS BTG and MA BTG have this issue?
+
+It happens only with SectorX BTG and only on mobile device.
+Every other game works good and SectorX BTG works good on desktop.
+
+We use the same launch url for all BTG games
+
+ val
+
+ 2023-09-25 12:54
+
+manager    ~0316509
+
+ Last edited: 2024-02-19 10:01
+
+When we run SectorX BTG (867) on mobile device, we get error:
+https://www.dropbox.com/scl/fi/pam3ddsmxy6hu40hlsgii/IMG_3432.png?rlkey=f0fc594n3fb6yyfjuhzsbwygw&dl=0
+2023.09.22 11:56:03,672 ERROR [LobbySocketClient parallel-26] Failed to touch session: 3_3f2f194f35262dc35ba90000018a9199_BgYRAVIHWQhbU0VcWQJaCwJQD1ocQ1lFVV5RTxcDAAAaBAEODA, session expired, stop touch
+Do you know what can be the issue?
+
+Do you use correct launch url, with battlegroundstartgamev2.do?
+Does it happen only when you launch SX BTG on mobile? Or on desktop too?
+DS BTG and MA BTG have this issue?
+
+Seems provided earlier account for MQB Staging was updated, and current credentials are wrong now:
+mitchell@canex.com
+123456
+
+ vik.mqb
+
+ 2023-09-25 12:20
+
+reporter    ~0316487
+
+ Last edited: 2024-02-19 10:01
+
+When we run SectorX BTG (867) on mobile device, we get error:
+
+https://www.dropbox.com/scl/fi/pam3ddsmxy6hu40hlsgii/IMG_3432.png?rlkey=f0fc594n3fb6yyfjuhzsbwygw&dl=0
+
+2023.09.22 11:56:03,672 ERROR [LobbySocketClient parallel-26] Failed to touch session: 3_3f2f194f35262dc35ba90000018a9199_BgYRAVIHWQhbU0VcWQJaCwJQD1ocQ1lFVV5RTxcDAAAaBAEODA, session expired, stop touch
+
+Do you know what can be the issue?
+
+ val
+
+ 2023-09-20 13:12
+
+manager    ~0316114
+
+ Last edited: 2024-02-19 10:01
+
+/setGameSessionSummary
+url is configured in property of bank - NOTIFICATION_CLOSE_GAME_PROCESSOR_URL
+
+/privateRoomStarted
+url is configured in property of bank - NOTIFICATION_START_GAME_PROCESSOR_URL
+
+Please see implementation of these methods in BattlegroundPrivateRoomController class in GS part.
+
+/privateRoomDeactivated
+url is configured in property of bank - NOTIFICATION_ROOM_WAS_DEACTIVATED_URL
+
+Please see implementation of this method in SocketService class in MQ part (roomWasDeactivated).
+
+ vik.mqb
+
+ 2023-09-20 10:18
+
+reporter    ~0316048
+
+ Last edited: 2024-02-19 10:01
+
+If you remember we had these API endpoints on our web application:
+
+/setGameSessionSummary
+/privateRoomStarted
+/privateRoomDeactivated
+
+These were used by the game server.
+Where we can find configuration and logic for this in the MQ sources?
+
+ vik.mqb
+
+ 2023-09-20 10:15
+
+reporter    ~0316047
+
+ Last edited: 2024-02-19 10:01
+
+You may use our script for this purpose.
+We uploaded it to dropbox - https://www.dropbox.com/scl/fi/eh2erecw00kw7bn8au5w8/battlegroundConfigCreator.jsp?rlkey=14ab7rz6djy7m7364zq1vpx30&dl=0
+Just modify it as you needed, deploy on /root/support/ and start in browser (e.g.: gs1-<gamenameserver>.com/support/battlegroundConfigCreator.jsp)
+
+Thank you, it works good.
+
+ val
+
+ 2023-09-19 12:57
+
+manager    ~0315943
+
+ Last edited: 2024-02-19 10:01
+
+How can we configure buyin values for Sector X BTG game (867)?
+For other BTG games we used addBattlegroundGames.jsp
+
+You may use our script for this purpose.
+We uploaded it to dropbox - https://www.dropbox.com/scl/fi/eh2erecw00kw7bn8au5w8/battlegroundConfigCreator.jsp?rlkey=14ab7rz6djy7m7364zq1vpx30&dl=0
+Just modify it as you needed, deploy on /root/support/ and start in browser (e.g.: gs1-<gamenameserver>.com/support/battlegroundConfigCreator.jsp)
+
+ vik.mqb
+
+ 2023-09-18 12:46
+
+reporter    ~0315771
+
+ Last edited: 2024-02-19 10:01
+
+How can we configure buyin values for Sector X BTG game (867)?
+
+For other BTG games we used addBattlegroundGames.jsp
+
+ val
+
+ 2023-08-22 12:02
+
+manager    ~0313082
+
+ Last edited: 2024-02-19 10:01
+
+We need to update balance for guest user, and you already mentioned a tool that we could use to update values in Cassandra.
+Which tool is it and how can we use it?
+How can we update values in Cassandra specifically Keyspace rcasinoscks->table bankinfocf?
+
+Do you mean how to change start balance for guest mode?
+If yes, go to https://gs1-<your_domain_name>/support/bankInfo.do?bankId=yourBankId, then 'Edit properties' and set new value in FREEBALANCE field.
+You may go to https://gs1-<your_domain_name>/support/cache/bank/common/subcasinoSelect.jsp as starting point to configure bank(s) and game(s).
+
+ vik.mqb
+
+ 2023-08-22 11:20
+
+reporter    ~0313077
+
+ Last edited: 2024-02-19 10:01
+
+We need to update balance for guest user, and you already mentioned a tool that we could use to update values in Cassandra.
+
+Which tool is it and how can we use it?
+
+How can we update values in Cassandra specifically Keyspace rcasinoscks->table bankinfocf?
+
+ vik.mqb
+
+ 2023-08-22 11:19
+
+reporter    ~0313076
+
+ Last edited: 2024-02-19 10:01
+
+Thank you
+
+ val
+
+ 2023-08-22 09:22
+
+manager    ~0313034
+
+ Last edited: 2024-02-19 10:01
+
+We noticed these config files in root/export directory in code you shared:
+com.dgphoenix.casino.account.AccountManager.xml
+com.dgphoenix.casino.common.cache.BankInfoCache.xml
+com.dgphoenix.casino.common.cache.BaseGameCache.xml
+com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml
+com.dgphoenix.casino.common.cache.CurrencyCache.xml
+com.dgphoenix.casino.common.cache.DomainWhiteListCache.xml
+com.dgphoenix.casino.common.cache.ExternalGameIdsCache.xml
+com.dgphoenix.casino.common.cache.LoadBalancerCache.xml
+com.dgphoenix.casino.common.cache.MassAwardCache.xml
+com.dgphoenix.casino.common.cache.OperationStatisticsCache.xml
+com.dgphoenix.casino.common.cache.ServerConfigsCache.xml
+com.dgphoenix.casino.common.cache.SubCasinoCache.xml
+com.dgphoenix.casino.common.cache.SubCasinoGroupCache.xml
+com.dgphoenix.casino.common.util.IdGenerator.xml
+But we dont see them on g1-test.maxquest.com, g2-test.maxquest.com or g3-test.maxquest.com
+Can you please explain?
+Do we need those, as the servers are running with out them?
+
+It's not config files, but import files that are used for primary initializing of the system. It's used only during the first launch of the first node. Without them we would need to make configuration by manual. For certain system they are prepared once, when the cluster is being prepared.
+We have earlier explained it to Vladimir Volc via online chat, also we have provided examples of these files.
+
+Please clarify what kind of configs you need:
+
+where are being set values that are used to build the server for certain cluster?
+which are used to start the application?
+parameters of jvm for bot server and mq server?
+Yes, the number 1 - where are being set values that are used to build the server for certain cluster?
+
+Please see config/settings.xml. There is being created profiles with different variables for certain clusters.
+For instance, variable of logs directory: <logger.dir>/www/logs/tomcat.mp/</logger.dir>
+
+ vik.mqb
+
+ 2023-08-21 16:56
+
+reporter    ~0313000
+
+ Last edited: 2024-02-19 10:01
+
+Please clarify what kind of configs you need:
+1) where are being set values that are used to build the server for certain cluster?
+2) which are used to start the application?
+3) parameters of jvm for bot server and mq server?
+
+Yes, the number 1 - where are being set values that are used to build the server for certain cluster?
+
+ vik.mqb
+
+ 2023-08-21 13:14
+
+reporter    ~0312982
+
+ Last edited: 2024-02-19 10:01
+
+We noticed these config files in root/export directory in code you shared:
+
+com.dgphoenix.casino.account.AccountManager.xml
+com.dgphoenix.casino.common.cache.BankInfoCache.xml
+com.dgphoenix.casino.common.cache.BaseGameCache.xml
+com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml
+com.dgphoenix.casino.common.cache.CurrencyCache.xml
+com.dgphoenix.casino.common.cache.DomainWhiteListCache.xml
+com.dgphoenix.casino.common.cache.ExternalGameIdsCache.xml
+com.dgphoenix.casino.common.cache.LoadBalancerCache.xml
+com.dgphoenix.casino.common.cache.MassAwardCache.xml
+com.dgphoenix.casino.common.cache.OperationStatisticsCache.xml
+com.dgphoenix.casino.common.cache.ServerConfigsCache.xml
+com.dgphoenix.casino.common.cache.SubCasinoCache.xml
+com.dgphoenix.casino.common.cache.SubCasinoGroupCache.xml
+com.dgphoenix.casino.common.util.IdGenerator.xml
+
+But we dont see them on g1-test.maxquest.com, g2-test.maxquest.com or g3-test.maxquest.com
+
+Can you please explain?
+Do we need those, as the servers are running with out them?
+
+ val
+
+ 2023-08-21 13:07
+
+manager    ~0312980
+
+ Last edited: 2024-02-19 10:01
+
+Where can we find configuration for each GS/MP node?
+We have gs1, gs2, and g3
+
+Please clarify what kind of configs you need:
+1) where are being set values that are used to build the server for certain cluster?
+2) which are used to start the application?
+3) parameters of jvm for bot server and mq server?
+
+ vik.mqb
+
+ 2023-08-21 11:39
+
+reporter    ~0312940
+
+ Last edited: 2024-02-19 10:01
+
+Where can we find configuration for each GS/MP node?
+
+We have gs1, gs2, and g3
+
+ vik.mqb
+
+ 2023-08-21 11:35
+
+reporter    ~0312937
+
+ Last edited: 2024-02-19 10:01
+
+MQ and Bot servers has the one codebase and configs.
+Parameters of logger are set in log4j2.xml
+
+Ok, thank you
+
+ val
+
+ 2023-08-21 09:57
+
+manager    ~0312923
+
+ Last edited: 2024-02-19 10:01
+
+settings.xml contains logger.dir configuration only for MP server, but not Bots server.
+Can you please specify path where we can find this "settings.xml"?
+Also please specify the parameter which is used for logger for Bots server?
+
+MQ and Bot servers has the one codebase and configs.
+Parameters of logger are set in log4j2.xml
+
+ vik.mqb
+
+ 2023-08-18 13:18
+
+reporter    ~0312868
+
+ Last edited: 2024-02-19 10:01
+
+Please see configuration parameter in settings.xml.
+
+settings.xml contains logger.dir configuration only for MP server, but not Bots server.
+
+Can you please specify path where we can find this "settings.xml"?
+
+Also please specify the parameter which is used for logger for Bots server?
+
+ val
+
+ 2023-08-18 13:12
+
+manager    ~0312867
+
+ Last edited: 2024-02-19 10:01
+
+Is Bot Service running on one node only (gs1) or it is running on all nodes (gs1, gs2, gs3)?
+Only GS1
+
+Where we can find "Bot Service" configuration parameter for log folder ${logger.dir} ?
+Please see configuration parameter in settings.xml.
+
+ vik.mqb
+
+ 2023-08-18 12:54
+
+reporter    ~0312859
+
+ Last edited: 2024-02-19 10:01
+
+Is Bot Service running on one node only (gs1) or it is running on all nodes (gs1, gs2, gs3)?
+
+Where we can find "Bot Service" configuration parameter for log folder ${logger.dir} ?
+
+ val
+
+ 2023-07-27 05:36
+
+manager    ~0311078
+
+ Last edited: 2024-02-19 10:01
+
+Can you let me know which MQ services are served from old SB cluster?
+Are these IPs anyhow related to MQ: 69.55.53.34, 69.55.53.37, 69.55.53.35, 69.55.53.20
+
+There are no MQ services what are served on old SB cluster (at mentioned IPs).
+MQ servers were stopped several years ago at such clusters, so we suppose they need just to be disabled.
+
+Also, we will still be using games from https://mqtech-beta.discreetgaming.com/, until we finish setting up MQ test servers.
+
+Ok, no problem to use it with current content as long as you need.
+
+ vik.mqb
+
+ 2023-07-26 22:31
+
+reporter    ~0311055
+
+ Last edited: 2024-02-19 10:01
+
+Can you let me know which MQ services are served from old SB cluster?
+
+Are these IPs anyhow related to MQ: 69.55.53.34, 69.55.53.37, 69.55.53.35, 69.55.53.20
+
+Also, we will still be using games from https://mqtech-beta.discreetgaming.com/, until we finish setting up MQ test servers.
+
+ vik.mqb
+
+ 2023-07-19 11:53
+
+reporter    ~0310400
+
+ Last edited: 2024-02-19 10:01
+
+Let me clarify:
+1) prepared and provided to you sources of GS and MQ were never linked with git (except uploaded archive to transfer it for you);
+2) prepared and provided to you sources of GS and MQ were never linked with any CI system, and were being built and deployed manually on test.maxquest.com.
+So we just don't have what you request.
+
+Now it is clear. Thanks
+
+ val
+
+ 2023-07-19 04:31
+
+manager    ~0310362
+
+ Last edited: 2024-02-19 10:01
+
+We do not need you to build or deploy anything, we just need access to the source git and deployment system that is deployed to test.maxquest.com servers.
+You already have it and you will not use it anymore. It will save us days of work.
+
+Let me clarify:
+1) prepared and provided to you sources of GS and MQ were never linked with git (except uploaded archive to transfer it for you);
+2) prepared and provided to you sources of GS and MQ were never linked with any CI system, and were being built and deployed manually on test.maxquest.com.
+
+So we just don't have what you request.
+
+ vik.mqb
+
+ 2023-07-18 15:47
+
+reporter    ~0310343
+
+ Last edited: 2024-02-19 10:01
+
+We do not need you to build or deploy anything, we just need access to the source git and deployment system that is deployed to test.maxquest.com servers.
+
+You already have it and you will not use it anymore. It will save us days of work.
+
+ val
+
+ 2023-07-18 05:36
+
+manager    ~0310237
+
+ Last edited: 2024-02-19 10:01
+
+As we transferred MQ/GS sources to your team at the end of last month, all further changes and update should be done on your side only. We will not build and deploy our sources for MQB systems any more, so you need to configure process of deployment on your end with your VCS. In our sense you have everything you need to do it.
+For instance, you have Teamcity for MQB Website deployment (https://teamcity.betsoftgaming.com), where you may configure build and deployment of GS/MQ servers from Git.
+
+Also for manual deploy you may use our instruction (https://www.dropbox.com/scl/fi/w2aqvq9f2kqnt27uqba3k/MQ-Platform-Supporting-Documentation.pdf?rlkey=f9j8uc4y45w2py0j9k7su67ab&dl=0), see p.24.
+
+If you still will have questions regarding it, we'll try to assist you.
+
+ vik.mqb
+
+ 2023-07-17 16:58
+
+reporter    ~0310220
+
+ Last edited: 2024-02-19 10:01
+
+Can you please provide us access to source (version control) and deployment system for test.maxquest.com GS, MP and DB servers?
+
+We need to add some fixes for rooms logic
+
+ val
+
+ 2023-07-12 11:26
+
+manager    ~0309779
+
+ Last edited: 2024-02-19 10:01
+
+>How can we debug this?
+Put breakpoints in the handlers of the corresponding messages, for the request you specified, this is GetStartGameUrlHandler.
+
+For an OpenRoom request, this will be the corresponding OpenRoomHandler
+
+>How sit in and sit out are handled when mpgame websocket is opened?
+
+Sorry, we apparently did not fully understand your question, since the answer is quite obvious.
+
+SitIn request handled by SitInHandler
+
+SitOut request handled by SitOutHander. Also sitOut can in some cases be performed by the server side.
+
+>What is "rid=-1" ?
+
+This means that the request was sent by the server. Please read the documentation on the protocol, there is an answer to this and similar questions.
+
+ vik.mqb
+
+ 2023-07-12 08:27
+
+reporter    ~0309752
+
+ Last edited: 2024-02-19 10:01
+
+Ok.
+We have started debugging sitIn and sitOut classes. For example, we have 2 players selecting the same room at the same time, both are assigned the same roomID, both are sit in in the same room and immediately sit out from the room and server sent "not enough players" message to both players.
+
+{"roomId":1330013,"startGameUrl":"?SID\u003d2_d5623f927cff44f32a3a000001898e4b_CwZBGAUGWls\u0026serverId\u003d1\u0026lang\u003den\u0026roomId\u003d1330013\u0026stake\u003d2000000\u0026WEB_SOCKET_URL\u003dwss://gs1-mp-beta.discreetgaming.com/websocket/mpgame","date":1689091828872,"rid":5,"class":"GetStartGameUrlResponse"}
+
+{"roomId":1330013,"startGameUrl":"?SID\u003d1_1ceff9e10b3344f02ccc00000189a0dc_AABCBB4CX1lX\u0026serverId\u003d1\u0026lang\u003den\u0026roomId\u003d1330013\u0026stake\u003d2000000\u0026WEB_SOCKET_URL\u003dwss://gs1-mp-beta.discreetgaming.com/websocket/mpgame","date":1689091828033,"rid":5,"class":"GetStartGameUrlResponse"}
+
+How can we debug this?
+How sit in and sit out are handled when mpgame websocket is opened?
+What is "rid=-1" ?
+
+ val
+
+ 2023-07-11 12:56
+
+manager    ~0309696
+
+ Last edited: 2024-02-19 10:01
+
+>How are rooms created in the system? Which service handles room creation?
+
+Rooms are created automatically as needed. If there are not enough rooms, we create new rooms.
+
+The initial number of rooms is set in RoomTemplate.initialRooms.
+
+In addition, the number of rooms can be limited in the RoomTemplate - maxRoom.
+
+Rooms are created by services inherited from AbstractRoomInfoService, these are:
+
+MultiNodeRoomInfoService - for Crash game
+
+SingleNodeRoomInfoService - all MQ action games
+
+BGPrivateRoomInfoService - for MQ BTG action games
+
+see method createForTemplate()
+
+>How are players assigned to specific rooms? Which service handles it?
+
+First, based on the game, mode (real, free, frb - see MoneyType), bank, currency, bet, a list of rooms is selected that meets the specified criteria - see
+
+AbstractRoomInfoService.getBestRoomInfo()
+
+RoomTemplate template = roomTemplateService.getMostSuitable(bankId, stake, moneyType, gameType);
+
+Collection\<RI> roomInfos = getRooms(bankId, (RT) template, stake, currency);
+
+Next, the most suitable room is selected from this list. Among the selection criteria, the main one is the number of players in the room
+
+see AbstractRoomInfoService.tryFindThisServerRoomAndNotFull() implementations
+
+>What are the criteria or parameters used for room selection and matching players together?
+
+Current number of players in the room
+
+Maximum number of players in a room
+
+Server ID where the room is located (excluding multinode rooms)
+
+>Which service handle situations where there are not enough players to fill a room or too many players for a single room?
+
+services inherited from AbstractRoomInfoService, these are:
+
+MultiNodeRoomInfoService - for Crash game
+
+SingleNodeRoomInfoService - all MQ action games
+
+BGPrivateRoomInfoService - for MQ BTG action games
+
+see tryFindThisServerRoomAndNotFull() implementations
+
+>Is there a maximum duration for a player to remain in a room before being matched with others?
+
+No such period exists. We do not have a mechanism for redistributing players to rooms. If the player entered the room, he will be in it until he leaves it and tries to open a new room. But there is an exception to this rule, this is the battle mode, in which you need at least two players to start the game. When a player enters such a room, a timer is turned on and if after the specified time there are no more players, then we offer the player to wait or close the room
+
+>What happens when a player disconnects or leaves a room? How is the room updated and managed in such cases?
+
+It all depends on what state the game is in. If the game has started, then when disconnected, we keep the player in the room until the end of the round. If the player reconnects, he will continue the game in the same room. If the player deliberately closed the game, then we sitOut player from room immediately. But there are exceptions to this rule for some types of games, we can sitOut player only after the end of the round
+
+>How does the system handle latency or connection issues between players in the same room?
+
+Games are designed and written in such a way that delays and problems with the connection of one player do not affect other players in any way. Freezes and lags will only be experienced by this player
+
+>Are there any logging or monitoring mechanisms in place to track room activities, player interactions, or matchmaking statistics?
+
+We have room logs, we have statistics.log and we have the ability to view history. Sorry, but that's all. This task has never been a priority
+
+ vik.mqb
+
+ 2023-07-11 11:24
+
+reporter    ~0309658
+
+ Last edited: 2024-02-19 10:01
+
+We have no documentation regarding this service, and it's very wide question to describe it here. Could you concrete what you need to know? For instance, to specify place where we select the room, where the player will be seat, etc.
+
+ok.
+
+How are rooms created in the system? Which service handles room creation?
+What are the criteria or parameters used for room selection and matching players together?
+How are players assigned to specific rooms? Which service handles it?
+Which service handle situations where there are not enough players to fill a room or too many players for a single room?
+Is there a maximum duration for a player to remain in a room before being matched with others?
+What happens when a player disconnects or leaves a room? How is the room updated and managed in such cases?
+How does the system handle latency or connection issues between players in the same room?
+Are there any logging or monitoring mechanisms in place to track room activities, player interactions, or matchmaking statistics?
+ val
+
+ 2023-07-11 04:16
+
+manager    ~0309601
+
+ Last edited: 2024-02-19 10:01
+
+Can you please explain how Room service and match making work?
+What is the implementation and which logic is used?
+It would be good if you have any documentation for it
+
+We have no documentation regarding this service, and it's very wide question to describe it here. Could you concrete what you need to know? For instance, to specify place where we select the room, where the player will be seat, etc.
+
+ vik.mqb
+
+ 2023-07-10 16:26
+
+reporter    ~0309586
+
+ Last edited: 2024-02-19 10:01
+
+Can you please explain how Room service and match making work?
+
+What is the implementation and which logic is used?
+
+It would be good if you have any documentation for it
+
+ val
+
+ 2023-07-05 10:36
+
+manager    ~0309177
+
+ Last edited: 2024-02-19 10:01
+
+We may push all frontend source files at git, as we made for backend part. There will be not only JS code, but all assets. If you will need, you also will able to rebuild them with Node.js.
+
+Yes, please push all the frontend source files at git, and let me know when done.
+
+Uploaded to ssh://git@95.217.60.163:223/db/git/mq-server.git (see mq-client-20230705.zip).
+To build and run client sources you need Node.js:
+1) first install node_modules (npm install) to next directories:
+
+common/PIXI/
+[game_name]/game/
+[game_name]/lobby/ (only for MQS)
+[game_name]/shared/ (only for MQS)
+2) to build use npm run build in next directories:
+[game_name]/game/
+[game_name]/lobby/ (only for MQS)
+resulting content will be built in [game_name]/[lobby/game]/dist/build
+3) to run use npm start at the same directories, then you will need to start
+http://localhost:8080/?DEBUG=true&MODE=real&GAMESERVERID=1&WEB_SOCKET_URL=[YOUR_STAGING_WS_URL]&LANG=en&BANKID=[BANK_ID]&SID=[SESSIONID]
+ vik.mqb
+
+ 2023-07-05 08:31
+
+reporter    ~0309152
+
+ Last edited: 2024-02-19 10:01
+
+We are available at 9 AM GMT, let's try to call up today at this time.
+
+I confirm that our side will be ready for skype call at 9 AM GMT (11 AM CET)
+
+ vik.mqb
+
+ 2023-07-05 07:11
+
+reporter    ~0309133
+
+ Last edited: 2024-02-19 10:01
+
+We may push all frontend source files at git, as we made for backend part. There will be not only JS code, but all assets. If you will need, you also will able to rebuild them with Node.js.
+
+Yes, please push all the frontend source files at git, and let me know when done.
+
+We are available at 9 AM GMT, let's try to call up today at this time.
+
+I will confirm this with our dev and let you know.
+
+ val
+
+ 2023-07-05 06:21
+
+manager    ~0309130
+
+ Last edited: 2024-02-19 10:01
+
+There are two keyspaces in GS:RCasinoSCKS(SCClusterConfig.xml) and RCasinoKS(ClusterConfig.xml). What is a main difference and purpose of these keyspaces?
+SCKS - it's Strong Consistency KeySpace, is used for store frequently changed data, that is not so big, but require high level of consistency. If we change data on the one node, we need to be sure that this changes immediate visible on other node(s)
+enough level ONE and TWO = enough consistent level ONE and TWO
+KS - it's KeySpace, is used for store archive data, that are not changed. They don't require high level of consistency (it's enough level ONE and TWO).
+
+There could be one more keyspace RBigStorageCasinoKS(BigStorageClusterConfig.xml), what is the purpose?
+This KeySpace is used for store game history, that keep very big space.
+We had to allocate it due to technical restrictions of available space of one of our clusters. It's not used for MQ server.
+
+If I change a server config xml, how to change the DB value accordingly?
+It will be updated automatically, but with some restrictions. For instance:
+Create table - yes
+Remove table - no
+Create index - yes
+Drop index - yes
+Add column - yes
+Remove column - no
+Change column type - no
+Some restrictions are due to the Cassandra, e.g.: primary key cannot be changed after creation.
+
+Explain Thrift communication between GS and MP
+MQ server doesn't keep players, PlayerSession, GameSessions, player's history, GameSettings on their own. These data are kepst on GS server.
+Thrift is used to load these data from GS to MQ, and is used to send updates (to save PlayerSession, GameSessions, player's history) from MQ to GS.
+
+Explain static games applications located in /www/html/repo/html5pc/actiongames/ folder, how these interact with GS, MP, others
+Client side of the game communicates with MQ server thru Websocket interface, in accordance with next protocols:
+for MQ games - https://www.dropbox.com/s/pvoyppud7fqndqp/MaxQuest_ProtocolV2.pdf?dl=0
+for crash game - https://www.dropbox.com/s/mvumq8wr8vwiihn/CrashGame_Protocol.pdf?dl=0
+
+Go though the code in debug mode on my machine and explain classes and services interaction during debug
+Please let us know the earliest time slots available after 9 AM GMT.
+We are available at 9 AM GMT, let's try to call up today at this time.
+
+The JavaScript code in the folder /www/html/repo/html5pc/actiongames/ is minified JavaScript (unreadable), can we have readable source code for /www/html/repo/html5pc/actiongames/ ?
+We may push all frontend source files at git, as we made for backend part. There will be not only JS code, but all assets. If you will need, you also will able to rebuild them with Node.js.
+Note: we are still working with Sector X BTG due to some tickets from Mantis, so there may be some changes in future in Sector X SP/BTG sources.
+Please advise if it's suits for you.
+
+ vik.mqb
+
+ 2023-07-04 21:36
+
+reporter    ~0309117
+
+ Last edited: 2024-02-19 10:01
+
+We created a list of questions and topics that we need to cover on a call with devs, to better understand the MQ source you provided:
+
+There are two keyspaces in GS:RCasinoSCKS(SCClusterConfig.xml) and RCasinoKS(ClusterConfig.xml). What is a main difference and purpose of these keyspaces?
+There could be one more keyspace RBigStorageCasinoKS(BigStorageClusterConfig.xml), what is the purpose?
+If I change a server config xml, how to change the DB value accordingly?
+Explain Thrift communication between GS and MP
+Explain static games applications located in /www/html/repo/html5pc/actiongames/ folder, how these interact with GS, MP, others
+Go though the code in debug mode on my machine and explain classes and services interaction during debug
+The JavaScript code in the folder /www/html/repo/html5pc/actiongames/ is minified JavaScript (unreadable), can we have readable source code for /www/html/repo/html5pc/actiongames/ ?
+Points 5 and 6 are the most crucial to cover.
+
+Please let us know the earliest time slots available after 9 AM GMT.
+
+ vik.mqb
+
+ 2023-07-04 21:28
+
+reporter    ~0309114
+
+ Last edited: 2024-02-19 10:01
+
+SSH key has been updated, from file 23991-id_rsa-darjan-djordjevic-new.pub
+
+Thank you
+
+ val
+
+ 2023-07-03 11:46
+
+manager    ~0308978
+
+ Last edited: 2024-02-19 10:01
+
+SSH key has been updated, from file 23991-id_rsa-darjan-djordjevic-new.pub
+
+ vik.mqb
+
+ 2023-07-03 09:46
+
+reporter    ~0308946
+
+ Last edited: 2024-02-19 10:01
+
+Can you please update ssh key for our backend developer Darjan Djordjevic on git - ssh://git@95.217.60.163:223/db/git/mq-server.git
+
+Here is his public ssh key
+
+ id_rsa-darjan-djordjevic-new.pub (584 bytes)   
+ vik.mqb
+
+ 2023-07-03 09:45
+
+reporter    ~0308945
+
+ Last edited: 2024-02-19 10:01
+
+We added credentials for your side (only for MQB Test servers initially).
+login-pass will be sent directly to Vik (bypassing Mantis)
+after auth you should increase your privileges up to 'root' (current login has sudo);
+
+Thank you, all works good.
+
+ val
+
+ 2023-06-29 11:21
+
+manager    ~0308766
+
+ Last edited: 2024-02-19 10:01
+
+We added credentials for your side (only for MQB Test servers initially).
+login-pass will be sent directly to Vik (bypassing Mantis)
+after auth you should increase your privileges up to 'root' (current login has sudo);
+
+ vik.mqb
+
+ 2023-06-29 08:15
+
+reporter    ~0308746
+
+ Last edited: 2024-02-19 10:01
+
+Please provide user nickname (to create personal login for your dev team), and IP (to whitelist of firewall).
+If your devs have dynamic IP, they will able to use BSG proxy to access.
+
+For user names, you can use "vik" and "volc".
+
+System Admin already allowed our IP addresses.
+
+ val
+
+ 2023-06-29 08:06
+
+manager    ~0308744
+
+ Last edited: 2024-02-19 10:01
+
+Please provide root access for me and Vladimir Volc to all MQB Live servers - GS, MP and all other applications and services?
+
+Please provide user nickname (to create personal login for your dev team), and IP (to whitelist of firewall).
+If your devs have dynamic IP, they will able to use BSG proxy to access.
+
+ vik.mqb
+
+ 2023-06-28 15:43
+
+reporter    ~0308702
+
+ Last edited: 2024-02-19 10:01
+
+Please provide root access for me and Vladimir Volc to all MQB Live servers - GS, MP and all other applications and services?
+
+https://default-test.maxquest.com/
+http://default-mqb.maxquest.com/
+
+ val
+
+ 2023-06-15 04:46
+
+manager    ~0307512
+
+ Last edited: 2024-02-19 10:01
+
+What is the configuration for the Linux service: jetty.gs?
+I think it should be located at your server : /etc/init.d/jetty.gs
+
+Correct, you may find config description at /etc/init.d/jetty.gs.
+
+ vik.mqb
+
+ 2023-06-14 17:36
+
+reporter    ~0307488
+
+ Last edited: 2024-02-19 10:01
+
+What is the configuration for the Linux service: jetty.gs?
+I think it should be located at your server : /etc/init.d/jetty.gs
+
+ val
+
+ 2023-06-14 11:31
+
+manager    ~0307428
+
+ Last edited: 2024-02-19 10:01
+
+WrongEnumPreset is part of deprecated code and could be removed.
+Run mvn install -DskipTests to install kryo-serializer.
+
+If you will get another faults further, please run mvn -X install >./build.log and provide us received logs.
+
+ vik.mqb
+
+ 2023-06-14 10:42
+
+reporter    ~0307417
+
+ Last edited: 2024-02-19 10:01
+
+https://www.dropbox.com/s/6rm9ux7xrnovwlb/MQ-server%20project%20error.txt?dl=0
+
+The project test fails, specifically when run "mvn clean install" in folder/subproject "./gsn-truncated/kryo-validator", as you can see from the message above.
+Maven build fails the test: "com.dgphoenix.casino.tools.kryo.KryoSerializationValidatorTest->testSuccessValidation()" with message: "KryoSerializationValidator:: validate error for class:class com.dgphoenix.casino.tools.kryo.correct.CompositeEntity"
+By debugging the test I've found that during Kryo deserialization of "com.dgphoenix.casino.tools.kryo.correct.CompositeEntity" class, Kryo Serializator can't identify the default implementation class member filed value for "private EntityInterface entity;"
+I do not see any implementation for the interface "EntityInterface" through the project, it looks like it is not present at all.
+
+Can you confirm that this test fail is acceptable?
+
+ val
+
+ 2023-06-13 10:26
+
+manager    ~0307261
+
+ Last edited: 2024-02-19 10:01
+
+Which web server to use on local machine for GS and MQ deployment, Tomcat, Jetty or some other?
+
+for GS use Jetty (see mq_gs_sources\gsn-truncated\deploy\local\deploy-to-local-machine.sh)
+for MQ use Netty (see mq_gs_sources\restricted\web\run-netty.sh)
+
+ vik.mqb
+
+ 2023-06-13 09:31
+
+reporter    ~0307227
+
+ Last edited: 2024-02-19 10:01
+
+Which web server to use on local machine for GS and MQ deployment, Tomcat, Jetty or some other?
+
+ val
+
+ 2023-06-13 05:46
+
+manager    ~0307208
+
+ Last edited: 2024-02-19 10:01
+
+What method do you use for debugging?
+
+Just analysis of logs and code.
+
+How can we start the project with Dragonstone game and test battleground in Local env?
+
+You need to deploy Cassandra, GS and MQ servers locally (use instruction from supporting documentation, p.25).
+All local settings are individual, depending on OS and related software. We may assist you to solve some problems, but the most of them will be able to be solved by your devs ourselves.
+
+Can you put the code provided on git, set deployment system and deploy it to a server where we can play and debug features?
+
+We have deployed current version on MQB Testing cluster via Teamcity from our svn repository, not git.
+You need to create new task on https://teamcity.betsoftgaming.com, then to configure it to your git repository. All these work you should make on your side, to be able support this configuration in future. All credentials to MQB Testing cluster are provided in supporting documentation (p.24).
+
+ vik.mqb
+
+ 2023-06-12 12:55
+
+reporter    ~0307170
+
+ Last edited: 2024-02-19 10:01
+
+Can you put the code provided on git, set deployment system and deploy it to a server where we can play and debug features?
+
+ vik.mqb
+
+ 2023-06-12 10:39
+
+reporter    ~0307168
+
+ Last edited: 2024-02-19 10:01
+
+How can we start the project with Dragonstone game and test battleground in Local env?
+
+ vik.mqb
+
+ 2023-06-09 16:25
+
+reporter    ~0307148
+
+ Last edited: 2024-02-19 10:01
+
+What method do you use for debugging?
+
+ val
+
+ 2023-06-09 05:06
+
+manager    ~0307047
+
+ Last edited: 2024-02-19 10:01
+
+We are trying to run mq-server project, but can not install all the Maven dependencies.
+
+You need to install GSN part first, then you will install all necessary dependencies (see MQ Platform Supporting Documentation.pdf, page 24, paragraph "Build", point 3). All necessary instructions were described at \mq_gs_sources\gsn-truncated\readme-for_build-mq.txt.
+If you will have an issue with these steps, please specify what exact step is failed with details.
+
+Then you will able to start \mq_gs_sources\restricted\build\build-mqb2-live.sh to build MQ part.
+
+Note: it's recommended to work with server sources at Linux (all scripts have been written to be launched upon Linux), then we will able to provide the most efficient support.
+
+As you have shared source code as zip archives, we might not be able to run and build the mq-server.
+Will it be better if you give us access to your live repository?
+
+Such archives were prepared specially to built them separately. Let's try to build provided sources with our assistance first.
+
+ vik.mqb
+
+ 2023-06-08 13:24
+
+reporter    ~0307002
+
+ Last edited: 2024-02-19 10:01
+
+As you have shared source code as zip archives, we might not be able to run and build the mq-server.
+
+Will it be better if you give us access to your live repository?
+
+ vik.mqb
+
+ 2023-06-08 13:05
+
+reporter    ~0306992
+
+ Last edited: 2024-02-19 10:01
+
+We are trying to run mq-server project, but can not install all the Maven dependencies.
+Here is the error:
+
+Could not transfer artifact com.dgphoenix.casino:utils:pom:1.0.109 from/to siberteam (http://maven.dgphoenix.com:8082/repository/siberteam/): Transfer failed for http://maven.dgphoenix.com:8082/repository/siberteam/com/dgphoenix/casino/utils/1.0.109/utils-1.0.109.pom
+
+Can you please assist?
+
+ vik.mqb
+
+ 2023-06-06 20:44
+
+reporter    ~0306768
+
+ Last edited: 2024-02-19 10:01
+
+Done. Please check.
+
+It works good. Thank you
+
+ val
+
+ 2023-06-06 11:11
+
+manager    ~0306713
+
+ Last edited: 2024-02-19 10:01
+
+Hi, can you please add our backend developer Darjan Djordjevic to git - ssh://git@95.217.60.163:223/db/git/mq-server.git
+
+Here is his public ssh key
+
+Done. Please check.
+
+ vik.mqb
+
+ 2023-06-06 09:44
+
+reporter    ~0306692
+
+ Last edited: 2024-02-19 10:01
+
+Hi, can you please add our backend developer Darjan Djordjevic to git - ssh://git@95.217.60.163:223/db/git/mq-server.git
+
+Here is his public ssh key
+
+ id_rsa-darjan-djordjevic.pub (595 bytes)   
+ vik.mqb
+
+ 2023-05-23 09:57
+
+reporter    ~0305406
+
+ Last edited: 2024-02-19 10:01
+
+We have granted you access to BSG proxy last evening via Maria.
+
+Thank you.
+
+ val
+
+ 2023-05-23 05:31
+
+manager    ~0305348
+
+ Last edited: 2024-02-19 10:01
+
+Hi, can you please create an account on proxy.betsoftgaming.com for Rex and allow him access to all game tools?
+including
+https://gs1-mp-aams.discreetgaming.com/teststandConfig.jsp
+https://gs1-mp-aams.discreetgaming.com/support/spawnConfig.jsp
+
+We have granted you access to BSG proxy last evening via Maria.
+
+ vik.mqb
+
+ 2023-05-22 12:27
+
+reporter    ~0305280
+
+ Last edited: 2024-02-19 10:01
+
+Hi,
+can you please create an account on proxy.betsoftgaming.com for Rex and allow him access to all game tools?
+
+including
+
+https://gs1-mp-aams.discreetgaming.com/teststandConfig.jsp
+https://gs1-mp-aams.discreetgaming.com/support/spawnConfig.jsp
+
+ vik.mqb
+
+ 2023-05-10 15:44
+
+reporter    ~0304271
+
+ Last edited: 2024-02-19 10:01
+
+Please see https://www.dropbox.com/s/uoilbt9rmhdpz9l/dragonstone_assets.zip
+It contains all images (including translated assets, spines) in two resolutions (1 - for low spec devices, 2 - for high spec devices), and all sounds in three audio formats (ogg, mp4, mp3). All assets grouped by modules: lobby, game and common (general for all MQ/crash games).
+
+Thanks
+
+ val
+
+ 2023-04-20 12:57
+
+manager    ~0302510
+
+ Last edited: 2024-02-19 10:01
+
+Can you export assets folder from the project that is used in MQ Dragonstone SP and send it?
+
+Please see https://www.dropbox.com/s/uoilbt9rmhdpz9l/dragonstone_assets.zip
+It contains all images (including translated assets, spines) in two resolutions (1 - for low spec devices, 2 - for high spec devices), and all sounds in three audio formats (ogg, mp4, mp3). All assets grouped by modules: lobby, game and common (general for all MQ/crash games).
+
+ vik.mqb
+
+ 2023-04-20 12:13
+
+reporter    ~0302488
+
+ Last edited: 2024-02-19 10:01
+
+Can you export assets folder from the project that is used in MQ Dragonstone SP and send it?
+
+ val
+
+ 2023-04-20 12:02
+
+manager    ~0302484
+
+ Last edited: 2024-02-19 10:01
+
+Ok
+
+ vik.mqb
+
+ 2023-04-20 11:28
+
+reporter    ~0302471
+
+ Last edited: 2024-02-19 10:01
+
+You can find all provided assets for this game on Art FTP:
+/PTM/PTM/MQ_Dragonstone/MQ_Dragon_Stone/Provides
+/PTM/PTM/MQ_Battlegrounds/Provides
+
+Thank you. Will check and let you know.
+
+ val
+
+ 2023-04-20 07:47
+
+manager    ~0302446
+
+ Last edited: 2024-02-19 10:01
+
+Can you please provide all assets (graphics, animations, sounds) that are currently used in MQ Dragonstone SP and BTG?
+
+You can find all provided assets for this game on Art FTP:
+/PTM/PTM/MQ_Dragonstone/MQ_Dragon_Stone/Provides
+/PTM/PTM/MQ_Battlegrounds/Provides
+
+Do you need some specific else?
+
+ vik.mqb
+
+ 2023-04-19 20:29
+
+reporter    ~0302423
+
+ Last edited: 2024-02-19 10:01
+
+Can you please provide all assets (graphics, animations, sounds) that are currently used in MQ Dragonstone SP and BTG?
+
+ val
+
+ 2023-03-31 12:42
+
+manager    ~0300846
+
+ Last edited: 2024-02-19 10:01
+
+In discussion with management.
+
+ vik.mqb
+
+ 2023-03-31 10:42
+
+reporter    ~0300804
+
+ Last edited: 2024-02-19 10:01
+
+I understand.
+We need access to review the code and your implementations, so we can plan future game developments based on that.
+We dont want to change or update anything.
+Every request will be forwarded to you as it was.
+
+ val
+
+ 2023-03-30 13:12
+
+manager    ~0300751
+
+First of all need to note, we had not written documentation for MQ sources, and to prepare it we'll need a lot of devs and analyst resources.
+
+Also currently MQ server side is not independent application, but it's game part of general BSG of server side, that is fully linked with BSG part, cannnot be compiled without full BSG source.
+
+So at the present day there is no opportunity to provide you sources of MQ without sources of GS.
+
+We may still suggest use new platform (Cannex, as backend/CM/Omega) and new game engine from one of external team as main game engine.
+
+And provide us ability to support current games with our team, until new teams will not recreate all games on new systems.
+
+It will save time/money for all sides. Nobody can support current games better us.
+

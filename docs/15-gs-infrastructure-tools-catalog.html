@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GS Infrastructure Tool Catalog</title>
+  <style>
+    :root {
+      --bg: #f4f7f8;
+      --panel: #ffffff;
+      --text: #12232e;
+      --muted: #4f6b79;
+      --line: #d7e2e7;
+      --accent: #0b7285;
+      --accent-2: #1c9ab0;
+      --ok: #1f7a4a;
+      --warn: #8a5a00;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 80% -10%, #dff5f2 0, transparent 35%), var(--bg);
+      color: var(--text);
+      font: 15px/1.45 "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 { margin: 0 0 8px; font-size: 30px; }
+    h2 { margin: 24px 0 10px; font-size: 22px; }
+    h3 { margin: 14px 0 8px; font-size: 17px; }
+    p { margin: 6px 0; }
+
+    .hero {
+      background: linear-gradient(130deg, #0b7285, #1c9ab0);
+      color: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(8, 52, 61, 0.2);
+    }
+
+    .muted { color: var(--muted); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 3px 10px rgba(18, 35, 46, 0.05);
+    }
+
+    .path {
+      display: block;
+      margin: 8px 0;
+      color: var(--accent);
+      text-decoration: none;
+      word-break: break-all;
+      font-weight: 600;
+    }
+
+    .path:hover { text-decoration: underline; }
+
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      border-radius: 999px;
+      padding: 2px 9px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      margin-right: 6px;
+      background: #f7fbfd;
+    }
+
+    .ok { color: var(--ok); font-weight: 600; }
+    .warn { color: var(--warn); font-weight: 600; }
+
+    ul { margin: 8px 0 0 20px; padding: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      padding: 8px 10px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eaf3f6;
+      font-size: 13px;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .search {
+      width: 100%;
+      border: 1px solid #b8cbd4;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font: inherit;
+      margin: 8px 0 12px;
+      background: #fff;
+    }
+
+    .flow {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      margin-top: 10px;
+    }
+
+    .small { font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>GS Infrastructure Tools and Configuration Catalog</h1>
+      <p>Base host assumed: <span class="mono">http://localhost:81</span></p>
+      <p>This page consolidates operator/support tools found in current GS source and docs, with focus on configuration, visibility, and safe operational usage.</p>
+    </section>
+
+    <h2>Start Here</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Main Entry</h3>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/index.jsp">http://localhost:81/support/index.jsp</a>
+        <p>Developer support index with links to core diagnostics and admin tools.</p>
+      </div>
+      <div class="card">
+        <h3>Primary Configuration Entry</h3>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/cache/bank/common/subcasinoSelect.jsp">http://localhost:81/support/cache/bank/common/subcasinoSelect.jsp</a>
+        <p>Main workflow page to navigate subcasinos, banks, and bank-level game settings.</p>
+      </div>
+      <div class="card">
+        <h3>High-Value Diagnostics</h3>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/logviewer.do">http://localhost:81/support/logviewer.do</a>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/cacheviewer.do">http://localhost:81/support/cacheviewer.do</a>
+        <p>Use for runtime log and in-memory cache inspection before and after any config change.</p>
+      </div>
+    </div>
+
+    <h2>Guided Workflows</h2>
+
+    <div class="flow">
+      <h3>1) Add New Subcasino + New Bank (with Cassandra persistence)</h3>
+      <p class="small">This is the canonical flow to onboard a new bank under a subcasino.</p>
+      <ul>
+        <li>Open <a target="_blank" href="http://localhost:81/support/cache/bank/common/subcasinoSelect.jsp" class="mono">/support/cache/bank/common/subcasinoSelect.jsp</a>.</li>
+        <li>Create or prepare IDs via <a target="_blank" href="http://localhost:81/support/newBankNSubCasino.do" class="mono">/support/newBankNSubCasino.do</a> and <a target="_blank" href="http://localhost:81/support/BankNSubCasinoControl.do" class="mono">/support/BankNSubCasinoControl.do</a>.</li>
+        <li>Create the subcasino/bank via forms backed by <span class="mono">/support/newSubCasino.do</span>, <span class="mono">/support/addbank.do</span>, and optional <span class="mono">/support/createFreeBank.do</span>.</li>
+      </ul>
+      <p><span class="ok">What happens in backend:</span> bank creation action persists bank config through Cassandra bank persister and pushes cache refresh notifications to all GS nodes.</p>
+    </div>
+
+    <div class="flow">
+      <h3>2) Add New Game to Existing Bank (writes game configuration)</h3>
+      <ul>
+        <li>Open bank details: <span class="mono">/support/bankInfo.do?bankId=&lt;BANK_ID&gt;</span>.</li>
+        <li>Launch add-game flow through <span class="mono">/support/awayFromBankInfo.do</span> and <span class="mono">/support/cache/bank/common/addGame.jsp</span>.</li>
+        <li>Submit create action: <span class="mono">/support/createNewGame.do</span>.</li>
+      </ul>
+      <p><span class="ok">What happens in backend:</span> game is created using base-game helper, persisted through remote-call persistence path, and propagated as refresh/invalidation events across GS servers.</p>
+    </div>
+
+    <div class="flow">
+      <h3>3) Visualize Bank/Subcasino Information</h3>
+      <ul>
+        <li>Subcasino bank matrix: <span class="mono">/tools/subCasinoInfo.jsp?subCasinoId=&lt;ID&gt;</span>.</li>
+        <li>Full bank property dump: <span class="mono">/tools/bankProperties.jsp?bankId=&lt;ID&gt;</span>.</li>
+        <li>Specific property across banks: <span class="mono">/support/showBanksDetailsProp.jsp?bankId=271|6274&amp;prop=COMMON_WALLET_WAGER_URL</span>.</li>
+      </ul>
+      <p>These pages are the easiest visual tools for protocol type, API endpoints, currencies, master-bank relationship, and property-level comparisons.</p>
+    </div>
+
+    <h2>Why Many Tools Look Broken</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Audit Snapshot</h3>
+        <p>Safe probe set (excluding shutdown trigger endpoint): <span class="mono">194</span> endpoints.</p>
+        <ul>
+          <li><span class="ok">200 OK:</span> 115 endpoints</li>
+          <li><span class="warn">500:</span> 74 endpoints</li>
+          <li><span class="warn">404:</span> 2 endpoints</li>
+          <li><span class="warn">Timeout/Long run:</span> 3 endpoints</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Main Failure Causes</h3>
+        <ul>
+          <li>Direct open of action endpoints without required params or form context (example: <span class="mono">/support/bankSelectAction.do</span> needs <span class="mono">bankId</span>).</li>
+          <li>Internal JSPs intended as sub-views within a flow, not standalone pages.</li>
+          <li>Legacy/stale links (example: <span class="mono">/support/templateManager/index.jsp</span> returns <span class="mono">404</span>).</li>
+          <li>Operational scripts that are slow or side-effect heavy, not normal UI pages.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Critical Safety Note</h3>
+        <p class="warn">Do not open <span class="mono">/support/prepareToShutdown.jsp</span> during discovery scans.</p>
+        <p>This endpoint marks <span class="mono">ShutdownFilter</span> down and forces global <span class="mono">503 Service Unavailable</span> until GS restart.</p>
+      </div>
+    </div>
+
+    <h2>Detailed Core Tool Matrix</h2>
+    <p class="muted small">These are the most important operator-facing tools with usage prerequisites and concrete behavior notes.</p>
+    <table>
+      <thead>
+      <tr>
+        <th style="width: 260px;">Tool</th>
+        <th>Designed For</th>
+        <th style="width: 260px;">Required Input</th>
+        <th>What Happens During Use</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/index.jsp">/support/index.jsp</a></td>
+        <td>Main support landing page and internal documentation links.</td>
+        <td>None</td>
+        <td>Loads support catalog UI; no config mutation by itself.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/subcasinoSelect.jsp">/support/cache/bank/common/subcasinoSelect.jsp</a></td>
+        <td>Primary bank/subcasino configuration entry.</td>
+        <td>None</td>
+        <td>Lists subcasinos and launches bank/game configuration flows.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/newBankNSubCasino.do">/support/newBankNSubCasino.do</a></td>
+        <td>Create a new subcasino + seed bank id flow.</td>
+        <td>Form submission with subcasino and bank ids</td>
+        <td>Prepares IDs for creation path; forwards into subcasino/bank setup workflow.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/BankNSubCasinoControl.do">/support/BankNSubCasinoControl.do</a></td>
+        <td>Map/filter existing banks by subcasino.</td>
+        <td>Usually selected subcasino context</td>
+        <td>Renders selectable relations to inspect and control bank/subcasino mapping.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/bankSupport.do">/support/bankSupport.do</a></td>
+        <td>Select bank for property editing.</td>
+        <td>None</td>
+        <td>Builds dropdown from BankInfo cache and posts to bank property editor action.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/bankSelectAction.do?bankId=6274">/support/bankSelectAction.do</a></td>
+        <td>Open properties/language edit modes for one bank.</td>
+        <td><span class="mono">bankId</span> is mandatory</td>
+        <td>Without <span class="mono">bankId</span> it fails; with it, loads edit page and allows mutation.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/bankInfo.do?bankId=6274">/support/bankInfo.do</a></td>
+        <td>Bank-level summary and gateway to add/edit game config.</td>
+        <td><span class="mono">bankId</span></td>
+        <td>Loads selected bank context and enables move into game add/edit actions.</td>
+      </tr>
+      <tr>
+        <td><span class="mono">/support/createNewGame.do</span></td>
+        <td>Create new game config for a bank.</td>
+        <td>POST form from <span class="mono">addGame.jsp</span></td>
+        <td>Creates game via base-game helper, persists through remote call helper and cache invalidation pipeline.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/loadgameinfo.do?bankId=6274&curCode=default&gameId=838">/support/loadgameinfo.do</a></td>
+        <td>Load existing game configuration for edit.</td>
+        <td><span class="mono">bankId</span>, <span class="mono">gameId</span>, <span class="mono">curCode</span></td>
+        <td>Loads game model into edit form; mutation happens only on edit submit actions.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/getBanksWithGame2.jsp?gid=838">/support/getBanksWithGame2.jsp</a></td>
+        <td>Find banks/subcasinos where a game is configured.</td>
+        <td><span class="mono">gid</span> required</td>
+        <td>Without <span class="mono">gid</span> throws parse error; with it returns distribution report.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/showBanksDetailsProp.jsp?bankId=6274&prop=COMMON_WALLET_WAGER_URL">/support/showBanksDetailsProp.jsp</a></td>
+        <td>Visualize one property across bank set.</td>
+        <td><span class="mono">bankId</span>, <span class="mono">prop</span></td>
+        <td>Read-only report view for property comparison across banks.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/showGamesDetailsProp2.jsp?bankId=6274&gameId=838&currencyCode=USD">/support/showGamesDetailsProp2.jsp</a></td>
+        <td>Inspect game properties across one or many banks.</td>
+        <td><span class="mono">bankId</span>, <span class="mono">gameId</span>, optional <span class="mono">currencyCode</span></td>
+        <td>Read-focused diagnostics for game setting comparison.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/logviewer.do">/support/logviewer.do</a></td>
+        <td>View server logs from support UI.</td>
+        <td>None for base view</td>
+        <td>Loads log viewer UI; query parameters control filters/ranges.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/cacheviewer.do">/support/cacheviewer.do</a></td>
+        <td>Inspect cache objects and their values.</td>
+        <td>None for base view</td>
+        <td>Displays cache viewer form; deeper reads require selected cache object/key.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/serverConfiguration.do">/support/serverConfiguration.do</a></td>
+        <td>Server-level configuration management.</td>
+        <td>Mode and property selection in form</td>
+        <td>Can mutate runtime/server configuration values through action submits.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/showAPIIssues.do">/support/showAPIIssues.do</a></td>
+        <td>Inspect API integration issue logs.</td>
+        <td>Optional date/filter inputs</td>
+        <td>Queries call issue records and renders problem list.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/gamehistory.do?accountId=40962">/support/gamehistory.do</a></td>
+        <td>Support history for account sessions/games.</td>
+        <td><span class="mono">accountId</span></td>
+        <td>Loads account-related game history records.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/support/walletInfo.jsp">/support/walletInfo.jsp</a></td>
+        <td>Wallet information lookup.</td>
+        <td>Account or bank/user context in form</td>
+        <td>Reads wallet records and associated state via support action.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/tools/walletsManager.jsp">/tools/walletsManager.jsp</a></td>
+        <td>Inspect/fix pending wallet operations.</td>
+        <td><span class="mono">accountId</span> or <span class="mono">bankId+extUserId</span></td>
+        <td>Shows operation status, linked game sessions, and allows cleanup actions.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/tools/walletsManager.do?accountId=40962&subcasinoId=507&bankId=6274&extUserId=bav_game_session_001&gameId=&accountData=show">/tools/walletsManager.do</a></td>
+        <td>Action endpoint behind wallets manager form.</td>
+        <td>Same context as manager form</td>
+        <td>Resolves account, loads wallet operations, and renders detail JSP.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/tools/pendingOperations.jsp?accountId=40962">/tools/pendingOperations.jsp</a></td>
+        <td>Resolve pending CT payment transaction.</td>
+        <td><span class="mono">accountId</span> or <span class="mono">bankId + accountId</span></td>
+        <td>Locks session context, inspects pending operation, optional kill action if requested.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/tools/subCasinoInfo.jsp?subCasinoId=507">/tools/subCasinoInfo.jsp</a></td>
+        <td>Visual subcasino report of active/inactive banks.</td>
+        <td><span class="mono">subCasinoId</span></td>
+        <td>Displays protocol, API endpoint, bonus capability, currencies, master-bank relation.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/tools/bankProperties.jsp?bankId=6274">/tools/bankProperties.jsp</a></td>
+        <td>Dump bank property map and values.</td>
+        <td><span class="mono">bankId</span> recommended</td>
+        <td>Read-only rendering of bank properties for analysis/debugging.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/tools/api/service.jsp?bankId=6274">/tools/api/service.jsp</a></td>
+        <td>Inspect API service environment/accounts for bank.</td>
+        <td><span class="mono">bankId</span></td>
+        <td>Calls REST service client, lists environment URLs/accounts/tokens and test links.</td>
+      </tr>
+      <tr>
+        <td><a class="mono" target="_blank" href="http://localhost:81/tools/banksList.jsp?subcasinoId=507">/tools/banksList.jsp</a></td>
+        <td>Sub-view for bank options by subcasino.</td>
+        <td><span class="mono">subcasinoId</span></td>
+        <td>Forwards to support bank list JSP and emits option list for selectors.</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h2>Curated Tool Sections</h2>
+    <div class="grid">
+      <article class="card">
+        <span class="badge">Configuration</span><span class="badge">Read/Write</span>
+        <h3>Bank/Subcasino Configuration Hub</h3>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/cache/bank/common/subcasinoSelect.jsp">http://localhost:81/support/cache/bank/common/subcasinoSelect.jsp</a>
+        <p>Top-level selector to enter subcasino, bank, and game config pages.</p>
+        <p class="small"><span class="warn">Actions:</span> can trigger create/edit/import/export operations for bank/subcasino objects.</p>
+      </article>
+
+      <article class="card">
+        <span class="badge">Configuration</span><span class="badge">Read/Write</span>
+        <h3>Bank Properties Editor</h3>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/bankSupport.do">http://localhost:81/support/bankSupport.do</a>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/bankSelectAction.do?bankId=6274">http://localhost:81/support/bankSelectAction.do?bankId=&lt;BANK_ID&gt;</a>
+        <p>Select bank and edit property map, feature flags, URLs, and language/game parameters.</p>
+      </article>
+
+      <article class="card">
+        <span class="badge">Games</span><span class="badge">Read/Write</span>
+        <h3>Game Configuration by Banks</h3>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/GameConfig/getGamesConfigByBanks.jsp?banks=271&editmode=true&mode=coins,frb,limit,defcoin">http://localhost:81/support/GameConfig/getGamesConfigByBanks.jsp</a>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/compare/banks.jsp">http://localhost:81/support/compare/banks.jsp</a>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/compare/gameTemplates.jsp">http://localhost:81/support/compare/gameTemplates.jsp</a>
+        <p>Bulk inspection/comparison for per-bank game setup, templates, and drift between banks.</p>
+      </article>
+
+      <article class="card">
+        <span class="badge">Wallet</span><span class="badge">Read/Write</span>
+        <h3>Wallet and Pending Operation Manager</h3>
+        <a class="path mono" target="_blank" href="http://localhost:81/tools/walletsManager.jsp">http://localhost:81/tools/walletsManager.jsp</a>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/walletInfo.jsp">http://localhost:81/support/walletInfo.jsp</a>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/viewWallets.jsp">http://localhost:81/support/viewWallets.jsp</a>
+        <p>Find account wallet state by account id or external id and inspect/finish stuck operations.</p>
+      </article>
+
+      <article class="card">
+        <span class="badge">Diagnostics</span><span class="badge">Read</span>
+        <h3>Log Viewer + Cache Viewer</h3>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/logviewer.do">http://localhost:81/support/logviewer.do</a>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/cacheviewer.do">http://localhost:81/support/cacheviewer.do</a>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/showAPIIssues.do">http://localhost:81/support/showAPIIssues.do</a>
+        <p>Primary observability screens for runtime errors, cache object inspection, and integration API issues.</p>
+      </article>
+
+      <article class="card">
+        <span class="badge">Infra</span><span class="badge">Read/Write</span>
+        <h3>Server and Runtime Controls</h3>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/serverConfiguration.do">http://localhost:81/support/serverConfiguration.do</a>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/metrics/">http://localhost:81/support/metrics/</a>
+        <p>Server-level property and runtime controls with visibility into operational metrics.</p>
+      </article>
+
+      <article class="card">
+        <span class="badge">Visualization</span><span class="badge">Read</span>
+        <h3>Bank/Subcasino Visual Views</h3>
+        <a class="path mono" target="_blank" href="http://localhost:81/tools/subCasinoInfo.jsp?subCasinoId=507">http://localhost:81/tools/subCasinoInfo.jsp?subCasinoId=&lt;ID&gt;</a>
+        <a class="path mono" target="_blank" href="http://localhost:81/tools/bankProperties.jsp?bankId=6274">http://localhost:81/tools/bankProperties.jsp?bankId=&lt;ID&gt;</a>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/showBanksDetailsProp.jsp?bankId=6274|6275&prop=COMMON_WALLET_WAGER_URL">http://localhost:81/support/showBanksDetailsProp.jsp</a>
+        <p>Purpose-built pages for visual bank analysis, endpoint verification, and configuration comparison.</p>
+      </article>
+
+      <article class="card">
+        <span class="badge">History</span><span class="badge">Read</span>
+        <h3>Session and Game History</h3>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/gamehistory.do?accountId=40962">http://localhost:81/support/gamehistory.do?accountId=&lt;ACCOUNT_ID&gt;</a>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/getGameSession.jsp">http://localhost:81/support/getGameSession.jsp</a>
+        <a class="path mono" target="_blank" href="http://localhost:81/support/getRounds.jsp">http://localhost:81/support/getRounds.jsp</a>
+        <p>Useful for tracking account sessions, round state, and investigating gameplay support incidents.</p>
+      </article>
+    </div>
+
+    <h2>Full Discovered Endpoint Index</h2>
+    <p class="muted small">Source: scanned JSP files under <span class="mono">web-gs/src/main/webapp/support</span> and <span class="mono">web-gs/src/main/webapp/tools</span>, plus Struts action paths from <span class="mono">WEB-INF/struts-config.xml</span>.</p>
+    <input id="endpointFilter" class="search" placeholder="Filter endpoints (example: wallet, bank, game, template, cache, subcasino)" />
+    <table>
+      <thead>
+      <tr>
+        <th style="width: 42px;">#</th>
+        <th style="width: 110px;">Type</th>
+        <th>Endpoint</th>
+      </tr>
+      </thead>
+      <tbody id="endpointBody">
+      <tr class="endpoint-row" data-endpoint="/support/BankNSubCasinoControl.do"><td>1</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/BankNSubCasinoControl.do">http://localhost:81/support/BankNSubCasinoControl.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/EditTemplateProperty.jsp"><td>2</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/EditTemplateProperty.jsp">http://localhost:81/support/EditTemplateProperty.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/GameConfig/getGamesConfigByBanks.jsp"><td>3</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/GameConfig/getGamesConfigByBanks.jsp">http://localhost:81/support/GameConfig/getGamesConfigByBanks.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/acceptInfoBank.do"><td>4</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/acceptInfoBank.do">http://localhost:81/support/acceptInfoBank.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/acceptInfoFreeBank.do"><td>5</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/acceptInfoFreeBank.do">http://localhost:81/support/acceptInfoFreeBank.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/addbank.do"><td>6</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/addbank.do">http://localhost:81/support/addbank.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/additionalDomainName.do"><td>7</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/additionalDomainName.do">http://localhost:81/support/additionalDomainName.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/addproperty.do"><td>8</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/addproperty.do">http://localhost:81/support/addproperty.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/addsubcasino.do"><td>9</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/addsubcasino.do">http://localhost:81/support/addsubcasino.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/autoFrbLists.jsp"><td>10</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/autoFrbLists.jsp">http://localhost:81/support/autoFrbLists.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/awayFromBankInfo.do"><td>11</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/awayFromBankInfo.do">http://localhost:81/support/awayFromBankInfo.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/bankInfo.do"><td>12</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/bankInfo.do">http://localhost:81/support/bankInfo.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/bankInfo/propertyForm.jsp"><td>13</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/bankInfo/propertyForm.jsp">http://localhost:81/support/bankInfo/propertyForm.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/bankInfo/propertyResult.jsp"><td>14</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/bankInfo/propertyResult.jsp">http://localhost:81/support/bankInfo/propertyResult.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/bankPropEdit.do"><td>15</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/bankPropEdit.do">http://localhost:81/support/bankPropEdit.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/bankReleaseReport.jsp"><td>16</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/bankReleaseReport.jsp">http://localhost:81/support/bankReleaseReport.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/bankSelectAction.do"><td>17</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/bankSelectAction.do">http://localhost:81/support/bankSelectAction.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/bankSupport.do"><td>18</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/bankSupport.do">http://localhost:81/support/bankSupport.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/bonusexp.jsp"><td>19</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/bonusexp.jsp">http://localhost:81/support/bonusexp.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/background/reset.jsp"><td>20</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/background/reset.jsp">http://localhost:81/support/cache/background/reset.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/background/view.jsp"><td>21</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/background/view.jsp">http://localhost:81/support/cache/background/view.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/acs/acsConfig.jsp"><td>22</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/acs/acsConfig.jsp">http://localhost:81/support/cache/bank/acs/acsConfig.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/addBank.jsp"><td>23</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/addBank.jsp">http://localhost:81/support/cache/bank/common/addBank.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/addFreeBank.jsp"><td>24</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/addFreeBank.jsp">http://localhost:81/support/cache/bank/common/addFreeBank.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/addGame.jsp"><td>25</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/addGame.jsp">http://localhost:81/support/cache/bank/common/addGame.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/addSubcasino.jsp"><td>26</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/addSubcasino.jsp">http://localhost:81/support/cache/bank/common/addSubcasino.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/bankInfo.jsp"><td>27</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/bankInfo.jsp">http://localhost:81/support/cache/bank/common/bankInfo.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/banksList.jsp"><td>28</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/banksList.jsp">http://localhost:81/support/cache/bank/common/banksList.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/banksNSubCasinos.jsp"><td>29</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/banksNSubCasinos.jsp">http://localhost:81/support/cache/bank/common/banksNSubCasinos.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/editGame.jsp"><td>30</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/editGame.jsp">http://localhost:81/support/cache/bank/common/editGame.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/loadAllBanks.jsp"><td>31</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/loadAllBanks.jsp">http://localhost:81/support/cache/bank/common/loadAllBanks.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/newBankNSubCasino.jsp"><td>32</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/newBankNSubCasino.jsp">http://localhost:81/support/cache/bank/common/newBankNSubCasino.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/properties.jsp"><td>33</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/properties.jsp">http://localhost:81/support/cache/bank/common/properties.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/removeBank.jsp"><td>34</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/removeBank.jsp">http://localhost:81/support/cache/bank/common/removeBank.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/scheduleCronTask.jsp"><td>35</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/scheduleCronTask.jsp">http://localhost:81/support/cache/bank/common/scheduleCronTask.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/subCasinoInfo.jsp"><td>36</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/subCasinoInfo.jsp">http://localhost:81/support/cache/bank/common/subCasinoInfo.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/subcasinoList.jsp"><td>37</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/subcasinoList.jsp">http://localhost:81/support/cache/bank/common/subcasinoList.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/subcasinoSelect.jsp"><td>38</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/subcasinoSelect.jsp">http://localhost:81/support/cache/bank/common/subcasinoSelect.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/common/systemInfo.jsp"><td>39</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/common/systemInfo.jsp">http://localhost:81/support/cache/bank/common/systemInfo.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/properties/edit/allBanks.jsp"><td>40</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/properties/edit/allBanks.jsp">http://localhost:81/support/cache/bank/properties/edit/allBanks.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/properties/edit/bankLangTable.jsp"><td>41</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/properties/edit/bankLangTable.jsp">http://localhost:81/support/cache/bank/properties/edit/bankLangTable.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/properties/edit/editProperties.jsp"><td>42</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/properties/edit/editProperties.jsp">http://localhost:81/support/cache/bank/properties/edit/editProperties.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/properties/edit/languageTable.jsp"><td>43</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/properties/edit/languageTable.jsp">http://localhost:81/support/cache/bank/properties/edit/languageTable.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/properties/editProperties.jsp"><td>44</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/properties/editProperties.jsp">http://localhost:81/support/cache/bank/properties/editProperties.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/properties/languageTable.jsp"><td>45</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/properties/languageTable.jsp">http://localhost:81/support/cache/bank/properties/languageTable.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/bank/properties/set_post_property.jsp"><td>46</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/bank/properties/set_post_property.jsp">http://localhost:81/support/cache/bank/properties/set_post_property.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/domain/domainList.jsp"><td>47</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/domain/domainList.jsp">http://localhost:81/support/cache/domain/domainList.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cache/domain/gameList.jsp"><td>48</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cache/domain/gameList.jsp">http://localhost:81/support/cache/domain/gameList.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cacheviewer.do"><td>49</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cacheviewer.do">http://localhost:81/support/cacheviewer.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cacheviewer.jsp"><td>50</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cacheviewer.jsp">http://localhost:81/support/cacheviewer.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/cancelMassFRBonusAward.jsp"><td>51</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/cancelMassFRBonusAward.jsp">http://localhost:81/support/cancelMassFRBonusAward.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/checkPersisters.jsp"><td>52</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/checkPersisters.jsp">http://localhost:81/support/checkPersisters.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/clearLastHand.jsp"><td>53</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/clearLastHand.jsp">http://localhost:81/support/clearLastHand.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/compare/banks.do"><td>54</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/compare/banks.do">http://localhost:81/support/compare/banks.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/compare/gameTemplates.do"><td>55</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/compare/gameTemplates.do">http://localhost:81/support/compare/gameTemplates.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/configuration/fieldProperties.jsp"><td>56</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/configuration/fieldProperties.jsp">http://localhost:81/support/configuration/fieldProperties.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/configuration/mapProperties.jsp"><td>57</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/configuration/mapProperties.jsp">http://localhost:81/support/configuration/mapProperties.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/configuration/serverConfiguration.jsp"><td>58</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/configuration/serverConfiguration.jsp">http://localhost:81/support/configuration/serverConfiguration.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/convertCurrency.jsp"><td>59</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/convertCurrency.jsp">http://localhost:81/support/convertCurrency.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/copyBankV3.jsp"><td>60</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/copyBankV3.jsp">http://localhost:81/support/copyBankV3.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/copyConfig.do"><td>61</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/copyConfig.do">http://localhost:81/support/copyConfig.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/copyLanguages.jsp"><td>62</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/copyLanguages.jsp">http://localhost:81/support/copyLanguages.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/correctedCurrency.jsp"><td>63</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/correctedCurrency.jsp">http://localhost:81/support/correctedCurrency.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/createFreeBank.do"><td>64</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/createFreeBank.do">http://localhost:81/support/createFreeBank.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/createNewGame.do"><td>65</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/createNewGame.do">http://localhost:81/support/createNewGame.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/createSubCasino.jsp"><td>66</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/createSubCasino.jsp">http://localhost:81/support/createSubCasino.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/currency/forceUpdateRate.jsp"><td>67</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/currency/forceUpdateRate.jsp">http://localhost:81/support/currency/forceUpdateRate.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/currency/initRatesConfig.jsp"><td>68</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/currency/initRatesConfig.jsp">http://localhost:81/support/currency/initRatesConfig.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/currency/showBrokenRates.jsp"><td>69</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/currency/showBrokenRates.jsp">http://localhost:81/support/currency/showBrokenRates.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/currency/switchToInternalRatesExtractor.jsp"><td>70</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/currency/switchToInternalRatesExtractor.jsp">http://localhost:81/support/currency/switchToInternalRatesExtractor.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/currencyBank.jsp"><td>71</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/currencyBank.jsp">http://localhost:81/support/currencyBank.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/currencyFractionsConfig.jsp"><td>72</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/currencyFractionsConfig.jsp">http://localhost:81/support/currencyFractionsConfig.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/currencySelect.do"><td>73</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/currencySelect.do">http://localhost:81/support/currencySelect.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/currentCurrencyRates.jsp"><td>74</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/currentCurrencyRates.jsp">http://localhost:81/support/currentCurrencyRates.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/currentCurrencyRates2.jsp"><td>75</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/currentCurrencyRates2.jsp">http://localhost:81/support/currentCurrencyRates2.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/customGameList.jsp"><td>76</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/customGameList.jsp">http://localhost:81/support/customGameList.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/deleteForbiddenCurrenciesProp.jsp"><td>77</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/deleteForbiddenCurrenciesProp.jsp">http://localhost:81/support/deleteForbiddenCurrenciesProp.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/disableGames.jsp"><td>78</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/disableGames.jsp">http://localhost:81/support/disableGames.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/domainformany.do"><td>79</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/domainformany.do">http://localhost:81/support/domainformany.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/domainsbygame.do"><td>80</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/domainsbygame.do">http://localhost:81/support/domainsbygame.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/domainwl.do"><td>81</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/domainwl.do">http://localhost:81/support/domainwl.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/editSubCasino.do"><td>82</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/editSubCasino.do">http://localhost:81/support/editSubCasino.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/editdomains.do"><td>83</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/editdomains.do">http://localhost:81/support/editdomains.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/editgameprop.do"><td>84</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/editgameprop.do">http://localhost:81/support/editgameprop.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/encoderutil.jsp"><td>85</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/encoderutil.jsp">http://localhost:81/support/encoderutil.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/enterProperties.do"><td>86</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/enterProperties.do">http://localhost:81/support/enterProperties.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/error.jsp"><td>87</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/error.jsp">http://localhost:81/support/error.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/export-base-game-info.jsp"><td>88</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/export-base-game-info.jsp">http://localhost:81/support/export-base-game-info.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/exportImportCoins.jsp"><td>89</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/exportImportCoins.jsp">http://localhost:81/support/exportImportCoins.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/exportSubCasino.do"><td>90</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/exportSubCasino.do">http://localhost:81/support/exportSubCasino.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/finishRounds.jsp"><td>91</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/finishRounds.jsp">http://localhost:81/support/finishRounds.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/gameBankConfig/GameClass.jsp"><td>92</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/gameBankConfig/GameClass.jsp">http://localhost:81/support/gameBankConfig/GameClass.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/gameBankConfig/applyGame.jsp"><td>93</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/gameBankConfig/applyGame.jsp">http://localhost:81/support/gameBankConfig/applyGame.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/gameBankConfig/compareBanksGames.jsp"><td>94</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/gameBankConfig/compareBanksGames.jsp">http://localhost:81/support/gameBankConfig/compareBanksGames.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/gameBankConfig/deleteGameForm.jsp"><td>95</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/gameBankConfig/deleteGameForm.jsp">http://localhost:81/support/gameBankConfig/deleteGameForm.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/gameBankConfig/editGameForm.jsp"><td>96</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/gameBankConfig/editGameForm.jsp">http://localhost:81/support/gameBankConfig/editGameForm.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/gameBankConfig/gameConfig.jsp"><td>97</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/gameBankConfig/gameConfig.jsp">http://localhost:81/support/gameBankConfig/gameConfig.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/gameBankConfig/removeGame.jsp"><td>98</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/gameBankConfig/removeGame.jsp">http://localhost:81/support/gameBankConfig/removeGame.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/gameIdSelect.do"><td>99</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/gameIdSelect.do">http://localhost:81/support/gameIdSelect.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/gamehistory.do"><td>100</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/gamehistory.do">http://localhost:81/support/gamehistory.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/games/829_FixTemplate.jsp"><td>101</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/games/829_FixTemplate.jsp">http://localhost:81/support/games/829_FixTemplate.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/games/829_step1_AddGameInfoTemplate.jsp"><td>102</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/games/829_step1_AddGameInfoTemplate.jsp">http://localhost:81/support/games/829_step1_AddGameInfoTemplate.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/games/829_step2_AddGameInfo.jsp"><td>103</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/games/829_step2_AddGameInfo.jsp">http://localhost:81/support/games/829_step2_AddGameInfo.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/games/gameClientGeneration.jsp"><td>104</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/games/gameClientGeneration.jsp">http://localhost:81/support/games/gameClientGeneration.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/games/getGameInfoTemplates.jsp"><td>105</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/games/getGameInfoTemplates.jsp">http://localhost:81/support/games/getGameInfoTemplates.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/games/getGameInfos.jsp"><td>106</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/games/getGameInfos.jsp">http://localhost:81/support/games/getGameInfos.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/games/getLasthands.jsp"><td>107</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/games/getLasthands.jsp">http://localhost:81/support/games/getLasthands.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/games/listExteralIdsByBank.jsp"><td>108</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/games/listExteralIdsByBank.jsp">http://localhost:81/support/games/listExteralIdsByBank.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/getAccountInfo.jsp"><td>109</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/getAccountInfo.jsp">http://localhost:81/support/getAccountInfo.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/getBanksWithGame2.jsp"><td>110</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/getBanksWithGame2.jsp">http://localhost:81/support/getBanksWithGame2.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/getCdnSettingsCsv.jsp"><td>111</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/getCdnSettingsCsv.jsp">http://localhost:81/support/getCdnSettingsCsv.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/getGameSession.jsp"><td>112</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/getGameSession.jsp">http://localhost:81/support/getGameSession.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/getMassAwardRestrictions.jsp"><td>113</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/getMassAwardRestrictions.jsp">http://localhost:81/support/getMassAwardRestrictions.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/getPendingFRBWin.jsp"><td>114</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/getPendingFRBWin.jsp">http://localhost:81/support/getPendingFRBWin.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/getRounds.jsp"><td>115</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/getRounds.jsp">http://localhost:81/support/getRounds.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/getSessionError.jsp"><td>116</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/getSessionError.jsp">http://localhost:81/support/getSessionError.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/handleOfflineCreditInRounds.jsp"><td>117</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/handleOfflineCreditInRounds.jsp">http://localhost:81/support/handleOfflineCreditInRounds.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/health/check.jsp"><td>118</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/health/check.jsp">http://localhost:81/support/health/check.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/health/ping.jsp"><td>119</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/health/ping.jsp">http://localhost:81/support/health/ping.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/import-base-game-info.jsp"><td>120</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/import-base-game-info.jsp">http://localhost:81/support/import-base-game-info.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/importSubCasino.do"><td>121</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/importSubCasino.do">http://localhost:81/support/importSubCasino.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/index.jsp"><td>122</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/index.jsp">http://localhost:81/support/index.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/initGames.jsp"><td>123</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/initGames.jsp">http://localhost:81/support/initGames.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/inputModeId.do"><td>124</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/inputModeId.do">http://localhost:81/support/inputModeId.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/isShutDown.jsp"><td>125</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/isShutDown.jsp">http://localhost:81/support/isShutDown.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/langTools.jsp"><td>126</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/langTools.jsp">http://localhost:81/support/langTools.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/listExteralIdsByBank.jsp"><td>127</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/listExteralIdsByBank.jsp">http://localhost:81/support/listExteralIdsByBank.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/listGameIds.jsp"><td>128</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/listGameIds.jsp">http://localhost:81/support/listGameIds.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/loadFreeBank.do"><td>129</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/loadFreeBank.do">http://localhost:81/support/loadFreeBank.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/loaddefbank.do"><td>130</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/loaddefbank.do">http://localhost:81/support/loaddefbank.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/loadgameinfo.do"><td>131</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/loadgameinfo.do">http://localhost:81/support/loadgameinfo.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/logViewer.jsp"><td>132</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/logViewer.jsp">http://localhost:81/support/logViewer.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/logoutPlayers.jsp"><td>133</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/logoutPlayers.jsp">http://localhost:81/support/logoutPlayers.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/logviewer.do"><td>134</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/logviewer.do">http://localhost:81/support/logviewer.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/metrics/index.jsp"><td>135</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/metrics/index.jsp">http://localhost:81/support/metrics/index.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/newBankNSubCasino.do"><td>136</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/newBankNSubCasino.do">http://localhost:81/support/newBankNSubCasino.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/newSubCasino.do"><td>137</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/newSubCasino.do">http://localhost:81/support/newSubCasino.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/precheckPendingDataArchiving.jsp"><td>138</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/precheckPendingDataArchiving.jsp">http://localhost:81/support/precheckPendingDataArchiving.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/prepareToShutdown.jsp"><td>139</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/prepareToShutdown.jsp">http://localhost:81/support/prepareToShutdown.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/propertiesmode.do"><td>140</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/propertiesmode.do">http://localhost:81/support/propertiesmode.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/reinitBonusClient.jsp"><td>141</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/reinitBonusClient.jsp">http://localhost:81/support/reinitBonusClient.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/reinitCurrencyRateMultipliers.jsp"><td>142</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/reinitCurrencyRateMultipliers.jsp">http://localhost:81/support/reinitCurrencyRateMultipliers.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/reinitFrBonusClient.jsp"><td>143</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/reinitFrBonusClient.jsp">http://localhost:81/support/reinitFrBonusClient.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/reinitFrBonusWinManager.jsp"><td>144</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/reinitFrBonusWinManager.jsp">http://localhost:81/support/reinitFrBonusWinManager.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/reinitGamesList.jsp"><td>145</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/reinitGamesList.jsp">http://localhost:81/support/reinitGamesList.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/reinitWalletManager.jsp"><td>146</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/reinitWalletManager.jsp">http://localhost:81/support/reinitWalletManager.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/removeWalletForAccount.jsp"><td>147</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/removeWalletForAccount.jsp">http://localhost:81/support/removeWalletForAccount.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/resetAllStubBalances.jsp"><td>148</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/resetAllStubBalances.jsp">http://localhost:81/support/resetAllStubBalances.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/rouletteInternalLimits.jsp"><td>149</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/rouletteInternalLimits.jsp">http://localhost:81/support/rouletteInternalLimits.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/saveIcon.jsp"><td>150</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/saveIcon.jsp">http://localhost:81/support/saveIcon.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/script/addCurrRate.jsp"><td>151</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/script/addCurrRate.jsp">http://localhost:81/support/script/addCurrRate.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/script/addCurrRateShort.jsp"><td>152</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/script/addCurrRateShort.jsp">http://localhost:81/support/script/addCurrRateShort.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/serverConfiguration.do"><td>153</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/serverConfiguration.do">http://localhost:81/support/serverConfiguration.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/setIdGeneratorStartValue.jsp"><td>154</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/setIdGeneratorStartValue.jsp">http://localhost:81/support/setIdGeneratorStartValue.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/setProperty.jsp"><td>155</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/setProperty.jsp">http://localhost:81/support/setProperty.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/setlimits.jsp"><td>156</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/setlimits.jsp">http://localhost:81/support/setlimits.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/setup_replaceurl_pm_st.jsp"><td>157</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/setup_replaceurl_pm_st.jsp">http://localhost:81/support/setup_replaceurl_pm_st.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/showAPIIssues.do"><td>158</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/showAPIIssues.do">http://localhost:81/support/showAPIIssues.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/showAPIIssues.jsp"><td>159</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/showAPIIssues.jsp">http://localhost:81/support/showAPIIssues.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/showBanksDetailsProp.jsp"><td>160</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/showBanksDetailsProp.jsp">http://localhost:81/support/showBanksDetailsProp.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/showGamesDetailsProp2.jsp"><td>161</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/showGamesDetailsProp2.jsp">http://localhost:81/support/showGamesDetailsProp2.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/showGamesDetailsProp3.jsp"><td>162</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/showGamesDetailsProp3.jsp">http://localhost:81/support/showGamesDetailsProp3.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/showcassandra_account-ext.jsp"><td>163</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/showcassandra_account-ext.jsp">http://localhost:81/support/showcassandra_account-ext.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/showcassandra_account.jsp"><td>164</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/showcassandra_account.jsp">http://localhost:81/support/showcassandra_account.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/sleeper.jsp"><td>165</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/sleeper.jsp">http://localhost:81/support/sleeper.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/subCasino.do"><td>166</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/subCasino.do">http://localhost:81/support/subCasino.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/supportJSP.do"><td>167</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/supportJSP.do">http://localhost:81/support/supportJSP.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/supporthistory.jsp"><td>168</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/supporthistory.jsp">http://localhost:81/support/supporthistory.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/templateManager/ClusterList.jsp"><td>169</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/templateManager/ClusterList.jsp">http://localhost:81/support/templateManager/ClusterList.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/templateManager/GameTemplate.jsp"><td>170</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/templateManager/GameTemplate.jsp">http://localhost:81/support/templateManager/GameTemplate.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/templateManager/cloneTemplate.jsp"><td>171</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/templateManager/cloneTemplate.jsp">http://localhost:81/support/templateManager/cloneTemplate.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/templateManager/compareTemplates.jsp"><td>172</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/templateManager/compareTemplates.jsp">http://localhost:81/support/templateManager/compareTemplates.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/templateManager/getTemplates.jsp"><td>173</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/templateManager/getTemplates.jsp">http://localhost:81/support/templateManager/getTemplates.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/templateManager/index.jsp"><td>174</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/templateManager/index.jsp">http://localhost:81/support/templateManager/index.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/templateManager/invalidateBgi.jsp"><td>175</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/templateManager/invalidateBgi.jsp">http://localhost:81/support/templateManager/invalidateBgi.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/templateManager/setProperty.jsp"><td>176</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/templateManager/setProperty.jsp">http://localhost:81/support/templateManager/setProperty.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/updateCaches.jsp"><td>177</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/updateCaches.jsp">http://localhost:81/support/updateCaches.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/updateFrbGames.jsp"><td>178</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/updateFrbGames.jsp">http://localhost:81/support/updateFrbGames.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/updateIcon.jsp"><td>179</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/updateIcon.jsp">http://localhost:81/support/updateIcon.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/version.jsp"><td>180</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/version.jsp">http://localhost:81/support/version.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/viewFRBCoin.jsp"><td>181</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/viewFRBCoin.jsp">http://localhost:81/support/viewFRBCoin.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/viewWallets.jsp"><td>182</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/viewWallets.jsp">http://localhost:81/support/viewWallets.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/walletInfo.jsp"><td>183</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/walletInfo.jsp">http://localhost:81/support/walletInfo.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/support/walletinfo.do"><td>184</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/support/walletinfo.do">http://localhost:81/support/walletinfo.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/tools/addBattlegroundGames.jsp"><td>185</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/tools/addBattlegroundGames.jsp">http://localhost:81/tools/addBattlegroundGames.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/tools/api/service.jsp"><td>186</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/tools/api/service.jsp">http://localhost:81/tools/api/service.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/tools/bankProperties.jsp"><td>187</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/tools/bankProperties.jsp">http://localhost:81/tools/bankProperties.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/tools/banksList.jsp"><td>188</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/tools/banksList.jsp">http://localhost:81/tools/banksList.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/tools/editBattlegroundChrashGameFolder.jsp"><td>189</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/tools/editBattlegroundChrashGameFolder.jsp">http://localhost:81/tools/editBattlegroundChrashGameFolder.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/tools/pendingOperations.jsp"><td>190</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/tools/pendingOperations.jsp">http://localhost:81/tools/pendingOperations.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/tools/setStubAccountBalance.jsp"><td>191</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/tools/setStubAccountBalance.jsp">http://localhost:81/tools/setStubAccountBalance.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/tools/subCasinoInfo.jsp"><td>192</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/tools/subCasinoInfo.jsp">http://localhost:81/tools/subCasinoInfo.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/tools/walletsManager.do"><td>193</td><td>Action (.do)</td><td><a class="mono" target="_blank" href="http://localhost:81/tools/walletsManager.do">http://localhost:81/tools/walletsManager.do</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/tools/walletsManager.jsp"><td>194</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/tools/walletsManager.jsp">http://localhost:81/tools/walletsManager.jsp</a></td></tr>
+      <tr class="endpoint-row" data-endpoint="/tools/walletsManagerShowData.jsp"><td>195</td><td>Page (.jsp)</td><td><a class="mono" target="_blank" href="http://localhost:81/tools/walletsManagerShowData.jsp">http://localhost:81/tools/walletsManagerShowData.jsp</a></td></tr>
+      </tbody>
+    </table>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>On local stack, links are rendered with <span class="mono">http://localhost:81</span>; internal container-level URLs may use port 8080.</li>
+      <li>Some JSP tools are low-level maintenance scripts and can alter live cache/config immediately; use in controlled environments.</li>
+      <li>For bank property editing, call <span class="mono">/support/bankSupport.do</span> first, then <span class="mono">/support/bankSelectAction.do?bankId=&lt;id&gt;</span> with a valid bank id.</li>
+      <li>For discovery scans, exclude <span class="mono">/support/prepareToShutdown.jsp</span>; it intentionally switches GS into shutdown mode (global 503 until restart).</li>
+      <li>Non-200 does not always mean broken business logic; many endpoints are action handlers that expect POST payloads, query parameters, or prior form/session context.</li>
+    </ul>
+  </div>
+
+  <script>
+    const filterInput = document.getElementById('endpointFilter');
+    const rows = Array.from(document.querySelectorAll('.endpoint-row'));
+
+    filterInput.addEventListener('input', () => {
+      const q = filterInput.value.trim().toLowerCase();
+      rows.forEach((row) => {
+        const endpoint = row.dataset.endpoint.toLowerCase();
+        row.style.display = endpoint.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

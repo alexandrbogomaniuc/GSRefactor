@@ -1,0 +1,95 @@
+menu_path	action	href
+Alerts > Wallet Operation Alerts	navigate	https://api.casino-manager.discreetgaming.com/api/reports/walletOperationAlerts/layout
+Alerts > Suspended FRBWin Alerts	navigate	https://api.casino-manager.discreetgaming.com/api/reports/suspendedFRBWinAlerts/layout
+Alerts > FRBonus Notification Alerts	navigate	https://api.casino-manager.discreetgaming.com/api/reports/frbonusNotificationAlerts/layout
+Management > Users & Roles > User List	navigate	https://api.casino-manager.discreetgaming.com/api/reports/userList/layout
+Management > Users & Roles > Create User	dialog	https://api.casino-manager.discreetgaming.com/api/action/createUser
+Management > Users & Roles > Role List	navigate	https://api.casino-manager.discreetgaming.com/api/reports/roleList/complete
+Management > Users & Roles > Create Role	dialog	https://api.casino-manager.discreetgaming.com/api/action/createRole
+Management > Player > Player Search	navigate	https://api.casino-manager.discreetgaming.com/api/reports/playerSearch/layout
+Management > Player > Player Count	navigate	https://api.casino-manager.discreetgaming.com/api/reports/playerCount/layout
+Management > Game > Game Configuration	navigate	https://api.casino-manager.discreetgaming.com/api/reports/gameConfiguration/layout
+Management > Game > Game Settings	navigate	https://api.casino-manager.discreetgaming.com/api/reports/gameSettings/layout
+Management > Game > FRB Game Parameters	navigate	https://api.casino-manager.discreetgaming.com/api/reports/frbGameParameters/layout
+Management > Game > Adjust FRB Coin	dialog	https://api.casino-manager.discreetgaming.com/api/action/adjustFrbCoin
+Management > Game > Change Limits	dialog	https://api.casino-manager.discreetgaming.com/api/action/changeLimits
+Management > Game > Jackpot Parameters	navigate	https://api.casino-manager.discreetgaming.com/api/reports/jackpotParameters/layout
+Management > Game > Jackpots	navigate	https://api.casino-manager.discreetgaming.com/api/reports/jackpots/layout
+Management > Game > Jackpots3	navigate	https://api.casino-manager.discreetgaming.com/api/reports/jackpots3/layout
+Management > Game > Combined Jackpot3	navigate	https://api.casino-manager.discreetgaming.com/api/reports/combinedJackpot3Params/layout
+Management > Game > Jackpot Balance	navigate	https://api.casino-manager.discreetgaming.com/api/reports/jackpotBalance/layout
+Management > Bank > Bank List	navigate	https://api.casino-manager.discreetgaming.com/api/reports/bankList/layout
+Management > Bank > Bank Search	navigate	https://api.casino-manager.discreetgaming.com/api/reports/bankSearch/layout
+Management > Bank > Invoice Company Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/invoiceCompany/layout
+Management > Universal Jackpot > Universal Jackpot List	navigate	https://api.casino-manager.discreetgaming.com/api/reports/unjList/layout
+Management > Universal Jackpot > Universal Jackpot Log	navigate	https://api.casino-manager.discreetgaming.com/api/reports/unjLog/layout
+Management > Universal Jackpot > Universal Jackpot Balance	navigate	https://api.casino-manager.discreetgaming.com/api/reports/unjBalance/layout
+Management > Promotion > Promotion List	navigate	https://api.casino-manager.discreetgaming.com/api/reports/promotionList/layout
+Management > Promotion > Create Raffle Promo	dialog	https://api.casino-manager.discreetgaming.com/api/action/createRafflePromo
+Management > Promotion > Create Take the Prize	dialog	https://api.casino-manager.discreetgaming.com/api/action/createCashPromo
+Management > Promotion > Create Drive Tournament	dialog	https://api.casino-manager.discreetgaming.com/api/action/createDriveTournament
+Management > Notification > Notification List	navigate	https://api.casino-manager.discreetgaming.com/api/reports/notificationList/complete
+Management > Notification > Create Notification	dialog	https://api.casino-manager.discreetgaming.com/api/action/createNotification
+Monitoring & Statistics > Player Online Statistics	navigate	https://api.casino-manager.discreetgaming.com/api/reports/playerOnlineStatistics/layout
+Monitoring & Statistics > Currency Exchange Rates	navigate	https://api.casino-manager.discreetgaming.com/api/reports/currencyExchangeRates/complete
+Monitoring & Statistics > Game Balancing	navigate	https://api.casino-manager.discreetgaming.com/api/reports/gameBalancing/layout
+Monitoring & Statistics > Game Server Statistics	navigate	https://api.casino-manager.discreetgaming.com/api/reports/gameServerStatistic/layout
+Monitoring & Statistics > Min Max Wallet Statistics	navigate	https://api.casino-manager.discreetgaming.com/api/reports/minMaxWalletStatistic/layout
+Reports & Statistics > Financial > Accounting	navigate	https://api.casino-manager.discreetgaming.com/api/reports/accounting/layout
+Reports & Statistics > Financial > Transactions	navigate	https://api.casino-manager.discreetgaming.com/api/reports/transactions/layout
+Reports & Statistics > Financial > Transaction Search	navigate	https://api.casino-manager.discreetgaming.com/api/reports/transactionSearch/layout
+Reports & Statistics > Financial > Jackpot Contributions by Coin	navigate	https://api.casino-manager.discreetgaming.com/api/reports/jackpotContrByCoin/layout
+Reports & Statistics > Game > Winners & Losers	navigate	https://api.casino-manager.discreetgaming.com/api/reports/winnersLosers/layout
+Reports & Statistics > Game > Games Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/games/layout
+Reports & Statistics > Game > Extended Game Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/extendedGames/layout
+Reports & Statistics > Game > Game Session Search	navigate	https://api.casino-manager.discreetgaming.com/api/reports/gameSessionSearch/layout
+Reports & Statistics > Game > Revenue by Currency	navigate	https://api.casino-manager.discreetgaming.com/api/reports/revenueByCurrency/layout
+Reports & Statistics > Game > Jackpot Wins	navigate	https://api.casino-manager.discreetgaming.com/api/reports/jackpotWins/layout
+Reports & Statistics > Game > Jackpot Change History	navigate	https://api.casino-manager.discreetgaming.com/api/reports/jackpotChangeHistory/layout
+Reports & Statistics > Game > Game Lifetime Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/gameLifetime/layout
+Reports & Statistics > Game > Daily Contributions Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/dailyContributions/layout
+Reports & Statistics > Game > Games Report for a Day	navigate	https://api.casino-manager.discreetgaming.com/api/reports/gamesByDay/layout
+Reports & Statistics > Game > Game Launch Statistics	navigate	https://api.casino-manager.discreetgaming.com/api/reports/gameLaunchStatistics/layout
+Reports & Statistics > Game > Game Launch Statistics by Bank	navigate	https://api.casino-manager.discreetgaming.com/api/reports/gameLaunchStatisticsByBank/layout
+Reports & Statistics > Game > Popular Games Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/popularGames/layout
+Reports & Statistics > Game > Geolocation Statistics Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/geoLocStats/layout
+Reports & Statistics > Bonus > Active Bonuses Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/activeBonusesReport/layout
+Reports & Statistics > Bonus > Resolved Bonus Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/resolvedBonus/layout
+Reports & Statistics > Bonus > Resolved Bonus Details Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/resolvedBonusDetails/layout
+Reports & Statistics > Bonus > Bonus Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/bonusReport/layout
+Reports & Statistics > Bonus > Bonus Statistics Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/bonusStatistics/layout
+Reports & Statistics > Bonus > Bonus Search	navigate	https://api.casino-manager.discreetgaming.com/api/reports/bonusSearch/layout
+Reports & Statistics > Bonus > Player Bonus Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/playerBonus/layout
+Reports & Statistics > Bonus > Bonus Games Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/bonusGames/layout
+Reports & Statistics > Bonus > Mass Bonus Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/massBonusReport/layout
+Reports & Statistics > Bonus > Mass Bonus Award From CSV	dialog	https://api.casino-manager.discreetgaming.com/api/action/awardMassBonusFromFile
+Reports & Statistics > Free Rounds Bonus > Mass FR Bonus Awards in Progress	navigate	https://api.casino-manager.discreetgaming.com/api/reports/delayedMassFrbonus/layout
+Reports & Statistics > Free Rounds Bonus > Active FR Bonuses Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/activeFrBonusesReport/layout
+Reports & Statistics > Free Rounds Bonus > FR Bonus Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/frbonusReport/layout
+Reports & Statistics > Free Rounds Bonus > Player FRBonus Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/playerFrbonus/layout
+Reports & Statistics > Free Rounds Bonus > FR Bonus Search	navigate	https://api.casino-manager.discreetgaming.com/api/reports/frbonusSearch/layout
+Reports & Statistics > Free Rounds Bonus > Mass Free Round Bonus Award From CSV	dialog	https://api.casino-manager.discreetgaming.com/api/action/awardMassFrbFromFile
+Reports & Statistics > Free Rounds Bonus > Mass Free Round Bonus Award for New Players	dialog	https://api.casino-manager.discreetgaming.com/api/action/awardMassFrbForNewPlayers
+Reports & Statistics > Free Rounds Bonus > Mass FR Bonus Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/massFrbonus/layout
+Reports & Statistics > Player > Logon Record	navigate	https://api.casino-manager.discreetgaming.com/api/reports/logonRecord/layout
+Reports & Statistics > Player > Player Game Info	navigate	https://api.casino-manager.discreetgaming.com/api/reports/playerGameInfo/layout
+Reports & Statistics > Player > Player by Game Performance Summary	navigate	https://api.casino-manager.discreetgaming.com/api/reports/playerByGamePerformance/layout
+Reports & Statistics > Player > Player Activity Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/playerActivityReport/layout
+Reports & Statistics > Player > First Bettors Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/firstBettors/layout
+Reports & Statistics > Player > Per Player Summary Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/perPlayerSummary/layout
+Reports & Statistics > Promotion > Promo Games Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/promoGamesReport/layout
+Reports & Statistics > Promotion > Take the Prize List	navigate	https://api.casino-manager.discreetgaming.com/api/reports/takeThePrizeList/layout
+Reports & Statistics > Promotion > Drive Tournament List	navigate	https://api.casino-manager.discreetgaming.com/api/reports/driveTournamentList/layout
+Reports & Statistics > Promotion > Promotion Monitoring Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/promotionMonitoring/layout
+Reports & Statistics > Promotion > Client Autopayouts	navigate	https://api.casino-manager.discreetgaming.com/api/reports/clientAutopayouts/layout
+Reports & Statistics > Summarized Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/summarized/layout
+Reports & Statistics > Casino Performance Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/casinoPerformanceReport/layout
+Reports & Statistics > Performance by Currency	navigate	https://api.casino-manager.discreetgaming.com/api/reports/performanceByCurrency/layout
+Reports & Statistics > Universal Jackpot > Universal Jackpot Summary Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/unjSummary/layout
+Reports & Statistics > SubCasino Statistics	navigate	https://api.casino-manager.discreetgaming.com/api/reports/subcasinoStatistics/layout
+Reports & Statistics > SubCasino Statistics Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/subcasinoStatisticsReport/layout
+Reports & Statistics > Combined Jackpot3 Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/combinedJackpot3/layout
+Reports & Statistics > Analytics > KPI Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/kpiReport/layout
+Reports & Statistics > Analytics > KPI Comparison Report	navigate	https://api.casino-manager.discreetgaming.com/api/reports/kpiComparisonReport/layout
+Reports & Statistics > Analytics > New Games Performance	navigate	https://api.casino-manager.discreetgaming.com/api/reports/newGamesPerformance/layout
+Reports & Statistics > Analytics > Game Client Metrics	navigate	https://api.casino-manager.discreetgaming.com/api/reports/gameClientMetrics/layout

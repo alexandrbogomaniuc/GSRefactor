@@ -1,0 +1,1 @@
+ALTER TABLE RCasinoKS.HttpCallInfoCF WITH default_time_to_live = 5184000;
