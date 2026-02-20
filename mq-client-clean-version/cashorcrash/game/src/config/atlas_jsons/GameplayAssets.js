@@ -1,0 +1,281 @@
+var GameplayAssets = {
+  "frames": {
+    "ejectable_unit.png": {
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "w": 49,
+        "h": 61
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 61
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 61
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ejectable_unit_shadow.png": {
+      "frame": {
+        "x": 5,
+        "y": 76,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 196,
+        "h": 248
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "flash.png": {
+      "frame": {
+        "x": 5,
+        "y": 87,
+        "w": 247,
+        "h": 254
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 0,
+        "w": 247,
+        "h": 254
+      },
+      "sourceSize": {
+        "w": 256,
+        "h": 256
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "gradient_shadow.png": {
+      "frame": {
+        "x": 16,
+        "y": 76,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 224,
+        "h": 21
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "greenactive.png": {
+      "frame": {
+        "x": 64,
+        "y": 5,
+        "w": 21,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 21,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 22,
+        "h": 21
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_body_0.png": {
+      "frame": {
+        "x": 5,
+        "y": 351,
+        "w": 416,
+        "h": 520
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 0,
+        "w": 416,
+        "h": 520
+      },
+      "sourceSize": {
+        "w": 420,
+        "h": 520
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_body_1.png": {
+      "frame": {
+        "x": 262,
+        "y": 5,
+        "w": 330,
+        "h": 685
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 4,
+        "w": 330,
+        "h": 685
+      },
+      "sourceSize": {
+        "w": 330,
+        "h": 689
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_body_2.png": {
+      "frame": {
+        "x": 431,
+        "y": 345,
+        "w": 425,
+        "h": 698
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 425,
+        "h": 698
+      },
+      "sourceSize": {
+        "w": 425,
+        "h": 698
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_heat_0.png": {
+      "frame": {
+        "x": 64,
+        "y": 36,
+        "w": 46,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 46,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 46,
+        "h": 24
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_heat_1.png": {
+      "frame": {
+        "x": 120,
+        "y": 5,
+        "w": 52,
+        "h": 28
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 52,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 52,
+        "h": 28
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_heat_2.png": {
+      "frame": {
+        "x": 158,
+        "y": 5,
+        "w": 56,
+        "h": 30
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 56,
+        "h": 30
+      },
+      "sourceSize": {
+        "w": 56,
+        "h": 30
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com/",
+    "version": "0.3.3",
+    "image": "gameplay_assets.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2048,
+      "h": 1024
+    },
+    "scale": 2
+  }
+}
+
+export default GameplayAssets;

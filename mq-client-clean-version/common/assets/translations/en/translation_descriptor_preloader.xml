@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<td>
+	<fonts>
+		<font name="fnt_nm_cmn_barlow" url="[cmn_root_resources_path]translations/en/fonts/barlow_medium_en.ttf"/>
+	</fonts>
+	
+	<tasds>
+		<tad id="TAPreloaderBrand" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BETSOFT GAMING</source_meaning>
+				<translated_meaning>BETSOFT GAMING</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="256" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="right" v="top"/>
+			</area>
+			<img url="[cmn_current_translations_images_path]preloader/brand.png"/>
+		</tad>
+		
+		<tad id="TADialogMessageNetworkError" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>A network error has occurred. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>A network error has occurred. Please try again and contact customer support if the error persists.</translated_meaning>
+			</meaning>
+			<!--<area x="-140" y="-75" w="280" h="118">-->
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_cmn_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>A network error has occurred.&#010;Please try again and contact&#010;customer support if the error&#010;persists.</content>
+			</txt>
+		</tad>
+	</tasds>
+</td>

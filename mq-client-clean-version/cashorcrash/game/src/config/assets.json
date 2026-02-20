@@ -1,0 +1,1484 @@
+{
+	"images": [
+		{
+			"name": "game/bg_assets",
+			"src": "game/bg_assets.png",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/coin_spin",
+			"src": "game/coin_spin.png",
+			"width": 128,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "game/gameplay_assets",
+			"src": "game/gameplay_assets.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroid",
+			"src": "game/asteroid.png",
+			"width": 143,
+			"height": 119.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroid_0",
+			"src": "game/asteroid_0.png",
+			"width": 143,
+			"height": 119.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroid_1",
+			"src": "game/asteroid_1.png",
+			"width": 143,
+			"height": 119.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroid_2",
+			"src": "game/asteroid_2.png",
+			"width": 143,
+			"height": 119.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroids/asteroid_0",
+			"src": "game/asteroids/asteroid_0.png",
+			"width": 143,
+			"height": 119.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroids/asteroid_1",
+			"src": "game/asteroids/asteroid_1.png",
+			"width": 143,
+			"height": 119.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroids/asteroid_2",
+			"src": "game/asteroids/asteroid_2.png",
+			"width": 143,
+			"height": 119.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroids/asteroid_3",
+			"src": "game/asteroids/asteroid_3.png",
+			"width": 143,
+			"height": 119.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroids/asteroid_4",
+			"src": "game/asteroids/asteroid_4.png",
+			"width": 143,
+			"height": 119.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroids/asteroid_5",
+			"src": "game/asteroids/asteroid_5.png",
+			"width": 143,
+			"height": 119.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroids/asteroid_6",
+			"src": "game/asteroids/asteroid_6.png",
+			"width": 143,
+			"height": 119.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/bg_objects/bg_object_0",
+			"src": "game/bg_objects/bg_object_0.png",
+			"width": 143,
+			"height": 119.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/bg_objects/bg_object_1",
+			"src": "game/bg_objects/bg_object_1.png",
+			"width": 143,
+			"height": 119.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/bg_objects/bg_object_2",
+			"src": "game/bg_objects/bg_object_2.png",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/ship_fire",
+			"src": "game/ship_fire.jpg",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/ship_explosion/flame_explosion",
+			"src": "game/battleground/ship_explosion/flame_explosion.jpg",
+			"width": 4096,
+			"height": 2048,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name":  "game/battleground/fire_explosion/fire_explosion_texture",
+			"src":   "game/battleground/fire_explosion/fire_explosion_texture.png",
+			"width":  1024,
+			"height":  1024,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name": "game/battleground/ship_explosion/ShipsBlur",
+			"src": "game/battleground/ship_explosion/ShipsBlur.png",
+			"width": 256,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/smoke_engine",
+			"src": "game/smoke_engine.png",
+			"width": 31,
+			"height": 36,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/trampoline",
+			"src": "game/battleground/trampoline.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/trampoline_flame",
+			"src": "game/battleground/trampoline_flame.jpg",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/trampoline_glow",
+			"src": "game/battleground/trampoline_glow.jpg",
+			"width": 51,
+			"height": 50,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/ship_explosion/light5_add",
+			"src": "game/battleground/ship_explosion/light5_add.jpg",
+			"width": 250,
+			"height": 250,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/ship_explosion/explosion_add",
+			"src": "game/battleground/ship_explosion/explosion_add.jpg",
+			"width": 325,
+			"height": 315.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/ship_explosion/smoke_explosion",
+			"src": "game/battleground/ship_explosion/smoke_explosion.png",
+			"width": 117.5,
+			"height": 130,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "game/battleground/redglow_add",
+			"src": "game/battleground/redglow_add.jpg",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/frame_fx_round_final",
+			"src": "game/frame_fx_round_final.png",
+			"width": 216,
+			"height": 135,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/orange_smoke",
+			"src": "game/battleground/orange_smoke.jpg",
+			"width": 128,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/text_highlight",
+			"src": "game/text_highlight.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/smoke_puff",
+			"src": "game/smoke_puff.jpg",
+			"width": 256,
+			"height": 209,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroid_and_parts/parts/layer_2",
+			"src": "game/asteroid_and_parts/parts/layer_2.png",
+			"width": 40,
+			"height": 46.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroid_and_parts/parts/layer_3",
+			"src": "game/asteroid_and_parts/parts/layer_3.png",
+			"width": 52,
+			"height": 42,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroid_and_parts/parts/layer_4",
+			"src": "game/asteroid_and_parts/parts/layer_4.png",
+			"width": 48.5,
+			"height": 46,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroid_and_parts/parts/layer_5",
+			"src": "game/asteroid_and_parts/parts/layer_5.png",
+			"width": 48.5,
+			"height": 45,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroid_and_parts/parts/lighted_layer_2",
+			"src": "game/asteroid_and_parts/parts/lighted_layer_2.png",
+			"width": 40,
+			"height": 46.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroid_and_parts/parts/lighted_layer_3",
+			"src": "game/asteroid_and_parts/parts/lighted_layer_3.png",
+			"width": 52,
+			"height": 42,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroid_and_parts/parts/lighted_layer_4",
+			"src": "game/asteroid_and_parts/parts/lighted_layer_4.png",
+			"width": 48.5,
+			"height": 46,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/asteroid_and_parts/parts/lighted_layer_5",
+			"src": "game/asteroid_and_parts/parts/lighted_layer_5.png",
+			"width": 48.5,
+			"height": 45,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/bg_smoke_purple",
+			"src": "game/bg_smoke_purple.png",
+			"width": 248.5,
+			"height": 227,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "settings/back",
+			"src": "settings/back.png",
+			"width": 512,
+			"height": 389,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "settings/icon",
+			"src": "settings/icon.png",
+			"width": 21,
+			"height": 22.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "settings/toggle_button/on_btn",
+			"src": "settings/toggle_button/on_btn.png",
+			"width": 93.5,
+			"height": 21,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1188
+		},
+		{
+			"name": "settings/toggle_button/off_btn",
+			"src": "settings/toggle_button/off_btn.png",
+			"width": 94,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "settings/bar",
+			"src": "settings/bar.png",
+			"width": 220,
+			"height": 15.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "settings/slider_back",
+			"src": "settings/slider_back.png",
+			"width": 220,
+			"height": 15.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/active_btn",
+			"src": "dialogs/active_btn.png",
+			"width": 100,
+			"height": 30,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/deactive_btn",
+			"src": "dialogs/deactive_btn.png",
+			"width": 100,
+			"height": 30,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/exit_btn",
+			"src": "dialogs/exit_btn.png",
+			"width": 16,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "common_btn_home",
+			"src": "common_panel/btn_home.png",
+			"width": 15,
+			"height": 12,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_btn_history",
+			"src": "common_panel/btn_history.png",
+			"width": 12,
+			"height": 12,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_btn_info",
+			"src": "common_panel/btn_info.png",
+			"width": 9,
+			"height": 12,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_balance_icon",
+			"src": "common_panel/balance_icon.png",
+			"width": 19,
+			"height": 15,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "common_win_icon",
+			"src": "common_panel/win_icon.png",
+			"width": 26,
+			"height": 26,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_arrow_icon",
+			"src": "common_panel/arrow_icon.png",
+			"width": 9,
+			"height": 9,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_time_icon",
+			"src": "common_panel/time_icon.png",
+			"width": 12,
+			"height": 12,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_btn_settings",
+			"src": "common_panel/btn_settings.png",
+			"width": 11,
+			"height": 12,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_btn_back",
+			"src": "common_panel/btn_back.png",
+			"width": 13,
+			"height": 12,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "game/total_pot_bg",
+			"src": "game/total_pot_bg.png",
+			"width": 214.5,
+			"height": 220.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/total_pot_frame",
+			"src": "game/total_pot_frame.png",
+			"width": 178,
+			"height": 95,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/crown",
+			"src": "game/crown.png",
+			"width": 19.5,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/round_result_crown",
+			"src": "game/battleground/round_result_crown.png",
+			"width": 31.5,
+			"height": 30,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/round_result_crown_tie",
+			"src": "game/battleground/round_result_crown_tie.png",
+			"width": 11.5,
+			"height": 12,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/light_particle",
+			"src": "game/battleground/light_particle.png",
+			"width": 51,
+			"height": 50,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+        {
+			"name": "game/battleground/streak_flare",
+			"src": "game/battleground/streak_flare.jpg",
+			"width": 233.5,
+			"height": 67.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/dust",
+			"src": "game/battleground/dust.png",
+			"width": 150,
+			"height": 150,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/smoke_purple",
+			"src": "game/battleground/smoke_purple.png",
+			"width": 150,
+			"height": 150,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/star_glow",
+			"src": "game/battleground/star_glow.png",
+			"width": 160,
+			"height": 168,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/optical_flare_blue",
+			"src": "game/battleground/optical_flare_blue.jpg",
+			"width": 460,
+			"height": 259,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/yellow_bg",
+			"src": "game/battleground/yellow_bg.jpg",
+			"width": 460,
+			"height": 259,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/final_count/1",
+			"src": "game/battleground/final_count/1.png",
+			"width": 128,
+			"height": 238.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/final_count/2",
+			"src": "game/battleground/final_count/2.png",
+			"width": 202,
+			"height": 240.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/final_count/3",
+			"src": "game/battleground/final_count/3.png",
+			"width": 204.5,
+			"height": 240.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/final_count/1_glow",
+			"src": "game/battleground/final_count/1_glow.png",
+			"width": 135.5,
+			"height": 238.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/final_count/2_glow",
+			"src": "game/battleground/final_count/2_glow.png",
+			"width": 202,
+			"height": 240.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/final_count/3_glow",
+			"src": "game/battleground/final_count/3_glow.png",
+			"width": 204.5,
+			"height": 240.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/battleground/confetti",
+			"src": "game/battleground/confetti.png",
+			"width": 64,
+			"height": 32,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/load_spinner_small",
+			"src": "game/load_spinner_small.png",
+			"width": 32,
+			"height": 32,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "game/load_spinner_big",
+			"src": "game/load_spinner_big.png",
+			"width": 32,
+			"height": 32,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name":  "dialogs/battleground/frame",
+			"src":  "dialogs/battleground/frame.png",
+			"width":  422,
+			"height":  299.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "dialogs/battleground/separate_line",
+			"src":  "dialogs/battleground/separate_line.png",
+			"width":  106,
+			"height":  1,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "dialogs/battleground/caf_room_manager/crown",
+			"src":  "dialogs/battleground/caf_room_manager/crown.png",
+			"width":  22,
+			"height":  16,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "dialogs/battleground/caf_room_manager/toggle_up",
+			"src":  "dialogs/battleground/caf_room_manager/toggle_up.png",
+			"width":  22,
+			"height":  16,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "dialogs/battleground/caf_room_manager/toggle_down",
+			"src":  "dialogs/battleground/caf_room_manager/toggle_down.png",
+			"width":  22,
+			"height":  16,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "dialogs/battleground/caf_room_manager/green_marker",
+			"src":  "dialogs/battleground/caf_room_manager/green_marker.png",
+			"width":  22,
+			"height":  16,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "dialogs/battleground/caf_room_manager/red_marker",
+			"src":  "dialogs/battleground/caf_room_manager/red_marker.png",
+			"width":  22,
+			"height":  16,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/line_hr_white",
+			 "src":  "dialogs/battleground/caf_room_manager/line_hr_white.png",
+			 "width":  1,
+			 "height":  21,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/player_ready",
+			 "src":  "dialogs/battleground/caf_room_manager/player_ready.png",
+			 "width":  12,
+			 "height":  12,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/player_not_ready",
+			 "src":  "dialogs/battleground/caf_room_manager/player_not_ready.png",
+			 "width":  12,
+			 "height":  12,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/player_red_x",
+			 "src":  "dialogs/battleground/caf_room_manager/player_red_x.png",
+			 "width":  12,
+			 "height":  12,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/player_zzz",
+			 "src":  "dialogs/battleground/caf_room_manager/player_zzz.png",
+			 "width":  12,
+			 "height":  12,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/player_clock",
+			 "src":  "dialogs/battleground/caf_room_manager/player_clock.png",
+			 "width":  8,
+			 "height":  12,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/kick_button",
+			 "src":  "dialogs/battleground/caf_room_manager/kick_button.png",
+			 "width":  42,
+			 "height":  23,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/invite_button",
+			 "src":  "dialogs/battleground/caf_room_manager/invite_button.png",
+			 "width":  50,
+			 "height":  23,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/row_manager",
+			 "src":  "dialogs/battleground/caf_room_manager/row_manager.png",
+			 "width":  224,
+			 "height":  26.5,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/row_manager_friends",
+			 "src":  "dialogs/battleground/caf_room_manager/row_manager_friends.png",
+			 "width":  224,
+			 "height":  26.5,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/friends_frame_colapsed",
+			 "src":  "dialogs/battleground/caf_room_manager/friends_frame_colapsed.png",
+			 "width":  224,
+			 "height":  224,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/friends_frame_search",
+			 "src":  "dialogs/battleground/caf_room_manager/friends_frame_search.png",
+			 "width":  224,
+			 "height":  224,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/friends_frame_expanded",
+			 "src":  "dialogs/battleground/caf_room_manager/friends_frame_expanded.png",
+			 "width":  224,
+			 "height":  224,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/row_not_manager",
+			 "src":  "dialogs/battleground/caf_room_manager/row_not_manager.png",
+			 "width":  224,
+			 "height":  26.5,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			 "name":  "dialogs/battleground/caf_room_manager/man_icon",
+			 "src":  "dialogs/battleground/caf_room_manager/man_icon.png",
+			 "width":  22,
+			 "height":  16,
+			 "frames":  1,
+			 "layers":  1,
+			 "totalFrames":  1
+		 },
+		 {
+			"name":  "lobby/battleground/back_to_lobby_button_base",
+			"src":  "lobby/battleground/back_to_lobby_button_base.png",
+			"width":  115,
+			"height":  25,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "lobby/battleground/back_to_lobby_button_base_gray",
+			"src":  "lobby/battleground/back_to_lobby_button_base_gray.png",
+			"width":  115,
+			"height":  25,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "lobby/battleground/active_btn",
+			"src":  "lobby/battleground/active_btn.png",
+			"width":  182,
+			"height":  54,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "lobby/battleground/start_round_btn",
+			"src":  "lobby/battleground/start_round_btn.png",
+			"width":  182,
+			"height":  54,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "lobby/battleground/close_button",
+			"src":  "lobby/battleground/close_button.png",
+			"width":  13,
+			"height":  13,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "dialogs/battleground/confirm_buy_in/return_to_lobby_button",
+			"src":  "dialogs/battleground/confirm_buy_in/return_to_lobby_button.png",
+			"width":  147,
+			"height":  40,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name": "labels/its_a_tie",
+			"src": "labels/its_a_tie.png",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "labels/time",
+			"src": "labels/time.png",
+			"width": 128,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "labels/distance",
+			"src": "labels/distance.png",
+			"width": 128,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "labels/remaining",
+			"src": "labels/remaining.png",
+			"width": 128,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "labels/scorecard",
+			"src": "labels/scorecard.png",
+			"width": 128,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "labels/total_astronauts",
+			"src": "labels/total_astronauts.png",
+			"width": 128,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "labels/total_astronauts_portrait",
+			"src": "labels/total_astronauts_portrait.png",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "labels/balance",
+			"src": "labels/balance.png",
+			"width": 128,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "messages/no_one_ejected",
+			"src": "messages/no_one_ejected.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "roboto/bmp_roboto_bold",
+			"src": "roboto/bmp_roboto_bold.png",
+			"width": 404,
+			"height": 188.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "roboto/bmp_roboto_medium",
+			"src": "roboto/bmp_roboto_medium.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "scorescoreboard_font/scoreboard_font",
+			"src": "scoreboard_font/scoreboard_font.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		}
+	],
+	"sounds": [
+		{
+			"name": "gui_button_generic",
+			"src": [
+				"gui/gui_button_generic_high.mp3",
+				"gui/gui_button_generic_high.mp4",
+				"gui/gui_button_generic_high.ogg",
+				"gui/gui_button_generic_low.mp3",
+				"gui/gui_button_generic_low.mp4",
+				"gui/gui_button_generic_low.ogg"
+			],
+			"descr": {
+				"length": 200,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "gui_button_cancel",
+			"src": [
+				"gui/gui_button_cancel_high.mp3",
+				"gui/gui_button_cancel_high.mp4",
+				"gui/gui_button_cancel_high.ogg",
+				"gui/gui_button_cancel_low.mp3",
+				"gui/gui_button_cancel_low.mp4",
+				"gui/gui_button_cancel_low.ogg"
+			],
+			"descr": {
+				"length": 209,
+				"type": "fx",
+				"volume": 1,
+				"offset": 50
+			}
+		},
+		{
+			"name": "cg_gui_slider",
+			"src": [
+				"gui/cg_gui_slider_high.mp3",
+				"gui/cg_gui_slider_high.mp4",
+				"gui/cg_gui_slider_high.ogg",
+				"gui/cg_gui_slider_low.mp3",
+				"gui/cg_gui_slider_low.mp4",
+				"gui/cg_gui_slider_low.ogg"
+			],
+			"descr": {
+				"length": 276,
+				"type": "fx",
+				"volume": 1,
+				"offset": 39
+			}
+		},
+		{
+			"name": "rocket_fly",
+			"src": [
+				"gameplay/rocket_fly_high.mp3",
+				"gameplay/rocket_fly_high.mp4",
+				"gameplay/rocket_fly_high.ogg",
+				"gameplay/rocket_fly_low.mp3",
+				"gameplay/rocket_fly_low.mp4",
+				"gameplay/rocket_fly_low.ogg"
+			],
+			"descr": {
+				"length": 3720,
+				"type": "fx",
+				"volume": 0.8,
+				"offset": 0
+			}
+		},
+		{
+			"name": "rocket_launch",
+			"src": [
+				"gameplay/rocket_launch_high.mp3",
+				"gameplay/rocket_launch_high.mp4",
+				"gameplay/rocket_launch_high.ogg",
+				"gameplay/rocket_launch_low.mp3",
+				"gameplay/rocket_launch_low.mp4",
+				"gameplay/rocket_launch_low.ogg"
+			],
+			"descr": {
+				"length": 1442,
+				"type": "fx",
+				"volume": 0.7,
+				"offset": 88
+			}
+		},
+		{
+			"name": "rocket_explosion",
+			"src": [
+				"gameplay/rocket_explosion_high.mp3",
+				"gameplay/rocket_explosion_high.mp4",
+				"gameplay/rocket_explosion_high.ogg",
+				"gameplay/rocket_explosion_low.mp3",
+				"gameplay/rocket_explosion_low.mp4",
+				"gameplay/rocket_explosion_low.ogg"
+			],
+			"descr": {
+				"length": 1568,
+				"type": "fx",
+				"volume": 0.7,
+				"offset": 60
+			}
+		},
+		{
+			"name": "trampoline",
+			"src": [
+				"gameplay/trampoline_high.mp3",
+				"gameplay/trampoline_high.mp4",
+				"gameplay/trampoline_high.ogg",
+				"gameplay/trampoline_low.mp3",
+				"gameplay/trampoline_low.mp4",
+				"gameplay/trampoline_low.ogg"
+			],
+			"descr": {
+				"length": 409,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "trampoline_master",
+			"src": [
+				"gameplay/tada_multiplier_high.mp3",
+				"gameplay/tada_multiplier_high.ogg",
+				"gameplay/tada_multiplier_low.mp3",
+				"gameplay/tada_multiplier_low.ogg"
+			],
+			"descr": {
+				"length": 2000,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "exit_rocket",
+			"src": [
+				"gameplay/exit_rocket_high.mp3",
+				"gameplay/exit_rocket_high.mp4",
+				"gameplay/exit_rocket_high.ogg",
+				"gameplay/exit_rocket_low.mp3",
+				"gameplay/exit_rocket_low.mp4",
+				"gameplay/exit_rocket_low.ogg"
+			],
+			"descr": {
+				"length": 557,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "enter_rocket",
+			"src": [
+				"gameplay/enter_rocket_high.mp3",
+				"gameplay/enter_rocket_high.mp4",
+				"gameplay/enter_rocket_high.ogg",
+				"gameplay/enter_rocket_low.mp3",
+				"gameplay/enter_rocket_low.mp4",
+				"gameplay/enter_rocket_low.ogg"
+			],
+			"descr": {
+				"length": 250,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "astronaut_jump",
+			"src": [
+				"gameplay/astronaut_jump_high.mp3",
+				"gameplay/astronaut_jump_high.mp4",
+				"gameplay/astronaut_jump_high.ogg",
+				"gameplay/astronaut_jump_low.mp3",
+				"gameplay/astronaut_jump_low.mp4",
+				"gameplay/astronaut_jump_low.ogg"
+			],
+			"descr": {
+				"length": 244,
+				"type": "fx",
+				"volume": 1,
+				"offset": 76
+			}
+		},
+		{
+			"name": "astronaut_land",
+			"src": [
+				"gameplay/astronaut_land_high.mp3",
+				"gameplay/astronaut_land_high.mp4",
+				"gameplay/astronaut_land_high.ogg",
+				"gameplay/astronaut_land_low.mp3",
+				"gameplay/astronaut_land_low.mp4",
+				"gameplay/astronaut_land_low.ogg"
+			],
+			"descr": {
+				"length": 168,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "player_win",
+			"src": [
+				"gameplay/player_win_high.mp3",
+				"gameplay/player_win_high.mp4",
+				"gameplay/player_win_high.ogg",
+				"gameplay/player_win_low.mp3",
+				"gameplay/player_win_low.mp4",
+				"gameplay/player_win_low.ogg"
+			],
+			"descr": {
+				"length": 799,
+				"type": "fx",
+				"volume": 0.9,
+				"offset": 73
+			}
+		},
+		{
+			"name": "win_crown",
+			"src": [
+				"gameplay/battleground_win/win_crown_high.mp3",
+				"gameplay/battleground_win/win_crown_high.mp4",
+				"gameplay/battleground_win/win_crown_high.ogg",
+				"gameplay/battleground_win/win_crown_low.mp3",
+				"gameplay/battleground_win/win_crown_low.mp4",
+				"gameplay/battleground_win/win_crown_low.ogg"
+			],
+			"descr": {
+				"length": 1605,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "win_screen",
+			"src": [
+				"gameplay/battleground_win/win_screen_high.mp3",
+				"gameplay/battleground_win/win_screen_high.mp4",
+				"gameplay/battleground_win/win_screen_high.ogg",
+				"gameplay/battleground_win/win_screen_low.mp3",
+				"gameplay/battleground_win/win_screen_low.mp4",
+				"gameplay/battleground_win/win_screen_low.ogg"
+			],
+			"descr": {
+				"length": 3824,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "timer_countdown",
+			"src": [
+				"gameplay/timer_countdown_high.mp3",
+				"gameplay/timer_countdown_high.mp4",
+				"gameplay/timer_countdown_high.ogg",
+				"gameplay/timer_countdown_low.mp3",
+				"gameplay/timer_countdown_low.mp4",
+				"gameplay/timer_countdown_low.ogg"
+			],
+			"descr": {
+				"length": 553,
+				"type": "fx",
+				"volume": 0.9,
+				"offset": 46
+			}
+		},
+		{
+			"name": "timer_countend",
+			"src": [
+				"gameplay/timer_countend_high.mp3",
+				"gameplay/timer_countend_high.mp4",
+				"gameplay/timer_countend_high.ogg",
+				"gameplay/timer_countend_low.mp3",
+				"gameplay/timer_countend_low.mp4",
+				"gameplay/timer_countend_low.ogg"
+			],
+			"descr": {
+				"length": 612,
+				"type": "fx",
+				"volume": 0.9,
+				"offset": 46
+			}
+		},
+		{
+			"name": "bg_main_2",
+			"src": [
+				"bg_music/bg_main_2_high.mp3",
+				"bg_music/bg_main_2_high.mp4",
+				"bg_music/bg_main_2_high.ogg",
+				"bg_music/bg_main_2_low.mp3",
+				"bg_music/bg_main_2_low.mp4",
+				"bg_music/bg_main_2_low.ogg"
+			],
+			"descr": {
+				"length": 17454,
+				"type": "bg",
+				"volume": 0.7,
+				"offset": 0
+			}
+		},
+		{
+			"name": "bg_main_3",
+			"src": [
+				"bg_music/bg_main_3_high.mp3",
+				"bg_music/bg_main_3_high.mp4",
+				"bg_music/bg_main_3_high.ogg",
+				"bg_music/bg_main_3_low.mp3",
+				"bg_music/bg_main_3_low.mp4",
+				"bg_music/bg_main_3_low.ogg"
+			],
+			"descr": {
+				"length": 17454,
+				"type": "bg",
+				"volume": 0.7,
+				"offset": 0
+			}
+		},
+		{
+			"name": "meteor_pass_by1",
+			"src": [
+				"gameplay/meteor_pass_by1.mp3"
+			],
+			"descr": {
+				"length": 2508,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "meteor_pass_by2",
+			"src": [
+				"gameplay/meteor_pass_by2.mp3"
+			],
+			"descr": {
+				"length": 2403,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "meteor_pass_by3",
+			"src": [
+				"gameplay/meteor_pass_by3.mp3"
+			],
+			"descr": {
+				"length": 2978,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		}
+	],
+	"fonts": [
+		{
+			"name": "fnt_nm_arial_currency",
+			"src": "currency.ttf"
+		},
+		{
+			"name": "fnt_nm_calibri",
+			"src": "calibri_en.ttf"
+		},
+		{
+			"name": "fnt_nm_myriad_pro_bold",
+			"src": "myriad_pro_bold_en.ttf"
+		},
+		{
+			"name": "fnt_nm_roboto_m",
+			"src": "roboto_medium_en.ttf"
+		},
+		{
+			"name": "fnt_nm_roboto_b",
+			"src": "roboto_bold_en.ttf"
+		}
+	]
+}

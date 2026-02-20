@@ -1,0 +1,306 @@
+var FlameExplosion = 
+{
+  "frames": {
+    "frame_0.png": {
+      "frame": {
+        "x": 1,
+        "y": 1,
+        "w": 188,
+        "h": 149
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 8,
+        "w": 188,
+        "h": 149
+      },
+      "sourceSize": {
+        "w": 200,
+        "h": 169
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "frame_1.png": {
+      "frame": {
+        "x": 1,
+        "y": 152,
+        "w": 348,
+        "h": 232
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 8,
+        "w": 348,
+        "h": 232
+      },
+      "sourceSize": {
+        "w": 350,
+        "h": 245
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "frame_10.png": {
+      "frame": {
+        "x": 1,
+        "y": 386,
+        "w": 350,
+        "h": 243
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 9,
+        "w": 350,
+        "h": 243
+      },
+      "sourceSize": {
+        "w": 350,
+        "h": 254
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "frame_11.png": {
+      "frame": {
+        "x": 351,
+        "y": 1,
+        "w": 350,
+        "h": 240
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 10,
+        "w": 350,
+        "h": 240
+      },
+      "sourceSize": {
+        "w": 350,
+        "h": 254
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "frame_2.png": {
+      "frame": {
+        "x": 1,
+        "y": 631,
+        "w": 350,
+        "h": 226
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 10,
+        "w": 350,
+        "h": 226
+      },
+      "sourceSize": {
+        "w": 350,
+        "h": 245
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "frame_3.png": {
+      "frame": {
+        "x": 353,
+        "y": 243,
+        "w": 350,
+        "h": 225
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 350,
+        "h": 225
+      },
+      "sourceSize": {
+        "w": 350,
+        "h": 226
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "frame_4.png": {
+      "frame": {
+        "x": 703,
+        "y": 1,
+        "w": 350,
+        "h": 225
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 10,
+        "w": 350,
+        "h": 225
+      },
+      "sourceSize": {
+        "w": 350,
+        "h": 244
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "frame_5.png": {
+      "frame": {
+        "x": 353,
+        "y": 470,
+        "w": 350,
+        "h": 226
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 9,
+        "w": 350,
+        "h": 226
+      },
+      "sourceSize": {
+        "w": 350,
+        "h": 242
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "frame_6.png": {
+      "frame": {
+        "x": 353,
+        "y": 698,
+        "w": 350,
+        "h": 223
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 5,
+        "w": 350,
+        "h": 223
+      },
+      "sourceSize": {
+        "w": 350,
+        "h": 237
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "frame_7.png": {
+      "frame": {
+        "x": 705,
+        "y": 228,
+        "w": 350,
+        "h": 217
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 5,
+        "w": 350,
+        "h": 217
+      },
+      "sourceSize": {
+        "w": 350,
+        "h": 228
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "frame_8.png": {
+      "frame": {
+        "x": 1055,
+        "y": 1,
+        "w": 345,
+        "h": 210
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 7,
+        "w": 345,
+        "h": 210
+      },
+      "sourceSize": {
+        "w": 350,
+        "h": 225
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "frame_9.png": {
+      "frame": {
+        "x": 1402,
+        "y": 1,
+        "w": 336,
+        "h": 197
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 6,
+        "w": 336,
+        "h": 197
+      },
+      "sourceSize": {
+        "w": 348,
+        "h": 208
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com/",
+    "version": "0.3.3",
+    "image": "flame_explosion.jpg",
+    "format": "RGB888",
+    "size": {
+      "w": 2048,
+      "h": 1024
+    },
+    "scale": 2
+  }
+}
+
+export default FlameExplosion;

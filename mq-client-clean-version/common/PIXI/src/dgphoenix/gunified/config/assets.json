@@ -1,0 +1,194 @@
+{
+	"images": [
+		{
+			"name": "dialogs/compensation_dialog_gackground",
+			"src": "dialogs/compensation_dialog_gackground.png",
+			"width": 322,
+			"height": 168,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/battleground/count_down/count_down_frame",
+			"src": "dialogs/battleground/count_down/count_down_frame.png",
+			"width": 491,
+			"height": 212,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name":  "dialogs/battleground/confirm_buy_in/return_to_lobby_button",
+			"src":  "dialogs/battleground/confirm_buy_in/return_to_lobby_button.png",
+			"width":  147,
+			"height":  40,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name": "dialogs/battleground/confirm_buy_in/confirm_buyin_frame",
+			"src": "dialogs/battleground/confirm_buy_in/confirm_buyin_frame.png",
+			"width": 491,
+			"height": 348.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name":  "dialogs/battleground/separate_line",
+			"src":  "dialogs/battleground/separate_line.png",
+			"width":  106,
+			"height":  1,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name": "dialogs/battleground/no_weapons_fired/frame",
+			"src": "dialogs/battleground/no_weapons_fired/frame.png",
+			"width": 491,
+			"height": 348.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/battleground/no_weapons_fired/active_button",
+			"src": "dialogs/battleground/no_weapons_fired/active_button.png",
+			"width": 174.5,
+			"height": 47.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/battleground/no_weapons_fired/no_active_button",
+			"src": "dialogs/battleground/no_weapons_fired/no_active_button.png",
+			"width": 189,
+			"height": 41,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+
+		{
+			"name": "dialogs/battleground/not_enough_players/frame",
+			"src": "dialogs/battleground/not_enough_players/frame.png",
+			"width": 422,
+			"height": 299.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/battleground/not_enough_players/active_button",
+			"src": "dialogs/battleground/not_enough_players/active_button.png",
+			"width": 164,
+			"height": 48.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/battleground/not_enough_players/no_active_button",
+			"src": "dialogs/battleground/not_enough_players/no_active_button.png",
+			"width": 164,
+			"height": 48.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/battleground/back_to_lobby_button_base",
+			"src": "dialogs/battleground/back_to_lobby_button_base.png",
+			"width": 115,
+			"height": 25,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/battleground/back_to_lobby_button_base_gray",
+			"src": "dialogs/battleground/back_to_lobby_button_base_gray.png",
+			"width": 115,
+			"height": 25,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/battleground/active_btn",
+			"src": "dialogs/battleground/active_btn.png",
+			"width": 182,
+			"height": 54,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/battleground/close_button",
+			"src": "dialogs/battleground/close_button.png",
+			"width": 13,
+			"height": 13,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/force_sit_out/icon",
+			"src": "dialogs/force_sit_out/icon.png",
+			"width": 26,
+			"height": 23,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/mid_round_exit_icon",
+			"src": "dialogs/mid_round_exit_icon.png",
+			"width": 24,
+			"height": 21.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/active_btn",
+			"src": "dialogs/active_btn.png",
+			"width": 100,
+			"height": 30,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/deactive_btn",
+			"src": "dialogs/deactive_btn.png",
+			"width": 100,
+			"height": 30,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/line",
+			"src": "dialogs/line.png",
+			"width": 592,
+			"height": 1.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/exit_btn",
+			"src": "dialogs/exit_btn.png",
+			"width": 16,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		}
+	]
+}

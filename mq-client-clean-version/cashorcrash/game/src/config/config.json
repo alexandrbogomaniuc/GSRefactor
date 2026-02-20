@@ -1,0 +1,23 @@
+{
+	"size": {
+		"width": 960,
+		"height": 540
+	},
+	"margin": {
+		"bottom": 0
+	},
+	"audio": {
+		"channels": {
+			"music": 1,
+			"fx": 15
+		},
+		"stereo": true
+	},
+	"scales": [2],
+	"transparentStage": true,
+	"noCheckOrientation": true,
+	"brand": {
+		"enable": true,
+		"priority": 2
+	}
+}

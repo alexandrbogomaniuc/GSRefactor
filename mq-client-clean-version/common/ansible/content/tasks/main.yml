@@ -1,0 +1,32 @@
+---
+  - name: Uploading assets
+    copy:
+      src: "{{ build_root }}/common-assets.tar.gz"
+      dest: "/home/users/{{ user }}/deploy/common-assets.tar.gz"
+
+  - name: Removing old backup
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/common/_backup"
+      state: absent
+
+  - name: Creating dir for backup
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/common/_backup"
+      state: directory
+
+  - name: Check assets dir exists before backup
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/common/assets/"
+      state: directory
+
+  - name: Creating assets backup
+    shell: "mv /www/html/{{ lobby_name }}/html5pc/actiongames/common/assets/ /www/html/{{ lobby_name }}/html5pc/actiongames/common/_backup/assets/"
+
+  - name: Creating dir for assets
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/common/assets/"
+      state: directory
+
+  - name: Extracting assets
+    shell: "tar -xzf /home/users/{{ user }}/deploy/common-assets.tar.gz -C /www/html/{{ lobby_name }}/html5pc/actiongames/common/assets/"
+

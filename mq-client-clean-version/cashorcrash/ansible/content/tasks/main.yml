@@ -1,0 +1,32 @@
+---
+  - name: Uploading game
+    copy:
+      src: "{{ build_root }}/cash-or-crash.tar.gz"
+      dest: "/home/users/{{ user }}/deploy/cash-or-crash.tar.gz"
+
+  - name: Removing old backup
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/cashorcrash/_backup"
+      state: absent
+
+  - name: Creating dir for backup
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/cashorcrash/_backup"
+      state: directory
+
+  - name: Check game dir exists before backup
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/cashorcrash/game/"
+      state: directory
+
+  - name: Creating game backup
+    shell: "mv /www/html/{{ lobby_name }}/html5pc/actiongames/cashorcrash/game/ /www/html/{{ lobby_name }}/html5pc/actiongames/cashorcrash/_backup/game/"
+
+  - name: Creating dir for game
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/cashorcrash/game/"
+      state: directory
+
+  - name: Extracting game
+    shell: "tar -xzf /home/users/{{ user }}/deploy/cash-or-crash.tar.gz -C /www/html/{{ lobby_name }}/html5pc/actiongames/cashorcrash/game/"
+

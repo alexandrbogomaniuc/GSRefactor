@@ -1,0 +1,207 @@
+{
+	"images": [
+		{
+			"name": "preloader/cross",
+			"src": "preloader/cross.png",
+			"width": 57,
+			"height": 57,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "game/back_sunset",
+			"src": "game/back_sunset.png",
+			"width": 510,
+			"height": 506,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "preloader/finger",
+			"src": "preloader/finger.png",
+			"width": 135,
+			"height": 147,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "preloader/preloader_assets",
+			"src": "preloader/preloader_assets.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/space_assets",
+			"src": "preloader/space_assets.png",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/dialogs/base",
+			"src": "preloader/dialogs/base.png",
+			"width": 285,
+			"height": 184,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "preloader/dialogs/btn_base",
+			"src": "preloader/dialogs/btn_base.png",
+			"width": 91,
+			"height": 31,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "preloader/dialogs/btn_base_long",
+			"src": "preloader/dialogs/btn_base_long.png",
+			"width": 238.5,
+			"height": 31,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "preloader/dialogs/btn_down_base",
+			"src": "preloader/dialogs/btn_down_base.png",
+			"width": 91,
+			"height": 31,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "preloader/tips/tips_1",
+			"src": "preloader/tips/tips_1.png",
+			"width": 246.5,
+			"height": 200,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "preloader/tips/tips_2",
+			"src": "preloader/tips/tips_2.png",
+			"width": 242.5,
+			"height": 180,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "preloader/tips/tips_3",
+			"src": "preloader/tips/tips_3.png",
+			"width": 259.5,
+			"height": 175.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "preloader/click_continue",
+			"src": "preloader/click_continue.png",
+			"width": 148,
+			"height": 31,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "preloader/click_continue_portrait",
+			"src": "preloader/click_continue_portrait.png",
+			"width": 246,
+			"height": 40.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "common_btn_sound_off",
+			"src": "common_panel/btn_sound_off.png",
+			"width": 13,
+			"height": 11,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_btn_sound_on",
+			"src": "common_panel/btn_sound_on.png",
+			"width": 13,
+			"height": 11,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		}, 
+		{
+			"name": "preloader_p_bg",
+			"src": "preloader/background_p.png",
+			"width": 540,
+			"height": 960,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		}, 
+		{
+			"name": "preloader_l_bg",
+			"src": "preloader/background_l.png",
+			"width": 960,
+			"height": 540,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		}
+	],
+	"sounds": [
+		{
+			"name": "bg_main_1",
+			"src": [
+				"bg_music/bg_main_1_high.mp3",
+				"bg_music/bg_main_1_high.mp4",
+				"bg_music/bg_main_1_high.ogg",
+				"bg_music/bg_main_1_low.mp3",
+				"bg_music/bg_main_1_low.mp4",
+				"bg_music/bg_main_1_low.ogg"
+			],
+			"descr": {
+				"length": 17454,
+				"type": "bg",
+				"volume": 0.7,
+				"offset": 0
+			}
+		}
+	],
+	"fonts": [
+		{
+			"name": "fnt_nm_thicker_black_trial",
+			"src": "thicker_black_trial.ttf"
+		}
+	]
+}

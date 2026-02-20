@@ -1,0 +1,192 @@
+{
+	"images": [
+		{
+			"name": "paytable/active_btn",
+			"src": "paytable/active_btn.png",
+			"width": 130,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/deactive_btn",
+			"src": "paytable/deactive_btn.png",
+			"width": 130,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/slider_pre_btn",
+			"src": "paytable/slider_pre_btn.png",
+			"width": 76,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/slider_next_btn",
+			"src": "paytable/slider_next_btn.png",
+			"width": 76,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/exit_btn",
+			"src": "paytable/exit_btn.png",
+			"width": 37,
+			"height": 37,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/header_gradient",
+			"src": "paytable/header_gradient.png",
+			"width": 128,
+			"height": 8,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/arrow_left",
+			"src": "paytable/arrow_left.png",
+			"width": 26.5,
+			"height": 25,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/arrow_right",
+			"src": "paytable/arrow_right.png",
+			"width": 26.5,
+			"height": 25,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/astronauts/astronaut",
+			"src": "paytable/pages/astronauts/astronaut.png",
+			"width": 687.5,
+			"height": 424.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/astronauts/history",
+			"src": "paytable/pages/astronauts/history.png",
+			"width": 29.5,
+			"height": 30,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/astronauts/elapsed_time",
+			"src": "paytable/pages/astronauts/elapsed_time.png",
+			"width": 89,
+			"height": 36,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/astronauts/mult_meter",
+			"src": "paytable/pages/astronauts/mult_meter.png",
+			"width": 66,
+			"height": 53.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/astronauts/altitude_meter",
+			"src": "paytable/pages/astronauts/altitude_meter.png",
+			"width": 66,
+			"height": 54,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/astronauts/bet_amount_change",
+			"src": "paytable/pages/astronauts/bet_amount_change.png",
+			"width": 94.5,
+			"height": 50,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/astronauts/autocashout_disable",
+			"src": "paytable/pages/astronauts/autocashout_disable.png",
+			"width": 38.5,
+			"height": 37,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/astronauts/home",
+			"src": "paytable/pages/astronauts/home.png",
+			"width": 35,
+			"height": 27,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/astronauts/record",
+			"src": "paytable/pages/astronauts/record.png",
+			"width": 28.5,
+			"height": 28.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/astronauts/help",
+			"src": "paytable/pages/astronauts/help.png",
+			"width": 19,
+			"height": 28.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/astronauts/volume",
+			"src": "paytable/pages/astronauts/volume.png",
+			"width": 30,
+			"height": 26,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/astronauts/settings",
+			"src": "paytable/pages/astronauts/settings.png",
+			"width": 26,
+			"height": 27,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/astronauts/total_pot_notext",
+			"src": "paytable/pages/astronauts/total_pot_notext.png",
+			"width": 97,
+			"height": 58,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1		}
+	]
+}

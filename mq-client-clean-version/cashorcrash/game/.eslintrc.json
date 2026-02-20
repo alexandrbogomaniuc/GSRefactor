@@ -1,0 +1,32 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": "eslint:recommended",
+	"parserOptions": {
+		"ecmaVersion": 12,
+		"sourceType": "module"
+	},
+	"rules": {
+		"max-len": 0,
+		"no-mixed-spaces-and-tabs": "error",
+		"indent": [
+			1,
+			"tab",
+			{
+				"SwitchCase": 1
+			}
+		],
+		"no-tabs": "off",
+		"require-jsdoc": "off",
+		"brace-style": "off",
+		"key-spacing": "off",
+		"camelcase": "off",
+		"no-unused-vars": "error",
+		"no-undef": "off",
+		"no-empty-function": "error",
+		"no-empty": "error",
+		"no-case-declarations":"off"
+	}
+}

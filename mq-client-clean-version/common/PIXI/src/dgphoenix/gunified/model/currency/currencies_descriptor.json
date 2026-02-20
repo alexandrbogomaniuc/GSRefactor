@@ -1,0 +1,1352 @@
+{
+	"supported_currencies":
+	[
+		{
+			"currency_id": "100",
+			"currency_format": "100 <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "981",
+			"currency_format": "981 <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "AED",
+			"currency_format": "AED <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "AFN",
+			"currency_compatibility_id": "؋",
+			"note": "since currency sign is strong RTL-entity, invisible LRM symbol (\u200E) is in use after to avoid issues for following digits and punctuation marks having no strong RTL/LTR affinity in the BIDI algo",
+			"currency_format": "؋‎<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ALL",
+			"currency_compatibility_id": "Lek",
+			"currency_format": "Lek<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "AMD",
+			"currency_format": "AMD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ANG",
+			"currency_compatibility_id": "ƒ",
+			"currency_format": "ƒ<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "AOA",
+			"currency_format": "AOA <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ARS",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "AUD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "AWG",
+			"currency_format": "ƒ<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "AZN",
+			"currency_compatibility_id": "ман",
+			"currency_format": "ман<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BAM",
+			"currency_format": "BAM <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BBB",
+			"currency_format": "BBB <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BBD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BCH",
+			"currency_format": "BCH <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BDT",
+			"currency_format": "BDT <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BGN",
+			"currency_format": "лв<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BHD",
+			"currency_format": "BHD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BIF",
+			"currency_format": "BIF <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BMD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BND",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BOB",
+			"currency_compatibility_id": "$b",
+			"currency_format": "$b<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BRL",
+			"currency_compatibility_id": "R$",
+			"currency_format": "R$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BTC",
+			"currency_format": "฿<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BSD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BTN",
+			"currency_format": "BTN <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BWP",
+			"currency_compatibility_id": "P",
+			"currency_format": "P <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BYR",
+			"currency_compatibility_id": "p.",
+			"currency_format": "p.<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BYN",
+			"currency_format": "BYN <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "BZD",
+			"currency_compatibility_id": "BZ$",
+			"currency_format": "BZ$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "CAD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "CDF",
+			"currency_format": "CDF <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "CHF",
+			"currency_format": "CHF <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "CLF",
+			"currency_format": "CLF <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "CLP",
+			"currency_compatibility_id": "Ch$",
+			"currency_format": "Ch$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "CNY",
+			"currency_compatibility_id": "¥",
+			"currency_format": "¥<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "COP",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "CRC",
+			"currency_compatibility_id": "₡",
+			"currency_format": "₡<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "CSK",
+			"currency_format": "CSK <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "CUC",
+			"currency_format": "CUC <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "CUP",
+			"currency_compatibility_id": "₱",
+			"currency_format": "₱<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "CVE",
+			"currency_format": "CVE <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "CZK",
+			"currency_compatibility_id": "Kč",
+			"currency_format": "Kč<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "DAN",
+			"currency_format": "DAN <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "DDD",
+			"currency_format": "DDD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "DJF",
+			"currency_format": "DJF <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "DKK",
+			"currency_format": "kr<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "DOP",
+			"currency_compatibility_id": "RD$",
+			"currency_format": "RD$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "DRC",
+			"currency_format": "DRC <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "DZD",
+			"currency_format": "DZD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "EEK",
+			"currency_format": "kr<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "EGP",
+			"currency_compatibility_id": "£",
+			"currency_format": "£<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ERN",
+			"currency_format": "ERN <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ESP",
+			"currency_format": "ESP <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ETB",
+			"currency_format": "ETB <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ETH",
+			"currency_format": "ETH <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "EUR",
+			"currency_compatibility_id": "€",
+			"currency_format": "€<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "FDS",
+			"currency_format": "FDS <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "FER",
+			"currency_format": "FER <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "FJD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "FKP",
+			"currency_format": "£<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "FLY",
+			"currency_format": "FLY <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "FMN",
+			"currency_format": "FMN <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "FUN",
+			"currency_format": "FUN <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GBP",
+			"currency_format": "£<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GEL",
+			"currency_format": "GEL <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GGP",
+			"currency_format": "£<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GHC",
+			"currency_compatibility_id": "¢",
+			"currency_format": "¢<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GHS",
+			"currency_format": "GH₵ <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GIP",
+			"currency_format": "£<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GKZ",
+			"currency_format": "GKZ <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GMD",
+			"currency_format": "GMD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GMK",
+			"currency_format": "GMK <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GMR",
+			"currency_format": "GMR <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GNF",
+			"currency_format": "GNF <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GPB",
+			"currency_format": "GPB <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GRU",
+			"currency_format": "GRU <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GSN",
+			"currency_format": "GSN <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GTQ",
+			"currency_compatibility_id": "Q",
+			"currency_format": "Q <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "GYD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "HHG",
+			"currency_format": "HHG <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "HKD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "HNL",
+			"currency_compatibility_id": "L",
+			"currency_format": "L <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "HRK",
+			"currency_format": "kn<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "HTG",
+			"currency_format": "HTG <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "HUF",
+			"currency_compatibility_id": "Ft",
+			"currency_format": "Ft<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "IDN",
+			"currency_format": "IDN <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "IDR",
+			"currency_compatibility_id": "Rp",
+			"currency_format": "Rp<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "III",
+			"currency_format": "III <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ILS",
+			"currency_compatibility_id": "₪",
+			"currency_format": "₪<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "IMP",
+			"currency_format": "£<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "INC",
+			"currency_format": "INC <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "INR",
+			"currency_format": "INR <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "IPS",
+			"currency_format": "IPS <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ITL",
+			"currency_format": "ITL <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "IQD",
+			"currency_format": "IQD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "IRR",
+			"currency_compatibility_id": "﷼",
+			"note": "since currency sign is strong RTL-entity, invisible LRM symbol (\u200E) is in use after to avoid issues for following digits and punctuation marks having no strong RTL/LTR affinity in the BIDI algo",
+			"currency_format": "﷼‎<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ISK",
+			"currency_format": "kr<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "JEP",
+			"currency_format": "£<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "JMD",
+			"currency_compatibility_id": "J$",
+			"currency_format": "J$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "JOD",
+			"currency_format": "JOD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "JPY",
+			"currency_format": "¥<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "KES",
+			"currency_format": "KES <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "KGS",
+			"currency_format": "лв<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "KHR",
+			"currency_compatibility_id": "៛",
+			"currency_format": "៛<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "KIR",
+			"currency_format": "KIR <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "KKL",
+			"currency_format": "KKL <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "KMF",
+			"currency_format": "KMF <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "KPW",
+			"currency_compatibility_id": "₩",
+			"currency_format": "₩<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "KRW",
+			"currency_format": "₩<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "KVD",
+			"currency_format": "KVD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "KWD",
+			"currency_format": "KWD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "KYD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "KZT",
+			"currency_format": "лв<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "LAK",
+			"currency_compatibility_id": "₭",
+			"currency_format": "₭<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "LBP",
+			"currency_format": "£<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "LKR",
+			"currency_compatibility_id": "₨",
+			"currency_format": "₨<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "LRD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "LSL",
+			"currency_format": "LSL <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "LTC",
+			"currency_format": "Ł<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "LTL",
+			"currency_compatibility_id": "Lt",
+			"currency_format": "Lt<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "LVL",
+			"currency_compatibility_id": "Ls",
+			"currency_format": "Ls<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "LYD",
+			"currency_format": "LYD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MAD",
+			"currency_format": "MAD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MBC",
+			"currency_format": "m฿<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MBT",
+			"currency_format": "MBT <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MCH",
+			"currency_format": "MCH <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MDL",
+			"currency_format": "MDL <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MEH",
+			"currency_format": "MEH <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MGA",
+			"currency_format": "MGA <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MKD",
+			"currency_compatibility_id": "ден",
+			"currency_format": "ден<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MLC",
+			"currency_format": "mŁ<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MMC",
+			"currency_format": "MC <value>",
+			"currency_decimal_precision": 2,
+			"thousand_discharge_suffixes": {
+				"1": "K",
+				"2": "M",
+				"3": "B"
+			}
+		},
+		{
+			"currency_id": "MMK",
+			"currency_format": "MMK <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MNT",
+			"currency_compatibility_id": "₮",
+			"currency_format": "₮<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MOP",
+			"currency_format": "MOP <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MQC",
+			"currency_format": "QC <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MRO",
+			"currency_format": "MRO <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MUR",
+			"currency_format": "₨<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MRU",
+			"currency_format": "MRU <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MVR",
+			"currency_format": "MVR <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MWK",
+			"currency_format": "MWK <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MXN",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MYR",
+			"currency_compatibility_id": "RM",
+			"currency_format": "RM <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "MZN",
+			"currency_format": "MT <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "NAD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "NGM",
+			"currency_format": "NGM <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "NGN",
+			"currency_compatibility_id": "₦",
+			"currency_format": "₦<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "NIE",
+			"currency_format": "NIE <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "NIO",
+			"currency_compatibility_id": "C$",
+			"currency_format": "C$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "NJN",
+			"currency_format": "NJN <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "NNN",
+			"currency_format": "NNN <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "NOK",
+			"currency_format": "NOK <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "NPR",
+			"currency_format": "₨<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "NTD",
+			"currency_format": "NTD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "NZD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "OMR",
+			"note": "since currency sign is strong RTL-entity, invisible LRM symbol (\u200E) is in use after to avoid issues for following digits and punctuation marks having no strong RTL/LTR affinity in the BIDI algo",
+			"currency_format": "﷼‎<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "PAB",
+			"currency_compatibility_id": "B/.",
+			"currency_format": "B/.<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "PDS",
+			"currency_format": "PDS <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "PEN",
+			"currency_compatibility_id": "S/.",
+			"currency_format": "S/.<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "PGK",
+			"currency_format": "PGK <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "PHP",
+			"currency_format": "₱<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "PKR",
+			"currency_format": "₨<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "PLN",
+			"currency_compatibility_id": "zł",
+			"currency_format": "zł<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "PMC",
+			"currency_format": "PMC <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "POO",
+			"currency_format": "POO <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "PTS",
+			"currency_format": "PTS <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "PYG",
+			"currency_compatibility_id": "Gs",
+			"currency_format": "Gs<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "QAR",
+			"note": "since currency sign is strong RTL-entity, invisible LRM symbol (\u200E) is in use after to avoid issues for following digits and punctuation marks having no strong RTL/LTR affinity in the BIDI algo",
+			"currency_format": "﷼‎<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "QWE",
+			"currency_format": "QWE <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "RBM",
+			"currency_format": "RBM <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "RDV",
+			"currency_format": "RDV <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "RMB",
+			"currency_format": "RMB <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "RON",
+			"currency_compatibility_id": "lei",
+			"currency_format": "lei<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "RRR",
+			"currency_format": "RRR <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "RSD",
+			"currency_compatibility_id": "Дин.",
+			"currency_format": "Дин.<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "RUB",
+			"currency_compatibility_id": "руб",
+			"currency_format": "<value> руб",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "RUS",
+			"currency_format": "RUS <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "RVP",
+			"currency_format": "RVP <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "RWF",
+			"currency_format": "RWF <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SAR",
+			"note": "since currency sign is strong RTL-entity, invisible LRM symbol (\u200E) is in use after to avoid issues for following digits and punctuation marks having no strong RTL/LTR affinity in the BIDI algo",
+			"currency_format": "﷼‎<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SBD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SCR",
+			"currency_format": "₨<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SCT",
+			"currency_format": "<value>",
+			"currency_decimal_precision": 0
+		},
+		{
+			"currency_id": "SDG",
+			"currency_format": "SDG <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SEK",
+			"currency_format": "kr<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SGD",
+			"currency_compatibility_id": "S$",
+			"currency_format": "S$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SHP",
+			"currency_format": "£<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SKK",
+			"currency_format": "SKK <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SKL",
+			"currency_format": "SKL <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SLL",
+			"currency_format": "SLL <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SOS",
+			"currency_compatibility_id": "S",
+			"currency_format": "S <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SRD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SSP",
+			"currency_format": "SSP <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "STD",
+			"currency_format": "STD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "STN",
+			"currency_format": "STN <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SVC",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SYP",
+			"currency_format": "£<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "SZL",
+			"currency_format": "SZL <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "THB",
+			"currency_compatibility_id": "฿",
+			"currency_format": "฿<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "TJS",
+			"currency_format": "TJS <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "TKN",
+			"currency_format": "<value>",
+			"currency_decimal_precision": 0
+		},
+		{
+			"currency_id": "TMT",
+			"currency_format": "TMT <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "TND",
+			"currency_format": "TND <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "TOP",
+			"currency_format": "TOP <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "TRR",
+			"currency_format": "TRR <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "TRY",
+			"currency_compatibility_id": "₺",
+			"note": "just a legacy Lira sign - https://unicode-table.com/en/search/?q=20A4 (close enough to more modern currency sign version U+20BA accepted in 2012 but still with poor enough support in the fonts)",
+			"currency_format": "₺<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "TRX",
+			"currency_format": "TRX <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "TST",
+			"currency_format": "TST <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "TTD",
+			"currency_compatibility_id": "TT$",
+			"currency_format": "TT$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "TVD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "TWB",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "TWD",
+			"currency_format": "TWD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "TYR",
+			"currency_format": "TYR <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "TZS",
+			"currency_format": "TZS <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "UBC",
+			"currency_format": "μ฿<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "UAH",
+			"currency_compatibility_id": "₴",
+			"currency_format": "₴<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "UGX",
+			"currency_format": "UGX <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "USD",
+			"currency_compatibility_id": "$",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "UUS",
+			"currency_format": "UUS <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "UYU",
+			"currency_compatibility_id": "$U",
+			"currency_format": "$U<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "UZS",
+			"currency_format": "лв<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "VDC",
+			"currency_format": "<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "VEB",
+			"currency_format": "VEB <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "VEF",
+			"currency_compatibility_id": "Bs",
+			"currency_format": "Bs<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "VES",
+			"currency_format": "VES <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "VND",
+			"currency_compatibility_id": "₫",
+			"currency_format": "₫<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "VUV",
+			"currency_format": "VUV <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "VVV",
+			"currency_format": "VVV <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "WCC",
+			"currency_format": "WCC <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "WCW",
+			"currency_format": "WCW <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "WDW",
+			"currency_format": "WDW <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "WST",
+			"currency_format": "WST <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "XAG",
+			"currency_format": "XAG <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "XAF",
+			"currency_format": "XAF <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "XAU",
+			"currency_format": "XAU <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "XBT",
+			"currency_format": "XBT <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "XCD",
+			"currency_format": "$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "XDG",
+			"currency_format": "Ð<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "XDR",
+			"currency_format": "XDR <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "XOF",
+			"currency_format": "XOF <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "XPD",
+			"currency_format": "XPD <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "XPF",
+			"currency_format": "XPF <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "XPT",
+			"currency_format": "XPT <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "XXX",
+			"currency_format": "XXX <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "XYZ",
+			"currency_format": "XYZ <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "YEC",
+			"currency_format": "YEC <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "YED",
+			"currency_format": "YED <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "YER",
+			"note": "since currency sign is strong RTL-entity, invisible LRM symbol (\u200E) is in use after to avoid issues for following digits and punctuation marks having no strong RTL/LTR affinity in the BIDI algo",
+			"currency_format": "﷼‎<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "YUN",
+			"currency_format": "YUN <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ZAR",
+			"currency_compatibility_id": "R",
+			"currency_format": "R <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ZMF",
+			"currency_format": "ZMF <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ZMW",
+			"currency_format": "ZMW <value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ZWD",
+			"currency_compatibility_id": "Z$",
+			"currency_format": "Z$<value>",
+			"currency_decimal_precision": 2
+		},
+		{
+			"currency_id": "ZWL",
+			"currency_format": "ZWL <value>",
+			"currency_decimal_precision": 2
+		}
+	]
+}

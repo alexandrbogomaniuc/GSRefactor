@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<td>
+	<fonts>
+		<font name="fnt_nm_barlow" url="[root_resources_path]translations/en/fonts/barlow_medium_en.ttf"/>
+		<font name="fnt_nm_barlow_semibold" url="[root_resources_path]translations/en/fonts/barlow_semibold_en.ttf"/>
+		<font name="fnt_nm_barlow_bold" url="[root_resources_path]translations/en/fonts/barlow_bold_en.ttf"/>
+		<font name="fnt_nm_thicker_black_trial" url="[root_resources_path]translations/en/fonts/thicker_black_trial_en.ttf"/>
+	</fonts>
+	
+	<tasds>
+		<tad id="TAPreloaderLogo" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>TRIPLE CASH OR CRASH</source_meaning>
+				<translated_meaning>TRIPLE CASH OR CRASH</translated_meaning>
+			</meaning>
+			<area x="-190" y="-132" w="583" h="229.5">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/logo.png"/>
+		</tad>
+
+		<tad id="TAPreloaderTripleMaxBlastLogo" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>TRIPLE MAX BLAST</source_meaning>
+				<translated_meaning>TRIPLE MAX BLAST</translated_meaning>
+			</meaning>
+			<area x="-192" y="-146" w="620" h="265">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/triple_max_blast_logo.png"/>
+		</tad>
+
+		<tad id="TAPreloaderMaxBlastChampionsLogo" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MAX BLAST CHAMPS</source_meaning>
+				<translated_meaning>MAX BLAST CHAMPS</translated_meaning>
+			</meaning>
+			<area x="-187" y="-137" w="580.5" h="260.5">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/max_blast_champions_logo.png"/>
+		</tad>
+		
+		<tad id="TAPreloaderBrand" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BETSOFT GAMING</source_meaning>
+				<translated_meaning>BETSOFT GAMING</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="256" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="right" v="top"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/brand.png"/>
+		</tad>
+
+		<tad id="TALoadingHeader" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>LOADING</source_meaning>
+				<translated_meaning>LOADING</translated_meaning>
+			</meaning>
+			<area x="-100" y="-18" w="200" h="36">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_thicker_black_trial" size="30" color="0Xffffff">
+				</font>
+				<content>LOADING</content>
+			</txt>
+		</tad>
+
+		<tad id="TALoadingHeaderBattleground" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>LOADING</source_meaning>
+				<translated_meaning>LOADING</translated_meaning>
+			</meaning>
+			<area x="-125" y="-18" w="250" h="36">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/loading_header_btg.png"/>
+		</tad>
+
+		<tad id="TAPreloderPlayNow" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>PLAY NOW</source_meaning>
+				<translated_meaning>PLAY NOW</translated_meaning>
+			</meaning>
+			<area x="-80" y="-21" w="160" h="34">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="19" color="0x000000">
+				</font>
+				<content>PLAY NOW</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloderClickContinue" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CLICK TO CONTINUE</source_meaning>
+				<translated_meaning>CLICK TO CONTINUE</translated_meaning>
+			</meaning>
+			<area x="-65" y="-15" w="130" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="26" color="0xffffff">
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>CLICK TO CONTINUE</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloderClickContinuePortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CLICK TO CONTINUE</source_meaning>
+				<translated_meaning>CLICK TO CONTINUE</translated_meaning>
+			</meaning>
+			<area x="-115" y="-18" w="230" h="36">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="26" color="0xffffff">
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>CLICK TO CONTINUE</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloaderTip1" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MORE PLAYERS IN THE ROCKET, THE BIGGER YOUR PRIZE!</source_meaning>
+				<translated_meaning>MORE PLAYERS IN THE ROCKET, THE BIGGER YOUR PRIZE!</translated_meaning>
+			</meaning>
+			<area x="-125" y="-21" w="440" h="84">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/tips/tips_text_1.png"/>
+		</tad>
+
+		<tad id="TAPreloaderTip2" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>LAST TO EJECT BEFORE THE CRASH IS THE WINNER!</source_meaning>
+				<translated_meaning>LAST TO EJECT BEFORE THE CRASH IS THE WINNER!</translated_meaning>
+			</meaning>
+			<area x="-120" y="-23" w="440" h="84">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/tips/tips_text_2.png"/>
+		</tad>
+
+		<tad id="TAPreloaderTip3" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>WINNER TAKES PRIZE POOL!</source_meaning>
+				<translated_meaning>WINNER TAKES PRIZE POOL!</translated_meaning>
+			</meaning>
+			<area x="-200" y="-25" w="440" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/tips/tips_text_3.png"/>
+		</tad>
+
+		<tad id="TADialogMessageNetworkError" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>A network error has occurred. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>A network error has occurred. Please try again and contact customer support if the error persists.</translated_meaning>
+			</meaning>
+			<!--<area x="-140" y="-75" w="280" h="118">-->
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>A network error has occurred.&#010;Please try again and contact&#010;customer support if the error&#010;persists.</content>
+			</txt>
+		</tad>
+	</tasds>
+</td>

@@ -1,0 +1,8 @@
+---
+- hosts: '{{ host }}'
+  remote_user: auditor
+  serial: 1
+
+  tasks:
+    - name: Start repo update
+      shell: "touch /www/restart/update_repo"

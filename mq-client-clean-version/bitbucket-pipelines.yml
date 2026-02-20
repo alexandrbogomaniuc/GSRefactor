@@ -1,0 +1,2730 @@
+definitions:
+
+  scripts:
+
+    script_set_env: &script_set_env |
+      set -euo pipefail
+
+      case "${ENV_NAME}" in
+        "dev_maxquest")
+          export RUNNER_ID=${RUNNER_ID_DEV_MAXQUEST}
+          export SERVER_IP=${SERVER_IP_DEV_MAXQUEST}
+          export SERVER_PORT=${SERVER_PORT_DEV_MAXQUEST}
+          ;;
+        "stage_maxquest")
+          export RUNNER_ID=${RUNNER_ID_STAGE_MAXQUEST}
+          export SERVER_IP=${SERVER_IP_STAGE_MAXQUEST}
+          export SERVER_PORT=${SERVER_PORT_STAGE_MAXQUEST}
+          ;;
+        "prod_maxquest")
+          export RUNNER_ID=${RUNNER_ID_PROD_MAXQUEST}
+          export SERVER_IP=${SERVER_IP_PROD_MAXQUEST}
+          export SERVER_PORT=${SERVER_PORT_PROD_MAXQUEST}
+          ;;
+        "dev_maxduel")
+          export GCP_PROJECT_ID=${GCP_PROJECT_ID_DEV_MAXDUEL}
+          export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_DEV_MAXDUEL}
+          export GCP_REGION=${GCP_REGION_DEV_MAXDUEL}
+          export PROJECT_NAME=${PROJECT_NAME_DEV_MAXDUEL}
+          export K8S_NAMESPACE=${K8S_NAMESPACE_DEV_MAXDUEL}
+          export RUNNER_ID=${RUNNER_ID_DEV_MAXDUEL}
+          export SERVER_IP=${SERVER_IP_DEV_MAXDUEL}
+          export SERVER_PORT=${SERVER_PORT_DEV_MAXDUEL}
+          export DOCKERFILE=Dockerfile
+          ;;
+        "stage_maxduel")
+          export GCP_PROJECT_ID=${GCP_PROJECT_ID_STAGE_MAXDUEL}
+          export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_STAGE_MAXDUEL}
+          export GCP_REGION=${GCP_REGION_STAGE_MAXDUEL}
+          export PROJECT_NAME=${PROJECT_NAME_STAGE_MAXDUEL}
+          export K8S_NAMESPACE=${K8S_NAMESPACE_STAGE_MAXDUEL}
+          export RUNNER_ID=${RUNNER_ID_STAGE_MAXDUEL}
+          export SERVER_IP=${SERVER_IP_STAGE_MAXDUEL}
+          export SERVER_PORT=${SERVER_PORT_STAGE_MAXDUEL}
+          export DOCKERFILE=Dockerfile
+          ;;
+        "prod_maxduel")
+          export GCP_PROJECT_ID=${GCP_PROJECT_ID_PROD_MAXDUEL}
+          export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_PROD_MAXDUEL}
+          export GCP_REGION=${GCP_REGION_PROD_MAXDUEL}
+          export PROJECT_NAME=${PROJECT_NAME_PROD_MAXDUEL}
+          export K8S_NAMESPACE=${K8S_NAMESPACE_PROD_MAXDUEL}
+          export RUNNER_ID=${RUNNER_ID_PROD_MAXDUEL}
+          export SERVER_IP=${SERVER_IP_PROD_MAXDUEL}
+          export SERVER_PORT=${SERVER_PORT_PROD_MAXDUEL}
+          export DOCKERFILE=Dockerfile
+          ;;
+        *)
+          echo ERROR: INCORRECT ENV_NAME ${ENV_NAME} FOR DEPLOY
+          exit 1
+          ;;
+      esac
+
+      env | sort
+
+    script_export_ssh_key: &script_export_ssh_key |
+      echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa;
+      echo "StrictHostKeyChecking no" >> ~/.ssh/config
+
+    script_install_packages: &script_install_packages |
+      apk add jq bash openssh git
+
+    script_build_common: &script_build_common |
+      ./project_build.sh compress common
+
+    script_deploy_common_maxquest: &script_deploy_common_maxquest |
+      ssh -p ${SERVER_PORT}   bitbucket@${SERVER_IP}                  "mkdir -vp ~/common/"
+
+      scp -P ${SERVER_PORT}   ./common/common.tar.gz                  bitbucket@${SERVER_IP}:~/common/
+      scp -P ${SERVER_PORT}   ./common/deploy_common.sh               bitbucket@${SERVER_IP}:~/common/
+      
+      ssh -p ${SERVER_PORT}   bitbucket@${SERVER_IP}                  "chmod 755 ~/common/deploy_common.sh"
+      ssh -p ${SERVER_PORT}   bitbucket@${SERVER_IP}                  "sudo /home/users/bitbucket/common/deploy_common.sh"
+
+    script_deploy_common_maxduel: &script_deploy_common_maxduel |
+      ssh -p ${SERVER_PORT}   bitbucket@${SERVER_IP}                  "mkdir -vp ~/common/"
+
+      scp -P ${SERVER_PORT}   ./common/common.tar.gz                  bitbucket@${SERVER_IP}:~/common/
+      scp -P ${SERVER_PORT}   ./common/deploy_common_maxduel.sh       bitbucket@${SERVER_IP}:~/common/deploy_common.sh
+      
+      ssh -p ${SERVER_PORT}   bitbucket@${SERVER_IP}                  "chmod 755 ~/common/deploy_common.sh"
+      ssh -p ${SERVER_PORT}   bitbucket@${SERVER_IP}                  "sudo /home/bitbucket/common/deploy_common.sh"
+
+    script_build_module: &script_build_module |
+      ./project_build.sh install  ${MODULE_NAME}
+      ./project_build.sh build    ${MODULE_NAME}
+      ./project_build.sh compress ${MODULE_NAME}
+
+    script_deploy_module_maxquest: &script_deploy_module_maxquest |
+      ssh -p ${SERVER_PORT}   bitbucket@${SERVER_IP}                  "mkdir -vp ~/${MODULE_NAME}/"
+      
+      scp -P ${SERVER_PORT}   ./${MODULE_NAME}/${MODULE_NAME}.tar.gz  bitbucket@${SERVER_IP}:~/${MODULE_NAME}/
+      scp -P ${SERVER_PORT}   ./deploy_game.sh                        bitbucket@${SERVER_IP}:~/
+      
+      ssh -p ${SERVER_PORT}   bitbucket@${SERVER_IP}                  "chmod 755 ~/deploy_game.sh"
+      ssh -p ${SERVER_PORT}   bitbucket@${SERVER_IP}                  "sudo /home/users/bitbucket/deploy_game.sh ${MODULE_NAME}"
+
+    script_deploy_module_maxduel: &script_deploy_module_maxduel |
+      ssh -p ${SERVER_PORT}   bitbucket@${SERVER_IP}                  "mkdir -vp ~/${MODULE_NAME}/"
+      
+      scp -P ${SERVER_PORT}   ./${MODULE_NAME}/${MODULE_NAME}.tar.gz  bitbucket@${SERVER_IP}:~/${MODULE_NAME}/
+      scp -P ${SERVER_PORT}   ./deploy_game_maxduel.sh                bitbucket@${SERVER_IP}:~/deploy_game.sh
+      
+      ssh -p ${SERVER_PORT}   bitbucket@${SERVER_IP}                  "chmod 755 ~/deploy_game.sh"
+      ssh -p ${SERVER_PORT}   bitbucket@${SERVER_IP}                  "sudo /home/bitbucket/deploy_game.sh ${MODULE_NAME}"
+
+    script_snyk: &script_snyk |
+      node -v
+      npm -v
+      npm install -g snyk
+      snyk auth ${SNYK_TOKEN}
+      npm install
+      snyk test || true
+      snyk code test || true
+
+    script_lint: &script_lint |
+      node -v
+      npm -v
+      npm install -g next
+      next lint .
+
+    script_cleanup: &script_cleanup |
+      rm -rf .* *
+      ls -alhR
+
+  steps:
+
+    ################################################################################
+
+    step_deploy_common_dev_maxquest: &step_deploy_common_dev_maxquest
+      name: step_deploy_common_dev_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=common
+        - export ENV_NAME=dev_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_common
+        - *script_deploy_common_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_common_dev_maxquest: &step_rollback_common_dev_maxquest
+      name: step_rollback_common_dev_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=common
+        - export ENV_NAME=dev_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_common_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_common_stage_maxquest: &step_deploy_common_stage_maxquest
+      name: step_deploy_common_stage_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=common
+        - export ENV_NAME=stage_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_common
+        - *script_deploy_common_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_common_stage_maxquest: &step_rollback_common_stage_maxquest
+      name: step_rollback_common_stage_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=common
+        - export ENV_NAME=stage_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_common_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_common_prod_maxquest: &step_deploy_common_prod_maxquest
+      name: step_deploy_common_prod_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=common
+        - export ENV_NAME=prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_common
+        - *script_deploy_common_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_common_prod_maxquest: &step_rollback_common_prod_maxquest
+      name: step_rollback_common_prod_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=common
+        - export ENV_NAME=prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_common_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_common_dev_maxduel: &step_deploy_common_dev_maxduel
+      name: step_deploy_common_dev_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=common
+        - export ENV_NAME=dev_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_common
+        - *script_deploy_common_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_common_dev_maxduel: &step_rollback_common_dev_maxduel
+      name: step_rollback_common_dev_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=common
+        - export ENV_NAME=dev_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_common_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_common_stage_maxduel: &step_deploy_common_stage_maxduel
+      name: step_deploy_common_stage_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=common
+        - export ENV_NAME=stage_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_common
+        - *script_deploy_common_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_common_stage_maxduel: &step_rollback_common_stage_maxduel
+      name: step_rollback_common_stage_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=common
+        - export ENV_NAME=stage_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_common_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_common_prod_maxduel: &step_deploy_common_prod_maxduel
+      name: step_deploy_common_prod_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=common
+        - export ENV_NAME=prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_common
+        - *script_deploy_common_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_common_prod_maxduel: &step_rollback_common_prod_maxduel
+      name: step_rollback_common_prod_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=common
+        - export ENV_NAME=prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_common_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    ################################################################################
+
+    step_deploy_cashorcrash_dev_maxquest: &step_deploy_cashorcrash_dev_maxquest
+      name: step_deploy_cashorcrash_dev_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=cashorcrash
+        - export ENV_NAME=dev_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_cashorcrash_dev_maxquest: &step_rollback_cashorcrash_dev_maxquest
+      name: step_rollback_cashorcrash_dev_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=cashorcrash
+        - export ENV_NAME=dev_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_cashorcrash_stage_maxquest: &step_deploy_cashorcrash_stage_maxquest
+      name: step_deploy_cashorcrash_stage_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=cashorcrash
+        - export ENV_NAME=stage_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_cashorcrash_stage_maxquest: &step_rollback_cashorcrash_stage_maxquest
+      name: step_rollback_cashorcrash_stage_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=cashorcrash
+        - export ENV_NAME=stage_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_cashorcrash_prod_maxquest: &step_deploy_cashorcrash_prod_maxquest
+      name: step_deploy_cashorcrash_prod_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=cashorcrash
+        - export ENV_NAME=prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_cashorcrash_prod_maxquest: &step_rollback_cashorcrash_prod_maxquest
+      name: step_rollback_cashorcrash_prod_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=cashorcrash
+        - export ENV_NAME=prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_cashorcrash_dev_maxduel: &step_deploy_cashorcrash_dev_maxduel
+      name: step_deploy_cashorcrash_dev_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=cashorcrash
+        - export ENV_NAME=dev_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_cashorcrash_dev_maxduel: &step_rollback_cashorcrash_dev_maxduel
+      name: step_rollback_cashorcrash_dev_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=cashorcrash
+        - export ENV_NAME=dev_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_cashorcrash_stage_maxduel: &step_deploy_cashorcrash_stage_maxduel
+      name: step_deploy_cashorcrash_stage_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=cashorcrash
+        - export ENV_NAME=stage_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_cashorcrash_stage_maxduel: &step_rollback_cashorcrash_stage_maxduel
+      name: step_rollback_cashorcrash_stage_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=cashorcrash
+        - export ENV_NAME=stage_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_cashorcrash_prod_maxduel: &step_deploy_cashorcrash_prod_maxduel
+      name: step_deploy_cashorcrash_prod_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=cashorcrash
+        - export ENV_NAME=prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_cashorcrash_prod_maxduel: &step_rollback_cashorcrash_prod_maxduel
+      name: step_rollback_cashorcrash_prod_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=cashorcrash
+        - export ENV_NAME=prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    ################################################################################
+
+    step_deploy_dragonstone_dev_maxquest: &step_deploy_dragonstone_dev_maxquest
+      name: step_deploy_dragonstone_dev_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=dragonstone
+        - export ENV_NAME=dev_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_dragonstone_dev_maxquest: &step_rollback_dragonstone_dev_maxquest
+      name: step_rollback_dragonstone_dev_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=dragonstone
+        - export ENV_NAME=dev_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_dragonstone_stage_maxquest: &step_deploy_dragonstone_stage_maxquest
+      name: step_deploy_dragonstone_stage_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=dragonstone
+        - export ENV_NAME=stage_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_dragonstone_stage_maxquest: &step_rollback_dragonstone_stage_maxquest
+      name: step_rollback_dragonstone_stage_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=dragonstone
+        - export ENV_NAME=stage_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_dragonstone_prod_maxquest: &step_deploy_dragonstone_prod_maxquest
+      name: step_deploy_dragonstone_prod_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=dragonstone
+        - export ENV_NAME=prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_dragonstone_prod_maxquest: &step_rollback_dragonstone_prod_maxquest
+      name: step_rollback_dragonstone_prod_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=dragonstone
+        - export ENV_NAME=prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_dragonstone_dev_maxduel: &step_deploy_dragonstone_dev_maxduel
+      name: step_deploy_dragonstone_dev_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=dragonstone
+        - export ENV_NAME=dev_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_dragonstone_dev_maxduel: &step_rollback_dragonstone_dev_maxduel
+      name: step_rollback_dragonstone_dev_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=dragonstone
+        - export ENV_NAME=dev_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_dragonstone_stage_maxduel: &step_deploy_dragonstone_stage_maxduel
+      name: step_deploy_dragonstone_stage_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=dragonstone
+        - export ENV_NAME=stage_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_dragonstone_stage_maxduel: &step_rollback_dragonstone_stage_maxduel
+      name: step_rollback_dragonstone_stage_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=dragonstone
+        - export ENV_NAME=stage_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_dragonstone_prod_maxduel: &step_deploy_dragonstone_prod_maxduel
+      name: step_deploy_dragonstone_prod_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=dragonstone
+        - export ENV_NAME=prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_dragonstone_prod_maxduel: &step_rollback_dragonstone_prod_maxduel
+      name: step_rollback_dragonstone_prod_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=dragonstone
+        - export ENV_NAME=prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    ################################################################################
+
+    step_deploy_missionamazon_dev_maxquest: &step_deploy_missionamazon_dev_maxquest
+      name: step_deploy_missionamazon_dev_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=missionamazon
+        - export ENV_NAME=dev_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_missionamazon_dev_maxquest: &step_rollback_missionamazon_dev_maxquest
+      name: step_rollback_missionamazon_dev_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=missionamazon
+        - export ENV_NAME=dev_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_missionamazon_stage_maxquest: &step_deploy_missionamazon_stage_maxquest
+      name: step_deploy_missionamazon_stage_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=missionamazon
+        - export ENV_NAME=stage_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_missionamazon_stage_maxquest: &step_rollback_missionamazon_stage_maxquest
+      name: step_rollback_missionamazon_stage_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=missionamazon
+        - export ENV_NAME=stage_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_missionamazon_prod_maxquest: &step_deploy_missionamazon_prod_maxquest
+      name: step_deploy_missionamazon_prod_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=missionamazon
+        - export ENV_NAME=prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_missionamazon_prod_maxquest: &step_rollback_missionamazon_prod_maxquest
+      name: step_rollback_missionamazon_prod_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=missionamazon
+        - export ENV_NAME=prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_missionamazon_dev_maxduel: &step_deploy_missionamazon_dev_maxduel
+      name: step_deploy_missionamazon_dev_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=missionamazon
+        - export ENV_NAME=dev_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_missionamazon_dev_maxduel: &step_rollback_missionamazon_dev_maxduel
+      name: step_rollback_missionamazon_dev_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=missionamazon
+        - export ENV_NAME=dev_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_missionamazon_stage_maxduel: &step_deploy_missionamazon_stage_maxduel
+      name: step_deploy_missionamazon_stage_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=missionamazon
+        - export ENV_NAME=stage_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_missionamazon_stage_maxduel: &step_rollback_missionamazon_stage_maxduel
+      name: step_rollback_missionamazon_stage_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=missionamazon
+        - export ENV_NAME=stage_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_missionamazon_prod_maxduel: &step_deploy_missionamazon_prod_maxduel
+      name: step_deploy_missionamazon_prod_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=missionamazon
+        - export ENV_NAME=prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_missionamazon_prod_maxduel: &step_rollback_missionamazon_prod_maxduel
+      name: step_rollback_missionamazon_prod_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=missionamazon
+        - export ENV_NAME=prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    ################################################################################
+
+    step_deploy_revengeofra_dev_maxquest: &step_deploy_revengeofra_dev_maxquest
+      name: step_deploy_revengeofra_dev_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=revengeofra
+        - export ENV_NAME=dev_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_revengeofra_dev_maxquest: &step_rollback_revengeofra_dev_maxquest
+      name: step_rollback_revengeofra_dev_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=revengeofra
+        - export ENV_NAME=dev_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_revengeofra_stage_maxquest: &step_deploy_revengeofra_stage_maxquest
+      name: step_deploy_revengeofra_stage_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=revengeofra
+        - export ENV_NAME=stage_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_revengeofra_stage_maxquest: &step_rollback_revengeofra_stage_maxquest
+      name: step_rollback_revengeofra_stage_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=revengeofra
+        - export ENV_NAME=stage_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_revengeofra_prod_maxquest: &step_deploy_revengeofra_prod_maxquest
+      name: step_deploy_revengeofra_prod_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=revengeofra
+        - export ENV_NAME=prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_revengeofra_prod_maxquest: &step_rollback_revengeofra_prod_maxquest
+      name: step_rollback_revengeofra_prod_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=revengeofra
+        - export ENV_NAME=prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_revengeofra_dev_maxduel: &step_deploy_revengeofra_dev_maxduel
+      name: step_deploy_revengeofra_dev_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=revengeofra
+        - export ENV_NAME=dev_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_revengeofra_dev_maxduel: &step_rollback_revengeofra_dev_maxduel
+      name: step_rollback_revengeofra_dev_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=revengeofra
+        - export ENV_NAME=dev_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_revengeofra_stage_maxduel: &step_deploy_revengeofra_stage_maxduel
+      name: step_deploy_revengeofra_stage_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=revengeofra
+        - export ENV_NAME=stage_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_revengeofra_stage_maxduel: &step_rollback_revengeofra_stage_maxduel
+      name: step_rollback_revengeofra_stage_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=revengeofra
+        - export ENV_NAME=stage_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_revengeofra_prod_maxduel: &step_deploy_revengeofra_prod_maxduel
+      name: step_deploy_revengeofra_prod_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=revengeofra
+        - export ENV_NAME=prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_revengeofra_prod_maxduel: &step_rollback_revengeofra_prod_maxduel
+      name: step_rollback_revengeofra_prod_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=revengeofra
+        - export ENV_NAME=prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    ################################################################################
+
+    step_deploy_sectorx_dev_maxquest: &step_deploy_sectorx_dev_maxquest
+      name: step_deploy_sectorx_dev_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=sectorx
+        - export ENV_NAME=dev_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_sectorx_dev_maxquest: &step_rollback_sectorx_dev_maxquest
+      name: step_rollback_sectorx_dev_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=sectorx
+        - export ENV_NAME=dev_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_sectorx_stage_maxquest: &step_deploy_sectorx_stage_maxquest
+      name: step_deploy_sectorx_stage_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=sectorx
+        - export ENV_NAME=stage_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_sectorx_stage_maxquest: &step_rollback_sectorx_stage_maxquest
+      name: step_rollback_sectorx_stage_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=sectorx
+        - export ENV_NAME=stage_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_sectorx_prod_maxquest: &step_deploy_sectorx_prod_maxquest
+      name: step_deploy_sectorx_prod_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=sectorx
+        - export ENV_NAME=prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_sectorx_prod_maxquest: &step_rollback_sectorx_prod_maxquest
+      name: step_rollback_sectorx_prod_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=sectorx
+        - export ENV_NAME=prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_sectorx_dev_maxduel: &step_deploy_sectorx_dev_maxduel
+      name: step_deploy_sectorx_dev_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=sectorx
+        - export ENV_NAME=dev_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_sectorx_dev_maxduel: &step_rollback_sectorx_dev_maxduel
+      name: step_rollback_sectorx_dev_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=sectorx
+        - export ENV_NAME=dev_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_sectorx_stage_maxduel: &step_deploy_sectorx_stage_maxduel
+      name: step_deploy_sectorx_stage_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=sectorx
+        - export ENV_NAME=stage_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_sectorx_stage_maxduel: &step_rollback_sectorx_stage_maxduel
+      name: step_rollback_sectorx_stage_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=sectorx
+        - export ENV_NAME=stage_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_sectorx_prod_maxduel: &step_deploy_sectorx_prod_maxduel
+      name: step_deploy_sectorx_prod_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=sectorx
+        - export ENV_NAME=prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_sectorx_prod_maxduel: &step_rollback_sectorx_prod_maxduel
+      name: step_rollback_sectorx_prod_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=sectorx
+        - export ENV_NAME=prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    ################################################################################
+
+    step_deploy_sectorx_btg_dev_maxquest: &step_deploy_sectorx_btg_dev_maxquest
+      name: step_deploy_sectorx_btg_dev_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=sectorx_btg
+        - export ENV_NAME=dev_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_sectorx_btg_dev_maxquest: &step_rollback_sectorx_btg_dev_maxquest
+      name: step_rollback_sectorx_btg_dev_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=sectorx_btg
+        - export ENV_NAME=dev_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_sectorx_btg_stage_maxquest: &step_deploy_sectorx_btg_stage_maxquest
+      name: step_deploy_sectorx_btg_stage_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=sectorx_btg
+        - export ENV_NAME=stage_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_sectorx_btg_stage_maxquest: &step_rollback_sectorx_btg_stage_maxquest
+      name: step_rollback_sectorx_btg_stage_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=sectorx_btg
+        - export ENV_NAME=stage_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_sectorx_btg_prod_maxquest: &step_deploy_sectorx_btg_prod_maxquest
+      name: step_deploy_sectorx_btg_prod_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=sectorx_btg
+        - export ENV_NAME=prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_sectorx_btg_prod_maxquest: &step_rollback_sectorx_btg_prod_maxquest
+      name: step_rollback_sectorx_btg_prod_maxquest
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=sectorx_btg
+        - export ENV_NAME=prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxquest
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_sectorx_btg_dev_maxduel: &step_deploy_sectorx_btg_dev_maxduel
+      name: step_deploy_sectorx_btg_dev_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=sectorx_btg
+        - export ENV_NAME=dev_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_sectorx_btg_dev_maxduel: &step_rollback_sectorx_btg_dev_maxduel
+      name: step_rollback_sectorx_btg_dev_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=sectorx_btg
+        - export ENV_NAME=dev_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_sectorx_btg_stage_maxduel: &step_deploy_sectorx_btg_stage_maxduel
+      name: step_deploy_sectorx_btg_stage_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=sectorx_btg
+        - export ENV_NAME=stage_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_sectorx_btg_stage_maxduel: &step_rollback_sectorx_btg_stage_maxduel
+      name: step_rollback_sectorx_btg_stage_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=sectorx_btg
+        - export ENV_NAME=stage_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_deploy_sectorx_btg_prod_maxduel: &step_deploy_sectorx_btg_prod_maxduel
+      name: step_deploy_sectorx_btg_prod_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export MODULE_NAME=sectorx_btg
+        - export ENV_NAME=prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_build_module
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    step_rollback_sectorx_btg_prod_maxduel: &step_rollback_sectorx_btg_prod_maxduel
+      name: step_rollback_sectorx_btg_prod_maxduel
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: node:12-alpine3.15
+      oidc: true
+      clone:
+        enabled: false
+        # depth: 2
+      services:
+        - docker
+      size: 4x
+      trigger: manual
+      script:
+        - export MODULE_NAME=sectorx_btg
+        - export ENV_NAME=prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_install_packages
+        - *script_deploy_module_maxduel
+      after-script:
+        - *script_cleanup
+      artifacts:
+        download: true
+        paths:
+         - ${MODULE_NAME}/${MODULE_NAME}.tar.gz
+
+    ################################################################################
+
+    step_scan: &step_scan
+      name: step_scan
+      image: atlassian/default-image:4
+      oidc: true
+      clone:
+        enabled: true
+        depth: 1
+      size: 2x
+      script:
+        - *script_snyk
+      after-script:
+        - *script_cleanup
+
+pipelines:
+
+  custom:
+
+    common-dev-maxquest:
+      - parallel:
+          - step: *step_deploy_common_dev_maxquest
+          - step: *step_rollback_common_dev_maxquest
+
+    common-stage-maxquest:
+      - parallel:
+          - step: *step_deploy_common_stage_maxquest
+          - step: *step_rollback_common_stage_maxquest
+
+    common-prod-maxquest:
+      - parallel:
+          - step: *step_deploy_common_prod_maxquest
+          - step: *step_rollback_common_prod_maxquest
+
+    common-dev-maxduel:
+      - parallel:
+          - step: *step_deploy_common_dev_maxduel
+          - step: *step_rollback_common_dev_maxduel
+
+    common-stage-maxduel:
+      - parallel:
+          - step: *step_deploy_common_stage_maxduel
+          - step: *step_rollback_common_stage_maxduel
+
+    common-prod-maxduel:
+      - parallel:
+          - step: *step_deploy_common_prod_maxduel
+          - step: *step_rollback_common_prod_maxduel
+
+    cashorcrash-dev-maxquest:
+      - parallel:
+          - step: *step_deploy_cashorcrash_dev_maxquest
+          - step: *step_rollback_cashorcrash_dev_maxquest
+
+    cashorcrash-stage-maxquest:
+      - parallel:
+          - step: *step_deploy_cashorcrash_stage_maxquest
+          - step: *step_rollback_cashorcrash_stage_maxquest
+
+    cashorcrash-prod-maxquest:
+      - parallel:
+          - step: *step_deploy_cashorcrash_prod_maxquest
+          - step: *step_rollback_cashorcrash_prod_maxquest
+
+    cashorcrash-dev-maxduel:
+      - parallel:
+          - step: *step_deploy_cashorcrash_dev_maxduel
+          - step: *step_rollback_cashorcrash_dev_maxduel
+
+    cashorcrash-stage-maxduel:
+      - parallel:
+          - step: *step_deploy_cashorcrash_stage_maxduel
+          - step: *step_rollback_cashorcrash_stage_maxduel
+
+    cashorcrash-prod-maxduel:
+      - parallel:
+          - step: *step_deploy_cashorcrash_prod_maxduel
+          - step: *step_rollback_cashorcrash_prod_maxduel
+
+    dragonstone-dev-maxquest:
+      - parallel:
+          - step: *step_deploy_dragonstone_dev_maxquest
+          - step: *step_rollback_dragonstone_dev_maxquest
+
+    dragonstone-stage-maxquest:
+      - parallel:
+          - step: *step_deploy_dragonstone_stage_maxquest
+          - step: *step_rollback_dragonstone_stage_maxquest
+
+    dragonstone-prod-maxquest:
+      - parallel:
+          - step: *step_deploy_dragonstone_prod_maxquest
+          - step: *step_rollback_dragonstone_prod_maxquest
+
+    dragonstone-dev-maxduel:
+      - parallel:
+          - step: *step_deploy_dragonstone_dev_maxduel
+          - step: *step_rollback_dragonstone_dev_maxduel
+
+    dragonstone-stage-maxduel:
+      - parallel:
+          - step: *step_deploy_dragonstone_stage_maxduel
+          - step: *step_rollback_dragonstone_stage_maxduel
+
+    dragonstone-prod-maxduel:
+      - parallel:
+          - step: *step_deploy_dragonstone_prod_maxduel
+          - step: *step_rollback_dragonstone_prod_maxduel
+
+    missionamazon-dev-maxquest:
+      - parallel:
+          - step: *step_deploy_missionamazon_dev_maxquest
+          - step: *step_rollback_missionamazon_dev_maxquest
+
+    missionamazon-stage-maxquest:
+      - parallel:
+          - step: *step_deploy_missionamazon_stage_maxquest
+          - step: *step_rollback_missionamazon_stage_maxquest
+
+    missionamazon-prod-maxquest:
+      - parallel:
+          - step: *step_deploy_missionamazon_prod_maxquest
+          - step: *step_rollback_missionamazon_prod_maxquest
+
+    missionamazon-dev-maxduel:
+      - parallel:
+          - step: *step_deploy_missionamazon_dev_maxduel
+          - step: *step_rollback_missionamazon_dev_maxduel
+
+    missionamazon-stage-maxduel:
+      - parallel:
+          - step: *step_deploy_missionamazon_stage_maxduel
+          - step: *step_rollback_missionamazon_stage_maxduel
+
+    missionamazon-prod-maxduel:
+      - parallel:
+          - step: *step_deploy_missionamazon_prod_maxduel
+          - step: *step_rollback_missionamazon_prod_maxduel
+
+    revengeofra-dev-maxquest:
+      - parallel:
+          - step: *step_deploy_revengeofra_dev_maxquest
+          - step: *step_rollback_revengeofra_dev_maxquest
+
+    revengeofra-stage-maxquest:
+      - parallel:
+          - step: *step_deploy_revengeofra_stage_maxquest
+          - step: *step_rollback_revengeofra_stage_maxquest
+
+    revengeofra-prod-maxquest:
+      - parallel:
+          - step: *step_deploy_revengeofra_prod_maxquest
+          - step: *step_rollback_revengeofra_prod_maxquest
+
+    revengeofra-dev-maxduel:
+      - parallel:
+          - step: *step_deploy_revengeofra_dev_maxduel
+          - step: *step_rollback_revengeofra_dev_maxduel
+
+    revengeofra-stage-maxduel:
+      - parallel:
+          - step: *step_deploy_revengeofra_stage_maxduel
+          - step: *step_rollback_revengeofra_stage_maxduel
+
+    revengeofra-prod-maxduel:
+      - parallel:
+          - step: *step_deploy_revengeofra_prod_maxduel
+          - step: *step_rollback_revengeofra_prod_maxduel
+
+    sectorx-dev-maxquest:
+      - parallel:
+          - step: *step_deploy_sectorx_dev_maxquest
+          - step: *step_rollback_sectorx_dev_maxquest
+
+    sectorx-stage-maxquest:
+      - parallel:
+          - step: *step_deploy_sectorx_stage_maxquest
+          - step: *step_rollback_sectorx_stage_maxquest
+
+    sectorx-prod-maxquest:
+      - parallel:
+          - step: *step_deploy_sectorx_prod_maxquest
+          - step: *step_rollback_sectorx_prod_maxquest
+
+    sectorx-dev-maxduel:
+      - parallel:
+          - step: *step_deploy_sectorx_dev_maxduel
+          - step: *step_rollback_sectorx_dev_maxduel
+
+    sectorx-stage-maxduel:
+      - parallel:
+          - step: *step_deploy_sectorx_stage_maxduel
+          - step: *step_rollback_sectorx_stage_maxduel
+
+    sectorx-prod-maxduel:
+      - parallel:
+          - step: *step_deploy_sectorx_prod_maxduel
+          - step: *step_rollback_sectorx_prod_maxduel
+
+    sectorx_btg-dev-maxquest:
+      - parallel:
+          - step: *step_deploy_sectorx_btg_dev_maxquest
+          - step: *step_rollback_sectorx_btg_dev_maxquest
+
+    sectorx_btg-stage-maxquest:
+      - parallel:
+          - step: *step_deploy_sectorx_btg_stage_maxquest
+          - step: *step_rollback_sectorx_btg_stage_maxquest
+
+    sectorx_btg-prod-maxquest:
+      - parallel:
+          - step: *step_deploy_sectorx_btg_prod_maxquest
+          - step: *step_rollback_sectorx_btg_prod_maxquest
+
+    sectorx_btg-dev-maxduel:
+      - parallel:
+          - step: *step_deploy_sectorx_btg_dev_maxduel
+          - step: *step_rollback_sectorx_btg_dev_maxduel
+
+    sectorx_btg-stage-maxduel:
+      - parallel:
+          - step: *step_deploy_sectorx_btg_stage_maxduel
+          - step: *step_rollback_sectorx_btg_stage_maxduel
+
+    sectorx_btg-prod-maxduel:
+      - parallel:
+          - step: *step_deploy_sectorx_btg_prod_maxduel
+          - step: *step_rollback_sectorx_btg_prod_maxduel

@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<td>
+	<fonts>
+	</fonts>
+
+	<tasds>
+		<tad id="TAPaytableCurrentPayout" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Current payout</source_meaning>
+				<translated_meaning>Current payout</translated_meaning>
+			</meaning>
+			<area x="-322" y="-190.5" w="636" h="381">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/current_payout.png"/>
+		</tad>
+
+		<tad id="TAPaytableBlastOff" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Blast off</source_meaning>
+				<translated_meaning>Blast off</translated_meaning>
+			</meaning>
+			<area x="-332" y="-240" w="1273" h="970">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/blast_off.png"/>
+		</tad>
+
+		<tad id="TAPaytableBlastOffTripleMaxBlast" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Blast off</source_meaning>
+				<translated_meaning>Blast off</translated_meaning>
+			</meaning>
+			<area x="-332" y="-240" w="1273" h="970">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/blast_off_tmb.png"/>
+		</tad>
+		
+		<tad id="TAPaytableBlastOffBattleGround" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Blast off</source_meaning>
+				<translated_meaning>Blast off</translated_meaning>
+			</meaning>
+			<area x="-332" y="-240" w="1273" h="723">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/blast_off_btg.png"/>
+		</tad>
+
+		<tad id="TAPaytableBetAmount" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Bet amount</source_meaning>
+				<translated_meaning>Bet amount</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="189" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/bet_amount.png"/>
+		</tad>
+
+		<tad id="TAPaytableBidAmount" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Bid amount</source_meaning>
+				<translated_meaning>Bid amount</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="189" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/bid_amount.png"/>
+		</tad>
+
+		<tad id="TAPaytableTotalPot" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Total pot</source_meaning>
+				<translated_meaning>Total pot</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="189" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/total_pot.png"/>
+		</tad>
+
+		<tad id="TAPaytableBetAmountButtons" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>½ 2x MAX</source_meaning>
+				<translated_meaning>½ 2x MAX</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="309" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/bet_amount_buttons.png"/>
+		</tad>
+
+		<tad id="TAPaytableAutoCashout" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Auto-Cashout at</source_meaning>
+				<translated_meaning>Auto-Cashout at</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="233" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/autocashout.png"/>
+		</tad>
+
+		<tad id="TAPaytableScreenshot" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Paytable Screenshot</source_meaning>
+				<translated_meaning>Paytable Screenshot</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="1061" h="634">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/screenshot.png"/>
+		</tad>
+
+		<tad id="TAPaytableScreenshotTripleMaxBlast" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Paytable Screenshot</source_meaning>
+				<translated_meaning>Paytable Screenshot</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="1061" h="634">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/screenshot_tmb.png"/>
+		</tad>
+
+		<tad id="TAPaytableScreenshotBattleGround" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Paytable Screenshot</source_meaning>
+				<translated_meaning>Paytable Screenshot</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="1061" h="634">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/screenshot_btg.png"/>
+		</tad>
+
+		<tad id="TAPaytableBetList" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Paytable Bet List Example</source_meaning>
+				<translated_meaning>Paytable Bet List Example</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="429" h="121">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/bet_list.png"/>
+		</tad>
+
+		<tad id="TAPaytableScorecard" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Paytable Scorecard Example</source_meaning>
+				<translated_meaning>Paytable Scorecard Example</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="429" h="125">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/scorecard.png"/>
+		</tad>
+	</tasds>
+</td>

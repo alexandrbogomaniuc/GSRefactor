@@ -1,0 +1,11 @@
+---
+- hosts: '{{ host }}'
+  remote_user: auditor
+  serial: 1
+  max_fail_percentage: 0
+  vars:
+    date: "{{ansible_date_time.date}}-{{ansible_date_time.hour}}-{{ansible_date_time.minute}}"
+    user: auditor
+
+  roles:
+  - content

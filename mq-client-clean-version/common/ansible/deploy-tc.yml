@@ -1,0 +1,11 @@
+---
+- hosts: '{{ host }}'
+  remote_user: team-city
+  serial: 1
+  max_fail_percentage: 0
+  vars:
+    date: "{{ansible_date_time.date}}-{{ansible_date_time.hour}}-{{ansible_date_time.minute}}"
+    user: team-city
+
+  roles:
+  - content

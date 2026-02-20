@@ -1,0 +1,2948 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<td>
+	<fonts>
+		<font name="fnt_nm_barlow" url="[root_resources_path]translations/en/fonts/barlow_medium_en.ttf"/>
+		<font name="fnt_nm_barlow_semibold" url="[root_resources_path]translations/en/fonts/barlow_semibold_en.ttf"/>
+		<font name="fnt_nm_barlow_bold" url="[root_resources_path]translations/en/fonts/barlow_bold_en.ttf"/>
+		<font name="fnt_nm_myriad_pro_regular" url="[root_resources_path]translations/en/fonts/myriad_pro_regular_en.ttf"/>
+		<font name="fnt_nm_myriad_pro_bold" url="[root_resources_path]translations/en/fonts/myriad_pro_bold_en.ttf"/>
+		<font name="fnt_nm_roboto_bold" url="[root_resources_path]translations/en/fonts/roboto_bold_en.ttf"/>
+		<font name="fnt_nm_roboto_medium" url="[root_resources_path]translations/en/fonts/roboto_medium_en.ttf"/>
+		
+	</fonts>
+
+	<tasds>
+		<!--SETTINGS SCREEN...-->
+		<tad id="TASettingsScreenCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SETTINGS</source_meaning>
+				<translated_meaning>SETTINGS</translated_meaning>
+			</meaning>
+			<area x="-150" y="-25" w="300" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" ></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>SETTINGS</content>
+			</txt>
+		</tad>
+
+		<tad id="TASettingsScreenSoundVolumeLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SOUND FX VOLUME</source_meaning>
+				<translated_meaning>SOUND FX VOLUME</translated_meaning>
+			</meaning>
+			<area x="0" y="-25" w="192" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" ></font>
+				<content>SOUND FX VOLUME</content>
+			</txt>
+		</tad>
+
+		<tad id="TASettingsScreenMusicVolumeLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MUSIC VOLUME</source_meaning>
+				<translated_meaning>MUSIC VOLUME</translated_meaning>
+			</meaning>
+			<area x="0" y="-25" w="192" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" ></font>
+				<content>MUSIC VOLUME</content>
+			</txt>
+		</tad>
+		<!--...SETTINGS SCREEN-->
+
+		<!--ROUNDS HISTORY...-->
+				<tad id="TARoundHistory" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ROUND HISTORY</source_meaning>
+				<translated_meaning>ROUND HISTORY</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="250" h="35">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_bold" size="35" color="0x676767">
+				</font>
+				<content>ROUND HISTORY</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundStartTime" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Round Start Time:</source_meaning>
+				<translated_meaning>Round Start Time:</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="250" h="17">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xFFFFFF">
+				</font>
+				<content>Round Start Time:</content>
+			</txt>
+		</tad>
+
+		<tad id="TABetsCount" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning># of Bets Placed:</source_meaning>
+				<translated_meaning># of Bets Placed:</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="250" h="17">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xFFFFFF">
+				</font>
+				<content># of Bets Placed:</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundsHistoryPot" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Pot:</source_meaning>
+				<translated_meaning>Pot:</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="250" h="17">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xFFFFFF">
+				</font>
+				<content>Pot:</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundsHistoryWinner" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Winner of pot:</source_meaning>
+				<translated_meaning>Winner of pot:</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="250" h="17">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xFFFFFF">
+				</font>
+				<content>Winner of pot:</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundsHistoryPlayerPlace" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Current player's place:</source_meaning>
+				<translated_meaning>Current player's place:</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="250" h="17">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xFFFFFF">
+				</font>
+				<content>Current player's place:</content>
+			</txt>
+		</tad>
+
+		<tad id="TAUniqueToken" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Unique Token:</source_meaning>
+				<translated_meaning>Unique Token:</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="250" h="17">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xFFFFFF">
+				</font>
+				<content>Unique Token:</content>
+			</txt>
+		</tad>
+
+		<tad id="TACrashPoint" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Crash Point:</source_meaning>
+				<translated_meaning>Crash Point:</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="250" h="17">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xFFFFFF">
+				</font>
+				<content>Crash Point:</content>
+			</txt>
+		</tad>
+		<!--...ROUNDS HISTORY-->
+
+		<!-- DIALOGS... -->
+		<tad id="TADialogButtonOK" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OK</source_meaning>
+				<translated_meaning>OK</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" ></font>
+				<content>OK</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonCancel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CANCEL</source_meaning>
+				<translated_meaning>CANCEL</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0xFFFFFF" />
+				<content>CANCEL</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonBackToLobby" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Back to Lobby</source_meaning>
+				<translated_meaning>Back to Lobby</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0xFFFFFF"/>
+				<content>Back to Lobby</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonBuyIn" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BUY IN</source_meaning>
+				<translated_meaning>BUY IN</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0xFFFFFF" />
+				<content>BUY IN</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonCopy" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>COPY</source_meaning>
+				<translated_meaning>COPY</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0xFFFFFF" />
+				<content>COPY</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonYes" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>YES</source_meaning>
+				<translated_meaning>YES</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" ></font>
+				<content>YES</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonNo" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>NO</source_meaning>
+				<translated_meaning>NO</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" ></font>
+				<content>NO</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageWebglContextLost" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Browser error. Please close additional windows and tabs and try again. If the error persists, please contact customer support.</source_meaning>
+				<translated_meaning>Browser error. Please close additional windows and tabs and try again. If the error persists, please contact customer support.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Browser error.&#010;Please close additional windows and tabs and try again.&#010;If the error persists, please contact customer support.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorInternal" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Unexpected error has occurred, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Unexpected error has occurred, the game cannot be continued. Please try again and contact customer support if the error persists.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Unexpected error has occurred,&#010;the game cannot be continued.&#010;Please try again and contact customer&#010;support if the error persists.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorOperationFailed" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Operation failed.</source_meaning>
+				<translated_meaning>Operation failed.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Operation failed.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorUnknownTransactionId" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Unknown transaction id.</source_meaning>
+				<translated_meaning>Unknown transaction id.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Unknown transaction id.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorExpiredWebsiteSession" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your session on website is expired.</source_meaning>
+				<translated_meaning>You session on website is expired.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>You session on website is expired.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorServerShutdown" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Server shutdown, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Server shutdown, the game cannot be continued. Please try again and contact customer support if the error persists.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Server shutdown,&#010;the game cannot be continued.&#010;Please try again and contact customer&#010;support if the error persists.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageRoundAlreadyFinished" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>This round has been completed. Please go back to lobby and select a new game.</source_meaning>
+				<translated_meaning>This round has been completed. Please go back to lobby and select a new game.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>This round has been completed.&#010;Please go back to lobby&#010;and select a new game.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorInvalidSession" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your session has expired, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Your session has expired, the game cannot be continued. Please try again and contact customer support if the error persists.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Your session has expired,&#010;the game cannot be continued.&#010;Please try again and contact customer&#010;support if the error persists.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorIdleSession" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>The game was terminated due to extended inactivity. Please start a new game to continue playing.</source_meaning>
+				<translated_meaning>The game was terminated due to extended inactivity. Please start a new game to continue playing.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>The game was terminated due to extended inactivity.&#010;Please start a new game to continue playing.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorDeprecatedRequest" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Game client is out of date, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Game client is out of date, the game cannot be continued. Please try again and contact customer support if the error persists.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Game client is out of date,&#010;the game cannot be continued.&#010;Please try again and contact customer&#010;support if the error persists.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorPendingTransaction" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Sorry, an unfinished payment transaction was detected, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Sorry, an unfinished payment transaction was detected, the game cannot be continued. Please try again and contact customer support if the error persists.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Sorry, an unfinished payment transaction&#010;was detected, the game cannot be continued.&#010;Please try again and contact customer&#010;support if the error persists.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorConflictingLobbySession" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Cannot enter game: Session already in progress. Please close the other session and try again.</source_meaning>
+				<translated_meaning>Cannot enter game: Session already in progress. Please close the other session and try again.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Cannot enter game: Session&#010;already in progress. Please close&#010;the other session and try again.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorSessionValueAsset" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SID:</source_meaning>
+				<translated_meaning>SID:</translated_meaning>
+			</meaning>
+			<area x="-30" y="-10" w="30" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="right" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="10" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>SID:</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorTimeValueAsset" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TIME:</source_meaning>
+				<translated_meaning>TIME:</translated_meaning>
+			</meaning>
+			<area x="-30" y="-10" w="30" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="right" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="10" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>TIME:</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonRefresh" type="img_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/dialogs/refresh_button_caption.png"/>
+		</tad>
+
+		<tad id="TADialogMessageReconnect" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Preparing The Next Rocket...</source_meaning>
+				<translated_meaning>Preparing The Next Rocket...</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Preparing The Next Rocket...</content>
+			</txt>
+		</tad>
+
+
+		<tad id="TADialogMessageReconnect1" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Igniting Thrusters...</source_meaning>
+				<translated_meaning>Igniting Thrusters...</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Igniting Thrusters...</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageReconnect2" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Calibrating Sensors...</source_meaning>
+				<translated_meaning>Calibrating Sensors...</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Calibrating Sensors...</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageReconnect3" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Final System Checks</source_meaning>
+				<translated_meaning>Final System Checks</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Final System Checks</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageReconnect4" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Initiating Lift-Off Sequence</source_meaning>
+				<translated_meaning>Initiating Lift-Off Sequence</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Initiating Lift-Off Sequence</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageReconnect5" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Securing the Cockpit</source_meaning>
+				<translated_meaning>Securing the Cockpit</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Securing the Cockpit</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageWaitPendingOperation" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Communicating round results to host. Please wait.</source_meaning>
+				<translated_meaning>Communicating round results to host. Please wait.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Communicating round results to host.&#010;Please wait.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageRoomNotFound" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Room not found.</source_meaning>
+				<translated_meaning>Room not found.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Room not found.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageRoomNotOpen" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>An error occurred while opening the room.</source_meaning>
+				<translated_meaning>An error occurred while opening the room.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>An error occurred while opening the room.</content>
+			</txt>
+		</tad>
+
+		<!--LOW BALANCE DIALOGS...-->
+
+		<tad id="TADialogMessageLowBalanceForReal" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>.Insufficient Balance. Please visit the cashier to deposit more funds. Thank you.</source_meaning>
+				<translated_meaning>Insufficient Balance. Please visit the cashier to deposit more funds. Thank you. </translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Insufficient Balance.&#010;Please visit the cashier&#010;to deposit more funds.&#010;Thank you.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCashier" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient Balance.Please visit the cashier to deposit more funds. Thank you.</source_meaning>
+				<translated_meaning>Insufficient Balance. Please visit the cashier to deposit more funds. Thank you.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Insufficient Balance.&#010;Please visit the cashier&#010;to deposit more funds.&#010;Thank you.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessageNEMNotRealBetWinMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Balance could not support current bet. You have not been entered into this round.</source_meaning>
+				<translated_meaning>Balance could not support current bet. You have not been entered into this round.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Balance could not support&#010;current bet. You have not been&#010;entered into this round.</content>
+			</txt>
+		</tad>
+		<!--...LOW BALANCE DIALOGS-->
+		
+		<tad id="TADialogTooLateEject" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Unfortunately, you were too late and the crash occurred first.</source_meaning>
+				<translated_meaning>Unfortunately, you were too late and the crash occurred first.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Unfortunately, you were too late&#010;and the crash occurred first.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogBetFailedByNotSeater" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Failed to place bet, please try again.</source_meaning>
+				<translated_meaning>Failed to place bet, please try again.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Failed to place bet, please try again.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogBidFailedByNotSeater" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Failed to place bid, please try again.</source_meaning>
+				<translated_meaning>Failed to place bid, please try again.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Failed to place bid, please try again.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogBetFailedByTimePassed" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>The time to place your bet has passed. Please wait until rocket launch, and place your bets for the next round.</source_meaning>
+				<translated_meaning>The time to place your bet has passed. Please wait until rocket launch, and place your bets for the next round.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>The time to place your bet has passed.&#010;Please wait until rocket launch, and&#010;place your bets for the next round.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogLeaveRoomActiveBets" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You have active bets. After leaving the room, you will remain in the rocket until it crashes or the Auto-Cashout value is reached. Do you want to leave the room?</source_meaning>
+				<translated_meaning>You have active bets. After leaving the room, you will remain in the rocket until it crashes or the Auto-Cashout value is reached. Do you want to leave the room?</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>You have active bets. After leaving the room,&#010;you will remain in the rocket until it crashes&#010;or the Auto-Cashout value is reached.&#010;Do you want to leave the room?</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogWebSocketReconnection" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Websocket connection</source_meaning>
+				<translated_meaning>Websocket connection</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="18" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Websocket connection</content>
+			</txt>
+		</tad>
+		<tad id="TADialogWebSocketReconnectionAttempt" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>attempt XX</source_meaning>
+				<translated_meaning>attempt XX</translated_meaning>
+			</meaning>
+			<area x="-70" y="-75" w="140" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="18" color="0xFFFFFF" />
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>attempt /VALUE/</content>
+			</txt>
+		</tad>
+		<!-- ...DIALOGS -->
+		
+		<!--COMMON PANEL...-->
+		<tad id="TACommonPanelBalanceLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BALANCE</source_meaning>
+				<translated_meaning>BALANCE</translated_meaning>
+			</meaning>
+			<area x="0" y="-11" w="70" h="11">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="10" color="0xa3a3a3"></font>
+				<content>BALANCE</content>
+			</txt>
+		</tad>
+		<!--...COMMON PANEL-->
+
+		<!--BETS PANEL...-->
+		<tad id="TATotalRoundWin" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Total Win: XX</source_meaning>
+				<translated_meaning>Total Win: XX</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="240" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_bold" size="16" color="0x21c423">
+				</font>
+				<content>Total Win: /VALUE/</content>
+			</txt>
+		</tad>
+		
+		<tad id="TATotalRoundWinPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Total Win: XX</source_meaning>
+				<translated_meaning>Total Win: XX</translated_meaning>
+			</meaning>
+			<area x="0" y="-11" w="240" h="22">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_bold" size="20" color="0x21c423">
+				</font>
+				<content>Total Win: /VALUE/</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAAstronauts" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX PLAYERS | XX ASTRONAUTS</source_meaning>
+				<translated_meaning>XX PLAYERS | XX ASTRONAUTS</translated_meaning>
+			</meaning>
+			<area x="0" y="-11" w="190" h="11">
+				<scale x="auto" y="no_scale" distortion="true"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="9" color="0x575757">
+				</font>
+				<content>/NUMBER/ #players:PLAYER,PLAYERS# | /VALUE/ #astronaut:ASTRONAUT,ASTRONAUTS#</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAAstronautsPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX PLAYERS | XX ASTRONAUTS</source_meaning>
+				<translated_meaning>XX PLAYERS | XX ASTRONAUTS</translated_meaning>
+			</meaning>
+			<area x="0" y="-16" w="190" h="16">
+				<scale x="auto" y="no_scale" distortion="true"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="14" color="0x575757">
+				</font>
+				<content>/NUMBER/ #players:PLAYER,PLAYERS# | /VALUE/ #astronaut:ASTRONAUT,ASTRONAUTS#</content>
+			</txt>
+		</tad>
+		
+		<tad id="TABetAmount" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Bet Amount</source_meaning>
+				<translated_meaning>Bet Amount</translated_meaning>
+			</meaning>
+			<area x="0" y="-12" w="86" h="12">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="10" color="0xffffff">
+				</font>
+				<content>Bet Amount</content>
+			</txt>
+		</tad>
+		
+		<tad id="TABetAmountPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Bet Amount</source_meaning>
+				<translated_meaning>Bet Amount</translated_meaning>
+			</meaning>
+			<area x="0" y="-20" w="60" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="15" color="0xffffff">
+				</font>
+				<content>Bet&#010;Amount</content>
+			</txt>
+		</tad>
+
+		<tad id="TABidAmount" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Bid Amount</source_meaning>
+				<translated_meaning>Bid Amount</translated_meaning>
+			</meaning>
+			<area x="0" y="-12" w="86" h="12">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="10" color="0xffffff">
+				</font>
+				<content>Bid Amount</content>
+			</txt>
+		</tad>
+		
+		<tad id="TABidAmountPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Bid Amount</source_meaning>
+				<translated_meaning>Bid Amount</translated_meaning>
+			</meaning>
+			<area x="0" y="-20" w="60" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="15" color="0xffffff">
+				</font>
+				<content>Bid&#010;Amount</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAAutoCashout" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Auto-Cashout at</source_meaning>
+				<translated_meaning>Auto-Cashout at</translated_meaning>
+			</meaning>
+			<area x="0" y="-12" w="150" h="12">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="10" color="0xffffff">
+				</font>
+				<content>Auto-Cashout at</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAAutoCashoutPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Auto-Cashout at</source_meaning>
+				<translated_meaning>Auto-Cashout at</translated_meaning>
+			</meaning>
+			<area x="0" y="-20" w="115" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xffffff">
+				</font>
+				<content>Auto-Cashout at</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAAutoCashoutOFF" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OFF</source_meaning>
+				<translated_meaning>OFF</translated_meaning>
+			</meaning>
+			<area x="0" y="-10" w="105" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0xffffff">
+				</font>
+				<content>OFF</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAAutoCashoutOFFPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OFF</source_meaning>
+				<translated_meaning>OFF</translated_meaning>
+			</meaning>
+			<area x="0" y="-11" w="105" h="22">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="20" color="0xffffff">
+				</font>
+				<content>OFF</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAEditBet" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Edit Bet</source_meaning>
+				<translated_meaning>Edit Bet</translated_meaning>
+			</meaning>
+			<area x="-100" y="-13" w="200" h="26">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="20" color="0xffffff">
+				</font>
+				<content>Edit Bet</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAEditBetPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Edit Bet</source_meaning>
+				<translated_meaning>Edit Bet</translated_meaning>
+			</meaning>
+			<area x="-120" y="-15" w="240" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="28" color="0xffffff">
+				</font>
+				<content>Edit Bet</content>
+			</txt>
+		</tad>
+
+		<tad id="TAEditBid" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Edit Bid</source_meaning>
+				<translated_meaning>Edit Bid</translated_meaning>
+			</meaning>
+			<area x="-100" y="-13" w="200" h="26">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="20" color="0xffffff">
+				</font>
+				<content>Edit Bid</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAEditBidPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Edit Bid</source_meaning>
+				<translated_meaning>Edit Bid</translated_meaning>
+			</meaning>
+			<area x="-110" y="-13" w="220" h="26">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="26" color="0xffffff">
+				</font>
+				<content>Edit Bid</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAPlaceBet" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Place Bet</source_meaning>
+				<translated_meaning>Place Bet</translated_meaning>
+			</meaning>
+			<area x="-100" y="-13" w="200" h="26">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="20" color="0x181818">
+				</font>
+				<content>Place Bet</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAPlaceBetPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Place Bet</source_meaning>
+				<translated_meaning>Place Bet</translated_meaning>
+			</meaning>
+			<area x="-120" y="-15" w="240" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="28" color="0x181818">
+				</font>
+				<content>Place Bet</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlaceBid" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Place Bid</source_meaning>
+				<translated_meaning>Place Bid</translated_meaning>
+			</meaning>
+			<area x="-100" y="-13" w="200" h="26">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="20" color="0x181818">
+				</font>
+				<content>Place Bid</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAPlaceBidPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Place Bid</source_meaning>
+				<translated_meaning>Place Bid</translated_meaning>
+			</meaning>
+			<area x="-120" y="-15" w="240" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="28" color="0x181818">
+				</font>
+				<content>Place Bid</content>
+			</txt>
+		</tad>
+		
+		<tad id="TARepeatAllBets" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Repeat All Bets</source_meaning>
+				<translated_meaning>Repeat All Bets</translated_meaning>
+			</meaning>
+			<area x="-100" y="-13" w="200" h="26">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="20" color="0xffffff">
+				</font>
+				<content>Repeat All Bets</content>
+			</txt>
+		</tad>
+		
+		<tad id="TARepeatAllBetsPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Repeat All Bets</source_meaning>
+				<translated_meaning>Repeat All Bets</translated_meaning>
+			</meaning>
+			<area x="-120" y="-15" w="240" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="28" color="0xffffff">
+				</font>
+				<content>Repeat All Bets</content>
+			</txt>
+		</tad>
+
+		<tad id="TARepeatAllBids" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Repeat All Bids</source_meaning>
+				<translated_meaning>Repeat All Bids</translated_meaning>
+			</meaning>
+			<area x="-100" y="-13" w="200" h="26">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="20" color="0xffffff">
+				</font>
+				<content>Repeat All Bids</content>
+			</txt>
+		</tad>
+		
+		<tad id="TARepeatAllBidsPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Repeat All Bids</source_meaning>
+				<translated_meaning>Repeat All Bids</translated_meaning>
+			</meaning>
+			<area x="-120" y="-15" w="240" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="28" color="0xffffff">
+				</font>
+				<content>Repeat All Bids</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAHalfBet" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>½</source_meaning>
+				<translated_meaning>½</translated_meaning>
+			</meaning>
+			<area x="-10" y="-10" w="20" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0xffffff">
+				</font>
+				<content>½</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAHalfBetPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>½</source_meaning>
+				<translated_meaning>½</translated_meaning>
+			</meaning>
+			<area x="-19" y="-17" w="38" h="34">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="30" color="0xffffff">
+				</font>
+				<content>½</content>
+			</txt>
+		</tad>
+
+		<tad id="TADoubleBet" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>2x</source_meaning>
+				<translated_meaning>2x</translated_meaning>
+			</meaning>
+			<area x="-10" y="-10" w="20" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0xffffff">
+				</font>
+				<content>2x</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADoubleBetPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>2x</source_meaning>
+				<translated_meaning>2x</translated_meaning>
+			</meaning>
+			<area x="-19" y="-17" w="38" h="34">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="30" color="0xffffff">
+				</font>
+				<content>2x</content>
+			</txt>
+		</tad>
+
+		<tad id="TAMaxBet" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MAX</source_meaning>
+				<translated_meaning>MAX</translated_meaning>
+			</meaning>
+			<area x="-18" y="-10" w="36" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0xffffff">
+				</font>
+				<content>MAX</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAMaxBetPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MAX</source_meaning>
+				<translated_meaning>MAX</translated_meaning>
+			</meaning>
+			<area x="-25" y="-17" w="50" h="34">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="30" color="0xffffff">
+				</font>
+				<content>MAX</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInRocket" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>IN ROCKET</source_meaning>
+				<translated_meaning>IN ROCKET</translated_meaning>
+			</meaning>
+			<area x="-100" y="-15" w="200" h="30">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="16" color="0xFFFFFF">
+				</font>
+				<content>IN ROCKET</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInRocketPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>IN ROCKET</source_meaning>
+				<translated_meaning>IN ROCKET</translated_meaning>
+			</meaning>
+			<area x="-200" y="-15" w="400" h="30">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="22" color="0xFFFFFF">
+				</font>
+				<content>IN ROCKET</content>
+			</txt>
+		</tad>
+
+		<tad id="TACancelAutoEject" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Cancel Auto-Cashout</source_meaning>
+				<translated_meaning>Cancel Auto-Cashout</translated_meaning>
+			</meaning>
+			<area x="-50" y="-25" w="100" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="14" color="0xFFFFFF">
+				</font>
+				<content>Cancel&#010;Auto-Cashout</content>
+			</txt>
+		</tad>
+		
+		<tad id="TACancelAutoEjectPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Cancel Auto-Cashout</source_meaning>
+				<translated_meaning>Cancel Auto-Cashout</translated_meaning>
+			</meaning>
+			<area x="-110" y="-20" w="220" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="24" color="0xFFFFFF">
+				</font>
+				<content>Cancel Auto-Cashout</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAAutoEjectCancelled" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Auto-Cashout Cancelled</source_meaning>
+				<translated_meaning>Auto-Cashout Cancelled</translated_meaning>
+			</meaning>
+			<area x="-50" y="-25" w="100" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="14" color="0xFFFFFF">
+				</font>
+				<content>Auto-Cashout&#010;Cancelled</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAAutoEjectCancelledPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Auto-Cashout Cancelled</source_meaning>
+				<translated_meaning>Auto-Cashout Cancelled</translated_meaning>
+			</meaning>
+			<area x="-110" y="-20" w="220" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="24" color="0xFFFFFF">
+				</font>
+				<content>Auto-Cashout Cancelled</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAEjectButton" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Eject</source_meaning>
+				<translated_meaning>Eject</translated_meaning>
+			</meaning>
+			<area x="-50" y="-25" w="100" h="50">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="20" color="0x181818">
+				</font>
+				<content>Eject</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAEjectButtonPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Eject</source_meaning>
+				<translated_meaning>Eject</translated_meaning>
+			</meaning>
+			<area x="-110" y="-20" w="220" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="26" color="0x181818">
+				</font>
+				<content>Eject</content>
+			</txt>
+		</tad>
+		<!--...BETS PANEL-->
+		
+		<!--GAMEPLAY...-->
+		<tad id="TADebugIndicatorLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TRIPLE CASH OR CRASH   |   ROOM XX / ROUND ID: XX</source_meaning>
+				<translated_meaning>TRIPLE CASH OR CRASH   |   ROOM XX / ROUND ID: XX</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="400" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_barlow_bold" size="11" color="0xffffff"></font>
+				<content>TRIPLE CASH OR CRASH   |   ROOM /ROOM_ID/ / ROUND ID: /ROUND_ID/</content>
+			</txt>
+		</tad>
+
+		<tad id="TADebugIndicatorLabelTripleMaxBlast" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TRIPLE MAX BLAST   |   ROOM XX / ROUND ID: XX</source_meaning>
+				<translated_meaning>TRIPLE MAX BLAST   |   ROOM XX / ROUND ID: XX</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="400" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_barlow_bold" size="11" color="0xffffff"></font>
+				<content>TRIPLE MAX BLAST   |   ROOM /ROOM_ID/ / ROUND ID: /ROUND_ID/</content>
+			</txt>
+		</tad>
+		
+		<tad id="TANextLaunchInLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>NEXT LAUNCH IN</source_meaning>
+				<translated_meaning>NEXT LAUNCH IN</translated_meaning>
+			</meaning>
+			<area x="-200" y="-40" w="400" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_myriad_pro_regular" size="30" color="0xffffff"></font>
+				<content>NEXT LAUNCH IN</content>
+			</txt>
+		</tad>
+		
+		<tad id="TANoMoreBetsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>No more bets, round is beginning</source_meaning>
+				<translated_meaning>No more bets, round is beginning</translated_meaning>
+			</meaning>
+			<area x="-200" y="-30" w="400" h="30">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_myriad_pro_regular" size="20" color="0xffffff"></font>
+				<content>No more bets, round is beginning</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreparingForLiftoffLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>PREPARING FOR LIFTOFF</source_meaning>
+				<translated_meaning>PREPARING FOR LIFTOFF</translated_meaning>
+			</meaning>
+			<area x="-280" y="-25" w="560" h="50">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_myriad_pro_bold" size="40" color="0xffffff"></font>
+				<content>PREPARING FOR LIFTOFF</content>
+			</txt>
+		</tad>
+		<tad id="TARoundOverLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ROUND OVER</source_meaning>
+				<translated_meaning>ROUND OVER</translated_meaning>
+			</meaning>
+			<area x="-200" y="0" w="400" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_barlow_semibold" size="30" color="0xff0000"></font>
+				<content>ROUND OVER</content>
+			</txt>
+		</tad>
+		
+		<tad id="TACurrentPayoutLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Current Payout</source_meaning>
+				<translated_meaning>Current Payout</translated_meaning>
+			</meaning>
+			<area x="-200" y="-12" w="400" h="24">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_barlow_bold" size="22" color="0x676767"></font>
+				<content>Current Payout</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAPayoutAstronautLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Astronaut X</source_meaning>
+				<translated_meaning>Astronaut X</translated_meaning>
+			</meaning>
+			<area x="-50" y="-9" w="100" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_barlow_bold" size="15" color="0xcacaca"></font>
+				<content>Astronaut /ASTRONAUT_NUM/</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAPayoutCollectedLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>COLLECTED!</source_meaning>
+				<translated_meaning>COLLECTED!</translated_meaning>
+			</meaning>
+			<area x="-50" y="-7" w="100" h="14">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_barlow_bold" size="10" color="0xcacaca"></font>
+				<content>COLLECTED!</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAPayoutAutoEjectAtLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>AUTO-CASHOUT AT XX</source_meaning>
+				<translated_meaning>AUTO-CASHOUT AT XX</translated_meaning>
+			</meaning>
+			<area x="-50" y="-7" w="100" h="14">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_barlow_bold" size="10" color="0x0be000"></font>
+				<content>AUTO-CASHOUT AT /AUTO_EJECT_MULT/</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAPayoutEjectButtonLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Eject</source_meaning>
+				<translated_meaning>Eject</translated_meaning>
+			</meaning>
+			<area x="-30" y="-7" w="60" h="14">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="11" color="0x181818">
+				</font>
+				<content>Eject</content>
+			</txt>
+		</tad>
+
+		<tad id="TABTGPayoutEjectButtonLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Eject</source_meaning>
+				<translated_meaning>Eject</translated_meaning>
+			</meaning>
+			<area x="-30" y="-7" w="60" h="14">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="22" color="0x181818">
+				</font>
+				<content>EJECT!</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAPayoutEjectAllRemainingButtonLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Eject All Remaining</source_meaning>
+				<translated_meaning>Eject All Remaining</translated_meaning>
+			</meaning>
+			<area x="-49" y="-10" w="98" h="20">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="11" color="0xffffff">
+				</font>
+				<content>Eject All Remaining</content>
+			</txt>
+		</tad>
+
+		<tad id="TAKeyboardResetButtonLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>X</source_meaning>
+				<translated_meaning>X</translated_meaning>
+			</meaning>
+			<area x="-10" y="-8" w="40" h="20">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="30" color="0xffffff">
+				</font>
+				<content>X</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAButtonUpArrowLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>▲</source_meaning>
+				<translated_meaning>▲</translated_meaning>
+			</meaning>
+			<area x="-19" y="-11" w="40" h="20">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="16" color="0xffffff">
+				</font>
+				<content>▲</content>
+			</txt>
+		</tad>
+
+		<tad id="TAButtonUpArrowLabelPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>▲</source_meaning>
+				<translated_meaning>▲</translated_meaning>
+			</meaning>
+			<area x="-19" y="-12" w="40" h="20">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="28" color="0xffffff">
+				</font>
+				<content>▲</content>
+			</txt>
+		</tad>
+
+		<tad id="TAButtonDownArrowLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>▼</source_meaning>
+				<translated_meaning>▼</translated_meaning>
+			</meaning>
+			<area x="-19" y="-5" w="40" h="10">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="16" color="0xffffff">
+				</font>
+				<content>▼</content>
+			</txt>
+		</tad>
+
+		<tad id="TAButtonDownArrowLabelPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>▼</source_meaning>
+				<translated_meaning>▼</translated_meaning>
+			</meaning>
+			<area x="-19" y="-10" w="40" h="20">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="28" color="0xffffff">
+				</font>
+				<content>▼</content>
+			</txt>
+		</tad>
+
+		<tad id="TAConnectionInterruptedLabel0" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Connection Interrupted.</source_meaning>
+				<translated_meaning>Connection Interrupted.</translated_meaning>
+			</meaning>
+			<area x="-30" y="-7" w="60" h="14">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xffffff">
+				</font>
+				<content>Connection Interrupted.</content>
+			</txt>
+		</tad>
+
+
+
+
+
+		
+		<tad id="TAConnectionInterruptedLabel1" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Hold on! Interstellar Winds!</source_meaning>
+				<translated_meaning>Hold on! Interstellar Winds!</translated_meaning>
+			</meaning>
+			<area x="-30" y="-7" w="60" h="14">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xffffff">
+				</font>
+				<content>Hold on! Interstellar Winds!</content>
+			</txt>
+		</tad>
+
+
+
+		<tad id="TAConnectionInterruptedLabel2" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Brace, Leaving Atmosphere!</source_meaning>
+				<translated_meaning>Brace, Leaving Atmosphere!</translated_meaning>
+			</meaning>
+			<area x="-30" y="-7" w="60" h="14">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xffffff">
+				</font>
+				<content>Brace, Leaving Atmosphere!</content>
+			</txt>
+		</tad>
+
+		<tad id="TAConnectionInterruptedLabel3" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Brace, Freak Turbulence!</source_meaning>
+				<translated_meaning>Brace, Freak Turbulence!</translated_meaning>
+			</meaning>
+			<area x="-30" y="-7" w="60" h="14">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xffffff">
+				</font>
+				<content>Brace, Freak Turbulence!</content>
+			</txt>
+		</tad>
+
+		<tad id="TAConnectionInterruptedLabel4" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Briefly Lost Contact With Rocket!</source_meaning>
+				<translated_meaning>Briefly Lost Contact With Rocket!</translated_meaning>
+			</meaning>
+			<area x="-30" y="-7" w="60" h="14">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xffffff">
+				</font>
+				<content>Briefly Lost Contact With Rocket!</content>
+			</txt>
+		</tad>
+
+		<tad id="TAConnectionInterruptedLabel5" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Signal Interruption..</source_meaning>
+				<translated_meaning>Signal Interruption..</translated_meaning>
+			</meaning>
+			<area x="-30" y="-7" w="60" h="14">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xffffff">
+				</font>
+				<content>Signal Interruption..</content>
+			</txt>
+		</tad>
+
+		<tad id="TAConnectionInterruptedLabel6" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Lost in Space, Reconnecting...</source_meaning>
+				<translated_meaning>Lost in Space, Reconnecting...</translated_meaning>
+			</meaning>
+			<area x="-30" y="-7" w="60" h="14">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xffffff">
+				</font>
+				<content>Lost in Space, Reconnecting...</content>
+			</txt>
+		</tad>
+
+		
+		<tad id="TAConnectionInterruptedLabel7" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Satellite Link Lost! Retrying…</source_meaning>
+				<translated_meaning>Satellite Link Lost! Retrying…</translated_meaning>
+			</meaning>
+			<area x="-30" y="-7" w="60" h="14">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xffffff">
+				</font>
+				<content>Satellite Link Lost! Retrying…</content>
+			</txt>
+		</tad>
+
+		
+
+
+
+
+		<tad id="TAConnectionInterruptedText" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Round may finish before connection resumes.</source_meaning>
+				<translated_meaning>Round may finish before connection resumes.</translated_meaning>
+			</meaning>
+			<area x="-30" y="-7" w="60" h="14">
+				<scale x="no_scale" y="no_scale" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="12" color="0xffffff">
+				</font>
+				<content>Round may finish before connection resumes.</content>
+			</txt>
+		</tad>
+
+		<!--...GAMEPLAY-->
+
+		<!-- PAYTABLE... -->
+		<tad id="TAPaytablePrintableLable" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>DETAILED RULES</source_meaning>
+				<translated_meaning>DETAILED RULES</translated_meaning>
+			</meaning>
+			<area x="-100" y="-29" w="200" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="18" color="0xffffff"></font>
+				<content>DETAILED RULES</content>
+			</txt>
+		</tad>
+		<!-- ...PAYTABLE -->
+
+		<!--SCREEN KEYBOARD...-->
+		<tad id="TACancelKeyboardButton" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Cancel</source_meaning>
+				<translated_meaning>Cancel</translated_meaning>
+			</meaning>
+			<area x="-45" y="-15" w="90" h="30">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="22" color="0xFFFFFF">
+				</font>
+				<content>Cancel</content>
+			</txt>
+		</tad>
+
+		<tad id="TAOKKeyboardButton" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OK</source_meaning>
+				<translated_meaning>OK</translated_meaning>
+			</meaning>
+			<area x="-45" y="-15" w="90" h="30">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="22" color="0x181818">
+				</font>
+				<content>OK</content>
+			</txt>
+		</tad>
+		<!--...SCREEN KEYBOARD-->
+
+		<!--BATTLEGROUND...-->
+		<!--CAF-->
+			<tad id="TABattlegroundDialogLogo" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>PLAYERVSPLAYER</source_meaning>
+				<translated_meaning>PLAYERVSPLAYER</translated_meaning>
+			</meaning>
+			<area x="-512" y="-64" w="1024" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]battleground/dialog/battleground_logo.png"/>
+		</tad>
+		<tad id="TACafPrivateBattlegroundPlayerKickButton" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>KICK</source_meaning>
+				<translated_meaning>KICK</translated_meaning>
+			</meaning>
+			<area x="-15" y="-10.7" w="30" h="14">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="bold" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_black" size="7" width="bold" color="0x000000"/>
+				<content>KICK</content>
+			</txt>
+		</tad>
+
+		<tad id="TACafPrivateBattlegroundPlayerInviteButton" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>INVITE</source_meaning>
+				<translated_meaning>INVITE</translated_meaning>
+			</meaning>
+			<area x="-18" y="-12.6" w="34" h="18">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="bold" auto_wrap="false" linespacing="auto"  letterspacing="2" >
+				<font name="fnt_nm_roboto_bold" size="14" width="bold" color="0xFFFFFF"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="90" alpha="1" blur="0"/>
+					</shadows>
+				</filters>
+				<content>INVITE</content>
+			</txt>
+		</tad>
+
+
+		<tad id="TACafPrivateBattlegroundPlayerOnlineFriends" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ONLINE</source_meaning>
+				<translated_meaning>ONLINE</translated_meaning>
+			</meaning>
+			<area x="-10" y="-10.7" w="150" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="bold" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_black" size="16" width="bold" color="0x000000"/>
+				<content>ONLINE</content>
+			</txt>
+		</tad>
+		<tad id="TABattlegroundStartsIn" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>PLAYERVSPLAYER STARTS IN</source_meaning>
+				<translated_meaning>PLAYERVSPLAYER STARTS IN</translated_meaning>
+			</meaning>
+			<area x="-256" y="-32" w="512" h="64">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]battleground/dialog/starts_in.png"/>
+		</tad>
+
+		<tad id="TABattlegroundJoinButtonCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CONFIRM BUY-IN!</source_meaning>
+				<translated_meaning>CONFIRM BUY-IN!</translated_meaning>
+			</meaning>
+			<area x="-80" y="-30" w="160" h="54">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0xFFFFFF"/>
+				<content>CONFIRM BUY-IN!</content>
+			</txt>
+		</tad>
+
+		<tad id="TACafPrivateBattlegroundPlayerKicked" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You have been kicked out of the round by the host</source_meaning>
+				<translated_meaning>You have been kicked out of the round by the host</translated_meaning>
+			</meaning>
+			<area x="-220" y="-32" w="440" h="64">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="bold" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="18" width="bold" color="0xffffff"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="1" blur="1"/>
+					</shadows>
+				</filters>
+				<content>You have been kicked out of the round by the host</content>
+			</txt>
+		</tad>
+
+		<tad id="TACafPrivateBattlegroundRoundAlreadyStarted" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Round already started. Please wait for next round</source_meaning>
+				<translated_meaning>Round already started. Please wait for next round</translated_meaning>
+			</meaning>
+			<area x="-220" y="-32" w="440" h="64">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="bold" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="18" width="bold" color="0xffffff"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="1" blur="1"/>
+					</shadows>
+				</filters>
+				<content>Round already started. Please wait for next round</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundCAFReadyButtonCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>READY</source_meaning>
+				<translated_meaning>READY</translated_meaning>
+			</meaning>
+			<area x="-80" y="-30" w="160" h="54">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0x181818"/>
+				<content>READY</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundCAFCancelReadyButtonCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CANCEL</source_meaning>
+				<translated_meaning>CANCEL</translated_meaning>
+			</meaning>
+			<area x="-80" y="-30" w="160" h="54">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0x181818"/>
+				<content>CANCEL</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundCAFStartRoundButtonCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>START ROUND</source_meaning>
+				<translated_meaning>START ROUND</translated_meaning>
+			</meaning>
+			<area x="-80" y="-30" w="160" h="54">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0x181818"/>
+				<content>START ROUND</content>
+			</txt>
+		</tad>
+		<tad id="TABattlegroundBackToLobbyButtonCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BACK TO LOBBY!</source_meaning>
+				<translated_meaning>BACK TO LOBBY!</translated_meaning>
+			</meaning>
+			<area x="-70" y="-18" w="140" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="13" color="0xFFFFFF"/>
+				<content>BACK TO LOBBY!</content>
+			</txt>
+		</tad>
+		<!---->
+		<tad id="TABattlegroundTotalPot" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TOTAL POT</source_meaning>
+				<translated_meaning>TOTAL POT</translated_meaning>
+			</meaning>
+			<area x="-78" y="-18" w="160" h="36">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_bold" size="35" color="0xFFFFFF">
+				</font>
+				<content>TOTAL POT</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundTotalPotMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TOTAL POT</source_meaning>
+				<translated_meaning>TOTAL POT</translated_meaning>
+			</meaning>
+			<area x="-78" y="-18" w="120" h="26">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_bold" size="53" color="0xFFFFFF">
+				</font>
+				<content>TOTAL POT</content>
+			</txt>
+		</tad>
+		
+		<tad id="TABattlegroundTotalPotCurrencySymbol" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX</source_meaning>
+				<translated_meaning>XX</translated_meaning>
+			</meaning>
+			<area x="-84" y="-30" w="30" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_bold" size="40" color="0xf4d425">
+				</font>
+					<filters>
+					<shadows>
+						<shadow color="0x704c07" distance="4" angle="80" alpha="0.6" blur="0"/>
+					</shadows>
+					</filters>				
+				<content>/VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundTotalPotValue" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX</source_meaning>
+				<translated_meaning>XX</translated_meaning>
+			</meaning>
+			<area x="-105" y="-45" w="210" h="90">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_bold" size="46" color="0xf4d425">
+				</font>
+					<filters>
+					<shadows>
+						<shadow color="0x704c07" distance="4" angle="85" alpha="0.6" blur="0"/>
+					</shadows>
+					</filters>				
+				<content>/VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundTotalAstronauts" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TOTAL ASTRONAUTS:</source_meaning>
+				<translated_meaning>TOTAL ASTRONAUTS:</translated_meaning>
+			</meaning>
+			<area x="-55" y="-23" w="90" h="31">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="28" color="0xe6bf4a">
+				</font>
+				<content>TOTAL&#010;ASTRONAUTS:</content>
+			</txt>
+		</tad>
+
+
+		<tad id="TABattlegroundTotalAstronautsPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TOTAL ASTRONAUTS</source_meaning>
+				<translated_meaning>TOTAL ASTRONAUTS</translated_meaning>
+			</meaning>
+			<area x="278" y="2" w="190" h="23">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="22" color="0xe6bf4a">
+				</font>
+				<content>TOTAL ASTRONAUTS</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundTotalAstronautsValue" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX</source_meaning>
+				<translated_meaning>XX</translated_meaning>
+			</meaning>
+			<area x="-80" y="-15" w="140" h="15">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="15" color="0xFFFFFF">
+				</font>
+				<content>/VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundBuyIn" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Join</source_meaning>
+				<translated_meaning>Join</translated_meaning>
+			</meaning>
+			<area x="-98" y="-13" w="200" h="26">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="20" color="0x181818">
+				</font>
+				<content>Join</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundBuyInPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Join</source_meaning>
+				<translated_meaning>Join</translated_meaning>
+			</meaning>
+			<area x="-100" y="-9" w="200" h="26">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="23" color="0x181818">
+				</font>
+				<content>Join</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundChangeBet" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Change Bid</source_meaning>
+				<translated_meaning>Change Bid</translated_meaning>
+			</meaning>
+			<area x="-98" y="-12" w="200" h="26">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="20" color="0x181818">
+				</font>
+				<content>Change Bid</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundChangeBetPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Change Bid</source_meaning>
+				<translated_meaning>Change Bid</translated_meaning>
+			</meaning>
+			<area x="-100" y="-9" w="200" h="26">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="23" color="0x181818">
+				</font>
+				<content>Change Bid</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundCancelBuyIn" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Cancel Bid</source_meaning>
+				<translated_meaning>Cancel Bid</translated_meaning>
+			</meaning>
+			<area x="-100" y="-13" w="200" h="26">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="20" color="0x181818">
+				</font>
+				<content>Cancel Bid</content>
+			</txt>
+		</tad>
+		<tad id="TABattlegroundCancelBuyInPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Cancel Bid</source_meaning>
+				<translated_meaning>Cancel Bid</translated_meaning>
+			</meaning>
+			<area x="-100" y="-9" w="200" h="26">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="23" color="0x181818">
+				</font>
+				<content>Cancel Bid</content>
+			</txt>
+		</tad>		
+
+		<tad id="TABattlegroundAstronautsSitinNickname" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX</source_meaning>
+				<translated_meaning>XX</translated_meaning>
+			</meaning>
+			<area x="-65" y="-13" w="130" h="26">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="16" color="0xffffff">
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="60" alpha="1" blur="1"/>
+					</shadows>
+				</filters>
+				<content>/VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundNextRoundInviteDescription" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>FOR A CHANCE</source_meaning>
+				<translated_meaning>FOR A CHANCE</translated_meaning>
+			</meaning>
+			<area x="31" y="-24" w="190" h="21">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="19" color="0xe6bf4a">
+				</font>
+				<content>FOR A CHANCE</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundNextRoundInviteDescriptionPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>FOR A CHANCE</source_meaning>
+				<translated_meaning>FOR A CHANCE</translated_meaning>
+			</meaning>
+			<area x="-22" y="18" w="298" h="29">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="28" color="0xe6bf4a">
+				</font>
+				<content>FOR A CHANCE</content>
+			</txt>
+		</tad>
+		
+		<tad id="TABattlegroundNextRoundInviteDescriptionMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>FOR A CHANCE</source_meaning>
+				<translated_meaning>FOR A CHANCE</translated_meaning>
+			</meaning>
+			<area x="31" y="-24" w="158" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="19" color="0xe6bf4a">
+				</font>
+				<content>FOR A CHANCE</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundNextRoundInviteDescriptionMobilePortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>FOR A CHANCE</source_meaning>
+				<translated_meaning>FOR A CHANCE</translated_meaning>
+			</meaning>
+			<area x="31" y="-8" w="167" h="29">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="28" color="0xe6bf4a">
+				</font>
+				<content>FOR A CHANCE</content>
+			</txt>
+		</tad>
+		
+		<tad id="TABattlegroundNextRoundInviteDescriptionSecond" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TO WIN:</source_meaning>
+				<translated_meaning>TO WIN:</translated_meaning>
+			</meaning>
+			<area x="31" y="-7" w="190" h="21">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="20" color="0xe6bf4a">
+				</font>
+				<content>TO WIN:</content>
+			</txt>
+		</tad>		
+
+		<tad id="TABattlegroundNextRoundInviteDescriptionSecondPortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TO WIN:</source_meaning>
+				<translated_meaning>TO WIN:</translated_meaning>
+			</meaning>
+			<area x="28" y="45" w="190" h="29">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="28" color="0xe6bf4a">
+				</font>
+				<content>TO WIN:</content>
+			</txt>
+		</tad>		
+
+		<tad id="TABattlegroundNextRoundInviteDescriptionSecondMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TO WIN:</source_meaning>
+				<translated_meaning>TO WIN:</translated_meaning>
+			</meaning>
+			<area x="31" y="-7" w="80" h="18">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="17" color="0xe6bf4a">
+				</font>
+				<content>TO WIN:</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundNextRoundInviteDescriptionSecondMobilePortrait" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TO WIN:</source_meaning>
+				<translated_meaning>TO WIN:</translated_meaning>
+			</meaning>
+			<area x="31" y="17" w="90" h="29">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="28" color="0xe6bf4a">
+				</font>
+				<content>TO WIN:</content>
+			</txt>
+		</tad>		
+	
+		<tad id="TABattlegroundFinalCountingGo" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>GO</source_meaning>
+				<translated_meaning>GO</translated_meaning>
+			</meaning>
+			<area x="-256" y="-256" w="512" h="512">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]battleground/go.png"/>
+		</tad>
+
+		<tad id="TABattlegroundFinalCountingGoGlow" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>GO</source_meaning>
+				<translated_meaning>GO</translated_meaning>
+			</meaning>
+			<area x="-256" y="-256" w="512" h="512">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]battleground/go_glow.png"/>
+		</tad>
+
+		<tad id="TABattlegroundYouWon" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>YOU WIN!</source_meaning>
+				<translated_meaning>YOU WIN!</translated_meaning>
+			</meaning>
+			<area x="-400" y="-80" w="1024" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]battleground/you_won/you_won.png"/>
+		</tad>
+
+		<tad id="TAbattlgeroundDialogNotEnoughPlayers" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>NOT ENOUGH PLAYERS</source_meaning>
+				<translated_meaning>NOT ENOUGH PLAYERS</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>NOT ENOUGH PLAYERS</content>
+			</txt>
+		</tad>
+
+		<tad id="TAbattlgeroundDialogRejoin" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your were idle for too long. Rejoin?</source_meaning>
+				<translated_meaning>Your were idle for too long. Rejoin?</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Your were idle for too long. Rejoin?</content>
+			</txt>
+		</tad>
+
+		<tad id="TAbattlgeroundDialogBidHasReturned" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your bid has been returned to you</source_meaning>
+				<translated_meaning>Your bid has been returned to you</translated_meaning>
+			</meaning>
+			<area x="-120" y="-20" w="240" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_roboto_medium" size="13" color="0xffffff"></font>
+				<content>Your bid has been returned to you</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundDialogButtonContinueAwaiting" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Continue waiting</source_meaning>
+				<translated_meaning>Continue waiting</translated_meaning>
+			</meaning>
+			<area x="-72" y="-12" w="144" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="18" color="0xFFFFFF" bold="true"/>
+				<content>Continue waiting</content>
+			</txt>
+		</tad>
+		
+		<tad id="TABattlegroundDialogButtonRejoin" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Rejoin</source_meaning>
+				<translated_meaning>Rejoin</translated_meaning>
+			</meaning>
+			<area x="-72" y="-12" w="144" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="18" color="0xFFFFFF" bold="true"/>
+				<content>Rejoin</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundDialogButtonChangeBuyIn" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Change Bid</source_meaning>
+				<translated_meaning>Change Bid</translated_meaning>
+			</meaning>
+			<area x="-72" y="-12" w="144" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="18" color="0xFFFFFF" bold="true"/>
+				<content>Change Bid</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundNextFlightInLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Next Flight In</source_meaning>
+				<translated_meaning>Next Flight In</translated_meaning>
+			</meaning>
+			<area x="-220" y="-54" w="440" h="50">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_myriad_pro_regular" size="38" color="0xffffff"></font>
+				<content>Next Flight In</content>
+			</txt>
+		</tad>
+
+		<tad id="TABCAFattlegroundNPlayersNeededLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Numbers Of Players</source_meaning>
+				<translated_meaning>Numbers Of Players</translated_meaning>
+			</meaning>
+			<area x="-220" y="-54" w="440" h="50">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_myriad_pro_regular" size="38" color="0xffffff"></font>
+				<content>Numbers Of Players</content>
+			</txt>
+		</tad>
+
+
+		<tad id="TABattlegroundRoundResultNickname" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX</source_meaning>
+				<translated_meaning>XX</translated_meaning>
+			</meaning>
+			<area x="-110" y="-30" w="220" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="center" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="36" color="0xffffff">
+				</font>
+				<content>/VALUE/</content>
+			</txt>
+		</tad>
+
+
+		<tad id="TABattlegroundRoundResultWinValue" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX</source_meaning>
+				<translated_meaning>XX</translated_meaning>
+			</meaning>
+			<area x="-65" y="-30" w="130" h="60">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_roboto_medium" size="36" color="0xf4d425">
+				</font>
+				<content>/VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultNoPlayersEjectMinusRakeLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Refund is buy-in minus Prize Multiplier XX</source_meaning>
+				<translated_meaning>Refund is buy-in minus Prize Multiplier XX</translated_meaning>
+			</meaning>
+			<area x="-160" y="-40" w="320" h="80">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_roboto_medium" size="17" color="0xffffff"></font>
+				<content>Refund is buy-in minus Prize Multiplier /VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TADebugIndicatorLabelMaxBlastChampions" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MAX BLAST CHAMPS   |   ROOM XX / ROUND ID: XX</source_meaning>
+				<translated_meaning> MAX BLAST CHAMPS   |   ROOM XX / ROUND ID: XX</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="400" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="" padding="">
+				<font name="fnt_nm_barlow_bold" size="11" color="0xffffff"></font>
+				<content>MAX BLAST CHAMPS   |   ROOM /ROOM_ID/ / ROUND ID: /ROUND_ID/</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundHistoryYouAndPlayer" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You and XX</source_meaning>
+				<translated_meaning>You and XX</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="100" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="11" color="0xffffff"></font>
+				<content>You and XX</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundHistoryXXWinners" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX winners</source_meaning>
+				<translated_meaning>XX winners</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="100" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="11" color="0xffffff"></font>
+				<content>XX winners</content>
+			</txt>
+		</tad>
+
+		<tad id="TACafPrivateBattlegroundRoomDeactivated" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Room owner closed or removed the room</source_meaning>
+				<translated_meaning>Room owner closed or removed the room</translated_meaning>
+			</meaning>
+			<area x="-220" y="-32" w="440" h="64">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="bold" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="18" width="bold" color="0xffffff"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="1" blur="1"/>
+					</shadows>
+				</filters>
+				<content>Room owner closed or removed the room</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundHistoryYouAndXXWinners" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You and XX winners</source_meaning>
+				<translated_meaning>You and XX winners</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="100" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="11" color="0xffffff"></font>
+				<content>You and XX winners</content>
+			</txt>
+		</tad>
+		<!--...BATTLEGROUND-->
+
+
+	</tasds>
+</td>
