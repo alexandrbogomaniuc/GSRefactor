@@ -73,6 +73,12 @@
           "evidence": "docs/phase5-session-replay-window-and-report-20260220-153020.md"
         },
         {
+          "id": "ar-redis-state-blob",
+          "label": "Redis deterministic state-blob cache foundation",
+          "status": "done",
+          "evidence": "docs/53-phase5-gameplay-redis-state-blob-foundation-20260220-183300.md"
+        },
+        {
           "id": "ar-outbox-canary-gate",
           "label": "Outbox DLQ/replay trend gates for canary rollout",
           "status": "done",
@@ -118,7 +124,7 @@
           "id": "se-gameplay-orchestrator",
           "label": "3) Gameplay Orchestrator extraction",
           "status": "in_progress",
-          "evidence": "docs/phase5-gameplay-orchestrator-canary-hook-20260220-160030.md"
+          "evidence": "docs/54-phase5-gameplay-canary-probe-redis-state-blob-20260220-180200.md"
         },
         {
           "id": "se-wallet-adapter",

@@ -3047,3 +3047,41 @@
   - script-mode Docker calls remain intermittently blocked by sandbox socket permission; direct command path is validated and documented.
 - Next:
   - add replay reporting to dashboard page summary tile and DLQ trend alert baselines.
+
+### 2026-02-20 17:54-18:00 UTC
+- Added Phase 5 gameplay deterministic state-blob foundation with Redis-first cache and file fallback (fail-open):
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/gameplay-orchestrator/src/store.js`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/gameplay-orchestrator/src/server.js`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/gameplay-orchestrator/package.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/contracts/openapi/gameplay-orchestrator-v1.yaml`
+- Extended refactor-only containers with Redis and env wiring:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor/docker-compose.yml`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/cluster-hosts.properties`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/sync-cluster-hosts.sh`
+  - regenerated `.env` files via `sync-cluster-hosts.sh`.
+- Added evidence doc and checklist pointer:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/53-phase5-gameplay-redis-state-blob-foundation-20260220-183300.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+- Verification:
+  - `bash -n` on sync script passed.
+  - `node --check` passed for gameplay orchestrator `store.js` and `server.js`.
+  - `docker compose ...refactor... config --services` lists `redis` plus extracted services.
+  - file-backend smoke passed for state blob put/get with deterministic fingerprint output.
+- Result:
+  - Redis is now integrated into refactor microservice architecture for deterministic state blobs without impacting legacy runtime paths.
+- Next step:
+  - Add gameplay canary probe that verifies Redis path in refactor runtime for bank `6275` and captures PASS/FAIL evidence.
+
+### 2026-02-20 18:00-18:03 UTC
+- Expanded gameplay canary tooling to include deterministic state-blob verification and host transport mode:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-gameplay-canary-probe.sh`
+  - evidence doc: `/Users/alexb/Documents/Dev/Dev_new/docs/54-phase5-gameplay-canary-probe-redis-state-blob-20260220-180200.md`
+- Updated checklist evidence pointer for gameplay orchestrator extraction and re-synced runtime support checklist JSON.
+- Verification:
+  - `bash -n .../phase5-gameplay-canary-probe.sh` (pass)
+  - `.../phase5-gameplay-canary-probe.sh --help` (pass)
+  - host probe execution currently blocked: `curl: (7) Failed to connect to 127.0.0.1:18074`.
+- Result:
+  - tooling is ready; runtime blocker remains inactive refactor services in current environment.
+- Next step:
+  - start refactor stack and run canary with `--require-redis-hit=true` for bank `6275`.

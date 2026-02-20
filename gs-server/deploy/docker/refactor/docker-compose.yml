@@ -101,6 +101,16 @@ services:
     ports:
       - "19092:29092"
 
+  redis:
+    image: redis:7.2-alpine
+    command: redis-server --appendonly yes
+    networks:
+      - refactor-network
+    volumes:
+      - refactor-redis-data:/data
+    ports:
+      - "16379:6379"
+
   static:
     build: ../configs/static
     image: refactor-static
@@ -161,12 +171,19 @@ services:
       - SERVICE_NAME=gameplay-orchestrator
       - GAMEPLAY_ORCHESTRATOR_ROUTE_ENABLED=${GAMEPLAY_ORCHESTRATOR_ROUTE_ENABLED}
       - GAMEPLAY_ORCHESTRATOR_CANARY_BANKS=${GAMEPLAY_ORCHESTRATOR_CANARY_BANKS}
+      - GAMEPLAY_STATE_CACHE_BACKEND=${GAMEPLAY_STATE_CACHE_BACKEND}
+      - GAMEPLAY_STATE_BLOB_TTL_SECONDS=${GAMEPLAY_STATE_BLOB_TTL_SECONDS}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - REDIS_DB=${REDIS_DB}
     volumes:
       - refactor-gameplay-orchestrator-data:/data
     ports:
       - "${GAMEPLAY_ORCHESTRATOR_PORT}:${GAMEPLAY_ORCHESTRATOR_PORT}"
     networks:
       - refactor-network
+    depends_on:
+      - redis
 
   wallet-adapter:
     build: ../../../refactor-services/wallet-adapter
@@ -245,6 +262,7 @@ networks:
 
 volumes:
   refactor-cassandra-data:
+  refactor-redis-data:
   refactor-config-service-data:
   refactor-session-service-data:
   refactor-gameplay-orchestrator-data:

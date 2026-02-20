@@ -90,6 +90,39 @@ paths:
       responses:
         '200':
           description: Intents list
+  /api/v1/gameplay/state-blobs/{stateKey}:
+    put:
+      summary: Upsert deterministic gameplay state blob
+      parameters:
+        - in: path
+          name: stateKey
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StateBlobUpsertRequest'
+      responses:
+        '200':
+          description: State blob stored
+        '400':
+          description: Validation error
+    get:
+      summary: Read deterministic gameplay state blob
+      parameters:
+        - in: path
+          name: stateKey
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: State blob found
+        '404':
+          description: State blob missing or expired
   /api/v1/outbox:
     get:
       summary: List outbox events
@@ -153,3 +186,22 @@ components:
         metadata:
           type: object
           additionalProperties: true
+    StateBlobUpsertRequest:
+      type: object
+      required: [seed, state]
+      properties:
+        seed:
+          description: Deterministic seed or seed source.
+          oneOf:
+            - type: string
+            - type: number
+        state:
+          description: Current deterministic state payload.
+          type: object
+          additionalProperties: true
+        context:
+          type: object
+          additionalProperties: true
+        ttlSeconds:
+          type: integer
+          minimum: 30

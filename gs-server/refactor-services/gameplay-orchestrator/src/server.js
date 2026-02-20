@@ -13,7 +13,12 @@ const app = express();
 app.use(express.json({ limit: '2mb' }));
 
 app.get('/health', (_req, res) => {
-  res.json({ status: 'ok', service: SERVICE_NAME, now: new Date().toISOString() });
+  res.json({
+    status: 'ok',
+    service: SERVICE_NAME,
+    now: new Date().toISOString(),
+    stateCache: store.getStateCacheStatus()
+  });
 });
 
 app.get('/api/v1/gameplay/routing/decision', (req, res) => {
@@ -78,6 +83,36 @@ app.post('/api/v1/gameplay/settle-intents', (req, res) => {
     return res.status(result.code).json({ error: result.message });
   }
   return res.json({ intent: result.intent, idempotent: result.idempotent });
+});
+
+app.put('/api/v1/gameplay/state-blobs/:stateKey', async (req, res) => {
+  const result = await store.putStateBlob({
+    stateKey: req.params.stateKey,
+    seed: req.body.seed,
+    state: req.body.state,
+    context: req.body.context || {},
+    ttlSeconds: req.body.ttlSeconds
+  });
+  if (!result.ok) {
+    return res.status(result.code).json({ error: result.message });
+  }
+  return res.json({
+    stateBlob: result.stateBlob,
+    cacheBackend: result.cacheBackend,
+    degradedFromRedis: result.degradedFromRedis
+  });
+});
+
+app.get('/api/v1/gameplay/state-blobs/:stateKey', async (req, res) => {
+  const result = await store.getStateBlob(req.params.stateKey);
+  if (!result.ok) {
+    return res.status(result.code).json({ error: result.message, degradedFromRedis: result.degradedFromRedis });
+  }
+  return res.json({
+    stateBlob: result.stateBlob,
+    cacheBackend: result.cacheBackend,
+    degradedFromRedis: result.degradedFromRedis
+  });
 });
 
 app.get('/api/v1/gameplay/intents', (req, res) => {
