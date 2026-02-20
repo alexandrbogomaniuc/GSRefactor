@@ -1,0 +1,132 @@
+openapi: 3.0.3
+info:
+  title: ABS Multiplayer Service API
+  version: 1.0.0
+  description: Multiplayer service scaffold for routing decision and lobby/session operations.
+servers:
+  - url: http://localhost:18079
+paths:
+  /health:
+    get:
+      summary: Service health
+      responses:
+        '200':
+          description: OK
+  /api/v1/multiplayer/routing/decision:
+    get:
+      summary: Routing decision by bank/game/session
+      parameters:
+        - in: query
+          name: bankId
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: gameId
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: sessionId
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: isMultiplayer
+          required: true
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Routing decision
+  /api/v1/multiplayer/lobby/join:
+    post:
+      summary: Join lobby
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionOperationRequest'
+      responses:
+        '200':
+          description: Joined lobby
+        '400':
+          description: Validation error
+  /api/v1/multiplayer/room/sit-in:
+    post:
+      summary: Sit in room
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionOperationRequest'
+      responses:
+        '200':
+          description: Sit-in accepted
+        '400':
+          description: Validation error
+  /api/v1/multiplayer/room/sit-out:
+    post:
+      summary: Sit out room
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionOperationRequest'
+      responses:
+        '200':
+          description: Sit-out accepted
+        '400':
+          description: Validation error
+  /api/v1/multiplayer/session/sync:
+    post:
+      summary: Session sync
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionOperationRequest'
+      responses:
+        '200':
+          description: Session synced
+        '400':
+          description: Validation error
+  /api/v1/multiplayer/sessions:
+    get:
+      summary: List multiplayer sessions
+      parameters:
+        - in: query
+          name: bankId
+          schema:
+            type: string
+        - in: query
+          name: sessionId
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session list
+components:
+  schemas:
+    SessionOperationRequest:
+      type: object
+      required: [bankId, sessionId, playerId]
+      properties:
+        bankId:
+          type: string
+        sessionId:
+          type: string
+        playerId:
+          type: string
+        lobbyId:
+          type: string
+        roomId:
+          type: string
+        operationId:
+          type: string
+        status:
+          type: string

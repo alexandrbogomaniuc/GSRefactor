@@ -3338,3 +3338,40 @@
   - Current environment remains `NOT_READY` due unavailable endpoints/docker socket.
 - Next step:
   - finalize and commit this history checkpoint; retry push when network access to github.com is available.
+
+### 2026-02-20 19:02-19:08 UTC
+- Started Phase 6 multiplayer extraction scaffold in isolated refactor stack.
+- Implementation updates:
+  - Added new microservice scaffold:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/multiplayer-service/*`
+    - routing decision endpoint with bank capability map (`MULTIPLAYER_SERVICE_BANK_FLAGS`), lobby/session APIs, persisted local store.
+  - Added OpenAPI + contracts index:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/contracts/openapi/multiplayer-service-v1.yaml`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/contracts/README.md`
+  - Wired refactor config/compose:
+    - `cluster-hosts.properties` (deploy + portal resources)
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/sync-cluster-hosts.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor/docker-compose.yml`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor/README.md`
+  - Added Phase 6 scripts:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-canary-probe.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-runtime-readiness-check.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-runtime-evidence-pack.sh`
+  - Added docs and support evidence wiring:
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/71-phase6-multiplayer-service-scaffold-and-routing-20260220-191300.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/72-phase6-multiplayer-runtime-evidence-pack-tooling-20260220-191400.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+- Evidence:
+  - `bash -n` passed for sync and all Phase 6 scripts.
+  - `node --check` passed for multiplayer service files.
+  - `sync-cluster-hosts.sh` executed and regenerated refactor/docker env files.
+  - `docker compose ... config --services` includes `multiplayer-service`.
+  - `phase6-multiplayer-runtime-evidence-pack.sh` produced report:
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/phase6/multiplayer/phase6-multiplayer-runtime-evidence-20260220-190732.md`
+- Result:
+  - Phase 6 now has isolated multiplayer microservice baseline with canary/readiness/evidence tooling.
+  - Runtime remains `NOT_READY` in this environment due endpoint/docker access blockers.
+- Next step:
+  - commit this Phase 6 scaffold batch and continue with GS compatibility-facade shadow hook to multiplayer-service decision endpoint.

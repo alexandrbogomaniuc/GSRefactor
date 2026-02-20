@@ -230,6 +230,22 @@ services:
     networks:
       - refactor-network
 
+  multiplayer-service:
+    build: ../../../refactor-services/multiplayer-service
+    image: refactor-multiplayer-service
+    environment:
+      - PORT=${MULTIPLAYER_SERVICE_PORT}
+      - SERVICE_NAME=multiplayer-service
+      - MULTIPLAYER_SERVICE_ROUTE_ENABLED=${MULTIPLAYER_SERVICE_ROUTE_ENABLED}
+      - MULTIPLAYER_SERVICE_CANARY_BANKS=${MULTIPLAYER_SERVICE_CANARY_BANKS}
+      - MULTIPLAYER_SERVICE_BANK_FLAGS=${MULTIPLAYER_SERVICE_BANK_FLAGS}
+    volumes:
+      - refactor-multiplayer-service-data:/data
+    ports:
+      - "${MULTIPLAYER_SERVICE_PORT}:${MULTIPLAYER_SERVICE_PORT}"
+    networks:
+      - refactor-network
+
   protocol-adapter:
     build: ../../../refactor-services/protocol-adapter
     image: refactor-protocol-adapter
@@ -269,4 +285,5 @@ volumes:
   refactor-wallet-adapter-data:
   refactor-bonus-frb-service-data:
   refactor-history-service-data:
+  refactor-multiplayer-service-data:
   refactor-protocol-adapter-data:

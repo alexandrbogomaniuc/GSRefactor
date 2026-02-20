@@ -74,6 +74,11 @@
                 <td><span class="label label-warning">NOT_READY (last known)</span></td>
                 <td><code>docs/phase5/history/phase5-history-runtime-evidence-20260220-190016.md</code></td>
             </tr>
+            <tr>
+                <td>Phase 6 multiplayer evidence</td>
+                <td><span class="label label-warning">NOT_READY (last known)</span></td>
+                <td><code>docs/phase6/multiplayer/phase6-multiplayer-runtime-evidence-20260220-190732.md</code></td>
+            </tr>
             </tbody>
         </table>
         <p class="small-note">
@@ -152,6 +157,21 @@
 </code></pre>
         <p class="small-note">
             Output reports: <code>docs/phase5/history/phase5-history-runtime-evidence-*.md</code>
+        </p>
+    </div>
+
+    <div class="section">
+        <h4>Phase 6 Multiplayer Runtime Check</h4>
+        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-runtime-readiness-check.sh
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-runtime-evidence-pack.sh \
+  --bank-id 6275 \
+  --game-id 838 \
+  --transport host \
+  --multiplayer-base-url http://127.0.0.1:18079
+</code></pre>
+        <p class="small-note">
+            Output reports: <code>docs/phase6/multiplayer/phase6-multiplayer-runtime-evidence-*.md</code>
         </p>
     </div>
 

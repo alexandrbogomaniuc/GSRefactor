@@ -9,6 +9,7 @@ Versioned interface contracts for extracted microservices.
 - `openapi/wallet-adapter-v1.yaml`
 - `openapi/bonus-frb-service-v1.yaml`
 - `openapi/history-service-v1.yaml`
+- `openapi/multiplayer-service-v1.yaml`
 - `openapi/protocol-adapter-v1.yaml`
 
 These files are the baseline for compatibility-facade routing and third-party integration onboarding.

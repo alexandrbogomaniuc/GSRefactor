@@ -24,6 +24,7 @@ docker compose -p refactor down
 - wallet-adapter: `18075`
 - bonus-frb-service: `18076`
 - history-service: `18077`
+- multiplayer-service: `18079`
 - protocol-adapter: `18078`
 - gs debug/admin: `16000`, `16001`, `19000`
 - mp: `16300`, `16301`
@@ -39,6 +40,7 @@ curl -sS http://127.0.0.1:18074/health
 curl -sS http://127.0.0.1:18075/health
 curl -sS http://127.0.0.1:18076/health
 curl -sS http://127.0.0.1:18077/health
+curl -sS http://127.0.0.1:18079/health
 curl -sS http://127.0.0.1:18078/health
 ```
 
