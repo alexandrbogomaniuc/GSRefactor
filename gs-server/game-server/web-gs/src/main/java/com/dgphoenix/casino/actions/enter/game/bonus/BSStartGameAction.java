@@ -2,6 +2,7 @@ package com.dgphoenix.casino.actions.enter.game.bonus;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.actions.enter.LanguageDetector;
+import com.dgphoenix.casino.actions.enter.game.routing.BonusFrbServiceRoutingBridge;
 import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
@@ -105,6 +106,9 @@ public class BSStartGameAction extends BaseStartGameAction<BSStartGameForm> {
                     addErrorWithPersistence(request, "error.login.internalServerError", exception, System.currentTimeMillis());
                     throw exception;
                 }
+
+                shadowBonusFrbCheck(actionForm.getBankId(), accountInfo.getId(), bonus.getId(), actionForm.getToken());
+
                 boolean multiPlayerGame = isMultiPlayerGame(gameId);
                 GameSession oldGameSession = SessionHelper.getInstance().getTransactionData().getGameSession();
                 SessionInfo sessionInfo;
@@ -246,5 +250,22 @@ public class BSStartGameAction extends BaseStartGameAction<BSStartGameForm> {
     @Override
     protected void persistError(HttpServletRequest request, Exception exception, long exceptionTime) {
         errorPersisterHelper.persistStartGameActionError(request, exception, exceptionTime);
+    }
+
+    private void shadowBonusFrbCheck(long bankId, long accountId, long frbId, String traceToken) {
+        try {
+            BonusFrbServiceRoutingBridge.RouteDecision routeDecision =
+                    BonusFrbServiceRoutingBridge.getInstance().decide(bankId);
+            BonusFrbServiceRoutingBridge.getInstance().shadowCheckFrb(
+                    routeDecision,
+                    bankId,
+                    String.valueOf(accountId),
+                    String.valueOf(frbId),
+                    traceToken
+            );
+        } catch (Exception e) {
+            LOG.warn("bonus-frb-service shadow check failed (ignored): bankId={}, accountId={}, frbId={}, reason={}",
+                    bankId, accountId, frbId, e.getMessage());
+        }
     }
 }

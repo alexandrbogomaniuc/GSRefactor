@@ -12,6 +12,18 @@ paths:
       responses:
         '200':
           description: OK
+  /api/v1/bonus/frb/routing/decision:
+    get:
+      summary: Routing decision by bank
+      parameters:
+        - in: query
+          name: bankId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Routing decision
   /api/v1/bonus/frb/check:
     get:
       summary: Check FRB state

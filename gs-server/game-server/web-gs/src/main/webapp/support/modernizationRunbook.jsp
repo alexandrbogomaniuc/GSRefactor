@@ -64,6 +64,11 @@
                 <td><span class="label label-warning">NOT_READY (last known)</span></td>
                 <td><code>docs/phase5/wallet/phase5-wallet-runtime-evidence-20260220-184505.md</code></td>
             </tr>
+            <tr>
+                <td>Phase 5 bonus/FRB evidence</td>
+                <td><span class="label label-warning">NOT_READY (last known)</span></td>
+                <td><code>docs/phase5/bonus-frb/phase5-bonus-frb-runtime-evidence-20260220-185313.md</code></td>
+            </tr>
             </tbody>
         </table>
         <p class="small-note">
@@ -114,6 +119,20 @@
 </code></pre>
         <p class="small-note">
             Output reports: <code>docs/phase5/wallet/phase5-wallet-runtime-evidence-*.md</code>
+        </p>
+    </div>
+
+    <div class="section">
+        <h4>Phase 5 Bonus/FRB Runtime Check</h4>
+        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-bonus-frb-runtime-readiness-check.sh
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-bonus-frb-runtime-evidence-pack.sh \
+  --bank-id 6275 \
+  --transport host \
+  --bonus-base-url http://127.0.0.1:18076
+</code></pre>
+        <p class="small-note">
+            Output reports: <code>docs/phase5/bonus-frb/phase5-bonus-frb-runtime-evidence-*.md</code>
         </p>
     </div>
 

@@ -3273,3 +3273,35 @@
   - Wallet-adapter extraction now has GS shadow integration + executable canary/evidence workflow.
 - Next step:
   - commit and push this wallet-adapter checkpoint; then continue with Bonus/FRB service shadow verification.
+
+### 2026-02-20 18:46-18:53 UTC
+- Continued Phase 5 extraction on Bonus/FRB service without touching legacy runtime.
+- Implementation updates:
+  - Added GS fail-open canary bridge + hook:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/routing/BonusFrbServiceRoutingBridge.java`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java`
+  - Added bonus-frb routing decision endpoint and docs:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/bonus-frb-service/src/server.js`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/contracts/openapi/bonus-frb-service-v1.yaml`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/bonus-frb-service/README.md`
+  - Added Bonus/FRB canary + readiness/evidence-pack scripts:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-bonus-frb-canary-probe.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-bonus-frb-runtime-readiness-check.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-bonus-frb-runtime-evidence-pack.sh`
+  - Added docs and wired portal/checklist evidence:
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/67-phase5-bonus-frb-shadow-hook-and-canary-20260220-190200.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/68-phase5-bonus-frb-runtime-evidence-pack-tooling-20260220-190300.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+- Evidence:
+  - `bash -n` passed for all three bonus scripts.
+  - `--help` passed for readiness and evidence-pack scripts.
+  - `node --check .../bonus-frb-service/src/server.js` passed.
+  - `phase5-bonus-frb-runtime-evidence-pack.sh` produced report:
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/phase5/bonus-frb/phase5-bonus-frb-runtime-evidence-20260220-185313.md`
+- Result:
+  - Bonus/FRB extraction now matches gameplay/wallet flow with fail-open GS shadowing, bank canary routing decision, and one-command runtime evidence collection.
+  - Current environment remains `NOT_READY` due unavailable endpoints/docker socket.
+- Next step:
+  - Continue Phase 5 by wiring history-service shadow hooks and adding history runtime readiness/evidence-pack scripts for bank `6275`.
