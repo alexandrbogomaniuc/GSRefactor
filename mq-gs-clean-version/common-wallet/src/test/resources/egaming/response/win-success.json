@@ -1,0 +1,10 @@
+{
+  "status": 1002,
+  "userID": "player",
+  "sessionID": "sssiiidd_1",
+  "roundID": "1234567890",
+  "betID":  "22222222222",
+  "winID": "22222222222",
+  "balance": 32200,
+  "sign": "qwerty123"
+}

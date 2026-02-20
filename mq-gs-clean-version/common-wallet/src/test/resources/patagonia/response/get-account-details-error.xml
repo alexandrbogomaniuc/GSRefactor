@@ -1,0 +1,8 @@
+<PKT>
+    <Result Name="GetAccountDetails" Success="0">
+        <Returnset>
+            <Error Type="string" Value="Invalid Hash." />
+            <ErrorCode Type="string" Value="7000" />
+        </Returnset>
+    </Result>
+</PKT>

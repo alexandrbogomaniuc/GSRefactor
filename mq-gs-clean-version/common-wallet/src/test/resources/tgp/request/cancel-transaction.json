@@ -1,0 +1,17 @@
+{
+  "authtoken": "j1ZNFsImdv8NVInP279E1vRZRmN",
+  "unlockedamt": 100.0,
+  "transactions": [
+    {
+      "cur": "RMB",
+      "txid": "4e81fe6b-8b54-4f97-92c5-03c9ed2b923a",
+      "txrefid": "007358be-d842-4f43-8bc9-2f689513ffa1",
+      "betrecid": "cd84aa61-26dd-40e9-a3df-2bfacf91ef04",
+      "gameid": "FG-FLASH",
+      "roundid": "df6de18d7cbe4d7bbcf75f55a4c03fd2",
+      "timestamp": "2016-05-18T20:56:54.9424423+08:00",
+      "desc": null,
+      "roundclosed": false
+    }
+  ]
+}

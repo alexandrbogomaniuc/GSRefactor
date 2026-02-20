@@ -1,0 +1,38 @@
+{
+  "gameCycleId": "123",
+  "playerId": "pop-player",
+  "accountId": "",
+  "accountBalance": {
+    "playerId": "pop-player",
+    "accountId": "",
+    "currencyCode": "EUR",
+    "balanceArray": [
+      {
+        "balanceType": "cashable",
+        "balanceAmt": 9900
+      }
+    ]
+  },
+  "errorCode": "",
+  "errorMsg": "",
+  "moneyAckArray": [
+    {
+      "transType": "debit",
+      "transAmt": 100,
+      "transCategory": "wager",
+      "transId": "123456",
+      "referenceId": "bsg-123456",
+      "transSeq": 1,
+      "moneyDetailArray": [
+        {
+          "balanceType": "cashable",
+          "detailAmt": 100,
+          "detailType": "debit",
+          "balanceAmt": 9900
+        }
+      ],
+      "errorCode": "",
+      "errorMsg": ""
+    }
+  ]
+}

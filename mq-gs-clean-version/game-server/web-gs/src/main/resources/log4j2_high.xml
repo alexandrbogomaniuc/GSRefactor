@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} %-5p [%c{1} %t] %m%n" />
+        </Console>
+        <RollingMemoryMappedFile name="ERROR" fileName="${gs-logDir}error.log" filePattern="${gs-logDir}error.log.%i" immediateFlush="false">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} %-5p [%c{1} %t] %m%n" />
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingMemoryMappedFile>
+
+        <RollingMemoryMappedFile name="COMMON" fileName="${gs-logDir}common.log" filePattern="${gs-logDir}common.log.%i" immediateFlush="false">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} %-5p [%c{1} %t] %m%n" />
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingMemoryMappedFile>
+
+        <RollingMemoryMappedFile name="SIS" fileName="${gs-logDir}sis.log" filePattern="${gs-logDir}sis.log.%i" immediateFlush="false">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} %-5p [%c{1} %t] %m%n"/>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingMemoryMappedFile>
+        <RollingMemoryMappedFile name="SISAPI" fileName="${gs-logDir}sis-api.log" filePattern="${gs-logDir}sis-api.log.%i" immediateFlush="false">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} %-5p [%c{1} %t] %m%n"/>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingMemoryMappedFile>
+        <RollingMemoryMappedFile name="GameServletController" fileName="${gs-logDir}game-controller.log" filePattern="${gs-logDir}game-controller.log.%i" immediateFlush="false">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} %-5p [%c{1} %t] %m%n"/>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingMemoryMappedFile>
+        <Dynamic name="GAME_REAL">
+            <Routes pattern="$${ctx:gameName}">
+                <Route>
+                    <RollingMemoryMappedFile name="GAME_REAL-${ctx:gameName}"
+                                             fileName="${gs-logDir}games/${ctx:gameName}.log"
+                                             filePattern="${gs-logDir}games/${ctx:gameName}.log.%i" immediateFlush="false"
+                                             regionLength="8388608">
+                        <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} %-5p [%c{1} %t] %m%n"/>
+                        <Policies>
+                            <SizeBasedTriggeringPolicy size="50 MB"/>
+                        </Policies>
+                        <DefaultRolloverStrategy max="10"/>
+                    </RollingMemoryMappedFile>
+                </Route>
+            </Routes>
+        </Dynamic>
+        <Dynamic name="GAME_FREE">
+            <Routes pattern="$${ctx:gameName}">
+                <Route>
+                    <RollingMemoryMappedFile name="GAME_FREE-${ctx:gameName}"
+                                             fileName="${gs-logDir}games/${ctx:gameName}_free.log"
+                                             filePattern="${gs-logDir}games/${ctx:gameName}_free.log.%i" immediateFlush="false"
+                                             regionLength="4194304">
+                        <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} %-5p [%c{1} %t] %m%n"/>
+                        <Policies>
+                            <SizeBasedTriggeringPolicy size="100 MB"/>
+                        </Policies>
+                        <DefaultRolloverStrategy max="0"/>
+                    </RollingMemoryMappedFile>
+                </Route>
+            </Routes>
+        </Dynamic>
+    </Appenders>
+    <Loggers>
+        <Root level="error" additivity="false">
+            <AppenderRef ref="ERROR"/>
+        </Root>
+        <Logger name="com.dgphoenix.casino" level="${common_log_level}" additivity="false">
+            <AppenderRef ref="COMMON" level="${common_log_level}" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="com.dgphoenix.casino.filters.HttpServletRequestProxy" level="ERROR" additivity="false">
+            <AppenderRef ref="COMMON" level="ERROR" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="com.dgphoenix.casino.common.util.NtpTimeProvider" level="ERROR" additivity="false">
+            <AppenderRef ref="COMMON" level="ERROR" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="HttpServletRequestProxy" level="ERROR" additivity="false">
+            <AppenderRef ref="COMMON" level="ERROR" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="NtpTimeProvider" level="ERROR" additivity="false">
+            <AppenderRef ref="COMMON" level="ERROR" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="com.dgphoenix.casino.alert.dispatcher.AlertDispatcher" level="fatal" additivity="false">
+            <AppenderRef ref="COMMON" />
+        </Logger>
+
+        <Logger name="GAME_REAL" level="${common_log_level}" additivity="false">
+            <AppenderRef ref="GAME_REAL" level="${common_log_level}" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+
+        <Logger name="GAME_FREE" level="${common_log_level}" additivity="false">
+            <AppenderRef ref="GAME_FREE" level="${common_log_level}" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+
+        <!-- SIS START-->
+        <Logger name="com.dgphoenix.casino.slotsstories" level="${common_log_level}" additivity="false">
+            <AppenderRef ref="SIS" level="${common_log_level}" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="com.dgphoenix.casino.common.cache.data.slotsstories" level="${common_log_level}" additivity="false">
+            <AppenderRef ref="SIS" level="${common_log_level}" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="com.dgphoenix.casino.cassandra.persist.slotsstories" level="${common_log_level}" additivity="false">
+            <AppenderRef ref="SIS" level="${common_log_level}" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="com.dgphoenix.casino.slotsstories.clientapi" level="${common_log_level}" additivity="false">
+            <AppenderRef ref="SISAPI" level="${common_log_level}" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <!-- SIS END-->
+    </Loggers>
+</Configuration>

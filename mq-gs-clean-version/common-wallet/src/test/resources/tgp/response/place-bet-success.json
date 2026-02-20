@@ -1,0 +1,16 @@
+{
+  "bal": 206.5,
+  "cur": "RMB",
+  "transactions": [
+    {
+      "txid": "662674",
+      "ptxid": "c6c2fcf9-4685-4a91-8f57-e5185655a727",
+      "dup": false
+    }
+  ],
+  "jackpotwin": {
+    "id": "Dragon",
+    "amt": 1532,
+    "redeemcode": "1563446977964"
+  }
+}

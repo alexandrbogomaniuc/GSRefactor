@@ -1,0 +1,18 @@
+<object-stream>
+  <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    <key>507</key>
+    <value class="com.dgphoenix.casino.common.cache.data.bank.SubCasino">
+      <id>507</id>
+      <name>MQ TECNOLOGIA</name>
+      <defaultBank>6274</defaultBank>
+      <bankIds>
+        <long>6274</long>
+        <long>6275</long>
+      </bankIds>
+      <domainNames>
+<!--        <string>lobby-gp3.maxquest.com</string>-->
+          <string>default-stress.betsoftgaming.com</string>
+      </domainNames>
+    </value>
+  </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+</object-stream>

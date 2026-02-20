@@ -1,0 +1,58 @@
+{
+  "authtoken": "Cl5qFZIaujEBtSEaoXzCIQYIfD",
+  "unlockedamt": 100.0,
+  "transactions": [
+    {
+      "amt": 20,
+      "commission": 5.0,
+      "cur": "RMB",
+      "txid": "98e8dfaa-bcab-46a8-8b18-24ec4f796150",
+      "txrefid": "48dc14d2-10a2-4250-a44d-59ae26e1528d",
+      "betrecid": "0ef4563a-c1ad-4a1d-a896-0ddcda480888",
+      "gameid": "FG-FLASH",
+      "txtype": 510,
+      "roundid": "fb8433ed685e4b38b2c1add3c8298945",
+      "timestamp": "2016-05-18T20:56:52.8660252+08:00",
+      "desc": null
+    },
+    {
+      "amt": 10,
+      "cur": "RMB",
+      "txid": "b4aa18b7-74fc-420f-8b65-7b8640ec1ea4",
+      "txrefid": "9ef1fab4-799c-44cd-b2f6-f470b7173be8",
+      "betrecid": "6f6355dc-8012-406b-8a59-fb895c18fb28",
+      "gameid": "FG-FLASH",
+      "txtype": 550,
+      "roundid": "43e983a80f094e0fb693ce3d9380fc3d",
+      "timestamp": "2016-05-18T20:56:52.9199049+08:00",
+      "desc": null
+    },
+    {
+      "amt": 0,
+      "uselockedamt": true,
+      "commission": 4.0,
+      "cur": "RMB",
+      "txid": "0031cf78-71a0-4d72-a336-3f8550d7d59e",
+      "txrefid": "9ef1fab4-799c-44cd-b2f6-f470b7173be8",
+      "betrecid": "6f6355dc-8012-406b-8a59-fb895c18fb28",
+      "gameid": "FG-FLASH",
+      "txtype": 520,
+      "roundid": "43e983a80f094e0fb693ce3d9380fc3d",
+      "timestamp": "2016-05-18T20:56:52.9199049+08:00",
+      "desc": null
+    },
+    {
+      "amt": 17,
+      "commission": 4.0,
+      "cur": "RMB",
+      "txid": "0031cf78-71a0-4d72-a336-3f8550d7d59e",
+      "txrefid": "9ef1fab4-799c-44cd-b2f6-f470b7173be8",
+      "betrecid": "6f6355dc-8012-406b-8a59-fb895c18fb28",
+      "gameid": "FG-FLASH",
+      "txtype": 540,
+      "roundid": "43e983a80f094e0fb693ce3d9380fc3d",
+      "timestamp": "2016-05-18T20:56:52.9199049+08:00",
+      "desc": null
+    }
+  ]
+}

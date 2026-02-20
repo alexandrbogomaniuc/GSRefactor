@@ -1,0 +1,12 @@
+{
+  "winID": "22222222222",
+  "isJackpot": 0,
+  "userID": "player",
+  "sessionID": "sssiiidd_1",
+  "roundID": "1234567890",
+  "betID": "11111111111",
+  "amount": 1300,
+  "roundEnded": 1,
+  "requestID": "9",
+  "sign": "qwerty123"
+}

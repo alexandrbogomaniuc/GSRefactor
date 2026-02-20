@@ -1,0 +1,78 @@
+{
+  "wins": [
+    {
+      "time": "2018-02-14 12:54:35",
+      "nickname": "Test4",
+      "bet": "1.00",
+      "win": "75.00",
+      "gameId": 775,
+      "currency": "USD"
+    },
+    {
+      "time": "2018-02-14 12:54:35",
+      "nickname": "Test8",
+      "bet": "1.00",
+      "win": "7.00",
+      "gameId": 691,
+      "currency": "USD"
+    },
+    {
+      "time": "2018-02-14 12:54:36",
+      "nickname": "Test5",
+      "bet": "1.00",
+      "win": "35.00",
+      "gameId": 426,
+      "currency": "USD"
+    },
+    {
+      "time": "2018-02-14 12:54:37",
+      "nickname": "Test9",
+      "bet": "1.00",
+      "win": "77.00",
+      "gameId": 775,
+      "currency": "USD"
+    },
+    {
+      "time": "2018-02-14 12:54:39",
+      "nickname": "Test10",
+      "bet": "1.00",
+      "win": "34.00",
+      "gameId": 426,
+      "currency": "USD"
+    }
+  ],
+  "bigWins": [
+    {
+      "time": "2018-02-14 12:54:35",
+      "nickname": "Test4",
+      "bet": "1.00",
+      "win": "75.00",
+      "gameId": 775,
+      "currency": "USD"
+    },
+    {
+      "time": "2018-02-14 12:54:36",
+      "nickname": "Test5",
+      "bet": "1.00",
+      "win": "35.00",
+      "gameId": 426,
+      "currency": "USD"
+    },
+    {
+      "time": "2018-02-14 12:54:37",
+      "nickname": "Test9",
+      "bet": "1.00",
+      "win": "77.00",
+      "gameId": 775,
+      "currency": "USD"
+    },
+    {
+      "time": "2018-02-14 12:54:39",
+      "nickname": "Test10",
+      "bet": "1.00",
+      "win": "34.00",
+      "gameId": 426,
+      "currency": "USD"
+    }
+  ]
+}

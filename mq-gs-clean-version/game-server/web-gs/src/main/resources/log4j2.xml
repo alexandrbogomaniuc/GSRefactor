@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="com.dgphoenix.casino.filters.log4j">
+    <Appenders>
+       <Console name="ERROR" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [ERROR] %-5p [%c{1} %t] - %msg%n%ex" />
+        </Console>
+
+        <Console name="COMMON" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [COMMON] %-5p [%c{1} %t] - %msg%n%ex" />
+        </Console>
+
+        <Console name="INIT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [INIT] %-5p [%c{1} %t] - %msg%n%ex" />
+        </Console>
+
+        <Console name="GameServletController" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [GameServletController] %-5p [%c{1} %t] - %msg%n%ex" />
+        </Console>
+
+        <Console name="ParameterBuilder" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [ParameterBuilder] %-5p [%c{1} %t] - %msg%n%ex" />
+        </Console>
+
+        <Console name="STATISTICS" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [STATISTICS] %-5p [%c{1} %t] - %msg%n%ex" />
+        </Console>
+
+        <Console name="Sanitizer" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [Sanitizer] %-5p [%c{1} %t] - %msg%n%ex"/>
+        </Console>
+
+        <Console name="Exception" target="SYSTEM_OUT">
+            <!-- Custom filter -->
+            <ExceptionNameFilter
+                    exceptions="NullPointerException,OutOfMemoryError,ClassNotFoundException,NoSuchMethodError,NoSuchFieldError"
+                    onMatch="ACCEPT"
+                    onMismatch="DENY"
+            />
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [Exception] %-5p [%c{1} %t] - %msg%n%ex"/>
+        </Console>
+
+        <Dynamic name="GAME_REAL">
+            <Routes pattern="$${ctx:gameName}">
+                <Route>
+                    <Console name="GAME_REAL-${ctx:gameName}" target="SYSTEM_OUT">
+                        <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [GAME_REAL-%X{gameName}] %-5p [%c{1} %t] - %msg%n%ex"/>
+                    </Console>
+                </Route>
+            </Routes>
+        </Dynamic>
+        <Dynamic name="GAME_FREE">
+            <Routes pattern="$${ctx:gameName}">
+                <Route>
+                    <Console name="GAME_FREE-${ctx:gameName}" target="SYSTEM_OUT">
+                        <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [GAME_FREE-%X{gameName}] %-5p [%c{1} %t] - %msg%n%ex"/>
+                    </Console>
+                </Route>
+            </Routes>
+        </Dynamic>
+    </Appenders>
+    <Loggers>
+        <Root level="error" additivity="false">
+            <AppenderRef ref="ERROR"/>
+        </Root>
+        <Logger name="critical" level="ERROR" additivity="false">
+            <AppenderRef ref="Exception" level="error" />
+        </Logger>
+        <Logger name="com.dgphoenix.casino.init.Initializer" level="${common_log_level}" additivity="false">
+            <AppenderRef ref="INIT" level="${common_log_level}" />
+            <AppenderRef ref="COMMON" level="${common_log_level}" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="com.dgphoenix.casino.filters.HttpServletRequestProxy" level="ERROR" additivity="false">
+            <AppenderRef ref="COMMON" level="ERROR" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="com.dgphoenix.casino.common.util.NtpTimeProvider" level="ERROR" additivity="false">
+            <AppenderRef ref="COMMON" level="ERROR" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="HttpServletRequestProxy" level="ERROR" additivity="false">
+            <AppenderRef ref="COMMON" level="ERROR" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="NtpTimeProvider" level="ERROR" additivity="false">
+            <AppenderRef ref="COMMON" level="ERROR" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="com.dgphoenix.casino" level="${common_log_level}" additivity="false">
+            <AppenderRef ref="COMMON" level="${common_log_level}" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="client.v2.RESTCWClient" level="${common_log_level}" additivity="false">
+            <AppenderRef ref="COMMON" level="${common_log_level}" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="com.dgphoenix.casino.support.ParameterBuilder"
+                level="${common_log_level}" additivity="false">
+            <AppenderRef ref="ParameterBuilder" level="${common_log_level}" />
+        </Logger>
+
+        <Logger name="GAME_REAL" level="${common_log_level}" additivity="false">
+            <AppenderRef ref="GAME_REAL" level="${common_log_level}" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+
+        <Logger name="GAME_FREE" level="${common_log_level}" additivity="false">
+            <AppenderRef ref="GAME_FREE" level="${common_log_level}" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+
+        <Logger name="SystemDiagnosisServlet.StatisticsLogger" level="INFO" additivity="false">
+            <AppenderRef ref="STATISTICS" level="INFO" />
+        </Logger>
+
+        <Logger name="com.dgphoenix.casino.filters.XssSanitizerRequestWrapper" level="INFO" additivity="false">
+            <AppenderRef ref="Sanitizer" level="INFO" />
+        </Logger>
+
+    </Loggers>
+</Configuration>

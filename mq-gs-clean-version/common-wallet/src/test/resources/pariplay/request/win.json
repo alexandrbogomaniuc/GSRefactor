@@ -1,0 +1,14 @@
+{
+  "Token": "PPT_18623ACA63CB46099E4B888CA84A9DD9",
+  "GameCode": "111",
+  "PlayerId": "player",
+  "RoundId": "1234567890",
+  "TransactionId": "22222222222",
+  "DebitTransactionId": "11111111111",
+  "Amount": 13.0,
+  "IsRoundEnded": true,
+  "Account": {
+    "Username": "eviuser",
+    "Password": "evipassword"
+  }
+}

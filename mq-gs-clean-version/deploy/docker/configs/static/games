@@ -1,0 +1,63 @@
+upstream gs_backend {
+	server gs:8080;
+}
+
+server {
+
+	listen 80; ## listen for ipv4
+
+	server_name localhost 127.0.0.1;
+
+	access_log /var/log/nginx/games.access.log main buffer=32k;
+
+	location /static {
+		root /www/html/repo/static-gp3/;
+		expires 7d;
+	}
+
+	location / {
+		location ~ /support|/SOAPMonitor|/cacheviewer\.do|/servlet/AxisServlet|/servlet/AdminServlet {
+			deny all;
+		}
+
+		location ~ /services {
+			proxy_set_header proxy_scheme http;
+			proxy_pass http://gs_backend;
+			proxy_next_upstream error invalid_header http_500 http_503 http_502;
+			proxy_read_timeout 120s;
+			proxy_http_version 1.1;
+			proxy_buffering on;
+		}
+
+		location /webSocket {
+			proxy_pass http://gs_backend;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade "websocket";
+			proxy_set_header Connection "upgrade";
+		}
+
+		location /tournamentWebSocket {
+		    proxy_pass http://gs_backend;
+		    proxy_http_version 1.1;
+            proxy_set_header Upgrade "websocket";
+            proxy_set_header Connection "upgrade";
+		}
+
+		location ~ ^(/VABApplets/|/common/|/css/|/flash/|/images/|/info/|/js/|/jackpots/|/html5/|/html5pc/|/mp/|/winners/|/free/.+/flash/|/real/.+/flash/) {
+			root /www/html/gss;
+			try_files $uri $uri/ $uri/index.html =404;
+			expires 7d;
+		}
+
+		root /www/html/gss;
+		index index.html index.htm;
+		proxy_set_header Host $host;
+		proxy_set_header proxy_scheme http;
+		proxy_pass http://gs_backend;
+		proxy_next_upstream error invalid_header http_500 http_503 http_502;
+		# proxy_next_upstream http_503 http_502;
+		proxy_read_timeout 120s;
+		proxy_http_version 1.1;
+		proxy_buffering on;
+	}
+}

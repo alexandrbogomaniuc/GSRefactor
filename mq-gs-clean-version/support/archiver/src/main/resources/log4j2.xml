@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <RandomAccessFile name="ERROR" fileName="error.log">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} %-5p [%c{1} %t] %m%n" />
+        </RandomAccessFile>
+        <RandomAccessFile name="COMMON" fileName="common.log">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} %-5p [%c{1} %t] %m%n" />
+        </RandomAccessFile>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="error" additivity="false">
+            <AppenderRef ref="ERROR"/>
+            <AppenderRef ref="Console"/>
+        </Root>
+        <Logger name="com.dgphoenix.casino" level="DEBUG" additivity="false">
+            <AppenderRef ref="COMMON" level="DEBUG" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,13 @@
+<PKT>
+  <Method Name="PlaceBet">
+    <Params>
+      <Token Type="string" Value="AAD8EE30-8C43-11DC-9755-668156D89593"/>
+      <Hash Type="string" Value="2c7f66c80988f333af88626f088036a9924c22681fecc69da90dcb89226862a6"/>
+      <TransactionID Type="long" Value="43211234"/>
+      <BetReferenceNum Type="long" Value="1234"/>
+      <BetAmount Type="int" Value="100"/>
+      <GameReference Type="string" Value="777"/>
+      <BetType Type="string" Value="GenericBet"/>
+    </Params>
+  </Method>
+</PKT>

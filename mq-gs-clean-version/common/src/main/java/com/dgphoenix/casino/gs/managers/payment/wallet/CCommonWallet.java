@@ -1,0 +1,77 @@
+package com.dgphoenix.casino.gs.managers.payment.wallet;
+
+public class CCommonWallet {
+    public static final String PARAM_USERID = "userId";
+    public static final String PARAM_BANKID = "bankId";
+    public static final String PARAM_BET = "bet";
+    public static final String PARAM_WIN = "win";
+    public static final String PARAM_REAL_BET = "realBet";
+    public static final String PARAM_REAL_WIN = "realWin";
+    public static final String PARAM_SW_BET = "swBet";
+    public static final String PARAM_SW_COMPENSATED_WIN = "swCompensatedWin";
+    public static final String PARAM_188BET_REAL_WIN = "realWin188Bet";
+    public static final String PARAM_GAME_TYPE = "gameType";
+    public static final String PARAM_NEGATIVE_BET = "negativeBet";
+    public static final String PARAM_ROUND_FINISHED = "isRoundFinished";
+    public static final String PARAM_ROUND_STARTED = "isRoundStarted";
+    public static final String PARAM_ROUNDID = "roundId";
+    public static final String PARAM_REALGAMEROUNDID = "realGameRoundId";
+    public static final String PARAM_GAMEID = "gameId";
+    public static final String PARAM_BALANCE = "balance";
+    public static final String PARAM_APIPASSWORD = "apipassword";
+    public static final String PARAM_GAMESESSIONID = "gameSessionId";
+    public static final String PARAM_CURRENCY = "currency";
+    public static final String PARAM_CASINOTRANSACTIONID = "casinoTransactionId";
+    public static final String PARAM_CWTRANSACTIONID = "ExtSystemTransactionId";
+    public static final String PARAM_SESSIONID = "SessionId";
+    public static final String PARAM_PARTNER_ID = "PartnerID";
+    public static final String PARAM_PARTNER_KEY = "PartnerKey";
+    public static final String PARAM_SESSION = "session";
+    public static final String VALUE_TRUE = "true";
+    public static final String VALUE_FALSE = "false";
+    public static final String CASINO_TAG = "casino".toUpperCase();
+    public static final String REQUEST_TAG = "request".toUpperCase();
+    public static final String RESPONSE_TAG = "response".toUpperCase();
+    public static final String USERNAME_TAG = "username".toUpperCase();
+    public static final String USERID_TAG = "userId".toUpperCase();
+    public static final String EMAIL_TAG = "email".toUpperCase();
+    public static final String FIRSTNAME_TAG = "firstname".toUpperCase();
+    public static final String LASTNAME_TAG = "lastname".toUpperCase();
+    public static final String CURRENCY_TAG = "currency".toUpperCase();
+    public static final String SESSIONID_TAG = "sessionid".toUpperCase();
+    public static final String CASINOTRANSACTIONID_TAG = "casinotransactionid".toUpperCase();
+    public static final String CWTRANSACTIONID_TAG = "ExtSystemTransactionId".toUpperCase();
+    public static final String BALANCE_TAG = "balance".toUpperCase();
+    public static final String AMOUNT_TAG = "amount".toUpperCase();
+    public static final String TIME_TAG = "time".toUpperCase();
+    public static final String RESULT_TAG = "result".toUpperCase();
+    public static final String CODE_ATTRIBUTE = "code".toUpperCase();
+    public static final String MESSAGE_TAG = "message".toUpperCase();
+    public static final String DATETIME_FORMAT = "HH:mm:ss:SS";
+    public static final String RESULT_OK = "OK";
+    public static final String RESULT_FAILED = "FAILED";
+    public static final String TAG_SYSTEMEXT = "EXTSYSTEM";
+    public static final String COUNTRYCODE_TAG = "COUNTRYCODE";
+    public static final String BONUS_BET_AMOUNT_TAG = "BONUSBET";
+    public static final String BONUS_WIN_AMOUNT_TAG = "BONUSWIN";
+    public static final String AAMS_SESSION = "AAMS_SESSION";
+    public static final String AAMS_TICKET = "AAMS_TICKET";
+    public static final String SESSION_TAG = "SESSION";
+    public static final String IS_DOUBLE_UP = "isDoubleUp";
+    public static final String IS_BONUS_ROUND = "isBonusRound";
+    public static final String EXT_MESSAGE = "EXT_MESSAGE";
+    public static final String EXT_ERROR_CODE = "EXT_ERROR_CODE";
+    public static final String EXT_ERROR_DESC = "EXT_ERROR_DESC";
+    public static final String NEW_SESSION = "NEWSESSION";
+    public static final String NEW_TOKEN = "NEW_TOKEN";
+    public static final String PROMO_WIN_AMOUNT = "promoWinAmount";
+    public static final String PROMO_ID = "promoId";
+    public static final String PROMO_CAMPAIGN_TYPE = "promoCampaignType";
+    public static final String PARAM_PRIVATE_ROOM_ID = "privateRoomId";
+    public static final String PARAM_NICKNAME = "nickname";
+    public static final String PARAM_EXTERNAL_ID = "externalId";
+    public static final String PARAM_STATUS = "status";
+
+    private CCommonWallet() {
+    }
+}

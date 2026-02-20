@@ -1,0 +1,15 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV WORK_DIR=/app
+ENV USER_NAME=nobody
+ENV USER_GROUP=nogroup
+
+WORKDIR ${WORK_DIR}
+
+RUN apt update && \
+    apt install -y --no-install-recommends unzip && \
+    apt install -y --no-install-recommends openjdk-8-jdk && \
+    apt install -y --no-install-recommends maven && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/*

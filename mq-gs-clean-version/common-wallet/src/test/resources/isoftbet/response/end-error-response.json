@@ -1,0 +1,5 @@
+{
+  "status": "error",
+  "code": "R_02",
+  "message": "Missing session id"
+}

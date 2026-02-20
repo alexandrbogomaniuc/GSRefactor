@@ -1,0 +1,13 @@
+{
+  "accountBalance": {
+    "playerId": "pop-player",
+    "accountId": "bsg-player",
+    "currencyCode": "EUR",
+    "balanceArray": [
+      {
+        "balanceType": "cashable",
+        "balanceAmt": 11100
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+<PKT>
+  <Method Name="PlaceBet">
+    <Params>
+      <Token Type="string" Value="AAD8EE30-8C43-11DC-9755-668156D89593"/>
+      <Hash Type="string" Value="d6614c4f9bab8ddcead4410d0f28f4357dbdbcf7f7886ff63ff6cbf5d81581f3"/>
+      <TransactionID Type="long" Value="43211234"/>
+      <BetReferenceNum Type="long" Value="1"/>
+      <BetAmount Type="int" Value="0"/>
+      <GameReference Type="string" Value="777"/>
+      <BetType Type="string" Value="SlotFreeSpin"/>
+    </Params>
+  </Method>
+</PKT>

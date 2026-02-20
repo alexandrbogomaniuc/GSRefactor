@@ -1,0 +1,9 @@
+{
+  "status": "success",
+  "balance": "1010",
+  "currency": "EUR",
+  "Bonusinfo": {
+    "bonusamount": 50,
+    "bonusstatus": "pending"
+  }
+}

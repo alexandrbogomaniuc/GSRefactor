@@ -1,0 +1,25 @@
+{
+  "gameId": "777",
+  "gameCycleId": "456",
+  "cancelTransArray": [
+    {
+      "referenceId": "123458",
+      "originalTransDate": "%s",
+      "transSeq": 1,
+      "transId": "1",
+      "transDateTime": "%s"
+    }
+  ],
+  "gameCycleFinished": true,
+  "gameCycleFinishDateTime": "%s",
+  "_meta": {
+    "gsId": "rgs-bsg",
+    "gpId": "rgs-bsg",
+    "requestId": "%s",
+    "clientPlatform": "flash",
+    "clientType": "casino"
+  },
+  "skinId": "casino123",
+  "playerId": "pop-player",
+  "secureToken": "player-secure-token"
+}

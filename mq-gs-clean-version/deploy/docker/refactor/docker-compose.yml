@@ -1,0 +1,116 @@
+version: '3.8'
+
+services:
+  gs:
+    build: ../configs/gs
+    image: refactor-jetty-gs
+    volumes:
+      - "../../../../Doker/runtime-gs/webapps/gs:/var/lib/jetty/webapps"
+      - "../../../../Doker/runtime-gs/logs/gs:/www/logs/tomcat.gs"
+      - "../../../../Doker/runtime-gs/default-configs:/www/html/gs/ROOT/export"
+    networks:
+      - refactor-network
+    ports:
+      - "18081:8080"
+      - "16000:6000"
+      - "16001:6001"
+      - "19000:9000"
+    depends_on:
+      - c1
+      - zookeeper
+      - kafka
+      - mp
+
+  mp:
+    build: ../configs/gs
+    image: refactor-jetty-gs
+    working_dir: /app
+    volumes:
+      - "../../../../mq-mp-clean-version/web:/app"
+    networks:
+      - refactor-network
+    depends_on:
+      - c1
+      - zookeeper
+      - kafka
+    command: >
+      sh -lc "sed -i 's#<hosts>.*</hosts>#<hosts>c1:9042</hosts>#' /app/target/web-mp-casino/WEB-INF/classes/mp-keyspace-config.xml
+      && java -DMP_SERVER_ID=1
+      -DHOSTNAME=mp-refactor-1
+      -DSERVER_VM_IP=mp
+      -Dserver.host=0.0.0.0
+      -Dserver.port=6300
+      -Dserver.jetty.host=0.0.0.0
+      -Dserver.jetty.port=6301
+      -Dserver.jetty.webroot=file:/app/target/web-mp-casino/
+      -Dkafka.hosts=kafka:9092
+      -Dzookeeper.connect=zookeeper:2181
+      -Dzookeeper.pool-size=1
+      -Dzookeeper.server-id-path=/mp_refactor
+      -Dzookeeper.server-id-pool-path=/mp_refactor/pool
+      -cp .:/app/target/web-mp-casino/WEB-INF/classes:/app/target/web-mp-casino/WEB-INF/lib/*
+      com.betsoft.casino.mp.web.NettyServer"
+    ports:
+      - "16300:6300"
+      - "16301:6301"
+
+  c1:
+    image: cassandra:2.1.20
+    volumes:
+      - "../../../../Doker/runtime-gs/logs/cassandra:/var/log/cassandra"
+      - "refactor-cassandra-data:/var/lib/cassandra"
+    networks:
+      - refactor-network
+    environment:
+      - MAX_HEAP_SIZE=800M
+      - HEAP_NEWSIZE=300M
+    ports:
+      - "19142:9042"
+
+  zookeeper:
+    image: zookeeper:3.8
+    networks:
+      - refactor-network
+    ports:
+      - "12181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.3.2
+    networks:
+      - refactor-network
+    depends_on:
+      - zookeeper
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:19092
+      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1
+      - KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0
+    ports:
+      - "19092:29092"
+
+  static:
+    build: ../configs/static
+    image: refactor-static
+    volumes:
+      - "../../../../Doker/runtime-gs/webapps/gs/ROOT:/www/html/gss:ro"
+      - "../../../../Doker/runtime-gs/static:/www/html/stat"
+      - "../../../../Doker/runtime-gs/logs/nginx:/var/log/nginx/"
+    ports:
+      - "18080:80"
+    networks:
+      - refactor-network
+    depends_on:
+      - gs
+
+networks:
+  refactor-network:
+    driver: bridge
+
+volumes:
+  refactor-cassandra-data:

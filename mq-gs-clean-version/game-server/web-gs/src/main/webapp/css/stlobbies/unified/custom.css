@@ -1,0 +1,59 @@
+#dropdown-btn {
+    width: 42px;
+    height: 38px!important;
+}
+
+#headerIn {
+    text-align: center;
+}
+
+li a img {
+    display: block;
+}
+
+#tabsMessage {
+    color: #bebdc1;
+    text-align: center;
+}
+
+#list ul {
+    overflow: hidden;
+    padding: 10px;
+    display: none;
+}
+
+#list ul.active {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#list ul li {
+    display: none;
+}
+
+#list ul li.active {
+    display: flex;
+}
+
+#bonusTableWrapper {
+    width: auto !important;
+    display: contents;
+}
+
+#headerIn {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#headerIn div a {
+    float: left;
+}
+
+.swiper-pagination-bullet {
+    background: #fff;
+}
+
+.swiper-pagination-bullet-active {
+    background: #fff;
+}

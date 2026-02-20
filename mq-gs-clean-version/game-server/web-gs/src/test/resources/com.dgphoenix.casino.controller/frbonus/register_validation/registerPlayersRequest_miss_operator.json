@@ -1,0 +1,13 @@
+{
+  "auth": {
+    "signature": "hash"
+  },
+  "request": {
+    "freeround_id": 1885,
+    "player_ids": [
+      "test"
+    ],
+    "licensee_id": 134,
+    "launchercode": "isb_134-qa"
+  }
+}

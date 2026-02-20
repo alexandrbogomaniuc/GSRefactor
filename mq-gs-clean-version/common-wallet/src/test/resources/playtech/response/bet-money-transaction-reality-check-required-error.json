@@ -1,0 +1,12 @@
+{
+  "errorCode": "ERR2211",
+  "errorMsg": "Expired session timer",
+  "data": {
+    "activeSessionLength": 33,
+    "netGain": -0.2,
+    "message": "During this session you have made 2.50 USD of bets and you have won 0.00 USD.\r\nThe length of your session was:00:10:00\r\nPlease log out or extend your session.",
+    "availablePeriods": [
+      10, 20, 30
+    ]
+  }
+}

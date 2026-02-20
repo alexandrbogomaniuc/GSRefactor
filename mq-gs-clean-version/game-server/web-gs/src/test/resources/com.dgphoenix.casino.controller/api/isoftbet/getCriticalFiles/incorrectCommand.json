@@ -1,0 +1,8 @@
+{
+    "command": "some_command",
+    "providergameids": [
+        "2",
+        "3",
+        "4"
+    ]
+}

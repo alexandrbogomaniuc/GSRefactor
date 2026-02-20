@@ -1,0 +1,595 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(130deg, rgba(0, 0, 0, 1) 0%, rgba(19, 15, 64, 1) 100%);
+  font-family: 'Barlow', sans-serif;
+}
+
+.tab-pane {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.logo-section img {
+  max-height: 50px;
+}
+
+.banner-section img {
+  max-width: 100%;
+}
+
+#desktop-banner {
+  display: block;
+}
+
+#mobile-banner {
+  display: none
+}
+
+@media all and (max-width: 767px) {
+  #desktop-banner {
+    display: none;
+  }
+
+  #mobile-banner {
+    display: block;
+  }
+}
+
+#game-search span div {
+  border: 0;
+  background: none;
+  position: inherit;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  color: white;
+}
+
+#game-search input {
+  background-color: white;
+  border-radius: 0;
+  color: black;
+}
+
+#game-search .btn-yellow {
+  background-color: #F7C320;
+}
+
+.select-span .btn-yellow {
+  background-color: #F7C320;
+  border-radius: 0;
+}
+
+.select-span {
+  position: absolute;
+  margin-left: -41px;
+  pointer-events: none;
+  z-index: 99;
+}
+
+.casino-list {
+  display: block;
+  list-style: none !important;
+  text-align: center;
+  padding: 0;
+}
+
+.casino-list li {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: transparent;
+  border-style: none;
+  margin: 1%;
+  max-width: 100%;
+}
+
+.casino-list p {
+  color: white;
+  padding-top: 7px;
+}
+
+.casino-list a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.casino-list img {
+  transform: scale(1, 1);
+  transition: transform 0.3s;
+  border-style: none;
+  vertical-align: top;
+  max-width: 100%;
+  height: auto;
+}
+
+.btn--pill {
+  -webkit-border-radius: 3em;
+  -moz-border-radius: 3em;
+  border-radius: 3em;
+}
+
+.btn-warning {
+  background-color: #ffca13;
+  border-color: #ffca13;
+  padding: 0.3em 2.2em;
+  font-weight: 600;
+}
+
+.btn-warning:hover, .btn-yellow:focus {
+  filter: brightness(1.1) contrast(1.1);
+  box-shadow: rgb(255 202 19) 0px 0px 1em !important;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.nav-tabs .nav-item.active .nav-link {
+  color: #ffc107;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-bottom: solid 0.1px rgba(0, 0, 0, 0.3);
+}
+
+.nav-tabs .nav-link, .responsivetabs-more a {
+  color: white;
+  background-color: rgba(170, 170, 170, 0.1);
+  margin-right: 10px;
+  border: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: center;
+}
+
+.responsivetabs-more.show {
+  color: #ffc107;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: none;
+  border-bottom: solid 0.1px rgba(0, 0, 0, 0.9);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.dropdown-toggle {
+  height: 100%;
+  width: 100%;
+  position: inherit;
+}
+
+.nav-tabs .nav-item.show .nav-link {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  /* margin-right: 10px; */
+}
+
+.nav-tabs .nav-item.show #DropdownMenu {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: none;
+}
+
+.nav-tabs {
+  border-bottom: none;
+}
+
+.nav-tabs .nav-item {
+  width: 146px;
+}
+
+.responsivetabs-more {
+  /* position: absolute; */
+  right: 0px;
+  top: 0;
+  height: 100%;
+  width: 45px !important;
+}
+
+.dropdown-menu {
+  background-color: rgba(0, 0, 0, 0.9);
+  width: 193px;
+  margin-left: -29px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: absolute;
+  will-change: transform;
+  top: 0px;
+  left: 0px;
+  transform: translate3d(-119px, 40px, 0px);
+}
+
+.dropdown-menu .nav-item {
+  width: 100% !important;
+}
+
+#nav {
+  position: relative;
+  min-height: 39.8px;
+}
+
+.custom-select:focus, .form-control:focus {
+  border: none;
+  outline: 0;
+  box-shadow: none;
+}
+
+.nav-link:hover {
+  border: none;
+}
+
+@media (min-width: 767px) {
+  #search-btn span {
+    display: initial;
+  }
+}
+
+@media (max-width: 767px) {
+  #search-btn span {
+    display: none;
+  }
+}
+
+#dropdown-btn {
+  width: 42px;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+#game-demo .modal-content {
+  background-color: transparent;
+  border: none;
+}
+
+#game-demo .modal-footer {
+  border-top: none;
+  align-self: center;
+}
+
+#game-demo .modal-body {
+  border: 2px solid gray;
+}
+
+#game-demo .modal button {
+  outline: none;
+  box-shadow: none;
+  font-size: 40px;
+}
+
+#result-games {
+  display: flex;
+  width: 100%;
+  color: black;
+  position: absolute;
+  top: 101%;
+  z-index: 9;
+}
+
+#result-games .list-group-item {
+  border-radius: 0;
+  border-top: 0px;
+  color: black;
+}
+
+#result-games a {
+  display: contents;
+}
+
+#result-games a:hover {
+  text-decoration: none;
+}
+
+#result-games a:hover li {
+  background-color: #218FFF;
+  color: white;
+}
+
+#game-demo {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+#select-language-wrapper .bootstrap-select .dropdown-toggle:focus {
+  outline: 0px !important;
+  outline-offset: 0px !important;
+  box-shadow: none !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .modal-lg {
+    max-width: 100%;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .casino-list li {
+    width: 98%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .modal-lg {
+    max-width: 90%;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .casino-list li {
+    width: 48%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .modal-lg {
+    max-width: 90%;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .casino-list li {
+    width: 31%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .modal-lg {
+    max-width: 80%;
+  }
+
+  .casino-list li {
+    width: 31%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .modal-lg {
+    max-width: 70%;
+  }
+
+  .casino-list li {
+    width: 23%;
+  }
+}
+
+.faux-select {
+  list-style-type: none;
+  height: 38px;
+  padding: 0.4em 0;
+  background: white;
+  color: #000;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+
+.faux-select li {
+  padding: 0;
+  text-indent: 1em;
+  position: relative;
+}
+
+.faux-select li .options {
+  display: block;
+  list-style-type: none;
+  padding: 0;
+  margin: 0.4em 0 0 0;
+  background: transparent;
+  position: absolute;
+  width: 100%;
+  max-height: 0px;
+  overflow: hidden;
+}
+
+.faux-select li .options li {
+  padding: 0.4em 0;
+  border-top: 1px solid rgba(216, 216, 216, 0.7);
+}
+
+.faux-select li .options li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.faux-select li .options li:last-of-type {
+  border-bottom: 0;
+}
+
+.faux-select li .options.open {
+  background: white;
+  max-height: 1000%;
+  z-index: 99;
+}
+
+.casino-list img {
+  width: 100%;
+  height: auto;
+}
+
+.footer-copyright {
+  background: #000;
+  color: white;
+}
+
+.contact-us {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.contact-us p {
+  color: white;
+}
+
+.contact-us p.font-weight-bold {
+  font-weight: 600 !important;
+}
+
+.overlay-demo-container {
+  position: fixed;
+  height: 0px;
+  width: 0px;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 999;
+  margin: 0 auto;
+  -webkit-transition: height 2s ease-in-out, width 2s ease-in-out;
+  transition: height 2s ease-in-out, width 2s ease-in-out;
+}
+
+.overlay-demo-container.hide-me {
+  display: none;
+}
+
+.overlay-demo-container.table-me {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.demo-overlay-inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.overlay-demo-container .demo-wrapper {
+  position: relative;
+}
+
+
+.demo-aspect-ratio,
+.demo-aspect-ratio-2 {
+  border: 2px solid #454545;
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 58.85%;
+  background-color: #000000;
+  z-index: 10;
+  transition: border 0.5s ease-in-out;
+}
+
+.demo-aspect-ratio:hover {
+  border: 2px solid #fc980d;
+}
+
+.demo-aspect-ratio:hover::after {
+  opacity: 0.5;
+}
+
+.demo-aspect-ratio iframe,
+.demo-aspect-ratio-2 iframe,
+.demo-placeholder .iframe-copy {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border: none;
+}
+
+.demo-aspect-ratio iframe .ytp-show-cards-title {
+  display: none !important;
+}
+
+.ytp-chrome-top {
+  display: none;
+}
+
+@media only screen and (max-width: 991px) {
+  .overlay-demo-container .close-button {
+    position: absolute;
+    top: 0px;
+    right: -34px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+  }
+
+  .overlay-demo-container .close-button::after {
+    position: absolute;
+    content: "X";
+    font-weight: bold;
+    font-size: 1.2em;
+    color: white;
+    top: -40px;
+    left: -30px;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+  }
+
+  #demo-overlay .container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .demo-aspect-ratio button {
+    display: none;
+  }
+
+  .aspect-ratio {
+    margin-top: 0px;
+  }
+}
+
+@media only screen and (min-width: 991px) {
+  .overlay-demo-container .close-button {
+    position: absolute;
+    top: 0px;
+    right: -34px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+  }
+
+  .overlay-demo-container .close-button::after {
+    position: absolute;
+    content: "X";
+    font-weight: bold;
+    font-size: 1.2em;
+    color: white;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+  }
+
+  #demo-overlay .container {
+    width: auto !important;
+    max-width: auto !important;
+  }
+
+  .demo-aspect-ratio button {
+    display: none;
+  }
+
+  .aspect-ratio {
+    margin-top: 0px;
+  }
+}

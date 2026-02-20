@@ -1,0 +1,20 @@
+{
+  "records": [
+    {
+      "place": 1,
+      "bankId": 271,
+      "playerId": "44",
+      "nickname": "lucky",
+      "score": "50",
+      "prize": "IPhone 13 pro max"
+    },
+    {
+      "place": 2,
+      "bankId": 271,
+      "playerId": "85",
+      "nickname": "nick",
+      "score": "50",
+      "prize": "Huawei P20"
+    }
+  ]
+}

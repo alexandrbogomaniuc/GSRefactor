@@ -1,0 +1,983 @@
+<clusters>
+    <cluster>
+        <name>SB-LOCAL</name>
+        <type>SB</type>
+        <rebootcommand>sh /usr/local/cm/rebootgs%s.sh</rebootcommand>
+        <startcommand>sh /usr/local/cm/startgs%s.sh</startcommand>
+        <shutdowncommand>sh /usr/local/cm/stopgs%s.sh</shutdowncommand>
+        <production>false</production>
+        <endpoint>http://games.sb.dgphoenix.com/services/gameserverconfigurationservice.ws</endpoint>
+        <transferservice>http://gs1.sb.discreetgaming.com/services/sbmigrationservice.ws</transferservice>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://gs1.sb.dgphoenix.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs1.sb.dgphoenix.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs1 | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>deployer</username>
+                <ip>10.2.0.40</ip>
+                <port>222</port>
+                <password>faq3YJaWon5B</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://gs2.sb.dgphoenix.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs2.sb.dgphoenix.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs2 | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>deployer</username>
+                <ip>10.2.0.40</ip>
+                <port>222</port>
+                <password>faq3YJaWon5B</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>SB-COPY</name>
+        <type>SB</type>
+        <rebootcommand>sh /usr/local/cm/rebootgs%s.sh</rebootcommand>
+        <startcommand>sh /usr/local/cm/startgs%s.sh</startcommand>
+        <shutdowncommand>sh /usr/local/cm/stopgs%s.sh</shutdowncommand>
+        <production>false</production>
+        <endpoint>http://service.discreetgaming.com:80/services/gameserverconfigurationservice.ws</endpoint>
+        <transferservice>http://service.discreetgaming.com/services/sbmigrationservice.ws</transferservice>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://gs1.sb.discreetgaming.com:8080/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs1.sb.discreetgaming.com:8080/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs1 | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>87.233.37.244</ip>
+                <port>222</port>
+                <password>h31opTMjpPqq</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://gs2.sb.discreetgaming.com:8080/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs2.sb.discreetgaming.com:8080/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs2 | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>87.233.37.244</ip>
+                <port>222</port>
+                <password>h31opTMjpPqq</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>GP3-COPY</name>
+        <type>GP3</type>
+        <rebootcommand>sh /usr/local/cm/rebootgs.sh</rebootcommand>
+        <startcommand>sh /usr/local/cm/startgs.sh</startcommand>
+        <shutdowncommand>sh /usr/local/cm/stopgs.sh</shutdowncommand>
+        <production>false</production>
+        <endpoint>http://service-gp3.discreetgaming.com/services/gameserverconfigurationservice.ws</endpoint>
+        <transferservice>http://service-gp3.discreetgaming.com/services/clustertransferservice.ws</transferservice>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://87.233.234.7/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://87.233.234.7/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>87.233.234.7</ip>
+                <port>222</port>
+                <password>ruwWpmnM84ZF0c</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://87.233.234.8/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://87.233.234.8/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>87.233.234.8</ip>
+                <port>222</port>
+                <password>ruwWpmnM84ZF0c</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>GSN</name>
+        <type>SB</type>
+        <production>true</production>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <endpoint></endpoint>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://173.193.15.195/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://173.193.15.195/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>173.193.15.195</ip>
+                <port>222</port>
+                <password>Kmno7myUjU0I</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://173.193.15.198/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://173.193.15.198/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>173.193.15.198</ip>
+                <port>222</port>
+                <password>Kmno7myUjU0I</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 3</name>
+            <id>3</id>
+            <healthcheckurl>http://173.193.15.196/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://173.193.15.196/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>173.193.15.196</ip>
+                <port>222</port>
+                <password>Kmno7myUjU0I</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 4</name>
+            <id>4</id>
+            <healthcheckurl>http://173.193.15.199/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://173.193.15.199/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>173.193.15.199</ip>
+                <port>222</port>
+                <password>Kmno7myUjU0I</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>SB</name>
+        <type>SB</type>
+        <production>true</production>
+        <rebootcommand>sh /usr/local/cm/rebootgs.sh</rebootcommand>
+        <startcommand>sh /usr/local/cm/startgs.sh</startcommand>
+        <shutdowncommand>sh /usr/local/cm/stopgs.sh</shutdowncommand>
+        <endpoint>http://gs1.sb.betsoftgaming.com/services/gameserverconfigurationservice.ws</endpoint>
+        <transferservice>http://gs1.sb.betsoftgaming.com/services/sbmigrationservice.ws</transferservice>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://87.233.216.3/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://87.233.216.3/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs1 | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>87.233.216.3</ip>
+                <port>222</port>
+                <password>ax0dqQBnzoHN</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://87.233.215.235/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://87.233.215.235/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs2 | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>87.233.215.235</ip>
+                <port>222</port>
+                <password>ax0dqQBnzoHN</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 3</name>
+            <id>3</id>
+            <healthcheckurl>http://87.233.217.243/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://87.233.217.243/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs3 | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>87.233.217.243</ip>
+                <port>222</port>
+                <password>ax0dqQBnzoHN</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 4</name>
+            <id>4</id>
+            <healthcheckurl>http://87.233.217.251/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://87.233.217.251/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>87.233.217.251</ip>
+                <port>222</port>
+                <password>ax0dqQBnzoHN</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>188BET</name>
+        <type>SB</type>
+        <production>true</production>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <endpoint>http://gs1.188bet.betsoftgaming.com/services/gameserverconfigurationservice.ws</endpoint>
+        <transferservice>http://gs1.188bet.betsoftgaming.com/services/sbmigrationservice.ws</transferservice>
+        <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://27.126.222.64/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://27.126.222.64/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>27.126.222.64</ip>
+                <port>222</port>
+                <password>pTnmrW4zsU29</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://27.126.222.65/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://27.126.222.65/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>27.126.222.65</ip>
+                <port>222</port>
+                <password>pTnmrW4zsU29</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>PM</name>
+        <type>SB</type>
+        <production>true</production>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <endpoint></endpoint>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://50.97.166.68/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://50.97.166.68/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>50.97.166.68</ip>
+                <port>222</port>
+                <password>8NbjieRbL8RN</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://184.173.100.22/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://184.173.100.22/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>184.173.100.22</ip>
+                <port>222</port>
+                <password>8NbjieRbL8RN</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 3</name>
+            <id>3</id>
+            <healthcheckurl>http://184.173.100.20/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://184.173.100.20/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>184.173.100.20</ip>
+                <port>222</port>
+                <password>8NbjieRbL8RN</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 4</name>
+            <id>4</id>
+            <healthcheckurl>http://50.97.166.66/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://50.97.166.66/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>50.97.166.66</ip>
+                <port>222</port>
+                <password>8NbjieRbL8RN</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>PM2</name>
+        <type>SB</type>
+        <production>true</production>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <endpoint></endpoint>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://173.192.105.164/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://173.192.105.164/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>173.192.105.164</ip>
+                <port>222</port>
+                <password>8NbjieRbL8RN</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://173.192.105.162/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://173.192.105.162/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>173.192.105.162</ip>
+                <port>222</port>
+                <password>8NbjieRbL8RN</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 3</name>
+            <id>3</id>
+            <healthcheckurl>http://173.192.105.166/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://173.192.105.166/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>173.192.105.166</ip>
+                <port>222</port>
+                <password>8NbjieRbL8RN</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 4</name>
+            <id>4</id>
+            <healthcheckurl>http://173.192.105.165/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://173.192.105.165/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>173.192.105.165</ip>
+                <port>222</port>
+                <password>8NbjieRbL8RN</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>DEMOCLUSTER</name>
+        <type>SB</type>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <production>true</production>
+        <endpoint>http://gs1-democluster.betsoftgaming.com/services/gameserverconfigurationservice.ws</endpoint>
+        <transferservice>http://gs1-democluster.betsoftgaming.com/services/sbmigrationservice.ws</transferservice>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://88.196.98.162/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://88.196.98.162/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>88.196.98.162</ip>
+                <port>222</port>
+                <password>wtsvFwZDRpegjK</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>SIS</name>
+        <type>GP3</type>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <production>true</production>
+        <endpoint>http://gs1-sis.betsoftgaming.com/services/gameserverconfigurationservice.ws</endpoint>
+        <transferservice>http://gs1-sis.betsoftgaming.com/services/clustertransferservice.ws</transferservice>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://50.97.99.19/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://50.97.99.19/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>50.97.99.19</ip>
+                <port>222</port>
+                <password>zrp7DGbiaQg5oY</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://50.97.99.20/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://50.97.99.20/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>50.97.99.20</ip>
+                <port>222</port>
+                <password>zrp7DGbiaQg5oY</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>GP3</name>
+        <type>GP3</type>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <production>true</production>
+        <endpoint>http://gs1-gp3.betsoftgaming.com/services/gameserverconfigurationservice.ws</endpoint>
+        <transferservice>http://gs1-gp3.betsoftgaming.com/services/clustertransferservice.ws</transferservice>
+        <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://90.190.149.151/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://90.190.149.151/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>90.190.149.151</ip>
+                <port>222</port>
+                <password>X4JOxtWsfMfHsN</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://90.190.149.150/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://90.190.149.150/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>90.190.149.150</ip>
+                <port>222</port>
+                <password>X4JOxtWsfMfHsN</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 3</name>
+            <id>3</id>
+            <healthcheckurl>http://90.190.149.149/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://90.190.149.149/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>90.190.149.149</ip>
+                <port>222</port>
+                <password>X4JOxtWsfMfHsN</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 4</name>
+            <id>4</id>
+            <healthcheckurl>http://90.190.149.147/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://90.190.149.147/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>90.190.149.147</ip>
+                <port>222</port>
+                <password>X4JOxtWsfMfHsN</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>C2SS</name>
+        <type>GP3</type>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <production>true</production>
+        <endpoint>http://gs1-c2ss.betsoftgaming.com/services/gameserverconfigurationservice.ws</endpoint>
+        <transferservice>http://gs1-c2ss.betsoftgaming.com/services/clustertransferservice.ws</transferservice>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://87.233.13.51/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://87.233.13.51/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>87.233.13.51</ip>
+                <port>222</port>
+                <password>66HYVqRxFekd72</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://87.233.13.52/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://87.233.13.52/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>87.233.13.52</ip>
+                <port>222</port>
+                <password>66HYVqRxFekd72</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 3</name>
+            <id>3</id>
+            <healthcheckurl>http://87.233.13.53/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://87.233.13.53/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>87.233.13.53</ip>
+                <port>222</port>
+                <password>66HYVqRxFekd72</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 4</name>
+            <id>4</id>
+            <healthcheckurl>http://87.233.13.54/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://87.233.13.54/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>87.233.13.54</ip>
+                <port>222</port>
+                <password>66HYVqRxFekd72</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>GP3-LOCAL</name>
+        <type>GP3</type>
+        <rebootcommand>sh /usr/local/cm/rebootgs.sh</rebootcommand>
+        <startcommand>sh /usr/local/cm/startgs.sh</startcommand>
+        <shutdowncommand>sh /usr/local/cm/stopgs.sh</shutdowncommand>
+        <production>false</production>
+        <endpoint>http://gs1-gp3.dgphoenix.com/services/gameserverconfigurationservice.ws?wsdl</endpoint>
+        <transferservice>http://gs1-gp3.dgphoenix.com/services/clustertransferservice.ws</transferservice>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://gs1-gp3.dgphoenix.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs1-gp3.dgphoenix.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>10.2.0.67</ip>
+                <port>222</port>
+                <password>ruwWpmnM84ZF0c</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://gs2-gp3.dgphoenix.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs2-gp3.dgphoenix.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>10.2.0.68</ip>
+                <port>222</port>
+                <password>ruwWpmnM84ZF0c</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>AAMS-COPY</name>
+        <type>GP3</type>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <production>false</production>
+        <endpoint>https://service-aams.discreetgaming.com/services/gameserverconfigurationservice.ws?wsdl</endpoint>
+        <transferservice>https://service-aams.discreetgaming.com/services/clustertransferservice.ws</transferservice>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>https://141.0.168.102/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>https://141.0.168.102/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>141.0.168.102</ip>
+                <port>222</port>
+                <password>fB1quLGGtQIZSU</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>1</id>
+            <healthcheckurl>https://141.0.168.103/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>https://141.0.168.103/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>141.0.168.103</ip>
+                <port>222</port>
+                <password>fB1quLGGtQIZSU</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>C2LGA</name>
+        <type>GP3</type>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <production>true</production>
+        <endpoint>http://gs2-c2lga.betsoftgaming.com/services/gameserverconfigurationservice.ws?wsdl</endpoint>
+        <transferservice>http://gs2-c2lga.betsoftgaming.com/services/clustertransferservice.ws</transferservice>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://37.114.73.169/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://37.114.73.169/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>37.114.73.169</ip>
+                <port>222</port>
+                <password>Zt33Agtp9qfuy7</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 3</name>
+            <id>3</id>
+            <healthcheckurl>http://37.114.73.170/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://37.114.73.170/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>37.114.73.170</ip>
+                <port>222</port>
+                <password>Zt33Agtp9qfuy7</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 4</name>
+            <id>4</id>
+            <healthcheckurl>http://37.114.73.171/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://37.114.73.171/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>37.114.73.171</ip>
+                <port>222</port>
+                <password>Zt33Agtp9qfuy7</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>AAMS</name>
+        <type>GP3</type>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <production>true</production>
+        <endpoint>http://gs1-aams.betsoftgaming.com/services/gameserverconfigurationservice.ws?wsdl</endpoint>
+        <transferservice>http://gs1-aams.betsoftgaming.com/services/clustertransferservice.ws</transferservice>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://37.114.73.175/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://37.114.73.175/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>37.114.73.175</ip>
+                <port>222</port>
+                <password>auNK5LOpym9Vne</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://37.114.73.176/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://37.114.73.176/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>37.114.73.176</ip>
+                <port>222</port>
+                <password>auNK5LOpym9Vne</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 3</name>
+            <id>3</id>
+            <healthcheckurl>http://37.114.73.177/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://37.114.73.177/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>37.114.73.177</ip>
+                <port>222</port>
+                <password>auNK5LOpym9Vne</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>NG-COPY</name>
+        <type>GP3</type>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <production>true</production>
+        <endpoint>https://gs1-ng-copy.nucleusgaming.com:1443/services/gameserverconfigurationservice.ws?wsdl</endpoint>
+        <transferservice>https://gs1-ng-copy.nucleusgaming.com:1443/services/clustertransferservice.ws</transferservice>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://gs1-ng-copy.nucleusgaming.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs1-ng-copy.nucleusgaming.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>gs1-ng-copy.nucleusgaming.com</ip>
+                <port>222</port>
+                <password>A4w9hQ6DITjOuZ</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://gs2-ng-copy.nucleusgaming.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs2-ng-copy.nucleusgaming.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>gs2-ng-copy.nucleusgaming.com</ip>
+                <port>222</port>
+                <password>A4w9hQ6DITjOuZ</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>NG-LIVE</name>
+        <type>GP3</type>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <production>true</production>
+        <endpoint>https://gs1-ng.nucleusgaming.com:1443/services/gameserverconfigurationservice.ws?wsdl</endpoint>
+        <transferservice>https://gs1-ng.nucleusgaming.com:1443/services/clustertransferservice.ws</transferservice>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://gs1-ng.nucleusgaming.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs1-ng.nucleusgaming.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>gs1-ng.nucleusgaming.com</ip>
+                <port>222</port>
+                <password>vNrjL4naXhqg1r</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://gs2-ng.nucleusgaming.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs2-ng.nucleusgaming.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>gs2-ng.nucleusgaming.com</ip>
+                <port>222</port>
+                <password>vNrjL4naXhqg1r</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 3</name>
+            <id>3</id>
+            <healthcheckurl>http://gs3-ng.nucleusgaming.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs3-ng.nucleusgaming.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>gs3-ng.nucleusgaming.com</ip>
+                <port>222</port>
+                <password>vNrjL4naXhqg1r</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>C2188BET</name>
+        <type>GP3</type>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <production>true</production>
+        <endpoint>https://gs1-c2188bet.betsoftgaming.com:1443/services/gameserverconfigurationservice.ws?wsdl</endpoint>
+        <transferservice>https://gs1-c2188bet.betsoftgaming.com:1443/services/clustertransferservice.ws</transferservice>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://gs1-c2188bet.betsoftgaming.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs1-c2188bet.betsoftgaming.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>gs1-c2188bet.betsoftgaming.com</ip>
+                <port>222</port>
+                <password>JaXlDYUfa8mOpM</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://gs2-c2188bet.betsoftgaming.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs2-c2188bet.betsoftgaming.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>gs2-c2188bet.betsoftgaming.com</ip>
+                <port>222</port>
+                <password>JaXlDYUfa8mOpM</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 3</name>
+            <id>3</id>
+            <healthcheckurl>http://gs3-c2188bet.betsoftgaming.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs3-c2188bet.betsoftgaming.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>gs3-c2188bet.betsoftgaming.com</ip>
+                <port>222</port>
+                <password>JaXlDYUfa8mOpM</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+    <cluster>
+        <name>C2LGA2</name>
+        <type>GP3</type>
+        <rebootcommand></rebootcommand>
+        <startcommand></startcommand>
+        <shutdowncommand></shutdowncommand>
+        <production>true</production>
+        <endpoint>https://gs1-c2lga2.betsoftgaming.com:1443/services/gameserverconfigurationservice.ws?wsdl</endpoint>
+        <transferservice>https://gs1-c2lga2.betsoftgaming.com:1443/services/clustertransferservice.ws</transferservice>
+        <node>
+            <name>Game server 1</name>
+            <id>1</id>
+            <healthcheckurl>http://gs1-c2lga2.betsoftgaming.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs1-c2lga2.betsoftgaming.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>gs1-c2lga2.betsoftgaming.com</ip>
+                <port>222</port>
+                <password>Zt33Agtp9qfuy7</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 2</name>
+            <id>2</id>
+            <healthcheckurl>http://gs2-c2lga2.betsoftgaming.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs2-c2lga2.betsoftgaming.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>gs2-c2lga2.betsoftgaming.com</ip>
+                <port>222</port>
+                <password>Zt33Agtp9qfuy7</password>
+            </sshconnectionparams>
+        </node>
+        <node>
+            <name>Game server 3</name>
+            <id>3</id>
+            <healthcheckurl>http://gs3-c2lga2.betsoftgaming.com/systemdiagnosis.servlet</healthcheckurl>
+            <onlinecheckurl>http://gs3-c2lga2.betsoftgaming.com/empty.jsp</onlinecheckurl>
+            <checkstatechange>[ -f ~/state_change_in_progress ] &amp;&amp; echo 1 || echo 0</checkstatechange>
+            <checkisalive>ps -Af | grep java | grep tomcat | grep gs | grep -v bash | awk '{print $2}'</checkisalive>
+            <sshconnectionparams>
+                <username>auditor</username>
+                <ip>gs3-c2lga2.betsoftgaming.com</ip>
+                <port>222</port>
+                <password>Zt33Agtp9qfuy7</password>
+            </sshconnectionparams>
+        </node>
+    </cluster>
+</clusters>

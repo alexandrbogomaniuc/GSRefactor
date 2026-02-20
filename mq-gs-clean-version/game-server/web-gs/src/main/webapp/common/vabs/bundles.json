@@ -1,0 +1,2308 @@
+{
+    "bundles": [
+        {
+            "type": "js",
+            "name": "VabEngine/TVabEngine.js",
+            "files": [
+                "VabEngine/Constants.js",
+                "VabEngine/external.js",
+                "VabEngine/THashMap.js",
+                "VabEngine/TRow.js",
+                "VabEngine/TSplash.js",
+                "VabEngine/TSprite.js",
+                "VabEngine/TText.js",
+                "VabEngine/TTexture.js",
+                "VabEngine/TVabEngine.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "VabEngine/excanvas/excanvas.js",
+            "files": [
+                "VabEngine/excanvas/excanvas.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "VabEngine/progress_bar/progress-polyfill.js",
+            "files": [
+                "VabEngine/progress_bar/progress-polyfill.js"
+            ]
+        },
+        {
+            "type": "css",
+            "name": "VabEngine/progress_bar/progress-polyfill.css",
+            "files": [
+                "VabEngine/progress_bar/progress-polyfill.css"
+            ]
+        },
+        {
+            "type": "css",
+            "name": "VabEngine/TableStyle.css",
+            "files": [
+                "VabEngine/TableStyle.css"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "achristmascarol/code.js",
+            "files": [
+                "achristmascarol/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "actionwheel/code.js",
+            "files": [
+                "actionwheel/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "afternightfalls/code.js",
+            "files": [
+                "afternightfalls/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "alkemorstower/code.js",
+            "files": [
+                "alkemorstower/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "allamerican/code.js",
+            "files": [
+                "allamerican/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "americanblackjack/code.js",
+            "files": [
+                "americanblackjack/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "americanblackjackgt/code.js",
+            "files": [
+                "americanblackjackgt/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "anightinparis/code.js",
+            "files": [
+                "anightinparis/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "anightinparisjp/code.js",
+            "files": [
+                "anightinparisjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "anightinparisnjp/code.js",
+            "files": [
+                "anightinparisnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "arrival/code.js",
+            "files": [
+                "arrival/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "atthecopa/code.js",
+            "files": [
+                "atthecopa/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "atthecopanjp/code.js",
+            "files": [
+                "atthecopanjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "atthemovies/code.js",
+            "files": [
+                "atthemovies/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "aztectreasure3/code.js",
+            "files": [
+                "aztectreasure3/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "aztectreasure/code.js",
+            "files": [
+                "aztectreasure/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "baccarat/code.js",
+            "files": [
+                "baccarat/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "backintime/code.js",
+            "files": [
+                "backintime/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "barbarycoast/code.js",
+            "files": [
+                "barbarycoast/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "bingo_blackjack/code.js",
+            "files": [
+                "bingo_blackjack/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "bingo_jacksdoubleup/code.js",
+            "files": [
+                "bingo_jacksdoubleup/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "bingo_lucky7/code.js",
+            "files": [
+                "bingo_lucky7/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "bingo_predictor/code.js",
+            "files": [
+                "bingo_predictor/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "birds/code.js",
+            "files": [
+                "birds/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "blackgold/code.js",
+            "files": [
+                "blackgold/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "bloodeternal/code.js",
+            "files": [
+                "bloodeternal/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "bonusdeuces/code.js",
+            "files": [
+                "bonusdeuces/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "bonuspoker/code.js",
+            "files": [
+                "bonuspoker/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "boomanji/code.js",
+            "files": [
+                "boomanji/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "boombucks/code.js",
+            "files": [
+                "boombucks/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "burnblackjack/code.js",
+            "files": [
+                "burnblackjack/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "captaincash/code.js",
+            "files": [
+                "captaincash/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "caribeanpoker/code.js",
+            "files": [
+                "caribeanpoker/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "carnavalforever/code.js",
+            "files": [
+                "carnavalforever/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "casinowar/code.js",
+            "files": [
+                "casinowar/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "casinowarmini/code.js",
+            "files": [
+                "casinowarmini/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "caveman/code.js",
+            "files": [
+                "caveman/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "cdroulette/code.js",
+            "files": [
+                "cdroulette/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "charmsandclovers/code.js",
+            "files": [
+                "charmsandclovers/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "charmsandcloversnjp/code.js",
+            "files": [
+                "charmsandcloversnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "chasethecheese/code.js",
+            "files": [
+                "chasethecheese/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "craps/code.js",
+            "files": [
+                "craps/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "crazyjackpot6000/code.js",
+            "files": [
+                "crazyjackpot6000/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "curiousmachine/code.js",
+            "files": [
+                "curiousmachine/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "curiousmachineplus/code.js",
+            "files": [
+                "curiousmachineplus/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "deucesdoubleup/code.js",
+            "files": [
+                "deucesdoubleup/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "diamonddreams5l/code.js",
+            "files": [
+                "diamonddreams5l/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "diamondprogressive1l/code.js",
+            "files": [
+                "diamondprogressive1l/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "doublebonus/code.js",
+            "files": [
+                "doublebonus/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "doublejokers/code.js",
+            "files": [
+                "doublejokers/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "doublesixteen/code.js",
+            "files": [
+                "doublesixteen/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "dragonkings/code.js",
+            "files": [
+                "dragonkings/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "dragonkingsnjp/code.js",
+            "files": [
+                "dragonkingsnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "dragonandphoenix/code.js",
+            "files": [
+                "dragonandphoenix/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "drawhilo/code.js",
+            "files": [
+                "drawhilo/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "drjekyllandmrhyde/code.js",
+            "files": [
+                "drjekyllandmrhyde/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "enchanted/code.js",
+            "files": [
+                "enchanted/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "enchantedjp/code.js",
+            "files": [
+                "enchantedjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "enchantednjp/code.js",
+            "files": [
+                "enchantednjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "europeanliveroulette/code.js",
+            "files": [
+                "europeanliveroulette/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "eventhorizon/code.js",
+            "files": [
+                "eventhorizon/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "exterminator/code.js",
+            "files": [
+                "exterminator/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "faeriespell/code.js",
+            "files": [
+                "faeriespell/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "faeriespellnjp/code.js",
+            "files": [
+                "faeriespellnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "fafatwins/code.js",
+            "files": [
+                "fafatwins/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "fireandsteel/code.js",
+            "files": [
+                "fireandsteel/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "fivedrawpoker/code.js",
+            "files": [
+                "fivedrawpoker/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "fourseasons/code.js",
+            "files": [
+                "fourseasons/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "frankenslotsmonster/code.js",
+            "files": [
+                "frankenslotsmonster/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "froghunter/code.js",
+            "files": [
+                "froghunter/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "fruitzen/code.js",
+            "files": [
+                "fruitzen/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "gemscapades/code.js",
+            "files": [
+                "gemscapades/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "geniesfortune/code.js",
+            "files": [
+                "geniesfortune/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "ghoulsgold/code.js",
+            "files": [
+                "ghoulsgold/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "giovannisgems/code.js",
+            "files": [
+                "giovannisgems/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "gladiator/code.js",
+            "files": [
+                "gladiator/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "glamlife/code.js",
+            "files": [
+                "glamlife/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "glamlifegb/code.js",
+            "files": [
+                "glamlifegb/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "glamlifenjp/code.js",
+            "files": [
+                "glamlifenjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "golddiggers/code.js",
+            "files": [
+                "golddiggers/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "goldendragoninferno/code.js",
+            "files": [
+                "goldendragoninferno/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "goldcanyon/code.js",
+            "files": [
+                "goldcanyon/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "goodbadgirl/code.js",
+            "files": [
+                "goodbadgirl/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "goodbadgirlnjp/code.js",
+            "files": [
+                "goodbadgirlnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "goodgirlbadgirlnjp/code.js",
+            "files": [
+                "goodgirlbadgirlnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "great88/code.js",
+            "files": [
+                "great88/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "greedygoblins/code.js",
+            "files": [
+                "greedygoblins/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "greedygoblinsnjp/code.js",
+            "files": [
+                "greedygoblinsnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "gypsyrose/code.js",
+            "files": [
+                "gypsyrose/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "hamburgroulette/code.js",
+            "files": [
+                "hamburgroulette/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "hamilton/code.js",
+            "files": [
+                "hamilton/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "heist/code.js",
+            "files": [
+                "heist/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "hiddenloot/code.js",
+            "files": [
+                "hiddenloot/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "holdemfoldem/code.js",
+            "files": [
+                "holdemfoldem/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "holdthempoker/code.js",
+            "files": [
+                "holdthempoker/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "hotshot/code.js",
+            "files": [
+                "hotshot/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "houseoffun/code.js",
+            "files": [
+                "houseoffun/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "instantkeno/code.js",
+            "files": [
+                "instantkeno/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "invaders/code.js",
+            "files": [
+                "invaders/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "itcamefromvenus/code.js",
+            "files": [
+                "itcamefromvenus/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "itcamefromvenusjp/code.js",
+            "files": [
+                "itcamefromvenusjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "itcamefromvenusjpplus/code.js",
+            "files": [
+                "itcamefromvenusjpplus/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "itcamefromvenusnjpplus/code.js",
+            "files": [
+                "itcamefromvenusnjpplus/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "jackpot2000norg/code.js",
+            "files": [
+                "jackpot2000norg/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "jackpot2000norgvip/code.js",
+            "files": [
+                "jackpot2000norgvip/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "jackpot2000v8/code.js",
+            "files": [
+                "jackpot2000v8/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "jackpotgagnant/code.js",
+            "files": [
+                "jackpotgagnant/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "jackpotjamba/code.js",
+            "files": [
+                "jackpotjamba/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "jackpotjambamini/code.js",
+            "files": [
+                "jackpotjambamini/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "jackpotjambanjp/code.js",
+            "files": [
+                "jackpotjambanjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "jackpotultra/code.js",
+            "files": [
+                "jackpotultra/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "jacksdoubleup/code.js",
+            "files": [
+                "jacksdoubleup/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "jokerdeuces/code.js",
+            "files": [
+                "jokerdeuces/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "jokersdoubleup/code.js",
+            "files": [
+                "jokersdoubleup/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "kawaiikitty/code.js",
+            "files": [
+                "kawaiikitty/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "keno/code.js",
+            "files": [
+                "keno/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "kenomini/code.js",
+            "files": [
+                "kenomini/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "klubkeno/code.js",
+            "files": [
+                "klubkeno/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "klubkenomini/code.js",
+            "files": [
+                "klubkenomini/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "krazykeno/code.js",
+            "files": [
+                "krazykeno/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "legendofthenile/code.js",
+            "files": [
+                "legendofthenile/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "legendofthenilenjp/code.js",
+            "files": [
+                "legendofthenilenjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "livebaccarat/code.js",
+            "files": [
+                "livebaccarat/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "liveblackjack/code.js",
+            "files": [
+                "liveblackjack/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "lost/code.js",
+            "files": [
+                "lost/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "lostlv/code.js",
+            "files": [
+                "lostlv/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "lucky7/code.js",
+            "files": [
+                "lucky7/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "madderscientist/code.js",
+            "files": [
+                "madderscientist/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "madscientist/code.js",
+            "files": [
+                "madscientist/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "magiclines/code.js",
+            "files": [
+                "magiclines/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "magicshoppe/code.js",
+            "files": [
+                "magicshoppe/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "mamamia/code.js",
+            "files": [
+                "mamamia/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "megagems/code.js",
+            "files": [
+                "megagems/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "megagemsnjp/code.js",
+            "files": [
+                "megagemsnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "megaglamlifejp/code.js",
+            "files": [
+                "megaglamlifejp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "megaglamlifenjp/code.js",
+            "files": [
+                "megaglamlifenjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "megajackpot/code.js",
+            "files": [
+                "megajackpot/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "megaking/code.js",
+            "files": [
+                "megaking/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "megastar/code.js",
+            "files": [
+                "megastar/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "megastarjackpot/code.js",
+            "files": [
+                "megastarjackpot/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "mermaidspearl/code.js",
+            "files": [
+                "mermaidspearl/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "modifiedbj/code.js",
+            "files": [
+                "modifiedbj/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "modifiedbjdouble/code.js",
+            "files": [
+                "modifiedbjdouble/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "modifiedbjeu/code.js",
+            "files": [
+                "modifiedbjeu/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "monkeymoney/code.js",
+            "files": [
+                "monkeymoney/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "moregolddiggin//code.js",
+            "files": [
+                "moregolddiggin/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "mrvegas/code.js",
+            "files": [
+                "mrvegas/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "mrvegasmini/code.js",
+            "files": [
+                "mrvegasmini/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "mrvegasnjp/code.js",
+            "files": [
+                "mrvegasnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "multihandblackjack/code.js",
+            "files": [
+                "multihandblackjack/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "multihandpoker/code.js",
+            "files": [
+                "multihandpoker/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "nedandtherats/code.js",
+            "files": [
+                "nedandtherats/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "oasispoker/code.js",
+            "files": [
+                "oasispoker/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "oldtimer/code.js",
+            "files": [
+                "oldtimer/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "onceuponatime/code.js",
+            "files": [
+                "onceuponatime/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "outofthisworld/code.js",
+            "files": [
+                "outofthisworld/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "outofthisworldplus/code.js",
+            "files": [
+                "outofthisworldplus/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "pacoandpeppers/code.js",
+            "files": [
+                "pacoandpeppers/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "paigow/code.js",
+            "files": [
+                "paigow/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "pharaohking/code.js",
+            "files": [
+                "pharaohking/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "pharaohkingmini/code.js",
+            "files": [
+                "pharaohkingmini/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "pharaohkingnjp/code.js",
+            "files": [
+                "pharaohkingnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "pinocchio/code.js",
+            "files": [
+                "pinocchio/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "pirate21/code.js",
+            "files": [
+                "pirate21/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "plumbo/code.js",
+            "files": [
+                "plumbo/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "pontoon/code.js",
+            "files": [
+                "pontoon/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "predictor/code.js",
+            "files": [
+                "predictor/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "puppylove/code.js",
+            "files": [
+                "puppylove/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "puppyloveplus/code.js",
+            "files": [
+                "puppyloveplus/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "pyramidpoker/code.js",
+            "files": [
+                "pyramidpoker/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "reddog/code.js",
+            "files": [
+                "reddog/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "redhot7s/code.js",
+            "files": [
+                "redhot7s/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "redwhiteblue7/code.js",
+            "files": [
+                "redwhiteblue7/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "reeloutlaws/code.js",
+            "files": [
+                "reeloutlaws/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "reelsofwealth/code.js",
+            "files": [
+                "reelsofwealth/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "reelsofwealthnjp/code.js",
+            "files": [
+                "reelsofwealthnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "ridethempoker/code.js",
+            "files": [
+                "ridethempoker/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "rockstar/code.js",
+            "files": [
+                "rockstar/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "rooksrevenge/code.js",
+            "files": [
+                "rooksrevenge/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "roulette/code.js",
+            "files": [
+                "roulette/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "royalreels/code.js",
+            "files": [
+                "royalreels/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "safarisam/code.js",
+            "files": [
+                "safarisam/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "scratcherz/code.js",
+            "files": [
+                "scratcherz/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "scratcherzv2/code.js",
+            "files": [
+                "scratcherzv2/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "sevenheaven/code.js",
+            "files": [
+                "sevenheaven/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "sheriff/code.js",
+            "files": [
+                "sheriff/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "singledeckblackjack/code.js",
+            "files": [
+                "singledeckblackjack/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "sincitynights/code.js",
+            "files": [
+                "sincitynights/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "slotfather/code.js",
+            "files": [
+                "slotfather/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "slotfather2/code.js",
+            "files": [
+                "slotfather2/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "slotfatherjp/code.js",
+            "files": [
+                "slotfatherjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "slotfathernjp/code.js",
+            "files": [
+                "slotfathernjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "slotsangels/code.js",
+            "files": [
+                "slotsangels/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "slotsangelsnjp/code.js",
+            "files": [
+                "slotsangelsnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "splitwayroyal/code.js",
+            "files": [
+                "splitwayroyal/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "stampede/code.js",
+            "files": [
+                "stampede/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "sugarpop/code.js",
+            "files": [
+                "sugarpop/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "sugarpop2/code.js",
+            "files": [
+                "sugarpop2/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "sugarpopplus/code.js",
+            "files": [
+                "sugarpopplus/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "super7blackjack/code.js",
+            "files": [
+                "super7blackjack/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "superjoker/code.js",
+            "files": [
+                "superjoker/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "superjokervip/code.js",
+            "files": [
+                "superjokervip/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "supermoneywheel/code.js",
+            "files": [
+                "supermoneywheel/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "sushibar/code.js",
+            "files": [
+                "sushibar/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "sushibarv2/code.js",
+            "files": [
+                "sushibarv2/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "swap21/code.js",
+            "files": [
+                "swap21/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "tensbetter/code.js",
+            "files": [
+                "tensbetter/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "theangler/code.js",
+            "files": [
+                "theangler/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "thebees/code.js",
+            "files": [
+                "thebees/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "theghouls/code.js",
+            "files": [
+                "theghouls/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "theghoulsmini/code.js",
+            "files": [
+                "theghoulsmini/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "theghoulsnjp/code.js",
+            "files": [
+                "theghoulsnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "thetipsytourist/code.js",
+            "files": [
+                "thetipsytourist/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "threecardpoker/code.js",
+            "files": [
+                "threecardpoker/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "threecardrummy/code.js",
+            "files": [
+                "threecardrummy/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "threewishes/code.js",
+            "files": [
+                "threewishes/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "treasureroom/code.js",
+            "files": [
+                "treasureroom/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "treasureroomnjp/code.js",
+            "files": [
+                "treasureroomnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "triplecrown/code.js",
+            "files": [
+                "triplecrown/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "trueillusions/code.js",
+            "files": [
+                "trueillusions/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "tycoons/code.js",
+            "files": [
+                "tycoons/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "tycoonsnjp/code.js",
+            "files": [
+                "tycoonsnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "tycoonsplus/code.js",
+            "files": [
+                "tycoonsplus/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "tycoonsplusnjp/code.js",
+            "files": [
+                "tycoonsplusnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "underthebed/code.js",
+            "files": [
+                "underthebed/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "underthesea/code.js",
+            "files": [
+                "underthesea/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "vegasjoker/code.js",
+            "files": [
+                "vegasjoker/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "vikingage/code.js",
+            "files": [
+                "vikingage/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "vikingvoyage/code.js",
+            "files": [
+                "vikingvoyage/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "vipamericanroulette/code.js",
+            "files": [
+                "vipamericanroulette/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "vipeuropeanblackjack/code.js",
+            "files": [
+                "vipeuropeanblackjack/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "vipsingledeckblackjack/code.js",
+            "files": [
+                "vipsingledeckblackjack/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "virtualracebook3d/code.js",
+            "files": [
+                "virtualracebook3d/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "weekendinvegas/code.js",
+            "files": [
+                "weekendinvegas/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "whospunit/code.js",
+            "files": [
+                "whospunit/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "whospunitplus/code.js",
+            "files": [
+                "whospunitplus/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "whospunitv2/code.js",
+            "files": [
+                "whospunitv2/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "whospunitv3/code.js",
+            "files": [
+                "whospunitv3/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "wizardscastle/code.js",
+            "files": [
+                "wizardscastle/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "zoomroulette/code.js",
+            "files": [
+                "zoomroulette/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "jumbojoker/code.js",
+            "files": [
+                "jumbojoker/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "tigersclaw/code.js",
+            "files": [
+                "tigersclaw/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "ogreempire/code.js",
+            "files": [
+                "ogreempire/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "thegoldenowlofathena/code.js",
+            "files": [
+                "thegoldenowlofathena/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "undiscovered_egypt/code.js",
+            "files": [
+                "undiscovered_egypt/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "chillipop/code.js",
+            "files": [
+                "chillipop/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "yakyetiandroll/code.js",
+            "files": [
+                "yakyetiandroll/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "pirates/code.js",
+            "files": [
+                "pirates/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "piratespov/code.js",
+            "files": [
+                "piratespov/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "fruitbatcrazy/code.js",
+            "files": [
+                "fruitbatcrazy/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "bamboorush/code.js",
+            "files": [
+                "bamboorush/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "spinfinityman/code.js",
+            "files": [
+                "spinfinityman/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "wolfmoonrising/code.js",
+            "files": [
+                "wolfmoonrising/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "bombslot/code.js",
+            "files": [
+                "bombslot/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "gemmed/code.js",
+            "files": [
+                "gemmed/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "takethebank/code.js",
+            "files": [
+                "takethebank/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "takethebanknbf/code.js",
+            "files": [
+                "takethebanknbf/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "caishen/code.js",
+            "files": [
+                "caishen/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "supersweets/code.js",
+            "files": [
+                "supersweets/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "totaloverdrive/code.js",
+            "files": [
+                "totaloverdrive/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "backtovenus/code.js",
+            "files": [
+                "backtovenus/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "journeytothewest/code.js",
+            "files": [
+                "journeytothewest/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "europeanblackjack/code.js",
+            "files": [
+                "europeanblackjack/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "hattrickhero/code.js",
+            "files": [
+                "hattrickhero/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "hive/code.js",
+            "files": [
+                "hive/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "primalhunt/code.js",
+            "files": [
+                "primalhunt/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "amazon/code.js",
+            "files": [
+                "amazon/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "mystichive/code.js",
+            "files": [
+                "mystichive/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "monsterpop/code.js",
+            "files": [
+                "monsterpop/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "milesbellhouse/code.js",
+            "files": [
+                "milesbellhouse/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "bookofshadows/code.js",
+            "files": [
+                "bookofshadows/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "takesantasshop/code.js",
+            "files": [
+                "takesantasshop/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "goldenhorns/code.js",
+            "files": [
+                "goldenhorns/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "revengeofra/code.js",
+            "files": [
+                "revengeofra/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "stacked/code.js",
+            "files": [
+                "stacked/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "takeolympus/code.js",
+            "files": [
+                "takeolympus/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "clashofthegods/code.js",
+            "files": [
+                "clashofthegods/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "safarisam2/code.js",
+            "files": [
+                "safarisam2/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "lavagold/code.js",
+            "files": [
+                "lavagold/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "junglestripes/code.js",
+            "files": [
+                "junglestripes/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "wilddrops/code.js",
+            "files": [
+                "wilddrops/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "mrmacau/code.js",
+            "files": [
+                "mrmacau/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "fortunefrenzy/code.js",
+            "files": [
+                "fortunefrenzy/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "frenzyfortune/code.js",
+            "files": [
+                "frenzyfortune/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "toweroffortuna/code.js",
+            "files": [
+                "toweroffortuna/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "returntoparis/code.js",
+            "files": [
+                "returntoparis/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "stayfrosty/code.js",
+            "files": [
+                "stayfrosty/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "thaiblossoms/code.js",
+            "files": [
+                "thaiblossoms/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "takethekingdom/code.js",
+            "files": [
+                "takethekingdom/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "dragonstone/code.js",
+            "files": [
+                "dragonstone/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "bg_dragonstone/code.js",
+            "files": [
+                "bg_dragonstone/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "mysterychests/code.js",
+            "files": [
+                "mysterychests/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "goldtigerascent/code.js",
+            "files": [
+                "goldtigerascent/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "alkemorselements/code.js",
+            "files": [
+                "alkemorselements/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "triplejuicydrops/code.js",
+            "files": [
+                "triplejuicydrops/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "geminijoker/code.js",
+            "files": [
+                "geminijoker/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "primalwilderness/code.js",
+            "files": [
+                "primalwilderness/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "bookofhelios/code.js",
+            "files": [
+                "bookofhelios/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "kenseiblades/code.js",
+            "files": [
+                "kenseiblades/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "wildsoffortune/code.js",
+            "files": [
+                "wildsoffortune/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "mission_amazon/code.js",
+            "files": [
+                "mission_amazon/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "bg_mission_amazon/code.js",
+            "files": [
+                "bg_mission_amazon/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "maxcrashgame/code.js",
+            "files": [
+                "maxcrashgame/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "windsofwealth/code.js",
+            "files": [
+                "windsofwealth/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "captainsquest/code.js",
+            "files": [
+                "captainsquest/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "supremesevensblackjack/code.js",
+            "files": [
+                "supremesevensblackjack/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "trinityreels/code.js",
+            "files": [
+                "trinityreels/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "triple_max_blast/code.js",
+            "files": [
+                "triple_max_blast/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "ragstowitches/code.js",
+            "files": [
+                "ragstowitches/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "ragstowitchesnjp/code.js",
+            "files": [
+                "ragstowitchesnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "woodlanders/code.js",
+            "files": [
+                "woodlanders/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "boundingluck/code.js",
+            "files": [
+                "boundingluck/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "sleighinit/code.js",
+            "files": [
+                "sleighinit/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "sleighinitnjp/code.js",
+            "files": [
+                "sleighinitnjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "lunarcash/code.js",
+            "files": [
+                "bg_max_blast_champions/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "bg_max_blast_champions/code.js",
+            "files": [
+                "bg_max_blast_champions/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "heartsdesire/code.js",
+            "files": [
+                "heartsdesire/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "heartsdesirenjp/code.js",
+            "files": [
+                "heartsdesirenjp/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "expansion/code.js",
+            "files": [
+                "expansion/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "mrvegas2/code.js",
+            "files": [
+                "mrvegas2/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "charmsandtreasures/code.js",
+            "files": [
+                "charmsandtreasures/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "hotlucky7/code.js",
+            "files": [
+                "hotlucky7/code.js"
+            ]
+        },
+        {
+            "type": "js",
+            "name": "phosho/code.js",
+            "files": [
+                "phosho/code.js"
+            ]
+        }
+    ]
+}

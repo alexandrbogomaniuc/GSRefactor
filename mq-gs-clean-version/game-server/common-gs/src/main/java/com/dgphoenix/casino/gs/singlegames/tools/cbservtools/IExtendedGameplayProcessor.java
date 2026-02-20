@@ -1,0 +1,15 @@
+package com.dgphoenix.casino.gs.singlegames.tools.cbservtools;
+
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
+
+
+/**
+ * User: Grien
+ * Date: 02.06.2014 17:58
+ */
+public interface IExtendedGameplayProcessor {
+    Iterable<String> process(IDBLink dbLink, boolean roundFinished, boolean isEnter) throws CommonException;
+
+    StringBuilder createBetParameter(long accountId, short gamePosition, long gameId) throws CommonException;
+}

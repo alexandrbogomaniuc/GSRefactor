@@ -1,0 +1,24 @@
+{
+  "localeCode": "en_US",
+  "currencyCode": "EUR",
+  "moneyTransArray": [
+    {
+      "transAmt": 10,
+      "transType": "credit",
+      "transCategory": "offlineCredit",
+      "transDesc": "promoId: 123",
+      "transSeq": 1,
+      "transId": "0",
+      "transDateTime": "%s"
+    }
+  ],
+  "_meta": {
+    "gsId": "rgs-bsg",
+    "gpId": "rgs-bsg",
+    "requestId": "1",
+    "clientPlatform": "flash",
+    "clientType": "casino"
+  },
+  "skinId": "casino123",
+  "playerId": "pop-player"
+}

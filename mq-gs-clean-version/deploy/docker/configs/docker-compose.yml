@@ -1,0 +1,114 @@
+version: '3.5'
+services:
+  gs:
+    build: ./gs
+    image: jetty-gs
+    volumes:
+      - "/Users/alexb/Documents/Dev/Doker/runtime-gs/webapps/gs:/var/lib/jetty/webapps"
+      - "/Users/alexb/Documents/Dev/Doker/runtime-gs/logs/gs:/www/logs/tomcat.gs"
+      - "/Users/alexb/Documents/Dev/Doker/runtime-gs/default-configs:/www/html/gs/ROOT/export"
+    networks:
+      - gs-network
+    ports:
+      - "81:8080"
+      - "6000:6000"
+      - "6001:6001"
+      - "9000:9000"
+    depends_on:
+      - "c1"
+      - "zookeeper"
+      - "kafka"
+      - "mp"
+
+  mp:
+    image: "jetty-gs"
+    working_dir: /app
+    volumes:
+      - "/Users/alexb/Documents/Dev/mq-mp-clean-version/web:/app"
+    networks:
+      - gs-network
+    depends_on:
+      - "c1"
+      - "zookeeper"
+      - "kafka"
+    command: >
+      sh -lc "sed -i 's#<hosts>.*</hosts>#<hosts>c1:9042</hosts>#' /app/target/web-mp-casino/WEB-INF/classes/mp-keyspace-config.xml
+      && java -DMP_SERVER_ID=1
+      -DHOSTNAME=mp-1
+      -DSERVER_VM_IP=mp
+      -Dserver.host=0.0.0.0
+      -Dserver.port=6300
+      -Dserver.jetty.host=0.0.0.0
+      -Dserver.jetty.port=6301
+      -Dserver.jetty.webroot=file:/app/target/web-mp-casino/
+      -Dkafka.hosts=kafka:9092
+      -Dzookeeper.connect=zookeeper:2181
+      -Dzookeeper.pool-size=1
+      -Dzookeeper.server-id-path=/mp_local
+      -Dzookeeper.server-id-pool-path=/mp_local/pool
+      -cp .:/app/target/web-mp-casino/WEB-INF/classes:/app/target/web-mp-casino/WEB-INF/lib/*
+      com.betsoft.casino.mp.web.NettyServer"
+    ports:
+      - "6300:6300"
+      - "6301:6301"
+
+  c1:
+    image: "cassandra:2.1.20"
+    volumes:
+      - "/Users/alexb/Documents/Dev/Doker/runtime-gs/logs/cassandra:/var/log/cassandra"
+      - "cassandra-data:/var/lib/cassandra"
+    networks:
+      - gs-network
+    environment:
+      - MAX_HEAP_SIZE=800M
+      - HEAP_NEWSIZE=300M
+    ports:
+      - "9142:9042"
+
+  zookeeper:
+    image: "zookeeper:3.8"
+    networks:
+      - gs-network
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: "confluentinc/cp-kafka:7.3.2"
+    networks:
+      - gs-network
+    depends_on:
+      - "zookeeper"
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:9092
+      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1
+      - KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0
+    ports:
+      - "9092:29092"
+
+  static:
+    build: ./static
+    image: static
+    volumes:
+      - "/Users/alexb/Documents/Dev/Doker/runtime-gs/webapps/gs/ROOT:/www/html/gss:ro"
+      - "/Users/alexb/Documents/Dev/Doker/runtime-gs/static:/www/html/stat"
+      - "/Users/alexb/Documents/Dev/Doker/runtime-gs/logs/nginx:/var/log/nginx/"
+    ports:
+     - "80:80"
+    networks:
+     - gs-network
+    depends_on:
+     - "gs"
+
+networks:
+  gs-network:
+    driver: bridge
+
+volumes:
+  cassandra-data:

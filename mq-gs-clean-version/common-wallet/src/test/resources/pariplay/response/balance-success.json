@@ -1,0 +1,30 @@
+{
+  "Balance": 197358.35,
+  "Message": [
+    {
+      DisplayType: 2,
+      Title: "Title for the popup message",
+      Text: "message. Including \r\n or just \n for enter",
+      Buttons: [
+        {
+          Text: "Quit Game",
+          Action: "quit"
+        },
+        {
+          Text: "Ok",
+          Action: "continue"
+        },
+        {
+          Text: "View History",
+          Action: "link",
+          Link: "https://www.casino.com/myaccount/history"
+        }
+      ]
+    }
+  ],
+  "SessionData": {
+    " TotalBet ": 20.0,
+    " TotalWin ": 10.0,
+    " SessionBalance ": 220.0
+  }
+}

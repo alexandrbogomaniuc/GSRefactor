@@ -1,0 +1,22 @@
+{
+  "auth": {
+    "signature": "96e4f487e26bd7c9ea54223c5fa900c44d04d554a390200871c1556e55029d8b"
+  },
+  "request": {
+    "start_date": "2017-04-26 12:24:35",
+    "end_date": "2017-04-30 12:13:42",
+    "freeround_id": 1884,
+    "licensee_id": 134,
+    "limit_per_player": 11,
+    "operator": "Master Licensee",
+    "games_id": {
+      "": [
+        {
+          "coin_value": 25,
+          "currency": "EUR"
+        }
+      ]
+    },
+    "launchercode": "isb_134-qa"
+  }
+}

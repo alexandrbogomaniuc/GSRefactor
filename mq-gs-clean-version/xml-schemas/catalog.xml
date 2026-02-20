@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <system systemId="http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" uri="./web-app_3_1.xsd"/>
+    <system systemId="http://maven.apache.org/xsd/settings-1.1.0.xsd" uri="./settings-1.1.0.xsd"/>
+    <public publicId="-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" uri="./struts-config_1_3.dtd"/>
+    <public publicId="-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" uri="./tiles-config_1_1.dtd"/>
+</catalog>

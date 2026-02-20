@@ -1,0 +1,38 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mq-gs
+  namespace: legacy
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: md-dev01-gke-loadbalancer
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: default.mdtest.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: mq-gs-svc
+            port:
+              number: 80
+  - host: games.mdtest.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: mq-gs-svc
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - default.mdtest.io
+    - games.mdtest.io
+    secretName: tls-letsencrypt
+...

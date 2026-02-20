@@ -1,0 +1,17 @@
+{
+  "gameId": "777",
+  "channelType": "some-channel",
+  "localeCode": "en_US",
+  "currencyCode": "EUR",
+  "includeUrls": %b,
+  "_meta": {
+    "gsId": "rgs-bsg",
+    "gpId": "rgs-bsg",
+    "requestId": "%d",
+    "clientPlatform": "flash",
+    "clientType": "casino"
+  },
+  "skinId": "casino123",
+  "playerId": "pop-player",
+  "secureToken": "player-secure-token"
+}

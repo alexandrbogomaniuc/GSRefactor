@@ -1,0 +1,5 @@
+<JackpotServerConfig>
+    <startSocketServer>false</startSocketServer>
+    <port>6000</port>
+    <clientTimeout>30000</clientTimeout>
+</JackpotServerConfig>

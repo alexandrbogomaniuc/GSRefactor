@@ -1,0 +1,22 @@
+{
+    "auth": {
+        "signature": "0c6f43b8033811ed2cf5010fbf15a528663a1ff812c13c7b24763171fa3ce59c"
+    },
+    "request": {
+        "start_date": "2017-04-26 12:24:35",
+        "end_date": "2017-04-30 12:13:42",
+        "freeround_id": 1884,
+        "licensee_id": 134,
+        "limit_per_player": 11,
+        "operator": "Master Licensee",
+        "games_id": {
+            "PP_HTML5_BlackWidow_Desktop": [
+                {
+                    "coin_value": 25,
+                    "currency": "EUR"
+                }
+            ]
+        },
+        "launchercode": "isb_134-qa"
+    }
+}

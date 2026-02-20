@@ -1,0 +1,7 @@
+{
+  "createdAt": "2020-12-03T12:15:30.000+0200",
+  "balance":9000,
+  "txId":"42",
+  "processedTxId":"eva-tx-1",
+  "alreadyProcessed":false
+}

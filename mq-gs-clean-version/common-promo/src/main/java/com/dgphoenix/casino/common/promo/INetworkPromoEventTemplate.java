@@ -1,0 +1,27 @@
+package com.dgphoenix.casino.common.promo;
+
+/**
+ * User: flsh
+ * Date: 10.12.2020.
+ */
+public interface INetworkPromoEventTemplate<P extends IPrize, IPT extends INetworkPromoEventTemplate> extends IPromoTemplate<P, IPT> {
+    long getBuyInPrice();
+
+    long getBuyInAmount();
+
+    long getPrize();
+
+    boolean isReBuyEnabled();
+
+    long getReBuyPrice();
+
+    long getReBuyAmount();
+
+    int getReBuyLimit();
+
+    long getCutOffTime();
+
+    long getIconId();
+
+    boolean isResetBalance();
+}

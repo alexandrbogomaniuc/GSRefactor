@@ -1,0 +1,674 @@
+definitions:
+
+  services:
+    docker:
+      memory: 8192
+
+  scripts:
+
+    script_set_env: &script_set_env |
+      set -euo pipefail
+
+      case "${TARGET}" in 
+        "development_maxduel")
+            export ENV_NAME=dev01
+            export GCP_PROJECT_ID=${GCP_PROJECT_ID_DEV_MAXDUEL}
+            export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_DEV_MAXDUEL}
+            export GCP_REGION=${GCP_REGION_DEV_MAXDUEL}
+            export PROJECT_NAME=${PROJECT_NAME_DEV_MAXDUEL}
+            export K8S_NAMESPACE=${K8S_NAMESPACE_DEV_MAXDUEL}
+            export RUNNER_ID=${RUNNER_ID_DEV_MAXDUEL}
+            export K8S_ENV_DIR=development_maxduel
+            export DOCKERFILE=Dockerfile.new
+            echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa;
+          ;;
+        "pre-prod_maxduel")
+          export ENV_NAME=stage01
+          export GCP_PROJECT_ID=${GCP_PROJECT_ID_STAGE_MAXDUEL}
+          export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_STAGE_MAXDUEL}
+          export GCP_REGION=${GCP_REGION_STAGE_MAXDUEL}
+          export PROJECT_NAME=${PROJECT_NAME_STAGE_MAXDUEL}
+          export K8S_NAMESPACE=${K8S_NAMESPACE_STAGE_MAXDUEL}
+          export GCP_USERNAME_PREFIX=${GCP_USERNAME_PREFIX_STAGE_MAXDUEL}
+          export RUNNER_ID=${RUNNER_ID_STAGE_MAXDUEL}
+          export DOCKERFILE=Dockerfile.new
+          echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa;
+          ;;
+        "production_maxduel")
+          export ENV_NAME=prod01
+          export GCP_PROJECT_ID=${GCP_PROJECT_ID_PROD_MAXDUEL}
+          export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_PROD_MAXDUEL}
+          export GCP_REGION=${GCP_REGION_PROD_MAXDUEL}
+          export PROJECT_NAME=${PROJECT_NAME_PROD_MAXDUEL}
+          export K8S_NAMESPACE=${K8S_NAMESPACE_PROD_MAXDUEL}
+          export GCP_USERNAME_PREFIX=${GCP_USERNAME_PREFIX_PROD_MAXDUEL}
+          export RUNNER_ID=${RUNNER_ID_PROD_MAXDUEL}
+          export DOCKERFILE=Dockerfile.new
+          echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa;
+          ;;
+        "test_maxquest")
+          export ENV_NAME=dev01
+          export GCP_PROJECT_ID=${GCP_PROJECT_ID_DEV}
+          export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_DEV}
+          export GCP_REGION=${GCP_REGION_DEV}
+          export PROJECT_NAME=${PROJECT_NAME_DEV}
+          export K8S_NAMESPACE=${K8S_NAMESPACE_DEV}
+          export RUNNER_ID=${RUNNER_ID_DEV}
+          export DOCKERFILE=Dockerfile.new
+          echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa;
+          ;;
+        "pre-prod_maxquest")
+          export ENV_NAME=stage01
+          export GCP_PROJECT_ID=${GCP_PROJECT_ID_STAGE}
+          export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_STAGE}
+          export GCP_REGION=${GCP_REGION_STAGE}
+          export PROJECT_NAME=${PROJECT_NAME_STAGE}
+          export K8S_NAMESPACE=${K8S_NAMESPACE_STAGE}
+          export RUNNER_ID=${RUNNER_ID_STAGE}
+          export DOCKERFILE=Dockerfile.new
+          echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa;
+          ;;
+        "production_maxquest")
+          export ENV_NAME=prod01
+          export GCP_PROJECT_ID=${GCP_PROJECT_ID_PROD}
+          export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_PROD}
+          export GCP_REGION=${GCP_REGION_PROD}
+          export PROJECT_NAME=${PROJECT_NAME_PROD}
+          export K8S_NAMESPACE=${K8S_NAMESPACE_PROD}
+          export RUNNER_ID=${RUNNER_ID_PROD}
+          export DOCKERFILE=Dockerfile.new
+          echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa;
+          ;;
+        *)
+          echo "ERROR: INCORRECT BITBUCKET_BRANCH/TAG ${1} FOR DEPLOY"
+          exit 1
+          ;;
+      esac
+
+      env | sort
+
+    script_export_ssh_key: &script_export_ssh_key |
+      echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa
+      echo "StrictHostKeyChecking no" >> ~/.ssh/config
+
+    script_gcp_auth: &script_gcp_auth |
+      mkdir .GCP_CREDS
+      export GCP_CREDS='.GCP_CREDS'
+      echo ${BITBUCKET_STEP_OIDC_TOKEN} > ${GCP_CREDS}/gcp_access_token.out
+      export GCP_WORKLOAD_IDENTITY_PROVIDER="projects/${GCP_PROJECT_NUMBER}/locations/global/workloadIdentityPools/${PROJECT_NAME}-${ENV_NAME}-${GCP_USERNAME_PREFIX}/providers/${PROJECT_NAME}-${ENV_NAME}-${GCP_USERNAME_PREFIX}"
+      export GCP_SERVICE_ACCOUNT_EMAIL="${PROJECT_NAME}-${ENV_NAME}-${GCP_USERNAME_PREFIX}@${GCP_PROJECT_ID}.iam.gserviceaccount.com"
+      gcloud iam workload-identity-pools create-cred-config ${GCP_WORKLOAD_IDENTITY_PROVIDER} \
+        --service-account="${GCP_SERVICE_ACCOUNT_EMAIL}" \
+        --output-file=${GCP_CREDS}/gcp_temp_cred.json \
+        --credential-source-file=${GCP_CREDS}/gcp_access_token.out
+      gcloud auth login --cred-file=${GCP_CREDS}/gcp_temp_cred.json
+      gcloud config set project ${GCP_PROJECT_ID}
+      gcloud auth list
+      gcloud auth configure-docker ${GCP_REGION}-docker.pkg.dev
+      gcloud container clusters get-credentials ${PROJECT_NAME}-${ENV_NAME} --region ${GCP_REGION}
+
+    script_chmod: &script_chmod |
+      find . -type d -exec chmod 0755 {} \;
+      find . -type f -exec chmod 0644 {} \;
+
+      chmod -v +x build-all-modules.sh
+      chmod -v +x install-gsn-casino-project.sh
+      chmod -v +x game-server/build/live/build-mqb2-live.sh
+      chmod -v +x game-server/build/check-on-brand-issues.sh
+      chmod -v +x deploy.sh
+
+    script_docker_build_base: &script_docker_build_base |
+      export PATH=/usr/bin:$PATH
+
+      export IMAGE=${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${PROJECT_NAME}-${ENV_NAME}/${APP_NAME}-base
+      export TAG=${BITBUCKET_COMMIT::7}
+      export DOCKERFILE=Dockerfile.build.base
+      
+      docker build -t ${IMAGE}:${TAG} -f ${DOCKERFILE} . --progress=plain
+
+      docker images
+      
+      docker tag  ${IMAGE}:${TAG} ${IMAGE}:latest
+  
+      docker push ${IMAGE}:${TAG}
+      docker push ${IMAGE}:latest
+
+    script_docker_build: &script_docker_build |
+      curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-20.10.23.tgz | tar -xz
+      mv docker/* /usr/local/bin/
+      export PATH="/usr/local/bin:$PATH"
+      docker --version
+      # export PATH=/usr/bin:$PATH
+      which docker
+      
+      export IMAGE=${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${PROJECT_NAME}-${ENV_NAME}/${APP_NAME}-base
+      docker pull ${IMAGE}:latest
+      docker tag  ${IMAGE}:latest ${APP_NAME}-base:latest
+      export IMAGE=${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${PROJECT_NAME}-${ENV_NAME}/${APP_NAME}-new
+      export TAG=${BITBUCKET_COMMIT::7}
+      export DOCKERFILE=Dockerfile.new
+      export DOCKER_BUILDKIT=1
+      export BUILDKIT_PROGRESS=plain
+
+      docker build --build-arg GCS_BUCKET=md-${ENV_NAME}-tools --progress=plain -t ${IMAGE}:${TAG} -f ${DOCKERFILE} .
+
+      docker images
+      docker tag  ${IMAGE}:${TAG} ${IMAGE}:latest
+      docker push ${IMAGE}:${TAG}
+      docker push ${IMAGE}:latest
+
+
+    script_deploy_legacy: &script_deploy_legacy |
+      INSTANCE_LIST=$(gcloud compute instances list --filter="name~'^${PROJECT_NAME}-${ENV_NAME}-legacy-gs-'" --format="csv[no-heading](name,zone)") || {
+        echo "Failed to list instances"
+        exit 1
+      }
+
+      echo "----------------------------------------"
+      echo 'TARGET INSTANCES FOR DEPLOY:'
+      IFS=$'\n'
+
+      for line in ${INSTANCE_LIST}; do
+        echo ${line}
+      done
+      echo "----------------------------------------"
+        IFS=$'\n'
+      for line in ${INSTANCE_LIST}; do
+        INSTANCE_NAME=$(echo ${line} | cut -d',' -f1)
+        INSTANCE_ZONE=$(echo ${line} | cut -d',' -f2)
+        echo "Connecting to ${INSTANCE_NAME} in zone ${INSTANCE_ZONE}..."
+        gcloud compute ssh --project "${GCP_PROJECT_ID}" --zone="${INSTANCE_ZONE}" --internal-ip "${INSTANCE_NAME}" --ssh-flag="-o ServerAliveInterval=30" --ssh-flag="-o ServerAliveCountMax=10" --command="\
+          gcloud auth configure-docker ${GCP_REGION}-docker.pkg.dev --quiet && \
+          echo '----------------------------------------' && \
+          echo 'STATE BEFORE DEPLOY ON ${INSTANCE_NAME}:' && \
+          echo '----------------------------------------' && \
+          docker images && \
+          echo '----------------------------------------' && \
+          docker ps -a && \
+          echo '----------------------------------------' && \
+          df -h / && \
+          echo '----------------------------------------' && \
+          uptime && \
+          echo '----------------------------------------' && \
+          cd /opt/${APP_NAME} && \
+          echo '----------------------------------------' && \
+          cat docker-compose.yaml && \
+          echo '----------------------------------------' && \
+          docker compose pull && \
+          echo '----------------------------------------' && \
+          docker compose up -d && \
+          docker image prune -a -f && \
+          echo '----------------------------------------' && \
+          echo 'STATE AFTER DEPLOY ON ${INSTANCE_NAME}:' && \
+          echo '----------------------------------------' && \
+          docker images && \
+          echo '----------------------------------------' && \
+          docker ps -a && \
+          echo '----------------------------------------' && \
+          df -h / && \
+          echo '----------------------------------------' && \
+          uptime && \
+          echo '----------------------------------------'" || {
+          echo "Failed to execute commands on ${INSTANCE_NAME}"
+          exit 1
+        }
+        echo "Command execution on ${INSTANCE_NAME} completed."
+        echo '----------------------------------------'
+        echo '----------------------------------------'
+      done
+
+    script_cleanup: &script_cleanup |
+      rm -rf .* *
+      ls -alhR
+
+    script_cleanup: &script_cleanup_except_artifacts |
+      # rm -rf .*[!artifacts]* *[!artifacts]*
+      find . -maxdepth 1 -type f -not -name "artifacts" -delete
+      find . -maxdepth 1 -type d -not -name "." -not -name ".." -not -name "artifacts" -exec rm -rf {} +
+      ls -alhR
+
+    step_docker_build_base: &step_docker_build_base
+      name: step_docker_build_base
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01 # | mq.stage01 | mq.prod01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=test_maxquest # pre-prod_maxquest | production_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build_base
+      after-script:
+        - *script_cleanup
+      # condition:
+      #   changesets:
+      #     includePaths:
+      #       - Dockerfile.build.base
+
+    step_docker_legacy_maxduel_dev01_build_base: &step_docker_legacy_maxduel_dev01_build_base
+      name: step_docker_legacy_maxduel_dev01_build_base
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=development_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build_base
+      after-script:
+        - *script_cleanup
+      # condition:
+      #   changesets:
+      #     includePaths:
+      #       - Dockerfile.build.base
+
+    step_deploy_legacy_maxduel_dev01_step_1: &step_deploy_legacy_maxduel_dev01_step_1
+      name: step_deploy_legacy_maxduel_dev01_step_1
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=development_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build
+      after-script:
+        - *script_cleanup_except_artifacts
+      artifacts:
+        - artifacts/*
+
+    step_deploy_legacy_maxduel_dev01_step_2: &step_deploy_legacy_maxduel_dev01_step_2
+      name: step_deploy_legacy_maxduel_dev01_step_2
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=development_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_deploy_legacy
+      after-script:
+        - *script_cleanup
+      trigger: manual
+
+    step_docker_legacy_maxduel_stage01_build_base: &step_docker_legacy_maxduel_stage01_build_base
+      name: step_docker_legacy_maxduel_stage01_build_base
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=pre-prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build_base
+      after-script:
+        - *script_cleanup
+      # condition:
+      #   changesets:
+      #     includePaths:
+      #       - Dockerfile.build.base
+
+    step_deploy_legacy_maxduel_stage01_step_1: &step_deploy_legacy_maxduel_stage01_step_1
+      name: step_deploy_legacy_maxduel_stage01_step_1
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=pre-prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build
+      after-script:
+        - *script_cleanup_except_artifacts
+      artifacts:
+        - artifacts/*
+
+    step_deploy_legacy_maxduel_stage01_step_2: &step_deploy_legacy_maxduel_stage01_step_2
+      name: step_deploy_legacy_maxduel_stage01_step_2
+      runs-on:
+        - self.hosted
+        - linux
+        - md.stage01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=pre-prod_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_deploy_legacy
+      after-script:
+        - *script_cleanup
+      trigger: manual
+
+    step_docker_legacy_maxduel_prod01_build_base: &step_docker_legacy_maxduel_prod01_build_base
+      name: step_docker_legacy_maxduel_prod01_build_base
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=production_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build_base
+      after-script:
+        - *script_cleanup
+      # condition:
+      #   changesets:
+      #     includePaths:
+      #       - Dockerfile.build.base
+
+    step_deploy_legacy_maxduel_prod01_step_1: &step_deploy_legacy_maxduel_prod01_step_1
+      name: step_deploy_legacy_maxduel_prod01_step_1
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=production_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build
+      after-script:
+        - *script_cleanup_except_artifacts
+      artifacts:
+        - artifacts/*
+
+    step_deploy_legacy_maxduel_prod01_step_2: &step_deploy_legacy_maxduel_prod01_step_2
+      name: step_deploy_legacy_maxduel_prod01_step_2
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=production_maxduel
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_deploy_legacy
+      after-script:
+        - *script_cleanup
+      trigger: manual
+
+    step_deploy_legacy_test_step_1: &step_deploy_legacy_test_step_1
+      name: step_deploy_legacy_test_step_1
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=test_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build
+      after-script:
+        - *script_cleanup_except_artifacts
+      artifacts:
+        - artifacts/*
+
+    step_deploy_legacy_test_step_2: &step_deploy_legacy_test_step_2
+      name: step_deploy_legacy_test_step_2
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=test_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_deploy_legacy
+      after-script:
+        - *script_cleanup
+      trigger: manual
+
+    step_deploy_legacy_pre-prod_step_1: &step_deploy_legacy_pre-prod_step_1
+      name: step_deploy_legacy_pre-prod_step_1
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=pre-prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build
+      after-script:
+        - *script_cleanup_except_artifacts
+      artifacts:
+        - artifacts/*
+
+    step_deploy_legacy_pre-prod_step_2: &step_deploy_legacy_pre-prod_step_2
+      name: step_deploy_legacy_pre-prod_step_2
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=pre-prod_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_deploy_legacy
+      after-script:
+        - *script_cleanup
+      trigger: manual
+
+    step_deploy_legacy_prod_step_1: &step_deploy_legacy_prod_step_1
+      name: step_deploy_legacy_prod_step_1
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=production_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build
+      after-script:
+        - *script_cleanup_except_artifacts
+      artifacts:
+        - artifacts/*
+
+    step_deploy_legacy_prod_step_2: &step_deploy_legacy_prod_step_2
+      name: step_deploy_legacy_prod_step_2
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:526.0.0
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - export TARGET=production_maxquest
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_deploy_legacy
+      after-script:
+        - *script_cleanup
+      trigger: manual
+
+pipelines:
+
+  branches:
+    development_maxduel:
+    # - step: *step_docker_legacy_maxduel_dev01_build_base
+      - step: *step_deploy_legacy_maxduel_dev01_step_1
+      - step: *step_deploy_legacy_maxduel_dev01_step_2
+
+    pre-prod_maxduel:
+    # - step: *step_docker_legacy_maxduel_stage01_build_base
+      - step: *step_deploy_legacy_maxduel_stage01_step_1
+      - step: *step_deploy_legacy_maxduel_stage01_step_2
+
+    production_maxduel:
+    # - step: *step_docker_legacy_maxduel_prod01_build_base
+      - step: *step_deploy_legacy_maxduel_prod01_step_1
+      - step: *step_deploy_legacy_maxduel_prod01_step_2
+
+  tags:
+    'gs-test.*':
+    # - step: *step_docker_build_base
+      - step: *step_deploy_legacy_test_step_1
+      - step: *step_deploy_legacy_test_step_2
+
+    'gs-pre-prod.*':
+    # - step: *step_docker_build_base
+      - step: *step_deploy_legacy_pre-prod_step_1
+      - step: *step_deploy_legacy_pre-prod_step_2
+
+    'gs-prod.*':
+    # - step: *step_docker_build_base
+      - step: *step_deploy_legacy_prod_step_1
+      - step: *step_deploy_legacy_prod_step_2

@@ -1,0 +1,12 @@
+<PKT>
+    <Result Name="PlaceBet" Success="1">
+        <Returnset>
+            <Token Type="string" Value="AAD8EE30-8C43-11DC-9755-668156D89593" />
+            <Balance Type="string" Value="10100" />
+            <ExtTransactionID Type="long" Value="22334" />
+            <AlreadyProcessed Type="bool" Value="false" />
+            <InProgress Type="bool" Value="false" />
+            <OperatorCode Type="string" Value="2" />
+        </Returnset>
+    </Result>
+</PKT>

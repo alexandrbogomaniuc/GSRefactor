@@ -1,0 +1,15 @@
+{
+  "authtoken": "IQzpbNxFLFmc2",
+  "transactions": [
+    {
+      "amt": 50,
+      "uselockedamt": true,
+      "cur": "RMB",
+      "txid": "662674",
+      "roundid": "1008362",
+      "gameid": "5",
+      "timestamp": "2015-11-26T07:16:03+00:00",
+      "desc": "BaDeal"
+    }
+  ]
+}

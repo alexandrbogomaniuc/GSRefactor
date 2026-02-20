@@ -1,0 +1,9 @@
+<PKT>
+  <Result Name="GetBalance" Success="1">
+    <Returnset>
+      <Token Type="string" Value="AAD8EE30-8C43-11DC-9755-668156D89593" />
+      <Balance Type="string" Value="10000" />
+      <OperatorCode Type="string" Value="2" />
+    </Returnset>
+  </Result>
+</PKT>

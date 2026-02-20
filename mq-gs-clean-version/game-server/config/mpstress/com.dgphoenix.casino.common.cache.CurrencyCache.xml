@@ -1,0 +1,30 @@
+<object-stream>
+    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+        <key>EUR</key>
+        <value class="com.dgphoenix.casino.common.cache.data.currency.Currency">
+            <code>EUR</code>
+            <symbol>€</symbol>
+        </value>
+    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+        <key>USD</key>
+        <value class="com.dgphoenix.casino.common.cache.data.currency.Currency">
+            <code>USD</code>
+            <symbol>$</symbol>
+        </value>
+    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+        <key>MMC</key>
+        <value class="com.dgphoenix.casino.common.cache.data.currency.Currency">
+            <code>MMC</code>
+            <symbol>MMC</symbol>
+        </value>
+    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+        <key>MQC</key>
+        <value class="com.dgphoenix.casino.common.cache.data.currency.Currency">
+            <code>MQC</code>
+            <symbol>MQC</symbol>
+        </value>
+    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+</object-stream>

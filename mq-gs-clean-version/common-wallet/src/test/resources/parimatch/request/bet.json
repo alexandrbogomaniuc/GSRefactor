@@ -1,0 +1,11 @@
+{
+  "playerId": "john",
+  "productId": "111",
+  "txId": "42",
+  "roundId": "1234567890",
+  "roundClosed": false,
+  "amount": 1000,
+  "currency": "EUR",
+  "cid": "parimatch",
+  "sessionToken": "valid-session-token"
+}

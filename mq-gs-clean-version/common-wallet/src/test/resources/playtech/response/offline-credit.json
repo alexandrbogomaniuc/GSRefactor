@@ -1,0 +1,26 @@
+{
+    "playerId": "pop-player",
+    "accountId": "",
+    "accountBalance": {
+        "playerId": "playerId",
+        "accountId": "",
+        "currencyCode": "USD",
+        "balanceArray": []
+    },
+    "errorCode": "",
+    "errorMsg": "",
+    "errorTags": [],
+    "moneyAckArray": [
+        {
+            "transType": "credit",
+            "transAmt": 10,
+            "transCategory": "offlineCredit",
+            "transId": "transactionId",
+            "referenceId": "referenceId",
+            "transSeq": 1,
+            "moneyDetailArray": [],
+            "errorCode": "",
+            "errorMsg": ""
+        }
+    ]
+}

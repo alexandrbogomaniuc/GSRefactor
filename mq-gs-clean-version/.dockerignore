@@ -1,0 +1,7 @@
+.dockerignore
+**/.git
+Dockerfile*
+k8s
+bitbucket-pipelines*
+.GCP_CREDS
+.ssh

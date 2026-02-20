@@ -1,0 +1,55 @@
+<object-stream>
+    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+        <key>1</key>
+        <value class="com.dgphoenix.casino.common.cache.data.server.ServerInfo">
+            <serverId>1</serverId>
+<!--            <host>games-gp3.maxquest.com</host>-->
+            <host>games-stress.betsoftgaming.com</host>
+            <label>GS_1</label>
+            <maxLoad>4000</maxLoad>
+            <locked>false</locked>
+            <uptime>1657859265361</uptime>
+            <updateTime>1657859265361</updateTime>
+            <startTime>1657859265361</startTime>
+        </value>
+    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+        <key>2</key>
+        <value class="com.dgphoenix.casino.common.cache.data.server.ServerInfo">
+            <serverId>2</serverId>
+            <host>games-stress.betsoftgaming.com</host>
+            <label>GS_2</label>
+            <maxLoad>4000</maxLoad>
+            <locked>false</locked>
+            <uptime>1657714377788</uptime>
+            <updateTime>1657859263313</updateTime>
+            <startTime>1657714377788</startTime>
+        </value>
+    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+        <key>3</key>
+        <value class="com.dgphoenix.casino.common.cache.data.server.ServerInfo">
+            <serverId>3</serverId>
+            <host>games-stress.betsoftgaming.com</host>
+            <label>GS_3</label>
+            <maxLoad>4000</maxLoad>
+            <locked>false</locked>
+            <uptime>1657714377788</uptime>
+            <updateTime>1657859263313</updateTime>
+            <startTime>1657714377788</startTime>
+        </value>
+    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+        <key>4</key>
+        <value class="com.dgphoenix.casino.common.cache.data.server.ServerInfo">
+            <serverId>4</serverId>
+            <host>games-stress.betsoftgaming.com</host>
+            <label>GS_4</label>
+            <maxLoad>4000</maxLoad>
+            <locked>false</locked>
+            <uptime>1657714377788</uptime>
+            <updateTime>1657859263313</updateTime>
+            <startTime>1657714377788</startTime>
+        </value>
+    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+</object-stream>

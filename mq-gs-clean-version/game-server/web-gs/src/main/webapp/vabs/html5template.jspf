@@ -1,0 +1,157 @@
+<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
+<%@ page import="com.dgphoenix.casino.common.configuration.messages.MessageManager" %>
+<%@ page import="com.dgphoenix.casino.common.util.logkit.ThreadLog" %>
+<%@ page import="org.apache.struts.Globals" %>
+<%@ page import="java.util.Locale" %>
+<%@ page import="static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty" %>
+<%@ page import="com.dgphoenix.casino.common.cache.data.session.GameSession" %>
+<%@ page import="com.dgphoenix.casino.common.util.Pair" %>
+<%@ page import="static com.dgphoenix.casino.web.history.GameHistoryServlet.PARAM_SESSION" %>
+<%@ page import="static com.dgphoenix.casino.web.history.GameHistoryServlet.*" %>
+<%@ page import="com.dgphoenix.casino.gs.managers.game.history.HistoryManager" %>
+<%@ page import="org.apache.commons.lang.LocaleUtils" %>
+<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="java.util.Optional" %>
+<html>
+<%@include file="VabEngine/EngineHeader.jsp" %>
+
+<body>
+<%@include file="VabEngine/VabParameters.jsp" %>
+
+<%!
+    String new_title = "";
+    String new_jsCode = "";
+    String fullGameName = "";
+    String customerBrandName = "";
+    boolean isBelgiumMode = false;
+
+    String getPureGameName(String name) {
+
+        if (name.startsWith("p_")) return "pyramidpoker";
+        if (name.startsWith("mp_")) return "multihandpoker";
+
+        String[] platforms = {"mobile", "android", "windowsphone", "htmlpc"};
+
+        for (String platform : platforms) {
+            int index = name.indexOf(platform);
+            if (index != -1) {
+                name = name.substring(0, index);
+                break;
+            }
+        }
+
+        int prefix_index = name.indexOf("_");
+        if (prefix_index != -1) {
+            String prefix = name.substring(0, prefix_index).intern();
+            if (prefix.equals("lga") || prefix.equals("agcc") || prefix.equals("aams")) {
+                name = name.substring(prefix_index + 1);
+            }
+        }
+
+        if (name.contains("vip")) {
+            String unVipName = name.replace("vip", "");
+            Long gameContains = BaseGameInfoTemplateCache.getInstance().getGameIdByName(unVipName.toUpperCase());
+            if (gameContains != null) {
+                name = unVipName.intern();
+            }
+        }
+
+        if (name.endsWith("hilimit")) {
+            String unHiLimitName = name.replace("hilimit", "");
+            Long gameContains = BaseGameInfoTemplateCache.getInstance().getGameIdByName(unHiLimitName.toUpperCase());
+            if (gameContains != null) {
+                name = unHiLimitName.intern();
+            }
+        }
+
+        return name;
+    }
+%>
+
+<%
+    boolean hideBalance = "true".equalsIgnoreCase(request.getParameter("HIDE_BALANCE"));
+    boolean showExtBetId = "true".equalsIgnoreCase(request.getParameter("SHOW_EXT_BET_ID"));
+
+    if (hideBalance) {
+        width_payout = width_payout + width_balance;
+        width_balance = 0;
+    }
+
+    String scheme = request.getScheme();
+    String serverName = request.getServerName();
+    String gameSessionId = request.getParameter(PARAM_VIEW_SESSID);
+    String sRoundID = request.getParameter(PARAM_ROUND_ID);
+    String sGameId = request.getParameter(PARAM_GAME_ID);
+    String playerSessionId = request.getParameter(PARAM_SESSION);
+    boolean isOnlineSession = isShowOnlineSession(request);
+    String lang = request.getParameter("LANG");
+
+    Locale locale = Locale.ENGLISH;
+    if (lang != null) {
+        try {
+            locale = LocaleUtils.toLocale(lang);
+        } catch (IllegalArgumentException ignored) {
+        }
+    }
+    session.setAttribute(Globals.LOCALE_KEY, locale);
+
+    BaseGameInfoTemplateCache baseGameInfoTemplateCache = BaseGameInfoTemplateCache.getInstance();
+    String folderName = "";
+
+    try {
+        long gameId = Long.parseLong(sGameId);
+        BaseGameInfoTemplate gameTemplate = baseGameInfoTemplateCache.getBaseGameInfoTemplateById(gameId);
+        Long roundID = isTrimmedEmpty(sRoundID) ? null : Long.parseLong(sRoundID);
+        Pair<GameSession, Boolean> gameSessionInfo = getGameSessionInfo(Long.parseLong(gameSessionId), isOnlineSession,
+                playerSessionId, HistoryManager.getInstance(), roundID);
+        long bankId = gameSessionInfo.getKey().getBankId();
+
+        fullGameName = gameTemplate.getGameName();
+        folderName = getPureGameName(fullGameName.toLowerCase());
+        new_jsCode = "../common/vabs/" + folderName + "/code.js";
+        String localizedTitle = MessageManager.getLocalizedTitleOrDefault(bankId, gameId, lang);
+        new_title = isTrimmedEmpty(localizedTitle) ? gameTemplate.getTitle() : localizedTitle;
+        BankInfo bankInfo = BankInfoCache.getInstance().getBankInfo(bankId);
+        customerBrandName = Optional.ofNullable(bankInfo).map(BankInfo::getCustomerBrandName).orElse("");
+        isBelgiumMode = false;
+    } catch (Exception e) {
+        ThreadLog.info("Vabs :: History for game with id '" + sGameId + "' not found", e);
+        response.sendRedirect("/error_pages/history_not_found.jsp");
+    }
+%>
+
+<%@include file="VabEngine/VabEngineMain.jspf" %>
+
+<% if (!locale.equals(Locale.ENGLISH)) { %>
+<script>
+    var common_strings = {};
+    var game_strings = {};
+</script>
+<script type="text/javascript" src="../common/vabs/VabEngine/strings/common_<%=locale%>.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../common/vabs/<%=folderName%>/strings_<%=locale%>.js" charset="UTF-8"></script>
+<% } %>
+
+<script>
+    var engine = new VabEngine();
+    engine.setFolder("/common/vabs/<%=folderName%>");
+    <% if (!locale.equals(Locale.ENGLISH)) { %>
+    engine.initTranslation(common_strings, game_strings);
+    engine.lang = '<%=locale.toString().toUpperCase()%>';
+    <% } %>
+    engine.setCustomerBrandName("<%=customerBrandName%>");
+    engine.setBelgiumMode(<%=isBelgiumMode%>);
+</script>
+
+<script src="<%=new_jsCode%>?<%=Math.random()%>"></script>
+
+<script>
+    var title = "<%=new_title%>";
+    var gameName = "<%=fullGameName%>";
+
+    engine.init(start, "<%=scheme%>", "<%=serverName%>", gameName, <%=gameSessionId%>, <%=sRoundID%>, title, <%=hideBalance%>, <%=showExtBetId%>);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<PKT>
+    <Result Name="GetAccountDetails" Success="1">
+        <Returnset>
+            <Token Type="string" Value="AAD8EE30-8C43-11DC-9755-668156D89593" />
+            <LoginName Type="string" Value="user7894" />
+            <Currency Type="string" Value="BRL" />
+            <OperatorCode Type="string" Value="2" />
+            <PlayerId Type="string" Value="456286" />
+            <Country Type="string" Value="BR" />
+            <Birthdate Type="string" Value="1988-08-02" />
+            <Registration Type="string" Value="2010-05-05" />
+        </Returnset>
+    </Result>
+</PKT>

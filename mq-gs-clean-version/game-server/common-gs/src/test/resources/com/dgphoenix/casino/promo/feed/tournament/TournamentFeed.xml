@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+  <record>
+    <Rank>1</Rank>
+    <PlayerID>234</PlayerID>
+    <Nickname>nick</Nickname>
+    <Rounds>100</Rounds>
+  </record>
+  <record>
+    <Rank>2</Rank>
+    <PlayerID>85</PlayerID>
+    <Nickname>nick</Nickname>
+    <Rounds>85</Rounds>
+  </record>
+</dataset>

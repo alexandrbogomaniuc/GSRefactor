@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>gsn-promo</artifactId>
+        <groupId>com.dgphoenix.casino</groupId>
+        <version>1.2</version>
+    </parent>
+    <artifactId>gsn-promo-core</artifactId>
+    <version>1.2</version>
+    <packaging>jar</packaging>
+    <name>gsn-promo-core</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.dgphoenix.casino</groupId>
+            <artifactId>gsn-promo-persisters</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dgphoenix.casino</groupId>
+            <artifactId>utils-restricted</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

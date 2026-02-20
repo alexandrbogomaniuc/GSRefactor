@@ -1,0 +1,4 @@
+{
+    "status": "error",
+    "message": "Required Long parameter 'gameId' is not present"
+}

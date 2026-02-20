@@ -1,0 +1,12 @@
+{
+  "_meta": {
+    "gsId": "rgs-bsg",
+    "gpId": "rgs-bsg",
+    "requestId": "%s",
+    "clientPlatform": "flash",
+    "clientType": "casino"
+  },
+  "skinId": "casino123",
+  "playerId": "pop-player",
+  "secureToken": "player-secure-token"
+}

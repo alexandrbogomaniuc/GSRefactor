@@ -1,0 +1,8 @@
+{
+    "command": "get_critical_files",
+    "providergameids": [
+        "2",
+        "3",
+        "4"
+    ]
+}

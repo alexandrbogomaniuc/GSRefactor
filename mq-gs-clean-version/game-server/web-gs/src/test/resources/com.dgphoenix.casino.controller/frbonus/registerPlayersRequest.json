@@ -1,0 +1,14 @@
+{
+    "auth": {
+        "signature": "139d920f3d29fa3716f09154a748814b9ec090018f042b450f8e6a16020b8d6b"
+    },
+    "request": {
+        "freeround_id": 1885,
+        "player_ids": [
+            "test"
+        ],
+        "licensee_id": 134,
+        "operator": "Master Licensee",
+        "launchercode": "isb_134-qa"
+    }
+}

@@ -1,0 +1,18 @@
+<object-stream>
+    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+        <key>58</key>
+        <value class="com.dgphoenix.casino.common.cache.data.bank.SubCasino">
+            <id>58</id>
+            <name>Default</name>
+            <defaultBank>271</defaultBank>
+            <bankIds>
+                <long>271</long>
+            </bankIds>
+            <domainNames>
+                <string>default-gp3.local.com</string>
+                <string>localhost</string>
+                <string>127.0.0.1</string>
+            </domainNames>
+        </value>
+    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+</object-stream>

@@ -1,0 +1,620 @@
+definitions:
+
+  services:
+    docker:
+      memory: 8192
+
+  scripts:
+
+    script_set_env: &script_set_env |
+      set -euo pipefail
+
+      check_var() {
+        VAL=$(printenv "${1}")
+        if [ -z "${VAL}" ]; then
+          printf 'ERROR: Required variable %s is not set\n' "${1}"
+          exit 1
+        fi
+      }
+
+      check_var  "GCP_PROJECT_ID_DEV"
+      check_var  "GCP_PROJECT_ID_STAGE"
+      check_var  "GCP_PROJECT_ID_PROD"
+      check_var  "GCP_PROJECT_NUMBER_DEV"
+      check_var  "GCP_PROJECT_NUMBER_STAGE"
+      check_var  "GCP_PROJECT_NUMBER_PROD"
+      check_var  "GCP_REGION_DEV"
+      check_var  "GCP_REGION_STAGE"
+      check_var  "GCP_REGION_PROD"
+      check_var  "GCP_USERNAME_PREFIX"
+      check_var  "PROJECT_NAME_DEV"
+      check_var  "PROJECT_NAME_STAGE"
+      check_var  "PROJECT_NAME_PROD"
+      check_var  "K8S_NAMESPACE_DEV"
+      check_var  "K8S_NAMESPACE_STAGE"
+      check_var  "K8S_NAMESPACE_PROD"
+      check_var  "RUNNER_ID_DEV"
+      check_var  "RUNNER_ID_STAGE"
+      check_var  "RUNNER_ID_PROD"
+      check_var  "APP_NAME"
+      check_var  "SSH_PRIVATE_KEY"
+
+      # Function to set environment variables based on branch or tag
+      set_environment_variables() {
+        case "${1}" in 
+          "development_maxduel")
+            export ENV_NAME=dev01
+            export GCP_PROJECT_ID=${GCP_PROJECT_ID_DEV_MAXDUEL}
+            export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_DEV_MAXDUEL}
+            export GCP_REGION=${GCP_REGION_DEV_MAXDUEL}
+            export PROJECT_NAME=${PROJECT_NAME_DEV_MAXDUEL}
+            export K8S_NAMESPACE=${K8S_NAMESPACE_DEV_MAXDUEL}
+            export GCP_USERNAME_PREFIX=${GCP_USERNAME_PREFIX_DEV_MAXDUEL}
+            export RUNNER_ID=${RUNNER_ID_DEV_MAXDUEL}
+            export SERVER_IP_1=${GS1_IP_ADDRESS_DEV_MAXDUEL}
+            export SERVER_IP_2=${GS2_IP_ADDRESS_DEV_MAXDUEL}
+            export SERVER_IP_3=${GS3_IP_ADDRESS_DEV_MAXDUEL}
+            export SERVER_PORT=22
+            ;;
+          "production_maxduel")
+            export ENV_NAME=prod01
+            export GCP_PROJECT_ID=${GCP_PROJECT_ID_PROD_MAXDUEL}
+            export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_PROD_MAXDUEL}
+            export GCP_REGION=${GCP_REGION_PROD_MAXDUEL}
+            export PROJECT_NAME=${PROJECT_NAME_PROD_MAXDUEL}
+            export K8S_NAMESPACE=${K8S_NAMESPACE_PROD_MAXDUEL}
+            export GCP_USERNAME_PREFIX=${GCP_USERNAME_PREFIX_PROD_MAXDUEL}
+            export RUNNER_ID=${RUNNER_ID_PROD_MAXDUEL}
+            export SERVER_IP_1=${GS1_IP_ADDRESS_PROD_MAXDUEL}
+            export SERVER_IP_2=${GS2_IP_ADDRESS_PROD_MAXDUEL}
+            export SERVER_IP_3=${GS3_IP_ADDRESS_PROD_MAXDUEL}
+            export SERVER_PORT=22
+            ;;
+          "gs-test."*)
+            export ENV_NAME=dev01
+            export GCP_PROJECT_ID=${GCP_PROJECT_ID_DEV}
+            export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_DEV}
+            export GCP_REGION=${GCP_REGION_DEV}
+            export PROJECT_NAME=${PROJECT_NAME_DEV}
+            export K8S_NAMESPACE=${K8S_NAMESPACE_DEV}
+            export RUNNER_ID=${RUNNER_ID_DEV}
+            export SERVER_IP_1=${GS1_TEST_ADDRESS}
+            export SERVER_IP_2=${GS2_TEST_ADDRESS}
+            export SERVER_IP_3=${GS3_TEST_ADDRESS}
+            export SERVER_PORT=222
+            ;;
+          "gs-pre-prod."*)
+            export ENV_NAME=stage01
+            export GCP_PROJECT_ID=${GCP_PROJECT_ID_STAGE}
+            export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_STAGE}
+            export GCP_REGION=${GCP_REGION_STAGE}
+            export PROJECT_NAME=${PROJECT_NAME_STAGE}
+            export K8S_NAMESPACE=${K8S_NAMESPACE_STAGE}
+            export RUNNER_ID=${RUNNER_ID_STAGE}
+            export SERVER_IP_1=${GS1_PRE_PROD_ADDRESS}
+            export SERVER_IP_2=${GS2_PRE_PROD_ADDRESS}
+            export SERVER_IP_3=${GS3_PRE_PROD_ADDRESS}
+            export SERVER_PORT=222
+            ;;
+          "gs-prod."*)
+            export ENV_NAME=prod01
+            export GCP_PROJECT_ID=${GCP_PROJECT_ID_PROD}
+            export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_PROD}
+            export GCP_REGION=${GCP_REGION_PROD}
+            export PROJECT_NAME=${PROJECT_NAME_PROD}
+            export K8S_NAMESPACE=${K8S_NAMESPACE_PROD}
+            export RUNNER_ID=${RUNNER_ID_PROD}
+            export SERVER_IP_1=${GS1_PROD_ADDRESS}
+            export SERVER_IP_2=${GS2_PROD_ADDRESS}
+            export SERVER_IP_3=${GS3_PROD_ADDRESS}
+            export SERVER_PORT=22
+            ;;
+          *)
+            echo "ERROR: INCORRECT BITBUCKET_BRANCH/TAG ${1} FOR DEPLOY"
+            exit 1
+            ;;
+        esac
+      }
+
+      if [[ -n "${BITBUCKET_TAG:-}" ]]; then
+        set_environment_variables "${BITBUCKET_TAG}"
+        echo "SELECTED BITBUCKET_TAG ${BITBUCKET_TAG}"
+      elif [[ -n "${BITBUCKET_BRANCH:-}" ]]; then
+        set_environment_variables "${BITBUCKET_BRANCH}"
+        echo "SELECTED BITBUCKET_BRANCH ${BITBUCKET_BRANCH}"
+      else
+        echo "ERROR: No branch or tag specified"
+        exit 1
+      fi
+
+      env | sort
+
+    script_export_ssh_key: &script_export_ssh_key |
+      set -euo pipefail
+
+      echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa
+      echo "StrictHostKeyChecking no" >> ~/.ssh/config
+
+    script_gcp_auth: &script_gcp_auth |
+      set -euo pipefail
+
+      mkdir .GCP_CREDS
+
+      export GCP_CREDS='.GCP_CREDS'
+
+      echo ${BITBUCKET_STEP_OIDC_TOKEN} > ${GCP_CREDS}/gcp_access_token.out
+
+      export GCP_WORKLOAD_IDENTITY_PROVIDER="projects/${GCP_PROJECT_NUMBER}/locations/global/workloadIdentityPools/${PROJECT_NAME}-${ENV_NAME}-${GCP_USERNAME_PREFIX}/providers/${PROJECT_NAME}-${ENV_NAME}-${GCP_USERNAME_PREFIX}"
+      export GCP_SERVICE_ACCOUNT_EMAIL="${PROJECT_NAME}-${ENV_NAME}-${GCP_USERNAME_PREFIX}@${GCP_PROJECT_ID}.iam.gserviceaccount.com"
+
+      gcloud iam workload-identity-pools create-cred-config ${GCP_WORKLOAD_IDENTITY_PROVIDER} \
+        --service-account="${GCP_SERVICE_ACCOUNT_EMAIL}" \
+        --output-file=${GCP_CREDS}/gcp_temp_cred.json \
+        --credential-source-file=${GCP_CREDS}/gcp_access_token.out
+
+      # export GOOGLE_APPLICATION_CREDENTIALS=${GCP_CREDS}/gcp_temp_cred.json
+      gcloud auth login --cred-file=${GCP_CREDS}/gcp_temp_cred.json
+
+      gcloud config set project ${GCP_PROJECT_ID}
+
+      gcloud auth list
+
+      gcloud auth configure-docker ${GCP_REGION}-docker.pkg.dev
+
+    script_chmod: &script_chmod |
+      set -euo pipefail
+
+      find . -type d -exec chmod 0755 {} \;
+      find . -type f -exec chmod 0644 {} \;
+
+      chmod -v +x build-all-modules.sh
+      chmod -v +x install-gsn-casino-project.sh
+      chmod -v +x game-server/build/live/build-mqb2-live.sh
+      chmod -v +x game-server/build/check-on-brand-issues.sh
+      chmod -v +x deploy.sh
+
+    script_docker_build_base: &script_docker_build_base |
+      set -euo pipefail
+
+      export PATH=/usr/bin:$PATH
+
+      export IMAGE=${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${PROJECT_NAME}-${ENV_NAME}/${APP_NAME}-base
+      export TAG=${BITBUCKET_COMMIT::7}
+      export DOCKERFILE=Dockerfile.build.base
+      
+      docker build -t ${IMAGE}:${TAG} -f ${DOCKERFILE} . --progress=plain
+
+      docker images
+      
+      docker tag  ${IMAGE}:${TAG} ${IMAGE}:latest
+  
+      docker push ${IMAGE}:${TAG}
+      docker push ${IMAGE}:latest
+
+    script_docker_build: &script_docker_build |
+      set -euo pipefail
+
+      export PATH=/usr/bin:$PATH
+
+      export IMAGE=${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${PROJECT_NAME}-${ENV_NAME}/${APP_NAME}-base
+  
+      docker pull ${IMAGE}:latest
+      docker tag  ${IMAGE}:latest ${APP_NAME}-base:latest
+
+      export IMAGE=${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${PROJECT_NAME}-${ENV_NAME}/${APP_NAME}
+      export TAG=${BITBUCKET_COMMIT::7}
+      export DOCKERFILE=Dockerfile.build
+      
+      docker build -t ${IMAGE}:${TAG} -f ${DOCKERFILE} . --progress=plain
+
+      docker images
+
+      docker tag  ${IMAGE}:${TAG} ${IMAGE}:latest
+
+      docker push ${IMAGE}:${TAG}
+      docker push ${IMAGE}:latest
+
+    script_extract_build_artifacts: &script_extract_build_artifacts |
+      set -euo pipefail
+
+      mkdir -vp artifacts
+
+      export PATH=/usr/bin:$PATH
+
+      docker images
+
+      docker create --name temp-container ${IMAGE}:${TAG}
+      
+      docker cp temp-container:/app/game-server/web-gs/target/ROOT.war    artifacts/
+      
+      docker rm temp-container
+      
+      ls -alhR artifacts/
+
+    script_deploy_legacy: &script_deploy_legacy |
+      set -euo pipefail
+
+      ls -alh  deploy.sh
+      ls -alhR artifacts/
+
+      scp -P ${SERVER_PORT} artifacts/ROOT.war        bitbucket@${SERVER_IP_1}:/www/html/gs_backup
+      scp -P ${SERVER_PORT} artifacts/ROOT.war        bitbucket@${SERVER_IP_2}:/www/html/gs_backup
+      scp -P ${SERVER_PORT} artifacts/ROOT.war        bitbucket@${SERVER_IP_3}:/www/html/gs_backup
+
+      scp -P ${SERVER_PORT} deploy.sh                 bitbucket@${SERVER_IP_1}:/www/html/scripts/deploy_gs.sh
+      scp -P ${SERVER_PORT} deploy.sh                 bitbucket@${SERVER_IP_2}:/www/html/scripts/deploy_gs.sh
+      scp -P ${SERVER_PORT} deploy.sh                 bitbucket@${SERVER_IP_3}:/www/html/scripts/deploy_gs.sh
+      
+      ssh -p ${SERVER_PORT}                           bitbucket@${SERVER_IP_1} "sudo /www/html/scripts/deploy_gs.sh"
+      ssh -p ${SERVER_PORT}                           bitbucket@${SERVER_IP_2} "sudo /www/html/scripts/deploy_gs.sh"
+      ssh -p ${SERVER_PORT}                           bitbucket@${SERVER_IP_3} "sudo /www/html/scripts/deploy_gs.sh"
+
+      ssh -p ${SERVER_PORT}                           bitbucket@${SERVER_IP_1} "curl http://localhost:8080/tools/addBattlegroundGames.jsp"
+      ssh -p ${SERVER_PORT}                           bitbucket@${SERVER_IP_2} "curl http://localhost:8080/tools/addBattlegroundGames.jsp"
+      ssh -p ${SERVER_PORT}                           bitbucket@${SERVER_IP_3} "curl http://localhost:8080/tools/addBattlegroundGames.jsp"
+
+    script_cleanup: &script_cleanup |
+      set -euo pipefail
+      
+      rm -rf .* *
+      ls -alhR
+
+    script_cleanup: &script_cleanup_except_artifacts |
+      set -euo pipefail
+      
+      # rm -rf .*[!artifacts]* *[!artifacts]*
+      find . -maxdepth 1 -type f -not -name "artifacts" -delete
+      find . -maxdepth 1 -type d -not -name "." -not -name ".." -not -name "artifacts" -exec rm -rf {} +
+      ls -alhR
+
+    step_docker_build_base: &step_docker_build_base
+      name: step_docker_build_base
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01 # | mq.stage01 | mq.prod01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build_base
+      after-script:
+        - *script_cleanup
+      # condition:
+      #   changesets:
+      #     includePaths:
+      #       - Dockerfile.build.base
+
+    step_docker_legacy_maxduel_dev01_build_base: &step_docker_legacy_maxduel_dev01_build_base
+      name: step_docker_legacy_maxduel_dev01_build_base
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build_base
+      after-script:
+        - *script_cleanup
+      # condition:
+      #   changesets:
+      #     includePaths:
+      #       - Dockerfile.build.base
+
+    step_deploy_legacy_maxduel_dev01_step_1: &step_deploy_legacy_maxduel_dev01_step_1
+      name: step_deploy_legacy_maxduel_dev01_step_1
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build
+        - *script_extract_build_artifacts
+      after-script:
+        - *script_cleanup_except_artifacts
+      artifacts:
+        - artifacts/*
+
+    step_deploy_legacy_maxduel_dev01_step_2: &step_deploy_legacy_maxduel_dev01_step_2
+      name: step_deploy_legacy_maxduel_dev01_step_2
+      runs-on:
+        - self.hosted
+        - linux
+        - md.dev01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_deploy_legacy
+      after-script:
+        - *script_cleanup
+      trigger: manual
+
+    step_docker_legacy_maxduel_prod01_build_base: &step_docker_legacy_maxduel_prod01_build_base
+      name: step_docker_legacy_maxduel_prod01_build_base
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build_base
+      after-script:
+        - *script_cleanup
+      # condition:
+      #   changesets:
+      #     includePaths:
+      #       - Dockerfile.build.base
+
+    step_deploy_legacy_maxduel_prod01_step_1: &step_deploy_legacy_maxduel_prod01_step_1
+      name: step_deploy_legacy_maxduel_prod01_step_1
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build
+        - *script_extract_build_artifacts
+      after-script:
+        - *script_cleanup_except_artifacts
+      artifacts:
+        - artifacts/*
+
+    step_deploy_legacy_maxduel_prod01_step_2: &step_deploy_legacy_maxduel_prod01_step_2
+      name: step_deploy_legacy_maxduel_prod01_step_2
+      runs-on:
+        - self.hosted
+        - linux
+        - md.prod01.legacy
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_deploy_legacy
+      after-script:
+        - *script_cleanup
+      trigger: manual
+
+    step_deploy_legacy_test_step_1: &step_deploy_legacy_test_step_1
+      name: step_deploy_legacy_test_step_1
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build
+        - *script_extract_build_artifacts
+      after-script:
+        - *script_cleanup_except_artifacts
+      artifacts:
+        - artifacts/*
+
+    step_deploy_legacy_test_step_2: &step_deploy_legacy_test_step_2
+      name: step_deploy_legacy_test_step_2
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_deploy_legacy
+      after-script:
+        - *script_cleanup
+      trigger: manual
+
+    step_deploy_legacy_pre-prod_step_1: &step_deploy_legacy_pre-prod_step_1
+      name: step_deploy_legacy_pre-prod_step_1
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build
+        - *script_extract_build_artifacts
+      after-script:
+        - *script_cleanup_except_artifacts
+      artifacts:
+        - artifacts/*
+
+    step_deploy_legacy_pre-prod_step_2: &step_deploy_legacy_pre-prod_step_2
+      name: step_deploy_legacy_pre-prod_step_2
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_deploy_legacy
+      after-script:
+        - *script_cleanup
+      trigger: manual
+
+    step_deploy_legacy_prod_step_1: &step_deploy_legacy_prod_step_1
+      name: step_deploy_legacy_prod_step_1
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_chmod
+        - *script_docker_build
+        - *script_extract_build_artifacts
+      after-script:
+        - *script_cleanup_except_artifacts
+      artifacts:
+        - artifacts/*
+
+    step_deploy_legacy_prod_step_2: &step_deploy_legacy_prod_step_2
+      name: step_deploy_legacy_prod_step_2
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_deploy_legacy
+      after-script:
+        - *script_cleanup
+      trigger: manual
+
+pipelines:
+
+  branches:
+
+    development_maxduel:
+    # - step: *step_docker_legacy_maxduel_dev01_build_base
+      - step: *step_deploy_legacy_maxduel_dev01_step_1
+      - step: *step_deploy_legacy_maxduel_dev01_step_2
+
+    production_maxduel:
+    # - step: *step_docker_legacy_maxduel_prod01_build_base
+      - step: *step_deploy_legacy_maxduel_prod01_step_1
+      - step: *step_deploy_legacy_maxduel_prod01_step_2
+
+  tags:
+    
+    'gs-test.*':
+    # - step: *step_docker_build_base
+      - step: *step_deploy_legacy_test_step_1
+      - step: *step_deploy_legacy_test_step_2
+
+    'gs-pre-prod.*':
+    # - step: *step_docker_build_base
+      - step: *step_deploy_legacy_pre-prod_step_1
+      - step: *step_deploy_legacy_pre-prod_step_2
+
+    'gs-prod.*':
+    # - step: *step_docker_build_base
+      - step: *step_deploy_legacy_prod_step_1
+      - step: *step_deploy_legacy_prod_step_2

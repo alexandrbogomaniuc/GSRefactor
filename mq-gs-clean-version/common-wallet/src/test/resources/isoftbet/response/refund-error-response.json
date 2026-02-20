@@ -1,0 +1,5 @@
+{
+  "status": "error",
+  "code": "C_01",
+  "message": "Trying to cancel a bet from an already closed round"
+}

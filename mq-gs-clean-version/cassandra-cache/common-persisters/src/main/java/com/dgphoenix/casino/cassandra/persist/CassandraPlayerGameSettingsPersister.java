@@ -1,0 +1,129 @@
+package com.dgphoenix.casino.cassandra.persist;
+
+import com.datastax.driver.core.DataType;
+import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Row;
+import com.datastax.driver.core.querybuilder.Delete;
+import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.datastax.driver.core.querybuilder.Select;
+import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
+import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+import com.dgphoenix.casino.common.cache.data.account.PlayerGameSettings;
+import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * User: flsh
+ * Date: 8/24/12
+ */
+public class CassandraPlayerGameSettingsPersister extends AbstractCassandraPersister<Long, String> {
+    public static final String PLAYER_GAME_SETTINGS_CF = "PGSCF";
+    private static final Logger LOG = LogManager.getLogger(PlayerGameSettings.class);
+    public static final String ACCOUNT_ID_FIELD = "AccountId";
+    public static final String GAME_ID_FIELD = "GameId";
+
+    private static final TableDefinition TABLE = new TableDefinition(PLAYER_GAME_SETTINGS_CF,
+            Arrays.asList(
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, DataType.bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_FIELD, DataType.bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+            ),
+            Arrays.asList(ACCOUNT_ID_FIELD, GAME_ID_FIELD));
+
+    private CassandraPlayerGameSettingsPersister() {
+    }
+
+    public List<PlayerGameSettings> get(long accountId) {
+        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
+        query.where().and(eq(ACCOUNT_ID_FIELD, accountId));
+        ResultSet resultSet = execute(query, "get");
+        List<PlayerGameSettings> result = new ArrayList();
+        for (Row row : resultSet) {
+            String json = row.getString(JSON_COLUMN_NAME);
+            PlayerGameSettings settings = TABLE.deserializeFromJson(json, PlayerGameSettings.class);
+
+            if (settings == null) {
+                ByteBuffer bytes = row.getBytes(SERIALIZED_COLUMN_NAME);
+                if (bytes != null) {
+                    settings = TABLE.deserializeFrom(bytes, PlayerGameSettings.class);
+                }
+
+                if (settings != null) {
+                    result.add(settings);
+                }
+            }
+        }
+        return result;
+    }
+
+    public PlayerGameSettings get(long accountId, int gameId) {
+        long now = System.currentTimeMillis();
+        PlayerGameSettings result = null;
+        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
+        query.where().and(eq(ACCOUNT_ID_FIELD, accountId)).and(eq(GAME_ID_FIELD, gameId));
+        ResultSet resultSet = execute(query, "get");
+        Row row = resultSet.one();
+        if (row != null) {
+            String json = row.getString(JSON_COLUMN_NAME);
+            result = TABLE.deserializeFromJson(json, PlayerGameSettings.class);
+
+            if (json == null) {
+                ByteBuffer bytes = row.getBytes(SERIALIZED_COLUMN_NAME);
+                if (bytes != null) {
+                    result = TABLE.deserializeFrom(bytes, PlayerGameSettings.class);
+                }
+            }
+        }
+        StatisticsManager.getInstance().updateRequestStatistics(getMainColumnFamilyName() + "get",
+                System.currentTimeMillis() - now);
+        return result;
+    }
+
+    public void persist(long accountId, PlayerGameSettings entry, BankInfo bankInfo) {
+        Insert query = QueryBuilder.insertInto(getMainTableDefinition().getTableName());
+/*
+        if (bankInfo.getPgsTTL() > 0) {
+            query.using(QueryBuilder.ttl(bankInfo.getPgsTTL()));
+        } else if (getTtl() > 0) {
+            query.using(QueryBuilder.ttl(getTtl()));
+        }
+*/
+        query.value(ACCOUNT_ID_FIELD, accountId);
+        query.value(GAME_ID_FIELD, entry.getGameId());
+        String json = TABLE.serializeToJson(entry);
+        ByteBuffer byteBuffer = TABLE.serializeToBytes(entry);
+        try {
+            query.value(SERIALIZED_COLUMN_NAME, byteBuffer);
+            query.value(JSON_COLUMN_NAME, json);
+            execute(query, "persist");
+        } finally {
+            releaseBuffer(byteBuffer);
+        }
+    }
+
+    public void delete(long accountId, int gameId) {
+        Delete query = QueryBuilder.delete().from(getMainColumnFamilyName());
+        query.where().and(eq(ACCOUNT_ID_FIELD, accountId)).and(eq(GAME_ID_FIELD, gameId));
+        execute(query, "delete");
+    }
+
+    @Override
+    public TableDefinition getMainTableDefinition() {
+        return TABLE;
+    }
+
+    @Override
+    public Logger getLog() {
+        return LOG;
+    }
+}

@@ -1,0 +1,16 @@
+package com.dgphoenix.casino.common.promo.ai;
+
+import com.dgphoenix.casino.common.promo.IPromoCampaign;
+import com.dgphoenix.casino.common.promo.TournamentMemberRank;
+import com.dgphoenix.casino.common.promo.feed.tournament.IRecordProducer;
+import com.dgphoenix.casino.common.promo.feed.tournament.TournamentFeed;
+import com.google.common.collect.Multimap;
+
+public interface IPromoFeedTransformer {
+    TournamentFeed transform(ITournamentFeedHistoryPersister historyPersister,
+                             IMQReservedNicknamePersister nicknamePersister,
+                             IPromoCampaign campaign,
+                             Multimap<String, TournamentMemberRank> feed,
+                             IRecordProducer recordProducer,
+                             long startWriteTime);
+}

@@ -1,0 +1,5 @@
+{
+  "status": "error",
+  "code": "ER01",
+  "message": "Server overload"
+}

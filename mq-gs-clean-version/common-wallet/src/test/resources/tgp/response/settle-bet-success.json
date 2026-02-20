@@ -1,0 +1,16 @@
+{
+  "bal": 112,
+  "cur": "RMB",
+  "transactions": [
+    {
+      "txid": "98e8dfaa-bcab-46a8-8b18-24ec4f796150",
+      "ptxid": "78e94e75-993e-4b44-9223-a77e65a07dcf",
+      "dup": false
+    },
+    {
+      "txid": "0031cf78-71a0-4d72-a336-3f8550d7d59e",
+      "ptxid": "bd591dcf-7644-4b57-877f-97afcf6faee7",
+      "dup": false
+    }
+  ]
+}

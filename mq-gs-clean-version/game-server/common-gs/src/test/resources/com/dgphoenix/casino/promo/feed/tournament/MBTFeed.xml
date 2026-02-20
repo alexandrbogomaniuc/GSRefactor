@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+  <record>
+    <place>1</place>
+    <bankId>271</bankId>
+    <playerId>44</playerId>
+    <nickname>lucky</nickname>
+    <score>50</score>
+    <prize>IPhone 13 pro max</prize>
+  </record>
+  <record>
+    <place>2</place>
+    <bankId>271</bankId>
+    <playerId>85</playerId>
+    <nickname>nick</nickname>
+    <score>50</score>
+    <prize>Huawei P20</prize>
+  </record>
+</dataset>

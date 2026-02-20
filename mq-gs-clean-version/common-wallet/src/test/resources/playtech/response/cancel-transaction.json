@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "requestId": "123",
+    "gsId": "rgs-bsg"
+  },
+  "playerId": "pop-player",
+  "gameCycleId": "456",
+  "skinId": "casino123",
+  "cancelAckArray": [
+    {
+      "transSeq": 1,
+      "transId": "123458",
+      "referenceId": "2"
+    }
+  ],
+  "accountBalance": {
+    "playerId": "pop-player",
+    "accountId": "",
+    "currencyCode": "EUR",
+    "balanceArray": [
+      {
+        "balanceType": "cashable",
+        "balanceAmt": 11100
+      }
+    ]
+  },
+  "errorCode": "",
+  "errorMsg": ""
+}

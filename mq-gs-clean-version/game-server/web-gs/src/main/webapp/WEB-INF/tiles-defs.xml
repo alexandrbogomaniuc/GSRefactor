@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+    <definition name="main.layout" path="/templates/main.jsp">
+        <put name="title" value="Casino"/>
+        <put name="header" value=""/>
+        <put name="footer" value=""/>
+        <put name="body" value=""/>
+    </definition>
+
+    <definition name="page.gamehistory" extends="main.layout">
+        <put name="title" value="Game history"/>
+        <put name="body" value="/gamehistory.jsp"/>
+    </definition>
+
+    <definition name="page.gamehistory7Red" extends="main.layout">
+        <put name="title" value="7Red - Game history"/>
+        <put name="body" value="/gamehistory7Red.jsp"/>
+    </definition>
+
+</tiles-definitions>

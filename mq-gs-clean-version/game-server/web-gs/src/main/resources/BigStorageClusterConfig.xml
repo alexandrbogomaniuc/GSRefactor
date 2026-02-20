@@ -1,0 +1,26 @@
+<ClusterConfig>
+    <clusterName>CasinoCluster</clusterName>
+    <keySpace>RBigStorageCasinoKS</keySpace>
+    <hostTimeoutWindow>30000</hostTimeoutWindow>
+    <replicationStrategyClass>${bigstorage.cassandra.replicationStrategyClass}</replicationStrategyClass>
+    <readConsistencyLevel>${bigstorage.cassandra.readConsistencyLevel}</readConsistencyLevel>
+    <writeConsistencyLevel>${bigstorage.cassandra.writeConsistencyLevel}</writeConsistencyLevel>
+    <replicationFactor>${bigstorage.cassandra.replicationFactor}</replicationFactor>
+    <createScheme>${bigstorage.cassandra.createScheme}</createScheme>
+    <hosts>${bigstorage.cassandra.hosts}</hosts>
+    <jmxHosts>${bigstorage.cassandra.jmx-hosts}</jmxHosts>
+    <minimumOnlineHosts>${cassandra.general.minimumOnlineHosts}</minimumOnlineHosts>
+
+    <columnFamilies>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraBigStorageBetPersister</className>
+            <ttl>${bigstorage.cassandra.betcf.ttl}</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraBigStorageRoundGameSessionPersister</className>
+            <ttl>${bigstorage.cassandra.roundgamesessions.ttl}</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+    </columnFamilies>
+</ClusterConfig>

@@ -1,0 +1,17 @@
+{
+    "command": "force_close_rounds",
+    "rounds": [
+        {
+            "roundid": "7458746217483246",
+            "ISBskinid": "asdf",
+            "providergameid": "gameA",
+            "licensee": 101
+        },
+        {
+            "roundid": "23657345827467254",
+            "ISBskinid": 908000,
+            "providergameid": "gameB",
+            "licensee": 134
+        }
+    ]
+}

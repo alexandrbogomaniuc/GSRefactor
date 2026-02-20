@@ -1,0 +1,89 @@
+package com.dgphoenix.casino.cassandra.persist;
+
+import com.datastax.driver.core.DataType;
+import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Row;
+import com.datastax.driver.core.querybuilder.Delete;
+import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.datastax.driver.core.querybuilder.Select;
+import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
+import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+import com.dgphoenix.casino.common.games.CdnCheckResult;
+import com.dgphoenix.casino.common.games.ICassandraHostCdnPersister;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Created by inter on 07.09.15.
+ */
+public class CassandraHostCdnPersister extends AbstractCassandraPersister<String, String> implements ICassandraHostCdnPersister {
+
+    private static final Logger LOG = LogManager.getLogger(CassandraHostCdnPersister.class);
+
+    public static final String COLUMN_FAMILY_NAME = "HostCdnCF";
+    public static final String IP_FIELD = "IP";
+    public static final String CDN_FIELD = "CDN";
+    public static final String TIME_FIELD = "TIME";
+    public static final String LAST_UPDATE_FIELD = "LAST_UPDATE"; // ALTER TABLE hostcdncf ADD LAST_UPDATE bigint;
+
+    private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
+            Arrays.asList(
+                    new ColumnDefinition(IP_FIELD, DataType.text(), false, false, true),
+                    new ColumnDefinition(CDN_FIELD, DataType.text(), false, false, true),
+                    new ColumnDefinition(TIME_FIELD, DataType.cint(), false, false, false),
+                    new ColumnDefinition(LAST_UPDATE_FIELD, DataType.bigint(), false, false, false)
+            ), IP_FIELD);
+
+    private CassandraHostCdnPersister() {
+
+    }
+
+    @Override
+    public TableDefinition getMainTableDefinition() {
+        return TABLE;
+    }
+
+    @Override
+    public Logger getLog() {
+        return LOG;
+    }
+
+
+    public void persist(String ip, String cdn, int time) {
+        Insert query = getInsertQuery();
+        query.value(IP_FIELD, ip).
+                value(CDN_FIELD, cdn).
+                value(TIME_FIELD, time).
+                value(LAST_UPDATE_FIELD, System.currentTimeMillis());
+        execute(query, "create");
+    }
+
+    public List<CdnCheckResult> getCdnByIp(String ip) {
+        Select select = QueryBuilder.select()
+                .column(CDN_FIELD)
+                .column(TIME_FIELD)
+                .column(LAST_UPDATE_FIELD)
+                .from(COLUMN_FAMILY_NAME)
+                .where(QueryBuilder.eq(IP_FIELD, ip)).limit(1000);
+        ResultSet rows = execute(select, "getCdnByIp");
+
+        List<CdnCheckResult> result = new ArrayList<>();
+        for (Row row : rows) {
+            result.add(new CdnCheckResult(row.getString(CDN_FIELD), row.getInt(TIME_FIELD), row.getLong(LAST_UPDATE_FIELD)));
+        }
+
+        return result;
+    }
+
+    public void remove(String ip, String cdn) {
+        Delete query = QueryBuilder.delete().all().from(COLUMN_FAMILY_NAME);
+        query.where(QueryBuilder.eq(IP_FIELD, ip)).and(QueryBuilder.eq(CDN_FIELD, cdn));
+        execute(query, "deleteItem");
+    }
+}

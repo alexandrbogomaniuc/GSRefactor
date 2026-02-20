@@ -1,0 +1,12 @@
+/config
+/migration
+/migration-backup
+/migration-old
+/proclim
+/reports
+/jackpots
+/winners
+/WEB-INF/lib/rng-1.0.jar
+/WEB-INF/lib/unj-common-2.1.jar
+/WEB-INF/rlib
+/WEB-INF/rlib-dev

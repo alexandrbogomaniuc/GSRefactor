@@ -1,0 +1,8 @@
+<PKT>
+  <Method Name="GetAccountDetails">
+    <Params>
+      <Token Type="string" Value="AAD8EE30-8C43-11DC-9755-668156D89593"/>
+      <Hash Type="string" Value="8d26ac9dad2912d4497121f15d0e6f0bf2a52e980f97fd4878c8abdb61cbb173"/>
+    </Params>
+  </Method>
+</PKT>

@@ -1,0 +1,80 @@
+version: '3.5'
+services:
+  gs:
+    build: ./gs
+    image: jetty-gs
+    volumes:
+      - "${WEBAPP_DIR}:/var/lib/jetty/webapps"
+      - "${LOG_DIR}/gs:/www/logs/tomcat.gs"
+      - "${DEFAULT_CONFIGS_DIR}:/www/html/gs/ROOT/export"
+    networks:
+      - gs-network
+    ports:
+      - "81:8080"
+      - "6000:6000"
+      - "6001:6001"
+      - "9000:9000"
+    depends_on:
+      - "c1"
+      - "zookeeper"
+      - "kafka"
+
+  c1:
+    image: "cassandra:2.1.20"
+    volumes:
+      - "${LOG_DIR}/cassandra:/var/log/cassandra"
+      - "cassandra-data:/var/lib/cassandra"
+    networks:
+      - gs-network
+    environment:
+      - MAX_HEAP_SIZE=800M
+      - HEAP_NEWSIZE=300M
+    ports:
+      - "9142:9042"
+
+  zookeeper:
+    image: "zookeeper:3.8"
+    networks:
+      - gs-network
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: "confluentinc/cp-kafka:7.3.2"
+    networks:
+      - gs-network
+    depends_on:
+      - "zookeeper"
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:9092
+      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1
+      - KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0
+    ports:
+      - "9092:29092"
+
+  static:
+    build: ./static
+    image: static
+    volumes:
+      - "${STATIC_DIR}:/www/html/stat"
+      - "${LOG_DIR}/nginx:/var/log/nginx/"
+    ports:
+     - "80:80"
+    networks:
+     - gs-network
+    depends_on:
+     - "gs"
+
+networks:
+  gs-network:
+    driver: bridge
+
+volumes:
+  cassandra-data:

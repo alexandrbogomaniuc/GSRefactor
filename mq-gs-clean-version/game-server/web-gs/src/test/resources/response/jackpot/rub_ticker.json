@@ -1,0 +1,13 @@
+{
+    "gameId": 813,
+    "bankId": 271,
+    "currency": "RUB",
+    "sign": "₽",
+    "type": "JP4",
+    "jackpots": [
+        {
+            "id": 123,
+            "value": 1000.0
+        }
+    ]
+}

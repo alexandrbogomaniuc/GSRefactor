@@ -1,0 +1,8 @@
+{
+  "status": "success",
+  "sessionid": "sid-123456789",
+  "playerid": "isb-777",
+  "username": "isb-test-player",
+  "currency": "EUR",
+  "balance": 1000
+}

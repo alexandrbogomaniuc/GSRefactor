@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE taglib
+        PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>1.2</jsp-version>
+    <short-name>Casino taglib library</short-name>
+    <uri>http://www.dgphoenix.com/tags-casino</uri>
+    <display-name>dgphoenix</display-name>
+    <description>This tag library contains tags developed by DgPhoenix.</description>
+
+    <tag>
+        <name>pageNavigation</name>
+        <tag-class>com.dgphoenix.casino.common.web.PagingTag</tag-class>
+        <body-content>EMPTY</body-content>
+
+        <attribute>
+            <name>formName</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <name>styleClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <name>styleSelectedClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>pageNavigationV2</name>
+        <tag-class>com.dgphoenix.casino.common.web.PagingTagV2</tag-class>
+        <body-content>EMPTY</body-content>
+
+        <attribute>
+            <name>formName</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <name>styleClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <name>styleSelectedClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>
+
+</taglib>

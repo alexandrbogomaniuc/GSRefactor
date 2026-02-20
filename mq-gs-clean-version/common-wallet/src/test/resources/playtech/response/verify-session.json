@@ -1,0 +1,14 @@
+{
+  "secureToken": "eyJhbGciOiJFUzI1NiJ9.Jn5l4yP0Eb6aWvd7MTmw3824sHTdhRYctmnhQ",
+  "accountBalance": {
+    "playerId": "pop-player",
+    "accountId": "bsg1412",
+    "currencyCode": "EUR",
+    "balanceArray": [
+      {
+        "balanceType": "cashable",
+        "balanceAmt": 10000
+      }
+    ]
+  }
+}

@@ -1,0 +1,310 @@
+image:
+  name: gcr.io/mq-legacy-games/atlassian-default-image-4-customized:latest
+  username: _json_key
+  password: '$SA_FOR_DEPLOY_PROD'
+
+pipelines:
+  pull-requests:
+    "**":
+      -   step:
+            name: Security Scan
+            script: # Run a security scan for sensitive data.
+              # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
+              -   pipe: atlassian/git-secrets-scan:0.5.1
+      -   step:
+            name: Vulnerability Scan (SNYK)
+            script:
+              - npm install -g snyk
+              - snyk auth $SNYK_TOKEN
+              - snyk code test || true
+      -   step:
+            name: Build and Test Modules
+            caches:
+              - maven
+            script:
+              - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+              - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+              - ./build-all-modules.sh
+      -   step:
+            name: Build and Test Project
+            caches:
+              - maven
+            script:
+              - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+              - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+              - ./game-server/build/live/build-mqb2-live.sh
+  branches:
+    develop:
+      -   step:
+            name: Security Scan
+            script: # Run a security scan for sensitive data.
+              # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
+              -   pipe: atlassian/git-secrets-scan:0.5.1
+      -   step:
+            name: Build Modules
+            caches:
+              - maven
+            script:
+              - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+              - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+              - ./build-all-modules.sh
+      #            -   stage:
+      #                    name: DEV - Build and Deploy
+      #                    deployment: Dev
+      #                    #trigger: manual
+      #                    steps:
+      #                        -   step:
+      #                                name: Build Project
+      #                                caches:
+      #                                    - maven
+      #                                script:
+      #                                    - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+      #                                    - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+      #                                    - ./game-server/build/live/build-mqb2-live.sh
+      #                                    - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS1_DEV_ADDRESS:/www/html/gs
+      #                                    - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS2_DEV_ADDRESS:/www/html/gs
+      #                                    - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS3_DEV_ADDRESS:/www/html/gs
+      #                        -   step:
+      #                                name: Deploy GS1
+      #                                caches:
+      #                                    - maven
+      #                                script:
+      #                                    - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS1_DEV_ADDRESS:/www/html/scripts
+      #                                    - ssh bitbucket@$GS1_DEV_ADDRESS -p 222 "chmod 755 /www/html/scripts/deploy.sh"
+      #                                    - ssh bitbucket@$GS1_DEV_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+      #                        -   step:
+      #                                name: Deploy GS2
+      #                                caches:
+      #                                    - maven
+      #                                script:
+      #                                    - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS2_DEV_ADDRESS:/www/html/scripts
+      #                                    - ssh bitbucket@$GS2_DEV_ADDRESS -p 222 "chmod 755 /www/html/scripts/deploy.sh"
+      #                                    - ssh bitbucket@$GS2_DEV_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+      #                        -   step:
+      #                                name: Deploy GS3
+      #                                caches:
+      #                                    - maven
+      #                                script:
+      #                                    - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS3_DEV_ADDRESS:/www/html/scripts
+      #                                    - ssh bitbucket@$GS3_DEV_ADDRESS -p 222 "chmod 755 /www/html/scripts/deploy.sh"
+      #                                    - ssh bitbucket@$GS3_DEV_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+      
+      -   stage:
+            name: TEST - Build and Deploy
+            deployment: Test
+            trigger: manual
+            steps:
+              -   step:
+                    name: Build Project
+                    caches:
+                      - maven
+                    script:
+                      - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                      - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                      - ./game-server/build/live/build-mqb2-live.sh
+                      - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS1_TEST_ADDRESS:/www/html/gs_backup
+                      - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS2_TEST_ADDRESS:/www/html/gs_backup
+                      - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS3_TEST_ADDRESS:/www/html/gs_backup
+                      - ssh  bitbucket@$GS1_TEST_ADDRESS -p 222 "pwd && cd /www/html && ls -l"
+                    artifacts: # defining the artifacts.
+                      - game-server/web-gs/target/ROOT.war
+              -   step:
+                    name: Deploy GS1
+                    caches:
+                      - maven
+                    script:
+                      - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS1_TEST_ADDRESS:/www/html/scripts
+                      - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "chmod 755 /www/html/scripts/deploy.sh"
+                      - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+              -   step:
+                    name: Deploy GS2
+                    caches:
+                      - maven
+                    script:
+                      - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS2_TEST_ADDRESS:/www/html/scripts
+                      - ssh bitbucket@$GS2_TEST_ADDRESS -p 222 "chmod 755 /www/html/scripts/deploy.sh"
+                      - ssh bitbucket@$GS2_TEST_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+              -   step:
+                    name: Deploy GS3
+                    caches:
+                      - maven
+                    script:
+                      - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS3_TEST_ADDRESS:/www/html/scripts
+                      - ssh bitbucket@$GS3_TEST_ADDRESS -p 222 "chmod 755 /www/html/scripts/deploy.sh"
+                      - ssh bitbucket@$GS3_TEST_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+      -   stage:
+            name: ROLLBACK - restore data
+            deployment: Rollback
+            trigger: manual
+            steps:
+              - step:
+                  name: Restore Artifact
+                  caches:
+                    - maven
+                  artifacts:
+                    download: true
+                    paths:
+                      - game-server/web-gs/target/ROOT.war
+                  script:
+                    - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS1_TEST_ADDRESS:/www/html/gs_backup
+                    - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS2_TEST_ADDRESS:/www/html/gs_backup
+                    - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS3_TEST_ADDRESS:/www/html/gs_backup
+                    - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+                    - ssh bitbucket@$GS2_TEST_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+                    - ssh bitbucket@$GS3_TEST_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+    pre-prod:
+        -   step:
+                name: PRE-PROD - Build and Deploy
+                caches:
+                    - maven
+                script:
+                    - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                    - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                    - ./game-server/build/live/build-mqb2-live.sh
+                    - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS1_PRE_PROD_ADDRESS:/www/html/gs_backup
+                    - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS2_PRE_PROD_ADDRESS:/www/html/gs_backup
+                    - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS3_PRE_PROD_ADDRESS:/www/html/gs_backup
+                    - ssh  bitbucket@$GS1_PRE_PROD_ADDRESS -p 222 "pwd && cd /www/html && ls -l"
+                artifacts: # defining the artifacts.
+                    - game-server/web-gs/target/ROOT.war
+        -   step:
+                name: Deploy GS1
+                caches:
+                    - maven
+                script:
+                    - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS1_PRE_PROD_ADDRESS:/www/html/scripts
+                    - ssh bitbucket@$GS1_PRE_PROD_ADDRESS -p 222 "chmod 755 /www/html/scripts/deploy.sh"
+                    - ssh bitbucket@$GS1_PRE_PROD_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+        -   step:
+                name: Deploy GS2
+                caches:
+                    - maven
+                script:
+                    - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS2_PRE_PROD_ADDRESS:/www/html/scripts
+                    - ssh bitbucket@$GS2_PRE_PROD_ADDRESS -p 222 "chmod 755 /www/html/scripts/deploy.sh"
+                    - ssh bitbucket@$GS2_PRE_PROD_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+        -   step:
+                name: Deploy GS3
+                caches:
+                    - maven
+                script:
+                    - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS3_PRE_PROD_ADDRESS:/www/html/scripts
+                    - ssh bitbucket@$GS3_PRE_PROD_ADDRESS -p 222 "chmod 755 /www/html/scripts/deploy.sh"
+                    - ssh bitbucket@$GS3_PRE_PROD_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+        -   stage:
+                name: ROLLBACK - restore data
+                deployment: Rollback
+                trigger: manual
+                steps:
+                    -   step:
+                            name: Restore Artifact
+                            caches:
+                                - maven
+                            artifacts:
+                                download: true
+                                paths:
+                                    - game-server/web-gs/target/ROOT.war
+                            script:
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS1_PRE_PROD_ADDRESS:/www/html/gs_backup
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS2_PRE_PROD_ADDRESS:/www/html/gs_backup
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS3_PRE_PROD_ADDRESS:/www/html/gs_backup
+                                - ssh bitbucket@$GS1_PRE_PROD_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+                                - ssh bitbucket@$GS2_PRE_PROD_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+                                - ssh bitbucket@$GS3_PRE_PROD_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+  tags:
+    "gs-*":
+      -   step:
+            name: Security Scan
+            script: # Run a security scan for sensitive data.
+              # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
+              -   pipe: atlassian/git-secrets-scan:0.5.1
+      -   step:
+            name: Build Modules
+            caches:
+              - maven
+            script:
+              - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+              - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+              - ./build-all-modules.sh
+      -   stage:
+            name: TEST - Build and Deploy
+            deployment: Test
+            trigger: manual
+            steps:
+              -   step:
+                    name: Build Project
+                    caches:
+                      - maven
+                    script:
+                      - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                      - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                      - ./game-server/build/live/build-mqb2-live.sh
+                      - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS1_TEST_ADDRESS:/www/html/gs_backup
+                      - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS2_TEST_ADDRESS:/www/html/gs_backup
+                      - scp -P 222 $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS3_TEST_ADDRESS:/www/html/gs_backup
+                      - ssh  bitbucket@$GS1_TEST_ADDRESS -p 222 "pwd && cd /www/html && ls -l"
+              -   step:
+                    name: Deploy GS1
+                    caches:
+                      - maven
+                    script:
+                      - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS1_TEST_ADDRESS:/www/html/scripts
+                      - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "chmod 755 /www/html/scripts/deploy.sh"
+                      - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+              -   step:
+                    name: Deploy GS2
+                    caches:
+                      - maven
+                    script:
+                      - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS2_TEST_ADDRESS:/www/html/scripts
+                      - ssh bitbucket@$GS2_TEST_ADDRESS -p 222 "chmod 755 /www/html/scripts/deploy.sh"
+                      - ssh bitbucket@$GS2_TEST_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+              -   step:
+                    name: Deploy GS3
+                    caches:
+                      - maven
+                    script:
+                      - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS3_TEST_ADDRESS:/www/html/scripts
+                      - ssh bitbucket@$GS3_TEST_ADDRESS -p 222 "chmod 755 /www/html/scripts/deploy.sh"
+                      - ssh bitbucket@$GS3_TEST_ADDRESS -p 222 "sudo /www/html/scripts/deploy.sh"
+      -   stage:
+            name: PROD - Build and Deploy
+            deployment: Production
+            trigger: manual
+            steps:
+              -   step:
+                    name: Build Project
+                    caches:
+                      - maven
+                    script:
+                      - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                      - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                      - ./game-server/build/live/build-mqb2-live.sh
+                      - scp $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS1_PROD_ADDRESS:/www/html/gs_backup
+                      - scp $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS2_PROD_ADDRESS:/www/html/gs_backup
+                      - scp $BITBUCKET_CLONE_DIR/game-server/web-gs/target/ROOT.war   bitbucket@$GS3_PROD_ADDRESS:/www/html/gs_backup
+                      - ssh  bitbucket@$GS1_PROD_ADDRESS "pwd && cd /www/html && ls -l"
+              -   step:
+                    name: Deploy GS1
+                    caches:
+                      - maven
+                    script:
+                      - scp $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS1_PROD_ADDRESS:/www/html/scripts
+                      - ssh bitbucket@$GS1_PROD_ADDRESS "chmod 755 /www/html/scripts/deploy.sh"
+                      - ssh bitbucket@$GS1_PROD_ADDRESS "sudo /www/html/scripts/deploy.sh"
+              -   step:
+                    name: Deploy GS2
+                    caches:
+                      - maven
+                    script:
+                      - scp $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS2_PROD_ADDRESS:/www/html/scripts
+                      - ssh bitbucket@$GS2_PROD_ADDRESS "chmod 755 /www/html/scripts/deploy.sh"
+                      - ssh bitbucket@$GS2_PROD_ADDRESS "sudo /www/html/scripts/deploy.sh"
+              -   step:
+                    name: Deploy GS3
+                    caches:
+                      - maven
+                    script:
+                      - scp $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS3_PROD_ADDRESS:/www/html/scripts
+                      - ssh bitbucket@$GS3_PROD_ADDRESS "chmod 755 /www/html/scripts/deploy.sh"
+                      - ssh bitbucket@$GS3_PROD_ADDRESS "sudo /www/html/scripts/deploy.sh"

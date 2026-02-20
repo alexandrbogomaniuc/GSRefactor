@@ -1,0 +1,4 @@
+{
+    "status": "error",
+    "message": "Game with id 800 does not exist for bank=271 and currency='EUR'"
+}

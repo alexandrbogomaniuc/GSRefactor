@@ -1,0 +1,13 @@
+{
+  "PlayerId": "PPT_327",
+  "Token": "DB87E8897E1B4089921032B37EA2ECF4",
+  "Balance": 197545.35,
+  "CurrencyCode": "GBP",
+  "CountryCode": "GB",
+  "OperatorCode": "PPT",
+  "SessionData": {
+    "TotalBet":20.0,
+    "TotalWin":10.0,
+    "SessionBalance":220.0
+  }
+}

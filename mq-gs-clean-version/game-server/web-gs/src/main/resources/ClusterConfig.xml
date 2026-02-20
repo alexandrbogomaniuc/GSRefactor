@@ -1,0 +1,182 @@
+<ClusterConfig>
+    <clusterName>CasinoCluster</clusterName>
+    <keySpace>RCasinoKS</keySpace>
+    <hostTimeoutWindow>30000</hostTimeoutWindow>
+    <replicationStrategyClass>${cassandra.replicationStrategyClass}</replicationStrategyClass>
+    <readConsistencyLevel>${cassandra.readConsistencyLevel}</readConsistencyLevel>
+    <writeConsistencyLevel>${cassandra.writeConsistencyLevel}</writeConsistencyLevel>
+    <replicationFactor>${cassandra.replicationFactor}</replicationFactor>
+    <createScheme>${cassandra.createScheme}</createScheme>
+    <hosts>${cassandra.hosts}</hosts>
+    <jmxHosts>${cassandra.jmx-hosts}</jmxHosts>
+    <minimumOnlineHosts>${cassandra.general.minimumOnlineHosts}</minimumOnlineHosts>
+
+    <columnFamilies>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraBetPersister</className>
+            <ttl>${cassandra.betcf.ttl}</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraRoundGameSessionPersister</className>
+            <!-- 60 days -->
+            <ttl>5184000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraWalletOperationInfoPersister</className>
+            <!-- 30 days -->
+            <ttl>2592000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraGameSessionPersister</className>
+            <ttl>${cassandra.gamesessionscf.ttl}</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraArchiverPersister</className>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraBonusArchivePersister</className>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraFrBonusArchivePersister</className>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraFrbWinOperationPersister</className>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraTrackingInfoPersister</className>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraPlayerSessionHistoryPersister</className>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraCurrentPlayerSessionStatePersister</className>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraDelayedMassAwardHistoryPersister</className>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraDelayedMassAwardFailedDeliveryPersister</className>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraSupportPersister</className>
+            <!-- 60 days -->
+            <ttl>5184000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraCallStatisticsPersister</className>
+            <enabled>true</enabled>
+        </ColumnFamily>
+
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraCallIssuesPersister</className>
+            <!-- 60 days -->
+            <ttl>5184000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraNotificationPersister</className>
+            <!-- 60 days -->
+            <ttl>5184000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraMetricsPersister</className>
+            <!-- 30 days -->
+            <ttl>2592000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraShortBetInfoPersister</className>
+            <!-- 3 days -->
+            <ttl>259200</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.promo.persisters.CassandraSummaryTournamentPromoFeedPersister</className>
+            <!-- 120 days -->
+            <ttl>10368000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraHistoryInformerItemPersister</className>
+            <!-- 10 days -->
+            <ttl>864000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.mp.TicketedDrawConfigPersister</className>
+            <!-- 120 days -->
+            <ttl>10368000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraHttpCallInfoPersister</className>
+            <!-- 60 days -->
+            <ttl>5184000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraHistoryTokenPersister</className>
+            <!-- 1 hour -->
+            <ttl>3600</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.mp.RoundKPIInfoPersister</className>
+            <!-- 1 day -->
+            <ttl>86400</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.mp.BattlegroundHistoryPersister</className>
+            <!-- 120 days -->
+            <ttl>10368000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.promo.persisters.PromoPredefinedUsersPersister</className>
+            <!-- 180 days -->
+            <ttl>15552000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraClientStatisticsPersister</className>
+            <!-- 3 days -->
+            <ttl>259200</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.mp.BattlegroundPrivateRoomSettingsPersister</className>
+            <!-- 120 days -->
+            <ttl>10368000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.promo.persisters.CassandraPromoWinPersister</className>
+            <!-- 30 days -->
+            <ttl>2592000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraBatchOperationStatusPersister</className>
+            <!-- 3 days -->
+            <ttl>259200</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+    </columnFamilies>
+</ClusterConfig>

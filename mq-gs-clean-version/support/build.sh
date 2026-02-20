@@ -1,0 +1,1 @@
+mvn -e clean package -Dcluster.properties=../config/copy/gp3-copy.properties

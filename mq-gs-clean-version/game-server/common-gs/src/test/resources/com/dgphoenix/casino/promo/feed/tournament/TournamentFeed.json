@@ -1,0 +1,16 @@
+{
+  "records": [
+    {
+      "rounds": 100,
+      "rank": "1",
+      "playerId": "234",
+      "nickName": "nick"
+    },
+    {
+      "rounds": 85,
+      "rank": "2",
+      "playerId": "85",
+      "nickName": "nick"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+<ClusterConfig>
+    <clusterName>CasinoCluster</clusterName>
+    <keySpace></keySpace>
+    <hostTimeoutWindow>30000</hostTimeoutWindow>
+    <replicationStrategyClass>org.apache.cassandra.locator.SimpleStrategy</replicationStrategyClass>
+    <readConsistencyLevel>LOCAL_ONE</readConsistencyLevel>
+    <writeConsistencyLevel>LOCAL_ONE</writeConsistencyLevel>
+    <replicationFactor>1</replicationFactor>
+    <createScheme>true</createScheme>
+    <hosts>localhost:9042</hosts>
+    <minimumOnlineHosts>-1</minimumOnlineHosts>
+
+    <columnFamilies>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraPersisterMock</className>
+            <!-- 120 days -->
+            <ttl>10368000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+    </columnFamilies>
+</ClusterConfig>

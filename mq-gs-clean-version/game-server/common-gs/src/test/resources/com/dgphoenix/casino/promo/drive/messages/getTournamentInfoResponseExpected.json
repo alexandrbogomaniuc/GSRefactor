@@ -1,0 +1,52 @@
+{
+  "showInfoNotification": false,
+  "advisedPauseForNextRequest": 5000,
+  "supportBalanceTransfer": true,
+  "betDoesNotQualifyNotificationTimerIntervalInMs": 1000,
+  "tournaments": [
+    {
+      "showBeforeStart": 120,
+      "showAfterEnd": 180,
+      "showMotivationMessage": true,
+      "motivationMessage": "Nice! You’re now in position 3! Keep on playing!",
+      "position": 3,
+      "id": 123,
+      "type": "DRIVE",
+      "name": "Merry Christmas Big Money Gifts!",
+      "status": "STARTED",
+      "startDate": 1533284885209,
+      "endDate": 1533284885209,
+      "rules": "Lorem ipsum ...",
+      "totalPrizePool": 10000.0,
+      "welcomeMessage": "Bla bla bla",
+      "showWelcomeMessage": true,
+      "prizes": [
+        {
+          "startPosition": 1,
+          "endPosition": 3,
+          "id": 1,
+          "value": 500.0
+        },
+        {
+          "startPosition": 4,
+          "id": 2,
+          "value": 300.0
+        }
+      ],
+      "qualificationInfo": {
+        "minBet": 1.0,
+        "amountOfSpins": {
+          "required": 100,
+          "current": 50
+        },
+        "betSum": {
+          "required": 100.0,
+          "current": 50.0
+        }
+      }
+    }
+  ],
+  "date": 1496750172302,
+  "rid": 1,
+  "class": "GetTournamentInfoResponse"
+}

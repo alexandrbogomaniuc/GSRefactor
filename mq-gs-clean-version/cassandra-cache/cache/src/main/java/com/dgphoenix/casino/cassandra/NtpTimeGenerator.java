@@ -1,0 +1,23 @@
+package com.dgphoenix.casino.cassandra;
+
+import com.datastax.driver.core.TimestampGenerator;
+import com.dgphoenix.casino.common.util.NtpTimeProvider;
+
+/**
+ * Adapter NtpTimeProvider for cassandra driver
+ * User: van0ss
+ * Date: 09.02.2017
+ */
+class NtpTimeGenerator implements TimestampGenerator {
+
+    private NtpTimeProvider timeProvider;
+
+    public NtpTimeGenerator(NtpTimeProvider timeProvider) {
+        this.timeProvider = timeProvider;
+    }
+
+    @Override
+    public long next() {
+        return timeProvider.getTimeMicroseconds();
+    }
+}

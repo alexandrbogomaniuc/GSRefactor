@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<raffle>
+  <player>
+    <bankId>271</bankId>
+    <userId>1</userId>
+    <tickets>4</tickets>
+  </player>
+  <player>
+    <bankId>271</bankId>
+    <userId>5</userId>
+    <tickets>1</tickets>
+  </player>
+</raffle>

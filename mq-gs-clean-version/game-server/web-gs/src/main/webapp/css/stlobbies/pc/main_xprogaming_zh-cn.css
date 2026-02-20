@@ -1,0 +1,440 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: none;
+    outline: none;
+}
+
+.noBg {
+    background: none !important;
+}
+
+body {
+    font-family: "Myriad Pro", Arial, Tahoma, sans-serif;
+    font-size: 12px;
+    background: #000 url(/images/stlobbies/pc/images/bgTop.gif) top left repeat-x;
+    margin-left: -12px;
+    text-align: center;
+}
+
+#wrap {
+    text-align: left;
+    width: 890px;
+    *width: 902px;
+    margin: 0 auto;
+    padding-left: 15px;
+    /*height: 100%;*/
+    overflow: hidden;
+}
+
+#top {
+    height: 85px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 4px;
+}
+
+#top h1 {
+    background: url(/images/stlobbies/pc/images/topGames.gif) bottom left no-repeat;
+    width: 754px;
+    height: 37px;
+    font-size: 12px;
+    text-indent: -9000px;
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+}
+
+#main {
+    width: 756px;
+    float: left;
+}
+
+#headerWrap {
+    width: 751px;
+    height: 230px;
+    padding: 0 5px 0 1px;
+    background: url(/images/stlobbies/pc/images/bgHeader.gif) top left no-repeat;
+    position: relative;
+}
+
+#headerHolder {
+    width: 751px;
+    height: 207px;
+    overflow: hidden;
+}
+
+#header {
+    height: 207px;
+    width: 751px;
+    overflow: hidden;
+    position: relative;
+}
+
+#headerWrap a {
+    height: 207px;
+    width: 751px;
+    position: relative;
+    float: left;
+}
+
+#headerWrap a img {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+}
+
+#headerNewBadge {
+    position: absolute;
+    top: -4px;
+    left: -3px;
+    display: block;
+    width: 64px;
+    height: 65px;
+    background: url(/images/stlobbies/pc/images_itechgaming/new.png) top left no-repeat;
+    text-indent: -9000px;
+}
+
+#headerWrap a strong {
+    position: absolute;
+    bottom: 12px;
+    right: 7px;
+    display: block;
+    width: 80px;
+    height: 25px;
+    background: url(/images/stlobbies/pc/images_itechgaming/playNow.png) top left no-repeat;
+    text-indent: -9000px;
+}
+
+#headerSliderWrap {
+    background: url(/images/stlobbies/pc/images/bgHeaderLine.gif) top left no-repeat;
+    padding: 0 60px;
+    height: 17px;
+}
+
+#headerSlider {
+    height: 17px;
+    margin: 1px 60px 0 -60px;
+}
+
+#headerSlider .ui-slider-handle {
+    background: url(/images/stlobbies/pc/images/scrollH.gif) top left no-repeat;
+    width: 119px;
+    height: 17px;
+    /* 	margin-left: -60px; */
+}
+
+#listWrap {
+    margin: 20px 0 0 0;
+    border-bottom: 1px solid #3a3938;
+}
+
+#listCategories {
+    list-style: none;
+    border-bottom: 6px solid #52524f;
+    height: 22px;
+}
+
+#listCategories li {
+    float: left;
+    height: 22px;
+    position: relative;
+}
+
+#listCategories li.active small {
+    position: absolute;
+    height: 6px;
+    left: 18px;
+    right: 18px;
+    bottom: -6px;
+    background: #ffd200;
+}
+
+#listCategories li a {
+    float: left;
+    height: 22px;
+    text-indent: -9000px;
+    background-image: url(/images/stlobbies/pc/images_itechgaming/bgNav.gif);
+    background-repeat: no-repeat;
+}
+
+#catMP a {
+    width: 119px;
+    background-position: 0 0;
+}
+
+#catMP a:hover, #catMP.active a {
+    background-position: 0 -22px;
+}
+
+#cat3DS a {
+    width: 90px;
+    background-position: -119px 0;
+}
+
+#cat3DS a:hover, #cat3DS.active a {
+    background-position: -119px -22px;
+}
+
+#catS a {
+    width: 65px;
+    background-position: -209px 0;
+}
+
+#catS a:hover, #catS.active a {
+    background-position: -209px -22px;
+}
+
+#catTG a {
+    width: 120px;
+    background-position: -268px 0;
+}
+
+#catTG a:hover, #catTG.active a {
+    background-position: -268px -22px;
+}
+
+#catG a {
+    width: 70px;
+    background-position: -386px 0;
+}
+
+#catG a:hover, #catG.active a {
+    background-position: -386px -22px;
+}
+
+#catVP a {
+    width: 114px;
+    background-position: -450px 0;
+}
+
+#catVP a:hover, #catVP.active a {
+    background-position: -450px -22px;
+}
+
+#catBNS a {
+    width: 80px;
+    background-position: -575px 0;
+}
+
+#catBNS a:hover, #catBNS.active a {
+    background-position: -575px -22px;
+}
+
+#catPH a {
+    width: 90px;
+    background-position: -757px 0;
+}
+
+#catPH a:hover, #catPH.active a {
+    background-position: -757px -22px;
+}
+
+#list {
+    background: #0b0b0b;
+    padding: 0;
+    border-left: 1px solid #3a3938;
+    border-right: 1px solid #3a3938;
+    border-bottom: 1px solid #0b0b0b;
+    border-top: 1px solid #0b0b0b;
+    height: 1085px;
+    position: relative;
+    overflow: auto;
+}
+
+#list ul {
+    /*height: 100%;*/
+    overflow: hidden;
+    padding: 10px;
+    display: none;
+}
+
+#list ul.active {
+    display: block;
+}
+
+#list ul li {
+    float: left;
+    width: 151px;
+    height: 163px;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 10px;
+}
+
+#list ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    position: relative;
+}
+
+#list ul li a img {
+    display: block;
+    border: 1px solid #7d7d7b;
+    margin-bottom: 4px;
+}
+
+#list ul li a strong {
+    font-weight: normal;
+    text-align: center;
+    display: block;
+    background: url(/images/stlobbies/pc/images/bgGameTitle.gif) top center no-repeat;
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: 12px;
+    padding: 6px 0 5px;
+    width: 151px;
+}
+
+#list ul li.fav strong {
+    background: url(/images/stlobbies/pc/images/bgGameTitleF.gif) top center no-repeat;
+}
+
+#list ul li.fav small {
+    display: block;
+    width: 67px;
+    height: 21px;
+    font-size: 10px;
+    background: url(/images/stlobbies/pc/images_itechgaming/favorite.png) top left no-repeat;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+}
+
+#list ul li.new small {
+    display: block;
+    width: 66px;
+    height: 51px;
+    font-size: 10px;
+    background: url(/images/stlobbies/pc/images_itechgaming/new_mini.png) top left no-repeat;
+    position: absolute;
+    top: -2px;
+    right: 87px;
+}
+
+#list ul li.fav_new small {
+    display: block;
+    width: 152px;
+    height: 51px;
+    font-size: 10px;
+    background: url(/images/stlobbies/pc/images_itechgaming/fav_new.png) top left no-repeat;
+    position: absolute;
+    top: -2px;
+    right: 1px;
+}
+
+#list ul li.fav_new strong {
+    background: url(/images/stlobbies/pc/images/bgGameTitleF.gif) top center no-repeat;
+}
+
+#sidebar {
+    margin-top: -25px;
+    float: right;
+    width: 124px;
+}
+
+#sidebar .box {
+    background: url(/images/stlobbies/pc/images/bgSidebar.gif) top right repeat-y;
+}
+
+#sidebar .box .boxIn {
+    background: url(/images/stlobbies/pc/images/bgSidebarBottom.gif) bottom right no-repeat;
+    padding: 0 0 7px;
+}
+
+#jackpots h2 {
+    height: 37px;
+    font-size: 12px;
+    text-indent: -9000px;
+    background: url(/images/stlobbies/pc/images_itechgaming/jackpots.gif) top right no-repeat;
+}
+
+#jackpots ul {
+    background: url(/images/stlobbies/pc/images/bgJackpots.gif) repeat-y scroll 0 0 transparent;
+    margin: 0 7px 0 7px;
+    /*height: 100%;*/
+    overflow: hidden;
+}
+
+#jackpots ul li {
+    height: 70px !important;
+    position: relative;
+    /*border-bottom: 5px solid #211f1f;*/
+    margin: 0;
+    padding: 0;
+    float: center;
+    width: 116px;
+}
+
+#jackpots ul li img {
+    /*position: absolute;*/
+    top: 0;
+    display: block;
+    margin: 0 0 0 3px;
+    float: center;
+}
+
+#jackpots ul li span {
+    position: absolute;
+    font-size: 19px;
+    line-height: 19px;
+    height: 19px;
+    color: #fff;
+    top: 9px;
+    right: 5px;
+    font-weight: normal;
+}
+
+#winners h2 {
+    height: 37px;
+    font-size: 12px;
+    text-indent: -9000px;
+    background: url(/images/stlobbies/pc/images_itechgaming/latestWinners.gif) top right no-repeat;
+}
+
+#winners {
+    /*margin-top: -25px;*/
+}
+
+#winners ul {
+    /*background: #211f1f;*/
+    margin: 0 7px 0 7px;
+}
+
+#winners ul li {
+    margin: 3px;
+    /*background: #000;*/
+    /*height: 100%;*/
+    overflow: hidden;
+    padding: 4px;
+    color: #fff;
+    font-size: 15px;
+    position: relative;
+}
+
+#winners ul li .player {
+    float: left;
+}
+
+#winners ul li .player img {
+    float: left;
+}
+
+#winners ul li .player span {
+    float: left;
+    padding: 5px 0 0 4px;
+}
+
+#winners ul li .ammount {
+    position: absolute;
+    top: 8px;
+    right: 6px;
+}
+
+#bottom {
+    height: 27px;
+    margin: 10px 0 0 0;
+    background: url(/images/stlobbies/pc/images/bgBottom.gif);
+}

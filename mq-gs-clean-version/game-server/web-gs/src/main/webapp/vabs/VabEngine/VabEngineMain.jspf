@@ -1,0 +1,217 @@
+<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
+<%@ page import="com.dgphoenix.casino.web.history.GameHistoryServlet" %>
+<%@ page import="org.apache.struts.util.MessageResources" %>
+<%@ page import="static com.dgphoenix.casino.web.history.GameHistoryServlet.PARAM_TIME_ZONE" %>
+<%@ page import="java.util.concurrent.TimeUnit" %>
+<%@ page import="com.dgphoenix.casino.common.exception.CommonException" %>
+<%@ page import="java.time.ZoneId" %>
+<%@ page import="java.time.DateTimeException" %>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script>
+<%!
+    boolean isCorrectTimeZone(String timeZone) {
+        try {
+            ZoneId.of(timeZone);
+            return true;
+        } catch (DateTimeException e) {
+            return false;
+        }
+    }
+%>
+<%
+    String version = "1.5.6";
+
+    int canvas_height     = vab_height;
+
+    int debug_text_width  = vab_width;
+    int debug_text_height = debug_info_height;
+
+    String timeOffsetInclDst = request.getParameter(GameHistoryListAction.PARAM_TIME_OFFSET);
+    String hideClose         = request.getParameter("hideClose");
+    String closeDisplay      = ("TRUE".equalsIgnoreCase(hideClose) ? "none" : "block");
+    String timeZoneParam     = request.getParameter(PARAM_TIME_ZONE);
+
+    String timeZone = "GMT";
+    String tzParam = "";
+    String errorText = "";
+    if (!StringUtils.isTrimmedEmpty(timeZoneParam)) {
+        timeZone = timeZoneParam.replaceAll("[^A-z0-9/+:-]*", "");
+        if (!isCorrectTimeZone(timeZone)) {
+            errorText = "Incorrect TimeZone";
+        } else {
+            tzParam = "&TIMEZONE=" + timeZone.replace("+", "%2B");
+        }
+    } else if (!StringUtils.isTrimmedEmpty(timeOffsetInclDst)) {
+        try {
+            int hoursOffset = (Integer.parseInt(timeOffsetInclDst) - 1440) / 60;
+            timeZone += (hoursOffset < 0) ? hoursOffset : "+" + hoursOffset;
+        } catch (NumberFormatException e) {
+            timeZone += "+0";
+        }
+    } else {
+        String sessionId = request.getParameter("VIEWSESSID");
+        if (sessionId != null) {
+            try {
+                boolean onlineSession = Boolean.parseBoolean(request.getParameter(GameHistoryServlet.PARAM_IS_ONLINE));
+                long offset = GameHistoryServlet.getHistoryAndVabOffset(Long.parseLong(sessionId), onlineSession, playerSessionId);
+                long hours = TimeUnit.MINUTES.toHours(offset);
+                long minutes = Math.abs(offset - TimeUnit.HOURS.toMinutes(hours));
+                timeZone += String.format("%+03d:%02d", hours, minutes);
+            } catch (NumberFormatException | CommonException e) {
+                timeZone += "+0";
+            }
+        } else {
+            timeZone += "+0";
+        }
+    }
+
+    String sOnline = request.getParameter("online");
+    boolean online = !StringUtils.isTrimmedEmpty(sOnline) && "true".equals(sOnline) && !StringUtils.isTrimmedEmpty(playerSessionId);
+    sOnline = online ? ("&online=true&" + GameHistoryServlet.PARAM_SESSION + "=" + playerSessionId) : "";
+
+    MessageResources messages = MessageResources.getMessageResources("VabMessages");
+%>
+
+function getTimeZoneError() {
+    return "<%=errorText%>";
+}
+
+function buildRequest(scheme, server_name, game_name, view_session_id, view_round_id, start_record, count_records, start_date, end_date) {
+    return scheme + "://" + server_name + "/gsproxy/VisualArchivingBetsV2.servlet?CMD=GETINFO&FORMAT=json" +
+        "&GAMENAME=" + game_name +
+        "&" + ((view_session_id != null) ? "VIEWSESSID=" + view_session_id : "") +
+        "&" + ((view_round_id != null) ? "ROUNDID=" + (view_round_id + "&") : "") +
+        "STARTRECORD=" + start_record + "&RECORDS=" + count_records + "&STARTDATE=" + start_date + "&ENDDATE=" + end_date + "<%=sOnline%>" + "<%=tzParam%>";
+}
+</script>
+
+<table id="global_table" cellspacing="0"> <%-- Global Table--%>
+    <caption><%=messages.getMessage(locale, "vba.note_vba_history_archived")%></caption>
+
+    <tbody style="border: 1px solid">
+
+
+    <img id="splash"      src="../common/vabs/VabEngine/data/splash.png"      style="border: 1px solid #000000; margin: auto; position: absolute; left: 0; top: 0; z-index: 10; width: 0;"/>
+    <img id="loading_bar" src="../common/vabs/VabEngine/data/loading_bar.png" style="border: 1px solid #000000; margin: auto; position: absolute; left: 0; top: 0; z-index: 15; width: 0;"/>
+
+    <tr class="dragable">
+        <td colspan="2" style="background-color: #9f9f9f; font-weight: bold; height: 24px; font-size: 14px" height="24">
+            <span><label id="id_title"><%=new_title%></label> (<span id="currency_code"></span>:<span id="account_id"></span>)</span>
+            <label id="id_button_close" style="float: right; padding: 1px 2px 0; display: <%=closeDisplay%>;">
+                <a class="button_close" href="#" onclick="window.close();"><%=messages.getMessage(locale, "vba.close")%></a>
+            </label>
+        </td>
+    </tr>
+
+    <tr>
+        <td>    <%-- Vab Info Table--%>
+        <div class="datagrid" style="position: relative">
+
+        <table id="data_table" border="0px"> <%-- Vab Info Table for split header, body and footer--%>
+            <tr>
+                <td>
+                    <table style="height: <%=table_head_height%>px; position: relative">
+                        <thead>
+                            <tr>
+                                <th id = "column_number"   style="width: <%=width_id%>px;"     >#</th>
+                                <th id = "column_date"     style="width: <%=width_date%>px;"   ><%=messages.getMessage(locale, "vba.date")%> (<%=timeZone%>)</th>
+                                <th id = "column_roundID"  style="width: <%=width_roundID%>px;"><%=messages.getMessage(locale, "vba.round_id")%></th>
+                                <th id = "column_extBetId" style="width: <%=width_extBetId%>px; <%=showExtBetId ? "":"display:none"%>"><%=messages.getMessage(locale, "vba.extBetId")%></th>
+                                <th id = "column_bet"      style="width: <%=width_bet%>px;"    ><%=messages.getMessage(locale, "vba.bet")%></th>
+                                <th id = "column_state"    style="width: <%=width_state%>px;"  ><%=messages.getMessage(locale, "vba.state")%></th>
+                                <th id = "column_payout"   style="width: <%=width_payout%>px;" ><%=messages.getMessage(locale, "vba.payout")%></th>
+                                <th id = "column_balance"  style="width: <%=width_balance%>px;
+                                    <%=hideBalance ? "display:none":""%>"><%=messages.getMessage(locale, "vba.balance")%></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div id="boxscroll" class="infogrid" style="width=100%; height: <%=table_info_height%>px;
+                        <% if (!request.getHeader("user-agent").contains("MSIE")) {%> overflow: hidden; <%} else { %> overflow: auto; <%}%>">
+                        <table id="infotable">
+                            <%-- Dynamic Table --%>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+
+            <tr> <td>
+            <table width="100%"  style="height: <%=table_footer_height%>px; border: 1px solid #767676;">
+                <tfoot>
+                    <tr>
+                        <td colspan="6" style="border: 1px solid #767676; padding: 2px;">
+                            <div style="position: relative;">
+                                <span><%=messages.getMessage(locale, "vba.round_id_filter")%>:</span>
+                                    <input type="text" id="RID_min" style="width: 18%; border: 1px solid black; background-color: #FFFFFF; color: #000">
+                                <span><%=messages.getMessage(locale, "vba.to")%></span>
+                                    <input type="text" id="RID_max" style="width: 18%; border: 1px solid black; background-color: #FFFFFF; color: #000">
+                                    <button id="button_ok"    class="class_button" style="width: 18%; background-color: #3A3A3A; "><%=messages.getMessage(locale, "vba.ok")%></button>
+                                    <button id="button_clear" class="class_button" style="width: 18%; background-color: #3A3A3A; "><%=messages.getMessage(locale, "vba.clear")%></button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td width="45%">
+                            <div style="position: relative;">
+                                <button id="button_prev" class="class_button" disabled style="background-color: #B0B0B0"><%=messages.getMessage(locale, "vba.prev_session")%></button>
+                                <button id="button_next" class="class_button" disabled style="background-color: #B0B0B0"><%=messages.getMessage(locale, "vba.next_session")%></button>
+                            </div>
+                        </td>
+
+                        <td width="60"><%=messages.getMessage(locale, "vba.loading")%>:</td>
+
+                        <td id="mini_progress_window">
+                            <div style="position: relative; width:100%;height:100%;vertical-align:middle;">
+                                <label align="center" id="mini_progress_persent" style="position:absolute; margin-top: 2px; margin-left: 150px"> 0% </label>
+                                <progress id="mini_progress_bar" value="0" max="100" style="width: 97%; height: 70%; margin-top: 2px; margin-left: 2px"></progress>
+                           </div>
+                        </td>
+                    </tr>
+                </tfoot>
+
+            </table>
+             </tr>
+        </table>
+        </div>
+        </td>
+
+        <%-- Picture --%>
+
+        <td id="canvas_window" class="dragable">
+            <div id="canvas_scroll" style="width: <%=canvas_width%>px; height: <%=canvas_height%>px; overflow: hidden;">
+                <canvas style="border: 1px solid #9C9898; margin: auto;" id="myCanvas" width="<%=canvas_width%>" height="<%=canvas_height%>"></canvas>
+            </div>
+        </td>
+
+    </tr>
+
+    <%-- Debug text--%>
+    <%if (isShowConsole) { %>
+    <tr>
+        <td colspan="2">
+            <textarea id="debugText" wrap="soft" style="width: <%=debug_text_width%>px; height:<%=debug_text_height%>px; resize: none;"></textarea>
+        </td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>
+
+
+
+<%if (!isObfuscate) { %>
+    <script type="text/javascript" src="../common/vabs/VabEngine/external.js?v<%=version%>"></script>
+    <script type="text/javascript" src="../common/vabs/VabEngine/Constants.js?v<%=version%>"></script>
+    <script type="text/javascript" src="../common/vabs/VabEngine/THashMap.js?v<%=version%>"></script>
+    <script type="text/javascript" src="../common/vabs/VabEngine/TSplash.js?v<%=version%>"></script>
+    <script type="text/javascript" src="../common/vabs/VabEngine/TText.js?v<%=version%>"></script>
+    <script type="text/javascript" src="../common/vabs/VabEngine/TSprite.js?v<%=version%>"></script>
+    <script type="text/javascript" src="../common/vabs/VabEngine/TRow.js?v<%=version%>"></script>
+    <script type="text/javascript" src="../common/vabs/VabEngine/TTexture.js?v<%=version%>"></script>
+<%}%>
+<script type="text/javascript" src="../common/vabs/VabEngine/TVabEngine.js?v<%=version%>"></script>

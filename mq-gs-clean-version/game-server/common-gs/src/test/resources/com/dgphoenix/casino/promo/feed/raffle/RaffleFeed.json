@@ -1,0 +1,14 @@
+{
+  "players": [
+    {
+      "bankId": "271",
+      "userId": "1",
+      "tickets": 4
+    },
+    {
+      "bankId": "271",
+      "userId": "5",
+      "tickets": 1
+    }
+  ]
+}

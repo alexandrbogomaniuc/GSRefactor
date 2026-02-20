@@ -1,0 +1,13 @@
+<PKT>
+  <Method Name="AwardWinnings">
+    <Params>
+      <Token Type="string" Value="AAD8EE30-8C43-11DC-9755-668156D89593"/>
+      <Hash Type="string" Value="7cb7ff67384d61c5fb268939a9b1bf8b78e5ed8afc8f709bceaf500488ccb1f2"/>
+      <TransactionID Type="long" Value="43211234"/>
+      <WinReferenceNum Type="long" Value="123457"/>
+      <WinAmount Type="int" Value="200"/>
+      <GameReference Type="string" Value="777"/>
+      <GameStatus Type="string" Value="Complete"/>
+    </Params>
+  </Method>
+</PKT>

@@ -1,0 +1,41 @@
+package com.dgphoenix.casino.transactiondata.storeddataprocessor;
+
+import com.datastax.driver.core.Session;
+import com.datastax.driver.core.Statement;
+import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.dgphoenix.casino.cassandra.persist.CassandraLasthandPersister;
+import com.dgphoenix.casino.cassandra.persist.IStoredDataProcessor;
+import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
+import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItem;
+import com.dgphoenix.casino.common.transactiondata.storeddate.identifier.LasthandStoredInfo;
+import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.dgphoenix.casino.common.util.string.StringUtils;
+
+import java.nio.ByteBuffer;
+import java.util.HashMap;
+import java.util.List;
+
+/**
+ * User: Grien
+ * Date: 19.12.2014 17:01
+ */
+public class LasthandChangesProcessor implements IStoredDataProcessor<LasthandInfo, LasthandStoredInfo> {
+    private final CassandraLasthandPersister lasthandPersister;
+
+    public LasthandChangesProcessor() {
+        CassandraPersistenceManager persistenceManager = ApplicationContextHelper.getApplicationContext()
+                .getBean("persistenceManager", CassandraPersistenceManager.class);
+        lasthandPersister = persistenceManager.getPersister(CassandraLasthandPersister.class);
+    }
+
+    @Override
+    public void process(StoredItem<LasthandInfo, LasthandStoredInfo> item, HashMap<Session, List<Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
+        LasthandInfo lasthandInfo = item.getItem();
+        LasthandStoredInfo k = item.getIdentifier();
+        if (lasthandInfo == null || StringUtils.isTrimmedEmpty(lasthandInfo.getLasthandData())) {
+            lasthandPersister.prepareToDeletion(statementsMap, k.getAccountId(), k.getGameId(), k.getBonusId(), k.getBonusSystemType());
+        } else {
+            lasthandPersister.prepareToPersist(statementsMap, k.getAccountId(), k.getGameId(), k.getBonusId(), lasthandInfo.getLasthandData(), k.getBonusSystemType());
+        }
+    }
+}

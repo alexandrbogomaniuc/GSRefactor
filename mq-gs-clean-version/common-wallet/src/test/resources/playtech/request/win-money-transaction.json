@@ -1,0 +1,33 @@
+{
+  "localeCode": "en_US",
+  "gameId": "777",
+  "gameCycleId": "123",
+  "currencyCode": "EUR",
+  "jackpot": {
+    "contribAmt": 0.01500,
+    "awardAmt": 10.00
+  },
+  "moneyTransArray": [
+    {
+      "transAmt": 200,
+      "transType": "credit",
+      "transCategory": "win",
+      "transSeq": 1,
+      "transId": "123457",
+      "transDateTime": "%s"
+    }
+  ],
+  "gameCycleStarted": false,
+  "gameCycleFinished": true,
+  "gameCycleFinishDateTime": "%s",
+  "_meta": {
+    "gsId": "rgs-bsg",
+    "gpId": "rgs-bsg",
+    "requestId": "%d",
+    "clientPlatform": "flash",
+    "clientType": "casino"
+  },
+  "skinId": "casino123",
+  "playerId": "pop-player",
+  "secureToken": "player-secure-token"
+}

@@ -1,0 +1,28 @@
+<ClusterConfig>
+    <clusterName>clusterName</clusterName>
+    <keySpace>ksName</keySpace>
+    <hostTimeoutWindow>30000</hostTimeoutWindow>
+    <replicationStrategyClass>org.apache.cassandra.locator.NetworkTopologyStrategy</replicationStrategyClass>
+    <readConsistencyLevel>2</readConsistencyLevel>
+    <writeConsistencyLevel>2</writeConsistencyLevel>
+    <serialConsistencyLevel>LOCAL_SERIAL</serialConsistencyLevel>
+    <createScheme>true</createScheme>
+    <hosts>hostsblablalba</hosts>
+    <minimumOnlineHosts>3</minimumOnlineHosts>
+    <localDataCenterName>dc02</localDataCenterName>
+    <dcReplicationFactors>dc01:1,dc02:3</dcReplicationFactors>
+    <columnFamilies>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.alert.AlertPersister</className>
+            <!-- 1 week -->
+            <ttl>604800</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.alert.BucketPersister</className>
+            <!-- 1 week -->
+            <ttl>604800</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+    </columnFamilies>
+</ClusterConfig>
