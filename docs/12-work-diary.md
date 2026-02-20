@@ -2461,3 +2461,17 @@
   - canary fixture preparation is now scriptable and repeatable for parity runs.
 - Next:
   - run parity harness using generated fixture once real bank bonus pass key and valid user fixture are provided.
+
+### 2026-02-20 10:10-10:12 UTC
+- Started Phase 9 GS-only rename preparation (no code rename yet):
+  - inventory tool: `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-legacy-name-inventory.sh`
+  - generated evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/phase9/legacy-name-inventory-gs-20260220-101048.md`
+- Key baseline counts captured (GS scope):
+  - `com.dgphoenix` 11289, `dgphoenix` 11493, `mq` 1952.
+- Added staged rename governance plan:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/30-phase9-abs-rename-wave-plan-gs-v1.md`
+  - wave-based approach (W0-W4) with rollback gates and parity constraints.
+- Result:
+  - legacy naming replacement now has measurable GS baseline and controlled wave plan.
+- Next:
+  - execute W0 safely (docs/comments/aliases only) and keep runtime contracts unchanged.
