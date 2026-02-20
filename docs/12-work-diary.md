@@ -3228,3 +3228,19 @@
   - gameplay canary shadow path now covers both launch and wallet financial operations.
 - Next step:
   - commit and push this extraction increment, then extend canary probe to assert financial intent counters.
+
+### 2026-02-20 18:44-18:51 UTC
+- Upgraded Phase 5 gameplay canary probe to validate financial shadow intent coverage (wager + settle) in addition to launch + state blob.
+- Updated script:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-gameplay-canary-probe.sh`
+- Added evidence doc and checklist pointer:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/64-phase5-gameplay-canary-financial-intent-coverage-20260220-185000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+- Verification:
+  - `bash -n` passed,
+  - `--help` passed,
+  - runtime execution currently blocked by unreachable gameplay endpoint `127.0.0.1:18074`.
+- Result:
+  - canary tooling now matches gameplay extraction scope (launch + financial + state blob).
+- Next step:
+  - commit/push this increment and then refresh phase5 evidence-pack report after runtime availability.

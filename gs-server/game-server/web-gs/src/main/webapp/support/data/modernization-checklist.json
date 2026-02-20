@@ -124,7 +124,7 @@
           "id": "se-gameplay-orchestrator",
           "label": "3) Gameplay Orchestrator extraction",
           "status": "in_progress",
-          "evidence": "docs/63-phase5-gameplay-financial-shadow-hook-20260220-184300.md"
+          "evidence": "docs/64-phase5-gameplay-canary-financial-intent-coverage-20260220-185000.md"
         },
         {
           "id": "se-wallet-adapter",
