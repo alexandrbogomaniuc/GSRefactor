@@ -3194,3 +3194,19 @@
   - operators now see last known runtime readiness state and latest evidence path directly in runbook UI.
 - Next step:
   - commit and push Support docs-index/runbook UX increments as next checkpoint.
+
+### 2026-02-20 18:31-18:38 UTC
+- Added support-portal cross-navigation quick links for operator flow:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/clusterHosts.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/configPortal.jsp`
+- Added evidence doc and checklist milestone:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/62-support-portal-cross-navigation-20260220-183700.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+- Synced runtime support files for immediate access.
+- Verification:
+  - checklist JSON parse passed,
+  - `rg` confirms quick-link wiring and checklist item.
+- Result:
+  - support UI navigation is now faster between progress/docs/runbook/config pages.
+- Next step:
+  - commit and push this UX checkpoint, then proceed with next service extraction increment.

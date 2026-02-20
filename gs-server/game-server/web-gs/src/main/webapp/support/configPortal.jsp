@@ -436,6 +436,13 @@
         Unified operator view for all configuration levels used by GS.<br/>
         <span class="small-note">Level 1: cluster hosts; Level 2: bank settings catalog; Level 3: effective bank values.</span>
     </p>
+    <p class="small-note">
+        Quick links:
+        <a href="/support/modernizationProgress.html">Progress</a> |
+        <a href="/support/modernizationDocs.jsp">Docs Index</a> |
+        <a href="/support/modernizationRunbook.jsp">Runbook</a> |
+        <a href="/support/clusterHosts.jsp">Cluster Hosts</a>
+    </p>
 
     <form class="form-inline" method="get" action="/support/configPortal.jsp" style="margin-bottom: 10px;">
         <div class="form-group" style="margin-right: 10px;">

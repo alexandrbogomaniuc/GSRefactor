@@ -14,6 +14,13 @@
 <div class="container col-xs-10 col-xs-offset-1">
     <h2>Cluster Hosts Config</h2>
     <p>Source: <code>cluster-hosts.properties</code> (classpath)</p>
+    <p>
+        Quick links:
+        <a href="/support/modernizationProgress.html">Progress</a> |
+        <a href="/support/modernizationDocs.jsp">Docs Index</a> |
+        <a href="/support/modernizationRunbook.jsp">Runbook</a> |
+        <a href="/support/configPortal.jsp">Config Portal</a>
+    </p>
     <%
         Properties props = new Properties();
         Properties descriptions = new Properties();

@@ -265,6 +265,12 @@
           "evidence": "docs/61-support-runbook-status-snapshot-20260220-183000.md"
         },
         {
+          "id": "ux-cross-navigation",
+          "label": "Support pages include cross-navigation quick links",
+          "status": "done",
+          "evidence": "docs/62-support-portal-cross-navigation-20260220-183700.md"
+        },
+        {
           "id": "ux-persistent-approvals",
           "label": "Cross-session persistent approvals and audit trail",
           "status": "planned",
