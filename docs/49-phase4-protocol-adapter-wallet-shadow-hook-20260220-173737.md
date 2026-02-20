@@ -18,6 +18,7 @@ Extend GS protocol-adapter shadowing to wager/settle ingress in New Games intern
 - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh`
 - Executes reserve+settle flow and validates protocol-adapter event growth.
 - Supports auto `sessionId` detection from `cwstartgamev2` when `--session-id` is omitted.
+- Supports host HTTP mode (`--transport host`) to avoid Docker socket dependency in restricted environments.
 
 ## Compatibility and rollback
 - Shadow-only, fail-open behavior.

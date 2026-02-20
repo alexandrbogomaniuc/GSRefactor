@@ -12,6 +12,9 @@ GAME_ID="838"
 MODE="real"
 LANG="en"
 TOKEN="test_user_6275"
+TRANSPORT="host"
+GS_BASE_URL="http://127.0.0.1:18081"
+PROTOCOL_BASE_URL="http://127.0.0.1:18078"
 GS_CONTAINER="refactor-gs-1"
 PROTOCOL_CONTAINER="refactor-protocol-adapter-1"
 
@@ -31,6 +34,9 @@ Options:
   --reserve-counter N       Default: ${RESERVE_COUNTER}
   --settle-counter N        Default: ${SETTLE_COUNTER}
   --game-id ID              Default: ${GAME_ID}
+  --transport MODE          host|docker (default: ${TRANSPORT})
+  --gs-base-url URL         Default: ${GS_BASE_URL}
+  --protocol-base-url URL   Default: ${PROTOCOL_BASE_URL}
   --gs-container NAME       Default: ${GS_CONTAINER}
   --protocol-container NAME Default: ${PROTOCOL_CONTAINER}
   -h, --help                Show this help
@@ -61,6 +67,12 @@ while [[ $# -gt 0 ]]; do
       SETTLE_COUNTER="$2"; shift 2 ;;
     --game-id)
       GAME_ID="$2"; shift 2 ;;
+    --transport)
+      TRANSPORT="$2"; shift 2 ;;
+    --gs-base-url)
+      GS_BASE_URL="$2"; shift 2 ;;
+    --protocol-base-url)
+      PROTOCOL_BASE_URL="$2"; shift 2 ;;
     --gs-container)
       GS_CONTAINER="$2"; shift 2 ;;
     --protocol-container)
@@ -89,9 +101,14 @@ require_cmd docker
 require_cmd grep
 require_cmd wc
 require_cmd tr
+require_cmd curl
 
 extract_sid_from_file() {
   local file="$1"
+  if [[ ! -f "${file}" ]]; then
+    echo ""
+    return 0
+  fi
   local sid
   sid="$(grep -Eo 'SID=[^&"[:space:]]+' "${file}" | head -n1 | cut -d'=' -f2 || true)"
   if [[ -n "${sid}" ]]; then
@@ -104,10 +121,30 @@ extract_sid_from_file() {
 resolve_session_id() {
   local out_headers="$1"
   local out_body="$2"
-  local launch_url="http://127.0.0.1:8080/cwstartgamev2.do?bankId=${BANK_ID}&gameId=${GAME_ID}&mode=${MODE}&token=${TOKEN}&lang=${LANG}"
-  docker exec "${GS_CONTAINER}" sh -lc "curl -sS -D /tmp/phase4-protocol-wallet-launch.headers -o /tmp/phase4-protocol-wallet-launch.body '${launch_url}' >/dev/null"
-  docker exec "${GS_CONTAINER}" sh -lc "cat /tmp/phase4-protocol-wallet-launch.headers" > "${out_headers}"
-  docker exec "${GS_CONTAINER}" sh -lc "cat /tmp/phase4-protocol-wallet-launch.body" > "${out_body}"
+  local launch_url
+  if [[ "${TRANSPORT}" == "docker" ]]; then
+    launch_url="http://127.0.0.1:8080/cwstartgamev2.do?bankId=${BANK_ID}&gameId=${GAME_ID}&mode=${MODE}&token=${TOKEN}&lang=${LANG}"
+    if ! docker exec "${GS_CONTAINER}" sh -lc "curl -sS -D /tmp/phase4-protocol-wallet-launch.headers -o /tmp/phase4-protocol-wallet-launch.body '${launch_url}' >/dev/null"; then
+      : > "${out_headers}"
+      : > "${out_body}"
+      echo ""
+      return 0
+    fi
+    if ! docker exec "${GS_CONTAINER}" sh -lc "cat /tmp/phase4-protocol-wallet-launch.headers" > "${out_headers}"; then
+      : > "${out_headers}"
+    fi
+    if ! docker exec "${GS_CONTAINER}" sh -lc "cat /tmp/phase4-protocol-wallet-launch.body" > "${out_body}"; then
+      : > "${out_body}"
+    fi
+  else
+    launch_url="${GS_BASE_URL}/cwstartgamev2.do?bankId=${BANK_ID}&gameId=${GAME_ID}&mode=${MODE}&token=${TOKEN}&lang=${LANG}"
+    if ! curl -sS -D "${out_headers}" -o "${out_body}" "${launch_url}" >/dev/null; then
+      : > "${out_headers}"
+      : > "${out_body}"
+      echo ""
+      return 0
+    fi
+  fi
 
   local sid
   sid="$(extract_sid_from_file "${out_headers}")"
@@ -120,7 +157,11 @@ resolve_session_id() {
 protocol_api_to_file() {
   local path="$1"
   local out_file="$2"
-  docker exec "${PROTOCOL_CONTAINER}" sh -lc "wget -qO- 'http://127.0.0.1:18078${path}'" > "${out_file}"
+  if [[ "${TRANSPORT}" == "docker" ]]; then
+    docker exec "${PROTOCOL_CONTAINER}" sh -lc "wget -qO- 'http://127.0.0.1:18078${path}'" > "${out_file}"
+  else
+    curl -sS "${PROTOCOL_BASE_URL}${path}" > "${out_file}"
+  fi
 }
 
 count_protocol_events_from_file() {
@@ -133,8 +174,16 @@ post_gs_internal() {
   local body="$2"
   local out_file="$3"
   local code_file="$4"
-  docker exec "${GS_CONTAINER}" sh -lc "curl -sS -X POST 'http://127.0.0.1:8080/gs-internal/newgames/v1${path}' -H 'Content-Type: application/json' -d '${body}' -o '${out_file}' -w '%{http_code}'" > "${code_file}"
-  docker exec "${GS_CONTAINER}" sh -lc "cat '${out_file}'" > "${out_file}.host"
+  if [[ "${TRANSPORT}" == "docker" ]]; then
+    docker exec "${GS_CONTAINER}" sh -lc "curl -sS -X POST 'http://127.0.0.1:8080/gs-internal/newgames/v1${path}' -H 'Content-Type: application/json' -d '${body}' -o '${out_file}' -w '%{http_code}'" > "${code_file}"
+    docker exec "${GS_CONTAINER}" sh -lc "cat '${out_file}'" > "${out_file}.host"
+  else
+    curl -sS -X POST "${GS_BASE_URL}/gs-internal/newgames/v1${path}" \
+      -H 'Content-Type: application/json' \
+      -d "${body}" \
+      -o "${out_file}.host" \
+      -w '%{http_code}' > "${code_file}"
+  fi
 }
 
 extract_wallet_operation_id() {

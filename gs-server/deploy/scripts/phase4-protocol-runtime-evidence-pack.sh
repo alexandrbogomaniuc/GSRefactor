@@ -3,6 +3,8 @@ set -euo pipefail
 
 BANK_ID="6275"
 BASE_URL="http://127.0.0.1:18078"
+GS_BASE_URL="http://127.0.0.1:18081"
+TRANSPORT="host"
 SESSION_ID=""
 OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase4/protocol"
 
@@ -13,6 +15,8 @@ Usage: $(basename "$0") [options]
 Options:
   --bank-id ID       Default: ${BANK_ID}
   --base-url URL     Default: ${BASE_URL}
+  --gs-base-url URL  Default: ${GS_BASE_URL}
+  --transport MODE   host|docker (default: ${TRANSPORT})
   --session-id SID   Optional (used by wallet probe)
   --out-dir DIR      Default: ${OUT_DIR}
   -h, --help         Show this help
@@ -25,6 +29,10 @@ while [[ $# -gt 0 ]]; do
       BANK_ID="$2"; shift 2 ;;
     --base-url)
       BASE_URL="$2"; shift 2 ;;
+    --gs-base-url)
+      GS_BASE_URL="$2"; shift 2 ;;
+    --transport)
+      TRANSPORT="$2"; shift 2 ;;
     --session-id)
       SESSION_ID="$2"; shift 2 ;;
     --out-dir)
@@ -65,17 +73,22 @@ parity_status="$(run_and_capture parity "${parity_out}" \
 if [[ -n "${SESSION_ID}" ]]; then
   wallet_status="$(run_and_capture wallet "${wallet_out}" \
     /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
-    --bank-id "${BANK_ID}" --session-id "${SESSION_ID}")"
+    --bank-id "${BANK_ID}" --session-id "${SESSION_ID}" --transport "${TRANSPORT}" \
+    --gs-base-url "${GS_BASE_URL}" --protocol-base-url "${BASE_URL}")"
 else
   wallet_status="$(run_and_capture wallet "${wallet_out}" \
     /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
-    --bank-id "${BANK_ID}")"
+    --bank-id "${BANK_ID}" --transport "${TRANSPORT}" \
+    --gs-base-url "${GS_BASE_URL}" --protocol-base-url "${BASE_URL}")"
 fi
 
 {
   echo "# Phase 4 Protocol Runtime Evidence (${ts} UTC)"
   echo
   echo "- bankId: ${BANK_ID}"
+  echo "- transport: ${TRANSPORT}"
+  echo "- protocolBaseUrl: ${BASE_URL}"
+  echo "- gsBaseUrl: ${GS_BASE_URL}"
   echo "- parity_check: ${parity_status}"
   echo "- wallet_shadow_probe: ${wallet_status}"
   echo
