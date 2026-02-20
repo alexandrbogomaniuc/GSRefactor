@@ -2245,3 +2245,26 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/spring-endpoint-annotations.txt`
 - Result: Phase 0 started with endpoint/protocol inventory, parity matrix v1, and golden flow definitions.
 - Next: implement replay harness skeleton for launch/wager/settle parity dry-runs.
+
+### 2026-02-20 09:32-09:40 UTC
+- Applied user-requested top-level rename in isolated workspace:
+  - `/Users/alexb/Documents/Dev/Dev_new/client` -> `/Users/alexb/Documents/Dev/Dev_new/legacy-games-client`.
+- Synced dependent path references:
+  - `/Users/alexb/Documents/Dev/Dev_new/.gitignore`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/00-overview.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/24-isolation-and-repo-synchronization-policy.md`
+- Implemented Phase 0 replay harness skeleton (GS-scope):
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase0-parity-harness.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-fixture.env.example`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/README.md`
+- Executed dry-run evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-parity-20260220-093037.md`
+  - includes generated commands for `P0-LA-01`, `P0-WA-01`, `P0-SE-01`.
+- Updated Phase 0 baseline doc with harness evidence section:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/23-phase-0-baseline-and-parity-capture.md`.
+- Git sync:
+  - pushed rename commit `a5c0ccb1` to `GSRefactor/main`.
+- Result:
+  - rename completed, repository remains isolated, and Phase 0 parity execution tooling is now runnable.
+- Next:
+  - populate wallet fixture values and run `--mode run` on refactor stack (`http://localhost:18080`) to capture first HTTP parity result set.

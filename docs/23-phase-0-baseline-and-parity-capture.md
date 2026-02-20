@@ -110,3 +110,29 @@ Required invariants:
 1. Implement replay harness skeleton for `P0-LA-01`, `P0-WA-01`, `P0-SE-01` in dry-run mode.
 2. Attach sample fixtures for one canary bank/game pair.
 3. Wire matrix execution results (`pass/fail`, evidence link) into this document.
+
+## 6) Replay Harness Skeleton (Implemented)
+- Script: `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase0-parity-harness.sh`
+- Fixture template: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-fixture.env.example`
+- Dry-run evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-parity-20260220-093037.md`
+
+### Initial execution status
+| Test ID | Status | Notes |
+|---|---|---|
+| P0-LA-01 | DRY_RUN | launch command generated with canary bank/game fixture (`6274/838`) |
+| P0-WA-01 | DRY_RUN | endpoint command generated; requires wallet fixture values for run mode |
+| P0-SE-01 | DRY_RUN | endpoint command generated; requires wallet fixture values for run mode |
+
+### First run-mode probe (refactor stack not started)
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-parity-20260220-093311.md`
+- Observed:
+  - `P0-LA-01`: `FAIL_EXEC` (cannot connect to `localhost:18080`),
+  - `P0-WA-01`: `SKIPPED_MISSING_FIXTURE`,
+  - `P0-SE-01`: `SKIPPED_MISSING_FIXTURE`.
+
+### Run-mode after isolated refactor stack startup
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-parity-20260220-094035.md`
+- Observed:
+  - `P0-LA-01`: `PASS_HTTP (200)` with body artifact `P0-LA-01-20260220-094035.body.txt`,
+  - `P0-WA-01`: `SKIPPED_MISSING_FIXTURE`,
+  - `P0-SE-01`: `SKIPPED_MISSING_FIXTURE`.
