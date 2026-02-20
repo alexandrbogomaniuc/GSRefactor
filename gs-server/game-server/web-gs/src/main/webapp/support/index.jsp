@@ -138,6 +138,54 @@
         </li>
 
         <li class="list-group-item nav">
+            <h3>Modernization Docs Index</h3>
+            <div class="container col-xs-12">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Deployed:</td>
+                        <td>copy, live</td>
+                    </tr>
+                    <tr>
+                        <td>URL:</td>
+                        <td><%=scheme%>://[host]/support/modernizationDocs.jsp</td>
+                    </tr>
+                </table>
+                <div class="panel panel-info">
+                    <div class="panel-heading descr-toggle" onclick="toggleDescription(this)">Modernization Docs Index Description</div>
+                    <div class="panel-body descr">
+                        Quick index for roadmap docs, phase deliverables, and runtime evidence locations.
+                        Example link:
+                        <a href="/support/modernizationDocs.jsp"><%=scheme%>://<%=serverName%>/support/modernizationDocs.jsp</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="list-group-item nav">
+            <h3>Modernization Runbook</h3>
+            <div class="container col-xs-12">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Deployed:</td>
+                        <td>copy, live</td>
+                    </tr>
+                    <tr>
+                        <td>URL:</td>
+                        <td><%=scheme%>://[host]/support/modernizationRunbook.jsp</td>
+                    </tr>
+                </table>
+                <div class="panel panel-info">
+                    <div class="panel-heading descr-toggle" onclick="toggleDescription(this)">Modernization Runbook Description</div>
+                    <div class="panel-body descr">
+                        Operational command sequence for Phase 4/5 readiness checks and evidence-pack generation.
+                        Example link:
+                        <a href="/support/modernizationRunbook.jsp"><%=scheme%>://<%=serverName%>/support/modernizationRunbook.jsp</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="list-group-item nav">
             <h3>Cache Viewer</h3>
             <div class="container col-xs-12">
                 <table class="table table-bordered">

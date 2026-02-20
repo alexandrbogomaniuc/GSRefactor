@@ -3141,3 +3141,56 @@
   - gameplay phase now has one-command evidence collection with readiness gating.
 - Next step:
   - run the same evidence pack after refactor stack startup to collect PASS canary evidence for bank `6275`.
+
+### 2026-02-20 18:20-18:23 UTC
+- Added Support UI page for phase-by-phase modernization documentation navigation:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+- Wired new page into support home tools list:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/index.jsp`
+- Added operator UX checklist milestone evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/59-support-modernization-docs-index-20260220-182000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+- Synced runtime support files:
+  - `/Users/alexb/Documents/Dev/Dev_new/Doker/runtime-gs/webapps/gs/ROOT/support/index.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/Doker/runtime-gs/webapps/gs/ROOT/support/modernizationDocs.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/Doker/runtime-gs/webapps/gs/ROOT/support/data/modernization-checklist.json`
+- Verification:
+  - checklist JSON parse passed,
+  - `rg` confirms docs-index route and checklist evidence references.
+- Result:
+  - operators can now navigate roadmap/phase/evidence docs directly from support UI.
+- Next step:
+  - add Phase 5 runbook page in support UI with exact command sequence for readiness/canary/evidence-pack execution.
+
+### 2026-02-20 18:23-18:27 UTC
+- Added support runbook UI page with executable Phase 4/5 command sequences:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+- Wired runbook navigation:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/index.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+- Added checklist milestone and evidence doc:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/60-support-modernization-runbook-page-20260220-182600.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+- Synced runtime support copies for immediate usage.
+- Verification:
+  - checklist JSON parse passed,
+  - `rg` confirms runbook links and checklist item.
+- Result:
+  - support UI now includes an operational runbook for phase command execution and evidence generation.
+- Next step:
+  - add quick status panel in runbook page showing current known runtime blocker state and latest evidence file paths.
+
+### 2026-02-20 18:27-18:31 UTC
+- Enhanced runbook page with runtime status snapshot panel for quick blocker/evidence visibility.
+- Updated artifacts:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/61-support-runbook-status-snapshot-20260220-183000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+- Synced runtime support checklist + runbook files.
+- Verification:
+  - checklist JSON parse passed,
+  - `rg` confirms snapshot section and checklist evidence update.
+- Result:
+  - operators now see last known runtime readiness state and latest evidence path directly in runbook UI.
+- Next step:
+  - commit and push Support docs-index/runbook UX increments as next checkpoint.

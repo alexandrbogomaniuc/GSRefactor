@@ -253,6 +253,18 @@
           "evidence": "docs/57-config-portal-category-guide-20260220-181200.md"
         },
         {
+          "id": "ux-docs-index",
+          "label": "Support docs index page for phase artifacts and evidence",
+          "status": "done",
+          "evidence": "docs/59-support-modernization-docs-index-20260220-182000.md"
+        },
+        {
+          "id": "ux-runbook-page",
+          "label": "Support runbook page with executable phase commands",
+          "status": "done",
+          "evidence": "docs/61-support-runbook-status-snapshot-20260220-183000.md"
+        },
+        {
           "id": "ux-persistent-approvals",
           "label": "Cross-session persistent approvals and audit trail",
           "status": "planned",
