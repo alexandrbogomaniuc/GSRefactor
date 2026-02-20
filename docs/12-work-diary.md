@@ -3127,3 +3127,17 @@
   - portal now explains config categories and navigation path to key descriptions more clearly.
 - Next step:
   - add phase-level docs index page in portal for quick access to modernization evidence by phase.
+
+### 2026-02-20 18:12-18:14 UTC
+- Added Phase 5 runtime evidence-pack orchestrator:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-gameplay-runtime-evidence-pack.sh`
+- Evidence/report artifacts:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/58-phase5-gameplay-runtime-evidence-pack-tooling-20260220-180700.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase5/gameplay/phase5-gameplay-runtime-evidence-20260220-180650.md`
+- Verification:
+  - `bash -n` and `--help` passed for evidence-pack script.
+  - execution generated report and exited with blocker status because runtime endpoints are not reachable in current environment.
+- Result:
+  - gameplay phase now has one-command evidence collection with readiness gating.
+- Next step:
+  - run the same evidence pack after refactor stack startup to collect PASS canary evidence for bank `6275`.
