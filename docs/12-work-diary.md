@@ -2431,3 +2431,20 @@
   - probe process is stable and no longer sensitive to transient startup `502` windows.
 - Next:
   - build/deploy refactor GS image with correlation filter and rerun probe for pass evidence.
+
+### 2026-02-20 10:08-10:09 UTC
+- Added deterministic hash helper for Phase 0 bonus parity fixtures:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase0-bonus-hash-helper.sh`
+- Implemented modes aligned to GS action logic:
+  - `check` (`extBonusId + externalBankId + bonusPassKey`),
+  - `cancel` (`bonusId + bonusPassKey`),
+  - `award` (full ordered field chain from `AwardAction`).
+- Updated runbook:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/README.md` with usage example.
+- Validation evidence:
+  - command: `gs-server/deploy/scripts/phase0-bonus-hash-helper.sh --mode check --ext-bonus-id 1 --external-bank-id 6274 --bonus-pass-key testkey`
+  - output: `HASH=5d474b00d88e1b8de0a14c9174d9e599`.
+- Result:
+  - fixture generation for bonus hash is now deterministic and reproducible.
+- Next:
+  - wire helper output into `parity-fixture.env` preparation for `P0-WA-01/P0-SE-01`.

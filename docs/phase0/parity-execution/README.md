@@ -25,3 +25,14 @@ gs-server/deploy/scripts/phase0-parity-harness.sh \
 ## Notes
 - Harness now validates response body contracts (`PASS_CONTRACT` / `FAIL_CONTRACT`), not HTTP status alone.
 - Deterministic negative probes (`P0-LA-02`, `P0-WA-00`, `P0-SE-00`) run without wallet-positive fixture data and provide a stable baseline.
+
+## Hash helper (bonus endpoints)
+Use GS-aligned hash composition rules to generate fixture hash values:
+```bash
+cd /Users/alexb/Documents/Dev/Dev_new
+gs-server/deploy/scripts/phase0-bonus-hash-helper.sh \
+  --mode check \
+  --ext-bonus-id 1 \
+  --external-bank-id 6274 \
+  --bonus-pass-key <BANK_BONUS_PASS_KEY>
+```
