@@ -1,0 +1,353 @@
+= MaxQuest
+Betsoft Gaming
+v4.1
+:source-highlighter: coderay
+
+== 1. Lobby Protocol
+This document describes expanded communication protocol between client and the server in the CAF Battleground feature +
+Interaction is carried out via websockets in JSON format. +
+The lobbyUrl and session id of the logged-in user are passed to the client through the http request parameters:
+lobbyUrl (wss://host:port/websocket/mplobby), sessionId. +
+Please note, that we recommend to use only secure websocket connections (wss://). +
+Rooms can be created and deleted by the server as needed, depending on the current number of players. +
+Type of all identifiers (id, rid, roomid, ..) is long.
+As some features are game-specific, related fields in other games where not applicable should be ignored.
+
+
+=== 1.1 Enter Lobby
+This request is a first request which should be send by the client after establishing websocket connection to lobby.
+After that request, the client will be subscribed to receive asynchronous events: BalanceUpdated
+[source,json]
+{
+  "sid": "4_eb0bf169cbb477b6f8430000015cbe83_fwRFDR4FWFZTV142PiQUCQ4H",
+  "date": 1496750162302,
+  "class": "EnterLobby",
+  "rid": 1,
+  "serverId": 1,
+  "lang": "en",
+  "mode": "real",
+  "noFRB": false,
+  "gameId": 779,
+  "tournamentId": 123444,
+  "bonusId": 56767,
+  "battlegroundBuyIn": 100
+  "privateRoom": true
+}
+
+[horizontal]
+.Request parameters:
+sid:: session identifier (send as request parameter on start lobby client)
+rid:: unique request id
+serverId:: serverId for connect (send as request parameter on start lobby client)
+mode:: money type: free, real, bonus
+gameId:: game identifier (send as request parameter on start lobby client)
+noFRB:: true if server should ignore active FRBs
+tournamentId:: tournament identifier, optional. (send as request parameter on start lobby client for tournament play)
+bonusId:: cash bonus identifier, optional, not null only for cash bonus mode (send as request parameter on start lobby client)
+battlegroundBuyIn:: selected buyIn amount for battleground mode
+privateRoom:: Flag defining the type of room(public/private)
+
+If session not found, invalid or expired server return
+[source,json]
+{
+"code": 3,
+"msg": "Invalid session",
+"date": 1496750162288,
+"class": "Error",
+"rid": 1
+}
+
+If selected nickname contains an obscene word, server return:
+[source,json]
+{
+  "code": 1000,
+  "msg": "Illegal nickname",
+  "date": 1496750162288,
+  "class": "Error",
+  "rid": 1
+}
+
+If session exist and enter to lobby is success, server return:
+[source,json]
+{
+  "players": 600,
+  "nickname": "Taras70",
+  "nicknameEditable": true,
+  "balance": 20000,
+  "currency": { "code": "USD", "symbol": "$" },
+  "rankPonts": 200,
+  "roomId": 20,
+  "level": 5,
+  "avatar": {"borderStyle": 1, "hero": 1, "background": 2},
+  "borders": [0, 1, 2, 3],
+  "heroes": [0, 1, 2, 3],
+  "backgrounds": [0, 1, 2, 3],
+  "stakes": [2.0, 5.0, 10.0, 25.0, 50.0, 100.0],
+  "paytable": {
+    "enemyPayouts": [
+      {
+	    "idEnemy": 0,
+        "nameEnemy": "Scarab black",
+        "prize": { "minPayout": 10, "maxPayout": 20 }
+      },
+      {
+        "idEnemy": 4,
+        "nameEnemy": "Medium Mummy A",
+        "prize": { "minPayout": 30, "maxPayout": 40 }
+      }
+    ],
+    "energyBoss": 48,
+    "lootboxPrizes": [
+      {
+        "number": 0,
+        "prizes": [
+          {
+            "weaponId": 0,
+            "min": 30,
+            "max": 40
+          },
+          {
+            "weaponId": 1,
+            "min": 6,
+            "max": 8
+          }
+        ]
+      }
+    ],
+    "weaponPaidMultiplier": [
+    ],
+    "gemPayouts":{
+      "0": [25, 30, 40],
+	  "1": [20, 25, 30],
+	  "2": [15, 18, 20],
+	  "3": [10, 12, 15]
+    },
+    "healthByLevels":{
+	  "0": [1200, 1350, 1500],
+	  "1": [180, 200, 220],
+	  "2": [450, 475, 500],
+	  "3": [280, 300, 320],
+	  "10": [400, 450, 500],
+	  "11": [1000, 2500, 5000]
+    },
+    "enemyPayoutsByWeapon":{
+      "0": {
+        "0": {"minPayout": 30, "maxPayout": 150},
+        "1": {"minPayout": 15, "maxPayout": 100}
+      },
+	  "1": {
+        "0": {"minPayout": 20, "maxPayout": 170},
+        "1": {"minPayout": 5, "maxPayout": 200}}
+      }
+    },
+    "possibleBetLevels": [1, 2, 3, 5, 10],
+    "moneyWheelPayouts": [25, 50, 100, 250, 500, 1000, 2000],
+    "reels": {
+      "1": [1, 4, 3, 5, 2, 4, 5],
+      "2": [1, 5, 4, 2, 3, 4, 5],
+      "3": [1, 4, 2, 5, 3, 4, 5]
+    }
+  },
+  "frBonusInfo": {
+    "id": 23142,
+    "awardDate": 1533284885209,
+    "expirationDate": 1533294885209,
+    "totalShots": 500,
+    "currentShots": 350,
+    "winSum": 20000,
+    "stake": 1
+  },
+  "cashBonusInfo": {
+    "id": 23142,
+    "awardDate": 1533284885209,
+    "expirationDate": 1533294885209,
+    "balance": 1000,
+    "amount": 10000,
+    "amountToRelease": 200,
+    "status": "ACTIVE"
+  },
+  "tournamentInfo": {
+    "id": 23142,
+    "name": "New Year's tournament",
+    "state": "ACTIVE",
+    "startDate": 1533284885209,
+    "endDate": 1533284885209,
+    "balance": 10000,
+    "buyInPrice": 1000,
+    "buyInAmount": 10000,
+    "reBuyAllowed": true,
+    "reBuyPrice": 500,
+    "reBuyAmount": 10000,
+    "reBuyCount": 1,
+    "reBuyLimit": -1,
+    "resetBalanceAfterRebuy": false
+  },
+  "battlegroundInfo": {
+     "buyIns": [100, 200, 500, 1000, 2000, 5000],
+     "alreadySeatRoomId": 200133,
+     "startGameUrl": "https://host/websocket/mpgame?SID=3453&serverId=1&lang=en&roomId=200133",
+     "roomState": "WAIT",
+     "buyInConfirmed": true
+   }
+  "showRefreshBalanceButton": true,
+  "kills": 100,
+  "treasures": 20,
+  "rounds": 15,
+  "xp": 123,
+  "xpPrev": 100,
+  "xpNext": 200,
+  "place": 10,
+  "disableTooltips": false,
+  "needStartBonus": false,
+  "nicknameGlyphs": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+  "stakesReserve": 300,
+  "stakesLimit": 100,
+  "alreadySitInStake": 2.0,
+  "disableLeaderboard": false,
+  "weaponMode": "LOOT_BOX",
+  "date": 1496908464148,
+  "date": 1587381071243,
+  "rid": 1,
+  "class": "EnterLobbyResponse"
+}
+
+
+=== 1.2 GetPrivateBattlegroundStartGameUrl
+
+Request:
+[source, json]
+{
+  "privateRoomId": qwevcxfds3412,
+  "date": 1497154790288,
+  "rid": 5,
+  "class": "GetPrivateBattlegroundStartGameUrl
+}
+
+.Request parameters:
+privateRoomId:: unique identifier of private room in which player trying join
+rid:: unique request id
+
+Response:
+[source, json]
+{
+  "roomId": 5,
+  "startGameUrl": "https://host/mpgameloader.jsp?sid=deb0bf169cbb477b6f8430000015cbe83&serverId=1&roomId=5&stake=5",
+  "date": 1497155412200,
+  "rid": 1,
+  "class": "GetPrivateBattlegroundStartGameUrl"
+}
+
+== 2. Game protocol
+After the game client is loaded, it should open websocket connection to url passed in request parameter gameServletUrl=wss://host:port/websocket/mpgame and then send “OpenRoom” request.
+
+=== 2.1 StartBattlegroundPrivateRoom
+Request allows start bg round by roomManager
+
+Request:
+[source, json]
+{
+  "date": 1497154790288,
+  "rid": 5,
+  "class": "StartBattlegroundPrivateRoom
+}
+
+.Request parameters:
+
+rid:: unique request id
+
+Response:
+[source, json]
+{
+  "roomId": 5,
+  "date": 1497155412200,
+  "rid": 1,
+  "class": "StartBattlegroundPrivateRoom"
+}
+
+=== 2.2 RoomManagerChanged
+Message sent after room manager changed
+[source, json]
+{
+      "roomManager": 1,
+      "class":"RoomManagerChanged",
+      "rid":9,
+      "date":1617613404721
+}
+
+roomManager:: roomManager seatIds
+
+=== 2.3 GetRoomInfo
+When the user selects a particular game room, the client requests the server for detailed information about the selected room by a request like:
+[source,json]
+{
+  "roomId": 1,
+  "rid": 5,
+  "date": 1496921495447,
+  "class": "GetRoomInfo"
+}
+
+[horizontal]
+.Request parameters:
+roomId:: unique room id
+rid:: unique request id
+
+
+Response: almost same as GetRoomInfoResponse in paragraph 1.6 MaxQuest_ProtocolV2_adoc but with extra fields in battlegroundInfo:
+[source,json]
+{
+...
+"battlegroundInfo" {
+"buyIn" : 1000,
+"buyInConfirmed": true,
+"timeToStart" : 30,
+"kingsOfHill": [1,2,3],
+"score": 4620,
+"rank" : 3,
+"pot": 3960,
+"potTaxPercent": 5,
+"joinUrl": "https://domen.com/startBattlegroundGame?privateRoomId=qwevcxfds3412",
+"roomManagerSeatId": 3
+}
+...
+}
+
+=== 2.4 BuyInConfirmedSeats
+
+Message sent to all observers after player made rebuy
+[source, json]
+{
+      "confirmedSeatsId": [0,1,2],
+      "class":"BuyInConfirmedSeats",
+      "rid":9,
+      "date":1617613404721
+}
+
+confirmedSeatsId:: list of seatIds with confirmed buyIn
+
+=== 2.5 kick
+
+When host kicks a player from the game the client sends to the server
+[source, json]
+{
+      "nickname": "nick23",
+      "class":"Kick",
+      "rid":9,
+      "date":1617613404721
+}
+
+Response for a non-seater player
+
+[source, json]
+{
+      "class":"KickResponse",
+      "rid":9,
+      "date":1617613404721
+}
+
+Response for a seater player - KickResponse and after that SitOutResponse with rid == -1
+
+
+battlegroundInfo for privat room add observers
+{nicname: "",
+isKicked: false
+}

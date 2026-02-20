@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Simple TestStand</title>
+</head>
+<body>
+<script>
+    let params = (new URL(document.location)).searchParams;
+    let sid = params.get("sid");
+    let api = params.get("api");
+
+    function sendFeature() {
+        let selectFeature = document.getElementById("selectFeature");
+        let selectedIndex = selectFeature.selectedIndex;
+        let link;
+
+        if (selectedIndex === 0) {
+            link = '/support/testStandFeatures?action=remove&sid=' + sid;
+        } else {
+            link = '/support/testStandFeatures?action=add&sid=' + sid
+                + '&featureId=' + selectFeature.options[selectedIndex].id;
+        }
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', link);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                window.location.reload();
+            } else if (xhr.status !== 200) {
+                alert('Request failed.  Returned status of ' + xhr.status);
+            }
+        };
+        xhr.send();
+    }
+
+    function spawnEnemy() {
+        let roomId = document.getElementById('roomId').value;
+        let typeId = document.getElementById('typeId').value;
+        let skinId = document.getElementById('skinId').value;
+        let trajectory = document.getElementById('trajectory').value;
+        let fixTime = document.getElementById('fixTime').checked;
+        let data = {roomId: roomId, typeId: typeId, skinId: skinId, trajectory: trajectory, fixTime: fixTime};
+        fetch(api + '/support/spawnEnemy', {
+            method: 'POST',
+            body: JSON.stringify(data)
+        }).then(response => console.log(response));
+    }
+
+    function setSpawnProbability() {
+        let roomId = document.getElementById('roomId').value;
+        let spawnProb = document.getElementById('spawnProbability').value;
+        fetch(api + '/support/setRoomProperties.jsp?roomId=' + roomId + '&spawnProbability=' + spawnProb)
+            .then(response => console.log(response));
+    }
+
+    function createOption(id, name) {
+        let option = document.createElement('option');
+        option.value = id;
+        option.text = name;
+        return option;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+       fetch(api + '/support/features')
+           .then(response => {
+               return response.json();
+           })
+           .then(features => {
+               let list = document.getElementById('features');
+               features.features.forEach(feature => {
+                   list.add(createOption(feature.id, feature.name));
+               });
+               if (features.active != null) {
+                   list.value = features.active.id;
+               }
+           });
+    });
+</script>
+
+<div>
+    <select id="features" name="features">
+        <option selected="selected">No feature</option>
+    </select>
+    <input id="feature" type="button" value="Update teststand" onclick="sendFeature()"/>
+
+    <div>
+        <h3>Spawn enemy</h3>
+        <label>RoomId: <input type="number" id="roomId"></label>
+        <label>TypeId: <input type="number" id="typeId"></label>
+        <label>SkinId: <input type="number" id="skinId"></label><br>
+        <label>Trajectory: <textarea id="trajectory"></textarea></label><br>
+        <label>FixTime: <input type="checkbox" id="fixTime" checked="checked"></label>
+        <button onclick="spawnEnemy()">Spawn</button>
+    </div>
+    <div>
+        <label>Spawn probability: <input type="number" id="spawnProbability"></label>
+        <button onclick="setSpawnProbability()">Set</button>
+    </div>
+</div>
+</body>
+</html>

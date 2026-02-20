@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <title>Lobby Test Client</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div>
+    <div class="button" id="connect">Connect</div>
+    <div class="button" id="login">Login</div>
+    <div class="button" id="rooms">Rooms</div>
+    <div class="button" id="roomInfo">GetRoom</div>
+    <div class="button" id="subRoom">SubRoom</div>
+    <div class="button" id="unSubRoom">UnSubRoom</div>
+    <div class="button" id="getStartUrl">StartUrl</div>
+    <div class="button" id="openRoom">OpenRoom</div>
+    <div class="button" id="getLeaderboards">LB</div>
+    <div class="button" id="getLeaderboard">LBScore</div>
+    <div class="button" id="getLeaderboardPosition">LBPos</div>
+    <div class="button" id="disconnect">Disconnect</div>
+    <div class="button reset" id="reset">Reset</div>
+</div>
+<div>
+    <textarea id="log" disabled></textarea>
+</div>
+<label>Name: <input type="text" id="name"></label>
+<label>RoomId: <input type="text" id="roomId"></label>
+<script>
+    function getWebSocketUrl() {
+        return "ws://localhost:8080/websocket/mplobby";
+    }
+
+    function getSessionId() {
+        return "1_856c594baeaf64c7ac42000001648336_RkcQRx4GWl8";
+    }
+
+    function getServerId() {
+        return "1";
+    }
+
+    function getLang() {
+        return "en";
+    }
+</script>
+<script type="text/javascript" src="lobby.js"></script>
+</body>

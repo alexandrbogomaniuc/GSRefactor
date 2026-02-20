@@ -1,0 +1,197 @@
+{
+  "bossSpawnPoint": {
+    "x": 45,
+    "y": 45
+  },
+  "predefinedTrajectories": {
+    "81": [
+      { "points": [{ "x": 80, "y": 30},  { "x": 55, "y": 30 }, { "x": 14, "y": 30 }]},
+      { "points": [{ "x": 14, "y": 30 },  { "x": 55, "y": 30 }, { "x": 80, "y": 30 } ] },
+
+      { "points": [{ "x": 88, "y": 38 },  { "x": 57, "y": 38 }, { "x": 6, "y": 38 } ]},
+      { "points": [{ "x": 6, "y": 38 },  { "x": 57, "y": 38 }, { "x": 88, "y": 38 }] },
+
+      { "points": [{ "x": 93, "y": 57 },  { "x": 54, "y": 61 }, { "x": 15, "y": 65 } ]},
+      { "points": [{ "x": 15, "y": 65 },  { "x": 54, "y": 61 }, { "x": 93, "y": 57 }] },
+
+      { "points": [{ "x": 80, "y": 70 },  { "x": 53, "y": 70 }, { "x": 20, "y": 70 }]},
+      { "points": [{ "x": 20, "y": 70 }, { "x": 53, "y": 70 }, { "x": 80, "y": 70 }]}
+    ],
+
+    "91": [
+      { "points": [{ "x": 80, "y": 30},  { "x": 55, "y": 30 }, { "x": 14, "y": 30 }]},
+      { "points": [{ "x": 14, "y": 30 },  { "x": 55, "y": 30 }, { "x": 80, "y": 30 } ] },
+
+      { "points": [{ "x": 88, "y": 38 },  { "x": 57, "y": 38 }, { "x": 6, "y": 38 } ]},
+      { "points": [{ "x": 6, "y": 38 },  { "x": 57, "y": 38 }, { "x": 88, "y": 38 }] },
+
+      { "points": [{ "x": 93, "y": 57 },  { "x": 54, "y": 61 }, { "x": 15, "y": 65 } ]},
+      { "points": [{ "x": 15, "y": 65 },  { "x": 54, "y": 61 }, { "x": 93, "y": 57 }] },
+
+      { "points": [{ "x": 80, "y": 70 },  { "x": 53, "y": 70 }, { "x": 20, "y": 70 }]},
+      { "points": [{ "x": 20, "y": 70 }, { "x": 53, "y": 70 }, { "x": 80, "y": 70 }]}
+    ],
+
+    "-1": [
+      { "points": [
+        { "x": 13, "y": 30 },
+        { "x": 75, "y": 40 },
+        { "x": 77, "y": 62 },
+        { "x": 33, "y": 66 },
+        { "x": 21, "y": 22 }
+      ]},
+      { "points": [
+        { "x": 21, "y": 22 },
+        { "x": 33, "y": 66 },
+        { "x": 77, "y": 62 },
+        { "x": 75, "y": 40 },
+        { "x": 13, "y": 30 }
+      ]},
+      { "points": [
+        { "x": 25, "y": 75 },
+        { "x": 43, "y": 30 },
+        { "x": 84, "y": 44 },
+        { "x": 82, "y": 57 },
+        { "x": 24, "y": 74 }
+      ]},
+      { "points": [
+        { "x": 24, "y": 74 },
+        { "x": 82, "y": 57 },
+        { "x": 84, "y": 44 },
+        { "x": 43, "y": 30 },
+        { "x": 25, "y": 75 }
+      ]}
+    ]
+  },
+  "swarmSpawnParams": {
+    "4": [
+      {
+        "sourceX": 83,
+        "sourceY": 33,
+        "sourceDeltaX": 4,
+        "sourceDeltaY": 6,
+        "targetX": 13,
+        "targetY": 63,
+        "targetDeltaX": 2,
+        "targetDeltaY": 4,
+        "travelTime": 3000,
+        "startDeltaTime": 1000,
+        "finishDeltaTime": 1000
+      },
+      {
+        "sourceX": 87,
+        "sourceY": 37,
+        "sourceDeltaX": 2,
+        "sourceDeltaY": 4,
+        "targetX": 20,
+        "targetY": 70,
+        "targetDeltaX": 4,
+        "targetDeltaY": 6,
+        "travelTime": 3000,
+        "startDeltaTime": 1000,
+        "finishDeltaTime": 1000
+      },
+      {
+        "sourceX": 89,
+        "sourceY": 57,
+        "sourceDeltaX": 2,
+        "sourceDeltaY": 2,
+        "targetX": 27,
+        "targetY": 77,
+        "targetDeltaX": 3,
+        "targetDeltaY": 3,
+        "travelTime": 3000,
+        "startDeltaTime": 1000,
+        "finishDeltaTime": 1000
+      },
+      {
+        "sourceX": 26,
+        "sourceY": 76,
+        "sourceDeltaX": 3,
+        "sourceDeltaY": 3,
+        "targetX": 83,
+        "targetY": 63,
+        "targetDeltaX": 2,
+        "targetDeltaY": 2,
+        "travelTime": 3000,
+        "startDeltaTime": 1000,
+        "finishDeltaTime": 1000
+      },
+      {
+        "sourceX": 46,
+        "sourceY": 103,
+        "sourceDeltaX": 3,
+        "sourceDeltaY": 3,
+        "targetX": 60,
+        "targetY": 3,
+        "targetDeltaX": 2,
+        "targetDeltaY": 2,
+        "travelTime": 3000,
+        "startDeltaTime": 1000,
+        "finishDeltaTime": 1000
+      }
+    ],
+    "5": [
+      {
+        "sourceX": 0,
+        "sourceY": 42,
+        "sourceDeltaX": 1,
+        "sourceDeltaY": 1,
+        "targetX": 95,
+        "targetY": 53,
+        "targetDeltaX": 1,
+        "targetDeltaY": 1,
+        "travelTime": 3000,
+        "startDeltaTime": 1000,
+        "finishDeltaTime": 1000
+      },
+      {
+        "sourceX": 95,
+        "sourceY": 42,
+        "sourceDeltaX": 1,
+        "sourceDeltaY": 1,
+        "targetX": 2,
+        "targetY": 43,
+        "targetDeltaX": 1,
+        "targetDeltaY": 1,
+        "travelTime": 3000,
+        "startDeltaTime": 1000,
+        "finishDeltaTime": 1000
+      }
+    ]
+  },
+  "swarmParams": [
+    {
+      "id": 101,
+      "startX": 61,
+      "startY": 11,
+      "deltaX": 3,
+      "deltaY": 3,
+      "angle": 330,
+      "distance": 1100,
+      "minSize": 10,
+      "maxSize": 20,
+      "enemies": [
+        { "type": 6, "skin": 1 },
+        { "type": 6, "skin": 2 }
+      ],
+      "cooldown": 8000
+    },
+    {
+      "id": 102,
+      "startX": 18,
+      "startY": 69,
+      "deltaX": 5,
+      "deltaY": 5,
+      "angle": 195,
+      "distance": 1000,
+      "minSize": 10,
+      "maxSize": 20,
+      "enemies": [
+        { "type": 6, "skin": 1 },
+        { "type": 6, "skin": 2 }
+      ],
+      "cooldown": 8000
+    }
+  ]
+}

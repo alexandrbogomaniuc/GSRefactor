@@ -1,0 +1,126 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mq-mp
+  namespace: legacy
+spec:
+  selector:
+    matchLabels:
+      app: mq-mp
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
+  template:
+    metadata:
+      labels:
+        app: mq-mp
+        env: dev01
+        app-env: mq-mp-dev01
+    spec:
+      affinity:
+        # nodeAffinity:
+        #   requiredDuringSchedulingIgnoredDuringExecution:
+        #     nodeSelectorTerms:
+        #     - matchExpressions:
+        #       - key: custom-node-label-key
+        #         operator: In
+        #         values:
+        #         - preemptible
+        # nodeAffinity:
+        #   preferredDuringSchedulingIgnoredDuringExecution:
+        #   - weight: 1
+        #     preference:
+        #       matchExpressions:
+        #       - key: custom-node-label-key
+        #         operator: In
+        #         values:
+        #         - preemptible
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - mq-mp
+            topologyKey: "kubernetes.io/hostname"
+        # podAntiAffinity:
+        #   preferredDuringSchedulingIgnoredDuringExecution:
+        #   - weight: 1
+        #     podAffinityTerm:
+        #       labelSelector:
+        #         matchExpressions:
+        #         - key: app
+        #           operator: In
+        #           values:
+        #           - mq-mp
+        #       topologyKey: "kubernetes.io/hostname"
+      # terminationGracePeriodSeconds: 60
+      # serviceAccountName: md-dev01-legacy
+      containers:
+      - name: mq-mp
+        image: europe-west1-docker.pkg.dev/maxduel-dev01/md-dev01/mq-mp-test:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8081
+        - containerPort: 8082
+        envFrom:
+        - configMapRef:
+            name: mq-mp
+        - secretRef:
+            name: mq-mp
+        command: ["sh", "-c"]
+        args:
+          - |
+            unzip web-mp-casino.war -d /app/web
+            chown -R nobody:nogroup /app/web
+            cd /app/web/WEB-INF
+            java ${JAVA_OPTS} -cp .:./classes/:./lib/* ${MAIN_CLASS}
+        resources:
+          requests:
+            cpu:    250m
+            memory: 1000Mi
+          limits:
+            cpu:    500m
+            memory: 2000Mi
+        # startupProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080
+        #   initialDelaySeconds: 1
+        #   successThreshold: 1
+        #   failureThreshold: 2
+        #   periodSeconds: 15
+        #   timeoutSeconds: 10
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080
+        #   initialDelaySeconds: 1
+        #   successThreshold: 1
+        #   failureThreshold: 2
+        #   periodSeconds: 15
+        #   timeoutSeconds: 10
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080
+        #   initialDelaySeconds: 1
+        #   successThreshold: 1
+        #   failureThreshold: 2
+        #   periodSeconds: 15
+        #   timeoutSeconds: 10
+        volumeMounts:
+        - name: service-account-key
+          mountPath: /secret
+          readOnly: true
+      volumes:
+      - name: service-account-key
+        secret:
+          secretName: md-dev01-apps-bigquery-sa-key
+          optional: true
+...

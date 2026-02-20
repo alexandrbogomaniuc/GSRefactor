@@ -1,0 +1,154 @@
+{
+    "enemiesWithPredefinedTrajectoriesMax": 12,
+    "initialSpawnEnemies": 40,
+    "swarmEnemiesMax": 15,
+    "bossParams": {
+        "a": 0.015,
+        "mu": 30,
+        "sigma": 1.5,
+        "lambda": 0.1,
+        "t1": 15,
+        "t2": 70,
+        "ta": 20,
+        "maxBosses": 2,
+        "boundariesCheck": true
+    },
+    "staticEnemyMax": 10,
+    "staticStayTimes": [
+        3,
+        4,
+        5,
+        6,
+        7
+    ],
+    "teleportingStayTimes": [
+        6,
+        7,
+        8,
+        9,
+        10
+    ],
+    "teleportingHopsNumber": [
+        2,
+        3,
+        4,
+        5
+    ],
+    "weaponCarrierTypes": [
+        16,
+        17,
+        18,
+        19,
+        20
+    ],
+    "weaponCarrierSpawnTimeDelay": [
+        25,
+        30,
+        35,
+        40
+    ],
+    "staticEnemiesSpawnTimeDelay": [
+        2,
+        3,
+        4,
+        5
+    ],
+    "weaponCarrierStayTimes": [
+        22,
+        26,
+        28,
+        30,
+        33
+    ],
+    "weaponCarrierOffsetTime": [
+        45
+    ],
+    "highPayEnemies": [
+        0,
+        2,
+        4
+    ],
+    "midPayEnemies": [
+        8,
+        9,
+        10
+    ],
+    "lowPayEnemies": [
+        3,
+        11
+    ],
+    "allEnemiesMax": 55,
+    "dividers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+    ],
+    "highPayWeights": [
+        10,
+        10,
+        20,
+        25,
+        15,
+        20
+    ],
+    "midPayWeights": [
+        15,
+        40,
+        25,
+        10,
+        5,
+        5
+    ],
+    "lowPayWeights": [
+        60,
+        20,
+        20,
+        0,
+        0,
+        0
+    ],
+    "timeSlices": [
+        0,
+        40,
+        80,
+        160,
+        220,
+        300
+    ],
+    "weightsByTimeSlice": [
+        [
+            5,
+            20,
+            75
+        ],
+        [
+            10,
+            25,
+            65
+        ],
+        [
+            20,
+            35,
+            45
+        ],
+        [
+            30,
+            40,
+            30
+        ],
+        [
+            45,
+            20,
+            35
+        ]
+    ],
+    "killEnemyByIds": [
+        -1
+    ],
+    "killCertainNumberOfEnemies": [
+        -1
+    ]
+}

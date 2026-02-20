@@ -1,0 +1,44 @@
+### Ids for pirates.
+
+.Enemies:
+[cols="1,3,1"]
+|===
+| Id | Name | Model
+
+| 0 | Crawling Crab | Scarab Black
+| 1 | Creeping Crab | Scarab Black
+| 2 | Deck Rat | Scarab Black
+| 3 | Cabin Rat | Scarab Black
+| 4 | Dire Crab | Scarab Gem Covered
+| 5 | Carrion Rat | Scarab Gem Covered
+| 6 | Risen Cabin Boy | Standard Mummy
+| 7 | Risen Deckhand | Mummy A
+| 8 | Zombie Swashbuckler| Mummy B
+| 9 | Undead Buccaneer| Mummy C
+| 10 |  Cursed First Mate | Pharaoh A
+| 11 | Unliving Captain | Pharaoh B
+| 12 | Risen Treasure Keeper | HV Runner and HV Troll (x100)
+| 13 | Brawling Berserker | HV Runner and HV Troll (x250)
+| 16 | Boss (3 skins, 1 - Captain Brutus, 2 - Alure The Siren, 3- The Leviathan) | Boss
+|===
+
+
+.Special Weapons:
+[cols="1,3"]
+|===
+| Id | Name
+| 0 | Shotgun
+| 1 | Grenade
+| 2 | Chain Gun
+| 3 | Laser
+| 4 | Plasma
+| 5 | Mine Launcher
+| 6 | Railgun
+| 7 | ArtilleryStrike
+| 8 | RocketLauncher
+| 9 | Flamethrower
+| 10 |  Cryogun
+| 11 | DoubleStrengthPowerUp (Red)
+| 12 | DoublePayoutPowerUp (Blue)
+|===
+

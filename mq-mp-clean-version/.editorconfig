@@ -1,0 +1,18 @@
+root = true
+
+[*]
+charset = utf-8
+indent_size = 4
+indent_style = space
+max_line_length = 150
+tab_width = 4
+ij_continuation_indent_size = 8
+
+[{*.properties,spring.handlers,spring.schemas}]
+ij_properties_keep_blank_lines = true
+
+[*.css]
+ij_css_keep_single_line_blocks = true
+
+[{*.cjs,*.js}]
+ij_javascript_blank_lines_around_function = 0

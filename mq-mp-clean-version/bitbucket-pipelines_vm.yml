@@ -1,0 +1,623 @@
+definitions:
+
+  services:
+    docker:
+      memory: 8192
+
+  scripts:
+
+    script_set_env: &script_set_env |
+      set -euo pipefail
+
+      check_var() {
+        VAL=$(printenv "${1}")
+        if [ -z "${VAL}" ]; then
+          printf 'ERROR: Required variable %s is not set\n' "${1}"
+          exit 1
+        fi
+      }
+
+      check_var  "GCP_PROJECT_ID_DEV"
+      check_var  "GCP_PROJECT_ID_STAGE"
+      check_var  "GCP_PROJECT_ID_PROD"
+      check_var  "GCP_PROJECT_NUMBER_DEV"
+      check_var  "GCP_PROJECT_NUMBER_STAGE"
+      check_var  "GCP_PROJECT_NUMBER_PROD"
+      check_var  "GCP_REGION_DEV"
+      check_var  "GCP_REGION_STAGE"
+      check_var  "GCP_REGION_PROD"
+      check_var  "GCP_USERNAME_PREFIX"
+      check_var  "PROJECT_NAME_DEV"
+      check_var  "PROJECT_NAME_STAGE"
+      check_var  "PROJECT_NAME_PROD"
+      check_var  "K8S_NAMESPACE_DEV"
+      check_var  "K8S_NAMESPACE_STAGE"
+      check_var  "K8S_NAMESPACE_PROD"
+      check_var  "RUNNER_ID_DEV"
+      check_var  "RUNNER_ID_STAGE"
+      check_var  "RUNNER_ID_PROD"
+      check_var  "APP_NAME"
+      check_var  "SSH_PRIVATE_KEY"
+      check_var  "ADDITIONAL_REPOSITORY"
+
+      # Function to set environment variables based on branch or tag
+      set_environment_variables() {
+        case "${1}" in 
+          "dev01")
+            export ENV_NAME=dev01
+            export GCP_PROJECT_ID=${GCP_PROJECT_ID_DEV}
+            export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_DEV}
+            export GCP_REGION=${GCP_REGION_DEV}
+            export PROJECT_NAME=${PROJECT_NAME_DEV}
+            export K8S_NAMESPACE=${K8S_NAMESPACE_DEV}
+            export RUNNER_ID=${RUNNER_ID_DEV}
+            ;;
+          "stage01")
+            export ENV_NAME=stage01
+            export GCP_PROJECT_ID=${GCP_PROJECT_ID_STAGE}
+            export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_STAGE}
+            export GCP_REGION=${GCP_REGION_STAGE}
+            export PROJECT_NAME=${PROJECT_NAME_STAGE}
+            export K8S_NAMESPACE=${K8S_NAMESPACE_STAGE}
+            export RUNNER_ID=${RUNNER_ID_STAGE}
+            ;;
+          "prod01")
+            export ENV_NAME=prod01
+            export GCP_PROJECT_ID=${GCP_PROJECT_ID_PROD}
+            export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_PROD}
+            export GCP_REGION=${GCP_REGION_PROD}
+            export PROJECT_NAME=${PROJECT_NAME_PROD}
+            export K8S_NAMESPACE=${K8S_NAMESPACE_PROD}
+            export RUNNER_ID=${RUNNER_ID_PROD}
+            ;;
+          "mp-test."*)
+            export ENV_NAME=dev01
+            export GCP_PROJECT_ID=${GCP_PROJECT_ID_DEV}
+            export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_DEV}
+            export GCP_REGION=${GCP_REGION_DEV}
+            export PROJECT_NAME=${PROJECT_NAME_DEV}
+            export K8S_NAMESPACE=${K8S_NAMESPACE_DEV}
+            export RUNNER_ID=${RUNNER_ID_DEV}
+            export SHORT_COMMIT_HASH=${BITBUCKET_COMMIT::7}
+            export BUILD_PROFILE=mqb-test
+            export SERVER_IP_1=${GS1_TEST_ADDRESS}
+            export SERVER_IP_2=${GS2_TEST_ADDRESS}
+            export SERVER_IP_3=${GS3_TEST_ADDRESS}
+            export SERVER_PORT=222
+            ;;
+          "test_branch")
+            export ENV_NAME=dev01
+            export GCP_PROJECT_ID=${GCP_PROJECT_ID_DEV}
+            export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_DEV}
+            export GCP_REGION=${GCP_REGION_DEV}
+            export PROJECT_NAME=${PROJECT_NAME_DEV}
+            export K8S_NAMESPACE=${K8S_NAMESPACE_DEV}
+            export RUNNER_ID=${RUNNER_ID_DEV}
+            export SHORT_COMMIT_HASH=${BITBUCKET_COMMIT::7}
+            export BUILD_PROFILE=mqb-test
+            export SERVER_IP_1=${GS1_TEST_ADDRESS}
+            export SERVER_IP_2=${GS2_TEST_ADDRESS}
+            export SERVER_IP_3=${GS3_TEST_ADDRESS}
+            export SERVER_PORT=222
+            ;;
+          "mp-pre-prod."*)
+            export ENV_NAME=stage01
+            export GCP_PROJECT_ID=${GCP_PROJECT_ID_STAGE}
+            export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_STAGE}
+            export GCP_REGION=${GCP_REGION_STAGE}
+            export PROJECT_NAME=${PROJECT_NAME_STAGE}
+            export K8S_NAMESPACE=${K8S_NAMESPACE_STAGE}
+            export RUNNER_ID=${RUNNER_ID_STAGE}
+            export SHORT_COMMIT_HASH=${BITBUCKET_COMMIT::7}
+            export BUILD_PROFILE=mqb-pre-prod
+            export SERVER_IP_1=${GS1_PRE_PROD_ADDRESS}
+            export SERVER_IP_2=${GS2_PRE_PROD_ADDRESS}
+            export SERVER_IP_3=${GS3_PRE_PROD_ADDRESS}
+            export SERVER_PORT=222
+            ;;
+          "mp-prod."*)
+            export ENV_NAME=prod01
+            export GCP_PROJECT_ID=${GCP_PROJECT_ID_PROD}
+            export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_PROD}
+            export GCP_REGION=${GCP_REGION_PROD}
+            export PROJECT_NAME=${PROJECT_NAME_PROD}
+            export K8S_NAMESPACE=${K8S_NAMESPACE_PROD}
+            export RUNNER_ID=${RUNNER_ID_PROD}
+            export SHORT_COMMIT_HASH=${BITBUCKET_COMMIT::7}
+            export BUILD_PROFILE=mqb-prod
+            export SERVER_IP_1=${GS1_PROD_ADDRESS}
+            export SERVER_IP_2=${GS2_PROD_ADDRESS}
+            export SERVER_IP_3=${GS3_PROD_ADDRESS}
+            export SERVER_IP_4=${GS4_PROD_ADDRESS}
+            export SERVER_PORT=22
+            ;;
+          *)
+            echo "ERROR: INCORRECT BITBUCKET_BRANCH/TAG ${1} FOR DEPLOY"
+            exit 1
+            ;;
+        esac
+      }
+
+      if [[ -n "${BITBUCKET_TAG:-}" ]]; then
+        set_environment_variables "${BITBUCKET_TAG}"
+        echo "SELECTED BITBUCKET_TAG ${BITBUCKET_TAG}"
+      elif [[ -n "${BITBUCKET_BRANCH:-}" ]]; then
+        set_environment_variables "${BITBUCKET_BRANCH}"
+        echo "SELECTED BITBUCKET_BRANCH ${BITBUCKET_BRANCH}"
+      else
+        echo "ERROR: No branch or tag specified"
+        exit 1
+      fi
+
+      env | sort
+
+    script_export_ssh_key: &script_export_ssh_key |
+      set -euo pipefail
+
+      echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa
+
+    script_gcp_auth: &script_gcp_auth |
+      set -euo pipefail
+
+      mkdir .GCP_CREDS
+
+      export GCP_CREDS='.GCP_CREDS'
+
+      echo ${BITBUCKET_STEP_OIDC_TOKEN} > ${GCP_CREDS}/gcp_access_token.out
+
+      export GCP_WORKLOAD_IDENTITY_PROVIDER="projects/${GCP_PROJECT_NUMBER}/locations/global/workloadIdentityPools/${PROJECT_NAME}-${ENV_NAME}-${GCP_USERNAME_PREFIX}/providers/${PROJECT_NAME}-${ENV_NAME}-${GCP_USERNAME_PREFIX}"
+      export GCP_SERVICE_ACCOUNT_EMAIL="${PROJECT_NAME}-${ENV_NAME}-${GCP_USERNAME_PREFIX}@${GCP_PROJECT_ID}.iam.gserviceaccount.com"
+
+      gcloud iam workload-identity-pools create-cred-config ${GCP_WORKLOAD_IDENTITY_PROVIDER} \
+        --service-account="${GCP_SERVICE_ACCOUNT_EMAIL}" \
+        --output-file=${GCP_CREDS}/gcp_temp_cred.json \
+        --credential-source-file=${GCP_CREDS}/gcp_access_token.out
+
+      # export GOOGLE_APPLICATION_CREDENTIALS=${GCP_CREDS}/gcp_temp_cred.json
+      gcloud auth login --cred-file=${GCP_CREDS}/gcp_temp_cred.json
+
+      gcloud config set project ${GCP_PROJECT_ID}
+
+      gcloud auth list
+
+      gcloud auth configure-docker ${GCP_REGION}-docker.pkg.dev
+
+    script_check: &script_check |
+      set -euo pipefail
+
+      whoami
+      pwd
+      uptime
+      free -hm
+      curl -s ifconfig.co
+      ssh -p ${SERVER_PORT} bitbucket@${SERVER_IP_1} "uptime; whoami; pwd; curl -s ifconfig.co"
+      ssh -p ${SERVER_PORT} bitbucket@${SERVER_IP_2} "uptime; whoami; pwd; curl -s ifconfig.co"
+      ssh -p ${SERVER_PORT} bitbucket@${SERVER_IP_3} "uptime; whoami; pwd; curl -s ifconfig.co"
+
+    script_install_packages: &script_install_packages |
+      set -euo pipefail
+
+      apt install -y --no-install-recommends gettext-base
+
+    script_git_download_dependencies: &script_git_download_dependencies |
+      set -euo pipefail
+
+      git clone --depth 1 ${ADDITIONAL_REPOSITORY}
+
+    script_git_download_dependencies_preprod: &script_git_download_dependencies_preprod |
+      set -euo pipefail
+
+      git clone --branch ${MQ_GS_GIT_TAG_PREPROD} --depth 1 ${ADDITIONAL_REPOSITORY}
+
+    script_chmod: &script_chmod |
+      set -euo pipefail
+
+      find . -type d -exec chmod 0755 {} \;
+      find . -type f -exec chmod 0644 {} \;
+
+      chmod -v +x mq-gs/build-all-modules.sh
+      chmod -v +x mq-gs/install-gsn-casino-project.sh
+      chmod -v +x deploy.sh
+      chmod -v +x bots/bots_test.sh
+      chmod -v +x bots/bots_prod.sh
+
+    script_docker_build_step_1: &script_docker_build_step_1 |
+      set -euo pipefail
+
+      export PATH=/usr/bin:$PATH
+
+      cat Dockerfile.build.step_1.tpl | envsubst > Dockerfile.build.step_1
+      cat Dockerfile.build.step_1
+
+      export IMAGE=${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${PROJECT_NAME}-${ENV_NAME}/${APP_NAME}
+      export TAG=step_1_${SHORT_COMMIT_HASH}
+      export DOCKERFILE=Dockerfile.build.step_1
+      
+      time docker build -t ${IMAGE}:${TAG} -f ${DOCKERFILE} --build-arg BUILD_PROFILE=${BUILD_PROFILE} . --progress=plain
+
+      docker images
+
+      time docker push ${IMAGE}:${TAG}
+
+    script_docker_build_step_2: &script_docker_build_step_2 |
+      set -euo pipefail
+
+      export PATH=/usr/bin:$PATH
+
+      cat Dockerfile.build.step_2.tpl | envsubst > Dockerfile.build.step_2
+      cat Dockerfile.build.step_2
+
+      export IMAGE=${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${PROJECT_NAME}-${ENV_NAME}/${APP_NAME}
+      export TAG=step_2_${SHORT_COMMIT_HASH}
+      export DOCKERFILE=Dockerfile.build.step_2
+
+      time docker pull ${IMAGE}:step_1_${SHORT_COMMIT_HASH}
+      
+      time docker build -t ${IMAGE}:${TAG} -f ${DOCKERFILE} --build-arg BUILD_PROFILE=${BUILD_PROFILE} . --progress=plain
+
+      docker images
+
+      time docker push ${IMAGE}:${TAG}
+
+    script_extract_build_artifacts: &script_extract_build_artifacts |
+      set -euo pipefail
+
+      mkdir -vp artifacts/bots
+
+      docker create --name temp-container ${IMAGE}:${TAG}
+      
+      docker cp temp-container:/app/web/target/web-mp-casino.war            artifacts/
+      docker cp temp-container:/app/bots/target/mp-bots-1.0.0-SNAPSHOT.jar  artifacts/bots
+      docker cp temp-container:/app/bots/target/lib                         artifacts/bots
+      
+      docker rm temp-container
+      
+      ls -alhR artifacts/
+
+    script_deploy_legacy: &script_deploy_legacy |
+      set -euo pipefail
+
+      scp    -P ${SERVER_PORT} artifacts/bots/mp-bots-1.0.0-SNAPSHOT.jar  bitbucket@${SERVER_IP_4}:/www/html/mp/bots
+      scp -r -P ${SERVER_PORT} artifacts/bots/lib                         bitbucket@${SERVER_IP_4}:/www/html/mp/bots
+      scp    -P ${SERVER_PORT} bots/bots.sh                               bitbucket@${SERVER_IP_4}:/www/html/mp/bots
+
+      ssh    -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_4} "sudo /www/html/mp/bots/bots.sh restart"
+
+      scp    -P ${SERVER_PORT} artifacts/web-mp-casino.war                bitbucket@${SERVER_IP_1}:/www/html/mp
+      scp    -P ${SERVER_PORT} artifacts/web-mp-casino.war                bitbucket@${SERVER_IP_2}:/www/html/mp
+      scp    -P ${SERVER_PORT} artifacts/web-mp-casino.war                bitbucket@${SERVER_IP_3}:/www/html/mp
+
+      scp    -P ${SERVER_PORT} deploy.sh                                  bitbucket@${SERVER_IP_1}:/www/html/mp
+      scp    -P ${SERVER_PORT} deploy.sh                                  bitbucket@${SERVER_IP_2}:/www/html/mp
+      scp    -P ${SERVER_PORT} deploy.sh                                  bitbucket@${SERVER_IP_3}:/www/html/mp
+
+      ssh    -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_1} "sudo /www/html/mp/deploy.sh"
+      ssh    -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_2} "sudo /www/html/mp/deploy.sh"
+      ssh    -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_3} "sudo /www/html/mp/deploy.sh"
+
+    script_deploy_legacy_preprod: &script_deploy_legacy_preprod |
+      set -euo pipefail
+
+      cp -v bots/bots_test.sh bots/bots.sh
+      chmod -v +x bots/bots.sh
+      chmod -v +x deploy.sh
+      ls -al bots/
+      ls -al deploy.sh
+
+      scp    -P ${SERVER_PORT} artifacts/bots/mp-bots-1.0.0-SNAPSHOT.jar  bitbucket@${SERVER_IP_1}:/www/html/mp/bots
+      scp -r -P ${SERVER_PORT} artifacts/bots/lib                         bitbucket@${SERVER_IP_1}:/www/html/mp/bots
+      scp    -P ${SERVER_PORT} bots/bots.sh                               bitbucket@${SERVER_IP_1}:/www/html/mp/bots
+
+      ssh    -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_1} "sudo /www/html/mp/bots/bots.sh restart"
+
+      scp    -P ${SERVER_PORT} artifacts/web-mp-casino.war                bitbucket@${SERVER_IP_1}:/www/html/mp
+      scp    -P ${SERVER_PORT} artifacts/web-mp-casino.war                bitbucket@${SERVER_IP_2}:/www/html/mp
+      scp    -P ${SERVER_PORT} artifacts/web-mp-casino.war                bitbucket@${SERVER_IP_3}:/www/html/mp
+
+      scp    -P ${SERVER_PORT} deploy.sh                                  bitbucket@${SERVER_IP_1}:/www/html/mp
+      scp    -P ${SERVER_PORT} deploy.sh                                  bitbucket@${SERVER_IP_2}:/www/html/mp
+      scp    -P ${SERVER_PORT} deploy.sh                                  bitbucket@${SERVER_IP_3}:/www/html/mp
+
+      ssh    -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_1} "sudo /www/html/mp/deploy.sh"
+      ssh    -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_2} "sudo /www/html/mp/deploy.sh"
+      ssh    -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_3} "sudo /www/html/mp/deploy.sh"
+
+    script_deploy_legacy_test: &script_deploy_legacy_test |
+      set -euo pipefail
+
+      cp -v bots/bots_test.sh bots/bots.sh
+
+      scp    -P ${SERVER_PORT} artifacts/bots/mp-bots-1.0.0-SNAPSHOT.jar  bitbucket@${SERVER_IP_1}:/www/html/mp/bots
+      scp -r -P ${SERVER_PORT} artifacts/bots/lib                         bitbucket@${SERVER_IP_1}:/www/html/mp/bots
+      scp    -P ${SERVER_PORT} bots/bots.sh                               bitbucket@${SERVER_IP_1}:/www/html/mp/bots
+
+      ssh    -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_1} "sudo /www/html/mp/bots/bots.sh restart"
+
+      scp    -P ${SERVER_PORT} artifacts/web-mp-casino.war                bitbucket@${SERVER_IP_1}:/www/html/mp
+      scp    -P ${SERVER_PORT} artifacts/web-mp-casino.war                bitbucket@${SERVER_IP_2}:/www/html/mp
+      scp    -P ${SERVER_PORT} artifacts/web-mp-casino.war                bitbucket@${SERVER_IP_3}:/www/html/mp
+
+      scp    -P ${SERVER_PORT} deploy.sh                                  bitbucket@${SERVER_IP_1}:/www/html/mp
+      scp    -P ${SERVER_PORT} deploy.sh                                  bitbucket@${SERVER_IP_2}:/www/html/mp
+      scp    -P ${SERVER_PORT} deploy.sh                                  bitbucket@${SERVER_IP_3}:/www/html/mp
+
+      ssh    -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_1} "sudo /www/html/mp/deploy.sh"
+      ssh    -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_2} "sudo /www/html/mp/deploy.sh"
+      ssh    -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_3} "sudo /www/html/mp/deploy.sh"
+
+    script_deploy_legacy_production: &script_deploy_legacy_production |
+      set -euo pipefail
+
+      cp -v bots/bots_prod.sh bots/bots.sh
+
+      scp    -o StrictHostKeyChecking=no -P ${SERVER_PORT} artifacts/bots/mp-bots-1.0.0-SNAPSHOT.jar  bitbucket@${SERVER_IP_4}:/www/html/mp/bots
+      scp -r -o StrictHostKeyChecking=no -P ${SERVER_PORT} artifacts/bots/lib                         bitbucket@${SERVER_IP_4}:/www/html/mp/bots
+      scp    -o StrictHostKeyChecking=no -P ${SERVER_PORT} bots/bots.sh                               bitbucket@${SERVER_IP_4}:/www/html/mp/bots
+
+      ssh    -o StrictHostKeyChecking=no -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_4} "sudo /www/html/mp/bots/bots.sh restart"
+
+      scp    -o StrictHostKeyChecking=no -P ${SERVER_PORT} artifacts/web-mp-casino.war                bitbucket@${SERVER_IP_1}:/www/html/mp
+      scp    -o StrictHostKeyChecking=no -P ${SERVER_PORT} artifacts/web-mp-casino.war                bitbucket@${SERVER_IP_2}:/www/html/mp
+      scp    -o StrictHostKeyChecking=no -P ${SERVER_PORT} artifacts/web-mp-casino.war                bitbucket@${SERVER_IP_3}:/www/html/mp
+
+      scp    -o StrictHostKeyChecking=no -P ${SERVER_PORT} deploy_prod.sh                             bitbucket@${SERVER_IP_1}:/www/html/mp
+      scp    -o StrictHostKeyChecking=no -P ${SERVER_PORT} deploy_prod.sh                             bitbucket@${SERVER_IP_2}:/www/html/mp
+      scp    -o StrictHostKeyChecking=no -P ${SERVER_PORT} deploy_prod.sh                             bitbucket@${SERVER_IP_3}:/www/html/mp
+
+      ssh    -o StrictHostKeyChecking=no -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_1} "sudo /www/html/mp/deploy_prod.sh deploy"
+      ssh    -o StrictHostKeyChecking=no -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_2} "sudo /www/html/mp/deploy_prod.sh deploy"
+      ssh    -o StrictHostKeyChecking=no -p ${SERVER_PORT}                                            bitbucket@${SERVER_IP_3} "sudo /www/html/mp/deploy_prod.sh deploy"
+
+    script_cleanup: &script_cleanup |
+      set -euo pipefail
+      
+      rm -rf .* *
+      ls -alhR
+
+    step_check_dev: &step_check_dev
+      name: step_check_dev
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_check
+      after-script:
+        - *script_cleanup
+
+    step_check_stage: &step_check_stage
+      name: step_check_stage
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_check
+      after-script:
+        - *script_cleanup
+
+    step_check_prod: &step_check_prod
+      name: step_check_prod
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_check
+      after-script:
+        - *script_cleanup
+
+    step_deploy_legacy_test_step_1: &step_deploy_legacy_test_step_1
+      name: step_deploy_legacy_test_step_1
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_install_packages
+        - *script_git_download_dependencies
+        - *script_chmod
+        - *script_docker_build_step_1
+      after-script:
+        - *script_cleanup
+
+    step_deploy_legacy_test_step_2: &step_deploy_legacy_test_step_2
+      name: step_deploy_legacy_test_step_2
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.dev01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_install_packages
+        - *script_docker_build_step_2
+        - *script_extract_build_artifacts
+        - *script_deploy_legacy_test
+      after-script:
+        - *script_cleanup
+      trigger: manual
+
+    step_deploy_legacy_pre-prod_step_1: &step_deploy_legacy_pre-prod_step_1
+      name: step_deploy_legacy_pre-prod_step_1
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_install_packages
+        - *script_git_download_dependencies_preprod
+        - *script_chmod
+        - *script_docker_build_step_1
+      after-script:
+        - *script_cleanup
+
+    step_deploy_legacy_pre-prod_step_2: &step_deploy_legacy_pre-prod_step_2
+      name: step_deploy_legacy_pre-prod_step_2
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.stage01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_install_packages
+        - *script_docker_build_step_2
+        - *script_extract_build_artifacts
+        - *script_deploy_legacy_preprod
+      after-script:
+        - *script_cleanup
+      trigger: manual
+
+    step_deploy_legacy_prod_step_1: &step_deploy_legacy_prod_step_1
+      name: step_deploy_legacy_prod_step_1
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_install_packages
+        - *script_git_download_dependencies
+        - *script_chmod
+        - *script_docker_build_step_1
+      after-script:
+        - *script_cleanup
+
+    step_deploy_legacy_prod_step_2: &step_deploy_legacy_prod_step_2
+      name: step_deploy_legacy_prod_step_2
+      runs-on:
+        - self.hosted
+        - linux
+        - mq.prod01
+      image: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+      oidc: true
+      clone:
+        enabled: true
+        depth: 2
+      services:
+        - docker
+      size: 4x
+      script:
+        - *script_set_env
+        - *script_export_ssh_key
+        - *script_gcp_auth
+        - *script_install_packages
+        - *script_docker_build_step_2
+        - *script_extract_build_artifacts
+        - *script_deploy_legacy_production
+      after-script:
+        - *script_cleanup
+      trigger: manual
+
+pipelines:
+  branches:
+
+    dev01:
+      - step: *step_check_dev
+
+    stage01:
+      - step: *step_check_stage
+
+    prod01:
+      - step: *step_check_prod
+
+    test_branch:
+      - step: *step_deploy_legacy_test_step_1
+
+  tags:
+    
+    'mp-test.*':
+      - step: *step_deploy_legacy_test_step_1
+      - step: *step_deploy_legacy_test_step_2
+
+    'mp-pre-prod.*':
+      - step: *step_deploy_legacy_pre-prod_step_1
+      - step: *step_deploy_legacy_pre-prod_step_2
+
+    'mp-prod.*':
+      - step: *step_deploy_legacy_prod_step_1
+      - step: *step_deploy_legacy_prod_step_2

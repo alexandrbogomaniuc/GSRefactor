@@ -1,0 +1,61 @@
+Почитайте, посмотрите jira, там проект отдельный завели.
+По части задач отсутствует EST но есть исполнитель, в таком случае просьба исполнителю дать EST. Это надо сделать до 17:00 19.03.2018
+Я мог что то упустить или забыть, поправьте меня если так. Можно собраться и обсудить.
+
+
+1. Add  roomMode (3 for demo, 4 for debug) and roomID  to startGameURL
+Нам тут ничего делать не нужно, они вольны добавить к startGameURL любые параметры.
+roomId у нас уже есть, roomMode это чисто клиентский параметр.
+Добавим замечание об этом в протокол.
+
+Однако Ольга в документе "MilestonesFeedback.docx" почему то пишет:
+>> [Olga 15 Mar] – in progress – waiting for the updated protocol from the server side
+
+Надо спросить у нее чего она ждет ?
+
+
+2. "how can each enemy move" - they can move in 4 directions, isometric view, 90 degrees per direction.
+Илья, я как понимаю тут все уже сделано, подтверди. Если да, то просто добавим это в спецификацию (2.8 EnemiesMoved) angles=0,90,180,270.
+
+Дополнения к спеке в 2.8 EnemiesMoved:
+2.1 angles может принимать одно из 4 значений 0,90,180,270.
+2.2 x,y это теперь не int а double. Добавляем описание системы координат.
+
+
+3. У нас появляется явное понятие subround: "boss", "horde", "horde boss". При этом может изменяться карта.
+При старте нового subround сервер будет отсылать сообщение: {"class": "ChangeMap", "map":2, "rid":-1, "date":34534534}
+При получении данного сообщения клиет должен сравнить текущую карту с полученной и если нужно то сменить ее.
+
+
+4. У нас должна быть реализована поддержка нескольких карт. В GetRoomInfo, GetFullGameInfo, GameStateChanged
+(при старте нового раунда нужно будет сбросить карту которая была на босс-раунде)
+добавляем параметр map. Реально как я понимаю карта пока будет одна, однако нужно поинтересоваться планируют ли они к какой нибудь дате релиза добавить еще карты.
+
+5. Денис, надо дать EST по мат. модели в соответствии с перепиской.
+
+6. Player round log. - https://jira.dgphoenix.com/projects/UE/issues/UE-11
+
+7. Room managment - https://jira.dgphoenix.com/projects/UE/issues/UE-10
+
+8. Lobby changes.
+minStake/maxStake больше нет. будет только stake.
+SitIn.stake - удалить, всегда stake комнаты
+Add player avatar
+
+9. Compensate the cost of unused weapons - https://jira.dgphoenix.com/projects/UE/issues/UE-13
+Денис дай EST
+
+10. Ограничение на максимальное время раунда. - https://jira.dgphoenix.com/projects/UE/issues/UE-14
+
+11. Компенсация RTP при disconnect player. - https://jira.dgphoenix.com/projects/UE/issues/UE-15
+пункт на Денисе, видимо надо еще раз пнуть чтобы дали ответ
+
+12. Несколько боссов одновременно - https://jira.dgphoenix.com/projects/UE/issues/UE-16
+пункт на Денисе, видимо надо еще раз пнуть чтобы дали ответ
+
+13. Нанесение урона нескольким врагам при выстреле из special weapon - https://jira.dgphoenix.com/projects/UE/issues/UE-17
+Изменение в протоколе + реализация. Нужно будет находить ближайших врагов.
+
+
+
+CREATE TABLE casinoscks.rtpsumstat2 (bankid bigint, gameid bigint, sdkey text, betsum bigint, ibetsum bigint, PRIMARY KEY ((bankid), gameId, sdkey)) WITH CLUSTERING ORDER BY (gameId ASC, sdkey ASC)

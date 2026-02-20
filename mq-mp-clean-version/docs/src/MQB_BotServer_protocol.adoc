@@ -1,0 +1,93 @@
+// suppress inspection "GrazieInspection" for whole file
+= API для взаимодействия MQ BotServer и MQB site
+Betsoft Gaming
+v 1.0
+:source-highlighter: coderay
+
+== 1. MQB login and getStartGameUrl
+Этот запрос на сторону MQB предназначен для аутентификации бота и получения url для запуска BTG игры
+Все запросы должны быть подписаны с помощью общего секретного ключа (secretAPIKey).
+Подпись выполняется с помощью Hash-based message authentication code (HMAC), который рассчитывается для тела запроса и secretAPIKey и отправляется в качестве заголовка запроса.
+
+[horizontal]
+.Authentication
+Used algorithm:: SHA256
+Request header:: Hash
+Request header value:: 64 char long hexadecimal string
+
+Запрос выполняется по url https:/mqbsite/getStartGameUrl используя http POST method in json format
+
+[source,json]
+{
+    "userName": "mike",
+    "password": "xxx",
+    "bankId": 271,
+    "gameId": 856,
+    "buyIn": 100,
+    "currency": "MMC"
+}
+
+[horizontal]
+.Request parameters:
+userName:: имя пользователя
+password:: пароль
+bankId:: идентификатор банка
+gameId:: идентификатор BTG игры для запуска
+buyIn:: сумма BTG buyIn в центах
+currency:: валюта для которой запускается игра
+
+В случае успешной обработки запроса возвращается ответ
+[source,json]
+.Success response:
+{
+    "status": "Ok",
+    "startGameUrl": "https://default-beta.discreetgaming.com/battlegroundstartgamev2.do?bankId=6274&gameId=863&mode=real&token=xxx",
+    "mmcBalance": 5000,
+    "mqcBalance": 1000,
+    "token": "34654645"
+}
+
+.Response parameters:
+status:: статус запроса
+startGameUrl:: url для запуска игры
+mmcBalance:: текущий баланс в выбранной MMC currency
+mqcBalance:: текущий баланс в выбранной MQC currency
+token:: token for Omega API calls
+
+== 2 Get Balances
+Этот запрос необходим для получения текущих балансов игрока.
+Запрос выполняется по url https:/mqbsite/getBalances используя http POST method in json format
+[source,json]
+{
+    "userName": "mike",
+    "bankId": 271,
+    "token": "34534534"
+}
+
+[horizontal]
+.Request parameters:
+userName:: имя пользователя
+bankId:: идентификатор банка
+token:: token for Omega API calls
+
+В случае успешной обработки запроса возвращается ответ
+[source,json]
+.Success response:
+{
+    "status": "Ok",
+    "mmcBalance": 5000,
+    "mqcBalance": 1000,
+}
+
+.Response parameters:
+status:: статус запроса
+mmcBalance:: текущий баланс в выбранной MMC currency
+mqcBalance:: текущий баланс в выбранной MQC currency
+
+
+== 3 Error handling
+В случае любой ошибки, возвращается ответ в следующем виде
+[source,json]
+{
+	"status": "Error"
+}

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <title>WhatsNew for Tektosyne 6.0.1</title>
+  <link rel="stylesheet" type="text/css" href="project.css">
+</head>
+<body>
+  <h1>WhatsNew for Tektosyne 6.0.1</h1>
+  <p>This file contains the version history for the Tektosyne Library, starting with the initial release for Java. Please refer to the <a href="ReadMe.html">ReadMe</a> file for general information. Entries link to weblog posts with further details where available.</p>
+  <h3>Version 6.0.1 (released 2017-04-08)</h3>
+  <p>Fixed several FindBugs complaints.</p>
+  <ul>
+    <li>PointDComparator/X/Y: Implemented Serializable interface for compatibility with serializable collections. This also required default constructors that leave epsilon at zero.</li>
+    <li>MultiLineIntersection: Added exceptions for illegal MultiLinePoint.Line location values.</li>
+    <li>PolygonGrid: Changed switch/case statements without default to simpler if/else statements.</li>
+    <li>RegularPolygon.inscribe: Clarified intentional truncating integer division.</li>
+    <li>SubdivisionSearch: Several small changes to shut up FindBugs, no functional differences.</li>
+  </ul>
+  <h3>Version 6.0.0 (released 2016-12-14)</h3>
+  <p><a href="http://news.kynosarges.org/2016/12/14/tektosyne-library-for-java/">Complete rewrite</a> in Java SE 8u112 with JavaFX demo application.</p>
+  <h3>Version 1.0.0 (released 2002-05-27)</h3>
+  <p>Initial release for the .NET Framework, updated through version 5.6.6 (2015-09-30). See the WhatsNew file packaged with the .NET edition for a complete version history of that edition.</p>
+</body>
+</html>

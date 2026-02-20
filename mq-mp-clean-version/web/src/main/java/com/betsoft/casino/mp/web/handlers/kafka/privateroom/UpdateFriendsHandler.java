@@ -1,0 +1,27 @@
+package com.betsoft.casino.mp.web.handlers.kafka.privateroom;
+
+import com.betsoft.casino.mp.web.handlers.kafka.KafkaMultiPlayerResponseService;
+import com.dgphoenix.casino.kafka.dto.privateroom.request.UpdateFriendsDto;
+import com.dgphoenix.casino.kafka.dto.privateroom.response.UpdateFriendsResultDto;
+import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
+import org.springframework.stereotype.Component;
+
+
+@Component
+public class UpdateFriendsHandler implements KafkaOuterRequestHandler<UpdateFriendsDto, UpdateFriendsResultDto> {
+    private final KafkaMultiPlayerResponseService serviceHandler;
+
+    public UpdateFriendsHandler(KafkaMultiPlayerResponseService serviceHandler) {
+        this.serviceHandler = serviceHandler;
+    }
+
+    @Override
+    public UpdateFriendsResultDto handle(UpdateFriendsDto request) {
+        return serviceHandler.updateFriends(request);
+    }
+
+    @Override
+    public Class<UpdateFriendsDto> getRequestClass() {
+        return UpdateFriendsDto.class;
+    }
+}

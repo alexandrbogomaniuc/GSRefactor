@@ -1,0 +1,43 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mq-mp
+  namespace: legacy
+data:
+  ENV: 'dev01'
+  GOOGLE_APPLICATION_CREDENTIALS: '/secret/service-account-key.json'
+  KAFKA_HOSTS: 'kafka1.gsmp.lan:9092'
+  KAFKA_TOPIC_SEND_TO_MP: 'to_mp_topic'
+  KAFKA_TOPIC_REPLY_FROM_MP: 'to_mp_topic_response'
+  KAFKA_TOPIC_RECEIVE_FROM_MP: 'to_gs_topic'
+  KAFKA_TOPIC_REPLY_TO_MP: 'to_gs_topic_response'
+  KAFKA_TOPIC_SEND_IN_SERVICE: 'from_gs_to_gs_topic'
+  JAVA_OPTS: |
+    -Dntp.host=metadata.google.internal
+    -Xms3g
+    -Xmx3g
+    -Xmn1G
+    -XX:MaxDirectMemorySize=1g
+    -Xss256k
+    -XX:-OmitStackTraceInFastThrow
+    -XX:+UnlockExperimentalVMOptions
+    -XX:+UseG1GC
+    -XX:G1RSetUpdatingPauseTimePercent=5
+    -XX:MaxGCPauseMillis=50
+    -XX:GCPauseIntervalMillis=200
+    -verbose:gc
+    -XX:+PrintGCDateStamps
+    -XX:+PrintGCApplicationStoppedTime
+    -XX:+UseGCLogFileRotation
+    -XX:NumberOfGCLogFiles=10
+    -XX:GCLogFileSize=50M
+    -Djava.awt.headless=true
+    -Dlog4j2.formatMsgNoLookups=true
+    -Dfile.encoding=UTF-8
+    -Dreactor.ipc.netty.workerCount=200
+    -Dreactor.ipc.netty.pool.maxConnections=1500
+    -XX:+HeapDumpOnOutOfMemoryError
+    -XX:HeapDumpPath=/tmp/heapdump.hprof
+  MAIN_CLASS: 'com.betsoft.casino.mp.web.NettyServer'
+...

@@ -1,0 +1,103 @@
+1. Free Shots will be awarded with a fixed bullet cost, if player enters room with a such bullet cost, FRB mode will be activated
+automatically and he will receive notification.
+
+
+2. In FRB mode player can't purchase loot boxes, corresponding buttons will be disabled.
+
+3. During FRB mode player will be able to purchase regular bullets only from current win, he will be unable to purchase bullets for
+real money.
+
+4. Transfer from FRB mode to normal mode is only possible when round is finished (boss killed) and when all shots with free weapons
+are used, including special weapons which were received during FRB mode.
+
+>>> Ideally the player should be able to leave the room and go and play for real money in another room
+
+5. Player will be able to choose which weapon he wants to use for next shot.
+
+>>> This is ideal but not essential for launch
+
+6. Player can collect different types of special weapons at the same time.
+
+>>> This is ideal but not essential for launch
+
+7. When round is finished all regular bullets will be converted back to money, all special weapons will be saved.
+
+>>> This is ideal but not essential for launch
+
+8. Each round should start with a purchase of regular bullets even if player has unused special weapons.
+
+>>> OK
+
+9. For API of our licensees weapon crate purchase will look like a regular bet.
+
+>>> OK
+
+10. Weapon crates can only be purchased during the round, when mummies already spawned.
+
+>>> It would be ideal if they can be bought before round, but we can worry about that after launch.
+
+
+0006426: Currencies display
+>>> We want to clarify one moment about Max Quest.
+>>> How we should treat currencies in this game.
+>>> As players can share their win during boss fight, we can't allow players
+> with different stakes to play in the same room.
+>>> But should we also separate players with different currencies or we
+> should just show them price of bullets and win amount in
+> their
+>>> currency?
+>>> In first case we will reduce possibility to play with real opponents, in
+> second - numbers will look not so good, for example \2.
+> 12 per
+>>> bullet.
+> ***Dan - I think players should play in their own currency and have players
+> with different currencies in the same room; I think that if players have to
+> buy at least 100 bullets, then if the total cost has a fraction we can round
+> down without harming the rtp significantly***
+Excellent. We had big problems with fractional parts of the cent, rounding them off.
+
+0006465: Promotional Tools MQ
+I think the simplest solution is to have special FRB rooms in the players currency.
+
+
+Описание работы.
+Для MPGames мы не стартуем GameSession при /cwstartgamev2.do, создается только SessionInfo.
+
+НЕЛЬЗЯ СОЗДАВАТЬ FRBONUS в в котором одновременно Multiplayer and SinglePlayer games
+
+free/real:
+GameSession создается на SitIn. При SitIn мы указываем тип free/real который зависит от типа выбранной комнаты.
+При SitIn сразу делается покупка патронов (если необходимо, у игрока могут болтаться в lasthand-е)
+
+frb:
+все так же, создаем на SitIn, за исключением buyIn - его тут нет, докупать можно только из неотосланного win
+
+EnterLobby:
+Добавляем на сервере проверку есть ли активный FRB и если есть то в EnterLobbyResponse возвращается
+доп. обьект FRBonusInfo с полями
+awardDate, expirationDate, totalShots, currentShots, winSum
+Игровой клиент отображает информацию о том что игрок находится в FRB mode и текущие праметры активного бонуса
+(winSum и currentShots как минимум дабы закупиться из win если это возможно)
+Кроме этого часть элементов управления в FRB режиме может быть отключена. например кнопка "RefreshBalance"
+
+
+На серверной стороне мы ставим mode=FRB. Этот флаг нужен для следующего запроса GetRooms.
+На сервере под каждый тип валюты существуют свои FRB комнаты.
+в FRB режиме поле GetRooms.mode игнорируется и возвращается список  комнат со stake соответствующей настройке FRB и нужной currency.
+
+Игрок получив список комнат, выбирает одну из них для игры. Делаем SitIn и стартуем GameSession в FRB режиме
+
+В игровом клиенте мы запрещаем покупку любых лутбоксов. Докупать патроны можно только из выигрыша игрока.
+SpecialWeapon могут быть получены, переключать их можно. FRBonus считается оконченным если на момент окончания
+раунда у игрока не осталось free shots (неважно из самого FRBonus или докупленных из win) и special weapons
+
+Если на сервере FRBGameSession закрывается по окнчании раунда, то в FRBonus обновляются поля roundsLeft
+(тут возможна ситуация когда у него roundsLeft становится больше чем было rounds - что делать ?)
+FRBonus может быть закрыт по различным причинам, при этом на стороне MQ server side мы удаляем lasthand, лицензиату
+по необходимости отправляется FRBWin.
+
+
+По завершении FRB клиенту уходит сообщение FRBEnded c указанием суммы выиграша.
+
+Получив сообщение FRBEnded необходимо закрыть игрового клиента и из лобби повторно сделать запросы
+EnterLobby и GetRooms для получения списка real rooms. При этом возможна ситуация когда у игрока есть еще активные FRB и все вышеописанное повторится.

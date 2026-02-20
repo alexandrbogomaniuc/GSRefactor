@@ -1,0 +1,35 @@
+1. Реализация межсетевого общения между MQ и GS через thrift для добавление приватной комнаты на стороне MQ.
+Thrift структура класса BattlegroundPrivateRoom поля: MqUsername, bankId, buyIn, gameId, domainUrl
+Поместить в thrift сервис MQThriftService метод getPrivateRoomUrl(privateRoom : BattlegroundPrivateRoom), который ищет на стороне MQ в таблице BattlegroundPrivateRoomInfo приватную комнату. Если приватной комнаты нету или она не подходит(прошло больше 24 часов после последней активности или уже в этой комнате был отыгран раунд) то создается новая приватная комната с указанными параметрами.
+Возможный url, который вернет метод https://maxquest.com/startbattleground?privateRoom=asddsadczxczx13dsa, где privateRoom генерированное по username + +gameId + buyIn + currentTime
+
+2. Реализация персистинга приватных комнат
+Реализация сущности BGPrivateRoomInfo(экстендит от SingleNodeRoomInfo). Добавляются поля: ownerUsername, managerUsername, joinUrl, countGamesPlayed, lastPlayedRoundTime, privateRoomId. Реализация BattlegroundPrivateRoomPersister и BattlegroundPrivateRoomService и т.д. для этой сущности.
+Необходимые запросы к персистеру:
+2.1 Получить все комнаты принадлежащие конкретному ownerUsername с параметрами buyIn, gameId, buyIn, currency
+2.2 Получить все комнаты по privateRoomId
+2.3 Получить все комнаты, где ownerUsername не null
+2.4 Удалить комнату по roomId
+
+3. Создание контроллера для генерации url для входа в приватную комнату
+Реквест параметры контроллера: sessionKey, buyIn, gameId, bankId.
+Реализация контроллера:
+По sessionKey получаем данные от лицензиата(externalId и др.) о пользователе через CW auth.
+Отправляем запрос на MQ для получения ссылки на приватную комнату(с помощью сервиса, что мы реализовали в 1 пункте) и возвращаем результат на mqb сайт
+
+
+4. Реализация контроллера для запуска приватной комнаты
+Реализация на struts на подобие battlegroundstartv2 актиона. Реквест параметры: homeUrl, privateRoomId, lang.
+Валидация пришедших параметров, редирект на template.jsp. Добавить в template.jsp  метод возвращающий privateRoomId, будет использоваться фронтом и передаваться в ws сообщение GetBattlegroundStartGameUrlHandler.
+
+
+5. Реализация работы приватной комнаты на стороне MQ (общие моменты)
+5.1 Расширение протокола newgames/docs/src/BGCAF_Extends_Maxquest_ProtocolV2.adoc
+5.2 RoomInfo для каждой комнаты будет создаваться на основе одинаковых фиксированных RoomTemplate. У RoomTemplate добавить поле boolean privateRoom
+Ищем темплейты по bankId, gameType, currency, moneyType. battlegroundMode, buyIn в бд, и на основе вернувшегося темлейта создаем RoomInfo, если темплейта нету, то добавляем с этими параметрами.
+5.3 Процесс закрытия приватной комнаты будет осуществляться также как для обычной комнаты - при отсутсвии обсерверов и игроков в комнате.
+5.4 Инвалидирование приватной ссылки будет осуществляться удалением записи BGPrivateRoomInfo, таской которая будет выполняться каждый час или при попытке пользователя открыть игру по ссылке(если она уже невалидная по времени, но таска еще не успела удалить ее)
+
+
+
+

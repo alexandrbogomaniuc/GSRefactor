@@ -1,0 +1,2623 @@
+{
+    "mathVersion": "MABTG: V17",
+    "weaponDropsATargetEn": [
+        {
+            "type": "ArtilleryStrike",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "ArtilleryStrike",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "ArtilleryStrike",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Flamethrower",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Flamethrower",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Flamethrower",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Cryogun",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Cryogun",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Cryogun",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Ricochet",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Ricochet",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Ricochet",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Plasma",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Plasma",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Plasma",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "LevelUp",
+            "amount": 20,
+            "weight": 95
+        }
+    ],
+    "weaponDropsATargetBoss": [
+        {
+            "type": "ArtilleryStrike",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "ArtilleryStrike",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "ArtilleryStrike",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Flamethrower",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Flamethrower",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Flamethrower",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Cryogun",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Cryogun",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Cryogun",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Ricochet",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Ricochet",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Ricochet",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Plasma",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Plasma",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Plasma",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "LevelUp",
+            "amount": 20,
+            "weight": 95
+        }
+    ],
+    "weaponDropsBTargetEn": [
+        {
+            "type": "ArtilleryStrike",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "ArtilleryStrike",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "ArtilleryStrike",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Flamethrower",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Flamethrower",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Flamethrower",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Cryogun",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Cryogun",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Cryogun",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Ricochet",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Ricochet",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Ricochet",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Plasma",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Plasma",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Plasma",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "LevelUp",
+            "amount": 0,
+            "weight": 0
+        }
+    ],
+    "weaponDropsBTargetBoss": [
+        {
+            "type": "ArtilleryStrike",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "ArtilleryStrike",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "ArtilleryStrike",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Flamethrower",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Flamethrower",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Flamethrower",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Cryogun",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Cryogun",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Cryogun",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Ricochet",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Ricochet",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Ricochet",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "Plasma",
+            "amount": 5,
+            "weight": 12
+        },
+        {
+            "type": "Plasma",
+            "amount": 6,
+            "weight": 8
+        },
+        {
+            "type": "Plasma",
+            "amount": 7,
+            "weight": 1
+        },
+        {
+            "type": "LevelUp",
+            "amount": 0,
+            "weight": 0
+        }
+    ],
+    "turretTargetsEn": {
+        "1": 100
+    },
+    "weaponTargetsEn": {
+        "ArtilleryStrike": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 3,
+            "6": 7,
+            "7": 7,
+            "8": 8,
+            "9": 12,
+            "10": 14,
+            "11": 13,
+            "12": 12,
+            "13": 10,
+            "14": 5,
+            "15": 3,
+            "16": 3,
+            "17": 2,
+            "18": 1,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0
+        },
+        "Flamethrower": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 12,
+            "7": 12,
+            "8": 12,
+            "9": 16,
+            "10": 18,
+            "11": 18,
+            "12": 7,
+            "13": 4,
+            "14": 1,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0
+        },
+        "Cryogun": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 9,
+            "6": 7,
+            "7": 13,
+            "8": 13,
+            "9": 30,
+            "10": 17,
+            "11": 5,
+            "12": 4,
+            "13": 2,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0
+        },
+        "Ricochet": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 5,
+            "5": 5,
+            "6": 10,
+            "7": 40,
+            "8": 25,
+            "9": 10,
+            "10": 5,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0
+        },
+        "Plasma": {
+            "1": 40,
+            "2": 9,
+            "3": 8,
+            "4": 8,
+            "5": 8,
+            "6": 7,
+            "7": 5,
+            "8": 5,
+            "9": 5,
+            "10": 5,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0
+        },
+        "LevelUp": {
+            "1": 100
+        }
+    },
+    "turretTargetsBoss": {
+        "1": 100
+    },
+    "weaponTargetsBoss": {
+        "ArtilleryStrike": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 12,
+            "6": 13,
+            "7": 11,
+            "8": 10,
+            "9": 9,
+            "10": 9,
+            "11": 12,
+            "12": 9,
+            "13": 2,
+            "14": 2,
+            "15": 2,
+            "16": 2,
+            "17": 2,
+            "18": 2,
+            "19": 1.5,
+            "20": 1.5,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0
+        },
+        "Flamethrower": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 21,
+            "6": 18,
+            "7": 17,
+            "8": 14,
+            "9": 11,
+            "10": 5,
+            "11": 5,
+            "12": 4,
+            "13": 3,
+            "14": 1,
+            "15": 1,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0
+        },
+        "Cryogun": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 34,
+            "6": 34,
+            "7": 8,
+            "8": 6,
+            "9": 6,
+            "10": 5.5,
+            "11": 4,
+            "12": 1,
+            "13": 1,
+            "14": 0.5,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0
+        },
+        "Ricochet": {
+            "1": 0,
+            "2": 0,
+            "3": 9,
+            "4": 30,
+            "5": 35,
+            "6": 10,
+            "7": 8,
+            "8": 5,
+            "9": 2,
+            "10": 1,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0
+        },
+        "Plasma": {
+            "1": 8,
+            "2": 22,
+            "3": 29,
+            "4": 13,
+            "5": 12,
+            "6": 7,
+            "7": 4,
+            "8": 4,
+            "9": 1,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0
+        },
+        "LevelUp": {
+            "1": 100
+        }
+    },
+    "criticalHitTurretMultipliersTargetEn": {
+        "1": 100,
+        "2": 0,
+        "3": 0
+    },
+    "criticalHitMultipliersTargetEn": {
+        "ArtilleryStrike": {
+            "1": 92.5,
+            "2": 4,
+            "3": 3.5
+        },
+        "Flamethrower": {
+            "1": 90.5,
+            "2": 5,
+            "3": 4.5
+        },
+        "Cryogun": {
+            "1": 88.5,
+            "2": 6,
+            "3": 5.5
+        },
+        "Ricochet": {
+            "1": 84,
+            "2": 9,
+            "3": 7
+        },
+        "Plasma": {
+            "1": 82,
+            "2": 10,
+            "3": 8
+        },
+        "LevelUp": {
+            "1": 100,
+            "2": 0,
+            "3": 0
+        }
+    },
+    "criticalHitTurretMultipliersTargetBoss": {
+        "1": 100,
+        "2": 0,
+        "3": 0
+    },
+    "criticalHitMultipliersTargetBoss": {
+        "ArtilleryStrike": {
+            "1": 92.5,
+            "2": 4,
+            "3": 3.5
+        },
+        "Flamethrower": {
+            "1": 90.5,
+            "2": 5,
+            "3": 4.5
+        },
+        "Cryogun": {
+            "1": 88.5,
+            "2": 6,
+            "3": 5.5
+        },
+        "Ricochet": {
+            "1": 84,
+            "2": 9,
+            "3": 7
+        },
+        "Plasma": {
+            "1": 82,
+            "2": 10,
+            "3": 8
+        },
+        "LevelUp": {
+            "1": 100,
+            "2": 0,
+            "3": 0
+        }
+    },
+    "enemies": {
+        "SKULL_BREAKER": [
+            {
+                "payout": 45,
+                "baseTurretKillProb": 0.0404444444444444,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.0674074074074074,
+                    "Flamethrower": 0.0622222222222222,
+                    "Cryogun": 0.0594771241830065,
+                    "Ricochet": 0.0561728395061728,
+                    "Plasma": 0.0674074074074074,
+                    "LevelUp": 0.0425730994152047
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.0674074074074074,
+                    "Flamethrower": 0.0622222222222222,
+                    "Cryogun": 0.0594771241830065,
+                    "Ricochet": 0.0561728395061728,
+                    "Plasma": 0.0674074074074074,
+                    "LevelUp": 0.0425730994152047
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "JAGUAR": [
+            {
+                "payout": 40,
+                "baseTurretKillProb": 0.0455,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.0758333333333333,
+                    "Flamethrower": 0.07,
+                    "Cryogun": 0.0669117647058823,
+                    "Ricochet": 0.0631944444444445,
+                    "Plasma": 0.0758333333333333,
+                    "LevelUp": 0.0478947368421053
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.0758333333333333,
+                    "Flamethrower": 0.07,
+                    "Cryogun": 0.0669117647058823,
+                    "Ricochet": 0.0631944444444445,
+                    "Plasma": 0.0758333333333333,
+                    "LevelUp": 0.0478947368421053
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "GUARDIAN": [
+            {
+                "payout": 35,
+                "baseTurretKillProb": 0.052,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.0866666666666667,
+                    "Flamethrower": 0.08,
+                    "Cryogun": 0.0764705882352941,
+                    "Ricochet": 0.0722222222222222,
+                    "Plasma": 0.0866666666666667,
+                    "LevelUp": 0.0547368421052632
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.0866666666666667,
+                    "Flamethrower": 0.08,
+                    "Cryogun": 0.0764705882352941,
+                    "Ricochet": 0.0722222222222222,
+                    "Plasma": 0.0866666666666667,
+                    "LevelUp": 0.0547368421052632
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "ARMED_WARRIOR": [
+            {
+                "payout": 30,
+                "baseTurretKillProb": 0.0606666666666667,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.101111111111111,
+                    "Flamethrower": 0.0933333333333333,
+                    "Cryogun": 0.0892156862745098,
+                    "Ricochet": 0.0842592592592593,
+                    "Plasma": 0.101111111111111,
+                    "LevelUp": 0.063859649122807
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.101111111111111,
+                    "Flamethrower": 0.0933333333333333,
+                    "Cryogun": 0.0892156862745098,
+                    "Ricochet": 0.0842592592592593,
+                    "Plasma": 0.101111111111111,
+                    "LevelUp": 0.063859649122807
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "SCORPION": [
+            {
+                "payout": 25,
+                "baseTurretKillProb": 0.0728,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.121333333333333,
+                    "Flamethrower": 0.112,
+                    "Cryogun": 0.107058823529412,
+                    "Ricochet": 0.101111111111111,
+                    "Plasma": 0.121333333333333,
+                    "LevelUp": 0.0766315789473684
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.121333333333333,
+                    "Flamethrower": 0.112,
+                    "Cryogun": 0.107058823529412,
+                    "Ricochet": 0.101111111111111,
+                    "Plasma": 0.121333333333333,
+                    "LevelUp": 0.0766315789473684
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "EXPLODING_TOAD": [
+            {
+                "payout": 22,
+                "baseTurretKillProb": 0.0827272727272727,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.137878787878788,
+                    "Flamethrower": 0.127272727272727,
+                    "Cryogun": 0.121657754010695,
+                    "Ricochet": 0.11489898989899,
+                    "Plasma": 0.137878787878788,
+                    "LevelUp": 0.0870813397129187
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.137878787878788,
+                    "Flamethrower": 0.127272727272727,
+                    "Cryogun": 0.121657754010695,
+                    "Ricochet": 0.11489898989899,
+                    "Plasma": 0.137878787878788,
+                    "LevelUp": 0.0870813397129187
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "RUNNER": [
+            {
+                "payout": 20,
+                "baseTurretKillProb": 0.091,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.151666666666667,
+                    "Flamethrower": 0.14,
+                    "Cryogun": 0.133823529411765,
+                    "Ricochet": 0.126388888888889,
+                    "Plasma": 0.151666666666667,
+                    "LevelUp": 0.0957894736842105
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.151666666666667,
+                    "Flamethrower": 0.14,
+                    "Cryogun": 0.133823529411765,
+                    "Ricochet": 0.126388888888889,
+                    "Plasma": 0.151666666666667,
+                    "LevelUp": 0.0957894736842105
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "PLANT_1": [
+            {
+                "payout": 18,
+                "baseTurretKillProb": 0.101111111111111,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.168518518518519,
+                    "Flamethrower": 0.155555555555556,
+                    "Cryogun": 0.148692810457516,
+                    "Ricochet": 0.140432098765432,
+                    "Plasma": 0.168518518518519,
+                    "LevelUp": 0.106432748538012
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.168518518518519,
+                    "Flamethrower": 0.155555555555556,
+                    "Cryogun": 0.148692810457516,
+                    "Ricochet": 0.140432098765432,
+                    "Plasma": 0.168518518518519,
+                    "LevelUp": 0.106432748538012
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "PLANT_2": [
+            {
+                "payout": 16,
+                "baseTurretKillProb": 0.11375,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.189583333333333,
+                    "Flamethrower": 0.175,
+                    "Cryogun": 0.167279411764706,
+                    "Ricochet": 0.157986111111111,
+                    "Plasma": 0.189583333333333,
+                    "LevelUp": 0.119736842105263
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.189583333333333,
+                    "Flamethrower": 0.175,
+                    "Cryogun": 0.167279411764706,
+                    "Ricochet": 0.157986111111111,
+                    "Plasma": 0.189583333333333,
+                    "LevelUp": 0.119736842105263
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "FLOWERS_1": [
+            {
+                "payout": 14,
+                "baseTurretKillProb": 0.13,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.216666666666667,
+                    "Flamethrower": 0.2,
+                    "Cryogun": 0.191176470588235,
+                    "Ricochet": 0.180555555555556,
+                    "Plasma": 0.216666666666667,
+                    "LevelUp": 0.136842105263158
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.216666666666667,
+                    "Flamethrower": 0.2,
+                    "Cryogun": 0.191176470588235,
+                    "Ricochet": 0.180555555555556,
+                    "Plasma": 0.216666666666667,
+                    "LevelUp": 0.136842105263158
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "FLOWERS_2": [
+            {
+                "payout": 12,
+                "baseTurretKillProb": 0.151666666666667,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.252777777777778,
+                    "Flamethrower": 0.233333333333333,
+                    "Cryogun": 0.223039215686274,
+                    "Ricochet": 0.210648148148148,
+                    "Plasma": 0.252777777777778,
+                    "LevelUp": 0.159649122807018
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.252777777777778,
+                    "Flamethrower": 0.233333333333333,
+                    "Cryogun": 0.223039215686274,
+                    "Ricochet": 0.210648148148148,
+                    "Plasma": 0.252777777777778,
+                    "LevelUp": 0.159649122807018
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "WITCH": [
+            {
+                "payout": 16,
+                "baseTurretKillProb": 0.11375,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.189583333333333,
+                    "Flamethrower": 0.175,
+                    "Cryogun": 0.167279411764706,
+                    "Ricochet": 0.157986111111111,
+                    "Plasma": 0.189583333333333,
+                    "LevelUp": 0.119736842105263
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.189583333333333,
+                    "Flamethrower": 0.175,
+                    "Cryogun": 0.167279411764706,
+                    "Ricochet": 0.157986111111111,
+                    "Plasma": 0.189583333333333,
+                    "LevelUp": 0.119736842105263
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "SERPENT": [
+            {
+                "payout": 8,
+                "baseTurretKillProb": 0.2275,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.379166666666667,
+                    "Flamethrower": 0.35,
+                    "Cryogun": 0.334558823529412,
+                    "Ricochet": 0.315972222222222,
+                    "Plasma": 0.379166666666667,
+                    "LevelUp": 0.239473684210526
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.379166666666667,
+                    "Flamethrower": 0.35,
+                    "Cryogun": 0.334558823529412,
+                    "Ricochet": 0.315972222222222,
+                    "Plasma": 0.379166666666667,
+                    "LevelUp": 0.239473684210526
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "WASP": [
+            {
+                "payout": 6,
+                "baseTurretKillProb": 0.303333333333333,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.505555555555556,
+                    "Flamethrower": 0.466666666666667,
+                    "Cryogun": 0.446078431372549,
+                    "Ricochet": 0.421296296296296,
+                    "Plasma": 0.505555555555556,
+                    "LevelUp": 0.319298245614035
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.505555555555556,
+                    "Flamethrower": 0.466666666666667,
+                    "Cryogun": 0.446078431372549,
+                    "Ricochet": 0.421296296296296,
+                    "Plasma": 0.505555555555556,
+                    "LevelUp": 0.319298245614035
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "TINY_TOAD": [
+            {
+                "payout": 4,
+                "baseTurretKillProb": 0.455,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.758333333333334,
+                    "Flamethrower": 0.7,
+                    "Cryogun": 0.669117647058823,
+                    "Ricochet": 0.631944444444445,
+                    "Plasma": 0.758333333333334,
+                    "LevelUp": 0.478947368421053
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.758333333333334,
+                    "Flamethrower": 0.7,
+                    "Cryogun": 0.669117647058823,
+                    "Ricochet": 0.631944444444445,
+                    "Plasma": 0.758333333333334,
+                    "LevelUp": 0.478947368421053
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "ANT": [
+            {
+                "payout": 2,
+                "baseTurretKillProb": 0.91,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 1,
+                    "Flamethrower": 1,
+                    "Cryogun": 1,
+                    "Ricochet": 1,
+                    "Plasma": 1,
+                    "LevelUp": 0.957894736842105
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 1,
+                    "Flamethrower": 1,
+                    "Cryogun": 1,
+                    "Ricochet": 1,
+                    "Plasma": 1,
+                    "LevelUp": 0.957894736842105
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "WEAPON_CARRIER_1": [
+            {
+                "payout": 0,
+                "baseTurretKillProb": 0.0222222222222222,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.037037037037037,
+                    "Flamethrower": 0.0341880341880342,
+                    "Cryogun": 0.0326797385620915,
+                    "Ricochet": 0.0308641975308642,
+                    "Plasma": 0.037037037037037,
+                    "LevelUp": 0.0233918128654971
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.037037037037037,
+                    "Flamethrower": 0.0341880341880342,
+                    "Cryogun": 0.0326797385620915,
+                    "Ricochet": 0.0308641975308642,
+                    "Plasma": 0.037037037037037,
+                    "LevelUp": 0.0233918128654971
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "WEAPON_CARRIER_2": [
+            {
+                "payout": 0,
+                "baseTurretKillProb": 0.0263157894736842,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.043859649122807,
+                    "Flamethrower": 0.0404858299595142,
+                    "Cryogun": 0.0386996904024768,
+                    "Ricochet": 0.0365497076023392,
+                    "Plasma": 0.043859649122807,
+                    "LevelUp": 0.0277008310249307
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.043859649122807,
+                    "Flamethrower": 0.0404858299595142,
+                    "Cryogun": 0.0386996904024768,
+                    "Ricochet": 0.0365497076023392,
+                    "Plasma": 0.043859649122807,
+                    "LevelUp": 0.0277008310249307
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "WEAPON_CARRIER_3": [
+            {
+                "payout": 0,
+                "baseTurretKillProb": 0.0303030303030303,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.0505050505050505,
+                    "Flamethrower": 0.0466200466200466,
+                    "Cryogun": 0.0445632798573975,
+                    "Ricochet": 0.0420875420875421,
+                    "Plasma": 0.0505050505050505,
+                    "LevelUp": 0.0318979266347687
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.0505050505050505,
+                    "Flamethrower": 0.0466200466200466,
+                    "Cryogun": 0.0445632798573975,
+                    "Ricochet": 0.0420875420875421,
+                    "Plasma": 0.0505050505050505,
+                    "LevelUp": 0.0318979266347687
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "WEAPON_CARRIER_4": [
+            {
+                "payout": 0,
+                "baseTurretKillProb": 0.0333333333333333,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.0555555555555556,
+                    "Flamethrower": 0.0512820512820513,
+                    "Cryogun": 0.0490196078431372,
+                    "Ricochet": 0.0462962962962963,
+                    "Plasma": 0.0555555555555556,
+                    "LevelUp": 0.0350877192982456
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.0555555555555556,
+                    "Flamethrower": 0.0512820512820513,
+                    "Cryogun": 0.0490196078431372,
+                    "Ricochet": 0.0462962962962963,
+                    "Plasma": 0.0555555555555556,
+                    "LevelUp": 0.0350877192982456
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ],
+        "WEAPON_CARRIER_5": [
+            {
+                "payout": 0,
+                "baseTurretKillProb": 0.0357142857142857,
+                "killProbabilitiesTargetEn": {
+                    "ArtilleryStrike": 0.0595238095238095,
+                    "Flamethrower": 0.0549450549450549,
+                    "Cryogun": 0.0525210084033613,
+                    "Ricochet": 0.0496031746031746,
+                    "Plasma": 0.0595238095238095,
+                    "LevelUp": 0.037593984962406
+                },
+                "killProbabilitiesTargetBoss": {
+                    "ArtilleryStrike": 0.0595238095238095,
+                    "Flamethrower": 0.0549450549450549,
+                    "Cryogun": 0.0525210084033613,
+                    "Ricochet": 0.0496031746031746,
+                    "Plasma": 0.0595238095238095,
+                    "LevelUp": 0.037593984962406
+                },
+                "baseTurretSWDrop": 0.00706118394140678,
+                "enabled": true
+            }
+        ]
+    },
+    "bossParams": {
+        "pickBossProbabilities": {
+            "1": 40,
+            "2": 35,
+            "3": 25
+        },
+        "defeatMultiplier": {
+            "2": 1
+        },
+        "bossPays": {
+            "partialPaysWeightsTurret": {
+                "1": 0,
+                "2": 7,
+                "3": 8,
+                "4": 9,
+                "5": 10,
+                "6": 12,
+                "7": 16,
+                "8": 18,
+                "9": 16,
+                "10": 12,
+                "11": 10,
+                "12": 8,
+                "13": 5,
+                "14": 5,
+                "15": 3,
+                "16": 0,
+                "17": 0,
+                "18": 0,
+                "19": 0,
+                "20": 0,
+                "21": 0,
+                "22": 0,
+                "23": 0,
+                "24": 0,
+                "25": 0,
+                "26": 0,
+                "27": 0,
+                "28": 0,
+                "29": 0,
+                "30": 0,
+                "31": 0,
+                "32": 0,
+                "33": 0,
+                "34": 0,
+                "35": 0,
+                "36": 0,
+                "37": 0,
+                "38": 0,
+                "39": 0,
+                "40": 0,
+                "41": 0,
+                "42": 0,
+                "43": 0,
+                "44": 0,
+                "45": 0,
+                "46": 0,
+                "47": 0,
+                "48": 0,
+                "49": 0,
+                "50": 0
+            },
+            "partialPaysWeights": {
+                "ArtilleryStrike": {
+                    "1": 0,
+                    "2": 7,
+                    "3": 8,
+                    "4": 9,
+                    "5": 10,
+                    "6": 12,
+                    "7": 16,
+                    "8": 18,
+                    "9": 16,
+                    "10": 12,
+                    "11": 10,
+                    "12": 8,
+                    "13": 5,
+                    "14": 5,
+                    "15": 3,
+                    "16": 0,
+                    "17": 0,
+                    "18": 0,
+                    "19": 0,
+                    "20": 0,
+                    "21": 0,
+                    "22": 0,
+                    "23": 0,
+                    "24": 0,
+                    "25": 0,
+                    "26": 0,
+                    "27": 0,
+                    "28": 0,
+                    "29": 0,
+                    "30": 0,
+                    "31": 0,
+                    "32": 0,
+                    "33": 0,
+                    "34": 0,
+                    "35": 0,
+                    "36": 0,
+                    "37": 0,
+                    "38": 0,
+                    "39": 0,
+                    "40": 0,
+                    "41": 0,
+                    "42": 0,
+                    "43": 0,
+                    "44": 0,
+                    "45": 0,
+                    "46": 0,
+                    "47": 0,
+                    "48": 0,
+                    "49": 0,
+                    "50": 0
+                },
+                "Flamethrower": {
+                    "1": 0,
+                    "2": 7,
+                    "3": 8,
+                    "4": 9,
+                    "5": 10,
+                    "6": 12,
+                    "7": 16,
+                    "8": 18,
+                    "9": 16,
+                    "10": 12,
+                    "11": 10,
+                    "12": 8,
+                    "13": 5,
+                    "14": 5,
+                    "15": 3,
+                    "16": 0,
+                    "17": 0,
+                    "18": 0,
+                    "19": 0,
+                    "20": 0,
+                    "21": 0,
+                    "22": 0,
+                    "23": 0,
+                    "24": 0,
+                    "25": 0,
+                    "26": 0,
+                    "27": 0,
+                    "28": 0,
+                    "29": 0,
+                    "30": 0,
+                    "31": 0,
+                    "32": 0,
+                    "33": 0,
+                    "34": 0,
+                    "35": 0,
+                    "36": 0,
+                    "37": 0,
+                    "38": 0,
+                    "39": 0,
+                    "40": 0,
+                    "41": 0,
+                    "42": 0,
+                    "43": 0,
+                    "44": 0,
+                    "45": 0,
+                    "46": 0,
+                    "47": 0,
+                    "48": 0,
+                    "49": 0,
+                    "50": 0
+                },
+                "Cryogun": {
+                    "1": 0,
+                    "2": 7,
+                    "3": 8,
+                    "4": 9,
+                    "5": 10,
+                    "6": 12,
+                    "7": 16,
+                    "8": 18,
+                    "9": 16,
+                    "10": 12,
+                    "11": 10,
+                    "12": 8,
+                    "13": 5,
+                    "14": 5,
+                    "15": 3,
+                    "16": 0,
+                    "17": 0,
+                    "18": 0,
+                    "19": 0,
+                    "20": 0,
+                    "21": 0,
+                    "22": 0,
+                    "23": 0,
+                    "24": 0,
+                    "25": 0,
+                    "26": 0,
+                    "27": 0,
+                    "28": 0,
+                    "29": 0,
+                    "30": 0,
+                    "31": 0,
+                    "32": 0,
+                    "33": 0,
+                    "34": 0,
+                    "35": 0,
+                    "36": 0,
+                    "37": 0,
+                    "38": 0,
+                    "39": 0,
+                    "40": 0,
+                    "41": 0,
+                    "42": 0,
+                    "43": 0,
+                    "44": 0,
+                    "45": 0,
+                    "46": 0,
+                    "47": 0,
+                    "48": 0,
+                    "49": 0,
+                    "50": 0
+                },
+                "Ricochet": {
+                    "1": 0,
+                    "2": 7,
+                    "3": 8,
+                    "4": 9,
+                    "5": 10,
+                    "6": 12,
+                    "7": 16,
+                    "8": 18,
+                    "9": 16,
+                    "10": 12,
+                    "11": 10,
+                    "12": 8,
+                    "13": 5,
+                    "14": 5,
+                    "15": 3,
+                    "16": 0,
+                    "17": 0,
+                    "18": 0,
+                    "19": 0,
+                    "20": 0,
+                    "21": 0,
+                    "22": 0,
+                    "23": 0,
+                    "24": 0,
+                    "25": 0,
+                    "26": 0,
+                    "27": 0,
+                    "28": 0,
+                    "29": 0,
+                    "30": 0,
+                    "31": 0,
+                    "32": 0,
+                    "33": 0,
+                    "34": 0,
+                    "35": 0,
+                    "36": 0,
+                    "37": 0,
+                    "38": 0,
+                    "39": 0,
+                    "40": 0,
+                    "41": 0,
+                    "42": 0,
+                    "43": 0,
+                    "44": 0,
+                    "45": 0,
+                    "46": 0,
+                    "47": 0,
+                    "48": 0,
+                    "49": 0,
+                    "50": 0
+                },
+                "Plasma": {
+                    "1": 0,
+                    "2": 7,
+                    "3": 8,
+                    "4": 9,
+                    "5": 10,
+                    "6": 12,
+                    "7": 16,
+                    "8": 18,
+                    "9": 16,
+                    "10": 12,
+                    "11": 10,
+                    "12": 8,
+                    "13": 5,
+                    "14": 5,
+                    "15": 3,
+                    "16": 0,
+                    "17": 0,
+                    "18": 0,
+                    "19": 0,
+                    "20": 0,
+                    "21": 0,
+                    "22": 0,
+                    "23": 0,
+                    "24": 0,
+                    "25": 0,
+                    "26": 0,
+                    "27": 0,
+                    "28": 0,
+                    "29": 0,
+                    "30": 0,
+                    "31": 0,
+                    "32": 0,
+                    "33": 0,
+                    "34": 0,
+                    "35": 0,
+                    "36": 0,
+                    "37": 0,
+                    "38": 0,
+                    "39": 0,
+                    "40": 0,
+                    "41": 0,
+                    "42": 0,
+                    "43": 0,
+                    "44": 0,
+                    "45": 0,
+                    "46": 0,
+                    "47": 0,
+                    "48": 0,
+                    "49": 0,
+                    "50": 0
+                },
+                "LevelUp": {
+                    "1": 0,
+                    "2": 7,
+                    "3": 8,
+                    "4": 9,
+                    "5": 10,
+                    "6": 12,
+                    "7": 16,
+                    "8": 18,
+                    "9": 16,
+                    "10": 12,
+                    "11": 10,
+                    "12": 8,
+                    "13": 5,
+                    "14": 5,
+                    "15": 3,
+                    "16": 0,
+                    "17": 0,
+                    "18": 0,
+                    "19": 0,
+                    "20": 0,
+                    "21": 0,
+                    "22": 0,
+                    "23": 0,
+                    "24": 0,
+                    "25": 0,
+                    "26": 0,
+                    "27": 0,
+                    "28": 0,
+                    "29": 0,
+                    "30": 0,
+                    "31": 0,
+                    "32": 0,
+                    "33": 0,
+                    "34": 0,
+                    "35": 0,
+                    "36": 0,
+                    "37": 0,
+                    "38": 0,
+                    "39": 0,
+                    "40": 0,
+                    "41": 0,
+                    "42": 0,
+                    "43": 0,
+                    "44": 0,
+                    "45": 0,
+                    "46": 0,
+                    "47": 0,
+                    "48": 0,
+                    "49": 0,
+                    "50": 0
+                }
+            },
+            "partialPaysProbTurretTargetBoss": {
+                "1": 1,
+                "2": 1,
+                "3": 0.909918137783736,
+                "4": 0.68243859763529,
+                "5": 0.545950875371026,
+                "6": 0.454959061288518,
+                "7": 0.38996490874485,
+                "8": 0.341219294540761,
+                "9": 0.303306039169379,
+                "10": 0.272975434948307,
+                "11": 0.248159486090427,
+                "12": 0.227479528743422,
+                "13": 0.209981103320495,
+                "14": 0.194982452975891,
+                "15": 0.181983622690603,
+                "16": 0.170609646201159,
+                "17": 0.160573784600719,
+                "18": 0.151653018739873,
+                "19": 0.143671280869335,
+                "20": 0.136487716789852,
+                "21": 0.129988301673587,
+                "22": 0.124079742479675,
+                "23": 0.118684971043996,
+                "24": 0.113739763896501,
+                "25": 0.109190173322393,
+                "26": 0.104990551255336,
+                "27": 0.101102012305511,
+                "28": 0.0974912261388123,
+                "29": 0.0941294597086087,
+                "30": 0.0909918110411676,
+                "31": 0.0880565913206679,
+                "32": 0.0853048228332743,
+                "33": 0.0827198281941083,
+                "34": 0.0802868920635769,
+                "35": 0.0779929808551885,
+                "36": 0.0758265091587322,
+                "37": 0.0737771440407801,
+                "38": 0.0718356402451101,
+                "39": 0.0699937007469099,
+                "40": 0.0682438582238506,
+                "41": 0.0665793738728566,
+                "42": 0.064994150681623,
+                "43": 0.0634826588017815,
+                "44": 0.062039871098453,
+                "45": 0.0606612072931931,
+                "46": 0.0593424853926404,
+                "47": 0.0580798793177628,
+                "48": 0.0568698818294484,
+                "49": 0.0557092719938193,
+                "50": 0.0545950865517084
+            },
+            "partialPaysProbTargetEn": {
+                "ArtilleryStrike": {
+                    "1": 1,
+                    "2": 1,
+                    "3": 1,
+                    "4": 0.758265108483655,
+                    "5": 0.606612083745584,
+                    "6": 0.505510068098354,
+                    "7": 0.433294343049834,
+                    "8": 0.379132549489734,
+                    "9": 0.337006710188199,
+                    "10": 0.303306038831452,
+                    "11": 0.275732762322697,
+                    "12": 0.252755031937135,
+                    "13": 0.233312337022773,
+                    "14": 0.216647169973213,
+                    "15": 0.202204025211781,
+                    "16": 0.189566273556843,
+                    "17": 0.178415316223021,
+                    "18": 0.168503354155414,
+                    "19": 0.159634756521483,
+                    "20": 0.151653018655391,
+                    "21": 0.144431446303985,
+                    "22": 0.137866380532972,
+                    "23": 0.131872190048884,
+                    "24": 0.126377515440557,
+                    "25": 0.121322414802659,
+                    "26": 0.116656168061484,
+                    "27": 0.112335569228346,
+                    "28": 0.10832358459868,
+                    "29": 0.104588288565121,
+                    "30": 0.101102012267964,
+                    "31": 0.0978406570229644,
+                    "32": 0.0947831364814159,
+                    "33": 0.0919109202156759,
+                    "34": 0.0892076578484188,
+                    "35": 0.0866588676168761,
+                    "36": 0.0842516768430358,
+                    "37": 0.0819746044897557,
+                    "38": 0.0798173780501223,
+                    "39": 0.0777707786076777,
+                    "40": 0.0758265091376118,
+                    "41": 0.0739770820809518,
+                    "42": 0.0722157229795811,
+                    "43": 0.070536287557535,
+                    "44": 0.0689331901093922,
+                    "45": 0.0674013414368812,
+                    "46": 0.0659360948807115,
+                    "47": 0.0645331992419587,
+                    "48": 0.063188757588276,
+                    "49": 0.0618991911042436,
+                    "50": 0.060661207279676
+                },
+                "Flamethrower": {
+                    "1": 1,
+                    "2": 1,
+                    "3": 0.989041454112757,
+                    "4": 0.741781084386185,
+                    "5": 0.593424864533724,
+                    "6": 0.494520718791868,
+                    "7": 0.42387490080962,
+                    "8": 0.370890537544305,
+                    "9": 0.32968047735802,
+                    "10": 0.296712429291638,
+                    "11": 0.269738571837421,
+                    "12": 0.247260357329806,
+                    "13": 0.228240329696191,
+                    "14": 0.211937448886839,
+                    "15": 0.197808285533264,
+                    "16": 0.185445267609956,
+                    "17": 0.174536722392086,
+                    "18": 0.164840237760731,
+                    "19": 0.156164435727538,
+                    "20": 0.148356213902013,
+                    "21": 0.141291632253899,
+                    "22": 0.134869285303995,
+                    "23": 0.129005403308691,
+                    "24": 0.123630178148371,
+                    "25": 0.118684971002601,
+                    "26": 0.114120164407973,
+                    "27": 0.109893491636425,
+                    "28": 0.105968724063926,
+                    "29": 0.102314630118053,
+                    "30": 0.0989041424360518,
+                    "31": 0.0957136862181173,
+                    "32": 0.0927226335144286,
+                    "33": 0.0899128567327264,
+                    "34": 0.0872683609386706,
+                    "35": 0.0847749791904223,
+                    "36": 0.0824201186507959,
+                    "37": 0.0801925478704131,
+                    "38": 0.0780822176577283,
+                    "39": 0.0760801095075108,
+                    "40": 0.074178106765055,
+                    "41": 0.0723688846444094,
+                    "42": 0.0706458159582859,
+                    "43": 0.0690028900019364,
+                    "44": 0.0674346424983185,
+                    "45": 0.0659360948839055,
+                    "46": 0.0645027015137395,
+                    "47": 0.0631303036062639,
+                    "48": 0.0618150889450526,
+                    "49": 0.060553556515021,
+                    "50": 0.0593424853822918
+                },
+                "Cryogun": {
+                    "1": 1,
+                    "2": 1,
+                    "3": 1,
+                    "4": 0.758265108483655,
+                    "5": 0.606612083745584,
+                    "6": 0.505510068098354,
+                    "7": 0.433294343049834,
+                    "8": 0.379132549489734,
+                    "9": 0.337006710188199,
+                    "10": 0.303306038831452,
+                    "11": 0.275732762322697,
+                    "12": 0.252755031937135,
+                    "13": 0.233312337022773,
+                    "14": 0.216647169973213,
+                    "15": 0.202204025211781,
+                    "16": 0.189566273556843,
+                    "17": 0.178415316223021,
+                    "18": 0.168503354155414,
+                    "19": 0.159634756521483,
+                    "20": 0.151653018655391,
+                    "21": 0.144431446303985,
+                    "22": 0.137866380532972,
+                    "23": 0.131872190048884,
+                    "24": 0.126377515440557,
+                    "25": 0.121322414802659,
+                    "26": 0.116656168061484,
+                    "27": 0.112335569228346,
+                    "28": 0.10832358459868,
+                    "29": 0.104588288565121,
+                    "30": 0.101102012267964,
+                    "31": 0.0978406570229644,
+                    "32": 0.0947831364814159,
+                    "33": 0.0919109202156759,
+                    "34": 0.0892076578484188,
+                    "35": 0.0866588676168761,
+                    "36": 0.0842516768430358,
+                    "37": 0.0819746044897557,
+                    "38": 0.0798173780501223,
+                    "39": 0.0777707786076777,
+                    "40": 0.0758265091376118,
+                    "41": 0.0739770820809518,
+                    "42": 0.0722157229795811,
+                    "43": 0.070536287557535,
+                    "44": 0.0689331901093922,
+                    "45": 0.0674013414368812,
+                    "46": 0.0659360948807115,
+                    "47": 0.0645331992419587,
+                    "48": 0.063188757588276,
+                    "49": 0.0618991911042436,
+                    "50": 0.060661207279676
+                },
+                "Ricochet": {
+                    "1": 1,
+                    "2": 1,
+                    "3": 1,
+                    "4": 0.758265108483655,
+                    "5": 0.606612083745584,
+                    "6": 0.505510068098354,
+                    "7": 0.433294343049834,
+                    "8": 0.379132549489734,
+                    "9": 0.337006710188199,
+                    "10": 0.303306038831452,
+                    "11": 0.275732762322697,
+                    "12": 0.252755031937135,
+                    "13": 0.233312337022773,
+                    "14": 0.216647169973213,
+                    "15": 0.202204025211781,
+                    "16": 0.189566273556843,
+                    "17": 0.178415316223021,
+                    "18": 0.168503354155414,
+                    "19": 0.159634756521483,
+                    "20": 0.151653018655391,
+                    "21": 0.144431446303985,
+                    "22": 0.137866380532972,
+                    "23": 0.131872190048884,
+                    "24": 0.126377515440557,
+                    "25": 0.121322414802659,
+                    "26": 0.116656168061484,
+                    "27": 0.112335569228346,
+                    "28": 0.10832358459868,
+                    "29": 0.104588288565121,
+                    "30": 0.101102012267964,
+                    "31": 0.0978406570229644,
+                    "32": 0.0947831364814159,
+                    "33": 0.0919109202156759,
+                    "34": 0.0892076578484188,
+                    "35": 0.0866588676168761,
+                    "36": 0.0842516768430358,
+                    "37": 0.0819746044897557,
+                    "38": 0.0798173780501223,
+                    "39": 0.0777707786076777,
+                    "40": 0.0758265091376118,
+                    "41": 0.0739770820809518,
+                    "42": 0.0722157229795811,
+                    "43": 0.070536287557535,
+                    "44": 0.0689331901093922,
+                    "45": 0.0674013414368812,
+                    "46": 0.0659360948807115,
+                    "47": 0.0645331992419587,
+                    "48": 0.063188757588276,
+                    "49": 0.0618991911042436,
+                    "50": 0.060661207279676
+                },
+                "Plasma": {
+                    "1": 1,
+                    "2": 1,
+                    "3": 1,
+                    "4": 0.758265108483655,
+                    "5": 0.606612083745584,
+                    "6": 0.505510068098354,
+                    "7": 0.433294343049834,
+                    "8": 0.379132549489734,
+                    "9": 0.337006710188199,
+                    "10": 0.303306038831452,
+                    "11": 0.275732762322697,
+                    "12": 0.252755031937135,
+                    "13": 0.233312337022773,
+                    "14": 0.216647169973213,
+                    "15": 0.202204025211781,
+                    "16": 0.189566273556843,
+                    "17": 0.178415316223021,
+                    "18": 0.168503354155414,
+                    "19": 0.159634756521483,
+                    "20": 0.151653018655391,
+                    "21": 0.144431446303985,
+                    "22": 0.137866380532972,
+                    "23": 0.131872190048884,
+                    "24": 0.126377515440557,
+                    "25": 0.121322414802659,
+                    "26": 0.116656168061484,
+                    "27": 0.112335569228346,
+                    "28": 0.10832358459868,
+                    "29": 0.104588288565121,
+                    "30": 0.101102012267964,
+                    "31": 0.0978406570229644,
+                    "32": 0.0947831364814159,
+                    "33": 0.0919109202156759,
+                    "34": 0.0892076578484188,
+                    "35": 0.0866588676168761,
+                    "36": 0.0842516768430358,
+                    "37": 0.0819746044897557,
+                    "38": 0.0798173780501223,
+                    "39": 0.0777707786076777,
+                    "40": 0.0758265091376118,
+                    "41": 0.0739770820809518,
+                    "42": 0.0722157229795811,
+                    "43": 0.070536287557535,
+                    "44": 0.0689331901093922,
+                    "45": 0.0674013414368812,
+                    "46": 0.0659360948807115,
+                    "47": 0.0645331992419587,
+                    "48": 0.063188757588276,
+                    "49": 0.0618991911042436,
+                    "50": 0.060661207279676
+                },
+                "LevelUp": {
+                    "1": 1,
+                    "2": 1,
+                    "3": 0.957808566088144,
+                    "4": 0.718356418563463,
+                    "5": 0.574685131969501,
+                    "6": 0.478904275040546,
+                    "7": 0.410489377626158,
+                    "8": 0.359178204779748,
+                    "9": 0.319269514915136,
+                    "10": 0.287342563103481,
+                    "11": 0.261220511674134,
+                    "12": 0.239452135519391,
+                    "13": 0.221032740337364,
+                    "14": 0.205244687343044,
+                    "15": 0.191561708095372,
+                    "16": 0.179589101264378,
+                    "17": 0.169025036421809,
+                    "18": 0.159634756568287,
+                    "19": 0.151232927230878,
+                    "20": 0.143671280831423,
+                    "21": 0.136829791235355,
+                    "22": 0.130610255241763,
+                    "23": 0.124931548467364,
+                    "24": 0.119726067259475,
+                    "25": 0.114937024549888,
+                    "26": 0.110516369742459,
+                    "27": 0.106423170847907,
+                    "28": 0.102622343304013,
+                    "29": 0.0990836417985354,
+                    "30": 0.0957808537275449,
+                    "31": 0.0926911487585979,
+                    "32": 0.0897945503508151,
+                    "33": 0.0870735033622193,
+                    "34": 0.0845125179616599,
+                    "35": 0.082097874584409,
+                    "36": 0.0798173780618234,
+                    "37": 0.0776601516218738,
+                    "38": 0.0756164634159053,
+                    "39": 0.0736775797335894,
+                    "40": 0.0718356402356322,
+                    "41": 0.0700835514451122,
+                    "42": 0.06841489545434,
+                    "43": 0.0668238513702963,
+                    "44": 0.0653051274720558,
+                    "45": 0.0638539024138875,
+                    "46": 0.0624657740975162,
+                    "47": 0.0611367150713293,
+                    "48": 0.0598630335046825,
+                    "49": 0.0586413389408624,
+                    "50": 0.0574685121596931
+                }
+            },
+            "partialPaysProbTargetBoss": {
+                "ArtilleryStrike": {
+                    "1": 1,
+                    "2": 1,
+                    "3": 1,
+                    "4": 0.853048247044112,
+                    "5": 0.682438594213782,
+                    "6": 0.568698826610648,
+                    "7": 0.487456135931063,
+                    "8": 0.426524118175951,
+                    "9": 0.379132548961723,
+                    "10": 0.341219293685384,
+                    "11": 0.310199357613034,
+                    "12": 0.284349410929277,
+                    "13": 0.262476379150619,
+                    "14": 0.243728066219864,
+                    "15": 0.227479528363254,
+                    "16": 0.213262057751449,
+                    "17": 0.200717230750899,
+                    "18": 0.189566273424841,
+                    "19": 0.179589101086668,
+                    "20": 0.170609645987315,
+                    "21": 0.162485377091984,
+                    "22": 0.155099678099594,
+                    "23": 0.148356213804995,
+                    "24": 0.142174704870627,
+                    "25": 0.136487716652992,
+                    "26": 0.131238189069169,
+                    "27": 0.126377515381889,
+                    "28": 0.121864032673515,
+                    "29": 0.117661824635761,
+                    "30": 0.11373976380146,
+                    "31": 0.110070739150835,
+                    "32": 0.106631028541593,
+                    "33": 0.103399785242635,
+                    "34": 0.100358615079471,
+                    "35": 0.0974912260689857,
+                    "36": 0.0947831364484153,
+                    "37": 0.0922214300509751,
+                    "38": 0.0897945503063876,
+                    "39": 0.0874921259336374,
+                    "40": 0.0853048227798133,
+                    "41": 0.0832242173410708,
+                    "42": 0.0812426883520288,
+                    "43": 0.0793533235022269,
+                    "44": 0.0775498388730663,
+                    "45": 0.0758265091164914,
+                    "46": 0.0741781067408005,
+                    "47": 0.0725998491472035,
+                    "48": 0.0710873522868105,
+                    "49": 0.0696365899922741,
+                    "50": 0.0682438581896355
+                },
+                "Flamethrower": {
+                    "1": 1,
+                    "2": 1,
+                    "3": 1,
+                    "4": 0.802868938394458,
+                    "5": 0.642295147495324,
+                    "6": 0.53524595445708,
+                    "7": 0.458782245582177,
+                    "8": 0.401434464165601,
+                    "9": 0.356830634316916,
+                    "10": 0.32114757052742,
+                    "11": 0.291952336576973,
+                    "12": 0.267622974992261,
+                    "13": 0.247036592141759,
+                    "14": 0.229391121148108,
+                    "15": 0.214098379636004,
+                    "16": 0.200717230824893,
+                    "17": 0.188910334824375,
+                    "18": 0.178415316164556,
+                    "19": 0.169025036316864,
+                    "20": 0.160573784458649,
+                    "21": 0.152927413733632,
+                    "22": 0.145976167623147,
+                    "23": 0.139629377698819,
+                    "24": 0.133811486937061,
+                    "25": 0.12845902743811,
+                    "26": 0.123518295594512,
+                    "27": 0.118943543888837,
+                    "28": 0.114695560163309,
+                    "29": 0.110740540833657,
+                    "30": 0.107049189460197,
+                    "31": 0.103595989789021,
+                    "32": 0.10035861509797,
+                    "33": 0.097317444934245,
+                    "34": 0.0944551671336199,
+                    "35": 0.0917564480649277,
+                    "36": 0.0892076578338026,
+                    "37": 0.0867966400479766,
+                    "38": 0.0845125179354236,
+                    "39": 0.0823455302904823,
+                    "40": 0.0802868920280596,
+                    "41": 0.0783286751445372,
+                    "42": 0.0764637066842624,
+                    "43": 0.0746854809432724,
+                    "44": 0.0729880836452388,
+                    "45": 0.071366126227286,
+                    "46": 0.069814688697224,
+                    "47": 0.0683292697856033,
+                    "48": 0.0669057433287628,
+                    "49": 0.0655403199927286,
+                    "50": 0.0642295135902452
+                },
+                "Cryogun": {
+                    "1": 1,
+                    "2": 1,
+                    "3": 1,
+                    "4": 0.775498406403738,
+                    "5": 0.620398722012529,
+                    "6": 0.516998933282407,
+                    "7": 0.443141941755512,
+                    "8": 0.387749198341773,
+                    "9": 0.344665953601567,
+                    "10": 0.310199357895803,
+                    "11": 0.281999416011849,
+                    "12": 0.258499464481161,
+                    "13": 0.238614890136927,
+                    "14": 0.221570969290786,
+                    "15": 0.206799571239322,
+                    "16": 0.193874597955863,
+                    "17": 0.182470209773544,
+                    "18": 0.172332975840764,
+                    "19": 0.163262819169698,
+                    "20": 0.155099678170286,
+                    "21": 0.14771397917453,
+                    "22": 0.140999707363267,
+                    "23": 0.134869285277268,
+                    "24": 0.12924973170057,
+                    "25": 0.124079742411811,
+                    "26": 0.119307444608336,
+                    "27": 0.114888650347172,
+                    "28": 0.11078548424865,
+                    "29": 0.106965295123419,
+                    "30": 0.103399785274054,
+                    "31": 0.100064308318941,
+                    "32": 0.0969372986741754,
+                    "33": 0.0939998047660321,
+                    "34": 0.091235104617701,
+                    "35": 0.0886283873354415,
+                    "36": 0.0861664876803775,
+                    "37": 0.0838376636827047,
+                    "38": 0.0816314093694433,
+                    "39": 0.0795382963033067,
+                    "40": 0.0775498388907393,
+                    "41": 0.0756583794009734,
+                    "42": 0.0738569894109352,
+                    "43": 0.0721393850020245,
+                    "44": 0.0704998535209693,
+                    "45": 0.0689331901059013,
+                    "46": 0.0674346424916368,
+                    "47": 0.0659998628610941,
+                    "48": 0.0646248657152823,
+                    "49": 0.0633059909020674,
+                    "50": 0.0620398710814869
+                },
+                "Ricochet": {
+                    "1": 1,
+                    "2": 1,
+                    "3": 1,
+                    "4": 0.832242192238158,
+                    "5": 0.66579375045247,
+                    "6": 0.554828123522583,
+                    "7": 0.475566961883964,
+                    "8": 0.416121090903367,
+                    "9": 0.369885413621194,
+                    "10": 0.332896871888179,
+                    "11": 0.302633519622472,
+                    "12": 0.277414059443197,
+                    "13": 0.256074516244507,
+                    "14": 0.237783479238892,
+                    "15": 0.221931247183663,
+                    "16": 0.208060544147755,
+                    "17": 0.195821688537462,
+                    "18": 0.184942705780333,
+                    "19": 0.175208879108945,
+                    "20": 0.166448435109576,
+                    "21": 0.15852231911413,
+                    "22": 0.151316759121555,
+                    "23": 0.144737769565849,
+                    "24": 0.138707029142075,
+                    "25": 0.133158747954138,
+                    "26": 0.128037257628458,
+                    "27": 0.123295136957941,
+                    "28": 0.118891739193674,
+                    "29": 0.114792024034889,
+                    "30": 0.110965623220936,
+                    "31": 0.107386086976424,
+                    "32": 0.104030271747896,
+                    "33": 0.100877839261108,
+                    "34": 0.0979108439799719,
+                    "35": 0.0951133912868153,
+                    "36": 0.0924713526326003,
+                    "37": 0.0899721268790001,
+                    "38": 0.087604439323305,
+                    "39": 0.0853581716425731,
+                    "40": 0.0832242173461593,
+                    "41": 0.0811943583815325,
+                    "42": 0.079261159367833,
+                    "43": 0.0774178765875384,
+                    "44": 0.0756583793883573,
+                    "45": 0.0739770820648696,
+                    "46": 0.0723688846251712,
+                    "47": 0.0708291211192229,
+                    "48": 0.0693535144261566,
+                    "49": 0.0679381365778284,
+                    "50": 0.0665793738435469
+                },
+                "Plasma": {
+                    "1": 1,
+                    "2": 1,
+                    "3": 1,
+                    "4": 0.853048247044112,
+                    "5": 0.682438594213782,
+                    "6": 0.568698826610648,
+                    "7": 0.487456135931063,
+                    "8": 0.426524118175951,
+                    "9": 0.379132548961723,
+                    "10": 0.341219293685384,
+                    "11": 0.310199357613034,
+                    "12": 0.284349410929277,
+                    "13": 0.262476379150619,
+                    "14": 0.243728066219864,
+                    "15": 0.227479528363254,
+                    "16": 0.213262057751449,
+                    "17": 0.200717230750899,
+                    "18": 0.189566273424841,
+                    "19": 0.179589101086668,
+                    "20": 0.170609645987315,
+                    "21": 0.162485377091984,
+                    "22": 0.155099678099594,
+                    "23": 0.148356213804995,
+                    "24": 0.142174704870627,
+                    "25": 0.136487716652992,
+                    "26": 0.131238189069169,
+                    "27": 0.126377515381889,
+                    "28": 0.121864032673515,
+                    "29": 0.117661824635761,
+                    "30": 0.11373976380146,
+                    "31": 0.110070739150835,
+                    "32": 0.106631028541593,
+                    "33": 0.103399785242635,
+                    "34": 0.100358615079471,
+                    "35": 0.0974912260689857,
+                    "36": 0.0947831364484153,
+                    "37": 0.0922214300509751,
+                    "38": 0.0897945503063876,
+                    "39": 0.0874921259336374,
+                    "40": 0.0853048227798133,
+                    "41": 0.0832242173410708,
+                    "42": 0.0812426883520288,
+                    "43": 0.0793533235022269,
+                    "44": 0.0775498388730663,
+                    "45": 0.0758265091164914,
+                    "46": 0.0741781067408005,
+                    "47": 0.0725998491472035,
+                    "48": 0.0710873522868105,
+                    "49": 0.0696365899922741,
+                    "50": 0.0682438581896355
+                },
+                "LevelUp": {
+                    "1": 1,
+                    "2": 1,
+                    "3": 0.957808566088144,
+                    "4": 0.718356418563463,
+                    "5": 0.574685131969501,
+                    "6": 0.478904275040546,
+                    "7": 0.410489377626158,
+                    "8": 0.359178204779748,
+                    "9": 0.319269514915136,
+                    "10": 0.287342563103481,
+                    "11": 0.261220511674134,
+                    "12": 0.239452135519391,
+                    "13": 0.221032740337364,
+                    "14": 0.205244687343044,
+                    "15": 0.191561708095372,
+                    "16": 0.179589101264378,
+                    "17": 0.169025036421809,
+                    "18": 0.159634756568287,
+                    "19": 0.151232927230878,
+                    "20": 0.143671280831423,
+                    "21": 0.136829791235355,
+                    "22": 0.130610255241763,
+                    "23": 0.124931548467364,
+                    "24": 0.119726067259475,
+                    "25": 0.114937024549888,
+                    "26": 0.110516369742459,
+                    "27": 0.106423170847907,
+                    "28": 0.102622343304013,
+                    "29": 0.0990836417985354,
+                    "30": 0.0957808537275449,
+                    "31": 0.0926911487585979,
+                    "32": 0.0897945503508151,
+                    "33": 0.0870735033622193,
+                    "34": 0.0845125179616599,
+                    "35": 0.082097874584409,
+                    "36": 0.0798173780618234,
+                    "37": 0.0776601516218738,
+                    "38": 0.0756164634159053,
+                    "39": 0.0736775797335894,
+                    "40": 0.0718356402356322,
+                    "41": 0.0700835514451122,
+                    "42": 0.06841489545434,
+                    "43": 0.0668238513702963,
+                    "44": 0.0653051274720558,
+                    "45": 0.0638539024138875,
+                    "46": 0.0624657740975162,
+                    "47": 0.0611367150713293,
+                    "48": 0.0598630335046825,
+                    "49": 0.0586413389408624,
+                    "50": 0.0574685121596931
+                }
+            }
+        },
+        "bossHP": {
+            "1": 400,
+            "2": 440,
+            "3": 480
+        },
+        "percentNumShotsSWOnBossTargetBoss": {
+            "ArtilleryStrike": {
+                "min": 0.65,
+                "max": 0.8
+            },
+            "Flamethrower": {
+                "min": 0.7,
+                "max": 0.85
+            },
+            "Cryogun": {
+                "min": 0.7,
+                "max": 0.85
+            },
+            "Ricochet": {
+                "min": 0.7,
+                "max": 0.8
+            },
+            "Plasma": {
+                "min": 1,
+                "max": 1
+            }
+        },
+        "percentNumShotsSWOnBossTargetEn": {
+            "ArtilleryStrike": {
+                "min": 0,
+                "max": 0.35
+            },
+            "Flamethrower": {
+                "min": 0,
+                "max": 0.35
+            },
+            "Cryogun": {
+                "min": 0,
+                "max": 0.35
+            },
+            "Ricochet": {
+                "min": 0,
+                "max": 0.35
+            },
+            "Plasma": {
+                "min": 0,
+                "max": 0.35
+            }
+        }
+    },
+    "questParams": {
+        "collectToWin": 1,
+        "gemDrops": [
+            {
+                "type": 4,
+                "prize": 10,
+                "weight": 10
+            },
+            {
+                "type": 3,
+                "prize": 25,
+                "weight": 10
+            },
+            {
+                "type": 2,
+                "prize": 40,
+                "weight": 25
+            },
+            {
+                "type": 1,
+                "prize": 80,
+                "weight": 25
+            },
+            {
+                "type": 0,
+                "prize": 120,
+                "weight": 30
+            }
+        ],
+        "dropProbabilityByWeaponTargetEn": {
+            "-1": 0.0125
+        },
+        "dropProbabilityByWeaponTargetBoss": {
+            "-1": 0.014285714
+        }
+    },
+    "weaponCarrierDropsTargetEn": {
+        "WEAPON_CARRIER_1": [
+            {
+                "type": "PowerUp_ArtilleryStrike",
+                "amount": 3,
+                "weight": 10
+            },
+            {
+                "type": "PowerUp_ArtilleryStrike",
+                "amount": 4,
+                "weight": 8
+            },
+            {
+                "type": "PowerUp_ArtilleryStrike",
+                "amount": 5,
+                "weight": 3
+            }
+        ],
+        "WEAPON_CARRIER_2": [
+            {
+                "type": "PowerUp_Flamethrower",
+                "amount": 3,
+                "weight": 10
+            },
+            {
+                "type": "PowerUp_Flamethrower",
+                "amount": 4,
+                "weight": 8
+            },
+            {
+                "type": "PowerUp_Flamethrower",
+                "amount": 5,
+                "weight": 3
+            }
+        ],
+        "WEAPON_CARRIER_3": [
+            {
+                "type": "PowerUp_Cryogun",
+                "amount": 3,
+                "weight": 10
+            },
+            {
+                "type": "PowerUp_Cryogun",
+                "amount": 4,
+                "weight": 8
+            },
+            {
+                "type": "PowerUp_Cryogun",
+                "amount": 5,
+                "weight": 3
+            }
+        ],
+        "WEAPON_CARRIER_4": [
+            {
+                "type": "PowerUp_Laser",
+                "amount": 3,
+                "weight": 10
+            },
+            {
+                "type": "PowerUp_Laser",
+                "amount": 4,
+                "weight": 8
+            },
+            {
+                "type": "PowerUp_Laser",
+                "amount": 5,
+                "weight": 3
+            }
+        ],
+        "WEAPON_CARRIER_5": [
+            {
+                "type": "PowerUp_Plasma",
+                "amount": 3,
+                "weight": 10
+            },
+            {
+                "type": "PowerUp_Plasma",
+                "amount": 4,
+                "weight": 8
+            },
+            {
+                "type": "PowerUp_Plasma",
+                "amount": 5,
+                "weight": 3
+            }
+        ]
+    },
+    "weaponCarrierDropsTargetBoss": {
+        "WEAPON_CARRIER_1": [
+            {
+                "type": "PowerUp_ArtilleryStrike",
+                "amount": 3,
+                "weight": 10
+            },
+            {
+                "type": "PowerUp_ArtilleryStrike",
+                "amount": 4,
+                "weight": 8
+            },
+            {
+                "type": "PowerUp_ArtilleryStrike",
+                "amount": 5,
+                "weight": 3
+            }
+        ],
+        "WEAPON_CARRIER_2": [
+            {
+                "type": "PowerUp_Flamethrower",
+                "amount": 3,
+                "weight": 10
+            },
+            {
+                "type": "PowerUp_Flamethrower",
+                "amount": 4,
+                "weight": 8
+            },
+            {
+                "type": "PowerUp_Flamethrower",
+                "amount": 5,
+                "weight": 3
+            }
+        ],
+        "WEAPON_CARRIER_3": [
+            {
+                "type": "PowerUp_Cryogun",
+                "amount": 3,
+                "weight": 10
+            },
+            {
+                "type": "PowerUp_Cryogun",
+                "amount": 4,
+                "weight": 8
+            },
+            {
+                "type": "PowerUp_Cryogun",
+                "amount": 5,
+                "weight": 3
+            }
+        ],
+        "WEAPON_CARRIER_4": [
+            {
+                "type": "PowerUp_Laser",
+                "amount": 3,
+                "weight": 10
+            },
+            {
+                "type": "PowerUp_Laser",
+                "amount": 4,
+                "weight": 8
+            },
+            {
+                "type": "PowerUp_Laser",
+                "amount": 5,
+                "weight": 3
+            }
+        ],
+        "WEAPON_CARRIER_5": [
+            {
+                "type": "PowerUp_Plasma",
+                "amount": 3,
+                "weight": 10
+            },
+            {
+                "type": "PowerUp_Plasma",
+                "amount": 4,
+                "weight": 8
+            },
+            {
+                "type": "PowerUp_Plasma",
+                "amount": 5,
+                "weight": 3
+            }
+        ]
+    },
+    "PSWDropsReTriggerOneTargetEn": {
+        "ArtilleryStrike": 0.0232558139534884,
+        "Flamethrower": 0.0232558139534884,
+        "Cryogun": 0.0256410256410256,
+        "Ricochet": 0.0285714285714286,
+        "Plasma": 0.0333333333333333,
+        "LevelUp": 0.0285714285714286
+    },
+    "PSWDropsReTriggerTwoTargetEn": {
+        "ArtilleryStrike": 0.0166666666666667,
+        "Flamethrower": 0.0172413793103448,
+        "Cryogun": 0.0178571428571429,
+        "Ricochet": 0.0185185185185185,
+        "Plasma": 0.02,
+        "LevelUp": 0.0208333333333333
+    },
+    "PSWDropsReTriggerOneTargetBoss": {
+        "ArtilleryStrike": 0.0232558139534884,
+        "Flamethrower": 0.0232558139534884,
+        "Cryogun": 0.0256410256410256,
+        "Ricochet": 0.0285714285714286,
+        "Plasma": 0.0333333333333333,
+        "LevelUp": 0.0285714285714286
+    },
+    "PSWDropsReTriggerTwoTargetBoss": {
+        "ArtilleryStrike": 0.0166666666666667,
+        "Flamethrower": 0.0172413793103448,
+        "Cryogun": 0.0178571428571429,
+        "Ricochet": 0.0185185185185185,
+        "Plasma": 0.02,
+        "LevelUp": 0.0208333333333333
+    },
+    "powerUpMultipliers": {
+        "0": {
+            "2": 0.9,
+            "3": 0.085,
+            "4": 0.015
+        },
+        "1": {
+            "2": 0.9,
+            "3": 0.085,
+            "4": 0.015
+        },
+        "2": {
+            "2": 0.9,
+            "3": 0.085,
+            "4": 0.015
+        },
+        "3": {
+            "2": 0.88,
+            "3": 0.1,
+            "4": 0.02
+        },
+        "4": {
+            "2": 0.88,
+            "3": 0.1,
+            "4": 0.02
+        }
+    }
+}

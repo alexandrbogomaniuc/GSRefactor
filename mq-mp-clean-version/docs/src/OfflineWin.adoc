@@ -1,0 +1,205 @@
+### Offline Wins.
+
+With the release of game MaxQuest, BSG introduced Leaderboard system. +
+During certain period fixed percent of bets is collected into the leaderboard prize pool. +
+At the end of period this prize pool is divided between players who got top places. +
+As this distribution of prizes will occur at fixed time, we can't send this prizes using regular Win operations,
+because most of the participating players at this time is already offline and their sessions are closed. +
+To solve this problem, we introduce a new type of API call, which is described below. +
+
+When period is finished, we will send POST request to specified URL.
+Body of this message will contain following parameters:
+
+.Parameters:
+[cols="1,1,3"]
+|===
+| Name | Type | Description
+
+| bankId
+| String
+| External bank ID
+
+| leaderboardId
+| Long
+| Numeric id of leaderboard
+
+| transactionId
+| Long
+| Numeric id of transaction
+
+| hash
+| String
+| SHA-256 Hash of string 'API_KEY\|BankId\|LeaderboardId', where secretKey is a key, used in CW/CT integrations for API requests
+
+| result
+| JSON String
+| List of leaderboard winners in json format, see description below
+|===
+
+.Result structure:
+[cols="1,1,3"]
+|===
+| Name | Type | Description
+| leaderboardId
+| Long
+| Numeric id of leaderboard
+
+| startDate
+| Timestamp
+| Leaderboard start date
+
+| endDate
+| Timestamp
+| Leaderboard end date
+
+| currency
+| String
+| Base leaderboard currency
+
+| winners
+| Array
+| List of winners, see description below
+|===
+
+.Winner record structure:
+[cols="2,1,3"]
+|===
+| Name | Type | Description
+| bankId
+| String
+| External bankId
+
+| place
+| Integer
+| Player's place in this leaderboard
+
+| score
+| Long
+| Amount of XP which player received in this period
+
+| winInCents
+| Long
+| Player's win in cents of base leaderboard currency
+
+| accountId
+| String
+| Player's accountId on ES
+
+| playerCurrency
+| String
+| Player's currency
+
+| winInPlayerCurrencyCents
+| Long
+| Player's win in cents of his currency
+
+| transactionId
+| String
+| Unique transactionId for this player's award
+|===
+
+Results for leaderboard with the same id should be processed only once. +
+
+If for some reason request to API is failed, we will try to resend this message again for 48 hours with a 30 minutes interval. +
+
+If message is received and validated successfully, response should contain "OK" message. +
+Any other message will be treated as failure, you can include additional diagnostic info into response on your choice.
+
+.Example of request to external API
+[source]
+----
+POST /empty.jsp HTTP/1.1
+Connection: Close
+Content-Length: 1391
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Host: default-gp3.discreetgaming.com
+User-Agent: Apache-HttpClient/4.5.3 (Java/1.8.0_121)
+
+result=%7B%0A++%22leaderboardId%22%3A+410002%2C%0A++%22transactionId%22%3A+3308365771%2C%0A++%22startDate%22%3A+1554069600000%2C%0A++%22endDate%22%3A+1554786968810%2C%0A++%22gameId%22%3A+779%2C%0A++%22currency%22%3A+%22EUR%22%2C%0A++%22winners%22%3A+%5B%0A++++%7B%0A++++++%22bankId%22%3A+%22271%22%2C%0A++++++%22place%22%3A+1%2C%0A++++++%22score%22%3A+10405%2C%0A++++++%22winInCents%22%3A+172%2C%0A++++++%22accountId%22%3A+%22test234%22%2C%0A++++++%22playerCurrency%22%3A+%22EUR%22%2C%0A++++++%22winInPlayerCurrencyCents%22%3A+172%2C%0A++++++%22transactionId%22%3A+%223308365771_1%22%0A++++%7D%2C%0A++++%7B%0A++++++%22bankId%22%3A+%22271%22%2C%0A++++++%22place%22%3A+2%2C%0A++++++%22score%22%3A+5940%2C%0A++++++%22winInCents%22%3A+103%2C%0A++++++%22accountId%22%3A+%22test236%22%2C%0A++++++%22playerCurrency%22%3A+%22EUR%22%2C%0A++++++%22winInPlayerCurrencyCents%22%3A+103%2C%0A++++++%22transactionId%22%3A+%223308365771_2%22%0A++++%7D%2C%0A++++%7B%0A++++++%22bankId%22%3A+%22271%22%2C%0A++++++%22place%22%3A+3%2C%0A++++++%22score%22%3A+1000%2C%0A++++++%22winInCents%22%3A+69%2C%0A++++++%22accountId%22%3A+%22test235%22%2C%0A++++++%22playerCurrency%22%3A+%22EUR%22%2C%0A++++++%22winInPlayerCurrencyCents%22%3A+69%2C%0A++++++%22transactionId%22%3A+%223308365771_3%22%0A++++%7D%0A++%5D%0A%7D&bankId=271&leaderboardId=410002&hash=6755fa50e5ab123c0cde4a2db4824b6b43c4b59c62f59ea9c9156a32c929bd78
+----
+
+.Example of successful response:
+[source]
+OK
+
+.Example of failed response:
+[source]
+FAILED
+
+Alternatively, instead of implementing API on ES, this results will be available through the call to our servers.
+We will expose two urls - first one to receive list of finished leaderboards +
+and second one - to receive results of concrete finished leaderboard.
+
+Request to get list of leaderboards will have following format:
+[source]
+https://<domain>/mq/getLeaderboards.do?bankId=<bankId>&hash=<hash>
+
+.Parameters of request:
+[cols="2,1,3"]
+|===
+| Name | Type | Description
+| bankId
+| String
+| External bankId
+
+| hash
+| String
+| Sha-256 hash of string "bankId\|secretKey", where bankId is external bankId and secretKey is a key, used in CW/CT integrations for API requests
+|===
+
+Response will contain list of leaderboards in json format
+
+.Example of request:
+https://default-gp3.betsoftgaming.com/mq/getLeaderboards.do?bankId=271&hash=40adda149dd997d98100325b5634889df933b1c2ee48b8f5a0e7d659daf37380
+
+.Example of response:
+[source,json]
+{
+  "bankId": 271,
+  "leaderboards": [
+    { "leaderboardId": 10002, "startDate": 1544600000000, "endDate": 1545600000000 },
+    { "leaderboardId": 10003, "startDate": 1545600000000, "endDate": 1546600000000 },
+    { "leaderboardId": 10004, "startDate": 1546600000000, "endDate": 1547600000000 }
+  ]
+}
+
+.Request to get leaderboard results:
+[source]
+https://<domain>/mq/getLeaderboardResults.do?bankId=<bankId>&leaderboardId=<leaderboardId>&hash=<hash>
+
+.Parameters of request:
+[cols="2,1,3"]
+|===
+| Name | Type | Description
+| bankId
+| String
+| External bankId
+
+| leaderboardId
+| String
+| id of leaderboard from results of previous request
+
+| hash
+| String
+| Sha-256 hash of string "bankId\|leaderboardId\|secretKey", where bankId is external bankId, leaderboardId is an ID of requested leaderboard and secretKey is a key, used in CW/CT integrations for API requests
+|===
+
+Response will be in the same form as described in first part of this document
+
+.Example of request:
+https://default-gp3.betsoftgaming.com/mq/getLeaderboardResults.do?bankId=271&leaderboardId=10002&hash=40adda149dd997d98100325b5634889df933b1c2ee48b8f5a0e7d659daf37380
+
+.Example of response:
+[source,json]
+{
+  "leaderboardId": 10002,
+  "transactionId": 123456789,
+  "startDate": 1544600000000,
+  "endDate": 1545600000000,
+  "currency": "EUR",
+  "winners": [
+    { "bankId": 271, "place": 1, "score": 100000, "winInCents": 125, "accountId": "abc123456", "playerCurrency": "USD", "winInPlayerCurrencyCents": 142 },
+    { "bankId": 271, "place": 2, "score": 95000, "winInCents": 95, "accountId": "abc123457", "playerCurrency": "USD", "winInPlayerCurrencyCents": 108 },
+    { "bankId": 271, "place": 3, "score": 50000, "winInCents": 55, "accountId": "abc123458", "playerCurrency": "USD", "winInPlayerCurrencyCents": 62 }
+  ]
+}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<head>
+    <title>Lobby Test Client</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div>
+    <div class="button" id="connect">Connect</div>
+    <div class="button" id="openRoom">OpenRoom</div>
+    <div class="button" id="closeRoom">CloseRoom</div>
+    <div class="button" id="sitIn">SitIn</div>
+    <div class="button" id="sitOut">SitOut</div>
+    <div class="button" id="buyIn">BuyIn</div>
+    <div class="button" id="shot">Shot</div>
+    <div class="button" id="fullInfo">FullInfo</div>
+    <div class="button" id="disconnect">Disconnect</div>
+    <div class="button" id="endRound">End</div>
+    <div class="button" id="spawn">Spawn</div>
+    <div class="button reset" id="reset">Reset</div>
+</div>
+<div>
+    <textarea id="log" disabled></textarea>
+</div>
+<div class="block">
+    <label>Enable request log: <input type="checkbox" id="enableLog"></label>
+    <label>RoomId: <input type="text" id="roomId" value="1"></label>
+    <label>AmmoCount: <input type="text" id="ammoCount" value="1000"></label>
+    <label>Stake: <input type="text" id="stake" value="10"></label>
+    <h4>Shot:</h4>
+    <label>EnemyId: <input type="text" id="enemyId" value="1"></label>
+    <label>X: <input type="text" id="x" value="11"></label>
+    <label>Y: <input type="text" id="y" value="21"></label>
+    <label>TypeId: <input type="number" id="typeId" value="0"></label>
+    <label>SkinId: <input type="number" id="skinId" value="0"></label>
+</div>
+<div class="block map">
+    <canvas id="canvas" width="1600" height="900"></canvas>
+</div>
+<img id="bg" src="grid.png">
+<img id="head" src="mummy-head-2.jpg">
+<script>
+    var _log = document.getElementById('log');
+    var rid = 0;
+    var roomOpened = false;
+    var enemies = [];
+    var logEnabled = false;
+
+    function log(message) {
+        if (logEnabled) {
+            _log.innerHTML += '[' + new Date().toTimeString().substr(0, 8) + '] ' + message + '\n';
+        }
+    }
+
+    document.getElementById('enableLog').addEventListener('change', function() {
+        logEnabled = this.checked;
+    });
+
+    function request(message) {
+        if (socket) {
+            message.date = Date.now();
+            message.rid = ++rid;
+            log("Request: " + JSON.stringify(message));
+            socket.send(JSON.stringify(message));
+        } else {
+            log('Not connected');
+            roomOpened = false;
+        }
+    }
+
+    function handleProtocolError(message) {
+        switch (message.code) {
+            case 1000:
+                log('Failed to login');
+                roomOpened = false;
+                break;
+        }
+    }
+
+    function response(message) {
+        log("Response: " + message.data);
+        var msg;
+        try {
+            msg = JSON.parse(message.data);
+        } catch (e) {
+            log('Unable to parse: "' + message.data + '"');
+        }
+        switch (msg.class) {
+            case 'Error':
+                handleProtocolError(msg);
+                break;
+            case 'NewEnemy':
+                var enemy = msg.newEnemy;
+                if (enemies.length > 3) {
+                    enemies.splice(0, 1);
+                }
+                enemies.push(enemy);
+                break;
+            case 'FullGameInfo':
+                msg.roomEnemies.forEach(enemy => {
+                    enemies.push(enemy);
+                });
+                break;
+            case 'GameStateChanged':
+                switch (msg.state) {
+                    case 'QUALIFY':
+                        enemies = [];
+                        break;
+                }
+        }
+    }
+
+    function closed() {
+        log("Connection closed");
+        roomOpened = false;
+        socket = null;
+    }
+
+    var socket;
+    document.getElementById('connect').addEventListener('click', function () {
+        if (!socket) {
+            socket = new WebSocket("ws://localhost:8080/websocket/mpgame?debugMode");
+            socket.onerror = function (data) {
+                log('Error: ' + data);
+            };
+            socket.onmessage = response;
+            socket.onclose = closed;
+        }
+    });
+    document.getElementById('openRoom').addEventListener('click', function () {
+        if (!roomOpened) {
+            roomOpened = true;
+            var message = {
+                "class": "OpenRoom",
+                "sid": "1_878b9632e64a139086fb0000016580b0_R1EGQQEZX1lT",
+                "roomId": document.getElementById('roomId').value,
+                "serverId": 1
+            };
+            request(message);
+        } else {
+            log('Room already opened');
+        }
+    });
+    document.getElementById('closeRoom').addEventListener('click', function () {
+        request({
+            "class": "CloseRoom",
+            "roomId": document.getElementById('roomId').value
+        });
+    });
+    document.getElementById('sitIn').addEventListener('click', function () {
+        request({
+            "class": "SitIn",
+            "ammoAmount": document.getElementById('ammoCount').value,
+            "stake": document.getElementById('stake').value,
+            "lang": "en"
+        });
+    });
+    document.getElementById('sitOut').addEventListener('click', function () {
+        request({
+            "class": "SitOut"
+        });
+    });
+    document.getElementById('buyIn').addEventListener('click', function () {
+        request({
+            "class": "BuyIn",
+            "ammoCount": document.getElementById('ammoCount').value
+        });
+    });
+    document.getElementById('shot').addEventListener('click', function () {
+        request({
+            "class": "Shot",
+            "enemyId": document.getElementById('enemyId').value,
+            "weaponId": -1
+        });
+    });
+    document.getElementById('fullInfo').addEventListener('click', function () {
+        request({
+            "class": "GetFullGameInfo"
+        });
+    });
+    document.getElementById('endRound').addEventListener('click', function () {
+        request({
+            "class": "EndRound"
+        });
+    });
+    document.getElementById('spawn').addEventListener('click', function () {
+        request({
+            "class": "SpawnEnemy",
+            "typeId": document.getElementById('typeId').value,
+            "skinId": document.getElementById('skinId').value
+        });
+    });
+
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var image = document.getElementById('bg');
+    var head = document.getElementById('head');
+
+    function draw() {
+        ctx.clearRect(0, 0, 1600, 900);
+        ctx.drawImage(image, 0, 0, 1600, 900);
+        Object.values(enemies).forEach(enemy => {
+            ctx.beginPath();
+            ctx.moveTo(320 + enemy.trajectory.points[0].x, 180 + enemy.trajectory.points[0].y);
+            for (var i = 1; i < enemy.trajectory.points.length; i++) {
+                ctx.lineTo(320 + enemy.trajectory.points[i].x, 180 + enemy.trajectory.points[i].y);
+            }
+            ctx.strokeStyle = '#00ffff';
+            ctx.moveTo(320 + enemy.trajectory.points[0].x, 180 + enemy.trajectory.points[0].y);
+            ctx.arc(320 + enemy.trajectory.points[0].x, 180 + enemy.trajectory.points[0].y, 5, 0, 2 * Math.PI, false);
+            var last = enemy.trajectory.points.length - 1;
+            ctx.moveTo(320 + enemy.trajectory.points[last].x, 180 + enemy.trajectory.points[last].y);
+            ctx.arc(320 + enemy.trajectory.points[last].x, 180 + enemy.trajectory.points[last].y, 5, 0, 2 * Math.PI, false);
+            ctx.stroke();
+            // ctx.drawImage(head, -10 + 16 * (enemy.y - enemy.x), 18 + 10 * (enemy.x + enemy.y), 10 * ENEMY_SIZE, 10 * ENEMY_SIZE);
+        });
+    }
+
+    setInterval(draw, 100);
+</script>
+</body>

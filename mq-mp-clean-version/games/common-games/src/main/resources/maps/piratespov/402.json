@@ -1,0 +1,58 @@
+{
+  "bossSpawnPoint": {
+    "x": 45,
+    "y": 45
+  },
+  "trajectories": {
+
+  },
+  "predefinedTrajectoryIds": {
+
+  },
+  "predefinedTrajectories": {
+
+  },
+  "scenarios": [
+
+  ],
+  "swarmParams": [
+    {
+      "id": 101,
+      "startX": 28,
+      "startY": 32,
+      "deltaX": 2,
+      "deltaY": 2,
+      "angle": 270,
+      "distance": 15,
+      "minSize": 10,
+      "maxSize": 15,
+      "enemies": [
+        { "type": 0, "skin": 1 },
+        { "type": 1, "skin": 1 },
+        { "type": 2, "skin": 1 }
+      ],
+      "cooldown": 7000
+    },
+    {
+      "id": 102,
+      "startX": 22,
+      "startY": 40,
+      "deltaX": 3,
+      "deltaY": 3,
+      "angle": 350,
+      "distance": 15,
+      "minSize": 10,
+      "maxSize": 15,
+      "enemies": [
+        { "type": 0, "skin": 1 },
+        { "type": 1, "skin": 1 },
+        { "type": 2, "skin": 1 }
+      ],
+      "cooldown": 5000
+    }
+  ],
+  "center": {
+    "x": 67,
+    "y": 114
+  }
+}

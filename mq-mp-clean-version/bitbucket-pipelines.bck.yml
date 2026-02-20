@@ -1,0 +1,502 @@
+image:
+    name: gcr.io/mq-legacy-games/atlassian-default-image-4-customized:latest
+    username: _json_key
+    password: '$SA_FOR_DEPLOY_PROD'
+
+pipelines:
+    pull-requests:
+        '**':
+            - step:
+                  name: Security Scan
+                  script: # Run a security scan for sensitive data.
+                      # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
+                      - pipe: atlassian/git-secrets-scan:0.5.1
+            - step:
+                  name: Vulnerability Scan (SNYK)
+                  script:
+                      - npm install -g snyk
+                      - snyk auth $SNYK_TOKEN
+                      - snyk code test || true
+            - step:
+                  name: Test Modules
+                  caches:
+                      - maven
+                  script:
+                      - git clone git@bitbucket.org:mqbatlassiannet/mq-gs.git
+                      - cd mq-gs
+                      - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                      - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                      - ./build-all-modules.sh
+                      - cd ./cassandra-cache/
+                      - mvn install -Dorg.slf4j.simpleLogger.defaultLogLevel=error
+                      - cd ..
+                      - cd ..
+                      - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                      - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                      - mvn -s config/settings.xml test -P mqb2-live
+            - step:
+                  name: Build Project
+                  caches:
+                      - maven
+                  script:
+                      - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                      - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                      - mvn -s config/settings.xml clean package -P mqb2-live -DSkipTests=true
+    branches:
+        develop:
+            - step:
+                  name: Security Scan
+                  script: # Run a security scan for sensitive data.
+                      # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
+                      - pipe: atlassian/git-secrets-scan:0.5.1
+            - step:
+                  name: Test Modules
+                  caches:
+                      - maven
+                  script:
+                      - git clone git@bitbucket.org:mqbatlassiannet/mq-gs.git
+                      - cd mq-gs
+                      - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                      - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                      - ./build-all-modules.sh
+                      - cd ./cassandra-cache/
+                      - mvn install -Dorg.slf4j.simpleLogger.defaultLogLevel=error
+                      - cd ..
+                      - cd ..
+                      - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                      - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                      - mvn -s config/settings.xml test -P mqb2-live
+#            - stage:
+#                  name: DEV - Build and Deploy
+#                  deployment: Dev
+#                  trigger: manual
+#                  steps:
+#                      - step:
+#                            name: Build Project
+#                            caches:
+#                                - maven
+#                            script:
+#                                - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+#                                - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+#                                - mvn -s config/settings.xml clean package -P mqb-live -DSkipTests=true
+#                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS1_DEV_ADDRESS:/www/html/mp
+#                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS2_DEV_ADDRESS:/www/html/mp
+#                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS3_DEV_ADDRESS:/www/html/mp
+#                                - scp -P 222 $BITBUCKET_CLONE_DIR/bots/target/mp-bots-1.0.0-SNAPSHOT.jar bitbucket@$GS1_DEV_ADDRESS:/www/html/mp/bots
+#                                - scp -r -P 222 $BITBUCKET_CLONE_DIR/bots/target/lib bitbucket@$GS1_DEV_ADDRESS:/www/html/mp/bots
+#
+#                            artifacts:
+#                                - ./web/target/web-mp-casino.war
+#                      - step:
+#                            name: Deploy GS1
+#                            caches:
+#                                - maven
+#                            script:
+#                                - ls -l ./web/
+#                                - find . -type f -name 'web-mp-casino.war'
+#                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS1_DEV_ADDRESS:/www/html/mp
+#                                - ssh bitbucket@$GS1_DEV_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+#                                - ssh bitbucket@$GS1_DEV_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+#                      - step:
+#                            name: Deploy GS2
+#                            caches:
+#                                - maven
+#                            script:
+#                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS2_DEV_ADDRESS:/www/html/mp
+#                                - ssh bitbucket@$GS2_DEV_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+#                                - ssh bitbucket@$GS2_DEV_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+#                      - step:
+#                            name: Deploy GS3
+#                            caches:
+#                                - maven
+#                            script:
+#                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS3_DEV_ADDRESS:/www/html/mp
+#                                - ssh bitbucket@$GS3_DEV_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+#                                - ssh bitbucket@$GS3_DEV_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+#                      - step:
+#                            name: Deploy Bots GS1
+#                            caches:
+#                                - maven
+#                            script:
+#                                - scp -P 222 $BITBUCKET_CLONE_DIR/bots/bots.sh   bitbucket@$GS1_DEV_ADDRESS:/www/html/mp/bots
+#                                - ssh bitbucket@$GS1_DEV_ADDRESS -p 222 "chmod 755 /www/html/mp/bots/bots.sh"
+#                                - ssh bitbucket@$GS1_DEV_ADDRESS -p 222 "sudo /www/html/mp/bots/bots.sh restart"
+            - stage:
+                  name: TEST - Build and Deploy
+                  deployment: Test
+                  trigger: manual
+                  steps:
+                      - step:
+                            name: Build Project
+                            caches:
+                                - maven
+                            script:
+                                - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                                - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                                - mvn -s config/settings.xml clean package -P mqb2-live -DSkipTests=true
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS1_TEST_ADDRESS:/www/html/mp
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS2_TEST_ADDRESS:/www/html/mp
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS3_TEST_ADDRESS:/www/html/mp
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/bots/target/mp-bots-1.0.0-SNAPSHOT.jar bitbucket@$GS1_TEST_ADDRESS:/www/html/mp/bots
+                                - scp -r -P 222 $BITBUCKET_CLONE_DIR/bots/target/lib bitbucket@$GS1_TEST_ADDRESS:/www/html/mp/bots
+                            # rollback feature
+                            artifacts:
+                                - ./web/target/web-mp-casino.war
+                                - web/target/web-mp-casino.war
+                                - bots/target/mp-bots-1.0.0-SNAPSHOT.jar
+                                - bots/target/lib/*
+                      - step:
+                            name: Deploy GS1
+                            caches:
+                                - maven
+                            script:
+                                - ls -l ./web/
+                                - find . -type f -name 'web-mp-casino.war'
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS1_TEST_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                      - step:
+                            name: Deploy GS2
+                            caches:
+                                - maven
+                            script:
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS2_TEST_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS2_TEST_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                - ssh bitbucket@$GS2_TEST_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                      - step:
+                            name: Deploy GS3
+                            caches:
+                                - maven
+                            script:
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS3_TEST_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS3_TEST_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                - ssh bitbucket@$GS3_TEST_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                      - step:
+                            name: Deploy Bots GS1
+                            caches:
+                                - maven
+                            script:
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/bots/bots.sh   bitbucket@$GS1_TEST_ADDRESS:/www/html/mp/bots
+                                - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "chmod 755 /www/html/mp/bots/bots.sh"
+                                - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "sudo /www/html/mp/bots/bots.sh restart"
+            #rollback feature
+            -   stage:  
+                    name: ROLLBACK - restore data
+                    deployment: Rollback
+                    trigger: manual
+                    steps:
+                        - step:
+                            name: Restore Artifact
+                            caches:
+                              - maven
+                            artifacts:
+                                download: true 
+                                paths: 
+                                - web/target/web-mp-casino.war
+                                - bots/target/mp-bots-1.0.0-SNAPSHOT.jar
+                                - bots/target/lib/*
+                            script:
+                            # rollback GS1
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS1_TEST_ADDRESS:/www/html/mp
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS1_TEST_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                            # rollback GS2
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS2_TEST_ADDRESS:/www/html/mp
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS2_TEST_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS2_TEST_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                - ssh bitbucket@$GS2_TEST_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                            # rollback GS3
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS3_TEST_ADDRESS:/www/html/mp
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS3_TEST_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS3_TEST_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                - ssh bitbucket@$GS3_TEST_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                            # rollback Bots GS1
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/bots/target/mp-bots-1.0.0-SNAPSHOT.jar bitbucket@$GS1_TEST_ADDRESS:/www/html/mp/bots
+                                - scp -r -P 222 $BITBUCKET_CLONE_DIR/bots/target/lib bitbucket@$GS1_TEST_ADDRESS:/www/html/mp/bots
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/bots/bots.sh   bitbucket@$GS1_TEST_ADDRESS:/www/html/mp/bots
+                                - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "chmod 755 /www/html/mp/bots/bots.sh"
+                                - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "sudo /www/html/mp/bots/bots.sh restart"
+        pre-prod:
+            - step:
+                  name: Security Scan
+                  script: # Run a security scan for sensitive data.
+                      # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
+                      - pipe: atlassian/git-secrets-scan:0.5.1
+            - step:
+                  name: Test Modules
+                  caches:
+                      - maven
+                  script:
+                      - git clone git@bitbucket.org:mqbatlassiannet/mq-gs.git
+                      - cd mq-gs
+                      - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                      - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                      - ./build-all-modules.sh
+                      - cd ./cassandra-cache/
+                      - mvn install -Dorg.slf4j.simpleLogger.defaultLogLevel=error
+                      - cd ..
+                      - cd ..
+                      - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                      - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                      - mvn -s config/settings.xml test -P mqb-live
+            - stage:
+                  name: PRE-PROD - Build and Deploy
+                  deployment: Pre-Prod
+                  trigger: manual
+                  steps:
+                      - step:
+                            name: Build Project
+                            caches:
+                                - maven
+                            script:
+                                - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                                - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                                - mvn -s config/settings.xml clean package -P mqb-live -DSkipTests=true
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS1_PRE_PROD_ADDRESS:/www/html/mp
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS2_PRE_PROD_ADDRESS:/www/html/mp
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS3_PRE_PROD_ADDRESS:/www/html/mp
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/bots/target/mp-bots-1.0.0-SNAPSHOT.jar bitbucket@$GS1_PRE_PROD_ADDRESS:/www/html/mp/bots
+                                - scp -r -P 222 $BITBUCKET_CLONE_DIR/bots/target/lib bitbucket@$GS1_PRE_PROD_ADDRESS:/www/html/mp/bots
+                            # rollback feature
+                            artifacts:
+                                - ./web/target/web-mp-casino.war
+                                - web/target/web-mp-casino.war
+                                - bots/target/mp-bots-1.0.0-SNAPSHOT.jar
+                                - bots/target/lib/*
+                      - step:
+                            name: Deploy GS1
+                            caches:
+                                - maven
+                            script:
+                                - ls -l ./web/
+                                - find . -type f -name 'web-mp-casino.war'
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS1_PRE_PROD_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS1_PRE_PROD_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                - ssh bitbucket@$GS1_PRE_PROD_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                      - step:
+                            name: Deploy GS2
+                            caches:
+                                - maven
+                            script:
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS2_PRE_PROD_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS2_PRE_PROD_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                - ssh bitbucket@$GS2_PRE_PROD_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                      - step:
+                            name: Deploy GS3
+                            caches:
+                                - maven
+                            script:
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS3_PRE_PROD_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS3_PRE_PROD_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                - ssh bitbucket@$GS3_PRE_PROD_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                      - step:
+                            name: Deploy Bots GS1
+                            caches:
+                                - maven
+                            script:
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/bots/bots.sh   bitbucket@$GS1_PRE_PROD_ADDRESS:/www/html/mp/bots
+                                - ssh bitbucket@$GS1_PRE_PROD_ADDRESS -p 222 "chmod 755 /www/html/mp/bots/bots.sh"
+                                - ssh bitbucket@$GS1_PRE_PROD_ADDRESS -p 222 "sudo /www/html/mp/bots/bots.sh restart"
+            #rollback feature
+            -   stage:
+                    name: ROLLBACK - restore data
+                    deployment: Rollback
+                    trigger: manual
+                    steps:
+                        - step:
+                              name: Restore Artifact
+                              caches:
+                                  - maven
+                              artifacts:
+                                  download: true
+                                  paths:
+                                      - web/target/web-mp-casino.war
+                                      - bots/target/mp-bots-1.0.0-SNAPSHOT.jar
+                                      - bots/target/lib/*
+                              script:
+                                  # rollback GS1
+                                  - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS1_PRE_PROD_ADDRESS:/www/html/mp
+                                  - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS1_PRE_PROD_ADDRESS:/www/html/mp
+                                  - ssh bitbucket@$GS1_PRE_PROD_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                  - ssh bitbucket@$GS1_PRE_PROD_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                                  # rollback GS2
+                                  - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS2_PRE_PROD_ADDRESS:/www/html/mp
+                                  - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS2_PRE_PROD_ADDRESS:/www/html/mp
+                                  - ssh bitbucket@$GS2_PRE_PROD_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                  - ssh bitbucket@$GS2_PRE_PROD_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                                  # rollback GS3
+                                  - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS3_PRE_PROD_ADDRESS:/www/html/mp
+                                  - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS3_PRE_PROD_ADDRESS:/www/html/mp
+                                  - ssh bitbucket@$GS3_PRE_PROD_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                  - ssh bitbucket@$GS3_PRE_PROD_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                                  # rollback Bots GS1
+                                  - scp -P 222 $BITBUCKET_CLONE_DIR/bots/target/mp-bots-1.0.0-SNAPSHOT.jar bitbucket@$GS1_PRE_PROD_ADDRESS:/www/html/mp/bots
+                                  - scp -r -P 222 $BITBUCKET_CLONE_DIR/bots/target/lib bitbucket@$GS1_PRE_PROD_ADDRESS:/www/html/mp/bots
+                                  - scp -P 222 $BITBUCKET_CLONE_DIR/bots/bots.sh   bitbucket@$GS1_PRE_PROD_ADDRESS:/www/html/mp/bots
+                                  - ssh bitbucket@$GS1_PRE_PROD_ADDRESS -p 222 "chmod 755 /www/html/mp/bots/bots.sh"
+                                  - ssh bitbucket@$GS1_PRE_PROD_ADDRESS -p 222 "sudo /www/html/mp/bots/bots.sh restart"
+    tags:
+        'mp-*':
+            - step:
+                  name: Security Scan
+                  script: # Run a security scan for sensitive data.
+                      # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
+                      - pipe: atlassian/git-secrets-scan:0.5.1
+            - step:
+                  name: Test Modules
+                  caches:
+                      - maven
+                  script:
+                      - git clone git@bitbucket.org:mqbatlassiannet/mq-gs.git
+                      - cd mq-gs
+                      - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                      - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                      - ./build-all-modules.sh
+                      - cd ./cassandra-cache/
+                      - mvn install -Dorg.slf4j.simpleLogger.defaultLogLevel=error
+                      - cd ..
+                      - cd ..
+                      - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                      - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                      - mvn -s config/settings.xml test -P mqb2-live
+            - stage:
+                  name: TEST - Build and Deploy
+                  deployment: Test
+                  trigger: manual
+                  steps:
+                      - step:
+                            name: Build Project
+                            caches:
+                                - maven
+                            script:
+                                - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                                - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                                - mvn -s config/settings.xml clean package -P mqb2-live -DSkipTests=true
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS1_TEST_ADDRESS:/www/html/mp
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS2_TEST_ADDRESS:/www/html/mp
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS3_TEST_ADDRESS:/www/html/mp
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/bots/target/mp-bots-1.0.0-SNAPSHOT.jar bitbucket@$GS1_TEST_ADDRESS:/www/html/mp/bots
+                                - scp -r -P 222 $BITBUCKET_CLONE_DIR/bots/target/lib bitbucket@$GS1_TEST_ADDRESS:/www/html/mp/bots
+
+                            artifacts:
+                                - ./web/target/web-mp-casino.war
+                      - step:
+                            name: Deploy GS1
+                            caches:
+                                - maven
+                            script:
+                                - ls -l ./web/
+                                - find . -type f -name 'web-mp-casino.war'
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS1_TEST_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                      - step:
+                            name: Deploy GS2
+                            caches:
+                                - maven
+                            script:
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS2_TEST_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS2_TEST_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                - ssh bitbucket@$GS2_TEST_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                      - step:
+                            name: Deploy GS3
+                            caches:
+                                - maven
+                            script:
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/deploy.sh   bitbucket@$GS3_TEST_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS3_TEST_ADDRESS -p 222 "chmod 755 /www/html/mp/deploy.sh"
+                                - ssh bitbucket@$GS3_TEST_ADDRESS -p 222 "sudo /www/html/mp/deploy.sh"
+                      - step:
+                            name: Deploy Bots GS1
+                            caches:
+                                - maven
+                            script:
+                                - scp -P 222 $BITBUCKET_CLONE_DIR/bots/bots.sh   bitbucket@$GS1_TEST_ADDRESS:/www/html/mp/bots
+                                - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "chmod 755 /www/html/mp/bots/bots.sh"
+                                - ssh bitbucket@$GS1_TEST_ADDRESS -p 222 "sudo /www/html/mp/bots/bots.sh restart"
+            - stage:
+                  name: PROD - Build and Deploy
+                  deployment: Production
+                  trigger: manual
+                  steps:
+                      - step:
+                            name: Build Project
+                            caches:
+                                - maven
+                            script:
+                                - find . -type f -name '*' -exec chmod u+rwx,g+rwx,o+rw-x \{\} \;
+                                - find . -type d -name '*' -exec chmod u+rwx,g+rwxs,o+rwxs \{\} \;
+                                - mvn -s config/settings.xml clean package -P mqb-prod -DSkipTests=true
+                                - scp  $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS1_PROD_ADDRESS:/www/html/mp
+                                - scp  $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS2_PROD_ADDRESS:/www/html/mp
+                                - scp  $BITBUCKET_CLONE_DIR/web/target/web-mp-casino.war  bitbucket@$GS3_PROD_ADDRESS:/www/html/mp
+                                - scp  $BITBUCKET_CLONE_DIR/bots/target/mp-bots-1.0.0-SNAPSHOT.jar bitbucket@$GS1_PROD_ADDRESS:/www/html/mp/bots
+                                - scp -r $BITBUCKET_CLONE_DIR/bots/target/lib bitbucket@$GS1_PROD_ADDRESS:/www/html/mp/bots
+                                #- scp -P 222 $BITBUCKET_CLONE_DIR/bots/target/mp-bots-1.0.0-SNAPSHOT.jar bitbucket@$GS1_TEST_ADDRESS:/www/html/mp/bots
+                                #- scp -r -P 222 $BITBUCKET_CLONE_DIR/bots/target/lib bitbucket@$GS1_PROD_ADDRESS:/www/html/mp/bots
+
+                            artifacts:
+                                - ./web/target/web-mp-casino.war
+                                - bots/target/mp-bots-1.0.0-SNAPSHOT.jar
+                                - bots/target/lib/*
+                      - step:
+                            name: Deploy GS1
+                            caches:
+                                - maven
+                            script:
+                                - scp $BITBUCKET_CLONE_DIR/deploy_prod.sh   bitbucket@$GS1_PROD_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS1_PROD_ADDRESS "chmod 755 /www/html/mp/deploy_prod.sh"
+                                - ssh bitbucket@$GS1_PROD_ADDRESS "sudo /www/html/mp/deploy_prod.sh deploy"
+                      - step:
+                            name: Deploy GS2
+                            caches:
+                                - maven
+                            script:
+                                - scp $BITBUCKET_CLONE_DIR/deploy_prod.sh   bitbucket@$GS2_PROD_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS2_PROD_ADDRESS "chmod 755 /www/html/mp/deploy_prod.sh"
+                                - ssh bitbucket@$GS2_PROD_ADDRESS "sudo /www/html/mp/deploy_prod.sh deploy"
+                      - step:
+                            name: Deploy GS3
+                            caches:
+                                - maven
+                            script:
+                                - scp $BITBUCKET_CLONE_DIR/deploy_prod.sh   bitbucket@$GS3_PROD_ADDRESS:/www/html/mp
+                                - ssh bitbucket@$GS3_PROD_ADDRESS "chmod 755 /www/html/mp/deploy_prod.sh"
+                                - ssh bitbucket@$GS3_PROD_ADDRESS "sudo /www/html/mp/deploy_prod.sh deploy"
+                      -   step:
+                              name: Deploy Bots GS1
+                              caches:
+                                  - maven
+                              script:
+                                  - scp $BITBUCKET_CLONE_DIR/bots/bots.sh   bitbucket@$GS1_PROD_ADDRESS:/www/html/mp/bots
+                                  - ssh bitbucket@$GS1_PROD_ADDRESS "chmod 755 /www/html/mp/bots/bots.sh"
+    custom:
+        rollback-prod:
+            -   stage:
+                    name: Rollback Production (Instant)
+                    deployment: Production
+                    steps:
+                        -   step:
+                                name: Rollback MP1
+                                deployment: Production
+                                script:
+                                    - scp $BITBUCKET_CLONE_DIR/deploy_prod.sh   bitbucket@$GS1_PROD_ADDRESS:/www/html/mp
+                                    - ssh bitbucket@$GS1_PROD_ADDRESS "chmod 755 /www/html/mp/deploy_prod.sh"
+                                    - ssh bitbucket@$GS1_PROD_ADDRESS "sudo /www/html/mp/deploy_prod.sh rollback"
+                        -   step:
+                                name: Rollback MP2
+                                caches:
+                                    - maven
+                                script:
+                                    - scp $BITBUCKET_CLONE_DIR/deploy_prod.sh   bitbucket@$GS2_PROD_ADDRESS:/www/html/mp
+                                    - ssh bitbucket@$GS2_PROD_ADDRESS "chmod 755 /www/html/mp/deploy_prod.sh"
+                                    - ssh bitbucket@$GS2_PROD_ADDRESS "sudo /www/html/mp/deploy_prod.sh rollback"
+                        -   step:
+                                name: Rollback MP33
+                                caches:
+                                    - maven
+                                script:
+                                    - scp $BITBUCKET_CLONE_DIR/deploy_prod.sh   bitbucket@$GS3_PROD_ADDRESS:/www/html/mp
+                                    - ssh bitbucket@$GS3_PROD_ADDRESS "chmod 755 /www/html/mp/deploy_prod.sh"
+                                    - ssh bitbucket@$GS3_PROD_ADDRESS "sudo /www/html/mp/deploy_prod.sh rollback"

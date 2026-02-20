@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mq-mp-svc
+  namespace: legacy
+spec:
+  selector:
+    app: mq-mp
+  ports:
+  - name: mq-mp
+    protocol: TCP
+    port: 80
+    targetPort: 8082
+...

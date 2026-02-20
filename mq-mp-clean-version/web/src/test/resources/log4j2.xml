@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{%d{yyyy.MM.dd HH:mm:ss,SSS} %-5p [%c{1} %t] %m%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=black, DEBUG=green bold, TRACE=blue}"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <!--<Root level="warn">
+            <AppenderRef ref="Console"/>
+        </Root>
+        <Logger name="com.dgphoenix.casino" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>-->
+        <Root level="debug">
+        </Root>
+    </Loggers>
+</Configuration>

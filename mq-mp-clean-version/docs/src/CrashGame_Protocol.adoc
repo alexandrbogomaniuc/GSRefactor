@@ -1,0 +1,1410 @@
+= CrashGame
+Betsoft Gaming
+v1.0
+:source-highlighter: coderay
+
+== 1. Lobby Protocol
+
+This document describes the communication protocol between client and the server in the “Crash game” multiplayer game. +
+Interaction is carried out via websockets in JSON format. +
+The startGameUrl and session id of the logged-in user are passed to the client through the http request parameters:
+startGameUrl (wss://host:port/websocket/crash), sessionId. +
+Please note, that we recommend to use only secure websocket connections (wss://). +
+Rooms can be created and deleted by the server as needed, depending on the current number of players. +
+Type of all identifiers (id, rid, roomid, ..) is long.
+As some features are game-specific, related fields in other games where not applicable should be ignored.
+
+=== 1.1 Error handling
+
+In response to any client request may come an error message like this:
+
+[source,json]
+{
+  "code": 1,
+  "msg": "Internal error",
+  "date": 1496748898812,
+  "class": "Error",
+  "rid": 1
+}
+
+[source,json]
+{
+  "code": 2,
+  "msg": "Server shutdown",
+  "date": 1496748898812,
+  "class": "Error",
+  "rid": -1
+}
+
+[horizontal]
+.Request parameters:
+code:: error code
+msg:: error description (may be localized)
+date:: datetime in msec. from 01.01.1970 (standart unix timestamp)
+class:: message class
+rid:: request Id, type is int.
+Optional parameter, if not -1 this parameter contains id of original request.
+
+[horizontal]
+.Possible error ranges
+1-999:: FATAL ERROR
+1000-4999:: ERROR
+5000-9999:: WARNING
+
+Full list of error codes could be found in section 4
+
+.Handling 'FATAL ERROR':
+Display message to user and close lobby.
+
+.Handling Lobby Websocket errors:
+In case of websocket error, you must re-establishing websocket connection to lobbyUrl and send 'Enter Lobby' request.
+
+=== 1.2 Enter Lobby
+
+This request is a first request which should be send by the client after establishing websocket connection to server.
+After that request, the client will be subscribed to receive asynchronous events: BalanceUpdated
+
+[source,json]
+{
+  "sid": "4_eb0bf169cbb477b6f8430000015cbe83_fwRFDR4FWFZTV142PiQUCQ4H",
+  "date": 1496750162302,
+  "class": "EnterLobby",
+  "rid": 1,
+  "serverId": 1,
+  "lang": "en",
+  "mode": "real",
+  "noFRB": false,
+  "gameId": 779,
+  "tournamentId": 123444,
+  "bonusId": 56767,
+  "battlegroundBuyIn": 100
+}
+
+[horizontal]
+.Request parameters:
+sid:: session identifier (send as request parameter on start lobby client)
+rid:: unique request id
+serverId:: serverId for connect (send as request parameter on start lobby client)
+mode:: money type: free, real, bonus
+gameId:: game identifier (send as request parameter on start lobby client)
+noFRB:: true if server should ignore active FRBs
+tournamentId:: tournament identifier, optional. (send as request parameter on start lobby client for tournament play)
+bonusId:: cash bonus identifier, optional, not null only for cash bonus mode (send as request parameter on start lobby client)
+battlegroundBuyIn:: selected buyIn amount for battleground mode
+
+If session not found, invalid or expired server return
+[source,json]
+{
+"code": 3, "msg": "Invalid session", "date": 1496750162288, "class": "Error", "rid": 1 }
+
+If selected nickname contains an obscene word, server return:
+
+[source,json]
+{
+  "code": 1000,
+  "msg": "Illegal nickname",
+  "date": 1496750162288,
+  "class": "Error",
+  "rid": 1
+}
+
+If session exist and enter to lobby is success, server return:
+
+[source,json]
+{
+  "players": 600,
+  "nickname": "Taras70",
+  "nicknameEditable": true,
+  "balance": 20000,
+  "currency": { "code": "USD", "symbol": "$" },
+  "rankPonts": 200,
+  "roomId": 20,
+  "avatar": {"borderStyle": 1, "hero": 1, "background": 2},
+  "borders": [0, 1, 2, 3],
+  "heroes": [0, 1, 2, 3],
+  "backgrounds": [0, 1, 2, 3],
+  "frBonusInfo": {
+    "id": 23142,
+    "awardDate": 1533284885209,
+    "expirationDate": 1533294885209,
+    "totalShots": 500,
+    "currentShots": 350,
+    "winSum": 20000,
+    "stake": 1
+  },
+  "cashBonusInfo": {
+    "id": 23142,
+    "awardDate": 1533284885209,
+    "expirationDate": 1533294885209,
+    "balance": 1000,
+    "amount": 10000,
+    "amountToRelease": 200,
+    "status": "ACTIVE"
+  },
+  "tournamentInfo": {
+    "id": 23142,
+    "name": "New Year's tournament",
+    "state": "ACTIVE",
+    "startDate": 1533284885209,
+    "endDate": 1533284885209,
+    "balance": 10000,
+    "buyInPrice": 1000,
+    "buyInAmount": 10000,
+    "reBuyAllowed": true,
+    "reBuyPrice": 500,
+    "reBuyAmount": 10000,
+    "reBuyCount": 1,
+    "reBuyLimit": -1,
+    "resetBalanceAfterRebuy": false
+  },
+  "battlegroundInfo": {
+     "buyIns": [100, 200, 500, 1000, 2000, 5000],
+     "alreadySeatRoomId": 200133,
+     "startGameUrl": "https://host/websocket/mpgame?SID=3453&serverId=1&lang=en&roomId=200133",
+     "roomState": "WAIT",
+     "buyInConfirmed": true
+   }
+  "showRefreshBalanceButton": true,
+  "rounds": 15,
+  "xp": 123,
+  "xpPrev": 100,
+  "xpNext": 200,
+  "place": 10,
+  "disableTooltips": false,
+  "nicknameGlyphs": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+  "stakesReserve": 300,
+  "stakesLimit": 100,
+  "alreadySitInStake": 2.0,
+  "disableLeaderboard": false,
+  "date": 1496908464148,
+  "date": 1587381071243,
+  "rid": 1,
+  "class": "EnterLobbyResponse"
+}
+
+[horizontal]
+.Response parameters:
+players:: total players logged in lobby
+nickname:: player nickname, For new player nickname is null.
+See 'CheckNicknameAvailability' and 'ChangeNickName' requests.
+nicknameEditable:: true if nickName may be changed, see ChangeNickname request
+balance:: current player balance in cents (this is casino side balance, ALL available money).
+For tournament/cashbonus modes equals to tournament.balance and cashbonus.balance
+currency:: player currency.
+Further in this document, all money in player currency
+rankPoints:: total number of points received by the player, see 4.3 section is spec.
+avatar:borderStyle:: current avatar borderStyle identifier.
+avatar:hero:: current avatar hero identifier.
+avatar:background:: current avatar background identifier.
+borders, heroes, backgrounds:: - list available avatar parts, see 'ChangeAvatar' request for customize avatar properties.
+level:: Current player's level
+rid:: unique request id
+roomId:: roomId if player already seat in room; -1 if not.
+If a player occupies a place in a room, the lobby client must prompt the player to continue the game.
+If the player agrees, the game is started for the given room (send request “GetStartGameUrl” and open game client window)
+frBonusInfo:: FRB only parameter, always null for real/free/cashbonus/tournament.
+cashBonusInfo:: CashBonus only parameter, always null for real/free/frbonus/tournament.
+cashBonusInfo:balance:: current balance.
+cashBonusInfo:amount:: initial bonus balance
+cashBonusInfo:amountToRelease:: amount of bets required to release the bonus
+cashBonusInfo:status:: current bonus status (ACTIVE, RELEASED, LOST, CANCELLED, EXPIRED, CLOSED)
+tournamentInfo:: tournament only parameter, always null for real/free/frbonus/cashbonus
+tournamentInfo:id:: unique tournament identifier
+tournamentInfo:name:: tournament name (may be localized)
+tournamentInfo:state:: current tournament status (READY, ACTIVE, FINISHED, CANCELED)
+tournamentInfo:balance:: current player balance in tournament
+tournamentInfo:buyInPrice:: price of participation in tournament
+tournamentInfo:buyInAmount:: amount of tournament money which player receives at start of tournament
+tournamentInfo:reBuyAllowed:: flag indicating that re-buys allowed
+tournamentInfo:reBuyPrice:: price of purchase of additional tournament money
+tournamentInfo:reBuyAmount:: amount of tournament money which player receives after re-buy
+tournamentInfo:reBuyCount:: current re-buys count
+tournamentInfo:reBuyLimit:: re-buys limit, (-1 for unlimited)
+tournamentInfo:resetBalanceAfterRebuy:: after re-buy all balance reset to re-buy amount
+disableTooltips:: enabled/disabled tooltips for player. (see 'ChangeToolTips' request)
+stakesReserve:: number of stakes to be transferred from balance
+stakesLimit:: limit of stakes after which you need to make additional buyIn
+alreadySitInStake:: stake if player seat in room (see roomId), 0 if not.
+disableLeaderboard:: boolean flag, if true - leaderboard functionality in client should be disabled
+nicknameGlyphs:: symbols which could be used for nicknames
+battlegroundInfo:: info about available battlegrounds
+battlegroundInfo:buyIns:: buyIns available
+battlegroundInfo:alreadySeatRoomId:: roomId if the player already has incomplete (paid) battleground round
+battlegroundInfo:startGameUrl:: url must be used for start game client.
+If this parameter specified, need immediate open client (see specification about explanatory message before open).
+battlegroundInfo:roomState:: room state if player open room, possible values: WAIT, PLAY, QUALIFY, CLOSED
+battlegroundInfo:buyInConfirmed:: buyIn confirmed and room open
+
+=== 1.3 CheckNicknameAvailability
+
+After entering the lobby, the player must choose a nickname that will be visible to all other players.
+To check whether the selected nickname is available, this request is available.
+
+[source,json]
+{
+  "nickname": "Taras",
+  "date": 1531731629785,
+  "rid": 234,
+  "class": "CheckNicknameAvailability"
+}
+
+[source,json]
+.Success response:
+{
+  "date": 1531731629785,
+  "rid": 1,
+  "class": "Ok"
+}
+
+[source,json]
+.Error responses:
+{
+  "code": 1015,
+  "msg": "Nickname not available",
+  "date": 1531731629785,
+  "rid":1,
+  "class": "Error"
+}
+{
+  "code": 1000,
+  "msg": "Illegal nickname",
+  "date": 1531731629785,
+  "rid": 1,
+  "class": "Error"
+}
+
+=== 1.4 ChangeNickname
+
+[source,json]
+{
+  "nickname": "Taras",
+  "date": 1531731629785,
+  "rid": 234,
+  "class": "ChangeNickname"
+}
+
+[source,json]
+.Success response:
+{
+  "date": 1531731629785,
+  "rid": 1,
+  "class": "Ok"
+}
+
+[source,json]
+.Error responses:
+{
+  "code": 1016,
+  "msg": "Nickname not available",
+  "date": 1531731629785,
+  "rid": 1,
+  "class": "Error"
+}
+{
+  "code": 1000,
+  "msg": "Illegal nickname",
+  "date": 1531731629785,
+  "rid": 1,
+  "class": "Error"
+}
+{
+  "code": 1028,
+  "msg": "Not allowed change nickname",
+  "date": 1531731629785,
+  "rid": 1,
+  "class": "Error"
+}
+
+=== 1.5 ChangeAvatar
+
+[source,json]
+{
+  "borderStyle": 1,
+  "hero": 2,
+  "background": 3,
+  "date": 1531731629785,
+  "rid": 234,
+  "class": "ChangeAvatar"
+}
+
+[source,json]
+.Success response:
+{
+  "date": 1531731629785,
+  "rid": 1,
+  "class":
+  "Ok"
+}
+[source,json]
+.Error responses:
+{
+  "code": 1017,
+  "msg": "Avatar part not available",
+  "date": 1531731629785,
+  "rid": 1,
+  "class": "Error"
+}
+
+=== 1.6 GetRoomInfo
+
+When the user selects a particular game room, the client requests the server for detailed information about the selected room by a request like:
+
+[source,json]
+{
+  "roomId": 1,
+  "rid": 5,
+  "date": 1496921495447,
+  "class": "GetRoomInfo"
+}
+
+[horizontal]
+.Request parameters:
+roomId:: unique room id
+rid:: unique request id
+
+[source,json]
+.Response:
+{
+  "roomId": 1,
+  "name": "VIP#1",
+  "maxSeats": 100,
+  "minStake": 0.01,
+  "maxStake": 1000.00,
+  "currentMultiplier": 2.7,
+  "stakes": [
+     { "amount": 0.05, "multiplier": 1.5, "autoPlay": true, "win": 0.07 },
+     { "amount": 1.00, "multiplier": 2.5, "autoPlay": true, "win": 2.50 },
+     { "amount": 10.00, "autoPlay": false }
+  ],
+  "state": "PLAY",
+  "seats": [
+    {
+	  "id": 1,
+	  "nickname": "Taras",
+      "stakes": [
+         { "amount": 0.05, "multiplier": 1.5, "autoPlay": true, "win": 0.07 },
+         { "amount": 1.00, "multiplier": 2.5, "autoPlay": true, "win": 2.50 },
+         { "amount": 10.00, "multiplier": 3.0, "autoPlay": true }
+      ]
+	},
+	{
+      "id": 2,
+	  "nickname": "Bulba",
+      "stakes": [
+         { "amount": 0.10, "multiplier": 1.5, "autoPlay": true, "win": 0.15 },
+      ]
+	},
+	{
+	  "id": 3,
+	  "nickname": "Mikola",
+      "stakes": [
+         { "amount": 1.00, "multiplier": 2.5, "autoPlay": true, "win": 2.50 },
+         { "amount": 10.00, "multiplier": 3.1, "autoPlay": true }
+      ]
+	}
+  ],
+  "ttnx": 7,
+  "alreadySitInNumber": -1,
+  "alreadySitInBalance": 0,
+  "alreadySitInWin": 0.25,
+  "subround": "BASE",
+  "roundId": 450122,
+  "cashBonusInfo": {
+    "id": 23142,
+    "awardDate": 1533284885209,
+    "expirationDate": 1533294885209,
+    "balance": 1000,
+    "amount": 10000,
+    "amountToRelease": 200,
+    "status": "ACTIVE"
+  },
+  "tournamentInfo": {
+    "id": 23142,
+    "name": "New Year's tournament",
+    "state": "ACTIVE",
+    "startDate": 1533284885209,
+    "endDate": 1533284885209,
+    "balance": 10000,
+    "buyInPrice": 500,
+    "buyInAmount": 10000,
+    "reBuyAllowed": true,
+    "reBuyPrice": 500,
+    "reBuyAmount": 100000,
+    "reBuyCount": 1,
+    "reBuyLimit": -1,
+    "resetBalanceAfterRebuy": false
+  },
+  "battlegroundInfo" {
+    "buyIn" : 1000,
+    "buyInConfirmed": true,
+    "timeToStart" : 30,
+    "kingsOfHill": [1,2,3],
+    "score": 4620,
+    "rank" : 3,
+    "pot": 3960,
+    "potTaxPercent": 5
+  },
+  "date": 1497004331658,
+  "rid": 5,
+  "class": "GetRoomInfoResponse"
+}
+
+.Where:
+[horizontal]
+rid:: request id from “GetRoomInfo”
+roomId:: unique room id
+name:: room name
+maxSeats:: max seats in room
+minStake:: minimal allowed stake in cents (type – float)
+maxStake:: maximal allowed stake in cents (type – float)
+currentMultiplier:: current multiplier, zero in round not started.
+playerStake:: player stake (shot cost) in cents (type – float).
+stakes:: current player stakes, may be multiple, max 3 astronaut
+stakes::amount:: stake amount in cents (type – float)
+stakes::multiplier:: stake multiplier, may be zero if not autoplay and win not defined
+stakes::autoPlay:: autoPlay mode: boolean, mandatory
+stakes::win:: win amount in cents (type – float), may be not defined if rocket not crash and astronaut did not catapults.
+Zero for loss.
+state:: current room state.
+Possible values: WAIT, PLAY, QUALIFY, CLOSED
+seats:: other players info
+seats::id:: seat identifier, deprecated. Always 0. Use nickname for identify seat
+seats::nickname:: seat nickname
+seats::stakes:: player stakes info
+ttnx:: rough time to next state in seconds, -1 for unknown (ttnx -Time To NeXt).
+alreadySitInNumber:: seat number; -1 if player not seat in room;
+alreadySitInBalance:: current player balance if player seat in room; 0 if player not seat
+alreadySitInWin:: player's win in current round
+cashBonusInfo:: same as EnterLobbyResponse.cashBonusInfo
+tournamentInfo:: same as EnterLobbyResponse.tournamentInfo
+battlegroundInfo:: battleground info, always null for other modes
+battlegroundInfo:buyIn:: buyIn amount for join
+battlegroundInfo:buyInConfirmed:: true if buyIn confirmed by player
+battlegroundInfo:timeToStart:: time to start next battleground round in seconds
+battlegroundInfo:kingsOfHill:: Kings of the Hill seat number ids
+battlegroundInfo:score:: current player score (ath this moment always total win amount)
+battlegroundInfo:rank:: current player rank
+battlegroundInfo:pot:: pot amount
+battlegroundInfo:potTaxPercent:: casino tax percentage of pot amount
+
+=== 1.7 BalanceUpdated
+
+This message sent by server side after changing player balance.
+Balance is checked every 15 seconds on server side.
+
+[source,json]
+.Response
+{
+  "class": "BalanceUpdated",
+  "date": 1496748898812,
+  "rid": -1,
+  "balance": 1236600,
+  "serverAmmo": 293
+}
+
+=== 1.8 GetTime
+
+Sended from client each N seconds.
+N(MQ_TIMER_FREQ) in getParams() in template.jsp.
+
+[source,json]
+.Request
+{
+  "class": "GetTime",
+  "date": 1496748898812,
+  "rid": 10
+}
+.Response
+{
+  "class": "TimeUpdated",
+  "date": 1496748898813,
+  "rid": 10
+}
+
+=== 1.9 TournamentStateChanged
+
+Server sends this message after tournament status changed
+
+[source,json]
+{
+  "id": 323453,
+  "oldState": "ACTIVE",
+  "newState": "EXPIRED",
+  "reason": "Tournament time is up",
+  "date": 1531731629785,
+  "rid": -1,
+  "class": "TournamentStateChanged"
+}
+
+[horizontal]
+.Where:
+id:: tournament id
+reason:: additional info about change state, may be empty.
+oldState:: READY, ACTIVE
+newState:: ACTIVE, FINISHED, CANCELED
+
+=== 1.10 BonusStatusChanged
+
+Server sends this message after bonus status changed
+
+[source,json]
+{
+  "id": 345345,
+  "type": "FRB",
+  "oldStatus": "ACTIVE",
+  "newStatus": "FINISHED",
+  "reason": "Bonus expired",
+  "date": 1531731629785,
+  "rid": -1,
+  "class": "BonusStatusChanged"
+}
+
+.Where:
+id:: bonus id
+type:: bonus type, may be FRB or CASHBONUS
+reason:: additional info about change state, may be empty.
+oldStatus:: ACTIVE
+newStatus:: RELEASED, LOST, CANCELLED, EXPIRED, CLOSED
+
+=== 1.11 OpenRoom
+
+After this request is completed, the client goes into observer mode and begins to receive all necessary information about the game.
+
+[source,json]
+{
+  "roomId": -1,
+  "lang": "en",
+  "sid": "eb0bf169cbb477b6f8430000015cbe83",
+  "date": 1497157072066,
+  "rid": 5,
+  "class": "OpenRoom"
+}
+
+[horizontal]
+.Request parameters:
+roomId:: always -1 for crash games
+lang:: preferred language
+rid:: unique request id
+sid:: session identifier send as request parameter on start game client.
+
+.Response:
+GetRoomInfoResponse.
+See paragraph 1.6
+
+If game state is “PLAY” client immediately receives message:
+
+[source,json]
+{
+  "subround": "BASE",
+  "startTime": 0,
+  "state": "PLAY",
+  "seats": [
+    {
+	  "id": 1,
+	  "nickname": "Taras",
+      "stakes": [
+         { "amount": 0.05, "multiplier": 1.5, "autoPlay": true, "win": 0.07 },
+         { "amount": 1.00, "multiplier": 2.5, "autoPlay": true, "win": 2.50 },
+         { "amount": 10.00, "multiplier": 3.0, "autoPlay": true }
+      ]
+	},
+	{
+      "id": 2,
+	  "nickname": "Bulba",
+      "stakes": [
+         { "amount": 0.10, "multiplier": 1.5, "autoPlay": true, "win": 0.15 },
+      ]
+	},
+	{
+	  "id": 3,
+	  "nickname": "Mikola",
+      "stakes": [
+         { "amount": 1.00, "multiplier": 2.5, "autoPlay": true, "win": 2.50 },
+         { "amount": 10.00, "multiplier": 3.1, "autoPlay": true }
+      ]
+	}
+  ],
+  "roundId": 450063,
+  "cashBonusInfo": {
+    "id": 23142,
+    "awardDate": 1533284885209,
+    "expirationDate": 1533294885209,
+    "balance": 1000,
+    "amount": 10000,
+    "amountToRelease": 200,
+    "status": "ACTIVE"
+  },
+  "tournamentInfo": {
+    "id": 23142,
+    "name": "New Year's tournament",
+    "state": "ACTIVE",
+    "startDate": 1533284885209,
+    "endDate": 1533284885209,
+    "balance": 10000,
+    "buyInPrice": 500,
+    "buyInAmount": 10000,
+    "reBuyAllowed": true,
+    "reBuyPrice": 500,
+    "reBuyAmount": 100000,
+    "reBuyCount": 1,
+    "reBuyLimit": -1,
+    "resetBalanceAfterRebuy": false
+  },
+  "battlegroundInfo" {
+      "buyIn" : 1000,
+      "buyInConfirmed": true,
+      "timeToStart" : 0,
+      "kingsOfHill": [-1],
+      "score": 0,
+      "rank" : 0,
+      "pot": 3960
+  }
+  "date": 1587912885176,
+  "rid": 5,
+  "class": "FullGameInfo"
+}
+
+=== 1.11 CloseRoom
+
+This request must be send to server before close client.
+This required for release all server resources allocated to client.
+
+[source,json]
+{
+  "roomId": 1,
+  "date": 1497159892576,
+  "rid": 5,
+  "class": "CloseRoom"
+}
+
+[horizontal]
+.Request parameters:
+roomId:: unique room id
+rid:: unique request id
+
+[source,json]
+.Response:
+{
+  "date": 1497154639465,
+  "rid": 1,
+  "class": "Ok"
+}
+
+=== 1.12 SitIn
+
+The request is sent by the client to seat in the room.After the successful execution of this request, the user moves from the observer state to the player's state and additional actions available to him.
+In battleground mode sitIn must be sended only after accept buyIn.If buyIn not accepted need send CloseRoom message.
+
+[source,json]
+{
+  "date": 1497160498696,
+  "rid": 1,
+  "stake": 5,
+  "class": "SitIn"
+}
+
+[horizontal]
+.Request parameters:
+stake:: stake in cents.
+This parameter must be 0 for re-sitIn
+
+[source,json]
+.Response:
+{
+  "id": 4,
+  "nickname": "Andrey",
+  "enterDate": 1497160789104,
+  "balance": 15000,
+  "avatar": {
+    "borderStyle": 1,
+    "hero": 1,
+    "background": 10
+  },
+  "showRefreshBalanceButton": true,
+  "level": 8,
+  "frbMode": false,
+  "frbBalance": 0,
+  "mode": "FRB",
+  "maxMultiplier": 1000000.00,
+  "date": 1497160789056,
+  "rid": 2,
+  "class": "SitInResponse"
+}
+
+[horizontal]
+.Where:
+rid:: request id from “SitIn”
+id:: seat number
+nickname:: seat nickname
+balance:: current player balance
+avatar:: seat avatar
+showRefreshBalanceButton:: need show "Refresh Balance" button
+frbMode:: deprecated parameter, see 'mode' (will be deleted after client fix)
+frbBalance:: deprecated parameter (will be deleted after client fix)
+mode:: game mode, possible values FRB, CASHBONUS, REAL,TOURNAMENT
+maxMultiplier:: max allowed multiplier
+
+Other clients also receive this response, but with rid=-1.
+
+=== 1.13 SitOut
+
+The request is sent by the client in order to seat out from the room.
+After that the user goes into observer mode.
+For tournaments, cashbonus, frbonus modes, not required send a SitOut request, this will be done automatically and the client will receive a SitOutResponse message.
+
+[source,json]
+{
+  "date": 1497161230259,
+  "rid": 1,
+  "class": "SitOut"
+}
+
+[source,json]
+.Response:
+{
+  "id": 4,
+  "nickname": "Andrey",
+  "outDate": 1497161341687,
+  "nextRoomId": 32445,
+  "hasNextFrb": true,
+  "date": 1497161341653,
+  "rid": 1,
+  "class": "SitOutResponse"
+}
+
+[horizontal]
+.Where:
+rid:: request id from “SitOut”
+id:: seat identifier, deprecated. Always 0. Use nickname for identify seat
+nickname:: seat nickname
+nextRoomId:: roomId for sitIn to real room (after cashBonus or tournament), may be -1 if there is no suitable room
+hasNextFrb:: after cashbonus or frb completed, this flag indicating that exist new FRBonus
+
+Other clients also receive this response, but with rid=-1.
+
+=== 1.14 GameStateChanged
+
+This message sent from server to all clients on each game state change.
+
+[source,json]
+{
+  "state": "PLAY",
+  "ttnx": 600,
+  "roundId": 12345,
+  "date": 1497171419692,
+  "rid": 1,
+  "class": "GameStateChanged"
+}
+
+[horizontal]
+.Where:
+state:: current room state.
+Possible values: WAIT, PLAY, QUALIFY, CLOSED, BUY_IN
+ttnx:: rough time to next state in seconds, -1 for unknown
+roundId:: current round id
+rid:: request id, always -1
+
+=== 1.15 GetFullGameInfo
+
+[source,json]
+This request can be sent by the client if connection lost and need refresh all room info.
+{
+  "date": 1497178236042,
+  "rid": 1,
+  "class": "GetFullGameInfo"
+}
+
+Response: same as FullGameInfo in paragraph 2.2
+
+=== 1.16 RoundResult
+
+After round finished all clients receive message “GameStateChanged” described in paragraph 2.6 with state=QUALIFY.
+After qualification completed all clients receive round result in message:
+
+[source,json]
+{
+  "winAmount": 500.5,
+  "balance": 12000,
+  "roundId": 1090142,
+  "seats": [
+    {
+	  "id": 1,
+	  "nickname": "Taras",
+      "stakes": [
+         { "amount": 0.05, "multiplier": 1.5, "autoPlay": true, "win": 0.07 },
+         { "amount": 1.00, "multiplier": 2.5, "autoPlay": true, "win": 2.50 },
+         { "amount": 10.00, "multiplier": 3.0, "autoPlay": true, "win": 0.00 }
+      ]
+	},
+	{
+      "id": 2,
+	  "nickname": "Bulba",
+      "stakes": [
+         { "amount": 0.10, "multiplier": 1.5, "autoPlay": true, "win": 0.15 },
+      ]
+	},
+	{
+	  "id": 3,
+	  "nickname": "Mikola",
+      "stakes": [
+         { "amount": 1.00, "multiplier": 2.5, "autoPlay": true, "win": 2.50 },
+         { "amount": 10.00, "multiplier": 3.1, "autoPlay": true,"win": 0.00 }
+      ]
+	}
+  ],
+  "realWinAmount": 10.0
+  "date": 1497179064748,
+  "rid": -1,
+  "class": "RoundResult",
+  "battlegroundRoundResult": [
+    {
+       "id": 0,
+       "score": 12324,
+       "rank": 1,
+       "pot": 3960
+    },
+    {
+       "id": 1,
+       "score": 11324,
+       "rank": 2,
+       "pot": 0
+    },
+    {
+       "id": 2,
+       "score": 10324,
+       "rank": 3,
+       "pot": 0
+    },
+    {
+       "id": 5,
+       "score": 1324,
+       "rank": 4,
+       "pot": 0
+    }
+  ]
+}
+
+[horizontal]
+.Where:
+winAmount:: amount won in this round (type - float)
+balance:: current player balance
+battlegroundRoundResult:: battleground mode leaderboard info
+
+=== 1.17 FRBEnded
+
+After FRB completed, server send FRBEnded message.
+Client must display close reason (Completed, Canceled, Expired) and win sum.
+After close message box, need close client and resend from lobby messages: EnterLobby, GetRooms
+
+[source,json]
+.Response
+{
+  "winSum":1200,
+  "closeReason":"Completed",
+  "hasNextFrb":true
+  "date":1533285929327,
+  "rid":-1,
+  "class":"FRBEnded"
+}
+
+=== 1.18 ReBuy
+
+.Request
+[source,json]
+{
+  "date": 1496748898812,
+  "class": "ReBuy",
+  "rid": 5
+}
+
+.Response
+[source,json]
+{
+  "date": 1496748898812,
+  "class": "ReBuyResponse",
+  "rid": 5,
+  "ammoAmount": 10000,
+  "balance": 12345,
+  "rebuyCount": 2
+}
+
+=== 1.19 CancelBattlegroundRound
+
+Message received to game client if battleground round canceled.Cliet must display meassage and return to lobby.
+
+[source,json]
+{
+      "refundedAmount": 1000,
+      "reason": NOT_ENOUGH_PLAYERS,
+      "class":"CancelBattlegroundRound",
+      "rid":9,
+      "date":1617613404721
+}
+
+refundedAmount:: returned buyIn, may be 0 if played not make buyIn
+reason:: cancel reason. enum with possible values: NOT_ENOUGH_PLAYERS, SERVER_FAILURE
+
+=== 1.20 KingOfHillChanged
+
+Message sended after change King of the Hill
+
+[source,json]
+{
+      "newKings": [1,2,3],
+      "class":"KingOfHillChanged",
+      "rid":9,
+      "date":1617613404721
+}
+
+newKings:: new King seatIds
+
+=== 1.21 ConfirmBattlegroundBuyIn
+
+Message must be sended game client if player confirm buyIn for next battleground
+
+[source,json]
+{
+      "class":"ConfirmBattlegroundBuyIn",
+      "rid":9,
+      "date":1617613404721
+}
+
+[source,json]
+.Success response:
+{
+  "date": 1531731629785,
+  "rid": 9,
+  "class": "Ok"
+}
+
+=== 1.22 Crash Bet
+
+The request is sent by the client if need make bet in crash game.
+
+[source,json]
+{
+  "crashBetAmount": 100,
+  "multiplier": 1.35,
+  "autoPlay": false,
+  "date": 1497174203319,
+  "rid": 10,
+  "class": "CrashBet"
+}
+
+[horizontal]
+crashBetAmount:: amount of crash bet (cents)
+multiplier:: crash multiplier of bet
+autoPlay:: need auto collect on this multiplier.
+
+[source,json]
+.Response:
+{
+  "crashBetAmount": 120,
+  "balance": 15000,
+  "date": 1497174620105,
+  "crashBetKey": 1497174620105_0,
+  "rid": 10,
+  "class": "CrashBetResponse"
+}
+
+[horizontal]
+.Where:
+rid:: request id from “BuyIn” request
+crashBetAmount:: amount of crash bet (cents)
+crashBetKey:: key of crash bet (will be needed later in cancel of bet)
+balance:: current balance in cents
+
+=== 1.23 Cancel Crash Bet
+
+The request is sent by the client if need cancel bet in crash game.
+Player will get win with current multiplier.
+
+[source,json]
+{
+  "crashBetId": 1497174620105_0,
+  "placeNewBet": false,
+  "date": 1497174203319,
+  "rid": 10,
+  "class": "CrashCancelBet"
+}
+
+[horizontal]
+crashBetId:: id of crash bet (string)
+placeNewBet:: true for cancel bet before new placeBet, false if round started and need jump from rocket
+
+[source,json]
+.Response:
+{
+  "currentMult": 2.3,
+  "nickname": "User8677",
+  "seatWin": 1550,
+  "date": 1497174620105,
+   "rid": 10,
+  "class": "CrashCancelBetResponse"
+}
+
+=== 1.24 CrashStateInfo
+
+The response is sent by the server to all players if multipliers was changed in room.
+
+[source,json]
+{
+  "currentMult": 3.1,
+  "timeSpeedMult" : 4.0,
+  "date": 1497174203319,
+  "rid": 10,
+  "class": "CrashStateInfo"
+}
+
+[horizontal]
+.Where:
+rid:: request id from “BuyIn” request
+crashBetAmount:: amount of crash bet (cents)
+crashBetKey:: key of crash bet (will be needed later in cancel of bet)
+balance:: current balance in cents
+timeSpeedMult:: standard 1.0 in SP version, changed in btg mode when all bets ejected for speed up rocket
+
+=== 1.25 CrashCancelAutoEject
+
+The request is sent by the client if need cancel autoeject bet in crash game.
+[source,json]
+{
+  "betId": 1497174620105_0,
+  "date": 1497174203319,
+  "rid": 10,
+  "class": "CrashCancelAutoEject"
+}
+
+[horizontal]
+crashBetId:: id of crash bet (string)
+
+[source,json]
+.Response:
+{
+  "nickname": "User3453",
+  "betId": 1497174620105_0,
+  "date": 1497174620105,
+  "rid": 10,
+  "class": "CrashCancelAutoEjectResponse"
+}
+
+=== 1.26 CrashChangeAutoEject
+
+The request is sent by the client if need change autoeject multiplier in crash game.
+[source,json]
+{
+  "betId": 1497174620105_0,
+  "date": 1497174203319,
+  "multiplier": 1.35,
+  "rid": 10,
+  "class": "CrashChangeAutoEject"
+}
+
+[horizontal]
+crashBetId:: id of crash bet (string)
+
+[source,json]
+.Response:
+{
+  "nickname": "User3453",
+  "betId": 1497174620105_0,
+  "date": 1497174620105,
+  "rid": 10,
+  "class": "CrashChangeAutoEjectResponse"
+}
+
+=== 1.27 Reserve bet extension
+
+This extension is used for licensees who have not
+implemented extended CW protocol (realBet, realWin).
+
+Server sends a boolean parameter CW_SEND_REAL_BET_WIN in getParams() in template.jsp to Client. If the parameter equals to false client should use "Reserve bet extension".
+
+In this extension there is an additional state BuyIn State.
+
+* Client starts game as usual, when server receives Bet:
+
+** Server checks if Bet is correct
+** Saves buyIn with reserved flag
+** Does not process buyIn
+** Sends CrashBetResponse *without* changing balance
+
+[source,json]
+.Response:
+{
+  "crashBetAmount": 120,
+  "balance": 15000,
+  "date": 1497174620105,
+  "crashBetKey": 1497174620105_0,
+  "rid": 10,
+  "class": "CrashBetResponse"
+}
+
+* When server receives a cancel Bet request
+** Server checks the request, remove the bet and sends CrashCancelBetResponse
+
+[source,json]
+.Response:
+{
+  "currentMult": 2.3,
+  "nickname": "User8677",
+  "seatWin": 1550,
+  "date": 1497174620105,
+   "rid": 10,
+  "class": "CrashCancelBetResponse"
+}
+
+* When game reaches the last 5 seconds of Waiting state, state is changed to BuyIn state. Server sends GameStateChanged message
+
+[source,json]
+{
+  "state": "BUYIN",
+  "ttnx": 5,
+  "roundId": 12345,
+  "date": 1497171419692,
+  "rid": 1,
+  "class": "GameStateChanged"
+}
+
+* Server processes buyIn for sum of all reserved bets
+* In case succeed buyIns for all players after 5 seconds state changed to Play state. Server sends GameStateChanged message.
+
+[source,json]
+{
+  "state": "PLAY",
+  "ttnx": 600,
+  "roundId": 12345,
+  "date": 1497171419692,
+  "rid": 1,
+  "class": "GameStateChanged"
+}
+
+* For failed bets server sends CrashAllBetsRejectedResponse. All bets for player should be canceled.
+
+
+[source,json]
+.Response:
+{
+  "date": 1497174620105,
+  "rid": -1,
+  "seatId" : 0,
+  "name": "User8677",
+  "errorCode": 100300,
+  "errorMessage": "BuyIn failed, reason: insufficient funds",
+  "class": "CrashAllBetsRejectedResponse"
+}
+
+In case there are pending bets we wait all responses from GS and after that change state to Play.
+
+
+
+
+
+
+
+
+
+
+<<<
+
+== 3. Error codes
+
+|===
+| Error code | Error name | Description
+
+| 1
+| INTERNAL_ERROR
+| Unexpected error, please report it to BSG Server team
+
+| 2
+| SERVER_SHUTDOWN
+|
+
+| 3
+| INVALID_SESSION
+| Please use another token to login into the game
+
+| 4
+| DEPRECATED_REQUEST
+|
+
+| 5
+| FOUND_PENDING_OPERATION
+| This user is unable to login due to problems with his account
+
+| 6
+| CLOSE_FRB_IN_PROGRESS
+| Message is removed from the game
+
+| 7
+| UNKNOWN_GAME_ID
+| Wrong game id
+
+| 8
+| FOUND_OPEN_LOBBY_SESSION
+| Found other open lobby for EnterLobby (and game mode conflict).
+
+| 1000
+| ILLEGAL_NICKNAME
+| Nickname contains banned patterns, please use another one
+
+| 1001
+| BAD_REQUEST
+| Message received from the client has invalid format
+
+| 1002
+| NOT_LOGGED_IN
+| Please restart game
+
+| 1003
+| ROOM_NOT_FOUND
+| Please select another room
+
+| 1004
+| TOO_MANY_OBSERVERS
+| Room is full, please select another one
+
+| 1005
+| ROOM_MOVED
+| Room moved to another server
+
+| 1006
+| TOO_MANY_PLAYER
+| All 6 slots for players are taken, you can observe game until one is freed or pick another one
+
+| 1007
+| NOT_SEATER
+| You should perform SitIn operation before you can make actions in this room
+
+| 1008
+| NOT_ENOUGH_MONEY
+| There is not enough money for purchase
+
+| 1009
+| BAD_STAKE
+| Invalid stake size is provided by client
+
+| 1010
+| BAD_BUYIN
+| Invalid BuyIn request is send by client
+
+| 1011
+| CHANGE_STAKE_NOT_ALLOWED
+| Change of stake is forbidden at this moment (not used)
+
+| 1012
+| ROOM_NOT_OPEN
+| You should send OpenRoom request first
+
+| 1013
+| ROUND_NOT_STARTED
+| You need to wait until round is started until you can make actions in this room
+
+| 1014
+| NEED_SITOUT
+| You should perform SitOut request
+
+| 1015
+| WRONG_WEAPON
+| You are trying to perform shot using inactive weapon
+
+| 1016
+| NICKNAME_NOT_AVAILABLE
+| Nickname is already taken by another player, please pick another one
+
+| 1017
+| AVATAR_PART_NOT_AVAILABLE
+| You are trying to use avatar which is not available for this account yet
+
+| 1018
+| NOT_ENOUGH_BULLETS
+| You need to purchase bullets before you can shoot
+
+| 1019
+| REQUEST_FREQ_LIMIT_EXCEEDED
+| You are trying to send requests too fast, please limit rate
+
+| 1020
+| QUEST_IS_NOT_COMPLETED
+| You can't collect quest which is not completed
+
+| 1021
+| BUYIN_NOT_ALLOWED
+| You can perform BuyIn in this game state
+
+| 1022
+| QUEST_ALREADY_COLLECTED
+| You already collected this quest
+
+| 1023
+| WRONG_MINE_COORDINATES
+| You are trying to place mine on invalid location
+
+| 1024
+| BOSS_ROUND_STARTED
+| Not used
+
+| 1025
+| WRONG_UNPLAYED_FREE_SHOTS
+| Not used
+
+| 1026
+| NOT_FATAL_BAD_BUYIN
+| Buy in is failed, but you can proceed with playing
+
+| 1027
+| NOT_ALLOWED_CHANGE_BET
+| This message is sent by server when changing of bet levels is prohibited to avoid cheats with RTP
+
+| 1028
+| NOT_ALLOWED_CHANGE_NICKNAME
+| Change nickname not allowed
+
+| 1030
+| NOT_ALLOWED_SITIN
+| Sit in is not allowed during Qualify game state, client should wait and resend request
+
+|===
+
+== 5. Special Weapons
+
+|===
+| Title | Type Id
+
+| Shotgun
+| 0
+
+| Grenade
+| 1
+
+| Machine Gun
+| 2
+
+| Laser
+| 3
+
+| Plasma Rifle
+| 4
+
+| Mine Launcher
+| 5
+
+| Railgun
+| 6
+
+| Artillery Strike
+| 7
+
+| Rocket Launcher
+| 8
+
+| Flamethrower
+| 9
+
+| Cryogun
+| 10
+
+| Rapid Fire Pistol
+| 11
+
+|===

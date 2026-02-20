@@ -1,0 +1,272 @@
+{
+  "bossSpawnPoint": {
+    "x": 54,
+    "y": 54
+  },
+
+
+  "predefinedTrajectories": {
+    "5": [
+      { "points": [{ "x": 54, "y": 5 },  { "x": 57, "y": 45 }, { "x": 63, "y": 84 }]},
+      { "points": [{ "x": 63, "y": 84 },  { "x": 57, "y": 45 }, { "x": 54, "y": 5 } ] },
+
+      { "points": [{ "x": 89, "y": 39 },  { "x": 50, "y": 39 }, { "x": 8, "y": 39 } ]},
+      { "points": [{ "x": 8, "y": 39 },  { "x": 50, "y": 39 }, { "x": 89, "y": 39 }] },
+
+      { "points": [{ "x": 82, "y": 31 },  { "x": 40, "y": 35 }, { "x": 9, "y": 37 } ]},
+      { "points": [{ "x": 9, "y": 37 },  { "x": 40, "y": 35 }, { "x": 82, "y": 31 }] }
+
+    ],
+
+
+    "-2": [
+      { "points": [{ "x": 82, "y": 72 },
+        { "x": 53, "y": 73 },
+        { "x": 52, "y": 39 },
+        { "x": 9, "y": 39 }
+      ]},
+      { "points": [{ "x": 75, "y": 25 },
+        { "x": 70, "y": 33 },
+        { "x": 50, "y": 32 },
+        { "x": 50, "y": 60 },
+        { "x": 40, "y": 60 },
+        { "x": 40, "y": 35 },
+        { "x": 30, "y": 36 },
+        { "x": 30, "y": 80 }
+      ]},
+      { "points": [{ "x": 93, "y": 61 },
+        { "x": 70, "y": 61 },
+        { "x": 70, "y": 50 },
+        { "x": 30, "y": 50 },
+        { "x": 30, "y": 70 },
+        { "x": 49, "y": 70 },
+        { "x": 50, "y": 36 },
+        { "x": 70, "y": 36 },
+        { "x": 73, "y": 22 }
+      ]},
+      { "points": [{ "x": 75, "y": 77 },
+        { "x": 73, "y": 48 },
+        { "x": 30, "y": 49 },
+        { "x": 32, "y": 66 },
+        { "x": 13, "y": 63 }
+      ]},
+      { "points": [{ "x": 89, "y": 64 },
+        { "x": 52, "y": 66 },
+        { "x": 51, "y": 39 },
+        { "x": 38, "y": 40 },
+        { "x": 41, "y": 76 },
+        { "x": 25, "y": 75 }
+      ]},
+      { "points": [{ "x": 11, "y": 61 },
+        { "x": 45, "y": 61 },
+        { "x": 42, "y": 39 },
+        { "x": 64, "y": 39 },
+        { "x": 73, "y": 81 }
+      ]},
+      { "points": [{ "x": 5, "y": 43 },
+        { "x": 62, "y": 48 },
+        { "x": 63, "y": 67 },
+        { "x": 15, "y": 65 }
+      ]},
+      { "points": [{ "x": 86, "y": 68 },
+        { "x": 67, "y": 69 },
+        { "x": 66, "y": 53 },
+        { "x": 31, "y": 53 },
+        { "x": 4, "y": 43 }
+      ]}
+    ]
+
+  },
+
+
+  "swarmSpawnParams": {
+    "5": [
+      {
+        "sourceX": 79,
+        "sourceY": 28,
+        "sourceDeltaX": 4,
+        "sourceDeltaY": 6,
+        "targetX": 9,
+        "targetY": 34,
+        "targetDeltaX": 3,
+        "targetDeltaY": 4,
+        "travelTime": 3000,
+        "startDeltaTime": 1000,
+        "finishDeltaTime": 1000,
+        "minSpread": 1
+      },
+      {
+        "sourceX": 54,
+        "sourceY": 4,
+        "sourceDeltaX": 3,
+        "sourceDeltaY": 4,
+        "targetX": 58,
+        "targetY": 90,
+        "targetDeltaX": 4,
+        "targetDeltaY": 6,
+        "travelTime": 3000,
+        "startDeltaTime": 1000,
+        "finishDeltaTime": 1000,
+        "minSpread": 1
+      },
+      {
+        "sourceX": 74,
+        "sourceY": 23,
+        "sourceDeltaX": 3,
+        "sourceDeltaY": 3,
+        "targetX": 60,
+        "targetY": 89,
+        "targetDeltaX": 3,
+        "targetDeltaY": 3,
+        "travelTime": 3000,
+        "startDeltaTime": 1000,
+        "finishDeltaTime": 1000,
+        "minSpread": 1
+      },
+      {
+        "sourceX": 66,
+        "sourceY": 83,
+        "sourceDeltaX": 3,
+        "sourceDeltaY": 3,
+        "targetX": 53,
+        "targetY": 3,
+        "targetDeltaX": 3,
+        "targetDeltaY": 3,
+        "travelTime": 3000,
+        "startDeltaTime": 1000,
+        "finishDeltaTime": 1000,
+        "minSpread": 1
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "id": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "cooldown": 30000,
+      "groups": [
+        {
+          "minSize": 3,
+          "maxSize": 5,
+          "enemies": [
+            { "type": 0, "skin": 1 },
+            { "type": 1, "skin": 1 },
+            { "type": 2, "skin": 1 }
+          ],
+          "travelTime": 30000,
+          "deltaX": 1,
+          "deltaY": 1,
+          "deltaSpeed": 0.2,
+          "trajectory": {
+            "points": [
+              { "x": 39, "y": 60 },
+              { "x": 48, "y": 60 },
+              { "x": 51, "y": 60 },
+              { "x": 58, "y": 57 },
+              { "x": 64, "y": 53 },
+              { "x": 69, "y": 44 },
+              { "x": 69, "y": 35 },
+              { "x": 61, "y": 29 },
+              { "x": 54, "y": 29 },
+              { "x": 48, "y": 41 },
+              { "x": 48, "y": 50 },
+              { "x": 50, "y": 69 },
+              { "x": 55, "y": 74 },
+              { "x": 68, "y": 82 }
+            ]
+          },
+          "delayTime": 500,
+          "fromPortal": true
+        }
+      ]
+    }
+  ],
+  "swarmParams": [
+    {
+      "id": 101,
+      "startX": 55,
+      "startY": 6,
+      "deltaX": 3,
+      "deltaY": 3,
+      "angle": 300,
+      "distance": 550,
+      "minSize": 10,
+      "maxSize": 15,
+      "enemies": [
+        { "type": 0, "skin": 1 },
+        { "type": 1, "skin": 1 },
+        { "type": 2, "skin": 1 }
+      ],
+      "cooldown": 10000
+    },
+    {
+      "id": 102,
+      "startX": 55,
+      "startY": 6,
+      "deltaX": 3,
+      "deltaY": 3,
+      "angle": 325,
+      "distance": 900,
+      "minSize": 10,
+      "maxSize": 15,
+      "enemies": [
+        { "type": 0, "skin": 1 },
+        { "type": 1, "skin": 1 },
+        { "type": 2, "skin": 1 }
+      ],
+      "cooldown": 10000
+    },
+    {
+      "id": 103,
+      "startX": 11,
+      "startY": 34,
+      "deltaX": 3,
+      "deltaY": 3,
+      "angle": 210,
+      "distance": 900,
+      "minSize": 10,
+      "maxSize": 15,
+      "enemies": [
+        { "type": 0, "skin": 1 },
+        { "type": 1, "skin": 1 },
+        { "type": 2, "skin": 1 }
+      ],
+      "cooldown": 10000
+    },
+    {
+      "id": 104,
+      "startX": 89,
+      "startY": 39,
+      "deltaX": 3,
+      "deltaY": 3,
+      "angle": 30,
+      "distance": 850,
+      "minSize": 6,
+      "maxSize": 10,
+      "enemies": [
+        { "type": 3, "skin": 1 },
+        { "type": 4, "skin": 1 }
+      ],
+      "cooldown": 10000
+    },
+    {
+      "id": 205,
+      "startX": 52,
+      "startY": 36,
+      "deltaX": 3,
+      "deltaY": 3,
+      "angle": 330,
+      "distance": 1000,
+      "minSize": 10,
+      "maxSize": 15,
+      "enemies": [
+        { "type": 0, "skin": 1 },
+        { "type": 1, "skin": 1 },
+        { "type": 2, "skin": 1 }
+      ],
+      "cooldown": 30000,
+      "fromPortal": true
+    }
+  ]
+}

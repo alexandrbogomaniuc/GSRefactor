@@ -1,0 +1,2039 @@
+= MaxQuest
+Betsoft Gaming
+v1.5
+:source-highlighter: coderay
+
+== 1. Lobby Protocol
+This document describes the communication protocol between client and the server for the multiplayer game “Max Quest”. +
+Interaction is carried out via websockets in JSON format. +
+The lobbyUrl and session id of the logged-in user are passed to the client through the http request parameters:
+lobbyUrl (wss://host:port/websocket/mplobby), sessionId. +
+Please note, that we recommend to use only secure websocket connections (wss://). +
+Rooms can be created and deleted by the server as needed, depending on the current number of players. +
+Type of all identifiers (id, rid, roomid, ..) is long.
+
+=== 1.1 Error handling
+In response to any client request may come an error message like this:
+[source,json]
+{
+	"code": 1,
+	"msg": "Internal error",
+	"date": 1496748898812,
+	"class": "Error",
+	"rid": 1
+}
+
+[source,json]
+{
+	"code": 2,
+	"msg": "Server shutdown",
+	"date": 1496748898812,
+	"class": "Error",
+	"rid": -1
+}
+
+[horizontal]
+.Request parameters:
+code:: error code
+msg:: error description (may be localized)
+date:: datetime in msec. from 01.01.1970 (standart unix timestamp)
+class:: message class
+rid:: request Id, type is int. Optional parameter, if not -1 this parameter contains id of original request.
+
+[horizontal]
+.Possible error ranges
+1-999:: FATAL ERROR +
+1000-4999:: ERROR
+5000-9999:: WARNING
+
+Full list of error codes could be found in section 4
+
+.Handling 'FATAL ERROR':
+Display message to user and close lobby.
+
+.Handling Lobby Websocket errors:
+In case of websocket error, you must re-establishing websocket connection to lobbyUrl and send 'Enter Lobby' request.
+
+=== 1.2 Enter Lobby
+This request is a first request which should be send by the client after establishing websocket connection to lobby.
+After that request, the client will be subscribed to receive asynchronous events: BalanceUpdated
+[source,json]
+{
+	"sid": "4_eb0bf169cbb477b6f8430000015cbe83_fwRFDR4FWFZTV142PiQUCQ4H",
+	"date": 1496750162302,
+	"class": "EnterLobby",
+	"rid": 1,
+	"serverId": 1,
+	"lang": "en",
+	"mode": "real"
+	"gameId": 779,
+}
+
+[horizontal]
+.Request parameters:
+sid:: session identifier (send as request parameter on start lobby client).
+rid:: unique request id
+serverId:: serverId for connect (send as request parameter on start lobby client).
+mode:: money type - free or real (send as request parameter on start lobby client).
+gameId:: game identifier  (send as request parameter on start lobby client).
+
+If session not found, invalid or expired server return
+[source,json]
+{
+	"code": 3,
+	"msg": "Invalid session",
+	"date": 1496750162288,
+	"class": "Error",
+	"rid": 1
+}
+
+If selected nickname contains obscene word, server return:
+[source,json]
+{
+	"code": 1000,
+	"msg": "Illegal nickname",
+	"date": 1496750162288,
+	"class": "Error",
+	"rid": 1
+}
+
+If session exist and enter to lobby is success, server return:
+[source,json]
+{
+	"players": 600,
+	"nickname": "Taras70",
+	"avatar":{"borderStyle":1,"hero":1,"background":2},
+	"disableTooltips": false,
+	"stakes":[2.0,5.0,10.0,25.0,50.0,100.0],
+	"borders":[0,1,2,3],
+	"heroes":[0,1,2,3],
+	"backgrounds":[0,1,2,3],
+	"balance": 20000,
+	"currency": { "code": "USD", "symbol": "$" },
+	"paytable":{
+	    "enemyPayouts":[
+	        {
+	            "idEnemy": 0,
+                "nameEnemy": "Scarab black",
+                "prizes": [{"idPrize": 0, "payout": 2}]
+             },
+            {   "idEnemy": 4,
+                "nameEnemy": "Medium Mummy A",
+                "prizes": [
+                    {"idPrize": 0, "payout": 2},
+                    {"idPrize": 1, "payout": 3}
+	            ]
+             }
+        ],
+        "energyBoss": 48,
+        "bossExtraPayouts":[
+                {"idPrize": 0, "payout": 2},
+                {"idPrize": 1, "payout": 5},
+         ],
+        "bossExtraPayoutsSpecial":[
+	        {
+                "typeIdWeapon": 0,
+                "prizes": [{"idPrize": 0, "payout": 2}]
+             },
+            {
+                "typeIdWeapon": 4,
+                "prizes": [
+                    {"idPrize": 0, "payout": 2},
+                    {"idPrize": 1, "payout": 3}
+	            ]
+             }
+        ],
+    },
+	"date": 1496908464148,
+	"class": "EnterLobbyResponse",
+	"rankPonts": 200,
+	"level": 5,
+	"rid": 2,
+	"roomId": 20,
+	"frBonusInfo": {
+	    "awardDate": 1533284885209,
+	    "expirationDate": 1533294885209,
+	    "totalShots": 500,
+	    "currentShots": 350,
+	    "winSum": 20000,
+	    "stake": 1
+	},
+	"showRefreshBalanceButton": true,
+	"kills": 100,
+	"treasures": 20,
+	"rounds": 15,
+	"xp": 123,
+	"xpPrev": 100,
+	"xpNext": 200,
+	"place": 10,
+	"stakesReserve": 300,
+	"stakesLimit": 100,
+	"alreadySitInStake": 2.0,
+	"disableLeaderboard": false
+}
+
+[horizontal]
+.Response parameters:
+players:: total players logged in lobby
+nickname:: player nickname, For new player nickname is null. See 'CheckNicknameAvailability' and 'ChangeNickName' requests.
+balance:: current player balance in cents (this is casino side balance, ALL available money)
+currency:: player currency. Further in this document, all money in player currency
+rankPoints:: total number of points received by the player, see 4.3 section is spec.
+avatar:borderStyle:: current avatar borderStyle identifier.
+avatar:hero:: current  avatar hero identifier.
+avatar:background:: current avatar background identifier.
+stakes:: list stakes (cost per shot) available to player
+borders, heroes, backgrounds:: - list available avatar parts, see 'ChangeAvatar' request for customize avatar properties.
+paytable:: paytable for enemies.
+bossExtraPayoutsSpecial:: Prizes for special weapons at boss.
+level:: Current player's level
+rid:: unique request id
+roomId:: roomId if player already seat in room; -1 if not. If a player occupies a place in a room, the lobby client must prompt the player to continue the game. If the player agrees, the game is started for the given room (send request “GetStartGameUrl” and open game client window)
+frBonusInfo:: FRB only parameter, always null for real/free.
+disableTooltips:: enabled/disabled tooltips for player. (see 'ChangeToolTips' request)
+stakesReserve:: number of stakes to be transferred from balance
+stakesLimit:: limit of stakes after which you need to make additional buyIn
+alreadySitInStake:: stake if player seat in room (see roomId), 0 if not.
+disableLeaderboard:: booleader flag, if true - leaderboard functionality in client should be disabled
+
+=== 1.3 CheckNicknameAvailability
+After entering the lobby, the player must choose a nickname that will be visible to all other players.
+To check whether the selected nickname is available, this request is available.
+[source,json]
+{"nickname":"Taras","date":1531731629785,"rid":234,"class":"CheckNicknameAvailability"}
+
+[source,json]
+.Success response:
+{"date":1531731629785,"rid":1,"class":"Ok"}
+
+[source,json]
+.Error responses:
+{"code":1015,"msg":"Nickname not available","date":1531731629785,"rid":1,"class":"Error"}
+{"code":1000,"msg":"Illegal nickname","date":1531731629785,"rid":1,"class":"Error"}
+
+=== 1.4 ChangeNickname
+[source,json]
+{"nickname":"Taras","date":1531731629785,"rid":234,"class":"ChangeNickname"}
+
+[source,json]
+.Success response:
+{"date":1531731629785,"rid":1,"class":"Ok"}
+
+[source,json]
+.Error responses:
+{"code":1016,"msg":"Nickname not available","date":1531731629785,"rid":1,"class":"Error"}
+{"code":1000,"msg":"Illegal nickname","date":1531731629785,"rid":1,"class":"Error"}
+
+
+=== 1.5 ChangeAvatar
+[source,json]
+{"borderStyle":1,"hero":2,"background":3,"date":1531731629785,"rid":234,"class":"ChangeAvatar"}
+
+[source,json]
+.Success response:
+{"date":1531731629785,"rid":1,"class":"Ok"}
+[source,json]
+.Error responses:
+{"code":1017,"msg":"Avatar part not available","date":1531731629785,"rid":1,"class":"Error"}
+
+
+=== 1.7 GetRoomInfo
+When the user selects a particular game room, the client requests the server for detailed information about the selected room by a request like:
+[source,json]
+{
+	"roomId": 1,
+	"rid": 5,
+	"date": 1496921495447,
+	"class": "GetRoomInfo"
+}
+
+[horizontal]
+.Request parameters:
+roomId:: unique room id
+rid:: unique request id
+
+[source,json]
+.Response:
+{
+	"roomId": 1,
+	"rid": 5,
+	"name": "VIP#1",
+	"maxSeats": 8,
+	"minBuyIn": 10000,
+	"stake": 0.1,
+	"playerStake": 0.05,
+	"state": "WAIT",
+	"ttnx": 7,
+	"mapId": 1,
+	"width": 800,
+	"height": 600,
+	"alreadySitInNumber": -1,
+	"alreadySitInAmmoAmount": 0,
+	"alreadySitInBalance": 0,
+	"alreadySitInWin": 0.25,
+	"date": 1497004331658,
+	"class": "GetRoomInfoResponse",
+	"seats": [
+		{
+			"id": 1,
+			"nickname": "Taras",
+			"avatar": {
+   		        "borderStyle": 1,
+           		"hero": 1,
+           		"background": 10
+           	},
+			"enterDate": 1497004331679,
+			"totalScore": 700,
+			"currentScore": 10,
+			"rankPonts": 120
+		},
+		{
+			"id": 2,
+			"nickname": "Bulba",
+			"avatar": {
+   		        "borderStyle": 1,
+           		"hero": 1,
+           		"background": 10
+           	},
+			"enterDate": 1497004331679,
+			"totalScore": 230,
+			"currentScore": 15,
+			"rankPonts": 180
+		},
+		{
+			"id": 3,
+			"nickname": "Mikola",
+			"avatar": {
+   		        "borderStyle": 1,
+           		"hero": 1,
+           		"background": 10
+           	},
+			"enterDate": 1497004331679,
+			"totalScore": 10,
+			"currentScore": 5,
+			"rankPonts": 220
+		}
+	],
+	"enemies": [
+		{
+			"id": 1,
+			"name": "MummyA",
+			"width": 10,
+			"height": 30,
+			"speed": 10,
+			"prizes": 3,
+			"sumAward": 6,
+			"energy": 0,
+			"skins": 1,
+			"boss":false
+		},
+		{
+			"id": 2,
+			"name": "Boss",
+			"width": 15,
+			"height": 40,
+			"speed": 70,
+			"prizes": 4,
+			"sumAward": 0,
+			"energy": 50,
+			"skins": 2,
+			"boss":true
+		}
+	],
+  	"roomEnemies": [
+    		{
+      			"id": 18684,
+      			"typeId": 1,
+      			"speed": 10.0,
+      			"awardedPrizes": "",
+      			"awardedSum": 0.0,
+      			"energy": 0,
+			"skin": 1,
+			"trajectory": [
+ 				{ "x": 10, "y": 50, "time": 120 },
+				 { "x": 20, "y": 30, "time": 150 }
+			]
+    		},
+    		{
+      			"id": 18693,
+      			"typeId": 8,
+      			"speed": 10.0,
+      			"awardedPrizes": "",
+      			"awardedSum": 0.0,
+      			"energy": 0,
+			"skin": 1,
+			"trajectory": [
+ 				{ "x": 15, "y": 40, "time": 120 },
+				 { "x": 25, "y": 70, "time": 190 }
+			]
+    		}
+  	],
+	"weapons": [
+		{
+			"id": 1,
+			"shots": 3
+		},
+		{
+			"id": 2,
+			"shots": 5
+		}
+	],
+	"ammoValues":[100,200,500,1000,2000,5000,10000,20000,50000,1000000]
+}
+
+.Where:
+[horizontal]
+rid:: request id from “GetRoomInfo”
+roomId:: unique room id
+name:: room name
+maxSeats:: max seats in room
+minBuyIn:: minimal buyIn in cents for occupy seat (type – float)
+stake:: room stake (shot cost) in cents (type – float). This just stake limit.
+playerStake:: player stake (shot cost) in cents (type – float). Always in player currency. If player not seater, playerStake=-1
+state:: current room state. Possible values: WAIT, PLAY, QUALIFY, CLOSED
+ttnx:: rough time to next state in seconds, -1 for unknown (ttnx -Time To NeXt).
+mapId:: current map identifier
+width:: virtual width of the playing area
+height:: virtual height of the playing area
+alreadySitInNumber:: seat number; -1 if player not seat in room;
+alreadySitInAmmoAmount:: current ammo amount if player seat in room; 0 if player not seat
+alreadySitInBalance:: current player balance if player seat in room; 0 if player not seat
+alreadySitInWin:: player's win in current round
+seats:: list of players who have taken their seat and ready to play (or already playing)
+enemies:: list of enemy types that can appear in this room.
+roomEnemies:: list of alive enemies in this room. Please do not jumble it, “roomEnenemies” are specific instances, but “enemies” are the types of the enemies.
+weapons:: list of weapons available in the room
+seat:id:: seat number, may be 0...(maxSeats-1)
+seat:nickname:: seat nickname
+seat:avatar:: seat avatar
+seat:enterDate:: date when the player started the game
+seat:totalScore:: total number of points awarded player in this room (total win = totalScore*stake), type=integer
+seat:currentScore:: number of points awarded player for current round (currentWin = currentScore*stake), type=integer
+seat:rankPoints:: total number of points received by the player, see 4.3 section is spec.
+enemy:id:: unique enemy type identifier
+enemy:name:: enemy name
+enemy:width,height:: rectangle in which should be placed enemy
+enemy:speed:: max speed in points/sec.
+enemy:prizes:: number of prizes available for this type of enemy
+enemy:sumAward:: total awarded ponts available for this type of enemy (real win = sumAward*stake)
+enemy:energy:: Boss only property (can be used to identify the boss). Total points available for this boss. Each energy point represents 1 credit.
+enemy:skins:: skins count available for this enemy.
+enemy:boss:: flag indicating that this enemy is the boss; when this enemy type appears, you need remove the special weapon and use regular weapon.
+roomEnemy:id:: unique enemy identifier
+roomEnemy:typeid:: enemy type identifier (reference to enemy.id)
+roomEnemy:awardedPrizes:: prizes (list!) received from hitting the enemy. May be empty if no hits.
+roomEnemy:awardedSum:: amount of points received from hits to the enemy
+roomEnemy:energy:: remaining energy, if energy<0 enemy is dead, remember that energy=0 used for identify regular enemies
+roomEnemy:skin:: skin number (randomly generated, from 1 to enemy.skins)
+roomEnemy:trajectory:: Trajectory (set of points) along which enemies move
+roomEnemy:trajectory:x, y:: current x/y coordinate (x=0, y=0 for bottom left corner)
+roomEnemy:trajectory:time:: at this time the enemy must be at a given point
+
+Weapons:: is special weapons list. Special weapon may be used only in base game. When a special weapon is received, it must be used automatically. Once the weapon is received, the bet can not be changed until the weapon is fully consumed. Unused weapons are lost when going to the next round. Shots using special weapons are not paid.
+weapon:id:: unique weapon type identifier
+weapon:name:: weapon display name
+weapon:shots:: number of shots
+ammoValues:: possible ammo values for buyIn
+
+=== 1.8 SubscribeRoomInfo
+This message should be sent to the server if you need to subscribe to the changes in the selected room.
+[source,json]
+{
+	"roomId": 1,
+	"rid": 5,
+	"date": 1497151414840,
+	"class": "SubscribeRoomInfo"
+}
+
+[horizontal]
+.Request parameters:
+roomId:: unique room id
+rid:: unique request id
+
+[source,json]
+.Response (sent asynchronously for various events in the room; current events: sitIn, sitOut):
+{"id":123123,"seats":2,"state":"PLAY","date":1535435778825,"rid":6,"class":"ShortRoomInfo"}
+
+
+
+=== 1.9 UnsubscribeRoomInfo
+This message should be send to the server for unsubscribe to the changes in specified room.
+[source,json]
+{
+	"roomId": 1,
+	"date": 1497154444100,
+	"rid": 5,
+	"class": "UnsubscribeRoomInfo"
+}
+
+[horizontal]
+.Request parameters:
+roomId:: unique room id
+rid:: unique request id
+
+[source,json]
+.Response:
+{
+	"date": 1497154639465,
+	"rid": 1,
+	"class": "Ok"
+}
+
+=== 1.10 GetStartGameUrl
+After player double click on any room, lobby client send request to server for obtain url for start game.
+[source,json]
+{
+	"roomId": 1,
+	"stake": 5,
+	"date": 1497154790288,
+	"rid": 5,
+	"class": "GetStartGameUrl"
+}
+
+[horizontal]
+.Request parameters:
+roomId:: unique room id (may be not specified, in this case the room will be selected by the server based on stake param)
+stake:: selected stake
+rid:: unique request id
+Response:
+[source,json]
+{
+	"roomId": 5,
+	"startGameUrl": "https://host/mpgameloader.jsp?sid=deb0bf169cbb477b6f8430000015cbe83&serverId=1&roomId=5&stake=5",
+	"date": 1497155412200,
+	"rid": 1,
+	"class": "GetStartGameUrlResponse"
+}
+
+[horizontal]
+.Where:
+rid:: request id from “GetRoomInfo”
+roomId:: unique room id
+startGameUrl:: url for start game.
+
+After receiving this response, the client should open a new window with startGameUrl. You can add any parameters (roomMode for example) that you need to startGameUrl, except already added.
+
+=== 1.16 Leaderboards
+At any time client can request list of Leaderboards
+[source,json]
+.Request
+{
+  "class": "GetLeaderboards",
+  "date": 1496748898812,
+  "rid": 1
+}
+
+[source,json]
+.Response
+{
+  "class": "Leaderboards",
+  "date": 1496748898812,
+  "rid": 1,
+  "leaderboards": [
+    { "id": 1, "start": 140000000000, "end": 141000000000, "awards": 1000 },
+    { "id": 2, "start": 141000000000, "end": 142000000000, "awards": 100 }
+  ],
+  "currentId": 2,
+  "previousId": 1
+}
+
+=== 1.17 Leaderboard Scores
+At any time client can request current Leaderboard state
+[source,json]
+.Request
+{
+  "class": "GetLeaderboardScores",
+  "date": 1496748898812,
+  "rid": 2,
+  "leaderboardId": 1,
+  "from": 1,
+  "to": 6
+}
+
+[source,json]
+.Response
+{
+  "class": "LeaderboardScores",
+  "date": 1496748898812,
+  "rid": 2,
+  "leaderboardId": 1,
+  "prizePlaces": 5,
+  "currency": { "code": "EUR", "symbol": "€"),
+  "awards": [
+    { "place": 1, "type": "special", "value": "Porsche 911", "name": "Kenny", "score": 1000 },
+    { "place": 2, "type": "money", "value": 1000, "name": "Cartman", "score": 800 },
+    { "place": 3, "type": "money", "value": 500, "name": "Sten", "score": 700 },
+    { "place": 4, "type": "money", "value": 500, "name": "Wendy", "score": 650 },
+    { "place": 5, "type": "money", "value": 500, "name": "Kyle", "score": 500 }
+    { "place": 6, "name": "Butters", "score": 499 }
+  ],
+  "totalPlayers": 10000
+}
+
+=== 1.19 LeaderboardPosition
+To find position of current player in a leaderboard, client can send following message
+[source,json]
+.Request
+{
+  "class": "GetLeaderboardPosition",
+  "date": 1496748898812,
+  "rid": 1,
+  "leaderboardId": 1
+}
+
+[source,json]
+.Response
+{
+  "class": "LeaderboardPosition",
+  "date": 1496748898812,
+  "rid": 1,
+  "leaderboardId": 1,
+  "score": {
+    "type": "SPECIAL",
+    "value": "Porsche 911",
+    "place": 1,
+    "score": 1000,
+    "nickname": "Kenny"
+  }
+}
+
+=== 1.20 BalanceUpdate
+This message sent by server side after changing player balance.
+Balance is checked every 15 seconds on server side.
+
+[source,json]
+.Response
+{
+  "class": "BalanceUpdated",
+  "date": 1496748898812,
+  "rid": -1,
+  "balance": 1236600
+}
+
+=== 1.22 GetLobbyTime
+Sended from client each N seconds.  N(MQ_TIMER_FREQ) in getParams() in template.jsp.
+[source,json]
+.Request
+{
+  "class": "GetLobbyTime",
+  "date": 1496748898812,
+  "rid": 10
+}
+.Response
+{
+  "class": "LobbyTimeUpdated",
+  "date": 1496748898813,
+  "rid": 10
+}
+
+=== 1.23 RoundResultNotification
+If player left a game during a boss round and boss was killed while he was offline, once he enters game next time he will receive following message:
+[source,json]
+{
+  "class": "RoundResultNotification",
+  "date": 1496748898812,
+  "rid": -1,
+  "notificationId": 23,
+  "award": { "seatId": 0, "score": 1, "qualifyWin": 481, "treasures": [42] }
+}
+
+When such message is received, client should send following request to the server to mark this message as received:
+[source,json]
+{
+  "class": "CloseRoundResultNotification",
+  "date": 1496748898812,
+  "rid": 25,
+  "notificationId": 23
+}
+
+Server will process this message silently without any reply.
+
+=== 1.24 ChangeToolTips
+[source,json]
+.Request
+{
+    "disableTooltips":true,
+    "date":1531731629785,
+    "rid":234,
+    "class":"ChangeToolTips"
+}
+
+[source,json]
+.Response
+{
+    "date":1531731629785,"rid":1,"class":"Ok"
+}
+
+=== 1.25 Active Quests
+At any time client can request list of active quests of player
+[source,json]
+.Request
+{
+  "class": "GetQuests",
+  "date": 1496748898812,
+  "rid": 1
+}
+
+[source,json]
+.Response
+{
+  "class": "Quests",
+  "date": 1496748898812,
+  "rid": 1,
+  "quests": [
+    {
+        "id": 1,
+        "type": 4,
+        "difficulty": Novice,
+        "complete": false,
+        "collected": false,
+        "XP": 150,
+        "enemyGroupId": -1,
+        "treasureTypeId": -1,
+        "treasureGroupId": -1,
+        "progress": {
+            "totalGoal": -1
+            "enemies": [
+                    {"typeId": 3, "skin":0, "kills": 2, "goal": 9},
+                    {},
+            ],
+            "treasures": [
+                    {},
+            ]
+        }
+    },
+    {
+        "id": 3,
+        "type": 2,
+        "difficulty": Novice,
+        "complete": false,
+        "collected": false,
+        "XP": 150,
+        "enemyGroupId": -1,
+        "treasureTypeId": -1,
+        "treasureGroupId": -1,
+        "progress": {
+            "totalGoal": -1
+            "enemies": [
+                    {},
+            ],
+            "treasures": [
+                    {"treasureId": 2, "collect": 2, "goal": 3},
+                    {},
+            ]
+        }
+    },
+  ],
+}
+
+[horizontal]
+.Description:
+id:: unique id of quest.
+desc:: description of quest
+difficulty:: difficulty of quest (Novice, Intermediate, Experienced, Master, Legendary)
+date:: datetime in msec. from 01.01.1970 (standart unix timestamp)
+collect/kills:: current amount of progress for treasures/enemies.
+goal:: goal of progress
+collected:: quest is completed or no.
+collect:: quest is collected on client side or no.
+XP:: Experience Points for quest.
+progress::  progress of player. enemies - information about enemies in quest.,  treasures about treaures.
+totalGoal:: total goal of quest for complex quests (e.g. id = 3), -1 for other.
+
+[cols="1,8"]
+|===
+| Quest Type | Description
+
+| 0
+| collect set of treasures. (Common, Uncommon, Rare, ...)
+
+| 1
+| collect group of treasures. (Statue, Bowl and Jar, ...)
+
+| 2
+| collect N treasures of specific type. (Golden Bust of Nefertiti,Sacred Golden Scarab, ... )
+
+| 3
+| collect N any treasures from specific treasure group. (Common, Uncommon, Rare, ... )
+
+| 4
+| kill N enemies of specific type. (Scarab Hatchlings,Shadow Scarabs,Golden Tomb Scrabblers, ... )
+
+| 5
+|  kill N enemies of each type in random group. (Scarab,Mummy,God)
+
+| 6
+|  kill N random enemies for random group. (Scarab,Mummy,God)
+
+| 7
+| kill N entire sets of all enemies. (Golden Bust of Nefertiti,Sacred Golden Scarab, ...), each enemy should be killed N times.
+
+| 8
+| kill one God. (Anubis,Osiris or Ra)
+
+| 9
+|  kill all Gods. (Anubis,Osiris,Ra)
+
+|===
+
+enemyGroupId:: id of enemy group. (-1 - no enemy group in quest)
+[cols="1,3"]
+|===
+| Group Id | Description
+
+| 0
+| Scarab
+
+| 1
+| Mummy
+
+| 2
+| God
+
+|===
+
+treasureTypeId:: id of treasure rarity type. (-1 - no rarity type in quest)
+[cols="1,3"]
+|===
+| Type Id | Description
+
+| 0
+| Common
+
+| 1
+| Uncommon
+
+| 2
+| Rare
+
+| 3
+| Epic
+
+| 4
+| Legendary
+
+|===
+
+
+treasureGroupId:: id of treasure group. (-1 - no group in quest)
+[cols="1,3"]
+|===
+| Group Id | Description
+| 0
+| Statue
+| 1
+| Bowl and Jar
+| 2
+| Jewelry
+| 3
+| Rare Jewelry
+| 4
+| Ritual Objects
+| 5
+| Scarab
+| 6
+| Sphinx
+| 7
+| Anubis
+| 8
+| Horus
+| 9
+| Osiris
+| 10
+| Pharaoh
+|===
+
+=== 1.29 Collect Quest
+Client send request to server when player press button "Collect".
+[source,json]
+{
+    "id":3,
+    "date":1531731629785,
+    "rid":234,
+    "class":"CollectQuest"
+}
+
+[source,json]
+.Success response:
+    {
+    "date":1531731629785,"rid":1,
+    "class":"Ok",
+    }
+[source,json]
+.Error responses:
+{
+    "code":1020,
+    "msg":"Quest is not completed on server side.",
+    "date":1531731629785,
+    "rid":1,
+    "class":"Error"
+}
+
+
+
+<<<
+
+== 2. Game protocol
+After the game client is loaded, it should open websocket connection to url passed in request parameter gameServletUrl=wss://host:port/websocket/mpgame and then send “OpenRoom” request.
+
+=== 2.1 Error handling
+In response to any client request may come an error message like this:
+[source,json]
+{
+	"code": 1,
+	"msg": "Internal error",
+	"date": 1496748898812,
+	"class": "Error",
+	"rid": 1
+}
+
+[source,json]
+{
+	"code": 2,
+	"msg": "Server shutdown",
+	"date": 1496748898812,
+	"class": "Error",
+	"rid": -1
+}
+
+[source,json]
+{
+	"code": 1005,
+	"msg": "Room moved to another server",
+	"date": 1496748898812,
+	"class": "Error",
+	"rid": 9
+}
+
+[source,json]
+{
+	"code": 1003,
+	"msg": "Room not found",
+	"date": 1496748898812,
+	"class": "Error",
+	"rid": 10
+}
+
+
+[horizontal]
+.Request parameters:
+code:: error code
+msg:: error description (may be localized)
+date:: datetime in msec. from 01.01.1970 (standart unix timestamp)
+class:: message class
+rid:: request Id, type is int. Optional parameter, if not -1 this parameter contains id of original request.
+
+[horizontal]
+.Possible error ranges
+1-999:: FATAL ERROR +
+1000-4999:: ERROR
+5000-9999:: WARNING
+
+.Handling 'FATAL ERROR':
+Just display message to user and close game.
+
+.Handling Game Websocket errors:
+In case of websocket error, you must re-establishing websocket connection to gameServletUrl and resend 'OpenRoom' request.
+
+.Handling 1003, 1005 error:
+1. Close current websocket connection to game server
+2. Call lobby method 'GetStartGameUrl'
+3. Re-establish websocket connection to new startGameUrl
+4. Send 'OpenRoom' request
+
+=== 2.2 OpenRoom
+After this request is completed, the client goes into observer mode and begins to receive all necessary information about the game.
+[source,json]
+{
+	"roomId": 1,
+	"serverId": 1,
+	"lang": "en",
+	"sid": "eb0bf169cbb477b6f8430000015cbe83",
+	"date": 1497157072066,
+	"rid": 5,
+	"class": "OpenRoom"
+}
+
+[horizontal]
+.Request parameters:
+roomId:: unique room id
+serverId:: serverId for connect via websocket
+lang:: preffered language
+rid:: unique request id
+sid:: session identifier send as request parameter on start game client.
+
+.Response:
+GetRoomInfoResponse. See paragraph 1.4
+
+If game state is “PLAY” client immediate receive message:
+[source,json]
+{
+	"date": 1497170115111,
+	"rid": 5,
+	"class": "FullGameInfo",
+	"mapId": 1,
+	"subround": "BASE",
+	"freezeTime": 14500,
+	"roomEnemies": [
+		{
+			"id": 1,
+			"typeId": 1,
+			"awardedPrizes": "1,2",
+			"awardedSum": 3.0,
+			"energy": 0,
+			"skin": 1,
+			"trajectory": [
+ 				{ "x": 10, "y": 50, "time": 120 },
+				 { "x": 20, "y": 30, "time": 150 }
+			]
+		},
+		{
+			"id": 10,
+			"typeId": 2,
+			"awardedPrizes": "1,3",
+			"awardedSum": 4.0,
+			"energy": 45,
+			"skin": 1,
+			"trajectory": [
+ 				{ "x": 10, "y": 50, "time": 120 },
+				 { "x": 20, "y": 30, "time": 150 }
+			]
+		}
+	]
+}
+
+[horizontal]
+.Where
+roomEnemy:id:: unique enemy instance id
+roomEnemy:typeId:: enemy type id. See GetRoomInfoResponse:enemy:id
+roomEnemy:awardedPrizes:: prizes (list!) received from hitting the enemy. May be empty if no hits.
+roomEnemy:awardedSum:: amount of points received from hits to the enemy
+roomEnemy:energy:: remaining energy, if energy<0 enemy is dead, remember that energy=0 used for identify regular enemies
+roomEnemy:skin:: enemy skin
+freezeTime: freeze time remaining.
+
+=== 2.3 CloseRoom
+This request must be send to server before close client. This required for release all server resources allocated to client.
+[source,json]
+{
+	"roomId": 1,
+	"date": 1497159892576,
+	"rid": 5,
+	"class": "CloseRoom"
+}
+
+[horizontal]
+.Request parameters:
+roomId:: unique room id
+rid:: unique request id
+
+[source,json]
+.Response:
+{
+	"date": 1497154639465,
+	"rid": 1,
+	"class": "Ok"
+}
+
+=== 2.4 SitIn
+The request is sent by the client to seat in the room. After the successful execution of this request, the user moves from the observer state to the player's state and additional actions available to him.
+After this request is executed, an amount equal to ammoAmount*stake will be debited from casino player balance.
+[source,json]
+{
+	"date": 1497160498696,
+	"rid": 1,
+	"ammoAmount": 100,
+	"stake": 5,
+	"class": "SitIn"
+}
+
+[horizontal]
+.Request parameters:
+ammoAmount:: amount of ammunition purchased
+stake:: stake in cents. This parameter must be 0 for re-sitIn
+
+[source,json]
+.Response:
+{
+	"id": 4,
+	"nickname": "Andrey",
+	"ammoAmount": 120,
+	"balance": 15000,
+	"avatar": {
+	    "borderStyle": 1,
+        "hero": 1,
+        "background": 10
+   	},
+    "mines": [
+      {
+        "seatId": 0,
+        "x": 155.0541,
+        "y": 204.53104,
+        "mineId": "0_1550554415731",
+        "date": 1550554415731,
+        "rid": -1
+      },
+      {
+        "seatId": 1,
+        "x": 159.05241,
+        "y": 104.4,
+        "mineId": "1_1550554415731",
+        "date": 155022315731,
+        "rid": -1
+       }
+    ]
+	"enterDate": 1497160789104,
+	"date": 1497160789056,
+	"specialWeaponId": 1,
+	"remainingSWShots": 0,
+	"weaponLootBoxPrices": [100, 200, 400],
+	"showRefreshBalanceButton": true,
+	"rid": 1,
+	"frbMode": false,
+	"frbBalance": 0,
+	"class": "SitInResponse"
+}
+
+[horizontal]
+.Where:
+rid:: request id from “SitIn”
+id:: seat number
+nickname:: seat nickname
+ammoAmount:: summary ammo amount
+balance:: current player balance
+avatar:: seat avatar
+specialWeaponId:: Player may already have a special weapon (SitIn request after reconnect to room). -1 if no special weapon.
+remainingSWShots:: number of remaining shots for current special weapon. For regular weapon, always=0 +
+weaponLootBoxPrice:: Weapon Loot Box price in cents
+showRefreshBalanceButton:: need show "Refresh Balance" button
+
+Other clients also receive this response, but with rid=-1.
+
+=== 2.5 SitOut
+The request is sent by the client in order to seat out from the room. After that the user goes into observer mode.
+[source,json]
+{
+	"date": 1497161230259,
+	"rid": 1,
+	"class": "SitOut"
+}
+
+[source,json]
+.Response:
+{
+	"id": 4,
+	"nickname": "Andrey",
+	"outDate": 1497161341687,
+	"date": 1497161341653,
+	"compensateSpecialWeapons": 304
+	"surplusHvBonus": 104
+	"rid": 1,
+	"class": "SitOutResponse"
+}
+
+[horizontal]
+.Where:
+rid:: request id from “SitOut”
+id:: seat number
+nickname:: seat nickname
+compensateSpecialWeapons:: compensate win for unused special weapons.
+surplusHvBonus:: compensate win for pot of HV Runner.
+
+Other clients also receive this response, but with rid=-1.
+
+=== 2.6 GameStateChanged
+This message sent from server to all clients on each game state change.
+
+[source,json]
+{
+	"state": "PLAY",
+	"ttnx": 600,
+	"date": 1497171419692,
+	"rid": 1,
+	"class": "GameStateChanged"
+}
+
+[horizontal]
+.Where:
+state:: current room state. Possible values: WAIT, PLAY, QUALIFY, CLOSED
+ttnx:: rough time to next state in seconds, -1 for unknown
+rid:: request id, always -1
+
+=== 2.7 NewEnemy
+This message sent from server to all clients when there is a new enemy
+[source,json]
+{
+	"newEnemy": {
+		"id": 1,
+		"typeId": 1,
+		"awardedPrizes": "",
+		"awardedSum": 0,
+		"energy": 0,
+		"skin": 2,
+		"trajectory": [
+ 				{ "x": 10, "y": 50, "time": 120 },
+				 { "x": 20, "y": 30, "time": 150 }
+			]
+	},
+	"date": 1497173799426,
+	"rid": -1,
+	"class": "NewEnemy"
+}
+
+newEnemy is same as FullGameInfo:roomEnemies in paragraph 2.2
+
+=== 2.7.1 NewEnemies
+This message will be sent to all clients when a lot of enemies is spawned at once, for example - scarab swarms
+[source,json]
+{
+  "date": 1497173799426,
+  "rid": -1,
+  "class": "NewEnemies",
+  "enemies": [
+    {
+      "id": 1,
+      "typeId": 1,
+      "awardedPrizes": "",
+      "awardedSum": 0,
+      "energy": 0,
+      "skin": 2,
+      "trajectory": [
+      	{ "x": 10, "y": 50, "time": 120 },
+        { "x": 20, "y": 30, "time": 150 }
+      ]
+    },
+    {
+      "id": 2,
+      "typeId": 1,
+      "awardedPrizes": "",
+      "awardedSum": 0,
+      "energy": 0,
+      "skin": 1,
+      "trajectory": [
+        { "x": 10, "y": 50, "time": 120 },
+        { "x": 20, "y": 30, "time": 150 }
+      ]
+    }
+  ]
+}
+
+=== 2.8 BuyIn
+The request is sent by the client if need buy ammo.
+[source,json]
+{
+	"ammoAmount": 100,
+	"date": 1497174203319,
+	"rid": 10,
+	"class": "BuyIn"
+}
+
+[horizontal]
+ammoAmount:: amount of ammunition purchased
+
+[source,json]
+.Response:
+{
+	"ammoAmount": 120,
+	"balance": 15000,
+	"date": 1497174620105,
+	"rid": 10,
+	"class": "BuyInResponse"
+}
+
+[horizontal]
+.Where:
+rid:: request id from “BuyIn” request
+ammoAmount:: summary ammo amount
+balance:: current balance in cents
+
+=== 2.10 Shot
+This request is sent by the client when the shot is fired. Response for shot request returned to all players. If a special weapon was used, then more than one answer can be sent / miss
+[source,json]
+{
+	"enemyId": 5,
+	"weaponId": -1,
+	"date": 1497177502148,
+	"rid": 34,
+	"class": "Shot"
+}
+
+[horizontal]
+.Where:
+enemyId:: unique enemy id of who made the shot
+weapon:: id of used weapon, -1 for regular weapon
+
+If player miss, server return
+[source,json]
+{
+	"date": 1497177502148,
+	"rid": -1,
+	"seatId": 2,
+	"killedMiss": true,
+	"awardedWeaponId": -1,
+	"enemyId": 2,
+	"usedSpecialWeapon": 1,
+	"remainingSWShots": 3,
+	"mineId": "0_1550487688500"
+	"score": 5,
+	    "weaponSurplus":[
+            {
+                "id": 0,
+                "shots": 332,
+                "winBonus": 234
+            },
+            {
+                "id": 1,
+                "shots": 210,
+                "winBonus": 1525
+            }
+        ],
+	"class": "Miss"
+}
+
+[horizontal]
+.Where:
+seatId:: seat id that made shot
+killedMiss:: true if a shot is fired on an already killed enemy. The money for this shot is returned to 	the player.
+awardedWeaponId:: if special weapon awarded, awardWeaponId contains weapon id, -1 if no 	award. Any shot has a chance to get special weapons
+usedSpecialWeapon::  special weapon id used for this shot. For regular weapon, always=-1
+remainingSWShots:: number of remaining shots for current special weapon. For regular weapon, always=0
+enemyId:: unique enemy id
+
+If player hit, server return:
+[source,json]
+{
+	"seatId": 1,
+	"damage": 1,
+	"win": 50.5,
+	"awardedWeaponId": -1,
+	"usedSpecialWeapon": 1,
+	"remainingSWShots": 3,
+	"hvEnemyId": 306,
+	"mineId": "0_1550487688500"
+	"enemy": {
+		"id": 1,
+		"typeId": 1,
+		"x": 10,
+		"y": 50,
+		"angle": 270,
+		"awardedPrizes": "1,3",
+		"awardedSum": 4,
+		"energy": 45,
+		"score": 1,
+		"skin": 1,
+	},
+	    "weaponSurplus":[
+            {
+                "id": 0,
+                "shots": 332,
+                "winBonus": 234
+            },
+            {
+                "id": 1,
+                "shots": 210,
+                "winBonus": 1525
+            }
+        ],
+	"date": 1497177502148,
+	"rid": -1,
+	"class": "Hit"
+}
+
+[horizontal]
+.Where:
+seatId:: seat id that made a shot
+damage:: caused damage to the enemy
+win:: prize in cents (type is float)
+awardedWeaponId:: if special weapon awarded, awardWeaponId contains weapon id, -1 if no award
+usedSpecialWeapon::  special weapon id used for this shot. For regular weapon, always=-1
+hvEnemyId:: id of new HV enemy after killing of current enemy. Info about new HV enemy will be sent via NewEnemy message.
+Default value is "-1" (no HV enemy).
+remainingSWShots:: number of remaining shots for current special weapon. For regular weapon, always=0
+enemy:: state of the affected enemy, same as RoomEnemy in paragraph 2.2
+enemy.id and all other attributes may be different from the one for whom the shot was fired.
+This is possible if the enemy is already killed by another player. The client must correctly process the animation of the rebound and the defeat of another enemy. Also keep in mind that the Hit.message does not contain a field "trajectory", as it is not necessary.
+rid::  request id for the player who made the shot, -1 for all other players.
+mineId:: id of mine.
+
+=== 2.11 GetFullGameInfo
+[source,json]
+This request can be sent by the client if connection lost and need refresh all room info.
+{
+	"date": 1497178236042,
+	"rid": 1,
+	"class": "GetFullGameInfo"
+}
+
+Response: same as FullGameInfo in paragraph 2.2
+
+=== 2.12 RoundResult
+After round finished all clients receive message “GameStateChanged” described in paragraph 2.6 with state=QUALIFY. After qualification completed all clients receive round result in message:
+[source,json]
+{
+	"winAmount": 500.5,
+	"winRebuyAmount": 300.0,
+	"balance": 12000,
+	"currentScore": 30,
+	"totalScore": 350,
+	"hitCount": 5,
+	"missCount": 25,
+	"enemiesKilledCount": 95,
+	"winAmountInCredits": 9524,
+    "unusedBulletsCount": 95,
+   	"unusedBulletsMoney": 9524,
+   	"totalBuyInMoney": 102,
+   	"surplusHvBonus": 102,
+	"seats": [
+		{
+			"id": 0,
+			"nickname": "John",
+			"avatar": 0,
+			"enterDate": 1497179064797,
+			"totalScore": 700.0,
+			"currentScore": 7,
+			"rankPonts": 200
+		},
+		{
+			"id": 1,
+			"nickname": "Mike",
+			"avatar": {
+   		        "borderStyle": 1,
+           		"hero": 1,
+           		"background": 10
+           	},
+			"enterDate": 1497179064797,
+			"totalScore": 230.0,
+			"currentScore": 10,
+			"rankPonts": 50
+		},
+		{
+			"id": 3,
+			"nickname": "Fred",
+			"avatar": {
+   		        "borderStyle": 1,
+           		"hero": 1,
+           		"background": 10
+           	},
+			"enterDate": 1497179064797,
+			"totalScore": 0,
+			"currentScore": 0,
+			"rankPonts": 2000
+		}
+	],
+    "weaponSurplus":[
+        {
+            "id": 0,
+            "shots": 332,
+            "winBonus": 234
+        },
+        {
+            "id": 1,
+            "shots": 210,
+            "winBonus": 1525
+        }
+    ],
+	"date": 1497179064748,
+	"rid": -1,
+	"class": "RoundResult"
+}
+
+[horizontal]
+.Where:
+winAmount:: amount won in this round (type - float)
+winRebuyAmount:: win used for rebuy ammo
+balance:: current player balance
+totalScore:: total number of points awarded player in this room (total win = totalScore*stake), 	type=integer
+currentScore:: number of points awarded player for current round (currentWin = 	currentScore*stake), type=integer
+hitCount:: hit count for this round
+missCount:: miss count for this round
+seat:rankPoints:: total number of points received by the player, see 4.3 section is spec.
+seats is same as  GetRoomInfoResponse:seats in paragraph 1.4
+unusedBulletsCount:: count of unused bullets in round.
+unusedBulletsMoney:: amount of unused bullets in round (cents)
+totalBuyInMoney:: total amount of all BuyIns in this round (cents)
+weaponSurplus:: weapons surplus amounts, id - type of special weapon, shots - number of shots. winBonus - amount in cents.
+
+=== 2.13 ChangeMap
+The server can send a message about changing the current map (for example, when a boss appears)
+[source,json]
+{
+    "class": "ChangeMap",
+    "mapId": 2,
+    "subround": "BASE",
+    "rid": -1,
+    "date": 34534534
+}
+
+[horizontal]
+.Where:
+mapId:: new map identifier (now only one map with id=1 available)
+subround:: reason for changeMap (class of enemies available for this map, also may be classified as subround), possible values: BASE, BOSS
+
+=== 2.14 GetRoomHistory
+In progress, will be provided later
+
+=== 2.15 EnemyDestroyed
+After the enemy was destroyed (for example, as a result of a shot), the server sends this message
+[source,json]
+{
+    "enemyId": 100,
+    "reason": 0,
+    "date": 1521872381930,
+    "rid": -1,
+    "class": "EnemyDestroyed"
+}
+
+[horizontal]
+.Where:
+enemyId:: destroyed enemy identifier
+reason:: identifier of the event as a result of which the enemy was destroyed. The client can use this field for the different death animations. Existing types: 0 - death as a result of a shot from regular weapons
+
+=== 2.16 Awards
+When enemy is killed, player can receive additional non-money award, which consist of leader-board points and collectible items. +
+When such award is granted, player will receive message:
+[source,json]
+{
+    "awards": [
+        { "seatId": 0, "score": 1, "qualifyWin": 481, "treasures": [42] },
+        { "seatId": 1, "score": 481, "qualifyWin": 481,  "treasures": [5, 10] }
+    ],
+    "class": "Awards"
+    "date": 1529659911798,
+    "enemyId": 463,
+    "rid": -1
+}
+
+[horizontal]
+.Where:
+awards:: complete list of awards for enemy kill
+awards.seatId:: seatId of player that received award
+awards.score:: amount of awarded leader-board points
+awards.treasures:: list of ids of dropped treasures
+enemyId:: id of killed enemy
+qualifyWin:: shared prize of player for boss (cents)
+
+For more info about available treasures, please see achievements specification.
+
+=== 2.17 Achievement
+When player receives an achievement, he will receive message:
+[source,json]
+{
+    "date": 1521872381930,
+    "rid": -1,
+    "seatId": 1,
+    "type": 1,
+    "id": 10,
+    "level": 3,
+    "score": 100,
+    "count": 25,
+    "enemyId": 50,
+    "class": "Achievement"
+}
+
+[horizontal]
+.Where:
+seatId:: seatId of player that received achievement
+type::
+* 1 - Achievement for killing N enemies with the same skin
+* 2 - Achievement for reaching certain level of killed enemies on a page
+* 3 - Achievement for collecting N treasures of the same type
+* 4 - Achievement for collecting certain amount of treasures on a page
+id::
+* EnemyId*100+SkinId for type=1
+* Enemy group id for type=2
+* TreasureId for type=3
+* Treasure group id for type=3
+level:: Achievement level
+score:: Amount of leaderboard points awarded for completing achievement
+count:: Amount of collected items
+enemyId:: Id of killed enemy
+
+=== 2.18 LevelUp
+This message is sent to the player when he reaches new character level
+[source,json]
+.Response
+{
+  "class": "LevelUp",
+  "date": 1496748898812,
+  "rid": -1,
+  "seatId": 1,
+  "level": 5
+}
+
+=== 2.19 PurchaseWeaponLootBox
+This message is sent by client to purchase loot box with a random special weapon
+[source,json]
+.Request
+{
+  "class": "PurchaseWeaponLootBox",
+  "date": 1496748898812,
+  "box": 3,
+  "rid": 10
+}
+
+box:: number of selected box for purchase
+
+[source,json]
+.Response
+{
+  "class": "WeaponLootBox",
+  "date": 1496748898812,
+  "rid": 10,
+  "weaponId": 3,
+  "shots": 100,
+  "balance": 100500,
+      "weaponSurplus":[
+          {
+              "id": 0,
+              "shots": 332,
+              "winBonus": 234
+          },
+          {
+              "id": 1,
+              "shots": 210,
+              "winBonus": 1525
+          }
+      ],
+  "currentWin": 2300,
+  "usedAmmoAmount": 10
+}
+
+weaponId:: id of awarded weapon
+shots:: amount of awarded shots with this weapon
+balance:: player's balance after purchase
+currentWin:: remainder of player's win after purchase
+usedAmmoAmount:: purchase can be made at the expense of ammo
+
+=== 2.20 Weapons
+At the start of a round, server will send a message with a description of weapons currently owned by player
+[source,json]
+.Response
+{
+  "class": "Weapons",
+  "date": 1496748898812,
+  "rid": -1,
+  "ammoAmount": 100,
+  "freeShots": false,
+  "weapons": [
+    { "id": 1, "shots": 5 },
+    { "id": 2, "shots": 3 }
+  ]
+}
+
+ammoAmount:: amount of regular bullets
+freeShots:: true if regular bullets are free (FRB mode)
+weapons:: list of special weapons currently owned by player with a number of remaining shots
+
+=== 2.21 RefreshBalance
+Sended from client after press "Refresh balance" button. Server side return message 1.20 "BalanceUpdate"
+[source,json]
+.Response
+{
+  "class": "RefreshBalance",
+  "date": 1496748898812,
+  "rid": 1
+}
+
+=== 2.22 FRBEnded
+After FRB completed, server send FRBEnded message. Client must display close reason (Completed, Canceled, Expired)
+and win sum. After close message box, need close client and resend from lobby messages: EnterLobby
+[source,json]
+.Response
+{
+    "winSum":1200,
+    "closeReason":"Completed",
+    "hasNextFrb":true
+    "date":1533285929327,
+    "rid":-1,
+    "class":"FRBEnded"
+}
+
+=== 2.23 SwitchWeapon
+When player activates different weapon, client should send this message to server
+[source,json]
+.Request
+{
+  "class": "SwitchWeapon",
+  "date": 1533285929327,
+  "rid": 1,
+  "weaponId": 2
+}
+
+If everything is Ok, then response will contain exactly the same message
+
+=== 2.24 SyncLobby
+When client plans to show Rooms List in a Lobby while a player still plays in a room,
+client should send to the game room following message to update list of available Special Weapons:
+[source,json]
+.Request
+{
+  "class": "SyncLobby",
+  "date": 1533285929327,
+  "rid": 10
+}
+
+[source,json]
+.Response
+{
+  "class": "Ok",
+  "date": 1533285929327,
+  "rid": 10
+}
+
+If this message was not send, than list of available special weapons for current stake could be empty or outdated.
+
+=== 2.25 UpdateTrajectories
+Server may send such message to client to inform it about the changes in movement trajectories of enemies.
+[source,json]
+{
+  "class": "UpdateTrajectories",
+  "rid": -1,
+  "freezeTime": 3000,
+  "trajectories": {
+    10: {speed: 4, points: [{x: -240, y: 140.625, time: 1535004949556}, {x: -50, y: 247.5, time: 1535004959056}]},
+    11: {speed: 3, points: [{x: -50, y: 472.5, time: 1535004990056}, {x: 860, y: -39.375, time: 1535005035556}]}
+  }
+}
+
+The key in trajectories field is an enemyId and value is a new trajectory.
+freezeTime: freezeTime for enemies. (ms)
+
+=== 2.26 CloseRoundResults
+During Qualify state client may send following message to force start of next round.
+[source,json]
+{
+  "class": "CloseRoundResults",
+  "rid": 10,
+  "date": 1533285929327
+}
+Next round will be started once this message is received from all players in a room or when maximal wait time is over
+
+=== 2.27 RoundFinishSoon
+When round is coming to an end server will send following message
+[source,json]
+{
+  "class": "RoundFinishSoon",
+  "rid": -1,
+  "date": 1533285929327
+}
+
+=== 2.28 New Quest
+If server generate new quest, client will receive following message
+[source,json]
+{
+  "class": "NewQuest",
+  "date": 1496748898812,
+  "sourceEnemyId": 2345345,
+  "rid": -1,
+  "quest": {
+              "id": 1,
+              "type": 4,
+              "difficulty": Novice,
+              "complete": false,
+              "collected": false,
+              "XP": 150,
+              "enemyGroupId": -1,
+              "treasureTypeId": -1,
+              "treasureGroupId": -1,
+              "progress": {
+                       "totalGoal": -1
+                       "enemies": [
+                               {"typeId": 3, "skin":0, "kills": 0, "goal": 9},
+                               {},
+                       ],
+                       "treasures": [
+                               {},
+                       ]
+                   }
+    }
+}
+
+=== 2.29 Update Quest
+If server generate new quest, client will receive following message
+[source,json]
+{
+  "class": "UpdateQuest",
+  "date": 1496748898812,
+  "lastEnemyId": 2345345,
+  "rid": -1,
+  "quest": {
+              "id": 1,
+              "type": 4,
+              "difficulty": Novice,
+              "complete": false,
+              "collected": false,
+              "XP": 150,
+              "enemyGroupId": -1,
+              "treasureTypeId": -1,
+              "treasureGroupId": -1,
+              "progress": {
+                       "totalGoal": -1
+                       "enemies": [
+                               {"typeId": 3, "skin":0, "kills": 0, "goal": 9},
+                               {},
+                       ],
+                       "treasures": [
+                               {},
+                       ]
+                   }
+    }
+}
+
+
+=== 2.30 Remove Quest
+If server remove old completed quest, client will receive following message
+[source,json]
+{
+  "class": "RemoveQuest",
+  "date": 1496748898812,
+  "rid": -1,
+  "id": 1
+}
+
+=== 2.33 Place Mine to Map
+This request is sent by the client when need to place mine to map.
+[source,json]
+{
+	"x": 25.3,
+	"y": 44.8,
+	"date": 1497177502148,
+	"rid": 34,
+	"class": "MineCoordinates"
+}
+
+[horizontal]
+.Where:
+x, y:: coordinates of place
+
+.Wrong coordinates
+If x,y are wrong coordinates (wall, ...), then server return
+[source,json]
+{
+	"code": 1023,
+	"msg": "Wrong coordinates",
+	"date": 1496748898812,
+	"class": "Error",
+	"rid": 34
+}
+
+.Success response for all seaters:
+[source,json]
+{
+	"mineId": "0_1550487688500",
+	"seatId": 0,
+	"date": 1496748898812,
+	"class": "MinePlace",
+	"rid": 34,
+	"x": 367.2334,
+	"y": 280.29443,
+}
+
+
+
+== 3. Enemy Skins
+.Enemy Skins
+|===
+| Enemy Type | Skin Id | Description
+
+| 0
+| 1
+| Scarab
+
+| 0
+| 2
+| Black Scarab
+
+| 1
+| 1
+| Gold Scarab
+
+| 2
+| 1
+| Diamond Scarab
+
+| 2
+| 2
+| Ruby Scarab
+
+| 3
+| 1
+| Small Mummy
+
+| 4
+| 1
+| Small Black Mummy
+
+| 5
+| 1
+| Small White Mummy
+
+| 6
+| 1
+| Walking Mummy Warrior
+
+| 6
+| 2
+| Running Mummy Warrior
+
+| 7
+| 1
+| Mummy God Red
+
+| 8
+| 1
+| Mummy God Green
+
+| 16
+| 1
+| Anubis
+
+| 16
+| 2
+| Osiris
+
+| 16
+| 3
+| Thoth
+|===
+
+== 4. Error codes
+|===
+| Error code | Error name | Description
+
+| 1
+| INTERNAL_ERROR
+| Unexpected error, please report it to BSG Server team
+
+| 2
+| SERVER_SHUTDOWN
+|
+
+| 3
+| INVALID_SESSION
+| Please use another token to login into the game
+
+| 4
+| DEPRECATED_REQUEST
+|
+
+| 5
+| FOUND_PENDING_OPERATION
+| This user is unable to login due to problems with his account
+
+| 6
+| CLOSE_FRB_IN_PROGRESS
+| Message is removed from the game
+
+| 7
+| UNKNOWN_GAME_ID
+| Wrong game id
+
+| 1000
+| ILLEGAL_NICKNAME
+| Nickname contains banned patterns, please use another one
+
+| 1001
+| BAD_REQUEST
+| Message received from the client has invalid format
+
+| 1002
+| NOT_LOGGED_IN
+| Please restart game
+
+| 1003
+| ROOM_NOT_FOUND
+| Please select another room
+
+| 1004
+| TOO_MANY_OBSERVERS
+| Room is full, please select another one
+
+| 1005
+| ROOM_MOVED
+| Room moved to another server
+
+| 1006
+| TOO_MANY_PLAYER
+| All 6 slots for players are taken, you can observe game until one is freed or pick another one
+
+| 1007
+| NOT_SEATER
+| You should perform SitIn operation before you can make actions in this room
+
+| 1008
+| NOT_ENOUGH_MONEY
+| There is not enough money for purchase
+
+| 1009
+| BAD_STAKE
+| Invalid stake size is provided by client
+
+| 1010
+| BAD_BUYIN
+| Invalid BuyIn request is send by client
+
+| 1011
+| CHANGE_STAKE_NOT_ALLOWED
+| Change of stake is forbidden at this moment (not used)
+
+| 1012
+| ROOM_NOT_OPEN
+| You should send OpenRoom request first
+
+| 1013
+| ROUND_NOT_STARTED
+| You need to wait until round is started until you can make actions in this room
+
+| 1014
+| NEED_SITOUT
+| You should perform SitOut request
+
+| 1015
+| WRONG_WEAPON
+| You are trying to perform shot using inactive weapon
+
+| 1016
+| NICKNAME_NOT_AVAILABLE
+| Nickname is already taken by another player, please pick another one
+
+| 1017
+| AVATAR_PART_NOT_AVAILABLE
+| You are trying to use avatar which is not available for this account yet
+
+| 1018
+| NOT_ENOUGH_BULLETS
+| You need to purchase bullets before you can shoot
+
+| 1019
+| REQUEST_FREQ_LIMIT_EXCEEDED
+| You are trying to send requests too fast, please limit rate
+
+| 1020
+| QUEST_IS_NOT_COMPLETED
+| You can't collect quest which is not completed
+
+| 1021
+| BUYIN_NOT_ALLOWED
+| You can perform BuyIn in this game state
+
+| 1022
+| QUEST_ALREADY_COLLECTED
+| You already collected this quest
+
+| 1023
+| WRONG_MINE_COORDINATES
+| You are trying to place mine on invalid location
+
+| 1024
+| BOSS_ROUND_STARTED
+| Not used
+
+| 1025
+| WRONG_UNPLAYED_FREE_SHOTS
+| Not used
+
+| 1026
+| NOT_FATAL_BAD_BUYIN
+| Buy in is failed, but you can proceed with playing
+|===
+

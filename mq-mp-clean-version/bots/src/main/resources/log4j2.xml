@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration>
+    <Appenders>
+        <Console name="ERROR" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [ERROR] %-5p [%c{1} %t] - %msg%n%ex" />
+        </Console>
+
+        <Console name="COMMON" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [COMMON] %-5p [%c{1} %t] - %msg%n%ex" />
+        </Console>
+        <Console name="STATISTICS" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [STATISTICS] %-5p [%c{1} %t] - %msg%n%ex" />
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="COMMON"/>
+        </Root>
+        <Logger name="org.springframework" level="INFO" additivity="false">
+            <AppenderRef ref="ERROR" level="ERROR"/>
+        </Logger>
+        <Logger name="org.apache" level="INFO" additivity="false">
+            <AppenderRef ref="ERROR" level="ERROR"/>
+        </Logger>
+        <Logger name="reactor.ipc.netty" level="INFO" additivity="false">
+            <AppenderRef ref="COMMON" level="WARN" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="com.betsoft.casino" level="DEBUG" additivity="false">
+            <AppenderRef ref="COMMON" level="DEBUG" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="com.dgphoenix.casino" level="DEBUG" additivity="false">
+            <AppenderRef ref="COMMON" level="DEBUG" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="com.dgphoenix.casino.common.web.statistics.StatisticsManager" level="DEBUG" additivity="false">
+            <AppenderRef ref="STATISTICS" level="DEBUG" />
+        </Logger>
+    </Loggers>
+</Configuration>

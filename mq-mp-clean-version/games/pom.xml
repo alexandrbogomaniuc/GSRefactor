@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>mp-casino</artifactId>
+        <groupId>com.betsoft.casino</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.betsoft.casino.mp</groupId>
+    <artifactId>games</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Casino MP Games</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+        </dependency>
+    </dependencies>
+    <modules>
+        <module>./common-games</module>
+        <module>./pirates-math</module>
+    	<module>./pirates</module>
+        <module>./amazon-math</module>
+	    <module>./amazon</module>
+        <module>./pirates-common-math</module>
+        <module>./piratespov</module>
+	    <module>./piratesdmc</module>
+        <module>./revengeofra-math</module>
+        <module>./revengeofra</module>
+        <module>./dragonstone-math</module>
+        <module>./dragonstone</module>
+        <module>./clashofthegods-math</module>
+        <module>./clashofthegods</module>
+        <module>./bg_dragonstone-math</module>
+        <module>./bg_dragonstone</module>
+        <module>./missionamazon-math</module>
+        <module>./missionamazon</module>
+        <module>./maxcrashgame-math</module>
+        <module>./maxcrashgame</module>
+        <module>./bg_missionamazon-math</module>
+        <module>./bg_missionamazon</module>
+        <module>./sectorx-math</module>
+        <module>./sectorx</module>
+	    <module>./bg_maxblastchampions-math</module>
+        <module>./bg_maxblastchampions</module>
+        <module>bg_sectorx-math</module>
+        <module>bg_sectorx</module>
+    </modules>
+</project>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <title>Leaderboard config example</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="button" id="create">Create</div>
+<br/>
+<label for="id">id</label><input id="id"/>
+<div class="button" id="remove">Remove</div>
+<script>
+let url = 'http://localhost:8081/support/ticketedDraw/create';
+
+let sample = {
+    id: 0,
+    currency: "USD",
+    startDate: 1541376000000,
+    endDate: 1541635200000,
+    xpPerTicket: 10,
+    awards: [
+        { place: 1, type: "SPECIAL", value: "Ferrari" },
+        { place: 2, type: "MONEY", value: "500000" },
+        { place: 3, type: "MONEY", value: "250000" },
+        { place: 4, type: "MONEY", value: "100000" },
+        { place: 5, type: "MONEY", value: "50000" },
+        { place: 6, type: "MONEY", value: "40000" },
+        { place: 7, type: "MONEY", value: "30000" },
+        { place: 8, type: "MONEY", value: "15000" },
+        { place: 9, type: "MONEY", value: "10000" },
+        { place: 10, type: "MONEY", value: "5000" }
+    ],
+    banks: [
+        271
+    ],
+    games: [
+        779
+    ],
+    clusters: [
+        'development'
+    ],
+    sshHost: 'localhost',
+    sshPort: 22,
+    sshUser: 'uploader',
+    sshPass: '',
+    uploadPath: '/home/uploader/upload'
+};
+
+document.getElementById('create').addEventListener('click', function() {
+    fetch(url, { method: 'POST', body: JSON.stringify(sample), headers: { 'Content-Type': 'application/json' } })
+        .then(response => console.log(response))
+        .catch(error => console.log('Error: ', error));
+});
+
+let removeUrl = 'http://localhost:8081/support/ticketedDraw/remove/';
+document.getElementById('remove').addEventListener('click', function() {
+    let id = document.getElementById('id').value;
+    fetch(removeUrl + id, { method: 'POST' })
+        .then(response => console.log(response))
+        .catch(error => console.log('Error: ', error))
+});
+</script>
+</body>

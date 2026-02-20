@@ -1,0 +1,389 @@
+== Examples of messages with realBet/realWin enabled
+
+=== Short round with small amount of bets
+
+==== Player enters room, we perform purchase of bullets
+
+.Request params:
+bet=3000|3044890654 +
+gameId=838 +
+gameSessionId=1315833963 +
+bankId=6274 +
+clientType=FLASH +
+isRoundFinished=false +
+userId=49 +
+roundId=2029282644 +
+hash=bf90d0c8b4f8f296335ace8986e08a86
+
+.Response
+[source,xml]
+<EXTSYSTEM>
+<REQUEST>
+<USERID>49</USERID>
+<BET>3000|3044890654</BET>
+<ROUNDID>2029282644</ROUNDID>
+<GAMEID>838</GAMEID>
+<ISROUNDFINISHED>false</ISROUNDFINISHED>
+<HASH>bf90d0c8b4f8f296335ace8986e08a86</HASH>
+<gameSessionId>1315833963</gameSessionId>
+</REQUEST>
+<TIME>20 Apr 2022 06:32:43</TIME>
+<RESPONSE>
+<RESULT>OK</RESULT>
+<EXTSYSTEMTRANSACTIONID>4420</EXTSYSTEMTRANSACTIONID>
+<BALANCE>6503</BALANCE>
+</RESPONSE>
+</EXTSYSTEM>
+
+<<<
+
+==== Player leaves room, we finish round and return remaining bullets
+
+.Request params
+gameId=838 +
+gameSessionId=1315833963 +
+bankId=6274 +
+clientType=FLASH +
+realWin=110 +
+isRoundFinished=true +
+realBet=310 +
+userId=49 +
+win=2800|3044890664 +
+roundId=2029282644 +
+hash=9ade03ea0f5361fafa72bc31ee10d555
+
+.Response
+[source,xml]
+<EXTSYSTEM>
+<REQUEST>
+<USERID>49</USERID>
+<WIN>2800|3044890664</WIN>
+<ROUNDID>2029282644</ROUNDID>
+<GAMEID>838</GAMEID>
+<ISROUNDFINISHED>true</ISROUNDFINISHED>
+<HASH>9ade03ea0f5361fafa72bc31ee10d555</HASH>
+<gameSessionId>1315833963</gameSessionId>
+</REQUEST>
+<TIME>20 Apr 2022 06:33:09</TIME>
+<RESPONSE>
+<RESULT>OK</RESULT>
+<EXTSYSTEMTRANSACTIONID>4421</EXTSYSTEMTRANSACTIONID>
+<BALANCE>9303</BALANCE>
+</RESPONSE>
+</EXTSYSTEM>
+
+<<<
+
+=== Player enters another room, we perform purchase of bullets
+
+.Request params
+bet=600|3044890669 +
+gameId=838 +
+gameSessionId=1315833964 +
+bankId=6274 +
+clientType=FLASH +
+isRoundFinished=false +
+userId=49 +
+roundId=2029282650 +
+hash=33ef924698f6a5b6c4de39d7f6169008
+
+.Response
+[source,xml]
+<EXTSYSTEM>
+<REQUEST>
+<USERID>49</USERID>
+<BET>600|3044890669</BET>
+<ROUNDID>2029282650</ROUNDID>
+<GAMEID>838</GAMEID>
+<ISROUNDFINISHED>false</ISROUNDFINISHED>
+<HASH>33ef924698f6a5b6c4de39d7f6169008</HASH>
+<gameSessionId>1315833964</gameSessionId>
+</REQUEST>
+<TIME>20 Apr 2022 06:33:16</TIME>
+<RESPONSE>
+<RESULT>OK</RESULT>
+<EXTSYSTEMTRANSACTIONID>4422</EXTSYSTEMTRANSACTIONID>
+<BALANCE>8703</BALANCE>
+</RESPONSE>
+</EXTSYSTEM>
+
+<<<
+
+=== Player runs out of bullets, we perform another purchase
+
+.Request params
+bet=600|3044890678 +
+gameId=838 +
+gameSessionId=1315833964 +
+bankId=6274 +
+clientType=FLASH +
+isRoundFinished=false +
+userId=49 +
+roundId=2029282650 +
+hash=4b20f9f22c951a15504d49f00a23a49b
+
+.Response
+[source,xml]
+<EXTSYSTEM>
+<REQUEST>
+<USERID>49</USERID>
+<BET>600|3044890678</BET>
+<ROUNDID>2029282650</ROUNDID>
+<GAMEID>838</GAMEID>
+<ISROUNDFINISHED>false</ISROUNDFINISHED>
+<HASH>4b20f9f22c951a15504d49f00a23a49b</HASH>
+<gameSessionId>1315833964</gameSessionId>
+</REQUEST>
+<TIME>20 Apr 2022 06:34:20</TIME>
+<RESPONSE>
+<RESULT>OK</RESULT>
+<EXTSYSTEMTRANSACTIONID>4423</EXTSYSTEMTRANSACTIONID>
+<BALANCE>8103</BALANCE>
+</RESPONSE>
+</EXTSYSTEM>
+
+<<<
+
+=== Time runs out, we finish round, calculate results and send player's win
+
+.Request params
+gameId=838 +
+gameSessionId=1315833964 +
+bankId=6274 +
+clientType=FLASH +
+realWin=9818 +
+isRoundFinished=true +
+realBet=9830 +
+userId=49 +
+win=1188|3044890700 +
+roundId=2029282650 +
+hash=3b78cff56324c6495dfd10a862d9e79b
+
+.Response
+[source,xml]
+<EXTSYSTEM>
+<REQUEST>
+<USERID>49</USERID>
+<WIN>1188|3044890700</WIN>
+<ROUNDID>2029282650</ROUNDID>
+<GAMEID>838</GAMEID>
+<ISROUNDFINISHED>true</ISROUNDFINISHED>
+<HASH>3b78cff56324c6495dfd10a862d9e79b</HASH>
+<gameSessionId>1315833964</gameSessionId>
+</REQUEST>
+<TIME>20 Apr 2022 06:38:16</TIME>
+<RESPONSE>
+<RESULT>OK</RESULT>
+<EXTSYSTEMTRANSACTIONID>4424</EXTSYSTEMTRANSACTIONID>
+<BALANCE>9291</BALANCE>
+</RESPONSE>
+</EXTSYSTEM>
+
+Please take a note that realBet is greater than player's initial balance. +
+As we reuse current winnings during a round, this should not be treated as error.
+
+<<<
+
+=== Another round is started, we perform new purchase
+.Request params
+bet=600|3044890701 +
+gameId=838 +
+gameSessionId=1315833964 +
+bankId=6274 +
+clientType=FLASH +
+isRoundFinished=false +
+userId=49 +
+roundId=2029282661 +
+hash=1b7524385aac5e0abc1dd2cc1b2b1dfc
+
+.Response
+[source,xml]
+<EXTSYSTEM>
+<REQUEST>
+<USERID>49</USERID>
+<BET>600|3044890701</BET>
+<ROUNDID>2029282661</ROUNDID>
+<GAMEID>838</GAMEID>
+<ISROUNDFINISHED>false</ISROUNDFINISHED>
+<HASH>1b7524385aac5e0abc1dd2cc1b2b1dfc</HASH>
+<gameSessionId>1315833964</gameSessionId>
+</REQUEST>
+<TIME>20 Apr 2022 06:38:27</TIME>
+<RESPONSE>
+<RESULT>OK</RESULT>
+<EXTSYSTEMTRANSACTIONID>4425</EXTSYSTEMTRANSACTIONID>
+<BALANCE>8691</BALANCE>
+</RESPONSE>
+</EXTSYSTEM>
+
+<<<
+
+=== Player leaves a room without any shots
+.Request params
+gameId=838 +
+gameSessionId=1315833964 +
+bankId=6274 +
+clientType=FLASH +
+realWin=0 +
+isRoundFinished=true +
+realBet=0 +
+userId=49 +
+win=600|3044890702,
+roundId=2029282661 +
+hash=f4f33731924f275222a0ec674351260a
+
+.Response
+[source,xml]
+<EXTSYSTEM>
+<REQUEST>
+<USERID>49</USERID>
+<WIN>600|3044890702</WIN>
+<ROUNDID>2029282661</ROUNDID>
+<GAMEID>838</GAMEID>
+<ISROUNDFINISHED>true</ISROUNDFINISHED>
+<HASH>f4f33731924f275222a0ec674351260a</HASH>
+<gameSessionId>1315833964</gameSessionId>
+</REQUEST>
+<TIME>20 Apr 2022 06:38:38</TIME>
+<RESPONSE>
+<RESULT>OK</RESULT>
+<EXTSYSTEMTRANSACTIONID>4426</EXTSYSTEMTRANSACTIONID>
+<BALANCE>9291</BALANCE></RESPONSE>
+</EXTSYSTEM>
+
+<<<
+
+=== Player places bet in a regular Slot game
+.Request params
+bet=50|3044890747 +
+gameId=800 +
+gameSessionId=1315915144 +
+bankId=6274 +
+clientType=FLASH +
+isRoundFinished=false +
+userId=49 +
+roundId=2029282685 +
+hash=c22d0f58d86c48064125810bf671ba49
+
+.Response
+[source,xml]
+<EXTSYSTEM>
+<REQUEST>
+<USERID>49</USERID>
+<BET>50|3044890747</BET>
+<ROUNDID>2029282685</ROUNDID>
+<GAMEID>800</GAMEID>
+<ISROUNDFINISHED>false</ISROUNDFINISHED>
+<HASH>c22d0f58d86c48064125810bf671ba49</HASH>
+<gameSessionId>1315915144</gameSessionId>
+</REQUEST>
+<TIME>20 Apr 2022 06:46:10</TIME>
+<RESPONSE>
+<RESULT>OK</RESULT>
+<EXTSYSTEMTRANSACTIONID>4427</EXTSYSTEMTRANSACTIONID>
+<BALANCE>9241</BALANCE>
+</RESPONSE>
+</EXTSYSTEM>
+
+<<<
+
+=== Player loses stake in a regular Slot game
+.Request params
+gameId=800 +
+gameSessionId=1315915144 +
+bankId=6274 +
+clientType=FLASH +
+realWin=0 +
+isRoundFinished=true +
+userId=49 +
+win=0|3044890749 +
+roundId=2029282685 +
+hash=2d0ead12ca32f0c2d9e9588e67894415
+
+.Response
+[source,xml]
+<EXTSYSTEM>
+<REQUEST>
+<USERID>49</USERID>
+<WIN>0|3044890749</WIN>
+<ROUNDID>2029282685</ROUNDID>
+<GAMEID>800</GAMEID>
+<ISROUNDFINISHED>true</ISROUNDFINISHED>
+<HASH>2d0ead12ca32f0c2d9e9588e67894415</HASH>
+<gameSessionId>1315915144</gameSessionId>
+</REQUEST>
+<TIME>20 Apr 2022 06:46:10</TIME>
+<RESPONSE><RESULT>OK</RESULT>
+<EXTSYSTEMTRANSACTIONID>0</EXTSYSTEMTRANSACTIONID>
+<BALANCE>9241</BALANCE>
+</RESPONSE>
+</EXTSYSTEM>
+
+<<<
+
+=== Player places another bet in a regular Slot game
+.Request params
+bet=50|3044890751 +
+gameId=800 +
+gameSessionId=1315915144 +
+bankId=6274 +
+clientType=FLASH +
+isRoundFinished=false +
+userId=49 +
+roundId=2029282687 +
+hash=beaa8f343079cc8fedbc51cd8481f8ea
+
+.Response
+[source,xml]
+<EXTSYSTEM>
+<REQUEST>
+<USERID>49</USERID>
+<BET>50|3044890751</BET>
+<ROUNDID>2029282687</ROUNDID>
+<GAMEID>800</GAMEID>
+<ISROUNDFINISHED>false</ISROUNDFINISHED>
+<HASH>beaa8f343079cc8fedbc51cd8481f8ea</HASH>
+<gameSessionId>1315915144</gameSessionId>
+</REQUEST>
+<TIME>20 Apr 2022 06:46:22</TIME>
+<RESPONSE>
+<RESULT>OK</RESULT>
+<EXTSYSTEMTRANSACTIONID>4428</EXTSYSTEMTRANSACTIONID>
+<BALANCE>9191</BALANCE>
+</RESPONSE>
+</EXTSYSTEM>
+
+<<<
+
+=== Player wins in a regular Slot game
+.Request params
+gameId=800 +
+gameSessionId=1315915144 +
+bankId=6274 +
+clientType=FLASH +
+realWin=50 +
+isRoundFinished=false +
+userId=49 +
+win=50|3044890752 +
+roundId=2029282687 +
+hash=5be6e15390102109c57c2a8abf7908a7
+
+.Response
+[source,xml]
+<EXTSYSTEM>
+<REQUEST>
+<USERID>49</USERID>
+<WIN>50|3044890752</WIN>
+<ROUNDID>2029282687</ROUNDID>
+<GAMEID>800</GAMEID>
+<ISROUNDFINISHED>false</ISROUNDFINISHED>
+<HASH>5be6e15390102109c57c2a8abf7908a7</HASH>
+<gameSessionId>1315915144</gameSessionId>
+</REQUEST>
+<TIME>20 Apr 2022 06:46:22</TIME>
+<RESPONSE>
+<RESULT>OK</RESULT>
+<EXTSYSTEMTRANSACTIONID>4429</EXTSYSTEMTRANSACTIONID>
+<BALANCE>9241</BALANCE>
+</RESPONSE>
+</EXTSYSTEM>

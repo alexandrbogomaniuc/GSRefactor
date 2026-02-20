@@ -1,0 +1,1673 @@
+{
+  "singleEnemiesMax": 25,
+  "swarmEnemiesMax": 35,
+  "enemies": {
+    "CERBERUS": {
+      "minTimeOffset": 30,
+      "maxTimeOffset": 37,
+      "minWaitTime": 5,
+      "maxWaitTime": 8,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "DARK_KNIGHT": {
+      "minTimeOffset": 30,
+      "maxTimeOffset": 37,
+      "minWaitTime": 5,
+      "maxWaitTime": 8,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "OGRE": {
+      "minTimeOffset": 30,
+      "maxTimeOffset": 37,
+      "minWaitTime": 5,
+      "maxWaitTime": 8,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "GARGOYLE": {
+      "minTimeOffset": 5,
+      "maxTimeOffset": 5,
+      "minWaitTime": 7,
+      "maxWaitTime": 8,
+      "minStayTime": 15,
+      "maxStayTime": 25,
+      "unconditionalRespawn": false
+    },
+    "PURPLE_WIZARD": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 7,
+      "maxStayTime": 10,
+      "unconditionalRespawn": false
+    },
+    "BLUE_WIZARD": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 7,
+      "maxStayTime": 10,
+      "unconditionalRespawn": false
+    },
+    "RED_WIZARD": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 6,
+      "maxStayTime": 9,
+      "unconditionalRespawn": false
+    },
+    "SPIRIT_SPECTER": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 6,
+      "maxStayTime": 12,
+      "unconditionalRespawn": false
+    },
+    "FIRE_SPECTER": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 7,
+      "maxStayTime": 14,
+      "unconditionalRespawn": false
+    },
+    "LIGHTNING_SPECTER": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 8,
+      "maxStayTime": 22,
+      "unconditionalRespawn": false
+    }
+  },
+  "swarms": {
+    "101": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "102": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "103": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "104": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "105": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "106": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "107": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "108": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "109": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "201": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "202": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "203": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "204": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "205": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "206": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "207": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "208": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "209": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "210": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "211": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "212": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "301": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "302": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "303": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "304": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "305": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "306": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "307": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "308": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "309": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "310": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "311": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "312": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "313": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "314": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "315": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "316": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "317": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "318": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "319": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "320": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "321": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "322": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "323": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "324": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "325": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "326": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "327": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "328": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "329": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "330": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "331": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "332": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "333": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "334": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "335": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "336": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "501": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "502": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "503": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "504": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "505": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "506": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "507": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "508": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "509": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "510": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "511": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "512": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "513": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "514": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "515": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "516": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "517": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "701": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "702": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "703": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "704": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "705": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "706": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "707": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "708": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "709": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "710": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "711": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "712": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "713": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "714": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "715": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "716": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "717": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "718": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "901": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "902": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "903": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "904": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "905": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "906": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "907": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "908": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "909": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "910": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "911": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "912": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "913": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "914": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "915": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "916": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "917": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "918": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "919": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "920": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "921": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "922": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "923": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "924": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "925": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "926": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "927": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "928": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "929": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "930": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "931": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "932": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "933": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "934": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "935": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "936": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "937": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "938": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "939": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "940": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "941": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "942": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "943": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "944": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "945": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "946": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "947": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "948": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "949": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "950": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "951": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "952": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "953": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "954": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1101": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1102": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1103": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1104": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1105": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1106": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1107": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1108": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1109": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1110": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1111": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1201": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1202": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1203": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1204": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1205": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1206": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1207": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1208": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1209": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1210": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1211": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1212": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1213": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1214": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1215": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1216": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1217": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    },
+    "1218": {
+      "minTimeOffset": 0,
+      "maxTimeOffset": 0,
+      "minWaitTime": 0,
+      "maxWaitTime": 0,
+      "minStayTime": 0,
+      "maxStayTime": 0,
+      "unconditionalRespawn": false
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+    "initialTime": 0,
+    "crashMultiplier": -1,
+    "alpha": 0.75,
+    "function": "Math.exp((t * 0.06012) / 1000)",
+    "a": 0,
+    "b": 6,
+    "mcm": 6.0715
+}

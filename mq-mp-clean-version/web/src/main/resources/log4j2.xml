@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration>
+    <Appenders>
+        <Console name="ERROR" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [ERROR] %-5p [%c{1} %t] - %msg%n%ex" />
+        </Console>
+
+        <Console name="COMMON" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [COMMON] %-5p [%c{1} %t] - %msg%n%ex" />
+        </Console>
+        <Console name="STATISTICS" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [STATISTICS] %-5p [%c{1} %t] - %msg%n%ex" />
+        </Console>
+        <Console name="CLIENT_DEBUG" target="SYSTEM_OUT">
+             <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [CLIENT_DEBUG] %-5p [%c{1} %t] - %msg%n%ex" />
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="ERROR" level="error"/>
+        </Root>
+<!--
+        <Root level="error" additivity="false">
+            <AppenderRef ref="ERROR"/>
+        </Root>
+-->
+        <Logger name="com.hazelcast" level="info">
+            <AppenderRef ref="COMMON" level="DEBUG" />
+            <AppenderRef ref="ERROR" level="error" />
+        </Logger>
+        <Logger name="org.springframework" level="TRACE" additivity="false">
+            <AppenderRef ref="ERROR" level="error" />
+<!--            <AppenderRef ref="COMMON" level="TRACE" />-->
+        </Logger>
+        <Logger name="reactor.ipc.netty" level="INFO" additivity="false">
+            <AppenderRef ref="COMMON" level="INFO" />
+        </Logger>
+        <Logger name="com.betsoft.casino" level="DEBUG" additivity="false">
+            <AppenderRef ref="COMMON" level="DEBUG"/>
+            <AppenderRef ref="ERROR" level="error"/>
+        </Logger>
+        <Logger name="com.betsoft.casino.mp.web.service.StatisticsService" level="DEBUG" additivity="false">
+            <AppenderRef ref="STATISTICS" level="DEBUG"/>
+        </Logger>
+        <Logger name="com.betsoft.casino.mp.client.LogDebug" level="DEBUG" additivity="false">
+            <AppenderRef ref="CLIENT_DEBUG" level="DEBUG"/>
+        </Logger>
+    </Loggers>
+</Configuration>
