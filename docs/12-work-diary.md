@@ -2417,3 +2417,17 @@
   - phase2 probe path is now operational and produces deterministic evidence artifacts.
 - Next:
   - deploy GS image containing `CorrelationContextFilter` and rerun probe to verify header echoes pass.
+
+### 2026-02-20 10:06-10:08 UTC
+- Hardened Phase 2 probe script with readiness gating:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase2-correlation-probe.sh`
+  - new option `--wait-ready-sec` waits for non-`502` base readiness.
+- Re-ran probe with readiness wait:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase2/correlation-probes/correlation-probe-20260220-100710.md`
+  - result: `HTTP 200`, readiness `READY`, correlation echoes still `FAIL` (expected until new GS build deploy).
+- Updated reference baseline in:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/29-trace-correlation-standard-v1.md`.
+- Result:
+  - probe process is stable and no longer sensitive to transient startup `502` windows.
+- Next:
+  - build/deploy refactor GS image with correlation filter and rerun probe for pass evidence.

@@ -91,7 +91,7 @@ Sample:
 - Validation harness:
   - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase2-correlation-probe.sh`
 - Current runtime baseline evidence (before new GS build deploy):
-  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase2/correlation-probes/correlation-probe-20260220-100539.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase2/correlation-probes/correlation-probe-20260220-100710.md`
   - result: request processed, correlation echo headers not present yet.
 
 ## Related artifacts

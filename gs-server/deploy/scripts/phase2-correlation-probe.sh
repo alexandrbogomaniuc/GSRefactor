@@ -4,6 +4,7 @@ set -euo pipefail
 BASE_URL="http://127.0.0.1:18080"
 OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase2/correlation-probes"
 TIMEOUT_SEC=20
+WAIT_READY_SEC=30
 
 TRACE_ID="probe-trace-001"
 SESSION_ID="probe-session-001"
@@ -23,6 +24,7 @@ while [[ $# -gt 0 ]]; do
     --operation-id) OPERATION_ID="$2"; shift 2 ;;
     --config-version) CONFIG_VERSION="$2"; shift 2 ;;
     --timeout-sec) TIMEOUT_SEC="$2"; shift 2 ;;
+    --wait-ready-sec) WAIT_READY_SEC="$2"; shift 2 ;;
     *)
       echo "Unknown option: $1" >&2
       exit 1
@@ -37,6 +39,29 @@ BODY_FILE="$OUT_DIR/correlation-body-${TIMESTAMP}.txt"
 REPORT_FILE="$OUT_DIR/correlation-probe-${TIMESTAMP}.md"
 
 TARGET_URL="${BASE_URL}/cwstartgamev2.do?bankId=${BANK_ID}&gameId=${GAME_ID}&mode=real&token=invalid_probe_token&lang=en"
+
+wait_for_ready() {
+  local attempts=$((WAIT_READY_SEC * 2))
+  local i=0
+  while [[ $i -lt $attempts ]]; do
+    local code
+    set +e
+    code=$(curl -sS -m "${TIMEOUT_SEC}" -o /dev/null -w "%{http_code}" "${BASE_URL}/")
+    local rc=$?
+    set -e
+    if [[ $rc -eq 0 && "$code" != "502" && "$code" != "000" ]]; then
+      return 0
+    fi
+    sleep 0.5
+    i=$((i + 1))
+  done
+  return 1
+}
+
+READY_STATUS="READY"
+if ! wait_for_ready; then
+  READY_STATUS="NOT_READY_TIMEOUT"
+fi
 
 HTTP_CODE=$(curl -sS -m "${TIMEOUT_SEC}" \
   -H "X-Trace-Id: ${TRACE_ID}" \
@@ -80,6 +105,9 @@ cat > "${REPORT_FILE}" <<REPORT
 - X-Game-Id: ${GAME_ID}
 - X-Operation-Id: ${OPERATION_ID}
 - X-Config-Version: ${CONFIG_VERSION}
+
+## Pre-check
+- Static readiness: ${READY_STATUS}
 
 ## Echo validation
 | Header | Status |
