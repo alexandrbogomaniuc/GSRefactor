@@ -2268,3 +2268,24 @@
   - rename completed, repository remains isolated, and Phase 0 parity execution tooling is now runnable.
 - Next:
   - populate wallet fixture values and run `--mode run` on refactor stack (`http://localhost:18080`) to capture first HTTP parity result set.
+
+### 2026-02-20 09:42-09:50 UTC
+- Continued execution without pause per user request.
+- Started isolated refactor runtime stack from renamed GS path:
+  - `cd /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor && docker compose -p refactor up -d --build`
+- Verified isolated endpoints (outside sandbox checks):
+  - `http://127.0.0.1:18080/` progressed from initial `502` (startup race) to `403` (GS reachable through static proxy),
+  - `http://127.0.0.1:18081/` returns `403` from GS root (service up).
+- Ran Phase 0 harness in run mode against refactor stack:
+  - command: `gs-server/deploy/scripts/phase0-parity-harness.sh --mode run --base-url http://127.0.0.1:18080 --fixture-file docs/phase0/parity-fixture.env.example`
+  - evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution/phase0-parity-20260220-094035.md`
+  - result: `P0-LA-01 PASS_HTTP 200`, `P0-WA-01` and `P0-SE-01` skipped due missing wallet fixture values.
+- Added follow-up governance artifacts:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/26-bank-canary-policy-v1.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/27-error-taxonomy-v1.md`
+- Updated inventory artifact after rename:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase0/spring-endpoint-annotations.txt` now references `gs-server/...` paths.
+- Result:
+  - refactor runtime is bootstrapped and Phase 0 has first real HTTP pass evidence.
+- Next:
+  - fill wallet fixture values and execute `P0-WA-01`/`P0-SE-01` in run mode.
