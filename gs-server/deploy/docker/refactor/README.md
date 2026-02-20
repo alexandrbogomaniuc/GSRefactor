@@ -5,13 +5,13 @@ It must be started with compose project name `refactor`.
 
 ## Start
 ```bash
-cd /Users/alexb/Documents/Dev/Dev_new/mq-gs-clean-version/deploy/docker/refactor
+cd /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor
 docker compose -p refactor up -d --build
 ```
 
 ## Stop
 ```bash
-cd /Users/alexb/Documents/Dev/Dev_new/mq-gs-clean-version/deploy/docker/refactor
+cd /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor
 docker compose -p refactor down
 ```
 

@@ -26,7 +26,7 @@ services:
     image: refactor-jetty-gs
     working_dir: /app
     volumes:
-      - "../../../../mq-mp-clean-version/web:/app"
+      - "../../../../mp-server/web:/app"
     networks:
       - refactor-network
     depends_on:

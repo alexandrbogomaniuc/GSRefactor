@@ -10,8 +10,12 @@ Last updated: 2026-02-19 UTC
 ## 2. Runtime Isolation
 - Existing stack remains untouched.
 - New stack uses compose project `refactor` from:
-  - `/Users/alexb/Documents/Dev/Dev_new/mq-gs-clean-version/deploy/docker/refactor/docker-compose.yml`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor/docker-compose.yml`
 - Refactor stack uses dedicated host ports and dedicated Docker volume `refactor-cassandra-data`.
+
+## 2.1 Change scope policy
+- Active modernization code changes are limited to `gs-server` unless explicitly approved otherwise.
+- `client`, `mp-server`, `new-games-*`, `cm-module` are treated as baseline reference assets in this phase.
 
 ## 3. Source Copy Baseline
 Copied from upper baseline into `Dev_new` for isolation:
