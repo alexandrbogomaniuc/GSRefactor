@@ -47,3 +47,7 @@ cd /Users/alexb/Documents/Dev/Dev_new
 ## Update (2026-02-23 13:30 UTC)
 - Expanded coverage to include Phase 5 wallet and gameplay script syntax/help checks.
 - Report generator now trims trailing spaces and normalizes EOF to avoid false-positive whitespace failures in generated markdown reports.
+
+## Update (2026-02-23 13:50 UTC)
+- Added Phase 4 protocol JSON security logic smoke coverage (hash/replay behavior) with both `--help` and executable checks.
+- Current local verification summary baseline increased to `PASS=20` checks.

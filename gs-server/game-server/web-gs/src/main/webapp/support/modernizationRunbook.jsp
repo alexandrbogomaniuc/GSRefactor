@@ -101,6 +101,7 @@
         <h4>Phase 4 Protocol Adapter Runtime Check</h4>
         <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-runtime-readiness-check.sh
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-security-logic-smoke.sh
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-runtime-evidence-pack.sh \
   --bank-id 6275 \
   --transport host \
@@ -112,6 +113,9 @@
         </p>
         <p class="small-note">
             Default protocol-adapter and GS endpoints now come from <code>cluster-hosts.properties</code>; command flags can still override.
+        </p>
+        <p class="small-note">
+            Local protocol security smoke validates JSON hash/replay logic offline (no runtime stack required) before canary/runtime probes.
         </p>
     </div>
 

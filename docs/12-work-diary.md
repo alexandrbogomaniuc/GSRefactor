@@ -3613,3 +3613,29 @@
   - Phase 4 host-mode operator endpoints and Phase 7 refactor Cassandra container default are now centrally configured, reducing drift and repeated manual edits.
 - Next step:
   - commit wave 4 and continue with the next main-project increment (Phase 4/7 deeper runtime validation or precision/brand cleanup prep).
+
+### 2026-02-23 13:45-13:50 UTC
+- Added executable Phase 4 protocol JSON security logic smoke tests and wired them into the default local verification suite.
+- Implementation updates:
+  - New smoke script:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-security-logic-smoke.sh`
+  - Coverage:
+    - POST HMAC hash (raw body), GET hash rule concatenation, exempt endpoint handling
+    - ENFORCE mode missing hash (401)
+    - replay nonce reuse block (409)
+  - Updated local verification suite to include protocol security help + executable checks:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh`
+  - Updated runbook/docs and added evidence doc:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/75-phase5-6-local-verification-suite-20260223-130100.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/81-phase4-protocol-json-security-logic-smoke-and-suite-gate-20260223-135000.md`
+- Evidence:
+  - `phase4-protocol-security-logic-smoke.sh --help` passed.
+  - `phase4-protocol-security-logic-smoke.sh` executed successfully (all PASS).
+  - `phase5-6-local-verification-suite.sh` passed with expanded checks:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-134556.md`
+    - summary: PASS=20, FAIL=0, SKIP=0
+- Result:
+  - Protocol JSON security behavior is now enforced by executable local tests and automatically re-checked in the standard post-change verification workflow.
+- Next step:
+  - commit this protocol security smoke + suite gate batch, then continue main project implementation (next likely Phase 4 hash/replay runtime canary validation prep or precision audit scaffolding).
