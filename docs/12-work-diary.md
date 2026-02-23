@@ -3690,3 +3690,23 @@
   - Phase 8 is now actively tracked with repeatable audit evidence and test gating; no runtime behavior changes introduced.
 - Next step:
   - split Phase 8 remediation into safe waves and add executable precision regression tests before changing money arithmetic.
+
+### 2026-02-23 14:44-14:48 UTC
+- Added Phase 8 precision regression vector smoke (deterministic, non-runtime) and wired it into the local verification suite.
+- Implementation updates:
+  - New script: `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-regression-vector-smoke.sh`
+  - Updated suite: `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh`
+  - Updated support docs/runbook Phase 8 references:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+  - New evidence doc:
+    `/Users/alexb/Documents/Dev/Dev_new/docs/84-phase8-precision-regression-vector-smoke-20260223-150000.md`
+- Evidence:
+  - vector smoke passed (`summary pass=10 fail=0`)
+  - `phase5-6-local-verification-suite.sh` passed with expanded checks:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-144724.md`
+    - summary: PASS=24, FAIL=0, SKIP=0
+- Result:
+  - Phase 8 now has executable deterministic precision vectors guarding 0.001 and line-total math before code-level money refactors.
+- Next step:
+  - define remediation wave 1 scope from audit hotspots and add bucket-specific regression vectors before modifying GS money arithmetic.

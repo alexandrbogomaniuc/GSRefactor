@@ -48,7 +48,9 @@ CHECK_KEYS=(
   help_phase4_security_logic
   help_phase4_security_runtime
   help_phase8_precision_scan
+  help_phase8_precision_vectors
   logic_smoke_phase4_protocol
+  logic_smoke_phase8_precision_vectors
   bash_syntax_bonus
   bash_syntax_history
   bash_syntax_wallet
@@ -106,8 +108,14 @@ run_check "help_phase4_security_runtime" "CLI help: Phase 4 protocol JSON securi
 run_check "help_phase8_precision_scan" "CLI help: Phase 8 precision/min-bet audit scanner" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-minbet-audit-scan.sh' --help | sed -n '1,60p'"
 
+run_check "help_phase8_precision_vectors" "CLI help: Phase 8 precision regression vector smoke" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-regression-vector-smoke.sh' --help | sed -n '1,60p'"
+
 run_check "logic_smoke_phase4_protocol" "Executable logic smoke: Phase 4 protocol hash/replay security" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase4-protocol-security-logic-smoke.sh'"
+
+run_check "logic_smoke_phase8_precision_vectors" "Executable logic smoke: Phase 8 precision regression vectors" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-regression-vector-smoke.sh'"
 
 run_check "bash_syntax_history" "Bash syntax: Phase 5 history scripts" \
   bash -lc "bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-canary-probe.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-runtime-readiness-check.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-runtime-evidence-pack.sh'"

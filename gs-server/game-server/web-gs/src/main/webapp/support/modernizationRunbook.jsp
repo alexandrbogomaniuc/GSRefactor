@@ -232,6 +232,8 @@
         <h4>Phase 8 Precision / Min-Bet Audit Scan (GS-only)</h4>
         <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-minbet-audit-scan.sh
+# Optional deterministic vector smoke (0.001 / line-total exactness):
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-regression-vector-smoke.sh
 # Then sync dashboard embedded data if checklist/evidence changed:
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/sync-modernization-dashboard-embedded-data.sh
 </code></pre>
@@ -240,6 +242,9 @@
         </p>
         <p class="small-note">
             Scope is GS-only (<code>game-server</code> + <code>refactor-services</code>) and is used to prioritize 0.001 precision remediation waves without changing runtime behavior yet.
+        </p>
+        <p class="small-note">
+            Vector smoke is a non-runtime deterministic guard for exact thousandths conversion and line-total calculations before touching GS money arithmetic.
         </p>
     </div>
 
