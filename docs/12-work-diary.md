@@ -4280,3 +4280,18 @@
   - Operators now see explicit guard-settings artifact compatibility status (type/version/source/error) during cross-machine safety-profile sharing, reducing ambiguity and import mistakes in `file://` mode.
 - Next step:
   - add preset suggestion generation from imported compare-report artifacts (viewer-only) or extend guard-share panel with import preview metadata before apply.
+
+### 2026-02-23 19:54-19:56 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding a non-mutating guard-share import preview flow (`Preview Guard JSON`) with normalized effective guard preview metadata before apply, using shared artifact parsing/type-version validation and legacy fallback logic.
+- Fixed a preview error-path source-label regression (`[object PointerEvent]` -> `textarea:guard-settings`) discovered during browser testing.
+- Updated support docs/checklist to doc 119, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/119-phase8-wave3-viewer-guard-settings-import-preview-20260224-020000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-195604.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (preview row ready/error/clear states verified; preview does not apply until import)
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (reload shows doc 119 evidence path; embedded snapshot fingerprint updated; count remains 26/41)
+- Result:
+  - Operators can inspect the normalized overwrite-guard settings that will be applied before import, reducing mistakes during cross-machine safety-profile sharing in `file://` mode.
+- Next step:
+  - add preset suggestion generation from imported compare-report artifacts (viewer-only) or add guard-share import preview diff vs current guard state.
