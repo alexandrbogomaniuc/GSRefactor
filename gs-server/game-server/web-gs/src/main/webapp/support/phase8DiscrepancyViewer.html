@@ -277,6 +277,7 @@
         <div class="cardx" id="importDiffPresetSuggestionSummaryCard" style="margin-top:10px;">
           <h4 style="margin-top:0;">Suggestion Summary (Pre-Save)</h4>
           <div class="toolbar">
+            <button id="saveAndExportImportDiffPresetSuggestionBundle" class="btn btn-primary btn-sm">Save Suggestion + Bundle JSON</button>
             <button id="downloadImportDiffPresetSuggestionJson" class="btn btn-default btn-sm">Download Suggestion JSON</button>
             <button id="downloadImportDiffPresetSuggestionMarkdown" class="btn btn-default btn-sm">Download Suggestion Markdown</button>
             <button id="clearImportDiffPresetSuggestionSummary" class="btn btn-default btn-sm">Clear Suggestion Summary</button>
@@ -1674,20 +1675,76 @@
       q('importDiffPresetSuggestionMeta').textContent = 'Suggestions use imported compact compare-report artifacts (A/B) and only change current triage filters + preset name until you click Save Preset.';
     }
 
+    function saveImportDiffPresetByName(name) {
+      const trimmed = String(name || '').trim();
+      if (!trimmed) return { ok: false, reason: 'missing_name' };
+      const preset = captureImportDiffTriagePreset();
+      importDiffPresets[trimmed] = preset;
+      const storageOk = writeImportDiffPresets();
+      refreshImportDiffPresetSelect();
+      q('importDiffPresetSelect').value = trimmed;
+      q('importDiffPresetName').value = trimmed;
+      return { ok: true, name: trimmed, preset, storageOk };
+    }
+
     function saveCurrentImportDiffPreset() {
       const name = String(q('importDiffPresetName').value || q('importDiffPresetSelect').value || '').trim();
-      if (!name) {
+      const saved = saveImportDiffPresetByName(name);
+      if (!saved.ok) {
         q('importDiffPresetMeta').textContent = 'Enter a preset name to save the current triage filters.';
         return;
       }
-      importDiffPresets[name] = captureImportDiffTriagePreset();
-      const ok = writeImportDiffPresets();
-      refreshImportDiffPresetSelect();
-      q('importDiffPresetSelect').value = name;
-      q('importDiffPresetName').value = name;
-      q('importDiffPresetMeta').textContent = ok
-        ? `Saved triage preset: ${name}`
-        : `Preset saved in memory only (localStorage unavailable): ${name}`;
+      q('importDiffPresetMeta').textContent = saved.storageOk
+        ? `Saved triage preset: ${saved.name}`
+        : `Preset saved in memory only (localStorage unavailable): ${saved.name}`;
+    }
+
+    function buildImportDiffPresetSuggestionBundleArtifact(saveResult) {
+      if (!saveResult || !saveResult.ok) {
+        throw new Error('Suggestion bundle requires a saved preset result');
+      }
+      const summary = buildImportDiffPresetSuggestionSummaryArtifacts();
+      return {
+        type: 'phase8-wave3-import-diff-triage-preset-suggestion-bundle',
+        version: 1,
+        generatedAtUtc: new Date().toISOString(),
+        savedPreset: {
+          name: saveResult.name,
+          preset: saveResult.preset,
+          storagePersisted: !!saveResult.storageOk
+        },
+        suggestionSummary: summary.json
+      };
+    }
+
+    function saveAndExportImportDiffPresetSuggestionBundle() {
+      try {
+        if (!lastImportDiffPresetSuggestion) throw new Error('Generate a triage preset suggestion first');
+        if (!String(q('importDiffPresetName').value || '').trim()) {
+          q('importDiffPresetName').value = String(lastImportDiffPresetSuggestion.name || '').trim();
+        }
+        const saveResult = saveImportDiffPresetByName(q('importDiffPresetName').value);
+        if (!saveResult.ok) throw new Error('Preset name is required to save the suggestion');
+        const bundle = buildImportDiffPresetSuggestionBundleArtifact(saveResult);
+        const text = JSON.stringify(bundle, null, 2) + '\n';
+        renderImportDiffPresetSuggestionSummary();
+        q('importDiffPresetMeta').textContent = saveResult.storageOk
+          ? `Saved triage preset: ${saveResult.name}`
+          : `Preset saved in memory only (localStorage unavailable): ${saveResult.name}`;
+        q('importDiffPresetSuggestionMeta').textContent =
+          `Suggestion saved and bundle exported: ${saveResult.name}` +
+          (saveResult.storageOk ? '' : ' (preset saved in memory only)') + '.';
+        q('importDiffPresetSuggestionSummaryMeta').textContent =
+          `Suggestion summary ready | name=${bundle.savedPreset.name} | bundle=v1 | saved=${bundle.savedPreset.storagePersisted ? 'yes' : 'memory-only'}`;
+        downloadTextFile(
+          `phase8-wave3-triage-preset-suggestion-bundle-${new Date().toISOString().replace(/[:.]/g, '-')}.json`,
+          text,
+          'application/json'
+        );
+      } catch (err) {
+        q('importDiffPresetSuggestionMeta').textContent =
+          `Failed to save/export suggestion bundle: ${String(err.message || err)}`;
+      }
     }
 
     function applySelectedImportDiffPreset() {
@@ -2660,6 +2717,7 @@
       renderImportedCompareReportDiff();
     });
     q('suggestImportDiffPresetFromArtifacts').addEventListener('click', suggestImportDiffPresetFromArtifacts);
+    q('saveAndExportImportDiffPresetSuggestionBundle').addEventListener('click', saveAndExportImportDiffPresetSuggestionBundle);
     q('downloadImportDiffPresetSuggestionJson').addEventListener('click', () => {
       renderImportDiffPresetSuggestionSummary();
       const raw = q('importDiffPresetSuggestionSummaryCard').dataset.summaryJson;

@@ -4340,3 +4340,17 @@
   - Operators can now generate, review, and export a pre-save triage suggestion summary for sharing/audit before deciding to save the suggested preset.
 - Next step:
   - extend artifact-based suggestions to generate multiple candidate presets (e.g. fail-rules focus vs metric focus) or add one-click save of the current suggestion summary as a named preset + summary artifact bundle.
+
+### 2026-02-23 20:17-20:20 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding a one-click `Save Suggestion + Bundle JSON` flow in the discrepancy viewer suggestion summary panel, which saves the current artifact-based triage suggestion as a local preset and exports a combined preset+summary bundle JSON artifact.
+- Refactored preset saving into a reusable helper to keep `Save Preset` and the new save+bundle path behavior aligned.
+- Updated support docs/checklist to doc 123, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/123-phase8-wave3-viewer-save-suggestion-and-bundle-flow-20260224-030000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-201738.md` (suite PASS, `pass=40 fail=0 skip=0`)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (embedded checklist sync `26/41`; evidence path updated to doc 123; `fp=b9d35a57e168`)
+- Result:
+  - Operators can now persist a suggested triage preset and export a shareable combined bundle artifact in one action while preserving the existing pre-save review flow.
+- Next step:
+  - extend artifact-based suggestions with multi-candidate suggestions (fail-rules focus vs metric focus) or add a one-click save of suggestion summary + preset bundle import path in the viewer.
