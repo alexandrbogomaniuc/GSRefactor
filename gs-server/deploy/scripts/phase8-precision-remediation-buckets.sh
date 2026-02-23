@@ -64,6 +64,25 @@ scan_bucket() {
   printf '%s\n' "$desc" > "${TMP_DIR}/${key}.desc"
 }
 
+scan_bucket_union() {
+  local key="$1" desc="$2" globs="$3"
+  shift 3
+  local out="${TMP_DIR}/${key}.txt"
+  : > "$out"
+  printf '%s\n' "$desc" > "${TMP_DIR}/${key}.desc"
+  local idx=0
+  for pattern in "$@"; do
+    idx=$((idx + 1))
+    scan_bucket "${key}__part${idx}" "$pattern" "$desc" "$globs"
+    if [[ -s "${TMP_DIR}/${key}__part${idx}.txt" ]]; then
+      cat "${TMP_DIR}/${key}__part${idx}.txt" >> "$out"
+    fi
+  done
+  if [[ -s "$out" ]]; then
+    sort -u "$out" -o "$out"
+  fi
+}
+
 count_file() {
   local f="$1"
   [[ -s "$f" ]] && wc -l < "$f" | tr -d ' ' || echo 0
@@ -87,11 +106,13 @@ samples() {
   sed -n "1,${max}p" "$in" | sed -E 's/[[:space:]]+$//'
 }
 
-scan_bucket \
+scan_bucket_union \
   "wave1_reporting_stats" \
-  '(Math\\.round\\(.*\\* *100\\)|/ *100\\.0|minBet *= *1\\b)' \
-  'Wave 1 candidate (lower-risk first): reporting/statistics cent-based assumptions and display conversions' \
-  "-g *.java"
+  'Wave 1 candidate (lower-risk first): reporting/display cent conversions and score rounding (explicitly excludes core session/update paths)' \
+  "-g *.java" \
+  'Math\.round\(Double\.parseDouble\(player\.getScore\(\)\) \* 100\)' \
+  'DigitFormatter\.doubleToMoney\(coin\.getValue\(\) / 100\.0d\)' \
+  'return \(double\) Math\.round\(d \* 100\) / 100'
 
 scan_bucket \
   "wave2_settings_coin_rules" \

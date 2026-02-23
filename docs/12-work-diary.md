@@ -3755,3 +3755,32 @@
   - shared verification suite is safe to run repeatedly without creating untracked Phase 8 bucket reports.
 - Next step:
   - commit Phase 8 wave-plan + checklist/dashboard updates + suite reliability fix, then continue Wave 1 matcher refinement.
+
+### 2026-02-23 15:00-15:03 UTC
+- Refined Phase 8 Wave 1 targeting and added a dedicated reporting/display precision vector smoke.
+- Implementation updates:
+  - Wave 1 matcher in bucket planner changed from fragile alternation to focused union scan of three low-risk reporting/display patterns:
+    `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-remediation-buckets.sh`
+  - New Wave 1 vector smoke:
+    `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave1-reporting-vector-smoke.sh`
+  - Verification suite expanded:
+    `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh`
+    (help + executable checks for Wave 1 vector smoke)
+  - Support docs/runbook + checklist progress evidence updated:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (embedded sync)
+  - New evidence doc:
+    `/Users/alexb/Documents/Dev/Dev_new/docs/86-phase8-wave1-reporting-bucket-refinement-and-vector-smoke-20260223-153000.md`
+- Evidence:
+  - Updated bucket report with refined Wave 1 hits (`wave1_reporting_stats: 8`):
+    `/Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision/phase8-precision-remediation-buckets-20260223-150240.md`
+  - Wave 1 vector smoke passed (`summary pass=12 fail=0`)
+  - `phase5-6-local-verification-suite.sh` passed after final checklist/dashboard sync:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-150325.md`
+    - summary: PASS=28, FAIL=0, SKIP=0
+- Result:
+  - Phase 8 now has correct Wave 1 low-risk hotspot targeting plus deterministic test vectors for the first safe remediation code batch.
+- Next step:
+  - implement Wave 1 code remediation (reporting/display only) behind parity-preserving behavior checks, using the new vector smoke as the acceptance guard.

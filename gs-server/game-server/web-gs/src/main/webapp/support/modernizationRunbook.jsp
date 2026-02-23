@@ -234,6 +234,8 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-minbet-audit-scan.sh
 # Optional deterministic vector smoke (0.001 / line-total exactness):
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-regression-vector-smoke.sh
+# Wave 1 (reporting/display) deterministic cent/thousandth rounding vectors:
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave1-reporting-vector-smoke.sh
 # Bucketed remediation planning report (safe wave order from audit hotspots):
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-remediation-buckets.sh
 # Then sync dashboard embedded data if checklist/evidence changed:
@@ -250,6 +252,9 @@
         </p>
         <p class="small-note">
             Bucket report converts raw scan output into a safe-first remediation wave plan (reporting/statistics -> settings -> config templates -> core financial paths).
+        </p>
+        <p class="small-note">
+            Wave 1 vector smoke targets non-runtime reporting/display conversions only (2-decimal cent formatting and rounding boundaries) before any code changes.
         </p>
     </div>
 
