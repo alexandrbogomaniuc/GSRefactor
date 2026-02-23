@@ -4224,3 +4224,17 @@
   - Operators no longer need to reconfigure overwrite-guard settings on each page load, improving repeatability of triage preset import workflows in `file://` mode.
 - Next step:
   - add preset suggestion generation from imported compare-report artifacts (viewer-only) or expose a one-click reset for all viewer local settings/presets.
+
+### 2026-02-23 19:29-19:31 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding a one-click reset for viewer-local triage presets + overwrite-guard settings (with confirm/cancel paths) in the discrepancy viewer, including reset of preset import preview/compat UI state.
+- Updated support docs/checklist to doc 115, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/115-phase8-wave3-viewer-local-reset-for-presets-and-guard-20260224-003000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-192959.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (reset cancel preserves local state; reset confirm clears presets/guard storage and resets UI defaults)
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (reload shows doc 115 evidence path; count remains 26/41)
+- Result:
+  - Operators can quickly return the viewer to a clean local state without manually clearing browser storage, improving repeatability and troubleshooting in `file://` mode.
+- Next step:
+  - add preset suggestion generation from imported compare-report artifacts (viewer-only) or export/import of guard profile presets to share review safety configurations.

@@ -299,6 +299,10 @@
         </div>
         <div class="footnote" id="importDiffPresetGuardProfileMeta">Guard profile: Default (confirm when overwrite count is 2 or more).</div>
         <div class="footnote" id="importDiffPresetGuardMeta">High-overwrite merge guard: confirmation is required when overwrite count reaches the threshold.</div>
+        <div class="toolbar" style="margin-top:8px;">
+          <button id="resetImportDiffViewerLocalState" class="btn btn-default btn-sm">Reset Local Presets + Guard</button>
+        </div>
+        <div class="footnote" id="importDiffPresetResetMeta">Reset clears browser-local triage presets and overwrite-guard settings for this viewer only.</div>
         <div class="footnote">Tip: you can also drag/drop a triage preset bundle JSON file or JSON text onto the preset JSON textarea.</div>
         <div class="footnote" id="importCompareDiffMeta">Load Imported A and Imported B compact compare-report JSON to compare artifacts.</div>
         <div id="importCompareDiffSummaryGrid" class="grid" style="margin-top:10px;"></div>
@@ -668,6 +672,55 @@
         return;
       }
       applyImportDiffPresetGuardProfile('default');
+    }
+
+    function resetImportDiffViewerLocalState() {
+      let confirmed = true;
+      try {
+        if (typeof window.confirm === 'function') {
+          confirmed = !!window.confirm(
+            'Reset viewer local presets and overwrite-guard settings?\\n\\n' +
+            'This clears browser-local triage presets and guard settings for this page only.'
+          );
+        }
+      } catch (_) {}
+      if (!confirmed) {
+        q('importDiffPresetResetMeta').textContent = 'Reset cancelled. Browser-local triage presets and guard settings were kept.';
+        return false;
+      }
+
+      let presetStoreCleared = false;
+      let guardStoreCleared = false;
+      try {
+        if (window.localStorage) {
+          window.localStorage.removeItem(IMPORT_DIFF_PRESET_STORAGE_KEY);
+          presetStoreCleared = true;
+        }
+      } catch (_) {}
+      try {
+        if (window.localStorage) {
+          window.localStorage.removeItem(IMPORT_DIFF_PRESET_GUARD_STORAGE_KEY);
+          guardStoreCleared = true;
+        }
+      } catch (_) {}
+
+      importDiffPresets = {};
+      q('importDiffPresetName').value = '';
+      refreshImportDiffPresetSelect();
+      q('importDiffPresetMeta').textContent = 'Saved triage presets are local to this browser only. Count=0';
+
+      q('importDiffPresetGuardProfile').value = 'default';
+      q('importDiffPresetGuardThreshold').value = '2';
+      importDiffPresetOverwriteGuardProfile = 'default';
+      importDiffPresetOverwriteGuardEnabled = true;
+      importDiffPresetOverwriteConfirmThreshold = 2;
+      renderImportDiffPresetGuardMeta();
+
+      clearImportDiffPresetJsonTextarea();
+      q('importDiffPresetResetMeta').textContent =
+        `Viewer local reset complete: presets cleared, guard reset to default` +
+        ` (${presetStoreCleared ? 'preset-storage cleared' : 'preset-storage unavailable'}, ${guardStoreCleared ? 'guard-storage cleared' : 'guard-storage unavailable'}).`;
+      return true;
     }
 
     function readImportDiffPresets() {
@@ -1943,6 +1996,7 @@
     q('applyImportDiffPreset').addEventListener('click', applySelectedImportDiffPreset);
     q('deleteImportDiffPreset').addEventListener('click', deleteSelectedImportDiffPreset);
     q('applyImportDiffPresetGuardProfile').addEventListener('click', () => applyImportDiffPresetGuardProfile(q('importDiffPresetGuardProfile').value));
+    q('resetImportDiffViewerLocalState').addEventListener('click', resetImportDiffViewerLocalState);
     q('importDiffPresetGuardProfile').addEventListener('change', () => {
       const v = q('importDiffPresetGuardProfile').value;
       if (v === 'custom') {
