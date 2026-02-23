@@ -3997,3 +3997,15 @@
   - Non-developer operators can now compare two discrepancy export runs visually in the browser (`file://` mode supported) without manual JSON diffing.
 - Next step:
   - add guided validation checks/thresholds inside the viewer or export a compact comparison report artifact.
+
+### 2026-02-23 16:31-16:32 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding guided validation thresholds/pass-fail badges to the discrepancy viewer compare workflow.
+- Added threshold inputs/presets and rule-based PASS/FAIL checklist in `/support/phase8DiscrepancyViewer.html`, verified strict fail and demo-pass flows in `file://` mode, updated runbook/docs, moved progress JSON evidence to doc 98, and re-synced dashboard embedded progress data.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/98-phase8-wave3-viewer-guided-validation-thresholds-20260223-184500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-163156.md` (PASS=38)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+- Result:
+  - Non-developer operators can now apply explicit validation thresholds and get immediate PASS/FAIL guidance while comparing discrepancy export runs.
+- Next step:
+  - add comparison result export (compact JSON/Markdown) or reusable threshold policy profiles.

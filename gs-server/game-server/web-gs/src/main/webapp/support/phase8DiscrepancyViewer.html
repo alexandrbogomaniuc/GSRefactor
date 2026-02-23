@@ -22,6 +22,10 @@
     th, td { border: 1px solid #e3eaf2; padding: 6px 8px; font-size: 12px; vertical-align: top; }
     th { background: #f2f6fb; }
     .badge-soft { display:inline-block; border:1px solid #ccd8e5; border-radius:10px; padding:2px 8px; font-size:11px; }
+    .status-pill { display:inline-block; border:1px solid #ccd8e5; border-radius:10px; padding:2px 8px; font-size:11px; font-weight:600; }
+    .pill-pass { background:#e9f8ef; border-color:#9ed8b3; color:#0f5132; }
+    .pill-fail { background:#fdecec; border-color:#e5b3b3; color:#842029; }
+    .pill-info { background:#eef6ff; border-color:#b9d3ef; color:#0c5460; }
     .ok { background:#e9f8ef; border-color:#9ed8b3; }
     .warn { background:#fff6e9; border-color:#e8c98f; }
     .bad { background:#fdecec; border-color:#e5b3b3; }
@@ -34,6 +38,8 @@
     .delta-pos { color: #0b6e3a; font-weight: 600; }
     .delta-neg { color: #9b1c1c; font-weight: 600; }
     .delta-zero { color: #6d7785; }
+    .validation-list { margin: 8px 0 0 0; padding-left: 18px; }
+    .validation-list li { margin: 4px 0; }
   </style>
 </head>
 <body>
@@ -82,6 +88,43 @@
       <h4 style="margin-top:0;">Comparison Summary (A vs B)</h4>
       <div class="grid" id="compareSummaryGrid"></div>
       <div class="footnote" id="compareSourcesLine"></div>
+    </div>
+
+    <div class="cardx" id="validationCard">
+      <h4 style="margin-top:0;">Guided Validation (Operator Thresholds)</h4>
+      <div class="pane-grid">
+        <div>
+          <div class="toolbar">
+            <label style="font-weight:normal; margin:0;">Max mismatch metrics (A)
+              <input type="number" id="thresholdMismatchA" value="0" min="0" style="width:90px; margin-left:6px;" />
+            </label>
+            <label style="font-weight:normal; margin:0;">Max mismatch metrics (B)
+              <input type="number" id="thresholdMismatchB" value="0" min="0" style="width:90px; margin-left:6px;" />
+            </label>
+          </div>
+          <div class="toolbar" style="margin-top:8px;">
+            <label style="font-weight:normal; margin:0;">Max mismatch delta (B-A)
+              <input type="number" id="thresholdMismatchDelta" value="0" min="0" style="width:90px; margin-left:6px;" />
+            </label>
+            <label style="font-weight:normal; margin:0;">Max snapshot delta (B-A)
+              <input type="number" id="thresholdSnapshotDelta" value="1000000" min="0" style="width:110px; margin-left:6px;" />
+            </label>
+          </div>
+          <div class="toolbar" style="margin-top:8px;">
+            <label style="font-weight:normal; margin:0;">
+              <input type="checkbox" id="thresholdAllowNewMetrics" /> Allow new metrics in B
+            </label>
+            <button id="applyStrictThresholds" class="btn btn-default btn-sm">Strict (0/0/0, no new metrics)</button>
+            <button id="applyDemoThresholds" class="btn btn-default btn-sm">Demo (sample pass)</button>
+          </div>
+          <div class="footnote">Thresholds are local to your browser session and intended for non-prod compare-mode validation runs.</div>
+        </div>
+        <div>
+          <div id="validationSummaryGrid" class="grid"></div>
+          <div id="validationMeta" class="footnote"></div>
+        </div>
+      </div>
+      <ul id="validationChecklist" class="validation-list"></ul>
     </div>
 
     <div class="cardx">
@@ -329,6 +372,132 @@
       q('compareSourcesLine').textContent = `sourceFiles(B): ${(modelB.sourceFiles || []).join(', ') || '-'}`;
     }
 
+    function intThreshold(id, fallback) {
+      const raw = q(id).value;
+      const n = Number(raw);
+      if (!Number.isFinite(n) || n < 0) return fallback;
+      return Math.floor(n);
+    }
+
+    function buildValidationState() {
+      const state = {
+        hasA: !!modelA,
+        hasB: !!modelB,
+        compare: compareEnabled(),
+        thresholdMismatchA: intThreshold('thresholdMismatchA', 0),
+        thresholdMismatchB: intThreshold('thresholdMismatchB', 0),
+        thresholdMismatchDelta: intThreshold('thresholdMismatchDelta', 0),
+        thresholdSnapshotDelta: intThreshold('thresholdSnapshotDelta', 1000000),
+        allowNewMetricsInB: q('thresholdAllowNewMetrics').checked
+      };
+      if (!modelA) return state;
+      state.aMismatchMetrics = countMismatchMetrics(modelA);
+      state.aMetricCount = Object.keys(modelA.metrics || {}).length;
+      state.aTotalSnapshots = asNum(modelA.totalSnapshotLines, 0);
+      if (!state.compare) return state;
+      state.bMismatchMetrics = countMismatchMetrics(modelB);
+      state.bMetricCount = Object.keys(modelB.metrics || {}).length;
+      state.bTotalSnapshots = asNum(modelB.totalSnapshotLines, 0);
+      const union = new Set([...Object.keys(modelA.metrics || {}), ...Object.keys(modelB.metrics || {})]);
+      state.unionMetricCount = union.size;
+      state.newMetricsInB = [...Object.keys(modelB.metrics || {})].filter((k) => !(k in (modelA.metrics || {}))).length;
+      state.deltaMismatchMetrics = state.bMismatchMetrics - state.aMismatchMetrics;
+      state.deltaSnapshots = state.bTotalSnapshots - state.aTotalSnapshots;
+      let maxMismatchDeltaAbs = 0;
+      union.forEach((k) => {
+        const a = modelA.metrics[k];
+        const b = modelB.metrics[k];
+        const delta = asNum(b && b.maxMismatchCount, 0) - asNum(a && a.maxMismatchCount, 0);
+        maxMismatchDeltaAbs = Math.max(maxMismatchDeltaAbs, Math.abs(delta));
+      });
+      state.maxMismatchDeltaAbs = maxMismatchDeltaAbs;
+      return state;
+    }
+
+    function rule(status, label, detail) {
+      return { status, label, detail };
+    }
+
+    function renderValidation() {
+      const grid = q('validationSummaryGrid');
+      const list = q('validationChecklist');
+      const meta = q('validationMeta');
+      grid.innerHTML = '';
+      list.innerHTML = '';
+      const st = buildValidationState();
+      if (!st.hasA) {
+        meta.textContent = 'Load baseline A to evaluate thresholds.';
+        return;
+      }
+
+      const rules = [];
+      rules.push(
+        st.aMismatchMetrics <= st.thresholdMismatchA
+          ? rule('PASS', 'A mismatch metrics within threshold', `${st.aMismatchMetrics} <= ${st.thresholdMismatchA}`)
+          : rule('FAIL', 'A mismatch metrics exceed threshold', `${st.aMismatchMetrics} > ${st.thresholdMismatchA}`)
+      );
+
+      if (!st.compare) {
+        rules.push(rule('INFO', 'Compare mode disabled', 'Load B and enable compare mode for delta checks.'));
+      } else {
+        rules.push(
+          st.bMismatchMetrics <= st.thresholdMismatchB
+            ? rule('PASS', 'B mismatch metrics within threshold', `${st.bMismatchMetrics} <= ${st.thresholdMismatchB}`)
+            : rule('FAIL', 'B mismatch metrics exceed threshold', `${st.bMismatchMetrics} > ${st.thresholdMismatchB}`)
+        );
+        rules.push(
+          Math.abs(st.deltaMismatchMetrics) <= st.thresholdMismatchDelta
+            ? rule('PASS', 'Mismatch metric delta within threshold', `|${st.deltaMismatchMetrics}| <= ${st.thresholdMismatchDelta}`)
+            : rule('FAIL', 'Mismatch metric delta exceeds threshold', `|${st.deltaMismatchMetrics}| > ${st.thresholdMismatchDelta}`)
+        );
+        rules.push(
+          Math.abs(st.deltaSnapshots) <= st.thresholdSnapshotDelta
+            ? rule('PASS', 'Snapshot delta within threshold', `|${st.deltaSnapshots}| <= ${st.thresholdSnapshotDelta}`)
+            : rule('FAIL', 'Snapshot delta exceeds threshold', `|${st.deltaSnapshots}| > ${st.thresholdSnapshotDelta}`)
+        );
+        rules.push(
+          st.allowNewMetricsInB || st.newMetricsInB === 0
+            ? rule('PASS', 'New metrics in B policy', st.allowNewMetricsInB ? `allowed (${st.newMetricsInB} found)` : 'none found')
+            : rule('FAIL', 'New metrics in B are not allowed', `${st.newMetricsInB} new metrics`)
+        );
+        rules.push(
+          st.maxMismatchDeltaAbs <= st.thresholdMismatchDelta
+            ? rule('PASS', 'Per-metric mismatch delta within threshold', `${st.maxMismatchDeltaAbs} <= ${st.thresholdMismatchDelta}`)
+            : rule('FAIL', 'Per-metric mismatch delta exceeds threshold', `${st.maxMismatchDeltaAbs} > ${st.thresholdMismatchDelta}`)
+        );
+      }
+
+      const passCount = rules.filter((r) => r.status === 'PASS').length;
+      const failCount = rules.filter((r) => r.status === 'FAIL').length;
+      const infoCount = rules.filter((r) => r.status === 'INFO').length;
+      const overall = failCount > 0 ? 'FAIL' : 'PASS';
+      const overallCls = failCount > 0 ? 'pill-fail' : 'pill-pass';
+
+      const cards = [
+        ['Overall', `<span class=\"status-pill ${overallCls}\">${overall}</span>`],
+        ['Pass Rules', passCount],
+        ['Fail Rules', failCount],
+        ['Info Rules', infoCount],
+        ['A Mismatch Metrics', st.aMismatchMetrics ?? '-'],
+        ['B Mismatch Metrics', st.compare ? st.bMismatchMetrics : '-'],
+        ['Delta Mismatch Metrics', st.compare ? st.deltaMismatchMetrics : '-'],
+        ['New Metrics In B', st.compare ? st.newMetricsInB : '-']
+      ];
+
+      grid.innerHTML = cards.map(([k, v]) => `\n        <div class=\"cell\">\n          <div class=\"k\">${k}</div>\n          <div class=\"v\">${typeof v === 'number' ? v : v}</div>\n        </div>`).join('');
+
+      rules.forEach((r) => {
+        const cls = r.status === 'PASS' ? 'pill-pass' : (r.status === 'FAIL' ? 'pill-fail' : 'pill-info');
+        const li = document.createElement('li');
+        li.innerHTML = `<span class=\"status-pill ${cls}\">${r.status}</span> ${r.label} <span class=\"muted\">(${r.detail})</span>`;
+        list.appendChild(li);
+      });
+
+      meta.textContent = st.compare
+        ? `Thresholds active (A vs B). Adjust values above to match your validation policy.`
+        : `Baseline-only validation active. Load B and enable compare mode to apply delta rules.`;
+    }
+
     function renderMetrics() {
       const body = q('metricsBody');
       body.innerHTML = '';
@@ -394,6 +563,7 @@
       renderSummaryA();
       renderCompareSummary();
       renderMetrics();
+      renderValidation();
       renderRaw();
     }
 
@@ -445,6 +615,25 @@
     q('parseTextareas').addEventListener('click', parseTextareas);
     q('compareEnabled').addEventListener('change', renderAll);
     q('mismatchOnly').addEventListener('change', renderAll);
+    ['thresholdMismatchA','thresholdMismatchB','thresholdMismatchDelta','thresholdSnapshotDelta','thresholdAllowNewMetrics']
+      .forEach((id) => q(id).addEventListener('change', renderAll));
+    q('applyStrictThresholds').addEventListener('click', () => {
+      q('thresholdMismatchA').value = '0';
+      q('thresholdMismatchB').value = '0';
+      q('thresholdMismatchDelta').value = '0';
+      q('thresholdSnapshotDelta').value = '0';
+      q('thresholdAllowNewMetrics').checked = false;
+      renderAll();
+    });
+    q('applyDemoThresholds').addEventListener('click', () => {
+      // Thresholds chosen so embedded sample A/B comparison passes.
+      q('thresholdMismatchA').value = '1';
+      q('thresholdMismatchB').value = '1';
+      q('thresholdMismatchDelta').value = '1';
+      q('thresholdSnapshotDelta').value = '10';
+      q('thresholdAllowNewMetrics').checked = true;
+      renderAll();
+    });
 
     q('fileInputA').addEventListener('change', async (e) => {
       const file = e.target.files && e.target.files[0];
