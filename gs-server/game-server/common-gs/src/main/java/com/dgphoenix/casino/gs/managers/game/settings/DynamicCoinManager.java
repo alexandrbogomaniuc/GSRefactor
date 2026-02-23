@@ -25,6 +25,8 @@ import java.util.function.BiPredicate;
  * @since 24.09.2020
  */
 public class DynamicCoinManager {
+    // Wave 2 compatibility: legacy line-based normalization remains cent-scale (x100) until full precision migration.
+    private static final int LEGACY_BASE_BET_IN_CURRENCY_MINOR_UNITS_PER_LINE = 100;
 
     private final BankInfoCache bankInfoCache;
     private final BaseGameInfoTemplateCache baseGameInfoTemplateCache;
@@ -58,11 +60,11 @@ public class DynamicCoinManager {
             double finalDefaultBet = needToConvert
                     ? currencyConverter.convert(defaultBet, sourceCurrency, targetCurrency)
                     : defaultBet;
-            int baseBetInCurrency = Integer.parseInt(gameInfo.getProperty(BaseGameConstants.KEY_DEFAULTNUMLINES)) * 100;
+            int baseBetInCurrency = getLegacyBaseBetInCurrencyMinorUnits(gameInfo);
             int coinIndex = 0;
             double delta = 0;
             for (int i = 0; i < coinseq.length; i++) {
-                double currentDelta = Math.abs(coinseq[i] * baseBetInCurrency - finalDefaultBet);
+                double currentDelta = getDefaultBetDistance(coinseq[i], baseBetInCurrency, finalDefaultBet);
                 if (currentDelta < delta || i == 0) {
                     delta = currentDelta;
                     coinIndex = i;
@@ -71,6 +73,15 @@ public class DynamicCoinManager {
             return Optional.of(coinIndex);
         }
         return Optional.empty();
+    }
+
+    protected int getLegacyBaseBetInCurrencyMinorUnits(IBaseGameInfo gameInfo) {
+        return Integer.parseInt(gameInfo.getProperty(BaseGameConstants.KEY_DEFAULTNUMLINES))
+                * LEGACY_BASE_BET_IN_CURRENCY_MINOR_UNITS_PER_LINE;
+    }
+
+    protected double getDefaultBetDistance(double coinValue, int baseBetInCurrency, double finalDefaultBet) {
+        return Math.abs(coinValue * baseBetInCurrency - finalDefaultBet);
     }
 
     public Optional<Long> getDynamicFrbCoin(IBaseGameInfo gameInfo, ICurrency targetCurrency,

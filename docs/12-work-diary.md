@@ -3865,3 +3865,31 @@
   - Phase 8 Wave 1 reporting/display cleanup is complete by bucket evidence, and Wave 2 now has executable precision vectors before code changes.
 - Next step:
   - start Phase 8 Wave 2 code remediation batch 1 in `DynamicCoinManager` / `GamesLevelHelper` under Wave 2 vectors + suite gates.
+
+### 2026-02-23 15:38-15:39 UTC
+- Started Phase 8 Wave 2 code remediation batch 1 (behavior-preserving helper isolation in settings/coin-rule paths).
+- Code changes:
+  - `DynamicCoinManager`:
+    - explicit legacy line-based minor-unit constant (`LEGACY_BASE_BET_IN_CURRENCY_MINOR_UNITS_PER_LINE = 100`)
+    - helper extraction for legacy base-bet normalization and default-bet delta calculation
+    - file: `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/settings/DynamicCoinManager.java`
+  - `GamesLevelHelper`:
+    - helper extraction `getLegacyTemplateMaxBet(...)` used by `getGLMaxBet(...)`
+    - file: `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/settings/GamesLevelHelper.java`
+  - Progress/evidence updates:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (embedded sync)
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/90-phase8-wave2-settings-coinrule-code-remediation-batch1-20260223-163500.md`
+- Evidence:
+  - targeted grep confirms new Wave 2 helper/constant usage in both files
+  - Wave 2 vector smoke passed (`summary pass=10 fail=0`)
+  - refreshed bucket report shows Wave 2 reduction (`wave2_settings_coin_rules: 1`):
+    `/Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision/phase8-precision-remediation-buckets-20260223-153806.md`
+  - `phase5-6-local-verification-suite.sh` passed after final checklist/dashboard sync:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-153916.md`
+    - summary: PASS=32, FAIL=0, SKIP=0
+- Result:
+  - Wave 2 code remediation has started safely with explicit legacy assumption isolation and no behavior change.
+- Next step:
+  - Phase 8 Wave 2 batch 2: introduce precision-aware helper path (scale-ready normalization) behind parity-preserving comparisons/tests before any functional switch.

@@ -55,7 +55,7 @@ public class GamesLevelHelper {
 
     public double getGLMaxBet(GamesLevelContext ctx) throws CommonException {
         //default 100 'cents' value from NBSF's Appendix
-        double glMaxBet = ONE_HUNDRED_CENTS * ctx.getTemplateMaxCredits();
+        double glMaxBet = getLegacyTemplateMaxBet(ctx.getTemplateMaxCredits());
         Long templateMaxBet = ctx.getTemplateMaxBet();
         if (templateMaxBet != null) {
             glMaxBet = ctx.isNeedToConvert()
@@ -75,6 +75,10 @@ public class GamesLevelHelper {
                     : gameMaxBet.doubleValue();
         }
         return glMaxBet;
+    }
+
+    protected double getLegacyTemplateMaxBet(double templateMaxCredits) {
+        return ONE_HUNDRED_CENTS * templateMaxCredits;
     }
 
     public double limitGLMaxBetByAllowedMaxWin(GamesLevelContext ctx, double glMaxBet) throws CommonException {
