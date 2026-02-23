@@ -271,6 +271,10 @@
         </div>
         <div class="footnote" id="importDiffPresetMeta">Saved triage presets are local to this browser only.</div>
         <div class="toolbar" style="margin-top:8px;">
+          <button id="suggestImportDiffPresetFromArtifacts" class="btn btn-default btn-sm">Suggest Triage Preset (A/B)</button>
+        </div>
+        <div class="footnote" id="importDiffPresetSuggestionMeta">Suggestions use imported compact compare-report artifacts (A/B) and only change current triage filters + preset name until you click Save Preset.</div>
+        <div class="toolbar" style="margin-top:8px;">
           <button id="exportImportDiffPresetJson" class="btn btn-default btn-sm">Export Presets JSON</button>
           <button id="openImportDiffPresetFile" class="btn btn-default btn-sm">Load Presets File</button>
           <input type="file" id="importDiffPresetFileInput" accept=".json,application/json" style="display:none;" />
@@ -1391,6 +1395,152 @@
       q('importDiffPresetMeta').textContent = `Saved triage presets are local to this browser only. Count=${names.length}`;
     }
 
+    function sanitizeImportDiffPresetSuggestionNamePart(raw) {
+      return String(raw || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, 36);
+    }
+
+    function selectTopArtifactMetricForSuggestion() {
+      const a = importedCompareReport;
+      const b = importedCompareReportB;
+      if (a && b) {
+        const metricA = {};
+        (a.metrics || []).forEach((m) => { metricA[String(m.metric || '')] = m; });
+        const metricB = {};
+        (b.metrics || []).forEach((m) => { metricB[String(m.metric || '')] = m; });
+        const keys = [...new Set([...Object.keys(metricA), ...Object.keys(metricB)])];
+        let best = null;
+        keys.forEach((key) => {
+          const ma = metricA[key] || null;
+          const mb = metricB[key] || null;
+          const aDm = ma ? asNum(ma.deltaMismatch, 0) : 0;
+          const bDm = mb ? asNum(mb.deltaMismatch, 0) : 0;
+          const aDs = ma ? asNum(ma.deltaSnapshots, 0) : 0;
+          const bDs = mb ? asNum(mb.deltaSnapshots, 0) : 0;
+          const aOnly = ma ? !!ma.compareOnlyInB : false;
+          const bOnly = mb ? !!mb.compareOnlyInB : false;
+          const changed = !ma || !mb || aDm !== bDm || aDs !== bDs || aOnly !== bOnly;
+          const score =
+            (changed ? 1_000_000_000 : 0) +
+            (ma && mb ? 0 : 500_000_000) +
+            (bOnly || (!ma && mb) ? 250_000_000 : 0) +
+            Math.abs(bDm - aDm) * 1_000_000 +
+            Math.abs(bDs - aDs);
+          if (!best || score > best.score) {
+            best = {
+              key,
+              score,
+              changed,
+              aDm, bDm, aDs, bDs,
+              aOnly, bOnly,
+              reason: changed ? 'artifact_diff_metric_change' : 'artifact_metric_fallback'
+            };
+          }
+        });
+        if (best && best.key) return best;
+      }
+      const source = importedCompareReportB || importedCompareReport;
+      if (!source) return null;
+      let best = null;
+      (source.metrics || []).forEach((m) => {
+        const key = String(m.metric || '');
+        if (!key) return;
+        const dm = Math.abs(asNum(m.deltaMismatch, 0));
+        const ds = Math.abs(asNum(m.deltaSnapshots, 0));
+        const only = !!m.compareOnlyInB;
+        const score = (only ? 1_000_000_000 : 0) + dm * 1_000_000 + ds;
+        if (!best || score > best.score) {
+          best = { key, score, changed: false, reason: 'single_import_metric_priority', dm, ds, only };
+        }
+      });
+      return best;
+    }
+
+    function buildImportDiffPresetSuggestionFromArtifacts() {
+      const hasA = !!importedCompareReport;
+      const hasB = !!importedCompareReportB;
+      if (!hasA && !hasB) {
+        throw new Error('Load Imported A or Imported B compact compare-report JSON first');
+      }
+      const topMetric = selectTopArtifactMetricForSuggestion();
+
+      let failChanged = 0;
+      let missingChanged = 0;
+      let changedRuleCount = 0;
+      if (hasA && hasB) {
+        const rulesA = {};
+        (importedCompareReport.rules || []).forEach((r) => { rulesA[String(r.label || '')] = r; });
+        const rulesB = {};
+        (importedCompareReportB.rules || []).forEach((r) => { rulesB[String(r.label || '')] = r; });
+        const labels = [...new Set([...Object.keys(rulesA), ...Object.keys(rulesB)])];
+        labels.forEach((label) => {
+          const ra = rulesA[label] || null;
+          const rb = rulesB[label] || null;
+          const sa = ra ? String(ra.status || 'INFO') : 'MISSING';
+          const sb = rb ? String(rb.status || 'INFO') : 'MISSING';
+          const da = ra ? String(ra.detail || '') : '';
+          const db = rb ? String(rb.detail || '') : '';
+          const changed = !(sa === sb && da === db);
+          if (!changed) return;
+          changedRuleCount += 1;
+          if (sa === 'FAIL' || sb === 'FAIL') failChanged += 1;
+          if (sa === 'MISSING' || sb === 'MISSING') missingChanged += 1;
+        });
+      } else {
+        const source = importedCompareReportB || importedCompareReport;
+        (source.rules || []).forEach((r) => {
+          const st = String(r.status || 'INFO');
+          if (st === 'FAIL') failChanged += 1;
+          if (st === 'MISSING') missingChanged += 1;
+        });
+      }
+
+      const preset = {
+        rulesChangedOnly: !!(hasA && hasB),
+        metricsChangedOnly: !!(hasA && hasB),
+        ruleStatusPass: false,
+        ruleStatusFail: true,
+        ruleStatusInfo: failChanged === 0 && missingChanged === 0,
+        ruleStatusMissing: missingChanged > 0 || (!!hasA && !!hasB),
+        metricSearch: topMetric && topMetric.key ? topMetric.key : ''
+      };
+
+      if (!preset.ruleStatusFail && !preset.ruleStatusInfo && !preset.ruleStatusMissing) {
+        preset.ruleStatusInfo = true;
+      }
+
+      const focusKey = topMetric && topMetric.key ? topMetric.key : (failChanged > 0 ? 'fail-rules' : 'artifact-diff');
+      const safeKey = sanitizeImportDiffPresetSuggestionNamePart(focusKey) || 'artifact-diff';
+      const stamp = new Date().toISOString().slice(11, 19).replace(/:/g, '');
+      const name = `suggested-${safeKey}-${stamp}`;
+      const rationale = [
+        hasA && hasB ? 'source=A+B' : (hasB ? 'source=B' : 'source=A'),
+        `changedRules=${changedRuleCount}`,
+        `failChanged=${failChanged}`,
+        `missingChanged=${missingChanged}`,
+        topMetric && topMetric.key ? `topMetric=${topMetric.key}` : 'topMetric=-',
+        topMetric && topMetric.reason ? `metricReason=${topMetric.reason}` : null
+      ].filter(Boolean).join(' | ');
+
+      return { name, preset, rationale, topMetric, changedRuleCount, failChanged, missingChanged };
+    }
+
+    function suggestImportDiffPresetFromArtifacts() {
+      try {
+        const suggestion = buildImportDiffPresetSuggestionFromArtifacts();
+        q('importDiffPresetName').value = suggestion.name;
+        applyImportDiffTriagePresetState(suggestion.preset);
+        q('importDiffPresetSuggestionMeta').textContent =
+          `Suggested triage preset ready (not saved): ${suggestion.name} | ${suggestion.rationale}. Click Save Preset to store it.`;
+      } catch (err) {
+        q('importDiffPresetSuggestionMeta').textContent =
+          `Failed to generate triage preset suggestion: ${String(err.message || err)}`;
+      }
+    }
+
     function saveCurrentImportDiffPreset() {
       const name = String(q('importDiffPresetName').value || q('importDiffPresetSelect').value || '').trim();
       if (!name) {
@@ -2376,6 +2526,7 @@
       q('importDiffMetricSearch').value = '';
       renderImportedCompareReportDiff();
     });
+    q('suggestImportDiffPresetFromArtifacts').addEventListener('click', suggestImportDiffPresetFromArtifacts);
     q('saveImportDiffPreset').addEventListener('click', saveCurrentImportDiffPreset);
     q('applyImportDiffPreset').addEventListener('click', applySelectedImportDiffPreset);
     q('deleteImportDiffPreset').addEventListener('click', deleteSelectedImportDiffPreset);

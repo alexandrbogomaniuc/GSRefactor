@@ -4310,3 +4310,18 @@
   - Operators can now see exactly what will change in overwrite-guard settings before import and confirm the applied state matches the preview in `file://` mode.
 - Next step:
   - add preset suggestion generation from imported compare-report artifacts (viewer-only) or extend guard-share preview with a compact exportable pre-apply review summary.
+
+### 2026-02-23 20:03-20:05 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding artifact-based triage preset suggestion generation in the discrepancy viewer (`Suggest Triage Preset (A/B)`), which analyzes imported compact compare-report artifacts and applies a suggested triage filter/search/preset-name to the current UI without auto-saving.
+- Suggestion rationale/status now shows source, changed rule counts, fail/missing counts, top metric, and metric selection reason.
+- Updated support docs/checklist to doc 121, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/121-phase8-wave3-viewer-artifact-based-triage-preset-suggestions-20260224-023000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-200516.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (A/B artifact imports + suggestion generation verified; filters updated, preset name filled, preset store count unchanged)
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (reload shows doc 121 evidence path; embedded snapshot fingerprint updated; count remains 26/41)
+- Result:
+  - Operators can generate a focused triage preset from imported compare-report artifacts in one click, then optionally save it, reducing manual filter setup during discrepancy analysis in `file://` mode.
+- Next step:
+  - extend artifact-based suggestions to generate multiple candidate presets (for example fail-rules focus vs metric focus) or add a compact exportable pre-save suggestion summary.
