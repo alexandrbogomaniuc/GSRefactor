@@ -4154,3 +4154,17 @@
   - Operators can now import shared triage preset bundles faster via drag/drop in `file://` mode without changing GS runtime behavior.
 - Next step:
   - add preset suggestion generation from imported compare-report artifacts (viewer-only) or preset bundle schema/version compatibility badges in the preset import panel.
+
+### 2026-02-23 18:58-18:58 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding preset-bundle schema/version compatibility badges in the viewer triage preset import panel (supported/error/legacy/unknown states + type/version/source metadata).
+- Wired compatibility status updates into export/import/drop/clear/error paths, updated support docs/checklist to doc 110, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/110-phase8-wave3-triage-preset-bundle-compatibility-badges-20260223-225500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-185803.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (export -> ERROR invalid JSON -> valid import compatibility states verified)
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (reload shows doc 110 evidence path; count remains 26/41)
+- Result:
+  - Operators can quickly see whether a preset bundle is supported and which schema/version was imported, reducing cross-machine preset troubleshooting in `file://` mode.
+- Next step:
+  - add preset suggestion generation from imported compare-report artifacts (viewer-only) or import preview counts before merging preset bundles.

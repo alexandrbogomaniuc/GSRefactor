@@ -279,6 +279,7 @@
         </div>
         <textarea id="importDiffPresetJsonInput" rows="5" placeholder="Paste triage preset bundle JSON here (exported from this viewer)." style="width:100%; margin-top:8px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;"></textarea>
         <div class="footnote" id="importDiffPresetExchangeMeta">Share triage presets across machines via JSON export/import. Import merges by preset name (existing names are overwritten).</div>
+        <div class="footnote" id="importDiffPresetCompatMeta">Preset bundle compatibility: <span class="status-pill pill-info">UNKNOWN</span> Awaiting export/import.</div>
         <div class="footnote">Tip: you can also drag/drop a triage preset bundle JSON file or JSON text onto the preset JSON textarea.</div>
         <div class="footnote" id="importCompareDiffMeta">Load Imported A and Imported B compact compare-report JSON to compare artifacts.</div>
         <div id="importCompareDiffSummaryGrid" class="grid" style="margin-top:10px;"></div>
@@ -653,7 +654,50 @@
       q('importDiffPresetExchangeMeta').textContent =
         `Imported triage presets from ${sourceLabel}: merged=${merged}, overwritten=${overwritten}, total=${afterCount} (was ${beforeCount})` +
         (ok ? '' : ' | localStorage unavailable (memory only)');
+      renderImportDiffPresetCompatMeta(parsed.bundleMeta, sourceLabel, merged, overwritten);
       return { merged, overwritten, total: afterCount, storagePersisted: ok, bundleMeta: parsed.bundleMeta };
+    }
+
+    function renderImportDiffPresetCompatMeta(bundleMeta, sourceLabel, merged, overwritten) {
+      const el = q('importDiffPresetCompatMeta');
+      const meta = bundleMeta || {};
+      const type = String(meta.type || 'unknown');
+      const version = meta.version === null || meta.version === undefined ? '-' : String(meta.version);
+      let status = 'UNKNOWN';
+      let pillCls = 'pill-info';
+      let note = 'Awaiting export/import.';
+      if (type === 'phase8-wave3-import-diff-triage-preset-bundle') {
+        if (String(version) === '1') {
+          status = 'SUPPORTED';
+          pillCls = 'pill-pass';
+          note = `Accepted bundle v1 from ${sourceLabel || 'unknown source'}`;
+        } else {
+          status = 'UNSUPPORTED_VERSION';
+          pillCls = 'pill-fail';
+          note = `Bundle type recognized but version ${version} is not supported`;
+        }
+      } else if (type === 'legacy-map') {
+        status = 'LEGACY_MAP';
+        pillCls = 'pill-info';
+        note = `Imported legacy preset map from ${sourceLabel || 'unknown source'}`;
+      } else if (type === 'EXPORT_LOCAL') {
+        status = 'SUPPORTED';
+        pillCls = 'pill-pass';
+        note = `Generated local preset bundle v${version}`;
+      } else if (type === 'ERROR') {
+        status = 'ERROR';
+        pillCls = 'pill-fail';
+        note = String(meta.message || 'Import/export error');
+      }
+      const extras = [];
+      if (sourceLabel) extras.push(`source=${sourceLabel}`);
+      if (meta.generatedAtUtc) extras.push(`generated=${meta.generatedAtUtc}`);
+      if (Number.isFinite(merged)) extras.push(`merged=${merged}`);
+      if (Number.isFinite(overwritten)) extras.push(`overwritten=${overwritten}`);
+      el.innerHTML = `Preset bundle compatibility: <span class=\"status-pill ${pillCls}\">${status}</span> ` +
+        `<code>type=${type}</code> <code>version=${version}</code>` +
+        (extras.length ? ` <span class=\"muted\">(${extras.join(' | ')})</span>` : '') +
+        ` <span class=\"muted\">${note}</span>`;
     }
 
     function applyImportDiffTriagePresetState(preset) {
@@ -725,6 +769,10 @@
         const text = JSON.stringify(artifact, null, 2) + '\n';
         q('importDiffPresetJsonInput').value = text;
         q('importDiffPresetExchangeMeta').textContent = `Preset bundle generated in textarea and downloaded: presets=${artifact.presetCount}`;
+        renderImportDiffPresetCompatMeta(
+          { type: 'EXPORT_LOCAL', version: artifact.version, generatedAtUtc: artifact.generatedAtUtc },
+          'viewer-export'
+        );
         downloadTextFile(
           `phase8-wave3-import-diff-triage-presets-${new Date().toISOString().replace(/[:.]/g, '-')}.json`,
           text,
@@ -732,6 +780,7 @@
         );
       } catch (err) {
         q('importDiffPresetExchangeMeta').textContent = `Failed to export preset bundle: ${String(err.message || err)}`;
+        renderImportDiffPresetCompatMeta({ type: 'ERROR', message: String(err.message || err) }, 'viewer-export');
       }
     }
 
@@ -745,12 +794,14 @@
         mergeImportDiffPresetBundleFromText(raw, 'textarea:preset-bundle');
       } catch (err) {
         q('importDiffPresetExchangeMeta').textContent = `Failed to import preset bundle JSON: ${String(err.message || err)}`;
+        renderImportDiffPresetCompatMeta({ type: 'ERROR', message: String(err.message || err) }, 'textarea:preset-bundle');
       }
     }
 
     function clearImportDiffPresetJsonTextarea() {
       q('importDiffPresetJsonInput').value = '';
       q('importDiffPresetExchangeMeta').textContent = 'Preset bundle textarea cleared. Import merges by preset name (overwrite on conflict).';
+      q('importDiffPresetCompatMeta').innerHTML = 'Preset bundle compatibility: <span class="status-pill pill-info">UNKNOWN</span> Awaiting export/import.';
     }
 
     async function handleImportDiffPresetDrop(event) {
@@ -773,6 +824,7 @@
         mergeImportDiffPresetBundleFromText(text, 'drop:preset-bundle:text');
       } catch (err) {
         q('importDiffPresetExchangeMeta').textContent = `Failed to import dropped preset bundle: ${String(err.message || err)}`;
+        renderImportDiffPresetCompatMeta({ type: 'ERROR', message: String(err.message || err) }, 'drop:preset-bundle');
       }
     }
 
@@ -1709,6 +1761,7 @@
         mergeImportDiffPresetBundleFromText(raw, `file:${file.name}`);
       } catch (err) {
         q('importDiffPresetExchangeMeta').textContent = `Failed to import preset bundle file: ${String(err.message || err)}`;
+        renderImportDiffPresetCompatMeta({ type: 'ERROR', message: String(err.message || err) }, 'file:preset-bundle');
       } finally {
         e.target.value = '';
       }
