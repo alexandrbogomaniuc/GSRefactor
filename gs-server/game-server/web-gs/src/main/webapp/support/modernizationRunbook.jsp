@@ -59,6 +59,9 @@
             Parses <code>phase8-precision-dual-calc</code> snapshot log lines emitted by Wave 3 parity hooks into a structured JSON summary.
             Compare mode remains disabled by default; enable only in non-production validation.
         </p>
+        <p class="small-note">
+            Optional viewer page for exported JSON: <code>/support/phase8DiscrepancyViewer.html</code> (supports file upload, pasted JSON, and embedded sample in <code>file://</code> mode).
+        </p>
     </div>
 
     <div class="section">

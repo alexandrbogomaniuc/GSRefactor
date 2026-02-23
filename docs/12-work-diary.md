@@ -3973,3 +3973,15 @@
   - Wave 3 discrepancy evidence is now exportable as structured JSON from GS logs during non-prod compare-mode runs, improving non-developer visibility without changing default behavior.
 - Next step:
   - add optional support/admin presentation for exported discrepancy JSON during validation runs.
+
+### 2026-02-23 16:21-16:22 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 with a lightweight support viewer for exported discrepancy JSON (non-prod operator visibility, no runtime behavior change).
+- Added `/support/phase8DiscrepancyViewer.html` (file upload + paste + embedded sample + mismatch filter), updated support docs/runbook links, moved progress JSON evidence to doc 96, and re-synced dashboard embedded progress data.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/96-phase8-wave3-discrepancy-viewer-support-page-20260223-180000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-162110.md` (PASS=38)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+- Result:
+  - Wave 3 discrepancy exports are now viewable by non-developers in a browser (including `file://` mode) without reading raw JSON manually.
+- Next step:
+  - add optional comparison/diff view for two export runs or a guided validation checklist for operators.

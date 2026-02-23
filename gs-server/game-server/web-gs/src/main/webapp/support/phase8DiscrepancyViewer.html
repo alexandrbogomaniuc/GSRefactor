@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phase 8 Discrepancy Viewer</title>
+  <link rel="stylesheet" href="/support/css/bootstrap.min.css" />
+  <style>
+    body { background: #f4f7fb; padding: 16px; }
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    .cardx {
+      background: #fff;
+      border: 1px solid #d9e1ea;
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+    .meta { color: #567; font-size: 12px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .cell {
+      border: 1px solid #d9e1ea;
+      border-radius: 6px;
+      background: #f9fbff;
+      padding: 10px;
+    }
+    .cell .k { color: #456; font-size: 12px; }
+    .cell .v { color: #123; font-size: 20px; font-weight: 700; }
+    .toolbar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    textarea {
+      width: 100%;
+      min-height: 140px;
+      border: 1px solid #ccd8e5;
+      border-radius: 6px;
+      padding: 8px;
+      font-family: Menlo, Consolas, monospace;
+      font-size: 12px;
+      background: #fbfdff;
+    }
+    .table-wrap { overflow:auto; }
+    table { width:100%; border-collapse: collapse; }
+    th, td { border: 1px solid #e3eaf2; padding: 6px 8px; font-size: 12px; vertical-align: top; }
+    th { background: #f2f6fb; }
+    .badge-soft { display:inline-block; border:1px solid #ccd8e5; border-radius:10px; padding:2px 8px; font-size:11px; }
+    .ok { background:#e9f8ef; border-color:#9ed8b3; }
+    .warn { background:#fff6e9; border-color:#e8c98f; }
+    .bad { background:#fdecec; border-color:#e5b3b3; }
+    .muted { color:#6d7785; }
+    .hidden { display:none; }
+    .footnote { color:#6a7280; font-size: 12px; margin-top: 8px; }
+    pre {
+      background: #f7f9fc;
+      border: 1px solid #d9e1ea;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 11px;
+      max-height: 240px;
+      overflow: auto;
+    }
+    .metric-row-has-mismatch { background: #fff8f8; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="cardx">
+      <h2 style="margin-top:0;">Phase 8 Wave 3 Discrepancy JSON Viewer</h2>
+      <div class="meta" id="metaLine">Load a JSON export from <code>phase8-precision-wave3-discrepancy-export.sh</code>.</div>
+      <div class="toolbar" style="margin-top:10px;">
+        <input type="file" id="fileInput" accept="application/json,.json" />
+        <button id="loadSample" class="btn btn-default btn-sm">Load Embedded Sample</button>
+        <button id="parseTextarea" class="btn btn-primary btn-sm">Parse Pasted JSON</button>
+        <label style="font-weight:normal; margin:0;">
+          <input type="checkbox" id="mismatchOnly" /> Show only mismatch metrics
+        </label>
+      </div>
+      <div class="footnote">
+        This viewer is read-only and safe for non-production analysis. It works in <code>file://</code> mode (use file upload or embedded sample).
+      </div>
+    </div>
+
+    <div class="cardx">
+      <h4 style="margin-top:0;">JSON Input (paste optional)</h4>
+      <textarea id="jsonInput" placeholder="Paste export JSON here (or use file upload / embedded sample)"></textarea>
+      <div class="footnote">Tip: export tool output file can be opened directly here via file input.</div>
+    </div>
+
+    <div class="cardx" id="summaryCard">
+      <h4 style="margin-top:0;">Summary</h4>
+      <div class="grid" id="summaryGrid"></div>
+      <div class="footnote" id="sourceFilesLine"></div>
+    </div>
+
+    <div class="cardx">
+      <h4 style="margin-top:0;">Metrics</h4>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Snapshots</th>
+              <th>Max Check</th>
+              <th>Max Mismatch</th>
+              <th>Mismatch Observed</th>
+              <th>Last Context</th>
+              <th>Last Values</th>
+            </tr>
+          </thead>
+          <tbody id="metricsBody"></tbody>
+        </table>
+      </div>
+      <div class="footnote" id="metricsFoot"></div>
+    </div>
+
+    <div class="cardx">
+      <h4 style="margin-top:0;">Raw JSON Preview</h4>
+      <pre id="rawPreview">{}</pre>
+    </div>
+  </div>
+
+  <script id="embedded-sample" type="application/json">
+{
+  "generatedAtUtc": "2026-02-23T16:04:00Z",
+  "parser": "phase8-precision-wave3-discrepancy-export",
+  "sourceFiles": ["sample-gs.log"],
+  "totalSnapshotLines": 4,
+  "metricCount": 2,
+  "metrics": {
+    "baseBetMinorUnitsScale2": {
+      "metric": "baseBetMinorUnitsScale2",
+      "snapshots": 2,
+      "maxCheckCount": 1000,
+      "maxMismatchCount": 0,
+      "lastCheckCount": 1000,
+      "lastMismatchCount": 0,
+      "lastBankId": "6275",
+      "lastGameId": "dragonestone",
+      "lastTemplateMaxCredits": null,
+      "lastLegacy": 3000,
+      "lastGeneralized": 3000,
+      "mismatchEventsObserved": 0
+    },
+    "templateMaxBetScale2": {
+      "metric": "templateMaxBetScale2",
+      "snapshots": 2,
+      "maxCheckCount": 2,
+      "maxMismatchCount": 1,
+      "lastCheckCount": 2,
+      "lastMismatchCount": 1,
+      "lastBankId": null,
+      "lastGameId": null,
+      "lastTemplateMaxCredits": "25",
+      "lastLegacy": 2500,
+      "lastGeneralized": 2499,
+      "mismatchEventsObserved": 1
+    }
+  }
+}
+  </script>
+
+  <script>
+    let currentModel = null;
+
+    function q(id) { return document.getElementById(id); }
+
+    function readEmbeddedSample() {
+      try {
+        return JSON.parse(q('embedded-sample').textContent || '{}');
+      } catch (_) {
+        return null;
+      }
+    }
+
+    function formatValue(v) {
+      if (v === null || v === undefined || v === '') return '<span class="muted">-</span>';
+      return String(v);
+    }
+
+    function validateModel(data) {
+      if (!data || typeof data !== 'object') throw new Error('JSON root must be an object');
+      if (!data.metrics || typeof data.metrics !== 'object') throw new Error('Missing "metrics" object');
+      return data;
+    }
+
+    function renderSummary(model, sourceLabel) {
+      const grid = q('summaryGrid');
+      const cards = [
+        ['Parser', model.parser || '-'],
+        ['Generated', model.generatedAtUtc || '-'],
+        ['Snapshot Lines', model.totalSnapshotLines ?? '-'],
+        ['Metric Count', model.metricCount ?? Object.keys(model.metrics || {}).length],
+        ['Loaded From', sourceLabel],
+        ['Mismatch Metrics', countMismatchMetrics(model)]
+      ];
+      grid.innerHTML = cards.map(([k, v]) => `\n        <div class="cell">\n          <div class="k">${k}</div>\n          <div class="v">${typeof v === 'number' ? v : String(v)}</div>\n        </div>\n      `).join('');
+      q('sourceFilesLine').textContent = `sourceFiles: ${(model.sourceFiles || []).join(', ') || '-'}`;
+    }
+
+    function countMismatchMetrics(model) {
+      return Object.values(model.metrics || {}).filter((m) => Number(m.maxMismatchCount || 0) > 0 || Number(m.mismatchEventsObserved || 0) > 0).length;
+    }
+
+    function metricContextHtml(m) {
+      const parts = [];
+      if (m.lastBankId) parts.push(`bankId=${m.lastBankId}`);
+      if (m.lastGameId) parts.push(`gameId=${m.lastGameId}`);
+      if (m.lastTemplateMaxCredits !== null && m.lastTemplateMaxCredits !== undefined) parts.push(`templateMaxCredits=${m.lastTemplateMaxCredits}`);
+      return parts.length ? parts.join('<br/>') : '<span class="muted">-</span>';
+    }
+
+    function metricValuesHtml(m) {
+      const legacy = formatValue(m.lastLegacy);
+      const generalized = formatValue(m.lastGeneralized);
+      return `legacy=${legacy}<br/>generalized=${generalized}`;
+    }
+
+    function renderMetrics(model) {
+      const mismatchOnly = q('mismatchOnly').checked;
+      const body = q('metricsBody');
+      const metrics = Object.values(model.metrics || {})
+        .sort((a, b) => String(a.metric).localeCompare(String(b.metric)));
+      const visible = mismatchOnly
+        ? metrics.filter((m) => Number(m.maxMismatchCount || 0) > 0 || Number(m.mismatchEventsObserved || 0) > 0)
+        : metrics;
+
+      body.innerHTML = '';
+      visible.forEach((m) => {
+        const hasMismatch = Number(m.maxMismatchCount || 0) > 0 || Number(m.mismatchEventsObserved || 0) > 0;
+        const tr = document.createElement('tr');
+        if (hasMismatch) tr.className = 'metric-row-has-mismatch';
+        tr.innerHTML = `
+          <td><code>${m.metric || '-'}</code></td>
+          <td>${formatValue(m.snapshots)}</td>
+          <td>${formatValue(m.maxCheckCount)}</td>
+          <td>${formatValue(m.maxMismatchCount)}</td>
+          <td><span class="badge-soft ${hasMismatch ? 'bad' : 'ok'}">${hasMismatch ? 'YES' : 'NO'}</span></td>
+          <td>${metricContextHtml(m)}</td>
+          <td>${metricValuesHtml(m)}</td>
+        `;
+        body.appendChild(tr);
+      });
+
+      q('metricsFoot').textContent = `visible metrics: ${visible.length}/${metrics.length}` + (mismatchOnly ? ' (mismatch filter on)' : '');
+    }
+
+    function renderRaw(model) {
+      q('rawPreview').textContent = JSON.stringify(model, null, 2);
+    }
+
+    function render(model, sourceLabel) {
+      currentModel = model;
+      q('metaLine').innerHTML = `Loaded export JSON successfully | source: <code>${sourceLabel}</code> | file mode: <code>${window.location.protocol === 'file:' ? 'yes' : 'no'}</code>`;
+      renderSummary(model, sourceLabel);
+      renderMetrics(model);
+      renderRaw(model);
+    }
+
+    function parseAndRender(text, sourceLabel) {
+      try {
+        const data = validateModel(JSON.parse(text));
+        q('jsonInput').value = text;
+        render(data, sourceLabel);
+      } catch (err) {
+        q('metaLine').innerHTML = `<span style="color:#b42318;">Failed to parse JSON: ${String(err.message || err)}</span>`;
+      }
+    }
+
+    function loadSample() {
+      const sample = readEmbeddedSample();
+      if (!sample) {
+        q('metaLine').innerHTML = '<span style="color:#b42318;">Embedded sample is missing or invalid.</span>';
+        return;
+      }
+      parseAndRender(JSON.stringify(sample, null, 2), 'embedded-sample');
+    }
+
+    q('loadSample').addEventListener('click', loadSample);
+    q('parseTextarea').addEventListener('click', () => parseAndRender(q('jsonInput').value, 'textarea'));
+    q('mismatchOnly').addEventListener('change', () => { if (currentModel) renderMetrics(currentModel); });
+
+    q('fileInput').addEventListener('change', async (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const text = await file.text();
+      parseAndRender(text, `file:${file.name}`);
+    });
+
+    loadSample();
+  </script>
+</body>
+</html>
