@@ -4266,3 +4266,17 @@
   - Operators can import overwrite-guard safety settings by drag/drop (file or JSON text) without manual paste steps, improving cross-machine review workflow ergonomics in `file://` mode.
 - Next step:
   - add preset suggestion generation from imported compare-report artifacts (viewer-only) or extend guard-settings JSON share flow with schema/version compatibility status metadata.
+
+### 2026-02-23 19:45-19:48 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding guard-settings JSON schema/type/version compatibility status metadata in the discrepancy viewer guard-share panel (export/import/drop/error/clear states) and fixed a button-import source-label bug (`[object PointerEvent]` -> `textarea:guard-settings`).
+- Updated support docs/checklist to doc 118, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/118-phase8-wave3-viewer-guard-settings-compatibility-status-20260224-014500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-194719.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (guard compat row verified across export/import/drop/error/clear; button source label normalized)
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (reload shows doc 118 evidence path; embedded snapshot fingerprint updated; count remains 26/41)
+- Result:
+  - Operators now see explicit guard-settings artifact compatibility status (type/version/source/error) during cross-machine safety-profile sharing, reducing ambiguity and import mistakes in `file://` mode.
+- Next step:
+  - add preset suggestion generation from imported compare-report artifacts (viewer-only) or extend guard-share panel with import preview metadata before apply.
