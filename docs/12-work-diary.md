@@ -3925,3 +3925,15 @@
   - Wave 2 assumptions are now isolated behind scale-ready helper paths with legacy scale=2 delegates, and bucket evidence shows Wave 2 cleanup complete.
 - Next step:
   - Phase 8 Wave 2 batch 3: dual-calculation comparison scaffolding (legacy vs scale-ready candidate path) for observability/parity prep before any behavior switch.
+
+### 2026-02-23 15:46-15:47 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 with Wave 3 dual-calculation comparison scaffolding kickoff (offline only).
+- Added deterministic comparison vector smoke (legacy scale=2 parity vs generalized scale path), integrated it into the standard local verification suite, updated progress JSON evidence to doc 92, and re-synced dashboard embedded progress data.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/92-phase8-wave3-dualcalc-comparison-vectors-kickoff-20260223-170000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-154648.md` (PASS=34)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+- Result:
+  - Phase 8 now has an explicit dual-calculation comparison guard before any runtime precision behavior switch.
+- Next step:
+  - implement disabled-by-default dual-calculation hooks in Wave 3 and collect discrepancy evidence under the same test gates.
