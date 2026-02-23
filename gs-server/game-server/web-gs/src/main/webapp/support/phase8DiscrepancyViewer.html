@@ -40,6 +40,7 @@
     .delta-zero { color: #6d7785; }
     .validation-list { margin: 8px 0 0 0; padding-left: 18px; }
     .validation-list li { margin: 4px 0; }
+    .drop-target-active { outline: 2px dashed #2e90fa; outline-offset: 2px; background: #eef6ff; }
   </style>
 </head>
 <body>
@@ -170,6 +171,7 @@
         <button id="clearCompareReportImport" class="btn btn-default btn-sm">Clear Import</button>
       </div>
       <div class="footnote" id="importCompareReportMeta">Paste or upload a compact compare-report JSON to inspect it here.</div>
+      <div class="footnote">Tip: you can also drag/drop a compact compare-report JSON file or JSON text onto either import textarea.</div>
       <div class="pane-grid" style="margin-top:10px;">
         <div>
           <div class="meta">Compare Report JSON Input (Imported A)</div>
@@ -228,6 +230,14 @@
 
       <div class="cardx" id="importCompareDiffCard" style="margin-top:12px;">
         <h4 style="margin-top:0;">Imported Artifact Diff (A vs B)</h4>
+        <div class="toolbar">
+          <label style="font-weight:normal; margin:0;">
+            <input type="checkbox" id="importDiffRulesChangedOnly" checked /> Show changed rules only
+          </label>
+          <label style="font-weight:normal; margin:0;">
+            <input type="checkbox" id="importDiffMetricsChangedOnly" checked /> Show changed metrics only
+          </label>
+        </div>
         <div class="footnote" id="importCompareDiffMeta">Load Imported A and Imported B compact compare-report JSON to compare artifacts.</div>
         <div id="importCompareDiffSummaryGrid" class="grid" style="margin-top:10px;"></div>
         <div class="pane-grid" style="margin-top:10px;">
@@ -899,7 +909,9 @@
       const rulesB = {};
       (b.rules || []).forEach((r) => { rulesB[String(r.label || '')] = r; });
       const ruleLabels = [...new Set([...Object.keys(rulesA), ...Object.keys(rulesB)])].sort((x, y) => x.localeCompare(y));
+      const changedRulesOnly = q('importDiffRulesChangedOnly').checked;
       let changedRuleCount = 0;
+      let visibleRuleCount = 0;
       ruleLabels.forEach((label) => {
         const ra = rulesA[label] || null;
         const rb = rulesB[label] || null;
@@ -907,17 +919,22 @@
         const sb = rb ? String(rb.status || 'INFO') : 'MISSING';
         const da = ra ? String(ra.detail || '') : '';
         const db = rb ? String(rb.detail || '') : '';
-        if (sa === sb && da === db) return;
-        changedRuleCount += 1;
+        const changed = !(sa === sb && da === db);
+        if (changed) changedRuleCount += 1;
+        if (changedRulesOnly && !changed) return;
+        visibleRuleCount += 1;
         const li = document.createElement('li');
         li.innerHTML = `<span class="status-pill ${sa === 'PASS' ? 'pill-pass' : (sa === 'FAIL' ? 'pill-fail' : 'pill-info')}">${sa}</span> A ` +
           `<span class="status-pill ${sb === 'PASS' ? 'pill-pass' : (sb === 'FAIL' ? 'pill-fail' : 'pill-info')}">${sb}</span> B ` +
           `${label || '(no label)'} <span class="muted">(A:${da || '-'} | B:${db || '-'})</span>`;
+        if (!changed) li.classList.add('muted');
         rulesEl.appendChild(li);
       });
-      if (changedRuleCount === 0) {
+      if (visibleRuleCount === 0) {
         const li = document.createElement('li');
-        li.innerHTML = '<span class="status-pill pill-pass">PASS</span> No imported rule status/detail changes.';
+        li.innerHTML = changedRuleCount === 0
+          ? '<span class="status-pill pill-pass">PASS</span> No imported rule status/detail changes.'
+          : '<span class="status-pill pill-info">INFO</span> No rule rows match current filter.';
         rulesEl.appendChild(li);
       }
 
@@ -926,7 +943,9 @@
       const metricB = {};
       (b.metrics || []).forEach((m) => { metricB[String(m.metric || '')] = m; });
       const metricKeys = [...new Set([...Object.keys(metricA), ...Object.keys(metricB)])].sort((x, y) => x.localeCompare(y));
+      const changedMetricsOnly = q('importDiffMetricsChangedOnly').checked;
       let changedMetricRows = 0;
+      let visibleMetricRows = 0;
       metricKeys.forEach((key) => {
         const ma = metricA[key] || null;
         const mb = metricB[key] || null;
@@ -938,6 +957,8 @@
         const bOnly = mb ? !!mb.compareOnlyInB : false;
         const changed = !ma || !mb || aDm !== bDm || aDs !== bDs || aOnly !== bOnly;
         if (changed) changedMetricRows += 1;
+        if (changedMetricsOnly && !changed) return;
+        visibleMetricRows += 1;
         const tr = document.createElement('tr');
         if (changed) tr.classList.add('metric-row-has-mismatch');
         if ((!ma && mb) || bOnly) tr.classList.add('metric-row-compare-only');
@@ -955,8 +976,8 @@
         metricsBody.appendChild(tr);
       });
 
-      meta.textContent = `Imported artifact diff ready | A=${importedCompareSource} | B=${importedCompareSourceB} | changedRules=${changedRuleCount} | changedMetrics=${changedMetricRows}`;
-      metricsFoot.textContent = `compared imported metrics: ${metricKeys.length} | changed rows: ${changedMetricRows}`;
+      meta.textContent = `Imported artifact diff ready | A=${importedCompareSource} | B=${importedCompareSourceB} | changedRules=${changedRuleCount} | visibleRules=${visibleRuleCount} | changedMetrics=${changedMetricRows}`;
+      metricsFoot.textContent = `compared imported metrics: ${metricKeys.length} | visible rows: ${visibleMetricRows} | changed rows: ${changedMetricRows}`;
     }
 
     function renderImportedCompareReport() {
@@ -1188,6 +1209,38 @@
       renderAll();
     }
 
+    async function handleCompareReportDrop(event, targetKey) {
+      event.preventDefault();
+      const area = targetKey === 'B' ? q('compareReportJsonInputB') : q('compareReportJsonInput');
+      area.classList.remove('drop-target-active');
+      try {
+        const dt = event.dataTransfer;
+        if (!dt) return;
+        if (dt.files && dt.files.length > 0) {
+          const file = dt.files[0];
+          const text = await file.text();
+          parseCompareReportImportText(text, `drop:${targetKey}:${file.name}`, targetKey);
+          return;
+        }
+        const text = (dt.getData('application/json') || dt.getData('text/plain') || '').trim();
+        if (!text) return;
+        parseCompareReportImportText(text, `drop:${targetKey}:text`, targetKey);
+      } catch (err) {
+        const metaId = targetKey === 'B' ? 'importCompareReportMetaB' : 'importCompareReportMeta';
+        q(metaId).textContent = `Failed to import dropped compare report ${targetKey}: ${String(err.message || err)}`;
+      }
+    }
+
+    function wireCompareReportDropArea(textareaId, targetKey) {
+      const el = q(textareaId);
+      ['dragenter','dragover'].forEach((evt) => el.addEventListener(evt, (e) => {
+        e.preventDefault();
+        el.classList.add('drop-target-active');
+      }));
+      ['dragleave','dragend'].forEach((evt) => el.addEventListener(evt, () => el.classList.remove('drop-target-active')));
+      el.addEventListener('drop', (e) => { handleCompareReportDrop(e, targetKey); });
+    }
+
     function parseCompareReportImportTextarea() {
       try {
         const text = q('compareReportJsonInput').value.trim();
@@ -1261,6 +1314,8 @@
     q('parseTextareas').addEventListener('click', parseTextareas);
     q('compareEnabled').addEventListener('change', renderAll);
     q('mismatchOnly').addEventListener('change', renderAll);
+    q('importDiffRulesChangedOnly').addEventListener('change', renderImportedCompareReportDiff);
+    q('importDiffMetricsChangedOnly').addEventListener('change', renderImportedCompareReportDiff);
     ['thresholdMismatchA','thresholdMismatchB','thresholdMismatchDelta','thresholdSnapshotDelta','thresholdAllowNewMetrics']
       .forEach((id) => q(id).addEventListener('change', () => { markThresholdProfileCustom(); renderAll(); }));
     q('thresholdProfilePreset').addEventListener('change', updateThresholdProfileMeta);
@@ -1318,6 +1373,8 @@
       try { parseCompareReportImportText(await file.text(), `fileCompareB:${file.name}`, 'B'); }
       catch (err) { q('importCompareReportMetaB').textContent = `Failed to parse compare report file B: ${String(err.message || err)}`; }
     });
+    wireCompareReportDropArea('compareReportJsonInput', 'A');
+    wireCompareReportDropArea('compareReportJsonInputB', 'B');
 
     q('compareSummaryCard').classList.add('hidden');
     q('compareExportCard').classList.add('hidden');

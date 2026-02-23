@@ -4087,3 +4087,16 @@
   - Operators can now compare two compact compare-report artifacts directly in the viewer, which closes the UI/CLI artifact review loop without rerunning raw discrepancy exports.
 - Next step:
   - add drag/drop import UX and/or changed-only filter toggles for imported artifact diff mode.
+
+### 2026-02-23 17:13-17:14 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by refining imported compact compare-report artifact review UX in the discrepancy viewer (changed-only diff filters + drag/drop import onto Imported A/B textareas).
+- Added changed-only filter toggles for imported diff rules/metrics and drag/drop file/text import handlers with drop-target highlight, updated support docs/checklist to doc 105, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/105-phase8-wave3-imported-report-diff-filters-and-dragdrop-20260223-203500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-171407.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (imported artifact diff filters + synthetic drop-path import verified)
+- Result:
+  - Operators can triage imported artifact diffs faster (changed-only toggles) and import compact compare reports more easily via drag/drop, without changing GS runtime behavior.
+- Next step:
+  - add imported artifact diff filters by rule status class and metric-name search for faster triage of large compare reports.
