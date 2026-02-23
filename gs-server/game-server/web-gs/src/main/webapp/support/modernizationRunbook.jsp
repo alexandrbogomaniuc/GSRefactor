@@ -234,6 +234,8 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-minbet-audit-scan.sh
 # Optional deterministic vector smoke (0.001 / line-total exactness):
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-regression-vector-smoke.sh
+# Bucketed remediation planning report (safe wave order from audit hotspots):
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-remediation-buckets.sh
 # Then sync dashboard embedded data if checklist/evidence changed:
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/sync-modernization-dashboard-embedded-data.sh
 </code></pre>
@@ -245,6 +247,9 @@
         </p>
         <p class="small-note">
             Vector smoke is a non-runtime deterministic guard for exact thousandths conversion and line-total calculations before touching GS money arithmetic.
+        </p>
+        <p class="small-note">
+            Bucket report converts raw scan output into a safe-first remediation wave plan (reporting/statistics -> settings -> config templates -> core financial paths).
         </p>
     </div>
 

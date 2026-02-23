@@ -3710,3 +3710,48 @@
   - Phase 8 now has executable deterministic precision vectors guarding 0.001 and line-total math before code-level money refactors.
 - Next step:
   - define remediation wave 1 scope from audit hotspots and add bucket-specific regression vectors before modifying GS money arithmetic.
+
+### 2026-02-23 14:52-14:55 UTC
+- Added Phase 8 bucketed remediation wave planning tooling and wired it into the shared local verification suite.
+- Implementation updates:
+  - New script: `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-remediation-buckets.sh`
+  - Updated suite: `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh`
+    - added Phase 8 bucket planner help + executable smoke checks
+  - Updated support docs/runbook and checklist progress evidence:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (embedded sync)
+  - New evidence docs:
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/85-phase8-precision-remediation-wave-plan-buckets-20260223-151500.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision/phase8-precision-remediation-buckets-20260223-145326.md`
+- Reliability fixes during implementation:
+  - bucket script now fails on `rg` errors instead of masking them as empty results
+  - disabled shell pathname expansion inside bucket scan helper so `rg -g '*.java'` / `-g '*.xml'` filters are preserved
+- Evidence:
+  - `phase8-precision-remediation-buckets.sh` syntax + help + run passed
+  - dashboard embedded sync passed (`26/41`, updated checklist evidence path)
+  - `phase5-6-local-verification-suite.sh` passed:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-145444.md`
+    - summary: PASS=26, FAIL=0, SKIP=0
+- Result:
+  - Phase 8 now has a test-backed remediation wave plan with bucketed hotspots and checklist/portal evidence updated.
+- Next step:
+  - improve Wave 1 bucketing for reporting/statistics cent conversions and add a Wave 1-specific deterministic vector smoke before any code edits.
+
+### 2026-02-23 14:55-14:57 UTC
+- Fixed verification-suite Phase 8 bucket smoke temp-dir handling after detecting repo pollution from generated reports.
+- Fixes:
+  - `phase5-6-local-verification-suite.sh` now runs Phase 8 bucket smoke with `--out-dir` in a temporary directory (no `docs/` pollution on suite runs)
+  - corrected nested `bash -lc` quoting for `TMPP` temp-dir variable
+- Incident recovery:
+  - restored accidentally deleted tracked local-verification reports from `HEAD` after an over-broad cleanup command
+- Evidence:
+  - `bash -n /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh` ✅
+  - full suite run to temp output dir succeeded:
+    `report=/var/folders/7b/h207_tk50f5d2xyw6wxg0_mw0000gn/T/tmp.WdWUDGMjLh/phase5-6-local-verification-20260223-145645.md`
+  - repo bucket-report count remained stable (`2`) after temp suite run (no new docs pollution)
+- Result:
+  - shared verification suite is safe to run repeatedly without creating untracked Phase 8 bucket reports.
+- Next step:
+  - commit Phase 8 wave-plan + checklist/dashboard updates + suite reliability fix, then continue Wave 1 matcher refinement.

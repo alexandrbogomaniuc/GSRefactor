@@ -1,0 +1,339 @@
+# Phase 5/6 Local Verification Suite (20260223-145326 UTC)
+
+- scope: offline/local validation for recently implemented refactor services and tooling
+- pass: 26
+- fail: 0
+- skip: 0
+
+## Summary
+- [PASS] CLI help: Phase 4 protocol security logic smoke
+- [PASS] CLI help: Phase 4 protocol JSON security runtime canary
+- [PASS] CLI help: Phase 8 precision/min-bet audit scanner
+- [PASS] CLI help: Phase 8 precision regression vector smoke
+- [PASS] CLI help: Phase 8 precision remediation buckets
+- [PASS] Executable logic smoke: Phase 4 protocol hash/replay security
+- [PASS] Executable logic smoke: Phase 8 precision regression vectors
+- [PASS] Executable logic smoke: Phase 8 precision remediation buckets
+- [PASS] Bash syntax: Phase 5 bonus/FRB scripts
+- [PASS] Bash syntax: Phase 5 history scripts
+- [PASS] Bash syntax: Phase 5 wallet scripts
+- [PASS] Bash syntax: Phase 5 gameplay scripts
+- [PASS] Bash syntax: Phase 6 multiplayer scripts
+- [PASS] CLI help: Phase 5 bonus/FRB evidence-pack
+- [PASS] CLI help: Phase 5 history evidence-pack
+- [PASS] CLI help: Phase 5 wallet evidence-pack
+- [PASS] CLI help: Phase 5 gameplay evidence-pack
+- [PASS] CLI help: Phase 6 multiplayer routing-policy probe
+- [PASS] CLI help: Phase 6 multiplayer evidence-pack
+- [PASS] Executable logic smoke: Phase 5/6 stores and multiplayer policy
+- [PASS] Node syntax: bonus-frb-service
+- [PASS] Node syntax: history-service
+- [PASS] Node syntax: multiplayer-service
+- [PASS] JSON parse: modernization checklist
+- [PASS] Git whitespace check
+- [PASS] Compose config services (refactor stack)
+
+## Outputs
+### CLI help: Phase 4 protocol security logic smoke
+- status: PASS
+```text
+Usage: phase4-protocol-security-logic-smoke.sh [options]
+
+Options:
+  --work-dir DIR   Optional temp work dir (default: auto mktemp)
+  -h, --help       Show this help
+
+```
+
+### CLI help: Phase 4 protocol JSON security runtime canary
+- status: PASS
+```text
+Usage: phase4-protocol-json-security-canary-probe.sh [options]
+
+Options:
+  --bank-id ID              Default: 6275
+  --base-url URL            Default: http://127.0.0.1:18078
+  --hmac-secret VALUE       Optional non-prod test secret for local/runtime validation
+  --require-secret BOOL     true|false (default: false)
+  --enforcement-mode MODE   SHADOW|ENFORCE (default: ENFORCE)
+  --timestamp UNIX_SEC      Optional fixed timestamp for probe requests (default: now)
+  -h, --help                Show this help
+
+```
+
+### CLI help: Phase 8 precision/min-bet audit scanner
+- status: PASS
+```text
+Usage: phase8-precision-minbet-audit-scan.sh [options]
+
+Options:
+  --gs-root DIR   GS root to scan (default: /Users/alexb/Documents/Dev/Dev_new/gs-server)
+  --out-dir DIR   Output dir (default: /Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision)
+  -h, --help      Show help
+
+```
+
+### CLI help: Phase 8 precision regression vector smoke
+- status: PASS
+```text
+Usage: phase8-precision-regression-vector-smoke.sh [options]
+
+Options:
+  --scale N       Decimal scale for test vectors (default: 3)
+  -h, --help      Show help
+
+```
+
+### CLI help: Phase 8 precision remediation buckets
+- status: PASS
+```text
+Usage: phase8-precision-remediation-buckets.sh [options]
+
+Options:
+  --root DIR      Project root (default: /Users/alexb/Documents/Dev/Dev_new)
+  --gs-root DIR   GS root (default: /Users/alexb/Documents/Dev/Dev_new/gs-server)
+  --out-dir DIR   Output dir (default: /Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision)
+  -h, --help      Show help
+
+```
+
+### Executable logic smoke: Phase 4 protocol hash/replay security
+- status: PASS
+```text
+PASS protocol hash smoke (POST rawBody HMAC)
+PASS protocol hash smoke (GET hash rule)
+PASS protocol hash smoke (exempt endpoint)
+PASS protocol hash smoke (ENFORCE missing hash blocked)
+PASS protocol replay smoke (nonce reuse blocked)
+PASS: phase4 protocol security logic smoke suite
+
+```
+
+### Executable logic smoke: Phase 8 precision regression vectors
+- status: PASS
+```text
+# Phase 8 Precision Regression Vector Smoke (scale=3)
+PASS parse 0.001 -> 1 unit
+PASS parse 0.01 -> 10 units
+PASS parse 0.3 -> 300 units
+PASS format 300 units -> 0.300
+PASS 30 lines * 0.001 = 0.030
+PASS 30 lines * 0.01 = 0.300
+PASS 25 lines * 0.004 = 0.100
+PASS sum preserves exact thousandths
+PASS reject > scale precision (0.0009)
+PASS reject malformed decimal
+summary pass=10 fail=0
+
+```
+
+### Executable logic smoke: Phase 8 precision remediation buckets
+- status: PASS
+```text
+phase8_bucket_report=/Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision/phase8-precision-remediation-buckets-20260223-145326.md
+
+```
+
+### Bash syntax: Phase 5 bonus/FRB scripts
+- status: PASS
+```text
+
+```
+
+### Bash syntax: Phase 5 history scripts
+- status: PASS
+```text
+
+```
+
+### Bash syntax: Phase 5 wallet scripts
+- status: PASS
+```text
+
+```
+
+### Bash syntax: Phase 5 gameplay scripts
+- status: PASS
+```text
+
+```
+
+### Bash syntax: Phase 6 multiplayer scripts
+- status: PASS
+```text
+
+```
+
+### CLI help: Phase 5 bonus/FRB evidence-pack
+- status: PASS
+```text
+Usage: phase5-bonus-frb-runtime-evidence-pack.sh [options]
+
+Options:
+  --bank-id ID               Default: 6275
+  --transport MODE           host|docker (default: host)
+  --bonus-base-url URL       Default: http://127.0.0.1:18076
+  --readiness-bonus-host H   Default: 127.0.0.1
+  --readiness-bonus-port P   Default: 18076
+  --readiness-gs-host H      Default: 127.0.0.1
+  --readiness-gs-port P      Default: 18081
+  --check-docker BOOL        true|false (default: true)
+  --out-dir DIR              Default: /Users/alexb/Documents/Dev/Dev_new/docs/phase5/bonus-frb
+  -h, --help                 Show this help
+
+```
+
+### CLI help: Phase 5 history evidence-pack
+- status: PASS
+```text
+Usage: phase5-history-runtime-evidence-pack.sh [options]
+
+Options:
+  --bank-id ID               Default: 6275
+  --transport MODE           host|docker (default: host)
+  --history-base-url URL     Default: http://127.0.0.1:18077
+  --readiness-history-host H Default: 127.0.0.1
+  --readiness-history-port P Default: 18077
+  --readiness-gs-host H      Default: 127.0.0.1
+  --readiness-gs-port P      Default: 18081
+  --check-docker BOOL        true|false (default: true)
+  --out-dir DIR              Default: /Users/alexb/Documents/Dev/Dev_new/docs/phase5/history
+  -h, --help                 Show this help
+
+```
+
+### CLI help: Phase 5 wallet evidence-pack
+- status: PASS
+```text
+Usage: phase5-wallet-runtime-evidence-pack.sh [options]
+
+Options:
+  --bank-id ID                Default: 6275
+  --transport MODE            host|docker (default: host)
+  --gs-base-url URL           Default: http://127.0.0.1:18081
+  --wallet-base-url URL       Default: http://127.0.0.1:18075
+  --readiness-wallet-host H   Default: 127.0.0.1
+  --readiness-wallet-port P   Default: 18075
+  --readiness-gs-host H       Default: 127.0.0.1
+  --readiness-gs-port P       Default: 18081
+  --check-docker BOOL         true|false (default: true)
+  --out-dir DIR               Default: /Users/alexb/Documents/Dev/Dev_new/docs/phase5/wallet
+  -h, --help                  Show this help
+
+```
+
+### CLI help: Phase 5 gameplay evidence-pack
+- status: PASS
+```text
+Usage: phase5-gameplay-runtime-evidence-pack.sh [options]
+
+Options:
+  --bank-id ID                Default: 6275
+  --game-id ID                Default: 838
+  --token TOKEN               Default: test_user_6275
+  --mode MODE                 Default: real
+  --lang LANG                 Default: en
+  --transport MODE            host|docker (default: host)
+  --gs-base-url URL           Default: http://127.0.0.1:18081
+  --gameplay-base-url URL     Default: http://127.0.0.1:18074
+  --require-redis-hit BOOL    true|false (default: false)
+  --readiness-gameplay-host H Default: 127.0.0.1
+  --readiness-gameplay-port P Default: 18074
+  --readiness-gs-host H       Default: 127.0.0.1
+  --readiness-gs-port P       Default: 18081
+  --readiness-redis-host H    Default: 127.0.0.1
+  --readiness-redis-port P    Default: 16379
+  --check-docker BOOL         true|false (default: true)
+  --out-dir DIR               Default: /Users/alexb/Documents/Dev/Dev_new/docs/phase5/gameplay
+  -h, --help                  Show this help
+
+```
+
+### CLI help: Phase 6 multiplayer routing-policy probe
+- status: PASS
+```text
+Usage: phase6-multiplayer-routing-policy-probe.sh [options]
+
+Options:
+  --bank-id ID                    Default: 6275
+  --game-id ID                    Default: 838
+  --session-id ID                 Optional (auto-generated if empty)
+  --transport MODE                host|docker (default: host)
+  --multiplayer-base-url URL      Default: http://127.0.0.1:18079
+  --multiplayer-container NAME    Default: refactor-multiplayer-service-1
+  --expect-bank-mp-enabled BOOL   true|false (default: false)
+  --expect-non-mp-reason VALUE    Default: non_multiplayer_game
+  --expect-mp-reason VALUE        Default: bank_multiplayer_disabled
+  -h, --help                      Show this help
+
+```
+
+### CLI help: Phase 6 multiplayer evidence-pack
+- status: PASS
+```text
+Usage: phase6-multiplayer-runtime-evidence-pack.sh [options]
+
+Options:
+  --bank-id ID                   Default: 6275
+  --game-id ID                   Default: 838
+  --transport MODE               host|docker (default: host)
+  --multiplayer-base-url URL     Default: http://127.0.0.1:18079
+  --run-sync-canary BOOL         true|false (default: false)
+  --readiness-multiplayer-host H Default: 127.0.0.1
+  --readiness-multiplayer-port P Default: 18079
+  --readiness-gs-host H          Default: 127.0.0.1
+  --readiness-gs-port P          Default: 18081
+  --check-docker BOOL            true|false (default: true)
+  --out-dir DIR                  Default: /Users/alexb/Documents/Dev/Dev_new/docs/phase6/multiplayer
+  -h, --help                     Show this help
+
+```
+
+### Executable logic smoke: Phase 5/6 stores and multiplayer policy
+- status: PASS
+```text
+PASS bonus-frb store smoke
+PASS history store smoke
+PASS multiplayer store smoke
+PASS multiplayer policy smoke
+PASS: phase5/6 local logic smoke suite
+
+```
+
+### Node syntax: bonus-frb-service
+- status: PASS
+```text
+
+```
+
+### Node syntax: history-service
+- status: PASS
+```text
+
+```
+
+### Node syntax: multiplayer-service
+- status: PASS
+```text
+
+```
+
+### JSON parse: modernization checklist
+- status: PASS
+```text
+OK
+
+```
+
+### Git whitespace check
+- status: PASS
+```text
+
+```
+
+### Compose config services (refactor stack)
+- status: PASS
+```text
+time="2026-02-23T14:53:27Z" level=warning msg="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+c1 zookeeper kafka mp gs session-service wallet-adapter protocol-adapter bonus-frb-service static config-service redis gameplay-orchestrator history-service multiplayer-service
+```
