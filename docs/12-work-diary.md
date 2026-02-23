@@ -3556,3 +3556,26 @@
   - Phase 5 wallet/gameplay tooling now uses centralized host defaults and the offline verification suite covers more of Phase 5, reducing regression risk and operator config drift.
 - Next step:
   - commit this wave 3 batch and continue with Phase 4/Phase 7 script default migration waves.
+
+### 2026-02-23 13:30-13:35 UTC
+- Fixed dashboard file-mode progress staleness (`modernizationProgress.html` opened via `file://`).
+- Root cause:
+  - file-mode loader correctly uses embedded JSON snapshot (to avoid local-file `fetch` restrictions), but embedded checklist/outbox content had drifted from source JSON files.
+- Implementation updates:
+  - Added reusable sync utility:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/sync-modernization-dashboard-embedded-data.sh`
+  - Synced embedded data in:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html`
+  - Added file-mode footer note pointing to the sync command.
+  - Added evidence doc:
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/79-dashboard-file-mode-embedded-sync-fix-20260223-133500.md`
+- Evidence:
+  - before sync (embedded vs JSON): `20/35` vs `26/41`
+  - after sync: embedded checklist/outbox JSON exactly match source JSON
+  - browser file-mode snapshot shows:
+    - `26/41 completed (63%)`
+    - source `embedded-checklist`
+- Result:
+  - Dashboard now shows current checklist progress when opened directly from Finder/path (`file://`), not a stale embedded snapshot.
+- Next step:
+  - commit dashboard sync fix, then continue Phase 4/Phase 7 host-config default migration waves.

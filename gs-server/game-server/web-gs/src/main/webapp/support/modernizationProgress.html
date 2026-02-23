@@ -97,6 +97,7 @@
       </div>
       <div class="footer-note">
         Source status comes from checklist JSON. Outbox health card is from outbox-health JSON. Checkbox toggles are local to your browser/session.
+        When opened via <code>file://</code>, this page uses the embedded snapshot inside this HTML (run <code>gs-server/deploy/scripts/sync-modernization-dashboard-embedded-data.sh</code> after checklist updates).
       </div>
     </div>
 
@@ -113,71 +114,282 @@
       "id": "legacy-parity",
       "title": "Legacy Functionality Parity",
       "items": [
-        {"id": "lp-start-launch", "label": "Launch flow parity (start -> template -> game handoff)", "status": "done", "evidence": "docs/11-game-launch-forensics.md"},
-        {"id": "lp-wallet-contract", "label": "Wallet auth/balance/bet/refund contract parity", "status": "done", "evidence": "docs/23-phase-0-baseline-and-parity-capture.md"},
-        {"id": "lp-history-flow", "label": "History flow parity (launch, settle, history, reconnect)", "status": "done", "evidence": "docs/phase0/parity-execution/phase0-reconnect-facade-fallback-20260220-141948.md"},
-        {"id": "lp-frb-flow", "label": "FRB/bonus parity suite stabilized", "status": "in_progress", "evidence": "docs/phase0/parity-execution/"},
-        {"id": "lp-protocol-casino", "label": "Casino-side protocol compatibility maintained", "status": "done", "evidence": "docs/23-phase-0-baseline-and-parity-capture.md"},
-        {"id": "lp-mp-compatible", "label": "Multiplayer legacy compatibility maintained", "status": "in_progress", "evidence": "docs/11-game-launch-forensics.md"}
+        {
+          "id": "lp-start-launch",
+          "label": "Launch flow parity (start -> template -> game handoff)",
+          "status": "done",
+          "evidence": "docs/11-game-launch-forensics.md"
+        },
+        {
+          "id": "lp-wallet-contract",
+          "label": "Wallet auth/balance/bet/refund contract parity",
+          "status": "done",
+          "evidence": "docs/23-phase-0-baseline-and-parity-capture.md"
+        },
+        {
+          "id": "lp-history-flow",
+          "label": "History flow parity (launch, settle, history, reconnect)",
+          "status": "done",
+          "evidence": "docs/phase0/parity-execution/phase0-reconnect-facade-fallback-20260220-141948.md"
+        },
+        {
+          "id": "lp-frb-flow",
+          "label": "FRB/bonus parity suite stabilized",
+          "status": "in_progress",
+          "evidence": "docs/phase0/parity-execution/"
+        },
+        {
+          "id": "lp-protocol-casino",
+          "label": "Casino-side protocol compatibility maintained",
+          "status": "done",
+          "evidence": "docs/23-phase-0-baseline-and-parity-capture.md"
+        },
+        {
+          "id": "lp-mp-compatible",
+          "label": "Multiplayer legacy compatibility maintained",
+          "status": "in_progress",
+          "evidence": "docs/11-game-launch-forensics.md"
+        }
       ]
     },
     {
       "id": "architecture",
       "title": "Target Architecture Milestones",
       "items": [
-        {"id": "ar-strangler", "label": "Phased strangler migration (no big-bang rewrite)", "status": "done", "evidence": "docs/18-architecture-recommendations-modernization-plan.md"},
-        {"id": "ar-facade-entry", "label": "Compatibility facade retained at entry points", "status": "done", "evidence": "docs/phase5-session-canary-runtime-activation-20260220-143713.md"},
-        {"id": "ar-kafka-backbone", "label": "Kafka backbone active for new services", "status": "done", "evidence": "docs/phase5-session-outbox-relay-foundation-20260220-145547.md"},
-        {"id": "ar-outbox-pattern", "label": "Outbox pattern in extracted services", "status": "done", "evidence": "docs/phase5-session-replay-window-and-report-20260220-153020.md"},
-        {"id": "ar-outbox-canary-gate", "label": "Outbox DLQ/replay trend gates for canary rollout", "status": "done", "evidence": "docs/26-bank-canary-policy-v1.md"},
-        {"id": "ar-observability", "label": "Trace/correlation baseline", "status": "in_progress", "evidence": "docs/29-trace-correlation-standard-v1.md"},
-        {"id": "ar-canary-policy", "label": "Canary-by-bank routing policy defined", "status": "done", "evidence": "docs/35-session-service-canary-routing-policy.md"},
-        {"id": "ar-canary-decision", "label": "Canary routing decision endpoint implemented", "status": "done", "evidence": "gs-server/refactor-services/session-service/src/server.js"}
+        {
+          "id": "ar-strangler",
+          "label": "Phased strangler migration (no big-bang rewrite)",
+          "status": "done",
+          "evidence": "docs/18-architecture-recommendations-modernization-plan.md"
+        },
+        {
+          "id": "ar-facade-entry",
+          "label": "Compatibility facade retained at entry points",
+          "status": "done",
+          "evidence": "docs/phase5-session-canary-runtime-activation-20260220-143713.md"
+        },
+        {
+          "id": "ar-kafka-backbone",
+          "label": "Kafka backbone active for new services",
+          "status": "done",
+          "evidence": "docs/phase5-session-outbox-relay-foundation-20260220-145547.md"
+        },
+        {
+          "id": "ar-outbox-pattern",
+          "label": "Outbox pattern in extracted services",
+          "status": "done",
+          "evidence": "docs/phase5-session-replay-window-and-report-20260220-153020.md"
+        },
+        {
+          "id": "ar-redis-state-blob",
+          "label": "Redis deterministic state-blob cache foundation",
+          "status": "done",
+          "evidence": "docs/53-phase5-gameplay-redis-state-blob-foundation-20260220-183300.md"
+        },
+        {
+          "id": "ar-outbox-canary-gate",
+          "label": "Outbox DLQ/replay trend gates for canary rollout",
+          "status": "done",
+          "evidence": "docs/26-bank-canary-policy-v1.md"
+        },
+        {
+          "id": "ar-observability",
+          "label": "Trace/correlation baseline",
+          "status": "in_progress",
+          "evidence": "docs/29-trace-correlation-standard-v1.md"
+        },
+        {
+          "id": "ar-canary-policy",
+          "label": "Canary-by-bank routing policy defined",
+          "status": "done",
+          "evidence": "docs/35-session-service-canary-routing-policy.md"
+        },
+        {
+          "id": "ar-canary-decision",
+          "label": "Canary routing decision endpoint implemented",
+          "status": "done",
+          "evidence": "gs-server/refactor-services/session-service/src/server.js"
+        }
       ]
     },
     {
       "id": "service-extraction",
       "title": "Service Extraction Progress (required order)",
       "items": [
-        {"id": "se-config-service", "label": "1) Config Service extracted and running", "status": "done", "evidence": "docs/33-phase3-config-service-foundation.md"},
-        {"id": "se-session-service", "label": "2) Session Service extracted and running", "status": "done", "evidence": "docs/34-phase5-session-service-foundation.md"},
-        {"id": "se-gameplay-orchestrator", "label": "3) Gameplay Orchestrator extraction", "status": "in_progress", "evidence": "docs/phase5-gameplay-orchestrator-canary-hook-20260220-160030.md"},
-        {"id": "se-wallet-adapter", "label": "4) Wallet Adapter extraction", "status": "in_progress", "evidence": "docs/phase5-wallet-adapter-scaffold-20260220-161000.md"},
-        {"id": "se-bonus-service", "label": "5) Bonus/FRB Service extraction", "status": "in_progress", "evidence": "docs/phase5-bonus-frb-service-scaffold-20260220-161500.md"},
-        {"id": "se-history-service", "label": "6) History Service extraction", "status": "in_progress", "evidence": "docs/phase5-history-service-scaffold-20260220-162000.md"},
-        {"id": "se-mp-service", "label": "7) Multiplayer Service extraction", "status": "in_progress", "evidence": "docs/39-phase6-multiplayer-boundary-and-bypass-v1.md"}
+        {
+          "id": "se-config-service",
+          "label": "1) Config Service extracted and running",
+          "status": "done",
+          "evidence": "docs/33-phase3-config-service-foundation.md"
+        },
+        {
+          "id": "se-session-service",
+          "label": "2) Session Service extracted and running",
+          "status": "done",
+          "evidence": "docs/34-phase5-session-service-foundation.md"
+        },
+        {
+          "id": "se-gameplay-orchestrator",
+          "label": "3) Gameplay Orchestrator extraction",
+          "status": "in_progress",
+          "evidence": "docs/64-phase5-gameplay-canary-financial-intent-coverage-20260220-185000.md"
+        },
+        {
+          "id": "se-wallet-adapter",
+          "label": "4) Wallet Adapter extraction",
+          "status": "in_progress",
+          "evidence": "docs/66-phase5-wallet-runtime-evidence-pack-tooling-20260220-185700.md"
+        },
+        {
+          "id": "se-bonus-service",
+          "label": "5) Bonus/FRB Service extraction",
+          "status": "in_progress",
+          "evidence": "docs/68-phase5-bonus-frb-runtime-evidence-pack-tooling-20260220-190300.md"
+        },
+        {
+          "id": "se-history-service",
+          "label": "6) History Service extraction",
+          "status": "in_progress",
+          "evidence": "docs/70-phase5-history-runtime-evidence-pack-tooling-20260220-191100.md"
+        },
+        {
+          "id": "se-mp-service",
+          "label": "7) Multiplayer Service extraction",
+          "status": "in_progress",
+          "evidence": "docs/74-phase6-multiplayer-routing-policy-probe-and-test-gate-20260220-192600.md"
+        }
       ]
     },
     {
       "id": "integration-and-protocol",
       "title": "Integration and Protocol Enhancements",
       "items": [
-        {"id": "ip-json-xml-mode", "label": "Per-bank protocol mode (JSON/XML) design", "status": "in_progress", "evidence": "docs/52-phase4-runtime-readiness-check-tooling-20260220-175155.md"},
-        {"id": "ip-host-centralization", "label": "No hardcoded hosts, centralized cluster config", "status": "done", "evidence": "docs/31-cluster-hosts-centralization-and-portal-visibility.md"},
-        {"id": "ip-startgame-alias", "label": "Endpoint modernization alias (startgame) without breaking legacy", "status": "done", "evidence": "docs/phase0/parity-execution/phase0-startgame-alias-20260220-105011.md"},
-        {"id": "ip-websocket-spec", "label": "WebSocket integration spec for 1st/3rd party games", "status": "done", "evidence": "docs/25-game-integration-interface-and-websocket-protocol-v1.md"},
-        {"id": "ip-openapi-contracts", "label": "Versioned OpenAPI contracts for extracted services", "status": "done", "evidence": "gs-server/refactor-services/contracts/openapi/"}
+        {
+          "id": "ip-json-xml-mode",
+          "label": "Per-bank protocol mode (JSON/XML) design",
+          "status": "in_progress",
+          "evidence": "docs/52-phase4-runtime-readiness-check-tooling-20260220-175155.md"
+        },
+        {
+          "id": "ip-host-centralization",
+          "label": "No hardcoded hosts, centralized cluster config",
+          "status": "done",
+          "evidence": "docs/31-cluster-hosts-centralization-and-portal-visibility.md"
+        },
+        {
+          "id": "ip-startgame-alias",
+          "label": "Endpoint modernization alias (startgame) without breaking legacy",
+          "status": "done",
+          "evidence": "docs/phase0/parity-execution/phase0-startgame-alias-20260220-105011.md"
+        },
+        {
+          "id": "ip-websocket-spec",
+          "label": "WebSocket integration spec for 1st/3rd party games",
+          "status": "done",
+          "evidence": "docs/25-game-integration-interface-and-websocket-protocol-v1.md"
+        },
+        {
+          "id": "ip-openapi-contracts",
+          "label": "Versioned OpenAPI contracts for extracted services",
+          "status": "done",
+          "evidence": "gs-server/refactor-services/contracts/openapi/"
+        }
       ]
     },
     {
       "id": "platform-upgrades",
       "title": "Platform and Data Upgrades",
       "items": [
-        {"id": "pu-cassandra-upgrade", "label": "Cassandra upgrade rehearsal + cutover plan", "status": "in_progress", "evidence": "docs/40-phase7-cassandra-upgrade-plan-v1.md"},
-        {"id": "pu-precision-audit", "label": "Precision/min-bet modernization to support 0.001", "status": "planned", "evidence": "docs/19-requirements-from-user.md"},
-        {"id": "pu-branding-wave", "label": "Legacy namespace cleanup wave (ABS mapping)", "status": "in_progress", "evidence": "docs/18-architecture-recommendations-modernization-plan.md"},
-        {"id": "pu-security-hardening", "label": "Dependency and security hardening for new services", "status": "in_progress", "evidence": "docs/33-phase3-config-service-foundation.md"}
+        {
+          "id": "pu-cassandra-upgrade",
+          "label": "Cassandra upgrade rehearsal + cutover plan",
+          "status": "in_progress",
+          "evidence": "docs/40-phase7-cassandra-upgrade-plan-v1.md"
+        },
+        {
+          "id": "pu-precision-audit",
+          "label": "Precision/min-bet modernization to support 0.001",
+          "status": "planned",
+          "evidence": "docs/19-requirements-from-user.md"
+        },
+        {
+          "id": "pu-branding-wave",
+          "label": "Legacy namespace cleanup wave (ABS mapping)",
+          "status": "in_progress",
+          "evidence": "docs/18-architecture-recommendations-modernization-plan.md"
+        },
+        {
+          "id": "pu-security-hardening",
+          "label": "Dependency and security hardening for new services",
+          "status": "in_progress",
+          "evidence": "docs/33-phase3-config-service-foundation.md"
+        }
       ]
     },
     {
       "id": "operator-ux",
       "title": "Operator UX and Governance",
       "items": [
-        {"id": "ux-config-portal", "label": "User-friendly GS config portal baseline", "status": "done", "evidence": "gs-server/game-server/web-gs/src/main/webapp/support/configPortal.jsp"},
-        {"id": "ux-workflow-scaffold", "label": "Draft/validate/approve/publish/rollback scaffold", "status": "done", "evidence": "docs/32-gs-config-portal-all-levels-spec.md"},
-        {"id": "ux-service-bridge", "label": "Portal workflow bridge to Config Service (feature-flagged)", "status": "done", "evidence": "docs/33-phase3-config-service-foundation.md"},
-        {"id": "ux-persistent-approvals", "label": "Cross-session persistent approvals and audit trail", "status": "planned", "evidence": "docs/32-gs-config-portal-all-levels-spec.md"},
-        {"id": "ux-rollback-guardrails", "label": "Publish rollback guardrails + canary controls", "status": "in_progress", "evidence": "docs/35-session-service-canary-routing-policy.md"}
+        {
+          "id": "ux-config-portal",
+          "label": "User-friendly GS config portal baseline",
+          "status": "done",
+          "evidence": "gs-server/game-server/web-gs/src/main/webapp/support/configPortal.jsp"
+        },
+        {
+          "id": "ux-workflow-scaffold",
+          "label": "Draft/validate/approve/publish/rollback scaffold",
+          "status": "done",
+          "evidence": "docs/32-gs-config-portal-all-levels-spec.md"
+        },
+        {
+          "id": "ux-service-bridge",
+          "label": "Portal workflow bridge to Config Service (feature-flagged)",
+          "status": "done",
+          "evidence": "docs/33-phase3-config-service-foundation.md"
+        },
+        {
+          "id": "ux-cluster-key-descriptions",
+          "label": "Portal includes human-readable cluster setting descriptions",
+          "status": "done",
+          "evidence": "docs/56-cluster-config-portal-descriptions-20260220-180900.md"
+        },
+        {
+          "id": "ux-bank-category-guide",
+          "label": "Portal includes bank setting category guide for operators",
+          "status": "done",
+          "evidence": "docs/57-config-portal-category-guide-20260220-181200.md"
+        },
+        {
+          "id": "ux-docs-index",
+          "label": "Support docs index page for phase artifacts and evidence",
+          "status": "done",
+          "evidence": "docs/59-support-modernization-docs-index-20260220-182000.md"
+        },
+        {
+          "id": "ux-runbook-page",
+          "label": "Support runbook page with executable phase commands",
+          "status": "done",
+          "evidence": "docs/61-support-runbook-status-snapshot-20260220-183000.md"
+        },
+        {
+          "id": "ux-cross-navigation",
+          "label": "Support pages include cross-navigation quick links",
+          "status": "done",
+          "evidence": "docs/62-support-portal-cross-navigation-20260220-183700.md"
+        },
+        {
+          "id": "ux-persistent-approvals",
+          "label": "Cross-session persistent approvals and audit trail",
+          "status": "planned",
+          "evidence": "docs/32-gs-config-portal-all-levels-spec.md"
+        },
+        {
+          "id": "ux-rollback-guardrails",
+          "label": "Publish rollback guardrails + canary controls",
+          "status": "in_progress",
+          "evidence": "docs/35-session-service-canary-routing-policy.md"
+        }
       ]
     }
   ]
@@ -187,7 +399,7 @@
   <script id="embedded-outbox-health" type="application/json">
 {
   "updatedAt": "2026-02-20T16:10:00Z",
-  "source": "embedded-manual-snapshot",
+  "source": "manual-snapshot",
   "windowMinutes": 15,
   "thresholds": {
     "maxNew": 10,
@@ -206,7 +418,15 @@
     "retry": "stable",
     "dlq": "stable",
     "replay429": "stable"
-  }
+  },
+  "commands": {
+    "alertCheck": "/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-session-outbox-alert-check.sh --max-new 10 --max-retry 2 --max-dlq 0 --sample-count 4 --sample-interval-sec 300",
+    "replayReport": "/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-session-dlq-report.sh --limit 20"
+  },
+  "notes": [
+    "DLQ must remain zero during canary window.",
+    "If trend turns rising for NEW/RETRY, trigger rollback decision gate."
+  ]
 }
   </script>
 
