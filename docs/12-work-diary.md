@@ -4035,3 +4035,16 @@
   - Operators can reuse named validation policies in the browser and exported comparison artifacts now include the active threshold policy name.
 - Next step:
   - add parser-side compact comparison CLI export using the same policy names for non-UI automation.
+
+### 2026-02-23 16:44-16:45 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding a parser-side compact discrepancy compare/export CLI that reuses named policy profiles (`strict`, `canary_gate`, `shadow_observe`, `demo_sample_pass`).
+- Added CLI JSON+optional Markdown export (`phase8-precision-wave3-discrepancy-compare-export.sh`), deterministic smoke, integrated both into the shared verification suite, updated support docs/checklist to doc 101, and re-synced dashboard embedded data.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/101-phase8-wave3-cli-compare-export-with-policy-profiles-20260223-193000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-164534.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export-smoke.sh`
+- Result:
+  - Non-UI automation can now generate policy-based discrepancy comparison reports with the same named threshold policies used by the viewer.
+- Next step:
+  - add CLI threshold overrides (seeded from policy profiles) and/or viewer import of CLI compare JSON for unified UI/CLI workflow.
