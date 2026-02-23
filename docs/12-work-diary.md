@@ -3440,3 +3440,31 @@
   - Project now has a reusable offline test gate for recent microservice extraction work, reducing regressions and improving support visibility.
 - Next step:
   - commit this verification-suite batch; then continue feature work with the same mandatory local verification report after each increment.
+
+### 2026-02-23 13:00-13:11 UTC
+- Hardened the Phase 5/6 local verification suite with executable local logic smoke coverage (not just syntax/help checks).
+- Implementation updates:
+  - Added logic smoke script:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-logic-smoke.sh`
+  - Extracted multiplayer routing policy into a testable module and wired server to use it:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/multiplayer-service/src/policy.js`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/multiplayer-service/src/server.js`
+  - Updated verification suite and runbook/docs text to include executable local behavior smoke:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/75-phase5-6-local-verification-suite-20260223-130100.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+- Evidence:
+  - `bash -n` passed for:
+    - `phase5-6-local-logic-smoke.sh`
+    - `phase5-6-local-verification-suite.sh`
+  - `node --check` passed for:
+    - `.../multiplayer-service/src/policy.js`
+    - `.../multiplayer-service/src/server.js`
+  - `phase5-6-local-logic-smoke.sh` executed successfully (all PASS).
+  - `phase5-6-local-verification-suite.sh` executed successfully:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-130924.md`
+    - summary: PASS=14, FAIL=0, SKIP=0
+- Result:
+  - Post-change local verification now exercises actual Phase 5/6 behavior (idempotency and routing decisions), reducing risk of regressions slipping through syntax-only checks.
+- Next step:
+  - commit this logic-smoke hardening batch, retry push (expected sandbox network restriction), then continue Phase 6/Phase 7 preparation work.

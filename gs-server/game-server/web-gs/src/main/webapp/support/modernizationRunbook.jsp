@@ -39,7 +39,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh
 </code></pre>
         <p class="small-note">
-            Generates offline verification report (syntax/help/config/manifest checks) under
+            Generates offline verification report (syntax/help/config/manifest checks + executable local behavior smoke) under
             <code>docs/quality/local-verification/</code>. Use this even when runtime endpoints are unavailable.
         </p>
     </div>

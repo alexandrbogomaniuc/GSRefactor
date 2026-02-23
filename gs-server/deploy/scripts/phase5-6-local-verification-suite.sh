@@ -52,6 +52,7 @@ CHECK_KEYS=(
   help_history_evidence
   help_mp_policy
   help_mp_evidence
+  logic_smoke_phase56
   node_bonus
   node_history
   node_mp
@@ -105,6 +106,9 @@ run_check "help_mp_policy" "CLI help: Phase 6 multiplayer routing-policy probe" 
 
 run_check "help_mp_evidence" "CLI help: Phase 6 multiplayer evidence-pack" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase6-multiplayer-runtime-evidence-pack.sh' --help | sed -n '1,120p'"
+
+run_check "logic_smoke_phase56" "Executable logic smoke: Phase 5/6 stores and multiplayer policy" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase5-6-local-logic-smoke.sh'"
 
 run_check "node_bonus" "Node syntax: bonus-frb-service" \
   bash -lc "node --check '${ROOT}/gs-server/refactor-services/bonus-frb-service/src/server.js'"
