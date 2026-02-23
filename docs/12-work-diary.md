@@ -3949,3 +3949,15 @@
   - Main project advanced in Phase 8 without behavior change, and dashboard refresh now visibly confirms embedded snapshot updates even when progress counts stay constant.
 - Next step:
   - continue Wave 3 discrepancy evidence scaffolding (disabled-by-default) under the same vector smoke + full suite gates.
+
+### 2026-02-23 16:00-16:01 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 with discrepancy evidence scaffolding (disabled by default) in GS settings/coin-rule parity hooks.
+- Added counters + throttled snapshot logging (first/every-N/mismatch) behind compare mode, added a dedicated Wave 3 discrepancy evidence smoke script, integrated it into the standard local verification suite, updated progress JSON evidence to doc 94, and re-synced dashboard embedded progress data.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/94-phase8-wave3-discrepancy-evidence-counters-and-snapshots-20260223-173000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-160001.md` (PASS=36)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+- Result:
+  - Wave 3 now has disabled-by-default runtime discrepancy evidence collection scaffolding without changing GS precision behavior.
+- Next step:
+  - continue Wave 3 with opt-in discrepancy aggregation/export visibility while keeping compare mode disabled by default.

@@ -14,10 +14,12 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.property.PropertyUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import org.apache.log4j.Logger;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.BiPredicate;
 
 /**
@@ -25,11 +27,16 @@ import java.util.function.BiPredicate;
  * @since 24.09.2020
  */
 public class DynamicCoinManager {
+    private static final Logger LOG = Logger.getLogger(DynamicCoinManager.class);
     // Wave 2 compatibility: legacy line-based normalization remains cent-scale (x100) until full precision migration.
     private static final int LEGACY_CURRENCY_MINOR_UNIT_SCALE = 2;
     private static final int LEGACY_BASE_BET_IN_CURRENCY_MINOR_UNITS_PER_LINE = 100;
     // Wave 3 scaffold: disabled by default, used only for safe parity assertion before any precision behavior switch.
     private static final String PRECISION_DUAL_CALC_COMPARE_PROPERTY = "abs.gs.phase8.precision.dualCalc.compare";
+    private static final String PRECISION_DUAL_CALC_LOG_EVERY_PROPERTY = "abs.gs.phase8.precision.dualCalc.logEvery";
+    private static final long DEFAULT_PRECISION_DUAL_CALC_LOG_EVERY = 1000L;
+    private static final AtomicLong PRECISION_DUAL_CALC_CHECK_COUNT = new AtomicLong(0L);
+    private static final AtomicLong PRECISION_DUAL_CALC_MISMATCH_COUNT = new AtomicLong(0L);
 
     private final BankInfoCache bankInfoCache;
     private final BaseGameInfoTemplateCache baseGameInfoTemplateCache;
@@ -89,6 +96,13 @@ public class DynamicCoinManager {
         }
         long legacy = getBaseBetInCurrencyMinorUnitsByScale(gameInfo, LEGACY_CURRENCY_MINOR_UNIT_SCALE);
         long generalized = getScaleReadyBaseBetInCurrencyMinorUnits(gameInfo, LEGACY_CURRENCY_MINOR_UNIT_SCALE);
+        long checkCount = PRECISION_DUAL_CALC_CHECK_COUNT.incrementAndGet();
+        if (legacy == generalized) {
+            logPrecisionDualCalcSnapshotIfNeeded(checkCount, false, gameInfo, legacy, generalized);
+            return;
+        }
+        long mismatchCount = PRECISION_DUAL_CALC_MISMATCH_COUNT.incrementAndGet();
+        LOG.warn(buildPrecisionDualCalcSnapshot("baseBetMinorUnitsScale2", checkCount, mismatchCount, gameInfo, legacy, generalized));
         if (legacy != generalized) {
             throw new IllegalStateException("Phase8 precision parity mismatch for base bet minor units: legacy="
                     + legacy + ", generalized=" + generalized + ", bankId=" + gameInfo.getBankId()
@@ -98,6 +112,39 @@ public class DynamicCoinManager {
 
     protected boolean isPrecisionDualCalcComparisonEnabled() {
         return Boolean.getBoolean(PRECISION_DUAL_CALC_COMPARE_PROPERTY);
+    }
+
+    protected long getPrecisionDualCalcLogEvery() {
+        String raw = System.getProperty(PRECISION_DUAL_CALC_LOG_EVERY_PROPERTY);
+        if (raw == null || raw.trim().isEmpty()) {
+            return DEFAULT_PRECISION_DUAL_CALC_LOG_EVERY;
+        }
+        try {
+            long parsed = Long.parseLong(raw.trim());
+            return parsed > 0 ? parsed : DEFAULT_PRECISION_DUAL_CALC_LOG_EVERY;
+        } catch (NumberFormatException ignored) {
+            return DEFAULT_PRECISION_DUAL_CALC_LOG_EVERY;
+        }
+    }
+
+    protected void logPrecisionDualCalcSnapshotIfNeeded(long checkCount, boolean mismatch, IBaseGameInfo gameInfo,
+                                                        long legacy, long generalized) {
+        long logEvery = getPrecisionDualCalcLogEvery();
+        if (mismatch || checkCount == 1L || checkCount % logEvery == 0L) {
+            LOG.info(buildPrecisionDualCalcSnapshot("baseBetMinorUnitsScale2", checkCount,
+                    PRECISION_DUAL_CALC_MISMATCH_COUNT.get(), gameInfo, legacy, generalized));
+        }
+    }
+
+    protected String buildPrecisionDualCalcSnapshot(String metric, long checkCount, long mismatchCount,
+                                                    IBaseGameInfo gameInfo, long legacy, long generalized) {
+        return "phase8-precision-dual-calc metric=" + metric
+                + " checkCount=" + checkCount
+                + " mismatchCount=" + mismatchCount
+                + " bankId=" + gameInfo.getBankId()
+                + " gameId=" + gameInfo.getId()
+                + " legacy=" + legacy
+                + " generalized=" + generalized;
     }
 
     protected long getScaleReadyBaseBetInCurrencyMinorUnits(IBaseGameInfo gameInfo, int minorUnitScale) {

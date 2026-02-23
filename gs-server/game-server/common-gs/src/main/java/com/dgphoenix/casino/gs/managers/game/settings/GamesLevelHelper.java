@@ -4,6 +4,7 @@ import com.dgphoenix.casino.common.cache.data.bank.Coin;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
+import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -11,19 +12,25 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * @author <a href="mailto:dader@dgphoenix.com">Timur Shaymardanov</a>
  * @since 23.09.2020
  */
 public class GamesLevelHelper {
+    private static final Logger LOG = Logger.getLogger(GamesLevelHelper.class);
 
     private static final int DEFAULT_COINS_NUMBER = 11;
     private static final int LEGACY_CURRENCY_MINOR_UNIT_SCALE = 2;
     private static final double ONE_HUNDRED_CENTS = 100d;
     // Wave 3 scaffold: disabled by default, used only for safe parity assertion before any precision behavior switch.
     private static final String PRECISION_DUAL_CALC_COMPARE_PROPERTY = "abs.gs.phase8.precision.dualCalc.compare";
+    private static final String PRECISION_DUAL_CALC_LOG_EVERY_PROPERTY = "abs.gs.phase8.precision.dualCalc.logEvery";
+    private static final long DEFAULT_PRECISION_DUAL_CALC_LOG_EVERY = 1000L;
     private static final MathContext DIVIDE_CONTEXT = new MathContext(5, RoundingMode.DOWN);
+    private static final AtomicLong PRECISION_DUAL_CALC_CHECK_COUNT = new AtomicLong(0L);
+    private static final AtomicLong PRECISION_DUAL_CALC_MISMATCH_COUNT = new AtomicLong(0L);
     protected static final List<Long> forbiddenCoins = Arrays.asList(112L, 70L, 99L, 100L, 101L);
 
     private final ICurrencyRateManager currencyConverter;
@@ -91,6 +98,14 @@ public class GamesLevelHelper {
         }
         double legacy = getLegacyTemplateMaxBet(templateMaxCredits);
         double generalized = getScaleReadyTemplateMaxBet(templateMaxCredits, LEGACY_CURRENCY_MINOR_UNIT_SCALE);
+        long checkCount = PRECISION_DUAL_CALC_CHECK_COUNT.incrementAndGet();
+        if (Double.compare(legacy, generalized) == 0) {
+            logPrecisionDualCalcSnapshotIfNeeded(checkCount, false, templateMaxCredits, legacy, generalized);
+            return;
+        }
+        long mismatchCount = PRECISION_DUAL_CALC_MISMATCH_COUNT.incrementAndGet();
+        LOG.warn(buildPrecisionDualCalcSnapshot("templateMaxBetScale2", checkCount, mismatchCount,
+                templateMaxCredits, legacy, generalized));
         if (Double.compare(legacy, generalized) != 0) {
             throw new IllegalStateException("Phase8 precision parity mismatch for template max bet: legacy="
                     + legacy + ", generalized=" + generalized + ", templateMaxCredits=" + templateMaxCredits);
@@ -99,6 +114,38 @@ public class GamesLevelHelper {
 
     protected boolean isPrecisionDualCalcComparisonEnabled() {
         return Boolean.getBoolean(PRECISION_DUAL_CALC_COMPARE_PROPERTY);
+    }
+
+    protected long getPrecisionDualCalcLogEvery() {
+        String raw = System.getProperty(PRECISION_DUAL_CALC_LOG_EVERY_PROPERTY);
+        if (raw == null || raw.trim().isEmpty()) {
+            return DEFAULT_PRECISION_DUAL_CALC_LOG_EVERY;
+        }
+        try {
+            long parsed = Long.parseLong(raw.trim());
+            return parsed > 0 ? parsed : DEFAULT_PRECISION_DUAL_CALC_LOG_EVERY;
+        } catch (NumberFormatException ignored) {
+            return DEFAULT_PRECISION_DUAL_CALC_LOG_EVERY;
+        }
+    }
+
+    protected void logPrecisionDualCalcSnapshotIfNeeded(long checkCount, boolean mismatch, double templateMaxCredits,
+                                                        double legacy, double generalized) {
+        long logEvery = getPrecisionDualCalcLogEvery();
+        if (mismatch || checkCount == 1L || checkCount % logEvery == 0L) {
+            LOG.info(buildPrecisionDualCalcSnapshot("templateMaxBetScale2", checkCount,
+                    PRECISION_DUAL_CALC_MISMATCH_COUNT.get(), templateMaxCredits, legacy, generalized));
+        }
+    }
+
+    protected String buildPrecisionDualCalcSnapshot(String metric, long checkCount, long mismatchCount,
+                                                    double templateMaxCredits, double legacy, double generalized) {
+        return "phase8-precision-dual-calc metric=" + metric
+                + " checkCount=" + checkCount
+                + " mismatchCount=" + mismatchCount
+                + " templateMaxCredits=" + templateMaxCredits
+                + " legacy=" + legacy
+                + " generalized=" + generalized;
     }
 
     protected double getScaleReadyTemplateMaxBet(double templateMaxCredits, int minorUnitScale) {
