@@ -202,7 +202,7 @@
           "id": "pu-precision-audit",
           "label": "Precision/min-bet modernization to support 0.001",
           "status": "in_progress",
-          "evidence": "docs/115-phase8-wave3-viewer-local-reset-for-presets-and-guard-20260224-003000.md"
+          "evidence": "docs/116-phase8-wave3-viewer-guard-settings-json-share-20260224-011500.md"
         },
         {
           "id": "pu-branding-wave",

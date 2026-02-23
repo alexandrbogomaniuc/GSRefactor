@@ -300,6 +300,13 @@
         <div class="footnote" id="importDiffPresetGuardProfileMeta">Guard profile: Default (confirm when overwrite count is 2 or more).</div>
         <div class="footnote" id="importDiffPresetGuardMeta">High-overwrite merge guard: confirmation is required when overwrite count reaches the threshold.</div>
         <div class="toolbar" style="margin-top:8px;">
+          <button id="exportImportDiffPresetGuardJson" class="btn btn-default btn-sm">Export Guard JSON</button>
+          <button id="parseImportDiffPresetGuardJson" class="btn btn-default btn-sm">Import Guard JSON</button>
+          <button id="clearImportDiffPresetGuardJson" class="btn btn-default btn-sm">Clear Guard JSON</button>
+        </div>
+        <textarea id="importDiffPresetGuardJsonInput" rows="4" placeholder="Paste overwrite-guard settings JSON here (exported from this viewer)." style="width:100%; margin-top:8px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;"></textarea>
+        <div class="footnote" id="importDiffPresetGuardExchangeMeta">Share overwrite-guard settings across machines via JSON export/import.</div>
+        <div class="toolbar" style="margin-top:8px;">
           <button id="resetImportDiffViewerLocalState" class="btn btn-default btn-sm">Reset Local Presets + Guard</button>
         </div>
         <div class="footnote" id="importDiffPresetResetMeta">Reset clears browser-local triage presets and overwrite-guard settings for this viewer only.</div>
@@ -674,6 +681,119 @@
       applyImportDiffPresetGuardProfile('default');
     }
 
+    function buildImportDiffPresetGuardSettingsArtifact() {
+      return {
+        type: 'phase8-wave3-import-diff-preset-guard-settings',
+        version: 1,
+        generatedAtUtc: new Date().toISOString(),
+        guard: {
+          profile: String(importDiffPresetOverwriteGuardProfile || 'default'),
+          threshold: currentImportDiffPresetGuardThreshold(),
+          enabled: importDiffPresetGuardEnabled()
+        }
+      };
+    }
+
+    function applyImportDiffPresetGuardSettings(parsedGuard) {
+      if (!parsedGuard || typeof parsedGuard !== 'object' || Array.isArray(parsedGuard)) {
+        throw new Error('Guard settings payload must contain a guard object');
+      }
+      const profile = String(parsedGuard.profile || '').trim() || 'default';
+      const threshold = toSafeInt(parsedGuard.threshold, 2);
+      const enabled = typeof parsedGuard.enabled === 'boolean' ? parsedGuard.enabled : undefined;
+
+      if (profile === 'custom') {
+        q('importDiffPresetGuardThreshold').value = String(threshold);
+        importDiffPresetOverwriteGuardProfile = 'custom';
+        importDiffPresetOverwriteGuardEnabled = enabled === false ? false : true;
+        importDiffPresetOverwriteConfirmThreshold = threshold;
+        q('importDiffPresetGuardProfile').value = 'custom';
+        renderImportDiffPresetGuardMeta();
+        writeImportDiffPresetGuardState();
+        return { profile: 'custom', threshold, enabled: importDiffPresetGuardEnabled() };
+      }
+
+      if (IMPORT_DIFF_PRESET_GUARD_PROFILES[profile]) {
+        applyImportDiffPresetGuardProfile(profile);
+        if (profile !== 'disabled' && threshold !== currentImportDiffPresetGuardThreshold()) {
+          q('importDiffPresetGuardThreshold').value = String(threshold);
+          markImportDiffPresetGuardProfileCustom();
+          return { profile: 'custom', threshold, enabled: importDiffPresetGuardEnabled() };
+        }
+        if (profile === 'disabled' && enabled === true) {
+          q('importDiffPresetGuardThreshold').value = String(threshold);
+          markImportDiffPresetGuardProfileCustom();
+          return { profile: 'custom', threshold, enabled: importDiffPresetGuardEnabled() };
+        }
+        return {
+          profile: q('importDiffPresetGuardProfile').value,
+          threshold: currentImportDiffPresetGuardThreshold(),
+          enabled: importDiffPresetGuardEnabled()
+        };
+      }
+
+      q('importDiffPresetGuardThreshold').value = String(threshold);
+      markImportDiffPresetGuardProfileCustom();
+      return { profile: 'custom', threshold, enabled: importDiffPresetGuardEnabled() };
+    }
+
+    function exportImportDiffPresetGuardJson() {
+      try {
+        const artifact = buildImportDiffPresetGuardSettingsArtifact();
+        const text = JSON.stringify(artifact, null, 2) + '\n';
+        q('importDiffPresetGuardJsonInput').value = text;
+        q('importDiffPresetGuardExchangeMeta').textContent =
+          `Exported guard settings JSON: profile=${artifact.guard.profile}, threshold=${artifact.guard.threshold}, enabled=${artifact.guard.enabled}`;
+        downloadTextFile(
+          `phase8-wave3-import-diff-preset-guard-${new Date().toISOString().replace(/[:.]/g, '-')}.json`,
+          text,
+          'application/json'
+        );
+      } catch (err) {
+        q('importDiffPresetGuardExchangeMeta').textContent = `Failed to export guard settings JSON: ${String(err.message || err)}`;
+      }
+    }
+
+    function parseImportDiffPresetGuardJson() {
+      try {
+        const raw = String(q('importDiffPresetGuardJsonInput').value || '').trim();
+        if (!raw) {
+          q('importDiffPresetGuardExchangeMeta').textContent = 'Paste an overwrite-guard settings JSON first.';
+          return;
+        }
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+          throw new Error('Guard settings JSON root must be an object');
+        }
+        let guardPayload = null;
+        let metaType = 'legacy-guard-map';
+        let metaVersion = '-';
+        if (parsed.type) {
+          if (parsed.type !== 'phase8-wave3-import-diff-preset-guard-settings') {
+            throw new Error(`Unsupported guard settings type: ${String(parsed.type)}`);
+          }
+          if (parsed.version !== 1) {
+            throw new Error(`Unsupported guard settings version: ${String(parsed.version)}`);
+          }
+          guardPayload = parsed.guard;
+          metaType = String(parsed.type);
+          metaVersion = String(parsed.version);
+        } else {
+          guardPayload = parsed;
+        }
+        const applied = applyImportDiffPresetGuardSettings(guardPayload);
+        q('importDiffPresetGuardExchangeMeta').textContent =
+          `Imported guard settings JSON: type=${metaType} version=${metaVersion} -> profile=${applied.profile}, threshold=${applied.threshold}, enabled=${applied.enabled}`;
+      } catch (err) {
+        q('importDiffPresetGuardExchangeMeta').textContent = `Failed to import guard settings JSON: ${String(err.message || err)}`;
+      }
+    }
+
+    function clearImportDiffPresetGuardJson() {
+      q('importDiffPresetGuardJsonInput').value = '';
+      q('importDiffPresetGuardExchangeMeta').textContent = 'Share overwrite-guard settings across machines via JSON export/import.';
+    }
+
     function resetImportDiffViewerLocalState() {
       let confirmed = true;
       try {
@@ -717,6 +837,7 @@
       renderImportDiffPresetGuardMeta();
 
       clearImportDiffPresetJsonTextarea();
+      clearImportDiffPresetGuardJson();
       q('importDiffPresetResetMeta').textContent =
         `Viewer local reset complete: presets cleared, guard reset to default` +
         ` (${presetStoreCleared ? 'preset-storage cleared' : 'preset-storage unavailable'}, ${guardStoreCleared ? 'guard-storage cleared' : 'guard-storage unavailable'}).`;
@@ -1996,6 +2117,9 @@
     q('applyImportDiffPreset').addEventListener('click', applySelectedImportDiffPreset);
     q('deleteImportDiffPreset').addEventListener('click', deleteSelectedImportDiffPreset);
     q('applyImportDiffPresetGuardProfile').addEventListener('click', () => applyImportDiffPresetGuardProfile(q('importDiffPresetGuardProfile').value));
+    q('exportImportDiffPresetGuardJson').addEventListener('click', exportImportDiffPresetGuardJson);
+    q('parseImportDiffPresetGuardJson').addEventListener('click', parseImportDiffPresetGuardJson);
+    q('clearImportDiffPresetGuardJson').addEventListener('click', clearImportDiffPresetGuardJson);
     q('resetImportDiffViewerLocalState').addEventListener('click', resetImportDiffViewerLocalState);
     q('importDiffPresetGuardProfile').addEventListener('change', () => {
       const v = q('importDiffPresetGuardProfile').value;

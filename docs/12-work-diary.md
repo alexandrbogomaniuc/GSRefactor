@@ -4238,3 +4238,17 @@
   - Operators can quickly return the viewer to a clean local state without manually clearing browser storage, improving repeatability and troubleshooting in `file://` mode.
 - Next step:
   - add preset suggestion generation from imported compare-report artifacts (viewer-only) or export/import of guard profile presets to share review safety configurations.
+
+### 2026-02-23 19:35-19:38 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding overwrite-guard settings JSON export/import (versioned artifact + legacy plain-map fallback) in the discrepancy viewer, using the existing guard profile/custom apply+persistence path.
+- Updated support docs/checklist to doc 116, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/116-phase8-wave3-viewer-guard-settings-json-share-20260224-011500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-193659.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (guard JSON export/import/invalid/clear + legacy fallback verified)
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (reload shows doc 116 evidence path; count remains 26/41)
+- Result:
+  - Operators can share overwrite-guard safety settings across machines with JSON copy/paste/download/import, without affecting GS runtime behavior.
+- Next step:
+  - add preset suggestion generation from imported compare-report artifacts (viewer-only) or extend guard-settings JSON share flow with drag/drop import.
