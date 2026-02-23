@@ -7,6 +7,11 @@ POLICY="strict"
 OUT_FILE=""
 MD_OUT_FILE=""
 PRETTY="true"
+OVERRIDE_MISMATCH_A=""
+OVERRIDE_MISMATCH_B=""
+OVERRIDE_MISMATCH_DELTA=""
+OVERRIDE_SNAPSHOT_DELTA=""
+OVERRIDE_ALLOW_NEW_METRICS=""
 
 usage() {
   cat <<USAGE
@@ -20,6 +25,11 @@ Options:
   --a-file FILE        Baseline A discrepancy export JSON (required)
   --b-file FILE        Comparison B discrepancy export JSON (required)
   --policy NAME        strict|canary_gate|shadow_observe|demo_sample_pass (default: strict)
+  --threshold-mismatch-a N       Override seeded policy mismatchA threshold
+  --threshold-mismatch-b N       Override seeded policy mismatchB threshold
+  --threshold-mismatch-delta N   Override seeded policy mismatchDelta threshold
+  --threshold-snapshot-delta N   Override seeded policy snapshotDelta threshold
+  --allow-new-metrics-in-b BOOL  Override seeded policy allowNewMetricsInB (true|false)
   --out-file FILE      Write JSON report output (default: stdout)
   --md-out-file FILE   Write Markdown report output (optional)
   --pretty BOOL        true|false pretty JSON (default: true)
@@ -32,6 +42,11 @@ while [[ $# -gt 0 ]]; do
     --a-file) A_FILE="$2"; shift 2 ;;
     --b-file) B_FILE="$2"; shift 2 ;;
     --policy) POLICY="$2"; shift 2 ;;
+    --threshold-mismatch-a) OVERRIDE_MISMATCH_A="$2"; shift 2 ;;
+    --threshold-mismatch-b) OVERRIDE_MISMATCH_B="$2"; shift 2 ;;
+    --threshold-mismatch-delta) OVERRIDE_MISMATCH_DELTA="$2"; shift 2 ;;
+    --threshold-snapshot-delta) OVERRIDE_SNAPSHOT_DELTA="$2"; shift 2 ;;
+    --allow-new-metrics-in-b) OVERRIDE_ALLOW_NEW_METRICS="$2"; shift 2 ;;
     --out-file) OUT_FILE="$2"; shift 2 ;;
     --md-out-file) MD_OUT_FILE="$2"; shift 2 ;;
     --pretty) PRETTY="$2"; shift 2 ;;
@@ -46,10 +61,22 @@ done
 [[ -f "${B_FILE}" ]] || { echo "Missing B file: ${B_FILE}" >&2; exit 1; }
 [[ "${PRETTY}" == "true" || "${PRETTY}" == "false" ]] || { echo "--pretty must be true or false" >&2; exit 1; }
 
-node - "${A_FILE}" "${B_FILE}" "${POLICY}" "${OUT_FILE}" "${MD_OUT_FILE}" "${PRETTY}" <<'NODE'
+for v in "${OVERRIDE_MISMATCH_A}" "${OVERRIDE_MISMATCH_B}" "${OVERRIDE_MISMATCH_DELTA}" "${OVERRIDE_SNAPSHOT_DELTA}"; do
+  if [[ -n "${v}" && ! "${v}" =~ ^[0-9]+$ ]]; then
+    echo "Threshold overrides must be non-negative integers" >&2
+    exit 1
+  fi
+done
+if [[ -n "${OVERRIDE_ALLOW_NEW_METRICS}" && "${OVERRIDE_ALLOW_NEW_METRICS}" != "true" && "${OVERRIDE_ALLOW_NEW_METRICS}" != "false" ]]; then
+  echo "--allow-new-metrics-in-b must be true or false" >&2
+  exit 1
+fi
+
+node - "${A_FILE}" "${B_FILE}" "${POLICY}" "${OUT_FILE}" "${MD_OUT_FILE}" "${PRETTY}" \
+  "${OVERRIDE_MISMATCH_A}" "${OVERRIDE_MISMATCH_B}" "${OVERRIDE_MISMATCH_DELTA}" "${OVERRIDE_SNAPSHOT_DELTA}" "${OVERRIDE_ALLOW_NEW_METRICS}" <<'NODE'
 const fs = require('fs');
 
-const [aFile, bFile, policyName, outFile, mdOutFile, prettyRaw] = process.argv.slice(2);
+const [aFile, bFile, policyName, outFile, mdOutFile, prettyRaw, oA, oB, oDelta, oSnap, oAllowNew] = process.argv.slice(2);
 const pretty = prettyRaw === 'true';
 const allowedPolicies = {
   strict: {
@@ -73,6 +100,20 @@ const allowedPolicies = {
 function fail(msg) {
   console.error(msg);
   process.exit(1);
+}
+
+function overrideIntOrNull(v) {
+  if (v == null || v === '') return null;
+  const n = Number(v);
+  if (!Number.isFinite(n) || n < 0 || Math.floor(n) !== n) fail(`Invalid integer override: ${v}`);
+  return n;
+}
+
+function overrideBoolOrNull(v) {
+  if (v == null || v === '') return null;
+  if (v === 'true') return true;
+  if (v === 'false') return false;
+  fail(`Invalid boolean override: ${v}`);
 }
 
 function readJson(path) {
@@ -141,10 +182,17 @@ function buildRules(st) {
   return rules;
 }
 
-const thresholds = allowedPolicies[policyName];
-if (!thresholds) {
+const seededThresholds = allowedPolicies[policyName];
+if (!seededThresholds) {
   fail(`Unknown policy: ${policyName}. Allowed: ${Object.keys(allowedPolicies).join(', ')}`);
 }
+const thresholdOverrides = {};
+const oa = overrideIntOrNull(oA); if (oa != null) thresholdOverrides.mismatchA = oa;
+const ob = overrideIntOrNull(oB); if (ob != null) thresholdOverrides.mismatchB = ob;
+const od = overrideIntOrNull(oDelta); if (od != null) thresholdOverrides.mismatchDelta = od;
+const os = overrideIntOrNull(oSnap); if (os != null) thresholdOverrides.snapshotDelta = os;
+const oan = overrideBoolOrNull(oAllowNew); if (oan != null) thresholdOverrides.allowNewMetricsInB = oan;
+const thresholds = { ...seededThresholds, ...thresholdOverrides };
 
 const aModel = readJson(aFile);
 const bModel = readJson(bFile);
@@ -189,7 +237,8 @@ const report = {
   thresholds: {
     ...state.thresholds,
     profile: policyName,
-    profileLabel: thresholds.label
+    profileLabel: seededThresholds.label,
+    overridesApplied: thresholdOverrides
   },
   summary: {
     overall: failRules > 0 ? 'FAIL' : 'PASS',
@@ -225,6 +274,7 @@ md.push(`- mismatchB <= ${report.thresholds.mismatchB}`);
 md.push(`- mismatchDelta <= ${report.thresholds.mismatchDelta}`);
 md.push(`- snapshotDelta <= ${report.thresholds.snapshotDelta}`);
 md.push(`- allowNewMetricsInB: ${report.thresholds.allowNewMetricsInB}`);
+md.push(`- overridesApplied: ${JSON.stringify(report.thresholds.overridesApplied)}`);
 md.push('');
 md.push('## Summary');
 md.push(`- passRules: ${report.summary.passRules}`);
@@ -254,6 +304,6 @@ if (mdOutFile) {
   fs.writeFileSync(mdOutFile, mdText, 'utf8');
   console.log(`md_out=${mdOutFile}`);
 }
-console.log(`summary overall=${report.summary.overall} policy=${policyName} metricCount=${report.metrics.length} failRules=${report.summary.failRules}`);
+console.log(`summary overall=${report.summary.overall} policy=${policyName} overrides=${Object.keys(thresholdOverrides).length} metricCount=${report.metrics.length} failRules=${report.summary.failRules}`);
 if (!outFile) process.stdout.write(jsonText + '\n');
 NODE

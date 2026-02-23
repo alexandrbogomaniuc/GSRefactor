@@ -202,7 +202,7 @@
           "id": "pu-precision-audit",
           "label": "Precision/min-bet modernization to support 0.001",
           "status": "in_progress",
-          "evidence": "docs/101-phase8-wave3-cli-compare-export-with-policy-profiles-20260223-193000.md"
+          "evidence": "docs/102-phase8-wave3-cli-compare-export-threshold-overrides-20260223-194500.md"
         },
         {
           "id": "pu-branding-wave",

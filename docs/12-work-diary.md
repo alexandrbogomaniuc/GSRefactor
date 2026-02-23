@@ -4048,3 +4048,16 @@
   - Non-UI automation can now generate policy-based discrepancy comparison reports with the same named threshold policies used by the viewer.
 - Next step:
   - add CLI threshold overrides (seeded from policy profiles) and/or viewer import of CLI compare JSON for unified UI/CLI workflow.
+
+### 2026-02-23 16:51-16:52 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by extending the CLI discrepancy compare/export tool with optional per-run threshold overrides seeded from named policy profiles.
+- Added override flags + validation + `overridesApplied` metadata and override-count summary output, expanded deterministic smoke coverage (strict FAIL, demo PASS, strict+overrides PASS), updated support docs/checklist to doc 102, and re-synced dashboard embedded data.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/102-phase8-wave3-cli-compare-export-threshold-overrides-20260223-194500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-165236.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export-smoke.sh`
+- Result:
+  - Automation can now start from a standard policy and override thresholds per run while preserving seed policy identity in exported artifacts.
+- Next step:
+  - add viewer import support for CLI compare/export JSON so operators can inspect CLI-generated comparison artifacts in the existing UI.
