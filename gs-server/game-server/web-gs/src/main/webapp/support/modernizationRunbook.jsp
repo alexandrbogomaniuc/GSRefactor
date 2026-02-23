@@ -34,6 +34,17 @@
     </div>
 
     <div class="section">
+        <h4>Post-Change Local Verification (Required Before/After Feature Batches)</h4>
+        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh
+</code></pre>
+        <p class="small-note">
+            Generates offline verification report (syntax/help/config/manifest checks) under
+            <code>docs/quality/local-verification/</code>. Use this even when runtime endpoints are unavailable.
+        </p>
+    </div>
+
+    <div class="section">
         <h4>Current Runtime Status Snapshot</h4>
         <table class="table table-bordered table-condensed">
             <thead>

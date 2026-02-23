@@ -1,0 +1,170 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="/Users/alexb/Documents/Dev/Dev_new"
+OUT_DIR="${ROOT}/docs/quality/local-verification"
+CHECK_DOCKER_COMPOSE="true"
+CHECK_GIT_DIFF="true"
+
+usage() {
+  cat <<USAGE
+Usage: $(basename "$0") [options]
+
+Options:
+  --out-dir DIR              Default: ${OUT_DIR}
+  --check-docker-compose B   true|false (default: ${CHECK_DOCKER_COMPOSE})
+  --check-git-diff B         true|false (default: ${CHECK_GIT_DIFF})
+  -h, --help                 Show this help
+USAGE
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --out-dir)
+      OUT_DIR="$2"; shift 2 ;;
+    --check-docker-compose)
+      CHECK_DOCKER_COMPOSE="$2"; shift 2 ;;
+    --check-git-diff)
+      CHECK_GIT_DIFF="$2"; shift 2 ;;
+    -h|--help)
+      usage; exit 0 ;;
+    *)
+      echo "Unknown argument: $1" >&2
+      usage
+      exit 1 ;;
+  esac
+done
+
+mkdir -p "${OUT_DIR}"
+TS="$(date -u +%Y%m%d-%H%M%S)"
+REPORT="${OUT_DIR}/phase5-6-local-verification-${TS}.md"
+TMP_DIR="$(mktemp -d)"
+trap 'rm -rf "${TMP_DIR}"' EXIT
+
+PASS_COUNT=0
+FAIL_COUNT=0
+SKIP_COUNT=0
+CHECK_KEYS=(
+  bash_syntax_bonus
+  bash_syntax_history
+  bash_syntax_mp
+  help_bonus_evidence
+  help_history_evidence
+  help_mp_policy
+  help_mp_evidence
+  node_bonus
+  node_history
+  node_mp
+  checklist_json
+  git_diff_check
+  compose_services
+)
+
+run_check() {
+  local key="$1"
+  local title="$2"
+  shift 2
+  local out_file="${TMP_DIR}/${key}.out"
+  if "$@" >"${out_file}" 2>&1; then
+    echo "PASS" > "${TMP_DIR}/${key}.status"
+    PASS_COUNT=$((PASS_COUNT + 1))
+  else
+    echo "FAIL" > "${TMP_DIR}/${key}.status"
+    FAIL_COUNT=$((FAIL_COUNT + 1))
+  fi
+  echo "${title}" > "${TMP_DIR}/${key}.title"
+}
+
+skip_check() {
+  local key="$1"
+  local title="$2"
+  local reason="$3"
+  echo "SKIP" > "${TMP_DIR}/${key}.status"
+  echo "${title}" > "${TMP_DIR}/${key}.title"
+  echo "${reason}" > "${TMP_DIR}/${key}.out"
+  SKIP_COUNT=$((SKIP_COUNT + 1))
+}
+
+run_check "bash_syntax_bonus" "Bash syntax: Phase 5 bonus/FRB scripts" \
+  bash -lc "bash -n '${ROOT}/gs-server/deploy/scripts/phase5-bonus-frb-canary-probe.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-bonus-frb-runtime-readiness-check.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-bonus-frb-runtime-evidence-pack.sh'"
+
+run_check "bash_syntax_history" "Bash syntax: Phase 5 history scripts" \
+  bash -lc "bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-canary-probe.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-runtime-readiness-check.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-runtime-evidence-pack.sh'"
+
+run_check "bash_syntax_mp" "Bash syntax: Phase 6 multiplayer scripts" \
+  bash -lc "bash -n '${ROOT}/gs-server/deploy/scripts/phase6-multiplayer-canary-probe.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase6-multiplayer-routing-policy-probe.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase6-multiplayer-runtime-readiness-check.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase6-multiplayer-runtime-evidence-pack.sh'"
+
+run_check "help_bonus_evidence" "CLI help: Phase 5 bonus/FRB evidence-pack" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase5-bonus-frb-runtime-evidence-pack.sh' --help | sed -n '1,80p'"
+
+run_check "help_history_evidence" "CLI help: Phase 5 history evidence-pack" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase5-history-runtime-evidence-pack.sh' --help | sed -n '1,80p'"
+
+run_check "help_mp_policy" "CLI help: Phase 6 multiplayer routing-policy probe" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase6-multiplayer-routing-policy-probe.sh' --help | sed -n '1,100p'"
+
+run_check "help_mp_evidence" "CLI help: Phase 6 multiplayer evidence-pack" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase6-multiplayer-runtime-evidence-pack.sh' --help | sed -n '1,120p'"
+
+run_check "node_bonus" "Node syntax: bonus-frb-service" \
+  bash -lc "node --check '${ROOT}/gs-server/refactor-services/bonus-frb-service/src/server.js'"
+
+run_check "node_history" "Node syntax: history-service" \
+  bash -lc "node --check '${ROOT}/gs-server/refactor-services/history-service/src/server.js'"
+
+run_check "node_mp" "Node syntax: multiplayer-service" \
+  bash -lc "node --check '${ROOT}/gs-server/refactor-services/multiplayer-service/src/server.js' && node --check '${ROOT}/gs-server/refactor-services/multiplayer-service/src/store.js'"
+
+run_check "checklist_json" "JSON parse: modernization checklist" \
+  bash -lc "node -e 'JSON.parse(require(\"fs\").readFileSync(\"${ROOT}/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json\",\"utf8\")); console.log(\"OK\")'"
+
+if [[ "${CHECK_GIT_DIFF}" == "true" ]]; then
+  run_check "git_diff_check" "Git whitespace check" \
+    bash -lc "git -C '${ROOT}' diff --check"
+else
+  skip_check "git_diff_check" "Git whitespace check" "Disabled by --check-git-diff=false"
+fi
+
+if [[ "${CHECK_DOCKER_COMPOSE}" == "true" ]]; then
+  run_check "compose_services" "Compose config services (refactor stack)" \
+    bash -lc "docker compose -f '${ROOT}/gs-server/deploy/docker/refactor/docker-compose.yml' --env-file '${ROOT}/gs-server/deploy/docker/refactor/.env' config --services | tr '\\n' ' '"
+else
+  skip_check "compose_services" "Compose config services (refactor stack)" "Disabled by --check-docker-compose=false"
+fi
+
+{
+  echo "# Phase 5/6 Local Verification Suite (${TS} UTC)"
+  echo
+  echo "- scope: offline/local validation for recently implemented refactor services and tooling"
+  echo "- pass: ${PASS_COUNT}"
+  echo "- fail: ${FAIL_COUNT}"
+  echo "- skip: ${SKIP_COUNT}"
+  echo
+  echo "## Summary"
+  for key in "${CHECK_KEYS[@]}"; do
+    [[ -f "${TMP_DIR}/${key}.status" ]] || continue
+    status="$(cat "${TMP_DIR}/${key}.status")"
+    title="$(cat "${TMP_DIR}/${key}.title")"
+    echo "- [${status}] ${title}"
+  done
+  echo
+  echo "## Outputs"
+  for key in "${CHECK_KEYS[@]}"; do
+    [[ -f "${TMP_DIR}/${key}.status" ]] || continue
+    status="$(cat "${TMP_DIR}/${key}.status")"
+    title="$(cat "${TMP_DIR}/${key}.title")"
+    echo "### ${title}"
+    echo "- status: ${status}"
+    echo '```text'
+    sed -n '1,220p' "${TMP_DIR}/${key}.out"
+    printf '\n'
+    echo '```'
+    echo
+  done
+} > "${REPORT}"
+
+echo "report=${REPORT}"
+
+if [[ ${FAIL_COUNT} -gt 0 ]]; then
+  exit 2
+fi

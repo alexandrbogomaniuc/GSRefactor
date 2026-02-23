@@ -3420,3 +3420,23 @@
   - Phase 6 now has explicit post-change test coverage for `isMultiplayer` bypass and bank capability gate, reducing risk of returning to policy expectation bugs later.
 - Next step:
   - commit this test-gate hardening batch and continue applying the same test-after-change evidence pattern to subsequent increments.
+
+### 2026-02-23 12:57-13:00 UTC
+- Added reusable Phase 5/6 local verification suite to enforce post-change testing discipline even without runtime access.
+- Implementation updates:
+  - New script:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh`
+  - New documentation + operator portal runbook/docs references:
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/75-phase5-6-local-verification-suite-20260223-130100.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+- Evidence:
+  - `bash -n .../phase5-6-local-verification-suite.sh` passed.
+  - `.../phase5-6-local-verification-suite.sh --help` passed.
+  - verification suite executed twice (second run after report-format fix), latest report:
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-125850.md`
+  - suite summary: PASS=13, FAIL=0, SKIP=0.
+- Result:
+  - Project now has a reusable offline test gate for recent microservice extraction work, reducing regressions and improving support visibility.
+- Next step:
+  - commit this verification-suite batch; then continue feature work with the same mandatory local verification report after each increment.

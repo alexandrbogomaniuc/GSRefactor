@@ -147,6 +147,11 @@
                 <td><code>docs/39-phase6-multiplayer-boundary-and-bypass-v1.md</code><br/><code>docs/71-phase6-multiplayer-service-scaffold-and-routing-20260220-191300.md</code><br/><code>docs/72-phase6-multiplayer-runtime-evidence-pack-tooling-20260220-191400.md</code><br/><code>docs/73-phase6-gs-multiplayer-shadow-bridge-20260220-191800.md</code><br/><code>docs/74-phase6-multiplayer-routing-policy-probe-and-test-gate-20260220-192600.md</code><br/><code>docs/phase6/</code></td>
             </tr>
             <tr>
+                <td>Quality Gates</td>
+                <td>Local post-change verification suite and reports</td>
+                <td><code>docs/75-phase5-6-local-verification-suite-20260223-130100.md</code><br/><code>docs/quality/local-verification/</code></td>
+            </tr>
+            <tr>
                 <td>Phase 7 - Cassandra Upgrade</td>
                 <td>Plan, rehearsal, compatibility matrix and runbook</td>
                 <td><code>docs/40-phase7-cassandra-upgrade-plan-v1.md</code><br/><code>docs/41-phase7-cassandra-rehearsal-checklist-v1.md</code><br/><code>docs/42-phase7-cassandra-cutover-rollback-runbook-v1.md</code><br/><code>docs/phase7/</code></td>
