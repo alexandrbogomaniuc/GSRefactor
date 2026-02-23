@@ -3639,3 +3639,30 @@
   - Protocol JSON security behavior is now enforced by executable local tests and automatically re-checked in the standard post-change verification workflow.
 - Next step:
   - commit this protocol security smoke + suite gate batch, then continue main project implementation (next likely Phase 4 hash/replay runtime canary validation prep or precision audit scaffolding).
+
+### 2026-02-23 14:30-14:40 UTC
+- Added Phase 4 runtime JSON security canary probe tooling and wired it into the Phase 4 evidence pack as an optional probe.
+- Implementation updates:
+  - New runtime canary script:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-json-security-canary-probe.sh`
+  - Features:
+    - patches/restores bank settings for JSON hash/replay validation
+    - validates POST hash, GET hash-rule, exempt endpoint, replay nonce reuse
+    - supports `--hmac-secret` and graceful secret-unavailable skip (`--require-secret false`)
+  - Updated Phase 4 evidence pack (optional security probe):
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-runtime-evidence-pack.sh`
+  - Updated local verification suite (runtime probe `--help` gate) and runbook/docs:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/75-phase5-6-local-verification-suite-20260223-130100.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/82-phase4-protocol-json-security-runtime-probe-tooling-20260223-144000.md`
+- Evidence:
+  - `bash -n` passed for new runtime canary + updated evidence pack.
+  - `--help` passed for new runtime canary + updated evidence pack.
+  - `phase5-6-local-verification-suite.sh` passed:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-143849.md`
+    - summary: PASS=21, FAIL=0, SKIP=0
+- Result:
+  - Runtime JSON security validation tooling is ready for non-prod secret-enabled canary runs without forcing an immediate runtime secret rollout.
+- Next step:
+  - commit this runtime probe tooling batch, then continue main project implementation (either runtime secret injection path for protocol-adapter canary or precision/min-bet audit scaffolding).

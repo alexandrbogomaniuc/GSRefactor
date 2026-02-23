@@ -107,6 +107,11 @@
   --transport host \
   --base-url http://127.0.0.1:18078 \
   --gs-base-url http://127.0.0.1:18081
+# Optional runtime JSON security probe (requires non-prod HMAC secret configured in protocol-adapter):
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-json-security-canary-probe.sh \
+  --bank-id 6275 \
+  --base-url http://127.0.0.1:18078 \
+  --hmac-secret <non-prod-test-secret>
 </code></pre>
         <p class="small-note">
             Output reports: <code>docs/phase4/protocol/phase4-protocol-runtime-evidence-*.md</code>
@@ -116,6 +121,9 @@
         </p>
         <p class="small-note">
             Local protocol security smoke validates JSON hash/replay logic offline (no runtime stack required) before canary/runtime probes.
+        </p>
+        <p class="small-note">
+            Runtime JSON security probe is optional and can gracefully skip when runtime HMAC secret is unavailable (<code>--require-secret false</code> default).
         </p>
     </div>
 

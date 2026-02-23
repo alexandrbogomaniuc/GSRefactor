@@ -51,3 +51,7 @@ cd /Users/alexb/Documents/Dev/Dev_new
 ## Update (2026-02-23 13:50 UTC)
 - Added Phase 4 protocol JSON security logic smoke coverage (hash/replay behavior) with both `--help` and executable checks.
 - Current local verification summary baseline increased to `PASS=20` checks.
+
+## Update (2026-02-23 14:38 UTC)
+- Added a local verification `--help` gate for the new Phase 4 protocol JSON security runtime canary probe script.
+- Current local verification summary baseline increased to `PASS=21` checks.

@@ -10,6 +10,8 @@ BASE_URL="$(cluster_hosts_http_url PROTOCOL_ADAPTER_EXTERNAL_HOST PROTOCOL_ADAPT
 GS_BASE_URL="$(cluster_hosts_http_url GS_EXTERNAL_HOST GS_EXTERNAL_PORT 127.0.0.1 18081)"
 TRANSPORT="host"
 SESSION_ID=""
+RUN_SECURITY_PROBE="false"
+SECURITY_PROBE_REQUIRE_SECRET="false"
 OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase4/protocol"
 
 usage() {
@@ -22,6 +24,8 @@ Options:
   --gs-base-url URL  Default: ${GS_BASE_URL}
   --transport MODE   host|docker (default: ${TRANSPORT})
   --session-id SID   Optional (used by wallet probe)
+  --run-security-probe BOOL     true|false (default: ${RUN_SECURITY_PROBE})
+  --security-require-secret B   true|false (default: ${SECURITY_PROBE_REQUIRE_SECRET})
   --out-dir DIR      Default: ${OUT_DIR}
   -h, --help         Show this help
 USAGE
@@ -39,6 +43,10 @@ while [[ $# -gt 0 ]]; do
       TRANSPORT="$2"; shift 2 ;;
     --session-id)
       SESSION_ID="$2"; shift 2 ;;
+    --run-security-probe)
+      RUN_SECURITY_PROBE="$2"; shift 2 ;;
+    --security-require-secret)
+      SECURITY_PROBE_REQUIRE_SECRET="$2"; shift 2 ;;
     --out-dir)
       OUT_DIR="$2"; shift 2 ;;
     -h|--help)
@@ -69,6 +77,7 @@ run_and_capture() {
 
 parity_out="${work_dir}/parity.out"
 wallet_out="${work_dir}/wallet.out"
+security_out="${work_dir}/security.out"
 
 parity_status="$(run_and_capture parity "${parity_out}" \
   /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-json-xml-parity-check.sh \
@@ -86,6 +95,14 @@ else
     --gs-base-url "${GS_BASE_URL}" --protocol-base-url "${BASE_URL}")"
 fi
 
+security_status="SKIPPED"
+if [[ "${RUN_SECURITY_PROBE}" == "true" ]]; then
+  security_status="$(run_and_capture security "${security_out}" \
+    /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-json-security-canary-probe.sh \
+    --bank-id "${BANK_ID}" --base-url "${BASE_URL}" \
+    --require-secret "${SECURITY_PROBE_REQUIRE_SECRET}")"
+fi
+
 {
   echo "# Phase 4 Protocol Runtime Evidence (${ts} UTC)"
   echo
@@ -95,6 +112,7 @@ fi
   echo "- gsBaseUrl: ${GS_BASE_URL}"
   echo "- parity_check: ${parity_status}"
   echo "- wallet_shadow_probe: ${wallet_status}"
+  echo "- json_security_probe: ${security_status}"
   echo
   echo "## Parity Check Output"
   echo '```text'
@@ -105,10 +123,27 @@ fi
   echo '```text'
   sed -n '1,220p' "${wallet_out}"
   echo '```'
+  echo
+  echo "## JSON Security Probe Output"
+  echo '```text'
+  if [[ -s "${security_out}" ]]; then
+    sed -n '1,220p' "${security_out}"
+  else
+    if [[ "${RUN_SECURITY_PROBE}" != "true" ]]; then
+      echo "Security probe not executed because --run-security-probe=false (default safe mode)."
+    else
+      echo "Security probe did not produce output."
+    fi
+  fi
+  echo '```'
 } > "${report_file}"
 
 echo "report=${report_file}"
 
 if [[ "${parity_status}" != "PASS" || "${wallet_status}" != "PASS" ]]; then
+  exit 2
+fi
+
+if [[ "${RUN_SECURITY_PROBE}" == "true" && "${security_status}" != "PASS" ]]; then
   exit 2
 fi
