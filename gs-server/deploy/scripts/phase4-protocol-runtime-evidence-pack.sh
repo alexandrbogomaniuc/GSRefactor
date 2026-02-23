@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+
 BANK_ID="6275"
-BASE_URL="http://127.0.0.1:18078"
-GS_BASE_URL="http://127.0.0.1:18081"
+BASE_URL="$(cluster_hosts_http_url PROTOCOL_ADAPTER_EXTERNAL_HOST PROTOCOL_ADAPTER_EXTERNAL_PORT 127.0.0.1 18078)"
+GS_BASE_URL="$(cluster_hosts_http_url GS_EXTERNAL_HOST GS_EXTERNAL_PORT 127.0.0.1 18081)"
 TRANSPORT="host"
 SESSION_ID=""
 OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase4/protocol"

@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CASSANDRA_CONTAINER="refactor-c1-1"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+
+CASSANDRA_CONTAINER="$(cluster_hosts_get CASSANDRA_REFACTOR_CONTAINER refactor-c1-1)"
 OUTPUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra"
 TABLE_LIST_FILE="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/critical-tables.txt"
 LIMIT=1

@@ -3579,3 +3579,37 @@
   - Dashboard now shows current checklist progress when opened directly from Finder/path (`file://`), not a stale embedded snapshot.
 - Next step:
   - commit dashboard sync fix, then continue Phase 4/Phase 7 host-config default migration waves.
+
+### 2026-02-23 13:35-13:45 UTC
+- Implemented host-config/default centralization wave 4 for Phase 4 protocol tooling and Phase 7 Cassandra tooling.
+- Implementation updates:
+  - Added centralized config keys and synced portal-visible resource copy:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/cluster-hosts.properties`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/resources/cluster-hosts.properties`
+    - added protocol adapter external host/port
+    - added Cassandra external host/port and refactor container name
+  - Updated Phase 4 protocol scripts to read host-mode defaults from `cluster-hosts.properties` via shared helper:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-json-xml-parity-check.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-runtime-readiness-check.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-runtime-evidence-pack.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh`
+  - Updated Phase 7 Cassandra scripts to read default refactor container name from centralized config:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase7-cassandra-preflight.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase7-cassandra-schema-export.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase7-cassandra-table-counts.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase7-cassandra-query-smoke.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase7-cassandra-evidence-pack.sh`
+  - Updated runbook note and added evidence doc:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/80-phase4-phase7-config-default-centralization-wave4-20260223-134500.md`
+- Evidence:
+  - `sync-cluster-hosts.sh` passed.
+  - `bash -n` passed for modified Phase 4/7 scripts.
+  - `--help` passed for representative modified scripts.
+  - `phase5-6-local-verification-suite.sh` regression check passed:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-134216.md`
+    - summary: PASS=18, FAIL=0, SKIP=0
+- Result:
+  - Phase 4 host-mode operator endpoints and Phase 7 refactor Cassandra container default are now centrally configured, reducing drift and repeated manual edits.
+- Next step:
+  - commit wave 4 and continue with the next main-project increment (Phase 4/7 deeper runtime validation or precision/brand cleanup prep).

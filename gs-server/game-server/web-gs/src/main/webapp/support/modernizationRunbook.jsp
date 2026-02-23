@@ -110,6 +110,9 @@
         <p class="small-note">
             Output reports: <code>docs/phase4/protocol/phase4-protocol-runtime-evidence-*.md</code>
         </p>
+        <p class="small-note">
+            Default protocol-adapter and GS endpoints now come from <code>cluster-hosts.properties</code>; command flags can still override.
+        </p>
     </div>
 
     <div class="section">

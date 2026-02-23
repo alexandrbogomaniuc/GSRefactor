@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROTOCOL_HOST="127.0.0.1"
-PROTOCOL_PORT="18078"
-GS_HOST="127.0.0.1"
-GS_PORT="18081"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+
+PROTOCOL_HOST="$(cluster_hosts_get PROTOCOL_ADAPTER_EXTERNAL_HOST 127.0.0.1)"
+PROTOCOL_PORT="$(cluster_hosts_get PROTOCOL_ADAPTER_EXTERNAL_PORT 18078)"
+GS_HOST="$(cluster_hosts_get GS_EXTERNAL_HOST 127.0.0.1)"
+GS_PORT="$(cluster_hosts_get GS_EXTERNAL_PORT 18081)"
 CHECK_DOCKER="true"
 
 usage() {

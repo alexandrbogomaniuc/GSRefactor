@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CASSANDRA_CONTAINER="refactor-c1-1"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+
+CASSANDRA_CONTAINER="$(cluster_hosts_get CASSANDRA_REFACTOR_CONTAINER refactor-c1-1)"
 OUTPUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra"
 TS="$(date -u '+%Y%m%d-%H%M%S')"
 OUT_FILE="${OUTPUT_DIR}/phase7-cassandra-schema-${CASSANDRA_CONTAINER}-${TS}.cql"
