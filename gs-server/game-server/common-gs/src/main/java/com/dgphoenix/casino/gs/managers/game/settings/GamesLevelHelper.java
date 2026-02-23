@@ -19,6 +19,7 @@ import java.util.List;
 public class GamesLevelHelper {
 
     private static final int DEFAULT_COINS_NUMBER = 11;
+    private static final int LEGACY_CURRENCY_MINOR_UNIT_SCALE = 2;
     private static final double ONE_HUNDRED_CENTS = 100d;
     private static final MathContext DIVIDE_CONTEXT = new MathContext(5, RoundingMode.DOWN);
     protected static final List<Long> forbiddenCoins = Arrays.asList(112L, 70L, 99L, 100L, 101L);
@@ -54,7 +55,7 @@ public class GamesLevelHelper {
     }
 
     public double getGLMaxBet(GamesLevelContext ctx) throws CommonException {
-        //default 100 'cents' value from NBSF's Appendix
+        // Legacy scale=2 default max-bet multiplier from NBSF's Appendix.
         double glMaxBet = getLegacyTemplateMaxBet(ctx.getTemplateMaxCredits());
         Long templateMaxBet = ctx.getTemplateMaxBet();
         if (templateMaxBet != null) {
@@ -78,7 +79,21 @@ public class GamesLevelHelper {
     }
 
     protected double getLegacyTemplateMaxBet(double templateMaxCredits) {
-        return ONE_HUNDRED_CENTS * templateMaxCredits;
+        return getTemplateMaxBetByMinorUnitScale(templateMaxCredits, LEGACY_CURRENCY_MINOR_UNIT_SCALE);
+    }
+
+    protected double getTemplateMaxBetByMinorUnitScale(double templateMaxCredits, int minorUnitScale) {
+        return getMinorUnitMultiplierByScale(minorUnitScale) * templateMaxCredits;
+    }
+
+    protected double getMinorUnitMultiplierByScale(int minorUnitScale) {
+        if (minorUnitScale == LEGACY_CURRENCY_MINOR_UNIT_SCALE) {
+            return ONE_HUNDRED_CENTS;
+        }
+        if (minorUnitScale < 0 || minorUnitScale > 9) {
+            throw new IllegalArgumentException("Unsupported minorUnitScale: " + minorUnitScale);
+        }
+        return Math.pow(10d, minorUnitScale);
     }
 
     public double limitGLMaxBetByAllowedMaxWin(GamesLevelContext ctx, double glMaxBet) throws CommonException {

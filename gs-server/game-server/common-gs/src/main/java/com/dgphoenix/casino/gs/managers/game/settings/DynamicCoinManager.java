@@ -26,6 +26,7 @@ import java.util.function.BiPredicate;
  */
 public class DynamicCoinManager {
     // Wave 2 compatibility: legacy line-based normalization remains cent-scale (x100) until full precision migration.
+    private static final int LEGACY_CURRENCY_MINOR_UNIT_SCALE = 2;
     private static final int LEGACY_BASE_BET_IN_CURRENCY_MINOR_UNITS_PER_LINE = 100;
 
     private final BankInfoCache bankInfoCache;
@@ -76,12 +77,30 @@ public class DynamicCoinManager {
     }
 
     protected int getLegacyBaseBetInCurrencyMinorUnits(IBaseGameInfo gameInfo) {
-        return Integer.parseInt(gameInfo.getProperty(BaseGameConstants.KEY_DEFAULTNUMLINES))
-                * LEGACY_BASE_BET_IN_CURRENCY_MINOR_UNITS_PER_LINE;
+        return Math.toIntExact(getBaseBetInCurrencyMinorUnitsByScale(gameInfo, LEGACY_CURRENCY_MINOR_UNIT_SCALE));
     }
 
     protected double getDefaultBetDistance(double coinValue, int baseBetInCurrency, double finalDefaultBet) {
         return Math.abs(coinValue * baseBetInCurrency - finalDefaultBet);
+    }
+
+    protected long getBaseBetInCurrencyMinorUnitsByScale(IBaseGameInfo gameInfo, int minorUnitScale) {
+        long defaultLines = Long.parseLong(gameInfo.getProperty(BaseGameConstants.KEY_DEFAULTNUMLINES));
+        return Math.multiplyExact(defaultLines, getMinorUnitsPerCurrencyByScale(minorUnitScale));
+    }
+
+    protected long getMinorUnitsPerCurrencyByScale(int minorUnitScale) {
+        if (minorUnitScale == LEGACY_CURRENCY_MINOR_UNIT_SCALE) {
+            return LEGACY_BASE_BET_IN_CURRENCY_MINOR_UNITS_PER_LINE;
+        }
+        if (minorUnitScale < 0 || minorUnitScale > 9) {
+            throw new IllegalArgumentException("Unsupported minorUnitScale: " + minorUnitScale);
+        }
+        long multiplier = 1L;
+        for (int i = 0; i < minorUnitScale; i++) {
+            multiplier = Math.multiplyExact(multiplier, 10L);
+        }
+        return multiplier;
     }
 
     public Optional<Long> getDynamicFrbCoin(IBaseGameInfo gameInfo, ICurrency targetCurrency,

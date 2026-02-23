@@ -3893,3 +3893,35 @@
   - Wave 2 code remediation has started safely with explicit legacy assumption isolation and no behavior change.
 - Next step:
   - Phase 8 Wave 2 batch 2: introduce precision-aware helper path (scale-ready normalization) behind parity-preserving comparisons/tests before any functional switch.
+
+### 2026-02-23 15:42-15:43 UTC
+- Implemented Phase 8 Wave 2 code remediation batch 2: scale-ready helper path introduction (legacy behavior retained).
+- Code changes:
+  - `DynamicCoinManager`:
+    - added `LEGACY_CURRENCY_MINOR_UNIT_SCALE = 2`
+    - added scale-ready helpers `getBaseBetInCurrencyMinorUnitsByScale(...)`, `getMinorUnitsPerCurrencyByScale(...)`
+    - legacy helper now delegates to the scale-ready helper with scale 2
+    - file: `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/settings/DynamicCoinManager.java`
+  - `GamesLevelHelper`:
+    - added `LEGACY_CURRENCY_MINOR_UNIT_SCALE = 2`
+    - added scale-ready helpers `getTemplateMaxBetByMinorUnitScale(...)`, `getMinorUnitMultiplierByScale(...)`
+    - `getLegacyTemplateMaxBet(...)` now delegates to scale-ready helper with scale 2
+    - updated legacy comment wording to explicit scale wording
+    - file: `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/settings/GamesLevelHelper.java`
+  - Progress/evidence updates:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (embedded sync)
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/91-phase8-wave2-scale-ready-helper-path-batch2-20260223-164500.md`
+- Evidence:
+  - targeted `rg` confirms new scale-ready helper methods/constants in both Wave 2 files
+  - Wave 2 vector smoke passed (`summary pass=10 fail=0`)
+  - refreshed bucket report shows Wave 2 bucket closure (`wave2_settings_coin_rules: 0`):
+    `/Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision/phase8-precision-remediation-buckets-20260223-154219.md`
+  - `phase5-6-local-verification-suite.sh` passed after final checklist/dashboard sync:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-154333.md`
+    - summary: PASS=32, FAIL=0, SKIP=0
+- Result:
+  - Wave 2 assumptions are now isolated behind scale-ready helper paths with legacy scale=2 delegates, and bucket evidence shows Wave 2 cleanup complete.
+- Next step:
+  - Phase 8 Wave 2 batch 3: dual-calculation comparison scaffolding (legacy vs scale-ready candidate path) for observability/parity prep before any behavior switch.
