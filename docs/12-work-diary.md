@@ -4061,3 +4061,16 @@
   - Automation can now start from a standard policy and override thresholds per run while preserving seed policy identity in exported artifacts.
 - Next step:
   - add viewer import support for CLI compare/export JSON so operators can inspect CLI-generated comparison artifacts in the existing UI.
+
+### 2026-02-23 16:57-16:58 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding viewer import/inspection support for compact compare-report JSON (same format produced by viewer/CLI compare-export tools).
+- Added import UI (paste/upload/load-current-preview/clear) and inspector rendering for summary/rules/thresholds/metric deltas in `/support/phase8DiscrepancyViewer.html`, updated support docs/checklist to doc 103, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/103-phase8-wave3-viewer-import-cli-compare-report-json-20260223-200500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-165808.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (generate compact compare JSON -> import via Load Current Compare Preview -> PASS/policy/rules/metrics rendered)
+- Result:
+  - Operators can inspect CLI-generated compact comparison artifacts directly in the existing browser UI (same JSON format), improving UI/CLI workflow continuity.
+- Next step:
+  - add side-by-side diff mode for two imported compact compare reports (artifact review mode) or file-drag/drop import UX.

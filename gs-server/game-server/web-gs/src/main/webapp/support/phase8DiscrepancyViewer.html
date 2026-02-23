@@ -161,6 +161,55 @@
       </div>
     </div>
 
+    <div class="cardx" id="importCompareReportCard">
+      <h4 style="margin-top:0;">Import Compact Comparison Report (Viewer/CLI JSON)</h4>
+      <div class="toolbar">
+        <input type="file" id="compareReportFileInput" accept=".json,application/json" />
+        <button id="loadCurrentComparePreview" class="btn btn-default btn-sm">Load Current Compare Preview</button>
+        <button id="parseCompareReportJson" class="btn btn-default btn-sm">Parse Import JSON</button>
+        <button id="clearCompareReportImport" class="btn btn-default btn-sm">Clear Import</button>
+      </div>
+      <div class="footnote" id="importCompareReportMeta">Paste or upload a compact compare-report JSON to inspect it here.</div>
+      <div class="pane-grid" style="margin-top:10px;">
+        <div>
+          <div class="meta">Compare Report JSON Input</div>
+          <textarea id="compareReportJsonInput" rows="12" style="width:100%;" placeholder="Paste compact comparison report JSON (type=phase8-wave3-discrepancy-compare-report)"></textarea>
+        </div>
+        <div>
+          <div id="importCompareSummaryGrid" class="grid"></div>
+          <div class="footnote" id="importCompareSourcesLine"></div>
+        </div>
+      </div>
+      <div class="pane-grid" style="margin-top:10px;">
+        <div class="cardx" style="margin:0;">
+          <h4 style="margin-top:0;">Imported Rules</h4>
+          <ul id="importCompareRules" class="validation-list"></ul>
+        </div>
+        <div class="cardx" style="margin:0;">
+          <h4 style="margin-top:0;">Imported Thresholds</h4>
+          <pre id="importCompareThresholdsPreview">{}</pre>
+        </div>
+      </div>
+      <div class="table-wrap" style="margin-top:10px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>A Max Mismatch</th>
+              <th>B Max Mismatch</th>
+              <th>Delta (Mismatch)</th>
+              <th>A Snapshots</th>
+              <th>B Snapshots</th>
+              <th>Delta (Snapshots)</th>
+              <th>Only In B?</th>
+            </tr>
+          </thead>
+          <tbody id="importCompareMetricsBody"></tbody>
+        </table>
+      </div>
+      <div class="footnote" id="importCompareMetricsFoot"></div>
+    </div>
+
     <div class="cardx">
       <h4 style="margin-top:0;">Metrics</h4>
       <div class="table-wrap">
@@ -296,6 +345,8 @@
     let modelB = null;
     let sourceA = 'none';
     let sourceB = 'none';
+    let importedCompareReport = null;
+    let importedCompareSource = 'none';
     const THRESHOLD_PROFILES = {
       strict: {
         label: 'Strict Gate',
@@ -345,6 +396,16 @@
     function validateModel(data) {
       if (!data || typeof data !== 'object') throw new Error('JSON root must be an object');
       if (!data.metrics || typeof data.metrics !== 'object') throw new Error('Missing "metrics" object');
+      return data;
+    }
+
+    function validateCompareReport(data) {
+      if (!data || typeof data !== 'object') throw new Error('Compare report JSON root must be an object');
+      if (data.type !== 'phase8-wave3-discrepancy-compare-report') throw new Error('Unsupported compare report type');
+      if (!data.summary || typeof data.summary !== 'object') throw new Error('Missing compare report "summary" object');
+      if (!Array.isArray(data.rules)) throw new Error('Missing compare report "rules" array');
+      if (!Array.isArray(data.metrics)) throw new Error('Missing compare report "metrics" array');
+      if (!data.thresholds || typeof data.thresholds !== 'object') throw new Error('Missing compare report "thresholds" object');
       return data;
     }
 
@@ -666,6 +727,86 @@
       meta.textContent = `Compact comparison report ready | overall=${artifacts.json.summary.overall} | metrics=${artifacts.json.metrics.length}`;
     }
 
+    function renderImportedCompareReport() {
+      const card = q('importCompareReportCard');
+      const grid = q('importCompareSummaryGrid');
+      const rulesEl = q('importCompareRules');
+      const thresholdsPre = q('importCompareThresholdsPreview');
+      const metricsBody = q('importCompareMetricsBody');
+      const metricsFoot = q('importCompareMetricsFoot');
+      const sourcesLine = q('importCompareSourcesLine');
+      const meta = q('importCompareReportMeta');
+
+      grid.innerHTML = '';
+      rulesEl.innerHTML = '';
+      metricsBody.innerHTML = '';
+      thresholdsPre.textContent = '{}';
+
+      card.classList.remove('hidden');
+      if (!importedCompareReport) {
+        sourcesLine.textContent = 'No compact compare-report JSON imported yet.';
+        metricsFoot.textContent = 'imported metrics: 0';
+        meta.textContent = 'Paste or upload a compact compare-report JSON to inspect it here.';
+        return;
+      }
+      const r = importedCompareReport;
+      const s = r.summary || {};
+      const t = r.thresholds || {};
+      const overall = String(s.overall || '-');
+      const overallCls = overall === 'PASS' ? 'pill-pass' : (overall === 'FAIL' ? 'pill-fail' : 'pill-info');
+      const cards = [
+        ['Overall', `<span class="status-pill ${overallCls}">${overall}</span>`],
+        ['Policy', `${t.profile || '-'}${t.profileLabel ? ` (${t.profileLabel})` : ''}`],
+        ['Pass Rules', s.passRules ?? '-'],
+        ['Fail Rules', s.failRules ?? '-'],
+        ['A Mismatch', s.aMismatchMetrics ?? '-'],
+        ['B Mismatch', s.bMismatchMetrics ?? '-'],
+        ['Delta Mismatch', s.deltaMismatchMetrics ?? '-'],
+        ['Union Metric Count', s.unionMetricCount ?? r.metrics.length]
+      ];
+      grid.innerHTML = cards.map(([k, v]) => `\n        <div class="cell"><div class="k">${k}</div><div class="v">${typeof v === 'number' ? v : v}</div></div>`).join('');
+
+      (r.rules || []).forEach((ruleObj) => {
+        const status = String(ruleObj.status || 'INFO');
+        const cls = status === 'PASS' ? 'pill-pass' : (status === 'FAIL' ? 'pill-fail' : 'pill-info');
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="status-pill ${cls}">${status}</span> ${String(ruleObj.label || '-')}` +
+          ` <span class="muted">(${String(ruleObj.detail || '-')})</span>`;
+        rulesEl.appendChild(li);
+      });
+
+      thresholdsPre.textContent = JSON.stringify(t, null, 2);
+
+      (r.metrics || []).forEach((m) => {
+        const tr = document.createElement('tr');
+        const deltaMismatch = asNum(m.deltaMismatch, 0);
+        const deltaSnapshots = asNum(m.deltaSnapshots, 0);
+        const rowMismatch = asNum(m.aMaxMismatch, 0) > 0 || asNum(m.bMaxMismatch, 0) > 0 || deltaMismatch !== 0;
+        if (rowMismatch) tr.classList.add('metric-row-has-mismatch');
+        if (m.compareOnlyInB) tr.classList.add('metric-row-compare-only');
+        tr.innerHTML = `
+          <td><code>${String(m.metric || '-')}</code></td>
+          <td>${formatValue(m.aMaxMismatch)}</td>
+          <td>${formatValue(m.bMaxMismatch)}</td>
+          <td>${formatDelta(deltaMismatch)}</td>
+          <td>${formatValue(m.aSnapshots)}</td>
+          <td>${formatValue(m.bSnapshots)}</td>
+          <td>${formatDelta(deltaSnapshots)}</td>
+          <td><span class="badge-soft ${m.compareOnlyInB ? 'bad' : 'ok'}">${m.compareOnlyInB ? 'YES' : 'NO'}</span></td>
+        `;
+        metricsBody.appendChild(tr);
+      });
+
+      const srcA = (r.sources && r.sources.baselineA) || {};
+      const srcB = (r.sources && r.sources.comparisonB) || {};
+      const srcALabel = srcA.file || srcA.label || '-';
+      const srcBLabel = srcB.file || srcB.label || '-';
+      sourcesLine.textContent =
+        `sourceA=${srcALabel} | sourceB=${srcBLabel} | sourceFiles(A)=${(srcA.sourceFiles || []).join(', ') || '-'} | sourceFiles(B)=${(srcB.sourceFiles || []).join(', ') || '-'}`;
+      metricsFoot.textContent = `imported metrics: ${(r.metrics || []).length} | imported from: ${importedCompareSource}`;
+      meta.textContent = `Imported compact compare report OK | overall=${overall} | policy=${t.profile || '-'} | source=${importedCompareSource}`;
+    }
+
     function renderValidation() {
       const grid = q('validationSummaryGrid');
       const list = q('validationChecklist');
@@ -809,6 +950,7 @@
       renderMetrics();
       renderValidation();
       renderCompareExports();
+      renderImportedCompareReport();
       renderRaw();
     }
 
@@ -855,6 +997,48 @@
       parseIntoTarget(JSON.stringify(sample, null, 2), 'B', 'embedded-sample-b');
     }
 
+    function parseCompareReportImportText(text, sourceLabel) {
+      const parsed = validateCompareReport(JSON.parse(text));
+      importedCompareReport = parsed;
+      importedCompareSource = sourceLabel;
+      q('compareReportJsonInput').value = text;
+      renderAll();
+    }
+
+    function parseCompareReportImportTextarea() {
+      try {
+        const text = q('compareReportJsonInput').value.trim();
+        if (!text) {
+          q('importCompareReportMeta').textContent = 'Paste or upload a compact compare-report JSON to inspect it here.';
+          return;
+        }
+        parseCompareReportImportText(text, 'textarea:compare-report');
+      } catch (err) {
+        q('importCompareReportMeta').textContent = `Failed to parse compare report JSON: ${String(err.message || err)}`;
+      }
+    }
+
+    function loadCurrentComparePreviewIntoImport() {
+      try {
+        renderCompareExports();
+        const raw = q('compareExportCard').dataset.reportJson || q('compareJsonPreview').textContent;
+        if (!raw || raw.trim() === '{}' || raw.trim() === '') {
+          q('importCompareReportMeta').textContent = 'No current compare report preview is available yet. Load A/B, enable compare mode, and generate a report first.';
+          return;
+        }
+        parseCompareReportImportText(raw, 'current-compare-preview');
+      } catch (err) {
+        q('importCompareReportMeta').textContent = `Failed to load current compare preview: ${String(err.message || err)}`;
+      }
+    }
+
+    function clearCompareReportImport() {
+      importedCompareReport = null;
+      importedCompareSource = 'none';
+      q('compareReportJsonInput').value = '';
+      renderAll();
+    }
+
     q('loadSampleA').addEventListener('click', loadSampleA);
     q('loadSampleB').addEventListener('click', loadSampleB);
     q('parseTextareas').addEventListener('click', parseTextareas);
@@ -872,6 +1056,9 @@
     });
     q('generateCompareJson').addEventListener('click', renderCompareExports);
     q('generateCompareMarkdown').addEventListener('click', renderCompareExports);
+    q('loadCurrentComparePreview').addEventListener('click', loadCurrentComparePreviewIntoImport);
+    q('parseCompareReportJson').addEventListener('click', parseCompareReportImportTextarea);
+    q('clearCompareReportImport').addEventListener('click', clearCompareReportImport);
     q('downloadCompareJson').addEventListener('click', () => {
       renderCompareExports();
       const raw = q('compareExportCard').dataset.reportJson;
@@ -897,6 +1084,13 @@
       if (!file) return;
       try { parseIntoTarget(await file.text(), 'B', `fileB:${file.name}`); }
       catch (err) { q('metaLine').innerHTML = `<span style="color:#b42318;">Failed to parse JSON B: ${String(err.message || err)}</span>`; }
+    });
+
+    q('compareReportFileInput').addEventListener('change', async (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      try { parseCompareReportImportText(await file.text(), `fileCompare:${file.name}`); }
+      catch (err) { q('importCompareReportMeta').textContent = `Failed to parse compare report file: ${String(err.message || err)}`; }
     });
 
     q('compareSummaryCard').classList.add('hidden');
