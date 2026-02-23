@@ -4113,3 +4113,16 @@
   - Operators can triage large imported artifact diffs faster using rule-status filters and metric-name search without changing GS runtime behavior.
 - Next step:
   - add saved local triage presets for imported artifact diff mode (filters + search) to speed repeated operator workflows.
+
+### 2026-02-23 17:24-17:25 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding browser-local saved triage presets for imported compact compare-report artifact diff mode (filters + search) in the discrepancy viewer.
+- Added preset manager (save/apply/delete, localStorage-backed) for changed-only toggles, rule-status filters, and metric search; updated support docs/checklist to doc 107, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/107-phase8-wave3-imported-report-diff-local-triage-presets-20260223-210500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-172442.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (save/apply/delete preset restores triage state and row counts)
+- Result:
+  - Operators can save and reuse local triage setups for repeated imported artifact reviews without changing GS runtime behavior.
+- Next step:
+  - add triage preset export/import (JSON) for sharing operator triage templates across machines.

@@ -258,6 +258,18 @@
           </label>
           <button id="clearImportDiffMetricSearch" class="btn btn-default btn-sm">Clear Search</button>
         </div>
+        <div class="toolbar" style="margin-top:8px;">
+          <label style="font-weight:normal; margin:0;">Saved triage preset
+            <select id="importDiffPresetSelect" style="margin-left:6px; width:220px;">
+              <option value="">(none)</option>
+            </select>
+          </label>
+          <input type="text" id="importDiffPresetName" placeholder="preset name" style="width:160px;" />
+          <button id="saveImportDiffPreset" class="btn btn-default btn-sm">Save Preset</button>
+          <button id="applyImportDiffPreset" class="btn btn-default btn-sm">Apply Preset</button>
+          <button id="deleteImportDiffPreset" class="btn btn-default btn-sm">Delete Preset</button>
+        </div>
+        <div class="footnote" id="importDiffPresetMeta">Saved triage presets are local to this browser only.</div>
         <div class="footnote" id="importCompareDiffMeta">Load Imported A and Imported B compact compare-report JSON to compare artifacts.</div>
         <div id="importCompareDiffSummaryGrid" class="grid" style="margin-top:10px;"></div>
         <div class="pane-grid" style="margin-top:10px;">
@@ -431,6 +443,8 @@
     let importedCompareSource = 'none';
     let importedCompareReportB = null;
     let importedCompareSourceB = 'none';
+    const IMPORT_DIFF_PRESET_STORAGE_KEY = 'abs.gs.phase8.importDiffTriagePresets.v1';
+    let importDiffPresets = {};
     const THRESHOLD_PROFILES = {
       strict: {
         label: 'Strict Gate',
@@ -503,6 +517,104 @@
 
     function compareEnabled() {
       return q('compareEnabled').checked && !!modelB;
+    }
+
+    function readImportDiffPresets() {
+      try {
+        const raw = window.localStorage ? window.localStorage.getItem(IMPORT_DIFF_PRESET_STORAGE_KEY) : null;
+        if (!raw) return {};
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
+        return parsed;
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function writeImportDiffPresets() {
+      try {
+        if (!window.localStorage) return false;
+        window.localStorage.setItem(IMPORT_DIFF_PRESET_STORAGE_KEY, JSON.stringify(importDiffPresets));
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function captureImportDiffTriagePreset() {
+      return {
+        rulesChangedOnly: !!q('importDiffRulesChangedOnly').checked,
+        metricsChangedOnly: !!q('importDiffMetricsChangedOnly').checked,
+        ruleStatusPass: !!q('importDiffRuleStatusPass').checked,
+        ruleStatusFail: !!q('importDiffRuleStatusFail').checked,
+        ruleStatusInfo: !!q('importDiffRuleStatusInfo').checked,
+        ruleStatusMissing: !!q('importDiffRuleStatusMissing').checked,
+        metricSearch: String(q('importDiffMetricSearch').value || ''),
+        savedAtUtc: new Date().toISOString()
+      };
+    }
+
+    function applyImportDiffTriagePresetState(preset) {
+      if (!preset || typeof preset !== 'object') return;
+      q('importDiffRulesChangedOnly').checked = !!preset.rulesChangedOnly;
+      q('importDiffMetricsChangedOnly').checked = !!preset.metricsChangedOnly;
+      q('importDiffRuleStatusPass').checked = !!preset.ruleStatusPass;
+      q('importDiffRuleStatusFail').checked = !!preset.ruleStatusFail;
+      q('importDiffRuleStatusInfo').checked = !!preset.ruleStatusInfo;
+      q('importDiffRuleStatusMissing').checked = !!preset.ruleStatusMissing;
+      q('importDiffMetricSearch').value = String(preset.metricSearch || '');
+      renderImportedCompareReportDiff();
+    }
+
+    function refreshImportDiffPresetSelect() {
+      const sel = q('importDiffPresetSelect');
+      const current = sel.value;
+      const names = Object.keys(importDiffPresets).sort((a, b) => a.localeCompare(b));
+      sel.innerHTML = '<option value=\"\">(none)</option>' + names.map((name) => `<option value=\"${name.replace(/\"/g, '&quot;')}\">${name}</option>`).join('');
+      if (current && names.includes(current)) sel.value = current;
+      q('importDiffPresetMeta').textContent = `Saved triage presets are local to this browser only. Count=${names.length}`;
+    }
+
+    function saveCurrentImportDiffPreset() {
+      const name = String(q('importDiffPresetName').value || q('importDiffPresetSelect').value || '').trim();
+      if (!name) {
+        q('importDiffPresetMeta').textContent = 'Enter a preset name to save the current triage filters.';
+        return;
+      }
+      importDiffPresets[name] = captureImportDiffTriagePreset();
+      const ok = writeImportDiffPresets();
+      refreshImportDiffPresetSelect();
+      q('importDiffPresetSelect').value = name;
+      q('importDiffPresetName').value = name;
+      q('importDiffPresetMeta').textContent = ok
+        ? `Saved triage preset: ${name}`
+        : `Preset saved in memory only (localStorage unavailable): ${name}`;
+    }
+
+    function applySelectedImportDiffPreset() {
+      const name = String(q('importDiffPresetSelect').value || '').trim();
+      if (!name || !importDiffPresets[name]) {
+        q('importDiffPresetMeta').textContent = 'Select a saved triage preset to apply.';
+        return;
+      }
+      q('importDiffPresetName').value = name;
+      applyImportDiffTriagePresetState(importDiffPresets[name]);
+      q('importDiffPresetMeta').textContent = `Applied triage preset: ${name}`;
+    }
+
+    function deleteSelectedImportDiffPreset() {
+      const name = String(q('importDiffPresetSelect').value || '').trim();
+      if (!name || !importDiffPresets[name]) {
+        q('importDiffPresetMeta').textContent = 'Select a saved triage preset to delete.';
+        return;
+      }
+      delete importDiffPresets[name];
+      const ok = writeImportDiffPresets();
+      q('importDiffPresetName').value = '';
+      refreshImportDiffPresetSelect();
+      q('importDiffPresetMeta').textContent = ok
+        ? `Deleted triage preset: ${name}`
+        : `Deleted preset in memory only (localStorage unavailable): ${name}`;
     }
 
     function metricContextHtml(m) {
@@ -1351,6 +1463,13 @@
       q('importDiffMetricSearch').value = '';
       renderImportedCompareReportDiff();
     });
+    q('saveImportDiffPreset').addEventListener('click', saveCurrentImportDiffPreset);
+    q('applyImportDiffPreset').addEventListener('click', applySelectedImportDiffPreset);
+    q('deleteImportDiffPreset').addEventListener('click', deleteSelectedImportDiffPreset);
+    q('importDiffPresetSelect').addEventListener('change', () => {
+      const name = String(q('importDiffPresetSelect').value || '').trim();
+      if (name) q('importDiffPresetName').value = name;
+    });
     ['thresholdMismatchA','thresholdMismatchB','thresholdMismatchDelta','thresholdSnapshotDelta','thresholdAllowNewMetrics']
       .forEach((id) => q(id).addEventListener('change', () => { markThresholdProfileCustom(); renderAll(); }));
     q('thresholdProfilePreset').addEventListener('change', updateThresholdProfileMeta);
@@ -1414,6 +1533,8 @@
     q('compareSummaryCard').classList.add('hidden');
     q('compareExportCard').classList.add('hidden');
     q('importCompareDiffCard').classList.add('hidden');
+    importDiffPresets = readImportDiffPresets();
+    refreshImportDiffPresetSelect();
     updateThresholdProfileMeta();
     loadSampleA();
   </script>

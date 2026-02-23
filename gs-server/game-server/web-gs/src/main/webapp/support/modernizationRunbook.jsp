@@ -60,7 +60,7 @@
             Compare mode remains disabled by default; enable only in non-production validation.
         </p>
         <p class="small-note">
-            Optional viewer page for exported JSON: <code>/support/phase8DiscrepancyViewer.html</code> (supports file upload, pasted JSON, embedded samples, A-vs-B compare mode, guided validation thresholds/pass-fail badges, named threshold policy profiles, compact JSON/Markdown comparison report export, compact compare-report JSON import/inspection, imported-artifact diff mode for two compact compare reports, changed-only diff filters, drag/drop import onto Imported A/B text areas, rule-status diff filters, and metric-name search triage in <code>file://</code> mode). For non-UI automation, use CLI compare/export: <code>gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export.sh</code> (named policy profiles with optional per-run threshold overrides).
+            Optional viewer page for exported JSON: <code>/support/phase8DiscrepancyViewer.html</code> (supports file upload, pasted JSON, embedded samples, A-vs-B compare mode, guided validation thresholds/pass-fail badges, named threshold policy profiles, compact JSON/Markdown comparison report export, compact compare-report JSON import/inspection, imported-artifact diff mode for two compact compare reports, changed-only diff filters, drag/drop import onto Imported A/B text areas, rule-status diff filters, metric-name search triage, and browser-local saved triage presets in <code>file://</code> mode). For non-UI automation, use CLI compare/export: <code>gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export.sh</code> (named policy profiles with optional per-run threshold overrides).
         </p>
     </div>
 
