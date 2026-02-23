@@ -229,6 +229,21 @@
     </div>
 
     <div class="section">
+        <h4>Phase 8 Precision / Min-Bet Audit Scan (GS-only)</h4>
+        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-minbet-audit-scan.sh
+# Then sync dashboard embedded data if checklist/evidence changed:
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/sync-modernization-dashboard-embedded-data.sh
+</code></pre>
+        <p class="small-note">
+            Output reports: <code>docs/phase8/precision/phase8-precision-minbet-audit-*.md</code>
+        </p>
+        <p class="small-note">
+            Scope is GS-only (<code>game-server</code> + <code>refactor-services</code>) and is used to prioritize 0.001 precision remediation waves without changing runtime behavior yet.
+        </p>
+    </div>
+
+    <div class="section">
         <h4>Quick Links</h4>
         <ul>
             <li><a href="/support/modernizationProgress.html">/support/modernizationProgress.html</a></li>

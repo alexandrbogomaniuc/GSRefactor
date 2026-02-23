@@ -3666,3 +3666,27 @@
   - Runtime JSON security validation tooling is ready for non-prod secret-enabled canary runs without forcing an immediate runtime secret rollout.
 - Next step:
   - commit this runtime probe tooling batch, then continue main project implementation (either runtime secret injection path for protocol-adapter canary or precision/min-bet audit scaffolding).
+
+### 2026-02-23 14:43-14:50 UTC
+- Started Phase 8 precision/min-bet modernization kickoff with a GS-only audit scanner (no behavior change yet).
+- Implementation updates:
+  - New scan script: `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-minbet-audit-scan.sh`
+  - Local verification suite expanded with Phase 8 scanner `--help` gate:
+    `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh`
+  - Checklist/portal updates:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json` (`pu-precision-audit` -> `in_progress`)
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+  - New evidence doc:
+    `/Users/alexb/Documents/Dev/Dev_new/docs/83-phase8-precision-minbet-audit-scan-kickoff-20260223-145000.md`
+- Evidence:
+  - `phase8-precision-minbet-audit-scan.sh` syntax + help passed and generated report:
+    `/Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision/phase8-precision-minbet-audit-20260223-144425.md`
+  - `sync-modernization-dashboard-embedded-data.sh` ran successfully (`embedded-checklist synced: 26/41`, `updatedAt=2026-02-23`)
+  - `phase5-6-local-verification-suite.sh` passed with expanded checks:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-144425.md`
+    - summary: PASS=22, FAIL=0, SKIP=0
+- Result:
+  - Phase 8 is now actively tracked with repeatable audit evidence and test gating; no runtime behavior changes introduced.
+- Next step:
+  - split Phase 8 remediation into safe waves and add executable precision regression tests before changing money arithmetic.

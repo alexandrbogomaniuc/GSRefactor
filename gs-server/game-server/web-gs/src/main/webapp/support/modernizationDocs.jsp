@@ -158,8 +158,8 @@
             </tr>
             <tr>
                 <td>Phase 8 - Precision Modernization</td>
-                <td>Requirements baseline for 0.001 path</td>
-                <td><code>docs/19-requirements-from-user.md</code></td>
+                <td>0.001 support audit kickoff (hardcoded minimums, rounding, float/double hotspots)</td>
+                <td><code>docs/19-requirements-from-user.md</code><br/><code>docs/83-phase8-precision-minbet-audit-scan-kickoff-20260223-145000.md</code><br/><code>docs/phase8/precision/</code></td>
             </tr>
             <tr>
                 <td>Phase 9 - Branding/Namespace</td>
