@@ -308,6 +308,7 @@
         <textarea id="importDiffPresetGuardJsonInput" rows="4" placeholder="Paste overwrite-guard settings JSON here (exported from this viewer)." style="width:100%; margin-top:8px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;"></textarea>
         <div class="footnote" id="importDiffPresetGuardExchangeMeta">Share overwrite-guard settings across machines via JSON export/import.</div>
         <div class="footnote" id="importDiffPresetGuardPreviewMeta">Guard settings preview: <span class="status-pill pill-info">NONE</span> Paste JSON and use Preview Guard JSON before apply.</div>
+        <div class="footnote" id="importDiffPresetGuardPreviewDiffMeta">Guard preview vs current: <span class="status-pill pill-info">NONE</span> Preview a guard JSON to compare candidate settings with the currently applied guard.</div>
         <div class="footnote" id="importDiffPresetGuardCompatMeta">Guard settings compatibility: <span class="status-pill pill-info">UNKNOWN</span> Awaiting export/import.</div>
         <div class="footnote">Tip: you can also drag/drop an overwrite-guard settings JSON file or JSON text onto the guard JSON textarea.</div>
         <div class="toolbar" style="margin-top:8px;">
@@ -769,6 +770,7 @@
       const el = q('importDiffPresetGuardPreviewMeta');
       if (!preview) {
         el.innerHTML = 'Guard settings preview: <span class=\"status-pill pill-info\">NONE</span> Paste JSON and use Preview Guard JSON before apply.';
+        renderImportDiffPresetGuardPreviewDiffMeta(null);
         return;
       }
       const status = String(preview.status || 'READY');
@@ -776,6 +778,7 @@
       const src = sourceLabel ? ` source=${sourceLabel}` : '';
       if (status === 'ERROR') {
         el.innerHTML = `Guard settings preview: <span class=\"status-pill ${pillCls}\">ERROR</span>${src ? ` <code>${src.trim()}</code>` : ''} <span class=\"muted\">${String(preview.message || 'Preview failed')}</span>`;
+        renderImportDiffPresetGuardPreviewDiffMeta(preview);
         return;
       }
       const m = meta || {};
@@ -787,6 +790,40 @@
       el.innerHTML = `Guard settings preview: <span class=\"status-pill ${pillCls}\">READY</span> ` +
         `<code>profile=${preview.profile}</code> <code>threshold=${preview.threshold}</code> <code>enabled=${preview.enabled}</code>` +
         (extras.length ? ` <span class=\"muted\">(${extras.join(' | ')})</span>` : '');
+      renderImportDiffPresetGuardPreviewDiffMeta(preview);
+    }
+
+    function currentImportDiffPresetGuardStateSnapshot() {
+      return {
+        profile: String(importDiffPresetOverwriteGuardProfile || q('importDiffPresetGuardProfile').value || 'default'),
+        threshold: currentImportDiffPresetGuardThreshold(),
+        enabled: importDiffPresetGuardEnabled()
+      };
+    }
+
+    function renderImportDiffPresetGuardPreviewDiffMeta(preview) {
+      const el = q('importDiffPresetGuardPreviewDiffMeta');
+      if (!preview) {
+        el.innerHTML = 'Guard preview vs current: <span class=\"status-pill pill-info\">NONE</span> Preview a guard JSON to compare candidate settings with the currently applied guard.';
+        return;
+      }
+      const status = String(preview.status || 'READY');
+      if (status === 'ERROR') {
+        el.innerHTML = `Guard preview vs current: <span class=\"status-pill pill-fail\">ERROR</span> <span class=\"muted\">${String(preview.message || 'Preview failed')}</span>`;
+        return;
+      }
+      const current = currentImportDiffPresetGuardStateSnapshot();
+      const changed = [];
+      if (String(current.profile) !== String(preview.profile)) changed.push('profile');
+      if (Number(current.threshold) !== Number(preview.threshold)) changed.push('threshold');
+      if (!!current.enabled !== !!preview.enabled) changed.push('enabled');
+      const same = changed.length === 0;
+      const pillCls = same ? 'pill-pass' : 'pill-info';
+      const statusLabel = same ? 'SAME' : 'DIFF';
+      el.innerHTML = `Guard preview vs current: <span class=\"status-pill ${pillCls}\">${statusLabel}</span> ` +
+        `<code>current.profile=${current.profile}</code> <code>current.threshold=${current.threshold}</code> <code>current.enabled=${current.enabled}</code> ` +
+        `<code>candidate.profile=${preview.profile}</code> <code>candidate.threshold=${preview.threshold}</code> <code>candidate.enabled=${preview.enabled}</code>` +
+        (changed.length ? ` <span class=\"muted\">(changed=${changed.join(',')})</span>` : ' <span class=\"muted\">(no changes)</span>');
     }
 
     function renderImportDiffPresetGuardCompatMeta(meta, sourceLabel) {
@@ -957,6 +994,11 @@
           { type: inspected.metaType, version: inspected.metaVersion }
         );
         const applied = applyImportDiffPresetGuardSettings(inspected.guardPayload);
+        renderImportDiffPresetGuardPreviewMeta(
+          { status: 'READY', profile: applied.profile, threshold: applied.threshold, enabled: applied.enabled, mode: preview.mode },
+          src,
+          { type: inspected.metaType, version: inspected.metaVersion }
+        );
         q('importDiffPresetGuardExchangeMeta').textContent =
           `Imported guard settings JSON: type=${inspected.metaType} version=${inspected.metaVersion} -> profile=${applied.profile}, threshold=${applied.threshold}, enabled=${applied.enabled}`;
         renderImportDiffPresetGuardCompatMeta({

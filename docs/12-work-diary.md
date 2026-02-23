@@ -4295,3 +4295,18 @@
   - Operators can inspect the normalized overwrite-guard settings that will be applied before import, reducing mistakes during cross-machine safety-profile sharing in `file://` mode.
 - Next step:
   - add preset suggestion generation from imported compare-report artifacts (viewer-only) or add guard-share import preview diff vs current guard state.
+
+### 2026-02-23 19:58-20:00 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding a guard-share preview diff row (`Guard preview vs current`) that compares preview candidate settings with the currently applied overwrite-guard state and reports `DIFF/SAME/ERROR/NONE` with changed fields.
+- Import path now re-renders the preview after apply so the diff row flips from `DIFF` to `SAME` when the candidate is applied successfully.
+- Updated support docs/checklist to doc 120, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/120-phase8-wave3-viewer-guard-preview-diff-vs-current-20260224-021500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-200015.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (preview diff `DIFF` before import, `SAME` after import; error/clear reset verified)
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (reload shows doc 120 evidence path; embedded snapshot fingerprint updated; count remains 26/41)
+- Result:
+  - Operators can now see exactly what will change in overwrite-guard settings before import and confirm the applied state matches the preview in `file://` mode.
+- Next step:
+  - add preset suggestion generation from imported compare-report artifacts (viewer-only) or extend guard-share preview with a compact exportable pre-apply review summary.
