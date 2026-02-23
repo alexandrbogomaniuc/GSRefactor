@@ -4182,3 +4182,17 @@
   - Operators can see preset import impact before merging shared bundles, reducing accidental overwrites in `file://` mode.
 - Next step:
   - add preset import preview confirmation guard for high-overwrite merges (viewer-only) or preset suggestion generation from imported compare-report artifacts.
+
+### 2026-02-23 19:11-19:13 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding a high-overwrite confirmation guard for triage preset bundle merges (threshold `overwrite >= 2`) in the viewer, enforced in the shared preset merge path for textarea/file/drop imports.
+- Added guard threshold note + cancellation state (`MERGE_CANCELLED`), updated support docs/checklist to doc 112, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/112-phase8-wave3-triage-preset-bundle-overwrite-confirm-guard-20260223-233500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-191136.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (cancel + confirm guard paths verified with `window.confirm` override)
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (reload shows doc 112 evidence path; count remains 26/41)
+- Result:
+  - High-overwrite preset merges now require explicit confirmation, reducing accidental triage preset overwrites during cross-machine sharing in `file://` mode.
+- Next step:
+  - add preset suggestion generation from imported compare-report artifacts (viewer-only) or configurable overwrite-guard threshold/profile presets for operators.
