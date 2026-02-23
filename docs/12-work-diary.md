@@ -4100,3 +4100,16 @@
   - Operators can triage imported artifact diffs faster (changed-only toggles) and import compact compare reports more easily via drag/drop, without changing GS runtime behavior.
 - Next step:
   - add imported artifact diff filters by rule status class and metric-name search for faster triage of large compare reports.
+
+### 2026-02-23 17:19-17:20 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding imported artifact diff triage filters in the discrepancy viewer (rule-status class filters + metric-name search for compact compare-report A/B diff mode).
+- Added PASS/FAIL/INFO/MISSING rule filters, metric-name search + clear action, updated diff counts/meta, updated support docs/checklist to doc 106, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/106-phase8-wave3-imported-report-diff-triage-filters-20260223-205000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-171950.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (FAIL-only rule filter 11->5 rows, metric search 3->1 rows, clear restores rows)
+- Result:
+  - Operators can triage large imported artifact diffs faster using rule-status filters and metric-name search without changing GS runtime behavior.
+- Next step:
+  - add saved local triage presets for imported artifact diff mode (filters + search) to speed repeated operator workflows.

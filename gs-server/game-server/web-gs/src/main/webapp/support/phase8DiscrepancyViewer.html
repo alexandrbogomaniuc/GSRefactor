@@ -238,6 +238,26 @@
             <input type="checkbox" id="importDiffMetricsChangedOnly" checked /> Show changed metrics only
           </label>
         </div>
+        <div class="toolbar" style="margin-top:8px;">
+          <label style="font-weight:normal; margin:0;">
+            <input type="checkbox" id="importDiffRuleStatusPass" checked /> PASS
+          </label>
+          <label style="font-weight:normal; margin:0;">
+            <input type="checkbox" id="importDiffRuleStatusFail" checked /> FAIL
+          </label>
+          <label style="font-weight:normal; margin:0;">
+            <input type="checkbox" id="importDiffRuleStatusInfo" checked /> INFO
+          </label>
+          <label style="font-weight:normal; margin:0;">
+            <input type="checkbox" id="importDiffRuleStatusMissing" checked /> MISSING
+          </label>
+        </div>
+        <div class="toolbar" style="margin-top:8px;">
+          <label style="font-weight:normal; margin:0;">Metric name search
+            <input type="text" id="importDiffMetricSearch" placeholder="e.g. templateMaxBet" style="margin-left:6px; width:220px;" />
+          </label>
+          <button id="clearImportDiffMetricSearch" class="btn btn-default btn-sm">Clear Search</button>
+        </div>
         <div class="footnote" id="importCompareDiffMeta">Load Imported A and Imported B compact compare-report JSON to compare artifacts.</div>
         <div id="importCompareDiffSummaryGrid" class="grid" style="margin-top:10px;"></div>
         <div class="pane-grid" style="margin-top:10px;">
@@ -910,6 +930,11 @@
       (b.rules || []).forEach((r) => { rulesB[String(r.label || '')] = r; });
       const ruleLabels = [...new Set([...Object.keys(rulesA), ...Object.keys(rulesB)])].sort((x, y) => x.localeCompare(y));
       const changedRulesOnly = q('importDiffRulesChangedOnly').checked;
+      const allowedRuleStatuses = new Set();
+      if (q('importDiffRuleStatusPass').checked) allowedRuleStatuses.add('PASS');
+      if (q('importDiffRuleStatusFail').checked) allowedRuleStatuses.add('FAIL');
+      if (q('importDiffRuleStatusInfo').checked) allowedRuleStatuses.add('INFO');
+      if (q('importDiffRuleStatusMissing').checked) allowedRuleStatuses.add('MISSING');
       let changedRuleCount = 0;
       let visibleRuleCount = 0;
       ruleLabels.forEach((label) => {
@@ -922,6 +947,7 @@
         const changed = !(sa === sb && da === db);
         if (changed) changedRuleCount += 1;
         if (changedRulesOnly && !changed) return;
+        if (!(allowedRuleStatuses.has(sa) || allowedRuleStatuses.has(sb))) return;
         visibleRuleCount += 1;
         const li = document.createElement('li');
         li.innerHTML = `<span class="status-pill ${sa === 'PASS' ? 'pill-pass' : (sa === 'FAIL' ? 'pill-fail' : 'pill-info')}">${sa}</span> A ` +
@@ -944,6 +970,7 @@
       (b.metrics || []).forEach((m) => { metricB[String(m.metric || '')] = m; });
       const metricKeys = [...new Set([...Object.keys(metricA), ...Object.keys(metricB)])].sort((x, y) => x.localeCompare(y));
       const changedMetricsOnly = q('importDiffMetricsChangedOnly').checked;
+      const metricSearch = String(q('importDiffMetricSearch').value || '').trim().toLowerCase();
       let changedMetricRows = 0;
       let visibleMetricRows = 0;
       metricKeys.forEach((key) => {
@@ -958,6 +985,7 @@
         const changed = !ma || !mb || aDm !== bDm || aDs !== bDs || aOnly !== bOnly;
         if (changed) changedMetricRows += 1;
         if (changedMetricsOnly && !changed) return;
+        if (metricSearch && !String(key || '').toLowerCase().includes(metricSearch)) return;
         visibleMetricRows += 1;
         const tr = document.createElement('tr');
         if (changed) tr.classList.add('metric-row-has-mismatch');
@@ -976,8 +1004,8 @@
         metricsBody.appendChild(tr);
       });
 
-      meta.textContent = `Imported artifact diff ready | A=${importedCompareSource} | B=${importedCompareSourceB} | changedRules=${changedRuleCount} | visibleRules=${visibleRuleCount} | changedMetrics=${changedMetricRows}`;
-      metricsFoot.textContent = `compared imported metrics: ${metricKeys.length} | visible rows: ${visibleMetricRows} | changed rows: ${changedMetricRows}`;
+      meta.textContent = `Imported artifact diff ready | A=${importedCompareSource} | B=${importedCompareSourceB} | changedRules=${changedRuleCount} | visibleRules=${visibleRuleCount} | changedMetrics=${changedMetricRows} | ruleStatusFilter=${[...allowedRuleStatuses].join(',') || 'none'}`;
+      metricsFoot.textContent = `compared imported metrics: ${metricKeys.length} | visible rows: ${visibleMetricRows} | changed rows: ${changedMetricRows}${metricSearch ? ` | search=\"${metricSearch}\"` : ''}`;
     }
 
     function renderImportedCompareReport() {
@@ -1316,6 +1344,13 @@
     q('mismatchOnly').addEventListener('change', renderAll);
     q('importDiffRulesChangedOnly').addEventListener('change', renderImportedCompareReportDiff);
     q('importDiffMetricsChangedOnly').addEventListener('change', renderImportedCompareReportDiff);
+    ['importDiffRuleStatusPass','importDiffRuleStatusFail','importDiffRuleStatusInfo','importDiffRuleStatusMissing']
+      .forEach((id) => q(id).addEventListener('change', renderImportedCompareReportDiff));
+    q('importDiffMetricSearch').addEventListener('input', renderImportedCompareReportDiff);
+    q('clearImportDiffMetricSearch').addEventListener('click', () => {
+      q('importDiffMetricSearch').value = '';
+      renderImportedCompareReportDiff();
+    });
     ['thresholdMismatchA','thresholdMismatchB','thresholdMismatchDelta','thresholdSnapshotDelta','thresholdAllowNewMetrics']
       .forEach((id) => q(id).addEventListener('change', () => { markThresholdProfileCustom(); renderAll(); }));
     q('thresholdProfilePreset').addEventListener('change', updateThresholdProfileMeta);
