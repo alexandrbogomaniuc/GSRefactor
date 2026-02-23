@@ -4022,3 +4022,16 @@
   - Non-developer operators can generate/download compact comparison reports from Phase 8 discrepancy exports directly in the browser (`file://` mode supported).
 - Next step:
   - add reusable threshold policy profiles and/or parser-side compact comparison CLI export for non-UI automation.
+
+### 2026-02-23 16:41-16:42 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding named threshold policy profiles to the discrepancy viewer (`Strict Gate`, `Canary Gate`, `Shadow Observe`, `Demo Sample Pass`, plus `Custom`).
+- Added profile selector/apply flow and profile descriptions, exported the active policy name in compact comparison JSON/Markdown reports, updated support docs/checklist to doc 100, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/100-phase8-wave3-viewer-named-threshold-policy-profiles-20260223-191500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-164203.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (profile apply + custom fallback + export profile metadata)
+- Result:
+  - Operators can reuse named validation policies in the browser and exported comparison artifacts now include the active threshold policy name.
+- Next step:
+  - add parser-side compact comparison CLI export using the same policy names for non-UI automation.

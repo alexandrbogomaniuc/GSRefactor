@@ -117,6 +117,19 @@
             <button id="applyStrictThresholds" class="btn btn-default btn-sm">Strict (0/0/0, no new metrics)</button>
             <button id="applyDemoThresholds" class="btn btn-default btn-sm">Demo (sample pass)</button>
           </div>
+          <div class="toolbar" style="margin-top:8px;">
+            <label style="font-weight:normal; margin:0;">Named policy
+              <select id="thresholdProfilePreset" style="margin-left:6px;">
+                <option value="custom">Custom (manual)</option>
+                <option value="strict">Strict Gate</option>
+                <option value="canary_gate">Canary Gate</option>
+                <option value="shadow_observe">Shadow Observe</option>
+                <option value="demo_sample_pass">Demo Sample Pass</option>
+              </select>
+            </label>
+            <button id="applyThresholdProfile" class="btn btn-default btn-sm">Apply Policy</button>
+          </div>
+          <div class="footnote" id="thresholdProfileMeta">Policy profile: Custom (manual)</div>
           <div class="footnote">Thresholds are local to your browser session and intended for non-prod compare-mode validation runs.</div>
         </div>
         <div>
@@ -283,6 +296,28 @@
     let modelB = null;
     let sourceA = 'none';
     let sourceB = 'none';
+    const THRESHOLD_PROFILES = {
+      strict: {
+        label: 'Strict Gate',
+        description: 'No mismatches or deltas allowed; no new metrics in B.',
+        mismatchA: 0, mismatchB: 0, mismatchDelta: 0, snapshotDelta: 0, allowNewMetricsInB: false
+      },
+      canary_gate: {
+        label: 'Canary Gate',
+        description: 'Small mismatch drift tolerated for canary validation; no new metrics in B.',
+        mismatchA: 1, mismatchB: 1, mismatchDelta: 1, snapshotDelta: 25, allowNewMetricsInB: false
+      },
+      shadow_observe: {
+        label: 'Shadow Observe',
+        description: 'Lenient observation mode for compare-only learning runs.',
+        mismatchA: 5, mismatchB: 5, mismatchDelta: 5, snapshotDelta: 5000, allowNewMetricsInB: true
+      },
+      demo_sample_pass: {
+        label: 'Demo Sample Pass',
+        description: 'Preset chosen so embedded sample A/B comparison passes.',
+        mismatchA: 1, mismatchB: 1, mismatchDelta: 1, snapshotDelta: 10, allowNewMetricsInB: true
+      }
+    };
 
     function q(id) { return document.getElementById(id); }
 
@@ -405,6 +440,7 @@
         hasA: !!modelA,
         hasB: !!modelB,
         compare: compareEnabled(),
+        thresholdProfileName: q('thresholdProfilePreset').value || 'custom',
         thresholdMismatchA: intThreshold('thresholdMismatchA', 0),
         thresholdMismatchB: intThreshold('thresholdMismatchB', 0),
         thresholdMismatchDelta: intThreshold('thresholdMismatchDelta', 0),
@@ -534,6 +570,8 @@
           mismatchDelta: st.thresholdMismatchDelta,
           snapshotDelta: st.thresholdSnapshotDelta,
           allowNewMetricsInB: st.allowNewMetricsInB
+        ,
+          profile: st.thresholdProfileName || 'custom'
         },
         summary: {
           overall,
@@ -569,6 +607,7 @@
       lines.push(`- mismatchDelta <= ${report.thresholds.mismatchDelta}`);
       lines.push(`- snapshotDelta <= ${report.thresholds.snapshotDelta}`);
       lines.push(`- allowNewMetricsInB: ${report.thresholds.allowNewMetricsInB}`);
+      lines.push(`- profile: ${report.thresholds.profile}`);
       lines.push('');
       lines.push('## Summary');
       lines.push(`- passRules: ${report.summary.passRules}`);
@@ -668,8 +707,39 @@
       });
 
       meta.textContent = st.compare
-        ? `Thresholds active (A vs B). Adjust values above to match your validation policy.`
-        : `Baseline-only validation active. Load B and enable compare mode to apply delta rules.`;
+        ? `Thresholds active (A vs B). Profile=${st.thresholdProfileName}. Adjust values above to match your validation policy.`
+        : `Baseline-only validation active. Profile=${st.thresholdProfileName}. Load B and enable compare mode to apply delta rules.`;
+    }
+
+    function updateThresholdProfileMeta() {
+      const key = q('thresholdProfilePreset').value || 'custom';
+      const profile = THRESHOLD_PROFILES[key];
+      q('thresholdProfileMeta').textContent = profile
+        ? `Policy profile: ${profile.label} | ${profile.description}`
+        : 'Policy profile: Custom (manual)';
+    }
+
+    function applyThresholdProfile(key) {
+      const profile = THRESHOLD_PROFILES[key];
+      if (!profile) {
+        q('thresholdProfilePreset').value = 'custom';
+        updateThresholdProfileMeta();
+        renderAll();
+        return;
+      }
+      q('thresholdProfilePreset').value = key;
+      q('thresholdMismatchA').value = String(profile.mismatchA);
+      q('thresholdMismatchB').value = String(profile.mismatchB);
+      q('thresholdMismatchDelta').value = String(profile.mismatchDelta);
+      q('thresholdSnapshotDelta').value = String(profile.snapshotDelta);
+      q('thresholdAllowNewMetrics').checked = !!profile.allowNewMetricsInB;
+      updateThresholdProfileMeta();
+      renderAll();
+    }
+
+    function markThresholdProfileCustom() {
+      if (q('thresholdProfilePreset').value !== 'custom') q('thresholdProfilePreset').value = 'custom';
+      updateThresholdProfileMeta();
     }
 
     function renderMetrics() {
@@ -791,23 +861,14 @@
     q('compareEnabled').addEventListener('change', renderAll);
     q('mismatchOnly').addEventListener('change', renderAll);
     ['thresholdMismatchA','thresholdMismatchB','thresholdMismatchDelta','thresholdSnapshotDelta','thresholdAllowNewMetrics']
-      .forEach((id) => q(id).addEventListener('change', renderAll));
+      .forEach((id) => q(id).addEventListener('change', () => { markThresholdProfileCustom(); renderAll(); }));
+    q('thresholdProfilePreset').addEventListener('change', updateThresholdProfileMeta);
+    q('applyThresholdProfile').addEventListener('click', () => applyThresholdProfile(q('thresholdProfilePreset').value));
     q('applyStrictThresholds').addEventListener('click', () => {
-      q('thresholdMismatchA').value = '0';
-      q('thresholdMismatchB').value = '0';
-      q('thresholdMismatchDelta').value = '0';
-      q('thresholdSnapshotDelta').value = '0';
-      q('thresholdAllowNewMetrics').checked = false;
-      renderAll();
+      applyThresholdProfile('strict');
     });
     q('applyDemoThresholds').addEventListener('click', () => {
-      // Thresholds chosen so embedded sample A/B comparison passes.
-      q('thresholdMismatchA').value = '1';
-      q('thresholdMismatchB').value = '1';
-      q('thresholdMismatchDelta').value = '1';
-      q('thresholdSnapshotDelta').value = '10';
-      q('thresholdAllowNewMetrics').checked = true;
-      renderAll();
+      applyThresholdProfile('demo_sample_pass');
     });
     q('generateCompareJson').addEventListener('click', renderCompareExports);
     q('generateCompareMarkdown').addEventListener('click', renderCompareExports);
@@ -840,6 +901,7 @@
 
     q('compareSummaryCard').classList.add('hidden');
     q('compareExportCard').classList.add('hidden');
+    updateThresholdProfileMeta();
     loadSampleA();
   </script>
 </body>
