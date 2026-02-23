@@ -7,40 +7,16 @@
   <link rel="stylesheet" href="/support/css/bootstrap.min.css" />
   <style>
     body { background: #f4f7fb; padding: 16px; }
-    .wrap { max-width: 1200px; margin: 0 auto; }
-    .cardx {
-      background: #fff;
-      border: 1px solid #d9e1ea;
-      border-radius: 8px;
-      padding: 14px;
-      margin-bottom: 14px;
-    }
+    .wrap { max-width: 1280px; margin: 0 auto; }
+    .cardx { background: #fff; border: 1px solid #d9e1ea; border-radius: 8px; padding: 14px; margin-bottom: 14px; }
     .meta { color: #567; font-size: 12px; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
-      margin-top: 8px;
-    }
-    .cell {
-      border: 1px solid #d9e1ea;
-      border-radius: 6px;
-      background: #f9fbff;
-      padding: 10px;
-    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 8px; }
+    .cell { border: 1px solid #d9e1ea; border-radius: 6px; background: #f9fbff; padding: 10px; }
     .cell .k { color: #456; font-size: 12px; }
     .cell .v { color: #123; font-size: 20px; font-weight: 700; }
     .toolbar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
-    textarea {
-      width: 100%;
-      min-height: 140px;
-      border: 1px solid #ccd8e5;
-      border-radius: 6px;
-      padding: 8px;
-      font-family: Menlo, Consolas, monospace;
-      font-size: 12px;
-      background: #fbfdff;
-    }
+    .pane-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 12px; }
+    textarea { width: 100%; min-height: 160px; border: 1px solid #ccd8e5; border-radius: 6px; padding: 8px; font-family: Menlo, Consolas, monospace; font-size: 12px; background: #fbfdff; }
     .table-wrap { overflow:auto; }
     table { width:100%; border-collapse: collapse; }
     th, td { border: 1px solid #e3eaf2; padding: 6px 8px; font-size: 12px; vertical-align: top; }
@@ -52,16 +28,12 @@
     .muted { color:#6d7785; }
     .hidden { display:none; }
     .footnote { color:#6a7280; font-size: 12px; margin-top: 8px; }
-    pre {
-      background: #f7f9fc;
-      border: 1px solid #d9e1ea;
-      border-radius: 6px;
-      padding: 10px;
-      font-size: 11px;
-      max-height: 240px;
-      overflow: auto;
-    }
+    pre { background: #f7f9fc; border: 1px solid #d9e1ea; border-radius: 6px; padding: 10px; font-size: 11px; max-height: 240px; overflow: auto; }
     .metric-row-has-mismatch { background: #fff8f8; }
+    .metric-row-compare-only { background: #f8fbff; }
+    .delta-pos { color: #0b6e3a; font-weight: 600; }
+    .delta-neg { color: #9b1c1c; font-weight: 600; }
+    .delta-zero { color: #6d7785; }
   </style>
 </head>
 <body>
@@ -70,28 +42,46 @@
       <h2 style="margin-top:0;">Phase 8 Wave 3 Discrepancy JSON Viewer</h2>
       <div class="meta" id="metaLine">Load a JSON export from <code>phase8-precision-wave3-discrepancy-export.sh</code>.</div>
       <div class="toolbar" style="margin-top:10px;">
-        <input type="file" id="fileInput" accept="application/json,.json" />
-        <button id="loadSample" class="btn btn-default btn-sm">Load Embedded Sample</button>
-        <button id="parseTextarea" class="btn btn-primary btn-sm">Parse Pasted JSON</button>
+        <input type="file" id="fileInputA" accept="application/json,.json" />
+        <input type="file" id="fileInputB" accept="application/json,.json" />
+        <button id="loadSampleA" class="btn btn-default btn-sm">Load Sample A</button>
+        <button id="loadSampleB" class="btn btn-default btn-sm">Load Sample B</button>
+        <button id="parseTextareas" class="btn btn-primary btn-sm">Parse Text Areas</button>
+        <label style="font-weight:normal; margin:0;">
+          <input type="checkbox" id="compareEnabled" /> Compare A vs B
+        </label>
         <label style="font-weight:normal; margin:0;">
           <input type="checkbox" id="mismatchOnly" /> Show only mismatch metrics
         </label>
       </div>
       <div class="footnote">
-        This viewer is read-only and safe for non-production analysis. It works in <code>file://</code> mode (use file upload or embedded sample).
+        Read-only viewer for non-production analysis. Works in <code>file://</code> mode (file upload, paste JSON, or embedded samples).
+      </div>
+    </div>
+
+    <div class="pane-grid">
+      <div class="cardx">
+        <h4 style="margin-top:0;">JSON Input A (Baseline)</h4>
+        <textarea id="jsonInputA" placeholder="Paste baseline export JSON here (or use file upload / sample A)"></textarea>
+        <div class="footnote">Used as the primary model for summary and metric rows.</div>
+      </div>
+      <div class="cardx">
+        <h4 style="margin-top:0;">JSON Input B (Comparison)</h4>
+        <textarea id="jsonInputB" placeholder="Paste comparison export JSON here (optional)"></textarea>
+        <div class="footnote">Enable <code>Compare A vs B</code> after loading/parsing B to see deltas.</div>
       </div>
     </div>
 
     <div class="cardx">
-      <h4 style="margin-top:0;">JSON Input (paste optional)</h4>
-      <textarea id="jsonInput" placeholder="Paste export JSON here (or use file upload / embedded sample)"></textarea>
-      <div class="footnote">Tip: export tool output file can be opened directly here via file input.</div>
-    </div>
-
-    <div class="cardx" id="summaryCard">
-      <h4 style="margin-top:0;">Summary</h4>
+      <h4 style="margin-top:0;">Summary (A)</h4>
       <div class="grid" id="summaryGrid"></div>
       <div class="footnote" id="sourceFilesLine"></div>
+    </div>
+
+    <div class="cardx" id="compareSummaryCard">
+      <h4 style="margin-top:0;">Comparison Summary (A vs B)</h4>
+      <div class="grid" id="compareSummaryGrid"></div>
+      <div class="footnote" id="compareSourcesLine"></div>
     </div>
 
     <div class="cardx">
@@ -101,12 +91,15 @@
           <thead>
             <tr>
               <th>Metric</th>
-              <th>Snapshots</th>
-              <th>Max Check</th>
-              <th>Max Mismatch</th>
-              <th>Mismatch Observed</th>
-              <th>Last Context</th>
-              <th>Last Values</th>
+              <th>A Snapshots</th>
+              <th>A Max Check</th>
+              <th>A Max Mismatch</th>
+              <th>A Mismatch?</th>
+              <th>Context (A)</th>
+              <th>Values (A)</th>
+              <th>B Max Mismatch</th>
+              <th>Delta (Mismatch)</th>
+              <th>Delta (Snapshots)</th>
             </tr>
           </thead>
           <tbody id="metricsBody"></tbody>
@@ -115,17 +108,23 @@
       <div class="footnote" id="metricsFoot"></div>
     </div>
 
-    <div class="cardx">
-      <h4 style="margin-top:0;">Raw JSON Preview</h4>
-      <pre id="rawPreview">{}</pre>
+    <div class="pane-grid">
+      <div class="cardx">
+        <h4 style="margin-top:0;">Raw JSON Preview A</h4>
+        <pre id="rawPreviewA">{}</pre>
+      </div>
+      <div class="cardx">
+        <h4 style="margin-top:0;">Raw JSON Preview B</h4>
+        <pre id="rawPreviewB">{}</pre>
+      </div>
     </div>
   </div>
 
-  <script id="embedded-sample" type="application/json">
+  <script id="embedded-sample-a" type="application/json">
 {
   "generatedAtUtc": "2026-02-23T16:04:00Z",
   "parser": "phase8-precision-wave3-discrepancy-export",
-  "sourceFiles": ["sample-gs.log"],
+  "sourceFiles": ["sample-a.log"],
   "totalSnapshotLines": 4,
   "metricCount": 2,
   "metrics": {
@@ -161,22 +160,87 @@
 }
   </script>
 
+  <script id="embedded-sample-b" type="application/json">
+{
+  "generatedAtUtc": "2026-02-23T16:20:00Z",
+  "parser": "phase8-precision-wave3-discrepancy-export",
+  "sourceFiles": ["sample-b.log"],
+  "totalSnapshotLines": 7,
+  "metricCount": 3,
+  "metrics": {
+    "baseBetMinorUnitsScale2": {
+      "metric": "baseBetMinorUnitsScale2",
+      "snapshots": 3,
+      "maxCheckCount": 1500,
+      "maxMismatchCount": 0,
+      "lastCheckCount": 1500,
+      "lastMismatchCount": 0,
+      "lastBankId": "6275",
+      "lastGameId": "dragonestone",
+      "lastTemplateMaxCredits": null,
+      "lastLegacy": 3000,
+      "lastGeneralized": 3000,
+      "mismatchEventsObserved": 0
+    },
+    "templateMaxBetScale2": {
+      "metric": "templateMaxBetScale2",
+      "snapshots": 3,
+      "maxCheckCount": 6,
+      "maxMismatchCount": 2,
+      "lastCheckCount": 6,
+      "lastMismatchCount": 2,
+      "lastBankId": null,
+      "lastGameId": null,
+      "lastTemplateMaxCredits": "25",
+      "lastLegacy": 2500,
+      "lastGeneralized": 2498,
+      "mismatchEventsObserved": 2
+    },
+    "newScaleReadyProbeMetric": {
+      "metric": "newScaleReadyProbeMetric",
+      "snapshots": 1,
+      "maxCheckCount": 1,
+      "maxMismatchCount": 0,
+      "lastCheckCount": 1,
+      "lastMismatchCount": 0,
+      "lastBankId": "6275",
+      "lastGameId": "dragonestone",
+      "lastTemplateMaxCredits": null,
+      "lastLegacy": 10,
+      "lastGeneralized": 10,
+      "mismatchEventsObserved": 0
+    }
+  }
+}
+  </script>
+
   <script>
-    let currentModel = null;
+    let modelA = null;
+    let modelB = null;
+    let sourceA = 'none';
+    let sourceB = 'none';
 
     function q(id) { return document.getElementById(id); }
 
-    function readEmbeddedSample() {
-      try {
-        return JSON.parse(q('embedded-sample').textContent || '{}');
-      } catch (_) {
-        return null;
-      }
+    function readEmbeddedSample(id) {
+      try { return JSON.parse(q(id).textContent || '{}'); } catch (_) { return null; }
     }
 
     function formatValue(v) {
       if (v === null || v === undefined || v === '') return '<span class="muted">-</span>';
       return String(v);
+    }
+
+    function asNum(v, fallback = 0) {
+      const n = Number(v);
+      return Number.isFinite(n) ? n : fallback;
+    }
+
+    function formatDelta(v) {
+      const n = asNum(v, 0);
+      const cls = n > 0 ? 'delta-pos' : (n < 0 ? 'delta-neg' : 'delta-zero');
+      const sign = n > 0 ? '+' : '';
+      return `<span class="${cls}">${sign}${n}</span>`;
     }
 
     function validateModel(data) {
@@ -185,25 +249,20 @@
       return data;
     }
 
-    function renderSummary(model, sourceLabel) {
-      const grid = q('summaryGrid');
-      const cards = [
-        ['Parser', model.parser || '-'],
-        ['Generated', model.generatedAtUtc || '-'],
-        ['Snapshot Lines', model.totalSnapshotLines ?? '-'],
-        ['Metric Count', model.metricCount ?? Object.keys(model.metrics || {}).length],
-        ['Loaded From', sourceLabel],
-        ['Mismatch Metrics', countMismatchMetrics(model)]
-      ];
-      grid.innerHTML = cards.map(([k, v]) => `\n        <div class="cell">\n          <div class="k">${k}</div>\n          <div class="v">${typeof v === 'number' ? v : String(v)}</div>\n        </div>\n      `).join('');
-      q('sourceFilesLine').textContent = `sourceFiles: ${(model.sourceFiles || []).join(', ') || '-'}`;
+    function countMismatchMetrics(model) {
+      return Object.values(model.metrics || {}).filter((m) => hasMismatch(m)).length;
     }
 
-    function countMismatchMetrics(model) {
-      return Object.values(model.metrics || {}).filter((m) => Number(m.maxMismatchCount || 0) > 0 || Number(m.mismatchEventsObserved || 0) > 0).length;
+    function hasMismatch(m) {
+      return asNum(m && m.maxMismatchCount, 0) > 0 || asNum(m && m.mismatchEventsObserved, 0) > 0;
+    }
+
+    function compareEnabled() {
+      return q('compareEnabled').checked && !!modelB;
     }
 
     function metricContextHtml(m) {
+      if (!m) return '<span class="muted">-</span>';
       const parts = [];
       if (m.lastBankId) parts.push(`bankId=${m.lastBankId}`);
       if (m.lastGameId) parts.push(`gameId=${m.lastGameId}`);
@@ -212,83 +271,197 @@
     }
 
     function metricValuesHtml(m) {
-      const legacy = formatValue(m.lastLegacy);
-      const generalized = formatValue(m.lastGeneralized);
-      return `legacy=${legacy}<br/>generalized=${generalized}`;
+      if (!m) return '<span class="muted">-</span>';
+      return `legacy=${formatValue(m.lastLegacy)}<br/>generalized=${formatValue(m.lastGeneralized)}`;
     }
 
-    function renderMetrics(model) {
-      const mismatchOnly = q('mismatchOnly').checked;
-      const body = q('metricsBody');
-      const metrics = Object.values(model.metrics || {})
-        .sort((a, b) => String(a.metric).localeCompare(String(b.metric)));
-      const visible = mismatchOnly
-        ? metrics.filter((m) => Number(m.maxMismatchCount || 0) > 0 || Number(m.mismatchEventsObserved || 0) > 0)
-        : metrics;
+    function renderSummaryA() {
+      const grid = q('summaryGrid');
+      if (!modelA) {
+        grid.innerHTML = '';
+        q('sourceFilesLine').textContent = 'sourceFiles: -';
+        return;
+      }
+      const cards = [
+        ['Parser', modelA.parser || '-'],
+        ['Generated', modelA.generatedAtUtc || '-'],
+        ['Snapshot Lines', modelA.totalSnapshotLines ?? '-'],
+        ['Metric Count', modelA.metricCount ?? Object.keys(modelA.metrics || {}).length],
+        ['Loaded From', sourceA],
+        ['Mismatch Metrics', countMismatchMetrics(modelA)]
+      ];
+      grid.innerHTML = cards.map(([k, v]) => `\n        <div class="cell"><div class="k">${k}</div><div class="v">${typeof v === 'number' ? v : String(v)}</div></div>`).join('');
+      q('sourceFilesLine').textContent = `sourceFiles(A): ${(modelA.sourceFiles || []).join(', ') || '-'}`;
+    }
 
+    function renderCompareSummary() {
+      const card = q('compareSummaryCard');
+      const grid = q('compareSummaryGrid');
+      if (!compareEnabled()) {
+        card.classList.add('hidden');
+        grid.innerHTML = '';
+        q('compareSourcesLine').textContent = 'Comparison disabled or model B not loaded.';
+        return;
+      }
+      card.classList.remove('hidden');
+      const aMetricCount = Object.keys(modelA.metrics || {}).length;
+      const bMetricCount = Object.keys(modelB.metrics || {}).length;
+      const aMismatch = countMismatchMetrics(modelA);
+      const bMismatch = countMismatchMetrics(modelB);
+      const allMetrics = new Set([...Object.keys(modelA.metrics || {}), ...Object.keys(modelB.metrics || {})]);
+      let changedMismatchMetrics = 0;
+      allMetrics.forEach((k) => {
+        const a = modelA.metrics[k];
+        const b = modelB.metrics[k];
+        const aMis = hasMismatch(a);
+        const bMis = hasMismatch(b);
+        if (aMis !== bMis || asNum(a && a.maxMismatchCount) !== asNum(b && b.maxMismatchCount)) changedMismatchMetrics += 1;
+      });
+      const cards = [
+        ['B Loaded From', sourceB],
+        ['Delta Snapshot Lines', (modelB.totalSnapshotLines ?? 0) - (modelA.totalSnapshotLines ?? 0)],
+        ['Delta Metric Count', bMetricCount - aMetricCount],
+        ['Delta Mismatch Metrics', bMismatch - aMismatch],
+        ['Changed Mismatch Metrics', changedMismatchMetrics],
+        ['Union Metric Count', allMetrics.size]
+      ];
+      grid.innerHTML = cards.map(([k, v]) => `\n        <div class="cell"><div class="k">${k}</div><div class="v">${typeof v === 'number' ? v : String(v)}</div></div>`).join('');
+      q('compareSourcesLine').textContent = `sourceFiles(B): ${(modelB.sourceFiles || []).join(', ') || '-'}`;
+    }
+
+    function renderMetrics() {
+      const body = q('metricsBody');
       body.innerHTML = '';
-      visible.forEach((m) => {
-        const hasMismatch = Number(m.maxMismatchCount || 0) > 0 || Number(m.mismatchEventsObserved || 0) > 0;
+      if (!modelA) {
+        q('metricsFoot').textContent = 'No baseline model loaded.';
+        return;
+      }
+      const mismatchOnly = q('mismatchOnly').checked;
+      const doCompare = compareEnabled();
+      const keys = doCompare
+        ? [...new Set([...Object.keys(modelA.metrics || {}), ...Object.keys(modelB.metrics || {})])]
+        : Object.keys(modelA.metrics || {});
+      keys.sort((a, b) => String(a).localeCompare(String(b)));
+
+      const visible = keys.filter((k) => {
+        const a = modelA.metrics[k];
+        const b = doCompare ? modelB.metrics[k] : null;
+        if (!mismatchOnly) return true;
+        return hasMismatch(a) || hasMismatch(b);
+      });
+
+      visible.forEach((key) => {
+        const a = modelA.metrics[key] || null;
+        const b = doCompare ? (modelB.metrics[key] || null) : null;
+        const aMismatch = hasMismatch(a);
+        const bMismatch = hasMismatch(b);
+        const rowMismatch = aMismatch || bMismatch;
         const tr = document.createElement('tr');
-        if (hasMismatch) tr.className = 'metric-row-has-mismatch';
+        if (rowMismatch) tr.classList.add('metric-row-has-mismatch');
+        if (doCompare && !a && b) tr.classList.add('metric-row-compare-only');
+        const deltaMismatch = doCompare ? asNum(b && b.maxMismatchCount) - asNum(a && a.maxMismatchCount) : 0;
+        const deltaSnapshots = doCompare ? asNum(b && b.snapshots) - asNum(a && a.snapshots) : 0;
         tr.innerHTML = `
-          <td><code>${m.metric || '-'}</code></td>
-          <td>${formatValue(m.snapshots)}</td>
-          <td>${formatValue(m.maxCheckCount)}</td>
-          <td>${formatValue(m.maxMismatchCount)}</td>
-          <td><span class="badge-soft ${hasMismatch ? 'bad' : 'ok'}">${hasMismatch ? 'YES' : 'NO'}</span></td>
-          <td>${metricContextHtml(m)}</td>
-          <td>${metricValuesHtml(m)}</td>
+          <td><code>${key}</code></td>
+          <td>${formatValue(a && a.snapshots)}</td>
+          <td>${formatValue(a && a.maxCheckCount)}</td>
+          <td>${formatValue(a && a.maxMismatchCount)}</td>
+          <td><span class="badge-soft ${aMismatch ? 'bad' : 'ok'}">${a ? (aMismatch ? 'YES' : 'NO') : 'N/A'}</span></td>
+          <td>${metricContextHtml(a || b)}</td>
+          <td>${metricValuesHtml(a || b)}</td>
+          <td>${doCompare ? formatValue(b && b.maxMismatchCount) : '<span class="muted">-</span>'}</td>
+          <td>${doCompare ? formatDelta(deltaMismatch) : '<span class="muted">-</span>'}</td>
+          <td>${doCompare ? formatDelta(deltaSnapshots) : '<span class="muted">-</span>'}</td>
         `;
         body.appendChild(tr);
       });
-
-      q('metricsFoot').textContent = `visible metrics: ${visible.length}/${metrics.length}` + (mismatchOnly ? ' (mismatch filter on)' : '');
+      q('metricsFoot').textContent = `visible metrics: ${visible.length}/${keys.length}`
+        + (mismatchOnly ? ' (mismatch filter on)' : '')
+        + (doCompare ? ' | compare mode: A vs B' : ' | compare mode: off');
     }
 
-    function renderRaw(model) {
-      q('rawPreview').textContent = JSON.stringify(model, null, 2);
+    function renderRaw() {
+      q('rawPreviewA').textContent = modelA ? JSON.stringify(modelA, null, 2) : '{}';
+      q('rawPreviewB').textContent = modelB ? JSON.stringify(modelB, null, 2) : '{}';
     }
 
-    function render(model, sourceLabel) {
-      currentModel = model;
-      q('metaLine').innerHTML = `Loaded export JSON successfully | source: <code>${sourceLabel}</code> | file mode: <code>${window.location.protocol === 'file:' ? 'yes' : 'no'}</code>`;
-      renderSummary(model, sourceLabel);
-      renderMetrics(model);
-      renderRaw(model);
+    function renderAll() {
+      if (!modelA) {
+        q('metaLine').innerHTML = 'Load a JSON export from <code>phase8-precision-wave3-discrepancy-export.sh</code>.';
+      } else {
+        q('metaLine').innerHTML = `Loaded baseline JSON A successfully | sourceA: <code>${sourceA}</code> | compare: <code>${compareEnabled() ? 'on' : 'off'}</code> | sourceB: <code>${sourceB}</code> | file mode: <code>${window.location.protocol === 'file:' ? 'yes' : 'no'}</code>`;
+      }
+      renderSummaryA();
+      renderCompareSummary();
+      renderMetrics();
+      renderRaw();
     }
 
-    function parseAndRender(text, sourceLabel) {
+    function parseIntoTarget(text, targetKey, sourceLabel) {
+      const data = validateModel(JSON.parse(text));
+      if (targetKey === 'A') {
+        modelA = data;
+        sourceA = sourceLabel;
+        q('jsonInputA').value = text;
+      } else {
+        modelB = data;
+        sourceB = sourceLabel;
+        q('jsonInputB').value = text;
+      }
+      renderAll();
+    }
+
+    function parseTextareas() {
       try {
-        const data = validateModel(JSON.parse(text));
-        q('jsonInput').value = text;
-        render(data, sourceLabel);
+        const textA = q('jsonInputA').value.trim();
+        if (textA) parseIntoTarget(textA, 'A', 'textarea:A');
+        const textB = q('jsonInputB').value.trim();
+        if (textB) parseIntoTarget(textB, 'B', 'textarea:B');
       } catch (err) {
         q('metaLine').innerHTML = `<span style="color:#b42318;">Failed to parse JSON: ${String(err.message || err)}</span>`;
       }
     }
 
-    function loadSample() {
-      const sample = readEmbeddedSample();
+    function loadSampleA() {
+      const sample = readEmbeddedSample('embedded-sample-a');
       if (!sample) {
-        q('metaLine').innerHTML = '<span style="color:#b42318;">Embedded sample is missing or invalid.</span>';
+        q('metaLine').innerHTML = '<span style="color:#b42318;">Embedded sample A is missing or invalid.</span>';
         return;
       }
-      parseAndRender(JSON.stringify(sample, null, 2), 'embedded-sample');
+      parseIntoTarget(JSON.stringify(sample, null, 2), 'A', 'embedded-sample-a');
     }
 
-    q('loadSample').addEventListener('click', loadSample);
-    q('parseTextarea').addEventListener('click', () => parseAndRender(q('jsonInput').value, 'textarea'));
-    q('mismatchOnly').addEventListener('change', () => { if (currentModel) renderMetrics(currentModel); });
+    function loadSampleB() {
+      const sample = readEmbeddedSample('embedded-sample-b');
+      if (!sample) {
+        q('metaLine').innerHTML = '<span style="color:#b42318;">Embedded sample B is missing or invalid.</span>';
+        return;
+      }
+      parseIntoTarget(JSON.stringify(sample, null, 2), 'B', 'embedded-sample-b');
+    }
 
-    q('fileInput').addEventListener('change', async (e) => {
+    q('loadSampleA').addEventListener('click', loadSampleA);
+    q('loadSampleB').addEventListener('click', loadSampleB);
+    q('parseTextareas').addEventListener('click', parseTextareas);
+    q('compareEnabled').addEventListener('change', renderAll);
+    q('mismatchOnly').addEventListener('change', renderAll);
+
+    q('fileInputA').addEventListener('change', async (e) => {
       const file = e.target.files && e.target.files[0];
       if (!file) return;
-      const text = await file.text();
-      parseAndRender(text, `file:${file.name}`);
+      try { parseIntoTarget(await file.text(), 'A', `fileA:${file.name}`); }
+      catch (err) { q('metaLine').innerHTML = `<span style="color:#b42318;">Failed to parse JSON A: ${String(err.message || err)}</span>`; }
     });
 
-    loadSample();
+    q('fileInputB').addEventListener('change', async (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      try { parseIntoTarget(await file.text(), 'B', `fileB:${file.name}`); }
+      catch (err) { q('metaLine').innerHTML = `<span style="color:#b42318;">Failed to parse JSON B: ${String(err.message || err)}</span>`; }
+    });
+
+    q('compareSummaryCard').classList.add('hidden');
+    loadSampleA();
   </script>
 </body>
 </html>

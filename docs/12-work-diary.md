@@ -3985,3 +3985,15 @@
   - Wave 3 discrepancy exports are now viewable by non-developers in a browser (including `file://` mode) without reading raw JSON manually.
 - Next step:
   - add optional comparison/diff view for two export runs or a guided validation checklist for operators.
+
+### 2026-02-23 16:26-16:27 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by extending the discrepancy viewer with A-vs-B compare mode for non-prod validation.
+- Added dual JSON inputs/files/samples, comparison summary cards, metric delta columns, and compare-aware mismatch filtering; updated runbook/docs, moved progress JSON evidence to doc 97, and re-synced dashboard embedded progress data.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/97-phase8-wave3-discrepancy-viewer-compare-mode-20260223-183000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-162641.md` (PASS=38)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+- Result:
+  - Non-developer operators can now compare two discrepancy export runs visually in the browser (`file://` mode supported) without manual JSON diffing.
+- Next step:
+  - add guided validation checks/thresholds inside the viewer or export a compact comparison report artifact.
