@@ -55,6 +55,7 @@ CHECK_KEYS=(
   help_phase8_wave2_coinrule_vectors
   help_phase8_wave3_dualcalc_vectors
   help_phase8_wave3_discrepancy_evidence
+  help_phase8_wave3_discrepancy_export
   logic_smoke_phase4_protocol
   logic_smoke_phase8_precision_vectors
   logic_smoke_phase8_precision_buckets
@@ -63,6 +64,7 @@ CHECK_KEYS=(
   logic_smoke_phase8_wave2_coinrule_vectors
   logic_smoke_phase8_wave3_dualcalc_vectors
   logic_smoke_phase8_wave3_discrepancy_evidence
+  logic_smoke_phase8_wave3_discrepancy_export
   bash_syntax_bonus
   bash_syntax_history
   bash_syntax_wallet
@@ -141,6 +143,9 @@ run_check "help_phase8_wave3_dualcalc_vectors" "CLI help: Phase 8 Wave 3 dual-ca
 run_check "help_phase8_wave3_discrepancy_evidence" "CLI help: Phase 8 Wave 3 discrepancy evidence smoke" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-evidence-smoke.sh' --help | sed -n '1,80p'"
 
+run_check "help_phase8_wave3_discrepancy_export" "CLI help: Phase 8 Wave 3 discrepancy export tool" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-export.sh' --help | sed -n '1,100p' && '${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-export-smoke.sh' --help | sed -n '1,80p'"
+
 run_check "logic_smoke_phase4_protocol" "Executable logic smoke: Phase 4 protocol hash/replay security" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase4-protocol-security-logic-smoke.sh'"
 
@@ -164,6 +169,9 @@ run_check "logic_smoke_phase8_wave3_dualcalc_vectors" "Executable logic smoke: P
 
 run_check "logic_smoke_phase8_wave3_discrepancy_evidence" "Executable logic smoke: Phase 8 Wave 3 discrepancy evidence scaffold" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-evidence-smoke.sh'"
+
+run_check "logic_smoke_phase8_wave3_discrepancy_export" "Executable logic smoke: Phase 8 Wave 3 discrepancy export parser" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-export-smoke.sh'"
 
 run_check "bash_syntax_history" "Bash syntax: Phase 5 history scripts" \
   bash -lc "bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-canary-probe.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-runtime-readiness-check.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-runtime-evidence-pack.sh'"

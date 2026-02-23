@@ -45,6 +45,23 @@
     </div>
 
     <div class="section">
+        <h4>Phase 8 Wave 3 Discrepancy Snapshot Export (Optional, Compare Mode Diagnostics)</h4>
+        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
+# After running GS with compare mode enabled in a non-prod environment:
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-export.sh \
+  --log-file /path/to/gs.log \
+  --out-file /tmp/phase8-wave3-discrepancy-export.json
+
+# Parser smoke (offline, no GS runtime required):
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-export-smoke.sh
+</code></pre>
+        <p class="small-note">
+            Parses <code>phase8-precision-dual-calc</code> snapshot log lines emitted by Wave 3 parity hooks into a structured JSON summary.
+            Compare mode remains disabled by default; enable only in non-production validation.
+        </p>
+    </div>
+
+    <div class="section">
         <h4>Current Runtime Status Snapshot</h4>
         <table class="table table-bordered table-condensed">
             <thead>

@@ -3961,3 +3961,15 @@
   - Wave 3 now has disabled-by-default runtime discrepancy evidence collection scaffolding without changing GS precision behavior.
 - Next step:
   - continue Wave 3 with opt-in discrepancy aggregation/export visibility while keeping compare mode disabled by default.
+
+### 2026-02-23 16:04-16:05 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 with structured discrepancy export visibility (operator tooling, no runtime behavior change).
+- Added a log snapshot export parser (`phase8-precision-wave3-discrepancy-export.sh`) + deterministic smoke, integrated both into the shared local verification suite, updated runbook/docs, moved progress JSON evidence to doc 95, and re-synced dashboard embedded progress data.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/95-phase8-wave3-discrepancy-export-tool-and-visibility-20260223-174500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-160453.md` (PASS=38)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-export.sh`
+- Result:
+  - Wave 3 discrepancy evidence is now exportable as structured JSON from GS logs during non-prod compare-mode runs, improving non-developer visibility without changing default behavior.
+- Next step:
+  - add optional support/admin presentation for exported discrepancy JSON during validation runs.
