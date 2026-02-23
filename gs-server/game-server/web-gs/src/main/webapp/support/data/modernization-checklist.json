@@ -202,7 +202,7 @@
           "id": "pu-precision-audit",
           "label": "Precision/min-bet modernization to support 0.001",
           "status": "in_progress",
-          "evidence": "docs/103-phase8-wave3-viewer-import-cli-compare-report-json-20260223-200500.md"
+          "evidence": "docs/104-phase8-wave3-viewer-imported-compare-report-diff-mode-20260223-202000.md"
         },
         {
           "id": "pu-branding-wave",

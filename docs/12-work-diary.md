@@ -4074,3 +4074,16 @@
   - Operators can inspect CLI-generated compact comparison artifacts directly in the existing browser UI (same JSON format), improving UI/CLI workflow continuity.
 - Next step:
   - add side-by-side diff mode for two imported compact compare reports (artifact review mode) or file-drag/drop import UX.
+
+### 2026-02-23 17:03-17:04 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding imported-artifact diff mode (`A vs B`) for two compact compare-report JSON files inside the existing discrepancy viewer.
+- Added Imported B slot (paste/upload/load-current-preview/clear) plus diff card (summary deltas, rule changes, metric delta diff table, B thresholds preview), updated support docs/checklist to doc 104, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/104-phase8-wave3-viewer-imported-compare-report-diff-mode-20260223-202000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-170410.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (Imported A demo report + Imported B strict report + artifact diff card rendered)
+- Result:
+  - Operators can now compare two compact compare-report artifacts directly in the viewer, which closes the UI/CLI artifact review loop without rerunning raw discrepancy exports.
+- Next step:
+  - add drag/drop import UX and/or changed-only filter toggles for imported artifact diff mode.
