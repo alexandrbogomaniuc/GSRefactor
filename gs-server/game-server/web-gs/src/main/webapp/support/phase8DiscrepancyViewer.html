@@ -270,6 +270,15 @@
           <button id="deleteImportDiffPreset" class="btn btn-default btn-sm">Delete Preset</button>
         </div>
         <div class="footnote" id="importDiffPresetMeta">Saved triage presets are local to this browser only.</div>
+        <div class="toolbar" style="margin-top:8px;">
+          <button id="exportImportDiffPresetJson" class="btn btn-default btn-sm">Export Presets JSON</button>
+          <button id="openImportDiffPresetFile" class="btn btn-default btn-sm">Load Presets File</button>
+          <input type="file" id="importDiffPresetFileInput" accept=".json,application/json" style="display:none;" />
+          <button id="parseImportDiffPresetJson" class="btn btn-default btn-sm">Import Presets JSON</button>
+          <button id="clearImportDiffPresetJson" class="btn btn-default btn-sm">Clear Preset JSON</button>
+        </div>
+        <textarea id="importDiffPresetJsonInput" rows="5" placeholder="Paste triage preset bundle JSON here (exported from this viewer)." style="width:100%; margin-top:8px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;"></textarea>
+        <div class="footnote" id="importDiffPresetExchangeMeta">Share triage presets across machines via JSON export/import. Import merges by preset name (existing names are overwritten).</div>
         <div class="footnote" id="importCompareDiffMeta">Load Imported A and Imported B compact compare-report JSON to compare artifacts.</div>
         <div id="importCompareDiffSummaryGrid" class="grid" style="margin-top:10px;"></div>
         <div class="pane-grid" style="margin-top:10px;">
@@ -554,6 +563,98 @@
       };
     }
 
+    function normalizeImportDiffTriagePreset(preset) {
+      if (!preset || typeof preset !== 'object' || Array.isArray(preset)) {
+        throw new Error('Preset entry must be an object');
+      }
+      return {
+        rulesChangedOnly: !!preset.rulesChangedOnly,
+        metricsChangedOnly: !!preset.metricsChangedOnly,
+        ruleStatusPass: !!preset.ruleStatusPass,
+        ruleStatusFail: !!preset.ruleStatusFail,
+        ruleStatusInfo: !!preset.ruleStatusInfo,
+        ruleStatusMissing: !!preset.ruleStatusMissing,
+        metricSearch: String(preset.metricSearch || ''),
+        savedAtUtc: preset.savedAtUtc ? String(preset.savedAtUtc) : new Date().toISOString()
+      };
+    }
+
+    function normalizeImportDiffPresetMap(presetMap) {
+      if (!presetMap || typeof presetMap !== 'object' || Array.isArray(presetMap)) {
+        throw new Error('Preset bundle must contain an object map');
+      }
+      const out = {};
+      Object.keys(presetMap).forEach((nameRaw) => {
+        const name = String(nameRaw || '').trim();
+        if (!name) return;
+        out[name] = normalizeImportDiffTriagePreset(presetMap[nameRaw]);
+      });
+      return out;
+    }
+
+    function buildImportDiffPresetBundleArtifact() {
+      const normalized = normalizeImportDiffPresetMap(importDiffPresets);
+      const names = Object.keys(normalized).sort((a, b) => a.localeCompare(b));
+      const orderedPresets = {};
+      names.forEach((n) => { orderedPresets[n] = normalized[n]; });
+      return {
+        type: 'phase8-wave3-import-diff-triage-preset-bundle',
+        version: 1,
+        generatedAtUtc: new Date().toISOString(),
+        viewer: 'phase8DiscrepancyViewer.html',
+        presetCount: names.length,
+        presets: orderedPresets
+      };
+    }
+
+    function parseImportDiffPresetBundlePayload(rawText) {
+      let parsed;
+      try {
+        parsed = JSON.parse(String(rawText || '{}'));
+      } catch (e) {
+        throw new Error(`Invalid JSON: ${String(e.message || e)}`);
+      }
+      if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+        throw new Error('Preset import JSON root must be an object');
+      }
+      if (parsed.type) {
+        if (parsed.type !== 'phase8-wave3-import-diff-triage-preset-bundle') {
+          throw new Error(`Unsupported preset bundle type: ${String(parsed.type)}`);
+        }
+        return {
+          presets: normalizeImportDiffPresetMap(parsed.presets || {}),
+          bundleMeta: {
+            type: String(parsed.type),
+            version: parsed.version ?? null,
+            generatedAtUtc: parsed.generatedAtUtc || null
+          }
+        };
+      }
+      return {
+        presets: normalizeImportDiffPresetMap(parsed),
+        bundleMeta: { type: 'legacy-map', version: null, generatedAtUtc: null }
+      };
+    }
+
+    function mergeImportDiffPresetBundleFromText(rawText, sourceLabel) {
+      const parsed = parseImportDiffPresetBundlePayload(rawText);
+      const beforeCount = Object.keys(importDiffPresets).length;
+      let merged = 0;
+      let overwritten = 0;
+      Object.keys(parsed.presets).forEach((name) => {
+        if (Object.prototype.hasOwnProperty.call(importDiffPresets, name)) overwritten += 1;
+        importDiffPresets[name] = parsed.presets[name];
+        merged += 1;
+      });
+      const ok = writeImportDiffPresets();
+      refreshImportDiffPresetSelect();
+      const afterCount = Object.keys(importDiffPresets).length;
+      q('importDiffPresetExchangeMeta').textContent =
+        `Imported triage presets from ${sourceLabel}: merged=${merged}, overwritten=${overwritten}, total=${afterCount} (was ${beforeCount})` +
+        (ok ? '' : ' | localStorage unavailable (memory only)');
+      return { merged, overwritten, total: afterCount, storagePersisted: ok, bundleMeta: parsed.bundleMeta };
+    }
+
     function applyImportDiffTriagePresetState(preset) {
       if (!preset || typeof preset !== 'object') return;
       q('importDiffRulesChangedOnly').checked = !!preset.rulesChangedOnly;
@@ -615,6 +716,40 @@
       q('importDiffPresetMeta').textContent = ok
         ? `Deleted triage preset: ${name}`
         : `Deleted preset in memory only (localStorage unavailable): ${name}`;
+    }
+
+    function exportImportDiffPresetBundleJson() {
+      try {
+        const artifact = buildImportDiffPresetBundleArtifact();
+        const text = JSON.stringify(artifact, null, 2) + '\n';
+        q('importDiffPresetJsonInput').value = text;
+        q('importDiffPresetExchangeMeta').textContent = `Preset bundle generated in textarea and downloaded: presets=${artifact.presetCount}`;
+        downloadTextFile(
+          `phase8-wave3-import-diff-triage-presets-${new Date().toISOString().replace(/[:.]/g, '-')}.json`,
+          text,
+          'application/json'
+        );
+      } catch (err) {
+        q('importDiffPresetExchangeMeta').textContent = `Failed to export preset bundle: ${String(err.message || err)}`;
+      }
+    }
+
+    function parseImportDiffPresetJsonTextarea() {
+      try {
+        const raw = String(q('importDiffPresetJsonInput').value || '').trim();
+        if (!raw) {
+          q('importDiffPresetExchangeMeta').textContent = 'Paste a triage preset bundle JSON first.';
+          return;
+        }
+        mergeImportDiffPresetBundleFromText(raw, 'textarea:preset-bundle');
+      } catch (err) {
+        q('importDiffPresetExchangeMeta').textContent = `Failed to import preset bundle JSON: ${String(err.message || err)}`;
+      }
+    }
+
+    function clearImportDiffPresetJsonTextarea() {
+      q('importDiffPresetJsonInput').value = '';
+      q('importDiffPresetExchangeMeta').textContent = 'Preset bundle textarea cleared. Import merges by preset name (overwrite on conflict).';
     }
 
     function metricContextHtml(m) {
@@ -1466,6 +1601,10 @@
     q('saveImportDiffPreset').addEventListener('click', saveCurrentImportDiffPreset);
     q('applyImportDiffPreset').addEventListener('click', applySelectedImportDiffPreset);
     q('deleteImportDiffPreset').addEventListener('click', deleteSelectedImportDiffPreset);
+    q('exportImportDiffPresetJson').addEventListener('click', exportImportDiffPresetBundleJson);
+    q('openImportDiffPresetFile').addEventListener('click', () => q('importDiffPresetFileInput').click());
+    q('parseImportDiffPresetJson').addEventListener('click', parseImportDiffPresetJsonTextarea);
+    q('clearImportDiffPresetJson').addEventListener('click', clearImportDiffPresetJsonTextarea);
     q('importDiffPresetSelect').addEventListener('change', () => {
       const name = String(q('importDiffPresetSelect').value || '').trim();
       if (name) q('importDiffPresetName').value = name;
@@ -1526,6 +1665,19 @@
       if (!file) return;
       try { parseCompareReportImportText(await file.text(), `fileCompareB:${file.name}`, 'B'); }
       catch (err) { q('importCompareReportMetaB').textContent = `Failed to parse compare report file B: ${String(err.message || err)}`; }
+    });
+    q('importDiffPresetFileInput').addEventListener('change', async (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      try {
+        const raw = await file.text();
+        q('importDiffPresetJsonInput').value = raw;
+        mergeImportDiffPresetBundleFromText(raw, `file:${file.name}`);
+      } catch (err) {
+        q('importDiffPresetExchangeMeta').textContent = `Failed to import preset bundle file: ${String(err.message || err)}`;
+      } finally {
+        e.target.value = '';
+      }
     });
     wireCompareReportDropArea('compareReportJsonInput', 'A');
     wireCompareReportDropArea('compareReportJsonInputB', 'B');

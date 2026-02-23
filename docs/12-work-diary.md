@@ -4126,3 +4126,17 @@
   - Operators can save and reuse local triage setups for repeated imported artifact reviews without changing GS runtime behavior.
 - Next step:
   - add triage preset export/import (JSON) for sharing operator triage templates across machines.
+
+### 2026-02-23 17:29-17:31 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding triage preset JSON export/import (bundle format) for imported compact compare-report artifact diff mode in the discrepancy viewer, while keeping localStorage presets as the default workflow.
+- Added export/download + textarea/file import + merge/overwrite-by-name behavior, updated support docs/checklist to doc 108, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/108-phase8-wave3-imported-report-diff-triage-preset-json-share-20260223-213500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-172952.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (save/export/delete/import/apply preset bundle flow verified)
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (reload shows doc 108 evidence path; count remains 26/41)
+- Result:
+  - Operators can share imported-artifact diff triage presets across machines using JSON bundles without changing GS runtime behavior.
+- Next step:
+  - add optional viewer-side import of compact compare-report JSON directly into diff triage presets (quick preset-from-report suggestions) or preset bundle drag/drop for the triage preset textarea.
