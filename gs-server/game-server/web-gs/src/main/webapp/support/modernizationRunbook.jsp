@@ -238,6 +238,8 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave1-reporting-vector-smoke.sh
 # Wave 1 NumberUtils.asMoney parity (legacy Math.round semantics guard):
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave1-numberutils-asmoney-parity-smoke.sh
+# Wave 2 (game settings / coin rules) line-based normalization + nearest-coin vectors:
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave2-settings-coinrule-vector-smoke.sh
 # Bucketed remediation planning report (safe wave order from audit hotspots):
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-remediation-buckets.sh
 # Then sync dashboard embedded data if checklist/evidence changed:
@@ -260,6 +262,9 @@
         </p>
         <p class="small-note">
             Separate Wave 1 parity smoke protects legacy <code>NumberUtils.asMoney</code> Math.round behavior (including negative half-cent edge cases) during refactors.
+        </p>
+        <p class="small-note">
+            Wave 2 vector smoke prepares line-based default bet normalization and nearest-coin selection tests before touching game settings/coin-rule code paths.
         </p>
     </div>
 

@@ -3838,3 +3838,30 @@
   - Wave 1 now includes explicit parity protection for legacy `NumberUtils.asMoney` behavior while continuing safe reporting/display standardization only.
 - Next step:
   - decide whether to close Wave 1 after one more low-risk display cleanup pass or transition to Wave 2 precision planning (game settings/coin-rule assumptions) with dedicated vectors.
+
+### 2026-02-23 15:33-15:34 UTC
+- Closed Phase 8 Wave 1 hotspots and kicked off Wave 2 with deterministic settings/coin-rule vectors.
+- Code/tooling updates:
+  - Final Wave 1 display hotspot patched in `LoadGameInfoAction` (`/100.0d` -> `NumberUtils.centsToDouble(...)`):
+    `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadGameInfoAction.java`
+  - New Wave 2 vector smoke:
+    `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave2-settings-coinrule-vector-smoke.sh`
+  - Verification suite expanded with Wave 2 help + executable checks:
+    `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh`
+  - Progress/evidence updates:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (embedded sync)
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/89-phase8-wave1-closure-and-wave2-coinrule-vectors-20260223-161500.md`
+- Evidence:
+  - refreshed bucket report confirms Wave 1 closure (`wave1_reporting_stats: 0`):
+    `/Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision/phase8-precision-remediation-buckets-20260223-153353.md`
+  - Wave 2 settings/coin-rule vector smoke passed (`summary pass=10 fail=0`)
+  - `phase5-6-local-verification-suite.sh` passed after final checklist/dashboard sync:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-153443.md`
+    - summary: PASS=32, FAIL=0, SKIP=0
+- Result:
+  - Phase 8 Wave 1 reporting/display cleanup is complete by bucket evidence, and Wave 2 now has executable precision vectors before code changes.
+- Next step:
+  - start Phase 8 Wave 2 code remediation batch 1 in `DynamicCoinManager` / `GamesLevelHelper` under Wave 2 vectors + suite gates.

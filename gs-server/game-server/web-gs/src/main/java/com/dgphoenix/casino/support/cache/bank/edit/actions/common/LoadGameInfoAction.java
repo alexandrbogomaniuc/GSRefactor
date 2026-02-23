@@ -95,7 +95,7 @@ public class LoadGameInfoAction extends Action {
         List<LabelValueBean> cachedCoinsAsLabel = new ArrayList<>();
         for (Coin coin : sortedCachedCoins) {
             cachedCoinsAsLabel.add(
-                    new LabelValueBean(DigitFormatter.doubleToMoney(coin.getValue() / 100.0d),
+                    new LabelValueBean(DigitFormatter.doubleToMoney(NumberUtils.centsToDouble(coin.getValue())),
                             String.valueOf(coin.getId()))
             );
         }
