@@ -3812,3 +3812,29 @@
   - First safe Wave 1 code remediation is complete with backward-compatible reporting/display changes only and updated progress JSON evidence.
 - Next step:
   - proceed to Wave 1 batch 2 (remaining low-risk display/reporting helpers or `NumberUtils.asMoney` parity analysis) with vector-smoke + suite gates.
+
+### 2026-02-23 15:28-15:29 UTC
+- Implemented Phase 8 Wave 1 code remediation batch 2: `NumberUtils.asMoney` parity-preserving refactor + explicit parity guard.
+- Code/tooling updates:
+  - Added parity smoke:
+    `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave1-numberutils-asmoney-parity-smoke.sh`
+  - Verification suite expanded with `asMoney` parity help + executable checks:
+    `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh`
+  - `NumberUtils.asMoney(double)` refactored to use centralized helper while preserving legacy Math.round semantics:
+    `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/util/NumberUtils.java`
+  - Progress/evidence updates:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (embedded sync)
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/88-phase8-wave1-numberutils-asmoney-parity-and-remediation-batch2-20260223-160000.md`
+- Evidence:
+  - `phase8-precision-wave1-numberutils-asmoney-parity-smoke.sh` passed (`summary pass=12 fail=0`)
+  - Wave 1 reporting/display vector smoke still passed (`summary pass=12 fail=0`)
+  - `phase5-6-local-verification-suite.sh` passed after final checklist/dashboard sync:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-152908.md`
+    - summary: PASS=30, FAIL=0, SKIP=0
+- Result:
+  - Wave 1 now includes explicit parity protection for legacy `NumberUtils.asMoney` behavior while continuing safe reporting/display standardization only.
+- Next step:
+  - decide whether to close Wave 1 after one more low-risk display cleanup pass or transition to Wave 2 precision planning (game settings/coin-rule assumptions) with dedicated vectors.

@@ -236,6 +236,8 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-regression-vector-smoke.sh
 # Wave 1 (reporting/display) deterministic cent/thousandth rounding vectors:
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave1-reporting-vector-smoke.sh
+# Wave 1 NumberUtils.asMoney parity (legacy Math.round semantics guard):
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave1-numberutils-asmoney-parity-smoke.sh
 # Bucketed remediation planning report (safe wave order from audit hotspots):
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-remediation-buckets.sh
 # Then sync dashboard embedded data if checklist/evidence changed:
@@ -255,6 +257,9 @@
         </p>
         <p class="small-note">
             Wave 1 vector smoke targets non-runtime reporting/display conversions only (2-decimal cent formatting and rounding boundaries) before any code changes.
+        </p>
+        <p class="small-note">
+            Separate Wave 1 parity smoke protects legacy <code>NumberUtils.asMoney</code> Math.round behavior (including negative half-cent edge cases) during refactors.
         </p>
     </div>
 

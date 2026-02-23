@@ -51,10 +51,12 @@ CHECK_KEYS=(
   help_phase8_precision_vectors
   help_phase8_precision_buckets
   help_phase8_wave1_reporting_vectors
+  help_phase8_wave1_asmoney_parity
   logic_smoke_phase4_protocol
   logic_smoke_phase8_precision_vectors
   logic_smoke_phase8_precision_buckets
   logic_smoke_phase8_wave1_reporting_vectors
+  logic_smoke_phase8_wave1_asmoney_parity
   bash_syntax_bonus
   bash_syntax_history
   bash_syntax_wallet
@@ -121,6 +123,9 @@ run_check "help_phase8_precision_buckets" "CLI help: Phase 8 precision remediati
 run_check "help_phase8_wave1_reporting_vectors" "CLI help: Phase 8 Wave 1 reporting/display vector smoke" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave1-reporting-vector-smoke.sh' --help | sed -n '1,80p'"
 
+run_check "help_phase8_wave1_asmoney_parity" "CLI help: Phase 8 Wave 1 NumberUtils.asMoney parity smoke" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave1-numberutils-asmoney-parity-smoke.sh' --help | sed -n '1,80p'"
+
 run_check "logic_smoke_phase4_protocol" "Executable logic smoke: Phase 4 protocol hash/replay security" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase4-protocol-security-logic-smoke.sh'"
 
@@ -132,6 +137,9 @@ run_check "logic_smoke_phase8_precision_buckets" "Executable logic smoke: Phase 
 
 run_check "logic_smoke_phase8_wave1_reporting_vectors" "Executable logic smoke: Phase 8 Wave 1 reporting/display vectors" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave1-reporting-vector-smoke.sh'"
+
+run_check "logic_smoke_phase8_wave1_asmoney_parity" "Executable logic smoke: Phase 8 Wave 1 NumberUtils.asMoney parity" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave1-numberutils-asmoney-parity-smoke.sh'"
 
 run_check "bash_syntax_history" "Bash syntax: Phase 5 history scripts" \
   bash -lc "bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-canary-probe.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-runtime-readiness-check.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-runtime-evidence-pack.sh'"

@@ -16,7 +16,8 @@ public class NumberUtils {
     }
 
     public static double asMoney(double d) {
-        return (double) Math.round(d * 100) / 100;
+        // Preserve legacy Math.round cent semantics; Phase 8 Wave 1 only centralizes the conversion.
+        return centsToDouble(Math.round(d * 100));
         //    return (new BigDecimal(d).setScale(2,4).doubleValue());//ROUND_HALF_UP
     }
 
