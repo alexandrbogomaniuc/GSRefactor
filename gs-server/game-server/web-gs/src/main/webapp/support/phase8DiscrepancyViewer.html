@@ -127,6 +127,27 @@
       <ul id="validationChecklist" class="validation-list"></ul>
     </div>
 
+    <div class="cardx" id="compareExportCard">
+      <h4 style="margin-top:0;">Comparison Result Export (Compact)</h4>
+      <div class="toolbar">
+        <button id="generateCompareJson" class="btn btn-default btn-sm">Generate JSON Report</button>
+        <button id="generateCompareMarkdown" class="btn btn-default btn-sm">Generate Markdown Report</button>
+        <button id="downloadCompareJson" class="btn btn-primary btn-sm">Download JSON</button>
+        <button id="downloadCompareMarkdown" class="btn btn-primary btn-sm">Download Markdown</button>
+      </div>
+      <div class="footnote" id="compareExportMeta">Load A and B, enable compare mode, then generate an export report.</div>
+      <div class="pane-grid" style="margin-top:10px;">
+        <div>
+          <div class="meta">JSON Report Preview</div>
+          <pre id="compareJsonPreview">{}</pre>
+        </div>
+        <div>
+          <div class="meta">Markdown Report Preview</div>
+          <pre id="compareMarkdownPreview"># Comparison report preview\n</pre>
+        </div>
+      </div>
+    </div>
+
     <div class="cardx">
       <h4 style="margin-top:0;">Metrics</h4>
       <div class="table-wrap">
@@ -418,6 +439,194 @@
       return { status, label, detail };
     }
 
+    function buildValidationRules(st) {
+      const rules = [];
+      if (!st.hasA) return rules;
+      rules.push(
+        st.aMismatchMetrics <= st.thresholdMismatchA
+          ? rule('PASS', 'A mismatch metrics within threshold', `${st.aMismatchMetrics} <= ${st.thresholdMismatchA}`)
+          : rule('FAIL', 'A mismatch metrics exceed threshold', `${st.aMismatchMetrics} > ${st.thresholdMismatchA}`)
+      );
+
+      if (!st.compare) {
+        rules.push(rule('INFO', 'Compare mode disabled', 'Load B and enable compare mode for delta checks.'));
+        return rules;
+      }
+
+      rules.push(
+        st.bMismatchMetrics <= st.thresholdMismatchB
+          ? rule('PASS', 'B mismatch metrics within threshold', `${st.bMismatchMetrics} <= ${st.thresholdMismatchB}`)
+          : rule('FAIL', 'B mismatch metrics exceed threshold', `${st.bMismatchMetrics} > ${st.thresholdMismatchB}`)
+      );
+      rules.push(
+        Math.abs(st.deltaMismatchMetrics) <= st.thresholdMismatchDelta
+          ? rule('PASS', 'Mismatch metric delta within threshold', `|${st.deltaMismatchMetrics}| <= ${st.thresholdMismatchDelta}`)
+          : rule('FAIL', 'Mismatch metric delta exceeds threshold', `|${st.deltaMismatchMetrics}| > ${st.thresholdMismatchDelta}`)
+      );
+      rules.push(
+        Math.abs(st.deltaSnapshots) <= st.thresholdSnapshotDelta
+          ? rule('PASS', 'Snapshot delta within threshold', `|${st.deltaSnapshots}| <= ${st.thresholdSnapshotDelta}`)
+          : rule('FAIL', 'Snapshot delta exceeds threshold', `|${st.deltaSnapshots}| > ${st.thresholdSnapshotDelta}`)
+      );
+      rules.push(
+        st.allowNewMetricsInB || st.newMetricsInB === 0
+          ? rule('PASS', 'New metrics in B policy', st.allowNewMetricsInB ? `allowed (${st.newMetricsInB} found)` : 'none found')
+          : rule('FAIL', 'New metrics in B are not allowed', `${st.newMetricsInB} new metrics`)
+      );
+      rules.push(
+        st.maxMismatchDeltaAbs <= st.thresholdMismatchDelta
+          ? rule('PASS', 'Per-metric mismatch delta within threshold', `${st.maxMismatchDeltaAbs} <= ${st.thresholdMismatchDelta}`)
+          : rule('FAIL', 'Per-metric mismatch delta exceeds threshold', `${st.maxMismatchDeltaAbs} > ${st.thresholdMismatchDelta}`)
+      );
+      return rules;
+    }
+
+    function buildMetricDeltaRows() {
+      if (!modelA) return [];
+      const doCompare = compareEnabled();
+      const keys = doCompare
+        ? [...new Set([...Object.keys(modelA.metrics || {}), ...Object.keys(modelB.metrics || {})])]
+        : Object.keys(modelA.metrics || {});
+      keys.sort((a, b) => String(a).localeCompare(String(b)));
+      return keys.map((key) => {
+        const a = modelA.metrics[key] || null;
+        const b = doCompare ? (modelB.metrics[key] || null) : null;
+        return {
+          metric: key,
+          aSnapshots: a ? asNum(a.snapshots, null) : null,
+          aMaxMismatch: a ? asNum(a.maxMismatchCount, null) : null,
+          bSnapshots: b ? asNum(b.snapshots, null) : null,
+          bMaxMismatch: b ? asNum(b.maxMismatchCount, null) : null,
+          deltaSnapshots: doCompare ? asNum(b && b.snapshots) - asNum(a && a.snapshots) : null,
+          deltaMismatch: doCompare ? asNum(b && b.maxMismatchCount) - asNum(a && a.maxMismatchCount) : null,
+          aMismatch: hasMismatch(a),
+          bMismatch: hasMismatch(b),
+          compareOnlyInB: doCompare && !a && !!b,
+          aContext: a ? { bankId: a.lastBankId ?? null, gameId: a.lastGameId ?? null, templateMaxCredits: a.lastTemplateMaxCredits ?? null } : null,
+          bContext: b ? { bankId: b.lastBankId ?? null, gameId: b.lastGameId ?? null, templateMaxCredits: b.lastTemplateMaxCredits ?? null } : null
+        };
+      });
+    }
+
+    function buildComparisonReportArtifacts() {
+      const st = buildValidationState();
+      const rules = buildValidationRules(st);
+      const passCount = rules.filter((r) => r.status === 'PASS').length;
+      const failCount = rules.filter((r) => r.status === 'FAIL').length;
+      const infoCount = rules.filter((r) => r.status === 'INFO').length;
+      const overall = failCount > 0 ? 'FAIL' : 'PASS';
+      const metricRows = buildMetricDeltaRows();
+      const report = {
+        generatedAtUtc: new Date().toISOString(),
+        type: 'phase8-wave3-discrepancy-compare-report',
+        viewer: {
+          page: 'phase8DiscrepancyViewer.html',
+          compareEnabled: compareEnabled(),
+          mismatchOnlyFilter: q('mismatchOnly').checked
+        },
+        sources: {
+          baselineA: { label: sourceA, sourceFiles: modelA && modelA.sourceFiles ? modelA.sourceFiles : [] },
+          comparisonB: { label: sourceB, sourceFiles: modelB && modelB.sourceFiles ? modelB.sourceFiles : [] }
+        },
+        thresholds: {
+          mismatchA: st.thresholdMismatchA,
+          mismatchB: st.thresholdMismatchB,
+          mismatchDelta: st.thresholdMismatchDelta,
+          snapshotDelta: st.thresholdSnapshotDelta,
+          allowNewMetricsInB: st.allowNewMetricsInB
+        },
+        summary: {
+          overall,
+          passRules: passCount,
+          failRules: failCount,
+          infoRules: infoCount,
+          aMismatchMetrics: st.aMismatchMetrics ?? null,
+          bMismatchMetrics: st.compare ? st.bMismatchMetrics : null,
+          deltaMismatchMetrics: st.compare ? st.deltaMismatchMetrics : null,
+          aMetricCount: st.aMetricCount ?? null,
+          bMetricCount: st.compare ? st.bMetricCount : null,
+          unionMetricCount: st.compare ? st.unionMetricCount : null,
+          newMetricsInB: st.compare ? st.newMetricsInB : null,
+          deltaSnapshots: st.compare ? st.deltaSnapshots : null,
+          maxMismatchDeltaAbs: st.compare ? st.maxMismatchDeltaAbs : null
+        },
+        rules,
+        metrics: metricRows
+      };
+
+      const lines = [];
+      lines.push('# Phase 8 Wave 3 Discrepancy Comparison Report');
+      lines.push('');
+      lines.push(`- generatedAtUtc: ${report.generatedAtUtc}`);
+      lines.push(`- overall: ${report.summary.overall}`);
+      lines.push(`- compareEnabled: ${report.viewer.compareEnabled}`);
+      lines.push(`- sourceA: ${report.sources.baselineA.label}`);
+      lines.push(`- sourceB: ${report.sources.comparisonB.label}`);
+      lines.push('');
+      lines.push('## Thresholds');
+      lines.push(`- mismatchA <= ${report.thresholds.mismatchA}`);
+      lines.push(`- mismatchB <= ${report.thresholds.mismatchB}`);
+      lines.push(`- mismatchDelta <= ${report.thresholds.mismatchDelta}`);
+      lines.push(`- snapshotDelta <= ${report.thresholds.snapshotDelta}`);
+      lines.push(`- allowNewMetricsInB: ${report.thresholds.allowNewMetricsInB}`);
+      lines.push('');
+      lines.push('## Summary');
+      lines.push(`- passRules: ${report.summary.passRules}`);
+      lines.push(`- failRules: ${report.summary.failRules}`);
+      lines.push(`- infoRules: ${report.summary.infoRules}`);
+      lines.push(`- aMismatchMetrics: ${report.summary.aMismatchMetrics}`);
+      lines.push(`- bMismatchMetrics: ${report.summary.bMismatchMetrics}`);
+      lines.push(`- deltaMismatchMetrics: ${report.summary.deltaMismatchMetrics}`);
+      lines.push(`- newMetricsInB: ${report.summary.newMetricsInB}`);
+      lines.push('');
+      lines.push('## Rules');
+      report.rules.forEach((r) => lines.push(`- [${r.status}] ${r.label} (${r.detail})`));
+      lines.push('');
+      lines.push('## Metric Deltas');
+      lines.push('| metric | aMaxMismatch | bMaxMismatch | deltaMismatch | aSnapshots | bSnapshots | deltaSnapshots | compareOnlyInB |');
+      lines.push('|---|---:|---:|---:|---:|---:|---:|---|');
+      report.metrics.forEach((m) => {
+        lines.push(`| ${m.metric} | ${m.aMaxMismatch ?? '-'} | ${m.bMaxMismatch ?? '-'} | ${m.deltaMismatch ?? '-'} | ${m.aSnapshots ?? '-'} | ${m.bSnapshots ?? '-'} | ${m.deltaSnapshots ?? '-'} | ${m.compareOnlyInB ? 'yes' : 'no'} |`);
+      });
+      return { json: report, markdown: lines.join('\\n') + '\\n' };
+    }
+
+    function downloadTextFile(filename, content, mime) {
+      const blob = new Blob([content], { type: mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    function renderCompareExports() {
+      const card = q('compareExportCard');
+      const jsonPre = q('compareJsonPreview');
+      const mdPre = q('compareMarkdownPreview');
+      const meta = q('compareExportMeta');
+      if (!modelA) {
+        card.classList.add('hidden');
+        return;
+      }
+      card.classList.remove('hidden');
+      if (!compareEnabled()) {
+        meta.textContent = 'Enable compare mode and load model B to generate a compact comparison report.';
+        jsonPre.textContent = '{}';
+        mdPre.textContent = '# Comparison report preview\\n';
+        return;
+      }
+      const artifacts = buildComparisonReportArtifacts();
+      q('compareExportCard').dataset.reportJson = JSON.stringify(artifacts.json);
+      q('compareExportCard').dataset.reportMarkdown = artifacts.markdown;
+      jsonPre.textContent = JSON.stringify(artifacts.json, null, 2);
+      mdPre.textContent = artifacts.markdown;
+      meta.textContent = `Compact comparison report ready | overall=${artifacts.json.summary.overall} | metrics=${artifacts.json.metrics.length}`;
+    }
+
     function renderValidation() {
       const grid = q('validationSummaryGrid');
       const list = q('validationChecklist');
@@ -430,42 +639,7 @@
         return;
       }
 
-      const rules = [];
-      rules.push(
-        st.aMismatchMetrics <= st.thresholdMismatchA
-          ? rule('PASS', 'A mismatch metrics within threshold', `${st.aMismatchMetrics} <= ${st.thresholdMismatchA}`)
-          : rule('FAIL', 'A mismatch metrics exceed threshold', `${st.aMismatchMetrics} > ${st.thresholdMismatchA}`)
-      );
-
-      if (!st.compare) {
-        rules.push(rule('INFO', 'Compare mode disabled', 'Load B and enable compare mode for delta checks.'));
-      } else {
-        rules.push(
-          st.bMismatchMetrics <= st.thresholdMismatchB
-            ? rule('PASS', 'B mismatch metrics within threshold', `${st.bMismatchMetrics} <= ${st.thresholdMismatchB}`)
-            : rule('FAIL', 'B mismatch metrics exceed threshold', `${st.bMismatchMetrics} > ${st.thresholdMismatchB}`)
-        );
-        rules.push(
-          Math.abs(st.deltaMismatchMetrics) <= st.thresholdMismatchDelta
-            ? rule('PASS', 'Mismatch metric delta within threshold', `|${st.deltaMismatchMetrics}| <= ${st.thresholdMismatchDelta}`)
-            : rule('FAIL', 'Mismatch metric delta exceeds threshold', `|${st.deltaMismatchMetrics}| > ${st.thresholdMismatchDelta}`)
-        );
-        rules.push(
-          Math.abs(st.deltaSnapshots) <= st.thresholdSnapshotDelta
-            ? rule('PASS', 'Snapshot delta within threshold', `|${st.deltaSnapshots}| <= ${st.thresholdSnapshotDelta}`)
-            : rule('FAIL', 'Snapshot delta exceeds threshold', `|${st.deltaSnapshots}| > ${st.thresholdSnapshotDelta}`)
-        );
-        rules.push(
-          st.allowNewMetricsInB || st.newMetricsInB === 0
-            ? rule('PASS', 'New metrics in B policy', st.allowNewMetricsInB ? `allowed (${st.newMetricsInB} found)` : 'none found')
-            : rule('FAIL', 'New metrics in B are not allowed', `${st.newMetricsInB} new metrics`)
-        );
-        rules.push(
-          st.maxMismatchDeltaAbs <= st.thresholdMismatchDelta
-            ? rule('PASS', 'Per-metric mismatch delta within threshold', `${st.maxMismatchDeltaAbs} <= ${st.thresholdMismatchDelta}`)
-            : rule('FAIL', 'Per-metric mismatch delta exceeds threshold', `${st.maxMismatchDeltaAbs} > ${st.thresholdMismatchDelta}`)
-        );
-      }
+      const rules = buildValidationRules(st);
 
       const passCount = rules.filter((r) => r.status === 'PASS').length;
       const failCount = rules.filter((r) => r.status === 'FAIL').length;
@@ -564,6 +738,7 @@
       renderCompareSummary();
       renderMetrics();
       renderValidation();
+      renderCompareExports();
       renderRaw();
     }
 
@@ -634,6 +809,20 @@
       q('thresholdAllowNewMetrics').checked = true;
       renderAll();
     });
+    q('generateCompareJson').addEventListener('click', renderCompareExports);
+    q('generateCompareMarkdown').addEventListener('click', renderCompareExports);
+    q('downloadCompareJson').addEventListener('click', () => {
+      renderCompareExports();
+      const raw = q('compareExportCard').dataset.reportJson;
+      if (!raw || raw === '{}') return;
+      downloadTextFile(`phase8-wave3-compare-report-${new Date().toISOString().replace(/[:.]/g, '-')}.json`, JSON.stringify(JSON.parse(raw), null, 2) + '\\n', 'application/json');
+    });
+    q('downloadCompareMarkdown').addEventListener('click', () => {
+      renderCompareExports();
+      const raw = q('compareExportCard').dataset.reportMarkdown;
+      if (!raw) return;
+      downloadTextFile(`phase8-wave3-compare-report-${new Date().toISOString().replace(/[:.]/g, '-')}.md`, raw, 'text/markdown');
+    });
 
     q('fileInputA').addEventListener('change', async (e) => {
       const file = e.target.files && e.target.files[0];
@@ -650,6 +839,7 @@
     });
 
     q('compareSummaryCard').classList.add('hidden');
+    q('compareExportCard').classList.add('hidden');
     loadSampleA();
   </script>
 </body>

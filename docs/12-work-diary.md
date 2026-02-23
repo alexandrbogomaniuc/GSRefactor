@@ -4009,3 +4009,16 @@
   - Non-developer operators can now apply explicit validation thresholds and get immediate PASS/FAIL guidance while comparing discrepancy export runs.
 - Next step:
   - add comparison result export (compact JSON/Markdown) or reusable threshold policy profiles.
+
+### 2026-02-23 16:37-16:38 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding compact comparison report export (JSON/Markdown) to the discrepancy viewer (client-side only, no GS runtime behavior change).
+- Added export report previews/download actions in `/support/phase8DiscrepancyViewer.html`, updated support docs/runbook, moved checklist evidence to doc 99, re-synced dashboard embedded file-mode data, and verified viewer compare export in `file://` mode.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/99-phase8-wave3-viewer-compact-comparison-report-export-20260223-190000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-163721.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (A/B compare + demo preset + JSON/Markdown report previews)
+- Result:
+  - Non-developer operators can generate/download compact comparison reports from Phase 8 discrepancy exports directly in the browser (`file://` mode supported).
+- Next step:
+  - add reusable threshold policy profiles and/or parser-side compact comparison CLI export for non-UI automation.

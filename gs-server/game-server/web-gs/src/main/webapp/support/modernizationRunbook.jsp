@@ -60,7 +60,7 @@
             Compare mode remains disabled by default; enable only in non-production validation.
         </p>
         <p class="small-note">
-            Optional viewer page for exported JSON: <code>/support/phase8DiscrepancyViewer.html</code> (supports file upload, pasted JSON, embedded samples, A-vs-B compare mode, and guided validation thresholds/pass-fail badges in <code>file://</code> mode).
+            Optional viewer page for exported JSON: <code>/support/phase8DiscrepancyViewer.html</code> (supports file upload, pasted JSON, embedded samples, A-vs-B compare mode, guided validation thresholds/pass-fail badges, and compact JSON/Markdown comparison report export in <code>file://</code> mode).
         </p>
     </div>
 
