@@ -4140,3 +4140,17 @@
   - Operators can share imported-artifact diff triage presets across machines using JSON bundles without changing GS runtime behavior.
 - Next step:
   - add optional viewer-side import of compact compare-report JSON directly into diff triage presets (quick preset-from-report suggestions) or preset bundle drag/drop for the triage preset textarea.
+
+### 2026-02-23 18:04-18:06 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding drag/drop import support for triage preset bundle JSON onto the viewer preset JSON textarea (file or JSON text), reusing the existing preset-bundle merge/validation path.
+- Updated support docs/checklist to doc 109, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/109-phase8-wave3-imported-report-diff-triage-preset-bundle-dragdrop-20260223-220500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-180440.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (synthetic drop-path import via `handleImportDiffPresetDrop(...)` restored preset)
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (reload shows doc 109 evidence path; count remains 26/41)
+- Result:
+  - Operators can now import shared triage preset bundles faster via drag/drop in `file://` mode without changing GS runtime behavior.
+- Next step:
+  - add preset suggestion generation from imported compare-report artifacts (viewer-only) or preset bundle schema/version compatibility badges in the preset import panel.

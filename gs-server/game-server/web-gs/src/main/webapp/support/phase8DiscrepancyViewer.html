@@ -279,6 +279,7 @@
         </div>
         <textarea id="importDiffPresetJsonInput" rows="5" placeholder="Paste triage preset bundle JSON here (exported from this viewer)." style="width:100%; margin-top:8px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;"></textarea>
         <div class="footnote" id="importDiffPresetExchangeMeta">Share triage presets across machines via JSON export/import. Import merges by preset name (existing names are overwritten).</div>
+        <div class="footnote">Tip: you can also drag/drop a triage preset bundle JSON file or JSON text onto the preset JSON textarea.</div>
         <div class="footnote" id="importCompareDiffMeta">Load Imported A and Imported B compact compare-report JSON to compare artifacts.</div>
         <div id="importCompareDiffSummaryGrid" class="grid" style="margin-top:10px;"></div>
         <div class="pane-grid" style="margin-top:10px;">
@@ -750,6 +751,39 @@
     function clearImportDiffPresetJsonTextarea() {
       q('importDiffPresetJsonInput').value = '';
       q('importDiffPresetExchangeMeta').textContent = 'Preset bundle textarea cleared. Import merges by preset name (overwrite on conflict).';
+    }
+
+    async function handleImportDiffPresetDrop(event) {
+      event.preventDefault();
+      const area = q('importDiffPresetJsonInput');
+      area.classList.remove('drop-target-active');
+      try {
+        const dt = event.dataTransfer;
+        if (!dt) return;
+        if (dt.files && dt.files.length > 0) {
+          const file = dt.files[0];
+          const text = await file.text();
+          q('importDiffPresetJsonInput').value = text;
+          mergeImportDiffPresetBundleFromText(text, `drop:preset-bundle:${file.name}`);
+          return;
+        }
+        const text = (dt.getData('application/json') || dt.getData('text/plain') || '').trim();
+        if (!text) return;
+        q('importDiffPresetJsonInput').value = text;
+        mergeImportDiffPresetBundleFromText(text, 'drop:preset-bundle:text');
+      } catch (err) {
+        q('importDiffPresetExchangeMeta').textContent = `Failed to import dropped preset bundle: ${String(err.message || err)}`;
+      }
+    }
+
+    function wireImportDiffPresetDropArea(textareaId) {
+      const el = q(textareaId);
+      ['dragenter','dragover'].forEach((evt) => el.addEventListener(evt, (e) => {
+        e.preventDefault();
+        el.classList.add('drop-target-active');
+      }));
+      ['dragleave','dragend'].forEach((evt) => el.addEventListener(evt, () => el.classList.remove('drop-target-active')));
+      el.addEventListener('drop', (e) => { handleImportDiffPresetDrop(e); });
     }
 
     function metricContextHtml(m) {
@@ -1681,6 +1715,7 @@
     });
     wireCompareReportDropArea('compareReportJsonInput', 'A');
     wireCompareReportDropArea('compareReportJsonInputB', 'B');
+    wireImportDiffPresetDropArea('importDiffPresetJsonInput');
 
     q('compareSummaryCard').classList.add('hidden');
     q('compareExportCard').classList.add('hidden');
