@@ -202,7 +202,7 @@
           "id": "pu-precision-audit",
           "label": "Precision/min-bet modernization to support 0.001",
           "status": "in_progress",
-          "evidence": "docs/112-phase8-wave3-triage-preset-bundle-overwrite-confirm-guard-20260223-233500.md"
+          "evidence": "docs/113-phase8-wave3-triage-preset-guard-profiles-and-threshold-20260223-235500.md"
         },
         {
           "id": "pu-branding-wave",

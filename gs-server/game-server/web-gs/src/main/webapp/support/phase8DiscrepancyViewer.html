@@ -282,6 +282,22 @@
         <div class="footnote" id="importDiffPresetExchangeMeta">Share triage presets across machines via JSON export/import. Import merges by preset name (existing names are overwritten).</div>
         <div class="footnote" id="importDiffPresetPreviewMeta">Preset import preview: <span class="status-pill pill-info">NONE</span> Generate preview to see incoming/new/overwrite counts before merge.</div>
         <div class="footnote" id="importDiffPresetCompatMeta">Preset bundle compatibility: <span class="status-pill pill-info">UNKNOWN</span> Awaiting export/import.</div>
+        <div class="toolbar" style="margin-top:8px;">
+          <label style="font-weight:normal; margin:0;">Overwrite guard profile
+            <select id="importDiffPresetGuardProfile" style="margin-left:6px; width:180px;">
+              <option value="strict">Strict (&gt;=1 overwrite)</option>
+              <option value="default" selected>Default (&gt;=2 overwrites)</option>
+              <option value="relaxed">Relaxed (&gt;=5 overwrites)</option>
+              <option value="disabled">Disabled</option>
+              <option value="custom">Custom</option>
+            </select>
+          </label>
+          <label style="font-weight:normal; margin:0;">Threshold
+            <input type="number" id="importDiffPresetGuardThreshold" min="0" step="1" value="2" style="margin-left:6px; width:90px;" />
+          </label>
+          <button id="applyImportDiffPresetGuardProfile" class="btn btn-default btn-sm">Apply Guard</button>
+        </div>
+        <div class="footnote" id="importDiffPresetGuardProfileMeta">Guard profile: Default (confirm when overwrite count is 2 or more).</div>
         <div class="footnote" id="importDiffPresetGuardMeta">High-overwrite merge guard: confirmation is required when overwrite count reaches the threshold.</div>
         <div class="footnote">Tip: you can also drag/drop a triage preset bundle JSON file or JSON text onto the preset JSON textarea.</div>
         <div class="footnote" id="importCompareDiffMeta">Load Imported A and Imported B compact compare-report JSON to compare artifacts.</div>
@@ -458,7 +474,15 @@
     let importedCompareReportB = null;
     let importedCompareSourceB = 'none';
     const IMPORT_DIFF_PRESET_STORAGE_KEY = 'abs.gs.phase8.importDiffTriagePresets.v1';
-    const IMPORT_DIFF_PRESET_OVERWRITE_CONFIRM_THRESHOLD = 2;
+    const IMPORT_DIFF_PRESET_GUARD_PROFILES = {
+      strict: { label: 'Strict', enabled: true, threshold: 1, description: 'Confirm any overwrite.' },
+      default: { label: 'Default', enabled: true, threshold: 2, description: 'Confirm when overwriting two or more presets.' },
+      relaxed: { label: 'Relaxed', enabled: true, threshold: 5, description: 'Confirm only for larger overwrite batches.' },
+      disabled: { label: 'Disabled', enabled: false, threshold: 2, description: 'No overwrite confirmation prompt.' }
+    };
+    let importDiffPresetOverwriteGuardProfile = 'default';
+    let importDiffPresetOverwriteGuardEnabled = true;
+    let importDiffPresetOverwriteConfirmThreshold = 2;
     let importDiffPresets = {};
     const THRESHOLD_PROFILES = {
       strict: {
@@ -487,6 +511,12 @@
 
     function readEmbeddedSample(id) {
       try { return JSON.parse(q(id).textContent || '{}'); } catch (_) { return null; }
+    }
+
+    function toSafeInt(raw, fallback) {
+      const n = Number(raw);
+      if (!Number.isFinite(n)) return fallback;
+      return Math.max(0, Math.floor(n));
     }
 
     function formatValue(v) {
@@ -532,6 +562,52 @@
 
     function compareEnabled() {
       return q('compareEnabled').checked && !!modelB;
+    }
+
+    function currentImportDiffPresetGuardThreshold() {
+      return toSafeInt(importDiffPresetOverwriteConfirmThreshold, 2);
+    }
+
+    function importDiffPresetGuardEnabled() {
+      return !!importDiffPresetOverwriteGuardEnabled;
+    }
+
+    function renderImportDiffPresetGuardMeta() {
+      const threshold = currentImportDiffPresetGuardThreshold();
+      const profile = IMPORT_DIFF_PRESET_GUARD_PROFILES[importDiffPresetOverwriteGuardProfile] || null;
+      const profileLabel = profile ? profile.label : 'Custom';
+      const profileDesc = profile ? profile.description : `Custom threshold ${threshold}`;
+      q('importDiffPresetGuardProfileMeta').textContent = importDiffPresetGuardEnabled()
+        ? `Guard profile: ${profileLabel} (confirm when overwrite count is ${threshold} or more). ${profileDesc}`
+        : `Guard profile: ${profileLabel} (confirmation disabled). ${profileDesc}`;
+      q('importDiffPresetGuardMeta').textContent = importDiffPresetGuardEnabled()
+        ? `High-overwrite merge guard: confirmation is required when overwrite >= ${threshold}.`
+        : 'High-overwrite merge guard: disabled (imports proceed without overwrite confirmation).';
+      q('importDiffPresetGuardThreshold').disabled = !importDiffPresetGuardEnabled() && importDiffPresetOverwriteGuardProfile === 'disabled';
+    }
+
+    function applyImportDiffPresetGuardProfile(key) {
+      const profile = IMPORT_DIFF_PRESET_GUARD_PROFILES[key];
+      if (!profile) {
+        importDiffPresetOverwriteGuardProfile = 'custom';
+        importDiffPresetOverwriteGuardEnabled = true;
+        importDiffPresetOverwriteConfirmThreshold = toSafeInt(q('importDiffPresetGuardThreshold').value, currentImportDiffPresetGuardThreshold());
+      } else {
+        importDiffPresetOverwriteGuardProfile = key;
+        importDiffPresetOverwriteGuardEnabled = !!profile.enabled;
+        importDiffPresetOverwriteConfirmThreshold = toSafeInt(profile.threshold, 2);
+        q('importDiffPresetGuardThreshold').value = String(importDiffPresetOverwriteConfirmThreshold);
+      }
+      q('importDiffPresetGuardProfile').value = importDiffPresetOverwriteGuardProfile;
+      renderImportDiffPresetGuardMeta();
+    }
+
+    function markImportDiffPresetGuardProfileCustom() {
+      importDiffPresetOverwriteGuardProfile = 'custom';
+      importDiffPresetOverwriteGuardEnabled = true;
+      importDiffPresetOverwriteConfirmThreshold = toSafeInt(q('importDiffPresetGuardThreshold').value, currentImportDiffPresetGuardThreshold());
+      q('importDiffPresetGuardProfile').value = 'custom';
+      renderImportDiffPresetGuardMeta();
     }
 
     function readImportDiffPresets() {
@@ -699,15 +775,19 @@
     }
 
     function confirmImportDiffPresetMergeIfNeeded(preview, sourceLabel) {
-      if (!preview || asNum(preview.overwriteCount, 0) < IMPORT_DIFF_PRESET_OVERWRITE_CONFIRM_THRESHOLD) return true;
+      const threshold = currentImportDiffPresetGuardThreshold();
+      if (!importDiffPresetGuardEnabled()) return true;
+      if (!preview || asNum(preview.overwriteCount, 0) < threshold) return true;
       const incoming = asNum(preview.incomingCount, 0);
       const overwrite = asNum(preview.overwriteCount, 0);
+      const profileKey = importDiffPresetOverwriteGuardProfile || 'custom';
       const msg =
         `Preset import overwrite guard\\n\\n` +
         `Source: ${sourceLabel || 'unknown'}\\n` +
+        `Profile: ${profileKey}\\n` +
         `Incoming presets: ${incoming}\\n` +
         `Overwrite count: ${overwrite}\\n` +
-        `Threshold: ${IMPORT_DIFF_PRESET_OVERWRITE_CONFIRM_THRESHOLD}\\n\\n` +
+        `Threshold: ${threshold}\\n\\n` +
         `Continue with merge?`;
       try {
         if (typeof window.confirm === 'function') return !!window.confirm(msg);
@@ -721,8 +801,9 @@
       const preview = inspected.preview;
       renderImportDiffPresetPreviewMeta(preview, sourceLabel, { mode: 'merge' });
       if (!confirmImportDiffPresetMergeIfNeeded(preview, sourceLabel)) {
+        const threshold = currentImportDiffPresetGuardThreshold();
         q('importDiffPresetExchangeMeta').textContent =
-          `Preset bundle import cancelled by overwrite guard: overwrite=${preview.overwriteCount}, threshold=${IMPORT_DIFF_PRESET_OVERWRITE_CONFIRM_THRESHOLD}`;
+          `Preset bundle import cancelled by overwrite guard: overwrite=${preview.overwriteCount}, threshold=${threshold}`;
         renderImportDiffPresetPreviewMeta(preview, sourceLabel, { mode: 'guard_cancel' });
         renderImportDiffPresetCompatMeta(parsed.bundleMeta, sourceLabel);
         return {
@@ -1801,6 +1882,19 @@
     q('saveImportDiffPreset').addEventListener('click', saveCurrentImportDiffPreset);
     q('applyImportDiffPreset').addEventListener('click', applySelectedImportDiffPreset);
     q('deleteImportDiffPreset').addEventListener('click', deleteSelectedImportDiffPreset);
+    q('applyImportDiffPresetGuardProfile').addEventListener('click', () => applyImportDiffPresetGuardProfile(q('importDiffPresetGuardProfile').value));
+    q('importDiffPresetGuardProfile').addEventListener('change', () => {
+      const v = q('importDiffPresetGuardProfile').value;
+      if (v === 'custom') {
+        markImportDiffPresetGuardProfileCustom();
+        return;
+      }
+      applyImportDiffPresetGuardProfile(v);
+    });
+    q('importDiffPresetGuardThreshold').addEventListener('change', markImportDiffPresetGuardProfileCustom);
+    q('importDiffPresetGuardThreshold').addEventListener('input', () => {
+      if (q('importDiffPresetGuardProfile').value === 'custom') markImportDiffPresetGuardProfileCustom();
+    });
     q('exportImportDiffPresetJson').addEventListener('click', exportImportDiffPresetBundleJson);
     q('openImportDiffPresetFile').addEventListener('click', () => q('importDiffPresetFileInput').click());
     q('previewImportDiffPresetJson').addEventListener('click', previewImportDiffPresetJsonTextarea);
@@ -1884,8 +1978,7 @@
     wireCompareReportDropArea('compareReportJsonInput', 'A');
     wireCompareReportDropArea('compareReportJsonInputB', 'B');
     wireImportDiffPresetDropArea('importDiffPresetJsonInput');
-    q('importDiffPresetGuardMeta').textContent =
-      `High-overwrite merge guard: confirmation is required when overwrite >= ${IMPORT_DIFF_PRESET_OVERWRITE_CONFIRM_THRESHOLD}.`;
+    applyImportDiffPresetGuardProfile('default');
 
     q('compareSummaryCard').classList.add('hidden');
     q('compareExportCard').classList.add('hidden');
