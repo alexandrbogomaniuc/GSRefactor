@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-WALLET_HOST="127.0.0.1"
-WALLET_PORT="18075"
-GS_HOST="127.0.0.1"
-GS_PORT="18081"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+
+WALLET_HOST="$(cluster_hosts_get WALLET_ADAPTER_EXTERNAL_HOST 127.0.0.1)"
+WALLET_PORT="$(cluster_hosts_get WALLET_ADAPTER_EXTERNAL_PORT 18075)"
+GS_HOST="$(cluster_hosts_get GS_EXTERNAL_HOST 127.0.0.1)"
+GS_PORT="$(cluster_hosts_get GS_EXTERNAL_PORT 18081)"
 CHECK_DOCKER="true"
 
 usage() {

@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-GAMEPLAY_HOST="127.0.0.1"
-GAMEPLAY_PORT="18074"
-GS_HOST="127.0.0.1"
-GS_PORT="18081"
-REDIS_HOST="127.0.0.1"
-REDIS_PORT="16379"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+
+GAMEPLAY_HOST="$(cluster_hosts_get GAMEPLAY_ORCHESTRATOR_EXTERNAL_HOST 127.0.0.1)"
+GAMEPLAY_PORT="$(cluster_hosts_get GAMEPLAY_ORCHESTRATOR_EXTERNAL_PORT 18074)"
+GS_HOST="$(cluster_hosts_get GS_EXTERNAL_HOST 127.0.0.1)"
+GS_PORT="$(cluster_hosts_get GS_EXTERNAL_PORT 18081)"
+REDIS_HOST="$(cluster_hosts_get REDIS_EXTERNAL_HOST 127.0.0.1)"
+REDIS_PORT="$(cluster_hosts_get REDIS_EXTERNAL_PORT 16379)"
 CHECK_DOCKER="true"
 
 usage() {

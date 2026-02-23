@@ -47,9 +47,13 @@ SKIP_COUNT=0
 CHECK_KEYS=(
   bash_syntax_bonus
   bash_syntax_history
+  bash_syntax_wallet
+  bash_syntax_gameplay
   bash_syntax_mp
   help_bonus_evidence
   help_history_evidence
+  help_wallet_evidence
+  help_gameplay_evidence
   help_mp_policy
   help_mp_evidence
   logic_smoke_phase56
@@ -92,6 +96,12 @@ run_check "bash_syntax_bonus" "Bash syntax: Phase 5 bonus/FRB scripts" \
 run_check "bash_syntax_history" "Bash syntax: Phase 5 history scripts" \
   bash -lc "bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-canary-probe.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-runtime-readiness-check.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-history-runtime-evidence-pack.sh'"
 
+run_check "bash_syntax_wallet" "Bash syntax: Phase 5 wallet scripts" \
+  bash -lc "bash -n '${ROOT}/gs-server/deploy/scripts/phase5-wallet-adapter-canary-probe.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-wallet-runtime-readiness-check.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-wallet-runtime-evidence-pack.sh'"
+
+run_check "bash_syntax_gameplay" "Bash syntax: Phase 5 gameplay scripts" \
+  bash -lc "bash -n '${ROOT}/gs-server/deploy/scripts/phase5-gameplay-canary-probe.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-runtime-readiness-check.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase5-gameplay-runtime-evidence-pack.sh'"
+
 run_check "bash_syntax_mp" "Bash syntax: Phase 6 multiplayer scripts" \
   bash -lc "bash -n '${ROOT}/gs-server/deploy/scripts/phase6-multiplayer-canary-probe.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase6-multiplayer-routing-policy-probe.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase6-multiplayer-runtime-readiness-check.sh' && bash -n '${ROOT}/gs-server/deploy/scripts/phase6-multiplayer-runtime-evidence-pack.sh'"
 
@@ -100,6 +110,12 @@ run_check "help_bonus_evidence" "CLI help: Phase 5 bonus/FRB evidence-pack" \
 
 run_check "help_history_evidence" "CLI help: Phase 5 history evidence-pack" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase5-history-runtime-evidence-pack.sh' --help | sed -n '1,80p'"
+
+run_check "help_wallet_evidence" "CLI help: Phase 5 wallet evidence-pack" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase5-wallet-runtime-evidence-pack.sh' --help | sed -n '1,100p'"
+
+run_check "help_gameplay_evidence" "CLI help: Phase 5 gameplay evidence-pack" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase5-gameplay-runtime-evidence-pack.sh' --help | sed -n '1,120p'"
 
 run_check "help_mp_policy" "CLI help: Phase 6 multiplayer routing-policy probe" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase6-multiplayer-routing-policy-probe.sh' --help | sed -n '1,100p'"
@@ -131,7 +147,7 @@ fi
 
 if [[ "${CHECK_DOCKER_COMPOSE}" == "true" ]]; then
   run_check "compose_services" "Compose config services (refactor stack)" \
-    bash -lc "docker compose -f '${ROOT}/gs-server/deploy/docker/refactor/docker-compose.yml' --env-file '${ROOT}/gs-server/deploy/docker/refactor/.env' config --services | tr '\\n' ' '"
+    bash -lc "docker compose -f '${ROOT}/gs-server/deploy/docker/refactor/docker-compose.yml' --env-file '${ROOT}/gs-server/deploy/docker/refactor/.env' config --services | tr '\\n' ' ' | sed -E 's/[[:space:]]+$//'"
 else
   skip_check "compose_services" "Compose config services (refactor stack)" "Disabled by --check-docker-compose=false"
 fi
@@ -160,12 +176,26 @@ fi
     echo "### ${title}"
     echo "- status: ${status}"
     echo '```text'
-    sed -n '1,220p' "${TMP_DIR}/${key}.out"
+    sed -n '1,220p' "${TMP_DIR}/${key}.out" | sed -E 's/[[:space:]]+$//'
     printf '\n'
     echo '```'
     echo
   done
 } > "${REPORT}"
+
+# Normalize trailing blank lines at EOF so generated reports pass git diff whitespace checks.
+awk '{
+  lines[++n]=$0
+}
+END {
+  while (n > 0 && lines[n] == "") {
+    n--
+  }
+  for (i = 1; i <= n; i++) {
+    print lines[i]
+  }
+}' "${REPORT}" > "${REPORT}.tmp"
+mv "${REPORT}.tmp" "${REPORT}"
 
 echo "report=${REPORT}"
 

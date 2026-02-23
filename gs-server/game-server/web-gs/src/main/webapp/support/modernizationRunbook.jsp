@@ -126,6 +126,9 @@
         <p class="small-note">
             Output reports: <code>docs/phase5/gameplay/phase5-gameplay-runtime-evidence-*.md</code>
         </p>
+        <p class="small-note">
+            Default GS/gameplay/redis readiness endpoints now come from <code>cluster-hosts.properties</code>; command flags can still override.
+        </p>
     </div>
 
     <div class="section">
@@ -140,6 +143,9 @@
 </code></pre>
         <p class="small-note">
             Output reports: <code>docs/phase5/wallet/phase5-wallet-runtime-evidence-*.md</code>
+        </p>
+        <p class="small-note">
+            Default GS and wallet endpoints now come from <code>cluster-hosts.properties</code>; command flags can still override.
         </p>
     </div>
 

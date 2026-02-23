@@ -43,3 +43,7 @@ cd /Users/alexb/Documents/Dev/Dev_new
 
 ## Result
 - Post-change testing discipline is now encoded in a reusable script + operator runbook step, not only manual practice.
+
+## Update (2026-02-23 13:30 UTC)
+- Expanded coverage to include Phase 5 wallet and gameplay script syntax/help checks.
+- Report generator now trims trailing spaces and normalizes EOF to avoid false-positive whitespace failures in generated markdown reports.

@@ -3523,3 +3523,36 @@
   - Phase 5 bonus/history runtime tooling now uses centralized host defaults visible in the portal, reducing manual command edits and config drift.
 - Next step:
   - commit this host-config wave 2 batch and continue with wallet/gameplay/phase4/phase7 script default migration waves.
+
+### 2026-02-23 13:27-13:30 UTC
+- Implemented host-config hardening wave 3 for Phase 5 wallet/gameplay tooling and expanded local verification coverage.
+- Implementation updates:
+  - Added external host keys for wallet/gameplay/redis and synced portal-visible resource copy:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/cluster-hosts.properties`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/resources/cluster-hosts.properties`
+  - Updated Phase 5 wallet/gameplay scripts to read defaults from `cluster-hosts.properties` via shared helper:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-adapter-canary-probe.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-runtime-readiness-check.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-runtime-evidence-pack.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-gameplay-canary-probe.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-runtime-readiness-check.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-gameplay-runtime-evidence-pack.sh`
+  - Expanded `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh`:
+    - added wallet/gameplay syntax/help checks
+    - normalized generated markdown report formatting (trim trailing spaces / EOF) with BSD-safe `sed -E`
+  - Updated runbook/docs and added evidence doc:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/75-phase5-6-local-verification-suite-20260223-130100.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/78-phase5-wallet-gameplay-host-defaults-and-suite-expansion-wave3-20260223-133000.md`
+- Evidence:
+  - `sync-cluster-hosts.sh` passed.
+  - `bash -n` passed for modified wallet/gameplay scripts and verification suite.
+  - `--help` passed for wallet/gameplay evidence-pack scripts.
+  - `phase5-6-local-verification-suite.sh` passed:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-133036.md`
+    - summary: PASS=18, FAIL=0, SKIP=0
+  - `git diff --check` passed after report generation without manual patching.
+- Result:
+  - Phase 5 wallet/gameplay tooling now uses centralized host defaults and the offline verification suite covers more of Phase 5, reducing regression risk and operator config drift.
+- Next step:
+  - commit this wave 3 batch and continue with Phase 4/Phase 7 script default migration waves.
