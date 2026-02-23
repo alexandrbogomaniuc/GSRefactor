@@ -162,8 +162,17 @@
 
     <div class="section">
         <h4>Phase 6 Multiplayer Runtime Check</h4>
+        <p class="small-note">
+            Default bank <code>6275</code> is configured with multiplayer disabled (<code>isMultiplayer=false</code> equivalent),
+            so the policy probe should PASS with bypass reasons. Sync canary is optional and should only be enabled for a bank flagged multiplayer-enabled.
+        </p>
         <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-runtime-readiness-check.sh
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-routing-policy-probe.sh \
+  --bank-id 6275 \
+  --game-id 838 \
+  --transport host \
+  --multiplayer-base-url http://127.0.0.1:18079
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-runtime-evidence-pack.sh \
   --bank-id 6275 \
   --game-id 838 \
@@ -172,6 +181,9 @@
 </code></pre>
         <p class="small-note">
             Output reports: <code>docs/phase6/multiplayer/phase6-multiplayer-runtime-evidence-*.md</code>
+        </p>
+        <p class="small-note">
+            Optional sync canary (only for multiplayer-enabled bank): add <code>--run-sync-canary true</code> to the evidence pack command.
         </p>
     </div>
 

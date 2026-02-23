@@ -3395,3 +3395,28 @@
   - Phase 6 now includes GS-side fail-open shadow bridge for multiplayer-service behind canary and bank capability checks.
 - Next step:
   - bundle remaining Phase 6 changes into a commit and queue push retry when network resolution for github.com is available.
+
+### 2026-02-23 12:46-12:48 UTC
+- Hardened Phase 6 testing discipline after user request to ensure each change is verified immediately.
+- Implementation updates:
+  - Added policy-focused multiplayer routing probe:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-routing-policy-probe.sh`
+  - Updated Phase 6 evidence pack to make routing policy probe mandatory and sync canary optional (`--run-sync-canary true`):
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-runtime-evidence-pack.sh`
+  - Updated support docs/runbook/checklist and added evidence doc:
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/74-phase6-multiplayer-routing-policy-probe-and-test-gate-20260220-192600.md`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+- Evidence:
+  - `bash -n` passed for new probe and updated evidence-pack script.
+  - `--help` passed for new probe and updated evidence-pack script.
+  - checklist JSON parse passed.
+  - `git diff --check` passed.
+  - `docker compose ... config --services` passed (multiplayer-service present).
+  - new evidence report generated:
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/phase6/multiplayer/phase6-multiplayer-runtime-evidence-20260223-124734.md`
+- Result:
+  - Phase 6 now has explicit post-change test coverage for `isMultiplayer` bypass and bank capability gate, reducing risk of returning to policy expectation bugs later.
+- Next step:
+  - commit this test-gate hardening batch and continue applying the same test-after-change evidence pattern to subsequent increments.

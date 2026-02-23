@@ -144,7 +144,7 @@
             <tr>
                 <td>Phase 6 - Multiplayer Separation</td>
                 <td>Boundary and bypass architecture</td>
-                <td><code>docs/39-phase6-multiplayer-boundary-and-bypass-v1.md</code><br/><code>docs/71-phase6-multiplayer-service-scaffold-and-routing-20260220-191300.md</code><br/><code>docs/72-phase6-multiplayer-runtime-evidence-pack-tooling-20260220-191400.md</code><br/><code>docs/73-phase6-gs-multiplayer-shadow-bridge-20260220-191800.md</code><br/><code>docs/phase6/</code></td>
+                <td><code>docs/39-phase6-multiplayer-boundary-and-bypass-v1.md</code><br/><code>docs/71-phase6-multiplayer-service-scaffold-and-routing-20260220-191300.md</code><br/><code>docs/72-phase6-multiplayer-runtime-evidence-pack-tooling-20260220-191400.md</code><br/><code>docs/73-phase6-gs-multiplayer-shadow-bridge-20260220-191800.md</code><br/><code>docs/74-phase6-multiplayer-routing-policy-probe-and-test-gate-20260220-192600.md</code><br/><code>docs/phase6/</code></td>
             </tr>
             <tr>
                 <td>Phase 7 - Cassandra Upgrade</td>
