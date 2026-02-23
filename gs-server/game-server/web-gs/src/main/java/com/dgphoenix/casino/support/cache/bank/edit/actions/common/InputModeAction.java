@@ -5,6 +5,7 @@ import com.dgphoenix.casino.common.cache.LimitsCache;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;
 import com.dgphoenix.casino.common.cache.data.bank.Limit;
 import com.dgphoenix.casino.common.util.DigitFormatter;
+import com.dgphoenix.casino.gs.singlegames.tools.util.NumberUtils;
 import com.dgphoenix.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -45,7 +46,7 @@ public class InputModeAction extends Action {
         for (Coin coin : sortedCoins) {
             adaptedCoins.add(
                     new LabelValueBean("" +
-                            DigitFormatter.doubleToMoney(coin.getValue() / 100.0d),
+                            DigitFormatter.doubleToMoney(NumberUtils.centsToDouble(coin.getValue())),
                             String.valueOf(coin.getId()))
             );
         }

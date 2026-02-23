@@ -1,11 +1,13 @@
 package com.dgphoenix.casino.gs.singlegames.tools.util;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.Locale;
-
 public class NumberUtils {
 
     public static final double MONEY_PRECISION = 0.001;
+    public static final int CENTS_SCALE = 2;
     private static final NumberFormat MONEY_DISPLAY_FORMAT =
             NumberFormat.getInstance(Locale.ENGLISH);
 
@@ -20,6 +22,27 @@ public class NumberUtils {
 
     public static double asPercent(double d) {
         return (double) Math.round(d * 10000) / 10000;
+    }
+
+    // Wave 1 (reporting/display) helper: keeps current cent-based display semantics centralized.
+    public static double centsToDouble(long cents) {
+        return minorUnitsToDouble(cents, CENTS_SCALE);
+    }
+
+    public static double minorUnitsToDouble(long minorUnits, int scale) {
+        return BigDecimal.valueOf(minorUnits, scale).doubleValue();
+    }
+
+    // Parses a decimal string and rounds to scaled long using explicit HALF_UP (display/reporting paths).
+    public static long decimalStringToScaledLongHalfUp(String value, int scale) {
+        return new BigDecimal(value)
+                .movePointRight(scale)
+                .setScale(0, RoundingMode.HALF_UP)
+                .longValueExact();
+    }
+
+    public static long decimalStringToCentsHalfUp(String value) {
+        return decimalStringToScaledLongHalfUp(value, CENTS_SCALE);
     }
 
     public static String asMoneyDisplayFormat(double d) {

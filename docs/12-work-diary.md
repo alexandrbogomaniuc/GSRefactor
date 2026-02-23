@@ -3784,3 +3784,31 @@
   - Phase 8 now has correct Wave 1 low-risk hotspot targeting plus deterministic test vectors for the first safe remediation code batch.
 - Next step:
   - implement Wave 1 code remediation (reporting/display only) behind parity-preserving behavior checks, using the new vector smoke as the acceptance guard.
+
+### 2026-02-23 15:06-15:08 UTC
+- Implemented Phase 8 Wave 1 code remediation batch 1 (reporting/display only, no financial path changes).
+- Code changes:
+  - Centralized reporting/display helpers in `NumberUtils`:
+    - `centsToDouble`, `minorUnitsToDouble`, `decimalStringToScaledLongHalfUp`, `decimalStringToCentsHalfUp`
+    - file: `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/util/NumberUtils.java`
+  - Tournament leaderboard score rounding switched to explicit helper (both callsites):
+    `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentLeaderboardBuilder.java`
+  - Support/admin coin display conversions centralized (`/100.0d` -> `NumberUtils.centsToDouble(...)`):
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/InputModeAction.java`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadGameInfoAction.java`
+  - Progress/evidence updates:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (embedded sync)
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/87-phase8-wave1-reporting-display-code-remediation-batch1-20260223-154500.md`
+- Evidence:
+  - Wave 1 vector smoke passed (`summary pass=12 fail=0`)
+  - callsite grep confirms helper usage in all targeted Wave 1 classes
+  - `phase5-6-local-verification-suite.sh` passed after final checklist/dashboard sync:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-150858.md`
+    - summary: PASS=28, FAIL=0, SKIP=0
+- Result:
+  - First safe Wave 1 code remediation is complete with backward-compatible reporting/display changes only and updated progress JSON evidence.
+- Next step:
+  - proceed to Wave 1 batch 2 (remaining low-risk display/reporting helpers or `NumberUtils.asMoney` parity analysis) with vector-smoke + suite gates.

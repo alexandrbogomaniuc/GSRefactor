@@ -10,6 +10,7 @@ import com.dgphoenix.casino.common.promo.feed.tournament.MaxBalanceRecord;
 import com.dgphoenix.casino.common.promo.feed.tournament.TournamentFeed;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.dgphoenix.casino.gs.singlegames.tools.util.NumberUtils;
 import com.dgphoenix.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import com.dgphoenix.casino.promo.tournaments.messages.PlaceInfo;
 import com.dgphoenix.casino.promo.tournaments.messages.PrizeInfo;
@@ -76,7 +77,7 @@ public class TournamentLeaderboardBuilder {
         for (int i = 0; i < lastIndex; i++) {
             Player player = players.get(i);
             PlaceInfo placeInfo;
-            long score = Math.round(Double.parseDouble(player.getScore()) * 100);
+            long score = NumberUtils.decimalStringToCentsHalfUp(player.getScore());
             if (i < prizes.size()) {
                 placeInfo = new PrizePlaceInfo(i + 1, player.getNickName(), score, prizes.get(i).getPrize());
             } else {
@@ -243,7 +244,7 @@ public class TournamentLeaderboardBuilder {
         for (int i = 0; i < players.size(); i++) {
             Player player = players.get(i);
             if (player.getNickName().equals(nickname)) {
-                long score = Math.round(Double.parseDouble(player.getScore()) * 100);
+            long score = NumberUtils.decimalStringToCentsHalfUp(player.getScore());
                 if (i < prizes.size() && prizes.get(i) != null) {
                     return new PrizePlaceInfo(i + 1, player.getNickName(), score, prizes.get(i).getPrize());
                 } else {

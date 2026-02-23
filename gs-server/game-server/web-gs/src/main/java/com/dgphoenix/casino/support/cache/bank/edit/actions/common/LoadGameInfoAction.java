@@ -7,6 +7,7 @@ import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.game.GameVariableType;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.util.DigitFormatter;
+import com.dgphoenix.casino.gs.singlegames.tools.util.NumberUtils;
 import com.dgphoenix.casino.support.cache.bank.edit.forms.common.GameInfoForm;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
@@ -84,7 +85,7 @@ public class LoadGameInfoAction extends Action {
 
             List<String> bankCoinsAsString = new ArrayList<>();
             for (Coin coin : sortedBankCoins) {
-                bankCoinsAsString.add(String.valueOf(coin.getValue() / 100.0d));
+                bankCoinsAsString.add(String.valueOf(NumberUtils.centsToDouble(coin.getValue())));
             }
             gameForm.setBankCoins(bankCoinsAsString);
         }
