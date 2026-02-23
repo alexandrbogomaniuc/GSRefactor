@@ -474,6 +474,7 @@
     let importedCompareReportB = null;
     let importedCompareSourceB = 'none';
     const IMPORT_DIFF_PRESET_STORAGE_KEY = 'abs.gs.phase8.importDiffTriagePresets.v1';
+    const IMPORT_DIFF_PRESET_GUARD_STORAGE_KEY = 'abs.gs.phase8.importDiffPresetGuard.v1';
     const IMPORT_DIFF_PRESET_GUARD_PROFILES = {
       strict: { label: 'Strict', enabled: true, threshold: 1, description: 'Confirm any overwrite.' },
       default: { label: 'Default', enabled: true, threshold: 2, description: 'Confirm when overwriting two or more presets.' },
@@ -572,6 +573,37 @@
       return !!importDiffPresetOverwriteGuardEnabled;
     }
 
+    function readImportDiffPresetGuardState() {
+      try {
+        const raw = window.localStorage ? window.localStorage.getItem(IMPORT_DIFF_PRESET_GUARD_STORAGE_KEY) : null;
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return null;
+        return {
+          profile: String(parsed.profile || '').trim() || 'default',
+          threshold: toSafeInt(parsed.threshold, 2),
+          enabled: typeof parsed.enabled === 'boolean' ? parsed.enabled : undefined
+        };
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function writeImportDiffPresetGuardState() {
+      try {
+        if (!window.localStorage) return false;
+        window.localStorage.setItem(IMPORT_DIFF_PRESET_GUARD_STORAGE_KEY, JSON.stringify({
+          profile: importDiffPresetOverwriteGuardProfile,
+          threshold: currentImportDiffPresetGuardThreshold(),
+          enabled: importDiffPresetGuardEnabled(),
+          savedAtUtc: new Date().toISOString()
+        }));
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
     function renderImportDiffPresetGuardMeta() {
       const threshold = currentImportDiffPresetGuardThreshold();
       const profile = IMPORT_DIFF_PRESET_GUARD_PROFILES[importDiffPresetOverwriteGuardProfile] || null;
@@ -600,6 +632,8 @@
       }
       q('importDiffPresetGuardProfile').value = importDiffPresetOverwriteGuardProfile;
       renderImportDiffPresetGuardMeta();
+      const persisted = writeImportDiffPresetGuardState();
+      if (!persisted) q('importDiffPresetGuardProfileMeta').textContent += ' (not persisted: localStorage unavailable)';
     }
 
     function markImportDiffPresetGuardProfileCustom() {
@@ -608,6 +642,32 @@
       importDiffPresetOverwriteConfirmThreshold = toSafeInt(q('importDiffPresetGuardThreshold').value, currentImportDiffPresetGuardThreshold());
       q('importDiffPresetGuardProfile').value = 'custom';
       renderImportDiffPresetGuardMeta();
+      const persisted = writeImportDiffPresetGuardState();
+      if (!persisted) q('importDiffPresetGuardProfileMeta').textContent += ' (not persisted: localStorage unavailable)';
+    }
+
+    function restoreImportDiffPresetGuardState() {
+      const saved = readImportDiffPresetGuardState();
+      if (!saved) {
+        applyImportDiffPresetGuardProfile('default');
+        return;
+      }
+      if (saved.profile === 'custom') {
+        q('importDiffPresetGuardThreshold').value = String(toSafeInt(saved.threshold, 2));
+        importDiffPresetOverwriteGuardProfile = 'custom';
+        importDiffPresetOverwriteGuardEnabled = typeof saved.enabled === 'boolean' ? saved.enabled : true;
+        importDiffPresetOverwriteConfirmThreshold = toSafeInt(saved.threshold, 2);
+        q('importDiffPresetGuardProfile').value = 'custom';
+        renderImportDiffPresetGuardMeta();
+        q('importDiffPresetGuardProfileMeta').textContent += ' (restored from browser storage)';
+        return;
+      }
+      if (IMPORT_DIFF_PRESET_GUARD_PROFILES[saved.profile]) {
+        applyImportDiffPresetGuardProfile(saved.profile);
+        q('importDiffPresetGuardProfileMeta').textContent += ' (restored from browser storage)';
+        return;
+      }
+      applyImportDiffPresetGuardProfile('default');
     }
 
     function readImportDiffPresets() {
@@ -1978,7 +2038,7 @@
     wireCompareReportDropArea('compareReportJsonInput', 'A');
     wireCompareReportDropArea('compareReportJsonInputB', 'B');
     wireImportDiffPresetDropArea('importDiffPresetJsonInput');
-    applyImportDiffPresetGuardProfile('default');
+    restoreImportDiffPresetGuardState();
 
     q('compareSummaryCard').classList.add('hidden');
     q('compareExportCard').classList.add('hidden');

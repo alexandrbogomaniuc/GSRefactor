@@ -4210,3 +4210,17 @@
   - Operators can tune overwrite guard behavior for preset imports without code changes, improving safety and flexibility for cross-machine triage preset sync in `file://` mode.
 - Next step:
   - add preset suggestion generation from imported compare-report artifacts (viewer-only) or optional persistence of guard profile/threshold in browser localStorage.
+
+### 2026-02-23 19:24-19:26 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding browser-local persistence for overwrite-guard profile/threshold settings in the viewer (localStorage restore with default fallback), while keeping guard enforcement logic unchanged in the shared preset merge path.
+- Updated support docs/checklist to doc 114, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/114-phase8-wave3-triage-preset-guard-settings-localstorage-20260224-001500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-192457.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (default fallback + disabled restore + custom threshold restore verified)
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (reload shows doc 114 evidence path; count remains 26/41)
+- Result:
+  - Operators no longer need to reconfigure overwrite-guard settings on each page load, improving repeatability of triage preset import workflows in `file://` mode.
+- Next step:
+  - add preset suggestion generation from imported compare-report artifacts (viewer-only) or expose a one-click reset for all viewer local settings/presets.
