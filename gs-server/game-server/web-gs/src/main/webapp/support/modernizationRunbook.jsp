@@ -177,6 +177,9 @@
             Default bank <code>6275</code> is configured with multiplayer disabled (<code>isMultiplayer=false</code> equivalent),
             so the policy probe should PASS with bypass reasons. Sync canary is optional and should only be enabled for a bank flagged multiplayer-enabled.
         </p>
+        <p class="small-note">
+            Default GS and multiplayer endpoints for these scripts now come from <code>cluster-hosts.properties</code> (external host keys); command flags can still override them.
+        </p>
         <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-runtime-readiness-check.sh
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-routing-policy-probe.sh \

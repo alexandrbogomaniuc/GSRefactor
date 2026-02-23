@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-MULTIPLAYER_HOST="127.0.0.1"
-MULTIPLAYER_PORT="18079"
-GS_HOST="127.0.0.1"
-GS_PORT="18081"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+
+MULTIPLAYER_HOST="$(cluster_hosts_get MULTIPLAYER_SERVICE_EXTERNAL_HOST 127.0.0.1)"
+MULTIPLAYER_PORT="$(cluster_hosts_get MULTIPLAYER_SERVICE_EXTERNAL_PORT 18079)"
+GS_HOST="$(cluster_hosts_get GS_EXTERNAL_HOST 127.0.0.1)"
+GS_PORT="$(cluster_hosts_get GS_EXTERNAL_PORT 18081)"
 CHECK_DOCKER="true"
 
 usage() {

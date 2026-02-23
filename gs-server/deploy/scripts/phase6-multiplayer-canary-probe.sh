@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+
 BANK_ID="6275"
 GAME_ID="838"
 SESSION_ID=""
 PLAYER_ID="canary-player"
 TRANSPORT="host"
-MULTIPLAYER_BASE_URL="http://127.0.0.1:18079"
+MULTIPLAYER_BASE_URL="$(cluster_hosts_http_url MULTIPLAYER_SERVICE_EXTERNAL_HOST MULTIPLAYER_SERVICE_EXTERNAL_PORT 127.0.0.1 18079)"
 MULTIPLAYER_CONTAINER="refactor-multiplayer-service-1"
 
 usage() {

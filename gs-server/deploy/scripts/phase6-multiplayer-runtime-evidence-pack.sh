@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+
 BANK_ID="6275"
 GAME_ID="838"
 TRANSPORT="host"
-MULTIPLAYER_BASE_URL="http://127.0.0.1:18079"
+MULTIPLAYER_BASE_URL="$(cluster_hosts_http_url MULTIPLAYER_SERVICE_EXTERNAL_HOST MULTIPLAYER_SERVICE_EXTERNAL_PORT 127.0.0.1 18079)"
 RUN_SYNC_CANARY="false"
-READINESS_MULTIPLAYER_HOST="127.0.0.1"
-READINESS_MULTIPLAYER_PORT="18079"
-READINESS_GS_HOST="127.0.0.1"
-READINESS_GS_PORT="18081"
+READINESS_MULTIPLAYER_HOST="$(cluster_hosts_get MULTIPLAYER_SERVICE_EXTERNAL_HOST 127.0.0.1)"
+READINESS_MULTIPLAYER_PORT="$(cluster_hosts_get MULTIPLAYER_SERVICE_EXTERNAL_PORT 18079)"
+READINESS_GS_HOST="$(cluster_hosts_get GS_EXTERNAL_HOST 127.0.0.1)"
+READINESS_GS_PORT="$(cluster_hosts_get GS_EXTERNAL_PORT 18081)"
 CHECK_DOCKER="true"
 OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase6/multiplayer"
 

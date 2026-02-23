@@ -3468,3 +3468,30 @@
   - Post-change local verification now exercises actual Phase 5/6 behavior (idempotency and routing decisions), reducing risk of regressions slipping through syntax-only checks.
 - Next step:
   - commit this logic-smoke hardening batch, retry push (expected sandbox network restriction), then continue Phase 6/Phase 7 preparation work.
+
+### 2026-02-23 13:11-13:15 UTC
+- Implemented host-config hardening wave 1 for Phase 6 multiplayer tooling (remove hardcoded host defaults from current scripts).
+- Implementation updates:
+  - Added shared cluster config reader helper:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh`
+  - Updated Phase 6 scripts to load default endpoints from `cluster-hosts.properties` with fallback compatibility:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-routing-policy-probe.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-canary-probe.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-runtime-readiness-check.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-runtime-evidence-pack.sh`
+  - Added external host keys and synced portal-visible resource copy:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/cluster-hosts.properties`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/resources/cluster-hosts.properties`
+  - Added evidence note:
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/76-phase6-host-defaults-cluster-config-wave1-20260223-131500.md`
+- Evidence:
+  - `sync-cluster-hosts.sh` passed (refactor env/nginx/portal copies updated).
+  - `bash -n` passed for helper + modified Phase 6 scripts.
+  - `--help` passed for modified Phase 6 scripts.
+  - `phase5-6-local-verification-suite.sh` passed:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-131357.md`
+    - summary: PASS=14, FAIL=0, SKIP=0
+- Result:
+  - Current Phase 6 runtime/probe tooling now reads default endpoints from the centralized cluster config file that is also visible via the portal, reducing environment drift risk.
+- Next step:
+  - commit this host-config wave 1 batch and continue migrating remaining Phase 4/5/7 scripts to the same cluster-config default model.
