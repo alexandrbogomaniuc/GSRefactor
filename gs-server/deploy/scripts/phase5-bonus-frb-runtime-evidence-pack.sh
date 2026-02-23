@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+
 BANK_ID="6275"
 TRANSPORT="host"
-BONUS_BASE_URL="http://127.0.0.1:18076"
-READINESS_BONUS_HOST="127.0.0.1"
-READINESS_BONUS_PORT="18076"
-READINESS_GS_HOST="127.0.0.1"
-READINESS_GS_PORT="18081"
+BONUS_BASE_URL="$(cluster_hosts_http_url BONUS_FRB_SERVICE_EXTERNAL_HOST BONUS_FRB_SERVICE_EXTERNAL_PORT 127.0.0.1 18076)"
+READINESS_BONUS_HOST="$(cluster_hosts_get BONUS_FRB_SERVICE_EXTERNAL_HOST 127.0.0.1)"
+READINESS_BONUS_PORT="$(cluster_hosts_get BONUS_FRB_SERVICE_EXTERNAL_PORT 18076)"
+READINESS_GS_HOST="$(cluster_hosts_get GS_EXTERNAL_HOST 127.0.0.1)"
+READINESS_GS_PORT="$(cluster_hosts_get GS_EXTERNAL_PORT 18081)"
 CHECK_DOCKER="true"
 OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase5/bonus-frb"
 

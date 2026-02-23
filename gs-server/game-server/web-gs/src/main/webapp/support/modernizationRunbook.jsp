@@ -155,6 +155,9 @@
         <p class="small-note">
             Output reports: <code>docs/phase5/bonus-frb/phase5-bonus-frb-runtime-evidence-*.md</code>
         </p>
+        <p class="small-note">
+            Default GS and bonus/FRB endpoints now come from <code>cluster-hosts.properties</code>; command flags can still override.
+        </p>
     </div>
 
     <div class="section">
@@ -168,6 +171,9 @@
 </code></pre>
         <p class="small-note">
             Output reports: <code>docs/phase5/history/phase5-history-runtime-evidence-*.md</code>
+        </p>
+        <p class="small-note">
+            Default GS and history endpoints now come from <code>cluster-hosts.properties</code>; command flags can still override.
         </p>
     </div>
 

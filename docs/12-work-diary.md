@@ -3495,3 +3495,31 @@
   - Current Phase 6 runtime/probe tooling now reads default endpoints from the centralized cluster config file that is also visible via the portal, reducing environment drift risk.
 - Next step:
   - commit this host-config wave 1 batch and continue migrating remaining Phase 4/5/7 scripts to the same cluster-config default model.
+
+### 2026-02-23 13:15-13:27 UTC
+- Implemented host-config hardening wave 2 for Phase 5 Bonus/FRB and History tooling.
+- Implementation updates:
+  - Added external host keys in centralized config and synced portal-visible resource copy:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/cluster-hosts.properties`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/resources/cluster-hosts.properties`
+  - Updated Phase 5 bonus/history canary/readiness/evidence scripts to read defaults from `cluster-hosts.properties` via shared helper:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-bonus-frb-canary-probe.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-bonus-frb-runtime-readiness-check.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-bonus-frb-runtime-evidence-pack.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-history-canary-probe.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-history-runtime-readiness-check.sh`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-history-runtime-evidence-pack.sh`
+  - Updated runbook notes and added evidence doc:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+    - `/Users/alexb/Documents/Dev/Dev_new/docs/77-phase5-bonus-history-host-defaults-cluster-config-wave2-20260223-132700.md`
+- Evidence:
+  - `sync-cluster-hosts.sh` passed.
+  - `bash -n` passed for modified Phase 5 scripts.
+  - `--help` passed for modified Phase 5 evidence-pack scripts.
+  - `phase5-6-local-verification-suite.sh` passed:
+    - report: `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-132527.md`
+    - summary: PASS=14, FAIL=0, SKIP=0
+- Result:
+  - Phase 5 bonus/history runtime tooling now uses centralized host defaults visible in the portal, reducing manual command edits and config drift.
+- Next step:
+  - commit this host-config wave 2 batch and continue with wallet/gameplay/phase4/phase7 script default migration waves.
