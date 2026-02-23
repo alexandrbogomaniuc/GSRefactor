@@ -97,7 +97,7 @@
       </div>
       <div class="footer-note">
         Source status comes from checklist JSON. Outbox health card is from outbox-health JSON. Checkbox toggles are local to your browser/session.
-        When opened via <code>file://</code>, this page uses the embedded snapshot inside this HTML (run <code>gs-server/deploy/scripts/sync-modernization-dashboard-embedded-data.sh</code> after checklist updates).
+        When opened via <code>file://</code>, this page uses the embedded snapshot inside this HTML (run <code>gs-server/deploy/scripts/sync-modernization-dashboard-embedded-data.sh</code> after checklist updates). Evidence-only updates may keep the same completed count; use the meta line snapshot sync time/fingerprint to confirm refresh.
       </div>
     </div>
 
@@ -310,7 +310,7 @@
           "id": "pu-precision-audit",
           "label": "Precision/min-bet modernization to support 0.001",
           "status": "in_progress",
-          "evidence": "docs/92-phase8-wave3-dualcalc-comparison-vectors-kickoff-20260223-170000.md"
+          "evidence": "docs/93-phase8-wave3-parity-hooks-and-dashboard-file-sync-visibility-20260223-171500.md"
         },
         {
           "id": "pu-branding-wave",
@@ -392,7 +392,9 @@
         }
       ]
     }
-  ]
+  ],
+  "__embeddedSyncedAtUtc": "2026-02-23T15:54:53.532Z",
+  "__embeddedFingerprint": "18e0f336c51d"
 }
   </script>
 
@@ -426,7 +428,9 @@
   "notes": [
     "DLQ must remain zero during canary window.",
     "If trend turns rising for NEW/RETRY, trigger rollback decision gate."
-  ]
+  ],
+  "__embeddedSyncedAtUtc": "2026-02-23T15:54:53.532Z",
+  "__embeddedFingerprint": "aefd8b1510a3"
 }
   </script>
 
@@ -480,6 +484,17 @@
 
     function unique(values) {
       return [...new Set(values.filter(Boolean))];
+    }
+
+    function getEmbeddedSnapshotMeta(data) {
+      if (!data) return null;
+      const looksEmbedded = String(data.__source || '').indexOf('embedded-') !== -1;
+      if (!looksEmbedded && window.location.protocol !== 'file:') return null;
+      return {
+        syncedAt: data.__embeddedSyncedAtUtc || '-',
+        fingerprint: data.__embeddedFingerprint || '-',
+        pageLastModified: document.lastModified || '-'
+      };
     }
 
     function buildChecklistUrls() {
@@ -615,6 +630,7 @@
       const updatedAt = outboxHealth.updatedAt || '-';
       const source = outboxHealth.__source || outboxHealth.source || OUTBOX_HEALTH_URL;
       const windowMinutes = outboxHealth.windowMinutes || 15;
+      const embeddedMeta = getEmbeddedSnapshotMeta(outboxHealth);
 
       const healthRows = [
         {
@@ -658,7 +674,7 @@
       outboxEl.innerHTML = `
         <div class="cardx">
           <h4 style="margin-top:0;">Session Outbox Canary Health</h4>
-          <div class="meta">Window: ${windowMinutes} minutes | updated: ${updatedAt} | source: ${source}</div>
+          <div class="meta">Window: ${windowMinutes} minutes | updated: ${updatedAt} | source: ${source}${embeddedMeta ? ` | snapshot synced: ${embeddedMeta.syncedAt} | fp: ${embeddedMeta.fingerprint} | html mtime: ${embeddedMeta.pageLastModified}` : ''}</div>
           <div class="outbox-grid">${rowHtml}</div>
         </div>
       `;
@@ -680,9 +696,10 @@
         });
       });
       const overallPct = pct(done, all);
+      const embeddedMeta = getEmbeddedSnapshotMeta(model);
       overallBar.style.width = overallPct + '%';
       overallText.textContent = `${done}/${all} completed (${overallPct}%)`;
-      metaEl.textContent = `${model.project} | checklist updated: ${model.updatedAt} | source: ${model.__source || CHECKLIST_URL}`;
+      metaEl.textContent = `${model.project} | checklist updated: ${model.updatedAt} | source: ${model.__source || CHECKLIST_URL}${embeddedMeta ? ` | snapshot synced: ${embeddedMeta.syncedAt} | fp: ${embeddedMeta.fingerprint} | html mtime: ${embeddedMeta.pageLastModified}` : ''}`;
       renderOutboxHealth();
 
       sectionsEl.innerHTML = '';

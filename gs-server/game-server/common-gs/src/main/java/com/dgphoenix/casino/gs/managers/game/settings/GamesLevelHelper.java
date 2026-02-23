@@ -21,6 +21,8 @@ public class GamesLevelHelper {
     private static final int DEFAULT_COINS_NUMBER = 11;
     private static final int LEGACY_CURRENCY_MINOR_UNIT_SCALE = 2;
     private static final double ONE_HUNDRED_CENTS = 100d;
+    // Wave 3 scaffold: disabled by default, used only for safe parity assertion before any precision behavior switch.
+    private static final String PRECISION_DUAL_CALC_COMPARE_PROPERTY = "abs.gs.phase8.precision.dualCalc.compare";
     private static final MathContext DIVIDE_CONTEXT = new MathContext(5, RoundingMode.DOWN);
     protected static final List<Long> forbiddenCoins = Arrays.asList(112L, 70L, 99L, 100L, 101L);
 
@@ -56,6 +58,7 @@ public class GamesLevelHelper {
 
     public double getGLMaxBet(GamesLevelContext ctx) throws CommonException {
         // Legacy scale=2 default max-bet multiplier from NBSF's Appendix.
+        verifyLegacyTemplateMaxBetParityForScale2IfEnabled(ctx.getTemplateMaxCredits());
         double glMaxBet = getLegacyTemplateMaxBet(ctx.getTemplateMaxCredits());
         Long templateMaxBet = ctx.getTemplateMaxBet();
         if (templateMaxBet != null) {
@@ -80,6 +83,26 @@ public class GamesLevelHelper {
 
     protected double getLegacyTemplateMaxBet(double templateMaxCredits) {
         return getTemplateMaxBetByMinorUnitScale(templateMaxCredits, LEGACY_CURRENCY_MINOR_UNIT_SCALE);
+    }
+
+    protected void verifyLegacyTemplateMaxBetParityForScale2IfEnabled(double templateMaxCredits) {
+        if (!isPrecisionDualCalcComparisonEnabled()) {
+            return;
+        }
+        double legacy = getLegacyTemplateMaxBet(templateMaxCredits);
+        double generalized = getScaleReadyTemplateMaxBet(templateMaxCredits, LEGACY_CURRENCY_MINOR_UNIT_SCALE);
+        if (Double.compare(legacy, generalized) != 0) {
+            throw new IllegalStateException("Phase8 precision parity mismatch for template max bet: legacy="
+                    + legacy + ", generalized=" + generalized + ", templateMaxCredits=" + templateMaxCredits);
+        }
+    }
+
+    protected boolean isPrecisionDualCalcComparisonEnabled() {
+        return Boolean.getBoolean(PRECISION_DUAL_CALC_COMPARE_PROPERTY);
+    }
+
+    protected double getScaleReadyTemplateMaxBet(double templateMaxCredits, int minorUnitScale) {
+        return getTemplateMaxBetByMinorUnitScale(templateMaxCredits, minorUnitScale);
     }
 
     protected double getTemplateMaxBetByMinorUnitScale(double templateMaxCredits, int minorUnitScale) {

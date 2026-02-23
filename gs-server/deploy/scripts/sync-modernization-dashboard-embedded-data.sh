@@ -47,11 +47,24 @@ trap 'rm -f "${tmp_file}"' EXIT
 
 node - "${HTML_FILE}" "${CHECKLIST_JSON}" "${OUTBOX_JSON}" "${tmp_file}" <<'NODE'
 const fs = require('fs');
+const crypto = require('crypto');
 
 const [htmlFile, checklistFile, outboxFile, outFile] = process.argv.slice(2);
 const html = fs.readFileSync(htmlFile, 'utf8');
 const checklist = JSON.parse(fs.readFileSync(checklistFile, 'utf8'));
 const outbox = JSON.parse(fs.readFileSync(outboxFile, 'utf8'));
+const syncedAt = new Date().toISOString();
+
+function enrichEmbedded(obj) {
+  const clone = JSON.parse(JSON.stringify(obj));
+  const fingerprint = crypto.createHash('sha1')
+    .update(JSON.stringify(obj))
+    .digest('hex')
+    .slice(0, 12);
+  clone.__embeddedSyncedAtUtc = syncedAt;
+  clone.__embeddedFingerprint = fingerprint;
+  return clone;
+}
 
 function replaceScriptJson(source, scriptId, obj) {
   const pattern = new RegExp(`(<script id="${scriptId}" type="application/json">)([\\s\\S]*?)(</script>)`);
@@ -63,15 +76,17 @@ function replaceScriptJson(source, scriptId, obj) {
 }
 
 let next = html;
-next = replaceScriptJson(next, 'embedded-checklist', checklist);
-next = replaceScriptJson(next, 'embedded-outbox-health', outbox);
+const embeddedChecklist = enrichEmbedded(checklist);
+const embeddedOutbox = enrichEmbedded(outbox);
+next = replaceScriptJson(next, 'embedded-checklist', embeddedChecklist);
+next = replaceScriptJson(next, 'embedded-outbox-health', embeddedOutbox);
 
 fs.writeFileSync(outFile, next, 'utf8');
 
 const count = (m) => (m.sections || []).reduce((a, s) => a + (s.items || []).length, 0);
 const done = (m) => (m.sections || []).reduce((a, s) => a + (s.items || []).filter(i => i.status === 'done').length, 0);
-console.log(`embedded-checklist synced: ${done(checklist)}/${count(checklist)} updatedAt=${checklist.updatedAt || '-'}`);
-console.log(`embedded-outbox-health synced: updatedAt=${outbox.updatedAt || '-'}`);
+console.log(`embedded-checklist synced: ${done(checklist)}/${count(checklist)} updatedAt=${checklist.updatedAt || '-'} embeddedSyncedAt=${embeddedChecklist.__embeddedSyncedAtUtc} fp=${embeddedChecklist.__embeddedFingerprint}`);
+console.log(`embedded-outbox-health synced: updatedAt=${outbox.updatedAt || '-'} embeddedSyncedAt=${embeddedOutbox.__embeddedSyncedAtUtc} fp=${embeddedOutbox.__embeddedFingerprint}`);
 NODE
 
 mv "${tmp_file}" "${HTML_FILE}"

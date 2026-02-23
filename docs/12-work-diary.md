@@ -3937,3 +3937,15 @@
   - Phase 8 now has an explicit dual-calculation comparison guard before any runtime precision behavior switch.
 - Next step:
   - implement disabled-by-default dual-calculation hooks in Wave 3 and collect discrepancy evidence under the same test gates.
+
+### 2026-02-23 15:53-15:55 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` with Phase 8 Wave 3 parity-hook scaffolding (disabled by default) and fixed dashboard `file://` refresh visibility.
+- Added no-op parity assertions in `DynamicCoinManager`/`GamesLevelHelper` behind system property `abs.gs.phase8.precision.dualCalc.compare`, and enhanced dashboard embedded sync metadata (`snapshot synced`, fingerprint, HTML mtime) so evidence-only checklist updates are visibly traceable after refresh.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/93-phase8-wave3-parity-hooks-and-dashboard-file-sync-visibility-20260223-171500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-155349.md` (PASS=34)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (file-mode meta now shows embedded snapshot sync/fingerprint)
+- Result:
+  - Main project advanced in Phase 8 without behavior change, and dashboard refresh now visibly confirms embedded snapshot updates even when progress counts stay constant.
+- Next step:
+  - continue Wave 3 discrepancy evidence scaffolding (disabled-by-default) under the same vector smoke + full suite gates.

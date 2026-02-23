@@ -28,6 +28,8 @@ public class DynamicCoinManager {
     // Wave 2 compatibility: legacy line-based normalization remains cent-scale (x100) until full precision migration.
     private static final int LEGACY_CURRENCY_MINOR_UNIT_SCALE = 2;
     private static final int LEGACY_BASE_BET_IN_CURRENCY_MINOR_UNITS_PER_LINE = 100;
+    // Wave 3 scaffold: disabled by default, used only for safe parity assertion before any precision behavior switch.
+    private static final String PRECISION_DUAL_CALC_COMPARE_PROPERTY = "abs.gs.phase8.precision.dualCalc.compare";
 
     private final BankInfoCache bankInfoCache;
     private final BaseGameInfoTemplateCache baseGameInfoTemplateCache;
@@ -57,6 +59,7 @@ public class DynamicCoinManager {
         }
 
         if (defaultBet != null && coinseq.length >= 2) {
+            verifyLegacyBaseBetParityForScale2IfEnabled(gameInfo);
             boolean needToConvert = currencyConversionChecker.test(sourceCurrency, targetCurrency);
             double finalDefaultBet = needToConvert
                     ? currencyConverter.convert(defaultBet, sourceCurrency, targetCurrency)
@@ -78,6 +81,27 @@ public class DynamicCoinManager {
 
     protected int getLegacyBaseBetInCurrencyMinorUnits(IBaseGameInfo gameInfo) {
         return Math.toIntExact(getBaseBetInCurrencyMinorUnitsByScale(gameInfo, LEGACY_CURRENCY_MINOR_UNIT_SCALE));
+    }
+
+    protected void verifyLegacyBaseBetParityForScale2IfEnabled(IBaseGameInfo gameInfo) {
+        if (!isPrecisionDualCalcComparisonEnabled()) {
+            return;
+        }
+        long legacy = getBaseBetInCurrencyMinorUnitsByScale(gameInfo, LEGACY_CURRENCY_MINOR_UNIT_SCALE);
+        long generalized = getScaleReadyBaseBetInCurrencyMinorUnits(gameInfo, LEGACY_CURRENCY_MINOR_UNIT_SCALE);
+        if (legacy != generalized) {
+            throw new IllegalStateException("Phase8 precision parity mismatch for base bet minor units: legacy="
+                    + legacy + ", generalized=" + generalized + ", bankId=" + gameInfo.getBankId()
+                    + ", gameId=" + gameInfo.getId());
+        }
+    }
+
+    protected boolean isPrecisionDualCalcComparisonEnabled() {
+        return Boolean.getBoolean(PRECISION_DUAL_CALC_COMPARE_PROPERTY);
+    }
+
+    protected long getScaleReadyBaseBetInCurrencyMinorUnits(IBaseGameInfo gameInfo, int minorUnitScale) {
+        return getBaseBetInCurrencyMinorUnitsByScale(gameInfo, minorUnitScale);
     }
 
     protected double getDefaultBetDistance(double coinValue, int baseBetInCurrency, double finalDefaultBet) {

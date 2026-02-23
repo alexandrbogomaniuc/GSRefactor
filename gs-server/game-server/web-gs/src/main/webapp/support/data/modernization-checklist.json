@@ -202,7 +202,7 @@
           "id": "pu-precision-audit",
           "label": "Precision/min-bet modernization to support 0.001",
           "status": "in_progress",
-          "evidence": "docs/92-phase8-wave3-dualcalc-comparison-vectors-kickoff-20260223-170000.md"
+          "evidence": "docs/93-phase8-wave3-parity-hooks-and-dashboard-file-sync-visibility-20260223-171500.md"
         },
         {
           "id": "pu-branding-wave",
