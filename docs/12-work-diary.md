@@ -4168,3 +4168,17 @@
   - Operators can quickly see whether a preset bundle is supported and which schema/version was imported, reducing cross-machine preset troubleshooting in `file://` mode.
 - Next step:
   - add preset suggestion generation from imported compare-report artifacts (viewer-only) or import preview counts before merging preset bundles.
+
+### 2026-02-23 19:03-19:05 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding preset-bundle import preview counts (incoming/new/overwrite/current/postMerge) before merge in the viewer triage preset import panel, plus merge-plan preview and error-preview reset behavior.
+- Updated support docs/checklist to doc 111, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/111-phase8-wave3-triage-preset-bundle-import-preview-counts-20260223-231500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-190407.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (preview counts + merge-plan + invalid JSON reset verified)
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (reload shows doc 111 evidence path; count remains 26/41)
+- Result:
+  - Operators can see preset import impact before merging shared bundles, reducing accidental overwrites in `file://` mode.
+- Next step:
+  - add preset import preview confirmation guard for high-overwrite merges (viewer-only) or preset suggestion generation from imported compare-report artifacts.

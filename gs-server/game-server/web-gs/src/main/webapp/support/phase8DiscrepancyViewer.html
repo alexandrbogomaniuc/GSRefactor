@@ -274,11 +274,13 @@
           <button id="exportImportDiffPresetJson" class="btn btn-default btn-sm">Export Presets JSON</button>
           <button id="openImportDiffPresetFile" class="btn btn-default btn-sm">Load Presets File</button>
           <input type="file" id="importDiffPresetFileInput" accept=".json,application/json" style="display:none;" />
+          <button id="previewImportDiffPresetJson" class="btn btn-default btn-sm">Preview Presets JSON</button>
           <button id="parseImportDiffPresetJson" class="btn btn-default btn-sm">Import Presets JSON</button>
           <button id="clearImportDiffPresetJson" class="btn btn-default btn-sm">Clear Preset JSON</button>
         </div>
         <textarea id="importDiffPresetJsonInput" rows="5" placeholder="Paste triage preset bundle JSON here (exported from this viewer)." style="width:100%; margin-top:8px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;"></textarea>
         <div class="footnote" id="importDiffPresetExchangeMeta">Share triage presets across machines via JSON export/import. Import merges by preset name (existing names are overwritten).</div>
+        <div class="footnote" id="importDiffPresetPreviewMeta">Preset import preview: <span class="status-pill pill-info">NONE</span> Generate preview to see incoming/new/overwrite counts before merge.</div>
         <div class="footnote" id="importDiffPresetCompatMeta">Preset bundle compatibility: <span class="status-pill pill-info">UNKNOWN</span> Awaiting export/import.</div>
         <div class="footnote">Tip: you can also drag/drop a triage preset bundle JSON file or JSON text onto the preset JSON textarea.</div>
         <div class="footnote" id="importCompareDiffMeta">Load Imported A and Imported B compact compare-report JSON to compare artifacts.</div>
@@ -638,8 +640,65 @@
       };
     }
 
-    function mergeImportDiffPresetBundleFromText(rawText, sourceLabel) {
+    function buildImportDiffPresetMergePreview(parsedPresets) {
+      const names = Object.keys(parsedPresets || {}).sort((a, b) => a.localeCompare(b));
+      let overwriteCount = 0;
+      const newNames = [];
+      const overwriteNames = [];
+      names.forEach((name) => {
+        if (Object.prototype.hasOwnProperty.call(importDiffPresets, name)) {
+          overwriteCount += 1;
+          overwriteNames.push(name);
+        } else {
+          newNames.push(name);
+        }
+      });
+      return {
+        incomingCount: names.length,
+        currentCount: Object.keys(importDiffPresets).length,
+        overwriteCount,
+        newCount: names.length - overwriteCount,
+        newNames,
+        overwriteNames
+      };
+    }
+
+    function renderImportDiffPresetPreviewMeta(preview, sourceLabel, opts) {
+      const el = q('importDiffPresetPreviewMeta');
+      const options = opts || {};
+      if (!preview) {
+        el.innerHTML = 'Preset import preview: <span class="status-pill pill-info">NONE</span> Generate preview to see incoming/new/overwrite counts before merge.';
+        return;
+      }
+      const mode = options.mode || 'preview';
+      const pill = mode === 'merge' ? 'pill-pass' : 'pill-info';
+      const label = mode === 'merge' ? 'MERGE_PLAN' : 'PREVIEW';
+      const examples = [];
+      if (preview.newNames && preview.newNames.length) {
+        examples.push(`new=${preview.newNames.slice(0, 3).join(',')}${preview.newNames.length > 3 ? ',…' : ''}`);
+      }
+      if (preview.overwriteNames && preview.overwriteNames.length) {
+        examples.push(`overwrite=${preview.overwriteNames.slice(0, 3).join(',')}${preview.overwriteNames.length > 3 ? ',…' : ''}`);
+      }
+      el.innerHTML =
+        `Preset import preview: <span class="status-pill ${pill}">${label}</span> ` +
+        `<code>incoming=${preview.incomingCount}</code> <code>new=${preview.newCount}</code> <code>overwrite=${preview.overwriteCount}</code> ` +
+        `<code>current=${preview.currentCount}</code> <code>postMerge=${preview.currentCount + preview.newCount}</code>` +
+        (sourceLabel ? ` <span class="muted">(source=${sourceLabel})</span>` : '') +
+        (examples.length ? ` <span class="muted">${examples.join(' | ')}</span>` : '');
+    }
+
+    function inspectImportDiffPresetBundleFromText(rawText) {
       const parsed = parseImportDiffPresetBundlePayload(rawText);
+      const preview = buildImportDiffPresetMergePreview(parsed.presets);
+      return { parsed, preview };
+    }
+
+    function mergeImportDiffPresetBundleFromText(rawText, sourceLabel) {
+      const inspected = inspectImportDiffPresetBundleFromText(rawText);
+      const parsed = inspected.parsed;
+      const preview = inspected.preview;
+      renderImportDiffPresetPreviewMeta(preview, sourceLabel, { mode: 'merge' });
       const beforeCount = Object.keys(importDiffPresets).length;
       let merged = 0;
       let overwritten = 0;
@@ -794,6 +853,27 @@
         mergeImportDiffPresetBundleFromText(raw, 'textarea:preset-bundle');
       } catch (err) {
         q('importDiffPresetExchangeMeta').textContent = `Failed to import preset bundle JSON: ${String(err.message || err)}`;
+        renderImportDiffPresetPreviewMeta(null);
+        renderImportDiffPresetCompatMeta({ type: 'ERROR', message: String(err.message || err) }, 'textarea:preset-bundle');
+      }
+    }
+
+    function previewImportDiffPresetJsonTextarea() {
+      try {
+        const raw = String(q('importDiffPresetJsonInput').value || '').trim();
+        if (!raw) {
+          q('importDiffPresetExchangeMeta').textContent = 'Paste a triage preset bundle JSON first.';
+          renderImportDiffPresetPreviewMeta(null);
+          return;
+        }
+        const inspected = inspectImportDiffPresetBundleFromText(raw);
+        renderImportDiffPresetPreviewMeta(inspected.preview, 'textarea:preset-bundle', { mode: 'preview' });
+        renderImportDiffPresetCompatMeta(inspected.parsed.bundleMeta, 'textarea:preset-bundle');
+        q('importDiffPresetExchangeMeta').textContent =
+          `Preset bundle preview ready: incoming=${inspected.preview.incomingCount}, new=${inspected.preview.newCount}, overwrite=${inspected.preview.overwriteCount}`;
+      } catch (err) {
+        q('importDiffPresetExchangeMeta').textContent = `Failed to preview preset bundle JSON: ${String(err.message || err)}`;
+        renderImportDiffPresetPreviewMeta(null);
         renderImportDiffPresetCompatMeta({ type: 'ERROR', message: String(err.message || err) }, 'textarea:preset-bundle');
       }
     }
@@ -801,6 +881,7 @@
     function clearImportDiffPresetJsonTextarea() {
       q('importDiffPresetJsonInput').value = '';
       q('importDiffPresetExchangeMeta').textContent = 'Preset bundle textarea cleared. Import merges by preset name (overwrite on conflict).';
+      renderImportDiffPresetPreviewMeta(null);
       q('importDiffPresetCompatMeta').innerHTML = 'Preset bundle compatibility: <span class="status-pill pill-info">UNKNOWN</span> Awaiting export/import.';
     }
 
@@ -1689,6 +1770,7 @@
     q('deleteImportDiffPreset').addEventListener('click', deleteSelectedImportDiffPreset);
     q('exportImportDiffPresetJson').addEventListener('click', exportImportDiffPresetBundleJson);
     q('openImportDiffPresetFile').addEventListener('click', () => q('importDiffPresetFileInput').click());
+    q('previewImportDiffPresetJson').addEventListener('click', previewImportDiffPresetJsonTextarea);
     q('parseImportDiffPresetJson').addEventListener('click', parseImportDiffPresetJsonTextarea);
     q('clearImportDiffPresetJson').addEventListener('click', clearImportDiffPresetJsonTextarea);
     q('importDiffPresetSelect').addEventListener('change', () => {
