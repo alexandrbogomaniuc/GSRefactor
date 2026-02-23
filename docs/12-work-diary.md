@@ -4325,3 +4325,18 @@
   - Operators can generate a focused triage preset from imported compare-report artifacts in one click, then optionally save it, reducing manual filter setup during discrepancy analysis in `file://` mode.
 - Next step:
   - extend artifact-based suggestions to generate multiple candidate presets (for example fail-rules focus vs metric focus) or add a compact exportable pre-save suggestion summary.
+
+### 2026-02-23 20:08-20:10 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding a compact pre-save suggestion summary panel for artifact-based triage preset suggestions (JSON/Markdown preview + export/download + clear) in the discrepancy viewer.
+- Summary captures suggested preset, rationale/top-metric metadata, imported artifact A/B metadata, and applied UI state after suggestion; suggestion generation still does not auto-save presets.
+- Updated support docs/checklist to doc 122, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/122-phase8-wave3-viewer-triage-suggestion-pre-save-summary-export-20260224-024500.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-201050.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (suggestion summary previews + JSON/Markdown export + clear verified; preset store count unchanged)
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (reload shows doc 122 evidence path; embedded snapshot fingerprint updated; count remains 26/41)
+- Result:
+  - Operators can now generate, review, and export a pre-save triage suggestion summary for sharing/audit before deciding to save the suggested preset.
+- Next step:
+  - extend artifact-based suggestions to generate multiple candidate presets (e.g. fail-rules focus vs metric focus) or add one-click save of the current suggestion summary as a named preset + summary artifact bundle.

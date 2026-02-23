@@ -274,6 +274,25 @@
           <button id="suggestImportDiffPresetFromArtifacts" class="btn btn-default btn-sm">Suggest Triage Preset (A/B)</button>
         </div>
         <div class="footnote" id="importDiffPresetSuggestionMeta">Suggestions use imported compact compare-report artifacts (A/B) and only change current triage filters + preset name until you click Save Preset.</div>
+        <div class="cardx" id="importDiffPresetSuggestionSummaryCard" style="margin-top:10px;">
+          <h4 style="margin-top:0;">Suggestion Summary (Pre-Save)</h4>
+          <div class="toolbar">
+            <button id="downloadImportDiffPresetSuggestionJson" class="btn btn-default btn-sm">Download Suggestion JSON</button>
+            <button id="downloadImportDiffPresetSuggestionMarkdown" class="btn btn-default btn-sm">Download Suggestion Markdown</button>
+            <button id="clearImportDiffPresetSuggestionSummary" class="btn btn-default btn-sm">Clear Suggestion Summary</button>
+          </div>
+          <div class="footnote" id="importDiffPresetSuggestionSummaryMeta">No suggestion summary yet. Generate a suggestion first.</div>
+          <div class="pane-grid" style="margin-top:8px;">
+            <div>
+              <div class="meta">Suggestion JSON Preview</div>
+              <pre id="importDiffPresetSuggestionJsonPreview">{}</pre>
+            </div>
+            <div>
+              <div class="meta">Suggestion Markdown Preview</div>
+              <pre id="importDiffPresetSuggestionMarkdownPreview"># Suggestion summary preview\n</pre>
+            </div>
+          </div>
+        </div>
         <div class="toolbar" style="margin-top:8px;">
           <button id="exportImportDiffPresetJson" class="btn btn-default btn-sm">Export Presets JSON</button>
           <button id="openImportDiffPresetFile" class="btn btn-default btn-sm">Load Presets File</button>
@@ -493,6 +512,7 @@
     let importedCompareSource = 'none';
     let importedCompareReportB = null;
     let importedCompareSourceB = 'none';
+    let lastImportDiffPresetSuggestion = null;
     const IMPORT_DIFF_PRESET_STORAGE_KEY = 'abs.gs.phase8.importDiffTriagePresets.v1';
     const IMPORT_DIFF_PRESET_GUARD_STORAGE_KEY = 'abs.gs.phase8.importDiffPresetGuard.v1';
     const IMPORT_DIFF_PRESET_GUARD_PROFILES = {
@@ -1531,14 +1551,127 @@
     function suggestImportDiffPresetFromArtifacts() {
       try {
         const suggestion = buildImportDiffPresetSuggestionFromArtifacts();
+        lastImportDiffPresetSuggestion = suggestion;
         q('importDiffPresetName').value = suggestion.name;
         applyImportDiffTriagePresetState(suggestion.preset);
         q('importDiffPresetSuggestionMeta').textContent =
           `Suggested triage preset ready (not saved): ${suggestion.name} | ${suggestion.rationale}. Click Save Preset to store it.`;
+        renderImportDiffPresetSuggestionSummary();
       } catch (err) {
         q('importDiffPresetSuggestionMeta').textContent =
           `Failed to generate triage preset suggestion: ${String(err.message || err)}`;
       }
+    }
+
+    function buildImportDiffPresetSuggestionSummaryArtifacts() {
+      if (!lastImportDiffPresetSuggestion) {
+        throw new Error('Generate a triage preset suggestion first');
+      }
+      const s = lastImportDiffPresetSuggestion;
+      const now = new Date().toISOString();
+      const a = importedCompareReport;
+      const b = importedCompareReportB;
+      const json = {
+        type: 'phase8-wave3-import-diff-triage-preset-suggestion-summary',
+        version: 1,
+        generatedAtUtc: now,
+        suggestion: {
+          name: s.name,
+          preset: s.preset,
+          rationale: s.rationale,
+          topMetric: s.topMetric || null,
+          changedRuleCount: s.changedRuleCount,
+          failChanged: s.failChanged,
+          missingChanged: s.missingChanged
+        },
+        importedArtifacts: {
+          a: a ? {
+            source: importedCompareSource,
+            overall: String((a.summary || {}).overall || '-'),
+            policy: String(((a.thresholds || {}).profile) || '-'),
+            policyLabel: String(((a.thresholds || {}).profileLabel) || ''),
+            metricCount: Array.isArray(a.metrics) ? a.metrics.length : 0,
+            ruleCount: Array.isArray(a.rules) ? a.rules.length : 0
+          } : null,
+          b: b ? {
+            source: importedCompareSourceB,
+            overall: String((b.summary || {}).overall || '-'),
+            policy: String(((b.thresholds || {}).profile) || '-'),
+            policyLabel: String(((b.thresholds || {}).profileLabel) || ''),
+            metricCount: Array.isArray(b.metrics) ? b.metrics.length : 0,
+            ruleCount: Array.isArray(b.rules) ? b.rules.length : 0
+          } : null
+        },
+        appliedUiState: captureImportDiffTriagePreset()
+      };
+      const md = [];
+      md.push('# Triage Preset Suggestion Summary');
+      md.push('');
+      md.push(`- generatedAtUtc: ${json.generatedAtUtc}`);
+      md.push(`- suggestionName: ${json.suggestion.name}`);
+      md.push(`- rationale: ${json.suggestion.rationale}`);
+      md.push(`- topMetric: ${json.suggestion.topMetric && json.suggestion.topMetric.key ? json.suggestion.topMetric.key : '-'}`);
+      md.push(`- changedRuleCount: ${json.suggestion.changedRuleCount}`);
+      md.push(`- failChanged: ${json.suggestion.failChanged}`);
+      md.push(`- missingChanged: ${json.suggestion.missingChanged}`);
+      md.push('');
+      md.push('## Suggested Preset');
+      md.push(`- rulesChangedOnly: ${!!json.suggestion.preset.rulesChangedOnly}`);
+      md.push(`- metricsChangedOnly: ${!!json.suggestion.preset.metricsChangedOnly}`);
+      md.push(`- ruleStatusPass: ${!!json.suggestion.preset.ruleStatusPass}`);
+      md.push(`- ruleStatusFail: ${!!json.suggestion.preset.ruleStatusFail}`);
+      md.push(`- ruleStatusInfo: ${!!json.suggestion.preset.ruleStatusInfo}`);
+      md.push(`- ruleStatusMissing: ${!!json.suggestion.preset.ruleStatusMissing}`);
+      md.push(`- metricSearch: ${json.suggestion.preset.metricSearch || '-'}`);
+      md.push('');
+      md.push('## Imported Artifacts');
+      ['a', 'b'].forEach((k) => {
+        const v = json.importedArtifacts[k];
+        if (!v) {
+          md.push(`- ${k.toUpperCase()}: (not loaded)`);
+          return;
+        }
+        md.push(`- ${k.toUpperCase()}: source=${v.source}, overall=${v.overall}, policy=${v.policy}${v.policyLabel ? ` (${v.policyLabel})` : ''}, rules=${v.ruleCount}, metrics=${v.metricCount}`);
+      });
+      md.push('');
+      md.push('## Applied UI State (After Suggestion)');
+      md.push(`- rulesChangedOnly: ${!!json.appliedUiState.rulesChangedOnly}`);
+      md.push(`- metricsChangedOnly: ${!!json.appliedUiState.metricsChangedOnly}`);
+      md.push(`- ruleStatusPass: ${!!json.appliedUiState.ruleStatusPass}`);
+      md.push(`- ruleStatusFail: ${!!json.appliedUiState.ruleStatusFail}`);
+      md.push(`- ruleStatusInfo: ${!!json.appliedUiState.ruleStatusInfo}`);
+      md.push(`- ruleStatusMissing: ${!!json.appliedUiState.ruleStatusMissing}`);
+      md.push(`- metricSearch: ${json.appliedUiState.metricSearch || '-'}`);
+      md.push('');
+      return { json, markdown: md.join('\\n') + '\\n' };
+    }
+
+    function renderImportDiffPresetSuggestionSummary() {
+      const card = q('importDiffPresetSuggestionSummaryCard');
+      const jsonPre = q('importDiffPresetSuggestionJsonPreview');
+      const mdPre = q('importDiffPresetSuggestionMarkdownPreview');
+      const meta = q('importDiffPresetSuggestionSummaryMeta');
+      card.classList.remove('hidden');
+      if (!lastImportDiffPresetSuggestion) {
+        q('importDiffPresetSuggestionSummaryCard').dataset.summaryJson = '{}';
+        q('importDiffPresetSuggestionSummaryCard').dataset.summaryMarkdown = '';
+        jsonPre.textContent = '{}';
+        mdPre.textContent = '# Suggestion summary preview\\n';
+        meta.textContent = 'No suggestion summary yet. Generate a suggestion first.';
+        return;
+      }
+      const artifacts = buildImportDiffPresetSuggestionSummaryArtifacts();
+      card.dataset.summaryJson = JSON.stringify(artifacts.json);
+      card.dataset.summaryMarkdown = artifacts.markdown;
+      jsonPre.textContent = JSON.stringify(artifacts.json, null, 2);
+      mdPre.textContent = artifacts.markdown;
+      meta.textContent = `Suggestion summary ready | name=${artifacts.json.suggestion.name} | topMetric=${(artifacts.json.suggestion.topMetric && artifacts.json.suggestion.topMetric.key) || '-'} | sourceA=${artifacts.json.importedArtifacts.a ? 'yes' : 'no'} | sourceB=${artifacts.json.importedArtifacts.b ? 'yes' : 'no'}`;
+    }
+
+    function clearImportDiffPresetSuggestionSummary() {
+      lastImportDiffPresetSuggestion = null;
+      renderImportDiffPresetSuggestionSummary();
+      q('importDiffPresetSuggestionMeta').textContent = 'Suggestions use imported compact compare-report artifacts (A/B) and only change current triage filters + preset name until you click Save Preset.';
     }
 
     function saveCurrentImportDiffPreset() {
@@ -2527,6 +2660,19 @@
       renderImportedCompareReportDiff();
     });
     q('suggestImportDiffPresetFromArtifacts').addEventListener('click', suggestImportDiffPresetFromArtifacts);
+    q('downloadImportDiffPresetSuggestionJson').addEventListener('click', () => {
+      renderImportDiffPresetSuggestionSummary();
+      const raw = q('importDiffPresetSuggestionSummaryCard').dataset.summaryJson;
+      if (!raw || raw === '{}') return;
+      downloadTextFile(`phase8-wave3-triage-preset-suggestion-${new Date().toISOString().replace(/[:.]/g, '-')}.json`, JSON.stringify(JSON.parse(raw), null, 2) + '\\n', 'application/json');
+    });
+    q('downloadImportDiffPresetSuggestionMarkdown').addEventListener('click', () => {
+      renderImportDiffPresetSuggestionSummary();
+      const raw = q('importDiffPresetSuggestionSummaryCard').dataset.summaryMarkdown;
+      if (!raw) return;
+      downloadTextFile(`phase8-wave3-triage-preset-suggestion-${new Date().toISOString().replace(/[:.]/g, '-')}.md`, raw, 'text/markdown');
+    });
+    q('clearImportDiffPresetSuggestionSummary').addEventListener('click', clearImportDiffPresetSuggestionSummary);
     q('saveImportDiffPreset').addEventListener('click', saveCurrentImportDiffPreset);
     q('applyImportDiffPreset').addEventListener('click', applySelectedImportDiffPreset);
     q('deleteImportDiffPreset').addEventListener('click', deleteSelectedImportDiffPreset);
@@ -2637,6 +2783,7 @@
     q('compareSummaryCard').classList.add('hidden');
     q('compareExportCard').classList.add('hidden');
     q('importCompareDiffCard').classList.add('hidden');
+    renderImportDiffPresetSuggestionSummary();
     importDiffPresets = readImportDiffPresets();
     refreshImportDiffPresetSelect();
     updateThresholdProfileMeta();
