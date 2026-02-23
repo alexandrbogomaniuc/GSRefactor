@@ -4252,3 +4252,17 @@
   - Operators can share overwrite-guard safety settings across machines with JSON copy/paste/download/import, without affecting GS runtime behavior.
 - Next step:
   - add preset suggestion generation from imported compare-report artifacts (viewer-only) or extend guard-settings JSON share flow with drag/drop import.
+
+### 2026-02-23 19:39-19:42 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 Wave 3 by adding drag/drop import support for overwrite-guard settings JSON onto the guard JSON textarea in the discrepancy viewer, reusing the shared guard JSON import parser and drop-target UI behavior.
+- Updated support docs/checklist to doc 117, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/117-phase8-wave3-viewer-guard-settings-json-dragdrop-20260224-013000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260223-194141.md` (suite PASS)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html`
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/phase8DiscrepancyViewer.html` (guard JSON drag/drop text + file import verified; invalid JSON shows parser error status)
+  - `file:///Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (reload shows doc 117 evidence path; embedded snapshot fingerprint updated; count remains 26/41)
+- Result:
+  - Operators can import overwrite-guard safety settings by drag/drop (file or JSON text) without manual paste steps, improving cross-machine review workflow ergonomics in `file://` mode.
+- Next step:
+  - add preset suggestion generation from imported compare-report artifacts (viewer-only) or extend guard-settings JSON share flow with schema/version compatibility status metadata.

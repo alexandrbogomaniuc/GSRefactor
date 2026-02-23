@@ -306,6 +306,7 @@
         </div>
         <textarea id="importDiffPresetGuardJsonInput" rows="4" placeholder="Paste overwrite-guard settings JSON here (exported from this viewer)." style="width:100%; margin-top:8px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;"></textarea>
         <div class="footnote" id="importDiffPresetGuardExchangeMeta">Share overwrite-guard settings across machines via JSON export/import.</div>
+        <div class="footnote">Tip: you can also drag/drop an overwrite-guard settings JSON file or JSON text onto the guard JSON textarea.</div>
         <div class="toolbar" style="margin-top:8px;">
           <button id="resetImportDiffViewerLocalState" class="btn btn-default btn-sm">Reset Local Presets + Guard</button>
         </div>
@@ -792,6 +793,39 @@
     function clearImportDiffPresetGuardJson() {
       q('importDiffPresetGuardJsonInput').value = '';
       q('importDiffPresetGuardExchangeMeta').textContent = 'Share overwrite-guard settings across machines via JSON export/import.';
+    }
+
+    async function handleImportDiffPresetGuardDrop(event) {
+      event.preventDefault();
+      const area = q('importDiffPresetGuardJsonInput');
+      area.classList.remove('drop-target-active');
+      try {
+        const dt = event.dataTransfer;
+        if (!dt) return;
+        if (dt.files && dt.files.length > 0) {
+          const file = dt.files[0];
+          const text = await file.text();
+          q('importDiffPresetGuardJsonInput').value = text;
+          parseImportDiffPresetGuardJson();
+          return;
+        }
+        const text = (dt.getData('application/json') || dt.getData('text/plain') || '').trim();
+        if (!text) return;
+        q('importDiffPresetGuardJsonInput').value = text;
+        parseImportDiffPresetGuardJson();
+      } catch (err) {
+        q('importDiffPresetGuardExchangeMeta').textContent = `Failed to import dropped guard settings JSON: ${String(err.message || err)}`;
+      }
+    }
+
+    function wireImportDiffPresetGuardDropArea(textareaId) {
+      const el = q(textareaId);
+      ['dragenter','dragover'].forEach((evt) => el.addEventListener(evt, (e) => {
+        e.preventDefault();
+        el.classList.add('drop-target-active');
+      }));
+      ['dragleave','dragend'].forEach((evt) => el.addEventListener(evt, () => el.classList.remove('drop-target-active')));
+      el.addEventListener('drop', (e) => { handleImportDiffPresetGuardDrop(e); });
     }
 
     function resetImportDiffViewerLocalState() {
@@ -2216,6 +2250,7 @@
     wireCompareReportDropArea('compareReportJsonInput', 'A');
     wireCompareReportDropArea('compareReportJsonInputB', 'B');
     wireImportDiffPresetDropArea('importDiffPresetJsonInput');
+    wireImportDiffPresetGuardDropArea('importDiffPresetGuardJsonInput');
     restoreImportDiffPresetGuardState();
 
     q('compareSummaryCard').classList.add('hidden');
