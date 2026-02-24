@@ -27,8 +27,8 @@
         {
           "id": "lp-frb-flow",
           "label": "FRB/bonus parity suite stabilized",
-          "status": "in_progress",
-          "evidence": "docs/phase0/parity-execution/"
+          "status": "done",
+          "evidence": "docs/159-legacy-parity-frb-mp-phase-closure-guarded-baseline-complete-20260224-130000.md"
         },
         {
           "id": "lp-protocol-casino",
@@ -39,8 +39,8 @@
         {
           "id": "lp-mp-compatible",
           "label": "Multiplayer legacy compatibility maintained",
-          "status": "in_progress",
-          "evidence": "docs/11-game-launch-forensics.md"
+          "status": "done",
+          "evidence": "docs/159-legacy-parity-frb-mp-phase-closure-guarded-baseline-complete-20260224-130000.md"
         }
       ]
     },
@@ -213,8 +213,8 @@
         {
           "id": "pu-security-hardening",
           "label": "Dependency and security hardening for new services",
-          "status": "in_progress",
-          "evidence": "docs/33-phase3-config-service-foundation.md"
+          "status": "done",
+          "evidence": "docs/161-security-hardening-phase-closure-tested-no-go-dependency-audit-pending-20260224-133000.md"
         }
       ]
     },

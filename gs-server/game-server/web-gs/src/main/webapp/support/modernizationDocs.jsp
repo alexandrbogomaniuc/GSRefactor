@@ -123,8 +123,8 @@
             <tbody>
             <tr>
                 <td>Phase 0 - Baseline and Parity</td>
-                <td>Inventory, parity capture, reconnect evidence</td>
-                <td><code>docs/23-phase-0-baseline-and-parity-capture.md</code><br/><code>docs/phase0/</code></td>
+                <td>Inventory, parity capture, reconnect evidence, and legacy FRB/MP guarded baseline closure</td>
+                <td><code>docs/23-phase-0-baseline-and-parity-capture.md</code><br/><code>docs/158-legacy-parity-status-report-frb-mp-baseline-complete-20260224-124500.md</code><br/><code>docs/159-legacy-parity-frb-mp-phase-closure-guarded-baseline-complete-20260224-130000.md</code><br/><code>docs/phase0/</code></td>
             </tr>
             <tr>
                 <td>Phase 2 - Observability</td>
@@ -170,6 +170,11 @@
                 <td>Phase 9 - Branding/Namespace</td>
                 <td>ABS rename wave plan, guarded W0 execution, and tested controlled-wave closure (broader no-go pending approvals/wrappers)</td>
                 <td><code>docs/30-phase9-abs-rename-wave-plan-gs-v1.md</code><br/><code>docs/139-phase9-abs-compatibility-mapping-manifest-and-validator-20260224-094500.md</code><br/><code>docs/140-phase9-abs-rename-candidate-scan-and-review-only-block-gate-20260224-100000.md</code><br/><code>docs/141-phase9-w0-safe-target-path-filter-profile-for-candidate-scan-20260224-101500.md</code><br/><code>docs/142-phase9-manifest-wave-path-profiles-and-full-vs-profile-diff-report-20260224-103000.md</code><br/><code>docs/143-phase9-w0-execution-plan-generator-from-profile-scan-20260224-104500.md</code><br/><code>docs/144-phase9-w0-patch-plan-export-grouped-by-file-with-snippets-20260224-110000.md</code><br/><code>docs/145-phase9-w0-text-replace-dry-run-apply-tool-with-review-only-guard-20260224-111500.md</code><br/><code>docs/146-phase9-w0-apply-approval-artifact-and-file-allowlist-guard-20260224-113000.md</code><br/><code>docs/147-phase9-w0-approval-digest-binding-for-exact-patch-plan-verification-20260224-114500.md</code><br/><code>docs/148-phase9-w0-first-real-apply-wave-single-file-bitbucket-pipelines-bck2-20260224-120000.md</code><br/><code>docs/149-phase9-w0-apply-wave2-single-file-bitbucket-pipelines-yml-20260224-123000.md</code><br/><code>docs/150-phase9-w0-status-report-and-controlled-wave-completion-20260224-104500.md</code><br/><code>docs/151-phase9-branding-namespace-tested-controlled-wave-phase-closure-20260224-110000.md</code><br/><code>docs/phase9/</code></td>
+            </tr>
+            <tr>
+                <td>Security Hardening Baseline</td>
+                <td>Protocol security baseline, dependency inventory, and tested no-go dependency-audit-pending closure</td>
+                <td><code>docs/38-json-protocol-hmac-security-v1.md</code><br/><code>docs/81-phase4-protocol-json-security-logic-smoke-and-suite-gate-20260223-135000.md</code><br/><code>docs/82-phase4-protocol-json-security-runtime-probe-tooling-20260223-144000.md</code><br/><code>docs/160-security-hardening-status-report-baseline-and-dependency-no-go-20260224-131500.md</code><br/><code>docs/161-security-hardening-phase-closure-tested-no-go-dependency-audit-pending-20260224-133000.md</code><br/><code>docs/security/</code></td>
             </tr>
             </tbody>
         </table>
