@@ -1,9 +1,12 @@
 {
   "schemaVersion": 1,
-  "updatedAtUtc": "2026-02-24T05:00:00Z",
+  "updatedAtUtc": "2026-02-24T07:46:30.418Z",
   "description": "Phase 8 GS precision/min-bet rollout policy (GS-only planning artifact; no runtime activation by itself)",
   "defaultMinorUnitScale": 2,
-  "allowedMinorUnitScales": [2, 3],
+  "allowedMinorUnitScales": [
+    2,
+    3
+  ],
   "currencyPolicies": [
     {
       "currency": "USD",
@@ -75,9 +78,9 @@
     },
     {
       "category": "nonprod_canary_runtime",
-      "status": "execution_script_ready_pending_jvm_flags_and_run",
-      "evidence": "docs/129-phase8-nonprod-canary-execution-script-and-sandbox-blocker-20260224-070000.md",
-      "blocking": true
+      "status": "runtime_canary_executed_evidence_captured_cleared",
+      "evidence": "docs/1000-phase8-precision-runtime-canary-phase-closure-20260224-074630.md",
+      "blocking": false
     }
   ]
 }

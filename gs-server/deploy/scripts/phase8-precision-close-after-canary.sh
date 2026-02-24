@@ -115,7 +115,7 @@ if [[ -z "${DOC_TS}" ]]; then
 fi
 
 if [[ "${DOC_NUMBER}" == "auto" ]]; then
-  next_doc_num="$(find "${DOCS_DIR}" -maxdepth 1 -type f -name '*.md' -printf '%f\n' 2>/dev/null | sed -E 's/^([0-9]+)-.*$/\1/' | rg '^[0-9]+$' | sort -n | tail -n1 | awk '{print $1 + 1}')"
+  next_doc_num="$(ls -1 "${DOCS_DIR}"/*.md 2>/dev/null | xargs -n1 basename 2>/dev/null | sed -E 's/^([0-9]+)-.*$/\1/' | rg '^[0-9]+$' | sort -n | tail -n1 | awk '{print $1 + 1}')"
   if [[ -z "${next_doc_num}" ]]; then
     next_doc_num="1"
   fi

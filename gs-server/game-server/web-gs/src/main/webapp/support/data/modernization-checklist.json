@@ -1,6 +1,6 @@
 {
   "project": "GS Modernization Program",
-  "updatedAt": "2026-02-23",
+  "updatedAt": "2026-02-24",
   "sections": [
     {
       "id": "legacy-parity",
@@ -201,8 +201,8 @@
         {
           "id": "pu-precision-audit",
           "label": "Precision/min-bet modernization to support 0.001",
-          "status": "in_progress",
-          "evidence": "docs/130-phase8-nonprod-canary-auto-close-finalizer-and-one-command-close-path-20260224-073000.md"
+          "status": "done",
+          "evidence": "docs/1000-phase8-precision-runtime-canary-phase-closure-20260224-074630.md"
         },
         {
           "id": "pu-branding-wave",

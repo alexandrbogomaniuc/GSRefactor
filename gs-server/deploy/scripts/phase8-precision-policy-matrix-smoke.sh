@@ -33,8 +33,10 @@ const p=JSON.parse(fs.readFileSync(process.argv[1],"utf8"));
 if(p.schemaVersion!==1) throw new Error("schemaVersion");
 if(!Array.isArray(p.currencyPolicies)||p.currencyPolicies.length<3) throw new Error("currencyPolicies");
 if(!p.currencyPolicies.some(c=>c.minorUnitScale===3)) throw new Error("scale3 missing");
-if(!Array.isArray(p.verificationCategories)||!p.verificationCategories.some(v=>v.blocking===true)) throw new Error("blocking category missing");
-console.log("PASS policy schema/basic contents");
+if(!Array.isArray(p.verificationCategories)||p.verificationCategories.length===0) throw new Error("verificationCategories");
+if(!p.verificationCategories.some(v=>v.category==="nonprod_canary_runtime")) throw new Error("nonprod_canary_runtime missing");
+const blockingCount = p.verificationCategories.filter(v=>v.blocking===true).length;
+console.log("PASS policy schema/basic contents blockingCount="+blockingCount);
 ' "${POLICY}"
 
 GEN_OUT="$(${ROOT}/gs-server/deploy/scripts/phase8-precision-verification-matrix.sh --policy-file "${POLICY}" --out-dir "${MATRIX_OUT}")"
@@ -44,4 +46,11 @@ REPORT="${GEN_OUT#report=}"
 rg -q '^# Phase 8 Precision Verification Matrix' "${REPORT}" && echo 'PASS matrix header'
 rg -q '^\| KWD \| 3 \|' "${REPORT}" && echo 'PASS scale3 currency row'
 rg -q '^\| wallet_contract_and_rounding \|' "${REPORT}" && echo 'PASS wallet blocking category row'
-rg -q '^- phase8ReadyToClose: no$' "${REPORT}" && echo 'PASS closure gate summary'
+if rg -q '^- phase8ReadyToClose: no$' "${REPORT}"; then
+  echo 'PASS closure gate summary (pre-close state)'
+elif rg -q '^- phase8ReadyToClose: yes$' "${REPORT}" && rg -q '^- blockingCategories: 0$' "${REPORT}"; then
+  echo 'PASS closure gate summary (closed state)'
+else
+  echo 'FAIL: unexpected closure gate summary state' >&2
+  exit 1
+fi
