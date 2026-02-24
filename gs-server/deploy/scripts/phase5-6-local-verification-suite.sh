@@ -55,6 +55,7 @@ CHECK_KEYS=(
   help_phase8_wave2_coinrule_vectors
   help_phase8_history_reporting_vectors
   help_phase8_wallet_contract_vectors
+  help_phase8_nonprod_canary
   help_phase8_wave3_dualcalc_vectors
   help_phase8_wave3_applymode_vectors
   help_phase8_policy_matrix
@@ -68,6 +69,7 @@ CHECK_KEYS=(
   logic_smoke_phase8_wave2_coinrule_vectors
   logic_smoke_phase8_history_reporting_vectors
   logic_smoke_phase8_wallet_contract_vectors
+  logic_smoke_phase8_nonprod_canary
   logic_smoke_phase8_wave3_dualcalc_vectors
   logic_smoke_phase8_wave3_applymode_vectors
   logic_smoke_phase8_policy_matrix
@@ -151,6 +153,9 @@ run_check "help_phase8_history_reporting_vectors" "CLI help: Phase 8 history/rep
 run_check "help_phase8_wallet_contract_vectors" "CLI help: Phase 8 wallet contract/rounding precision vector smoke" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wallet-contract-vector-smoke.sh' --help | sed -n '1,80p'"
 
+run_check "help_phase8_nonprod_canary" "CLI help: Phase 8 non-prod precision canary readiness/evidence tools" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-nonprod-canary-readiness-check.sh' --help | sed -n '1,100p' && '${ROOT}/gs-server/deploy/scripts/phase8-precision-nonprod-canary-evidence-pack.sh' --help | sed -n '1,100p'"
+
 run_check "help_phase8_wave3_dualcalc_vectors" "CLI help: Phase 8 Wave 3 dual-calculation comparison vector smoke" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-dualcalc-comparison-vector-smoke.sh' --help | sed -n '1,80p'"
 
@@ -191,6 +196,9 @@ run_check "logic_smoke_phase8_history_reporting_vectors" "Executable logic smoke
 
 run_check "logic_smoke_phase8_wallet_contract_vectors" "Executable logic smoke: Phase 8 wallet contract/rounding precision vectors" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wallet-contract-vector-smoke.sh'"
+
+run_check "logic_smoke_phase8_nonprod_canary" "Executable logic smoke: Phase 8 non-prod canary readiness/evidence scaffold" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-nonprod-canary-readiness-check.sh' --allow-missing-runtime true && '${ROOT}/gs-server/deploy/scripts/phase8-precision-nonprod-canary-evidence-pack.sh' --allow-missing-runtime true"
 
 run_check "logic_smoke_phase8_wave3_dualcalc_vectors" "Executable logic smoke: Phase 8 Wave 3 dual-calculation comparison vectors" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-dualcalc-comparison-vector-smoke.sh'"

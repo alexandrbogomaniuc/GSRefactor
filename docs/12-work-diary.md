@@ -4415,3 +4415,19 @@
   - Phase 8 generated closure matrix is now down to a single blocker (`nonprod_canary_runtime`), with GS-side wallet and history precision coverage explicitly gated offline.
 - Next step:
   - build/execute non-prod canary runtime evidence capture for the remaining blocker and finalize the generated matrix to `phase8ReadyToClose: yes` only after that evidence exists.
+### 2026-02-24 05:06-05:07 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 by adding a non-prod precision canary readiness check and evidence-pack scaffold, then integrating both into the shared verification suite (offline-ok mode for sandboxed runs).
+- Updated the precision policy `nonprod_canary_runtime` status to `execution_ready_pending_jvm_flags_and_run` (still blocking), regenerated the matrix, and kept Phase 8 closure honest (`blockingCategories: 1`, `phase8ReadyToClose: no`).
+- Updated support docs/checklist to doc 128, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/128-phase8-nonprod-canary-readiness-and-evidence-pack-20260224-063000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision/phase8-precision-nonprod-canary-evidence-20260224-050625.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision/phase8-precision-verification-matrix-20260224-050639.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260224-050623.md` (suite PASS, `pass=50 fail=0 skip=0`)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-nonprod-canary-readiness-check.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-nonprod-canary-evidence-pack.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (embedded checklist sync `26/41`; evidence path updated to doc 128; `fp=7ae3b35e5d52`)
+- Result:
+  - Phase 8 now has only one explicit generated blocker, and that blocker is execution-ready with a concrete evidence-pack flow; actual non-prod canary runtime execution is still required to close the phase.
+- Next step:
+  - run the non-prod GS restart + canary requests with Phase 8 JVM flags and capture runtime evidence, then update the policy/matrix to close the final blocker.

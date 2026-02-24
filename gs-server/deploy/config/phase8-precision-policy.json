@@ -75,8 +75,8 @@
     },
     {
       "category": "nonprod_canary_runtime",
-      "status": "pending",
-      "evidence": "docs/26-bank-canary-policy-v1.md",
+      "status": "execution_ready_pending_jvm_flags_and_run",
+      "evidence": "docs/128-phase8-nonprod-canary-readiness-and-evidence-pack-20260224-063000.md",
       "blocking": true
     }
   ]
