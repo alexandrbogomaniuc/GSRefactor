@@ -4674,3 +4674,5 @@
   - `bdaa2654` dashboard fix commit
   - `docs/164-phase7-separate-c1-refactor-target-service-and-bootstrap-script-20260224-123000.md`
 - Next: rerun target bootstrap script when Docker daemon API is available in this shell; then execute schema/data copy rehearsal and compare artifacts.
+- Added Phase 7 one-command upgrade-target rehearsal orchestrator + dry-run smoke and wired both into the shared verification suite.
+- Result: orchestration path is now ready/tested locally (dry-run) pending Docker daemon permission for live `c1-refactor` container start/image pull.
