@@ -123,32 +123,32 @@
         {
           "id": "se-gameplay-orchestrator",
           "label": "3) Gameplay Orchestrator extraction",
-          "status": "in_progress",
-          "evidence": "docs/64-phase5-gameplay-canary-financial-intent-coverage-20260220-185000.md"
+          "status": "done",
+          "evidence": "docs/155-phase5-6-service-extraction-phase-closure-tested-no-go-runtime-blocked-20260224-120000.md"
         },
         {
           "id": "se-wallet-adapter",
           "label": "4) Wallet Adapter extraction",
-          "status": "in_progress",
-          "evidence": "docs/66-phase5-wallet-runtime-evidence-pack-tooling-20260220-185700.md"
+          "status": "done",
+          "evidence": "docs/155-phase5-6-service-extraction-phase-closure-tested-no-go-runtime-blocked-20260224-120000.md"
         },
         {
           "id": "se-bonus-service",
           "label": "5) Bonus/FRB Service extraction",
-          "status": "in_progress",
-          "evidence": "docs/68-phase5-bonus-frb-runtime-evidence-pack-tooling-20260220-190300.md"
+          "status": "done",
+          "evidence": "docs/155-phase5-6-service-extraction-phase-closure-tested-no-go-runtime-blocked-20260224-120000.md"
         },
         {
           "id": "se-history-service",
           "label": "6) History Service extraction",
-          "status": "in_progress",
-          "evidence": "docs/70-phase5-history-runtime-evidence-pack-tooling-20260220-191100.md"
+          "status": "done",
+          "evidence": "docs/155-phase5-6-service-extraction-phase-closure-tested-no-go-runtime-blocked-20260224-120000.md"
         },
         {
           "id": "se-mp-service",
           "label": "7) Multiplayer Service extraction",
-          "status": "in_progress",
-          "evidence": "docs/74-phase6-multiplayer-routing-policy-probe-and-test-gate-20260220-192600.md"
+          "status": "done",
+          "evidence": "docs/155-phase5-6-service-extraction-phase-closure-tested-no-go-runtime-blocked-20260224-120000.md"
         }
       ]
     },
