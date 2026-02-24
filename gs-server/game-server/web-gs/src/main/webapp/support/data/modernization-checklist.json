@@ -279,8 +279,8 @@
         {
           "id": "ux-rollback-guardrails",
           "label": "Publish rollback guardrails + canary controls",
-          "status": "in_progress",
-          "evidence": "docs/35-session-service-canary-routing-policy.md"
+          "status": "done",
+          "evidence": "docs/136-phase3-config-portal-publish-rollback-guardrails-visualization-20260224-091500.md"
         }
       ]
     }

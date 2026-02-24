@@ -4529,3 +4529,16 @@
   - Config portal now has a user-friendly visual local approval queue/audit trail without backend contract changes.
 - Next step:
   - Sync dashboard embedded data, run verification suite, commit the Phase 3 UX increment, then continue the main thread (`ux-rollback-guardrails` / Phase 5-6 parity hardening).
+
+### 2026-02-24 09:01-09:04 UTC
+- Implemented and runtime-tested `Level 4c` publish/rollback guardrails visualization in Dev_new config portal with local guard checks, canary coverage detection, and publish/rollback warning confirmations (cancel path preserves current workflow action).
+- UI guard checks persist in browser localStorage scoped by `bankId + draftVersion`, and the panel renders PASS/WARN rules for validation/sync/canary/local readiness.
+- Updated checklist/docs evidence to doc 136 and prepared dashboard sync to close `ux-rollback-guardrails`.
+- Evidence:
+  - /Users/alexb/Documents/Dev/Dev_new/docs/136-phase3-config-portal-publish-rollback-guardrails-visualization-20260224-091500.md
+  - /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/configPortal.jsp
+  - /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json
+- Result:
+  - Config portal now provides operator-visible pre-publish/pre-rollback safety guardrails without backend contract changes.
+- Next step:
+  - Sync dashboard to 30/41, run verification suite, commit, then continue main-thread runtime parity work.

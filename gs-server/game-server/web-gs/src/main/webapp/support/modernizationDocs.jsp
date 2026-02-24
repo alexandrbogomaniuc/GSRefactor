@@ -134,7 +134,7 @@
             <tr>
                 <td>Phase 3 - Config Platform</td>
                 <td>Config service foundation and portal model</td>
-                <td><code>docs/32-gs-config-portal-all-levels-spec.md</code><br/><code>docs/33-phase3-config-service-foundation.md</code><br/><code>docs/135-phase3-config-portal-persistent-approvals-browser-local-20260224-090500.md</code></td>
+                <td><code>docs/32-gs-config-portal-all-levels-spec.md</code><br/><code>docs/33-phase3-config-service-foundation.md</code><br/><code>docs/135-phase3-config-portal-persistent-approvals-browser-local-20260224-090500.md</code><br/><code>docs/136-phase3-config-portal-publish-rollback-guardrails-visualization-20260224-091500.md</code></td>
             </tr>
             <tr>
                 <td>Phase 4 - Protocol Adapter</td>

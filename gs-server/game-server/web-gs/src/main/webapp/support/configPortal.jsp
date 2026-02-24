@@ -473,6 +473,31 @@
         .approval-status-pill.rejected { background: #f2dede; color: #a94442; }
         .approval-status-pill.published { background: #d9edf7; color: #31708f; }
         .approval-status-pill.rolled_back { background: #fcf8e3; color: #8a6d3b; }
+        .guardrail-card {
+            border: 1px solid #d9e2ef;
+            border-radius: 6px;
+            background: #fafcff;
+            padding: 10px 12px;
+            margin-top: 12px;
+        }
+        .guardrail-pill {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 600;
+            background: #eef2f7;
+            margin-right: 6px;
+        }
+        .guardrail-pill.pass { background: #dff0d8; color: #3c763d; }
+        .guardrail-pill.warn { background: #fcf8e3; color: #8a6d3b; }
+        .guardrail-pill.fail { background: #f2dede; color: #a94442; }
+        .guardrail-pill.info { background: #d9edf7; color: #31708f; }
+        .guardrail-checklist label {
+            display: block;
+            font-weight: normal;
+            margin-bottom: 4px;
+        }
     </style>
 </head>
 <body>
@@ -807,9 +832,54 @@
             <button class="btn btn-default" type="submit" name="workflowAction" value="draft">Save Draft</button>
             <button class="btn btn-info" type="submit" name="workflowAction" value="validate">Validate</button>
             <button class="btn btn-primary" type="submit" name="workflowAction" value="approve">Approve</button>
-            <button class="btn btn-success" type="submit" name="workflowAction" value="publish">Publish</button>
-            <button class="btn btn-warning" type="submit" name="workflowAction" value="rollback">Rollback</button>
+            <button class="btn btn-success" id="workflowPublishBtn" type="submit" name="workflowAction" value="publish">Publish</button>
+            <button class="btn btn-warning" id="workflowRollbackBtn" type="submit" name="workflowAction" value="rollback">Rollback</button>
         </form>
+
+        <div class="guardrail-card" id="configWorkflowGuardrails"
+             data-workflow-status="<%=esc(workflowStatus)%>"
+             data-validation-passed="<%=String.valueOf(validationPassed)%>"
+             data-sync-status="<%=esc(configSyncStatus)%>"
+             data-execution-mode="<%=esc(configExecutionMode)%>"
+             data-selected-bank-id="<%=selectedBankId == null ? "" : String.valueOf(selectedBankId)%>"
+             data-draft-version="<%=esc(draftVersion)%>"
+             data-canary-banks="<%=esc(clusterProps.getProperty("SESSION_SERVICE_CANARY_BANKS", ""))%>">
+            <h5 style="margin-top:0;">Level 4c: Publish/Rollback Guardrails + Canary Controls (Browser Local)</h5>
+            <p class="small-note">
+                Visual guardrails for operators before publish/rollback. Checks below are stored in your browser for this bank+draft and do not change backend workflow behavior.
+            </p>
+            <div id="guardrailSummaryPills" style="margin-bottom:8px;">Loading guardrails...</div>
+            <div id="guardrailSummaryText" class="small-note" style="margin-bottom:8px;"></div>
+            <div class="row">
+                <div class="col-sm-7">
+                    <table class="table table-bordered table-condensed table-striped" style="margin-bottom:8px;">
+                        <thead>
+                        <tr>
+                            <th>Rule</th>
+                            <th>Status</th>
+                            <th>Detail</th>
+                        </tr>
+                        </thead>
+                        <tbody id="guardrailRulesBody">
+                        <tr><td colspan="3"><em>Loading...</em></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-5">
+                    <div class="guardrail-checklist">
+                        <label><input type="checkbox" id="guardCheckCanary"/> Canary smoke executed for selected bank/profile</label>
+                        <label><input type="checkbox" id="guardCheckRollbackPlan"/> Rollback plan reviewed and ready</label>
+                        <label><input type="checkbox" id="guardCheckPeerReview"/> Peer review / operator approval captured</label>
+                        <label><input type="checkbox" id="guardCheckIncidentComms"/> Incident/comms channel prepared (for publish/rollback)</label>
+                    </div>
+                    <div style="margin-top:8px;">
+                        <button type="button" class="btn btn-default btn-xs" id="guardRefreshBtn">Refresh Guardrails</button>
+                        <button type="button" class="btn btn-warning btn-xs" id="guardResetChecksBtn">Reset Guardrail Checks</button>
+                    </div>
+                    <div id="guardrailLocalStatus" class="small-note" style="margin-top:6px;">No local guardrail action yet.</div>
+                </div>
+            </div>
+        </div>
 
         <h5 style="margin-top:16px;">Session Draft Registry (latest 20)</h5>
         <table class="table table-bordered table-striped table-condensed">
@@ -933,6 +1003,7 @@
 (function () {
     var QUEUE_KEY = 'configPortalApprovalQueue.v1';
     var HISTORY_KEY = 'configPortalApprovalHistory.v1';
+    var GUARD_KEY_PREFIX = 'configPortalWorkflowGuardrails.v1.';
     var MAX_HISTORY = 20;
     function safeParse(text, fallback) { try { return JSON.parse(text); } catch (e) { return fallback; } }
     function loadArray(key) {
@@ -1112,6 +1183,155 @@
         setBundleStatus('Local approval queue/history reset.');
         renderApprovals();
     }
+    function guardPanel() { return document.getElementById('configWorkflowGuardrails'); }
+    function guardContext() {
+        var p = guardPanel();
+        if (!p) { return null; }
+        return {
+            workflowStatus: p.getAttribute('data-workflow-status') || '',
+            validationPassed: normalizeValidation(p.getAttribute('data-validation-passed')) === 'true',
+            syncStatus: p.getAttribute('data-sync-status') || '',
+            executionMode: p.getAttribute('data-execution-mode') || '',
+            selectedBankId: p.getAttribute('data-selected-bank-id') || '',
+            draftVersion: p.getAttribute('data-draft-version') || '',
+            canaryBanksCsv: p.getAttribute('data-canary-banks') || ''
+        };
+    }
+    function guardStorageKey(ctx) {
+        return GUARD_KEY_PREFIX + (ctx.selectedBankId || 'none') + '.' + (ctx.draftVersion || 'draft');
+    }
+    function defaultGuardChecks() {
+        return { canary:false, rollbackPlan:false, peerReview:false, incidentComms:false, updatedAt:'' };
+    }
+    function loadGuardChecks(ctx) {
+        var d = defaultGuardChecks();
+        if (!ctx || !window.localStorage) { return d; }
+        var parsed = safeParse(window.localStorage.getItem(guardStorageKey(ctx)) || '', null);
+        if (!parsed) { return d; }
+        d.canary = !!parsed.canary;
+        d.rollbackPlan = !!parsed.rollbackPlan;
+        d.peerReview = !!parsed.peerReview;
+        d.incidentComms = !!parsed.incidentComms;
+        d.updatedAt = parsed.updatedAt || '';
+        return d;
+    }
+    function saveGuardChecks(ctx, checks) {
+        if (!ctx || !window.localStorage) { return; }
+        checks.updatedAt = nowIso();
+        window.localStorage.setItem(guardStorageKey(ctx), JSON.stringify(checks));
+    }
+    function setGuardLocalStatus(msg) {
+        var el = document.getElementById('guardrailLocalStatus');
+        if (el) { el.innerHTML = escHtml(msg); }
+    }
+    function csvContains(csv, val) {
+        if (!csv || !val) { return false; }
+        var parts = String(csv).split(',');
+        for (var i = 0; i < parts.length; i++) {
+            if (String(parts[i]).trim() === String(val)) { return true; }
+        }
+        return false;
+    }
+    function guardRule(name, ok, detail, level) {
+        return { name:name, ok:!!ok, detail:detail || '', level: level || (ok ? 'pass' : 'fail') };
+    }
+    function readGuardChecksFromInputs() {
+        return {
+            canary: !!(document.getElementById('guardCheckCanary') || {}).checked,
+            rollbackPlan: !!(document.getElementById('guardCheckRollbackPlan') || {}).checked,
+            peerReview: !!(document.getElementById('guardCheckPeerReview') || {}).checked,
+            incidentComms: !!(document.getElementById('guardCheckIncidentComms') || {}).checked,
+            updatedAt: nowIso()
+        };
+    }
+    function writeGuardChecksToInputs(checks) {
+        var m = {
+            guardCheckCanary: 'canary',
+            guardCheckRollbackPlan: 'rollbackPlan',
+            guardCheckPeerReview: 'peerReview',
+            guardCheckIncidentComms: 'incidentComms'
+        };
+        for (var id in m) {
+            if (!m.hasOwnProperty(id)) { continue; }
+            var el = document.getElementById(id);
+            if (el) { el.checked = !!checks[m[id]]; }
+        }
+    }
+    function renderGuardrails() {
+        var ctx = guardContext();
+        if (!ctx) { return; }
+        var checks = loadGuardChecks(ctx);
+        writeGuardChecksToInputs(checks);
+
+        var isCanaryBank = csvContains(ctx.canaryBanksCsv, ctx.selectedBankId);
+        var rules = [];
+        rules.push(guardRule('Validation passed', ctx.validationPassed, ctx.validationPassed ? 'Workflow validation is PASS.' : 'Validation failed/blocked.', ctx.validationPassed ? 'pass' : 'fail'));
+        rules.push(guardRule('Config sync state', ctx.syncStatus === 'SYNCED' || ctx.syncStatus === 'LOCAL_ONLY' || ctx.syncStatus === 'IDLE', 'syncStatus=' + (ctx.syncStatus || 'n/a'), (ctx.syncStatus === 'ERROR') ? 'fail' : 'info'));
+        rules.push(guardRule('Selected bank canary coverage', isCanaryBank, isCanaryBank ? 'Bank is in SESSION_SERVICE_CANARY_BANKS.' : 'Bank not in SESSION_SERVICE_CANARY_BANKS.', isCanaryBank ? 'pass' : 'warn'));
+        rules.push(guardRule('Local: canary smoke executed', checks.canary, checks.canary ? 'Operator marked canary smoke complete.' : 'Operator has not marked canary smoke.', checks.canary ? 'pass' : 'warn'));
+        rules.push(guardRule('Local: rollback plan ready', checks.rollbackPlan, checks.rollbackPlan ? 'Rollback plan confirmed.' : 'Rollback plan not confirmed.', checks.rollbackPlan ? 'pass' : 'warn'));
+        rules.push(guardRule('Local: peer review', checks.peerReview, checks.peerReview ? 'Peer review captured.' : 'Peer review not marked.', checks.peerReview ? 'pass' : 'warn'));
+        rules.push(guardRule('Local: incident/comms ready', checks.incidentComms, checks.incidentComms ? 'Comms channel prepared.' : 'Comms readiness not marked.', checks.incidentComms ? 'pass' : 'warn'));
+
+        var rulesBody = document.getElementById('guardrailRulesBody');
+        if (rulesBody) {
+            var rows = [];
+            for (var i = 0; i < rules.length; i++) {
+                var r = rules[i];
+                var label = r.ok ? 'PASS' : (r.level === 'warn' ? 'WARN' : 'FAIL');
+                rows.push('<tr><td>' + escHtml(r.name) + '</td><td><span class=\"guardrail-pill ' + escHtml(r.level) + '\">' + label + '</span></td><td>' + escHtml(r.detail) + '</td></tr>');
+            }
+            rulesBody.innerHTML = rows.join('');
+        }
+
+        var missing = [];
+        if (!checks.canary) { missing.push('canary smoke'); }
+        if (!checks.rollbackPlan) { missing.push('rollback plan'); }
+        if (!checks.peerReview) { missing.push('peer review'); }
+        if (!checks.incidentComms) { missing.push('incident/comms'); }
+        var summaryPills = document.getElementById('guardrailSummaryPills');
+        if (summaryPills) {
+            var pillHtml = [];
+            pillHtml.push('<span class=\"guardrail-pill ' + (ctx.validationPassed ? 'pass' : 'fail') + '\">validation ' + (ctx.validationPassed ? 'PASS' : 'FAIL') + '</span>');
+            pillHtml.push('<span class=\"guardrail-pill ' + (isCanaryBank ? 'pass' : 'warn') + '\">canary bank ' + (isCanaryBank ? 'YES' : 'NO') + '</span>');
+            pillHtml.push('<span class=\"guardrail-pill ' + (missing.length ? 'warn' : 'pass') + '\">local checks ' + (missing.length ? 'INCOMPLETE' : 'READY') + '</span>');
+            pillHtml.push('<span class=\"guardrail-pill info\">workflow ' + escHtml(ctx.workflowStatus || 'DRAFT') + '</span>');
+            summaryPills.innerHTML = pillHtml.join('');
+        }
+        var summaryText = document.getElementById('guardrailSummaryText');
+        if (summaryText) {
+            var msg = missing.length ? ('Missing local checks: ' + missing.join(', ') + '.') : 'All local guardrail checks are marked.';
+            if (checks.updatedAt) { msg += ' Last updated: ' + checks.updatedAt; }
+            summaryText.innerHTML = escHtml(msg);
+        }
+    }
+    function persistGuardChecksFromInputs() {
+        var ctx = guardContext();
+        if (!ctx) { return; }
+        saveGuardChecks(ctx, readGuardChecksFromInputs());
+        setGuardLocalStatus('Guardrail checks saved for bank ' + (ctx.selectedBankId || 'N/A') + ' / draft ' + (ctx.draftVersion || 'draft') + '.');
+        renderGuardrails();
+    }
+    function resetGuardChecks() {
+        var ctx = guardContext();
+        if (!ctx) { return; }
+        if (!window.confirm('Reset local guardrail checks for this bank/draft?')) { setGuardLocalStatus('Guardrail reset cancelled.'); return; }
+        if (window.localStorage) { window.localStorage.removeItem(guardStorageKey(ctx)); }
+        setGuardLocalStatus('Guardrail checks reset.');
+        renderGuardrails();
+    }
+    function workflowGuardConfirm(actionName) {
+        var ctx = guardContext();
+        if (!ctx) { return true; }
+        var checks = loadGuardChecks(ctx);
+        var missing = [];
+        if (!checks.rollbackPlan) { missing.push('rollback plan'); }
+        if (!checks.peerReview) { missing.push('peer review'); }
+        if (!checks.incidentComms) { missing.push('incident/comms'); }
+        if ('publish' === actionName && !checks.canary) { missing.unshift('canary smoke'); }
+        if (!missing.length) { return true; }
+        return window.confirm('Guardrail warning for ' + actionName + ': missing ' + missing.join(', ') + '. Continue anyway?');
+    }
     document.addEventListener('click', function (evt) {
         var t = evt.target;
         if (!t) { return; }
@@ -1130,7 +1350,29 @@
     if (im) { im.onclick = importBundle; }
     if (re) { re.onclick = resetLocal; }
     if (rf) { rf.onclick = renderApprovals; }
+    var gc = ['guardCheckCanary', 'guardCheckRollbackPlan', 'guardCheckPeerReview', 'guardCheckIncidentComms'];
+    for (var gi = 0; gi < gc.length; gi++) {
+        var gEl = document.getElementById(gc[gi]);
+        if (gEl) { gEl.onchange = persistGuardChecksFromInputs; }
+    }
+    var gRefresh = document.getElementById('guardRefreshBtn');
+    var gReset = document.getElementById('guardResetChecksBtn');
+    if (gRefresh) { gRefresh.onclick = function () { renderGuardrails(); setGuardLocalStatus('Guardrails refreshed.'); }; }
+    if (gReset) { gReset.onclick = resetGuardChecks; }
+    var pubBtn = document.getElementById('workflowPublishBtn');
+    var rbBtn = document.getElementById('workflowRollbackBtn');
+    if (pubBtn) {
+        pubBtn.addEventListener('click', function (evt) {
+            if (!workflowGuardConfirm('publish')) { evt.preventDefault(); setGuardLocalStatus('Publish cancelled by guardrail confirmation.'); }
+        });
+    }
+    if (rbBtn) {
+        rbBtn.addEventListener('click', function (evt) {
+            if (!workflowGuardConfirm('rollback')) { evt.preventDefault(); setGuardLocalStatus('Rollback cancelled by guardrail confirmation.'); }
+        });
+    }
     renderApprovals();
+    renderGuardrails();
 })();
 </script>
 </body>
