@@ -55,6 +55,23 @@ bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/program-deploy-
     </div>
 
     <div class="section">
+        <h4>Refactor Environment Deploy (All Dependencies, Externalized Config)</h4>
+        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
+# Edit centralized hosts/ports only:
+vi /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/cluster-hosts.properties
+
+# Sync generated env/resources
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/sync-cluster-hosts.sh
+
+# Follow the full deploy/reboot runbook (ordered dependencies, c1-refactor switch, health checks):
+docs/168-refactor-environment-deploy-and-dependency-startup-runbook-20260224-141500.md
+</code></pre>
+        <p class="small-note">
+            Host/port configuration must remain externalized in <code>cluster-hosts.properties</code>. Do not hardcode runtime endpoints in service code or ad-hoc compose commands.
+        </p>
+    </div>
+
+    <div class="section">
         <h4>Legacy Mixed-Topology Validation Pack (Refactored GS + Legacy MP/Client)</h4>
         <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
 # Dry-run checklist + report template (no runtime calls):

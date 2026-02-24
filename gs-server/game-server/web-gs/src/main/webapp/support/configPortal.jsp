@@ -163,7 +163,19 @@
     List<String> clusterKeys = new ArrayList<String>(clusterProps.stringPropertyNames());
     Collections.sort(clusterKeys);
 
-    Map<Long, BankInfo> allBanksMap = BankInfoCache.getInstance().getAllObjects();
+    Map<Long, BankInfo> allBanksMap = Collections.<Long, BankInfo>emptyMap();
+    String bankCacheWarning = "";
+    try {
+        Map<Long, BankInfo> loadedBanks = BankInfoCache.getInstance().getAllObjects();
+        if (loadedBanks != null) {
+            allBanksMap = loadedBanks;
+        } else {
+            bankCacheWarning = "Bank cache is not initialized yet (null map). Retry after GS startup completes.";
+        }
+    } catch (Exception e) {
+        bankCacheWarning = "Bank cache unavailable during startup: " + e.getClass().getSimpleName()
+                + (e.getMessage() == null ? "" : (": " + e.getMessage()));
+    }
     List<Long> bankIds = new ArrayList<Long>(allBanksMap.keySet());
     Collections.sort(bankIds);
 
@@ -514,6 +526,11 @@
         <a href="/support/modernizationRunbook.jsp">Runbook</a> |
         <a href="/support/clusterHosts.jsp">Cluster Hosts</a>
     </p>
+    <% if (!isBlank(bankCacheWarning)) { %>
+    <div class="alert alert-warning" style="margin-top: 10px;">
+        <strong>Startup cache warning:</strong> <%=bankCacheWarning%>
+    </div>
+    <% } %>
 
     <form class="form-inline" method="get" action="/support/configPortal.jsp" style="margin-bottom: 10px;">
         <div class="form-group" style="margin-right: 10px;">

@@ -4676,3 +4676,32 @@
 - Next: rerun target bootstrap script when Docker daemon API is available in this shell; then execute schema/data copy rehearsal and compare artifacts.
 - Added Phase 7 one-command upgrade-target rehearsal orchestrator + dry-run smoke and wired both into the shared verification suite.
 - Result: orchestration path is now ready/tested locally (dry-run) pending Docker daemon permission for live `c1-refactor` container start/image pull.
+
+### 2026-02-24 12:47-13:00 UTC
+- Executed live Phase 7 upgrade-target rehearsals from `gp3-c1-1` (Cassandra 2.1.20) to separate `refactor-c1-refactor-1` (Cassandra 4.1.10) and iteratively fixed real 2.1->4.1 migration/tooling incompatibilities.
+- Fixed issues found during live runs: Cassandra 4.x `cqlsh` path (`/opt/cassandra/bin/cqlsh`), POSIX `sh` test syntax (`[[` -> `[`), macOS `mapfile` portability, legacy schema `caching` map translation to valid CQL literals, `CREATE KEYSPACE` duplicate import line, empty-row CSV import strictness, stale-manifest orchestrator bug, and source/target artifact overwrite bug in Phase 7 scripts.
+- Latest live target bootstrap/copy result reached keyspace schema import OK for `rcasinoks` + `rcasinoscks` and critical table count parity on rehearsal set (`accountcf`, `accountcf_ext`, `frbonuscf`, `paymenttransactioncf2` empty, `gamesessioncf`) against Cassandra 4.1 target.
+- Evidence: /Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/phase7-cassandra-upgrade-target-rehearsal-20260224-125539.md, /Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/phase7-cassandra-target-bootstrap-and-critical-copy-20260224-125539.md, /Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/phase7-cassandra-evidence-pack-20260224-125557.manifest.txt, /Users/alexb/Documents/Dev/Dev_new/docs/166-phase7-cassandra-4_1-target-live-rehearsal-translator-progress-${TS_DOC}.md.
+- Next step: test refactor GS/MP components against `c1-refactor` and add normalized 2.1 vs 4.1 schema parity comparison (default-option noise filtering).
+
+### 2026-02-24 13:00-13:08 UTC
+- Ran live host-mode Phase 4/5/6 runtime evidence packs after host port access recovery; Phase 4 parity check and Phase 6 multiplayer routing probe passed, while Phase 5 canaries still fail with captured runtime reasons (route flags / session launch issues).
+- Started legacy gp3 `mp` + `static` and reran mixed-topology preflight using actual legacy endpoints (`mp=6300`, `client=80`); preflight advanced to READY_FOR_MANUAL_FULL_FLOW_EXECUTION by accepting TCP reachability for legacy MP socket service.
+- Patched `legacy-mixed-topology-validation-pack.sh` (legacy MP TCP fallback) and `program-deploy-readiness-status-report.sh` (ingest latest mixed-topology preflight status), plus a Phase 5 gameplay evidence-pack messaging fix for FAIL-without-output.
+- Evidence: /Users/alexb/Documents/Dev/Dev_new/docs/167-runtime-validation-wave-host-reachability-and-legacy-mixed-topology-preflight-ready-20260224-130800.md, /Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology/legacy-mixed-topology-validation-20260224-130540.md, /Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-130700.md.
+- Next step: execute the mixed-topology manual full flow and convert remaining runtime evidence no-go statuses into actionable route/config fixes.
+
+### 2026-02-24 14:00-14:15 UTC
+- Switched active refactor Cassandra host to `c1-refactor` via centralized `cluster-hosts.properties` and validated runtime rewrite path for GS/MP (`c1` remains off during reboot test).
+- Hardened refactor startup glue:
+  - `wait-for-cassandra-and-start.sh` now rewrites GS runtime Cassandra XML configs and runtime `cluster-hosts.properties` from env before service waits.
+  - `mp` service now receives explicit Cassandra/ZooKeeper/Kafka env values.
+  - `kafka` service now has `restart: unless-stopped` to recover transient ZK broker-id NodeExists race on reboot.
+- Copied required config-cache tables from refactor `c1` (2.1.20) into `c1-refactor` (4.1) so GS no longer hits `DefaultConfigsInitializer` first-run import failure (`Can't import caches! Empty first!`).
+- Added deployment/dependency startup runbook with externalized config instructions:
+  - `docs/168-refactor-environment-deploy-and-dependency-startup-runbook-20260224-141500.md`
+- Evidence:
+  - Refactor reboot after forced recreate with `c1` off + `c1-refactor` up: GS portal `200`, runbook/docs `200`, protocol-adapter health `200`, MP ports `16300/16301` open.
+  - GS/MP runtime configs show `<hosts>c1-refactor:9042</hosts>`.
+- Next:
+  - Run mixed-topology manual full-flow validation (refactor GS + legacy MP/client) and refresh program readiness report.

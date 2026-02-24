@@ -179,7 +179,7 @@
             <tr>
                 <td>Deploy / Cutover Readiness</td>
                 <td>Program-level readiness aggregation and explicit blocker list before refactor deploy/canary</td>
-                <td><code>docs/162-program-deploy-cutover-readiness-status-and-blocker-aggregation-20260224-113500.md</code><br/><code>docs/release-readiness/</code><br/><code>gs-server/deploy/scripts/program-deploy-readiness-status-report.sh</code></td>
+                <td><code>docs/162-program-deploy-cutover-readiness-status-and-blocker-aggregation-20260224-113500.md</code><br/><code>docs/168-refactor-environment-deploy-and-dependency-startup-runbook-20260224-141500.md</code><br/><code>docs/release-readiness/</code><br/><code>gs-server/deploy/scripts/program-deploy-readiness-status-report.sh</code></td>
             </tr>
             </tbody>
         </table>
