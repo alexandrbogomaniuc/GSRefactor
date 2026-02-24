@@ -87,8 +87,8 @@
         {
           "id": "ar-observability",
           "label": "Trace/correlation baseline",
-          "status": "in_progress",
-          "evidence": "docs/29-trace-correlation-standard-v1.md"
+          "status": "done",
+          "evidence": "docs/157-phase2-observability-phase-closure-baseline-complete-20260224-123000.md"
         },
         {
           "id": "ar-canary-policy",

@@ -67,6 +67,7 @@ CHECK_KEYS=(
   help_phase9_abs_execution_plan
   help_phase4_status_report
   help_phase56_service_status_report
+  help_phase2_observability_status_report
   logic_smoke_phase4_protocol
   logic_smoke_phase8_precision_vectors
   logic_smoke_phase8_precision_buckets
@@ -87,6 +88,7 @@ CHECK_KEYS=(
   logic_smoke_phase9_abs_execution_plan
   logic_smoke_phase4_status_report
   logic_smoke_phase56_service_status_report
+  logic_smoke_phase2_observability_status_report
   bash_syntax_bonus
   bash_syntax_history
   bash_syntax_wallet
@@ -203,6 +205,8 @@ run_check "help_phase4_status_report" "CLI help: Phase 4 protocol status report 
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase4-protocol-status-report-generate.sh' --help | sed -n '1,100p'"
 run_check "help_phase56_service_status_report" "CLI help: Phase 5/6 service extraction status report generator" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase5-6-service-extraction-status-report-generate.sh' --help | sed -n '1,120p'"
+run_check "help_phase2_observability_status_report" "CLI help: Phase 2 observability baseline status report generator" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase2-observability-status-report-generate.sh' --help | sed -n '1,140p'"
 run_check "help_phase8_wave3_discrepancy_compare_export" "CLI help: Phase 8 Wave 3 discrepancy compare/export tool" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export.sh' --help | sed -n '1,120p' && '${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export-smoke.sh' --help | sed -n '1,80p'"
 
@@ -268,6 +272,8 @@ run_check "logic_smoke_phase4_status_report" "Executable logic smoke: Phase 4 pr
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase4-protocol-status-report-generate-smoke.sh'"
 run_check "logic_smoke_phase56_service_status_report" "Executable logic smoke: Phase 5/6 service extraction status report generator" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase5-6-service-extraction-status-report-generate-smoke.sh'"
+run_check "logic_smoke_phase2_observability_status_report" "Executable logic smoke: Phase 2 observability baseline status report generator" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase2-observability-status-report-generate-smoke.sh'"
 run_check "logic_smoke_phase8_wave3_discrepancy_compare_export" "Executable logic smoke: Phase 8 Wave 3 discrepancy compare/export CLI" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export-smoke.sh'"
 

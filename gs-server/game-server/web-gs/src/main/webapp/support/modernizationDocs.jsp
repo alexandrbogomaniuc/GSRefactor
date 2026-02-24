@@ -128,8 +128,8 @@
             </tr>
             <tr>
                 <td>Phase 2 - Observability</td>
-                <td>Correlation standard and probes</td>
-                <td><code>docs/29-trace-correlation-standard-v1.md</code><br/><code>docs/phase2/</code></td>
+                <td>Trace/correlation standard, error taxonomy, dashboard/runbook baseline, and tested baseline-complete closure</td>
+                <td><code>docs/29-trace-correlation-standard-v1.md</code><br/><code>docs/27-error-taxonomy-v1.md</code><br/><code>docs/36-modernization-visual-dashboard.md</code><br/><code>docs/60-support-modernization-runbook-page-20260220-182600.md</code><br/><code>docs/61-support-runbook-status-snapshot-20260220-183000.md</code><br/><code>docs/156-phase2-observability-status-report-baseline-complete-20260224-121500.md</code><br/><code>docs/157-phase2-observability-phase-closure-baseline-complete-20260224-123000.md</code><br/><code>docs/phase2/</code></td>
             </tr>
             <tr>
                 <td>Phase 3 - Config Platform</td>
