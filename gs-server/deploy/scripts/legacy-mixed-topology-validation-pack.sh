@@ -3,9 +3,27 @@ set -euo pipefail
 
 OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology"
 DRY_RUN="false"
-REFACTOR_GS_BASE_URL="http://127.0.0.1:18081"
-LEGACY_MP_BASE_URL="http://127.0.0.1:8088"
-LEGACY_CLIENT_BASE_URL="http://127.0.0.1:8090"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [[ -f "${SCRIPT_DIR}/lib/cluster-hosts.sh" ]]; then
+  # shellcheck source=/dev/null
+  source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+fi
+
+default_http_url() {
+  local host_key="$1"
+  local port_key="$2"
+  local fallback_host="$3"
+  local fallback_port="$4"
+  if declare -F cluster_hosts_http_url >/dev/null 2>&1; then
+    cluster_hosts_http_url "${host_key}" "${port_key}" "${fallback_host}" "${fallback_port}"
+  else
+    printf 'http://%s:%s\n' "${fallback_host}" "${fallback_port}"
+  fi
+}
+
+REFACTOR_GS_BASE_URL="$(default_http_url "GS_EXTERNAL_HOST" "GS_EXTERNAL_PORT" "127.0.0.1" "18081")"
+LEGACY_MP_BASE_URL="$(default_http_url "LEGACY_MP_EXTERNAL_HOST" "LEGACY_MP_EXTERNAL_PORT" "127.0.0.1" "6300")"
+LEGACY_CLIENT_BASE_URL="$(default_http_url "LEGACY_CLIENT_EXTERNAL_HOST" "LEGACY_CLIENT_EXTERNAL_PORT" "127.0.0.1" "80")"
 BANK_ID="6275"
 GAME_ID="838"
 TIMEOUT_SEC="5"
