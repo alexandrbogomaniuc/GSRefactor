@@ -64,6 +64,7 @@ APPLY_REPORT="$(sed -n 's/^run_report=//p' "${APPLY_OUT}" | tail -n1)"
 [[ -f "${APPLY_REPORT}" ]] || { echo "FAIL: apply report missing" >&2; exit 8; }
 grep -q 'Mode: apply' "${APPLY_REPORT}" || { echo "FAIL: apply mode missing" >&2; exit 9; }
 grep -q 'Total applied literal replacements (exact-case): 3' "${APPLY_REPORT}" || { echo "FAIL: apply count" >&2; cat "${APPLY_REPORT}" >&2; exit 10; }
+grep -q 'Patch-plan SHA-256:' "${APPLY_REPORT}" || { echo "FAIL: patch-plan sha missing" >&2; cat "${APPLY_REPORT}" >&2; exit 10; }
 grep -q '| `config/a.xml` | OK | 3 | 3 | yes |' "${APPLY_REPORT}" || { echo "FAIL: apply file row" >&2; cat "${APPLY_REPORT}" >&2; exit 11; }
 grep -q '^abs abs abs$' "${SCAN_ROOT}/config/a.xml" || { echo "FAIL: apply did not rewrite file" >&2; cat "${SCAN_ROOT}/config/a.xml" >&2; exit 12; }
 

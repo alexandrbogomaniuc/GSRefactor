@@ -208,7 +208,7 @@
           "id": "pu-branding-wave",
           "label": "Legacy namespace cleanup wave (ABS mapping)",
           "status": "in_progress",
-          "evidence": "docs/146-phase9-w0-apply-approval-artifact-and-file-allowlist-guard-20260224-113000.md"
+          "evidence": "docs/147-phase9-w0-approval-digest-binding-for-exact-patch-plan-verification-20260224-114500.md"
         },
         {
           "id": "pu-security-hardening",

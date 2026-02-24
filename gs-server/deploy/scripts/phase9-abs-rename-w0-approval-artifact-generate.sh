@@ -61,6 +61,7 @@ OUT_FILE="${OUT_DIR}/phase9-abs-rename-w0-apply-approval-${TS}.json"
 node - <<'NODE' "$DRY_RUN_REPORT" "$PATCH_PLAN_REPORT" "$OUT_FILE" "$WAVE" "$APPROVER" "$NOTES" "$APPROVAL_ID"
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const [dryRunReportFileRaw, patchPlanReportFileRaw, outFile, wave, approverRaw, notesRaw, approvalIdRaw] = process.argv.slice(2);
 const dryRunReportFile = String(dryRunReportFileRaw || '').trim();
@@ -71,6 +72,7 @@ const approvalId = String(approvalIdRaw || '').trim() || `phase9-${wave.toLowerC
 
 function fail(msg, code=2) { console.error(`FAIL: ${msg}`); process.exit(code); }
 function stripTicks(v) { return String(v||'').replace(/^`|`$/g, ''); }
+function sha256Text(s) { return crypto.createHash('sha256').update(s).digest('hex'); }
 
 let sourceText = '';
 let sourceType = '';
@@ -90,6 +92,8 @@ if (!patchPlanReportFile && sourceType === 'dry-run') {
   patchPlanReportFile = m[1].trim();
 }
 if (!patchPlanReportFile) fail('patch-plan report not resolved');
+const patchPlanText = fs.readFileSync(patchPlanReportFile, 'utf8');
+const patchPlanSha256 = sha256Text(patchPlanText);
 
 const fileSet = new Set();
 if (sourceType === 'dry-run') {
@@ -123,6 +127,7 @@ const artifact = {
   approver,
   approvedAt: new Date().toISOString(),
   patchPlan: patchPlanReportFile,
+  patchPlanSha256,
   source: sourceType === 'dry-run' ? dryRunReportFile : patchPlanReportFile,
   allowedFiles: [...fileSet].sort(),
   notes
@@ -131,4 +136,5 @@ fs.writeFileSync(outFile, JSON.stringify(artifact, null, 2) + '\n');
 console.log(`approval_artifact=${outFile}`);
 console.log(`allowed_files=${artifact.allowedFiles.length}`);
 console.log(`patch_plan=${artifact.patchPlan}`);
+console.log(`patch_plan_sha256=${artifact.patchPlanSha256}`);
 NODE

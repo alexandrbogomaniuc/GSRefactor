@@ -81,6 +81,7 @@ RUN_REPORT="${OUT_DIR}/phase9-abs-rename-w0-text-replace-${MODE}-${TS}.md"
 node - <<'NODE' "$MAP_FILE" "$PATCH_PLAN_REPORT" "$RUN_REPORT" "$ROOT" "$WAVE" "$MODE" "$MAX_FILES" "$APPROVAL_FILE"
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const [mapFile, patchPlanFile, runReportFile, root, wave, mode, maxFilesRaw, approvalFileRaw] = process.argv.slice(2);
 const maxFiles = Math.max(1, parseInt(maxFilesRaw, 10) || 200);
@@ -92,6 +93,7 @@ function fail(msg, code = 2) {
   process.exit(code);
 }
 function stripTicks(v) { return String(v || '').replace(/^`|`$/g, ''); }
+function sha256Text(s) { return crypto.createHash('sha256').update(s).digest('hex'); }
 function countLiteral(hay, needle) {
   if (!needle) return 0;
   let count = 0;
@@ -109,6 +111,7 @@ if (manifest.type !== 'phase9-abs-compatibility-map') fail('invalid manifest typ
 const reviewOnlySet = new Set((manifest.mappings || []).filter(m => m.reviewOnly === true).map(m => String(m.legacy).toLowerCase()));
 
 const text = fs.readFileSync(patchPlanFile, 'utf8');
+const patchPlanSha256Actual = sha256Text(text);
 const lines = text.split(/\r?\n/);
 const filePlans = [];
 let i = 0;
@@ -175,6 +178,11 @@ if (mode === 'apply') {
   const approvedPatchPlanBase = path.basename(path.resolve(approvedPatchPlan));
   if (patchPlanBase !== approvedPatchPlanBase) {
     fail(`approval artifact patchPlan mismatch: ${approvedPatchPlanBase} != ${patchPlanBase}`, 5);
+  }
+  const approvedPatchPlanSha256 = String(parsed.patchPlanSha256 || '').trim();
+  if (!approvedPatchPlanSha256) fail('approval artifact missing patchPlanSha256', 5);
+  if (approvedPatchPlanSha256 !== patchPlanSha256Actual) {
+    fail(`approval artifact patchPlanSha256 mismatch: ${approvedPatchPlanSha256} != ${patchPlanSha256Actual}`, 5);
   }
   if (!Array.isArray(parsed.allowedFiles) || parsed.allowedFiles.length === 0) {
     fail('approval artifact allowedFiles must be non-empty array', 5);
@@ -249,6 +257,7 @@ out.push(`- File sections processed: ${filePlans.length}`);
 out.push(`- Files changed: ${filesChanged}`);
 out.push(`- Total planned literal replacements (exact-case): ${totalPlanned}`);
 out.push(`- Total applied literal replacements (exact-case): ${totalApplied}`);
+out.push(`- Patch-plan SHA-256: ${patchPlanSha256Actual}`);
 if (approvalMeta) {
   out.push(`- Approval artifact: ${approvalMeta.approvalFile}`);
   out.push(`- Approval id: ${approvalMeta.approvalId || '(none)'}`);
@@ -282,6 +291,7 @@ console.log(`file_sections=${filePlans.length}`);
 console.log(`files_changed=${filesChanged}`);
 console.log(`planned_replacements=${totalPlanned}`);
 console.log(`applied_replacements=${totalApplied}`);
+console.log(`patch_plan_sha256=${patchPlanSha256Actual}`);
 if (approvalMeta) {
   console.log(`approval_file=${approvalMeta.approvalFile}`);
   console.log(`approval_allowed_files=${approvalMeta.allowedFiles}`);

@@ -72,6 +72,7 @@ APPROVAL="$(sed -n 's/^approval_artifact=//p' "${GEN_OUT}" | tail -n1)"
 [[ -f "${APPROVAL}" ]] || { echo "FAIL: approval artifact missing" >&2; exit 5; }
 grep -q '"type": "phase9-abs-rename-w0-apply-approval"' "${APPROVAL}" || { echo "FAIL: approval type missing" >&2; cat "${APPROVAL}" >&2; exit 6; }
 grep -q '"allowedFiles"' "${APPROVAL}" || { echo "FAIL: allowedFiles missing" >&2; exit 7; }
+grep -q '"patchPlanSha256"' "${APPROVAL}" || { echo "FAIL: patchPlanSha256 missing" >&2; cat "${APPROVAL}" >&2; exit 7; }
 
 # Apply with approval should pass and rewrite both files.
 APPLY_OUT="${TMP_DIR}/apply-ok.out"
@@ -79,6 +80,7 @@ APPLY_OUT="${TMP_DIR}/apply-ok.out"
 APPLY_REPORT="$(sed -n 's/^run_report=//p' "${APPLY_OUT}" | tail -n1)"
 [[ -f "${APPLY_REPORT}" ]] || { echo "FAIL: apply report missing" >&2; exit 8; }
 grep -q 'Allowed files in artifact: 2' "${APPLY_REPORT}" || { echo "FAIL: approval metadata missing in report" >&2; cat "${APPLY_REPORT}" >&2; exit 9; }
+grep -q 'Patch-plan SHA-256:' "${APPLY_REPORT}" || { echo "FAIL: patch-plan hash missing in apply report" >&2; cat "${APPLY_REPORT}" >&2; exit 9; }
 grep -q '^abs abs abs$' "${SCAN_ROOT}/config/a.xml" || { echo "FAIL: file a not rewritten" >&2; exit 10; }
 grep -q '^abs$' "${SCAN_ROOT}/config/b.xml" || { echo "FAIL: file b not rewritten" >&2; exit 11; }
 
@@ -95,5 +97,19 @@ if "${EXEC}" --root "${SCAN_ROOT}" --map-file "${TMP_DIR}/map.json" --patch-plan
   exit 12
 fi
 grep -q 'patch plan contains files not approved' "${TMP_DIR}/mismatch.err" || { echo "FAIL: missing allowlist mismatch error" >&2; cat "${TMP_DIR}/mismatch.err" >&2; exit 13; }
+
+# Patch-plan digest mismatch should block apply (tamper approval hash, keep patch-plan path same).
+node - <<'NODE' "${APPROVAL}"
+const fs = require('fs');
+const f = process.argv[2];
+const j = JSON.parse(fs.readFileSync(f, 'utf8'));
+j.patchPlanSha256 = 'deadbeef' + String(j.patchPlanSha256 || '').slice(8);
+fs.writeFileSync(f + '.badhash', JSON.stringify(j, null, 2));
+NODE
+if "${EXEC}" --root "${SCAN_ROOT}" --map-file "${TMP_DIR}/map.json" --patch-plan "${TMP_DIR}/patch-plan.md" --out-dir "${TMP_DIR}" --wave W0 --mode apply --approval-file "${APPROVAL}.badhash" >/dev/null 2>"${TMP_DIR}/digest.err"; then
+  echo "FAIL: digest mismatch should fail" >&2
+  exit 14
+fi
+grep -q 'patchPlanSha256 mismatch' "${TMP_DIR}/digest.err" || { echo "FAIL: missing digest mismatch error" >&2; cat "${TMP_DIR}/digest.err" >&2; exit 15; }
 
 echo "PASS: phase9 abs w0 approval artifact + apply guard smoke"
