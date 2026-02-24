@@ -196,7 +196,7 @@
           "id": "pu-cassandra-upgrade",
           "label": "Cassandra upgrade rehearsal + cutover plan",
           "status": "in_progress",
-          "evidence": "docs/131-phase7-cassandra-evidence-pack-degraded-docker-api-denied-statuses-20260224-081500.md"
+          "evidence": "docs/132-phase7-cassandra-rehearsal-report-blocked-state-prefill-from-manifest-20260224-082000.md"
         },
         {
           "id": "pu-precision-audit",

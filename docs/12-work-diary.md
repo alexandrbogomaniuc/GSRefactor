@@ -4489,3 +4489,16 @@
   - Phase 7 rehearsal tooling now produces accurate machine-readable blocked-state evidence in restricted Docker sessions, avoiding false-positive PASS/FAIL interpretation.
 - Next step:
   - Continue Phase 7 by adding a rehearsal report generator classification for `SKIP_DOCKER_API_DENIED` and retry real Cassandra evidence steps when Docker API access becomes available.
+
+### 2026-02-24 08:08-08:08 UTC
+- Improved Phase 7 Cassandra rehearsal report generation to parse manifest step statuses and prefill human-readable blocked-state results (`BLOCKED (Docker API denied during ...)`) plus a default `No-Go` recommendation when degraded evidence-pack manifests are used.
+- Fixed template compatibility in the generator for bullet-only `Go / No-Go` line prefill.
+- Re-ran the generator against the degraded manifest and confirmed the new blocked-state report output, then synced checklist/dashboard evidence to doc 132.
+- Evidence:
+  - /Users/alexb/Documents/Dev/Dev_new/docs/132-phase7-cassandra-rehearsal-report-blocked-state-prefill-from-manifest-20260224-082000.md
+  - /Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/phase7-cassandra-rehearsal-report-20260224-080842.md
+  - /Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260224-080847.md (PASS, pass=50 fail=0 skip=0)
+- Result:
+  - Phase 7 blocked rehearsals are now visible in operator-readable reports without manual manifest parsing.
+- Next step:
+  - Continue Phase 7 with live Docker-access retry path and/or target-cluster rehearsal compare artifacts once Docker API access is available in this environment.

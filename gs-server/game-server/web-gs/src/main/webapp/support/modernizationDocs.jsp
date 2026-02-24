@@ -158,8 +158,8 @@
             </tr>
             <tr>
                 <td>Phase 7 - Cassandra Upgrade</td>
-                <td>Plan, rehearsal, compatibility matrix, runbook and degraded-evidence tooling status</td>
-                <td><code>docs/40-phase7-cassandra-upgrade-plan-v1.md</code><br/><code>docs/41-phase7-cassandra-rehearsal-checklist-v1.md</code><br/><code>docs/42-phase7-cassandra-cutover-rollback-runbook-v1.md</code><br/><code>docs/131-phase7-cassandra-evidence-pack-degraded-docker-api-denied-statuses-20260224-081500.md</code><br/><code>docs/phase7/</code></td>
+                <td>Plan, rehearsal, compatibility matrix, runbook and degraded-evidence/reporting status</td>
+                <td><code>docs/40-phase7-cassandra-upgrade-plan-v1.md</code><br/><code>docs/41-phase7-cassandra-rehearsal-checklist-v1.md</code><br/><code>docs/42-phase7-cassandra-cutover-rollback-runbook-v1.md</code><br/><code>docs/131-phase7-cassandra-evidence-pack-degraded-docker-api-denied-statuses-20260224-081500.md</code><br/><code>docs/132-phase7-cassandra-rehearsal-report-blocked-state-prefill-from-manifest-20260224-082000.md</code><br/><code>docs/phase7/</code></td>
             </tr>
             <tr>
                 <td>Phase 8 - Precision Modernization</td>

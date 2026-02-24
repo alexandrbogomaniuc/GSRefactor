@@ -55,16 +55,71 @@ extract_output() {
   awk -F':OUTPUT:' -v k="$key" '$1 ~ ("^" k "$") {print $2}' "$MANIFEST_FILE" | tail -n 1
 }
 
+extract_status() {
+  local key="$1"
+  awk -F: -v k="$key" '
+    $1 == k && $2 != "OUTPUT" {
+      out=$2
+      if (NF >= 3) out=out ":" $3
+      print out
+      exit
+    }
+  ' "$MANIFEST_FILE"
+}
+
+status_to_result() {
+  local status="${1:-}"
+  local ok_text="$2"
+  local label="$3"
+  case "$status" in
+    PASS)
+      printf '%s\n' "${ok_text}"
+      ;;
+    SKIP:DOCKER_API_DENIED)
+      printf 'BLOCKED (Docker API denied during %s)\n' "${label}"
+      ;;
+    FAIL:*)
+      printf 'FAIL (%s)\n' "${status}"
+      ;;
+    "")
+      printf 'UNKNOWN (no manifest status)\n'
+      ;;
+    *)
+      printf 'UNKNOWN (%s)\n' "${status}"
+      ;;
+  esac
+}
+
 prefill_line() {
   local label="$1"
   local value="$2"
   perl -0777 -i -pe "s#${label}:\n#${label}: ${value}\n#g" "$OUT_FILE"
 }
 
+prefill_bullet() {
+  local label="$1"
+  local value="$2"
+  perl -0777 -i -pe "s#- ${label}\n#- ${label}: ${value}\n#g" "$OUT_FILE"
+}
+
 schema_source="$(extract_output schema_export)"
 counts_source="$(extract_output table_counts)"
 preflight_source="$(extract_output preflight)"
 query_smoke_source="$(extract_output query_smoke)"
+schema_status="$(extract_status schema_export)"
+counts_status="$(extract_status table_counts)"
+preflight_status="$(extract_status preflight)"
+query_smoke_status="$(extract_status query_smoke)"
+
+schema_result="$(status_to_result "${schema_status}" "Pending target rehearsal comparison" "schema export")"
+data_result="$(status_to_result "${counts_status}" "Pending target rehearsal comparison" "table counts")"
+runtime_result="$(status_to_result "${query_smoke_status}" "Pending gameplay/launch parity comparison" "query smoke")"
+performance_result="$(status_to_result "${preflight_status}" "${preflight_source}" "preflight")"
+
+default_recommendation="No-Go (rehearsal incomplete - fill target evidence and parity results)"
+if [[ "${schema_status}" == "SKIP:DOCKER_API_DENIED" || "${counts_status}" == "SKIP:DOCKER_API_DENIED" || "${query_smoke_status}" == "SKIP:DOCKER_API_DENIED" || "${preflight_status}" == "SKIP:DOCKER_API_DENIED" ]]; then
+  default_recommendation="No-Go (blocked by Docker API permission denied in refactor rehearsal tooling run)"
+fi
 
 prefill_line "Date \(UTC\)" "$(date -u '+%Y-%m-%d %H:%M:%S UTC')"
 prefill_line "Environment" "refactor"
@@ -73,6 +128,10 @@ prefill_line "Target cluster" "target-candidate (set actual)"
 prefill_line "Schema source" "${schema_source}"
 prefill_line "Count report source" "${counts_source}"
 prefill_line "Runtime parity report" "${query_smoke_source}"
-prefill_line "Performance summary" "${preflight_source}"
+prefill_line "Schema parity" "${schema_result}"
+prefill_line "Data parity" "${data_result}"
+prefill_line "Runtime parity" "${runtime_result}"
+prefill_line "Performance summary" "${performance_result}"
+prefill_bullet "Go / No-Go" "${default_recommendation}"
 
 echo "rehearsal_report=${OUT_FILE}"
