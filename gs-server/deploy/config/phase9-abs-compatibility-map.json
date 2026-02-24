@@ -9,12 +9,37 @@
     "Internal package/class renames require wrappers/delegation before removal."
   ],
   "waves": [
-    {"id": "W0", "label": "docs-and-nonruntime-strings", "allowsAutomaticApply": true},
-    {"id": "W1", "label": "config-aliases", "allowsAutomaticApply": true},
-    {"id": "W2", "label": "api-docs-and-contract-text", "allowsAutomaticApply": true},
-    {"id": "W3", "label": "code-wrappers-and-compat-delegation", "allowsAutomaticApply": false},
-    {"id": "W4", "label": "legacy-alias-removal-explicit-approval", "allowsAutomaticApply": false}
+    {"id": "W0", "label": "docs-and-nonruntime-strings", "allowsAutomaticApply": true, "pathProfile": "w0_safe_targets"},
+    {"id": "W1", "label": "config-aliases", "allowsAutomaticApply": true, "pathProfile": "w1_config_targets"},
+    {"id": "W2", "label": "api-docs-and-contract-text", "allowsAutomaticApply": true, "pathProfile": "w2_contract_doc_targets"},
+    {"id": "W3", "label": "code-wrappers-and-compat-delegation", "allowsAutomaticApply": false, "pathProfile": "w3_wrapper_candidates"},
+    {"id": "W4", "label": "legacy-alias-removal-explicit-approval", "allowsAutomaticApply": false, "pathProfile": "full_scan"}
   ],
+  "pathProfiles": {
+    "full_scan": {
+      "mode": "all"
+    },
+    "w0_safe_targets": {
+      "mode": "extension_and_path_filters",
+      "includeExtensions": ["md", "xml", "properties", "yml", "yaml", "jsp"],
+      "excludePathContains": ["/src/main/java/", "/src/test/java/", "/target/"]
+    },
+    "w1_config_targets": {
+      "mode": "extension_and_path_filters",
+      "includeExtensions": ["xml", "properties", "yml", "yaml"],
+      "excludePathContains": ["/src/main/java/", "/src/test/java/", "/target/"]
+    },
+    "w2_contract_doc_targets": {
+      "mode": "extension_and_path_filters",
+      "includeExtensions": ["md", "json", "yaml", "yml", "xml"],
+      "excludePathContains": ["/src/main/java/", "/src/test/java/", "/target/"]
+    },
+    "w3_wrapper_candidates": {
+      "mode": "extension_and_path_filters",
+      "includeExtensions": ["java", "xml", "properties"],
+      "excludePathContains": ["/target/"]
+    }
+  },
   "mappings": [
     {"legacy": "betsoft", "replacement": "abs", "replacementUpper": "ABS", "category": "brand", "defaultWave": "W0", "reviewOnly": false},
     {"legacy": "betsoft gaming", "replacement": "ABS", "replacementUpper": "ABS", "category": "brand", "defaultWave": "W0", "reviewOnly": false},

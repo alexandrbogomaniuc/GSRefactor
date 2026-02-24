@@ -52,7 +52,7 @@
           "id": "ar-strangler",
           "label": "Phased strangler migration (no big-bang rewrite)",
           "status": "done",
-      "evidence": "docs/141-phase9-w0-safe-target-path-filter-profile-for-candidate-scan-20260224-101500.md"
+      "evidence": "docs/142-phase9-manifest-wave-path-profiles-and-full-vs-profile-diff-report-20260224-103000.md"
         },
         {
           "id": "ar-facade-entry",

@@ -63,6 +63,7 @@ CHECK_KEYS=(
   help_phase8_wave3_discrepancy_export
   help_phase9_abs_map
   help_phase9_abs_candidate_scan
+  help_phase9_abs_candidate_diff
   logic_smoke_phase4_protocol
   logic_smoke_phase8_precision_vectors
   logic_smoke_phase8_precision_buckets
@@ -79,6 +80,7 @@ CHECK_KEYS=(
   logic_smoke_phase8_wave3_discrepancy_export
   logic_smoke_phase9_abs_map
   logic_smoke_phase9_abs_candidate_scan
+  logic_smoke_phase9_abs_candidate_diff
   bash_syntax_bonus
   bash_syntax_history
   bash_syntax_wallet
@@ -181,6 +183,8 @@ run_check "help_phase9_abs_map" "CLI help: Phase 9 ABS compatibility mapping too
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-compatibility-map-validate.sh' --help | sed -n '1,60p' && '${ROOT}/gs-server/deploy/scripts/phase9-abs-compatibility-map-smoke.sh' --help | sed -n '1,40p'"
 run_check "help_phase9_abs_candidate_scan" "CLI help: Phase 9 ABS rename candidate scanner" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan.sh' --help | sed -n '1,120p' && '${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan-smoke.sh' --help | sed -n '1,40p'"
+run_check "help_phase9_abs_candidate_diff" "CLI help: Phase 9 ABS candidate diff tool" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-candidate-diff.sh' --help | sed -n '1,120p' && '${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-candidate-diff-smoke.sh' --help | sed -n '1,40p'"
 run_check "help_phase8_wave3_discrepancy_compare_export" "CLI help: Phase 8 Wave 3 discrepancy compare/export tool" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export.sh' --help | sed -n '1,120p' && '${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export-smoke.sh' --help | sed -n '1,80p'"
 
@@ -232,6 +236,8 @@ run_check "logic_smoke_phase9_abs_map" "Executable logic smoke: Phase 9 ABS comp
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-compatibility-map-smoke.sh'"
 run_check "logic_smoke_phase9_abs_candidate_scan" "Executable logic smoke: Phase 9 ABS rename candidate scanner" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan-smoke.sh'"
+run_check "logic_smoke_phase9_abs_candidate_diff" "Executable logic smoke: Phase 9 ABS candidate diff tool" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-candidate-diff-smoke.sh'"
 run_check "logic_smoke_phase8_wave3_discrepancy_compare_export" "Executable logic smoke: Phase 8 Wave 3 discrepancy compare/export CLI" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export-smoke.sh'"
 

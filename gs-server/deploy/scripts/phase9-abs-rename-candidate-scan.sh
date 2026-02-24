@@ -8,6 +8,7 @@ WAVE=""
 ENFORCE_AUTO_APPLY="false"
 MAX_FILES_PER_MAPPING="10"
 SAFE_TARGETS_ONLY="false"
+PATH_PROFILE=""
 
 usage() {
   cat <<USAGE
@@ -25,6 +26,7 @@ Options:
   --enforce-auto-apply B    true|false (default: ${ENFORCE_AUTO_APPLY})
   --max-files-per-mapping N Default: ${MAX_FILES_PER_MAPPING}
   --safe-targets-only B     true|false (default: ${SAFE_TARGETS_ONLY})
+  --path-profile NAME       Optional manifest path profile override
   -h, --help                Show this help
 USAGE
 }
@@ -45,6 +47,8 @@ while [[ $# -gt 0 ]]; do
       MAX_FILES_PER_MAPPING="$2"; shift 2 ;;
     --safe-targets-only)
       SAFE_TARGETS_ONLY="$2"; shift 2 ;;
+    --path-profile)
+      PATH_PROFILE="$2"; shift 2 ;;
     -h|--help)
       usage; exit 0 ;;
     *)
@@ -69,16 +73,17 @@ REPORT="${OUT_DIR}/phase9-abs-rename-candidate-scan-${TS}.md"
 TMP_JSON="$(mktemp)"
 trap 'rm -f "${TMP_JSON}"' EXIT
 
-node - <<'NODE' "${MAP_FILE}" "${ROOT}" "${REPORT}" "${WAVE}" "${ENFORCE_AUTO_APPLY}" "${MAX_FILES_PER_MAPPING}" "${TMP_JSON}" "${SAFE_TARGETS_ONLY}"
+node - <<'NODE' "${MAP_FILE}" "${ROOT}" "${REPORT}" "${WAVE}" "${ENFORCE_AUTO_APPLY}" "${MAX_FILES_PER_MAPPING}" "${TMP_JSON}" "${SAFE_TARGETS_ONLY}" "${PATH_PROFILE}"
 const fs = require('fs');
 const cp = require('child_process');
 const path = require('path');
 
-const [mapFile, root, reportFile, waveFilterRaw, enforceRaw, maxFilesRaw, outJsonFile, safeTargetsOnlyRaw] = process.argv.slice(2);
+const [mapFile, root, reportFile, waveFilterRaw, enforceRaw, maxFilesRaw, outJsonFile, safeTargetsOnlyRaw, pathProfileOverrideRaw] = process.argv.slice(2);
 const waveFilter = (waveFilterRaw || '').trim();
 const enforceAutoApply = String(enforceRaw) === 'true';
 const maxFilesPerMapping = Math.max(1, parseInt(maxFilesRaw, 10) || 10);
 const safeTargetsOnly = String(safeTargetsOnlyRaw) === 'true';
+const pathProfileOverride = String(pathProfileOverrideRaw || '').trim();
 const map = JSON.parse(fs.readFileSync(mapFile, 'utf8'));
 
 function fail(msg, code = 2) {
@@ -87,12 +92,27 @@ function fail(msg, code = 2) {
 }
 if (map.type !== 'phase9-abs-compatibility-map') fail('invalid manifest type');
 if (!Array.isArray(map.waves) || !Array.isArray(map.mappings)) fail('manifest missing waves/mappings');
+if (!map.pathProfiles || typeof map.pathProfiles !== 'object') fail('manifest missing pathProfiles');
 if (!fs.existsSync(root)) fail(`root not found: ${root}`);
 
 const waves = new Map(map.waves.map(w => [w.id, w]));
 if (waveFilter && !waves.has(waveFilter)) fail(`unknown wave: ${waveFilter}`);
+if (pathProfileOverride && !map.pathProfiles[pathProfileOverride]) fail(`unknown path profile: ${pathProfileOverride}`);
 const selectedMappings = map.mappings.filter(m => !waveFilter || m.defaultWave === waveFilter);
 if (selectedMappings.length === 0) fail(`no mappings selected${waveFilter ? ' for wave ' + waveFilter : ''}`);
+
+let effectivePathProfileName = 'full_scan';
+if (pathProfileOverride) {
+  effectivePathProfileName = pathProfileOverride;
+} else if (safeTargetsOnly) {
+  if (waveFilter && waves.get(waveFilter)?.pathProfile) {
+    effectivePathProfileName = waves.get(waveFilter).pathProfile;
+  } else {
+    effectivePathProfileName = 'w0_safe_targets';
+  }
+}
+const effectivePathProfile = map.pathProfiles[effectivePathProfileName];
+if (!effectivePathProfile) fail(`effective path profile missing: ${effectivePathProfileName}`);
 
 function runRgLines(args) {
   try {
@@ -115,14 +135,25 @@ function scanPattern(legacy) {
   ];
   const out = runRgLines(baseArgs);
   const lines = out ? out.split(/\r?\n/).filter(Boolean) : [];
+  const includeExts = new Set(
+    Array.isArray(effectivePathProfile.includeExtensions)
+      ? effectivePathProfile.includeExtensions.map(x => String(x).toLowerCase())
+      : []
+  );
+  const excludeContains = Array.isArray(effectivePathProfile.excludePathContains)
+    ? effectivePathProfile.excludePathContains.map(x => String(x))
+    : [];
   function pathAllowed(file) {
-    if (!safeTargetsOnly) return true;
+    if (effectivePathProfile.mode === 'all') return true;
     const normalized = String(file).replace(/\\/g, '/');
-    const safeExt = /\.(md|xml|properties|ya?ml|jsp)$/i.test(normalized);
-    if (!safeExt) return false;
-    if (/\/src\/main\/java\//.test(normalized)) return false;
-    if (/\/src\/test\/java\//.test(normalized)) return false;
-    if (/\/target\//.test(normalized)) return false;
+    if (effectivePathProfile.mode === 'extension_and_path_filters') {
+      const ext = (normalized.split('.').pop() || '').toLowerCase();
+      if (includeExts.size > 0 && !includeExts.has(ext)) return false;
+      for (const part of excludeContains) {
+        if (part && normalized.includes(part)) return false;
+      }
+      return true;
+    }
     return true;
   }
   const fileCounts = new Map();
@@ -195,6 +226,7 @@ reportLines.push(`- Manifest: ${mapFile}`);
 reportLines.push(`- Wave filter: ${waveFilter || 'ALL'}`);
 reportLines.push(`- Enforce auto-apply: ${enforceAutoApply}`);
 reportLines.push(`- Safe targets only: ${safeTargetsOnly}`);
+reportLines.push(`- Effective path profile: ${effectivePathProfileName}`);
 reportLines.push(`- Total mappings scanned: ${rows.length}`);
 reportLines.push(`- Total line hits: ${totalLineHits}`);
 reportLines.push(`- Total unique-file hits (sum per mapping): ${totalUniqueFiles}`);
@@ -228,6 +260,7 @@ const summary = {
   wave: waveFilter || 'ALL',
   enforceAutoApply,
   safeTargetsOnly,
+  pathProfile: effectivePathProfileName,
   rows: rows.length,
   totalLineHits,
   totalFilteredLines,

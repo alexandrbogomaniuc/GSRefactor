@@ -4576,3 +4576,8 @@
 - Extended Phase 9 ABS candidate scanner with `--safe-targets-only` path filtering (docs/config/templates focus) to narrow W0 outputs and exclude Java code paths in early rename-wave planning.
 - Updated smoke coverage to verify safe-path retention (`config/safe.xml`) and Java path exclusion, while preserving review-only `mq` block behavior under auto-apply enforcement.
 - Next step: add manifest-declared wave path profiles (instead of scanner-built-in defaults) and a diff report comparing full vs safe-target candidate sets per wave.
+
+### 2026-02-24 10:16-10:30 UTC
+- Moved Phase 9 wave path filtering to manifest-defined `pathProfiles` and linked waves to profiles (`pathProfile`) so scanner behavior is data-driven.
+- Added Phase 9 full-vs-profile diff tool/report (`phase9-abs-rename-candidate-diff.sh`) with smoke coverage and real GS W0 diff evidence showing profile reduction while keeping `mq` review-only visible.
+- Next step: add a W0 execution-plan generator (safe candidate export list) that excludes review-only rows and produces a review checklist instead of applying changes directly.
