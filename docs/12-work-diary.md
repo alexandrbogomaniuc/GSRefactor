@@ -4369,3 +4369,19 @@
   - GS now has a controlled, opt-in path for scale-ready settings/coin-rule calculations while keeping legacy behavior as default and preserving parity/discrepancy tooling for safe validation.
 - Next step:
   - add a Phase 8 precision policy matrix (currency->minorUnitScale) + GS-side resolver and a deterministic canary/matrix generator, then prepare non-prod canary evidence for scale3 banks/currencies.
+### 2026-02-24 04:53-04:55 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 by adding a versioned GS precision policy (`phase8-precision-policy.json`), a generated precision verification matrix tool, and a policy/matrix smoke gate, then integrating those checks into the shared local verification suite.
+- Generated a real matrix report showing `phase8ReadyToClose: no` with explicit blocking categories (`wallet_contract_and_rounding`, `history_reporting_exports`, `nonprod_canary_runtime`) to make Phase 8 closure status machine-generated instead of implicit.
+- Updated support docs/checklist to doc 125, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/125-phase8-precision-policy-matrix-and-generator-gate-20260224-050000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision/phase8-precision-verification-matrix-20260224-045337.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260224-045349.md` (suite PASS, `pass=44 fail=0 skip=0`)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase8-precision-policy.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-verification-matrix.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-policy-matrix-smoke.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (embedded checklist sync `26/41`; evidence path updated to doc 125; `fp=5419525f5446`)
+- Result:
+  - Phase 8 now has a repeatable, test-gated closure matrix that explicitly reports remaining blockers for 0.001 rollout readiness instead of relying only on narrative notes.
+- Next step:
+  - start reducing generated blockers: add history/reporting matrix execution coverage and a non-prod canary evidence scaffold that consumes the policy/matrix statuses.

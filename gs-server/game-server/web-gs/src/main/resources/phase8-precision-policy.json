@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "updatedAtUtc": "2026-02-24T05:00:00Z",
+  "description": "Phase 8 GS precision/min-bet rollout policy (GS-only planning artifact; no runtime activation by itself)",
+  "defaultMinorUnitScale": 2,
+  "allowedMinorUnitScales": [2, 3],
+  "currencyPolicies": [
+    {
+      "currency": "USD",
+      "minorUnitScale": 2,
+      "phase8Status": "legacy_default",
+      "canaryEligible": true,
+      "notes": "Keep legacy scale=2 default while scale-ready compare/apply remains disabled in production."
+    },
+    {
+      "currency": "EUR",
+      "minorUnitScale": 2,
+      "phase8Status": "legacy_default",
+      "canaryEligible": true,
+      "notes": "Baseline legacy scale=2 currency for parity and regression validation."
+    },
+    {
+      "currency": "GBP",
+      "minorUnitScale": 2,
+      "phase8Status": "legacy_default",
+      "canaryEligible": true,
+      "notes": "Baseline legacy scale=2 currency for parity and regression validation."
+    },
+    {
+      "currency": "KWD",
+      "minorUnitScale": 3,
+      "phase8Status": "candidate_scale3",
+      "canaryEligible": true,
+      "notes": "Scale=3 candidate for 0.001 validation under non-prod canary after wallet/reporting contract confirmation."
+    },
+    {
+      "currency": "BHD",
+      "minorUnitScale": 3,
+      "phase8Status": "candidate_scale3",
+      "canaryEligible": true,
+      "notes": "Scale=3 candidate for non-prod compare/apply validation with audit evidence."
+    },
+    {
+      "currency": "JOD",
+      "minorUnitScale": 3,
+      "phase8Status": "candidate_scale3",
+      "canaryEligible": false,
+      "notes": "Hold until downstream wallet/reporting precision compatibility is proven."
+    }
+  ],
+  "verificationCategories": [
+    {
+      "category": "gs_settings_coin_rule",
+      "status": "vector_gated_apply_mode_scaffold",
+      "evidence": "docs/124-phase8-wave3-core-apply-mode-scaffold-and-vector-gate-20260224-040000.md",
+      "blocking": false
+    },
+    {
+      "category": "gs_reporting_display",
+      "status": "wave1_remediated_vector_gated",
+      "evidence": "docs/89-phase8-wave1-closure-and-wave2-coinrule-vectors-20260223-161500.md",
+      "blocking": false
+    },
+    {
+      "category": "wallet_contract_and_rounding",
+      "status": "pending_external_validation",
+      "evidence": "docs/66-phase5-wallet-runtime-evidence-pack-tooling-20260220-185700.md",
+      "blocking": true
+    },
+    {
+      "category": "history_reporting_exports",
+      "status": "pending_matrix_execution",
+      "evidence": "docs/70-phase5-history-runtime-evidence-pack-tooling-20260220-191100.md",
+      "blocking": true
+    },
+    {
+      "category": "nonprod_canary_runtime",
+      "status": "pending",
+      "evidence": "docs/26-bank-canary-policy-v1.md",
+      "blocking": true
+    }
+  ]
+}
