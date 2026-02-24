@@ -4586,3 +4586,10 @@
 - Added Phase 9 execution-plan generator that converts a candidate scan report into a review-only W0 rename checklist/file shortlist, excluding review-only mappings from the plan.
 - Generated a real GS W0 execution plan from the manifest-profile scan (`auto_candidate_mappings=5`, `review_only_blockers=1`) and added smoke + verification-suite coverage.
 - Next step: add a per-file grouped patch-plan export (mapping -> file snippets/counts) for operator review before starting actual W0 text-only replacements.
+
+
+### 2026-02-24 09:48-09:50 UTC
+- Added Phase 9 W0 per-file grouped patch-plan export generator (review-only) with snippet previews, plus smoke and verification-suite coverage.
+- Generated a real GS W0 patch-plan export from the safe-profile candidate scan (auto-candidate mappings=5, grouped files=19, review-only mq excluded) and updated checklist/docs/dashboard evidence to doc 144.
+- Evidence: /Users/alexb/Documents/Dev/Dev_new/docs/144-phase9-w0-patch-plan-export-grouped-by-file-with-snippets-20260224-110000.md, /Users/alexb/Documents/Dev/Dev_new/docs/phase9/phase9-abs-rename-patch-plan-W0-20260224-094711.md, /Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260224-094758.md (PASS, pass=62 fail=0 skip=0).
+- Next step: add a W0 text-only replacement dry-run/apply tool that consumes the patch-plan export and enforces review-only exclusions before any actual file edits.

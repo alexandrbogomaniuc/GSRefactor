@@ -208,7 +208,7 @@
           "id": "pu-branding-wave",
           "label": "Legacy namespace cleanup wave (ABS mapping)",
           "status": "in_progress",
-          "evidence": "docs/18-architecture-recommendations-modernization-plan.md"
+          "evidence": "docs/144-phase9-w0-patch-plan-export-grouped-by-file-with-snippets-20260224-110000.md"
         },
         {
           "id": "pu-security-hardening",
