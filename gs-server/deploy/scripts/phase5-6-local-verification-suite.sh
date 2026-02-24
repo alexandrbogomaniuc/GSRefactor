@@ -191,6 +191,8 @@ run_check "help_phase9_abs_execution_plan" "CLI help: Phase 9 ABS execution plan
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-execution-plan.sh' --help | sed -n '1,120p' && '${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-execution-plan-smoke.sh' --help | sed -n '1,40p'"
 run_check "help_phase9_abs_patch_plan" "CLI help: Phase 9 ABS patch-plan export" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-patch-plan-export.sh' --help | sed -n '1,140p' && '${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-patch-plan-export-smoke.sh' --help | sed -n '1,40p'"
+run_check "help_phase9_abs_w0_text_replace" "CLI help: Phase 9 W0 text replace executor" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace.sh' --help | sed -n '1,160p' && '${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace-smoke.sh' --help | sed -n '1,40p'"
 run_check "help_phase8_wave3_discrepancy_compare_export" "CLI help: Phase 8 Wave 3 discrepancy compare/export tool" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export.sh' --help | sed -n '1,120p' && '${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export-smoke.sh' --help | sed -n '1,80p'"
 
@@ -248,6 +250,8 @@ run_check "logic_smoke_phase9_abs_execution_plan" "Executable logic smoke: Phase
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-execution-plan-smoke.sh'"
 run_check "logic_smoke_phase9_abs_patch_plan" "Executable logic smoke: Phase 9 ABS patch-plan export" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-patch-plan-export-smoke.sh'"
+run_check "logic_smoke_phase9_abs_w0_text_replace" "Executable logic smoke: Phase 9 W0 text replace executor" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace-smoke.sh'"
 run_check "logic_smoke_phase8_wave3_discrepancy_compare_export" "Executable logic smoke: Phase 8 Wave 3 discrepancy compare/export CLI" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export-smoke.sh'"
 

@@ -4593,3 +4593,9 @@
 - Generated a real GS W0 patch-plan export from the safe-profile candidate scan (auto-candidate mappings=5, grouped files=19, review-only mq excluded) and updated checklist/docs/dashboard evidence to doc 144.
 - Evidence: /Users/alexb/Documents/Dev/Dev_new/docs/144-phase9-w0-patch-plan-export-grouped-by-file-with-snippets-20260224-110000.md, /Users/alexb/Documents/Dev/Dev_new/docs/phase9/phase9-abs-rename-patch-plan-W0-20260224-094711.md, /Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260224-094758.md (PASS, pass=62 fail=0 skip=0).
 - Next step: add a W0 text-only replacement dry-run/apply tool that consumes the patch-plan export and enforces review-only exclusions before any actual file edits.
+
+### 2026-02-24 09:50-09:52 UTC
+- Added Phase 9 W0 text replacement executor with dry-run/apply modes and manifest-enforced review-only blocking, plus smoke and verification-suite coverage.
+- Ran a real GS W0 dry-run from the patch-plan export (`file_sections=19`, `planned_replacements=307`, `files_changed=0`) and updated checklist/docs/dashboard evidence to doc 145.
+- Evidence: /Users/alexb/Documents/Dev/Dev_new/docs/145-phase9-w0-text-replace-dry-run-apply-tool-with-review-only-guard-20260224-111500.md, /Users/alexb/Documents/Dev/Dev_new/docs/phase9/phase9-abs-rename-w0-text-replace-dry-run-20260224-095054.md, /Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260224-095128.md (PASS, pass=64 fail=0 skip=0).
+- Next step: add a W0 apply guard/report workflow (file allowlist or explicit confirm artifact) before executing any real replacements in the GS repo.
