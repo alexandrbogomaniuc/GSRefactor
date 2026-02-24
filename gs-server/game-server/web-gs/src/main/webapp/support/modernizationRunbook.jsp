@@ -262,6 +262,10 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave2-settings-coinrule-vector-smoke.sh
 # Bucketed remediation planning report (safe wave order from audit hotspots):
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-remediation-buckets.sh
+# Final non-prod canary close path (auto-closes Phase 8 if runtime evidence passes):
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-nonprod-canary-run.sh
+# Manual closure only (after runtime canary evidence exists):
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-close-after-canary.sh
 # Then sync dashboard embedded data if checklist/evidence changed:
 /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/sync-modernization-dashboard-embedded-data.sh
 </code></pre>
@@ -285,6 +289,9 @@
         </p>
         <p class="small-note">
             Wave 2 vector smoke prepares line-based default bet normalization and nearest-coin selection tests before touching game settings/coin-rule code paths.
+        </p>
+        <p class="small-note">
+            The Phase 8 non-prod canary runner now includes an auto-close finalizer: after successful runtime evidence capture it clears the last precision policy blocker, regenerates the matrix, marks <code>pu-precision-audit</code> done, and syncs the dashboard snapshot.
         </p>
     </div>
 

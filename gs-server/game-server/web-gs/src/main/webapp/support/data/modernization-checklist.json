@@ -202,7 +202,7 @@
           "id": "pu-precision-audit",
           "label": "Precision/min-bet modernization to support 0.001",
           "status": "in_progress",
-          "evidence": "docs/129-phase8-nonprod-canary-execution-script-and-sandbox-blocker-20260224-070000.md"
+          "evidence": "docs/130-phase8-nonprod-canary-auto-close-finalizer-and-one-command-close-path-20260224-073000.md"
         },
         {
           "id": "pu-branding-wave",

@@ -4447,3 +4447,17 @@
   - Phase 8 remains blocked only by the real non-prod canary runtime execution, but it is now executable in one command outside this sandbox.
 - Next step:
   - run `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-nonprod-canary-run.sh` on your machine, then clear the final policy blocker and regenerate matrix to close Phase 8.
+### 2026-02-24 07:03-07:05 UTC
+- Continued /Users/alexb/Documents/Dev/Dev_new Phase 8 by adding an automatic runtime-canary closure finalizer (`phase8-precision-close-after-canary.sh`) and wiring it into the non-prod canary runner so a successful canary can close Phase 8 in one command (policy blocker clear + matrix regenerate + checklist done + dashboard sync).
+- Added a synthetic runtime-ready smoke (`phase8-precision-close-after-canary-smoke.sh`) and extended the shared local verification suite to cover the finalizer help/smoke path.
+- Updated support docs/checklist to doc 130 and re-synced dashboard embedded progress for file mode.
+- Evidence:
+  - /Users/alexb/Documents/Dev/Dev_new/docs/130-phase8-nonprod-canary-auto-close-finalizer-and-one-command-close-path-20260224-073000.md
+  - /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-close-after-canary.sh
+  - /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-close-after-canary-smoke.sh
+  - /Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260224-070300.md (suite PASS, pass=50 fail=0 skip=0)
+  - /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html (embedded checklist sync 26/41; evidence path updated to doc 130; fp=05607e206864)
+- Result:
+  - Phase 8 still requires the real non-prod runtime canary execution (Docker daemon write blocked in this sandbox), but the remaining manual closure work is removed: one successful canary command can now finish the phase automatically on the user machine.
+- Next step:
+  - run /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-nonprod-canary-run.sh on the user machine (outside sandbox) and confirm the finalizer clears nonprod_canary_runtime, matrix becomes phase8ReadyToClose: yes, and checklist pu-precision-audit flips to done.

@@ -14,6 +14,8 @@ DRY_RUN="false"
 RESTORE_DEFAULT="true"
 BUILD_GS="true"
 WAIT_SECONDS="20"
+AUTO_CLOSE_PHASE8="true"
+CLOSE_SCRIPT="${ROOT}/gs-server/deploy/scripts/phase8-precision-close-after-canary.sh"
 FLAGS='-Dabs.gs.phase8.precision.dualCalc.compare=true -Dabs.gs.phase8.precision.scaleReady.apply=true -Dabs.gs.phase8.precision.scaleReady.minorUnitScale=3 -Dabs.gs.phase8.precision.dualCalc.logEvery=1'
 
 usage() {
@@ -36,6 +38,8 @@ Options:
   --build-gs B             true|false (default: ${BUILD_GS})
   --restore-default B      true|false (default: ${RESTORE_DEFAULT})
   --wait-seconds N         Default: ${WAIT_SECONDS}
+  --auto-close-phase8 B    true|false (default: ${AUTO_CLOSE_PHASE8})
+  --close-script PATH      Default: ${CLOSE_SCRIPT}
   --dry-run B              true|false (default: ${DRY_RUN})
   -h, --help               Show help
 USAGE
@@ -55,6 +59,8 @@ while [[ $# -gt 0 ]]; do
     --build-gs) BUILD_GS="$(echo "$2" | tr '[:upper:]' '[:lower:]')"; shift 2 ;;
     --restore-default) RESTORE_DEFAULT="$(echo "$2" | tr '[:upper:]' '[:lower:]')"; shift 2 ;;
     --wait-seconds) WAIT_SECONDS="$2"; shift 2 ;;
+    --auto-close-phase8) AUTO_CLOSE_PHASE8="$(echo "$2" | tr '[:upper:]' '[:lower:]')"; shift 2 ;;
+    --close-script) CLOSE_SCRIPT="$2"; shift 2 ;;
     --dry-run) DRY_RUN="$(echo "$2" | tr '[:upper:]' '[:lower:]')"; shift 2 ;;
     -h|--help) usage; exit 0 ;;
     *) echo "Unknown argument: $1" >&2; usage; exit 1 ;;
@@ -101,6 +107,11 @@ run_cmd "docker exec ${GS_CONTAINER} sh -lc 'head -n 8 /tmp/phase8_canary.hdr; e
 
 echo "step=evidence_pack"
 run_cmd "'${ROOT}/gs-server/deploy/scripts/phase8-precision-nonprod-canary-evidence-pack.sh' --allow-missing-runtime false"
+
+if [[ "${AUTO_CLOSE_PHASE8}" == "true" ]]; then
+  echo "step=auto_close_phase8"
+  run_cmd "'${CLOSE_SCRIPT}'"
+fi
 
 if [[ "${RESTORE_DEFAULT}" == "true" ]]; then
   echo "step=restore_default_gs_flags"
