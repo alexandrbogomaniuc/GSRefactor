@@ -4788,3 +4788,8 @@
 ### 2026-02-24 17:06-17:07 UTC
 - User clarified sync target is `Dev_new` only (not the root `/Users/alexb/Documents/Dev` repo); prepared `GSRefactor` (`Dev_new`) for a full push of the Cassandra4/runtime-tooling/mixed-topology evidence batch.
 - Verified `Dev_new` has 114 changed paths (code + scripts + readiness/runtime docs) and `origin/main` exists; next step is commit + `git push -u origin main` to sync the active modernization workspace only.
+### 2026-02-24 17:12-17:13 UTC
+- Follow-up on launch endpoint alias requirement: patched `new-games-server` runtime helper scripts to use the browser-facing `/startgame` alias by default instead of `/cwstartgamev2.do`.
+- Updated scripts: `deploy-gs-runtime.sh`, `runtime-status.sh`, `runtime-e2e.sh`; syntax checks (`bash -n`) passed.
+- Note: GS backend logs may still show `cwstartgamev2.do` because nginx `/startgame` rewrites/proxies internally to that endpoint.
+- Next step: push alias-default patch to `GSRefactor/main` and confirm second-machine pull/start instructions.

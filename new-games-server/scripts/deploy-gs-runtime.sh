@@ -15,7 +15,7 @@ RESTART_GS="${RESTART_GS:-1}"
 SYNC_RUNTIME_WEB_XML="${SYNC_RUNTIME_WEB_XML:-1}"
 WAIT_SECONDS="${WAIT_SECONDS:-240}"
 CLASS_BUNDLE="${CLASS_BUNDLE:-}"
-LAUNCH_URL="${LAUNCH_URL:-http://localhost/cwstartgamev2.do?bankId=6274&gameId=00010&mode=real&token=bav_game_session_001&lang=en}"
+LAUNCH_URL="${LAUNCH_URL:-http://localhost/startgame?bankId=6274&gameId=00010&mode=real&token=bav_game_session_001&lang=en}"
 
 required_commands=(rsync curl docker)
 for cmd in "${required_commands[@]}"; do
