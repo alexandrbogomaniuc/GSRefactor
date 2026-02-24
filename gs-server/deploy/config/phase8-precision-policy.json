@@ -63,9 +63,9 @@
     },
     {
       "category": "wallet_contract_and_rounding",
-      "status": "pending_external_validation",
-      "evidence": "docs/66-phase5-wallet-runtime-evidence-pack-tooling-20260220-185700.md",
-      "blocking": true
+      "status": "offline_contract_vector_gated_pending_partner_runtime_confirmation",
+      "evidence": "docs/127-phase8-wallet-contract-precision-vector-gate-20260224-060000.md",
+      "blocking": false
     },
     {
       "category": "history_reporting_exports",

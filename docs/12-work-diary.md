@@ -4400,3 +4400,18 @@
   - Phase 8 now has explicit offline precision coverage for history/reporting exports and one fewer generated closure blocker.
 - Next step:
   - reduce `wallet_contract_and_rounding` blocker with a wallet precision contract vector gate and policy update, then prepare a non-prod canary runtime evidence scaffold for the final generated blocker.
+### 2026-02-24 05:00-05:01 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 by adding a wallet contract/rounding precision vector smoke (canonical fixed-scale payload formatting, HMAC formatting sensitivity, minor-unit roundtrip/arithmetic) and wiring it into the shared verification suite.
+- Updated the precision policy/matrix category `wallet_contract_and_rounding` to `offline_contract_vector_gated_pending_partner_runtime_confirmation` (non-blocking) and regenerated the matrix.
+- Updated support docs/checklist to doc 127, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/127-phase8-wallet-contract-precision-vector-gate-20260224-060000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision/phase8-precision-verification-matrix-20260224-050046.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260224-050032.md` (suite PASS, `pass=48 fail=0 skip=0`)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wallet-contract-vector-smoke.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase8-precision-policy.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (embedded checklist sync `26/41`; evidence path updated to doc 127; `fp=c096e057711c`)
+- Result:
+  - Phase 8 generated closure matrix is now down to a single blocker (`nonprod_canary_runtime`), with GS-side wallet and history precision coverage explicitly gated offline.
+- Next step:
+  - build/execute non-prod canary runtime evidence capture for the remaining blocker and finalize the generated matrix to `phase8ReadyToClose: yes` only after that evidence exists.

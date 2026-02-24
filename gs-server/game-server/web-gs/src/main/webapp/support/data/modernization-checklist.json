@@ -202,7 +202,7 @@
           "id": "pu-precision-audit",
           "label": "Precision/min-bet modernization to support 0.001",
           "status": "in_progress",
-          "evidence": "docs/126-phase8-history-reporting-precision-vector-gate-20260224-053000.md"
+          "evidence": "docs/127-phase8-wallet-contract-precision-vector-gate-20260224-060000.md"
         },
         {
           "id": "pu-branding-wave",
