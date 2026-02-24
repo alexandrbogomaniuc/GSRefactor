@@ -208,7 +208,7 @@
           "id": "pu-branding-wave",
           "label": "Legacy namespace cleanup wave (ABS mapping)",
           "status": "in_progress",
-          "evidence": "docs/145-phase9-w0-text-replace-dry-run-apply-tool-with-review-only-guard-20260224-111500.md"
+          "evidence": "docs/146-phase9-w0-apply-approval-artifact-and-file-allowlist-guard-20260224-113000.md"
         },
         {
           "id": "pu-security-hardening",

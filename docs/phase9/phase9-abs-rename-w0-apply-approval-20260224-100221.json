@@ -1,0 +1,33 @@
+{
+  "type": "phase9-abs-rename-w0-apply-approval",
+  "version": 1,
+  "wave": "W0",
+  "approved": true,
+  "approvalId": "phase9-w0-review-001",
+  "approver": "phase9-reviewer",
+  "approvedAt": "2026-02-24T10:02:21.881Z",
+  "patchPlan": "/Users/alexb/Documents/Dev/Dev_new/docs/phase9/phase9-abs-rename-patch-plan-W0-20260224-094711.md",
+  "source": "/Users/alexb/Documents/Dev/Dev_new/docs/phase9/phase9-abs-rename-w0-text-replace-dry-run-20260224-095054.md",
+  "allowedFiles": [
+    "bitbucket-pipelines.bck2.yml",
+    "bitbucket-pipelines.yml",
+    "deploy/docker/configs/docker-compose.yml",
+    "deploy/docker/refactor/docker-compose.yml",
+    "game-server/config/common.properties",
+    "game-server/config/local-machine/com.dgphoenix.casino.common.cache.BankInfoCache.xml",
+    "game-server/config/local-machine/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml",
+    "game-server/config/mpstress/com.dgphoenix.casino.common.cache.BankInfoCache.xml",
+    "game-server/config/mpstress/com.dgphoenix.casino.common.cache.LoadBalancerCache.xml",
+    "game-server/config/mpstress/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml",
+    "game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml",
+    "game-server/config/mqb/com.dgphoenix.casino.common.cache.LoadBalancerCache.xml",
+    "game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml",
+    "game-server/web-gs/pom.xml",
+    "game-server/web-gs/src/main/resources/ClusterConfiguration.xml",
+    "game-server/web-gs/src/main/webapp/free/mp/template.jsp",
+    "game-server/web-gs/src/main/webapp/real/mp/template.jsp",
+    "game-server/web-gs/src/main/webapp/standlobby.jsp",
+    "k8s/development_maxduel/deployment/mq-gs.yaml"
+  ],
+  "notes": "Generated for W0 apply guard workflow validation; do not apply until explicit wave approval"
+}

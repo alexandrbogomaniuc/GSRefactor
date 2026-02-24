@@ -8,6 +8,7 @@ OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase9"
 WAVE="W0"
 MODE="dry-run"
 MAX_FILES="200"
+APPROVAL_FILE=""
 
 usage() {
   cat <<USAGE
@@ -24,6 +25,7 @@ Options:
   --wave ID               Wave label for reporting (default: ${WAVE})
   --mode MODE             dry-run|apply (default: ${MODE})
   --max-files N           Safety cap for file sections processed (default: ${MAX_FILES})
+  --approval-file FILE    Required for --mode apply (explicit approval artifact with file allowlist)
   -h, --help              Show this help
 USAGE
 }
@@ -37,6 +39,7 @@ while [[ $# -gt 0 ]]; do
     --wave) WAVE="$2"; shift 2 ;;
     --mode) MODE="$2"; shift 2 ;;
     --max-files) MAX_FILES="$2"; shift 2 ;;
+    --approval-file) APPROVAL_FILE="$2"; shift 2 ;;
     -h|--help) usage; exit 0 ;;
     *) echo "Unknown argument: $1" >&2; usage; exit 1 ;;
   esac
@@ -45,6 +48,10 @@ done
 if [[ "${MODE}" != "dry-run" && "${MODE}" != "apply" ]]; then
   echo "Invalid --mode: ${MODE}" >&2
   exit 1
+fi
+if [[ "${MODE}" == "apply" && -z "${APPROVAL_FILE}" ]]; then
+  echo "Missing --approval-file for --mode apply" >&2
+  exit 2
 fi
 
 mkdir -p "${OUT_DIR}"
@@ -63,17 +70,22 @@ if [[ ! -d "${ROOT}" ]]; then
   echo "Missing --root directory: ${ROOT}" >&2
   exit 2
 fi
+if [[ -n "${APPROVAL_FILE}" && ! -f "${APPROVAL_FILE}" ]]; then
+  echo "Missing --approval-file: ${APPROVAL_FILE}" >&2
+  exit 2
+fi
 
 TS="$(date -u +%Y%m%d-%H%M%S)"
 RUN_REPORT="${OUT_DIR}/phase9-abs-rename-w0-text-replace-${MODE}-${TS}.md"
 
-node - <<'NODE' "$MAP_FILE" "$PATCH_PLAN_REPORT" "$RUN_REPORT" "$ROOT" "$WAVE" "$MODE" "$MAX_FILES"
+node - <<'NODE' "$MAP_FILE" "$PATCH_PLAN_REPORT" "$RUN_REPORT" "$ROOT" "$WAVE" "$MODE" "$MAX_FILES" "$APPROVAL_FILE"
 const fs = require('fs');
 const path = require('path');
 
-const [mapFile, patchPlanFile, runReportFile, root, wave, mode, maxFilesRaw] = process.argv.slice(2);
+const [mapFile, patchPlanFile, runReportFile, root, wave, mode, maxFilesRaw, approvalFileRaw] = process.argv.slice(2);
 const maxFiles = Math.max(1, parseInt(maxFilesRaw, 10) || 200);
 const rootResolved = path.resolve(root);
+const approvalFile = String(approvalFileRaw || '').trim();
 
 function fail(msg, code = 2) {
   console.error(`FAIL: ${msg}`);
@@ -142,6 +154,50 @@ if (blocked.length > 0) {
   fail(`review-only mappings present in patch plan: ${preview}`, 3);
 }
 
+let approval = null;
+let approvalMeta = null;
+if (mode === 'apply') {
+  if (!approvalFile) fail('approval file required for apply mode', 5);
+  let parsed;
+  try {
+    parsed = JSON.parse(fs.readFileSync(approvalFile, 'utf8'));
+  } catch (err) {
+    fail(`invalid approval file JSON: ${approvalFile}`, 5);
+  }
+  if (!parsed || parsed.type !== 'phase9-abs-rename-w0-apply-approval' || Number(parsed.version) !== 1) {
+    fail(`invalid approval artifact type/version: ${approvalFile}`, 5);
+  }
+  if (parsed.approved !== true) fail('approval artifact approved flag must be true', 5);
+  if (String(parsed.wave || '') !== String(wave)) fail(`approval artifact wave mismatch: ${parsed.wave} != ${wave}`, 5);
+  const approvedPatchPlan = String(parsed.patchPlan || '').trim();
+  if (!approvedPatchPlan) fail('approval artifact missing patchPlan', 5);
+  const patchPlanBase = path.basename(path.resolve(patchPlanFile));
+  const approvedPatchPlanBase = path.basename(path.resolve(approvedPatchPlan));
+  if (patchPlanBase !== approvedPatchPlanBase) {
+    fail(`approval artifact patchPlan mismatch: ${approvedPatchPlanBase} != ${patchPlanBase}`, 5);
+  }
+  if (!Array.isArray(parsed.allowedFiles) || parsed.allowedFiles.length === 0) {
+    fail('approval artifact allowedFiles must be non-empty array', 5);
+  }
+  const allowed = new Set(parsed.allowedFiles.map(v => String(v)));
+  const filePlanSet = new Set(filePlans.map(fp => fp.relFile));
+  const disallowed = [...filePlanSet].filter(f => !allowed.has(f));
+  if (disallowed.length > 0) {
+    fail(`patch plan contains files not approved: ${disallowed.slice(0, 10).join(', ')}`, 6);
+  }
+  const extraApproved = [...allowed].filter(f => !filePlanSet.has(f));
+  approval = { allowed, extraApprovedCount: extraApproved.length };
+  approvalMeta = {
+    approvalFile,
+    approver: parsed.approver || '',
+    approvalId: parsed.approvalId || '',
+    approvedAt: parsed.approvedAt || '',
+    allowedFiles: parsed.allowedFiles.length,
+    extraApprovedCount: extraApproved.length,
+    notes: parsed.notes || ''
+  };
+}
+
 const results = [];
 let filesChanged = 0;
 let totalPlanned = 0;
@@ -193,6 +249,14 @@ out.push(`- File sections processed: ${filePlans.length}`);
 out.push(`- Files changed: ${filesChanged}`);
 out.push(`- Total planned literal replacements (exact-case): ${totalPlanned}`);
 out.push(`- Total applied literal replacements (exact-case): ${totalApplied}`);
+if (approvalMeta) {
+  out.push(`- Approval artifact: ${approvalMeta.approvalFile}`);
+  out.push(`- Approval id: ${approvalMeta.approvalId || '(none)'}`);
+  out.push(`- Approved by: ${approvalMeta.approver || '(none)'}`);
+  out.push(`- Approved at: ${approvalMeta.approvedAt || '(none)'}`);
+  out.push(`- Allowed files in artifact: ${approvalMeta.allowedFiles}`);
+  out.push(`- Extra approved files not in patch plan: ${approvalMeta.extraApprovedCount}`);
+}
 out.push('');
 out.push('## File Results');
 out.push('');
@@ -218,4 +282,8 @@ console.log(`file_sections=${filePlans.length}`);
 console.log(`files_changed=${filesChanged}`);
 console.log(`planned_replacements=${totalPlanned}`);
 console.log(`applied_replacements=${totalApplied}`);
+if (approvalMeta) {
+  console.log(`approval_file=${approvalMeta.approvalFile}`);
+  console.log(`approval_allowed_files=${approvalMeta.allowedFiles}`);
+}
 NODE

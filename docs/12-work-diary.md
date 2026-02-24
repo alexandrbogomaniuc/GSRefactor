@@ -4599,3 +4599,9 @@
 - Ran a real GS W0 dry-run from the patch-plan export (`file_sections=19`, `planned_replacements=307`, `files_changed=0`) and updated checklist/docs/dashboard evidence to doc 145.
 - Evidence: /Users/alexb/Documents/Dev/Dev_new/docs/145-phase9-w0-text-replace-dry-run-apply-tool-with-review-only-guard-20260224-111500.md, /Users/alexb/Documents/Dev/Dev_new/docs/phase9/phase9-abs-rename-w0-text-replace-dry-run-20260224-095054.md, /Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260224-095128.md (PASS, pass=64 fail=0 skip=0).
 - Next step: add a W0 apply guard/report workflow (file allowlist or explicit confirm artifact) before executing any real replacements in the GS repo.
+
+### 2026-02-24 10:02-10:04 UTC
+- Added Phase 9 W0 apply approval-artifact guard (versioned JSON + explicit file allowlist) and updated the W0 executor so apply mode requires a matching approval artifact tied to the patch-plan.
+- Added approval artifact generator + end-to-end approval/apply-guard smoke coverage; captured real repo evidence for blocked apply-without-approval and generated a real approval artifact from the W0 dry-run report (19 allowed files).
+- Evidence: /Users/alexb/Documents/Dev/Dev_new/docs/146-phase9-w0-apply-approval-artifact-and-file-allowlist-guard-20260224-113000.md, /Users/alexb/Documents/Dev/Dev_new/docs/phase9/phase9-abs-rename-w0-apply-approval-20260224-100221.json, /Users/alexb/Documents/Dev/Dev_new/docs/phase9/phase9-abs-rename-w0-text-replace-apply-blocked-no-approval-20260224-095400.log, /Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260224-100307.md (PASS, pass=66 fail=0 skip=0).
+- Next step: add patch-plan digest binding (or approval artifact hash binding) so apply mode also verifies the exact reviewed patch-plan content, not just file basename + allowlist.

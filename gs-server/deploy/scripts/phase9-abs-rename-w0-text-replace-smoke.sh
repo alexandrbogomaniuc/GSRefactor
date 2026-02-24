@@ -2,6 +2,7 @@
 set -euo pipefail
 ROOT="/Users/alexb/Documents/Dev/Dev_new"
 SCRIPT="${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace.sh"
+GEN="${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-w0-approval-artifact-generate.sh"
 TMP_DIR="$(mktemp -d)"
 trap 'rm -rf "${TMP_DIR}"' EXIT
 
@@ -54,13 +55,17 @@ grep -q '| `config/a.xml` | OK | 3 | 0 | no |' "${DRY_REPORT}" || { echo "FAIL: 
 grep -q 'maxquest nucleus maxquest' "${SCAN_ROOT}/config/a.xml" || { echo "FAIL: dry-run modified file" >&2; exit 6; }
 
 APPLY_OUT="${TMP_DIR}/apply.out"
-"${SCRIPT}" --root "${SCAN_ROOT}" --map-file "${TMP_DIR}/map.json" --patch-plan "${TMP_DIR}/patch-plan-safe.md" --out-dir "${TMP_DIR}" --wave W0 --mode apply >"${APPLY_OUT}"
+GEN_OUT="${TMP_DIR}/gen.out"
+"${GEN}" --dry-run-report "${DRY_REPORT}" --out-dir "${TMP_DIR}" --wave W0 --approver "smoke" --approval-id "smoke-apply" >"${GEN_OUT}"
+APPROVAL="$(sed -n 's/^approval_artifact=//p' "${GEN_OUT}" | tail -n1)"
+[[ -f "${APPROVAL}" ]] || { echo "FAIL: approval artifact missing" >&2; exit 7; }
+"${SCRIPT}" --root "${SCAN_ROOT}" --map-file "${TMP_DIR}/map.json" --patch-plan "${TMP_DIR}/patch-plan-safe.md" --out-dir "${TMP_DIR}" --wave W0 --mode apply --approval-file "${APPROVAL}" >"${APPLY_OUT}"
 APPLY_REPORT="$(sed -n 's/^run_report=//p' "${APPLY_OUT}" | tail -n1)"
-[[ -f "${APPLY_REPORT}" ]] || { echo "FAIL: apply report missing" >&2; exit 7; }
-grep -q 'Mode: apply' "${APPLY_REPORT}" || { echo "FAIL: apply mode missing" >&2; exit 8; }
-grep -q 'Total applied literal replacements (exact-case): 3' "${APPLY_REPORT}" || { echo "FAIL: apply count" >&2; cat "${APPLY_REPORT}" >&2; exit 9; }
-grep -q '| `config/a.xml` | OK | 3 | 3 | yes |' "${APPLY_REPORT}" || { echo "FAIL: apply file row" >&2; cat "${APPLY_REPORT}" >&2; exit 10; }
-grep -q '^abs abs abs$' "${SCAN_ROOT}/config/a.xml" || { echo "FAIL: apply did not rewrite file" >&2; cat "${SCAN_ROOT}/config/a.xml" >&2; exit 11; }
+[[ -f "${APPLY_REPORT}" ]] || { echo "FAIL: apply report missing" >&2; exit 8; }
+grep -q 'Mode: apply' "${APPLY_REPORT}" || { echo "FAIL: apply mode missing" >&2; exit 9; }
+grep -q 'Total applied literal replacements (exact-case): 3' "${APPLY_REPORT}" || { echo "FAIL: apply count" >&2; cat "${APPLY_REPORT}" >&2; exit 10; }
+grep -q '| `config/a.xml` | OK | 3 | 3 | yes |' "${APPLY_REPORT}" || { echo "FAIL: apply file row" >&2; cat "${APPLY_REPORT}" >&2; exit 11; }
+grep -q '^abs abs abs$' "${SCAN_ROOT}/config/a.xml" || { echo "FAIL: apply did not rewrite file" >&2; cat "${SCAN_ROOT}/config/a.xml" >&2; exit 12; }
 
 cat > "${TMP_DIR}/patch-plan-blocked.md" <<'MD'
 # Phase 9 ABS Rename Patch-Plan Export (W0)
@@ -74,8 +79,8 @@ MD
 
 if "${SCRIPT}" --root "${SCAN_ROOT}" --map-file "${TMP_DIR}/map.json" --patch-plan "${TMP_DIR}/patch-plan-blocked.md" --out-dir "${TMP_DIR}" --wave W0 --mode dry-run >/dev/null 2>"${TMP_DIR}/blocked.err"; then
   echo "FAIL: review-only mapping should block" >&2
-  exit 12
+  exit 13
 fi
-grep -q 'review-only mappings present in patch plan' "${TMP_DIR}/blocked.err" || { echo "FAIL: missing review-only block error" >&2; cat "${TMP_DIR}/blocked.err" >&2; exit 13; }
+grep -q 'review-only mappings present in patch plan' "${TMP_DIR}/blocked.err" || { echo "FAIL: missing review-only block error" >&2; cat "${TMP_DIR}/blocked.err" >&2; exit 14; }
 
 echo "PASS: phase9 abs w0 text replace smoke"
