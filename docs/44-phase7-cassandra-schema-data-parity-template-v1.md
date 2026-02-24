@@ -21,8 +21,8 @@ Fill for each critical table:
 |---|---|---:|---:|---:|---|---|
 | rcasinoscks | accountcf | | | | | |
 | rcasinoscks | accountcf_ext | | | | | |
-| rcasinoscks | gamesessioncf | | | | | |
-| rcasinoscks | commonwalletcf | | | | | |
+| rcasinoscks | paymenttransactioncf2 | | | | | |
+| rcasinoks | gamesessioncf | | | | | |
 | rcasinoscks | frbonuscf | | | | | |
 
 ## 3) Sample hash parity (high-risk rows)

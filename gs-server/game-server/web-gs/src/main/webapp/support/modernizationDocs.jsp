@@ -158,8 +158,8 @@
             </tr>
             <tr>
                 <td>Phase 7 - Cassandra Upgrade</td>
-                <td>Plan, rehearsal, compatibility matrix, runbook and degraded-evidence/reporting status</td>
-                <td><code>docs/40-phase7-cassandra-upgrade-plan-v1.md</code><br/><code>docs/41-phase7-cassandra-rehearsal-checklist-v1.md</code><br/><code>docs/42-phase7-cassandra-cutover-rollback-runbook-v1.md</code><br/><code>docs/131-phase7-cassandra-evidence-pack-degraded-docker-api-denied-statuses-20260224-081500.md</code><br/><code>docs/132-phase7-cassandra-rehearsal-report-blocked-state-prefill-from-manifest-20260224-082000.md</code><br/><code>docs/phase7/</code></td>
+                <td>Plan, rehearsal, compatibility matrix, runbook, tested validation report and no-go closure report</td>
+                <td><code>docs/40-phase7-cassandra-upgrade-plan-v1.md</code><br/><code>docs/41-phase7-cassandra-rehearsal-checklist-v1.md</code><br/><code>docs/42-phase7-cassandra-cutover-rollback-runbook-v1.md</code><br/><code>docs/43-phase7-cassandra-driver-compatibility-matrix-v1.md</code><br/><code>docs/44-phase7-cassandra-schema-data-parity-template-v1.md</code><br/><code>docs/131-phase7-cassandra-evidence-pack-degraded-docker-api-denied-statuses-20260224-081500.md</code><br/><code>docs/132-phase7-cassandra-rehearsal-report-blocked-state-prefill-from-manifest-20260224-082000.md</code><br/><code>docs/133-phase7-cassandra-schema-data-validation-report-dual-cluster-rehearsal-20260224-084500.md</code><br/><code>docs/134-phase7-cassandra-rehearsal-report-tested-no-go-and-phase-deliverable-closure-20260224-090000.md</code><br/><code>docs/phase7/</code></td>
             </tr>
             <tr>
                 <td>Phase 8 - Precision Modernization</td>

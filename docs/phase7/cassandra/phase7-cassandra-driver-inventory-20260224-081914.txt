@@ -1,0 +1,20 @@
+timestamp_utc=2026-02-24T08:19:14Z
+gs_root=/Users/alexb/Documents/Dev/Dev_new/gs-server
+mp_root=/Users/alexb/Documents/Dev/Dev_new/mp-server
+
+== GS Cassandra driver properties ==
+22:        <cassandra.driver.version>3.11.5</cassandra.driver.version>
+28:            <artifactId>cassandra-driver-core</artifactId>
+29:            <version>${cassandra.driver.version}</version>
+33:            <artifactId>cassandra-driver-mapping</artifactId>
+34:            <version>${cassandra.driver.version}</version>
+
+== MP Cassandra driver properties ==
+/Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/pom.xml:45:            <artifactId>spring-data-cassandra</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/pom.xml:49:            <artifactId>cassandra-driver-core</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:37:        <cassandra.driver.version>3.5.0</cassandra.driver.version>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:267:                        <artifactId>cassandra-driver-core</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:279:                <artifactId>cassandra-driver-core</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:280:                <version>${cassandra.driver.version}</version>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:295:                <artifactId>spring-data-cassandra</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:300:                        <artifactId>cassandra-driver-core</artifactId>

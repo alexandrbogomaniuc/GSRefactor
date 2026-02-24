@@ -1,0 +1,30 @@
+
+ count
+-------
+     4
+
+(1 rows)
+
+ count
+-------
+     4
+
+(1 rows)
+
+ count
+-------
+     0
+
+(1 rows)
+
+ count
+-------
+     0
+
+(1 rows)
+
+ count
+-------
+     0
+
+(1 rows)

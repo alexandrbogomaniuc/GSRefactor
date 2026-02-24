@@ -1,0 +1,27 @@
+
+ key    | jcn                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | scn
+--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 204802 | {"id":204802,"nickName":"phase8_exec_canary_271","externalId":"phase8_exec_canary_271","bankId":271,"subCasinoId":58,"balance":0,"freeBalance":0,"guest":false,"locked":false,"registerTime":1771918792222,"lastLoginTime":0,"currency":{"code":"EUR","symbol":"\u20ac","basicCurrency":null,"minimalFraction":null},"currentGameServer":-1,"finsoftSessionId":null,"smartLiveOperator":null,"accountUseId":null,"agentId":null,"email":null,"firstName":null,"lastName":null,"password":null,"sessionKey":null,"gameSettings":null,"frbMassAwardIdsList":null,"bonusMassAwardIdsList":null,"countryCode":"US","sendNewsletters":false,"lastActivityTime":1771918792222,"testUser":false,"unjContributionFractionalPart":0.0,"currencyFraction":null} | 0x0382c00c7068617365385f657865635f63616e6172795f3237b17068617365385f657865635f63616e6172795f3237b18f02003a0000000000000000000000000000000000009eacdcf4c8330001000000014555d282e282ac8080ffffffffffffffffff80800080808080808000808055d3009eacdcf4c83300000000000000000000
+
+(1 rows)
+
+ bankid | extid                | accountid
+--------+----------------------+-----------
+    271 | bav_game_session_001 |     40962
+
+(1 rows)
+
+ frbonusid | expdate | extfrbonusid | jcn | scn
+-----------+---------+--------------+-----+-----
+
+(0 rows)
+
+ bucket | startdate | key | extid | jcn | scn | transactionid
+--------+-----------+-----+-------+-----+-----+---------------
+
+(0 rows)
+
+ gsid | accid | bcr | bets | bid | bonst | bonus | bonusbet | bonuswin | cltype | contribjp | contribjp_json | curr | day | dblupi | dblupp | dbluprc | enbbalance | enterdate | et | extid | fraction | frbonst | frbonus | gameid | income | lang | lbid | mdl | nb | nextid | payout | pcr | previd | promoids | rc | real | st | stbalance | stbbalance | unjid | unjsc | unjsw
+------+-------+-----+------+-----+-------+-------+----------+----------+--------+-----------+----------------+------+-----+--------+--------+---------+------------+-----------+----+-------+----------+---------+---------+--------+--------+------+------+-----+----+--------+--------+-----+--------+----------+----+------+----+-----------+------------+-------+-------+-------
+
+(0 rows)

@@ -1,0 +1,9 @@
+
+ release_version | cluster_name | data_center
+-----------------+--------------+-------------
+          2.1.20 | Test Cluster | datacenter1
+
+(1 rows)
+
+rcasinoks  system  mpmain  rcasinoscks  system_traces  mpmqb2
+
