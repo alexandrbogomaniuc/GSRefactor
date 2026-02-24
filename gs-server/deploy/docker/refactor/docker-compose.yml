@@ -78,6 +78,20 @@ services:
     ports:
       - "19142:9042"
 
+  c1-refactor:
+    image: ${CASSANDRA_REFACTOR_TARGET_IMAGE:-cassandra:4.1}
+    volumes:
+      - "../../../../Doker/runtime-gs/logs/cassandra-refactor:/var/log/cassandra"
+      - "refactor-cassandra-target-data:/var/lib/cassandra"
+    networks:
+      - refactor-network
+    environment:
+      - MAX_HEAP_SIZE=800M
+      - HEAP_NEWSIZE=300M
+      - CASSANDRA_CLUSTER_NAME=refactor-target-upgrade
+    ports:
+      - "19412:9042"
+
   zookeeper:
     image: zookeeper:3.8
     networks:
@@ -282,6 +296,7 @@ networks:
 
 volumes:
   refactor-cassandra-data:
+  refactor-cassandra-target-data:
   refactor-redis-data:
   refactor-config-service-data:
   refactor-session-service-data:

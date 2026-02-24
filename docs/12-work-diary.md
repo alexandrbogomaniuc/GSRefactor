@@ -4664,3 +4664,13 @@
 - This avoids changing legacy source/runtime content and fixes the missing `mp-keyspace-config.xml` startup failure in `refactor-mp-1`.
 - Evidence: refactor compose logs show `NettyServer` startup and `Base URI: file:/tmp/web-mp-casino/`; in-container probes show `mp6300_open` and `mp6301_open`.
 - Result: refactor MP runtime is now starting successfully; next step is mixed-topology validation (refactored GS + legacy MP/client) and strict Phase 4/5/6 runtime evidence reruns.
+
+### 2026-02-24 12:15-12:30 UTC
+- Clarified dashboard semantics bug: 41/41 was checklist completion, not cutover readiness.
+- Patched modernization progress page to show separate cutover-readiness card from embedded deploy-readiness report snapshot.
+- Began Cassandra upgrade execution wave prep: added separate refactor target service `c1-refactor` (parallel DB, keep `c1` unchanged), cluster-host keys, compose-aware Phase 7 cqlsh helper fallback, and target bootstrap+critical-copy script.
+- Runtime attempt to start `c1-refactor` was blocked in Codex shell by Docker daemon API permission denial on image inspect/pull.
+- Evidence:
+  - `bdaa2654` dashboard fix commit
+  - `docs/164-phase7-separate-c1-refactor-target-service-and-bootstrap-script-20260224-123000.md`
+- Next: rerun target bootstrap script when Docker daemon API is available in this shell; then execute schema/data copy rehearsal and compare artifacts.
