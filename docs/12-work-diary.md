@@ -4793,3 +4793,8 @@
 - Updated scripts: `deploy-gs-runtime.sh`, `runtime-status.sh`, `runtime-e2e.sh`; syntax checks (`bash -n`) passed.
 - Note: GS backend logs may still show `cwstartgamev2.do` because nginx `/startgame` rewrites/proxies internally to that endpoint.
 - Next step: push alias-default patch to `GSRefactor/main` and confirm second-machine pull/start instructions.
+### 2026-02-24 17:26-17:27 UTC
+- User clarified new machine should start only the refactor stack from `GSRefactor` (`Dev_new`), not the legacy stacks and not rely on root-repo scripts.
+- Added `gs-server/deploy/scripts/refactor-start.sh` + `refactor-stop.sh` inside `Dev_new`, parameterized refactor compose MP artifact mount via `LEGACY_MP_TARGET_DIR`, and updated refactor README to use the new scripts and document required non-git runtime artifacts.
+- Validation: `bash -n` passed for both scripts; `docker compose config -q` passed for refactor compose with `LEGACY_MP_TARGET_DIR` set.
+- Next step: commit/push to `GSRefactor` and confirm exact second-machine requirements/caveats.

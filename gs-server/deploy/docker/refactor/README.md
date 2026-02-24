@@ -5,15 +5,22 @@ It must be started with compose project name `refactor`.
 
 ## Start
 ```bash
-cd /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor
-docker compose -p refactor up -d --build
+bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-start.sh
 ```
 
 ## Stop
 ```bash
-cd /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor
-docker compose -p refactor down
+bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-stop.sh
 ```
+
+## Refactor-only startup from `GSRefactor` (`Dev_new`) on another machine
+- You can start the refactor stack without legacy `gp3` containers.
+- Required local artifacts (not all are tracked in git):
+  - `Dev_new/Doker/runtime-gs/...` runtime webapps/static/default-configs/log dirs
+  - Legacy MP built artifact directory (`web/target`) for the MP bootstrap image
+- If the legacy MP build artifacts are not in the default sibling path, set:
+  - `LEGACY_MP_TARGET_DIR=/absolute/path/to/mq-mp-clean-version/web/target`
+- The helper script runs a preflight and prints missing paths before starting containers.
 
 ## Key host ports (refactor stack)
 - static/nginx: `18080`
