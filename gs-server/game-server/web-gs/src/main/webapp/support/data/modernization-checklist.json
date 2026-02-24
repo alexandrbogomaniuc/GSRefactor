@@ -159,8 +159,8 @@
     {
       "id": "ip-json-xml-mode",
       "label": "Per-bank protocol mode (JSON/XML) design",
-      "status": "in_progress",
-      "evidence": "docs/138-phase4-runtime-evidence-pack-docker-api-denied-degraded-classification-20260224-093000.md"
+      "status": "done",
+      "evidence": "docs/153-phase4-protocol-json-xml-mode-phase-closure-tested-no-go-runtime-blocked-20260224-113000.md"
     },
         {
           "id": "ip-host-centralization",

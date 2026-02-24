@@ -65,6 +65,7 @@ CHECK_KEYS=(
   help_phase9_abs_candidate_scan
   help_phase9_abs_candidate_diff
   help_phase9_abs_execution_plan
+  help_phase4_status_report
   logic_smoke_phase4_protocol
   logic_smoke_phase8_precision_vectors
   logic_smoke_phase8_precision_buckets
@@ -83,6 +84,7 @@ CHECK_KEYS=(
   logic_smoke_phase9_abs_candidate_scan
   logic_smoke_phase9_abs_candidate_diff
   logic_smoke_phase9_abs_execution_plan
+  logic_smoke_phase4_status_report
   bash_syntax_bonus
   bash_syntax_history
   bash_syntax_wallet
@@ -195,6 +197,8 @@ run_check "help_phase9_abs_w0_text_replace" "CLI help: Phase 9 W0 text replace e
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace.sh' --help | sed -n '1,160p' && '${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace-smoke.sh' --help | sed -n '1,40p'"
 run_check "help_phase9_abs_w0_approval_artifact" "CLI help: Phase 9 W0 approval artifact generator" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-w0-approval-artifact-generate.sh' --help | sed -n '1,160p' && '${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-w0-approval-artifact-generate-smoke.sh' --help | sed -n '1,40p'"
+run_check "help_phase4_status_report" "CLI help: Phase 4 protocol status report generator" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase4-protocol-status-report-generate.sh' --help | sed -n '1,100p'"
 run_check "help_phase8_wave3_discrepancy_compare_export" "CLI help: Phase 8 Wave 3 discrepancy compare/export tool" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export.sh' --help | sed -n '1,120p' && '${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export-smoke.sh' --help | sed -n '1,80p'"
 
@@ -256,6 +260,8 @@ run_check "logic_smoke_phase9_abs_w0_text_replace" "Executable logic smoke: Phas
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace-smoke.sh'"
 run_check "logic_smoke_phase9_abs_w0_approval_artifact" "Executable logic smoke: Phase 9 W0 approval artifact + apply guard" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-w0-approval-artifact-generate-smoke.sh'"
+run_check "logic_smoke_phase4_status_report" "Executable logic smoke: Phase 4 protocol status report generator" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase4-protocol-status-report-generate-smoke.sh'"
 run_check "logic_smoke_phase8_wave3_discrepancy_compare_export" "Executable logic smoke: Phase 8 Wave 3 discrepancy compare/export CLI" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export-smoke.sh'"
 

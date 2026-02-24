@@ -138,8 +138,8 @@
             </tr>
             <tr>
                 <td>Phase 4 - Protocol Adapter</td>
-                <td>JSON/XML bank-mode adapter, parity, runtime probes</td>
-                <td><code>docs/46-phase4-protocol-adapter-scaffold-20260220-171616.md</code><br/><code>docs/52-phase4-runtime-readiness-check-tooling-20260220-175155.md</code><br/><code>docs/138-phase4-runtime-evidence-pack-docker-api-denied-degraded-classification-20260224-093000.md</code><br/><code>docs/phase4/</code></td>
+                <td>JSON/XML bank-mode adapter, parity/runtime tooling, and tested no-go runtime-blocked closure</td>
+                <td><code>docs/46-phase4-protocol-adapter-scaffold-20260220-171616.md</code><br/><code>docs/52-phase4-runtime-readiness-check-tooling-20260220-175155.md</code><br/><code>docs/81-phase4-protocol-json-security-logic-smoke-and-suite-gate-20260223-135000.md</code><br/><code>docs/137-phase4-runtime-evidence-pack-degraded-readiness-classification-20260224-092000.md</code><br/><code>docs/138-phase4-runtime-evidence-pack-docker-api-denied-degraded-classification-20260224-093000.md</code><br/><code>docs/152-phase4-protocol-status-report-and-tested-no-go-runtime-blocked-20260224-111500.md</code><br/><code>docs/153-phase4-protocol-json-xml-mode-phase-closure-tested-no-go-runtime-blocked-20260224-113000.md</code><br/><code>docs/phase4/</code></td>
             </tr>
             <tr>
                 <td>Phase 5 - Core Extraction</td>
