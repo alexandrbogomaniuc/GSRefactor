@@ -9,9 +9,11 @@ REFACTOR_DIR="$DEPLOY_DIR/docker/refactor"
 
 COMPOSE_FILE="$REFACTOR_DIR/docker-compose.yml"
 SYNC_CLUSTER_HOSTS="$SCRIPT_DIR/sync-cluster-hosts.sh"
+BOOTSTRAP_RUNTIME="$SCRIPT_DIR/refactor-bootstrap-runtime.sh"
 
-LEGACY_MP_TARGET_DIR="${LEGACY_MP_TARGET_DIR:-$DEV_NEW_ROOT/../mq-mp-clean-version/web/target}"
+LEGACY_MP_TARGET_DIR="${LEGACY_MP_TARGET_DIR:-$DEV_NEW_ROOT/mp-server/web/target}"
 BUILD_IMAGES="${BUILD_IMAGES:-0}"
+AUTO_BOOTSTRAP_RUNTIME="${AUTO_BOOTSTRAP_RUNTIME:-1}"
 
 log() { printf '[refactor-start] %s\n' "$*"; }
 die() { printf '[refactor-start] ERROR: %s\n' "$*" >&2; exit 1; }
@@ -40,9 +42,24 @@ check_legacy_mp_artifacts() {
   require_path "$LEGACY_MP_TARGET_DIR/web-mp-casino"
 }
 
+maybe_bootstrap_runtime() {
+  if [[ "$AUTO_BOOTSTRAP_RUNTIME" != "1" ]]; then
+    return
+  fi
+  local needs_bootstrap=0
+  [[ -d "$DEV_NEW_ROOT/Doker/runtime-gs/webapps/gs/ROOT/WEB-INF" ]] || needs_bootstrap=1
+  [[ -d "$DEV_NEW_ROOT/Doker/runtime-gs/webapps/gs/ROOT/html5pc/actiongames/dragonstone/game" ]] || needs_bootstrap=1
+  [[ -d "$LEGACY_MP_TARGET_DIR/web-mp-casino" ]] || needs_bootstrap=1
+  if [[ "$needs_bootstrap" == "1" ]]; then
+    require_path "$BOOTSTRAP_RUNTIME"
+    run "$BOOTSTRAP_RUNTIME"
+  fi
+}
+
 preflight() {
   require_cmd docker
   require_cmd curl
+  maybe_bootstrap_runtime
   docker info >/dev/null 2>&1 || die "Docker daemon is not reachable"
   require_path "$COMPOSE_FILE"
   require_path "$SYNC_CLUSTER_HOSTS"

@@ -15,12 +15,23 @@ bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-stop.s
 
 ## Refactor-only startup from `GSRefactor` (`Dev_new`) on another machine
 - You can start the refactor stack without legacy `gp3` containers.
-- Required local artifacts (not all are tracked in git):
-  - `Dev_new/Doker/runtime-gs/...` runtime webapps/static/default-configs/log dirs
-  - Legacy MP built artifact directory (`web/target`) for the MP bootstrap image
-- If the legacy MP build artifacts are not in the default sibling path, set:
-  - `LEGACY_MP_TARGET_DIR=/absolute/path/to/mq-mp-clean-version/web/target`
-- The helper script runs a preflight and prints missing paths before starting containers.
+- `refactor-start.sh` can bootstrap missing runtime assets from sources inside `GSRefactor` (`gs-server`, `mp-server`, `legacy-games-client`) when `AUTO_BOOTSTRAP_RUNTIME=1` (default).
+- Prerequisites for bootstrap path:
+  - Docker / Docker Compose plugin
+  - Java + Maven
+  - Node.js + npm
+  - `curl`, `rsync`, `unzip`
+- Optional overrides:
+  - `LEGACY_MP_TARGET_DIR=/absolute/path/to/mp-server/web/target` (defaults to `Dev_new/mp-server/web/target`)
+  - `LEGACY_HTML5_GAMES="dragonstone"` (space-separated game folders to build/copy)
+  - `AUTO_BOOTSTRAP_RUNTIME=0` (disable bootstrap and require preseeded runtime assets)
+
+## Launch URL (refactor static facade)
+- Correct alias URL is on refactor static nginx port `18080` (not plain `localhost:80`)
+- For localhost banks `6274/6275`, include `subCasinoId=507`
+```text
+http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en
+```
 
 ## Key host ports (refactor stack)
 - static/nginx: `18080`

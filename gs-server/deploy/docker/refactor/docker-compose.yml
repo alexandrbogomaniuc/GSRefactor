@@ -41,7 +41,7 @@ services:
       - KAFKA_HOST=${KAFKA_HOST}
       - KAFKA_PORT=${KAFKA_PORT}
     volumes:
-      - "${LEGACY_MP_TARGET_DIR:-../../../../../mq-mp-clean-version/web/target}:/legacy-mp-target:ro"
+      - "${LEGACY_MP_TARGET_DIR:-../../../../mp-server/web/target}:/legacy-mp-target:ro"
     networks:
       - refactor-network
     depends_on:

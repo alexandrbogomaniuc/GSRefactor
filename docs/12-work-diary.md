@@ -4798,3 +4798,8 @@
 - Added `gs-server/deploy/scripts/refactor-start.sh` + `refactor-stop.sh` inside `Dev_new`, parameterized refactor compose MP artifact mount via `LEGACY_MP_TARGET_DIR`, and updated refactor README to use the new scripts and document required non-git runtime artifacts.
 - Validation: `bash -n` passed for both scripts; `docker compose config -q` passed for refactor compose with `LEGACY_MP_TARGET_DIR` set.
 - Next step: commit/push to `GSRefactor` and confirm exact second-machine requirements/caveats.
+### 2026-02-24 17:36-17:37 UTC
+- Addressed repo-only refactor startup requirement: refactor compose now defaults MP artifact path to `Dev_new/mp-server/web/target`, and `refactor-start.sh` auto-invokes a new `refactor-bootstrap-runtime.sh` to assemble missing runtime seed assets (`Dev_new/Doker/runtime-gs`) from `GSRefactor` sources (`gs-server`, `mp-server`, `legacy-games-client`).
+- Added bootstrap/build path (GS `ROOT.war`, MP `web-mp-casino`, legacy html5pc assets for configurable games, default `dragonstone`) with explicit prerequisites and updated refactor README.
+- Confirmed alias endpoint behavior: `http://127.0.0.1:18080/startgame?...subCasinoId=507...` returns `200`; plain `localhost:80/startgame` returns `404` (wrong port/facade).
+- Next step: push bootstrap changes to `GSRefactor` and have remote machine clone `GSRefactor`, install build prerequisites, then run `gs-server/deploy/scripts/refactor-start.sh`.
