@@ -129,6 +129,9 @@ run_check "help_phase4_security_logic" "CLI help: Phase 4 protocol security logi
 run_check "help_phase4_security_runtime" "CLI help: Phase 4 protocol JSON security runtime canary" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase4-protocol-json-security-canary-probe.sh' --help | sed -n '1,80p'"
 
+run_check "help_phase4_runtime_evidence_pack" "CLI help: Phase 4 protocol runtime evidence pack" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase4-protocol-runtime-evidence-pack.sh' --help | sed -n '1,100p' && '${ROOT}/gs-server/deploy/scripts/phase4-protocol-runtime-evidence-pack-degraded-smoke.sh' --help 2>/dev/null || true"
+
 run_check "help_phase8_precision_scan" "CLI help: Phase 8 precision/min-bet audit scanner" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-minbet-audit-scan.sh' --help | sed -n '1,60p'"
 
@@ -175,6 +178,9 @@ run_check "help_phase8_wave3_discrepancy_compare_export" "CLI help: Phase 8 Wave
 
 run_check "logic_smoke_phase4_protocol" "Executable logic smoke: Phase 4 protocol hash/replay security" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase4-protocol-security-logic-smoke.sh'"
+
+run_check "logic_smoke_phase4_runtime_evidence_degraded" "Executable logic smoke: Phase 4 runtime evidence degraded classification" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase4-protocol-runtime-evidence-pack-degraded-smoke.sh'"
 
 run_check "logic_smoke_phase8_precision_vectors" "Executable logic smoke: Phase 8 precision regression vectors" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-regression-vector-smoke.sh'"

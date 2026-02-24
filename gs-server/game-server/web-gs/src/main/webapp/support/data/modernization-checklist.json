@@ -156,12 +156,12 @@
       "id": "integration-and-protocol",
       "title": "Integration and Protocol Enhancements",
       "items": [
-        {
-          "id": "ip-json-xml-mode",
-          "label": "Per-bank protocol mode (JSON/XML) design",
-          "status": "in_progress",
-          "evidence": "docs/52-phase4-runtime-readiness-check-tooling-20260220-175155.md"
-        },
+    {
+      "id": "ip-json-xml-mode",
+      "label": "Per-bank protocol mode (JSON/XML) design",
+      "status": "in_progress",
+      "evidence": "docs/137-phase4-runtime-evidence-pack-degraded-readiness-classification-20260224-092000.md"
+    },
         {
           "id": "ip-host-centralization",
           "label": "No hardcoded hosts, centralized cluster config",

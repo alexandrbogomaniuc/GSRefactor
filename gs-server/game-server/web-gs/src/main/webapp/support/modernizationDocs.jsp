@@ -139,7 +139,7 @@
             <tr>
                 <td>Phase 4 - Protocol Adapter</td>
                 <td>JSON/XML bank-mode adapter, parity, runtime probes</td>
-                <td><code>docs/46-phase4-protocol-adapter-scaffold-20260220-171616.md</code><br/><code>docs/52-phase4-runtime-readiness-check-tooling-20260220-175155.md</code><br/><code>docs/phase4/</code></td>
+                <td><code>docs/46-phase4-protocol-adapter-scaffold-20260220-171616.md</code><br/><code>docs/52-phase4-runtime-readiness-check-tooling-20260220-175155.md</code><br/><code>docs/137-phase4-runtime-evidence-pack-degraded-readiness-classification-20260224-092000.md</code><br/><code>docs/phase4/</code></td>
             </tr>
             <tr>
                 <td>Phase 5 - Core Extraction</td>

@@ -4542,3 +4542,17 @@
   - Config portal now provides operator-visible pre-publish/pre-rollback safety guardrails without backend contract changes.
 - Next step:
   - Sync dashboard to 30/41, run verification suite, commit, then continue main-thread runtime parity work.
+
+### 2026-02-24 09:07-09:11 UTC
+- Hardened Phase 4 protocol runtime evidence pack to classify missing/unavailable runtime as explicit degraded statuses (`SKIP_RUNTIME_NOT_READY` / `SKIP_RUNTIME_UNAVAILABLE`) using a readiness precheck and `--allow-missing-runtime` mode.
+- Added a dedicated degraded smoke test and wired it into the shared local verification suite.
+- Ran a real Phase 4 evidence pack in allow-missing mode and generated blocked-state evidence for current environment (protocol-adapter runtime not reachable).
+- Evidence:
+  - /Users/alexb/Documents/Dev/Dev_new/docs/137-phase4-runtime-evidence-pack-degraded-readiness-classification-20260224-092000.md
+  - /Users/alexb/Documents/Dev/Dev_new/docs/phase4/protocol/phase4-protocol-runtime-evidence-20260224-091020.md
+  - /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-runtime-evidence-pack.sh
+  - /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-runtime-evidence-pack-degraded-smoke.sh
+- Result:
+  - Phase 4 reports now distinguish blocked runtime deployment state from actual protocol regressions.
+- Next step:
+  - Sync dashboard/checklist evidence, run verification suite, commit this Phase 4 evidence hardening increment, then continue runtime parity work.
