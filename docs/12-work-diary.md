@@ -4385,3 +4385,18 @@
   - Phase 8 now has a repeatable, test-gated closure matrix that explicitly reports remaining blockers for 0.001 rollout readiness instead of relying only on narrative notes.
 - Next step:
   - start reducing generated blockers: add history/reporting matrix execution coverage and a non-prod canary evidence scaffold that consumes the policy/matrix statuses.
+### 2026-02-24 04:57-04:58 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 by adding a deterministic history/reporting export precision vector smoke and wiring it into the shared verification suite, then updating the precision policy/matrix category `history_reporting_exports` to `offline_vector_gated_pending_runtime_confirmation` (non-blocking).
+- Regenerated the Phase 8 precision verification matrix and reduced generated blockers from `3` to `2` while keeping `phase8ReadyToClose: no` until wallet and non-prod canary blockers are resolved.
+- Updated support docs/checklist to doc 126, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/126-phase8-history-reporting-precision-vector-gate-20260224-053000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision/phase8-precision-verification-matrix-20260224-045732.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260224-045715.md` (suite PASS, `pass=46 fail=0 skip=0`)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-history-reporting-export-vector-smoke.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase8-precision-policy.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (embedded checklist sync `26/41`; evidence path updated to doc 126; `fp=896e081c754d`)
+- Result:
+  - Phase 8 now has explicit offline precision coverage for history/reporting exports and one fewer generated closure blocker.
+- Next step:
+  - reduce `wallet_contract_and_rounding` blocker with a wallet precision contract vector gate and policy update, then prepare a non-prod canary runtime evidence scaffold for the final generated blocker.

@@ -53,6 +53,7 @@ CHECK_KEYS=(
   help_phase8_wave1_reporting_vectors
   help_phase8_wave1_asmoney_parity
   help_phase8_wave2_coinrule_vectors
+  help_phase8_history_reporting_vectors
   help_phase8_wave3_dualcalc_vectors
   help_phase8_wave3_applymode_vectors
   help_phase8_policy_matrix
@@ -64,6 +65,7 @@ CHECK_KEYS=(
   logic_smoke_phase8_wave1_reporting_vectors
   logic_smoke_phase8_wave1_asmoney_parity
   logic_smoke_phase8_wave2_coinrule_vectors
+  logic_smoke_phase8_history_reporting_vectors
   logic_smoke_phase8_wave3_dualcalc_vectors
   logic_smoke_phase8_wave3_applymode_vectors
   logic_smoke_phase8_policy_matrix
@@ -141,6 +143,9 @@ run_check "help_phase8_wave1_asmoney_parity" "CLI help: Phase 8 Wave 1 NumberUti
 run_check "help_phase8_wave2_coinrule_vectors" "CLI help: Phase 8 Wave 2 settings/coin-rule vector smoke" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave2-settings-coinrule-vector-smoke.sh' --help | sed -n '1,80p'"
 
+run_check "help_phase8_history_reporting_vectors" "CLI help: Phase 8 history/reporting export precision vector smoke" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-history-reporting-export-vector-smoke.sh' --help | sed -n '1,80p'"
+
 run_check "help_phase8_wave3_dualcalc_vectors" "CLI help: Phase 8 Wave 3 dual-calculation comparison vector smoke" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-dualcalc-comparison-vector-smoke.sh' --help | sed -n '1,80p'"
 
@@ -175,6 +180,9 @@ run_check "logic_smoke_phase8_wave1_asmoney_parity" "Executable logic smoke: Pha
 
 run_check "logic_smoke_phase8_wave2_coinrule_vectors" "Executable logic smoke: Phase 8 Wave 2 settings/coin-rule vectors" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave2-settings-coinrule-vector-smoke.sh'"
+
+run_check "logic_smoke_phase8_history_reporting_vectors" "Executable logic smoke: Phase 8 history/reporting export precision vectors" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-history-reporting-export-vector-smoke.sh'"
 
 run_check "logic_smoke_phase8_wave3_dualcalc_vectors" "Executable logic smoke: Phase 8 Wave 3 dual-calculation comparison vectors" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-dualcalc-comparison-vector-smoke.sh'"
