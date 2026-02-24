@@ -4571,3 +4571,8 @@
 - Added Phase 9 manifest-driven ABS rename candidate scanner + smoke gate and integrated it into the shared verification suite.
 - Real GS W0 scan now generates candidate report and blocks auto-apply with explicit reason `BLOCKED_REVIEW_ONLY:mq`, preventing unsafe broad token replacement while still exposing safe brand candidates.
 - Next step: add wave-specific file/path allowlists (e.g., docs/config-only W0 filters) so auto-candidate output is narrowed to truly safe editable targets.
+
+### 2026-02-24 10:01-10:15 UTC
+- Extended Phase 9 ABS candidate scanner with `--safe-targets-only` path filtering (docs/config/templates focus) to narrow W0 outputs and exclude Java code paths in early rename-wave planning.
+- Updated smoke coverage to verify safe-path retention (`config/safe.xml`) and Java path exclusion, while preserving review-only `mq` block behavior under auto-apply enforcement.
+- Next step: add manifest-declared wave path profiles (instead of scanner-built-in defaults) and a diff report comparing full vs safe-target candidate sets per wave.

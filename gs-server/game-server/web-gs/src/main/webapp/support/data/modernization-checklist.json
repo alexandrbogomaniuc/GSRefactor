@@ -52,7 +52,7 @@
           "id": "ar-strangler",
           "label": "Phased strangler migration (no big-bang rewrite)",
           "status": "done",
-      "evidence": "docs/140-phase9-abs-rename-candidate-scan-and-review-only-block-gate-20260224-100000.md"
+      "evidence": "docs/141-phase9-w0-safe-target-path-filter-profile-for-candidate-scan-20260224-101500.md"
         },
         {
           "id": "ar-facade-entry",

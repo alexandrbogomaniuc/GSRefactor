@@ -7,6 +7,7 @@ OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase9"
 WAVE=""
 ENFORCE_AUTO_APPLY="false"
 MAX_FILES_PER_MAPPING="10"
+SAFE_TARGETS_ONLY="false"
 
 usage() {
   cat <<USAGE
@@ -23,6 +24,7 @@ Options:
   --wave ID                 Optional wave filter (e.g. W0, W1, W3). Default: all
   --enforce-auto-apply B    true|false (default: ${ENFORCE_AUTO_APPLY})
   --max-files-per-mapping N Default: ${MAX_FILES_PER_MAPPING}
+  --safe-targets-only B     true|false (default: ${SAFE_TARGETS_ONLY})
   -h, --help                Show this help
 USAGE
 }
@@ -41,6 +43,8 @@ while [[ $# -gt 0 ]]; do
       ENFORCE_AUTO_APPLY="$2"; shift 2 ;;
     --max-files-per-mapping)
       MAX_FILES_PER_MAPPING="$2"; shift 2 ;;
+    --safe-targets-only)
+      SAFE_TARGETS_ONLY="$2"; shift 2 ;;
     -h|--help)
       usage; exit 0 ;;
     *)
@@ -54,6 +58,10 @@ if [[ "${ENFORCE_AUTO_APPLY}" != "true" && "${ENFORCE_AUTO_APPLY}" != "false" ]]
   echo "Invalid --enforce-auto-apply: ${ENFORCE_AUTO_APPLY}" >&2
   exit 1
 fi
+if [[ "${SAFE_TARGETS_ONLY}" != "true" && "${SAFE_TARGETS_ONLY}" != "false" ]]; then
+  echo "Invalid --safe-targets-only: ${SAFE_TARGETS_ONLY}" >&2
+  exit 1
+fi
 
 mkdir -p "${OUT_DIR}"
 TS="$(date -u +%Y%m%d-%H%M%S)"
@@ -61,15 +69,16 @@ REPORT="${OUT_DIR}/phase9-abs-rename-candidate-scan-${TS}.md"
 TMP_JSON="$(mktemp)"
 trap 'rm -f "${TMP_JSON}"' EXIT
 
-node - <<'NODE' "${MAP_FILE}" "${ROOT}" "${REPORT}" "${WAVE}" "${ENFORCE_AUTO_APPLY}" "${MAX_FILES_PER_MAPPING}" "${TMP_JSON}"
+node - <<'NODE' "${MAP_FILE}" "${ROOT}" "${REPORT}" "${WAVE}" "${ENFORCE_AUTO_APPLY}" "${MAX_FILES_PER_MAPPING}" "${TMP_JSON}" "${SAFE_TARGETS_ONLY}"
 const fs = require('fs');
 const cp = require('child_process');
 const path = require('path');
 
-const [mapFile, root, reportFile, waveFilterRaw, enforceRaw, maxFilesRaw, outJsonFile] = process.argv.slice(2);
+const [mapFile, root, reportFile, waveFilterRaw, enforceRaw, maxFilesRaw, outJsonFile, safeTargetsOnlyRaw] = process.argv.slice(2);
 const waveFilter = (waveFilterRaw || '').trim();
 const enforceAutoApply = String(enforceRaw) === 'true';
 const maxFilesPerMapping = Math.max(1, parseInt(maxFilesRaw, 10) || 10);
+const safeTargetsOnly = String(safeTargetsOnlyRaw) === 'true';
 const map = JSON.parse(fs.readFileSync(mapFile, 'utf8'));
 
 function fail(msg, code = 2) {
@@ -106,18 +115,34 @@ function scanPattern(legacy) {
   ];
   const out = runRgLines(baseArgs);
   const lines = out ? out.split(/\r?\n/).filter(Boolean) : [];
+  function pathAllowed(file) {
+    if (!safeTargetsOnly) return true;
+    const normalized = String(file).replace(/\\/g, '/');
+    const safeExt = /\.(md|xml|properties|ya?ml|jsp)$/i.test(normalized);
+    if (!safeExt) return false;
+    if (/\/src\/main\/java\//.test(normalized)) return false;
+    if (/\/src\/test\/java\//.test(normalized)) return false;
+    if (/\/target\//.test(normalized)) return false;
+    return true;
+  }
   const fileCounts = new Map();
+  let filteredLines = 0;
   for (const line of lines) {
     const idx = line.indexOf(':');
     if (idx <= 0) continue;
     const file = line.slice(0, idx);
+    if (!pathAllowed(file)) {
+      filteredLines += 1;
+      continue;
+    }
     fileCounts.set(file, (fileCounts.get(file) || 0) + 1);
   }
   const topFiles = [...fileCounts.entries()]
     .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
     .slice(0, maxFilesPerMapping)
     .map(([file, count]) => ({ file, count }));
-  return { lineHits: lines.length, uniqueFiles: fileCounts.size, topFiles };
+  const keptLineHits = [...fileCounts.values()].reduce((a, b) => a + b, 0);
+  return { lineHits: keptLineHits, uniqueFiles: fileCounts.size, topFiles, filteredLines };
 }
 
 const waveInfo = waveFilter ? waves.get(waveFilter) : null;
@@ -125,10 +150,12 @@ let reviewOnlyHits = 0;
 let autoCandidateMappings = 0;
 let totalLineHits = 0;
 let totalUniqueFiles = 0;
+let totalFilteredLines = 0;
 const rows = selectedMappings.map((m) => {
   const stats = scanPattern(String(m.legacy));
   totalLineHits += stats.lineHits;
   totalUniqueFiles += stats.uniqueFiles;
+  totalFilteredLines += stats.filteredLines;
   const reviewOnly = m.reviewOnly === true;
   const wave = waves.get(m.defaultWave) || { allowsAutomaticApply: false };
   let disposition = 'NO_HIT';
@@ -167,9 +194,11 @@ reportLines.push(`- Root scanned: ${root}`);
 reportLines.push(`- Manifest: ${mapFile}`);
 reportLines.push(`- Wave filter: ${waveFilter || 'ALL'}`);
 reportLines.push(`- Enforce auto-apply: ${enforceAutoApply}`);
+reportLines.push(`- Safe targets only: ${safeTargetsOnly}`);
 reportLines.push(`- Total mappings scanned: ${rows.length}`);
 reportLines.push(`- Total line hits: ${totalLineHits}`);
 reportLines.push(`- Total unique-file hits (sum per mapping): ${totalUniqueFiles}`);
+reportLines.push(`- Filtered-out line hits (path profile): ${totalFilteredLines}`);
 reportLines.push(`- Auto-candidate mappings: ${autoCandidateMappings}`);
 reportLines.push(`- Review-only mappings with hits: ${reviewOnlyHits}`);
 reportLines.push(`- Auto-apply status: ${blockReason ? 'BLOCKED' : 'READY_OR_REPORT_ONLY'}`);
@@ -198,8 +227,10 @@ const summary = {
   manifestVersion: map.version,
   wave: waveFilter || 'ALL',
   enforceAutoApply,
+  safeTargetsOnly,
   rows: rows.length,
   totalLineHits,
+  totalFilteredLines,
   autoCandidateMappings,
   reviewOnlyHits,
   blocked: !!blockReason,
