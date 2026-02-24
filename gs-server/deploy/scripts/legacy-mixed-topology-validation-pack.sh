@@ -59,9 +59,29 @@ probe_url() {
   fi
 }
 
+probe_tcp_from_url() {
+  local url="$1"
+  local host_port pathless host port
+  pathless="${url#http://}"
+  pathless="${pathless#https://}"
+  host_port="${pathless%%/*}"
+  host="${host_port%%:*}"
+  port="${host_port##*:}"
+  if [[ -z "${host}" || -z "${port}" || "${host}" == "${port}" ]]; then
+    echo "closed"
+    return 0
+  fi
+  if command -v nc >/dev/null 2>&1 && nc -z "${host}" "${port}" >/dev/null 2>&1; then
+    echo "open"
+  else
+    echo "closed"
+  fi
+}
+
 gs_url="${REFACTOR_GS_BASE_URL}/cwstartgamev2.do?bankId=${BANK_ID}&gameId=${GAME_ID}&lang=en&sessionId=legacymix${TS}&login=legacymix${TS}&currency=EUR&mode=real"
 gs_code="SKIPPED"
 mp_code="SKIPPED"
+mp_tcp="SKIPPED"
 client_code="SKIPPED"
 status="NO_GO_RUNTIME_ENDPOINTS_UNREACHABLE"
 
@@ -70,8 +90,13 @@ if [[ "${DRY_RUN}" == "true" ]]; then
 else
   gs_code="$(probe_url "${gs_url}")"
   mp_code="$(probe_url "${LEGACY_MP_BASE_URL}")"
+  if [[ "${mp_code}" == "000" ]]; then
+    mp_tcp="$(probe_tcp_from_url "${LEGACY_MP_BASE_URL}")"
+  else
+    mp_tcp="open"
+  fi
   client_code="$(probe_url "${LEGACY_CLIENT_BASE_URL}")"
-  if [[ "${gs_code}" != "000" && "${mp_code}" != "000" && "${client_code}" != "000" ]]; then
+  if [[ "${gs_code}" != "000" && "${client_code}" != "000" && ( "${mp_code}" != "000" || "${mp_tcp}" == "open" ) ]]; then
     status="READY_FOR_MANUAL_FULL_FLOW_EXECUTION"
   fi
 fi
@@ -88,6 +113,7 @@ fi
   echo "- status: ${status}"
   echo "- probe_refactor_gs_http: ${gs_code}"
   echo "- probe_legacy_mp_http: ${mp_code}"
+  echo "- probe_legacy_mp_tcp: ${mp_tcp}"
   echo "- probe_legacy_client_http: ${client_code}"
   echo
   echo "## Validation Flow Checklist"

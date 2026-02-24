@@ -152,8 +152,10 @@ fi
   echo '```text'
   if [[ -s "${canary_out}" ]]; then
     sed -n '1,260p' "${canary_out}"
-  else
+  elif [[ "${canary_status}" == "SKIPPED" ]]; then
     echo "Canary probe not executed because readiness check failed."
+  else
+    echo "Canary probe returned status ${canary_status} but produced no output."
   fi
   echo '```'
 } > "${report_file}"

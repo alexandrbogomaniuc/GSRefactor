@@ -10,6 +10,7 @@ PHASE56_REPORT=""
 PHASE7_DOC=""
 SECURITY_REPORT=""
 LEGACY_PARITY_REPORT=""
+LEGACY_MIXED_REPORT=""
 
 usage() {
   cat <<USAGE
@@ -25,6 +26,7 @@ Options:
   --phase7-doc FILE       Default: docs/134 phase7 no-go rehearsal closure
   --security-report FILE  Default: latest security hardening status report
   --legacy-report FILE    Default: latest legacy parity status report
+  --legacy-mixed FILE     Default: latest legacy mixed-topology validation pack report
   --out-dir DIR           Default: ${OUT_DIR}
   -h, --help              Show help
 USAGE
@@ -39,6 +41,7 @@ while [[ $# -gt 0 ]]; do
     --phase7-doc) PHASE7_DOC="$2"; shift 2 ;;
     --security-report) SECURITY_REPORT="$2"; shift 2 ;;
     --legacy-report) LEGACY_PARITY_REPORT="$2"; shift 2 ;;
+    --legacy-mixed) LEGACY_MIXED_REPORT="$2"; shift 2 ;;
     --out-dir) OUT_DIR="$2"; shift 2 ;;
     -h|--help) usage; exit 0 ;;
     *) echo "Unknown argument: $1" >&2; usage; exit 1 ;;
@@ -52,17 +55,18 @@ mkdir -p "${OUT_DIR}"
 [[ -n "${PHASE7_DOC}" ]] || PHASE7_DOC="${ROOT}/docs/134-phase7-cassandra-rehearsal-report-tested-no-go-and-phase-deliverable-closure-20260224-090000.md"
 [[ -n "${SECURITY_REPORT}" ]] || SECURITY_REPORT="$(ls -1t "${ROOT}"/docs/security/security-hardening-status-report-*.md 2>/dev/null | head -n1 || true)"
 [[ -n "${LEGACY_PARITY_REPORT}" ]] || LEGACY_PARITY_REPORT="$(ls -1t "${ROOT}"/docs/phase0/parity-status/phase0-legacy-parity-status-report-*.md 2>/dev/null | head -n1 || true)"
+[[ -n "${LEGACY_MIXED_REPORT}" ]] || LEGACY_MIXED_REPORT="$(ls -1t "${ROOT}"/docs/validation/legacy-mixed-topology/legacy-mixed-topology-validation-*.md 2>/dev/null | head -n1 || true)"
 
-for f in "${CHECKLIST_JSON}" "${VERIFY_REPORT}" "${PHASE4_REPORT}" "${PHASE56_REPORT}" "${PHASE7_DOC}" "${SECURITY_REPORT}" "${LEGACY_PARITY_REPORT}"; do
+for f in "${CHECKLIST_JSON}" "${VERIFY_REPORT}" "${PHASE4_REPORT}" "${PHASE56_REPORT}" "${PHASE7_DOC}" "${SECURITY_REPORT}" "${LEGACY_PARITY_REPORT}" "${LEGACY_MIXED_REPORT}"; do
   [[ -f "${f}" ]] || { echo "Missing input file: ${f}" >&2; exit 2; }
 done
 
 TS="$(date -u +%Y%m%d-%H%M%S)"
 REPORT="${OUT_DIR}/program-deploy-readiness-status-${TS}.md"
 
-node - <<'NODE' "${CHECKLIST_JSON}" "${VERIFY_REPORT}" "${PHASE4_REPORT}" "${PHASE56_REPORT}" "${PHASE7_DOC}" "${SECURITY_REPORT}" "${LEGACY_PARITY_REPORT}" "${REPORT}"
+node - <<'NODE' "${CHECKLIST_JSON}" "${VERIFY_REPORT}" "${PHASE4_REPORT}" "${PHASE56_REPORT}" "${PHASE7_DOC}" "${SECURITY_REPORT}" "${LEGACY_PARITY_REPORT}" "${LEGACY_MIXED_REPORT}" "${REPORT}"
 const fs = require('fs');
-const [checklistFile, verifyFile, phase4File, phase56File, phase7File, securityFile, legacyFile, outFile] = process.argv.slice(2);
+const [checklistFile, verifyFile, phase4File, phase56File, phase7File, securityFile, legacyFile, legacyMixedFile, outFile] = process.argv.slice(2);
 const read = p => fs.readFileSync(p, 'utf8');
 const normalized = s => s.includes('\\n') ? s.replace(/\\n/g, '\n') : s;
 const pick = (re, src, d='') => ((src.match(re)||[])[1] || d).toString().trim();
@@ -85,12 +89,14 @@ const phase56 = normalized(read(phase56File));
 const phase7 = normalized(read(phase7File));
 const security = normalized(read(securityFile));
 const legacy = normalized(read(legacyFile));
+const legacyMixed = normalized(read(legacyMixedFile));
 
 const statuses = {
   phase4: pick(/^- phase4_status:\s*(.+)$/m, phase4, pick(/^- overall_status:\s*(.+)$/m, phase4, 'UNKNOWN')),
   phase56: pick(/^- overall_status:\s*(.+)$/m, phase56, 'UNKNOWN'),
   security: pick(/^- overall_status:\s*(.+)$/m, security, 'UNKNOWN'),
   legacy: pick(/^- overall_status:\s*(.+)$/m, legacy, 'UNKNOWN'),
+  legacyMixed: pick(/^- status:\s*(.+)$/m, legacyMixed, 'UNKNOWN'),
   phase7NoGo: /No-Go/i.test(phase7) ? 'YES' : 'NO'
 };
 
@@ -102,7 +108,12 @@ if (statuses.phase56 !== 'TESTED_GO_RUNTIME_READY') blockers.push({id:'phase5_6_
 if (statuses.security !== 'TESTED_SECURITY_HARDENING_COMPLETE') blockers.push({id:'security_dependency_audit_pending', severity:'HIGH', note:statuses.security});
 if (statuses.phase7NoGo === 'YES') blockers.push({id:'cassandra_data_parity_no_go', severity:'HIGH', note:'phase7 rehearsal no-go'});
 if (statuses.legacy !== 'TESTED_GUARDED_LEGACY_PARITY_BASELINE_COMPLETE') blockers.push({id:'legacy_parity_baseline_incomplete', severity:'MEDIUM', note:statuses.legacy});
-blockers.push({id:'legacy_mp_client_live_validation_pending', severity:'HIGH', note:'dedicated mixed-topology validation wave required'});
+if (statuses.legacyMixed !== 'MANUAL_FULL_FLOW_PASS') {
+  const note = statuses.legacyMixed === 'READY_FOR_MANUAL_FULL_FLOW_EXECUTION'
+    ? 'preflight ready; manual mixed-topology full flow execution pending'
+    : `mixed-topology status=${statuses.legacyMixed}`;
+  blockers.push({id:'legacy_mp_client_live_validation_pending', severity:'HIGH', note});
+}
 
 const overall = blockers.length === 0 ? 'GO_FOR_DEPLOY_AND_CANARY' : 'NO_GO_CUTOVER_PENDING_VALIDATION';
 const out = [];
@@ -114,6 +125,7 @@ out.push(`- verification pass/fail/skip: ${vr.pass}/${vr.fail}/${vr.skip}`);
 out.push(`- phase4_protocol_status: ${statuses.phase4}`);
 out.push(`- phase5_6_extraction_status: ${statuses.phase56}`);
 out.push(`- legacy_parity_status: ${statuses.legacy}`);
+out.push(`- legacy_mixed_topology_status: ${statuses.legacyMixed}`);
 out.push(`- security_hardening_status: ${statuses.security}`);
 out.push(`- phase7_cassandra_rehearsal_no_go: ${statuses.phase7NoGo}`);
 out.push(`- overall_status: ${overall}`);
