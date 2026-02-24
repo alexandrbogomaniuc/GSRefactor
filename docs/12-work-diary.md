@@ -4581,3 +4581,8 @@
 - Moved Phase 9 wave path filtering to manifest-defined `pathProfiles` and linked waves to profiles (`pathProfile`) so scanner behavior is data-driven.
 - Added Phase 9 full-vs-profile diff tool/report (`phase9-abs-rename-candidate-diff.sh`) with smoke coverage and real GS W0 diff evidence showing profile reduction while keeping `mq` review-only visible.
 - Next step: add a W0 execution-plan generator (safe candidate export list) that excludes review-only rows and produces a review checklist instead of applying changes directly.
+
+### 2026-02-24 10:31-10:45 UTC
+- Added Phase 9 execution-plan generator that converts a candidate scan report into a review-only W0 rename checklist/file shortlist, excluding review-only mappings from the plan.
+- Generated a real GS W0 execution plan from the manifest-profile scan (`auto_candidate_mappings=5`, `review_only_blockers=1`) and added smoke + verification-suite coverage.
+- Next step: add a per-file grouped patch-plan export (mapping -> file snippets/counts) for operator review before starting actual W0 text-only replacements.

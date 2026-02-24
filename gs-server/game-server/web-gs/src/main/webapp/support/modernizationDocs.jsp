@@ -169,7 +169,7 @@
             <tr>
                 <td>Phase 9 - Branding/Namespace</td>
                 <td>ABS rename wave plan</td>
-                <td><code>docs/30-phase9-abs-rename-wave-plan-gs-v1.md</code><br/><code>docs/139-phase9-abs-compatibility-mapping-manifest-and-validator-20260224-094500.md</code><br/><code>docs/140-phase9-abs-rename-candidate-scan-and-review-only-block-gate-20260224-100000.md</code><br/><code>docs/141-phase9-w0-safe-target-path-filter-profile-for-candidate-scan-20260224-101500.md</code><br/><code>docs/142-phase9-manifest-wave-path-profiles-and-full-vs-profile-diff-report-20260224-103000.md</code></td>
+                <td><code>docs/30-phase9-abs-rename-wave-plan-gs-v1.md</code><br/><code>docs/139-phase9-abs-compatibility-mapping-manifest-and-validator-20260224-094500.md</code><br/><code>docs/140-phase9-abs-rename-candidate-scan-and-review-only-block-gate-20260224-100000.md</code><br/><code>docs/141-phase9-w0-safe-target-path-filter-profile-for-candidate-scan-20260224-101500.md</code><br/><code>docs/142-phase9-manifest-wave-path-profiles-and-full-vs-profile-diff-report-20260224-103000.md</code><br/><code>docs/143-phase9-w0-execution-plan-generator-from-profile-scan-20260224-104500.md</code></td>
             </tr>
             </tbody>
         </table>
