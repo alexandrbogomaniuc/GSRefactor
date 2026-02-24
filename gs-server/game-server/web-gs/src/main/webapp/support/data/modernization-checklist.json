@@ -52,7 +52,7 @@
           "id": "ar-strangler",
           "label": "Phased strangler migration (no big-bang rewrite)",
           "status": "done",
-          "evidence": "docs/18-architecture-recommendations-modernization-plan.md"
+      "evidence": "docs/139-phase9-abs-compatibility-mapping-manifest-and-validator-20260224-094500.md"
         },
         {
           "id": "ar-facade-entry",

@@ -1,0 +1,34 @@
+{
+  "type": "phase9-abs-compatibility-map",
+  "version": 1,
+  "scope": "gs-server",
+  "status": "draft-safe-waves",
+  "notes": [
+    "No big-bang replacement. Use wave-based rollout with compatibility aliases.",
+    "Context-sensitive tokens (for example mq) are review-only by default.",
+    "Internal package/class renames require wrappers/delegation before removal."
+  ],
+  "waves": [
+    {"id": "W0", "label": "docs-and-nonruntime-strings", "allowsAutomaticApply": true},
+    {"id": "W1", "label": "config-aliases", "allowsAutomaticApply": true},
+    {"id": "W2", "label": "api-docs-and-contract-text", "allowsAutomaticApply": true},
+    {"id": "W3", "label": "code-wrappers-and-compat-delegation", "allowsAutomaticApply": false},
+    {"id": "W4", "label": "legacy-alias-removal-explicit-approval", "allowsAutomaticApply": false}
+  ],
+  "mappings": [
+    {"legacy": "betsoft", "replacement": "abs", "replacementUpper": "ABS", "category": "brand", "defaultWave": "W0", "reviewOnly": false},
+    {"legacy": "betsoft gaming", "replacement": "ABS", "replacementUpper": "ABS", "category": "brand", "defaultWave": "W0", "reviewOnly": false},
+    {"legacy": "nucleus", "replacement": "abs", "replacementUpper": "ABS", "category": "brand", "defaultWave": "W0", "reviewOnly": false},
+    {"legacy": "maxquest", "replacement": "abs", "replacementUpper": "ABS", "category": "brand", "defaultWave": "W0", "reviewOnly": false},
+    {"legacy": "maxduel", "replacement": "abs", "replacementUpper": "ABS", "category": "brand", "defaultWave": "W0", "reviewOnly": false},
+    {"legacy": "discreetgaming", "replacement": "abs", "replacementUpper": "ABS", "category": "brand", "defaultWave": "W0", "reviewOnly": false},
+    {"legacy": "com.dgphoenix", "replacement": "com.abs", "replacementUpper": "com.abs", "category": "package", "defaultWave": "W3", "reviewOnly": true, "requiresWrapper": true},
+    {"legacy": "dgphoenix", "replacement": "abs", "replacementUpper": "ABS", "category": "package", "defaultWave": "W3", "reviewOnly": true, "requiresWrapper": true},
+    {"legacy": "mq", "replacement": "abs", "replacementUpper": "ABS", "category": "token", "defaultWave": "W0", "reviewOnly": true, "notes": ["High collision risk: only replace with explicit context filters."]}
+  ],
+  "protectedPatterns": [
+    "docs/phase9/",
+    "legacy inventory baseline evidence",
+    "external sample payloads unless wave-specific override is approved"
+  ]
+}

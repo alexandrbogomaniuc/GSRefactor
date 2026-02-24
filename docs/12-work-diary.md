@@ -4561,3 +4561,8 @@
 - Hardened Dev_new Phase 4 protocol runtime evidence degraded classification to emit `SKIP_DOCKER_API_DENIED` (instead of generic FAIL) when Docker API access is blocked, and wired transport-aware readiness/parity invocation in the evidence pack.
 - Generated real degraded Docker-transport evidence report showing `runtime_readiness: SKIP_DOCKER_API_DENIED` and probe skips, then updated checklist/docs evidence pointer to doc 138.
 - Next step: rerun strict Phase 4 runtime evidence (`--transport docker`) when Docker API access is available in this shell to capture parity/wallet outcomes.
+
+### 2026-02-24 09:31-09:45 UTC
+- Added Phase 9 GS-scope ABS compatibility mapping manifest (`phase9-abs-compatibility-map.json`) plus executable validator/smoke scripts to make branding/namespace cleanup wave planning testable and safer.
+- Integrated Phase 9 map help/smoke checks into the shared local verification suite and updated checklist/docs evidence to doc 139 (branding wave remains in_progress, but now has concrete compatibility mapping evidence).
+- Next step: add a Phase 9 file-scan validator that uses the manifest to produce wave-specific rename candidates and block unsafe broad token replacements (especially `mq`).

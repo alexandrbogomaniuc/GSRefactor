@@ -169,7 +169,7 @@
             <tr>
                 <td>Phase 9 - Branding/Namespace</td>
                 <td>ABS rename wave plan</td>
-                <td><code>docs/30-phase9-abs-rename-wave-plan-gs-v1.md</code></td>
+                <td><code>docs/30-phase9-abs-rename-wave-plan-gs-v1.md</code><br/><code>docs/139-phase9-abs-compatibility-mapping-manifest-and-validator-20260224-094500.md</code></td>
             </tr>
             </tbody>
         </table>
