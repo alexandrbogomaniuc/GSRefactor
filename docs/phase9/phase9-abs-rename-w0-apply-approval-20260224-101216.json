@@ -1,0 +1,16 @@
+{
+  "type": "phase9-abs-rename-w0-apply-approval",
+  "version": 1,
+  "wave": "W0",
+  "approved": true,
+  "approvalId": "phase9-w0-subset-001",
+  "approver": "phase9-reviewer",
+  "approvedAt": "2026-02-24T10:12:16.575Z",
+  "patchPlan": "/Users/alexb/Documents/Dev/Dev_new/docs/phase9/phase9-abs-rename-patch-plan-W0-subset-bitbucket-pipelines-bck2-20260224-101500.md",
+  "patchPlanSha256": "99777fb816ecbc71d5deaabf76062d4e8649f923c776cf211d578e61ef18443b",
+  "source": "/Users/alexb/Documents/Dev/Dev_new/docs/phase9/phase9-abs-rename-w0-text-replace-dry-run-20260224-101207.md",
+  "allowedFiles": [
+    "bitbucket-pipelines.bck2.yml"
+  ],
+  "notes": "First tiny W0 apply wave: bitbucket-pipelines.bck2.yml only"
+}

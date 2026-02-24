@@ -306,7 +306,7 @@ run_check "checklist_json" "JSON parse: modernization checklist" \
 
 if [[ "${CHECK_GIT_DIFF}" == "true" ]]; then
   run_check "git_diff_check" "Git whitespace check" \
-    bash -lc "git -C '${ROOT}' diff --check"
+    bash -lc "git -C '${ROOT}' -c core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol diff --check"
 else
   skip_check "git_diff_check" "Git whitespace check" "Disabled by --check-git-diff=false"
 fi

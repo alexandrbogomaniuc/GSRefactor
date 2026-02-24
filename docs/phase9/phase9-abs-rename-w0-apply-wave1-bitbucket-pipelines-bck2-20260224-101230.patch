@@ -1,0 +1,112 @@
+diff --git a/gs-server/bitbucket-pipelines.bck2.yml b/gs-server/bitbucket-pipelines.bck2.yml
+index cd69eac3..93a4c148 100644
+--- a/gs-server/bitbucket-pipelines.bck2.yml
++++ b/gs-server/bitbucket-pipelines.bck2.yml
+@@ -42,7 +42,7 @@ definitions:
+       # Function to set environment variables based on branch or tag
+       set_environment_variables() {
+         case "${1}" in 
+-          "development_maxduel")
++          "development_abs")
+             export ENV_NAME=dev01
+             export GCP_PROJECT_ID=${GCP_PROJECT_ID_DEV_MAXDUEL}
+             export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_DEV_MAXDUEL}
+@@ -56,7 +56,7 @@ definitions:
+             export SERVER_IP_3=${GS3_IP_ADDRESS_DEV_MAXDUEL}
+             export SERVER_PORT=22
+             ;;
+-          "production_maxduel")
++          "production_abs")
+             export ENV_NAME=prod01
+             export GCP_PROJECT_ID=${GCP_PROJECT_ID_PROD_MAXDUEL}
+             export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_PROD_MAXDUEL}
+@@ -294,8 +294,8 @@ definitions:
+       #     includePaths:
+       #       - Dockerfile.build.base
+ 
+-    step_docker_legacy_maxduel_dev01_build_base: &step_docker_legacy_maxduel_dev01_build_base
+-      name: step_docker_legacy_maxduel_dev01_build_base
++    step_docker_legacy_abs_dev01_build_base: &step_docker_legacy_abs_dev01_build_base
++      name: step_docker_legacy_abs_dev01_build_base
+       runs-on:
+         - self.hosted
+         - linux
+@@ -321,8 +321,8 @@ definitions:
+       #     includePaths:
+       #       - Dockerfile.build.base
+ 
+-    step_deploy_legacy_maxduel_dev01_step_1: &step_deploy_legacy_maxduel_dev01_step_1
+-      name: step_deploy_legacy_maxduel_dev01_step_1
++    step_deploy_legacy_abs_dev01_step_1: &step_deploy_legacy_abs_dev01_step_1
++      name: step_deploy_legacy_abs_dev01_step_1
+       runs-on:
+         - self.hosted
+         - linux
+@@ -347,8 +347,8 @@ definitions:
+       artifacts:
+         - artifacts/*
+ 
+-    step_deploy_legacy_maxduel_dev01_step_2: &step_deploy_legacy_maxduel_dev01_step_2
+-      name: step_deploy_legacy_maxduel_dev01_step_2
++    step_deploy_legacy_abs_dev01_step_2: &step_deploy_legacy_abs_dev01_step_2
++      name: step_deploy_legacy_abs_dev01_step_2
+       runs-on:
+         - self.hosted
+         - linux
+@@ -369,8 +369,8 @@ definitions:
+         - *script_cleanup
+       trigger: manual
+ 
+-    step_docker_legacy_maxduel_prod01_build_base: &step_docker_legacy_maxduel_prod01_build_base
+-      name: step_docker_legacy_maxduel_prod01_build_base
++    step_docker_legacy_abs_prod01_build_base: &step_docker_legacy_abs_prod01_build_base
++      name: step_docker_legacy_abs_prod01_build_base
+       runs-on:
+         - self.hosted
+         - linux
+@@ -396,8 +396,8 @@ definitions:
+       #     includePaths:
+       #       - Dockerfile.build.base
+ 
+-    step_deploy_legacy_maxduel_prod01_step_1: &step_deploy_legacy_maxduel_prod01_step_1
+-      name: step_deploy_legacy_maxduel_prod01_step_1
++    step_deploy_legacy_abs_prod01_step_1: &step_deploy_legacy_abs_prod01_step_1
++      name: step_deploy_legacy_abs_prod01_step_1
+       runs-on:
+         - self.hosted
+         - linux
+@@ -422,8 +422,8 @@ definitions:
+       artifacts:
+         - artifacts/*
+ 
+-    step_deploy_legacy_maxduel_prod01_step_2: &step_deploy_legacy_maxduel_prod01_step_2
+-      name: step_deploy_legacy_maxduel_prod01_step_2
++    step_deploy_legacy_abs_prod01_step_2: &step_deploy_legacy_abs_prod01_step_2
++      name: step_deploy_legacy_abs_prod01_step_2
+       runs-on:
+         - self.hosted
+         - linux
+@@ -592,15 +592,15 @@ pipelines:
+ 
+   branches:
+ 
+-    development_maxduel:
+-    # - step: *step_docker_legacy_maxduel_dev01_build_base
+-      - step: *step_deploy_legacy_maxduel_dev01_step_1
+-      - step: *step_deploy_legacy_maxduel_dev01_step_2
++    development_abs:
++    # - step: *step_docker_legacy_abs_dev01_build_base
++      - step: *step_deploy_legacy_abs_dev01_step_1
++      - step: *step_deploy_legacy_abs_dev01_step_2
+ 
+-    production_maxduel:
+-    # - step: *step_docker_legacy_maxduel_prod01_build_base
+-      - step: *step_deploy_legacy_maxduel_prod01_step_1
+-      - step: *step_deploy_legacy_maxduel_prod01_step_2
++    production_abs:
++    # - step: *step_docker_legacy_abs_prod01_build_base
++      - step: *step_deploy_legacy_abs_prod01_step_1
++      - step: *step_deploy_legacy_abs_prod01_step_2
+ 
+   tags:
+     
