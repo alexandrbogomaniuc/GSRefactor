@@ -4,6 +4,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
 source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/phase7-cassandra.sh
+source "${SCRIPT_DIR}/lib/phase7-cassandra.sh"
 
 CASSANDRA_CONTAINER="$(cluster_hosts_get CASSANDRA_REFACTOR_CONTAINER refactor-c1-1)"
 OUTPUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra"
@@ -37,5 +39,16 @@ while [[ $# -gt 0 ]]; do
 done
 
 mkdir -p "$OUTPUT_DIR"
-docker exec "${CASSANDRA_CONTAINER}" cqlsh -e "DESCRIBE SCHEMA;" > "$OUT_FILE"
+set +e
+phase7_cqlsh_exec "${CASSANDRA_CONTAINER}" "DESCRIBE SCHEMA;" > "$OUT_FILE"
+code=$?
+set -e
+if [[ $code -ne 0 ]]; then
+  if [[ $code -eq 3 ]]; then
+    phase7_write_docker_api_denied_stub "${OUT_FILE}" "${CASSANDRA_CONTAINER}" "schema_export"
+    echo "schema_export=${OUT_FILE}"
+    exit 3
+  fi
+  exit "$code"
+fi
 echo "schema_export=${OUT_FILE}"

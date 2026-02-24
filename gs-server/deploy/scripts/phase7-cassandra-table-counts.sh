@@ -4,6 +4,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
 source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/phase7-cassandra.sh
+source "${SCRIPT_DIR}/lib/phase7-cassandra.sh"
 
 CASSANDRA_CONTAINER="$(cluster_hosts_get CASSANDRA_REFACTOR_CONTAINER refactor-c1-1)"
 TABLE_LIST_FILE=""
@@ -50,6 +52,19 @@ fi
 mkdir -p "$OUTPUT_DIR"
 : > "$OUT_FILE"
 
+set +e
+phase7_cqlsh_exec "${CASSANDRA_CONTAINER}" "SELECT release_version FROM system.local;" > /dev/null
+code=$?
+set -e
+if [[ $code -ne 0 ]]; then
+  if [[ $code -eq 3 ]]; then
+    phase7_write_docker_api_denied_stub "${OUT_FILE}" "${CASSANDRA_CONTAINER}" "table_counts"
+    echo "table_counts=${OUT_FILE}"
+    exit 3
+  fi
+  exit "$code"
+fi
+
 while IFS= read -r line; do
   table="$(echo "$line" | sed 's/[[:space:]]//g')"
   [[ -z "$table" || "$table" =~ ^# ]] && continue
@@ -60,9 +75,18 @@ while IFS= read -r line; do
     continue
   fi
   echo "query=${keyspace}.${table_name}" >> "$OUT_FILE"
-  docker exec "${CASSANDRA_CONTAINER}" cqlsh -e "SELECT COUNT(*) FROM ${keyspace}.${table_name};" >> "$OUT_FILE" || {
+  set +e
+  phase7_cqlsh_exec "${CASSANDRA_CONTAINER}" "SELECT COUNT(*) FROM ${keyspace}.${table_name};" >> "$OUT_FILE"
+  code=$?
+  set -e
+  if [[ $code -ne 0 ]]; then
+    if [[ $code -eq 3 ]]; then
+      phase7_write_docker_api_denied_stub "${OUT_FILE}" "${CASSANDRA_CONTAINER}" "table_counts"
+      echo "table_counts=${OUT_FILE}"
+      exit 3
+    fi
     echo "query_failed=${keyspace}.${table_name}" >> "$OUT_FILE"
-  }
+  fi
   echo >> "$OUT_FILE"
 done < "$TABLE_LIST_FILE"
 

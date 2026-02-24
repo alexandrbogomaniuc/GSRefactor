@@ -4476,3 +4476,16 @@
   - Phase 8 is closed in the generated policy/matrix/checklist with container-executed runtime evidence collected in-session.
 - Next step:
   - continue main project phases (Phase 5/6 extraction hardening, Phase 7 Cassandra rehearsals, Phase 4 protocol JSON/XML runtime parity), while preserving the new Phase 8 closed-state verification gates.
+
+### 2026-02-24 08:05-08:05 UTC
+- Hardened Phase 7 Cassandra evidence tooling to classify Docker API socket permission failures as explicit degraded status (`SKIP_DOCKER_API_DENIED`) instead of false PASS/FAIL, using a shared Phase 7 Cassandra helper and manifest exit-code mapping.
+- Ran the real Phase 7 evidence pack against `refactor-c1-1` in this environment and verified manifest + artifact stubs now record `SKIP_DOCKER_API_DENIED` for preflight/schema/counts/query-smoke while keeping driver inventory PASS.
+- Updated Phase 7 checkpoint docs/checklist/dashboard to doc 131 and re-synced embedded progress (`27/41`).
+- Evidence:
+  - /Users/alexb/Documents/Dev/Dev_new/docs/131-phase7-cassandra-evidence-pack-degraded-docker-api-denied-statuses-20260224-081500.md
+  - /Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/phase7-cassandra-evidence-pack-20260224-080339.manifest.txt
+  - /Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260224-080513.md (PASS, pass=50 fail=0 skip=0)
+- Result:
+  - Phase 7 rehearsal tooling now produces accurate machine-readable blocked-state evidence in restricted Docker sessions, avoiding false-positive PASS/FAIL interpretation.
+- Next step:
+  - Continue Phase 7 by adding a rehearsal report generator classification for `SKIP_DOCKER_API_DENIED` and retry real Cassandra evidence steps when Docker API access becomes available.

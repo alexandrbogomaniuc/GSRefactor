@@ -54,6 +54,7 @@ log_manifest() {
 run_cmd() {
   local label="$1"
   shift
+  local code
   echo "running=${label}"
   if output="$($@ 2>&1)"; then
     echo "${output}"
@@ -62,7 +63,11 @@ run_cmd() {
   else
     code=$?
     echo "${output}" >&2
-    log_manifest "${label}:FAIL:${code}"
+    if [[ $code -eq 3 ]]; then
+      log_manifest "${label}:SKIP:DOCKER_API_DENIED"
+    else
+      log_manifest "${label}:FAIL:${code}"
+    fi
     log_manifest "${label}:OUTPUT:${output//$'\n'/ | }"
   fi
 }

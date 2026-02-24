@@ -4,6 +4,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
 source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/phase7-cassandra.sh
+source "${SCRIPT_DIR}/lib/phase7-cassandra.sh"
 
 CASSANDRA_CONTAINER="$(cluster_hosts_get CASSANDRA_REFACTOR_CONTAINER refactor-c1-1)"
 OUTPUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra"
@@ -38,19 +40,37 @@ done
 
 mkdir -p "$OUTPUT_DIR"
 
+cql_out="$(phase7_cqlsh_exec "${CASSANDRA_CONTAINER}" "SELECT release_version, cluster_name FROM system.local;")" || {
+  code=$?
+  if [[ $code -eq 3 ]]; then
+    phase7_write_docker_api_denied_stub "${OUT_FILE}" "${CASSANDRA_CONTAINER}" "preflight"
+    echo "preflight_log=${OUT_FILE}"
+    exit 3
+  fi
+  exit "$code"
+}
+
 {
   echo "== Phase7 Cassandra preflight =="
   echo "timestamp_utc=$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
   echo "container=${CASSANDRA_CONTAINER}"
   echo
   echo "-- release version --"
-  docker exec "${CASSANDRA_CONTAINER}" cqlsh -e "SELECT release_version, cluster_name FROM system.local;"
+  printf '%s\n' "${cql_out}"
   echo
   echo "-- keyspaces --"
-  docker exec "${CASSANDRA_CONTAINER}" cqlsh -e "DESCRIBE KEYSPACES;"
+  phase7_cqlsh_exec "${CASSANDRA_CONTAINER}" "DESCRIBE KEYSPACES;"
   echo
   echo "-- schema dump --"
-  docker exec "${CASSANDRA_CONTAINER}" cqlsh -e "DESCRIBE SCHEMA;"
-} > "$OUT_FILE"
+  phase7_cqlsh_exec "${CASSANDRA_CONTAINER}" "DESCRIBE SCHEMA;"
+} > "$OUT_FILE" || {
+  code=$?
+  if [[ $code -eq 3 ]]; then
+    phase7_write_docker_api_denied_stub "${OUT_FILE}" "${CASSANDRA_CONTAINER}" "preflight"
+    echo "preflight_log=${OUT_FILE}"
+    exit 3
+  fi
+  exit "$code"
+}
 
 echo "preflight_log=${OUT_FILE}"

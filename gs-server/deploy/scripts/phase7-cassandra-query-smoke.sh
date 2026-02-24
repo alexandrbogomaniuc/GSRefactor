@@ -4,6 +4,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
 source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/phase7-cassandra.sh
+source "${SCRIPT_DIR}/lib/phase7-cassandra.sh"
 
 CASSANDRA_CONTAINER="$(cluster_hosts_get CASSANDRA_REFACTOR_CONTAINER refactor-c1-1)"
 TABLE_LIST_FILE="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/critical-tables.txt"
@@ -58,6 +60,20 @@ mkdir -p "$OUTPUT_DIR"
 
 pass_count=0
 fail_count=0
+summary_status="READY"
+
+set +e
+phase7_cqlsh_exec "${CASSANDRA_CONTAINER}" "SELECT release_version FROM system.local;" > /dev/null
+code=$?
+set -e
+if [[ $code -ne 0 ]]; then
+  if [[ $code -eq 3 ]]; then
+    phase7_write_docker_api_denied_stub "${OUT_FILE}" "${CASSANDRA_CONTAINER}" "query_smoke"
+    echo "query_smoke_log=${OUT_FILE}"
+    exit 3
+  fi
+  exit "$code"
+fi
 
 {
   echo "timestamp_utc=$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
@@ -78,21 +94,37 @@ fail_count=0
     fi
 
     echo "== ${keyspace}.${table_name} =="
-    if docker exec "${CASSANDRA_CONTAINER}" cqlsh -e "SELECT * FROM ${keyspace}.${table_name} LIMIT ${LIMIT};"; then
+    set +e
+    phase7_cqlsh_exec "${CASSANDRA_CONTAINER}" "SELECT * FROM ${keyspace}.${table_name} LIMIT ${LIMIT};"
+    code=$?
+    set -e
+    if [[ $code -eq 0 ]]; then
       echo "status=PASS"
       pass_count=$((pass_count + 1))
     else
+      if [[ $code -eq 3 ]]; then
+        summary_status="SKIP_DOCKER_API_DENIED"
+        echo "status=SKIP_DOCKER_API_DENIED"
+        echo "summary_status=${summary_status}"
+        echo "summary_pass=${pass_count}"
+        echo "summary_fail=${fail_count}"
+        exit 3
+      fi
       echo "status=FAIL"
       fail_count=$((fail_count + 1))
     fi
     echo
   done < "$TABLE_LIST_FILE"
 
+  echo "summary_status=${summary_status}"
   echo "summary_pass=${pass_count}"
   echo "summary_fail=${fail_count}"
 } > "$OUT_FILE"
 
 echo "query_smoke_log=${OUT_FILE}"
+if [[ "${summary_status}" == "SKIP_DOCKER_API_DENIED" ]]; then
+  exit 3
+fi
 if (( fail_count > 0 )); then
   exit 2
 fi
