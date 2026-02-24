@@ -11,7 +11,6 @@ CASSANDRA_CONTAINER="$(cluster_hosts_get CASSANDRA_REFACTOR_CONTAINER refactor-c
 TABLE_LIST_FILE=""
 OUTPUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra"
 TS="$(date -u '+%Y%m%d-%H%M%S')"
-OUT_FILE="${OUTPUT_DIR}/phase7-cassandra-table-counts-${CASSANDRA_CONTAINER}-${TS}.txt"
 
 usage() {
   cat <<USAGE
@@ -50,6 +49,7 @@ if [[ -z "$TABLE_LIST_FILE" || ! -f "$TABLE_LIST_FILE" ]]; then
 fi
 
 mkdir -p "$OUTPUT_DIR"
+OUT_FILE="${OUTPUT_DIR}/phase7-cassandra-table-counts-${CASSANDRA_CONTAINER}-${TS}.txt"
 : > "$OUT_FILE"
 
 set +e

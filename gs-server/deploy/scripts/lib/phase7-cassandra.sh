@@ -39,7 +39,7 @@ phase7_cqlsh_exec_compose_fallback() {
   docker compose -p "$(phase7_refactor_compose_project)" \
     -f "$(phase7_refactor_compose_file)" \
     --env-file "$(phase7_refactor_compose_env_file)" \
-    exec -T "${service}" cqlsh -e "${cql}"
+    exec -T "${service}" sh -lc 'CQLSH_BIN="$(command -v cqlsh || true)"; if [ -z "$CQLSH_BIN" ] && [ -x /opt/cassandra/bin/cqlsh ]; then CQLSH_BIN=/opt/cassandra/bin/cqlsh; fi; if [ -z "$CQLSH_BIN" ]; then echo "cqlsh_not_found" >&2; exit 127; fi; "$CQLSH_BIN" -e "$1"' -- "${cql}"
 }
 
 phase7_is_docker_api_denied_output() {

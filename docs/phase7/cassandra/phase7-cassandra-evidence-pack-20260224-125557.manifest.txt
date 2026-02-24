@@ -1,0 +1,10 @@
+preflight:PASS
+preflight:OUTPUT:preflight_log=/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/phase7-cassandra-preflight-20260224-125557.log
+driver_inventory:PASS
+driver_inventory:OUTPUT:driver_inventory=/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/phase7-cassandra-driver-inventory-20260224-125558.txt
+schema_export:PASS
+schema_export:OUTPUT:schema_export=/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/phase7-cassandra-schema-refactor-c1-refactor-1-20260224-125558.cql
+table_counts:PASS
+table_counts:OUTPUT:table_counts=/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/phase7-cassandra-table-counts-refactor-c1-refactor-1-20260224-125558.txt
+query_smoke:PASS
+query_smoke:OUTPUT:query_smoke_log=/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/phase7-cassandra-query-smoke-refactor-c1-refactor-1-20260224-125600.log

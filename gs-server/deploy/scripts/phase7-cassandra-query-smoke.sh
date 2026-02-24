@@ -12,7 +12,6 @@ TABLE_LIST_FILE="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/critic
 OUTPUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra"
 LIMIT=1
 TS="$(date -u '+%Y%m%d-%H%M%S')"
-OUT_FILE="${OUTPUT_DIR}/phase7-cassandra-query-smoke-${CASSANDRA_CONTAINER}-${TS}.log"
 
 usage() {
   cat <<USAGE
@@ -57,6 +56,7 @@ if ! [[ "$LIMIT" =~ ^[0-9]+$ ]] || (( LIMIT < 1 )); then
 fi
 
 mkdir -p "$OUTPUT_DIR"
+OUT_FILE="${OUTPUT_DIR}/phase7-cassandra-query-smoke-${CASSANDRA_CONTAINER}-${TS}.log"
 
 pass_count=0
 fail_count=0

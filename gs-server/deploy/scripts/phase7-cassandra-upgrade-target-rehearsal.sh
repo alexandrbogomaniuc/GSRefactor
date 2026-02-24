@@ -81,7 +81,10 @@ bootstrap_cmd=(
 )
 
 echo "Running bootstrap/copy step..." >> "${REPORT}"
-bootstrap_output="$(run "${bootstrap_cmd[@]}" 2>&1 || true)"
+set +e
+bootstrap_output="$(run "${bootstrap_cmd[@]}" 2>&1)"
+bootstrap_code=$?
+set -e
 printf '```text\n%s\n```\n\n' "${bootstrap_output}" >> "${REPORT}"
 
 if [[ "${DRY_RUN}" == "true" ]]; then
@@ -93,9 +96,31 @@ if [[ "${DRY_RUN}" == "true" ]]; then
   exit 0
 fi
 
-latest_manifest="$(ls -1t "${OUT_DIR}"/phase7-cassandra-evidence-pack-*.manifest.txt 2>/dev/null | head -n 1 || true)"
+if [[ ${bootstrap_code} -ne 0 ]]; then
+  {
+    echo "- Result: NO_GO_BOOTSTRAP_COPY_FAILED"
+    echo "- bootstrap_exit_code: ${bootstrap_code}"
+  } >> "${REPORT}"
+  echo "report=${REPORT}"
+  exit ${bootstrap_code}
+fi
+
+manifest_out="$("${ROOT}/gs-server/deploy/scripts/phase7-cassandra-evidence-pack.sh" --container "${TARGET_CONTAINER}" --table-list "${TABLE_LIST_FILE}" --output-dir "${OUT_DIR}" 2>&1 || true)"
+latest_manifest="$(printf '%s\n' "${manifest_out}" | awk -F= '/^manifest=/{print $2}' | tail -n 1)"
+if [[ -z "${latest_manifest}" || ! -f "${latest_manifest}" ]]; then
+  latest_manifest="$(ls -1t "${OUT_DIR}"/phase7-cassandra-evidence-pack-*.manifest.txt 2>/dev/null | head -n 1 || true)"
+fi
 source_schema="$("${ROOT}/gs-server/deploy/scripts/phase7-cassandra-schema-export.sh" --container "${SOURCE_CONTAINER}" --output-dir "${OUT_DIR}" | awk -F= '/^schema_export=/{print $2}' | tail -n 1)"
 target_schema="$("${ROOT}/gs-server/deploy/scripts/phase7-cassandra-schema-export.sh" --container "${TARGET_CONTAINER}" --output-dir "${OUT_DIR}" | awk -F= '/^schema_export=/{print $2}' | tail -n 1)"
+if [[ -z "${source_schema}" || -z "${target_schema}" || ! -f "${source_schema}" || ! -f "${target_schema}" ]]; then
+  {
+    echo "- Result: NO_GO_SCHEMA_EXPORT_FAILED_POST_BOOTSTRAP"
+    echo "- source_schema: ${source_schema:-<empty>}"
+    echo "- target_schema: ${target_schema:-<empty>}"
+  } >> "${REPORT}"
+  echo "report=${REPORT}"
+  exit 4
+fi
 
 schema_diff_out="$("${ROOT}/gs-server/deploy/scripts/phase7-cassandra-schema-diff.sh" --source "${source_schema}" --target "${target_schema}" --output-dir "${OUT_DIR}" 2>&1 || true)"
 
@@ -112,6 +137,9 @@ fi
   echo "## Rehearsal Report Generator"
   if [[ -n "${latest_manifest}" ]]; then
     echo "- Manifest: \`${latest_manifest}\`"
+    if [[ -n "${manifest_out}" ]]; then
+      printf '```text\n%s\n```\n\n' "${manifest_out}"
+    fi
     printf '```text\n%s\n```\n\n' "${rehearsal_out}"
   else
     echo "- Manifest: none found"
@@ -120,4 +148,3 @@ fi
 } >> "${REPORT}"
 
 echo "report=${REPORT}"
-

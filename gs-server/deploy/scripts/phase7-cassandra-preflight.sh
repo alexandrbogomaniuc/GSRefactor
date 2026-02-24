@@ -10,7 +10,6 @@ source "${SCRIPT_DIR}/lib/phase7-cassandra.sh"
 CASSANDRA_CONTAINER="$(cluster_hosts_get CASSANDRA_REFACTOR_CONTAINER refactor-c1-1)"
 OUTPUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra"
 TS="$(date -u '+%Y%m%d-%H%M%S')"
-OUT_FILE="${OUTPUT_DIR}/phase7-cassandra-preflight-${TS}.log"
 
 usage() {
   cat <<USAGE
@@ -39,6 +38,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 mkdir -p "$OUTPUT_DIR"
+OUT_FILE="${OUTPUT_DIR}/phase7-cassandra-preflight-${TS}.log"
 
 cql_out="$(phase7_cqlsh_exec "${CASSANDRA_CONTAINER}" "SELECT release_version, cluster_name FROM system.local;")" || {
   code=$?

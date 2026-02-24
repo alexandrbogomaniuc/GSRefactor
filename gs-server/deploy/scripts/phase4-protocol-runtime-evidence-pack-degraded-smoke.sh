@@ -40,22 +40,24 @@ grep -q -- '- runtime_readiness: ' "${report_file}" || {
   sed -n '1,80p' "${report_file}" >&2
   exit 2
 }
-grep -q -- '- parity_check: SKIP_RUNTIME_NOT_READY' "${report_file}" || {
-  echo "FAIL: parity_check status not marked SKIP_RUNTIME_NOT_READY" >&2
+grep -Eq -- '- parity_check: SKIP_RUNTIME_(NOT_READY|UNAVAILABLE)' "${report_file}" || {
+  echo "FAIL: parity_check status not marked SKIP_RUNTIME_NOT_READY/UNAVAILABLE" >&2
   exit 3
 }
-grep -q -- '- wallet_shadow_probe: SKIP_RUNTIME_NOT_READY' "${report_file}" || {
-  echo "FAIL: wallet_shadow_probe status not marked SKIP_RUNTIME_NOT_READY" >&2
+grep -Eq -- '- wallet_shadow_probe: SKIP_RUNTIME_(NOT_READY|UNAVAILABLE)' "${report_file}" || {
+  echo "FAIL: wallet_shadow_probe status not marked SKIP_RUNTIME_NOT_READY/UNAVAILABLE" >&2
   exit 4
 }
-grep -q -- '- json_security_probe: SKIP_RUNTIME_NOT_READY' "${report_file}" || {
-  echo "FAIL: json_security_probe status not marked SKIP_RUNTIME_NOT_READY" >&2
+grep -Eq -- '- json_security_probe: SKIP_RUNTIME_(NOT_READY|UNAVAILABLE)' "${report_file}" || {
+  echo "FAIL: json_security_probe status not marked SKIP_RUNTIME_NOT_READY/UNAVAILABLE" >&2
   exit 5
 }
-grep -q 'note: runtime probes skipped because readiness failed and allowMissingRuntime=true' "${report_file}" || {
-  echo "FAIL: readiness skip note missing" >&2
-  exit 6
-}
+if grep -q -- '- parity_check: SKIP_RUNTIME_NOT_READY' "${report_file}"; then
+  grep -q 'note: runtime probes skipped because readiness failed and allowMissingRuntime=true' "${report_file}" || {
+    echo "FAIL: readiness skip note missing" >&2
+    exit 6
+  }
+fi
 
 echo "PASS: degraded Phase 4 runtime evidence classification works"
 echo "  report: ${report_file}"

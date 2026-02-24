@@ -47,6 +47,7 @@ SKIP_COUNT=0
 CHECK_KEYS=(
   help_phase4_security_logic
   help_phase4_security_runtime
+  help_phase4_runtime_evidence_pack
   help_phase8_precision_scan
   help_phase8_precision_vectors
   help_phase8_precision_buckets
@@ -61,10 +62,14 @@ CHECK_KEYS=(
   help_phase8_policy_matrix
   help_phase8_wave3_discrepancy_evidence
   help_phase8_wave3_discrepancy_export
+  help_phase7_target_rehearsal
   help_phase9_abs_map
   help_phase9_abs_candidate_scan
   help_phase9_abs_candidate_diff
   help_phase9_abs_execution_plan
+  help_phase9_abs_patch_plan
+  help_phase9_abs_w0_text_replace
+  help_phase9_abs_w0_approval_artifact
   help_phase4_status_report
   help_phase56_service_status_report
   help_phase2_observability_status_report
@@ -72,7 +77,9 @@ CHECK_KEYS=(
   help_security_hardening_status_report
   help_program_deploy_readiness_status_report
   help_legacy_mixed_topology_validation_pack
+  help_phase8_wave3_discrepancy_compare_export
   logic_smoke_phase4_protocol
+  logic_smoke_phase4_runtime_evidence_degraded
   logic_smoke_phase8_precision_vectors
   logic_smoke_phase8_precision_buckets
   logic_smoke_phase8_wave1_reporting_vectors
@@ -86,10 +93,14 @@ CHECK_KEYS=(
   logic_smoke_phase8_policy_matrix
   logic_smoke_phase8_wave3_discrepancy_evidence
   logic_smoke_phase8_wave3_discrepancy_export
+  logic_smoke_phase7_target_rehearsal
   logic_smoke_phase9_abs_map
   logic_smoke_phase9_abs_candidate_scan
   logic_smoke_phase9_abs_candidate_diff
   logic_smoke_phase9_abs_execution_plan
+  logic_smoke_phase9_abs_patch_plan
+  logic_smoke_phase9_abs_w0_text_replace
+  logic_smoke_phase9_abs_w0_approval_artifact
   logic_smoke_phase4_status_report
   logic_smoke_phase56_service_status_report
   logic_smoke_phase2_observability_status_report
@@ -97,6 +108,7 @@ CHECK_KEYS=(
   logic_smoke_security_hardening_status_report
   logic_smoke_program_deploy_readiness_status_report
   logic_smoke_legacy_mixed_topology_validation_pack
+  logic_smoke_phase8_wave3_discrepancy_compare_export
   bash_syntax_bonus
   bash_syntax_history
   bash_syntax_wallet
