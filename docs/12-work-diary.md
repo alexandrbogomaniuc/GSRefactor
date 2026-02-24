@@ -4566,3 +4566,8 @@
 - Added Phase 9 GS-scope ABS compatibility mapping manifest (`phase9-abs-compatibility-map.json`) plus executable validator/smoke scripts to make branding/namespace cleanup wave planning testable and safer.
 - Integrated Phase 9 map help/smoke checks into the shared local verification suite and updated checklist/docs evidence to doc 139 (branding wave remains in_progress, but now has concrete compatibility mapping evidence).
 - Next step: add a Phase 9 file-scan validator that uses the manifest to produce wave-specific rename candidates and block unsafe broad token replacements (especially `mq`).
+
+### 2026-02-24 09:46-10:00 UTC
+- Added Phase 9 manifest-driven ABS rename candidate scanner + smoke gate and integrated it into the shared verification suite.
+- Real GS W0 scan now generates candidate report and blocks auto-apply with explicit reason `BLOCKED_REVIEW_ONLY:mq`, preventing unsafe broad token replacement while still exposing safe brand candidates.
+- Next step: add wave-specific file/path allowlists (e.g., docs/config-only W0 filters) so auto-candidate output is narrowed to truly safe editable targets.
