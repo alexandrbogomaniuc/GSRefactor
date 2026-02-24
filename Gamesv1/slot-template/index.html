@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>slot-template</title>
+</head>
+
+<body>
+  <!-- Animated Loading Screen -->
+  <div id="loading-screen" class="loading-overlay">
+    <div class="particles" id="particles"></div>
+    <div class="loading-content">
+      <div class="bgaming-logo" id="loading-progress-container">
+        <!-- The Outline Layer (Unfilled state) -->
+        <div class="logo-outline">
+          <span class="text-red">BET</span><span class="text-white">ONLINE</span>
+        </div>
+        <!-- The Filled Layer (Masked by clip-path) -->
+        <div class="logo-fill">
+          <span class="text-red">BET</span><span class="text-white">ONLINE</span>
+        </div>
+      </div>
+      <p id="loading-text" class="loading-status">Connecting to Engine...</p>
+      <button id="btn-start-game" class="btn-tap-start" style="display: none;">CLICK TO START</button>
+    </div>
+  </div>
+
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>

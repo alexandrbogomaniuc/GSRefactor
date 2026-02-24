@@ -1,0 +1,30 @@
+{
+    "gameMetadata": {
+        "gameId": "slot-template-01",
+        "gameName": "Template Slot V1",
+        "providerId": "studioX",
+        "variableType": "SLOT_MACHINE",
+        "supportedCurrencies": [
+            "USD",
+            "EUR",
+            "GBP"
+        ]
+    },
+    "mathModel": {
+        "rtpPercentage": 96.50,
+        "volatilityClass": "MEDIUM",
+        "betLimits": {
+            "minBet": 0.10,
+            "defaultBet": 1.00,
+            "maxBet": 100.00
+        },
+        "exposureLimits": {
+            "maxMultiplier": 5000,
+            "maxExposureNominal": 500000.00
+        }
+    },
+    "compliance": {
+        "realityCheckEnabled": true,
+        "idleTimeoutSeconds": 900
+    }
+}
