@@ -34,6 +34,8 @@ public class DynamicCoinManager {
     // Wave 3 scaffold: disabled by default, used only for safe parity assertion before any precision behavior switch.
     private static final String PRECISION_DUAL_CALC_COMPARE_PROPERTY = "abs.gs.phase8.precision.dualCalc.compare";
     private static final String PRECISION_DUAL_CALC_LOG_EVERY_PROPERTY = "abs.gs.phase8.precision.dualCalc.logEvery";
+    private static final String PRECISION_SCALE_READY_APPLY_PROPERTY = "abs.gs.phase8.precision.scaleReady.apply";
+    private static final String PRECISION_SCALE_READY_SCALE_PROPERTY = "abs.gs.phase8.precision.scaleReady.minorUnitScale";
     private static final long DEFAULT_PRECISION_DUAL_CALC_LOG_EVERY = 1000L;
     private static final AtomicLong PRECISION_DUAL_CALC_CHECK_COUNT = new AtomicLong(0L);
     private static final AtomicLong PRECISION_DUAL_CALC_MISMATCH_COUNT = new AtomicLong(0L);
@@ -71,7 +73,7 @@ public class DynamicCoinManager {
             double finalDefaultBet = needToConvert
                     ? currencyConverter.convert(defaultBet, sourceCurrency, targetCurrency)
                     : defaultBet;
-            int baseBetInCurrency = getLegacyBaseBetInCurrencyMinorUnits(gameInfo);
+            long baseBetInCurrency = getConfiguredBaseBetInCurrencyMinorUnits(gameInfo);
             int coinIndex = 0;
             double delta = 0;
             for (int i = 0; i < coinseq.length; i++) {
@@ -88,6 +90,13 @@ public class DynamicCoinManager {
 
     protected int getLegacyBaseBetInCurrencyMinorUnits(IBaseGameInfo gameInfo) {
         return Math.toIntExact(getBaseBetInCurrencyMinorUnitsByScale(gameInfo, LEGACY_CURRENCY_MINOR_UNIT_SCALE));
+    }
+
+    protected long getConfiguredBaseBetInCurrencyMinorUnits(IBaseGameInfo gameInfo) {
+        if (!isPrecisionScaleReadyApplyEnabled()) {
+            return getLegacyBaseBetInCurrencyMinorUnits(gameInfo);
+        }
+        return getScaleReadyBaseBetInCurrencyMinorUnits(gameInfo, getConfiguredPrecisionMinorUnitScale());
     }
 
     protected void verifyLegacyBaseBetParityForScale2IfEnabled(IBaseGameInfo gameInfo) {
@@ -112,6 +121,23 @@ public class DynamicCoinManager {
 
     protected boolean isPrecisionDualCalcComparisonEnabled() {
         return Boolean.getBoolean(PRECISION_DUAL_CALC_COMPARE_PROPERTY);
+    }
+
+    protected boolean isPrecisionScaleReadyApplyEnabled() {
+        return Boolean.getBoolean(PRECISION_SCALE_READY_APPLY_PROPERTY);
+    }
+
+    protected int getConfiguredPrecisionMinorUnitScale() {
+        String raw = System.getProperty(PRECISION_SCALE_READY_SCALE_PROPERTY);
+        if (raw == null || raw.trim().isEmpty()) {
+            return LEGACY_CURRENCY_MINOR_UNIT_SCALE;
+        }
+        try {
+            int parsed = Integer.parseInt(raw.trim());
+            return (parsed >= 0 && parsed <= 9) ? parsed : LEGACY_CURRENCY_MINOR_UNIT_SCALE;
+        } catch (NumberFormatException ignored) {
+            return LEGACY_CURRENCY_MINOR_UNIT_SCALE;
+        }
     }
 
     protected long getPrecisionDualCalcLogEvery() {
@@ -151,7 +177,7 @@ public class DynamicCoinManager {
         return getBaseBetInCurrencyMinorUnitsByScale(gameInfo, minorUnitScale);
     }
 
-    protected double getDefaultBetDistance(double coinValue, int baseBetInCurrency, double finalDefaultBet) {
+    protected double getDefaultBetDistance(double coinValue, long baseBetInCurrency, double finalDefaultBet) {
         return Math.abs(coinValue * baseBetInCurrency - finalDefaultBet);
     }
 

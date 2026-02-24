@@ -54,6 +54,7 @@ CHECK_KEYS=(
   help_phase8_wave1_asmoney_parity
   help_phase8_wave2_coinrule_vectors
   help_phase8_wave3_dualcalc_vectors
+  help_phase8_wave3_applymode_vectors
   help_phase8_wave3_discrepancy_evidence
   help_phase8_wave3_discrepancy_export
   logic_smoke_phase4_protocol
@@ -63,6 +64,7 @@ CHECK_KEYS=(
   logic_smoke_phase8_wave1_asmoney_parity
   logic_smoke_phase8_wave2_coinrule_vectors
   logic_smoke_phase8_wave3_dualcalc_vectors
+  logic_smoke_phase8_wave3_applymode_vectors
   logic_smoke_phase8_wave3_discrepancy_evidence
   logic_smoke_phase8_wave3_discrepancy_export
   bash_syntax_bonus
@@ -140,6 +142,9 @@ run_check "help_phase8_wave2_coinrule_vectors" "CLI help: Phase 8 Wave 2 setting
 run_check "help_phase8_wave3_dualcalc_vectors" "CLI help: Phase 8 Wave 3 dual-calculation comparison vector smoke" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-dualcalc-comparison-vector-smoke.sh' --help | sed -n '1,80p'"
 
+run_check "help_phase8_wave3_applymode_vectors" "CLI help: Phase 8 Wave 3 apply-mode vector smoke" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-applymode-vector-smoke.sh' --help | sed -n '1,80p'"
+
 run_check "help_phase8_wave3_discrepancy_evidence" "CLI help: Phase 8 Wave 3 discrepancy evidence smoke" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-evidence-smoke.sh' --help | sed -n '1,80p'"
 
@@ -168,6 +173,9 @@ run_check "logic_smoke_phase8_wave2_coinrule_vectors" "Executable logic smoke: P
 
 run_check "logic_smoke_phase8_wave3_dualcalc_vectors" "Executable logic smoke: Phase 8 Wave 3 dual-calculation comparison vectors" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-dualcalc-comparison-vector-smoke.sh'"
+
+run_check "logic_smoke_phase8_wave3_applymode_vectors" "Executable logic smoke: Phase 8 Wave 3 apply-mode vectors" \
+  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-applymode-vector-smoke.sh'"
 
 run_check "logic_smoke_phase8_wave3_discrepancy_evidence" "Executable logic smoke: Phase 8 Wave 3 discrepancy evidence scaffold" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-evidence-smoke.sh'"

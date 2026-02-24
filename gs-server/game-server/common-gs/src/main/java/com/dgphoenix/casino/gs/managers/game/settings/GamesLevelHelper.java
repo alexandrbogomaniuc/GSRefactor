@@ -27,6 +27,8 @@ public class GamesLevelHelper {
     // Wave 3 scaffold: disabled by default, used only for safe parity assertion before any precision behavior switch.
     private static final String PRECISION_DUAL_CALC_COMPARE_PROPERTY = "abs.gs.phase8.precision.dualCalc.compare";
     private static final String PRECISION_DUAL_CALC_LOG_EVERY_PROPERTY = "abs.gs.phase8.precision.dualCalc.logEvery";
+    private static final String PRECISION_SCALE_READY_APPLY_PROPERTY = "abs.gs.phase8.precision.scaleReady.apply";
+    private static final String PRECISION_SCALE_READY_SCALE_PROPERTY = "abs.gs.phase8.precision.scaleReady.minorUnitScale";
     private static final long DEFAULT_PRECISION_DUAL_CALC_LOG_EVERY = 1000L;
     private static final MathContext DIVIDE_CONTEXT = new MathContext(5, RoundingMode.DOWN);
     private static final AtomicLong PRECISION_DUAL_CALC_CHECK_COUNT = new AtomicLong(0L);
@@ -66,7 +68,7 @@ public class GamesLevelHelper {
     public double getGLMaxBet(GamesLevelContext ctx) throws CommonException {
         // Legacy scale=2 default max-bet multiplier from NBSF's Appendix.
         verifyLegacyTemplateMaxBetParityForScale2IfEnabled(ctx.getTemplateMaxCredits());
-        double glMaxBet = getLegacyTemplateMaxBet(ctx.getTemplateMaxCredits());
+        double glMaxBet = getConfiguredTemplateMaxBet(ctx.getTemplateMaxCredits());
         Long templateMaxBet = ctx.getTemplateMaxBet();
         if (templateMaxBet != null) {
             glMaxBet = ctx.isNeedToConvert()
@@ -92,6 +94,13 @@ public class GamesLevelHelper {
         return getTemplateMaxBetByMinorUnitScale(templateMaxCredits, LEGACY_CURRENCY_MINOR_UNIT_SCALE);
     }
 
+    protected double getConfiguredTemplateMaxBet(double templateMaxCredits) {
+        if (!isPrecisionScaleReadyApplyEnabled()) {
+            return getLegacyTemplateMaxBet(templateMaxCredits);
+        }
+        return getScaleReadyTemplateMaxBet(templateMaxCredits, getConfiguredPrecisionMinorUnitScale());
+    }
+
     protected void verifyLegacyTemplateMaxBetParityForScale2IfEnabled(double templateMaxCredits) {
         if (!isPrecisionDualCalcComparisonEnabled()) {
             return;
@@ -114,6 +123,23 @@ public class GamesLevelHelper {
 
     protected boolean isPrecisionDualCalcComparisonEnabled() {
         return Boolean.getBoolean(PRECISION_DUAL_CALC_COMPARE_PROPERTY);
+    }
+
+    protected boolean isPrecisionScaleReadyApplyEnabled() {
+        return Boolean.getBoolean(PRECISION_SCALE_READY_APPLY_PROPERTY);
+    }
+
+    protected int getConfiguredPrecisionMinorUnitScale() {
+        String raw = System.getProperty(PRECISION_SCALE_READY_SCALE_PROPERTY);
+        if (raw == null || raw.trim().isEmpty()) {
+            return LEGACY_CURRENCY_MINOR_UNIT_SCALE;
+        }
+        try {
+            int parsed = Integer.parseInt(raw.trim());
+            return (parsed >= 0 && parsed <= 9) ? parsed : LEGACY_CURRENCY_MINOR_UNIT_SCALE;
+        } catch (NumberFormatException ignored) {
+            return LEGACY_CURRENCY_MINOR_UNIT_SCALE;
+        }
     }
 
     protected long getPrecisionDualCalcLogEvery() {

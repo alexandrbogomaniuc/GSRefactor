@@ -4354,3 +4354,18 @@
   - Operators can now persist a suggested triage preset and export a shareable combined bundle artifact in one action while preserving the existing pre-save review flow.
 - Next step:
   - extend artifact-based suggestions with multi-candidate suggestions (fail-rules focus vs metric focus) or add a one-click save of suggestion summary + preset bundle import path in the viewer.
+### 2026-02-24 04:49-04:50 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 by adding a disabled-by-default core apply-mode scaffold for precision settings/coin-rule calculations in `DynamicCoinManager` and `GamesLevelHelper`, with system-property gates (`abs.gs.phase8.precision.scaleReady.apply`, `abs.gs.phase8.precision.scaleReady.minorUnitScale`).
+- Added `phase8-precision-wave3-applymode-vector-smoke.sh` and wired it into the shared local verification suite to guard disabled-default behavior, scale parsing/fallbacks, and scale3 (`0.001`) deterministic vectors.
+- Updated support docs/checklist to doc 124, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/124-phase8-wave3-core-apply-mode-scaffold-and-vector-gate-20260224-040000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260224-044932.md` (suite PASS, `pass=42 fail=0 skip=0`)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/settings/DynamicCoinManager.java`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/settings/GamesLevelHelper.java`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave3-applymode-vector-smoke.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (embedded checklist sync `26/41`; evidence path updated to doc 124; `fp=b2f6cf80d59b`)
+- Result:
+  - GS now has a controlled, opt-in path for scale-ready settings/coin-rule calculations while keeping legacy behavior as default and preserving parity/discrepancy tooling for safe validation.
+- Next step:
+  - add a Phase 8 precision policy matrix (currency->minorUnitScale) + GS-side resolver and a deterministic canary/matrix generator, then prepare non-prod canary evidence for scale3 banks/currencies.
