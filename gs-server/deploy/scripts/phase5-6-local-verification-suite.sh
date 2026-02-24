@@ -70,6 +70,8 @@ CHECK_KEYS=(
   help_phase2_observability_status_report
   help_phase0_legacy_parity_status_report
   help_security_hardening_status_report
+  help_program_deploy_readiness_status_report
+  help_legacy_mixed_topology_validation_pack
   logic_smoke_phase4_protocol
   logic_smoke_phase8_precision_vectors
   logic_smoke_phase8_precision_buckets
@@ -93,6 +95,8 @@ CHECK_KEYS=(
   logic_smoke_phase2_observability_status_report
   logic_smoke_phase0_legacy_parity_status_report
   logic_smoke_security_hardening_status_report
+  logic_smoke_program_deploy_readiness_status_report
+  logic_smoke_legacy_mixed_topology_validation_pack
   bash_syntax_bonus
   bash_syntax_history
   bash_syntax_wallet
@@ -215,6 +219,10 @@ run_check "help_phase0_legacy_parity_status_report" "CLI help: Phase 0 legacy pa
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase0-legacy-parity-status-report-generate.sh' --help | sed -n '1,160p'"
 run_check "help_security_hardening_status_report" "CLI help: Security hardening status report generator" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/security-hardening-status-report-generate.sh' --help | sed -n '1,120p'"
+run_check "help_program_deploy_readiness_status_report" "CLI help: Program deploy readiness status report generator" \
+  bash -lc "bash '${ROOT}/gs-server/deploy/scripts/program-deploy-readiness-status-report.sh' --help | sed -n '1,140p'"
+run_check "help_legacy_mixed_topology_validation_pack" "CLI help: Legacy mixed-topology validation pack" \
+  bash -lc "bash '${ROOT}/gs-server/deploy/scripts/legacy-mixed-topology-validation-pack.sh' --help | sed -n '1,160p'"
 run_check "help_phase8_wave3_discrepancy_compare_export" "CLI help: Phase 8 Wave 3 discrepancy compare/export tool" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export.sh' --help | sed -n '1,120p' && '${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export-smoke.sh' --help | sed -n '1,80p'"
 
@@ -286,6 +294,10 @@ run_check "logic_smoke_phase0_legacy_parity_status_report" "Executable logic smo
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase0-legacy-parity-status-report-generate-smoke.sh'"
 run_check "logic_smoke_security_hardening_status_report" "Executable logic smoke: Security hardening status report generator" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/security-hardening-status-report-generate-smoke.sh'"
+run_check "logic_smoke_program_deploy_readiness_status_report" "Executable logic smoke: Program deploy readiness status report generator" \
+  bash -lc "bash '${ROOT}/gs-server/deploy/scripts/program-deploy-readiness-status-report-smoke.sh'"
+run_check "logic_smoke_legacy_mixed_topology_validation_pack" "Executable logic smoke: Legacy mixed-topology validation pack" \
+  bash -lc "bash '${ROOT}/gs-server/deploy/scripts/legacy-mixed-topology-validation-pack-smoke.sh'"
 run_check "logic_smoke_phase8_wave3_discrepancy_compare_export" "Executable logic smoke: Phase 8 Wave 3 discrepancy compare/export CLI" \
   bash -lc "'${ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export-smoke.sh'"
 

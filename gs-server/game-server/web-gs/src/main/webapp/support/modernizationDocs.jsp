@@ -123,8 +123,8 @@
             <tbody>
             <tr>
                 <td>Phase 0 - Baseline and Parity</td>
-                <td>Inventory, parity capture, reconnect evidence, and legacy FRB/MP guarded baseline closure</td>
-                <td><code>docs/23-phase-0-baseline-and-parity-capture.md</code><br/><code>docs/158-legacy-parity-status-report-frb-mp-baseline-complete-20260224-124500.md</code><br/><code>docs/159-legacy-parity-frb-mp-phase-closure-guarded-baseline-complete-20260224-130000.md</code><br/><code>docs/phase0/</code></td>
+                <td>Inventory, parity capture, reconnect evidence, legacy FRB/MP guarded baseline closure, and mixed-topology validation pack preflight</td>
+                <td><code>docs/23-phase-0-baseline-and-parity-capture.md</code><br/><code>docs/158-legacy-parity-status-report-frb-mp-baseline-complete-20260224-124500.md</code><br/><code>docs/159-legacy-parity-frb-mp-phase-closure-guarded-baseline-complete-20260224-130000.md</code><br/><code>docs/163-legacy-mixed-topology-validation-pack-and-runtime-blocked-preflight-20260224-114500.md</code><br/><code>docs/phase0/</code><br/><code>docs/validation/legacy-mixed-topology/</code></td>
             </tr>
             <tr>
                 <td>Phase 2 - Observability</td>
@@ -175,6 +175,11 @@
                 <td>Security Hardening Baseline</td>
                 <td>Protocol security baseline, dependency inventory, and tested no-go dependency-audit-pending closure</td>
                 <td><code>docs/38-json-protocol-hmac-security-v1.md</code><br/><code>docs/81-phase4-protocol-json-security-logic-smoke-and-suite-gate-20260223-135000.md</code><br/><code>docs/82-phase4-protocol-json-security-runtime-probe-tooling-20260223-144000.md</code><br/><code>docs/160-security-hardening-status-report-baseline-and-dependency-no-go-20260224-131500.md</code><br/><code>docs/161-security-hardening-phase-closure-tested-no-go-dependency-audit-pending-20260224-133000.md</code><br/><code>docs/security/</code></td>
+            </tr>
+            <tr>
+                <td>Deploy / Cutover Readiness</td>
+                <td>Program-level readiness aggregation and explicit blocker list before refactor deploy/canary</td>
+                <td><code>docs/162-program-deploy-cutover-readiness-status-and-blocker-aggregation-20260224-113500.md</code><br/><code>docs/release-readiness/</code><br/><code>gs-server/deploy/scripts/program-deploy-readiness-status-report.sh</code></td>
             </tr>
             </tbody>
         </table>

@@ -40,7 +40,7 @@
           "id": "lp-mp-compatible",
           "label": "Multiplayer legacy compatibility maintained",
           "status": "done",
-          "evidence": "docs/159-legacy-parity-frb-mp-phase-closure-guarded-baseline-complete-20260224-130000.md"
+          "evidence": "docs/163-legacy-mixed-topology-validation-pack-and-runtime-blocked-preflight-20260224-114500.md"
         }
       ]
     },

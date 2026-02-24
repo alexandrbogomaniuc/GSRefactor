@@ -45,6 +45,35 @@
     </div>
 
     <div class="section">
+        <h4>Program Deploy / Cutover Readiness Aggregation (Before Refactor Deploy/Canary)</h4>
+        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
+bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/program-deploy-readiness-status-report.sh
+</code></pre>
+        <p class="small-note">
+            Aggregates latest Phase 4/5/6 status reports, Phase 7 Cassandra rehearsal result, legacy parity baseline status, security hardening status, and the latest local verification suite result into a single blocker list under <code>docs/release-readiness/</code>.
+        </p>
+    </div>
+
+    <div class="section">
+        <h4>Legacy Mixed-Topology Validation Pack (Refactored GS + Legacy MP/Client)</h4>
+        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
+# Dry-run checklist + report template (no runtime calls):
+bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/legacy-mixed-topology-validation-pack.sh --dry-run true
+
+# Runtime preflight (HTTP reachability checks + operator checklist report):
+bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/legacy-mixed-topology-validation-pack.sh \
+  --refactor-gs-url http://127.0.0.1:18081 \
+  --legacy-mp-url http://127.0.0.1:8088 \
+  --legacy-client-url http://127.0.0.1:8090 \
+  --bank-id 6275 \
+  --game-id 838
+</code></pre>
+        <p class="small-note">
+            Produces a dedicated mixed-topology validation report under <code>docs/validation/legacy-mixed-topology/</code> with endpoint reachability status and a repeatable operator checklist for launch/reconnect/FRB evidence capture.
+        </p>
+    </div>
+
+    <div class="section">
         <h4>Phase 8 Wave 3 Discrepancy Snapshot Export (Optional, Compare Mode Diagnostics)</h4>
         <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
 # After running GS with compare mode enabled in a non-prod environment:
