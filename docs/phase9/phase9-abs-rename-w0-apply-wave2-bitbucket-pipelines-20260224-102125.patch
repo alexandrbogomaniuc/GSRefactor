@@ -1,0 +1,341 @@
+diff --git a/gs-server/bitbucket-pipelines.yml b/gs-server/bitbucket-pipelines.yml
+index f4749b5d..c43a5cda 100644
+--- a/gs-server/bitbucket-pipelines.yml
++++ b/gs-server/bitbucket-pipelines.yml
+@@ -10,7 +10,7 @@ definitions:
+       set -euo pipefail
+ 
+       case "${TARGET}" in 
+-        "development_maxduel")
++        "development_abs")
+             export ENV_NAME=dev01
+             export GCP_PROJECT_ID=${GCP_PROJECT_ID_DEV_MAXDUEL}
+             export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_DEV_MAXDUEL}
+@@ -18,11 +18,11 @@ definitions:
+             export PROJECT_NAME=${PROJECT_NAME_DEV_MAXDUEL}
+             export K8S_NAMESPACE=${K8S_NAMESPACE_DEV_MAXDUEL}
+             export RUNNER_ID=${RUNNER_ID_DEV_MAXDUEL}
+-            export K8S_ENV_DIR=development_maxduel
++            export K8S_ENV_DIR=development_abs
+             export DOCKERFILE=Dockerfile.new
+             echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa;
+           ;;
+-        "pre-prod_maxduel")
++        "pre-prod_abs")
+           export ENV_NAME=stage01
+           export GCP_PROJECT_ID=${GCP_PROJECT_ID_STAGE_MAXDUEL}
+           export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_STAGE_MAXDUEL}
+@@ -34,7 +34,7 @@ definitions:
+           export DOCKERFILE=Dockerfile.new
+           echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa;
+           ;;
+-        "production_maxduel")
++        "production_abs")
+           export ENV_NAME=prod01
+           export GCP_PROJECT_ID=${GCP_PROJECT_ID_PROD_MAXDUEL}
+           export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_PROD_MAXDUEL}
+@@ -46,7 +46,7 @@ definitions:
+           export DOCKERFILE=Dockerfile.new
+           echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa;
+           ;;
+-        "test_maxquest")
++        "test_abs")
+           export ENV_NAME=dev01
+           export GCP_PROJECT_ID=${GCP_PROJECT_ID_DEV}
+           export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_DEV}
+@@ -57,7 +57,7 @@ definitions:
+           export DOCKERFILE=Dockerfile.new
+           echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa;
+           ;;
+-        "pre-prod_maxquest")
++        "pre-prod_abs")
+           export ENV_NAME=stage01
+           export GCP_PROJECT_ID=${GCP_PROJECT_ID_STAGE}
+           export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_STAGE}
+@@ -68,7 +68,7 @@ definitions:
+           export DOCKERFILE=Dockerfile.new
+           echo ${SSH_PRIVATE_KEY} | base64 -d > /tmp/${RUNNER_ID}/ssh/id_rsa;
+           ;;
+-        "production_maxquest")
++        "production_abs")
+           export ENV_NAME=prod01
+           export GCP_PROJECT_ID=${GCP_PROJECT_ID_PROD}
+           export GCP_PROJECT_NUMBER=${GCP_PROJECT_NUMBER_PROD}
+@@ -242,7 +242,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=test_maxquest # pre-prod_maxquest | production_maxquest
++        - export TARGET=test_abs # pre-prod_abs | production_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -255,8 +255,8 @@ definitions:
+       #     includePaths:
+       #       - Dockerfile.build.base
+ 
+-    step_docker_legacy_maxduel_dev01_build_base: &step_docker_legacy_maxduel_dev01_build_base
+-      name: step_docker_legacy_maxduel_dev01_build_base
++    step_docker_legacy_abs_dev01_build_base: &step_docker_legacy_abs_dev01_build_base
++      name: step_docker_legacy_abs_dev01_build_base
+       runs-on:
+         - self.hosted
+         - linux
+@@ -270,7 +270,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=development_maxduel
++        - export TARGET=development_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -283,8 +283,8 @@ definitions:
+       #     includePaths:
+       #       - Dockerfile.build.base
+ 
+-    step_deploy_legacy_maxduel_dev01_step_1: &step_deploy_legacy_maxduel_dev01_step_1
+-      name: step_deploy_legacy_maxduel_dev01_step_1
++    step_deploy_legacy_abs_dev01_step_1: &step_deploy_legacy_abs_dev01_step_1
++      name: step_deploy_legacy_abs_dev01_step_1
+       runs-on:
+         - self.hosted
+         - linux
+@@ -298,7 +298,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=development_maxduel
++        - export TARGET=development_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -309,8 +309,8 @@ definitions:
+       artifacts:
+         - artifacts/*
+ 
+-    step_deploy_legacy_maxduel_dev01_step_2: &step_deploy_legacy_maxduel_dev01_step_2
+-      name: step_deploy_legacy_maxduel_dev01_step_2
++    step_deploy_legacy_abs_dev01_step_2: &step_deploy_legacy_abs_dev01_step_2
++      name: step_deploy_legacy_abs_dev01_step_2
+       runs-on:
+         - self.hosted
+         - linux
+@@ -324,7 +324,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=development_maxduel
++        - export TARGET=development_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -333,8 +333,8 @@ definitions:
+         - *script_cleanup
+       trigger: manual
+ 
+-    step_docker_legacy_maxduel_stage01_build_base: &step_docker_legacy_maxduel_stage01_build_base
+-      name: step_docker_legacy_maxduel_stage01_build_base
++    step_docker_legacy_abs_stage01_build_base: &step_docker_legacy_abs_stage01_build_base
++      name: step_docker_legacy_abs_stage01_build_base
+       runs-on:
+         - self.hosted
+         - linux
+@@ -348,7 +348,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=pre-prod_maxduel
++        - export TARGET=pre-prod_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -361,8 +361,8 @@ definitions:
+       #     includePaths:
+       #       - Dockerfile.build.base
+ 
+-    step_deploy_legacy_maxduel_stage01_step_1: &step_deploy_legacy_maxduel_stage01_step_1
+-      name: step_deploy_legacy_maxduel_stage01_step_1
++    step_deploy_legacy_abs_stage01_step_1: &step_deploy_legacy_abs_stage01_step_1
++      name: step_deploy_legacy_abs_stage01_step_1
+       runs-on:
+         - self.hosted
+         - linux
+@@ -376,7 +376,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=pre-prod_maxduel
++        - export TARGET=pre-prod_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -387,8 +387,8 @@ definitions:
+       artifacts:
+         - artifacts/*
+ 
+-    step_deploy_legacy_maxduel_stage01_step_2: &step_deploy_legacy_maxduel_stage01_step_2
+-      name: step_deploy_legacy_maxduel_stage01_step_2
++    step_deploy_legacy_abs_stage01_step_2: &step_deploy_legacy_abs_stage01_step_2
++      name: step_deploy_legacy_abs_stage01_step_2
+       runs-on:
+         - self.hosted
+         - linux
+@@ -402,7 +402,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=pre-prod_maxduel
++        - export TARGET=pre-prod_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -411,8 +411,8 @@ definitions:
+         - *script_cleanup
+       trigger: manual
+ 
+-    step_docker_legacy_maxduel_prod01_build_base: &step_docker_legacy_maxduel_prod01_build_base
+-      name: step_docker_legacy_maxduel_prod01_build_base
++    step_docker_legacy_abs_prod01_build_base: &step_docker_legacy_abs_prod01_build_base
++      name: step_docker_legacy_abs_prod01_build_base
+       runs-on:
+         - self.hosted
+         - linux
+@@ -426,7 +426,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=production_maxduel
++        - export TARGET=production_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -439,8 +439,8 @@ definitions:
+       #     includePaths:
+       #       - Dockerfile.build.base
+ 
+-    step_deploy_legacy_maxduel_prod01_step_1: &step_deploy_legacy_maxduel_prod01_step_1
+-      name: step_deploy_legacy_maxduel_prod01_step_1
++    step_deploy_legacy_abs_prod01_step_1: &step_deploy_legacy_abs_prod01_step_1
++      name: step_deploy_legacy_abs_prod01_step_1
+       runs-on:
+         - self.hosted
+         - linux
+@@ -454,7 +454,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=production_maxduel
++        - export TARGET=production_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -465,8 +465,8 @@ definitions:
+       artifacts:
+         - artifacts/*
+ 
+-    step_deploy_legacy_maxduel_prod01_step_2: &step_deploy_legacy_maxduel_prod01_step_2
+-      name: step_deploy_legacy_maxduel_prod01_step_2
++    step_deploy_legacy_abs_prod01_step_2: &step_deploy_legacy_abs_prod01_step_2
++      name: step_deploy_legacy_abs_prod01_step_2
+       runs-on:
+         - self.hosted
+         - linux
+@@ -480,7 +480,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=production_maxduel
++        - export TARGET=production_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -504,7 +504,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=test_maxquest
++        - export TARGET=test_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -530,7 +530,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=test_maxquest
++        - export TARGET=test_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -554,7 +554,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=pre-prod_maxquest
++        - export TARGET=pre-prod_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -580,7 +580,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=pre-prod_maxquest
++        - export TARGET=pre-prod_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -604,7 +604,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=production_maxquest
++        - export TARGET=production_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -630,7 +630,7 @@ definitions:
+         - docker
+       size: 4x
+       script:
+-        - export TARGET=production_maxquest
++        - export TARGET=production_abs
+         - *script_set_env
+         - *script_export_ssh_key
+         - *script_gcp_auth
+@@ -642,20 +642,20 @@ definitions:
+ pipelines:
+ 
+   branches:
+-    development_maxduel:
+-    # - step: *step_docker_legacy_maxduel_dev01_build_base
+-      - step: *step_deploy_legacy_maxduel_dev01_step_1
+-      - step: *step_deploy_legacy_maxduel_dev01_step_2
+-
+-    pre-prod_maxduel:
+-    # - step: *step_docker_legacy_maxduel_stage01_build_base
+-      - step: *step_deploy_legacy_maxduel_stage01_step_1
+-      - step: *step_deploy_legacy_maxduel_stage01_step_2
+-
+-    production_maxduel:
+-    # - step: *step_docker_legacy_maxduel_prod01_build_base
+-      - step: *step_deploy_legacy_maxduel_prod01_step_1
+-      - step: *step_deploy_legacy_maxduel_prod01_step_2
++    development_abs:
++    # - step: *step_docker_legacy_abs_dev01_build_base
++      - step: *step_deploy_legacy_abs_dev01_step_1
++      - step: *step_deploy_legacy_abs_dev01_step_2
++
++    pre-prod_abs:
++    # - step: *step_docker_legacy_abs_stage01_build_base
++      - step: *step_deploy_legacy_abs_stage01_step_1
++      - step: *step_deploy_legacy_abs_stage01_step_2
++
++    production_abs:
++    # - step: *step_docker_legacy_abs_prod01_build_base
++      - step: *step_deploy_legacy_abs_prod01_step_1
++      - step: *step_deploy_legacy_abs_prod01_step_2
+ 
+   tags:
+     'gs-test.*':
