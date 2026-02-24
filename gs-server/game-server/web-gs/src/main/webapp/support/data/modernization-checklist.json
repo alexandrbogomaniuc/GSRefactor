@@ -207,8 +207,8 @@
         {
           "id": "pu-branding-wave",
           "label": "Legacy namespace cleanup wave (ABS mapping)",
-          "status": "in_progress",
-          "evidence": "docs/149-phase9-w0-apply-wave2-single-file-bitbucket-pipelines-yml-20260224-123000.md"
+          "status": "done",
+          "evidence": "docs/151-phase9-branding-namespace-tested-controlled-wave-phase-closure-20260224-110000.md"
         },
         {
           "id": "pu-security-hardening",

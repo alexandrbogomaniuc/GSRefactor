@@ -1,0 +1,120 @@
+{
+  "type": "phase9-abs-wave-status-blocklist",
+  "version": 1,
+  "notes": [
+    "Blocklist records intentionally deferred files after W0 pilot waves.",
+    "Reasons reflect backward-compatibility constraints and explicit-approval requirements."
+  ],
+  "applied": {
+    "W0": [
+      "bitbucket-pipelines.bck2.yml",
+      "bitbucket-pipelines.yml"
+    ]
+  },
+  "blocked": {
+    "W0": [
+      {
+        "file": "game-server/web-gs/src/main/resources/ClusterConfiguration.xml",
+        "reasonCode": "BLOCKED_RUNTIME_ENDPOINTS_HOSTS",
+        "reason": "Contains live cluster endpoints/transferservice URLs and brand-domain hosts; renaming now may break compatibility contracts."
+      },
+      {
+        "file": "game-server/config/mpstress/com.dgphoenix.casino.common.cache.BankInfoCache.xml",
+        "reasonCode": "BLOCKED_WALLET_URLS_AND_STRESS_HOSTS",
+        "reason": "Contains wallet endpoints/hostnames with brand tokens; requires coordinated integration aliasing."
+      },
+      {
+        "file": "game-server/config/mpstress/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml",
+        "reasonCode": "BLOCKED_RUNTIME_HOST_CONFIG",
+        "reason": "Contains host/domains and MP cluster JSON payload strings used by runtime configs."
+      },
+      {
+        "file": "game-server/web-gs/pom.xml",
+        "reasonCode": "BLOCKED_BUILD_PATH_ASSET_RENAMES",
+        "reason": "References build directories/asset paths and IDs (nucleus) that require coordinated asset rename wave."
+      },
+      {
+        "file": "game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml",
+        "reasonCode": "BLOCKED_WALLET_URLS_AND_HOSTS",
+        "reason": "Contains brand-host URLs and integration endpoints; requires alias/host migration approval."
+      },
+      {
+        "file": "game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml",
+        "reasonCode": "BLOCKED_RUNTIME_CONFIG_AND_SECRETS_KEYS",
+        "reason": "Contains runtime config names/password property keys and host values tied to existing naming."
+      },
+      {
+        "file": "game-server/config/common.properties",
+        "reasonCode": "BLOCKED_BRAND_PROTOCOL_KEYS",
+        "reason": "Contains brand/API tag names and property keys used by runtime behavior and external protocol expectations."
+      },
+      {
+        "file": "game-server/config/mpstress/com.dgphoenix.casino.common.cache.LoadBalancerCache.xml",
+        "reasonCode": "BLOCKED_RUNTIME_HOST_CONFIG",
+        "reason": "Contains runtime hostnames for load balancer cache; requires aliasing/migration plan."
+      },
+      {
+        "file": "game-server/web-gs/src/main/webapp/standlobby.jsp",
+        "reasonCode": "BLOCKED_CLIENT_VISIBLE_RUNTIME_TEMPLATE",
+        "reason": "Contains runtime JSP output/template tokens and legacy variable names; requires UI/runtime parity validation."
+      },
+      {
+        "file": "game-server/config/local-machine/com.dgphoenix.casino.common.cache.BankInfoCache.xml",
+        "reasonCode": "BLOCKED_WALLET_URLS_AND_HOSTS",
+        "reason": "Contains wallet URLs/hostnames; requires environment alias migration approval."
+      },
+      {
+        "file": "game-server/config/mqb/com.dgphoenix.casino.common.cache.LoadBalancerCache.xml",
+        "reasonCode": "BLOCKED_RUNTIME_HOST_CONFIG",
+        "reason": "Contains runtime hostnames used by environment config."
+      },
+      {
+        "file": "game-server/web-gs/src/main/webapp/free/mp/template.jsp",
+        "reasonCode": "BLOCKED_MP_TEMPLATE_RUNTIME_KEYS",
+        "reason": "Contains runtime template fields and legacy gameplay naming used by MP/client compatibility paths."
+      },
+      {
+        "file": "game-server/web-gs/src/main/webapp/real/mp/template.jsp",
+        "reasonCode": "BLOCKED_MP_TEMPLATE_RUNTIME_KEYS",
+        "reason": "Contains runtime template fields and legacy gameplay naming used by MP/client compatibility paths."
+      },
+      {
+        "file": "deploy/docker/configs/docker-compose.yml",
+        "reasonCode": "BLOCKED_JAVA_CLASS_FQCN",
+        "reason": "Contains Java main class FQCN with brand package; wrapper/delegation wave (W3) required before rename."
+      },
+      {
+        "file": "deploy/docker/refactor/docker-compose.yml",
+        "reasonCode": "BLOCKED_JAVA_CLASS_FQCN",
+        "reason": "Contains Java main class FQCN with brand package; wrapper/delegation wave (W3) required before rename."
+      },
+      {
+        "file": "game-server/config/local-machine/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml",
+        "reasonCode": "BLOCKED_RUNTIME_CONFIG_AND_KEYS",
+        "reason": "Contains runtime config values and property names tied to legacy integration naming."
+      },
+      {
+        "file": "k8s/development_maxduel/deployment/mq-gs.yaml",
+        "reasonCode": "BLOCKED_ENV_INFRA_NAMES_AND_MQ_TOKEN",
+        "reason": "Contains environment/project naming and mq token path segments; requires infra rename plan + explicit approval."
+      }
+    ]
+  },
+  "blockedMappings": [
+    {
+      "legacy": "mq",
+      "reasonCode": "BLOCKED_REVIEW_ONLY_TOKEN",
+      "reason": "High collision risk token; explicit context filters and approvals required."
+    },
+    {
+      "legacy": "com.dgphoenix",
+      "reasonCode": "BLOCKED_W3_WRAPPER_REQUIRED",
+      "reason": "Package/class rename deferred to wrapper/delegation wave (W3)."
+    },
+    {
+      "legacy": "dgphoenix",
+      "reasonCode": "BLOCKED_W3_WRAPPER_REQUIRED",
+      "reason": "Package/class rename deferred to wrapper/delegation wave (W3)."
+    }
+  ]
+}
