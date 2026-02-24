@@ -80,6 +80,20 @@
     .trend-stable { background: #e9f8ef; border-color: #9ed8b3; }
     .trend-rising { background: #fdecec; border-color: #e7b8b8; }
     .trend-falling { background: #eef6ff; border-color: #b9d3ef; }
+    .readiness-pill {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      border: 1px solid #ccd8e5;
+      background: #f8fafc;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .readiness-go { background: #e9f8ef; border-color: #9ed8b3; color: #14532d; }
+    .readiness-no_go, .readiness-blocked { background: #fdecec; border-color: #e7b8b8; color: #7f1d1d; }
+    .readiness-caution { background: #fff8e8; border-color: #e8d0a0; color: #7a4b00; }
+    .readiness-list { margin: 8px 0 0 0; padding-left: 18px; color: #334; }
   </style>
 </head>
 <body>
@@ -96,11 +110,12 @@
         <button class="btn btn-warning btn-sm" id="resetLocal">Reset Local Checks</button>
       </div>
       <div class="footer-note">
-        Source status comes from checklist JSON. Outbox health card is from outbox-health JSON. Checkbox toggles are local to your browser/session.
+        Source status comes from checklist JSON. Cutover readiness is a separate embedded snapshot from the latest program deploy-readiness report. Outbox health card is from outbox-health JSON. Checkbox toggles are local to your browser/session.
         When opened via <code>file://</code>, this page uses the embedded snapshot inside this HTML (run <code>gs-server/deploy/scripts/sync-modernization-dashboard-embedded-data.sh</code> after checklist updates). Evidence-only updates may keep the same completed count; use the meta line snapshot sync time/fingerprint to confirm refresh.
       </div>
     </div>
 
+    <div id="deployReadiness"></div>
     <div id="outboxHealth"></div>
     <div id="sections"></div>
   </div>
@@ -393,7 +408,7 @@
       ]
     }
   ],
-  "__embeddedSyncedAtUtc": "2026-02-24T11:27:56.914Z",
+  "__embeddedSyncedAtUtc": "2026-02-24T12:15:51.214Z",
   "__embeddedFingerprint": "6cde1ded15f4"
 }
   </script>
@@ -429,8 +444,49 @@
     "DLQ must remain zero during canary window.",
     "If trend turns rising for NEW/RETRY, trigger rollback decision gate."
   ],
-  "__embeddedSyncedAtUtc": "2026-02-24T11:27:56.914Z",
+  "__embeddedSyncedAtUtc": "2026-02-24T12:15:51.214Z",
   "__embeddedFingerprint": "aefd8b1510a3"
+}
+  </script>
+
+  <script id="embedded-deploy-readiness" type="application/json">
+{
+  "status": "NO_GO_CUTOVER_PENDING_VALIDATION",
+  "checklistCompletion": "41/41",
+  "phase4ProtocolStatus": "TESTED_NO_GO_RUNTIME_BLOCKED",
+  "phase56ExtractionStatus": "TESTED_NO_GO_RUNTIME_BLOCKED",
+  "phase7CassandraStatus": "phase7 rehearsal no-go",
+  "securityHardeningStatus": "TESTED_NO_GO_DEPENDENCY_LOCK_AUDIT_PENDING",
+  "blockers": [
+    {
+      "id": "phase4_runtime_parity_go_missing",
+      "severity": "HIGH",
+      "state": "TESTED_NO_GO_RUNTIME_BLOCKED"
+    },
+    {
+      "id": "phase5_6_runtime_go_missing",
+      "severity": "HIGH",
+      "state": "TESTED_NO_GO_RUNTIME_BLOCKED"
+    },
+    {
+      "id": "security_dependency_audit_pending",
+      "severity": "HIGH",
+      "state": "TESTED_NO_GO_DEPENDENCY_LOCK_AUDIT_PENDING"
+    },
+    {
+      "id": "cassandra_data_parity_no_go",
+      "severity": "HIGH",
+      "state": "phase7 rehearsal no-go"
+    },
+    {
+      "id": "legacy_mp_client_live_validation_pending",
+      "severity": "HIGH",
+      "state": "dedicated mixed-topology validation wave required"
+    }
+  ],
+  "source": "/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-114601.md",
+  "__embeddedSyncedAtUtc": "2026-02-24T12:15:51.214Z",
+  "__embeddedFingerprint": "39233d7b1cdc"
 }
   </script>
 
@@ -442,6 +498,7 @@
     let viewMode = 'all';
     let model = null;
     let outboxHealth = null;
+    let deployReadiness = null;
     let overrides = {};
 
     function loadOverrides() {
@@ -533,6 +590,21 @@
         const data = JSON.parse(node.textContent || '{}');
         if (data && data.thresholds && data.sample) {
           data.__source = 'embedded-outbox-health';
+          return data;
+        }
+      } catch (err) {
+        return null;
+      }
+      return null;
+    }
+
+    function loadEmbeddedDeployReadiness() {
+      const node = document.getElementById('embedded-deploy-readiness');
+      if (!node) return null;
+      try {
+        const data = JSON.parse(node.textContent || '{}');
+        if (data && (data.status || data.reason)) {
+          data.__source = 'embedded-deploy-readiness';
           return data;
         }
       } catch (err) {
@@ -680,6 +752,46 @@
       `;
     }
 
+    function normalizeReadinessClass(status) {
+      const s = String(status || 'UNKNOWN').toUpperCase();
+      if (s.indexOf('NO_GO') !== -1) return 'readiness-no_go';
+      if (s.indexOf('BLOCKED') !== -1) return 'readiness-blocked';
+      if (s.indexOf('GO') !== -1) return 'readiness-go';
+      return 'readiness-caution';
+    }
+
+    function renderDeployReadiness() {
+      const el = document.getElementById('deployReadiness');
+      if (!el) return;
+      if (!deployReadiness) {
+        el.innerHTML = '';
+        return;
+      }
+      const status = deployReadiness.status || 'UNKNOWN';
+      const blockers = Array.isArray(deployReadiness.blockers) ? deployReadiness.blockers : [];
+      const blockerCount = blockers.length;
+      const source = deployReadiness.__source || deployReadiness.source || '-';
+      const embeddedMeta = getEmbeddedSnapshotMeta(deployReadiness);
+      const topBlockers = blockers.slice(0, 4).map((b) =>
+        `<li><code>${b.id}</code> (${b.severity}) - ${b.state}</li>`
+      ).join('');
+      el.innerHTML = `
+        <div class="cardx" style="border-left:4px solid ${status.toUpperCase().indexOf('NO_GO') !== -1 ? '#d9534f' : '#5bc0de'};">
+          <h4 style="margin-top:0;">Cutover Readiness (Separate From Checklist Completion)</h4>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+            <span class="readiness-pill ${normalizeReadinessClass(status)}">${status}</span>
+            <span class="meta">blockers: ${blockerCount}</span>
+            ${deployReadiness.checklistCompletion ? `<span class="meta">checklist in report: ${deployReadiness.checklistCompletion}</span>` : ''}
+          </div>
+          <div class="meta" style="margin-top:6px;">source: ${source}${embeddedMeta ? ` | snapshot synced: ${embeddedMeta.syncedAt} | fp: ${embeddedMeta.fingerprint} | html mtime: ${embeddedMeta.pageLastModified}` : ''}</div>
+          <div class="meta" style="margin-top:6px;">
+            phase4: ${deployReadiness.phase4ProtocolStatus || '-'} | phase5/6: ${deployReadiness.phase56ExtractionStatus || '-'} | phase7: ${deployReadiness.phase7CassandraStatus || '-'} | security: ${deployReadiness.securityHardeningStatus || '-'}
+          </div>
+          ${topBlockers ? `<ul class="readiness-list">${topBlockers}</ul>` : ''}
+        </div>
+      `;
+    }
+
     function render() {
       if (!model) return;
       const sectionsEl = document.getElementById('sections');
@@ -698,8 +810,9 @@
       const overallPct = pct(done, all);
       const embeddedMeta = getEmbeddedSnapshotMeta(model);
       overallBar.style.width = overallPct + '%';
-      overallText.textContent = `${done}/${all} completed (${overallPct}%)`;
+      overallText.textContent = `Checklist completion: ${done}/${all} (${overallPct}%)`;
       metaEl.textContent = `${model.project} | checklist updated: ${model.updatedAt} | source: ${model.__source || CHECKLIST_URL}${embeddedMeta ? ` | snapshot synced: ${embeddedMeta.syncedAt} | fp: ${embeddedMeta.fingerprint} | html mtime: ${embeddedMeta.pageLastModified}` : ''}`;
+      renderDeployReadiness();
       renderOutboxHealth();
 
       sectionsEl.innerHTML = '';
@@ -776,6 +889,7 @@
       if (outboxResult.status === 'fulfilled') {
         outboxHealth = outboxResult.value;
       }
+      deployReadiness = loadEmbeddedDeployReadiness();
       render();
 
       document.getElementById('showAll').addEventListener('click', () => { viewMode = 'all'; render(); });
@@ -789,6 +903,7 @@
     }
 
     init().catch((err) => {
+      document.getElementById('deployReadiness').innerHTML = '';
       document.getElementById('outboxHealth').innerHTML = '';
       document.getElementById('sections').innerHTML = `<div class="cardx"><strong>Failed to load checklist:</strong> ${String(err)}</div>`;
     });
