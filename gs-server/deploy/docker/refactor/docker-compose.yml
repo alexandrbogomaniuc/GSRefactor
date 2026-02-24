@@ -34,7 +34,7 @@ services:
     image: refactor-jetty-gs
     working_dir: /app
     volumes:
-      - "../../../../mp-server/web:/app"
+      - "../../../../../mq-mp-clean-version/web/target:/legacy-mp-target:ro"
     networks:
       - refactor-network
     depends_on:
@@ -42,7 +42,10 @@ services:
       - zookeeper
       - kafka
     command: >
-      sh -lc "sed -i 's#<hosts>.*</hosts>#<hosts>${CASSANDRA_HOST}:${CASSANDRA_PORT}</hosts>#' /app/target/web-mp-casino/WEB-INF/classes/mp-keyspace-config.xml
+      sh -lc "MP_WEBROOT=/tmp/web-mp-casino;
+      rm -rf $$MP_WEBROOT
+      && cp -R /legacy-mp-target/web-mp-casino $$MP_WEBROOT
+      && sed -i 's#<hosts>.*</hosts>#<hosts>${CASSANDRA_HOST}:${CASSANDRA_PORT}</hosts>#' $$MP_WEBROOT/WEB-INF/classes/mp-keyspace-config.xml
       && java -DMP_SERVER_ID=1
       -DHOSTNAME=mp-refactor-1
       -DSERVER_VM_IP=${MP_HOST}
@@ -50,13 +53,13 @@ services:
       -Dserver.port=${MP_PORT}
       -Dserver.jetty.host=0.0.0.0
       -Dserver.jetty.port=${MP_JETTY_PORT}
-      -Dserver.jetty.webroot=file:/app/target/web-mp-casino/
+      -Dserver.jetty.webroot=file:$$MP_WEBROOT/
       -Dkafka.hosts=${KAFKA_HOST}:${KAFKA_PORT}
       -Dzookeeper.connect=${ZOOKEEPER_HOST}:${ZOOKEEPER_PORT}
       -Dzookeeper.pool-size=1
       -Dzookeeper.server-id-path=/mp_refactor
       -Dzookeeper.server-id-pool-path=/mp_refactor/pool
-      -cp .:/app/target/web-mp-casino/WEB-INF/classes:/app/target/web-mp-casino/WEB-INF/lib/*
+      -cp .:$$MP_WEBROOT/WEB-INF/classes:$$MP_WEBROOT/WEB-INF/lib/*
       com.betsoft.casino.mp.web.NettyServer"
     ports:
       - "16300:6300"

@@ -4659,3 +4659,8 @@
 - Evidence: /Users/alexb/Documents/Dev/Dev_new/docs/162-program-deploy-cutover-readiness-status-and-blocker-aggregation-20260224-113500.md, /Users/alexb/Documents/Dev/Dev_new/docs/163-legacy-mixed-topology-validation-pack-and-runtime-blocked-preflight-20260224-114500.md, /Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-112609.md, /Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology/legacy-mixed-topology-validation-20260224-112609.md.
 - Result: Refactor deploy/cutover readiness is explicitly aggregated as no-go pending validation; mixed-topology compatibility wave now has a one-command evidence pack and operator checklist.
 - Next step: sync dashboard, run full verification suite, then commit the deploy-readiness + mixed-topology validation tooling batch.
+### 2026-02-24 11:45-11:55 UTC
+- Fixed refactor MP container startup with a minimal refactor-only compose patch: replaced source-code mount (`Dev_new/mp-server/web`) with a read-only mount of legacy-built MP webapp artifacts (`/Users/alexb/Documents/Dev/mq-mp-clean-version/web/target`) and copied them to `/tmp/web-mp-casino` inside the container before patching `mp-keyspace-config.xml`.
+- This avoids changing legacy source/runtime content and fixes the missing `mp-keyspace-config.xml` startup failure in `refactor-mp-1`.
+- Evidence: refactor compose logs show `NettyServer` startup and `Base URI: file:/tmp/web-mp-casino/`; in-container probes show `mp6300_open` and `mp6301_open`.
+- Result: refactor MP runtime is now starting successfully; next step is mixed-topology validation (refactored GS + legacy MP/client) and strict Phase 4/5/6 runtime evidence reruns.
