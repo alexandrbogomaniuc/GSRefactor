@@ -273,8 +273,8 @@
         {
           "id": "ux-persistent-approvals",
           "label": "Cross-session persistent approvals and audit trail",
-          "status": "planned",
-          "evidence": "docs/32-gs-config-portal-all-levels-spec.md"
+          "status": "done",
+          "evidence": "docs/135-phase3-config-portal-persistent-approvals-browser-local-20260224-090500.md"
         },
         {
           "id": "ux-rollback-guardrails",

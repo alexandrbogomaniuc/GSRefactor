@@ -427,6 +427,52 @@
             white-space: pre-wrap;
             word-break: break-word;
         }
+        .approval-progress {
+            height: 10px;
+            background: #eceff3;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 6px 0 10px 0;
+        }
+        .approval-progress-bar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #5bc0de, #5cb85c);
+        }
+        .approval-card {
+            border: 1px solid #d7dde5;
+            border-radius: 6px;
+            padding: 10px 12px;
+            background: #fbfcfe;
+            margin-bottom: 10px;
+        }
+        .approval-card h5 {
+            margin-top: 0;
+            margin-bottom: 6px;
+        }
+        .approval-tools textarea {
+            width: 100%;
+            min-height: 90px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .approval-mini-btn {
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+        .approval-status-pill {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 600;
+            background: #eef2f7;
+        }
+        .approval-status-pill.pending { background: #f8f1d5; color: #8a6d3b; }
+        .approval-status-pill.approved { background: #dff0d8; color: #3c763d; }
+        .approval-status-pill.rejected { background: #f2dede; color: #a94442; }
+        .approval-status-pill.published { background: #d9edf7; color: #31708f; }
+        .approval-status-pill.rolled_back { background: #fcf8e3; color: #8a6d3b; }
     </style>
 </head>
 <body>
@@ -778,12 +824,13 @@
                 <th>Updated At</th>
                 <th>By</th>
                 <th>Change Reason</th>
+                <th>Approval Queue</th>
             </tr>
             </thead>
             <tbody>
             <% if (recentDrafts.isEmpty()) { %>
             <tr>
-                <td colspan="9"><em>No drafts in current session yet.</em></td>
+                <td colspan="10"><em>No drafts in current session yet.</em></td>
             </tr>
             <% } else { %>
             <% for (Map<String, String> row : recentDrafts) { %>
@@ -797,12 +844,294 @@
                 <td><code><%=esc(row.get("updatedAt"))%></code></td>
                 <td><code><%=esc(row.get("performedBy"))%></code></td>
                 <td><%=esc(row.get("changeReason"))%></td>
+                <td>
+                    <button type="button"
+                            class="btn btn-xs btn-default approval-queue-btn"
+                            data-draft-version="<%=esc(row.get("draftVersion"))%>"
+                            data-status="<%=esc(row.get("status"))%>"
+                            data-bank-id="<%=esc(row.get("bankId"))%>"
+                            data-validation-passed="<%=esc(row.get("validationPassed"))%>"
+                            data-updated-at="<%=esc(row.get("updatedAt"))%>"
+                            data-performed-by="<%=esc(row.get("performedBy"))%>"
+                            data-change-reason="<%=esc(row.get("changeReason"))%>">
+                        Queue
+                    </button>
+                </td>
             </tr>
             <% } %>
             <% } %>
             </tbody>
         </table>
+
+        <h5 style="margin-top:16px;">Level 4b: Persistent Approval Queue (Browser Local)</h5>
+        <p class="small-note">
+            Local persistent approval tracking for operator workflow review. Data is stored in your browser (<code>localStorage</code>) and can be exported/imported as JSON bundle.
+        </p>
+        <div class="approval-card">
+            <h5>Approval Overview</h5>
+            <div id="approvalOverviewCounts" class="small-note">Loading...</div>
+            <div class="approval-progress"><div id="approvalProgressBar" class="approval-progress-bar"></div></div>
+            <div id="approvalOverviewMeta" class="small-note"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="approval-card">
+                    <h5>Queued Draft Approvals</h5>
+                    <div class="small-note" id="approvalQueueHint">Use <code>Queue</code> from the session registry to add drafts.</div>
+                    <table class="table table-bordered table-condensed table-striped">
+                        <thead>
+                        <tr>
+                            <th>Draft</th>
+                            <th>Bank</th>
+                            <th>Status</th>
+                            <th>Validation</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="approvalQueueBody">
+                        <tr><td colspan="5"><em>No queued approvals yet.</em></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="approval-card">
+                    <h5>Approval Decision History</h5>
+                    <div class="small-note">Latest 20 local approval decisions (approve/reject/publish/rollback/remove).</div>
+                    <table class="table table-bordered table-condensed table-striped">
+                        <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Draft</th>
+                            <th>Decision</th>
+                            <th>By</th>
+                        </tr>
+                        </thead>
+                        <tbody id="approvalHistoryBody">
+                        <tr><td colspan="4"><em>No local approval history yet.</em></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="approval-card approval-tools">
+            <h5>Approval Queue Bundle (Export / Import)</h5>
+            <div style="margin-bottom:8px;">
+                <button type="button" class="btn btn-default btn-sm approval-mini-btn" id="approvalExportBtn">Export Bundle JSON</button>
+                <button type="button" class="btn btn-default btn-sm approval-mini-btn" id="approvalImportBtn">Import Bundle JSON</button>
+                <button type="button" class="btn btn-warning btn-sm approval-mini-btn" id="approvalResetBtn">Reset Local Approval Queue</button>
+                <button type="button" class="btn btn-info btn-sm approval-mini-btn" id="approvalRefreshBtn">Refresh View</button>
+            </div>
+            <textarea id="approvalBundleJson" placeholder='{"type":"config-portal-approval-bundle","version":1,...}'></textarea>
+            <div id="approvalBundleStatus" class="small-note" style="margin-top:6px;">No bundle action yet.</div>
+        </div>
     </div>
 </div>
+<script type="text/javascript">
+(function () {
+    var QUEUE_KEY = 'configPortalApprovalQueue.v1';
+    var HISTORY_KEY = 'configPortalApprovalHistory.v1';
+    var MAX_HISTORY = 20;
+    function safeParse(text, fallback) { try { return JSON.parse(text); } catch (e) { return fallback; } }
+    function loadArray(key) {
+        if (!window.localStorage) { return []; }
+        var raw = window.localStorage.getItem(key);
+        if (!raw) { return []; }
+        var parsed = safeParse(raw, []);
+        return parsed && typeof parsed.length === 'number' ? parsed : [];
+    }
+    function saveArray(key, arr) { if (window.localStorage) { window.localStorage.setItem(key, JSON.stringify(arr)); } }
+    function loadQueue() { return loadArray(QUEUE_KEY); }
+    function saveQueue(q) { saveArray(QUEUE_KEY, q); }
+    function loadHistory() { return loadArray(HISTORY_KEY); }
+    function saveHistory(h) { saveArray(HISTORY_KEY, h.slice(0, MAX_HISTORY)); }
+    function nowIso() { return new Date().toISOString(); }
+    function escHtml(v) {
+        if (v === null || v === undefined) { return ''; }
+        return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;');
+    }
+    function code(v) { return '<code>' + escHtml(v) + '</code>'; }
+    function setBundleStatus(msg) {
+        var el = document.getElementById('approvalBundleStatus');
+        if (el) { el.innerHTML = escHtml(msg); }
+    }
+    function pushHistory(entry) {
+        var h = loadHistory();
+        h.unshift(entry);
+        saveHistory(h);
+    }
+    function normalizeValidation(v) { return String(v || '').toLowerCase() === 'true' ? 'true' : 'false'; }
+    function queueFromButton(btn) {
+        var item = {
+            draftVersion: btn.getAttribute('data-draft-version') || '',
+            bankId: btn.getAttribute('data-bank-id') || '',
+            workflowStatus: btn.getAttribute('data-status') || '',
+            validationPassed: normalizeValidation(btn.getAttribute('data-validation-passed')),
+            updatedAt: btn.getAttribute('data-updated-at') || '',
+            performedBy: btn.getAttribute('data-performed-by') || 'portal-operator',
+            changeReason: btn.getAttribute('data-change-reason') || '',
+            localApprovalState: 'pending',
+            queuedAt: nowIso(),
+            localDecisionAt: ''
+        };
+        if (!item.draftVersion) { setBundleStatus('ERROR: missing draftVersion.'); return; }
+        var q = loadQueue();
+        var found = false;
+        for (var i = 0; i < q.length; i++) {
+            if (q[i].draftVersion === item.draftVersion) {
+                item.localApprovalState = q[i].localApprovalState || 'pending';
+                item.localDecisionAt = q[i].localDecisionAt || '';
+                q[i] = item;
+                found = true;
+                break;
+            }
+        }
+        if (!found) { q.unshift(item); }
+        saveQueue(q);
+        pushHistory({ at: nowIso(), draftVersion: item.draftVersion, decision: found ? 'requeue_update' : 'queued', performedBy: item.performedBy });
+        setBundleStatus((found ? 'Updated queued draft: ' : 'Queued draft: ') + item.draftVersion);
+        renderApprovals();
+    }
+    function setDecision(draftVersion, decision) {
+        var q = loadQueue();
+        for (var i = 0; i < q.length; i++) {
+            if (q[i].draftVersion === draftVersion) {
+                q[i].localApprovalState = decision;
+                q[i].localDecisionAt = nowIso();
+                saveQueue(q);
+                pushHistory({ at: q[i].localDecisionAt, draftVersion: draftVersion, decision: decision, performedBy: q[i].performedBy || 'portal-operator' });
+                setBundleStatus('Decision saved: ' + draftVersion + ' -> ' + decision);
+                renderApprovals();
+                return;
+            }
+        }
+        setBundleStatus('ERROR: queued draft not found: ' + draftVersion);
+    }
+    function removeQueued(draftVersion) {
+        var q = loadQueue();
+        var next = [];
+        var removed = false;
+        for (var i = 0; i < q.length; i++) {
+            if (q[i].draftVersion === draftVersion) {
+                removed = true;
+                pushHistory({ at: nowIso(), draftVersion: draftVersion, decision: 'removed', performedBy: q[i].performedBy || 'portal-operator' });
+            } else {
+                next.push(q[i]);
+            }
+        }
+        if (!removed) { setBundleStatus('ERROR: queued draft not found: ' + draftVersion); return; }
+        saveQueue(next);
+        setBundleStatus('Removed queued draft: ' + draftVersion);
+        renderApprovals();
+    }
+    function renderApprovals() {
+        var q = loadQueue();
+        var h = loadHistory();
+        var counts = { total: q.length, pending:0, approved:0, rejected:0, published:0, rolled_back:0 };
+        for (var i = 0; i < q.length; i++) {
+            var st = q[i].localApprovalState || 'pending';
+            counts[st] = (counts[st] || 0) + 1;
+        }
+        var resolved = (counts.approved || 0) + (counts.published || 0) + (counts.rolled_back || 0);
+        var pct = counts.total ? Math.round((resolved / counts.total) * 100) : 0;
+        var countsEl = document.getElementById('approvalOverviewCounts');
+        var metaEl = document.getElementById('approvalOverviewMeta');
+        var barEl = document.getElementById('approvalProgressBar');
+        var queueBody = document.getElementById('approvalQueueBody');
+        var historyBody = document.getElementById('approvalHistoryBody');
+        var hintEl = document.getElementById('approvalQueueHint');
+        if (countsEl) {
+            countsEl.innerHTML = 'Queued <b>' + counts.total + '</b> | Pending <b>' + (counts.pending||0) + '</b> | Approved <b>' + (counts.approved||0) + '</b> | Rejected <b>' + (counts.rejected||0) + '</b> | Published <b>' + (counts.published||0) + '</b> | Rolled Back <b>' + (counts.rolled_back||0) + '</b>';
+        }
+        if (metaEl) { metaEl.innerHTML = 'Local approval progress: <b>' + pct + '%</b> resolved from queued drafts.'; }
+        if (barEl) { barEl.style.width = pct + '%'; }
+        if (hintEl) { hintEl.innerHTML = counts.total ? 'Queue is persisted in your browser and survives page refresh.' : 'Use <code>Queue</code> from the session registry to add drafts.'; }
+        if (queueBody) {
+            if (!q.length) {
+                queueBody.innerHTML = '<tr><td colspan=\"5\"><em>No queued approvals yet.</em></td></tr>';
+            } else {
+                var out = [];
+                for (var j = 0; j < q.length; j++) {
+                    var row = q[j];
+                    var st2 = row.localApprovalState || 'pending';
+                    out.push('<tr><td>' + code(row.draftVersion) + '<div class=\"small-note\">' + escHtml(row.updatedAt || row.queuedAt) + '</div></td>' +
+                        '<td>' + code(row.bankId) + '</td>' +
+                        '<td><span class=\"approval-status-pill ' + escHtml(st2) + '\">' + escHtml(st2) + '</span></td>' +
+                        '<td>' + code(row.validationPassed) + '</td>' +
+                        '<td>' +
+                        '<button type=\"button\" class=\"btn btn-xs btn-success approval-mini-btn\" data-approve-draft=\"' + escHtml(row.draftVersion) + '\">Approve</button>' +
+                        '<button type=\"button\" class=\"btn btn-xs btn-warning approval-mini-btn\" data-publish-draft=\"' + escHtml(row.draftVersion) + '\">Publish</button>' +
+                        '<button type=\"button\" class=\"btn btn-xs btn-danger approval-mini-btn\" data-reject-draft=\"' + escHtml(row.draftVersion) + '\">Reject</button>' +
+                        '<button type=\"button\" class=\"btn btn-xs btn-default approval-mini-btn\" data-rollback-draft=\"' + escHtml(row.draftVersion) + '\">Rollback</button>' +
+                        '<button type=\"button\" class=\"btn btn-xs btn-link approval-mini-btn\" data-remove-draft=\"' + escHtml(row.draftVersion) + '\">Remove</button>' +
+                        '</td></tr>');
+                }
+                queueBody.innerHTML = out.join('');
+            }
+        }
+        if (historyBody) {
+            if (!h.length) {
+                historyBody.innerHTML = '<tr><td colspan=\"4\"><em>No local approval history yet.</em></td></tr>';
+            } else {
+                var hOut = [];
+                for (var k = 0; k < h.length && k < MAX_HISTORY; k++) {
+                    var hh = h[k];
+                    hOut.push('<tr><td>' + code(hh.at) + '</td><td>' + code(hh.draftVersion) + '</td><td><span class=\"approval-status-pill ' + escHtml(hh.decision) + '\">' + escHtml(hh.decision) + '</span></td><td>' + code(hh.performedBy) + '</td></tr>');
+                }
+                historyBody.innerHTML = hOut.join('');
+            }
+        }
+    }
+    function exportBundle() {
+        var bundle = { type: 'config-portal-approval-bundle', version: 1, exportedAt: nowIso(), queue: loadQueue(), history: loadHistory() };
+        document.getElementById('approvalBundleJson').value = JSON.stringify(bundle, null, 2);
+        setBundleStatus('Exported bundle JSON (' + bundle.queue.length + ' queue, ' + bundle.history.length + ' history).');
+    }
+    function importBundle() {
+        var txt = document.getElementById('approvalBundleJson').value || '';
+        if (!txt.replace(/\\s+/g, '').length) { setBundleStatus('ERROR: bundle JSON is empty.'); return; }
+        var bundle = safeParse(txt, null);
+        if (!bundle) { setBundleStatus('ERROR: invalid JSON.'); return; }
+        if (!bundle.queue || typeof bundle.queue.length !== 'number' || !bundle.history || typeof bundle.history.length !== 'number') {
+            setBundleStatus('ERROR: bundle must contain queue[] and history[].'); return;
+        }
+        saveQueue(bundle.queue);
+        saveHistory(bundle.history);
+        setBundleStatus('Imported bundle JSON (' + bundle.queue.length + ' queue, ' + bundle.history.length + ' history).');
+        renderApprovals();
+    }
+    function resetLocal() {
+        if (!window.confirm('Reset local approval queue and history in this browser?')) { setBundleStatus('Reset cancelled.'); return; }
+        if (window.localStorage) {
+            window.localStorage.removeItem(QUEUE_KEY);
+            window.localStorage.removeItem(HISTORY_KEY);
+        }
+        document.getElementById('approvalBundleJson').value = '';
+        setBundleStatus('Local approval queue/history reset.');
+        renderApprovals();
+    }
+    document.addEventListener('click', function (evt) {
+        var t = evt.target;
+        if (!t) { return; }
+        if (String(t.className || '').indexOf('approval-queue-btn') >= 0) { queueFromButton(t); return; }
+        if (t.getAttribute('data-approve-draft')) { setDecision(t.getAttribute('data-approve-draft'), 'approved'); return; }
+        if (t.getAttribute('data-publish-draft')) { setDecision(t.getAttribute('data-publish-draft'), 'published'); return; }
+        if (t.getAttribute('data-reject-draft')) { setDecision(t.getAttribute('data-reject-draft'), 'rejected'); return; }
+        if (t.getAttribute('data-rollback-draft')) { setDecision(t.getAttribute('data-rollback-draft'), 'rolled_back'); return; }
+        if (t.getAttribute('data-remove-draft')) { removeQueued(t.getAttribute('data-remove-draft')); return; }
+    });
+    var ex = document.getElementById('approvalExportBtn');
+    var im = document.getElementById('approvalImportBtn');
+    var re = document.getElementById('approvalResetBtn');
+    var rf = document.getElementById('approvalRefreshBtn');
+    if (ex) { ex.onclick = exportBundle; }
+    if (im) { im.onclick = importBundle; }
+    if (re) { re.onclick = resetLocal; }
+    if (rf) { rf.onclick = renderApprovals; }
+    renderApprovals();
+})();
+</script>
 </body>
 </html>

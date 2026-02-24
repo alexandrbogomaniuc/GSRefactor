@@ -4516,3 +4516,16 @@
   - Phase 7 deliverables are complete and tested with a valid `No-Go` rehearsal outcome; production/canary cutover remains blocked until target restore/parity alignment.
 - Next step:
   - Continue main-thread work on remaining phases (Phase 5/6 runtime parity hardening and Phase 4 protocol runtime parity), then later rerun Cassandra rehearsal after target restore/upgrade candidate prep.
+
+### 2026-02-24 08:56-09:00 UTC
+- Implemented and runtime-tested Phase 3 config portal persistent approvals UX in `/support/configPortal.jsp` using browser-local storage (queue/history + export/import/reset) and queue actions from the session draft registry.
+- Synced updated JSP into refactor runtime webapp and validated end-to-end UI flow against `refactor-gs-1` on `http://127.0.0.1:18081/support/configPortal.jsp` (queue -> approve -> export -> reset(confirm) -> import restore).
+- Updated modernization checklist/docs evidence to doc 135 to close `ux-persistent-approvals`.
+- Evidence:
+  - /Users/alexb/Documents/Dev/Dev_new/docs/135-phase3-config-portal-persistent-approvals-browser-local-20260224-090500.md
+  - /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/configPortal.jsp
+  - /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json
+- Result:
+  - Config portal now has a user-friendly visual local approval queue/audit trail without backend contract changes.
+- Next step:
+  - Sync dashboard embedded data, run verification suite, commit the Phase 3 UX increment, then continue the main thread (`ux-rollback-guardrails` / Phase 5-6 parity hardening).
