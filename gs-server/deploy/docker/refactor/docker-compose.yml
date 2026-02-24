@@ -11,6 +11,7 @@ services:
       - ZOOKEEPER_PORT=${ZOOKEEPER_PORT}
       - KAFKA_HOST=${KAFKA_HOST}
       - KAFKA_PORT=${KAFKA_PORT}
+      - GS_JAVA_OPTS=${GS_JAVA_OPTS:-}
     volumes:
       - "../../../../Doker/runtime-gs/webapps/gs:/var/lib/jetty/webapps"
       - "../../../../Doker/runtime-gs/logs/gs:/www/logs/tomcat.gs"

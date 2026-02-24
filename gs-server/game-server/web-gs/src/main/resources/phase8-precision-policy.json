@@ -75,8 +75,8 @@
     },
     {
       "category": "nonprod_canary_runtime",
-      "status": "execution_ready_pending_jvm_flags_and_run",
-      "evidence": "docs/128-phase8-nonprod-canary-readiness-and-evidence-pack-20260224-063000.md",
+      "status": "execution_script_ready_pending_jvm_flags_and_run",
+      "evidence": "docs/129-phase8-nonprod-canary-execution-script-and-sandbox-blocker-20260224-070000.md",
       "blocking": true
     }
   ]

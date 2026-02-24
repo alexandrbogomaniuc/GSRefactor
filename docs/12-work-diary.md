@@ -4431,3 +4431,19 @@
   - Phase 8 now has only one explicit generated blocker, and that blocker is execution-ready with a concrete evidence-pack flow; actual non-prod canary runtime execution is still required to close the phase.
 - Next step:
   - run the non-prod GS restart + canary requests with Phase 8 JVM flags and capture runtime evidence, then update the policy/matrix to close the final blocker.
+### 2026-02-24 06:51-06:52 UTC
+- Continued `/Users/alexb/Documents/Dev/Dev_new` Phase 8 by adding `GS_JAVA_OPTS` passthrough for the refactor GS container and an executable non-prod canary runner script (`phase8-precision-nonprod-canary-run.sh`) with `--dry-run`, trigger, evidence-pack, and restore-default flow.
+- Attempted to execute the real GS canary restart with Phase 8 JVM flags, but Docker daemon write/recreate operations are blocked in this sandbox (`/Users/alexb/.docker/run/docker.sock` permission denied). The blocker was documented explicitly and converted into a one-command local execution step.
+- Updated support docs/checklist to doc 129, re-synced dashboard embedded data, and re-ran verification gates.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/129-phase8-nonprod-canary-execution-script-and-sandbox-blocker-20260224-070000.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision/phase8-precision-verification-matrix-20260224-065214.md` (`blockingCategories: 1`, final blocker `nonprod_canary_runtime`)
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260224-065200.md` (suite PASS, `pass=50 fail=0 skip=0`)
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-nonprod-canary-run.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/configs/gs/Dockerfile`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor/docker-compose.yml`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html` (embedded checklist sync `26/41`; evidence path updated to doc 129; `fp=53a05d150a2b`)
+- Result:
+  - Phase 8 remains blocked only by the real non-prod canary runtime execution, but it is now executable in one command outside this sandbox.
+- Next step:
+  - run `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-nonprod-canary-run.sh` on your machine, then clear the final policy blocker and regenerate matrix to close Phase 8.
