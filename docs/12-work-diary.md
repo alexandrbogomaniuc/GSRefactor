@@ -4556,3 +4556,8 @@
   - Phase 4 reports now distinguish blocked runtime deployment state from actual protocol regressions.
 - Next step:
   - Sync dashboard/checklist evidence, run verification suite, commit this Phase 4 evidence hardening increment, then continue runtime parity work.
+
+### 2026-02-24 09:14-09:30 UTC
+- Hardened Dev_new Phase 4 protocol runtime evidence degraded classification to emit `SKIP_DOCKER_API_DENIED` (instead of generic FAIL) when Docker API access is blocked, and wired transport-aware readiness/parity invocation in the evidence pack.
+- Generated real degraded Docker-transport evidence report showing `runtime_readiness: SKIP_DOCKER_API_DENIED` and probe skips, then updated checklist/docs evidence pointer to doc 138.
+- Next step: rerun strict Phase 4 runtime evidence (`--transport docker`) when Docker API access is available in this shell to capture parity/wallet outcomes.

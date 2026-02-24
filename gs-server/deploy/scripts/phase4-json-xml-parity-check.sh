@@ -13,6 +13,8 @@ SESSION_ID="parity-session-6275"
 OPERATION_ID="parity-op-001"
 ROUND_ID="parity-round-001"
 AMOUNT="100"
+TRANSPORT="host"
+PROTOCOL_CONTAINER="refactor-protocol-adapter-1"
 
 usage() {
   cat <<USAGE
@@ -27,6 +29,8 @@ Options:
   --operation-id ID    Default: ${OPERATION_ID}
   --round-id ID        Default: ${ROUND_ID}
   --amount VALUE       Default: ${AMOUNT}
+  --transport MODE     host|docker (default: ${TRANSPORT})
+  --protocol-container NAME   Default: ${PROTOCOL_CONTAINER}
   -h, --help           Show this help
 USAGE
 }
@@ -49,6 +53,10 @@ while [[ $# -gt 0 ]]; do
       ROUND_ID="$2"; shift 2 ;;
     --amount)
       AMOUNT="$2"; shift 2 ;;
+    --transport)
+      TRANSPORT="$2"; shift 2 ;;
+    --protocol-container)
+      PROTOCOL_CONTAINER="$2"; shift 2 ;;
     -h|--help)
       usage; exit 0 ;;
     *)
@@ -67,6 +75,9 @@ require_cmd() {
 
 require_cmd curl
 require_cmd node
+if [[ "${TRANSPORT}" == "docker" ]]; then
+  require_cmd docker
+fi
 
 tmp_dir="$(mktemp -d)"
 current_file="${tmp_dir}/current-settings.json"
@@ -94,12 +105,23 @@ trap cleanup EXIT
 http_get_to_file() {
   local url="$1"
   local out_file="$2"
-  local code
-  code=$(curl -sS -o "${out_file}" -w '%{http_code}' "${url}")
-  if [[ ! "${code}" =~ ^2 ]]; then
-    echo "HTTP GET failed: ${url} -> ${code}" >&2
-    cat "${out_file}" >&2 || true
-    exit 2
+  if [[ "${TRANSPORT}" == "docker" ]]; then
+    local path="${url#${BASE_URL}}"
+    local tmpf="/tmp/phase4-parity-get-$$.json"
+    local cmd="wget -qO- 'http://127.0.0.1:18078${path}' > '${tmpf}' && cat '${tmpf}'"
+    if ! docker exec "${PROTOCOL_CONTAINER}" sh -lc "${cmd}" > "${out_file}"; then
+      echo "HTTP GET failed (docker): ${path}" >&2
+      cat "${out_file}" >&2 || true
+      exit 2
+    fi
+  else
+    local code
+    code=$(curl -sS -o "${out_file}" -w '%{http_code}' "${url}")
+    if [[ ! "${code}" =~ ^2 ]]; then
+      echo "HTTP GET failed: ${url} -> ${code}" >&2
+      cat "${out_file}" >&2 || true
+      exit 2
+    fi
   fi
 }
 
@@ -107,16 +129,29 @@ http_post_file() {
   local url="$1"
   local body_file="$2"
   local out_file="$3"
-  local code
-  code=$(curl -sS -X POST "${url}" \
-    -H 'Content-Type: application/json' \
-    --data @"${body_file}" \
-    -o "${out_file}" \
-    -w '%{http_code}')
-  if [[ ! "${code}" =~ ^2 ]]; then
-    echo "HTTP POST failed: ${url} -> ${code}" >&2
-    cat "${out_file}" >&2 || true
-    exit 3
+  if [[ "${TRANSPORT}" == "docker" ]]; then
+    local path="${url#${BASE_URL}}"
+    local payload
+    payload="$(cat "${body_file}")"
+    if ! docker exec "${PROTOCOL_CONTAINER}" sh -lc \
+      "wget -qO- --header='Content-Type: application/json' --post-data='${payload}' 'http://127.0.0.1:18078${path}'" \
+      > "${out_file}"; then
+      echo "HTTP POST failed (docker): ${path}" >&2
+      cat "${out_file}" >&2 || true
+      exit 3
+    fi
+  else
+    local code
+    code=$(curl -sS -X POST "${url}" \
+      -H 'Content-Type: application/json' \
+      --data @"${body_file}" \
+      -o "${out_file}" \
+      -w '%{http_code}')
+    if [[ ! "${code}" =~ ^2 ]]; then
+      echo "HTTP POST failed: ${url} -> ${code}" >&2
+      cat "${out_file}" >&2 || true
+      exit 3
+    fi
   fi
 }
 
@@ -212,4 +247,4 @@ if (xmlResp.canonicalRequest.protocolMode !== 'XML' || jsonResp.canonicalRequest
 console.log('PARITY_OK bankId=' + bankId + ' endpoint=' + xmlResp.canonicalRequest.endpoint);
 NODE
 
-echo "JSON/XML parity check passed for bank ${BANK_ID} (${METHOD} ${ENDPOINT})"
+echo "JSON/XML parity check passed for bank ${BANK_ID} (${METHOD} ${ENDPOINT}) transport=${TRANSPORT}"

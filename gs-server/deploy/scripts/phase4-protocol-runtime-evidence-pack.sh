@@ -76,6 +76,12 @@ trap 'rm -rf "${work_dir}"' EXIT
 classify_probe_failure() {
   local out_file="$1"
   if [[ "${ALLOW_MISSING_RUNTIME}" == "true" ]] && grep -Eqi \
+    'permission denied while trying to connect to the docker API|docker socket not accessible' \
+    "${out_file}" 2>/dev/null; then
+    echo "SKIP_DOCKER_API_DENIED"
+    return 0
+  fi
+  if [[ "${ALLOW_MISSING_RUNTIME}" == "true" ]] && grep -Eqi \
     'curl: \(7\)|Failed to connect|No such container|could not auto-resolve sessionId|HTTP (GET|POST) failed: .* -> 000|Connection refused' \
     "${out_file}" 2>/dev/null; then
     echo "SKIP_RUNTIME_UNAVAILABLE"
@@ -106,7 +112,8 @@ if [[ "${TRANSPORT}" == "docker" ]]; then
 fi
 readiness_status="$(run_and_capture readiness "${readiness_out}" \
   /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-runtime-readiness-check.sh \
-  --check-docker "${readiness_check_docker}")"
+  --check-docker "${readiness_check_docker}" \
+  --transport "${TRANSPORT}")"
 
 skip_runtime_probes="false"
 if [[ "${ALLOW_MISSING_RUNTIME}" == "true" && "${readiness_status}" != "PASS" ]]; then
@@ -126,7 +133,7 @@ fi
 if [[ "${skip_runtime_probes}" != "true" ]]; then
   parity_status="$(run_and_capture parity "${parity_out}" \
     /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-json-xml-parity-check.sh \
-    --bank-id "${BANK_ID}" --base-url "${BASE_URL}")"
+    --bank-id "${BANK_ID}" --base-url "${BASE_URL}" --transport "${TRANSPORT}")"
 
   if [[ -n "${SESSION_ID}" ]]; then
     wallet_status="$(run_and_capture wallet "${wallet_out}" \
