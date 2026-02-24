@@ -4705,3 +4705,86 @@
   - GS/MP runtime configs show `<hosts>c1-refactor:9042</hosts>`.
 - Next:
   - Run mixed-topology manual full-flow validation (refactor GS + legacy MP/client) and refresh program readiness report.
+### 2026-02-24 14:25-14:25 UTC
+- Externalized legacy mixed-topology validation defaults (legacy MP/client endpoints) into cluster-hosts.properties and updated validation pack to read from centralized config.
+- Mixed-topology preflight now uses actual legacy ports (6300/80) and reports READY_FOR_MANUAL_FULL_FLOW_EXECUTION when legacy services are running.
+- Committed and pushed reproducibility changes to GSRefactor: f8faf684.
+- Evidence: /Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology/legacy-mixed-topology-validation-20260224-142451.md, /Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-142451.md, verification suite 20260224-142510.
+- Next step: run manual mixed-topology full-flow and strict runtime evidence reruns, then refresh deploy readiness.
+
+### 2026-02-24 14:58-15:00 UTC
+- Investigated manual mixed-topology launch blocker after `READY_FOR_MANUAL_FULL_FLOW_EXECUTION` preflight and confirmed this is partly a Cassandra 2.1 -> 4.1 migration completeness issue on `c1-refactor`, not only runtime routing.
+- Findings from live target (`refactor-c1-refactor-1`) vs source (`gp3-c1-1`):
+  - missing serialized config rows in `rcasinoscks.bankinfocf`, `subcasinocf`, and bank-specific `gameinfocf` entries for `6274/6275` caused refactor GS launch to return `Bank is incorrect` (`bankInfo is null, id=6275`),
+  - missing `rcasinoscks.currencycf` row `VND` caused bank-cache deserialization errors (`Deserialize unregistered currency`) and only `1` bank loaded after restart.
+- Applied live remediation using existing Phase 7 bootstrap/copy tooling with custom table lists, then restarted refactor GS:
+  - copied launch metadata tables (`bankinfocf`, `subcasinocf`, `gameinfocf`, `gametinfocf`) -> report `phase7-cassandra-target-bootstrap-and-critical-copy-20260224-145200.md`,
+  - copied `currencycf` (to restore `VND`) -> report `phase7-cassandra-target-bootstrap-and-critical-copy-20260224-145431.md`.
+- Patched source code/tooling for v4 readiness follow-up:
+  - `CassandraStateCheckTask` and `CassandraStateMonitoringTask` now fall back to DataStax driver metadata host addresses when `jmxHosts` config is empty (reduces false `Cannot obtain host list` warnings on refactor/v4 configs),
+  - expanded default Phase 7 `critical-tables.txt` to include runtime config metadata tables (`currencycf`, `bankinfocf`, `subcasinocf`, `gameinfocf`, `gametinfocf`) so target rehearsal copy prepares refactor runtime caches by default.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/phase7-cassandra-target-bootstrap-and-critical-copy-20260224-145200.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/phase7-cassandra-target-bootstrap-and-critical-copy-20260224-145431.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology/manual-20260224-145229/` and prior `manual-*` dirs showing `Bank is incorrect`
+  - refactor GS logs showing `bankInfo is null` (pre-fix) and `CurrencyCache loadAll: count=15`, `CassandraBankInfoPersister loadAll: count=3` (post-fix restart)
+- Result:
+  - Confirmed major Cassandra 4 migration consequence: target can be schema/query-compatible yet still fail runtime due omitted serialized config metadata; tooling is now improved to prevent this by default.
+  - Mixed-topology manual full-flow still pending final retest completion after the latest GS restart cycle.
+- Next step:
+  - Rerun manual mixed-topology launch/full-flow on refactor GS after stable post-restart health (`configPortal.jsp` 200) and refresh deploy readiness report.
+### 2026-02-24 15:01-15:05 UTC
+- Analyzed Cassandra 2.x -> 4.1 compatibility consequences after mixed-topology `Bank is incorrect` failures and confirmed this was a combined data-migration + code/config issue, not only a driver/runtime crash.
+- Fixed a hardcoded native protocol pin in GS Cassandra cache client (`ProtocolVersion.V3`) by removing forced protocol selection so DataStax driver 3.11.5 negotiates with Cassandra 4.x (and remains backward-compatible with legacy nodes).
+- Confirmed previously-added v4 hardening patches remain in worktree: Cassandra diagnosis tasks now fall back to driver metadata when `jmxHosts` is empty, and Phase 7 critical table list now includes runtime config metadata (`currencycf`, `bankinfocf`, `subcasinocf`, `gameinfocf`, `gametinfocf`) needed for refactor GS/MP startup on upgraded targets.
+- Evidence: /Users/alexb/Documents/Dev/dev_new/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/KeyspaceConfiguration.java, /Users/alexb/Documents/Dev/dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/system/diagnosis/tasks/CassandraStateCheckTask.java, /Users/alexb/Documents/Dev/dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/system/diagnosis/tasks/CassandraStateMonitoringTask.java, /Users/alexb/Documents/Dev/dev_new/docs/phase7/cassandra/critical-tables.txt
+- Result: codebase no longer forces v2-era protocol V3 against Cassandra 4 targets; migration tooling defaults now include missing runtime metadata tables that caused `bankInfo is null` / `Deserialize unregistered currency:: VND` launch failures.
+- Next step: rebuild/deploy GS against refactor Cassandra 4 target and rerun manual mixed-topology full-flow validation, then refresh deploy readiness report.
+### 2026-02-24 15:47-16:02 UTC
+- Executed full legacy Cassandra -> refactor Cassandra 4 migration (`gp3-c1-1` -> `refactor-c1-refactor-1`) for keyspaces `rcasinoscks,rcasinoks` using Phase 7 full-copy script with target truncation, then ran full table-count parity verification.
+- Found and fixed two Phase 7 full-copy script defects during live execution:
+  1) `COPY ... FROM STDIN` under non-interactive `cqlsh -e` on Cassandra 4 silently imported 0 rows while reporting success; replaced with `docker cp` + `COPY ... FROM '/tmp/file.csv'`.
+  2) `cqlsh COPY` import could fail with `Batch too large` (observed on `rcasinoks.httpcallinfocf`); added retry path with `MINBATCHSIZE='1' AND MAXBATCHSIZE='1'` after truncate.
+- Final migration result (after targeted retry for `rcasinoks.httpcallinfocf`): source vs target row-count parity matched on all discovered tables (`107/107`, mismatches=0).
+- Refactor app services were paused during import to avoid target writes, then restored; spot-check counts after stack restart confirmed migrated data persisted (`bankinfocf=3`, `gamesessioncf=68`).
+- Evidence: /Users/alexb/Documents/Dev/dev_new/docs/phase7/cassandra/full-copy/phase7-cassandra-full-data-copy-20260224-155602.md, /Users/alexb/Documents/Dev/dev_new/docs/phase7/cassandra/full-copy/run-20260224-155602/count-compare-source-vs-target.tsv, /Users/alexb/Documents/Dev/dev_new/docs/phase7/cassandra/full-copy/run-20260224-155602/count-mismatches-source-vs-target.tsv, /Users/alexb/Documents/Dev/dev_new/docs/phase7/cassandra/phase7-cassandra-table-counts-gp3-c1-1-20260224-155811.txt, /Users/alexb/Documents/Dev/dev_new/docs/phase7/cassandra/phase7-cassandra-table-counts-refactor-c1-refactor-1-20260224-155952.txt
+- Next step: rerun mixed-topology manual full-flow validation against the fully migrated Cassandra 4 target and refresh deploy readiness report.
+### 2026-02-24 16:05-16:13 UTC
+- Reran mixed-topology preflight after full Cassandra 4 migration (`READY_FOR_MANUAL_FULL_FLOW_EXECUTION`) and executed fresh manual launch captures.
+- Diagnosed persistent `Bank is incorrect` as a request-shape issue, not Cassandra parity: manual URL omitted `subCasinoId=507`, so `CommonActionForm` inferred the wrong subcasino from `127.0.0.1` and `BankInfoCache.getBank(extBankId, subCasinoId)` returned null.
+- Verified Cassandra 4 target fidelity for key mixed-topology metadata tables by sorted CSV hash comparison (`bankinfocf`, `subcasinocf`, `gameinfocf`, `currencycf`) and confirmed GS runtime uses `c1-refactor:9042` with cache loads `bankInfo=3`, `currency=15`.
+- With corrected URL params (`subCasinoId=507`) and valid token (`bav_game_session_001`), both banks `6274` (USD) and `6275` (VND) successfully launched through refactor GS and redirected (`302`) to legacy MP template, followed by `200` template HTML including legacy asset URLs and `ws://localhost:6300/websocket/mplobby`.
+- Wrote manual mixed-topology result doc with status `MANUAL_LAUNCH_HANDOFF_PASS` and refreshed program readiness using the manual result + latest Cassandra full-copy report override. New readiness keeps overall `NO_GO_CUTOVER_PENDING_VALIDATION` with blockers reduced to runtime Phase4/5/6, security audit, and remaining mixed-topology checklist work.
+- Evidence: /Users/alexb/Documents/Dev/dev_new/docs/validation/legacy-mixed-topology/legacy-mixed-topology-validation-20260224-160531.md, /Users/alexb/Documents/Dev/dev_new/docs/validation/legacy-mixed-topology/manual-20260224-161112-b6274-sc507-token, /Users/alexb/Documents/Dev/dev_new/docs/validation/legacy-mixed-topology/manual-20260224-161112-b6275-sc507-token, /Users/alexb/Documents/Dev/dev_new/docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-result-20260224-161236.md, /Users/alexb/Documents/Dev/dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-161242.md
+- Next step: execute explicit reconnect scenario capture (repeat launch / session continuity) and FRB path check if enabled, then promote mixed-topology status from launch/handoff pass to full manual flow pass.
+### 2026-02-24 16:13-16:29 UTC
+- Executed reconnect validation for mixed-topology manual flow (refactor GS + legacy MP/client) after Cassandra 4 full migration and captured PASS evidence for both banks `6274` (USD) and `6275` (VND): repeated launches succeeded (`302 -> 200`), SIDs rotated on reconnect, GS logs showed reconnect cleanup (`finishGameSessionAndMakeSitOut`), and Cassandra current-session rows updated to the second SID with `isfinishgamesession=false`.
+- Confirmed FRB checklist step is not applicable for this manual wave by inspecting copied `rcasinoscks.bankinfocf` rows (`FRB_GAMES_ENABLE=null` for banks `6274/6275`), then wrote consolidated manual result doc with status `MANUAL_FULL_FLOW_PASS`.
+- Refreshed program deploy/cutover readiness using explicit overrides for the latest mixed-topology manual result and latest Phase 7 full-copy report. New readiness report now ingests `legacy_mixed_topology_status: MANUAL_FULL_FLOW_PASS`, keeps `phase7_cassandra_rehearsal_no_go: NO`, and reduces blocker count to `3` (remaining: Phase 4 runtime parity, Phase 5/6 runtime extraction/runtime, security dependency audit/lockfiles).
+- Evidence: /Users/alexb/Documents/Dev/dev_new/docs/validation/legacy-mixed-topology/manual-20260224-162654-b6274-sc507-reconnect, /Users/alexb/Documents/Dev/dev_new/docs/validation/legacy-mixed-topology/manual-20260224-162654-b6275-sc507-reconnect, /Users/alexb/Documents/Dev/dev_new/docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-full-flow-20260224-162730.md, /Users/alexb/Documents/Dev/dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-162847.md
+- Result: Cassandra 4 data migration + mixed-topology manual full-flow gate are now documented as pass; cutover remains no-go only on strict Phase 4/5/6 runtime evidence and security audit/lockfiles.
+- Next step: rerun strict Phase 4/5/6 runtime evidence packs against current refactor stack and refresh readiness; optionally patch readiness script next-actions text to be status-conditional (it still prints stale mixed-topology/phase7 steps even after override-based PASS).
+### 2026-02-24 16:29-16:36 UTC
+- Ran strict Phase 4/5/6 runtime evidence packs against the current refactor stack to replace stale `runtime blocked` diagnoses with current runtime results.
+- Initial reruns showed readiness `PASS` but opaque/silent probe failures; fixed probe tooling for localhost mixed-topology and zero-count counters:
+  - added optional `--sub-casino-id` support to Phase 4 protocol wallet, Phase 5 wallet-adapter, and Phase 5 gameplay canary probes and their evidence packs so `cwstartgamev2` session auto-resolution works on localhost banks (`6274/6275` require `subCasinoId=507`),
+  - added token passthrough (`--token`) to Phase 4 protocol and Phase 5 wallet runtime evidence packs so probes can use valid token `bav_game_session_001`,
+  - fixed `grep | wc -l` counters under `set -euo pipefail` to tolerate legitimate zero matches (previously caused silent exits / empty canary output) in protocol, wallet, and gameplay canary scripts,
+  - fixed Phase 4 status generator Markdown formatting bug (`out.join('\\n')` wrote literal `\\n`).
+- Reran runtime evidence with `--sub-casino-id 507` and valid token override (`bav_game_session_001`) and confirmed remaining failures are now real route/config decisions, not probe-input bugs:
+  - Phase 4 protocol wallet shadow probe: FAIL (`routeToProtocolAdapter=false`, reason `legacy_fallback`, fail-open legacy path active),
+  - Phase 5 gameplay/wallet/bonus/history canaries: FAIL (route decisions disabled / not routed),
+  - Phase 6 multiplayer routing policy probe: PASS.
+- Regenerated Phase 4 and Phase 5/6 status reports from fresh evidence; statuses now classify as `NO_GO_RUNTIME_FAILURE` (services reachable, canary routing not enabled) instead of `TESTED_NO_GO_RUNTIME_BLOCKED`.
+- Refreshed program deploy readiness with mixed-topology + Phase 7 overrides: blocker count remains `3`, but Phase 4 and Phase 5/6 blockers are now explicitly `NO_GO_RUNTIME_FAILURE` rather than runtime-unavailable.
+- Evidence: /Users/alexb/Documents/Dev/dev_new/docs/phase4/protocol/phase4-protocol-runtime-evidence-20260224-163435.md, /Users/alexb/Documents/Dev/dev_new/docs/phase5/gameplay/phase5-gameplay-runtime-evidence-20260224-163436.md, /Users/alexb/Documents/Dev/dev_new/docs/phase5/wallet/phase5-wallet-runtime-evidence-20260224-163436.md, /Users/alexb/Documents/Dev/dev_new/docs/phase5/bonus-frb/phase5-bonus-frb-runtime-evidence-20260224-163041.md, /Users/alexb/Documents/Dev/dev_new/docs/phase5/history/phase5-history-runtime-evidence-20260224-163045.md, /Users/alexb/Documents/Dev/dev_new/docs/phase6/multiplayer/phase6-multiplayer-runtime-evidence-20260224-163048.md, /Users/alexb/Documents/Dev/dev_new/docs/phase4/protocol/phase4-protocol-status-report-20260224-163534.md, /Users/alexb/Documents/Dev/dev_new/docs/phase5-6/phase5-6-service-extraction-status-report-20260224-163457.md, /Users/alexb/Documents/Dev/dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md
+- Result: runtime blocker diagnosis is now accurate and actionable; next work is enabling canary routing flags/config for protocol/gameplay/wallet/bonus/history (or selecting the intended canary bank configuration) and rerunning the same evidence packs.
+- Next step: inspect and patch route decision configuration sources for banks `6274/6275` (protocol fail-open legacy fallback + Phase 5 route_disabled flags), then rerun strict runtime evidence packs and refresh readiness.
+### 2026-02-24 17:01-17:02 UTC
+- Shifted priority to portability for parallel development on another machine while launch path is already working; added a root-level startup/runbook package and removed hardcoded host-path assumptions from legacy `gp3` and `cm-module` compose files.
+- Added `tools/workspace/{start-all.sh,stop-all.sh,git-audit.sh,portable.env.example}` and docs `docs/22-portable-workspace-startup-and-git-plan.md`; patched `mq-gs-clean-version` and `cm-module` compose files to accept env path overrides, plus `casino_side` compose env overrides for secret hygiene.
+- Evidence: compose config validation passed for `/Users/alexb/Documents/Dev/mq-gs-clean-version/deploy/docker/configs/docker-compose.yml` and `/Users/alexb/Documents/Dev/cm-module/docker-compose.yml`; scripts pass `bash -n` syntax checks.
+- Next step: decide git split strategy for non-repo folders (`Casino side`, `mq-*`, `new-games-*`) and commit/push the portable startup tooling batch from the root orchestration repo.
+### 2026-02-24 17:06-17:07 UTC
+- User clarified sync target is `Dev_new` only (not the root `/Users/alexb/Documents/Dev` repo); prepared `GSRefactor` (`Dev_new`) for a full push of the Cassandra4/runtime-tooling/mixed-topology evidence batch.
+- Verified `Dev_new` has 114 changed paths (code + scripts + readiness/runtime docs) and `origin/main` exists; next step is commit + `git push -u origin main` to sync the active modernization workspace only.

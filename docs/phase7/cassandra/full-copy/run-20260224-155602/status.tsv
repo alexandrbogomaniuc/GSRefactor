@@ -1,0 +1,322 @@
+table	stage	status	detail
+rcasinoks.archivercf	truncate	OK	
+rcasinoks.batchopstatus	truncate	OK	
+rcasinoks.battlegroundhistory	truncate	OK	
+rcasinoks.battlegroundparticipantroundhistory	truncate	OK	
+rcasinoks.battlegroundprivateroomsettings	truncate	OK	
+rcasinoks.betcf	truncate	OK	
+rcasinoks.bonusarchcf	truncate	OK	
+rcasinoks.clientgamestatisticsinfocf	truncate	OK	
+rcasinoks.concurrentnotcf	truncate	OK	
+rcasinoks.currentplayersessionstate	truncate	OK	
+rcasinoks.dmassawardfailedsendcf	truncate	OK	
+rcasinoks.dmassawardhistorycf	truncate	OK	
+rcasinoks.frbonusarchcf	truncate	OK	
+rcasinoks.frbwincf	truncate	OK	
+rcasinoks.gamesessioncf	truncate	OK	
+rcasinoks.gamesessioncf_ag	truncate	OK	
+rcasinoks.gamesessioncf_agm	truncate	OK	
+rcasinoks.gamesessioncf_bag_idx	truncate	OK	
+rcasinoks.historyinformeritemcf	truncate	OK	
+rcasinoks.historyinformeritemmaxiterationscf	truncate	OK	
+rcasinoks.historytokencf	truncate	OK	
+rcasinoks.httpcallinfocf	truncate	OK	
+rcasinoks.httpcallissues	truncate	OK	
+rcasinoks.httpcallstatistics	truncate	OK	
+rcasinoks.laststattimecf	truncate	OK	
+rcasinoks.metricscf	truncate	OK	
+rcasinoks.metricsstatcf	truncate	OK	
+rcasinoks.mqroundkpiinfo	truncate	OK	
+rcasinoks.playersessionhistorycf	truncate	OK	
+rcasinoks.promopredefineduserspersistercf	truncate	OK	
+rcasinoks.promowincf	truncate	OK	
+rcasinoks.roundgamesessioncf	truncate	OK	
+rcasinoks.shortbetinfocf3	truncate	OK	
+rcasinoks.supportcf	truncate	OK	
+rcasinoks.tdrawconfig	truncate	OK	
+rcasinoks.tournamentpromosumfeedcf	truncate	OK	
+rcasinoks.trackinfocf	truncate	OK	
+rcasinoks.wopcf	truncate	OK	
+rcasinoscks.acc_dlm_cf	truncate	OK	
+rcasinoscks.accountcf	truncate	OK	
+rcasinoscks.accountcf_bank_tester	truncate	OK	
+rcasinoscks.accountcf_ext	truncate	OK	
+rcasinoscks.bankinfocf	truncate	OK	
+rcasinoscks.battlegroundcf	truncate	OK	
+rcasinoscks.betcftmp	truncate	OK	
+rcasinoscks.blockedcountriescf	truncate	OK	
+rcasinoscks.bonuscf	truncate	OK	
+rcasinoscks.bonuscf_acc	truncate	OK	
+rcasinoscks.cgw_cf	truncate	OK	
+rcasinoscks.countryrestrictionscf	truncate	OK	
+rcasinoscks.currencycf	truncate	OK	
+rcasinoscks.currencyratesbydatecf	truncate	OK	
+rcasinoscks.currencyratescf	truncate	OK	
+rcasinoscks.currencyratesconfigcf	truncate	OK	
+rcasinoscks.delayedmassawardindexcf	truncate	OK	
+rcasinoscks.depositscf	truncate	OK	
+rcasinoscks.dlm_cf	truncate	OK	
+rcasinoscks.dmassawardcf	truncate	OK	
+rcasinoscks.dwlcf	truncate	OK	
+rcasinoscks.expiredbonustrackedcf	truncate	OK	
+rcasinoscks.extaccountcf	truncate	OK	
+rcasinoscks.extgameids	truncate	OK	
+rcasinoscks.exttransactioncf	truncate	OK	
+rcasinoscks.frbonuscf	truncate	OK	
+rcasinoscks.frbonuscf_acc	truncate	OK	
+rcasinoscks.frbonuswincf	truncate	OK	
+rcasinoscks.gameinfocf	truncate	OK	
+rcasinoscks.gametinfocf	truncate	OK	
+rcasinoscks.gsessionextprops	truncate	OK	
+rcasinoscks.hostcdncf	truncate	OK	
+rcasinoscks.intsequencercf	truncate	OK	
+rcasinoscks.lasthand_bonus_cf	truncate	OK	
+rcasinoscks.lasthand_cf	truncate	OK	
+rcasinoscks.leaderboardresult	truncate	OK	
+rcasinoscks.localizationscf	truncate	OK	
+rcasinoscks.massawardcf	truncate	OK	
+rcasinoscks.massawardrestrictioncf	truncate	OK	
+rcasinoscks.mqdata	truncate	OK	
+rcasinoscks.mqreservednicknames	truncate	OK	
+rcasinoscks.paymenttransactioncf2	truncate	OK	
+rcasinoscks.penddataarchcf	truncate	OK	
+rcasinoscks.periodictaskscf	truncate	OK	
+rcasinoscks.pgscf	truncate	OK	
+rcasinoscks.playeraliascf	truncate	OK	
+rcasinoscks.promocampaignarchcf	truncate	OK	
+rcasinoscks.promocampaignbybankandgamecf	truncate	OK	
+rcasinoscks.promocampaigncf	truncate	OK	
+rcasinoscks.promocampaignmembercf	truncate	OK	
+rcasinoscks.promocampaignstat	truncate	OK	
+rcasinoscks.promofeedcf	truncate	OK	
+rcasinoscks.promomemberaliasescf	truncate	OK	
+rcasinoscks.promoplatformscf	truncate	OK	
+rcasinoscks.promotmaxbalancecf	truncate	OK	
+rcasinoscks.promotrankcf	truncate	OK	
+rcasinoscks.rccf	truncate	OK	
+rcasinoscks.sequencercf	truncate	OK	
+rcasinoscks.serverconfcf	truncate	OK	
+rcasinoscks.srvinfocf	truncate	OK	
+rcasinoscks.subcasinocf	truncate	OK	
+rcasinoscks.subcasinogroupf	truncate	OK	
+rcasinoscks.summarytransformercf	truncate	OK	
+rcasinoscks.tournamenthistorycf	truncate	OK	
+rcasinoscks.tournamenticoncf	truncate	OK	
+rcasinoscks.trdata_cf	truncate	OK	
+rcasinoscks.trdata_tracking_cf	truncate	OK	
+rcasinoscks.usendedpwicf	truncate	OK	
+rcasinoscks.votesrvmastercf	truncate	OK	
+rcasinoks.archivercf	export	OK	
+rcasinoks.archivercf	import	EMPTY	0
+rcasinoks.batchopstatus	export	OK	
+rcasinoks.batchopstatus	import	EMPTY	0
+rcasinoks.battlegroundhistory	export	OK	
+rcasinoks.battlegroundhistory	import	EMPTY	0
+rcasinoks.battlegroundparticipantroundhistory	export	OK	
+rcasinoks.battlegroundparticipantroundhistory	import	EMPTY	0
+rcasinoks.battlegroundprivateroomsettings	export	OK	
+rcasinoks.battlegroundprivateroomsettings	import	EMPTY	0
+rcasinoks.betcf	export	OK	
+rcasinoks.betcf	import	OK	68
+rcasinoks.bonusarchcf	export	OK	
+rcasinoks.bonusarchcf	import	OK	1
+rcasinoks.clientgamestatisticsinfocf	export	OK	
+rcasinoks.clientgamestatisticsinfocf	import	EMPTY	0
+rcasinoks.concurrentnotcf	export	OK	
+rcasinoks.concurrentnotcf	import	EMPTY	0
+rcasinoks.currentplayersessionstate	export	OK	
+rcasinoks.currentplayersessionstate	import	OK	1
+rcasinoks.dmassawardfailedsendcf	export	OK	
+rcasinoks.dmassawardfailedsendcf	import	EMPTY	0
+rcasinoks.dmassawardhistorycf	export	OK	
+rcasinoks.dmassawardhistorycf	import	EMPTY	0
+rcasinoks.frbonusarchcf	export	OK	
+rcasinoks.frbonusarchcf	import	OK	15
+rcasinoks.frbwincf	export	OK	
+rcasinoks.frbwincf	import	OK	6
+rcasinoks.gamesessioncf	export	OK	
+rcasinoks.gamesessioncf	import	OK	68
+rcasinoks.gamesessioncf_ag	export	OK	
+rcasinoks.gamesessioncf_ag	import	OK	136
+rcasinoks.gamesessioncf_agm	export	OK	
+rcasinoks.gamesessioncf_agm	import	OK	180
+rcasinoks.gamesessioncf_bag_idx	export	OK	
+rcasinoks.gamesessioncf_bag_idx	import	OK	136
+rcasinoks.historyinformeritemcf	export	OK	
+rcasinoks.historyinformeritemcf	import	EMPTY	0
+rcasinoks.historyinformeritemmaxiterationscf	export	OK	
+rcasinoks.historyinformeritemmaxiterationscf	import	EMPTY	0
+rcasinoks.historytokencf	export	OK	
+rcasinoks.historytokencf	import	EMPTY	0
+rcasinoks.httpcallinfocf	export	OK	
+rcasinoks.httpcallinfocf	import	FAIL	<stdin>:1:Failed to process 45 rows; failed rows written to import_rcasinoks_httpcallinfocf.err
+rcasinoks.httpcallissues	export	OK	
+rcasinoks.httpcallissues	import	OK	28
+rcasinoks.httpcallstatistics	export	OK	
+rcasinoks.httpcallstatistics	import	OK	28
+rcasinoks.laststattimecf	export	OK	
+rcasinoks.laststattimecf	import	EMPTY	0
+rcasinoks.metricscf	export	OK	
+rcasinoks.metricscf	import	EMPTY	0
+rcasinoks.metricsstatcf	export	OK	
+rcasinoks.metricsstatcf	import	EMPTY	0
+rcasinoks.mqroundkpiinfo	export	OK	
+rcasinoks.mqroundkpiinfo	import	EMPTY	0
+rcasinoks.playersessionhistorycf	export	OK	
+rcasinoks.playersessionhistorycf	import	OK	315
+rcasinoks.promopredefineduserspersistercf	export	OK	
+rcasinoks.promopredefineduserspersistercf	import	EMPTY	0
+rcasinoks.promowincf	export	OK	
+rcasinoks.promowincf	import	EMPTY	0
+rcasinoks.roundgamesessioncf	export	OK	
+rcasinoks.roundgamesessioncf	import	EMPTY	0
+rcasinoks.shortbetinfocf3	export	OK	
+rcasinoks.shortbetinfocf3	import	EMPTY	0
+rcasinoks.supportcf	export	OK	
+rcasinoks.supportcf	import	EMPTY	0
+rcasinoks.tdrawconfig	export	OK	
+rcasinoks.tdrawconfig	import	EMPTY	0
+rcasinoks.tournamentpromosumfeedcf	export	OK	
+rcasinoks.tournamentpromosumfeedcf	import	EMPTY	0
+rcasinoks.trackinfocf	export	OK	
+rcasinoks.trackinfocf	import	OK	1
+rcasinoks.wopcf	export	OK	
+rcasinoks.wopcf	import	EMPTY	0
+rcasinoscks.acc_dlm_cf	export	OK	
+rcasinoscks.acc_dlm_cf	import	OK	6
+rcasinoscks.accountcf	export	OK	
+rcasinoscks.accountcf	import	OK	1
+rcasinoscks.accountcf_bank_tester	export	OK	
+rcasinoscks.accountcf_bank_tester	import	EMPTY	0
+rcasinoscks.accountcf_ext	export	OK	
+rcasinoscks.accountcf_ext	import	OK	1
+rcasinoscks.bankinfocf	export	OK	
+rcasinoscks.bankinfocf	import	OK	3
+rcasinoscks.battlegroundcf	export	OK	
+rcasinoscks.battlegroundcf	import	OK	8
+rcasinoscks.betcftmp	export	OK	
+rcasinoscks.betcftmp	import	EMPTY	0
+rcasinoscks.blockedcountriescf	export	OK	
+rcasinoscks.blockedcountriescf	import	EMPTY	0
+rcasinoscks.bonuscf	export	OK	
+rcasinoscks.bonuscf	import	OK	1
+rcasinoscks.bonuscf_acc	export	OK	
+rcasinoscks.bonuscf_acc	import	OK	1
+rcasinoscks.cgw_cf	export	OK	
+rcasinoscks.cgw_cf	import	EMPTY	0
+rcasinoscks.countryrestrictionscf	export	OK	
+rcasinoscks.countryrestrictionscf	import	EMPTY	0
+rcasinoscks.currencycf	export	OK	
+rcasinoscks.currencycf	import	OK	15
+rcasinoscks.currencyratesbydatecf	export	OK	
+rcasinoscks.currencyratesbydatecf	import	EMPTY	0
+rcasinoscks.currencyratescf	export	OK	
+rcasinoscks.currencyratescf	import	OK	241
+rcasinoscks.currencyratesconfigcf	export	OK	
+rcasinoscks.currencyratesconfigcf	import	OK	22
+rcasinoscks.delayedmassawardindexcf	export	OK	
+rcasinoscks.delayedmassawardindexcf	import	EMPTY	0
+rcasinoscks.depositscf	export	OK	
+rcasinoscks.depositscf	import	EMPTY	0
+rcasinoscks.dlm_cf	export	OK	
+rcasinoscks.dlm_cf	import	OK	8
+rcasinoscks.dmassawardcf	export	OK	
+rcasinoscks.dmassawardcf	import	EMPTY	0
+rcasinoscks.dwlcf	export	OK	
+rcasinoscks.dwlcf	import	EMPTY	0
+rcasinoscks.expiredbonustrackedcf	export	OK	
+rcasinoscks.expiredbonustrackedcf	import	OK	2
+rcasinoscks.extaccountcf	export	OK	
+rcasinoscks.extaccountcf	import	OK	1
+rcasinoscks.extgameids	export	OK	
+rcasinoscks.extgameids	import	EMPTY	0
+rcasinoscks.exttransactioncf	export	OK	
+rcasinoscks.exttransactioncf	import	OK	137
+rcasinoscks.frbonuscf	export	OK	
+rcasinoscks.frbonuscf	import	OK	4
+rcasinoscks.frbonuscf_acc	export	OK	
+rcasinoscks.frbonuscf_acc	import	OK	4
+rcasinoscks.frbonuswincf	export	OK	
+rcasinoscks.frbonuswincf	import	EMPTY	0
+rcasinoscks.gameinfocf	export	OK	
+rcasinoscks.gameinfocf	import	OK	13
+rcasinoscks.gametinfocf	export	OK	
+rcasinoscks.gametinfocf	import	OK	9
+rcasinoscks.gsessionextprops	export	OK	
+rcasinoscks.gsessionextprops	import	OK	32
+rcasinoscks.hostcdncf	export	OK	
+rcasinoscks.hostcdncf	import	EMPTY	0
+rcasinoscks.intsequencercf	export	OK	
+rcasinoscks.intsequencercf	import	EMPTY	0
+rcasinoscks.lasthand_bonus_cf	export	OK	
+rcasinoscks.lasthand_bonus_cf	import	OK	11
+rcasinoscks.lasthand_cf	export	OK	
+rcasinoscks.lasthand_cf	import	OK	1
+rcasinoscks.leaderboardresult	export	OK	
+rcasinoscks.leaderboardresult	import	EMPTY	0
+rcasinoscks.localizationscf	export	OK	
+rcasinoscks.localizationscf	import	EMPTY	0
+rcasinoscks.massawardcf	export	OK	
+rcasinoscks.massawardcf	import	EMPTY	0
+rcasinoscks.massawardrestrictioncf	export	OK	
+rcasinoscks.massawardrestrictioncf	import	EMPTY	0
+rcasinoscks.mqdata	export	OK	
+rcasinoscks.mqdata	import	OK	1
+rcasinoscks.mqreservednicknames	export	OK	
+rcasinoscks.mqreservednicknames	import	EMPTY	0
+rcasinoscks.paymenttransactioncf2	export	OK	
+rcasinoscks.paymenttransactioncf2	import	EMPTY	0
+rcasinoscks.penddataarchcf	export	OK	
+rcasinoscks.penddataarchcf	import	EMPTY	0
+rcasinoscks.periodictaskscf	export	OK	
+rcasinoscks.periodictaskscf	import	EMPTY	0
+rcasinoscks.pgscf	export	OK	
+rcasinoscks.pgscf	import	EMPTY	0
+rcasinoscks.playeraliascf	export	OK	
+rcasinoscks.playeraliascf	import	EMPTY	0
+rcasinoscks.promocampaignarchcf	export	OK	
+rcasinoscks.promocampaignarchcf	import	EMPTY	0
+rcasinoscks.promocampaignbybankandgamecf	export	OK	
+rcasinoscks.promocampaignbybankandgamecf	import	EMPTY	0
+rcasinoscks.promocampaigncf	export	OK	
+rcasinoscks.promocampaigncf	import	EMPTY	0
+rcasinoscks.promocampaignmembercf	export	OK	
+rcasinoscks.promocampaignmembercf	import	EMPTY	0
+rcasinoscks.promocampaignstat	export	OK	
+rcasinoscks.promocampaignstat	import	EMPTY	0
+rcasinoscks.promofeedcf	export	OK	
+rcasinoscks.promofeedcf	import	EMPTY	0
+rcasinoscks.promomemberaliasescf	export	OK	
+rcasinoscks.promomemberaliasescf	import	EMPTY	0
+rcasinoscks.promoplatformscf	export	OK	
+rcasinoscks.promoplatformscf	import	EMPTY	0
+rcasinoscks.promotmaxbalancecf	export	OK	
+rcasinoscks.promotmaxbalancecf	import	EMPTY	0
+rcasinoscks.promotrankcf	export	OK	
+rcasinoscks.promotrankcf	import	EMPTY	0
+rcasinoscks.rccf	export	OK	
+rcasinoscks.rccf	import	EMPTY	0
+rcasinoscks.sequencercf	export	OK	
+rcasinoscks.sequencercf	import	OK	8
+rcasinoscks.serverconfcf	export	OK	
+rcasinoscks.serverconfcf	import	OK	1
+rcasinoscks.srvinfocf	export	OK	
+rcasinoscks.srvinfocf	import	OK	1
+rcasinoscks.subcasinocf	export	OK	
+rcasinoscks.subcasinocf	import	OK	2
+rcasinoscks.subcasinogroupf	export	OK	
+rcasinoscks.subcasinogroupf	import	OK	1
+rcasinoscks.summarytransformercf	export	OK	
+rcasinoscks.summarytransformercf	import	EMPTY	0
+rcasinoscks.tournamenthistorycf	export	OK	
+rcasinoscks.tournamenthistorycf	import	EMPTY	0
+rcasinoscks.tournamenticoncf	export	OK	
+rcasinoscks.tournamenticoncf	import	EMPTY	0
+rcasinoscks.trdata_cf	export	OK	
+rcasinoscks.trdata_cf	import	OK	3
+rcasinoscks.trdata_tracking_cf	export	OK	
+rcasinoscks.trdata_tracking_cf	import	OK	3
+rcasinoscks.usendedpwicf	export	OK	
+rcasinoscks.usendedpwicf	import	EMPTY	0
+rcasinoscks.votesrvmastercf	export	OK	
+rcasinoscks.votesrvmastercf	import	EMPTY	0

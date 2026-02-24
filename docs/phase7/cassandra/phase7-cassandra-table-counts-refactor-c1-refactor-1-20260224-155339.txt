@@ -1,0 +1,1177 @@
+query=rcasinoks.archivercf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.batchopstatus
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.battlegroundhistory
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.battlegroundparticipantroundhistory
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.battlegroundprivateroomsettings
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.betcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.bonusarchcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.clientgamestatisticsinfocf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.concurrentnotcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.currentplayersessionstate
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.dmassawardfailedsendcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.dmassawardhistorycf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.frbonusarchcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.frbwincf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.gamesessioncf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.gamesessioncf_ag
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.gamesessioncf_agm
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.gamesessioncf_bag_idx
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.historyinformeritemcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.historyinformeritemmaxiterationscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.historytokencf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.httpcallinfocf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.httpcallissues
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.httpcallstatistics
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.laststattimecf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.metricscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.metricsstatcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.mqroundkpiinfo
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.playersessionhistorycf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.promopredefineduserspersistercf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.promowincf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.roundgamesessioncf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.shortbetinfocf3
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.supportcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.tdrawconfig
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.tournamentpromosumfeedcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.trackinfocf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoks.wopcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.acc_dlm_cf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.accountcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.accountcf_bank_tester
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.accountcf_ext
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.bankinfocf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.battlegroundcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.betcftmp
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.blockedcountriescf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.bonuscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.bonuscf_acc
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.cgw_cf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.countryrestrictionscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.currencycf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.currencyratesbydatecf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.currencyratescf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.currencyratesconfigcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.delayedmassawardindexcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.depositscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.dlm_cf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.dmassawardcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.dwlcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.expiredbonustrackedcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.extaccountcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.extgameids
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.exttransactioncf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.frbonuscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.frbonuscf_acc
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.frbonuswincf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.gameinfocf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.gametinfocf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.gsessionextprops
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.hostcdncf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.intsequencercf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.lasthand_bonus_cf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.lasthand_cf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.leaderboardresult
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.localizationscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.massawardcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.massawardrestrictioncf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.mqdata
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.mqreservednicknames
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.paymenttransactioncf2
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.penddataarchcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.periodictaskscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.pgscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.playeraliascf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.promocampaignarchcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.promocampaignbybankandgamecf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.promocampaigncf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.promocampaignmembercf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.promocampaignstat
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.promofeedcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.promomemberaliasescf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.promoplatformscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.promotmaxbalancecf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.promotrankcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.rccf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.sequencercf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.serverconfcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.srvinfocf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.subcasinocf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.subcasinogroupf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.summarytransformercf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.tournamenthistorycf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.tournamenticoncf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.trdata_cf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.trdata_tracking_cf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.usendedpwicf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.votesrvmastercf
+
+ count
+-------
+     0
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+

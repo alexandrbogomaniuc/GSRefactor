@@ -1,0 +1,6 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.gameinfocf with columns [key, bankandcuridx, bankidx, jcn, scn].
+[Use . on a line by itself to end input]
+Processed: 13 rows; Rate:      43 rows/s; Avg. rate:      43 rows/sProcessed: 13 rows; Rate:      22 rows/s; Avg. rate:      32 rows/s
+13 rows imported from 1 files in 0.405 seconds (0 skipped).

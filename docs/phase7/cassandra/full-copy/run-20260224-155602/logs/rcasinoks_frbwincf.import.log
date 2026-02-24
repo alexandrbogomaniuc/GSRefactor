@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoks.frbwincf with columns [key, accid, gamesessid, jcn, scn].
+Processed: 6 rows; Rate:      17 rows/s; Avg. rate:      17 rows/sProcessed: 6 rows; Rate:       9 rows/s; Avg. rate:      13 rows/s
+6 rows imported from 1 files in 0.451 seconds (0 skipped).

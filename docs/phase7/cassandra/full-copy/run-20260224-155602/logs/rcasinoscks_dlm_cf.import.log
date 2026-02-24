@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.dlm_cf with columns [lock_id, llocker, lock_time, locker].
+Processed: 8 rows; Rate:      23 rows/s; Avg. rate:      23 rows/sProcessed: 8 rows; Rate:      11 rows/s; Avg. rate:      18 rows/s
+8 rows imported from 1 files in 0.452 seconds (0 skipped).

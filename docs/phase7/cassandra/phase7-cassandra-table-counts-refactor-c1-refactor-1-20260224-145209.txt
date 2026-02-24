@@ -1,0 +1,44 @@
+query=rcasinoscks.bankinfocf
+
+ count
+-------
+     3
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.subcasinocf
+
+ count
+-------
+     2
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.gameinfocf
+
+ count
+-------
+    13
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+query=rcasinoscks.gametinfocf
+
+ count
+-------
+     9
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+

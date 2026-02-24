@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+X-Trace-Id: fec34231-d59d-44f6-bbbf-f18fceb7f087
+X-Session-Id: mix20260224-160625b6275
+Set-Cookie: JSESSIONID=node0e3gwe3ufcjfatum80ay7p4it2.node0;Path=/
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: text/html;charset=utf-8
+Content-Length: 1091
+Server: Jetty(9.4.18.v20190429)
+

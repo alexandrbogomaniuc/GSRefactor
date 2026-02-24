@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.bonuscf_acc with columns [accid, bonusid].
+Processed: 1 rows; Rate:       3 rows/s; Avg. rate:       3 rows/sProcessed: 1 rows; Rate:       2 rows/s; Avg. rate:       2 rows/s
+1 rows imported from 1 files in 0.402 seconds (0 skipped).

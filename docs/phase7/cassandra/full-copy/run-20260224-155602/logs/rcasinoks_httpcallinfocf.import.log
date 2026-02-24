@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoks.httpcallinfocf with columns [callid, timestamp, externalid, gamesessionid, jcn, roundid, scn, tkn, transactionid].
+Processed: 49 rows; Rate:     169 rows/s; Avg. rate:     169 rows/sProcessed: 49 rows; Rate:      85 rows/s; Avg. rate:     125 rows/s
+4 rows imported from 1 files in 0.401 seconds (0 skipped).

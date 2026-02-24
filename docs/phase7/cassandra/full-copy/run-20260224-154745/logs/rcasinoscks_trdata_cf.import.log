@@ -1,0 +1,6 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.trdata_cf with columns [key, a, bonus, frbn, frbonus, frbwin, gs, lb, lh, lui, pmembers, ps, pt, ssea, ssga, sspa, track, v, w].
+[Use . on a line by itself to end input]
+Processed: 0 rows; Rate:       0 rows/s; Avg. rate:       0 rows/s
+0 rows imported from 1 files in 0.128 seconds (0 skipped).

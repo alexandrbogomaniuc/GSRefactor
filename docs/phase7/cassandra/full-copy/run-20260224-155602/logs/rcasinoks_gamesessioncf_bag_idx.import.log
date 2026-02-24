@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoks.gamesessioncf_bag_idx with columns [bid, gameid, et, accid, gsid].
+Processed: 136 rows; Rate:     388 rows/s; Avg. rate:     388 rows/sProcessed: 136 rows; Rate:     194 rows/s; Avg. rate:     299 rows/s
+136 rows imported from 1 files in 0.455 seconds (0 skipped).

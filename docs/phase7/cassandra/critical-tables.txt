@@ -1,4 +1,10 @@
 # keyspace.table
+# Runtime config metadata required for refactor GS/MP startup on upgraded targets.
+rcasinoscks.currencycf
+rcasinoscks.bankinfocf
+rcasinoscks.subcasinocf
+rcasinoscks.gameinfocf
+rcasinoscks.gametinfocf
 rcasinoscks.accountcf
 rcasinoscks.accountcf_ext
 rcasinoscks.frbonuscf

@@ -1,0 +1,1 @@
+http://127.0.0.1:18081/cwstartgamev2.do?subCasinoId=507&bankId=6274&gameId=838&lang=en&token=bav_game_session_001&currency=USD&mode=real

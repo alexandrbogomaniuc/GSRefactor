@@ -1,0 +1,1 @@
+http://127.0.0.1:18081/cwstartgamev2.do?bankId=6275 VND&gameId=838&lang=en&sessionId=mix20260224-160545b6275 VND&login=mix20260224-160545b6275 VND&currency=&mode=real

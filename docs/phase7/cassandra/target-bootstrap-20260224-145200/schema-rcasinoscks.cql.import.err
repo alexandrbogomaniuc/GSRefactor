@@ -1,0 +1,87 @@
+<stdin>:19:AlreadyExists: Table 'rcasinoscks.frbonuscf_acc' already exists
+<stdin>:37:AlreadyExists: Table 'rcasinoscks.mqreservednicknames' already exists
+<stdin>:38:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'mqreservednicknames_rnowner_idx' already exists"
+<stdin>:58:AlreadyExists: Table 'rcasinoscks.penddataarchcf' already exists
+<stdin>:76:AlreadyExists: Table 'rcasinoscks.lasthand_cf' already exists
+<stdin>:92:AlreadyExists: Table 'rcasinoscks.periodictaskscf' already exists
+<stdin>:107:AlreadyExists: Table 'rcasinoscks.depositscf' already exists
+<stdin>:126:AlreadyExists: Table 'rcasinoscks.promocampaignstat' already exists
+<stdin>:141:AlreadyExists: Table 'rcasinoscks.sequencercf' already exists
+<stdin>:157:AlreadyExists: Table 'rcasinoscks.frbonuswincf' already exists
+<stdin>:175:AlreadyExists: Table 'rcasinoscks.extgameids' already exists
+<stdin>:194:AlreadyExists: Table 'rcasinoscks.dmassawardcf' already exists
+<stdin>:195:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'dmassawardcf_key_idx' already exists"
+<stdin>:214:AlreadyExists: Table 'rcasinoscks.promocampaignbybankandgamecf' already exists
+<stdin>:215:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'promocampaignbybankandgamecf_campstatus_idx' already exists"
+<stdin>:234:AlreadyExists: Table 'rcasinoscks.localizationscf' already exists
+<stdin>:252:AlreadyExists: Table 'rcasinoscks.playeraliascf' already exists
+<stdin>:271:AlreadyExists: Table 'rcasinoscks.pgscf' already exists
+<stdin>:287:AlreadyExists: Table 'rcasinoscks.bankinfocf' already exists
+<stdin>:304:AlreadyExists: Table 'rcasinoscks.currencyratesconfigcf' already exists
+<stdin>:320:AlreadyExists: Table 'rcasinoscks.promocampaignarchcf' already exists
+<stdin>:336:AlreadyExists: Table 'rcasinoscks.gsessionextprops' already exists
+<stdin>:353:AlreadyExists: Table 'rcasinoscks.dlm_cf' already exists
+<stdin>:354:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'dlm_cf_locker_idx' already exists"
+<stdin>:370:AlreadyExists: Table 'rcasinoscks.summarytransformercf' already exists
+<stdin>:386:AlreadyExists: Table 'rcasinoscks.subcasinocf' already exists
+<stdin>:402:AlreadyExists: Table 'rcasinoscks.promocampaigncf' already exists
+<stdin>:419:AlreadyExists: Table 'rcasinoscks.acc_dlm_cf' already exists
+<stdin>:420:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'acc_dlm_cf_locker_idx' already exists"
+<stdin>:438:AlreadyExists: Table 'rcasinoscks.bonuscf' already exists
+<stdin>:439:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'bonuscf_expdate_idx' already exists"
+<stdin>:440:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'bonuscf_extbonusid_idx' already exists"
+<stdin>:459:AlreadyExists: Table 'rcasinoscks.tournamenthistorycf' already exists
+<stdin>:479:AlreadyExists: Table 'rcasinoscks.leaderboardresult' already exists
+<stdin>:480:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'leaderboardresult_e_idx' already exists"
+<stdin>:499:AlreadyExists: Table 'rcasinoscks.promotmaxbalancecf' already exists
+<stdin>:516:AlreadyExists: Table 'rcasinoscks.extaccountcf' already exists
+<stdin>:536:AlreadyExists: Table 'rcasinoscks.lasthand_bonus_cf' already exists
+<stdin>:552:AlreadyExists: Table 'rcasinoscks.subcasinogroupf' already exists
+<stdin>:572:AlreadyExists: Table 'rcasinoscks.usendedpwicf' already exists
+<stdin>:573:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'usendedpwicf_roundid_idx' already exists"
+<stdin>:589:AlreadyExists: Table 'rcasinoscks.massawardcf' already exists
+<stdin>:604:AlreadyExists: Table 'rcasinoscks.expiredbonustrackedcf' already exists
+<stdin>:623:AlreadyExists: Table 'rcasinoscks.promocampaignmembercf' already exists
+<stdin>:645:AlreadyExists: Table 'rcasinoscks.paymenttransactioncf2' already exists
+<stdin>:646:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'paymenttransactioncf2_extid_idx' already exists"
+<stdin>:647:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'paymenttransactioncf2_transactionid_idx' already exists"
+<stdin>:679:AlreadyExists: Table 'rcasinoscks.trdata_cf' already exists
+<stdin>:698:AlreadyExists: Table 'rcasinoscks.promomemberaliasescf' already exists
+<stdin>:715:AlreadyExists: Table 'rcasinoscks.bonuscf_acc' already exists
+<stdin>:735:AlreadyExists: Table 'rcasinoscks.trdata_tracking_cf' already exists
+<stdin>:751:AlreadyExists: Table 'rcasinoscks.accountcf' already exists
+<stdin>:767:AlreadyExists: Table 'rcasinoscks.srvinfocf' already exists
+<stdin>:782:AlreadyExists: Table 'rcasinoscks.votesrvmastercf' already exists
+<stdin>:797:AlreadyExists: Table 'rcasinoscks.delayedmassawardindexcf' already exists
+<stdin>:798:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'delayedmassawardindexcf_massawardid_idx' already exists"
+<stdin>:828:AlreadyExists: Table 'rcasinoscks.cgw_cf' already exists
+<stdin>:846:AlreadyExists: Table 'rcasinoscks.promofeedcf' already exists
+<stdin>:862:AlreadyExists: Table 'rcasinoscks.currencycf' already exists
+<stdin>:878:AlreadyExists: Table 'rcasinoscks.massawardrestrictioncf' already exists
+<stdin>:897:AlreadyExists: Table 'rcasinoscks.rccf' already exists
+<stdin>:915:AlreadyExists: Table 'rcasinoscks.gameinfocf' already exists
+<stdin>:916:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'gameinfocf_bankandcuridx_idx' already exists"
+<stdin>:917:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'gameinfocf_bankidx_idx' already exists"
+<stdin>:936:AlreadyExists: Table 'rcasinoscks.hostcdncf' already exists
+<stdin>:955:AlreadyExists: Table 'rcasinoscks.battlegroundcf' already exists
+<stdin>:971:AlreadyExists: Table 'rcasinoscks.dwlcf' already exists
+<stdin>:990:AlreadyExists: Table 'rcasinoscks.mqdata' already exists
+<stdin>:1008:AlreadyExists: Table 'rcasinoscks.frbonuscf' already exists
+<stdin>:1009:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'frbonuscf_expdate_idx' already exists"
+<stdin>:1010:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'frbonuscf_extfrbonusid_idx' already exists"
+<stdin>:1026:AlreadyExists: Table 'rcasinoscks.tournamenticoncf' already exists
+<stdin>:1044:AlreadyExists: Table 'rcasinoscks.currencyratescf' already exists
+<stdin>:1058:AlreadyExists: Table 'rcasinoscks.blockedcountriescf' already exists
+<stdin>:1076:AlreadyExists: Table 'rcasinoscks.accountcf_bank_tester' already exists
+<stdin>:1094:AlreadyExists: Table 'rcasinoscks.accountcf_ext' already exists
+<stdin>:1110:AlreadyExists: Table 'rcasinoscks.promoplatformscf' already exists
+<stdin>:1129:AlreadyExists: Table 'rcasinoscks.betcftmp' already exists
+<stdin>:1144:AlreadyExists: Table 'rcasinoscks.intsequencercf' already exists
+<stdin>:1161:AlreadyExists: Table 'rcasinoscks.exttransactioncf' already exists
+<stdin>:1162:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'exttransactioncf_internalid_idx' already exists"
+<stdin>:1178:AlreadyExists: Table 'rcasinoscks.gametinfocf' already exists
+<stdin>:1194:AlreadyExists: Table 'rcasinoscks.serverconfcf' already exists
+<stdin>:1213:AlreadyExists: Table 'rcasinoscks.countryrestrictionscf' already exists
+<stdin>:1232:AlreadyExists: Table 'rcasinoscks.currencyratesbydatecf' already exists
+<stdin>:1233:InvalidRequest: Error from server: code=2200 [Invalid query] message="Index 'currencyratesbydatecf_update_date_idx' already exists"
+<stdin>:1252:AlreadyExists: Table 'rcasinoscks.promotrankcf' already exists

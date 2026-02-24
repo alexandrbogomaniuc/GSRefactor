@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoks.playersessionhistorycf with columns [key, day, extsid, jcn, scn].
+Processed: 315 rows; Rate:    1148 rows/s; Avg. rate:    1147 rows/sProcessed: 315 rows; Rate:     574 rows/s; Avg. rate:     833 rows/s
+315 rows imported from 1 files in 0.378 seconds (0 skipped).

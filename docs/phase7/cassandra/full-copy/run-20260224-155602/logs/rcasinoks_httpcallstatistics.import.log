@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoks.httpcallstatistics with columns [date, url, failedcount, successcount].
+Processed: 28 rows; Rate:     106 rows/s; Avg. rate:     106 rows/sProcessed: 28 rows; Rate:      53 rows/s; Avg. rate:      76 rows/s
+28 rows imported from 1 files in 0.371 seconds (0 skipped).

@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.bankinfocf with columns [key, jcn, scn].
+Processed: 3 rows; Rate:       9 rows/s; Avg. rate:       9 rows/sProcessed: 3 rows; Rate:       4 rows/s; Avg. rate:       7 rows/s
+3 rows imported from 1 files in 0.453 seconds (0 skipped).

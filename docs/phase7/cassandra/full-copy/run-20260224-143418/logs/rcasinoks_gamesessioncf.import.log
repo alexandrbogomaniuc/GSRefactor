@@ -1,0 +1,6 @@
+Using 9 child processes
+
+Starting copy of rcasinoks.gamesessioncf with columns [gsid, accid, bcr, bets, bid, bonst, bonus, bonusbet, bonuswin, cltype, contribjp, contribjp_json, curr, day, dblupi, dblupp, dbluprc, enbbalance, enterdate, et, extid, fraction, frbonst, frbonus, gameid, income, lang, lbid, mdl, nb, nextid, payout, pcr, previd, promoids, rc, real, st, stbalance, stbbalance, unjid, unjsc, unjsw].
+[Use . on a line by itself to end input]
+Processed: 0 rows; Rate:       0 rows/s; Avg. rate:       0 rows/s
+0 rows imported from 1 files in 0.137 seconds (0 skipped).

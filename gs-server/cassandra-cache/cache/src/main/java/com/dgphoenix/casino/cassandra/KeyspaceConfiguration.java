@@ -20,11 +20,6 @@ import static org.apache.logging.log4j.util.Strings.isNotBlank;
  */
 public class KeyspaceConfiguration {
 
-    /**
-     * For centralized change protocol version
-     */
-    public static final ProtocolVersion PROTOCOL_VERSION = ProtocolVersion.V3;
-
     private final String filename;
     private final ConfigHelper configHelper;
     private final NtpTimeProvider timeProvider;
@@ -64,7 +59,7 @@ public class KeyspaceConfiguration {
         QueryOptions options = new QueryOptions();
         options.setConsistencyLevel(writeConsistencyLevel);
         clusterBuilder.withQueryOptions(options);
-        clusterBuilder.addContactPointsWithPorts(clusterConfig.getParsedHosts()).withProtocolVersion(PROTOCOL_VERSION);
+        clusterBuilder.addContactPointsWithPorts(clusterConfig.getParsedHosts());
         clusterBuilder.withTimestampGenerator(new NtpTimeGenerator(timeProvider));
 
         SocketOptions socketOptions = new SocketOptions();

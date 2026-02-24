@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Max Quest: Dragonstone</title>
+
+    <meta http-equiv="Content-Type" content="text/html, charset=utf-8"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta name="MobileOptimized" content="960"/>
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no, minimal-ui"/>
+
+    <meta charset="utf-8"/>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            background-color: black
+        }
+    </style>
+</head>
+
+<body>
+<script>
+    (function () {
+        window.gameEnvReady = false;
+
+        function onGameEnvReady() {
+            window.removeEventListener('load', onGameEnvReady);
+            window.gameEnvReady = true;
+        }
+
+        if (!!window.addEventListener) {
+            window.addEventListener("load", onGameEnvReady);
+        }
+
+        
+        window.addEventListener("message", function (e) {
+            const allowedOrigins = 'http://localhost:8081,http://localhost:8080,https://mqbase.com'.split(',');
+            if (allowedOrigins.includes(e.origin)) {
+                const response = {
+                    'sid': '1_c34c0a84e2e09062a7c00000019cbd68_CxlDBwQB',
+                    'supportSitout': true
+                }
+                e.source.postMessage(response, e.origin);
+            }
+        });
+        
+
+        var l_xhr = new XMLHttpRequest();
+        l_xhr.open('GET', 'http://127.0.0.1/html5pc/actiongames/dragonstone/lobby/version.json?t=' + (new Date().getTime()), true);
+        l_xhr.onload = function () {
+            var lVersion_str = JSON.parse(l_xhr.response).version;
+            loadScript('http://127.0.0.1/html5pc/actiongames/dragonstone/lobby/validator.js', lVersion_str, loadLobby.bind(this, lVersion_str));
+        };
+        l_xhr.send();
+
+        function loadLobby(version) {
+            var lPlatformInfo_obj = window.getPlatformInfo ? window.getPlatformInfo() : {};
+            if (lPlatformInfo_obj.supported) {
+                loadScript('http://127.0.0.1/html5pc/actiongames/dragonstone/lobby/game.js', version);
+            }
+        }
+
+        function loadScript(src, version, onLoadHandler) {
+            var lScript_e = document.createElement('script');
+            lScript_e.type = 'text/javascript';
+            lScript_e.src = src + (version ? '?version=' + version : '');
+            lScript_e.async = false;
+            if (onLoadHandler) {
+                lScript_e.onload = onLoadHandler;
+            }
+            document.head.appendChild(lScript_e);
+        }
+    })();
+
+    function getParams() {
+        return {
+            'bankId': '6275',
+            'sessionId': '1_c34c0a84e2e09062a7c00000019cbd68_CxlDBwQB',
+            'gameId': '838',
+            'lang': 'en',
+            'mode': 'real',
+            
+            'continueIncompleteRound': 'false',
+            'websocket': 'ws://localhost:6300/websocket/mplobby',
+            'serverId': '1',
+            
+            'noFRB': 'null',
+            
+            'JS_HISTORY': 'openHistory',
+            'JS_HOME': 'openHome',
+            'MQ_HELP_PATH': 'http://127.0.0.1/flash/shell/global_shell/rules/aams/',
+            
+            'MQ_TIMER_FREQ': '15', // in sec
+            
+            'JS_CLOSE_ERROR_FUNC_NAME': 'openFatalError',
+            'CUSTOMER_SETTINGS_URL': 'http://127.0.0.1/common/standard/settings/customerspec_descriptor.xml',
+            
+            'MQ_WEAPONS_MODE': 'LOOT_BOX',
+            'MQ_WEAPONS_SAVING_ALLOWED': 'false',
+            
+            'MQ_CLIENT_ERROR_HANDLING': false,
+            'DISABLE_MQ_BACKGROUND_LOADING': 'false',
+            'DISABLE_MQ_AUTOFIRING': 'false',
+            'ROOMS_SORT_ORDER': 'ASC',
+            'CW_SEND_REAL_BET_WIN': 'true',
+            'commonPathForActionGames': 'http://127.0.0.1/html5pc/actiongames/common/',
+            'isBattleGroundGame': 'false',
+            'JS_MQB_HOME': 'openMQBLobby',
+            'CLIENT_LOG_LEVEL': 'ERROR'
+        };
+    }
+
+    
+
+
+    function openCashier() {
+        window.open('');
+    }
+
+    function openHistory() {
+        window.open('/gamehistory.do?gameId=838&sessionId=1_c34c0a84e2e09062a7c00000019cbd68_CxlDBwQB', "mywindow", "menubar=0,toolbar=0,location=0,resizable=1,status=1,scrollbars=1,width=800px,height=600px");
+    }
+
+    function openHome() {
+        var target = "";
+        if (!target) {
+            target = document.referrer || "";
+        }
+        if (!target) {
+            if (window.history && window.history.length > 1) {
+                window.history.back();
+                return;
+            }
+            target = "/";
+        }
+        if (window.parent != null && window.parent !== window) {
+            window.parent.location = target;
+        } else {
+            window.location = target;
+        }
+    }
+
+    function openMQBLobby() {
+        openHome();
+    }
+
+    function openFatalError() {
+        window.location.replace('http://localhost:8081/game_error?gameId=838');
+    }
+
+    function getLobbyPath() {
+        return 'http://127.0.0.1/html5pc/actiongames/dragonstone/lobby/';
+    }
+
+    function getGamePath() {
+        return 'http://127.0.0.1/html5pc/actiongames/dragonstone/game/';
+    }
+
+    function getCustomerspecDescriptorStoragePathURL() {
+        return "http://127.0.0.1/html5pc/common/_standard/settings/";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.currencyratesconfigcf with columns [currency_name, currency_param, currency_target, update_period].
+Processed: 22 rows; Rate:      86 rows/s; Avg. rate:      86 rows/sProcessed: 22 rows; Rate:      43 rows/s; Avg. rate:      61 rows/s
+22 rows imported from 1 files in 0.359 seconds (0 skipped).

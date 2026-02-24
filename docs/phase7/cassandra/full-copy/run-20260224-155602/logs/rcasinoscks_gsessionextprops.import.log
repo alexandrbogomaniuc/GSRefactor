@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.gsessionextprops with columns [g, jcn, scn].
+Processed: 32 rows; Rate:     110 rows/s; Avg. rate:     110 rows/sProcessed: 32 rows; Rate:      55 rows/s; Avg. rate:      81 rows/s
+32 rows imported from 1 files in 0.393 seconds (0 skipped).

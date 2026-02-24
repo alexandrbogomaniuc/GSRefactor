@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoks.frbonusarchcf with columns [accid, awardtime, extfrbonusid, frbonusid, jcn, persistday, scn, statusid].
+Processed: 15 rows; Rate:      50 rows/s; Avg. rate:      50 rows/sProcessed: 15 rows; Rate:      25 rows/s; Avg. rate:      37 rows/s
+15 rows imported from 1 files in 0.409 seconds (0 skipped).

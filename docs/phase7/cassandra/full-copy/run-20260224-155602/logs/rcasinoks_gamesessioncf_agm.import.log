@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoks.gamesessioncf_agm with columns [accid, mode, gameid, et, gsid, gsn].
+Processed: 180 rows; Rate:     618 rows/s; Avg. rate:     618 rows/sProcessed: 180 rows; Rate:     309 rows/s; Avg. rate:     457 rows/s
+180 rows imported from 1 files in 0.394 seconds (0 skipped).

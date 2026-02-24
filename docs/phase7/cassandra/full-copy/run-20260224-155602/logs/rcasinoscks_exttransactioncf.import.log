@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.exttransactioncf with columns [key, internalid, jcn, scn].
+Processed: 137 rows; Rate:     540 rows/s; Avg. rate:     540 rows/sProcessed: 137 rows; Rate:     270 rows/s; Avg. rate:     382 rows/s
+137 rows imported from 1 files in 0.359 seconds (0 skipped).

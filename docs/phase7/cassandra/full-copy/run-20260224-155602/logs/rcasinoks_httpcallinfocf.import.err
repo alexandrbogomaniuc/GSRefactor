@@ -1,0 +1,16 @@
+<stdin>:1:Failed to import 15 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 1 of 5
+<stdin>:1:Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 1 of 5
+<stdin>:1:Failed to import 10 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 1 of 5
+<stdin>:1:Failed to import 15 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 2 of 5
+<stdin>:1:Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 2 of 5
+<stdin>:1:Failed to import 10 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 2 of 5
+<stdin>:1:Failed to import 15 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 3 of 5
+<stdin>:1:Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 3 of 5
+<stdin>:1:Failed to import 10 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 3 of 5
+<stdin>:1:Failed to import 15 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 4 of 5
+<stdin>:1:Failed to import 15 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  given up after 5 attempts
+<stdin>:1:Failed to import 10 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 4 of 5
+<stdin>:1:Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 4 of 5
+<stdin>:1:Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  given up after 5 attempts
+<stdin>:1:Failed to import 10 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  given up after 5 attempts
+<stdin>:1:Failed to process 45 rows; failed rows written to import_rcasinoks_httpcallinfocf.err

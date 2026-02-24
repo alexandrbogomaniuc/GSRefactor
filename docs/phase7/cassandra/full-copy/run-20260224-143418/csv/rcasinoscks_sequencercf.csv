@@ -1,0 +1,8 @@
+com.dgphoenix.casino.common.cache.data.bonus.FRBonus,245761
+com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation,655361
+com.dgphoenix.casino.gs.biz.DBWalletOperation,81921
+com.dgphoenix.casino.common.cache.data.session.GameSession,901121
+com.dgphoenix.casino.common.cache.data.account.AccountInfo,163841
+com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin,163841
+com.dgphoenix.casino.common.cache.data.payment.bonus.FRBWinOperation,163841
+com.dgphoenix.casino.common.cache.data.payment.IWallet,491521

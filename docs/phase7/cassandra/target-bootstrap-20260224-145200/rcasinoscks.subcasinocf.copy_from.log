@@ -1,0 +1,6 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.subcasinocf with columns [key, jcn, scn].
+[Use . on a line by itself to end input]
+Processed: 2 rows; Rate:       8 rows/s; Avg. rate:       8 rows/sProcessed: 2 rows; Rate:       4 rows/s; Avg. rate:       5 rows/s
+2 rows imported from 1 files in 0.367 seconds (0 skipped).

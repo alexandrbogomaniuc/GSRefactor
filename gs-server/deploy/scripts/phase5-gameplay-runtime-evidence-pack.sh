@@ -8,6 +8,7 @@ source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
 BANK_ID="6275"
 GAME_ID="838"
 TOKEN="test_user_6275"
+SUB_CASINO_ID=""
 MODE="real"
 LANG="en"
 TRANSPORT="host"
@@ -31,6 +32,7 @@ Options:
   --bank-id ID                Default: ${BANK_ID}
   --game-id ID                Default: ${GAME_ID}
   --token TOKEN               Default: ${TOKEN}
+  --sub-casino-id ID          Optional (appended to startgame launch URL for auto session resolution)
   --mode MODE                 Default: ${MODE}
   --lang LANG                 Default: ${LANG}
   --transport MODE            host|docker (default: ${TRANSPORT})
@@ -57,6 +59,8 @@ while [[ $# -gt 0 ]]; do
       GAME_ID="$2"; shift 2 ;;
     --token)
       TOKEN="$2"; shift 2 ;;
+    --sub-casino-id)
+      SUB_CASINO_ID="$2"; shift 2 ;;
     --mode)
       MODE="$2"; shift 2 ;;
     --lang)
@@ -122,13 +126,23 @@ readiness_status="$(run_and_capture "${readiness_out}" \
 
 canary_status="SKIPPED"
 if [[ "${readiness_status}" == "PASS" ]]; then
-  canary_status="$(run_and_capture "${canary_out}" \
-    /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-gameplay-canary-probe.sh \
-    --bank-id "${BANK_ID}" --game-id "${GAME_ID}" --token "${TOKEN}" \
-    --mode "${MODE}" --lang "${LANG}" \
-    --transport "${TRANSPORT}" \
-    --gs-base-url "${GS_BASE_URL}" --gameplay-base-url "${GAMEPLAY_BASE_URL}" \
-    --require-redis-hit "${REQUIRE_REDIS_HIT}")"
+  if [[ -n "${SUB_CASINO_ID}" ]]; then
+    canary_status="$(run_and_capture "${canary_out}" \
+      /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-gameplay-canary-probe.sh \
+      --bank-id "${BANK_ID}" --game-id "${GAME_ID}" --token "${TOKEN}" --sub-casino-id "${SUB_CASINO_ID}" \
+      --mode "${MODE}" --lang "${LANG}" \
+      --transport "${TRANSPORT}" \
+      --gs-base-url "${GS_BASE_URL}" --gameplay-base-url "${GAMEPLAY_BASE_URL}" \
+      --require-redis-hit "${REQUIRE_REDIS_HIT}")"
+  else
+    canary_status="$(run_and_capture "${canary_out}" \
+      /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-gameplay-canary-probe.sh \
+      --bank-id "${BANK_ID}" --game-id "${GAME_ID}" --token "${TOKEN}" \
+      --mode "${MODE}" --lang "${LANG}" \
+      --transport "${TRANSPORT}" \
+      --gs-base-url "${GS_BASE_URL}" --gameplay-base-url "${GAMEPLAY_BASE_URL}" \
+      --require-redis-hit "${REQUIRE_REDIS_HIT}")"
+  fi
 fi
 
 {
@@ -139,6 +153,7 @@ fi
   echo "- transport: ${TRANSPORT}"
   echo "- gsBaseUrl: ${GS_BASE_URL}"
   echo "- gameplayBaseUrl: ${GAMEPLAY_BASE_URL}"
+  echo "- subCasinoId: ${SUB_CASINO_ID:-auto}"
   echo "- requireRedisHit: ${REQUIRE_REDIS_HIT}"
   echo "- readiness_check: ${readiness_status}"
   echo "- gameplay_canary_probe: ${canary_status}"

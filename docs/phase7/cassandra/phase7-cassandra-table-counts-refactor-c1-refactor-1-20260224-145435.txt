@@ -1,0 +1,11 @@
+query=rcasinoscks.currencycf
+
+ count
+-------
+    15
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+

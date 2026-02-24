@@ -6,6 +6,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
 
 BANK_ID="6275"
+SUB_CASINO_ID=""
+TOKEN="test_user_6275"
 TRANSPORT="host"
 GS_BASE_URL="$(cluster_hosts_http_url GS_EXTERNAL_HOST GS_EXTERNAL_PORT 127.0.0.1 18081)"
 WALLET_BASE_URL="$(cluster_hosts_http_url WALLET_ADAPTER_EXTERNAL_HOST WALLET_ADAPTER_EXTERNAL_PORT 127.0.0.1 18075)"
@@ -22,6 +24,8 @@ Usage: $(basename "$0") [options]
 
 Options:
   --bank-id ID                Default: ${BANK_ID}
+  --sub-casino-id ID          Optional (appended to startgame launch URL for auto session resolution)
+  --token TOKEN               Default: ${TOKEN}
   --transport MODE            host|docker (default: ${TRANSPORT})
   --gs-base-url URL           Default: ${GS_BASE_URL}
   --wallet-base-url URL       Default: ${WALLET_BASE_URL}
@@ -39,6 +43,10 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --bank-id)
       BANK_ID="$2"; shift 2 ;;
+    --sub-casino-id)
+      SUB_CASINO_ID="$2"; shift 2 ;;
+    --token)
+      TOKEN="$2"; shift 2 ;;
     --transport)
       TRANSPORT="$2"; shift 2 ;;
     --gs-base-url)
@@ -93,12 +101,24 @@ readiness_status="$(run_and_capture "${readiness_out}" \
 
 canary_status="SKIPPED"
 if [[ "${readiness_status}" == "PASS" ]]; then
-  canary_status="$(run_and_capture "${canary_out}" \
-    /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-adapter-canary-probe.sh \
-    --bank-id "${BANK_ID}" \
-    --transport "${TRANSPORT}" \
-    --gs-base-url "${GS_BASE_URL}" \
-    --wallet-base-url "${WALLET_BASE_URL}")"
+  if [[ -n "${SUB_CASINO_ID}" ]]; then
+    canary_status="$(run_and_capture "${canary_out}" \
+      /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-adapter-canary-probe.sh \
+      --bank-id "${BANK_ID}" \
+      --token "${TOKEN}" \
+      --sub-casino-id "${SUB_CASINO_ID}" \
+      --transport "${TRANSPORT}" \
+      --gs-base-url "${GS_BASE_URL}" \
+      --wallet-base-url "${WALLET_BASE_URL}")"
+  else
+    canary_status="$(run_and_capture "${canary_out}" \
+      /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-adapter-canary-probe.sh \
+      --bank-id "${BANK_ID}" \
+      --token "${TOKEN}" \
+      --transport "${TRANSPORT}" \
+      --gs-base-url "${GS_BASE_URL}" \
+      --wallet-base-url "${WALLET_BASE_URL}")"
+  fi
 fi
 
 {
@@ -108,6 +128,8 @@ fi
   echo "- transport: ${TRANSPORT}"
   echo "- gsBaseUrl: ${GS_BASE_URL}"
   echo "- walletBaseUrl: ${WALLET_BASE_URL}"
+  echo "- subCasinoId: ${SUB_CASINO_ID:-auto}"
+  echo "- token: ${TOKEN}"
   echo "- readiness_check: ${readiness_status}"
   echo "- wallet_canary_probe: ${canary_status}"
   echo

@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoks.trackinfocf with columns [key, object_id, jcn, scn].
+Processed: 1 rows; Rate:       3 rows/s; Avg. rate:       3 rows/sProcessed: 1 rows; Rate:       1 rows/s; Avg. rate:       2 rows/s
+1 rows imported from 1 files in 0.460 seconds (0 skipped).

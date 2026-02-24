@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.currencycf with columns [key, jcn, scn].
+Processed: 15 rows; Rate:      57 rows/s; Avg. rate:      57 rows/sProcessed: 15 rows; Rate:      28 rows/s; Avg. rate:      41 rows/s
+15 rows imported from 1 files in 0.365 seconds (0 skipped).

@@ -1,0 +1,17 @@
+timestamp_utc=2026-02-24T14:54:36Z
+container=refactor-c1-refactor-1
+table_list=/tmp/mixed-topology-currency-table.txt
+limit=1
+
+== rcasinoscks.currencycf ==
+
+ key | jcn                                                                     | scn
+-----+-------------------------------------------------------------------------+------------------------------
+ EUR | {"code":"EUR","symbol":"€","basicCurrency":null,"minimalFraction":null} | 0x000000014555d282e282ac8080
+
+(1 rows)
+status=PASS
+
+summary_status=READY
+summary_pass=1
+summary_fail=0

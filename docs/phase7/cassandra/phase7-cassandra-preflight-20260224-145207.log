@@ -1,0 +1,3653 @@
+== Phase7 Cassandra preflight ==
+timestamp_utc=2026-02-24T14:52:08Z
+container=refactor-c1-refactor-1
+
+-- release version --
+
+ release_version | cluster_name
+-----------------+-------------------------
+          4.1.10 | refactor-target-upgrade
+
+(1 rows)
+
+-- keyspaces --
+
+mpmain     rcasinoscks  system_auth         system_schema  system_views         
+rcasinoks  system       system_distributed  system_traces  system_virtual_schema
+
+-- schema dump --
+
+CREATE KEYSPACE mpmain WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}  AND durable_writes = true;
+
+CREATE TABLE mpmain.activecashbonussession (
+    id bigint PRIMARY KEY,
+    accountid bigint,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 10368000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX activecashbonussession_accountid_idx ON mpmain.activecashbonussession (accountid);
+
+CREATE TABLE mpmain.activefrbsession (
+    frbid bigint PRIMARY KEY,
+    accountid bigint,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 10368000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX activefrbsession_accountid_idx ON mpmain.activefrbsession (accountid);
+
+CREATE TABLE mpmain.bgprivateroominfo (
+    roomid bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.bgprivateroomplayersstatuses (
+    key text PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.botconfiginfo (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.botserviceconfig (
+    key text PRIMARY KEY,
+    value text
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX botserviceconfig_value_idx ON mpmain.botserviceconfig (value);
+
+CREATE TABLE mpmain.friends (
+    key text PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.gameconfigs (
+    gid bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.gameroomsnapshot (
+    roomid bigint,
+    roundid bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (roomid, roundid)
+) WITH CLUSTERING ORDER BY (roundid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 864000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.mapconfigs (
+    m int PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.mnprivateroominfo (
+    roomid bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.mnroominfo (
+    roomid bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.mp_dlm_cf (
+    lock_id text PRIMARY KEY,
+    llocker int,
+    lock_time bigint,
+    locker int
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': '10000'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100', 'tombstone_compaction_interval': '3600', 'unchecked_tombstone_compaction': 'true'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 0
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX mp_dlm_cf_locker_idx ON mpmain.mp_dlm_cf (locker);
+
+CREATE TABLE mpmain.multinodeseats (
+    key text PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.onlineplayer (
+    key text PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.pendingoperations (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.playernickname (
+    nickname text PRIMARY KEY,
+    bank_aid text
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX playernickname_bank_aid_idx ON mpmain.playernickname (bank_aid);
+
+CREATE TABLE mpmain.playerprofile (
+    bid bigint,
+    aid bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY ((bid, aid))
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.playerquests (
+    bid bigint,
+    aid bigint,
+    gid bigint,
+    m int,
+    s bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY ((bid, aid, gid, m), s)
+) WITH CLUSTERING ORDER BY (s ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.players (
+    bid bigint,
+    gid bigint,
+    aid bigint,
+    jcn text,
+    scn blob,
+    v bigint,
+    PRIMARY KEY ((bid, gid, aid))
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.reservednicknames (
+    rnregion text,
+    rnnick text,
+    rnowner bigint,
+    PRIMARY KEY (rnregion, rnnick)
+) WITH CLUSTERING ORDER BY (rnnick ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX reservednicknames_rnowner_idx ON mpmain.reservednicknames (rnowner);
+
+CREATE TABLE mpmain.room (
+    id bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.roomplayerinfo (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.roomtemplate (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.roundnotify2 (
+    a bigint,
+    g bigint,
+    n bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY ((a, g), n)
+) WITH CLUSTERING ORDER BY (n ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.sequencercf (
+    key text PRIMARY KEY,
+    v bigint
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.serverconfig (
+    key int PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.sharedcrashgamestate (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.smquests (
+    smid bigint,
+    bid bigint,
+    aid bigint,
+    gid bigint,
+    m int,
+    s bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY ((smid, bid, aid, gid, m), s)
+) WITH CLUSTERING ORDER BY (s ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.smweapons (
+    smid bigint,
+    aid bigint,
+    m int,
+    g bigint,
+    s bigint,
+    jcn text,
+    w blob,
+    PRIMARY KEY ((smid, aid, m, g), s)
+) WITH CLUSTERING ORDER BY (s ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.snroominfo (
+    roomid bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.socketclientcount (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.socketclientinfo (
+    key text PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.spawnconfigs (
+    gid bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.tournamentplayers (
+    tid bigint,
+    bid bigint,
+    gid bigint,
+    aid bigint,
+    jcn text,
+    scn blob,
+    v bigint,
+    PRIMARY KEY ((tid, bid, gid, aid))
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.tournamentsession (
+    tid bigint,
+    aid bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (tid, aid)
+) WITH CLUSTERING ORDER BY (aid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 10368000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE mpmain.weapons (
+    bid bigint,
+    aid bigint,
+    m int,
+    g bigint,
+    s bigint,
+    jcn text,
+    w blob,
+    PRIMARY KEY ((bid, aid, m, g), s)
+) WITH CLUSTERING ORDER BY (s ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE KEYSPACE rcasinoks WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}  AND durable_writes = true;
+
+CREATE TABLE rcasinoks.archivercf (
+    key text PRIMARY KEY,
+    lastprocesseddate bigint
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.batchopstatus (
+    room_id bigint,
+    round_id bigint,
+    op_type text,
+    change_date bigint,
+    status text,
+    PRIMARY KEY ((room_id, round_id), op_type)
+) WITH CLUSTERING ORDER BY (op_type ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100', 'tombstone_compaction_interval': '28800', 'unchecked_tombstone_compaction': 'true'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 259200
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.battlegroundhistory (
+    accountid bigint,
+    datetime bigint,
+    gameid int,
+    gamesessionid bigint,
+    jcn text,
+    roundid bigint,
+    scn blob,
+    PRIMARY KEY (accountid, datetime)
+) WITH CLUSTERING ORDER BY (datetime DESC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 10368000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX battlegroundhistory_gameid_idx ON rcasinoks.battlegroundhistory (gameid);
+
+CREATE INDEX battlegroundhistory_gamesessionid_idx ON rcasinoks.battlegroundhistory (gamesessionid);
+
+CREATE INDEX battlegroundhistory_roundid_idx ON rcasinoks.battlegroundhistory (roundid);
+
+CREATE TABLE rcasinoks.battlegroundparticipantroundhistory (
+    sid text,
+    roundid bigint,
+    gamesessionid bigint,
+    jcn text,
+    scn blob,
+    accountids set<bigint>,
+    PRIMARY KEY (sid, roundid)
+) WITH CLUSTERING ORDER BY (roundid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 10368000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX battlegroundparticipantroundhistory_gamesessionid_idx ON rcasinoks.battlegroundparticipantroundhistory (gamesessionid);
+
+CREATE TABLE rcasinoks.battlegroundprivateroomsettings (
+    privateroomid text PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 10368000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.betcf (
+    sid bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.DeflateCompressor'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 10368000
+    AND extensions = {}
+    AND gc_grace_seconds = 0
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.bonusarchcf (
+    accid bigint,
+    awardtime bigint,
+    bonusid bigint,
+    extbonusid text,
+    jcn text,
+    persistday bigint,
+    scn blob,
+    statusid int,
+    PRIMARY KEY (accid, awardtime)
+) WITH CLUSTERING ORDER BY (awardtime DESC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX bonusarchcf_bonusid_idx ON rcasinoks.bonusarchcf (bonusid);
+
+CREATE INDEX bonusarchcf_extbonusid_idx ON rcasinoks.bonusarchcf (extbonusid);
+
+CREATE INDEX bonusarchcf_persistday_idx ON rcasinoks.bonusarchcf (persistday);
+
+CREATE TABLE rcasinoks.clientgamestatisticsinfocf (
+    key bigint PRIMARY KEY,
+    browserinfo blob,
+    browserinfo_json text,
+    gameclientinfo blob,
+    gameclientinfo_json text
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 259200
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.concurrentnotcf (
+    key text,
+    serverid int,
+    jcn text,
+    scn blob,
+    PRIMARY KEY ((key, serverid))
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 5184000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.currentplayersessionstate (
+    key text PRIMARY KEY,
+    daytime bigint,
+    isfinishgamesession boolean,
+    privateroomid text,
+    sid text
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX currentplayersessionstate_privateroomid_idx ON rcasinoks.currentplayersessionstate (privateroomid);
+
+CREATE INDEX currentplayersessionstate_sid_idx ON rcasinoks.currentplayersessionstate (sid);
+
+CREATE TABLE rcasinoks.dmassawardfailedsendcf (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.dmassawardhistorycf (
+    key bigint PRIMARY KEY,
+    gsid int,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.frbonusarchcf (
+    accid bigint,
+    awardtime bigint,
+    extfrbonusid text,
+    frbonusid bigint,
+    jcn text,
+    persistday bigint,
+    scn blob,
+    statusid int,
+    PRIMARY KEY (accid, awardtime)
+) WITH CLUSTERING ORDER BY (awardtime DESC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX frbonusarchcf_extfrbonusid_idx ON rcasinoks.frbonusarchcf (extfrbonusid);
+
+CREATE INDEX frbonusarchcf_frbonusid_idx ON rcasinoks.frbonusarchcf (frbonusid);
+
+CREATE INDEX frbonusarchcf_persistday_idx ON rcasinoks.frbonusarchcf (persistday);
+
+CREATE TABLE rcasinoks.frbwincf (
+    key bigint PRIMARY KEY,
+    accid bigint,
+    gamesessid bigint,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX frbwincf_accid_idx ON rcasinoks.frbwincf (accid);
+
+CREATE INDEX frbwincf_gamesessid_idx ON rcasinoks.frbwincf (gamesessid);
+
+CREATE TABLE rcasinoks.gamesessioncf (
+    gsid bigint PRIMARY KEY,
+    accid bigint,
+    bcr double,
+    bets int,
+    bid bigint,
+    bonst text,
+    bonus bigint,
+    bonusbet bigint,
+    bonuswin bigint,
+    cltype text,
+    contribjp blob,
+    contribjp_json text,
+    curr text,
+    day bigint,
+    dblupi bigint,
+    dblupp bigint,
+    dbluprc int,
+    enbbalance bigint,
+    enterdate bigint,
+    et bigint,
+    extid text,
+    fraction text,
+    frbonst text,
+    frbonus bigint,
+    gameid bigint,
+    income bigint,
+    lang text,
+    lbid bigint,
+    mdl double,
+    nb bigint,
+    nextid bigint,
+    payout bigint,
+    pcr double,
+    previd bigint,
+    rc int,
+    real boolean,
+    st bigint,
+    stbalance bigint,
+    stbbalance bigint,
+    unjid bigint,
+    unjsc double,
+    unjsw bigint,
+    promoids list<bigint>
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.DeflateCompressor'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 10368000
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX gamesessioncf_day_idx ON rcasinoks.gamesessioncf (day);
+
+CREATE INDEX gamesessioncf_extid_idx ON rcasinoks.gamesessioncf (extid);
+
+CREATE INDEX gamesessioncf_nextid_idx ON rcasinoks.gamesessioncf (nextid);
+
+CREATE INDEX gamesessioncf_previd_idx ON rcasinoks.gamesessioncf (previd);
+
+CREATE TABLE rcasinoks.gamesessioncf_ag (
+    accid bigint,
+    gameid bigint,
+    et bigint,
+    gsid bigint,
+    gsn bigint,
+    PRIMARY KEY ((accid, gameid), et)
+) WITH CLUSTERING ORDER BY (et DESC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.DeflateCompressor'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 10368000
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX gamesessioncf_ag_gsn_idx ON rcasinoks.gamesessioncf_ag (gsn);
+
+CREATE TABLE rcasinoks.gamesessioncf_agm (
+    accid bigint,
+    mode int,
+    gameid bigint,
+    et bigint,
+    gsid bigint,
+    gsn bigint,
+    PRIMARY KEY ((accid, mode, gameid), et)
+) WITH CLUSTERING ORDER BY (et DESC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.DeflateCompressor'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 10368000
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX gamesessioncf_agm_gsn_idx ON rcasinoks.gamesessioncf_agm (gsn);
+
+CREATE TABLE rcasinoks.gamesessioncf_bag_idx (
+    bid bigint,
+    gameid bigint,
+    et bigint,
+    accid bigint,
+    gsid bigint,
+    PRIMARY KEY ((bid, gameid), et, accid)
+) WITH CLUSTERING ORDER BY (et DESC, accid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.DeflateCompressor'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 10368000
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.historyinformeritemcf (
+    bankid bigint,
+    createtime bigint,
+    sessionid bigint,
+    iterations int,
+    jcn text,
+    lastattempttime bigint,
+    scn blob,
+    PRIMARY KEY (bankid, createtime, sessionid)
+) WITH CLUSTERING ORDER BY (createtime ASC, sessionid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 864000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.historyinformeritemmaxiterationscf (
+    bankid bigint,
+    createtime bigint,
+    sessionid bigint,
+    jcn text,
+    lastattempttime bigint,
+    scn blob,
+    PRIMARY KEY (bankid, createtime, sessionid)
+) WITH CLUSTERING ORDER BY (createtime ASC, sessionid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 864000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.historytokencf (
+    historytoken text PRIMARY KEY,
+    exptime bigint,
+    roundid bigint
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 3600
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.httpcallinfocf (
+    callid text,
+    timestamp bigint,
+    externalid text,
+    gamesessionid bigint,
+    jcn text,
+    roundid bigint,
+    scn blob,
+    tkn text,
+    transactionid bigint,
+    PRIMARY KEY (callid, timestamp)
+) WITH CLUSTERING ORDER BY (timestamp ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 5184000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX httpcallinfocf_externalid_idx ON rcasinoks.httpcallinfocf (externalid);
+
+CREATE INDEX httpcallinfocf_gamesessionid_idx ON rcasinoks.httpcallinfocf (gamesessionid);
+
+CREATE INDEX httpcallinfocf_roundid_idx ON rcasinoks.httpcallinfocf (roundid);
+
+CREATE INDEX httpcallinfocf_tkn_idx ON rcasinoks.httpcallinfocf (tkn);
+
+CREATE INDEX httpcallinfocf_transactionid_idx ON rcasinoks.httpcallinfocf (transactionid);
+
+CREATE TABLE rcasinoks.httpcallissues (
+    date text,
+    url text,
+    failcount bigint,
+    successcount bigint,
+    updatetime bigint,
+    PRIMARY KEY (date, url)
+) WITH CLUSTERING ORDER BY (url ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 5184000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.httpcallstatistics (
+    date text,
+    url text,
+    failedcount counter,
+    successcount counter,
+    PRIMARY KEY (date, url)
+) WITH CLUSTERING ORDER BY (url ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.laststattimecf (
+    metricid int,
+    gameserverid int,
+    laststattime bigint,
+    PRIMARY KEY ((metricid, gameserverid))
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 2592000
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.metricscf (
+    metricid int,
+    gameserverid int,
+    logtime bigint,
+    metricvalue bigint,
+    PRIMARY KEY ((metricid, gameserverid), logtime)
+) WITH CLUSTERING ORDER BY (logtime ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 2592000
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.metricsstatcf (
+    metricid int,
+    gameserverid int,
+    stattime bigint,
+    averagevalue bigint,
+    maxvalue bigint,
+    maxvaluetime bigint,
+    minvalue bigint,
+    minvaluetime bigint,
+    PRIMARY KEY ((metricid, gameserverid), stattime)
+) WITH CLUSTERING ORDER BY (stattime ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 2592000
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.mqroundkpiinfo (
+    gsid bigint,
+    rid bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (gsid, rid)
+) WITH CLUSTERING ORDER BY (rid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 86400
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.playersessionhistorycf (
+    key text PRIMARY KEY,
+    day bigint,
+    extsid text,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.DeflateCompressor'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX playersessionhistorycf_day_idx ON rcasinoks.playersessionhistorycf (day);
+
+CREATE INDEX playersessionhistorycf_extsid_idx ON rcasinoks.playersessionhistorycf (extsid);
+
+CREATE TABLE rcasinoks.promopredefineduserspersistercf (
+    bankid bigint,
+    promoid bigint,
+    extuserid text,
+    accountid bigint,
+    PRIMARY KEY (bankid, promoid, extuserid)
+) WITH CLUSTERING ORDER BY (promoid ASC, extuserid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 15552000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX promopredefineduserspersistercf_accountid_idx ON rcasinoks.promopredefineduserspersistercf (accountid);
+
+CREATE TABLE rcasinoks.promowincf (
+    promoid bigint,
+    timewin bigint,
+    accountid bigint,
+    amount bigint,
+    amountinplayercurrency bigint,
+    bankid bigint,
+    gameid bigint,
+    gamesessionid bigint,
+    transferstatus text,
+    PRIMARY KEY (promoid, timewin)
+) WITH CLUSTERING ORDER BY (timewin ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 2592000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.roundgamesessioncf (
+    round_id bigint,
+    game_sid bigint,
+    account_id bigint static,
+    game_id bigint static,
+    write_time bigint,
+    PRIMARY KEY (round_id, game_sid)
+) WITH CLUSTERING ORDER BY (game_sid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 5184000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.shortbetinfocf3 (
+    bid int,
+    btime bigint,
+    aid bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (bid, btime, aid)
+) WITH CLUSTERING ORDER BY (btime DESC, aid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.DeflateCompressor'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 259200
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.supportcf (
+    key text,
+    timestamp bigint,
+    info text,
+    PRIMARY KEY (key, timestamp)
+) WITH CLUSTERING ORDER BY (timestamp ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 5184000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.tdrawconfig (
+    id bigint PRIMARY KEY,
+    cc blob,
+    ed bigint,
+    jcn text,
+    sd bigint,
+    ss int,
+    ud bigint
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 10368000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX tdrawconfig_ss_idx ON rcasinoks.tdrawconfig (ss);
+
+CREATE TABLE rcasinoks.tournamentpromosumfeedcf (
+    id bigint,
+    furl text,
+    end_date bigint static,
+    start_date bigint static,
+    bname text,
+    feed_body text,
+    mask_name boolean,
+    pchecksum text,
+    tournament_id bigint,
+    ttype text,
+    update_time bigint,
+    PRIMARY KEY (id, furl)
+) WITH CLUSTERING ORDER BY (furl ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 10368000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX tournamentpromosumfeedcf_tournament_id_idx ON rcasinoks.tournamentpromosumfeedcf (tournament_id);
+
+CREATE TABLE rcasinoks.trackinfocf (
+    key text,
+    object_id text,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (key, object_id)
+) WITH CLUSTERING ORDER BY (object_id ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100', 'tombstone_compaction_interval': '3600', 'unchecked_tombstone_compaction': 'true'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 14400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoks.wopcf (
+    key bigint PRIMARY KEY,
+    day bigint,
+    gamesessid bigint,
+    jcn text,
+    roundid bigint,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 2592000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX wopcf_day_idx ON rcasinoks.wopcf (day);
+
+CREATE INDEX wopcf_roundid_idx ON rcasinoks.wopcf (roundid);
+
+CREATE KEYSPACE rcasinoscks WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}  AND durable_writes = true;
+
+CREATE TABLE rcasinoscks.acc_dlm_cf (
+    lock_id text PRIMARY KEY,
+    llocker int,
+    lock_time bigint,
+    locker int
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': '10000'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100', 'tombstone_compaction_interval': '3600', 'unchecked_tombstone_compaction': 'true'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 0
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = 'ALWAYS';
+
+CREATE INDEX acc_dlm_cf_locker_idx ON rcasinoscks.acc_dlm_cf (locker);
+
+CREATE TABLE rcasinoscks.accountcf (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.DeflateCompressor'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.accountcf_bank_tester (
+    bankid int,
+    extid text,
+    accountid bigint,
+    PRIMARY KEY (bankid, extid)
+) WITH CLUSTERING ORDER BY (extid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.accountcf_ext (
+    bankid int,
+    extid text,
+    accountid bigint,
+    PRIMARY KEY (bankid, extid)
+) WITH CLUSTERING ORDER BY (extid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': '10000'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.bankinfocf (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.battlegroundcf (
+    bankid bigint,
+    gameid bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (bankid, gameid)
+) WITH CLUSTERING ORDER BY (gameid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.betcftmp (
+    sid bigint,
+    bid int,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (sid, bid)
+) WITH CLUSTERING ORDER BY (bid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'tombstone_compaction_interval': '3600', 'unchecked_tombstone_compaction': 'true'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 172800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.blockedcountriescf (
+    key text PRIMARY KEY
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.bonuscf (
+    bonusid bigint PRIMARY KEY,
+    expdate bigint,
+    extbonusid text,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX bonuscf_expdate_idx ON rcasinoscks.bonuscf (expdate);
+
+CREATE INDEX bonuscf_extbonusid_idx ON rcasinoscks.bonuscf (extbonusid);
+
+CREATE TABLE rcasinoscks.bonuscf_acc (
+    accid bigint,
+    bonusid bigint,
+    PRIMARY KEY (accid, bonusid)
+) WITH CLUSTERING ORDER BY (bonusid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.cgw_cf (
+    accountid bigint,
+    gameid int,
+    addroundinfo text,
+    betamount bigint,
+    clienttype text,
+    finround boolean,
+    gamesessionid bigint,
+    jpcontribution double,
+    jpwin bigint,
+    lnbet bigint,
+    nbet bigint,
+    newround boolean,
+    roundid bigint,
+    temptoken text,
+    winamount bigint,
+    PRIMARY KEY (accountid, gameid)
+) WITH CLUSTERING ORDER BY (gameid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 86400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = 'ALWAYS';
+
+CREATE TABLE rcasinoscks.countryrestrictionscf (
+    objectid bigint,
+    restrictiontype int,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (objectid, restrictiontype)
+) WITH CLUSTERING ORDER BY (restrictiontype ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 15552000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.currencycf (
+    key text PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.currencyratesbydatecf (
+    source text,
+    dest text,
+    update_date bigint,
+    crate double,
+    PRIMARY KEY ((source, dest), update_date)
+) WITH CLUSTERING ORDER BY (update_date ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 7776000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX currencyratesbydatecf_update_date_idx ON rcasinoscks.currencyratesbydatecf (update_date);
+
+CREATE TABLE rcasinoscks.currencyratescf (
+    source text,
+    dest text,
+    crate double,
+    update_date bigint,
+    PRIMARY KEY ((source, dest))
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.currencyratesconfigcf (
+    currency_name text PRIMARY KEY,
+    currency_param text,
+    currency_target text,
+    update_period bigint
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.delayedmassawardindexcf (
+    delayedmassawardid bigint PRIMARY KEY,
+    massawardid bigint
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX delayedmassawardindexcf_massawardid_idx ON rcasinoscks.delayedmassawardindexcf (massawardid);
+
+CREATE TABLE rcasinoscks.depositscf (
+    sessid text PRIMARY KEY,
+    amount bigint
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 259200
+    AND extensions = {}
+    AND gc_grace_seconds = 86400000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.dlm_cf (
+    lock_id text PRIMARY KEY,
+    llocker int,
+    lock_time bigint,
+    locker int
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': '10000'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100', 'tombstone_compaction_interval': '3600', 'unchecked_tombstone_compaction': 'true'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 0
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX dlm_cf_locker_idx ON rcasinoscks.dlm_cf (locker);
+
+CREATE TABLE rcasinoscks.dmassawardcf (
+    gsid int,
+    key bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (gsid, key)
+) WITH CLUSTERING ORDER BY (key ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX dmassawardcf_key_idx ON rcasinoscks.dmassawardcf (key);
+
+CREATE TABLE rcasinoscks.dwlcf (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.expiredbonustrackedcf (
+    key text PRIMARY KEY,
+    lastprocesseddate bigint
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.extaccountcf (
+    bankid bigint,
+    externalid text,
+    properties map<text, text>,
+    PRIMARY KEY ((bankid, externalid))
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.extgameids (
+    bank int,
+    key text,
+    id bigint,
+    PRIMARY KEY (bank, key)
+) WITH CLUSTERING ORDER BY (key ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.exttransactioncf (
+    key text PRIMARY KEY,
+    internalid text,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX exttransactioncf_internalid_idx ON rcasinoscks.exttransactioncf (internalid);
+
+CREATE TABLE rcasinoscks.frbonuscf (
+    frbonusid bigint PRIMARY KEY,
+    expdate bigint,
+    extfrbonusid text,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX frbonuscf_expdate_idx ON rcasinoscks.frbonuscf (expdate);
+
+CREATE INDEX frbonuscf_extfrbonusid_idx ON rcasinoscks.frbonuscf (extfrbonusid);
+
+CREATE TABLE rcasinoscks.frbonuscf_acc (
+    accid bigint,
+    frbonusid bigint,
+    PRIMARY KEY (accid, frbonusid)
+) WITH CLUSTERING ORDER BY (frbonusid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.frbonuswincf (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.gameinfocf (
+    key text PRIMARY KEY,
+    bankandcuridx text,
+    bankidx text,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX gameinfocf_bankandcuridx_idx ON rcasinoscks.gameinfocf (bankandcuridx);
+
+CREATE INDEX gameinfocf_bankidx_idx ON rcasinoscks.gameinfocf (bankidx);
+
+CREATE TABLE rcasinoscks.gametinfocf (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.gsessionextprops (
+    g bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.hostcdncf (
+    ip text,
+    cdn text,
+    last_update bigint,
+    time int,
+    PRIMARY KEY (ip, cdn)
+) WITH CLUSTERING ORDER BY (cdn ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 2592000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.intsequencercf (
+    key text PRIMARY KEY,
+    v int
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.lasthand_bonus_cf (
+    accountid bigint,
+    bonustype int,
+    bonusid bigint,
+    gameid bigint,
+    lh text,
+    PRIMARY KEY ((accountid, bonustype, bonusid), gameid)
+) WITH CLUSTERING ORDER BY (gameid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.lasthand_cf (
+    accountid bigint,
+    gameid bigint,
+    lh text,
+    PRIMARY KEY (accountid, gameid)
+) WITH CLUSTERING ORDER BY (gameid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.leaderboardresult (
+    b bigint,
+    l bigint,
+    e bigint,
+    r text,
+    s bigint,
+    PRIMARY KEY (b, l)
+) WITH CLUSTERING ORDER BY (l ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX leaderboardresult_e_idx ON rcasinoscks.leaderboardresult (e);
+
+CREATE TABLE rcasinoscks.localizationscf (
+    key ascii,
+    lan ascii,
+    it ascii,
+    loc text,
+    PRIMARY KEY (key, lan, it)
+) WITH CLUSTERING ORDER BY (lan ASC, it ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 15552000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.massawardcf (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.massawardrestrictioncf (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.mqdata (
+    a bigint,
+    g bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (a, g)
+) WITH CLUSTERING ORDER BY (g ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.mqreservednicknames (
+    rnregion text,
+    rnnick text,
+    rnowner bigint,
+    PRIMARY KEY (rnregion, rnnick)
+) WITH CLUSTERING ORDER BY (rnnick ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX mqreservednicknames_rnowner_idx ON rcasinoscks.mqreservednicknames (rnowner);
+
+CREATE TABLE rcasinoscks.paymenttransactioncf2 (
+    bucket int,
+    startdate bigint,
+    key bigint,
+    extid text,
+    jcn text,
+    scn blob,
+    transactionid bigint,
+    PRIMARY KEY (bucket, startdate, key)
+) WITH CLUSTERING ORDER BY (startdate ASC, key ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX paymenttransactioncf2_extid_idx ON rcasinoscks.paymenttransactioncf2 (extid);
+
+CREATE INDEX paymenttransactioncf2_transactionid_idx ON rcasinoscks.paymenttransactioncf2 (transactionid);
+
+CREATE TABLE rcasinoscks.penddataarchcf (
+    accid bigint,
+    dataname text,
+    creationtime bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (accid, dataname, creationtime)
+) WITH CLUSTERING ORDER BY (dataname ASC, creationtime ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.periodictaskscf (
+    key text PRIMARY KEY,
+    data blob,
+    extime bigint
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 8640000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.pgscf (
+    accountid bigint,
+    gameid bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (accountid, gameid)
+) WITH CLUSTERING ORDER BY (gameid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.playeraliascf (
+    ntid bigint,
+    pa text,
+    ap bigint,
+    PRIMARY KEY (ntid, pa, ap)
+) WITH CLUSTERING ORDER BY (pa ASC, ap ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 7776000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.promocampaignarchcf (
+    campid bigint PRIMARY KEY,
+    campdata blob,
+    jcn text
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 15552000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.promocampaignbybankandgamecf (
+    bankid bigint,
+    gameid bigint,
+    campid bigint,
+    campstatus ascii,
+    PRIMARY KEY (bankid, gameid, campid)
+) WITH CLUSTERING ORDER BY (gameid ASC, campid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 15552000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX promocampaignbybankandgamecf_campstatus_idx ON rcasinoscks.promocampaignbybankandgamecf (campstatus);
+
+CREATE TABLE rcasinoscks.promocampaigncf (
+    campid bigint PRIMARY KEY,
+    campdata blob,
+    jcn text
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 15552000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.promocampaignmembercf (
+    campid bigint,
+    accid bigint,
+    jcn text,
+    memdata blob,
+    PRIMARY KEY (campid, accid)
+) WITH CLUSTERING ORDER BY (accid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 15552000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.promocampaignstat (
+    campaignid bigint,
+    gsid int,
+    betsum double,
+    roundscount int,
+    PRIMARY KEY (campaignid, gsid)
+) WITH CLUSTERING ORDER BY (gsid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 30368000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.promofeedcf (
+    id bigint,
+    t int,
+    f text,
+    PRIMARY KEY (id, t)
+) WITH CLUSTERING ORDER BY (t ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 5184000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.promomemberaliasescf (
+    campid bigint,
+    bankid bigint,
+    campalias text,
+    accid bigint,
+    PRIMARY KEY (campid, bankid, campalias)
+) WITH CLUSTERING ORDER BY (bankid ASC, campalias ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 15552000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.promoplatformscf (
+    promoid bigint PRIMARY KEY,
+    jcn text,
+    platform blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 15552000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.promotmaxbalancecf (
+    cid bigint,
+    aid bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (cid, aid)
+) WITH CLUSTERING ORDER BY (aid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 15552000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.promotrankcf (
+    gmpid bigint,
+    accountid bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (gmpid, accountid)
+) WITH CLUSTERING ORDER BY (accountid ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 15552000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.rccf (
+    g int,
+    key bigint,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (g, key)
+) WITH CLUSTERING ORDER BY (key ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100', 'tombstone_compaction_interval': '3600', 'unchecked_tombstone_compaction': 'true'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 14400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.sequencercf (
+    key text PRIMARY KEY,
+    v bigint
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.serverconfcf (
+    key int PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.srvinfocf (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.subcasinocf (
+    key bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.subcasinogroupf (
+    key text PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.summarytransformercf (
+    id bigint PRIMARY KEY,
+    jcn text,
+    scn blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 5184000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.tournamenthistorycf (
+    id bigint,
+    t int,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (id, t)
+) WITH CLUSTERING ORDER BY (t ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 5184000
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.tournamenticoncf (
+    id bigint PRIMARY KEY,
+    ha text,
+    n text
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.trdata_cf (
+    key text PRIMARY KEY,
+    a blob,
+    bonus blob,
+    frbn blob,
+    frbonus blob,
+    frbwin blob,
+    gs blob,
+    lb blob,
+    lh blob,
+    lui text,
+    pmembers blob,
+    ps blob,
+    pt blob,
+    ssea blob,
+    ssga blob,
+    sspa blob,
+    track text,
+    v bigint,
+    w blob
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100', 'tombstone_compaction_interval': '3600', 'unchecked_tombstone_compaction': 'true'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 14400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.trdata_tracking_cf (
+    ts int,
+    si int,
+    key text,
+    jcn text,
+    scn blob,
+    PRIMARY KEY (ts, si, key)
+) WITH CLUSTERING ORDER BY (si ASC, key ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100', 'tombstone_compaction_interval': '3600', 'unchecked_tombstone_compaction': 'true'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 14400
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE TABLE rcasinoscks.usendedpwicf (
+    gamesessionid bigint,
+    windate bigint,
+    jcn text,
+    roundid bigint,
+    scn blob,
+    PRIMARY KEY (gamesessionid, windate)
+) WITH CLUSTERING ORDER BY (windate ASC)
+    AND additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.1
+    AND caching = {'keys': 'NONE', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4', 'sstable_size_in_mb': '100'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 604800
+    AND extensions = {}
+    AND gc_grace_seconds = 86400000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+
+CREATE INDEX usendedpwicf_roundid_idx ON rcasinoscks.usendedpwicf (roundid);
+
+CREATE TABLE rcasinoscks.votesrvmastercf (
+    key text PRIMARY KEY,
+    gsid int
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'enabled': 'false'}
+    AND memtable = 'default'
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 10800
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';

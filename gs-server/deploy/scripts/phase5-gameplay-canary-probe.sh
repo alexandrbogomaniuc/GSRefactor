@@ -10,6 +10,7 @@ GAME_ID="838"
 MODE="real"
 LANG="en"
 TOKEN="test_user_6275"
+SUB_CASINO_ID=""
 TRANSPORT="host"
 GS_BASE_URL="$(cluster_hosts_http_url GS_EXTERNAL_HOST GS_EXTERNAL_PORT 127.0.0.1 18081)"
 GAMEPLAY_BASE_URL="$(cluster_hosts_http_url GAMEPLAY_ORCHESTRATOR_EXTERNAL_HOST GAMEPLAY_ORCHESTRATOR_EXTERNAL_PORT 127.0.0.1 18074)"
@@ -31,6 +32,7 @@ Options:
   --bank-id ID               Default: ${BANK_ID}
   --game-id ID               Default: ${GAME_ID}
   --token TOKEN              Default: ${TOKEN}
+  --sub-casino-id ID         Optional (appended to startgame launch URL)
   --mode MODE                Default: ${MODE}
   --lang LANG                Default: ${LANG}
   --transport MODE           host|docker (default: ${TRANSPORT})
@@ -57,6 +59,8 @@ while [[ $# -gt 0 ]]; do
       GAME_ID="$2"; shift 2 ;;
     --token)
       TOKEN="$2"; shift 2 ;;
+    --sub-casino-id)
+      SUB_CASINO_ID="$2"; shift 2 ;;
     --mode)
       MODE="$2"; shift 2 ;;
     --lang)
@@ -148,11 +152,15 @@ gs_launch_http_with_body() {
   local headers_file="$1"
   local body_file="$2"
   local code_file="$3"
-  local url="${GS_BASE_URL}/cwstartgamev2.do?bankId=${BANK_ID}&gameId=${GAME_ID}&mode=${MODE}&token=${TOKEN}&lang=${LANG}"
+  local launch_query="bankId=${BANK_ID}&gameId=${GAME_ID}&mode=${MODE}&token=${TOKEN}&lang=${LANG}"
+  if [[ -n "${SUB_CASINO_ID}" ]]; then
+    launch_query="${launch_query}&subCasinoId=${SUB_CASINO_ID}"
+  fi
+  local url="${GS_BASE_URL}/cwstartgamev2.do?${launch_query}"
   if [[ "${TRANSPORT}" == "host" ]]; then
     curl -sS -D "${headers_file}" -o "${body_file}" -w '%{http_code}' "${url}" > "${code_file}"
   else
-    local docker_url="http://127.0.0.1:8080/cwstartgamev2.do?bankId=${BANK_ID}&gameId=${GAME_ID}&mode=${MODE}&token=${TOKEN}&lang=${LANG}"
+    local docker_url="http://127.0.0.1:8080/cwstartgamev2.do?${launch_query}"
     docker exec "${GS_CONTAINER}" sh -lc "curl -sS -D /tmp/phase5-gameplay-launch.headers -o /tmp/phase5-gameplay-launch.body -w '%{http_code}' '${docker_url}'" > "${code_file}"
     docker exec "${GS_CONTAINER}" sh -lc "cat /tmp/phase5-gameplay-launch.headers" > "${headers_file}" || true
     docker exec "${GS_CONTAINER}" sh -lc "cat /tmp/phase5-gameplay-launch.body" > "${body_file}" || true
@@ -179,7 +187,7 @@ post_gs_internal() {
 count_intents_from_file() {
   local file="$1"
   local intent_type="$2"
-  grep -o "\"type\":\"${intent_type}\"" "${file}" | wc -l | tr -d ' '
+  (grep -o "\"type\":\"${intent_type}\"" "${file}" || true) | wc -l | tr -d ' '
 }
 
 extract_string_field() {

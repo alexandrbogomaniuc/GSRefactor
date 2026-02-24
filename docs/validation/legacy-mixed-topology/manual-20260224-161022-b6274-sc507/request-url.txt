@@ -1,0 +1,1 @@
+http://127.0.0.1:18081/cwstartgamev2.do?subCasinoId=507&bankId=6274&gameId=838&lang=en&sessionId=mix20260224-161022b6274&login=mix20260224-161022b6274&currency=USD&mode=real

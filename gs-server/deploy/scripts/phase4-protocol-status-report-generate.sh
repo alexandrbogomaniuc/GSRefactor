@@ -131,7 +131,7 @@ out.push('- JSON/XML parity suite: present (`phase4-json-xml-parity-check.sh`) a
 out.push('- Per-bank protocol mode routing: implemented in protocol adapter service and configuration-driven tooling.');
 out.push('- Runtime decision state for current environment: see `phase4_status` above.');
 
-fs.writeFileSync(outFile, out.join('\\n') + '\\n');
+fs.writeFileSync(outFile, out.join('\n') + '\n');
 console.log(`report=${outFile}`);
 console.log(`phase4_status=${phase4Status}`);
 console.log(`decision=${phase4Decision}`);

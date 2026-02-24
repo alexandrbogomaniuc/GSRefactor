@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.battlegroundcf with columns [bankid, gameid, jcn, scn].
+Processed: 8 rows; Rate:      24 rows/s; Avg. rate:      24 rows/sProcessed: 8 rows; Rate:      12 rows/s; Avg. rate:      18 rows/s
+8 rows imported from 1 files in 0.444 seconds (0 skipped).

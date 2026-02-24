@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.lasthand_bonus_cf with columns [accountid, bonustype, bonusid, gameid, lh].
+Processed: 11 rows; Rate:      31 rows/s; Avg. rate:      31 rows/sProcessed: 11 rows; Rate:      16 rows/s; Avg. rate:      24 rows/s
+11 rows imported from 1 files in 0.454 seconds (0 skipped).

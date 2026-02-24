@@ -1,0 +1,18 @@
+HTTP/1.1 302 Found
+X-Trace-Id: d082c0ef-2e38-4c3b-b17d-4b6fdf0b6653
+Set-Cookie: JSESSIONID=node01u76en73vg9zat0hjjw1qe0k610.node0;Path=/
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: text/html
+Location: http://127.0.0.1/real/mp/template.jsp?gameId=838&MODE=real&GAMESERVERID=1&WEB_SOCKET_URL=ws%3A%2F%2Flocalhost%3A6300%2Fwebsocket%2Fmplobby&LANG=en&BANKID=6275&SID=1_c34c0a84e2e09062a7c00000019cbd68_CxlDBwQB
+Content-Length: 0
+Server: Jetty(9.4.18.v20190429)
+
+HTTP/1.1 200 OK
+Server: nginx/1.13.10
+Date: Tue, 24 Feb 2026 16:26:57 GMT
+Content-Type: text/html;charset=utf-8
+Content-Length: 5834
+Connection: keep-alive
+Set-Cookie: JSESSIONID=node012sabo1whakbz56y1ninbzebw5.node0;Path=/
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+

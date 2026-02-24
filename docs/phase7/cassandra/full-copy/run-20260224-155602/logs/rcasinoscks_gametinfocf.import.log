@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.gametinfocf with columns [key, jcn, scn].
+Processed: 9 rows; Rate:      30 rows/s; Avg. rate:      30 rows/sProcessed: 9 rows; Rate:      15 rows/s; Avg. rate:      22 rows/s
+9 rows imported from 1 files in 0.411 seconds (0 skipped).

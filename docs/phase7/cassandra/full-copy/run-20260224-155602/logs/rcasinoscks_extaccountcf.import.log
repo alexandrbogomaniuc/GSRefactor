@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.extaccountcf with columns [bankid, externalid, properties].
+Processed: 1 rows; Rate:       4 rows/s; Avg. rate:       4 rows/sProcessed: 1 rows; Rate:       2 rows/s; Avg. rate:       3 rows/s
+1 rows imported from 1 files in 0.363 seconds (0 skipped).

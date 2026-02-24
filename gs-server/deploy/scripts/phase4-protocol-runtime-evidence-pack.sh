@@ -10,6 +10,8 @@ BASE_URL="$(cluster_hosts_http_url PROTOCOL_ADAPTER_EXTERNAL_HOST PROTOCOL_ADAPT
 GS_BASE_URL="$(cluster_hosts_http_url GS_EXTERNAL_HOST GS_EXTERNAL_PORT 127.0.0.1 18081)"
 TRANSPORT="host"
 SESSION_ID=""
+SUB_CASINO_ID=""
+TOKEN="test_user_6275"
 RUN_SECURITY_PROBE="false"
 SECURITY_PROBE_REQUIRE_SECRET="false"
 ALLOW_MISSING_RUNTIME="false"
@@ -25,6 +27,8 @@ Options:
   --gs-base-url URL  Default: ${GS_BASE_URL}
   --transport MODE   host|docker (default: ${TRANSPORT})
   --session-id SID   Optional (used by wallet probe)
+  --sub-casino-id ID Optional (appended to startgame launch URL for auto session resolution)
+  --token TOKEN      Default: ${TOKEN} (used by wallet probe when session-id is omitted)
   --run-security-probe BOOL     true|false (default: ${RUN_SECURITY_PROBE})
   --security-require-secret B   true|false (default: ${SECURITY_PROBE_REQUIRE_SECRET})
   --allow-missing-runtime B     true|false (default: ${ALLOW_MISSING_RUNTIME})
@@ -45,6 +49,10 @@ while [[ $# -gt 0 ]]; do
       TRANSPORT="$2"; shift 2 ;;
     --session-id)
       SESSION_ID="$2"; shift 2 ;;
+    --sub-casino-id)
+      SUB_CASINO_ID="$2"; shift 2 ;;
+    --token)
+      TOKEN="$2"; shift 2 ;;
     --run-security-probe)
       RUN_SECURITY_PROBE="$2"; shift 2 ;;
     --security-require-secret)
@@ -136,15 +144,29 @@ if [[ "${skip_runtime_probes}" != "true" ]]; then
     --bank-id "${BANK_ID}" --base-url "${BASE_URL}" --transport "${TRANSPORT}")"
 
   if [[ -n "${SESSION_ID}" ]]; then
-    wallet_status="$(run_and_capture wallet "${wallet_out}" \
-      /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
-      --bank-id "${BANK_ID}" --session-id "${SESSION_ID}" --transport "${TRANSPORT}" \
-      --gs-base-url "${GS_BASE_URL}" --protocol-base-url "${BASE_URL}")"
+    if [[ -n "${SUB_CASINO_ID}" ]]; then
+      wallet_status="$(run_and_capture wallet "${wallet_out}" \
+        /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
+        --bank-id "${BANK_ID}" --session-id "${SESSION_ID}" --token "${TOKEN}" --sub-casino-id "${SUB_CASINO_ID}" --transport "${TRANSPORT}" \
+        --gs-base-url "${GS_BASE_URL}" --protocol-base-url "${BASE_URL}")"
+    else
+      wallet_status="$(run_and_capture wallet "${wallet_out}" \
+        /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
+        --bank-id "${BANK_ID}" --session-id "${SESSION_ID}" --token "${TOKEN}" --transport "${TRANSPORT}" \
+        --gs-base-url "${GS_BASE_URL}" --protocol-base-url "${BASE_URL}")"
+    fi
   else
-    wallet_status="$(run_and_capture wallet "${wallet_out}" \
-      /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
-      --bank-id "${BANK_ID}" --transport "${TRANSPORT}" \
-      --gs-base-url "${GS_BASE_URL}" --protocol-base-url "${BASE_URL}")"
+    if [[ -n "${SUB_CASINO_ID}" ]]; then
+      wallet_status="$(run_and_capture wallet "${wallet_out}" \
+        /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
+        --bank-id "${BANK_ID}" --token "${TOKEN}" --sub-casino-id "${SUB_CASINO_ID}" --transport "${TRANSPORT}" \
+        --gs-base-url "${GS_BASE_URL}" --protocol-base-url "${BASE_URL}")"
+    else
+      wallet_status="$(run_and_capture wallet "${wallet_out}" \
+        /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
+        --bank-id "${BANK_ID}" --token "${TOKEN}" --transport "${TRANSPORT}" \
+        --gs-base-url "${GS_BASE_URL}" --protocol-base-url "${BASE_URL}")"
+    fi
   fi
 
   security_status="SKIPPED"
@@ -163,6 +185,8 @@ fi
   echo "- transport: ${TRANSPORT}"
   echo "- protocolBaseUrl: ${BASE_URL}"
   echo "- gsBaseUrl: ${GS_BASE_URL}"
+  echo "- subCasinoId: ${SUB_CASINO_ID:-auto}"
+  echo "- token: ${TOKEN}"
   echo "- allowMissingRuntime: ${ALLOW_MISSING_RUNTIME}"
   echo "- runtime_readiness: ${readiness_status}"
   echo "- parity_check: ${parity_status}"

@@ -1,0 +1,856 @@
+query=rcasinoks.archivercf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.batchopstatus
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.battlegroundhistory
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.battlegroundparticipantroundhistory
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.battlegroundprivateroomsettings
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.betcf
+
+ count
+-------
+    68
+
+(1 rows)
+
+query=rcasinoks.bonusarchcf
+
+ count
+-------
+     1
+
+(1 rows)
+
+query=rcasinoks.clientgamestatisticsinfocf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.concurrentnotcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.currentplayersessionstate
+
+ count
+-------
+     1
+
+(1 rows)
+
+query=rcasinoks.dmassawardfailedsendcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.dmassawardhistorycf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.frbonusarchcf
+
+ count
+-------
+    15
+
+(1 rows)
+
+query=rcasinoks.frbwincf
+
+ count
+-------
+     6
+
+(1 rows)
+
+query=rcasinoks.gamesessioncf
+
+ count
+-------
+    68
+
+(1 rows)
+
+query=rcasinoks.gamesessioncf_ag
+
+ count
+-------
+   136
+
+(1 rows)
+
+query=rcasinoks.gamesessioncf_agm
+
+ count
+-------
+   180
+
+(1 rows)
+
+query=rcasinoks.gamesessioncf_bag_idx
+
+ count
+-------
+   136
+
+(1 rows)
+
+query=rcasinoks.historyinformeritemcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.historyinformeritemmaxiterationscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.historytokencf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.httpcallinfocf
+
+ count
+-------
+    49
+
+(1 rows)
+
+query=rcasinoks.httpcallissues
+
+ count
+-------
+    28
+
+(1 rows)
+
+query=rcasinoks.httpcallstatistics
+
+ count
+-------
+    28
+
+(1 rows)
+
+query=rcasinoks.laststattimecf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.metricscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.metricsstatcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.mqroundkpiinfo
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.playersessionhistorycf
+
+ count
+-------
+   315
+
+(1 rows)
+
+query=rcasinoks.promopredefineduserspersistercf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.promowincf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.roundgamesessioncf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.shortbetinfocf3
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.supportcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.tdrawconfig
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.tournamentpromosumfeedcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoks.trackinfocf
+
+ count
+-------
+     1
+
+(1 rows)
+
+query=rcasinoks.wopcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.acc_dlm_cf
+
+ count
+-------
+     6
+
+(1 rows)
+
+query=rcasinoscks.accountcf
+
+ count
+-------
+     1
+
+(1 rows)
+
+query=rcasinoscks.accountcf_bank_tester
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.accountcf_ext
+
+ count
+-------
+     1
+
+(1 rows)
+
+query=rcasinoscks.bankinfocf
+
+ count
+-------
+     3
+
+(1 rows)
+
+query=rcasinoscks.battlegroundcf
+
+ count
+-------
+     8
+
+(1 rows)
+
+query=rcasinoscks.betcftmp
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.blockedcountriescf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.bonuscf
+
+ count
+-------
+     1
+
+(1 rows)
+
+query=rcasinoscks.bonuscf_acc
+
+ count
+-------
+     1
+
+(1 rows)
+
+query=rcasinoscks.cgw_cf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.countryrestrictionscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.currencycf
+
+ count
+-------
+    15
+
+(1 rows)
+
+query=rcasinoscks.currencyratesbydatecf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.currencyratescf
+
+ count
+-------
+   241
+
+(1 rows)
+
+query=rcasinoscks.currencyratesconfigcf
+
+ count
+-------
+    22
+
+(1 rows)
+
+query=rcasinoscks.delayedmassawardindexcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.depositscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.dlm_cf
+
+ count
+-------
+     8
+
+(1 rows)
+
+query=rcasinoscks.dmassawardcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.dwlcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.expiredbonustrackedcf
+
+ count
+-------
+     2
+
+(1 rows)
+
+query=rcasinoscks.extaccountcf
+
+ count
+-------
+     1
+
+(1 rows)
+
+query=rcasinoscks.extgameids
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.exttransactioncf
+
+ count
+-------
+   137
+
+(1 rows)
+
+query=rcasinoscks.frbonuscf
+
+ count
+-------
+     4
+
+(1 rows)
+
+query=rcasinoscks.frbonuscf_acc
+
+ count
+-------
+     4
+
+(1 rows)
+
+query=rcasinoscks.frbonuswincf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.gameinfocf
+
+ count
+-------
+    13
+
+(1 rows)
+
+query=rcasinoscks.gametinfocf
+
+ count
+-------
+     9
+
+(1 rows)
+
+query=rcasinoscks.gsessionextprops
+
+ count
+-------
+    32
+
+(1 rows)
+
+query=rcasinoscks.hostcdncf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.intsequencercf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.lasthand_bonus_cf
+
+ count
+-------
+    11
+
+(1 rows)
+
+query=rcasinoscks.lasthand_cf
+
+ count
+-------
+     1
+
+(1 rows)
+
+query=rcasinoscks.leaderboardresult
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.localizationscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.massawardcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.massawardrestrictioncf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.mqdata
+
+ count
+-------
+     1
+
+(1 rows)
+
+query=rcasinoscks.mqreservednicknames
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.paymenttransactioncf2
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.penddataarchcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.periodictaskscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.pgscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.playeraliascf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.promocampaignarchcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.promocampaignbybankandgamecf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.promocampaigncf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.promocampaignmembercf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.promocampaignstat
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.promofeedcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.promomemberaliasescf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.promoplatformscf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.promotmaxbalancecf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.promotrankcf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.rccf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.sequencercf
+
+ count
+-------
+     8
+
+(1 rows)
+
+query=rcasinoscks.serverconfcf
+
+ count
+-------
+     1
+
+(1 rows)
+
+query=rcasinoscks.srvinfocf
+
+ count
+-------
+     1
+
+(1 rows)
+
+query=rcasinoscks.subcasinocf
+
+ count
+-------
+     2
+
+(1 rows)
+
+query=rcasinoscks.subcasinogroupf
+
+ count
+-------
+     1
+
+(1 rows)
+
+query=rcasinoscks.summarytransformercf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.tournamenthistorycf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.tournamenticoncf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.trdata_cf
+
+ count
+-------
+     3
+
+(1 rows)
+
+query=rcasinoscks.trdata_tracking_cf
+
+ count
+-------
+     3
+
+(1 rows)
+
+query=rcasinoscks.usendedpwicf
+
+ count
+-------
+     0
+
+(1 rows)
+
+query=rcasinoscks.votesrvmastercf
+
+ count
+-------
+     0
+
+(1 rows)
+

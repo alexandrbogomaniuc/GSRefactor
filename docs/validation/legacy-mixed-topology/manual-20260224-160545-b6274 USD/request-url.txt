@@ -1,0 +1,1 @@
+http://127.0.0.1:18081/cwstartgamev2.do?bankId=6274 USD&gameId=838&lang=en&sessionId=mix20260224-160545b6274 USD&login=mix20260224-160545b6274 USD&currency=&mode=real

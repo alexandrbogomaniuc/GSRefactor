@@ -1,0 +1,11 @@
+* WARNING: failed to open cookie file "/Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology/manual-20260224-143206/cookies.txt"
+*   Trying 127.0.0.1:18081...
+* Connected to 127.0.0.1 (127.0.0.1) port 18081
+> GET /cwstartgamev2.do?bankId=6275&gameId=838&lang=en&sessionId=mix20260224-143206&login=mix20260224-143206&currency=EUR&mode=real HTTP/1.1
+> Host: 127.0.0.1:18081
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+* Recv failure: Connection reset by peer
+* Closing connection

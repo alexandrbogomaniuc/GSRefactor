@@ -1,0 +1,5 @@
+Using 9 child processes
+
+Starting copy of rcasinoscks.expiredbonustrackedcf with columns [key, lastprocesseddate].
+Processed: 2 rows; Rate:       6 rows/s; Avg. rate:       6 rows/sProcessed: 2 rows; Rate:       3 rows/s; Avg. rate:       4 rows/s
+2 rows imported from 1 files in 0.458 seconds (0 skipped).
