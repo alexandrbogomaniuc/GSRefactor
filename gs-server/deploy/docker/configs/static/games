@@ -15,7 +15,10 @@ server {
 
 	location = /startgame {
 		proxy_set_header Host $host;
+		proxy_set_header Accept-Encoding "";
 		proxy_set_header proxy_scheme http;
+		gunzip on;
+		include /etc/nginx/startgame-rewrite.inc;
 		proxy_pass http://$gs_backend_host:$gs_backend_port/cwstartgamev2.do$is_args$args;
 		proxy_hide_header Location;
 		proxy_intercept_errors on;
@@ -113,7 +116,10 @@ server {
 		}
 
 		proxy_set_header Host $host;
+		proxy_set_header Accept-Encoding "";
 		proxy_set_header proxy_scheme http;
+		gunzip on;
+		include /etc/nginx/startgame-rewrite.inc;
 		proxy_pass http://$gs_backend_host:$gs_backend_port$redirect_target;
 		proxy_hide_header Location;
 		proxy_intercept_errors on;

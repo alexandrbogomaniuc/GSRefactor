@@ -4803,3 +4803,15 @@
 - Added bootstrap/build path (GS `ROOT.war`, MP `web-mp-casino`, legacy html5pc assets for configurable games, default `dragonstone`) with explicit prerequisites and updated refactor README.
 - Confirmed alias endpoint behavior: `http://127.0.0.1:18080/startgame?...subCasinoId=507...` returns `200`; plain `localhost:80/startgame` returns `404` (wrong port/facade).
 - Next step: push bootstrap changes to `GSRefactor` and have remote machine clone `GSRefactor`, install build prerequisites, then run `gs-server/deploy/scripts/refactor-start.sh`.
+### 2026-02-24 18:08-18:15 UTC
+- Fixed refactor `/startgame` alias launch failure caused by hardcoded absolute URLs in GS launch HTML (assets `http://127.0.0.1/...`, GS error URL `http://localhost:8081/...`, MP websocket `ws://localhost:6300/...`) by externalizing rewrite targets into `cluster-hosts.properties` and generating nginx `startgame-rewrite.inc` via `sync-cluster-hosts.sh`.
+- Updated static nginx `/startgame` and redirect-follow handlers to apply HTML rewrite include (with `Accept-Encoding` cleared and `gunzip on`), and updated static Dockerfile to bake the generated include; verified with MCP that `/startgame` now rewrites asset URLs to `:18080` and websocket to `:16300`.
+- Also fixed `refactor-start.sh` bootstrap invocation to run `refactor-bootstrap-runtime.sh` via `bash` (portable when execute bit is missing on fresh clone).
+- Evidence: MCP network requests `reqid=14..21` (assets loaded from `http://127.0.0.1:18080/...`), `/tmp/startgame_req14_response.html` shows rewritten URLs (`:18080`, `:18081`, `ws://127.0.0.1:16300`), page snapshot title `Max Quest: Dragonstone`.
+- Next step: keep browser-facing endpoints externalized through `cluster-hosts.properties` when moving hosts/ports on another machine, then rerun `sync-cluster-hosts.sh` and rebuild `refactor-static` if static image config changes.
+### 2026-02-25 09:06-09:06 UTC
+- Started after-project audit milestone program pre-flight cleanup in `Dev_new` to keep upcoming milestone commits isolated and auditable.
+- Isolating the existing `/startgame` alias launch fix set (externalized browser-facing URL rewrites + static nginx include bake + refactor-start portability fix) into a separate commit before Milestone 1.
+- Evidence: `git status` in `Dev_new` shows only alias/runtime portability fix paths plus the `Dev_new` diary update.
+- Result: pre-flight cleanup commit prepared (next action: commit + push, then save memory and begin Milestone 1 document).
+- Next step: create and push cleanup commit `Fix startgame alias launch HTML rewrites and path portability`.

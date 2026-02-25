@@ -52,7 +52,7 @@ maybe_bootstrap_runtime() {
   [[ -d "$LEGACY_MP_TARGET_DIR/web-mp-casino" ]] || needs_bootstrap=1
   if [[ "$needs_bootstrap" == "1" ]]; then
     require_path "$BOOTSTRAP_RUNTIME"
-    run "$BOOTSTRAP_RUNTIME"
+    run bash "$BOOTSTRAP_RUNTIME"
   fi
 }
 
