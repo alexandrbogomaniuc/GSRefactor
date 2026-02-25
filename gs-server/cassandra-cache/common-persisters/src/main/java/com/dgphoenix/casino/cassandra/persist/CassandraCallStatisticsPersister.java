@@ -2,8 +2,7 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.querybuilder.Update;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -51,8 +50,10 @@ public class CassandraCallStatisticsPersister extends AbstractCassandraPersister
     public void persist(String date, String url, boolean isSuccess, long amount) {
         String counterColumn = isSuccess ? SUCCESS_COUNTER : FAIL_COUNTER;
 
-        Update update = getUpdateQuery();
-        update.where().and(eq(DATE, date)).and(eq(URL, url)).with(incr(counterColumn, amount));
+        Statement update = getUpdateQuery()
+                .where(eq(DATE, date))
+                .and(eq(URL, url))
+                .with(incr(counterColumn, amount));
         if (LOG.isDebugEnabled()) {
             LOG.debug("persist " + url + ", isSuccess:" + isSuccess);
         }
@@ -70,8 +71,9 @@ public class CassandraCallStatisticsPersister extends AbstractCassandraPersister
     }
 
     private URLCallCounters getCallStatistics(String date, String url) {
-        Select select = getSelectColumnsQuery(FAIL_COUNTER, SUCCESS_COUNTER);
-        select.where().and(eq(DATE, date)).and(eq(URL, url));
+        Statement select = getSelectColumnsQuery(FAIL_COUNTER, SUCCESS_COUNTER)
+                .where(eq(DATE, date))
+                .and(eq(URL, url));
         Row row = execute(select, "getCallStatistics").one();
         if (row == null) {
             return new URLCallCounters(date, url, 0, 0, 0);

@@ -2,9 +2,8 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
+import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.querybuilder.Update;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -58,9 +57,8 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
 
     @Override
     public Map<String, String> get(long bankId, String externalId) {
-        Select select = getSelectColumnsQuery(PROPERTIES);
-        select.where()
-                .and(eq(BANK_ID, bankId))
+        Statement select = getSelectColumnsQuery(PROPERTIES)
+                .where(eq(BANK_ID, bankId))
                 .and(eq(EXTERNAL_ID, externalId));
         Row row = execute(select, "get").one();
         if (row != null) {
@@ -71,16 +69,18 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
 
     @Override
     public void persist(long bankId, String externalId, Map<String, String> properties) {
-        Update update = getUpdateQuery();
-        update.where().and(eq(BANK_ID, bankId)).and(eq(EXTERNAL_ID, externalId))
+        Statement update = getUpdateQuery()
+                .where(eq(BANK_ID, bankId))
+                .and(eq(EXTERNAL_ID, externalId))
                 .with(QueryBuilder.putAll(PROPERTIES, properties));
         execute(update, "persist");
     }
 
     @Override
     public void persist(long bankId, String externalId, String propertyName, String value) {
-        Update update = getUpdateQuery();
-        update.where().and(eq(BANK_ID, bankId)).and(eq(EXTERNAL_ID, externalId))
+        Statement update = getUpdateQuery()
+                .where(eq(BANK_ID, bankId))
+                .and(eq(EXTERNAL_ID, externalId))
                 .with(QueryBuilder.put(PROPERTIES, propertyName, value));
         execute(update, "persist");
     }
