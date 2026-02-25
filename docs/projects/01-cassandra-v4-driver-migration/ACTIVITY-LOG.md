@@ -262,3 +262,13 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-unit-tests-20260225-213926.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-build-web-gs-20260225-213926.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-build-mp-stack-20260225-213926.txt`
+
+## 2026-02-25 21:41 UTC
+- Added CASS-V4 Wave 18 inventory checkpoint after Waves 14-17.
+- Generated fresh inventory artifact:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214131/phase7-cassandra-driver-inventory-20260225-214135.txt`
+- Confirmed measurable GS reduction:
+  - `driver3_import_lines` from `464` (Wave 13) to `453` (`-11`)
+  - overall from Wave 1 baseline `488` to `453` (`-35`).
+- Documented delta and next target in:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214131/c4-wave18-inventory-delta-after-waves14-17-20260225-214131.md`

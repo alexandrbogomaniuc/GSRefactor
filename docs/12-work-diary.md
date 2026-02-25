@@ -5385,3 +5385,13 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-unit-tests-20260225-213926.txt`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-build-web-gs-20260225-213926.txt`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-build-mp-stack-20260225-213926.txt`
+### 2026-02-25 21:41 UTC
+- Added CASS-V4 Wave 18 inventory checkpoint (metric gate) after Waves 14-17.
+- Ran inventory script:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase7-cassandra-driver-inventory.sh --repo-root /Users/alexb/Documents/Dev/Dev_new --out-dir /Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214131`
+- Result:
+  - GS `driver3_import_lines`: `464 -> 453` (`-11` since Wave 13 checkpoint)
+  - GS total reduction since Wave 1 baseline: `488 -> 453` (`-35`)
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214131/phase7-cassandra-driver-inventory-20260225-214135.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214131/c4-wave18-inventory-delta-after-waves14-17-20260225-214131.md`
