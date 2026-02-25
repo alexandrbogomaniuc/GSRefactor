@@ -5195,3 +5195,10 @@
 - Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/README.md`, `/Users/alexb/Documents/Dev/Dev_new/docs/projects/PROGRAM-COORDINATION-PLAN.md`, and both project folders under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/`.
 - Result: planning baseline is now explicit, separated, and execution-ready with clear testing and documentation requirements.
 - Next step: commit/push this planning package and proceed with execution wave kickoff using these two project tracks.
+### 2026-02-25 20:06-20:13 UTC
+- Started documentation reorganization into project-named subfolders under `docs/projects` without breaking support portal references.
+- Move wave 1 completed: post-project audit package moved from `docs/` to `docs/projects/post-project-audit/`, including `audit-evidence/` and all milestone/finalization guides.
+- Move wave 2 completed: `docs/New games Project` -> `docs/projects/new-games` and `docs/Casino Manager Project` -> `docs/projects/casino-manager`; updated known path references (including support portal and New Games proof-pack script defaults).
+- Added relocation tracker: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/DOCUMENT-RELOCATION-MAP.md` and updated `/Users/alexb/Documents/Dev/Dev_new/docs/projects/README.md`.
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html`, `/Users/alexb/Documents/Dev/Dev_new/new-games-server/scripts/perf-proof-pack.sh`, `/Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/`.
+- Next step: optional Wave 3 for top-level numbered phase docs after controlled hardcoded-path migration in scripts/support pages.

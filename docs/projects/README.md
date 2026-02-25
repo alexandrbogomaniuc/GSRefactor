@@ -2,8 +2,9 @@
 
 Last updated: 2026-02-25 UTC
 
-This folder contains two separate project tracks that finish the remaining core goals:
+This folder is now the main home for project-specific documentation.
 
+## Active finalization tracks
 1. `01-cassandra-v4-driver-migration`
 - Move runtime from Cassandra 2.x assumptions to Cassandra 4.x compatibility.
 - Complete Java driver migration to 4.x line.
@@ -13,6 +14,16 @@ This folder contains two separate project tracks that finish the remaining core 
 - Finish class/package/config naming refactor.
 - Replace legacy runtime naming safely (no blind global replace).
 - Remove transitional compatibility only after proof.
+
+## Project document homes
+1. `post-project-audit`
+- After-project milestone plan, reality-check audit report, portal notes, architecture visual pack, onboarding guide, finalization report, and all audit evidence folders.
+
+2. `new-games`
+- New Games planning, milestones, handoff docs, and performance proof artifacts.
+
+3. `casino-manager`
+- Casino Manager charter, mapping docs, and gathered evidence.
 
 ## Why split into two projects
 - Cassandra migration and naming migration are both high risk.
@@ -27,3 +38,4 @@ This folder contains two separate project tracks that finish the remaining core 
 
 ## Start here
 - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/PROGRAM-COORDINATION-PLAN.md`
+- `/Users/alexb/Documents/Dev/Dev_new/docs/projects/DOCUMENT-RELOCATION-MAP.md`

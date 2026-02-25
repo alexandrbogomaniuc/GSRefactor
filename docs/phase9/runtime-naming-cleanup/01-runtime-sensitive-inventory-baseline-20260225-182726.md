@@ -127,7 +127,7 @@ Examples:
 ## 7) Text-Only / Policy Docs (low technical risk, but authoritative)
 Examples:
 
-- `/Users/alexb/Documents/Dev/Dev_new/docs/Bank-Template-Singleplayer-vs-Multiplayer-Policy.md`
+- `/Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/Bank-Template-Singleplayer-vs-Multiplayer-Policy.md`
 - `/Users/alexb/Documents/Dev/Dev_new/docs/30-phase9-abs-rename-wave-plan-gs-v1.md`
 
 These are safer to update, but they define the rules and plan and should stay consistent with the actual execution.

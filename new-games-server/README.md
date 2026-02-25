@@ -86,7 +86,7 @@ npm run runtime:proof-pack
 ```
 
 Proof-pack artifacts:
-- report: `/Users/alexb/Documents/Dev/docs/New games Project/evidence/m4-proof-pack-<UTC>.md`
+- report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/new-games/evidence/m4-proof-pack-<UTC>.md`
 - perf JSON/stderr + e2e/status logs: `/Users/alexb/Documents/Dev/new-games-server/artifacts/perf/`
 
 Useful overrides:
