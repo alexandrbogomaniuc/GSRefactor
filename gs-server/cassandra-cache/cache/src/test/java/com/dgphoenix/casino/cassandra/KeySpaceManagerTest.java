@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.net.InetSocketAddress;
 import java.util.Collections;
 import java.util.Set;
 
@@ -201,5 +202,50 @@ public class KeySpaceManagerTest {
         Set<Host> downHosts = keySpaceManager.getDownHosts();
 
         assertEquals("Wrong size of down hosts set", 2, downHosts.size());
+    }
+
+    @Test
+    public void testDownHostAddresses() {
+        when(configuration.isCreateSchema()).thenReturn(true);
+        Host firstHost = mock(Host.class);
+        when(firstHost.isUp()).thenReturn(true);
+
+        Host secondHost = mock(Host.class);
+        when(secondHost.isUp()).thenReturn(false);
+        when(secondHost.getSocketAddress()).thenReturn(new InetSocketAddress("cassandra-down-1", 9042));
+
+        Host thirdHost = mock(Host.class);
+        when(thirdHost.isUp()).thenReturn(false);
+        when(thirdHost.getSocketAddress()).thenReturn(new InetSocketAddress("cassandra-down-2", 9042));
+
+        Set<Host> hosts = ImmutableSet.<Host>builder().add(firstHost, secondHost, thirdHost).build();
+        when(metadata.getAllHosts()).thenReturn(hosts);
+
+        keySpaceManager.init();
+        Set<String> downHosts = keySpaceManager.getDownHostAddresses();
+
+        assertEquals("Wrong size of down hosts set", 2, downHosts.size());
+        assertTrue("Missing host cassandra-down-1", downHosts.contains("cassandra-down-1"));
+        assertTrue("Missing host cassandra-down-2", downHosts.contains("cassandra-down-2"));
+    }
+
+    @Test
+    public void testAllHostAddresses() {
+        when(configuration.isCreateSchema()).thenReturn(true);
+        Host firstHost = mock(Host.class);
+        when(firstHost.getSocketAddress()).thenReturn(new InetSocketAddress("cassandra-up", 9042));
+
+        Host secondHost = mock(Host.class);
+        when(secondHost.getSocketAddress()).thenReturn(new InetSocketAddress("cassandra-down-1", 9042));
+
+        Set<Host> hosts = ImmutableSet.<Host>builder().add(firstHost, secondHost).build();
+        when(metadata.getAllHosts()).thenReturn(hosts);
+
+        keySpaceManager.init();
+        Set<String> allHosts = keySpaceManager.getAllHostAddresses();
+
+        assertEquals("Wrong size of host set", 2, allHosts.size());
+        assertTrue("Missing host cassandra-up", allHosts.contains("cassandra-up"));
+        assertTrue("Missing host cassandra-down-1", allHosts.contains("cassandra-down-1"));
     }
 }

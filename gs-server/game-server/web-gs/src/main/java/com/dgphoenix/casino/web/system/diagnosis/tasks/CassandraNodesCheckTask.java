@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.web.system.diagnosis.tasks;
 
-import com.datastax.driver.core.Host;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.IKeyspaceManager;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
@@ -22,9 +21,9 @@ public class CassandraNodesCheckTask extends AbstractCheckTask {
         try {
             taskExecutionStartTime = getCurrentTime();
             Collection<IKeyspaceManager> keyspaceManagers = persistenceManager.getKeyspaceManagers();
-            Set<Host> hosts;
+            Set<String> hosts;
             for (IKeyspaceManager keySpaceManager : keyspaceManagers) {
-                hosts = keySpaceManager.getDownHosts();
+                hosts = keySpaceManager.getDownHostAddresses();
                 if (!hosts.isEmpty()) {
                     taskFailed = true;
                 }

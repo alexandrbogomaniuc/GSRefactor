@@ -7,6 +7,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
+import java.util.LinkedHashSet;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -95,6 +98,31 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
     }
 
     @Override
+    public Set<String> getDownHostAddresses() {
+        if (!initialized || cluster == null || cluster.getMetadata() == null) {
+            return Collections.emptySet();
+        }
+
+        return cluster.getMetadata().getAllHosts().stream()
+                .filter(host -> !host.isUp())
+                .map(this::extractHostAddress)
+                .filter(StringUtils::isNotBlank)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+    }
+
+    @Override
+    public Set<String> getAllHostAddresses() {
+        if (!initialized || cluster == null || cluster.getMetadata() == null) {
+            return Collections.emptySet();
+        }
+
+        return cluster.getMetadata().getAllHosts().stream()
+                .map(this::extractHostAddress)
+                .filter(StringUtils::isNotBlank)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+    }
+
+    @Override
     public Set<String> getJmxHosts() {
         return configuration.getJmxHosts();
     }
@@ -163,6 +191,24 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
                     return hostUp;
                 })
                 .count();
+    }
+
+    private String extractHostAddress(Host host) {
+        if (host == null) {
+            return null;
+        }
+        SocketAddress socketAddress = host.getSocketAddress();
+        if (socketAddress instanceof InetSocketAddress) {
+            InetSocketAddress inetSocketAddress = (InetSocketAddress) socketAddress;
+            String hostString = inetSocketAddress.getHostString();
+            if (StringUtils.isNotBlank(hostString)) {
+                return hostString;
+            }
+            if (inetSocketAddress.getAddress() != null) {
+                return inetSocketAddress.getAddress().getHostAddress();
+            }
+        }
+        return host.getAddress() != null ? host.getAddress().getHostAddress() : null;
     }
 
     @Override

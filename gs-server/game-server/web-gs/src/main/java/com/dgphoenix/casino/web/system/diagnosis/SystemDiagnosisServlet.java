@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.web.system.diagnosis;
 
-import com.datastax.driver.core.Host;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.IKeyspaceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesPersister;
@@ -75,7 +74,7 @@ public class SystemDiagnosisServlet extends BaseDiagnosisServlet {
         });
 
         taskList.add(new CheckTask("Cassandra nodes down:", false) {
-            private Set<Host> hosts = null;
+            private Set<String> hosts = null;
 
             @Override
             public boolean isOut(boolean strongValidation) {
@@ -83,7 +82,7 @@ public class SystemDiagnosisServlet extends BaseDiagnosisServlet {
                         .getBean("persistenceManager", CassandraPersistenceManager.class);
                 Collection<IKeyspaceManager> managers = persistenceManager.getKeyspaceManagers();
                 for (IKeyspaceManager keySpaceManager : managers) {
-                    hosts = keySpaceManager.getDownHosts();
+                    hosts = keySpaceManager.getDownHostAddresses();
                     if (!hosts.isEmpty()) {
                         return true;
                     }
@@ -95,13 +94,13 @@ public class SystemDiagnosisServlet extends BaseDiagnosisServlet {
             public String getErrorMessage() {
                 StringBuilder builder = new StringBuilder(super.getErrorMessage());
                 boolean first = true;
-                for (Host host : hosts) {
+                for (String host : hosts) {
                     if (first) {
                         first = false;
                     } else {
                         builder.append(", ");
                     }
-                    builder.append(host.getAddress());
+                    builder.append(host);
                 }
                 return builder.toString();
             }

@@ -37,3 +37,14 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
 - Validation: PASS (`ClusterConfigDeserializationTest`, `KeyspaceConfigurationFactoryTest`, module package build).
 - Evidence added:
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave3-config-tuning-and-dc-aware-20260225-203312.md`
+
+## 2026-02-25 20:51 UTC
+- Implemented CASS-V4 Wave 4 to reduce driver3 coupling in diagnosis/runtime paths.
+- Added driver-neutral host APIs to keyspace manager (`getDownHostAddresses`, `getAllHostAddresses`) and implemented them in `KeyspaceManagerImpl` with safe host extraction.
+- Updated GS diagnosis tasks/servlet to use host-address APIs instead of direct `Session/Host` metadata traversal.
+- Added/updated tests in `KeySpaceManagerTest` and revalidated cache/web builds.
+- Validation: PASS (`KeySpaceManagerTest`, `ClusterConfigDeserializationTest`, `KeyspaceConfigurationFactoryTest`, cache install, web-gs package).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave4-driver-neutral-diagnosis-decoupling-20260225-203312.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave4-unit-tests-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave4-build-web-gs-20260225-203312.txt`

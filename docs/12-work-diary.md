@@ -5240,3 +5240,9 @@
 - Added optional DC-aware load-balancing path (`enableDcAwareLoadBalancing` + `localDataCenterName`) in `KeyspaceConfiguration`.
 - Updated and passed tests + build; evidence saved in:
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave3-config-tuning-and-dc-aware-20260225-203312.md`
+### 2026-02-25 20:51 UTC
+- Continued CASS-V4 and completed Wave 4 (driver-neutral diagnosis decoupling) in `Dev_new`.
+- Added host-address APIs on `IKeyspaceManager`/`KeyspaceManagerImpl` and switched GS diagnosis tasks to use those APIs instead of direct driver metadata traversal.
+- Validation passed: cache tests/build and `web-gs` package build with local cluster properties.
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave4-driver-neutral-diagnosis-decoupling-20260225-203312.md` plus corresponding raw build/test logs in same folder.
+- Next step: commit/push Wave 4, save memory, then start CASS-V4 Wave 5 migration on highest-priority driver3 API hotspots.

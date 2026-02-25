@@ -24,6 +24,17 @@ public interface IKeyspaceManager {
 
     Set<Host> getDownHosts();
 
+    /**
+     * Driver-neutral representation of down Cassandra nodes (host/ip only).
+     * Used by web/runtime diagnostics to reduce direct driver API coupling.
+     */
+    Set<String> getDownHostAddresses();
+
+    /**
+     * Driver-neutral representation of all known Cassandra nodes (host/ip only).
+     */
+    Set<String> getAllHostAddresses();
+
     String getKeyspaceName();
 
     Session getSession();

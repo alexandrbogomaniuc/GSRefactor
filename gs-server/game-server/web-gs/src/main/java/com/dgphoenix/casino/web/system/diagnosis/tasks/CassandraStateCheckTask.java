@@ -1,7 +1,5 @@
 package com.dgphoenix.casino.web.system.diagnosis.tasks;
 
-import com.datastax.driver.core.Host;
-import com.datastax.driver.core.Session;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.IKeyspaceManager;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
@@ -16,8 +14,6 @@ import javax.management.remote.JMXConnector;
 import javax.management.remote.JMXConnectorFactory;
 import javax.management.remote.JMXServiceURL;
 import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
@@ -102,15 +98,7 @@ public class CassandraStateCheckTask extends AbstractCheckTask {
 
         Set<String> fallbackHosts = new LinkedHashSet<>();
         try {
-            Session session = manager.getSession();
-            if (session != null && session.getCluster() != null && session.getCluster().getMetadata() != null) {
-                for (Host host : session.getCluster().getMetadata().getAllHosts()) {
-                    String hostAddress = extractHostAddress(host);
-                    if (!StringUtils.isBlank(hostAddress)) {
-                        fallbackHosts.add(hostAddress);
-                    }
-                }
-            }
+            fallbackHosts.addAll(manager.getAllHostAddresses());
         } catch (Throwable e) {
             LOG.debug("Failed to resolve Cassandra JMX hosts from driver metadata for keyspace {}", manager.getKeyspaceName(), e);
         }
@@ -119,24 +107,6 @@ public class CassandraStateCheckTask extends AbstractCheckTask {
             LOG.debug("Using Cassandra JMX host fallback from driver metadata for keyspace {}: {}", manager.getKeyspaceName(), fallbackHosts);
         }
         return fallbackHosts;
-    }
-
-    private String extractHostAddress(Host host) {
-        if (host == null) {
-            return null;
-        }
-        SocketAddress socketAddress = host.getSocketAddress();
-        if (socketAddress instanceof InetSocketAddress) {
-            InetSocketAddress inetSocketAddress = (InetSocketAddress) socketAddress;
-            String hostString = inetSocketAddress.getHostString();
-            if (!StringUtils.isBlank(hostString)) {
-                return hostString;
-            }
-            if (inetSocketAddress.getAddress() != null) {
-                return inetSocketAddress.getAddress().getHostAddress();
-            }
-        }
-        return host.getAddress() != null ? host.getAddress().getHostAddress() : null;
     }
 
     private HostMetrics getHostMetrics(String hostAddress) {
