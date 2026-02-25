@@ -5202,3 +5202,8 @@
 - Added relocation tracker: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/DOCUMENT-RELOCATION-MAP.md` and updated `/Users/alexb/Documents/Dev/Dev_new/docs/projects/README.md`.
 - Evidence: `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html`, `/Users/alexb/Documents/Dev/Dev_new/new-games-server/scripts/perf-proof-pack.sh`, `/Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/`.
 - Next step: optional Wave 3 for top-level numbered phase docs after controlled hardcoded-path migration in scripts/support pages.
+### 2026-02-25 20:16-20:18 UTC
+- Added per-project activity logs under each active folder in `docs/projects/` as requested.
+- New files: `01-cassandra-v4-driver-migration/ACTIVITY-LOG.md`, `02-runtime-renaming-refactor/ACTIVITY-LOG.md`, `post-project-audit/ACTIVITY-LOG.md`, `new-games/ACTIVITY-LOG.md`, `casino-manager/ACTIVITY-LOG.md`.
+- Result: each project folder now has a local execution/activity trace anchor for ongoing updates.
+- Next step: continue updating these logs on each project-specific work wave.
