@@ -1,5 +1,6 @@
 <ClusterConfig>
     <clusterName>clusterName</clusterName>
+    <validateClusterName>false</validateClusterName>
     <keySpace>ksName</keySpace>
     <hostTimeoutWindow>30000</hostTimeoutWindow>
     <replicationStrategyClass>org.apache.cassandra.locator.NetworkTopologyStrategy</replicationStrategyClass>

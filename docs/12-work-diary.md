@@ -5218,3 +5218,13 @@
   - `web-gs` build success
   - `/startgame` runtime smoke HTTP 200 (`bankId=6275`, `subCasinoId=507`, `gameId=838`)
 - Saved evidence pack: `docs/projects/02-runtime-renaming-refactor/evidence/20260225-202452/` and marked RN5 complete in `docs/phase9/runtime-naming-cleanup/README.md`.
+### 2026-02-25 20:33-20:35 UTC
+- Started CASS-V4 execution wave (Project 01) and completed Wave 1 with tests.
+- Implemented Cassandra config compatibility toggle `validateClusterName` (default remains strict validation for backward compatibility; optional disable path added for migration/rehearsal environments).
+- Updated `KeyspaceConfiguration` cluster builder logic to honor `validateClusterName` and avoid forced name pinning when disabled.
+- Reworked `phase7-cassandra-driver-inventory.sh` to dynamic path resolution and richer migration inventory output (dependencies + import counts + hotspot files + API type distribution).
+- Generated evidence pack: `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/`.
+- Validation: PASS
+  - `ClusterConfigDeserializationTest`, `KeyspaceConfigurationFactoryTest`
+  - `gs-server/cassandra-cache/cache` package build
+  - inventory script syntax + execution.

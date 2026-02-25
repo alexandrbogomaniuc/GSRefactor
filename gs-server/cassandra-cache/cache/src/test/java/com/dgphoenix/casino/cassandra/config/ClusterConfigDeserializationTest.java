@@ -43,6 +43,7 @@ public class ClusterConfigDeserializationTest {
 
         assertNotNull("Config must be not null", config);
         assertEquals("Actual clusterName doesn't equals", "clusterName", config.getClusterName());
+        assertTrue("Cluster name validation should be enabled by default", config.isValidateClusterName());
         assertEquals("Actual keySpaceName doesn't equals", "ksName", config.getKeySpace());
         assertEquals("Actual replicationStrategyClass doesn't equals", "org.apache.cassandra.locator.SimpleStrategy", config.getReplicationStrategyClass());
         assertEquals("Actual readConsistencyLevel doesn't equals", "2", config.getReadConsistencyLevel());
@@ -63,6 +64,7 @@ public class ClusterConfigDeserializationTest {
 
         assertNotNull("Config must be not null", config);
         assertEquals("Actual clusterName doesn't equals", "clusterName", config.getClusterName());
+        assertFalse("Cluster name validation flag doesn't equals", config.isValidateClusterName());
         assertEquals("Actual keySpaceName doesn't equals", "ksName", config.getKeySpace());
         assertEquals("Actual replicationStrategyClass doesn't equals", "org.apache.cassandra.locator.NetworkTopologyStrategy", config.getReplicationStrategyClass());
         assertEquals("Actual readConsistencyLevel doesn't equals", "2", config.getReadConsistencyLevel());

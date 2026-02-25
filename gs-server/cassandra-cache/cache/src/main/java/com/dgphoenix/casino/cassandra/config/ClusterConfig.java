@@ -16,6 +16,7 @@ import java.util.Map.Entry;
 @XStreamAlias("ClusterConfig")
 public class ClusterConfig implements IXmlConfig {
     private String clusterName;
+    private Boolean validateClusterName;
     private String keySpace;
     private int hostTimeoutWindow;
     private String replicationStrategyClass;
@@ -42,6 +43,10 @@ public class ClusterConfig implements IXmlConfig {
 
     public String getClusterName() {
         return clusterName;
+    }
+
+    public boolean isValidateClusterName() {
+        return validateClusterName == null ? true : validateClusterName;
     }
 
     public String getKeySpace() {
@@ -124,6 +129,7 @@ public class ClusterConfig implements IXmlConfig {
         final StringBuilder sb = new StringBuilder();
         sb.append("ClusterConfig");
         sb.append("[clusterName='").append(clusterName).append('\'');
+        sb.append(", validateClusterName=").append(isValidateClusterName());
         sb.append(", keySpace='").append(keySpace).append('\'');
         sb.append(", hostTimeoutWindow=").append(hostTimeoutWindow);
         sb.append(", replicationStrategyClass='").append(replicationStrategyClass).append('\'');

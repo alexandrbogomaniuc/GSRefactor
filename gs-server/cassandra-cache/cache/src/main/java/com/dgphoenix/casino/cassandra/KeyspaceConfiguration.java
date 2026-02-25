@@ -5,6 +5,8 @@ import com.dgphoenix.casino.cassandra.config.ClusterConfig;
 import com.dgphoenix.casino.cassandra.config.ColumnFamilyConfig;
 import com.dgphoenix.casino.common.configuration.ConfigHelper;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Set;
@@ -19,6 +21,7 @@ import static org.apache.logging.log4j.util.Strings.isNotBlank;
  * @since 15.09.16
  */
 public class KeyspaceConfiguration {
+    private static final Logger LOG = LogManager.getLogger(KeyspaceConfiguration.class);
 
     private final String filename;
     private final ConfigHelper configHelper;
@@ -55,7 +58,12 @@ public class KeyspaceConfiguration {
     }
 
     public Cluster buildCluster(Cluster.Builder clusterBuilder) {
-        clusterBuilder.withClusterName(clusterConfig.getClusterName());
+        if (clusterConfig.isValidateClusterName() && isNotBlank(clusterConfig.getClusterName())) {
+            clusterBuilder.withClusterName(clusterConfig.getClusterName());
+        } else {
+            LOG.info("Skipping Cassandra cluster-name validation (clusterName='{}', validateClusterName={})",
+                    clusterConfig.getClusterName(), clusterConfig.isValidateClusterName());
+        }
         QueryOptions options = new QueryOptions();
         options.setConsistencyLevel(writeConsistencyLevel);
         clusterBuilder.withQueryOptions(options);

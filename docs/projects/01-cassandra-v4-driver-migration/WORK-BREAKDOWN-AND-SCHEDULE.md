@@ -2,6 +2,11 @@
 
 Last updated: 2026-02-25 UTC
 
+## Current execution status
+- Phase 0: in progress (Wave 1 baseline inventory evidence generated, dynamic tooling in place).
+- Phase 1: in progress (initial dependency/API inventory completed; code migration map still pending).
+- Phase 2+: not started.
+
 ## Phase 0: Freeze and baseline
 1. Freeze dependency versions and lock baseline commit.
 2. Export current driver inventory and dependency tree.
