@@ -53,7 +53,9 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
         return configuration.getKeyspaceName();
     }
 
-    @Override
+    /**
+     * Internal/legacy accessor retained for persister engine compatibility.
+     */
     public Session getSession() {
         return session;
     }
@@ -86,7 +88,9 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
         return initialized && cluster != null && !cluster.isClosed() && session != null && !session.isClosed();
     }
 
-    @Override
+    /**
+     * Internal/legacy host view retained for cache-module compatibility tests.
+     */
     public Set<Host> getDownHosts() {
         if (!initialized) {
             return Collections.emptySet();

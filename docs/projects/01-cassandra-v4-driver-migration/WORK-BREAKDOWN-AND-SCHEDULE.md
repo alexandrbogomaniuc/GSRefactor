@@ -95,3 +95,8 @@ Deliverables:
 - Completed waves: Wave 1 (inventory/compat baseline), Wave 2 (backlog automation), Wave 3 (config-driven tuning + optional DC-aware policy), Wave 4 (diagnosis host API decoupling), Wave 5 (metrics snapshot API decoupling).
 - Current phase alignment: Phase 1 remains in progress; Phase 2 is not started.
 - Immediate focus: migrate highest-volume driver3 APIs in `cassandra-cache` (`querybuilder`, `Row`, `ResultSet`) with controlled compatibility slices.
+
+## Execution update (2026-02-25 21:01 UTC)
+- Completed waves: Wave 1, Wave 2, Wave 3, Wave 4, Wave 5, Wave 6.
+- Current phase alignment: Phase 1 in progress (interface/compatibility reduction track), Phase 2 not started.
+- Immediate focus: begin high-volume driver3 API conversion wave in persister/query paths (`querybuilder`, `Row`, `ResultSet`).

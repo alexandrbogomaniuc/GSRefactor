@@ -5253,3 +5253,10 @@
 - Validation PASS: cache targeted test suite, cache install, web-gs package, mp-server subset package (`core-interfaces,core,persistance` with `-am`).
 - Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave5-metrics-snapshot-decoupling-20260225-203312.md` and related raw logs in the same folder.
 - Next step: commit/push Wave 5 and start next wave on high-volume driver3 usage (`querybuilder`/`Row`/`ResultSet`) in `cassandra-cache` persister engine.
+### 2026-02-25 21:01 UTC
+- Continued CASS-V4 and completed Wave 6 interface-neutralization.
+- `IKeyspaceManager` no longer exposes driver `Session`/`Host` methods; interface now stays on driver-neutral host-address and metrics-snapshot contract.
+- `KeyspaceManagerImpl` retains internal compatibility methods for legacy in-module use.
+- Validation PASS: cache test suite, cache install, web-gs package, and mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave6-interface-neutralization-20260225-203312.md` and related logs in same folder.
+- Next step: commit/push Wave 6 and proceed to a query/persister migration slice (`querybuilder`, `Row`, `ResultSet`).

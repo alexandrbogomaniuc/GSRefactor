@@ -65,3 +65,19 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave5-build-cache-20260225-203312.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave5-build-web-gs-20260225-203312.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave5-build-mp-stack-20260225-203312.txt`
+
+## 2026-02-25 21:01 UTC
+- Implemented CASS-V4 Wave 6 interface-hardening slice.
+- Removed `getSession()` and `getDownHosts()` from `IKeyspaceManager` so external consumers no longer depend on driver `Session`/`Host` types.
+- Kept legacy/internal methods in `KeyspaceManagerImpl` for compatibility, while preserving driver-neutral interface methods added in earlier waves.
+- Validation: PASS
+  - cache tests (`KeySpaceManagerTest`, `CassandraPersistenceManagerTest`, `ClusterConfigDeserializationTest`, `KeyspaceConfigurationFactoryTest`)
+  - cache install
+  - web-gs package
+  - mp-server reactor subset (`core-interfaces,core,persistance`) package via `-am`.
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave6-interface-neutralization-20260225-203312.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave6-unit-tests-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave6-build-cache-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave6-build-web-gs-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave6-build-mp-stack-20260225-203312.txt`
