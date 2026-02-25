@@ -384,3 +384,26 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
 - Inventory delta after Wave 23:
   - GS `driver3_import_lines`: `442 -> 440` (`-2`)
   - MP `driver3_import_lines`: `151` (no change)
+
+## 2026-02-25 22:05 UTC
+- Implemented CASS-V4 Wave 24 in MP-related common-persister hotspots:
+  - `BattlegroundPrivateRoomSettingsPersister`
+  - `LeaderboardResultPersister`
+  - `MQReservedNicknamePersister`
+  - `RoundKPIInfoPersister`
+- Replaced typed `Select` / `Insert` variable declarations with generic `Statement` flow while preserving filtering/limit behavior.
+- Validation: PASS
+  - `common-persisters` install
+  - cache test suite (`63` tests)
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220419/c4-wave24-mp-persisters-statement-flow-20260225-220419.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220419/c4-wave24-build-common-persisters-20260225-220419.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220419/c4-wave24-unit-tests-20260225-220419.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220419/c4-wave24-build-web-gs-20260225-220419.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220419/c4-wave24-build-mp-stack-20260225-220419.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220419/phase7-cassandra-driver-inventory-20260225-220509.txt`
+- Inventory delta after Wave 24:
+  - GS `driver3_import_lines`: `440 -> 436` (`-4`)
+  - MP `driver3_import_lines`: `151` (no change)

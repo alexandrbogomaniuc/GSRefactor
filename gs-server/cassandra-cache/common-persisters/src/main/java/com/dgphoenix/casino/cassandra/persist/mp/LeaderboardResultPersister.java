@@ -3,8 +3,7 @@ package com.dgphoenix.casino.cassandra.persist.mp;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -35,20 +34,20 @@ public class LeaderboardResultPersister extends AbstractCassandraPersister<Long,
             ), BANK_ID_COLUMN);
 
     public void persist(long leaderboardId, long bankId, long startDate, long endDate, String result) {
-        Insert insert = getInsertQuery()
+        Statement query = getInsertQuery()
                 .value(BANK_ID_COLUMN, bankId)
                 .value(LEADERBOARD_ID_COLUMN, leaderboardId)
                 .value(START_DATE_COLUMN, startDate)
                 .value(END_DATE_COLUMN, endDate)
                 .value(RESULT_COLUMN, result);
 
-        execute(insert, "persist");
+        execute(query, "persist");
     }
 
     public List<LeaderboardInfo> getLeaderboards(long bankId) {
-        Select.Where select = getSelectColumnsQuery(LEADERBOARD_ID_COLUMN, START_DATE_COLUMN, END_DATE_COLUMN)
+        Statement query = getSelectColumnsQuery(LEADERBOARD_ID_COLUMN, START_DATE_COLUMN, END_DATE_COLUMN)
                 .where(eq(BANK_ID_COLUMN, bankId));
-        ResultSet result = execute(select, "getLeaderboardIds");
+        ResultSet result = execute(query, "getLeaderboardIds");
         List<LeaderboardInfo> leaderboards = new ArrayList<>();
         if (result != null) {
             for (Row row : result) {
@@ -62,11 +61,11 @@ public class LeaderboardResultPersister extends AbstractCassandraPersister<Long,
     }
 
     public String getLeaderboardResult(long bankId, long leaderboardId) {
-        Select select = getSelectColumnsQuery(RESULT_COLUMN)
+        Statement query = getSelectColumnsQuery(RESULT_COLUMN)
                 .where(eq(BANK_ID_COLUMN, bankId))
                 .and(eq(LEADERBOARD_ID_COLUMN, leaderboardId))
                 .limit(1);
-        Row row = execute(select, "getLeaderboardResult").one();
+        Row row = execute(query, "getLeaderboardResult").one();
         if (row != null) {
             return row.getString(RESULT_COLUMN);
         }
