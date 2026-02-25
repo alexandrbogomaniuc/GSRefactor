@@ -2,8 +2,7 @@ package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -36,7 +35,7 @@ public class CassandraTournamentFeedHistoryPersister extends AbstractCassandraPe
         ByteBuffer buffer = HISTORY_TABLE.serializeWithClassToBytes(scores);
         String json = HISTORY_TABLE.serializeToMapJson(scores, String.class, Long.class);
         try {
-            Insert insert = getInsertQuery()
+            Statement insert = getInsertQuery()
                     .value(TOURNAMENT_ID_COLUMN, tournamentId)
                     .value(TIME_COLUMN, time)
                     .value(SERIALIZED_COLUMN_NAME, buffer)
@@ -50,7 +49,7 @@ public class CassandraTournamentFeedHistoryPersister extends AbstractCassandraPe
 
     @Override
     public Map<String, Long> getRecords(long tournamentId, int time) {
-        Select query = getSelectColumnsQuery(HISTORY_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        Statement query = getSelectColumnsQuery(HISTORY_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(TOURNAMENT_ID_COLUMN, tournamentId))
                 .and(eq(TIME_COLUMN, time))
                 .limit(1);
