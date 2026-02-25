@@ -3,7 +3,7 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.common.cache.AbstractDistributedCache;
@@ -137,8 +137,8 @@ public class CassandraExternalGameIdsPersister extends AbstractStringDistributed
             throws IOException {
         if ("byBank".equals(conditionName)) {
             Long bankId = (Long) conditionValues[0];
-            Select select = getSelectColumnsQuery(BANK_ID, KEY, ID);
-            select.where(eq(BANK_ID, bankId));
+            Statement select = getSelectColumnsQuery(BANK_ID, KEY, ID)
+                    .where(eq(BANK_ID, bankId));
             ResultSet resultSet = execute(select, "getByBankId");
             for (Row row : resultSet) {
                 processRow(row, tableProcessor);

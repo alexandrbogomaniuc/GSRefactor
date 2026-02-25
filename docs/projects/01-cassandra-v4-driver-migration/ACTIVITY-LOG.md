@@ -141,3 +141,23 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-unit-tests-20260225-203312.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-build-web-gs-20260225-203312.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-build-mp-stack-20260225-203312.txt`
+
+## 2026-02-25 21:21 UTC
+- Implemented CASS-V4 Wave 11 in five additional low-risk `common-persisters` hotspot classes.
+- Switched typed query variables to generic `Statement` flow in:
+  - `CassandraBlockedCountriesPersister`
+  - `CassandraCurrencyRatesConfigPersister`
+  - `CassandraCallIssuesPersister`
+  - `CassandraPeriodicTasksPersister`
+  - `CassandraExternalGameIdsPersister`
+- Validation: PASS
+  - `common-persisters` install
+  - cache targeted test suite
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212053/c4-wave11-common-persisters-small-hotspots-20260225-212053.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212053/c4-wave11-build-common-persisters-20260225-212053.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212053/c4-wave11-unit-tests-20260225-212053.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212053/c4-wave11-build-web-gs-20260225-212053.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212053/c4-wave11-build-mp-stack-20260225-212053.txt`

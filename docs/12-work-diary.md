@@ -5293,3 +5293,17 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-unit-tests-20260225-203312.txt`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-build-web-gs-20260225-203312.txt`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-build-mp-stack-20260225-203312.txt`
+### 2026-02-25 21:21 UTC
+- Continued CASS-V4 and completed Wave 11 small-hotspot conversion in `common-persisters`.
+- Refactored five classes (`CassandraBlockedCountriesPersister`, `CassandraCurrencyRatesConfigPersister`, `CassandraCallIssuesPersister`, `CassandraPeriodicTasksPersister`, `CassandraExternalGameIdsPersister`) to use generic `Statement` query flow instead of typed querybuilder variables.
+- Validation PASS:
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn -q -Dtest=KeySpaceManagerTest,CassandraPersistenceManagerTest,ClusterConfigDeserializationTest,KeyspaceConfigurationFactoryTest test` (`cache`)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -DskipTests -pl core-interfaces,core,persistance -am package` (`mp-server`)
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212053/c4-wave11-common-persisters-small-hotspots-20260225-212053.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212053/c4-wave11-build-common-persisters-20260225-212053.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212053/c4-wave11-unit-tests-20260225-212053.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212053/c4-wave11-build-web-gs-20260225-212053.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212053/c4-wave11-build-mp-stack-20260225-212053.txt`

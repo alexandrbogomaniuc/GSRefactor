@@ -2,7 +2,7 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -45,7 +45,7 @@ public class CassandraBlockedCountriesPersister extends AbstractCassandraPersist
     public void persist(String countryISOCode, boolean isBlocked) {
         LOG.debug("persist " + countryISOCode + " blocked=" + isBlocked);
         if (isBlocked) {
-            Insert query = getInsertQuery().value(KEY, countryISOCode);
+            Statement query = getInsertQuery().value(KEY, countryISOCode);
             execute(query, "persist");
         } else {
             deleteWithCheck(KEY);

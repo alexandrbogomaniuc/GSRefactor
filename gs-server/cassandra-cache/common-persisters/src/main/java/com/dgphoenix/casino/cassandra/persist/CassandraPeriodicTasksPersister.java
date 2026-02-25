@@ -2,8 +2,7 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -38,8 +37,8 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
     }
 
     public Long getLastExecutionTime(String taskKey) {
-        Select selectExecutionTime = getSelectColumnsQuery(LAST_EXECUTION_TIME);
-        selectExecutionTime.where(eq(TASK_KEY, taskKey));
+        Statement selectExecutionTime = getSelectColumnsQuery(LAST_EXECUTION_TIME)
+                .where(eq(TASK_KEY, taskKey));
 
         Row result = execute(selectExecutionTime, "getLastExecutionTime").one();
         Long lastExecutionTime = null;
@@ -51,8 +50,8 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
     }
 
     public <T> T getTaskData(String taskKey) {
-        Select selectExecutionTime = getSelectColumnsQuery(TASK_DATA);
-        selectExecutionTime.where(eq(TASK_KEY, taskKey));
+        Statement selectExecutionTime = getSelectColumnsQuery(TASK_DATA)
+                .where(eq(TASK_KEY, taskKey));
 
         Row result = execute(selectExecutionTime, "getTaskData").one();
         T taskData = null;
@@ -72,8 +71,9 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
     }
 
     public void saveLastExecutionTime(String taskKey, long time) {
-        Insert insert = getInsertQuery();
-        insert.value(TASK_KEY, taskKey).value(LAST_EXECUTION_TIME, time);
+        Statement insert = getInsertQuery()
+                .value(TASK_KEY, taskKey)
+                .value(LAST_EXECUTION_TIME, time);
 
         execute(insert, "saveLastExecutionTime");
     }
@@ -81,8 +81,8 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
     public void saveTaskData(String taskKey, Object taskData) {
         ByteBuffer taskDataAsBytes = getMainTableDefinition().serializeWithClassToBytes(taskData);
         String json = getMainTableDefinition().serializeWithClassToJson(taskData);
-        Insert insert = getInsertQuery();
-        insert.value(TASK_KEY, taskKey)
+        Statement insert = getInsertQuery()
+                .value(TASK_KEY, taskKey)
                 .value(TASK_DATA, taskDataAsBytes)
                 .value(JSON_COLUMN_NAME, json);
 
