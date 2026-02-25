@@ -4888,3 +4888,8 @@
 - Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/Config-Portal-User-Guide.md`, `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/configPortal.jsp`, `/Users/alexb/Documents/Dev/Dev_new/docs/32-gs-config-portal-all-levels-spec.md`, `/Users/alexb/Documents/Dev/Dev_new/docs/135-phase3-config-portal-persistent-approvals-browser-local-20260224-090500.md`, `/Users/alexb/Documents/Dev/Dev_new/docs/136-phase3-config-portal-publish-rollback-guardrails-visualization-20260224-091500.md`.
 - Result: Milestone 5 stop condition met locally (non-technical step-by-step guide written against real current portal behavior and clearly marks limitations/planned features).
 - Next step: commit Milestone 5 guide, attempt push, save memory, and wait for user approval before Milestone 6 (cross-platform portability & onboarding).
+### 2026-02-25 10:51-10:51 UTC
+- Committed Milestone 5 user guide as `d2c2b636` (`Milestone 5: Add plain-English config portal user guide`).
+- Push attempt to `origin/main` failed again in this environment: `Could not resolve host: github.com`.
+- Result: Milestone 5 is complete locally; push remains pending network/DNS access.
+- Next step: wait for user approval before Milestone 6 (cross-platform portability & onboarding for refactor-only environment).
