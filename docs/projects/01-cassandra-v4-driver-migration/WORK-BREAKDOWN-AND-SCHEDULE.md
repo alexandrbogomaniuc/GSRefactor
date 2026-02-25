@@ -105,3 +105,8 @@ Deliverables:
 - Completed waves: Wave 1 through Wave 7.
 - Current phase alignment: Phase 1 still in progress with concrete query-construction decoupling started.
 - Immediate focus: continue hotspot-by-hotspot query/persister migration (`AbstractCassandraPersister` consumers in `common-persisters`).
+
+## Execution update (2026-02-25 21:06 UTC)
+- Completed waves: Wave 1 through Wave 8.
+- Current phase alignment: Phase 1 in progress with multiple hotspot query-construction decoupling slices completed.
+- Immediate focus: continue migrating remaining high-volume driver3 APIs in persister engine/common-persisters.

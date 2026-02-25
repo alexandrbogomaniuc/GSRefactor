@@ -5267,3 +5267,9 @@
 - Validation PASS: cache test suite, cache install, web-gs package, mp-server subset package (`core-interfaces,core,persistance` with `-am`).
 - Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave7-querybuilder-decoupling-lock-manager-20260225-203312.md` and related logs in same folder.
 - Next step: commit/push Wave 7 and continue query/persister migration in the next hotspot class.
+### 2026-02-25 21:06 UTC
+- Continued CASS-V4 and completed Wave 8 querybuilder-type decoupling in `CassandraRemoteCallPersister`.
+- Replaced direct `Select`/`Insert` typed usage with `Statement` while keeping persister helper query generation unchanged.
+- Validation PASS: cache tests/install, web-gs package, and mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave8-querybuilder-decoupling-remote-call-persister-20260225-203312.md` and corresponding logs in the same folder.
+- Next step: commit/push Wave 8 and continue query/persister hotspot conversion.

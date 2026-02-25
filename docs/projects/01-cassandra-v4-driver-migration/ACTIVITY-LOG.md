@@ -97,3 +97,18 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave7-build-cache-20260225-203312.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave7-build-web-gs-20260225-203312.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave7-build-mp-stack-20260225-203312.txt`
+
+## 2026-02-25 21:06 UTC
+- Implemented CASS-V4 Wave 8 query-construction decoupling slice for `CassandraRemoteCallPersister`.
+- Removed direct querybuilder type imports (`Insert`, `Select`) and switched to generic `Statement` flow with existing helper methods.
+- Validation: PASS
+  - cache tests (`KeySpaceManagerTest`, `CassandraPersistenceManagerTest`, `ClusterConfigDeserializationTest`, `KeyspaceConfigurationFactoryTest`)
+  - cache install
+  - web-gs package
+  - mp-server reactor subset (`core-interfaces,core,persistance`) package via `-am`.
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave8-querybuilder-decoupling-remote-call-persister-20260225-203312.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave8-unit-tests-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave8-build-cache-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave8-build-web-gs-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave8-build-mp-stack-20260225-203312.txt`
