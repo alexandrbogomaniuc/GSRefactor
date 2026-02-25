@@ -59,11 +59,11 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
     }
 
     @Override
-    public Metrics getMetrics() {
-        if (!initialized) {
-            return null;
+    public KeyspaceMetricsSnapshot getMetricsSnapshot() {
+        if (!initialized || cluster == null) {
+            return KeyspaceMetricsSnapshot.unavailable();
         }
-        return cluster.getMetrics();
+        return KeyspaceMetricsSnapshot.from(cluster.getMetrics());
     }
 
     @Override

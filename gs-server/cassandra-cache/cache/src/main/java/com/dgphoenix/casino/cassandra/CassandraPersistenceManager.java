@@ -109,7 +109,7 @@ public class CassandraPersistenceManager {
             keyspaceManager.init();
             StatisticsManager.getInstance().registerStatisticsGetter(
                     getClass().getSimpleName() + ": keySpace=" + keyspaceManager.getKeyspaceName(),
-                    new KeyspaceManagerStatistics(keyspaceManager.getMetrics()));
+                    new KeyspaceManagerStatistics(keyspaceManager::getMetricsSnapshot));
         });
         persisterDependencyInjector.inject(this::getPersister);
         if (configsInitializer != null) {

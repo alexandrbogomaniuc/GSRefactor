@@ -1,5 +1,7 @@
 package com.dgphoenix.casino.cassandra;
 
+import com.codahale.metrics.Counter;
+import com.codahale.metrics.Snapshot;
 import com.datastax.driver.core.*;
 import com.dgphoenix.casino.cassandra.config.ClusterConfig;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
@@ -247,5 +249,71 @@ public class KeySpaceManagerTest {
         assertEquals("Wrong size of host set", 2, allHosts.size());
         assertTrue("Missing host cassandra-up", allHosts.contains("cassandra-up"));
         assertTrue("Missing host cassandra-down-1", allHosts.contains("cassandra-down-1"));
+    }
+
+    @Test
+    public void testMetricsSnapshotUnavailableBeforeInit() {
+        KeyspaceMetricsSnapshot snapshot = keySpaceManager.getMetricsSnapshot();
+        assertNotNull("Snapshot should not be null", snapshot);
+        assertFalse("Snapshot should be unavailable before manager init", snapshot.isAvailable());
+    }
+
+    @Test
+    public void testMetricsSnapshotAfterInit() {
+        when(configuration.isCreateSchema()).thenReturn(true);
+        Metrics metrics = mock(Metrics.class);
+        Metrics.Errors errorMetrics = mock(Metrics.Errors.class);
+        com.codahale.metrics.Timer requestsTimer = mock(com.codahale.metrics.Timer.class);
+        Snapshot latencySnapshot = mock(Snapshot.class);
+
+        when(cluster.getMetrics()).thenReturn(metrics);
+        when(metrics.getKnownHosts()).thenReturn(() -> 2);
+        when(metrics.getConnectedToHosts()).thenReturn(() -> 1);
+        when(metrics.getOpenConnections()).thenReturn(() -> 3);
+        when(metrics.getTrashedConnections()).thenReturn(() -> 0);
+        when(metrics.getBlockingExecutorQueueDepth()).thenReturn(() -> 0);
+        when(metrics.getExecutorQueueDepth()).thenReturn(() -> 1);
+        when(metrics.getRequestsTimer()).thenReturn(requestsTimer);
+        when(requestsTimer.getSnapshot()).thenReturn(latencySnapshot);
+        when(requestsTimer.getCount()).thenReturn(9L);
+        when(requestsTimer.getMeanRate()).thenReturn(1.5d);
+        when(requestsTimer.getOneMinuteRate()).thenReturn(1.1d);
+        when(requestsTimer.getFiveMinuteRate()).thenReturn(1.2d);
+        when(requestsTimer.getFifteenMinuteRate()).thenReturn(1.3d);
+        when(latencySnapshot.getMin()).thenReturn(10L);
+        when(latencySnapshot.getMax()).thenReturn(20L);
+        when(latencySnapshot.getMean()).thenReturn(15d);
+        when(latencySnapshot.getMedian()).thenReturn(14d);
+        when(latencySnapshot.getStdDev()).thenReturn(2d);
+        when(metrics.getErrorMetrics()).thenReturn(errorMetrics);
+        when(errorMetrics.getConnectionErrors()).thenReturn(counter(4L));
+        when(errorMetrics.getIgnores()).thenReturn(counter(0L));
+        when(errorMetrics.getIgnoresOnReadTimeout()).thenReturn(counter(0L));
+        when(errorMetrics.getIgnoresOnWriteTimeout()).thenReturn(counter(0L));
+        when(errorMetrics.getIgnoresOnUnavailable()).thenReturn(counter(0L));
+        when(errorMetrics.getRetries()).thenReturn(counter(1L));
+        when(errorMetrics.getRetriesOnReadTimeout()).thenReturn(counter(0L));
+        when(errorMetrics.getRetriesOnWriteTimeout()).thenReturn(counter(0L));
+        when(errorMetrics.getRetriesOnUnavailable()).thenReturn(counter(0L));
+        when(errorMetrics.getReadTimeouts()).thenReturn(counter(0L));
+        when(errorMetrics.getWriteTimeouts()).thenReturn(counter(0L));
+        when(errorMetrics.getUnavailables()).thenReturn(counter(0L));
+        when(errorMetrics.getOthers()).thenReturn(counter(0L));
+        when(errorMetrics.getSpeculativeExecutions()).thenReturn(counter(0L));
+
+        keySpaceManager.init();
+
+        KeyspaceMetricsSnapshot snapshot = keySpaceManager.getMetricsSnapshot();
+        assertNotNull("Snapshot should not be null after init", snapshot);
+        assertTrue("Snapshot should be available after init", snapshot.isAvailable());
+        assertEquals("Wrong known hosts value", 2L, snapshot.getKnownHosts());
+        assertEquals("Wrong requests count", 9L, snapshot.getRequestsCount());
+        assertEquals("Wrong connection errors", 4L, snapshot.getConnectionErrors());
+    }
+
+    private Counter counter(long value) {
+        Counter counter = new Counter();
+        counter.inc(value);
+        return counter;
     }
 }

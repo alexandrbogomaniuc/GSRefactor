@@ -48,3 +48,20 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave4-driver-neutral-diagnosis-decoupling-20260225-203312.md`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave4-unit-tests-20260225-203312.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave4-build-web-gs-20260225-203312.txt`
+
+## 2026-02-25 20:58 UTC
+- Implemented CASS-V4 Wave 5 to remove direct driver `Metrics` leakage from keyspace manager API.
+- Added driver-neutral metrics model `KeyspaceMetricsSnapshot` and switched `IKeyspaceManager` to `getMetricsSnapshot()`.
+- Updated `KeyspaceManagerImpl`, `KeyspaceManagerStatistics`, and `CassandraPersistenceManager` to use snapshot supplier flow.
+- Added new metrics snapshot tests in `KeySpaceManagerTest`.
+- Validation: PASS
+  - cache tests (`KeySpaceManagerTest`, `CassandraPersistenceManagerTest`, `ClusterConfigDeserializationTest`, `KeyspaceConfigurationFactoryTest`)
+  - cache install
+  - web-gs package
+  - mp-server reactor subset (`core-interfaces,core,persistance`) package via `-am`.
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave5-metrics-snapshot-decoupling-20260225-203312.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave5-unit-tests-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave5-build-cache-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave5-build-web-gs-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave5-build-mp-stack-20260225-203312.txt`

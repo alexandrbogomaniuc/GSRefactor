@@ -90,3 +90,8 @@ Deliverables:
 - Phase 2 cannot start before Phase 1 mapping is approved.
 - Phase 4 cannot start before Phase 3 parity passes.
 - Phase 6 cannot close until all high-severity defects are resolved.
+
+## Execution update (2026-02-25 20:58 UTC)
+- Completed waves: Wave 1 (inventory/compat baseline), Wave 2 (backlog automation), Wave 3 (config-driven tuning + optional DC-aware policy), Wave 4 (diagnosis host API decoupling), Wave 5 (metrics snapshot API decoupling).
+- Current phase alignment: Phase 1 remains in progress; Phase 2 is not started.
+- Immediate focus: migrate highest-volume driver3 APIs in `cassandra-cache` (`querybuilder`, `Row`, `ResultSet`) with controlled compatibility slices.
