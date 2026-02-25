@@ -6,7 +6,11 @@ cluster_hosts_config_file() {
     printf '%s\n' "${CLUSTER_HOSTS_FILE}"
     return 0
   fi
-  printf '%s\n' "/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/cluster-hosts.properties"
+  local script_dir
+  local root_dir
+  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  root_dir="$(cd "${script_dir}/../.." && pwd)"
+  printf '%s\n' "${root_dir}/deploy/config/cluster-hosts.properties"
 }
 
 cluster_hosts_get() {

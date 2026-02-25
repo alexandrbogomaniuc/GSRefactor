@@ -2,8 +2,9 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+# shellcheck source=./lib/cluster-hosts.sh
 source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
+ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
 BANK_ID="6275"
 GAME_ID="838"
@@ -15,7 +16,15 @@ READINESS_MULTIPLAYER_PORT="$(cluster_hosts_get MULTIPLAYER_SERVICE_EXTERNAL_POR
 READINESS_GS_HOST="$(cluster_hosts_get GS_EXTERNAL_HOST 127.0.0.1)"
 READINESS_GS_PORT="$(cluster_hosts_get GS_EXTERNAL_PORT 18081)"
 CHECK_DOCKER="true"
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase6/multiplayer"
+OUT_DIR="${ROOT_DIR}/../docs/phase6/multiplayer"
+POLICY_EXPECT_BANK_MP_ENABLED="false"
+POLICY_EXPECT_NON_MP_REASON="non_multiplayer_game"
+POLICY_EXPECT_NON_MP_ROUTE="false"
+POLICY_EXPECT_MP_REASON="bank_multiplayer_disabled"
+POLICY_EXPECT_MP_ROUTE="false"
+policy_expect_bank_mp_enabled_set="false"
+policy_expect_mp_reason_set="false"
+policy_expect_mp_route_set="false"
 
 usage() {
   cat <<USAGE
@@ -32,6 +41,11 @@ Options:
   --readiness-gs-host H          Default: ${READINESS_GS_HOST}
   --readiness-gs-port P          Default: ${READINESS_GS_PORT}
   --check-docker BOOL            true|false (default: ${CHECK_DOCKER})
+  --policy-expect-bank-mp-enabled BOOL  true|false (default: ${POLICY_EXPECT_BANK_MP_ENABLED})
+  --policy-expect-non-mp-reason VALUE   Default: ${POLICY_EXPECT_NON_MP_REASON}
+  --policy-expect-non-mp-route BOOL     true|false (default: ${POLICY_EXPECT_NON_MP_ROUTE})
+  --policy-expect-mp-reason VALUE       Default: ${POLICY_EXPECT_MP_REASON}
+  --policy-expect-mp-route BOOL         true|false (default: ${POLICY_EXPECT_MP_ROUTE})
   --out-dir DIR                  Default: ${OUT_DIR}
   -h, --help                     Show this help
 USAGE
@@ -59,6 +73,16 @@ while [[ $# -gt 0 ]]; do
       READINESS_GS_PORT="$2"; shift 2 ;;
     --check-docker)
       CHECK_DOCKER="$2"; shift 2 ;;
+    --policy-expect-bank-mp-enabled)
+      POLICY_EXPECT_BANK_MP_ENABLED="$2"; policy_expect_bank_mp_enabled_set="true"; shift 2 ;;
+    --policy-expect-non-mp-reason)
+      POLICY_EXPECT_NON_MP_REASON="$2"; shift 2 ;;
+    --policy-expect-non-mp-route)
+      POLICY_EXPECT_NON_MP_ROUTE="$2"; shift 2 ;;
+    --policy-expect-mp-reason)
+      POLICY_EXPECT_MP_REASON="$2"; policy_expect_mp_reason_set="true"; shift 2 ;;
+    --policy-expect-mp-route)
+      POLICY_EXPECT_MP_ROUTE="$2"; policy_expect_mp_route_set="true"; shift 2 ;;
     --out-dir)
       OUT_DIR="$2"; shift 2 ;;
     -h|--help)
@@ -69,6 +93,26 @@ while [[ $# -gt 0 ]]; do
       exit 1 ;;
   esac
 done
+
+for expected_bool in "${CHECK_DOCKER}" "${POLICY_EXPECT_BANK_MP_ENABLED}" "${POLICY_EXPECT_NON_MP_ROUTE}" "${POLICY_EXPECT_MP_ROUTE}"; do
+  if [[ "${expected_bool}" != "true" && "${expected_bool}" != "false" ]]; then
+    echo "Invalid boolean value: ${expected_bool}. Use true|false." >&2
+    exit 1
+  fi
+done
+
+# In sync-canary mode, default expectations should represent an eligible multiplayer route.
+if [[ "${RUN_SYNC_CANARY}" == "true" ]]; then
+  if [[ "${policy_expect_bank_mp_enabled_set}" != "true" ]]; then
+    POLICY_EXPECT_BANK_MP_ENABLED="true"
+  fi
+  if [[ "${policy_expect_mp_route_set}" != "true" ]]; then
+    POLICY_EXPECT_MP_ROUTE="true"
+  fi
+  if [[ "${policy_expect_mp_reason_set}" != "true" ]]; then
+    POLICY_EXPECT_MP_REASON="eligible"
+  fi
+fi
 
 mkdir -p "${OUT_DIR}"
 ts="$(date -u +%Y%m%d-%H%M%S)"
@@ -91,7 +135,7 @@ canary_out="${work_dir}/canary.out"
 policy_out="${work_dir}/policy.out"
 
 readiness_status="$(run_and_capture "${readiness_out}" \
-  /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-runtime-readiness-check.sh \
+  "${SCRIPT_DIR}/phase6-multiplayer-runtime-readiness-check.sh" \
   --multiplayer-host "${READINESS_MULTIPLAYER_HOST}" --multiplayer-port "${READINESS_MULTIPLAYER_PORT}" \
   --gs-host "${READINESS_GS_HOST}" --gs-port "${READINESS_GS_PORT}" \
   --check-docker "${CHECK_DOCKER}")"
@@ -100,14 +144,19 @@ policy_status="SKIPPED"
 canary_status="SKIPPED"
 if [[ "${readiness_status}" == "PASS" ]]; then
   policy_status="$(run_and_capture "${policy_out}" \
-    /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-routing-policy-probe.sh \
+    "${SCRIPT_DIR}/phase6-multiplayer-routing-policy-probe.sh" \
     --bank-id "${BANK_ID}" --game-id "${GAME_ID}" \
     --transport "${TRANSPORT}" \
-    --multiplayer-base-url "${MULTIPLAYER_BASE_URL}")"
+    --multiplayer-base-url "${MULTIPLAYER_BASE_URL}" \
+    --expect-bank-mp-enabled "${POLICY_EXPECT_BANK_MP_ENABLED}" \
+    --expect-non-mp-reason "${POLICY_EXPECT_NON_MP_REASON}" \
+    --expect-non-mp-route "${POLICY_EXPECT_NON_MP_ROUTE}" \
+    --expect-mp-reason "${POLICY_EXPECT_MP_REASON}" \
+    --expect-mp-route "${POLICY_EXPECT_MP_ROUTE}")"
 
   if [[ "${RUN_SYNC_CANARY}" == "true" ]]; then
     canary_status="$(run_and_capture "${canary_out}" \
-      /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-canary-probe.sh \
+      "${SCRIPT_DIR}/phase6-multiplayer-canary-probe.sh" \
       --bank-id "${BANK_ID}" --game-id "${GAME_ID}" \
       --transport "${TRANSPORT}" \
       --multiplayer-base-url "${MULTIPLAYER_BASE_URL}")"
@@ -122,6 +171,11 @@ fi
   echo "- transport: ${TRANSPORT}"
   echo "- multiplayerBaseUrl: ${MULTIPLAYER_BASE_URL}"
   echo "- runSyncCanary: ${RUN_SYNC_CANARY}"
+  echo "- policyExpectBankMpEnabled: ${POLICY_EXPECT_BANK_MP_ENABLED}"
+  echo "- policyExpectNonMpRoute: ${POLICY_EXPECT_NON_MP_ROUTE}"
+  echo "- policyExpectNonMpReason: ${POLICY_EXPECT_NON_MP_REASON}"
+  echo "- policyExpectMpRoute: ${POLICY_EXPECT_MP_ROUTE}"
+  echo "- policyExpectMpReason: ${POLICY_EXPECT_MP_REASON}"
   echo "- readiness_check: ${readiness_status}"
   echo "- multiplayer_routing_policy_probe: ${policy_status}"
   echo "- multiplayer_canary_probe: ${canary_status}"

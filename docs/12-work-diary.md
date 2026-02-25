@@ -5110,3 +5110,23 @@
 - Updated operator packet links and synced portal embedded snapshots to latest readiness/evidence timestamps.
 - Result: sign-off package now references fresh runtime evidence captured after the latest naming compatibility waves.
 - Next step: commit/push final evidence refresh and confirm human sign-off inputs for canary window execution.
+### 2026-02-25 19:23-19:31 UTC
+- Applied continuity bootstrap + memory context, then investigated fresh Phase 6 canary failures.
+- Root cause confirmed: `set-session-canary.sh` only updates `SESSION_SERVICE_*` keys, while Phase 6 multiplayer probes depend on `MULTIPLAYER_SERVICE_*` keys; additionally, routing policy probe was hardcoded to expect `routeToMultiplayerService=false`, which conflicts with sync-canary validation.
+- Script fixes implemented:
+  - `gs-server/deploy/scripts/lib/cluster-hosts.sh` (dynamic path resolution, no hardcoded `/Users/alexb/...`).
+  - `gs-server/deploy/scripts/set-session-canary.sh` (dynamic path resolution).
+  - `gs-server/deploy/scripts/set-multiplayer-canary.sh` (new dedicated multiplayer canary setter).
+  - `gs-server/deploy/scripts/phase6-multiplayer-routing-policy-probe.sh` (configurable expected route/reason flags).
+  - `gs-server/deploy/scripts/phase6-multiplayer-runtime-evidence-pack.sh` (policy expectation flags + sync-canary auto-expectation for eligible route; dynamic script/out-dir paths).
+- Validation evidence:
+  - syntax checks (`bash -n`) passed for all updated scripts.
+  - temporary canary enable + service recreate produced eligible multiplayer route for bank `6274`.
+  - generated successful sync-canary evidence report:
+    - `docs/phase6/multiplayer/phase6-multiplayer-runtime-evidence-20260225-192903.md`
+    - statuses: `readiness_check=PASS`, `multiplayer_routing_policy_probe=PASS`, `multiplayer_canary_probe=PASS`.
+  - restored default safe multiplayer/session canary config and reran baseline pack:
+    - `docs/phase6/multiplayer/phase6-multiplayer-runtime-evidence-20260225-193002.md`
+    - statuses: `readiness_check=PASS`, `multiplayer_routing_policy_probe=PASS`, `multiplayer_canary_probe=SKIPPED` (expected default safe mode).
+- Result: Phase 6 canary tooling now supports both baseline-safe validation and explicit eligible-route sync-canary validation without manual script edits.
+- Next step: commit/push script+evidence updates and save memory.

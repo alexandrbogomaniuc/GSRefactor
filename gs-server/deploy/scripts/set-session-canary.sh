@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="/Users/alexb/Documents/Dev/Dev_new/gs-server"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 CFG_FILE="${ROOT_DIR}/deploy/config/cluster-hosts.properties"
-SYNC_SCRIPT="${ROOT_DIR}/deploy/scripts/sync-cluster-hosts.sh"
+SYNC_SCRIPT="${SCRIPT_DIR}/sync-cluster-hosts.sh"
 
 if [[ ! -f "${CFG_FILE}" ]]; then
   echo "Missing config file: ${CFG_FILE}" >&2
