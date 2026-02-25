@@ -335,3 +335,26 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
 - Inventory delta after Wave 21:
   - GS `driver3_import_lines`: `451 -> 445` (`-6`)
   - MP `driver3_import_lines`: `151` (no change)
+
+## 2026-02-25 21:57 UTC
+- Implemented CASS-V4 Wave 22 in additional common-persister hotspots:
+  - `CassandraBatchOperationStatusPersister`
+  - `CassandraShortBetInfoPersister` (select/query paths)
+  - `MQDataPersister`
+- Replaced typed querybuilder variable usage with `Statement` flow where safe.
+- Kept short-bet `Insert` write-path typing where TTL `.using(...)` handling depends on insert builder semantics.
+- Validation: PASS
+  - `common-persisters` install
+  - cache test suite (`63` tests)
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-215649/c4-wave22-batch-shortbet-mqdata-statement-flow-20260225-215649.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-215649/c4-wave22-build-common-persisters-20260225-215649.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-215649/c4-wave22-unit-tests-20260225-215649.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-215649/c4-wave22-build-web-gs-20260225-215649.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-215649/c4-wave22-build-mp-stack-20260225-215649.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-215649/phase7-cassandra-driver-inventory-20260225-215738.txt`
+- Inventory delta after Wave 22:
+  - GS `driver3_import_lines`: `445 -> 442` (`-3`)
+  - MP `driver3_import_lines`: `151` (no change)

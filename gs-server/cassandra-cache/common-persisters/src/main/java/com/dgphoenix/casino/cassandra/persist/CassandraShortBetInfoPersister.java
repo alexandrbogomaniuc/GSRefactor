@@ -3,7 +3,6 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.datastax.driver.core.schemabuilder.SchemaBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -54,11 +53,10 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
     }
 
     public void getByBank(long bankId, long startDate, long endDate, IShortBetInfoProcessor processor) throws Exception {
-        Select query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        Select.Where where = query.where();
-        where.and(QueryBuilder.eq(BANK_ID_FIELD, bankId));
-        where.and(QueryBuilder.gte(BET_TIME_FIELD, startDate));
-        where.and(QueryBuilder.lte(BET_TIME_FIELD, endDate));
+        Statement query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(BANK_ID_FIELD, bankId))
+                .and(QueryBuilder.gte(BET_TIME_FIELD, startDate))
+                .and(QueryBuilder.lte(BET_TIME_FIELD, endDate));
         ResultSet resultSet = execute(query, "getByBank");
         for (Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
@@ -80,11 +78,10 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
     }
 
     private List<ShortBetInfo> getByBankFromTable(long bankId, long startDate, long endDate, TableDefinition table) {
-        Select query = getSelectColumnsQuery(table, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        Select.Where where = query.where();
-        where.and(QueryBuilder.eq(BANK_ID_FIELD, bankId));
-        where.and(QueryBuilder.gte(BET_TIME_FIELD, startDate));
-        where.and(QueryBuilder.lte(BET_TIME_FIELD, endDate));
+        Statement query = getSelectColumnsQuery(table, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(BANK_ID_FIELD, bankId))
+                .and(QueryBuilder.gte(BET_TIME_FIELD, startDate))
+                .and(QueryBuilder.lte(BET_TIME_FIELD, endDate));
         ResultSet resultSet = execute(query, "getByBank");
         List<ShortBetInfo> result = new ArrayList<>(resultSet.getAvailableWithoutFetching());
         for (Row row : resultSet) {

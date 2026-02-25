@@ -1,0 +1,62 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-cache-restricted >--------------
+[INFO] Building gsn-cache-restricted 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-cache-restricted ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-cache-restricted ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/cache/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-cache-restricted ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-cache-restricted ---
+[INFO] Copying 5 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-cache-restricted ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-cache-restricted ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.dgphoenix.casino.cassandra.PersistersFactoryTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.097 sec - in com.dgphoenix.casino.cassandra.PersistersFactoryTest
+Running com.dgphoenix.casino.cassandra.KeyspaceManagerFactoryTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in com.dgphoenix.casino.cassandra.KeyspaceManagerFactoryTest
+Running com.dgphoenix.casino.cassandra.inject.PersisterDependencyInjectorTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 sec - in com.dgphoenix.casino.cassandra.inject.PersisterDependencyInjectorTest
+Running com.dgphoenix.casino.cassandra.config.ClusterConfigDeserializationTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.124 sec - in com.dgphoenix.casino.cassandra.config.ClusterConfigDeserializationTest
+Running com.dgphoenix.casino.cassandra.KeyspaceConfigurationFactoryTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.044 sec - in com.dgphoenix.casino.cassandra.KeyspaceConfigurationFactoryTest
+Running com.dgphoenix.casino.cassandra.CassandraPersistenceManagerTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 sec - in com.dgphoenix.casino.cassandra.CassandraPersistenceManagerTest
+Running com.dgphoenix.casino.cassandra.KeyspaceConfigurationTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.dgphoenix.casino.cassandra.KeyspaceConfigurationTest
+Running com.dgphoenix.casino.cassandra.persist.engine.TableDefinitionTest
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/Users/alexb/.m2/repository/org/apache/logging/log4j/log4j-slf4j-impl/2.20.0/log4j-slf4j-impl-2.20.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/alexb/.m2/repository/org/slf4j/slf4j-nop/1.6.1/slf4j-nop-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Tests run: 24, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.331 sec - in com.dgphoenix.casino.cassandra.persist.engine.TableDefinitionTest
+Running com.dgphoenix.casino.cassandra.KeySpaceManagerTest
+log4j:WARN No appenders could be found for logger (org.apache.commons.configuration.ConfigurationUtils).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 sec - in com.dgphoenix.casino.cassandra.KeySpaceManagerTest
+
+Results :
+
+Tests run: 63, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.735 s
+[INFO] Finished at: 2026-02-25T21:57:06Z
+[INFO] ------------------------------------------------------------------------

@@ -3,9 +3,8 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -41,17 +40,17 @@ public class CassandraBatchOperationStatusPersister extends AbstractCassandraPer
     }
 
     public void persist(long roomId, long roundId, String operationType, Status status) {
-        Insert insert = getInsertQuery();
-        insert.value(ROOM_ID, roomId)
+        Statement query = getInsertQuery()
+                .value(ROOM_ID, roomId)
                 .value(ROUND_ID, roundId)
                 .value(OPERATION_TYPE, operationType)
                 .value(CHANGE_DATE, System.currentTimeMillis())
                 .value(STATUS, status.name());
-        execute(insert, "persist");
+        execute(query, "persist");
     }
 
     public Pair<Status, Long> getStatus(long roomId, long roundId, String operationType) {
-        Select query = QueryBuilder.select(STATUS, CHANGE_DATE).from(getMainColumnFamilyName()).where(eq(ROOM_ID, roomId))
+        Statement query = QueryBuilder.select(STATUS, CHANGE_DATE).from(getMainColumnFamilyName()).where(eq(ROOM_ID, roomId))
                 .and(eq(ROUND_ID, roundId))
                 .and(eq(OPERATION_TYPE, operationType))
                 .limit(1);

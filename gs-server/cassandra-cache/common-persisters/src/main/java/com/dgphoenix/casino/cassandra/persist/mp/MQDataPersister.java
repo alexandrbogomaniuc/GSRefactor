@@ -2,8 +2,7 @@ package com.dgphoenix.casino.cassandra.persist.mp;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -33,23 +32,23 @@ public class MQDataPersister extends AbstractCassandraPersister<Long, String> {
         ByteBuffer buffer = TABLE.serializeToBytes(data);
         String json = TABLE.serializeToJson(data);
         try {
-            Insert insert = getInsertQuery()
+            Statement query = getInsertQuery()
                     .value(ACCOUNT_ID_COLUMN, data.getAccountId())
                     .value(GAME_ID_COLUMN, data.getGameId())
                     .value(SERIALIZED_COLUMN_NAME, buffer)
                     .value(JSON_COLUMN_NAME, json);
-            execute(insert, "persist");
+            execute(query, "persist");
         } finally {
             releaseBuffer(buffer);
         }
     }
 
     public MQData load(long accountId, long gameId) {
-        Select select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ACCOUNT_ID_COLUMN, accountId))
                 .and(eq(GAME_ID_COLUMN, gameId))
                 .limit(1);
-        Row row = execute(select, "load").one();
+        Row row = execute(query, "load").one();
         if (row == null) {
             return null;
         }
