@@ -74,6 +74,57 @@ public class BankInfoAliasCompatibilityTest {
     }
 
     @Test
+    public void shouldUseAbsAliasForWpmClassWhenLegacyMissing() {
+        BankInfo bankInfo = new BankInfo();
+        bankInfo.setProperty("ABS_WPM_CLASS", "com.abs.wallet.AbsWalletManager");
+
+        assertEquals("com.abs.wallet.AbsWalletManager", bankInfo.getWPMClass());
+    }
+
+    @Test
+    public void shouldPreferLegacyWpmClassOverAlias() {
+        BankInfo bankInfo = new BankInfo();
+        bankInfo.setProperty(BankInfo.KEY_WPM_CLASS, "com.dgphoenix.wallet.LegacyWalletManager");
+        bankInfo.setProperty("ABS_WPM_CLASS", "com.abs.wallet.AbsWalletManager");
+
+        assertEquals("com.dgphoenix.wallet.LegacyWalletManager", bankInfo.getWPMClass());
+    }
+
+    @Test
+    public void shouldUseAbsAliasForStartGameProcessorWhenLegacyMissing() {
+        BankInfo bankInfo = new BankInfo();
+        bankInfo.setProperty("ABS_START_GAME_PROCESSOR", "com.abs.gs.StartGameProcessor");
+
+        assertEquals("com.abs.gs.StartGameProcessor", bankInfo.getStartGameProcessorClass());
+    }
+
+    @Test
+    public void shouldPreferLegacyStartGameProcessorOverAlias() {
+        BankInfo bankInfo = new BankInfo();
+        bankInfo.setProperty(BankInfo.KEY_START_GAME_PROCESSOR, "com.dgphoenix.gs.LegacyStartGameProcessor");
+        bankInfo.setProperty("ABS_START_GAME_PROCESSOR", "com.abs.gs.StartGameProcessor");
+
+        assertEquals("com.dgphoenix.gs.LegacyStartGameProcessor", bankInfo.getStartGameProcessorClass());
+    }
+
+    @Test
+    public void shouldUseAbsAliasForCloseGameProcessorWhenLegacyMissing() {
+        BankInfo bankInfo = new BankInfo();
+        bankInfo.setProperty("ABS_CLOSE_GAME_PROCESSOR", "com.abs.gs.CloseGameProcessor");
+
+        assertEquals("com.abs.gs.CloseGameProcessor", bankInfo.getCloseGameProcessorClass());
+    }
+
+    @Test
+    public void shouldPreferLegacyCloseGameProcessorOverAlias() {
+        BankInfo bankInfo = new BankInfo();
+        bankInfo.setProperty(BankInfo.KEY_CLOSE_GAME_PROCESSOR, "com.dgphoenix.gs.LegacyCloseGameProcessor");
+        bankInfo.setProperty("ABS_CLOSE_GAME_PROCESSOR", "com.abs.gs.CloseGameProcessor");
+
+        assertEquals("com.dgphoenix.gs.LegacyCloseGameProcessor", bankInfo.getCloseGameProcessorClass());
+    }
+
+    @Test
     public void shouldKeepExistingDefaultWhenBothLegacyAndAliasMissing() {
         BankInfo bankInfo = new BankInfo();
 

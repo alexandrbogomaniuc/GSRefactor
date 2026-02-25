@@ -5021,3 +5021,16 @@
 - Validation evidence: `mvn -f /Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml -pl core,web,bots -am -DskipTests compile` => `BUILD SUCCESS`.
 - Result: MP runtime class loading now supports both legacy/new package-name payload class strings, reducing runtime break risk during naming cleanup waves.
 - Next step: commit/push RN3 Wave B, then continue with runtime config/template key cleanup waves and sign-off evidence refresh.
+### 2026-02-25 19:02-19:05 UTC
+- Implemented RN4 Wave A (config-key aliasing for runtime class strings) in `BankInfo`.
+- Added dual-read aliases (legacy key preferred, ABS alias fallback):
+  - `WPM_CLASS` <- `ABS_WPM_CLASS`
+  - `START_GAME_PROCESSOR` <- `ABS_START_GAME_PROCESSOR`
+  - `CLOSE_GAME_PROCESSOR` <- `ABS_CLOSE_GAME_PROCESSOR`
+- Expanded unit tests in `BankInfoAliasCompatibilityTest` to cover alias fallback and legacy-key precedence for all three keys.
+- Validation evidence:
+  - `mvn -f /Users/alexb/Documents/Dev/Dev_new/gs-server/common/pom.xml -Dtest=BankInfoAliasCompatibilityTest test` => `BUILD SUCCESS` (`15/15` pass)
+  - `mvn -f /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/pom.xml -DskipTests install` => `BUILD SUCCESS`
+  - `mvn -f /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/pom.xml -Dcluster.properties=local/local-machine.properties -DskipTests compile` => `BUILD SUCCESS`
+- Result: class-string config migration can now introduce ABS keys safely without breaking existing runtime behavior.
+- Next step: implement RN5 Wave A for GS->MP `MQ_*` runtime payload compatibility (dual-field output) with consumer-safe fallback.

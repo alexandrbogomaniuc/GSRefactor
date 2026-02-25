@@ -1109,6 +1109,9 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
     private static final String KEY_ABS_ROOMS_SORT_ORDER = "ABS_ROOMS_SORT_ORDER";
     private static final String KEY_ABS_CLIENT_LOG_LEVEL = "ABS_CLIENT_LOG_LEVEL";
     private static final String KEY_ABS_FRB_DEF_CHIPS = "ABS_FRB_DEF_CHIPS";
+    private static final String KEY_ABS_WPM_CLASS = "ABS_WPM_CLASS";
+    private static final String KEY_ABS_CLOSE_GAME_PROCESSOR = "ABS_CLOSE_GAME_PROCESSOR";
+    private static final String KEY_ABS_START_GAME_PROCESSOR = "ABS_START_GAME_PROCESSOR";
 
     @StringProperty(description = "Sets home page url for  MQ")
     public static final String KEY_HOME_URL_HOST = "HOME_URL_HOST";
@@ -1336,7 +1339,7 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
     }
 
     public String getWPMClass() {
-        return PropertyUtils.getStringProperty(properties, KEY_WPM_CLASS);
+        return getStringPropertyWithAliases(KEY_WPM_CLASS, KEY_ABS_WPM_CLASS);
     }
 
     public boolean isCWRefundSupported() {
@@ -1597,7 +1600,7 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
 
 
     public String getCloseGameProcessorClass() {
-        return PropertyUtils.getStringProperty(properties, KEY_CLOSE_GAME_PROCESSOR);
+        return getStringPropertyWithAliases(KEY_CLOSE_GAME_PROCESSOR, KEY_ABS_CLOSE_GAME_PROCESSOR);
     }
 
     public String getNotificationCloseGameProcessorUrl() {
@@ -1609,7 +1612,7 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
     }
 
     public String getStartGameProcessorClass() {
-        return PropertyUtils.getStringProperty(properties, KEY_START_GAME_PROCESSOR);
+        return getStringPropertyWithAliases(KEY_START_GAME_PROCESSOR, KEY_ABS_START_GAME_PROCESSOR);
     }
 
     public String getNotificationStartGameProcessorUrl() {
