@@ -1,0 +1,14 @@
+3:<head><title>508 :: Betonline</title></head>
+8:    function selectedDomainName(oList) {
+29:        <td> Master bank</td>
+32:        <td>6276</td>
+35:            <a href="/support/bankInfo.do?bankId=6276">
+41:            <a href="/support/exportSubCasino.do?id=508&exportedBankId=6276">Export</a>
+58:    Name: <input type="text" name="name" value="Betonline"><br>
+59:    Default Bank: <select name="defaultBank"><br>
+60:    <option value="6276" selected="selected">6276</option></select><br>
+63:<form name="SubcasinoForm" method="post" action="/support/additionalDomainName.do"><input type="hidden" name="id" value="508">
+64:    Additional Domain Names: <br>
+65:    <select name="oldDomainNameToEdit" size="5" onchange="selectedDomainName(this)"><option value="betonline.local">betonline.local</option></select><br>
+66:    Add or Edit Domain Name: <input type="text" name="domainNameToEdit" size="50" value=""><br>
+67:    <input type="submit" name="button" value="Add Domain Name"><input type="submit" name="button" value="Edit Domain Name"><input type="submit" name="button" value="Remove Domain Name"></form><br>

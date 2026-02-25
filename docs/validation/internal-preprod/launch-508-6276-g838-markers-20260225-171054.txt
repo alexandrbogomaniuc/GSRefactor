@@ -1,0 +1,7 @@
+54:        l_xhr.open('GET', 'http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json?t=' + (new Date().getTime()), true);
+57:            loadScript('http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/validator.js', lVersion_str, loadLobby.bind(this, lVersion_str));
+64:                loadScript('http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/game.js', version);
+89:            'websocket': 'ws://127.0.0.1:16300/websocket/mplobby',
+111:            'commonPathForActionGames': 'http://127.0.0.1:18080/html5pc/actiongames/common/',
+157:        return 'http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/';
+161:        return 'http://127.0.0.1:18080/html5pc/actiongames/dragonstone/game/';

@@ -4938,3 +4938,9 @@
 - Evidence: /Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/canary-operator-signoff-packet-20260225-122117.md
 - Result: project is at human sign-off stage only; no engineering blockers remain.
 - Next step: obtain operator/owner approvals and execute canary window.
+### 2026-02-25 17:07-17:11 UTC
+- Added a new internal validation tenant for broader pre-prod coverage using GS support tools: subcasino `508` (`Betonline`) and internal bank `6276` (`betonline_test`) by cloning bank `6274` config/games.
+- Found and fixed two launch blockers during validation: launch `bankId` is matched by external bank ID (not internal bank ID), and Casino Side wallet auth rejects unknown external bank IDs (422/500) for non-live test banks. Resolved by keeping display name `betonline_test` but reusing external bank ID `6274` for internal wallet compatibility on subcasino `508`.
+- Verified successful `/startgame` launches on the new subcasino for `gameId=838` and `gameId=829`; GS logs show requests routed as internal bank `6276` under `subCasinoId=508` with `non_multiplayer_game` / `isMultiplayer=false` evidence.
+- Evidence: /Users/alexb/Documents/Dev/Dev_new/docs/validation/internal-preprod/betonline-subcasino-bank-expansion-validation-20260225-171054.md, raw snippets under /Users/alexb/Documents/Dev/Dev_new/docs/validation/internal-preprod/.
+- Next step: commit/push internal pre-prod validation + simplified sign-off docs and save memory.

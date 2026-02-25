@@ -1,0 +1,6 @@
+3:    6276 :: betonline_test</title></head>
+6:<form name="BankPropertiesForm" method="post" action="/support/bankSelectAction.do"><input type="hidden" name="bankId" value="6276"><input type="submit" name="button" value="editProperties"><input type="submit" name="button" value="languagesSupport"><input type="submit" name="button" value="acsConfig"></form><b>Bank name:</b> betonline_test<br>
+7:<b>Bank id:</b> 6276<br>
+8:<b>Bank ext id:</b> 6274<br>
+25:<form name="BankInfoForm" method="post" action="/support/currencySelect.do"><input type="hidden" name="bankId" value="6276"><select name="currencyCodeAndBankId"><option value="USD/6276">Currency[code=&#39;USD&#39;, symbol=&#39;$&#39;, basic=&#39;null&#39;, minimal=&#39;null&#39;]</option></select><br><br>
+26:    <input type="submit" value="show configured games"></form><form name="AwayFromBankInfoForm" method="post" action="/support/awayFromBankInfo.do"><input type="hidden" name="bankId" value="6276"><input type="submit" name="forward" value="subcasinoSelect"></form></body>

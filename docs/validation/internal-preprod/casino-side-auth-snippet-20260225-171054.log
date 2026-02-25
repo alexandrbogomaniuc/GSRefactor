@@ -1,0 +1,36 @@
+[BAV DEBUG] Step 1: Hash validation
+[BAV DEBUG] - Token: bav_game_session_001
+[BAV DEBUG] - Received hash: 737b3586fcb7219e0c18fdd435f8a4e2
+[BAV DEBUG] - BAV_PASS_KEY: huecTlCT1OPSE0k4
+[BAV DEBUG] - Hash validation PASSED
+[BAV DEBUG] Step 2: Token decoding
+[BAV DEBUG] - decode_token() returned: None
+[BAV DEBUG] - Payload is None (token is not a valid JWT)
+[BAV DEBUG] - Attempting to look up session directly by token string
+[BAV DEBUG] - Session lookup by token: <igw.app.models.UserSession object at 0xffff98a02290>
+[BAV DEBUG] - Found session! userId=8, session_id=87
+[BAV DEBUG] Step 4: Building success response
+[BAV DEBUG] - uid: 8
+[BAV DEBUG] - username: test_user
+[BAV DEBUG] - currency: USD
+[BAV DEBUG] - balance_cents: 65754
+[BAV DEBUG] - Returning SUCCESS response
+INFO:     172.19.0.1:64944 - "GET /bav/authenticate?apipassword=huecTlCT1OPSE0k4&bankId=6274&clientType=FLASH&hash=737b3586fcb7219e0c18fdd435f8a4e2&token=bav_game_session_001 HTTP/1.1" 200 OK
+[BAV DEBUG] Step 1: Hash validation
+[BAV DEBUG] - Token: bav_game_session_001
+[BAV DEBUG] - Received hash: 737b3586fcb7219e0c18fdd435f8a4e2
+[BAV DEBUG] - BAV_PASS_KEY: huecTlCT1OPSE0k4
+[BAV DEBUG] - Hash validation PASSED
+[BAV DEBUG] Step 2: Token decoding
+[BAV DEBUG] - decode_token() returned: None
+[BAV DEBUG] - Payload is None (token is not a valid JWT)
+[BAV DEBUG] - Attempting to look up session directly by token string
+[BAV DEBUG] - Session lookup by token: <igw.app.models.UserSession object at 0xffff98a00850>
+[BAV DEBUG] - Found session! userId=8, session_id=87
+[BAV DEBUG] Step 4: Building success response
+[BAV DEBUG] - uid: 8
+[BAV DEBUG] - username: test_user
+[BAV DEBUG] - currency: USD
+[BAV DEBUG] - balance_cents: 65754
+[BAV DEBUG] - Returning SUCCESS response
+INFO:     172.19.0.1:64954 - "GET /bav/authenticate?apipassword=huecTlCT1OPSE0k4&bankId=6274&clientType=FLASH&hash=737b3586fcb7219e0c18fdd435f8a4e2&token=bav_game_session_001 HTTP/1.1" 200 OK
