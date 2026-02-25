@@ -1,0 +1,161 @@
+{
+  "updatedAt": "2026-02-25T09:51:34Z",
+  "coreScope": {
+    "name": "Core GS Modernization",
+    "plainEnglishSummary": "Modernize the Game Server without breaking existing integrations, then move toward a safer service-based architecture with staged rollout and rollback.",
+    "deliveryChecklistCompletion": "41/41",
+    "cutoverReadiness": "NO_GO_CUTOVER_PENDING_VALIDATION",
+    "whatThisMeans": "Many planned deliverables were completed, but the system is still not approved for production cutover because runtime canary checks and security dependency audit work are still incomplete."
+  },
+  "parallelWorkstreams": [
+    {
+      "id": "new-games-plinko",
+      "name": "New Games / Plinko Workstream",
+      "classification": "Parallel Scope",
+      "status": "Substantial progress (M1-M4 complete in audited evidence, M5 still planned)",
+      "plainEnglishSummary": "A separate new-game delivery track (Plinko) progressed strongly and produced real runtime/performance proofs, but it is not the same thing as core GS cutover readiness.",
+      "evidence": [
+        {
+          "path": "docs/New games Project/00-product-decisions.md",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/00-product-decisions.md"
+        },
+        {
+          "path": "docs/New games Project/03-milestones.md",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
+        },
+        {
+          "path": "docs/New games Project/evidence/m4-proof-pack-20260213-120017.md",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/evidence/m4-proof-pack-20260213-120017.md"
+        },
+        {
+          "path": "docs/audit-evidence/req-ng-18/verdict.md",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-18/verdict.md"
+        }
+      ]
+    },
+    {
+      "id": "casino-manager",
+      "name": "Casino Manager Workstream",
+      "classification": "Out of Main Scope",
+      "status": "Separate charter and planning artifacts present",
+      "plainEnglishSummary": "This is a separate project track with its own charter, schema mapping, and rollout planning. It should not be counted as GS modernization cutover completion.",
+      "evidence": [
+        {
+          "path": "docs/Casino Manager Project/00-project-charter.md",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/Casino%20Manager%20Project/00-project-charter.md"
+        },
+        {
+          "path": "docs/Casino Manager Project/README.md",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/Casino%20Manager%20Project/README.md"
+        }
+      ]
+    }
+  ],
+  "scopeCreepExamples": [
+    {
+      "id": "phase8-tooling-depth",
+      "title": "Phase 8 discrepancy viewer/tooling expansion",
+      "plainEnglishSummary": "Useful operator tooling was added around precision discrepancy analysis, but this went beyond the minimum requirement of proving safe 0.001 support.",
+      "evidence": {
+        "path": "docs/95-phase8-wave3-discrepancy-export-tool-and-visibility-20260223-174500.md",
+        "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/95-phase8-wave3-discrepancy-export-tool-and-visibility-20260223-174500.md"
+      }
+    },
+    {
+      "id": "phase9-governance-depth",
+      "title": "Phase 9 rename-wave execution governance tooling",
+      "plainEnglishSummary": "A detailed governance/process toolset was built for rename waves. This improves safety, but it is broader than a minimal brand-name replacement implementation.",
+      "evidence": {
+        "path": "docs/149-phase9-w0-apply-wave2-single-file-bitbucket-pipelines-yml-20260224-123000.md",
+        "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/149-phase9-w0-apply-wave2-single-file-bitbucket-pipelines-yml-20260224-123000.md"
+      }
+    }
+  ],
+  "currentCutoverBlockers": [
+    {
+      "id": "phase4_protocol_runtime_canary",
+      "title": "Protocol adapter runtime canary validation is still failing",
+      "severity": "HIGH",
+      "state": "NO_GO_RUNTIME_FAILURE",
+      "plainEnglishSummary": "The protocol adapter path is running, but the key wallet shadow check still fails, so the team cannot approve cutover.",
+      "evidence": [
+        {
+          "path": "docs/phase4/protocol/phase4-protocol-status-report-20260224-163534.md",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/phase4/protocol/phase4-protocol-status-report-20260224-163534.md"
+        },
+        {
+          "path": "docs/audit-evidence/req-gs-02/verdict.md",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-02/verdict.md"
+        }
+      ]
+    },
+    {
+      "id": "phase5_6_core_service_runtime_canary",
+      "title": "Core extracted service canary routing is not approved",
+      "severity": "HIGH",
+      "state": "NO_GO_RUNTIME_FAILURE",
+      "plainEnglishSummary": "Gameplay, wallet, bonus, and history services are up, but their canary routing checks fail, so production ownership cannot move to them yet.",
+      "evidence": [
+        {
+          "path": "docs/phase5-6/phase5-6-service-extraction-status-report-20260224-163457.md",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/phase5-6/phase5-6-service-extraction-status-report-20260224-163457.md"
+        },
+        {
+          "path": "docs/audit-evidence/req-gs-ph-06/verdict.md",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-06/verdict.md"
+        }
+      ]
+    },
+    {
+      "id": "security_dependency_audit_lockfiles",
+      "title": "Security dependency audit and lockfiles are still pending",
+      "severity": "HIGH",
+      "state": "TESTED_NO_GO_DEPENDENCY_LOCK_AUDIT_PENDING",
+      "plainEnglishSummary": "The refactor services still need dependency lockfiles and a proper audit/remediation pass before a production cutover decision.",
+      "evidence": [
+        {
+          "path": "docs/security/security-hardening-status-report-20260224-110139.md",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/security/security-hardening-status-report-20260224-110139.md"
+        },
+        {
+          "path": "docs/audit-evidence/req-gs-06/verdict.md",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-06/verdict.md"
+        }
+      ]
+    }
+  ],
+  "latestEvidenceSources": [
+    {
+      "label": "Milestone 2 Requirement Reality Check Audit",
+      "path": "docs/Requirement-Reality-Check-Audit.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/Requirement-Reality-Check-Audit.md"
+    },
+    {
+      "label": "Milestone 2 Requirement Index",
+      "path": "docs/audit-evidence/requirements-index.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/requirements-index.md"
+    },
+    {
+      "label": "Latest Program Readiness Report (factual cutover status)",
+      "path": "docs/release-readiness/program-deploy-readiness-status-20260224-163502.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md"
+    },
+    {
+      "label": "Mixed-topology manual full-flow pass evidence",
+      "path": "docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-full-flow-20260224-162730.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-full-flow-20260224-162730.md"
+    },
+    {
+      "label": "Phase 7 Cassandra full-copy report",
+      "path": "docs/phase7/cassandra/full-copy/phase7-cassandra-full-data-copy-20260224-155602.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/full-copy/phase7-cassandra-full-data-copy-20260224-155602.md"
+    }
+  ],
+  "whatNeedsApprovalNext": [
+    "Approve a focused runtime canary activation/validation wave for Phase 4 protocol adapter routing.",
+    "Approve a focused runtime canary activation/validation wave for Phase 5 core extracted services (gameplay/wallet/bonus/history).",
+    "Approve a dependency lockfile + audit remediation pass in a network-capable environment.",
+    "Keep Casino Manager and New Games reporting separate from core GS cutover status to avoid progress confusion."
+  ],
+  "plainEnglishSummary": "This dashboard separates delivery output progress from production cutover readiness. The core modernization delivered many artifacts, but the project is still blocked on runtime canary validation and security audit work. Parallel workstreams (New Games and Casino Manager) are real work, but they should not be counted as core cutover completion."
+}

@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support"
-HTML_FILE="${ROOT}/modernizationProgress.html"
-CHECKLIST_JSON="${ROOT}/data/modernization-checklist.json"
-OUTBOX_JSON="${ROOT}/data/session-outbox-health.json"
-READINESS_REPORT_GLOB="/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-*.md"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+SUPPORT_ROOT="${REPO_ROOT}/gs-server/game-server/web-gs/src/main/webapp/support"
+DOCS_ROOT="${REPO_ROOT}/docs"
+
+HTML_FILE="${SUPPORT_ROOT}/modernizationProgress.html"
+CHECKLIST_JSON="${SUPPORT_ROOT}/data/modernization-checklist.json"
+OUTBOX_JSON="${SUPPORT_ROOT}/data/session-outbox-health.json"
+AUDIT_REQ_JSON="${SUPPORT_ROOT}/data/audit-requirements-status.json"
+AUDIT_SCOPE_JSON="${SUPPORT_ROOT}/data/audit-scope-summary.json"
+READINESS_REPORT_GLOB="${DOCS_ROOT}/release-readiness/program-deploy-readiness-status-*.md"
 READINESS_REPORT=""
 
 usage() {
@@ -13,9 +19,12 @@ usage() {
 Usage: $(basename "$0") [options]
 
 Options:
+  --repo-root DIR     Default: ${REPO_ROOT}
   --html FILE        Default: ${HTML_FILE}
   --checklist FILE   Default: ${CHECKLIST_JSON}
   --outbox FILE      Default: ${OUTBOX_JSON}
+  --audit-req FILE   Default: ${AUDIT_REQ_JSON}
+  --audit-scope FILE Default: ${AUDIT_SCOPE_JSON}
   --readiness FILE   Default: latest from ${READINESS_REPORT_GLOB}
   -h, --help         Show this help
 USAGE
@@ -23,12 +32,27 @@ USAGE
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
+    --repo-root)
+      REPO_ROOT="$2"
+      SUPPORT_ROOT="${REPO_ROOT}/gs-server/game-server/web-gs/src/main/webapp/support"
+      DOCS_ROOT="${REPO_ROOT}/docs"
+      HTML_FILE="${SUPPORT_ROOT}/modernizationProgress.html"
+      CHECKLIST_JSON="${SUPPORT_ROOT}/data/modernization-checklist.json"
+      OUTBOX_JSON="${SUPPORT_ROOT}/data/session-outbox-health.json"
+      AUDIT_REQ_JSON="${SUPPORT_ROOT}/data/audit-requirements-status.json"
+      AUDIT_SCOPE_JSON="${SUPPORT_ROOT}/data/audit-scope-summary.json"
+      READINESS_REPORT_GLOB="${DOCS_ROOT}/release-readiness/program-deploy-readiness-status-*.md"
+      shift 2 ;;
     --html)
       HTML_FILE="$2"; shift 2 ;;
     --checklist)
       CHECKLIST_JSON="$2"; shift 2 ;;
     --outbox)
       OUTBOX_JSON="$2"; shift 2 ;;
+    --audit-req)
+      AUDIT_REQ_JSON="$2"; shift 2 ;;
+    --audit-scope)
+      AUDIT_SCOPE_JSON="$2"; shift 2 ;;
     --readiness)
       READINESS_REPORT="$2"; shift 2 ;;
     -h|--help)
@@ -56,14 +80,20 @@ if [[ -n "${READINESS_REPORT}" && ! -f "${READINESS_REPORT}" ]]; then
   exit 1
 fi
 
+for optional_json in "${AUDIT_REQ_JSON}" "${AUDIT_SCOPE_JSON}"; do
+  if [[ ! -f "${optional_json}" ]]; then
+    echo "Warning: optional dashboard data file not found, will embed fallback object: ${optional_json}" >&2
+  fi
+done
+
 tmp_file="$(mktemp)"
 trap 'rm -f "${tmp_file}"' EXIT
 
-node - "${HTML_FILE}" "${CHECKLIST_JSON}" "${OUTBOX_JSON}" "${READINESS_REPORT}" "${tmp_file}" <<'NODE'
+node - "${HTML_FILE}" "${CHECKLIST_JSON}" "${OUTBOX_JSON}" "${READINESS_REPORT}" "${AUDIT_REQ_JSON}" "${AUDIT_SCOPE_JSON}" "${tmp_file}" <<'NODE'
 const fs = require('fs');
 const crypto = require('crypto');
 
-const [htmlFile, checklistFile, outboxFile, readinessFile, outFile] = process.argv.slice(2);
+const [htmlFile, checklistFile, outboxFile, readinessFile, auditReqFile, auditScopeFile, outFile] = process.argv.slice(2);
 const html = fs.readFileSync(htmlFile, 'utf8');
 const checklist = JSON.parse(fs.readFileSync(checklistFile, 'utf8'));
 const outbox = JSON.parse(fs.readFileSync(outboxFile, 'utf8'));
@@ -78,6 +108,11 @@ function enrichEmbedded(obj) {
   clone.__embeddedSyncedAtUtc = syncedAt;
   clone.__embeddedFingerprint = fingerprint;
   return clone;
+}
+
+function hasScriptTag(source, scriptId) {
+  const pattern = new RegExp(`(<script id="${scriptId}" type="application/json">)([\\s\\S]*?)(</script>)`);
+  return pattern.test(source);
 }
 
 function replaceScriptJson(source, scriptId, obj) {
@@ -113,6 +148,10 @@ function parseReadinessMarkdown(text, sourcePath) {
     if (m) { meta.phase7CassandraStatus = m[1].trim(); continue; }
     m = line.match(/^- security_hardening_status:\s*(.+)$/);
     if (m) { meta.securityHardeningStatus = m[1].trim(); continue; }
+    m = line.match(/^- legacy_mixed_topology_status:\s*(.+)$/);
+    if (m) { meta.legacyMixedTopologyStatus = m[1].trim(); continue; }
+    m = line.match(/^- phase7_cassandra_rehearsal_no_go:\s*(.+)$/);
+    if (m) { meta.phase7CassandraRehearsalNoGo = m[1].trim(); continue; }
     m = line.match(/^\|\s*([^|]+?)\s*\|\s*([A-Z]+)\s*\|\s*([^|]+?)\s*\|$/);
     if (m && m[1].trim() !== 'Blocker' && m[1].trim() !== 'blocker') {
       blockers.push({
@@ -134,10 +173,23 @@ function parseReadinessMarkdown(text, sourcePath) {
     phase4ProtocolStatus: meta.phase4ProtocolStatus || null,
     phase56ExtractionStatus: meta.phase56ExtractionStatus || null,
     phase7CassandraStatus: meta.phase7CassandraStatus || null,
+    phase7CassandraRehearsalNoGo: meta.phase7CassandraRehearsalNoGo || null,
+    legacyMixedTopologyStatus: meta.legacyMixedTopologyStatus || null,
     securityHardeningStatus: meta.securityHardeningStatus || null,
     blockers,
     source: sourcePath || 'none'
   };
+}
+
+function loadOptionalJson(path, fallbackObj) {
+  if (!path || !fs.existsSync(path)) {
+    return fallbackObj;
+  }
+  try {
+    return JSON.parse(fs.readFileSync(path, 'utf8'));
+  } catch (err) {
+    return { ...fallbackObj, reason: `parse_error: ${String(err)}`, source: path };
+  }
 }
 
 let next = html;
@@ -145,9 +197,33 @@ const embeddedChecklist = enrichEmbedded(checklist);
 const embeddedOutbox = enrichEmbedded(outbox);
 const readinessText = readinessFile ? fs.readFileSync(readinessFile, 'utf8') : '';
 const embeddedReadiness = enrichEmbedded(parseReadinessMarkdown(readinessText, readinessFile || 'none'));
+const embeddedAuditRequirements = enrichEmbedded(loadOptionalJson(auditReqFile, {
+  updatedAt: null,
+  reason: 'audit_requirements_status_missing',
+  source: auditReqFile || 'none',
+  summaryCounts: {},
+  requirements: []
+}));
+const embeddedAuditScope = enrichEmbedded(loadOptionalJson(auditScopeFile, {
+  updatedAt: null,
+  reason: 'audit_scope_summary_missing',
+  source: auditScopeFile || 'none',
+  coreScope: {},
+  currentCutoverBlockers: [],
+  latestEvidenceSources: [],
+  whatNeedsApprovalNext: [],
+  parallelWorkstreams: [],
+  scopeCreepExamples: []
+}));
 next = replaceScriptJson(next, 'embedded-checklist', embeddedChecklist);
 next = replaceScriptJson(next, 'embedded-outbox-health', embeddedOutbox);
 next = replaceScriptJson(next, 'embedded-deploy-readiness', embeddedReadiness);
+if (hasScriptTag(next, 'embedded-audit-requirements')) {
+  next = replaceScriptJson(next, 'embedded-audit-requirements', embeddedAuditRequirements);
+}
+if (hasScriptTag(next, 'embedded-audit-scope')) {
+  next = replaceScriptJson(next, 'embedded-audit-scope', embeddedAuditScope);
+}
 
 fs.writeFileSync(outFile, next, 'utf8');
 
@@ -156,6 +232,8 @@ const done = (m) => (m.sections || []).reduce((a, s) => a + (s.items || []).filt
 console.log(`embedded-checklist synced: ${done(checklist)}/${count(checklist)} updatedAt=${checklist.updatedAt || '-'} embeddedSyncedAt=${embeddedChecklist.__embeddedSyncedAtUtc} fp=${embeddedChecklist.__embeddedFingerprint}`);
 console.log(`embedded-outbox-health synced: updatedAt=${outbox.updatedAt || '-'} embeddedSyncedAt=${embeddedOutbox.__embeddedSyncedAtUtc} fp=${embeddedOutbox.__embeddedFingerprint}`);
 console.log(`embedded-deploy-readiness synced: status=${embeddedReadiness.status || '-'} source=${embeddedReadiness.source || '-'} embeddedSyncedAt=${embeddedReadiness.__embeddedSyncedAtUtc} fp=${embeddedReadiness.__embeddedFingerprint}`);
+console.log(`embedded-audit-requirements synced: updatedAt=${embeddedAuditRequirements.updatedAt || '-'} source=${auditReqFile || '-'} embeddedSyncedAt=${embeddedAuditRequirements.__embeddedSyncedAtUtc} fp=${embeddedAuditRequirements.__embeddedFingerprint}`);
+console.log(`embedded-audit-scope synced: updatedAt=${embeddedAuditScope.updatedAt || '-'} source=${auditScopeFile || '-'} embeddedSyncedAt=${embeddedAuditScope.__embeddedSyncedAtUtc} fp=${embeddedAuditScope.__embeddedFingerprint}`);
 NODE
 
 mv "${tmp_file}" "${HTML_FILE}"

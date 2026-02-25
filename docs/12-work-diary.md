@@ -4839,3 +4839,16 @@
 - Evidence: `git push origin main` returned DNS/network failure; local milestone commit is preserved and repo is ready to push when network access is available.
 - Result: Milestone 2 is complete locally and awaiting user approval for Milestone 3.
 - Next step: on approval, rebuild the modernization progress portal to show factual cutover readiness (`NO_GO`) and integrate Milestone 2 audit evidence summaries.
+### 2026-02-25 09:49-09:49 UTC
+- Started Milestone 3 (Rebuild the Progress Portal) after Milestone 2 approval.
+- Objective: rebuild the support portal to show factual cutover readiness (`NO_GO`) separate from checklist completion (`41/41`), and integrate Milestone 2 audit evidence summaries in plain English.
+- Planned changes: add support data JSON snapshots (`audit-requirements-status.json`, `audit-scope-summary.json`), patch `modernizationProgress.html`, and update `sync-modernization-dashboard-embedded-data.sh` for dynamic paths + audit JSON embedding.
+- Next step: implement portal sections and embedded/fetch fallbacks, then validate rendering data and sync script output.
+### 2026-02-25 09:56-09:56 UTC
+- Milestone 3 completed locally: rebuilt the support modernization portal to show factual cutover readiness separate from checklist completion and integrated Milestone 2 audit evidence summaries in plain English.
+- Added new support data snapshots: `support/data/audit-requirements-status.json` and `support/data/audit-scope-summary.json`; patched `modernizationProgress.html` with Program Snapshot / Checklist vs Cutover / Current Blockers / Requirement Reality Check / Scope Creep / Latest Evidence / What Needs Approval Next sections.
+- Updated `sync-modernization-dashboard-embedded-data.sh` to use dynamic repo-relative defaults, support `--repo-root`, and embed audit JSON snapshots (`embedded-audit-requirements`, `embedded-audit-scope`) while keeping existing checklist/outbox/readiness sync behavior.
+- Validation: `bash -n` passed for sync script; sync script updated all 5 embedded snapshots; extracted portal JS passes `node --check`; browser file-mode (`file:///.../modernizationProgress.html`) renders new sections and evidence links. Live support-page HTTP check was not possible because `http://127.0.0.1:18081/support/modernizationProgress.html` returned no response (`000`) in this session.
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/Portal-Rebuild-Notes.md`, support portal file-mode snapshot (MCP), sync-script output with fresh embedded snapshot fingerprints, `docs/Requirement-Reality-Check-Audit.md` + `docs/audit-evidence/*`.
+- Result: Milestone 3 stop condition met locally for factual portal rebuild and file-mode rendering; support-page HTTP rendering remains pending environment uptime verification.
+- Next step: commit Milestone 3 portal/data/script/docs changes, attempt push, save memory, and wait for user approval before Milestone 4.
