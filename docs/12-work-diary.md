@@ -4875,3 +4875,16 @@
 - Push attempt to `origin/main` failed again in this environment: `Could not resolve host: github.com`.
 - Result: Milestone 4 is complete locally; push remains pending network/DNS access.
 - Next step: wait for user approval before Milestone 5 (plain-English Config Portal User Guide).
+### 2026-02-25 10:49-10:49 UTC
+- Started Milestone 5 (Configuration Portal User Guide) after Milestone 4 approval.
+- Collected exact portal labels/buttons and real capabilities from `support/configPortal.jsp` plus Phase 3 spec/guardrail docs to avoid guessing task steps.
+- Confirmed current portal state for guide wording: Level 1/1b/2/3 views are real, Level 4 workflow exists as scaffold, Level 4b approval queue and Level 4c guardrails are browser-local helpers, and legacy `Open Bank Editor` remains available.
+- Next step: write `/Users/alexb/Documents/Dev/Dev_new/docs/Config-Portal-User-Guide.md` with plain-English step-by-step tasks and explicit `works now / partly works / planned` markers.
+### 2026-02-25 10:51-10:51 UTC
+- Milestone 5 completed locally: created a plain-English Config Portal user guide for non-technical operators with exact page labels/buttons, step-by-step tasks, and clear status labels (`Works now`, `Partly works`, `Planned / not active yet`).
+- Added `/Users/alexb/Documents/Dev/Dev_new/docs/Config-Portal-User-Guide.md` covering portal purpose/limitations, safety rules, task map, 11 real-world tasks (bank selection, cluster view, outbox safety controls, bank setting categories, effective values, workflow scaffold, guardrails, approval queue, bundle export/import, legacy bank editor, confirmation checks), and current limitations/planned items.
+- Guide wording is tied to actual portal capabilities in `support/configPortal.jsp` and Phase 3 docs (spec, persistent approvals, guardrails visualization) and explicitly marks browser-local helper features vs scaffold vs planned backend workflow.
+- Validation: quick grep check confirms 11 task sections and status labels across tasks, with explicit coverage for validate-before-publish, publish/rollback guardrails, Open Bank Editor, and confirmation limitations.
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/Config-Portal-User-Guide.md`, `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/configPortal.jsp`, `/Users/alexb/Documents/Dev/Dev_new/docs/32-gs-config-portal-all-levels-spec.md`, `/Users/alexb/Documents/Dev/Dev_new/docs/135-phase3-config-portal-persistent-approvals-browser-local-20260224-090500.md`, `/Users/alexb/Documents/Dev/Dev_new/docs/136-phase3-config-portal-publish-rollback-guardrails-visualization-20260224-091500.md`.
+- Result: Milestone 5 stop condition met locally (non-technical step-by-step guide written against real current portal behavior and clearly marks limitations/planned features).
+- Next step: commit Milestone 5 guide, attempt push, save memory, and wait for user approval before Milestone 6 (cross-platform portability & onboarding).
