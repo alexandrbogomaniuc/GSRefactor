@@ -5345,3 +5345,16 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-unit-tests-20260225-212908.txt`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-build-web-gs-20260225-212908.txt`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-build-mp-stack-20260225-212908.txt`
+### 2026-02-25 21:34 UTC
+- Continued CASS-V4 and completed Wave 15 statement-flow conversion in `CassandraExternalTransactionPersister`, `CassandraGameSessionExtendedPropertiesPersister`, and `CassandraBaseGameInfoPersister`.
+- Validation PASS:
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn -q -Dtest=KeySpaceManagerTest,CassandraPersistenceManagerTest,ClusterConfigDeserializationTest,KeyspaceConfigurationFactoryTest test` (`cache`)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -DskipTests -pl core-interfaces,core,persistance -am package` (`mp-server`)
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-config-and-game-persisters-statement-flow-20260225-213335.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-build-common-persisters-20260225-213335.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-unit-tests-20260225-213335.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-build-web-gs-20260225-213335.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-build-mp-stack-20260225-213335.txt`

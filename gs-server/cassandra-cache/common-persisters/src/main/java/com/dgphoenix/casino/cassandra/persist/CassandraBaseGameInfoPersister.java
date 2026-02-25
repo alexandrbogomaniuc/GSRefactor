@@ -3,8 +3,7 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.datastax.driver.core.ConsistencyLevel;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.IEntityUpdateListener;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -87,7 +86,7 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
 
     @Override
     public Set<String> getKeys() {
-        Select select = getSelectColumnsQuery(KEY);
+        Statement select = getSelectColumnsQuery(KEY);
         Iterator<Row> iterator = execute(select, "getKeys").iterator();
         Set<String> result = new HashSet<>();
         while (iterator.hasNext()) {
@@ -99,8 +98,8 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
 
     @Override
     public List<BaseGameInfo> getByBank(long bankId) {
-        Select select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        select.where().and(eq(BANK_IDX, getBankIdx(bankId)));
+        Statement select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(BANK_IDX, getBankIdx(bankId)));
         Iterator<Row> iterator = execute(select, "getByBank", ConsistencyLevel.LOCAL_ONE).iterator();
         List<BaseGameInfo> result = new ArrayList<>();
         while (iterator.hasNext()) {
@@ -112,8 +111,8 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
 
     @Override
     public List<BaseGameInfo> getByBankAndCurrency(long bankId, ICurrency currency) {
-        Select select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        select.where().and(eq(BANK_AND_CUR_IDX, getBankAndCurIdx(bankId, currency.getCode())));
+        Statement select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(BANK_AND_CUR_IDX, getBankAndCurIdx(bankId, currency.getCode())));
         Iterator<Row> iterator = execute(select, "getByBankAndCurrency", ConsistencyLevel.LOCAL_ONE).iterator();
         List<BaseGameInfo> result = new ArrayList<>();
         while (iterator.hasNext()) {
@@ -177,8 +176,8 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
         String json = TABLE.serializeToJson(copy);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(copy);
         try {
-            Insert insert = getInsertQuery();
-            insert.value(KEY, key)
+            Statement insert = getInsertQuery()
+                    .value(KEY, key)
                     .value(JSON_COLUMN_NAME, json)
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
                     .value(BANK_IDX, getBankIdx(gameInfo.getBankId()))
@@ -238,9 +237,9 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
                                    Object... conditionValues)
             throws IOException {
         if (conditionName.equals("byBank")) {
-            Select select = getSelectColumnsQuery(KEY, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
             Long bankId = (Long) conditionValues[0];
-            select.where().and(eq(BANK_IDX, getBankIdx(bankId)));
+            Statement select = getSelectColumnsQuery(KEY, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                    .where(eq(BANK_IDX, getBankIdx(bankId)));
             Iterator<Row> iterator = execute(select, "getByBank").iterator();
             while (iterator.hasNext()) {
                 Row row = iterator.next();

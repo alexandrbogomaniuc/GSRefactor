@@ -209,3 +209,21 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-unit-tests-20260225-212908.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-build-web-gs-20260225-212908.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-build-mp-stack-20260225-212908.txt`
+
+## 2026-02-25 21:34 UTC
+- Implemented CASS-V4 Wave 15 in config/game persister classes.
+- Switched typed querybuilder variables to generic `Statement` flow in:
+  - `CassandraExternalTransactionPersister`
+  - `CassandraGameSessionExtendedPropertiesPersister`
+  - `CassandraBaseGameInfoPersister`
+- Validation: PASS
+  - `common-persisters` install
+  - cache targeted test suite
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-config-and-game-persisters-statement-flow-20260225-213335.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-build-common-persisters-20260225-213335.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-unit-tests-20260225-213335.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-build-web-gs-20260225-213335.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-build-mp-stack-20260225-213335.txt`

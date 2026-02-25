@@ -3,8 +3,7 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -69,8 +68,8 @@ public class CassandraExternalTransactionPersister extends AbstractCassandraPers
 
     public ExternalPaymentTransaction getByInternalId(PaymentMode mode, long internalOperationId) {
         String key = getInternalId(mode, internalOperationId);
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where().and(eq(INTERNAL_ID_FIELD, key));
+        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(INTERNAL_ID_FIELD, key));
         ResultSet resultSet = execute(query, "getByInternalId");
         Row row = resultSet.one();
         if (row == null) {
@@ -95,13 +94,19 @@ public class CassandraExternalTransactionPersister extends AbstractCassandraPers
         String json = TABLE.serializeToJson(transaction);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(transaction);
         try {
-            Insert query = getInsertQuery().value(KEY, key).
-                    value(SERIALIZED_COLUMN_NAME, byteBuffer).
-                    value(JSON_COLUMN_NAME, json);
-            if (transaction.getInternalOperationId() != null) {
-                query.value(INTERNAL_ID_FIELD, getInternalId(transaction.getPaymentMode(),
-                        transaction.getInternalOperationId()));
-            }
+            Statement query = transaction.getInternalOperationId() == null
+                    ? getInsertQuery()
+                            .value(KEY, key)
+                            .value(SERIALIZED_COLUMN_NAME, byteBuffer)
+                            .value(JSON_COLUMN_NAME, json)
+                    : getInsertQuery()
+                            .value(KEY, key)
+                            .value(SERIALIZED_COLUMN_NAME, byteBuffer)
+                            .value(JSON_COLUMN_NAME, json)
+                            .value(INTERNAL_ID_FIELD, getInternalId(
+                                    transaction.getPaymentMode(),
+                                    transaction.getInternalOperationId()
+                            ));
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);

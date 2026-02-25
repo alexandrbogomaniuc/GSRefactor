@@ -2,8 +2,7 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -31,7 +30,7 @@ public class CassandraGameSessionExtendedPropertiesPersister extends AbstractCas
         String json = TABLE.serializeWithClassToJson(properties);
         ByteBuffer buffer = TABLE.serializeWithClassToBytes(properties);
         try {
-            Insert insert = getInsertQuery()
+            Statement insert = getInsertQuery()
                     .value(GAME_SESSION_ID, gameSessionId)
                     .value(SERIALIZED_COLUMN_NAME, buffer)
                     .value(JSON_COLUMN_NAME, json);
@@ -47,7 +46,7 @@ public class CassandraGameSessionExtendedPropertiesPersister extends AbstractCas
     }
 
     public GameSessionExtendedProperties getOrNull(long gameSessionId) {
-        Select select = getSelectAllColumnsQuery()
+        Statement select = getSelectAllColumnsQuery()
                 .where(eq(GAME_SESSION_ID, gameSessionId))
                 .limit(1);
         Row result = execute(select, "select").one();
