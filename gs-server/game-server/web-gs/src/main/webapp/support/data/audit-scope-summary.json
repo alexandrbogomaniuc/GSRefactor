@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T19:11:20Z",
+  "updatedAt": "2026-02-25T19:16:23Z",
   "coreScope": {
     "name": "Core GS Modernization",
     "plainEnglishSummary": "Modernize the Game Server without breaking existing integrations, then move toward a safer service-based architecture with staged rollout and rollback.",
@@ -85,8 +85,8 @@
     },
     {
       "label": "Latest Program Readiness Report (factual cutover status)",
-      "path": "docs/release-readiness/program-deploy-readiness-status-20260225-191103.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260225-191103.md"
+      "path": "docs/release-readiness/program-deploy-readiness-status-20260225-191623.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260225-191623.md"
     },
     {
       "label": "Latest Canary Operator Sign-Off Packet",

@@ -5093,3 +5093,20 @@
   - embedded deploy readiness + audit scope snapshots now align on `GO_FOR_DEPLOY_AND_CANARY`.
 - Result: modernization portal now presents consistent status across readiness and scope sections.
 - Next step: commit/push refreshed readiness + portal snapshot + updated sign-off packet as the current production handoff baseline.
+### 2026-02-25 19:14-19:17 UTC
+- Re-ran Phase 4/5/6 runtime evidence packs with production-like launch parameters (`bankId=6275`, `subCasinoId=507`, `token=bav_game_session_001`) to produce fresh post-change runtime proof.
+- New runtime evidence reports:
+  - `docs/phase4/protocol/phase4-protocol-runtime-evidence-20260225-191452.md`
+  - `docs/phase5/gameplay/phase5-gameplay-runtime-evidence-20260225-191509.md`
+  - `docs/phase5/wallet/phase5-wallet-runtime-evidence-20260225-191524.md`
+  - `docs/phase5/bonus-frb/phase5-bonus-frb-runtime-evidence-20260225-191548.md`
+  - `docs/phase5/history/phase5-history-runtime-evidence-20260225-191600.md`
+  - `docs/phase6/multiplayer/phase6-multiplayer-runtime-evidence-20260225-191611.md`
+- Regenerated status aggregation after the fresh runtime packs:
+  - `docs/phase4/protocol/phase4-protocol-status-report-20260225-191623.md` (`TESTED_GO_RUNTIME_PARITY_READY`)
+  - `docs/phase5-6/phase5-6-service-extraction-status-report-20260225-191623.md` (`TESTED_GO_RUNTIME_READY`)
+  - `docs/security/security-hardening-status-report-20260225-191623.md` (`TESTED_SECURITY_HARDENING_COMPLETE`)
+  - `docs/release-readiness/program-deploy-readiness-status-20260225-191623.md` (`GO_FOR_DEPLOY_AND_CANARY`, `blocker_count=0`)
+- Updated operator packet links and synced portal embedded snapshots to latest readiness/evidence timestamps.
+- Result: sign-off package now references fresh runtime evidence captured after the latest naming compatibility waves.
+- Next step: commit/push final evidence refresh and confirm human sign-off inputs for canary window execution.
