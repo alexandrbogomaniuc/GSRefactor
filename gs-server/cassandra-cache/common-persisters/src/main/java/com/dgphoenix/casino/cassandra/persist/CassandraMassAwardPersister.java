@@ -4,7 +4,6 @@ import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
-import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -116,10 +115,10 @@ public class CassandraMassAwardPersister extends AbstractLongDistributedConfigEn
     }
 
     public void saveDelayedMassAwardId(long delayedMassAwardId, long massAwardId) {
-        Insert insert = QueryBuilder.insertInto(DELAYED_MASS_AWARD_CF);
-        insert.value(DELAYED_MASS_AWARD_ID, delayedMassAwardId)
+        Statement query = QueryBuilder.insertInto(DELAYED_MASS_AWARD_CF)
+                .value(DELAYED_MASS_AWARD_ID, delayedMassAwardId)
                 .value(MASS_AWARD_ID, massAwardId);
-        execute(insert, "persist delayedMassAwardId");
+        execute(query, "persist delayedMassAwardId");
     }
 
     private void deleteDelayedMassAwardId(long massAwardId) {

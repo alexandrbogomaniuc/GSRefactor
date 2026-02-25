@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
@@ -124,9 +123,9 @@ public class CassandraLasthandPersister extends AbstractCassandraPersister<Strin
 
     //key: gameId, value is pair writetime/lasthand
     public Map<Long, Pair<Long, String>> getRealModeLasthandsWithWriteTime(long accountId) {
-        Select select = QueryBuilder.select().column(LASTHAND_DATA_FIELD).column(GAME_ID_FIELD).writeTime(LASTHAND_DATA_FIELD).
-                from(REAL_TABLE.getTableName()).where().and(eq(ACCOUNT_ID_FIELD, accountId)).limit(10000);
-        ResultSet rows = execute(select, "getRealModeLasthandsWithWriteTime");
+        Statement query = QueryBuilder.select().column(LASTHAND_DATA_FIELD).column(GAME_ID_FIELD).writeTime(LASTHAND_DATA_FIELD)
+                .from(REAL_TABLE.getTableName()).where().and(eq(ACCOUNT_ID_FIELD, accountId)).limit(10000);
+        ResultSet rows = execute(query, "getRealModeLasthandsWithWriteTime");
         Map<Long, Pair<Long, String>> result = new HashMap<>();
         for (Row row : rows) {
             String lasthand = row.getString(LASTHAND_DATA_FIELD);
@@ -140,9 +139,9 @@ public class CassandraLasthandPersister extends AbstractCassandraPersister<Strin
     }
 
     public Map<Long, String> getRealModeLasthands(long accountId) {
-        Select select = getSelectColumnsQuery(REAL_TABLE, LASTHAND_DATA_FIELD, GAME_ID_FIELD).
-                where().and(eq(ACCOUNT_ID_FIELD, accountId)).limit(10000);
-        ResultSet rows = execute(select, "get from REAL");
+        Statement query = getSelectColumnsQuery(REAL_TABLE, LASTHAND_DATA_FIELD, GAME_ID_FIELD)
+                .where().and(eq(ACCOUNT_ID_FIELD, accountId)).limit(10000);
+        ResultSet rows = execute(query, "get from REAL");
         Map<Long, String> result = new HashMap<>();
         for (Row row : rows) {
             String lasthand = row.getString(LASTHAND_DATA_FIELD);
@@ -156,23 +155,23 @@ public class CassandraLasthandPersister extends AbstractCassandraPersister<Strin
 
     public String get(long accountId, long gameId, Long bonusId, BonusSystemType bonusSystemType) {
         if (bonusSystemType == null) {
-            Select select = getSelectColumnsQuery(REAL_TABLE, LASTHAND_DATA_FIELD).
-                    where().
-                    and(eq(ACCOUNT_ID_FIELD, accountId)).
-                    and(eq(GAME_ID_FIELD, gameId)).
-                    limit(1);
-            Row row = execute(select, "get from REAL").one();
+            Statement query = getSelectColumnsQuery(REAL_TABLE, LASTHAND_DATA_FIELD)
+                    .where()
+                    .and(eq(ACCOUNT_ID_FIELD, accountId))
+                    .and(eq(GAME_ID_FIELD, gameId))
+                    .limit(1);
+            Row row = execute(query, "get from REAL").one();
             return row == null ? null : row.getString(LASTHAND_DATA_FIELD);
         }
         assert bonusId != null : "BonusId is null for bonusSystemType=" + bonusSystemType;
-        Select select = getSelectColumnsQuery(BONUS_TABLE, LASTHAND_DATA_FIELD).
-                where().
-                and(eq(ACCOUNT_ID_FIELD, accountId)).
-                and(eq(BONUS_TYPE_FIELD, bonusSystemType.ordinal())).
-                and(eq(BONUS_ID_FIELD, bonusId)).
-                and(eq(GAME_ID_FIELD, gameId)).
-                limit(1);
-        Row row = execute(select, "get from BONUS").one();
+        Statement query = getSelectColumnsQuery(BONUS_TABLE, LASTHAND_DATA_FIELD)
+                .where()
+                .and(eq(ACCOUNT_ID_FIELD, accountId))
+                .and(eq(BONUS_TYPE_FIELD, bonusSystemType.ordinal()))
+                .and(eq(BONUS_ID_FIELD, bonusId))
+                .and(eq(GAME_ID_FIELD, gameId))
+                .limit(1);
+        Row row = execute(query, "get from BONUS").one();
         return row == null ? null : row.getString(LASTHAND_DATA_FIELD);
     }
 

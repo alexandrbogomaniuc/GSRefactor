@@ -452,3 +452,25 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
 - Inventory after Wave 26:
   - GS `driver3_import_lines`: `434 -> 434` (no net change)
   - MP `driver3_import_lines`: `151` (no change)
+
+## 2026-02-25 22:15 UTC
+- Implemented CASS-V4 Wave 27 in higher-impact common-persister hotspots:
+  - `CassandraTrackingInfoPersister`
+  - `CassandraLasthandPersister`
+  - `CassandraMassAwardPersister`
+- Replaced typed `Select` / `Insert` / `Delete` declarations with generic `Statement` flow and removed `Select.Selection` typed temporary assembly in tracking queries.
+- Validation: PASS
+  - `common-persisters` install
+  - cache test suite (`63` tests)
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221415/c4-wave27-tracking-lasthand-massaward-statement-flow-20260225-221415.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221415/c4-wave27-build-common-persisters-20260225-221415.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221415/c4-wave27-unit-tests-20260225-221415.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221415/c4-wave27-build-web-gs-20260225-221415.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221415/c4-wave27-build-mp-stack-20260225-221415.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221415/phase7-cassandra-driver-inventory-20260225-221506.txt`
+- Inventory delta after Wave 27:
+  - GS `driver3_import_lines`: `434 -> 430` (`-4`)
+  - MP `driver3_import_lines`: `151` (no change)
