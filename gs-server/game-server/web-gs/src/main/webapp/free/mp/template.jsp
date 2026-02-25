@@ -146,6 +146,8 @@
             window.addEventListener("load", onGameEnvReady);
         }
 
+        ensureLegacyLobbyQueryParams();
+
         var l_xhr = new XMLHttpRequest();
         l_xhr.open('GET', '<%=templateJsPath%>/version.json?t=' + (new Date().getTime()), true);
         l_xhr.onload = function () {
@@ -158,6 +160,40 @@
             var lPlatformInfo_obj = window.getPlatformInfo ? window.getPlatformInfo() : {};
             if (lPlatformInfo_obj.supported) {
                 loadScript('<%=templateJsPath%>/game.js', version);
+            }
+        }
+
+        function ensureLegacyLobbyQueryParams() {
+            try {
+                if (!window.history || !window.history.replaceState || !window.URLSearchParams) {
+                    return;
+                }
+
+                var queryParams = new URLSearchParams(window.location.search || '');
+                setIfMissing(queryParams, 'BANKID', '<%=bankId%>');
+                setIfMissing(queryParams, 'SID', '<%=sessionId%>');
+                setIfMissing(queryParams, 'GAMEID', '<%=gameId%>');
+                setIfMissing(queryParams, 'MODE', '<%=request.getParameter(BaseAction.GAMEMODE_ATTRIBUTE)%>');
+                setIfMissing(queryParams, 'LANG', '<%=request.getParameter(BaseAction.LANG_ID_ATTRIBUTE)%>');
+                setIfMissing(queryParams, 'GAMESERVERID', '<%=request.getParameter(BaseAction.GAMESERVERID_ATTRIBUTE)%>');
+                setIfMissing(queryParams, 'WEB_SOCKET_URL', '<%=request.getParameter(BaseAction.WEB_SOCKET_URL)%>');
+
+                var normalizedQuery = queryParams.toString();
+                var currentUrl = window.location.pathname + window.location.search + window.location.hash;
+                var targetUrl = window.location.pathname + (normalizedQuery ? ('?' + normalizedQuery) : '') + window.location.hash;
+                if (targetUrl !== currentUrl) {
+                    window.history.replaceState(null, '', targetUrl);
+                }
+            } catch (e) {
+                if (window.console && window.console.warn) {
+                    window.console.warn('Failed to normalize lobby URL params', e);
+                }
+            }
+        }
+
+        function setIfMissing(params, key, value) {
+            if (value !== null && value !== undefined && value !== '' && value !== 'null' && !params.has(key)) {
+                params.set(key, value);
             }
         }
 
@@ -181,7 +217,15 @@
             'lang': '<%=request.getParameter(BaseAction.LANG_ID_ATTRIBUTE)%>',
             'mode': '<%=request.getParameter(BaseAction.GAMEMODE_ATTRIBUTE)%>',
             'websocket': '<%=request.getParameter(BaseAction.WEB_SOCKET_URL)%>',
+            'WEB_SOCKET_URL': '<%=request.getParameter(BaseAction.WEB_SOCKET_URL)%>',
+            'LOBBY_WEB_SOCKET': '<%=request.getParameter(BaseAction.WEB_SOCKET_URL)%>',
             'serverId': '<%=request.getParameter(BaseAction.GAMESERVERID_ATTRIBUTE)%>',
+            'GAMESERVERID': '<%=request.getParameter(BaseAction.GAMESERVERID_ATTRIBUTE)%>',
+            'SID': '<%=sessionId%>',
+            'BANKID': '<%=bankId%>',
+            'GAMEID': '<%=gameId%>',
+            'MODE': '<%=request.getParameter(BaseAction.GAMEMODE_ATTRIBUTE)%>',
+            'LANG': '<%=request.getParameter(BaseAction.LANG_ID_ATTRIBUTE)%>',
             <% if(tripleMaxBlast) { %>'isTripleMaxBlast': 'true', <% } %>
             'JS_HOME': 'openHome',
             'CUSTOMER_SETTINGS_URL': '<%=lobbyUrl%><%=bankInfo.getCustomerSettingsUrl()%>',

@@ -136,7 +136,7 @@ public class CassandraStateMonitoringTask extends CheckTask {
             long usedSpaceInMb = getUsedSpace(mbsc);
             return new HostMetrics(hostAddress, pendingFlushOps, pendingCompactionOps, opMode, usedSpaceInMb);
         } catch (IOException e) {
-            LOG.error("Failed to connect to cassandra's jmx server", e);
+            LOG.debug("Failed to connect to cassandra JMX host {} (JMX may be disabled): {}", hostAddress, e.getMessage());
         } finally {
             if (jmxConnection != null) {
                 try {

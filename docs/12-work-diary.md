@@ -5172,3 +5172,20 @@
   - `docs/release-readiness/nonprod-full-implementation-test-completion-20260225-194300.md`
 - Result: from engineering/testing perspective, non-prod implementation and validation are complete.
 - Next step: commit/push this completion package and save memory.
+
+### 2026-02-25 19:58 UTC
+- Investigated launch failure for `http://127.0.0.1:18080/startgame?...` where lobby websocket resolved to `ws://127.0.0.1:18080/undefined`.
+- Root cause: lobby client reads critical params from URL query (`WEB_SOCKET_URL`, `SID`, `GAMESERVERID`, etc.), while `/startgame` wrapper only exposed lower-case `getParams()` fields.
+- Implemented compatibility fix in source templates and live runtime templates:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp`
+  - synced to runtime copies under `/Users/alexb/Documents/Dev/Dev_new/Doker/runtime-gs/webapps/gs/ROOT/...`
+- Added URL normalization helper (`ensureLegacyLobbyQueryParams`) and alias keys in `getParams()` (`WEB_SOCKET_URL`, `LOBBY_WEB_SOCKET`, `SID`, `GAMESERVERID`, `BANKID`, `GAMEID`, `MODE`, `LANG`) with no hardcoded host values.
+- Verified in browser MCP: plain `/startgame` now auto-augments query params and reaches `MAX DUEL` iframe; no `ws://.../undefined` console errors.
+- Addressed Cassandra JMX noise safely (without disabling logging globally):
+  - Patched only diagnosis task connection-failure logging to low-noise message (no stack trace) in:
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/system/diagnosis/tasks/CassandraStateCheckTask.java`
+    - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/system/diagnosis/tasks/CassandraStateMonitoringTask.java`
+  - Hot-compiled those two classes against runtime classpath and replaced runtime class files.
+  - Restarted `refactor-gs-1`; latest logs show debug-only JMX refusal message for `c1-refactor` without full stack trace spam.
+- Next: commit/push this fix set and continue package/name migration wave (`com.dgphoenix` -> `com.abs`) as a controlled compatibility migration.
