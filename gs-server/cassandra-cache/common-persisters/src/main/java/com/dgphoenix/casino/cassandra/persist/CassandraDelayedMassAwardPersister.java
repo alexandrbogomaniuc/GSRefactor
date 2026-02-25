@@ -3,8 +3,7 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -56,8 +55,8 @@ public class CassandraDelayedMassAwardPersister extends AbstractCassandraPersist
     public Collection<DelayedMassAward> getUncompleted(int gameServerId) {
         long now = System.currentTimeMillis();
         List<DelayedMassAward> result = new ArrayList<>();
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where().and(eq(GS_ID_FIELD, gameServerId));
+        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(GS_ID_FIELD, gameServerId));
         ResultSet resultSet = execute(query, "getUncompleted");
         for (Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
@@ -79,12 +78,11 @@ public class CassandraDelayedMassAwardPersister extends AbstractCassandraPersist
         String json = TABLE.serializeToJson(award);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(award);
         try {
-            Insert query =
-                    getInsertQuery().
-                            value(KEY, award.getId()).
-                            value(GS_ID_FIELD, gameServerId).
-                            value(SERIALIZED_COLUMN_NAME, byteBuffer).
-                            value(JSON_COLUMN_NAME, json);
+            Statement query = getInsertQuery()
+                    .value(KEY, award.getId())
+                    .value(GS_ID_FIELD, gameServerId)
+                    .value(SERIALIZED_COLUMN_NAME, byteBuffer)
+                    .value(JSON_COLUMN_NAME, json);
             ResultSet resultSet = execute(query, "create");
             if (!resultSet.wasApplied()) {
                 getLog().error("DelayedMassAward not created: {}", award);
