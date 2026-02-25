@@ -334,8 +334,10 @@
             'JS_HISTORY': 'openHistory',
             'JS_HOME': 'openHome',
             'MQ_HELP_PATH': '<%=lobbyUrl%>/flash/shell/global_shell/rules/aams/',
-            <% if (offset != null) { %> 'MQ_TIMER_OFFSET': '<%=offset%>', <% } %>
+            'ABS_HELP_PATH': '<%=lobbyUrl%>/flash/shell/global_shell/rules/aams/',
+            <% if (offset != null) { %> 'MQ_TIMER_OFFSET': '<%=offset%>', 'ABS_TIMER_OFFSET': '<%=offset%>', <% } %>
             'MQ_TIMER_FREQ': '15', // in sec
+            'ABS_TIMER_FREQ': '15',
             <% if (GameServerConfiguration.getInstance().isTestSystem()) { %> 'TEST_SYSTEM': true, <% } %>
             'JS_CLOSE_ERROR_FUNC_NAME': 'openFatalError',
             'CUSTOMER_SETTINGS_URL': '<%=lobbyUrl%><%=bankInfo.getCustomerSettingsUrl()%>',
@@ -348,6 +350,7 @@
             'MQ_WEAPONS_MODE': '<%=bankInfo.getMaxQuestWeaponMode().name()%>',
             'ABS_WEAPONS_MODE': '<%=bankInfo.getMaxQuestWeaponMode().name()%>',
             'MQ_WEAPONS_SAVING_ALLOWED': '<%=bankInfo.isRoundWinsWithoutBetsAllowed()%>',
+            'ABS_WEAPONS_SAVING_ALLOWED': '<%=bankInfo.isRoundWinsWithoutBetsAllowed()%>',
             <% if (bonusId != null) { %>'bonusId': '<%=bonusId%>', <% } %>
             <% if (tournamentId != null) { %> 'tournamentId': '<%=tournamentId%>', <% } %>
             'MQ_CLIENT_ERROR_HANDLING': <%=GameServerConfiguration.getInstance().isTestSystem()%>,
@@ -355,12 +358,15 @@
             'DISABLE_MQ_BACKGROUND_LOADING': '<%=bankInfo.isMQBackgroundLoadingDisabled()%>',
             'DISABLE_ABS_BACKGROUND_LOADING': '<%=bankInfo.isMQBackgroundLoadingDisabled()%>',
             'DISABLE_MQ_AUTOFIRING': '<%=false%>',
+            'DISABLE_ABS_AUTOFIRING': '<%=false%>',
             'ROOMS_SORT_ORDER': '<%=bankInfo.getMQRoomsSortOrder()%>',
+            'ABS_ROOMS_SORT_ORDER': '<%=bankInfo.getMQRoomsSortOrder()%>',
             'CW_SEND_REAL_BET_WIN': '<%=bankInfo.isCWSendRealBetWin()%>',
             'commonPathForActionGames': '<%=lobbyUrl%>/html5pc/actiongames/common/',
             'isBattleGroundGame': '<%=baseGameInfoTemplate.isBattleGroundsMultiplayerGame()%>',
             'JS_MQB_HOME': 'openMQBLobby',
-            'CLIENT_LOG_LEVEL': '<%=bankInfo.getMQClientLogLevel().name()%>'
+            'CLIENT_LOG_LEVEL': '<%=bankInfo.getMQClientLogLevel().name()%>',
+            'ABS_CLIENT_LOG_LEVEL': '<%=bankInfo.getMQClientLogLevel().name()%>'
         };
     }
 

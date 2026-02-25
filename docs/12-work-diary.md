@@ -5207,3 +5207,14 @@
 - New files: `01-cassandra-v4-driver-migration/ACTIVITY-LOG.md`, `02-runtime-renaming-refactor/ACTIVITY-LOG.md`, `post-project-audit/ACTIVITY-LOG.md`, `new-games/ACTIVITY-LOG.md`, `casino-manager/ACTIVITY-LOG.md`.
 - Result: each project folder now has a local execution/activity trace anchor for ongoing updates.
 - Next step: continue updating these logs on each project-specific work wave.
+### 2026-02-25 20:24-20:26 UTC
+- Continued two-track closure and completed/tested one project wave in `Dev_new`: Runtime renaming project RN5 compatibility wave.
+- Implemented dual-key compatibility for remaining GS/MP template contract surfaces (`MQ_*` + `ABS_*`) and GS payload weapon mode alias write.
+- Updated support template property editor with alias options (`ABS_STAKES_RESERVE`, `ABS_STAKES_LIMIT`, `ABS_AWARD_PLAYER_START_BONUS`).
+- Ran and passed targeted validation:
+  - `BankInfoAliasCompatibilityTest` (15/15)
+  - `ReflectionUtilsCompatibilityTest` (3/3)
+  - `common-gs` build success
+  - `web-gs` build success
+  - `/startgame` runtime smoke HTTP 200 (`bankId=6275`, `subCasinoId=507`, `gameId=838`)
+- Saved evidence pack: `docs/projects/02-runtime-renaming-refactor/evidence/20260225-202452/` and marked RN5 complete in `docs/phase9/runtime-naming-cleanup/README.md`.

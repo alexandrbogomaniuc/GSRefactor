@@ -1,0 +1,17 @@
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:233:            'ABS_HELP_PATH': '<%=lobbyUrl%>/flash/shell/global_shell/rules/aams/',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:234:            <% if (offset != null) { %>'MQ_TIMER_OFFSET': '<%=offset%>', 'ABS_TIMER_OFFSET': '<%=offset%>', <% } %>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:236:            'ABS_TIMER_FREQ': '15',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:239:            'ABS_WEAPONS_MODE': '<%=bankInfo.getMaxQuestWeaponMode().name()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:241:            'ABS_WEAPONS_SAVING_ALLOWED': '<%=bankInfo.isRoundWinsWithoutBetsAllowed()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:247:            'DISABLE_ABS_AUTOFIRING': '<%=false%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:251:            'ABS_ROOMS_SORT_ORDER': '<%=bankInfo.getMQRoomsSortOrder()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:253:            'ABS_CLIENT_LOG_LEVEL': '<%=bankInfo.getMQClientLogLevel().name()%>'
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:337:            'ABS_HELP_PATH': '<%=lobbyUrl%>/flash/shell/global_shell/rules/aams/',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:338:            <% if (offset != null) { %> 'MQ_TIMER_OFFSET': '<%=offset%>', 'ABS_TIMER_OFFSET': '<%=offset%>', <% } %>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:340:            'ABS_TIMER_FREQ': '15',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:351:            'ABS_WEAPONS_MODE': '<%=bankInfo.getMaxQuestWeaponMode().name()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:353:            'ABS_WEAPONS_SAVING_ALLOWED': '<%=bankInfo.isRoundWinsWithoutBetsAllowed()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:361:            'DISABLE_ABS_AUTOFIRING': '<%=false%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:363:            'ABS_ROOMS_SORT_ORDER': '<%=bankInfo.getMQRoomsSortOrder()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:369:            'ABS_CLIENT_LOG_LEVEL': '<%=bankInfo.getMQClientLogLevel().name()%>'
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:361:                gameSettings.put("ABS_WEAPONS_MODE", weaponsMode);

@@ -32,4 +32,4 @@ Blind text replacement can break startup, wallet flow, launch flow, or multiplay
 - RN3 Wave A (GS reflection compatibility expansion): complete (`62df498e`)
 - RN3 Wave B (MP reflection compatibility expansion): complete (`d5776764`)
 - RN4 Wave A (class-string config key aliases in `BankInfo`): complete (`ad156b6c`)
-- RN5 Wave A/B (GS->MP `MQ_*` dual fields + MP fallback readers + template dual fields): in progress
+- RN5 Wave A/B (GS->MP `MQ_*` dual fields + MP fallback readers + template dual fields): complete (current wave, 2026-02-25)

@@ -1,0 +1,71 @@
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-runtime-naming-inventory.sh:44:  'phase9-abs-compatibility-map|reviewOnly|requiresWrapper|BLOCKED_ENV_INFRA_NAMES_AND_MQ_TOKEN' \
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-patch-plan-export.sh:5:MAP_FILE="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json"
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-patch-plan-export.sh:98:    reviewOnly: parts[3] === 'yes',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-patch-plan-export.sh:211:const reviewOnlyHits = [...rows.values()].filter(r => r.wave === wave && r.reviewOnly && r.lineHits > 0);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-patch-plan-export.sh:223:out.push(`- Review-only mappings with hits (excluded): ${reviewOnlyHits.length}`);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-patch-plan-export.sh:239:for (const r of reviewOnlyHits) {
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-patch-plan-export.sh:274:  reviewOnlyHits: reviewOnlyHits.length,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-patch-plan-export.sh:283:console.log(`review_only_hits=${reviewOnlyHits.length}`);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-execution-plan-smoke.sh:19:  "type":"phase9-abs-compatibility-map","version":1,"scope":"gs-server",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-execution-plan-smoke.sh:23:    {"legacy":"maxquest","replacement":"abs","replacementUpper":"ABS","category":"brand","defaultWave":"W0","reviewOnly":false},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-execution-plan-smoke.sh:24:    {"legacy":"mq","replacement":"abs","replacementUpper":"ABS","category":"token","defaultWave":"W0","reviewOnly":true}
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-compatibility-map-validate.sh:4:MAP_FILE="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json"
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-compatibility-map-validate.sh:33:if (data.type !== 'phase9-abs-compatibility-map') fail('type mismatch');
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-compatibility-map-validate.sh:40:let reviewOnlyCount = 0;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-compatibility-map-validate.sh:51:  if (m.reviewOnly === true) reviewOnlyCount += 1;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-compatibility-map-validate.sh:53:    if (m.reviewOnly !== true) fail('mq must be reviewOnly=true');
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-compatibility-map-validate.sh:58:if (reviewOnlyCount < 3) fail('expected at least 3 reviewOnly mappings');
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-compatibility-map-validate.sh:62:console.log(`reviewOnly=${reviewOnlyCount}`);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh:213:  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-compatibility-map-validate.sh' --help | sed -n '1,60p' && '${ROOT}/gs-server/deploy/scripts/phase9-abs-compatibility-map-smoke.sh' --help | sed -n '1,40p'"
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh:290:  bash -lc "'${ROOT}/gs-server/deploy/scripts/phase9-abs-compatibility-map-smoke.sh'"
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-execution-plan.sh:4:MAP_FILE="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json"
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-execution-plan.sh:71:    reviewOnly: parts[3] === 'yes',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-execution-plan.sh:119:const reviewOnlyHits = [...rows.values()].filter(r => r.wave === wave && r.reviewOnly && r.lineHits > 0);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-execution-plan.sh:130:out.push(`- Review-only blockers with hits (excluded): ${reviewOnlyHits.length}`);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-execution-plan.sh:152:for (const r of reviewOnlyHits) {
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-execution-plan.sh:168:console.log(`review_only_blockers=${reviewOnlyHits.length}`);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-compatibility-map-smoke.sh:4:MAP_FILE="${ROOT}/gs-server/deploy/config/phase9-abs-compatibility-map.json"
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-compatibility-map-smoke.sh:5:VALIDATOR="${ROOT}/gs-server/deploy/scripts/phase9-abs-compatibility-map-validate.sh"
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-compatibility-map-smoke.sh:27:if (legacy.get('mq').reviewOnly !== true) throw new Error('mq must be reviewOnly');
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace-smoke.sh:26:  "type":"phase9-abs-compatibility-map","version":1,"scope":"gs-server",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace-smoke.sh:30:    {"legacy":"maxquest","replacement":"abs","replacementUpper":"ABS","category":"brand","defaultWave":"W0","reviewOnly":false},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace-smoke.sh:31:    {"legacy":"nucleus","replacement":"abs","replacementUpper":"ABS","category":"brand","defaultWave":"W0","reviewOnly":false},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace-smoke.sh:32:    {"legacy":"mq","replacement":"abs","replacementUpper":"ABS","category":"token","defaultWave":"W0","reviewOnly":true}
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-diff-smoke.sh:30:  "type": "phase9-abs-compatibility-map",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-diff-smoke.sh:39:    {"legacy":"maxquest","replacement":"abs","replacementUpper":"ABS","category":"brand","defaultWave":"W0","reviewOnly":false},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-diff-smoke.sh:40:    {"legacy":"mq","replacement":"abs","replacementUpper":"ABS","category":"token","defaultWave":"W0","reviewOnly":true}
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-patch-plan-export-smoke.sh:31:  "type":"phase9-abs-compatibility-map","version":1,"scope":"gs-server",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-patch-plan-export-smoke.sh:35:    {"legacy":"maxquest","replacement":"abs","replacementUpper":"ABS","category":"brand","defaultWave":"W0","reviewOnly":false},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-patch-plan-export-smoke.sh:36:    {"legacy":"nucleus","replacement":"abs","replacementUpper":"ABS","category":"brand","defaultWave":"W0","reviewOnly":false},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-patch-plan-export-smoke.sh:37:    {"legacy":"mq","replacement":"abs","replacementUpper":"ABS","category":"token","defaultWave":"W0","reviewOnly":true}
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json:2:  "type": "phase9-abs-compatibility-map",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json:44:    {"legacy": "betsoft", "replacement": "abs", "replacementUpper": "ABS", "category": "brand", "defaultWave": "W0", "reviewOnly": false},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json:45:    {"legacy": "betsoft gaming", "replacement": "ABS", "replacementUpper": "ABS", "category": "brand", "defaultWave": "W0", "reviewOnly": false},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json:46:    {"legacy": "nucleus", "replacement": "abs", "replacementUpper": "ABS", "category": "brand", "defaultWave": "W0", "reviewOnly": false},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json:47:    {"legacy": "maxquest", "replacement": "abs", "replacementUpper": "ABS", "category": "brand", "defaultWave": "W0", "reviewOnly": false},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json:48:    {"legacy": "maxduel", "replacement": "abs", "replacementUpper": "ABS", "category": "brand", "defaultWave": "W0", "reviewOnly": false},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json:49:    {"legacy": "discreetgaming", "replacement": "abs", "replacementUpper": "ABS", "category": "brand", "defaultWave": "W0", "reviewOnly": false},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json:50:    {"legacy": "com.dgphoenix", "replacement": "com.abs", "replacementUpper": "com.abs", "category": "package", "defaultWave": "W3", "reviewOnly": true, "requiresWrapper": true},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json:51:    {"legacy": "dgphoenix", "replacement": "abs", "replacementUpper": "ABS", "category": "package", "defaultWave": "W3", "reviewOnly": true, "requiresWrapper": true},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json:52:    {"legacy": "mq", "replacement": "abs", "replacementUpper": "ABS", "category": "token", "defaultWave": "W0", "reviewOnly": true, "notes": ["High collision risk: only replace with explicit context filters."]}
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-w0-approval-artifact-generate-smoke.sh:29:  "type":"phase9-abs-compatibility-map","version":1,"scope":"gs-server",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-w0-approval-artifact-generate-smoke.sh:33:    {"legacy":"maxquest","replacement":"abs","replacementUpper":"ABS","category":"brand","defaultWave":"W0","reviewOnly":false},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-w0-approval-artifact-generate-smoke.sh:34:    {"legacy":"nucleus","replacement":"abs","replacementUpper":"ABS","category":"brand","defaultWave":"W0","reviewOnly":false},
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-w0-approval-artifact-generate-smoke.sh:35:    {"legacy":"mq","replacement":"abs","replacementUpper":"ABS","category":"token","defaultWave":"W0","reviewOnly":true}
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan.sh:5:MAP_FILE="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json"
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan.sh:93:if (map.type !== 'phase9-abs-compatibility-map') fail('invalid manifest type');
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan.sh:180:let reviewOnlyHits = 0;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan.sh:190:  const reviewOnly = m.reviewOnly === true;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan.sh:193:  if (stats.lineHits > 0 && reviewOnly) {
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan.sh:195:    reviewOnlyHits += 1;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan.sh:196:  } else if (stats.lineHits > 0 && !reviewOnly) {
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan.sh:235:reportLines.push(`- Review-only mappings with hits: ${reviewOnlyHits}`);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan.sh:242:  reportLines.push(`| \`${String(r.legacy).replace(/`/g,'')}\` | ${r.category} | ${r.defaultWave} | ${r.reviewOnly === true ? 'yes' : 'no'} | ${r.lineHits} | ${r.uniqueFiles} | ${r.disposition} |`);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan.sh:268:  reviewOnlyHits,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-wave-status-blocklist.json:98:        "reasonCode": "BLOCKED_ENV_INFRA_NAMES_AND_MQ_TOKEN",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-diff.sh:5:MAP_FILE="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json"
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-diff.sh:77:      category: parts[1], wave: parts[2], reviewOnly: parts[3],
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace.sh:5:MAP_FILE="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json"
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace.sh:110:if (manifest.type !== 'phase9-abs-compatibility-map') fail('invalid manifest type');
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace.sh:111:const reviewOnlySet = new Set((manifest.mappings || []).filter(m => m.reviewOnly === true).map(m => String(m.legacy).toLowerCase()));
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace.sh:150:    if (reviewOnlySet.has(m.legacy.toLowerCase())) {

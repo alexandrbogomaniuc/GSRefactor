@@ -1,0 +1,201 @@
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/events/process/MqEndRoundEventQualifier.java:23:        return SignificantEventType.MQ_END_ROUND;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PlayerIdentificationType.java:59:    MQ_NICK_NAME(false) {
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentObjective.java:104:    MQ_NETWORK_TOURNAMENT {
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentObjective.java:160:        mqEndRoundSignificantEvents = Collections.singleton(SignificantEventType.MQ_END_ROUND);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SignificantEventType.java:11:    MQ_END_ROUND,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/MqEndRoundEvent.java:56:        return SignificantEventType.MQ_END_ROUND;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkTournamentPromoTemplate.java:21:    private static final Set<TournamentObjective> ALLOWED_OBJECTIVES = Collections.singleton(TournamentObjective.MQ_NETWORK_TOURNAMENT);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkTournamentPromoTemplate.java:24:        super(TournamentObjective.MQ_NETWORK_TOURNAMENT, TournamentRankQualifier.SCORE_ONLY);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:327:                String stakesReserve = gameInfo.getProperty(BaseGameConstants.KEY_MQ_STAKES_RESERVE);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:328:                String stakesLimit = gameInfo.getProperty(BaseGameConstants.KEY_MQ_STAKES_LIMIT);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:330:                    gameSettings.put(BaseGameConstants.KEY_MQ_STAKES_RESERVE, stakesReserve);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:334:                    gameSettings.put(BaseGameConstants.KEY_MQ_STAKES_LIMIT, stakesLimit);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:339:                    gameSettings.put(BaseGameConstants.KEY_MQ_AWARD_PLAYER_START_BONUS, Boolean.TRUE.toString());
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:360:                gameSettings.put(BankInfo.KEY_MQ_WEAPONS_MODE, weaponsMode);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:4305:                                    significantEvents.contains(SignificantEventType.MQ_END_ROUND)) {
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:4322:                            if (member != null && identificationType == PlayerIdentificationType.MQ_NICK_NAME) {
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/dgphoenix/casino/common/cache/data/bank/BankInfoAliasCompatibilityTest.java:22:        bankInfo.setProperty(BankInfo.MQ_KEY_FRB_DEF_CHIPS, "7");
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotConfigInfo.java:21:  private static final org.apache.thrift.protocol.TField MQ_NICKNAME_FIELD_DESC = new org.apache.thrift.protocol.TField("mqNickname", org.apache.thrift.protocol.TType.STRING, (short)7);
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotConfigInfo.java:50:    MQ_NICKNAME((short)7, "mqNickname"),
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotConfigInfo.java:81:        case 7: // MQ_NICKNAME
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotConfigInfo.java:82:          return MQ_NICKNAME;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotConfigInfo.java:155:    tmpMap.put(_Fields.MQ_NICKNAME, new org.apache.thrift.meta_data.FieldMetaData("mqNickname", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotConfigInfo.java:628:    case MQ_NICKNAME:
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotConfigInfo.java:692:    case MQ_NICKNAME:
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotConfigInfo.java:731:    case MQ_NICKNAME:
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotConfigInfo.java:1214:          case 7: // MQ_NICKNAME
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotConfigInfo.java:1323:        oprot.writeFieldBegin(MQ_NICKNAME_FIELD_DESC);
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/MQThriftService.java:20894:    private static final org.apache.thrift.protocol.TField MQ_NICKNAME_FIELD_DESC = new org.apache.thrift.protocol.TField("mqNickname", org.apache.thrift.protocol.TType.STRING, (short)1);
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/MQThriftService.java:20903:      MQ_NICKNAME((short)1, "mqNickname");
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/MQThriftService.java:20918:          case 1: // MQ_NICKNAME
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/MQThriftService.java:20919:            return MQ_NICKNAME;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/MQThriftService.java:20965:      tmpMap.put(_Fields.MQ_NICKNAME, new org.apache.thrift.meta_data.FieldMetaData("mqNickname", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/MQThriftService.java:21027:      case MQ_NICKNAME:
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/MQThriftService.java:21041:      case MQ_NICKNAME:
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/MQThriftService.java:21056:      case MQ_NICKNAME:
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/MQThriftService.java:21191:            case 1: // MQ_NICKNAME
+/Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/MQThriftService.java:21216:          oprot.writeFieldBegin(MQ_NICKNAME_FIELD_DESC);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-runtime-naming-inventory.sh:12:MQ_OUT="$OUTPUT_DIR/${TS}-mq_refs.txt"
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-runtime-naming-inventory.sh:39:  'MQ_[A-Z0-9_]+|DISABLE_MQ|/MQ_|mqbase\.com' \
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-runtime-naming-inventory.sh:41:  "${TARGETS[@]}" > "$MQ_OUT" || true
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-runtime-naming-inventory.sh:44:  'phase9-abs-compatibility-map|reviewOnly|requiresWrapper|BLOCKED_ENV_INFRA_NAMES_AND_MQ_TOKEN' \
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-runtime-naming-inventory.sh:52:MQ_COUNT="$(wc -l < "$MQ_OUT" | tr -d ' ')"
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-runtime-naming-inventory.sh:58:  mq refs:    $MQ_OUT ($MQ_COUNT lines)
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/dblink/FreeGameCalculator.java:25:    public static final long DEFAULT_MQ_STAKES_RESERVE = 100;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/dblink/FreeGameCalculator.java:94:                String reserve = gameInfo.getProperty(BaseGameConstants.KEY_MQ_STAKES_RESERVE);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/dblink/FreeGameCalculator.java:99:                    stakesReserve = DEFAULT_MQ_STAKES_RESERVE;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/dblink/FreeGameCalculator.java:100:                    LOG.warn("Missing game option KEY_MQ_STAKES_RESERVE");
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:970:        String value = getProperty(BaseGameConstants.KEY_MQ_LB_CONTRIBUTION);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-wave-status-blocklist.json:98:        "reasonCode": "BLOCKED_ENV_INFRA_NAMES_AND_MQ_TOKEN",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase0-parity-harness.sh:186:run_case "P0-LA-01" "Launch" "GET" "$LAUNCH_URL" "" "$LAUNCH_REQUIRED" "template\\.jsp|sid=|web_socket_url|JS_CLOSE_ERROR_FUNC_NAME|MQ_CLIENT_ERROR_HANDLING|CLIENT_LOG_LEVEL" "bank is incorrect|casino is incorrect|invalid parameters|http error|404 not found|exception"
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase0-parity-harness.sh:192:run_case "P0-LA-03" "LaunchAlias" "GET" "$LAUNCH_ALIAS_URL" "" "$LAUNCH_REQUIRED" "template\\.jsp|sid=|web_socket_url|JS_CLOSE_ERROR_FUNC_NAME|MQ_CLIENT_ERROR_HANDLING|CLIENT_LOG_LEVEL" "bank is incorrect|casino is incorrect|invalid parameters|http error|404 not found|exception"
+/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/AbstractWebSocketHandler.java:150:                || host.endsWith(".mqbase.com")
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:231:    public static final String MQ_KEY_FRB_DEF_CHIPS = "MQ_FRB_DEF_CHIPS";
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:942:    public static final String KEY_MQ_PLAYER_START_BONUS_DISABLED = "MQ_PLAYER_START_BONUS_DISABLED";
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:998:    public static final String KEY_MQ_WEAPONS_MODE = "MQ_WEAPONS_MODE";
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:1004:    public static final String KEY_DISABLE_MQ_BACKGROUND_LOADING = "DISABLE_MQ_BACKGROUND_LOADING";
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:1007:    public static final String KEY_MQ_TOURNAMENT_REAL_MODE_URL = "MQ_TOURNAMENT_REAL_MODE_URL";
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:1043:    public static final String KEY_MQ_ROOMS_SORT_ORDER = "MQ_ROOMS_SORT_ORDER";
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:1101:    public static final String KEY_MQ_CLIENT_LOG_LEVEL = "MQ_CLIENT_LOG_LEVEL";
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:1139:    public static final Double MQ_BATTLEGROUND_RAKE_DEFAULT_PERCENT = 5.0;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:1907:        String chips = getStringPropertyWithAliases(MQ_KEY_FRB_DEF_CHIPS, KEY_ABS_FRB_DEF_CHIPS);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:2360:        return getEnumPropertyWithAliases(KEY_MQ_CLIENT_LOG_LEVEL, MaxQuestClientLogLevel.ERROR,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:2967:        sb.append(", ").append(KEY_MQ_WEAPONS_MODE).append("=").append(getMaxQuestWeaponMode());
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:2971:        sb.append(", ").append(KEY_MQ_CLIENT_LOG_LEVEL).append("=").append(getMQClientLogLevel());
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:3631:        return getBooleanPropertyWithAliases(KEY_MQ_PLAYER_START_BONUS_DISABLED, false,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:3660:        return getEnumPropertyWithAliases(KEY_MQ_WEAPONS_MODE, MaxQuestWeaponMode.LOOT_BOX,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:3669:        return getBooleanPropertyWithAliases(KEY_DISABLE_MQ_BACKGROUND_LOADING, false,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:3674:        return getStringPropertyWithAliases(KEY_MQ_TOURNAMENT_REAL_MODE_URL,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:3738:        String order = getStringPropertyWithAliases(KEY_MQ_ROOMS_SORT_ORDER, KEY_ABS_ROOMS_SORT_ORDER);
+/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/IMessageHandler.java:61:        Error errorMessage = createErrorMessage(ErrorCodes.MQ_SERVER_REBOOT, "Reboot error: " + e.getMessage(),
+/Users/alexb/Documents/Dev/Dev_new/mp-server/config/settings.xml:82:                <mpserver.domain>-mp.mqbase.com</mpserver.domain>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/freegame/FreeGameCalculatorTest.java:30:import static com.dgphoenix.casino.gs.managers.dblink.FreeGameCalculator.DEFAULT_MQ_STAKES_RESERVE;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/freegame/FreeGameCalculatorTest.java:157:                freeGameCalculator.getRoundBalance(maxCoinValue * DEFAULT_MQ_STAKES_RESERVE * serverFBMpProperty), freeBalance);
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/freegame/FreeGameCalculatorTest.java:169:        when(gameInfo.getProperty(BaseGameConstants.KEY_MQ_STAKES_RESERVE)).thenReturn(mqStakesReserveGameProperty);
+/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java:669:            String reserve = getGameSettingValue(gameSettings, BaseGameConstants.KEY_MQ_STAKES_RESERVE,
+/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java:688:            String limit = getGameSettingValue(gameSettings, BaseGameConstants.KEY_MQ_STAKES_LIMIT,
+/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java:791:            String startBonusSetting = getGameSettingValue(gameSettings, BaseGameConstants.KEY_MQ_AWARD_PLAYER_START_BONUS,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.ServerConfigsTemplateCache.xml:169:          <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:22:            <servlet>/MQ_Dragonstone.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:50:            <servlet>/MQ_BG_Dragonstone.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:78:            <servlet>/MQ_MissionAmazon.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:106:            <servlet>/MQ_BG_MissionAmazon.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:134:            <servlet>/MQ_SECTORX.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:162:            <servlet>/MQ_BG_SectorX.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:190:            <servlet>/MQ_MaxBlastChampions.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:218:            <servlet>/MQ_TripleMaxBlast.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:169:          <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BankInfoCache.xml:423:          <string>MQ_WEAPONS_MODE</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:22:            <servlet>/MQ_Dragonstone.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:50:            <servlet>/MQ_BG_Dragonstone.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:78:            <servlet>/MQ_MissionAmazon.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:106:            <servlet>/MQ_BG_MissionAmazon.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:134:            <servlet>/MQ_SECTORX.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:162:            <servlet>/MQ_BG_SectorX.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:190:            <servlet>/MQ_MaxBlastChampions.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:218:            <servlet>/MQ_TripleMaxBlast.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:183:          <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:394:          <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:605:                    <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:800:                    <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BankInfoCache.xml:480:          <string>MQ_WEAPONS_MODE</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BankInfoCache.xml:1172:          <string>MQ_WEAPONS_MODE</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:22:            <servlet>/MQ_Dragonstone.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:50:            <servlet>/MQ_BG_Dragonstone.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:78:            <servlet>/MQ_MissionAmazon.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:106:            <servlet>/MQ_BG_MissionAmazon.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:134:            <servlet>/MQ_SECTORX.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:162:            <servlet>/MQ_BG_SectorX.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:190:            <servlet>/MQ_MaxBlastChampions.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:218:            <servlet>/MQ_TripleMaxBlast.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:8:	  <host>games.mqbase.com</host>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:10:	  <gsDomain>.mqbase.com</gsDomain>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:60:	  <domain>.mqbase.com</domain>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:192:          <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:194:			<string>{clusters:{&#39;games-mp.mqbase.com&#39;: {&#39;1&#39;: {&#39;host&#39;: &#39;gs1&#39;, port: 6300}, &#39;2&#39;: {&#39;host&#39;: &#39;gs2&#39;, port: 6300}, &#39;3&#39;: {&#39;host&#39;: &#39;gs3&#39;, port: 6300}}}}</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:232:		  <string>games-mp.mqbase.com</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:254:      <host>games.mqbase.com</host>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:255:      <gsDomain>.mqbase.com</gsDomain>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:288:      <fromSupportEmail>support@report.mqbase.comm</fromSupportEmail>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:301:      <domain>.mqbase.com</domain>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:406:          <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:407:            <string>{clusters:{&#39;games-mp.mqbase.com&#39;: {&#39;1&#39;: {&#39;host&#39;: &#39;gs1&#39;, port: 6300}, &#39;2&#39;: {&#39;host&#39;: &#39;gs2&#39;, port: 6300}, &#39;3&#39;: {&#39;host&#39;: &#39;gs3&#39;, port: 6300}}}}</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:443:          <string>games-mp.mqbase.com</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:461:            <host>games.mqbase.com</host>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:462:            <gsDomain>.mqbase.com</gsDomain>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:508:            <domain>.mqbase.com</domain>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:617:                    <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:618:                    <string>{clusters:{&#39;games-mp.mqbase.com&#39;: {&#39;1&#39;: {&#39;host&#39;: &#39;gs1&#39;, port: 6300}, &#39;2&#39;: {&#39;host&#39;: &#39;gs2&#39;, port: 6300}, &#39;3&#39;: {&#39;host&#39;: &#39;gs3&#39;, port: 6300}}}}</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:650:                    <string>games-mp.mqbase.com</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:668:            <host>games.mqbase.com</host>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:669:            <gsDomain>.mqbase.com</gsDomain>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:715:            <domain>.mqbase.com</domain>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:812:                    <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:813:                    <string>{clusters:{&#39;games-mp.mqbase.com&#39;: {&#39;1&#39;: {&#39;host&#39;: &#39;gs1&#39;, port: 6300}, &#39;2&#39;: {&#39;host&#39;: &#39;gs2&#39;, port: 6300}, &#39;3&#39;: {&#39;host&#39;: &#39;gs3&#39;, port: 6300}}}}</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:841:                    <string>games-mp.mqbase.com</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:70:			  <string>https://wallet.mqbase.com/authenticate</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:74:			  <string>https://wallet.mqbase.com/balance</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:78:			  <string>https://wallet.mqbase.com/getFriends</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:82:			  <string>https://wallet.mqbase.com/updateRoomsPlayers</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:86:            <string>https://wallet.mqbase.com/updateStatusForPlayer</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:90:			  <string>https://wallet.mqbase.com/invitePlayersToPrivateRoom</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:94:			  <string>https://wallet.mqbase.com/getOnlineStatus</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:99:			  <string>https://wallet.mqbase.com/betResult</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:104:			  <string>https://wallet.mqbase.com/refundBet</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:109:			  <string>default.mqbase.com</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:198:		  <string>https://wallet.mqbase.com/setGameSessionSummary</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:210:		  <string>https://wallet.mqbase.com.com/privateRoomDeactivated</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:402:          <string>games-mp.mqbase.com</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:406:          <string>https://mqbase.com</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:410:          <string>https://mqbase.com/game_error</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:414:          <string>mqbase.com</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:529:          <string>MQ_WEAPONS_MODE</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:805:			  <string>https://wallet.mqbase.com/authenticate</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:809:			  <string>https://wallet.mqbase.com/balance</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:813:			  <string>https://wallet.mqbase.com/getFriends</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:817:			  <string>https://wallet.mqbase.com/updateRoomsPlayers</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:821:			  <string>https://wallet.mqbase.com/updateStatusForPlayer</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:825:			  <string>https://wallet.mqbase.com/invitePlayersToPrivateRoom</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:829:			  <string>https://wallet.mqbase.com/getOnlineStatus</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:834:			  <string>https://wallet.mqbase.com/betResult</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:839:			  <string>https://wallet.mqbase.com/refundBet</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:844:			  <string>default.mqbase.com</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:932:		  <string>https://wallet.mqbase.com/setGameSessionSummary</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:944:		  <string>https://wallet.mqbase.com.com/privateRoomDeactivated</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:1140:          <string>games-mp.mqbase.com</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:1144:          <string>https://mqbase.com</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:1148:          <string>https://mqbase.com/game_error</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:1152:          <string>mqbase.com</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:1271:          <string>MQ_WEAPONS_MODE</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.SubCasinoCache.xml:15:		  <string>default.mqbase.com</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.LoadBalancerCache.xml:8:			<host>games-mp.mqbase.com</host>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.LoadBalancerCache.xml:21:            <host>games-mp.mqbase.com</host>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.LoadBalancerCache.xml:34:            <host>games-mp.mqbase.com</host>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/StubApiClient.java:15:    private static final String MQ_PASS = "pass=";
+/Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/StubApiClient.java:34:                MQ_PASS + "XYCGX5" + "&" +
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/utils/ErrorCodes.java:57:    int MQ_SERVER_REBOOT = 1039;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameConstants.java:274:    public static final String KEY_MQ_STAKES_RESERVE = "MQ_STAKES_RESERVE";
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameConstants.java:279:    public static final String KEY_MQ_STAKES_LIMIT = "MQ_STAKES_LIMIT";
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameConstants.java:284:    public static final String KEY_MQ_LB_CONTRIBUTION = "MQ_LB_CONTRIBUTION";
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameConstants.java:287:    public static final String KEY_MQ_AWARD_PLAYER_START_BONUS = "MQ_AWARD_PLAYER_START_BONUS";
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:336:            'MQ_HELP_PATH': '<%=lobbyUrl%>/flash/shell/global_shell/rules/aams/',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:338:            <% if (offset != null) { %> 'MQ_TIMER_OFFSET': '<%=offset%>', 'ABS_TIMER_OFFSET': '<%=offset%>', <% } %>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:339:            'MQ_TIMER_FREQ': '15', // in sec
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:350:            'MQ_WEAPONS_MODE': '<%=bankInfo.getMaxQuestWeaponMode().name()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:352:            'MQ_WEAPONS_SAVING_ALLOWED': '<%=bankInfo.isRoundWinsWithoutBetsAllowed()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:356:            'MQ_CLIENT_ERROR_HANDLING': <%=GameServerConfiguration.getInstance().isTestSystem()%>,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:358:            'DISABLE_MQ_BACKGROUND_LOADING': '<%=bankInfo.isMQBackgroundLoadingDisabled()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:360:            'DISABLE_MQ_AUTOFIRING': '<%=false%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:232:            'MQ_HELP_PATH': '<%=lobbyUrl%>/flash/shell/global_shell/rules/aams/',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:234:            <% if (offset != null) { %>'MQ_TIMER_OFFSET': '<%=offset%>', 'ABS_TIMER_OFFSET': '<%=offset%>', <% } %>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:235:            'MQ_TIMER_FREQ': '15', // in sec,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:238:            'MQ_WEAPONS_MODE': '<%=bankInfo.getMaxQuestWeaponMode().name()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:240:            'MQ_WEAPONS_SAVING_ALLOWED': '<%=bankInfo.isRoundWinsWithoutBetsAllowed()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:242:            'MQ_CLIENT_ERROR_HANDLING': <%=GameServerConfiguration.getInstance().isTestSystem()%>,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:244:            'DISABLE_MQ_BACKGROUND_LOADING': '<%=bankInfo.isMQBackgroundLoadingDisabled()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:246:            'DISABLE_MQ_AUTOFIRING': '<%=false%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/games/829_step1_AddGameInfoTemplate.jsp:13:    String servletBaseName = "/MQ_RevengeRa";
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/EditTemplateProperty.jsp:102:            "MQ_STAKES_RESERVE",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/EditTemplateProperty.jsp:104:            "MQ_STAKES_LIMIT",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/EditTemplateProperty.jsp:106:            "MQ_LB_CONTRIBUTION",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/EditTemplateProperty.jsp:107:            "MQ_AWARD_PLAYER_START_BONUS",

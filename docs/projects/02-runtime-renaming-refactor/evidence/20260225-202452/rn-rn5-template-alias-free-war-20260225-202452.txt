@@ -1,0 +1,6 @@
+233:            'ABS_HELP_PATH': '<%=lobbyUrl%>/flash/shell/global_shell/rules/aams/',
+236:            'ABS_TIMER_FREQ': '15',
+241:            'ABS_WEAPONS_SAVING_ALLOWED': '<%=bankInfo.isRoundWinsWithoutBetsAllowed()%>',
+247:            'DISABLE_ABS_AUTOFIRING': '<%=false%>',
+251:            'ABS_ROOMS_SORT_ORDER': '<%=bankInfo.getMQRoomsSortOrder()%>',
+253:            'ABS_CLIENT_LOG_LEVEL': '<%=bankInfo.getMQClientLogLevel().name()%>'

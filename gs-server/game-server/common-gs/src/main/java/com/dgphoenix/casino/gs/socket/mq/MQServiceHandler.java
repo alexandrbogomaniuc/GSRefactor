@@ -356,7 +356,9 @@ public class MQServiceHandler {
                     }
                 }
                 gameSettings.put(BankInfo.KEY_CW_SEND_REAL_BET_WIN, Boolean.toString(bankInfo.isCWSendRealBetWin()));
-                gameSettings.put(BankInfo.KEY_MQ_WEAPONS_MODE, bankInfo.getMaxQuestWeaponMode().name());
+                String weaponsMode = bankInfo.getMaxQuestWeaponMode().name();
+                gameSettings.put(BankInfo.KEY_MQ_WEAPONS_MODE, weaponsMode);
+                gameSettings.put("ABS_WEAPONS_MODE", weaponsMode);
                 String value = bankInfo.isRoundWinsWithoutBetsAllowed() ? Boolean.TRUE.toString() : Boolean.FALSE.toString();
                 gameSettings.put(BankInfo.KEY_ROUND_WINS_WITHOUT_BETS_ALLOWED, value);
                 List<Long> coins = getCoins(bankInfo, gameId, playerCurrency);
