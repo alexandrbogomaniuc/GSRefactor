@@ -5371,3 +5371,17 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-unit-tests-20260225-213652.txt`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-build-web-gs-20260225-213652.txt`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-build-mp-stack-20260225-213652.txt`
+### 2026-02-25 21:40 UTC
+- Continued CASS-V4 and completed Wave 17 in `CassandraPaymentTransactionPersister` by converting typed `Select` query variables to generic `Statement` flow on read/query paths.
+- Kept existing conditional `Update` logic unchanged to avoid behavior risk.
+- Validation PASS:
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn -q -Dtest=KeySpaceManagerTest,CassandraPersistenceManagerTest,ClusterConfigDeserializationTest,KeyspaceConfigurationFactoryTest test` (`cache`)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -DskipTests -pl core-interfaces,core,persistance -am package` (`mp-server`)
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-payment-transaction-select-statement-flow-20260225-213926.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-build-common-persisters-20260225-213926.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-unit-tests-20260225-213926.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-build-web-gs-20260225-213926.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-build-mp-stack-20260225-213926.txt`

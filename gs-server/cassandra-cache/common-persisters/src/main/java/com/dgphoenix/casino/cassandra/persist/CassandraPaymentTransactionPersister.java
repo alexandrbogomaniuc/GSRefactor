@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.datastax.driver.core.querybuilder.Update;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -72,8 +71,8 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
     }
 
     private Update getUpdateStatement(PaymentTransaction transaction) {
-        Select query = getSelectColumnsQuery(TABLE, BUCKET_FIELD, START_DATE_FIELD);
-        query.where().and(eq(TRANSACTION_ID_FIELD, transaction.getId()));
+        Statement query = getSelectColumnsQuery(TABLE, BUCKET_FIELD, START_DATE_FIELD)
+                .where(eq(TRANSACTION_ID_FIELD, transaction.getId()));
         ResultSet resultSet = execute(query, "getUpdateStatement");
         Row stored = resultSet.one();
         int bucket;
@@ -118,8 +117,8 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
 
     public PaymentTransaction getTransaction(long transactionId) {
         getLog().debug("getTransaction: {}", transactionId);
-        Select select = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        select.where().and(eq(TRANSACTION_ID_FIELD, transactionId));
+        Statement select = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(TRANSACTION_ID_FIELD, transactionId));
         ResultSet resultSet = execute(select, "getTransaction");
         Row row = resultSet.one();
         if (row == null) {
@@ -139,8 +138,8 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
     public void loadAndProcess(long startRangeDate, long endRangeDate, PaymentTransactionProcessor processor) {
         int count = 0;
         for (int i = 0; i < RANDOM_FACTOR; i++) {
-            Select query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-            query.where().and(eq(BUCKET_FIELD, i))
+            Statement query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                    .where(eq(BUCKET_FIELD, i))
                     .and(QueryBuilder.gte(START_DATE_FIELD, startRangeDate))
                     .and(QueryBuilder.lte(START_DATE_FIELD, endRangeDate));
             ResultSet resultSet = execute(query, "loadAndProcess");
@@ -165,8 +164,8 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
         int count = 0;
         List<Long> transactionIds = new ArrayList<>();
         for (int i = 0; i < RANDOM_FACTOR; i++) {
-            Select query = getSelectColumnsQuery(TABLE, TRANSACTION_ID_FIELD);
-            query.where().and(eq(BUCKET_FIELD, i))
+            Statement query = getSelectColumnsQuery(TABLE, TRANSACTION_ID_FIELD)
+                    .where(eq(BUCKET_FIELD, i))
                     .and(QueryBuilder.gte(START_DATE_FIELD, startDate))
                     .and(QueryBuilder.lte(START_DATE_FIELD, endDate));
             ResultSet resultSet = execute(query, "getTransactionIdsByDateRange");
@@ -188,8 +187,8 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
             throw new RuntimeException("External transactionId is empty, transactionId=" + transaction.getId());
         }
         String extId = buildExtIdKey(bankId, transaction.getExternalTransactionId());
-        Select query = getSelectColumnsQuery(TABLE, BUCKET_FIELD, START_DATE_FIELD);
-        query.where().and(eq(TRANSACTION_ID_FIELD, transaction.getId()));
+        Statement query = getSelectColumnsQuery(TABLE, BUCKET_FIELD, START_DATE_FIELD)
+                .where(eq(TRANSACTION_ID_FIELD, transaction.getId()));
         ResultSet resultSet = execute(query, "getUpdateStatement");
         Row stored = resultSet.one();
         int bucket;
@@ -217,8 +216,8 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
 
     public PaymentTransaction getTransactionByExtId(long bankId, String extId) {
         String extKey = buildExtIdKey(bankId, extId);
-        Select query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where().and(eq(EXTERNAL_ID_FIELD, extKey));
+        Statement query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(EXTERNAL_ID_FIELD, extKey));
         ResultSet resultSet = execute(query, "getUncompletedTransactionIdByExtId");
         Row row = resultSet.one();
         if (row == null || row.isNull(SERIALIZED_COLUMN_NAME) || row.isNull(JSON_COLUMN_NAME)) {

@@ -247,3 +247,18 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-unit-tests-20260225-213652.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-build-web-gs-20260225-213652.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-build-mp-stack-20260225-213652.txt`
+
+## 2026-02-25 21:40 UTC
+- Implemented CASS-V4 Wave 17 in high-density `CassandraPaymentTransactionPersister` read/query paths.
+- Replaced typed `Select` query variables with generic `Statement` flow while preserving existing conditional `Update` behavior.
+- Validation: PASS
+  - `common-persisters` install
+  - cache targeted test suite
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-payment-transaction-select-statement-flow-20260225-213926.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-build-common-persisters-20260225-213926.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-unit-tests-20260225-213926.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-build-web-gs-20260225-213926.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213926/c4-wave17-build-mp-stack-20260225-213926.txt`
