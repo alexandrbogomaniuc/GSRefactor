@@ -5,26 +5,36 @@ It must be started with compose project name `refactor`.
 
 ## Start
 ```bash
-bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-start.sh
+node ./gs-server/deploy/scripts/refactor-onboard.mjs up
 ```
 
 ## Stop
 ```bash
-bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-stop.sh
+node ./gs-server/deploy/scripts/refactor-onboard.mjs down
 ```
 
 ## Refactor-only startup from `GSRefactor` (`Dev_new`) on another machine
 - You can start the refactor stack without legacy `gp3` containers.
-- `refactor-start.sh` can bootstrap missing runtime assets from sources inside `GSRefactor` (`gs-server`, `mp-server`, `legacy-games-client`) when `AUTO_BOOTSTRAP_RUNTIME=1` (default).
+- `refactor-onboard.mjs` is the cross-platform entrypoint.
+- It calls `refactor-start.sh` and can bootstrap missing runtime assets from sources inside `GSRefactor` (`gs-server`, `mp-server`, `legacy-games-client`) when `AUTO_BOOTSTRAP_RUNTIME=1` (default).
 - Prerequisites for bootstrap path:
   - Docker / Docker Compose plugin
   - Java + Maven
   - Node.js + npm
-  - `curl`, `rsync`, `unzip`
+  - `curl`, `unzip`
+  - `rsync` is optional (script falls back to slower copy mode)
 - Optional overrides:
   - `LEGACY_MP_TARGET_DIR=/absolute/path/to/mp-server/web/target` (defaults to `Dev_new/mp-server/web/target`)
   - `LEGACY_HTML5_GAMES="dragonstone"` (space-separated game folders to build/copy)
   - `AUTO_BOOTSTRAP_RUNTIME=0` (disable bootstrap and require preseeded runtime assets)
+
+## Cross-platform launcher commands (run from repo root)
+```bash
+node ./gs-server/deploy/scripts/refactor-onboard.mjs preflight
+node ./gs-server/deploy/scripts/refactor-onboard.mjs up
+node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
+node ./gs-server/deploy/scripts/refactor-onboard.mjs down
+```
 
 ## Launch URL (refactor static facade)
 - Correct alias URL is on refactor static nginx port `18080` (not plain `localhost:80`)
@@ -63,5 +73,5 @@ curl -sS http://127.0.0.1:18078/health
 ```
 
 ## Isolation policy
-- No mounts from `/Users/alexb/Documents/Dev` outside `/Users/alexb/Documents/Dev/Dev_new`.
+- No mounts from outside the `Dev_new` repository are required for the default refactor-only startup path.
 - No changes to existing compose files under `deploy/docker/configs`.

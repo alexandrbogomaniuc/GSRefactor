@@ -18,6 +18,16 @@ AUTO_BOOTSTRAP_RUNTIME="${AUTO_BOOTSTRAP_RUNTIME:-1}"
 log() { printf '[refactor-start] %s\n' "$*"; }
 die() { printf '[refactor-start] ERROR: %s\n' "$*" >&2; exit 1; }
 run() { log "$*"; "$@"; }
+usage() {
+  cat <<'EOF'
+Usage: refactor-start.sh [up|preflight|smoke]
+
+Commands:
+  up         Run preflight checks, start the refactor stack, and print quick checks (default)
+  preflight  Validate local prerequisites and runtime seed artifacts without starting containers
+  smoke      Run quick HTTP checks against a running refactor stack
+EOF
+}
 
 require_cmd() {
   command -v "$1" >/dev/null 2>&1 || die "Missing command: $1"
@@ -59,10 +69,21 @@ maybe_bootstrap_runtime() {
 preflight() {
   require_cmd docker
   require_cmd curl
-  maybe_bootstrap_runtime
   docker info >/dev/null 2>&1 || die "Docker daemon is not reachable"
   require_path "$COMPOSE_FILE"
   require_path "$SYNC_CLUSTER_HOSTS"
+  if [[ "$AUTO_BOOTSTRAP_RUNTIME" == "1" ]]; then
+    require_path "$BOOTSTRAP_RUNTIME"
+    log "Preflight ok: runtime assets will be auto-bootstrapped during 'up' if missing"
+  else
+    check_runtime_seed_paths
+    check_legacy_mp_artifacts
+    log "Preflight ok: using preseeded runtime assets (AUTO_BOOTSTRAP_RUNTIME=0)"
+  fi
+}
+
+ensure_runtime_assets() {
+  maybe_bootstrap_runtime
   check_runtime_seed_paths
   check_legacy_mp_artifacts
 }
@@ -87,11 +108,33 @@ start_stack() {
 
 post_checks() {
   log "Quick health checks"
+  curl -fsS http://127.0.0.1:18080/ >/dev/null && log "static facade ok" || log "static facade check failed"
   curl -fsS http://127.0.0.1:18072/health >/dev/null && log "config-service ok" || log "config-service check failed"
   curl -fsS http://127.0.0.1:18081 >/dev/null && log "gs http ok" || log "gs http check failed"
   log "Launch alias URL (refactor static facade): http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en"
 }
 
-preflight
-start_stack
-post_checks
+ACTION="${1:-up}"
+
+case "$ACTION" in
+  up)
+    preflight
+    ensure_runtime_assets
+    start_stack
+    post_checks
+    ;;
+  preflight)
+    preflight
+    log "Preflight passed."
+    ;;
+  smoke)
+    post_checks
+    ;;
+  -h|--help|help)
+    usage
+    ;;
+  *)
+    usage >&2
+    die "Unknown command: $ACTION"
+    ;;
+esac

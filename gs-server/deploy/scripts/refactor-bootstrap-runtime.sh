@@ -24,6 +24,35 @@ die() { printf '[refactor-bootstrap] ERROR: %s\n' "$*" >&2; exit 1; }
 run() { log "$*"; "$@"; }
 require_cmd() { command -v "$1" >/dev/null 2>&1 || die "Missing command: $1"; }
 require_path() { [[ -e "$1" ]] || die "Missing required path: $1"; }
+has_cmd() { command -v "$1" >/dev/null 2>&1; }
+
+copy_tree_contents() {
+  local src="$1"
+  local dst="$2"
+  mkdir -p "$dst"
+  if has_cmd rsync; then
+    run rsync -a "${src}/" "${dst}/"
+  else
+    log "rsync not found; using cp -R fallback for ${src} -> ${dst}"
+    rm -rf "${dst:?}/"*
+    cp -R "${src}/." "${dst}/"
+  fi
+}
+
+sync_tree_filtered() {
+  local src="$1"
+  local dst="$2"
+  shift 2
+  mkdir -p "$dst"
+  if has_cmd rsync; then
+    run rsync -a --delete "$@" "${src}/" "${dst}/"
+  else
+    log "rsync not found; using cp -R fallback (filtered sync not available) for ${src} -> ${dst}"
+    rm -rf "${dst:?}/"*
+    cp -R "${src}/." "${dst}/"
+    rm -rf "${dst}/node_modules" "${dst}/.git" "${dst}/.svn" "${dst}/_sources" "${dst}/asset_sources" "${dst}/ansible" || true
+  fi
+}
 
 ensure_base_dirs() {
   mkdir -p \
@@ -75,9 +104,8 @@ seed_default_configs() {
     log "Default configs already present: $DEFAULT_CONFIGS_DIR"
     return
   fi
-  require_cmd rsync
   log "Copying default configs from gs-server local-machine config"
-  rsync -a "$src"/ "$DEFAULT_CONFIGS_DIR"/
+  copy_tree_contents "$src" "$DEFAULT_CONFIGS_DIR"
 }
 
 build_mp_artifact_if_needed() {
@@ -122,12 +150,10 @@ build_legacy_html5_game() {
 sync_common_runtime_assets() {
   local dst="$RUNTIME_ROOT/html5pc/actiongames/common"
   mkdir -p "$dst"
-  require_cmd rsync
   # Runtime mostly needs assets + PIXI sources/build scripts; exclude node_modules.
-  rsync -a --delete \
+  sync_tree_filtered "$LEGACY_CLIENT_DIR/common" "$dst" \
     --exclude 'node_modules/' \
-    --exclude '.git/' \
-    "$LEGACY_CLIENT_DIR/common/" "$dst/"
+    --exclude '.git/'
 }
 
 sync_game_runtime_assets() {
@@ -135,16 +161,14 @@ sync_game_runtime_assets() {
   local src="$LEGACY_CLIENT_DIR/$game"
   local dst="$RUNTIME_ROOT/html5pc/actiongames/$game"
   mkdir -p "$dst"
-  require_cmd rsync
   # Copy game sources/build outputs but avoid node_modules and bulky authoring directories.
-  rsync -a --delete \
+  sync_tree_filtered "$src" "$dst" \
     --exclude 'node_modules/' \
     --exclude '.git/' \
     --exclude '.svn/' \
     --exclude '_sources/' \
     --exclude 'asset_sources/' \
-    --exclude 'ansible/' \
-    "$src/" "$dst/"
+    --exclude 'ansible/'
 }
 
 seed_html5pc_assets() {

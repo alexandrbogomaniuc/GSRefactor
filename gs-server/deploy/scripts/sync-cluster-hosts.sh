@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="/Users/alexb/Documents/Dev/Dev_new/gs-server"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 SOURCE_FILE="${ROOT_DIR}/deploy/config/cluster-hosts.properties"
 ENV_OUT="${ROOT_DIR}/deploy/docker/refactor/.cluster-hosts.env"
 COMPOSE_ENV_OUT="${ROOT_DIR}/deploy/docker/refactor/.env"

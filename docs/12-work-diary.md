@@ -4893,3 +4893,10 @@
 - Push attempt to `origin/main` failed again in this environment: `Could not resolve host: github.com`.
 - Result: Milestone 5 is complete locally; push remains pending network/DNS access.
 - Next step: wait for user approval before Milestone 6 (cross-platform portability & onboarding for refactor-only environment).
+### 2026-02-25 11:01-11:01 UTC
+- Continued Milestone 6 (cross-platform refactor onboarding) and completed the refactor-only portability/onboarding deliverables inside `GSRefactor`.
+- Added Node launcher `gs-server/deploy/scripts/refactor-onboard.mjs` with `preflight|up|down|smoke` commands, patched `refactor-start.sh` to support reusable subcommands and lightweight preflight, patched `sync-cluster-hosts.sh` to use dynamic repo-relative paths, and hardened `refactor-bootstrap-runtime.sh` with an `rsync`-optional fallback copy path.
+- Added plain-English onboarding guide `docs/README-ONBOARDING.md` and updated `gs-server/deploy/docker/refactor/README.md` to use repo-relative commands and the new Node launcher.
+- Validation: `bash -n` passed for refactor startup scripts; `node --check` passed for `refactor-onboard.mjs`; no hardcoded `/Users/alexb/Documents/Dev` paths remain in the new onboarding docs/launcher; `refactor-onboard.mjs preflight` now reaches Docker daemon check (fails in Codex sandbox with `Docker daemon is not reachable`), and `smoke` returns clear endpoint failures (`EPERM`) instead of path/script errors.
+- Result: Milestone 6 stop-condition implementation is complete in code/docs; runtime startup verification is blocked in this sandbox by Docker/local-network restrictions but produces actionable messages for a real machine.
+- Next step: commit Milestone 6 changes, attempt push, save memory, and wait for user approval before Milestone 7 finalization report.
