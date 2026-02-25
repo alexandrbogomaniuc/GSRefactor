@@ -5331,3 +5331,17 @@
 - Evidence:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212628/phase7-cassandra-driver-inventory-20260225-212638.txt`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212628/c4-wave13-inventory-delta-after-waves10-12-20260225-212628.md`
+### 2026-02-25 21:30 UTC
+- Continued CASS-V4 and completed Wave 14 statement-flow conversion for `CassandraNotificationPersister`, `CassandraPendingDataArchivePersister`, and `CassandraWalletOperationInfoPersister`.
+- First compile run failed on a missing `QueryBuilder` import in wallet-operation delete path; applied minimal import fix and reran full validation.
+- Validation PASS:
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn -q -Dtest=KeySpaceManagerTest,CassandraPersistenceManagerTest,ClusterConfigDeserializationTest,KeyspaceConfigurationFactoryTest test` (`cache`)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -DskipTests -pl core-interfaces,core,persistance -am package` (`mp-server`)
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-notification-wallet-pending-statement-flow-20260225-212908.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-build-common-persisters-20260225-212908.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-unit-tests-20260225-212908.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-build-web-gs-20260225-212908.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-build-mp-stack-20260225-212908.txt`

@@ -189,3 +189,23 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - overall from Wave 1 baseline `488` to `464` (`-24`).
 - Documented delta and next target in:
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212628/c4-wave13-inventory-delta-after-waves10-12-20260225-212628.md`
+
+## 2026-02-25 21:30 UTC
+- Implemented CASS-V4 Wave 14 in notification/pending-data/wallet-operation persister classes.
+- Switched typed querybuilder variables to generic `Statement` flow in:
+  - `CassandraNotificationPersister`
+  - `CassandraPendingDataArchivePersister`
+  - `CassandraWalletOperationInfoPersister`
+- Compile iteration note:
+  - first common-persisters build failed due missing `QueryBuilder` import in wallet-operation delete path; fixed by restoring only that import.
+- Validation: PASS
+  - `common-persisters` install
+  - cache targeted test suite
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-notification-wallet-pending-statement-flow-20260225-212908.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-build-common-persisters-20260225-212908.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-unit-tests-20260225-212908.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-build-web-gs-20260225-212908.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-212908/c4-wave14-build-mp-stack-20260225-212908.txt`

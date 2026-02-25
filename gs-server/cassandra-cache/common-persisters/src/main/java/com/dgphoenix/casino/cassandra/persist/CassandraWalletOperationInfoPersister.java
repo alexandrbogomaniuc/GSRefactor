@@ -3,9 +3,7 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Statement;
-import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -63,7 +61,7 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
         String json = TABLE.serializeToJson(info);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(info);
         try {
-            Insert query = getInsertQuery(ttl).
+            Statement query = getInsertQuery(ttl).
                     value(KEY, info.getId()).
                     value(DAY_FIELD, getDay(info.getEndTime())).
                     value(GAME_SESSION_ID_FIELD, info.getGameSessionId()).
@@ -86,8 +84,8 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
     }
 
     public List<WalletOperationInfo> getByRoundId(long roundId) {
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where(eq(ROUND_ID_FIELD, roundId));
+        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(ROUND_ID_FIELD, roundId));
         ResultSet resultSet = execute(query, "getByRoundId");
         if (resultSet.isExhausted()) {
             return emptyList();

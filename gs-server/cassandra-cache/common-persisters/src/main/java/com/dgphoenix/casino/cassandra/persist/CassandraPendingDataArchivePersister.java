@@ -3,9 +3,7 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -58,12 +56,12 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
         String json = PENDING_DATA_ARCHIVE_TABLE.serializeToJson(operation);
         ByteBuffer byteBuffer = PENDING_DATA_ARCHIVE_TABLE.serializeToBytes(operation);
         try {
-            Insert query = getInsertQuery();
-            query.value(ACCOUNT_ID_FIELD, operation.getAccountId());
-            query.value(DATA_NAME_FIELD, WALLET_DATA_NAME);
-            query.value(CREATION_TIME_FIELD, operation.getStartTime());
-            query.value(SERIALIZED_COLUMN_NAME, byteBuffer);
-            query.value(JSON_COLUMN_NAME, json);
+            Statement query = getInsertQuery()
+                    .value(ACCOUNT_ID_FIELD, operation.getAccountId())
+                    .value(DATA_NAME_FIELD, WALLET_DATA_NAME)
+                    .value(CREATION_TIME_FIELD, operation.getStartTime())
+                    .value(SERIALIZED_COLUMN_NAME, byteBuffer)
+                    .value(JSON_COLUMN_NAME, json);
             execute(query, "saveWalletOperation");
             LOG.debug("CommonWalletOperation={} was saved successfully", operation);
         } finally {
@@ -72,10 +70,9 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
     }
 
     public List<CommonWalletOperation> getWalletOperations(long accountId) {
-        Select query = getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        Select.Where where = query.where();
-        where.and(QueryBuilder.eq(ACCOUNT_ID_FIELD, accountId));
-        where.and(QueryBuilder.eq(DATA_NAME_FIELD, WALLET_DATA_NAME));
+        Statement query = getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(ACCOUNT_ID_FIELD, accountId))
+                .and(eq(DATA_NAME_FIELD, WALLET_DATA_NAME));
         ResultSet resultSet = execute(query, "getWalletOperations");
         List<CommonWalletOperation> result = new ArrayList<>(resultSet.getAvailableWithoutFetching());
         for (Row row : resultSet) {
@@ -95,12 +92,12 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
         String json = PENDING_DATA_ARCHIVE_TABLE.serializeToJson(operation);
         ByteBuffer byteBuffer = PENDING_DATA_ARCHIVE_TABLE.serializeToBytes(operation);
         try {
-            Insert query = getInsertQuery();
-            query.value(ACCOUNT_ID_FIELD, operation.getAccountId());
-            query.value(DATA_NAME_FIELD, FRB_WIN_DATA_NAME);
-            query.value(CREATION_TIME_FIELD, operation.getStartTime());
-            query.value(SERIALIZED_COLUMN_NAME, byteBuffer);
-            query.value(JSON_COLUMN_NAME, json);
+            Statement query = getInsertQuery()
+                    .value(ACCOUNT_ID_FIELD, operation.getAccountId())
+                    .value(DATA_NAME_FIELD, FRB_WIN_DATA_NAME)
+                    .value(CREATION_TIME_FIELD, operation.getStartTime())
+                    .value(SERIALIZED_COLUMN_NAME, byteBuffer)
+                    .value(JSON_COLUMN_NAME, json);
             execute(query, "saveFrbWinOperation");
             LOG.debug("FrbWinOperation={} was saved successfully", operation);
         } finally {
@@ -109,10 +106,9 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
     }
 
     public List<FRBWinOperation> getFrbWinOperations(long accountId) {
-        Select query = getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        Select.Where where = query.where();
-        where.and(QueryBuilder.eq(ACCOUNT_ID_FIELD, accountId));
-        where.and(QueryBuilder.eq(DATA_NAME_FIELD, FRB_WIN_DATA_NAME));
+        Statement query = getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(ACCOUNT_ID_FIELD, accountId))
+                .and(eq(DATA_NAME_FIELD, FRB_WIN_DATA_NAME));
         ResultSet resultSet = execute(query, "getFrbWinOperations");
         List<FRBWinOperation> result = new ArrayList<>(resultSet.getAvailableWithoutFetching());
         for (Row row : resultSet) {
