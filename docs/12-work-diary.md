@@ -4944,3 +4944,10 @@
 - Verified successful `/startgame` launches on the new subcasino for `gameId=838` and `gameId=829`; GS logs show requests routed as internal bank `6276` under `subCasinoId=508` with `non_multiplayer_game` / `isMultiplayer=false` evidence.
 - Evidence: /Users/alexb/Documents/Dev/Dev_new/docs/validation/internal-preprod/betonline-subcasino-bank-expansion-validation-20260225-171054.md, raw snippets under /Users/alexb/Documents/Dev/Dev_new/docs/validation/internal-preprod/.
 - Next step: commit/push internal pre-prod validation + simplified sign-off docs and save memory.
+### 2026-02-25 18:05-18:20 UTC
+- Follow-up bank-template hygiene pass requested by user: audited support-page settings for banks `6274`, `6275`, and `6276` and confirmed inherited third-party URLs (`wallet.mqbase.com`) must be disabled for local/internal banks.
+- Live support-page checks showed `6274` and `6275` still had six third-party URLs plus `mqbase.com` entries in `ALLOWED_ORIGIN` / `ALLOWED_DOMAINS`; applied the same sanitization used on `6276` (clear URL fields, disable related flags, remove third-party allow-list domains) and saved both banks.
+- Verified post-save support-page state for `6274` and `6275` shows `externalCount=0`, and reran `/startgame` smoke checks for `6274` (subcasino `507`), `6275` (subcasino `507`), and `6276` (subcasino `508` via external bank id `6274`) with all returning `HTTP 200`.
+- Added reusable template policy doc with explicit Singleplayer vs Multiplayer rules and mandatory disable list for third-party URLs/domains; added a dedicated sanitization evidence note documenting the cleanup pattern and verification.
+- Evidence: /Users/alexb/Documents/Dev/Dev_new/docs/Bank-Template-Singleplayer-vs-Multiplayer-Policy.md, /Users/alexb/Documents/Dev/Dev_new/docs/validation/internal-preprod/betonline-bank-6276-third-party-url-sanitization-20260225-180543.md, live support pages `/support/bankSelectAction.do?bankId=6274|6275|6276`.
+- Result: third-party internet URLs/domains are disabled on all current internal test banks (`6274`,`6275`,`6276`) while tested launches remain healthy; next step is commit/push docs and save memory.
