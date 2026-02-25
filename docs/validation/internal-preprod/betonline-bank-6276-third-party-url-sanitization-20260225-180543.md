@@ -86,3 +86,8 @@ These are not third-party internet URLs and were kept:
 ## Next Recommended Step
 - Use the new singleplayer/multiplayer template policy to avoid manual cleanup on every cloned bank.
 - Optional follow-up: automate the post-clone sanitization checklist in a safe support/admin workflow.
+
+## Follow-up completed (same session)
+A reusable audit/check script was added and used to verify banks `6274`, `6275`, and `6276` all pass the singleplayer template checks after cleanup:
+- `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/bank-template-audit.mjs`
+- `/Users/alexb/Documents/Dev/Dev_new/docs/validation/internal-preprod/bank-template-audit-singleplayer-pass-20260225-181607.md`

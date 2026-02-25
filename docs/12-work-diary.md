@@ -4951,3 +4951,9 @@
 - Added reusable template policy doc with explicit Singleplayer vs Multiplayer rules and mandatory disable list for third-party URLs/domains; added a dedicated sanitization evidence note documenting the cleanup pattern and verification.
 - Evidence: /Users/alexb/Documents/Dev/Dev_new/docs/Bank-Template-Singleplayer-vs-Multiplayer-Policy.md, /Users/alexb/Documents/Dev/Dev_new/docs/validation/internal-preprod/betonline-bank-6276-third-party-url-sanitization-20260225-180543.md, live support pages `/support/bankSelectAction.do?bankId=6274|6275|6276`.
 - Result: third-party internet URLs/domains are disabled on all current internal test banks (`6274`,`6275`,`6276`) while tested launches remain healthy; next step is commit/push docs and save memory.
+### 2026-02-25 18:15-18:20 UTC
+- Added a reusable bank-template audit script (`gs-server/deploy/scripts/bank-template-audit.mjs`) that fetches the GS support bank page and checks for third-party URLs/domains plus singleplayer-template violations (safe audit only, no writes).
+- Fixed one parser bug during first run: the script incorrectly treated comma-separated `ALLOWED_ORIGIN` as a single URL; patched it to exclude `ALLOWED_ORIGIN`/`ALLOWED_DOMAINS` from generic URL checks and use dedicated allow-list parsing.
+- Ran audit against banks `6274`, `6275`, `6276` in `singleplayer` mode and got overall `PASS`; saved JSON report and a short evidence note.
+- Evidence: /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/bank-template-audit.mjs, /Users/alexb/Documents/Dev/Dev_new/docs/validation/internal-preprod/bank-template-audit-singleplayer-20260225-181607.json, /Users/alexb/Documents/Dev/Dev_new/docs/validation/internal-preprod/bank-template-audit-singleplayer-pass-20260225-181607.md.
+- Next step: commit/push audit tool + docs and save memory.

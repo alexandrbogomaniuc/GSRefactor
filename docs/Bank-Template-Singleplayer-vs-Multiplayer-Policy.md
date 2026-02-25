@@ -47,6 +47,8 @@ Verification checklist (required)
 - `/startgame` launch returns `200`
 - GS logs show expected bank/subcasino routing
 - If testing a singleplayer game, confirm `isMultiplayer=false` in logs
+- Script audit passes:
+  - `node /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/bank-template-audit.mjs --bank-id <ids> --mode singleplayer`
 
 ### 2. Multiplayer Template (use only when needed)
 Use this when you are intentionally testing multiplayer/private-room/social features.
@@ -70,6 +72,7 @@ Important note:
 
 Sanitization evidence:
 - `/Users/alexb/Documents/Dev/Dev_new/docs/validation/internal-preprod/betonline-bank-6276-third-party-url-sanitization-20260225-180543.md`
+- `/Users/alexb/Documents/Dev/Dev_new/docs/validation/internal-preprod/bank-template-audit-singleplayer-pass-20260225-181607.md`
 
 ## Why names like `com.dgphoenix.*`, `MQ*`, and `mqbase.com` still appear in some places
 This is two different problems, and they should not be mixed:
