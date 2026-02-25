@@ -34,7 +34,7 @@ export class TopInventory {
         }
     }
 
-    public updateInventory(items: any[]) {
+    public updateInventory(_items: any[]) {
         // Logic to display collected items will go here
     }
 }
