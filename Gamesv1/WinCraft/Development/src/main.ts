@@ -17,8 +17,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
             <h1 id="win-type-text">BIG WIN!</h1>
             <h2 id="win-amount-text">$0.00</h2>
         </div>
-        
         <div id="pixi-container"></div>
+        <button class="btn-buy-bonus" id="btn-buy-bonus" title="Buy the Ender Bonus Feature">🛒 BUY BONUS</button>
     </div>
 
     <!-- BOTTOM: UNIFIED UI WRAPPER (SKINNABLE HUD) -->

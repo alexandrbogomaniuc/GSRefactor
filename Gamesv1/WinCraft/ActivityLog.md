@@ -12,4 +12,13 @@
 
 **Resolutions/Decisions:**
 - Decided to heavily modify the `mock-server.js` to output a 5x5 matrix and simulate cascade events to allow independent frontend development.
-- Documented the required PIXI.js modifications in the Implementation Plan.
+## [2026-02-25] Phase 3 In Progress
+**What was done:**
+- Set up PIXI application to standard 1920x1080 resolution in `UIManager.ts`.
+- Refactored `Reel.ts` into a cascading structure with 5 visible rows and symbol sprites.
+- Implemented `TopInventory.ts` representing the 3x5 collected items area above the reels.
+- Hardcoded `mock-server.js` math to output the required 5x5 randomized result grid.
+
+**Problems faced:**
+- Image Generator API exhausted its rate limit, leaving us without full high-quality sprite assets.
+- Resolved by using the two generated assets (`dirt.png`, `stone.png`) and retaining colored vector fallbacks for other symbols to allow PIXI integration testing to continue immediately.

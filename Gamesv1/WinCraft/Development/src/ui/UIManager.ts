@@ -1,11 +1,13 @@
 import * as PIXI from 'pixi.js';
 import { SlotEngine } from '../game/SlotEngine';
 import { Reel } from './Reel';
+import { TopInventory } from './TopInventory';
 
 export class UIManager {
     private app: PIXI.Application;
     private engine: SlotEngine;
     private reels: Reel[] = [];
+    private inventory!: TopInventory;
 
     // UI Elements
     private btnSpin!: HTMLButtonElement;
@@ -40,20 +42,31 @@ export class UIManager {
      */
     public async initPixi() {
         await this.app.init({
-            width: 800,
-            height: 600,
-            backgroundColor: 0x1099bb,
+            width: 1920,
+            height: 1080,
+            backgroundColor: 0x1a1a24,
             resolution: window.devicePixelRatio || 1,
             autoDensity: true
         });
 
-        // Append the new canvas object to the DOM (replaces deprecated app.view)
+        // Append the new canvas object to the DOM
         const container = document.getElementById('pixi-container');
         if (container) {
             container.appendChild(this.app.canvas);
         }
 
-        this.buildReels(3); // Default to a 3-reel slot layout initially
+        // Preload assets before building grids
+        try {
+            await PIXI.Assets.load(['/assets/dirt.png', '/assets/stone.png']);
+            console.log("[UIManager] Assets loaded successfully.");
+        } catch (e) {
+            console.warn("[UIManager] Missing some assets, falling back to colored shapes if necessary.");
+        }
+
+        this.inventory = new TopInventory(740, 20);
+        this.app.stage.addChild(this.inventory.container);
+
+        this.buildReels(5); // 5-reel cascading slot layout
 
         // Start Render Loop
         this.app.ticker.add((ticker) => {
@@ -130,11 +143,12 @@ export class UIManager {
         });
     }
 
-    private buildReels(cols: number = 3) {
+    private buildReels(cols: number = 5) {
         // Calculate offset to center the dynamic number of reels perfectly
-        const reelWidth = 120;
+        const reelWidth = 140;
         const totalWidth = cols * reelWidth;
-        const startX = (800 - totalWidth) / 2 + (reelWidth / 2);
+        // Center in 1920 width, add some vertical offset via the Reel constructor if needed
+        const startX = (1920 - totalWidth) / 2 + (reelWidth / 2);
 
         for (let i = 0; i < cols; i++) {
             const reel = new Reel(startX + (i * reelWidth));
