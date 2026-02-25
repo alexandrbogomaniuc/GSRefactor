@@ -122,3 +122,22 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - `querybuilder` import-type count from `176` to `172` (`-4`).
 - Documented delta and next target in:
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave9-inventory-delta-after-waves4-8-20260225-203312.md`
+
+## 2026-02-25 21:18 UTC
+- Implemented CASS-V4 Wave 10 in `common-persisters` hotspot classes.
+- Removed direct typed querybuilder imports (`Insert`, `Select`, `Update`) and used generic `Statement` flow in:
+  - `CassandraBonusArchivePersister`
+  - `CassandraFrBonusArchivePersister`
+  - `CassandraCurrentPlayerSessionStatePersister`
+- Fixed compile blocker in `CassandraTransactionDataPersister` by replacing removed `KeyspaceConfiguration.PROTOCOL_VERSION` usage with a local serialization constant (`ProtocolVersion.NEWEST_SUPPORTED`).
+- Validation: PASS
+  - `common-persisters` install
+  - cache targeted test suite
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-common-persisters-querybuilder-decoupling-20260225-203312.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-build-common-persisters-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-unit-tests-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-build-web-gs-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-build-mp-stack-20260225-203312.txt`

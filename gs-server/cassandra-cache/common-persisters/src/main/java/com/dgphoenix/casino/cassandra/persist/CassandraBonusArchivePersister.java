@@ -3,10 +3,8 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.querybuilder.Update;
+import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -86,8 +84,8 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
         ByteBuffer byteBuffer = BONUS_ARCHIVE_TABLE.serializeToBytes(bonus);
         String json = BONUS_ARCHIVE_TABLE.serializeToJson(bonus);
         try {
-            Insert archInsert = QueryBuilder.insertInto(BONUS_ARCH_CF);
-            archInsert.value(ACCOUNT_ID_FIELD, bonus.getAccountId()).
+            Statement archInsert = QueryBuilder.insertInto(BONUS_ARCH_CF)
+                    .value(ACCOUNT_ID_FIELD, bonus.getAccountId()).
                     value(AWARD_TIME_FIELD, bonus.getTimeAwarded()).
                     value(STATUS_FIELD, bonus.getStatus().ordinal()).
                     value(BONUS_ID_FIELD, bonus.getId()).
@@ -102,10 +100,10 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
     }
 
     public List<Bonus> getFinishedBonusList(Long accountId) {
-        Select select = QueryBuilder
+        Statement select = QueryBuilder
                 .select(BONUS_ID_FIELD, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .from(BONUS_ARCH_CF);
-        select.where(eq(ACCOUNT_ID_FIELD, accountId));
+                .from(BONUS_ARCH_CF)
+                .where(eq(ACCOUNT_ID_FIELD, accountId));
         ResultSet rows = execute(select, "getFinishedBonusList");
         return getBonusesFromResultSet(rows);
     }
@@ -124,8 +122,8 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
     public List<Bonus> getByCompositeKey(long bankId, String externalId) {
         long now = System.currentTimeMillis();
         String key = composeKey(bankId, externalId);
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where(eq(EXTERNAL_ID_FIELD, key));
+        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(EXTERNAL_ID_FIELD, key));
         ResultSet resultSet = execute(query, "getByCompositeKey");
         List<Bonus> result = getBonusesFromResultSet(resultSet);
         StatisticsManager.getInstance().updateRequestStatistics(getClass().getSimpleName() + " getByCompositeKey",
@@ -134,8 +132,8 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
     }
 
     public List<Bonus> getRecordsByDay(long date) {
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where(eq(PERSIST_DAY, date));
+        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(PERSIST_DAY, date));
         ResultSet resultSet = execute(query, "getRecordsByDay");
         return getBonusesFromResultSet(resultSet);
     }
@@ -159,7 +157,7 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
 
     @SuppressWarnings("Duplicates")
     public void setPersistDay() {
-        Select select = QueryBuilder.select()
+        Statement select = QueryBuilder.select()
                 .column(ACCOUNT_ID_FIELD)
                 .column(AWARD_TIME_FIELD)
                 .column(BONUS_ID_FIELD)
@@ -168,7 +166,6 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
                 .from(BONUS_ARCH_CF);
         ResultSet resultSet = execute(select, "setPersistDay");
 
-        Update update;
         long currentPersistTime = CalendarUtils.getStartDay(System.currentTimeMillis()).getTimeInMillis();
         Long awardTime;
         Long accountId;
@@ -181,13 +178,10 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
             bonusPersistTime = row.getLong(PERSIST_DAY);
 
             if (bonusPersistTime == 0) {
-                update = QueryBuilder.update(BONUS_ARCH_CF);
-                update
-                        .where()
-                        .and(eq(ACCOUNT_ID_FIELD, accountId))
+                Statement update = QueryBuilder.update(BONUS_ARCH_CF)
+                        .with(set(PERSIST_DAY, currentPersistTime))
+                        .where(eq(ACCOUNT_ID_FIELD, accountId))
                         .and(eq(AWARD_TIME_FIELD, awardTime));
-                update.with(set(PERSIST_DAY, currentPersistTime));
-
                 execute(update, "setPersistDay");
                 checkState(resultSet.wasApplied(), "Cannot set persist day value for bonusId={}", bonusId);
                 LOG.info("AwardTime: {}, Persisted date: {}, for bonusId={}, accountId={}",

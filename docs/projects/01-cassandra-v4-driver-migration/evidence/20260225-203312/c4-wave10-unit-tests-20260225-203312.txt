@@ -1,0 +1,17 @@
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.dgphoenix.casino.cassandra.config.ClusterConfigDeserializationTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.328 sec - in com.dgphoenix.casino.cassandra.config.ClusterConfigDeserializationTest
+Running com.dgphoenix.casino.cassandra.KeyspaceConfigurationFactoryTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.255 sec - in com.dgphoenix.casino.cassandra.KeyspaceConfigurationFactoryTest
+Running com.dgphoenix.casino.cassandra.CassandraPersistenceManagerTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.281 sec - in com.dgphoenix.casino.cassandra.CassandraPersistenceManagerTest
+Running com.dgphoenix.casino.cassandra.KeySpaceManagerTest
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.159 sec - in com.dgphoenix.casino.cassandra.KeySpaceManagerTest
+
+Results :
+
+Tests run: 22, Failures: 0, Errors: 0, Skipped: 0
+

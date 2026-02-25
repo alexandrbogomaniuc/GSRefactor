@@ -4,10 +4,7 @@ import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
-import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.querybuilder.Update;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -77,11 +74,10 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
     }
 
     public CassandraPlayerSessionState getBySid(String sid) {
-        Select query = getSelectAllColumnsQuery(getMainTableDefinition());
-        query.where()
-                .and(eq(SID_FIELD, sid))
-                .limit(1);
-        query.allowFiltering();
+        Statement query = getSelectAllColumnsQuery(getMainTableDefinition())
+                .where(eq(SID_FIELD, sid))
+                .limit(1)
+                .allowFiltering();
 
         getLog().debug("getBySid: sid={}, query={}", sid, query);
 
@@ -92,9 +88,8 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
 
     public CassandraPlayerSessionState getByExtId(String extId) {
 
-        Select query = getSelectAllColumnsQuery(getMainTableDefinition());
-        query.where()
-                .and(eq(KEY, extId))
+        Statement query = getSelectAllColumnsQuery(getMainTableDefinition())
+                .where(eq(KEY, extId))
                 .limit(1);
 
         getLog().debug("getByExtId: extId={}, query={}", extId, query);
@@ -168,12 +163,12 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
             getLog().debug("persist: currentCassandraPlayerSessionState is null, insert new record:{}",
                     cassandraPlayerSessionState);
 
-            Insert insertQuery = getInsertQuery();
-            insertQuery.value(KEY, cassandraPlayerSessionState.getExtId());
-            insertQuery.value(SID_FIELD, sid);
-            insertQuery.value(PRIVATE_ROOM_ID_FIELD, cassandraPlayerSessionState.getPrivateRoomId());
-            insertQuery.value(IS_FINISH_GAME_SESSION_FIELD, cassandraPlayerSessionState.isFinishGameSession());
-            insertQuery.value(DAY_TIME_FIELD, cassandraPlayerSessionState.getDayTime());
+            Statement insertQuery = getInsertQuery()
+                    .value(KEY, cassandraPlayerSessionState.getExtId())
+                    .value(SID_FIELD, sid)
+                    .value(PRIVATE_ROOM_ID_FIELD, cassandraPlayerSessionState.getPrivateRoomId())
+                    .value(IS_FINISH_GAME_SESSION_FIELD, cassandraPlayerSessionState.isFinishGameSession())
+                    .value(DAY_TIME_FIELD, cassandraPlayerSessionState.getDayTime());
 
             execute(insertQuery, "insert");
             getLog().info("insert: cassandraPlayerSessionState: {}", cassandraPlayerSessionState);
@@ -183,15 +178,12 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
             getLog().debug("persist: currentCassandraPlayerSessionState is not null, update existing record to:{}",
                     cassandraPlayerSessionState);
 
-            Update updateQuery = getUpdateQuery();
-
-            updateQuery.with()
-                    .and(QueryBuilder.set(SID_FIELD, cassandraPlayerSessionState.getSid()))
-                    .and(QueryBuilder.set(PRIVATE_ROOM_ID_FIELD, cassandraPlayerSessionState.getPrivateRoomId()))
-                    .and(QueryBuilder.set(IS_FINISH_GAME_SESSION_FIELD, cassandraPlayerSessionState.isFinishGameSession()))
-                    .and(QueryBuilder.set(DAY_TIME_FIELD, cassandraPlayerSessionState.getDayTime()));
-            updateQuery.where()
-                    .and(eq(KEY, currentCassandraPlayerSessionState.getExtId()));
+            Statement updateQuery = getUpdateQuery()
+                    .with(set(SID_FIELD, cassandraPlayerSessionState.getSid()))
+                    .and(set(PRIVATE_ROOM_ID_FIELD, cassandraPlayerSessionState.getPrivateRoomId()))
+                    .and(set(IS_FINISH_GAME_SESSION_FIELD, cassandraPlayerSessionState.isFinishGameSession()))
+                    .and(set(DAY_TIME_FIELD, cassandraPlayerSessionState.getDayTime()))
+                    .where(eq(KEY, currentCassandraPlayerSessionState.getExtId()));
 
             execute(updateQuery, "update");
             getLog().info("update: cassandraPlayerSessionState from: {} to: {}",

@@ -5278,3 +5278,18 @@
 - Fresh inventory confirms GS driver3 import lines decreased from `488` to `478` after waves 4-8.
 - Evidence recorded in `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave9-inventory-delta-after-waves4-8-20260225-203312.md` plus raw inventory report in the same folder.
 - Next step: commit/push Wave 9 and continue common-persisters hotspot conversion.
+### 2026-02-25 21:18 UTC
+- Continued CASS-V4 and completed Wave 10 common-persisters querybuilder decoupling.
+- Refactored `CassandraBonusArchivePersister`, `CassandraFrBonusArchivePersister`, and `CassandraCurrentPlayerSessionStatePersister` to use generic `Statement` flow instead of typed querybuilder imports (`Insert`/`Select`/`Update`).
+- Fixed compilation blocker in `CassandraTransactionDataPersister` by replacing removed `PROTOCOL_VERSION` reference with local `ProtocolVersion.NEWEST_SUPPORTED` serialization constant.
+- Validation PASS:
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn -q -Dtest=KeySpaceManagerTest,CassandraPersistenceManagerTest,ClusterConfigDeserializationTest,KeyspaceConfigurationFactoryTest test` (`cache`)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -DskipTests -pl core-interfaces,core,persistance -am package` (`mp-server`)
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-common-persisters-querybuilder-decoupling-20260225-203312.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-build-common-persisters-20260225-203312.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-unit-tests-20260225-203312.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-build-web-gs-20260225-203312.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave10-build-mp-stack-20260225-203312.txt`
