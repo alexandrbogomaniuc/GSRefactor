@@ -502,7 +502,7 @@
       ]
     }
   ],
-  "__embeddedSyncedAtUtc": "2026-02-25T09:56:12.578Z",
+  "__embeddedSyncedAtUtc": "2026-02-25T19:13:29.215Z",
   "__embeddedFingerprint": "6cde1ded15f4"
 }
   </script>
@@ -538,41 +538,25 @@
     "DLQ must remain zero during canary window.",
     "If trend turns rising for NEW/RETRY, trigger rollback decision gate."
   ],
-  "__embeddedSyncedAtUtc": "2026-02-25T09:56:12.578Z",
+  "__embeddedSyncedAtUtc": "2026-02-25T19:13:29.215Z",
   "__embeddedFingerprint": "aefd8b1510a3"
 }
   </script>
 
   <script id="embedded-deploy-readiness" type="application/json">
 {
-  "status": "NO_GO_CUTOVER_PENDING_VALIDATION",
+  "status": "GO_FOR_DEPLOY_AND_CANARY",
   "checklistCompletion": "41/41",
-  "phase4ProtocolStatus": "NO_GO_RUNTIME_FAILURE",
-  "phase56ExtractionStatus": "NO_GO_RUNTIME_FAILURE",
+  "phase4ProtocolStatus": "TESTED_GO_RUNTIME_PARITY_READY",
+  "phase56ExtractionStatus": "TESTED_GO_RUNTIME_READY",
   "phase7CassandraStatus": null,
   "phase7CassandraRehearsalNoGo": "NO",
   "legacyMixedTopologyStatus": "MANUAL_FULL_FLOW_PASS",
-  "securityHardeningStatus": "TESTED_NO_GO_DEPENDENCY_LOCK_AUDIT_PENDING",
-  "blockers": [
-    {
-      "id": "phase4_runtime_parity_go_missing",
-      "severity": "HIGH",
-      "state": "NO_GO_RUNTIME_FAILURE"
-    },
-    {
-      "id": "phase5_6_runtime_go_missing",
-      "severity": "HIGH",
-      "state": "NO_GO_RUNTIME_FAILURE"
-    },
-    {
-      "id": "security_dependency_audit_pending",
-      "severity": "HIGH",
-      "state": "TESTED_NO_GO_DEPENDENCY_LOCK_AUDIT_PENDING"
-    }
-  ],
-  "source": "/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md",
-  "__embeddedSyncedAtUtc": "2026-02-25T09:56:12.578Z",
-  "__embeddedFingerprint": "faefe56cfe6e"
+  "securityHardeningStatus": "TESTED_SECURITY_HARDENING_COMPLETE",
+  "blockers": [],
+  "source": "/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260225-191103.md",
+  "__embeddedSyncedAtUtc": "2026-02-25T19:13:29.215Z",
+  "__embeddedFingerprint": "0339dffeab2c"
 }
   </script>
 
@@ -2144,20 +2128,20 @@
       ]
     }
   ],
-  "__embeddedSyncedAtUtc": "2026-02-25T09:56:12.578Z",
+  "__embeddedSyncedAtUtc": "2026-02-25T19:13:29.215Z",
   "__embeddedFingerprint": "fe13386b1d69"
 }
   </script>
 
   <script id="embedded-audit-scope" type="application/json">
 {
-  "updatedAt": "2026-02-25T09:51:34Z",
+  "updatedAt": "2026-02-25T19:11:20Z",
   "coreScope": {
     "name": "Core GS Modernization",
     "plainEnglishSummary": "Modernize the Game Server without breaking existing integrations, then move toward a safer service-based architecture with staged rollout and rollback.",
     "deliveryChecklistCompletion": "41/41",
-    "cutoverReadiness": "NO_GO_CUTOVER_PENDING_VALIDATION",
-    "whatThisMeans": "Many planned deliverables were completed, but the system is still not approved for production cutover because runtime canary checks and security dependency audit work are still incomplete."
+    "cutoverReadiness": "GO_FOR_DEPLOY_AND_CANARY",
+    "whatThisMeans": "Core delivery and runtime/security validation reports now show go-state for controlled canary rollout. The final gate is human/operator approval and execution discipline."
   },
   "parallelWorkstreams": [
     {
@@ -2223,59 +2207,7 @@
       }
     }
   ],
-  "currentCutoverBlockers": [
-    {
-      "id": "phase4_protocol_runtime_canary",
-      "title": "Protocol adapter runtime canary validation is still failing",
-      "severity": "HIGH",
-      "state": "NO_GO_RUNTIME_FAILURE",
-      "plainEnglishSummary": "The protocol adapter path is running, but the key wallet shadow check still fails, so the team cannot approve cutover.",
-      "evidence": [
-        {
-          "path": "docs/phase4/protocol/phase4-protocol-status-report-20260224-163534.md",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/phase4/protocol/phase4-protocol-status-report-20260224-163534.md"
-        },
-        {
-          "path": "docs/audit-evidence/req-gs-02/verdict.md",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-02/verdict.md"
-        }
-      ]
-    },
-    {
-      "id": "phase5_6_core_service_runtime_canary",
-      "title": "Core extracted service canary routing is not approved",
-      "severity": "HIGH",
-      "state": "NO_GO_RUNTIME_FAILURE",
-      "plainEnglishSummary": "Gameplay, wallet, bonus, and history services are up, but their canary routing checks fail, so production ownership cannot move to them yet.",
-      "evidence": [
-        {
-          "path": "docs/phase5-6/phase5-6-service-extraction-status-report-20260224-163457.md",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/phase5-6/phase5-6-service-extraction-status-report-20260224-163457.md"
-        },
-        {
-          "path": "docs/audit-evidence/req-gs-ph-06/verdict.md",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-06/verdict.md"
-        }
-      ]
-    },
-    {
-      "id": "security_dependency_audit_lockfiles",
-      "title": "Security dependency audit and lockfiles are still pending",
-      "severity": "HIGH",
-      "state": "TESTED_NO_GO_DEPENDENCY_LOCK_AUDIT_PENDING",
-      "plainEnglishSummary": "The refactor services still need dependency lockfiles and a proper audit/remediation pass before a production cutover decision.",
-      "evidence": [
-        {
-          "path": "docs/security/security-hardening-status-report-20260224-110139.md",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/security/security-hardening-status-report-20260224-110139.md"
-        },
-        {
-          "path": "docs/audit-evidence/req-gs-06/verdict.md",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-06/verdict.md"
-        }
-      ]
-    }
-  ],
+  "currentCutoverBlockers": [],
   "latestEvidenceSources": [
     {
       "label": "Milestone 2 Requirement Reality Check Audit",
@@ -2289,8 +2221,13 @@
     },
     {
       "label": "Latest Program Readiness Report (factual cutover status)",
-      "path": "docs/release-readiness/program-deploy-readiness-status-20260224-163502.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md"
+      "path": "docs/release-readiness/program-deploy-readiness-status-20260225-191103.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260225-191103.md"
+    },
+    {
+      "label": "Latest Canary Operator Sign-Off Packet",
+      "path": "docs/release-readiness/canary-operator-signoff-packet-20260225-191120.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/canary-operator-signoff-packet-20260225-191120.md"
     },
     {
       "label": "Mixed-topology manual full-flow pass evidence",
@@ -2304,14 +2241,14 @@
     }
   ],
   "whatNeedsApprovalNext": [
-    "Approve a focused runtime canary activation/validation wave for Phase 4 protocol adapter routing.",
-    "Approve a focused runtime canary activation/validation wave for Phase 5 core extracted services (gameplay/wallet/bonus/history).",
-    "Approve a dependency lockfile + audit remediation pass in a network-capable environment.",
-    "Keep Casino Manager and New Games reporting separate from core GS cutover status to avoid progress confusion."
+    "Approve the canary change window (UTC start/end) and execution owner list.",
+    "Run controlled canary for bank 6275 and fill the result record in the operator packet.",
+    "If canary passes, approve expansion to the next bank scope.",
+    "Keep Casino Manager and New Games reporting separate from core GS rollout status."
   ],
-  "plainEnglishSummary": "This dashboard separates delivery output progress from production cutover readiness. The core modernization delivered many artifacts, but the project is still blocked on runtime canary validation and security audit work. Parallel workstreams (New Games and Casino Manager) are real work, but they should not be counted as core cutover completion.",
-  "__embeddedSyncedAtUtc": "2026-02-25T09:56:12.578Z",
-  "__embeddedFingerprint": "b60573903c1a"
+  "plainEnglishSummary": "This dashboard separates delivery output progress from production cutover readiness. The core modernization is currently in GO_FOR_DEPLOY_AND_CANARY state with no open technical blockers in aggregated evidence. Parallel workstreams (New Games and Casino Manager) are real work, but they remain separate from core GS rollout decisions.",
+  "__embeddedSyncedAtUtc": "2026-02-25T19:13:29.215Z",
+  "__embeddedFingerprint": "b2d05ed9b9d6"
 }
   </script>
 
