@@ -3,10 +3,8 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Delete;
-import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -52,8 +50,8 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
         ByteBuffer byteBuffer = COUNTRIES_TABLE.serializeToBytes(restrictions);
         String json = COUNTRIES_TABLE.serializeToJson(restrictions);
         try {
-            Insert query = getInsertQuery(type.getCassandraTtl());
-            query.value(OBJECT_ID, objectId)
+            Statement query = getInsertQuery(type.getCassandraTtl())
+                .value(OBJECT_ID, objectId)
                 .value(RESTRICTION_TYPE, type.ordinal())
                 .value(SERIALIZED_COLUMN_NAME, byteBuffer)
                 .value(JSON_COLUMN_NAME, json);
@@ -66,8 +64,10 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
     public CountryRestrictionList get(long objectId, RestrictionType type) {
         long now = System.currentTimeMillis();
         CountryRestrictionList result = null;
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where().and(eq(OBJECT_ID, objectId)).and(eq(RESTRICTION_TYPE, type.ordinal()));
+        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where()
+                .and(eq(OBJECT_ID, objectId))
+                .and(eq(RESTRICTION_TYPE, type.ordinal()));
         ResultSet resultSet = execute(query, "get");
         Row row = resultSet.one();
         if (row != null) {
@@ -86,8 +86,11 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
     }
 
     public void delete(long objectId, RestrictionType type) {
-        Delete query = QueryBuilder.delete().from(getMainColumnFamilyName());
-        query.where().and(eq(OBJECT_ID, objectId)).and(eq(RESTRICTION_TYPE, type));
+        Statement query = QueryBuilder.delete()
+                .from(getMainColumnFamilyName())
+                .where()
+                .and(eq(OBJECT_ID, objectId))
+                .and(eq(RESTRICTION_TYPE, type));
         execute(query, "delete");
     }
 }

@@ -5420,3 +5420,17 @@
 - Added Wave 20 evidence + inventory snapshot under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214719/`.
 - Inventory result: GS driver3 imports reduced `453 -> 451`; MP unchanged `151`.
 - Next step: commit/push Wave 20 and continue remaining Cassandra hotspots.
+### 2026-02-25 21:54 UTC
+- Dev_new CASS-V4 Wave 21 completed and validated.
+- Converted typed querybuilder variables to `Statement` flow in:
+  - `CassandraHostCdnPersister`
+  - `CassandraCountryRestrictionPersister`
+  - `CassandraPlayerGameSettingsPersister`
+- Validation PASS:
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn test` (`cache`, `63` tests)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -DskipTests -pl core-interfaces,core,persistance -am package` (`mp-server`)
+- Evidence saved under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-215352/`.
+- Inventory result: GS driver3 imports reduced `451 -> 445`; MP unchanged `151`.
+- Next step: commit/push Wave 21 and continue remaining Cassandra hotspots.

@@ -1,12 +1,10 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
+import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Delete;
-import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -56,22 +54,22 @@ public class CassandraHostCdnPersister extends AbstractCassandraPersister<String
 
 
     public void persist(String ip, String cdn, int time) {
-        Insert query = getInsertQuery();
-        query.value(IP_FIELD, ip).
-                value(CDN_FIELD, cdn).
-                value(TIME_FIELD, time).
-                value(LAST_UPDATE_FIELD, System.currentTimeMillis());
+        Statement query = getInsertQuery()
+                .value(IP_FIELD, ip)
+                .value(CDN_FIELD, cdn)
+                .value(TIME_FIELD, time)
+                .value(LAST_UPDATE_FIELD, System.currentTimeMillis());
         execute(query, "create");
     }
 
     public List<CdnCheckResult> getCdnByIp(String ip) {
-        Select select = QueryBuilder.select()
+        Statement query = QueryBuilder.select()
                 .column(CDN_FIELD)
                 .column(TIME_FIELD)
                 .column(LAST_UPDATE_FIELD)
                 .from(COLUMN_FAMILY_NAME)
                 .where(QueryBuilder.eq(IP_FIELD, ip)).limit(1000);
-        ResultSet rows = execute(select, "getCdnByIp");
+        ResultSet rows = execute(query, "getCdnByIp");
 
         List<CdnCheckResult> result = new ArrayList<>();
         for (Row row : rows) {
@@ -82,8 +80,11 @@ public class CassandraHostCdnPersister extends AbstractCassandraPersister<String
     }
 
     public void remove(String ip, String cdn) {
-        Delete query = QueryBuilder.delete().all().from(COLUMN_FAMILY_NAME);
-        query.where(QueryBuilder.eq(IP_FIELD, ip)).and(QueryBuilder.eq(CDN_FIELD, cdn));
+        Statement query = QueryBuilder.delete()
+                .all()
+                .from(COLUMN_FAMILY_NAME)
+                .where(QueryBuilder.eq(IP_FIELD, ip))
+                .and(QueryBuilder.eq(CDN_FIELD, cdn));
         execute(query, "deleteItem");
     }
 }

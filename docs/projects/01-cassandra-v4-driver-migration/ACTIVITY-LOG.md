@@ -313,3 +313,25 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
 - Inventory delta after Wave 20:
   - GS `driver3_import_lines`: `453 -> 451` (`-2`)
   - MP `driver3_import_lines`: `151` (no change)
+
+## 2026-02-25 21:54 UTC
+- Implemented CASS-V4 Wave 21 in three low-risk common-persister hotspots:
+  - `CassandraHostCdnPersister`
+  - `CassandraCountryRestrictionPersister`
+  - `CassandraPlayerGameSettingsPersister`
+- Replaced typed `Select` / `Insert` / `Delete` variables with generic `Statement` flow while preserving existing predicates.
+- Validation: PASS
+  - `common-persisters` install
+  - cache test suite (`63` tests)
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-215352/c4-wave21-hostcdn-countryrestriction-pgs-statement-flow-20260225-215352.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-215352/c4-wave21-build-common-persisters-20260225-215352.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-215352/c4-wave21-unit-tests-20260225-215352.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-215352/c4-wave21-build-web-gs-20260225-215352.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-215352/c4-wave21-build-mp-stack-20260225-215352.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-215352/phase7-cassandra-driver-inventory-20260225-215445.txt`
+- Inventory delta after Wave 21:
+  - GS `driver3_import_lines`: `451 -> 445` (`-6`)
+  - MP `driver3_import_lines`: `151` (no change)
