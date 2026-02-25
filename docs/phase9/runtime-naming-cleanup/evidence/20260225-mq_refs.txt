@@ -1,0 +1,61 @@
+/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-wave-status-blocklist.json:98:        "reasonCode": "BLOCKED_ENV_INFRA_NAMES_AND_MQ_TOKEN",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BankInfoCache.xml:423:          <string>MQ_WEAPONS_MODE</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:106:            <servlet>/MQ_BG_MissionAmazon.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:134:            <servlet>/MQ_SECTORX.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:162:            <servlet>/MQ_BG_SectorX.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:190:            <servlet>/MQ_MaxBlastChampions.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:218:            <servlet>/MQ_TripleMaxBlast.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:22:            <servlet>/MQ_Dragonstone.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:50:            <servlet>/MQ_BG_Dragonstone.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:78:            <servlet>/MQ_MissionAmazon.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:169:          <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.ServerConfigsTemplateCache.xml:169:          <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BankInfoCache.xml:1172:          <string>MQ_WEAPONS_MODE</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BankInfoCache.xml:480:          <string>MQ_WEAPONS_MODE</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:106:            <servlet>/MQ_BG_MissionAmazon.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:134:            <servlet>/MQ_SECTORX.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:162:            <servlet>/MQ_BG_SectorX.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:190:            <servlet>/MQ_MaxBlastChampions.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:218:            <servlet>/MQ_TripleMaxBlast.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:22:            <servlet>/MQ_Dragonstone.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:50:            <servlet>/MQ_BG_Dragonstone.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:78:            <servlet>/MQ_MissionAmazon.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:183:          <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:394:          <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:605:                    <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:800:                    <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:1271:          <string>MQ_WEAPONS_MODE</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml:529:          <string>MQ_WEAPONS_MODE</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:106:            <servlet>/MQ_BG_MissionAmazon.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:134:            <servlet>/MQ_SECTORX.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:162:            <servlet>/MQ_BG_SectorX.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:190:            <servlet>/MQ_MaxBlastChampions.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:218:            <servlet>/MQ_TripleMaxBlast.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:22:            <servlet>/MQ_Dragonstone.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:50:            <servlet>/MQ_BG_Dragonstone.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache.xml:78:            <servlet>/MQ_MissionAmazon.game</servlet>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:192:          <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:406:          <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:617:                    <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml:812:                    <string>MQ_CLUSTERS_CONFIG</string>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:188:            'MQ_HELP_PATH': '<%=lobbyUrl%>/flash/shell/global_shell/rules/aams/',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:189:            <% if (offset != null) { %>'MQ_TIMER_OFFSET': '<%=offset%>', <% } %>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:190:            'MQ_TIMER_FREQ': '15', // in sec,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:192:            'MQ_WEAPONS_MODE': '<%=bankInfo.getMaxQuestWeaponMode().name()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:193:            'MQ_WEAPONS_SAVING_ALLOWED': '<%=bankInfo.isRoundWinsWithoutBetsAllowed()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:194:            'MQ_CLIENT_ERROR_HANDLING': <%=GameServerConfiguration.getInstance().isTestSystem()%>,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:195:            'DISABLE_MQ_BACKGROUND_LOADING': '<%=bankInfo.isMQBackgroundLoadingDisabled()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp:196:            'DISABLE_MQ_AUTOFIRING': '<%=false%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:292:            'MQ_HELP_PATH': '<%=lobbyUrl%>/flash/shell/global_shell/rules/aams/',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:293:            <% if (offset != null) { %> 'MQ_TIMER_OFFSET': '<%=offset%>', <% } %>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:294:            'MQ_TIMER_FREQ': '15', // in sec
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:304:            'MQ_WEAPONS_MODE': '<%=bankInfo.getMaxQuestWeaponMode().name()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:305:            'MQ_WEAPONS_SAVING_ALLOWED': '<%=bankInfo.isRoundWinsWithoutBetsAllowed()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:308:            'MQ_CLIENT_ERROR_HANDLING': <%=GameServerConfiguration.getInstance().isTestSystem()%>,
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:309:            'DISABLE_MQ_BACKGROUND_LOADING': '<%=bankInfo.isMQBackgroundLoadingDisabled()%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:310:            'DISABLE_MQ_AUTOFIRING': '<%=false%>',
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/EditTemplateProperty.jsp:102:            "MQ_STAKES_RESERVE",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/EditTemplateProperty.jsp:103:            "MQ_STAKES_LIMIT",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/EditTemplateProperty.jsp:104:            "MQ_LB_CONTRIBUTION",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/EditTemplateProperty.jsp:105:            "MQ_AWARD_PLAYER_START_BONUS",
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/games/829_step1_AddGameInfoTemplate.jsp:13:    String servletBaseName = "/MQ_RevengeRa";

@@ -17,10 +17,16 @@ Blind text replacement can break startup, wallet flow, launch flow, or multiplay
 - `02-controlled-wave-execution-plan.md`
 - `03-phase9-tooling-reuse-map-20260225-182726.md`
 - `04-rn1-rename-ready-shortlist-v1.md`
+- `05-runtime-class-string-inventory.md`
+- `06-runtime-config-template-script-inventory.md`
+- `07-safe-rename-execution-plan-with-compatibility-mapping.md`
+- `evidence/` (raw grep inventories for code/config/script scans)
 
 ## Current status (2026-02-25)
 - Inventory baseline: complete
 - Existing Phase 9 tooling reuse map: complete
 - Controlled execution plan: drafted
 - RN1 rename-ready shortlist: complete (v1)
-- Runtime rename implementation waves (`RN2+`, `W3+` runtime changes): not started
+- RN2 Wave A (BankInfo MQ key aliases): complete (`feed2f3f`)
+- RN2 Wave B (runtime class-loading package fallback): complete (`1045b5ec`)
+- Runtime rename implementation waves (`RN3+`, `W3+` remaining runtime changes): in progress

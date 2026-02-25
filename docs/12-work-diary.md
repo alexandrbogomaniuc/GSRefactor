@@ -4979,3 +4979,13 @@
   - `mvn -f gs-server/game-server/web-gs/pom.xml -Dcluster.properties=local/local-machine.properties -DskipTests compile` => `BUILD SUCCESS`
   - `mvn -f gs-server/common/pom.xml -Dtest=BankInfoAliasCompatibilityTest test` => `BUILD SUCCESS` (`9/9` pass)
 - Result: runtime class-string compatibility is now in place for the highest-risk bank-config loaders and support class validation path; next step is commit/push RN2 Wave B and continue inventory-driven cleanup waves.
+### 2026-02-25 18:47-18:53 UTC
+- Ran parallel inventory analysis for the remaining runtime naming cleanup scope (code + config/templates/scripts) and converted findings into permanent subproject artifacts.
+- Added new subproject deliverables:
+  - `docs/phase9/runtime-naming-cleanup/05-runtime-class-string-inventory.md`
+  - `docs/phase9/runtime-naming-cleanup/06-runtime-config-template-script-inventory.md`
+  - `docs/phase9/runtime-naming-cleanup/07-safe-rename-execution-plan-with-compatibility-mapping.md`
+  - `docs/phase9/runtime-naming-cleanup/evidence/20260225-*.txt` raw scan evidence files.
+- Added repeatable inventory generator script `gs-server/deploy/scripts/phase9-runtime-naming-inventory.sh` (dynamic path resolution, GS+MP scan support, output summaries).
+- Validation evidence: `OUTPUT_DIR=/tmp/phase9-runtime-inventory-test gs-server/deploy/scripts/phase9-runtime-naming-inventory.sh` completed successfully and produced class/mq/map reports.
+- Result: runtime inventory and safe rename execution plan are now explicit, evidence-backed, and rerunnable; next step is commit/push this inventory pack and move to RN3 implementation shortlist execution.
