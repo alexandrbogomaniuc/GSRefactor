@@ -21,40 +21,50 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <button class="btn-buy-bonus" id="btn-buy-bonus" title="Buy the Ender Bonus Feature">🛒 BUY BONUS</button>
     </div>
 
-    <!-- BOTTOM: UNIFIED UI WRAPPER (SKINNABLE HUD) -->
+    <!-- BOTTOM: PREMIUM GLASSMORPHISM HUD -->
     <div class="bottom-hud">
-      <!-- LEFT ZONES: Settings -->
-      <div class="hud-zone hud-left">
-        <button class="hud-btn" id="btn-home" title="Lobby/Home">🏠</button>
-        <button class="hud-btn" id="btn-sound" title="Sound">🔊</button>
-        <button class="hud-btn" id="btn-paytable" title="Paytable">ℹ️</button>
+      <!-- LEFT: Controls -->
+      <div class="hud-left">
+        <button class="hud-btn" id="btn-home" title="Lobby/Home">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        </button>
+        <button class="hud-btn" id="btn-sound" title="Sound">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        </button>
+        <button class="hud-btn" id="btn-paytable" title="Paytable">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        </button>
       </div>
       
-      <!-- MIDDLE ZONE: Balance & Bets -->
-      <div class="hud-zone hud-center">
-        <div class="hud-display balance-display">
-          <span class="label">Balance <span id="lbl-frb" style="color: #ff00ff; font-weight: bold; display: none;">(FRB: 0)</span></span>
-          <span class="value" id="lbl-balance">$0.00</span>
+      <!-- CENTER: Balances box -->
+      <div class="hud-center">
+        <div class="hud-panel balance-panel">
+          <span class="hud-label">BALANCE <span id="lbl-frb" style="display:none; color: #f0f;"></span></span>
+          <span class="hud-value" id="lbl-balance">$0.00</span>
         </div>
-        <div class="hud-display win-display">
-          <span class="label">Win</span>
-          <span class="value win-text" id="lbl-win">--</span>
+        
+        <div class="hud-panel win-panel">
+          <span class="hud-label">WIN</span>
+          <span class="hud-value highlight" id="lbl-win">$0.00</span>
         </div>
-        <div class="hud-controls bet-controls">
-          <button class="hud-btn-small" id="btn-bet-down">-</button>
-          <div class="hud-display bet-display">
-            <span class="label">Bet</span>
-            <span class="value" id="lbl-bet">$1.00</span>
+
+        <div class="hud-panel bet-panel">
+          <span class="hud-label">BET</span>
+          <div class="bet-controls-wrapper">
+            <button class="bet-btn" id="btn-bet-down">-</button>
+            <span class="hud-value" id="lbl-bet">$1.00</span>
+            <button class="bet-btn" id="btn-bet-up">+</button>
           </div>
-          <button class="hud-btn-small" id="btn-bet-up">+</button>
         </div>
       </div>
 
-      <!-- RIGHT ZONE: Spin Actions -->
-      <div class="hud-zone hud-right">
-        <button class="hud-btn" id="btn-auto" title="Autoplay">🔄</button>
-        <button class="btn-spin-main" id="btn-spin" disabled></button>
-        <button class="hud-btn" id="btn-turbo" title="Turbo">⚡</button>
+      <!-- RIGHT: Spin Action -->
+      <div class="hud-right">
+        <button class="hud-btn feature-btn" id="btn-auto" title="Autoplay"> AUTO </button>
+        <button class="btn-spin-premium" id="btn-spin" disabled>
+            <div class="spin-icon">↻</div>
+        </button>
+        <button class="hud-btn feature-btn" id="btn-turbo" title="Turbo"> TURBO </button>
       </div>
     </div>
 

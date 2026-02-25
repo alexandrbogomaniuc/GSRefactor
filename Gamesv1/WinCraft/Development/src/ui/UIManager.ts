@@ -1,13 +1,23 @@
 import * as PIXI from 'pixi.js';
 import { SlotEngine } from '../game/SlotEngine';
-import { Reel } from './Reel';
-import { TopInventory } from './TopInventory';
+import { Camera } from './Camera';
+import { GlowFilter } from '@pixi/filter-glow';
+import { TopReels } from './TopReels';
+import { MiningGrid } from './MiningGrid';
+import { GameConfig } from '../game/GameConfig';
+import { PickaxeEntity } from './physics/PickaxeEntity';
+import { VFXManager } from './vfx/VFXManager';
 
 export class UIManager {
     private app: PIXI.Application;
     private engine: SlotEngine;
-    private reels: Reel[] = [];
-    private inventory!: TopInventory;
+
+    // Layout Containers
+    private camera!: Camera;
+    private topReels!: TopReels;
+    private miningGrid!: MiningGrid;
+    private vfxManager!: VFXManager;
+    private currentMiningScript: any;
 
     // UI Elements
     private btnSpin!: HTMLButtonElement;
@@ -44,7 +54,7 @@ export class UIManager {
         await this.app.init({
             width: 1920,
             height: 1080,
-            backgroundColor: 0x1a1a24,
+            backgroundAlpha: 0, // Transparent to show CSS background
             resolution: window.devicePixelRatio || 1,
             autoDensity: true
         });
@@ -55,18 +65,50 @@ export class UIManager {
             container.appendChild(this.app.canvas);
         }
 
+        // Setup the Camera
+        this.camera = new Camera();
+        this.app.stage.addChild(this.camera.container);
+
+        // Example: Add a slight global glow for premium feel
+        const glowFilter = new GlowFilter({ distance: 15, outerStrength: 0.1, innerStrength: 0, color: 0xffffff, quality: 0.1 });
+        this.camera.container.filters = [glowFilter as any];
+
+        this.vfxManager = new VFXManager(this.camera.container, this.camera);
+
         // Preload assets before building grids
-        try {
-            await PIXI.Assets.load(['/assets/dirt.png', '/assets/stone.png']);
-            console.log("[UIManager] Assets loaded successfully.");
-        } catch (e) {
-            console.warn("[UIManager] Missing some assets, falling back to colored shapes if necessary.");
+        // Force Nearest Neighbor Scaling for crisp pixel art in PixiJS v8
+        if ((PIXI as any).TextureStyle) {
+            (PIXI as any).TextureStyle.defaultOptions.scaleMode = 'nearest';
+        } else if ((PIXI as any).BaseTexture) {
+            (PIXI as any).BaseTexture.defaultOptions.scaleMode = 1; // 1 = NEAREST
         }
 
-        this.inventory = new TopInventory(740, 20);
-        this.app.stage.addChild(this.inventory.container);
+        try {
+            const urls = [
+                '/assets/dirt.png', '/assets/stone.png', '/assets/gold.png', '/assets/crystal.png', '/assets/obsidian.png',
+                '/assets/PickWood.png', '/assets/PickStone.png', '/assets/PickGold.png', '/assets/PickDiamond.png', '/assets/redstone.png',
+                '/assets/chest-closed.png', '/assets/chest-open.png', '/assets/Grass.png', '/assets/Enchantment.png'
+            ];
+            await Promise.allSettled(urls.map(u => PIXI.Assets.load(u).catch(e => console.warn("Failed to load:", u))));
+            console.log("[UIManager] Assets loaded phase completed.");
+        } catch (e) {
+            console.warn("[UIManager] Error during asset loading.", e);
+        }
 
-        this.buildReels(5); // 5-reel cascading slot layout
+        // 1. Top Inventory (Y: 20) - Obsolete: Integrated into TopReels
+        // this.inventory = new TopInventory(740, 20);
+        // this.camera.container.addChild(this.inventory.container);
+
+        // 2. Top Spin Reels (Y: 20)
+        // (5 * 96) + 20 padding = 500 width. Center is (1920-500)/2 = 710
+        // Top Reels height is exactly 300px
+        this.topReels = new TopReels(710, 20);
+        this.camera.container.addChild(this.topReels.container);
+
+        // 3. Bottom Mining Grid (Y: 332)
+        // Starts exactly 12 pixels below the Top Reels to form a clear sky gap
+        this.miningGrid = new MiningGrid(710, 332);
+        this.camera.container.addChild(this.miningGrid.container);
 
         // Start Render Loop
         this.app.ticker.add((ticker) => {
@@ -120,7 +162,7 @@ export class UIManager {
         });
 
         this.btnSpin.addEventListener('click', () => {
-            this.lblWin.innerText = "Win: --";
+            this.lblWin.innerText = "--";
             this.engine.play({ betAmount: this.currentBetAmount });
         });
 
@@ -143,71 +185,48 @@ export class UIManager {
         });
     }
 
-    private buildReels(cols: number = 5) {
-        // Calculate offset to center the dynamic number of reels perfectly
-        const reelWidth = 140;
-        const totalWidth = cols * reelWidth;
-        // Center in 1920 width, add some vertical offset via the Reel constructor if needed
-        const startX = (1920 - totalWidth) / 2 + (reelWidth / 2);
-
-        for (let i = 0; i < cols; i++) {
-            const reel = new Reel(startX + (i * reelWidth));
-            this.reels.push(reel);
-            this.app.stage.addChild(reel.container);
-        }
-    }
+    // Removed buildReels method.
 
     private bindEngine() {
         this.engine.onStateChange = (state) => {
             this.lblStatus.innerText = `Engine State: ${state}`;
-            this.btnSpin.disabled = (state !== 'READY');
 
-            if (state === 'RESERVED') {
-                // GS Orchestrator has received Bet, reels are spinning waiting for result
+            // Only enable spin when IDLE
+            this.btnSpin.disabled = (state !== 'IDLE');
+
+            if (state === 'SPINNING') {
                 this.btnSpin.classList.add('spinning');
-                this.reels.forEach(r => r.startSpin());
+                this.topReels.startSpin();
             } else {
                 this.btnSpin.classList.remove('spinning');
             }
+
+            // Activate the physical event sequence
+            if (state === 'MINING_PHASE') {
+                this.runMiningPhaseSequence();
+            }
         };
 
-        this.engine.onSpinResult = (winAmount, grid) => {
-            // GS sent deterministic evaluation payload. 
-            // Engine is locked in EVALUATING until visuals finish.
-            console.log(`[UIManager] Received GS Grid:`, grid);
+        this.engine.onSpinResult = (winAmount, slotResult, miningScript) => {
+            console.log(`[UIManager] Round payload received.`, slotResult);
 
-            // Map the dynamically sized 2D array (rows x cols) to specific reel columns.
-            const rows = grid.length;
-            const cols = grid[0].length;
-
-            for (let i = 0; i < Math.min(this.reels.length, cols); i++) {
-                const column = [];
-                for (let r = 0; r < rows; r++) {
-                    column.push(grid[r][i]);
-                }
-                this.reels[i].stopSpin(column);
+            // Populate the Initial Block field provided by the GS server script
+            if (miningScript && miningScript.initialMiningGrid) {
+                this.miningGrid.populateGrid(miningScript.initialMiningGrid);
+                this.currentMiningScript = miningScript;
             }
 
-            // Simulate the visual presentation time taking 2 seconds
-            // In a real game, listen to a PIXI 'onComplete' animation event.
-            // *Turbo overrides this to finish quickly.*
-            const spinDuration = this.btnTurbo.classList.contains('active') ? 500 : 2000;
-
-            setTimeout(() => {
-                this.lblWin.innerText = `Win: $${winAmount.toFixed(2)}`;
-                console.log("[UIManager] Reeling complete. Telling Engine to SETTLE.");
-
-                const ratio = winAmount / this.currentBetAmount;
-                if (ratio >= 15) {
-                    this.showWinCelebration(winAmount, ratio);
-                } else {
-                    this.engine.animationsComplete();
-                }
+            // A typical reel stop visual delay
+            const spinDuration = this.btnTurbo.classList.contains('active') ? 500 : 1500;
+            setTimeout(async () => {
+                await this.topReels.stopSpin(slotResult);
+                this.lblWin.innerText = `$${winAmount.toFixed(2)}`;
+                this.engine.reelsResolved();
             }, spinDuration);
         };
 
         this.engine.onBalanceUpdate = (balance) => {
-            this.lblBalance.innerText = `Balance: $${balance.toFixed(2)}`;
+            this.lblBalance.innerText = `$${balance.toFixed(2)}`;
         };
 
         this.engine.onFreeRoundsUpdate = (remaining: number) => {
@@ -223,9 +242,7 @@ export class UIManager {
         };
 
         this.engine.onRoundComplete = () => {
-            // Evaluates Autoplay after the session is formally settled and ready again
             if (this.btnAuto.classList.contains('active')) {
-                // Short breather between spins
                 setTimeout(() => {
                     const currentBalance = parseFloat(this.lblBalance.innerText.replace(/[^0-9.-]+/g, ""));
                     if (currentBalance < 1.00) {
@@ -233,7 +250,7 @@ export class UIManager {
                         this.btnAuto.classList.remove('active');
                         return;
                     }
-                    if (this.btnAuto.classList.contains('active') && this.engine.state === 'READY') {
+                    if (this.btnAuto.classList.contains('active') && this.engine.state === 'IDLE') {
                         this.btnSpin.click();
                     }
                 }, 800);
@@ -241,8 +258,106 @@ export class UIManager {
         };
     }
 
-    private update(delta: number) {
-        this.reels.forEach(r => r.update(delta));
+    /**
+     * Executes the heavy physical Mining Stage (Pickaxe Drops -> Squashes -> Gravity Collapses).
+     */
+    private async runMiningPhaseSequence() {
+        console.log("[UIManager] Running Full Mining Sequence...");
+
+        if (this.currentMiningScript && this.currentMiningScript.pickaxeDrops) {
+            for (const drop of this.currentMiningScript.pickaxeDrops) {
+                // Determine tool ID from string matching
+                let toolId = 101;
+                if (drop.type === 'StonePickaxe') toolId = 102;
+                else if (drop.type === 'IronPickaxe' || drop.type === 'GoldPickaxe') toolId = 103;
+                else if (drop.type === 'DiamondPickaxe') toolId = 104;
+
+                const pickaxe = new PickaxeEntity(toolId);
+                // Important: Set initial position before adding to container to avoid flash
+                const startX = this.topReels.container.x + (drop.col * GameConfig.TopSlotGrid.symbolWidth) + (GameConfig.TopSlotGrid.symbolWidth / 2);
+                const startY = this.topReels.container.y + (GameConfig.TopSlotGrid.rows * GameConfig.TopSlotGrid.symbolHeight);
+                pickaxe.sprite.x = startX;
+                pickaxe.sprite.y = startY;
+
+                this.camera.container.addChild(pickaxe.sprite);
+
+                let isToolBroken = false;
+                let isFalling = true; // Indicates the first arc drop
+
+                // Tool drops towards whatever the current top block in the column is
+                while (!isToolBroken) {
+                    const targetBlock = this.miningGrid.getTopBlock(drop.col);
+
+                    if (!targetBlock) {
+                        // Col is empty, tool breaks on the floor
+                        const floorY = this.miningGrid.container.y + (GameConfig.MiningGrid.rows * GameConfig.MiningGrid.blockSize);
+                        const floorX = this.miningGrid.container.x + (drop.col * GameConfig.MiningGrid.blockSize) + (GameConfig.MiningGrid.blockSize / 2);
+                        await pickaxe.playDropAnimation(pickaxe.sprite.x, pickaxe.sprite.y, floorX, floorY);
+                        this.vfxManager.playImpactShake();
+                        this.vfxManager.playBlockBreak(floorX, floorY, 'dust');
+                        this.miningGrid.openChest(drop.col);
+                        break; // Exit while loop naturally
+                    }
+
+                    // Arc down to the block or chop it if we are already there
+                    if (isFalling) {
+                        await pickaxe.playDropAnimation(pickaxe.sprite.x, pickaxe.sprite.y, targetBlock.x, targetBlock.y);
+                        isFalling = false;
+                    } else {
+                        await pickaxe.playChopAnimation(targetBlock.x, targetBlock.y);
+                    }
+
+                    this.vfxManager.playImpactShake();
+                    this.vfxManager.playBlockBreak(targetBlock.x, targetBlock.y, 'rock_chips');
+
+                    // Damage logic
+                    const destroyed = this.miningGrid.damageBlock(drop.col, targetBlock.row, pickaxe.getDamage());
+                    isToolBroken = pickaxe.applyHit();
+
+                    if (destroyed) {
+                        // resolve gravity down before next chop
+                        await this.miningGrid.resolveGravity(drop.col);
+                        isFalling = true; // Needs to fall to the next block
+                    }
+                }
+
+                pickaxe.destroy();
+            }
+
+            // Wait a slight moment after all drops resolve before processing chests
+            await new Promise(resolve => setTimeout(resolve, GameConfig.Feel.BlockCrumbleDelayMS));
+
+        } else {
+            // Fallback if no script
+            const gravityPromises = [];
+            for (let i = 0; i < GameConfig.MiningGrid.cols; i++) {
+                gravityPromises.push(this.miningGrid.resolveGravity(i));
+            }
+            await Promise.all(gravityPromises);
+        }
+
+        // Tell engine visual scripts are complete. If there was a win, show it.
+        const winAmountStr = this.lblWin.innerText.replace(/[^0-9.-]+/g, "");
+        const winAmount = parseFloat(winAmountStr) || 0;
+
+        if (winAmount > 0) {
+            const ratio = winAmount / this.currentBetAmount;
+            if (ratio >= 15) {
+                this.showWinCelebration(winAmount, ratio);
+                return;
+            }
+        }
+
+        this.engine.miningComplete();
+    }
+
+    private update(_delta: number) {
+        if (this.topReels) {
+            this.topReels.update(this.app.ticker.elapsedMS);
+        }
+        if (this.vfxManager) {
+            this.vfxManager.update(this.app.ticker.elapsedMS);
+        }
     }
 
     private showWinCelebration(amount: number, ratio: number) {
@@ -267,7 +382,7 @@ export class UIManager {
 
         setTimeout(() => {
             container.style.display = 'none';
-            this.engine.animationsComplete();
+            this.engine.miningComplete();
         }, this.btnTurbo.classList.contains('active') ? 1500 : 4000);
     }
 }

@@ -1,7 +1,7 @@
 import { GSWebSocketClient } from '../network/GSWebSocketClient';
 import { v4 as uuidv4 } from 'uuid';
 
-export type SlotState = 'INIT' | 'READY' | 'RESERVED' | 'EVALUATING' | 'SETTLED';
+export type SlotState = 'INIT' | 'IDLE' | 'SPINNING' | 'REEL_RESOLVE' | 'MINING_PHASE' | 'PAYOUT' | 'SETTLED';
 
 export interface SpinConfig {
     betAmount: number;
@@ -16,7 +16,10 @@ export class SlotEngine {
     public onStateChange: (newState: SlotState) => void = () => { };
     public onBalanceUpdate: (newBalance: number) => void = () => { };
     public onFreeRoundsUpdate: (remaining: number) => void = () => { };
-    public onSpinResult: (winAmount: number, grid: number[][]) => void = () => { };
+
+    // The new 2-layer payload from the server script
+    public onSpinResult: (winAmount: number, slotResult: number[][], miningScript: any) => void = () => { };
+
     public onRoundComplete: () => void = () => { };
     public onError: (errorMsg: string) => void = () => { };
 
@@ -30,6 +33,7 @@ export class SlotEngine {
     }
 
     private setState(newState: SlotState) {
+        if (this._state === newState) return;
         console.log(`[SlotEngine] State Transition: ${this._state} -> ${newState}`);
         this._state = newState;
         this.onStateChange(newState);
@@ -37,24 +41,21 @@ export class SlotEngine {
 
     private bindNetworkEvents() {
         this.client.onReady = () => {
-            this.setState('READY');
+            this.setState('IDLE');
         };
 
         this.client.onDisconnect = () => {
-            // Strictly handle drops. If we were spinning, state stays RESERVED.
-            // On reconnect, we need a SESSION_SYNC.
-            if (this._state !== 'RESERVED') {
+            if (this._state !== 'SPINNING' && this._state !== 'REEL_RESOLVE' && this._state !== 'MINING_PHASE') {
                 this.setState('INIT');
             }
-            // A real implementation would trigger an automatic reconnect loop here.
             console.warn("[SlotEngine] Network disconnected!");
         };
 
         this.client.onMessage = (type, payload) => {
             switch (type) {
                 case 'BET_ACCEPTED':
-                    if (this._state !== 'RESERVED') {
-                        console.warn("[SlotEngine] Received BET_ACCEPTED but not in RESERVED state. Ignoring.");
+                    if (this._state !== 'SPINNING') {
+                        console.warn("[SlotEngine] Received BET_ACCEPTED but not in SPINNING state. Ignoring.");
                         return;
                     }
                     this.handleBetAccepted(payload);
@@ -63,8 +64,8 @@ export class SlotEngine {
                     this.handleBetRejected(payload);
                     break;
                 case 'SETTLE_ACCEPTED':
-                    if (this._state !== 'EVALUATING') {
-                        console.warn("[SlotEngine] Received SETTLE_ACCEPTED but not in EVALUATING state.");
+                    if (this._state !== 'PAYOUT') {
+                        console.warn("[SlotEngine] Received SETTLE_ACCEPTED but not in PAYOUT state.");
                     }
                     this.setState('SETTLED');
                     break;
@@ -75,7 +76,7 @@ export class SlotEngine {
                     }
                     // After settling and getting balance, game is fully reset.
                     if (this._state === 'SETTLED') {
-                        this.setState('READY');
+                        this.setState('IDLE');
                         this.onRoundComplete();
                     }
                     break;
@@ -90,17 +91,15 @@ export class SlotEngine {
     }
 
     public play(config: SpinConfig) {
-        if (this._state !== 'READY' && this._state !== 'SETTLED') {
-            const err = "Cannot Spin: Game is not READY.";
+        if (this._state !== 'IDLE' && this._state !== 'SETTLED') {
+            const err = `Cannot Spin: Game is not IDLE. Current state: ${this._state}`;
             console.error(`[SlotEngine] ${err}`);
             this.onError(err);
             return;
         }
 
-        // CRITICAL: Financial Idempotency
-        // Generate a new unique operationId for this exact spin intent.
         this.currentOperationId = uuidv4();
-        this.setState('RESERVED');
+        this.setState('SPINNING');
 
         console.log(`[SlotEngine] Initiating Spin (opId: ${this.currentOperationId}, bet: ${config.betAmount})`);
         this.client.sendMessage('BET_REQUEST', { betAmount: config.betAmount }, this.currentOperationId);
@@ -108,46 +107,55 @@ export class SlotEngine {
 
     private handleBetAccepted(payload: any) {
         console.log("[SlotEngine] Spin Result Confirmed by Orchestrator.");
-        this.setState('EVALUATING');
+        this.setState('REEL_RESOLVE');
 
         // Pass the deterministic outcome to the View renderer
-        this.onSpinResult(payload.totalWin, payload.resultGrid);
+        // payload should now contain { totalWin, slotResult, miningScript }
+        this.onSpinResult(payload.totalWin, payload.slotResult, payload.miningScript);
     }
 
     private handleBetRejected(payload: any) {
         console.error("[SlotEngine] Bet Rejected:", payload.reason);
-        // Clear operation and revert to ready
         this.currentOperationId = null;
-        this.setState('READY');
+        this.setState('IDLE');
         this.onError(`Bet Rejected: ${payload.reason}`);
     }
 
-    // Called by the View layer when all visual animations and win celebrations are complete
-    public animationsComplete() {
-        if (this._state !== 'EVALUATING') {
-            console.warn("[SlotEngine] Warning: Visuals completed but Engine is not EVALUATING.");
-            return;
+    /**
+     * UI calls this when the Top 5x3 Reels have stopped spinning.
+     * Transitions state to MINING_PHASE.
+     */
+    public reelsResolved() {
+        if (this._state === 'REEL_RESOLVE') {
+            setTimeout(() => {
+                this.setState('MINING_PHASE');
+            }, 500);
         }
+    }
 
-        if (!this.currentOperationId) {
-            console.error("[SlotEngine] Fatal: Lost operationId during EVALUATING state!");
-            return;
+    /**
+     * UI calls this when the entire async Mining queue (drops, hits, gravity, chests) is totally finished.
+     */
+    public miningComplete() {
+        if (this._state === 'MINING_PHASE') {
+            this.setState('PAYOUT');
+
+            if (!this.currentOperationId) {
+                console.error("[SlotEngine] Fatal: Lost operationId during PAYOUT state!");
+                return;
+            }
+
+            console.log(`[SlotEngine] Mining visuals done. Sending Settle (opId: ${this.currentOperationId})`);
+            this.client.sendMessage('SETTLE_REQUEST', {}, this.currentOperationId);
         }
-
-        console.log(`[SlotEngine] Visuals done. Sending Settle (opId: ${this.currentOperationId})`);
-
-        // Settle uses the EXACT SAME operationId as the Bet.
-        this.client.sendMessage('SETTLE_REQUEST', {}, this.currentOperationId);
     }
 
     private handleSessionSync(payload: any) {
         console.log("[SlotEngine] Resyncing state after network recovery...", payload);
-        // E.g., if reconnecting and find out the server already settled the spin:
         if (payload.lastKnownState === 'SETTLED') {
-            this.setState('READY');
+            this.setState('IDLE');
             this.onBalanceUpdate(payload.balance);
-        } else if (payload.lastKnownState === 'RESERVED') {
-            // Re-apply the deterministic result as if BET_ACCEPTED just fired
+        } else if (payload.lastKnownState === 'RESERVED' || payload.lastKnownState === 'SPINNING') {
             this.handleBetAccepted(payload.gameResult);
         }
     }

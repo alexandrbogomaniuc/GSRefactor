@@ -158,7 +158,7 @@ button:focus-visible {
   max-width: 100%;
   max-height: 100%;
   overflow: hidden;
-  background: #050505;
+  background: url('/assets/minecraft_hd_background.png') center center / cover no-repeat;
 }
 
 .top-bar {
@@ -177,20 +177,40 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #0f0f0f;
+  background: transparent;
   position: relative;
+  overflow: hidden;
+  height: 0;
+  /* Forces flex child to compute bounds from parent, important for canvas scaling */
+}
+
+#pixi-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#pixi-container canvas {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 .btn-buy-bonus {
   position: absolute;
-  left: 30px;
+  left: 2%;
+  /* Scale to screen size */
   top: 50%;
   transform: translateY(-50%);
   background: linear-gradient(145deg, #ffcc00, #e6b800);
   color: #000;
   font-weight: 900;
-  font-size: 1.5rem;
-  padding: 20px 30px;
+  font-size: 1.2rem;
+  padding: 15px 20px;
   border: 4px solid #fff;
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(255, 204, 0, 0.4);
@@ -208,144 +228,200 @@ button:focus-visible {
   transform: translateY(-50%) scale(0.95);
 }
 
-/* Base HUD styling (Skinnable layer) */
+/* ==============================================================
+   PREMIUM GLASSMORPHISM HUD
+   ============================================================== */
 .bottom-hud {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(0deg, #111 0%, #1a1a1a 100%);
-  padding: 10px 20px;
-  border-top: 1px solid #333;
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 15px 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+  position: relative;
   z-index: 10;
+  width: 100%;
 }
 
-/* Portrait Mobile Optimization (Fit-to-Width Letterbox) */
-@media (orientation: portrait) {
-  .game-layout {
-    width: 100vw;
-    height: auto;
-    aspect-ratio: 9/16;
-    max-height: 100vh;
-    margin: auto 0;
-  }
-}
-
-.hud-zone {
+.hud-left,
+.hud-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
+  flex: 1;
+  /* Equal space distribution */
+}
+
+.hud-right {
+  justify-content: flex-end;
 }
 
 .hud-center {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 5px 15px;
-  border-radius: 8px;
-  border: 1px solid #222;
   display: flex;
   gap: 20px;
+  justify-content: center;
+  flex: 2;
+  /* Center takes more space */
 }
 
-.hud-display {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 70px;
-}
-
-.hud-display .label {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  color: #777;
-}
-
-.hud-display .value {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #fff;
-}
-
-.bet-controls {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.hud-btn-small {
-  background: transparent;
-  border: none;
-  color: #aaa;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-.hud-btn-small:hover {
-  color: #fff;
-}
-
+/* Feature & Utility Buttons */
 .hud-btn {
-  background: transparent;
-  border: 1px solid #444;
-  border-radius: 5px;
-  width: 40px;
-  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  width: 45px;
+  height: 45px;
   color: #fff;
   cursor: pointer;
-  transition: all 0.2s;
-}
-
-.hud-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* Red-themed Wow Spin Button */
-.btn-spin-main {
-  background: #111;
-  color: white;
-  border: 2px solid #555;
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
+  transition: all 0.2s ease;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.2s ease;
-  overflow: hidden;
 }
 
-.btn-spin-main::after {
-  content: '↻';
-  /* Rotating Arrows Placeholder */
-  font-size: 2.2rem;
+.hud-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.feature-btn {
+  width: auto;
+  padding: 0 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+}
+
+.hud-btn.active {
+  background: rgba(57, 255, 20, 0.15);
+  border-color: #39ff14;
+  color: #39ff14;
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
+}
+
+/* Information Panels */
+.hud-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px 25px;
+  min-width: 140px;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hud-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #999;
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+
+.hud-value {
+  font-size: 1.3rem;
+  font-weight: 900;
   color: #fff;
-  line-height: 1;
-  transform-origin: center;
-  transition: transform 0.5s ease;
+  font-family: 'Roboto', 'Inter', monospace;
 }
 
-.btn-spin-main:hover:not(:disabled) {
-  background: #222;
-  border-color: #fff;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+.highlight {
+  color: #f1c40f;
+  text-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
 }
 
-.btn-spin-main:active:not(:disabled) {
+/* Bet Controls */
+.bet-controls-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.bet-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 900;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.bet-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Premium Spin Button */
+.btn-spin-premium {
+  background: linear-gradient(135deg, #111, #222);
+  border: 2px solid #555;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 2px 5px rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.btn-spin-premium::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(135deg, rgba(85, 255, 85, 0.4), transparent);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-spin-premium:hover:not(:disabled) {
+  border-color: #55ff55;
+  box-shadow: 0 0 20px rgba(85, 255, 85, 0.4);
+  transform: scale(1.05);
+}
+
+.btn-spin-premium:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+.btn-spin-premium:active:not(:disabled) {
   transform: scale(0.95);
 }
 
-.btn-spin-main:disabled {
-  opacity: 0.5;
+.btn-spin-premium:disabled {
+  opacity: 0.4;
   cursor: not-allowed;
+  filter: grayscale(100%);
 }
 
-/* The animation when the engine enters RESERVED state */
-.btn-spin-main.spinning::after {
-  animation: dual-arrow-spin 1s linear infinite;
+.spin-icon {
+  font-size: 2.5rem;
+  color: #fff;
+  line-height: 1;
+  transition: transform 0.5s ease;
 }
 
-@keyframes dual-arrow-spin {
+.btn-spin-premium.spinning .spin-icon {
+  animation: spin-inf 1s linear infinite;
+}
+
+@keyframes spin-inf {
   100% {
     transform: rotate(360deg);
   }
@@ -548,5 +624,93 @@ button:focus-visible {
   100% {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
+  }
+}
+
+/* ==============================================================
+   RESPONSIVE DESIGN (MOBILE / NARROW SCREENS)
+   ============================================================== */
+@media (max-width: 768px) {
+  .bottom-hud {
+    flex-wrap: wrap;
+    /* Allow wrapping */
+    padding: 10px 15px;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .hud-left {
+    order: 1;
+    flex: 1;
+    justify-content: flex-start;
+  }
+
+  .hud-right {
+    order: 2;
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .hud-center {
+    order: 3;
+    flex: 100%;
+    /* Force onto new line */
+    justify-content: center;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .hud-btn {
+    width: 35px;
+    height: 35px;
+  }
+
+  .feature-btn {
+    padding: 0 10px;
+    font-size: 0.75rem;
+  }
+
+  .btn-spin-premium {
+    width: 60px;
+    height: 60px;
+  }
+
+  .spin-icon {
+    font-size: 2rem;
+  }
+
+  .hud-panel {
+    min-width: 100px;
+    padding: 8px 15px;
+  }
+
+  .hud-value {
+    font-size: 1.1rem;
+  }
+
+  .cert-hud {
+    flex-direction: column;
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hud-panel {
+    min-width: 80px;
+    padding: 5px 10px;
+  }
+
+  .hud-label {
+    font-size: 0.55rem;
+  }
+
+  .hud-value {
+    font-size: 0.9rem;
+  }
+
+  .bet-btn {
+    width: 22px;
+    height: 22px;
+    font-size: 0.8rem;
   }
 }
