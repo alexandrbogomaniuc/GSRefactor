@@ -1100,6 +1100,16 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
     @EnumProperty(value = MaxQuestClientLogLevel.class, description = "Log level for MQ Client")
     public static final String KEY_MQ_CLIENT_LOG_LEVEL = "MQ_CLIENT_LOG_LEVEL";
 
+    // Runtime naming-cleanup compatibility aliases (read fallback only).
+    // These keys allow staged migration away from MQ_* naming without breaking persisted configs.
+    private static final String KEY_ABS_PLAYER_START_BONUS_DISABLED = "ABS_PLAYER_START_BONUS_DISABLED";
+    private static final String KEY_ABS_WEAPONS_MODE = "ABS_WEAPONS_MODE";
+    private static final String KEY_DISABLE_ABS_BACKGROUND_LOADING = "DISABLE_ABS_BACKGROUND_LOADING";
+    private static final String KEY_ABS_TOURNAMENT_REAL_MODE_URL = "ABS_TOURNAMENT_REAL_MODE_URL";
+    private static final String KEY_ABS_ROOMS_SORT_ORDER = "ABS_ROOMS_SORT_ORDER";
+    private static final String KEY_ABS_CLIENT_LOG_LEVEL = "ABS_CLIENT_LOG_LEVEL";
+    private static final String KEY_ABS_FRB_DEF_CHIPS = "ABS_FRB_DEF_CHIPS";
+
     @StringProperty(description = "Sets home page url for  MQ")
     public static final String KEY_HOME_URL_HOST = "HOME_URL_HOST";
 
@@ -1891,11 +1901,11 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
     }
 
     public String getMQFrbDefChips() {
-        if (isTrimmedEmpty(PropertyUtils.getStringProperty(properties, MQ_KEY_FRB_DEF_CHIPS))
-                || "null".equals(PropertyUtils.getStringProperty(properties, MQ_KEY_FRB_DEF_CHIPS))) {
+        String chips = getStringPropertyWithAliases(MQ_KEY_FRB_DEF_CHIPS, KEY_ABS_FRB_DEF_CHIPS);
+        if (!isValidPropertyValue(chips)) {
             return "5";
         }
-        return PropertyUtils.getStringProperty(properties, MQ_KEY_FRB_DEF_CHIPS);
+        return chips;
     }
 
     public String getAutoPlayValues() {
@@ -2344,7 +2354,8 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
     }
 
     public MaxQuestClientLogLevel getMQClientLogLevel() {
-        return getEnumProperty(KEY_MQ_CLIENT_LOG_LEVEL, MaxQuestClientLogLevel.ERROR);
+        return getEnumPropertyWithAliases(KEY_MQ_CLIENT_LOG_LEVEL, MaxQuestClientLogLevel.ERROR,
+                KEY_ABS_CLIENT_LOG_LEVEL);
     }
 
     public String getHomeUrlHost() {
@@ -2522,9 +2533,13 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
     }
 
     private <T extends Enum> T getEnumProperty(String key, T defaultValue) {
+        return getEnumPropertyWithAliases(key, defaultValue);
+    }
+
+    private <T extends Enum> T getEnumPropertyWithAliases(String key, T defaultValue, String... aliases) {
         try {
-            String stringProperty = getStringProperty(key);
-            if (com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty(stringProperty)) {
+            String stringProperty = getStringPropertyWithAliases(key, aliases);
+            if (!isValidPropertyValue(stringProperty)) {
                 return defaultValue;
             }
 
@@ -2543,6 +2558,35 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
         } catch (RuntimeException e) {
             throw e;
         }
+    }
+
+    private boolean getBooleanPropertyWithAliases(String key, boolean defaultValue, String... aliases) {
+        String value = getStringPropertyWithAliases(key, aliases);
+        if (!isValidPropertyValue(value)) {
+            return defaultValue;
+        }
+        return Boolean.parseBoolean(value);
+    }
+
+    private String getStringPropertyWithAliases(String key, String... aliases) {
+        String value = getStringProperty(key);
+        if (isValidPropertyValue(value)) {
+            return value;
+        }
+        if (aliases == null) {
+            return value;
+        }
+        for (String alias : aliases) {
+            value = getStringProperty(alias);
+            if (isValidPropertyValue(value)) {
+                return value;
+            }
+        }
+        return value;
+    }
+
+    private boolean isValidPropertyValue(String value) {
+        return !isTrimmedEmpty(value) && !"null".equalsIgnoreCase(value.trim());
     }
 
     public void setEnumProperty(String key, Enum anEnum) {
@@ -3581,7 +3625,8 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
     }
 
     public boolean isMqStartBonusDisabled() {
-        return PropertyUtils.getBooleanProperty(properties, KEY_MQ_PLAYER_START_BONUS_DISABLED);
+        return getBooleanPropertyWithAliases(KEY_MQ_PLAYER_START_BONUS_DISABLED, false,
+                KEY_ABS_PLAYER_START_BONUS_DISABLED);
     }
 
     public boolean isSoundEnabledByDefaultMobile() {
@@ -3609,7 +3654,8 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
     }
 
     public MaxQuestWeaponMode getMaxQuestWeaponMode() {
-        return getEnumProperty(KEY_MQ_WEAPONS_MODE, MaxQuestWeaponMode.LOOT_BOX);
+        return getEnumPropertyWithAliases(KEY_MQ_WEAPONS_MODE, MaxQuestWeaponMode.LOOT_BOX,
+                KEY_ABS_WEAPONS_MODE);
     }
 
     public boolean isRoundWinsWithoutBetsAllowed() {
@@ -3617,11 +3663,13 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
     }
 
     public boolean isMQBackgroundLoadingDisabled() {
-        return PropertyUtils.getBooleanProperty(properties, KEY_DISABLE_MQ_BACKGROUND_LOADING);
+        return getBooleanPropertyWithAliases(KEY_DISABLE_MQ_BACKGROUND_LOADING, false,
+                KEY_DISABLE_ABS_BACKGROUND_LOADING);
     }
 
     public String getMQTournamentRealModeUrl() {
-        return PropertyUtils.getStringProperty(properties, KEY_MQ_TOURNAMENT_REAL_MODE_URL);
+        return getStringPropertyWithAliases(KEY_MQ_TOURNAMENT_REAL_MODE_URL,
+                KEY_ABS_TOURNAMENT_REAL_MODE_URL);
     }
 
     public long getTournamentExcludeTime() {
@@ -3684,7 +3732,7 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
     }
 
     public String getMQRoomsSortOrder() {
-        String order = PropertyUtils.getStringProperty(properties, KEY_MQ_ROOMS_SORT_ORDER);
+        String order = getStringPropertyWithAliases(KEY_MQ_ROOMS_SORT_ORDER, KEY_ABS_ROOMS_SORT_ORDER);
         return isTrimmedEmpty(order) ? "ASC" : order;
     }
 
