@@ -25,6 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dgphoenix.casino.gs.GameServer;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.kafka.config.KafkaProperties;
 import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
 import com.dgphoenix.casino.kafka.dto.KafkaRequest;
@@ -197,7 +198,8 @@ public class KafkaRecieverService {
 
                                 consumerExecutorService.submit(() -> {
                                     try {
-                                        KafkaRequest request = (KafkaRequest) mapper.convertValue(record.value(), Class.forName(dataType));
+                                        KafkaRequest request = (KafkaRequest) mapper.convertValue(record.value(),
+                                                ReflectionUtils.forNameWithCompatibilityAliases(dataType));
                                         
                                         try {
                                             KafkaResponse response = kafkaOuterRequestHandlerFactory.getRequestHandler(request).handle(request);
@@ -318,7 +320,8 @@ public class KafkaRecieverService {
 
                                 consumerExecutorService.submit(() -> {
                                     try {
-                                        KafkaRequest request = (KafkaRequest) mapper.convertValue(record.value(), Class.forName(dataType));
+                                        KafkaRequest request = (KafkaRequest) mapper.convertValue(record.value(),
+                                                ReflectionUtils.forNameWithCompatibilityAliases(dataType));
 
                                         try {
                                             KafkaResponse response = kafkaInServiceRequestHandlerFactory.getRequestHandler(request).handle(request);

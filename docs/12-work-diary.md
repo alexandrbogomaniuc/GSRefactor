@@ -5055,3 +5055,18 @@
 - Evidence: `node /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-onboard.mjs smoke` returned all checks PASS, including `/startgame` launch alias (`HTTP 200`).
 - Result: latest runtime naming compatibility changes did not break baseline local launch path.
 - Next step: commit/push RN5 Wave A/B changes and continue remaining runtime-sensitive cleanup toward sign-off package refresh.
+### 2026-02-25 19:09-19:12 UTC
+- Continued RN3 completion by patching remaining GS Kafka dynamic deserialization hotspots to compatibility class loading:
+  - `gs-server/game-server/common-gs/.../kafka/service/KafkaMessageService.java`
+  - `gs-server/game-server/common-gs/.../kafka/service/KafkaRecieverService.java`
+- Replaced direct `Class.forName(dataType)` with `ReflectionUtils.forNameWithCompatibilityAliases(dataType)` in reply/request processing paths.
+- Validation evidence:
+  - `mvn -f /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/pom.xml -Dcluster.properties=local/local-machine.properties -DskipTests compile` => `BUILD SUCCESS`
+  - `rg -n "Class\\.forName\\(" gs-server mp-server` now shows no remaining GS/MP Kafka class-string hotspots; remaining direct uses are in compatibility utility internals, XML utility reflection, Netty optional reflection, and support configuration introspection.
+- Result: runtime package-name compatibility coverage is now expanded further for live GS<->MP Kafka payload handling.
+- Next step: commit/push this sub-wave and refresh sign-off readiness artifacts from latest runtime state.
+### 2026-02-25 19:12-19:13 UTC
+- Performed post-patch smoke recheck after GS Kafka compatibility updates.
+- Evidence: `node /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-onboard.mjs smoke` => all checks PASS; `/startgame` launch alias remains `HTTP 200`.
+- Result: no regression observed in baseline refactor startup/launch path after Kafka compatibility extension.
+- Next step: commit/push RN3 Kafka compatibility sub-wave and refresh deployment readiness/sign-off report timestamps.

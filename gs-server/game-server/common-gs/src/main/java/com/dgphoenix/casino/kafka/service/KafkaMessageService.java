@@ -41,6 +41,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dgphoenix.casino.common.util.Pair;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.kafka.config.KafkaConfiguration;
 import com.dgphoenix.casino.kafka.config.KafkaProperties;
 import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
@@ -160,7 +161,8 @@ public class KafkaMessageService {
 
                                 consumerExecutorService.execute(() -> {
                                     try {
-                                        KafkaResponse response = (KafkaResponse) mapper.convertValue(record.value(), Class.forName(dataType));
+                                        KafkaResponse response = (KafkaResponse) mapper.convertValue(record.value(),
+                                                ReflectionUtils.forNameWithCompatibilityAliases(dataType));
                                         LOGGER.debug("Recieved response " + record.key() + " :: " + response.getClass());
                                         awaitingCompletableFutures.computeIfPresent(record.key(), new BiFunction<String, CompletableFuture<KafkaResponse>, CompletableFuture<KafkaResponse>>() {
                                             @Override
