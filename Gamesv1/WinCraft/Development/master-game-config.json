@@ -1,0 +1,30 @@
+{
+    "gameMetadata": {
+        "gameId": "50001",
+        "gameName": "WinCraft",
+        "providerId": "inhouse",
+        "variableType": "SLOT_MACHINE",
+        "supportedCurrencies": [
+            "USD",
+            "EUR",
+            "GBP"
+        ]
+    },
+    "mathModel": {
+        "rtpPercentage": 96.50,
+        "volatilityClass": "MEDIUM",
+        "betLimits": {
+            "minBet": 0.10,
+            "defaultBet": 3.00,
+            "maxBet": 20000.00
+        },
+        "exposureLimits": {
+            "maxMultiplier": 5000,
+            "maxExposureNominal": 100000.00
+        }
+    },
+    "compliance": {
+        "realityCheckEnabled": true,
+        "idleTimeoutSeconds": 900
+    }
+}

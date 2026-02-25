@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Math Configuration Tuner</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; display: flex; gap: 20px; }
+        .panel { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex: 1; }
+        h1 { color: #2c3e50; font-size: 24px; margin-top: 0; }
+        h2 { font-size: 18px; color: #34495e; border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 25px;}
+        label { display: block; margin-top: 15px; font-weight: bold; font-size: 14px; color: #555; }
+        input[type="text"], input[type="number"], select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .btn { display: inline-block; background-color: #3498db; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; margin-top: 25px; width: 100%; font-weight: bold;}
+        .btn:hover { background-color: #2980b9; }
+        .output-box { background-color: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 6px; overflow-x: auto; font-family: 'Courier New', Courier, monospace; font-size: 13px; margin-top: 10px; white-space: pre-wrap;}
+        .note { background-color: #fff3cd; color: #856404; padding: 10px; border-left: 4px solid #ffeeba; margin-bottom: 20px; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- LEFT PANEL: INPUT FORM -->
+    <div class="panel">
+        <h1>⚙️ Game Configuration Tuner</h1>
+        <div class="note"><b>Note for PMs:</b> Adjust the Math Limits here. Clicking "Generate" will automatically build the developer configuration file and the Database SQL scripts.</div>
+
+        <form id="configForm">
+            <h2>Game Identity</h2>
+            <label>Game ID (Used by GS)</label>
+            <input type="text" id="gameId" value="slot-template-01" required>
+            
+            <label>Game Name</label>
+            <input type="text" id="gameName" value="Template Slot V1" required>
+
+            <h2>Math Model & Limits</h2>
+            <label>RTP Percentage (%)</label>
+            <input type="number" id="rtp" step="0.01" value="96.50" required>
+
+            <label>Minimum Bet ($)</label>
+            <input type="number" id="minBet" step="0.01" value="0.10" required>
+
+            <label>Default Bet ($)</label>
+            <input type="number" id="defaultBet" step="0.01" value="1.00" required>
+
+            <label>Maximum Bet ($)</label>
+            <input type="number" id="maxBet" step="0.01" value="100.00" required>
+
+            <label>Max Win Multiplier (e.g. 5000x)</label>
+            <input type="number" id="maxMult" value="5000" required>
+
+            <button type="button" class="btn" onclick="generateOutputs()">Generate Configuration & DB Scripts</button>
+        </form>
+    </div>
+
+    <!-- RIGHT PANEL: OUTPUTS -->
+    <div class="panel">
+        <h1>📦 Generated Outputs</h1>
+        
+        <h2>master-game-config.json</h2>
+        <p style="font-size: 13px; color: #666; margin-top: 0;">Save this inside the game folder.</p>
+        <div id="jsonOut" class="output-box">// Click Generate First</div>
+
+        <h2>GS Database Registration Script</h2>
+        <p style="font-size: 13px; color: #666; margin-top: 0;">Provide this SQL to the GS Backend Team to register the game.</p>
+        <div id="sqlOut" class="output-box">-- Click Generate First</div>
+    </div>
+</div>
+
+<script>
+    function generateOutputs() {
+        // 1. Gather Inputs
+        const gameId = document.getElementById('gameId').value;
+        const gameName = document.getElementById('gameName').value;
+        const rtp = parseFloat(document.getElementById('rtp').value);
+        const minBet = parseFloat(document.getElementById('minBet').value);
+        const defaultBet = parseFloat(document.getElementById('defaultBet').value);
+        const maxBet = parseFloat(document.getElementById('maxBet').value);
+        const maxMult = parseInt(document.getElementById('maxMult').value);
+        
+        // Calculate max exposure based on max bet * max multiplier
+        const maxExposure = maxBet * maxMult;
+
+        // 2. Generate JSON Configuration
+        const configJson = {
+            gameMetadata: {
+                gameId: gameId,
+                gameName: gameName,
+                providerId: "studioX",
+                variableType: "SLOT_MACHINE",
+                supportedCurrencies: ["USD", "EUR", "GBP"]
+            },
+            mathModel: {
+                rtpPercentage: rtp,
+                volatilityClass: "MEDIUM",
+                betLimits: {
+                    minBet: minBet,
+                    defaultBet: defaultBet,
+                    maxBet: maxBet
+                },
+                exposureLimits: {
+                    maxMultiplier: maxMult,
+                    maxExposureNominal: maxExposure
+                }
+            },
+            compliance: {
+                realityCheckEnabled: true,
+                idleTimeoutSeconds: 900
+            }
+        };
+
+        document.getElementById('jsonOut').textContent = JSON.stringify(configJson, null, 2);
+
+        // 3. Generate SQL Registration Script for the Backend Team
+        const sqlScript = `
+-- GS Game Catalog Registration Script
+-- Auto-generated by Game Math Configuration Tuner
+
+BEGIN TRANSACTION;
+
+-- 1. Register Game ID and Metadata
+INSERT INTO public.game_catalog (game_id, name, provider_id, game_type, is_active)
+VALUES ('${gameId}', '${gameName}', 'studioX', 'SLOT_MACHINE', true)
+ON CONFLICT (game_id) DO UPDATE SET name = '${gameName}';
+
+-- 2. Register Global Math Limits (RTP, Bets, Exposure)
+INSERT INTO public.game_math_limits (game_id, rtp_expected, min_bet, default_bet, max_bet, max_exposure)
+VALUES ('${gameId}', ${rtp}, ${minBet}, ${defaultBet}, ${maxBet}, ${maxExposure})
+ON CONFLICT (game_id) DO UPDATE 
+SET rtp_expected = ${rtp}, min_bet = ${minBet}, max_bet = ${maxBet}, max_exposure = ${maxExposure};
+
+COMMIT;
+
+-- IMPORTANT MESSAGE FOR BACKEND DEVS:
+-- A server restart or cache clear may be required for the GS Orchestrator 
+-- to pick up and enforce these new limits on inbound abs.gs.v1 wss connections.
+`;
+        
+        document.getElementById('sqlOut').textContent = sqlScript.trim();
+    }
+</script>
+
+</body>
+</html>

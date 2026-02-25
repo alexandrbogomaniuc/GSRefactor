@@ -1,0 +1,576 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.vanilla:hover {
+  filter: drop-shadow(0 0 2em #3178c6aa);
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Forced Dark Theme for Premium Casino Aesthetic */
+
+/* ----------------------------------
+   Animated Loading Screen (HUD) Plinko Style
+   ---------------------------------- */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.loading-content {
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+.bgaming-logo {
+  position: relative;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  font-size: 5.5rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+  line-height: 1;
+}
+
+.text-red {
+  color: #ff3b30;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.logo-outline {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.4);
+}
+
+.logo-outline .text-red {
+  -webkit-text-stroke: 2px rgba(255, 59, 48, 0.5);
+}
+
+.logo-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  /* Wow effects: smooth hardware-accelerated wipe across the text */
+  clip-path: inset(0 calc(100% - var(--fill, 0%)) 0 0);
+  transition: clip-path 0.15s ease-out;
+}
+
+.logo-fill .text-red {
+  filter: drop-shadow(0 0 15px rgba(255, 59, 48, 0.8));
+}
+
+.logo-fill .text-white {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+}
+
+.loading-status {
+  color: #888;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.btn-tap-start {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 15px 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+  animation: tap-pulse 2s infinite ease-in-out;
+}
+
+.btn-tap-start:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes tap-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+    text-shadow: 0 0 10px #fff;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+/* ----------------------------------
+   Unified Skinnable UI Wrapper
+   ---------------------------------- */
+.game-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  background: #050505;
+}
+
+.top-bar {
+  background: #111;
+  color: #f1c40f;
+  padding: 5px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.game-view {
+  flex-grow: 1;
+  /* stretches to fill remaining vertical space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0f0f0f;
+  position: relative;
+}
+
+/* Base HUD styling (Skinnable layer) */
+.bottom-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(0deg, #111 0%, #1a1a1a 100%);
+  padding: 10px 20px;
+  border-top: 1px solid #333;
+  z-index: 10;
+}
+
+/* Portrait Mobile Optimization (Fit-to-Width Letterbox) */
+@media (orientation: portrait) {
+  .game-layout {
+    width: 100vw;
+    height: auto;
+    aspect-ratio: 9/16;
+    max-height: 100vh;
+    margin: auto 0;
+  }
+}
+
+.hud-zone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hud-center {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 15px;
+  border-radius: 8px;
+  border: 1px solid #222;
+  display: flex;
+  gap: 20px;
+}
+
+.hud-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+}
+
+.hud-display .label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #777;
+}
+
+.hud-display .value {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.bet-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.hud-btn-small {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.hud-btn-small:hover {
+  color: #fff;
+}
+
+.hud-btn {
+  background: transparent;
+  border: 1px solid #444;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hud-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Red-themed Wow Spin Button */
+.btn-spin-main {
+  background: #111;
+  color: white;
+  border: 2px solid #555;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.btn-spin-main::after {
+  content: '↻';
+  /* Rotating Arrows Placeholder */
+  font-size: 2.2rem;
+  color: #fff;
+  line-height: 1;
+  transform-origin: center;
+  transition: transform 0.5s ease;
+}
+
+.btn-spin-main:hover:not(:disabled) {
+  background: #222;
+  border-color: #fff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.btn-spin-main:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.btn-spin-main:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* The animation when the engine enters RESERVED state */
+.btn-spin-main.spinning::after {
+  animation: dual-arrow-spin 1s linear infinite;
+}
+
+@keyframes dual-arrow-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Debugger sidebar */
+.debugger-panel {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  max-height: 90vh;
+}
+
+.debugger-logs {
+  text-align: left;
+  background: #1a1a1a;
+  padding: 10px;
+  flex-grow: 1;
+  overflow-y: scroll;
+  font-family: monospace;
+  font-size: 10px;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+/* ==============================================================
+   CERTIFICATION HUD (COMPLIANCE)
+   ============================================================== */
+.cert-hud {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #000;
+  color: #666;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-top: 1px solid #222;
+  z-index: 10;
+}
+
+.cert-hud span {
+  font-family: monospace;
+}
+
+/* ==============================================================
+   MODALS (PAYTABLE, SETTINGS)
+   ============================================================== */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  color: #fff;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.btn-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  color: #888;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-close:hover {
+  color: #fff;
+}
+
+.paytable-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.pay-item {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.rtp-info {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.hud-btn.active {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #f1c40f;
+  color: #f1c40f;
+  text-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+}
+
+/* ==============================================================
+   CELEBRATION EFFECTS
+   ============================================================== */
+.game-view {
+  position: relative;
+}
+
+.win-celebration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  text-align: center;
+  color: #ffd700;
+  text-shadow: 0 0 20px #ff0000;
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.win-celebration h1 {
+  font-size: 6rem;
+  margin: 0;
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.win-celebration.mega {
+  color: #ff00ff;
+  text-shadow: 0 0 30px #00ffff;
+}
+
+.win-celebration.huge {
+  color: #00ff00;
+  text-shadow: 0 0 25px #005500;
+}
+
+.win-celebration.big {
+  color: #ffd700;
+  text-shadow: 0 0 20px #ff5500;
+}
+
+.win-celebration h2 {
+  font-size: 4rem;
+  color: white;
+  text-shadow: 0 0 10px #000;
+  margin: 0;
+}
+
+@keyframes popIn {
+  0% {
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 0;
+  }
+
+  80% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
