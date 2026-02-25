@@ -3,8 +3,8 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
+import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.datastax.driver.core.querybuilder.Update;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -80,7 +80,7 @@ public class CassandraSequencerPersister extends AbstractCassandraPersister<Stri
     }
 
     public Long getCurrentValue(String sequencerName) {
-        Select query = QueryBuilder.select(VALUE_COLUMN_NAME).
+        Statement query = QueryBuilder.select(VALUE_COLUMN_NAME).
                 from(getMainColumnFamilyName()).where(eq("KEY", sequencerName)).limit(1);
         ResultSet rows = execute(query, "getCurrentValue");
         Row row = rows.one();

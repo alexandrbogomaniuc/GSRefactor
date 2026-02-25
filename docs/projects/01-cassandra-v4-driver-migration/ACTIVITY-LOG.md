@@ -272,3 +272,21 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - overall from Wave 1 baseline `488` to `453` (`-35`).
 - Documented delta and next target in:
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214131/c4-wave18-inventory-delta-after-waves14-17-20260225-214131.md`
+
+## 2026-02-25 21:44 UTC
+- Implemented CASS-V4 Wave 19 in sequencer hotspots.
+- Switched typed `Select` query variables to generic `Statement` flow in:
+  - `CassandraSequencerPersister#getCurrentValue`
+  - `CassandraIntSequencerPersister#getCurrentValue`
+- Kept existing `Update` conditional logic unchanged (`onlyIf` CAS flow).
+- Validation: PASS
+  - `common-persisters` install
+  - cache targeted test suite
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-sequencer-select-statement-flow-20260225-214328.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-build-common-persisters-20260225-214328.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-unit-tests-20260225-214328.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-build-web-gs-20260225-214328.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-build-mp-stack-20260225-214328.txt`

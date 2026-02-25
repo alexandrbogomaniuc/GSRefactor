@@ -5395,3 +5395,17 @@
 - Evidence:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214131/phase7-cassandra-driver-inventory-20260225-214135.txt`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214131/c4-wave18-inventory-delta-after-waves14-17-20260225-214131.md`
+### 2026-02-25 21:44 UTC
+- Continued CASS-V4 and completed Wave 19 sequencer checkpoint by converting typed `Select` variables to `Statement` flow in `CassandraSequencerPersister` and `CassandraIntSequencerPersister` (`getCurrentValue` paths).
+- Kept compare-and-set `Update` logic unchanged to avoid behavior risk.
+- Validation PASS:
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn -q -Dtest=KeySpaceManagerTest,CassandraPersistenceManagerTest,ClusterConfigDeserializationTest,KeyspaceConfigurationFactoryTest test` (`cache`)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -DskipTests -pl core-interfaces,core,persistance -am package` (`mp-server`)
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-sequencer-select-statement-flow-20260225-214328.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-build-common-persisters-20260225-214328.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-unit-tests-20260225-214328.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-build-web-gs-20260225-214328.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-build-mp-stack-20260225-214328.txt`
