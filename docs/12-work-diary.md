@@ -4815,3 +4815,9 @@
 - Evidence: `git status` in `Dev_new` shows only alias/runtime portability fix paths plus the `Dev_new` diary update.
 - Result: pre-flight cleanup commit prepared (next action: commit + push, then save memory and begin Milestone 1 document).
 - Next step: create and push cleanup commit `Fix startgame alias launch HTML rewrites and path portability`.
+### 2026-02-25 09:07-09:07 UTC
+- Pre-flight cleanup completed: isolated the `/startgame` alias externalized-rewrite + portability fix set into a separate commit before the audit milestones.
+- Pre-flight cleanup commit: `5ad65075` (`Fix startgame alias launch HTML rewrites and path portability`).
+- Push attempt to `origin/main` failed in this environment due network/DNS restriction (`Could not resolve host: github.com`); local commit is complete and ready to push when network access is available.
+- Milestone 1 completed locally: created `docs/After-Project-Milestones-Plan.md` in simple English with Milestones 2-7, approval stop points, evidence requirements, and commit/push/memory rules.
+- Next step: commit Milestone 1 plan document + diary entry, attempt push, save memory, and pause for user approval before Milestone 2.
