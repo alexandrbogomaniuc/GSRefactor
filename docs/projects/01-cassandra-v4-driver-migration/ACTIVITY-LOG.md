@@ -358,3 +358,29 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
 - Inventory delta after Wave 22:
   - GS `driver3_import_lines`: `445 -> 442` (`-3`)
   - MP `driver3_import_lines`: `151` (no change)
+
+## 2026-02-25 22:01 UTC
+- Implemented CASS-V4 Wave 23 for support/currency persister paths:
+  - `CassandraSupportPersister`
+  - `CassandraCurrencyRatesPersister`
+  - `CassandraCurrencyRatesByDatePersister`
+- Converted typed `Select` / `Insert` variable declarations to `Statement` flow where safe.
+- Compile iteration:
+  - first `common-persisters` build failed because `Batch#add` requires `RegularStatement` and cannot accept generic `Statement`.
+  - fixed by restoring `Insert` type only for the per-item batch statement in `CurrencyRatesByDate` batch write path.
+- Validation: PASS
+  - `common-persisters` install (rerun)
+  - cache test suite (`63` tests)
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220044/c4-wave23-support-currency-statement-flow-20260225-220044.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220044/c4-wave23-build-common-persisters-20260225-220044.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220044/c4-wave23-build-common-persisters-20260225-220044-rerun.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220044/c4-wave23-unit-tests-20260225-220044.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220044/c4-wave23-build-web-gs-20260225-220044.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220044/c4-wave23-build-mp-stack-20260225-220044.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220044/phase7-cassandra-driver-inventory-20260225-220153.txt`
+- Inventory delta after Wave 23:
+  - GS `driver3_import_lines`: `442 -> 440` (`-2`)
+  - MP `driver3_import_lines`: `151` (no change)

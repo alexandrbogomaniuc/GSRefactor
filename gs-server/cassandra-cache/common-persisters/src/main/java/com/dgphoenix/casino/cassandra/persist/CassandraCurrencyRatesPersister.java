@@ -2,9 +2,8 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -55,7 +54,7 @@ public class CassandraCurrencyRatesPersister extends AbstractCassandraPersister<
     }
 
     public void createOrUpdate(CurrencyRate currencyRate) {
-        Insert query = getInsertQuery()
+        Statement query = getInsertQuery()
                 .value(SOURCE_FIELD, currencyRate.getSourceCurrency())
                 .value(DEST_FIELD, currencyRate.getDestinationCurrency())
                 .value(RATE_FIELD, currencyRate.getRate())
@@ -68,9 +67,10 @@ public class CassandraCurrencyRatesPersister extends AbstractCassandraPersister<
     }
 
     public CurrencyRate getCurrencyRate(String source, String target) {
-        Select select = getSelectColumnsQuery(RATE_FIELD, UPDATE_DATE_FIELD);
-        select.where().and(QueryBuilder.eq(SOURCE_FIELD, source)).and(QueryBuilder.eq(DEST_FIELD, target));
-        Row row = execute(select, "getRate").one();
+        Statement query = getSelectColumnsQuery(RATE_FIELD, UPDATE_DATE_FIELD)
+                .where(QueryBuilder.eq(SOURCE_FIELD, source))
+                .and(QueryBuilder.eq(DEST_FIELD, target));
+        Row row = execute(query, "getRate").one();
         CurrencyRate result = null;
         if (row != null && !row.isNull(RATE_FIELD)) {
             double rate = row.getDouble(RATE_FIELD);
@@ -82,8 +82,8 @@ public class CassandraCurrencyRatesPersister extends AbstractCassandraPersister<
     }
 
     public Collection<CurrencyRate> getRates() {
-        Select select = getSelectColumnsQuery(SOURCE_FIELD, DEST_FIELD, RATE_FIELD, UPDATE_DATE_FIELD);
-        return StreamUtils.asStream(execute(select, "getRates"))
+        Statement query = getSelectColumnsQuery(SOURCE_FIELD, DEST_FIELD, RATE_FIELD, UPDATE_DATE_FIELD);
+        return StreamUtils.asStream(execute(query, "getRates"))
                 .filter(Objects::nonNull)
                 .filter(row -> {
                     if (row.isNull(RATE_FIELD)) {

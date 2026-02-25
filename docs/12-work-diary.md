@@ -5445,3 +5445,15 @@
 - Evidence saved under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-215649/`.
 - Inventory result: GS driver3 imports reduced `445 -> 442`; MP unchanged `151`.
 - Next step: commit/push Wave 22 and continue next low-risk hotspot wave.
+### 2026-02-25 22:01 UTC
+- Dev_new CASS-V4 Wave 23 completed and validated.
+- Converted typed querybuilder variable usage to `Statement` flow in `CassandraSupportPersister`, `CassandraCurrencyRatesPersister`, and `CassandraCurrencyRatesByDatePersister`.
+- Compile iteration note: first common-persisters build failed because querybuilder `Batch` requires `RegularStatement`; fixed by keeping `Insert` type in the batch loop and reran.
+- Validation PASS:
+  - `mvn -DskipTests install` (`common-persisters`, rerun pass)
+  - `mvn test` (`cache`, `63` tests)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -DskipTests -pl core-interfaces,core,persistance -am package` (`mp-server`)
+- Evidence saved under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220044/`.
+- Inventory result: GS driver3 imports reduced `442 -> 440`; MP unchanged `151`.
+- Next step: commit/push Wave 23 and continue next hotspot wave.

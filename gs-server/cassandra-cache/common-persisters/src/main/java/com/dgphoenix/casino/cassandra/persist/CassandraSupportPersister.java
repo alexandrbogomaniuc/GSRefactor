@@ -3,8 +3,7 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -36,16 +35,16 @@ public class CassandraSupportPersister extends AbstractCassandraPersister<String
     }
 
     public void persist(String sessionId, long timestamp, String info) {
-        Insert insert = getInsertQuery();
-        insert.value(KEY, sessionId)
+        Statement query = getInsertQuery()
+                .value(KEY, sessionId)
                 .value(TIMESTAMP, timestamp)
                 .value(INFO, info);
-        execute(insert, "persist");
+        execute(query, "persist");
     }
 
     public Iterable<String> getSessionIDs() {
-        Select select = getSelectColumnsQuery(KEY);
-        ResultSet resultSet = execute(select, "getSessionIDs");
+        Statement query = getSelectColumnsQuery(KEY);
+        ResultSet resultSet = execute(query, "getSessionIDs");
 
         if (resultSet.isExhausted()) {
             return emptyList();
@@ -59,9 +58,9 @@ public class CassandraSupportPersister extends AbstractCassandraPersister<String
     }
 
     public Map<Long, String> getValuesBySessionID(String sessionId) {
-        Select select = getSelectColumnsQuery(TIMESTAMP, INFO);
-        select.where().and(eq(KEY, sessionId));
-        ResultSet resultSet = execute(select, "getValuesBySessionID");
+        Statement query = getSelectColumnsQuery(TIMESTAMP, INFO)
+                .where(eq(KEY, sessionId));
+        ResultSet resultSet = execute(query, "getValuesBySessionID");
 
         if (resultSet.isExhausted()) {
             return emptyMap();
