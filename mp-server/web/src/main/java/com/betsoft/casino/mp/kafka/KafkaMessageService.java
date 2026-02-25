@@ -19,6 +19,7 @@ import java.util.function.BiFunction;
 import javax.annotation.PostConstruct;
 
 import com.dgphoenix.casino.common.util.Pair;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -157,7 +158,8 @@ public class KafkaMessageService {
 
                                 consumerExecutorService.execute(() -> {
                                     try {
-                                        KafkaResponse response = (KafkaResponse) mapper.convertValue(record.value(), Class.forName(dataType));
+                                        KafkaResponse response = (KafkaResponse) mapper.convertValue(record.value(),
+                                                ReflectionUtils.forNameWithCompatibilityAliases(dataType));
                                         LOGGER.debug("Recieved response " + record.key() + " :: " + response.getClass());
                                         awaitingCompletableFutures.computeIfPresent(record.key(), new BiFunction<String, CompletableFuture<KafkaResponse>, CompletableFuture<KafkaResponse>>() {
                                             @Override

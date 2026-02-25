@@ -20,6 +20,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.betsoft.casino.bots.handlers.kafka.KafkaBotRequestHandlerFactory;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
 import com.dgphoenix.casino.kafka.dto.KafkaRequest;
 import com.dgphoenix.casino.kafka.dto.KafkaResponse;
@@ -117,7 +118,8 @@ public class KafkaRecieverService {
 
                                 consumerExecutorService.submit(() -> {
                                     try {
-                                        KafkaRequest request = (KafkaRequest) mapper.convertValue(record.value(), Class.forName(dataType));
+                                        KafkaRequest request = (KafkaRequest) mapper.convertValue(record.value(),
+                                                ReflectionUtils.forNameWithCompatibilityAliases(dataType));
                                         
                                         try {
                                             KafkaResponse response = kafkaBotRequestHandlerFactory.getRequestHandler(request).handle(request);

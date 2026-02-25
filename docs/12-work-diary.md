@@ -5011,3 +5011,13 @@
   - `mvn -f gs-server/game-server/web-gs/pom.xml -Dcluster.properties=local/local-machine.properties -DskipTests compile` => SUCCESS
   - `mvn -f gs-server/sb-utils/pom.xml -Dtest=ReflectionUtilsCompatibilityTest test` => SUCCESS (`3/3` pass)
 - Result: RN3 Wave A compatibility coverage is expanded to core GS runtime loaders/deserializers; next step is commit/push and continue with remaining MP-side reflection hotspots + key alias waves.
+### 2026-02-25 19:00-19:03 UTC
+- Continued RN3 Wave B for runtime class-string compatibility on MP-side reflection hotspots.
+- Patched MP deserialization/class-loading paths to use compatibility alias loader (`ReflectionUtils.forNameWithCompatibilityAliases`) in:
+  - `mp-server/core/.../GsonClassSerializer.java`
+  - `mp-server/web/.../KafkaMessageService.java`
+  - `mp-server/web/.../KafkaRecieverService.java`
+  - `mp-server/bots/.../KafkaRecieverService.java`
+- Validation evidence: `mvn -f /Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml -pl core,web,bots -am -DskipTests compile` => `BUILD SUCCESS`.
+- Result: MP runtime class loading now supports both legacy/new package-name payload class strings, reducing runtime break risk during naming cleanup waves.
+- Next step: commit/push RN3 Wave B, then continue with runtime config/template key cleanup waves and sign-off evidence refresh.
