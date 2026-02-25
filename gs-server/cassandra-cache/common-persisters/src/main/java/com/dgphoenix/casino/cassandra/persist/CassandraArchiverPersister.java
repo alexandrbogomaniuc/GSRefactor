@@ -2,7 +2,7 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -46,9 +46,9 @@ public class CassandraArchiverPersister extends AbstractCassandraPersister<Strin
         if (LOG.isDebugEnabled()) {
             LOG.debug("persist: " + cfName + "=" + new Date(lastProcessedDate));
         }
-        Insert query = getInsertQuery();
-        query.value(KEY, cfName);
-        query.value(LAST_PROCESSED_DATE_COLUMN, lastProcessedDate);
+        Statement query = getInsertQuery()
+                .value(KEY, cfName)
+                .value(LAST_PROCESSED_DATE_COLUMN, lastProcessedDate);
         execute(query, "persist");
     }
 

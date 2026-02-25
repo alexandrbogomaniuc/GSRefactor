@@ -5358,3 +5358,16 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-unit-tests-20260225-213335.txt`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-build-web-gs-20260225-213335.txt`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-build-mp-stack-20260225-213335.txt`
+### 2026-02-25 21:37 UTC
+- Continued CASS-V4 and completed Wave 16 small-persister conversion (`CassandraArchiverPersister`, `CassandraFrbWinOperationPersister`, `CassandraHistoryTokenPersister`, `CassandraPlayerSessionHistoryPersister`, `CassandraDelayedMassAwardFailedDeliveryPersister`).
+- Validation PASS:
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn -q -Dtest=KeySpaceManagerTest,CassandraPersistenceManagerTest,ClusterConfigDeserializationTest,KeyspaceConfigurationFactoryTest test` (`cache`)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -DskipTests -pl core-interfaces,core,persistance -am package` (`mp-server`)
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-small-persisters-statement-flow-20260225-213652.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-build-common-persisters-20260225-213652.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-unit-tests-20260225-213652.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-build-web-gs-20260225-213652.txt`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-build-mp-stack-20260225-213652.txt`

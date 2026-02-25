@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Statement;
-import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -57,16 +56,21 @@ public class CassandraPlayerSessionHistoryPersister extends AbstractCassandraPer
 
     public void persist(SessionInfo entry) {
         long now = System.currentTimeMillis();
-        Insert insertQuery = getInsertQuery();
-        insertQuery.value(KEY, entry.getSessionId());
-        insertQuery.value(DAY_FIELD, getDay(entry.getEndTime()));
-        if (entry.getExternalSessionId() != null) {
-            insertQuery.value(EXT_SESSION_ID_FIELD, entry.getExternalSessionId());
-        }
         ByteBuffer byteBuffer = HISTORY_TABLE.serializeToBytes(entry);
         String json = HISTORY_TABLE.serializeToJson(entry);
         try {
-            insertQuery.value(SERIALIZED_COLUMN_NAME, byteBuffer).value(JSON_COLUMN_NAME, json);
+            Statement insertQuery = entry.getExternalSessionId() == null
+                    ? getInsertQuery()
+                    .value(KEY, entry.getSessionId())
+                    .value(DAY_FIELD, getDay(entry.getEndTime()))
+                    .value(SERIALIZED_COLUMN_NAME, byteBuffer)
+                    .value(JSON_COLUMN_NAME, json)
+                    : getInsertQuery()
+                    .value(KEY, entry.getSessionId())
+                    .value(DAY_FIELD, getDay(entry.getEndTime()))
+                    .value(EXT_SESSION_ID_FIELD, entry.getExternalSessionId())
+                    .value(SERIALIZED_COLUMN_NAME, byteBuffer)
+                    .value(JSON_COLUMN_NAME, json);
             execute(insertQuery, "persist");
         } finally {
             releaseBuffer(byteBuffer);

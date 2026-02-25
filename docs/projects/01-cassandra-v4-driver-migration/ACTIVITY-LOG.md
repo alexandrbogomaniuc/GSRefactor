@@ -227,3 +227,23 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-unit-tests-20260225-213335.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-build-web-gs-20260225-213335.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213335/c4-wave15-build-mp-stack-20260225-213335.txt`
+
+## 2026-02-25 21:37 UTC
+- Implemented CASS-V4 Wave 16 small-persister conversion.
+- Switched typed `Insert` querybuilder variables to generic `Statement` flow in:
+  - `CassandraArchiverPersister`
+  - `CassandraFrbWinOperationPersister`
+  - `CassandraHistoryTokenPersister`
+  - `CassandraPlayerSessionHistoryPersister`
+  - `CassandraDelayedMassAwardFailedDeliveryPersister`
+- Validation: PASS
+  - `common-persisters` install
+  - cache targeted test suite
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-small-persisters-statement-flow-20260225-213652.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-build-common-persisters-20260225-213652.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-unit-tests-20260225-213652.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-build-web-gs-20260225-213652.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-213652/c4-wave16-build-mp-stack-20260225-213652.txt`
