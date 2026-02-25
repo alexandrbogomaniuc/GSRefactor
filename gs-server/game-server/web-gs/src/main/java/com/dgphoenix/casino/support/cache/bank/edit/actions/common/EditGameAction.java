@@ -12,6 +12,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.InheritFromTemplate;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
@@ -64,7 +65,7 @@ public class EditGameAction extends Action {
             }
         } else if (isClassProperty(key)) {
             try {
-                Class.forName(value);
+                ReflectionUtils.forNameWithCompatibilityAliases(value);
             } catch (Throwable e) {
                 errors.add(GLOBAL_MESSAGE, new ActionMessage("error.bankPropertiesForm.incorrectClassName", key, value));
                 return false;

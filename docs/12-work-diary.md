@@ -4968,3 +4968,14 @@
 - Added focused unit coverage `BankInfoAliasCompatibilityTest` (9 tests) to prove alias fallback behavior, legacy-key precedence, and default-value preservation when both keys are absent.
 - Validation evidence: `mvn -f /Users/alexb/Documents/Dev/Dev_new/gs-server/common/pom.xml -Dtest=BankInfoAliasCompatibilityTest test` => `BUILD SUCCESS`, tests run `9`, failures `0`, errors `0`.
 - Result: RN2 Wave A is code-complete and validated locally; next step is commit/push this wave, then begin RN2 Wave B class-loader compatibility (`com.abs.*` -> `com.dgphoenix.*` fallback at runtime-sensitive reflection points).
+### 2026-02-25 18:43-18:46 UTC
+- Continued RN2 compatibility wave with runtime class-loading fallback support for transitional package names (`com.abs.*` and `com.dgphoenix.*`).
+- Patched runtime-sensitive loaders: `WalletProtocolFactory`, `CommonWalletManager`, `GameServer` (start/close processors), and support validation path `EditGameAction` to use compatibility-aware class loading.
+- Added shared helper in `sb-utils` (`ReflectionUtils.forNameWithCompatibilityAliases`) plus focused unit tests in `ReflectionUtilsCompatibilityTest` (3 tests) with probe classes proving both fallback directions and missing-class behavior.
+- Validation evidence:
+  - `mvn -f gs-server/sb-utils/pom.xml -Dtest=ReflectionUtilsCompatibilityTest test` => `BUILD SUCCESS` (`3/3` pass)
+  - `mvn -f gs-server/common-wallet/pom.xml -DskipTests install` => `BUILD SUCCESS`
+  - `mvn -f gs-server/game-server/common-gs/pom.xml -Dcluster.properties=local/local-machine.properties -DskipTests install` => `BUILD SUCCESS`
+  - `mvn -f gs-server/game-server/web-gs/pom.xml -Dcluster.properties=local/local-machine.properties -DskipTests compile` => `BUILD SUCCESS`
+  - `mvn -f gs-server/common/pom.xml -Dtest=BankInfoAliasCompatibilityTest test` => `BUILD SUCCESS` (`9/9` pass)
+- Result: runtime class-string compatibility is now in place for the highest-risk bank-config loaders and support class validation path; next step is commit/push RN2 Wave B and continue inventory-driven cleanup waves.

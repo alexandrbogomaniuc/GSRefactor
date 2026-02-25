@@ -1045,7 +1045,7 @@ public class GameServer implements IGameServer, ICommonManager {
             }
             if (!StringUtils.isTrimmedEmpty(processorClass)) {
                 try {
-                    processor = (ICloseGameProcessor) Class.forName(processorClass.trim()).newInstance();
+                    processor = (ICloseGameProcessor) ReflectionUtils.forNameWithCompatibilityAliases(processorClass.trim()).newInstance();
                     closeGameProcessorMap.put(bankId, processor);
                 } catch (Exception e) {
                     LOG.error("getCloseGameProcessor cannot create new instance of CloseGameProcessor:", e);
@@ -1062,7 +1062,7 @@ public class GameServer implements IGameServer, ICommonManager {
             String processorClass = BankInfoCache.getInstance().getBankInfo(bankId).getStartGameProcessorClass();
             if (processorClass != null) {
                 try {
-                    processor = (IStartGameProcessor) Class.forName(processorClass).newInstance();
+                    processor = (IStartGameProcessor) ReflectionUtils.forNameWithCompatibilityAliases(processorClass.trim()).newInstance();
                 } catch (Exception e) {
                     LOG.error("GS::getStartGameProcessor cannot create_DMI new instance of StartGameProcessor:", e);
                     throw new CommonException(e);

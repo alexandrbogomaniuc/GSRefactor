@@ -6,7 +6,9 @@ import org.apache.log4j.Logger;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,6 +22,54 @@ public class ReflectionUtils {
     final static Pattern NUMBER = Pattern.compile("\\d+"); // Unsigned integer
     final static String CT_FIRST_VER_PATTERN = "transfer.common.";
     final static String CW_CT_PATTERN = "commonv\\d+\\.";
+    private static final String MODERN_PACKAGE_PREFIX = "com.abs.";
+    private static final String LEGACY_PACKAGE_PREFIX = "com.dgphoenix.";
+
+    /**
+     * Loads a class by name with runtime naming-compatibility fallbacks for package prefix migration.
+     * Supports staged migration between {@code com.abs.*} and {@code com.dgphoenix.*} without forcing
+     * immediate config rewrites.
+     *
+     * @param className class name to load
+     * @return loaded class
+     * @throws ClassNotFoundException when neither direct nor compatibility aliases can be resolved
+     */
+    public static Class<?> forNameWithCompatibilityAliases(String className) throws ClassNotFoundException {
+        if (className == null) {
+            throw new ClassNotFoundException("Class name is null");
+        }
+        String normalized = className.trim();
+        if (normalized.isEmpty()) {
+            throw new ClassNotFoundException("Class name is empty");
+        }
+
+        try {
+            return Class.forName(normalized);
+        } catch (ClassNotFoundException directError) {
+            Set<String> candidates = getCompatibilityAliasClassNames(normalized);
+            for (String candidate : candidates) {
+                try {
+                    Class<?> fallbackClass = Class.forName(candidate);
+                    LOG.warn("Resolved class via compatibility alias, requested=" + normalized + ", resolved=" + candidate);
+                    return fallbackClass;
+                } catch (ClassNotFoundException ignored) {
+                    // try next alias candidate
+                }
+            }
+            throw directError;
+        }
+    }
+
+    private static Set<String> getCompatibilityAliasClassNames(String className) {
+        Set<String> candidates = new LinkedHashSet<>();
+        if (className.startsWith(MODERN_PACKAGE_PREFIX)) {
+            candidates.add(LEGACY_PACKAGE_PREFIX + className.substring(MODERN_PACKAGE_PREFIX.length()));
+        }
+        if (className.startsWith(LEGACY_PACKAGE_PREFIX)) {
+            candidates.add(MODERN_PACKAGE_PREFIX + className.substring(LEGACY_PACKAGE_PREFIX.length()));
+        }
+        return candidates;
+    }
 
     /**
      * Find CW or CT version by package name, or package name of superclass/interfaces.

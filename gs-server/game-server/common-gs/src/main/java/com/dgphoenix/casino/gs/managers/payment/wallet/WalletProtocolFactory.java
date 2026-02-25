@@ -305,7 +305,7 @@ public class WalletProtocolFactory {
         LOG.info("WalletProtocolFactory::instantiateWPM instantiating WPM for bankId:{}, wpmClass={}", bankId, className);
         try {
             if (!StringUtils.isTrimmedEmpty(className)) {
-                Class<?> aClass = Class.forName(className);
+                Class<?> aClass = ReflectionUtils.forNameWithCompatibilityAliases(className);
                 Constructor<?> wpmConstructor = aClass.getConstructor(long.class);
                 IWalletProtocolManager manager = (IWalletProtocolManager) wpmConstructor.newInstance(bankId);
                 WalletHelper walletHelper = new WalletHelper(bankId);
