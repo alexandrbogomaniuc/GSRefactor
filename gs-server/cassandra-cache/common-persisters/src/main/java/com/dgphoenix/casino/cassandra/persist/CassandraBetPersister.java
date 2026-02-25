@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -113,9 +112,9 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
                     System.currentTimeMillis() - now);
             return result;
         }
-        Select query = QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .from(getMainColumnFamilyName());
-        query.where().and(eq(GAME_SESSION_ID_FIELD, gameSessionId));
+        Statement query = QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .from(getMainColumnFamilyName())
+                .where(eq(GAME_SESSION_ID_FIELD, gameSessionId));
         ResultSet resultSet = execute(query, "getBetsAndRealSize");
         Row row = resultSet.one();
         if (row != null) {
@@ -144,8 +143,9 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
                     System.currentTimeMillis() - now);
             return new Pair<>(bets.size(), result);
         }
-        Select query = QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME).from(getMainColumnFamilyName());
-        query.where().and(eq(GAME_SESSION_ID_FIELD, gameSessionId));
+        Statement query = QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .from(getMainColumnFamilyName())
+                .where(eq(GAME_SESSION_ID_FIELD, gameSessionId));
         ResultSet resultSet = execute(query, "getBetsAndRealSize");
         Row row = resultSet.one();
         if (row != null) {

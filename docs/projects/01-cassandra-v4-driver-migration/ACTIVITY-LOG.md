@@ -290,3 +290,26 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-unit-tests-20260225-214328.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-build-web-gs-20260225-214328.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-build-mp-stack-20260225-214328.txt`
+
+## 2026-02-25 21:51 UTC
+- Implemented CASS-V4 Wave 20 in bet/temp-bet persister paths.
+- Converted remaining typed-select query assembly to generic `Statement` flow in:
+  - `CassandraBetPersister`
+  - `CassandraTempBetPersister`
+- Fixed compile blocker caused by invalid `query.where()` calls on `Statement` by inlining `where(...).and(...)` into query construction chains.
+- Validation: PASS
+  - `common-persisters` install
+  - cache test suite (`63` tests)
+  - `web-gs` package (pass on rerun with explicit `-Dcluster.properties=local/local-machine.properties`)
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214719/c4-wave20-bet-tempbet-select-statement-flow-20260225-214719.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214719/c4-wave20-build-common-persisters-20260225-214914.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214719/c4-wave20-unit-tests-20260225-214914.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214719/c4-wave20-build-web-gs-20260225-214914.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214719/c4-wave20-build-web-gs-20260225-214914-rerun.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214719/c4-wave20-build-mp-stack-20260225-214914.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214719/phase7-cassandra-driver-inventory-20260225-215112.txt`
+- Inventory delta after Wave 20:
+  - GS `driver3_import_lines`: `453 -> 451` (`-2`)
+  - MP `driver3_import_lines`: `151` (no change)

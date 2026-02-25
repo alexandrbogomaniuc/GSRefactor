@@ -1,0 +1,139 @@
+timestamp_utc=2026-02-25T21:51:12Z
+script=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase7-cassandra-driver-inventory.sh
+repo_root=/Users/alexb/Documents/Dev/Dev_new
+gs_root=/Users/alexb/Documents/Dev/Dev_new/gs-server
+mp_root=/Users/alexb/Documents/Dev/Dev_new/mp-server
+new_games_root=/Users/alexb/Documents/Dev/Dev_new/new-games-server
+
+== GS: Cassandra dependency declarations ==
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/pom.xml:22:        <cassandra.driver.version>3.11.5</cassandra.driver.version>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/pom.xml:28:            <artifactId>cassandra-driver-core</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/pom.xml:29:            <version>${cassandra.driver.version}</version>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/pom.xml:33:            <artifactId>cassandra-driver-mapping</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/pom.xml:34:            <version>${cassandra.driver.version}</version>
+
+== MP: Cassandra dependency declarations ==
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:37:        <cassandra.driver.version>3.5.0</cassandra.driver.version>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:267:                        <artifactId>cassandra-driver-core</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:279:                <artifactId>cassandra-driver-core</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:280:                <version>${cassandra.driver.version}</version>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:295:                <artifactId>spring-data-cassandra</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:300:                        <artifactId>cassandra-driver-core</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/pom.xml:45:            <artifactId>spring-data-cassandra</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/pom.xml:49:            <artifactId>cassandra-driver-core</artifactId>
+
+== NEW_GAMES: Cassandra dependency declarations ==
+
+== GS: Java import inventory ==
+driver3_import_lines=451
+driver4_import_lines=0
+
+-- top files with driver3 imports --
+   8 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTrackingInfoPersister.java
+   8 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/AbstractCassandraPersister.java
+   7 /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraUnsendedPromoWinInfoPersister.java
+   7 /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPromoCampaignStatisticsPersister.java
+   7 /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPromoCampaignPersister.java
+   7 /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraBattlegroundConfigPersister.java
+   7 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPlayerGameSettingsPersister.java
+   7 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraHostCdnPersister.java
+   7 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCountryRestrictionPersister.java
+   7 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/persist/engine/TableDefinitionTest.java
+   6 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraSequencerPersister.java
+   6 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraRoundGameSessionPersister.java
+   6 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraMassAwardPersister.java
+   6 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraIntSequencerPersister.java
+   6 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraHistoryInformerItemPersister.java
+   6 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraFrBonusArchivePersister.java
+   6 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBonusArchivePersister.java
+   6 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBatchOperationStatusPersister.java
+   6 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/AbstractDistributedConfigEntryPersister.java
+   6 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/TableDefinition.java
+   6 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/SchemaCreator.java
+   5 /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraTournamentIconPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPromoWinPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPromoCampaignMembersPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPlayerAliasPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraMaxBalanceTournamentPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraLocalizationsPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/mp/RoundKPIInfoPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/mp/MQReservedNicknamePersister.java
+
+-- driver3 type usage by import --
+ 125 querybuilder
+  78 DataType
+  65 Row
+  48 ResultSet
+  41 Statement
+  30 schemabuilder
+  18 Session
+  10 ConsistencyLevel
+   5 exceptions
+   5 TableMetadata
+   3 ColumnDefinitions
+   2 policies
+   1 TypeCodec
+   1 TimestampGenerator
+   1 Metrics
+   1 KeyspaceMetadata
+   1 ExecutionInfo
+   1 CodecRegistry
+
+-- driver4 type usage by import --
+
+== MP: Java import inventory ==
+driver3_import_lines=151
+driver4_import_lines=0
+
+-- top files with driver3 imports --
+   7 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/WeaponsPersister.java
+   7 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/PlayerQuestsPersister.java
+   6 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/SequencerPersister.java
+   6 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/RoundResultNotificationPersister.java
+   6 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/GameRoomSnapshotPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/TournamentSessionPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/SocketClientInfoPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/SocketClientCountPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/ServerConfigPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/RoomTemplatePersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/RoomPlayerInfoPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/ReservedNicknamePersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/PlayerStatsPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/PendingOperationPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/OnlinePlayerPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/MultiNodeSeatPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/FriendsPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/CrashGameStatePersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/BotServiceConfigPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/BotConfigInfoPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/BGPrivateRoomPlayersStatusPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/ActiveFrbSessionPersister.java
+   5 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/ActiveCashBonusSessionPersister.java
+   4 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/SpawnConfigPersister.java
+   4 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/PlayerProfilePersister.java
+   4 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/PlayerNicknamePersister.java
+   4 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/MapConfigPersister.java
+   4 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/GameConfigPersister.java
+   3 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/AbstractRoomInfoPersister.java
+   1 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/SingleNodeRoomInfoPersister.java
+
+-- driver3 type usage by import --
+  67 querybuilder
+  34 DataType
+  25 Row
+  24 ResultSet
+   1 ConsistencyLevel
+
+-- driver4 type usage by import --
+
+== NEW_GAMES: Java import inventory ==
+driver3_import_lines=0
+driver4_import_lines=0
+
+-- top files with driver3 imports --
+
+-- driver3 type usage by import --
+
+-- driver4 type usage by import --
+

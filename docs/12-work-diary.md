@@ -5409,3 +5409,14 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-unit-tests-20260225-214328.txt`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-build-web-gs-20260225-214328.txt`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214328/c4-wave19-build-mp-stack-20260225-214328.txt`
+### 2026-02-25 21:51 UTC
+- Dev_new CASS-V4 Wave 20 completed and validated.
+- Fixed `Statement` query-chain compile blocker in `CassandraTempBetPersister` (`query.where()` was invalid on `Statement`) and completed matching statement-flow updates in `CassandraBetPersister`.
+- Validation PASS:
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn test` (`cache`, `63` tests)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -DskipTests -pl core-interfaces,core,persistance -am package` (`mp-server`)
+- Added Wave 20 evidence + inventory snapshot under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-214719/`.
+- Inventory result: GS driver3 imports reduced `453 -> 451`; MP unchanged `151`.
+- Next step: commit/push Wave 20 and continue remaining Cassandra hotspots.

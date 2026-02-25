@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -48,10 +47,10 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
 
     public PlayerBet getPlayerBet(long gameSessionId, long betId) {
         long now = System.currentTimeMillis();
-        Select query = QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME).
-                from(getMainColumnFamilyName());
-        query.where().and(eq(GAME_SESSION_ID_FIELD, gameSessionId));
-        query.where().and(eq(BET_ID_FIELD, (int) betId));
+        Statement query = QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .from(getMainColumnFamilyName())
+                .where(eq(GAME_SESSION_ID_FIELD, gameSessionId))
+                .and(eq(BET_ID_FIELD, (int) betId));
         ResultSet resultSet = execute(query, "getPlayerBet");
         Row row = resultSet.one();
 
@@ -70,8 +69,9 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
     }
 
     ResultSet getResultSetByGameSessionId(long gameSessionId) {
-        Select query = QueryBuilder.select(BET_ID_FIELD, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME).from(COLUMN_FAMILY_NAME);
-        query.where().and(eq(GAME_SESSION_ID_FIELD, gameSessionId));
+        Statement query = QueryBuilder.select(BET_ID_FIELD, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .from(COLUMN_FAMILY_NAME)
+                .where(eq(GAME_SESSION_ID_FIELD, gameSessionId));
         return execute(query, "getResultSetByGameSessionId get from temp Table");
     }
 
@@ -105,10 +105,10 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
     }
 
     ResultSet getResultSetByGameSessionIdAndRounds(long gameSessionId, Set<Long> betIds) {
-        Select query = QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME).from(COLUMN_FAMILY_NAME);
-        query.where().
-                and(eq(GAME_SESSION_ID_FIELD, gameSessionId)).
-                and(QueryBuilder.in(BET_ID_FIELD, betIds.toArray()));
+        Statement query = QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .from(COLUMN_FAMILY_NAME)
+                .where(eq(GAME_SESSION_ID_FIELD, gameSessionId))
+                .and(QueryBuilder.in(BET_ID_FIELD, betIds.toArray()));
         return execute(query, "getResultSetByGameSessionIdAndRounds from temp Table");
     }
 
