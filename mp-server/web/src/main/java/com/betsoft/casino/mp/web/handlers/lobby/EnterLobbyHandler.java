@@ -666,7 +666,8 @@ public class EnterLobbyHandler extends MessageHandler<EnterLobby, ILobbySocketCl
     private int getStakesReserve(GameType gameType, Map<String, String> gameSettings) {
         int stakesReserve = GameType.getStakesReserve(gameType);
         if (gameSettings != null && !gameSettings.isEmpty()) {
-            String reserve = gameSettings.get(BaseGameConstants.KEY_MQ_STAKES_RESERVE);
+            String reserve = getGameSettingValue(gameSettings, BaseGameConstants.KEY_MQ_STAKES_RESERVE,
+                    BaseGameConstants.KEY_ABS_STAKES_RESERVE);
             if (!StringUtils.isTrimmedEmpty(reserve)) {
                 stakesReserve = Integer.parseInt(reserve);
             }
@@ -684,7 +685,8 @@ public class EnterLobbyHandler extends MessageHandler<EnterLobby, ILobbySocketCl
         int stakesLimit = GameType.getStakesLimit(gameType);
 
         if (gameSettings != null && !gameSettings.isEmpty()) {
-            String limit = gameSettings.get(BaseGameConstants.KEY_MQ_STAKES_LIMIT);
+            String limit = getGameSettingValue(gameSettings, BaseGameConstants.KEY_MQ_STAKES_LIMIT,
+                    BaseGameConstants.KEY_ABS_STAKES_LIMIT);
             if (!StringUtils.isTrimmedEmpty(limit)) {
                 stakesLimit = Integer.parseInt(limit);
             }
@@ -786,10 +788,10 @@ public class EnterLobbyHandler extends MessageHandler<EnterLobby, ILobbySocketCl
             getLog().debug("processStartBonus: playerProfile={}, gameSettings={}, accountId={}",
                     playerProfile, gameSettings, playerInfo.getAccountId());
 
-            if (playerProfile == null && gameSettings != null &&
-                    gameSettings.containsKey(BaseGameConstants.KEY_MQ_AWARD_PLAYER_START_BONUS)) {
-
-                if (Boolean.parseBoolean(gameSettings.get(BaseGameConstants.KEY_MQ_AWARD_PLAYER_START_BONUS))) {
+            String startBonusSetting = getGameSettingValue(gameSettings, BaseGameConstants.KEY_MQ_AWARD_PLAYER_START_BONUS,
+                    BaseGameConstants.KEY_ABS_AWARD_PLAYER_START_BONUS);
+            if (playerProfile == null && !StringUtils.isTrimmedEmpty(startBonusSetting)) {
+                if (Boolean.parseBoolean(startBonusSetting)) {
 
                     initPlayerStartBonusWeapons(tPlayerInfo, gameType.getGameId());
                     needPlayerStartBonus = isNeedStartBonus(playerInfo) && moneyType == MoneyType.REAL;
@@ -800,6 +802,17 @@ public class EnterLobbyHandler extends MessageHandler<EnterLobby, ILobbySocketCl
             }
         }
         return needPlayerStartBonus;
+    }
+
+    private String getGameSettingValue(Map<String, String> gameSettings, String key, String aliasKey) {
+        if (gameSettings == null || gameSettings.isEmpty()) {
+            return null;
+        }
+        String value = gameSettings.get(key);
+        if (!StringUtils.isTrimmedEmpty(value)) {
+            return value;
+        }
+        return gameSettings.get(aliasKey);
     }
 
     private boolean isAllowWeaponSaveInAllGames(MoneyType moneyType, Map<String, String> gameSettings) {

@@ -328,13 +328,16 @@ public class MQServiceHandler {
                 String stakesLimit = gameInfo.getProperty(BaseGameConstants.KEY_MQ_STAKES_LIMIT);
                 if (!StringUtils.isTrimmedEmpty(stakesReserve)) {
                     gameSettings.put(BaseGameConstants.KEY_MQ_STAKES_RESERVE, stakesReserve);
+                    gameSettings.put(BaseGameConstants.KEY_ABS_STAKES_RESERVE, stakesReserve);
                 }
                 if (!StringUtils.isTrimmedEmpty(stakesLimit)) {
                     gameSettings.put(BaseGameConstants.KEY_MQ_STAKES_LIMIT, stakesLimit);
+                    gameSettings.put(BaseGameConstants.KEY_ABS_STAKES_LIMIT, stakesLimit);
                 }
                 boolean mqStartBonusDisabled = bankInfo.isMqStartBonusDisabled();
                 if (!mqStartBonusDisabled) {
                     gameSettings.put(BaseGameConstants.KEY_MQ_AWARD_PLAYER_START_BONUS, Boolean.TRUE.toString());
+                    gameSettings.put(BaseGameConstants.KEY_ABS_AWARD_PLAYER_START_BONUS, Boolean.TRUE.toString());
                 }
                 String nickName = accountInfo.getNickName();
                 if (!StringUtils.isTrimmedEmpty(nickName) && bankInfo.isMpUseProvidedNickname()) {

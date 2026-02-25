@@ -190,9 +190,12 @@
             'MQ_TIMER_FREQ': '15', // in sec,
             <% if (GameServerConfiguration.getInstance().isTestSystem()) { %>'TEST_SYSTEM': true, <% } %>
             'MQ_WEAPONS_MODE': '<%=bankInfo.getMaxQuestWeaponMode().name()%>',
+            'ABS_WEAPONS_MODE': '<%=bankInfo.getMaxQuestWeaponMode().name()%>',
             'MQ_WEAPONS_SAVING_ALLOWED': '<%=bankInfo.isRoundWinsWithoutBetsAllowed()%>',
             'MQ_CLIENT_ERROR_HANDLING': <%=GameServerConfiguration.getInstance().isTestSystem()%>,
+            'ABS_CLIENT_ERROR_HANDLING': <%=GameServerConfiguration.getInstance().isTestSystem()%>,
             'DISABLE_MQ_BACKGROUND_LOADING': '<%=bankInfo.isMQBackgroundLoadingDisabled()%>',
+            'DISABLE_ABS_BACKGROUND_LOADING': '<%=bankInfo.isMQBackgroundLoadingDisabled()%>',
             'DISABLE_MQ_AUTOFIRING': '<%=false%>',
             'CW_SEND_REAL_BET_WIN': '<%=bankInfo.isCWSendRealBetWin()%>',
             'commonPathForActionGames': '<%=lobbyUrl%>/html5pc/actiongames/common/',

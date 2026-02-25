@@ -272,15 +272,21 @@ public class BaseGameConstants {
 
     @NumericProperty
     public static final String KEY_MQ_STAKES_RESERVE = "MQ_STAKES_RESERVE";
+    @NumericProperty
+    public static final String KEY_ABS_STAKES_RESERVE = "ABS_STAKES_RESERVE";
 
     @NumericProperty
     public static final String KEY_MQ_STAKES_LIMIT = "MQ_STAKES_LIMIT";
+    @NumericProperty
+    public static final String KEY_ABS_STAKES_LIMIT = "ABS_STAKES_LIMIT";
 
     @NumericProperty(description = "Percent of regular bets that should be added to Leaderboards in MaxQuest")
     public static final String KEY_MQ_LB_CONTRIBUTION = "MQ_LB_CONTRIBUTION";
 
     @BooleanProperty(description = "If enabled start player bonus should be awarded")
     public static final String KEY_MQ_AWARD_PLAYER_START_BONUS = "MQ_AWARD_PLAYER_START_BONUS";
+    @BooleanProperty(description = "If enabled start player bonus should be awarded")
+    public static final String KEY_ABS_AWARD_PLAYER_START_BONUS = "ABS_AWARD_PLAYER_START_BONUS";
 
     @StringProperty(description = "List of possible game models")
     @InheritFromTemplate

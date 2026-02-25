@@ -5034,3 +5034,24 @@
   - `mvn -f /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/pom.xml -Dcluster.properties=local/local-machine.properties -DskipTests compile` => `BUILD SUCCESS`
 - Result: class-string config migration can now introduce ABS keys safely without breaking existing runtime behavior.
 - Next step: implement RN5 Wave A for GS->MP `MQ_*` runtime payload compatibility (dual-field output) with consumer-safe fallback.
+### 2026-02-25 19:05-19:08 UTC
+- Implemented RN5 Wave A/B runtime protocol compatibility for `MQ_*` migration safety.
+- Added `BaseGameConstants` alias keys for GS<->MP game settings payload:
+  - `ABS_STAKES_RESERVE`
+  - `ABS_STAKES_LIMIT`
+  - `ABS_AWARD_PLAYER_START_BONUS`
+- GS producer update (`MQServiceHandler`): when sending lobby `gameSettings`, now writes both legacy `MQ_*` keys and new `ABS_*` aliases for stakes reserve/limit and start-bonus flag.
+- MP consumer update (`EnterLobbyHandler`): stake/start-bonus readers now accept both legacy and alias keys with legacy-first fallback.
+- MP template update (`real/mp/template.jsp`, `free/mp/template.jsp`): added dual fields for client-facing runtime flags (`ABS_WEAPONS_MODE`, `ABS_CLIENT_ERROR_HANDLING`, `DISABLE_ABS_BACKGROUND_LOADING`) while keeping existing `MQ_*` fields.
+- Validation evidence:
+  - `mvn -f /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/pom.xml -DskipTests install` => `BUILD SUCCESS`
+  - `mvn -f /Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml -pl web -am -DskipTests compile` => `BUILD SUCCESS`
+  - `mvn -f /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/pom.xml -Dcluster.properties=local/local-machine.properties -DskipTests compile` => `BUILD SUCCESS`
+  - `mvn -f /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/pom.xml -Dcluster.properties=local/local-machine.properties -DskipTests compile` => `BUILD SUCCESS` (first attempt failed due parallel build race before updated `utils-restricted` was installed; rerun passed).
+- Result: GS/MP runtime payloads now support staged migration away from `MQ_*` keys without breaking current consumers.
+- Next step: refresh Phase 9 subproject status docs and continue remaining runtime-sensitive naming cleanup toward final sign-off.
+### 2026-02-25 19:08-19:10 UTC
+- Performed post-wave runtime sanity check after RN5 changes using refactor smoke script.
+- Evidence: `node /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-onboard.mjs smoke` returned all checks PASS, including `/startgame` launch alias (`HTTP 200`).
+- Result: latest runtime naming compatibility changes did not break baseline local launch path.
+- Next step: commit/push RN5 Wave A/B changes and continue remaining runtime-sensitive cleanup toward sign-off package refresh.

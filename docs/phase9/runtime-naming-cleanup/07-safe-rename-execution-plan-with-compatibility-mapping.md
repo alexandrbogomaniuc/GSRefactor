@@ -9,20 +9,22 @@ Finish runtime naming cleanup in controlled waves, without breaking launch/walle
 - Completed:
   - RN2 Wave A: `MQ_*` alias reads in `BankInfo` (`feed2f3f`)
   - RN2 Wave B: runtime class-loading fallback for `com.abs.*` <-> `com.dgphoenix.*` in critical loaders (`1045b5ec`)
+  - RN3 Wave A/B: compatibility fallback extended to additional GS/MP runtime reflection hotspots (`62df498e`, `d5776764`)
+  - RN4 Wave A: class-string config aliases for `WPM_CLASS`, `START_GAME_PROCESSOR`, `CLOSE_GAME_PROCESSOR` (`ad156b6c`)
 - Remaining:
-  - Many reflection points still use direct `Class.forName(...)` without compatibility fallback
+  - Some reflection points may still use direct `Class.forName(...)` and need ongoing inventory recheck
   - Runtime XML/JSP configs still contain legacy naming references
-  - `MQ_*` payload/template contract still active between GS and MP
+  - `MQ_*` payload/template contract still active between GS and MP (dual-field transition started)
 
 ## Compatibility Mapping (Working Baseline)
 | Legacy surface | Target surface | Current compatibility status | Where handled now | Next step |
 |---|---|---|---|---|
-| `com.dgphoenix.*` class string | `com.abs.*` class string | Partial (critical loaders only) | `ReflectionUtils` + GS runtime loaders | Extend to remaining reflection loaders in GS/MP |
-| `WPM_CLASS` | `ABS_WPM_CLASS` (future optional) | Not introduced yet | Existing `WPM_CLASS` read path | Add dual-read only after config rollout plan is approved |
-| `START_GAME_PROCESSOR` | `ABS_START_GAME_PROCESSOR` (future optional) | Not introduced yet | Existing key in `GameServer` | Add key alias when config migration starts |
-| `CLOSE_GAME_PROCESSOR` | `ABS_CLOSE_GAME_PROCESSOR` (future optional) | Not introduced yet | Existing key in `GameServer` | Add key alias when config migration starts |
+| `com.dgphoenix.*` class string | `com.abs.*` class string | Broad partial coverage | `ReflectionUtils` + GS/MP runtime loaders | Keep extending based on inventory delta and runtime traces |
+| `WPM_CLASS` | `ABS_WPM_CLASS` (future optional) | Partial | `BankInfo.getWPMClass()` dual-read | Validate support UI save/load and rollout strategy |
+| `START_GAME_PROCESSOR` | `ABS_START_GAME_PROCESSOR` (future optional) | Partial | `BankInfo.getStartGameProcessorClass()` dual-read | Validate restart + processor loading with alias key |
+| `CLOSE_GAME_PROCESSOR` | `ABS_CLOSE_GAME_PROCESSOR` (future optional) | Partial | `BankInfo.getCloseGameProcessorClass()` dual-read | Validate restart + processor loading with alias key |
 | `MQ_*` bank keys (selected) | `ABS_*` key aliases | Partial (selected keys) | `BankInfo` alias accessors | Expand alias coverage based on GS/MP runtime usage inventory |
-| `MQ_*` template payload keys | `ABS_*` payload keys | Not migrated | JSP template + MP handler contract | Introduce dual-field payloads first, then staged consumer cutover |
+| `MQ_*` template payload keys | `ABS_*` payload keys | Partial | JSP dual fields + GS/MP stakes/start-bonus dual keys | Continue migrating remaining keys and verify client/runtime behavior |
 
 ## Controlled Next Waves
 
@@ -74,4 +76,3 @@ Finish runtime naming cleanup in controlled waves, without breaking launch/walle
   - `docs/phase9/runtime-naming-cleanup/evidence/20260225-phase9_map_refs.txt`
 - Repeatable scan command:
   - `gs-server/deploy/scripts/phase9-runtime-naming-inventory.sh`
-

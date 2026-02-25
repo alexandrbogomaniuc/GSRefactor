@@ -302,11 +302,14 @@
             'JS_SHOW_PROMO_DETAILS_FUNC_NAME': 'showPromoDetails',
             <% } %>
             'MQ_WEAPONS_MODE': '<%=bankInfo.getMaxQuestWeaponMode().name()%>',
+            'ABS_WEAPONS_MODE': '<%=bankInfo.getMaxQuestWeaponMode().name()%>',
             'MQ_WEAPONS_SAVING_ALLOWED': '<%=bankInfo.isRoundWinsWithoutBetsAllowed()%>',
             <% if (bonusId != null) { %>'bonusId': '<%=bonusId%>', <% } %>
             <% if (tournamentId != null) { %> 'tournamentId': '<%=tournamentId%>', <% } %>
             'MQ_CLIENT_ERROR_HANDLING': <%=GameServerConfiguration.getInstance().isTestSystem()%>,
+            'ABS_CLIENT_ERROR_HANDLING': <%=GameServerConfiguration.getInstance().isTestSystem()%>,
             'DISABLE_MQ_BACKGROUND_LOADING': '<%=bankInfo.isMQBackgroundLoadingDisabled()%>',
+            'DISABLE_ABS_BACKGROUND_LOADING': '<%=bankInfo.isMQBackgroundLoadingDisabled()%>',
             'DISABLE_MQ_AUTOFIRING': '<%=false%>',
             'ROOMS_SORT_ORDER': '<%=bankInfo.getMQRoomsSortOrder()%>',
             'CW_SEND_REAL_BET_WIN': '<%=bankInfo.isCWSendRealBetWin()%>',
