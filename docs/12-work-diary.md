@@ -4857,3 +4857,16 @@
 - Push attempt to `origin/main` failed again in this environment: `Could not resolve host: github.com`.
 - Result: Milestone 3 is complete locally; push is pending network/DNS access.
 - Next step: wait for user approval before Milestone 4 (visual architecture & workflow diagrams in Mermaid + comparison tables).
+### 2026-02-25 10:09-10:09 UTC
+- Started Milestone 4 (Visual Architecture & Workflows) after Milestone 3 approval.
+- Collected current architecture/workflow facts from behavior map, roadmap, readiness report, refactor compose, config-portal specs/guardrails, and Redis ADR to build non-technical Mermaid diagrams and comparison tables.
+- Key inputs confirmed: cutover still `NO_GO_CUTOVER_PENDING_VALIDATION`, mixed-topology manual full-flow PASS, Cassandra target path uses `cassandra:4.1` in refactor compose, Redis is ephemeral state cache (not financial source of truth), Java Cassandra driver remains `3.11.5`.
+- Next step: create `docs/Architecture-Workflow-Visual-Pack.md` with before/current/target diagrams, workflow comparisons, and version tables in plain English.
+### 2026-02-25 10:11-10:11 UTC
+- Milestone 4 completed locally: created visual architecture/workflow pack with Mermaid diagrams and plain-English comparison tables for before/current/target GS modernization states.
+- Added `/Users/alexb/Documents/Dev/Dev_new/docs/Architecture-Workflow-Visual-Pack.md` with 10 Mermaid diagrams (legacy architecture, current mixed architecture, target cutover-ready architecture, launch/wager/config workflows before vs now, blocker map) plus version tables and scope clarity summary.
+- Included factual version markers where known (Cassandra `2.1.20` legacy path, Cassandra target `4.1`, Kafka `7.3.2`, ZooKeeper `3.8`, Redis `7.2-alpine`, GS Java build metadata `1.8`, Java Cassandra driver `3.11.5`) and explicit notes where evidence is limited.
+- Validation: structural check confirms 10 Mermaid blocks + 10 matching "How to read this" notes; `git diff --check` clean for the visual pack and diary entry.
+- Evidence: `docs/Architecture-Workflow-Visual-Pack.md`, readiness report `docs/release-readiness/program-deploy-readiness-status-20260224-163502.md`, behavior map `docs/16-gs-behavior-map-and-runtime-flow-blueprint.md`, refactor compose `gs-server/deploy/docker/refactor/docker-compose.yml`, Redis ADR `docs/28-redis-state-blob-and-deterministic-math-adr-v1.md`.
+- Result: Milestone 4 stop condition met locally (non-technical visual comparison pack shows modernized vs legacy areas and where current blockers sit).
+- Next step: commit Milestone 4 visual pack, attempt push, save memory, and wait for user approval before Milestone 5 (Config Portal User Guide).
