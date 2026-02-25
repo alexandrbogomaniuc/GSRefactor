@@ -1,0 +1,3 @@
+12:- wallet_shadow_probe: FAIL
+34:FAIL: protocol-adapter canary route decision is not enabled for bank 6275
+35:Decision payload: {"routeEnabled":false,"canaryBanks":["6275"],"bankId":"6275","routeToProtocolAdapter":false,"failOpenLegacyPath":true,"protocolMode":"JSON","reason":"legacy_fallback"}

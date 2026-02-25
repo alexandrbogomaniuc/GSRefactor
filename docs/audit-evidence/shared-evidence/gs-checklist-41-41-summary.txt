@@ -1,0 +1,9 @@
+updatedAt: 2026-02-24
+sections: 6
+checklistCompletion: 41/41
+section legacy-parity: 6/6 done
+section architecture: 9/9 done
+section service-extraction: 7/7 done
+section integration-and-protocol: 5/5 done
+section platform-upgrades: 4/4 done
+section operator-ux: 10/10 done

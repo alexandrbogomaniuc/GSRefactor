@@ -1,0 +1,5 @@
+/Users/alexb/Documents/Dev/Dev_new
+main
+origin	https://github.com/alexandrbogomaniuc/GSRefactor.git (fetch)
+origin	https://github.com/alexandrbogomaniuc/GSRefactor.git (push)
+24-isolation-and-repo-synchronization-policy.md: present

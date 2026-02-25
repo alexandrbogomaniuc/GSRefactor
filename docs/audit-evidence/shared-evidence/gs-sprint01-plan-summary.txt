@@ -1,0 +1,15 @@
+10:| P0 | Bootstrap verification package | Platform | branch `Codex` verified, backup tag exists, source and `Dev_new` commit hashes match, evidence recorded in docs |
+11:| P0 | Endpoint/protocol inventory freeze | Compatibility | full `.do` Struts action inventory captured, Spring endpoints captured, protocol classification for launch/wager/settle/history/FRB/support complete |
+12:| P0 | Parity matrix v1 | Compatibility + QA | matrix includes launch/wager/settle/history/FRB/reconnect scenarios, expected status/body invariants, and pass/fail slots for legacy vs modern path |
+13:| P0 | Golden flow definitions | Architecture + QA | deterministic request/response flows documented for launch, wager, settle, history, FRB, reconnect with required correlation keys |
+14:| P0 | Replay harness skeleton | QA | CLI harness scaffolding created with stable fixtures for top banks/games; dry-run executes without mutating production data |
+15:| P1 | Observability contract baseline | Platform | `traceId`, `sessionId`, `bankId`, `gameId`, `operationId`, `configVersion` fields defined in logging contract and mapped to current hot paths |
+16:| P1 | Error taxonomy draft | Platform + Support | top error classes mapped to actionable buckets (`validation`, `upstream`, `state`, `dependency`, `unknown`) with runbook links |
+17:| P1 | CI quality gates baseline | DevEx | lint/test/smoke gates defined; branch policy requires green checks for parity-related changes |
+18:| P1 | Bank canary policy draft | Architecture + Ops | canary bank selection criteria, success thresholds, rollback trigger conditions documented |
+19:| P2 | Backlog slicing for Phase 3/4 | Architecture | Config Service and protocol adapter epics split into implementable stories with dependencies and risk tags |
+21:## Sprint Exit Criteria
+27:## Out of Scope (Sprint 01)
+28:- no production cutover,
+29:- no Cassandra version upgrade,
+30:- no package-wide rename waves,

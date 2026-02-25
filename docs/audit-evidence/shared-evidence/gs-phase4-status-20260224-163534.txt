@@ -1,0 +1,7 @@
+8:- runtime_readiness: PASS
+9:- parity_check: PASS
+10:- wallet_shadow_probe: FAIL
+13:- phase4_status: NO_GO_RUNTIME_FAILURE
+14:- decision: No-Go (runtime parity/wallet checks failed)
+18:- Review runtime evidence and verification outputs before any rollout decision.
+25:- Runtime decision state for current environment: see `phase4_status` above.

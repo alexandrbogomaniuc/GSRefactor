@@ -1,0 +1,12 @@
+       0 /Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/full-copy/run-20260224-155602/count-mismatches-source-vs-target.tsv
+--- sample compare rows ---
+rcasinoks.archivercf	0	0
+rcasinoks.batchopstatus	0	0
+rcasinoks.battlegroundhistory	0	0
+rcasinoks.battlegroundparticipantroundhistory	0	0
+rcasinoks.battlegroundprivateroomsettings	0	0
+rcasinoks.betcf	68	68
+rcasinoks.bonusarchcf	1	1
+rcasinoks.clientgamestatisticsinfocf	0	0
+rcasinoks.concurrentnotcf	0	0
+rcasinoks.currentplayersessionstate	1	1

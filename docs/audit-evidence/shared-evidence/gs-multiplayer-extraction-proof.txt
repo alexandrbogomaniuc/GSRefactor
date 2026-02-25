@@ -1,0 +1,6 @@
+16:| multiplayer_service | `/Users/alexb/Documents/Dev/dev_new/docs/phase6/multiplayer/phase6-multiplayer-runtime-evidence-20260224-163048.md` | PASS | multiplayer_routing_policy_probe=PASS; multiplayer_canary_probe=SKIPPED | TESTED_GO_RUNTIME_READY |
+11:- `isMultiplayer` at bank-level config controls MP paths.
+12:- If `isMultiplayer=false`:
+18:1. Explicit bank `isMultiplayer=false` -> force non-MP path.
+19:2. `isMultiplayer=true` and game supports MP -> route to multiplayer service boundary.
+41:2. Keep `isMultiplayer=false` for non-MP banks (default safe state).

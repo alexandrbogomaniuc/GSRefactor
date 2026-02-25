@@ -1,0 +1,3 @@
+44:### No-Go Scope (Intentional, Deferred)
+45:- Runtime config/host/protocol/template files
+50:- **Phase 9 marked complete** as a tested controlled-wave phase deliverable with explicit deferred blockers for broader rename cutover.

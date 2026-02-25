@@ -1,0 +1,15 @@
+37:- tests: 8
+38:- pass: 8
+39:- fail: 0
+57:Latest run (2026-02-12):
+60:- achieved bets/sec: `2210.19`
+61:- placebet latency: `p50=8.25ms`, `p95=13.04ms`, `p99=17.87ms`
+62:- collect latency: `p50=8.28ms`, `p95=15.56ms`, `p99=17.2ms`
+71:Latest run (2026-02-12):
+89:  - `cd /Users/alexb/Documents/Dev/new-games-server && npm run runtime:e2e`
+93:- `npm run runtime:e2e` -> success (`GSValidateStatus=200`, `opengame/placebet/collect/readhistory` all `200`).
+117:  - runtime E2E (`runtime:e2e`) output,
+127:    - placebet p95 <= `250ms`: `14.46ms`
+128:    - collect p95 <= `300ms`: `17.26ms`
+167:  - `20x runtime:e2e` loop completed with `TOTAL_FAILS=0`.
+176:  - legacy route (`gameId=838`) verified unchanged routing to:

@@ -1,0 +1,7 @@
+8:- totalTables: 107
+9:- importedTablesOk: 42
+10:- emptyTables: 64
+11:- failedStages: 1
+14:- statusTsv: /Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/full-copy/run-20260224-155602/status.tsv
+16:## Failures
+17:- rcasinoks.httpcallinfocf [import] <stdin>:1:Failed to process 45 rows; failed rows written to import_rcasinoks_httpcallinfocf.err

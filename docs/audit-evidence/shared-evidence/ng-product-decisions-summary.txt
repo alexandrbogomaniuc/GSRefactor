@@ -1,0 +1,11 @@
+6:- GS remains the core system for this project.
+12:- New Games backend must not call casino wallet endpoints directly.
+14:- First game target: Plinko.
+17:- Initial launch target:
+18:  - 200 concurrent players,
+19:  - 100 bets per second.
+20:- Compliance scope for phase 1:
+24:- Keep GS Java stack unchanged for core responsibilities.
+25:- Build new game client with latest PixiJS in a separate modern frontend workspace.
+26:- Avoid replacing legacy GS client pipeline globally in phase 1.
+30:## High-Level Delivery Goal

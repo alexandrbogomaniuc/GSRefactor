@@ -1,0 +1,6 @@
+5:- overall_status: NO_GO_RUNTIME_FAILURE
+12:| gameplay_orchestrator | `/Users/alexb/Documents/Dev/dev_new/docs/phase5/gameplay/phase5-gameplay-runtime-evidence-20260224-163436.md` | PASS | gameplay_canary_probe=FAIL | NO_GO_RUNTIME_FAILURE |
+13:| wallet_adapter | `/Users/alexb/Documents/Dev/dev_new/docs/phase5/wallet/phase5-wallet-runtime-evidence-20260224-163436.md` | PASS | wallet_canary_probe=FAIL | NO_GO_RUNTIME_FAILURE |
+14:| bonus_frb_service | `/Users/alexb/Documents/Dev/dev_new/docs/phase5/bonus-frb/phase5-bonus-frb-runtime-evidence-20260224-163041.md` | PASS | bonus_frb_canary_probe=FAIL | NO_GO_RUNTIME_FAILURE |
+15:| history_service | `/Users/alexb/Documents/Dev/dev_new/docs/phase5/history/phase5-history-runtime-evidence-20260224-163045.md` | PASS | history_canary_probe=FAIL | NO_GO_RUNTIME_FAILURE |
+16:| multiplayer_service | `/Users/alexb/Documents/Dev/dev_new/docs/phase6/multiplayer/phase6-multiplayer-runtime-evidence-20260224-163048.md` | PASS | multiplayer_routing_policy_probe=PASS; multiplayer_canary_probe=SKIPPED | TESTED_GO_RUNTIME_READY |

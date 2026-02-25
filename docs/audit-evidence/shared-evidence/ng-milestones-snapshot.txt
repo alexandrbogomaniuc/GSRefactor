@@ -1,0 +1,11 @@
+5:## Progress Snapshot (2026-02-13)
+6:- M1: completed in local runtime (`00010` route + GS internal API v1 + wallet/history path).
+7:- M2: completed for backend vertical slice (deterministic flow + e2e/idempotency/reconnect tests).
+8:- M3: completed for client parity baseline (settings/history/rules/autobet UX + runtime integration).
+9:- M4: completed for local load/latency proof (`runtime:proof-pack` reproducible PASS reports).
+11:## Launch Targets (Current)
+12:- 200 concurrent players.
+13:- 100 bets/second sustained.
+16:## M0: Foundation Definition
+48:- Load test at 100 bets/sec and 200 concurrent players.
+55:## M5: Beta Release

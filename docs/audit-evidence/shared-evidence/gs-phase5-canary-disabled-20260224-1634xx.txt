@@ -1,0 +1,19 @@
+gameplay:
+11:- gameplay_canary_probe: FAIL
+27:FAIL: gameplay canary route decision is not enabled for bank 6275
+28:Decision payload: {"routeEnabled":false,"canaryBanks":["6275"],"bankId":"6275","isMultiplayer":false,"routeToGameplayService":false,"reason":"eligible"}
+
+wallet:
+10:- wallet_canary_probe: FAIL
+24:FAIL: wallet-adapter canary route decision is not enabled for bank 6275
+25:Decision payload: {"routeEnabled":false,"canaryBanks":["6275"],"bankId":"6275","routeToWalletAdapter":false,"reason":"route_disabled"}
+
+bonus-frb:
+7:- bonus_frb_canary_probe: FAIL
+21:FAIL: bonus-frb-service canary route decision is not enabled for bank 6275
+22:Decision payload: {"routeEnabled":false,"canaryBanks":["6275"],"bankId":"6275","routeToBonusFrbService":false,"reason":"route_disabled"}
+
+history:
+7:- history_canary_probe: FAIL
+21:FAIL: history-service canary route decision is not enabled for bank 6275
+22:Decision payload: {"routeEnabled":false,"canaryBanks":["6275"],"bankId":"6275","routeToHistoryService":false,"reason":"route_disabled"}

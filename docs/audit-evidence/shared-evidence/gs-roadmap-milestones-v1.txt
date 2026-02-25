@@ -1,0 +1,12 @@
+16:| M0 | Phase 0: Baseline + parity capture | Week 1-3 | endpoint/protocol inventory, parity matrix, golden flows, replay harness skeleton | none | legacy-only traffic default |
+17:| M1 | Phase 1: Repo/governance | Week 1-2 (parallel) | branch policy, CI quality gates, baseline tags, backup runbook | M0 baseline commit fixed | frozen baseline branch/tag kept deployable |
+18:| M2 | Phase 2: Observability foundation | Week 2-5 | correlation standard (`traceId/sessionId/bankId/gameId/operationId/configVersion`), dashboards, error taxonomy | M0 | tracing disabled by flag falls back to legacy logs |
+19:| M3 | Phase 3: Config platform modernization | Week 4-10 | versioned config model, effective-value resolver, publish workflow | M0, M2 | read path toggles back to legacy cache layer |
+20:| M4 | Phase 4: Protocol adapter layer | Week 6-10 | canonical model, JSON/XML adapters, per-bank `protocolMode` routing | M0, M3 | per-bank toggle to legacy serializer |
+21:| M5 | Phase 5: Core extraction (Session + Gameplay + Wallet adapter) | Week 9-18 | extracted services behind facade, idempotent transitions, wallet resilience | M2, M3, M4 | route-level fallback to monolith handlers |
+22:| M6 | Phase 6: Multiplayer extraction | Week 14-20 | standalone multiplayer service, bank `isMultiplayer` routing | M5 | `isMultiplayer=false` bypass + legacy MP fallback |
+23:| M7 | Phase 7: Cassandra upgrade | Week 16-22 | rehearsal report, compatibility validation, cutover/rollback runbook | M2, M5 | dual cluster + rollback to previous Cassandra cluster |
+24:| M8 | Phase 8: Precision modernization | Week 20-24 | decimal audit, hardcoded min removal, `0.001` verification matrix | M5, M7 | per-currency precision policy toggle to legacy min |
+25:| M9 | Phase 9: Branding/namespace replacement | Week 22-28 | wave-based ABS rename, compatibility mapping, regression proofs | M5 stable | compatibility aliases + staged rename revert |
+34:## Runtime State Guidance
+35:- Add Redis as fast ephemeral state for reconnect/idempotency caches (`stateBlob`, `lastSeq`, `operation replay`).

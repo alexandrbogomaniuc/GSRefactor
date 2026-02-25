@@ -1,0 +1,4 @@
+20:- `overall_status=TESTED_GUARDED_LEGACY_PARITY_BASELINE_COMPLETE`
+21:- `frb_bonus_parity_status=TESTED_PARITY_SUITE_STABILIZED`
+22:- `multiplayer_legacy_compat_status=TESTED_COMPATIBILITY_GUARDED_DEFERRED_RUNTIME_VALIDATION`
+25:- Dedicated live validation of **new refactored GS against legacy MP/client servers** remains a separate planned validation wave and is intentionally not required at every refactoring stage.

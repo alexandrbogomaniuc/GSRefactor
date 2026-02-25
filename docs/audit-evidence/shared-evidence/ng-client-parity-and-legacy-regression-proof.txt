@@ -1,0 +1,12 @@
+131:## M3 Client Parity Baseline (2026-02-13)
+138:  - `/Users/alexb/Documents/Dev/new-games-client/index.html`
+139:  - `/Users/alexb/Documents/Dev/new-games-client/src/main.ts`
+140:  - `/Users/alexb/Documents/Dev/new-games-client/src/style.css`
+142:  - `npm --prefix /Users/alexb/Documents/Dev/new-games-client run build` -> success.
+153:  - file: `/Users/alexb/Documents/Dev/new-games-client/src/main.ts`
+169:## UI Redesign + Legacy Regression (2026-02-13)
+170:- Added BetOnline-themed redesign + branded preloader in new client:
+171:  - `/Users/alexb/Documents/Dev/new-games-client/index.html`
+172:  - `/Users/alexb/Documents/Dev/new-games-client/src/style.css`
+173:  - `/Users/alexb/Documents/Dev/new-games-client/src/main.ts`
+176:  - legacy route (`gameId=838`) verified unchanged routing to:

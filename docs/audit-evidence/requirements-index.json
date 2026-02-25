@@ -1,0 +1,1039 @@
+{
+  "updatedAt": "2026-02-25T09:28:42Z",
+  "baselineDocs": [
+    "/Users/alexb/Documents/Dev/Dev_new/docs/18-architecture-recommendations-modernization-plan.md",
+    "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+    "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md",
+    "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+    "/Users/alexb/Documents/Dev/Dev_new/docs/22-sprint-01-two-week-execution-plan.md",
+    "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+    "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md"
+  ],
+  "summaryCounts": {
+    "totalRequirements": 40,
+    "byVerdict": {
+      "IMPLEMENTED_BUT_NOT_FULLY_TESTED": 12,
+      "PARTIALLY_IMPLEMENTED": 7,
+      "IMPLEMENTED_AND_TESTED": 19,
+      "CANNOT_VERIFY_WITH_CURRENT_EVIDENCE": 1,
+      "PLANNED_ONLY_NOT_IMPLEMENTED": 1
+    },
+    "byGroup": {
+      "GS Hard Requirements": 11,
+      "GS Roadmap & Sprint Commitments": 11,
+      "New Games Initial Commitments": 18
+    },
+    "cutoverReality": {
+      "deliveryChecklistCompletion": "41/41 (separate metric)",
+      "currentCutoverReadiness": "NO_GO_CUTOVER_PENDING_VALIDATION",
+      "currentBlockers": [
+        "Phase 4 protocol runtime canary validation failing",
+        "Phase 5/6 core service runtime canary validation failing",
+        "Security dependency lockfile/audit hardening pending"
+      ]
+    }
+  },
+  "requirements": [
+    {
+      "id": "GS-R01",
+      "title": "Backward compatibility with Casino Side, MP/client, and New Games",
+      "group": "GS Hard Requirements",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md"
+      ],
+      "verdict": "IMPLEMENTED_BUT_NOT_FULLY_TESTED",
+      "implemented": true,
+      "tested": false,
+      "plainEnglishStatus": "Compatibility protections were built and major mixed-topology checks passed, but the whole cutover is not yet proven safe because some refactor runtime routes are still not approved and not fully validated.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Latest readiness remains NO_GO because Phase 4 and Phase 5/6 runtime validations are failing their canary routing checks, plus security dependency audit is pending.",
+      "folder": "req-gs-01",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-01",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/158-legacy-parity-status-report-frb-mp-baseline-complete-20260224-124500.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-full-flow-20260224-162730.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-mixed-topology-manual-full-flow-pass-20260224-162730.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
+      ]
+    },
+    {
+      "id": "GS-R02",
+      "title": "Bank-level JSON/XML communication mode",
+      "group": "GS Hard Requirements",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md"
+      ],
+      "verdict": "PARTIALLY_IMPLEMENTED",
+      "implemented": false,
+      "tested": false,
+      "plainEnglishStatus": "The protocol adapter work exists on paper and in tests, but the runtime canary is still failing, so this is not ready as a proven working bank-by-bank capability yet.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Phase 4 status report shows `wallet_shadow_probe: FAIL` and `phase4_status: NO_GO_RUNTIME_FAILURE` with current environment staying in legacy fallback.",
+      "folder": "req-gs-02",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-02",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/phase4/protocol/phase4-protocol-status-report-20260224-163534.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/phase4/protocol/phase4-protocol-runtime-evidence-20260224-163435.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase4-status-20260224-163534.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase4-runtime-legacy-fallback-20260224-163435.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+      ]
+    },
+    {
+      "id": "GS-R03",
+      "title": "Branding and namespace replacement to ABS (safe waves)",
+      "group": "GS Hard Requirements",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md"
+      ],
+      "verdict": "PARTIALLY_IMPLEMENTED",
+      "implemented": false,
+      "tested": false,
+      "plainEnglishStatus": "The project built a safe rename process and completed a small controlled wave, but it did not finish the full brand/name replacement across the whole runtime.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Phase 9 closure explicitly marks broader runtime config/host/protocol/template rename scope as deferred.",
+      "folder": "req-gs-03",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-03",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/151-phase9-branding-namespace-tested-controlled-wave-phase-closure-20260224-110000.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase9-w0-status-20260224-104500.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase9-closure-scope-20260224-110000.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+      ]
+    },
+    {
+      "id": "GS-R04",
+      "title": "Microservices architecture with Kafka event/control backbone",
+      "group": "GS Hard Requirements",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md"
+      ],
+      "verdict": "PARTIALLY_IMPLEMENTED",
+      "implemented": false,
+      "tested": false,
+      "plainEnglishStatus": "The microservice structure and tooling were built, but some important runtime routes are not yet turned on and proven in canary mode.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Phase 5/6 status shows core services up but gameplay/wallet/bonus/history canary probes failing (`NO_GO_RUNTIME_FAILURE`).",
+      "folder": "req-gs-04",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-04",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/phase5-6/phase5-6-service-extraction-status-report-20260224-163457.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+      ]
+    },
+    {
+      "id": "GS-R05",
+      "title": "Backup old code and continue in DEV_new new git repository",
+      "group": "GS Hard Requirements",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "This was done. The modernization work is running in a separate `Dev_new` repository, and the repo setup is visible and usable.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-gs-05",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-05",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-repo-governance-proof.txt"
+      ]
+    },
+    {
+      "id": "GS-R06",
+      "title": "Review every file and modernize technologies/versions",
+      "group": "GS Hard Requirements",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md"
+      ],
+      "verdict": "PARTIALLY_IMPLEMENTED",
+      "implemented": false,
+      "tested": false,
+      "plainEnglishStatus": "A lot of modernization work was done, but the proof does not show a completed review of every file, and the dependency audit is still unfinished.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Security hardening report is `TESTED_NO_GO_DEPENDENCY_LOCK_AUDIT_PENDING` and shows `package-lock.json` count `0` across 8 refactor services.",
+      "folder": "req-gs-06",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-06",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/security/security-hardening-status-report-20260224-110139.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-security-hardening-no-go-lockfiles-20260224-110139.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt"
+      ]
+    },
+    {
+      "id": "GS-R07",
+      "title": "Upgrade Cassandra to latest while preserving schema and tables",
+      "group": "GS Hard Requirements",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md"
+      ],
+      "verdict": "IMPLEMENTED_BUT_NOT_FULLY_TESTED",
+      "implemented": true,
+      "tested": false,
+      "plainEnglishStatus": "The Cassandra migration rehearsal work is strong and the copied data matches by row count, but the overall program cutover is still not approved yet.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Program readiness remains NO_GO for Phase 4/5 runtime and security blockers; Cassandra rehearsal blocker itself is cleared in readiness.",
+      "folder": "req-gs-07",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-07",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/full-copy/phase7-cassandra-full-data-copy-20260224-155602.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/full-copy/run-20260224-155602/count-mismatches-source-vs-target.tsv",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-full-flow-20260224-162730.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-cassandra-full-copy-summary-20260224-155602.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-cassandra-parity-compare-20260224-155602.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-mixed-topology-manual-full-flow-pass-20260224-162730.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt"
+      ]
+    },
+    {
+      "id": "GS-R08",
+      "title": "User-friendly web configuration portal with safe workflow",
+      "group": "GS Hard Requirements",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md"
+      ],
+      "verdict": "PARTIALLY_IMPLEMENTED",
+      "implemented": false,
+      "tested": false,
+      "plainEnglishStatus": "The portal work clearly exists, including safety workflow design, but this audit package cannot yet prove a non-technical operator can reliably run all daily tasks end to end.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Evidence is strong for portal specs and guardrail artifacts, but not yet a plain-English tested user guide or audited operator walkthrough proof.",
+      "folder": "req-gs-08",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-08",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-config-portal-artifacts.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase3-config-portal-docs-snippet.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt"
+      ]
+    },
+    {
+      "id": "GS-R09",
+      "title": "Prepare GS for future modules and pluggable extensions",
+      "group": "GS Hard Requirements",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md"
+      ],
+      "verdict": "PARTIALLY_IMPLEMENTED",
+      "implemented": false,
+      "tested": false,
+      "plainEnglishStatus": "The system was moved in the right direction for new modules, and New Games proves that direction works, but the generic extension contract system is not fully proven complete yet.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Evidence proves practical extension path (New Games via GS) but does not fully prove standardized module contracts/versioning across all future module types.",
+      "folder": "req-gs-09",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-09",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/18-architecture-recommendations-modernization-plan.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
+      ]
+    },
+    {
+      "id": "GS-R10",
+      "title": "Separate multiplayer microservice with bank flag isMultiplayer",
+      "group": "GS Hard Requirements",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md"
+      ],
+      "verdict": "IMPLEMENTED_BUT_NOT_FULLY_TESTED",
+      "implemented": true,
+      "tested": false,
+      "plainEnglishStatus": "The multiplayer split and bank flag logic are implemented and tested at routing-policy level, but the latest evidence still skips part of the canary runtime proof.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Latest Phase 6 line shows `multiplayer_canary_probe=SKIPPED`, so full runtime canary proof is not complete in the audited snapshot.",
+      "folder": "req-gs-10",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-10",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/phase5-6/phase5-6-service-extraction-status-report-20260224-163457.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-multiplayer-extraction-proof.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+      ]
+    },
+    {
+      "id": "GS-R11",
+      "title": "Support minimum operational amount down to 0.001",
+      "group": "GS Hard Requirements",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "This looks completed and tested in the audit evidence. The precision modernization phase reached a ready state with zero blocking categories in its verification matrix.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-gs-11",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-11",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/19-requirements-from-user.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/999-phase8-precision-runtime-canary-phase-closure-20260224-142513.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase8-precision-closure-ready-20260224-142513.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+      ]
+    },
+    {
+      "id": "GS-PH-01",
+      "title": "Roadmap M0: Baseline and parity capture",
+      "group": "GS Roadmap & Sprint Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/22-sprint-01-two-week-execution-plan.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "The project did complete the baseline/parity foundation work and used it for later validation decisions.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-gs-ph-01",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-01",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/22-sprint-01-two-week-execution-plan.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/158-legacy-parity-status-report-frb-mp-baseline-complete-20260224-124500.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-full-flow-20260224-162730.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-mixed-topology-manual-full-flow-pass-20260224-162730.txt"
+      ]
+    },
+    {
+      "id": "GS-PH-02",
+      "title": "Roadmap M1: Repo and governance setup",
+      "group": "GS Roadmap & Sprint Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/22-sprint-01-two-week-execution-plan.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "The repo/governance setup work was completed and is visible in the current workspace.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-gs-ph-02",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-02",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/22-sprint-01-two-week-execution-plan.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-repo-governance-proof.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt"
+      ]
+    },
+    {
+      "id": "GS-PH-03",
+      "title": "Roadmap M2: Observability foundation",
+      "group": "GS Roadmap & Sprint Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/22-sprint-01-two-week-execution-plan.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "The observability foundation was built and tested, and the required tracing fields are confirmed in evidence.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-gs-ph-03",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-03",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/22-sprint-01-two-week-execution-plan.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/156-phase2-observability-status-report-baseline-complete-20260224-121500.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-observability-baseline-complete-20260224-121500.txt"
+      ]
+    },
+    {
+      "id": "GS-PH-04",
+      "title": "Roadmap M3: Config platform modernization",
+      "group": "GS Roadmap & Sprint Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/22-sprint-01-two-week-execution-plan.md"
+      ],
+      "verdict": "IMPLEMENTED_BUT_NOT_FULLY_TESTED",
+      "implemented": true,
+      "tested": false,
+      "plainEnglishStatus": "Most of the config-platform deliverables exist, but the audit evidence is stronger on documentation/scaffolding than on tested day-to-day operator use.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Milestone 5 user guide and explicit non-technical operator walk-through proof are still pending in the after-project plan.",
+      "folder": "req-gs-ph-04",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-04",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-config-portal-artifacts.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase3-config-portal-docs-snippet.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt"
+      ]
+    },
+    {
+      "id": "GS-PH-05",
+      "title": "Roadmap M4: Protocol adapter layer (JSON/XML by bank)",
+      "group": "GS Roadmap & Sprint Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md"
+      ],
+      "verdict": "IMPLEMENTED_BUT_NOT_FULLY_TESTED",
+      "implemented": true,
+      "tested": false,
+      "plainEnglishStatus": "This milestone is built enough to run and test, but it is not approved because a key runtime canary check is still failing.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Phase 4 wallet shadow probe failure keeps `NO_GO_RUNTIME_FAILURE` in the latest status report.",
+      "folder": "req-gs-ph-05",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-05",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/phase4/protocol/phase4-protocol-status-report-20260224-163534.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/phase4/protocol/phase4-protocol-runtime-evidence-20260224-163435.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase4-status-20260224-163534.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase4-runtime-legacy-fallback-20260224-163435.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt"
+      ]
+    },
+    {
+      "id": "GS-PH-06",
+      "title": "Roadmap M5: Core extraction (Session/Gameplay/Wallet/Bonus/History)",
+      "group": "GS Roadmap & Sprint Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md"
+      ],
+      "verdict": "IMPLEMENTED_BUT_NOT_FULLY_TESTED",
+      "implemented": true,
+      "tested": false,
+      "plainEnglishStatus": "The extracted services are running, but they are not yet approved for cutover because the canary routing checks fail.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Core service canary routing is disabled/failing (`gameplay_canary_probe=FAIL`, `wallet_canary_probe=FAIL`, etc.).",
+      "folder": "req-gs-ph-06",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-06",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/phase5-6/phase5-6-service-extraction-status-report-20260224-163457.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase5-canary-disabled-20260224-1634xx.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt"
+      ]
+    },
+    {
+      "id": "GS-PH-07",
+      "title": "Roadmap M6: Multiplayer extraction",
+      "group": "GS Roadmap & Sprint Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "The multiplayer extraction milestone is one of the clearest runtime-ready pieces in the current evidence.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-gs-ph-07",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-07",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/phase5-6/phase5-6-service-extraction-status-report-20260224-163457.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-multiplayer-extraction-proof.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt"
+      ]
+    },
+    {
+      "id": "GS-PH-08",
+      "title": "Roadmap M7: Cassandra upgrade rehearsal and compatibility validation",
+      "group": "GS Roadmap & Sprint Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md"
+      ],
+      "verdict": "IMPLEMENTED_BUT_NOT_FULLY_TESTED",
+      "implemented": true,
+      "tested": false,
+      "plainEnglishStatus": "The Cassandra upgrade rehearsal work is strong and appears successful, but it should be treated as rehearsal/validation completion, not final production cutover completion.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Program-wide cutover remains blocked by Phase 4/5 runtime and security; Cassandra evidence is rehearsal-grade and row-count parity based.",
+      "folder": "req-gs-ph-08",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-08",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/full-copy/phase7-cassandra-full-data-copy-20260224-155602.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/full-copy/run-20260224-155602/count-mismatches-source-vs-target.tsv",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-full-flow-20260224-162730.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-cassandra-full-copy-summary-20260224-155602.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-cassandra-parity-compare-20260224-155602.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt"
+      ]
+    },
+    {
+      "id": "GS-PH-09",
+      "title": "Roadmap M8: Precision modernization",
+      "group": "GS Roadmap & Sprint Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "This milestone has strong closure evidence and appears completed/tested in the audited record.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-gs-ph-09",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-09",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/999-phase8-precision-runtime-canary-phase-closure-20260224-142513.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase8-precision-closure-ready-20260224-142513.txt"
+      ]
+    },
+    {
+      "id": "GS-PH-10",
+      "title": "Roadmap M9: Branding/namespace replacement waves",
+      "group": "GS Roadmap & Sprint Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md"
+      ],
+      "verdict": "PARTIALLY_IMPLEMENTED",
+      "implemented": false,
+      "tested": false,
+      "plainEnglishStatus": "The rename-wave process was built and tested on a limited wave, but the full rename result across the platform is intentionally unfinished.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Phase 9 closure explicitly lists deferred no-go scope for runtime config/host/protocol/template files.",
+      "folder": "req-gs-ph-10",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-10",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/151-phase9-branding-namespace-tested-controlled-wave-phase-closure-20260224-110000.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase9-w0-status-20260224-104500.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase9-closure-scope-20260224-110000.txt"
+      ]
+    },
+    {
+      "id": "GS-PH-11",
+      "title": "Sprint 01 two-week commitments (baseline + governance + observability minimums)",
+      "group": "GS Roadmap & Sprint Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/22-sprint-01-two-week-execution-plan.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/22-sprint-01-two-week-execution-plan.md"
+      ],
+      "verdict": "IMPLEMENTED_BUT_NOT_FULLY_TESTED",
+      "implemented": true,
+      "tested": false,
+      "plainEnglishStatus": "Most Sprint 01 goals were achieved in the project, but this audit cannot prove the original schedule and all exit criteria were met exactly on time from the evidence sampled.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Evidence confirms outcomes later, but not a single consolidated Sprint 01 completion packet tied to the exact planned window.",
+      "folder": "req-gs-ph-11",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-11",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/22-sprint-01-two-week-execution-plan.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-observability-baseline-complete-20260224-121500.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-repo-governance-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R01",
+      "title": "New Games: GS remains the core system",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "The New Games work followed the plan to use GS as the core platform instead of bypassing it.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-ng-01",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-01",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R02",
+      "title": "New Games: GS keeps core platform responsibilities",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md"
+      ],
+      "verdict": "IMPLEMENTED_BUT_NOT_FULLY_TESTED",
+      "implemented": true,
+      "tested": false,
+      "plainEnglishStatus": "The evidence shows GS still handles key core responsibilities, but this audit does not prove every responsibility in every scenario.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Sampled proof is strong for wallet/history and launch integration, but not a full responsibility-by-responsibility verification matrix.",
+      "folder": "req-ng-02",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-02",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-runtime-ops-handoff-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R03",
+      "title": "New Games backend must not call casino wallet endpoints directly",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md"
+      ],
+      "verdict": "IMPLEMENTED_BUT_NOT_FULLY_TESTED",
+      "implemented": true,
+      "tested": false,
+      "plainEnglishStatus": "The runtime proof shows the correct integration path (through GS), but this audit does not prove there are zero direct wallet calls in every code path without a deeper code audit.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Need explicit code-level or network-level negative proof for all New Games backend paths to prove \"never\".",
+      "folder": "req-ng-03",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-03",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R04",
+      "title": "New Games integrates through GS internal APIs/contracts",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "This is implemented and proven in runtime evidence. New Games uses GS integration paths rather than a separate direct wallet path.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-ng-04",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-04",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R05",
+      "title": "New Games first game target is Plinko",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "Plinko was clearly used as the first target and has multiple completed milestones and proof packs.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-ng-05",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-05",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R06",
+      "title": "New Games brand direction aligned with BETONLINE",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "The audited client proof shows the New Games client branding work followed the BETONLINE direction.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-ng-06",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-06",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R07",
+      "title": "New Games launch target: 200 concurrent players",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "The performance proof pack includes the 200-player target and reports passing results.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-ng-07",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-07",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R08",
+      "title": "New Games launch target: 100 bets per second",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "The documented load tests exceeded the 100 bets/sec target by a large margin in the audited local proof runs.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-ng-08",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-08",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R09",
+      "title": "Phase 1 compliance scope: no mandatory compliance gates at kickoff",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md"
+      ],
+      "verdict": "CANNOT_VERIFY_WITH_CURRENT_EVIDENCE",
+      "implemented": false,
+      "tested": false,
+      "plainEnglishStatus": "The decision is clearly written down, but this audit package does not contain enough proof to confirm it was implemented exactly as planned in runtime.",
+      "isActuallyWorkingToday": "Not proven",
+      "blockingReason": "Need direct runtime config or test evidence confirming compliance gates were intentionally not enforced in the audited phase-1 path.",
+      "folder": "req-ng-09",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-09",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
+      ]
+    },
+    {
+      "id": "NG-R10",
+      "title": "Keep GS Java stack unchanged for core responsibilities (phase 1)",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md"
+      ],
+      "verdict": "IMPLEMENTED_BUT_NOT_FULLY_TESTED",
+      "implemented": true,
+      "tested": false,
+      "plainEnglishStatus": "The runtime behavior matches the plan (GS still does core work), but this audit does not prove zero changes to all core GS Java internals.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Need code-level change audit to prove strict \"unchanged\" claim across the whole core GS stack.",
+      "folder": "req-ng-10",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-10",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R11",
+      "title": "Build new game client in separate modern PixiJS frontend workspace",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "This is clearly implemented and tested: there is a separate New Games client workspace with successful build proof.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-ng-11",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-11",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R12",
+      "title": "Do not replace legacy GS client pipeline globally in phase 1",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "The evidence shows the new client work did not replace the legacy client path globally in the audited phase.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-ng-12",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-12",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/00-product-decisions.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R13",
+      "title": "New Games Milestone M0: foundation definition and API/semantics freeze",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md"
+      ],
+      "verdict": "IMPLEMENTED_BUT_NOT_FULLY_TESTED",
+      "implemented": true,
+      "tested": false,
+      "plainEnglishStatus": "M0 was probably completed because later milestones depend on it, but the direct proof is not included in this audit package sample.",
+      "isActuallyWorkingToday": "Partly",
+      "blockingReason": "Missing dedicated M0 evidence artifact in the shared evidence bundle used for this audit.",
+      "folder": "req-ng-13",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-13",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
+      ]
+    },
+    {
+      "id": "NG-R14",
+      "title": "New Games Milestone M1: GS integration layer in local runtime",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "M1 is clearly delivered and tested in local/runtime evidence.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-ng-14",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-14",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-runtime-ops-handoff-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R15",
+      "title": "New Games Milestone M2: Plinko backend vertical slice",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "The backend vertical slice is delivered and has strong test evidence.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-ng-15",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-15",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R16",
+      "title": "New Games Milestone M3: Plinko client vertical slice",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "The client vertical slice is implemented and tested with both build proof and runtime/legacy regression evidence.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-ng-16",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-16",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R17",
+      "title": "New Games Milestone M4: performance and stability proof",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md"
+      ],
+      "verdict": "IMPLEMENTED_AND_TESTED",
+      "implemented": true,
+      "tested": true,
+      "plainEnglishStatus": "M4 has strong proof. The documented runs passed the stated load and latency goals and include runtime E2E validation.",
+      "isActuallyWorkingToday": "Yes",
+      "blockingReason": null,
+      "folder": "req-ng-17",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-17",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt"
+      ]
+    },
+    {
+      "id": "NG-R18",
+      "title": "New Games Milestone M5: beta release and go/no-go packet",
+      "group": "New Games Initial Commitments",
+      "sourceDoc": "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+      "sourceDocs": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md"
+      ],
+      "verdict": "PLANNED_ONLY_NOT_IMPLEMENTED",
+      "implemented": false,
+      "tested": false,
+      "plainEnglishStatus": "M5 is still a planned milestone in the audited evidence. There is no proof here that beta rollout and go/no-go packet were completed.",
+      "isActuallyWorkingToday": "No",
+      "blockingReason": "No M5 completion/proof artifact present in the audited New Games evidence set.",
+      "folder": "req-ng-18",
+      "folderPath": "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-18",
+      "evidenceLinks": [
+        "/Users/alexb/Documents/Dev/Dev_new/docs/New games Project/03-milestones.md",
+        "/Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
+      ]
+    }
+  ]
+}

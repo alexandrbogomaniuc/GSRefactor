@@ -1,0 +1,22 @@
+17:### Requirement 1. Keep backward compatibility
+18:Your requirement:
+34:### Requirement 2. Bank-level JSON/XML communication setting
+35:Your requirement:
+52:### Requirement 3. Rename legacy brand/package words to ABS
+53:Your requirement:
+71:### Requirement 4. Microservices + Kafka control
+72:Your requirement:
+89:### Requirement 5. Backup old code, create new DEV_new and new git repo
+90:Your requirement:
+108:### Requirement 6. Review every file and upgrade technologies
+109:Your requirement:
+128:### Requirement 7. Upgrade Cassandra to latest while keeping schema/tables
+129:Your requirement:
+146:### Requirement 8. User-friendly web config UI (clusters/banks/games/currencies/promos)
+147:Your requirement:
+168:### Requirement 9. Prepare GS for new modules (extra promo tools, etc.)
+169:Your requirement:
+185:### Requirement 10. Move multiplayer logic to separate microservice with `isMultiplayer` bank flag
+186:Your requirement:
+203:### Requirement 11. Reduce minimum operational amount to 0.001
+204:Your requirement:

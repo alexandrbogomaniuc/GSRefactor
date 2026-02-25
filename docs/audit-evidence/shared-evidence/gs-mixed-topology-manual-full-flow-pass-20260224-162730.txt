@@ -1,0 +1,5 @@
+3:- status: MANUAL_FULL_FLOW_PASS
+7:  - Cassandra 4 target fully migrated from legacy with row-count parity 107/107
+17:## Launch / Handoff Validation (PASS)
+30:## Reconnect Scenario Validation (PASS)
+48:## FRB Scenario (N/A for this bank/game wave)

@@ -1,0 +1,11 @@
+6:- refactor service package-lock.json count: 0
+8:- overall_status: TESTED_NO_GO_DEPENDENCY_LOCK_AUDIT_PENDING
+22:## Refactor Service Dependency Inventory
+26:| bonus-frb-service | yes | no | 0 |
+27:| config-service | yes | no | 0 |
+28:| gameplay-orchestrator | yes | no | 0 |
+29:| history-service | yes | no | 0 |
+30:| multiplayer-service | yes | no | 0 |
+31:| protocol-adapter | yes | no | 0 |
+32:| session-service | yes | no | 0 |
+33:| wallet-adapter | yes | no | 0 |

@@ -1,0 +1,4 @@
+70:## Live Runtime E2E Proof
+73:  - `GET http://localhost/cwstartgamev2.do?bankId=6274&gameId=00010&mode=real&token=bav_game_session_001&lang=en` -> `302` to NGS client URL with `SID`, `ngsApiUrl`, `gsInternalBaseUrl`
+82:  - GS logs show reserve and settle wallet calls to casino-side `bav/betResult`.
+83:  - GS logs show `NGS_HISTORY_WRITE` events for `BET_PLACED` and `ROUND_COLLECTED`.

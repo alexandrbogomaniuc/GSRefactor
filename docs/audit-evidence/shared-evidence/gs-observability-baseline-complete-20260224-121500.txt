@@ -1,0 +1,4 @@
+22:- `overall_status=TESTED_BASELINE_COMPLETE`
+24:### Coverage Confirmed
+25:- Mandatory correlation fields (`traceId`, `sessionId`, `bankId`, `gameId`, `operationId`, `configVersion`)
+29:- Runtime correlation probe echo validation PASS

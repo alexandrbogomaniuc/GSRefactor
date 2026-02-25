@@ -1,0 +1,7 @@
+4:Overall Result: PASS
+7:- Bets/sec >= 100: PASS (actual: 2087.59)
+8:- placebet p95 <= 250 ms: PASS (actual: 14.46 ms)
+9:- collect p95 <= 300 ms: PASS (actual: 17.26 ms)
+10:- Runtime E2E chain: PASS
+22:    "players": 200,
+23:    "betsPerSecond": 100
