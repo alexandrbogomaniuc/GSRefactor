@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Update;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
@@ -65,12 +64,11 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
         String json = TABLE.serializeToJson(transaction);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(transaction);
         byteBuffersCollector.add(byteBuffer);
-        statements.add(getUpdateStatement(transaction).with().
-                and(QueryBuilder.set(SERIALIZED_COLUMN_NAME, byteBuffer)).
-                and(QueryBuilder.set(JSON_COLUMN_NAME, json)));
+        statements.add(getUpdateStatement(transaction, null, byteBuffer, json));
     }
 
-    private Update getUpdateStatement(PaymentTransaction transaction) {
+    private Statement getUpdateStatement(PaymentTransaction transaction, String extIdOverride, ByteBuffer byteBuffer,
+                                         String json) {
         Statement query = getSelectColumnsQuery(TABLE, BUCKET_FIELD, START_DATE_FIELD)
                 .where(eq(TRANSACTION_ID_FIELD, transaction.getId()));
         ResultSet resultSet = execute(query, "getUpdateStatement");
@@ -81,34 +79,48 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
         } else {
             bucket = random.nextInt(RANDOM_FACTOR);
         }
-        Update updateStatement = getUpdateQuery();
-        updateStatement.where(eq(BUCKET_FIELD, bucket));
-        updateStatement.where(eq(START_DATE_FIELD, transaction.getStartDate()));
-        updateStatement.where(eq(KEY, transaction.getId()));
-        updateStatement.with(QueryBuilder.set(TRANSACTION_ID_FIELD, transaction.getId()));
-        if (transaction.getExternalTransactionId() != null) {
-            int bankId = SessionHelper.getInstance().getTransactionData().getBankId();
-            if (bankId <= 0) {
-                getLog().warn("save: bankId not initialized in TD: " + SessionHelper.getInstance().
-                        getTransactionData());
-                AccountInfo accountInfo = accountInfoPersister.getById(transaction.getAccountId());
-                bankId = accountInfo.getBankId();
-            }
-            updateStatement.with(QueryBuilder.set(EXTERNAL_ID_FIELD,
-                    buildExtIdKey(bankId, transaction.getExternalTransactionId())));
-
+        String extId = resolveExtIdKey(transaction, extIdOverride);
+        if (extId != null) {
+            return getUpdateQuery()
+                    .where(eq(BUCKET_FIELD, bucket))
+                    .and(eq(START_DATE_FIELD, transaction.getStartDate()))
+                    .and(eq(KEY, transaction.getId()))
+                    .with(QueryBuilder.set(TRANSACTION_ID_FIELD, transaction.getId()))
+                    .and(QueryBuilder.set(EXTERNAL_ID_FIELD, extId))
+                    .and(QueryBuilder.set(SERIALIZED_COLUMN_NAME, byteBuffer))
+                    .and(QueryBuilder.set(JSON_COLUMN_NAME, json));
         }
-        return updateStatement;
+        return getUpdateQuery()
+                .where(eq(BUCKET_FIELD, bucket))
+                .and(eq(START_DATE_FIELD, transaction.getStartDate()))
+                .and(eq(KEY, transaction.getId()))
+                .with(QueryBuilder.set(TRANSACTION_ID_FIELD, transaction.getId()))
+                .and(QueryBuilder.set(SERIALIZED_COLUMN_NAME, byteBuffer))
+                .and(QueryBuilder.set(JSON_COLUMN_NAME, json));
+    }
+
+    private String resolveExtIdKey(PaymentTransaction transaction, String extIdOverride) {
+        if (extIdOverride != null) {
+            return extIdOverride;
+        }
+        if (transaction.getExternalTransactionId() == null) {
+            return null;
+        }
+        int bankId = SessionHelper.getInstance().getTransactionData().getBankId();
+        if (bankId <= 0) {
+            getLog().warn("save: bankId not initialized in TD: {}", SessionHelper.getInstance().getTransactionData());
+            AccountInfo accountInfo = accountInfoPersister.getById(transaction.getAccountId());
+            bankId = accountInfo.getBankId();
+        }
+        return buildExtIdKey(bankId, transaction.getExternalTransactionId());
     }
 
     public void save(PaymentTransaction transaction) {
         getLog().debug("save: {}", transaction);
-        Update query = getUpdateStatement(transaction);
         String json = TABLE.serializeToJson(transaction);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(transaction);
         try {
-            query.with(QueryBuilder.set(SERIALIZED_COLUMN_NAME, byteBuffer))
-                  .and(QueryBuilder.set(JSON_COLUMN_NAME, json));
+            Statement query = getUpdateStatement(transaction, null, byteBuffer, json);
             execute(query, "save");
         } finally {
             releaseBuffer(byteBuffer);
@@ -187,27 +199,10 @@ public class CassandraPaymentTransactionPersister extends AbstractCassandraPersi
             throw new RuntimeException("External transactionId is empty, transactionId=" + transaction.getId());
         }
         String extId = buildExtIdKey(bankId, transaction.getExternalTransactionId());
-        Statement query = getSelectColumnsQuery(TABLE, BUCKET_FIELD, START_DATE_FIELD)
-                .where(eq(TRANSACTION_ID_FIELD, transaction.getId()));
-        ResultSet resultSet = execute(query, "getUpdateStatement");
-        Row stored = resultSet.one();
-        int bucket;
-        if (stored != null) {
-            bucket = stored.getInt(BUCKET_FIELD);
-        } else {
-            bucket = random.nextInt(RANDOM_FACTOR);
-        }
-        Update updateStatement = getUpdateQuery();
-        updateStatement.where(eq(BUCKET_FIELD, bucket));
-        updateStatement.where(eq(START_DATE_FIELD, transaction.getStartDate()));
-        updateStatement.where(eq(KEY, transaction.getId()));
-        updateStatement.with(QueryBuilder.set(TRANSACTION_ID_FIELD, transaction.getId()));
-        updateStatement.with(QueryBuilder.set(EXTERNAL_ID_FIELD, extId));
         String json = TABLE.serializeToJson(transaction);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(transaction);
         try {
-            updateStatement.with(QueryBuilder.set(SERIALIZED_COLUMN_NAME, byteBuffer))
-                            .and(QueryBuilder.set(JSON_COLUMN_NAME, json));
+            Statement updateStatement = getUpdateStatement(transaction, extId, byteBuffer, json);
             execute(updateStatement, "saveExternalTransactionId");
         } finally {
             releaseBuffer(byteBuffer);

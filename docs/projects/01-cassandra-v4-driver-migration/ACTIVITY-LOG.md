@@ -474,3 +474,30 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
 - Inventory delta after Wave 27:
   - GS `driver3_import_lines`: `434 -> 430` (`-4`)
   - MP `driver3_import_lines`: `151` (no change)
+
+## 2026-02-25 22:20 UTC
+- Implemented CASS-V4 Wave 28 in sequencer/payment update paths:
+  - `CassandraSequencerPersister`
+  - `CassandraIntSequencerPersister`
+  - `CassandraPaymentTransactionPersister`
+- Replaced typed querybuilder `Update` declarations with generic `Statement` flow.
+- Refactored payment update path to a statement builder method with explicit extId override support, preserving prior bucket/extId behavior.
+- Compile iteration:
+  - first `common-persisters` build failed (`Update.Where` chaining with repeated `where(...)`).
+  - fixed by using `where(...).and(...).and(...)` and reran.
+- Validation: PASS
+  - `common-persisters` install (rerun pass)
+  - cache test suite (`63` tests)
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221913/c4-wave28-sequencer-payment-update-statement-flow-20260225-221913.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221913/c4-wave28-build-common-persisters-20260225-221913.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221913/c4-wave28-build-common-persisters-20260225-221913-rerun.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221913/c4-wave28-unit-tests-20260225-221913.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221913/c4-wave28-build-web-gs-20260225-221913.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221913/c4-wave28-build-mp-stack-20260225-221913.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221913/phase7-cassandra-driver-inventory-20260225-222026.txt`
+- Inventory delta after Wave 28:
+  - GS `driver3_import_lines`: `430 -> 427` (`-3`)
+  - MP `driver3_import_lines`: `151` (no change)

@@ -5,7 +5,6 @@ import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Update;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -99,10 +98,10 @@ public class CassandraIntSequencerPersister extends AbstractCassandraPersister<S
             boolean success = false;
             while (!success) {
                 //reserve block
-                Update updateQuery = getUpdateQuery();
-                updateQuery.where(getSimpleKeyClause(name)).
-                        with(QueryBuilder.set(VALUE_COLUMN_NAME, baseValue + block)).
-                        onlyIf(eq(VALUE_COLUMN_NAME, currentValue));
+                Statement updateQuery = getUpdateQuery()
+                        .where(getSimpleKeyClause(name))
+                        .with(QueryBuilder.set(VALUE_COLUMN_NAME, baseValue + block))
+                        .onlyIf(eq(VALUE_COLUMN_NAME, currentValue));
                 ResultSet resultSet = executeWithCheckTimeout(updateQuery, "allocateNextBlock");
                 success = resultSet.wasApplied();
                 if (!success) {
@@ -152,9 +151,9 @@ public class CassandraIntSequencerPersister extends AbstractCassandraPersister<S
         if (!success) {
             int attemptsCount = 0;
             while (!success) {
-                Update query = getUpdateQuery(seq.getName());
-                query.with(QueryBuilder.set(VALUE_COLUMN_NAME, newDesiredValue));
-                query.onlyIf(eq(VALUE_COLUMN_NAME, newCurrentValue));
+                Statement query = getUpdateQuery(seq.getName())
+                        .with(QueryBuilder.set(VALUE_COLUMN_NAME, newDesiredValue))
+                        .onlyIf(eq(VALUE_COLUMN_NAME, newCurrentValue));
                 ResultSet resultSet = executeWithCheckTimeout(query, "persist[update]");
                 success = resultSet.wasApplied();
                 if (success) {

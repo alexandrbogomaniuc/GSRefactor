@@ -5506,3 +5506,20 @@
 - Evidence saved under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221415/`.
 - Inventory result: GS driver3 imports reduced `434 -> 430`; MP unchanged `151`.
 - Next step: commit/push Wave 27 and continue the next hotspot wave.
+### 2026-02-25 22:20 UTC
+- Dev_new CASS-V4 Wave 28 completed and validated.
+- Converted typed `Update` declarations to `Statement` flow in:
+  - `CassandraSequencerPersister`
+  - `CassandraIntSequencerPersister`
+  - `CassandraPaymentTransactionPersister`
+- Compile iteration note:
+  - first `common-persisters` build failed due `Update.Where` chain shape (`where(...).where(...)`);
+  - fixed by switching to `where(...).and(...).and(...)` and reran.
+- Validation PASS:
+  - `mvn -DskipTests install` (`common-persisters`, rerun pass)
+  - `mvn test` (`cache`, `63` tests)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -pl core-interfaces,core,persistance -am -DskipTests package` (`mp-server`)
+- Evidence saved under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221913/`.
+- Inventory result: GS driver3 imports reduced `430 -> 427`; MP unchanged `151`.
+- Next step: commit/push Wave 28 and continue next Cassandra hotspot wave.
