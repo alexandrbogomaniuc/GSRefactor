@@ -110,3 +110,8 @@ Deliverables:
 - Completed waves: Wave 1 through Wave 8.
 - Current phase alignment: Phase 1 in progress with multiple hotspot query-construction decoupling slices completed.
 - Immediate focus: continue migrating remaining high-volume driver3 APIs in persister engine/common-persisters.
+
+## Execution update (2026-02-25 21:06 UTC, inventory delta)
+- Completed waves: Wave 1 through Wave 9.
+- Measured GS driver3 import-line reduction since baseline: `488 -> 478`.
+- Current focus remains Phase 1/2 bridge: continue converting highest-volume common-persisters hotspots.

@@ -5273,3 +5273,8 @@
 - Validation PASS: cache tests/install, web-gs package, and mp-server subset package (`core-interfaces,core,persistance` with `-am`).
 - Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave8-querybuilder-decoupling-remote-call-persister-20260225-203312.md` and corresponding logs in the same folder.
 - Next step: commit/push Wave 8 and continue query/persister hotspot conversion.
+### 2026-02-25 21:06 UTC
+- Added CASS-V4 Wave 9 post-wave inventory checkpoint to quantify migration progress.
+- Fresh inventory confirms GS driver3 import lines decreased from `488` to `478` after waves 4-8.
+- Evidence recorded in `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave9-inventory-delta-after-waves4-8-20260225-203312.md` plus raw inventory report in the same folder.
+- Next step: commit/push Wave 9 and continue common-persisters hotspot conversion.
