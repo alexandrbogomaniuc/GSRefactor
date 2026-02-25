@@ -2,6 +2,7 @@ package com.dgphoenix.casino.gs.maintenance.converters;
 
 import com.dgphoenix.casino.common.cache.ExportableCacheEntry;
 import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
@@ -46,7 +47,8 @@ public class ExportableCacheEntryConverter implements Converter {
                 String klazzName = reader.getAttribute("class");
                 IDistributedCacheEntry entryValue;
                 try {
-                    entryValue = (IDistributedCacheEntry) context.convertAnother(entry, Class.forName(klazzName));
+                    entryValue = (IDistributedCacheEntry) context.convertAnother(entry,
+                            ReflectionUtils.forNameWithCompatibilityAliases(klazzName));
                 } catch (Exception e) {
                     LOG.error("Cannot convert entry, class=" + klazzName, e);
                     throw new ConversionException("Cannot convert entry, class=" + klazzName, e);

@@ -29,6 +29,7 @@ import com.dgphoenix.casino.common.transactiondata.TransactionData;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.IdGenerator;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
@@ -91,7 +92,7 @@ public class FRBonusManager implements IFRBonusManager {
             return null;
         }
         try {
-            Class<?> aClass = Class.forName(klazz);
+            Class<?> aClass = ReflectionUtils.forNameWithCompatibilityAliases(klazz);
             Constructor<?> clientConstructor = aClass.getConstructor(long.class);
             IFRBonusClient client = (IFRBonusClient) clientConstructor.newInstance(bankId);
             IFRBonusClient existClient = clients.putIfAbsent(bankId, client);

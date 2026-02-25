@@ -2,6 +2,7 @@ package com.dgphoenix.casino.websocket.tournaments;
 
 import com.dgphoenix.casino.common.transport.TInboundObject;
 import com.dgphoenix.casino.common.transport.TObject;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
@@ -60,7 +61,8 @@ public class GsonClassSerializer implements JsonSerializer<TObject>, JsonDeseria
             String className = jsonObject.get(CLASS_PROPERTY_NAME).getAsString();
             try {
                 Class registeredClass = nameToClassMap.get(className);
-                actualClass = registeredClass != null ? registeredClass : Class.forName(className);
+                actualClass = registeredClass != null ? registeredClass
+                        : ReflectionUtils.forNameWithCompatibilityAliases(className);
             } catch (ClassNotFoundException e) {
                 throw new JsonParseException(e);
             }

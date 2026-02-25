@@ -7,6 +7,7 @@ package com.dgphoenix.casino.gs.managers.payment.transfer.processor;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.payment.transfer.processor.IPaymentProcessor;
 import com.dgphoenix.casino.common.exception.CommonException;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,7 +39,7 @@ public class PaymentProcessorFactory {
             if (className == null) {
                 throw new CommonException("PaymentProcessor not found");
             }
-            Class<?> aClass = Class.forName(className);
+            Class<?> aClass = ReflectionUtils.forNameWithCompatibilityAliases(className);
             Constructor<?> ppConstructor = aClass.getConstructor(long.class);
             IPaymentProcessor processor = (IPaymentProcessor) ppConstructor.newInstance(bankInfo.getId());
 

@@ -20,6 +20,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.exception.FRBException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.logkit.LogUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.managers.dblink.FRBonusDBLink;
@@ -77,7 +78,7 @@ public class OriginalFRBonusWinManager extends AbstractFRBonusWinManager<FRBonus
             throw new CommonException("bonus request client is empty");
         }
         try {
-            Class<?> aClass = Class.forName(klazz);
+            Class<?> aClass = ReflectionUtils.forNameWithCompatibilityAliases(klazz);
             Constructor<?> clientConstructor = aClass.getConstructor(long.class);
             return (IFRBonusClient) clientConstructor.newInstance(bankId);
         } catch (Exception e) {

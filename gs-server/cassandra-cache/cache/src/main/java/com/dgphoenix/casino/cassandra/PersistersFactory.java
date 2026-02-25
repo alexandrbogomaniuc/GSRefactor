@@ -4,6 +4,7 @@ import com.datastax.driver.core.ConsistencyLevel;
 import com.datastax.driver.core.Session;
 import com.dgphoenix.casino.cassandra.config.ColumnFamilyConfig;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import org.apache.commons.lang.ClassUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -56,7 +57,7 @@ public class PersistersFactory {
     @SuppressWarnings("unchecked")
     private Class<ICassandraPersister> getPersisterClass(String className) {
         try {
-            Class<?> klass = Class.forName(className);
+            Class<?> klass = ReflectionUtils.forNameWithCompatibilityAliases(className);
             checkArgument(ICassandraPersister.class.isAssignableFrom(klass), "Persister must implement ICassandraPersister");
             return (Class<ICassandraPersister>) klass;
         } catch (ClassNotFoundException e) {

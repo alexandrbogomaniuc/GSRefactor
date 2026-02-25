@@ -2,6 +2,7 @@ package com.dgphoenix.casino.common.transactiondata;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -72,7 +73,7 @@ public class TransactionDataFactory {
             }
             manager = managersByClassName.get(className);
             if (manager == null) {
-                Class<?> aClass = Class.forName(className);
+                Class<?> aClass = ReflectionUtils.forNameWithCompatibilityAliases(className);
                 Constructor<?> constructor = aClass.getConstructor();
                 manager = (ITransactionDataStorageHelper) constructor.newInstance();
                 managersByClassName.put(className, manager);

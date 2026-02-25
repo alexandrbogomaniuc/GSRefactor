@@ -9,6 +9,7 @@ import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.DBException;
 import com.dgphoenix.casino.common.exception.FRBException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.managers.dblink.FRBonusDBLink;
@@ -127,7 +128,7 @@ public class FRBonusWinRequestFactory {
             IFRBonusWinManager manager = null;
             String className = BankInfoCache.getInstance().getBankInfo(bankId).getFRBonusWinManager();
             if (!StringUtils.isTrimmedEmpty(className)) {
-                Class<?> aClass = Class.forName(className);
+                Class<?> aClass = ReflectionUtils.forNameWithCompatibilityAliases(className);
                 Constructor<?> wpmConstructor = aClass.getConstructor(long.class);
                 manager = (IFRBonusWinManager) wpmConstructor.newInstance(bankId);
             }

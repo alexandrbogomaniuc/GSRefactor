@@ -1,6 +1,7 @@
 package com.dgphoenix.casino.sm;
 
 import com.dgphoenix.casino.common.exception.CommonException;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.system.configuration.PlayerSessionConfiguration;
 import org.apache.logging.log4j.LogManager;
@@ -47,7 +48,7 @@ public class PlayerSessionFactory {
                 throw new CommonException("PSM is not defined");
             }
 
-            Class<?> aClass = Class.forName(className);
+            Class<?> aClass = ReflectionUtils.forNameWithCompatibilityAliases(className);
             Constructor<?> psmConstructor = aClass.getConstructor(long.class);
             IPlayerSessionManager manager = (IPlayerSessionManager) psmConstructor.newInstance(bankId);
             managers.putIfAbsent(bankId, manager);

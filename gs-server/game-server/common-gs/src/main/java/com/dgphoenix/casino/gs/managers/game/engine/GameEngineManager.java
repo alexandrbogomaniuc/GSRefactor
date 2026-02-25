@@ -9,6 +9,7 @@ import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -59,7 +60,8 @@ public class GameEngineManager {
     private IGameEngine instantiate(String className, long gameId) throws CommonException {
         IGameEngine ge;
         try {
-            ge = (IGameEngine) Class.forName(className).getConstructor(long.class).newInstance(gameId);
+            ge = (IGameEngine) ReflectionUtils.forNameWithCompatibilityAliases(className)
+                    .getConstructor(long.class).newInstance(gameId);
         } catch (Throwable e) {
             throw new CommonException("Instantiate GE exception", e);
         }

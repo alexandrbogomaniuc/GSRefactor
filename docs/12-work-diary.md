@@ -4989,3 +4989,25 @@
 - Added repeatable inventory generator script `gs-server/deploy/scripts/phase9-runtime-naming-inventory.sh` (dynamic path resolution, GS+MP scan support, output summaries).
 - Validation evidence: `OUTPUT_DIR=/tmp/phase9-runtime-inventory-test gs-server/deploy/scripts/phase9-runtime-naming-inventory.sh` completed successfully and produced class/mq/map reports.
 - Result: runtime inventory and safe rename execution plan are now explicit, evidence-backed, and rerunnable; next step is commit/push this inventory pack and move to RN3 implementation shortlist execution.
+### 2026-02-25 18:54-18:56 UTC
+- Started RN3 Wave A implementation (code compatibility completion): expanded compatibility-aware class loading (`ReflectionUtils.forNameWithCompatibilityAliases`) to additional high-risk runtime reflection paths beyond Wave B.
+- Patched files:
+  - `gs-server/common/.../TransactionDataFactory.java`
+  - `gs-server/cassandra-cache/cache/.../PersistersFactory.java`
+  - `gs-server/game-server/common-gs/.../GameEngineManager.java`
+  - `gs-server/game-server/common-gs/.../PaymentProcessorFactory.java`
+  - `gs-server/game-server/common-gs/.../BonusManager.java`
+  - `gs-server/game-server/common-gs/.../FRBonusManager.java`
+  - `gs-server/game-server/common-gs/.../OriginalFRBonusWinManager.java`
+  - `gs-server/game-server/common-gs/.../FRBonusWinRequestFactory.java`
+  - `gs-server/game-server/common-gs/.../PlayerSessionFactory.java`
+  - `gs-server/game-server/common-gs/.../GameSessionStateListenersFactory.java`
+  - `gs-server/game-server/common-gs/.../ExportableCacheEntryConverter.java`
+  - `gs-server/game-server/common-gs/.../GsonClassSerializer.java`
+- Validation evidence:
+  - `mvn -f gs-server/common/pom.xml -DskipTests install` => SUCCESS
+  - `mvn -f gs-server/cassandra-cache/cache/pom.xml -DskipTests install` => SUCCESS
+  - `mvn -f gs-server/game-server/common-gs/pom.xml -Dcluster.properties=local/local-machine.properties -DskipTests compile` => SUCCESS
+  - `mvn -f gs-server/game-server/web-gs/pom.xml -Dcluster.properties=local/local-machine.properties -DskipTests compile` => SUCCESS
+  - `mvn -f gs-server/sb-utils/pom.xml -Dtest=ReflectionUtilsCompatibilityTest test` => SUCCESS (`3/3` pass)
+- Result: RN3 Wave A compatibility coverage is expanded to core GS runtime loaders/deserializers; next step is commit/push and continue with remaining MP-side reflection hotspots + key alias waves.

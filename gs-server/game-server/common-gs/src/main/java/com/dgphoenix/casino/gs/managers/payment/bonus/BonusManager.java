@@ -23,6 +23,7 @@ import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.transactiondata.TransactionData;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.IdGenerator;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.bonus.BonusError;
 import com.dgphoenix.casino.common.web.bonus.BonusErrors;
@@ -78,7 +79,7 @@ public class BonusManager implements IBonusManager {
             return null;
         }
         try {
-            Class<?> aClass = Class.forName(klazz);
+            Class<?> aClass = ReflectionUtils.forNameWithCompatibilityAliases(klazz);
             Constructor<?> clientConstructor = aClass.getConstructor(long.class);
             IBonusClient client = (IBonusClient) clientConstructor.newInstance(bankId);
             IBonusClient existClient = clients.putIfAbsent(bankId, client);
