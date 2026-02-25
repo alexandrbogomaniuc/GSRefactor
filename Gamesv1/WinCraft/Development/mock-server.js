@@ -61,13 +61,25 @@ wss.on('connection', function connection(ws) {
                     sendResponse('BET_ACCEPTED', {
                         totalBet: envelope.payload.betAmount || 0.10,
                         totalWin: winAmount,
-                        resultGrid: [
-                            [Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1],
-                            [Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1],
-                            [Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1],
-                            [Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1],
-                            [Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 5) + 1]
-                        ], // 5x5 Grid
+                        slotResult: [
+                            [Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101],
+                            [Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101],
+                            [Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101]
+                        ], // 5x3 Top Reel Slot Grid
+                        miningScript: {
+                            pickaxeDrops: [
+                                { col: Math.floor(Math.random() * 5), type: 'StonePickaxe' },
+                                { col: Math.floor(Math.random() * 5), type: 'IronPickaxe' }
+                            ],
+                            initialMiningGrid: [
+                                [6, 6, 6, 6, 6], // Row 0: Grass
+                                [1, 1, 1, 1, 1], // Row 1: Dirt
+                                [2, 2, 2, 2, 2], // Row 2: Stone
+                                [7, 7, 7, 7, 7], // Row 3: Redstone
+                                [3, 3, 3, 3, 3], // Row 4: Gold
+                                [4, 5, 4, 5, 4]  // Row 5: Diamond and Bedrock
+                            ] // 5x6 Array representation
+                        }
                     });
                 }, 300);
             } else if (envelope.type === 'SETTLE_REQUEST') {

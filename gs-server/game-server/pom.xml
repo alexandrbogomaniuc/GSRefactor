@@ -33,15 +33,6 @@
     </dependencies>
 
     <modules>
-        <module>../common</module>
-        <module>../sb-utils</module>
-        <module>../utils</module>
-        <module>../cassandra-cache/cache</module>
-        <module>../cassandra-cache/common-persisters</module>
-        <module>../common-promo</module>
-        <module>../promo/persisters</module>
-        <module>../promo/core</module>
-        <module>../common-wallet</module>
         <module>common-gs</module>
         <module>web-gs</module>
     </modules>
