@@ -3,8 +3,7 @@ package com.dgphoenix.casino.promo.persisters;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -33,7 +32,7 @@ public class CassandraTournamentIconPersister extends AbstractCassandraPersister
             ), ICON_ID_FIELD);
 
     public void persist(TournamentIcon icon) {
-        Insert query = getInsertQuery()
+        Statement query = getInsertQuery()
                 .value(ICON_ID_FIELD, icon.getId())
                 .value(ICON_NAME_FIELD, icon.getName())
                 .value(ICON_HTTP_ADDRESS_FIELD, icon.getHttpAddress());
@@ -41,7 +40,7 @@ public class CassandraTournamentIconPersister extends AbstractCassandraPersister
     }
 
     public List<TournamentIcon> getAllIcons() {
-        Select query = getSelectAllColumnsQuery();
+        Statement query = getSelectAllColumnsQuery();
         ResultSet resultSet = execute(query, "getAllIcons");
         return resultSet.all().stream()
                 .filter(Objects::nonNull)
@@ -55,7 +54,7 @@ public class CassandraTournamentIconPersister extends AbstractCassandraPersister
     }
 
     public TournamentIcon getById(long id) {
-        Select query = getSelectColumnsQuery(ICON_NAME_FIELD, ICON_HTTP_ADDRESS_FIELD)
+        Statement query = getSelectColumnsQuery(ICON_NAME_FIELD, ICON_HTTP_ADDRESS_FIELD)
                 .where(eq(ICON_ID_FIELD, id)).limit(1);
         Row row = execute(query, "getById").one();
         if (row == null) {

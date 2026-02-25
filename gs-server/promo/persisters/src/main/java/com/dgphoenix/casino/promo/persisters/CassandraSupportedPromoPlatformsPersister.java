@@ -2,8 +2,7 @@ package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -30,11 +29,11 @@ public class CassandraSupportedPromoPlatformsPersister extends AbstractCassandra
             ), PROMO_ID);
 
     public void persist(long campaignId, ISupportedPlatform supportedPlatform) {
-        Insert insert = getInsertQuery();
         ByteBuffer supportedPlatformAsBytes = getMainTableDefinition().serializeWithClassToBytes(supportedPlatform);
         String json = getMainTableDefinition().serializeWithClassToJson(supportedPlatform);
         try {
-            insert.value(PROMO_ID, campaignId)
+            Statement insert = getInsertQuery()
+                    .value(PROMO_ID, campaignId)
                     .value(PLATFORM, supportedPlatformAsBytes)
                     .value(JSON_COLUMN_NAME, json);
             execute(insert, "persist supported platform");
@@ -44,9 +43,9 @@ public class CassandraSupportedPromoPlatformsPersister extends AbstractCassandra
     }
 
     public ISupportedPlatform getSupportedPlatform(long campaignId) {
-        Select select = getSelectColumnsQuery(PLATFORM);
-        select.where(eq(PROMO_ID, campaignId));
-        Row result = execute(select, "getSupportedPlatform").one();
+        Statement query = getSelectColumnsQuery(PLATFORM)
+                .where(eq(PROMO_ID, campaignId));
+        Row result = execute(query, "getSupportedPlatform").one();
 
         ISupportedPlatform supportedPlatform = SupportedPlatform.ALL;
         if (result != null) {

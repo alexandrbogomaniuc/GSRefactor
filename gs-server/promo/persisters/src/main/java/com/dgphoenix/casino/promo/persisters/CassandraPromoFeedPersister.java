@@ -2,8 +2,7 @@ package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -30,7 +29,7 @@ public class CassandraPromoFeedPersister extends AbstractCassandraPersister<Stri
 
     @Override
     public void persist(long tournamentId, long time, String feed) {
-        Insert insert = getInsertQuery()
+        Statement insert = getInsertQuery()
                 .value(TOURNAMENT_ID_COLUMN, tournamentId)
                 .value(TIME_COLUMN, time)
                 .value(FEED_COLUMN, feed);
@@ -40,7 +39,7 @@ public class CassandraPromoFeedPersister extends AbstractCassandraPersister<Stri
 
     @Override
     public String get(long tournamentId, long time) {
-        Select query = getSelectColumnsQuery(FEED_TABLE, FEED_COLUMN)
+        Statement query = getSelectColumnsQuery(FEED_TABLE, FEED_COLUMN)
                 .where(eq(TOURNAMENT_ID_COLUMN, tournamentId))
                 .and(eq(TIME_COLUMN, time))
                 .limit(1);

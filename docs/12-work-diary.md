@@ -5523,3 +5523,18 @@
 - Evidence saved under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221913/`.
 - Inventory result: GS driver3 imports reduced `430 -> 427`; MP unchanged `151`.
 - Next step: commit/push Wave 28 and continue next Cassandra hotspot wave.
+### 2026-02-25 22:24 UTC
+- Dev_new CASS-V4 Wave 29 completed and validated.
+- Converted typed querybuilder `Insert`/`Select` declarations to `Statement` flow in:
+  - `CassandraPromoFeedPersister`
+  - `CassandraTournamentIconPersister`
+  - `CassandraSupportedPromoPlatformsPersister`
+- Validation PASS:
+  - `mvn -DskipTests install` (`promo/persisters`)
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn test` (`cache`, `63` tests)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -pl core-interfaces,core,persistance -am -DskipTests package` (`mp-server`)
+- Evidence saved under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-222303/`.
+- Inventory result: GS driver3 imports reduced `427 -> 424`; MP unchanged `151`.
+- Next step: commit/push Wave 29 and continue next typed-query hotspot set.
