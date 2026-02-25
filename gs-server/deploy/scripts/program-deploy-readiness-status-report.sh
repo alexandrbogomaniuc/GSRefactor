@@ -8,6 +8,7 @@ VERIFY_REPORT=""
 PHASE4_REPORT=""
 PHASE56_REPORT=""
 PHASE7_DOC=""
+PHASE7_MISMATCH_TSV=""
 SECURITY_REPORT=""
 LEGACY_PARITY_REPORT=""
 LEGACY_MIXED_REPORT=""
@@ -24,9 +25,10 @@ Options:
   --phase4-report FILE    Default: latest phase4 protocol status report
   --phase56-report FILE   Default: latest phase5-6 service extraction status report
   --phase7-doc FILE       Default: docs/134 phase7 no-go rehearsal closure
+  --phase7-mismatch FILE  Default: latest phase7 full-copy count-mismatches TSV (if present)
   --security-report FILE  Default: latest security hardening status report
   --legacy-report FILE    Default: latest legacy parity status report
-  --legacy-mixed FILE     Default: latest legacy mixed-topology validation pack report
+  --legacy-mixed FILE     Default: latest manual full-flow result, else manual result, else preflight report
   --out-dir DIR           Default: ${OUT_DIR}
   -h, --help              Show help
 USAGE
@@ -39,6 +41,7 @@ while [[ $# -gt 0 ]]; do
     --phase4-report) PHASE4_REPORT="$2"; shift 2 ;;
     --phase56-report) PHASE56_REPORT="$2"; shift 2 ;;
     --phase7-doc) PHASE7_DOC="$2"; shift 2 ;;
+    --phase7-mismatch) PHASE7_MISMATCH_TSV="$2"; shift 2 ;;
     --security-report) SECURITY_REPORT="$2"; shift 2 ;;
     --legacy-report) LEGACY_PARITY_REPORT="$2"; shift 2 ;;
     --legacy-mixed) LEGACY_MIXED_REPORT="$2"; shift 2 ;;
@@ -53,20 +56,27 @@ mkdir -p "${OUT_DIR}"
 [[ -n "${PHASE4_REPORT}" ]] || PHASE4_REPORT="$(ls -1t "${ROOT}"/docs/phase4/protocol/phase4-protocol-status-report-*.md 2>/dev/null | head -n1 || true)"
 [[ -n "${PHASE56_REPORT}" ]] || PHASE56_REPORT="$(ls -1t "${ROOT}"/docs/phase5-6/phase5-6-service-extraction-status-report-*.md 2>/dev/null | head -n1 || true)"
 [[ -n "${PHASE7_DOC}" ]] || PHASE7_DOC="${ROOT}/docs/134-phase7-cassandra-rehearsal-report-tested-no-go-and-phase-deliverable-closure-20260224-090000.md"
+[[ -n "${PHASE7_MISMATCH_TSV}" ]] || PHASE7_MISMATCH_TSV="$(ls -1td "${ROOT}"/docs/phase7/cassandra/full-copy/run-* 2>/dev/null | head -n1 | xargs -I{} sh -c 'f="{}/count-mismatches-source-vs-target.tsv"; [ -f "$f" ] && printf "%s" "$f"' || true)"
 [[ -n "${SECURITY_REPORT}" ]] || SECURITY_REPORT="$(ls -1t "${ROOT}"/docs/security/security-hardening-status-report-*.md 2>/dev/null | head -n1 || true)"
 [[ -n "${LEGACY_PARITY_REPORT}" ]] || LEGACY_PARITY_REPORT="$(ls -1t "${ROOT}"/docs/phase0/parity-status/phase0-legacy-parity-status-report-*.md 2>/dev/null | head -n1 || true)"
+[[ -n "${LEGACY_MIXED_REPORT}" ]] || LEGACY_MIXED_REPORT="$(ls -1t "${ROOT}"/docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-full-flow-*.md 2>/dev/null | head -n1 || true)"
+[[ -n "${LEGACY_MIXED_REPORT}" ]] || LEGACY_MIXED_REPORT="$(ls -1t "${ROOT}"/docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-result-*.md 2>/dev/null | head -n1 || true)"
 [[ -n "${LEGACY_MIXED_REPORT}" ]] || LEGACY_MIXED_REPORT="$(ls -1t "${ROOT}"/docs/validation/legacy-mixed-topology/legacy-mixed-topology-validation-*.md 2>/dev/null | head -n1 || true)"
 
 for f in "${CHECKLIST_JSON}" "${VERIFY_REPORT}" "${PHASE4_REPORT}" "${PHASE56_REPORT}" "${PHASE7_DOC}" "${SECURITY_REPORT}" "${LEGACY_PARITY_REPORT}" "${LEGACY_MIXED_REPORT}"; do
   [[ -f "${f}" ]] || { echo "Missing input file: ${f}" >&2; exit 2; }
 done
+if [[ -n "${PHASE7_MISMATCH_TSV}" && ! -f "${PHASE7_MISMATCH_TSV}" ]]; then
+  echo "Missing input file: ${PHASE7_MISMATCH_TSV}" >&2
+  exit 2
+fi
 
 TS="$(date -u +%Y%m%d-%H%M%S)"
 REPORT="${OUT_DIR}/program-deploy-readiness-status-${TS}.md"
 
-node - <<'NODE' "${CHECKLIST_JSON}" "${VERIFY_REPORT}" "${PHASE4_REPORT}" "${PHASE56_REPORT}" "${PHASE7_DOC}" "${SECURITY_REPORT}" "${LEGACY_PARITY_REPORT}" "${LEGACY_MIXED_REPORT}" "${REPORT}"
+node - <<'NODE' "${CHECKLIST_JSON}" "${VERIFY_REPORT}" "${PHASE4_REPORT}" "${PHASE56_REPORT}" "${PHASE7_DOC}" "${PHASE7_MISMATCH_TSV}" "${SECURITY_REPORT}" "${LEGACY_PARITY_REPORT}" "${LEGACY_MIXED_REPORT}" "${REPORT}"
 const fs = require('fs');
-const [checklistFile, verifyFile, phase4File, phase56File, phase7File, securityFile, legacyFile, legacyMixedFile, outFile] = process.argv.slice(2);
+const [checklistFile, verifyFile, phase4File, phase56File, phase7File, phase7MismatchFile, securityFile, legacyFile, legacyMixedFile, outFile] = process.argv.slice(2);
 const read = p => fs.readFileSync(p, 'utf8');
 const normalized = s => s.includes('\\n') ? s.replace(/\\n/g, '\n') : s;
 const pick = (re, src, d='') => ((src.match(re)||[])[1] || d).toString().trim();
@@ -87,6 +97,7 @@ const vr = { pass:Number(pick(/^- pass:\s*(\d+)$/m, verify,'0')), fail:Number(pi
 const phase4 = normalized(read(phase4File));
 const phase56 = normalized(read(phase56File));
 const phase7 = normalized(read(phase7File));
+const phase7Mismatch = phase7MismatchFile ? read(phase7MismatchFile) : '';
 const security = normalized(read(securityFile));
 const legacy = normalized(read(legacyFile));
 const legacyMixed = normalized(read(legacyMixedFile));
@@ -96,8 +107,11 @@ const statuses = {
   phase56: pick(/^- overall_status:\s*(.+)$/m, phase56, 'UNKNOWN'),
   security: pick(/^- overall_status:\s*(.+)$/m, security, 'UNKNOWN'),
   legacy: pick(/^- overall_status:\s*(.+)$/m, legacy, 'UNKNOWN'),
-  legacyMixed: pick(/^- status:\s*(.+)$/m, legacyMixed, 'UNKNOWN'),
-  phase7NoGo: /No-Go/i.test(phase7) ? 'YES' : 'NO'
+  legacyMixed: pick(/^- status:\s*(.+)$/m, legacyMixed, pick(/^- overall_status:\s*(.+)$/m, legacyMixed, 'UNKNOWN')),
+  phase7NoGo: (() => {
+    if (phase7MismatchFile) return phase7Mismatch.trim().length === 0 ? 'NO' : 'YES';
+    return /No-Go/i.test(phase7) ? 'YES' : 'NO';
+  })()
 };
 
 const blockers = [];
@@ -134,14 +148,23 @@ out.push('## Cutover Blockers');
 out.push('');
 out.push('| Blocker | Severity | Note |');
 out.push('|---|---|---|');
-for (const b of blockers) out.push(`| ${b.id} | ${b.severity} | ${b.note} |`);
+if (blockers.length === 0) {
+  out.push('| none | - | No current blockers in aggregated evidence inputs |');
+} else {
+  for (const b of blockers) out.push(`| ${b.id} | ${b.severity} | ${b.note} |`);
+}
 out.push('');
 out.push('## Next Mandatory Actions');
 out.push('');
-out.push('1. Deploy/start refactor container group and rerun Phase 4/5/6 strict runtime evidence packs.');
-out.push('2. Run dedicated refactored GS + legacy MP/client mixed-topology validation wave.');
-out.push('3. Sync/restore legacy data into refactor Cassandra and rerun Phase 7 parity rehearsal to GO.');
-out.push('4. Generate dependency lockfiles and run dependency audit in network-capable environment; remediate findings.');
+if (blockers.length === 0) {
+  out.push('1. Proceed with controlled deploy/canary approval (change window, rollback owner, monitoring watch).');
+  out.push('2. Capture a fresh operator sign-off record referencing this report and the latest phase evidence docs.');
+  out.push('3. If promoting beyond canary, repeat the runtime evidence packs after deploy to the target environment.');
+} else {
+  out.push('1. Resolve the listed blockers and regenerate this readiness report.');
+  out.push('2. Re-run any affected runtime evidence packs after each blocker fix.');
+  out.push('3. Capture updated operator approval evidence before cutover decision.');
+}
 
 fs.writeFileSync(outFile, out.join('\n') + '\n');
 console.log(`report=${outFile}`);

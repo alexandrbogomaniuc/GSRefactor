@@ -4917,3 +4917,19 @@
 - Push attempt to `origin/main` failed again in this environment: `Could not resolve host: github.com`.
 - Result: All 7 audit/finalization milestones are completed locally in `GSRefactor`, but remote sync from this environment is still blocked by DNS/network restrictions.
 - Next step: present final closeout summary with explicit unfinished project blockers (cutover/runtime/security) and note that milestone completion is not the same as production finalization.
+### 2026-02-25 11:29-11:30 UTC
+- Production-finalization pass resumed after audit milestones: rechecked continuity, git divergence (`main` ahead 14/behind 3), and live refactor runtime state.
+- Confirmed current blocker for repo-only onboarding is `mp-server` Maven build failure on private artifact `com.dgphoenix.casino:utils-restricted:1.1.0`; local artifact copy exists in workspace cache (`../.m2repo`).
+- Updated `gs-server/deploy/scripts/refactor-bootstrap-runtime.sh` to install the private artifact into local Maven cache automatically from configurable local cache paths (`PRIVATE_M2_REPO_DIR`, `PRIVATE_UTILS_COORDS`) before MP build, with namespace/groupId mismatch fallback for renamed coordinates.
+- Result: bootstrap script syntax check passed; next step is repo-only `refactor-onboard.mjs up` validation.
+### 2026-02-25 11:29-11:38 UTC
+- Production-finalization work focused on Milestone 6 portability closure gap: refactor repo-only onboarding failed on missing private MP Maven dependencies.
+- Patched `gs-server/deploy/scripts/refactor-bootstrap-runtime.sh` to seed private artifacts from workspace cache (`PRIVATE_M2_REPO_DIR`, `PRIVATE_MP_SEED_COORDS`) and fixed seeding bugs (wrong local repo path conversion, generated POM metadata loss).
+- Validation reruns of `refactor-onboard.mjs up` now progress much further: MP reactor builds through core and multiple game modules, then currently stops at `persistance` due unresolved private parent chain for `gsn-cache-restricted` (`gsn-cassandra-cache` / `gsn-utils-restricted`).
+- Next step: extend seed list with remaining private chain artifacts and rerun until repo-only onboarding completes.
+### 2026-02-25 12:12 UTC (production finalization pass)
+- Rebuilt refactor Node services after dependency security remediation (Express 4.22.1 + lockfile audit fixes) and reran runtime evidence packs.
+- Post-rebuild validation PASS: refactor smoke (`/startgame` alias 200), Phase 4 protocol runtime evidence PASS, Phase 5 wallet/gameplay/bonus/history PASS, Phase 6 multiplayer PASS.
+- Security status now `TESTED_SECURITY_HARDENING_COMPLETE` using generated lockfiles + production audit summary (`docs/security/dependency-audit/audit-summary-prod.json` = 0 vulnerabilities).
+- Program readiness now `GO_FOR_DEPLOY_AND_CANARY` with `blocker_count=0` in `docs/release-readiness/program-deploy-readiness-status-20260225-121221.md`.
+- Remaining non-code step: operator change-window approval and production/canary sign-off using latest evidence bundle.

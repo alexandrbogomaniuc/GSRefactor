@@ -7,7 +7,6 @@ import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.game.GameVariableType;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.util.DigitFormatter;
-import com.dgphoenix.casino.gs.singlegames.tools.util.NumberUtils;
 import com.dgphoenix.casino.support.cache.bank.edit.forms.common.GameInfoForm;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
@@ -85,7 +84,7 @@ public class LoadGameInfoAction extends Action {
 
             List<String> bankCoinsAsString = new ArrayList<>();
             for (Coin coin : sortedBankCoins) {
-                bankCoinsAsString.add(String.valueOf(NumberUtils.centsToDouble(coin.getValue())));
+                bankCoinsAsString.add(String.valueOf(centsToDouble(coin.getValue())));
             }
             gameForm.setBankCoins(bankCoinsAsString);
         }
@@ -95,7 +94,7 @@ public class LoadGameInfoAction extends Action {
         List<LabelValueBean> cachedCoinsAsLabel = new ArrayList<>();
         for (Coin coin : sortedCachedCoins) {
             cachedCoinsAsLabel.add(
-                    new LabelValueBean(DigitFormatter.doubleToMoney(NumberUtils.centsToDouble(coin.getValue())),
+                    new LabelValueBean(DigitFormatter.doubleToMoney(centsToDouble(coin.getValue())),
                             String.valueOf(coin.getId()))
             );
         }
@@ -136,6 +135,10 @@ public class LoadGameInfoAction extends Action {
         });
 
         return sortedCoins;
+    }
+
+    private static double centsToDouble(long cents) {
+        return cents / 100d;
     }
 
 }

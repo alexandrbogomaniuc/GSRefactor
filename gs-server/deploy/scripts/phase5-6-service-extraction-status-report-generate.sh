@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+ROOT="/Users/alexb/Documents/Dev/Dev_new"
 VERIFY_REPORT=""
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase5-6"
+OUT_DIR="${ROOT}/docs/phase5-6"
 
-GAMEPLAY_EVIDENCE="/Users/alexb/Documents/Dev/Dev_new/docs/phase5/gameplay/phase5-gameplay-runtime-evidence-20260220-180650.md"
-WALLET_EVIDENCE="/Users/alexb/Documents/Dev/Dev_new/docs/phase5/wallet/phase5-wallet-runtime-evidence-20260220-184505.md"
-BONUS_EVIDENCE="/Users/alexb/Documents/Dev/Dev_new/docs/phase5/bonus-frb/phase5-bonus-frb-runtime-evidence-20260220-185313.md"
-HISTORY_EVIDENCE="/Users/alexb/Documents/Dev/Dev_new/docs/phase5/history/phase5-history-runtime-evidence-20260220-190016.md"
-MP_EVIDENCE="/Users/alexb/Documents/Dev/Dev_new/docs/phase6/multiplayer/phase6-multiplayer-runtime-evidence-20260223-124734.md"
+GAMEPLAY_EVIDENCE=""
+WALLET_EVIDENCE=""
+BONUS_EVIDENCE=""
+HISTORY_EVIDENCE=""
+MP_EVIDENCE=""
 
 usage() {
   cat <<USAGE
@@ -19,11 +20,11 @@ and the shared local verification suite report.
 
 Options:
   --verify-report FILE      Default: latest local verification suite report
-  --gameplay-evidence FILE  Default: ${GAMEPLAY_EVIDENCE}
-  --wallet-evidence FILE    Default: ${WALLET_EVIDENCE}
-  --bonus-evidence FILE     Default: ${BONUS_EVIDENCE}
-  --history-evidence FILE   Default: ${HISTORY_EVIDENCE}
-  --mp-evidence FILE        Default: ${MP_EVIDENCE}
+  --gameplay-evidence FILE  Default: latest gameplay runtime evidence report
+  --wallet-evidence FILE    Default: latest wallet runtime evidence report
+  --bonus-evidence FILE     Default: latest bonus-frb runtime evidence report
+  --history-evidence FILE   Default: latest history runtime evidence report
+  --mp-evidence FILE        Default: latest multiplayer runtime evidence report
   --out-dir DIR             Default: ${OUT_DIR}
   -h, --help                Show help
 USAGE
@@ -45,8 +46,13 @@ done
 
 mkdir -p "${OUT_DIR}"
 if [[ -z "${VERIFY_REPORT}" ]]; then
-  VERIFY_REPORT="$(ls -1t /Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-*.md 2>/dev/null | head -n1 || true)"
+  VERIFY_REPORT="$(ls -1t "${ROOT}"/docs/quality/local-verification/phase5-6-local-verification-*.md 2>/dev/null | head -n1 || true)"
 fi
+[[ -n "${GAMEPLAY_EVIDENCE}" ]] || GAMEPLAY_EVIDENCE="$(ls -1t "${ROOT}"/docs/phase5/gameplay/phase5-gameplay-runtime-evidence-*.md 2>/dev/null | head -n1 || true)"
+[[ -n "${WALLET_EVIDENCE}" ]] || WALLET_EVIDENCE="$(ls -1t "${ROOT}"/docs/phase5/wallet/phase5-wallet-runtime-evidence-*.md 2>/dev/null | head -n1 || true)"
+[[ -n "${BONUS_EVIDENCE}" ]] || BONUS_EVIDENCE="$(ls -1t "${ROOT}"/docs/phase5/bonus-frb/phase5-bonus-frb-runtime-evidence-*.md 2>/dev/null | head -n1 || true)"
+[[ -n "${HISTORY_EVIDENCE}" ]] || HISTORY_EVIDENCE="$(ls -1t "${ROOT}"/docs/phase5/history/phase5-history-runtime-evidence-*.md 2>/dev/null | head -n1 || true)"
+[[ -n "${MP_EVIDENCE}" ]] || MP_EVIDENCE="$(ls -1t "${ROOT}"/docs/phase6/multiplayer/phase6-multiplayer-runtime-evidence-*.md 2>/dev/null | head -n1 || true)"
 
 for f in "${VERIFY_REPORT}" "${GAMEPLAY_EVIDENCE}" "${WALLET_EVIDENCE}" "${BONUS_EVIDENCE}" "${HISTORY_EVIDENCE}" "${MP_EVIDENCE}"; do
   [[ -f "${f}" ]] || { echo "Missing input file: ${f}" >&2; exit 2; }

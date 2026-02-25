@@ -14,7 +14,6 @@ import com.dgphoenix.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.InheritFromTemplate;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
-import com.dgphoenix.casino.gs.singlegames.tools.util.NumberUtils;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.dgphoenix.casino.support.CacheObjectComparator;
 import com.dgphoenix.casino.support.cache.bank.edit.forms.common.GameInfoForm;
@@ -221,7 +220,7 @@ public class EditGameAction extends Action {
                 StringBuilder builder = new StringBuilder();
                 for (Coin coin : oldBaseGameInfo.getCoins()) {
                     builder.append("<br>");
-                    builder.append(DigitFormatter.doubleToMoney(NumberUtils.centsToDouble(coin.getValue())));
+                    builder.append(DigitFormatter.doubleToMoney(centsToDouble(coin.getValue())));
                 }
                 onLoadCoinsListString = builder.toString();
                 builder = new StringBuilder();
@@ -229,14 +228,14 @@ public class EditGameAction extends Action {
                 List<Coin> coins1 = currentGameInfo.getCoins();
                 for (Coin coin : coins1) {
                     builder.append("<br>");
-                    builder.append(DigitFormatter.doubleToMoney(NumberUtils.centsToDouble(coin.getValue())));
+                    builder.append(DigitFormatter.doubleToMoney(centsToDouble(coin.getValue())));
                 }
                 onServerCoinsListString = builder.toString();
                 builder = new StringBuilder();
 
                 for (Coin coin : coins) {
                     builder.append("<br>");
-                    builder.append(DigitFormatter.doubleToMoney(NumberUtils.centsToDouble(coin.getValue())));
+                    builder.append(DigitFormatter.doubleToMoney(centsToDouble(coin.getValue())));
                 }
                 settingCoinsListString = builder.toString();
 
@@ -454,5 +453,9 @@ public class EditGameAction extends Action {
 
     private boolean isConstant(int modifiers) {
         return Modifier.isPublic(modifiers) && Modifier.isStatic(modifiers) && Modifier.isFinal(modifiers);
+    }
+
+    private static double centsToDouble(long cents) {
+        return cents / 100d;
     }
 }

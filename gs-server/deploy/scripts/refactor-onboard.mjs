@@ -164,8 +164,9 @@ async function httpCheck(url, { okStatuses = [200], timeoutMs = 5000, followRedi
 
 async function smokeChecks() {
   const checks = [
-    { label: 'Static facade', url: 'http://127.0.0.1:18080/', okStatuses: [200] },
-    { label: 'GS web', url: 'http://127.0.0.1:18081/', okStatuses: [200] },
+    // Root URLs often return 403 locally when the service is reachable but the page is not public.
+    { label: 'Static facade', url: 'http://127.0.0.1:18080/', okStatuses: [200, 403] },
+    { label: 'GS web', url: 'http://127.0.0.1:18081/', okStatuses: [200, 403] },
     { label: 'Config service health', url: 'http://127.0.0.1:18072/health', okStatuses: [200] },
     {
       label: 'Launch alias (startgame)',

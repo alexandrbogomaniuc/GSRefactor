@@ -10,6 +10,7 @@ LEGACY_COMPOSE_ENV_OUT="${ROOT_DIR}/deploy/docker/configs/.env"
 NGINX_OUT="${ROOT_DIR}/deploy/docker/configs/static/cluster-hosts.inc"
 STARTGAME_REWRITE_OUT="${ROOT_DIR}/deploy/docker/configs/static/startgame-rewrite.inc"
 PORTAL_OUT="${ROOT_DIR}/game-server/web-gs/src/main/resources/cluster-hosts.properties"
+RUNTIME_GS_CLUSTER_HOSTS_OUT="${ROOT_DIR}/../Doker/runtime-gs/webapps/gs/ROOT/WEB-INF/classes/cluster-hosts.properties"
 
 if [[ ! -f "${SOURCE_FILE}" ]]; then
   echo "Missing source file: ${SOURCE_FILE}" >&2
@@ -242,6 +243,9 @@ sub_filter 'ws://127.0.0.1:6300/' 'ws://$(get_cfg "MP_EXTERNAL_HOST"):$(get_cfg 
 EOF
 
 cp "${SOURCE_FILE}" "${PORTAL_OUT}"
+if [[ -d "$(dirname "${RUNTIME_GS_CLUSTER_HOSTS_OUT}")" ]]; then
+  cp "${SOURCE_FILE}" "${RUNTIME_GS_CLUSTER_HOSTS_OUT}"
+fi
 cp "${ENV_OUT}" "${COMPOSE_ENV_OUT}"
 cp "${ENV_OUT}" "${LEGACY_COMPOSE_ENV_OUT}"
 
@@ -253,3 +257,6 @@ echo "  legacy: ${LEGACY_COMPOSE_ENV_OUT}"
 echo "  nginx:  ${NGINX_OUT}"
 echo "  startgame rewrite: ${STARTGAME_REWRITE_OUT}"
 echo "  portal: ${PORTAL_OUT}"
+if [[ -f "${RUNTIME_GS_CLUSTER_HOSTS_OUT}" ]]; then
+  echo "  runtime gs classpath: ${RUNTIME_GS_CLUSTER_HOSTS_OUT}"
+fi

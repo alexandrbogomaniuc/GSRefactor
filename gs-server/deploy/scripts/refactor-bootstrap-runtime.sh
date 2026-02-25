@@ -5,6 +5,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DEPLOY_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 DEV_NEW_ROOT="$(cd "$DEPLOY_DIR/../.." && pwd)"
+WORKSPACE_ROOT="$(cd "$DEV_NEW_ROOT/.." && pwd)"
 
 RUNTIME_BASE="${RUNTIME_BASE:-$DEV_NEW_ROOT/Doker/runtime-gs}"
 RUNTIME_ROOT="$RUNTIME_BASE/webapps/gs/ROOT"
@@ -18,6 +19,11 @@ AUTO_BUILD_MP="${AUTO_BUILD_MP:-1}"
 AUTO_BUILD_HTML5="${AUTO_BUILD_HTML5:-1}"
 MAVEN_CMD="${MAVEN_CMD:-mvn}"
 NPM_CMD="${NPM_CMD:-npm}"
+PRIVATE_M2_REPO_DIR="${PRIVATE_M2_REPO_DIR:-$WORKSPACE_ROOT/.m2repo}"
+PRIVATE_M2_BULK_SYNC="${PRIVATE_M2_BULK_SYNC:-1}"
+PRIVATE_M2_BULK_REL_PATHS="${PRIVATE_M2_BULK_REL_PATHS:-com/dgphoenix}"
+PRIVATE_UTILS_COORDS="${PRIVATE_UTILS_COORDS:-com.dgphoenix.casino:utils-restricted:1.1.0}"
+PRIVATE_MP_SEED_COORDS="${PRIVATE_MP_SEED_COORDS:-com.dgphoenix.casino:gsn-casino-project:1.0.0-SNAPSHOT:pom com.dgphoenix.casino:gsn-cassandra-cache:1.0-SNAPSHOT:pom com.dgphoenix.casino:rng:2.0 com.dgphoenix.casino:gsn-common:1.0-SNAPSHOT com.dgphoenix.casino:gsn-utils-restricted:1.0-SNAPSHOT com.dgphoenix.casino:gsn-cache-restricted:1.0-SNAPSHOT com.dgphoenix.casino.tools:kryo-validator:2.9.1-SNAPSHOT com.dgphoenix.casino.tools:annotations:1.1.0 com.dgphoenix.casino:utils-restricted:1.1.0}"
 
 log() { printf '[refactor-bootstrap] %s\n' "$*"; }
 die() { printf '[refactor-bootstrap] ERROR: %s\n' "$*" >&2; exit 1; }
@@ -25,6 +31,98 @@ run() { log "$*"; "$@"; }
 require_cmd() { command -v "$1" >/dev/null 2>&1 || die "Missing command: $1"; }
 require_path() { [[ -e "$1" ]] || die "Missing required path: $1"; }
 has_cmd() { command -v "$1" >/dev/null 2>&1; }
+
+maven_local_repo_dir() {
+  local candidate="${MAVEN_LOCAL_REPO:-$HOME/.m2/repository}"
+  printf '%s\n' "$candidate"
+}
+
+coord_to_repo_path() {
+  local coords="$1"
+  local group artifact version packaging
+  IFS=':' read -r group artifact version packaging <<<"$coords"
+  packaging="${packaging:-jar}"
+  local group_path
+  group_path="$(printf '%s' "$group" | tr '.' '/')"
+  printf '%s/%s/%s/%s' "$group_path" "$artifact" "$version" "$artifact-$version"
+}
+
+copy_local_m2_artifact() {
+  local coords="$1"
+  local group artifact version packaging
+  IFS=':' read -r group artifact version packaging <<<"$coords"
+  packaging="${packaging:-jar}"
+  [[ -n "${group:-}" && -n "${artifact:-}" && -n "${version:-}" ]] || \
+    die "Artifact coordinates must be groupId:artifactId:version[:packaging] (got: $coords)"
+
+  local local_repo
+  local_repo="$(maven_local_repo_dir)"
+  local base_rel
+  base_rel="$(coord_to_repo_path "$coords")"
+  local local_artifact="$local_repo/${base_rel}.${packaging}"
+  local local_pom="$local_repo/${base_rel}.pom"
+
+  local source_artifact="" source_pom=""
+  local source_base="$PRIVATE_M2_REPO_DIR/${base_rel%/*}"
+  if [[ -f "$source_base/$(basename "${base_rel}.${packaging}")" && -f "$source_base/$(basename "${base_rel}.pom")" ]]; then
+    source_artifact="$source_base/$(basename "${base_rel}.${packaging}")"
+    source_pom="$source_base/$(basename "${base_rel}.pom")"
+  fi
+
+  if [[ -z "$source_artifact" ]]; then
+    while IFS= read -r artifact_path; do
+      local dir_path pom_path
+      dir_path="$(dirname "$artifact_path")"
+      pom_path="$dir_path/${artifact}-${version}.pom"
+      if [[ -f "$pom_path" ]]; then
+        source_artifact="$artifact_path"
+        source_pom="$pom_path"
+        break
+      fi
+    done < <(find "$WORKSPACE_ROOT" -type f -path "*/${artifact}/${version}/${artifact}-${version}.${packaging}" 2>/dev/null | sort)
+  fi
+
+  if [[ -z "$source_artifact" || -z "$source_pom" ]]; then
+    log "Private artifact not found locally for $coords (looked in $PRIVATE_M2_REPO_DIR and workspace caches)"
+    return
+  fi
+
+  if [[ -f "$local_artifact" && -f "$local_pom" ]] && cmp -s "$local_artifact" "$source_artifact" && cmp -s "$local_pom" "$source_pom"; then
+    log "Private Maven artifact already installed: $coords"
+    return
+  fi
+
+  log "Seeding local Maven cache from workspace copy: $coords"
+  mkdir -p "$(dirname "$local_artifact")"
+  cp -f "$source_artifact" "$local_artifact"
+  cp -f "$source_pom" "$local_pom"
+}
+
+bulk_seed_private_m2_cache() {
+  [[ "$PRIVATE_M2_BULK_SYNC" == "1" ]] || return
+  local local_repo rel src dst
+  local_repo="$(maven_local_repo_dir)"
+  for rel in $PRIVATE_M2_BULK_REL_PATHS; do
+    src="$PRIVATE_M2_REPO_DIR/$rel"
+    dst="$local_repo/$rel"
+    [[ -d "$src" ]] || continue
+    mkdir -p "$dst"
+    if has_cmd rsync; then
+      run rsync -a "$src/" "$dst/"
+    else
+      log "rsync not found; using cp -R for local Maven bulk seed: $rel"
+      cp -R "$src/." "$dst/"
+    fi
+  done
+}
+
+ensure_private_mp_seed_artifacts() {
+  bulk_seed_private_m2_cache
+  local coords
+  for coords in $PRIVATE_MP_SEED_COORDS; do
+    copy_local_m2_artifact "$coords"
+  done
+}
 
 copy_tree_contents() {
   local src="$1"
@@ -115,6 +213,7 @@ build_mp_artifact_if_needed() {
   [[ "$AUTO_BUILD_MP" == "1" ]] || die "Missing MP target and AUTO_BUILD_MP=0: $MP_TARGET_DIR/web-mp-casino"
   require_cmd "$MAVEN_CMD"
   require_cmd java
+  ensure_private_mp_seed_artifacts
   log "Building MP web artifact into mp-server/web/target (this may take a while)"
   (
     cd "$DEV_NEW_ROOT/mp-server"

@@ -308,12 +308,12 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                 SessionInfo sessionInfo = infoPair.getSessionInfo();
                 String sessionId = sessionInfo != null ? sessionInfo.getSessionId() : null;
                 String privateRoomId = sessionInfo != null ? sessionInfo.getPrivateRoomId() : null;
-                boolean multiplayerRoute = GameServer.getInstance().isMultiplayerGame(gameId);
+                boolean multiplayerRoute = GameServer.getInstance().isMultiplayerGame(gameSessionAfterSitOut);
 
                 MultiplayerServiceRoutingBridge.RouteDecision multiplayerServiceRouteDecision =
                         MultiplayerServiceRoutingBridge.getInstance().decide(
                                 actionForm.getBankId(),
-                                gameId,
+                                (int) gameId,
                                 sessionId,
                                 multiplayerRoute
                         );
@@ -321,7 +321,7 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                         multiplayerServiceRouteDecision.getReason());
                 getLog().debug("CWStartGameAction process: multiplayer route decision bankId={}, gameId={}, route={}, reason={}, endpoint={}, bankMultiplayerEnabled={}",
                         actionForm.getBankId(),
-                        gameId,
+                        (int) gameId,
                         multiplayerServiceRouteDecision.isRouteToMultiplayerService(),
                         multiplayerServiceRouteDecision.getReason(),
                         multiplayerServiceRouteDecision.getEndpoint(),
@@ -333,7 +333,7 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                         gameplayRouteDecision.getReason());
                 getLog().debug("CWStartGameAction process: gameplay route decision bankId={}, gameId={}, route={}, reason={}, endpoint={}, isMultiplayer={}",
                         actionForm.getBankId(),
-                        gameId,
+                        (int) gameId,
                         gameplayRouteDecision.isRouteToGameplayService(),
                         gameplayRouteDecision.getReason(),
                         gameplayRouteDecision.getEndpoint(),
@@ -354,7 +354,7 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                         actionForm.getBankId(),
                         sessionId,
                         externalId,
-                        gameId,
+                        (int) gameId,
                         mode == null ? null : mode.name()
                 );
 
@@ -363,7 +363,7 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                         actionForm.getBankId(),
                         sessionId,
                         externalId,
-                        gameId,
+                        (int) gameId,
                         privateRoomId,
                         "LAUNCH_SYNC"
                 );
