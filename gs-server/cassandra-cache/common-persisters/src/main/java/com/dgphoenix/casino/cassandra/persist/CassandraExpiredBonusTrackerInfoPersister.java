@@ -2,7 +2,7 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -62,8 +62,9 @@ public class CassandraExpiredBonusTrackerInfoPersister extends AbstractCassandra
         if (LOG.isDebugEnabled()) {
             LOG.debug("persist: " + key + "=" + new Date(lastProcessedDate));
         }
-        Insert query = getInsertQuery();
-        query.value(KEY, key).value(LAST_PROCESSED_DATE_COLUMN, lastProcessedDate);
+        Statement query = getInsertQuery()
+                .value(KEY, key)
+                .value(LAST_PROCESSED_DATE_COLUMN, lastProcessedDate);
         execute(query, "persist");
     }
 

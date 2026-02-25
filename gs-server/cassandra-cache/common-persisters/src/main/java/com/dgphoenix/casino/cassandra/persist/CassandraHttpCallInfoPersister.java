@@ -2,8 +2,8 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
+import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
@@ -144,9 +144,10 @@ public class CassandraHttpCallInfoPersister extends AbstractCassandraPersister<S
     }
 
     private List<HttpCallInfo> getMany(String columnName, Object value) {
-        Select select = select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME).from(CF_NAME);
-        select.where(eq(columnName, value));
-        ResultSet rows = execute(select, "getMany");
+        Statement query = select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .from(CF_NAME)
+                .where(eq(columnName, value));
+        ResultSet rows = execute(query, "getMany");
         return StreamUtils.asStream(rows)
                 .map(this::toHttpCallInfoOptional)
                 .filter(Optional::isPresent)

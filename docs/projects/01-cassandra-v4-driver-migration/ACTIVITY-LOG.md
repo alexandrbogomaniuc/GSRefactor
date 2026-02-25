@@ -429,3 +429,26 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
 - Inventory delta after Wave 25:
   - GS `driver3_import_lines`: `436 -> 434` (`-2`)
   - MP `driver3_import_lines`: `151` (no change)
+
+## 2026-02-25 22:11 UTC
+- Implemented CASS-V4 Wave 26 in distributed-config/http-call/expired-bonus cleanup paths:
+  - `AbstractDistributedConfigEntryPersister` (select declaration)
+  - `CassandraHttpCallInfoPersister` (select declaration in `getMany`)
+  - `CassandraExpiredBonusTrackerInfoPersister` (insert declaration)
+- Replaced typed querybuilder variable declarations with `Statement` where compile-safe.
+- Kept typed `Insert` in `CassandraHttpCallInfoPersister#persist` because the method incrementally mutates insert values through optional branches.
+- Validation: PASS
+  - `common-persisters` install
+  - cache test suite (`63` tests)
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221010/c4-wave26-distributed-http-expired-statement-flow-20260225-221010.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221010/c4-wave26-build-common-persisters-20260225-221010.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221010/c4-wave26-unit-tests-20260225-221010.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221010/c4-wave26-build-web-gs-20260225-221010.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221010/c4-wave26-build-mp-stack-20260225-221010.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221010/phase7-cassandra-driver-inventory-20260225-221102.txt`
+- Inventory after Wave 26:
+  - GS `driver3_import_lines`: `434 -> 434` (no net change)
+  - MP `driver3_import_lines`: `151` (no change)

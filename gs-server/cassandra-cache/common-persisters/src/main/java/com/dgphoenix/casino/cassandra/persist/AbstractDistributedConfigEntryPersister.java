@@ -3,9 +3,9 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.datastax.driver.core.ColumnDefinitions;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.Batch;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.configuration.Caching;
@@ -122,8 +122,8 @@ public abstract class AbstractDistributedConfigEntryPersister<KEY, T extends IDi
 
     protected Map<KEY, T> loadAllAsMap(Class<T> entryClass) {
         long now = System.currentTimeMillis();
-        Select select = QueryBuilder.select().all().from(getMainColumnFamilyName());
-        ResultSet resultSet = execute(select, "loadAllAsMap");
+        Statement query = QueryBuilder.select().all().from(getMainColumnFamilyName());
+        ResultSet resultSet = execute(query, "loadAllAsMap");
         if (resultSet == null || !resultSet.iterator().hasNext()) {
             getLog().error("loadAllForLongKeysAsMapKryo: rowList is null or empty");
             return null;

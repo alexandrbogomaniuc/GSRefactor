@@ -5483,3 +5483,15 @@
 - Evidence saved under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-220704/`.
 - Inventory result: GS driver3 imports reduced `436 -> 434`; MP unchanged `151`.
 - Next step: commit/push Wave 25 and continue next low-risk hotspot wave.
+### 2026-02-25 22:11 UTC
+- Dev_new CASS-V4 Wave 26 completed and validated.
+- Converted typed query declarations to `Statement` flow in `AbstractDistributedConfigEntryPersister` (select), `CassandraHttpCallInfoPersister` (select), and `CassandraExpiredBonusTrackerInfoPersister` (insert).
+- Kept `Insert` typing in `CassandraHttpCallInfoPersister#persist` for compile-safe incremental value mutation.
+- Validation PASS:
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn test` (`cache`, `63` tests)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -DskipTests -pl core-interfaces,core,persistance -am package` (`mp-server`)
+- Evidence saved under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-221010/`.
+- Inventory result: GS driver3 imports stayed `434`; MP unchanged `151` (this wave improved typed declaration shape but not total driver3 import count).
+- Next step: commit/push Wave 26 and continue next hotspot wave.
