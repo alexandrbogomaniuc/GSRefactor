@@ -5189,3 +5189,9 @@
   - Hot-compiled those two classes against runtime classpath and replaced runtime class files.
   - Restarted `refactor-gs-1`; latest logs show debug-only JMX refusal message for `c1-refactor` without full stack trace spam.
 - Next: commit/push this fix set and continue package/name migration wave (`com.dgphoenix` -> `com.abs`) as a controlled compatibility migration.
+### 2026-02-25 20:03-20:06 UTC
+- Created a dedicated two-track completion planning package in `Dev_new/docs/projects` to split remaining work into separate projects: (1) Cassandra v4 + Java driver migration and (2) runtime class/config renaming finalization.
+- Added full planning artifacts for each track: charter, phased work breakdown, test strategy matrix, documentation/evidence checklist, risks/rollback/sign-off gates, plus a shared program coordination plan and master test plan.
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/README.md`, `/Users/alexb/Documents/Dev/Dev_new/docs/projects/PROGRAM-COORDINATION-PLAN.md`, and both project folders under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/`.
+- Result: planning baseline is now explicit, separated, and execution-ready with clear testing and documentation requirements.
+- Next step: commit/push this planning package and proceed with execution wave kickoff using these two project tracks.
