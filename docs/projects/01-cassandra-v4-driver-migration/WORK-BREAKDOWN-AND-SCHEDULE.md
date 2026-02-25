@@ -3,8 +3,8 @@
 Last updated: 2026-02-25 UTC
 
 ## Current execution status
-- Phase 0: in progress (Wave 1 baseline inventory evidence generated, dynamic tooling in place).
-- Phase 1: in progress (initial dependency/API inventory completed; Wave 2 backlog automation added with prioritized module migration order).
+- Phase 0: complete (Wave 1 baseline inventory evidence generated, dynamic tooling in place).
+- Phase 1: in progress (inventory + Wave 2 backlog automation + Wave 3 config/runtime tuning compatibility delivered).
 - Phase 2+: not started.
 
 ## Phase 0: Freeze and baseline

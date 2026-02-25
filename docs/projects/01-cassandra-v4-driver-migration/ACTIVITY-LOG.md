@@ -28,3 +28,12 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - `gs-server/cassandra-cache/common-persisters`
   - `mp-server/persistance`
   - `gs-server/promo/persisters`.
+
+## 2026-02-25 20:44 UTC
+- Implemented CASS-V4 Wave 3 in cassandra-cache core config path.
+- Replaced hardcoded socket/pooling parameters with config-driven fields (backward-compatible defaults preserved).
+- Added optional `enableDcAwareLoadBalancing` support (requires `localDataCenterName`) in `KeyspaceConfiguration`.
+- Updated ClusterConfig deserialization tests and network-topology test fixture to validate defaults + explicit overrides.
+- Validation: PASS (`ClusterConfigDeserializationTest`, `KeyspaceConfigurationFactoryTest`, module package build).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave3-config-tuning-and-dc-aware-20260225-203312.md`

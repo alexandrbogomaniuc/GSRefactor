@@ -15,6 +15,16 @@ import java.util.Map.Entry;
  */
 @XStreamAlias("ClusterConfig")
 public class ClusterConfig implements IXmlConfig {
+    private static final int DEFAULT_CONNECT_TIMEOUT_MS = 10000;
+    private static final int DEFAULT_READ_TIMEOUT_MS = 50000;
+    private static final boolean DEFAULT_TCP_NO_DELAY = true;
+    private static final boolean DEFAULT_REUSE_ADDRESS = true;
+    private static final boolean DEFAULT_KEEP_ALIVE = true;
+    private static final int DEFAULT_MAX_CONNECTIONS_PER_HOST = 2;
+    private static final int DEFAULT_CORE_CONNECTIONS_PER_HOST = 2;
+    private static final int DEFAULT_HEARTBEAT_INTERVAL_SECONDS = 90;
+    private static final int DEFAULT_MAX_REQUESTS_PER_CONNECTION = 8192;
+
     private String clusterName;
     private Boolean validateClusterName;
     private String keySpace;
@@ -33,6 +43,16 @@ public class ClusterConfig implements IXmlConfig {
     @XStreamAlias("dcReplicationFactors")
     private String dataCenterReplicationFactors;
     private String jmxHosts;
+    private Integer connectTimeoutMillis;
+    private Integer readTimeoutMillis;
+    private Boolean tcpNoDelay;
+    private Boolean reuseAddress;
+    private Boolean keepAlive;
+    private Integer maxConnectionsPerHost;
+    private Integer coreConnectionsPerHost;
+    private Integer heartbeatIntervalSeconds;
+    private Integer maxRequestsPerConnection;
+    private Boolean enableDcAwareLoadBalancing;
 
     @XStreamOmitField
     private transient Collection<InetSocketAddress> parsedHosts;
@@ -124,6 +144,46 @@ public class ClusterConfig implements IXmlConfig {
         return parsedJmxHosts;
     }
 
+    public int getConnectTimeoutMillis() {
+        return connectTimeoutMillis == null ? DEFAULT_CONNECT_TIMEOUT_MS : connectTimeoutMillis;
+    }
+
+    public int getReadTimeoutMillis() {
+        return readTimeoutMillis == null ? DEFAULT_READ_TIMEOUT_MS : readTimeoutMillis;
+    }
+
+    public boolean isTcpNoDelay() {
+        return tcpNoDelay == null ? DEFAULT_TCP_NO_DELAY : tcpNoDelay;
+    }
+
+    public boolean isReuseAddress() {
+        return reuseAddress == null ? DEFAULT_REUSE_ADDRESS : reuseAddress;
+    }
+
+    public boolean isKeepAlive() {
+        return keepAlive == null ? DEFAULT_KEEP_ALIVE : keepAlive;
+    }
+
+    public int getMaxConnectionsPerHost() {
+        return maxConnectionsPerHost == null ? DEFAULT_MAX_CONNECTIONS_PER_HOST : maxConnectionsPerHost;
+    }
+
+    public int getCoreConnectionsPerHost() {
+        return coreConnectionsPerHost == null ? DEFAULT_CORE_CONNECTIONS_PER_HOST : coreConnectionsPerHost;
+    }
+
+    public int getHeartbeatIntervalSeconds() {
+        return heartbeatIntervalSeconds == null ? DEFAULT_HEARTBEAT_INTERVAL_SECONDS : heartbeatIntervalSeconds;
+    }
+
+    public int getMaxRequestsPerConnection() {
+        return maxRequestsPerConnection == null ? DEFAULT_MAX_REQUESTS_PER_CONNECTION : maxRequestsPerConnection;
+    }
+
+    public boolean isEnableDcAwareLoadBalancing() {
+        return enableDcAwareLoadBalancing != null && enableDcAwareLoadBalancing;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -140,6 +200,16 @@ public class ClusterConfig implements IXmlConfig {
         sb.append(", columnFamilyConfigs=").append(columnFamilyConfigs);
         sb.append(", hosts=").append(hosts == null ? "null" : hosts);
         sb.append(", jmxHosts=").append(jmxHosts == null ? "null" : jmxHosts);
+        sb.append(", connectTimeoutMillis=").append(getConnectTimeoutMillis());
+        sb.append(", readTimeoutMillis=").append(getReadTimeoutMillis());
+        sb.append(", tcpNoDelay=").append(isTcpNoDelay());
+        sb.append(", reuseAddress=").append(isReuseAddress());
+        sb.append(", keepAlive=").append(isKeepAlive());
+        sb.append(", maxConnectionsPerHost=").append(getMaxConnectionsPerHost());
+        sb.append(", coreConnectionsPerHost=").append(getCoreConnectionsPerHost());
+        sb.append(", heartbeatIntervalSeconds=").append(getHeartbeatIntervalSeconds());
+        sb.append(", maxRequestsPerConnection=").append(getMaxRequestsPerConnection());
+        sb.append(", enableDcAwareLoadBalancing=").append(isEnableDcAwareLoadBalancing());
         sb.append(']');
         return sb.toString();
     }

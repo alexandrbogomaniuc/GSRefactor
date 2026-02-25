@@ -11,6 +11,16 @@
     <hosts>hostsblablalba</hosts>
     <minimumOnlineHosts>3</minimumOnlineHosts>
     <localDataCenterName>dc02</localDataCenterName>
+    <connectTimeoutMillis>12000</connectTimeoutMillis>
+    <readTimeoutMillis>65000</readTimeoutMillis>
+    <tcpNoDelay>false</tcpNoDelay>
+    <reuseAddress>false</reuseAddress>
+    <keepAlive>false</keepAlive>
+    <maxConnectionsPerHost>3</maxConnectionsPerHost>
+    <coreConnectionsPerHost>2</coreConnectionsPerHost>
+    <heartbeatIntervalSeconds>95</heartbeatIntervalSeconds>
+    <maxRequestsPerConnection>4096</maxRequestsPerConnection>
+    <enableDcAwareLoadBalancing>true</enableDcAwareLoadBalancing>
     <dcReplicationFactors>dc01:1,dc02:3</dcReplicationFactors>
     <columnFamilies>
         <ColumnFamily>

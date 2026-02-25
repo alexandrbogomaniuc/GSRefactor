@@ -7,6 +7,8 @@ import com.dgphoenix.casino.common.configuration.ConfigHelper;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import com.datastax.driver.core.policies.DCAwareRoundRobinPolicy;
+import com.datastax.driver.core.policies.TokenAwarePolicy;
 
 import java.util.List;
 import java.util.Set;
@@ -69,23 +71,39 @@ public class KeyspaceConfiguration {
         clusterBuilder.withQueryOptions(options);
         clusterBuilder.addContactPointsWithPorts(clusterConfig.getParsedHosts());
         clusterBuilder.withTimestampGenerator(new NtpTimeGenerator(timeProvider));
+        configureLoadBalancing(clusterBuilder);
 
         SocketOptions socketOptions = new SocketOptions();
-        socketOptions.setConnectTimeoutMillis(10000);
-        socketOptions.setReadTimeoutMillis(50000);
-        socketOptions.setTcpNoDelay(true);
-        socketOptions.setReuseAddress(true);
-        socketOptions.setKeepAlive(true);
+        socketOptions.setConnectTimeoutMillis(clusterConfig.getConnectTimeoutMillis());
+        socketOptions.setReadTimeoutMillis(clusterConfig.getReadTimeoutMillis());
+        socketOptions.setTcpNoDelay(clusterConfig.isTcpNoDelay());
+        socketOptions.setReuseAddress(clusterConfig.isReuseAddress());
+        socketOptions.setKeepAlive(clusterConfig.isKeepAlive());
         clusterBuilder.withSocketOptions(socketOptions);
 
         PoolingOptions poolingOptions = new PoolingOptions();
-        poolingOptions.setMaxConnectionsPerHost(HostDistance.LOCAL, 2);
-        poolingOptions.setCoreConnectionsPerHost(HostDistance.LOCAL, 2);
-        poolingOptions.setHeartbeatIntervalSeconds(90); //must be > then  SocketOptions.readTimeoutMillis
+        poolingOptions.setMaxConnectionsPerHost(HostDistance.LOCAL, clusterConfig.getMaxConnectionsPerHost());
+        poolingOptions.setCoreConnectionsPerHost(HostDistance.LOCAL, clusterConfig.getCoreConnectionsPerHost());
+        // Must remain above socket read timeout to avoid false connection churn.
+        poolingOptions.setHeartbeatIntervalSeconds(clusterConfig.getHeartbeatIntervalSeconds());
         //poolingOptions.setPoolTimeoutMillis(10000);
-        poolingOptions.setMaxRequestsPerConnection(HostDistance.LOCAL, 8192);
+        poolingOptions.setMaxRequestsPerConnection(HostDistance.LOCAL, clusterConfig.getMaxRequestsPerConnection());
         clusterBuilder.withPoolingOptions(poolingOptions);
         return clusterBuilder.build();
+    }
+
+    private void configureLoadBalancing(Cluster.Builder clusterBuilder) {
+        if (!clusterConfig.isEnableDcAwareLoadBalancing()) {
+            return;
+        }
+        String localDc = clusterConfig.getLocalDataCenterName();
+        if (!isNotBlank(localDc)) {
+            LOG.warn("enableDcAwareLoadBalancing=true but localDataCenterName is empty; keeping default policy");
+            return;
+        }
+        clusterBuilder.withLoadBalancingPolicy(
+                new TokenAwarePolicy(DCAwareRoundRobinPolicy.builder().withLocalDc(localDc).build()));
+        LOG.info("Enabled DC-aware Cassandra load balancing for localDataCenterName={}", localDc);
     }
 
     public ConsistencyLevel getReadConsistencyLevel() {

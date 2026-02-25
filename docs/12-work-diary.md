@@ -5234,3 +5234,9 @@
 - Generated and saved Wave 2 evidence:
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/phase7-cassandra-driver-migration-backlog-20260225-203850.md`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave2-backlog-automation-20260225-203312.md`.
+### 2026-02-25 20:44 UTC
+- Continued CASS-V4 with Wave 3 implementation in `gs-server/cassandra-cache/cache`.
+- Added migration-safe configurable Cassandra connection settings (timeouts/socket/pooling) with legacy-equivalent defaults.
+- Added optional DC-aware load-balancing path (`enableDcAwareLoadBalancing` + `localDataCenterName`) in `KeyspaceConfiguration`.
+- Updated and passed tests + build; evidence saved in:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave3-config-tuning-and-dc-aware-20260225-203312.md`
