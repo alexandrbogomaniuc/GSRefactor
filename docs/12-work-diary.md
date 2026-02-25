@@ -5228,3 +5228,9 @@
   - `ClusterConfigDeserializationTest`, `KeyspaceConfigurationFactoryTest`
   - `gs-server/cassandra-cache/cache` package build
   - inventory script syntax + execution.
+### 2026-02-25 20:38 UTC
+- Continued CASS-V4 after Wave 1: implemented migration backlog automation script `phase7-cassandra-driver-migration-backlog.sh`.
+- Script now produces repeatable markdown backlog with hotspot module ranking + API mapping starters for driver4 migration.
+- Generated and saved Wave 2 evidence:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/phase7-cassandra-driver-migration-backlog-20260225-203850.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave2-backlog-automation-20260225-203312.md`.

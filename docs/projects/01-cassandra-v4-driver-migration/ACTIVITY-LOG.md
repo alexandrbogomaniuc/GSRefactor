@@ -18,3 +18,13 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - unit tests PASS (`ClusterConfigDeserializationTest`, `KeyspaceConfigurationFactoryTest`)
   - module build PASS (`gs-server/cassandra-cache/cache`)
   - inventory script syntax/run PASS.
+
+## 2026-02-25 20:38 UTC
+- Implemented CASS-V4 Wave 2 automation: added `phase7-cassandra-driver-migration-backlog.sh` to generate a migration-priority markdown backlog from live driver3 import data.
+- Validated script (`bash -n` + execution) and generated backlog evidence file:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/phase7-cassandra-driver-migration-backlog-20260225-203850.md`
+- Backlog result confirms highest-priority migration order:
+  - `gs-server/cassandra-cache/cache`
+  - `gs-server/cassandra-cache/common-persisters`
+  - `mp-server/persistance`
+  - `gs-server/promo/persisters`.
