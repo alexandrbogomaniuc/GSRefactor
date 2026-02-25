@@ -5260,3 +5260,10 @@
 - Validation PASS: cache test suite, cache install, web-gs package, and mp-server subset package (`core-interfaces,core,persistance` with `-am`).
 - Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave6-interface-neutralization-20260225-203312.md` and related logs in same folder.
 - Next step: commit/push Wave 6 and proceed to a query/persister migration slice (`querybuilder`, `Row`, `ResultSet`).
+### 2026-02-25 21:04 UTC
+- Continued CASS-V4 and completed Wave 7 querybuilder-decoupling slice in `AbstractLockManager`.
+- Removed direct `QueryBuilder` dependency from that class and routed query construction through existing persister helper APIs (`getSelectColumnsQuery`, `eq`, `set`).
+- Fixed one compile error found during first run (`Select` symbol in `getLockIds`) and revalidated.
+- Validation PASS: cache test suite, cache install, web-gs package, mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave7-querybuilder-decoupling-lock-manager-20260225-203312.md` and related logs in same folder.
+- Next step: commit/push Wave 7 and continue query/persister migration in the next hotspot class.

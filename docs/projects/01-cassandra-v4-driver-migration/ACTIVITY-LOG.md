@@ -81,3 +81,19 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave6-build-cache-20260225-203312.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave6-build-web-gs-20260225-203312.txt`
   - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave6-build-mp-stack-20260225-203312.txt`
+
+## 2026-02-25 21:04 UTC
+- Implemented CASS-V4 Wave 7 as the first query-construction decoupling slice in a persistence hotspot.
+- Refactored `AbstractLockManager` to remove direct `QueryBuilder` usage/imports and use inherited persister helpers (`getSelectColumnsQuery`, `eq`, `set`) instead.
+- Fixed one compile regression during wave (`Select` symbol in `getLockIds`) by switching that method to `Statement` flow as well.
+- Validation: PASS
+  - cache tests (`KeySpaceManagerTest`, `CassandraPersistenceManagerTest`, `ClusterConfigDeserializationTest`, `KeyspaceConfigurationFactoryTest`)
+  - cache install
+  - web-gs package
+  - mp-server reactor subset (`core-interfaces,core,persistance`) package via `-am`.
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave7-querybuilder-decoupling-lock-manager-20260225-203312.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave7-unit-tests-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave7-build-cache-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave7-build-web-gs-20260225-203312.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260225-203312/c4-wave7-build-mp-stack-20260225-203312.txt`

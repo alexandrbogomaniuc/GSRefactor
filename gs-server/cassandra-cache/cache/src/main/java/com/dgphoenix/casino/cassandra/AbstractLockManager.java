@@ -4,8 +4,6 @@ import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -155,7 +153,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
 
     private ServerLockInfo getCurrentLocker(String id) {
         long now = System.currentTimeMillis();
-        Select select = QueryBuilder.select(LOCK_TIME, LOCKER, LAST_LOCKER).from(getMainColumnFamilyName()).
+        Statement select = getSelectColumnsQuery(LOCK_TIME, LOCKER, LAST_LOCKER).
                 where(eq(LOCK_ID, id)).limit(1);
         ResultSet resultSet = execute(select, "getCurrentLocker");
         Row row = resultSet.one();
@@ -182,12 +180,12 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
             resultSet = executeWithCheckTimeout(query, "persist: insert");
         } else {
             Statement updateQuery =
-                    getUpdateQuery(QueryBuilder.eq(LOCK_ID, id)).
+                    getUpdateQuery(eq(LOCK_ID, id)).
                             with().
-                            and(QueryBuilder.set(LOCK_TIME, newLockTime)).
-                            and(QueryBuilder.set(LOCKER, getLockerId())).
-                            and(QueryBuilder.set(LAST_LOCKER, getLockerId())).
-                            onlyIf(QueryBuilder.eq(LOCK_TIME, currentLocker.getLockTime()));
+                            and(set(LOCK_TIME, newLockTime)).
+                            and(set(LOCKER, getLockerId())).
+                            and(set(LAST_LOCKER, getLockerId())).
+                            onlyIf(eq(LOCK_TIME, currentLocker.getLockTime()));
             resultSet = executeWithCheckTimeout(updateQuery, "persist: update");
         }
         return resultSet.wasApplied();
@@ -206,9 +204,9 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
                 }
                 now1 = System.currentTimeMillis();
                 Statement query =
-                        getUpdateQuery(QueryBuilder.eq(LOCK_ID, lockId)).
-                                with(QueryBuilder.set(LOCKER, -1)).
-                                onlyIf(QueryBuilder.eq(LOCKER, getLockerId()));
+                        getUpdateQuery(eq(LOCK_ID, lockId)).
+                                with(set(LOCKER, -1)).
+                                onlyIf(eq(LOCKER, getLockerId()));
                 ResultSet resultSet = execute(query, "delete");
                 success = resultSet.wasApplied();
                 break;
@@ -554,8 +552,8 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
     }
 
     private ResultSet getLockIds() {
-        Select select = getSelectColumnsQuery(getMainTableDefinition(), LOCK_ID, LOCK_TIME);
-        select.where().and(eq(LOCKER, getLockerId()));
+        Statement select = getSelectColumnsQuery(getMainTableDefinition(), LOCK_ID, LOCK_TIME)
+                .where(eq(LOCKER, getLockerId()));
         select.setFetchSize(1000);
         return execute(select, "getLockIds");
     }

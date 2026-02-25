@@ -100,3 +100,8 @@ Deliverables:
 - Completed waves: Wave 1, Wave 2, Wave 3, Wave 4, Wave 5, Wave 6.
 - Current phase alignment: Phase 1 in progress (interface/compatibility reduction track), Phase 2 not started.
 - Immediate focus: begin high-volume driver3 API conversion wave in persister/query paths (`querybuilder`, `Row`, `ResultSet`).
+
+## Execution update (2026-02-25 21:04 UTC)
+- Completed waves: Wave 1 through Wave 7.
+- Current phase alignment: Phase 1 still in progress with concrete query-construction decoupling started.
+- Immediate focus: continue hotspot-by-hotspot query/persister migration (`AbstractCassandraPersister` consumers in `common-persisters`).
