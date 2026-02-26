@@ -108,10 +108,39 @@ Use this exact URL for the VND test bank:
 
 [http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en](http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en)
 
+Optional second-bank check (Betonline subcasino):
+
+[http://127.0.0.1:18080/startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en](http://127.0.0.1:18080/startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en)
+
 Why this URL matters:
 - `:18080` is the refactor static facade (not port 80)
 - `subCasinoId=507` is needed for localhost testing with banks `6274/6275`
 - `/startgame` is the clean alias (browser-facing)
+
+Bank id note (important):
+- Bank `6276` is an internal id in subcasino `508`.
+- Its current external launch id is `6274` for wallet compatibility.
+- This means direct `bankId=6276` launch calls can return `Bank is incorrect` by design.
+
+### Configure launch URL without editing code
+You can override launch values from the shell before running `smoke` or `up`:
+
+```bash
+export LAUNCH_BANK_ID=6275
+export LAUNCH_SUBCASINO_ID=507
+export LAUNCH_GAME_ID=838
+export LAUNCH_MODE=real
+export LAUNCH_TOKEN=bav_game_session_001
+export LAUNCH_LANG=en
+```
+
+Optional secondary launch check:
+
+```bash
+export SECONDARY_LAUNCH_BANK_ID=6274
+export SECONDARY_LAUNCH_SUBCASINO_ID=508
+node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
+```
 
 ## Troubleshooting (plain English)
 ### "bash was not found" (Windows)

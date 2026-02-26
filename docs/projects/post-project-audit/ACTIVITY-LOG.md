@@ -28,3 +28,18 @@ Project: Post-Project Audit
 - Evidence package:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/mp-websocket-external-port-fix-validation-20260226-080619.md`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-080619/`
+
+## 2026-02-26 08:17 UTC
+- Closed launch-url ambiguity for internal Betonline bank route by documenting and validating the real runtime mapping.
+- Runtime finding:
+  - direct `bankId=6276` launch on subcasino `508` returns `Bank is incorrect`;
+  - working launch path is `bankId=6274&subCasinoId=508` for the same internal bank context.
+- Hardened startup and onboarding scripts to make launch values configurable (no hidden fixed launch tuple) and added optional secondary launch smoke checks:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-start.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-onboard.mjs`
+- Updated stakeholder onboarding docs with explicit mapping guidance and env override examples:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/START-HERE-REFRACTOR.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/README-ONBOARDING.md`
+- Evidence package:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/launch-bank-id-mapping-validation-20260226-081724.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-081724/`

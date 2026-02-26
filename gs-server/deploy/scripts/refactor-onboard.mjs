@@ -18,6 +18,13 @@ const STOP_SCRIPT = path.join(SCRIPT_DIR, 'refactor-stop.sh');
 const SYNC_CLUSTER_HOSTS = path.join(SCRIPT_DIR, 'sync-cluster-hosts.sh');
 const BOOTSTRAP_SCRIPT = path.join(SCRIPT_DIR, 'refactor-bootstrap-runtime.sh');
 const COMPOSE_FILE = path.join(DEPLOY_DIR, 'docker', 'refactor', 'docker-compose.yml');
+const DEFAULT_LAUNCH_BASE_URL = process.env.LAUNCH_BASE_URL ?? 'http://127.0.0.1:18080/startgame';
+const DEFAULT_LAUNCH_BANK_ID = process.env.LAUNCH_BANK_ID ?? '6275';
+const DEFAULT_LAUNCH_SUBCASINO_ID = process.env.LAUNCH_SUBCASINO_ID ?? '507';
+const DEFAULT_LAUNCH_GAME_ID = process.env.LAUNCH_GAME_ID ?? '838';
+const DEFAULT_LAUNCH_MODE = process.env.LAUNCH_MODE ?? 'real';
+const DEFAULT_LAUNCH_TOKEN = process.env.LAUNCH_TOKEN ?? 'bav_game_session_001';
+const DEFAULT_LAUNCH_LANG = process.env.LAUNCH_LANG ?? 'en';
 
 function log(msg) {
   process.stdout.write(`[refactor-onboard] ${msg}\n`);
@@ -121,6 +128,26 @@ function checkLocalFiles() {
   log('Required repo files are present');
 }
 
+function buildLaunchUrl({
+  bankId = DEFAULT_LAUNCH_BANK_ID,
+  subCasinoId = DEFAULT_LAUNCH_SUBCASINO_ID,
+  gameId = DEFAULT_LAUNCH_GAME_ID,
+  mode = DEFAULT_LAUNCH_MODE,
+  token = DEFAULT_LAUNCH_TOKEN,
+  lang = DEFAULT_LAUNCH_LANG,
+  baseUrl = DEFAULT_LAUNCH_BASE_URL,
+} = {}) {
+  const search = new URLSearchParams({
+    bankId: String(bankId),
+    subCasinoId: String(subCasinoId),
+    gameId: String(gameId),
+    mode: String(mode),
+    token: String(token),
+    lang: String(lang),
+  });
+  return `${baseUrl}?${search.toString()}`;
+}
+
 function runBashScript(scriptPath, scriptArgs = []) {
   const bashBin = resolveBash();
   return run(bashBin, [scriptPath, ...scriptArgs]);
@@ -197,18 +224,40 @@ async function retryingHttpCheck(
 }
 
 async function smokeChecks() {
-  const checks = [
+  const primaryLaunchUrl = buildLaunchUrl();
+  const checks = [];
+
+  checks.push(
     // Use a concrete static game asset instead of "/" to avoid startup-time proxy false negatives.
     { label: 'Static asset route', url: 'http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json', okStatuses: [200] },
     // Diagnostic-only signal: can flap during startup even when launch path is healthy.
-    { label: 'GS support route (diagnostic)', url: 'http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6275', okStatuses: [200], required: false },
+    { label: 'GS support route (diagnostic)', url: `http://127.0.0.1:18081/support/bankSelectAction.do?bankId=${encodeURIComponent(DEFAULT_LAUNCH_BANK_ID)}`, okStatuses: [200], required: false },
     { label: 'Config service health', url: 'http://127.0.0.1:18072/health', okStatuses: [200] },
     {
       label: 'Launch alias (startgame)',
-      url: 'http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en',
+      url: primaryLaunchUrl,
       okStatuses: [200],
     },
-  ];
+  );
+
+  const secondaryBankId = process.env.SECONDARY_LAUNCH_BANK_ID;
+  const secondarySubCasinoId = process.env.SECONDARY_LAUNCH_SUBCASINO_ID;
+  if (secondaryBankId && secondarySubCasinoId) {
+    const secondaryLaunchUrl = buildLaunchUrl({
+      bankId: secondaryBankId,
+      subCasinoId: secondarySubCasinoId,
+      gameId: process.env.SECONDARY_LAUNCH_GAME_ID ?? DEFAULT_LAUNCH_GAME_ID,
+      mode: process.env.SECONDARY_LAUNCH_MODE ?? DEFAULT_LAUNCH_MODE,
+      token: process.env.SECONDARY_LAUNCH_TOKEN ?? DEFAULT_LAUNCH_TOKEN,
+      lang: process.env.SECONDARY_LAUNCH_LANG ?? DEFAULT_LAUNCH_LANG,
+    });
+    checks.push({
+      label: 'Launch alias (secondary)',
+      url: secondaryLaunchUrl,
+      okStatuses: [200],
+      required: false,
+    });
+  }
 
   const maxAttempts = Math.max(1, Number(process.env.REFACTOR_SMOKE_RETRIES ?? '10'));
   const retryDelayMs = Math.max(250, Number(process.env.REFACTOR_SMOKE_DELAY_MS ?? '3000'));

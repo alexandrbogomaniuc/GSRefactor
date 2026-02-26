@@ -31,6 +31,14 @@ Open this in browser:
 
 Expected result: HTTP 200 and game launch page.
 
+Optional second bank test (Betonline subcasino):
+
+[http://127.0.0.1:18080/startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en](http://127.0.0.1:18080/startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en)
+
+Important:
+- `6276` is an internal bank id under subcasino `508`.
+- External launch id for that bank is currently `6274`, so `bankId=6276` is expected to return `Bank is incorrect`.
+
 ## 4) Stop command
 
 ```bash
@@ -50,4 +58,3 @@ node ./gs-server/deploy/scripts/refactor-onboard.mjs down
 
 - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/Project-Finalization-Report.md`
 - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/PROJECTS-CLOSURE-SUMMARY-20260226.md`
-

@@ -16,6 +16,19 @@ SUPPORT_SRC_ROOT="${SUPPORT_SRC_ROOT:-$DEV_NEW_ROOT/gs-server/game-server/web-gs
 RUNTIME_SUPPORT_ROOT="${RUNTIME_SUPPORT_ROOT:-$DEV_NEW_ROOT/Doker/runtime-gs/webapps/gs/ROOT/support}"
 BUILD_IMAGES="${BUILD_IMAGES:-0}"
 AUTO_BOOTSTRAP_RUNTIME="${AUTO_BOOTSTRAP_RUNTIME:-1}"
+LAUNCH_BASE_URL="${LAUNCH_BASE_URL:-http://127.0.0.1:18080/startgame}"
+LAUNCH_BANK_ID="${LAUNCH_BANK_ID:-6275}"
+LAUNCH_SUBCASINO_ID="${LAUNCH_SUBCASINO_ID:-507}"
+LAUNCH_GAME_ID="${LAUNCH_GAME_ID:-838}"
+LAUNCH_MODE="${LAUNCH_MODE:-real}"
+LAUNCH_TOKEN="${LAUNCH_TOKEN:-bav_game_session_001}"
+LAUNCH_LANG="${LAUNCH_LANG:-en}"
+SECONDARY_LAUNCH_BANK_ID="${SECONDARY_LAUNCH_BANK_ID:-}"
+SECONDARY_LAUNCH_SUBCASINO_ID="${SECONDARY_LAUNCH_SUBCASINO_ID:-}"
+SECONDARY_LAUNCH_GAME_ID="${SECONDARY_LAUNCH_GAME_ID:-$LAUNCH_GAME_ID}"
+SECONDARY_LAUNCH_MODE="${SECONDARY_LAUNCH_MODE:-$LAUNCH_MODE}"
+SECONDARY_LAUNCH_TOKEN="${SECONDARY_LAUNCH_TOKEN:-$LAUNCH_TOKEN}"
+SECONDARY_LAUNCH_LANG="${SECONDARY_LAUNCH_LANG:-$LAUNCH_LANG}"
 
 log() { printf '[refactor-start] %s\n' "$*"; }
 die() { printf '[refactor-start] ERROR: %s\n' "$*" >&2; exit 1; }
@@ -137,12 +150,30 @@ start_stack() {
   )
 }
 
+build_launch_url() {
+  local bank_id="$1"
+  local subcasino_id="$2"
+  local game_id="$3"
+  local mode="$4"
+  local token="$5"
+  local lang="$6"
+  printf '%s?bankId=%s&subCasinoId=%s&gameId=%s&mode=%s&token=%s&lang=%s' \
+    "$LAUNCH_BASE_URL" "$bank_id" "$subcasino_id" "$game_id" "$mode" "$token" "$lang"
+}
+
 post_checks() {
+  local launch_url
+  launch_url="$(build_launch_url "$LAUNCH_BANK_ID" "$LAUNCH_SUBCASINO_ID" "$LAUNCH_GAME_ID" "$LAUNCH_MODE" "$LAUNCH_TOKEN" "$LAUNCH_LANG")"
   log "Quick health checks"
   curl -fsS http://127.0.0.1:18080/ >/dev/null && log "static facade ok" || log "static facade check failed"
   curl -fsS http://127.0.0.1:18072/health >/dev/null && log "config-service ok" || log "config-service check failed"
   curl -fsS http://127.0.0.1:18081 >/dev/null && log "gs http ok" || log "gs http check failed"
-  log "Launch alias URL (refactor static facade): http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en"
+  log "Launch alias URL (refactor static facade): $launch_url"
+  if [[ -n "$SECONDARY_LAUNCH_BANK_ID" && -n "$SECONDARY_LAUNCH_SUBCASINO_ID" ]]; then
+    local secondary_launch_url
+    secondary_launch_url="$(build_launch_url "$SECONDARY_LAUNCH_BANK_ID" "$SECONDARY_LAUNCH_SUBCASINO_ID" "$SECONDARY_LAUNCH_GAME_ID" "$SECONDARY_LAUNCH_MODE" "$SECONDARY_LAUNCH_TOKEN" "$SECONDARY_LAUNCH_LANG")"
+    log "Secondary launch URL: $secondary_launch_url"
+  fi
 }
 
 ACTION="${1:-up}"

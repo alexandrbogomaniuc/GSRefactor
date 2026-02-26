@@ -6099,3 +6099,21 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-080619/`
 - Result: launch is now functionally playable with GS↔MP websocket traffic on exposed refactor port.
 - Next step: commit/push this MP websocket port fix and continue final production-readiness closure checks.
+
+### 2026-02-26 08:17 UTC
+- Investigated recurring launch confusion around bank `6276` and reproduced runtime behavior with direct probes.
+- Confirmed current mapping behavior:
+  - `bankId=6276&subCasinoId=508` -> error page (`Bank is incorrect`)
+  - `bankId=6274&subCasinoId=508` -> launch page (`HTTP 200`) for internal Betonline path.
+- Implemented startup/onboarding hardening so launch values are configurable from environment variables instead of fixed strings:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-start.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-onboard.mjs`
+- Added optional secondary launch smoke check support (`SECONDARY_LAUNCH_*`) and validated both primary and secondary launch URLs pass.
+- Updated onboarding/handover docs to explicitly document bank-id mapping and avoid future URL confusion:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/START-HERE-REFRACTOR.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/README-ONBOARDING.md`
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/launch-bank-id-mapping-validation-20260226-081724.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-081724/`
+- Result: launch behavior is now explicit, reproducible, and configurable for new machines and smoke validation.
+- Next step: commit/push this hardening batch and save memory.
