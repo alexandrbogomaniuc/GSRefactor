@@ -6525,3 +6525,13 @@
   - `web-gs` package needed one environment-only rerun with `-Dcluster.properties=local/local-machine.properties`.
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/37-hard-cut-m2-wave25-maxquest-client-log-level-report-20260226.md`
+
+### 2026-02-26 11:09 UTC
+- Completed Project 02 M2 Wave 26 for `IndividualGameSettingsType` namespace migration.
+- Migrated enum package declaration to `com.abs` and added explicit import in `BankInfo`.
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-110501-hardcut-m2-wave26-individual-game-settings-type`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/38-hard-cut-m2-wave26-individual-game-settings-type-report-20260226.md`

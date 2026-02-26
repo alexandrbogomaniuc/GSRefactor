@@ -1,0 +1,12 @@
+Wave: W26-individual-game-settings-type
+Date (UTC): 2026-02-26
+Status: COMPLETE
+
+Migrated:
+- com.dgphoenix.casino.common.cache.data.bank.IndividualGameSettingsType -> com.abs.casino.common.cache.data.bank.IndividualGameSettingsType
+
+Compatibility fix:
+- Added import com.abs.casino.common.cache.data.bank.IndividualGameSettingsType in BankInfo.
+
+Validation:
+- 9/9 required checks PASS.

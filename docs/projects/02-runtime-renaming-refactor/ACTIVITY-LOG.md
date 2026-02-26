@@ -781,3 +781,18 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-105534-hardcut-m2-wave25-maxquest-client-log-level`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/37-hard-cut-m2-wave25-maxquest-client-log-level-report-20260226.md`
+
+## 2026-02-26 11:09 UTC (M2 Wave 26 - IndividualGameSettingsType Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.bank.IndividualGameSettingsType` -> `com.abs.casino.common.cache.data.bank.IndividualGameSettingsType`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/IndividualGameSettingsType.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java`
+- Compatibility correction during wave:
+  - Added explicit import for `com.abs...IndividualGameSettingsType` in `BankInfo`.
+- Post-scan result: legacy refs `0`, abs refs `1`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-110501-hardcut-m2-wave26-individual-game-settings-type`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/38-hard-cut-m2-wave26-individual-game-settings-type-report-20260226.md`

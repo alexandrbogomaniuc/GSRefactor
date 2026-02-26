@@ -1,0 +1,2 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/IndividualGameSettingsType.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java
