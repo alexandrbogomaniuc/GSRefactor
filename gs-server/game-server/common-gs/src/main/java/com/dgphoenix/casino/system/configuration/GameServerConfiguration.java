@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvid
 import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
 import com.dgphoenix.casino.common.config.GameServerConfig;
 import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
-import com.dgphoenix.casino.common.config.MountMonitoringEntry;
+import com.abs.casino.common.config.MountMonitoringEntry;
 import com.dgphoenix.casino.common.configuration.CasinoSystemType;
 import com.dgphoenix.casino.common.configuration.IGameServerConfiguration;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;

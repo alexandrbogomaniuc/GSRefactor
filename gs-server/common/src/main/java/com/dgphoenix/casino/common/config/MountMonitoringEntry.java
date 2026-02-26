@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.config;
+package com.abs.casino.common.config;
 
 import com.abs.casino.common.config.FreeSpaceThresholdType;
 

@@ -1142,3 +1142,18 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-134432-hardcut-m2-wave50-free-space-threshold-type`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/62-hard-cut-m2-wave50-free-space-threshold-type-report-20260226.md`
+
+## 2026-02-26 13:51 UTC (M2 Wave 51 - MountMonitoringEntry Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.config.MountMonitoringEntry` -> `com.abs.casino.common.config.MountMonitoringEntry`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/config/MountMonitoringEntry.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/config/GameServerConfigTemplate.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/system/configuration/GameServerConfiguration.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/system/diagnosis/SystemDiagnosisServlet.java`
+- Post-scan result (wave scope): legacy refs `0`, abs refs `4` (pre-scan legacy refs `3`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-134842-hardcut-m2-wave51-mount-monitoring-entry`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/63-hard-cut-m2-wave51-mount-monitoring-entry-report-20260226.md`
