@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.api.mq;
+package com.abs.casino.actions.api.mq;
 
 import com.dgphoenix.casino.actions.enter.CommonActionForm;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;

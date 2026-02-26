@@ -1,0 +1,3 @@
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/mq/GetLeaderboardsAction.java:3:import com.abs.casino.actions.api.mq.GetLeaderboardsForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:125:        <form-bean name="GetLeaderboardsForm" type="com.abs.casino.actions.api.mq.GetLeaderboardsForm" />
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/mq/GetLeaderboardsForm.java:1:package com.abs.casino.actions.api.mq;
