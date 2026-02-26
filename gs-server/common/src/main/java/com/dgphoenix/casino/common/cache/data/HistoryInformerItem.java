@@ -5,7 +5,7 @@
  * Date: 11.01.2018
  */
 
-package com.dgphoenix.casino.common.cache.data;
+package com.abs.casino.common.cache.data;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;

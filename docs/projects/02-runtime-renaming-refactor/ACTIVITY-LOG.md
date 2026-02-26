@@ -653,3 +653,16 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-102516-hardcut-m2-wave17-payment-transfer-processor`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/29-hard-cut-m2-wave17-payment-transfer-processor-report-20260226.md`
+
+## 2026-02-26 10:31 UTC (M2 Wave 18 - HistoryInformerItem Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.HistoryInformerItem` -> `com.abs.casino.common.cache.data.HistoryInformerItem`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/HistoryInformerItem.java`
+  - `gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraHistoryInformerItemPersister.java`
+- Post-scan result: legacy refs `0`, abs refs `1`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-103007-hardcut-m2-wave18-history-informer-item`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/30-hard-cut-m2-wave18-history-informer-item-report-20260226.md`

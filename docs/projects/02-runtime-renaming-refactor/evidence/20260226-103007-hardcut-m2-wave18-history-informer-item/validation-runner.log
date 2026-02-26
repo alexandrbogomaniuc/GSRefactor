@@ -1,0 +1,9 @@
+===== 01-common-install =====
+===== 02-common-wallet-test =====
+===== 03-sb-utils-test =====
+===== 04-promo-persisters-install =====
+===== 05-common-persisters-install =====
+===== 06-cassandra-cache-test =====
+===== 07-web-gs-package =====
+===== 08-mp-core-persistence-package =====
+===== 09-refactor-smoke =====
