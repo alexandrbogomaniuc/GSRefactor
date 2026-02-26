@@ -6849,3 +6849,13 @@
   - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/69-hard-cut-m2-wave57-external-game-provider-report-20260226.md`
+
+### 2026-02-26 14:35 UTC
+- Completed Project 02 M2 Wave 58 for `IHelperCreator` namespace migration.
+- Migrated declaration to `com.abs` and added explicit imports in `StartGameHelpers` and `GameServer`.
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-143128-hardcut-m2-wave58-ihelpercreator`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/70-hard-cut-m2-wave58-ihelpercreator-report-20260226.md`

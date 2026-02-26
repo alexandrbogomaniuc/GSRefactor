@@ -1243,3 +1243,17 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-142543-hardcut-m2-wave57-external-game-provider`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/69-hard-cut-m2-wave57-external-game-provider-report-20260226.md`
+
+## 2026-02-26 14:35 UTC (M2 Wave 58 - IHelperCreator Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.games.IHelperCreator` -> `com.abs.casino.common.games.IHelperCreator`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/IHelperCreator.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/StartGameHelpers.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java`
+- Post-scan result (wave scope): legacy refs `0`, abs refs `3` (pre-scan legacy refs `1`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-143128-hardcut-m2-wave58-ihelpercreator`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/70-hard-cut-m2-wave58-ihelpercreator-report-20260226.md`
