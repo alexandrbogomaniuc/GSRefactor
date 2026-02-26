@@ -113,7 +113,7 @@
 
         <form-bean name="APIIssuesForm" type="com.dgphoenix.casino.actions.support.apiIssues.APIIssuesForm"/>
 
-        <form-bean name="GetVBAForm" type="com.dgphoenix.casino.actions.api.vba.GetVBAForm"/>
+        <form-bean name="GetVBAForm" type="com.abs.casino.actions.api.vba.GetVBAForm"/>
 
         <form-bean name="GetTournamentPlayerInfoForm" type="com.abs.casino.actions.api.promo.GetTournamentPlayerInfoForm"/>
         <form-bean name="RefreshBalanceForm" type="com.abs.casino.actions.api.RefreshBalanceForm"/>

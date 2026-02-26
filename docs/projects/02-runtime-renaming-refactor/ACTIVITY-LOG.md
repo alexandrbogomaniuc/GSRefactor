@@ -1684,3 +1684,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `2` to `0`, `com.abs` refs now `2`.
   - global tracked source declarations now `2121` remaining (`2277` baseline, `156` reduced).
+
+## 2026-02-26 17:20 UTC (Hard-Cut M2 Wave 84)
+- Executed hard-cut namespace wave for `GetVBAForm` (VBA API).
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/vba/GetVBAForm.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/vba/GetVBAAction.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.vba.GetVBAForm` to `com.abs.casino.actions.api.vba.GetVBAForm`.
+  - updated Struts form-bean type to `com.abs` for `GetVBAForm`.
+  - added explicit `com.abs...GetVBAForm` import in `GetVBAAction` for cross-package compatibility.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-171713-hardcut-m2-wave84-vba-getvba-form/`
+- Outcome:
+  - wave scope legacy refs reduced from `2` to `0`, `com.abs` refs now `3`.
+  - global tracked source declarations now `2120` remaining (`2277` baseline, `157` reduced).

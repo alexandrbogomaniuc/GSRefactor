@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.api.vba;
+package com.abs.casino.actions.api.vba;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import org.apache.struts.action.ActionErrors;
