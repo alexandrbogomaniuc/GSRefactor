@@ -221,6 +221,10 @@
           <null/>
         </entry>
         <entry>
+          <string>ABS_CLOSE_GAME_PROCESSOR</string>
+          <null/>
+        </entry>
+        <entry>
           <string>AUTOPLAY_MODE</string>
           <string>ENABLED</string>
         </entry>
@@ -234,6 +238,10 @@
         </entry>
         <entry>
           <string>WPM_CLASS</string>
+          <string>com.dgphoenix.casino.payment.wallet.CommonWalletManager</string>
+        </entry>
+        <entry>
+          <string>ABS_WPM_CLASS</string>
           <string>com.dgphoenix.casino.payment.wallet.CommonWalletManager</string>
         </entry>
         <entry>
@@ -481,6 +489,10 @@
           <string>LOOT_BOX</string>
         </entry>
         <entry>
+          <string>ABS_WEAPONS_MODE</string>
+          <string>LOOT_BOX</string>
+        </entry>
+        <entry>
           <string>SEND_JACKPOT_INFO_FOR_CW</string>
           <string>false </string>
         </entry>
@@ -634,7 +646,7 @@
         </entry>
         <entry>
           <string>FR_BONUS_WIN_URL</string>
-          <string>https://txs.maxquest.com/omegatron/spr/betsoftWallet/bonusWin</string>
+          <string>http://gs1-stress.betsoftgaming.com/config/stub/bonus/win.jsp</string>
         </entry>
         <entry>
           <string>BANK_FEEDS_PASSKEY</string>
@@ -905,6 +917,10 @@
           <null/>
         </entry>
         <entry>
+          <string>ABS_CLOSE_GAME_PROCESSOR</string>
+          <null/>
+        </entry>
+        <entry>
           <string>AUTOPLAY_MODE</string>
           <string>ENABLED</string>
         </entry>
@@ -918,6 +934,10 @@
         </entry>
         <entry>
           <string>WPM_CLASS</string>
+          <string>com.dgphoenix.casino.payment.wallet.CommonWalletManager</string>
+        </entry>
+        <entry>
+          <string>ABS_WPM_CLASS</string>
           <string>com.dgphoenix.casino.payment.wallet.CommonWalletManager</string>
         </entry>
         <entry>
@@ -1173,6 +1193,10 @@
           <string>LOOT_BOX</string>
         </entry>
         <entry>
+          <string>ABS_WEAPONS_MODE</string>
+          <string>LOOT_BOX</string>
+        </entry>
+        <entry>
           <string>SEND_JACKPOT_INFO_FOR_CW</string>
           <string>false </string>
         </entry>
@@ -1322,7 +1346,7 @@
         </entry>
         <entry>
           <string>FR_BONUS_WIN_URL</string>
-          <string>https://txs.maxquest.com/omegatron/spr/betsoftWallet/bonusWin</string>
+          <string>http://gs1-stress.betsoftgaming.com/config/stub/bonus/win.jsp</string>
         </entry>
         <entry>
           <string>BANK_FEEDS_PASSKEY</string>

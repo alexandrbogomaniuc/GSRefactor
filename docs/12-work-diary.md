@@ -5919,3 +5919,14 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-071656/`
 - Completion update:
   - Project 02 estimated at `84%`.
+
+### 2026-02-26 07:19 UTC
+- GSRefactor Project 02 advanced with M2.5 (mpstress config alias + URL sanitization wave).
+- Updated `mpstress` configs for dual-key compatibility and third-party URL reduction:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BankInfoCache.xml`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml`
+- Full validation matrix PASS, runtime bank-template audit PASS, and static scans captured.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-071948/`
+- Completion update:
+  - Project 02 estimated at `88%`.

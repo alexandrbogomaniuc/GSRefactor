@@ -91,4 +91,5 @@ Method:
   - M3.1 complete (support JSP compatibility for `com.dgphoenix`/`com.abs` class strings in init/sequencer/report checks)
   - M3.2 complete (support template-management JSP fallback for SP processor class `com.abs` -> `com.dgphoenix`)
   - M3.3 complete (GameBankConfig default class fallback for SP processor and GameServlet)
-- Estimated completion: 84%.
+  - M2.5 complete (mpstress alias-key parity + FR bonus URL de-externalization + support email cleanup)
+- Estimated completion: 88%.

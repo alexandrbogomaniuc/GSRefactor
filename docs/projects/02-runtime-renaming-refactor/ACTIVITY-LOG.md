@@ -236,3 +236,26 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - support GameBankConfig defaults now tolerate staged package renaming without manual updates.
   - Project 02 completion estimate updated to `84%`.
+
+## 2026-02-26 07:19 UTC (Mini-Wave M2.5)
+- Executed mpstress config compatibility/sanitization wave.
+- Changed files:
+  - `gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BankInfoCache.xml`
+  - `gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml`
+- Change detail:
+  - added dual alias keys in both mpstress bank entries:
+    - `ABS_CLOSE_GAME_PROCESSOR`
+    - `ABS_WPM_CLASS`
+    - `ABS_WEAPONS_MODE`
+  - replaced active `FR_BONUS_WIN_URL` external endpoint values with local stress stub endpoint.
+  - replaced remaining `fromSupportEmail` values using `report-gp3.maxquest.com` with `support@localhost`.
+- Validation PASS:
+  - full build/test matrix (sb-utils, promo/common-persisters, cache tests, web-gs package, mp subset package)
+  - runtime bank-template audit (`bank-template-audit.mjs`) for banks `6275,6276`: PASS.
+  - static scan artifacts captured for remaining `maxquest` tokens and alias presence.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-071948/`
+- Outcome:
+  - mpstress runtime config now follows the same dual-key compatibility pattern and has no active `FR_BONUS_WIN_URL` external dependency.
+  - remaining `maxquest` tokens are in descriptive/commented content and can be addressed in a documentation cleanup wave.
+  - Project 02 completion estimate updated to `88%`.
