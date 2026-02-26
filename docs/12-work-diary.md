@@ -5679,3 +5679,18 @@
   - GS-only `18.85%`, combined `28.64%`.
 - Next step:
   - commit/push Wave 38 and continue GS common-persister hotspots to close the gap to 50%.
+
+### 2026-02-26 05:20 UTC
+- Continued CASS-V4 migration in `/Users/alexb/Documents/Dev/Dev_new` (Wave 39), returning focus to GS common-persister hotspots.
+- Updated 4 GS common-persister files and reduced import-surface coupling to driver3 types.
+- Full validation matrix PASS (promo/common/cache/web/mp subset).
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-051936/`
+- Inventory delta:
+  - GS: `396 -> 383`
+  - MP: `60 -> 60`
+  - Combined: `456 -> 443`
+- Completion snapshot:
+  - GS-only `21.52%`, combined `30.67%`.
+- Next step:
+  - commit/push Wave 39 and continue GS common/promo hotspots toward 50% burn-down target.

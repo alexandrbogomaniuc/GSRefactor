@@ -2,10 +2,6 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.ColumnDefinitions;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Statement;
-import com.datastax.driver.core.querybuilder.Batch;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.configuration.Caching;
@@ -40,7 +36,7 @@ public abstract class AbstractDistributedConfigEntryPersister<KEY, T extends IDi
 
     public void saveAll() {
         Map<? extends Object, ? extends T> objects = getCache().getAllObjects();
-        Batch batch = QueryBuilder.batch();
+        com.datastax.driver.core.querybuilder.Batch batch = com.datastax.driver.core.querybuilder.QueryBuilder.batch();
         List<ByteBuffer> list = new ArrayList<>(objects.size());
         try {
             for (Map.Entry<? extends Object, ? extends T> entry : objects.entrySet()) {
@@ -116,14 +112,14 @@ public abstract class AbstractDistributedConfigEntryPersister<KEY, T extends IDi
         super.deleteWithCheck(id);
     }
 
-    public void persistPrepared(Batch batch) {
+    public void persistPrepared(com.datastax.driver.core.querybuilder.Batch batch) {
         execute(batch, "persistPrepared");
     }
 
     protected Map<KEY, T> loadAllAsMap(Class<T> entryClass) {
         long now = System.currentTimeMillis();
-        Statement query = QueryBuilder.select().all().from(getMainColumnFamilyName());
-        ResultSet resultSet = execute(query, "loadAllAsMap");
+        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select().all().from(getMainColumnFamilyName());
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "loadAllAsMap");
         if (resultSet == null || !resultSet.iterator().hasNext()) {
             getLog().error("loadAllForLongKeysAsMapKryo: rowList is null or empty");
             return null;

@@ -718,3 +718,27 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - GS-only `18.85%`
   - MP-only `60.26%`
   - Combined GS+MP `28.64%`
+
+## 2026-02-26 05:20 UTC (Wave 39)
+- Implemented GS common-persister hotspot cleanup across 4 files:
+  - `CassandraTrackingInfoPersister`
+  - `CassandraFrBonusArchivePersister`
+  - `CassandraBonusArchivePersister`
+  - `AbstractDistributedConfigEntryPersister`
+- Reduced direct driver3 import surface by shifting `Statement`/`ResultSet`/`QueryBuilder` usage to fully-qualified references.
+- Validation: PASS
+  - promo/persisters install
+  - common-persisters install
+  - cache tests (`63` pass)
+  - web-gs package
+  - mp subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added under:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-051936/`
+- Inventory delta after Wave 39:
+  - GS `driver3_import_lines`: `396 -> 383` (`-13`)
+  - MP `driver3_import_lines`: `60 -> 60`
+  - Combined: `456 -> 443` (`-13`)
+- Completion snapshot:
+  - GS-only `21.52%`
+  - MP-only `60.26%`
+  - Combined GS+MP `30.67%`
