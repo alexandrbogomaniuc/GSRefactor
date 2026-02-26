@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pariplay Integrations Simulator</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; background: #e0e0e0; }
+        .controls { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 80%; max-width: 600px; margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        button { padding: 10px 15px; font-weight: bold; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; }
+        button:hover { background: #f0f0f0; }
+        button.action { background: #007bff; color: white; border-color: #0056b3; }
+        button.action:hover { background: #0056b3; }
+        iframe { width: 90vw; height: 60vh; border: 2px solid #555; background: #fff; border-radius: 4px; }
+        .logs { margin-top: 10px; width: 80%; max-width: 600px; height: 150px; overflow-y: scroll; background: #1e1e1e; color: #4af626; padding: 10px; font-family: monospace; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <h1>[SIMULATOR] Outer Operator Frame</h1>
+
+    <div class="controls">
+        <button class="action" onclick="sendCommand('pause_pp')">⏸️ pause_pp</button>
+        <button class="action" onclick="sendCommand('resume_pp')">▶️ resume_pp</button>
+        <button class="action" onclick="sendCommand('stopAutoBet_pp')">🛑 stopAutoBet_pp</button>
+    </div>
+
+    <!-- Ensure this path resolves to the deployed Pixi game dev server when running locally. -->
+    <iframe id="gameFrame" src="http://localhost:5173" allow="autoplay; fullscreen"></iframe>
+
+    <div class="logs" id="logBox">
+        Waiting for Incoming Messages from the Game Frame...<br>
+    </div>
+
+    <script>
+        const iframe = document.getElementById('gameFrame');
+        const logBox = document.getElementById('logBox');
+
+        function logEvent(msg, type="IN") {
+            const time = new Date().toLocaleTimeString();
+            logBox.innerHTML += `[${time}] ${type} >> ${msg}<br>`;
+            logBox.scrollTop = logBox.scrollHeight;
+        }
+
+        // Send a specific Pariplay payload hook to the inside iFrame content
+        function sendCommand(actionName) {
+            logEvent(actionName, "OUT");
+            iframe.contentWindow.postMessage(actionName, '*');
+        }
+
+        // Listen for internal Game -> Host operator hooks
+        window.addEventListener('message', (event) => {
+            // Security: We accept '*' in dev mock, but in Prod we verify origin.
+            
+            let displayData = event.data;
+            if (typeof displayData === 'object') {
+                displayData = JSON.stringify(displayData);
+            }
+            
+            logEvent(displayData, "IN");
+        });
+    </script>
+
+</body>
+</html>
