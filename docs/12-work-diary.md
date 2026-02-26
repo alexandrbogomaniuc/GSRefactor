@@ -6658,3 +6658,13 @@
   - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/50-hard-cut-m2-wave38-base-json-action-report-20260226.md`
+
+### 2026-02-26 12:39 UTC
+- Completed Project 02 M2 Wave 39 for `InfoException` namespace migration.
+- Migrated package declaration to `com.abs` (isolated one-file migration, no dependent import rewrites).
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-123603-hardcut-m2-wave39-info-exception`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/51-hard-cut-m2-wave39-info-exception-report-20260226.md`

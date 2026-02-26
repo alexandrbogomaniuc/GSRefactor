@@ -987,3 +987,15 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-123128-hardcut-m2-wave38-base-json-action`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/50-hard-cut-m2-wave38-base-json-action-report-20260226.md`
+
+## 2026-02-26 12:39 UTC (M2 Wave 39 - InfoException Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.exception.InfoException` -> `com.abs.casino.common.exception.InfoException`
+- Changed target file:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/InfoException.java`
+- Post-scan result: legacy refs `0`, abs refs `1` (pre-scan legacy refs `1`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-123603-hardcut-m2-wave39-info-exception`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/51-hard-cut-m2-wave39-info-exception-report-20260226.md`
