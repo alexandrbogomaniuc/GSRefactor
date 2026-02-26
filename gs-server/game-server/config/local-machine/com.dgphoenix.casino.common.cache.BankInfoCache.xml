@@ -164,6 +164,10 @@
           <null/>
         </entry>
         <entry>
+          <string>ABS_CLOSE_GAME_PROCESSOR</string>
+          <null/>
+        </entry>
+        <entry>
           <string>AUTOPLAY_MODE</string>
           <string>ENABLED</string>
         </entry>
@@ -177,6 +181,10 @@
         </entry>
         <entry>
           <string>WPM_CLASS</string>
+          <string>com.dgphoenix.casino.payment.wallet.CommonWalletManager</string>
+        </entry>
+        <entry>
+          <string>ABS_WPM_CLASS</string>
           <string>com.dgphoenix.casino.payment.wallet.CommonWalletManager</string>
         </entry>
         <entry>

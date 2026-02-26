@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-02-26T06:52:28.294Z",
+  "baseUrl": "http://127.0.0.1:18081",
+  "mode": "multiplayer",
+  "ok": true,
+  "results": [
+    {
+      "bankId": "6275",
+      "url": "http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6275",
+      "ok": true,
+      "mode": "multiplayer",
+      "fetchStatus": 200,
+      "thirdPartyUrls": [],
+      "thirdPartyAllowListTokens": [],
+      "templateViolations": [],
+      "keyFields": {
+        "WPM_CLASS": "com.dgphoenix.casino.payment.wallet.CommonWalletManager",
+        "START_GAME_PROCESSOR": "com.dgphoenix.casino.gs.managers.payment.transfer.processor.MQBStartGameProcessor",
+        "CLOSE_GAME_PROCESSOR": "com.dgphoenix.casino.gs.managers.payment.transfer.processor.MQBCloseGameProcessor",
+        "MP_LOBBY_WS_URL": "localhost:6300",
+        "COMMON_WALLET_AUTH_URL": "http://host.docker.internal:8000/bav/authenticate",
+        "COMMON_WALLET_BALANCE_URL": "http://host.docker.internal:8000/bav/balance",
+        "COMMON_WALLET_WAGER_URL": "http://host.docker.internal:8000/bav/betResult",
+        "COMMON_WALLET_REFUND_URL": "http://host.docker.internal:8000/bav/refundBet",
+        "ALLOWED_ORIGIN": "http://localhost:8081,http://localhost:8080",
+        "ALLOWED_DOMAINS": "localhost",
+        "ALLOW_UPDATE_PLAYERS_STATUS_IN_PRIVATE_ROOM": "false",
+        "USE_WINNER_FEED": "false",
+        "NEEDS_JACKPOT3_FEED": "false"
+      }
+    },
+    {
+      "bankId": "6276",
+      "url": "http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6276",
+      "ok": true,
+      "mode": "multiplayer",
+      "fetchStatus": 200,
+      "thirdPartyUrls": [],
+      "thirdPartyAllowListTokens": [],
+      "templateViolations": [],
+      "keyFields": {
+        "WPM_CLASS": "com.dgphoenix.casino.payment.wallet.CommonWalletManager",
+        "START_GAME_PROCESSOR": "com.dgphoenix.casino.gs.managers.payment.transfer.processor.MQBStartGameProcessor",
+        "CLOSE_GAME_PROCESSOR": "com.dgphoenix.casino.gs.managers.payment.transfer.processor.MQBCloseGameProcessor",
+        "MP_LOBBY_WS_URL": "localhost:6300",
+        "COMMON_WALLET_AUTH_URL": "http://host.docker.internal:8000/bav/authenticate",
+        "COMMON_WALLET_BALANCE_URL": "http://host.docker.internal:8000/bav/balance",
+        "COMMON_WALLET_WAGER_URL": "http://host.docker.internal:8000/bav/betResult",
+        "COMMON_WALLET_REFUND_URL": "http://host.docker.internal:8000/bav/refundBet",
+        "ALLOWED_ORIGIN": "http://localhost:8081,http://localhost:8080",
+        "ALLOWED_DOMAINS": "localhost",
+        "ALLOW_UPDATE_PLAYERS_STATUS_IN_PRIVATE_ROOM": "false",
+        "USE_WINNER_FEED": "false",
+        "NEEDS_JACKPOT3_FEED": "false"
+      }
+    }
+  ]
+}

@@ -194,6 +194,10 @@
 		  <string>com.dgphoenix.casino.gs.managers.payment.transfer.processor.MQBCloseGameProcessor</string>
         </entry>
         <entry>
+          <string>ABS_CLOSE_GAME_PROCESSOR</string>
+          <string>com.dgphoenix.casino.gs.managers.payment.transfer.processor.MQBCloseGameProcessor</string>
+        </entry>
+        <entry>
           <string>NOTIFICATION_CLOSE_GAME_PROCESSOR_URL</string>
 		  <string>http://gs:8080/empty.jsp</string>
         </entry>
@@ -204,6 +208,10 @@
         <entry>
           <string>START_GAME_PROCESSOR</string>
 		  <string>com.dgphoenix.casino.gs.managers.payment.transfer.processor.MQBStartGameProcessor</string>
+        </entry>
+        <entry>
+          <string>ABS_START_GAME_PROCESSOR</string>
+          <string>com.dgphoenix.casino.gs.managers.payment.transfer.processor.MQBStartGameProcessor</string>
         </entry>
         <entry>
           <string>NOTIFICATION_ROOM_WAS_DEACTIVATED_URLtest</string>
@@ -227,6 +235,10 @@
         </entry>
         <entry>
           <string>WPM_CLASS</string>
+          <string>com.dgphoenix.casino.payment.wallet.CommonWalletManager</string>
+        </entry>
+        <entry>
+          <string>ABS_WPM_CLASS</string>
           <string>com.dgphoenix.casino.payment.wallet.CommonWalletManager</string>
         </entry>
         <entry>
@@ -928,6 +940,10 @@
           <string>com.dgphoenix.casino.gs.managers.payment.transfer.processor.MQBCloseGameProcessor</string>
         </entry>
         <entry>
+          <string>ABS_CLOSE_GAME_PROCESSOR</string>
+          <string>com.dgphoenix.casino.gs.managers.payment.transfer.processor.MQBCloseGameProcessor</string>
+        </entry>
+        <entry>
           <string>NOTIFICATION_CLOSE_GAME_PROCESSOR_URL</string>
 		  <string>http://gs:8080/empty.jsp</string>
         </entry>
@@ -938,6 +954,10 @@
         <entry>
           <string>START_GAME_PROCESSOR</string>
 		  <string>com.dgphoenix.casino.gs.managers.payment.transfer.processor.MQBStartGameProcessor</string>
+        </entry>
+        <entry>
+          <string>ABS_START_GAME_PROCESSOR</string>
+          <string>com.dgphoenix.casino.gs.managers.payment.transfer.processor.MQBStartGameProcessor</string>
         </entry>
         <entry>
           <string>NOTIFICATION_ROOM_WAS_DEACTIVATED_URLtest</string>
@@ -961,6 +981,10 @@
         </entry>
         <entry>
           <string>WPM_CLASS</string>
+          <string>com.dgphoenix.casino.payment.wallet.CommonWalletManager</string>
+        </entry>
+        <entry>
+          <string>ABS_WPM_CLASS</string>
           <string>com.dgphoenix.casino.payment.wallet.CommonWalletManager</string>
         </entry>
         <entry>

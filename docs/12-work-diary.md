@@ -5857,3 +5857,12 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-064800/`
 - Completion update:
   - Project 02 estimated at `60%`.
+
+### 2026-02-26 06:51 UTC
+- GSRefactor Project 02 advanced with M2.2 alias-key seeding in bank templates.
+- Added `ABS_*` compatibility keys (`ABS_WPM_CLASS`, `ABS_CLOSE_GAME_PROCESSOR`, `ABS_START_GAME_PROCESSOR`) next to legacy keys in active local/mqb bank config blocks.
+- Full validation matrix PASS and runtime bank-template audit PASS for banks `6275`, `6276`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-065116/`
+- Completion update:
+  - Project 02 estimated at `65%`.

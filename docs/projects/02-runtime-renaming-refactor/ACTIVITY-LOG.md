@@ -128,3 +128,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - active local/refactor bank templates no longer depend on external third-party wallet/social endpoints.
   - Project 02 completion estimate updated to `60%`.
+
+## 2026-02-26 06:51 UTC (Mini-Wave M2.2)
+- Executed alias-key seeding wave on bank templates for runtime-safe staged rename.
+- Changed files:
+  - `gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml`
+  - `gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BankInfoCache.xml`
+- Change detail:
+  - added `ABS_WPM_CLASS` alongside `WPM_CLASS`,
+  - added `ABS_CLOSE_GAME_PROCESSOR` alongside `CLOSE_GAME_PROCESSOR`,
+  - added `ABS_START_GAME_PROCESSOR` alongside `START_GAME_PROCESSOR` in mqb profile blocks.
+- Validation PASS:
+  - full build/test matrix (sb-utils, promo/common-persisters, cache tests, web-gs package, mp subset package)
+  - runtime audit script (`bank-template-audit.mjs`) for banks `6275,6276` in multiplayer mode: PASS.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-065116/`
+- Outcome:
+  - key runtime class-string properties are now dual-keyed (`legacy + ABS`) in active bank templates.
+  - Project 02 completion estimate updated to `65%`.

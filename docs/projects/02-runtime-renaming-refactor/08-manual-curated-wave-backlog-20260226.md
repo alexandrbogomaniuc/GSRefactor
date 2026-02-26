@@ -85,4 +85,5 @@ Method:
   - M1.2 complete (`sb-utils` XML/factory alias-aware class loading)
   - M1.3 complete (`ServerConfigurationForm` class literal cleanup)
   - M2.1 complete (bank template third-party URL sanitization for local/refactor profiles)
-- Estimated completion: 60%.
+  - M2.2 complete (seeded `ABS_*` alias keys for wallet/start/close processor config)
+- Estimated completion: 65%.
