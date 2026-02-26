@@ -1,0 +1,21 @@
+timestamp_utc=2026-02-26T10:11:21Z
+pre_scan_lines=2
+post_scan_legacy_refs=0
+post_scan_abs_refs=2
+validation_success_commands=9
+validation_failed_commands=0
+
+scope=
+- com.dgphoenix.casino.common.cache.data.report.PeriodicReportInfo
+- package declaration migration and dependent cache import update
+
+validation_set=
+- common install
+- common-wallet test
+- sb-utils test
+- promo persisters install
+- common persisters install
+- cassandra cache test
+- web-gs package
+- mp core/persistance package
+- runtime smoke

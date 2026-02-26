@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.cache;
 
-import com.dgphoenix.casino.common.cache.data.report.PeriodicReportInfo;
+import com.abs.casino.common.cache.data.report.PeriodicReportInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ReportPeriodEnum;
 import com.dgphoenix.casino.common.util.ReportTypeEnum;
