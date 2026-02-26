@@ -1,6 +1,7 @@
 package com.dgphoenix.casino.actions.api.response;
 
 import com.abs.casino.actions.api.response.ErrorResponse;
+import com.abs.casino.actions.api.response.Response;
 import com.abs.casino.actions.api.response.SuccessResponse;
 import com.abs.casino.actions.api.response.UpperCaseNameCoder;
 import com.dgphoenix.casino.common.exception.XmlWriterException;

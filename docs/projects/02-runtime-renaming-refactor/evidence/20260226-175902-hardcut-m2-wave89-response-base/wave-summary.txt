@@ -1,0 +1,6 @@
+wave=W89-response-base
+status=PASS
+legacy_pre=3
+legacy_post=0
+abs_post=4
+validation=9/9

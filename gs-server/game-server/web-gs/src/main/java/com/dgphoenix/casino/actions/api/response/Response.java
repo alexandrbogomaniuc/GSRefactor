@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.api.response;
+package com.abs.casino.actions.api.response;
 
 import com.thoughtworks.xstream.annotations.XStreamAliasType;
 

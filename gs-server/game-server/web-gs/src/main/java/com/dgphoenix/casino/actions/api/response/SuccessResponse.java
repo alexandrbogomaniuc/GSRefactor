@@ -1,6 +1,6 @@
 package com.abs.casino.actions.api.response;
 
-import com.dgphoenix.casino.actions.api.response.Response;
+import com.abs.casino.actions.api.response.Response;
 
 public class SuccessResponse extends Response {
 

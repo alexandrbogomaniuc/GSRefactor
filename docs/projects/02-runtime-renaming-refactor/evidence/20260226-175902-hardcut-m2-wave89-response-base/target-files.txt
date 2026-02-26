@@ -1,0 +1,4 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/Response.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/APIResponseBuilder.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/ErrorResponse.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/SuccessResponse.java
