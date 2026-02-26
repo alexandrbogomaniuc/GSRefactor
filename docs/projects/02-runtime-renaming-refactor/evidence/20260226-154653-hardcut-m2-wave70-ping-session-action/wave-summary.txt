@@ -1,0 +1,7 @@
+wave=W70-ping-session-action
+status=PASS
+pre_legacy=1
+post_legacy=0
+post_abs=1
+validation=9/9 PASS
+notes=Struts mapping updated together with package migration to avoid runtime action lookup break.

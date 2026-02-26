@@ -524,7 +524,7 @@
         </action>
 
         <action path="/api/pingSession"
-                type="com.dgphoenix.casino.actions.api.PingSessionAction" scope="request" name="EmptyForm">
+                type="com.abs.casino.actions.api.PingSessionAction" scope="request" name="EmptyForm">
         </action>
 
         <!-- End ported from LOBBY -->

@@ -1,0 +1,1 @@
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:527:                type="com.abs.casino.actions.api.PingSessionAction" scope="request" name="EmptyForm">
