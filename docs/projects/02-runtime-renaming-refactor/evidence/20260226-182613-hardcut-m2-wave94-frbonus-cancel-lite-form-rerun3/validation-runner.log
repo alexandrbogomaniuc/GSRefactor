@@ -1,0 +1,19 @@
+[2026-02-26T18:26:14Z] START 01-common-install
+01-common-install|PASS|0|01-common-install.log
+[2026-02-26T18:26:22Z] START 02-common-wallet-test
+02-common-wallet-test|PASS|0|02-common-wallet-test.log
+[2026-02-26T18:26:29Z] START 03-sb-utils-test
+03-sb-utils-test|PASS|0|03-sb-utils-test.log
+[2026-02-26T18:26:35Z] START 04-promo-persisters-install
+04-promo-persisters-install|PASS|0|04-promo-persisters-install.log
+[2026-02-26T18:26:40Z] START 05-common-persisters-install
+05-common-persisters-install|PASS|0|05-common-persisters-install.log
+[2026-02-26T18:26:47Z] START 06-cassandra-cache-test
+06-cassandra-cache-test|PASS|0|06-cassandra-cache-test.log
+[2026-02-26T18:26:55Z] START 07-web-gs-package
+07-web-gs-package|PASS|0|07-web-gs-package.log
+[2026-02-26T18:27:13Z] START 08-mp-core-persistence-package
+08-mp-core-persistence-package|PASS|0|08-mp-core-persistence-package.log
+[2026-02-26T18:27:24Z] START 09-refactor-smoke
+09-refactor-smoke|PASS|0|09-refactor-smoke.log
+[2026-02-26T18:27:26Z] COMPLETE

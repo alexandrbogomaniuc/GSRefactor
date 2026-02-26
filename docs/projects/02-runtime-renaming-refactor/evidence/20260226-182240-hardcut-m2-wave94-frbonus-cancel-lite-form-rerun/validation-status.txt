@@ -1,0 +1,9 @@
+01-common-install|FAIL|1|01-common-install.log
+02-common-wallet-test|FAIL|1|02-common-wallet-test.log
+03-sb-utils-test|FAIL|1|03-sb-utils-test.log
+04-promo-persisters-install|FAIL|1|04-promo-persisters-install.log
+05-common-persisters-install|FAIL|1|05-common-persisters-install.log
+06-cassandra-cache-test|FAIL|1|06-cassandra-cache-test.log
+07-web-gs-package|FAIL|1|07-web-gs-package.log
+08-mp-core-persistence-package|PASS|0|08-mp-core-persistence-package.log
+09-refactor-smoke|PASS|0|09-refactor-smoke.log

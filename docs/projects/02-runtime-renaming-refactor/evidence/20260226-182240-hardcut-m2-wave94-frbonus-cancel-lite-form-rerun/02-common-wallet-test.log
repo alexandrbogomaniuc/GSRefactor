@@ -1,0 +1,20 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.dgphoenix.casino:gsn-web-gs:war:1.89.0
+[WARNING] 'version' contains an expression but should be a constant. @ com.dgphoenix.casino:gsn-web-gs:${current.version}, /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/pom.xml, line 13, column 14
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.dgphoenix.casino:gsn-web-gs:war:1.89.0
+[WARNING] 'version' contains an expression but should be a constant. @ com.dgphoenix.casino:gsn-web-gs:${current.version}, /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/pom.xml, line 13, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[ERROR] [ERROR] Project 'com.dgphoenix.casino:gsn-common-gs:1.0' is duplicated in the reactor @ 
+[ERROR] Project 'com.dgphoenix.casino:gsn-common-gs:1.0' is duplicated in the reactor -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DuplicateProjectException

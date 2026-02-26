@@ -7209,3 +7209,13 @@
   - migrated FRB cancel form to `com.abs`, updated dependent action import and Struts form-bean mapping, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 94 with next low-fanout FRB form migration.
+
+### 2026-02-26 18:27 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 94 (FRB cancel lite form).
+- Evidence:
+  - final PASS: `docs/projects/02-runtime-renaming-refactor/evidence/20260226-182613-hardcut-m2-wave94-frbonus-cancel-lite-form-rerun3/validation-status.txt`
+  - report: `docs/projects/02-runtime-renaming-refactor/106-hard-cut-m2-wave94-frbonus-cancel-lite-form-report-20260226.md`
+- Result:
+  - migrated `CancelFRBLiteForm` to `com.abs`, updated dependent action import + Struts form-bean, and passed full 9/9 validation matrix.
+- Next:
+  - continue Wave 95 with next low-fanout FRB form migration.

@@ -1855,3 +1855,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `2` to `0`, `com.abs` refs now `3`.
   - global tracked source declarations/files now `2108` remaining (`2277` baseline, `169` reduced).
+
+## 2026-02-26 18:27 UTC (Hard-Cut M2 Wave 94)
+- Executed hard-cut namespace wave for `CancelFRBLiteForm`.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBLiteForm.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBLiteAction.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.frbonus.CancelFRBLiteForm` package to `com.abs`.
+  - updated dependent import in `CancelFRBLiteAction`.
+  - rewired Struts `CancelFRBLiteForm` form-bean type to `com.abs`.
+- Validation:
+  - initial failed attempt (wrong reactor paths): `docs/projects/02-runtime-renaming-refactor/evidence/20260226-182126-hardcut-m2-wave94-frbonus-cancel-lite-form/`
+  - second failed attempt (missing cluster.properties for game-server modules): `docs/projects/02-runtime-renaming-refactor/evidence/20260226-182240-hardcut-m2-wave94-frbonus-cancel-lite-form-rerun/`
+  - partial attempt (7/9): `docs/projects/02-runtime-renaming-refactor/evidence/20260226-182406-hardcut-m2-wave94-frbonus-cancel-lite-form-rerun2/`
+  - final passing run (9/9): `docs/projects/02-runtime-renaming-refactor/evidence/20260226-182613-hardcut-m2-wave94-frbonus-cancel-lite-form-rerun3/`
+- Outcome:
+  - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `2`.
+  - global tracked source declarations/files now `2107` remaining (`2277` baseline, `170` reduced).
