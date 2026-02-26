@@ -5619,3 +5619,18 @@
   - GS-only `18.24%` (`488 -> 399`)
   - combined GS+MP `13.93%` (`639 -> 550`)
 - Next step: commit/push Waves 33-34 and continue next hotspots.
+### 2026-02-26 04:59 UTC
+- Dev_new CASS-V4 Wave 35 completed and validated.
+- Converted `CassandraPromoCampaignPersister` to remove typed querybuilder import usage in batch persist/delete/select paths.
+- Validation PASS:
+  - `mvn -DskipTests install` (`promo/persisters`)
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn test` (`cache`, `63` tests)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -pl core-interfaces,core,persistance -am -DskipTests package` (`mp-server`)
+- Evidence saved under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-045750/`.
+- Inventory result: GS `399 -> 396`, MP `151` unchanged.
+- Completion snapshot:
+  - GS-only `18.85%` (`488 -> 396`)
+  - combined GS+MP `14.40%` (`639 -> 547`)
+- Next step: commit/push Wave 35 and continue next hotspots.

@@ -640,3 +640,21 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
 - Completion snapshot after Wave 34:
   - GS-only: `18.24%` (`488 -> 399`)
   - GS+MP combined: `13.93%` (`639 -> 550`)
+
+## 2026-02-26 04:59 UTC
+- Implemented CASS-V4 Wave 35 in `CassandraPromoCampaignPersister`.
+- Removed typed querybuilder `Insert` / `Delete` / `Select` import usage by switching to direct `batch.add(...)`/`execute(...)` query-chain flow.
+- Kept one fully-qualified select-specific type for conditional select assembly path.
+- Validation: PASS
+  - `promo/persisters` install
+  - `common-persisters` install
+  - cache test suite (`63` tests)
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added under `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-045750/`.
+- Inventory delta after Wave 35:
+  - GS `driver3_import_lines`: `399 -> 396` (`-3`)
+  - MP `driver3_import_lines`: `151` (no change)
+- Completion snapshot after Wave 35:
+  - GS-only: `18.85%` (`488 -> 396`)
+  - GS+MP combined: `14.40%` (`639 -> 547`)

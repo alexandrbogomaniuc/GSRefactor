@@ -4,9 +4,6 @@ import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.Batch;
-import com.datastax.driver.core.querybuilder.Delete;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -100,12 +97,10 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
                     }
                 }
             }
-            Insert persistCampaign = getInsertQuery(storeTable, getTtl());
-            persistCampaign
+            batch.add(getInsertQuery(storeTable, getTtl())
                     .value(CAMPAIGN_ID, campaign.getId())
                     .value(CAMPAIGN_DATA, campaignAsBytes)
-                    .value(JSON_COLUMN_NAME, json);
-            batch.add(persistCampaign);
+                    .value(JSON_COLUMN_NAME, json));
 
             for (Long bankId : campaign.getBankIds()) {
                 Set<Long> gameIds = campaign.getGameIds();
@@ -114,36 +109,28 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
                 }
 
                 for (Long gameId : gameIds) {
-                    Insert persistCampaignForBankAndGame = getInsertQuery(CAMPAIGN_BY_BANK_AND_GAME_TABLE, getTtl());
-                    persistCampaignForBankAndGame
+                    batch.add(getInsertQuery(CAMPAIGN_BY_BANK_AND_GAME_TABLE, getTtl())
                             .value(BANK_ID, bankId)
                             .value(GAME_ID, gameId)
                             .value(CAMPAIGN_ID, campaign.getId())
-                            .value(CAMPAIGN_STATUS, campaign.getStatus().name());
-                    batch.add(persistCampaignForBankAndGame);
+                            .value(CAMPAIGN_STATUS, campaign.getStatus().name()));
                 }
 
-                Insert persistForAllGames = getInsertQuery(CAMPAIGN_BY_BANK_AND_GAME_TABLE, getTtl());
-                persistForAllGames
+                batch.add(getInsertQuery(CAMPAIGN_BY_BANK_AND_GAME_TABLE, getTtl())
                         .value(BANK_ID, bankId)
                         .value(GAME_ID, ID_FOR_ALL)
                         .value(CAMPAIGN_ID, campaign.getId())
-                        .value(CAMPAIGN_STATUS, campaign.getStatus().name());
-                batch.add(persistForAllGames);
+                        .value(CAMPAIGN_STATUS, campaign.getStatus().name()));
             }
 
-            Insert persistForAllBanks = getInsertQuery(CAMPAIGN_BY_BANK_AND_GAME_TABLE, getTtl());
-            persistForAllBanks
+            batch.add(getInsertQuery(CAMPAIGN_BY_BANK_AND_GAME_TABLE, getTtl())
                     .value(BANK_ID, ID_FOR_ALL)
                     .value(GAME_ID, ID_FOR_ALL)
                     .value(CAMPAIGN_ID, campaign.getId())
-                    .value(CAMPAIGN_STATUS, campaign.getStatus().name());
-            batch.add(persistForAllBanks);
+                    .value(CAMPAIGN_STATUS, campaign.getStatus().name()));
 
             if (storeTable == ARCHIVE_CAMPAIGN_TABLE) {
-                Delete deleteFromMainTable = addItemDeletion(CAMPAIGN_TABLE.getTableName(),
-                        eq(CAMPAIGN_ID, campaign.getId()));
-                batch.add(deleteFromMainTable);
+                batch.add(addItemDeletion(CAMPAIGN_TABLE.getTableName(), eq(CAMPAIGN_ID, campaign.getId())));
             }
 
             execute(batch, "persist");
@@ -162,9 +149,8 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
     }
 
     private void addDeletion(Batch batch, long bankId, long gameId, long campaignId) {
-        Delete query = addItemDeletion(CAMPAIGN_BY_BANK_AND_GAME_TABLE.getTableName(),
-                eq(BANK_ID, bankId), eq(GAME_ID, gameId), eq(CAMPAIGN_ID, campaignId));
-        batch.add(query);
+        batch.add(addItemDeletion(CAMPAIGN_BY_BANK_AND_GAME_TABLE.getTableName(),
+                eq(BANK_ID, bankId), eq(GAME_ID, gameId), eq(CAMPAIGN_ID, campaignId)));
     }
 
     public NetworkPromoEvent getNetworkPromoEvent(long eventId) {
@@ -223,7 +209,7 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
             gameId = ID_FOR_ALL;
         }
 
-        Select selectCampaignsByClause = status == null
+        com.datastax.driver.core.querybuilder.Select selectCampaignsByClause = status == null
                 ? getSelectColumnsQuery(CAMPAIGN_BY_BANK_AND_GAME_TABLE, CAMPAIGN_ID, CAMPAIGN_STATUS)
                 : getSelectColumnsQuery(CAMPAIGN_BY_BANK_AND_GAME_TABLE, CAMPAIGN_ID);
         selectCampaignsByClause
@@ -261,10 +247,8 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
     }
 
     private IPromoCampaign getByIdFromTable(long campaignId, TableDefinition table) {
-        Select selectFromArchiveTable = getSelectColumnsQuery(table, CAMPAIGN_DATA, JSON_COLUMN_NAME);
-        selectFromArchiveTable
-                .where(eq(CAMPAIGN_ID, campaignId));
-        Row campaignData = execute(selectFromArchiveTable, "getByIdFromTable").one();
+        Row campaignData = execute(getSelectColumnsQuery(table, CAMPAIGN_DATA, JSON_COLUMN_NAME)
+                .where(eq(CAMPAIGN_ID, campaignId)), "getByIdFromTable").one();
 
         IPromoCampaign promoCampaign = null;
         if (campaignData != null) {
@@ -281,11 +265,9 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
     }
 
     public Set<Long> getPromoIdsByBank(long bankId) {
-        Select selectCampIdsByBank = getSelectColumnsQuery(CAMPAIGN_BY_BANK_AND_GAME_TABLE, CAMPAIGN_ID);
-        selectCampIdsByBank
+        ResultSet campaignsIdsByBank = execute(getSelectColumnsQuery(CAMPAIGN_BY_BANK_AND_GAME_TABLE, CAMPAIGN_ID)
                 .where(eq(BANK_ID, bankId))
-                .and(eq(GAME_ID, ID_FOR_ALL));
-        ResultSet campaignsIdsByBank = execute(selectCampIdsByBank, "getPromoIdsByBank");
+                .and(eq(GAME_ID, ID_FOR_ALL)), "getPromoIdsByBank");
 
         Set<Long> bankCampaignsIds = new HashSet<>();
         for (Row campaignIdResult : campaignsIdsByBank) {
