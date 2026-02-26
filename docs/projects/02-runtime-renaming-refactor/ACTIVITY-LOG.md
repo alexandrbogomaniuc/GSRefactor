@@ -1097,3 +1097,17 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-132052-hardcut-m2-wave47-cw-guest-login-lobby-request`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/59-hard-cut-m2-wave47-cw-guest-login-lobby-request-report-20260226.md`
+
+## 2026-02-26 13:36 UTC (M2 Wave 48 - APUBConstants Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.web.login.apub.APUBConstants` -> `com.abs.casino.common.web.login.apub.APUBConstants`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/web/login/apub/APUBConstants.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java`
+- Post-scan result (wave scope): legacy refs `0`, abs refs `3` (pre-scan legacy refs `3`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-132929-hardcut-m2-wave48-apub-constants`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/60-hard-cut-m2-wave48-apub-constants-report-20260226.md`

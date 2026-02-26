@@ -43,7 +43,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
 import com.dgphoenix.casino.common.web.ClientTypeFactory;
 import com.dgphoenix.casino.common.web.ShellDetector;
-import com.dgphoenix.casino.common.web.login.apub.APUBConstants;
+import com.abs.casino.common.web.login.apub.APUBConstants;
 import com.dgphoenix.casino.common.web.login.apub.GameServerResponse;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
