@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.games;
+package com.abs.casino.common.games;
 
 import com.abs.casino.common.games.SwfLocationInfo;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;

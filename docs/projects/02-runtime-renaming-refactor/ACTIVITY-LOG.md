@@ -1348,3 +1348,26 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `4` to `0`, `com.abs` refs now `4`.
   - global tracked source declarations now `2141` remaining (`2277` baseline, `136` reduced).
+
+## 2026-02-26 15:10 UTC (Hard-Cut M2 Wave 64)
+- Executed hard-cut namespace wave for `IStartGameHelper`.
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/IStartGameHelper.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/IHelperCreator.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/StartGameHelpers.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java`
+  - `gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/dblink/DBLink.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/filters/StartGameServletFilter.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/support/listGameIds.jsp`
+- Change detail:
+  - migrated `com.dgphoenix.casino.common.games.IStartGameHelper` to `com.abs.casino.common.games.IStartGameHelper`.
+  - rewired Java/JSP imports across helper registry, GS init path, wallet, filter, and DBLink.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-150802-hardcut-m2-wave64-istartgamehelper/`
+- Outcome:
+  - wave scope legacy refs reduced from `6` to `0`, `com.abs` refs now `8`.
+  - global tracked source declarations now `2140` remaining (`2277` baseline, `137` reduced).

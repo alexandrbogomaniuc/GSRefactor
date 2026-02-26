@@ -1,7 +1,7 @@
 package com.abs.casino.common.games;
 
 import com.abs.casino.common.games.IDelegatedStartGameHelper;
-import com.dgphoenix.casino.common.games.IStartGameHelper;
+import com.abs.casino.common.games.IStartGameHelper;
 
 /**
  * User: flsh

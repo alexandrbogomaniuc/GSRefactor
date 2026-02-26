@@ -1,0 +1,7 @@
+Hard-Cut M2 Wave 64 - IStartGameHelper
+Date(UTC): 2026-02-26
+Scope: com.dgphoenix.casino.common.games.IStartGameHelper -> com.abs.casino.common.games.IStartGameHelper
+PreLegacyRefs: 6
+PostLegacyRefs: 0
+PostAbsRefs: 8
+Validation: PASS (9/9)

@@ -6909,3 +6909,13 @@
   - migrated class package to `com.abs`, updated Java/JSP dependent imports, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 64 with `IStartGameHelper` migration.
+
+### 2026-02-26 15:10 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 64 (`IStartGameHelper`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-150802-hardcut-m2-wave64-istartgamehelper/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/76-hard-cut-m2-wave64-istartgamehelper-report-20260226.md`
+- Result:
+  - migrated interface package to `com.abs`, updated Java/JSP dependent imports, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 65 with next low-fanout `common.games` declaration.
