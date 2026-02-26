@@ -5808,3 +5808,11 @@
   - promo/common install, cache tests (63), web-gs package, mp subset package.
 - Evidence:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-063100/`
+
+### 2026-02-26 06:36 UTC
+- Continued Project 02 with a manual-only execution backlog after the W0 safety gate.
+- Added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/08-manual-curated-wave-backlog-20260226.md`
+- Defined manual waves M1-M4 for runtime-safe rename completion (`com.dgphoenix*`, `MQ*`, and related config/template surfaces).
+- Set strict mini-wave controls (<=3 files per wave + full matrix + rollback artifact).
+- Project 02 completion estimate: `35%`.

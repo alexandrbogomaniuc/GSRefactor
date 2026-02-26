@@ -47,3 +47,14 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - Phase 0 refreshed and documented.
   - Phase 1 now hard-gated to manual curated waves to prevent unsafe runtime replacements.
+
+## 2026-02-26 06:36 UTC
+- Produced manual curated execution backlog after enabling safety guardrails.
+- New planning artifact:
+  - `docs/projects/02-runtime-renaming-refactor/08-manual-curated-wave-backlog-20260226.md`
+- Backlog defines M1-M4 waves with explicit file targets, method, and exit checks.
+- Execution policy locked:
+  - max `3` files per mini-wave,
+  - full validation matrix after each wave,
+  - dual-key/dual-read compatibility until post-cutover removal stage.
+- Project 02 completion estimate updated to `35%` (Phase 0 complete, auto-path guarded, manual waves pending).
