@@ -1461,3 +1461,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `1`.
   - global tracked source declarations now `2134` remaining (`2277` baseline, `143` reduced).
+
+## 2026-02-26 16:00 UTC (Hard-Cut M2 Wave 71)
+- Executed hard-cut namespace wave for `RefreshBalanceAction`.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/RefreshBalanceAction.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.RefreshBalanceAction` to `com.abs.casino.actions.api.RefreshBalanceAction`.
+  - updated Struts action mapping type to `com.abs` for `/refreshbalance`.
+  - added explicit `RefreshBalanceForm` import and replaced direct protected field access with getter.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-155237-hardcut-m2-wave71-refresh-balance-action/`
+- Outcome:
+  - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `1`.
+  - global tracked source declarations now `2133` remaining (`2277` baseline, `144` reduced).

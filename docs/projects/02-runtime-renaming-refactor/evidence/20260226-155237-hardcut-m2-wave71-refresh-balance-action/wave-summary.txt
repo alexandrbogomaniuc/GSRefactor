@@ -1,0 +1,7 @@
+wave=W71-refresh-balance-action
+status=PASS
+pre_legacy=1
+post_legacy=0
+post_abs=1
+validation=9/9 PASS
+notes=Action moved to com.abs; form compatibility fixed via explicit import and getter access.

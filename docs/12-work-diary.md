@@ -6979,3 +6979,13 @@
   - migrated API action package to `com.abs`, updated Struts mapping, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 71 with next low-fanout API declaration.
+
+### 2026-02-26 16:00 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 71 (`RefreshBalanceAction`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-155237-hardcut-m2-wave71-refresh-balance-action/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/83-hard-cut-m2-wave71-refresh-balance-action-report-20260226.md`
+- Result:
+  - migrated API action package to `com.abs`, updated Struts mapping, fixed form compatibility (`import` + getter), and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 72 with next low-fanout API declaration.

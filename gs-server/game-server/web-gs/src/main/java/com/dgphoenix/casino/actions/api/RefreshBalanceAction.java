@@ -1,6 +1,7 @@
-package com.dgphoenix.casino.actions.api;
+package com.abs.casino.actions.api;
 
 import com.dgphoenix.casino.account.AccountManager;
+import com.dgphoenix.casino.actions.api.RefreshBalanceForm;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
@@ -92,7 +93,7 @@ public class RefreshBalanceAction extends BaseAction<RefreshBalanceForm> {
         XmlWriter xw = new XmlWriter(response.getWriter(), "UTF-8");
         xw.startDocument(GameServerConfiguration.getInstance().getBrandApiRootTagName());
         xw.startNode(CCommonWallet.REQUEST_TAG);
-        xw.node("EXTUSERID", actionForm.extUserId);
+        xw.node("EXTUSERID", actionForm.getExtUserId());
         xw.node("BANKID", String.valueOf(bankId));
         xw.endNode(CCommonWallet.REQUEST_TAG);
         xw.node(CCommonWallet.TIME_TAG, DF.format(LocalDateTime.now()));
