@@ -1,0 +1,2 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/PlayerGameSettingsType.java
+gs-server/game-server/web-gs/src/main/webapp/support/setup_replaceurl_pm_st.jsp

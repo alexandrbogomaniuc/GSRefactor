@@ -750,3 +750,16 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-104658-hardcut-m2-wave23-server-session-constants`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/35-hard-cut-m2-wave23-server-session-constants-report-20260226.md`
+
+## 2026-02-26 10:53 UTC (M2 Wave 24 - PlayerGameSettingsType Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.bank.PlayerGameSettingsType` -> `com.abs.casino.common.cache.data.bank.PlayerGameSettingsType`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/PlayerGameSettingsType.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/support/setup_replaceurl_pm_st.jsp`
+- Post-scan result: legacy refs `0`, abs refs `1`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-105209-hardcut-m2-wave24-player-game-settings-type`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/36-hard-cut-m2-wave24-player-game-settings-type-report-20260226.md`

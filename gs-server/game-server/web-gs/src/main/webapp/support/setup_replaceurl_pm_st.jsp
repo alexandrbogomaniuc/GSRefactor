@@ -1,6 +1,6 @@
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.PlayerGameSettingsType" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.PlayerGameSettingsType" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BaseGameCache" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo" %>
 <%@ page import="java.util.Collection" %>
