@@ -90,4 +90,5 @@ Method:
   - M2.4 complete (mqb server config domain/lobby host sanitization to local values)
   - M3.1 complete (support JSP compatibility for `com.dgphoenix`/`com.abs` class strings in init/sequencer/report checks)
   - M3.2 complete (support template-management JSP fallback for SP processor class `com.abs` -> `com.dgphoenix`)
-- Estimated completion: 80%.
+  - M3.3 complete (GameBankConfig default class fallback for SP processor and GameServlet)
+- Estimated completion: 84%.

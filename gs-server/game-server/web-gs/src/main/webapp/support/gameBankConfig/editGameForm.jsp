@@ -15,6 +15,16 @@
 
 <%!
     int nameWidth = 250;
+
+    private static String resolveDefaultGameServletClassName() {
+        String absClassName = "com.abs.casino.singlegames.game.GameServlet";
+        try {
+            Class.forName(absClassName);
+            return absClassName;
+        } catch (ClassNotFoundException ignore) {
+            return "com.dgphoenix.casino.singlegames.game.GameServlet";
+        }
+    }
 %>
 
 
@@ -700,7 +710,7 @@
         String gameTesting = (String) destGame.getPropertiesMap().get(BaseGameConstants.KEY_GAME_TESTING);
 
         String swfLocation = "/flash/game/game.swf";
-        String gameControllerClass = "com.dgphoenix.casino.singlegames.game.GameServlet";
+        String gameControllerClass = resolveDefaultGameServletClassName();
         String servlet = "Game.game";
         String maxWin = "null";
         String RTP = "null";

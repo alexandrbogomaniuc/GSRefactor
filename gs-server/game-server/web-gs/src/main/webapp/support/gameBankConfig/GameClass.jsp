@@ -12,6 +12,16 @@
 <%@ page import="com.google.common.base.Splitter" %>
 
 <%!
+    private static String resolveSpGameProcessorClassName() {
+        String absClassName = "com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+        try {
+            Class.forName(absClassName);
+            return absClassName;
+        } catch (ClassNotFoundException ignore) {
+            return "com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+        }
+    }
+
     long[] ACS_GAMES = {2, 3, 18, 20, 21, 33, 41, 47, 52, 80, 88, 91, 104, 122, 133, 134, 136, 143, 148, 155, 156, 249,
             263, 268, 355, 172, 151, 152, 212, 213, 255, 560, 561, 562};
 
@@ -41,7 +51,7 @@
 
     class Game {
         PrintWriter writer = null;
-        String spGameProcessor = "com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+        String spGameProcessor = resolveSpGameProcessorClassName();
         String swfLocation = null;
         String gameControllerClass = null;
         String servletStartWith = "";

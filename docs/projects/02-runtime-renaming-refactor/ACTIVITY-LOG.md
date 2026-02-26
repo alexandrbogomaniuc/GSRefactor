@@ -218,3 +218,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - support template-generation flows are now package-rename tolerant for SP processor class references.
   - Project 02 completion estimate updated to `80%`.
+
+## 2026-02-26 07:16 UTC (Mini-Wave M3.3)
+- Executed GameBankConfig class-default compatibility wave.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/webapp/support/gameBankConfig/GameClass.jsp`
+  - `gs-server/game-server/web-gs/src/main/webapp/support/gameBankConfig/editGameForm.jsp`
+- Change detail:
+  - added runtime fallback resolution for class defaults in support game configuration flows:
+    - SP processor class: `com.abs...` preferred, `com.dgphoenix...` fallback
+    - single-game servlet default class: `com.abs...` preferred, `com.dgphoenix...` fallback
+- Validation PASS:
+  - full build/test matrix (sb-utils, promo/common-persisters, cache tests, web-gs package, mp subset package)
+  - runtime bank-template audit (`bank-template-audit.mjs`) for banks `6275,6276`: PASS.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-071656/`
+- Outcome:
+  - support GameBankConfig defaults now tolerate staged package renaming without manual updates.
+  - Project 02 completion estimate updated to `84%`.
