@@ -733,3 +733,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-104418-hardcut-m2-wave22-isolated-models`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/34-hard-cut-m2-wave22-isolated-models-report-20260226.md`
+
+## 2026-02-26 10:49 UTC (M2 Wave 23 - Server/Session Constants Completed)
+- Initial attempt (aborted): included `BankMiniGameInfo`, which failed due in-package dependencies (`MiniGameInfo`, `BaseGameInfo`). The `BankMiniGameInfo` change was rolled back before finalizing the wave.
+- Final Wave 23 scope (completed):
+  - `com.dgphoenix.casino.common.cache.data.server.ServerInfoConstants` -> `com.abs.casino.common.cache.data.server.ServerInfoConstants`
+  - `com.dgphoenix.casino.common.cache.data.session.SessionLimit` -> `com.abs.casino.common.cache.data.session.SessionLimit`
+  - `com.dgphoenix.casino.common.cache.data.session.SessionStatistics` -> `com.abs.casino.common.cache.data.session.SessionStatistics`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/server/ServerInfoConstants.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/SessionLimit.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/SessionStatistics.java`
+- Post-scan result: legacy declarations `0`, abs declarations `3` (scope files).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-104658-hardcut-m2-wave23-server-session-constants`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/35-hard-cut-m2-wave23-server-session-constants-report-20260226.md`
