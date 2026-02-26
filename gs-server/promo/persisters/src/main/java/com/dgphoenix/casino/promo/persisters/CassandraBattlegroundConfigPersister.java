@@ -3,10 +3,8 @@ package com.dgphoenix.casino.promo.persisters;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Delete;
-import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -48,7 +46,7 @@ public class CassandraBattlegroundConfigPersister extends AbstractCassandraPersi
         String json = getMainTableDefinition().serializeToJson(config);
         ByteBuffer byteBuffer = getMainTableDefinition().serializeToBytes(config);
         try {
-            Insert query = getInsertQuery(getTtl())
+            Statement query = getInsertQuery(getTtl())
                     .value(BANK_ID, bankId)
                     .value(GAME_ID, config.getGameId())
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
@@ -60,8 +58,8 @@ public class CassandraBattlegroundConfigPersister extends AbstractCassandraPersi
     }
 
     public Set<BattlegroundConfig> getConfigs(long bankId) {
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where().and(eq(BANK_ID, bankId));
+        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(BANK_ID, bankId));
         ResultSet resultSet = execute(query, "getConfigs");
         Set<BattlegroundConfig> result = new HashSet<>();
         for (Row row : resultSet) {
@@ -77,8 +75,9 @@ public class CassandraBattlegroundConfigPersister extends AbstractCassandraPersi
     }
 
     public BattlegroundConfig getConfig(long bankId, long gameId) {
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where().and(eq(BANK_ID, bankId)).and(eq(GAME_ID, gameId));
+        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(BANK_ID, bankId))
+                .and(eq(GAME_ID, gameId));
         ResultSet resultSet = execute(query, "getConfig");
         Row row = resultSet.one();
         BattlegroundConfig result = null;
@@ -95,14 +94,17 @@ public class CassandraBattlegroundConfigPersister extends AbstractCassandraPersi
     }
 
     public void deleteForBank(long bankId) {
-        Delete query = QueryBuilder.delete().from(getMainColumnFamilyName());
-        query.where(eq(BANK_ID, bankId));
+        Statement query = QueryBuilder.delete()
+                .from(getMainColumnFamilyName())
+                .where(eq(BANK_ID, bankId));
         execute(query, "deleteForBank");
     }
 
     public void delete(long bankId, long gameId) {
-        Delete query = QueryBuilder.delete().from(getMainColumnFamilyName());
-        query.where(eq(BANK_ID, bankId)).and(eq(GAME_ID, gameId));
+        Statement query = QueryBuilder.delete()
+                .from(getMainColumnFamilyName())
+                .where(eq(BANK_ID, bankId))
+                .and(eq(GAME_ID, gameId));
         execute(query, "delete");
     }
 

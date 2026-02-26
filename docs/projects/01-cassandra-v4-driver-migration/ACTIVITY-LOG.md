@@ -549,3 +549,28 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
 - Inventory delta after Wave 30:
   - GS `driver3_import_lines`: `424 -> 421` (`-3`)
   - MP `driver3_import_lines`: `151` (no change)
+
+## 2026-02-26 04:38 UTC
+- Implemented CASS-V4 Wave 31 in promo statistics/config hotspots:
+  - `CassandraMaxBalanceTournamentPersister`
+  - `CassandraPromoWinPersister`
+  - `CassandraBattlegroundConfigPersister`
+  - `CassandraPromoCampaignStatisticsPersister`
+- Replaced typed querybuilder `Insert` / `Select` / `Update` / `Delete` declarations with generic `Statement` flow.
+- Validation: PASS
+  - `promo/persisters` install
+  - `common-persisters` install
+  - cache test suite (`63` tests)
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-043647/c4-wave31-promo-statistics-config-statement-flow-20260226-043647.md`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-043647/c4-wave31-build-promo-persisters-20260226-043647.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-043647/c4-wave31-build-common-persisters-20260226-043647.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-043647/c4-wave31-unit-tests-20260226-043647.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-043647/c4-wave31-build-web-gs-20260226-043647.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-043647/c4-wave31-build-mp-stack-20260226-043647.txt`
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-043647/phase7-cassandra-driver-inventory-20260226-043751.txt`
+- Inventory delta after Wave 31:
+  - GS `driver3_import_lines`: `421 -> 415` (`-6`)
+  - MP `driver3_import_lines`: `151` (no change)

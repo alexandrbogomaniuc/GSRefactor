@@ -4,7 +4,6 @@ import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -59,8 +58,7 @@ public class CassandraPromoWinPersister extends AbstractCassandraPersister<Long,
     }
 
     public Set<PromoWin> getByPromoId(long promoId) {
-        Select query = getSelectAllColumnsQuery();
-        query.where(eq(PROMO_ID, promoId));
+        Statement query = getSelectAllColumnsQuery().where(eq(PROMO_ID, promoId));
         ResultSet result = execute(query, "getByPromoId");
         Set<PromoWin> wins = new HashSet<>();
         for (Row row : result) {

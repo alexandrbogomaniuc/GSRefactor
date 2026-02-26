@@ -3,10 +3,8 @@ package com.dgphoenix.casino.promo.persisters;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.querybuilder.Update;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -41,13 +39,16 @@ public class CassandraPromoCampaignStatisticsPersister extends AbstractCassandra
                 roundsCountDelta, betSumDelta);
         Pair<Integer, Double> current = getAverageBetPairForGs(campaignId, gsId);
         if (current == null) {
-            Insert insert = getInsertQuery();
-            insert.value(CAMPAIGN_ID, campaignId).value(GS_ID, gsId).value(ROUNDS_COUNT, roundsCountDelta).
-                    value(BET_SUM, betSumDelta);
+            Statement insert = getInsertQuery()
+                    .value(CAMPAIGN_ID, campaignId)
+                    .value(GS_ID, gsId)
+                    .value(ROUNDS_COUNT, roundsCountDelta)
+                    .value(BET_SUM, betSumDelta);
             execute(insert, "increment: insert");
         } else {
-            Update update = getUpdateQuery();
-            update.where().and(eq(CAMPAIGN_ID, campaignId)).and(eq(GS_ID, gsId))
+            Statement update = getUpdateQuery()
+                    .where(eq(CAMPAIGN_ID, campaignId))
+                    .and(eq(GS_ID, gsId))
                     .with(QueryBuilder.set(ROUNDS_COUNT, current.getKey() + roundsCountDelta))
                     .and(QueryBuilder.set(BET_SUM, current.getValue() + betSumDelta));
             execute(update, "increment:update");
@@ -55,16 +56,17 @@ public class CassandraPromoCampaignStatisticsPersister extends AbstractCassandra
     }
 
     public Pair<Integer, Double> getAverageBetPairForGs(long campaignId, int gsId) {
-        Select select = getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM);
-        select.where(eq(CAMPAIGN_ID, campaignId)).and(eq(GS_ID, gsId));
+        Statement select = getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM)
+                .where(eq(CAMPAIGN_ID, campaignId))
+                .and(eq(GS_ID, gsId));
         ResultSet resultSet = execute(select, "getAverageBetPairForGs");
         Row row = resultSet.one();
         return row == null ? null : new Pair<>(row.getInt(ROUNDS_COUNT), row.getDouble(BET_SUM));
     }
 
     public Pair<Integer, Double> getAverageBetPair(long campaignId) {
-        Select select = getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM);
-        select.where(eq(CAMPAIGN_ID, campaignId));
+        Statement select = getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM)
+                .where(eq(CAMPAIGN_ID, campaignId));
         ResultSet resultSet = execute(select, "getAverageBetPair");
         int roundsCount = 0;
         double betSum = 0;

@@ -3,8 +3,7 @@ package com.dgphoenix.casino.promo.persisters;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -42,11 +41,11 @@ public class CassandraMaxBalanceTournamentPersister extends AbstractCassandraPer
         ByteBuffer byteBuffer = getMainTableDefinition().serializeToBytes(details);
         String json = getMainTableDefinition().serializeToJson(details);
         try {
-            Insert query = getInsertQuery(getTtl());
-            query.value(CAMPAIGN_ID_FIELD, details.getCampaignId());
-            query.value(ACCOUNT_ID_FIELD, details.getAccountId());
-            query.value(SERIALIZED_COLUMN_NAME, byteBuffer);
-            query.value(JSON_COLUMN_NAME, json);
+            Statement query = getInsertQuery(getTtl())
+                    .value(CAMPAIGN_ID_FIELD, details.getCampaignId())
+                    .value(ACCOUNT_ID_FIELD, details.getAccountId())
+                    .value(SERIALIZED_COLUMN_NAME, byteBuffer)
+                    .value(JSON_COLUMN_NAME, json);
             execute(query, "persist");
         } finally {
             releaseBuffer(byteBuffer);
@@ -54,8 +53,8 @@ public class CassandraMaxBalanceTournamentPersister extends AbstractCassandraPer
     }
 
     public List<MaxBalanceTournamentPlayerDetails> getByTournament(long tournamentId) {
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where().and(eq(CAMPAIGN_ID_FIELD, tournamentId));
+        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(CAMPAIGN_ID_FIELD, tournamentId));
         ResultSet resultSet = execute(query, "getByTournament");
         List<MaxBalanceTournamentPlayerDetails> result = new ArrayList<>();
         for (Row row : resultSet) {
@@ -75,9 +74,8 @@ public class CassandraMaxBalanceTournamentPersister extends AbstractCassandraPer
     }
 
     public MaxBalanceTournamentPlayerDetails getForAccount(long accountId, long campaignId) {
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where()
-                .and(eq(ACCOUNT_ID_FIELD, accountId))
+        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(ACCOUNT_ID_FIELD, accountId))
                 .and(eq(CAMPAIGN_ID_FIELD, campaignId))
                 .limit(1);
         ResultSet resultSet = execute(query, "getForAccount");
