@@ -6576,3 +6576,13 @@
   - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/42-hard-cut-m2-wave30-ifr-bonus-win-operation-report-20260226.md`
+
+### 2026-02-26 11:42 UTC
+- Completed Project 02 M2 Wave 31 for `IFRBonusWin` namespace migration.
+- Migrated package declaration to `com.abs` and updated dependent imports in FR bonus and GS manager classes.
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-113605-hardcut-m2-wave31-ifr-bonus-win`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/43-hard-cut-m2-wave31-ifr-bonus-win-report-20260226.md`

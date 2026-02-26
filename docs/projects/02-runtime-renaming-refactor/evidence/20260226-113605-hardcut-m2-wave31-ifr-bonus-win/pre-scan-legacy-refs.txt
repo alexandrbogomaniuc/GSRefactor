@@ -1,0 +1,5 @@
+5:import com.dgphoenix.casino.common.cache.data.payment.frb.IFRBonusWin;
+16:import com.dgphoenix.casino.common.cache.data.payment.frb.IFRBonusWin;
+19:import com.dgphoenix.casino.common.cache.data.payment.frb.IFRBonusWin;
+20:import com.dgphoenix.casino.common.cache.data.payment.frb.IFRBonusWin;
+29:import com.dgphoenix.casino.common.cache.data.payment.frb.IFRBonusWin;

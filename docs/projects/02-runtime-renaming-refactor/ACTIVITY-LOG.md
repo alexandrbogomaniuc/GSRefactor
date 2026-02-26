@@ -861,3 +861,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-112847-hardcut-m2-wave30-ifr-bonus-win-operation`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/42-hard-cut-m2-wave30-ifr-bonus-win-operation-report-20260226.md`
+
+## 2026-02-26 11:42 UTC (M2 Wave 31 - IFRBonusWin Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.payment.frb.IFRBonusWin` -> `com.abs.casino.common.cache.data.payment.frb.IFRBonusWin`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/frb/IFRBonusWin.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBonusWin.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/dblink/FRBonusDBLink.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/dblink/DBLink.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/FRBonusManager.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java`
+- Post-scan result: legacy refs `0`, abs refs `5`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-113605-hardcut-m2-wave31-ifr-bonus-win`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/43-hard-cut-m2-wave31-ifr-bonus-win-report-20260226.md`

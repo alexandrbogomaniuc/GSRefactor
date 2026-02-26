@@ -1,0 +1,6 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/frb/IFRBonusWin.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBonusWin.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/dblink/FRBonusDBLink.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/dblink/DBLink.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/FRBonusManager.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java

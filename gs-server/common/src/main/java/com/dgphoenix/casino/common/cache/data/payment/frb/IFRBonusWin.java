@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data.payment.frb;
+package com.abs.casino.common.cache.data.payment.frb;
 
 import com.abs.casino.common.cache.data.payment.frb.IFRBonusWinOperation;
 import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
