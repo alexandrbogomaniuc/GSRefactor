@@ -523,3 +523,16 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-095313-hardcut-m2-wave8-canex-request-root`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/20-hard-cut-m2-wave8-canex-request-root-report-20260226.md`
+
+## 2026-02-26 09:58 UTC (M2 Wave 9 - Common Monitoring Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.monitoring.OnlineConcurrentMailNotification` -> `com.abs.casino.common.monitoring.OnlineConcurrentMailNotification`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/monitoring/OnlineConcurrentMailNotification.java`
+  - `gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraNotificationPersister.java`
+- Post-scan result: legacy refs `0`, abs refs `2`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-095618-hardcut-m2-wave9-common-monitoring`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/21-hard-cut-m2-wave9-common-monitoring-report-20260226.md`

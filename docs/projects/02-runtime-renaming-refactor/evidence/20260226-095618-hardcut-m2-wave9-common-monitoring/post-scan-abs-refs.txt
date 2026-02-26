@@ -1,0 +1,2 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/monitoring/OnlineConcurrentMailNotification.java:1:package com.abs.casino.common.monitoring;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraNotificationPersister.java:6:import com.abs.casino.common.monitoring.OnlineConcurrentMailNotification;

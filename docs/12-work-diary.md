@@ -6343,3 +6343,14 @@
 - Evidence:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-095313-hardcut-m2-wave8-canex-request-root`
 - Next: commit/push Wave 8 and continue Wave 9.
+
+### 2026-02-26 09:58 UTC
+- Continued Project 02 with M2 Wave 9 (common monitoring namespace migration).
+- Scope: 2 files (common model + cassandra persister import).
+- Result:
+  - legacy refs for wave scope: `0`
+  - new `com.abs` refs: `2`
+  - full validation matrix and runtime smoke: PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-095618-hardcut-m2-wave9-common-monitoring`
+- Next: commit/push Wave 9 and continue Wave 10.

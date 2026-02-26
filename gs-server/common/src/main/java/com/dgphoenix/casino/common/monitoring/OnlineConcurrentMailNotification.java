@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.monitoring;
+package com.abs.casino.common.monitoring;
 
 
 import com.esotericsoftware.kryo.Kryo;
