@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.api.bonus.response;
+package com.abs.casino.actions.api.bonus.response;
 
 
 import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;

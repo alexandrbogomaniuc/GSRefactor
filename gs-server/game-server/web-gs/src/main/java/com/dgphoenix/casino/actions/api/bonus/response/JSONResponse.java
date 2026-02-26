@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.api.bonus.response;
+package com.abs.casino.actions.api.bonus.response;
 
 import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
 import com.dgphoenix.casino.actions.api.bonus.BonusForm;
@@ -30,7 +30,7 @@ public class JSONResponse {
                 if (entry.getKey().equals(CBonus.BONUS_LIST)) {
                     List<com.dgphoenix.casino.common.cache.data.bonus.BaseBonus> bonuses = (List<com.dgphoenix.casino.common.cache.data.bonus.BaseBonus>) entry.getValue();
                     bonuses.sort(Comparator.comparingLong(com.dgphoenix.casino.common.cache.data.bonus.BaseBonus::getTimeAwarded));
-                    List<com.dgphoenix.casino.actions.api.bonus.response.BaseBonus> jsonBonuses = new ArrayList<>();
+                    List<com.abs.casino.actions.api.bonus.response.BaseBonus> jsonBonuses = new ArrayList<>();
                     for (com.dgphoenix.casino.common.cache.data.bonus.BaseBonus bonus : bonuses) {
                         if (bonus instanceof com.dgphoenix.casino.common.cache.data.bonus.Bonus) {
                             jsonBonuses.add(new Bonus((com.dgphoenix.casino.common.cache.data.bonus.Bonus) bonus, form));

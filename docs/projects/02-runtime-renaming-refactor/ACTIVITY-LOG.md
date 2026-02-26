@@ -1801,3 +1801,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `1`.
   - global tracked source declarations/files now `2115` remaining (`2277` baseline, `162` reduced).
+
+## 2026-02-26 18:10 UTC (Hard-Cut M2 Wave 91)
+- Executed hard-cut namespace batch for `actions/api/bonus/response` package family.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/BaseBonus.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/Bonus.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/FRBonus.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/JSONResponse.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/AbstractBonusAction.java`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.bonus.response` package declarations to `com.abs` for four response classes.
+  - updated dependent import in `AbstractBonusAction` to `com.abs...JSONResponse`.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-180634-hardcut-m2-wave91-bonus-response-batch/`
+- Outcome:
+  - wave scope legacy refs reduced from `6` to `0`, `com.abs` refs now `6`.
+  - global tracked source declarations/files now `2111` remaining (`2277` baseline, `166` reduced).

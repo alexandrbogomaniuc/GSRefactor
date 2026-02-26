@@ -1,0 +1,6 @@
+wave=W91-bonus-response-batch
+status=PASS
+legacy_pre=6
+legacy_post=0
+abs_post=6
+validation=9/9

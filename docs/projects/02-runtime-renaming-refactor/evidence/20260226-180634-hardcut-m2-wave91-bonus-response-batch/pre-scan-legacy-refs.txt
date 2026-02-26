@@ -1,0 +1,6 @@
+1:package com.dgphoenix.casino.actions.api.bonus.response;
+1:package com.dgphoenix.casino.actions.api.bonus.response;
+1:package com.dgphoenix.casino.actions.api.bonus.response;
+1:package com.dgphoenix.casino.actions.api.bonus.response;
+33:                    List<com.dgphoenix.casino.actions.api.bonus.response.BaseBonus> jsonBonuses = new ArrayList<>();
+4:import com.dgphoenix.casino.actions.api.bonus.response.JSONResponse;
