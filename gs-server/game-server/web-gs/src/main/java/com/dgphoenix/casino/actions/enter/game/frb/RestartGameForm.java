@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.enter.game.frb;
+package com.abs.casino.actions.enter.game.frb;
 
 
 import org.apache.struts.action.ActionForm;

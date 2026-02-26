@@ -1,4 +1,6 @@
-package com.dgphoenix.casino.actions.enter.game.cwv3;
+package com.abs.casino.actions.enter.game.cwv3;
+
+import com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameForm;
 
 /**
  * Backward-compatible CW start form that accepts legacy `sessionId`
@@ -11,4 +13,3 @@ public class CWStartGameBySessionForm extends CWStartGameForm {
         return "sessionId";
     }
 }
-

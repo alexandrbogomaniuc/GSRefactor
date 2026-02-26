@@ -2094,3 +2094,18 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - scoped declaration migrations: `20`.
   - global tracked source declarations/files now `1873` remaining (`2277` baseline, `404` reduced).
+
+## 2026-02-26 22:45 UTC (Hard-Cut M2 Wave 118A + 119, stabilized)
+- Executed batched-safe hard-cut cycle from in-progress W118 checkpoint:
+  - `W118A`: migrated 10 enter/start-game declaration packages to `com.abs`.
+  - `W118B`: not retained after explorer risk check (login/helper overlap cluster).
+  - `W119`: integrated retained A-only rewires and validated.
+- Validation:
+  - fast gate initial package run failed on missing base-class imports in `CommonBonusStartGameForm` and `CWStartGameBySessionForm`; bounded import fixes applied.
+  - fast gate rerun2 passed; full 9-step matrix passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-223528-hardcut-m2-wave118ab-wave119-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/120-hard-cut-m2-wave118a-wave119-stabilized-report-20260226.md`
+- Outcome:
+  - net retained declaration migrations: `10`.
+  - global tracked source declarations/files now `1863` remaining (`2277` baseline, `414` reduced).

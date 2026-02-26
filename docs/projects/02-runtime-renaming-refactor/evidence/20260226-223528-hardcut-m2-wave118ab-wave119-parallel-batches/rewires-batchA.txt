@@ -1,0 +1,4 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/BonusStartGameRequest.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/CommonBSStartGameForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/CommonFRBStartGameForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/serializers/BonusSerializeLoginForm.java

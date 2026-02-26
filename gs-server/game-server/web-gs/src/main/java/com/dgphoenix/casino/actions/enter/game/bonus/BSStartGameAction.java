@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.enter.game.bonus;
+package com.abs.casino.actions.enter.game.bonus;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.actions.enter.LanguageDetector;
