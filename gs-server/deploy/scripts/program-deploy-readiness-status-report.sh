@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 CHECKLIST_JSON="${ROOT}/gs-server/game-server/web-gs/src/main/webapp/support/data/modernization-checklist.json"
 OUT_DIR="${ROOT}/docs/release-readiness"
 VERIFY_REPORT=""

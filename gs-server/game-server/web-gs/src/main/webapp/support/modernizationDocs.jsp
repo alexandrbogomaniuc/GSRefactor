@@ -22,7 +22,7 @@
     <h2>GS Modernization Docs Index</h2>
     <p class="small-note">
         Quick operator index for modernization plans, phase outputs, and runtime evidence artifacts.
-        All paths are repository-relative under <code>/Users/alexb/Documents/Dev/Dev_new</code>.
+        All paths are repository-relative under <code>$REPO_ROOT</code>.
     </p>
 
     <div class="section">

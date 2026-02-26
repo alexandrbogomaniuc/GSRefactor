@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology"
-DRY_RUN="false"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+OUT_DIR="${ROOT}/docs/validation/legacy-mixed-topology"
+DRY_RUN="false"
 if [[ -f "${SCRIPT_DIR}/lib/cluster-hosts.sh" ]]; then
   # shellcheck source=/dev/null
   source "${SCRIPT_DIR}/lib/cluster-hosts.sh"

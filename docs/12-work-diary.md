@@ -6158,3 +6158,20 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-083232/`
 - Result: runtime warning noise reduced without breaking launch path.
 - Next step: commit/push this runtime-noise reduction patch and continue closure sweep.
+
+### 2026-02-26 08:38 UTC
+- Continued portability hardening wave in `Dev_new` for cross-machine execution.
+- Removed machine-specific absolute-path coupling from high-use readiness scripts:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/program-deploy-readiness-status-report.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/legacy-mixed-topology-validation-pack.sh`
+- Updated support operator docs to avoid local path lock-in and use shell variables (`$REPO_ROOT`, `$LEGACY_ROOT`):
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+- Validation:
+  - `phase5-6-local-verification-suite.sh --help` PASS
+  - `program-deploy-readiness-status-report.sh --help` PASS
+  - `legacy-mixed-topology-validation-pack.sh --help` PASS
+  - `rg '/Users/alexb'` across edited files => no matches
+- Result: high-use readiness/runbook flows no longer hardcode local-machine absolute paths.
+- Next step: commit/push this portability batch, then continue secondary backlog path cleanup in phase/support tooling.

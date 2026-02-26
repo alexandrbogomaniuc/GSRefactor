@@ -64,3 +64,14 @@ Project: Post-Project Audit
 - Validation evidence:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/cassandra-jmx-diagnosis-noise-reduction-validation-20260226-083232.md`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-083232/`
+
+## 2026-02-26 08:38 UTC
+- Portability cleanup wave (runtime-facing artifacts): removed `/Users/alexb/...` hardcoding from main readiness scripts and support runbook/docs.
+- Updated scripts:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/program-deploy-readiness-status-report.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/legacy-mixed-topology-validation-pack.sh`
+- Updated support pages:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
+- Validation: command help checks passed; edited files contain no `/Users/alexb` literals.

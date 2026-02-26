@@ -27,16 +27,20 @@
     <div class="section">
         <h4>Prerequisites</h4>
         <ul>
-            <li>Work from <code>/Users/alexb/Documents/Dev/Dev_new</code>.</li>
+            <li>Work from <code>$REPO_ROOT</code>.</li>
             <li>Use bank canary <code>6275</code> for refactor checks.</li>
-            <li>Do not modify legacy stack in <code>/Users/alexb/Documents/Dev</code>.</li>
+            <li>Do not modify legacy stack in <code>$LEGACY_ROOT</code>.</li>
         </ul>
+        <pre><code># Set once in your shell before running commands from this page
+export REPO_ROOT=/absolute/path/to/Dev_new
+export LEGACY_ROOT=/absolute/path/to/legacy-root
+</code></pre>
     </div>
 
     <div class="section">
         <h4>Post-Change Local Verification (Required Before/After Feature Batches)</h4>
-        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh
+        <pre><code>cd $REPO_ROOT
+$REPO_ROOT/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh
 </code></pre>
         <p class="small-note">
             Generates offline verification report (syntax/help/config/manifest checks + executable local behavior smoke) under
@@ -46,8 +50,8 @@
 
     <div class="section">
         <h4>Program Deploy / Cutover Readiness Aggregation (Before Refactor Deploy/Canary)</h4>
-        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
-bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/program-deploy-readiness-status-report.sh
+        <pre><code>cd $REPO_ROOT
+bash $REPO_ROOT/gs-server/deploy/scripts/program-deploy-readiness-status-report.sh
 </code></pre>
         <p class="small-note">
             Aggregates latest Phase 4/5/6 status reports, Phase 7 Cassandra rehearsal result, legacy parity baseline status, security hardening status, and the latest local verification suite result into a single blocker list under <code>docs/release-readiness/</code>.
@@ -56,12 +60,12 @@ bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/program-deploy-
 
     <div class="section">
         <h4>Refactor Environment Deploy (All Dependencies, Externalized Config)</h4>
-        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
+        <pre><code>cd $REPO_ROOT
 # Edit centralized hosts/ports only:
-vi /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/cluster-hosts.properties
+vi $REPO_ROOT/gs-server/deploy/config/cluster-hosts.properties
 
 # Sync generated env/resources
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/sync-cluster-hosts.sh
+$REPO_ROOT/gs-server/deploy/scripts/sync-cluster-hosts.sh
 
 # Follow the full deploy/reboot runbook (ordered dependencies, c1-refactor switch, health checks):
 docs/168-refactor-environment-deploy-and-dependency-startup-runbook-20260224-141500.md
@@ -73,12 +77,12 @@ docs/168-refactor-environment-deploy-and-dependency-startup-runbook-20260224-141
 
     <div class="section">
         <h4>Legacy Mixed-Topology Validation Pack (Refactored GS + Legacy MP/Client)</h4>
-        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
+        <pre><code>cd $REPO_ROOT
 # Dry-run checklist + report template (no runtime calls):
-bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/legacy-mixed-topology-validation-pack.sh --dry-run true
+bash $REPO_ROOT/gs-server/deploy/scripts/legacy-mixed-topology-validation-pack.sh --dry-run true
 
 # Runtime preflight (HTTP reachability checks + operator checklist report):
-bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/legacy-mixed-topology-validation-pack.sh \
+bash $REPO_ROOT/gs-server/deploy/scripts/legacy-mixed-topology-validation-pack.sh \
   --refactor-gs-url http://127.0.0.1:18081 \
   --legacy-mp-url http://127.0.0.1:8088 \
   --legacy-client-url http://127.0.0.1:8090 \
@@ -92,14 +96,14 @@ bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/legacy-mixed-to
 
     <div class="section">
         <h4>Phase 8 Wave 3 Discrepancy Snapshot Export (Optional, Compare Mode Diagnostics)</h4>
-        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
+        <pre><code>cd $REPO_ROOT
 # After running GS with compare mode enabled in a non-prod environment:
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-export.sh \
+$REPO_ROOT/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-export.sh \
   --log-file /path/to/gs.log \
   --out-file /tmp/phase8-wave3-discrepancy-export.json
 
 # Parser smoke (offline, no GS runtime required):
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-export-smoke.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-export-smoke.sh
 </code></pre>
         <p class="small-note">
             Parses <code>phase8-precision-dual-calc</code> snapshot log lines emitted by Wave 3 parity hooks into a structured JSON summary.
@@ -165,16 +169,16 @@ bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/legacy-mixed-to
 
     <div class="section">
         <h4>Phase 4 Protocol Adapter Runtime Check</h4>
-        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-runtime-readiness-check.sh
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-security-logic-smoke.sh
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-runtime-evidence-pack.sh \
+        <pre><code>cd $REPO_ROOT
+$REPO_ROOT/gs-server/deploy/scripts/phase4-runtime-readiness-check.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase4-protocol-security-logic-smoke.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase4-protocol-runtime-evidence-pack.sh \
   --bank-id 6275 \
   --transport host \
   --base-url http://127.0.0.1:18078 \
   --gs-base-url http://127.0.0.1:18081
 # Optional runtime JSON security probe (requires non-prod HMAC secret configured in protocol-adapter):
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-json-security-canary-probe.sh \
+$REPO_ROOT/gs-server/deploy/scripts/phase4-protocol-json-security-canary-probe.sh \
   --bank-id 6275 \
   --base-url http://127.0.0.1:18078 \
   --hmac-secret <non-prod-test-secret>
@@ -195,9 +199,9 @@ bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/legacy-mixed-to
 
     <div class="section">
         <h4>Phase 5 Gameplay + Redis Runtime Check</h4>
-        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-runtime-readiness-check.sh
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-gameplay-runtime-evidence-pack.sh \
+        <pre><code>cd $REPO_ROOT
+$REPO_ROOT/gs-server/deploy/scripts/phase5-runtime-readiness-check.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase5-gameplay-runtime-evidence-pack.sh \
   --bank-id 6275 \
   --transport host \
   --gs-base-url http://127.0.0.1:18081 \
@@ -214,9 +218,9 @@ bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/legacy-mixed-to
 
     <div class="section">
         <h4>Phase 5 Wallet Adapter Runtime Check</h4>
-        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-runtime-readiness-check.sh
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-runtime-evidence-pack.sh \
+        <pre><code>cd $REPO_ROOT
+$REPO_ROOT/gs-server/deploy/scripts/phase5-wallet-runtime-readiness-check.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase5-wallet-runtime-evidence-pack.sh \
   --bank-id 6275 \
   --transport host \
   --gs-base-url http://127.0.0.1:18081 \
@@ -232,9 +236,9 @@ bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/legacy-mixed-to
 
     <div class="section">
         <h4>Phase 5 Bonus/FRB Runtime Check</h4>
-        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-bonus-frb-runtime-readiness-check.sh
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-bonus-frb-runtime-evidence-pack.sh \
+        <pre><code>cd $REPO_ROOT
+$REPO_ROOT/gs-server/deploy/scripts/phase5-bonus-frb-runtime-readiness-check.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase5-bonus-frb-runtime-evidence-pack.sh \
   --bank-id 6275 \
   --transport host \
   --bonus-base-url http://127.0.0.1:18076
@@ -249,9 +253,9 @@ bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/legacy-mixed-to
 
     <div class="section">
         <h4>Phase 5 History Runtime Check</h4>
-        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-history-runtime-readiness-check.sh
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-history-runtime-evidence-pack.sh \
+        <pre><code>cd $REPO_ROOT
+$REPO_ROOT/gs-server/deploy/scripts/phase5-history-runtime-readiness-check.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase5-history-runtime-evidence-pack.sh \
   --bank-id 6275 \
   --transport host \
   --history-base-url http://127.0.0.1:18077
@@ -273,14 +277,14 @@ bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/legacy-mixed-to
         <p class="small-note">
             Default GS and multiplayer endpoints for these scripts now come from <code>cluster-hosts.properties</code> (external host keys); command flags can still override them.
         </p>
-        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-runtime-readiness-check.sh
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-routing-policy-probe.sh \
+        <pre><code>cd $REPO_ROOT
+$REPO_ROOT/gs-server/deploy/scripts/phase6-multiplayer-runtime-readiness-check.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase6-multiplayer-routing-policy-probe.sh \
   --bank-id 6275 \
   --game-id 838 \
   --transport host \
   --multiplayer-base-url http://127.0.0.1:18079
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase6-multiplayer-runtime-evidence-pack.sh \
+$REPO_ROOT/gs-server/deploy/scripts/phase6-multiplayer-runtime-evidence-pack.sh \
   --bank-id 6275 \
   --game-id 838 \
   --transport host \
@@ -296,24 +300,24 @@ bash /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/legacy-mixed-to
 
     <div class="section">
         <h4>Phase 8 Precision / Min-Bet Audit Scan (GS-only)</h4>
-        <pre><code>cd /Users/alexb/Documents/Dev/Dev_new
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-minbet-audit-scan.sh
+        <pre><code>cd $REPO_ROOT
+$REPO_ROOT/gs-server/deploy/scripts/phase8-precision-minbet-audit-scan.sh
 # Optional deterministic vector smoke (0.001 / line-total exactness):
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-regression-vector-smoke.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase8-precision-regression-vector-smoke.sh
 # Wave 1 (reporting/display) deterministic cent/thousandth rounding vectors:
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave1-reporting-vector-smoke.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase8-precision-wave1-reporting-vector-smoke.sh
 # Wave 1 NumberUtils.asMoney parity (legacy Math.round semantics guard):
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave1-numberutils-asmoney-parity-smoke.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase8-precision-wave1-numberutils-asmoney-parity-smoke.sh
 # Wave 2 (game settings / coin rules) line-based normalization + nearest-coin vectors:
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave2-settings-coinrule-vector-smoke.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase8-precision-wave2-settings-coinrule-vector-smoke.sh
 # Bucketed remediation planning report (safe wave order from audit hotspots):
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-remediation-buckets.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase8-precision-remediation-buckets.sh
 # Final non-prod canary close path (auto-closes Phase 8 if runtime evidence passes):
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-nonprod-canary-run.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase8-precision-nonprod-canary-run.sh
 # Manual closure only (after runtime canary evidence exists):
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-close-after-canary.sh
+$REPO_ROOT/gs-server/deploy/scripts/phase8-precision-close-after-canary.sh
 # Then sync dashboard embedded data if checklist/evidence changed:
-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/sync-modernization-dashboard-embedded-data.sh
+$REPO_ROOT/gs-server/deploy/scripts/sync-modernization-dashboard-embedded-data.sh
 </code></pre>
         <p class="small-note">
             Output reports: <code>docs/phase8/precision/phase8-precision-minbet-audit-*.md</code>
