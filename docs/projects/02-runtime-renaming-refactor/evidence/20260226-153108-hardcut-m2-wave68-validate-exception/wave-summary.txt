@@ -1,0 +1,7 @@
+wave=W68-validate-exception
+status=PASS
+pre_legacy=1
+post_legacy=0
+post_abs=1
+validation=9/9 PASS
+notes=Validation script path corrected; code change unaffected.

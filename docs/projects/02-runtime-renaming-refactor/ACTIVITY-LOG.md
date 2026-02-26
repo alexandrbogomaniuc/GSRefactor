@@ -1417,3 +1417,17 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `1`.
   - global tracked source declarations now `2137` remaining (`2277` baseline, `140` reduced).
+
+## 2026-02-26 15:37 UTC (Hard-Cut M2 Wave 68)
+- Executed hard-cut namespace wave for `ValidateException`.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/ValidateException.java`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.ValidateException` to `com.abs.casino.actions.api.ValidateException`.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-153108-hardcut-m2-wave68-validate-exception/`
+- Outcome:
+  - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `1`.
+  - global tracked source declarations now `2136` remaining (`2277` baseline, `141` reduced).

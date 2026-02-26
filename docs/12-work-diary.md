@@ -6949,3 +6949,13 @@
   - migrated API exception package to `com.abs` and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 68 with next low-fanout API request/entity declaration.
+
+### 2026-02-26 15:37 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 68 (`ValidateException`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-153108-hardcut-m2-wave68-validate-exception/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/80-hard-cut-m2-wave68-validate-exception-report-20260226.md`
+- Result:
+  - migrated API exception package to `com.abs` and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 69 with next low-fanout API declaration.
