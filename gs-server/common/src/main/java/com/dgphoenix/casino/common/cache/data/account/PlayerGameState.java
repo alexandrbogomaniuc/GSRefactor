@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data.account;
+package com.abs.casino.common.cache.data.account;
 
 /**
  * @author <a href="mailto:fateyev@dgphoenix.com">Anton Fateyev</a>

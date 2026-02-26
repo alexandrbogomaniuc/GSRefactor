@@ -711,3 +711,25 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-103948-hardcut-m2-wave21-account-constants-player-action`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/33-hard-cut-m2-wave21-account-constants-player-action-report-20260226.md`
+
+## 2026-02-26 10:45 UTC (M2 Wave 22 - Isolated Account/Payment Models Completed)
+- Migrated namespace declarations:
+  - `ExtendedAccountInfo` -> `com.abs.casino.common.cache.data.account.ExtendedAccountInfo`
+  - `PlayerGameError` -> `com.abs.casino.common.cache.data.account.PlayerGameError`
+  - `PlayerGameState` -> `com.abs.casino.common.cache.data.account.PlayerGameState`
+  - `GameSessionInfoContainer` -> `com.abs.casino.common.cache.data.payment.GameSessionInfoContainer`
+  - `ListOfLongsContainer` -> `com.abs.casino.common.cache.data.payment.ListOfLongsContainer`
+  - `LongValueContainer` -> `com.abs.casino.common.cache.data.payment.LongValueContainer`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/ExtendedAccountInfo.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameError.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameState.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/GameSessionInfoContainer.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/ListOfLongsContainer.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/LongValueContainer.java`
+- Post-scan result: legacy declarations `0`, abs declarations `6` (scope files).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-104418-hardcut-m2-wave22-isolated-models`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/34-hard-cut-m2-wave22-isolated-models-report-20260226.md`

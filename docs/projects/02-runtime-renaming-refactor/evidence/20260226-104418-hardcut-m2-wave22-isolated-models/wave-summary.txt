@@ -1,0 +1,26 @@
+timestamp_utc=2026-02-26T10:45:32Z
+pre_scan_legacy_declarations=6
+post_scan_legacy_declarations=0
+post_scan_abs_declarations=6
+validation_success_commands=9
+validation_failed_commands=0
+
+scope=
+- ExtendedAccountInfo
+- PlayerGameError
+- PlayerGameState
+- GameSessionInfoContainer
+- ListOfLongsContainer
+- LongValueContainer
+- package declaration migrations only
+
+validation_set=
+- common install
+- common-wallet test
+- sb-utils test
+- promo persisters install
+- common persisters install
+- cassandra cache test
+- web-gs package
+- mp core/persistance package
+- runtime smoke
