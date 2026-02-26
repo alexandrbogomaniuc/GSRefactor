@@ -20,7 +20,7 @@ import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusNotification;
-import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin;
+import com.abs.casino.common.cache.data.payment.frb.IFRBonusWin;
 import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
@@ -470,7 +470,7 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         }
         final ITransactionData ITransactionData = SessionHelper.getInstance().getTransactionData();
         if (GameMode.REAL == mode) {//do not start the same frb game if win in tracking
-            FRBonusWin frbonusWin = ITransactionData.getFrbWin();
+            IFRBonusWin frbonusWin = ITransactionData.getFrbWin();
             FRBonusManager.getInstance().checkPendingOperation(frbonusWin, accountInfo, gameId);
         }
         FRBonusNotification frbonusNotification = ITransactionData.getFrbNotification();

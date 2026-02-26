@@ -27,7 +27,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static com.dgphoenix.casino.cassandra.KeyspaceConfiguration.PROTOCOL_VERSION;
 import static com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.*;
 import static com.dgphoenix.casino.common.util.FastKryoHelper.*;
 
@@ -37,6 +36,8 @@ import static com.dgphoenix.casino.common.util.FastKryoHelper.*;
  */
 public class BasicTransactionDataStorageHelper implements ITransactionDataStorageHelper {
     private static final Logger LOG = LogManager.getLogger(BasicTransactionDataStorageHelper.class);
+    private static final com.datastax.driver.core.ProtocolVersion SERIALIZE_PROTOCOL_VERSION =
+            com.datastax.driver.core.ProtocolVersion.NEWEST_SUPPORTED;
     private static final AtomicLong matchedLockerCount = new AtomicLong();
     private static final AtomicLong misMatchedLockerCount = new AtomicLong();
     private final Map<String, ITDFieldSerializeHelper> helpers = ImmutableMap.<String, ITDFieldSerializeHelper>builder().
@@ -237,12 +238,12 @@ public class BasicTransactionDataStorageHelper implements ITransactionDataStorag
 
         @Override
         public ByteBuffer serialize(Object o) {
-            return getObjectTypeCodec().serialize(o, PROTOCOL_VERSION);
+            return getObjectTypeCodec().serialize(o, SERIALIZE_PROTOCOL_VERSION);
         }
 
         @Override
         public T deserialize(ByteBuffer buffer) {
-            return buffer == null ? null : (T) getObjectTypeCodec().deserialize(buffer, PROTOCOL_VERSION);
+            return buffer == null ? null : (T) getObjectTypeCodec().deserialize(buffer, SERIALIZE_PROTOCOL_VERSION);
         }
 
         private com.datastax.driver.core.TypeCodec<Object> getObjectTypeCodec() {

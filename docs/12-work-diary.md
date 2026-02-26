@@ -6617,3 +6617,14 @@
   - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/46-hard-cut-m2-wave34-common-fr-bonus-win-report-20260226.md`
+
+### 2026-02-26 12:17 UTC
+- Completed Project 02 M2 Wave 35 for `ServerOnlineStatus` namespace migration.
+- Migrated enum package declaration to `com.abs` and updated dependent imports in load balancer + server-status watcher classes.
+- During validation, fixed compile-time type alignment in web-gs/common-gs introduced by earlier hard-cut progress (no business-logic behavior change).
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-121044-hardcut-m2-wave35-server-online-status`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/47-hard-cut-m2-wave35-server-online-status-report-20260226.md`

@@ -9,7 +9,7 @@ import com.dgphoenix.casino.cassandra.persist.CassandraMassAwardRestrictionPersi
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.MassAwardCache;
 import com.dgphoenix.casino.common.cache.data.bonus.*;
-import com.dgphoenix.casino.common.cache.data.bonus.restriction.MassAwardRestriction;
+import com.abs.casino.common.cache.data.bonus.restriction.MassAwardRestriction;
 import com.dgphoenix.casino.common.exception.BonusException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.lock.LockingInfo;

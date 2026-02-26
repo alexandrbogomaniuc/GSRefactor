@@ -929,3 +929,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-115923-hardcut-m2-wave34-common-fr-bonus-win`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/46-hard-cut-m2-wave34-common-fr-bonus-win-report-20260226.md`
+
+## 2026-02-26 12:17 UTC (M2 Wave 35 - ServerOnlineStatus Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.server.ServerOnlineStatus` -> `com.abs.casino.common.cache.data.server.ServerOnlineStatus`
+- Changed target files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/server/ServerOnlineStatus.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LoadBalancerCache.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/NotifyOnServerStatusesUpdatedRequest.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/status/WatchServersThreadSlave.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/status/WatchServersThreadMaster.java`
+- Compatibility corrections applied to keep validation matrix green:
+  - web-gs start action type-alignment (`BaseStartGameAction` in both action packages)
+  - common-gs type alignment for restriction interfaces and protocol constant usage (`BasicTransactionDataStorageHelper`, `MassAwardBonusManager`, `NoAwardRestriction`, `PlayerBalanceRestriction`, `DBLink`, `FRBonusManager`)
+- Post-scan result: legacy refs `0`, abs refs `5`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-121044-hardcut-m2-wave35-server-online-status`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/47-hard-cut-m2-wave35-server-online-status-report-20260226.md`

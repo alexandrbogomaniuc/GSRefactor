@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data.server;
+package com.abs.casino.common.cache.data.server;
 
 public enum ServerOnlineStatus {
     ONLINE, UNAVAILABLE, REMOVED

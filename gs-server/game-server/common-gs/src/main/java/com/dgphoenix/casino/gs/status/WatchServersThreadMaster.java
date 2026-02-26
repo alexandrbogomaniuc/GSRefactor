@@ -3,7 +3,7 @@ package com.dgphoenix.casino.gs.status;
 import com.dgphoenix.casino.common.cache.LoadBalancerCache;
 import com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
 import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
-import com.dgphoenix.casino.common.cache.data.server.ServerOnlineStatus;
+import com.abs.casino.common.cache.data.server.ServerOnlineStatus;
 import com.dgphoenix.casino.gs.IGameServerStatusListener;
 import com.dgphoenix.casino.kafka.dto.NotifyOnServerStatusesUpdatedRequest;
 import com.dgphoenix.casino.kafka.service.KafkaMessageService;

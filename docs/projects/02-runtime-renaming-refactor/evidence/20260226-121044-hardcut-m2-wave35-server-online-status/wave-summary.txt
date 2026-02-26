@@ -1,0 +1,9 @@
+Wave: W35-server-online-status
+Date (UTC): 2026-02-26
+Status: COMPLETE
+
+Migrated:
+- com.dgphoenix.casino.common.cache.data.server.ServerOnlineStatus -> com.abs.casino.common.cache.data.server.ServerOnlineStatus
+
+Validation:
+- 9/9 required checks PASS.
