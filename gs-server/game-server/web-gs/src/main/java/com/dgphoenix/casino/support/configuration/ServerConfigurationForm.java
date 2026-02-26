@@ -176,7 +176,7 @@ public class ServerConfigurationForm extends ActionForm {
                 Class<?> type = null;
                 try {
                     String fieldName = uncapitalize(propertyName);
-                    type = Class.forName(GameServerConfigTemplate.class.getName()).getDeclaredField(fieldName).getType();
+                    type = GameServerConfigTemplate.class.getDeclaredField(fieldName).getType();
                     if (type.isPrimitive()) {
                         Object value = ServerConfigurationAction.getPrimitive(type, entry.getValue().toString());
                         if (fieldName.equals("freeBalance") && (Long) value < 1) {

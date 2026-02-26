@@ -91,3 +91,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - runtime string-based instantiation coverage increased for staged package rename compatibility.
 - Project 02 completion estimate: `45%`.
+
+## 2026-02-26 06:42 UTC (Mini-Wave M1.3)
+- Implemented the next manual runtime-safe rename mini-wave in support configuration form validation.
+- Changed file:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/configuration/ServerConfigurationForm.java`
+- Change detail:
+  - replaced `Class.forName(GameServerConfigTemplate.class.getName())...` with direct class literal access `GameServerConfigTemplate.class...`.
+- Validation PASS:
+  - `sb-utils` tests (`57` tests)
+  - promo/common install
+  - cache tests (`63` pass)
+  - web-gs package
+  - mp subset package
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-064238/`
+- Outcome:
+  - removed one additional reflection hotspot from rename-sensitive runtime path.
+  - Project 02 completion estimate updated to `50%`.
