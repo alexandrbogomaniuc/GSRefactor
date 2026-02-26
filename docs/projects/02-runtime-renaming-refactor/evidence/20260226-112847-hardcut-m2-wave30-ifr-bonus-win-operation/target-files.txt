@@ -1,0 +1,4 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/frb/IFRBonusWinOperation.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/frb/IFRBonusWin.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBWinOperation.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/frb/FRBRESTClient.java

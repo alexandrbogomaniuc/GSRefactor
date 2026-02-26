@@ -1,0 +1,9 @@
+Wave: W30-ifr-bonus-win-operation
+Date (UTC): 2026-02-26
+Status: COMPLETE
+
+Migrated:
+- com.dgphoenix.casino.common.cache.data.payment.frb.IFRBonusWinOperation -> com.abs.casino.common.cache.data.payment.frb.IFRBonusWinOperation
+
+Validation:
+- 9/9 required checks PASS.
