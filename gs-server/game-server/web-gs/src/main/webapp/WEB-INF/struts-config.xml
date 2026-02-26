@@ -393,7 +393,7 @@
         </action>
 
         <action path="/get_balance"
-                type="com.dgphoenix.casino.actions.api.GetBalanceAction" name="GetBalanceForm"
+                type="com.abs.casino.actions.api.GetBalanceAction" name="GetBalanceForm"
                 validate="true" input="/error_pages/error.jsp" scope="request">
         </action>
 
