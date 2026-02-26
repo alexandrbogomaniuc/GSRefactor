@@ -423,3 +423,24 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - Wave completed with runtime/package validation green and known non-wave baseline issues explicitly documented.
 - Report:
   - `docs/projects/02-runtime-renaming-refactor/14-hard-cut-m2-wave2-kryo-report-20260226.md`
+
+## 2026-02-26 09:36 UTC (M2 Wave 3 - Common REST Package)
+- Executed next hard-cut package migration wave for `common.rest` family.
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.rest` -> `com.abs.casino.common.rest`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/rest/CustomRestTemplate.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/rest/AddableHttpRequest.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/rest/CustomResponseErrorHandler.java`
+  - `gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClient.java`
+  - `gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CustomRESTCWClient.java`
+  - `gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/StandardJsonCWClient.java`
+  - `gs-server/common-wallet/src/test/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClientTest.java`
+- Post-scan result:
+  - legacy refs: `0`
+  - abs refs: `7`
+- Validation matrix: all 9 commands PASS (including runtime smoke).
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-093419-hardcut-m2-wave3-common-rest`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/15-hard-cut-m2-wave3-common-rest-report-20260226.md`

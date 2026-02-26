@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.rest;
+package com.abs.casino.common.rest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;

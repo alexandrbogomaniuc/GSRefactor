@@ -28,7 +28,7 @@ import com.dgphoenix.casino.common.client.canex.request.privateroom.PrivateRoom;
 import com.dgphoenix.casino.common.client.canex.request.privateroom.Status;
 import com.dgphoenix.casino.common.client.canex.response.CanexJsonResponse;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.rest.CustomRestTemplate;
+import com.abs.casino.common.rest.CustomRestTemplate;
 import com.dgphoenix.casino.common.util.xml.IXmlRequestResult;
 import com.dgphoenix.casino.common.util.xml.XmlRequestResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;

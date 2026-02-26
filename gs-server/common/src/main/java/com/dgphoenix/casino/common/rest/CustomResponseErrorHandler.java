@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.rest;
+package com.abs.casino.common.rest;
 
 import com.dgphoenix.casino.common.util.support.ExceptionInfo;
 import com.dgphoenix.casino.common.util.web.HttpRequestContextHolder;

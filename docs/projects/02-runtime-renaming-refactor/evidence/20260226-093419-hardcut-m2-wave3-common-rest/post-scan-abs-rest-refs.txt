@@ -1,0 +1,7 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/rest/CustomRestTemplate.java:1:package com.abs.casino.common.rest;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/rest/AddableHttpRequest.java:1:package com.abs.casino.common.rest;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/rest/CustomResponseErrorHandler.java:1:package com.abs.casino.common.rest;
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CustomRESTCWClient.java:11:import com.abs.casino.common.rest.CustomRestTemplate;
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClient.java:31:import com.abs.casino.common.rest.CustomRestTemplate;
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/StandardJsonCWClient.java:4:import com.abs.casino.common.rest.CustomRestTemplate;
+gs-server/common-wallet/src/test/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClientTest.java:6:import com.abs.casino.common.rest.CustomRestTemplate;

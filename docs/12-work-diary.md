@@ -6276,3 +6276,14 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/14-hard-cut-m2-wave2-kryo-report-20260226.md`
 - Verified post-scan shows zero remaining legacy `com.dgphoenix.casino.tools.kryo` refs.
 - Runtime smoke and packaging checks are green; non-wave baseline test issues are captured in evidence for follow-up.
+
+### 2026-02-26 09:36 UTC
+- Continued Project 02 hard-cut migration with M2 Wave 3 (`common.rest` namespace family).
+- Migrated 3 package declarations in `common` and 4 import consumers in `common-wallet` (main+test).
+- Verification summary:
+  - legacy `com.dgphoenix.casino.common.rest` refs after wave: `0`
+  - `com.abs.casino.common.rest` refs after wave: `7`
+  - validation matrix and runtime smoke: PASS.
+- Evidence package:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-093419-hardcut-m2-wave3-common-rest`
+- Next: commit/push wave and continue with M2 Wave 4.

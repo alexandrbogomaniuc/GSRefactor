@@ -1,0 +1,22 @@
+timestamp_utc=2026-02-26T09:36:03Z
+pre_scan_lines=7
+post_scan_legacy_rest_refs=0
+post_scan_abs_rest_refs=7
+validation_success_commands=9
+validation_failed_commands=0
+
+scope=
+- com.dgphoenix.casino.common.rest -> com.abs.casino.common.rest
+- package declarations in common module
+- imports in common-wallet main/test clients
+
+validation_set=
+- common install
+- common-wallet test
+- sb-utils test
+- promo persisters install
+- common persisters install
+- cassandra cache test
+- web-gs package
+- mp core/persistance package
+- runtime smoke
