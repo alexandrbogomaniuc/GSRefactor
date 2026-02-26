@@ -1787,3 +1787,17 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `3` to `0`, `com.abs` refs now `4`.
   - global tracked source declarations/files now `2116` remaining (`2277` baseline, `161` reduced).
+
+## 2026-02-26 18:05 UTC (Hard-Cut M2 Wave 90)
+- Executed hard-cut namespace wave for `APIResponseBuilder`.
+- Changed file:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/APIResponseBuilder.java`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.response.APIResponseBuilder` to `com.abs.casino.actions.api.response.APIResponseBuilder`.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-180231-hardcut-m2-wave90-api-response-builder/`
+- Outcome:
+  - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `1`.
+  - global tracked source declarations/files now `2115` remaining (`2277` baseline, `162` reduced).

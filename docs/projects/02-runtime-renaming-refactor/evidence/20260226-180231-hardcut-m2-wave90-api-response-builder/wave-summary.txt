@@ -1,0 +1,6 @@
+wave=W90-api-response-builder
+status=PASS
+legacy_pre=1
+legacy_post=0
+abs_post=1
+validation=9/9
