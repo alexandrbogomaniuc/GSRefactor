@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.tools.kryo.generator;
 
-import com.dgphoenix.casino.tools.annotations.Preset;
+import com.abs.casino.tools.annotations.Preset;
 
 import java.lang.annotation.Annotation;
 import java.util.Arrays;

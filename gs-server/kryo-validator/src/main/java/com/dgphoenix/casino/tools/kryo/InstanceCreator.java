@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.tools.kryo;
 
-import com.dgphoenix.casino.tools.annotations.IgnoreValidation;
-import com.dgphoenix.casino.tools.annotations.Transient;
+import com.abs.casino.tools.annotations.IgnoreValidation;
+import com.abs.casino.tools.annotations.Transient;
 import com.dgphoenix.casino.tools.kryo.generator.DataGenerator;
 import com.dgphoenix.casino.tools.kryo.generator.RandomValueGenerator;
 

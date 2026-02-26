@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.tools.annotations;
+package com.abs.casino.tools.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

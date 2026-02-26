@@ -1,0 +1,9 @@
+Command:
+mvn -q -DskipTests install -pl annotations,utils,sb-utils,common -am
+
+Result:
+[ERROR] [ERROR] Project 'com.dgphoenix.casino:gsn-common-gs:1.0' is duplicated in the reactor @
+[ERROR] Project 'com.dgphoenix.casino:gsn-common-gs:1.0' is duplicated in the reactor -> [Help 1]
+
+Decision:
+Use proven per-module verification matrix commands instead of this selector for M1 validation.

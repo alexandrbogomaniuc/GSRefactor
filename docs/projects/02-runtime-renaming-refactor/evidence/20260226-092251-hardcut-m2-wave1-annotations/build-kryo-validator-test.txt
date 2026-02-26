@@ -1,0 +1,43 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino.tools:kryo-validator >--------------
+[INFO] Building kryo-validator 2.9.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ kryo-validator ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ kryo-validator ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 32 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/target/classes
+[INFO] /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/InstanceCreator.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/InstanceCreator.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ kryo-validator ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:testCompile (default-testCompile) @ kryo-validator ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 16 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ kryo-validator ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.dgphoenix.casino.tools.kryo.KryoSerializationValidatorTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.247 sec - in com.dgphoenix.casino.tools.kryo.KryoSerializationValidatorTest
+
+Results :
+
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.863 s
+[INFO] Finished at: 2026-02-26T09:24:09Z
+[INFO] ------------------------------------------------------------------------

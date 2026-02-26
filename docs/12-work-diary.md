@@ -6253,3 +6253,18 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/11-hard-cut-m0-baseline-lock-report-20260226.md`
 - Baseline confirms legacy namespace still dominant in source/build/runtime; this is now frozen as before-state for controlled migration.
 - Next: begin M1 build-coordinate transition prep with isolated commits and full validation after each wave.
+
+### 2026-02-26 09:19-09:22 UTC
+- Completed M1 build-coordinate prep for hard-cut Project 02.
+- Added evidence pack and report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-091920-hardcut-m1-coordinate-prep/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/12-hard-cut-m1-coordinate-prep-report-20260226.md`
+- Result: coordinate dependency map is now explicit, core matrix builds are green, and migration order is confirmed (package waves first, coordinate hard-cut later).
+
+### 2026-02-26 09:22-09:26 UTC
+- Completed first real hard-cut rename wave (M2-W1) on annotation package/imports only.
+- Evidence/report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-092251-hardcut-m2-wave1-annotations/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/13-hard-cut-m2-wave1-annotations-report-20260226.md`
+- Validation matrix passed after sequential rerun of dependent commands.
+- Result: low-risk namespace migration is confirmed working with no runtime logic changes.

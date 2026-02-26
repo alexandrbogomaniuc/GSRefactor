@@ -369,3 +369,37 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - M0 gate is complete and reproducible.
   - Next gate is M1 (build-coordinate transition prep) under strict guarded waves.
+
+## 2026-02-26 09:19 UTC (M1 Build-Coordinate Prep Completed)
+- Created M1 evidence pack:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-091920-hardcut-m1-coordinate-prep/`
+- Mapped legacy coordinate usage in poms:
+  - GS hits: `57`
+  - MP hits: `40`
+- Confirmed MP bridge dependencies still tied to legacy GS coordinate namespace:
+  - `com.dgphoenix.casino:gsn-cache-restricted`
+  - `com.dgphoenix.casino:utils-restricted`
+  - `com.dgphoenix.casino.tools:kryo-validator`
+- Build probe note:
+  - broad selector command hit duplicate reactor project identity (`gsn-common-gs`), so validation switched to proven per-module matrix.
+- Validation matrix status: PASS (all `BUILD SUCCESS`), evidence files captured in pack.
+- M1 report added:
+  - `docs/projects/02-runtime-renaming-refactor/12-hard-cut-m1-coordinate-prep-report-20260226.md`
+- Decision:
+  - keep legacy coordinate bridge during package migration waves, postpone coordinate hard-cut to dedicated late wave to avoid MP breakage.
+
+## 2026-02-26 09:22 UTC (M2 Wave 1 - Annotations Package)
+- Executed first package migration wave with low-risk scope only:
+  - `com.dgphoenix.casino.tools.annotations` -> `com.abs.casino.tools.annotations`
+- Changed 17 source/test files + 3 annotation package declarations.
+- Created wave evidence pack:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-092251-hardcut-m2-wave1-annotations/`
+- Verification outcome:
+  - legacy annotation package refs in `gs-server`: `0`
+  - new `com.abs` refs: `18`
+  - 6 validation commands completed with `BUILD SUCCESS`.
+- Note on execution safety:
+  - initial parallel run of `annotations install` and `kryo-validator test` caused temporary compile failure due dependency update race.
+  - reran sequentially; `kryo-validator` then passed.
+- Wave report added:
+  - `docs/projects/02-runtime-renaming-refactor/13-hard-cut-m2-wave1-annotations-report-20260226.md`

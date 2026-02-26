@@ -1,0 +1,6 @@
+timestamp_utc=2026-02-26T09:25:16Z
+pre_scan_total=18
+post_scan_total=18
+remaining_legacy_annotations_refs=0
+new_abs_annotations_refs=18
+build_success_files=6

@@ -1,0 +1,17 @@
+/Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/InstanceCreator.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/generator/StringGenerator.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/generator/EnumGenerator.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/MaxBalanceTournamentPromoTemplate.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/test/java/com/dgphoenix/casino/tools/kryo/custom/ClassWithCustomConstructor.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/test/java/com/dgphoenix/casino/tools/kryo/correct/SubClass.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/test/java/com/dgphoenix/casino/tools/kryo/correct/StatelessClass.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/test/java/com/dgphoenix/casino/tools/kryo/correct/CompositeEntity.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/test/java/com/dgphoenix/casino/tools/kryo/correct/SimpleEntity.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/test/java/com/dgphoenix/casino/tools/kryo/correct/PredefinedEntity.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/test/java/com/dgphoenix/casino/tools/kryo/correct/RootClass.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPromoTemplate.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/utils/src/main/java/com/dgphoenix/casino/common/feeds/FeedQueue.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/annotations/src/main/java/com/dgphoenix/casino/tools/annotations/Transient.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/annotations/src/main/java/com/dgphoenix/casino/tools/annotations/Preset.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/annotations/src/main/java/com/dgphoenix/casino/tools/annotations/IgnoreValidation.java

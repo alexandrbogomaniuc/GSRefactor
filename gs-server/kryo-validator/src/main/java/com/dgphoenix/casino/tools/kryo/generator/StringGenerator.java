@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.tools.kryo.generator;
 
-import com.dgphoenix.casino.tools.annotations.Preset;
+import com.abs.casino.tools.annotations.Preset;
 import org.apache.commons.math3.random.RandomDataGenerator;
 
 import java.lang.annotation.Annotation;

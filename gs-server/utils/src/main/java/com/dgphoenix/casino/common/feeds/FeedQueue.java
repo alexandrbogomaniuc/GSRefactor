@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.common.feeds;
 
 import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
-import com.dgphoenix.casino.tools.annotations.IgnoreValidation;
+import com.abs.casino.tools.annotations.IgnoreValidation;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
