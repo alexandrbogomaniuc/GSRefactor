@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.cache.bank.edit.actions.addbank;
+package com.abs.casino.support.cache.bank.edit.actions.addbank;
 
 import com.dgphoenix.casino.bgm.BaseGameHelper;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
@@ -14,8 +14,8 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
 import com.dgphoenix.casino.gs.persistance.remotecall.RefreshConfigCall;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
-import com.dgphoenix.casino.support.cache.bank.edit.forms.addBank.NewBankForm;
-import com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm;
+import com.abs.casino.support.cache.bank.edit.forms.addBank.NewBankForm;
+import com.abs.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;

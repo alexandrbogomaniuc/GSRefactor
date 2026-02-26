@@ -1,0 +1,17 @@
+Wave group: W108A + W109 integration validation (W108B reverted for compatibility)
+Date (UTC): 2026-02-26
+
+Declaration migration counts (batch scope):
+- Pre legacy declarations: 21
+- Post legacy declarations: 1
+- Post com.abs declarations: 20
+
+Global burndown:
+- Baseline: 2277
+- Remaining: 1956
+- Reduced: 321
+- Burndown completion: 14.097497%
+
+Validation:
+- Fast gate: PASS (rerun6 after bounded compatibility fixes)
+- Full 9-step matrix: PASS (9/9)

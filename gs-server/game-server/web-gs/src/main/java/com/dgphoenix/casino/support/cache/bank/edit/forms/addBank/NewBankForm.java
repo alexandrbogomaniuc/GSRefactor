@@ -1,6 +1,6 @@
-package com.dgphoenix.casino.support.cache.bank.edit.forms.addBank;
+package com.abs.casino.support.cache.bank.edit.forms.addBank;
 
-import com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm;
+import com.abs.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.util.LabelValueBean;

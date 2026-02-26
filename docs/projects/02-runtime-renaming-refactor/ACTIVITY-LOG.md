@@ -2013,3 +2013,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - scoped declaration migrations: `30 -> 0` legacy declarations, `30` `com.abs` declarations.
   - global tracked source declarations/files now `1976` remaining (`2277` baseline, `301` reduced).
+
+## 2026-02-26 21:10 UTC (Hard-Cut M2 Wave 108A + 108B + 109, stabilized)
+- Executed batched-safe parallel hard-cut migration proposal:
+  - `W108A`: migrated 20 support/cache declaration packages to `com.abs`.
+  - `W108B`: attempted 12 declaration migrations, then reverted for compatibility due repeated compile drift.
+  - `W109`: integrated stabilized set and validated.
+- Changed files:
+  - full file list in `docs/projects/02-runtime-renaming-refactor/evidence/20260226-205749-hardcut-m2-wave108ab-wave109-parallel-batches/target-files.txt`.
+- Validation:
+  - fast gate required multiple bounded fixes and then passed on rerun6 (`web-gs package`, `refactor smoke`).
+  - full 9-step matrix passed `9/9` (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-gs`, `cassandra-cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-205749-hardcut-m2-wave108ab-wave109-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/115-hard-cut-m2-wave108ab-wave109-stabilized-report-20260226.md`
+- Outcome:
+  - final stabilized declaration migrations: `20` net (`W108A` retained, `W108B` reverted).
+  - global tracked source declarations/files now `1956` remaining (`2277` baseline, `321` reduced).

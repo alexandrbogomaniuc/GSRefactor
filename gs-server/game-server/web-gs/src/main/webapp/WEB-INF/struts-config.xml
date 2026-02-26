@@ -16,10 +16,10 @@
         <form-bean name="AwayFromBankInfoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm"/>
         <form-bean name="GameIdSelectForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.GameIdSelectForm"/>
         <form-bean name="AddGameForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.AddGameForm"/>
-        <form-bean name="BankPropertiesForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm"/>
-        <form-bean name="SubcasinoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.SubcasinoForm"/>
-        <form-bean name="NewBankForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.addBank.NewBankForm"/>
-        <form-bean name="GameInfoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.GameInfoForm"/>
+        <form-bean name="BankPropertiesForm" type="com.abs.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm"/>
+        <form-bean name="SubcasinoForm" type="com.abs.casino.support.cache.bank.edit.forms.common.SubcasinoForm"/>
+        <form-bean name="NewBankForm" type="com.abs.casino.support.cache.bank.edit.forms.addBank.NewBankForm"/>
+        <form-bean name="GameInfoForm" type="com.abs.casino.support.cache.bank.edit.forms.common.GameInfoForm"/>
         <form-bean name="DomainwlForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm"/>
         <form-bean name="NewBankNSubCasinoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm"/>
         <form-bean name="BanksNSubCasinosForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.BanksNSubCasinosForm"/>
@@ -155,16 +155,16 @@
                 name="NewBankNSubCasinoForm" scope="request">
             <forward name="success" path="/support/subCasino.do" />
         </action>
-        <action path="/support/subCasino" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.SubcasinoAction"
+        <action path="/support/subCasino" type="com.abs.casino.support.cache.bank.edit.actions.common.SubcasinoAction"
                 name="SubcasinoForm" scope="request" validate="true">
             <forward name="success" path="/support/cache/bank/common/subCasinoInfo.jsp"/>
         </action>
-        <action path="/support/editSubCasino" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.EditSubCasinoAction"
+        <action path="/support/editSubCasino" type="com.abs.casino.support.cache.bank.edit.actions.common.EditSubCasinoAction"
                 name="SubcasinoForm" scope="request">
             <forward name="success" path="/support/cache/bank/common/subCasinoInfo.jsp"/>
             <forward name="error" path="/empty.jsp"/>
         </action>
-        <action path="/support/exportSubCasino" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.ExportSubCasinoAction"
+        <action path="/support/exportSubCasino" type="com.abs.casino.support.cache.bank.edit.actions.common.ExportSubCasinoAction"
                 name="SubcasinoForm" scope="request" validate="true">
             <forward name="success" path="/support/cache/bank/common/subCasinoInfo.jsp"/>
             <forward name="error" path="/empty.jsp"/>
@@ -177,12 +177,12 @@
             <forward name="error" path="/error_pages/error.jsp"/>
         </action>
 
-        <action path="/support/additionalDomainName" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.DomainNameAction"
+        <action path="/support/additionalDomainName" type="com.abs.casino.support.cache.bank.edit.actions.common.DomainNameAction"
                 name="SubcasinoForm" scope="request">
             <forward name="success" path="/support/cache/bank/common/subCasinoInfo.jsp"/>
             <forward name="error" path="/empty.jsp"/>
         </action>
-        <action path="/support/loadFreeBank" type="com.dgphoenix.casino.support.cache.bank.edit.actions.addbank.LoadDefBankAction"
+        <action path="/support/loadFreeBank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.LoadDefBankAction"
                 name="NewBankForm" scope="request">
             <forward name="success" path="/support/cache/bank/common/addFreeBank.jsp"/>
         </action>
@@ -191,11 +191,11 @@
             <forward name="success" path="/support/cache/bank/common/addFreeBank.jsp"/>
             <forward name="error" path="/empty.jsp"/>
         </action>
-        <action path="/support/acceptInfoBank" type="com.dgphoenix.casino.support.cache.bank.edit.actions.addbank.AcceptInfoFromOtherBankAction"
+        <action path="/support/acceptInfoBank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.AcceptInfoFromOtherBankAction"
                 name="NewBankForm" scope="request">
             <forward name="success" path="/support/cache/bank/common/addBank.jsp"/>
         </action>
-        <action path="/support/acceptInfoFreeBank" type="com.dgphoenix.casino.support.cache.bank.edit.actions.addbank.AcceptInfoFromOtherBankAction"
+        <action path="/support/acceptInfoFreeBank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.AcceptInfoFromOtherBankAction"
                 name="NewBankForm" scope="request">
             <forward name="success" path="/support/cache/bank/common/addFreeBank.jsp"/>
         </action>
@@ -220,38 +220,38 @@
                 name="SessionKeyAccessForm" scope="request" validate="false">
             <forward name="success" path="/empty.jsp" redirect="false"/>
         </action>
-        <action path="/support/addproperty"  type="com.dgphoenix.casino.support.cache.bank.edit.actions.editproperties.AddPropertyAction"
+        <action path="/support/addproperty"  type="com.abs.casino.support.cache.bank.edit.actions.editproperties.AddPropertyAction"
                 name="BankPropertiesForm" scope="request">
             <forward name="success" path="/support/cache/bank/properties/edit/editProperties.jsp"/>
         </action>
-        <action path="/support/propertiesmode" type="com.dgphoenix.casino.support.cache.bank.edit.actions.editproperties.SelectModeAction"
+        <action path="/support/propertiesmode" type="com.abs.casino.support.cache.bank.edit.actions.editproperties.SelectModeAction"
                 name="BankPropertiesForm" scope="request">
             <forward name="success" path="/support/cache/bank/properties/edit/editProperties.jsp"/>
         </action>
-        <action path="/support/bankSupport" type="com.dgphoenix.casino.support.cache.bank.edit.actions.editproperties.BankSupportAction"
+        <action path="/support/bankSupport" type="com.abs.casino.support.cache.bank.edit.actions.editproperties.BankSupportAction"
                 name="BankPropertiesForm" scope="request">
             <forward name="success" path="/support/cache/bank/properties/edit/allBanks.jsp"/>
         </action>
-        <action path="/support/bankSelectAction" type="com.dgphoenix.casino.support.cache.bank.edit.actions.editproperties.BankSelectAction"
+        <action path="/support/bankSelectAction" type="com.abs.casino.support.cache.bank.edit.actions.editproperties.BankSelectAction"
                 name="BankPropertiesForm" scope="request" input="/support/cache/bank/properties/edit/editProperties.jsp">
             <forward name="success" path="/support/cache/bank/properties/edit/editProperties.jsp"/>
         </action>
         <action path="/support/bankPropEdit"
-                type="com.dgphoenix.casino.support.cache.bank.edit.actions.editproperties.EditPropertiesAction"
+                type="com.abs.casino.support.cache.bank.edit.actions.editproperties.EditPropertiesAction"
                 name="BankPropertiesForm" scope="request"
                 input="/support/cache/bank/properties/edit/editProperties.jsp">
             <forward name="success" path="/support/cache/bank/properties/edit/editProperties.jsp"/>
         </action>
-        <action path="/support/addsubcasino" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.AddSubcasinoAction"
+        <action path="/support/addsubcasino" type="com.abs.casino.support.cache.bank.edit.actions.common.AddSubcasinoAction"
                 name="SubcasinoForm" scope="request">
             <forward name="success" path="/support/cache/bank/common/addSubcasino.jsp"/>
             <forward name="back" path="/support/cache/bank/common/subcasinoSelect.jsp"/>
         </action>
-        <action path="/support/loaddefbank" type="com.dgphoenix.casino.support.cache.bank.edit.actions.addbank.LoadDefBankAction"
+        <action path="/support/loaddefbank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.LoadDefBankAction"
                 name="NewBankForm" scope="request">
             <forward name="success" path="/support/cache/bank/common/addBank.jsp"/>
         </action>
-        <action path="/support/addbank" type="com.dgphoenix.casino.support.cache.bank.edit.actions.addbank.CreateBankAction"
+        <action path="/support/addbank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.CreateBankAction"
                 name="NewBankForm" scope="request">
             <forward name="success" path="/support/cache/bank/common/addBank.jsp"/>
         </action>
@@ -294,11 +294,11 @@
             <forward name="success" path="/support/cache/bank/common/addGame.jsp"/>
         </action>
         <action path="/support/loadgameinfo" name="GameInfoForm" scope="request" validate="true" input="/support/error.jsp"
-                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.LoadGameInfoAction">
+                type="com.abs.casino.support.cache.bank.edit.actions.common.LoadGameInfoAction">
             <forward name="success" path="/support/cache/bank/common/editGame.jsp"/>
         </action>
         <action path="/support/editgameprop" name="GameInfoForm" scope="request"
-                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.EditGameAction"
+                type="com.abs.casino.support.cache.bank.edit.actions.common.EditGameAction"
                 validate="false">
         </action>
         <!-- Differencer tool -->

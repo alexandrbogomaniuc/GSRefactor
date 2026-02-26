@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.cache.bank.edit.actions.addbank;
+package com.abs.casino.support.cache.bank.edit.actions.addbank;
 
 import com.dgphoenix.casino.common.cache.*;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
@@ -6,8 +6,8 @@ import com.dgphoenix.casino.common.cache.data.bank.Coin;
 import com.dgphoenix.casino.common.cache.data.bank.Limit;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.abs.casino.common.cache.data.language.LanguageType;
-import com.dgphoenix.casino.support.cache.bank.edit.forms.addBank.NewBankForm;
-import com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm;
+import com.abs.casino.support.cache.bank.edit.forms.addBank.NewBankForm;
+import com.abs.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.action.Action;

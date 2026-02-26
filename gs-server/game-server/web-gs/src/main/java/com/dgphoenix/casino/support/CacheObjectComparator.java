@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support;
+package com.abs.casino.support;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

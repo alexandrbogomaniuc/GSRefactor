@@ -1,0 +1,204 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ExportSubCasinoAction.java:3:import com.dgphoenix.casino.gs.maintenance.CacheExporter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java:4:import com.dgphoenix.casino.common.cache.SubCasinoCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java:5:import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java:6:import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java:7:import com.dgphoenix.casino.common.util.string.StringUtils;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java:8:import com.dgphoenix.casino.common.web.BaseAction;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java:9:import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java:10:import com.dgphoenix.casino.support.cache.bank.edit.actions.common.AbstractCRUDAction;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditSubCasinoAction.java:3:import com.dgphoenix.casino.common.cache.SubCasinoCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditSubCasinoAction.java:4:import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditSubCasinoAction.java:5:import com.dgphoenix.casino.common.util.string.StringUtils;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditSubCasinoAction.java:6:import com.dgphoenix.casino.common.web.BaseAction;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/AcceptInfoFromOtherBankAction.java:3:import com.dgphoenix.casino.common.cache.*;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/AcceptInfoFromOtherBankAction.java:4:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/AcceptInfoFromOtherBankAction.java:5:import com.dgphoenix.casino.common.cache.data.bank.Coin;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/AcceptInfoFromOtherBankAction.java:6:import com.dgphoenix.casino.common.cache.data.bank.Limit;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/AcceptInfoFromOtherBankAction.java:7:import com.dgphoenix.casino.common.cache.data.currency.Currency;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/SubcasinoAction.java:3:import com.dgphoenix.casino.common.cache.SubCasinoCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/SubcasinoAction.java:4:import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:3:import com.dgphoenix.casino.common.cache.*;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:4:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:5:import com.dgphoenix.casino.common.cache.data.bank.Coin;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:6:import com.dgphoenix.casino.common.cache.data.bank.Limit;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:7:import com.dgphoenix.casino.common.cache.data.currency.Currency;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:8:import com.dgphoenix.casino.common.cache.data.game.BaseGameConstants;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:9:import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:10:import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:11:import com.dgphoenix.casino.common.exception.CommonException;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:12:import com.dgphoenix.casino.common.util.CollectionUtils;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:13:import com.dgphoenix.casino.common.util.DigitFormatter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:14:import com.dgphoenix.casino.common.util.InheritFromTemplate;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:15:import com.dgphoenix.casino.common.util.ReflectionUtils;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:16:import com.dgphoenix.casino.common.util.string.StringUtils;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:17:import com.dgphoenix.casino.common.web.BaseAction;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:18:import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:37:import static com.dgphoenix.casino.common.cache.data.game.BaseGameConstants.*;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/LoadDefBankAction.java:3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/LoadDefBankAction.java:4:import com.dgphoenix.casino.common.cache.CoinsCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/LoadDefBankAction.java:5:import com.dgphoenix.casino.common.cache.CurrencyCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/LoadDefBankAction.java:6:import com.dgphoenix.casino.common.cache.LimitsCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/LoadDefBankAction.java:7:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/LoadDefBankAction.java:8:import com.dgphoenix.casino.common.cache.data.bank.Coin;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/LoadDefBankAction.java:9:import com.dgphoenix.casino.common.cache.data.bank.Limit;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/LoadDefBankAction.java:10:import com.dgphoenix.casino.common.cache.data.currency.Currency;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/EditPropertiesAction.java:3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/EditPropertiesAction.java:4:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/EditPropertiesAction.java:5:import com.dgphoenix.casino.common.cache.data.bank.Limit;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/EditPropertiesAction.java:6:import com.dgphoenix.casino.common.web.BaseAction;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/EditPropertiesAction.java:7:import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/EditPropertiesAction.java:24:import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/AddPropertyAction.java:4:import com.dgphoenix.casino.common.cache.BankInfoCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/AddPropertyAction.java:5:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/AddPropertyAction.java:6:import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:1:package com.dgphoenix.casino.config;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:5:import com.dgphoenix.casino.common.util.ExecutorUtils;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:6:import com.dgphoenix.casino.gs.GameServerComponentsConfiguration;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:7:import com.dgphoenix.casino.gs.PromotionContextConfiguration;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:8:import com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguration;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:9:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.GameCommandsProcessorsConfiguration;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:10:import com.dgphoenix.casino.init.CassandraPersistenceContextConfiguration;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:11:import com.dgphoenix.casino.kafka.config.KafkaConfiguration;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:12:import com.dgphoenix.casino.services.GameServerServiceConfiguration;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:13:import com.dgphoenix.casino.system.configuration.identification.ZookeeperConfiguration;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/SubcasinoForm.java:4:import com.dgphoenix.casino.common.cache.SubCasinoCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/SubcasinoForm.java:5:import com.dgphoenix.casino.common.util.string.StringUtils;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/SubcasinoForm.java:6:import com.dgphoenix.casino.common.web.BaseAction;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:3:import com.dgphoenix.casino.bgm.BaseGameHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:4:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:5:import com.dgphoenix.casino.cassandra.persist.CassandraBankInfoPersister;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:6:import com.dgphoenix.casino.common.cache.*;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:7:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:8:import com.dgphoenix.casino.common.cache.data.bank.Coin;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:9:import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:10:import com.dgphoenix.casino.common.cache.data.currency.Currency;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:11:import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:12:import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:13:import com.dgphoenix.casino.common.util.string.StringUtils;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:14:import com.dgphoenix.casino.common.web.BaseAction;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:15:import com.dgphoenix.casino.gs.persistance.remotecall.RefreshConfigCall;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:16:import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameInfoForm.java:3:import com.dgphoenix.casino.common.cache.BaseGameCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameInfoForm.java:4:import com.dgphoenix.casino.common.cache.CurrencyCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameInfoForm.java:5:import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameInfoForm.java:6:import com.dgphoenix.casino.common.util.string.StringUtils;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameInfoForm.java:7:import com.dgphoenix.casino.common.web.BaseAction;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/SelectModeAction.java:4:import com.dgphoenix.casino.common.cache.BankInfoCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/SelectModeAction.java:5:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadGameInfoAction.java:3:import com.dgphoenix.casino.common.cache.*;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadGameInfoAction.java:4:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadGameInfoAction.java:5:import com.dgphoenix.casino.common.cache.data.bank.Coin;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadGameInfoAction.java:6:import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadGameInfoAction.java:7:import com.dgphoenix.casino.common.cache.data.game.GameVariableType;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadGameInfoAction.java:8:import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadGameInfoAction.java:9:import com.dgphoenix.casino.common.util.DigitFormatter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BankPropertiesForm.java:4:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BankPropertiesForm.java:5:import com.dgphoenix.casino.common.util.CurrencyLabelValueListBean;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BankPropertiesForm.java:6:import com.dgphoenix.casino.common.util.LanguageLabelValueBean;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BankPropertiesForm.java:7:import com.dgphoenix.casino.common.util.LimitLabelValueListBean;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BankPropertiesForm.java:8:import com.dgphoenix.casino.common.util.property.BooleanProperty;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BankPropertiesForm.java:9:import com.dgphoenix.casino.common.util.property.MandatoryProperty;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BankPropertiesForm.java:10:import com.dgphoenix.casino.common.util.property.NumericProperty;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BankPropertiesForm.java:11:import com.dgphoenix.casino.common.util.property.StringProperty;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BankPropertiesForm.java:26:import static com.dgphoenix.casino.common.cache.data.bank.BankInfo.KEY_FREE_BALANCE;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/BankSelectAction.java:3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/BankSelectAction.java:4:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/BankSelectAction.java:5:import com.dgphoenix.casino.common.web.BaseAction;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/BankSupportAction.java:3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/BankSupportAction.java:4:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/editProperties.jsp:1:<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraCallIssuesPersister" %>
+gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/editProperties.jsp:2:<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
+gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/editProperties.jsp:3:<%@ page import="com.dgphoenix.casino.common.cache.data.URLCallCounters" %>
+gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/editProperties.jsp:4:<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
+gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/editProperties.jsp:5:<%@ page import="com.dgphoenix.casino.common.util.property.*" %>
+gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/editProperties.jsp:6:<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/editProperties.jsp:7:<%@ page import="com.dgphoenix.casino.statistics.http.HttpClientCallbackHandler" %>
+gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/editProperties.jsp:14:<%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
+gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/editProperties.jsp:15:<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:7:        <form-bean name="GameHistoryListForm" type="com.dgphoenix.casino.web.history.GameHistoryListForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:8:        <form-bean name="GameHistoryXMLListForm" type="com.dgphoenix.casino.web.history.GameHistoryXMLListForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:9:        <form-bean name="GameHistoryXMLListFormV2" type="com.dgphoenix.casino.web.history.GameHistoryXMLListFormV2"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:11:        <form-bean name="HistoryUrlForm" type="com.dgphoenix.casino.forms.api.history.HistoryUrlForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:13:        <form-bean name="CommonWalletRegisterForm" type="com.dgphoenix.casino.gs.managers.payment.wallet.common.remote.CommonWalletRegisterForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:15:        <form-bean name="BankInfoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:16:        <form-bean name="AwayFromBankInfoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:17:        <form-bean name="GameIdSelectForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.GameIdSelectForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:18:        <form-bean name="AddGameForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.AddGameForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:23:        <form-bean name="DomainwlForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:24:        <form-bean name="NewBankNSubCasinoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:25:        <form-bean name="BanksNSubCasinosForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.BanksNSubCasinosForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:26:        <form-bean name="CompareBanksForm" type="com.dgphoenix.casino.support.differencer.banks.CompareBanksForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:27:        <form-bean name="CompareTemplatesForm" type="com.dgphoenix.casino.support.differencer.gametemplate.CompareTemplatesForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:29:        <form-bean name="SessionKeyAccessForm" type="com.dgphoenix.casino.protection.forms.SessionKeyAccessForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:34:        <form-bean name="EncoderForm" type="com.dgphoenix.casino.actions.system.util.EncoderForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:36:        <form-bean name="CWStartGameForm" type="com.dgphoenix.casino.forms.game.cw.CWStartGameForm" />
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:37:        <form-bean name="CWStartGameFormV2" type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:38:        <form-bean name="CWStartGameBySessionForm" type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameBySessionForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:40:        <form-bean name="CWGuestLoginForm" type="com.dgphoenix.casino.actions.enter.cw.CWGuestLoginForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:42:        <form-bean name="CWRegisterForm" type="com.dgphoenix.casino.actions.enter.game.cwv3.CWRegisterForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:63:        <form-bean name="BSStartGameForm" type="com.dgphoenix.casino.actions.enter.game.bonus.BSStartGameForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:64:        <form-bean name="TournamentLobbyForm" type="com.dgphoenix.casino.forms.lobby.TournamentLobbyForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:65:        <form-bean name="TournamentStartGameForm" type="com.dgphoenix.casino.actions.game.tournament.TournamentStartGameForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:67:                   type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStubStartGameForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:69:                   type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartGameForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:71:                   type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartGameFromMQBForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:73:                   type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartPrivateGameForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:75:        <form-bean name="RestartGameForm" type="com.dgphoenix.casino.actions.enter.game.frb.RestartGameForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:77:        <form-bean name="CTLoginForm" type="com.dgphoenix.casino.forms.login.ct.CTLoginForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:78:        <form-bean name="CTStartGameForm" type="com.dgphoenix.casino.forms.game.ct.CTStartGameForm" />
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:79:        <form-bean name="GameListForm" type="com.dgphoenix.casino.actions.enter.game.GameListForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:80:        <form-bean name="GameSettingsForm" type="com.dgphoenix.casino.actions.enter.game.GameSettingsForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:82:        <form-bean name="FileUploadForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.language.UploadForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:87:        <form-bean name="MBSStartGameForm" type="com.dgphoenix.casino.forms.game.bonus.BSStartGameForm" />
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:91:        <form-bean name="CTOnlyStartGameForm" type="com.dgphoenix.casino.forms.game.ct.CTOnlyStartGameForm" />
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:95:        <form-bean name="CWGuestStartGameForm" type="com.dgphoenix.casino.forms.game.cw.CWGuestStartGameForm" />
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:99:        <form-bean name="MCWv3StartGameFRBForm" type="com.dgphoenix.casino.forms.game.CommonFRBStartGameForm" />
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:103:        <form-bean name="STLobbyForm" type="com.dgphoenix.casino.forms.lobby.STLobbyForm" />
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:106:        <form-bean name="CWStartHistoryForm" type="com.dgphoenix.casino.forms.api.history.cwv3.CWStartHistoryForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:120:        <form-bean name="BonusForm" type="com.dgphoenix.casino.actions.api.bonus.BonusForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:136:                handler="com.dgphoenix.casino.common.web.InvalidPathStrutsActionExceptionHandler"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:146:        <action path="/support/newBankNSubCasino" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.NewBankNSubCasinoAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:150:        <action path="/support/BankNSubCasinoControl" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.BanksNSubCasinosAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:154:        <action path="/support/newSubCasino" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.NewSubCasinoIdAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:174:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.ImportSubCasinoAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:189:        <action path="/support/createFreeBank" type="com.dgphoenix.casino.support.cache.bank.edit.actions.addbank.CreateFreeBankAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:202:        <action path="/support/domainformany" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.DomainForManyAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:206:        <action path="/support/domainwl" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.DomainWhiteListAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:211:        <action path="/support/domainsbygame" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.DomainsByGameAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:215:        <action path="/support/editdomains" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.EditDomainAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:219:        <action path="/sejgds" type="com.dgphoenix.casino.protection.actions.SessionKeyAccessAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:259:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.LoadBankInfoAction" scope="request"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:264:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.CurrencySelectAction" scope="request"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:269:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.AwayFromBankInfoAction">
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:274:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.InputModeAction">
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:278:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.GameIdSelectAction">
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:282:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.CopyConfigAction">
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:287:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.CreateNewGameAction">
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:293:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.EnterPropertiesAction">
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:306:                type="com.dgphoenix.casino.support.differencer.banks.CompareBanksAction" scope="request"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:313:                type="com.dgphoenix.casino.support.differencer.gametemplate.CompareTemplatesAction" scope="request"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:334:        <action path="/gamehistory" input="/error_pages/error.jsp" type="com.dgphoenix.casino.web.history.GameHistoryListAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:340:        <action path="/gamehistoryXML" input="/error_pages/error.jsp" type="com.dgphoenix.casino.web.history.GameHistoryXMLListAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:346:                type="com.dgphoenix.casino.web.history.GameHistoryXMLListAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:375:        <action path="/gameSettingsv2" type="com.dgphoenix.casino.actions.enter.game.GameSettingsActionV2"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:380:        <action path="/gamelist" type="com.dgphoenix.casino.actions.enter.game.GameListExtAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:385:        <action path="/gamelistExt" type="com.dgphoenix.casino.actions.enter.game.GameListExtAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:390:        <action path="/frbgamelist" type="com.dgphoenix.casino.actions.enter.game.FRBGameListAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:401:                type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameAction" name="CWStartGameFormV2"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:406:                type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameAction" name="CWStartGameFormV2"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:411:                type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameAction" name="CWStartGameBySessionForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:416:                type="com.dgphoenix.casino.actions.enter.game.cwv3.CWRegisterAction" name="CWRegisterForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:421:                type="com.dgphoenix.casino.actions.enter.cw.CWGuestLogin" name="CWGuestLoginForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:426:                type="com.dgphoenix.casino.actions.enter.cw.CWGuestLogin" name="CWGuestLoginForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:483:                type="com.dgphoenix.casino.actions.enter.game.bonus.BSStartGameAction" name="BSStartGameForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:513:                type="com.dgphoenix.casino.actions.enter.game.frb.RestartGameAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:520:                type="com.dgphoenix.casino.actions.system.util.EncoderAction" name="EncoderForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:545:                type="com.dgphoenix.casino.actions.game.cw.CWGuestStartGameAction" name="CWGuestStartGameForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:551:                type="com.dgphoenix.casino.actions.game.cwv3.frb.CWStartFRBGameAction" name="MCWv3StartGameFRBForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:557:                type="com.dgphoenix.casino.actions.lobby.TournamentLobbyAction" name="TournamentLobbyForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:563:                type="com.dgphoenix.casino.actions.enter.TouchPlayerSession"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:570:                type="com.dgphoenix.casino.actions.api.history.cwv3.CWStartHistoryAction" name="CWStartHistoryForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:596:                type="com.dgphoenix.casino.actions.game.tournament.TournamentStartGameAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:602:                type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartGameFromMQBAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:608:                type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartPrivateGameAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:641:    <message-resources parameter="com.dgphoenix.casino.gs.web.messages.ApplicationMessage"/>
