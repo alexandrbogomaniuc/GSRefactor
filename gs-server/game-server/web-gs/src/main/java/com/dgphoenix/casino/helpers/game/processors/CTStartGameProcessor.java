@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.cache.data.payment.transfer.PaymentTransactio
 import com.dgphoenix.casino.common.cache.data.payment.transfer.TransactionStatus;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.entities.game.requests.CTStartGameRequest;
+import com.abs.casino.entities.game.requests.CTStartGameRequest;
 import com.dgphoenix.casino.gs.managers.payment.transfer.PaymentManager;
 
 import javax.servlet.http.HttpServletResponse;

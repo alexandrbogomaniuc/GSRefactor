@@ -1,0 +1,2 @@
+web-gs-package|PASS|0|/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-195111-hardcut-m2-wave100ab-wave101-parallel-batches/fast-gate-web-gs-package.log
+refactor-smoke|PASS|0|/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-195111-hardcut-m2-wave100ab-wave101-parallel-batches/fast-gate-refactor-smoke.log

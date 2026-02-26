@@ -1,0 +1,34 @@
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:432:                type="com.abs.casino.actions.api.frbonus.AwardFRBAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:438:                type="com.abs.casino.actions.api.frbonus.AwardFRBLiteAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:444:                type="com.abs.casino.actions.api.frbonus.CheckFRBAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:449:                type="com.abs.casino.actions.api.frbonus.CancelFRBAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:454:                type="com.abs.casino.actions.api.frbonus.GetFRBInfoAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:459:                type="com.abs.casino.actions.api.frbonus.GetFRBInfoLiteAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:465:                type="com.abs.casino.actions.api.frbonus.CancelFRBLiteAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:470:                type="com.abs.casino.actions.api.frbonus.GetFRBHistoryAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:475:                type="com.abs.casino.actions.api.frbonus.GetFRBAction"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:487:                type="com.abs.casino.actions.api.bonus.AwardAction" name="BSAwardForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:491:                type="com.abs.casino.actions.api.bonus.CancelAction" name="BSCancelForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:495:                type="com.abs.casino.actions.api.bonus.CheckAction" name="BSCheckForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:499:                type="com.abs.casino.actions.api.bonus.GetHistoryAction" name="BSHistoryForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:503:                type="com.abs.casino.actions.api.bonus.GetInfoAction" name="BSInfoForm"
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:507:                type="com.abs.casino.actions.api.bonus.GetBonusAction" name="GetBonusForm"
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java:4:import com.abs.casino.actions.enter.game.routing.GameplayOrchestratorRoutingBridge;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java:5:import com.abs.casino.actions.enter.game.routing.HistoryServiceRoutingBridge;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java:6:import com.abs.casino.actions.enter.game.routing.ProtocolAdapterRoutingBridge;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java:7:import com.abs.casino.actions.enter.game.routing.WalletAdapterRoutingBridge;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/STLobbyStartGameProcessor.java:12:import com.abs.casino.entities.game.requests.STLobbyStartGameRequest;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/StartGameProcessor.java:8:import com.abs.casino.entities.game.requests.StartGameRequest;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/CTStartGameProcessor.java:12:import com.abs.casino.entities.game.requests.CTStartGameRequest;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java:25:import com.abs.casino.entities.game.requests.StartGameRequest;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java:26:import com.abs.casino.entities.game.requests.StartGameResponse;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:36:import com.abs.casino.entities.game.requests.StartGameRequest;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:37:import com.abs.casino.entities.game.requests.StartGameResponse;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java:10:import com.abs.casino.entities.game.requests.BonusStartGameRequest;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java:15:import com.abs.casino.entities.game.requests.BonusStartGameRequest;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java:16:import com.abs.casino.entities.game.requests.StartGameResponse;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:5:import com.abs.casino.actions.enter.game.routing.BonusFrbServiceRoutingBridge;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:7:import com.abs.casino.actions.enter.game.routing.GameplayOrchestratorRoutingBridge;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:8:import com.abs.casino.actions.enter.game.routing.MultiplayerServiceRoutingBridge;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:9:import com.abs.casino.actions.enter.game.routing.ProtocolAdapterRoutingBridge;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:10:import com.abs.casino.actions.enter.game.routing.SessionServiceRoutingBridge;

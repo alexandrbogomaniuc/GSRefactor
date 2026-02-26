@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.api.frbonus;
+package com.abs.casino.actions.api.frbonus;
 
 
 import com.abs.casino.actions.api.frbonus.GetFRBInfoLiteForm;
