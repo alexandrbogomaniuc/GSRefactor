@@ -162,3 +162,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - dual-key compatibility for weapons mode is now seeded in local/refactor bank templates.
   - Project 02 completion estimate updated to `68%`.
+
+## 2026-02-26 07:05 UTC (Mini-Wave M2.4)
+- Executed mqb server-config sanitization wave to remove remaining external `mqbase` domains from active server template config.
+- Changed file:
+  - `gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.ServerConfigsCache.xml`
+- Change detail:
+  - switched host/domain/gsDomain values from `mqbase` to localhost variants,
+  - switched `MQ_CLUSTERS_CONFIG` + `MP_LOBBY_WS_HOST` references to local MP endpoint `127.0.0.1:16300`,
+  - replaced support sender email domain token with local value.
+- Validation PASS:
+  - full build/test matrix (sb-utils, promo/common-persisters, cache tests, web-gs package, mp subset package)
+  - runtime bank-template audit (`bank-template-audit.mjs`) for banks `6275,6276`: PASS.
+  - direct domain scan of mqb server config: no remaining `mqbase` host/domain tokens.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-070527/`
+- Outcome:
+  - active mqb server config template now aligns with local/internal endpoint strategy.
+  - Project 02 completion estimate updated to `72%`.

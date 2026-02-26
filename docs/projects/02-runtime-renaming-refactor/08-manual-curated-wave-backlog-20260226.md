@@ -87,4 +87,5 @@ Method:
   - M2.1 complete (bank template third-party URL sanitization for local/refactor profiles)
   - M2.2 complete (seeded `ABS_*` alias keys for wallet/start/close processor config)
   - M2.3 complete (seeded `ABS_WEAPONS_MODE` alongside `MQ_WEAPONS_MODE`)
-- Estimated completion: 68%.
+  - M2.4 complete (mqb server config domain/lobby host sanitization to local values)
+- Estimated completion: 72%.

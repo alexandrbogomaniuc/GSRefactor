@@ -5875,3 +5875,12 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-070144/`
 - Completion update:
   - Project 02 estimated at `68%`.
+
+### 2026-02-26 07:05 UTC
+- GSRefactor Project 02 advanced with M2.4 (mqb server config domain sanitization).
+- Updated mqb `ServerConfigsCache.xml` to local/internal host strategy (removed remaining `mqbase` domain references and set MP lobby host/cluster tokens to local endpoint).
+- Full validation matrix PASS and runtime bank-template audit PASS for banks `6275`, `6276`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-070527/`
+- Completion update:
+  - Project 02 estimated at `72%`.
