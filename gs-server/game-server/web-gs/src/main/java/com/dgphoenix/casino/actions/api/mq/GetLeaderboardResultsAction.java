@@ -1,6 +1,4 @@
-package com.dgphoenix.casino.actions.api.mq;
-
-import com.abs.casino.actions.api.mq.GetLeaderboardResultsForm;
+package com.abs.casino.actions.api.mq;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.mp.LeaderboardResultPersister;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
