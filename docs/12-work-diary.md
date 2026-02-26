@@ -6668,3 +6668,13 @@
   - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/51-hard-cut-m2-wave39-info-exception-report-20260226.md`
+
+### 2026-02-26 12:45 UTC
+- Completed Project 02 M2 Wave 40 for `LogoutCommonConstants` namespace migration.
+- Migrated package declaration to `com.abs` and updated `standlobby.jsp` import to the new package.
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-124135-hardcut-m2-wave40-logout-common-constants`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/52-hard-cut-m2-wave40-logout-common-constants-report-20260226.md`

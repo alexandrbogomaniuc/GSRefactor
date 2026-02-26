@@ -1,0 +1,2 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/logout/LogoutCommonConstants.java
+gs-server/game-server/web-gs/src/main/webapp/standlobby.jsp

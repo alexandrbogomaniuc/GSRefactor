@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.dgphoenix.casino.actions.lobby.STLobbyAction" %>
 <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
-<%@ page import="com.dgphoenix.casino.common.web.logout.LogoutCommonConstants" %>
+<%@ page import="com.abs.casino.common.web.logout.LogoutCommonConstants" %>
 <%@ page import="com.dgphoenix.casino.common.web.BaseAction" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>

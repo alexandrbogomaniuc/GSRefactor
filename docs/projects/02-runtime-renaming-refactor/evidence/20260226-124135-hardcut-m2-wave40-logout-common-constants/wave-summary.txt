@@ -1,0 +1,8 @@
+wave=W40-logout-common-constants
+target=com.dgphoenix.casino.common.web.logout.LogoutCommonConstants
+replacement=com.abs.casino.common.web.logout.LogoutCommonConstants
+pre_legacy_refs=2
+post_legacy_refs=0
+post_abs_refs=2
+validation_passed=9
+validation_failed=0

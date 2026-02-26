@@ -999,3 +999,16 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-123603-hardcut-m2-wave39-info-exception`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/51-hard-cut-m2-wave39-info-exception-report-20260226.md`
+
+## 2026-02-26 12:45 UTC (M2 Wave 40 - LogoutCommonConstants Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.web.logout.LogoutCommonConstants` -> `com.abs.casino.common.web.logout.LogoutCommonConstants`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/web/logout/LogoutCommonConstants.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/standlobby.jsp`
+- Post-scan result: legacy refs `0`, abs refs `2` (pre-scan legacy refs `2`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-124135-hardcut-m2-wave40-logout-common-constants`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/52-hard-cut-m2-wave40-logout-common-constants-report-20260226.md`

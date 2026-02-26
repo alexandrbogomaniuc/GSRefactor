@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.web.logout;
+package com.abs.casino.common.web.logout;
 
 /**
  * User: plastical
