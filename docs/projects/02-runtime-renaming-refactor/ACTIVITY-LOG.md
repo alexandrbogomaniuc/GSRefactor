@@ -1702,3 +1702,19 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `2` to `0`, `com.abs` refs now `3`.
   - global tracked source declarations now `2120` remaining (`2277` baseline, `157` reduced).
+
+## 2026-02-26 17:24 UTC (Hard-Cut M2 Wave 85)
+- Executed hard-cut namespace wave for `GetVBAAction` (VBA API).
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/vba/GetVBAAction.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.vba.GetVBAAction` to `com.abs.casino.actions.api.vba.GetVBAAction`.
+  - updated Struts action type to `com.abs` for `/getvba`.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-172248-hardcut-m2-wave85-vba-getvba-action/`
+- Outcome:
+  - wave scope legacy refs reduced from `2` to `0`, `com.abs` refs now `2`.
+  - global tracked source declarations now `2119` remaining (`2277` baseline, `158` reduced).

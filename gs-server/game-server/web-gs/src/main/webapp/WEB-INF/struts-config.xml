@@ -585,7 +585,7 @@
         </action>
 
         <action path="/getvba"
-                type="com.dgphoenix.casino.actions.api.vba.GetVBAAction" name="GetVBAForm"
+                type="com.abs.casino.actions.api.vba.GetVBAAction" name="GetVBAForm"
                 validate="true" input="/error_pages/error.jsp" scope="request">
         </action>
 
