@@ -6387,3 +6387,14 @@
 - Evidence:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-100426-hardcut-m2-wave12-language-type`
 - Next: commit/push Wave 12 and continue Wave 13.
+
+### 2026-02-26 10:08 UTC
+- Continued Project 02 with M2 Wave 13 (wallet operation namespace migration).
+- Scope: 1 file (`ExternalTransactionInfo`).
+- Result:
+  - legacy refs for wave scope: `0`
+  - new `com.abs` refs: `1`
+  - full validation matrix and runtime smoke: PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-100634-hardcut-m2-wave13-wallet-operation`
+- Next: commit/push Wave 13 and continue Wave 14.

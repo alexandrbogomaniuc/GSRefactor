@@ -584,3 +584,15 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-100426-hardcut-m2-wave12-language-type`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/24-hard-cut-m2-wave12-language-type-report-20260226.md`
+
+## 2026-02-26 10:08 UTC (M2 Wave 13 - Wallet Operation Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.wallet_operation.ExternalTransactionInfo` -> `com.abs.casino.common.cache.data.wallet_operation.ExternalTransactionInfo`
+- Changed file:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/wallet_operation/ExternalTransactionInfo.java`
+- Post-scan result: legacy refs `0`, abs refs `1`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-100634-hardcut-m2-wave13-wallet-operation`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/25-hard-cut-m2-wave13-wallet-operation-report-20260226.md`

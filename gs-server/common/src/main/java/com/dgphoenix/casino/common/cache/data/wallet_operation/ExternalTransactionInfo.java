@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data.wallet_operation;
+package com.abs.casino.common.cache.data.wallet_operation;
 
 public class ExternalTransactionInfo {
     private double balance;

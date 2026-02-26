@@ -1,0 +1,1 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/wallet_operation/ExternalTransactionInfo.java
