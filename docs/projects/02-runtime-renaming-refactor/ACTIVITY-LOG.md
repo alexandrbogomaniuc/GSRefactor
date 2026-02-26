@@ -180,3 +180,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - active mqb server config template now aligns with local/internal endpoint strategy.
   - Project 02 completion estimate updated to `72%`.
+
+## 2026-02-26 07:11 UTC (Mini-Wave M3.1)
+- Executed support JSP class-string compatibility wave for staged package rename.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/webapp/support/initGames.jsp`
+  - `gs-server/game-server/web-gs/src/main/webapp/support/setIdGeneratorStartValue.jsp`
+  - `gs-server/game-server/web-gs/src/main/webapp/support/bankReleaseReport.jsp`
+- Change detail:
+  - `initGames.jsp`: game controller prefix classifier now accepts both `com.dgphoenix.casino.singlegames.*` and `com.abs.casino.singlegames.*`.
+  - `setIdGeneratorStartValue.jsp`: sequencer lookup now checks `com.abs...DBWalletOperation` first and falls back to `com.dgphoenix...DBWalletOperation`.
+  - `bankReleaseReport.jsp`: default wallet client recognition now treats both legacy and ABS class names as standard (no false custom-integration warning).
+- Validation PASS:
+  - full build/test matrix (sb-utils, promo/common-persisters, cache tests, web-gs package, mp subset package)
+  - runtime bank-template audit (`bank-template-audit.mjs`) for banks `6275,6276`: PASS.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-071122/`
+- Outcome:
+  - support workflows now tolerate both legacy and target package naming in runtime-sensitive checks.
+  - Project 02 completion estimate updated to `76%`.

@@ -227,7 +227,8 @@
         if (gameControllerClass.startsWith("com.casino.singlegames.")) {
             prefix = "agcc-";
             ind = 3;
-        } else if (gameControllerClass.startsWith("com.dgphoenix.casino.singlegames.")) {
+        } else if (gameControllerClass.startsWith("com.dgphoenix.casino.singlegames.")
+                || gameControllerClass.startsWith("com.abs.casino.singlegames.")) {
             prefix = "";
             ind = 4;
         } else {

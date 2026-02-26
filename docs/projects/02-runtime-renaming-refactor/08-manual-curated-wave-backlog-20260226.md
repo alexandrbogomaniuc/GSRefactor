@@ -88,4 +88,5 @@ Method:
   - M2.2 complete (seeded `ABS_*` alias keys for wallet/start/close processor config)
   - M2.3 complete (seeded `ABS_WEAPONS_MODE` alongside `MQ_WEAPONS_MODE`)
   - M2.4 complete (mqb server config domain/lobby host sanitization to local values)
-- Estimated completion: 72%.
+  - M3.1 complete (support JSP compatibility for `com.dgphoenix`/`com.abs` class strings in init/sequencer/report checks)
+- Estimated completion: 76%.

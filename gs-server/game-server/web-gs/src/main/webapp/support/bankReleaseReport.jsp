@@ -84,6 +84,10 @@
     private ProtocolType protocolType;
     private boolean useRange = false;
     private List<Long> fromToBanks = new ArrayList<>();
+    private static final String DEFAULT_CW_CLIENT_LEGACY =
+            "com.dgphoenix.casino.payment.wallet.client.v4.StandartRESTCWClient";
+    private static final String DEFAULT_CW_CLIENT_ABS =
+            "com.abs.casino.payment.wallet.client.v4.StandartRESTCWClient";
 
 
     private String getSubcasinoName() {
@@ -134,11 +138,15 @@
     }
 
     void detectCustomIntegration() {
-        if (!StringUtils.isTrimmedEmpty(bankInfo.getCWRequestClientClass()) &&
-                !"com.dgphoenix.casino.payment.wallet.client.v4.StandartRESTCWClient".equals(bankInfo.getCWRequestClientClass())) {
-            println("WARNING! Custom integration detected!<br/>COMMON_WALLET_REQUEST_CLIENT_CLASS = " + bankInfo.getCWRequestClientClass());
+        final String cwClientClass = bankInfo.getCWRequestClientClass();
+        if (!StringUtils.isTrimmedEmpty(cwClientClass) && !isDefaultWalletClient(cwClientClass)) {
+            println("WARNING! Custom integration detected!<br/>COMMON_WALLET_REQUEST_CLIENT_CLASS = " + cwClientClass);
             println();
         }
+    }
+
+    boolean isDefaultWalletClient(String cwClientClass) {
+        return DEFAULT_CW_CLIENT_LEGACY.equals(cwClientClass) || DEFAULT_CW_CLIENT_ABS.equals(cwClientClass);
     }
 
     String clusterType() {

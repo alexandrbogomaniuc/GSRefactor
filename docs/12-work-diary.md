@@ -5884,3 +5884,15 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-070527/`
 - Completion update:
   - Project 02 estimated at `72%`.
+
+### 2026-02-26 07:11 UTC
+- GSRefactor Project 02 advanced with M3.1 (support JSP class-string compatibility).
+- Updated support runtime checks to accept both legacy and target package/class strings:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/initGames.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/setIdGeneratorStartValue.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/bankReleaseReport.jsp`
+- Full validation matrix PASS and runtime bank-template audit PASS for banks `6275`, `6276`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-071122/`
+- Completion update:
+  - Project 02 estimated at `76%`.
