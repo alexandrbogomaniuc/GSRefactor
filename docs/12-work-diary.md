@@ -6245,3 +6245,11 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/10-hard-cut-namespace-migration-plan-20260226.md`
 - New plan introduces hard-cut gates (M0-M7), strict definition of done, and required proof that fresh runtime logs no longer contain active `com.dgphoenix` code-path entries.
 - Next: execute M0 baseline lock and begin guarded migration waves.
+
+### 2026-02-26 09:15-09:19 UTC
+- Completed M0 baseline lock for hard-cut namespace migration in `Dev_new`.
+- Added baseline evidence pack and summary report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-091520-hardcut-m0-baseline/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/11-hard-cut-m0-baseline-lock-report-20260226.md`
+- Baseline confirms legacy namespace still dominant in source/build/runtime; this is now frozen as before-state for controlled migration.
+- Next: begin M1 build-coordinate transition prep with isolated commits and full validation after each wave.

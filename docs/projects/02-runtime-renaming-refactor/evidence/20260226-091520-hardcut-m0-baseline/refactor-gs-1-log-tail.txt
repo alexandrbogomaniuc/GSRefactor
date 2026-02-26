@@ -1,0 +1,1200 @@
+	at com.dgphoenix.casino.sm.tracker.logout.LogoutTask.process(LogoutTask.java:76)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.processLogout(TransactionDataTracker.java:400)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessOnlineTransactionsTask.process(TransactionDataTracker.java:537)
+	at com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.processTransactions(CassandraTransactionDataPersister.java:416)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.run(TransactionDataTracker.java:243)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+26.02.2026 09:07:58,159 [ERROR] ERROR [LogoutTask pool-37-thread-1] - Cannot logout: 
+com.dgphoenix.casino.common.exception.CommonException: AccountInfo is null: accountId=122882
+	at com.dgphoenix.casino.sm.tracker.logout.LogoutTask.process(LogoutTask.java:76)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.processLogout(TransactionDataTracker.java:400)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessOnlineTransactionsTask.process(TransactionDataTracker.java:537)
+	at com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.processTransactions(CassandraTransactionDataPersister.java:416)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.run(TransactionDataTracker.java:243)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+26.02.2026 09:07:58,161 [COMMON] WARN  [CassandraTransactionDataPersister pool-37-thread-1] - processInTransactionItems: storedItems is empty for lockId=UVUUBgRWVFlXUUdcXVABCA8DWFwcQ1lFVV5QTU5QDw8aBAEODA
+26.02.2026 09:07:58,166 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-1] - persist(UVUUBgRWVFlXUUdcXVABCA8DWFwcQ1lFVV5QTU5QDw8aBAEODA): TransactionData[version=1453, writeTime=1772096878164001, accountId=122882, account=null, playerSession=SessionInfo [com.dgphoenix.casino.common.cache.data.session.SessionInfo@57c1eb14, accountId=122882, sessionId=1_b4d39b407f3f668081630000019c9ed8_UVUUBgRWVFlXUUdcXVABCA8DWFwcQ1lFVV5QTU5QDw8aBAEODA, clientType=FLASH, host=172.67.221.59, startTime=Wed Feb 18 13:09:25 UTC 2026, endTime=null, lastActivityTime=Wed Feb 18 13:09:25 UTC 2026, loginServerId=1, externalSessionId=1_45e8996c5da0668081620000019cab3f_UVUUBgRWVFlXUUdcXVABCA8DWFwcQ1lFVV5QTU5QDw8aBAEODA, gameSessionId=null, playedGamesCount=0, lastPlayedMode=0, lastCloseGameReason=null, lastGameSessionId=null, lastRealityCheckTime=1771420165245, casinoLoginTime=1771420165245, realityCheckInterval=0, forceHttps=false, privateRoomId=null], gameSession=null, lasthand=null, lastBet=null, wallet=null, paymentTransaction=null, lastUpdateInfo='1_pool-37-thread-1_1772096878164000', bonus=null, frBonus=null, frbWin=null, frbNotification=null, promoMemberInfos=null, trackingState=TrackingState [gameServerId=1, status=ONLINE], trackingStateChanged=false, atomicallyStoredData={}, appliedAutoFinishLogic=false]
+26.02.2026 09:07:58,171 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-1] - unlock: UVUUBgRWVFlXUUdcXVABCA8DWFwcQ1lFVV5QTU5QDw8aBAEODA
+26.02.2026 09:07:58,171 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-1] - try lock: V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA
+26.02.2026 09:07:58,179 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-1] - lockChanged: ServerLockInfo[lockId=V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA, serverId=1, lockTime=1772096878177, timeStamp=Thu Feb 26 09:02:32 UTC 2026, lastLockerServerId=1]
+26.02.2026 09:07:58,182 [COMMON] ERROR [LogoutTask pool-37-thread-1] - Cannot logout: 
+com.dgphoenix.casino.common.exception.CommonException: AccountInfo is null: accountId=122883
+	at com.dgphoenix.casino.sm.tracker.logout.LogoutTask.process(LogoutTask.java:76)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.processLogout(TransactionDataTracker.java:400)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessOnlineTransactionsTask.process(TransactionDataTracker.java:537)
+	at com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.processTransactions(CassandraTransactionDataPersister.java:416)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.run(TransactionDataTracker.java:243)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+26.02.2026 09:07:58,182 [ERROR] ERROR [LogoutTask pool-37-thread-1] - Cannot logout: 
+com.dgphoenix.casino.common.exception.CommonException: AccountInfo is null: accountId=122883
+	at com.dgphoenix.casino.sm.tracker.logout.LogoutTask.process(LogoutTask.java:76)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.processLogout(TransactionDataTracker.java:400)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessOnlineTransactionsTask.process(TransactionDataTracker.java:537)
+	at com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.processTransactions(CassandraTransactionDataPersister.java:416)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.run(TransactionDataTracker.java:243)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+26.02.2026 09:07:58,182 [COMMON] WARN  [CassandraTransactionDataPersister pool-37-thread-1] - processInTransactionItems: storedItems is empty for lockId=V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA
+26.02.2026 09:07:58,184 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-1] - persist(V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA): TransactionData[version=1451, writeTime=1772096878186001, accountId=122883, account=null, playerSession=SessionInfo [com.dgphoenix.casino.common.cache.data.session.SessionInfo@48fca234, accountId=122883, sessionId=1_5edc20e59b1a668081660000019c9ac3_V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA, clientType=FLASH, host=172.67.221.59, startTime=Wed Feb 18 13:13:13 UTC 2026, endTime=null, lastActivityTime=Wed Feb 18 13:13:13 UTC 2026, loginServerId=1, externalSessionId=1_8d20ee94d84d668081650000019ca891_V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA, gameSessionId=null, playedGamesCount=0, lastPlayedMode=0, lastCloseGameReason=null, lastGameSessionId=null, lastRealityCheckTime=1771420393839, casinoLoginTime=1771420393839, realityCheckInterval=0, forceHttps=false, privateRoomId=null], gameSession=null, lasthand=null, lastBet=null, wallet=null, paymentTransaction=null, lastUpdateInfo='1_pool-37-thread-1_1772096878186000', bonus=null, frBonus=null, frbWin=null, frbNotification=null, promoMemberInfos=null, trackingState=TrackingState [gameServerId=1, status=ONLINE], trackingStateChanged=false, atomicallyStoredData={}, appliedAutoFinishLogic=false]
+26.02.2026 09:07:58,190 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-1] - unlock: V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA
+26.02.2026 09:07:58,190 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-1] - try lock: VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA
+26.02.2026 09:07:58,200 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-1] - lockChanged: ServerLockInfo[lockId=VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA, serverId=1, lockTime=1772096878197, timeStamp=Thu Feb 26 09:02:32 UTC 2026, lastLockerServerId=1]
+26.02.2026 09:07:58,203 [COMMON] ERROR [LogoutTask pool-37-thread-1] - Cannot logout: 
+com.dgphoenix.casino.common.exception.CommonException: AccountInfo is null: accountId=122884
+	at com.dgphoenix.casino.sm.tracker.logout.LogoutTask.process(LogoutTask.java:76)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.processLogout(TransactionDataTracker.java:400)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessOnlineTransactionsTask.process(TransactionDataTracker.java:537)
+	at com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.processTransactions(CassandraTransactionDataPersister.java:416)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.run(TransactionDataTracker.java:243)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+26.02.2026 09:07:58,203 [ERROR] ERROR [LogoutTask pool-37-thread-1] - Cannot logout: 
+com.dgphoenix.casino.common.exception.CommonException: AccountInfo is null: accountId=122884
+	at com.dgphoenix.casino.sm.tracker.logout.LogoutTask.process(LogoutTask.java:76)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.processLogout(TransactionDataTracker.java:400)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessOnlineTransactionsTask.process(TransactionDataTracker.java:537)
+	at com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.processTransactions(CassandraTransactionDataPersister.java:416)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.run(TransactionDataTracker.java:243)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+26.02.2026 09:07:58,203 [COMMON] WARN  [CassandraTransactionDataPersister pool-37-thread-1] - processInTransactionItems: storedItems is empty for lockId=VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA
+26.02.2026 09:07:58,206 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-1] - persist(VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA): TransactionData[version=1451, writeTime=1772096878207001, accountId=122884, account=null, playerSession=SessionInfo [com.dgphoenix.casino.common.cache.data.session.SessionInfo@ea673c66, accountId=122884, sessionId=1_a10b4703229b668081690000019cbe35_VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA, clientType=FLASH, host=172.67.221.59, startTime=Wed Feb 18 13:13:28 UTC 2026, endTime=null, lastActivityTime=Wed Feb 18 13:13:28 UTC 2026, loginServerId=1, externalSessionId=1_44f7ca1a27c1668081680000019c8d2a_VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA, gameSessionId=null, playedGamesCount=0, lastPlayedMode=0, lastCloseGameReason=null, lastGameSessionId=null, lastRealityCheckTime=1771420408927, casinoLoginTime=1771420408927, realityCheckInterval=0, forceHttps=false, privateRoomId=null], gameSession=null, lasthand=null, lastBet=null, wallet=null, paymentTransaction=null, lastUpdateInfo='1_pool-37-thread-1_1772096878207000', bonus=null, frBonus=null, frbWin=null, frbNotification=null, promoMemberInfos=null, trackingState=TrackingState [gameServerId=1, status=ONLINE], trackingStateChanged=false, atomicallyStoredData={}, appliedAutoFinishLogic=false]
+26.02.2026 09:07:58,212 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-1] - unlock: VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA
+26.02.2026 09:07:58,218 [COMMON] DEBUG [DistributedLockManager pool-37-thread-1] - unlock: TD_ONLINE_LOCK_1
+26.02.2026 09:07:58,218 [COMMON] DEBUG [TransactionDataTracker pool-37-thread-1] - ProcessTransactionsTask: end trackingStatus=ONLINE, gameServerId=1
+26.02.2026 09:08:00,963 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:08:05,886 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-2] - Start task
+26.02.2026 09:08:05,956 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:08:10,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:08:15,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-8] - Start task
+26.02.2026 09:08:15,887 [COMMON] DEBUG [DistributedLockManager pool-11-thread-1] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:08:15,908 [COMMON] DEBUG [DistributedLockManager pool-11-thread-1] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:08:15,949 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-9] - Start task
+26.02.2026 09:08:15,956 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:08:17,094 [COMMON] DEBUG [TournamentsManager pool-11-thread-10] - Start task
+26.02.2026 09:08:17,094 [COMMON] DEBUG [TournamentsManager pool-11-thread-10] - PlacesUpdater: updatePlaces started
+26.02.2026 09:08:17,303 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-3] - Start task
+26.02.2026 09:08:17,303 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-6] - Start task
+26.02.2026 09:08:20,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:08:25,260 [COMMON] INFO  [DBLinkCache pool-5-thread-1] - Running cleaner
+26.02.2026 09:08:25,260 [COMMON] INFO  [DBLinkCache pool-5-thread-1] - Removed old DBLinks: 0
+26.02.2026 09:08:25,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-5] - Start task
+26.02.2026 09:08:25,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:08:25,913 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:08:25,961 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:08:30,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:08:35,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-5] - Start task
+26.02.2026 09:08:35,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:08:35,910 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:08:35,962 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:08:40,960 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:08:45,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:08:45,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-6] - Start task
+26.02.2026 09:08:45,907 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:08:45,949 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-2] - Start task
+26.02.2026 09:08:45,964 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:08:47,236 [COMMON] DEBUG [DelayedMassAwardManager pool-11-thread-8] - Start task
+26.02.2026 09:08:47,239 [COMMON] DEBUG [DelayedMassAwardManager pool-11-thread-8] - End task
+26.02.2026 09:08:47,305 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-4] - Start task
+26.02.2026 09:08:48,396 [COMMON] DEBUG [ClientSystemDiagnosisServlet pool-11-thread-9] - Start task
+26.02.2026 09:08:48,397 [COMMON] DEBUG [CassandraStateCheckTask pool-11-thread-9] - Failed to resolve Cassandra JMX hosts from driver metadata for keyspace RCasinoKS: com.dgphoenix.casino.cassandra.IKeyspaceManager.getAllHostAddresses()Ljava/util/Set;
+26.02.2026 09:08:48,397 [COMMON] DEBUG [CassandraStateCheckTask pool-11-thread-9] - Failed to resolve Cassandra JMX hosts from driver metadata for keyspace RCasinoSCKS: com.dgphoenix.casino.cassandra.IKeyspaceManager.getAllHostAddresses()Ljava/util/Set;
+26.02.2026 09:08:48,397 [COMMON] WARN  [CassandraStateCheckTask pool-11-thread-9] - Cannot obtain Cassandra host list for diagnosis
+26.02.2026 09:08:48,400 [COMMON] DEBUG [ClientSystemDiagnosisServlet pool-11-thread-9] - End task
+26.02.2026 09:08:48,416 [COMMON] WARN  [ShutdownFilter pool-11-thread-10] - getActiveThreadsCount: load error, attribute not found: threads=null, idleThreads=null
+26.02.2026 09:08:48,416 [STATISTICS] INFO  [StatisticsLogger pool-11-thread-10] - === RequestStatistics [1] ===
+Last reset date: Thu Feb 26 09:06:54 UTC 2026
+
+count=       5	avg=   6	min=   5	max=   6	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager delete
+count=       5	avg=   5	min=   5	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute delete
+count=       5	avg=   2	min=   1	max=   3	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute getCurrentLocker
+count=       5	avg=   5	min=   5	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute persist: update
+count=       5	avg=   2	min=   1	max=   3	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager getCurrentLocker
+count=       5	avg=   9	min=   8	max=  10	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager lock
+count=       5	avg=   6	min=   5	max=   6	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager unlock
+count=       1	avg=   1	min=   1	max=   1	 [pool-11-thread-8]		Thu Feb 26 09:08:47 UTC 2026		CassandraDelayedMassAwardPersister execute getUncompleted
+count=       1	avg=   2	min=   2	max=   2	 [pool-11-thread-8]		Thu Feb 26 09:08:47 UTC 2026		CassandraDelayedMassAwardPersister getUncompleted
+count=      24	avg=   2	min=   1	max=   2	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute getFirstLogTime
+count=      24	avg=   2	min=   1	max=   2	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute getLastStatTime
+count=       1	avg=   1	min=   1	max=   1	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute persistStat in batch
+count=      13	avg=   2	min=   1	max=   3	 [pool-11-thread-7]		Thu Feb 26 09:08:45 UTC 2026		CassandraPromoCampaignPersister execute selectCampaignsByClause
+count=      12	avg=   2	min=   1	max=   3	 [pool-17-thread-2]		Thu Feb 26 09:08:43 UTC 2026		CassandraRemoteCallPersister execute getRemoteCalls
+count=      12	avg=   2	min=   1	max=   3	 [pool-17-thread-2]		Thu Feb 26 09:08:43 UTC 2026		CassandraRemoteCallPersister getRemoteCalls
+count=      12	avg=   2	min=   1	max=   3	 [pool-17-thread-1]		Thu Feb 26 09:08:32 UTC 2026		CassandraServerInfoPersister execute persist
+count=       2	avg=   2	min=   2	max=   2	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute getByTrackingStatusAndGameServer
+count=       5	avg=   3	min=   2	max=   5	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute getFromDB
+count=       3	avg=   2	min=   2	max=   3	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute persist
+count=       5	avg=   5	min=   2	max=  10	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister get
+count=       3	avg=   4	min=   2	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister persist
+count=       2	avg=  60	min=   4	max= 116	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister processTransactions
+count=       1	avg=   0	min=   0	max=   0	 [pool-5-thread-1]		Thu Feb 26 09:08:25 UTC 2026		DBLinkCache cleaner
+count=       6	avg=   6	min=   5	max=   8	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:35 UTC 2026		DistributedLockManager delete
+count=       6	avg=   6	min=   5	max=   7	 [pool-11-thread-7]		Thu Feb 26 09:08:45 UTC 2026		DistributedLockManager execute delete
+count=       3	avg=   3	min=   3	max=   3	 [pool-11-thread-1]		Thu Feb 26 09:08:15 UTC 2026		DistributedLockManager execute getCurrentLocker
+count=       6	avg=   8	min=   5	max=  17	 [pool-11-thread-7]		Thu Feb 26 09:08:25 UTC 2026		DistributedLockManager execute persist: update
+count=       3	avg=   3	min=   3	max=   3	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:15 UTC 2026		DistributedLockManager getCurrentLocker
+count=       6	avg=  11	min=   9	max=  17	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:25 UTC 2026		DistributedLockManager lock
+count=       6	avg=   6	min=   5	max=   8	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:35 UTC 2026		DistributedLockManager unlock
+count=       3	avg= 290	min= 290	max= 290	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper buffer length
+count=       3	avg= 290	min= 290	max= 290	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper com.dgphoenix.casino.common.cache.data.session.SessionInfo buffer length
+count=      15	avg=   0	min=   0	max=   1	 [pool-17-thread-1]		Thu Feb 26 09:08:47 UTC 2026		FastKryoHelper createOutput
+count=      50	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper deserializeFrom
+count=      10	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper deserializeWithClassFrom
+count=      42	avg=   0	min=   0	max=   2	 [pool-17-thread-1]		Thu Feb 26 09:07:52 UTC 2026		FastKryoHelper serializeToBytes
+count=       6	avg=   0	min=   0	max=   0	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper serializeWithClassToBytes
+count=       6	avg=   0	min=   0	max=   0	 [pool-24-thread-1]		Thu Feb 26 09:08:47 UTC 2026		LocalSessionTracker execution time
+count=       3	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		LogoutTask:process 1
+count=       4	avg=  25	min=  23	max=  29	 [pool-11-thread-7]		Thu Feb 26 09:08:25 UTC 2026		PromoCampaignProcessor: run
+count=     300	avg=  20	min=  16	max=  46	 [pool-2-thread-1]		Thu Feb 26 09:08:21 UTC 2026		TimeUpdater
+
+AccountDistributedLockManager locks size: localLocks size=5, serverLocks=CacheStats{hitCount=5, missCount=5, loadSuccessCount=5, loadExceptionCount=0, totalLoadTime=11429666, evictionCount=0}
+BaseGameCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+BasicTransactionDataStorageHelper: matchedLockerCount=5, misMatchedLockerCount=0
+BonusTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=20, currentPoolSize=0, completedTaskCount=0
+CassandraPersistenceManager: keySpace=RCasinoKS: knownHosts=1, connectedToHosts=1, openedConnections=3, trashedConnections=0, blockingTasks=0, nonBlockingTasks=0, requestsTimer[requestsCount=55, meanRate=0.4845839550051824, 1minRate=0.46398232476417267, 5minRate=0.5681816698857123, 15minRate=0.5884155379162486], latency[min=614708, max=5110666, mean=1683245.2474671751, median=1815375.0, stdDev=741940.0152512926], errors[connectionErrors=0, ignores=0, ignoresOnReadTimeout=0, ignoresOnWriteTimeout=0, ignoresOnUnavailable=0, retries=0, retriesOnReadTimeout=0, retriesOnWriteTimeout=0, retriesOnUnavailable=0, readTimeout=0, writeTimeout=0, unavailable=0, others=0, speculativeExecutions=0]
+CassandraPersistenceManager: keySpace=RCasinoSCKS: knownHosts=1, connectedToHosts=1, openedConnections=3, trashedConnections=0, blockingTasks=0, nonBlockingTasks=0, requestsTimer[requestsCount=579, meanRate=5.113962608224547, 1minRate=3.601675848760192, 5minRate=3.320335670960163, 15minRate=2.889092864171746], latency[min=460750, max=15874041, mean=1992814.3117300293, median=1690708.0, stdDev=1540581.961793696], errors[connectionErrors=0, ignores=0, ignoresOnReadTimeout=0, ignoresOnWriteTimeout=0, ignoresOnUnavailable=0, retries=0, retriesOnReadTimeout=0, retriesOnWriteTimeout=0, retriesOnUnavailable=0, readTimeout=0, writeTimeout=0, unavailable=0, others=0, speculativeExecutions=0]
+CassandraTransactionDataPersister cache size: size=5, stats=CacheStats{hitCount=0, missCount=10, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+CloseGameSessionNotifyTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+CommonExecutorService: poolSize=10, corePoolSize=10, largestPoolSize=10, maximumPoolSize=2147483647, completedTaskCount=24, taskCount=37, activeCount=1, executionTaskCounter= {=1, ExpiredMassAwardTracker$$Lambda$468/1998511629=1, PlacesUpdater=1, BalanceUpdater=1, FlushTask=1, PromoCampaignProcessor=1, DelayedMassAwardManager$$Lambda$469/1165449749=1, WebSocketSessionsKeeper=2, PeriodicUpdater=1, PromoCampaignManager$$Lambda$242/438188203=1, MqTournamentRankUpdater=1, ClientSystemDiagnosisServlet$$Lambda$528/308002829=1, CPUUpdater=1}
+CurrencyCache statistics: size=15, stats=CacheStats{hitCount=21, missCount=15, loadSuccessCount=15, loadExceptionCount=0, totalLoadTime=16460, evictionCount=0}
+DBLinkCache cleanerTotalCount: 0
+DBLinkCache size: 0
+DelayedExecutor: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+DistributedLockManager locks size: localLocks size=3, serverLocks=CacheStats{hitCount=9, missCount=3, loadSuccessCount=3, loadExceptionCount=0, totalLoadTime=8699500, evictionCount=0}
+DomainSession activeTransactionsCount: 0
+ExpiredFRBonusTracker: Expired bonuses count: 0
+ExpiredMassAwardTracker: Expired bonuses count: 0
+ExternalGameIdsCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+FRBonusNotificationTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=5, currentPoolSize=0, completedTaskCount=0
+FRBonusWinTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=5, currentPoolSize=0, completedTaskCount=0
+FastKryoHelper pool size: 1
+GameServer: started=Thu Feb 26 09:07:48 UTC 2026, serverId=1, name=GS_1, upTime=92744
+HttpClientConnection: activeConnectionsCount=0, connectionManager.totalStats=[leased: 0; pending: 0; available: 0; max: 5000], maxTotal=5000, timeoutCount=0, connectionErrorsCount=231, configurableHostNameVerifier=ConfigurableHostNameVerifier[originalVerifier=BROWSER_COMPATIBLE, trustedHosts=[], trustAll=false], proxy=null
+LeaderboardWinTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+LocalSessionTracker: size=0
+LogoutTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=51, currentPoolSize=0, completedTaskCount=0
+MassAwardBonusManager : restrictionCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+NtpTimeProvider: Last updated: Thu Feb 26 09:08:48 UTC 2026 Offset: 5 minOffset: -8 maxOffset: 10 timeInfo.returnTime=Thu Feb 26 09:08:48 UTC 2026
+PaymentTransactionTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=50, currentPoolSize=0, completedTaskCount=0
+PingSessionCache statistics: poolSize=0, taskCount=0, errorCount=0, runCount=0, checkSidCount=0
+PlayerAliasService : aliasesCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+PromoMessagesDispatcher: Sessions by campaigns: campaigns = 0, sendersPeek: 0
+SharedServletExecutorService: : , completedTaskCount=0, activeThreadsCount=0, maxThreadsCount=500, currentPoolSize=0, largestPoolSize=0
+ShutdownFilter: initialized=true, activeThreadsCount=null
+SynchroTimeProvider:  Offset: 0 minOffset: 9223372036854775807 maxOffset: -9223372036854775808
+TournamentBuilder: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+TournamentWebSocketSessionsController: clients count=0
+WalletTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=50, currentPoolSize=0, completedTaskCount=0
+WebSocketSessionsController: sessions count=0
+WebSocketSessionsKeeper: pingsCount=0
+
+26.02.2026 09:08:50,963 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:08:55,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-6] - Start task
+26.02.2026 09:08:55,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:08:55,907 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:08:55,966 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:09:00,961 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:09:05,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:09:05,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-1] - Start task
+26.02.2026 09:09:05,904 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:09:05,964 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:09:10,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:09:15,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-10] - Start task
+26.02.2026 09:09:15,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:09:15,907 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:09:15,950 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-8] - Start task
+26.02.2026 09:09:15,960 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:09:17,097 [COMMON] DEBUG [TournamentsManager pool-11-thread-5] - Start task
+26.02.2026 09:09:17,097 [COMMON] DEBUG [TournamentsManager pool-11-thread-5] - PlacesUpdater: updatePlaces started
+26.02.2026 09:09:17,304 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-7] - Start task
+26.02.2026 09:09:17,307 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-2] - Start task
+26.02.2026 09:09:20,962 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:09:25,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-6] - Start task
+26.02.2026 09:09:25,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-4] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:09:25,909 [COMMON] DEBUG [DistributedLockManager pool-11-thread-4] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:09:25,958 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:09:30,958 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:09:35,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-3] - Start task
+26.02.2026 09:09:35,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-4] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:09:35,906 [COMMON] DEBUG [DistributedLockManager pool-11-thread-4] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:09:35,956 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:09:40,961 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:09:45,886 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:09:45,886 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-4] - Start task
+26.02.2026 09:09:45,909 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:09:45,951 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-9] - Start task
+26.02.2026 09:09:45,957 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:09:47,111 [COMMON] DEBUG [SummaryTournamentFeedWriter pool-11-thread-2] - PeriodicUpdater: run, voted as master
+26.02.2026 09:09:47,236 [COMMON] DEBUG [DelayedMassAwardManager pool-11-thread-1] - Start task
+26.02.2026 09:09:47,238 [COMMON] DEBUG [DelayedMassAwardManager pool-11-thread-1] - End task
+26.02.2026 09:09:47,309 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-10] - Start task
+26.02.2026 09:09:48,401 [COMMON] DEBUG [ClientSystemDiagnosisServlet pool-11-thread-5] - Start task
+26.02.2026 09:09:48,402 [COMMON] DEBUG [CassandraStateCheckTask pool-11-thread-5] - Failed to resolve Cassandra JMX hosts from driver metadata for keyspace RCasinoKS: com.dgphoenix.casino.cassandra.IKeyspaceManager.getAllHostAddresses()Ljava/util/Set;
+26.02.2026 09:09:48,402 [COMMON] DEBUG [CassandraStateCheckTask pool-11-thread-5] - Failed to resolve Cassandra JMX hosts from driver metadata for keyspace RCasinoSCKS: com.dgphoenix.casino.cassandra.IKeyspaceManager.getAllHostAddresses()Ljava/util/Set;
+26.02.2026 09:09:48,402 [COMMON] WARN  [CassandraStateCheckTask pool-11-thread-5] - Cannot obtain Cassandra host list for diagnosis
+26.02.2026 09:09:48,408 [COMMON] DEBUG [ClientSystemDiagnosisServlet pool-11-thread-5] - End task
+26.02.2026 09:09:48,421 [COMMON] WARN  [ShutdownFilter pool-11-thread-6] - getActiveThreadsCount: load error, attribute not found: threads=null, idleThreads=null
+26.02.2026 09:09:48,421 [STATISTICS] INFO  [StatisticsLogger pool-11-thread-6] - === RequestStatistics [1] ===
+Last reset date: Thu Feb 26 09:06:54 UTC 2026
+
+count=       5	avg=   6	min=   5	max=   6	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager delete
+count=       5	avg=   5	min=   5	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute delete
+count=       5	avg=   2	min=   1	max=   3	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute getCurrentLocker
+count=       5	avg=   5	min=   5	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute persist: update
+count=       5	avg=   2	min=   1	max=   3	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager getCurrentLocker
+count=       5	avg=   9	min=   8	max=  10	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager lock
+count=       5	avg=   6	min=   5	max=   6	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager unlock
+count=       2	avg=   2	min=   1	max=   2	 [pool-11-thread-1]		Thu Feb 26 09:09:47 UTC 2026		CassandraDelayedMassAwardPersister execute getUncompleted
+count=       2	avg=   2	min=   2	max=   2	 [pool-11-thread-1]		Thu Feb 26 09:09:47 UTC 2026		CassandraDelayedMassAwardPersister getUncompleted
+count=      24	avg=   2	min=   1	max=   2	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute getFirstLogTime
+count=      24	avg=   2	min=   1	max=   2	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute getLastStatTime
+count=       1	avg=   1	min=   1	max=   1	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute persistStat in batch
+count=      32	avg=   2	min=   1	max=   4	 [pool-11-thread-3]		Thu Feb 26 09:09:45 UTC 2026		CassandraPromoCampaignPersister execute selectCampaignsByClause
+count=      24	avg=   1	min=   0	max=   3	 [pool-17-thread-2]		Thu Feb 26 09:08:43 UTC 2026		CassandraRemoteCallPersister execute getRemoteCalls
+count=      24	avg=   2	min=   0	max=   3	 [pool-17-thread-2]		Thu Feb 26 09:08:43 UTC 2026		CassandraRemoteCallPersister getRemoteCalls
+count=      24	avg=   2	min=   1	max=   4	 [pool-17-thread-1]		Thu Feb 26 09:09:42 UTC 2026		CassandraServerInfoPersister execute persist
+count=       1	avg=   2	min=   2	max=   2	 [pool-11-thread-2]		Thu Feb 26 09:09:47 UTC 2026		CassandraSummaryTournamentPromoFeedPersister execute getAllFeeds
+count=       2	avg=   2	min=   2	max=   2	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute getByTrackingStatusAndGameServer
+count=       5	avg=   3	min=   2	max=   5	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute getFromDB
+count=       3	avg=   2	min=   2	max=   3	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute persist
+count=       5	avg=   5	min=   2	max=  10	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister get
+count=       3	avg=   4	min=   2	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister persist
+count=       2	avg=  60	min=   4	max= 116	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister processTransactions
+count=       1	avg=   0	min=   0	max=   0	 [pool-5-thread-1]		Thu Feb 26 09:08:25 UTC 2026		DBLinkCache cleaner
+count=      12	avg=   6	min=   5	max=   8	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:35 UTC 2026		DistributedLockManager delete
+count=      12	avg=   6	min=   5	max=   7	 [pool-11-thread-4]		Thu Feb 26 09:09:25 UTC 2026		DistributedLockManager execute delete
+count=       3	avg=   3	min=   3	max=   3	 [pool-11-thread-1]		Thu Feb 26 09:08:15 UTC 2026		DistributedLockManager execute getCurrentLocker
+count=      12	avg=   7	min=   5	max=  17	 [pool-11-thread-7]		Thu Feb 26 09:08:25 UTC 2026		DistributedLockManager execute persist: update
+count=       3	avg=   3	min=   3	max=   3	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:15 UTC 2026		DistributedLockManager getCurrentLocker
+count=      12	avg=   9	min=   5	max=  17	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:25 UTC 2026		DistributedLockManager lock
+count=      12	avg=   6	min=   5	max=   8	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:35 UTC 2026		DistributedLockManager unlock
+count=       3	avg= 290	min= 290	max= 290	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper buffer length
+count=       3	avg= 290	min= 290	max= 290	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper com.dgphoenix.casino.common.cache.data.session.SessionInfo buffer length
+count=      27	avg=   0	min=   0	max=   1	 [pool-17-thread-1]		Thu Feb 26 09:08:47 UTC 2026		FastKryoHelper createOutput
+count=      50	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper deserializeFrom
+count=      10	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper deserializeWithClassFrom
+count=      54	avg=   0	min=   0	max=   2	 [pool-17-thread-1]		Thu Feb 26 09:07:52 UTC 2026		FastKryoHelper serializeToBytes
+count=       6	avg=   0	min=   0	max=   0	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper serializeWithClassToBytes
+count=      12	avg=   0	min=   0	max=   0	 [pool-24-thread-1]		Thu Feb 26 09:09:47 UTC 2026		LocalSessionTracker execution time
+count=       3	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		LogoutTask:process 1
+count=      10	avg=  24	min=  20	max=  29	 [pool-11-thread-7]		Thu Feb 26 09:08:25 UTC 2026		PromoCampaignProcessor: run
+count=     600	avg=  19	min=  16	max=  46	 [pool-2-thread-1]		Thu Feb 26 09:08:21 UTC 2026		TimeUpdater
+
+AccountDistributedLockManager locks size: localLocks size=5, serverLocks=CacheStats{hitCount=5, missCount=5, loadSuccessCount=5, loadExceptionCount=0, totalLoadTime=11429666, evictionCount=0}
+BaseGameCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+BasicTransactionDataStorageHelper: matchedLockerCount=5, misMatchedLockerCount=0
+BonusTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=20, currentPoolSize=0, completedTaskCount=0
+CassandraPersistenceManager: keySpace=RCasinoKS: knownHosts=1, connectedToHosts=1, openedConnections=3, trashedConnections=0, blockingTasks=0, nonBlockingTasks=0, requestsTimer[requestsCount=56, meanRate=0.3227496047876222, 1minRate=0.17068955834767063, 5minRate=0.4651878064706345, 15minRate=0.5504668458217871], latency[min=614708, max=5110666, mean=1777256.513987527, median=1866750.0, stdDev=760172.5428093739], errors[connectionErrors=0, ignores=0, ignoresOnReadTimeout=0, ignoresOnWriteTimeout=0, ignoresOnUnavailable=0, retries=0, retriesOnReadTimeout=0, retriesOnWriteTimeout=0, retriesOnUnavailable=0, readTimeout=0, writeTimeout=0, unavailable=0, others=0, speculativeExecutions=0]
+CassandraPersistenceManager: keySpace=RCasinoSCKS: knownHosts=1, connectedToHosts=1, openedConnections=3, trashedConnections=0, blockingTasks=0, nonBlockingTasks=0, requestsTimer[requestsCount=635, meanRate=3.6656879778299425, 1minRate=1.8976654756551783, 5minRate=2.886641346766317, 15minRate=2.762840715161806], latency[min=460750, max=15874041, mean=2226386.594838619, median=1832125.0, stdDev=1691065.3464005617], errors[connectionErrors=0, ignores=0, ignoresOnReadTimeout=0, ignoresOnWriteTimeout=0, ignoresOnUnavailable=0, retries=0, retriesOnReadTimeout=0, retriesOnWriteTimeout=0, retriesOnUnavailable=0, readTimeout=0, writeTimeout=0, unavailable=0, others=0, speculativeExecutions=0]
+CassandraTransactionDataPersister cache size: size=5, stats=CacheStats{hitCount=0, missCount=10, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+CloseGameSessionNotifyTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+CommonExecutorService: poolSize=10, corePoolSize=10, largestPoolSize=10, maximumPoolSize=2147483647, completedTaskCount=46, taskCount=59, activeCount=1, executionTaskCounter= {=1, ExpiredMassAwardTracker$$Lambda$468/1998511629=1, PlacesUpdater=1, BalanceUpdater=1, FlushTask=1, PromoCampaignProcessor=1, DelayedMassAwardManager$$Lambda$469/1165449749=1, WebSocketSessionsKeeper=2, PeriodicUpdater=1, PromoCampaignManager$$Lambda$242/438188203=1, MqTournamentRankUpdater=1, ClientSystemDiagnosisServlet$$Lambda$528/308002829=1, CPUUpdater=1}
+CurrencyCache statistics: size=15, stats=CacheStats{hitCount=21, missCount=15, loadSuccessCount=15, loadExceptionCount=0, totalLoadTime=16460, evictionCount=0}
+DBLinkCache cleanerTotalCount: 0
+DBLinkCache size: 0
+DelayedExecutor: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+DistributedLockManager locks size: localLocks size=3, serverLocks=CacheStats{hitCount=21, missCount=3, loadSuccessCount=3, loadExceptionCount=0, totalLoadTime=8699500, evictionCount=0}
+DomainSession activeTransactionsCount: 0
+ExpiredFRBonusTracker: Expired bonuses count: 0
+ExpiredMassAwardTracker: Expired bonuses count: 0
+ExternalGameIdsCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+FRBonusNotificationTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=5, currentPoolSize=0, completedTaskCount=0
+FRBonusWinTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=5, currentPoolSize=0, completedTaskCount=0
+FastKryoHelper pool size: 1
+GameServer: started=Thu Feb 26 09:07:48 UTC 2026, serverId=1, name=GS_1, upTime=152751
+HttpClientConnection: activeConnectionsCount=0, connectionManager.totalStats=[leased: 0; pending: 0; available: 0; max: 5000], maxTotal=5000, timeoutCount=0, connectionErrorsCount=231, configurableHostNameVerifier=ConfigurableHostNameVerifier[originalVerifier=BROWSER_COMPATIBLE, trustedHosts=[], trustAll=false], proxy=null
+LeaderboardWinTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+LocalSessionTracker: size=0
+LogoutTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=51, currentPoolSize=0, completedTaskCount=0
+MassAwardBonusManager : restrictionCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+NtpTimeProvider: Last updated: Thu Feb 26 09:09:48 UTC 2026 Offset: 6 minOffset: -8 maxOffset: 10 timeInfo.returnTime=Thu Feb 26 09:09:48 UTC 2026
+PaymentTransactionTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=50, currentPoolSize=0, completedTaskCount=0
+PingSessionCache statistics: poolSize=0, taskCount=0, errorCount=0, runCount=0, checkSidCount=0
+PlayerAliasService : aliasesCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+PromoMessagesDispatcher: Sessions by campaigns: campaigns = 0, sendersPeek: 0
+SharedServletExecutorService: : , completedTaskCount=0, activeThreadsCount=0, maxThreadsCount=500, currentPoolSize=0, largestPoolSize=0
+ShutdownFilter: initialized=true, activeThreadsCount=null
+SynchroTimeProvider:  Offset: 0 minOffset: 9223372036854775807 maxOffset: -9223372036854775808
+TournamentBuilder: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+TournamentWebSocketSessionsController: clients count=0
+WalletTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=50, currentPoolSize=0, completedTaskCount=0
+WebSocketSessionsController: sessions count=0
+WebSocketSessionsKeeper: pingsCount=0
+
+26.02.2026 09:09:50,967 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:09:55,259 [COMMON] INFO  [DBLinkCache pool-5-thread-1] - Running cleaner
+26.02.2026 09:09:55,259 [COMMON] INFO  [DBLinkCache pool-5-thread-1] - Removed old DBLinks: 0
+26.02.2026 09:09:55,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-4] - Start task
+26.02.2026 09:09:55,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:09:55,906 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:09:55,960 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:10:00,960 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:10:05,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-2] - Start task
+26.02.2026 09:10:05,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:10:05,909 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:10:05,957 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:10:10,968 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:10:15,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-6] - Start task
+26.02.2026 09:10:15,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:10:15,903 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:10:15,952 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-1] - Start task
+26.02.2026 09:10:15,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:10:17,099 [COMMON] DEBUG [TournamentsManager pool-11-thread-3] - Start task
+26.02.2026 09:10:17,099 [COMMON] DEBUG [TournamentsManager pool-11-thread-3] - PlacesUpdater: updatePlaces started
+26.02.2026 09:10:17,305 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-8] - Start task
+26.02.2026 09:10:17,310 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-9] - Start task
+26.02.2026 09:10:20,965 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:10:25,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-10] - Start task
+26.02.2026 09:10:25,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-4] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:10:25,914 [COMMON] DEBUG [DistributedLockManager pool-11-thread-4] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:10:25,956 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:10:30,964 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:10:35,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-4] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:10:35,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-7] - Start task
+26.02.2026 09:10:35,905 [COMMON] DEBUG [DistributedLockManager pool-11-thread-4] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:10:35,977 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:10:40,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:10:45,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-7] - Start task
+26.02.2026 09:10:45,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-4] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:10:45,905 [COMMON] DEBUG [DistributedLockManager pool-11-thread-4] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:10:45,953 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-1] - Start task
+26.02.2026 09:10:45,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:10:47,236 [COMMON] DEBUG [DelayedMassAwardManager pool-11-thread-9] - Start task
+26.02.2026 09:10:47,238 [COMMON] DEBUG [DelayedMassAwardManager pool-11-thread-9] - End task
+26.02.2026 09:10:47,313 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-6] - Start task
+26.02.2026 09:10:48,410 [COMMON] DEBUG [ClientSystemDiagnosisServlet pool-11-thread-2] - Start task
+26.02.2026 09:10:48,411 [COMMON] DEBUG [CassandraStateCheckTask pool-11-thread-2] - Failed to resolve Cassandra JMX hosts from driver metadata for keyspace RCasinoKS: com.dgphoenix.casino.cassandra.IKeyspaceManager.getAllHostAddresses()Ljava/util/Set;
+26.02.2026 09:10:48,411 [COMMON] DEBUG [CassandraStateCheckTask pool-11-thread-2] - Failed to resolve Cassandra JMX hosts from driver metadata for keyspace RCasinoSCKS: com.dgphoenix.casino.cassandra.IKeyspaceManager.getAllHostAddresses()Ljava/util/Set;
+26.02.2026 09:10:48,411 [COMMON] WARN  [CassandraStateCheckTask pool-11-thread-2] - Cannot obtain Cassandra host list for diagnosis
+26.02.2026 09:10:48,416 [COMMON] DEBUG [ClientSystemDiagnosisServlet pool-11-thread-2] - End task
+26.02.2026 09:10:48,427 [COMMON] WARN  [ShutdownFilter pool-11-thread-3] - getActiveThreadsCount: load error, attribute not found: threads=null, idleThreads=null
+26.02.2026 09:10:48,428 [STATISTICS] INFO  [StatisticsLogger pool-11-thread-3] - === RequestStatistics [1] ===
+Last reset date: Thu Feb 26 09:06:54 UTC 2026
+
+count=       5	avg=   6	min=   5	max=   6	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager delete
+count=       5	avg=   5	min=   5	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute delete
+count=       5	avg=   2	min=   1	max=   3	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute getCurrentLocker
+count=       5	avg=   5	min=   5	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute persist: update
+count=       5	avg=   2	min=   1	max=   3	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager getCurrentLocker
+count=       5	avg=   9	min=   8	max=  10	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager lock
+count=       5	avg=   6	min=   5	max=   6	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager unlock
+count=       3	avg=   1	min=   1	max=   2	 [pool-11-thread-1]		Thu Feb 26 09:09:47 UTC 2026		CassandraDelayedMassAwardPersister execute getUncompleted
+count=       3	avg=   2	min=   1	max=   2	 [pool-11-thread-1]		Thu Feb 26 09:09:47 UTC 2026		CassandraDelayedMassAwardPersister getUncompleted
+count=      24	avg=   2	min=   1	max=   2	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute getFirstLogTime
+count=      24	avg=   2	min=   1	max=   2	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute getLastStatTime
+count=       1	avg=   1	min=   1	max=   1	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute persistStat in batch
+count=      51	avg=   3	min=   1	max=   5	 [pool-11-thread-4]		Thu Feb 26 09:10:35 UTC 2026		CassandraPromoCampaignPersister execute selectCampaignsByClause
+count=      36	avg=   1	min=   0	max=   3	 [pool-17-thread-2]		Thu Feb 26 09:08:43 UTC 2026		CassandraRemoteCallPersister execute getRemoteCalls
+count=      36	avg=   2	min=   0	max=   3	 [pool-17-thread-2]		Thu Feb 26 09:08:43 UTC 2026		CassandraRemoteCallPersister getRemoteCalls
+count=      36	avg=   2	min=   1	max=   4	 [pool-17-thread-1]		Thu Feb 26 09:10:33 UTC 2026		CassandraServerInfoPersister execute persist
+count=       1	avg=   2	min=   2	max=   2	 [pool-11-thread-2]		Thu Feb 26 09:09:47 UTC 2026		CassandraSummaryTournamentPromoFeedPersister execute getAllFeeds
+count=       2	avg=   2	min=   2	max=   2	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute getByTrackingStatusAndGameServer
+count=       5	avg=   3	min=   2	max=   5	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute getFromDB
+count=       3	avg=   2	min=   2	max=   3	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute persist
+count=       5	avg=   5	min=   2	max=  10	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister get
+count=       3	avg=   4	min=   2	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister persist
+count=       2	avg=  60	min=   4	max= 116	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister processTransactions
+count=       2	avg=   0	min=   0	max=   0	 [pool-5-thread-1]		Thu Feb 26 09:09:55 UTC 2026		DBLinkCache cleaner
+count=      18	avg=   6	min=   4	max=   8	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:35 UTC 2026		DistributedLockManager delete
+count=      18	avg=   6	min=   4	max=   7	 [pool-11-thread-4]		Thu Feb 26 09:10:45 UTC 2026		DistributedLockManager execute delete
+count=       3	avg=   3	min=   3	max=   3	 [pool-11-thread-1]		Thu Feb 26 09:08:15 UTC 2026		DistributedLockManager execute getCurrentLocker
+count=      18	avg=   7	min=   5	max=  17	 [pool-11-thread-7]		Thu Feb 26 09:08:25 UTC 2026		DistributedLockManager execute persist: update
+count=       3	avg=   3	min=   3	max=   3	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:15 UTC 2026		DistributedLockManager getCurrentLocker
+count=      18	avg=   9	min=   5	max=  17	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:25 UTC 2026		DistributedLockManager lock
+count=      18	avg=   6	min=   5	max=   8	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:35 UTC 2026		DistributedLockManager unlock
+count=       3	avg= 290	min= 290	max= 290	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper buffer length
+count=       3	avg= 290	min= 290	max= 290	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper com.dgphoenix.casino.common.cache.data.session.SessionInfo buffer length
+count=      39	avg=   0	min=   0	max=   1	 [pool-17-thread-1]		Thu Feb 26 09:08:47 UTC 2026		FastKryoHelper createOutput
+count=      50	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper deserializeFrom
+count=      10	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper deserializeWithClassFrom
+count=      66	avg=   0	min=   0	max=   2	 [pool-17-thread-1]		Thu Feb 26 09:07:52 UTC 2026		FastKryoHelper serializeToBytes
+count=       6	avg=   0	min=   0	max=   0	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper serializeWithClassToBytes
+count=      18	avg=   0	min=   0	max=   1	 [pool-24-thread-1]		Thu Feb 26 09:10:17 UTC 2026		LocalSessionTracker execution time
+count=       3	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		LogoutTask:process 1
+count=      16	avg=  23	min=  20	max=  29	 [pool-11-thread-4]		Thu Feb 26 09:10:25 UTC 2026		PromoCampaignProcessor: run
+count=     901	avg=  19	min=  16	max=  46	 [pool-2-thread-1]		Thu Feb 26 09:08:21 UTC 2026		TimeUpdater
+
+AccountDistributedLockManager locks size: localLocks size=5, serverLocks=CacheStats{hitCount=5, missCount=5, loadSuccessCount=5, loadExceptionCount=0, totalLoadTime=11429666, evictionCount=0}
+BaseGameCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+BasicTransactionDataStorageHelper: matchedLockerCount=5, misMatchedLockerCount=0
+BonusTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=20, currentPoolSize=0, completedTaskCount=0
+CassandraPersistenceManager: keySpace=RCasinoKS: knownHosts=1, connectedToHosts=1, openedConnections=3, trashedConnections=0, blockingTasks=0, nonBlockingTasks=0, requestsTimer[requestsCount=56, meanRate=0.23981262490745942, 1minRate=0.0691872219734224, 5minRate=0.38361553502112117, 15minRate=0.5160079242218436], latency[min=614708, max=5110666, mean=1777256.513987527, median=1866750.0, stdDev=760172.5428093739], errors[connectionErrors=0, ignores=0, ignoresOnReadTimeout=0, ignoresOnWriteTimeout=0, ignoresOnUnavailable=0, retries=0, retriesOnReadTimeout=0, retriesOnWriteTimeout=0, retriesOnUnavailable=0, readTimeout=0, writeTimeout=0, unavailable=0, others=0, speculativeExecutions=0]
+CassandraPersistenceManager: keySpace=RCasinoSCKS: knownHosts=1, connectedToHosts=1, openedConnections=3, trashedConnections=0, blockingTasks=0, nonBlockingTasks=0, requestsTimer[requestsCount=691, meanRate=2.962680217276249, 1minRate=1.2707950918469644, 5minRate=2.531562466113444, 15minRate=2.6447309478877545], latency[min=460750, max=15874041, mean=2490180.2060148786, median=1893834.0, stdDev=1934862.3720747025], errors[connectionErrors=0, ignores=0, ignoresOnReadTimeout=0, ignoresOnWriteTimeout=0, ignoresOnUnavailable=0, retries=0, retriesOnReadTimeout=0, retriesOnWriteTimeout=0, retriesOnUnavailable=0, readTimeout=0, writeTimeout=0, unavailable=0, others=0, speculativeExecutions=0]
+CassandraTransactionDataPersister cache size: size=5, stats=CacheStats{hitCount=0, missCount=10, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+CloseGameSessionNotifyTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+CommonExecutorService: poolSize=10, corePoolSize=10, largestPoolSize=10, maximumPoolSize=2147483647, completedTaskCount=67, taskCount=80, activeCount=1, executionTaskCounter= {=1, ExpiredMassAwardTracker$$Lambda$468/1998511629=1, PlacesUpdater=1, BalanceUpdater=1, FlushTask=1, PromoCampaignProcessor=1, DelayedMassAwardManager$$Lambda$469/1165449749=1, WebSocketSessionsKeeper=2, PeriodicUpdater=1, PromoCampaignManager$$Lambda$242/438188203=1, MqTournamentRankUpdater=1, ClientSystemDiagnosisServlet$$Lambda$528/308002829=1, CPUUpdater=1}
+CurrencyCache statistics: size=15, stats=CacheStats{hitCount=21, missCount=15, loadSuccessCount=15, loadExceptionCount=0, totalLoadTime=16460, evictionCount=0}
+DBLinkCache cleanerTotalCount: 0
+DBLinkCache size: 0
+DelayedExecutor: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+DistributedLockManager locks size: localLocks size=3, serverLocks=CacheStats{hitCount=33, missCount=3, loadSuccessCount=3, loadExceptionCount=0, totalLoadTime=8699500, evictionCount=0}
+DomainSession activeTransactionsCount: 0
+ExpiredFRBonusTracker: Expired bonuses count: 0
+ExpiredMassAwardTracker: Expired bonuses count: 0
+ExternalGameIdsCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+FRBonusNotificationTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=5, currentPoolSize=0, completedTaskCount=0
+FRBonusWinTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=5, currentPoolSize=0, completedTaskCount=0
+FastKryoHelper pool size: 1
+GameServer: started=Thu Feb 26 09:07:48 UTC 2026, serverId=1, name=GS_1, upTime=212758
+HttpClientConnection: activeConnectionsCount=0, connectionManager.totalStats=[leased: 0; pending: 0; available: 0; max: 5000], maxTotal=5000, timeoutCount=0, connectionErrorsCount=231, configurableHostNameVerifier=ConfigurableHostNameVerifier[originalVerifier=BROWSER_COMPATIBLE, trustedHosts=[], trustAll=false], proxy=null
+LeaderboardWinTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+LocalSessionTracker: size=0
+LogoutTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=51, currentPoolSize=0, completedTaskCount=0
+MassAwardBonusManager : restrictionCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+NtpTimeProvider: Last updated: Thu Feb 26 09:10:48 UTC 2026 Offset: 6 minOffset: -8 maxOffset: 14 timeInfo.returnTime=Thu Feb 26 09:10:48 UTC 2026
+PaymentTransactionTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=50, currentPoolSize=0, completedTaskCount=0
+PingSessionCache statistics: poolSize=0, taskCount=0, errorCount=0, runCount=0, checkSidCount=0
+PlayerAliasService : aliasesCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+PromoMessagesDispatcher: Sessions by campaigns: campaigns = 0, sendersPeek: 0
+SharedServletExecutorService: : , completedTaskCount=0, activeThreadsCount=0, maxThreadsCount=500, currentPoolSize=0, largestPoolSize=0
+ShutdownFilter: initialized=true, activeThreadsCount=null
+SynchroTimeProvider:  Offset: 0 minOffset: 9223372036854775807 maxOffset: -9223372036854775808
+TournamentBuilder: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+TournamentWebSocketSessionsController: clients count=0
+WalletTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=50, currentPoolSize=0, completedTaskCount=0
+WebSocketSessionsController: sessions count=0
+WebSocketSessionsKeeper: pingsCount=0
+
+26.02.2026 09:10:50,960 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:10:55,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-8] - Start task
+26.02.2026 09:10:55,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-10] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:10:55,903 [COMMON] DEBUG [DistributedLockManager pool-11-thread-10] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:10:55,963 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:11:00,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:11:05,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-1] - Start task
+26.02.2026 09:11:05,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-10] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:11:05,903 [COMMON] DEBUG [DistributedLockManager pool-11-thread-10] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:11:05,958 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:11:10,960 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:11:15,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-10] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:11:15,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-3] - Start task
+26.02.2026 09:11:15,904 [COMMON] DEBUG [DistributedLockManager pool-11-thread-10] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:11:15,954 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-5] - Start task
+26.02.2026 09:11:15,960 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:11:17,102 [COMMON] DEBUG [TournamentsManager pool-11-thread-7] - Start task
+26.02.2026 09:11:17,102 [COMMON] DEBUG [TournamentsManager pool-11-thread-7] - PlacesUpdater: updatePlaces started
+26.02.2026 09:11:17,306 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-4] - Start task
+26.02.2026 09:11:17,316 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-6] - Start task
+26.02.2026 09:11:20,969 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:11:25,260 [COMMON] INFO  [DBLinkCache pool-5-thread-1] - Running cleaner
+26.02.2026 09:11:25,260 [COMMON] INFO  [DBLinkCache pool-5-thread-1] - Removed old DBLinks: 0
+26.02.2026 09:11:25,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-8] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:11:25,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-2] - Start task
+26.02.2026 09:11:25,900 [COMMON] DEBUG [DistributedLockManager pool-11-thread-8] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:11:25,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:11:30,963 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:11:35,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-9] - Start task
+26.02.2026 09:11:35,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-8] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:11:35,904 [COMMON] DEBUG [DistributedLockManager pool-11-thread-8] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:11:35,957 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:11:40,960 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:11:45,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-6] - Start task
+26.02.2026 09:11:45,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-8] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:11:45,905 [COMMON] DEBUG [DistributedLockManager pool-11-thread-8] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:11:45,955 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-3] - Start task
+26.02.2026 09:11:45,956 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:11:47,115 [COMMON] DEBUG [SummaryTournamentFeedWriter pool-11-thread-5] - PeriodicUpdater: run, voted as master
+26.02.2026 09:11:47,236 [COMMON] DEBUG [DelayedMassAwardManager pool-11-thread-10] - Start task
+26.02.2026 09:11:47,237 [COMMON] DEBUG [DelayedMassAwardManager pool-11-thread-10] - End task
+26.02.2026 09:11:47,319 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-7] - Start task
+26.02.2026 09:11:48,417 [COMMON] DEBUG [ClientSystemDiagnosisServlet pool-11-thread-2] - Start task
+26.02.2026 09:11:48,418 [COMMON] DEBUG [CassandraStateCheckTask pool-11-thread-2] - Failed to resolve Cassandra JMX hosts from driver metadata for keyspace RCasinoKS: com.dgphoenix.casino.cassandra.IKeyspaceManager.getAllHostAddresses()Ljava/util/Set;
+26.02.2026 09:11:48,419 [COMMON] DEBUG [CassandraStateCheckTask pool-11-thread-2] - Failed to resolve Cassandra JMX hosts from driver metadata for keyspace RCasinoSCKS: com.dgphoenix.casino.cassandra.IKeyspaceManager.getAllHostAddresses()Ljava/util/Set;
+26.02.2026 09:11:48,419 [COMMON] WARN  [CassandraStateCheckTask pool-11-thread-2] - Cannot obtain Cassandra host list for diagnosis
+26.02.2026 09:11:48,419 [COMMON] DEBUG [ClientSystemDiagnosisServlet pool-11-thread-2] - End task
+26.02.2026 09:11:48,432 [COMMON] WARN  [ShutdownFilter pool-11-thread-4] - getActiveThreadsCount: load error, attribute not found: threads=null, idleThreads=null
+26.02.2026 09:11:48,432 [STATISTICS] INFO  [StatisticsLogger pool-11-thread-4] - === RequestStatistics [1] ===
+Last reset date: Thu Feb 26 09:06:54 UTC 2026
+
+count=       5	avg=   6	min=   5	max=   6	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager delete
+count=       5	avg=   5	min=   5	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute delete
+count=       5	avg=   2	min=   1	max=   3	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute getCurrentLocker
+count=       5	avg=   5	min=   5	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute persist: update
+count=       5	avg=   2	min=   1	max=   3	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager getCurrentLocker
+count=       5	avg=   9	min=   8	max=  10	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager lock
+count=       5	avg=   6	min=   5	max=   6	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager unlock
+count=       4	avg=   1	min=   0	max=   2	 [pool-11-thread-1]		Thu Feb 26 09:09:47 UTC 2026		CassandraDelayedMassAwardPersister execute getUncompleted
+count=       4	avg=   1	min=   0	max=   2	 [pool-11-thread-1]		Thu Feb 26 09:09:47 UTC 2026		CassandraDelayedMassAwardPersister getUncompleted
+count=      24	avg=   2	min=   1	max=   2	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute getFirstLogTime
+count=      24	avg=   2	min=   1	max=   2	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute getLastStatTime
+count=       1	avg=   1	min=   1	max=   1	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute persistStat in batch
+count=      70	avg=   3	min=   1	max=   5	 [pool-11-thread-4]		Thu Feb 26 09:10:35 UTC 2026		CassandraPromoCampaignPersister execute selectCampaignsByClause
+count=      48	avg=   1	min=   0	max=   3	 [pool-17-thread-2]		Thu Feb 26 09:08:43 UTC 2026		CassandraRemoteCallPersister execute getRemoteCalls
+count=      48	avg=   2	min=   0	max=   3	 [pool-17-thread-2]		Thu Feb 26 09:08:43 UTC 2026		CassandraRemoteCallPersister getRemoteCalls
+count=      48	avg=   2	min=   1	max=   4	 [pool-17-thread-1]		Thu Feb 26 09:10:33 UTC 2026		CassandraServerInfoPersister execute persist
+count=       2	avg=   3	min=   2	max=   3	 [pool-11-thread-5]		Thu Feb 26 09:11:47 UTC 2026		CassandraSummaryTournamentPromoFeedPersister execute getAllFeeds
+count=       2	avg=   2	min=   2	max=   2	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute getByTrackingStatusAndGameServer
+count=       5	avg=   3	min=   2	max=   5	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute getFromDB
+count=       3	avg=   2	min=   2	max=   3	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute persist
+count=       5	avg=   5	min=   2	max=  10	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister get
+count=       3	avg=   4	min=   2	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister persist
+count=       2	avg=  60	min=   4	max= 116	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister processTransactions
+count=       3	avg=   0	min=   0	max=   0	 [pool-5-thread-1]		Thu Feb 26 09:11:25 UTC 2026		DBLinkCache cleaner
+count=      24	avg=   6	min=   4	max=   8	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:35 UTC 2026		DistributedLockManager delete
+count=      24	avg=   6	min=   4	max=   7	 [pool-11-thread-4]		Thu Feb 26 09:10:45 UTC 2026		DistributedLockManager execute delete
+count=       3	avg=   3	min=   3	max=   3	 [pool-11-thread-1]		Thu Feb 26 09:08:15 UTC 2026		DistributedLockManager execute getCurrentLocker
+count=      24	avg=   7	min=   4	max=  17	 [pool-11-thread-7]		Thu Feb 26 09:08:25 UTC 2026		DistributedLockManager execute persist: update
+count=       3	avg=   3	min=   3	max=   3	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:15 UTC 2026		DistributedLockManager getCurrentLocker
+count=      24	avg=   8	min=   4	max=  17	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:25 UTC 2026		DistributedLockManager lock
+count=      24	avg=   6	min=   5	max=   8	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:35 UTC 2026		DistributedLockManager unlock
+count=       3	avg= 290	min= 290	max= 290	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper buffer length
+count=       3	avg= 290	min= 290	max= 290	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper com.dgphoenix.casino.common.cache.data.session.SessionInfo buffer length
+count=      51	avg=   0	min=   0	max=   1	 [pool-17-thread-1]		Thu Feb 26 09:08:47 UTC 2026		FastKryoHelper createOutput
+count=      50	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper deserializeFrom
+count=      10	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper deserializeWithClassFrom
+count=      78	avg=   0	min=   0	max=   2	 [pool-17-thread-1]		Thu Feb 26 09:07:52 UTC 2026		FastKryoHelper serializeToBytes
+count=       6	avg=   0	min=   0	max=   0	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper serializeWithClassToBytes
+count=      24	avg=   0	min=   0	max=   1	 [pool-24-thread-1]		Thu Feb 26 09:10:17 UTC 2026		LocalSessionTracker execution time
+count=       3	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		LogoutTask:process 1
+count=      22	avg=  22	min=  17	max=  29	 [pool-11-thread-4]		Thu Feb 26 09:10:25 UTC 2026		PromoCampaignProcessor: run
+count=    1201	avg=  19	min=  15	max=  46	 [pool-2-thread-1]		Thu Feb 26 09:08:21 UTC 2026		TimeUpdater
+
+AccountDistributedLockManager locks size: localLocks size=5, serverLocks=CacheStats{hitCount=5, missCount=5, loadSuccessCount=5, loadExceptionCount=0, totalLoadTime=11429666, evictionCount=0}
+BaseGameCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+BasicTransactionDataStorageHelper: matchedLockerCount=5, misMatchedLockerCount=0
+BonusTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=20, currentPoolSize=0, completedTaskCount=0
+CassandraPersistenceManager: keySpace=RCasinoKS: knownHosts=1, connectedToHosts=1, openedConnections=3, trashedConnections=0, blockingTasks=0, nonBlockingTasks=0, requestsTimer[requestsCount=57, meanRate=0.19419439375358877, 1minRate=0.02545255655578719, 5minRate=0.3140778358802555, 15minRate=0.4827290174412001], latency[min=614708, max=5110666, mean=1901715.6552132508, median=2064250.0, stdDev=623614.1902830047], errors[connectionErrors=0, ignores=0, ignoresOnReadTimeout=0, ignoresOnWriteTimeout=0, ignoresOnUnavailable=0, retries=0, retriesOnReadTimeout=0, retriesOnWriteTimeout=0, retriesOnUnavailable=0, readTimeout=0, writeTimeout=0, unavailable=0, others=0, speculativeExecutions=0]
+CassandraPersistenceManager: keySpace=RCasinoSCKS: knownHosts=1, connectedToHosts=1, openedConnections=3, trashedConnections=0, blockingTasks=0, nonBlockingTasks=0, requestsTimer[requestsCount=747, meanRate=2.5474057054003807, 1minRate=1.0401823653646707, 5minRate=2.2408484667544295, 15minRate=2.5342384356024215], latency[min=460750, max=15874041, mean=2479035.612114233, median=1907792.0, stdDev=1764348.4565857754], errors[connectionErrors=0, ignores=0, ignoresOnReadTimeout=0, ignoresOnWriteTimeout=0, ignoresOnUnavailable=0, retries=0, retriesOnReadTimeout=0, retriesOnWriteTimeout=0, retriesOnUnavailable=0, readTimeout=0, writeTimeout=0, unavailable=0, others=0, speculativeExecutions=0]
+CassandraTransactionDataPersister cache size: size=5, stats=CacheStats{hitCount=0, missCount=10, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+CloseGameSessionNotifyTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+CommonExecutorService: poolSize=10, corePoolSize=10, largestPoolSize=10, maximumPoolSize=2147483647, completedTaskCount=89, taskCount=102, activeCount=1, executionTaskCounter= {=1, ExpiredMassAwardTracker$$Lambda$468/1998511629=1, PlacesUpdater=1, BalanceUpdater=1, FlushTask=1, PromoCampaignProcessor=1, DelayedMassAwardManager$$Lambda$469/1165449749=1, WebSocketSessionsKeeper=2, PeriodicUpdater=1, PromoCampaignManager$$Lambda$242/438188203=1, MqTournamentRankUpdater=1, ClientSystemDiagnosisServlet$$Lambda$528/308002829=1, CPUUpdater=1}
+CurrencyCache statistics: size=15, stats=CacheStats{hitCount=21, missCount=15, loadSuccessCount=15, loadExceptionCount=0, totalLoadTime=16460, evictionCount=0}
+DBLinkCache cleanerTotalCount: 0
+DBLinkCache size: 0
+DelayedExecutor: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+DistributedLockManager locks size: localLocks size=3, serverLocks=CacheStats{hitCount=45, missCount=3, loadSuccessCount=3, loadExceptionCount=0, totalLoadTime=8699500, evictionCount=0}
+DomainSession activeTransactionsCount: 0
+ExpiredFRBonusTracker: Expired bonuses count: 0
+ExpiredMassAwardTracker: Expired bonuses count: 0
+ExternalGameIdsCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+FRBonusNotificationTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=5, currentPoolSize=0, completedTaskCount=0
+FRBonusWinTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=5, currentPoolSize=0, completedTaskCount=0
+FastKryoHelper pool size: 1
+GameServer: started=Thu Feb 26 09:07:48 UTC 2026, serverId=1, name=GS_1, upTime=272763
+HttpClientConnection: activeConnectionsCount=0, connectionManager.totalStats=[leased: 0; pending: 0; available: 0; max: 5000], maxTotal=5000, timeoutCount=0, connectionErrorsCount=231, configurableHostNameVerifier=ConfigurableHostNameVerifier[originalVerifier=BROWSER_COMPATIBLE, trustedHosts=[], trustAll=false], proxy=null
+LeaderboardWinTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+LocalSessionTracker: size=0
+LogoutTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=51, currentPoolSize=0, completedTaskCount=0
+MassAwardBonusManager : restrictionCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+NtpTimeProvider: Last updated: Thu Feb 26 09:11:48 UTC 2026 Offset: 7 minOffset: -8 maxOffset: 14 timeInfo.returnTime=Thu Feb 26 09:11:48 UTC 2026
+PaymentTransactionTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=50, currentPoolSize=0, completedTaskCount=0
+PingSessionCache statistics: poolSize=0, taskCount=0, errorCount=0, runCount=0, checkSidCount=0
+PlayerAliasService : aliasesCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+PromoMessagesDispatcher: Sessions by campaigns: campaigns = 0, sendersPeek: 0
+SharedServletExecutorService: : , completedTaskCount=0, activeThreadsCount=0, maxThreadsCount=500, currentPoolSize=0, largestPoolSize=0
+ShutdownFilter: initialized=true, activeThreadsCount=null
+SynchroTimeProvider:  Offset: 0 minOffset: 9223372036854775807 maxOffset: -9223372036854775808
+TournamentBuilder: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+TournamentWebSocketSessionsController: clients count=0
+WalletTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=50, currentPoolSize=0, completedTaskCount=0
+WebSocketSessionsController: sessions count=0
+WebSocketSessionsKeeper: pingsCount=0
+
+26.02.2026 09:11:50,965 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:11:55,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-9] - Start task
+26.02.2026 09:11:55,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-6] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:11:55,901 [COMMON] DEBUG [DistributedLockManager pool-11-thread-6] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:11:55,957 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:12:00,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:12:05,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-6] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:12:05,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-5] - Start task
+26.02.2026 09:12:05,905 [COMMON] DEBUG [DistributedLockManager pool-11-thread-6] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:12:05,956 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:12:10,958 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:12:15,883 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-5] - Start task
+26.02.2026 09:12:15,883 [COMMON] DEBUG [DistributedLockManager pool-11-thread-6] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:12:15,908 [COMMON] DEBUG [DistributedLockManager pool-11-thread-6] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:12:15,955 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-4] - Start task
+26.02.2026 09:12:15,957 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:12:17,104 [COMMON] DEBUG [TournamentsManager pool-11-thread-1] - Start task
+26.02.2026 09:12:17,104 [COMMON] DEBUG [TournamentsManager pool-11-thread-1] - PlacesUpdater: updatePlaces started
+26.02.2026 09:12:17,308 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-3] - Start task
+26.02.2026 09:12:17,319 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-9] - Start task
+26.02.2026 09:12:20,958 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:12:25,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-2] - Start task
+26.02.2026 09:12:25,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:12:25,903 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:12:25,954 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:12:30,958 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:12:35,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:12:35,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-10] - Start task
+26.02.2026 09:12:35,904 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:12:35,956 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:12:40,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:12:45,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-9] - Start task
+26.02.2026 09:12:45,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:12:45,905 [COMMON] DEBUG [DistributedLockManager pool-11-thread-7] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:12:45,955 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:12:45,957 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-4] - Start task
+26.02.2026 09:12:47,239 [COMMON] DEBUG [DelayedMassAwardManager pool-11-thread-8] - Start task
+26.02.2026 09:12:47,243 [COMMON] DEBUG [DelayedMassAwardManager pool-11-thread-8] - End task
+26.02.2026 09:12:47,321 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-5] - Start task
+26.02.2026 09:12:48,423 [COMMON] DEBUG [ClientSystemDiagnosisServlet pool-11-thread-6] - Start task
+26.02.2026 09:12:48,424 [COMMON] DEBUG [CassandraStateCheckTask pool-11-thread-6] - Failed to resolve Cassandra JMX hosts from driver metadata for keyspace RCasinoKS: com.dgphoenix.casino.cassandra.IKeyspaceManager.getAllHostAddresses()Ljava/util/Set;
+26.02.2026 09:12:48,424 [COMMON] DEBUG [CassandraStateCheckTask pool-11-thread-6] - Failed to resolve Cassandra JMX hosts from driver metadata for keyspace RCasinoSCKS: com.dgphoenix.casino.cassandra.IKeyspaceManager.getAllHostAddresses()Ljava/util/Set;
+26.02.2026 09:12:48,425 [COMMON] WARN  [CassandraStateCheckTask pool-11-thread-6] - Cannot obtain Cassandra host list for diagnosis
+26.02.2026 09:12:48,431 [COMMON] DEBUG [ClientSystemDiagnosisServlet pool-11-thread-6] - End task
+26.02.2026 09:12:48,436 [COMMON] WARN  [ShutdownFilter pool-11-thread-2] - getActiveThreadsCount: load error, attribute not found: threads=null, idleThreads=null
+26.02.2026 09:12:48,437 [STATISTICS] INFO  [StatisticsLogger pool-11-thread-2] - === RequestStatistics [1] ===
+Last reset date: Thu Feb 26 09:06:54 UTC 2026
+
+count=       5	avg=   6	min=   5	max=   6	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager delete
+count=       5	avg=   5	min=   5	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute delete
+count=       5	avg=   2	min=   1	max=   3	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute getCurrentLocker
+count=       5	avg=   5	min=   5	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute persist: update
+count=       5	avg=   2	min=   1	max=   3	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager getCurrentLocker
+count=       5	avg=   9	min=   8	max=  10	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager lock
+count=       5	avg=   6	min=   5	max=   6	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager unlock
+count=       5	avg=   2	min=   0	max=   4	 [pool-11-thread-8]		Thu Feb 26 09:12:47 UTC 2026		CassandraDelayedMassAwardPersister execute getUncompleted
+count=       5	avg=   2	min=   0	max=   4	 [pool-11-thread-8]		Thu Feb 26 09:12:47 UTC 2026		CassandraDelayedMassAwardPersister getUncompleted
+count=      24	avg=   2	min=   1	max=   2	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute getFirstLogTime
+count=      24	avg=   2	min=   1	max=   2	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute getLastStatTime
+count=       1	avg=   1	min=   1	max=   1	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute persistStat in batch
+count=      89	avg=   2	min=   1	max=   5	 [pool-11-thread-4]		Thu Feb 26 09:10:35 UTC 2026		CassandraPromoCampaignPersister execute selectCampaignsByClause
+count=      60	avg=   2	min=   0	max=   3	 [pool-17-thread-2]		Thu Feb 26 09:12:23 UTC 2026		CassandraRemoteCallPersister execute getRemoteCalls
+count=      60	avg=   2	min=   0	max=   3	 [pool-17-thread-2]		Thu Feb 26 09:12:23 UTC 2026		CassandraRemoteCallPersister getRemoteCalls
+count=      60	avg=   2	min=   1	max=   4	 [pool-17-thread-1]		Thu Feb 26 09:12:23 UTC 2026		CassandraServerInfoPersister execute persist
+count=       2	avg=   3	min=   2	max=   3	 [pool-11-thread-5]		Thu Feb 26 09:11:47 UTC 2026		CassandraSummaryTournamentPromoFeedPersister execute getAllFeeds
+count=       2	avg=   2	min=   2	max=   2	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute getByTrackingStatusAndGameServer
+count=       5	avg=   3	min=   2	max=   5	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute getFromDB
+count=       3	avg=   2	min=   2	max=   3	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute persist
+count=       5	avg=   5	min=   2	max=  10	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister get
+count=       3	avg=   4	min=   2	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister persist
+count=       2	avg=  60	min=   4	max= 116	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister processTransactions
+count=       3	avg=   0	min=   0	max=   0	 [pool-5-thread-1]		Thu Feb 26 09:11:25 UTC 2026		DBLinkCache cleaner
+count=      30	avg=   6	min=   4	max=   8	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:35 UTC 2026		DistributedLockManager delete
+count=      30	avg=   5	min=   4	max=   7	 [pool-11-thread-7]		Thu Feb 26 09:12:35 UTC 2026		DistributedLockManager execute delete
+count=       3	avg=   3	min=   3	max=   3	 [pool-11-thread-1]		Thu Feb 26 09:08:15 UTC 2026		DistributedLockManager execute getCurrentLocker
+count=      30	avg=   7	min=   4	max=  17	 [pool-11-thread-7]		Thu Feb 26 09:08:25 UTC 2026		DistributedLockManager execute persist: update
+count=       3	avg=   3	min=   3	max=   3	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:15 UTC 2026		DistributedLockManager getCurrentLocker
+count=      30	avg=   8	min=   4	max=  17	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:25 UTC 2026		DistributedLockManager lock
+count=      30	avg=   6	min=   5	max=   8	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:35 UTC 2026		DistributedLockManager unlock
+count=       3	avg= 290	min= 290	max= 290	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper buffer length
+count=       3	avg= 290	min= 290	max= 290	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper com.dgphoenix.casino.common.cache.data.session.SessionInfo buffer length
+count=      63	avg=   0	min=   0	max=   1	 [pool-17-thread-1]		Thu Feb 26 09:12:13 UTC 2026		FastKryoHelper createOutput
+count=      50	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper deserializeFrom
+count=      10	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper deserializeWithClassFrom
+count=      90	avg=   0	min=   0	max=   2	 [pool-17-thread-1]		Thu Feb 26 09:07:52 UTC 2026		FastKryoHelper serializeToBytes
+count=       6	avg=   0	min=   0	max=   0	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper serializeWithClassToBytes
+count=      30	avg=   0	min=   0	max=   1	 [pool-24-thread-1]		Thu Feb 26 09:10:17 UTC 2026		LocalSessionTracker execution time
+count=       3	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		LogoutTask:process 1
+count=      28	avg=  22	min=  17	max=  29	 [pool-11-thread-4]		Thu Feb 26 09:10:25 UTC 2026		PromoCampaignProcessor: run
+count=    1501	avg=  19	min=  15	max=  54	 [pool-2-thread-1]		Thu Feb 26 09:12:11 UTC 2026		TimeUpdater
+
+AccountDistributedLockManager locks size: localLocks size=5, serverLocks=CacheStats{hitCount=5, missCount=5, loadSuccessCount=5, loadExceptionCount=0, totalLoadTime=11429666, evictionCount=0}
+BaseGameCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+BasicTransactionDataStorageHelper: matchedLockerCount=5, misMatchedLockerCount=0
+BonusTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=20, currentPoolSize=0, completedTaskCount=0
+CassandraPersistenceManager: keySpace=RCasinoKS: knownHosts=1, connectedToHosts=1, openedConnections=3, trashedConnections=0, blockingTasks=0, nonBlockingTasks=0, requestsTimer[requestsCount=57, meanRate=0.16123360567333236, 1minRate=0.015757514916808536, 5minRate=0.25989715500206856, 15minRate=0.45263871262093164], latency[min=614708, max=5110666, mean=1901715.6552132508, median=2064250.0, stdDev=623614.1902830047], errors[connectionErrors=0, ignores=0, ignoresOnReadTimeout=0, ignoresOnWriteTimeout=0, ignoresOnUnavailable=0, retries=0, retriesOnReadTimeout=0, retriesOnWriteTimeout=0, retriesOnUnavailable=0, readTimeout=0, writeTimeout=0, unavailable=0, others=0, speculativeExecutions=0]
+CassandraPersistenceManager: keySpace=RCasinoSCKS: knownHosts=1, connectedToHosts=1, openedConnections=3, trashedConnections=0, blockingTasks=0, nonBlockingTasks=0, requestsTimer[requestsCount=803, meanRate=2.2732227084399663, 1minRate=0.955344684419342, 5minRate=2.0028319751289114, 15minRate=2.430871918565799], latency[min=460750, max=15874041, mean=2607233.146356548, median=1973375.0, stdDev=1767415.2928892197], errors[connectionErrors=0, ignores=0, ignoresOnReadTimeout=0, ignoresOnWriteTimeout=0, ignoresOnUnavailable=0, retries=0, retriesOnReadTimeout=0, retriesOnWriteTimeout=0, retriesOnUnavailable=0, readTimeout=0, writeTimeout=0, unavailable=0, others=0, speculativeExecutions=0]
+CassandraTransactionDataPersister cache size: size=5, stats=CacheStats{hitCount=0, missCount=10, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+CloseGameSessionNotifyTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+CommonExecutorService: poolSize=10, corePoolSize=10, largestPoolSize=10, maximumPoolSize=2147483647, completedTaskCount=110, taskCount=123, activeCount=1, executionTaskCounter= {=1, ExpiredMassAwardTracker$$Lambda$468/1998511629=1, PlacesUpdater=1, BalanceUpdater=1, FlushTask=1, PromoCampaignProcessor=1, DelayedMassAwardManager$$Lambda$469/1165449749=1, WebSocketSessionsKeeper=2, PeriodicUpdater=1, PromoCampaignManager$$Lambda$242/438188203=1, MqTournamentRankUpdater=1, ClientSystemDiagnosisServlet$$Lambda$528/308002829=1, CPUUpdater=1}
+CurrencyCache statistics: size=15, stats=CacheStats{hitCount=21, missCount=15, loadSuccessCount=15, loadExceptionCount=0, totalLoadTime=16460, evictionCount=0}
+DBLinkCache cleanerTotalCount: 0
+DBLinkCache size: 0
+DelayedExecutor: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+DistributedLockManager locks size: localLocks size=3, serverLocks=CacheStats{hitCount=57, missCount=3, loadSuccessCount=3, loadExceptionCount=0, totalLoadTime=8699500, evictionCount=0}
+DomainSession activeTransactionsCount: 0
+ExpiredFRBonusTracker: Expired bonuses count: 0
+ExpiredMassAwardTracker: Expired bonuses count: 0
+ExternalGameIdsCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+FRBonusNotificationTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=5, currentPoolSize=0, completedTaskCount=0
+FRBonusWinTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=5, currentPoolSize=0, completedTaskCount=0
+FastKryoHelper pool size: 1
+GameServer: started=Thu Feb 26 09:07:48 UTC 2026, serverId=1, name=GS_1, upTime=332767
+HttpClientConnection: activeConnectionsCount=0, connectionManager.totalStats=[leased: 0; pending: 0; available: 0; max: 5000], maxTotal=5000, timeoutCount=0, connectionErrorsCount=231, configurableHostNameVerifier=ConfigurableHostNameVerifier[originalVerifier=BROWSER_COMPATIBLE, trustedHosts=[], trustAll=false], proxy=null
+LeaderboardWinTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+LocalSessionTracker: size=0
+LogoutTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=51, currentPoolSize=0, completedTaskCount=0
+MassAwardBonusManager : restrictionCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+NtpTimeProvider: Last updated: Thu Feb 26 09:12:48 UTC 2026 Offset: 6 minOffset: -8 maxOffset: 14 timeInfo.returnTime=Thu Feb 26 09:12:48 UTC 2026
+PaymentTransactionTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=50, currentPoolSize=0, completedTaskCount=0
+PingSessionCache statistics: poolSize=0, taskCount=0, errorCount=0, runCount=0, checkSidCount=0
+PlayerAliasService : aliasesCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+PromoMessagesDispatcher: Sessions by campaigns: campaigns = 0, sendersPeek: 0
+SharedServletExecutorService: : , completedTaskCount=0, activeThreadsCount=0, maxThreadsCount=500, currentPoolSize=0, largestPoolSize=0
+ShutdownFilter: initialized=true, activeThreadsCount=null
+SynchroTimeProvider:  Offset: 0 minOffset: 9223372036854775807 maxOffset: -9223372036854775808
+TournamentBuilder: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+TournamentWebSocketSessionsController: clients count=0
+WalletTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=50, currentPoolSize=0, completedTaskCount=0
+WebSocketSessionsController: sessions count=0
+WebSocketSessionsKeeper: pingsCount=0
+
+26.02.2026 09:12:50,962 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:12:55,264 [COMMON] INFO  [DBLinkCache pool-5-thread-1] - Running cleaner
+26.02.2026 09:12:55,264 [COMMON] INFO  [DBLinkCache pool-5-thread-1] - Removed old DBLinks: 0
+26.02.2026 09:12:55,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-3] - Start task
+26.02.2026 09:12:55,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-1] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:12:55,909 [COMMON] DEBUG [DistributedLockManager pool-11-thread-1] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:12:55,975 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:12:58,073 [COMMON] DEBUG [TransactionDataTracker pool-37-thread-2] - ProcessTransactionsTask: start trackingStatus=ONLINE, gameServerId=1
+26.02.2026 09:12:58,073 [COMMON] DEBUG [DistributedLockManager pool-37-thread-2] - try lock: TD_ONLINE_LOCK_1
+26.02.2026 09:12:58,077 [COMMON] DEBUG [TransactionDataTracker pool-37-thread-3] - ProcessTransactionsTask: start trackingStatus=TRACKING, gameServerId=1
+26.02.2026 09:12:58,078 [COMMON] DEBUG [DistributedLockManager pool-37-thread-3] - try lock: TD_OFFLINE_LOCK_1
+26.02.2026 09:12:58,084 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-2] - try lock: CxlDBwQB
+26.02.2026 09:12:58,091 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - lockChanged: ServerLockInfo[lockId=CxlDBwQB, serverId=1, lockTime=1772097178090, timeStamp=Thu Feb 26 09:02:32 UTC 2026, lastLockerServerId=1]
+26.02.2026 09:12:58,091 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - get[CxlDBwQB] from cache, expired=true
+26.02.2026 09:12:58,093 [COMMON] DEBUG [DistributedLockManager pool-37-thread-3] - unlock: TD_OFFLINE_LOCK_1
+26.02.2026 09:12:58,093 [COMMON] DEBUG [TransactionDataTracker pool-37-thread-3] - ProcessTransactionsTask: end trackingStatus=TRACKING, gameServerId=1
+26.02.2026 09:12:58,127 [COMMON] DEBUG [PlayerSessionFactory pool-37-thread-2] - PlayerSessionFactory::instantiatePSM instantiating PSM for bankId:6275
+26.02.2026 09:12:58,173 [COMMON] DEBUG [PlayerSessionPersister pool-37-thread-2] - removed SessionInfo [com.dgphoenix.casino.common.cache.data.session.SessionInfo@a7d10b11, accountId=204802, sessionId=1_5525c28883f89913e8dd0000019c81ea_CxlDBwQB, clientType=FLASH, host=172.23.0.16, startTime=Thu Feb 26 08:59:26 UTC 2026, endTime=Thu Feb 26 09:12:58 UTC 2026, lastActivityTime=Thu Feb 26 08:59:26 UTC 2026, loginServerId=1, externalSessionId=bav_game_session_001, gameSessionId=null, playedGamesCount=0, lastPlayedMode=0, lastCloseGameReason=Logout task, lastGameSessionId=null, lastRealityCheckTime=1772096366618, casinoLoginTime=1772096366618, realityCheckInterval=0, forceHttps=false, privateRoomId=null]
+26.02.2026 09:12:58,174 [COMMON] DEBUG [AbstractPlayerSessionManager pool-37-thread-2] - login accountId: 204802 logout completed
+26.02.2026 09:12:58,174 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - delete: id=204802, lockId=CxlDBwQB
+26.02.2026 09:12:58,179 [COMMON] DEBUG [CassandraAccountInfoPersister pool-37-thread-2] - prepareToPersist: 204802
+26.02.2026 09:12:58,198 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-2] - unlock: CxlDBwQB
+26.02.2026 09:12:58,198 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-2] - try lock: UVUDalRVAAs9FRYXGA9WVmgCXlwBRVtCUw
+26.02.2026 09:12:58,205 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - lockChanged: ServerLockInfo[lockId=UVUDalRVAAs9FRYXGA9WVmgCXlwBRVtCUw, serverId=1, lockTime=1772097178204, timeStamp=Thu Feb 26 09:02:32 UTC 2026, lastLockerServerId=1]
+26.02.2026 09:12:58,205 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - get[UVUDalRVAAs9FRYXGA9WVmgCXlwBRVtCUw] from cache, expired=true
+26.02.2026 09:12:58,209 [COMMON] DEBUG [PlayerSessionFactory pool-37-thread-2] - PlayerSessionFactory::instantiatePSM instantiating PSM for bankId:6276
+26.02.2026 09:12:58,213 [COMMON] DEBUG [PlayerSessionPersister pool-37-thread-2] - removed SessionInfo [com.dgphoenix.casino.common.cache.data.session.SessionInfo@cf330c74, accountId=286722, sessionId=1_d8823e2a75ec9913e8de0000019cbe59_UVUDalRVAAs9FRYXGA9WVmgCXlwBRVtCUw, clientType=FLASH, host=172.23.0.16, startTime=Thu Feb 26 08:59:26 UTC 2026, endTime=Thu Feb 26 09:12:58 UTC 2026, lastActivityTime=Thu Feb 26 08:59:26 UTC 2026, loginServerId=1, externalSessionId=bav_game_session_001, gameSessionId=null, playedGamesCount=0, lastPlayedMode=0, lastCloseGameReason=Logout task, lastGameSessionId=null, lastRealityCheckTime=1772096366742, casinoLoginTime=1772096366742, realityCheckInterval=0, forceHttps=false, privateRoomId=null]
+26.02.2026 09:12:58,213 [COMMON] DEBUG [AbstractPlayerSessionManager pool-37-thread-2] - login accountId: 286722 logout completed
+26.02.2026 09:12:58,213 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - delete: id=286722, lockId=UVUDalRVAAs9FRYXGA9WVmgCXlwBRVtCUw
+26.02.2026 09:12:58,213 [COMMON] DEBUG [CassandraAccountInfoPersister pool-37-thread-2] - prepareToPersist: 286722
+26.02.2026 09:12:58,228 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-2] - unlock: UVUDalRVAAs9FRYXGA9WVmgCXlwBRVtCUw
+26.02.2026 09:12:58,228 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-2] - try lock: UVUUBgRWVFlXUUdcXVABCA8DWFwcQ1lFVV5QTU5QDw8aBAEODA
+26.02.2026 09:12:58,234 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - lockChanged: ServerLockInfo[lockId=UVUUBgRWVFlXUUdcXVABCA8DWFwcQ1lFVV5QTU5QDw8aBAEODA, serverId=1, lockTime=1772097178234, timeStamp=Thu Feb 26 09:02:32 UTC 2026, lastLockerServerId=1]
+26.02.2026 09:12:58,235 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - get[UVUUBgRWVFlXUUdcXVABCA8DWFwcQ1lFVV5QTU5QDw8aBAEODA] from cache, expired=false
+26.02.2026 09:12:58,235 [COMMON] ERROR [LogoutTask pool-37-thread-2] - Cannot logout: 
+com.dgphoenix.casino.common.exception.CommonException: AccountInfo is null: accountId=122882
+	at com.dgphoenix.casino.sm.tracker.logout.LogoutTask.process(LogoutTask.java:76)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.processLogout(TransactionDataTracker.java:400)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessOnlineTransactionsTask.process(TransactionDataTracker.java:537)
+	at com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.processTransactions(CassandraTransactionDataPersister.java:416)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.run(TransactionDataTracker.java:243)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+26.02.2026 09:12:58,235 [ERROR] ERROR [LogoutTask pool-37-thread-2] - Cannot logout: 
+com.dgphoenix.casino.common.exception.CommonException: AccountInfo is null: accountId=122882
+	at com.dgphoenix.casino.sm.tracker.logout.LogoutTask.process(LogoutTask.java:76)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.processLogout(TransactionDataTracker.java:400)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessOnlineTransactionsTask.process(TransactionDataTracker.java:537)
+	at com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.processTransactions(CassandraTransactionDataPersister.java:416)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.run(TransactionDataTracker.java:243)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+26.02.2026 09:12:58,235 [COMMON] WARN  [CassandraTransactionDataPersister pool-37-thread-2] - processInTransactionItems: storedItems is empty for lockId=UVUUBgRWVFlXUUdcXVABCA8DWFwcQ1lFVV5QTU5QDw8aBAEODA
+26.02.2026 09:12:58,239 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - persist(UVUUBgRWVFlXUUdcXVABCA8DWFwcQ1lFVV5QTU5QDw8aBAEODA): TransactionData[version=1454, writeTime=1772097178240001, accountId=122882, account=null, playerSession=SessionInfo [com.dgphoenix.casino.common.cache.data.session.SessionInfo@57c1eb14, accountId=122882, sessionId=1_b4d39b407f3f668081630000019c9ed8_UVUUBgRWVFlXUUdcXVABCA8DWFwcQ1lFVV5QTU5QDw8aBAEODA, clientType=FLASH, host=172.67.221.59, startTime=Wed Feb 18 13:09:25 UTC 2026, endTime=null, lastActivityTime=Wed Feb 18 13:09:25 UTC 2026, loginServerId=1, externalSessionId=1_45e8996c5da0668081620000019cab3f_UVUUBgRWVFlXUUdcXVABCA8DWFwcQ1lFVV5QTU5QDw8aBAEODA, gameSessionId=null, playedGamesCount=0, lastPlayedMode=0, lastCloseGameReason=null, lastGameSessionId=null, lastRealityCheckTime=1771420165245, casinoLoginTime=1771420165245, realityCheckInterval=0, forceHttps=false, privateRoomId=null], gameSession=null, lasthand=null, lastBet=null, wallet=null, paymentTransaction=null, lastUpdateInfo='1_pool-37-thread-2_1772097178240000', bonus=null, frBonus=null, frbWin=null, frbNotification=null, promoMemberInfos=null, trackingState=TrackingState [gameServerId=1, status=ONLINE], trackingStateChanged=false, atomicallyStoredData={}, appliedAutoFinishLogic=false]
+26.02.2026 09:12:58,244 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-2] - unlock: UVUUBgRWVFlXUUdcXVABCA8DWFwcQ1lFVV5QTU5QDw8aBAEODA
+26.02.2026 09:12:58,245 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-2] - try lock: V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA
+26.02.2026 09:12:58,251 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - lockChanged: ServerLockInfo[lockId=V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA, serverId=1, lockTime=1772097178250, timeStamp=Thu Feb 26 09:02:32 UTC 2026, lastLockerServerId=1]
+26.02.2026 09:12:58,251 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - get[V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA] from cache, expired=false
+26.02.2026 09:12:58,251 [COMMON] ERROR [LogoutTask pool-37-thread-2] - Cannot logout: 
+com.dgphoenix.casino.common.exception.CommonException: AccountInfo is null: accountId=122883
+	at com.dgphoenix.casino.sm.tracker.logout.LogoutTask.process(LogoutTask.java:76)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.processLogout(TransactionDataTracker.java:400)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessOnlineTransactionsTask.process(TransactionDataTracker.java:537)
+	at com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.processTransactions(CassandraTransactionDataPersister.java:416)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.run(TransactionDataTracker.java:243)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+26.02.2026 09:12:58,251 [ERROR] ERROR [LogoutTask pool-37-thread-2] - Cannot logout: 
+com.dgphoenix.casino.common.exception.CommonException: AccountInfo is null: accountId=122883
+	at com.dgphoenix.casino.sm.tracker.logout.LogoutTask.process(LogoutTask.java:76)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.processLogout(TransactionDataTracker.java:400)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessOnlineTransactionsTask.process(TransactionDataTracker.java:537)
+	at com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.processTransactions(CassandraTransactionDataPersister.java:416)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.run(TransactionDataTracker.java:243)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+26.02.2026 09:12:58,252 [COMMON] WARN  [CassandraTransactionDataPersister pool-37-thread-2] - processInTransactionItems: storedItems is empty for lockId=V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA
+26.02.2026 09:12:58,256 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - persist(V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA): TransactionData[version=1452, writeTime=1772097178257000, accountId=122883, account=null, playerSession=SessionInfo [com.dgphoenix.casino.common.cache.data.session.SessionInfo@48fca234, accountId=122883, sessionId=1_5edc20e59b1a668081660000019c9ac3_V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA, clientType=FLASH, host=172.67.221.59, startTime=Wed Feb 18 13:13:13 UTC 2026, endTime=null, lastActivityTime=Wed Feb 18 13:13:13 UTC 2026, loginServerId=1, externalSessionId=1_8d20ee94d84d668081650000019ca891_V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA, gameSessionId=null, playedGamesCount=0, lastPlayedMode=0, lastCloseGameReason=null, lastGameSessionId=null, lastRealityCheckTime=1771420393839, casinoLoginTime=1771420393839, realityCheckInterval=0, forceHttps=false, privateRoomId=null], gameSession=null, lasthand=null, lastBet=null, wallet=null, paymentTransaction=null, lastUpdateInfo='1_pool-37-thread-2_1772097178256000', bonus=null, frBonus=null, frbWin=null, frbNotification=null, promoMemberInfos=null, trackingState=TrackingState [gameServerId=1, status=ONLINE], trackingStateChanged=false, atomicallyStoredData={}, appliedAutoFinishLogic=false]
+26.02.2026 09:12:58,262 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-2] - unlock: V1FBAFEDDloAUUFdXVABCA8DWFkcQ1lFVV5QTU4GDgwaBAEODA
+26.02.2026 09:12:58,262 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-2] - try lock: VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA
+26.02.2026 09:12:58,269 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - lockChanged: ServerLockInfo[lockId=VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA, serverId=1, lockTime=1772097178267, timeStamp=Thu Feb 26 09:02:32 UTC 2026, lastLockerServerId=1]
+26.02.2026 09:12:58,269 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - get[VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA] from cache, expired=false
+26.02.2026 09:12:58,269 [COMMON] ERROR [LogoutTask pool-37-thread-2] - Cannot logout: 
+com.dgphoenix.casino.common.exception.CommonException: AccountInfo is null: accountId=122884
+	at com.dgphoenix.casino.sm.tracker.logout.LogoutTask.process(LogoutTask.java:76)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.processLogout(TransactionDataTracker.java:400)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessOnlineTransactionsTask.process(TransactionDataTracker.java:537)
+	at com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.processTransactions(CassandraTransactionDataPersister.java:416)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.run(TransactionDataTracker.java:243)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+26.02.2026 09:12:58,269 [ERROR] ERROR [LogoutTask pool-37-thread-2] - Cannot logout: 
+com.dgphoenix.casino.common.exception.CommonException: AccountInfo is null: accountId=122884
+	at com.dgphoenix.casino.sm.tracker.logout.LogoutTask.process(LogoutTask.java:76)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.processLogout(TransactionDataTracker.java:400)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessOnlineTransactionsTask.process(TransactionDataTracker.java:537)
+	at com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.processTransactions(CassandraTransactionDataPersister.java:416)
+	at com.dgphoenix.casino.gs.TransactionDataTracker$ProcessTransactionsTask.run(TransactionDataTracker.java:243)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+26.02.2026 09:12:58,270 [COMMON] WARN  [CassandraTransactionDataPersister pool-37-thread-2] - processInTransactionItems: storedItems is empty for lockId=VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA
+26.02.2026 09:12:58,273 [COMMON] DEBUG [CassandraTransactionDataPersister pool-37-thread-2] - persist(VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA): TransactionData[version=1452, writeTime=1772097178275000, accountId=122884, account=null, playerSession=SessionInfo [com.dgphoenix.casino.common.cache.data.session.SessionInfo@ea673c66, accountId=122884, sessionId=1_a10b4703229b668081690000019cbe35_VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA, clientType=FLASH, host=172.67.221.59, startTime=Wed Feb 18 13:13:28 UTC 2026, endTime=null, lastActivityTime=Wed Feb 18 13:13:28 UTC 2026, loginServerId=1, externalSessionId=1_44f7ca1a27c1668081680000019c8d2a_VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA, gameSessionId=null, playedGamesCount=0, lastPlayedMode=0, lastCloseGameReason=null, lastGameSessionId=null, lastRealityCheckTime=1771420408927, casinoLoginTime=1771420408927, realityCheckInterval=0, forceHttps=false, privateRoomId=null], gameSession=null, lasthand=null, lastBet=null, wallet=null, paymentTransaction=null, lastUpdateInfo='1_pool-37-thread-2_1772097178274000', bonus=null, frBonus=null, frbWin=null, frbNotification=null, promoMemberInfos=null, trackingState=TrackingState [gameServerId=1, status=ONLINE], trackingStateChanged=false, atomicallyStoredData={}, appliedAutoFinishLogic=false]
+26.02.2026 09:12:58,280 [COMMON] DEBUG [AccountDistributedLockManager pool-37-thread-2] - unlock: VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA
+26.02.2026 09:12:58,287 [COMMON] DEBUG [DistributedLockManager pool-37-thread-2] - unlock: TD_ONLINE_LOCK_1
+26.02.2026 09:12:58,287 [COMMON] DEBUG [TransactionDataTracker pool-37-thread-2] - ProcessTransactionsTask: end trackingStatus=ONLINE, gameServerId=1
+26.02.2026 09:13:00,963 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:13:05,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-4] - Start task
+26.02.2026 09:13:05,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-1] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:13:05,905 [COMMON] DEBUG [DistributedLockManager pool-11-thread-1] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:13:05,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:13:10,960 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:13:15,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-2] - Start task
+26.02.2026 09:13:15,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-1] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:13:15,902 [COMMON] DEBUG [DistributedLockManager pool-11-thread-1] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:13:15,958 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-10] - Start task
+26.02.2026 09:13:15,960 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:13:17,109 [COMMON] DEBUG [TournamentsManager pool-11-thread-9] - Start task
+26.02.2026 09:13:17,109 [COMMON] DEBUG [TournamentsManager pool-11-thread-9] - PlacesUpdater: updatePlaces started
+26.02.2026 09:13:17,310 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-7] - Start task
+26.02.2026 09:13:17,322 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-5] - Start task
+26.02.2026 09:13:20,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:13:25,889 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:13:25,889 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-6] - Start task
+26.02.2026 09:13:25,916 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:13:25,956 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:13:30,957 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:13:35,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-8] - Start task
+26.02.2026 09:13:35,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:13:35,905 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:13:35,960 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:13:40,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:13:45,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-8] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:13:45,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-3] - Start task
+26.02.2026 09:13:45,908 [COMMON] DEBUG [DistributedLockManager pool-11-thread-8] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:13:45,959 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-5] - Start task
+26.02.2026 09:13:45,960 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:13:47,119 [COMMON] DEBUG [SummaryTournamentFeedWriter pool-11-thread-2] - PeriodicUpdater: run, voted as master
+26.02.2026 09:13:47,236 [COMMON] DEBUG [DelayedMassAwardManager pool-11-thread-1] - Start task
+26.02.2026 09:13:47,238 [COMMON] DEBUG [DelayedMassAwardManager pool-11-thread-1] - End task
+26.02.2026 09:13:47,323 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-9] - Start task
+26.02.2026 09:13:48,433 [COMMON] DEBUG [ClientSystemDiagnosisServlet pool-11-thread-6] - Start task
+26.02.2026 09:13:48,433 [COMMON] DEBUG [CassandraStateCheckTask pool-11-thread-6] - Failed to resolve Cassandra JMX hosts from driver metadata for keyspace RCasinoKS: com.dgphoenix.casino.cassandra.IKeyspaceManager.getAllHostAddresses()Ljava/util/Set;
+26.02.2026 09:13:48,433 [COMMON] DEBUG [CassandraStateCheckTask pool-11-thread-6] - Failed to resolve Cassandra JMX hosts from driver metadata for keyspace RCasinoSCKS: com.dgphoenix.casino.cassandra.IKeyspaceManager.getAllHostAddresses()Ljava/util/Set;
+26.02.2026 09:13:48,433 [COMMON] WARN  [CassandraStateCheckTask pool-11-thread-6] - Cannot obtain Cassandra host list for diagnosis
+26.02.2026 09:13:48,434 [COMMON] DEBUG [ClientSystemDiagnosisServlet pool-11-thread-6] - End task
+26.02.2026 09:13:48,443 [COMMON] WARN  [ShutdownFilter pool-11-thread-7] - getActiveThreadsCount: load error, attribute not found: threads=null, idleThreads=null
+26.02.2026 09:13:48,443 [STATISTICS] INFO  [StatisticsLogger pool-11-thread-7] - === RequestStatistics [1] ===
+Last reset date: Thu Feb 26 09:06:54 UTC 2026
+
+count=       2	avg=   0	min=   0	max=   0	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		AbstractPlayerSessionManager:logout_impl 1
+count=       2	avg=   0	min=   0	max=   0	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		AbstractPlayerSessionManager:logout_impl 2
+count=       2	avg=  23	min=   4	max=  42	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		AbstractPlayerSessionManager:logout_impl 4
+count=      10	avg=   6	min=   5	max=   7	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:12:58 UTC 2026		AccountDistributedLockManager delete
+count=      10	avg=   6	min=   5	max=   6	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		AccountDistributedLockManager execute delete
+count=       5	avg=   2	min=   1	max=   3	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute getCurrentLocker
+count=      10	avg=   6	min=   5	max=   7	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		AccountDistributedLockManager execute persist: update
+count=       5	avg=   2	min=   1	max=   3	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager getCurrentLocker
+count=      10	avg=   8	min=   6	max=  10	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager lock
+count=      10	avg=   6	min=   5	max=   7	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:12:58 UTC 2026		AccountDistributedLockManager unlock
+count=       6	avg=   2	min=   0	max=   4	 [pool-11-thread-8]		Thu Feb 26 09:12:47 UTC 2026		CassandraDelayedMassAwardPersister execute getUncompleted
+count=       6	avg=   2	min=   0	max=   4	 [pool-11-thread-8]		Thu Feb 26 09:12:47 UTC 2026		CassandraDelayedMassAwardPersister getUncompleted
+count=      24	avg=   2	min=   1	max=   2	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute getFirstLogTime
+count=      24	avg=   2	min=   1	max=   2	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute getLastStatTime
+count=       1	avg=   1	min=   1	max=   1	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute persistStat in batch
+count=       2	avg=   3	min=   2	max=   3	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraPlayerSessionHistoryPersister execute persist
+count=       2	avg=  23	min=   4	max=  41	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraPlayerSessionHistoryPersister persist
+count=     108	avg=   2	min=   1	max=   5	 [pool-11-thread-4]		Thu Feb 26 09:10:35 UTC 2026		CassandraPromoCampaignPersister execute selectCampaignsByClause
+count=      72	avg=   2	min=   0	max=   3	 [pool-17-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraRemoteCallPersister execute getRemoteCalls
+count=      72	avg=   2	min=   0	max=   3	 [pool-17-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraRemoteCallPersister getRemoteCalls
+count=      72	avg=   2	min=   1	max=   4	 [pool-17-thread-1]		Thu Feb 26 09:12:53 UTC 2026		CassandraServerInfoPersister execute persist
+count=       3	avg=   3	min=   2	max=   3	 [pool-11-thread-2]		Thu Feb 26 09:13:47 UTC 2026		CassandraSummaryTournamentPromoFeedPersister execute getAllFeeds
+count=       4	avg=   3	min=   2	max=   4	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister execute getByTrackingStatusAndGameServer
+count=       7	avg=   3	min=   2	max=   5	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute getFromDB
+count=      10	avg=   2	min=   2	max=   3	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister execute persist
+count=       2	avg=   3	min=   2	max=   3	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister execute persist internal
+count=       2	avg=   3	min=   2	max=   3	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister execute persist internal::keySpace=RCasinoSCKS
+count=       5	avg=   5	min=   2	max=  10	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister get
+count=       2	avg=   0	min=   0	max=   0	 [UVUDalRVAAs9FRYXGA9WVmgCXlwBRVtCUw]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister get [expired on new lock]
+count=       3	avg=   0	min=   0	max=   0	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister get [hit]
+count=       2	avg=   4	min=   4	max=   4	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister get [locker mismatch]
+count=       6	avg=   4	min=   2	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister persist
+count=       4	avg=  81	min=   2	max= 201	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister processTransactions
+count=       4	avg=   0	min=   0	max=   0	 [pool-5-thread-1]		Thu Feb 26 09:12:55 UTC 2026		DBLinkCache cleaner
+count=      38	avg=   6	min=   4	max=   8	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:35 UTC 2026		DistributedLockManager delete
+count=      38	avg=   6	min=   4	max=   7	 [pool-11-thread-7]		Thu Feb 26 09:12:35 UTC 2026		DistributedLockManager execute delete
+count=       3	avg=   3	min=   3	max=   3	 [pool-11-thread-1]		Thu Feb 26 09:08:15 UTC 2026		DistributedLockManager execute getCurrentLocker
+count=      38	avg=   7	min=   4	max=  17	 [pool-11-thread-7]		Thu Feb 26 09:08:25 UTC 2026		DistributedLockManager execute persist: update
+count=       3	avg=   3	min=   3	max=   3	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:15 UTC 2026		DistributedLockManager getCurrentLocker
+count=      38	avg=   8	min=   4	max=  17	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:25 UTC 2026		DistributedLockManager lock
+count=      38	avg=   6	min=   5	max=   8	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:35 UTC 2026		DistributedLockManager unlock
+count=       6	avg= 290	min= 290	max= 290	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		FastKryoHelper buffer length
+count=       6	avg= 290	min= 290	max= 290	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		FastKryoHelper com.dgphoenix.casino.common.cache.data.session.SessionInfo buffer length
+count=      82	avg=   0	min=   0	max=   1	 [pool-17-thread-1]		Thu Feb 26 09:12:13 UTC 2026		FastKryoHelper createOutput
+count=      70	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper deserializeFrom
+count=      14	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper deserializeWithClassFrom
+count=     136	avg=   0	min=   0	max=   2	 [pool-17-thread-1]		Thu Feb 26 09:07:52 UTC 2026		FastKryoHelper serializeToBytes
+count=      12	avg=   0	min=   0	max=   1	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		FastKryoHelper serializeWithClassToBytes
+count=      36	avg=   0	min=   0	max=   1	 [pool-24-thread-1]		Thu Feb 26 09:10:17 UTC 2026		LocalSessionTracker execution time
+count=       8	avg=  11	min=   0	max=  79	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		LogoutTask:process 1
+count=      34	avg=  22	min=  17	max=  29	 [pool-11-thread-4]		Thu Feb 26 09:10:25 UTC 2026		PromoCampaignProcessor: run
+count=    1801	avg=  19	min=  15	max=  54	 [pool-2-thread-1]		Thu Feb 26 09:12:11 UTC 2026		TimeUpdater
+
+AccountDistributedLockManager locks size: localLocks size=5, serverLocks=CacheStats{hitCount=15, missCount=5, loadSuccessCount=5, loadExceptionCount=0, totalLoadTime=11429666, evictionCount=0}
+BaseGameCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+BasicTransactionDataStorageHelper: matchedLockerCount=7, misMatchedLockerCount=0
+BonusTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=20, currentPoolSize=0, completedTaskCount=0
+CassandraPersistenceManager: keySpace=RCasinoKS: knownHosts=1, connectedToHosts=1, openedConnections=3, trashedConnections=0, blockingTasks=0, nonBlockingTasks=0, requestsTimer[requestsCount=60, meanRate=0.14509215077476767, 1minRate=0.020904203475420786, 5minRate=0.21847629405144608, 15minRate=0.42555465959018], latency[min=614708, max=5110666, mean=2185627.66625628, median=2288625.0, stdDev=474160.5354405882], errors[connectionErrors=0, ignores=0, ignoresOnReadTimeout=0, ignoresOnWriteTimeout=0, ignoresOnUnavailable=0, retries=0, retriesOnReadTimeout=0, retriesOnWriteTimeout=0, retriesOnUnavailable=0, readTimeout=0, writeTimeout=0, unavailable=0, others=0, speculativeExecutions=0]
+CassandraPersistenceManager: keySpace=RCasinoSCKS: knownHosts=1, connectedToHosts=1, openedConnections=3, trashedConnections=0, blockingTasks=0, nonBlockingTasks=0, requestsTimer[requestsCount=886, meanRate=2.1439813395866336, 1minRate=1.1280837046261503, 5minRate=1.8847823119813685, 15minRate=2.3626295800669723], latency[min=460750, max=15874041, mean=2923503.6357429107, median=2227375.0, stdDev=1910830.7594618273], errors[connectionErrors=0, ignores=0, ignoresOnReadTimeout=0, ignoresOnWriteTimeout=0, ignoresOnUnavailable=0, retries=0, retriesOnReadTimeout=0, retriesOnWriteTimeout=0, retriesOnUnavailable=0, readTimeout=0, writeTimeout=0, unavailable=0, others=0, speculativeExecutions=0]
+CassandraTransactionDataPersister cache size: size=3, stats=CacheStats{hitCount=10, missCount=10, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+CloseGameSessionNotifyTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+CommonExecutorService: poolSize=10, corePoolSize=10, largestPoolSize=10, maximumPoolSize=2147483647, completedTaskCount=132, taskCount=145, activeCount=1, executionTaskCounter= {=1, ExpiredMassAwardTracker$$Lambda$468/1998511629=1, PlacesUpdater=1, BalanceUpdater=1, FlushTask=1, PromoCampaignProcessor=1, DelayedMassAwardManager$$Lambda$469/1165449749=1, WebSocketSessionsKeeper=2, PeriodicUpdater=1, PromoCampaignManager$$Lambda$242/438188203=1, MqTournamentRankUpdater=1, ClientSystemDiagnosisServlet$$Lambda$528/308002829=1, CPUUpdater=1}
+CurrencyCache statistics: size=15, stats=CacheStats{hitCount=23, missCount=15, loadSuccessCount=15, loadExceptionCount=0, totalLoadTime=16460, evictionCount=0}
+DBLinkCache cleanerTotalCount: 0
+DBLinkCache size: 0
+DelayedExecutor: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+DistributedLockManager locks size: localLocks size=3, serverLocks=CacheStats{hitCount=73, missCount=3, loadSuccessCount=3, loadExceptionCount=0, totalLoadTime=8699500, evictionCount=0}
+DomainSession activeTransactionsCount: 0
+ExpiredFRBonusTracker: Expired bonuses count: 0
+ExpiredMassAwardTracker: Expired bonuses count: 0
+ExternalGameIdsCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+FRBonusNotificationTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=5, currentPoolSize=0, completedTaskCount=0
+FRBonusWinTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=5, currentPoolSize=0, completedTaskCount=0
+FastKryoHelper pool size: 1
+GameServer: started=Thu Feb 26 09:07:48 UTC 2026, serverId=1, name=GS_1, upTime=392773
+HttpClientConnection: activeConnectionsCount=0, connectionManager.totalStats=[leased: 0; pending: 0; available: 0; max: 5000], maxTotal=5000, timeoutCount=0, connectionErrorsCount=231, configurableHostNameVerifier=ConfigurableHostNameVerifier[originalVerifier=BROWSER_COMPATIBLE, trustedHosts=[], trustAll=false], proxy=null
+LeaderboardWinTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+LocalSessionTracker: size=0
+LogoutTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=51, currentPoolSize=0, completedTaskCount=0
+MassAwardBonusManager : restrictionCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+NtpTimeProvider: Last updated: Thu Feb 26 09:13:48 UTC 2026 Offset: 7 minOffset: -8 maxOffset: 14 timeInfo.returnTime=Thu Feb 26 09:13:48 UTC 2026
+PaymentTransactionTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=50, currentPoolSize=0, completedTaskCount=0
+PingSessionCache statistics: poolSize=0, taskCount=0, errorCount=0, runCount=0, checkSidCount=0
+PlayerAliasService : aliasesCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+PromoMessagesDispatcher: Sessions by campaigns: campaigns = 0, sendersPeek: 0
+SharedServletExecutorService: : , completedTaskCount=0, activeThreadsCount=0, maxThreadsCount=500, currentPoolSize=0, largestPoolSize=0
+ShutdownFilter: initialized=true, activeThreadsCount=null
+SynchroTimeProvider:  Offset: 0 minOffset: 9223372036854775807 maxOffset: -9223372036854775808
+TournamentBuilder: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+TournamentWebSocketSessionsController: clients count=0
+WalletTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=50, currentPoolSize=0, completedTaskCount=0
+WebSocketSessionsController: sessions count=0
+WebSocketSessionsKeeper: pingsCount=0
+
+26.02.2026 09:13:50,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:13:55,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-8] - Start task
+26.02.2026 09:13:55,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:13:55,900 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:13:55,957 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:14:00,958 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:14:05,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:14:05,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-2] - Start task
+26.02.2026 09:14:05,902 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:14:05,958 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:14:10,964 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:14:15,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-2] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:14:15,886 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-3] - Start task
+26.02.2026 09:14:15,904 [COMMON] DEBUG [DistributedLockManager pool-11-thread-2] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:14:15,956 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:14:15,960 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-3] - Start task
+26.02.2026 09:14:17,112 [COMMON] DEBUG [TournamentsManager pool-11-thread-4] - Start task
+26.02.2026 09:14:17,113 [COMMON] DEBUG [TournamentsManager pool-11-thread-4] - PlacesUpdater: updatePlaces started
+26.02.2026 09:14:17,312 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-5] - Start task
+26.02.2026 09:14:17,326 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-9] - Start task
+26.02.2026 09:14:20,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:14:25,259 [COMMON] INFO  [DBLinkCache pool-5-thread-1] - Running cleaner
+26.02.2026 09:14:25,259 [COMMON] INFO  [DBLinkCache pool-5-thread-1] - Removed old DBLinks: 0
+26.02.2026 09:14:25,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-6] - Start task
+26.02.2026 09:14:25,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-8] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:14:25,912 [COMMON] DEBUG [DistributedLockManager pool-11-thread-8] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:14:25,961 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:14:30,958 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:14:35,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-8] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:14:35,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-1] - Start task
+26.02.2026 09:14:35,903 [COMMON] DEBUG [DistributedLockManager pool-11-thread-8] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:14:35,957 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:14:40,958 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:14:45,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-8] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:14:45,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-9] - Start task
+26.02.2026 09:14:45,901 [COMMON] DEBUG [DistributedLockManager pool-11-thread-8] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:14:45,957 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:14:45,962 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-7] - Start task
+26.02.2026 09:14:47,238 [COMMON] DEBUG [DelayedMassAwardManager pool-11-thread-3] - Start task
+26.02.2026 09:14:47,240 [COMMON] DEBUG [DelayedMassAwardManager pool-11-thread-3] - End task
+26.02.2026 09:14:47,327 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-10] - Start task
+26.02.2026 09:14:48,435 [COMMON] DEBUG [ClientSystemDiagnosisServlet pool-11-thread-4] - Start task
+26.02.2026 09:14:48,435 [COMMON] DEBUG [CassandraStateCheckTask pool-11-thread-4] - Failed to resolve Cassandra JMX hosts from driver metadata for keyspace RCasinoKS: com.dgphoenix.casino.cassandra.IKeyspaceManager.getAllHostAddresses()Ljava/util/Set;
+26.02.2026 09:14:48,436 [COMMON] DEBUG [CassandraStateCheckTask pool-11-thread-4] - Failed to resolve Cassandra JMX hosts from driver metadata for keyspace RCasinoSCKS: com.dgphoenix.casino.cassandra.IKeyspaceManager.getAllHostAddresses()Ljava/util/Set;
+26.02.2026 09:14:48,436 [COMMON] WARN  [CassandraStateCheckTask pool-11-thread-4] - Cannot obtain Cassandra host list for diagnosis
+26.02.2026 09:14:48,445 [COMMON] DEBUG [ClientSystemDiagnosisServlet pool-11-thread-4] - End task
+26.02.2026 09:14:48,474 [COMMON] WARN  [ShutdownFilter pool-11-thread-4] - getActiveThreadsCount: load error, attribute not found: threads=null, idleThreads=null
+26.02.2026 09:14:48,475 [STATISTICS] INFO  [StatisticsLogger pool-11-thread-4] - === RequestStatistics [1] ===
+Last reset date: Thu Feb 26 09:06:54 UTC 2026
+
+count=       2	avg=   0	min=   0	max=   0	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		AbstractPlayerSessionManager:logout_impl 1
+count=       2	avg=   0	min=   0	max=   0	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		AbstractPlayerSessionManager:logout_impl 2
+count=       2	avg=  23	min=   4	max=  42	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		AbstractPlayerSessionManager:logout_impl 4
+count=      10	avg=   6	min=   5	max=   7	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:12:58 UTC 2026		AccountDistributedLockManager delete
+count=      10	avg=   6	min=   5	max=   6	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		AccountDistributedLockManager execute delete
+count=       5	avg=   2	min=   1	max=   3	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager execute getCurrentLocker
+count=      10	avg=   6	min=   5	max=   7	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		AccountDistributedLockManager execute persist: update
+count=       5	avg=   2	min=   1	max=   3	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager getCurrentLocker
+count=      10	avg=   8	min=   6	max=  10	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:07:58 UTC 2026		AccountDistributedLockManager lock
+count=      10	avg=   6	min=   5	max=   7	 [VwdHBQBRC1oABURXXVABCA8DWFocQ1lFVV5QTU0DXgoaBAEODA]		Thu Feb 26 09:12:58 UTC 2026		AccountDistributedLockManager unlock
+count=       7	avg=   2	min=   0	max=   4	 [pool-11-thread-8]		Thu Feb 26 09:12:47 UTC 2026		CassandraDelayedMassAwardPersister execute getUncompleted
+count=       7	avg=   2	min=   0	max=   4	 [pool-11-thread-8]		Thu Feb 26 09:12:47 UTC 2026		CassandraDelayedMassAwardPersister getUncompleted
+count=      24	avg=   2	min=   1	max=   2	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute getFirstLogTime
+count=      24	avg=   2	min=   1	max=   2	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute getLastStatTime
+count=       1	avg=   1	min=   1	max=   1	 [pool-34-thread-2]		Thu Feb 26 09:07:50 UTC 2026		CassandraMetricsPersister execute persistStat in batch
+count=       2	avg=   3	min=   2	max=   3	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraPlayerSessionHistoryPersister execute persist
+count=       2	avg=  23	min=   4	max=  41	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraPlayerSessionHistoryPersister persist
+count=     127	avg=   2	min=   1	max=   5	 [pool-11-thread-4]		Thu Feb 26 09:10:35 UTC 2026		CassandraPromoCampaignPersister execute selectCampaignsByClause
+count=      84	avg=   2	min=   0	max=   3	 [pool-17-thread-2]		Thu Feb 26 09:13:58 UTC 2026		CassandraRemoteCallPersister execute getRemoteCalls
+count=      84	avg=   2	min=   0	max=   3	 [pool-17-thread-2]		Thu Feb 26 09:13:58 UTC 2026		CassandraRemoteCallPersister getRemoteCalls
+count=      84	avg=   2	min=   1	max=   6	 [pool-17-thread-1]		Thu Feb 26 09:13:58 UTC 2026		CassandraServerInfoPersister execute persist
+count=       3	avg=   3	min=   2	max=   3	 [pool-11-thread-2]		Thu Feb 26 09:13:47 UTC 2026		CassandraSummaryTournamentPromoFeedPersister execute getAllFeeds
+count=       4	avg=   3	min=   2	max=   4	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister execute getByTrackingStatusAndGameServer
+count=       7	avg=   3	min=   2	max=   5	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister execute getFromDB
+count=      10	avg=   2	min=   2	max=   3	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister execute persist
+count=       2	avg=   3	min=   2	max=   3	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister execute persist internal
+count=       2	avg=   3	min=   2	max=   3	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister execute persist internal::keySpace=RCasinoSCKS
+count=       5	avg=   5	min=   2	max=  10	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister get
+count=       2	avg=   0	min=   0	max=   0	 [UVUDalRVAAs9FRYXGA9WVmgCXlwBRVtCUw]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister get [expired on new lock]
+count=       3	avg=   0	min=   0	max=   0	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister get [hit]
+count=       2	avg=   4	min=   4	max=   4	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister get [locker mismatch]
+count=       6	avg=   4	min=   2	max=   6	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		CassandraTransactionDataPersister persist
+count=       4	avg=  81	min=   2	max= 201	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		CassandraTransactionDataPersister processTransactions
+count=       5	avg=   0	min=   0	max=   0	 [pool-5-thread-1]		Thu Feb 26 09:14:25 UTC 2026		DBLinkCache cleaner
+count=      44	avg=   6	min=   4	max=   8	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:35 UTC 2026		DistributedLockManager delete
+count=      44	avg=   6	min=   4	max=   7	 [pool-11-thread-8]		Thu Feb 26 09:14:25 UTC 2026		DistributedLockManager execute delete
+count=       3	avg=   3	min=   3	max=   3	 [pool-11-thread-1]		Thu Feb 26 09:08:15 UTC 2026		DistributedLockManager execute getCurrentLocker
+count=      44	avg=   7	min=   4	max=  17	 [pool-11-thread-7]		Thu Feb 26 09:08:25 UTC 2026		DistributedLockManager execute persist: update
+count=       3	avg=   3	min=   3	max=   3	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:15 UTC 2026		DistributedLockManager getCurrentLocker
+count=      44	avg=   8	min=   4	max=  17	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:25 UTC 2026		DistributedLockManager lock
+count=      44	avg=   6	min=   5	max=   8	 [PROMO_PromoCampaignProcessor]		Thu Feb 26 09:08:35 UTC 2026		DistributedLockManager unlock
+count=       6	avg= 290	min= 290	max= 290	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		FastKryoHelper buffer length
+count=       6	avg= 290	min= 290	max= 290	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		FastKryoHelper com.dgphoenix.casino.common.cache.data.session.SessionInfo buffer length
+count=      94	avg=   0	min=   0	max=   1	 [pool-17-thread-1]		Thu Feb 26 09:13:58 UTC 2026		FastKryoHelper createOutput
+count=      70	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper deserializeFrom
+count=      14	avg=   0	min=   0	max=   1	 [pool-37-thread-1]		Thu Feb 26 09:07:58 UTC 2026		FastKryoHelper deserializeWithClassFrom
+count=     148	avg=   0	min=   0	max=   2	 [pool-17-thread-1]		Thu Feb 26 09:07:52 UTC 2026		FastKryoHelper serializeToBytes
+count=      12	avg=   0	min=   0	max=   1	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		FastKryoHelper serializeWithClassToBytes
+count=      42	avg=   0	min=   0	max=   1	 [pool-24-thread-1]		Thu Feb 26 09:10:17 UTC 2026		LocalSessionTracker execution time
+count=       8	avg=  11	min=   0	max=  79	 [pool-37-thread-2]		Thu Feb 26 09:12:58 UTC 2026		LogoutTask:process 1
+count=      40	avg=  22	min=  16	max=  29	 [pool-11-thread-4]		Thu Feb 26 09:10:25 UTC 2026		PromoCampaignProcessor: run
+count=    2100	avg=  19	min=  15	max=  54	 [pool-2-thread-1]		Thu Feb 26 09:12:11 UTC 2026		TimeUpdater
+
+AccountDistributedLockManager locks size: localLocks size=5, serverLocks=CacheStats{hitCount=15, missCount=5, loadSuccessCount=5, loadExceptionCount=0, totalLoadTime=11429666, evictionCount=0}
+BaseGameCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+BasicTransactionDataStorageHelper: matchedLockerCount=7, misMatchedLockerCount=0
+BonusTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=20, currentPoolSize=0, completedTaskCount=0
+CassandraPersistenceManager: keySpace=RCasinoKS: knownHosts=1, connectedToHosts=1, openedConnections=3, trashedConnections=0, blockingTasks=0, nonBlockingTasks=0, requestsTimer[requestsCount=60, meanRate=0.1267021078324145, 1minRate=0.014084269327352933, 5minRate=0.18162523266515124, 15minRate=0.399151701486605], latency[min=614708, max=5110666, mean=2185627.66625628, median=2288625.0, stdDev=474160.5354405882], errors[connectionErrors=0, ignores=0, ignoresOnReadTimeout=0, ignoresOnWriteTimeout=0, ignoresOnUnavailable=0, retries=0, retriesOnReadTimeout=0, retriesOnWriteTimeout=0, retriesOnUnavailable=0, readTimeout=0, writeTimeout=0, unavailable=0, others=0, speculativeExecutions=0]
+CassandraPersistenceManager: keySpace=RCasinoSCKS: knownHosts=1, connectedToHosts=1, openedConnections=3, trashedConnections=0, blockingTasks=0, nonBlockingTasks=0, requestsTimer[requestsCount=942, meanRate=1.990371582885322, 1minRate=0.9876817799850766, 5minRate=1.711309664085982, 15minRate=2.270330635519105], latency[min=460750, max=15874041, mean=2782534.2193451603, median=2156334.0, stdDev=1796200.5866993656], errors[connectionErrors=0, ignores=0, ignoresOnReadTimeout=0, ignoresOnWriteTimeout=0, ignoresOnUnavailable=0, retries=0, retriesOnReadTimeout=0, retriesOnWriteTimeout=0, retriesOnUnavailable=0, readTimeout=0, writeTimeout=0, unavailable=0, others=0, speculativeExecutions=0]
+CassandraTransactionDataPersister cache size: size=3, stats=CacheStats{hitCount=10, missCount=10, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+CloseGameSessionNotifyTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+CommonExecutorService: poolSize=10, corePoolSize=10, largestPoolSize=10, maximumPoolSize=2147483647, completedTaskCount=153, taskCount=166, activeCount=1, executionTaskCounter= {=1, ExpiredMassAwardTracker$$Lambda$468/1998511629=1, PlacesUpdater=1, BalanceUpdater=1, FlushTask=1, PromoCampaignProcessor=1, DelayedMassAwardManager$$Lambda$469/1165449749=1, WebSocketSessionsKeeper=2, PeriodicUpdater=1, PromoCampaignManager$$Lambda$242/438188203=1, MqTournamentRankUpdater=1, ClientSystemDiagnosisServlet$$Lambda$528/308002829=1, CPUUpdater=1}
+CurrencyCache statistics: size=15, stats=CacheStats{hitCount=23, missCount=15, loadSuccessCount=15, loadExceptionCount=0, totalLoadTime=16460, evictionCount=0}
+DBLinkCache cleanerTotalCount: 0
+DBLinkCache size: 0
+DelayedExecutor: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+DistributedLockManager locks size: localLocks size=3, serverLocks=CacheStats{hitCount=85, missCount=3, loadSuccessCount=3, loadExceptionCount=0, totalLoadTime=8699500, evictionCount=0}
+DomainSession activeTransactionsCount: 0
+ExpiredFRBonusTracker: Expired bonuses count: 0
+ExpiredMassAwardTracker: Expired bonuses count: 0
+ExternalGameIdsCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+FRBonusNotificationTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=5, currentPoolSize=0, completedTaskCount=0
+FRBonusWinTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=5, currentPoolSize=0, completedTaskCount=0
+FastKryoHelper pool size: 1
+GameServer: started=Thu Feb 26 09:07:48 UTC 2026, serverId=1, name=GS_1, upTime=452803
+HttpClientConnection: activeConnectionsCount=0, connectionManager.totalStats=[leased: 0; pending: 0; available: 0; max: 5000], maxTotal=5000, timeoutCount=0, connectionErrorsCount=231, configurableHostNameVerifier=ConfigurableHostNameVerifier[originalVerifier=BROWSER_COMPATIBLE, trustedHosts=[], trustAll=false], proxy=null
+LeaderboardWinTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=15, currentPoolSize=0, completedTaskCount=0
+LocalSessionTracker: size=0
+LogoutTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=51, currentPoolSize=0, completedTaskCount=0
+MassAwardBonusManager : restrictionCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+NtpTimeProvider: Last updated: Thu Feb 26 09:14:48 UTC 2026 Offset: 8 minOffset: -8 maxOffset: 14 timeInfo.returnTime=Thu Feb 26 09:14:48 UTC 2026
+PaymentTransactionTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=50, currentPoolSize=0, completedTaskCount=0
+PingSessionCache statistics: poolSize=0, taskCount=0, errorCount=0, runCount=0, checkSidCount=0
+PlayerAliasService : aliasesCache statistics: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+PromoMessagesDispatcher: Sessions by campaigns: campaigns = 0, sendersPeek: 0
+SharedServletExecutorService: : , completedTaskCount=0, activeThreadsCount=0, maxThreadsCount=500, currentPoolSize=0, largestPoolSize=0
+ShutdownFilter: initialized=true, activeThreadsCount=null
+SynchroTimeProvider:  Offset: 0 minOffset: 9223372036854775807 maxOffset: -9223372036854775808
+TournamentBuilder: size=0, stats=CacheStats{hitCount=0, missCount=0, loadSuccessCount=0, loadExceptionCount=0, totalLoadTime=0, evictionCount=0}
+TournamentWebSocketSessionsController: clients count=0
+WalletTracker: : taskCount=0, activeThreadsCount=0, maxThreadsCount=50, currentPoolSize=0, completedTaskCount=0
+WebSocketSessionsController: sessions count=0
+WebSocketSessionsKeeper: pingsCount=0
+
+26.02.2026 09:14:50,959 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:14:55,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-5] - Start task
+26.02.2026 09:14:55,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-6] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:14:55,907 [COMMON] DEBUG [DistributedLockManager pool-11-thread-6] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:14:55,962 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:15:00,960 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:15:05,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-6] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:15:05,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-2] - Start task
+26.02.2026 09:15:05,906 [COMMON] DEBUG [DistributedLockManager pool-11-thread-6] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:15:05,960 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:15:10,961 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:15:15,884 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-4] - Start task
+26.02.2026 09:15:15,884 [COMMON] DEBUG [DistributedLockManager pool-11-thread-6] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:15:15,906 [COMMON] DEBUG [DistributedLockManager pool-11-thread-6] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:15:15,961 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:15:15,962 [COMMON] DEBUG [WebSocketSessionsController pool-11-thread-7] - Start task
+26.02.2026 09:15:17,116 [COMMON] DEBUG [TournamentsManager pool-11-thread-9] - Start task
+26.02.2026 09:15:17,116 [COMMON] DEBUG [TournamentsManager pool-11-thread-9] - PlacesUpdater: updatePlaces started
+26.02.2026 09:15:17,314 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-1] - Start task
+26.02.2026 09:15:17,328 [COMMON] DEBUG [TournamentWebSocketSessionsController pool-11-thread-8] - Start task
+26.02.2026 09:15:20,962 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:15:25,885 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - try lock: PROMO_PromoCampaignProcessor
+26.02.2026 09:15:25,885 [COMMON] DEBUG [PromoCampaignManager pool-11-thread-5] - Start task
+26.02.2026 09:15:25,949 [COMMON] DEBUG [DistributedLockManager pool-11-thread-3] - unlock: PROMO_PromoCampaignProcessor
+26.02.2026 09:15:25,969 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}
+26.02.2026 09:15:30,962 [COMMON] DEBUG [WatchServersThreadMaster pool-18-thread-1] - changedServers={}

@@ -1,0 +1,19 @@
+refactor-static-1 refactor-static Up About an hour
+refactor-gs-1 refactor-jetty-gs Up 8 minutes
+refactor-mp-1 refactor-jetty-gs Up About an hour
+refactor-config-service-1 refactor-config-service Up About an hour
+refactor-multiplayer-service-1 refactor-multiplayer-service Up About an hour
+refactor-session-service-1 refactor-session-service Up About an hour
+refactor-bonus-frb-service-1 refactor-bonus-frb-service Up About an hour
+refactor-protocol-adapter-1 refactor-protocol-adapter Up About an hour
+refactor-wallet-adapter-1 refactor-wallet-adapter Up About an hour
+refactor-history-service-1 refactor-history-service Up About an hour
+refactor-gameplay-orchestrator-1 refactor-gameplay-orchestrator Up About an hour
+refactor-kafka-1 confluentinc/cp-kafka:7.3.2 Up About an hour
+refactor-redis-1 redis:7.2-alpine Up About an hour
+refactor-zookeeper-1 zookeeper:3.8 Up About an hour
+refactor-c1-refactor-1 cassandra:4.1 Up About an hour
+casino_side inst_app-casino Up 25 hours
+echovault-memory echovault-echovault-memory Up 25 hours
+cm-module cm-module-cm-module Up 25 hours
+casino_mysql mysql:8.4 Up 25 hours (healthy)

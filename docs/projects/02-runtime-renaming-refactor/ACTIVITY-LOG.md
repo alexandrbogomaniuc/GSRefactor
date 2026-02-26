@@ -345,3 +345,27 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - full launch/wallet/mp regression evidence.
 - Next step:
   - start M0 baseline lock and milestone-by-milestone execution under this new hard-cut plan.
+
+## 2026-02-26 09:15 UTC (M0 Baseline Lock Completed)
+- Executed hard-cut M0 baseline capture before any rename edits.
+- Created immutable evidence pack:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-091520-hardcut-m0-baseline/`
+- Captured:
+  - git head/status,
+  - docker runtime snapshot,
+  - GS/MP log tails,
+  - package declaration inventories (`com.dgphoenix`/`com.abs`) for GS and MP,
+  - pom groupId inventories for GS and MP,
+  - runtime class-string/token inventories and hotspot rankings.
+- M0 summary report created:
+  - `docs/projects/02-runtime-renaming-refactor/11-hard-cut-m0-baseline-lock-report-20260226.md`
+- Key baseline facts:
+  - GS packages: `com.dgphoenix=2060`, `com.abs=1`
+  - MP packages: `com.dgphoenix=217`, `com.abs=0`
+  - GS pom groupId legacy hits: `57`; MP pom legacy hits: `40`
+  - GS runtime class-string inventory: `1583` hits
+  - MP runtime token inventory: `1532` hits
+  - GS log legacy namespace hits in tail: `100`
+- Outcome:
+  - M0 gate is complete and reproducible.
+  - Next gate is M1 (build-coordinate transition prep) under strict guarded waves.
