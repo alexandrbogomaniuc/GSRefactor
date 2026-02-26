@@ -878,3 +878,19 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-113605-hardcut-m2-wave31-ifr-bonus-win`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/43-hard-cut-m2-wave31-ifr-bonus-win-report-20260226.md`
+
+## 2026-02-26 11:51 UTC (M2 Wave 32 - FRBonusNotificationStatus Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.payment.frb.FRBonusNotificationStatus` -> `com.abs.casino.common.cache.data.payment.frb.FRBonusNotificationStatus`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/frb/FRBonusNotificationStatus.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBonusNotification.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/FRBonusManager.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/FRBonusNotificationTrackerTask.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/FRBonusNotificationManager.java`
+- Post-scan result: legacy refs `0`, abs refs `4`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-114542-hardcut-m2-wave32-fr-bonus-notification-status`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/44-hard-cut-m2-wave32-fr-bonus-notification-status-report-20260226.md`

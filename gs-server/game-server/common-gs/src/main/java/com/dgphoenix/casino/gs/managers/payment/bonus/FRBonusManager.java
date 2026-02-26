@@ -16,7 +16,7 @@ import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBWinOperation;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusNotification;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin;
 import com.dgphoenix.casino.common.cache.data.payment.frb.FRBWinOperationStatus;
-import com.dgphoenix.casino.common.cache.data.payment.frb.FRBonusNotificationStatus;
+import com.abs.casino.common.cache.data.payment.frb.FRBonusNotificationStatus;
 import com.abs.casino.common.cache.data.payment.frb.IFRBonusWin;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;

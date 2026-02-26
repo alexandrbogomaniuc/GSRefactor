@@ -1,0 +1,4 @@
+4:import com.abs.casino.common.cache.data.payment.frb.FRBonusNotificationStatus;
+19:import com.abs.casino.common.cache.data.payment.frb.FRBonusNotificationStatus;
+8:import com.abs.casino.common.cache.data.payment.frb.FRBonusNotificationStatus;
+6:import com.abs.casino.common.cache.data.payment.frb.FRBonusNotificationStatus;

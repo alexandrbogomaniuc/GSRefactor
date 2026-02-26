@@ -3,7 +3,7 @@ package com.dgphoenix.casino.gs.managers.payment.bonus;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusNotification;
-import com.dgphoenix.casino.common.cache.data.payment.frb.FRBonusNotificationStatus;
+import com.abs.casino.common.cache.data.payment.frb.FRBonusNotificationStatus;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.managers.payment.bonus.client.frb.FRBRESTNotificationClient;
 import com.dgphoenix.casino.gs.managers.payment.bonus.tracker.FRBonusNotificationTracker;

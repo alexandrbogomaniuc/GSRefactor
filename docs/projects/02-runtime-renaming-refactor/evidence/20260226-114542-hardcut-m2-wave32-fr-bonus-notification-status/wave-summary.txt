@@ -1,0 +1,9 @@
+Wave: W32-fr-bonus-notification-status
+Date (UTC): 2026-02-26
+Status: COMPLETE
+
+Migrated:
+- com.dgphoenix.casino.common.cache.data.payment.frb.FRBonusNotificationStatus -> com.abs.casino.common.cache.data.payment.frb.FRBonusNotificationStatus
+
+Validation:
+- 9/9 required checks PASS.
