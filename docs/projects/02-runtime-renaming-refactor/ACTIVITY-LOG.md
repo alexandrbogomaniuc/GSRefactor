@@ -1012,3 +1012,15 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-124135-hardcut-m2-wave40-logout-common-constants`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/52-hard-cut-m2-wave40-logout-common-constants-report-20260226.md`
+
+## 2026-02-26 12:50 UTC (M2 Wave 41 - CTLobbyLoginResponse Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.web.login.ct.CTLobbyLoginResponse` -> `com.abs.casino.common.web.login.ct.CTLobbyLoginResponse`
+- Changed file:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/web/login/ct/CTLobbyLoginResponse.java`
+- Post-scan result: legacy refs `0`, abs refs `1` (pre-scan legacy refs `1`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-124705-hardcut-m2-wave41-ct-lobby-login-response`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/53-hard-cut-m2-wave41-ct-lobby-login-response-report-20260226.md`
