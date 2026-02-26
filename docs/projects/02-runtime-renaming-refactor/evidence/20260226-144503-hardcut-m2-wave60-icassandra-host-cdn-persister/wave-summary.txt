@@ -1,0 +1,7 @@
+Hard-Cut M2 Wave 60 - ICassandraHostCdnPersister
+Date(UTC): 2026-02-26
+Scope: com.dgphoenix.casino.common.games.ICassandraHostCdnPersister -> com.abs.casino.common.games.ICassandraHostCdnPersister
+PreLegacyRefs: 1
+PostLegacyRefs: 0
+PostAbsRefs: 3
+Validation: PASS (9/9)

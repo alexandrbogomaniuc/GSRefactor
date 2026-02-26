@@ -1,0 +1,10 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/ICassandraHostCdnPersister.java:10:public interface ICassandraHostCdnPersister {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:4:import com.abs.casino.common.games.ICassandraHostCdnPersister;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:30:    protected ICassandraHostCdnPersister hostCdnPersister;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:36:                                   ICassandraHostCdnPersister hostCdnPersister) {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:72:    protected ICassandraHostCdnPersister getHostCdnPersister() {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:4:import com.abs.casino.common.games.ICassandraHostCdnPersister;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:46:                                    ICassandraHostCdnPersister hostCdnPersister) {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:84:                ICassandraHostCdnPersister hostCdnPersister = getHostCdnPersister();
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraHostCdnPersister.java:6:import com.abs.casino.common.games.ICassandraHostCdnPersister;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraHostCdnPersister.java:18:public class CassandraHostCdnPersister extends AbstractCassandraPersister<String, String> implements ICassandraHostCdnPersister {

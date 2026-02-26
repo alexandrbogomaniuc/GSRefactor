@@ -1274,3 +1274,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-143855-hardcut-m2-wave59-idelegated-start-game-helper`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/71-hard-cut-m2-wave59-idelegated-start-game-helper-report-20260226.md`
+
+## 2026-02-26 14:50 UTC (Hard-Cut M2 Wave 60)
+- Executed hard-cut namespace wave for `ICassandraHostCdnPersister`.
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/ICassandraHostCdnPersister.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java`
+  - `gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraHostCdnPersister.java`
+- Change detail:
+  - migrated `com.dgphoenix.casino.common.games.ICassandraHostCdnPersister` to `com.abs.casino.common.games.ICassandraHostCdnPersister`.
+  - rewired dependent imports in helper/persister implementations.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-144503-hardcut-m2-wave60-icassandra-host-cdn-persister/`
+- Outcome:
+  - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `3`.
+  - global tracked source declarations now `2144` remaining (`2277` baseline, `133` reduced).
