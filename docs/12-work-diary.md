@@ -5790,3 +5790,21 @@
   - Combined import-surface burn-down now `100.00%` (`639 -> 0`).
 - Important scope note:
   - This completes the import-line burndown metric only; production cutover still depends on runtime validation and audit sign-off artifacts.
+
+### 2026-02-26 06:31 UTC
+- Continued in `/Users/alexb/Documents/Dev/Dev_new` with Project 02 (`RENAME-FINAL`) execution.
+- Ran Phase 0 inventory and Phase 1 W0 guarded flow (scan -> patch plan -> dry-run -> apply -> diff audit).
+- Critical safety finding:
+  - W0 auto-apply altered runtime startup class string in docker compose (`com.betsoft...NettyServer` -> `com.abs...NettyServer`) while source package remains `com.betsoft`.
+- Corrective action:
+  - rolled back all W0 applied runtime/config edits.
+  - hardened compatibility map to prevent repeated unsafe auto-apply:
+    - `W0 allowsAutomaticApply=false`
+    - brand mappings set `reviewOnly=true`.
+- Post-fix checks:
+  - `phase9-abs-compatibility-map-validate.sh` PASS (`reviewOnly=9`)
+  - post-guardrail candidate scan shows `Auto-candidate mappings: 0`.
+- Build matrix PASS:
+  - promo/common install, cache tests (63), web-gs package, mp subset package.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-063100/`
