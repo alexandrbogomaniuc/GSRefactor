@@ -1,0 +1,4 @@
+1:package com.dgphoenix.casino.actions.api.history.vba;
+1:package com.dgphoenix.casino.actions.api.history.vba;
+363:                type="com.dgphoenix.casino.actions.api.history.vba.HistoryByRoundAction"
+370:                type="com.dgphoenix.casino.actions.api.history.vba.HistoryByTokenAction"

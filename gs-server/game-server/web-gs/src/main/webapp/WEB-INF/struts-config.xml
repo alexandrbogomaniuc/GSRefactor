@@ -360,14 +360,14 @@
         </action>
 
         <action path="/vabs/historyByRound"
-                type="com.dgphoenix.casino.actions.api.history.vba.HistoryByRoundAction"
+                type="com.abs.casino.actions.api.history.vba.HistoryByRoundAction"
                 scope="request" name="EmptyForm">
             <forward name="common_error" redirect="false" path="/error_pages/error.jsp"/>
             <forward name="not_found_error" redirect="false" path="/error_pages/history_not_found.jsp"/>
         </action>
 
         <action path="/vabs/historyByToken"
-                type="com.dgphoenix.casino.actions.api.history.vba.HistoryByTokenAction"
+                type="com.abs.casino.actions.api.history.vba.HistoryByTokenAction"
                 scope="request" validate="false">
             <forward name="not_found_error" redirect="false" path="/error_pages/history_not_found.jsp"/>
         </action>

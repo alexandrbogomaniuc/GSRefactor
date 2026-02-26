@@ -1,0 +1,44 @@
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.dgphoenix.casino.common.util.test.api.TestCaseResultTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.dgphoenix.casino.common.util.test.api.TestCaseResultTest
+Running com.dgphoenix.casino.common.util.test.api.TestScenarioFactoryProducerTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.138 sec - in com.dgphoenix.casino.common.util.test.api.TestScenarioFactoryProducerTest
+Running com.dgphoenix.casino.common.util.test.api.TestScenarioResultTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.166 sec - in com.dgphoenix.casino.common.util.test.api.TestScenarioResultTest
+Running com.dgphoenix.casino.common.util.test.api.TestScenarioImplTest
+log4j:WARN No appenders could be found for logger (com.dgphoenix.casino.common.util.test.api.TestScenarioImpl).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 sec - in com.dgphoenix.casino.common.util.test.api.TestScenarioImplTest
+Running com.dgphoenix.casino.common.util.ReflectionUtilsCompatibilityTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.dgphoenix.casino.common.util.ReflectionUtilsCompatibilityTest
+Running com.dgphoenix.casino.common.util.StringPropertyHelperTest
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 sec - in com.dgphoenix.casino.common.util.StringPropertyHelperTest
+Running com.dgphoenix.casino.common.util.web.WebToolsTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.04 sec - in com.dgphoenix.casino.common.util.web.WebToolsTest
+Running com.dgphoenix.casino.common.util.DateUtilsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0 sec - in com.dgphoenix.casino.common.util.DateUtilsTest
+Running com.dgphoenix.casino.common.util.DigitFormatterTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.dgphoenix.casino.common.util.DigitFormatterTest
+Running com.dgphoenix.casino.common.util.KryoSerializationTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.449 sec - in com.dgphoenix.casino.common.util.KryoSerializationTest
+Running com.dgphoenix.casino.common.util.CollectionUtilsTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec - in com.dgphoenix.casino.common.util.CollectionUtilsTest
+Running com.dgphoenix.casino.common.util.CalendarUtilsTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in com.dgphoenix.casino.common.util.CalendarUtilsTest
+Running com.dgphoenix.casino.common.util.string.MatrixUtilsTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.dgphoenix.casino.common.util.string.MatrixUtilsTest
+Running com.dgphoenix.casino.common.util.string.CollectionParserTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in com.dgphoenix.casino.common.util.string.CollectionParserTest
+Running com.dgphoenix.casino.common.geoip.GeoIpTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.037 sec - in com.dgphoenix.casino.common.geoip.GeoIpTest
+Running com.dgphoenix.casino.common.GameSessionExtendedPropertiesTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec - in com.dgphoenix.casino.common.GameSessionExtendedPropertiesTest
+
+Results :
+
+Tests run: 57, Failures: 0, Errors: 0, Skipped: 1
+

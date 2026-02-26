@@ -7189,3 +7189,13 @@
   - migrated 4 `actions/api/bonus/response` classes to `com.abs`, updated dependent import in `AbstractBonusAction`, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 92 with next low-fanout runtime backlog batch.
+
+### 2026-02-26 18:13 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 92 (VBA history actions).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-181059-hardcut-m2-wave92-history-vba-actions/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/104-hard-cut-m2-wave92-history-vba-actions-report-20260226.md`
+- Result:
+  - migrated two VBA history actions to `com.abs`, updated corresponding Struts mappings, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 93 with next low-fanout runtime backlog batch.

@@ -1820,3 +1820,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `6` to `0`, `com.abs` refs now `6`.
   - global tracked source declarations/files now `2111` remaining (`2277` baseline, `166` reduced).
+
+## 2026-02-26 18:13 UTC (Hard-Cut M2 Wave 92)
+- Executed hard-cut namespace wave for VBA history actions.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByRoundAction.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByTokenAction.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml`
+- Change detail:
+  - migrated both action package declarations to `com.abs`.
+  - updated Struts action mappings to `com.abs` class names for `/vabs/historyByRound` and `/vabs/historyByToken`.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-181059-hardcut-m2-wave92-history-vba-actions/`
+- Outcome:
+  - wave scope legacy refs reduced from `4` to `0`, `com.abs` refs now `4`.
+  - global tracked source declarations/files now `2109` remaining (`2277` baseline, `168` reduced).
