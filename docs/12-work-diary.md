@@ -6899,3 +6899,13 @@
   - migrated class package to `com.abs`, updated Java/JSP dependent imports, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 63 with next low-fanout declaration migration.
+
+### 2026-02-26 15:04 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 63 (`StartGameHelpers`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-150121-hardcut-m2-wave63-start-game-helpers/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/75-hard-cut-m2-wave63-start-game-helpers-report-20260226.md`
+- Result:
+  - migrated class package to `com.abs`, updated Java/JSP dependent imports, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 64 with `IStartGameHelper` migration.

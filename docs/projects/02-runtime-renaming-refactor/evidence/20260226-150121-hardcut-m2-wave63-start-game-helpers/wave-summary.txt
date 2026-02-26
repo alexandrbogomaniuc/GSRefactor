@@ -1,0 +1,7 @@
+Hard-Cut M2 Wave 63 - StartGameHelpers
+Date(UTC): 2026-02-26
+Scope: com.dgphoenix.casino.common.games.StartGameHelpers -> com.abs.casino.common.games.StartGameHelpers
+PreLegacyRefs: 4
+PostLegacyRefs: 0
+PostAbsRefs: 4
+Validation: PASS (9/9)
