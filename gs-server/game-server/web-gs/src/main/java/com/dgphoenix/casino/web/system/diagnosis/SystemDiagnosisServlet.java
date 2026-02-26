@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.web.system.diagnosis;
+package com.abs.casino.web.system.diagnosis;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.IKeyspaceManager;
@@ -16,7 +16,7 @@ import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.managers.payment.bonus.tracker.FRBonusWinTracker;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
-import com.dgphoenix.casino.web.system.diagnosis.tasks.CassandraStateMonitoringTask;
+import com.abs.casino.web.system.diagnosis.tasks.CassandraStateMonitoringTask;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

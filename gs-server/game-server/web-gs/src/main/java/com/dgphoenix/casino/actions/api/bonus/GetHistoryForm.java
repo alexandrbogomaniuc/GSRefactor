@@ -1,5 +1,6 @@
-package com.dgphoenix.casino.actions.api.bonus;
+package com.abs.casino.actions.api.bonus;
 
+import com.dgphoenix.casino.actions.api.bonus.BonusForm;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 

@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.actions.api.frbonus;
 
+import com.abs.casino.actions.api.frbonus.GetFRBForm;
 import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
 import com.dgphoenix.casino.actions.api.bonus.BonusForm;
 import com.dgphoenix.casino.common.cache.BankInfoCache;

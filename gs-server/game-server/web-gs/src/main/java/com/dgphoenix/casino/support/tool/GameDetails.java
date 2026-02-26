@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.tool;
+package com.abs.casino.support.tool;
 
 import com.dgphoenix.casino.common.cache.data.game.GameVariableType;
 

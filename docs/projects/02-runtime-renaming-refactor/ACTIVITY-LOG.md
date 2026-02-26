@@ -1928,3 +1928,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `2`.
   - global tracked source declarations/files now `2104` remaining (`2277` baseline, `173` reduced).
+
+## 2026-02-26 19:37 UTC (Hard-Cut M2 Wave 98A + 98B + 99)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W98A`: support/tool + diagnosis declarations migrated to `com.abs` (17 classes).
+  - `W98B`: bonus/frbonus form declarations migrated to `com.abs` (10 forms), plus dependent action import rewires and Struts form-bean rewires.
+  - `W99`: integration rewire of diagnosis servlet FQCNs in `WEB-INF/web.xml`.
+- Changed files:
+  - full file list in `docs/projects/02-runtime-renaming-refactor/evidence/20260226-193037-hardcut-m2-wave98ab-wave99-parallel-batches/target-files.txt`.
+- Validation:
+  - fast gate initial failure due missing `${cluster.properties}` in shell context; rerun with `-Dcluster.properties=local/local-machine.properties` passed (`web-gs package` + `refactor smoke`).
+  - full 9-step matrix passed `9/9` (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-gs`, `cassandra-cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-193037-hardcut-m2-wave98ab-wave99-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/110-hard-cut-m2-wave98ab-wave99-parallel-batches-report-20260226.md`
+- Outcome:
+  - scoped declaration migrations: `27 -> 0` legacy declarations, `27` `com.abs` declarations.
+  - global tracked source declarations/files now `2077` remaining (`2277` baseline, `200` reduced).

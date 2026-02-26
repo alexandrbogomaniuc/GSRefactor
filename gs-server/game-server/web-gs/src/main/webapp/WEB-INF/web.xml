@@ -123,7 +123,7 @@
     <servlet>
         <display-name>System diagnosis servlet</display-name>
         <servlet-name>SystemDiagnosisServlet</servlet-name>
-        <servlet-class>com.dgphoenix.casino.web.system.diagnosis.SystemDiagnosisServlet</servlet-class>
+        <servlet-class>com.abs.casino.web.system.diagnosis.SystemDiagnosisServlet</servlet-class>
         <load-on-startup>100</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -134,7 +134,7 @@
     <servlet>
         <display-name>Client system diagnosis servlet</display-name>
         <servlet-name>ClientSystemDiagnosisServlet</servlet-name>
-        <servlet-class>com.dgphoenix.casino.web.system.diagnosis.ClientSystemDiagnosisServlet</servlet-class>
+        <servlet-class>com.abs.casino.web.system.diagnosis.ClientSystemDiagnosisServlet</servlet-class>
         <load-on-startup>100</load-on-startup>
     </servlet>
     <servlet-mapping>

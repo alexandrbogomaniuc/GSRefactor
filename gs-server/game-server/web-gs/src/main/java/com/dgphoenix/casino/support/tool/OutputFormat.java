@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.tool;
+package com.abs.casino.support.tool;
 
 public enum OutputFormat {
     JSON,

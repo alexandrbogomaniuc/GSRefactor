@@ -1,0 +1,23 @@
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/web.xml:126:        <servlet-class>com.abs.casino.web.system.diagnosis.SystemDiagnosisServlet</servlet-class>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/web.xml:137:        <servlet-class>com.abs.casino.web.system.diagnosis.ClientSystemDiagnosisServlet</servlet-class>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:44:        <form-bean name="BSAwardForm" type="com.abs.casino.actions.api.bonus.AwardForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:45:        <form-bean name="BSCancelForm" type="com.abs.casino.actions.api.bonus.CancelForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:46:        <form-bean name="BSCheckForm" type="com.abs.casino.actions.api.bonus.CheckForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:47:        <form-bean name="BSHistoryForm" type="com.abs.casino.actions.api.bonus.GetHistoryForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:48:        <form-bean name="BSInfoForm" type="com.abs.casino.actions.api.bonus.GetInfoForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:49:        <form-bean name="GetBonusForm" type="com.abs.casino.actions.api.bonus.GetBonusForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:57:        <form-bean name="FRBHistoryForm" type="com.abs.casino.actions.api.frbonus.GetFRBHistoryForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:58:        <form-bean name="FRBInfoForm" type="com.abs.casino.actions.api.frbonus.GetFRBInfoForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:59:        <form-bean name="FRBInfoLiteForm" type="com.abs.casino.actions.api.frbonus.GetFRBInfoLiteForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:60:        <form-bean name="GetFRBForm" type="com.abs.casino.actions.api.frbonus.GetFRBForm"/>
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/system/diagnosis/SystemDiagnosisServlet.java:19:import com.abs.casino.web.system.diagnosis.tasks.CassandraStateMonitoringTask;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/GetBonusAction.java:3:import com.abs.casino.actions.api.bonus.GetBonusForm;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/GetHistoryAction.java:3:import com.abs.casino.actions.api.bonus.GetHistoryForm;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/CheckAction.java:3:import com.abs.casino.actions.api.bonus.CheckForm;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoAction.java:4:import com.abs.casino.actions.api.frbonus.GetFRBInfoForm;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/CancelAction.java:3:import com.abs.casino.actions.api.bonus.CancelForm;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryAction.java:3:import com.abs.casino.actions.api.frbonus.GetFRBHistoryForm;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoLiteAction.java:4:import com.abs.casino.actions.api.frbonus.GetFRBInfoLiteForm;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/AwardAction.java:3:import com.abs.casino.actions.api.bonus.AwardForm;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/GetInfoAction.java:3:import com.abs.casino.actions.api.bonus.GetInfoForm;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBAction.java:3:import com.abs.casino.actions.api.frbonus.GetFRBForm;

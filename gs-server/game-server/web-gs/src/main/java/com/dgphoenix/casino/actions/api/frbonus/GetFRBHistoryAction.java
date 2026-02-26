@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.actions.api.frbonus;
 
+import com.abs.casino.actions.api.frbonus.GetFRBHistoryForm;
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
 import com.dgphoenix.casino.actions.api.bonus.BonusForm;

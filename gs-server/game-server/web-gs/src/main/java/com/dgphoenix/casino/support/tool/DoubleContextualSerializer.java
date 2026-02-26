@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.tool;
+package com.abs.casino.support.tool;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.BeanProperty;

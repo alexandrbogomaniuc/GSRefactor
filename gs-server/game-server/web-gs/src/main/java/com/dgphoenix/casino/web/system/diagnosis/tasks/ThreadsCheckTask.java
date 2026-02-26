@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.web.system.diagnosis.tasks;
+package com.abs.casino.web.system.diagnosis.tasks;
 
 import com.dgphoenix.casino.common.utils.MBeanUtils;
 

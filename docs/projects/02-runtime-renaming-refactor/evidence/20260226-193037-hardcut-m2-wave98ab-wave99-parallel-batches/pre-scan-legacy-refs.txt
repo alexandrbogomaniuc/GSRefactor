@@ -1,0 +1,13 @@
+HEAD:gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/system/diagnosis/SystemDiagnosisServlet.java:19:import com.dgphoenix.casino.web.system.diagnosis.tasks.CassandraStateMonitoringTask;
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:44:        <form-bean name="BSAwardForm" type="com.dgphoenix.casino.actions.api.bonus.AwardForm"/>
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:45:        <form-bean name="BSCancelForm" type="com.dgphoenix.casino.actions.api.bonus.CancelForm"/>
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:46:        <form-bean name="BSCheckForm" type="com.dgphoenix.casino.actions.api.bonus.CheckForm"/>
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:47:        <form-bean name="BSHistoryForm" type="com.dgphoenix.casino.actions.api.bonus.GetHistoryForm"/>
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:48:        <form-bean name="BSInfoForm" type="com.dgphoenix.casino.actions.api.bonus.GetInfoForm"/>
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:49:        <form-bean name="GetBonusForm" type="com.dgphoenix.casino.actions.api.bonus.GetBonusForm"/>
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:57:        <form-bean name="FRBHistoryForm" type="com.dgphoenix.casino.actions.api.frbonus.GetFRBHistoryForm"/>
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:58:        <form-bean name="FRBInfoForm" type="com.dgphoenix.casino.actions.api.frbonus.GetFRBInfoForm"/>
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:59:        <form-bean name="FRBInfoLiteForm" type="com.dgphoenix.casino.actions.api.frbonus.GetFRBInfoLiteForm"/>
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:60:        <form-bean name="GetFRBForm" type="com.dgphoenix.casino.actions.api.frbonus.GetFRBForm"/>
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/web.xml:126:        <servlet-class>com.dgphoenix.casino.web.system.diagnosis.SystemDiagnosisServlet</servlet-class>
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/web.xml:137:        <servlet-class>com.dgphoenix.casino.web.system.diagnosis.ClientSystemDiagnosisServlet</servlet-class>

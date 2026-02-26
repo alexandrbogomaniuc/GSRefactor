@@ -41,12 +41,12 @@
 
         <form-bean name="CWRegisterForm" type="com.dgphoenix.casino.actions.enter.game.cwv3.CWRegisterForm"/>
 
-        <form-bean name="BSAwardForm" type="com.dgphoenix.casino.actions.api.bonus.AwardForm"/>
-        <form-bean name="BSCancelForm" type="com.dgphoenix.casino.actions.api.bonus.CancelForm"/>
-        <form-bean name="BSCheckForm" type="com.dgphoenix.casino.actions.api.bonus.CheckForm"/>
-        <form-bean name="BSHistoryForm" type="com.dgphoenix.casino.actions.api.bonus.GetHistoryForm"/>
-        <form-bean name="BSInfoForm" type="com.dgphoenix.casino.actions.api.bonus.GetInfoForm"/>
-        <form-bean name="GetBonusForm" type="com.dgphoenix.casino.actions.api.bonus.GetBonusForm"/>
+        <form-bean name="BSAwardForm" type="com.abs.casino.actions.api.bonus.AwardForm"/>
+        <form-bean name="BSCancelForm" type="com.abs.casino.actions.api.bonus.CancelForm"/>
+        <form-bean name="BSCheckForm" type="com.abs.casino.actions.api.bonus.CheckForm"/>
+        <form-bean name="BSHistoryForm" type="com.abs.casino.actions.api.bonus.GetHistoryForm"/>
+        <form-bean name="BSInfoForm" type="com.abs.casino.actions.api.bonus.GetInfoForm"/>
+        <form-bean name="GetBonusForm" type="com.abs.casino.actions.api.bonus.GetBonusForm"/>
 
         <form-bean name="FRBAwardForm" type="com.abs.casino.actions.api.frbonus.AwardFRBForm"/>
         <form-bean name="FRBAwardLiteForm" type="com.abs.casino.actions.api.frbonus.AwardFRBLiteForm"/>
@@ -54,10 +54,10 @@
         <form-bean name="FRBCancelForm" type="com.abs.casino.actions.api.frbonus.CancelFRBForm"/>
         <form-bean name="CancelFRBLiteForm" type="com.abs.casino.actions.api.frbonus.CancelFRBLiteForm"/>
 
-        <form-bean name="FRBHistoryForm" type="com.dgphoenix.casino.actions.api.frbonus.GetFRBHistoryForm"/>
-        <form-bean name="FRBInfoForm" type="com.dgphoenix.casino.actions.api.frbonus.GetFRBInfoForm"/>
-        <form-bean name="FRBInfoLiteForm" type="com.dgphoenix.casino.actions.api.frbonus.GetFRBInfoLiteForm"/>
-        <form-bean name="GetFRBForm" type="com.dgphoenix.casino.actions.api.frbonus.GetFRBForm"/>
+        <form-bean name="FRBHistoryForm" type="com.abs.casino.actions.api.frbonus.GetFRBHistoryForm"/>
+        <form-bean name="FRBInfoForm" type="com.abs.casino.actions.api.frbonus.GetFRBInfoForm"/>
+        <form-bean name="FRBInfoLiteForm" type="com.abs.casino.actions.api.frbonus.GetFRBInfoLiteForm"/>
+        <form-bean name="GetFRBForm" type="com.abs.casino.actions.api.frbonus.GetFRBForm"/>
 
 
         <form-bean name="BSStartGameForm" type="com.dgphoenix.casino.actions.enter.game.bonus.BSStartGameForm"/>

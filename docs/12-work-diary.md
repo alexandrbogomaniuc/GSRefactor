@@ -7249,3 +7249,14 @@
   - migrated `CheckFRBForm` to `com.abs`, updated dependent action import + Struts form-bean mapping, and passed full 9/9 validation matrix.
 - Next:
   - switch to batched-safe parallel mode (explorer + 2 workers) for non-overlapping low-risk batches.
+
+### 2026-02-26 19:37 UTC
+- Continued Project 02 hard-cut runtime renaming with parallel batch waves `98A/98B` and integration wave `99`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-193037-hardcut-m2-wave98ab-wave99-parallel-batches/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/110-hard-cut-m2-wave98ab-wave99-parallel-batches-report-20260226.md`
+- Result:
+  - migrated 27 package declarations to `com.abs` (support/diagnosis + bonus/frbonus forms), rewired dependent action imports/Struts form-beans, and updated diagnosis servlet FQCNs in `WEB-INF/web.xml`.
+  - validation gate passed 9/9 after fast-gate rerun with explicit `-Dcluster.properties=local/local-machine.properties`.
+- Next:
+  - proceed with next non-overlapping low-risk batch under the same batched-safe parallel model.
