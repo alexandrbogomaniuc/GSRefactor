@@ -3,7 +3,7 @@ package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.SubCasinoCache;
 import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
-import com.dgphoenix.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm;
+import com.abs.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;

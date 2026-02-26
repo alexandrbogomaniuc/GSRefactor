@@ -12,17 +12,17 @@
         <form-bean name="CacheViewerForm" type="com.abs.casino.web.system.cacheviewer.CacheViewerForm"/>
         <form-bean name="CommonWalletRegisterForm" type="com.dgphoenix.casino.gs.managers.payment.wallet.common.remote.CommonWalletRegisterForm"/>
         <form-bean name="EmptyForm" type="com.abs.casino.web.EmptyForm"/>
-        <form-bean name="BankInfoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm"/>
-        <form-bean name="AwayFromBankInfoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm"/>
-        <form-bean name="GameIdSelectForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.GameIdSelectForm"/>
-        <form-bean name="AddGameForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.AddGameForm"/>
+        <form-bean name="BankInfoForm" type="com.abs.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm"/>
+        <form-bean name="AwayFromBankInfoForm" type="com.abs.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm"/>
+        <form-bean name="GameIdSelectForm" type="com.abs.casino.support.cache.bank.edit.forms.common.GameIdSelectForm"/>
+        <form-bean name="AddGameForm" type="com.abs.casino.support.cache.bank.edit.forms.common.AddGameForm"/>
         <form-bean name="BankPropertiesForm" type="com.abs.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm"/>
         <form-bean name="SubcasinoForm" type="com.abs.casino.support.cache.bank.edit.forms.common.SubcasinoForm"/>
         <form-bean name="NewBankForm" type="com.abs.casino.support.cache.bank.edit.forms.addBank.NewBankForm"/>
         <form-bean name="GameInfoForm" type="com.abs.casino.support.cache.bank.edit.forms.common.GameInfoForm"/>
-        <form-bean name="DomainwlForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm"/>
-        <form-bean name="NewBankNSubCasinoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm"/>
-        <form-bean name="BanksNSubCasinosForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.BanksNSubCasinosForm"/>
+        <form-bean name="DomainwlForm" type="com.abs.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm"/>
+        <form-bean name="NewBankNSubCasinoForm" type="com.abs.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm"/>
+        <form-bean name="BanksNSubCasinosForm" type="com.abs.casino.support.cache.bank.edit.forms.common.BanksNSubCasinosForm"/>
         <form-bean name="CompareBanksForm" type="com.dgphoenix.casino.support.differencer.banks.CompareBanksForm"/>
         <form-bean name="CompareTemplatesForm" type="com.dgphoenix.casino.support.differencer.gametemplate.CompareTemplatesForm"/>
 
@@ -79,7 +79,7 @@
         <form-bean name="GameListForm" type="com.dgphoenix.casino.actions.enter.game.GameListForm"/>
         <form-bean name="GameSettingsForm" type="com.dgphoenix.casino.actions.enter.game.GameSettingsForm"/>
 
-        <form-bean name="FileUploadForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.language.UploadForm"/>
+        <form-bean name="FileUploadForm" type="com.abs.casino.support.cache.bank.edit.forms.language.UploadForm"/>
         <!-- End ported from LOBBY -->
 
         <!-- Migrated -->

@@ -1,0 +1,10 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AbstractBonusServlet.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CancelBonusServlet.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CheckBonusServlet.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/GetBonusHistoryServlet.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/GetBonusInfoServlet.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryServlet.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/login/AbstractGatewayServlet.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/login/InitCdnHostServlet.java

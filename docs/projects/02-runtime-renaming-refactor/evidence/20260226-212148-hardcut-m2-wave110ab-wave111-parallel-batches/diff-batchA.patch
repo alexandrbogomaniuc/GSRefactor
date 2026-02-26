@@ -1,0 +1,239 @@
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByRoundAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByRoundAction.java
+index a46bd88f..4812fb47 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByRoundAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByRoundAction.java
+@@ -13,7 +13,7 @@ import com.dgphoenix.casino.common.util.Triple;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
+ import com.dgphoenix.casino.web.history.GameHistoryListAction;
+-import com.dgphoenix.casino.web.history.GameHistoryServlet;
++import com.abs.casino.web.history.GameHistoryServlet;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.apache.struts.action.Action;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByTokenAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByTokenAction.java
+index 8d53b51a..693a8090 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByTokenAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByTokenAction.java
+@@ -11,7 +11,7 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+ import com.dgphoenix.casino.common.util.Triple;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
+-import com.dgphoenix.casino.web.history.GameHistoryServlet;
++import com.abs.casino.web.history.GameHistoryServlet;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.apache.struts.Globals;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java
+index 10cf1569..31449b7a 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.api.newgames;
++package com.abs.casino.web.api.newgames;
+ 
+ import com.dgphoenix.casino.account.AccountManager;
+ import com.abs.casino.actions.enter.game.routing.GameplayOrchestratorRoutingBridge;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AbstractBonusServlet.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AbstractBonusServlet.java
+index 3a001b63..b127b477 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AbstractBonusServlet.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AbstractBonusServlet.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.bonus;
++package com.abs.casino.web.bonus;
+ 
+ import com.dgphoenix.casino.account.AccountManager;
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java
+index b8f00bdf..280b5759 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.bonus;
++package com.abs.casino.web.bonus;
+ 
+ import com.dgphoenix.casino.account.AccountManager;
+ import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CancelBonusServlet.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CancelBonusServlet.java
+index 0c5d8bce..6d3b89ff 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CancelBonusServlet.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CancelBonusServlet.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.bonus;
++package com.abs.casino.web.bonus;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CheckBonusServlet.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CheckBonusServlet.java
+index 51a5f149..22438e62 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CheckBonusServlet.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CheckBonusServlet.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.bonus;
++package com.abs.casino.web.bonus;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/GetBonusHistoryServlet.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/GetBonusHistoryServlet.java
+index 4d94a3ad..b79182ef 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/GetBonusHistoryServlet.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/GetBonusHistoryServlet.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.bonus;
++package com.abs.casino.web.bonus;
+ 
+ import com.dgphoenix.casino.account.AccountManager;
+ import com.dgphoenix.casino.common.SessionHelper;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/GetBonusInfoServlet.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/GetBonusInfoServlet.java
+index 6010845f..fa76917d 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/GetBonusInfoServlet.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/GetBonusInfoServlet.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.bonus;
++package com.abs.casino.web.bonus;
+ 
+ import com.dgphoenix.casino.account.AccountManager;
+ import com.dgphoenix.casino.common.SessionHelper;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryServlet.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryServlet.java
+index 127cd608..0b37fb0f 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryServlet.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryServlet.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.history;
++package com.abs.casino.web.history;
+ 
+ import com.dgphoenix.casino.account.AccountManager;
+ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/login/AbstractGatewayServlet.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/login/AbstractGatewayServlet.java
+index ad05eec4..6d0a0f14 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/login/AbstractGatewayServlet.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/login/AbstractGatewayServlet.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.login;
++package com.abs.casino.web.login;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.exception.BadArgumentException;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/login/InitCdnHostServlet.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/login/InitCdnHostServlet.java
+index 186bbac9..4c927da5 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/login/InitCdnHostServlet.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/login/InitCdnHostServlet.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.login;
++package com.abs.casino.web.login;
+ 
+ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+ import com.dgphoenix.casino.cassandra.persist.CassandraHostCdnPersister;
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/web.xml b/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/web.xml
+index 0fdd7263..4726b27d 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/web.xml
++++ b/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/web.xml
+@@ -145,7 +145,7 @@
+     <servlet>
+         <display-name>Game History servlet</display-name>
+         <servlet-name>gamehistoryservlet</servlet-name>
+-        <servlet-class>com.dgphoenix.casino.web.history.GameHistoryServlet</servlet-class>
++        <servlet-class>com.abs.casino.web.history.GameHistoryServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+         <servlet-name>gamehistoryservlet</servlet-name>
+@@ -154,7 +154,7 @@
+ 
+     <servlet>
+         <servlet-name>hostCdnApi</servlet-name>
+-        <servlet-class>com.dgphoenix.casino.web.login.InitCdnHostServlet</servlet-class>
++        <servlet-class>com.abs.casino.web.login.InitCdnHostServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+         <servlet-name>hostCdnApi</servlet-name>
+@@ -163,7 +163,7 @@
+ 
+     <servlet>
+         <servlet-name>newGamesInternalApi</servlet-name>
+-        <servlet-class>com.dgphoenix.casino.web.api.newgames.NewGamesInternalApiServlet</servlet-class>
++        <servlet-class>com.abs.casino.web.api.newgames.NewGamesInternalApiServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+         <servlet-name>newGamesInternalApi</servlet-name>
+@@ -173,7 +173,7 @@
+     <!--Bonus system-->
+     <servlet>
+         <servlet-name>awardbonusservlet</servlet-name>
+-        <servlet-class>com.dgphoenix.casino.web.bonus.AwardBonusServlet</servlet-class>
++        <servlet-class>com.abs.casino.web.bonus.AwardBonusServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+         <servlet-name>awardbonusservlet</servlet-name>
+@@ -182,7 +182,7 @@
+ 
+     <servlet>
+         <servlet-name>checkbonusservlet</servlet-name>
+-        <servlet-class>com.dgphoenix.casino.web.bonus.CheckBonusServlet</servlet-class>
++        <servlet-class>com.abs.casino.web.bonus.CheckBonusServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+         <servlet-name>checkbonusservlet</servlet-name>
+@@ -191,7 +191,7 @@
+ 
+     <servlet>
+         <servlet-name>cancelbonusservlet</servlet-name>
+-        <servlet-class>com.dgphoenix.casino.web.bonus.CancelBonusServlet</servlet-class>
++        <servlet-class>com.abs.casino.web.bonus.CancelBonusServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+         <servlet-name>cancelbonusservlet</servlet-name>
+@@ -200,7 +200,7 @@
+ 
+     <servlet>
+         <servlet-name>historybonusservlet</servlet-name>
+-        <servlet-class>com.dgphoenix.casino.web.bonus.GetBonusHistoryServlet</servlet-class>
++        <servlet-class>com.abs.casino.web.bonus.GetBonusHistoryServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+         <servlet-name>historybonusservlet</servlet-name>
+@@ -209,7 +209,7 @@
+ 
+     <servlet>
+         <servlet-name>infobonusservlet</servlet-name>
+-        <servlet-class>com.dgphoenix.casino.web.bonus.GetBonusInfoServlet</servlet-class>
++        <servlet-class>com.abs.casino.web.bonus.GetBonusInfoServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+         <servlet-name>infobonusservlet</servlet-name>
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/vabs/VabEngine/VabEngineMain.jspf b/gs-server/game-server/web-gs/src/main/webapp/vabs/VabEngine/VabEngineMain.jspf
+index 62e12231..04f720c6 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/vabs/VabEngine/VabEngineMain.jspf
++++ b/gs-server/game-server/web-gs/src/main/webapp/vabs/VabEngine/VabEngineMain.jspf
+@@ -1,8 +1,8 @@
+ <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+ <%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
+-<%@ page import="com.dgphoenix.casino.web.history.GameHistoryServlet" %>
++<%@ page import="com.abs.casino.web.history.GameHistoryServlet" %>
+ <%@ page import="org.apache.struts.util.MessageResources" %>
+-<%@ page import="static com.dgphoenix.casino.web.history.GameHistoryServlet.PARAM_TIME_ZONE" %>
++<%@ page import="static com.abs.casino.web.history.GameHistoryServlet.PARAM_TIME_ZONE" %>
+ <%@ page import="java.util.concurrent.TimeUnit" %>
+ <%@ page import="com.dgphoenix.casino.common.exception.CommonException" %>
+ <%@ page import="java.time.ZoneId" %>
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/vabs/html5template.jspf b/gs-server/game-server/web-gs/src/main/webapp/vabs/html5template.jspf
+index b524dbe4..cfd5a3b6 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/vabs/html5template.jspf
++++ b/gs-server/game-server/web-gs/src/main/webapp/vabs/html5template.jspf
+@@ -7,8 +7,8 @@
+ <%@ page import="static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty" %>
+ <%@ page import="com.dgphoenix.casino.common.cache.data.session.GameSession" %>
+ <%@ page import="com.dgphoenix.casino.common.util.Pair" %>
+-<%@ page import="static com.dgphoenix.casino.web.history.GameHistoryServlet.PARAM_SESSION" %>
+-<%@ page import="static com.dgphoenix.casino.web.history.GameHistoryServlet.*" %>
++<%@ page import="static com.abs.casino.web.history.GameHistoryServlet.PARAM_SESSION" %>
++<%@ page import="static com.abs.casino.web.history.GameHistoryServlet.*" %>
+ <%@ page import="com.dgphoenix.casino.gs.managers.game.history.HistoryManager" %>
+ <%@ page import="org.apache.commons.lang.LocaleUtils" %>
+ <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
+@@ -154,4 +154,4 @@
+ </script>
+ 
+ </body>
+-</html>
+\ No newline at end of file
++</html>

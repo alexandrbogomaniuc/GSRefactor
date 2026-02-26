@@ -11,7 +11,7 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.Triple;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
-import com.dgphoenix.casino.web.history.GameHistoryServlet;
+import com.abs.casino.web.history.GameHistoryServlet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.Globals;

@@ -1,0 +1,14 @@
+# Batch B target package lines (post)
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/AddGameForm.java: package com.abs.casino.support.cache.bank.edit.forms.common;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/AwayFromBankInfoForm.java: package com.abs.casino.support.cache.bank.edit.forms.common;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/BanksNSubCasinosForm.java: package com.abs.casino.support.cache.bank.edit.forms.common;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameIdSelectForm.java: package com.abs.casino.support.cache.bank.edit.forms.common;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameViewBean.java: package com.abs.casino.support.cache.bank.edit.forms.common;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/LoadBankInfoForm.java: package com.abs.casino.support.cache.bank.edit.forms.common;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/NewBankNSubCasinoForm.java: package com.abs.casino.support.cache.bank.edit.forms.common;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/domains/DomainWhiteListForm.java: package com.abs.casino.support.cache.bank.edit.forms.domains;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/domains/GameBean.java: package com.abs.casino.support.cache.bank.edit.forms.domains;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BeanHelper.java: package com.abs.casino.support.cache.bank.edit.forms.editproperties;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/language/UploadForm.java: package com.abs.casino.support.cache.bank.edit.forms.language;
+
+# Batch B rewires remaining dgphoenix refs

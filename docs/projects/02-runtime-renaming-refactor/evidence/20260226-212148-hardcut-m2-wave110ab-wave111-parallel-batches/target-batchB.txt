@@ -1,0 +1,11 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/AddGameForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/AwayFromBankInfoForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/BanksNSubCasinosForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameIdSelectForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameViewBean.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/LoadBankInfoForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/NewBankNSubCasinoForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/domains/DomainWhiteListForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/domains/GameBean.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BeanHelper.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/language/UploadForm.java

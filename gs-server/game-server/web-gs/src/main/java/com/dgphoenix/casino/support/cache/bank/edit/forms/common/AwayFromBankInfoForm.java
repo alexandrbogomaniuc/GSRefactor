@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
+package com.abs.casino.support.cache.bank.edit.forms.common;
 
 
 import org.apache.struts.action.ActionForm;

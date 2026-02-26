@@ -1,0 +1,13 @@
+# Batch A target package lines (post)
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java: package com.abs.casino.web.api.newgames;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AbstractBonusServlet.java: package com.abs.casino.web.bonus;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java: package com.abs.casino.web.bonus;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CancelBonusServlet.java: package com.abs.casino.web.bonus;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CheckBonusServlet.java: package com.abs.casino.web.bonus;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/GetBonusHistoryServlet.java: package com.abs.casino.web.bonus;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/GetBonusInfoServlet.java: package com.abs.casino.web.bonus;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryServlet.java: package com.abs.casino.web.history;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/login/AbstractGatewayServlet.java: package com.abs.casino.web.login;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/login/InitCdnHostServlet.java: package com.abs.casino.web.login;
+
+# Batch A rewires remaining dgphoenix refs for migrated classes

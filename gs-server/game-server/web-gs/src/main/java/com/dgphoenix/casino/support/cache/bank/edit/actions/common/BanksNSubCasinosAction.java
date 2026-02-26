@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.SubCasinoCache;
 import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
-import com.dgphoenix.casino.support.cache.bank.edit.forms.common.BanksNSubCasinosForm;
+import com.abs.casino.support.cache.bank.edit.forms.common.BanksNSubCasinosForm;
 import org.apache.struts.util.LabelValueBean;
 
 import javax.servlet.http.HttpServletRequest;

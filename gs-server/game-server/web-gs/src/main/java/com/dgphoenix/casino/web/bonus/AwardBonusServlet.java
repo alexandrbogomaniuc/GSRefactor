@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.web.bonus;
+package com.abs.casino.web.bonus;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;

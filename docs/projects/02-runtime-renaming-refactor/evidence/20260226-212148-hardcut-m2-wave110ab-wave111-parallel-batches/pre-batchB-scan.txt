@@ -1,0 +1,39 @@
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/AddGameForm.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/AwayFromBankInfoForm.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/BanksNSubCasinosForm.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameIdSelectForm.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameViewBean.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/LoadBankInfoForm.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
+3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+4:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+5:import com.dgphoenix.casino.common.cache.data.bank.Limit;
+6:import com.dgphoenix.casino.common.cache.data.currency.Currency;
+7:import com.dgphoenix.casino.common.util.string.StringUtils;
+8:import com.dgphoenix.casino.common.web.BaseAction;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/NewBankNSubCasinoForm.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/domains/DomainWhiteListForm.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.forms.domains;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/domains/GameBean.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.forms.domains;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BeanHelper.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/language/UploadForm.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.forms.language;
+

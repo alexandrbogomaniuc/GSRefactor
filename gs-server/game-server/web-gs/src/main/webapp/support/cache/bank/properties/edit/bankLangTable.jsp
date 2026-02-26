@@ -65,7 +65,7 @@
 
 </head>
 <body>
-<%--<jsp:useBean id="gameBean" class="com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties.BeanHelper"/>--%>
+<%--<jsp:useBean id="gameBean" class="com.abs.casino.support.cache.bank.edit.forms.editproperties.BeanHelper"/>--%>
 <%--<jsp:setProperty name="gameBean" property="gameId" value="0"/>--%>
 <%--<jsp:setProperty name="gameBean" property="bankId" value="0"/>--%>
 <div align="center">

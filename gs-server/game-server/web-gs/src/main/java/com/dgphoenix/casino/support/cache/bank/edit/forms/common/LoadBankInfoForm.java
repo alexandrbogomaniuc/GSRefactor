@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
+package com.abs.casino.support.cache.bank.edit.forms.common;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;

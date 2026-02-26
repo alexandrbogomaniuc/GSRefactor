@@ -1,0 +1,375 @@
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AwayFromBankInfoAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AwayFromBankInfoAction.java
+index c6a36dfa..108b6ccb 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AwayFromBankInfoAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AwayFromBankInfoAction.java
+@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.BaseGameCache;
+ import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+ import com.dgphoenix.casino.common.cache.data.currency.Currency;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm;
++import com.abs.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm;
+ import org.apache.struts.action.Action;
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.action.ActionForward;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/BanksNSubCasinosAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/BanksNSubCasinosAction.java
+index c75d07ea..385ae228 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/BanksNSubCasinosAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/BanksNSubCasinosAction.java
+@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.SubCasinoCache;
+ import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+ import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.common.BanksNSubCasinosForm;
++import com.abs.casino.support.cache.bank.edit.forms.common.BanksNSubCasinosForm;
+ import org.apache.struts.util.LabelValueBean;
+ 
+ import javax.servlet.http.HttpServletRequest;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CopyConfigAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CopyConfigAction.java
+index a7fecedf..d3e20fcc 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CopyConfigAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CopyConfigAction.java
+@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.BaseGameCache;
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+ import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.common.AddGameForm;
++import com.abs.casino.support.cache.bank.edit.forms.common.AddGameForm;
+ import org.apache.struts.action.Action;
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.action.ActionForward;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CreateNewGameAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CreateNewGameAction.java
+index 90f0f85f..e7e1ee13 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CreateNewGameAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CreateNewGameAction.java
+@@ -14,7 +14,7 @@ import com.dgphoenix.casino.common.cache.data.game.GameGroup;
+ import com.dgphoenix.casino.common.cache.data.game.GameType;
+ import com.dgphoenix.casino.common.cache.data.game.GameVariableType;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.common.AddGameForm;
++import com.abs.casino.support.cache.bank.edit.forms.common.AddGameForm;
+ import org.apache.struts.action.Action;
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.action.ActionForward;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java
+index 9673f986..32b9fe69 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java
+@@ -9,8 +9,8 @@ import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+ import com.dgphoenix.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper;
+ import com.dgphoenix.casino.common.configuration.messages.MessageManager;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.common.GameViewBean;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm;
++import com.abs.casino.support.cache.bank.edit.forms.common.GameViewBean;
++import com.abs.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.apache.struts.action.Action;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/GameIdSelectAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/GameIdSelectAction.java
+index 0511a3dd..38616468 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/GameIdSelectAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/GameIdSelectAction.java
+@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.BaseGameCache;
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+ import com.dgphoenix.casino.common.cache.data.currency.Currency;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.common.AddGameForm;
++import com.abs.casino.support.cache.bank.edit.forms.common.AddGameForm;
+ import org.apache.struts.action.Action;
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.action.ActionForward;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ImportSubCasinoAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ImportSubCasinoAction.java
+index d655faa0..88a02589 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ImportSubCasinoAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ImportSubCasinoAction.java
+@@ -2,7 +2,7 @@ package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+ 
+ import com.dgphoenix.casino.common.web.BaseAction;
+ import com.dgphoenix.casino.gs.maintenance.CacheExporter;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.language.UploadForm;
++import com.abs.casino.support.cache.bank.edit.forms.language.UploadForm;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.apache.struts.action.*;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/InputModeAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/InputModeAction.java
+index d769f4cd..b5230595 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/InputModeAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/InputModeAction.java
+@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.LimitsCache;
+ import com.dgphoenix.casino.common.cache.data.bank.Coin;
+ import com.dgphoenix.casino.common.cache.data.bank.Limit;
+ import com.dgphoenix.casino.common.util.DigitFormatter;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm;
++import com.abs.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm;
+ import org.apache.struts.action.Action;
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.action.ActionForward;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadBankInfoAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadBankInfoAction.java
+index 1ccc4ff7..4acf7916 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadBankInfoAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadBankInfoAction.java
+@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+ import com.dgphoenix.casino.common.cache.data.bank.Coin;
+ import com.dgphoenix.casino.common.cache.data.currency.Currency;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm;
++import com.abs.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm;
+ import org.apache.struts.action.Action;
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.action.ActionForward;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewBankNSubCasinoAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewBankNSubCasinoAction.java
+index db3b931a..760a5457 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewBankNSubCasinoAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewBankNSubCasinoAction.java
+@@ -3,7 +3,7 @@ package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.SubCasinoCache;
+ import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm;
++import com.abs.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm;
+ import org.apache.struts.action.Action;
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.action.ActionForward;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewSubCasinoIdAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewSubCasinoIdAction.java
+index a4bb94d1..eff607af 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewSubCasinoIdAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewSubCasinoIdAction.java
+@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.SubCasinoCache;
+ import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.dgphoenix.casino.common.web.BaseAction;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm;
++import com.abs.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.apache.struts.action.*;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java
+index 9b97923e..b1774bf4 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java
+@@ -3,8 +3,8 @@ package com.dgphoenix.casino.support.cache.bank.edit.actions.domains;
+ import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
+ import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.GameBean;
++import com.abs.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
++import com.abs.casino.support.cache.bank.edit.forms.domains.GameBean;
+ import org.apache.struts.action.Action;
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.action.ActionForward;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainWhiteListAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainWhiteListAction.java
+index 6498e9e2..287a37d3 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainWhiteListAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainWhiteListAction.java
+@@ -4,8 +4,8 @@ import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+ import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
+ import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+ import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.GameBean;
++import com.abs.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
++import com.abs.casino.support.cache.bank.edit.forms.domains.GameBean;
+ import org.apache.struts.action.Action;
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.action.ActionForward;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainsByGameAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainsByGameAction.java
+index 1203ab6e..36024124 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainsByGameAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainsByGameAction.java
+@@ -3,7 +3,7 @@ package com.dgphoenix.casino.support.cache.bank.edit.actions.domains;
+ 
+ import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
+ import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
++import com.abs.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+ import org.apache.struts.action.Action;
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.action.ActionForward;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/EditDomainAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/EditDomainAction.java
+index a7689af3..a1e26ff5 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/EditDomainAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/EditDomainAction.java
+@@ -4,7 +4,7 @@ package com.dgphoenix.casino.support.cache.bank.edit.actions.domains;
+ import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
+ import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+ import com.dgphoenix.casino.common.web.BaseAction;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
++import com.abs.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+ import org.apache.struts.action.Action;
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.action.ActionForward;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/ReadDomainsAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/ReadDomainsAction.java
+index 6cd28190..2b43dbc6 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/ReadDomainsAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/ReadDomainsAction.java
+@@ -4,7 +4,7 @@ package com.abs.casino.support.cache.bank.edit.actions.domains;
+ import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
+ import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+-import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
++import com.abs.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+ import org.apache.struts.action.Action;
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.action.ActionForward;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/AddGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/AddGameForm.java
+index 595d18d5..d39a45de 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/AddGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/AddGameForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
++package com.abs.casino.support.cache.bank.edit.forms.common;
+ 
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.util.LabelValueBean;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/AwayFromBankInfoForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/AwayFromBankInfoForm.java
+index 830c89e8..99fa9bbc 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/AwayFromBankInfoForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/AwayFromBankInfoForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
++package com.abs.casino.support.cache.bank.edit.forms.common;
+ 
+ 
+ import org.apache.struts.action.ActionForm;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/BanksNSubCasinosForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/BanksNSubCasinosForm.java
+index a408929b..65453852 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/BanksNSubCasinosForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/BanksNSubCasinosForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
++package com.abs.casino.support.cache.bank.edit.forms.common;
+ 
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.util.LabelValueBean;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameIdSelectForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameIdSelectForm.java
+index 2f4d36be..cc16cdb4 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameIdSelectForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameIdSelectForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
++package com.abs.casino.support.cache.bank.edit.forms.common;
+ 
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.util.LabelValueBean;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameViewBean.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameViewBean.java
+index 3a1d50cf..26f1e97d 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameViewBean.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameViewBean.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
++package com.abs.casino.support.cache.bank.edit.forms.common;
+ 
+ public class GameViewBean {
+ 
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/LoadBankInfoForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/LoadBankInfoForm.java
+index 18c856c6..29bfe7d3 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/LoadBankInfoForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/LoadBankInfoForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
++package com.abs.casino.support.cache.bank.edit.forms.common;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/NewBankNSubCasinoForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/NewBankNSubCasinoForm.java
+index f67c0703..64cd3c28 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/NewBankNSubCasinoForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/NewBankNSubCasinoForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
++package com.abs.casino.support.cache.bank.edit.forms.common;
+ 
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.util.LabelValueBean;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/domains/DomainWhiteListForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/domains/DomainWhiteListForm.java
+index e12c03b2..f19bef8d 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/domains/DomainWhiteListForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/domains/DomainWhiteListForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.forms.domains;
++package com.abs.casino.support.cache.bank.edit.forms.domains;
+ 
+ import org.apache.struts.action.ActionForm;
+ import org.apache.struts.action.ActionMapping;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/domains/GameBean.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/domains/GameBean.java
+index a69aaa6c..f782d9b3 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/domains/GameBean.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/domains/GameBean.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.forms.domains;
++package com.abs.casino.support.cache.bank.edit.forms.domains;
+ 
+ 
+ public class GameBean {
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BeanHelper.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BeanHelper.java
+index 097cf018..6d495693 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BeanHelper.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/editproperties/BeanHelper.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties;
++package com.abs.casino.support.cache.bank.edit.forms.editproperties;
+ 
+ 
+ public class BeanHelper {
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/language/UploadForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/language/UploadForm.java
+index 58f2495b..f38c5f02 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/language/UploadForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/language/UploadForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.forms.language;
++package com.abs.casino.support.cache.bank.edit.forms.language;
+ 
+ 
+ import org.apache.struts.action.ActionErrors;
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml b/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
+index 14c3a32b..8cf6e883 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
++++ b/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
+@@ -12,17 +12,17 @@
+         <form-bean name="CacheViewerForm" type="com.abs.casino.web.system.cacheviewer.CacheViewerForm"/>
+         <form-bean name="CommonWalletRegisterForm" type="com.dgphoenix.casino.gs.managers.payment.wallet.common.remote.CommonWalletRegisterForm"/>
+         <form-bean name="EmptyForm" type="com.abs.casino.web.EmptyForm"/>
+-        <form-bean name="BankInfoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm"/>
+-        <form-bean name="AwayFromBankInfoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm"/>
+-        <form-bean name="GameIdSelectForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.GameIdSelectForm"/>
+-        <form-bean name="AddGameForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.AddGameForm"/>
++        <form-bean name="BankInfoForm" type="com.abs.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm"/>
++        <form-bean name="AwayFromBankInfoForm" type="com.abs.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm"/>
++        <form-bean name="GameIdSelectForm" type="com.abs.casino.support.cache.bank.edit.forms.common.GameIdSelectForm"/>
++        <form-bean name="AddGameForm" type="com.abs.casino.support.cache.bank.edit.forms.common.AddGameForm"/>
+         <form-bean name="BankPropertiesForm" type="com.abs.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm"/>
+         <form-bean name="SubcasinoForm" type="com.abs.casino.support.cache.bank.edit.forms.common.SubcasinoForm"/>
+         <form-bean name="NewBankForm" type="com.abs.casino.support.cache.bank.edit.forms.addBank.NewBankForm"/>
+         <form-bean name="GameInfoForm" type="com.abs.casino.support.cache.bank.edit.forms.common.GameInfoForm"/>
+-        <form-bean name="DomainwlForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm"/>
+-        <form-bean name="NewBankNSubCasinoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm"/>
+-        <form-bean name="BanksNSubCasinosForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.BanksNSubCasinosForm"/>
++        <form-bean name="DomainwlForm" type="com.abs.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm"/>
++        <form-bean name="NewBankNSubCasinoForm" type="com.abs.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm"/>
++        <form-bean name="BanksNSubCasinosForm" type="com.abs.casino.support.cache.bank.edit.forms.common.BanksNSubCasinosForm"/>
+         <form-bean name="CompareBanksForm" type="com.dgphoenix.casino.support.differencer.banks.CompareBanksForm"/>
+         <form-bean name="CompareTemplatesForm" type="com.dgphoenix.casino.support.differencer.gametemplate.CompareTemplatesForm"/>
+ 
+@@ -79,7 +79,7 @@
+         <form-bean name="GameListForm" type="com.dgphoenix.casino.actions.enter.game.GameListForm"/>
+         <form-bean name="GameSettingsForm" type="com.dgphoenix.casino.actions.enter.game.GameSettingsForm"/>
+ 
+-        <form-bean name="FileUploadForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.language.UploadForm"/>
++        <form-bean name="FileUploadForm" type="com.abs.casino.support.cache.bank.edit.forms.language.UploadForm"/>
+         <!-- End ported from LOBBY -->
+ 
+         <!-- Migrated -->
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/bankLangTable.jsp b/gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/bankLangTable.jsp
+index 0b6b1c17..48fc89e9 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/bankLangTable.jsp
++++ b/gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/bankLangTable.jsp
+@@ -65,7 +65,7 @@
+ 
+ </head>
+ <body>
+-<%--<jsp:useBean id="gameBean" class="com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties.BeanHelper"/>--%>
++<%--<jsp:useBean id="gameBean" class="com.abs.casino.support.cache.bank.edit.forms.editproperties.BeanHelper"/>--%>
+ <%--<jsp:setProperty name="gameBean" property="gameId" value="0"/>--%>
+ <%--<jsp:setProperty name="gameBean" property="bankId" value="0"/>--%>
+ <div align="center">

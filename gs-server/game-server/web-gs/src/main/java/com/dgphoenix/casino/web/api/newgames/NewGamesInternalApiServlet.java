@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.web.api.newgames;
+package com.abs.casino.web.api.newgames;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.abs.casino.actions.enter.game.routing.GameplayOrchestratorRoutingBridge;

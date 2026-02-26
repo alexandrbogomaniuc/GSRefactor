@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.web.login;
+package com.abs.casino.web.login;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.exception.BadArgumentException;

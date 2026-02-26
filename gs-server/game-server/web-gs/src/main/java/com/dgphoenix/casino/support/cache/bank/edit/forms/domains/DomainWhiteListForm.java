@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.cache.bank.edit.forms.domains;
+package com.abs.casino.support.cache.bank.edit.forms.domains;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;

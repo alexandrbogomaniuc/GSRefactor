@@ -1,0 +1,36 @@
+step=1 start=2026-02-26T21:28:38Z
+cmd=cd /Users/alexb/Documents/Dev/Dev_new/gs-server/common && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+step=1 end=2026-02-26T21:28:44Z result=PASS exit=0
+
+step=2 start=2026-02-26T21:28:44Z
+cmd=cd /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet && mvn -Dcluster.properties=local/local-machine.properties test
+step=2 end=2026-02-26T21:28:48Z result=PASS exit=0
+
+step=3 start=2026-02-26T21:28:48Z
+cmd=cd /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils && mvn -Dcluster.properties=local/local-machine.properties test
+step=3 end=2026-02-26T21:28:50Z result=PASS exit=0
+
+step=4 start=2026-02-26T21:28:50Z
+cmd=cd /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+step=4 end=2026-02-26T21:28:52Z result=PASS exit=0
+
+step=5 start=2026-02-26T21:28:52Z
+cmd=cd /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+step=5 end=2026-02-26T21:28:56Z result=PASS exit=0
+
+step=6 start=2026-02-26T21:28:56Z
+cmd=cd /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache && mvn -Dcluster.properties=local/local-machine.properties test
+step=6 end=2026-02-26T21:29:00Z result=PASS exit=0
+
+step=7 start=2026-02-26T21:29:00Z
+cmd=cd /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs && mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+step=7 end=2026-02-26T21:29:10Z result=PASS exit=0
+
+step=8 start=2026-02-26T21:29:11Z
+cmd=cd /Users/alexb/Documents/Dev/Dev_new/mp-server && mvn -Dcluster.properties=local/local-machine.properties -pl core,persistance -am -DskipTests package
+step=8 end=2026-02-26T21:29:16Z result=PASS exit=0
+
+step=9 start=2026-02-26T21:29:16Z
+cmd=cd /Users/alexb/Documents/Dev/Dev_new && node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
+step=9 end=2026-02-26T21:29:17Z result=PASS exit=0
+

@@ -4,7 +4,7 @@ package com.abs.casino.support.cache.bank.edit.actions.domains;
 import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
 import com.abs.casino.common.cache.data.domain.DomainWhiteList;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+import com.abs.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;

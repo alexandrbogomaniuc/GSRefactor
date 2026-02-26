@@ -1,8 +1,8 @@
 <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
 <%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
-<%@ page import="com.dgphoenix.casino.web.history.GameHistoryServlet" %>
+<%@ page import="com.abs.casino.web.history.GameHistoryServlet" %>
 <%@ page import="org.apache.struts.util.MessageResources" %>
-<%@ page import="static com.dgphoenix.casino.web.history.GameHistoryServlet.PARAM_TIME_ZONE" %>
+<%@ page import="static com.abs.casino.web.history.GameHistoryServlet.PARAM_TIME_ZONE" %>
 <%@ page import="java.util.concurrent.TimeUnit" %>
 <%@ page import="com.dgphoenix.casino.common.exception.CommonException" %>
 <%@ page import="java.time.ZoneId" %>

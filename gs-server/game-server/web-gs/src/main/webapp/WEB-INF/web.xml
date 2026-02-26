@@ -145,7 +145,7 @@
     <servlet>
         <display-name>Game History servlet</display-name>
         <servlet-name>gamehistoryservlet</servlet-name>
-        <servlet-class>com.dgphoenix.casino.web.history.GameHistoryServlet</servlet-class>
+        <servlet-class>com.abs.casino.web.history.GameHistoryServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>gamehistoryservlet</servlet-name>
@@ -154,7 +154,7 @@
 
     <servlet>
         <servlet-name>hostCdnApi</servlet-name>
-        <servlet-class>com.dgphoenix.casino.web.login.InitCdnHostServlet</servlet-class>
+        <servlet-class>com.abs.casino.web.login.InitCdnHostServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>hostCdnApi</servlet-name>
@@ -163,7 +163,7 @@
 
     <servlet>
         <servlet-name>newGamesInternalApi</servlet-name>
-        <servlet-class>com.dgphoenix.casino.web.api.newgames.NewGamesInternalApiServlet</servlet-class>
+        <servlet-class>com.abs.casino.web.api.newgames.NewGamesInternalApiServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>newGamesInternalApi</servlet-name>
@@ -173,7 +173,7 @@
     <!--Bonus system-->
     <servlet>
         <servlet-name>awardbonusservlet</servlet-name>
-        <servlet-class>com.dgphoenix.casino.web.bonus.AwardBonusServlet</servlet-class>
+        <servlet-class>com.abs.casino.web.bonus.AwardBonusServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>awardbonusservlet</servlet-name>
@@ -182,7 +182,7 @@
 
     <servlet>
         <servlet-name>checkbonusservlet</servlet-name>
-        <servlet-class>com.dgphoenix.casino.web.bonus.CheckBonusServlet</servlet-class>
+        <servlet-class>com.abs.casino.web.bonus.CheckBonusServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>checkbonusservlet</servlet-name>
@@ -191,7 +191,7 @@
 
     <servlet>
         <servlet-name>cancelbonusservlet</servlet-name>
-        <servlet-class>com.dgphoenix.casino.web.bonus.CancelBonusServlet</servlet-class>
+        <servlet-class>com.abs.casino.web.bonus.CancelBonusServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>cancelbonusservlet</servlet-name>
@@ -200,7 +200,7 @@
 
     <servlet>
         <servlet-name>historybonusservlet</servlet-name>
-        <servlet-class>com.dgphoenix.casino.web.bonus.GetBonusHistoryServlet</servlet-class>
+        <servlet-class>com.abs.casino.web.bonus.GetBonusHistoryServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>historybonusservlet</servlet-name>
@@ -209,7 +209,7 @@
 
     <servlet>
         <servlet-name>infobonusservlet</servlet-name>
-        <servlet-class>com.dgphoenix.casino.web.bonus.GetBonusInfoServlet</servlet-class>
+        <servlet-class>com.abs.casino.web.bonus.GetBonusInfoServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>infobonusservlet</servlet-name>

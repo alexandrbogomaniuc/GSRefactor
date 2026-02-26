@@ -2030,3 +2030,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - final stabilized declaration migrations: `20` net (`W108A` retained, `W108B` reverted).
   - global tracked source declarations/files now `1956` remaining (`2277` baseline, `321` reduced).
+
+## 2026-02-26 21:36 UTC (Hard-Cut M2 Wave 110A + 110B + 111)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W110A`: migrated 10 low-risk web servlet declaration packages to `com.abs`.
+  - `W110B`: migrated 11 low-risk support/cache form declaration packages to `com.abs` with bounded rewires in support actions + `WEB-INF/struts-config.xml` + one JSP.
+  - `W111`: integrated both batches and validated.
+- Changed files:
+  - full file list in `docs/projects/02-runtime-renaming-refactor/evidence/20260226-212148-hardcut-m2-wave110ab-wave111-parallel-batches/target-files.txt`.
+- Validation PASS:
+  - fast gate (`web-gs package`, `refactor smoke`) passed.
+  - full 9-step matrix passed `9/9` (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-gs`, `cassandra-cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-212148-hardcut-m2-wave110ab-wave111-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/116-hard-cut-m2-wave110ab-wave111-parallel-batches-report-20260226.md`
+- Outcome:
+  - scoped declaration migrations: `21 -> 0` legacy declarations, `21` `com.abs` declarations.
+  - global tracked source declarations/files now `1935` remaining (`2277` baseline, `342` reduced).

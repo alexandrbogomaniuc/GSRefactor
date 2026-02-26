@@ -7,8 +7,8 @@
 <%@ page import="static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.session.GameSession" %>
 <%@ page import="com.dgphoenix.casino.common.util.Pair" %>
-<%@ page import="static com.dgphoenix.casino.web.history.GameHistoryServlet.PARAM_SESSION" %>
-<%@ page import="static com.dgphoenix.casino.web.history.GameHistoryServlet.*" %>
+<%@ page import="static com.abs.casino.web.history.GameHistoryServlet.PARAM_SESSION" %>
+<%@ page import="static com.abs.casino.web.history.GameHistoryServlet.*" %>
 <%@ page import="com.dgphoenix.casino.gs.managers.game.history.HistoryManager" %>
 <%@ page import="org.apache.commons.lang.LocaleUtils" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>

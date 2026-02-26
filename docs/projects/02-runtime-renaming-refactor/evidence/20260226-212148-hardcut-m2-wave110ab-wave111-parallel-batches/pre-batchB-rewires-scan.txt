@@ -1,0 +1,246 @@
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AwayFromBankInfoAction.java
+8:import com.dgphoenix.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/BanksNSubCasinosAction.java
+9:import com.dgphoenix.casino.support.cache.bank.edit.forms.common.BanksNSubCasinosForm;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CopyConfigAction.java
+8:import com.dgphoenix.casino.support.cache.bank.edit.forms.common.AddGameForm;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CreateNewGameAction.java
+17:import com.dgphoenix.casino.support.cache.bank.edit.forms.common.AddGameForm;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java
+12:import com.dgphoenix.casino.support.cache.bank.edit.forms.common.GameViewBean;
+13:import com.dgphoenix.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/GameIdSelectAction.java
+7:import com.dgphoenix.casino.support.cache.bank.edit.forms.common.AddGameForm;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ImportSubCasinoAction.java
+5:import com.dgphoenix.casino.support.cache.bank.edit.forms.language.UploadForm;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/InputModeAction.java
+8:import com.dgphoenix.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadBankInfoAction.java
+7:import com.dgphoenix.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewBankNSubCasinoAction.java
+6:import com.dgphoenix.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewSubCasinoIdAction.java
+7:import com.dgphoenix.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java
+4:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+6:import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+7:import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.GameBean;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainWhiteListAction.java
+5:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+7:import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+8:import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.GameBean;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainsByGameAction.java
+5:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+6:import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/EditDomainAction.java
+5:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+7:import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/ReadDomainsAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.domains;
+5:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+7:import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+
+--- gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
+6:    <form-beans>
+7:        <form-bean name="GameHistoryListForm" type="com.dgphoenix.casino.web.history.GameHistoryListForm"/>
+8:        <form-bean name="GameHistoryXMLListForm" type="com.dgphoenix.casino.web.history.GameHistoryXMLListForm"/>
+9:        <form-bean name="GameHistoryXMLListFormV2" type="com.dgphoenix.casino.web.history.GameHistoryXMLListFormV2"/>
+10:        <form-bean name="GameHistorySupportForm" type="com.abs.casino.support.gamehistory.GameHistorySupportForm"/>
+11:        <form-bean name="HistoryUrlForm" type="com.dgphoenix.casino.forms.api.history.HistoryUrlForm"/>
+12:        <form-bean name="CacheViewerForm" type="com.abs.casino.web.system.cacheviewer.CacheViewerForm"/>
+13:        <form-bean name="CommonWalletRegisterForm" type="com.dgphoenix.casino.gs.managers.payment.wallet.common.remote.CommonWalletRegisterForm"/>
+14:        <form-bean name="EmptyForm" type="com.abs.casino.web.EmptyForm"/>
+15:        <form-bean name="BankInfoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm"/>
+16:        <form-bean name="AwayFromBankInfoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm"/>
+17:        <form-bean name="GameIdSelectForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.GameIdSelectForm"/>
+18:        <form-bean name="AddGameForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.AddGameForm"/>
+19:        <form-bean name="BankPropertiesForm" type="com.abs.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm"/>
+20:        <form-bean name="SubcasinoForm" type="com.abs.casino.support.cache.bank.edit.forms.common.SubcasinoForm"/>
+21:        <form-bean name="NewBankForm" type="com.abs.casino.support.cache.bank.edit.forms.addBank.NewBankForm"/>
+22:        <form-bean name="GameInfoForm" type="com.abs.casino.support.cache.bank.edit.forms.common.GameInfoForm"/>
+23:        <form-bean name="DomainwlForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm"/>
+24:        <form-bean name="NewBankNSubCasinoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm"/>
+25:        <form-bean name="BanksNSubCasinosForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.BanksNSubCasinosForm"/>
+26:        <form-bean name="CompareBanksForm" type="com.dgphoenix.casino.support.differencer.banks.CompareBanksForm"/>
+27:        <form-bean name="CompareTemplatesForm" type="com.dgphoenix.casino.support.differencer.gametemplate.CompareTemplatesForm"/>
+29:        <form-bean name="SessionKeyAccessForm" type="com.dgphoenix.casino.protection.forms.SessionKeyAccessForm"/>
+31:        <form-bean name="GetLeaderboardUrlsForm" type="com.abs.casino.actions.api.GetLeaderboardUrlsForm"/>
+34:        <form-bean name="EncoderForm" type="com.dgphoenix.casino.actions.system.util.EncoderForm"/>
+36:        <form-bean name="CWStartGameForm" type="com.dgphoenix.casino.forms.game.cw.CWStartGameForm" />
+37:        <form-bean name="CWStartGameFormV2" type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameForm"/>
+38:        <form-bean name="CWStartGameBySessionForm" type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameBySessionForm"/>
+39:        <form-bean name="GetBalanceForm" type="com.abs.casino.actions.api.GetBalanceForm"/>
+40:        <form-bean name="CWGuestLoginForm" type="com.dgphoenix.casino.actions.enter.cw.CWGuestLoginForm"/>
+42:        <form-bean name="CWRegisterForm" type="com.dgphoenix.casino.actions.enter.game.cwv3.CWRegisterForm"/>
+44:        <form-bean name="BSAwardForm" type="com.abs.casino.actions.api.bonus.AwardForm"/>
+45:        <form-bean name="BSCancelForm" type="com.abs.casino.actions.api.bonus.CancelForm"/>
+46:        <form-bean name="BSCheckForm" type="com.abs.casino.actions.api.bonus.CheckForm"/>
+47:        <form-bean name="BSHistoryForm" type="com.abs.casino.actions.api.bonus.GetHistoryForm"/>
+48:        <form-bean name="BSInfoForm" type="com.abs.casino.actions.api.bonus.GetInfoForm"/>
+49:        <form-bean name="GetBonusForm" type="com.abs.casino.actions.api.bonus.GetBonusForm"/>
+51:        <form-bean name="FRBAwardForm" type="com.abs.casino.actions.api.frbonus.AwardFRBForm"/>
+52:        <form-bean name="FRBAwardLiteForm" type="com.abs.casino.actions.api.frbonus.AwardFRBLiteForm"/>
+53:        <form-bean name="FRBCheckForm" type="com.abs.casino.actions.api.frbonus.CheckFRBForm"/>
+54:        <form-bean name="FRBCancelForm" type="com.abs.casino.actions.api.frbonus.CancelFRBForm"/>
+55:        <form-bean name="CancelFRBLiteForm" type="com.abs.casino.actions.api.frbonus.CancelFRBLiteForm"/>
+57:        <form-bean name="FRBHistoryForm" type="com.abs.casino.actions.api.frbonus.GetFRBHistoryForm"/>
+58:        <form-bean name="FRBInfoForm" type="com.abs.casino.actions.api.frbonus.GetFRBInfoForm"/>
+59:        <form-bean name="FRBInfoLiteForm" type="com.abs.casino.actions.api.frbonus.GetFRBInfoLiteForm"/>
+60:        <form-bean name="GetFRBForm" type="com.abs.casino.actions.api.frbonus.GetFRBForm"/>
+63:        <form-bean name="BSStartGameForm" type="com.dgphoenix.casino.actions.enter.game.bonus.BSStartGameForm"/>
+64:        <form-bean name="TournamentLobbyForm" type="com.dgphoenix.casino.forms.lobby.TournamentLobbyForm"/>
+65:        <form-bean name="TournamentStartGameForm" type="com.dgphoenix.casino.actions.game.tournament.TournamentStartGameForm"/>
+66:        <form-bean name="BattlegroundStubStartGameForm"
+67:                   type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStubStartGameForm"/>
+68:        <form-bean name="BattlegroundStartGameForm"
+69:                   type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartGameForm"/>
+70:        <form-bean name="BattlegroundStartGameFromMQBForm"
+71:                   type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartGameFromMQBForm"/>
+72:        <form-bean name="BattlegroundStartPrivateGameForm"
+73:                   type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartPrivateGameForm"/>
+75:        <form-bean name="RestartGameForm" type="com.dgphoenix.casino.actions.enter.game.frb.RestartGameForm"/>
+77:        <form-bean name="CTLoginForm" type="com.dgphoenix.casino.forms.login.ct.CTLoginForm"/>
+78:        <form-bean name="CTStartGameForm" type="com.dgphoenix.casino.forms.game.ct.CTStartGameForm" />
+79:        <form-bean name="GameListForm" type="com.dgphoenix.casino.actions.enter.game.GameListForm"/>
+80:        <form-bean name="GameSettingsForm" type="com.dgphoenix.casino.actions.enter.game.GameSettingsForm"/>
+82:        <form-bean name="FileUploadForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.language.UploadForm"/>
+87:        <form-bean name="MBSStartGameForm" type="com.dgphoenix.casino.forms.game.bonus.BSStartGameForm" />
+91:        <form-bean name="CTOnlyStartGameForm" type="com.dgphoenix.casino.forms.game.ct.CTOnlyStartGameForm" />
+95:        <form-bean name="CWGuestStartGameForm" type="com.dgphoenix.casino.forms.game.cw.CWGuestStartGameForm" />
+99:        <form-bean name="MCWv3StartGameFRBForm" type="com.dgphoenix.casino.forms.game.CommonFRBStartGameForm" />
+103:        <form-bean name="STLobbyForm" type="com.dgphoenix.casino.forms.lobby.STLobbyForm" />
+106:        <form-bean name="CWStartHistoryForm" type="com.dgphoenix.casino.forms.api.history.cwv3.CWStartHistoryForm"/>
+109:        <form-bean name="ServerConfigurationForm" type="com.abs.casino.support.configuration.ServerConfigurationForm" />
+110:        <form-bean name="WalletInfoForm" type="com.abs.casino.actions.support.walletinfo.WalletInfoForm" />
+111:        <form-bean name="WalletsManagerForm" type="com.abs.casino.actions.support.walletsmanager.WalletsManagerForm" />
+114:        <form-bean name="APIIssuesForm" type="com.abs.casino.actions.support.apiIssues.APIIssuesForm"/>
+116:        <form-bean name="GetVBAForm" type="com.abs.casino.actions.api.vba.GetVBAForm"/>
+118:        <form-bean name="GetTournamentPlayerInfoForm" type="com.abs.casino.actions.api.promo.GetTournamentPlayerInfoForm"/>
+119:        <form-bean name="RefreshBalanceForm" type="com.abs.casino.actions.api.RefreshBalanceForm"/>
+120:        <form-bean name="BonusForm" type="com.dgphoenix.casino.actions.api.bonus.BonusForm"/>
+122:        <form-bean name="BankPropertyInfo" type="com.abs.casino.support.bankInfo.PropertyInfoForm" />
+125:        <form-bean name="GetLeaderboardsForm" type="com.abs.casino.actions.api.mq.GetLeaderboardsForm" />
+126:        <form-bean name="GetLeaderboardResultsForm" type="com.abs.casino.actions.api.mq.GetLeaderboardResultsForm" />
+128:        <form-bean name="LogViewerForm" type="com.abs.casino.support.logviewer.LogViewerForm"/>
+130:    </form-beans>
+135:                type="org.apache.struts.chain.commands.InvalidPathException"
+145:    <action-mappings type="org.apache.struts.action.ActionMapping">
+146:        <action path="/support/newBankNSubCasino" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.NewBankNSubCasinoAction"
+150:        <action path="/support/BankNSubCasinoControl" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.BanksNSubCasinosAction"
+154:        <action path="/support/newSubCasino" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.NewSubCasinoIdAction"
+158:        <action path="/support/subCasino" type="com.abs.casino.support.cache.bank.edit.actions.common.SubcasinoAction"
+162:        <action path="/support/editSubCasino" type="com.abs.casino.support.cache.bank.edit.actions.common.EditSubCasinoAction"
+167:        <action path="/support/exportSubCasino" type="com.abs.casino.support.cache.bank.edit.actions.common.ExportSubCasinoAction"
+174:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.ImportSubCasinoAction"
+180:        <action path="/support/additionalDomainName" type="com.abs.casino.support.cache.bank.edit.actions.common.DomainNameAction"
+185:        <action path="/support/loadFreeBank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.LoadDefBankAction"
+189:        <action path="/support/createFreeBank" type="com.dgphoenix.casino.support.cache.bank.edit.actions.addbank.CreateFreeBankAction"
+194:        <action path="/support/acceptInfoBank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.AcceptInfoFromOtherBankAction"
+198:        <action path="/support/acceptInfoFreeBank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.AcceptInfoFromOtherBankAction"
+202:        <action path="/support/domainformany" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.DomainForManyAction"
+206:        <action path="/support/domainwl" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.DomainWhiteListAction"
+211:        <action path="/support/domainsbygame" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.DomainsByGameAction"
+215:        <action path="/support/editdomains" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.EditDomainAction"
+219:        <action path="/sejgds" type="com.dgphoenix.casino.protection.actions.SessionKeyAccessAction"
+223:        <action path="/support/addproperty"  type="com.abs.casino.support.cache.bank.edit.actions.editproperties.AddPropertyAction"
+227:        <action path="/support/propertiesmode" type="com.abs.casino.support.cache.bank.edit.actions.editproperties.SelectModeAction"
+231:        <action path="/support/bankSupport" type="com.abs.casino.support.cache.bank.edit.actions.editproperties.BankSupportAction"
+235:        <action path="/support/bankSelectAction" type="com.abs.casino.support.cache.bank.edit.actions.editproperties.BankSelectAction"
+240:                type="com.abs.casino.support.cache.bank.edit.actions.editproperties.EditPropertiesAction"
+245:        <action path="/support/addsubcasino" type="com.abs.casino.support.cache.bank.edit.actions.common.AddSubcasinoAction"
+250:        <action path="/support/loaddefbank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.LoadDefBankAction"
+254:        <action path="/support/addbank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.CreateBankAction"
+259:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.LoadBankInfoAction" scope="request"
+264:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.CurrencySelectAction" scope="request"
+269:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.AwayFromBankInfoAction">
+274:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.InputModeAction">
+278:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.GameIdSelectAction">
+282:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.CopyConfigAction">
+287:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.CreateNewGameAction">
+293:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.EnterPropertiesAction">
+297:                type="com.abs.casino.support.cache.bank.edit.actions.common.LoadGameInfoAction">
+301:                type="com.abs.casino.support.cache.bank.edit.actions.common.EditGameAction"
+306:                type="com.dgphoenix.casino.support.differencer.banks.CompareBanksAction" scope="request"
+313:                type="com.dgphoenix.casino.support.differencer.gametemplate.CompareTemplatesAction" scope="request"
+320:                type="com.abs.casino.actions.support.walletinfo.WalletInfoAction" scope="request"
+327:                type="com.abs.casino.actions.support.walletsmanager.WalletsManagerAction" scope="request"
+334:        <action path="/gamehistory" input="/error_pages/error.jsp" type="com.dgphoenix.casino.web.history.GameHistoryListAction"
+340:        <action path="/gamehistoryXML" input="/error_pages/error.jsp" type="com.dgphoenix.casino.web.history.GameHistoryXMLListAction"
+346:                type="com.dgphoenix.casino.web.history.GameHistoryXMLListAction"
+352:                type="com.abs.casino.support.gamehistory.GameHistorySupportAction"
+357:        <action path="/support/cacheviewer" type="com.abs.casino.web.system.cacheviewer.CacheViewerAction"
+363:                type="com.abs.casino.actions.api.history.vba.HistoryByRoundAction"
+370:                type="com.abs.casino.actions.api.history.vba.HistoryByTokenAction"
+375:        <action path="/gameSettingsv2" type="com.dgphoenix.casino.actions.enter.game.GameSettingsActionV2"
+380:        <action path="/gamelist" type="com.dgphoenix.casino.actions.enter.game.GameListExtAction"
+385:        <action path="/gamelistExt" type="com.dgphoenix.casino.actions.enter.game.GameListExtAction"
+390:        <action path="/frbgamelist" type="com.dgphoenix.casino.actions.enter.game.FRBGameListAction"
+396:                type="com.abs.casino.actions.api.GetBalanceAction" name="GetBalanceForm"
+401:                type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameAction" name="CWStartGameFormV2"
+406:                type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameAction" name="CWStartGameFormV2"
+411:                type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameAction" name="CWStartGameBySessionForm"
+416:                type="com.dgphoenix.casino.actions.enter.game.cwv3.CWRegisterAction" name="CWRegisterForm"
+421:                type="com.dgphoenix.casino.actions.enter.cw.CWGuestLogin" name="CWGuestLoginForm"
+426:                type="com.dgphoenix.casino.actions.enter.cw.CWGuestLogin" name="CWGuestLoginForm"
+432:                type="com.abs.casino.actions.api.frbonus.AwardFRBAction"
+438:                type="com.abs.casino.actions.api.frbonus.AwardFRBLiteAction"
+444:                type="com.abs.casino.actions.api.frbonus.CheckFRBAction"
+449:                type="com.abs.casino.actions.api.frbonus.CancelFRBAction"
+454:                type="com.abs.casino.actions.api.frbonus.GetFRBInfoAction"
+459:                type="com.abs.casino.actions.api.frbonus.GetFRBInfoLiteAction"
+465:                type="com.abs.casino.actions.api.frbonus.CancelFRBLiteAction"
+470:                type="com.abs.casino.actions.api.frbonus.GetFRBHistoryAction"
+475:                type="com.abs.casino.actions.api.frbonus.GetFRBAction"
+483:                type="com.dgphoenix.casino.actions.enter.game.bonus.BSStartGameAction" name="BSStartGameForm"
+487:                type="com.abs.casino.actions.api.bonus.AwardAction" name="BSAwardForm"
+491:                type="com.abs.casino.actions.api.bonus.CancelAction" name="BSCancelForm"
+495:                type="com.abs.casino.actions.api.bonus.CheckAction" name="BSCheckForm"
+499:                type="com.abs.casino.actions.api.bonus.GetHistoryAction" name="BSHistoryForm"
+503:                type="com.abs.casino.actions.api.bonus.GetInfoAction" name="BSInfoForm"
+507:                type="com.abs.casino.actions.api.bonus.GetBonusAction" name="GetBonusForm"
+513:                type="com.dgphoenix.casino.actions.enter.game.frb.RestartGameAction"
+520:                type="com.dgphoenix.casino.actions.system.util.EncoderAction" name="EncoderForm"
+527:                type="com.abs.casino.actions.api.PingSessionAction" scope="request" name="EmptyForm">
+533:                type="com.abs.casino.support.SupportJSPAction"
+538:                type="com.abs.casino.actions.api.GetLeaderboardUrlsAction" name="GetLeaderboardUrlsForm"
+545:                type="com.dgphoenix.casino.actions.game.cw.CWGuestStartGameAction" name="CWGuestStartGameForm"
+551:                type="com.dgphoenix.casino.actions.game.cwv3.frb.CWStartFRBGameAction" name="MCWv3StartGameFRBForm"
+557:                type="com.dgphoenix.casino.actions.lobby.TournamentLobbyAction" name="TournamentLobbyForm"
+563:                type="com.dgphoenix.casino.actions.enter.TouchPlayerSession"
+570:                type="com.dgphoenix.casino.actions.api.history.cwv3.CWStartHistoryAction" name="CWStartHistoryForm"
+575:        <action path="/support/serverConfiguration" type="com.abs.casino.support.configuration.ServerConfigurationAction"
+582:        <action path="/support/showAPIIssues" type="com.abs.casino.actions.support.apiIssues.APIIssuesAction" name="APIIssuesForm"
+588:                type="com.abs.casino.actions.api.vba.GetVBAAction" name="GetVBAForm"
+593:                type="com.abs.casino.actions.api.promo.GetTournamentPlayerInfoAction"/>
+596:                type="com.dgphoenix.casino.actions.game.tournament.TournamentStartGameAction"
+602:                type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartGameFromMQBAction"
+608:                type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartPrivateGameAction"
+614:                type="com.abs.casino.actions.api.RefreshBalanceAction"
+617:        <action path="/bankPropertyInfo" type="com.abs.casino.support.bankInfo.PropertyInfoAction"
+624:                type="com.abs.casino.actions.api.mq.GetLeaderboardsAction"
+629:                type="com.abs.casino.actions.api.mq.GetLeaderboardResultsAction"
+634:                type="com.abs.casino.support.logviewer.LogViewerAction" name="LogViewerForm"
+
+--- gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/bankLangTable.jsp
+42:    <script type="text/javascript">
+68:<%--<jsp:useBean id="gameBean" class="com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties.BeanHelper"/>--%>
+87:        <input type="hidden" name="bankId" value="<%= bankId %>">
+88:        <input type="hidden" name="gameId" value="<%= gameId %>">
+89:        <input type="hidden" name="supportedLangsFromLoadAction" value="<%=Base64.encode(XMLUtils.toXML(request.getAttribute("supportedLangsFromLoadAction")).getBytes()) %>">
+102:                            <input type="checkbox" onClick="checkAll(this.form,'${lang}', this.checked)">
+
