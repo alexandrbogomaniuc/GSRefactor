@@ -1,0 +1,6 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/IDelegatedStartGameHelper.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/IHelperCreator.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/StartGameHelpers.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java

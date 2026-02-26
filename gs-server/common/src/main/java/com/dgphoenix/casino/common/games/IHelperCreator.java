@@ -1,6 +1,6 @@
 package com.abs.casino.common.games;
 
-import com.dgphoenix.casino.common.games.IDelegatedStartGameHelper;
+import com.abs.casino.common.games.IDelegatedStartGameHelper;
 import com.dgphoenix.casino.common.games.IStartGameHelper;
 
 /**

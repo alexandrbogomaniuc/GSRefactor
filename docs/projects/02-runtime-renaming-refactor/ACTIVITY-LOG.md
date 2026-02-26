@@ -1257,3 +1257,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-143128-hardcut-m2-wave58-ihelpercreator`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/70-hard-cut-m2-wave58-ihelpercreator-report-20260226.md`
+
+## 2026-02-26 14:42 UTC (M2 Wave 59 - IDelegatedStartGameHelper Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.games.IDelegatedStartGameHelper` -> `com.abs.casino.common.games.IDelegatedStartGameHelper`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/IDelegatedStartGameHelper.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/IHelperCreator.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/StartGameHelpers.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java`
+- Post-scan result (wave scope): legacy refs `0`, abs refs `6` (pre-scan legacy refs `2`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-143855-hardcut-m2-wave59-idelegated-start-game-helper`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/71-hard-cut-m2-wave59-idelegated-start-game-helper-report-20260226.md`

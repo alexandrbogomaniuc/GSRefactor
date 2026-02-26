@@ -1,0 +1,2 @@
+HEAD:gs-server/common/src/main/java/com/dgphoenix/casino/common/games/IDelegatedStartGameHelper.java:package com.dgphoenix.casino.common.games;
+HEAD:gs-server/common/src/main/java/com/dgphoenix/casino/common/games/IHelperCreator.java:import com.dgphoenix.casino.common.games.IDelegatedStartGameHelper;
