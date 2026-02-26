@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.web;
+package com.abs.casino.common.web;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import org.apache.struts.action.ActionRedirect;

@@ -960,3 +960,15 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-122122-hardcut-m2-wave36-all-servers-offline-exception`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/48-hard-cut-m2-wave36-all-servers-offline-exception-report-20260226.md`
+
+## 2026-02-26 12:29 UTC (M2 Wave 37 - ActionRedirectCustomParamsEncoding Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.web.ActionRedirectCustomParamsEncoding` -> `com.abs.casino.common.web.ActionRedirectCustomParamsEncoding`
+- Changed target file:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/web/ActionRedirectCustomParamsEncoding.java`
+- Post-scan result: legacy refs `0`, abs refs `1` (pre-scan legacy refs `1`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-122701-hardcut-m2-wave37-action-redirect-custom-params`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/49-hard-cut-m2-wave37-action-redirect-custom-params-report-20260226.md`

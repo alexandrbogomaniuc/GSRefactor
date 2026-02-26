@@ -1,0 +1,8 @@
+wave=W37-action-redirect-custom-params
+target=com.dgphoenix.casino.common.web.ActionRedirectCustomParamsEncoding
+replacement=com.abs.casino.common.web.ActionRedirectCustomParamsEncoding
+pre_legacy_refs=1
+post_legacy_refs=0
+post_abs_refs=1
+validation_passed=9
+validation_failed=0
