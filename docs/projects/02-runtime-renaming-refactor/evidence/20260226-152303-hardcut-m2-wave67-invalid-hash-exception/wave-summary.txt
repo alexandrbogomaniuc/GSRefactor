@@ -1,0 +1,7 @@
+Hard-Cut M2 Wave 67 - InvalidHashException
+Date(UTC): 2026-02-26
+Scope: com.dgphoenix.casino.actions.api.InvalidHashException -> com.abs.casino.actions.api.InvalidHashException
+PreLegacyRefs: 1
+PostLegacyRefs: 0
+PostAbsRefs: 1
+Validation: PASS (9/9)

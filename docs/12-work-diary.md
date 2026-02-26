@@ -6939,3 +6939,13 @@
   - migrated abstract helper class package to `com.abs`, removed aligned legacy import, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 67 with next low-fanout legacy declaration outside `common.games` cluster.
+
+### 2026-02-26 15:26 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 67 (`InvalidHashException`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-152303-hardcut-m2-wave67-invalid-hash-exception/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/79-hard-cut-m2-wave67-invalid-hash-exception-report-20260226.md`
+- Result:
+  - migrated API exception package to `com.abs` and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 68 with next low-fanout API request/entity declaration.

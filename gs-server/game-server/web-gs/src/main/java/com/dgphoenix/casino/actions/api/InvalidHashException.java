@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.api;
+package com.abs.casino.actions.api;
 
 public class InvalidHashException extends Exception {
 
