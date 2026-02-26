@@ -1,0 +1,6 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/response/CanexResponse.java:1:package com.abs.casino.common.client.canex.response;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/response/ExtSystem.java:1:package com.abs.casino.common.client.canex.response;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/response/CanexJsonResponse.java:1:package com.abs.casino.common.client.canex.response;
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClient.java:29:import com.abs.casino.common.client.canex.response.CanexJsonResponse;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/stub/cw/CanexStubController.java:9:import com.abs.casino.common.client.canex.response.CanexJsonResponse;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/stub/cw/CanexStubController.java:10:import com.abs.casino.common.client.canex.response.CanexResponse;

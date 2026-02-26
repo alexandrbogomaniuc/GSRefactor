@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.client.canex.response;
+package com.abs.casino.common.client.canex.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

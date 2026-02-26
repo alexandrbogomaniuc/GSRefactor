@@ -1,0 +1,22 @@
+timestamp_utc=2026-02-26T09:48:30Z
+pre_scan_lines=6
+post_scan_legacy_refs=0
+post_scan_abs_refs=6
+validation_success_commands=9
+validation_failed_commands=0
+
+scope=
+- com.dgphoenix.casino.common.client.canex.response -> com.abs.casino.common.client.canex.response
+- package declarations in common module
+- imports in common-wallet and web-gs stub controller
+
+validation_set=
+- common install
+- common-wallet test
+- sb-utils test
+- promo persisters install
+- common persisters install
+- cassandra cache test
+- web-gs package
+- mp core/persistance package
+- runtime smoke

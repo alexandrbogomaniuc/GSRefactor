@@ -6310,3 +6310,14 @@
   - successful: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-094413-hardcut-m2-wave5-analytics-spin`
   - retained aborted attempt: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-093957-hardcut-m2-wave5-onlineplayer`
 - Next: commit/push Wave 5 and continue to Wave 6.
+
+### 2026-02-26 09:48 UTC
+- Continued Project 02 with M2 Wave 6 (canex response namespace family).
+- Scope: 5 files across common/common-wallet/web-gs.
+- Result:
+  - legacy refs for this family: `0`
+  - new `com.abs` refs: `6`
+  - full validation matrix and runtime smoke: PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-094646-hardcut-m2-wave6-canex-response`
+- Next: commit/push Wave 6 and continue Wave 7.

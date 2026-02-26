@@ -480,3 +480,19 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-094413-hardcut-m2-wave5-analytics-spin`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/17-hard-cut-m2-wave5-analytics-spin-report-20260226.md`
+
+## 2026-02-26 09:48 UTC (M2 Wave 6 - Canex Response Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.client.canex.response` -> `com.abs.casino.common.client.canex.response`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/response/CanexResponse.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/response/CanexJsonResponse.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/response/ExtSystem.java`
+  - `gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClient.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/stub/cw/CanexStubController.java`
+- Post-scan result: legacy refs `0`, abs refs `6`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-094646-hardcut-m2-wave6-canex-response`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/18-hard-cut-m2-wave6-canex-response-report-20260226.md`
