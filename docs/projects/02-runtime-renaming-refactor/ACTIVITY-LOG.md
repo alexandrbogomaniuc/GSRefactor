@@ -259,3 +259,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - mpstress runtime config now follows the same dual-key compatibility pattern and has no active `FR_BONUS_WIN_URL` external dependency.
   - remaining `maxquest` tokens are in descriptive/commented content and can be addressed in a documentation cleanup wave.
   - Project 02 completion estimate updated to `88%`.
+
+## 2026-02-26 07:24 UTC (Mini-Wave M3.4)
+- Executed support `jsp:useBean` class-decoupling wave on bank property pages.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/editProperties.jsp`
+  - `gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/common/addBank.jsp`
+  - `gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/common/subCasinoInfo.jsp`
+- Change detail:
+  - removed hardcoded `jsp:useBean class="com.dgphoenix..."` for request-scoped forms where the bean is already provided by action flow.
+  - replaced `SubcasinoForm` class-coupled access with request attribute fallback (`getId()` via reflection) and a missing-id guard.
+- Validation PASS:
+  - full build/test matrix (sb-utils, promo/common-persisters, cache tests, web-gs package, mp subset package)
+  - runtime bank-template audit (`bank-template-audit.mjs`) for banks `6275,6276`: PASS.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-072419/`
+- Outcome:
+  - reduced hard dependency on legacy package name in support form wiring paths.
+  - Project 02 completion estimate updated to `92%`.

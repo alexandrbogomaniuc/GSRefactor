@@ -10,12 +10,24 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
 <%@ taglib prefix="input" uri="http://struts.apache.org/tags-html" %>
-<jsp:useBean id="SubcasinoForm" class="com.dgphoenix.casino.support.cache.bank.edit.forms.common.SubcasinoForm"/>
-<jsp:setProperty name="SubcasinoForm" property="id" value="${SubcasinoForm.id}"/>
 <%
     String strSubCasino = request.getParameter("subcasinoId");
     if (strSubCasino == null) {
-        strSubCasino = SubcasinoForm.getId();
+        Object subcasinoForm = request.getAttribute("SubcasinoForm");
+        if (subcasinoForm != null) {
+            try {
+                Object idValue = subcasinoForm.getClass().getMethod("getId").invoke(subcasinoForm);
+                if (idValue != null) {
+                    strSubCasino = String.valueOf(idValue);
+                }
+            } catch (Exception ignore) {
+                // keep fallback path below
+            }
+        }
+    }
+    if (strSubCasino == null) {
+        response.getWriter().println("subcasinoId is missing.");
+        return;
     }
     Long subcasinoId = Long.parseLong(strSubCasino);
 

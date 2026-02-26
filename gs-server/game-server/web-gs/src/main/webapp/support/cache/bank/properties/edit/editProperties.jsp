@@ -67,9 +67,6 @@
 <a href="${pageContext.request.contextPath}/support/subCasino.do?subcasinoId=<%= subCasinoId%>">Go to SubCasino id = <%= subCasinoId %>
 </a>
 
-<jsp:useBean id="BankPropertiesForm" scope="request"
-             class="com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm"/>
-
 <html:form action="/support/propertiesmode">
     <input type="hidden" name="bankId" value="${BankPropertiesForm.bankId}"/>
     <b> Select the view mode </b>

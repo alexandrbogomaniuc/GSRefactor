@@ -5930,3 +5930,15 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-071948/`
 - Completion update:
   - Project 02 estimated at `88%`.
+
+### 2026-02-26 07:24 UTC
+- GSRefactor Project 02 advanced with M3.4 (support bank-property `jsp:useBean` decoupling).
+- Removed hardcoded `class="com.dgphoenix..."` useBean bindings from request-scoped support forms and added request-attribute fallback handling for sub-casino id extraction:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/editProperties.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/common/addBank.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/common/subCasinoInfo.jsp`
+- Full validation matrix PASS and runtime bank-template audit PASS for banks `6275`, `6276`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-072419/`
+- Completion update:
+  - Project 02 estimated at `92%`.

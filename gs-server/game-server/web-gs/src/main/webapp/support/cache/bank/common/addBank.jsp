@@ -66,8 +66,6 @@
 
 </head>
 <body>
-<jsp:useBean id="NewBankForm" scope="request"
-             class="com.dgphoenix.casino.support.cache.bank.edit.forms.addBank.NewBankForm"/>
 <html:link
         href="/support/cache/bank/common/systemInfo.jsp?subcasinoId=${NewBankForm.subcasinoId}"> BACK </html:link>
 

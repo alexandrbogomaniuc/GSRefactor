@@ -1,0 +1,14 @@
+Bank template audit (multiplayer)
+Base URL: http://127.0.0.1:18081
+Banks checked: 6275, 6276
+
+- Bank 6275: PASS
+  Support page: http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6275
+  Third-party URLs: 0
+  Third-party allow-list tokens: 0
+- Bank 6276: PASS
+  Support page: http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6276
+  Third-party URLs: 0
+  Third-party allow-list tokens: 0
+
+Overall: PASS

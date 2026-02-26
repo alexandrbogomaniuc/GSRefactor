@@ -92,4 +92,5 @@ Method:
   - M3.2 complete (support template-management JSP fallback for SP processor class `com.abs` -> `com.dgphoenix`)
   - M3.3 complete (GameBankConfig default class fallback for SP processor and GameServlet)
   - M2.5 complete (mpstress alias-key parity + FR bonus URL de-externalization + support email cleanup)
-- Estimated completion: 88%.
+  - M3.4 complete (support bank-property pages decoupled from hardcoded `jsp:useBean` class names)
+- Estimated completion: 92%.
