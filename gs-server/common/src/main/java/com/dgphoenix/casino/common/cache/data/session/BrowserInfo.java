@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data.session;
+package com.abs.casino.common.cache.data.session;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;

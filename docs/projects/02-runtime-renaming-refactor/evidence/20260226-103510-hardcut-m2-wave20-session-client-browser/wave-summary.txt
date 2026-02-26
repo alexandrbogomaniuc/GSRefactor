@@ -1,0 +1,25 @@
+timestamp_utc=2026-02-26T10:36:18Z
+browser_pre_scan_lines=1
+browser_post_scan_legacy_refs=0
+browser_post_scan_abs_refs=1
+client_pre_scan_lines=1
+client_post_scan_legacy_refs=0
+client_post_scan_abs_refs=1
+validation_success_commands=9
+validation_failed_commands=0
+
+scope=
+- com.dgphoenix.casino.common.cache.data.session.BrowserInfo
+- com.dgphoenix.casino.common.cache.data.session.GameClientInfo
+- package declaration migration with dependent cassandra persister import updates
+
+validation_set=
+- common install
+- common-wallet test
+- sb-utils test
+- promo persisters install
+- common persisters install
+- cassandra cache test
+- web-gs package
+- mp core/persistance package
+- runtime smoke

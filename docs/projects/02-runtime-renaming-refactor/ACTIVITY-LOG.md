@@ -679,3 +679,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-103303-hardcut-m2-wave19-gender`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/31-hard-cut-m2-wave19-gender-report-20260226.md`
+
+## 2026-02-26 10:36 UTC (M2 Wave 20 - Session Browser + Client Info Completed)
+- Migrated namespaces:
+  - `com.dgphoenix.casino.common.cache.data.session.BrowserInfo` -> `com.abs.casino.common.cache.data.session.BrowserInfo`
+  - `com.dgphoenix.casino.common.cache.data.session.GameClientInfo` -> `com.abs.casino.common.cache.data.session.GameClientInfo`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/BrowserInfo.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/GameClientInfo.java`
+  - `gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraClientStatisticsPersister.java`
+- Post-scan result:
+  - BrowserInfo legacy refs `0`, abs refs `1`
+  - GameClientInfo legacy refs `0`, abs refs `1`
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-103510-hardcut-m2-wave20-session-client-browser`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/32-hard-cut-m2-wave20-session-client-browser-report-20260226.md`

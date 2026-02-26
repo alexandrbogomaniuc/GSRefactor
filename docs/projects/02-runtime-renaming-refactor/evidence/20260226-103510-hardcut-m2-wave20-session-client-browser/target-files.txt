@@ -1,0 +1,3 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/BrowserInfo.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/GameClientInfo.java
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraClientStatisticsPersister.java
