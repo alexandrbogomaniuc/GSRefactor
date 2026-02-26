@@ -6055,3 +6055,11 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/Project-Finalization-Report.md`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/PROJECTS-CLOSURE-SUMMARY-20260226.md`
 - Next step: commit/push this handover-entrypoint update.
+
+### 2026-02-26 07:58 UTC
+- Added missing root README for `Dev_new` repo:
+  - `/Users/alexb/Documents/Dev/Dev_new/README.md`
+- README now points directly to:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/START-HERE-REFRACTOR.md`
+- Purpose: ensure first-open discoverability for new machines/users.
+- Next step: commit/push README addition.
