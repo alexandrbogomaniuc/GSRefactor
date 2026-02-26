@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.socket;
+package com.abs.casino.gs.socket;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 

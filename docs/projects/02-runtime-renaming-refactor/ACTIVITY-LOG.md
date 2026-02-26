@@ -948,3 +948,15 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-121044-hardcut-m2-wave35-server-online-status`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/47-hard-cut-m2-wave35-server-online-status-report-20260226.md`
+
+## 2026-02-26 12:25 UTC (M2 Wave 36 - AllServersOfflineException Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.gs.socket.AllServersOfflineException` -> `com.abs.casino.gs.socket.AllServersOfflineException`
+- Changed target file:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/gs/socket/AllServersOfflineException.java`
+- Post-scan result: legacy refs `0`, abs refs `1` (pre-scan legacy refs `1`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-122122-hardcut-m2-wave36-all-servers-offline-exception`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/48-hard-cut-m2-wave36-all-servers-offline-exception-report-20260226.md`
