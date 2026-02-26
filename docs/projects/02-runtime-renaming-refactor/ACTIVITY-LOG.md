@@ -1650,3 +1650,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `2`.
   - global tracked source declarations now `2123` remaining (`2277` baseline, `154` reduced).
+
+## 2026-02-26 17:09 UTC (Hard-Cut M2 Wave 82)
+- Executed hard-cut namespace wave for `GetTournamentPlayerInfoForm` (promo API).
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/promo/GetTournamentPlayerInfoForm.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/promo/GetTournamentPlayerInfoAction.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.promo.GetTournamentPlayerInfoForm` to `com.abs.casino.actions.api.promo.GetTournamentPlayerInfoForm`.
+  - updated Struts form-bean type to `com.abs` for `GetTournamentPlayerInfoForm`.
+  - added explicit `com.abs...GetTournamentPlayerInfoForm` import in `GetTournamentPlayerInfoAction` for cross-package compatibility.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-170702-hardcut-m2-wave82-promo-get-tournament-player-info-form/`
+- Outcome:
+  - wave scope legacy refs reduced from `2` to `0`, `com.abs` refs now `3`.
+  - global tracked source declarations now `2122` remaining (`2277` baseline, `155` reduced).

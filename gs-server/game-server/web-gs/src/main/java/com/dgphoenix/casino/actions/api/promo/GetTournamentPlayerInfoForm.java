@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.api.promo;
+package com.abs.casino.actions.api.promo;
 
 import org.apache.struts.action.ActionForm;
 

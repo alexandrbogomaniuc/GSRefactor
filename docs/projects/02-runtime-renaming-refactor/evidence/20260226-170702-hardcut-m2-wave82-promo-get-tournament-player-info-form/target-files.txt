@@ -1,0 +1,3 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/promo/GetTournamentPlayerInfoForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/promo/GetTournamentPlayerInfoAction.java
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml

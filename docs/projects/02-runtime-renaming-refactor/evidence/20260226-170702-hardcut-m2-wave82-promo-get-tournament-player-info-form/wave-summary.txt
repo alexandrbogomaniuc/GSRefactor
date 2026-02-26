@@ -1,0 +1,6 @@
+wave=W82-promo-get-tournament-player-info-form
+status=PASS
+legacy_pre=2
+legacy_post=0
+abs_post=3
+validation=9/9

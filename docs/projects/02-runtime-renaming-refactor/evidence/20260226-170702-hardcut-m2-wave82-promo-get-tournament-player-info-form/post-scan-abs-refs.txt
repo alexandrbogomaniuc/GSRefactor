@@ -1,0 +1,3 @@
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/promo/GetTournamentPlayerInfoAction.java:4:import com.abs.casino.actions.api.promo.GetTournamentPlayerInfoForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:118:        <form-bean name="GetTournamentPlayerInfoForm" type="com.abs.casino.actions.api.promo.GetTournamentPlayerInfoForm"/>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/promo/GetTournamentPlayerInfoForm.java:1:package com.abs.casino.actions.api.promo;
