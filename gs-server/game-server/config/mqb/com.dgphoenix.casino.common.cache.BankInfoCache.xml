@@ -542,6 +542,10 @@
           <string>LOOT_BOX</string>
         </entry>
         <entry>
+          <string>ABS_WEAPONS_MODE</string>
+          <string>LOOT_BOX</string>
+        </entry>
+        <entry>
           <string>SEND_JACKPOT_INFO_FOR_CW</string>
           <string>false </string>
         </entry>
@@ -1293,6 +1297,10 @@
         </entry>
         <entry>
           <string>MQ_WEAPONS_MODE</string>
+          <string>LOOT_BOX</string>
+        </entry>
+        <entry>
+          <string>ABS_WEAPONS_MODE</string>
           <string>LOOT_BOX</string>
         </entry>
         <entry>

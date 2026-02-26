@@ -86,4 +86,5 @@ Method:
   - M1.3 complete (`ServerConfigurationForm` class literal cleanup)
   - M2.1 complete (bank template third-party URL sanitization for local/refactor profiles)
   - M2.2 complete (seeded `ABS_*` alias keys for wallet/start/close processor config)
-- Estimated completion: 65%.
+  - M2.3 complete (seeded `ABS_WEAPONS_MODE` alongside `MQ_WEAPONS_MODE`)
+- Estimated completion: 68%.

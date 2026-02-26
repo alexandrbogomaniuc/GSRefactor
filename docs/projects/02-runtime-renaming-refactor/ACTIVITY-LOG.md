@@ -146,3 +146,19 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - key runtime class-string properties are now dual-keyed (`legacy + ABS`) in active bank templates.
   - Project 02 completion estimate updated to `65%`.
+
+## 2026-02-26 07:01 UTC (Mini-Wave M2.3)
+- Executed MQ key alias seeding wave for weapons mode in active bank templates.
+- Changed files:
+  - `gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BankInfoCache.xml`
+  - `gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml`
+- Change detail:
+  - added `ABS_WEAPONS_MODE=LOOT_BOX` next to existing `MQ_WEAPONS_MODE=LOOT_BOX` entries.
+- Validation PASS:
+  - full build/test matrix (sb-utils, promo/common-persisters, cache tests, web-gs package, mp subset package)
+  - runtime bank-template audit (`bank-template-audit.mjs`) for banks `6275,6276`: PASS.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-070144/`
+- Outcome:
+  - dual-key compatibility for weapons mode is now seeded in local/refactor bank templates.
+  - Project 02 completion estimate updated to `68%`.
