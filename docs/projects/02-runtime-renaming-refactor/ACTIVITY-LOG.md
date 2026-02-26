@@ -295,3 +295,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - language support pages no longer rely on hardcoded legacy bean-helper class binding.
   - Project 02 completion estimate updated to `96%`.
+
+## 2026-02-26 07:30 UTC (Mini-Wave M3.6)
+- Executed support history iterate-type decoupling wave.
+- Changed file:
+  - `gs-server/game-server/web-gs/src/main/webapp/support/supporthistory.jsp`
+- Change detail:
+  - removed hardcoded Struts iterate `type="com.dgphoenix..."` binding.
+  - replaced typed method access (`entry.getHistoryUrl()`) with `bean:define` property extraction (`historyUrl`), preserving behavior and JSPC compatibility.
+- Validation PASS:
+  - full build/test matrix (sb-utils, promo/common-persisters, cache tests, web-gs package, mp subset package)
+  - runtime bank-template audit (`bank-template-audit.mjs`) for banks `6275,6276`: PASS.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-073017/`
+- Outcome:
+  - eliminated remaining active support JSP hardcoded class binding from iterate tag path.
+  - remaining `com.dgphoenix` tokens in support JSP scan are now expected compatibility fallbacks/imports/comments only.
+  - Project 02 completion estimate updated to `100%` (actionable runtime renaming backlog complete).

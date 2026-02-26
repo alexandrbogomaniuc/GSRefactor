@@ -5953,3 +5953,13 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-072744/`
 - Completion update:
   - Project 02 estimated at `96%`.
+
+### 2026-02-26 07:30 UTC
+- GSRefactor Project 02 advanced with M3.6 (support history iterate-type decoupling).
+- Removed hardcoded class type binding from support history iterate flow and switched history URL access to `bean:define` property extraction:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/supporthistory.jsp`
+- Full validation matrix PASS and runtime bank-template audit PASS for banks `6275`, `6276`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-073017/`
+- Completion update:
+  - Project 02 actionable backlog estimated at `100%`.

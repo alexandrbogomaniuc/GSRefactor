@@ -94,4 +94,9 @@ Method:
   - M2.5 complete (mpstress alias-key parity + FR bonus URL de-externalization + support email cleanup)
   - M3.4 complete (support bank-property pages decoupled from hardcoded `jsp:useBean` class names)
   - M3.5 complete (language-table pages decoupled from hardcoded `jsp:useBean` class names)
-- Estimated completion: 96%.
+  - M3.6 complete (support history iterate type decoupled from hardcoded class binding)
+- Estimated completion: 100%.
+
+## Residual tokens (intentional / non-actionable in this wave set)
+- Compatibility fallback strings that intentionally keep dual-package support (`com.abs` preferred with `com.dgphoenix` fallback).
+- JSP import directives and commented legacy references that do not drive runtime decision logic.

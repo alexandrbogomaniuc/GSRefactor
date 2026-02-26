@@ -259,12 +259,12 @@
         <td>Payout</td>
     </tr>
     <logic:present name="<%=GameHistoryListAction.GAME_HISTORY_LIST%>">
-        <logic:iterate id="entry" name="<%=GameHistoryListAction.GAME_HISTORY_LIST%>"
-                       type="com.dgphoenix.casino.web.history.GameHistoryListEntry">
+        <logic:iterate id="entry" name="<%=GameHistoryListAction.GAME_HISTORY_LIST%>">
+            <bean:define id="historyUrl" name="entry" property="historyUrl" type="java.lang.String"/>
             <tr>
                 <td>
                     <a href="gamehistory.jsp#"
-                       onclick="openWnd('<%=entry.getHistoryUrl()%>','950','475','VAB_WINDOW2'); return false;">
+                       onclick="openWnd('<%=historyUrl%>','950','475','VAB_WINDOW2'); return false;">
                         <bean:write name="entry" property="localizedGameName"/></a>
                 </td>
                 <td><bean:write name="entry" property="startDate"/></td>
