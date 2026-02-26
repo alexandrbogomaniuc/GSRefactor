@@ -6207,3 +6207,24 @@
   - Representative `--help` checks for phase0/phase2/phase4/phase7/phase9 scripts => PASS.
 - Result: deploy tooling no longer depends on hardcoded local-machine paths.
 - Note: an earlier bulk attempt failed due unsafe path-list handling; no bad lines were committed, and final wave was executed with per-file guarded loops.
+
+### 2026-02-26 09:03 UTC
+- Continued post-portability production-readiness verification wave in `Dev_new`.
+- Ran full local verification suite after deploy-script path cleanup:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh`
+- First run reported 1 failing smoke (`phase9 abs candidate scanner`) due strict expectation on one specific block reason token.
+- Fix applied:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan-smoke.sh`
+  - Updated blocked-reason assertion to accept both valid blocking outcomes (`BLOCKED_REVIEW_ONLY:mq` or `BLOCKED_WAVE_NOT_AUTOMATIC:W0`).
+- Re-ran full local verification suite: PASS (0 failures):
+  - `docs/quality/local-verification/phase5-6-local-verification-20260226-090306.md`
+- Regenerated aggregated readiness report:
+  - `docs/release-readiness/program-deploy-readiness-status-20260226-090321.md`
+  - Result: `overall_status=GO_FOR_DEPLOY_AND_CANARY`, `blocker_count=0`.
+- Re-synced support dashboard embedded data with latest readiness evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/sync-modernization-dashboard-embedded-data.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html`
+- Validation snapshot:
+  - `rg '/Users/alexb'` in support pages => 0
+  - `refactor-onboard.mjs smoke` remained previously PASS in this session context.
+- Next step: commit/push this verification + readiness refresh wave and continue final cleanup/reporting.

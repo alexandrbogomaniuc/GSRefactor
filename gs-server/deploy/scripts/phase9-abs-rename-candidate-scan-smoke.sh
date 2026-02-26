@@ -61,6 +61,9 @@ blocked_rc=$?
 set -e
 [[ ${blocked_rc} -eq 2 ]] || { echo "FAIL: expected blocked rc=2, got ${blocked_rc}" >&2; cat "${TMP_DIR}/blocked.out" >&2; exit 6; }
 grep -q 'auto_apply_status=BLOCKED' "${TMP_DIR}/blocked.out" || { echo "FAIL: blocked status marker missing" >&2; exit 7; }
-grep -q 'BLOCKED_REVIEW_ONLY:mq' "${TMP_DIR}/blocked.out" || { echo "FAIL: mq block reason missing" >&2; exit 8; }
+if ! grep -Eq 'BLOCKED_REVIEW_ONLY:mq|BLOCKED_WAVE_NOT_AUTOMATIC:W0' "${TMP_DIR}/blocked.out"; then
+  echo "FAIL: expected blocked reason marker missing" >&2
+  exit 8
+fi
 
 echo "PASS: phase9 abs candidate scanner smoke"

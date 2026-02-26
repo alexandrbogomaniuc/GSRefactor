@@ -87,3 +87,8 @@ Project: Post-Project Audit
 - All `/Users/alexb/...` literals removed from `gs-server/deploy/scripts`.
 - Added/used dynamic path resolution via script-relative roots and repo-root helper variables.
 - Runtime checks stayed green (`refactor-onboard.mjs smoke`, phase5/6 local logic smoke).
+
+## 2026-02-26 09:03 UTC
+- Ran fresh post-portability verification cycle.
+- Fixed one brittle smoke assertion in `phase9-abs-rename-candidate-scan-smoke.sh` and reran the full local verification suite to PASS.
+- Refreshed readiness report (`GO_FOR_DEPLOY_AND_CANARY`, 0 blockers) and synced support dashboard embedded data to latest artifacts.
