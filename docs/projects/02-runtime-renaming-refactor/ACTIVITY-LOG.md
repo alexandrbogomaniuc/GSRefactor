@@ -1718,3 +1718,19 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `2` to `0`, `com.abs` refs now `2`.
   - global tracked source declarations now `2119` remaining (`2277` baseline, `158` reduced).
+
+## 2026-02-26 17:31 UTC (Hard-Cut M2 Wave 86)
+- Executed hard-cut namespace wave for `UpperCaseNameCoder` (API response serializer helper).
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/UpperCaseNameCoder.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/APIResponseBuilder.java`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.response.UpperCaseNameCoder` to `com.abs.casino.actions.api.response.UpperCaseNameCoder`.
+  - added explicit `com.abs...UpperCaseNameCoder` import bridge in `APIResponseBuilder`.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-173016-hardcut-m2-wave86-upper-case-name-coder/`
+- Outcome:
+  - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `2`.
+  - global tracked source declarations now `2119` remaining (`2277` baseline, `158` reduced).

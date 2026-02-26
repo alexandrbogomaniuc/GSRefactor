@@ -1,0 +1,6 @@
+wave=W86-upper-case-name-coder
+status=PASS
+legacy_pre=1
+legacy_post=0
+abs_post=2
+validation=9/9

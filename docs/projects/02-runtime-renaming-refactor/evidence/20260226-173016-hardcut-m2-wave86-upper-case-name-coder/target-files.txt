@@ -1,0 +1,2 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/UpperCaseNameCoder.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/APIResponseBuilder.java
