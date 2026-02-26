@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
 import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
-import com.dgphoenix.casino.common.cache.data.payment.bonus.CommonFRBonusWin;
+import com.abs.casino.common.cache.data.payment.bonus.CommonFRBonusWin;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBWinOperation;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin;
 import com.abs.casino.common.cache.data.payment.frb.FRBWinOperationStatus;

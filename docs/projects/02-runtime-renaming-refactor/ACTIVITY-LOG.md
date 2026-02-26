@@ -914,3 +914,18 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-115322-hardcut-m2-wave33-frb-win-operation-status`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/45-hard-cut-m2-wave33-frb-win-operation-status-report-20260226.md`
+
+## 2026-02-26 12:02 UTC (M2 Wave 34 - CommonFRBonusWin Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.payment.bonus.CommonFRBonusWin` -> `com.abs.casino.common.cache.data.payment.bonus.CommonFRBonusWin`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/CommonFRBonusWin.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/TransactionData.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/OriginalFRBonusWinManager.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBonusWin.java` (compatibility import update)
+- Post-scan result: legacy refs `0`, abs refs `4`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-115923-hardcut-m2-wave34-common-fr-bonus-win`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/46-hard-cut-m2-wave34-common-fr-bonus-win-report-20260226.md`

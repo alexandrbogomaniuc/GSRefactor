@@ -1,0 +1,9 @@
+Wave: W34-common-fr-bonus-win
+Date (UTC): 2026-02-26
+Status: COMPLETE
+
+Migrated:
+- com.dgphoenix.casino.common.cache.data.payment.bonus.CommonFRBonusWin -> com.abs.casino.common.cache.data.payment.bonus.CommonFRBonusWin
+
+Validation:
+- 9/9 required checks PASS.

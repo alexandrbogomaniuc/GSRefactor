@@ -1,0 +1,4 @@
+1:package com.abs.casino.common.cache.data.payment.bonus;
+13:import com.abs.casino.common.cache.data.payment.bonus.CommonFRBonusWin;
+13:import com.abs.casino.common.cache.data.payment.bonus.CommonFRBonusWin;
+4:import com.abs.casino.common.cache.data.payment.bonus.CommonFRBonusWin;

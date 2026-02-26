@@ -1,6 +1,7 @@
 package com.dgphoenix.casino.common.cache.data.payment.bonus;
 
 import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.data.payment.bonus.CommonFRBonusWin;
 import com.abs.casino.common.cache.data.payment.frb.FRBWinOperationStatus;
 import com.abs.casino.common.cache.data.payment.frb.IFRBonusWin;
 import com.dgphoenix.casino.common.exception.FRBException;
