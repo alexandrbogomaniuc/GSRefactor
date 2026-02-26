@@ -6332,3 +6332,14 @@
 - Evidence:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-094953-hardcut-m2-wave7-promo-win`
 - Next: commit/push Wave 7 and continue Wave 8.
+
+### 2026-02-26 09:55 UTC
+- Continued Project 02 with M2 Wave 8 (canex request root classes namespace migration).
+- Scope: 20 files across common/common-wallet/web-gs and canex subpackages.
+- Result:
+  - legacy refs for wave scope: `0`
+  - new `com.abs` refs: `23`
+  - full validation matrix and runtime smoke: PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-095313-hardcut-m2-wave8-canex-request-root`
+- Next: commit/push Wave 8 and continue Wave 9.

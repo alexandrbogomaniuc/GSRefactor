@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.client.canex.request.onlinerooms;
 
-import com.dgphoenix.casino.common.client.canex.request.CanexJsonRequest;
+import com.abs.casino.common.client.canex.request.CanexJsonRequest;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 

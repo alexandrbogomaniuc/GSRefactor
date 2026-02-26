@@ -509,3 +509,17 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-094953-hardcut-m2-wave7-promo-win`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/19-hard-cut-m2-wave7-promo-win-report-20260226.md`
+
+## 2026-02-26 09:55 UTC (M2 Wave 8 - Canex Request Root Completed)
+- Migrated root request namespace class usage:
+  - `com.dgphoenix.casino.common.client.canex.request.CanexRequest`
+  - `com.dgphoenix.casino.common.client.canex.request.CanexJsonRequest`
+  - `com.dgphoenix.casino.common.client.canex.request.RequestType`
+  -> `com.abs.casino.common.client.canex.request.*`
+- Updated package declarations for root request package files and dependent imports in canex request subpackages, common-wallet, and web-gs stub controller.
+- Post-scan result: legacy refs `0`, abs refs `23`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-095313-hardcut-m2-wave8-canex-request-root`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/20-hard-cut-m2-wave8-canex-request-root-report-20260226.md`
