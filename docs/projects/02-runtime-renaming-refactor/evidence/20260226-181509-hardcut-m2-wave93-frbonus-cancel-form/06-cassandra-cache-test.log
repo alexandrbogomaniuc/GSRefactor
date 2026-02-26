@@ -1,0 +1,34 @@
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.dgphoenix.casino.cassandra.PersistersFactoryTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.221 sec - in com.dgphoenix.casino.cassandra.PersistersFactoryTest
+Running com.dgphoenix.casino.cassandra.KeyspaceManagerFactoryTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in com.dgphoenix.casino.cassandra.KeyspaceManagerFactoryTest
+Running com.dgphoenix.casino.cassandra.inject.PersisterDependencyInjectorTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 sec - in com.dgphoenix.casino.cassandra.inject.PersisterDependencyInjectorTest
+Running com.dgphoenix.casino.cassandra.config.ClusterConfigDeserializationTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.304 sec - in com.dgphoenix.casino.cassandra.config.ClusterConfigDeserializationTest
+Running com.dgphoenix.casino.cassandra.KeyspaceConfigurationFactoryTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.133 sec - in com.dgphoenix.casino.cassandra.KeyspaceConfigurationFactoryTest
+Running com.dgphoenix.casino.cassandra.CassandraPersistenceManagerTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 sec - in com.dgphoenix.casino.cassandra.CassandraPersistenceManagerTest
+Running com.dgphoenix.casino.cassandra.KeyspaceConfigurationTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in com.dgphoenix.casino.cassandra.KeyspaceConfigurationTest
+Running com.dgphoenix.casino.cassandra.persist.engine.TableDefinitionTest
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/Users/alexb/.m2/repository/org/apache/logging/log4j/log4j-slf4j-impl/2.20.0/log4j-slf4j-impl-2.20.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/alexb/.m2/repository/org/slf4j/slf4j-nop/1.6.1/slf4j-nop-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Tests run: 24, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.765 sec - in com.dgphoenix.casino.cassandra.persist.engine.TableDefinitionTest
+Running com.dgphoenix.casino.cassandra.KeySpaceManagerTest
+log4j:WARN No appenders could be found for logger (org.apache.commons.configuration.ConfigurationUtils).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.388 sec - in com.dgphoenix.casino.cassandra.KeySpaceManagerTest
+
+Results :
+
+Tests run: 63, Failures: 0, Errors: 0, Skipped: 0
+

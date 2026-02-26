@@ -7199,3 +7199,13 @@
   - migrated two VBA history actions to `com.abs`, updated corresponding Struts mappings, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 93 with next low-fanout runtime backlog batch.
+
+### 2026-02-26 18:17 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 93 (`CancelFRBForm`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-181509-hardcut-m2-wave93-frbonus-cancel-form/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/105-hard-cut-m2-wave93-frbonus-cancel-form-report-20260226.md`
+- Result:
+  - migrated FRB cancel form to `com.abs`, updated dependent action import and Struts form-bean mapping, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 94 with next low-fanout FRB form migration.

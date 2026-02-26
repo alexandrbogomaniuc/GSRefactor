@@ -1,0 +1,2 @@
+1:package com.dgphoenix.casino.actions.api.frbonus;
+54:        <form-bean name="FRBCancelForm" type="com.dgphoenix.casino.actions.api.frbonus.CancelFRBForm"/>

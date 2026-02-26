@@ -1837,3 +1837,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `4` to `0`, `com.abs` refs now `4`.
   - global tracked source declarations/files now `2109` remaining (`2277` baseline, `168` reduced).
+
+## 2026-02-26 18:17 UTC (Hard-Cut M2 Wave 93)
+- Executed hard-cut namespace wave for `CancelFRBForm`.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBForm.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBAction.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.frbonus.CancelFRBForm` to `com.abs`.
+  - updated dependent import in `CancelFRBAction`.
+  - rewired Struts `FRBCancelForm` form-bean type to `com.abs`.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-181509-hardcut-m2-wave93-frbonus-cancel-form/`
+- Outcome:
+  - wave scope legacy refs reduced from `2` to `0`, `com.abs` refs now `3`.
+  - global tracked source declarations/files now `2108` remaining (`2277` baseline, `169` reduced).

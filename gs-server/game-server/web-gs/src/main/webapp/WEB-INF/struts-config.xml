@@ -51,7 +51,7 @@
         <form-bean name="FRBAwardForm" type="com.dgphoenix.casino.actions.api.frbonus.AwardFRBForm"/>
         <form-bean name="FRBAwardLiteForm" type="com.dgphoenix.casino.actions.api.frbonus.AwardFRBLiteForm"/>
         <form-bean name="FRBCheckForm" type="com.dgphoenix.casino.actions.api.frbonus.CheckFRBForm"/>
-        <form-bean name="FRBCancelForm" type="com.dgphoenix.casino.actions.api.frbonus.CancelFRBForm"/>
+        <form-bean name="FRBCancelForm" type="com.abs.casino.actions.api.frbonus.CancelFRBForm"/>
         <form-bean name="CancelFRBLiteForm" type="com.dgphoenix.casino.actions.api.frbonus.CancelFRBLiteForm"/>
 
         <form-bean name="FRBHistoryForm" type="com.dgphoenix.casino.actions.api.frbonus.GetFRBHistoryForm"/>
