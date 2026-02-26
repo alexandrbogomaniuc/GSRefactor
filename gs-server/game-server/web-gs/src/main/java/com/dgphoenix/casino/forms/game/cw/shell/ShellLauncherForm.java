@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.forms.game.cw.shell;
+package com.abs.casino.forms.game.cw.shell;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;

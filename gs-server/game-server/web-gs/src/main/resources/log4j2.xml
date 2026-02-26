@@ -94,7 +94,7 @@
             <AppenderRef ref="COMMON" level="${common_log_level}" />
             <AppenderRef ref="ERROR" level="error" />
         </Logger>
-        <Logger name="com.dgphoenix.casino.support.ParameterBuilder"
+        <Logger name="com.abs.casino.support.ParameterBuilder"
                 level="${common_log_level}" additivity="false">
             <AppenderRef ref="ParameterBuilder" level="${common_log_level}" />
         </Logger>

@@ -1,0 +1,27 @@
+2026-02-26T20:28:38Z|START|01
+2026-02-26T20:28:38Z|CMD|01|cd /Users/alexb/Documents/Dev/Dev_new/gs-server/common && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+2026-02-26T20:28:44Z|RESULT|01|PASS|0
+2026-02-26T20:28:44Z|START|02
+2026-02-26T20:28:44Z|CMD|02|cd /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet && mvn -Dcluster.properties=local/local-machine.properties test
+2026-02-26T20:28:47Z|RESULT|02|PASS|0
+2026-02-26T20:28:47Z|START|03
+2026-02-26T20:28:47Z|CMD|03|cd /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils && mvn -Dcluster.properties=local/local-machine.properties test
+2026-02-26T20:28:50Z|RESULT|03|PASS|0
+2026-02-26T20:28:50Z|START|04
+2026-02-26T20:28:50Z|CMD|04|cd /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+2026-02-26T20:28:54Z|RESULT|04|PASS|0
+2026-02-26T20:28:54Z|START|05
+2026-02-26T20:28:54Z|CMD|05|cd /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+2026-02-26T20:29:01Z|RESULT|05|PASS|0
+2026-02-26T20:29:01Z|START|06
+2026-02-26T20:29:01Z|CMD|06|cd /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache && mvn -Dcluster.properties=local/local-machine.properties test
+2026-02-26T20:29:05Z|RESULT|06|PASS|0
+2026-02-26T20:29:05Z|START|07
+2026-02-26T20:29:05Z|CMD|07|cd /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs && mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+2026-02-26T20:29:24Z|RESULT|07|PASS|0
+2026-02-26T20:29:24Z|START|08
+2026-02-26T20:29:24Z|CMD|08|cd /Users/alexb/Documents/Dev/Dev_new/mp-server && mvn -Dcluster.properties=local/local-machine.properties -pl core,persistance -am -DskipTests package
+2026-02-26T20:29:31Z|RESULT|08|PASS|0
+2026-02-26T20:29:31Z|START|09
+2026-02-26T20:29:31Z|CMD|09|cd /Users/alexb/Documents/Dev/Dev_new && node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
+2026-02-26T20:29:32Z|RESULT|09|PASS|0

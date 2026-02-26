@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.forms.game.cwv3.bingomania;
+package com.abs.casino.forms.game.cwv3.bingomania;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

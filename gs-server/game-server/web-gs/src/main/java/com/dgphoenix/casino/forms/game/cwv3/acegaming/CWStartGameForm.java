@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.forms.game.cwv3.acegaming;
+package com.abs.casino.forms.game.cwv3.acegaming;
 
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.util.string.StringUtils;

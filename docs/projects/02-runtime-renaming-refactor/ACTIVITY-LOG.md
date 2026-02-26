@@ -1979,3 +1979,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - integration-scope declarations moved to `com.abs`: `24` net (1 reverted for compatibility).
   - global tracked source declarations/files now `2026` remaining (`2277` baseline, `251` reduced).
+
+## 2026-02-26 20:29 UTC (Hard-Cut M2 Wave 104A + 104B + 105)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W104A`: migrated 10 low-risk form/API declaration packages to `com.abs`.
+  - `W104B`: migrated 10 low-risk support/cache/web declaration packages to `com.abs`, plus bounded rewires in `log4j2.xml` and `support/getSessionError.jsp`.
+  - `W105`: integrated both batches and validated.
+- Changed files:
+  - full file list in `docs/projects/02-runtime-renaming-refactor/evidence/20260226-202349-hardcut-m2-wave104ab-wave105-parallel-batches/target-files.txt`.
+- Validation:
+  - fast gate initial run failed due command-path issues (reactor root + smoke command path); rerun with corrected commands passed.
+  - full 9-step matrix passed `9/9` (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-gs`, `cassandra-cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-202349-hardcut-m2-wave104ab-wave105-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/113-hard-cut-m2-wave104ab-wave105-parallel-batches-report-20260226.md`
+- Outcome:
+  - scoped declaration migrations: `20 -> 0` legacy declarations, `20` `com.abs` declarations.
+  - global tracked source declarations/files now `2006` remaining (`2277` baseline, `271` reduced).

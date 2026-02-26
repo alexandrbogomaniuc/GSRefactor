@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.forms.registration.cw;
+package com.abs.casino.forms.registration.cw;
 
 import com.dgphoenix.casino.actions.enter.CommonActionForm;
 import com.dgphoenix.casino.common.util.string.StringUtils;

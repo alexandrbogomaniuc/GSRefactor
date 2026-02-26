@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support;
+package com.abs.casino.support;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;

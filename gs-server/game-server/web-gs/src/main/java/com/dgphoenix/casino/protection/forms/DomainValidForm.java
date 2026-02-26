@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.protection.forms;
+package com.abs.casino.protection.forms;
 
 
 import org.apache.struts.action.ActionForm;

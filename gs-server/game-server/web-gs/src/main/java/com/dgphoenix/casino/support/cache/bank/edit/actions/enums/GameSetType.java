@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.cache.bank.edit.actions.enums;
+package com.abs.casino.support.cache.bank.edit.actions.enums;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 

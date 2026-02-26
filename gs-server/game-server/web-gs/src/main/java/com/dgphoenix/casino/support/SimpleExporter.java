@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support;
+package com.abs.casino.support;
 
 import com.thoughtworks.xstream.XStream;
 

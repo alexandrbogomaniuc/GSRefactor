@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.web;
+package com.abs.casino.web;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

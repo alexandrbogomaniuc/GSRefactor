@@ -7281,3 +7281,14 @@
   - fast gate rerun passed and full validation matrix passed `9/9`.
 - Next:
   - continue next non-overlapping low-risk parallel batch under same evidence-first protocol.
+
+### 2026-02-26 20:29 UTC
+- Continued Project 02 hard-cut runtime renaming with parallel batch waves `104A/104B` and integration wave `105`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-202349-hardcut-m2-wave104ab-wave105-parallel-batches/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/113-hard-cut-m2-wave104ab-wave105-parallel-batches-report-20260226.md`
+- Result:
+  - migrated 20 package declarations to `com.abs` (form/API + support/cache/web scope) with bounded rewires in `log4j2.xml` and `support/getSessionError.jsp`.
+  - fast gate rerun passed and full validation matrix passed `9/9`.
+- Next:
+  - continue next non-overlapping low-risk parallel batch under same evidence-first protocol.

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.game;
+package com.abs.casino.actions.game;
 
 import java.io.Serializable;
 

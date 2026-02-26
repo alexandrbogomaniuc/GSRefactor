@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support;
+package com.abs.casino.support;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;

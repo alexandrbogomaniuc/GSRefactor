@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.support.SessionErrorsCache" %>
+<%@ page import="com.abs.casino.support.SessionErrorsCache" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 

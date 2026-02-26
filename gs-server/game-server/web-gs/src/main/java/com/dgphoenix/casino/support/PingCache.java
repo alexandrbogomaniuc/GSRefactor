@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support;
+package com.abs.casino.support;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
