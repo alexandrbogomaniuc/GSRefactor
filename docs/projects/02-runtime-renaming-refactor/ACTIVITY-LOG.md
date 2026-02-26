@@ -1750,3 +1750,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `2`.
   - global tracked source declarations now `2118` remaining (`2277` baseline, `159` reduced).
+
+## 2026-02-26 17:56 UTC (Hard-Cut M2 Wave 88)
+- Executed hard-cut namespace wave for `SuccessResponse` (API response model).
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/SuccessResponse.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/APIResponseBuilder.java`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.response.SuccessResponse` to `com.abs.casino.actions.api.response.SuccessResponse`.
+  - added explicit `com.abs...SuccessResponse` import bridge in `APIResponseBuilder`.
+  - fixed constructor visibility (`protected` -> `public`) after compile gate failure in initial run.
+- Validation:
+  - initial matrix run failed at `07-web-gs-package` due constructor access mismatch after package split.
+  - rerun after visibility fix passed full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - failed attempt: `docs/projects/02-runtime-renaming-refactor/evidence/20260226-175344-hardcut-m2-wave88-success-response/`
+  - final passing run: `docs/projects/02-runtime-renaming-refactor/evidence/20260226-175510-hardcut-m2-wave88-success-response-rerun/`
+- Outcome:
+  - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `2`.
+  - global tracked source declarations/files now `2117` remaining (`2277` baseline, `160` reduced).

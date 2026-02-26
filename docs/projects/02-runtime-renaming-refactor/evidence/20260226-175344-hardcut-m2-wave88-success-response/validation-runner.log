@@ -1,0 +1,14 @@
+[2026-02-26T17:53:44Z] START 01-common-install
+01-common-install|PASS|0|01-common-install.log
+[2026-02-26T17:54:02Z] START 02-common-wallet-test
+02-common-wallet-test|PASS|0|02-common-wallet-test.log
+[2026-02-26T17:54:11Z] START 03-sb-utils-test
+03-sb-utils-test|PASS|0|03-sb-utils-test.log
+[2026-02-26T17:54:15Z] START 04-promo-persisters-install
+04-promo-persisters-install|PASS|0|04-promo-persisters-install.log
+[2026-02-26T17:54:19Z] START 05-common-persisters-install
+05-common-persisters-install|PASS|0|05-common-persisters-install.log
+[2026-02-26T17:54:22Z] START 06-cassandra-cache-test
+06-cassandra-cache-test|PASS|0|06-cassandra-cache-test.log
+[2026-02-26T17:54:27Z] START 07-web-gs-package
+07-web-gs-package|FAIL|1|07-web-gs-package.log
