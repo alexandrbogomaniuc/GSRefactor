@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.socket.async;
+package com.abs.casino.gs.socket.async;
 
 public interface ICallbacksExecutor {
 

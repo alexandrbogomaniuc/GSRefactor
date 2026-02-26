@@ -1206,3 +1206,16 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-140514-hardcut-m2-wave54-host-configuration`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/66-hard-cut-m2-wave54-host-configuration-report-20260226.md`
+
+## 2026-02-26 14:18 UTC (M2 Wave 55 - ICallbacksExecutor Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.gs.socket.async.ICallbacksExecutor` -> `com.abs.casino.gs.socket.async.ICallbacksExecutor`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/gs/socket/async/ICallbacksExecutor.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/gs/socket/async/CallbacksExecutor.java`
+- Post-scan result (wave scope): legacy refs `0`, abs refs `2` (pre-scan legacy refs `1`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-141600-hardcut-m2-wave55-icallbacks-executor`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/67-hard-cut-m2-wave55-icallbacks-executor-report-20260226.md`

@@ -1,0 +1,8 @@
+wave=W55-icallbacks-executor
+target=com.dgphoenix.casino.gs.socket.async.ICallbacksExecutor
+replacement=com.abs.casino.gs.socket.async.ICallbacksExecutor
+pre_legacy_refs=1
+post_legacy_refs=0
+post_abs_refs=2
+validation_passed=9
+validation_failed=0
