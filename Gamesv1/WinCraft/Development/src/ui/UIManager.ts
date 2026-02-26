@@ -87,7 +87,8 @@ export class UIManager {
             const urls = [
                 '/assets/dirt.png', '/assets/stone.png', '/assets/gold.png', '/assets/crystal.png', '/assets/obsidian.png',
                 '/assets/PickWood.png', '/assets/PickStone.png', '/assets/PickGold.png', '/assets/PickDiamond.png', '/assets/redstone.png',
-                '/assets/chest-closed.png', '/assets/chest-open.png', '/assets/Grass.png', '/assets/Enchantment.png'
+                '/assets/chest-closed.png', '/assets/chest-open.png', '/assets/Grass.png', '/assets/Enchantment.png',
+                '/assets/bg_epic_landscape.png', '/assets/bg_epic_clouds.png', '/assets/bg_spirit_deer.png', '/assets/bg_epic_flowers.png', '/assets/bg_flying_dragon.png'
             ];
             await Promise.allSettled(urls.map(u => PIXI.Assets.load(u).catch(e => console.warn("Failed to load:", u))));
             console.log("[UIManager] Assets loaded phase completed.");
