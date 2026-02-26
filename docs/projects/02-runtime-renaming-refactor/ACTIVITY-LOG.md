@@ -1231,3 +1231,15 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-142110-hardcut-m2-wave56-callbacks-executor`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/68-hard-cut-m2-wave56-callbacks-executor-report-20260226.md`
+
+## 2026-02-26 14:28 UTC (M2 Wave 57 - ExternalGameProvider Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.games.ExternalGameProvider` -> `com.abs.casino.common.games.ExternalGameProvider`
+- Changed file:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/ExternalGameProvider.java`
+- Post-scan result (wave scope): legacy refs `0`, abs refs `1` (pre-scan legacy refs `1`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-142543-hardcut-m2-wave57-external-game-provider`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/69-hard-cut-m2-wave57-external-game-provider-report-20260226.md`
