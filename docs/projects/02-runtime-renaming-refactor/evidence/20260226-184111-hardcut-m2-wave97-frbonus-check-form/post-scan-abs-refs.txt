@@ -1,0 +1,2 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CheckFRBAction.java:4:import com.abs.casino.actions.api.frbonus.CheckFRBForm;
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:53:        <form-bean name="FRBCheckForm" type="com.abs.casino.actions.api.frbonus.CheckFRBForm"/>

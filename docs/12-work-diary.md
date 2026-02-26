@@ -7239,3 +7239,13 @@
   - migrated `AwardFRBLiteForm` to `com.abs`, updated dependent action import + Struts form-bean mapping, and passed full 9/9 validation matrix.
 - Next:
   - continue Wave 97 with next low-fanout FRB form migration.
+
+### 2026-02-26 18:43 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 97 (FRB check form).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-184111-hardcut-m2-wave97-frbonus-check-form/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/109-hard-cut-m2-wave97-frbonus-check-form-report-20260226.md`
+- Result:
+  - migrated `CheckFRBForm` to `com.abs`, updated dependent action import + Struts form-bean mapping, and passed full 9/9 validation matrix.
+- Next:
+  - switch to batched-safe parallel mode (explorer + 2 workers) for non-overlapping low-risk batches.
