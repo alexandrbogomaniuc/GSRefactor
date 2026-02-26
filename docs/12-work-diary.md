@@ -7099,3 +7099,13 @@
   - migrated promo API form package to `com.abs`, updated Struts form-bean type, added import bridge in `GetTournamentPlayerInfoAction`, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 83 with next low-fanout runtime backlog item.
+
+### 2026-02-26 17:15 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 83 (`promo/GetTournamentPlayerInfoAction`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-171229-hardcut-m2-wave83-promo-get-tournament-player-info-action/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/95-hard-cut-m2-wave83-promo-get-tournament-player-info-action-report-20260226.md`
+- Result:
+  - migrated promo API action package to `com.abs`, updated Struts action type, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 84 with next low-fanout runtime backlog item.

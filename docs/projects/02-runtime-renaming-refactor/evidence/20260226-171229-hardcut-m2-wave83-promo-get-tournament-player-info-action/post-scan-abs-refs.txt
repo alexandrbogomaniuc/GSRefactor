@@ -1,0 +1,2 @@
+1:package com.abs.casino.actions.api.promo;
+593:                type="com.abs.casino.actions.api.promo.GetTournamentPlayerInfoAction"/>
