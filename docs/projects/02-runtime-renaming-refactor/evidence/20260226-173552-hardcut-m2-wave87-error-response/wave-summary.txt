@@ -1,0 +1,6 @@
+wave=W87-error-response
+status=PASS
+legacy_pre=1
+legacy_post=0
+abs_post=2
+validation=9/9

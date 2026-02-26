@@ -7139,3 +7139,13 @@
   - migrated API response name coder package to `com.abs`, added import bridge in `APIResponseBuilder`, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 87 with next low-fanout runtime backlog item.
+
+### 2026-02-26 17:36 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 87 (`ErrorResponse`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-173552-hardcut-m2-wave87-error-response/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/99-hard-cut-m2-wave87-error-response-report-20260226.md`
+- Result:
+  - migrated API response error model package to `com.abs`, added import bridge in `APIResponseBuilder`, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 88 with next low-fanout runtime backlog item.

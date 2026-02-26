@@ -1,0 +1,2 @@
+1:package com.abs.casino.actions.api.response;
+3:import com.abs.casino.actions.api.response.ErrorResponse;

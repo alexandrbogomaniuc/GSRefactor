@@ -1734,3 +1734,19 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `2`.
   - global tracked source declarations now `2119` remaining (`2277` baseline, `158` reduced).
+
+## 2026-02-26 17:36 UTC (Hard-Cut M2 Wave 87)
+- Executed hard-cut namespace wave for `ErrorResponse` (API response model).
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/ErrorResponse.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/APIResponseBuilder.java`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.response.ErrorResponse` to `com.abs.casino.actions.api.response.ErrorResponse`.
+  - added explicit `com.abs...ErrorResponse` import bridge in `APIResponseBuilder`.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-173552-hardcut-m2-wave87-error-response/`
+- Outcome:
+  - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `2`.
+  - global tracked source declarations now `2118` remaining (`2277` baseline, `159` reduced).

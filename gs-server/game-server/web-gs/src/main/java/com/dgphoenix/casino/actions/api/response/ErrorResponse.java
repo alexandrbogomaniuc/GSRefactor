@@ -1,4 +1,6 @@
-package com.dgphoenix.casino.actions.api.response;
+package com.abs.casino.actions.api.response;
+
+import com.dgphoenix.casino.actions.api.response.Response;
 
 public class ErrorResponse extends Response {
 
