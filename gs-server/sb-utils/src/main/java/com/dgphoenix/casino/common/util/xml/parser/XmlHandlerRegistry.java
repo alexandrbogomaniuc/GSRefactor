@@ -7,6 +7,7 @@ package com.dgphoenix.casino.common.util.xml.parser;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.exception.ObjectNotFoundException;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import org.apache.log4j.Logger;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,7 +32,7 @@ public class XmlHandlerRegistry implements IXmlHandlerRegistry {
             for (; iterator.hasNext();) {
                 String key = (String) iterator.next();
                 String newValue = configFile.getString(key);
-                handlersClass.put(key, (XmlHandler) Class.forName(newValue).newInstance());
+                handlersClass.put(key, (XmlHandler) ReflectionUtils.forNameWithCompatibilityAliases(newValue).newInstance());
             }
 
         } catch (Throwable e) {

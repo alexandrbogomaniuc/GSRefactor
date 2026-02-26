@@ -2,6 +2,7 @@ package com.dgphoenix.casino.common.util.test.api;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ObjectCreator;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 
 import java.util.HashMap;
 
@@ -25,7 +26,7 @@ public class ClientFactory {
     @SuppressWarnings("unchecked")
     private <T> Class<T> getClientClass(String className, Class<T> clientInterface) throws CommonException {
         try {
-            Class<?> clazz = Class.forName(className);
+            Class<?> clazz = ReflectionUtils.forNameWithCompatibilityAliases(className);
             if (clientInterface.isAssignableFrom(clazz)) {
                 return (Class<T>) clazz;
             } else {

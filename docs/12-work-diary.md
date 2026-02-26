@@ -5824,3 +5824,17 @@
   - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` in `web-gs`.
 - Evidence:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-063800/`
+
+### 2026-02-26 06:41 UTC
+- Continued Project 02 manual execution with mini-wave M1.2.
+- Updated `sb-utils` dynamic class-loader paths (`XmlHandlerRegistry`, `XmlHandler`, `ClientFactory`) to alias-aware resolution via `ReflectionUtils.forNameWithCompatibilityAliases`.
+- Validation PASS:
+  - `sb-utils` tests (`57` tests)
+  - promo/common install
+  - cache tests (`63`)
+  - web-gs package
+  - mp subset package
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-064100/`
+- Completion update:
+  - Project 02 estimated at `45%`.

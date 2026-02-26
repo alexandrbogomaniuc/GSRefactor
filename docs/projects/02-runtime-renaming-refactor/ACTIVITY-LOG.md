@@ -71,3 +71,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-063800/`
 - Outcome:
   - support config actions now participate in package-rename compatibility bridge (`com.abs.*`/`com.dgphoenix.*`).
+
+## 2026-02-26 06:41 UTC (Mini-Wave M1.2)
+- Executed manual mini-wave M1.2 on dynamic class-loader hotspots in `sb-utils`.
+- Changed files:
+  - `sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/parser/XmlHandlerRegistry.java`
+  - `sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/parser/XmlHandler.java`
+  - `sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/ClientFactory.java`
+- Change detail:
+  - replaced direct `Class.forName(...)` calls with `ReflectionUtils.forNameWithCompatibilityAliases(...)`.
+- Validation PASS:
+  - `sb-utils` tests (`57` tests, 0 failures)
+  - promo/common install
+  - cache tests (`63` pass)
+  - web-gs package
+  - mp subset package
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-064100/`
+- Outcome:
+  - runtime string-based instantiation coverage increased for staged package rename compatibility.
+- Project 02 completion estimate: `45%`.

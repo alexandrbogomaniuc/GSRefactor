@@ -6,6 +6,7 @@
 package com.dgphoenix.casino.common.util.xml.parser;
 
 import com.dgphoenix.casino.common.exception.CommonException;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.xml.IXmlElement;
 import org.apache.log4j.Logger;
 
@@ -50,7 +51,7 @@ public class XmlHandler implements IXmlHandler {
                 throw new Exception("Processor " +name+ " no found");
 
             if(processorClasses.get(name)==null)
-                processorClasses.put(name, Class.forName((String)processors.get(name)).newInstance());
+                processorClasses.put(name, ReflectionUtils.forNameWithCompatibilityAliases((String)processors.get(name)).newInstance());
             return (IXmlElementProcessor)processorClasses.get(name);
 
         } catch(Exception e) {
