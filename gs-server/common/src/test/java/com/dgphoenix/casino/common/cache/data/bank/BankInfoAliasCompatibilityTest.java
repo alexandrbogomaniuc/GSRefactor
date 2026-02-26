@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.cache.data.bank;
 
+import com.abs.casino.common.cache.data.bank.MaxQuestClientLogLevel;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

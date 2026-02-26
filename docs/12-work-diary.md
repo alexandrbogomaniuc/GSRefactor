@@ -6513,3 +6513,15 @@
   - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/36-hard-cut-m2-wave24-player-game-settings-type-report-20260226.md`
+
+### 2026-02-26 11:02 UTC
+- Completed Project 02 M2 Wave 25 for `MaxQuestClientLogLevel` namespace migration.
+- Migrated `MaxQuestClientLogLevel` package to `com.abs` and updated dependent imports in `BankInfo` and alias compatibility test.
+- Corrected compile blocker by adding explicit import for `PlayerGameSettingsType` in `BankInfo` after its prior Wave 24 move.
+- Evidence folder:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-105534-hardcut-m2-wave25-maxquest-client-log-level`
+- Validation result:
+  - Required 9/9 checks passed.
+  - `web-gs` package needed one environment-only rerun with `-Dcluster.properties=local/local-machine.properties`.
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/37-hard-cut-m2-wave25-maxquest-client-log-level-report-20260226.md`

@@ -763,3 +763,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-105209-hardcut-m2-wave24-player-game-settings-type`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/36-hard-cut-m2-wave24-player-game-settings-type-report-20260226.md`
+
+## 2026-02-26 11:02 UTC (M2 Wave 25 - MaxQuestClientLogLevel Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.bank.MaxQuestClientLogLevel` -> `com.abs.casino.common.cache.data.bank.MaxQuestClientLogLevel`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/MaxQuestClientLogLevel.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java`
+  - `gs-server/common/src/test/java/com/dgphoenix/casino/common/cache/data/bank/BankInfoAliasCompatibilityTest.java`
+- Compatibility correction during wave:
+  - Added explicit import for `com.abs...PlayerGameSettingsType` in `BankInfo` because Wave 24 moved that enum out of the local package.
+- Post-scan result: legacy refs `0`, abs refs `2`.
+- Validation matrix:
+  - Required 9 checks PASS.
+  - `web-gs` package required an environment-only rerun with `-Dcluster.properties=local/local-machine.properties`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-105534-hardcut-m2-wave25-maxquest-client-log-level`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/37-hard-cut-m2-wave25-maxquest-client-log-level-report-20260226.md`

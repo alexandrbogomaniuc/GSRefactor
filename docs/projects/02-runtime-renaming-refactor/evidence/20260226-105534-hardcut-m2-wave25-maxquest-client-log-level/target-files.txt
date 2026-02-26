@@ -1,0 +1,3 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/MaxQuestClientLogLevel.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java
+gs-server/common/src/test/java/com/dgphoenix/casino/common/cache/data/bank/BankInfoAliasCompatibilityTest.java

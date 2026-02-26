@@ -1,0 +1,13 @@
+Wave: W25-maxquest-client-log-level
+Date (UTC): 2026-02-26
+Status: COMPLETE
+
+Migrated:
+- com.dgphoenix.casino.common.cache.data.bank.MaxQuestClientLogLevel -> com.abs.casino.common.cache.data.bank.MaxQuestClientLogLevel
+
+Additional compatibility fix:
+- Added import com.abs.casino.common.cache.data.bank.PlayerGameSettingsType in BankInfo.
+
+Validation:
+- 9/9 required checks PASS.
+- web-gs package required rerun with -Dcluster.properties=local/local-machine.properties (environment-only).
