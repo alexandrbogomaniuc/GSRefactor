@@ -536,3 +536,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-095618-hardcut-m2-wave9-common-monitoring`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/21-hard-cut-m2-wave9-common-monitoring-report-20260226.md`
+
+## 2026-02-26 10:00 UTC (M2 Wave 10 - DomainWhiteList Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.domain.DomainWhiteList` -> `com.abs.casino.common.cache.data.domain.DomainWhiteList`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/domain/DomainWhiteList.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/DomainWhiteListCache.java`
+  - `gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraDomainWhiteListPersister.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/EditDomainAction.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/ReadDomainsAction.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainWhiteListAction.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainsByGameAction.java`
+- Post-scan result: legacy refs `0`, abs refs `8`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-095853-hardcut-m2-wave10-domain-whitelist`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/22-hard-cut-m2-wave10-domain-whitelist-report-20260226.md`

@@ -6354,3 +6354,14 @@
 - Evidence:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-095618-hardcut-m2-wave9-common-monitoring`
 - Next: commit/push Wave 9 and continue Wave 10.
+
+### 2026-02-26 10:00 UTC
+- Continued Project 02 with M2 Wave 10 (DomainWhiteList namespace migration).
+- Scope: 8 files across common/cache, cassandra persister, and web-gs support actions.
+- Result:
+  - legacy refs for wave scope: `0`
+  - new `com.abs` refs: `8`
+  - full validation matrix and runtime smoke: PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-095853-hardcut-m2-wave10-domain-whitelist`
+- Next: commit/push Wave 10 and continue Wave 11.

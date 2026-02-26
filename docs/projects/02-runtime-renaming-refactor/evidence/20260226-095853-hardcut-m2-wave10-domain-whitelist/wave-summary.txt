@@ -1,0 +1,21 @@
+timestamp_utc=2026-02-26T10:00:32Z
+pre_scan_lines=8
+post_scan_legacy_refs=0
+post_scan_abs_refs=8
+validation_success_commands=9
+validation_failed_commands=0
+
+scope=
+- com.dgphoenix.casino.common.cache.data.domain.DomainWhiteList
+- package declaration migration and dependent cache/persister/web-gs import updates
+
+validation_set=
+- common install
+- common-wallet test
+- sb-utils test
+- promo persisters install
+- common persisters install
+- cassandra cache test
+- web-gs package
+- mp core/persistance package
+- runtime smoke

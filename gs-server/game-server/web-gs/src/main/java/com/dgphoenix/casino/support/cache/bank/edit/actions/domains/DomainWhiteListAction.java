@@ -2,7 +2,7 @@ package com.dgphoenix.casino.support.cache.bank.edit.actions.domains;
 
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
-import com.dgphoenix.casino.common.cache.data.domain.DomainWhiteList;
+import com.abs.casino.common.cache.data.domain.DomainWhiteList;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
 import com.dgphoenix.casino.support.cache.bank.edit.forms.domains.GameBean;

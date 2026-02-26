@@ -1,0 +1,8 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/domain/DomainWhiteList.java:1:package com.abs.casino.common.cache.data.domain;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/EditDomainAction.java:5:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java:4:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/ReadDomainsAction.java:5:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainWhiteListAction.java:5:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainsByGameAction.java:5:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/DomainWhiteListCache.java:3:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraDomainWhiteListPersister.java:4:import com.abs.casino.common.cache.data.domain.DomainWhiteList;

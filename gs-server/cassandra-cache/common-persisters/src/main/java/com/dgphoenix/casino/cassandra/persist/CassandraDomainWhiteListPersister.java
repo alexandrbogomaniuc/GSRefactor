@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
-import com.dgphoenix.casino.common.cache.data.domain.DomainWhiteList;
+import com.abs.casino.common.cache.data.domain.DomainWhiteList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

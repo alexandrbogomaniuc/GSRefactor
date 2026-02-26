@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.cache;
 
-import com.dgphoenix.casino.common.cache.data.domain.DomainWhiteList;
+import com.abs.casino.common.cache.data.domain.DomainWhiteList;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
