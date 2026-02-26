@@ -69,8 +69,6 @@
 
 </head>
 <body>
-<jsp:useBean id="gameBean" class="com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties.BeanHelper"/>
-
 <div align="center">
     <table WIDTH="80%">
         <tr>

@@ -277,3 +277,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - reduced hard dependency on legacy package name in support form wiring paths.
   - Project 02 completion estimate updated to `92%`.
+
+## 2026-02-26 07:27 UTC (Mini-Wave M3.5)
+- Executed support language-table `jsp:useBean` decoupling wave.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/languageTable.jsp`
+  - `gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/languageTable.jsp`
+- Change detail:
+  - removed hardcoded `class="com.dgphoenix..."` `gameBean` declaration from both pages.
+  - replaced `gameBean` value extraction with request/context-driven values (`bankId` resolve fallback + direct iterate `game` usage).
+  - added explicit `bankId` missing guard.
+- Validation PASS:
+  - full build/test matrix (sb-utils, promo/common-persisters, cache tests, web-gs package, mp subset package)
+  - runtime bank-template audit (`bank-template-audit.mjs`) for banks `6275,6276`: PASS.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-072744/`
+- Outcome:
+  - language support pages no longer rely on hardcoded legacy bean-helper class binding.
+  - Project 02 completion estimate updated to `96%`.

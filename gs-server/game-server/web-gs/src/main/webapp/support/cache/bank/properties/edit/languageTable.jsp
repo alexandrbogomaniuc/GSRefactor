@@ -11,8 +11,25 @@
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
 
 <%@ page trimDirectiveWhitespaces="true" %>
-<jsp:useBean id="gameBean" class="com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties.BeanHelper"/>
 <%
+    String bankIdValue = request.getParameter("bankId");
+    if (bankIdValue == null) {
+        Object languageSupportForm = request.getAttribute("LanguageSupportForm");
+        if (languageSupportForm != null) {
+            try {
+                Object value = languageSupportForm.getClass().getMethod("getBankId").invoke(languageSupportForm);
+                if (value != null) {
+                    bankIdValue = String.valueOf(value);
+                }
+            } catch (Exception ignore) {
+                // keep fallback path below
+            }
+        }
+    }
+    if (bankIdValue == null) {
+        response.getWriter().println("bankId is missing.");
+        return;
+    }
 
     HashSet<String> editedLangs = (HashSet<String>) request.getAttribute("editedLanguages");
     request.getSession().removeAttribute("editedLanguages");
@@ -56,7 +73,7 @@
         delGamesLanguages = new HashSet();
     }
     request.setAttribute("supportedLangsFromLoadAction", request.getAttribute("supportedLangsFromLoadAction"));
-    Long bankId = gameBean.getBankId() != null ? Long.parseLong(gameBean.getBankId()) : Long.parseLong(request.getParameter("bankId"));
+    Long bankId = Long.parseLong(bankIdValue);
     Long masterBankId = null;
     BankInfo bankInfo = BankInfoCache.getInstance().getBankInfo(bankId);
     if (bankInfo.getMasterBankId() != null && bankInfo.getMasterBankId() > 0 && !bankInfo.getMasterBankId().equals(bankId)) {
@@ -321,12 +338,10 @@
         <logic:iterate id="game" name="LanguageSupportForm" property="allGamesByBank">
             <tr>
                 <td>
-                    <jsp:setProperty name="gameBean" property="bankId" value="${LanguageSupportForm.bankId}"/>
-                    <jsp:setProperty name="gameBean" property="gameId" value="${game}"/>
                     <b>
                         <html:link href="/support/banklang.do?gameId=${game}&bankId=${LanguageSupportForm.bankId}">
                             <%
-                                Long gameId = Long.parseLong(gameBean.getGameId());
+                                Long gameId = Long.parseLong(String.valueOf(game));
                                 String gameName = BaseGameCache.getInstance().getGameNameById(bankId, gameId);
                                 String msg = MessageManager.getInstance().getApplicationMessage("game.name." + gameName);
                                 if (msg == null) {

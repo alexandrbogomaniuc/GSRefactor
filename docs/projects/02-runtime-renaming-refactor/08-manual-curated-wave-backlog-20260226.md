@@ -93,4 +93,5 @@ Method:
   - M3.3 complete (GameBankConfig default class fallback for SP processor and GameServlet)
   - M2.5 complete (mpstress alias-key parity + FR bonus URL de-externalization + support email cleanup)
   - M3.4 complete (support bank-property pages decoupled from hardcoded `jsp:useBean` class names)
-- Estimated completion: 92%.
+  - M3.5 complete (language-table pages decoupled from hardcoded `jsp:useBean` class names)
+- Estimated completion: 96%.

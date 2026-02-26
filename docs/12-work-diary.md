@@ -5942,3 +5942,14 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-072419/`
 - Completion update:
   - Project 02 estimated at `92%`.
+
+### 2026-02-26 07:27 UTC
+- GSRefactor Project 02 advanced with M3.5 (language-table `jsp:useBean` decoupling).
+- Removed hardcoded `gameBean` class bindings from language support pages and replaced dependent reads with request/context fallback logic:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/languageTable.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/languageTable.jsp`
+- Full validation matrix PASS and runtime bank-template audit PASS for banks `6275`, `6276`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-072744/`
+- Completion update:
+  - Project 02 estimated at `96%`.
