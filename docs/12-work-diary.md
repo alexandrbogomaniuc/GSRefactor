@@ -6648,3 +6648,13 @@
   - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/49-hard-cut-m2-wave37-action-redirect-custom-params-report-20260226.md`
+
+### 2026-02-26 12:34 UTC
+- Completed Project 02 M2 Wave 38 for `BaseJsonAction` namespace migration.
+- Migrated package declaration to `com.abs` and added explicit compatibility imports for `BaseAction` and `JsonResult`.
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-123128-hardcut-m2-wave38-base-json-action`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/50-hard-cut-m2-wave38-base-json-action-report-20260226.md`

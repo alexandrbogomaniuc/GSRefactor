@@ -972,3 +972,18 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-122701-hardcut-m2-wave37-action-redirect-custom-params`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/49-hard-cut-m2-wave37-action-redirect-custom-params-report-20260226.md`
+
+## 2026-02-26 12:34 UTC (M2 Wave 38 - BaseJsonAction Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.web.BaseJsonAction` -> `com.abs.casino.common.web.BaseJsonAction`
+- Changed target file:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/web/BaseJsonAction.java`
+- Compatibility import updates in target class:
+  - `com.dgphoenix.casino.common.web.BaseAction`
+  - `com.dgphoenix.casino.common.web.JsonResult`
+- Post-scan result: legacy refs `0`, abs refs `1` (pre-scan legacy refs `1`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-123128-hardcut-m2-wave38-base-json-action`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/50-hard-cut-m2-wave38-base-json-action-report-20260226.md`

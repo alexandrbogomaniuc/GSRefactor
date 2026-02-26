@@ -1,0 +1,8 @@
+wave=W38-base-json-action
+target=com.dgphoenix.casino.common.web.BaseJsonAction
+replacement=com.abs.casino.common.web.BaseJsonAction
+pre_legacy_refs=1
+post_legacy_refs=0
+post_abs_refs=1
+validation_passed=9
+validation_failed=0
