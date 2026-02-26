@@ -6929,3 +6929,13 @@
   - migrated helper class package to `com.abs`, updated bounded imports, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 66 with `AbstractStartGameHelper` migration.
+
+### 2026-02-26 15:20 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 66 (`AbstractStartGameHelper`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-151753-hardcut-m2-wave66-abstract-start-game-helper/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/78-hard-cut-m2-wave66-abstract-start-game-helper-report-20260226.md`
+- Result:
+  - migrated abstract helper class package to `com.abs`, removed aligned legacy import, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 67 with next low-fanout legacy declaration outside `common.games` cluster.

@@ -1,0 +1,2 @@
+HEAD:gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:7:import com.dgphoenix.casino.common.games.AbstractStartGameHelper;
+HEAD:gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:1:package com.dgphoenix.casino.common.games;

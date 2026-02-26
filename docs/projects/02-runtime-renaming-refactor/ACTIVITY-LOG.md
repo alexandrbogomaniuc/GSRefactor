@@ -1387,3 +1387,19 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `2`.
   - global tracked source declarations now `2139` remaining (`2277` baseline, `138` reduced).
+
+## 2026-02-26 15:20 UTC (Hard-Cut M2 Wave 66)
+- Executed hard-cut namespace wave for `AbstractStartGameHelper`.
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java`
+- Change detail:
+  - migrated `com.dgphoenix.casino.common.games.AbstractStartGameHelper` to `com.abs.casino.common.games.AbstractStartGameHelper`.
+  - removed now-obsolete legacy import in `NewTranslationGameHelper` after package alignment.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-151753-hardcut-m2-wave66-abstract-start-game-helper/`
+- Outcome:
+  - wave scope legacy refs reduced from `2` to `0`, `com.abs` refs now `1`.
+  - global tracked source declarations now `2138` remaining (`2277` baseline, `139` reduced).
