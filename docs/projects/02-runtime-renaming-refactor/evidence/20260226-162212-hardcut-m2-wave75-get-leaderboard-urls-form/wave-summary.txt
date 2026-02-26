@@ -1,0 +1,7 @@
+wave=W75-get-leaderboard-urls-form
+status=PASS
+pre_legacy=2
+post_legacy=0
+post_abs=1
+validation=9/9 PASS
+notes=Form migrated with Struts form-bean update and legacy FQCN import removed from GetLeaderboardUrlsAction.

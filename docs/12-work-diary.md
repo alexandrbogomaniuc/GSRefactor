@@ -7019,3 +7019,13 @@
   - migrated API form package to `com.abs`, updated Struts form-bean type, removed legacy FQCN import in action, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 75 with next low-fanout API declaration.
+
+### 2026-02-26 16:26 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 75 (`GetLeaderboardUrlsForm`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-162212-hardcut-m2-wave75-get-leaderboard-urls-form/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/87-hard-cut-m2-wave75-get-leaderboard-urls-form-report-20260226.md`
+- Result:
+  - migrated API form package to `com.abs`, updated Struts form-bean type, removed legacy FQCN import in action, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 76 with next low-fanout API declaration.

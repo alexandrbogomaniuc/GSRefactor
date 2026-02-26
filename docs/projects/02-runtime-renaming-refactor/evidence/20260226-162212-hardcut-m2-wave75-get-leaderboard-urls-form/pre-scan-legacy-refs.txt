@@ -1,0 +1,2 @@
+HEAD:gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/GetLeaderboardUrlsAction.java:12:import com.dgphoenix.casino.actions.api.GetLeaderboardUrlsForm;
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:31:        <form-bean name="GetLeaderboardUrlsForm" type="com.dgphoenix.casino.actions.api.GetLeaderboardUrlsForm"/>

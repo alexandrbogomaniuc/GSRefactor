@@ -1530,3 +1530,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `2` to `0`, `com.abs` refs now `1`.
   - global tracked source declarations now `2130` remaining (`2277` baseline, `147` reduced).
+
+## 2026-02-26 16:26 UTC (Hard-Cut M2 Wave 75)
+- Executed hard-cut namespace wave for `GetLeaderboardUrlsForm`.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/GetLeaderboardUrlsForm.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/GetLeaderboardUrlsAction.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.GetLeaderboardUrlsForm` to `com.abs.casino.actions.api.GetLeaderboardUrlsForm`.
+  - updated Struts form-bean type to `com.abs` for `GetLeaderboardUrlsForm`.
+  - removed legacy FQCN import from `GetLeaderboardUrlsAction`.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-162212-hardcut-m2-wave75-get-leaderboard-urls-form/`
+- Outcome:
+  - wave scope legacy refs reduced from `2` to `0`, `com.abs` refs now `1`.
+  - global tracked source declarations now `2129` remaining (`2277` baseline, `148` reduced).

@@ -28,7 +28,7 @@
 
         <form-bean name="SessionKeyAccessForm" type="com.dgphoenix.casino.protection.forms.SessionKeyAccessForm"/>
 
-        <form-bean name="GetLeaderboardUrlsForm" type="com.dgphoenix.casino.actions.api.GetLeaderboardUrlsForm"/>
+        <form-bean name="GetLeaderboardUrlsForm" type="com.abs.casino.actions.api.GetLeaderboardUrlsForm"/>
 
         <!-- Begin ported from LOBBY -->
         <form-bean name="EncoderForm" type="com.dgphoenix.casino.actions.system.util.EncoderForm"/>
