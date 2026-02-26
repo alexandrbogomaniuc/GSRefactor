@@ -4,7 +4,6 @@ import com.betsoft.casino.mp.model.ITournamentSession;
 import com.betsoft.casino.mp.model.TournamentSession;
 import com.betsoft.casino.mp.service.ITournamentService;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -61,7 +60,7 @@ public class TournamentSessionPersister extends AbstractCassandraPersister<Long,
 
     @Override
     public List<ITournamentSession> getByTournament(long tournamentId) {
-        ResultSet rows = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet rows = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME)
                         .where(eq(TOURNAMENT_ID_COLUMN, tournamentId)),
                 "getButTournament");
         List<ITournamentSession> result = new ArrayList<>();

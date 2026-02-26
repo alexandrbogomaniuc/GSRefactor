@@ -3,7 +3,6 @@ package com.betsoft.casino.mp.data.persister;
 import com.betsoft.casino.mp.model.Money;
 import com.betsoft.casino.mp.service.IWeaponService;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -137,7 +136,7 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
 
     public Map<Money, Map<Integer, Integer>> getAllWeapons(long bankId, long accountId, int mode, long gameId) {
         Map<Money, Map<Integer, Integer>> weapons = new HashMap<>();
-        ResultSet result = execute(getSelectColumnsQuery(TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(BANK_ID_COLUMN, bankId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAMEID_COLUMN, gameId))
@@ -159,7 +158,7 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
     public Map<Money, Map<Integer, Integer>> getAllSpecialModeWeapons(long tournamentOrBonusId, long accountId,
                                                                       int mode, long gameId) {
         Map<Money, Map<Integer, Integer>> weapons = new HashMap<>();
-        ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAMEID_COLUMN, gameId))
@@ -179,7 +178,7 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
 
     public Map<Long, Map<Integer, Integer>> getAllWeaponsLong(long bankId, long accountId, int mode, long gameId) {
         Map<Long, Map<Integer, Integer>> weapons = new HashMap<>();
-        ResultSet result = execute(getSelectColumnsQuery(TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(BANK_ID_COLUMN, bankId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAMEID_COLUMN, gameId))
@@ -205,7 +204,7 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
     public Map<Long, Map<Integer, Integer>> getSpecialModeAllWeaponsLong(long tournamentOrBonusId, long accountId,
                                                                          int mode, long gameId) {
         Map<Long, Map<Integer, Integer>> weapons = new HashMap<>();
-        ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAMEID_COLUMN, gameId))

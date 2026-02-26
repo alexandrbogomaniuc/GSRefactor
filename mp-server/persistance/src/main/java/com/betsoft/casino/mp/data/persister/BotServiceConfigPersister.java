@@ -2,7 +2,6 @@ package com.betsoft.casino.mp.data.persister;
 
 import com.betsoft.casino.mp.model.bots.BotConfigInfo;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -48,7 +47,7 @@ public class BotServiceConfigPersister extends AbstractCassandraPersister<String
     }
 
     public Set<String> loadAllKeys() {
-        ResultSet resultSet = execute(getSelectColumnsQuery(KEY), "loadAllKeys");
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(KEY), "loadAllKeys");
 
         return StreamSupport.stream(resultSet.spliterator(), false)
                 .map(row -> row.getString(KEY))
@@ -77,7 +76,7 @@ public class BotServiceConfigPersister extends AbstractCassandraPersister<String
     @Override
     public String load(String key) {
         assertInitialized();
-        ResultSet rows = execute(getSelectColumnsQuery(VALUE)
+        com.datastax.driver.core.ResultSet rows = execute(getSelectColumnsQuery(VALUE)
                         .where(eq(getKeyColumnName(), key))
                         .limit(1),
                 "get");

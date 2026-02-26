@@ -699,3 +699,22 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - GS-only `18.85%`
   - MP-only `44.37%`
   - Combined GS+MP `24.88%`
+
+## 2026-02-26 05:17 UTC (Wave 38)
+- Implemented MP import-surface cleanup wave by removing direct `ResultSet` imports across 24 persister files and using fully-qualified result-set declarations.
+- Validation: PASS
+  - promo/persisters install
+  - common-persisters install
+  - cache tests (`63` pass)
+  - web-gs package
+  - mp subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added under:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-051625/`
+- Inventory delta after Wave 38:
+  - GS `driver3_import_lines`: `396 -> 396`
+  - MP `driver3_import_lines`: `84 -> 60` (`-24`)
+  - Combined: `480 -> 456` (`-24`)
+- Completion snapshot:
+  - GS-only `18.85%`
+  - MP-only `60.26%`
+  - Combined GS+MP `28.64%`

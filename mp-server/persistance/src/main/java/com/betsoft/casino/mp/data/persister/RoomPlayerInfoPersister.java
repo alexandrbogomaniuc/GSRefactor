@@ -2,7 +2,6 @@ package com.betsoft.casino.mp.data.persister;
 
 import com.betsoft.casino.mp.model.IRoomPlayerInfo;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -89,7 +88,7 @@ public class RoomPlayerInfoPersister extends AbstractCassandraPersister<Long, St
 
     @Override
     public Iterable<Long> loadAllKeys() {
-        ResultSet resultSet = execute(getSelectColumnsQuery(KEY), "loadAllKeys");
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(KEY), "loadAllKeys");
         return StreamSupport.stream(resultSet.spliterator(), false)
                 .map(row -> row.getLong(KEY))
                 .collect(toSet());

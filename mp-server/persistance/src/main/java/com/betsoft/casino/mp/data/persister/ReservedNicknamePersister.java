@@ -1,7 +1,6 @@
 package com.betsoft.casino.mp.data.persister;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -83,7 +82,7 @@ public class ReservedNicknamePersister extends AbstractCassandraPersister<String
         if(owner != null) {
             where.and(eq(OWNER_COLUMN, owner)).allowFiltering();
         }
-        ResultSet rs = execute(where, "getNickNamesForRegion");
+        com.datastax.driver.core.ResultSet rs = execute(where, "getNickNamesForRegion");
         Set<String> result = new HashSet<>(128);
         for (Row row : rs) {
             result.add(row.getString(NICK_NAME_COLUMN));

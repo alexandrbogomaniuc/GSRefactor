@@ -5,7 +5,6 @@ import com.betsoft.casino.mp.model.PlayerQuests;
 import com.betsoft.casino.mp.model.quests.IQuest;
 import com.betsoft.casino.mp.service.IPlayerQuestsService;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -139,7 +138,7 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
     public Set<IQuest> getAllQuests(long bankId, long accountId, int mode, long gameId) {
         LOG.debug("getAllQuests: bankId: {}, accountId: {}, mode: {}, gameId: {}", bankId, accountId, mode, gameId);
         Set<IQuest> quests = new HashSet<>();
-        ResultSet result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(BANK_ID_COLUMN, bankId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAME_ID_COLUMN, gameId))
@@ -166,7 +165,7 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
         LOG.debug("getAllSpecialModeQuests: tournamentOrBonusId={}, bankId={}, accountId={}, gameId={}, mode={}",
                 tournamentOrBonusId, bankId, accountId, gameId, mode);
         Set<IQuest> quests = new HashSet<>();
-        ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
                         .and(eq(BANK_ID_COLUMN, bankId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))

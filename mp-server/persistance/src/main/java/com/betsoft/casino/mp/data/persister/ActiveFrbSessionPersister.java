@@ -3,7 +3,6 @@ package com.betsoft.casino.mp.data.persister;
 import com.betsoft.casino.mp.model.IActiveFrbSession;
 import com.betsoft.casino.mp.service.IActiveFrbSessionService;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -58,7 +57,7 @@ public class ActiveFrbSessionPersister extends AbstractCassandraPersister<Long, 
 
     @Override
     public List<IActiveFrbSession> getByAccountId(long accountId) {
-        ResultSet rows = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet rows = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                         .where(eq(ACCOUNT_ID_COLUMN, accountId)),
                 "getByAccountId");
         List<IActiveFrbSession> result = new ArrayList<>();

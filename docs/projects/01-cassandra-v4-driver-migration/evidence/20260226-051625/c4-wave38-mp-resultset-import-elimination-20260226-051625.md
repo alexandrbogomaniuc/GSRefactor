@@ -1,0 +1,51 @@
+# CASS-V4 Wave 38 (MP ResultSet import elimination)
+
+## Scope
+Standardized MP persisters to remove direct `ResultSet` imports and use fully-qualified result-set declarations, reducing driver3 import surface while keeping runtime logic unchanged.
+
+### Changed files
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/AbstractRoomInfoPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/ActiveCashBonusSessionPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/ActiveFrbSessionPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/BGPrivateRoomPlayersStatusPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/BotConfigInfoPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/BotServiceConfigPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/CrashGameStatePersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/FriendsPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/GameRoomSnapshotPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/MultiNodeSeatPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/OnlinePlayerPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/PendingOperationPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/PlayerNicknamePersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/PlayerQuestsPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/ReservedNicknamePersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/RoomPlayerInfoPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/RoomTemplatePersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/RoundResultNotificationPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/SequencerPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/ServerConfigPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/SocketClientCountPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/SocketClientInfoPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/TournamentSessionPersister.java`
+- `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/WeaponsPersister.java`
+
+## Validation
+All required checks passed:
+- `mvn -DskipTests install` in `gs-server/promo/persisters`
+- `mvn -DskipTests install` in `gs-server/cassandra-cache/common-persisters`
+- `mvn test` in `gs-server/cassandra-cache/cache`
+- `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` in `gs-server/game-server/web-gs`
+- `mvn -pl core-interfaces,core,persistance -am -DskipTests package` in `mp-server`
+
+## Inventory delta
+- GS driver3 import lines: `396 -> 396` (no change)
+- MP driver3 import lines: `84 -> 60` (`-24`)
+- Combined GS+MP: `480 -> 456` (`-24`)
+
+## Completion snapshot (import burn-down metric)
+- GS-only: `18.85%` (`488 -> 396`)
+- MP-only: `60.26%` (`151 -> 60`)
+- Combined GS+MP: `28.64%` (`639 -> 456`)
+
+## Notes
+This was a mechanical cleanup wave after Wave 37 to reduce remaining MP driver3 import footprint while preserving behavior.

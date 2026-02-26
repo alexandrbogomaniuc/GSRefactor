@@ -2,7 +2,6 @@ package com.betsoft.casino.mp.data.persister;
 
 import com.betsoft.casino.mp.model.onlineplayer.OnlinePlayer;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -47,7 +46,7 @@ public class OnlinePlayerPersister extends AbstractCassandraPersister<String, St
 
     @Override
     public Set<String> loadAllKeys() {
-        ResultSet resultSet = execute(getSelectColumnsQuery(KEY), "loadAllKeys");
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(KEY), "loadAllKeys");
 
         return StreamSupport.stream(resultSet.spliterator(), false)
                 .map(row -> row.getString(KEY))

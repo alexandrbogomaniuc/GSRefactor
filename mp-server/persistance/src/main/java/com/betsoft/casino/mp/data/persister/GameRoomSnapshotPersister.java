@@ -4,7 +4,6 @@ import com.betsoft.casino.mp.model.IGameRoomSnapshot;
 import com.betsoft.casino.mp.service.IGameRoomSnapshotPersister;
 import com.datastax.driver.core.ConsistencyLevel;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -75,7 +74,7 @@ public class GameRoomSnapshotPersister extends AbstractCassandraPersister<Long, 
 
     @Override
     public IGameRoomSnapshot get(long roomId, long roundId) {
-        ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                         .where(eq(ROOM_ID_COLUMN, roomId))
                         .and(eq(ROUND_ID_COLUMN, roundId)),
                 "get");

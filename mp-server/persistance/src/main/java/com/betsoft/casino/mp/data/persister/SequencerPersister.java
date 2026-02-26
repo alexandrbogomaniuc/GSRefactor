@@ -1,7 +1,6 @@
 package com.betsoft.casino.mp.data.persister;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -94,7 +93,7 @@ public class SequencerPersister extends AbstractCassandraPersister<String, Strin
             boolean success = false;
             while (!success) {
                 //reserve block
-                ResultSet resultSet = executeWithCheckTimeout(
+                com.datastax.driver.core.ResultSet resultSet = executeWithCheckTimeout(
                         getUpdateQuery()
                                 .where(getSimpleKeyClause(name))
                                 .with(set(VALUE_COLUMN_NAME, baseValue + block))
@@ -147,7 +146,7 @@ public class SequencerPersister extends AbstractCassandraPersister<String, Strin
 
 
     public Long getCurrentValue(String sequencerName) {
-        ResultSet rows = execute(getSelectColumnsQuery(VALUE_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet rows = execute(getSelectColumnsQuery(VALUE_COLUMN_NAME)
                         .where(eq("KEY", sequencerName))
                         .limit(1),
                 "getCurrentValue");
@@ -175,7 +174,7 @@ public class SequencerPersister extends AbstractCassandraPersister<String, Strin
 
         if (currentValue == null) {
             getLog().info("persist: add new sequencer: " + seq + ", newValue=" + newValue);
-            ResultSet resultSet = executeWithCheckTimeout(
+            com.datastax.driver.core.ResultSet resultSet = executeWithCheckTimeout(
                     addInsertion(seq.getName(), VALUE_COLUMN_NAME, newValue).ifNotExists(),
                     "persist[insert]");
             if (!resultSet.wasApplied()) {
@@ -196,7 +195,7 @@ public class SequencerPersister extends AbstractCassandraPersister<String, Strin
         if (!success) {
             int attemptsCount = 0;
             while (!success) {
-                ResultSet resultSet = executeWithCheckTimeout(
+                com.datastax.driver.core.ResultSet resultSet = executeWithCheckTimeout(
                         getUpdateQuery(seq.getName())
                                 .with(set(VALUE_COLUMN_NAME, newDesiredValue))
                                 .onlyIf(eq(VALUE_COLUMN_NAME, newCurrentValue)),

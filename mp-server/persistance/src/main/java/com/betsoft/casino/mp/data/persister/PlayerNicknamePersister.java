@@ -1,7 +1,6 @@
 package com.betsoft.casino.mp.data.persister;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -78,7 +77,7 @@ public class PlayerNicknamePersister extends AbstractCassandraPersister<String, 
         if (StringUtils.isTrimmedEmpty(newNickname)) {
             throw new CommonException("Nickname is empty");
         }
-        ResultSet result;
+        com.datastax.driver.core.ResultSet result;
         String bankAndAid = getBankAndAid(bankId, accountId);
         if (StringUtils.isTrimmedEmpty(oldNickName)) { //newUser, create record
             com.datastax.driver.core.querybuilder.Insert insert = getInsertQuery();

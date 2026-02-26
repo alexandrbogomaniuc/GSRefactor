@@ -2,7 +2,6 @@ package com.betsoft.casino.mp.data.persister;
 
 import com.betsoft.casino.mp.model.IRoundResultNotification;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -33,7 +32,7 @@ public class RoundResultNotificationPersister extends AbstractCassandraPersister
             ), ACCOUNT_ID_COLUMN, GAME_ID_COLUMN);
 
     public List<IRoundResultNotification> getNotifications(long accountId, long gameId) {
-        ResultSet result = execute(
+        com.datastax.driver.core.ResultSet result = execute(
                 getSelectAllColumnsQuery(TABLE)
                         .where(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAME_ID_COLUMN, gameId)),
