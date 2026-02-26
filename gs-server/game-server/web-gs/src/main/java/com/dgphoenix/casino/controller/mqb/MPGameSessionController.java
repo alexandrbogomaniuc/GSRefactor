@@ -1,6 +1,6 @@
 package com.abs.casino.controller.mqb;
 
-import com.dgphoenix.casino.battleground.messages.MPGameSessionFinishResponse;
+import com.abs.casino.battleground.messages.MPGameSessionFinishResponse;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.Pair;

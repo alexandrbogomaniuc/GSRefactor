@@ -2124,3 +2124,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - scoped declaration migrations: `20`.
   - global tracked source declarations/files now `1843` remaining (`2277` baseline, `434` reduced).
+
+## 2026-02-26 23:50 UTC (Hard-Cut M2 Wave 122A + 122B + 123)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W122A`: migrated 12 DTO/message/service declaration packages in `common-gs` to `com.abs`.
+  - `W122B`: migrated 10 configuration/initializer declaration packages in `common-gs` to `com.abs`.
+  - `W123`: integrated with bounded rewires in `web-gs` and compatibility-safe type alignment in battleground/Kafka service flow.
+- Changed files:
+  - full file list in `docs/projects/02-runtime-renaming-refactor/evidence/20260226-231233-hardcut-m2-wave122ab-wave123-parallel-batches/target-files.txt`.
+- Validation:
+  - fast gate required iterative stabilization; final rerun10 passed (`common-gs install`, `web-gs package`, `refactor smoke`).
+  - full 9-step matrix passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-231233-hardcut-m2-wave122ab-wave123-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/122-hard-cut-m2-wave122ab-wave123-parallel-batches-report-20260226.md`
+- Outcome:
+  - scoped declaration migrations: `22`.
+  - global tracked source declarations/files now `1821` remaining (`2277` baseline, `456` reduced).

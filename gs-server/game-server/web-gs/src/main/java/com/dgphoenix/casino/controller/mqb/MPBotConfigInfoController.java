@@ -1,10 +1,10 @@
 package com.abs.casino.controller.mqb;
 
-import com.dgphoenix.casino.ats.AllAtsResponse;
-import com.dgphoenix.casino.ats.AtsServiceEnableRequest;
-import com.dgphoenix.casino.ats.BotConfigInfo;
+import com.abs.casino.ats.AllAtsResponse;
+import com.abs.casino.ats.AtsServiceEnableRequest;
+import com.abs.casino.ats.BotConfigInfo;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.services.mp.MPBotConfigInfoService;
+import com.abs.casino.services.mp.MPBotConfigInfoService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.DependsOn;

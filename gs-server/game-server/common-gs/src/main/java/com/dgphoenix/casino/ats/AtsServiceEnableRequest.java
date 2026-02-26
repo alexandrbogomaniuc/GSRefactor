@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.ats;
+package com.abs.casino.ats;
 
 public class AtsServiceEnableRequest {
     private boolean enable;

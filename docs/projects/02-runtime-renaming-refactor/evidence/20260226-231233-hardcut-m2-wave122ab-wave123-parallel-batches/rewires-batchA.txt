@@ -1,0 +1,5 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/battleground/BattlegroundController.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/BattlegroundPrivateRoomController.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/GameUserHistoryInfoController.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPGameSessionController.java

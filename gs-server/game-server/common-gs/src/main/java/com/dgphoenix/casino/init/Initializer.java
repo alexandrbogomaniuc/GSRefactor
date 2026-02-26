@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.init;
+package com.abs.casino.init;
 
 import com.dgphoenix.casino.cache.PingSessionCache;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
@@ -31,6 +31,8 @@ import com.dgphoenix.casino.gs.managers.dblink.DBLinkCache;
 import com.dgphoenix.casino.gs.managers.payment.bonus.tracker.ExpiredBonusTracker;
 import com.dgphoenix.casino.gs.managers.payment.bonus.tracker.ExpiredFRBonusTracker;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletPersister;
+import com.dgphoenix.casino.init.ApplicationScopeNames;
+import com.dgphoenix.casino.init.GsInitThread;
 import com.dgphoenix.casino.statistics.http.HttpClientCallbackHandler;
 import com.dgphoenix.casino.system.MetricsManager;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

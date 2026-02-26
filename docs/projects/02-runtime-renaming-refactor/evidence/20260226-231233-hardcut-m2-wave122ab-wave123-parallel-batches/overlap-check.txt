@@ -1,0 +1,7 @@
+decl_overlap=0
+rewire_overlap=0
+cross_overlap=0
+batchA_decl_count=12
+batchB_decl_count=10
+batchA_rewire_count=5
+batchB_rewire_count=5

@@ -1,4 +1,6 @@
-package com.dgphoenix.casino.battleground.messages;
+package com.abs.casino.battleground.messages;
+
+import com.dgphoenix.casino.battleground.messages.BattlegroundRoundHistory;
 
 import java.util.List;
 import java.util.Objects;

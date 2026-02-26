@@ -7,6 +7,9 @@ import com.dgphoenix.casino.kafka.dto.privateroom.request.*;
 import com.dgphoenix.casino.kafka.dto.privateroom.response.*;
 import com.dgphoenix.casino.kafka.service.KafkaMessageService;
 import com.dgphoenix.casino.promo.IKafkaRequestMultiPlayer;
+import com.abs.casino.kafka.dto.StringResponseDto;
+import com.abs.casino.kafka.dto.privateroom.response.DeactivateRoomResultDto;
+import com.abs.casino.kafka.dto.privateroom.response.PrivateRoomIdResultDto;
 import reactor.core.publisher.Mono;
 
 import java.util.List;

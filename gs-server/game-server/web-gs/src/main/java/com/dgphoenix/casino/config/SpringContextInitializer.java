@@ -1,6 +1,6 @@
 package com.abs.casino.config;
 
-import com.dgphoenix.casino.init.Initializer;
+import com.abs.casino.init.Initializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.WebApplicationInitializer;

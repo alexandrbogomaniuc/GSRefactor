@@ -1,7 +1,7 @@
 package com.abs.casino.controller.battleground;
 
-import com.dgphoenix.casino.battleground.messages.BattlegroundInfo;
-import com.dgphoenix.casino.battleground.messages.BattlegroundRoundHistoryInfo;
+import com.abs.casino.battleground.messages.BattlegroundInfo;
+import com.abs.casino.battleground.messages.BattlegroundRoundHistoryInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.web.ClientTypeFactory;
 import com.dgphoenix.casino.gs.socket.mq.BattlegroundService;

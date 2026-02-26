@@ -1,0 +1,210 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.dgphoenix.casino:gsn-web-gs:war:1.89.0
+[WARNING] 'version' contains an expression but should be a constant. @ com.dgphoenix.casino:gsn-web-gs:${current.version}, /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/pom.xml, line 13, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-web-gs >-------------------
+[INFO] Building gsn-web-gs 1.89.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ gsn-web-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 43 resources
+[INFO] 
+[INFO] --- resources:2.6:resources (gs-resources) @ gsn-web-gs ---
+[WARNING]  Parameter 'resources' is read-only, must not be used in configuration
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 43 resources
+[INFO] Copying 59 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/css
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/css_nucleus
+[INFO] Copying 104 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/js
+[INFO] Copying 501 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/images
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/images_nucleus
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-web-gs ---
+[INFO] Compiling 295 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPGameSessionController.java:[3,43] error: package com.abs.casino.battleground.messages does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPGameSessionController.java:[35,26] error: cannot find symbol
+[ERROR]   symbol:   class MPGameSessionFinishResponse
+  location: class MPGameSessionController
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/battleground/BattlegroundController.java:[3,43] error: package com.abs.casino.battleground.messages does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/battleground/BattlegroundController.java:[4,43] error: package com.abs.casino.battleground.messages does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ExportSubCasinoAction.java:[3,36] error: package com.abs.casino.gs.maintenance does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/SpringContextInitializer.java:[3,26] error: package com.abs.casino.init does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[6,24] error: cannot find symbol
+[ERROR]   symbol:   class GameServerComponentsConfiguration
+  location: package com.abs.casino.gs
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[7,24] error: cannot find symbol
+[ERROR]   symbol:   class PromotionContextConfiguration
+  location: package com.abs.casino.gs
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[8,24] error: cannot find symbol
+[ERROR]   symbol:   class SharedGameServerComponentsConfiguration
+  location: package com.abs.casino.gs
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[9,74] error: package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[10,26] error: package com.abs.casino.init does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[11,34] error: package com.abs.casino.kafka.config does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[12,30] error: package com.abs.casino.services does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[13,57] error: package com.abs.casino.system.configuration.identification does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/BattlegroundPrivateRoomController.java:[14,52] error: package com.abs.casino.kafka.dto.privateroom.response does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/BattlegroundPrivateRoomController.java:[15,52] error: package com.abs.casino.kafka.dto.privateroom.response does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/BattlegroundPrivateRoomController.java:[16,31] error: package com.abs.casino.kafka.dto does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportForm.java:[8,26] error: package com.abs.casino.init does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/GameUserHistoryInfoController.java:[5,34] error: package com.abs.casino.gs.socket.mq does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/GameUserHistoryInfoController.java:[6,25] error: package com.abs.casino.mqb does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/GameUserHistoryInfoController.java:[23,18] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistoryService
+  location: class GameUserHistoryInfoController
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/GameUserHistoryInfoController.java:[25,41] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistoryService
+  location: class GameUserHistoryInfoController
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[3,25] error: package com.abs.casino.ats does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[4,25] error: package com.abs.casino.ats does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[5,25] error: package com.abs.casino.ats does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[7,33] error: package com.abs.casino.services.mp does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[28,18] error: cannot find symbol
+[ERROR]   symbol:   class MPBotConfigInfoService
+  location: class MPBotConfigInfoController
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[30,37] error: cannot find symbol
+[ERROR]   symbol:   class MPBotConfigInfoService
+  location: class MPBotConfigInfoController
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[35,64] error: cannot find symbol
+[ERROR]   symbol:   class AtsServiceEnableRequest
+  location: class MPBotConfigInfoController
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[63,26] error: cannot find symbol
+[ERROR]   symbol:   class AllAtsResponse
+  location: class MPBotConfigInfoController
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[78,26] error: cannot find symbol
+[ERROR]   symbol:   class BotConfigInfo
+  location: class MPBotConfigInfoController
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[92,64] error: cannot find symbol
+[ERROR]   symbol:   class BotConfigInfo
+  location: class MPBotConfigInfoController
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[92,26] error: cannot find symbol
+[ERROR]   symbol:   class BotConfigInfo
+  location: class MPBotConfigInfoController
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[106,26] error: cannot find symbol
+[ERROR]   symbol:   class BotConfigInfo
+  location: class MPBotConfigInfoController
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ImportSubCasinoAction.java:[4,36] error: package com.abs.casino.gs.maintenance does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[45,8] error: cannot find symbol
+[ERROR]   symbol: class CassandraPersistenceContextConfiguration
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[46,8] error: cannot find symbol
+[ERROR]   symbol: class SharedGameServerComponentsConfiguration
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[47,8] error: cannot find symbol
+[ERROR]   symbol: class GameServerComponentsConfiguration
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[48,8] error: cannot find symbol
+[ERROR]   symbol: class PromotionContextConfiguration
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[49,8] error: cannot find symbol
+[ERROR]   symbol: class GameCommandsProcessorsConfiguration
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[50,8] error: cannot find symbol
+[ERROR]   symbol: class GameServerServiceConfiguration
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[52,8] error: cannot find symbol
+[ERROR]   symbol: class KafkaConfiguration
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[53,8] error: cannot find symbol
+[INFO] 43 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.246 s
+[INFO] Finished at: 2026-02-26T23:32:47Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-web-gs: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPGameSessionController.java:[3,43] error: package com.abs.casino.battleground.messages does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPGameSessionController.java:[35,26] error: cannot find symbol
+[ERROR]   symbol:   class MPGameSessionFinishResponse
+[ERROR]   location: class MPGameSessionController
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/battleground/BattlegroundController.java:[3,43] error: package com.abs.casino.battleground.messages does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/battleground/BattlegroundController.java:[4,43] error: package com.abs.casino.battleground.messages does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ExportSubCasinoAction.java:[3,36] error: package com.abs.casino.gs.maintenance does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/SpringContextInitializer.java:[3,26] error: package com.abs.casino.init does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[6,24] error: cannot find symbol
+[ERROR]   symbol:   class GameServerComponentsConfiguration
+[ERROR]   location: package com.abs.casino.gs
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[7,24] error: cannot find symbol
+[ERROR]   symbol:   class PromotionContextConfiguration
+[ERROR]   location: package com.abs.casino.gs
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[8,24] error: cannot find symbol
+[ERROR]   symbol:   class SharedGameServerComponentsConfiguration
+[ERROR]   location: package com.abs.casino.gs
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[9,74] error: package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[10,26] error: package com.abs.casino.init does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[11,34] error: package com.abs.casino.kafka.config does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[12,30] error: package com.abs.casino.services does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[13,57] error: package com.abs.casino.system.configuration.identification does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/BattlegroundPrivateRoomController.java:[14,52] error: package com.abs.casino.kafka.dto.privateroom.response does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/BattlegroundPrivateRoomController.java:[15,52] error: package com.abs.casino.kafka.dto.privateroom.response does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/BattlegroundPrivateRoomController.java:[16,31] error: package com.abs.casino.kafka.dto does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportForm.java:[8,26] error: package com.abs.casino.init does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/GameUserHistoryInfoController.java:[5,34] error: package com.abs.casino.gs.socket.mq does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/GameUserHistoryInfoController.java:[6,25] error: package com.abs.casino.mqb does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/GameUserHistoryInfoController.java:[23,18] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistoryService
+[ERROR]   location: class GameUserHistoryInfoController
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/GameUserHistoryInfoController.java:[25,41] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistoryService
+[ERROR]   location: class GameUserHistoryInfoController
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[3,25] error: package com.abs.casino.ats does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[4,25] error: package com.abs.casino.ats does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[5,25] error: package com.abs.casino.ats does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[7,33] error: package com.abs.casino.services.mp does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[28,18] error: cannot find symbol
+[ERROR]   symbol:   class MPBotConfigInfoService
+[ERROR]   location: class MPBotConfigInfoController
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[30,37] error: cannot find symbol
+[ERROR]   symbol:   class MPBotConfigInfoService
+[ERROR]   location: class MPBotConfigInfoController
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[35,64] error: cannot find symbol
+[ERROR]   symbol:   class AtsServiceEnableRequest
+[ERROR]   location: class MPBotConfigInfoController
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[63,26] error: cannot find symbol
+[ERROR]   symbol:   class AllAtsResponse
+[ERROR]   location: class MPBotConfigInfoController
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[78,26] error: cannot find symbol
+[ERROR]   symbol:   class BotConfigInfo
+[ERROR]   location: class MPBotConfigInfoController
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[92,64] error: cannot find symbol
+[ERROR]   symbol:   class BotConfigInfo
+[ERROR]   location: class MPBotConfigInfoController
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[92,26] error: cannot find symbol
+[ERROR]   symbol:   class BotConfigInfo
+[ERROR]   location: class MPBotConfigInfoController
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:[106,26] error: cannot find symbol
+[ERROR]   symbol:   class BotConfigInfo
+[ERROR]   location: class MPBotConfigInfoController
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ImportSubCasinoAction.java:[4,36] error: package com.abs.casino.gs.maintenance does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[45,8] error: cannot find symbol
+[ERROR]   symbol: class CassandraPersistenceContextConfiguration
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[46,8] error: cannot find symbol
+[ERROR]   symbol: class SharedGameServerComponentsConfiguration
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[47,8] error: cannot find symbol
+[ERROR]   symbol: class GameServerComponentsConfiguration
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[48,8] error: cannot find symbol
+[ERROR]   symbol: class PromotionContextConfiguration
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[49,8] error: cannot find symbol
+[ERROR]   symbol: class GameCommandsProcessorsConfiguration
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[50,8] error: cannot find symbol
+[ERROR]   symbol: class GameServerServiceConfiguration
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[52,8] error: cannot find symbol
+[ERROR]   symbol: class KafkaConfiguration
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:[53,8] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

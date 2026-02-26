@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.ats;
+package com.abs.casino.ats;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.services;
+package com.abs.casino.services;
 
 import com.dgphoenix.casino.common.cache.*;
 import com.dgphoenix.casino.common.currency.CurrencyRate;
@@ -13,6 +13,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.CreationBonusHelper;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.services.bonus.ForbiddenGamesForBonusProvider;
 import com.dgphoenix.casino.services.gamelimits.GameManagerUtils;
+import com.dgphoenix.casino.services.ServiceUtils;
 import com.thoughtworks.xstream.XStream;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

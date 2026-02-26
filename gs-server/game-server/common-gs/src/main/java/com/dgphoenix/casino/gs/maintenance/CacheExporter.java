@@ -2,7 +2,7 @@
  * User: flsh
  * Date: 17.09.2009
  */
-package com.dgphoenix.casino.gs.maintenance;
+package com.abs.casino.gs.maintenance;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cache.CachesHolder;
@@ -21,6 +21,7 @@ import com.dgphoenix.casino.common.util.xml.ConcurrentHashMapXStreamConverter;
 import com.dgphoenix.casino.gs.maintenance.converters.BaseGameInfoConverter;
 import com.dgphoenix.casino.gs.maintenance.converters.CurrencyConverter;
 import com.dgphoenix.casino.gs.maintenance.converters.ExportableCacheEntryConverter;
+import com.dgphoenix.casino.gs.maintenance.ICacheExporter;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManager;
 import com.dgphoenix.casino.gs.persistance.remotecall.RefreshConfigCall;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;

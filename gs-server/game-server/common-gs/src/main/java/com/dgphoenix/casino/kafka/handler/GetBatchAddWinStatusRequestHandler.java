@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.kafka.dto.GetBatchAddWinStatusRequest;
-import com.dgphoenix.casino.kafka.dto.StringResponseDto;
+import com.abs.casino.kafka.dto.StringResponseDto;
 
 @Component
 public class GetBatchAddWinStatusRequestHandler 

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs;
+package com.abs.casino.gs;
 
 import com.dgphoenix.casino.GeoIp;
 import com.dgphoenix.casino.account.AccountManager;

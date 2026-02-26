@@ -1,0 +1,210 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:gsn-common-gs >-----------------
+[INFO] Building gsn-common-gs 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:2.8:copy (default) @ gsn-common-gs ---
+[INFO] Configured Artifact: javax.xml.bind:jaxb-api:2.2.7:jar
+[INFO] Configured Artifact: javax.xml.ws:jaxws-api:2.2.9:jar
+[INFO] javax.xml.bind:jaxb-api:2.2.7:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] javax.xml.ws:jaxws-api:2.2.9:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ gsn-common-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-gs ---
+[INFO] Compiling 22 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:[398,11] error: cannot find symbol
+[ERROR]   symbol:   class LocalSessionTracker
+  location: class GameServerComponentsConfiguration
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/ats/BotConfigInfo.java:[19,16] error: cannot find symbol
+[ERROR]   symbol:   class TimeFrame
+  location: class BotConfigInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/ats/BotConfigInfo.java:[28,29] error: cannot find symbol
+[ERROR]   symbol:   class TimeFrame
+  location: class BotConfigInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/ats/BotConfigInfo.java:[114,15] error: cannot find symbol
+[ERROR]   symbol:   class TimeFrame
+  location: class BotConfigInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/ats/BotConfigInfo.java:[118,34] error: cannot find symbol
+[ERROR]   symbol:   class TimeFrame
+  location: class BotConfigInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[7,17] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+  location: class GameUserHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[8,17] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+  location: class GameUserHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[10,36] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+  location: class GameUserHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[10,70] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+  location: class GameUserHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[15,16] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+  location: class GameUserHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[19,35] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+  location: class GameUserHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[23,16] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+  location: class GameUserHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[27,35] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+  location: class GameUserHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/config/KafkaConfiguration.java:[20,11] error: cannot find symbol
+[ERROR]   symbol:   class KafkaProperties
+  location: class KafkaConfiguration
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[7,17] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+  location: class BattlegroundRoundHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[8,17] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+  location: class BattlegroundRoundHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[10,45] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+  location: class BattlegroundRoundHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[10,87] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+  location: class BattlegroundRoundHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[15,16] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+  location: class BattlegroundRoundHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[19,34] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+  location: class BattlegroundRoundHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[23,16] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+  location: class BattlegroundRoundHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[27,34] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+  location: class BattlegroundRoundHistoryInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/Initializer.java:[54,12] error: cannot find symbol
+[ERROR]   symbol:   class GsInitThread
+  location: class Initializer
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/maintenance/CacheExporter.java:[387,28] error: cannot find symbol
+[ERROR]   symbol:   class ICacheExporter
+  location: class CacheExporter
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/StringResponseDto.java:[3,39] error: cannot find symbol
+[ERROR]   symbol: class BasicKafkaResponse
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/GameServerServiceConfiguration.java:[36,11] error: cannot find symbol
+[ERROR]   symbol:   class ServiceUtils
+  location: class GameServerServiceConfiguration
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/system/configuration/identification/ZookeeperConfiguration.java:[13,11] error: cannot find symbol
+[ERROR]   symbol:   class ZookeeperProperties
+  location: class ZookeeperConfiguration
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/GameCommandsProcessorsConfiguration.java:[28,60] error: cannot find symbol
+[ERROR]   symbol:   class ILockedProcessor
+  location: class GameCommandsProcessorsConfiguration
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/GameCommandsProcessorsConfiguration.java:[26,11] error: cannot find symbol
+[INFO] 29 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.202 s
+[INFO] Finished at: 2026-02-26T23:33:58Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common-gs: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:[398,11] error: cannot find symbol
+[ERROR]   symbol:   class LocalSessionTracker
+[ERROR]   location: class GameServerComponentsConfiguration
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/ats/BotConfigInfo.java:[19,16] error: cannot find symbol
+[ERROR]   symbol:   class TimeFrame
+[ERROR]   location: class BotConfigInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/ats/BotConfigInfo.java:[28,29] error: cannot find symbol
+[ERROR]   symbol:   class TimeFrame
+[ERROR]   location: class BotConfigInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/ats/BotConfigInfo.java:[114,15] error: cannot find symbol
+[ERROR]   symbol:   class TimeFrame
+[ERROR]   location: class BotConfigInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/ats/BotConfigInfo.java:[118,34] error: cannot find symbol
+[ERROR]   symbol:   class TimeFrame
+[ERROR]   location: class BotConfigInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[7,17] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+[ERROR]   location: class GameUserHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[8,17] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+[ERROR]   location: class GameUserHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[10,36] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+[ERROR]   location: class GameUserHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[10,70] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+[ERROR]   location: class GameUserHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[15,16] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+[ERROR]   location: class GameUserHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[19,35] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+[ERROR]   location: class GameUserHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[23,16] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+[ERROR]   location: class GameUserHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/mqb/GameUserHistoryInfo.java:[27,35] error: cannot find symbol
+[ERROR]   symbol:   class GameUserHistory
+[ERROR]   location: class GameUserHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/config/KafkaConfiguration.java:[20,11] error: cannot find symbol
+[ERROR]   symbol:   class KafkaProperties
+[ERROR]   location: class KafkaConfiguration
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[7,17] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+[ERROR]   location: class BattlegroundRoundHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[8,17] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+[ERROR]   location: class BattlegroundRoundHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[10,45] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+[ERROR]   location: class BattlegroundRoundHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[10,87] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+[ERROR]   location: class BattlegroundRoundHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[15,16] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+[ERROR]   location: class BattlegroundRoundHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[19,34] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+[ERROR]   location: class BattlegroundRoundHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[23,16] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+[ERROR]   location: class BattlegroundRoundHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistoryInfo.java:[27,34] error: cannot find symbol
+[ERROR]   symbol:   class BattlegroundRoundHistory
+[ERROR]   location: class BattlegroundRoundHistoryInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/Initializer.java:[54,12] error: cannot find symbol
+[ERROR]   symbol:   class GsInitThread
+[ERROR]   location: class Initializer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/maintenance/CacheExporter.java:[387,28] error: cannot find symbol
+[ERROR]   symbol:   class ICacheExporter
+[ERROR]   location: class CacheExporter
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/StringResponseDto.java:[3,39] error: cannot find symbol
+[ERROR]   symbol: class BasicKafkaResponse
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/GameServerServiceConfiguration.java:[36,11] error: cannot find symbol
+[ERROR]   symbol:   class ServiceUtils
+[ERROR]   location: class GameServerServiceConfiguration
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/system/configuration/identification/ZookeeperConfiguration.java:[13,11] error: cannot find symbol
+[ERROR]   symbol:   class ZookeeperProperties
+[ERROR]   location: class ZookeeperConfiguration
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/GameCommandsProcessorsConfiguration.java:[28,60] error: cannot find symbol
+[ERROR]   symbol:   class ILockedProcessor
+[ERROR]   location: class GameCommandsProcessorsConfiguration
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/GameCommandsProcessorsConfiguration.java:[26,11] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

@@ -1,5 +1,6 @@
-package com.dgphoenix.casino.system.configuration.identification;
+package com.abs.casino.system.configuration.identification;
 
+import com.dgphoenix.casino.system.configuration.identification.ZookeeperProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.kafka.dto.GetPaymentOperationStatus2Request;
-import com.dgphoenix.casino.kafka.dto.StringResponseDto;
+import com.abs.casino.kafka.dto.StringResponseDto;
 
 @Component
 public class GetPaymentOperationStatus2RequestHandler 

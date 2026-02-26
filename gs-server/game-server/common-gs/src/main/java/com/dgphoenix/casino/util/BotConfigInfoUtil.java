@@ -2,7 +2,7 @@ package com.dgphoenix.casino.util;
 
 import java.util.Set;
 
-import com.dgphoenix.casino.ats.BotConfigInfo;
+import com.abs.casino.ats.BotConfigInfo;
 import com.dgphoenix.casino.kafka.dto.BotConfigInfoDto;
 import com.dgphoenix.casino.kafka.dto.TimeFrameDto;
 

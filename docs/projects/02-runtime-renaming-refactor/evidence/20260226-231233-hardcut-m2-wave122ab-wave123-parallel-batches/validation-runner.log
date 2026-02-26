@@ -1,0 +1,18 @@
+[2026-02-26 23:49:09] START step1: cd /Users/alexb/Documents/Dev/Dev_new/gs-server/common && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-26 23:49:17] PASS step1 exit=0
+[2026-02-26 23:49:17] START step2: cd /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet && mvn -Dcluster.properties=local/local-machine.properties test
+[2026-02-26 23:49:20] PASS step2 exit=0
+[2026-02-26 23:49:20] START step3: cd /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils && mvn -Dcluster.properties=local/local-machine.properties test
+[2026-02-26 23:49:23] PASS step3 exit=0
+[2026-02-26 23:49:23] START step4: cd /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-26 23:49:26] PASS step4 exit=0
+[2026-02-26 23:49:26] START step5: cd /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-26 23:49:34] PASS step5 exit=0
+[2026-02-26 23:49:34] START step6: cd /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache && mvn -Dcluster.properties=local/local-machine.properties test
+[2026-02-26 23:49:38] PASS step6 exit=0
+[2026-02-26 23:49:38] START step7: cd /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs && mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+[2026-02-26 23:49:51] PASS step7 exit=0
+[2026-02-26 23:49:51] START step8: cd /Users/alexb/Documents/Dev/Dev_new/mp-server && mvn -Dcluster.properties=local/local-machine.properties -pl core,persistance -am -DskipTests package
+[2026-02-26 23:49:57] PASS step8 exit=0
+[2026-02-26 23:49:57] START step9: cd /Users/alexb/Documents/Dev/Dev_new && node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
+[2026-02-26 23:50:25] PASS step9 exit=0

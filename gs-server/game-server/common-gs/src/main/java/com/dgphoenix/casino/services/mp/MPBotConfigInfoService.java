@@ -1,6 +1,6 @@
-package com.dgphoenix.casino.services.mp;
+package com.abs.casino.services.mp;
 
-import com.dgphoenix.casino.ats.BotConfigInfo;
+import com.abs.casino.ats.BotConfigInfo;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
 import com.dgphoenix.casino.kafka.dto.BotConfigInfoDto;
