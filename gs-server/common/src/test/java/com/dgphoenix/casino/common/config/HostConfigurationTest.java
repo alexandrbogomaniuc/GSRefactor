@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.config;
 
+import com.abs.casino.common.config.ClusterType;
 import com.dgphoenix.casino.common.cache.ServerConfigsCache;
 import org.junit.Before;
 import org.junit.Rule;

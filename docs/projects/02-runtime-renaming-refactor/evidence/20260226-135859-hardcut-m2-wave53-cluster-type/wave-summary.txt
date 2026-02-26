@@ -1,0 +1,8 @@
+wave=W53-cluster-type
+target=com.dgphoenix.casino.common.config.ClusterType
+replacement=com.abs.casino.common.config.ClusterType
+pre_legacy_refs=1
+post_legacy_refs=0
+post_abs_refs=3
+validation_passed=9
+validation_failed=0

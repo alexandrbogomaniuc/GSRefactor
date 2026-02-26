@@ -1,0 +1,3 @@
+1:package com.abs.casino.common.config;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/dgphoenix/casino/common/config/HostConfigurationTest.java:3:import com.abs.casino.common.config.ClusterType;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/config/HostConfiguration.java:3:import com.abs.casino.common.config.ClusterType;
