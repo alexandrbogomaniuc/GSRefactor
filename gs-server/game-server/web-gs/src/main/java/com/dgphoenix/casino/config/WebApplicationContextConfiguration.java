@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.config;
 
-import com.dgphoenix.casino.common.config.CommonContextConfiguration;
+import com.abs.casino.common.config.CommonContextConfiguration;
 import com.dgphoenix.casino.common.util.ExecutorUtils;
 import com.dgphoenix.casino.gs.GameServerComponentsConfiguration;
 import com.dgphoenix.casino.gs.PromotionContextConfiguration;

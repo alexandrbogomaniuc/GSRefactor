@@ -1157,3 +1157,19 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-134842-hardcut-m2-wave51-mount-monitoring-entry`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/63-hard-cut-m2-wave51-mount-monitoring-entry-report-20260226.md`
+
+## 2026-02-26 13:56 UTC (M2 Wave 52 - CommonContextConfiguration Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.config.CommonContextConfiguration` -> `com.abs.casino.common.config.CommonContextConfiguration`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/config/CommonContextConfiguration.java`
+  - `gs-server/common-wallet/src/test/java/com/dgphoenix/casino/payment/wallet/commonwalletmanger/CommonWalletManagerTest.java`
+  - `gs-server/support/archiver/src/main/java/com/dgphoenix/casino/support/Archiver.java`
+  - `gs-server/support/archiver/src/main/java/com/dgphoenix/casino/support/DsoExport.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java`
+- Post-scan result (wave scope): legacy refs `0`, abs refs `5` (pre-scan legacy refs `5`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-135411-hardcut-m2-wave52-common-context-configuration`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/64-hard-cut-m2-wave52-common-context-configuration-report-20260226.md`

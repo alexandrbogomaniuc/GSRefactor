@@ -1,0 +1,5 @@
+1:package com.abs.casino.common.config;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/test/java/com/dgphoenix/casino/payment/wallet/commonwalletmanger/CommonWalletManagerTest.java:10:import com.abs.casino.common.config.CommonContextConfiguration;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:3:import com.abs.casino.common.config.CommonContextConfiguration;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/support/archiver/src/main/java/com/dgphoenix/casino/support/Archiver.java:3:import com.abs.casino.common.config.CommonContextConfiguration;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/support/archiver/src/main/java/com/dgphoenix/casino/support/DsoExport.java:8:import com.abs.casino.common.config.CommonContextConfiguration;

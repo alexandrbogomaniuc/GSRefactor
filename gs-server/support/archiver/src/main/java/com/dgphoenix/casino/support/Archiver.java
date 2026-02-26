@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.support;
 
-import com.dgphoenix.casino.common.config.CommonContextConfiguration;
+import com.abs.casino.common.config.CommonContextConfiguration;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguration;
 import com.dgphoenix.casino.init.CassandraPersistenceContextConfiguration;

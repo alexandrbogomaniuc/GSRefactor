@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.config.CommonContextConfiguration;
+import com.abs.casino.common.config.CommonContextConfiguration;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionDataPersister;
 import com.dgphoenix.casino.common.util.IdGenerator;
