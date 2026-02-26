@@ -30,7 +30,7 @@ export class TopReels {
 
             // Pre-fill with random visuals for IDLE state
             for (let r = 0; r < GameConfig.TopSlotGrid.rows + 1; r++) {
-                const randomToolId = Math.floor(Math.random() * 5) + 101;
+                const randomToolId = Math.floor(Math.random() * 13) + 101;
                 const sym = this.createSymbolSprite(randomToolId);
                 sym.y = (r - 1) * GameConfig.TopSlotGrid.symbolHeight; // Local symbol offset
                 colContainer.addChild(sym);

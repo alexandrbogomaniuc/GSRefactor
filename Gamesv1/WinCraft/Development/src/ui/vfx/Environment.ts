@@ -1,332 +1,374 @@
 import * as PIXI from 'pixi.js';
 import { gsap } from 'gsap';
-import { GameConfig } from '../../game/GameConfig';
+
+/**
+ * Environment — Dynamic Background Layer
+ * 
+ * Renders the "alive" world behind the slot game:
+ * - Game logo (top-left corner)
+ * - Floating ghasts with bobbing/wing animation
+ * - Animated chicken with idle bobbing  
+ * - Procedural Minecraft-style pixel clouds (white blocks, no image)
+ */
+
+interface FloatingEntity {
+    sprite: PIXI.Container;
+    baseY: number;
+    speedX: number;
+    bobAmplitude: number;
+    bobSpeed: number;
+    phase: number;
+}
 
 export class Environment {
     public container: PIXI.Container;
 
-    // HD Background Layers
-    private staticBg!: PIXI.Sprite;
-    private sunRayLayer!: PIXI.Graphics; // Keep simple volumetric sun ray rendering
+    // Sub-layers (back to front)
+    private cloudsLayer: PIXI.Container;
+    private creaturesLayer: PIXI.Container;
+    private foregroundLayer: PIXI.Container;
 
-    private cloudsContainer!: PIXI.Container;
-    private floraContainer!: PIXI.Container;
+    // Animated entities
+    private ghasts: FloatingEntity[] = [];
+    private clouds: FloatingEntity[] = [];
+    private chicken: PIXI.Sprite | null = null;
+    private chickenBaseY: number = 0;
 
-    // Ambient Mobs
-    private spiritDeer!: PIXI.Sprite;
-    private dragonSilhouette!: PIXI.Sprite;
+    // Logo is now rendered text, no sprite needed
+
+    // Canvas dimensions
+    private readonly CANVAS_W = 1920;
 
     constructor(parentContainer: PIXI.Container) {
         this.container = new PIXI.Container();
-        parentContainer.addChildAt(this.container, 0); // Always at the absolute back
+        parentContainer.addChildAt(this.container, 0);
 
-        this.buildHDLandscape();
-        this.buildHDClouds();
-        this.buildHDFlora();
-        this.spawnWowMobs();
+        this.cloudsLayer = new PIXI.Container();
+        this.creaturesLayer = new PIXI.Container();
+        this.foregroundLayer = new PIXI.Container();
 
-        // Final subtle sun rays over everything
-        this.addSunRays();
+        this.container.addChild(this.cloudsLayer);
+        this.container.addChild(this.creaturesLayer);
+        this.container.addChild(this.foregroundLayer);
+
+        this.buildLogo();
+        this.buildProceduralClouds();
+        this.buildGhasts();
+        this.buildChicken();
     }
 
-    private buildHDLandscape() {
-        try {
-            const tex = PIXI.Texture.from('/assets/bg_epic_landscape.png');
-            this.staticBg = new PIXI.Sprite(tex);
+    // ─────────────────────────────────────────────
+    // LOGO (top-left corner)
+    // ─────────────────────────────────────────────
+    private buildLogo() {
+        const logoContainer = new PIXI.Container();
 
-            // The image is high res (e.g. 1024x1024 base). Scale it to cover 1920x1080
-            // preserving aspect ratio or stretching slightly as needed.
-            // Using a "cover" calculation logic:
-            const scaleX = 1920 / tex.width;
-            const scaleY = 1080 / tex.height;
-            const scale = Math.max(scaleX, scaleY); // Ensure no black bars
-
-            this.staticBg.scale.set(scale);
-
-            // Center it
-            this.staticBg.anchor.set(0.5);
-            this.staticBg.x = 1920 / 2;
-            this.staticBg.y = 1080 / 2;
-
-            this.container.addChild(this.staticBg);
-
-            // Add subtle breathing parallax effect to the base layer
-            gsap.to(this.staticBg.scale, {
-                x: scale * 1.05,
-                y: scale * 1.05,
-                duration: 20,
-                ease: "sine.inOut",
-                yoyo: true,
-                repeat: -1
-            });
-
-            gsap.to(this.staticBg, {
-                y: this.staticBg.y - 15,
-                duration: 15,
-                ease: "sine.inOut",
-                yoyo: true,
-                repeat: -1
-            });
-
-        } catch (e) {
-            console.warn("[Environment] Could not load bg_epic_landscape.png, falling back to blue sky.");
-            this.staticBg = new PIXI.Sprite(PIXI.Texture.WHITE);
-            this.staticBg.tint = 0x87CEEB;
-            this.staticBg.width = 1920;
-            this.staticBg.height = 1080;
-            this.container.addChild(this.staticBg);
-        }
-    }
-
-    private buildHDClouds() {
-        this.cloudsContainer = new PIXI.Container();
-        this.container.addChild(this.cloudsContainer);
-
-        try {
-            const tex = PIXI.Texture.from('/assets/bg_epic_clouds.png');
-
-            // Spawn multiple clouds from the single sprite with SCREEN blend mode
-            // Since the generated asset has a pure black background, SCREEN will make
-            // the black invisible and keep the bright fluffy clouds.
-            for (let i = 0; i < 4; i++) {
-                const cloud = new PIXI.Sprite(tex);
-                cloud.blendMode = 'screen';
-
-                // Randomize sizes and horizontal start
-                const baseScale = 0.5 + Math.random() * 0.8;
-                cloud.scale.set(baseScale);
-                cloud.alpha = 0.6 + Math.random() * 0.4;
-
-                cloud.x = (Math.random() * 1920 * 2) - 1920; // Start across a wide field
-                cloud.y = -200 + Math.random() * 300; // Keep towards the top part of the screen
-
-                this.cloudsContainer.addChild(cloud);
-                this.animateCloud(cloud, baseScale);
-            }
-        } catch {
-            console.warn("[Environment] Missing bg_epic_clouds.png");
-        }
-    }
-
-    private animateCloud(cloud: PIXI.Sprite, scale: number) {
-        // Clouds further back (smaller) move slower
-        const speed = 150 * (2.0 - scale); // 100-300 seconds to cross large distance
-
-        gsap.to(cloud, {
-            x: 1920 + 500,
-            duration: speed,
-            ease: "none",
-            onComplete: () => {
-                cloud.x = -cloud.width;
-                cloud.y = -200 + Math.random() * 300;
-                this.animateCloud(cloud, scale);
+        // Minecraft-style white text with heavy shadows — pyramid shape
+        const makeStyle = (size: number): PIXI.TextStyle => new PIXI.TextStyle({
+            fontFamily: '"Impact", "Arial Black", sans-serif',
+            fontSize: size,
+            fontWeight: 'bold',
+            fill: '#FFFFFF',
+            stroke: { width: 8, color: '#222222' },
+            letterSpacing: 8,
+            dropShadow: {
+                color: '#000000',
+                blur: 0,
+                angle: Math.PI / 4,
+                distance: 6,
             }
         });
+
+        // "WIN" — smaller on top (pyramid top)
+        const winText = new PIXI.Text({ text: 'WIN', style: makeStyle(70) });
+        logoContainer.addChild(winText);
+
+        // "CRAFT" — bigger on bottom (pyramid base)
+        const craftText = new PIXI.Text({ text: 'CRAFT', style: makeStyle(90) });
+        logoContainer.addChild(craftText);
+
+        // Center-align both lines horizontally — creating the pyramid alignment
+        // We position after render tick so we can measure text width
+        winText.anchor.set(0.5, 0);
+        craftText.anchor.set(0.5, 0);
+        winText.x = 0;
+        winText.y = 0;
+        craftText.x = 0;
+        craftText.y = 68;
+
+        // Center the logo on the left portion of the screen
+        logoContainer.x = 200;
+        logoContainer.y = 15;
+
+        this.foregroundLayer.addChild(logoContainer);
     }
 
-    private buildHDFlora() {
-        this.floraContainer = new PIXI.Container();
-        this.container.addChild(this.floraContainer);
+    // ─────────────────────────────────────────────
+    // PROCEDURAL MINECRAFT CLOUDS (pixel-art white blocks)
+    // ─────────────────────────────────────────────
+    private buildProceduralClouds() {
+        // Cloud patterns — each cloud is a grid of blocks (1=block, 0=empty)
+        const cloudPatterns = [
+            // Large fluffy cloud
+            [
+                [0, 1, 1, 1, 1, 0],
+                [1, 1, 1, 1, 1, 1],
+                [1, 1, 1, 1, 1, 1],
+                [0, 1, 1, 1, 0, 0],
+            ],
+            // Medium cloud
+            [
+                [0, 1, 1, 1, 0],
+                [1, 1, 1, 1, 1],
+                [0, 1, 1, 1, 0],
+            ],
+            // Long cloud
+            [
+                [0, 1, 1, 1, 1, 1, 1, 0],
+                [1, 1, 1, 1, 1, 1, 1, 1],
+                [0, 0, 1, 1, 1, 1, 0, 0],
+            ],
+            // Small puffy cloud
+            [
+                [1, 1, 1],
+                [1, 1, 1],
+            ],
+            // Wispy cloud
+            [
+                [0, 0, 1, 1, 0],
+                [0, 1, 1, 1, 1],
+                [1, 1, 1, 1, 0],
+                [0, 1, 0, 0, 0],
+            ],
+        ];
 
+        const blockSize = 16; // Each pixel block in the cloud
+
+        const cloudConfigs = [
+            { pattern: 0, x: -100, y: 30, speed: 0.25, alpha: 0.85, scale: 2.4 },
+            { pattern: 1, x: 400, y: 80, speed: 0.18, alpha: 0.7, scale: 2.0 },
+            { pattern: 2, x: 900, y: 20, speed: 0.30, alpha: 0.9, scale: 2.6 },
+            { pattern: 3, x: 1400, y: 100, speed: 0.15, alpha: 0.6, scale: 1.8 },
+            { pattern: 4, x: 1700, y: 50, speed: 0.22, alpha: 0.75, scale: 2.2 },
+            { pattern: 1, x: 200, y: 130, speed: 0.12, alpha: 0.5, scale: 1.6 },
+        ];
+
+        for (const cfg of cloudConfigs) {
+            const cloudContainer = new PIXI.Container();
+            const pattern = cloudPatterns[cfg.pattern];
+
+            for (let row = 0; row < pattern.length; row++) {
+                for (let col = 0; col < pattern[row].length; col++) {
+                    if (pattern[row][col] === 1) {
+                        const block = new PIXI.Graphics();
+                        // Main white block
+                        block.beginFill(0xFFFFFF);
+                        block.drawRect(0, 0, blockSize, blockSize);
+                        block.endFill();
+
+                        // Top highlight (lighter)
+                        block.beginFill(0xFFFFFF, 0.3);
+                        block.drawRect(0, 0, blockSize, 3);
+                        block.endFill();
+
+                        // Bottom shadow (darker)
+                        block.beginFill(0xD0D0D0);
+                        block.drawRect(0, blockSize - 3, blockSize, 3);
+                        block.endFill();
+
+                        // Left highlight
+                        block.beginFill(0xFFFFFF, 0.2);
+                        block.drawRect(0, 3, 2, blockSize - 6);
+                        block.endFill();
+
+                        block.x = col * blockSize;
+                        block.y = row * blockSize;
+                        cloudContainer.addChild(block);
+                    }
+                }
+            }
+
+            cloudContainer.x = cfg.x;
+            cloudContainer.y = cfg.y;
+            cloudContainer.alpha = cfg.alpha;
+            cloudContainer.scale.set(cfg.scale);
+
+            this.cloudsLayer.addChild(cloudContainer);
+            this.clouds.push({
+                sprite: cloudContainer,
+                baseY: cfg.y,
+                speedX: cfg.speed,
+                bobAmplitude: 3 + Math.random() * 4,
+                bobSpeed: 0.0004 + Math.random() * 0.0002,
+                phase: Math.random() * Math.PI * 2,
+            });
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    // GHASTS (floating mobs with bobbing animation)
+    // ─────────────────────────────────────────────
+    private buildGhasts() {
         try {
-            const tex = PIXI.Texture.from('/assets/bg_epic_flowers.png');
+            const tex = PIXI.Assets.get('/assets/ghast.png');
+            if (!tex) return;
 
-            // Spawn magical flowers around the base UI areas
-            // The asset has a solid black background, SCREEN mode makes it glow on top of landscape
-
-            const positions = [
-                { x: 100, y: 800, scale: 0.8 },
-                { x: 350, y: 950, scale: 1.2 },
-                { x: 1500, y: 850, scale: 0.9 },
-                { x: 1750, y: 900, scale: 1.1 },
+            const ghastConfigs = [
+                { x: 280, y: 60, scale: 1.4, speed: 0.15, flipX: false },
+                { x: 1450, y: 120, scale: 1.1, speed: -0.12, flipX: true },
             ];
 
-            positions.forEach((pos, idx) => {
-                const flower = new PIXI.Sprite(tex);
-                flower.blendMode = 'screen';
-                flower.anchor.set(0.5, 1); // Anchor bottom
-                flower.scale.set(pos.scale);
-                flower.x = pos.x;
-                flower.y = pos.y;
+            for (const cfg of ghastConfigs) {
+                const ghast = new PIXI.Sprite(tex);
+                ghast.anchor.set(0.5);
+                ghast.scale.set(cfg.flipX ? -cfg.scale : cfg.scale, cfg.scale);
+                ghast.x = cfg.x;
+                ghast.y = cfg.y;
+                ghast.alpha = 0.85;
 
-                // Slight neon pulse
-                flower.alpha = 0.8;
-
-                this.floraContainer.addChild(flower);
-
-                // Gently sway them
-                gsap.to(flower.scale, {
-                    x: pos.scale * 1.05,
-                    y: pos.scale * 0.95,
-                    duration: 2 + (idx * 0.5),
-                    ease: "sine.inOut",
-                    yoyo: true,
-                    repeat: -1
+                this.creaturesLayer.addChild(ghast);
+                this.ghasts.push({
+                    sprite: ghast,
+                    baseY: cfg.y,
+                    speedX: cfg.speed,
+                    bobAmplitude: 8 + Math.random() * 6,
+                    bobSpeed: 0.001 + Math.random() * 0.0005,
+                    phase: Math.random() * Math.PI * 2,
                 });
 
-                gsap.to(flower, {
-                    alpha: 1,
-                    duration: 3 + (idx * 0.3),
-                    ease: "sine.inOut",
+                // Wing-flap animation
+                gsap.to(ghast.scale, {
+                    y: cfg.scale * 1.08,
+                    duration: 0.8 + Math.random() * 0.4,
                     yoyo: true,
-                    repeat: -1
+                    repeat: -1,
+                    ease: "sine.inOut",
                 });
-            });
-
-        } catch {
-            console.warn("[Environment] Missing bg_epic_flowers.png");
-        }
-    }
-
-    private spawnWowMobs() {
-        // SPIRIT DEER (SCREEN MODE)
-        try {
-            const deerTex = PIXI.Texture.from('/assets/bg_spirit_deer.png');
-            this.spiritDeer = new PIXI.Sprite(deerTex);
-            this.spiritDeer.blendMode = 'screen'; // Erase black bg, keep glowing deer
-            this.spiritDeer.anchor.set(0.5, 1);
-
-            const floorY = 550 + (GameConfig.MiningGrid.rows * GameConfig.MiningGrid.blockSize) - 50;
-
-            this.spiritDeer.x = -300;
-            this.spiritDeer.y = floorY;
-            this.spiritDeer.scale.set(0.6);
-
-            this.container.addChild(this.spiritDeer);
-
-            // Start roaming
-            this.roamDeer();
-
-        } catch {
-            console.warn("[Environment] Missing bg_spirit_deer.png");
-        }
-
-        // FLYING DRAGON (MULTIPLY MODE)
-        try {
-            const dragonTex = PIXI.Texture.from('/assets/bg_flying_dragon.png');
-            this.dragonSilhouette = new PIXI.Sprite(dragonTex);
-            // Dragon has white background, multiply will remove white and leave black silhouette
-            this.dragonSilhouette.blendMode = 'multiply';
-            this.dragonSilhouette.anchor.set(0.5);
-            this.dragonSilhouette.scale.set(0.3); // High altitude
-            this.dragonSilhouette.alpha = 0.5; // Atmospheric perspective fading
-
-            this.container.addChild(this.dragonSilhouette);
-
-            this.flyDragon();
-
-        } catch {
-            console.warn("[Environment] Missing bg_flying_dragon.png");
-        }
-    }
-
-    private roamDeer() {
-        if (!this.spiritDeer) return;
-
-        // Pulse the spirit glow
-        gsap.to(this.spiritDeer, {
-            alpha: 0.6,
-            duration: 2,
-            yoyo: true,
-            ease: "sine.inOut",
-            repeat: -1
-        });
-
-        const targetX = 200 + Math.random() * 1500;
-        const speed = 15 + Math.random() * 15; // Slow ethereal walk
-
-        // Face direction (flip if walking left)
-        if (targetX < this.spiritDeer.x) {
-            this.spiritDeer.scale.x = -Math.abs(this.spiritDeer.scale.x);
-        } else {
-            this.spiritDeer.scale.x = Math.abs(this.spiritDeer.scale.x);
-        }
-
-        gsap.to(this.spiritDeer, {
-            x: targetX,
-            duration: speed,
-            ease: "sine.inOut",
-            onComplete: () => {
-                // Wait and graze
-                setTimeout(() => this.roamDeer(), 4000 + Math.random() * 8000);
             }
-        });
-
-        // Gentle bob
-        gsap.to(this.spiritDeer, {
-            y: this.spiritDeer.y - 10,
-            duration: 1,
-            yoyo: true,
-            repeat: speed,
-            ease: "sine.inOut"
-        });
+        } catch (e) {
+            console.warn("[Environment] Ghast assets not available:", e);
+        }
     }
 
-    private flyDragon() {
-        if (!this.dragonSilhouette) return;
+    // ─────────────────────────────────────────────
+    // CHICKEN (standing on left side, facing left)
+    // ─────────────────────────────────────────────
+    private buildChicken() {
+        try {
+            const tex = PIXI.Assets.get('/assets/chicken.png');
+            if (!tex) return;
 
-        this.dragonSilhouette.x = -200;
-        this.dragonSilhouette.y = 150 + Math.random() * 200;
+            this.chicken = new PIXI.Sprite(tex);
+            this.chicken.anchor.set(0.5, 1.0);
+            this.chicken.scale.set(-0.9, 0.9); // Flipped to face left, smaller
+            // Left side of grid, at chest row level
+            // Mining grid at x=710, so chicken at about x=600 (left side)
+            this.chicken.x = 600;
+            this.chicken.y = 1040;
+            this.chickenBaseY = 1040;
 
-        // Randomly flip x to occasionally fly Right-to-Left
-        const rtl = Math.random() > 0.5;
-        if (rtl) {
-            this.dragonSilhouette.x = 2100;
-            this.dragonSilhouette.scale.x = -Math.abs(this.dragonSilhouette.scale.x);
-        } else {
-            this.dragonSilhouette.x = -200;
-            this.dragonSilhouette.scale.x = Math.abs(this.dragonSilhouette.scale.x);
+            this.creaturesLayer.addChild(this.chicken);
+
+            // Realistic chicken idle: quick peck bob
+            const peckLoop = () => {
+                if (!this.chicken) return;
+                const delay = 2 + Math.random() * 3;
+                gsap.delayedCall(delay, () => {
+                    if (!this.chicken) return;
+                    gsap.to(this.chicken, {
+                        rotation: -0.12,
+                        y: this.chickenBaseY + 3,
+                        duration: 0.1,
+                        ease: "power2.in",
+                        onComplete: () => {
+                            if (!this.chicken) return;
+                            gsap.to(this.chicken, {
+                                rotation: 0,
+                                y: this.chickenBaseY,
+                                duration: 0.12,
+                                ease: "power2.out",
+                                onComplete: peckLoop
+                            });
+                        }
+                    });
+                });
+            };
+            peckLoop();
+
+            // Small shuffling steps
+            const shuffleLoop = () => {
+                if (!this.chicken) return;
+                const targetX = 580 + Math.random() * 30;
+                gsap.to(this.chicken, {
+                    x: targetX,
+                    duration: 2 + Math.random() * 2,
+                    ease: "steps(3)",
+                    onComplete: shuffleLoop
+                });
+            };
+            shuffleLoop();
+
+        } catch (e) {
+            console.warn("[Environment] Chicken asset not available:", e);
         }
+    }
 
-        const speed = 40 + Math.random() * 30; // Very slow and majestic
-        const endX = rtl ? -200 : 2100;
+    // ─────────────────────────────────────────────
+    // PUBLIC: Win reaction
+    // ─────────────────────────────────────────────
+    public onWin() {
+        if (!this.chicken) return;
 
-        gsap.to(this.dragonSilhouette, {
-            x: endX,
-            y: this.dragonSilhouette.y - 50 + Math.random() * 100, // drift up/down
-            duration: speed,
-            ease: "none", // Fixed string
+        gsap.to(this.chicken, {
+            y: this.chickenBaseY - 40,
+            duration: 0.15,
+            yoyo: true,
+            repeat: 3,
+            ease: "power2.out",
+        });
+
+        gsap.to(this.chicken, {
+            rotation: Math.PI * 2,
+            duration: 0.4,
+            ease: "power1.out",
             onComplete: () => {
-                // Long delay between sightings
-                setTimeout(() => this.flyDragon(), 15000 + Math.random() * 30000);
+                if (this.chicken) this.chicken.rotation = 0;
             }
         });
     }
 
-    private addSunRays() {
-        this.sunRayLayer = new PIXI.Graphics();
+    // ─────────────────────────────────────────────
+    // FRAME UPDATE
+    // ─────────────────────────────────────────────
+    public update(deltaTimeMS: number) {
+        const time = performance.now();
 
-        // Draw some angled god rays
-        this.sunRayLayer.beginFill(0xFFFFFF, 0.05); // Very faint white
-        this.sunRayLayer.drawPolygon([
-            -200, -100,
-            300, -100,
-            800, 1200,
-            -600, 1200
-        ]);
+        // Animate clouds
+        for (const cloud of this.clouds) {
+            cloud.sprite.x += cloud.speedX * (deltaTimeMS / 16.67);
+            cloud.sprite.y = cloud.baseY + Math.sin(time * cloud.bobSpeed + cloud.phase) * cloud.bobAmplitude;
 
-        this.sunRayLayer.beginFill(0xFFFFAA, 0.03); // Faint yellow
-        this.sunRayLayer.drawPolygon([
-            500, -100,
-            800, -100,
-            1600, 1200,
-            900, 1200
-        ]);
-        this.sunRayLayer.endFill();
+            const cloudWidth = (cloud.sprite as PIXI.Container).width || 100;
+            if (cloud.speedX > 0 && cloud.sprite.x > this.CANVAS_W + 50) {
+                cloud.sprite.x = -cloudWidth - 50;
+            } else if (cloud.speedX < 0 && cloud.sprite.x < -cloudWidth - 50) {
+                cloud.sprite.x = this.CANVAS_W + 50;
+            }
+        }
 
-        this.sunRayLayer.blendMode = 'add';
-        this.container.addChild(this.sunRayLayer);
+        // Animate ghasts
+        for (const ghast of this.ghasts) {
+            ghast.sprite.x += ghast.speedX * (deltaTimeMS / 16.67);
+            ghast.sprite.y = ghast.baseY + Math.sin(time * ghast.bobSpeed + ghast.phase) * ghast.bobAmplitude;
 
-        gsap.to(this.sunRayLayer, {
-            alpha: 0.4,
-            duration: 5,
-            yoyo: true,
-            repeat: -1,
-            ease: "sine.inOut"
-        });
-    }
+            if (ghast.speedX > 0 && ghast.sprite.x > this.CANVAS_W + 100) {
+                ghast.sprite.x = -100;
+            } else if (ghast.speedX < 0 && ghast.sprite.x < -100) {
+                ghast.sprite.x = this.CANVAS_W + 100;
+            }
+        }
 
-    public update(_deltaTime: number) {
-        // Handled by GSAP
+        // Chicken movement is now handled entirely by GSAP peck/shuffle loops
+        // No frame-level bobbing needed
     }
 }

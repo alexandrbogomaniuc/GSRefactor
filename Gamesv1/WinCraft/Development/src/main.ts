@@ -2,6 +2,7 @@ import './style.css';
 import { GSWebSocketClient, type GSConfig } from './network/GSWebSocketClient';
 import { SlotEngine } from './game/SlotEngine';
 import { UIManager } from './ui/UIManager';
+import { AudioManager } from './audio/AudioManager';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div class="game-layout">
@@ -18,7 +19,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
             <h2 id="win-amount-text">$0.00</h2>
         </div>
         <div id="pixi-container"></div>
-        <button class="btn-buy-bonus" id="btn-buy-bonus" title="Buy the Ender Bonus Feature">🛒 BUY BONUS</button>
+        <button class="btn-buy-bonus" id="btn-buy-bonus" title="Buy the Ender Bonus Feature"></button>
     </div>
 
     <!-- BOTTOM: PREMIUM GLASSMORPHISM HUD -->
@@ -185,6 +186,9 @@ async function bootstrapGame() {
 
 // 5. Handle user entry gesture
 btnStartGame.addEventListener('click', () => {
+  // Initialize Audio on user gesture (browser autoplay policy)
+  AudioManager.getInstance().init();
+
   // Hide loading screen smoothly
   loadScreen.style.opacity = '0';
   setTimeout(() => {
@@ -195,6 +199,26 @@ btnStartGame.addEventListener('click', () => {
     networkClient.connect();
   }, 500);
 });
+
+// Sound mute button
+const btnSound = document.getElementById('btn-sound') as HTMLButtonElement;
+if (btnSound) {
+  btnSound.addEventListener('click', () => {
+    const muted = AudioManager.getInstance().toggleMute();
+    // Swap icon
+    const svg = btnSound.querySelector('svg');
+    if (svg) {
+      if (muted) {
+        svg.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>';
+        btnSound.style.opacity = '0.5';
+      } else {
+        svg.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>';
+        btnSound.style.opacity = '1';
+      }
+    }
+    log(`🔊 Sound ${muted ? 'muted' : 'unmuted'}`);
+  });
+}
 
 // Kickoff
 bootstrapGame();
@@ -219,4 +243,14 @@ networkClient.onDisconnect = () => {
 btnConnect.addEventListener('click', () => {
   log("Initiating WS connection...");
   networkClient.connect();
+});
+
+// Debug Panel Toggle (Backtick key)
+document.addEventListener('keydown', (e) => {
+  if (e.key === '`') {
+    const panel = document.querySelector<HTMLDivElement>('.debugger-panel');
+    if (panel) {
+      panel.style.display = panel.style.display === 'none' || panel.style.display === '' ? 'flex' : 'none';
+    }
+  }
 });

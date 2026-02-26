@@ -146,9 +146,12 @@ export class MiningGrid {
         sprite.x = col * GameConfig.MiningGrid.blockSize;
         sprite.y = row * GameConfig.MiningGrid.blockSize;
 
-        // Add 2.5D pseudo-depth sorting by Y axis if needed eventually
         this.blocksContainer.addChild(sprite);
         this.blocks[col][row] = sprite;
+
+        // Store type ID for VFX and crack overlay lookups
+        if (!this._blockTypeIds[col]) this._blockTypeIds[col] = [];
+        this._blockTypeIds[col][row] = typeId;
 
         const blockDef = Object.values(GameConfig.Blocks).find((b: any) => b.id === typeId);
         this.blockHps[col][row] = blockDef ? blockDef.maxHp : 1;
@@ -222,6 +225,28 @@ export class MiningGrid {
     }
 
     /**
+     * Returns the breakVfx type for a given block type ID
+     */
+    public getBlockVfxType(typeId: number): string {
+        const blockDef = Object.values(GameConfig.Blocks).find((b: any) => b.id === typeId);
+        return blockDef ? blockDef.breakVfx : 'dust';
+    }
+
+    /**
+     * Gets block type ID for a column/row — used for VFX lookups
+     */
+    public getBlockTypeId(col: number, row: number): number {
+        const block = this.blocks[col][row];
+        if (!block) return 0;
+        // Determine type by matching to known textures or use a data map
+        // We'll store typeIds separately for lookup
+        return this._blockTypeIds?.[col]?.[row] || 1;
+    }
+
+    // Type ID storage for VFX lookup
+    private _blockTypeIds: number[][] = [];
+
+    /**
      * Applies damage to a block. If HP reaches 0, destroys it.
      * Returns true if the block was destroyed, false if it survived.
      */
@@ -233,18 +258,18 @@ export class MiningGrid {
         const block = this.blocks[col][row]!;
 
         if (this.blockHps[col][row] <= 0) {
-            // Destroy visual - Explosive blast out
+            // Quick pop destruction — block shrinks and vanishes fast
+            // The VFX explosion particles are handled separately by VFXManager
             gsap.to(block.scale, {
-                x: 1.5,
-                y: 1.5,
-                duration: 0.25,
-                ease: "back.in(2)"
+                x: 0,
+                y: 0,
+                duration: 0.12,
+                ease: "back.in(3)",
             });
             gsap.to(block, {
                 alpha: 0,
-                rotation: (Math.random() - 0.5) * Math.PI,
-                duration: 0.25,
-                ease: "back.in(2)",
+                duration: 0.12,
+                ease: "power2.in",
                 onComplete: () => {
                     if (block.parent) block.parent.removeChild(block);
                     block.destroy();
@@ -256,12 +281,73 @@ export class MiningGrid {
             this.blockHps[col][row] = 0;
             return true;
         } else {
-            // Just flash/squash if it survives
-            gsap.fromTo(block,
-                { tint: 0xff0000, y: block.y + 5 },
-                { tint: 0xffffff, y: block.y - 5, duration: 0.1, yoyo: true, repeat: 1 }
-            );
+            // Squash & stretch "hit" reaction with white flash
+            const origY = block.y;
+            const origScaleX = block.scale.x;
+            const origScaleY = block.scale.y;
+
+            const tl = gsap.timeline();
+
+            // Flash white
+            tl.to(block, {
+                tint: 0xFFFFFF,
+                duration: 0.01
+            });
+
+            // Squash on impact
+            tl.to(block.scale, {
+                x: origScaleX * 1.15,
+                y: origScaleY * 0.85,
+                duration: 0.06,
+                ease: "power2.in"
+            }, 0);
+
+            tl.to(block, {
+                y: origY + 3,
+                duration: 0.06,
+                ease: "power2.in"
+            }, 0);
+
+            // Bounce back
+            tl.to(block.scale, {
+                x: origScaleX,
+                y: origScaleY,
+                duration: 0.15,
+                ease: "elastic.out(1, 0.4)"
+            });
+
+            tl.to(block, {
+                y: origY,
+                tint: 0xFFFFFF,
+                duration: 0.15,
+                ease: "elastic.out(1, 0.4)"
+            }, "<");
+
+            // Apply damage tint — block gets redder as HP decreases
+            this.applyDamageTint(block, col, row);
+
             return false;
+        }
+    }
+
+    /**
+     * Tints block progressively redder as it takes damage
+     */
+    private applyDamageTint(block: PIXI.Sprite, col: number, row: number) {
+        const typeId = this._blockTypeIds?.[col]?.[row] || 1;
+        const blockDef = Object.values(GameConfig.Blocks).find((b: any) => b.id === typeId);
+        if (!blockDef) return;
+
+        const maxHp = blockDef.maxHp;
+        const currentHp = this.blockHps[col][row];
+        const damagePercent = 1 - (currentHp / maxHp);
+
+        // Lerp from white (full HP) to reddish (low HP)
+        if (damagePercent > 0.2) {
+            const r = 255;
+            const g = Math.round(255 - (damagePercent * 100));
+            const b = Math.round(255 - (damagePercent * 100));
+            block.tint = (r << 16) | (Math.max(g, 100) << 8) | Math.max(b, 100);
         }
     }
 

@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js';
+import { gsap } from 'gsap';
 import { SlotEngine } from '../game/SlotEngine';
 import { Camera } from './Camera';
 import { GlowFilter } from '@pixi/filter-glow';
@@ -7,6 +8,8 @@ import { MiningGrid } from './MiningGrid';
 import { GameConfig } from '../game/GameConfig';
 import { PickaxeEntity } from './physics/PickaxeEntity';
 import { VFXManager } from './vfx/VFXManager';
+import { Environment } from './vfx/Environment';
+import { AudioManager } from '../audio/AudioManager';
 
 export class UIManager {
     private app: PIXI.Application;
@@ -17,6 +20,7 @@ export class UIManager {
     private topReels!: TopReels;
     private miningGrid!: MiningGrid;
     private vfxManager!: VFXManager;
+    private environment!: Environment;
     private currentMiningScript: any;
 
     // UI Elements
@@ -88,13 +92,17 @@ export class UIManager {
                 '/assets/dirt.png', '/assets/stone.png', '/assets/gold.png', '/assets/crystal.png', '/assets/obsidian.png',
                 '/assets/PickWood.png', '/assets/PickStone.png', '/assets/PickGold.png', '/assets/PickDiamond.png', '/assets/redstone.png',
                 '/assets/chest-closed.png', '/assets/chest-open.png', '/assets/Grass.png', '/assets/Enchantment.png',
-                '/assets/bg_epic_landscape.png', '/assets/bg_epic_clouds.png', '/assets/bg_spirit_deer.png', '/assets/bg_epic_flowers.png', '/assets/bg_flying_dragon.png'
+                '/assets/wincraft_background.png', '/assets/Coefs.png', '/assets/playing-frame.png',
+                '/assets/ghast.png', '/assets/chicken.png', '/assets/ender-eye-bonus.png'
             ];
-            await Promise.allSettled(urls.map(u => PIXI.Assets.load(u).catch(e => console.warn("Failed to load:", u))));
+            await Promise.allSettled(urls.map(u => PIXI.Assets.load(u).catch(() => console.warn("Failed to load:", u))));
             console.log("[UIManager] Assets loaded phase completed.");
         } catch (e) {
             console.warn("[UIManager] Error during asset loading.", e);
         }
+
+        // Initialize Background Layers
+        this.environment = new Environment(this.camera.container);
 
         // 1. Top Inventory (Y: 20) - Obsolete: Integrated into TopReels
         // this.inventory = new TopInventory(740, 20);
@@ -151,6 +159,7 @@ export class UIManager {
             if (idx < this.availableBets.length - 1) {
                 this.currentBetAmount = this.availableBets[idx + 1];
                 updateBetUI();
+                AudioManager.getInstance().play('betChange');
             }
         });
 
@@ -159,10 +168,12 @@ export class UIManager {
             if (idx > 0) {
                 this.currentBetAmount = this.availableBets[idx - 1];
                 updateBetUI();
+                AudioManager.getInstance().play('betChange');
             }
         });
 
         this.btnSpin.addEventListener('click', () => {
+            AudioManager.getInstance().play('buttonClick');
             this.lblWin.innerText = "--";
             this.engine.play({ betAmount: this.currentBetAmount });
         });
@@ -198,6 +209,7 @@ export class UIManager {
             if (state === 'SPINNING') {
                 this.btnSpin.classList.add('spinning');
                 this.topReels.startSpin();
+                AudioManager.getInstance().play('reelSpin');
             } else {
                 this.btnSpin.classList.remove('spinning');
             }
@@ -221,6 +233,7 @@ export class UIManager {
             const spinDuration = this.btnTurbo.classList.contains('active') ? 500 : 1500;
             setTimeout(async () => {
                 await this.topReels.stopSpin(slotResult);
+                AudioManager.getInstance().play('reelStop');
                 this.lblWin.innerText = `$${winAmount.toFixed(2)}`;
                 this.engine.reelsResolved();
             }, spinDuration);
@@ -267,10 +280,87 @@ export class UIManager {
 
         if (this.currentMiningScript && this.currentMiningScript.pickaxeDrops) {
             for (const drop of this.currentMiningScript.pickaxeDrops) {
+
+                // ── TNT DROP: Explodes entire column ──
+                if (drop.type === 'TNT') {
+                    const startX = this.topReels.container.x + (drop.col * GameConfig.TopSlotGrid.symbolWidth) + (GameConfig.TopSlotGrid.symbolWidth / 2);
+                    const startY = this.topReels.container.y + (GameConfig.TopSlotGrid.rows * GameConfig.TopSlotGrid.symbolHeight);
+
+                    // Create a red TNT block sprite
+                    let tntTex = PIXI.Texture.WHITE;
+                    try { tntTex = PIXI.Texture.from('/assets/redstone.png'); } catch { }
+                    const tntSprite = new PIXI.Sprite(tntTex);
+                    tntSprite.anchor.set(0.5);
+                    tntSprite.width = 60;
+                    tntSprite.height = 60;
+                    tntSprite.x = startX;
+                    tntSprite.y = startY;
+                    this.camera.container.addChild(tntSprite);
+
+                    // Drop TNT to the top of the column
+                    const topBlock = this.miningGrid.getTopBlock(drop.col);
+                    const targetY = topBlock
+                        ? topBlock.y
+                        : this.miningGrid.container.y + (GameConfig.MiningGrid.rows * GameConfig.MiningGrid.blockSize);
+                    const targetX = this.miningGrid.container.x + (drop.col * GameConfig.MiningGrid.blockSize) + (GameConfig.MiningGrid.blockSize / 2);
+
+                    // Audio
+                    AudioManager.getInstance().play('pickaxeDrop');
+
+                    // Animate drop
+                    await new Promise<void>(resolve => {
+                        gsap.to(tntSprite, {
+                            x: targetX,
+                            y: targetY,
+                            duration: 0.4,
+                            ease: "power2.in",
+                            onComplete: resolve
+                        });
+                    });
+
+                    // ── EXPLOSION! ──
+                    // Big screen shake
+                    this.camera.shake(8, 300);
+                    this.vfxManager.playImpactFlash(0.4);
+                    AudioManager.getInstance().play('winBig'); // Big boom sound
+
+                    // Destroy ALL blocks in this column with explosions
+                    for (let row = 0; row < GameConfig.MiningGrid.rows; row++) {
+                        const block = this.miningGrid.getTopBlock(drop.col);
+                        if (block) {
+                            // Explosion particles for each block
+                            const bx = this.miningGrid.container.x + (drop.col * GameConfig.MiningGrid.blockSize) + (GameConfig.MiningGrid.blockSize / 2);
+                            const by = this.miningGrid.container.y + (block.row * GameConfig.MiningGrid.blockSize) + (GameConfig.MiningGrid.blockSize / 2);
+                            this.vfxManager.playBlockBreak(bx, by, 'redstone_sparks');
+                            this.miningGrid.damageBlock(drop.col, block.row, 999); // Instant destroy
+                        }
+                    }
+
+                    // Remove TNT sprite
+                    gsap.to(tntSprite, {
+                        alpha: 0,
+                        width: 0,
+                        height: 0,
+                        duration: 0.15,
+                        onComplete: () => {
+                            if (tntSprite.parent) tntSprite.parent.removeChild(tntSprite);
+                            tntSprite.destroy();
+                        }
+                    });
+
+                    // Open chest
+                    AudioManager.getInstance().play('chestOpen');
+                    this.miningGrid.openChest(drop.col);
+                    await new Promise(r => setTimeout(r, 300));
+                    continue; // Skip normal pickaxe logic
+                }
+
+                // ── NORMAL PICKAXE DROP ──
                 // Determine tool ID from string matching
                 let toolId = 101;
                 if (drop.type === 'StonePickaxe') toolId = 102;
-                else if (drop.type === 'IronPickaxe' || drop.type === 'GoldPickaxe') toolId = 103;
+                else if (drop.type === 'IronPickaxe') toolId = 103;
+                else if (drop.type === 'GoldenPickaxe') toolId = 103;
                 else if (drop.type === 'DiamondPickaxe') toolId = 104;
 
                 const pickaxe = new PickaxeEntity(toolId);
@@ -293,29 +383,41 @@ export class UIManager {
                         // Col is empty, tool breaks on the floor
                         const floorY = this.miningGrid.container.y + (GameConfig.MiningGrid.rows * GameConfig.MiningGrid.blockSize);
                         const floorX = this.miningGrid.container.x + (drop.col * GameConfig.MiningGrid.blockSize) + (GameConfig.MiningGrid.blockSize / 2);
+                        AudioManager.getInstance().play('pickaxeDrop');
                         await pickaxe.playDropAnimation(pickaxe.sprite.x, pickaxe.sprite.y, floorX, floorY);
                         this.vfxManager.playImpactShake();
+                        this.vfxManager.playImpactFlash(0.15);
                         this.vfxManager.playBlockBreak(floorX, floorY, 'dust');
+                        AudioManager.getInstance().play('chestOpen');
                         this.miningGrid.openChest(drop.col);
                         break; // Exit while loop naturally
                     }
 
                     // Arc down to the block or chop it if we are already there
                     if (isFalling) {
+                        AudioManager.getInstance().play('pickaxeDrop');
                         await pickaxe.playDropAnimation(pickaxe.sprite.x, pickaxe.sprite.y, targetBlock.x, targetBlock.y);
                         isFalling = false;
                     } else {
                         await pickaxe.playChopAnimation(targetBlock.x, targetBlock.y);
                     }
 
+                    // Get block-specific VFX type
+                    const blockTypeId = this.miningGrid.getBlockTypeId(drop.col, targetBlock.row);
+                    const vfxType = this.miningGrid.getBlockVfxType(blockTypeId);
+
                     this.vfxManager.playImpactShake();
-                    this.vfxManager.playBlockBreak(targetBlock.x, targetBlock.y, 'rock_chips');
+                    this.vfxManager.playBlockBreak(targetBlock.x, targetBlock.y, vfxType);
+                    AudioManager.getInstance().play('pickaxeHit');
+                    AudioManager.getInstance().play(AudioManager.getInstance().getSoundForBlockType(vfxType));
 
                     // Damage logic
                     const destroyed = this.miningGrid.damageBlock(drop.col, targetBlock.row, pickaxe.getDamage());
                     isToolBroken = pickaxe.applyHit();
 
                     if (destroyed) {
+                        // Flash on block destruction
+                        this.vfxManager.playImpactFlash(0.1);
                         // resolve gravity down before next chop
                         await this.miningGrid.resolveGravity(drop.col);
                         isFalling = true; // Needs to fall to the next block
@@ -359,6 +461,9 @@ export class UIManager {
         if (this.vfxManager) {
             this.vfxManager.update(this.app.ticker.elapsedMS);
         }
+        if (this.environment) {
+            this.environment.update(this.app.ticker.elapsedMS);
+        }
     }
 
     private showWinCelebration(amount: number, ratio: number) {
@@ -378,8 +483,38 @@ export class UIManager {
             typeText.innerText = "BIG WIN!";
         }
 
-        amtText.innerText = `$${amount.toFixed(2)}`;
+        // Animated win counter — counts up from 0 to final amount
+        amtText.innerText = '$0.00';
         container.style.display = 'flex';
+
+        // Count-up animation
+        const duration = Math.min(2.0, 0.5 + amount / 50); // Scale duration with amount
+        const startTime = performance.now();
+        const countUp = () => {
+            const elapsed = (performance.now() - startTime) / 1000;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out quad for satisfying deceleration
+            const eased = 1 - (1 - progress) * (1 - progress);
+            const current = amount * eased;
+            amtText.innerText = `$${current.toFixed(2)}`;
+            if (progress < 1) {
+                requestAnimationFrame(countUp);
+            }
+        };
+        requestAnimationFrame(countUp);
+
+        // Win sound + golden particle burst from center of screen
+        const audio = AudioManager.getInstance();
+        if (ratio >= 50) audio.play('winMega');
+        else if (ratio >= 30) audio.play('winBig');
+        else audio.play('winSmall');
+        this.vfxManager.playWinBurst(960, 400, ratio >= 50 ? 3 : ratio >= 30 ? 2 : 1);
+        this.vfxManager.playImpactFlash(0.4);
+
+        // Trigger chicken win reaction!
+        if (this.environment) {
+            this.environment.onWin();
+        }
 
         setTimeout(() => {
             container.style.display = 'none';

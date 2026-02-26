@@ -1,7 +1,14 @@
 import { WebSocketServer, WebSocket } from 'ws';
 import { v4 as uuidv4 } from 'uuid';
 
-const wss = new WebSocketServer({ port: 6001 });
+const wss = new WebSocketServer({
+    port: 6001,
+    handleProtocols: (protocols) => {
+        // Accept any subprotocol the client requests (for dev/mock purposes)
+        if (protocols.has('abs.gs.v1')) return 'abs.gs.v1';
+        return protocols.values().next().value || '';
+    }
+});
 
 console.log('🤖 [GS Mock Websocket Server] Running on ws://localhost:6001');
 
@@ -62,15 +69,25 @@ wss.on('connection', function connection(ws) {
                         totalBet: envelope.payload.betAmount || 0.10,
                         totalWin: winAmount,
                         slotResult: [
-                            [Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101],
-                            [Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101],
-                            [Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101, Math.floor(Math.random() * 5) + 101]
+                            [Math.floor(Math.random() * 13) + 101, Math.floor(Math.random() * 13) + 101, Math.floor(Math.random() * 13) + 101, Math.floor(Math.random() * 13) + 101, Math.floor(Math.random() * 13) + 101],
+                            [Math.floor(Math.random() * 13) + 101, Math.floor(Math.random() * 13) + 101, Math.floor(Math.random() * 13) + 101, Math.floor(Math.random() * 13) + 101, Math.floor(Math.random() * 13) + 101],
+                            [Math.floor(Math.random() * 13) + 101, Math.floor(Math.random() * 13) + 101, Math.floor(Math.random() * 13) + 101, Math.floor(Math.random() * 13) + 101, Math.floor(Math.random() * 13) + 101]
                         ], // 5x3 Top Reel Slot Grid
                         miningScript: {
-                            pickaxeDrops: [
-                                { col: Math.floor(Math.random() * 5), type: 'StonePickaxe' },
-                                { col: Math.floor(Math.random() * 5), type: 'IronPickaxe' }
-                            ],
+                            pickaxeDrops: (() => {
+                                const types = ['WoodenPickaxe', 'StonePickaxe', 'IronPickaxe', 'GoldenPickaxe', 'DiamondPickaxe', 'TNT'];
+                                const count = 2 + Math.floor(Math.random() * 3); // 2-4 drops
+                                const drops = [];
+                                for (let i = 0; i < count; i++) {
+                                    // 20% chance of TNT, otherwise random pickaxe
+                                    const isTNT = Math.random() < 0.2;
+                                    drops.push({
+                                        col: Math.floor(Math.random() * 5),
+                                        type: isTNT ? 'TNT' : types[Math.floor(Math.random() * 5)]
+                                    });
+                                }
+                                return drops;
+                            })(),
                             initialMiningGrid: [
                                 [6, 6, 6, 6, 6], // Row 0: Grass
                                 [1, 1, 1, 1, 1], // Row 1: Dirt
