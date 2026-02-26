@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.cache.bank.edit.actions.addbank;
+package com.abs.casino.support.cache.bank.edit.actions.addbank;
 
 /**
  * User: vik

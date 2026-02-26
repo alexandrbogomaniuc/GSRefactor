@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.forms.game.ct;
+package com.abs.casino.forms.game.ct;
 
 import com.dgphoenix.casino.forms.game.CommonStartGameForm;
 import org.apache.struts.action.ActionMapping;

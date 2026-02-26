@@ -1,0 +1,167 @@
+# pre Batch B declarations
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateFreeBankAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.addbank;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AbstractCRUDAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AwayFromBankInfoAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+4:import com.dgphoenix.casino.common.cache.BaseGameCache;
+5:import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+6:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+7:import com.dgphoenix.casino.common.cache.data.currency.Currency;
+8:import com.abs.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/BanksNSubCasinosAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+4:import com.dgphoenix.casino.common.cache.IDistributedCache;
+5:import com.dgphoenix.casino.common.cache.SubCasinoCache;
+6:import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
+7:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+8:import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
+9:import com.abs.casino.support.cache.bank.edit.forms.common.BanksNSubCasinosForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CopyConfigAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+3:import com.dgphoenix.casino.bgm.BaseGameHelper;
+4:import com.dgphoenix.casino.common.cache.BankInfoCache;
+5:import com.dgphoenix.casino.common.cache.BaseGameCache;
+6:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+7:import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+8:import com.abs.casino.support.cache.bank.edit.forms.common.AddGameForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CreateNewGameAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+4:import com.dgphoenix.casino.bgm.BaseGameHelper;
+5:import com.dgphoenix.casino.common.cache.BankInfoCache;
+6:import com.dgphoenix.casino.common.cache.CoinsCache;
+7:import com.dgphoenix.casino.common.cache.LimitsCache;
+8:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+9:import com.dgphoenix.casino.common.cache.data.bank.Coin;
+10:import com.dgphoenix.casino.common.cache.data.bank.Limit;
+11:import com.dgphoenix.casino.common.cache.data.currency.Currency;
+12:import com.dgphoenix.casino.common.cache.data.game.BaseGameConstants;
+13:import com.dgphoenix.casino.common.cache.data.game.GameGroup;
+14:import com.dgphoenix.casino.common.cache.data.game.GameType;
+15:import com.dgphoenix.casino.common.cache.data.game.GameVariableType;
+16:import com.dgphoenix.casino.common.util.string.StringUtils;
+17:import com.abs.casino.support.cache.bank.edit.forms.common.AddGameForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+4:import com.dgphoenix.casino.common.cache.BaseGameCache;
+5:import com.dgphoenix.casino.common.cache.CurrencyCache;
+6:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+7:import com.dgphoenix.casino.common.cache.data.currency.Currency;
+8:import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+9:import com.dgphoenix.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper;
+10:import com.dgphoenix.casino.common.configuration.messages.MessageManager;
+11:import com.dgphoenix.casino.common.util.string.StringUtils;
+12:import com.abs.casino.support.cache.bank.edit.forms.common.GameViewBean;
+13:import com.abs.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EnterPropertiesAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/GameIdSelectAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+4:import com.dgphoenix.casino.common.cache.BaseGameCache;
+5:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+6:import com.dgphoenix.casino.common.cache.data.currency.Currency;
+7:import com.abs.casino.support.cache.bank.edit.forms.common.AddGameForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ImportSubCasinoAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+3:import com.dgphoenix.casino.common.web.BaseAction;
+4:import com.dgphoenix.casino.gs.maintenance.CacheExporter;
+5:import com.abs.casino.support.cache.bank.edit.forms.language.UploadForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/InputModeAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+3:import com.dgphoenix.casino.common.cache.CoinsCache;
+4:import com.dgphoenix.casino.common.cache.LimitsCache;
+5:import com.dgphoenix.casino.common.cache.data.bank.Coin;
+6:import com.dgphoenix.casino.common.cache.data.bank.Limit;
+7:import com.dgphoenix.casino.common.util.DigitFormatter;
+8:import com.abs.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadBankInfoAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+4:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+5:import com.dgphoenix.casino.common.cache.data.bank.Coin;
+6:import com.dgphoenix.casino.common.cache.data.currency.Currency;
+7:import com.abs.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewBankNSubCasinoAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+4:import com.dgphoenix.casino.common.cache.SubCasinoCache;
+5:import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
+6:import com.abs.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewSubCasinoIdAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+3:import com.dgphoenix.casino.common.cache.SubCasinoCache;
+4:import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
+5:import com.dgphoenix.casino.common.util.string.StringUtils;
+6:import com.dgphoenix.casino.common.web.BaseAction;
+7:import com.abs.casino.support.cache.bank.edit.forms.common.NewBankNSubCasinoForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.domains;
+3:import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
+4:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+5:import com.dgphoenix.casino.common.util.string.StringUtils;
+6:import com.abs.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+7:import com.abs.casino.support.cache.bank.edit.forms.domains.GameBean;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainWhiteListAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.domains;
+3:import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+4:import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
+5:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+6:import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
+7:import com.abs.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+8:import com.abs.casino.support.cache.bank.edit.forms.domains.GameBean;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainsByGameAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.domains;
+4:import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
+5:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+6:import com.abs.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/EditDomainAction.java
+1:package com.dgphoenix.casino.support.cache.bank.edit.actions.domains;
+4:import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
+5:import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+6:import com.dgphoenix.casino.common.web.BaseAction;
+7:import com.abs.casino.support.cache.bank.edit.forms.domains.DomainWhiteListForm;
+
+# pre Batch B rewires
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.common;
+10:import com.dgphoenix.casino.support.cache.bank.edit.actions.common.AbstractCRUDAction;
+--- gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
+146:        <action path="/support/newBankNSubCasino" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.NewBankNSubCasinoAction"
+150:        <action path="/support/BankNSubCasinoControl" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.BanksNSubCasinosAction"
+154:        <action path="/support/newSubCasino" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.NewSubCasinoIdAction"
+158:        <action path="/support/subCasino" type="com.abs.casino.support.cache.bank.edit.actions.common.SubcasinoAction"
+162:        <action path="/support/editSubCasino" type="com.abs.casino.support.cache.bank.edit.actions.common.EditSubCasinoAction"
+167:        <action path="/support/exportSubCasino" type="com.abs.casino.support.cache.bank.edit.actions.common.ExportSubCasinoAction"
+174:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.ImportSubCasinoAction"
+180:        <action path="/support/additionalDomainName" type="com.abs.casino.support.cache.bank.edit.actions.common.DomainNameAction"
+185:        <action path="/support/loadFreeBank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.LoadDefBankAction"
+189:        <action path="/support/createFreeBank" type="com.dgphoenix.casino.support.cache.bank.edit.actions.addbank.CreateFreeBankAction"
+194:        <action path="/support/acceptInfoBank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.AcceptInfoFromOtherBankAction"
+198:        <action path="/support/acceptInfoFreeBank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.AcceptInfoFromOtherBankAction"
+202:        <action path="/support/domainformany" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.DomainForManyAction"
+206:        <action path="/support/domainwl" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.DomainWhiteListAction"
+211:        <action path="/support/domainsbygame" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.DomainsByGameAction"
+215:        <action path="/support/editdomains" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.EditDomainAction"
+223:        <action path="/support/addproperty"  type="com.abs.casino.support.cache.bank.edit.actions.editproperties.AddPropertyAction"
+227:        <action path="/support/propertiesmode" type="com.abs.casino.support.cache.bank.edit.actions.editproperties.SelectModeAction"
+231:        <action path="/support/bankSupport" type="com.abs.casino.support.cache.bank.edit.actions.editproperties.BankSupportAction"
+235:        <action path="/support/bankSelectAction" type="com.abs.casino.support.cache.bank.edit.actions.editproperties.BankSelectAction"
+240:                type="com.abs.casino.support.cache.bank.edit.actions.editproperties.EditPropertiesAction"
+245:        <action path="/support/addsubcasino" type="com.abs.casino.support.cache.bank.edit.actions.common.AddSubcasinoAction"
+250:        <action path="/support/loaddefbank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.LoadDefBankAction"
+254:        <action path="/support/addbank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.CreateBankAction"
+259:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.LoadBankInfoAction" scope="request"
+264:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.CurrencySelectAction" scope="request"
+269:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.AwayFromBankInfoAction">
+274:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.InputModeAction">
+278:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.GameIdSelectAction">
+282:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.CopyConfigAction">
+287:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.CreateNewGameAction">
+293:                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.EnterPropertiesAction">
+297:                type="com.abs.casino.support.cache.bank.edit.actions.common.LoadGameInfoAction">
+301:                type="com.abs.casino.support.cache.bank.edit.actions.common.EditGameAction"

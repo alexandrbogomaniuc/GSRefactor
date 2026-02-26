@@ -1,9 +1,10 @@
-package com.dgphoenix.casino.forms.login;
+package com.abs.casino.forms.login;
 
 import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
+import com.dgphoenix.casino.forms.login.CommonGameLoginForm;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

@@ -7325,3 +7325,14 @@
   - fast gate passed and full validation matrix passed `9/9`.
 - Next:
   - continue next low-risk non-overlapping parallel batch under same evidence-first protocol.
+
+### 2026-02-26 21:56 UTC
+- Continued Project 02 hard-cut runtime renaming with parallel batch waves `112A/112B` and integration wave `113`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-214021-hardcut-m2-wave112ab-wave113-parallel-batches/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/117-hard-cut-m2-wave112ab-wave113-parallel-batches-report-20260226.md`
+- Result:
+  - migrated 30 package declarations to `com.abs` (12 start-game/login/processors + 18 support/cache action scope) with bounded rewires in request/form/action imports and `WEB-INF/struts-config.xml`.
+  - fast gate passed and full validation matrix passed `9/9`.
+- Next:
+  - continue next low-risk non-overlapping parallel batch under same evidence-first protocol.

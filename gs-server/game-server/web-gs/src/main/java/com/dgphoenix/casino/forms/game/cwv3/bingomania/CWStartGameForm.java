@@ -14,7 +14,7 @@ import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty
  * User: mic
  * Date: 09.09.14
  */
-public class CWStartGameForm extends com.dgphoenix.casino.forms.game.cwv3.CWStartGameForm {
+public class CWStartGameForm extends com.abs.casino.forms.game.cwv3.CWStartGameForm {
     private static final Logger LOG = LogManager.getLogger(CWStartGameForm.class);
 
     private static final long serialVersionUID = -129937447697881192L;

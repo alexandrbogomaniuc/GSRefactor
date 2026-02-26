@@ -1,0 +1,309 @@
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateFreeBankAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateFreeBankAction.java
+index cb62e796..3dbd9d2c 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateFreeBankAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateFreeBankAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.addbank;
++package com.abs.casino.support.cache.bank.edit.actions.addbank;
+ 
+ /**
+  * User: vik
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AbstractCRUDAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AbstractCRUDAction.java
+index df3838b2..863376b4 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AbstractCRUDAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AbstractCRUDAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
++package com.abs.casino.support.cache.bank.edit.actions.common;
+ 
+ 
+ import org.apache.logging.log4j.LogManager;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AwayFromBankInfoAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AwayFromBankInfoAction.java
+index 108b6ccb..7c3923bb 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AwayFromBankInfoAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AwayFromBankInfoAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
++package com.abs.casino.support.cache.bank.edit.actions.common;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.BaseGameCache;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/BanksNSubCasinosAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/BanksNSubCasinosAction.java
+index 385ae228..4a3847d8 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/BanksNSubCasinosAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/BanksNSubCasinosAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
++package com.abs.casino.support.cache.bank.edit.actions.common;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.IDistributedCache;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CopyConfigAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CopyConfigAction.java
+index d3e20fcc..b18fbbb2 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CopyConfigAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CopyConfigAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
++package com.abs.casino.support.cache.bank.edit.actions.common;
+ 
+ import com.dgphoenix.casino.bgm.BaseGameHelper;
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CreateNewGameAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CreateNewGameAction.java
+index e7e1ee13..bbc9975d 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CreateNewGameAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CreateNewGameAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
++package com.abs.casino.support.cache.bank.edit.actions.common;
+ 
+ 
+ import com.dgphoenix.casino.bgm.BaseGameHelper;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java
+index 32b9fe69..38a8d994 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
++package com.abs.casino.support.cache.bank.edit.actions.common;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.BaseGameCache;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java
+index 1f5277e3..02c37b09 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java
+@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.dgphoenix.casino.common.web.BaseAction;
+ import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+-import com.dgphoenix.casino.support.cache.bank.edit.actions.common.AbstractCRUDAction;
++import com.abs.casino.support.cache.bank.edit.actions.common.AbstractCRUDAction;
+ import com.abs.casino.support.cache.bank.edit.forms.common.SubcasinoForm;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EnterPropertiesAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EnterPropertiesAction.java
+index 32e7b3c8..5e1ec20a 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EnterPropertiesAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EnterPropertiesAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
++package com.abs.casino.support.cache.bank.edit.actions.common;
+ 
+ 
+ import org.apache.struts.action.Action;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/GameIdSelectAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/GameIdSelectAction.java
+index 38616468..48dbfe5a 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/GameIdSelectAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/GameIdSelectAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
++package com.abs.casino.support.cache.bank.edit.actions.common;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.BaseGameCache;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ImportSubCasinoAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ImportSubCasinoAction.java
+index 88a02589..1cfd27db 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ImportSubCasinoAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ImportSubCasinoAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
++package com.abs.casino.support.cache.bank.edit.actions.common;
+ 
+ import com.dgphoenix.casino.common.web.BaseAction;
+ import com.dgphoenix.casino.gs.maintenance.CacheExporter;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/InputModeAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/InputModeAction.java
+index b5230595..baa18da3 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/InputModeAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/InputModeAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
++package com.abs.casino.support.cache.bank.edit.actions.common;
+ 
+ import com.dgphoenix.casino.common.cache.CoinsCache;
+ import com.dgphoenix.casino.common.cache.LimitsCache;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadBankInfoAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadBankInfoAction.java
+index 4acf7916..edb7f1a6 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadBankInfoAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadBankInfoAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
++package com.abs.casino.support.cache.bank.edit.actions.common;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewBankNSubCasinoAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewBankNSubCasinoAction.java
+index 760a5457..c2a0a30a 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewBankNSubCasinoAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewBankNSubCasinoAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
++package com.abs.casino.support.cache.bank.edit.actions.common;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.SubCasinoCache;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewSubCasinoIdAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewSubCasinoIdAction.java
+index eff607af..d9b44903 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewSubCasinoIdAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewSubCasinoIdAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
++package com.abs.casino.support.cache.bank.edit.actions.common;
+ 
+ import com.dgphoenix.casino.common.cache.SubCasinoCache;
+ import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java
+index b1774bf4..3af92417 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.domains;
++package com.abs.casino.support.cache.bank.edit.actions.domains;
+ 
+ import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
+ import com.abs.casino.common.cache.data.domain.DomainWhiteList;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainWhiteListAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainWhiteListAction.java
+index 287a37d3..10ca4d47 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainWhiteListAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainWhiteListAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.domains;
++package com.abs.casino.support.cache.bank.edit.actions.domains;
+ 
+ import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+ import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainsByGameAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainsByGameAction.java
+index 36024124..cb980aff 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainsByGameAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainsByGameAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.domains;
++package com.abs.casino.support.cache.bank.edit.actions.domains;
+ 
+ 
+ import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/EditDomainAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/EditDomainAction.java
+index a1e26ff5..a488dabb 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/EditDomainAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/EditDomainAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.support.cache.bank.edit.actions.domains;
++package com.abs.casino.support.cache.bank.edit.actions.domains;
+ 
+ 
+ import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml b/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
+index 8cf6e883..742358c8 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
++++ b/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
+@@ -143,15 +143,15 @@
+     </global-forwards>
+ 
+     <action-mappings type="org.apache.struts.action.ActionMapping">
+-        <action path="/support/newBankNSubCasino" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.NewBankNSubCasinoAction"
++        <action path="/support/newBankNSubCasino" type="com.abs.casino.support.cache.bank.edit.actions.common.NewBankNSubCasinoAction"
+                 name="NewBankNSubCasinoForm" scope="request">
+             <forward name="success" path="/support/cache/bank/common/newBankNSubCasino.jsp" />
+         </action>
+-        <action path="/support/BankNSubCasinoControl" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.BanksNSubCasinosAction"
++        <action path="/support/BankNSubCasinoControl" type="com.abs.casino.support.cache.bank.edit.actions.common.BanksNSubCasinosAction"
+                 name="BanksNSubCasinosForm" scope="request">
+             <forward name="success" path="/support/cache/bank/common/banksNSubCasinos.jsp" />
+         </action>
+-        <action path="/support/newSubCasino" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.NewSubCasinoIdAction"
++        <action path="/support/newSubCasino" type="com.abs.casino.support.cache.bank.edit.actions.common.NewSubCasinoIdAction"
+                 name="NewBankNSubCasinoForm" scope="request">
+             <forward name="success" path="/support/subCasino.do" />
+         </action>
+@@ -171,7 +171,7 @@
+         </action>
+ 
+         <action path="/support/importSubCasino" input="/support/cache/bank/common/subcasinoSelect.jsp"
+-                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.ImportSubCasinoAction"
++                type="com.abs.casino.support.cache.bank.edit.actions.common.ImportSubCasinoAction"
+                 name="FileUploadForm" scope="request">
+             <forward name="success" path="/support/cache/bank/common/subcasinoSelect.jsp" />
+             <forward name="error" path="/error_pages/error.jsp"/>
+@@ -186,7 +186,7 @@
+                 name="NewBankForm" scope="request">
+             <forward name="success" path="/support/cache/bank/common/addFreeBank.jsp"/>
+         </action>
+-        <action path="/support/createFreeBank" type="com.dgphoenix.casino.support.cache.bank.edit.actions.addbank.CreateFreeBankAction"
++        <action path="/support/createFreeBank" type="com.abs.casino.support.cache.bank.edit.actions.addbank.CreateFreeBankAction"
+                 name="NewBankForm" scope="request">
+             <forward name="success" path="/support/cache/bank/common/addFreeBank.jsp"/>
+             <forward name="error" path="/empty.jsp"/>
+@@ -199,20 +199,20 @@
+                 name="NewBankForm" scope="request">
+             <forward name="success" path="/support/cache/bank/common/addFreeBank.jsp"/>
+         </action>
+-        <action path="/support/domainformany" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.DomainForManyAction"
++        <action path="/support/domainformany" type="com.abs.casino.support.cache.bank.edit.actions.domains.DomainForManyAction"
+                 name="DomainwlForm" scope="request">
+             <forward name="success" path="/support/cache/domain/gameList.jsp"/>
+         </action>
+-        <action path="/support/domainwl" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.DomainWhiteListAction"
++        <action path="/support/domainwl" type="com.abs.casino.support.cache.bank.edit.actions.domains.DomainWhiteListAction"
+                 name="DomainwlForm" scope="request">
+             <forward name="success" path="/support/cache/domain/gameList.jsp"/>
+         </action>
+ 
+-        <action path="/support/domainsbygame" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.DomainsByGameAction"
++        <action path="/support/domainsbygame" type="com.abs.casino.support.cache.bank.edit.actions.domains.DomainsByGameAction"
+                 name="DomainwlForm" scope="request">
+             <forward name="success" path="/support/cache/domain/domainList.jsp"/>
+         </action>
+-        <action path="/support/editdomains" type="com.dgphoenix.casino.support.cache.bank.edit.actions.domains.EditDomainAction"
++        <action path="/support/editdomains" type="com.abs.casino.support.cache.bank.edit.actions.domains.EditDomainAction"
+                 name="DomainwlForm" scope="request">
+             <forward name="success" path="/support/cache/domain/domainList.jsp"/>
+         </action>
+@@ -256,41 +256,41 @@
+             <forward name="success" path="/support/cache/bank/common/addBank.jsp"/>
+         </action>
+         <action path="/support/bankInfo" name="BankInfoForm"
+-                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.LoadBankInfoAction" scope="request"
++                type="com.abs.casino.support.cache.bank.edit.actions.common.LoadBankInfoAction" scope="request"
+                 validate="true" input="/support/error.jsp">
+             <forward name="success" path="/support/cache/bank/common/bankInfo.jsp"/>
+         </action>
+         <action path="/support/currencySelect" name="BankInfoForm"
+-                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.CurrencySelectAction" scope="request"
++                type="com.abs.casino.support.cache.bank.edit.actions.common.CurrencySelectAction" scope="request"
+                 validate="true" input="/support/error.jsp">
+             <forward name="success" path="/support/cache/bank/common/bankInfo.jsp"/>
+         </action>
+         <action path="/support/awayFromBankInfo" name="AwayFromBankInfoForm" scope="request"
+-                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.AwayFromBankInfoAction">
++                type="com.abs.casino.support.cache.bank.edit.actions.common.AwayFromBankInfoAction">
+             <forward name="subcasino" path="/support/cache/bank/common/subcasinoSelect.jsp"/>
+             <forward name="addGame" path="/support/cache/bank/common/addGame.jsp"/>
+         </action>
+         <action path="/support/inputModeId" name="AwayFromBankInfoForm" scope="request"
+-                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.InputModeAction">
++                type="com.abs.casino.support.cache.bank.edit.actions.common.InputModeAction">
+             <forward name="success" path="/support/cache/bank/common/addGame.jsp"/>
+         </action>
+         <action path="/support/gameIdSelect" name="AddGameForm" scope="request"
+-                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.GameIdSelectAction">
++                type="com.abs.casino.support.cache.bank.edit.actions.common.GameIdSelectAction">
+             <forward name="success" path="/support/cache/bank/common/addGame.jsp"/>
+         </action>
+         <action path="/support/copyConfig" name="AddGameForm" scope="request"
+-                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.CopyConfigAction">
++                type="com.abs.casino.support.cache.bank.edit.actions.common.CopyConfigAction">
+             <forward name="success" path="/support/cache/bank/common/addGame.jsp"/>
+             <forward name="cancel" path="/support/cache/bank/common/bankInfo.jsp"/>
+         </action>
+         <action path="/support/createNewGame" name="AddGameForm" scope="request"
+-                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.CreateNewGameAction">
++                type="com.abs.casino.support.cache.bank.edit.actions.common.CreateNewGameAction">
+             <forward name="success" path="/support/cache/bank/common/addGame.jsp"/>
+             <forward name="properties" path="/support/cache/bank/common/properties.jsp"/>
+             <forward name="cancel" path="/support/cache/bank/common/bankInfo.jsp"/>
+         </action>
+         <action path="/support/enterProperties" name="AddGameForm" scope="request"
+-                type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.EnterPropertiesAction">
++                type="com.abs.casino.support.cache.bank.edit.actions.common.EnterPropertiesAction">
+             <forward name="success" path="/support/cache/bank/common/addGame.jsp"/>
+         </action>
+         <action path="/support/loadgameinfo" name="GameInfoForm" scope="request" validate="true" input="/support/error.jsp"

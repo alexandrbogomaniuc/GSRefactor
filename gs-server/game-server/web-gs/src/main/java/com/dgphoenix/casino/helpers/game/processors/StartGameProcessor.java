@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.helpers.game.processors;
+package com.abs.casino.helpers.game.processors;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;

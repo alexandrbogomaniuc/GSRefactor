@@ -1,0 +1,34 @@
+# post Batch A declarations
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/CommonBSStartGameForm.java
+1:package com.abs.casino.forms.game;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CommonCTStartGameForm.java
+1:package com.abs.casino.forms.game.ct;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/AbstractCWStartGameForm.java
+1:package com.abs.casino.forms.game.cwv3;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/CWOnlyStartSTGameForm.java
+1:package com.abs.casino.forms.game.cwv3;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/CWStartGameForm.java
+1:package com.abs.casino.forms.game.cwv3;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/CTStartGameProcessor.java
+1:package com.abs.casino.helpers.game.processors;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/STLobbyStartGameProcessor.java
+1:package com.abs.casino.helpers.game.processors;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/StartGameProcessor.java
+1:package com.abs.casino.helpers.game.processors;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/CommonBSLoginForm.java
+1:package com.abs.casino.forms.login;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/serializers/BonusSerializeLoginForm.java
+1:package com.abs.casino.helpers.login.serializers;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java
+1:package com.abs.casino.actions.game.bonus;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/FRBonusHelper.java
+1:package com.abs.casino.helpers.login;
+
+# post Batch A stale refs
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/CTStartGameRequest.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/STLobbyStartGameRequest.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/StartGameRequest.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/bonus/BSStartGameForm.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/acegaming/CWStartGameForm.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/bingomania/CWStartGameForm.java

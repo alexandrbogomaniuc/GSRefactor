@@ -2,8 +2,8 @@ package com.abs.casino.entities.game.requests;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.forms.game.ct.CommonCTStartGameForm;
-import com.dgphoenix.casino.helpers.game.processors.CTStartGameProcessor;
+import com.abs.casino.forms.game.ct.CommonCTStartGameForm;
+import com.abs.casino.helpers.game.processors.CTStartGameProcessor;
 
 /**
  * User: isirbis

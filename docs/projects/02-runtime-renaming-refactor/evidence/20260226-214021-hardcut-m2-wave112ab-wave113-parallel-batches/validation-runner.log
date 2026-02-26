@@ -1,0 +1,28 @@
+[2026-02-26T21:46:06Z] step1 START cwd=/Users/alexb/Documents/Dev/Dev_new/gs-server/common cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+step1|PASS|exit=0
+[2026-02-26T21:46:12Z] step1 END exit=0
+[2026-02-26T21:46:12Z] step2 START cwd=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet cmd=mvn -Dcluster.properties=local/local-machine.properties test
+step2|PASS|exit=0
+[2026-02-26T21:46:16Z] step2 END exit=0
+[2026-02-26T21:46:16Z] step3 START cwd=/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils cmd=mvn -Dcluster.properties=local/local-machine.properties test
+step3|PASS|exit=0
+[2026-02-26T21:46:19Z] step3 END exit=0
+[2026-02-26T21:46:19Z] step4 START cwd=/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+step4|PASS|exit=0
+[2026-02-26T21:46:21Z] step4 END exit=0
+[2026-02-26T21:46:21Z] step5 START cwd=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+step5|PASS|exit=0
+[2026-02-26T21:46:28Z] step5 END exit=0
+[2026-02-26T21:46:28Z] step6 START cwd=/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache cmd=mvn -Dcluster.properties=local/local-machine.properties test
+step6|PASS|exit=0
+[2026-02-26T21:46:32Z] step6 END exit=0
+[2026-02-26T21:46:32Z] step7 START cwd=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+step7|PASS|exit=0
+[2026-02-26T21:46:46Z] step7 END exit=0
+[2026-02-26T21:46:46Z] step8 START cwd=/Users/alexb/Documents/Dev/Dev_new/mp-server cmd=mvn -Dcluster.properties=local/local-machine.properties -pl core,persistance -am -DskipTests package
+step8|PASS|exit=0
+[2026-02-26T21:46:53Z] step8 END exit=0
+[2026-02-26T21:46:53Z] step9 START cwd=/Users/alexb/Documents/Dev/Dev_new cmd=node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
+step9|PASS|exit=0
+[2026-02-26T21:46:55Z] step9 END exit=0
+[2026-02-26T21:46:55Z] SUMMARY pass_count=9

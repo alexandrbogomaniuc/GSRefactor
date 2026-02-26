@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.cache.bank.edit.actions.common;
+package com.abs.casino.support.cache.bank.edit.actions.common;
 
 
 import org.apache.logging.log4j.LogManager;

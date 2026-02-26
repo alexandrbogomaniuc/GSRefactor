@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.forms.game.bonus;
 
-import com.dgphoenix.casino.forms.game.CommonBSStartGameForm;
+import com.abs.casino.forms.game.CommonBSStartGameForm;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionErrors;

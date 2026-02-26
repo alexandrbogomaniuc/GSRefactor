@@ -1,0 +1,41 @@
+# post Batch B declarations
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateFreeBankAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.addbank;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AbstractCRUDAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/AwayFromBankInfoAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/BanksNSubCasinosAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CopyConfigAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CreateNewGameAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EnterPropertiesAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/GameIdSelectAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/ImportSubCasinoAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/InputModeAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadBankInfoAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewBankNSubCasinoAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/NewSubCasinoIdAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.common;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.domains;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainWhiteListAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.domains;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainsByGameAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.domains;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/EditDomainAction.java
+1:package com.abs.casino.support.cache.bank.edit.actions.domains;
+
+# post Batch B stale refs
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java
+--- gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml

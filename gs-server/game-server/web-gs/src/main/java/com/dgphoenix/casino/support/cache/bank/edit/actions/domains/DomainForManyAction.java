@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.cache.bank.edit.actions.domains;
+package com.abs.casino.support.cache.bank.edit.actions.domains;
 
 import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
 import com.abs.casino.common.cache.data.domain.DomainWhiteList;

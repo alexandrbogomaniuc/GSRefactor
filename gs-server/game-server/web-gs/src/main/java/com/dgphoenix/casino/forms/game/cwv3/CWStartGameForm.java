@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.forms.game.cwv3;
+package com.abs.casino.forms.game.cwv3;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

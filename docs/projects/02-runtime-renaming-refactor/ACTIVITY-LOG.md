@@ -2047,3 +2047,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - scoped declaration migrations: `21 -> 0` legacy declarations, `21` `com.abs` declarations.
   - global tracked source declarations/files now `1935` remaining (`2277` baseline, `342` reduced).
+
+## 2026-02-26 21:56 UTC (Hard-Cut M2 Wave 112A + 112B + 113)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W112A`: migrated 12 start-game/login/processors declaration packages to `com.abs` with bounded import/FQCN rewires in request/form/action files.
+  - `W112B`: migrated 18 support/cache action declaration packages to `com.abs` with bounded rewires in `DomainNameAction` and `WEB-INF/struts-config.xml`.
+  - `W113`: integrated both batches and validated.
+- Changed files:
+  - full file list in `docs/projects/02-runtime-renaming-refactor/evidence/20260226-214021-hardcut-m2-wave112ab-wave113-parallel-batches/target-files.txt`.
+- Validation PASS:
+  - fast gate (`web-gs package`, `refactor smoke`) passed.
+  - full 9-step matrix passed `9/9` (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-gs`, `cassandra-cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-214021-hardcut-m2-wave112ab-wave113-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/117-hard-cut-m2-wave112ab-wave113-parallel-batches-report-20260226.md`
+- Outcome:
+  - scoped declaration migrations: `30`.
+  - global tracked source declarations/files now `1904` remaining (`2277` baseline, `373` reduced).

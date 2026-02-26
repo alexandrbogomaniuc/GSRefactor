@@ -1,0 +1,322 @@
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java
+index 1238b45e..7b056e86 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.actions.game.bonus;
++package com.abs.casino.actions.game.bonus;
+ 
+ import com.dgphoenix.casino.actions.enter.LanguageDetector;
+ import com.dgphoenix.casino.actions.game.BaseStartGameAction;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java
+index 071af23e..8f1f0806 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java
+@@ -1,21 +1,21 @@
+ package com.dgphoenix.casino.actions.game.cwv3.frb;
+ 
+-import com.dgphoenix.casino.actions.game.bonus.AbstractBSStartGameAction;
+-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+-import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
+-import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
+-import com.dgphoenix.casino.common.cache.data.game.GameMode;
+-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.actions.game.bonus.AbstractBSStartGameAction;
++import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
++import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
++import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
++import com.dgphoenix.casino.common.cache.data.game.GameMode;
++import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
++import com.dgphoenix.casino.common.exception.CommonException;
+ import com.abs.casino.entities.game.requests.BonusStartGameRequest;
+-import com.dgphoenix.casino.exceptions.LoginErrorException;
+-import com.dgphoenix.casino.forms.game.CommonFRBStartGameForm;
+-import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
+-import com.dgphoenix.casino.helpers.login.FRBonusHelper;
+-import com.dgphoenix.casino.helpers.login.LoginHelper;
+-import com.dgphoenix.casino.helpers.login.serializers.BonusSerializeLoginForm;
+-import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;
+-import com.dgphoenix.casino.sm.login.LoginResponse;
++import com.dgphoenix.casino.exceptions.LoginErrorException;
++import com.dgphoenix.casino.forms.game.CommonFRBStartGameForm;
++import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
++import com.abs.casino.helpers.login.FRBonusHelper;
++import com.dgphoenix.casino.helpers.login.LoginHelper;
++import com.abs.casino.helpers.login.serializers.BonusSerializeLoginForm;
++import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;
++import com.dgphoenix.casino.sm.login.LoginResponse;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.apache.struts.action.ActionForward;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/CTStartGameRequest.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/CTStartGameRequest.java
+index 5f1842c2..e318da65 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/CTStartGameRequest.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/CTStartGameRequest.java
+@@ -1,9 +1,9 @@
+ package com.abs.casino.entities.game.requests;
+ 
+-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+-import com.dgphoenix.casino.forms.game.ct.CommonCTStartGameForm;
+-import com.dgphoenix.casino.helpers.game.processors.CTStartGameProcessor;
++import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
++import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
++import com.abs.casino.forms.game.ct.CommonCTStartGameForm;
++import com.abs.casino.helpers.game.processors.CTStartGameProcessor;
+ 
+ /**
+  * User: isirbis
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/STLobbyStartGameRequest.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/STLobbyStartGameRequest.java
+index 9a5151c3..6e5b2e4d 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/STLobbyStartGameRequest.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/STLobbyStartGameRequest.java
+@@ -1,9 +1,9 @@
+ package com.abs.casino.entities.game.requests;
+ 
+-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+-import com.dgphoenix.casino.forms.game.cwv3.CWOnlyStartSTGameForm;
+-import com.dgphoenix.casino.helpers.game.processors.STLobbyStartGameProcessor;
++import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
++import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
++import com.abs.casino.forms.game.cwv3.CWOnlyStartSTGameForm;
++import com.abs.casino.helpers.game.processors.STLobbyStartGameProcessor;
+ 
+ /**
+  * User: isirbis
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/StartGameRequest.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/StartGameRequest.java
+index 94289848..83a259de 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/StartGameRequest.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/game/requests/StartGameRequest.java
+@@ -1,12 +1,12 @@
+ package com.abs.casino.entities.game.requests;
+ 
+ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+-import com.dgphoenix.casino.common.cache.data.game.GameMode;
+-import com.dgphoenix.casino.common.cache.data.session.ClientType;
+-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+-import com.dgphoenix.casino.forms.game.CommonStartGameForm;
+-import com.dgphoenix.casino.helpers.game.processors.StartGameProcessor;
+-import org.apache.commons.lang.BooleanUtils;
++import com.dgphoenix.casino.common.cache.data.game.GameMode;
++import com.dgphoenix.casino.common.cache.data.session.ClientType;
++import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
++import com.dgphoenix.casino.forms.game.CommonStartGameForm;
++import com.abs.casino.helpers.game.processors.StartGameProcessor;
++import org.apache.commons.lang.BooleanUtils;
+ 
+ /**
+  * User: isirbis
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/CommonBSStartGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/CommonBSStartGameForm.java
+index d7d67c2c..41c8e913 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/CommonBSStartGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/CommonBSStartGameForm.java
+@@ -1,9 +1,10 @@
+-package com.dgphoenix.casino.forms.game;
+-
+-import com.dgphoenix.casino.common.cache.data.game.GameMode;
+-import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
+-import org.apache.log4j.LogManager;
+-import org.apache.log4j.Logger;
++package com.abs.casino.forms.game;
++
++import com.dgphoenix.casino.common.cache.data.game.GameMode;
++import com.dgphoenix.casino.forms.game.CommonBonusStartGameForm;
++import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
++import org.apache.log4j.LogManager;
++import org.apache.log4j.Logger;
+ 
+ /**
+  * User: isirbis
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/bonus/BSStartGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/bonus/BSStartGameForm.java
+index 753e03ef..fe21c5a0 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/bonus/BSStartGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/bonus/BSStartGameForm.java
+@@ -1,6 +1,6 @@
+ package com.dgphoenix.casino.forms.game.bonus;
+ 
+-import com.dgphoenix.casino.forms.game.CommonBSStartGameForm;
++import com.abs.casino.forms.game.CommonBSStartGameForm;
+ import org.apache.log4j.LogManager;
+ import org.apache.log4j.Logger;
+ import org.apache.struts.action.ActionErrors;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CommonCTStartGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CommonCTStartGameForm.java
+index a4cf879f..b1e9a223 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CommonCTStartGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CommonCTStartGameForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.forms.game.ct;
++package com.abs.casino.forms.game.ct;
+ 
+ import com.dgphoenix.casino.forms.game.CommonStartGameForm;
+ import org.apache.struts.action.ActionMapping;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/AbstractCWStartGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/AbstractCWStartGameForm.java
+index 3bfff8b1..c892623d 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/AbstractCWStartGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/AbstractCWStartGameForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.forms.game.cwv3;
++package com.abs.casino.forms.game.cwv3;
+ 
+ import com.dgphoenix.casino.forms.game.CommonStartGameForm;
+ 
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/CWOnlyStartSTGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/CWOnlyStartSTGameForm.java
+index dba54982..f304f83c 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/CWOnlyStartSTGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/CWOnlyStartSTGameForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.forms.game.cwv3;
++package com.abs.casino.forms.game.cwv3;
+ 
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.dgphoenix.casino.common.web.BaseAction;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/CWStartGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/CWStartGameForm.java
+index 4751da28..28c78638 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/CWStartGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/CWStartGameForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.forms.game.cwv3;
++package com.abs.casino.forms.game.cwv3;
+ 
+ import org.apache.log4j.LogManager;
+ import org.apache.log4j.Logger;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/acegaming/CWStartGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/acegaming/CWStartGameForm.java
+index 9fb8d500..c53024ce 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/acegaming/CWStartGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/acegaming/CWStartGameForm.java
+@@ -1,10 +1,10 @@
+ package com.abs.casino.forms.game.cwv3.acegaming;
+ 
+-import com.dgphoenix.casino.common.cache.data.game.GameMode;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
+-import com.dgphoenix.casino.common.web.BaseAction;
+-import com.dgphoenix.casino.forms.game.cwv3.AbstractCWStartGameForm;
+-import org.apache.log4j.LogManager;
++import com.dgphoenix.casino.common.cache.data.game.GameMode;
++import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.dgphoenix.casino.common.web.BaseAction;
++import com.abs.casino.forms.game.cwv3.AbstractCWStartGameForm;
++import org.apache.log4j.LogManager;
+ import org.apache.log4j.Logger;
+ import org.apache.struts.action.ActionErrors;
+ import org.apache.struts.action.ActionMapping;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/bingomania/CWStartGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/bingomania/CWStartGameForm.java
+index 45fc5356..651c69cc 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/bingomania/CWStartGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cwv3/bingomania/CWStartGameForm.java
+@@ -14,7 +14,7 @@ import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty
+  * User: mic
+  * Date: 09.09.14
+  */
+-public class CWStartGameForm extends com.dgphoenix.casino.forms.game.cwv3.CWStartGameForm {
++public class CWStartGameForm extends com.abs.casino.forms.game.cwv3.CWStartGameForm {
+     private static final Logger LOG = LogManager.getLogger(CWStartGameForm.class);
+ 
+     private static final long serialVersionUID = -129937447697881192L;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/CommonBSLoginForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/CommonBSLoginForm.java
+index 5e193aa4..02d0a132 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/CommonBSLoginForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/CommonBSLoginForm.java
+@@ -1,10 +1,11 @@
+-package com.dgphoenix.casino.forms.login;
+-
+-import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
+-import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
+-import com.dgphoenix.casino.common.web.BaseAction;
+-import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
++package com.abs.casino.forms.login;
++
++import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
++import com.dgphoenix.casino.common.exception.CommonException;
++import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.dgphoenix.casino.common.web.BaseAction;
++import com.dgphoenix.casino.forms.login.CommonGameLoginForm;
++import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
+ import org.apache.log4j.LogManager;
+ import org.apache.log4j.Logger;
+ import org.apache.struts.action.ActionErrors;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/CTStartGameProcessor.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/CTStartGameProcessor.java
+index 2a0d8b6e..51cc0add 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/CTStartGameProcessor.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/CTStartGameProcessor.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.helpers.game.processors;
++package com.abs.casino.helpers.game.processors;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/STLobbyStartGameProcessor.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/STLobbyStartGameProcessor.java
+index e9238171..108a1e4f 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/STLobbyStartGameProcessor.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/STLobbyStartGameProcessor.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.helpers.game.processors;
++package com.abs.casino.helpers.game.processors;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/StartGameProcessor.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/StartGameProcessor.java
+index 7840d4ed..4412cf70 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/StartGameProcessor.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/StartGameProcessor.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.helpers.game.processors;
++package com.abs.casino.helpers.game.processors;
+ 
+ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+ import com.dgphoenix.casino.common.cache.data.game.GameMode;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/FRBonusHelper.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/FRBonusHelper.java
+index 30ff4469..a5ac1736 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/FRBonusHelper.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/FRBonusHelper.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.helpers.login;
++package com.abs.casino.helpers.login;
+ 
+ import com.dgphoenix.casino.account.AccountManager;
+ import com.dgphoenix.casino.common.SessionHelper;
+@@ -15,13 +15,14 @@ import com.dgphoenix.casino.common.exception.PlayerHasBetsException;
+ import com.dgphoenix.casino.common.util.DigitFormatter;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.abs.casino.entities.AuthRequest;
+-import com.dgphoenix.casino.exceptions.LoginErrorException;
+-import com.dgphoenix.casino.gs.GameServer;
+-import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
+-import com.dgphoenix.casino.gs.managers.payment.wallet.CWError;
+-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
+-import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
+-import com.dgphoenix.casino.sm.CWv3PlayerSessionManager;
++import com.dgphoenix.casino.exceptions.LoginErrorException;
++import com.dgphoenix.casino.gs.GameServer;
++import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
++import com.dgphoenix.casino.gs.managers.payment.wallet.CWError;
++import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
++import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
++import com.dgphoenix.casino.helpers.login.LoginHelper;
++import com.dgphoenix.casino.sm.CWv3PlayerSessionManager;
+ import com.dgphoenix.casino.sm.PlayerSessionFactory;
+ import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;
+ import com.dgphoenix.casino.sm.login.LoginResponse;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/serializers/BonusSerializeLoginForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/serializers/BonusSerializeLoginForm.java
+index cf87df37..55bc4824 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/serializers/BonusSerializeLoginForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/serializers/BonusSerializeLoginForm.java
+@@ -1,9 +1,10 @@
+-package com.dgphoenix.casino.helpers.login.serializers;
+-
+-import com.dgphoenix.casino.forms.game.CommonBonusStartGameForm;
+-import com.dgphoenix.casino.forms.login.CommonBSLoginForm;
+-import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;
+-import org.apache.commons.beanutils.BeanUtils;
++package com.abs.casino.helpers.login.serializers;
++
++import com.dgphoenix.casino.forms.game.CommonBonusStartGameForm;
++import com.abs.casino.forms.login.CommonBSLoginForm;
++import com.dgphoenix.casino.helpers.login.serializers.SerializeGameLoginForm;
++import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;
++import org.apache.commons.beanutils.BeanUtils;
+ 
+ import java.lang.reflect.InvocationTargetException;
+ 

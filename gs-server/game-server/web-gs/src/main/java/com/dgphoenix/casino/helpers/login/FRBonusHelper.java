@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.helpers.login;
+package com.abs.casino.helpers.login;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.common.SessionHelper;
@@ -21,6 +21,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CWError;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
+import com.dgphoenix.casino.helpers.login.LoginHelper;
 import com.dgphoenix.casino.sm.CWv3PlayerSessionManager;
 import com.dgphoenix.casino.sm.PlayerSessionFactory;
 import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;
