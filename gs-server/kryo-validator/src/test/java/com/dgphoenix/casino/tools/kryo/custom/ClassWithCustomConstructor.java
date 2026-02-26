@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.tools.kryo.custom;
+package com.abs.casino.tools.kryo.custom;
 
 import com.abs.casino.tools.annotations.Transient;
 import com.esotericsoftware.kryo.Kryo;

@@ -6268,3 +6268,11 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/13-hard-cut-m2-wave1-annotations-report-20260226.md`
 - Validation matrix passed after sequential rerun of dependent commands.
 - Result: low-risk namespace migration is confirmed working with no runtime logic changes.
+
+### 2026-02-26 09:27-09:32 UTC
+- Completed M2 Wave 2 for hard-cut namespace migration (`kryo` package family).
+- Added evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-092746-hardcut-m2-wave2-kryo/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/14-hard-cut-m2-wave2-kryo-report-20260226.md`
+- Verified post-scan shows zero remaining legacy `com.dgphoenix.casino.tools.kryo` refs.
+- Runtime smoke and packaging checks are green; non-wave baseline test issues are captured in evidence for follow-up.

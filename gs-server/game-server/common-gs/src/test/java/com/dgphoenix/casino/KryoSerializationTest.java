@@ -1,7 +1,7 @@
 package com.dgphoenix.casino;
 
-import com.dgphoenix.casino.tools.kryo.KryoSerializationValidator;
-import com.dgphoenix.casino.tools.kryo.generator.RandomValueGenerator;
+import com.abs.casino.tools.kryo.KryoSerializationValidator;
+import com.abs.casino.tools.kryo.generator.RandomValueGenerator;
 import org.apache.commons.math3.random.RandomDataGenerator;
 import org.junit.Test;
 

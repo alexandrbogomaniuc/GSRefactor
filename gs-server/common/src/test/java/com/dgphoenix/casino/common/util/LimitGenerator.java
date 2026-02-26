@@ -1,8 +1,8 @@
 package com.dgphoenix.casino.common.util;
 
 import com.dgphoenix.casino.common.cache.data.bank.Limit;
-import com.dgphoenix.casino.tools.kryo.generator.GeneratorPriority;
-import com.dgphoenix.casino.tools.kryo.generator.RandomValueGenerator;
+import com.abs.casino.tools.kryo.generator.GeneratorPriority;
+import com.abs.casino.tools.kryo.generator.RandomValueGenerator;
 import org.apache.commons.math3.random.RandomDataGenerator;
 
 import java.lang.annotation.Annotation;

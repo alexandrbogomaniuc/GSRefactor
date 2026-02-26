@@ -1,6 +1,6 @@
-package com.dgphoenix.casino.tools.kryo.generator;
+package com.abs.casino.tools.kryo.generator;
 
-import com.dgphoenix.casino.tools.kryo.InstanceCreator;
+import com.abs.casino.tools.kryo.InstanceCreator;
 import org.apache.commons.math3.random.RandomDataGenerator;
 import org.reflections.Reflections;
 

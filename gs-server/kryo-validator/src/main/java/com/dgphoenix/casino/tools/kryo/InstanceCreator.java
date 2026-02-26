@@ -1,9 +1,9 @@
-package com.dgphoenix.casino.tools.kryo;
+package com.abs.casino.tools.kryo;
 
 import com.abs.casino.tools.annotations.IgnoreValidation;
 import com.abs.casino.tools.annotations.Transient;
-import com.dgphoenix.casino.tools.kryo.generator.DataGenerator;
-import com.dgphoenix.casino.tools.kryo.generator.RandomValueGenerator;
+import com.abs.casino.tools.kryo.generator.DataGenerator;
+import com.abs.casino.tools.kryo.generator.RandomValueGenerator;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;

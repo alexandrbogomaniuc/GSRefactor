@@ -1,0 +1,37 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino.tools:annotations >---------------
+[INFO] Building annotations 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ annotations ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/annotations/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ annotations ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/annotations/target/classes
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ annotations ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/annotations/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:testCompile (default-testCompile) @ annotations ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ annotations ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ annotations ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/annotations/target/annotations-1.1.0.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ annotations ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/annotations/target/annotations-1.1.0.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/tools/annotations/1.1.0/annotations-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/annotations/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/tools/annotations/1.1.0/annotations-1.1.0.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.728 s
+[INFO] Finished at: 2026-02-26T09:28:22Z
+[INFO] ------------------------------------------------------------------------

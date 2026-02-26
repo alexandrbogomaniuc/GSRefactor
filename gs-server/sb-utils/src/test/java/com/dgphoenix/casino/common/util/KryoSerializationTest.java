@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.util;
 
-import com.dgphoenix.casino.tools.kryo.KryoSerializationValidator;
+import com.abs.casino.tools.kryo.KryoSerializationValidator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

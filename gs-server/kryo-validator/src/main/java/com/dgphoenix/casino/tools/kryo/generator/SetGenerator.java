@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.tools.kryo.generator;
+package com.abs.casino.tools.kryo.generator;
 
 import java.lang.annotation.Annotation;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.tools.kryo.generator;
+package com.abs.casino.tools.kryo.generator;
 
 import javax.validation.constraints.*;
 import java.lang.annotation.Annotation;

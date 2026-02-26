@@ -1,0 +1,40 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino.tools:kryo-validator >--------------
+[INFO] Building kryo-validator 2.9.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ kryo-validator ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ kryo-validator ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 32 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/target/classes
+[INFO] /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/InstanceCreator.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/InstanceCreator.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ kryo-validator ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:testCompile (default-testCompile) @ kryo-validator ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 16 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ kryo-validator ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ kryo-validator ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/target/kryo-validator-2.9.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ kryo-validator ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/target/kryo-validator-2.9.1-SNAPSHOT.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/tools/kryo-validator/2.9.1-SNAPSHOT/kryo-validator-2.9.1-SNAPSHOT.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/tools/kryo-validator/2.9.1-SNAPSHOT/kryo-validator-2.9.1-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.970 s
+[INFO] Finished at: 2026-02-26T09:29:04Z
+[INFO] ------------------------------------------------------------------------

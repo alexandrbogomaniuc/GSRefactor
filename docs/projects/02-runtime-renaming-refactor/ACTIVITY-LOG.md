@@ -403,3 +403,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - reran sequentially; `kryo-validator` then passed.
 - Wave report added:
   - `docs/projects/02-runtime-renaming-refactor/13-hard-cut-m2-wave1-annotations-report-20260226.md`
+
+## 2026-02-26 09:27 UTC (M2 Wave 2 - Kryo Package)
+- Executed second hard-cut package wave:
+  - `com.dgphoenix.casino.tools.kryo*` -> `com.abs.casino.tools.kryo*`
+- Scope: 55 files (kryo-validator module package/import declarations + dependent test imports in common/common-gs/sb-utils).
+- Evidence pack:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-092746-hardcut-m2-wave2-kryo/`
+- Post-scan result:
+  - legacy kryo refs (`com.dgphoenix...tools.kryo`) in GS/MP: `0`
+  - target refs (`com.abs...tools.kryo`) in GS/MP: `72`
+- Validation:
+  - PASS: annotations install, kryo-validator test/install, sb-utils test rerun, promo/common-persisters install, cache test, web-gs package, mp package, runtime smoke.
+  - Captured failures for traceability:
+    - initial sb-utils/common failures due dependency-order race before `kryo-validator` install,
+    - common test rerun NPE in `KryoSerializationTest` (`FeedQueue` path),
+    - common-gs rerun compile failure in unchanged `BasicTransactionDataStorageHelper` (`PROTOCOL_VERSION`).
+- Outcome:
+  - Wave completed with runtime/package validation green and known non-wave baseline issues explicitly documented.
+- Report:
+  - `docs/projects/02-runtime-renaming-refactor/14-hard-cut-m2-wave2-kryo-report-20260226.md`

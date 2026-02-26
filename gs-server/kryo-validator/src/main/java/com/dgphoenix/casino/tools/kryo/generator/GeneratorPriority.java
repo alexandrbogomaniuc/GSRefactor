@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.tools.kryo.generator;
+package com.abs.casino.tools.kryo.generator;
 
 /**
  * @author <a href="mailto:fateyev@dgphoenix.com">Anton Fateyev</a>

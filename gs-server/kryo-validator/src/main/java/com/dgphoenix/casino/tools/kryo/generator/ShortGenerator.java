@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.tools.kryo.generator;
+package com.abs.casino.tools.kryo.generator;
 
 import com.google.common.primitives.Shorts;
 import org.apache.commons.math3.random.RandomDataGenerator;

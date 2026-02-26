@@ -1,0 +1,27 @@
+timestamp_utc=2026-02-26T09:31:32Z
+pre_scan_lines=72
+post_scan_lines=72
+remaining_legacy_kryo_refs=0
+new_abs_kryo_refs=72
+
+validation_success_commands=10
+validation_failed_commands=5
+
+success_set=
+- annotations install
+- kryo-validator test
+- kryo-validator install
+- sb-utils test (rerun)
+- promo persisters install
+- common persisters install
+- cassandra cache test
+- web-gs package
+- mp core/persistance package
+- runtime smoke
+
+failed_set_and_reason=
+- sb-utils test (initial): dependent artifact race before kryo-validator install
+- common test (initial): dependent artifact race before kryo-validator install
+- common test (rerun): test runtime NPE in FeedQueue serialization path (non-compilation failure)
+- common-gs test (initial): missing cluster.properties argument
+- common-gs test (rerun): module compile failure in unchanged BasicTransactionDataStorageHelper (PROTOCOL_VERSION), outside this wave edits

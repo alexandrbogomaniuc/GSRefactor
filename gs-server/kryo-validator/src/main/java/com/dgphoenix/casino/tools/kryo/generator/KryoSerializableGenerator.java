@@ -1,6 +1,6 @@
-package com.dgphoenix.casino.tools.kryo.generator;
+package com.abs.casino.tools.kryo.generator;
 
-import com.dgphoenix.casino.tools.kryo.InstanceCreator;
+import com.abs.casino.tools.kryo.InstanceCreator;
 import com.esotericsoftware.kryo.KryoSerializable;
 
 import java.lang.annotation.Annotation;

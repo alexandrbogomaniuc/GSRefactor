@@ -1,8 +1,8 @@
-package com.dgphoenix.casino.tools.kryo;
+package com.abs.casino.tools.kryo;
 
-import com.dgphoenix.casino.tools.kryo.custom.CustomClass;
-import com.dgphoenix.casino.tools.kryo.generator.GeneratorPriority;
-import com.dgphoenix.casino.tools.kryo.generator.RandomValueGenerator;
+import com.abs.casino.tools.kryo.custom.CustomClass;
+import com.abs.casino.tools.kryo.generator.GeneratorPriority;
+import com.abs.casino.tools.kryo.generator.RandomValueGenerator;
 import com.esotericsoftware.kryo.Kryo;
 import de.javakaffee.kryoserializers.guava.ImmutableSetSerializer;
 import junit.framework.AssertionFailedError;
@@ -26,13 +26,13 @@ public class KryoSerializationValidatorTest {
         KryoSerializationValidator validator = new KryoSerializationValidator();
         Consumer<Kryo> consumer = ImmutableSetSerializer::registerSerializers;
         validator.configure(consumer);
-        assertTrue(validator.validate("com.dgphoenix.casino.tools.kryo.correct"));
+        assertTrue(validator.validate("com.abs.casino.tools.kryo.correct"));
     }
 
     @Test
     public void testSuccessValidationWithCustomGenerator() throws Exception {
         KryoSerializationValidator validator = new KryoSerializationValidator(Collections.singletonList(new CustomValueGenerator()));
-        assertTrue(validator.validate("com.dgphoenix.casino.tools.kryo.custom"));
+        assertTrue(validator.validate("com.abs.casino.tools.kryo.custom"));
     }
 
     private static class CustomValueGenerator implements RandomValueGenerator {

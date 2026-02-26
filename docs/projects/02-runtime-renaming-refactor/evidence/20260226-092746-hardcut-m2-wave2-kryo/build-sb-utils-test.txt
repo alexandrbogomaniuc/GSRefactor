@@ -1,0 +1,51 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ utils-restricted ---
+[INFO] Compiling 1 source file to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/test-classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/KryoSerializationTest.java:[3,32] error: package com.abs.casino.tools.kryo does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/KryoSerializationTest.java:[16,8] error: cannot find symbol
+[ERROR]   symbol:   class KryoSerializationValidator
+  location: class KryoSerializationTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/KryoSerializationTest.java:[16,51] error: cannot find symbol
+[INFO] 3 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.221 s
+[INFO] Finished at: 2026-02-26T09:28:47Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:testCompile (default-testCompile) on project utils-restricted: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/KryoSerializationTest.java:[3,32] error: package com.abs.casino.tools.kryo does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/KryoSerializationTest.java:[16,8] error: cannot find symbol
+[ERROR]   symbol:   class KryoSerializationValidator
+[ERROR]   location: class KryoSerializationTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/KryoSerializationTest.java:[16,51] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

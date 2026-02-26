@@ -1,6 +1,6 @@
-package com.dgphoenix.casino.tools.kryo;
+package com.abs.casino.tools.kryo;
 
-import com.dgphoenix.casino.tools.kryo.generator.RandomValueGenerator;
+import com.abs.casino.tools.kryo.generator.RandomValueGenerator;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.ByteBufferInput;

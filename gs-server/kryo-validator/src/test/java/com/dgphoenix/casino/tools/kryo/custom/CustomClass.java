@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.tools.kryo.custom;
+package com.abs.casino.tools.kryo.custom;
 
 /**
  * Created by isador
