@@ -7069,3 +7069,13 @@
   - migrated API MQ action package to `com.abs`, updated Struts action type, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 80 with `GetLeaderboardsAction` migration.
+
+### 2026-02-26 16:57 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 80 (`GetLeaderboardsAction`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-165456-hardcut-m2-wave80-get-leaderboards-action/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/92-hard-cut-m2-wave80-get-leaderboards-action-report-20260226.md`
+- Result:
+  - migrated API MQ action package to `com.abs`, updated Struts action type, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 81 with next low-fanout runtime backlog item.

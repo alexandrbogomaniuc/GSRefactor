@@ -1618,3 +1618,19 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `2` to `0`, `com.abs` refs now `2`.
   - global tracked source declarations now `2125` remaining (`2277` baseline, `152` reduced).
+
+## 2026-02-26 16:57 UTC (Hard-Cut M2 Wave 80)
+- Executed hard-cut namespace wave for `GetLeaderboardsAction`.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/mq/GetLeaderboardsAction.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.mq.GetLeaderboardsAction` to `com.abs.casino.actions.api.mq.GetLeaderboardsAction`.
+  - updated Struts action type to `com.abs` for `/mq/getLeaderboards`.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-165456-hardcut-m2-wave80-get-leaderboards-action/`
+- Outcome:
+  - wave scope legacy refs reduced from `2` to `0`, `com.abs` refs now `2`.
+  - global tracked source declarations now `2124` remaining (`2277` baseline, `153` reduced).

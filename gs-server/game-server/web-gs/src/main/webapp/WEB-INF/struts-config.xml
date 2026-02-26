@@ -621,7 +621,7 @@
         </action>
 
         <action path="/mq/getLeaderboards"
-                type="com.dgphoenix.casino.actions.api.mq.GetLeaderboardsAction"
+                type="com.abs.casino.actions.api.mq.GetLeaderboardsAction"
                 scope="request" validate="true" name="GetLeaderboardsForm" input="/error_pages/error.jsp">
         </action>
 
