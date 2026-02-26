@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { spawnSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import http from 'node:http';
 import https from 'node:https';
 import path from 'node:path';
@@ -18,13 +18,42 @@ const STOP_SCRIPT = path.join(SCRIPT_DIR, 'refactor-stop.sh');
 const SYNC_CLUSTER_HOSTS = path.join(SCRIPT_DIR, 'sync-cluster-hosts.sh');
 const BOOTSTRAP_SCRIPT = path.join(SCRIPT_DIR, 'refactor-bootstrap-runtime.sh');
 const COMPOSE_FILE = path.join(DEPLOY_DIR, 'docker', 'refactor', 'docker-compose.yml');
-const DEFAULT_LAUNCH_BASE_URL = process.env.LAUNCH_BASE_URL ?? 'http://127.0.0.1:18080/startgame';
-const DEFAULT_LAUNCH_BANK_ID = process.env.LAUNCH_BANK_ID ?? '6275';
-const DEFAULT_LAUNCH_SUBCASINO_ID = process.env.LAUNCH_SUBCASINO_ID ?? '507';
-const DEFAULT_LAUNCH_GAME_ID = process.env.LAUNCH_GAME_ID ?? '838';
-const DEFAULT_LAUNCH_MODE = process.env.LAUNCH_MODE ?? 'real';
-const DEFAULT_LAUNCH_TOKEN = process.env.LAUNCH_TOKEN ?? 'bav_game_session_001';
-const DEFAULT_LAUNCH_LANG = process.env.LAUNCH_LANG ?? 'en';
+const CLUSTER_HOSTS_FILE = path.join(DEPLOY_DIR, 'config', 'cluster-hosts.properties');
+
+function parsePropertiesFile(filePath) {
+  if (!existsSync(filePath)) {
+    return {};
+  }
+  const out = {};
+  const raw = readFileSync(filePath, 'utf8');
+  for (const line of raw.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const eq = trimmed.indexOf('=');
+    if (eq <= 0) continue;
+    const key = trimmed.slice(0, eq).trim();
+    const value = trimmed.slice(eq + 1).trim();
+    out[key] = value;
+  }
+  return out;
+}
+
+const CLUSTER_HOSTS = parsePropertiesFile(CLUSTER_HOSTS_FILE);
+const cfg = (key, fallback) => process.env[key] ?? CLUSTER_HOSTS[key] ?? fallback;
+
+const DEFAULT_LAUNCH_BASE_URL = cfg('LAUNCH_BASE_URL', 'http://127.0.0.1:18080/startgame');
+const DEFAULT_LAUNCH_BANK_ID = cfg('LAUNCH_BANK_ID', '6275');
+const DEFAULT_LAUNCH_SUBCASINO_ID = cfg('LAUNCH_SUBCASINO_ID', '507');
+const DEFAULT_LAUNCH_GAME_ID = cfg('LAUNCH_GAME_ID', '838');
+const DEFAULT_LAUNCH_MODE = cfg('LAUNCH_MODE', 'real');
+const DEFAULT_LAUNCH_TOKEN = cfg('LAUNCH_TOKEN', 'bav_game_session_001');
+const DEFAULT_LAUNCH_LANG = cfg('LAUNCH_LANG', 'en');
+const DEFAULT_SECONDARY_LAUNCH_BANK_ID = cfg('SECONDARY_LAUNCH_BANK_ID', '');
+const DEFAULT_SECONDARY_LAUNCH_SUBCASINO_ID = cfg('SECONDARY_LAUNCH_SUBCASINO_ID', '');
+const DEFAULT_SECONDARY_LAUNCH_GAME_ID = cfg('SECONDARY_LAUNCH_GAME_ID', DEFAULT_LAUNCH_GAME_ID);
+const DEFAULT_SECONDARY_LAUNCH_MODE = cfg('SECONDARY_LAUNCH_MODE', DEFAULT_LAUNCH_MODE);
+const DEFAULT_SECONDARY_LAUNCH_TOKEN = cfg('SECONDARY_LAUNCH_TOKEN', DEFAULT_LAUNCH_TOKEN);
+const DEFAULT_SECONDARY_LAUNCH_LANG = cfg('SECONDARY_LAUNCH_LANG', DEFAULT_LAUNCH_LANG);
 
 function log(msg) {
   process.stdout.write(`[refactor-onboard] ${msg}\n`);
@@ -242,14 +271,16 @@ async function smokeChecks() {
 
   const secondaryBankId = process.env.SECONDARY_LAUNCH_BANK_ID;
   const secondarySubCasinoId = process.env.SECONDARY_LAUNCH_SUBCASINO_ID;
-  if (secondaryBankId && secondarySubCasinoId) {
+  const effectiveSecondaryBankId = secondaryBankId ?? DEFAULT_SECONDARY_LAUNCH_BANK_ID;
+  const effectiveSecondarySubCasinoId = secondarySubCasinoId ?? DEFAULT_SECONDARY_LAUNCH_SUBCASINO_ID;
+  if (effectiveSecondaryBankId && effectiveSecondarySubCasinoId) {
     const secondaryLaunchUrl = buildLaunchUrl({
-      bankId: secondaryBankId,
-      subCasinoId: secondarySubCasinoId,
-      gameId: process.env.SECONDARY_LAUNCH_GAME_ID ?? DEFAULT_LAUNCH_GAME_ID,
-      mode: process.env.SECONDARY_LAUNCH_MODE ?? DEFAULT_LAUNCH_MODE,
-      token: process.env.SECONDARY_LAUNCH_TOKEN ?? DEFAULT_LAUNCH_TOKEN,
-      lang: process.env.SECONDARY_LAUNCH_LANG ?? DEFAULT_LAUNCH_LANG,
+      bankId: effectiveSecondaryBankId,
+      subCasinoId: effectiveSecondarySubCasinoId,
+      gameId: process.env.SECONDARY_LAUNCH_GAME_ID ?? DEFAULT_SECONDARY_LAUNCH_GAME_ID,
+      mode: process.env.SECONDARY_LAUNCH_MODE ?? DEFAULT_SECONDARY_LAUNCH_MODE,
+      token: process.env.SECONDARY_LAUNCH_TOKEN ?? DEFAULT_SECONDARY_LAUNCH_TOKEN,
+      lang: process.env.SECONDARY_LAUNCH_LANG ?? DEFAULT_SECONDARY_LAUNCH_LANG,
     });
     checks.push({
       label: 'Launch alias (secondary)',

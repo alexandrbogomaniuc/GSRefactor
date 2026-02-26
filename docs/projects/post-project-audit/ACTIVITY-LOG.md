@@ -43,3 +43,15 @@ Project: Post-Project Audit
 - Evidence package:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/launch-bank-id-mapping-validation-20260226-081724.md`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-081724/`
+
+## 2026-02-26 08:22 UTC
+- Implemented outside-config launch defaults for onboarding/start scripts to reduce remaining hardcoded behavior.
+- Added launch config keys to centralized file:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/cluster-hosts.properties`
+- Updated scripts to consume launch defaults from centralized config (env vars still override):
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-start.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-onboard.mjs`
+- Updated onboarding docs to show where launch defaults are managed outside code.
+- Validation evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/launch-config-externalization-validation-20260226-082230.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-082230/refactor-onboard-smoke.log`

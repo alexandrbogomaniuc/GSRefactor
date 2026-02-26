@@ -40,5 +40,7 @@ For both projects/waves, validation repeatedly used:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/onboarding-lifecycle-validation-20260226-074518.md`
 - Latest launch mapping/configurability validation refresh:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/launch-bank-id-mapping-validation-20260226-081724.md`
+- Latest launch externalized-config validation refresh:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/launch-config-externalization-validation-20260226-082230.md`
 - Latest runtime communication blocker fix (GS↔MP gameplay websocket port mapping):
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/mp-websocket-external-port-fix-validation-20260226-080619.md`

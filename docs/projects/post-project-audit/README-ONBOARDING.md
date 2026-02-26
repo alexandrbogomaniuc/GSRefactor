@@ -123,7 +123,15 @@ Bank id note (important):
 - This means direct `bankId=6276` launch calls can return `Bank is incorrect` by design.
 
 ### Configure launch URL without editing code
-You can override launch values from the shell before running `smoke` or `up`:
+Default launch values are now kept in:
+
+- `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/cluster-hosts.properties`
+
+Keys used:
+- `LAUNCH_BASE_URL`, `LAUNCH_BANK_ID`, `LAUNCH_SUBCASINO_ID`, `LAUNCH_GAME_ID`, `LAUNCH_MODE`, `LAUNCH_TOKEN`, `LAUNCH_LANG`
+- Optional secondary route: `SECONDARY_LAUNCH_BANK_ID`, `SECONDARY_LAUNCH_SUBCASINO_ID`, `SECONDARY_LAUNCH_GAME_ID`, `SECONDARY_LAUNCH_MODE`, `SECONDARY_LAUNCH_TOKEN`, `SECONDARY_LAUNCH_LANG`
+
+You can still override any of these from the shell before running `smoke` or `up`:
 
 ```bash
 export LAUNCH_BANK_ID=6275

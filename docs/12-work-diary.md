@@ -6117,3 +6117,24 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-081724/`
 - Result: launch behavior is now explicit, reproducible, and configurable for new machines and smoke validation.
 - Next step: commit/push this hardening batch and save memory.
+
+### 2026-02-26 08:22 UTC
+- Continued portability/finalization hardening to remove remaining script-level launch defaults.
+- Externalized launch defaults into centralized config and wired scripts to read from it:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/cluster-hosts.properties`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-start.sh`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-onboard.mjs`
+- Added launch key block in `cluster-hosts.properties` (primary + secondary launch tuple).
+- Updated onboarding docs to point to outside-config location:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/START-HERE-REFRACTOR.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/README-ONBOARDING.md`
+- Validation:
+  - `bash -n refactor-start.sh` PASS
+  - `node --check refactor-onboard.mjs` PASS
+  - `node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke` PASS (primary and secondary launch)
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/launch-config-externalization-validation-20260226-082230.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-082230/`
+- Result: launch defaults are now configured outside code by default, with env override preserved.
+- Next step: commit/push this externalization batch and continue final blocker sweep.
+- Additional check: env override precedence confirmed (`LAUNCH_BANK_ID=6274`, `LAUNCH_SUBCASINO_ID=508`) and smoke stayed PASS.

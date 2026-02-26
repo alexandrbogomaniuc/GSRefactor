@@ -39,6 +39,9 @@ Important:
 - `6276` is an internal bank id under subcasino `508`.
 - External launch id for that bank is currently `6274`, so `bankId=6276` is expected to return `Bank is incorrect`.
 
+Launch defaults are configured outside code in:
+- `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/cluster-hosts.properties`
+
 ## 4) Stop command
 
 ```bash

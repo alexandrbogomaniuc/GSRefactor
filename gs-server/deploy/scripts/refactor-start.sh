@@ -10,25 +10,42 @@ REFACTOR_DIR="$DEPLOY_DIR/docker/refactor"
 COMPOSE_FILE="$REFACTOR_DIR/docker-compose.yml"
 SYNC_CLUSTER_HOSTS="$SCRIPT_DIR/sync-cluster-hosts.sh"
 BOOTSTRAP_RUNTIME="$SCRIPT_DIR/refactor-bootstrap-runtime.sh"
+CLUSTER_HOSTS_LIB="$SCRIPT_DIR/lib/cluster-hosts.sh"
 
 LEGACY_MP_TARGET_DIR="${LEGACY_MP_TARGET_DIR:-$DEV_NEW_ROOT/mp-server/web/target}"
 SUPPORT_SRC_ROOT="${SUPPORT_SRC_ROOT:-$DEV_NEW_ROOT/gs-server/game-server/web-gs/src/main/webapp/support}"
 RUNTIME_SUPPORT_ROOT="${RUNTIME_SUPPORT_ROOT:-$DEV_NEW_ROOT/Doker/runtime-gs/webapps/gs/ROOT/support}"
 BUILD_IMAGES="${BUILD_IMAGES:-0}"
 AUTO_BOOTSTRAP_RUNTIME="${AUTO_BOOTSTRAP_RUNTIME:-1}"
-LAUNCH_BASE_URL="${LAUNCH_BASE_URL:-http://127.0.0.1:18080/startgame}"
-LAUNCH_BANK_ID="${LAUNCH_BANK_ID:-6275}"
-LAUNCH_SUBCASINO_ID="${LAUNCH_SUBCASINO_ID:-507}"
-LAUNCH_GAME_ID="${LAUNCH_GAME_ID:-838}"
-LAUNCH_MODE="${LAUNCH_MODE:-real}"
-LAUNCH_TOKEN="${LAUNCH_TOKEN:-bav_game_session_001}"
-LAUNCH_LANG="${LAUNCH_LANG:-en}"
-SECONDARY_LAUNCH_BANK_ID="${SECONDARY_LAUNCH_BANK_ID:-}"
-SECONDARY_LAUNCH_SUBCASINO_ID="${SECONDARY_LAUNCH_SUBCASINO_ID:-}"
-SECONDARY_LAUNCH_GAME_ID="${SECONDARY_LAUNCH_GAME_ID:-$LAUNCH_GAME_ID}"
-SECONDARY_LAUNCH_MODE="${SECONDARY_LAUNCH_MODE:-$LAUNCH_MODE}"
-SECONDARY_LAUNCH_TOKEN="${SECONDARY_LAUNCH_TOKEN:-$LAUNCH_TOKEN}"
-SECONDARY_LAUNCH_LANG="${SECONDARY_LAUNCH_LANG:-$LAUNCH_LANG}"
+
+if [[ -f "$CLUSTER_HOSTS_LIB" ]]; then
+  # shellcheck source=./lib/cluster-hosts.sh
+  source "$CLUSTER_HOSTS_LIB"
+fi
+
+cluster_cfg_or_default() {
+  local key="$1"
+  local fallback="$2"
+  if command -v cluster_hosts_get >/dev/null 2>&1; then
+    cluster_hosts_get "$key" "$fallback"
+  else
+    printf '%s\n' "$fallback"
+  fi
+}
+
+LAUNCH_BASE_URL="${LAUNCH_BASE_URL:-$(cluster_cfg_or_default LAUNCH_BASE_URL "http://127.0.0.1:18080/startgame")}"
+LAUNCH_BANK_ID="${LAUNCH_BANK_ID:-$(cluster_cfg_or_default LAUNCH_BANK_ID "6275")}"
+LAUNCH_SUBCASINO_ID="${LAUNCH_SUBCASINO_ID:-$(cluster_cfg_or_default LAUNCH_SUBCASINO_ID "507")}"
+LAUNCH_GAME_ID="${LAUNCH_GAME_ID:-$(cluster_cfg_or_default LAUNCH_GAME_ID "838")}"
+LAUNCH_MODE="${LAUNCH_MODE:-$(cluster_cfg_or_default LAUNCH_MODE "real")}"
+LAUNCH_TOKEN="${LAUNCH_TOKEN:-$(cluster_cfg_or_default LAUNCH_TOKEN "bav_game_session_001")}"
+LAUNCH_LANG="${LAUNCH_LANG:-$(cluster_cfg_or_default LAUNCH_LANG "en")}"
+SECONDARY_LAUNCH_BANK_ID="${SECONDARY_LAUNCH_BANK_ID:-$(cluster_cfg_or_default SECONDARY_LAUNCH_BANK_ID "")}"
+SECONDARY_LAUNCH_SUBCASINO_ID="${SECONDARY_LAUNCH_SUBCASINO_ID:-$(cluster_cfg_or_default SECONDARY_LAUNCH_SUBCASINO_ID "")}"
+SECONDARY_LAUNCH_GAME_ID="${SECONDARY_LAUNCH_GAME_ID:-$(cluster_cfg_or_default SECONDARY_LAUNCH_GAME_ID "$LAUNCH_GAME_ID")}"
+SECONDARY_LAUNCH_MODE="${SECONDARY_LAUNCH_MODE:-$(cluster_cfg_or_default SECONDARY_LAUNCH_MODE "$LAUNCH_MODE")}"
+SECONDARY_LAUNCH_TOKEN="${SECONDARY_LAUNCH_TOKEN:-$(cluster_cfg_or_default SECONDARY_LAUNCH_TOKEN "$LAUNCH_TOKEN")}"
+SECONDARY_LAUNCH_LANG="${SECONDARY_LAUNCH_LANG:-$(cluster_cfg_or_default SECONDARY_LAUNCH_LANG "$LAUNCH_LANG")}"
 
 log() { printf '[refactor-start] %s\n' "$*"; }
 die() { printf '[refactor-start] ERROR: %s\n' "$*" >&2; exit 1; }
