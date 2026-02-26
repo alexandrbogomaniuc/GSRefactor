@@ -1,0 +1,8 @@
+wave=W46-cw-stlobby-guest-login-request
+target=com.dgphoenix.casino.common.web.login.cw.CWStLobbyGuestLoginLobbyRequest
+replacement=com.abs.casino.common.web.login.cw.CWStLobbyGuestLoginLobbyRequest
+pre_legacy_refs=1
+post_legacy_refs=0
+post_abs_refs=1
+validation_passed=9
+validation_failed=0
