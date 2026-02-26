@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.api;
+package com.abs.casino.actions.api;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.SubCasinoCache;
@@ -9,6 +9,7 @@ import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
 import com.dgphoenix.casino.common.web.JsonResultForLeaderboardUrls;
+import com.dgphoenix.casino.actions.api.GetLeaderboardUrlsForm;
 import com.dgphoenix.casino.gs.GameServerComponentsHelper;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;

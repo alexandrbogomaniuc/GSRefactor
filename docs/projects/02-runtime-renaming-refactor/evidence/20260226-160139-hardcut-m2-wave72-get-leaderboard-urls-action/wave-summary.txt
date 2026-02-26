@@ -1,0 +1,7 @@
+wave=W72-get-leaderboard-urls-action
+status=PASS
+pre_legacy=1
+post_legacy=0
+post_abs=1
+validation=9/9 PASS
+notes=Action migrated with Struts mapping and explicit form import for cross-package compatibility.

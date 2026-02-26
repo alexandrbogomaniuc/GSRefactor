@@ -6989,3 +6989,13 @@
   - migrated API action package to `com.abs`, updated Struts mapping, fixed form compatibility (`import` + getter), and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 72 with next low-fanout API declaration.
+
+### 2026-02-26 16:06 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 72 (`GetLeaderboardUrlsAction`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-160139-hardcut-m2-wave72-get-leaderboard-urls-action/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/84-hard-cut-m2-wave72-get-leaderboard-urls-action-report-20260226.md`
+- Result:
+  - migrated API action package to `com.abs`, updated Struts mapping, added form compatibility import, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 73 with next low-fanout API declaration.

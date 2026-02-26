@@ -535,7 +535,7 @@
         </action>
 
         <action path="/getLeaderboardUrls"
-                type="com.dgphoenix.casino.actions.api.GetLeaderboardUrlsAction" name="GetLeaderboardUrlsForm"
+                type="com.abs.casino.actions.api.GetLeaderboardUrlsAction" name="GetLeaderboardUrlsForm"
                 validate="false"
                 scope="request">
         </action>
