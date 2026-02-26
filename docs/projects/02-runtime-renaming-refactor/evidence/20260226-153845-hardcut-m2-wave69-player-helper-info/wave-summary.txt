@@ -1,0 +1,7 @@
+wave=W69-player-helper-info
+status=PASS
+pre_legacy=1
+post_legacy=0
+post_abs=1
+validation=9/9 PASS
+notes=No external call-site references found for class symbol.

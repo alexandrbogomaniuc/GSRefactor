@@ -1431,3 +1431,17 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `1`.
   - global tracked source declarations now `2136` remaining (`2277` baseline, `141` reduced).
+
+## 2026-02-26 15:42 UTC (Hard-Cut M2 Wave 69)
+- Executed hard-cut namespace wave for `PlayerHelperInfo`.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/PlayerHelperInfo.java`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.PlayerHelperInfo` to `com.abs.casino.actions.api.PlayerHelperInfo`.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-153845-hardcut-m2-wave69-player-helper-info/`
+- Outcome:
+  - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `1`.
+  - global tracked source declarations now `2135` remaining (`2277` baseline, `142` reduced).

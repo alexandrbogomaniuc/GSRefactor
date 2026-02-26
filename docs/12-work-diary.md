@@ -6959,3 +6959,13 @@
   - migrated API exception package to `com.abs` and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 69 with next low-fanout API declaration.
+
+### 2026-02-26 15:42 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 69 (`PlayerHelperInfo`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-153845-hardcut-m2-wave69-player-helper-info/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/81-hard-cut-m2-wave69-player-helper-info-report-20260226.md`
+- Result:
+  - migrated API helper package to `com.abs` and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 70 with next low-fanout API declaration.
