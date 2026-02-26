@@ -18,7 +18,7 @@
 <%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
 <%@ page import="static org.apache.http.entity.ContentType.APPLICATION_JSON" %>
 <%@ page import="com.google.gson.Gson" %>
-<%@ page import="com.dgphoenix.casino.actions.game.pov.StartPovGameParams" %>
+<%@ page import="com.abs.casino.actions.game.pov.StartPovGameParams" %>
 <%@ page import="org.apache.commons.validator.routines.UrlValidator" %>
 <%@ page import="com.google.common.net.InternetDomainName" %>
 <%@ page import="java.net.URI" %>

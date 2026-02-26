@@ -1,0 +1,4 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/shell/ShellLauncherForm.java
+gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp
+gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp

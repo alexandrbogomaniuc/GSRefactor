@@ -1,0 +1,152 @@
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java
+index 163eded5..5c8ff35a 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.actions.game;
++package com.abs.casino.actions.game;
+ 
+ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+ import com.dgphoenix.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java
+index 7b056e86..f73c04d9 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java
+@@ -1,7 +1,7 @@
+ package com.abs.casino.actions.game.bonus;
+ 
+ import com.dgphoenix.casino.actions.enter.LanguageDetector;
+-import com.dgphoenix.casino.actions.game.BaseStartGameAction;
++import com.abs.casino.actions.game.BaseStartGameAction;
+ import com.dgphoenix.casino.common.SessionHelper;
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java
+index a2c8a052..5810bfeb 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.actions.game.cw;
++package com.abs.casino.actions.game.cw;
+ 
+ /**
+  * User: isirbis
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java
+index 8f1f0806..83cde305 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.actions.game.cwv3.frb;
++package com.abs.casino.actions.game.cwv3.frb;
+ 
+ import com.abs.casino.actions.game.bonus.AbstractBSStartGameAction;
+ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/pov/StartPovGameParams.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/pov/StartPovGameParams.java
+index 12b2dc7d..17be5dce 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/pov/StartPovGameParams.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/pov/StartPovGameParams.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.actions.game.pov;
++package com.abs.casino.actions.game.pov;
+ 
+ /**
+  * User: flsh
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/CommonFRBStartGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/CommonFRBStartGameForm.java
+index 0dd34fd9..477c17c5 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/CommonFRBStartGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/CommonFRBStartGameForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.forms.game;
++package com.abs.casino.forms.game;
+ 
+ import com.dgphoenix.casino.common.cache.data.game.GameMode;
+ import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/bonus/BSStartGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/bonus/BSStartGameForm.java
+index fe21c5a0..ccf1e577 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/bonus/BSStartGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/bonus/BSStartGameForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.forms.game.bonus;
++package com.abs.casino.forms.game.bonus;
+ 
+ import com.abs.casino.forms.game.CommonBSStartGameForm;
+ import org.apache.log4j.LogManager;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CTOnlyStartGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CTOnlyStartGameForm.java
+index 739a9db3..5e42157c 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CTOnlyStartGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CTOnlyStartGameForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.forms.game.ct;
++package com.abs.casino.forms.game.ct;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CTStartGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CTStartGameForm.java
+index cda4a71a..ca2759af 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CTStartGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CTStartGameForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.forms.game.ct;
++package com.abs.casino.forms.game.ct;
+ 
+ import org.apache.log4j.LogManager;
+ import org.apache.log4j.Logger;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/CWGuestStartGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/CWGuestStartGameForm.java
+index 52df1cb9..4c5da0e5 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/CWGuestStartGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/CWGuestStartGameForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.forms.game.cw;
++package com.abs.casino.forms.game.cw;
+ 
+ import com.dgphoenix.casino.common.cache.data.game.GameMode;
+ import com.dgphoenix.casino.forms.game.CommonStartGameForm;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/CWStartGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/CWStartGameForm.java
+index 78ba6cdd..6bd80984 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/CWStartGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/CWStartGameForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.forms.game.cw;
++package com.abs.casino.forms.game.cw;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/shell/ShellLauncherForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/shell/ShellLauncherForm.java
+index d4116189..0d608259 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/shell/ShellLauncherForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/shell/ShellLauncherForm.java
+@@ -2,7 +2,7 @@ package com.abs.casino.forms.game.cw.shell;
+ 
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.dgphoenix.casino.common.web.BaseAction;
+-import com.dgphoenix.casino.forms.game.cw.CWGuestStartGameForm;
++import com.abs.casino.forms.game.cw.CWGuestStartGameForm;
+ import org.apache.log4j.LogManager;
+ import org.apache.log4j.Logger;
+ import org.apache.struts.action.ActionErrors;
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp b/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp
+index c402a24a..a220e8c2 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp
++++ b/gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp
+@@ -8,7 +8,7 @@
+ <%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
+ <%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
+ <%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
+-<%@ page import="com.dgphoenix.casino.actions.game.pov.StartPovGameParams" %>
++<%@ page import="com.abs.casino.actions.game.pov.StartPovGameParams" %>
+ <%@ page import="com.google.gson.Gson" %>
+ <%@ page import="static org.apache.http.entity.ContentType.APPLICATION_JSON" %>
+ <%@ page import="com.dgphoenix.casino.common.config.HostConfiguration" %>
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp b/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp
+index 795362f5..823fd334 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp
++++ b/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp
+@@ -18,7 +18,7 @@
+ <%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
+ <%@ page import="static org.apache.http.entity.ContentType.APPLICATION_JSON" %>
+ <%@ page import="com.google.gson.Gson" %>
+-<%@ page import="com.dgphoenix.casino.actions.game.pov.StartPovGameParams" %>
++<%@ page import="com.abs.casino.actions.game.pov.StartPovGameParams" %>
+ <%@ page import="org.apache.commons.validator.routines.UrlValidator" %>
+ <%@ page import="com.google.common.net.InternetDomainName" %>
+ <%@ page import="java.net.URI" %>

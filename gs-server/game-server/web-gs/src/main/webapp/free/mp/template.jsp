@@ -8,7 +8,7 @@
 <%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
-<%@ page import="com.dgphoenix.casino.actions.game.pov.StartPovGameParams" %>
+<%@ page import="com.abs.casino.actions.game.pov.StartPovGameParams" %>
 <%@ page import="com.google.gson.Gson" %>
 <%@ page import="static org.apache.http.entity.ContentType.APPLICATION_JSON" %>
 <%@ page import="com.dgphoenix.casino.common.config.HostConfiguration" %>

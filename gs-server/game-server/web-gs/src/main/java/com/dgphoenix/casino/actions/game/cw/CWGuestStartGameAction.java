@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.game.cw;
+package com.abs.casino.actions.game.cw;
 
 /**
  * User: isirbis
@@ -7,7 +7,7 @@ package com.dgphoenix.casino.actions.game.cw;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.actions.enter.LanguageDetector;
-import com.dgphoenix.casino.actions.game.BaseStartGameAction;
+import com.abs.casino.actions.game.BaseStartGameAction;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
@@ -25,7 +25,7 @@ import com.dgphoenix.casino.common.web.MobileDetector;
 import com.abs.casino.entities.game.requests.StartGameRequest;
 import com.abs.casino.entities.game.requests.StartGameResponse;
 import com.dgphoenix.casino.exceptions.LoginErrorException;
-import com.dgphoenix.casino.forms.game.cw.CWGuestStartGameForm;
+import com.abs.casino.forms.game.cw.CWGuestStartGameForm;
 import com.dgphoenix.casino.forms.login.cw.CWLoginForm;
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 import com.dgphoenix.casino.helpers.login.CWHelper;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.game.tournament;
+package com.abs.casino.actions.game.tournament;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.actions.GameServerActionUtils;

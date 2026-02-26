@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.game.pov;
+package com.abs.casino.actions.game.pov;
 
 /**
  * User: flsh

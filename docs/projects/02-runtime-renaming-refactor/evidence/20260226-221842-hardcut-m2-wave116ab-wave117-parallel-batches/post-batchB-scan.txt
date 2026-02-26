@@ -1,0 +1,27 @@
+# post Batch B declarations
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/CWGuestStartGameForm.java
+1:package com.abs.casino.forms.game.cw;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/CWStartGameForm.java
+1:package com.abs.casino.forms.game.cw;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CTOnlyStartGameForm.java
+1:package com.abs.casino.forms.game.ct;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CTStartGameForm.java
+1:package com.abs.casino.forms.game.ct;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/bonus/BSStartGameForm.java
+1:package com.abs.casino.forms.game.bonus;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/CommonFRBStartGameForm.java
+1:package com.abs.casino.forms.game;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java
+1:package com.abs.casino.actions.game.cw;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java
+1:package com.abs.casino.actions.game.cwv3.frb;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java
+1:package com.abs.casino.actions.game;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/pov/StartPovGameParams.java
+1:package com.abs.casino.actions.game.pov;
+
+# post Batch B stale refs
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/shell/ShellLauncherForm.java
+--- gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp
+--- gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp

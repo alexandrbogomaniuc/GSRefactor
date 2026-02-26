@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.lobby;
+package com.abs.casino.actions.lobby;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.actions.GameServerActionUtils;
@@ -15,7 +15,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
 import com.abs.casino.entities.lobby.LoginHelper;
 import com.dgphoenix.casino.exceptions.LoginErrorException;
-import com.dgphoenix.casino.forms.lobby.TournamentLobbyForm;
+import com.abs.casino.forms.lobby.TournamentLobbyForm;
 import com.dgphoenix.casino.sm.login.LoginResponse;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
 import org.apache.logging.log4j.LogManager;

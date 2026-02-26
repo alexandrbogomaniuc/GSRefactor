@@ -1,0 +1,15 @@
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/pov/StartPovGameParams.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/CommonFRBStartGameForm.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/bonus/BSStartGameForm.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CTOnlyStartGameForm.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CTStartGameForm.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/CWGuestStartGameForm.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/CWStartGameForm.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/shell/ShellLauncherForm.java
+ M gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp
+ M gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260226-221842-hardcut-m2-wave116ab-wave117-parallel-batches/

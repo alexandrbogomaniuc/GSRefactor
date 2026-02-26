@@ -33,7 +33,7 @@
         <!-- Begin ported from LOBBY -->
         <form-bean name="EncoderForm" type="com.dgphoenix.casino.actions.system.util.EncoderForm"/>
 
-        <form-bean name="CWStartGameForm" type="com.dgphoenix.casino.forms.game.cw.CWStartGameForm" />
+        <form-bean name="CWStartGameForm" type="com.abs.casino.forms.game.cw.CWStartGameForm" />
         <form-bean name="CWStartGameFormV2" type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameForm"/>
         <form-bean name="CWStartGameBySessionForm" type="com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameBySessionForm"/>
         <form-bean name="GetBalanceForm" type="com.abs.casino.actions.api.GetBalanceForm"/>
@@ -61,21 +61,21 @@
 
 
         <form-bean name="BSStartGameForm" type="com.dgphoenix.casino.actions.enter.game.bonus.BSStartGameForm"/>
-        <form-bean name="TournamentLobbyForm" type="com.dgphoenix.casino.forms.lobby.TournamentLobbyForm"/>
-        <form-bean name="TournamentStartGameForm" type="com.dgphoenix.casino.actions.game.tournament.TournamentStartGameForm"/>
+        <form-bean name="TournamentLobbyForm" type="com.abs.casino.forms.lobby.TournamentLobbyForm"/>
+        <form-bean name="TournamentStartGameForm" type="com.abs.casino.actions.game.tournament.TournamentStartGameForm"/>
         <form-bean name="BattlegroundStubStartGameForm"
                    type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStubStartGameForm"/>
         <form-bean name="BattlegroundStartGameForm"
                    type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartGameForm"/>
         <form-bean name="BattlegroundStartGameFromMQBForm"
-                   type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartGameFromMQBForm"/>
+                   type="com.abs.casino.actions.game.battleground.BattlegroundStartGameFromMQBForm"/>
         <form-bean name="BattlegroundStartPrivateGameForm"
-                   type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartPrivateGameForm"/>
+                   type="com.abs.casino.actions.game.battleground.BattlegroundStartPrivateGameForm"/>
 
         <form-bean name="RestartGameForm" type="com.dgphoenix.casino.actions.enter.game.frb.RestartGameForm"/>
 
         <form-bean name="CTLoginForm" type="com.dgphoenix.casino.forms.login.ct.CTLoginForm"/>
-        <form-bean name="CTStartGameForm" type="com.dgphoenix.casino.forms.game.ct.CTStartGameForm" />
+        <form-bean name="CTStartGameForm" type="com.abs.casino.forms.game.ct.CTStartGameForm" />
         <form-bean name="GameListForm" type="com.dgphoenix.casino.actions.enter.game.GameListForm"/>
         <form-bean name="GameSettingsForm" type="com.dgphoenix.casino.actions.enter.game.GameSettingsForm"/>
 
@@ -84,23 +84,23 @@
 
         <!-- Migrated -->
         <!-- Start Bonus -->
-        <form-bean name="MBSStartGameForm" type="com.dgphoenix.casino.forms.game.bonus.BSStartGameForm" />
+        <form-bean name="MBSStartGameForm" type="com.abs.casino.forms.game.bonus.BSStartGameForm" />
         <!-- End Bonus -->
 
         <!-- Start CT -->
-        <form-bean name="CTOnlyStartGameForm" type="com.dgphoenix.casino.forms.game.ct.CTOnlyStartGameForm" />
+        <form-bean name="CTOnlyStartGameForm" type="com.abs.casino.forms.game.ct.CTOnlyStartGameForm" />
         <!-- End CT -->
 
         <!-- Start CW -->
-        <form-bean name="CWGuestStartGameForm" type="com.dgphoenix.casino.forms.game.cw.CWGuestStartGameForm" />
+        <form-bean name="CWGuestStartGameForm" type="com.abs.casino.forms.game.cw.CWGuestStartGameForm" />
         <!-- End CW -->
 
         <!-- Start CWv3 -->
-        <form-bean name="MCWv3StartGameFRBForm" type="com.dgphoenix.casino.forms.game.CommonFRBStartGameForm" />
+        <form-bean name="MCWv3StartGameFRBForm" type="com.abs.casino.forms.game.CommonFRBStartGameForm" />
         <!-- End CWv3 -->
 
         <!-- Start STLobby -->
-        <form-bean name="STLobbyForm" type="com.dgphoenix.casino.forms.lobby.STLobbyForm" />
+        <form-bean name="STLobbyForm" type="com.abs.casino.forms.lobby.STLobbyForm" />
         <!-- End STLobby -->
 
         <form-bean name="CWStartHistoryForm" type="com.abs.casino.forms.api.history.cwv3.CWStartHistoryForm"/>
@@ -542,19 +542,19 @@
 
         <!-- From GS -->
         <action path="/cwguesthtml5"
-                type="com.dgphoenix.casino.actions.game.cw.CWGuestStartGameAction" name="CWGuestStartGameForm"
+                type="com.abs.casino.actions.game.cw.CWGuestStartGameAction" name="CWGuestStartGameForm"
                 validate="true" input="/error_pages/error.jsp" scope="request">
         </action>
 
         <!-- Start CWv3 -->
         <action path="/cwstartgameidfrb"
-                type="com.dgphoenix.casino.actions.game.cwv3.frb.CWStartFRBGameAction" name="MCWv3StartGameFRBForm"
+                type="com.abs.casino.actions.game.cwv3.frb.CWStartFRBGameAction" name="MCWv3StartGameFRBForm"
                 validate="true" input="/error_pages/error.jsp" scope="request">
         </action>
 
         <!-- Tournament Lobby -->
         <action path="/tournamentlobby"
-                type="com.dgphoenix.casino.actions.lobby.TournamentLobbyAction" name="TournamentLobbyForm"
+                type="com.abs.casino.actions.lobby.TournamentLobbyAction" name="TournamentLobbyForm"
                 validate="true" input="/error_pages/error.jsp" parameter="cwv3" scope="request">
             <forward name="success" path="/stlobbies/tournaments/tournament.jsp"/>
         </action>
@@ -593,19 +593,19 @@
                 type="com.abs.casino.actions.api.promo.GetTournamentPlayerInfoAction"/>
 
         <action path="/tournamentstartgame"
-                type="com.dgphoenix.casino.actions.game.tournament.TournamentStartGameAction"
+                type="com.abs.casino.actions.game.tournament.TournamentStartGameAction"
                 name="TournamentStartGameForm"
                 validate="true" input="/error_pages/error.jsp" scope="request">
         </action>
 
         <action path="/battlegroundstartgamev2"
-                type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartGameFromMQBAction"
+                type="com.abs.casino.actions.game.battleground.BattlegroundStartGameFromMQBAction"
                 name="BattlegroundStartGameFromMQBForm"
                 validate="true" input="/error_pages/error.jsp" scope="request">
         </action>
 
         <action path="/battlegroundstartprivategame"
-                type="com.dgphoenix.casino.actions.game.battleground.BattlegroundStartPrivateGameAction"
+                type="com.abs.casino.actions.game.battleground.BattlegroundStartPrivateGameAction"
                 name="BattlegroundStartPrivateGameForm"
                 validate="true" input="/error_pages/error.jsp" scope="request">
         </action>

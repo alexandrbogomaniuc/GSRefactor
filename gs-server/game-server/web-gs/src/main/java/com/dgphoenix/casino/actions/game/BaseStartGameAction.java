@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.game;
+package com.abs.casino.actions.game;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;

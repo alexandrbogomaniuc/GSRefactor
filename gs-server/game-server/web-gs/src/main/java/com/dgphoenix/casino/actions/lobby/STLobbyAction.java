@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.lobby;
+package com.abs.casino.actions.lobby;
 
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
@@ -23,7 +23,7 @@ import com.abs.casino.entities.lobby.LoginHelper;
 import com.abs.casino.entities.lobby.ShortGameInfo;
 import com.abs.casino.entities.lobby.StLobbyMode;
 import com.dgphoenix.casino.exceptions.LoginErrorException;
-import com.dgphoenix.casino.forms.lobby.STLobbyForm;
+import com.abs.casino.forms.lobby.STLobbyForm;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.dgphoenix.casino.sm.login.CWLoginRequest;

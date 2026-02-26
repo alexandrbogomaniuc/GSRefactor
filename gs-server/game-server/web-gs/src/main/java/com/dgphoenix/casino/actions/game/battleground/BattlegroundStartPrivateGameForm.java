@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.game.battleground;
+package com.abs.casino.actions.game.battleground;
 
 import com.dgphoenix.casino.actions.enter.CommonActionForm;
 import com.dgphoenix.casino.actions.enter.game.IStartGameForm;

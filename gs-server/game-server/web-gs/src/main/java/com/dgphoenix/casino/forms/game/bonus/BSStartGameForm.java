@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.forms.game.bonus;
+package com.abs.casino.forms.game.bonus;
 
 import com.abs.casino.forms.game.CommonBSStartGameForm;
 import org.apache.log4j.LogManager;

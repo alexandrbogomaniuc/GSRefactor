@@ -7347,3 +7347,14 @@
   - fast gate passed on rerun4 and full validation matrix passed `9/9`.
 - Next:
   - continue next low-risk non-overlapping parallel batch under same evidence-first protocol.
+
+### 2026-02-26 22:43 UTC
+- Continued Project 02 hard-cut runtime renaming with parallel batch waves `116A/116B` and integration wave `117`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-221842-hardcut-m2-wave116ab-wave117-parallel-batches/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/119-hard-cut-m2-wave116ab-wave117-parallel-batches-report-20260226.md`
+- Result:
+  - migrated 20 package declarations to `com.abs` in lobby/tournament/battleground and game-start scopes, with bounded rewires and shared `struts-config` integration.
+  - fast gate passed on rerun2 and full validation matrix passed `9/9`.
+- Next:
+  - continue next low-risk non-overlapping parallel batch under same evidence-first protocol.

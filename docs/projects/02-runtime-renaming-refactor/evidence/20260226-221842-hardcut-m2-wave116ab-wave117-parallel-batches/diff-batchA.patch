@@ -1,0 +1,140 @@
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBAction.java
+index d35141e3..5987d578 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.actions.game.battleground;
++package com.abs.casino.actions.game.battleground;
+ 
+ import com.dgphoenix.casino.actions.enter.LanguageDetector;
+ import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBForm.java
+index 183776c7..06cc76a0 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.actions.game.battleground;
++package com.abs.casino.actions.game.battleground;
+ 
+ import com.dgphoenix.casino.actions.enter.CommonActionForm;
+ import com.dgphoenix.casino.actions.enter.game.IStartGameForm;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameAction.java
+index aae914f9..f1dba493 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.actions.game.battleground;
++package com.abs.casino.actions.game.battleground;
+ 
+ import com.dgphoenix.casino.actions.enter.LanguageDetector;
+ import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameForm.java
+index 8370daaf..b8e86ba0 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.actions.game.battleground;
++package com.abs.casino.actions.game.battleground;
+ 
+ import com.dgphoenix.casino.actions.enter.CommonActionForm;
+ import com.dgphoenix.casino.actions.enter.game.IStartGameForm;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java
+index e90b0eb8..a0c0d4a0 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.actions.game.tournament;
++package com.abs.casino.actions.game.tournament;
+ 
+ import com.dgphoenix.casino.account.AccountManager;
+ import com.dgphoenix.casino.actions.GameServerActionUtils;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameForm.java
+index 3006e925..c735a790 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.actions.game.tournament;
++package com.abs.casino.actions.game.tournament;
+ 
+ import com.dgphoenix.casino.actions.enter.CommonActionForm;
+ import com.dgphoenix.casino.actions.enter.game.IStartGameForm;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/STLobbyAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/STLobbyAction.java
+index 587930f9..b295a977 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/STLobbyAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/STLobbyAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.actions.lobby;
++package com.abs.casino.actions.lobby;
+ 
+ import com.dgphoenix.casino.common.SessionHelper;
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+@@ -23,7 +23,7 @@ import com.abs.casino.entities.lobby.LoginHelper;
+ import com.abs.casino.entities.lobby.ShortGameInfo;
+ import com.abs.casino.entities.lobby.StLobbyMode;
+ import com.dgphoenix.casino.exceptions.LoginErrorException;
+-import com.dgphoenix.casino.forms.lobby.STLobbyForm;
++import com.abs.casino.forms.lobby.STLobbyForm;
+ import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
+ import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
+ import com.dgphoenix.casino.sm.login.CWLoginRequest;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/TournamentLobbyAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/TournamentLobbyAction.java
+index 74f49b3d..d90423e6 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/TournamentLobbyAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/TournamentLobbyAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.actions.lobby;
++package com.abs.casino.actions.lobby;
+ 
+ import com.dgphoenix.casino.account.AccountManager;
+ import com.dgphoenix.casino.actions.GameServerActionUtils;
+@@ -15,7 +15,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.dgphoenix.casino.common.web.BaseAction;
+ import com.abs.casino.entities.lobby.LoginHelper;
+ import com.dgphoenix.casino.exceptions.LoginErrorException;
+-import com.dgphoenix.casino.forms.lobby.TournamentLobbyForm;
++import com.abs.casino.forms.lobby.TournamentLobbyForm;
+ import com.dgphoenix.casino.sm.login.LoginResponse;
+ import com.dgphoenix.casino.support.ErrorPersisterHelper;
+ import org.apache.logging.log4j.LogManager;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/STLobbyForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/STLobbyForm.java
+index 5c5f3a4a..892e68e2 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/STLobbyForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/STLobbyForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.forms.lobby;
++package com.abs.casino.forms.lobby;
+ 
+ import com.dgphoenix.casino.actions.enter.CommonActionForm;
+ import com.dgphoenix.casino.common.cache.data.game.GameMode;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/TournamentLobbyForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/TournamentLobbyForm.java
+index 262fc1b8..0ee228d7 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/TournamentLobbyForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/TournamentLobbyForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.forms.lobby;
++package com.abs.casino.forms.lobby;
+ 
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.dgphoenix.casino.common.web.BaseAction;
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/defaultstlobby.jsp b/gs-server/game-server/web-gs/src/main/webapp/defaultstlobby.jsp
+index b63a2d02..8f125dcb 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/defaultstlobby.jsp
++++ b/gs-server/game-server/web-gs/src/main/webapp/defaultstlobby.jsp
+@@ -1,5 +1,5 @@
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+-<%@ page import="com.dgphoenix.casino.actions.lobby.STLobbyAction" %>
++<%@ page import="com.abs.casino.actions.lobby.STLobbyAction" %>
+ <%@ page import="com.dgphoenix.casino.common.cache.data.game.GameGroup" %>
+ <%@ page import="java.util.*" %>
+ <%@ page import="com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo" %>
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/standlobby.jsp b/gs-server/game-server/web-gs/src/main/webapp/standlobby.jsp
+index 58f2fe78..65720c13 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/standlobby.jsp
++++ b/gs-server/game-server/web-gs/src/main/webapp/standlobby.jsp
+@@ -1,5 +1,5 @@
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+-<%@ page import="com.dgphoenix.casino.actions.lobby.STLobbyAction" %>
++<%@ page import="com.abs.casino.actions.lobby.STLobbyAction" %>
+ <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+ <%@ page import="com.abs.casino.common.web.logout.LogoutCommonConstants" %>
+ <%@ page import="com.dgphoenix.casino.common.web.BaseAction" %>

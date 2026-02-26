@@ -1,0 +1,25 @@
+# post Batch A declarations
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/TournamentLobbyForm.java
+1:package com.abs.casino.forms.lobby;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/STLobbyForm.java
+1:package com.abs.casino.forms.lobby;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/TournamentLobbyAction.java
+1:package com.abs.casino.actions.lobby;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/STLobbyAction.java
+1:package com.abs.casino.actions.lobby;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameForm.java
+1:package com.abs.casino.actions.game.tournament;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java
+1:package com.abs.casino.actions.game.tournament;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBForm.java
+1:package com.abs.casino.actions.game.battleground;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameForm.java
+1:package com.abs.casino.actions.game.battleground;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBAction.java
+1:package com.abs.casino.actions.game.battleground;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameAction.java
+1:package com.abs.casino.actions.game.battleground;
+
+# post Batch A stale refs
+--- gs-server/game-server/web-gs/src/main/webapp/standlobby.jsp
+--- gs-server/game-server/web-gs/src/main/webapp/defaultstlobby.jsp

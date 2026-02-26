@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.forms.lobby;
+package com.abs.casino.forms.lobby;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;

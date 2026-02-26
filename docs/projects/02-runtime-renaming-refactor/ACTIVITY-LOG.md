@@ -2079,3 +2079,18 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - final retained declaration migrations: `11` net (A retained, B reverted).
   - global tracked source declarations/files now `1893` remaining (`2277` baseline, `384` reduced).
+
+## 2026-02-26 22:43 UTC (Hard-Cut M2 Wave 116A + 116B + 117)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W116A`: migrated 10 lobby/tournament/battleground declaration packages to `com.abs` with bounded JSP rewires.
+  - `W116B`: migrated 10 game-start declaration packages to `com.abs` with bounded rewires in 4 owned files.
+  - `W117`: applied shared integration rewires in `WEB-INF/struts-config.xml` and validated.
+- Validation:
+  - fast gate initial package run failed on missing `CommonBonusStartGameForm` import in `CommonFRBStartGameForm`; bounded fix applied.
+  - fast gate rerun2 passed; full 9-step matrix passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-221842-hardcut-m2-wave116ab-wave117-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/119-hard-cut-m2-wave116ab-wave117-parallel-batches-report-20260226.md`
+- Outcome:
+  - scoped declaration migrations: `20`.
+  - global tracked source declarations/files now `1873` remaining (`2277` baseline, `404` reduced).

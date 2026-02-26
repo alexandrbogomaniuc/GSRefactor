@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.dgphoenix.casino.actions.lobby.STLobbyAction" %>
+<%@ page import="com.abs.casino.actions.lobby.STLobbyAction" %>
 <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
 <%@ page import="com.abs.casino.common.web.logout.LogoutCommonConstants" %>
 <%@ page import="com.dgphoenix.casino.common.web.BaseAction" %>
