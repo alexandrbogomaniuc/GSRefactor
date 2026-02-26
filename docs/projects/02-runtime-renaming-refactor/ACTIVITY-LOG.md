@@ -555,3 +555,15 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-095853-hardcut-m2-wave10-domain-whitelist`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/22-hard-cut-m2-wave10-domain-whitelist-report-20260226.md`
+
+## 2026-02-26 10:03 UTC (M2 Wave 11 - Common Web JSON Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.web.json.ZonedDateTimeSerializer` -> `com.abs.casino.common.web.json.ZonedDateTimeSerializer`
+- Changed file:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/web/json/ZonedDateTimeSerializer.java`
+- Post-scan result: legacy refs `0`, abs refs `1`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-100207-hardcut-m2-wave11-common-web-json`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/23-hard-cut-m2-wave11-common-web-json-report-20260226.md`

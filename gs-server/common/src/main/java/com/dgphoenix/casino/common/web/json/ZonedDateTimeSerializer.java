@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.web.json;
+package com.abs.casino.common.web.json;
 
 import com.google.gson.*;
 

@@ -6365,3 +6365,14 @@
 - Evidence:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-095853-hardcut-m2-wave10-domain-whitelist`
 - Next: commit/push Wave 10 and continue Wave 11.
+
+### 2026-02-26 10:03 UTC
+- Continued Project 02 with M2 Wave 11 (common web json namespace migration).
+- Scope: 1 file (`ZonedDateTimeSerializer`).
+- Result:
+  - legacy refs for wave scope: `0`
+  - new `com.abs` refs: `1`
+  - full validation matrix and runtime smoke: PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-100207-hardcut-m2-wave11-common-web-json`
+- Next: commit/push Wave 11 and continue Wave 12.
