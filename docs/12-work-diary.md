@@ -6321,3 +6321,14 @@
 - Evidence:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-094646-hardcut-m2-wave6-canex-response`
 - Next: commit/push Wave 6 and continue Wave 7.
+
+### 2026-02-26 09:51 UTC
+- Continued Project 02 with M2 Wave 7 (promo win namespace family).
+- Scope: 2 files in promo persisters.
+- Result:
+  - legacy refs for this family: `0`
+  - new `com.abs` refs: `2`
+  - full validation matrix and runtime smoke: PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-094953-hardcut-m2-wave7-promo-win`
+- Next: commit/push Wave 7 and continue Wave 8.

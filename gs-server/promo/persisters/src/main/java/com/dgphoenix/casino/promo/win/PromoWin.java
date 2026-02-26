@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.win;
+package com.abs.casino.promo.win;
 
 import java.util.Objects;
 

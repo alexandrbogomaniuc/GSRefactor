@@ -496,3 +496,16 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-094646-hardcut-m2-wave6-canex-response`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/18-hard-cut-m2-wave6-canex-response-report-20260226.md`
+
+## 2026-02-26 09:51 UTC (M2 Wave 7 - Promo Win Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.promo.win` -> `com.abs.casino.promo.win`
+- Changed files:
+  - `gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/win/PromoWin.java`
+  - `gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPromoWinPersister.java`
+- Post-scan result: legacy refs `0`, abs refs `2`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-094953-hardcut-m2-wave7-promo-win`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/19-hard-cut-m2-wave7-promo-win-report-20260226.md`

@@ -1,0 +1,2 @@
+gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPromoWinPersister.java:6:import com.dgphoenix.casino.promo.win.PromoWin;
+gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/win/PromoWin.java:1:package com.dgphoenix.casino.promo.win;
