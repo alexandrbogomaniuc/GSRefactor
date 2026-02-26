@@ -1,5 +1,7 @@
 package com.dgphoenix.casino.common.config;
 
+import com.abs.casino.common.config.FreeSpaceThresholdType;
+
 /**
  * Created by vladislav on 05/05/15.
  */

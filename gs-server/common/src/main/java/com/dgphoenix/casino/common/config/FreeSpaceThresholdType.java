@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.config;
+package com.abs.casino.common.config;
 
 /**
  * Created by vladislav on 12/28/17.

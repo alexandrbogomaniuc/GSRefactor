@@ -1,0 +1,8 @@
+wave=W50-free-space-threshold-type
+target=com.dgphoenix.casino.common.config.FreeSpaceThresholdType
+replacement=com.abs.casino.common.config.FreeSpaceThresholdType
+pre_legacy_refs=2
+post_legacy_refs=0
+post_abs_refs=4
+validation_passed=9
+validation_failed=0

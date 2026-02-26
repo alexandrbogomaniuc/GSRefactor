@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.config;
 
+import com.abs.casino.common.config.FreeSpaceThresholdType;
 import com.dgphoenix.casino.common.cache.Identifiable;
 import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
 import com.dgphoenix.casino.common.configuration.CasinoSystemType;

@@ -6768,3 +6768,13 @@
   - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/61-hard-cut-m2-wave49-apub-game-server-response-report-20260226.md`
+
+### 2026-02-26 13:46 UTC
+- Completed Project 02 M2 Wave 50 for `FreeSpaceThresholdType` namespace migration.
+- Migrated enum declaration to `com.abs`, added explicit imports in `MountMonitoringEntry`/`GameServerConfigTemplate`, and rewrote `SystemDiagnosisServlet` import.
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-134432-hardcut-m2-wave50-free-space-threshold-type`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/62-hard-cut-m2-wave50-free-space-threshold-type-report-20260226.md`
