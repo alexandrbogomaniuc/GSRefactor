@@ -7229,3 +7229,13 @@
   - migrated `AwardFRBForm` to `com.abs`, updated dependent action import + Struts form-bean mapping, and passed full 9/9 validation matrix.
 - Next:
   - continue Wave 96 with next low-fanout FRB form migration.
+
+### 2026-02-26 18:38 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 96 (FRB award lite form).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-183626-hardcut-m2-wave96-frbonus-award-lite-form/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/108-hard-cut-m2-wave96-frbonus-award-lite-form-report-20260226.md`
+- Result:
+  - migrated `AwardFRBLiteForm` to `com.abs`, updated dependent action import + Struts form-bean mapping, and passed full 9/9 validation matrix.
+- Next:
+  - continue Wave 97 with next low-fanout FRB form migration.
