@@ -324,3 +324,9 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - residual-token policy (intentional compatibility/documentation references).
 - Outcome:
   - Project 02 is documented as closed for actionable runtime-renaming scope.
+
+## 2026-02-26 07:43 UTC (Evidence retention cleanup)
+- Added previously untracked guarded/failure wave evidence files into tracked audit artifacts.
+- Included Phase 9 pre-guardrail scan snapshots and failed-attempt validation logs (`20260226-063100`, `20260226-072309`, `20260226-072929`).
+- Commit reference:
+  - `27ca4543` — `Add retained phase9 guarded-wave evidence artifacts`
