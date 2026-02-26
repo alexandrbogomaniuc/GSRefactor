@@ -5594,3 +5594,28 @@
   - GS-only `15.78%` (`488 -> 411`)
   - combined GS+MP `12.05%` (`639 -> 562`)
 - Next step: commit/push Wave 32 and continue next hotspots.
+### 2026-02-26 04:54 UTC
+- Dev_new CASS-V4 Waves 33-34 completed and validated.
+- Wave 33 converted promo persisters:
+  - `CassandraTournamentRankPersister`
+  - `CassandraUnsendedPromoWinInfoPersister`
+  - `CassandraLocalizationsPersister`
+- Wave 34 converted promo campaign/member summary persisters:
+  - `CassandraPromoCampaignMembersPersister`
+  - `CassandraSummaryTournamentPromoFeedPersister`
+- Validation PASS (final state):
+  - `mvn -DskipTests install` (`promo/persisters`, wave34 rerun)
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn test` (`cache`, `63` tests)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -pl core-interfaces,core,persistance -am -DskipTests package` (`mp-server`)
+- Compile iteration note:
+  - wave34 initial compile failed in one location using `Statement.where(...)`; fixed by using select-specific type for that path and rerun passed.
+- Evidence saved under:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-045012/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-045257/`
+- Inventory result after Wave 34: GS `399`, MP `151`.
+- Completion snapshot:
+  - GS-only `18.24%` (`488 -> 399`)
+  - combined GS+MP `13.93%` (`639 -> 550`)
+- Next step: commit/push Waves 33-34 and continue next hotspots.

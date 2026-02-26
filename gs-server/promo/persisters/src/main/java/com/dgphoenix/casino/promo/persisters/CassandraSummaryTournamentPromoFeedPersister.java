@@ -3,8 +3,6 @@ package com.dgphoenix.casino.promo.persisters;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -91,15 +89,14 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
         if (recordsByObjectives.get(type) == null) {
             throwUnsupportedTournamentObjective(type);
         }
-        Insert insert = getInsertQuery();
-        insert.value(ID, id)
+        execute(getInsertQuery()
+                .value(ID, id)
                 .value(FEED_URL, feedUrl)
                 .value(BANK_NAME, bankName)
                 .value(START_DATE, startDate)
                 .value(TOURNAMENT_TYPE, type.name())
                 .value(END_DATE, endDate)
-                .value(TOURNAMENT_ID, tournamentId);
-        execute(insert, "persist");
+                .value(TOURNAMENT_ID, tournamentId), "persist");
     }
 
     public void create(long id, String feedUrl, String bankName, long startDate, long endDate,
@@ -107,15 +104,14 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
         if (recordsByObjectives.get(type) == null) {
             throwUnsupportedTournamentObjective(type);
         }
-        Insert insert = getInsertQuery();
-        insert.value(ID, id)
+        execute(getInsertQuery()
+                .value(ID, id)
                 .value(FEED_URL, feedUrl)
                 .value(BANK_NAME, bankName)
                 .value(START_DATE, startDate)
                 .value(TOURNAMENT_TYPE, type.name())
                 .value(END_DATE, endDate)
-                .value(MASK_NAME, maskName);
-        execute(insert, "persist");
+                .value(MASK_NAME, maskName), "persist");
     }
 
     private static void throwUnsupportedTournamentObjective(TournamentObjective type) {
@@ -123,21 +119,18 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
     }
 
     public void update(long id, String feedUrl, String checkSum, String feedBody) {
-        Insert insertInMemberTable = getInsertQuery();
-        insertInMemberTable
+        execute(getInsertQuery()
                 .value(ID, id)
                 .value(FEED_URL, feedUrl)
                 .value(CHECKSUM, checkSum)
                 .value(UPDATE_TIME, System.currentTimeMillis())
-                .value(FEED_BODY, feedBody);
-        execute(insertInMemberTable, "persist");
+                .value(FEED_BODY, feedBody), "persist");
     }
 
     public List<SummaryTournamentFeed> getAllFeeds() {
         List<SummaryTournamentFeed> feeds = new ArrayList<>();
-        Select select = getSelectColumnsQuery(ID, FEED_URL, BANK_NAME, START_DATE, END_DATE, CHECKSUM, TOURNAMENT_TYPE,
-                MASK_NAME);
-        ResultSet result = execute(select, "getAllFeeds");
+        ResultSet result = execute(getSelectColumnsQuery(ID, FEED_URL, BANK_NAME, START_DATE, END_DATE, CHECKSUM, TOURNAMENT_TYPE,
+                MASK_NAME), "getAllFeeds");
         for (Row row : result) {
             feeds.add(convert(row));
         }
@@ -146,10 +139,9 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
 
     public List<SummaryTournamentFeed> getFeeds(long id) {
         List<SummaryTournamentFeed> feeds = new ArrayList<>();
-        Select select = getSelectColumnsQuery(ID, FEED_URL, BANK_NAME, START_DATE, END_DATE, CHECKSUM, TOURNAMENT_TYPE,
-                MASK_NAME);
-        select.where(eq(ID, id));
-        ResultSet result = execute(select, "getFeeds");
+        ResultSet result = execute(getSelectColumnsQuery(ID, FEED_URL, BANK_NAME, START_DATE, END_DATE, CHECKSUM, TOURNAMENT_TYPE,
+                MASK_NAME)
+                .where(eq(ID, id)), "getFeeds");
         for (Row row : result) {
             feeds.add(convert(row));
         }
@@ -166,20 +158,18 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
 
     //key: url
     public Map<String, List<SummaryTournamentFeedEntry>> getAllFeedEntriesForTournament(long tournamentId) {
-        Select select = getSelectColumnsQuery(FEED_URL, FEED_BODY, BANK_NAME, TOURNAMENT_TYPE, MASK_NAME);
-        select.where(eq(TOURNAMENT_ID, tournamentId));
-        return getEntriesForStatement(select, tournamentId);
+        return getEntriesForStatement(getSelectColumnsQuery(FEED_URL, FEED_BODY, BANK_NAME, TOURNAMENT_TYPE, MASK_NAME)
+                .where(eq(TOURNAMENT_ID, tournamentId)), tournamentId);
     }
 
     //key: url
     public Map<String, List<SummaryTournamentFeedEntry>> getAllFeedEntries(long id) {
-        Select select = getSelectColumnsQuery(FEED_URL, FEED_BODY, BANK_NAME, TOURNAMENT_TYPE, MASK_NAME);
-        select.where(eq(ID, id));
-        return getEntriesForStatement(select, id);
+        return getEntriesForStatement(getSelectColumnsQuery(FEED_URL, FEED_BODY, BANK_NAME, TOURNAMENT_TYPE, MASK_NAME)
+                .where(eq(ID, id)), id);
     }
 
     //key: url
-    public Map<String, List<SummaryTournamentFeedEntry>> getEntriesForStatement(Select select, long id) {
+    public Map<String, List<SummaryTournamentFeedEntry>> getEntriesForStatement(com.datastax.driver.core.Statement select, long id) {
         ResultSet resultSet = execute(select, "getAllFeedEntries");
         Map<String, List<SummaryTournamentFeedEntry>> result = new HashMap<>(resultSet.getAvailableWithoutFetching());
         for (Row row : resultSet) {
@@ -213,9 +203,9 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
     }
 
     public List<SummaryTournamentFeedEntry> getFeedEntries(long id, String feedUrl) {
-        Select select = getSelectColumnsQuery(FEED_BODY, BANK_NAME, TOURNAMENT_TYPE);
-        select.where(eq(ID, id)).and(eq(FEED_URL, feedUrl));
-        Row row = execute(select, "getFeedEntries").one();
+        Row row = execute(getSelectColumnsQuery(FEED_BODY, BANK_NAME, TOURNAMENT_TYPE)
+                .where(eq(ID, id))
+                .and(eq(FEED_URL, feedUrl)), "getFeedEntries").one();
         List<SummaryTournamentFeedEntry> feedEntries = new ArrayList<>();
         if (row != null) {
             String feedBody = row.getString(FEED_BODY);

@@ -601,3 +601,42 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
 - Completion snapshot:
   - GS-only: `15.78%` (`488 -> 411`)
   - GS+MP combined: `12.05%` (`639 -> 562`)
+
+## 2026-02-26 04:51 UTC
+- Implemented CASS-V4 Wave 33 in promo persister hotspots:
+  - `CassandraTournamentRankPersister`
+  - `CassandraUnsendedPromoWinInfoPersister`
+  - `CassandraLocalizationsPersister`
+- Removed typed querybuilder declarations and switched to direct execute-chain flow where compile-safe.
+- Validation: PASS
+  - `promo/persisters` install
+  - `common-persisters` install
+  - cache test suite (`63` tests)
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added under `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-045012/`.
+- Inventory delta after Wave 33:
+  - GS `driver3_import_lines`: `411 -> 404` (`-7`)
+  - MP `driver3_import_lines`: `151` (no change)
+
+## 2026-02-26 04:54 UTC
+- Implemented CASS-V4 Wave 34 in promo campaign summary/member hotspots:
+  - `CassandraPromoCampaignMembersPersister`
+  - `CassandraSummaryTournamentPromoFeedPersister`
+- Removed typed querybuilder declarations and switched to execute-chain flow.
+- Compile iteration:
+  - initial promo-persisters build failed because `Statement` does not expose `where(...)` in one fetch-size path.
+  - fixed by using fully-qualified `com.datastax.driver.core.querybuilder.Select` in that single location and reran.
+- Validation (final): PASS
+  - `promo/persisters` install (rerun)
+  - `common-persisters` install
+  - cache test suite (`63` tests)
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added under `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-045257/`.
+- Inventory delta after Wave 34:
+  - GS `driver3_import_lines`: `404 -> 399` (`-5`)
+  - MP `driver3_import_lines`: `151` (no change)
+- Completion snapshot after Wave 34:
+  - GS-only: `18.24%` (`488 -> 399`)
+  - GS+MP combined: `13.93%` (`639 -> 550`)

@@ -3,8 +3,6 @@ package com.dgphoenix.casino.promo.persisters;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.Batch;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -87,22 +85,18 @@ public class CassandraLocalizationsPersister extends AbstractCassandraPersister<
                                     Iterator<String> itemAndLang, String item) {
         String lang = itemAndLang.next().toLowerCase();
         String localization = entry.getValue();
-        Insert localizationInsert = getInsertQuery(TABLE, getTtl());
-        localizationInsert
+        batch.add(getInsertQuery(TABLE, getTtl())
                 .value(KEY, key)
                 .value(LANG, lang)
                 .value(ITEM, item)
-                .value(LOCALIZATION, localization);
-        batch.add(localizationInsert);
+                .value(LOCALIZATION, localization));
     }
 
     public LocalizationTitles getNetworkPromoLocalizations(long networkPromoCampaignId, String lang) {
         String key = PROMO_TYPE + IDENTIFIER_DELIMITER + networkPromoCampaignId;
-        Select selectLocalization = getSelectColumnsQuery(ITEM, LOCALIZATION);
-        selectLocalization
+        List<Row> rows = execute(getSelectColumnsQuery(ITEM, LOCALIZATION)
                 .where(eq(KEY, key))
-                .and(eq(LANG, lang.toLowerCase()));
-        List<Row> rows = execute(selectLocalization, "getNetworkPromoLocalizations").all();
+                .and(eq(LANG, lang.toLowerCase())), "getNetworkPromoLocalizations").all();
         String tournamentRules = "";
         String prizeAllocation = "";
         String howToWin = "";
@@ -129,12 +123,10 @@ public class CassandraLocalizationsPersister extends AbstractCassandraPersister<
     public String getLocalizedPromoTitle(long campaignId, String lang) {
         String key = PROMO_TYPE + IDENTIFIER_DELIMITER + campaignId;
         String item = TITLE;
-        Select selectLocalization = getSelectColumnsQuery(LOCALIZATION);
-        selectLocalization
+        Row result = execute(getSelectColumnsQuery(LOCALIZATION)
                 .where(eq(KEY, key))
                 .and(eq(LANG, lang.toLowerCase()))
-                .and(eq(ITEM, item));
-        Row result = execute(selectLocalization, "getLocalizedPromoTitle").one();
+                .and(eq(ITEM, item)), "getLocalizedPromoTitle").one();
 
         String localization = null;
         if (result != null) {

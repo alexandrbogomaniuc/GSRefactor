@@ -3,10 +3,7 @@ package com.dgphoenix.casino.promo.persisters;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
-import com.datastax.driver.core.querybuilder.Delete;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -48,22 +45,20 @@ public class CassandraUnsendedPromoWinInfoPersister extends AbstractCassandraPer
         ByteBuffer buffer = TABLE.serializeToBytes(winInfo);
         String json = TABLE.serializeToJson(winInfo);
         try {
-            Statement query = getInsertQuery()
+            execute(getInsertQuery()
                     .value(GAME_SESSION_ID, gameSessionId)
                     .value(WIN_DATE, winInfo.getDate())
                     .value(ROUND_ID, roundId)
                     .value(SERIALIZED_COLUMN_NAME, buffer)
-                    .value(JSON_COLUMN_NAME, json);
-            execute(query, "persist");
+                    .value(JSON_COLUMN_NAME, json), "persist");
         } finally {
             releaseBuffer(buffer);
         }
     }
 
     public List<PromoWinInfo> getForGameSession(long gameSessionId) {
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where(eq(GAME_SESSION_ID, gameSessionId));
-        ResultSet resultSet = execute(query, "getForGameSession");
+        ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(GAME_SESSION_ID, gameSessionId)), "getForGameSession");
         List<PromoWinInfo> wins = new ArrayList<>();
         for (Row row : resultSet) {
             PromoWinInfo info = TABLE.deserializeFromJson(
@@ -83,9 +78,8 @@ public class CassandraUnsendedPromoWinInfoPersister extends AbstractCassandraPer
     }
 
     public PromoWinInfo getByRoundId(long roundId) {
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where(eq(ROUND_ID, roundId));
-        Row row = execute(query, "getByRoundId").one();
+        Row row = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(ROUND_ID, roundId)), "getByRoundId").one();
         if (row != null) {
             PromoWinInfo info = 
                     TABLE.deserializeFromJson(row.getString(JSON_COLUMN_NAME), PromoWinInfo.class);
@@ -99,23 +93,23 @@ public class CassandraUnsendedPromoWinInfoPersister extends AbstractCassandraPer
 
     public void remove(long gameSessionId) {
         LOG.debug("remove: gameSessionId={}", gameSessionId);
-        Delete query = QueryBuilder.delete().from(getMainColumnFamilyName());
-        query.where(eq(GAME_SESSION_ID, gameSessionId));
-        execute(query, "remove");
+        execute(QueryBuilder.delete()
+                .from(getMainColumnFamilyName())
+                .where(eq(GAME_SESSION_ID, gameSessionId)), "remove");
     }
 
     public void remove(long gameSessionId, long date) {
         LOG.debug("remove gameSessionId={}, date={}", gameSessionId, date);
-        Delete query = QueryBuilder.delete().from(getMainColumnFamilyName());
-        query.where(eq(GAME_SESSION_ID, gameSessionId)).and(eq(WIN_DATE, date));
-        execute(query, "remove[date]");
+        execute(QueryBuilder.delete()
+                .from(getMainColumnFamilyName())
+                .where(eq(GAME_SESSION_ID, gameSessionId))
+                .and(eq(WIN_DATE, date)), "remove[date]");
     }
 
     public void removeByRoundId(long roundId) {
         LOG.debug("remove: roundId={}", roundId);
-        Select query = getSelectColumnsQuery(GAME_SESSION_ID, WIN_DATE);
-        query.where(eq(ROUND_ID, roundId));
-        ResultSet resultSet = execute(query, "getAllRecordsByRoundId");
+        ResultSet resultSet = execute(getSelectColumnsQuery(GAME_SESSION_ID, WIN_DATE)
+                .where(eq(ROUND_ID, roundId)), "getAllRecordsByRoundId");
         Set<Pair<Long, Long>> pairs = new HashSet<>();
         for (Row row : resultSet) {
             pairs.add(new Pair<>(row.getLong(GAME_SESSION_ID), row.getLong(WIN_DATE)));

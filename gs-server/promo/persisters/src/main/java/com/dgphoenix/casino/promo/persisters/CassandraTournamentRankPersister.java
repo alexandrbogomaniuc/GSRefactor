@@ -1,8 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.*;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -49,11 +47,11 @@ public class CassandraTournamentRankPersister extends AbstractCassandraPersister
             String json = getMainTableDefinition().serializeToJson(rank);
             ByteBuffer byteBuffer = getMainTableDefinition().serializeToBytes(rank);
             byteBuffersCollector.add(byteBuffer);
-            Insert query = getInsertQuery(getTtl());
-            query.value(CAMPAIGN_ID_FIELD, rank.getCampaignId());
-            query.value(ACCOUNT_ID_FIELD, rank.getAccountId());
-            query.value(SERIALIZED_COLUMN_NAME, byteBuffer);
-            query.value(JSON_COLUMN_NAME, json);
+            Statement query = getInsertQuery(getTtl())
+                    .value(CAMPAIGN_ID_FIELD, rank.getCampaignId())
+                    .value(ACCOUNT_ID_FIELD, rank.getAccountId())
+                    .value(SERIALIZED_COLUMN_NAME, byteBuffer)
+                    .value(JSON_COLUMN_NAME, json);
             statements.add(query);
         }
     }
@@ -62,12 +60,11 @@ public class CassandraTournamentRankPersister extends AbstractCassandraPersister
         ByteBuffer byteBuffer = getMainTableDefinition().serializeToBytes(rank);
         String json = getMainTableDefinition().serializeToJson(rank);
         try {
-            Insert query = getInsertQuery(getTtl());
-            query.value(CAMPAIGN_ID_FIELD, rank.getCampaignId());
-            query.value(ACCOUNT_ID_FIELD, rank.getAccountId());
-            query.value(SERIALIZED_COLUMN_NAME, byteBuffer);
-            query.value(JSON_COLUMN_NAME, json);
-            execute(query, "persist");
+            execute(getInsertQuery(getTtl())
+                    .value(CAMPAIGN_ID_FIELD, rank.getCampaignId())
+                    .value(ACCOUNT_ID_FIELD, rank.getAccountId())
+                    .value(SERIALIZED_COLUMN_NAME, byteBuffer)
+                    .value(JSON_COLUMN_NAME, json), "persist");
         } finally {
             releaseBuffer(byteBuffer);
         }
@@ -107,9 +104,9 @@ public class CassandraTournamentRankPersister extends AbstractCassandraPersister
     }
 
     public TournamentMemberRank getForAccount(long campaignId, long accountId) {
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where().and(eq(CAMPAIGN_ID_FIELD, campaignId)).and(eq(ACCOUNT_ID_FIELD, accountId));
-        ResultSet resultSet = execute(query, "getForAccount");
+        ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(CAMPAIGN_ID_FIELD, campaignId))
+                .and(eq(ACCOUNT_ID_FIELD, accountId)), "getForAccount");
         Row row = resultSet.one();
         TournamentMemberRank result = null;
         if (row != null) {
@@ -125,9 +122,8 @@ public class CassandraTournamentRankPersister extends AbstractCassandraPersister
     }
 
     public List<TournamentMemberRank> getByCampaign(long campaignId) {
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where().and(eq(CAMPAIGN_ID_FIELD, campaignId));
-        ResultSet resultSet = execute(query, "getByCampaign");
+        ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(CAMPAIGN_ID_FIELD, campaignId)), "getByCampaign");
         List<TournamentMemberRank> result = new ArrayList<>();
         for (Row row : resultSet) {
             TournamentMemberRank rank = 

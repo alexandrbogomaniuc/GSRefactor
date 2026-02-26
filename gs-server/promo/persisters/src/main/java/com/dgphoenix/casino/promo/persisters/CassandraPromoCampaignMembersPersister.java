@@ -1,10 +1,7 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.*;
-import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.querybuilder.Update;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -58,7 +55,7 @@ public class CassandraPromoCampaignMembersPersister extends AbstractCassandraPer
             String json = getMainTableDefinition().serializeWithClassToJson(member);
             ByteBuffer byteBuffer = getMainTableDefinition().serializeWithClassToBytes(member);
             byteBuffersCollector.add(byteBuffer);
-            Update updateQuery = getUpdateQuery(campaignId, member.getAccountId(), byteBuffer, json);
+            Statement updateQuery = getUpdateQuery(campaignId, member.getAccountId(), byteBuffer, json);
             statements.add(updateQuery);
         });
     }
@@ -73,12 +70,12 @@ public class CassandraPromoCampaignMembersPersister extends AbstractCassandraPer
         }
     }
 
-    private Update getUpdateQuery(long campaignId, long accountId, ByteBuffer memberAsBytes, String json) {
-        Update update = getUpdateQuery();
-        update.where().and(eq(CAMPAIGN_ID, campaignId)).and(eq(ACCOUNT_ID, accountId));
-        update.with(QueryBuilder.set(CAMPAIGN_MEMBER_DATA, memberAsBytes));
-        update.with(QueryBuilder.set(JSON_COLUMN_NAME, json));
-        return update;
+    private Statement getUpdateQuery(long campaignId, long accountId, ByteBuffer memberAsBytes, String json) {
+        return getUpdateQuery()
+                .where(eq(CAMPAIGN_ID, campaignId))
+                .and(eq(ACCOUNT_ID, accountId))
+                .with(QueryBuilder.set(CAMPAIGN_MEMBER_DATA, memberAsBytes))
+                .and(QueryBuilder.set(JSON_COLUMN_NAME, json));
     }
 
     public void create(PromoCampaignMember member) throws CommonException {
@@ -86,25 +83,23 @@ public class CassandraPromoCampaignMembersPersister extends AbstractCassandraPer
         ByteBuffer memberAsBytes = getMainTableDefinition().serializeWithClassToBytes(member);
         String json = getMainTableDefinition().serializeWithClassToJson(member);
         try {
-            Insert insert = getInsertQuery(CAMPAIGN_MEMBER_TABLE, getTtl());
-            insert.value(CAMPAIGN_ID, member.getCampaignId())
+            execute(getInsertQuery(CAMPAIGN_MEMBER_TABLE, getTtl())
+                    .value(CAMPAIGN_ID, member.getCampaignId())
                     .value(ACCOUNT_ID, member.getAccountId())
                     .value(CAMPAIGN_MEMBER_DATA, memberAsBytes)
-                    .value(JSON_COLUMN_NAME, json);
-            execute(insert, "insert");
+                    .value(JSON_COLUMN_NAME, json), "insert");
         } finally {
             releaseBuffer(memberAsBytes);
         }
     }
 
     private void persistAlias(PromoCampaignMember member) throws CommonException {
-        Insert insert = getInsertQuery(PROMO_MEMBER_ALIASES_TABLE, getTtl());
-        insert.value(CAMPAIGN_ID, member.getCampaignId())
+        ResultSet resultSet = execute(getInsertQuery(PROMO_MEMBER_ALIASES_TABLE, getTtl())
+                .value(CAMPAIGN_ID, member.getCampaignId())
                 .value(BANK_ID, member.getBankId())
                 .value(ALIAS_NAME, member.getDisplayName())
                 .value(ACCOUNT_ID, member.getAccountId())
-                .ifNotExists();
-        ResultSet resultSet = execute(insert, "persistAlias");
+                .ifNotExists(), "persistAlias");
         if (!resultSet.wasApplied()) {
             Long existAccountId = getPromoAccountId(member.getCampaignId(), member.getBankId(), member.getDisplayName());
             LOG.error("persistAlias: alias already exist, campaignId={}, accountId={}, alias={}, existAccountId={}", member.getCampaignId(),
@@ -122,24 +117,24 @@ public class CassandraPromoCampaignMembersPersister extends AbstractCassandraPer
     }
 
     public Map<Long, String> getAllPromoAliases(long promoId) {
-        Select select = getSelectColumnsQuery(PROMO_MEMBER_ALIASES_TABLE, ALIAS_NAME, ACCOUNT_ID);
-        select.where(eq(CAMPAIGN_ID, promoId));
-        ResultSet resultSet = execute(select, "getAllPromoAliases");
+        ResultSet resultSet = execute(getSelectColumnsQuery(PROMO_MEMBER_ALIASES_TABLE, ALIAS_NAME, ACCOUNT_ID)
+                .where(eq(CAMPAIGN_ID, promoId)), "getAllPromoAliases");
         return convert(resultSet);
     }
 
     public Long getPromoAccountId(long promoId, long bankId, String alias) {
-        Select select = getSelectColumnsQuery(PROMO_MEMBER_ALIASES_TABLE, ACCOUNT_ID);
-        select.where(eq(CAMPAIGN_ID, promoId)).and(eq(BANK_ID, bankId)).and(eq(ALIAS_NAME, alias));
-        ResultSet resultSet = execute(select, "getPromoAccountId");
+        ResultSet resultSet = execute(getSelectColumnsQuery(PROMO_MEMBER_ALIASES_TABLE, ACCOUNT_ID)
+                .where(eq(CAMPAIGN_ID, promoId))
+                .and(eq(BANK_ID, bankId))
+                .and(eq(ALIAS_NAME, alias)), "getPromoAccountId");
         Row row = resultSet.one();
         return row == null ? null : row.getLong(ACCOUNT_ID);
     }
 
     public Map<Long, String> getAllBankAliases(long promoId, long bankId) {
-        Select select = getSelectColumnsQuery(PROMO_MEMBER_ALIASES_TABLE, ALIAS_NAME, ACCOUNT_ID);
-        select.where(eq(CAMPAIGN_ID, promoId)).and(eq(BANK_ID, bankId));
-        ResultSet resultSet = execute(select, "getAllPromoAliases");
+        ResultSet resultSet = execute(getSelectColumnsQuery(PROMO_MEMBER_ALIASES_TABLE, ALIAS_NAME, ACCOUNT_ID)
+                .where(eq(CAMPAIGN_ID, promoId))
+                .and(eq(BANK_ID, bankId)), "getAllPromoAliases");
         return convert(resultSet);
     }
 
@@ -154,11 +149,9 @@ public class CassandraPromoCampaignMembersPersister extends AbstractCassandraPer
     }
 
     public PromoCampaignMember getPromoMember(long accountId, long campaignId) {
-        Select selectCampaignMember = getSelectColumnsQuery(CAMPAIGN_MEMBER_TABLE, CAMPAIGN_MEMBER_DATA, JSON_COLUMN_NAME);
-        selectCampaignMember
+        Row campaignMemberResult = execute(getSelectColumnsQuery(CAMPAIGN_MEMBER_TABLE, CAMPAIGN_MEMBER_DATA, JSON_COLUMN_NAME)
                 .where(eq(CAMPAIGN_ID, campaignId))
-                .and(eq(ACCOUNT_ID, accountId));
-        Row campaignMemberResult = execute(selectCampaignMember, "getOrCreatePromoMember:: selectCampaignMember").one();
+                .and(eq(ACCOUNT_ID, accountId)), "getOrCreatePromoMember:: selectCampaignMember").one();
         PromoCampaignMember campaignMember = null;
         if (campaignMemberResult != null) {
             String json = campaignMemberResult.getString(JSON_COLUMN_NAME);
@@ -177,7 +170,8 @@ public class CassandraPromoCampaignMembersPersister extends AbstractCassandraPer
     }
 
     public Iterable<PromoCampaignMember> getPromoCampaignMembersSafely(long promoCampaignId) {
-        Select selectCampaignMembers = getSelectColumnsQuery(CAMPAIGN_MEMBER_TABLE, CAMPAIGN_MEMBER_DATA, JSON_COLUMN_NAME);
+        com.datastax.driver.core.querybuilder.Select selectCampaignMembers =
+                getSelectColumnsQuery(CAMPAIGN_MEMBER_TABLE, CAMPAIGN_MEMBER_DATA, JSON_COLUMN_NAME);
         selectCampaignMembers.where(eq(CAMPAIGN_ID, promoCampaignId));
         selectCampaignMembers.setFetchSize(1000);
         return StreamUtils.asStream(execute(selectCampaignMembers, "getPromoCampaignMembersSafely"))
