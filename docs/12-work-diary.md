@@ -5968,3 +5968,8 @@
 - Added Project 02 closure/sign-off package document:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/09-runtime-renaming-closure-report-20260226.md`
 - Document includes final completion statement, validation protocol, evidence chain, latest commits, and intentional residual-token policy.
+
+### 2026-02-26 07:36 UTC
+- Added cross-project closure summary for both active modernization subprojects:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/PROJECTS-CLOSURE-SUMMARY-20260226.md`
+- Summary consolidates final status, closure artifacts, latest evidence anchors, and handover notes in one file.
