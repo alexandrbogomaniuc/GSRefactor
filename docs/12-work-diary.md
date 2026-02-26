@@ -6471,3 +6471,14 @@
   - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/32-hard-cut-m2-wave20-session-client-browser-report-20260226.md`
+
+### 2026-02-26 10:41 UTC
+- Completed Project 02 M2 Wave 21 after controlled rescope.
+- Aborted attempt: `WalletOperationInfo` migration required additional dependent type migrations and was rolled back to keep matrix integrity.
+- Final Wave 21 completed: migrated `AccountConstants` and `PlayerAction` package declarations to `com.abs`.
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-103948-hardcut-m2-wave21-account-constants-player-action`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/33-hard-cut-m2-wave21-account-constants-player-action-report-20260226.md`

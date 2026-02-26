@@ -1,0 +1,22 @@
+timestamp_utc=2026-02-26T10:41:10Z
+pre_scan_legacy_declarations=2
+post_scan_legacy_declarations=0
+post_scan_abs_declarations=2
+validation_success_commands=9
+validation_failed_commands=0
+
+scope=
+- com.dgphoenix.casino.common.cache.data.account.AccountConstants
+- com.dgphoenix.casino.common.cache.data.account.PlayerAction
+- package declaration migration only
+
+validation_set=
+- common install
+- common-wallet test
+- sb-utils test
+- promo persisters install
+- common persisters install
+- cassandra cache test
+- web-gs package
+- mp core/persistance package
+- runtime smoke

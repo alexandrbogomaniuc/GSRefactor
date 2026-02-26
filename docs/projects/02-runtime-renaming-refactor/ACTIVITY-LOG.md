@@ -696,3 +696,18 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-103510-hardcut-m2-wave20-session-client-browser`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/32-hard-cut-m2-wave20-session-client-browser-report-20260226.md`
+
+## 2026-02-26 10:41 UTC (M2 Wave 21 - AccountConstants + PlayerAction Completed)
+- Initial attempt (aborted): `WalletOperationInfo` migration failed due direct dependency chain to unchanged `WalletOperationStatus`/`WalletOperationType`; changes were rolled back before commit.
+- Final Wave 21 scope (completed):
+  - `com.dgphoenix.casino.common.cache.data.account.AccountConstants` -> `com.abs.casino.common.cache.data.account.AccountConstants`
+  - `com.dgphoenix.casino.common.cache.data.account.PlayerAction` -> `com.abs.casino.common.cache.data.account.PlayerAction`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/AccountConstants.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerAction.java`
+- Post-scan result: legacy declarations `0`, abs declarations `2` (scope files).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-103948-hardcut-m2-wave21-account-constants-player-action`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/33-hard-cut-m2-wave21-account-constants-player-action-report-20260226.md`
