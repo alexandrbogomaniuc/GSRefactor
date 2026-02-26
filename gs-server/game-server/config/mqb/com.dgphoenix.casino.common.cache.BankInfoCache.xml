@@ -67,46 +67,46 @@
           </entry>
           <entry>
               <string>COMMON_WALLET_AUTH_URL</string>
-			  <string>https://wallet.mqbase.com/authenticate</string>
+			  <string>http://gs:8080/config/stub/auth.jsp</string>
           </entry>
           <entry>
               <string>COMMON_WALLET_BALANCE_URL</string>
-			  <string>https://wallet.mqbase.com/balance</string>
+			  <string>http://gs:8080/config/stub/balance.jsp</string>
           </entry>
 		  <entry>
               <string>GET_FRIENDS_URL</string>
-			  <string>https://wallet.mqbase.com/getFriends</string>
+			  <string>http://gs:8080/empty.jsp</string>
           </entry>
 		  <entry>
               <string>UPDATE_PLAYERS_ROOMS_NUMBER_URL</string>
-			  <string>https://wallet.mqbase.com/updateRoomsPlayers</string>
+			  <string>http://gs:8080/empty.jsp</string>
           </entry>
           <entry>
             <string>UPDATE_PLAYER_STATUS_IN_PRIVATE_ROOM_URL</string>
-            <string>https://wallet.mqbase.com/updateStatusForPlayer</string>
+            <string>http://gs:8080/empty.jsp</string>
           </entry>
 		  <entry>
               <string>INVATE_PLAYERS_TO_PRIVATE_ROOM_URL</string>
-			  <string>https://wallet.mqbase.com/invitePlayersToPrivateRoom</string>
+			  <string>http://gs:8080/empty.jsp</string>
           </entry>
 		  <entry>
               <string>GET_PLAYERS_ONLINE_STATUS_URL</string>
-			  <string>https://wallet.mqbase.com/getOnlineStatus</string>
+			  <string>http://gs:8080/empty.jsp</string>
           </entry>
           <entry>
               <string>COMMON_WALLET_WAGER_URL</string>
               <!-- <string>http://gs1-stress.betsoftgaming.com/config/stub/wager_sleep.jsp</string> -->
-			  <string>https://wallet.mqbase.com/betResult</string>
+			  <string>http://gs:8080/config/stub/wager_sleep.jsp</string>
           </entry>
           <entry>
               <string>COMMON_WALLET_REFUND_URL</string>
               <!-- <string>http://gs1-stress.betsoftgaming.com/config/stub/refund.jsp</string> -->
-			  <string>https://wallet.mqbase.com/refundBet</string>
+			  <string>http://gs:8080/config/stub/refund.jsp</string>
           </entry>
           <entry>
               <string>START_GAME_DOMAIN</string>
               <!-- <string>default-stress.betsoftgaming.com</string> -->
-			  <string>default.mqbase.com</string>
+			  <string>localhost</string>
           </entry>
 
           <entry>
@@ -195,7 +195,7 @@
         </entry>
         <entry>
           <string>NOTIFICATION_CLOSE_GAME_PROCESSOR_URL</string>
-		  <string>https://wallet.mqbase.com/setGameSessionSummary</string>
+		  <string>http://gs:8080/empty.jsp</string>
         </entry>
         <entry>
           <string>NOTIFICATION_CLOSE_GAME_AUTH_PASS</string>
@@ -207,7 +207,7 @@
         </entry>
         <entry>
           <string>NOTIFICATION_ROOM_WAS_DEACTIVATED_URLtest</string>
-		  <string>https://wallet.mqbase.com.com/privateRoomDeactivated</string>
+		  <string>http://gs:8080/empty.jsp</string>
         </entry>
         <entry>
           <string>NOTIFICATION_ROOM_WAS_DEACTIVATED_AUTH_PASS</string>
@@ -399,19 +399,19 @@
         </entry>
         <entry>
           <string>MP_LOBBY_WS_URL</string>
-          <string>games-mp.mqbase.com</string>
+          <string>127.0.0.1:16300</string>
         </entry>
         <entry>
           <string>ALLOWED_ORIGIN</string>
-          <string>https://mqbase.com</string>
+          <string>http://localhost</string>
         </entry>
         <entry>
           <string>FATAL_ERROR_PAGE_URL</string>
-          <string>https://mqbase.com/game_error</string>
+          <string>http://localhost/error_pages/error.jsp</string>
         </entry>
         <entry>
           <string>ALLOWED_DOMAINS</string>
-          <string>mqbase.com</string>
+          <string>localhost</string>
         </entry>
         <entry>
           <string>STANDALONE_LOBBY_JSP</string>
@@ -683,7 +683,7 @@
         </entry>
         <entry>
           <string>FR_BONUS_WIN_URL</string>
-          <string>https://txs.maxquest.com/omegatron/spr/betsoftWallet/bonusWin</string>
+          <string>http://gs:8080/config/stub/bonus/frbWin.jsp</string>
         </entry>
         <entry>
           <string>BANK_FEEDS_PASSKEY</string>
@@ -802,46 +802,46 @@
           <entry>
               <string>COMMON_WALLET_AUTH_URL</string>
               <!-- <string>http://gs1-stress.betsoftgaming.com/config/stub/auth.jsp</string> -->
-			  <string>https://wallet.mqbase.com/authenticate</string>
+			  <string>http://gs:8080/config/stub/auth.jsp</string>
           </entry>
           <entry>
               <string>COMMON_WALLET_BALANCE_URL</string>
-			  <string>https://wallet.mqbase.com/balance</string>
+			  <string>http://gs:8080/config/stub/balance.jsp</string>
           </entry>
 		  <entry>
               <string>GET_FRIENDS_URL</string>
-			  <string>https://wallet.mqbase.com/getFriends</string>
+			  <string>http://gs:8080/empty.jsp</string>
           </entry>
 		  <entry>
               <string>UPDATE_PLAYERS_ROOMS_NUMBER_URL</string>
-			  <string>https://wallet.mqbase.com/updateRoomsPlayers</string>
+			  <string>http://gs:8080/empty.jsp</string>
           </entry>
 		  <entry>
               <string>UPDATE_PLAYER_STATUS_IN_PRIVATE_ROOM_URL</string>
-			  <string>https://wallet.mqbase.com/updateStatusForPlayer</string>
+			  <string>http://gs:8080/empty.jsp</string>
           </entry>
 		  <entry>
               <string>INVATE_PLAYERS_TO_PRIVATE_ROOM_URL</string>
-			  <string>https://wallet.mqbase.com/invitePlayersToPrivateRoom</string>
+			  <string>http://gs:8080/empty.jsp</string>
           </entry>
 		  <entry>
               <string>GET_PLAYERS_ONLINE_STATUS_URL</string>
-			  <string>https://wallet.mqbase.com/getOnlineStatus</string>
+			  <string>http://gs:8080/empty.jsp</string>
           </entry>
           <entry>
               <string>COMMON_WALLET_WAGER_URL</string>
               <!-- <string>http://gs1-stress.betsoftgaming.com/config/stub/wager_sleep.jsp</string> -->
-			  <string>https://wallet.mqbase.com/betResult</string>
+			  <string>http://gs:8080/config/stub/wager_sleep.jsp</string>
           </entry>
           <entry>
               <string>COMMON_WALLET_REFUND_URL</string>
               <!-- <string>http://gs1-stress.betsoftgaming.com/config/stub/refund.jsp</string> -->
-			  <string>https://wallet.mqbase.com/refundBet</string>
+			  <string>http://gs:8080/config/stub/refund.jsp</string>
           </entry>
           <entry>
               <string>START_GAME_DOMAIN</string>
               <!-- <string>default-stress.betsoftgaming.com</string> -->
-			  <string>default.mqbase.com</string>
+			  <string>localhost</string>
           </entry>
         <entry>
           <string>USE_SAME_DOMAIN_FOR_START_GAME</string>
@@ -929,7 +929,7 @@
         </entry>
         <entry>
           <string>NOTIFICATION_CLOSE_GAME_PROCESSOR_URL</string>
-		  <string>https://wallet.mqbase.com/setGameSessionSummary</string>
+		  <string>http://gs:8080/empty.jsp</string>
         </entry>
         <entry>
           <string>NOTIFICATION_CLOSE_GAME_AUTH_PASS</string>
@@ -941,7 +941,7 @@
         </entry>
         <entry>
           <string>NOTIFICATION_ROOM_WAS_DEACTIVATED_URLtest</string>
-		  <string>https://wallet.mqbase.com.com/privateRoomDeactivated</string>
+		  <string>http://gs:8080/empty.jsp</string>
         </entry>
         <entry>
           <string>NOTIFICATION_ROOM_WAS_DEACTIVATED_AUTH_PASS</string>
@@ -1137,19 +1137,19 @@
         </entry>
         <entry>
           <string>MP_LOBBY_WS_URL</string>
-          <string>games-mp.mqbase.com</string>
+          <string>127.0.0.1:16300</string>
         </entry>
         <entry>
           <string>ALLOWED_ORIGIN</string>
-          <string>https://mqbase.com</string>
+          <string>http://localhost</string>
         </entry>
         <entry>
           <string>FATAL_ERROR_PAGE_URL</string>
-          <string>https://mqbase.com/game_error</string>
+          <string>http://localhost/error_pages/error.jsp</string>
         </entry>
         <entry>
           <string>ALLOWED_DOMAINS</string>
-          <string>mqbase.com</string>
+          <string>localhost</string>
         </entry>
         <entry>
           <string>STANDALONE_LOBBY_JSP</string>
@@ -1421,7 +1421,7 @@
         </entry>
         <entry>
           <string>FR_BONUS_WIN_URL</string>
-          <string>https://txs.maxquest.com/omegatron/spr/betsoftWallet/bonusWin</string>
+          <string>http://gs:8080/config/stub/bonus/frbWin.jsp</string>
         </entry>
         <entry>
           <string>BANK_FEEDS_PASSKEY</string>

@@ -577,7 +577,7 @@
         </entry>
         <entry>
           <string>FR_BONUS_WIN_URL</string>
-          <string>https://txs.maxquest.com/omegatron/spr/betsoftWallet/bonusWin</string>
+          <string>http://gs:8080/config/stub/bonus/frbWin.jsp</string>
         </entry>
         <entry>
           <string>BANK_FEEDS_PASSKEY</string>

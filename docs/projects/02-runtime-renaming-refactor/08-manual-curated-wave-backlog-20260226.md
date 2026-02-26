@@ -80,5 +80,9 @@ Method:
 ## Current completion snapshot (Project 02)
 - Phase 0 refresh: complete.
 - Phase 1 automatic path: completed and then blocked by safety gate (guardrail implemented).
-- Manual wave execution: not started.
-- Estimated completion: 35%.
+- Manual wave execution:
+  - M1.1 complete (`ServerConfigurationAction` alias-aware class loading)
+  - M1.2 complete (`sb-utils` XML/factory alias-aware class loading)
+  - M1.3 complete (`ServerConfigurationForm` class literal cleanup)
+  - M2.1 complete (bank template third-party URL sanitization for local/refactor profiles)
+- Estimated completion: 60%.

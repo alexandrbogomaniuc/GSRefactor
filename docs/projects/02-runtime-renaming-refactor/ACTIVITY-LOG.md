@@ -109,3 +109,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - removed one additional reflection hotspot from rename-sensitive runtime path.
   - Project 02 completion estimate updated to `50%`.
+
+## 2026-02-26 06:48 UTC (Mini-Wave M2.1)
+- Executed bank-template sanitization wave to remove third-party integration URLs from active refactor profiles.
+- Changed files:
+  - `gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml`
+  - `gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BankInfoCache.xml`
+- Change detail:
+  - replaced `wallet.mqbase.com` endpoints with local stub/noop endpoints (`http://gs:8080/config/stub/...`, `http://gs:8080/empty.jsp`),
+  - replaced `FR_BONUS_WIN_URL` external endpoint with local stub endpoint,
+  - switched external allow-list/origin/fatal-page values to localhost values,
+  - set `MP_LOBBY_WS_URL` to local mapped MP endpoint `127.0.0.1:16300` for local stack usage.
+- Validation PASS:
+  - full build/test matrix (sb-utils, promo/common-persisters, cache tests, web-gs package, mp subset package)
+  - runtime audit script: `bank-template-audit.mjs` for banks `6275,6276` in multiplayer mode -> PASS (third-party URLs=0, allow-list violations=0).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-064800/`
+- Outcome:
+  - active local/refactor bank templates no longer depend on external third-party wallet/social endpoints.
+  - Project 02 completion estimate updated to `60%`.

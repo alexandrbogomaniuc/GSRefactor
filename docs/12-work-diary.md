@@ -5847,3 +5847,13 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-064238/`
 - Completion update:
   - Project 02 estimated at `50%`.
+
+### 2026-02-26 06:48 UTC
+- GSRefactor Project 02 advanced with manual mini-wave M2.1 (bank template URL sanitization).
+- Updated local/refactor bank templates to remove third-party integration URLs and use local stub/noop endpoints.
+- Ran full validation matrix: PASS (sb-utils tests, promo/common-persisters, cache tests, web-gs package, mp subset package).
+- Ran runtime bank template audit on running support page: PASS for banks `6275` and `6276` (no third-party URLs/allow-list violations).
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-064800/`
+- Completion update:
+  - Project 02 estimated at `60%`.
