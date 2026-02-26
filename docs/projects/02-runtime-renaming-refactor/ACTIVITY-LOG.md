@@ -609,3 +609,18 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-100936-hardcut-m2-wave14-periodic-report`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/26-hard-cut-m2-wave14-periodic-report-report-20260226.md`
+
+## 2026-02-26 10:20 UTC (M2 Wave 15 - MassAwardRestriction Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.bonus.restriction.MassAwardRestriction` -> `com.abs.casino.common.cache.data.bonus.restriction.MassAwardRestriction`
+- Final changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java`
+  - `gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraMassAwardRestrictionPersister.java`
+- Scoped scan result (wave scope only): legacy refs `0`, abs refs `1`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-101415-hardcut-m2-wave15-mass-award-restriction`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/27-hard-cut-m2-wave15-mass-award-restriction-report-20260226.md`
+- Execution note:
+  - attempted boundary extension into `common-gs`/JSP imports was reverted because of existing baseline compile blocker in `common-gs` (`BasicTransactionDataStorageHelper` `PROTOCOL_VERSION`). Wave was intentionally re-scoped to keep the main validation matrix green.

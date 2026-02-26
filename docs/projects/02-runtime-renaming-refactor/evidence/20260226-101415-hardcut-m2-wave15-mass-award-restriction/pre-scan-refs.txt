@@ -1,0 +1,1 @@
+HEAD:gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraMassAwardRestrictionPersister.java:6:import com.dgphoenix.casino.common.cache.data.bonus.restriction.MassAwardRestriction;

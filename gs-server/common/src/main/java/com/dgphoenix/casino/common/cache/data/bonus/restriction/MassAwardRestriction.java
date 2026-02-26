@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data.bonus.restriction;
+package com.abs.casino.common.cache.data.bonus.restriction;
 
 import com.dgphoenix.casino.common.cache.Identifiable;
 import com.dgphoenix.casino.common.cache.data.account.IAccountInfo;

@@ -6409,3 +6409,15 @@
 - Evidence:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-100936-hardcut-m2-wave14-periodic-report`
 - Next: commit/push Wave 14 and continue Wave 15.
+
+### 2026-02-26 10:20 UTC
+- Continued Project 02 hard-cut migration and completed M2 Wave 15.
+- Migrated `MassAwardRestriction` package declaration to `com.abs` and updated dependent cassandra persister import.
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-101415-hardcut-m2-wave15-mass-award-restriction`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Note:
+  - a temporary boundary attempt touching `common-gs`/JSP imports was rolled back after confirming existing baseline blocker in `common-gs` (`PROTOCOL_VERSION`) is unrelated to this wave.
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/27-hard-cut-m2-wave15-mass-award-restriction-report-20260226.md`
