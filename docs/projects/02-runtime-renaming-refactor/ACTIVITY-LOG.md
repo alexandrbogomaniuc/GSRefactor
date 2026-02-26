@@ -1512,3 +1512,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `1`.
   - global tracked source declarations now `2131` remaining (`2277` baseline, `146` reduced).
+
+## 2026-02-26 16:20 UTC (Hard-Cut M2 Wave 74)
+- Executed hard-cut namespace wave for `GetBalanceForm`.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/GetBalanceForm.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/GetBalanceAction.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.GetBalanceForm` to `com.abs.casino.actions.api.GetBalanceForm`.
+  - updated Struts form-bean type to `com.abs` for `GetBalanceForm`.
+  - removed legacy FQCN import from `GetBalanceAction`.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-161441-hardcut-m2-wave74-get-balance-form/`
+- Outcome:
+  - wave scope legacy refs reduced from `2` to `0`, `com.abs` refs now `1`.
+  - global tracked source declarations now `2130` remaining (`2277` baseline, `147` reduced).

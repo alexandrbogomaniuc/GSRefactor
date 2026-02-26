@@ -7009,3 +7009,13 @@
   - migrated API action package to `com.abs`, updated Struts mapping, added form compatibility import, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 74 with next low-fanout API declaration.
+
+### 2026-02-26 16:20 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 74 (`GetBalanceForm`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-161441-hardcut-m2-wave74-get-balance-form/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/86-hard-cut-m2-wave74-get-balance-form-report-20260226.md`
+- Result:
+  - migrated API form package to `com.abs`, updated Struts form-bean type, removed legacy FQCN import in action, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 75 with next low-fanout API declaration.

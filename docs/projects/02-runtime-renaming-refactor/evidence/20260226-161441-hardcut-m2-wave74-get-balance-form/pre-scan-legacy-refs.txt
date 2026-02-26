@@ -1,0 +1,2 @@
+HEAD:gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/GetBalanceAction.java:4:import com.dgphoenix.casino.actions.api.GetBalanceForm;
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:39:        <form-bean name="GetBalanceForm" type="com.dgphoenix.casino.actions.api.GetBalanceForm"/>

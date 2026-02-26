@@ -1,0 +1,1 @@
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:39:        <form-bean name="GetBalanceForm" type="com.abs.casino.actions.api.GetBalanceForm"/>
