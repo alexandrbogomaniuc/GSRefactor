@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.web.login.cw;
+package com.abs.casino.common.web.login.cw;
 
 import com.dgphoenix.casino.common.web.BasicGameServerResponse;
 

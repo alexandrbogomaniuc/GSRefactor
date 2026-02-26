@@ -1024,3 +1024,15 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-124705-hardcut-m2-wave41-ct-lobby-login-response`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/53-hard-cut-m2-wave41-ct-lobby-login-response-report-20260226.md`
+
+## 2026-02-26 12:55 UTC (M2 Wave 42 - CWGuestLoginGameServerResponse Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.web.login.cw.CWGuestLoginGameServerResponse` -> `com.abs.casino.common.web.login.cw.CWGuestLoginGameServerResponse`
+- Changed file:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/web/login/cw/CWGuestLoginGameServerResponse.java`
+- Post-scan result: legacy refs `0`, abs refs `1` (pre-scan legacy refs `1`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-125201-hardcut-m2-wave42-cw-guest-login-response`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/54-hard-cut-m2-wave42-cw-guest-login-response-report-20260226.md`
