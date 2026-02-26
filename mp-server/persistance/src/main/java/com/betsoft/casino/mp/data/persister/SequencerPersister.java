@@ -3,9 +3,6 @@ package com.betsoft.casino.mp.data.persister;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.querybuilder.Update;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -97,11 +94,12 @@ public class SequencerPersister extends AbstractCassandraPersister<String, Strin
             boolean success = false;
             while (!success) {
                 //reserve block
-                Update updateQuery = getUpdateQuery();
-                updateQuery.where(getSimpleKeyClause(name)).
-                        with(QueryBuilder.set(VALUE_COLUMN_NAME, baseValue + block)).
-                        onlyIf(eq(VALUE_COLUMN_NAME, currentValue));
-                ResultSet resultSet = executeWithCheckTimeout(updateQuery, "allocateNextBlock");
+                ResultSet resultSet = executeWithCheckTimeout(
+                        getUpdateQuery()
+                                .where(getSimpleKeyClause(name))
+                                .with(set(VALUE_COLUMN_NAME, baseValue + block))
+                                .onlyIf(eq(VALUE_COLUMN_NAME, currentValue)),
+                        "allocateNextBlock");
                 success = resultSet.wasApplied();
                 if (!success) {
                     attemptsCount++;
@@ -149,9 +147,10 @@ public class SequencerPersister extends AbstractCassandraPersister<String, Strin
 
 
     public Long getCurrentValue(String sequencerName) {
-        Select query = QueryBuilder.select(VALUE_COLUMN_NAME).
-                from(getMainColumnFamilyName()).where(eq("KEY", sequencerName)).limit(1);
-        ResultSet rows = execute(query, "getCurrentValue");
+        ResultSet rows = execute(getSelectColumnsQuery(VALUE_COLUMN_NAME)
+                        .where(eq("KEY", sequencerName))
+                        .limit(1),
+                "getCurrentValue");
         Row row = rows.one();
         return row == null || row.isNull(VALUE_COLUMN_NAME) ? null : row.getLong(VALUE_COLUMN_NAME);
     }
@@ -197,10 +196,11 @@ public class SequencerPersister extends AbstractCassandraPersister<String, Strin
         if (!success) {
             int attemptsCount = 0;
             while (!success) {
-                Update query = getUpdateQuery(seq.getName());
-                query.with(QueryBuilder.set(VALUE_COLUMN_NAME, newDesiredValue));
-                query.onlyIf(eq(VALUE_COLUMN_NAME, newCurrentValue));
-                ResultSet resultSet = executeWithCheckTimeout(query, "persist[update]");
+                ResultSet resultSet = executeWithCheckTimeout(
+                        getUpdateQuery(seq.getName())
+                                .with(set(VALUE_COLUMN_NAME, newDesiredValue))
+                                .onlyIf(eq(VALUE_COLUMN_NAME, newCurrentValue)),
+                        "persist[update]");
 
                 success = resultSet.wasApplied();
                 if (success) {

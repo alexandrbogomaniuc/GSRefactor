@@ -6,8 +6,6 @@ import com.datastax.driver.core.ConsistencyLevel;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -64,12 +62,12 @@ public class GameRoomSnapshotPersister extends AbstractCassandraPersister<Long, 
         ByteBuffer byteBuffer = TABLE.serializeWithClassToBytes(snapshot);
         String json = TABLE.serializeWithClassToJson(snapshot);
         try {
-            Insert query = getInsertQuery()
-                    .value(ROOM_ID_COLUMN, snapshot.getRoomId())
-                    .value(ROUND_ID_COLUMN, snapshot.getRoundId())
-                    .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json);
-            execute(query, "persist", ConsistencyLevel.LOCAL_QUORUM);
+            execute(getInsertQuery()
+                            .value(ROOM_ID_COLUMN, snapshot.getRoomId())
+                            .value(ROUND_ID_COLUMN, snapshot.getRoundId())
+                            .value(SERIALIZED_COLUMN_NAME, byteBuffer)
+                            .value(JSON_COLUMN_NAME, json),
+                    "persist", ConsistencyLevel.LOCAL_QUORUM);
         } finally {
             releaseBuffer(byteBuffer);
         }
@@ -77,10 +75,10 @@ public class GameRoomSnapshotPersister extends AbstractCassandraPersister<Long, 
 
     @Override
     public IGameRoomSnapshot get(long roomId, long roundId) {
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where(eq(ROOM_ID_COLUMN, roomId)).
-                and(eq(ROUND_ID_COLUMN, roundId));
-        ResultSet resultSet = execute(query, "get");
+        ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                        .where(eq(ROOM_ID_COLUMN, roomId))
+                        .and(eq(ROUND_ID_COLUMN, roundId)),
+                "get");
         Row row = resultSet.one();
         if (row == null) {
             return null;

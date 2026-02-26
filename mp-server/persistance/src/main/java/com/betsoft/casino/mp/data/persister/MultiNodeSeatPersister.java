@@ -4,9 +4,6 @@ import com.betsoft.casino.mp.model.IMultiNodeSeat;
 import com.betsoft.casino.mp.service.IMultiNodeSeatService;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -94,22 +91,21 @@ public class MultiNodeSeatPersister extends AbstractCassandraPersister<String, S
 
     @Override
     public Iterable<String> loadAllKeys() {
-        Select query = QueryBuilder.select(KEY).from(getMainColumnFamilyName());
-        ResultSet resultSet = execute(query, "loadAllKeys");
+        ResultSet resultSet = execute(getSelectColumnsQuery(KEY), "loadAllKeys");
         return StreamSupport.stream(resultSet.spliterator(), false)
                 .map(row -> row.getString(KEY))
                 .collect(toSet());
     }
 
     public void persist(IMultiNodeSeat seat) {
-        Insert query = getInsertQuery();
-        query.value(KEY, getKey(seat));
         ByteBuffer buffer = TABLE.serializeWithClassToBytes(seat);
         String json = TABLE.serializeWithClassToJson(seat);;
         try {
-            query.value(SERIALIZED_COLUMN_NAME, buffer);
-            query.value(JSON_COLUMN_NAME, json);
-            execute(query, "persist");
+            execute(getInsertQuery()
+                            .value(KEY, getKey(seat))
+                            .value(SERIALIZED_COLUMN_NAME, buffer)
+                            .value(JSON_COLUMN_NAME, json),
+                    "persist");
         } finally {
             releaseBuffer(buffer);
         }

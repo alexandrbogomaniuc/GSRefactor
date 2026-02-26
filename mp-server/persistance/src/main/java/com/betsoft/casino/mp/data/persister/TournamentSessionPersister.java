@@ -6,8 +6,6 @@ import com.betsoft.casino.mp.service.ITournamentService;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -46,11 +44,11 @@ public class TournamentSessionPersister extends AbstractCassandraPersister<Long,
 
     @Override
     public TournamentSession get(long tournamentId, long accountId) {
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where(eq(TOURNAMENT_ID_COLUMN, tournamentId))
-                .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                .limit(1);
-        Row result = execute(query, "get").one();
+        Row result = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                        .where(eq(TOURNAMENT_ID_COLUMN, tournamentId))
+                        .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .limit(1),
+                "get").one();
         if (result == null) {
             return null;
         }
@@ -63,9 +61,9 @@ public class TournamentSessionPersister extends AbstractCassandraPersister<Long,
 
     @Override
     public List<ITournamentSession> getByTournament(long tournamentId) {
-        Select.Where query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME)
-                .where(eq(TOURNAMENT_ID_COLUMN, tournamentId));
-        ResultSet rows = execute(query, "getButTournament");
+        ResultSet rows = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME)
+                        .where(eq(TOURNAMENT_ID_COLUMN, tournamentId)),
+                "getButTournament");
         List<ITournamentSession> result = new ArrayList<>();
         for (Row row : rows) {
             TournamentSession session = TABLE.deserializeWithClassFromJson(row.getString(JSON_COLUMN_NAME));
@@ -89,12 +87,12 @@ public class TournamentSessionPersister extends AbstractCassandraPersister<Long,
         ByteBuffer byteBuffer = TABLE.serializeWithClassToBytes(session);
         String json = TABLE.serializeWithClassToJson(session);
         try {
-            Insert query = getInsertQuery()
-                    .value(TOURNAMENT_ID_COLUMN, session.getTournamentId())
-                    .value(ACCOUNT_ID_COLUMN, session.getAccountId())
-                    .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json);
-            execute(query, "persist");
+            execute(getInsertQuery()
+                            .value(TOURNAMENT_ID_COLUMN, session.getTournamentId())
+                            .value(ACCOUNT_ID_COLUMN, session.getAccountId())
+                            .value(SERIALIZED_COLUMN_NAME, byteBuffer)
+                            .value(JSON_COLUMN_NAME, json),
+                    "persist");
         } finally {
             releaseBuffer(byteBuffer);
         }

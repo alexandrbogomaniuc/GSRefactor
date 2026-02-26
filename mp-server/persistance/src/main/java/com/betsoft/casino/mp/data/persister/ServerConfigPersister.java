@@ -4,8 +4,6 @@ import com.betsoft.casino.mp.service.ServerConfig;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -51,8 +49,7 @@ public class ServerConfigPersister extends AbstractCassandraPersister<Integer, S
     }
 
     public Set<Integer> loadAllKeys() {
-        Select query = QueryBuilder.select(KEY).from(getMainColumnFamilyName());
-        ResultSet resultSet = execute(query, "loadAllKeys");
+        ResultSet resultSet = execute(getSelectColumnsQuery(KEY), "loadAllKeys");
         return StreamSupport.stream(resultSet.spliterator(), false)
                 .map(row -> row.getInt(KEY))
                 .collect(toSet());

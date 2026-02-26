@@ -6,9 +6,6 @@ import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.querybuilder.Truncate;
-import com.datastax.driver.core.querybuilder.Update;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -61,15 +58,15 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
         ByteBuffer byteBuffer = TABLE.serializeWithClassToBytes(weapons);
         String json = TABLE.serializeToMapJson(weapons, Integer.class, Integer.class);
         try {
-            Update.Assignments update = getUpdateQuery()
-                    .where(eq(BANK_ID_COLUMN, bankId))
-                    .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                    .and(eq(GAMEID_COLUMN, gameId))
-                    .and(eq(MODE_COLUMN, mode))
-                    .and(eq(STAKE_COLUMN, stake.getValue()))
-                    .with(set(WEAPONS_COLUMN, byteBuffer))
-                    .and(set(JSON_COLUMN_NAME, json));
-            execute(update, "saveWeapons");
+            execute(getUpdateQuery()
+                            .where(eq(BANK_ID_COLUMN, bankId))
+                            .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                            .and(eq(GAMEID_COLUMN, gameId))
+                            .and(eq(MODE_COLUMN, mode))
+                            .and(eq(STAKE_COLUMN, stake.getValue()))
+                            .with(set(WEAPONS_COLUMN, byteBuffer))
+                            .and(set(JSON_COLUMN_NAME, json)),
+                    "saveWeapons");
         } finally {
             releaseBuffer(byteBuffer);
         }
@@ -81,30 +78,29 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
         ByteBuffer byteBuffer = SPECIAL_MODE_TABLE.serializeWithClassToBytes(weapons);
         String json = SPECIAL_MODE_TABLE.serializeToMapJson(weapons, Integer.class, Integer.class);
         try {
-            ;
-            Update.Assignments update = QueryBuilder.update(SPECIAL_MODE_TABLE.getTableName())
-                    .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
-                    .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                    .and(eq(GAMEID_COLUMN, gameId))
-                    .and(eq(MODE_COLUMN, mode))
-                    .and(eq(STAKE_COLUMN, stake.getValue()))
-                    .with(set(WEAPONS_COLUMN, byteBuffer))
-                    .and(set(JSON_COLUMN_NAME, json));
-            execute(update, "saveSpecialModeWeapons");
+            execute(QueryBuilder.update(SPECIAL_MODE_TABLE.getTableName())
+                            .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
+                            .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                            .and(eq(GAMEID_COLUMN, gameId))
+                            .and(eq(MODE_COLUMN, mode))
+                            .and(eq(STAKE_COLUMN, stake.getValue()))
+                            .with(set(WEAPONS_COLUMN, byteBuffer))
+                            .and(set(JSON_COLUMN_NAME, json)),
+                    "saveSpecialModeWeapons");
         } finally {
             releaseBuffer(byteBuffer);
         }
     }
 
     public Map<Integer, Integer> loadWeapons(long bankId, long accountId, int mode, Money stake, long gameId) {
-        Select query = getSelectColumnsQuery(TABLE, WEAPONS_COLUMN, JSON_COLUMN_NAME)
-                .where(eq(BANK_ID_COLUMN, bankId))
-                .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                .and(eq(GAMEID_COLUMN, gameId))
-                .and(eq(MODE_COLUMN, mode))
-                .and(eq(STAKE_COLUMN, stake.getValue()))
-                .limit(1);
-        Row result = execute(query, "loadWeapons").one();
+        Row result = execute(getSelectColumnsQuery(TABLE, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+                        .where(eq(BANK_ID_COLUMN, bankId))
+                        .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .and(eq(GAMEID_COLUMN, gameId))
+                        .and(eq(MODE_COLUMN, mode))
+                        .and(eq(STAKE_COLUMN, stake.getValue()))
+                        .limit(1),
+                "loadWeapons").one();
         if (result != null) {
             String json = result.getString(JSON_COLUMN_NAME);
             Map<Integer, Integer> weapons = null;
@@ -122,14 +118,14 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
     @Override
     public Map<Integer, Integer> loadSpecialModeWeapons(long tournamentOrBonusId, long accountId, int mode,
                                                         Money stake, long gameId) {
-        Select query = getSelectColumnsQuery(SPECIAL_MODE_TABLE, WEAPONS_COLUMN, JSON_COLUMN_NAME)
-                .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
-                .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                .and(eq(GAMEID_COLUMN, gameId))
-                .and(eq(MODE_COLUMN, mode))
-                .and(eq(STAKE_COLUMN, stake.getValue()))
-                .limit(1);
-        Row result = execute(query, "loadSpecialModeWeapons").one();
+        Row result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+                        .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
+                        .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .and(eq(GAMEID_COLUMN, gameId))
+                        .and(eq(MODE_COLUMN, mode))
+                        .and(eq(STAKE_COLUMN, stake.getValue()))
+                        .limit(1),
+                "loadSpecialModeWeapons").one();
         if (result != null) {
             Map<Integer, Integer> weapons = SPECIAL_MODE_TABLE.deserializeToMapJson(result.getString(JSON_COLUMN_NAME), Integer.class, Integer.class);
             if (weapons == null) {
@@ -141,13 +137,13 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
     }
 
     public Map<Money, Map<Integer, Integer>> getAllWeapons(long bankId, long accountId, int mode, long gameId) {
-        Select.Where query = getSelectColumnsQuery(TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
-                .where(eq(BANK_ID_COLUMN, bankId))
-                .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                .and(eq(GAMEID_COLUMN, gameId))
-                .and(eq(MODE_COLUMN, mode));
         Map<Money, Map<Integer, Integer>> weapons = new HashMap<>();
-        ResultSet result = execute(query, "getAllWeapons");
+        ResultSet result = execute(getSelectColumnsQuery(TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+                        .where(eq(BANK_ID_COLUMN, bankId))
+                        .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .and(eq(GAMEID_COLUMN, gameId))
+                        .and(eq(MODE_COLUMN, mode)),
+                "getAllWeapons");
         if (result != null) {
             result.forEach(row -> {
                 Map<Integer, Integer> weaponsMap = SPECIAL_MODE_TABLE.deserializeToMapJson(row.getString(JSON_COLUMN_NAME), Integer.class, Integer.class);
@@ -163,13 +159,13 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
     @Override
     public Map<Money, Map<Integer, Integer>> getAllSpecialModeWeapons(long tournamentOrBonusId, long accountId,
                                                                       int mode, long gameId) {
-        Select.Where query = getSelectColumnsQuery(SPECIAL_MODE_TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
-                .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
-                .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                .and(eq(GAMEID_COLUMN, gameId))
-                .and(eq(MODE_COLUMN, mode));
         Map<Money, Map<Integer, Integer>> weapons = new HashMap<>();
-        ResultSet result = execute(query, "getAllSpecialModeWeapons");
+        ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+                        .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
+                        .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .and(eq(GAMEID_COLUMN, gameId))
+                        .and(eq(MODE_COLUMN, mode)),
+                "getAllSpecialModeWeapons");
         if (result != null) {
             result.forEach(row -> {
                 Map<Integer, Integer> weaponsMap = SPECIAL_MODE_TABLE.deserializeToMapJson(row.getString(JSON_COLUMN_NAME), Integer.class, Integer.class);
@@ -183,13 +179,13 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
     }
 
     public Map<Long, Map<Integer, Integer>> getAllWeaponsLong(long bankId, long accountId, int mode, long gameId) {
-        Select.Where query = getSelectColumnsQuery(TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
-                .where(eq(BANK_ID_COLUMN, bankId))
-                .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                .and(eq(GAMEID_COLUMN, gameId))
-                .and(eq(MODE_COLUMN, mode));
         Map<Long, Map<Integer, Integer>> weapons = new HashMap<>();
-        ResultSet result = execute(query, "getAllWeaponsLong");
+        ResultSet result = execute(getSelectColumnsQuery(TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+                        .where(eq(BANK_ID_COLUMN, bankId))
+                        .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .and(eq(GAMEID_COLUMN, gameId))
+                        .and(eq(MODE_COLUMN, mode)),
+                "getAllWeaponsLong");
         if (result != null) {
             result.forEach(row -> {
                 String string = row.getString(JSON_COLUMN_NAME);
@@ -209,13 +205,13 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
     @Override
     public Map<Long, Map<Integer, Integer>> getSpecialModeAllWeaponsLong(long tournamentOrBonusId, long accountId,
                                                                          int mode, long gameId) {
-        Select.Where query = getSelectColumnsQuery(SPECIAL_MODE_TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
-                .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
-                .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                .and(eq(GAMEID_COLUMN, gameId))
-                .and(eq(MODE_COLUMN, mode));
         Map<Long, Map<Integer, Integer>> weapons = new HashMap<>();
-        ResultSet result = execute(query, "getSpecialModeAllWeaponsLong");
+        ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, STAKE_COLUMN, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+                        .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
+                        .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .and(eq(GAMEID_COLUMN, gameId))
+                        .and(eq(MODE_COLUMN, mode)),
+                "getSpecialModeAllWeaponsLong");
         if (result != null) {
             result.forEach(row -> {
                 Map<Integer, Integer> weaponsMap = SPECIAL_MODE_TABLE.deserializeToMapJson(row.getString(JSON_COLUMN_NAME), Integer.class, Integer.class);
@@ -230,14 +226,12 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
 
     @Override
     public void removeAllWeapons() {
-        Truncate truncate = QueryBuilder.truncate(CF_NAME);
-        execute(truncate, "removeAllWeapons");
+        execute(QueryBuilder.truncate(CF_NAME), "removeAllWeapons");
         getLog().debug("remove all weapons");
     }
 
     public void removeSpecialModeAllWeapons() {
-        Truncate truncate = QueryBuilder.truncate(SPECIAL_MODE_CF_NAME);
-        execute(truncate, "removeSpecialModeAllWeapons");
+        execute(QueryBuilder.truncate(SPECIAL_MODE_CF_NAME), "removeSpecialModeAllWeapons");
         getLog().debug("removeSpecialModeAllWeapons");
     }
 

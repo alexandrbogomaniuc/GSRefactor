@@ -658,3 +658,23 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
 - Completion snapshot after Wave 35:
   - GS-only: `18.85%` (`488 -> 396`)
   - GS+MP combined: `14.40%` (`639 -> 547`)
+
+## 2026-02-26 05:07 UTC (Wave 36)
+- Implemented a large MP persister migration wave to remove typed driver3 querybuilder declarations and switch to direct execute-chain flow.
+- Updated 20 files under `mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister` (weapons, quests, sequencer, notifications, room/sockets/tournament/bot/friends/online/private-room and related map-store persisters).
+- Validation matrix: PASS
+  - promo/persisters install
+  - common-persisters install
+  - cache tests (`63` pass)
+  - web-gs package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added under:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-050619/`
+- Inventory delta after Wave 36:
+  - GS `driver3_import_lines`: `396 -> 396` (no change)
+  - MP `driver3_import_lines`: `151 -> 105` (`-46`)
+  - Combined: `547 -> 501` (`-46`)
+- Completion snapshot:
+  - GS-only `18.85%`
+  - MP-only `30.46%`
+  - Combined GS+MP `21.60%`

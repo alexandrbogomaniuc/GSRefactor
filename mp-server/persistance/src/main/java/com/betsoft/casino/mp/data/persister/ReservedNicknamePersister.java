@@ -3,8 +3,6 @@ package com.betsoft.casino.mp.data.persister;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -54,9 +52,11 @@ public class ReservedNicknamePersister extends AbstractCassandraPersister<String
     }
 
     public void persist(String region, String nickname, long owner) {
-        Insert query = getInsertQuery();
-        query.value(REGION_COLUMN, region).value(NICK_NAME_COLUMN, nickname).value(OWNER_COLUMN, owner);
-        execute(query, "persist");
+        execute(getInsertQuery()
+                        .value(REGION_COLUMN, region)
+                        .value(NICK_NAME_COLUMN, nickname)
+                        .value(OWNER_COLUMN, owner),
+                "persist");
     }
 
     public boolean isExistForEntireSystem(String region, String nickname) {
@@ -64,9 +64,11 @@ public class ReservedNicknamePersister extends AbstractCassandraPersister<String
     }
 
     public boolean isExist(String region, String nickname, long owner) {
-        Select query = getSelectColumnsQuery(OWNER_COLUMN);
-        query.where().and(eq(REGION_COLUMN, region)).and(eq(NICK_NAME_COLUMN, nickname));
-        Row result = execute(query, "isExist").one();
+        Row result = execute(getSelectColumnsQuery(OWNER_COLUMN)
+                        .where()
+                        .and(eq(REGION_COLUMN, region))
+                        .and(eq(NICK_NAME_COLUMN, nickname)),
+                "isExist").one();
         return result != null && result.getLong(OWNER_COLUMN) == owner;
     }
 
@@ -75,12 +77,13 @@ public class ReservedNicknamePersister extends AbstractCassandraPersister<String
     }
 
     public Set<String> getNicknames(String region, Long owner) {
-        Select query = getSelectColumnsQuery(NICK_NAME_COLUMN);
-        Select.Where where = query.where().and(eq(REGION_COLUMN, region));
+        com.datastax.driver.core.querybuilder.Select.Where where = getSelectColumnsQuery(NICK_NAME_COLUMN)
+                .where()
+                .and(eq(REGION_COLUMN, region));
         if(owner != null) {
             where.and(eq(OWNER_COLUMN, owner)).allowFiltering();
         }
-        ResultSet rs = execute(query, "getNickNamesForRegion");
+        ResultSet rs = execute(where, "getNickNamesForRegion");
         Set<String> result = new HashSet<>(128);
         for (Row row : rs) {
             result.add(row.getString(NICK_NAME_COLUMN));

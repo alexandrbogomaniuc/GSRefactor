@@ -4,8 +4,6 @@ import com.betsoft.casino.mp.model.bots.BotConfigInfo;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -50,8 +48,7 @@ public class BotServiceConfigPersister extends AbstractCassandraPersister<String
     }
 
     public Set<String> loadAllKeys() {
-        Select query = QueryBuilder.select(KEY).from(getMainColumnFamilyName());
-        ResultSet resultSet = execute(query, "loadAllKeys");
+        ResultSet resultSet = execute(getSelectColumnsQuery(KEY), "loadAllKeys");
 
         return StreamSupport.stream(resultSet.spliterator(), false)
                 .map(row -> row.getString(KEY))
@@ -80,13 +77,10 @@ public class BotServiceConfigPersister extends AbstractCassandraPersister<String
     @Override
     public String load(String key) {
         assertInitialized();
-        Select query =
-                QueryBuilder.
-                        select(VALUE).
-                        from(getMainColumnFamilyName()).
-                        where(eq(getKeyColumnName(), key)).
-                        limit(1);
-        ResultSet rows = execute(query, "get");
+        ResultSet rows = execute(getSelectColumnsQuery(VALUE)
+                        .where(eq(getKeyColumnName(), key))
+                        .limit(1),
+                "get");
         Row row = rows.one();
         String result = null;
         if (row != null) {

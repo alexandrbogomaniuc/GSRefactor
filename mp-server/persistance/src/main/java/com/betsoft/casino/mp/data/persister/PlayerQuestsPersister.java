@@ -8,9 +8,6 @@ import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.querybuilder.Truncate;
-import com.datastax.driver.core.querybuilder.Update;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -80,15 +77,15 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
 
     @Override
     public PlayerQuests load(long bankId, long gameId, long accountId, Money stake, int mode) {
-        Select query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME);
-        query.where()
-                .and(eq(BANK_ID_COLUMN, bankId))
-                .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                .and(eq(GAME_ID_COLUMN, gameId))
-                .and(eq(MODE_COLUMN, mode))
-                .and(eq(STAKE_COLUMN, stake.getValue()))
-                .limit(1);
-        Row result = execute(query, "load").one();
+        Row result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
+                        .where()
+                        .and(eq(BANK_ID_COLUMN, bankId))
+                        .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .and(eq(GAME_ID_COLUMN, gameId))
+                        .and(eq(MODE_COLUMN, mode))
+                        .and(eq(STAKE_COLUMN, stake.getValue()))
+                        .limit(1),
+                "load").one();
 
         if (result == null) {
             return new PlayerQuests(new HashSet<>());
@@ -111,16 +108,16 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
                                               Money stake, int mode) {
         LOG.debug("loadSpecialModeQuests: specialId={}, bankId={}, accountId={}, gameId={}, stake(cents)={}, mode={} ",
                 tournamentOrBonusId, bankId, accountId, gameId, stake.toFloatCents(), mode);
-        Select query = getSelectColumnsQuery(SPECIAL_MODE_TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME);
-        query.where()
-                .and(eq(SM_ID_COLUMN, tournamentOrBonusId))
-                .and(eq(BANK_ID_COLUMN, bankId))
-                .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                .and(eq(GAME_ID_COLUMN, gameId))
-                .and(eq(MODE_COLUMN, mode))
-                .and(eq(STAKE_COLUMN, stake.getValue()))
-                .limit(1);
-        Row result = execute(query, "loadSpecialModeQuests").one();
+        Row result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
+                        .where()
+                        .and(eq(SM_ID_COLUMN, tournamentOrBonusId))
+                        .and(eq(BANK_ID_COLUMN, bankId))
+                        .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .and(eq(GAME_ID_COLUMN, gameId))
+                        .and(eq(MODE_COLUMN, mode))
+                        .and(eq(STAKE_COLUMN, stake.getValue()))
+                        .limit(1),
+                "loadSpecialModeQuests").one();
         if (result == null) {
             return new PlayerQuests(new HashSet<>());
         }
@@ -142,14 +139,13 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
     @Override
     public Set<IQuest> getAllQuests(long bankId, long accountId, int mode, long gameId) {
         LOG.debug("getAllQuests: bankId: {}, accountId: {}, mode: {}, gameId: {}", bankId, accountId, mode, gameId);
-        Select.Where query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
-                .where(eq(BANK_ID_COLUMN, bankId))
-                .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                .and(eq(GAME_ID_COLUMN, gameId))
-                .and(eq(MODE_COLUMN, mode));
-
         Set<IQuest> quests = new HashSet<>();
-        ResultSet result = execute(query, "getAllQuests");
+        ResultSet result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
+                        .where(eq(BANK_ID_COLUMN, bankId))
+                        .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .and(eq(GAME_ID_COLUMN, gameId))
+                        .and(eq(MODE_COLUMN, mode)),
+                "getAllQuests");
         if (result != null) {
             for (Row row : result) {
                 PlayerQuests playerQuests = TABLE.deserializeFromJson(row.getString(JSON_COLUMN_NAME),
@@ -170,15 +166,14 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
     public Set<IQuest> getAllSpecialModeQuests(long tournamentOrBonusId, long bankId, long accountId, long gameId, int mode) {
         LOG.debug("getAllSpecialModeQuests: tournamentOrBonusId={}, bankId={}, accountId={}, gameId={}, mode={}",
                 tournamentOrBonusId, bankId, accountId, gameId, mode);
-        Select.Where query = getSelectColumnsQuery(SPECIAL_MODE_TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
-                .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
-                .and(eq(BANK_ID_COLUMN, bankId))
-                .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                .and(eq(GAME_ID_COLUMN, gameId))
-                .and(eq(MODE_COLUMN, mode));
-
         Set<IQuest> quests = new HashSet<>();
-        ResultSet result = execute(query, "getAllSpecialModeQuests");
+        ResultSet result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
+                        .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
+                        .and(eq(BANK_ID_COLUMN, bankId))
+                        .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .and(eq(GAME_ID_COLUMN, gameId))
+                        .and(eq(MODE_COLUMN, mode)),
+                "getAllSpecialModeQuests");
         if (result != null) {
             for (Row row : result) {
                 PlayerQuests tournamentQuests = SPECIAL_MODE_TABLE
@@ -218,15 +213,15 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
         ByteBuffer buffer = TABLE.serializeToBytes(quests);
         String json = TABLE.serializeToJson(quests);;
         try {
-            Update.Assignments update = getUpdateQuery()
-                    .where(eq(BANK_ID_COLUMN, bankId))
-                    .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                    .and(eq(MODE_COLUMN, mode))
-                    .and(eq(GAME_ID_COLUMN, gameId))
-                    .and(eq(STAKE_COLUMN, stake.getValue()))
-                    .with(set(SERIALIZED_COLUMN_NAME, buffer))
-                    .and(set(JSON_COLUMN_NAME, json));
-            execute(update, "save");
+            execute(getUpdateQuery()
+                            .where(eq(BANK_ID_COLUMN, bankId))
+                            .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                            .and(eq(MODE_COLUMN, mode))
+                            .and(eq(GAME_ID_COLUMN, gameId))
+                            .and(eq(STAKE_COLUMN, stake.getValue()))
+                            .with(set(SERIALIZED_COLUMN_NAME, buffer))
+                            .and(set(JSON_COLUMN_NAME, json)),
+                    "save");
         } finally {
             releaseBuffer(buffer);
         }
@@ -255,16 +250,16 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
         ByteBuffer buffer = SPECIAL_MODE_TABLE.serializeToBytes(quests);
         String json = SPECIAL_MODE_TABLE.serializeToJson(quests);
         try {
-            Update.Assignments update = QueryBuilder.update(SPECIAL_MODE_CF_NAME)
-                    .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
-                    .and(eq(BANK_ID_COLUMN, bankId))
-                    .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                    .and(eq(GAME_ID_COLUMN, gameId))
-                    .and(eq(MODE_COLUMN, mode))
-                    .and(eq(STAKE_COLUMN, stake.getValue()))
-                    .with(set(SERIALIZED_COLUMN_NAME, buffer))
-                    .and(set(JSON_COLUMN_NAME, json));
-            execute(update, "saveSpecialModeQuests");
+            execute(QueryBuilder.update(SPECIAL_MODE_CF_NAME)
+                            .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
+                            .and(eq(BANK_ID_COLUMN, bankId))
+                            .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                            .and(eq(GAME_ID_COLUMN, gameId))
+                            .and(eq(MODE_COLUMN, mode))
+                            .and(eq(STAKE_COLUMN, stake.getValue()))
+                            .with(set(SERIALIZED_COLUMN_NAME, buffer))
+                            .and(set(JSON_COLUMN_NAME, json)),
+                    "saveSpecialModeQuests");
         } finally {
             releaseBuffer(buffer);
         }
@@ -272,14 +267,12 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
 
     @Override
     public void removeAllQuests(long gameId) {
-        Truncate truncate = QueryBuilder.truncate(CF_NAME);
-        execute(truncate, "removeAllQuests");
+        execute(QueryBuilder.truncate(CF_NAME), "removeAllQuests");
         getLog().debug("remove all quests");
     }
 
     public void removeSpecialModeAllQuests() {
-        Truncate truncate = QueryBuilder.truncate(SPECIAL_MODE_CF_NAME);
-        execute(truncate, "removeSpecialModeAllQuests");
+        execute(QueryBuilder.truncate(SPECIAL_MODE_CF_NAME), "removeSpecialModeAllQuests");
         getLog().debug("removeSpecialModeAllQuests");
     }
 

@@ -3,10 +3,7 @@ package com.betsoft.casino.mp.data.persister;
 import com.betsoft.casino.mp.model.IRoundResultNotification;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.querybuilder.Delete;
-import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -37,10 +34,11 @@ public class RoundResultNotificationPersister extends AbstractCassandraPersister
             ), ACCOUNT_ID_COLUMN, GAME_ID_COLUMN);
 
     public List<IRoundResultNotification> getNotifications(long accountId, long gameId) {
-        Select.Where select = getSelectAllColumnsQuery(TABLE)
-                .where(eq(ACCOUNT_ID_COLUMN, accountId))
-                .and(eq(GAME_ID_COLUMN, gameId));
-        ResultSet result = execute(select, "getNotifications");
+        ResultSet result = execute(
+                getSelectAllColumnsQuery(TABLE)
+                        .where(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .and(eq(GAME_ID_COLUMN, gameId)),
+                "getNotifications");
 
         List<IRoundResultNotification> notifications = new ArrayList<>();
         if (result != null) {
@@ -63,24 +61,24 @@ public class RoundResultNotificationPersister extends AbstractCassandraPersister
         ByteBuffer buffer = TABLE.serializeWithClassToBytes(notification);
         String json = TABLE.serializeWithClassToJson(notification);
         try {
-            Insert insert = getInsertQuery()
-                    .value(ACCOUNT_ID_COLUMN, accountId)
-                    .value(GAME_ID_COLUMN, gameId)
-                    .value(NOTIFICATION_ID_COLUMN, notification.getNotificationId())
-                    .value(SERIALIZED_COLUMN_NAME, buffer)
-                    .value(JSON_COLUMN_NAME, json);
-            execute(insert, "addNotification");
+            execute(getInsertQuery()
+                            .value(ACCOUNT_ID_COLUMN, accountId)
+                            .value(GAME_ID_COLUMN, gameId)
+                            .value(NOTIFICATION_ID_COLUMN, notification.getNotificationId())
+                            .value(SERIALIZED_COLUMN_NAME, buffer)
+                            .value(JSON_COLUMN_NAME, json),
+                    "addNotification");
         } finally {
             releaseBuffer(buffer);
         }
     }
 
     public void removeNotification(long accountId, long gameId, long notificationId) {
-        Delete.Where delete = QueryBuilder.delete().from(CF_NAME)
-                .where(eq(ACCOUNT_ID_COLUMN, accountId))
-                .and(eq(GAME_ID_COLUMN, gameId))
-                .and(eq(NOTIFICATION_ID_COLUMN, notificationId));
-        execute(delete, "removeNotification");
+        execute(QueryBuilder.delete().from(CF_NAME)
+                        .where(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .and(eq(GAME_ID_COLUMN, gameId))
+                        .and(eq(NOTIFICATION_ID_COLUMN, notificationId)),
+                "removeNotification");
     }
 
     @Override
