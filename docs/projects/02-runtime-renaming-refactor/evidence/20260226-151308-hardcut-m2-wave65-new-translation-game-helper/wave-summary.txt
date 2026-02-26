@@ -1,0 +1,7 @@
+Hard-Cut M2 Wave 65 - NewTranslationGameHelper
+Date(UTC): 2026-02-26
+Scope: com.dgphoenix.casino.common.games.NewTranslationGameHelper -> com.abs.casino.common.games.NewTranslationGameHelper
+PreLegacyRefs: 1
+PostLegacyRefs: 0
+PostAbsRefs: 2
+Validation: PASS (9/9)

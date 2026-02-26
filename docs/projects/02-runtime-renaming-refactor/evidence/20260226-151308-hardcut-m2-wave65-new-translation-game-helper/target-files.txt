@@ -1,0 +1,5 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:30:public class NewTranslationGameHelper extends AbstractStartGameHelper {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:31:    private static final Logger LOG = Logger.getLogger(NewTranslationGameHelper.class);
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:47:    public NewTranslationGameHelper(long gameId, String servletName, String title, String swfLocation,
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java:37:import com.abs.casino.common.games.NewTranslationGameHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java:200:                        return new NewTranslationGameHelper(gameId, servletName, title, swfLocation,

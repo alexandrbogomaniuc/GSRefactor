@@ -6919,3 +6919,13 @@
   - migrated interface package to `com.abs`, updated Java/JSP dependent imports, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 65 with next low-fanout `common.games` declaration.
+
+### 2026-02-26 15:15 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 65 (`NewTranslationGameHelper`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-151308-hardcut-m2-wave65-new-translation-game-helper/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/77-hard-cut-m2-wave65-new-translation-game-helper-report-20260226.md`
+- Result:
+  - migrated helper class package to `com.abs`, updated bounded imports, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 66 with `AbstractStartGameHelper` migration.
