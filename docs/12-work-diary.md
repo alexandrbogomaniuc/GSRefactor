@@ -6039,3 +6039,9 @@
 - Evidence logs captured under:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-074518/`
 - Handover docs updated to point to latest lifecycle validation and explain diagnostic warning behavior.
+
+### 2026-02-26 07:50 UTC
+- Pushed onboarding hardening batch to `origin/main`.
+- Commit: `6d14a9c0` (`Harden onboarding smoke checks and add lifecycle evidence`).
+- Current repo state: clean (`git status` no pending changes).
+- Operational result: full `down -> up -> smoke` flow now passes with startup-tolerant checks and launch alias as required gate.
