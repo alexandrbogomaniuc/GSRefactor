@@ -1,0 +1,22 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:4:import com.abs.casino.common.games.CdnCheckResult;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:90:                    List<CdnCheckResult> hostCdnCheckList = hostCdnPersister.getCdnByIp(ip);
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:126:    private boolean isAllCdnsChecked(List<CdnCheckResult> hostCdnCheckList, Map<String, String> cdnMap) {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:130:    private List<String> getCdnNames(List<CdnCheckResult> hostCdnCheckList) {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:132:        for (CdnCheckResult entry : hostCdnCheckList) {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:139:                                      List<CdnCheckResult> hostCdnCheckList,
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:146:        for (CdnCheckResult entry : hostCdnCheckList) {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:157:    private String getBestCdn(List<CdnCheckResult> hostCdnCheckList, Map<String, String> cdnMap) {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:159:        CdnCheckResult bestResult = new CdnCheckResult("DISABLED", CdnCheckResult.MAX_LOAD_TIME, 0);
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:161:        for (CdnCheckResult result : hostCdnCheckList) {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:169:        if (!"DISABLED".equals(bestCdnUrl) && bestResult.getLoadTime() != CdnCheckResult.MAX_LOAD_TIME) {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/ICassandraHostCdnPersister.java:10:    List<CdnCheckResult> getCdnByIp(String ip);
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/CdnCheckResult.java:3:public class CdnCheckResult {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/CdnCheckResult.java:11:    public CdnCheckResult(String cdnUrl, int loadTime, long lastUpdateTime) {
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraHostCdnPersister.java:6:import com.abs.casino.common.games.CdnCheckResult;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraHostCdnPersister.java:60:    public List<CdnCheckResult> getCdnByIp(String ip) {
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraHostCdnPersister.java:69:        List<CdnCheckResult> result = new ArrayList<>();
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraHostCdnPersister.java:71:            result.add(new CdnCheckResult(row.getString(CDN_FIELD), row.getInt(TIME_FIELD), row.getLong(LAST_UPDATE_FIELD)));
+gs-server/game-server/web-gs/src/main/webapp/cdn/info.jsp:3:<%@ page import="com.abs.casino.common.games.CdnCheckResult" %>
+gs-server/game-server/web-gs/src/main/webapp/cdn/info.jsp:24:        List<CdnCheckResult> cdnList = hostCdnPersister.getCdnByIp(ip);
+gs-server/game-server/web-gs/src/main/webapp/cdn/info.jsp:27:                for (CdnCheckResult entry : cdnList) {
+gs-server/game-server/web-gs/src/main/webapp/cdn/info.jsp:33:                for (CdnCheckResult entry : cdnList) {

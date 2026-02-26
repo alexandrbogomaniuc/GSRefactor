@@ -1,0 +1,7 @@
+Hard-Cut M2 Wave 62 - CdnCheckResult
+Date(UTC): 2026-02-26
+Scope: com.dgphoenix.casino.common.games.CdnCheckResult -> com.abs.casino.common.games.CdnCheckResult
+PreLegacyRefs: 3
+PostLegacyRefs: 0
+PostAbsRefs: 3
+Validation: PASS (9/9)

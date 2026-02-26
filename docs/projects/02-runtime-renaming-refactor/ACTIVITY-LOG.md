@@ -1310,3 +1310,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `3`.
   - global tracked source declarations now `2143` remaining (`2277` baseline, `134` reduced).
+
+## 2026-02-26 14:59 UTC (Hard-Cut M2 Wave 62)
+- Executed hard-cut namespace wave for `CdnCheckResult`.
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/CdnCheckResult.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/ICassandraHostCdnPersister.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java`
+  - `gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraHostCdnPersister.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/cdn/info.jsp`
+- Change detail:
+  - migrated `com.dgphoenix.casino.common.games.CdnCheckResult` to `com.abs.casino.common.games.CdnCheckResult`.
+  - rewired direct Java/JSP imports in CDN-check flow and host CDN persister interface path.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-145636-hardcut-m2-wave62-cdn-check-result/`
+- Outcome:
+  - wave scope legacy refs reduced from `3` to `0`, `com.abs` refs now `3`.
+  - global tracked source declarations now `2142` remaining (`2277` baseline, `135` reduced).

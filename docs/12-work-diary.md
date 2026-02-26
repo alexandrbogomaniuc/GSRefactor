@@ -6889,3 +6889,13 @@
   - migrated class package to `com.abs`, updated dependent imports, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 62 with next low-fanout declaration migration.
+
+### 2026-02-26 14:59 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 62 (`CdnCheckResult`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-145636-hardcut-m2-wave62-cdn-check-result/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/74-hard-cut-m2-wave62-cdn-check-result-report-20260226.md`
+- Result:
+  - migrated class package to `com.abs`, updated Java/JSP dependent imports, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 63 with next low-fanout declaration migration.

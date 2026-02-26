@@ -3,8 +3,8 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+import com.abs.casino.common.games.CdnCheckResult;
 import com.abs.casino.common.games.ICassandraHostCdnPersister;
-import com.dgphoenix.casino.common.games.CdnCheckResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

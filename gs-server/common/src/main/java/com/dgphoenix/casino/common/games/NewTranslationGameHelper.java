@@ -1,6 +1,7 @@
 package com.dgphoenix.casino.common.games;
 
 import com.abs.casino.common.games.IDelegatedStartGameHelper;
+import com.abs.casino.common.games.CdnCheckResult;
 import com.abs.casino.common.games.ICassandraHostCdnPersister;
 import com.abs.casino.common.games.SwfLocationInfo;
 import com.dgphoenix.casino.common.cache.BankInfoCache;

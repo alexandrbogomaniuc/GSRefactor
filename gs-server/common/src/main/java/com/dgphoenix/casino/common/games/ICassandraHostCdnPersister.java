@@ -1,7 +1,5 @@
 package com.abs.casino.common.games;
 
-import com.dgphoenix.casino.common.games.CdnCheckResult;
-
 import java.util.List;
 
 /**
