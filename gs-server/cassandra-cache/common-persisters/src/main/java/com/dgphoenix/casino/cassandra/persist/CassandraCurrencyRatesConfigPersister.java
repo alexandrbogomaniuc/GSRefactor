@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -52,7 +51,7 @@ public class CassandraCurrencyRatesConfigPersister extends AbstractCassandraPers
     }
 
     public void persist(String currency, String target, String formula) {
-        Statement query = getInsertQuery()
+        com.datastax.driver.core.Statement query = getInsertQuery()
                 .value(CURRENCY_NAME, currency)
                 .value(CURRENCY_FORMULA, formula)
                 .value(CURRENCY_TARGET, target);
@@ -60,14 +59,14 @@ public class CassandraCurrencyRatesConfigPersister extends AbstractCassandraPers
     }
 
     public void persist(String currency, long updatePeriod) {
-        Statement query = getInsertQuery()
+        com.datastax.driver.core.Statement query = getInsertQuery()
                 .value(CURRENCY_NAME, currency)
                 .value(UPDATE_PERIOD, updatePeriod);
         execute(query, "create custom update period");
     }
 
     public Map<String, Pair<String, String>> getCalculatedCurrenciesConfig() {
-        Statement select = getSelectColumnsQuery(CURRENCY_NAME, CURRENCY_FORMULA, CURRENCY_TARGET);
+        com.datastax.driver.core.Statement select = getSelectColumnsQuery(CURRENCY_NAME, CURRENCY_FORMULA, CURRENCY_TARGET);
         return StreamUtils.asStream(execute(select, "getCalculatedCurrenciesConfig"))
                 .filter(row -> !StringUtils.isTrimmedEmpty(row.getString(CURRENCY_FORMULA)))
                 .collect(Collectors.toMap(

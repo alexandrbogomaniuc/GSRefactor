@@ -1,9 +1,7 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -52,7 +50,7 @@ public class CassandraHistoryTokenPersister extends AbstractCassandraPersister<S
         long startTime = System.currentTimeMillis();
         BankInfo bankInfo = BankInfoCache.getInstance().getBankInfo(bankId);
         int ttl = (ttlSeconds != null) ? (int) TimeUnit.SECONDS.toMillis(ttlSeconds) : bankInfo.getHistoryTokenTTL();
-        Statement insert = QueryBuilder.insertInto(TABLE.getTableName())
+        com.datastax.driver.core.Statement insert = QueryBuilder.insertInto(TABLE.getTableName())
                 .value(TOKEN_FIELD, token)
                 .value(ROUND_ID_FIELD, roundId)
                 .value(EXP_TIME, ((ttl != 0) ? ttl + startTime : Long.MAX_VALUE));
@@ -63,9 +61,9 @@ public class CassandraHistoryTokenPersister extends AbstractCassandraPersister<S
 
     public Long getRoundId(String token) {
         long now = System.currentTimeMillis();
-        Statement select = getSelectColumnsQuery(ROUND_ID_FIELD, EXP_TIME)
+        com.datastax.driver.core.Statement select = getSelectColumnsQuery(ROUND_ID_FIELD, EXP_TIME)
                 .where(eq(TOKEN_FIELD, token));
-        ResultSet resultSet = execute(select, "getRoundId");
+        com.datastax.driver.core.ResultSet resultSet = execute(select, "getRoundId");
         Row row = resultSet.one();
         if (row != null) {
             long expTime = row.getLong(EXP_TIME);

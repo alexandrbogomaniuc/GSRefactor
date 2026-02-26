@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -44,7 +43,7 @@ public class CassandraDelayedMassAwardFailedDeliveryPersister extends AbstractCa
         ByteBuffer byteBuffer = TABLE.serializeToBytes(award);
         String json = TABLE.serializeToJson(award);
         try {
-            Statement query = getInsertQuery()
+            com.datastax.driver.core.Statement query = getInsertQuery()
                     .value(KEY, award.getId())
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
                     .value(JSON_COLUMN_NAME, json);

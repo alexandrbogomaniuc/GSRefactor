@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.Batch;
 import com.datastax.driver.core.querybuilder.Insert;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
@@ -48,7 +47,7 @@ public class CassandraCurrencyRatesByDatePersister extends AbstractCassandraPers
     }
 
     public void createOrUpdate(CurrencyRate currencyRate) {
-        Statement query = getInsertQuery()
+        com.datastax.driver.core.Statement query = getInsertQuery()
             .value(SOURCE_FIELD, currencyRate.getSourceCurrency())
             .value(DEST_FIELD, currencyRate.getDestinationCurrency())
             .value(UPDATE_DATE_FIELD, normalizeDate(currencyRate.getUpdateDate()))
@@ -72,7 +71,7 @@ public class CassandraCurrencyRatesByDatePersister extends AbstractCassandraPers
 
     public CurrencyRate getCurrencyRate(long date, String source, String target) {
         long normalizedDate = normalizeDate(date);
-        Statement query = getSelectColumnsQuery(RATE_FIELD)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(RATE_FIELD)
                 .where(eq(SOURCE_FIELD, source))
                 .and(eq(DEST_FIELD, target))
                 .and(eq(UPDATE_DATE_FIELD, normalizedDate));
@@ -88,7 +87,7 @@ public class CassandraCurrencyRatesByDatePersister extends AbstractCassandraPers
 
     public Collection<CurrencyRate> getRates(long date) {
         long normalizedDate = normalizeDate(date);
-        Statement query = getSelectColumnsQuery(SOURCE_FIELD, DEST_FIELD, RATE_FIELD)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SOURCE_FIELD, DEST_FIELD, RATE_FIELD)
                 .where(eq(UPDATE_DATE_FIELD, normalizedDate));
         return StreamUtils.asStream(execute(query, "getRatesByDate"))
                 .filter(Objects::nonNull)

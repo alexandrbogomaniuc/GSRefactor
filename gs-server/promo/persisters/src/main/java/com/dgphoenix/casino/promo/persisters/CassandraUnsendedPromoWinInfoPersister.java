@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
@@ -57,7 +56,7 @@ public class CassandraUnsendedPromoWinInfoPersister extends AbstractCassandraPer
     }
 
     public List<PromoWinInfo> getForGameSession(long gameSessionId) {
-        ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(GAME_SESSION_ID, gameSessionId)), "getForGameSession");
         List<PromoWinInfo> wins = new ArrayList<>();
         for (Row row : resultSet) {
@@ -108,7 +107,7 @@ public class CassandraUnsendedPromoWinInfoPersister extends AbstractCassandraPer
 
     public void removeByRoundId(long roundId) {
         LOG.debug("remove: roundId={}", roundId);
-        ResultSet resultSet = execute(getSelectColumnsQuery(GAME_SESSION_ID, WIN_DATE)
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(GAME_SESSION_ID, WIN_DATE)
                 .where(eq(ROUND_ID, roundId)), "getAllRecordsByRoundId");
         Set<Pair<Long, Long>> pairs = new HashSet<>();
         for (Row row : resultSet) {

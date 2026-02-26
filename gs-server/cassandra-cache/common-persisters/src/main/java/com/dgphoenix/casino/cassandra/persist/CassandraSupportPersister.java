@@ -1,9 +1,7 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -35,7 +33,7 @@ public class CassandraSupportPersister extends AbstractCassandraPersister<String
     }
 
     public void persist(String sessionId, long timestamp, String info) {
-        Statement query = getInsertQuery()
+        com.datastax.driver.core.Statement query = getInsertQuery()
                 .value(KEY, sessionId)
                 .value(TIMESTAMP, timestamp)
                 .value(INFO, info);
@@ -43,8 +41,8 @@ public class CassandraSupportPersister extends AbstractCassandraPersister<String
     }
 
     public Iterable<String> getSessionIDs() {
-        Statement query = getSelectColumnsQuery(KEY);
-        ResultSet resultSet = execute(query, "getSessionIDs");
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(KEY);
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getSessionIDs");
 
         if (resultSet.isExhausted()) {
             return emptyList();
@@ -58,9 +56,9 @@ public class CassandraSupportPersister extends AbstractCassandraPersister<String
     }
 
     public Map<Long, String> getValuesBySessionID(String sessionId) {
-        Statement query = getSelectColumnsQuery(TIMESTAMP, INFO)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(TIMESTAMP, INFO)
                 .where(eq(KEY, sessionId));
-        ResultSet resultSet = execute(query, "getValuesBySessionID");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getValuesBySessionID");
 
         if (resultSet.isExhausted()) {
             return emptyMap();

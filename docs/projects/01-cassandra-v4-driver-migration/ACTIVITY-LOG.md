@@ -742,3 +742,29 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - GS-only `21.52%`
   - MP-only `60.26%`
   - Combined GS+MP `30.67%`
+
+## 2026-02-26 05:24 UTC (Wave 40)
+- Executed a broad GS import-surface sweep to reduce driver3 coupling in common/promo persisters.
+- Changed scope:
+  - `48` files in `gs-server/cassandra-cache/common-persisters/src/main/java`
+  - `14` files in `gs-server/promo/persisters/src/main/java`
+  - full file list: `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-052245/c4-wave40-changed-files-20260226-052245.txt`
+- Refactor type:
+  - removed direct `ResultSet` and `Statement` imports where safe
+  - converted usages to fully-qualified references to reduce import-surface footprint
+- Validation: PASS
+  - promo/persisters install
+  - common-persisters install
+  - cache tests (`63` pass)
+  - web-gs package
+  - mp subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added under:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-052245/`
+- Inventory delta after Wave 40:
+  - GS `driver3_import_lines`: `383 -> 305` (`-78`)
+  - MP `driver3_import_lines`: `60 -> 60`
+  - Combined: `443 -> 365` (`-78`)
+- Completion snapshot:
+  - GS-only `37.50%`
+  - MP-only `60.26%`
+  - Combined GS+MP `42.88%`

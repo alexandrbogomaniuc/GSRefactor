@@ -180,12 +180,12 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
             throw new NullPointerException("Parameter 'historyItemProcessor' can't be null");
         }
 
-        Statement query = QueryBuilder.select(SERIALIZED_COLUMN_NAME, LAST_ATTEMPT_TIME_FIELD, ITERATIONS_FIELD, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = QueryBuilder.select(SERIALIZED_COLUMN_NAME, LAST_ATTEMPT_TIME_FIELD, ITERATIONS_FIELD, JSON_COLUMN_NAME)
                 .from(HISTORY_INFORMER_ITEM_CF)
                 .where(eq(BANK_ID_FIELD, bankId))
                 .setFetchSize(3);
 
-        ResultSet resultSet = execute(query, "processItemsForBank");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "processItemsForBank");
         int itemsCount = 0;
         for (Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
@@ -222,7 +222,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
                 .where(eq(BANK_ID_FIELD, bankId))
                 .limit(1);
 
-        ResultSet resultSet = execute(query, "loadMaxIterationsItem");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "loadMaxIterationsItem");
 
         Row row = resultSet.one();
         if (row != null) {

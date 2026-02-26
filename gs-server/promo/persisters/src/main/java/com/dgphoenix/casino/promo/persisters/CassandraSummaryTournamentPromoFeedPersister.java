@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -129,7 +128,7 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
 
     public List<SummaryTournamentFeed> getAllFeeds() {
         List<SummaryTournamentFeed> feeds = new ArrayList<>();
-        ResultSet result = execute(getSelectColumnsQuery(ID, FEED_URL, BANK_NAME, START_DATE, END_DATE, CHECKSUM, TOURNAMENT_TYPE,
+        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(ID, FEED_URL, BANK_NAME, START_DATE, END_DATE, CHECKSUM, TOURNAMENT_TYPE,
                 MASK_NAME), "getAllFeeds");
         for (Row row : result) {
             feeds.add(convert(row));
@@ -139,7 +138,7 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
 
     public List<SummaryTournamentFeed> getFeeds(long id) {
         List<SummaryTournamentFeed> feeds = new ArrayList<>();
-        ResultSet result = execute(getSelectColumnsQuery(ID, FEED_URL, BANK_NAME, START_DATE, END_DATE, CHECKSUM, TOURNAMENT_TYPE,
+        com.datastax.driver.core.ResultSet result = execute(getSelectColumnsQuery(ID, FEED_URL, BANK_NAME, START_DATE, END_DATE, CHECKSUM, TOURNAMENT_TYPE,
                 MASK_NAME)
                 .where(eq(ID, id)), "getFeeds");
         for (Row row : result) {
@@ -170,7 +169,7 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
 
     //key: url
     public Map<String, List<SummaryTournamentFeedEntry>> getEntriesForStatement(com.datastax.driver.core.Statement select, long id) {
-        ResultSet resultSet = execute(select, "getAllFeedEntries");
+        com.datastax.driver.core.ResultSet resultSet = execute(select, "getAllFeedEntries");
         Map<String, List<SummaryTournamentFeedEntry>> result = new HashMap<>(resultSet.getAvailableWithoutFetching());
         for (Row row : resultSet) {
             String feedBody = row.getString(FEED_BODY);

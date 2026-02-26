@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.Batch;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
@@ -218,7 +217,7 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
         if (status != null) {
             selectCampaignsByClause.where(eq(CAMPAIGN_STATUS, status.name()));
         }
-        ResultSet campaignsResult = execute(selectCampaignsByClause, "selectCampaignsByClause");
+        com.datastax.driver.core.ResultSet campaignsResult = execute(selectCampaignsByClause, "selectCampaignsByClause");
 
         Set<IPromoCampaign> promoCampaigns = new HashSet<>();
         for (Row campaignResult : campaignsResult) {
@@ -265,7 +264,7 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
     }
 
     public Set<Long> getPromoIdsByBank(long bankId) {
-        ResultSet campaignsIdsByBank = execute(getSelectColumnsQuery(CAMPAIGN_BY_BANK_AND_GAME_TABLE, CAMPAIGN_ID)
+        com.datastax.driver.core.ResultSet campaignsIdsByBank = execute(getSelectColumnsQuery(CAMPAIGN_BY_BANK_AND_GAME_TABLE, CAMPAIGN_ID)
                 .where(eq(BANK_ID, bankId))
                 .and(eq(GAME_ID, ID_FOR_ALL)), "getPromoIdsByBank");
 

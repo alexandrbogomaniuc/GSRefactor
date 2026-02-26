@@ -130,7 +130,7 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
         }
         Select select = QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME).from(BONUS_CF);
         select.where().and(QueryBuilder.in(BONUS_ID_FIELD, bonusIds.toArray()));
-        ResultSet resultSet = execute(select, "getBonuses");
+        com.datastax.driver.core.ResultSet resultSet = execute(select, "getBonuses");
         Map<Long, Bonus> resultsMap = new HashMap<>(bonusIds.size());
         for (Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
@@ -166,7 +166,7 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
         long now = System.currentTimeMillis();
         Select query = QueryBuilder.select(BONUS_ID_FIELD).from(BONUS_ACC_INDX);
         query.where(eq(ACCOUNT_ID_FIELD, accountId));
-        ResultSet rows = execute(query, "getActiveBonuses");
+        com.datastax.driver.core.ResultSet rows = execute(query, "getActiveBonuses");
         List<Long> bonusIds = new ArrayList<>();
         for (Row row : rows) {
             long bonusId = row.getLong(BONUS_ID_FIELD);
@@ -184,7 +184,7 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
         long now = System.currentTimeMillis();
         Select query = getSelectColumnsQuery(BONUS_ID_FIELD);
         query.where(eq(EXPIRATION_DATE_FIELD, expirationDate));
-        ResultSet resultSet = execute(query, "getByExpirationDate");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByExpirationDate");
         List<Long> ids = new ArrayList<>();
         for (Row row : resultSet) {
             ids.add(row.getLong(BONUS_ID_FIELD));
@@ -211,7 +211,7 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
         String key = composeKey(bankId, externalId);
         Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
         query.where(eq(EXTERNAL_ID_FIELD, key));
-        ResultSet resultSet = execute(query, "getByCompositeKey");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByCompositeKey");
         Row row = resultSet.one();
 
         if (row == null) {

@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra.persist.mp;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -30,7 +29,7 @@ public class BattlegroundPrivateRoomSettingsPersister extends AbstractCassandraP
     public void create(String privateRoomId, BattlegroundPrivateRoomSetting battlegroundPrivateRoomSetting) {
         ByteBuffer buffer = TABLE.serializeToBytes(battlegroundPrivateRoomSetting);
         String json = TABLE.serializeToJson(battlegroundPrivateRoomSetting);
-        Statement query = getInsertQuery()
+        com.datastax.driver.core.Statement query = getInsertQuery()
                 .value(PRIVATE_ROOM_ID, privateRoomId)
                 .value(SERIALIZED_COLUMN_NAME, buffer)
                 .value(JSON_COLUMN_NAME, json);
@@ -39,7 +38,7 @@ public class BattlegroundPrivateRoomSettingsPersister extends AbstractCassandraP
     }
 
     public BattlegroundPrivateRoomSetting load(String privateRoomId) {
-        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(PRIVATE_ROOM_ID, privateRoomId))
                 .limit(1);
         Row row = execute(query, "load").one();

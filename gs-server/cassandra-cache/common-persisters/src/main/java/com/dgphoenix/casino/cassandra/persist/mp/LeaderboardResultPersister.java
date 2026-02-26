@@ -1,9 +1,7 @@
 package com.dgphoenix.casino.cassandra.persist.mp;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -34,7 +32,7 @@ public class LeaderboardResultPersister extends AbstractCassandraPersister<Long,
             ), BANK_ID_COLUMN);
 
     public void persist(long leaderboardId, long bankId, long startDate, long endDate, String result) {
-        Statement query = getInsertQuery()
+        com.datastax.driver.core.Statement query = getInsertQuery()
                 .value(BANK_ID_COLUMN, bankId)
                 .value(LEADERBOARD_ID_COLUMN, leaderboardId)
                 .value(START_DATE_COLUMN, startDate)
@@ -45,9 +43,9 @@ public class LeaderboardResultPersister extends AbstractCassandraPersister<Long,
     }
 
     public List<LeaderboardInfo> getLeaderboards(long bankId) {
-        Statement query = getSelectColumnsQuery(LEADERBOARD_ID_COLUMN, START_DATE_COLUMN, END_DATE_COLUMN)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(LEADERBOARD_ID_COLUMN, START_DATE_COLUMN, END_DATE_COLUMN)
                 .where(eq(BANK_ID_COLUMN, bankId));
-        ResultSet result = execute(query, "getLeaderboardIds");
+        com.datastax.driver.core.ResultSet result = execute(query, "getLeaderboardIds");
         List<LeaderboardInfo> leaderboards = new ArrayList<>();
         if (result != null) {
             for (Row row : result) {
@@ -61,7 +59,7 @@ public class LeaderboardResultPersister extends AbstractCassandraPersister<Long,
     }
 
     public String getLeaderboardResult(long bankId, long leaderboardId) {
-        Statement query = getSelectColumnsQuery(RESULT_COLUMN)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(RESULT_COLUMN)
                 .where(eq(BANK_ID_COLUMN, bankId))
                 .and(eq(LEADERBOARD_ID_COLUMN, leaderboardId))
                 .limit(1);

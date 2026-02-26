@@ -76,7 +76,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
                 .and(QueryBuilder.eq(DATE_TIME, battlegroundRound.getDateTime()))
                 .limit(1);
 
-        ResultSet resultSet = execute(select, "update:: select before");
+        com.datastax.driver.core.ResultSet resultSet = execute(select, "update:: select before");
 
         Row existRow = resultSet.one();
 
@@ -123,7 +123,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
                 .and(QueryBuilder.gte(DATE_TIME, startTime))
                 .and(QueryBuilder.lt(DATE_TIME, endTime))
                 .limit(PAGE_SIZE);
-        ResultSet result = execute(select, "getBattlegroundHistoryByAccountIdAndPeriod");
+        com.datastax.driver.core.ResultSet result = execute(select, "getBattlegroundHistoryByAccountIdAndPeriod");
         List<BattlegroundRound> battlegroundRounds = new ArrayList<>();
         if (result != null) {
             for (Row row : result) {
@@ -141,7 +141,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
                 .and(QueryBuilder.lt(DATE_TIME, endTime))
                 .and(eq(GAME_ID, gameId))
                 .limit(PAGE_SIZE);
-        ResultSet result = execute(select, "getBattlegroundHistoryByAccountIdAndPeriodAndGameId");
+        com.datastax.driver.core.ResultSet result = execute(select, "getBattlegroundHistoryByAccountIdAndPeriodAndGameId");
         List<BattlegroundRound> battlegroundRounds = new ArrayList<>();
         if (result != null) {
             for (Row row : result) {
@@ -154,7 +154,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
     public List<BattlegroundRound> getBattlegroundHistoryByGameSessionId(long gameSessionId) {
         Select select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
         select.where(eq(GAMESESSION_ID, gameSessionId));
-        ResultSet result = execute(select, "getBattlegroundHistoryByGameSessionId");
+        com.datastax.driver.core.ResultSet result = execute(select, "getBattlegroundHistoryByGameSessionId");
         List<BattlegroundRound> battlegroundRounds = new ArrayList<>();
         if (result != null) {
             for (Row row : result) {
@@ -201,7 +201,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
     public List<BattlegroundRound> getBattlegroundHistoryByGameIdAndRoundId(long roundId) {
         Select select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
         select.where(eq(ROUND_ID, roundId));
-        ResultSet result = execute(select, "getBattlegroundHistoryByGameIdAndRoundId");
+        com.datastax.driver.core.ResultSet result = execute(select, "getBattlegroundHistoryByGameIdAndRoundId");
         List<BattlegroundRound> battlegroundRounds = new ArrayList<>();
         if (result != null) {
             for (Row row : result) {
@@ -263,7 +263,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
     public Set<Long> getParticipantsBySID(String sessionId) {
         Select select = QueryBuilder.select(ACCOUNT_IDS).from(PARTICIPANT_ROUND_TABLE.getTableName());
         select.where(eq(SID, sessionId));
-        ResultSet result = execute(select, "getParticipantsByGameSessionId");
+        com.datastax.driver.core.ResultSet result = execute(select, "getParticipantsByGameSessionId");
         Set<Long> participantsIds = new HashSet<>();
         if (result != null) {
             for (Row row : result) {
@@ -277,7 +277,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
         Select select = QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(PARTICIPANT_ROUND_TABLE.getTableName());
         select.where(eq(GAMESESSION_ID, gameSessionId));
-        ResultSet result = execute(select, "getParticipantsByGameSessionId");
+        com.datastax.driver.core.ResultSet result = execute(select, "getParticipantsByGameSessionId");
         List<BattlegroundRoundParticipant> battlegroundRounds = new ArrayList<>();
         if (result != null) {
             for (Row row : result) {

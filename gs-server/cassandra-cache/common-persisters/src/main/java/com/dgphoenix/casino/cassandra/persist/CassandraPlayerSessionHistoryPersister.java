@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -59,7 +58,7 @@ public class CassandraPlayerSessionHistoryPersister extends AbstractCassandraPer
         ByteBuffer byteBuffer = HISTORY_TABLE.serializeToBytes(entry);
         String json = HISTORY_TABLE.serializeToJson(entry);
         try {
-            Statement insertQuery = entry.getExternalSessionId() == null
+            com.datastax.driver.core.Statement insertQuery = entry.getExternalSessionId() == null
                     ? getInsertQuery()
                     .value(KEY, entry.getSessionId())
                     .value(DAY_FIELD, getDay(entry.getEndTime()))
@@ -98,7 +97,7 @@ public class CassandraPlayerSessionHistoryPersister extends AbstractCassandraPer
         if (sessionIds.length == 0) {
             return;
         }
-        Statement query =
+        com.datastax.driver.core.Statement query =
                 QueryBuilder.delete().
                         from(getMainColumnFamilyName()).
                         where(QueryBuilder.in(KEY, sessionIds));

@@ -1,9 +1,7 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -68,9 +66,9 @@ public class CassandraExternalTransactionPersister extends AbstractCassandraPers
 
     public ExternalPaymentTransaction getByInternalId(PaymentMode mode, long internalOperationId) {
         String key = getInternalId(mode, internalOperationId);
-        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(INTERNAL_ID_FIELD, key));
-        ResultSet resultSet = execute(query, "getByInternalId");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByInternalId");
         Row row = resultSet.one();
         if (row == null) {
             return null;
@@ -94,7 +92,7 @@ public class CassandraExternalTransactionPersister extends AbstractCassandraPers
         String json = TABLE.serializeToJson(transaction);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(transaction);
         try {
-            Statement query = transaction.getInternalOperationId() == null
+            com.datastax.driver.core.Statement query = transaction.getInternalOperationId() == null
                     ? getInsertQuery()
                             .value(KEY, key)
                             .value(SERIALIZED_COLUMN_NAME, byteBuffer)

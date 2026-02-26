@@ -65,7 +65,7 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
                 .where(eq(DRAW_ID_COLUMN, id))
                 .limit(1);
 
-        ResultSet result = execute(query, "getConfig");
+        com.datastax.driver.core.ResultSet result = execute(query, "getConfig");
         if (result != null) {
             TicketedDrawConfig tdc = CONFIG_TABLE.deserializeWithClassFromJson(result.one().getString(JSON_COLUMN_NAME));
             if (tdc == null) {
@@ -101,7 +101,7 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
         Select.Where query = getSelectColumnsQuery(CONFIG_TABLE, CONFIG_COLUMN, JSON_COLUMN_NAME)
                 .where(eq(STATUS_COLUMN, status.getCode()));
 
-        ResultSet result = execute(query, "getTicketedDraws");
+        com.datastax.driver.core.ResultSet result = execute(query, "getTicketedDraws");
 
         List<TicketedDrawConfig> configs = new ArrayList<>();
         for (Row row : result) {

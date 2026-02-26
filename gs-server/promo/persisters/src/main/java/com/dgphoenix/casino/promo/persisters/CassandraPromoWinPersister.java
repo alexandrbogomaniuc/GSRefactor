@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -56,7 +55,7 @@ public class CassandraPromoWinPersister extends AbstractCassandraPersister<Long,
     }
 
     public Set<PromoWin> getByPromoId(long promoId) {
-        ResultSet result = execute(getSelectAllColumnsQuery().where(eq(PROMO_ID, promoId)), "getByPromoId");
+        com.datastax.driver.core.ResultSet result = execute(getSelectAllColumnsQuery().where(eq(PROMO_ID, promoId)), "getByPromoId");
         Set<PromoWin> wins = new HashSet<>();
         for (Row row : result) {
             wins.add(getPromoWinEntry(row));

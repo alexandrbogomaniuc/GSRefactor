@@ -1,9 +1,7 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -56,7 +54,7 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
         String json = PENDING_DATA_ARCHIVE_TABLE.serializeToJson(operation);
         ByteBuffer byteBuffer = PENDING_DATA_ARCHIVE_TABLE.serializeToBytes(operation);
         try {
-            Statement query = getInsertQuery()
+            com.datastax.driver.core.Statement query = getInsertQuery()
                     .value(ACCOUNT_ID_FIELD, operation.getAccountId())
                     .value(DATA_NAME_FIELD, WALLET_DATA_NAME)
                     .value(CREATION_TIME_FIELD, operation.getStartTime())
@@ -70,10 +68,10 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
     }
 
     public List<CommonWalletOperation> getWalletOperations(long accountId) {
-        Statement query = getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ACCOUNT_ID_FIELD, accountId))
                 .and(eq(DATA_NAME_FIELD, WALLET_DATA_NAME));
-        ResultSet resultSet = execute(query, "getWalletOperations");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getWalletOperations");
         List<CommonWalletOperation> result = new ArrayList<>(resultSet.getAvailableWithoutFetching());
         for (Row row : resultSet) {
             String json = row.getString(SERIALIZED_COLUMN_NAME);
@@ -92,7 +90,7 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
         String json = PENDING_DATA_ARCHIVE_TABLE.serializeToJson(operation);
         ByteBuffer byteBuffer = PENDING_DATA_ARCHIVE_TABLE.serializeToBytes(operation);
         try {
-            Statement query = getInsertQuery()
+            com.datastax.driver.core.Statement query = getInsertQuery()
                     .value(ACCOUNT_ID_FIELD, operation.getAccountId())
                     .value(DATA_NAME_FIELD, FRB_WIN_DATA_NAME)
                     .value(CREATION_TIME_FIELD, operation.getStartTime())
@@ -106,10 +104,10 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
     }
 
     public List<FRBWinOperation> getFrbWinOperations(long accountId) {
-        Statement query = getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(PENDING_DATA_ARCHIVE_TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ACCOUNT_ID_FIELD, accountId))
                 .and(eq(DATA_NAME_FIELD, FRB_WIN_DATA_NAME));
-        ResultSet resultSet = execute(query, "getFrbWinOperations");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getFrbWinOperations");
         List<FRBWinOperation> result = new ArrayList<>(resultSet.getAvailableWithoutFetching());
         for (Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);

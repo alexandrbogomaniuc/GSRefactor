@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -51,7 +50,7 @@ public class CassandraMaxBalanceTournamentPersister extends AbstractCassandraPer
     }
 
     public List<MaxBalanceTournamentPlayerDetails> getByTournament(long tournamentId) {
-        ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(CAMPAIGN_ID_FIELD, tournamentId)), "getByTournament");
         List<MaxBalanceTournamentPlayerDetails> result = new ArrayList<>();
         for (Row row : resultSet) {
@@ -71,7 +70,7 @@ public class CassandraMaxBalanceTournamentPersister extends AbstractCassandraPer
     }
 
     public MaxBalanceTournamentPlayerDetails getForAccount(long accountId, long campaignId) {
-        ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ACCOUNT_ID_FIELD, accountId))
                 .and(eq(CAMPAIGN_ID_FIELD, campaignId))
                 .limit(1), "getForAccount");

@@ -5694,3 +5694,18 @@
   - GS-only `21.52%`, combined `30.67%`.
 - Next step:
   - commit/push Wave 39 and continue GS common/promo hotspots toward 50% burn-down target.
+
+### 2026-02-26 05:24 UTC
+- Continued CASS-V4 migration in `/Users/alexb/Documents/Dev/Dev_new` (Wave 40) with a broad GS common/promo import-surface sweep.
+- Updated 62 GS persister files (48 common + 14 promo), removing direct `ResultSet`/`Statement` import usage where safe.
+- Full validation matrix PASS (promo/common/cache/web/mp subset).
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-052245/`
+- Inventory delta:
+  - GS: `383 -> 305`
+  - MP: `60 -> 60`
+  - Combined: `443 -> 365`
+- Completion snapshot:
+  - GS-only `37.50%`, combined `42.88%`.
+- Next step:
+  - commit/push Wave 40 and continue final burn-down waves to cross 50%.

@@ -67,13 +67,13 @@ public class PromoPredefinedUsersPersister extends AbstractCassandraPersister<Lo
 
     public boolean isExist(long promoId, long bankId, long accountId) {
         Select select = getSelectByClause(promoId, bankId, eq(ACCOUNT_ID, accountId));
-        ResultSet resultSet = execute(select, "isExists [by accountId]");
+        com.datastax.driver.core.ResultSet resultSet = execute(select, "isExists [by accountId]");
         return resultSet.one() != null;
     }
 
     public boolean isExist(long promoId, long bankId, String extUserId) {
         Select select = getSelectByClause(promoId, bankId, eq(EXT_USER_ID, extUserId));
-        ResultSet resultSet = execute(select, "isExists [by extUserId]");
+        com.datastax.driver.core.ResultSet resultSet = execute(select, "isExists [by extUserId]");
         return resultSet.one() != null;
     }
 
@@ -101,7 +101,7 @@ public class PromoPredefinedUsersPersister extends AbstractCassandraPersister<Lo
     public Set<Pair<String, Long>> getByPromoId(long promoId, long bankId) {
         Select select = getSelectColumnsQuery(EXT_USER_ID, ACCOUNT_ID);
         select.where(eq(PROMO_ID, promoId)).and(eq(BANK_ID, bankId));
-        ResultSet resultSet = execute(select, "getByPromoId");
+        com.datastax.driver.core.ResultSet resultSet = execute(select, "getByPromoId");
         Set<Pair<String, Long>> pairs = new HashSet<>();
         for (Row row : resultSet.all()) {
             pairs.add(new Pair<>(row.getString(EXT_USER_ID), row.getLong(ACCOUNT_ID)));

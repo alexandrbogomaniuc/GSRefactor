@@ -134,7 +134,7 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
     public CommonGameWallet getById(long accountId, int gameId) {
         Select query = QueryBuilder.select().from(getMainColumnFamilyName());
         query.where().and(eq(ACCOUNT_ID_FIELD, accountId)).and(eq(GAME_ID_FIELD, gameId));
-        ResultSet resultSet = execute(query, "getById");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getById");
         Row row = resultSet.one();
         return row == null ? null : extractFromResult(row);
     }
@@ -143,7 +143,7 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
     public IWallet getWallet(long accountId) {
         Select query = QueryBuilder.select().from(getMainColumnFamilyName());
         query.where().and(eq(ACCOUNT_ID_FIELD, accountId));
-        ResultSet resultSet = execute(query, "getWallet", 2);
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getWallet", 2);
         CommonWallet wallet = new CommonWallet(accountId);
         for (Row row : resultSet) {
             CommonGameWallet gameWallet = extractFromResult(row);

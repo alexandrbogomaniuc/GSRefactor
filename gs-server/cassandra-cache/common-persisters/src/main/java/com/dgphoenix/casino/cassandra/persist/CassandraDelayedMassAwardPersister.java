@@ -1,9 +1,7 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -55,9 +53,9 @@ public class CassandraDelayedMassAwardPersister extends AbstractCassandraPersist
     public Collection<DelayedMassAward> getUncompleted(int gameServerId) {
         long now = System.currentTimeMillis();
         List<DelayedMassAward> result = new ArrayList<>();
-        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(GS_ID_FIELD, gameServerId));
-        ResultSet resultSet = execute(query, "getUncompleted");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getUncompleted");
         for (Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             DelayedMassAward awardFrb = TABLE.deserializeFromJson(json, DelayedMassAward.class);
@@ -78,12 +76,12 @@ public class CassandraDelayedMassAwardPersister extends AbstractCassandraPersist
         String json = TABLE.serializeToJson(award);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(award);
         try {
-            Statement query = getInsertQuery()
+            com.datastax.driver.core.Statement query = getInsertQuery()
                     .value(KEY, award.getId())
                     .value(GS_ID_FIELD, gameServerId)
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
                     .value(JSON_COLUMN_NAME, json);
-            ResultSet resultSet = execute(query, "create");
+            com.datastax.driver.core.ResultSet resultSet = execute(query, "create");
             if (!resultSet.wasApplied()) {
                 getLog().error("DelayedMassAward not created: {}", award);
                 throw new RuntimeException("DelayedMassAward not created");

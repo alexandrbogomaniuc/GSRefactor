@@ -1,9 +1,7 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -50,7 +48,7 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
         ByteBuffer byteBuffer = COUNTRIES_TABLE.serializeToBytes(restrictions);
         String json = COUNTRIES_TABLE.serializeToJson(restrictions);
         try {
-            Statement query = getInsertQuery(type.getCassandraTtl())
+            com.datastax.driver.core.Statement query = getInsertQuery(type.getCassandraTtl())
                 .value(OBJECT_ID, objectId)
                 .value(RESTRICTION_TYPE, type.ordinal())
                 .value(SERIALIZED_COLUMN_NAME, byteBuffer)
@@ -64,11 +62,11 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
     public CountryRestrictionList get(long objectId, RestrictionType type) {
         long now = System.currentTimeMillis();
         CountryRestrictionList result = null;
-        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where()
                 .and(eq(OBJECT_ID, objectId))
                 .and(eq(RESTRICTION_TYPE, type.ordinal()));
-        ResultSet resultSet = execute(query, "get");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "get");
         Row row = resultSet.one();
         if (row != null) {
             String json = row.getString(JSON_COLUMN_NAME);
@@ -86,7 +84,7 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
     }
 
     public void delete(long objectId, RestrictionType type) {
-        Statement query = QueryBuilder.delete()
+        com.datastax.driver.core.Statement query = QueryBuilder.delete()
                 .from(getMainColumnFamilyName())
                 .where()
                 .and(eq(OBJECT_ID, objectId))

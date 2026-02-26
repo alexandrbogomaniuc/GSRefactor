@@ -1,9 +1,7 @@
 package com.dgphoenix.casino.cassandra.persist.mp;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -55,7 +53,7 @@ public class MQReservedNicknamePersister extends AbstractCassandraPersister<Stri
     }
 
     public void persist(String region, String nickname, long owner) {
-        Statement query = getInsertQuery()
+        com.datastax.driver.core.Statement query = getInsertQuery()
                 .value(REGION_COLUMN, region)
                 .value(NICK_NAME_COLUMN, nickname)
                 .value(OWNER_COLUMN, owner);
@@ -67,7 +65,7 @@ public class MQReservedNicknamePersister extends AbstractCassandraPersister<Stri
     }
 
     public boolean isExist(String region, String nickname, long owner) {
-        Statement query = getSelectColumnsQuery(OWNER_COLUMN)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(OWNER_COLUMN)
                 .where(eq(REGION_COLUMN, region))
                 .and(eq(NICK_NAME_COLUMN, nickname));
         Row result = execute(query, "isExist").one();
@@ -83,7 +81,7 @@ public class MQReservedNicknamePersister extends AbstractCassandraPersister<Stri
     }
 
     public Set<String> getNicknames(String region, Long owner) {
-        Statement query;
+        com.datastax.driver.core.Statement query;
         if (owner == null) {
             query = getSelectColumnsQuery(NICK_NAME_COLUMN)
                     .where(eq(REGION_COLUMN, region));
@@ -93,7 +91,7 @@ public class MQReservedNicknamePersister extends AbstractCassandraPersister<Stri
                     .and(eq(OWNER_COLUMN, owner))
                     .allowFiltering();
         }
-        ResultSet rs = execute(query, "getNickNamesForRegion");
+        com.datastax.driver.core.ResultSet rs = execute(query, "getNickNamesForRegion");
         Set<String> result = new HashSet<>(128);
         for (Row row : rs) {
             result.add(row.getString(NICK_NAME_COLUMN));

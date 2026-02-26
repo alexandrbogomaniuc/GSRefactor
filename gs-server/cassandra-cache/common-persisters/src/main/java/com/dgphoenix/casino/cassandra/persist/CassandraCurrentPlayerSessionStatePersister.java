@@ -1,9 +1,7 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -74,27 +72,27 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
     }
 
     public CassandraPlayerSessionState getBySid(String sid) {
-        Statement query = getSelectAllColumnsQuery(getMainTableDefinition())
+        com.datastax.driver.core.Statement query = getSelectAllColumnsQuery(getMainTableDefinition())
                 .where(eq(SID_FIELD, sid))
                 .limit(1)
                 .allowFiltering();
 
         getLog().debug("getBySid: sid={}, query={}", sid, query);
 
-        ResultSet resultSet = execute(query, "getBySid");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getBySid");
         Row row = resultSet.one();
         return extractFromRow(row);
     }
 
     public CassandraPlayerSessionState getByExtId(String extId) {
 
-        Statement query = getSelectAllColumnsQuery(getMainTableDefinition())
+        com.datastax.driver.core.Statement query = getSelectAllColumnsQuery(getMainTableDefinition())
                 .where(eq(KEY, extId))
                 .limit(1);
 
         getLog().debug("getByExtId: extId={}, query={}", extId, query);
 
-        ResultSet resultSet = execute(query, "getByExtId");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByExtId");
         Row row = resultSet.one();
 
         return extractFromRow(row);
@@ -163,7 +161,7 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
             getLog().debug("persist: currentCassandraPlayerSessionState is null, insert new record:{}",
                     cassandraPlayerSessionState);
 
-            Statement insertQuery = getInsertQuery()
+            com.datastax.driver.core.Statement insertQuery = getInsertQuery()
                     .value(KEY, cassandraPlayerSessionState.getExtId())
                     .value(SID_FIELD, sid)
                     .value(PRIVATE_ROOM_ID_FIELD, cassandraPlayerSessionState.getPrivateRoomId())
@@ -178,7 +176,7 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
             getLog().debug("persist: currentCassandraPlayerSessionState is not null, update existing record to:{}",
                     cassandraPlayerSessionState);
 
-            Statement updateQuery = getUpdateQuery()
+            com.datastax.driver.core.Statement updateQuery = getUpdateQuery()
                     .with(set(SID_FIELD, cassandraPlayerSessionState.getSid()))
                     .and(set(PRIVATE_ROOM_ID_FIELD, cassandraPlayerSessionState.getPrivateRoomId()))
                     .and(set(IS_FINISH_GAME_SESSION_FIELD, cassandraPlayerSessionState.isFinishGameSession()))
@@ -206,7 +204,7 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
         if (sids.length == 0) {
             return;
         }
-        Statement query =
+        com.datastax.driver.core.Statement query =
                 QueryBuilder.delete().
                         from(getMainColumnFamilyName()).
                         where(QueryBuilder.in(KEY, sids));

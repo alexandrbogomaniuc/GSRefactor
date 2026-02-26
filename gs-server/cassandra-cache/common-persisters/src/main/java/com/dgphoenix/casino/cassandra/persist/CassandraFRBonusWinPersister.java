@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -44,7 +43,7 @@ public class CassandraFRBonusWinPersister extends AbstractCassandraPersister<Lon
         String json = TABLE.serializeToJson(win);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(win);
         try {
-            Statement query = getUpdateQuery(win.getAccountId())
+            com.datastax.driver.core.Statement query = getUpdateQuery(win.getAccountId())
                     .with(set(SERIALIZED_COLUMN_NAME, byteBuffer))
                     .and(set(JSON_COLUMN_NAME, json));
             execute(query, "persist");

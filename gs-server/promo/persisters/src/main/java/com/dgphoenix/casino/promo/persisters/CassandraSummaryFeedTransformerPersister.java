@@ -2,7 +2,6 @@ package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -29,7 +28,7 @@ public class CassandraSummaryFeedTransformerPersister extends AbstractCassandraP
         String json = TABLE.serializeToJson(transformer);
         ByteBuffer buffer = TABLE.serializeWithClassToBytes(transformer);
         try {
-            Statement insert = getInsertQuery()
+            com.datastax.driver.core.Statement insert = getInsertQuery()
                     .value(TOURNAMENT_ID_COLUMN, tournamentId)
                     .value(SERIALIZED_COLUMN_NAME, buffer)
                     .value(JSON_COLUMN_NAME, json);
@@ -41,7 +40,7 @@ public class CassandraSummaryFeedTransformerPersister extends AbstractCassandraP
     }
 
     public ISummaryFeedTransformer get(long tournamentId) {
-        Statement select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(TOURNAMENT_ID_COLUMN, tournamentId))
                 .limit(1);
 

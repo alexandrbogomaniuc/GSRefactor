@@ -1,9 +1,7 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.common.cache.AbstractDistributedCache;
@@ -98,7 +96,7 @@ public class CassandraExternalGameIdsPersister extends AbstractStringDistributed
     @Override
     public Map<String, IdObject> getAllAsMap() {
         Map<String, IdObject> result = new HashMap<>();
-        ResultSet resultSet = execute(getSelectColumnsQuery(BANK_ID, KEY, ID), "getAllAsMap");
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(BANK_ID, KEY, ID), "getAllAsMap");
         for (Row row : resultSet) {
             if (row != null && !row.isNull(ID)) {
                 int bankId = row.getInt(BANK_ID);
@@ -113,7 +111,7 @@ public class CassandraExternalGameIdsPersister extends AbstractStringDistributed
     @Override
     public Map<String, IdObject> getAsMap(Integer bankId) {
         Map<String, IdObject> result = new HashMap<>();
-        ResultSet resultSet = execute(getSelectColumnsQuery(KEY, ID).where(eq(BANK_ID, bankId)), "getAllAsMap");
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(KEY, ID).where(eq(BANK_ID, bankId)), "getAllAsMap");
         for (Row row : resultSet) {
             if (row != null && !row.isNull(ID)) {
                 String extId = row.getString(KEY);
@@ -126,7 +124,7 @@ public class CassandraExternalGameIdsPersister extends AbstractStringDistributed
 
     @Override
     public void processAll(TableProcessor<Pair<String, IdObject>> tableProcessor) throws IOException {
-        ResultSet resultSet = execute(getSelectColumnsQuery(BANK_ID, KEY, ID), "getAllAsMap");
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(BANK_ID, KEY, ID), "getAllAsMap");
         for (Row row : resultSet) {
             processRow(row, tableProcessor);
         }
@@ -137,9 +135,9 @@ public class CassandraExternalGameIdsPersister extends AbstractStringDistributed
             throws IOException {
         if ("byBank".equals(conditionName)) {
             Long bankId = (Long) conditionValues[0];
-            Statement select = getSelectColumnsQuery(BANK_ID, KEY, ID)
+            com.datastax.driver.core.Statement select = getSelectColumnsQuery(BANK_ID, KEY, ID)
                     .where(eq(BANK_ID, bankId));
-            ResultSet resultSet = execute(select, "getByBankId");
+            com.datastax.driver.core.ResultSet resultSet = execute(select, "getByBankId");
             for (Row row : resultSet) {
                 processRow(row, tableProcessor);
             }

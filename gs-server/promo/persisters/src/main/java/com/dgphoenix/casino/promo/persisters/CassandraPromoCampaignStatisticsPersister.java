@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
@@ -53,7 +52,7 @@ public class CassandraPromoCampaignStatisticsPersister extends AbstractCassandra
     }
 
     public Pair<Integer, Double> getAverageBetPairForGs(long campaignId, int gsId) {
-        ResultSet resultSet = execute(getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM)
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM)
                 .where(eq(CAMPAIGN_ID, campaignId))
                 .and(eq(GS_ID, gsId)), "getAverageBetPairForGs");
         Row row = resultSet.one();
@@ -61,7 +60,7 @@ public class CassandraPromoCampaignStatisticsPersister extends AbstractCassandra
     }
 
     public Pair<Integer, Double> getAverageBetPair(long campaignId) {
-        ResultSet resultSet = execute(getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM)
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM)
                 .where(eq(CAMPAIGN_ID, campaignId)), "getAverageBetPair");
         int roundsCount = 0;
         double betSum = 0;

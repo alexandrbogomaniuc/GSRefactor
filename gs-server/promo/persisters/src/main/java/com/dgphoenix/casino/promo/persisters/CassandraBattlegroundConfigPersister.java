@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
@@ -56,7 +55,7 @@ public class CassandraBattlegroundConfigPersister extends AbstractCassandraPersi
     }
 
     public Set<BattlegroundConfig> getConfigs(long bankId) {
-        ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(BANK_ID, bankId)), "getConfigs");
         Set<BattlegroundConfig> result = new HashSet<>();
         for (Row row : resultSet) {
@@ -72,7 +71,7 @@ public class CassandraBattlegroundConfigPersister extends AbstractCassandraPersi
     }
 
     public BattlegroundConfig getConfig(long bankId, long gameId) {
-        ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(BANK_ID, bankId))
                 .and(eq(GAME_ID, gameId)), "getConfig");
         Row row = resultSet.one();

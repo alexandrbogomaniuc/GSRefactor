@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -57,7 +56,7 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
 
     @Override
     public Map<String, String> get(long bankId, String externalId) {
-        Statement select = getSelectColumnsQuery(PROPERTIES)
+        com.datastax.driver.core.Statement select = getSelectColumnsQuery(PROPERTIES)
                 .where(eq(BANK_ID, bankId))
                 .and(eq(EXTERNAL_ID, externalId));
         Row row = execute(select, "get").one();
@@ -69,7 +68,7 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
 
     @Override
     public void persist(long bankId, String externalId, Map<String, String> properties) {
-        Statement update = getUpdateQuery()
+        com.datastax.driver.core.Statement update = getUpdateQuery()
                 .where(eq(BANK_ID, bankId))
                 .and(eq(EXTERNAL_ID, externalId))
                 .with(QueryBuilder.putAll(PROPERTIES, properties));
@@ -78,7 +77,7 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
 
     @Override
     public void persist(long bankId, String externalId, String propertyName, String value) {
-        Statement update = getUpdateQuery()
+        com.datastax.driver.core.Statement update = getUpdateQuery()
                 .where(eq(BANK_ID, bankId))
                 .and(eq(EXTERNAL_ID, externalId))
                 .with(QueryBuilder.put(PROPERTIES, propertyName, value));

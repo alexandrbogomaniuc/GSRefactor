@@ -1,9 +1,7 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -61,7 +59,7 @@ public class CassandraRoundGameSessionPersister extends AbstractCassandraPersist
     }
 
     public void persist(long roundId, GameSession gameSessionId) {
-        Statement query = getInsertQuery()
+        com.datastax.driver.core.Statement query = getInsertQuery()
                 .value(ROUND_ID_FIELD, roundId)
                 .value(GAME_SID_FIELD, gameSessionId.getId())
                 .value(GAME_ID_FIELD, gameSessionId.getGameId())
@@ -71,14 +69,14 @@ public class CassandraRoundGameSessionPersister extends AbstractCassandraPersist
     }
 
     public Triple<List<Long>, Long, Long> getGameSessionsByRoundId(long roundId) {
-        Statement query = QueryBuilder.select()
+        com.datastax.driver.core.Statement query = QueryBuilder.select()
                 .column(GAME_SID_FIELD)
                 .column(WRITE_TIME)
                 .column(GAME_ID_FIELD)
                 .column(ACCOUNT_ID_FIELD)
                 .from(COLUMN_FAMILY_NAME)
                 .where(QueryBuilder.eq(ROUND_ID_FIELD, roundId));
-        ResultSet resultSet = execute(query, "getGameSessionsByRoundId");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getGameSessionsByRoundId");
         List<Row> rows = Lists.newArrayList(resultSet);
         if (!rows.isEmpty()) {
             rows.sort(sortComparator);

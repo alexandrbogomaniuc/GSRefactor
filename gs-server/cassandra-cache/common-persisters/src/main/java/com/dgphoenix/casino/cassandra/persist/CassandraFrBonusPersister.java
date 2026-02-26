@@ -149,7 +149,7 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
         }
         Select select = QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME).from(FRBONUS_CF);
         select.where().and(QueryBuilder.in(BONUS_ID_FIELD, bonusIds.toArray()));
-        ResultSet resultSet = execute(select, "getFRBonuses");
+        com.datastax.driver.core.ResultSet resultSet = execute(select, "getFRBonuses");
         List<FRBonus> result = new ArrayList<>(bonusIds.size());
         for (Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
@@ -174,7 +174,7 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
         long now = System.currentTimeMillis();
         Select query = QueryBuilder.select(BONUS_ID_FIELD).from(FRBONUS_ACC_INDX);
         query.where(eq(ACCOUNT_ID_FIELD, accountId));
-        ResultSet rows = execute(query, "getActiveBonuses");
+        com.datastax.driver.core.ResultSet rows = execute(query, "getActiveBonuses");
         List<Long> bonusIds = new ArrayList<>();
         for (Row row : rows) {
             long bonusId = row.getLong(BONUS_ID_FIELD);
@@ -192,7 +192,7 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
         long now = System.currentTimeMillis();
         Select query = getSelectColumnsQuery(BONUS_ID_FIELD);
         query.where(eq(EXPIRATION_DATE_FIELD, expirationDate));
-        ResultSet resultSet = execute(query, "getByExpirationDate");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByExpirationDate");
         List<Long> ids = new ArrayList<>();
         for (Row row : resultSet) {
             ids.add(row.getLong(BONUS_ID_FIELD));
@@ -210,7 +210,7 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
         long now = System.currentTimeMillis();
         Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
         query.where(eq(EXTERNAL_ID_FIELD, key));
-        ResultSet resultSet = execute(query, "getByExtId", 3);
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByExtId", 3);
         Row row = resultSet.one();
         StatisticsManager.getInstance().updateRequestStatistics(getClass().getSimpleName() + " getByExtId",
                 System.currentTimeMillis() - now);

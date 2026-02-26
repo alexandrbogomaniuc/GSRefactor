@@ -1,8 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -43,7 +41,7 @@ public class CassandraCallIssuesPersister extends AbstractCassandraPersister {
     }
 
     public void persist(URLCallCounters callStatistics) {
-        Statement insert = getInsertQuery()
+        com.datastax.driver.core.Statement insert = getInsertQuery()
                 .value(DATE_FIELD, callStatistics.getDate())
                 .value(URL_FIELD, callStatistics.getUrl())
                 .value(SUCCESS_COUNT, callStatistics.getSuccessCount())
@@ -53,9 +51,9 @@ public class CassandraCallIssuesPersister extends AbstractCassandraPersister {
     }
 
     public Collection<URLCallCounters> getByDate(final String date) {
-        Statement select = getSelectColumnsQuery(URL_FIELD, SUCCESS_COUNT, FAIL_COUNT, LAST_UPDATE_FIELD)
+        com.datastax.driver.core.Statement select = getSelectColumnsQuery(URL_FIELD, SUCCESS_COUNT, FAIL_COUNT, LAST_UPDATE_FIELD)
                 .where(eq(DATE_FIELD, date));
-        ResultSet resultSet = execute(select, "getByDate");
+        com.datastax.driver.core.ResultSet resultSet = execute(select, "getByDate");
         if (resultSet.isExhausted()) {
             return Collections.emptyList();
         } else {

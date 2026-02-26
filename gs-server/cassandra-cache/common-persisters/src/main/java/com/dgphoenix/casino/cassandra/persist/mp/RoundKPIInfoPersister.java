@@ -1,9 +1,7 @@
 package com.dgphoenix.casino.cassandra.persist.mp;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -39,7 +37,7 @@ public class RoundKPIInfoPersister extends AbstractCassandraPersister<Long, Stri
         String json = TABLE.serializeToJson(kpiInfo);
         ByteBuffer buffer = TABLE.serializeToBytes(kpiInfo);
         try {
-            Statement query = getInsertQuery()
+            com.datastax.driver.core.Statement query = getInsertQuery()
                     .value(GAMESESSION_ID_COLUMN, gameSessionId)
                     .value(ROUND_ID_COLUMN, kpiInfo.getRoundId())
                     .value(SERIALIZED_COLUMN_NAME, buffer)
@@ -51,9 +49,9 @@ public class RoundKPIInfoPersister extends AbstractCassandraPersister<Long, Stri
     }
 
     public List<RoundKPIInfo> load(long gameSessionId) {
-        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(GAMESESSION_ID_COLUMN, gameSessionId));
-        ResultSet rs = execute(query, "load");
+        com.datastax.driver.core.ResultSet rs = execute(query, "load");
         List<RoundKPIInfo> result = new ArrayList<>();
         for (Row row : rs) {
             RoundKPIInfo roundKPIInfo = TABLE.deserializeFromJson(row.getString(JSON_COLUMN_NAME), RoundKPIInfo.class);

@@ -1,8 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -61,7 +59,7 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
         String json = TABLE.serializeToJson(info);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(info);
         try {
-            Statement query = getInsertQuery(ttl).
+            com.datastax.driver.core.Statement query = getInsertQuery(ttl).
                     value(KEY, info.getId()).
                     value(DAY_FIELD, getDay(info.getEndTime())).
                     value(GAME_SESSION_ID_FIELD, info.getGameSessionId()).
@@ -84,9 +82,9 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
     }
 
     public List<WalletOperationInfo> getByRoundId(long roundId) {
-        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ROUND_ID_FIELD, roundId));
-        ResultSet resultSet = execute(query, "getByRoundId");
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByRoundId");
         if (resultSet.isExhausted()) {
             return emptyList();
         }
@@ -270,7 +268,7 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
         if (walletOperationIds.length == 0) {
             return;
         }
-        Statement query =
+        com.datastax.driver.core.Statement query =
                 QueryBuilder.delete().
                         from(getMainColumnFamilyName()).
                         where(QueryBuilder.in(KEY, walletOperationIds));

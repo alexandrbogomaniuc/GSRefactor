@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -37,7 +36,7 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
     }
 
     public Long getLastExecutionTime(String taskKey) {
-        Statement selectExecutionTime = getSelectColumnsQuery(LAST_EXECUTION_TIME)
+        com.datastax.driver.core.Statement selectExecutionTime = getSelectColumnsQuery(LAST_EXECUTION_TIME)
                 .where(eq(TASK_KEY, taskKey));
 
         Row result = execute(selectExecutionTime, "getLastExecutionTime").one();
@@ -50,7 +49,7 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
     }
 
     public <T> T getTaskData(String taskKey) {
-        Statement selectExecutionTime = getSelectColumnsQuery(TASK_DATA)
+        com.datastax.driver.core.Statement selectExecutionTime = getSelectColumnsQuery(TASK_DATA)
                 .where(eq(TASK_KEY, taskKey));
 
         Row result = execute(selectExecutionTime, "getTaskData").one();
@@ -71,7 +70,7 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
     }
 
     public void saveLastExecutionTime(String taskKey, long time) {
-        Statement insert = getInsertQuery()
+        com.datastax.driver.core.Statement insert = getInsertQuery()
                 .value(TASK_KEY, taskKey)
                 .value(LAST_EXECUTION_TIME, time);
 
@@ -81,7 +80,7 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
     public void saveTaskData(String taskKey, Object taskData) {
         ByteBuffer taskDataAsBytes = getMainTableDefinition().serializeWithClassToBytes(taskData);
         String json = getMainTableDefinition().serializeWithClassToJson(taskData);
-        Statement insert = getInsertQuery()
+        com.datastax.driver.core.Statement insert = getInsertQuery()
                 .value(TASK_KEY, taskKey)
                 .value(TASK_DATA, taskDataAsBytes)
                 .value(JSON_COLUMN_NAME, json);
