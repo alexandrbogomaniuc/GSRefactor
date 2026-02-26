@@ -330,3 +330,18 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Included Phase 9 pre-guardrail scan snapshots and failed-attempt validation logs (`20260226-063100`, `20260226-072309`, `20260226-072929`).
 - Commit reference:
   - `27ca4543` — `Add retained phase9 guarded-wave evidence artifacts`
+
+## 2026-02-26 09:13 UTC (Hard-cut Replan)
+- User requested a full replan because `com.dgphoenix` still appears in runtime logs and the original goal was full hard-cut rename.
+- Verified current state before replanning:
+  - source remains mostly `com.dgphoenix` package namespace,
+  - compatibility-first closure was complete, but hard-cut namespace migration was not complete.
+- Added new execution plan document:
+  - `docs/projects/02-runtime-renaming-refactor/10-hard-cut-namespace-migration-plan-20260226.md`
+- Plan defines strict hard-cut done criteria:
+  - zero active runtime `com.dgphoenix` package usage,
+  - migrated build coordinates/runtime class-string bindings,
+  - fallback removal,
+  - full launch/wallet/mp regression evidence.
+- Next step:
+  - start M0 baseline lock and milestone-by-milestone execution under this new hard-cut plan.

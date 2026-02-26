@@ -6228,3 +6228,20 @@
   - `rg '/Users/alexb'` in support pages => 0
   - `refactor-onboard.mjs smoke` remained previously PASS in this session context.
 - Next step: commit/push this verification + readiness refresh wave and continue final cleanup/reporting.
+
+### 2026-02-26 09:12-09:20 UTC
+- Checked user report: `com.dgphoenix` still visible after GS restart.
+- Verified current source/runtime state:
+  - `rg '^package com.dgphoenix' gs-server` -> 2060 hits.
+  - `rg '^package com.abs' gs-server` -> 1 hit (test-only probe).
+  - `docker logs refactor-gs-1` still prints `com.dgphoenix.*` class names, expected with current package layout.
+- Confirmed compatibility-first behavior in code:
+  - `gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/ReflectionUtils.java` has alias resolver for `com.abs` and `com.dgphoenix`.
+- Result: restart cannot remove namespace in logs; full hard-cut package rename is separate migration work.
+
+### 2026-02-26 09:13-09:16 UTC
+- Replanned Project 02 as a true hard-cut namespace migration after confirming GS still logs `com.dgphoenix` by design under compatibility-first mode.
+- Added plan file:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/10-hard-cut-namespace-migration-plan-20260226.md`
+- New plan introduces hard-cut gates (M0-M7), strict definition of done, and required proof that fresh runtime logs no longer contain active `com.dgphoenix` code-path entries.
+- Next: execute M0 baseline lock and begin guarded migration waves.
