@@ -1,0 +1,47 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-promo-persisters >--------------
+[INFO] Building gsn-promo-persisters 1.2
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-promo-persisters ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-promo-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-promo-persisters ---
+[INFO] Compiling 5 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-promo-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-promo-persisters ---
+[INFO] Compiling 1 source file to /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-promo-persisters ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-promo-persisters ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/target/gsn-promo-persisters-1.2.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-promo-persisters >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-promo-persisters ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-promo-persisters <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-promo-persisters ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/target/gsn-promo-persisters-1.2-sources.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-promo-persisters ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-promo-persisters/1.2/gsn-promo-persisters-1.2.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/target/gsn-promo-persisters-1.2.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-promo-persisters/1.2/gsn-promo-persisters-1.2.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/target/gsn-promo-persisters-1.2-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-promo-persisters/1.2/gsn-promo-persisters-1.2-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.543 s
+[INFO] Finished at: 2026-02-26T09:38:06Z
+[INFO] ------------------------------------------------------------------------

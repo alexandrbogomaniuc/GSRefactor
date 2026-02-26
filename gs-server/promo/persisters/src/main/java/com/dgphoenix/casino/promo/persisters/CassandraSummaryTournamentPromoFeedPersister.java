@@ -7,8 +7,8 @@ import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStr
 import com.dgphoenix.casino.common.promo.TournamentObjective;
 import com.dgphoenix.casino.common.promo.feed.tournament.*;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.promo.masker.SummaryFeedNameMasker;
-import com.dgphoenix.casino.promo.masker.TournamentSummaryFeedNameMasker;
+import com.abs.casino.promo.masker.SummaryFeedNameMasker;
+import com.abs.casino.promo.masker.TournamentSummaryFeedNameMasker;
 import com.thoughtworks.xstream.XStream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

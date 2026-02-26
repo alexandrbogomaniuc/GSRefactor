@@ -6287,3 +6287,14 @@
 - Evidence package:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-093419-hardcut-m2-wave3-common-rest`
 - Next: commit/push wave and continue with M2 Wave 4.
+
+### 2026-02-26 09:39 UTC
+- Continued Project 02 hard-cut migration with M2 Wave 4 (promo icon + masker namespace families).
+- Scope: 10 files across promo persisters, common-gs import consumers, and support JSP imports.
+- Result:
+  - legacy refs for these families: `0`
+  - new `com.abs` refs: `11`
+  - full validation matrix and runtime smoke: PASS.
+- Evidence package:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-093723-hardcut-m2-wave4-promo-icon-masker`
+- Next: commit/push wave and continue to M2 Wave 5.

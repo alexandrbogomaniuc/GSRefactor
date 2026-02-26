@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.promo.feed.tournament.TournamentFeed;
 import com.dgphoenix.casino.common.upload.JSchUploadClient;
 import com.dgphoenix.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.util.web.HttpClientConnection;
-import com.dgphoenix.casino.promo.icon.TournamentIcon;
+import com.abs.casino.promo.icon.TournamentIcon;
 import com.dgphoenix.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import com.dgphoenix.casino.promo.persisters.CassandraTournamentIconPersister;
 import com.dgphoenix.casino.promo.tournaments.messages.NewTournament;

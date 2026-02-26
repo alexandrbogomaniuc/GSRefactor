@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.icon;
+package com.abs.casino.promo.icon;
 
 import java.util.Objects;
 

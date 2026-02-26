@@ -1,0 +1,223 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.dgphoenix.casino:gsn-web-gs:war:1.89.0
+[WARNING] 'version' contains an expression but should be a constant. @ com.dgphoenix.casino:gsn-web-gs:${current.version}, /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/pom.xml, line 13, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-web-gs >-------------------
+[INFO] Building gsn-web-gs 1.89.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ gsn-web-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 43 resources
+[INFO] 
+[INFO] --- resources:2.6:resources (gs-resources) @ gsn-web-gs ---
+[WARNING]  Parameter 'resources' is read-only, must not be used in configuration
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 43 resources
+[INFO] Copying 59 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/css
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/css_nucleus
+[INFO] Copying 104 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/js
+[INFO] Copying 501 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/images
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/images_nucleus
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-web-gs ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- jetty-jspc:9.4.3.v20170317:jspc (jspc) @ gsn-web-gs ---
+[INFO] Logging initialized @3872ms to org.eclipse.jetty.util.log.Slf4jLog
+[INFO] Compiling gamehistoryXMLV2.jsp,jvmdetect.jsp,popup/popup.jsp,popup/language.jsp,version.jsp,localized_games.jsp,tools/walletsManagerShowData.jsp,tools/banksList.jsp,tools/pendingOperations.jsp,tools/addBattlegroundGames.jsp,tools/bankEndpoints.jsp,tools/api/service.jsp,tools/editBattlegroundChrashGameFolder.jsp,tools/setStubAccountBalance.jsp,tools/subCasinoInfo.jsp,tools/bankProperties.jsp,tools/walletsManager.jsp,checkURL.jsp,defaultstlobby.jsp,config/stub/bonus/frbWin.jsp,config/stub/bonus/accountinfoGBP.jsp,config/stub/bonus/release.jsp,config/stub/bonus/auth.jsp,config/stub/bonus/frbWinError.jsp,config/stub/bonus/frbWinHash.jsp,config/stub/bonus/accountinfo.jsp,config/stub/status.jsp,config/stub/balance.jsp,config/stub/jwt_stub.jsp,config/stub/reality_check_info.jsp,config/stub/refund_error.jsp,config/stub/wager_error_315.jsp,config/stub/cwv3/refund.jsp,config/stub/cwv3/auth.jsp,config/stub/cwv3/wager.jsp,config/stub/status_error.jsp,config/stub/wager_301_error.jsp,config/stub/wager_error_314.jsp,config/stub/wager_error_300.jsp,config/stub/wager_error_316.jsp,config/stub/wager_error.jsp,config/stub/wager_bad_win.jsp,config/stub/wager_if_bet_error.jsp,config/stub/wager_bad_bet.jsp,config/stub/refund.jsp,config/stub/wager_bet_win_different_balance.jsp,config/stub/wager_if_negativebet_error.jsp,config/stub/auth.jsp,config/stub/wager_error_323.jsp,config/stub/wager_error_322.jsp,config/stub/wager_if_win_error.jsp,config/stub/wager_311_error.jsp,config/stub/tournaments/winners_ok.jsp,config/stub/tournaments/winners_error_403.jsp,config/stub/tournaments/winners_error_400.jsp,config/stub/tournaments/winners_invalid_response.jsp,config/stub/tournaments/winners_error_500.jsp,config/stub/wager_sleep.jsp,config/stub/wager.jsp,config/stub/cwv3_long/refund.jsp,config/stub/cwv3_long/auth.jsp,config/stub/cwv3_long/wager.jsp,stlobbies/tournaments/tournament.jsp,free/mp/template.jsp,real/mp/template.jsp,help2.jsp,gsroundhistory.jsp,gossip/popup.jsp,gamelist.jsp,standlobby.jsp,checkStatus.jsp,frb/frbPopup.jsp,handhistory.jsp,cdn/info.jsp,cdn/speedTest.jsp,support/metrics/index.jsp,support/currentCurrencyRates2.jsp,support/autoFrbLists.jsp,support/bankInfo/propertyResult.jsp,support/bankInfo/propertyForm.jsp,support/configuration/fieldProperties.jsp,support/configuration/mapProperties.jsp,support/configuration/serverConfiguration.jsp,support/EditTemplateProperty.jsp,support/version.jsp,support/listExteralIdsByBank.jsp,support/error.jsp,support/reinitFrBonusClient.jsp,support/cacheviewer.jsp,support/getGameSession.jsp,support/setIdGeneratorStartValue.jsp,support/modernizationRunbook.jsp,support/createSubCasino.jsp,support/cache/background/view.jsp,support/cache/background/reset.jsp,support/cache/bank/acs/acsConfig.jsp,support/cache/bank/common/bankInfo.jsp,support/cache/bank/common/addGame.jsp,support/cache/bank/common/banksList.jsp,support/cache/bank/common/loadAllBanks.jsp,support/cache/bank/common/subcasinoSelect.jsp,support/cache/bank/common/newBankNSubCasino.jsp,support/cache/bank/common/banksNSubCasinos.jsp,support/cache/bank/common/editGame.jsp,support/cache/bank/common/addSubcasino.jsp,support/cache/bank/common/subcasinoList.jsp,support/cache/bank/common/properties.jsp,support/cache/bank/common/subCasinoInfo.jsp,support/cache/bank/common/systemInfo.jsp,support/cache/bank/common/addFreeBank.jsp,support/cache/bank/common/removeBank.jsp,support/cache/bank/common/addBank.jsp,support/cache/bank/common/scheduleCronTask.jsp,support/cache/bank/properties/set_post_property.jsp,support/cache/bank/properties/languageTable.jsp,support/cache/bank/properties/edit/languageTable.jsp,support/cache/bank/properties/edit/editProperties.jsp,support/cache/bank/properties/edit/allBanks.jsp,support/cache/bank/properties/edit/bankLangTable.jsp,support/cache/bank/properties/editProperties.jsp,support/cache/domain/domainList.jsp,support/cache/domain/gameList.jsp,support/checkPersisters.jsp,support/precheckPendingDataArchiving.jsp,support/updateFrbGames.jsp,support/import-base-game-info.jsp,support/updateCaches.jsp,support/setProperty.jsp,support/showcassandra_account-ext.jsp,support/health/ping.jsp,support/health/check.jsp,support/encoderutil.jsp,support/correctedCurrency.jsp,support/getRounds.jsp,support/configPortal.jsp,support/reinitWalletManager.jsp,support/showGamesDetailsProp3.jsp,support/clearLastHand.jsp,support/reinitCurrencyRateMultipliers.jsp,support/convertCurrency.jsp,support/showGamesDetailsProp2.jsp,support/supporthistory.jsp,support/getPendingFRBWin.jsp,support/removeWalletForAccount.jsp,support/currentCurrencyRates.jsp,support/script/addCurrRate.jsp,support/script/addCurrRateShort.jsp,support/GameConfig/getGamesConfigByBanks.jsp,support/export-base-game-info.jsp,support/exportImportCoins.jsp,support/viewWallets.jsp,support/sleeper.jsp,support/saveIcon.jsp,support/currencyBank.jsp,support/listGameIds.jsp,support/reinitFrBonusWinManager.jsp,support/logoutPlayers.jsp,support/resetAllStubBalances.jsp,support/getMassAwardRestrictions.jsp,support/showAPIIssues.jsp,support/showcassandra_account.jsp,support/handleOfflineCreditInRounds.jsp,support/reinitGamesList.jsp,support/getSessionError.jsp,support/cancelMassFRBonusAward.jsp,support/index.jsp,support/updateIcon.jsp,support/copyLanguages.jsp,support/bonusexp.jsp,support/walletInfo.jsp,support/initGames.jsp,support/templateManager/getTemplates.jsp,support/templateManager/GameTemplate.jsp,support/templateManager/cloneTemplate.jsp,support/templateManager/setProperty.jsp,support/templateManager/compareTemplates.jsp,support/templateManager/ClusterList.jsp,support/templateManager/invalidateBgi.jsp,support/templateManager/index.jsp,support/modernizationDocs.jsp,support/isShutDown.jsp,support/deleteForbiddenCurrenciesProp.jsp,support/rouletteInternalLimits.jsp,support/setlimits.jsp,support/showBanksDetailsProp.jsp,support/langTools.jsp,support/viewFRBCoin.jsp,support/setup_replaceurl_pm_st.jsp,support/getAccountInfo.jsp,support/bankReleaseReport.jsp,support/currencyFractionsConfig.jsp,support/getBanksWithGame2.jsp,support/clusterHosts.jsp,support/customGameList.jsp,support/disableGames.jsp,support/games/getGameInfos.jsp,support/games/listExteralIdsByBank.jsp,support/games/829_step2_AddGameInfo.jsp,support/games/829_FixTemplate.jsp,support/games/getLasthands.jsp,support/games/getGameInfoTemplates.jsp,support/games/829_step1_AddGameInfoTemplate.jsp,support/games/gameClientGeneration.jsp,support/getCdnSettingsCsv.jsp,support/currency/switchToInternalRatesExtractor.jsp,support/currency/showBrokenRates.jsp,support/currency/forceUpdateRate.jsp,support/currency/initRatesConfig.jsp,support/prepareToShutdown.jsp,support/copyBankV3.jsp,support/gameBankConfig/GameClass.jsp,support/gameBankConfig/removeGame.jsp,support/gameBankConfig/editGameForm.jsp,support/gameBankConfig/compareBanksGames.jsp,support/gameBankConfig/applyGame.jsp,support/gameBankConfig/deleteGameForm.jsp,support/gameBankConfig/gameConfig.jsp,support/logViewer.jsp,support/reinitBonusClient.jsp,support/finishRounds.jsp,getVersion.jsp,templates/main.jsp,empty.jsp,checkServerId.jsp,register.jsp,error_pages/error.jsp,error_pages/loc/loginerror_s.jsp,error_pages/loc/gamedisablederror.jsp,error_pages/loc/loadingerror.jsp,error_pages/loc/sessionerror.jsp,error_pages/loc/gamestartederror.jsp,error_pages/loc/disconnecterror.jsp,error_pages/error_eurobet.jsp,error_pages/loginerror_s.jsp,error_pages/gamedisablederror.jsp,error_pages/loadingerror.jsp,error_pages/gameserver_notfound_error.jsp,error_pages/errorXml.jsp,error_pages/incorrect_parameters_error.jsp,error_pages/error_header_si.jsp,error_pages/game_in_maintenance_mode.jsp,error_pages/reuse_launch_url_error.jsp,error_pages/sessionerror.jsp,error_pages/history_not_found.jsp,error_pages/mq/error.jsp,error_pages/mq/fatal_error_808.jsp,error_pages/mq/fatal_error_821.jsp,error_pages/mq/fatal_error_843.jsp,error_pages/mq/fatal_error_30429.jsp,error_pages/mq/fatal_error_856.jsp,error_pages/mq/fatal_error_864.jsp,error_pages/mq/fatal_error_859.jsp,error_pages/mq/fatal_error_867.jsp,error_pages/mq/fatal_error_866.jsp,error_pages/mq/fatal_error_862.jsp,error_pages/mq/fatal_error_863.jsp,error_pages/mq/fatal_error_875.jsp,error_pages/mq/fatal_error_838.jsp,error_pages/mq/fatal_error_829.jsp,error_pages/mq/fatal_error.jsp,error_pages/mq/fatal_error_779.jsp,error_pages/error_footer.jsp,error_pages/errorJSON.jsp,error_pages/gamestartederror.jsp,error_pages/disconnecterror.jsp,error_pages/error_ptpt.jsp,error_pages/gameinfo_error.jsp,error_pages/error_header.jsp,error_pages/ng_maintenance_mode.jsp,getFlash.jsp,vabs/VabEngine/EngineHeader.jsp,vabs/VabEngine/VabParameters.jsp,vabs/show.jsp,logout.jsp,gamehistory.jsp,mp-stub/template.jsp,mp-stub/room.jsp,wallet_http_stat.jsp,gameSessionHistory.jsp,gamehistoryXML.jsp from includes=**/*.jsp, **/*.jspx excludes=webscripts/**
+[INFO] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+[INFO] 
+[INFO] --- resources:2.6:testResources (default-testResources) @ gsn-web-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 78 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-web-gs ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-web-gs ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- xml:1.0.2:validate (default) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- war:3.2.1:war (default-war) @ gsn-web-gs ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [gsn-web-gs] in [/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/ROOT]
+[INFO] Processing war project
+[INFO] Copying webapp webResources [/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/../config/lib/sigar] to [/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/ROOT]
+[INFO] Copying webapp webResources [/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/config/crossdomain] to [/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/ROOT]
+[INFO] Copying webapp resources [/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp]
+[INFO] Webapp assembled in [1219 msecs]
+[INFO] Building war: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/ROOT.war
+[INFO] 
+[INFO] --- duplicate-finder:1.0.3:check (default) @ gsn-web-gs ---
+[INFO] Checking compile classpath
+[WARNING] Found duplicate classes in [com.fasterxml.jackson.core:jackson-annotations:2.18.3,com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.12.3,com.fasterxml.woodstox:woodstox-core:7.0.0,org.codehaus.woodstox:stax2-api:4.2.2,org.ow2.asm:asm-analysis:9.2,org.ow2.asm:asm-commons:9.2,org.ow2.asm:asm-tree:9.2,org.ow2.asm:asm-util:9.2] :
+[WARNING]   module-info
+[WARNING] Found duplicate classes in [com.fasterxml.jackson.core:jackson-core:2.18.3,com.fasterxml.jackson.core:jackson-databind:2.18.3,com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.18.3,com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.3,io.github.classgraph:classgraph:4.8.179,org.apache.logging.log4j:log4j-api:2.20.0] :
+[WARNING]   META-INF.versions.9.module-info
+[WARNING] Found duplicate resources in [com.dgphoenix.casino:gsn-common-gs:1.0,com.dgphoenix.casino:gsn-utils-restricted:1.0-SNAPSHOT,org.apache.logging.log4j:log4j-1.2-api:2.20.0,org.apache.logging.log4j:log4j-core:2.20.0] :
+[WARNING]   META-INF/org/apache/logging/log4j/core/config/plugins/Log4j2Plugins.dat
+[WARNING] Found duplicate resources in [io.netty:netty-buffer:4.1.34.Final,io.netty:netty-codec:4.1.34.Final,io.netty:netty-codec-http:4.1.34.Final,io.netty:netty-codec-socks:4.1.34.Final,io.netty:netty-common:4.1.34.Final,io.netty:netty-handler:4.1.34.Final,io.netty:netty-handler-proxy:4.1.34.Final,io.netty:netty-resolver:4.1.34.Final,io.netty:netty-transport:4.1.34.Final,io.netty:netty-transport-native-epoll:4.1.34.Final:linux-x86_64,io.netty:netty-transport-native-unix-common:4.1.34.Final] :
+[WARNING]   META-INF/io.netty.versions.properties
+[INFO] Checking runtime classpath
+[WARNING] Found duplicate classes in [com.fasterxml.jackson.core:jackson-annotations:2.18.3,com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.12.3,com.fasterxml.woodstox:woodstox-core:7.0.0,javax.ws.rs:javax.ws.rs-api:2.1.1,org.codehaus.woodstox:stax2-api:4.2.2,org.ow2.asm:asm-analysis:9.2,org.ow2.asm:asm-commons:9.2,org.ow2.asm:asm-tree:9.2,org.ow2.asm:asm-util:9.2] :
+[WARNING]   module-info
+[WARNING] Found duplicate classes in [com.fasterxml.jackson.core:jackson-core:2.18.3,com.fasterxml.jackson.core:jackson-databind:2.18.3,com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.18.3,com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.3,io.github.classgraph:classgraph:4.8.179,org.apache.logging.log4j:log4j-api:2.20.0] :
+[WARNING]   META-INF.versions.9.module-info
+[WARNING] Found duplicate classes in [net.jpountz.lz4:lz4:1.3.0,org.lz4:lz4-java:1.7.1] :
+[WARNING]   net.jpountz.lz4.LZ4BlockInputStream
+[WARNING]   net.jpountz.lz4.LZ4BlockOutputStream
+[WARNING]   net.jpountz.lz4.LZ4ByteBufferUtils
+[WARNING]   net.jpountz.lz4.LZ4Compressor
+[WARNING]   net.jpountz.lz4.LZ4Constants
+[WARNING]   net.jpountz.lz4.LZ4Decompressor
+[WARNING]   net.jpountz.lz4.LZ4Exception
+[WARNING]   net.jpountz.lz4.LZ4Factory
+[WARNING]   net.jpountz.lz4.LZ4FastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4HCJNICompressor
+[WARNING]   net.jpountz.lz4.LZ4HCJavaSafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4HCJavaUnsafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4JNI
+[WARNING]   net.jpountz.lz4.LZ4JNICompressor
+[WARNING]   net.jpountz.lz4.LZ4JNIFastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JNISafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaSafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaSafeFastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaSafeSafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaUnsafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaUnsafeFastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaUnsafeSafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4SafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4SafeUtils
+[WARNING]   net.jpountz.lz4.LZ4UnknownSizeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4UnsafeUtils
+[WARNING]   net.jpountz.lz4.LZ4Utils
+[WARNING]   net.jpountz.util.ByteBufferUtils
+[WARNING]   net.jpountz.util.Native
+[WARNING]   net.jpountz.util.SafeUtils
+[WARNING]   net.jpountz.util.UnsafeUtils
+[WARNING]   net.jpountz.util.Utils
+[WARNING]   net.jpountz.xxhash.AbstractStreamingXXHash32Java
+[WARNING]   net.jpountz.xxhash.AbstractStreamingXXHash64Java
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32JNI
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32JavaSafe
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32JavaUnsafe
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64JNI
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64JavaSafe
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64JavaUnsafe
+[WARNING]   net.jpountz.xxhash.XXHash32
+[WARNING]   net.jpountz.xxhash.XXHash32JNI
+[WARNING]   net.jpountz.xxhash.XXHash32JavaSafe
+[WARNING]   net.jpountz.xxhash.XXHash32JavaUnsafe
+[WARNING]   net.jpountz.xxhash.XXHash64
+[WARNING]   net.jpountz.xxhash.XXHash64JNI
+[WARNING]   net.jpountz.xxhash.XXHash64JavaSafe
+[WARNING]   net.jpountz.xxhash.XXHash64JavaUnsafe
+[WARNING]   net.jpountz.xxhash.XXHashConstants
+[WARNING]   net.jpountz.xxhash.XXHashFactory
+[WARNING]   net.jpountz.xxhash.XXHashJNI
+[WARNING] Found duplicate resources in [com.dgphoenix.casino:gsn-common-gs:1.0,com.dgphoenix.casino:gsn-utils-restricted:1.0-SNAPSHOT,org.apache.logging.log4j:log4j-1.2-api:2.20.0,org.apache.logging.log4j:log4j-core:2.20.0,org.apache.logging.log4j:log4j-web:2.20.0] :
+[WARNING]   META-INF/org/apache/logging/log4j/core/config/plugins/Log4j2Plugins.dat
+[WARNING] Found duplicate resources in [io.netty:netty-buffer:4.1.34.Final,io.netty:netty-codec:4.1.34.Final,io.netty:netty-codec-http:4.1.34.Final,io.netty:netty-codec-socks:4.1.34.Final,io.netty:netty-common:4.1.34.Final,io.netty:netty-handler:4.1.34.Final,io.netty:netty-handler-proxy:4.1.34.Final,io.netty:netty-resolver:4.1.34.Final,io.netty:netty-transport:4.1.34.Final,io.netty:netty-transport-native-epoll:4.1.34.Final:linux-x86_64,io.netty:netty-transport-native-unix-common:4.1.34.Final] :
+[WARNING]   META-INF/io.netty.versions.properties
+[WARNING] Found duplicate resources in [org.apache.logging.log4j:log4j-web:2.20.0,org.springframework:spring-web:4.3.14.RELEASE] :
+[WARNING]   META-INF/web-fragment.xml
+[INFO] Checking test classpath
+[WARNING] Found duplicate classes in [com.fasterxml.jackson.core:jackson-annotations:2.18.3,com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.12.3,com.fasterxml.woodstox:woodstox-core:7.0.0,javax.ws.rs:javax.ws.rs-api:2.1.1,org.codehaus.woodstox:stax2-api:4.2.2,org.ow2.asm:asm-analysis:9.2,org.ow2.asm:asm-commons:9.2,org.ow2.asm:asm-tree:9.2,org.ow2.asm:asm-util:9.2] :
+[WARNING]   module-info
+[WARNING] Found duplicate classes in [com.fasterxml.jackson.core:jackson-core:2.18.3,com.fasterxml.jackson.core:jackson-databind:2.18.3,com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.18.3,com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.3,io.github.classgraph:classgraph:4.8.179,org.apache.logging.log4j:log4j-api:2.20.0] :
+[WARNING]   META-INF.versions.9.module-info
+[WARNING] Found duplicate classes in [com.vaadin.external.google:android-json:0.0.20131108.vaadin1,org.json:json:20090211] :
+[WARNING]   org.json.JSONArray
+[WARNING]   org.json.JSONException
+[WARNING]   org.json.JSONObject
+[WARNING]   org.json.JSONStringer
+[WARNING]   org.json.JSONTokener
+[WARNING] Found duplicate classes in [net.jpountz.lz4:lz4:1.3.0,org.lz4:lz4-java:1.7.1] :
+[WARNING]   net.jpountz.lz4.LZ4BlockInputStream
+[WARNING]   net.jpountz.lz4.LZ4BlockOutputStream
+[WARNING]   net.jpountz.lz4.LZ4ByteBufferUtils
+[WARNING]   net.jpountz.lz4.LZ4Compressor
+[WARNING]   net.jpountz.lz4.LZ4Constants
+[WARNING]   net.jpountz.lz4.LZ4Decompressor
+[WARNING]   net.jpountz.lz4.LZ4Exception
+[WARNING]   net.jpountz.lz4.LZ4Factory
+[WARNING]   net.jpountz.lz4.LZ4FastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4HCJNICompressor
+[WARNING]   net.jpountz.lz4.LZ4HCJavaSafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4HCJavaUnsafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4JNI
+[WARNING]   net.jpountz.lz4.LZ4JNICompressor
+[WARNING]   net.jpountz.lz4.LZ4JNIFastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JNISafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaSafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaSafeFastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaSafeSafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaUnsafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaUnsafeFastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaUnsafeSafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4SafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4SafeUtils
+[WARNING]   net.jpountz.lz4.LZ4UnknownSizeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4UnsafeUtils
+[WARNING]   net.jpountz.lz4.LZ4Utils
+[WARNING]   net.jpountz.util.ByteBufferUtils
+[WARNING]   net.jpountz.util.Native
+[WARNING]   net.jpountz.util.SafeUtils
+[WARNING]   net.jpountz.util.UnsafeUtils
+[WARNING]   net.jpountz.util.Utils
+[WARNING]   net.jpountz.xxhash.AbstractStreamingXXHash32Java
+[WARNING]   net.jpountz.xxhash.AbstractStreamingXXHash64Java
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32JNI
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32JavaSafe
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32JavaUnsafe
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64JNI
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64JavaSafe
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64JavaUnsafe
+[WARNING]   net.jpountz.xxhash.XXHash32
+[WARNING]   net.jpountz.xxhash.XXHash32JNI
+[WARNING]   net.jpountz.xxhash.XXHash32JavaSafe
+[WARNING]   net.jpountz.xxhash.XXHash32JavaUnsafe
+[WARNING]   net.jpountz.xxhash.XXHash64
+[WARNING]   net.jpountz.xxhash.XXHash64JNI
+[WARNING]   net.jpountz.xxhash.XXHash64JavaSafe
+[WARNING]   net.jpountz.xxhash.XXHash64JavaUnsafe
+[WARNING]   net.jpountz.xxhash.XXHashConstants
+[WARNING]   net.jpountz.xxhash.XXHashFactory
+[WARNING]   net.jpountz.xxhash.XXHashJNI
+[WARNING] Found duplicate classes in [org.apache.logging.log4j:log4j-slf4j-impl:2.20.0,org.slf4j:slf4j-nop:1.6.1] :
+[WARNING]   org.slf4j.impl.StaticLoggerBinder
+[WARNING]   org.slf4j.impl.StaticMDCBinder
+[WARNING]   org.slf4j.impl.StaticMarkerBinder
+[WARNING] Found duplicate classes in [org.json:json:20090211,org.skyscreamer:jsonassert:1.5.1] :
+[WARNING]   org.json.JSONString
+[WARNING] Found duplicate resources in [com.dgphoenix.casino:gsn-common-gs:1.0,com.dgphoenix.casino:gsn-utils-restricted:1.0-SNAPSHOT,org.apache.logging.log4j:log4j-1.2-api:2.20.0,org.apache.logging.log4j:log4j-core:2.20.0,org.apache.logging.log4j:log4j-web:2.20.0] :
+[WARNING]   META-INF/org/apache/logging/log4j/core/config/plugins/Log4j2Plugins.dat
+[WARNING] Found duplicate resources in [io.netty:netty-buffer:4.1.34.Final,io.netty:netty-codec:4.1.34.Final,io.netty:netty-codec-http:4.1.34.Final,io.netty:netty-codec-socks:4.1.34.Final,io.netty:netty-common:4.1.34.Final,io.netty:netty-handler:4.1.34.Final,io.netty:netty-handler-proxy:4.1.34.Final,io.netty:netty-resolver:4.1.34.Final,io.netty:netty-transport:4.1.34.Final,io.netty:netty-transport-native-epoll:4.1.34.Final:linux-x86_64,io.netty:netty-transport-native-unix-common:4.1.34.Final] :
+[WARNING]   META-INF/io.netty.versions.properties
+[WARNING] Found duplicate resources in [org.apache.logging.log4j:log4j-web:2.20.0,org.springframework:spring-web:4.3.14.RELEASE] :
+[WARNING]   META-INF/web-fragment.xml
+[WARNING] Found duplicate resources in [org.springframework:spring-beans:4.3.14.RELEASE,org.springframework:spring-test:4.3.14.RELEASE] :
+[WARNING]   META-INF/spring.factories
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13.071 s
+[INFO] Finished at: 2026-02-26T09:38:27Z
+[INFO] ------------------------------------------------------------------------

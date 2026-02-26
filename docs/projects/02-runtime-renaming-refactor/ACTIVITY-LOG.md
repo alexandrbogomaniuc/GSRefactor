@@ -444,3 +444,15 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-093419-hardcut-m2-wave3-common-rest`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/15-hard-cut-m2-wave3-common-rest-report-20260226.md`
+
+## 2026-02-26 09:39 UTC (M2 Wave 4 - Promo Icon + Masker)
+- Migrated namespaces:
+  - `com.dgphoenix.casino.promo.masker` -> `com.abs.casino.promo.masker`
+  - `com.dgphoenix.casino.promo.icon` -> `com.abs.casino.promo.icon`
+- Updated dependent imports in promo persisters, common-gs tournament handlers, and support JSP icon pages.
+- Post-scan result: legacy refs `0`, abs refs `11`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-093723-hardcut-m2-wave4-promo-icon-masker`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/16-hard-cut-m2-wave4-promo-icon-masker-report-20260226.md`

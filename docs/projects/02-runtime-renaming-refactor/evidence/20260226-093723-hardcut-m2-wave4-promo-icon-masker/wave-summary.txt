@@ -1,0 +1,22 @@
+timestamp_utc=2026-02-26T09:39:00Z
+pre_scan_lines=11
+post_scan_legacy_refs=0
+post_scan_abs_refs=11
+validation_success_commands=9
+validation_failed_commands=0
+
+scope=
+- com.dgphoenix.casino.promo.masker -> com.abs.casino.promo.masker
+- com.dgphoenix.casino.promo.icon -> com.abs.casino.promo.icon
+- dependent Java imports and support JSP imports
+
+validation_set=
+- common install
+- common-wallet test
+- sb-utils test
+- promo persisters install
+- common persisters install
+- cassandra cache test
+- web-gs package
+- mp core/persistance package
+- runtime smoke
