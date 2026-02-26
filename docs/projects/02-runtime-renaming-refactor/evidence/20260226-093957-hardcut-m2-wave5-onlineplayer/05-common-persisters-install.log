@@ -1,0 +1,45 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-common-persisters >-------------
+[INFO] Building gsn-common-persisters 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-persisters ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-common-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common-persisters ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-common-persisters ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-common-persisters ---
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-common-persisters >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-common-persisters <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-common-persisters ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-common-persisters ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.133 s
+[INFO] Finished at: 2026-02-26T09:40:42Z
+[INFO] ------------------------------------------------------------------------

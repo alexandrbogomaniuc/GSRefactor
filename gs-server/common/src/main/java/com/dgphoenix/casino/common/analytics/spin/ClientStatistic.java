@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.analytics.spin;
+package com.abs.casino.common.analytics.spin;
 
 import com.google.common.base.Splitter;
 import org.apache.logging.log4j.LogManager;

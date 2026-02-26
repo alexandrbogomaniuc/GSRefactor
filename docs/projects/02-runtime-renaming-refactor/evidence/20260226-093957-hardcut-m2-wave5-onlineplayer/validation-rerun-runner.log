@@ -1,0 +1,10 @@
+===== 01-common-install-rerun =====
+===== 02-common-wallet-test-rerun =====
+===== 03-sb-utils-test-rerun =====
+===== 04-promo-persisters-install-rerun =====
+===== 05-common-persisters-install-rerun =====
+===== 06-cassandra-cache-test-rerun =====
+===== 07-common-gs-install-rerun =====
+===== 08-web-gs-package-rerun =====
+===== 09-mp-core-persistence-package-rerun =====
+===== 10-refactor-smoke-rerun =====

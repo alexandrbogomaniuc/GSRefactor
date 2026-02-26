@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.analytics.spin;
+package com.abs.casino.common.analytics.spin;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;

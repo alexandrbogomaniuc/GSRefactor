@@ -1,0 +1,9 @@
+01-common-install: rc=0
+02-common-wallet-test: rc=0
+03-sb-utils-test: rc=0
+04-promo-persisters-install: rc=0
+05-common-persisters-install: rc=0
+06-cassandra-cache-test: rc=0
+07-web-gs-package: rc=1
+08-mp-core-persistence-package: rc=0
+09-refactor-smoke: rc=0

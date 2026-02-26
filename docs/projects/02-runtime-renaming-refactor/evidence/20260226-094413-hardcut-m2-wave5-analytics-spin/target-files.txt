@@ -1,0 +1,2 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/analytics/spin/SpinStatistic.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/analytics/spin/ClientStatistic.java

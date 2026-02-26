@@ -6298,3 +6298,15 @@
 - Evidence package:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-093723-hardcut-m2-wave4-promo-icon-masker`
 - Next: commit/push wave and continue to M2 Wave 5.
+
+### 2026-02-26 09:46 UTC
+- Attempted Wave 5 on `onlineplayer` namespace family, detected cross-module compile boundary issue (`common-gs` baseline blocker), and rolled back the attempt to keep migration stable.
+- Re-scoped Wave 5 to `common.analytics.spin` (2 files) and completed migration successfully.
+- Final Wave 5 result:
+  - legacy refs for target family: `0`
+  - `com.abs` refs: `2`
+  - full validation matrix + runtime smoke: PASS.
+- Evidence:
+  - successful: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-094413-hardcut-m2-wave5-analytics-spin`
+  - retained aborted attempt: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-093957-hardcut-m2-wave5-onlineplayer`
+- Next: commit/push Wave 5 and continue to Wave 6.

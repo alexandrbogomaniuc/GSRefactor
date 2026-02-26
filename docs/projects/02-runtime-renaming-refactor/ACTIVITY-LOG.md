@@ -456,3 +456,27 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-093723-hardcut-m2-wave4-promo-icon-masker`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/16-hard-cut-m2-wave4-promo-icon-masker-report-20260226.md`
+
+## 2026-02-26 09:46 UTC (M2 Wave 5 - Onlineplayer Attempt Aborted)
+- Attempted namespace migration for:
+  - `com.dgphoenix.casino.common.client.canex.request.onlineplayer`
+- Validation result:
+  - initial run: `web-gs` compile mismatch due stale `common-gs` artifact.
+  - rerun with `common-gs` install exposed known baseline blocker in `BasicTransactionDataStorageHelper` (`PROTOCOL_VERSION`) plus cross-artifact type mismatch chain.
+- Action:
+  - rolled back onlineplayer code edits to avoid unstable partial migration.
+- Retained evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-093957-hardcut-m2-wave5-onlineplayer`
+
+## 2026-02-26 09:46 UTC (M2 Wave 5 - Analytics Spin Completed)
+- Re-scoped Wave 5 to low-fanout family:
+  - `com.dgphoenix.casino.common.analytics.spin` -> `com.abs.casino.common.analytics.spin`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/analytics/spin/SpinStatistic.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/analytics/spin/ClientStatistic.java`
+- Post-scan result: legacy refs `0`, abs refs `2`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-094413-hardcut-m2-wave5-analytics-spin`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/17-hard-cut-m2-wave5-analytics-spin-report-20260226.md`

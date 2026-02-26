@@ -1,0 +1,14 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/IJsonCWClient.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/UpdateOnlinePlayersResponse.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/GetOnlinePlayersOutput.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/UpdateOnlinePlayersRequest.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/GetOnlinePlayersExtSystem.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/GetOnlinePlayersResponse.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/GetOnlinePlayersRequest.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/Status.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/OnlinePlayer.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/BattlegroundService.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/response/PostOnlinePlayersResponse.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/BattlegroundPrivateRoomController.java
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClient.java

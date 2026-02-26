@@ -1,0 +1,24 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/IJsonCWClient.java:4:import com.dgphoenix.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersResponse;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/UpdateOnlinePlayersResponse.java:1:package com.dgphoenix.casino.common.client.canex.request.onlineplayer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/GetOnlinePlayersOutput.java:1:package com.dgphoenix.casino.common.client.canex.request.onlineplayer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/UpdateOnlinePlayersRequest.java:1:package com.dgphoenix.casino.common.client.canex.request.onlineplayer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/GetOnlinePlayersExtSystem.java:1:package com.dgphoenix.casino.common.client.canex.request.onlineplayer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/GetOnlinePlayersResponse.java:1:package com.dgphoenix.casino.common.client.canex.request.onlineplayer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/GetOnlinePlayersRequest.java:1:package com.dgphoenix.casino.common.client.canex.request.onlineplayer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/Status.java:1:package com.dgphoenix.casino.common.client.canex.request.onlineplayer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/OnlinePlayer.java:1:package com.dgphoenix.casino.common.client.canex.request.onlineplayer;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:38:import com.dgphoenix.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersResponse;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:39:import com.dgphoenix.casino.common.client.canex.request.onlineplayer.OnlinePlayer;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:1932:    protected static BGOStatus convertStatusToTBOStatus(com.dgphoenix.casino.common.client.canex.request.onlineplayer.Status status) {
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:1966:        com.dgphoenix.casino.common.client.canex.request.onlineplayer.Status status = onlinePlayer.isOnline() ?
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:1967:                com.dgphoenix.casino.common.client.canex.request.onlineplayer.Status.online :
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:1968:                com.dgphoenix.casino.common.client.canex.request.onlineplayer.Status.offline;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/BattlegroundService.java:20:import com.dgphoenix.casino.common.client.canex.request.onlineplayer.OnlinePlayer;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/BattlegroundService.java:21:import com.dgphoenix.casino.common.client.canex.request.onlineplayer.UpdateOnlinePlayersRequest;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/BattlegroundService.java:22:import com.dgphoenix.casino.common.client.canex.request.onlineplayer.UpdateOnlinePlayersResponse;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/response/PostOnlinePlayersResponse.java:3:import com.dgphoenix.casino.common.client.canex.request.onlineplayer.OnlinePlayer;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/BattlegroundPrivateRoomController.java:5:import com.dgphoenix.casino.common.client.canex.request.onlineplayer.UpdateOnlinePlayersRequest;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/BattlegroundPrivateRoomController.java:6:import com.dgphoenix.casino.common.client.canex.request.onlineplayer.UpdateOnlinePlayersResponse;
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClient.java:19:import com.dgphoenix.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersOutput;
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClient.java:20:import com.dgphoenix.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersRequest;
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClient.java:21:import com.dgphoenix.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersResponse;
