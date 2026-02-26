@@ -1060,3 +1060,16 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-130155-hardcut-m2-wave44-ct-lobby-login-request`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/56-hard-cut-m2-wave44-ct-lobby-login-request-report-20260226.md`
+
+## 2026-02-26 13:12 UTC (M2 Wave 45 - LoginCommonConstants Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.web.login.LoginCommonConstants` -> `com.abs.casino.common.web.login.LoginCommonConstants`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/web/login/LoginCommonConstants.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/login/AbstractGatewayServlet.java`
+- Post-scan result: legacy refs `0`, abs refs `2` (pre-scan legacy refs `2`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-130750-hardcut-m2-wave45-login-common-constants`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/57-hard-cut-m2-wave45-login-common-constants-report-20260226.md`

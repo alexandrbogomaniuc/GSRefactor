@@ -6718,3 +6718,13 @@
   - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/56-hard-cut-m2-wave44-ct-lobby-login-request-report-20260226.md`
+
+### 2026-02-26 13:12 UTC
+- Completed Project 02 M2 Wave 45 for `LoginCommonConstants` namespace migration.
+- Migrated package declaration to `com.abs` and updated static import in `AbstractGatewayServlet`.
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-130750-hardcut-m2-wave45-login-common-constants`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/57-hard-cut-m2-wave45-login-common-constants-report-20260226.md`

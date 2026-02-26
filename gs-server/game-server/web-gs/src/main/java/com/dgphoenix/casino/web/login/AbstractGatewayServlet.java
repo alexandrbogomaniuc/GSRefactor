@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static com.dgphoenix.casino.common.web.login.LoginCommonConstants.*;
+import static com.abs.casino.common.web.login.LoginCommonConstants.*;
 
 /**
  * User: plastical

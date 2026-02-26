@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.web.login;
+package com.abs.casino.common.web.login;
 
 import com.dgphoenix.casino.common.web.CommonStatus;
 
