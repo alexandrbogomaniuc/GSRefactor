@@ -55,3 +55,12 @@ Project: Post-Project Audit
 - Validation evidence:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/launch-config-externalization-validation-20260226-082230.md`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-082230/refactor-onboard-smoke.log`
+
+## 2026-02-26 08:32 UTC
+- Ran post-change runtime log sweep and addressed repetitive Cassandra diagnosis noise in GS logs.
+- Patched diagnosis task logic to avoid warning churn during not-ready/JMX-unavailable windows while preserving warning behavior for real host-list failures.
+- Updated source:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/system/diagnosis/tasks/CassandraStateCheckTask.java`
+- Validation evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/cassandra-jmx-diagnosis-noise-reduction-validation-20260226-083232.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-083232/`

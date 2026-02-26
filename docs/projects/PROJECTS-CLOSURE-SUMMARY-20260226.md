@@ -44,3 +44,5 @@ For both projects/waves, validation repeatedly used:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/launch-config-externalization-validation-20260226-082230.md`
 - Latest runtime communication blocker fix (GS↔MP gameplay websocket port mapping):
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/mp-websocket-external-port-fix-validation-20260226-080619.md`
+- Latest runtime diagnosis noise-reduction validation:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/cassandra-jmx-diagnosis-noise-reduction-validation-20260226-083232.md`

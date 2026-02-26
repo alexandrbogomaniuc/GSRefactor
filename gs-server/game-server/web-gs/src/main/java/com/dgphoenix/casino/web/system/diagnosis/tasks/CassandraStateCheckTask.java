@@ -50,15 +50,35 @@ public class CassandraStateCheckTask extends AbstractCheckTask {
         boolean taskFailed = false;
         try {
             taskExecutionStartTime = getCurrentTime();
-            List<HostMetrics> hostMetricsList = persistenceManager.getKeyspaceManagers().stream()
+            List<IKeyspaceManager> readyManagers = persistenceManager.getKeyspaceManagers().stream()
+                    .filter(Objects::nonNull)
+                    .filter(IKeyspaceManager::isReady)
+                    .collect(Collectors.toList());
+
+            if (readyManagers.isEmpty()) {
+                LOG.debug("Skip Cassandra JMX diagnosis: keyspace managers are not ready yet");
+                setTaskFailed(false);
+                return super.isOut(strongValidation);
+            }
+
+            Set<String> jmxHosts = readyManagers.stream()
                     .flatMap(manager -> resolveJmxHosts(manager).stream())
                     .distinct()
+                    .collect(Collectors.toCollection(LinkedHashSet::new));
+
+            if (jmxHosts.isEmpty()) {
+                LOG.warn("Cannot obtain Cassandra host list for diagnosis");
+                setTaskFailed(false);
+                return super.isOut(strongValidation);
+            }
+
+            List<HostMetrics> hostMetricsList = jmxHosts.stream()
                     .map(this::getHostMetrics)
                     .filter(Objects::nonNull)
                     .collect(Collectors.toList());
 
             if (hostMetricsList.isEmpty()) {
-                LOG.warn("Cannot obtain host list");
+                LOG.debug("Cassandra JMX metrics unavailable for hosts {} (JMX may be disabled)", jmxHosts);
                 setTaskFailed(false);
                 return super.isOut(strongValidation);
             }
@@ -100,7 +120,8 @@ public class CassandraStateCheckTask extends AbstractCheckTask {
         try {
             fallbackHosts.addAll(manager.getAllHostAddresses());
         } catch (Throwable e) {
-            LOG.debug("Failed to resolve Cassandra JMX hosts from driver metadata for keyspace {}", manager.getKeyspaceName(), e);
+            LOG.debug("Failed to resolve Cassandra JMX hosts from driver metadata for keyspace {}: {}",
+                    manager.getKeyspaceName(), e.getMessage());
         }
 
         if (!fallbackHosts.isEmpty()) {

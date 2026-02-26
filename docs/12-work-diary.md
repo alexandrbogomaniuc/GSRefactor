@@ -6138,3 +6138,23 @@
 - Result: launch defaults are now configured outside code by default, with env override preserved.
 - Next step: commit/push this externalization batch and continue final blocker sweep.
 - Additional check: env override precedence confirmed (`LAUNCH_BANK_ID=6274`, `LAUNCH_SUBCASINO_ID=508`) and smoke stayed PASS.
+
+### 2026-02-26 08:32 UTC
+- Continued blocker sweep on live refactor logs after launch hardening.
+- Found recurring Cassandra diagnosis warning noise from `CassandraStateCheckTask` during JMX host resolution/startup windows.
+- Applied safe log-behavior fix in:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/system/diagnosis/tasks/CassandraStateCheckTask.java`
+- Change details:
+  - skip JMX diagnosis when keyspace managers are not ready (debug-only),
+  - keep warning path for true host-list failure after readiness,
+  - reduce debug stack verbosity for fallback-host resolution failures.
+- Validation:
+  - `mvn -f gs-server/game-server/web-gs/pom.xml -Dcluster.properties=local/local-machine.properties -DskipTests compile` => PASS
+  - copied updated class to runtime and restarted `refactor-gs-1`
+  - `refactor-onboard.mjs smoke` => PASS (launch primary + secondary)
+  - latest GS-tail diagnosis scan produced 0 matched noisy lines.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/cassandra-jmx-diagnosis-noise-reduction-validation-20260226-083232.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-083232/`
+- Result: runtime warning noise reduced without breaking launch path.
+- Next step: commit/push this runtime-noise reduction patch and continue closure sweep.
