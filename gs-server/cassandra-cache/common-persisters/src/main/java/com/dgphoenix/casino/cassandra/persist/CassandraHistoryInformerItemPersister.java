@@ -9,7 +9,6 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.*;
 import com.datastax.driver.core.schemabuilder.SchemaBuilder;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;

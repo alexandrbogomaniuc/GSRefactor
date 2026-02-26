@@ -1,7 +1,5 @@
 package com.dgphoenix.casino.cassandra.inject;
 
-import com.datastax.driver.core.ConsistencyLevel;
-import com.datastax.driver.core.Session;
 import com.datastax.driver.core.TableMetadata;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -19,12 +17,12 @@ public class AbstractPersister implements ICassandraPersister {
     }
 
     @Override
-    public void createTable(Session session, TableDefinition tableDefinition) {
+    public void createTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition) {
 
     }
 
     @Override
-    public void updateTable(Session session, TableDefinition tableDefinition, TableMetadata tableMetadata) {
+    public void updateTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition, TableMetadata tableMetadata) {
 
     }
 
@@ -34,7 +32,7 @@ public class AbstractPersister implements ICassandraPersister {
     }
 
     @Override
-    public void initSession(Session session) {
+    public void initSession(com.datastax.driver.core.Session session) {
 
     }
 
@@ -59,7 +57,7 @@ public class AbstractPersister implements ICassandraPersister {
     }
 
     @Override
-    public void setConsistencyLevels(ConsistencyLevel readConsistency, ConsistencyLevel writeConsistency, ConsistencyLevel serialConsistency) {
+    public void setConsistencyLevels(com.datastax.driver.core.ConsistencyLevel readConsistency, com.datastax.driver.core.ConsistencyLevel writeConsistency, com.datastax.driver.core.ConsistencyLevel serialConsistency) {
 
     }
 }

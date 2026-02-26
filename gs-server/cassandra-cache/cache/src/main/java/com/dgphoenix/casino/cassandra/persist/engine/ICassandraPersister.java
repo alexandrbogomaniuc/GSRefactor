@@ -1,7 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.engine;
 
-import com.datastax.driver.core.ConsistencyLevel;
-import com.datastax.driver.core.Session;
 import com.datastax.driver.core.TableMetadata;
 import org.apache.logging.log4j.Logger;
 
@@ -27,13 +25,13 @@ public interface ICassandraPersister {
         return Collections.singletonList(getMainTableDefinition());
     }
 
-    void createTable(Session session, TableDefinition tableDefinition);
+    void createTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition);
 
-    void updateTable(Session session, TableDefinition tableDefinition, TableMetadata tableMetadata);
+    void updateTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition, TableMetadata tableMetadata);
 
     Logger getLog();
 
-    void initSession(Session session);
+    void initSession(com.datastax.driver.core.Session session);
 
     void init();
 
@@ -43,5 +41,5 @@ public interface ICassandraPersister {
 
     Integer getTtl();
 
-    void setConsistencyLevels(ConsistencyLevel readConsistency, ConsistencyLevel writeConsistency, ConsistencyLevel serialConsistency);
+    void setConsistencyLevels(com.datastax.driver.core.ConsistencyLevel readConsistency, com.datastax.driver.core.ConsistencyLevel writeConsistency, com.datastax.driver.core.ConsistencyLevel serialConsistency);
 }

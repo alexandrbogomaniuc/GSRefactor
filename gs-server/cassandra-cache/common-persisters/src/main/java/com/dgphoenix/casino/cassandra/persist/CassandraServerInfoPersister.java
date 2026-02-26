@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.ConsistencyLevel;
 import com.datastax.driver.core.querybuilder.*;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -67,7 +66,7 @@ public class CassandraServerInfoPersister extends AbstractLongDistributedConfigE
         try {
             Insert query = addInsertion(serverInfo.getId(), SERIALIZED_COLUMN_NAME, byteBuffer)
                     .value(JSON_COLUMN_NAME, json);
-            execute(query, "persist", ConsistencyLevel.LOCAL_ONE);
+            execute(query, "persist", com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE);
         } finally {
             releaseBuffer(byteBuffer);
         }

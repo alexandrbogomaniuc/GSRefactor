@@ -1,7 +1,5 @@
 package com.dgphoenix.casino.transactiondata.storeddataprocessor;
 
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister;
 import com.dgphoenix.casino.cassandra.persist.IStoredDataProcessor;
@@ -29,7 +27,7 @@ public class AccountChangesProcessor implements IStoredDataProcessor<AccountInfo
 
     @Override
     public void process(StoredItem<AccountInfo, StoredItemInfo<AccountInfo>> item,
-                        HashMap<Session, List<Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
+                        HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
         accountInfoPersister.prepareToPersist(statementsMap, item.getItem(),
                 byteBuffersCollector);
     }

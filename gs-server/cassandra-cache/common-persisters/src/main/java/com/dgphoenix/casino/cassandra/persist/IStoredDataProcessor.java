@@ -1,7 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItem;
 import com.dgphoenix.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
 
@@ -14,5 +12,5 @@ import java.util.List;
  * Date: 19.12.2014 15:50
  */
 public interface IStoredDataProcessor<T, I extends StoredItemInfo<T>> {
-    void process(StoredItem<T, I> item, HashMap<Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector);
+    void process(StoredItem<T, I> item, HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector);
 }

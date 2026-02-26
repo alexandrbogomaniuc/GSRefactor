@@ -2,7 +2,6 @@ package com.betsoft.casino.mp.data.persister;
 
 import com.betsoft.casino.mp.model.IGameRoomSnapshot;
 import com.betsoft.casino.mp.service.IGameRoomSnapshotPersister;
-import com.datastax.driver.core.ConsistencyLevel;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -64,7 +63,7 @@ public class GameRoomSnapshotPersister extends AbstractCassandraPersister<Long, 
                             .value(ROUND_ID_COLUMN, snapshot.getRoundId())
                             .value(SERIALIZED_COLUMN_NAME, byteBuffer)
                             .value(JSON_COLUMN_NAME, json),
-                    "persist", ConsistencyLevel.LOCAL_QUORUM);
+                    "persist", com.datastax.driver.core.ConsistencyLevel.LOCAL_QUORUM);
         } finally {
             releaseBuffer(byteBuffer);
         }

@@ -820,3 +820,30 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - GS-only `64.14%`
   - MP-only `99.34%`
   - Combined GS+MP `72.46%`
+
+## 2026-02-26 05:36 UTC (Wave 43)
+- Executed next import-surface wave targeting direct `Session`, `ConsistencyLevel`, and `Statement` driver3 imports.
+- Changed scope:
+  - `27` Java files updated in GS+MP modules.
+  - full list: `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-053534/c4-wave43-changed-files-20260226-053534.txt`
+- Refactor type:
+  - removed direct imports for `Session`, `ConsistencyLevel`, and `Statement`
+  - replaced usage with fully-qualified driver3 type references
+- Compile-fix note:
+  - one automated replacement introduced duplicated namespace in 2 files; fixed immediately and rerun passed.
+- Validation: PASS
+  - promo/persisters install
+  - common-persisters install
+  - cache tests (`63` pass)
+  - web-gs package
+  - mp subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added under:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-053534/`
+- Inventory delta after Wave 43:
+  - GS `driver3_import_lines`: `175 -> 133` (`-42`)
+  - MP `driver3_import_lines`: `1 -> 0` (`-1`)
+  - Combined: `176 -> 133` (`-43`)
+- Completion snapshot:
+  - GS-only `72.75%`
+  - MP-only `100.00%`
+  - Combined GS+MP `79.19%`

@@ -1,7 +1,5 @@
 package com.dgphoenix.casino.transactiondata.storeddataprocessor;
 
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.IStoredDataProcessor;
 import com.dgphoenix.casino.common.promo.TournamentMemberRanks;
@@ -30,7 +28,7 @@ public class PromoTournamentRankChangesProcessor
 
     @Override
     public void process(StoredItem<TournamentMemberRanks, StoredItemInfo<TournamentMemberRanks>> item,
-                        HashMap<Session, List<Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
+                        HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
         tournamentRankPersister.prepareToPersist(statementsMap, item.getItem(), byteBuffersCollector);
     }
 }

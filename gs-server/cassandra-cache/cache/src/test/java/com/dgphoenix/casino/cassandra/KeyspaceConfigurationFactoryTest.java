@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra;
 
-import com.datastax.driver.core.ConsistencyLevel;
 import com.dgphoenix.casino.cassandra.config.ClusterConfig;
 import com.dgphoenix.casino.common.configuration.ConfigHelper;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
@@ -38,8 +37,8 @@ public class KeyspaceConfigurationFactoryTest {
         when(configHelper.getConfig(anyString())).thenReturn(clusterConfig);
         when(clusterConfig.getKeySpace()).thenReturn("TestKS");
         when(clusterConfig.getParsedHosts()).thenReturn(Collections.singletonList(new InetSocketAddress("localhost", 123)));
-        when(clusterConfig.getReadConsistencyLevel()).thenReturn(ConsistencyLevel.LOCAL_ONE.toString());
-        when(clusterConfig.getWriteConsistencyLevel()).thenReturn(ConsistencyLevel.LOCAL_ONE.toString());
+        when(clusterConfig.getReadConsistencyLevel()).thenReturn(com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE.toString());
+        when(clusterConfig.getWriteConsistencyLevel()).thenReturn(com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE.toString());
 
         KeyspaceConfigurationFactory configurationFactory = new KeyspaceConfigurationFactory(configHelper, timeProvider);
         KeyspaceConfiguration configuration = configurationFactory.create("Config.xml");

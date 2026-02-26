@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra;
 
 import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -151,7 +150,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
 
     private ServerLockInfo getCurrentLocker(String id) {
         long now = System.currentTimeMillis();
-        Statement select = getSelectColumnsQuery(LOCK_TIME, LOCKER, LAST_LOCKER).
+        com.datastax.driver.core.Statement select = getSelectColumnsQuery(LOCK_TIME, LOCKER, LAST_LOCKER).
                 where(eq(LOCK_ID, id)).limit(1);
         ResultSet resultSet = execute(select, "getCurrentLocker");
         com.datastax.driver.core.Row row = resultSet.one();
@@ -169,7 +168,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
     private boolean persist(String id, ServerLockInfo currentLocker, long newLockTime) {
         ResultSet resultSet;
         if (currentLocker == null) {
-            Statement query = getInsertQuery().
+            com.datastax.driver.core.Statement query = getInsertQuery().
                     value(LOCK_ID, id).
                     value(LOCKER, getLockerId()).
                     value(LOCK_TIME, newLockTime).
@@ -177,7 +176,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
                     ifNotExists();
             resultSet = executeWithCheckTimeout(query, "persist: insert");
         } else {
-            Statement updateQuery =
+            com.datastax.driver.core.Statement updateQuery =
                     getUpdateQuery(eq(LOCK_ID, id)).
                             with().
                             and(set(LOCK_TIME, newLockTime)).
@@ -201,7 +200,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
                     needSleep = false;
                 }
                 now1 = System.currentTimeMillis();
-                Statement query =
+                com.datastax.driver.core.Statement query =
                         getUpdateQuery(eq(LOCK_ID, lockId)).
                                 with(set(LOCKER, -1)).
                                 onlyIf(eq(LOCKER, getLockerId()));
@@ -550,7 +549,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
     }
 
     private ResultSet getLockIds() {
-        Statement select = getSelectColumnsQuery(getMainTableDefinition(), LOCK_ID, LOCK_TIME)
+        com.datastax.driver.core.Statement select = getSelectColumnsQuery(getMainTableDefinition(), LOCK_ID, LOCK_TIME)
                 .where(eq(LOCKER, getLockerId()));
         select.setFetchSize(1000);
         return execute(select, "getLockIds");

@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.engine;
 
-import com.datastax.driver.core.Session;
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.exceptions.QueryExecutionException;
 import com.datastax.driver.core.exceptions.ReadTimeoutException;
@@ -35,7 +34,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     protected static final ByteBuffer EMPTY_BYTE_BUFFER = ByteBuffer.wrap(new byte[]{0});
     protected static final int IN_CLAUSE_SIZE = 1000;
 
-    private Session session;
+    private com.datastax.driver.core.Session session;
     private ConsistencyLevel readConsistency;
     private ConsistencyLevel writeConsistency;
     private ConsistencyLevel serialConsistency;
@@ -67,7 +66,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     @Override
-    public final void createTable(Session session, TableDefinition tableDefinition) {
+    public final void createTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition) {
         tableDefinition.defaultTimeToLive(getTtl());
         SchemaStatement createTable = tableDefinition.getCreateTableStatement();
         getLog().info("createTable: create table statement: {}", createTable);
@@ -79,12 +78,12 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         }
     }
 
-    protected List<Statement> getOrCreateStatements(Map<Session, List<Statement>> statementsMap) {
+    protected List<Statement> getOrCreateStatements(Map<com.datastax.driver.core.Session, List<Statement>> statementsMap) {
         return statementsMap.computeIfAbsent(getSession(), session -> new LinkedList<>());
     }
 
     @Override
-    public void updateTable(Session session, TableDefinition tableDefinition, TableMetadata tableMetadata) {
+    public void updateTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition, TableMetadata tableMetadata) {
         getLog().debug("updateTable: tableMetadata={}", tableMetadata);
         for (ColumnDefinition columnDefinition : tableDefinition.getColumns()) {
             String columnName = columnDefinition.getName();
@@ -111,14 +110,14 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return "\"" + name + "\"";
     }
 
-    private void addColumn(Session session, String tableName, String columnName, ColumnDefinition columnDefinition) {
+    private void addColumn(com.datastax.driver.core.Session session, String tableName, String columnName, ColumnDefinition columnDefinition) {
         DataType type = columnDefinition.getType();
         SchemaStatement addColumn = SchemaBuilder.alterTable(tableName).addColumn(columnName).type(type);
         getLog().info("updateTable: add column statement: {}", addColumn);
         session.execute(addColumn);
     }
 
-    private void createIndex(Session session, TableDefinition tableDefinition, String columnName) {
+    private void createIndex(com.datastax.driver.core.Session session, TableDefinition tableDefinition, String columnName) {
         SchemaStatement createIndex = tableDefinition.getCreateIndexStatements().get(columnName);
         getLog().info("updateTable: create index statement: {}", createIndex);
         session.execute(createIndex);
@@ -133,7 +132,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
     }
 
     @Override
-    public void initSession(Session session) {
+    public void initSession(com.datastax.driver.core.Session session) {
         this.session = session;
     }
 
@@ -155,8 +154,8 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return ttl;
     }
 
-    protected Session getSession() {
-        checkState(session != null, "Session undefined");
+    protected com.datastax.driver.core.Session getSession() {
+        checkState(session != null, "com.datastax.driver.core.Session undefined");
         return session;
     }
 
@@ -340,7 +339,7 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return execute(this.session, statement, callerClassMethodIdentification, null);
     }
 
-    protected ResultSet execute(Session session, Statement statement, String callerClassMethodIdentification,
+    protected ResultSet execute(com.datastax.driver.core.Session session, Statement statement, String callerClassMethodIdentification,
                                 boolean warnErrors) {
         assertInitialized();
         long now = System.currentTimeMillis();
@@ -390,11 +389,11 @@ public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassan
         return rs;
     }
 
-    protected ResultSet execute(Session session, Statement statement, String callerClassMethodIdentification) {
+    protected ResultSet execute(com.datastax.driver.core.Session session, Statement statement, String callerClassMethodIdentification) {
         return execute(session, statement, callerClassMethodIdentification, null);
     }
 
-    protected ResultSet execute(Session session, Statement statement, String callerClassMethodIdentification,
+    protected ResultSet execute(com.datastax.driver.core.Session session, Statement statement, String callerClassMethodIdentification,
                                 ConsistencyLevel level) {
         assertInitialized();
         long now = System.currentTimeMillis();

@@ -5744,3 +5744,25 @@
   - Combined burn-down `72.46%` (`639 -> 176`)
 - Next step:
   - Commit/push Wave 42 and continue remaining import hotspots (`querybuilder`, `schemabuilder`, `Session`, `Statement`).
+
+### 2026-02-26 05:34-05:36 UTC
+- Continued CASS-V4 migration in `/Users/alexb/Documents/Dev/Dev_new` (Wave 43), targeting remaining direct imports for `Session`, `ConsistencyLevel`, and `Statement`.
+- Updated 27 files and normalized these type references to fully-qualified names.
+- Mid-wave fix:
+  - corrected 2 duplicated-namespace replacements (`com.datastax.driver.core.com.datastax.driver.core...`) and reran validation.
+- Validation matrix PASS:
+  - `mvn -DskipTests install` (`promo/persisters`)
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn test` (`cache`, `63` tests)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -pl core-interfaces,core,persistance -am -DskipTests package` (`mp-server`)
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-053534/`
+- Inventory delta:
+  - GS: `175 -> 133`
+  - MP: `1 -> 0`
+  - Combined: `176 -> 133`
+- Completion snapshot:
+  - Combined burn-down `79.19%` (`639 -> 133`)
+- Next step:
+  - Commit/push Wave 43 and continue remaining GS hotspots (`querybuilder`, `schemabuilder`, `Row`, `ResultSet`).

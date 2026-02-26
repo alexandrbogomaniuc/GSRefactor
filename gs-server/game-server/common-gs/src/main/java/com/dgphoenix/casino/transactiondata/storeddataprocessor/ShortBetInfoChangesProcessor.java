@@ -1,7 +1,5 @@
 package com.dgphoenix.casino.transactiondata.storeddataprocessor;
 
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraShortBetInfoPersister;
 import com.dgphoenix.casino.cassandra.persist.IStoredDataProcessor;
@@ -33,7 +31,7 @@ public class ShortBetInfoChangesProcessor implements IStoredDataProcessor<ShortB
 
     @Override
     public void process(StoredItem<ShortBetInfo, StoredItemInfo<ShortBetInfo>> item,
-                        HashMap<Session, List<Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
+                        HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
         BankInfo bankInfo = bankInfoCache.getBankInfo(item.getItem().getBankId());
         shortBetInfoPersister.prepareToPersist(statementsMap, item.getItem(), byteBuffersCollector, bankInfo.getShortBetInfoTtl());
     }

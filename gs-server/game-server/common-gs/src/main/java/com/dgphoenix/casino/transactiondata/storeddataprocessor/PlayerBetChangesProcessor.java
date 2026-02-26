@@ -1,7 +1,5 @@
 package com.dgphoenix.casino.transactiondata.storeddataprocessor;
 
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraBetPersister;
 import com.dgphoenix.casino.cassandra.persist.IStoredDataProcessor;
@@ -28,7 +26,7 @@ public class PlayerBetChangesProcessor implements IStoredDataProcessor<PlayerBet
     }
 
     @Override
-    public void process(StoredItem<PlayerBet, PlayerBetStoredInfo> item, HashMap<Session, List<Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
+    public void process(StoredItem<PlayerBet, PlayerBetStoredInfo> item, HashMap<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, List<ByteBuffer> byteBuffersCollector) {
         betPersister.prepareToPersistBet(statementsMap, item.getIdentifier().getGameSessionId(), item.getItem(), byteBuffersCollector);
     }
 }

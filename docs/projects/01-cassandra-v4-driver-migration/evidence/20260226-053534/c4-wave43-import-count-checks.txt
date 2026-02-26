@@ -1,0 +1,4 @@
+session_import_count=0
+consistency_import_count=0
+statement_import_count=0
+driver3_import_total_count=2

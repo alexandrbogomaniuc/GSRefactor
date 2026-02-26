@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.ConsistencyLevel;
 import com.dgphoenix.casino.cassandra.IEntityUpdateListener;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -97,7 +96,7 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
     public List<BaseGameInfo> getByBank(long bankId) {
         com.datastax.driver.core.Statement select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(BANK_IDX, getBankIdx(bankId)));
-        Iterator<com.datastax.driver.core.Row> iterator = execute(select, "getByBank", ConsistencyLevel.LOCAL_ONE).iterator();
+        Iterator<com.datastax.driver.core.Row> iterator = execute(select, "getByBank", com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE).iterator();
         List<BaseGameInfo> result = new ArrayList<>();
         while (iterator.hasNext()) {
             com.datastax.driver.core.Row row = iterator.next();
@@ -110,7 +109,7 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
     public List<BaseGameInfo> getByBankAndCurrency(long bankId, ICurrency currency) {
         com.datastax.driver.core.Statement select = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(BANK_AND_CUR_IDX, getBankAndCurIdx(bankId, currency.getCode())));
-        Iterator<com.datastax.driver.core.Row> iterator = execute(select, "getByBankAndCurrency", ConsistencyLevel.LOCAL_ONE).iterator();
+        Iterator<com.datastax.driver.core.Row> iterator = execute(select, "getByBankAndCurrency", com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE).iterator();
         List<BaseGameInfo> result = new ArrayList<>();
         while (iterator.hasNext()) {
             com.datastax.driver.core.Row row = iterator.next();

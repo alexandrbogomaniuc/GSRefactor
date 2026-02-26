@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra;
 
-import com.datastax.driver.core.ConsistencyLevel;
 import com.dgphoenix.casino.cassandra.config.ClusterConfig;
 import com.dgphoenix.casino.cassandra.config.ColumnFamilyConfig;
 import com.dgphoenix.casino.common.configuration.ConfigHelper;
@@ -91,7 +90,7 @@ public class KeyspaceConfigurationTest {
     public void testConfigWithWrongWriteConsistencyLevel() {
         when(clusterConfig.getKeySpace()).thenReturn(KEYSPACE_NAME);
         when(clusterConfig.getParsedHosts()).thenReturn(parsedHost);
-        when(clusterConfig.getReadConsistencyLevel()).thenReturn(ConsistencyLevel.LOCAL_ONE.toString());
+        when(clusterConfig.getReadConsistencyLevel()).thenReturn(com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE.toString());
         when(clusterConfig.getWriteConsistencyLevel()).thenReturn("wrong");
         when(configHelper.getConfig(anyString())).thenReturn(clusterConfig);
         thrown.expect(IllegalArgumentException.class);
@@ -105,8 +104,8 @@ public class KeyspaceConfigurationTest {
     public void testConfigWithWrongSerialConsistencyLevel() {
         when(clusterConfig.getKeySpace()).thenReturn(KEYSPACE_NAME);
         when(clusterConfig.getParsedHosts()).thenReturn(parsedHost);
-        when(clusterConfig.getReadConsistencyLevel()).thenReturn(ConsistencyLevel.LOCAL_ONE.toString());
-        when(clusterConfig.getWriteConsistencyLevel()).thenReturn(ConsistencyLevel.LOCAL_ONE.toString());
+        when(clusterConfig.getReadConsistencyLevel()).thenReturn(com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE.toString());
+        when(clusterConfig.getWriteConsistencyLevel()).thenReturn(com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE.toString());
         when(clusterConfig.getSerialConsistencyLevel()).thenReturn("wrong");
         when(configHelper.getConfig(anyString())).thenReturn(clusterConfig);
         thrown.expect(IllegalArgumentException.class);
@@ -120,9 +119,9 @@ public class KeyspaceConfigurationTest {
     public void testConfigWithNonSerialConsistencyLevel() {
         when(clusterConfig.getKeySpace()).thenReturn(KEYSPACE_NAME);
         when(clusterConfig.getParsedHosts()).thenReturn(parsedHost);
-        when(clusterConfig.getReadConsistencyLevel()).thenReturn(ConsistencyLevel.LOCAL_ONE.toString());
-        when(clusterConfig.getWriteConsistencyLevel()).thenReturn(ConsistencyLevel.LOCAL_ONE.toString());
-        when(clusterConfig.getSerialConsistencyLevel()).thenReturn(ConsistencyLevel.LOCAL_ONE.toString());
+        when(clusterConfig.getReadConsistencyLevel()).thenReturn(com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE.toString());
+        when(clusterConfig.getWriteConsistencyLevel()).thenReturn(com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE.toString());
+        when(clusterConfig.getSerialConsistencyLevel()).thenReturn(com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE.toString());
         when(configHelper.getConfig(anyString())).thenReturn(clusterConfig);
         thrown.expect(IllegalStateException.class);
         thrown.expectMessage(startsWith("Keyspace serial consistency level can be only SERIAL or LOCAL_SERIAL"));
@@ -151,8 +150,8 @@ public class KeyspaceConfigurationTest {
     private void initMocks() {
         when(clusterConfig.getKeySpace()).thenReturn(KEYSPACE_NAME);
         when(clusterConfig.getParsedHosts()).thenReturn(parsedHost);
-        when(clusterConfig.getReadConsistencyLevel()).thenReturn(ConsistencyLevel.LOCAL_ONE.toString());
-        when(clusterConfig.getWriteConsistencyLevel()).thenReturn(ConsistencyLevel.LOCAL_ONE.toString());
+        when(clusterConfig.getReadConsistencyLevel()).thenReturn(com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE.toString());
+        when(clusterConfig.getWriteConsistencyLevel()).thenReturn(com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE.toString());
         when(configHelper.getConfig(anyString())).thenReturn(clusterConfig);
     }
 

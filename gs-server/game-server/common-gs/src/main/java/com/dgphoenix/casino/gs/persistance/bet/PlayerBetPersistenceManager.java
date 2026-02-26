@@ -1,7 +1,5 @@
 package com.dgphoenix.casino.gs.persistance.bet;
 
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraBetPersister;
 import com.dgphoenix.casino.cassandra.persist.CassandraBigStorageBetPersister;
@@ -196,7 +194,7 @@ public class PlayerBetPersistenceManager {
         getPersister().persist(gameSessionId, bets);
     }
 
-    public void prepareToPersistGameSessionBets(Map<Session, List<Statement>> statementsMap, long gameSessionId,
+    public void prepareToPersistGameSessionBets(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId,
                                                 int maxPlayerBetId, List<ByteBuffer> byteBuffersCollector) {
         if (isUseBigStoragePersister()) {
             bigStorageBetPersister.prepareToPersistGameSessionBets(statementsMap, gameSessionId,
