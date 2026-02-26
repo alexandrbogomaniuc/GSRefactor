@@ -5572,3 +5572,25 @@
   - GS-only: `14.96%` complete (`488 -> 415`)
   - GS+MP combined: `11.42%` complete (`639 -> 566`)
 - Next step: commit/push Wave 31 and continue remaining hotspots.
+### 2026-02-26 04:44 UTC
+- Dev_new CASS-V4 Wave 32 completed and validated.
+- Refactored promo query declaration paths in:
+  - `CassandraMaxBalanceTournamentPersister`
+  - `CassandraPromoWinPersister`
+  - `CassandraBattlegroundConfigPersister`
+  - `CassandraPromoCampaignStatisticsPersister`
+- Iteration detail:
+  - first pass was green but import metric stayed flat (`415`),
+  - optimization rerun inlined execute chains and removed local statement typing to realize burn-down.
+- Validation PASS (final rerun):
+  - `mvn -DskipTests install` (`promo/persisters`)
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn test` (`cache`, `63` tests)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -pl core-interfaces,core,persistance -am -DskipTests package` (`mp-server`)
+- Evidence saved under `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-043958/`.
+- Inventory result (final rerun): GS `415 -> 411`, MP `151` unchanged.
+- Completion snapshot:
+  - GS-only `15.78%` (`488 -> 411`)
+  - combined GS+MP `12.05%` (`639 -> 562`)
+- Next step: commit/push Wave 32 and continue next hotspots.

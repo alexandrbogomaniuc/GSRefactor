@@ -3,7 +3,6 @@ package com.dgphoenix.casino.promo.persisters;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -39,35 +38,31 @@ public class CassandraPromoCampaignStatisticsPersister extends AbstractCassandra
                 roundsCountDelta, betSumDelta);
         Pair<Integer, Double> current = getAverageBetPairForGs(campaignId, gsId);
         if (current == null) {
-            Statement insert = getInsertQuery()
+            execute(getInsertQuery()
                     .value(CAMPAIGN_ID, campaignId)
                     .value(GS_ID, gsId)
                     .value(ROUNDS_COUNT, roundsCountDelta)
-                    .value(BET_SUM, betSumDelta);
-            execute(insert, "increment: insert");
+                    .value(BET_SUM, betSumDelta), "increment: insert");
         } else {
-            Statement update = getUpdateQuery()
+            execute(getUpdateQuery()
                     .where(eq(CAMPAIGN_ID, campaignId))
                     .and(eq(GS_ID, gsId))
                     .with(QueryBuilder.set(ROUNDS_COUNT, current.getKey() + roundsCountDelta))
-                    .and(QueryBuilder.set(BET_SUM, current.getValue() + betSumDelta));
-            execute(update, "increment:update");
+                    .and(QueryBuilder.set(BET_SUM, current.getValue() + betSumDelta)), "increment:update");
         }
     }
 
     public Pair<Integer, Double> getAverageBetPairForGs(long campaignId, int gsId) {
-        Statement select = getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM)
+        ResultSet resultSet = execute(getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM)
                 .where(eq(CAMPAIGN_ID, campaignId))
-                .and(eq(GS_ID, gsId));
-        ResultSet resultSet = execute(select, "getAverageBetPairForGs");
+                .and(eq(GS_ID, gsId)), "getAverageBetPairForGs");
         Row row = resultSet.one();
         return row == null ? null : new Pair<>(row.getInt(ROUNDS_COUNT), row.getDouble(BET_SUM));
     }
 
     public Pair<Integer, Double> getAverageBetPair(long campaignId) {
-        Statement select = getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM)
-                .where(eq(CAMPAIGN_ID, campaignId));
-        ResultSet resultSet = execute(select, "getAverageBetPair");
+        ResultSet resultSet = execute(getSelectColumnsQuery(ROUNDS_COUNT, BET_SUM)
+                .where(eq(CAMPAIGN_ID, campaignId)), "getAverageBetPair");
         int roundsCount = 0;
         double betSum = 0;
         for (Row row : resultSet) {

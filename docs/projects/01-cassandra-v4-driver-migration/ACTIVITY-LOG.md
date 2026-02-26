@@ -574,3 +574,30 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
 - Inventory delta after Wave 31:
   - GS `driver3_import_lines`: `421 -> 415` (`-6`)
   - MP `driver3_import_lines`: `151` (no change)
+
+## 2026-02-26 04:44 UTC
+- Implemented CASS-V4 Wave 32 for promo query declaration cleanup:
+  - `CassandraMaxBalanceTournamentPersister`
+  - `CassandraPromoWinPersister`
+  - `CassandraBattlegroundConfigPersister`
+  - `CassandraPromoCampaignStatisticsPersister`
+- Replaced typed querybuilder local declarations with direct execute-chain construction.
+- Iteration note:
+  - first pass was validation-green but inventory stayed flat because `Statement` imports offset typed-import removals.
+  - optimized pass removed local statement typing and reran full validation.
+- Validation (final rerun): PASS
+  - `promo/persisters` install
+  - `common-persisters` install
+  - cache test suite (`63` tests)
+  - `web-gs` package
+  - mp-server subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-043958/c4-wave32-promo-burndown-optimization-20260226-043958.md`
+  - build/test logs for initial and rerun passes
+  - inventory snapshots: `phase7-cassandra-driver-inventory-20260226-044058.txt`, `phase7-cassandra-driver-inventory-20260226-044314.txt`
+- Inventory delta after Wave 32 final rerun:
+  - GS `driver3_import_lines`: `415 -> 411` (`-4`)
+  - MP `driver3_import_lines`: `151` (no change)
+- Completion snapshot:
+  - GS-only: `15.78%` (`488 -> 411`)
+  - GS+MP combined: `12.05%` (`639 -> 562`)

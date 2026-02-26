@@ -3,7 +3,6 @@ package com.dgphoenix.casino.promo.persisters;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -44,7 +43,7 @@ public class CassandraPromoWinPersister extends AbstractCassandraPersister<Long,
     );
 
     public void persist(PromoWin promoWin) {
-        Statement query = getInsertQuery()
+        execute(getInsertQuery()
                 .value(PROMO_ID, promoWin.getPromoId())
                 .value(TIME_WIN, promoWin.getTimeWin())
                 .value(ACCOUNT_ID, promoWin.getAccountId())
@@ -53,13 +52,11 @@ public class CassandraPromoWinPersister extends AbstractCassandraPersister<Long,
                 .value(GAME_ID, promoWin.getGameId())
                 .value(AMOUNT, promoWin.getAmount())
                 .value(AMOUNT_IN_PLAYER_CURRENCY, promoWin.getAmountInPlayerCurrency())
-                .value(TRANSFER_STATUS, promoWin.getTransferStatus());
-        execute(query, "persist");
+                .value(TRANSFER_STATUS, promoWin.getTransferStatus()), "persist");
     }
 
     public Set<PromoWin> getByPromoId(long promoId) {
-        Statement query = getSelectAllColumnsQuery().where(eq(PROMO_ID, promoId));
-        ResultSet result = execute(query, "getByPromoId");
+        ResultSet result = execute(getSelectAllColumnsQuery().where(eq(PROMO_ID, promoId)), "getByPromoId");
         Set<PromoWin> wins = new HashSet<>();
         for (Row row : result) {
             wins.add(getPromoWinEntry(row));

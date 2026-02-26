@@ -3,7 +3,6 @@ package com.dgphoenix.casino.promo.persisters;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -41,21 +40,19 @@ public class CassandraMaxBalanceTournamentPersister extends AbstractCassandraPer
         ByteBuffer byteBuffer = getMainTableDefinition().serializeToBytes(details);
         String json = getMainTableDefinition().serializeToJson(details);
         try {
-            Statement query = getInsertQuery(getTtl())
+            execute(getInsertQuery(getTtl())
                     .value(CAMPAIGN_ID_FIELD, details.getCampaignId())
                     .value(ACCOUNT_ID_FIELD, details.getAccountId())
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
-                    .value(JSON_COLUMN_NAME, json);
-            execute(query, "persist");
+                    .value(JSON_COLUMN_NAME, json), "persist");
         } finally {
             releaseBuffer(byteBuffer);
         }
     }
 
     public List<MaxBalanceTournamentPlayerDetails> getByTournament(long tournamentId) {
-        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
-                .where(eq(CAMPAIGN_ID_FIELD, tournamentId));
-        ResultSet resultSet = execute(query, "getByTournament");
+        ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                .where(eq(CAMPAIGN_ID_FIELD, tournamentId)), "getByTournament");
         List<MaxBalanceTournamentPlayerDetails> result = new ArrayList<>();
         for (Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
@@ -74,11 +71,10 @@ public class CassandraMaxBalanceTournamentPersister extends AbstractCassandraPer
     }
 
     public MaxBalanceTournamentPlayerDetails getForAccount(long accountId, long campaignId) {
-        Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ACCOUNT_ID_FIELD, accountId))
                 .and(eq(CAMPAIGN_ID_FIELD, campaignId))
-                .limit(1);
-        ResultSet resultSet = execute(query, "getForAccount");
+                .limit(1), "getForAccount");
         Row row = resultSet.one();
         MaxBalanceTournamentPlayerDetails result = null;
         if (row != null) {
