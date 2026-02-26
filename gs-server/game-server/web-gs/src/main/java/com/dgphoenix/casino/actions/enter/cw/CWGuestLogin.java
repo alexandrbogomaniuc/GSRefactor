@@ -17,7 +17,7 @@ import com.dgphoenix.casino.common.exception.MaintenanceModeException;
 import com.dgphoenix.casino.common.exception.StartParameters;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.MobileDetector;
-import com.dgphoenix.casino.common.web.login.apub.GameServerResponse;
+import com.abs.casino.common.web.login.apub.GameServerResponse;
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;

@@ -1,0 +1,8 @@
+wave=W49-apub-game-server-response
+target=com.dgphoenix.casino.common.web.login.apub.GameServerResponse
+replacement=com.abs.casino.common.web.login.apub.GameServerResponse
+pre_legacy_refs=5
+post_legacy_refs=0
+post_abs_refs=5
+validation_passed=9
+validation_failed=0

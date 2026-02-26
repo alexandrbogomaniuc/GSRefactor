@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.web.login.apub;
+package com.abs.casino.common.web.login.apub;
 
 public class GameServerResponse {
     private String status;

@@ -1111,3 +1111,19 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-132929-hardcut-m2-wave48-apub-constants`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/60-hard-cut-m2-wave48-apub-constants-report-20260226.md`
+
+## 2026-02-26 13:40 UTC (M2 Wave 49 - GameServerResponse Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.web.login.apub.GameServerResponse` -> `com.abs.casino.common.web.login.apub.GameServerResponse`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/web/login/apub/GameServerResponse.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/cw/CWGuestLogin.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java`
+- Post-scan result (wave scope): legacy refs `0`, abs refs `5` (pre-scan legacy refs `5`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-133833-hardcut-m2-wave49-apub-game-server-response`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/61-hard-cut-m2-wave49-apub-game-server-response-report-20260226.md`

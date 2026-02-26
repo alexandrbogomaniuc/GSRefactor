@@ -25,7 +25,7 @@ import com.dgphoenix.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.MobileDetector;
-import com.dgphoenix.casino.common.web.login.apub.GameServerResponse;
+import com.abs.casino.common.web.login.apub.GameServerResponse;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
