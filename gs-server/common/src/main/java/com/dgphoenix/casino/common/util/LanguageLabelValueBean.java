@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.util;
 
-import com.dgphoenix.casino.common.cache.data.language.LanguageType;
+import com.abs.casino.common.cache.data.language.LanguageType;
 import org.apache.struts.util.LabelValueBean;
 
 import java.util.ArrayList;

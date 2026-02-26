@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data.language;
+package com.abs.casino.common.cache.data.language;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 

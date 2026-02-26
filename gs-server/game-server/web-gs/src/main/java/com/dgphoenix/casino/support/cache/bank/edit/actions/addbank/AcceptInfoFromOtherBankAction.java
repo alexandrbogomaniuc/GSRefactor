@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;
 import com.dgphoenix.casino.common.cache.data.bank.Limit;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.language.LanguageType;
+import com.abs.casino.common.cache.data.language.LanguageType;
 import com.dgphoenix.casino.support.cache.bank.edit.forms.addBank.NewBankForm;
 import com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm;
 import org.apache.logging.log4j.LogManager;

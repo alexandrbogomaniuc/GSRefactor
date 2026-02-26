@@ -3,7 +3,7 @@ package com.dgphoenix.casino.support.gamehistory;
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.language.LanguageType;
+import com.abs.casino.common.cache.data.language.LanguageType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.init.Initializer;
 import com.dgphoenix.casino.web.history.GameHistoryListForm;

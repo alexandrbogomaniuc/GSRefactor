@@ -567,3 +567,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-100207-hardcut-m2-wave11-common-web-json`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/23-hard-cut-m2-wave11-common-web-json-report-20260226.md`
+
+## 2026-02-26 10:05 UTC (M2 Wave 12 - LanguageType Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.language.LanguageType` -> `com.abs.casino.common.cache.data.language.LanguageType`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/language/LanguageType.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/util/LanguageLabelValueBean.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListForm.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportForm.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/LoadDefBankAction.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/AcceptInfoFromOtherBankAction.java`
+- Post-scan result: legacy refs `0`, abs refs `6`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-100426-hardcut-m2-wave12-language-type`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/24-hard-cut-m2-wave12-language-type-report-20260226.md`

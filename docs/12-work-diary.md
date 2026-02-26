@@ -6376,3 +6376,14 @@
 - Evidence:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-100207-hardcut-m2-wave11-common-web-json`
 - Next: commit/push Wave 11 and continue Wave 12.
+
+### 2026-02-26 10:05 UTC
+- Continued Project 02 with M2 Wave 12 (LanguageType namespace migration).
+- Scope: 6 files across common utility and web-gs forms/actions.
+- Result:
+  - legacy refs for wave scope: `0`
+  - new `com.abs` refs: `6`
+  - full validation matrix and runtime smoke: PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-100426-hardcut-m2-wave12-language-type`
+- Next: commit/push Wave 12 and continue Wave 13.
