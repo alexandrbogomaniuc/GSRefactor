@@ -6738,3 +6738,13 @@
   - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/58-hard-cut-m2-wave46-cw-stlobby-guest-login-request-report-20260226.md`
+
+### 2026-02-26 13:26 UTC
+- Completed Project 02 M2 Wave 47 for `CWGuestLoginLobbyRequest` namespace migration.
+- Migrated package declaration to `com.abs` (isolated one-file migration, no dependent import rewrites).
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-132052-hardcut-m2-wave47-cw-guest-login-lobby-request`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/59-hard-cut-m2-wave47-cw-guest-login-lobby-request-report-20260226.md`

@@ -1,0 +1,8 @@
+wave=W47-cw-guest-login-lobby-request
+target=com.dgphoenix.casino.common.web.login.cw.CWGuestLoginLobbyRequest
+replacement=com.abs.casino.common.web.login.cw.CWGuestLoginLobbyRequest
+pre_legacy_refs=1
+post_legacy_refs=0
+post_abs_refs=1
+validation_passed=9
+validation_failed=0

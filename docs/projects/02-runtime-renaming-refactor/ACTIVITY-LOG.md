@@ -1085,3 +1085,15 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-131427-hardcut-m2-wave46-cw-stlobby-guest-login-request`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/58-hard-cut-m2-wave46-cw-stlobby-guest-login-request-report-20260226.md`
+
+## 2026-02-26 13:26 UTC (M2 Wave 47 - CWGuestLoginLobbyRequest Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.web.login.cw.CWGuestLoginLobbyRequest` -> `com.abs.casino.common.web.login.cw.CWGuestLoginLobbyRequest`
+- Changed file:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/web/login/cw/CWGuestLoginLobbyRequest.java`
+- Post-scan result: legacy refs `0`, abs refs `1` (pre-scan legacy refs `1`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-132052-hardcut-m2-wave47-cw-guest-login-lobby-request`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/59-hard-cut-m2-wave47-cw-guest-login-lobby-request-report-20260226.md`
