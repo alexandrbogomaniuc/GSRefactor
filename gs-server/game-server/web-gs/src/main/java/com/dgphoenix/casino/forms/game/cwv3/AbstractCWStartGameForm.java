@@ -1,6 +1,6 @@
 package com.abs.casino.forms.game.cwv3;
 
-import com.dgphoenix.casino.forms.game.CommonStartGameForm;
+import com.abs.casino.forms.game.CommonStartGameForm;
 
 /**
  * User: isirbis

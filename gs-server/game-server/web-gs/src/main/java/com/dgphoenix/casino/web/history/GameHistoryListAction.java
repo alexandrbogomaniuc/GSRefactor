@@ -22,7 +22,7 @@ import com.dgphoenix.casino.common.web.BaseAction;
 import com.dgphoenix.casino.common.web.GameServerHost;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.managers.game.history.HistoryManager;
-import com.dgphoenix.casino.gs.web.messages.GsMessageManager;
+import com.abs.casino.gs.web.messages.GsMessageManager;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.logging.log4j.LogManager;

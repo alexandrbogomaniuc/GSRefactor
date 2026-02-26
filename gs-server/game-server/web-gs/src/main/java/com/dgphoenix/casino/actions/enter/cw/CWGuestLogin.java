@@ -1,7 +1,7 @@
-package com.dgphoenix.casino.actions.enter.cw;
+package com.abs.casino.actions.enter.cw;
 
 import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.actions.enter.AccountInfoAndSessionInfoPair;
+import com.abs.casino.actions.enter.AccountInfoAndSessionInfoPair;
 import com.dgphoenix.casino.actions.enter.LanguageDetector;
 import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
 import com.dgphoenix.casino.common.SessionHelper;

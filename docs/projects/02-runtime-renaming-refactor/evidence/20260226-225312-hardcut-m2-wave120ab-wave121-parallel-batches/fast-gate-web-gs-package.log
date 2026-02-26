@@ -1,0 +1,57 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.dgphoenix.casino:gsn-web-gs:war:1.89.0
+[WARNING] 'version' contains an expression but should be a constant. @ com.dgphoenix.casino:gsn-web-gs:${current.version}, /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/pom.xml, line 13, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-web-gs >-------------------
+[INFO] Building gsn-web-gs 1.89.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ gsn-web-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 43 resources
+[INFO] 
+[INFO] --- resources:2.6:resources (gs-resources) @ gsn-web-gs ---
+[WARNING]  Parameter 'resources' is read-only, must not be used in configuration
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 43 resources
+[INFO] Copying 59 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/css
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/css_nucleus
+[INFO] Copying 104 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/js
+[INFO] Copying 501 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/images
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/images_nucleus
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-web-gs ---
+[INFO] Compiling 297 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/cw/CWLoginForm.java:[7,39] error: cannot access CommonLoginForm
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.860 s
+[INFO] Finished at: 2026-02-26T22:58:46Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-web-gs: Compilation failure
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/cw/CWLoginForm.java:[7,39] error: cannot access CommonLoginForm
+[ERROR] 
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

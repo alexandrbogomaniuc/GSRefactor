@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.forms.game;
+package com.abs.casino.forms.game;
 
 import com.dgphoenix.casino.actions.enter.CommonActionForm;
 import com.dgphoenix.casino.common.cache.BaseGameCache;

@@ -3,7 +3,7 @@ package com.abs.casino.web.history;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.helpers.login.CWv3Helper;
+import com.abs.casino.helpers.login.CWv3Helper;
 import com.dgphoenix.casino.sm.login.GameLoginRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

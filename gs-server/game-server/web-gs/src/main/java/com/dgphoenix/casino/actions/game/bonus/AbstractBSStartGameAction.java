@@ -14,7 +14,7 @@ import com.dgphoenix.casino.common.exception.StartParameters;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.entities.game.requests.BonusStartGameRequest;
 import com.abs.casino.entities.game.requests.StartGameResponse;
-import com.dgphoenix.casino.forms.game.CommonStartGameForm;
+import com.abs.casino.forms.game.CommonStartGameForm;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 import com.dgphoenix.casino.helpers.login.LoginHelper;

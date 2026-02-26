@@ -2,7 +2,7 @@ package com.abs.casino.forms.game.cwv3;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
-import com.dgphoenix.casino.forms.game.CommonStartGameForm;
+import com.abs.casino.forms.game.CommonStartGameForm;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionErrors;

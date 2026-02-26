@@ -252,7 +252,7 @@
     <!-- STRUTS ACTION -->
     <servlet>
         <servlet-name>action</servlet-name>
-        <servlet-class>com.dgphoenix.casino.config.ForwardActionServlet</servlet-class>
+        <servlet-class>com.abs.casino.config.ForwardActionServlet</servlet-class>
         <init-param>
             <param-name>application</param-name>
             <param-value>ApplicationResources</param-value>

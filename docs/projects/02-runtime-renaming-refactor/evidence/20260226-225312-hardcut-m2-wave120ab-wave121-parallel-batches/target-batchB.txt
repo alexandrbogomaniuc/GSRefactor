@@ -1,0 +1,10 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/exceptions/LoginErrorException.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/CommonStartGameForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/cw/CWLoginForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/gs/web/messages/GsMessageManager.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/CWHelper.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/CWv3Helper.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/serializers/CWSerializeLoginForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/serializers/SerializeGameLoginForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/serializers/SerializeLoginForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/sm/CWv3PlayerSessionManager.java

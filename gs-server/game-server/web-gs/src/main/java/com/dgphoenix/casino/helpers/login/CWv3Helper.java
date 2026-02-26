@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.helpers.login;
+package com.abs.casino.helpers.login;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraPlayerSessionState;
@@ -20,14 +20,15 @@ import com.dgphoenix.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.entities.AuthRequest;
-import com.dgphoenix.casino.exceptions.LoginErrorException;
+import com.abs.casino.exceptions.LoginErrorException;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CWError;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
+import com.dgphoenix.casino.helpers.login.LoginHelper;
 import com.dgphoenix.casino.services.mp.MPGameSessionService;
-import com.dgphoenix.casino.sm.CWv3PlayerSessionManager;
+import com.abs.casino.sm.CWv3PlayerSessionManager;
 import com.dgphoenix.casino.sm.PlayerSessionFactory;
 import com.dgphoenix.casino.sm.login.GameLoginRequest;
 import com.dgphoenix.casino.sm.login.LoginResponse;

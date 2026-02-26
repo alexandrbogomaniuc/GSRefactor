@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.forms.game.CommonStartGameForm;
+import com.abs.casino.forms.game.CommonStartGameForm;
 import com.abs.casino.helpers.game.processors.StartGameProcessor;
 import org.apache.commons.lang.BooleanUtils;
 

@@ -1,7 +1,7 @@
 package com.abs.casino.entities.lobby;
 
-import com.dgphoenix.casino.helpers.login.CWHelper;
-import com.dgphoenix.casino.helpers.login.CWv3Helper;
+import com.abs.casino.helpers.login.CWHelper;
+import com.abs.casino.helpers.login.CWv3Helper;
 
 import java.util.HashMap;
 import java.util.Map;

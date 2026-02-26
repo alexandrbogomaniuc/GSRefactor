@@ -1,6 +1,6 @@
-package com.dgphoenix.casino.forms.login.ct;
+package com.abs.casino.forms.login.ct;
 
-import com.dgphoenix.casino.forms.login.CommonLoginForm;
+import com.abs.casino.forms.login.CommonLoginForm;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 

@@ -13,7 +13,7 @@ import com.dgphoenix.casino.common.exception.MaintenanceModeException;
 import com.dgphoenix.casino.common.exception.StartParameters;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.entities.lobby.LoginHelper;
-import com.dgphoenix.casino.exceptions.LoginErrorException;
+import com.abs.casino.exceptions.LoginErrorException;
 import com.dgphoenix.casino.sm.login.GameLoginRequest;
 import com.dgphoenix.casino.sm.login.LoginResponse;
 import org.apache.logging.log4j.LogManager;

@@ -1,7 +1,7 @@
-package com.dgphoenix.casino.helpers.login.serializers;
+package com.abs.casino.helpers.login.serializers;
 
-import com.dgphoenix.casino.forms.game.CommonStartGameForm;
-import com.dgphoenix.casino.forms.login.CommonGameLoginForm;
+import com.abs.casino.forms.game.CommonStartGameForm;
+import com.abs.casino.forms.login.CommonGameLoginForm;
 import com.dgphoenix.casino.sm.login.GameLoginRequest;
 import org.apache.commons.beanutils.BeanUtils;
 

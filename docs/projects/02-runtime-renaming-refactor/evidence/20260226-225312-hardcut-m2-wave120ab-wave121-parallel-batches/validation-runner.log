@@ -1,0 +1,19 @@
+2026-02-26T23:03:15Z step1 START cmd=cd /Users/alexb/Documents/Dev/Dev_new/gs-server/common && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+2026-02-26T23:03:21Z step1 PASS exit=0 log=01.log
+2026-02-26T23:03:21Z step2 START cmd=cd /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet && mvn -Dcluster.properties=local/local-machine.properties test
+2026-02-26T23:03:24Z step2 PASS exit=0 log=02.log
+2026-02-26T23:03:24Z step3 START cmd=cd /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils && mvn -Dcluster.properties=local/local-machine.properties test
+2026-02-26T23:03:28Z step3 PASS exit=0 log=03.log
+2026-02-26T23:03:28Z step4 START cmd=cd /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+2026-02-26T23:03:30Z step4 PASS exit=0 log=04.log
+2026-02-26T23:03:30Z step5 START cmd=cd /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+2026-02-26T23:03:35Z step5 PASS exit=0 log=05.log
+2026-02-26T23:03:35Z step6 START cmd=cd /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache && mvn -Dcluster.properties=local/local-machine.properties test
+2026-02-26T23:03:39Z step6 PASS exit=0 log=06.log
+2026-02-26T23:03:39Z step7 START cmd=cd /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs && mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+2026-02-26T23:03:52Z step7 PASS exit=0 log=07.log
+2026-02-26T23:03:52Z step8 START cmd=cd /Users/alexb/Documents/Dev/Dev_new/mp-server && mvn -Dcluster.properties=local/local-machine.properties -pl core,persistance -am -DskipTests package
+2026-02-26T23:03:59Z step8 PASS exit=0 log=08.log
+2026-02-26T23:03:59Z step9 START cmd=cd /Users/alexb/Documents/Dev/Dev_new && node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
+2026-02-26T23:04:28Z step9 PASS exit=0 log=09.log
+2026-02-26T23:04:28Z SUMMARY pass=9 fail=

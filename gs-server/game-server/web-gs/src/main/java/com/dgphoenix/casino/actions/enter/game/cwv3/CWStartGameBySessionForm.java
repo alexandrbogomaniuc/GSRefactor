@@ -1,6 +1,6 @@
 package com.abs.casino.actions.enter.game.cwv3;
 
-import com.dgphoenix.casino.actions.enter.game.cwv3.CWStartGameForm;
+import com.abs.casino.actions.enter.game.cwv3.CWStartGameForm;
 
 /**
  * Backward-compatible CW start form that accepts legacy `sessionId`

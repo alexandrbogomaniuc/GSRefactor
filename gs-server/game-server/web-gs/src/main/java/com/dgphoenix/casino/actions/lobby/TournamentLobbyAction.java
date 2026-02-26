@@ -14,7 +14,7 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
 import com.abs.casino.entities.lobby.LoginHelper;
-import com.dgphoenix.casino.exceptions.LoginErrorException;
+import com.abs.casino.exceptions.LoginErrorException;
 import com.abs.casino.forms.lobby.TournamentLobbyForm;
 import com.dgphoenix.casino.sm.login.LoginResponse;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;

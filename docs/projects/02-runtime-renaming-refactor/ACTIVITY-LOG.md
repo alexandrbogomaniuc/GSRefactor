@@ -2109,3 +2109,18 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - net retained declaration migrations: `10`.
   - global tracked source declarations/files now `1863` remaining (`2277` baseline, `414` reduced).
+
+## 2026-02-26 23:05 UTC (Hard-Cut M2 Wave 120A + 120B + 121)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W120A`: migrated 10 enter/config/login declaration packages to `com.abs`.
+  - `W120B`: migrated 10 login/helper/session declaration packages to `com.abs`.
+  - `W121`: integrated both batches and validated.
+- Validation:
+  - fast gate initial + rerun2 + rerun3 package compile failures during cross-batch import/type stabilization.
+  - fast gate rerun4 passed; full 9-step matrix passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-225312-hardcut-m2-wave120ab-wave121-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/121-hard-cut-m2-wave120ab-wave121-parallel-batches-report-20260226.md`
+- Outcome:
+  - scoped declaration migrations: `20`.
+  - global tracked source declarations/files now `1843` remaining (`2277` baseline, `434` reduced).

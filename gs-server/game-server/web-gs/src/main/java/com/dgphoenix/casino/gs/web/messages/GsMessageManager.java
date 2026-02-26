@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.web.messages;
+package com.abs.casino.gs.web.messages;
 
 import org.apache.struts.util.MessageResources;
 

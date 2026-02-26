@@ -1,0 +1,12 @@
+A_decl_count=10
+B_decl_count=10
+A_rewire_count=6
+B_rewire_count=23
+
+A_decl ∩ B_decl = 0
+
+A_rewire ∩ B_rewire = 0
+
+A_decl ∩ B_rewire = 0
+
+B_decl ∩ A_rewire = 0

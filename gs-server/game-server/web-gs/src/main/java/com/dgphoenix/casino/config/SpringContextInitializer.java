@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.config;
+package com.abs.casino.config;
 
 import com.dgphoenix.casino.init.Initializer;
 import org.apache.logging.log4j.LogManager;
@@ -24,7 +24,7 @@ public class SpringContextInitializer implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException {
         LOG.debug("Starting spring context initialization...");
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        context.setConfigLocation("com.dgphoenix.casino.config");
+        context.setConfigLocation("com.abs.casino.config");
         servletContext.addListener(new ContextLoaderListener(context));
 
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(context));

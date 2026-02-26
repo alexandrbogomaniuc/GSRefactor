@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.entities.game.requests.BonusStartGameRequest;
-import com.dgphoenix.casino.exceptions.LoginErrorException;
+import com.abs.casino.exceptions.LoginErrorException;
 import com.abs.casino.forms.game.CommonFRBStartGameForm;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.abs.casino.helpers.login.FRBonusHelper;

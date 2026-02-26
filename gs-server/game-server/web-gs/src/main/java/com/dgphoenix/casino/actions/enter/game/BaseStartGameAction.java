@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.actions.enter.game;
 
 import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.actions.enter.AccountInfoAndSessionInfoPair;
+import com.abs.casino.actions.enter.AccountInfoAndSessionInfoPair;
 import com.dgphoenix.casino.actions.enter.CommonActionForm;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;

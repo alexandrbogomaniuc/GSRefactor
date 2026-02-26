@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.config;
+package com.abs.casino.config;
 
 import com.abs.casino.config.ControllerContextConfiguration;
 import com.abs.casino.common.config.CommonContextConfiguration;

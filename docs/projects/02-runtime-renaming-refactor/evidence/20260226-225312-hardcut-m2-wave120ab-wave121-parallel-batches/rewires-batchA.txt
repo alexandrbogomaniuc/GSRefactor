@@ -1,0 +1,6 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameBySessionForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/CommonBSLoginForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/cwv3/CWLoginForm.java
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/web.xml

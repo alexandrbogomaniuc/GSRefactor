@@ -22,7 +22,7 @@ import com.dgphoenix.casino.common.web.MobileDetector;
 import com.abs.casino.entities.lobby.LoginHelper;
 import com.abs.casino.entities.lobby.ShortGameInfo;
 import com.abs.casino.entities.lobby.StLobbyMode;
-import com.dgphoenix.casino.exceptions.LoginErrorException;
+import com.abs.casino.exceptions.LoginErrorException;
 import com.abs.casino.forms.lobby.STLobbyForm;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
