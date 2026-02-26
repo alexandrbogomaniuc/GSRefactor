@@ -30,7 +30,12 @@
 
     Map<String, String> properties = new HashMap(baseProperties);
 
-    String spGameProcessor = "com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+    String spGameProcessor = "com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+    try {
+        Class.forName(spGameProcessor);
+    } catch (ClassNotFoundException ignore) {
+        spGameProcessor = "com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+    }
     List langs = Arrays.asList("en");
 
     gameInfo = new BaseGameInfo(

@@ -199,3 +199,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - support workflows now tolerate both legacy and target package naming in runtime-sensitive checks.
   - Project 02 completion estimate updated to `76%`.
+
+## 2026-02-26 07:14 UTC (Mini-Wave M3.2)
+- Executed support template-flow class-string compatibility wave for SP game processor resolution.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/webapp/support/templateManager/cloneTemplate.jsp`
+  - `gs-server/game-server/web-gs/src/main/webapp/support/games/829_step1_AddGameInfoTemplate.jsp`
+  - `gs-server/game-server/web-gs/src/main/webapp/support/games/829_step2_AddGameInfo.jsp`
+- Change detail:
+  - replaced single hardcoded SP processor class dependency with runtime-compatible resolution:
+    - prefer `com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor`
+    - fallback `com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor`
+- Validation PASS:
+  - full build/test matrix (sb-utils, promo/common-persisters, cache tests, web-gs package, mp subset package)
+  - runtime bank-template audit (`bank-template-audit.mjs`) for banks `6275,6276`: PASS.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-071412/`
+- Outcome:
+  - support template-generation flows are now package-rename tolerant for SP processor class references.
+  - Project 02 completion estimate updated to `80%`.

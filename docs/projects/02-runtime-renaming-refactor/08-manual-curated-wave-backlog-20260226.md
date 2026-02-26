@@ -89,4 +89,5 @@ Method:
   - M2.3 complete (seeded `ABS_WEAPONS_MODE` alongside `MQ_WEAPONS_MODE`)
   - M2.4 complete (mqb server config domain/lobby host sanitization to local values)
   - M3.1 complete (support JSP compatibility for `com.dgphoenix`/`com.abs` class strings in init/sequencer/report checks)
-- Estimated completion: 76%.
+  - M3.2 complete (support template-management JSP fallback for SP processor class `com.abs` -> `com.dgphoenix`)
+- Estimated completion: 80%.

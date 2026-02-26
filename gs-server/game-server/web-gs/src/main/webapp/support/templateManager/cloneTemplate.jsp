@@ -10,10 +10,20 @@
 
 
 <%!
+    private String resolveSpGameProcessorClassName() {
+        String absClassName = "com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+        try {
+            Class.forName(absClassName);
+            return absClassName;
+        } catch (ClassNotFoundException ignore) {
+            return "com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+        }
+    }
+
     public void createTemplate(GameTemplate gameTemplate) throws CommonException {
         List<String> langs = Arrays.asList("en");
 
-        String spGameProcessor = "com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+        String spGameProcessor = resolveSpGameProcessorClassName();
 
         BaseGameInfo gameInfo = new BaseGameInfo(gameTemplate.getValueId(), BankConstants.DEFAULT_BANK_ID, gameTemplate.getGameName(),
                 gameTemplate.getValueGameType(), gameTemplate.getValueGameGroup(), gameTemplate.getValueGameVariableType(), null, spGameProcessor,

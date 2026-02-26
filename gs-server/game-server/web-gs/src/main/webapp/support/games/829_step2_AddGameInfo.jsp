@@ -11,7 +11,12 @@
 <%@ page import="java.util.ArrayList" %>
 <%
 
-    String spGameProcessor = "com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+    String spGameProcessor = "com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+    try {
+        Class.forName(spGameProcessor);
+    } catch (ClassNotFoundException ignore) {
+        spGameProcessor = "com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+    }
     long[] banks = {6274, 6275};
     long gameId = 829;
     String gameBaseName = "REVENGEOFRA";

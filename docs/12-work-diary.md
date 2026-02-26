@@ -5896,3 +5896,15 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-071122/`
 - Completion update:
   - Project 02 estimated at `76%`.
+
+### 2026-02-26 07:14 UTC
+- GSRefactor Project 02 advanced with M3.2 (support template-flow SP processor compatibility).
+- Updated support template JSP flows to resolve SP processor class with ABS-first fallback:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/templateManager/cloneTemplate.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/games/829_step1_AddGameInfoTemplate.jsp`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/games/829_step2_AddGameInfo.jsp`
+- Full validation matrix PASS and runtime bank-template audit PASS for banks `6275`, `6276`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-071412/`
+- Completion update:
+  - Project 02 estimated at `80%`.
