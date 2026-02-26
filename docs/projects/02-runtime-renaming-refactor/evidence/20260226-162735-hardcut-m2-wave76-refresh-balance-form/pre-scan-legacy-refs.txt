@@ -1,0 +1,2 @@
+HEAD:gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/RefreshBalanceAction.java:4:import com.dgphoenix.casino.actions.api.RefreshBalanceForm;
+HEAD:gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:119:        <form-bean name="RefreshBalanceForm" type="com.dgphoenix.casino.actions.api.RefreshBalanceForm"/>
