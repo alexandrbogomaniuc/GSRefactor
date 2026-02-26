@@ -1,0 +1,2 @@
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/promo/ErrorCodes.java:1:package com.abs.casino.actions.api.promo;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/promo/GetTournamentPlayerInfoAction.java:3:import com.abs.casino.actions.api.promo.ErrorCodes;

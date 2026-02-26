@@ -1,0 +1,2 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/promo/ErrorCodes.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/promo/GetTournamentPlayerInfoAction.java

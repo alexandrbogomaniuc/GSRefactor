@@ -7079,3 +7079,13 @@
   - migrated API MQ action package to `com.abs`, updated Struts action type, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 81 with next low-fanout runtime backlog item.
+
+### 2026-02-26 17:03 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 81 (`promo/ErrorCodes`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-170055-hardcut-m2-wave81-promo-error-codes/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/93-hard-cut-m2-wave81-promo-error-codes-report-20260226.md`
+- Result:
+  - migrated promo API enum package to `com.abs`, added import bridge in `GetTournamentPlayerInfoAction`, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 82 with next low-fanout runtime backlog item.

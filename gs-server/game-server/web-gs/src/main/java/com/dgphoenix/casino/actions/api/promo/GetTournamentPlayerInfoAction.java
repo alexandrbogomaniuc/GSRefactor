@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.actions.api.promo;
 
+import com.abs.casino.actions.api.promo.ErrorCodes;
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
