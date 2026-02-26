@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
 WORK_DIR=""
 
 usage() {
@@ -33,7 +36,7 @@ else
   mkdir -p "${WORK_DIR}"
 fi
 
-STORE_JS="/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/protocol-adapter/src/store.js"
+STORE_JS="${REPO_ROOT}/gs-server/refactor-services/protocol-adapter/src/store.js"
 
 STORE_FILE="${WORK_DIR}/protocol-security-smoke.store.json" \
 PROTOCOL_ADAPTER_DEFAULT_MODE="JSON" \

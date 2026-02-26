@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 VERIFY_REPORT=""
 OUT_DIR="${ROOT}/docs/phase5-6"
 

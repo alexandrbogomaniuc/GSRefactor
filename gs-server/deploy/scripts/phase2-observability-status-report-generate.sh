@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-TRACE_DOC="/Users/alexb/Documents/Dev/Dev_new/docs/29-trace-correlation-standard-v1.md"
-TAXONOMY_DOC="/Users/alexb/Documents/Dev/Dev_new/docs/27-error-taxonomy-v1.md"
-CORR_PROBE_DOC="/Users/alexb/Documents/Dev/Dev_new/docs/phase2/correlation-probes/correlation-probe-20260220-104035.md"
-RUNBOOK_DOC="/Users/alexb/Documents/Dev/Dev_new/docs/60-support-modernization-runbook-page-20260220-182600.md"
-RUNBOOK_STATUS_DOC="/Users/alexb/Documents/Dev/Dev_new/docs/61-support-runbook-status-snapshot-20260220-183000.md"
-DASHBOARD_DOC="/Users/alexb/Documents/Dev/Dev_new/docs/36-modernization-visual-dashboard.md"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
+TRACE_DOC="${REPO_ROOT}/docs/29-trace-correlation-standard-v1.md"
+TAXONOMY_DOC="${REPO_ROOT}/docs/27-error-taxonomy-v1.md"
+CORR_PROBE_DOC="${REPO_ROOT}/docs/phase2/correlation-probes/correlation-probe-20260220-104035.md"
+RUNBOOK_DOC="${REPO_ROOT}/docs/60-support-modernization-runbook-page-20260220-182600.md"
+RUNBOOK_STATUS_DOC="${REPO_ROOT}/docs/61-support-runbook-status-snapshot-20260220-183000.md"
+DASHBOARD_DOC="${REPO_ROOT}/docs/36-modernization-visual-dashboard.md"
 VERIFY_REPORT=""
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase2/observability"
+OUT_DIR="${REPO_ROOT}/docs/phase2/observability"
 
 usage() {
   cat <<USAGE
@@ -47,7 +50,7 @@ done
 
 mkdir -p "${OUT_DIR}"
 if [[ -z "${VERIFY_REPORT}" ]]; then
-  VERIFY_REPORT="$(ls -1t /Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-*.md 2>/dev/null | head -n1 || true)"
+  VERIFY_REPORT="$(ls -1t ${REPO_ROOT}/docs/quality/local-verification/phase5-6-local-verification-*.md 2>/dev/null | head -n1 || true)"
 fi
 
 for f in "${TRACE_DOC}" "${TAXONOMY_DOC}" "${CORR_PROBE_DOC}" "${RUNBOOK_DOC}" "${RUNBOOK_STATUS_DOC}" "${DASHBOARD_DOC}" "${VERIFY_REPORT}"; do

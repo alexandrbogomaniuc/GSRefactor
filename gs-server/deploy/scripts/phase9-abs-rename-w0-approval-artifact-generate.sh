@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
 DRY_RUN_REPORT=""
 PATCH_PLAN_REPORT=""
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase9"
+OUT_DIR="${REPO_ROOT}/docs/phase9"
 WAVE="W0"
 APPROVER=""
 NOTES=""

@@ -6191,3 +6191,19 @@
   - `refactor-onboard.mjs smoke` PASS (startgame primary + secondary HTTP 200).
 - Result: support portal/data no longer tied to a single machine path; future sync runs preserve portability.
 - Next step: continue secondary script backlog cleanup (`/Users/alexb` literals across phase scripts) in a separate guarded wave.
+
+### 2026-02-26 08:59 UTC
+- Completed guarded deploy-script portability cleanup wave.
+- Removed all remaining hardcoded `/Users/alexb/...` literals from deploy scripts.
+- Scope: `gs-server/deploy/scripts` (including `lib/phase7-cassandra.sh`) with dynamic path normalization via `SCRIPT_DIR`, `ROOT`/`ROOT_DIR`/`GS_ROOT`, and `REPO_ROOT` where needed.
+- Special runtime-safe patch:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-logic-smoke.sh`
+  - Converted Node `require` absolute paths to `process.env.REPO_ROOT + ...` and passed `REPO_ROOT` into each Node invocation.
+- Validation:
+  - `rg '/Users/alexb' gs-server/deploy/scripts` => 0 matches.
+  - `bash -n` on all changed shell scripts => PASS.
+  - `refactor-onboard.mjs smoke` => PASS (`/startgame` primary/secondary HTTP 200).
+  - `phase5-6-local-logic-smoke.sh` => PASS.
+  - Representative `--help` checks for phase0/phase2/phase4/phase7/phase9 scripts => PASS.
+- Result: deploy tooling no longer depends on hardcoded local-machine paths.
+- Note: an earlier bulk attempt failed due unsafe path-list handling; no bad lines were committed, and final wave was executed with per-file guarded loops.

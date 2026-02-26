@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 COMPOSE_FILE="${ROOT}/gs-server/deploy/docker/refactor/docker-compose.yml"
 ENV_FILE="${ROOT}/gs-server/deploy/docker/refactor/.env"
 GS_CONTAINER="refactor-gs-1"

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 MAP_FILE="${ROOT}/gs-server/deploy/config/phase9-abs-compatibility-map.json"
 VALIDATOR="${ROOT}/gs-server/deploy/scripts/phase9-abs-compatibility-map-validate.sh"
 

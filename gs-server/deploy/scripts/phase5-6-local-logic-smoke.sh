@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 WORK_DIR=""
 
 usage() {
@@ -38,11 +40,11 @@ bonus_store="${WORK_DIR}/bonus-store.json"
 history_store="${WORK_DIR}/history-store.json"
 mp_store="${WORK_DIR}/mp-store.json"
 
-BONUS_STORE="${bonus_store}" node <<'NODE'
+BONUS_STORE="${bonus_store}" REPO_ROOT="${ROOT}" node <<'NODE'
 const assert = (c, m) => { if (!c) throw new Error(m); };
 const path = require('path');
 process.env.STORE_FILE = process.env.BONUS_STORE;
-const store = require('/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/bonus-frb-service/src/store');
+const store = require(process.env.REPO_ROOT + '/gs-server/refactor-services/bonus-frb-service/src/store');
 
 const a = store.checkFrb({ bankId: '6275', accountId: 'acc1', frbId: 'frb1' });
 assert(a.ok && a.frb.status === 'AVAILABLE', 'initial FRB should be AVAILABLE');
@@ -57,10 +59,10 @@ assert(Array.isArray(listed.frbRecords) && listed.frbRecords.length >= 1, 'listF
 console.log('PASS bonus-frb store smoke');
 NODE
 
-HISTORY_STORE="${history_store}" node <<'NODE'
+HISTORY_STORE="${history_store}" REPO_ROOT="${ROOT}" node <<'NODE'
 const assert = (c, m) => { if (!c) throw new Error(m); };
 process.env.STORE_FILE = process.env.HISTORY_STORE;
-const store = require('/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/history-service/src/store');
+const store = require(process.env.REPO_ROOT + '/gs-server/refactor-services/history-service/src/store');
 
 const a1 = store.appendRecord({ bankId: '6275', sessionId: 's1', operationId: 'hist-op-1', eventType: 'wager', payload: { amount: 100 } });
 assert(a1.ok && a1.idempotent === false, 'appendRecord should create record');
@@ -71,10 +73,10 @@ assert(Array.isArray(list.records) && list.records.some(r => r.operationId === '
 console.log('PASS history store smoke');
 NODE
 
-MP_STORE="${mp_store}" node <<'NODE'
+MP_STORE="${mp_store}" REPO_ROOT="${ROOT}" node <<'NODE'
 const assert = (c, m) => { if (!c) throw new Error(m); };
 process.env.STORE_FILE = process.env.MP_STORE;
-const store = require('/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/multiplayer-service/src/store');
+const store = require(process.env.REPO_ROOT + '/gs-server/refactor-services/multiplayer-service/src/store');
 
 const s1 = store.upsertSession({ bankId: '7777', sessionId: 'mp1', playerId: 'p1', operationType: 'session_sync', operationId: 'mp-op-1', status: 'SYNCED' });
 assert(s1.ok && s1.session.status === 'SYNCED' && s1.idempotent === false, 'session_sync should create session');
@@ -87,9 +89,9 @@ assert(Array.isArray(list.sessions) && list.sessions.length === 1, 'listSessions
 console.log('PASS multiplayer store smoke');
 NODE
 
-node <<'NODE'
+REPO_ROOT="${ROOT}" node <<'NODE'
 const assert = (c, m) => { if (!c) throw new Error(m); };
-const policy = require('/Users/alexb/Documents/Dev/Dev_new/gs-server/refactor-services/multiplayer-service/src/policy');
+const policy = require(process.env.REPO_ROOT + '/gs-server/refactor-services/multiplayer-service/src/policy');
 const bankFlags = policy.parseBankFlags('6275:false,7777:true');
 
 let d = policy.routeDecision({ bankId: '6275', isMultiplayer: false, routeEnabled: true, canaryBanks: ['6275','7777'], bankFlags });

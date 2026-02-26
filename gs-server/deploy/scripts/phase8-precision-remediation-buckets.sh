@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 GS_ROOT="${ROOT}/gs-server"
 OUT_DIR="${ROOT}/docs/phase8/precision"
 TS="$(date -u '+%Y%m%d-%H%M%S')"
@@ -158,7 +161,7 @@ TOTAL_W4=$(count_file "${TMP_DIR}/wave4_core_financial_paths.txt")
   echo
   echo "## Acceptance Gates Per Wave"
   echo "- Add/extend deterministic precision vectors before code changes in the target bucket."
-  echo '- Run `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh` after each batch.'
+  echo '- Run `${REPO_ROOT}/gs-server/deploy/scripts/phase5-6-local-verification-suite.sh` after each batch.'
   echo "- Preserve backward-compatible request/response and bank routing behavior."
   echo '- Canary on selected banks (start with bank `6275` where applicable).'
   echo "- No cutover of financial paths without parity evidence and rollback path."

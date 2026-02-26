@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 OUT_DIR="${ROOT}/docs/phase7/cassandra/full-copy"
 SOURCE_CONTAINER="gp3-c1-1"
 TARGET_CONTAINER="refactor-c1-refactor-1"

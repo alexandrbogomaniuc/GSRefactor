@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
 TMP="$(mktemp -d)"
 trap 'rm -rf "${TMP}"' EXIT
 OUT="${TMP}/out"
@@ -50,7 +53,7 @@ EOF
 echo -e "# VR\n- pass: 70\n- fail: 0\n- skip: 0" > "${VR_OK}"
 echo -e "# VR\n- pass: 69\n- fail: 1\n- skip: 0" > "${VR_FAIL}"
 
-SCRIPT="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase2-observability-status-report-generate.sh"
+SCRIPT="${REPO_ROOT}/gs-server/deploy/scripts/phase2-observability-status-report-generate.sh"
 run1="$(${SCRIPT} --trace-doc "${TRACE}" --taxonomy-doc "${TAX}" --correlation-probe "${CORR}" --runbook-doc "${RB}" --runbook-status-doc "${RBS}" --dashboard-doc "${DASH}" --verify-report "${VR_OK}" --out-dir "${OUT}")"
 echo "${run1}" | grep -q 'overall_status=TESTED_BASELINE_COMPLETE'
 r1="$(echo "${run1}" | awk -F= '/^report=/{print $2}')"

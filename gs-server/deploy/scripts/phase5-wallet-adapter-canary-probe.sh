@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+# shellcheck source=/dev/null
 source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
 
 BANK_ID="6275"

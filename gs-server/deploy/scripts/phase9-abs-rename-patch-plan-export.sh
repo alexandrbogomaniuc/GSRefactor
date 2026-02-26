@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new/gs-server"
-MAP_FILE="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
+ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+MAP_FILE="${REPO_ROOT}/gs-server/deploy/config/phase9-abs-compatibility-map.json"
 SCAN_REPORT=""
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase9"
+OUT_DIR="${REPO_ROOT}/docs/phase9"
 WAVE="W0"
 CONTEXT_LINES="0"
 MAX_SNIPPETS_PER_FILE="8"

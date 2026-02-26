@@ -2,8 +2,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
-# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/phase7-cassandra.sh
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+# shellcheck source=/dev/null
 source "${SCRIPT_DIR}/lib/phase7-cassandra.sh"
 COMPOSE_FILE="${ROOT}/gs-server/deploy/docker/refactor/docker-compose.yml"
 ENV_FILE="${ROOT}/gs-server/deploy/docker/refactor/.env"

@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BLOCKLIST_FILE="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-wave-status-blocklist.json"
-PATCH_PLAN_FILE="/Users/alexb/Documents/Dev/Dev_new/docs/phase9/phase9-abs-rename-patch-plan-W0-20260224-094711.md"
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase9"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
+BLOCKLIST_FILE="${REPO_ROOT}/gs-server/deploy/config/phase9-abs-wave-status-blocklist.json"
+PATCH_PLAN_FILE="${REPO_ROOT}/docs/phase9/phase9-abs-rename-patch-plan-W0-20260224-094711.md"
+OUT_DIR="${REPO_ROOT}/docs/phase9"
 VERIFY_REPORT=""
 WAVE="W0"
 
@@ -38,7 +41,7 @@ done
 
 mkdir -p "${OUT_DIR}"
 if [[ -z "${VERIFY_REPORT}" ]]; then
-  VERIFY_REPORT="$(ls -1t /Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-*.md 2>/dev/null | head -n1 || true)"
+  VERIFY_REPORT="$(ls -1t ${REPO_ROOT}/docs/quality/local-verification/phase5-6-local-verification-*.md 2>/dev/null | head -n1 || true)"
 fi
 if [[ ! -f "${BLOCKLIST_FILE}" ]]; then echo "Missing --blocklist: ${BLOCKLIST_FILE}" >&2; exit 2; fi
 if [[ ! -f "${PATCH_PLAN_FILE}" ]]; then echo "Missing --patch-plan: ${PATCH_PLAN_FILE}" >&2; exit 2; fi

@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new/gs-server"
-MAP_FILE="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/phase9-abs-compatibility-map.json"
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase9"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
+ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+MAP_FILE="${REPO_ROOT}/gs-server/deploy/config/phase9-abs-compatibility-map.json"
+OUT_DIR="${REPO_ROOT}/docs/phase9"
 WAVE="W0"
 MAX_FILES_PER_MAPPING="10"
-SCANNER="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan.sh"
+SCANNER="${REPO_ROOT}/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan.sh"
 
 usage() {
   cat <<USAGE

@@ -81,3 +81,9 @@ Project: Post-Project Audit
 - Replaced hardcoded local machine file URLs/commands in embedded support data with `$REPO_ROOT` placeholders.
 - Updated sync script to auto-normalize repo-absolute paths on each embed refresh (`sync-modernization-dashboard-embedded-data.sh`).
 - Validation: JSON parse OK, sync script run OK, onboarding smoke still PASS.
+
+## 2026-02-26 08:59 UTC
+- Completed deploy-script portability hardening wave.
+- All `/Users/alexb/...` literals removed from `gs-server/deploy/scripts`.
+- Added/used dynamic path resolution via script-relative roots and repo-root helper variables.
+- Runtime checks stayed green (`refactor-onboard.mjs smoke`, phase5/6 local logic smoke).

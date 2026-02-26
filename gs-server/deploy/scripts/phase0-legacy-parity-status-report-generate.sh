@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PHASE0_DOC="/Users/alexb/Documents/Dev/Dev_new/docs/23-phase-0-baseline-and-parity-capture.md"
-LAUNCH_FORENSICS_DOC="/Users/alexb/Documents/Dev/Dev_new/docs/11-game-launch-forensics.md"
-PHASE5_6_CLOSURE_DOC="/Users/alexb/Documents/Dev/Dev_new/docs/155-phase5-6-service-extraction-phase-closure-tested-no-go-runtime-blocked-20260224-120000.md"
-MP_BOUNDARY_DOC="/Users/alexb/Documents/Dev/Dev_new/docs/39-phase6-multiplayer-boundary-and-bypass-v1.md"
-MP_SHADOW_DOC="/Users/alexb/Documents/Dev/Dev_new/docs/73-phase6-gs-multiplayer-shadow-bridge-20260220-191800.md"
-MP_POLICY_DOC="/Users/alexb/Documents/Dev/Dev_new/docs/74-phase6-multiplayer-routing-policy-probe-and-test-gate-20260220-192600.md"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
+PHASE0_DOC="${REPO_ROOT}/docs/23-phase-0-baseline-and-parity-capture.md"
+LAUNCH_FORENSICS_DOC="${REPO_ROOT}/docs/11-game-launch-forensics.md"
+PHASE5_6_CLOSURE_DOC="${REPO_ROOT}/docs/155-phase5-6-service-extraction-phase-closure-tested-no-go-runtime-blocked-20260224-120000.md"
+MP_BOUNDARY_DOC="${REPO_ROOT}/docs/39-phase6-multiplayer-boundary-and-bypass-v1.md"
+MP_SHADOW_DOC="${REPO_ROOT}/docs/73-phase6-gs-multiplayer-shadow-bridge-20260220-191800.md"
+MP_POLICY_DOC="${REPO_ROOT}/docs/74-phase6-multiplayer-routing-policy-probe-and-test-gate-20260220-192600.md"
 VERIFY_REPORT=""
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-status"
+OUT_DIR="${REPO_ROOT}/docs/phase0/parity-status"
 
 usage() {
   cat <<USAGE
@@ -48,7 +51,7 @@ done
 
 mkdir -p "${OUT_DIR}"
 if [[ -z "${VERIFY_REPORT}" ]]; then
-  VERIFY_REPORT="$(ls -1t /Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-*.md 2>/dev/null | head -n1 || true)"
+  VERIFY_REPORT="$(ls -1t ${REPO_ROOT}/docs/quality/local-verification/phase5-6-local-verification-*.md 2>/dev/null | head -n1 || true)"
 fi
 
 for f in "${PHASE0_DOC}" "${LAUNCH_FORENSICS_DOC}" "${PHASE5_6_CLOSURE_DOC}" "${MP_BOUNDARY_DOC}" "${MP_SHADOW_DOC}" "${MP_POLICY_DOC}" "${VERIFY_REPORT}"; do

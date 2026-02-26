@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
 MANIFEST_FILE=""
-TEMPLATE_FILE="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/rehearsal-report-template.md"
-OUTPUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra"
+TEMPLATE_FILE="${REPO_ROOT}/docs/phase7/cassandra/rehearsal-report-template.md"
+OUTPUT_DIR="${REPO_ROOT}/docs/phase7/cassandra"
 TS="$(date -u '+%Y%m%d-%H%M%S')"
 OUT_FILE="${OUTPUT_DIR}/phase7-cassandra-rehearsal-report-${TS}.md"
 

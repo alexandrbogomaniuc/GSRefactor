@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SCRIPT="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/security-hardening-status-report-generate.sh"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
+SCRIPT="${REPO_ROOT}/gs-server/deploy/scripts/security-hardening-status-report-generate.sh"
 TMP="$(mktemp -d)"
 trap 'rm -rf "${TMP}"' EXIT
 VR="${TMP}/vr.md"

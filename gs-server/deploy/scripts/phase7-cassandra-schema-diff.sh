@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
 SOURCE_SCHEMA=""
 TARGET_SCHEMA=""
-OUTPUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra"
+OUTPUT_DIR="${REPO_ROOT}/docs/phase7/cassandra"
 TS="$(date -u '+%Y%m%d-%H%M%S')"
 
 usage() {

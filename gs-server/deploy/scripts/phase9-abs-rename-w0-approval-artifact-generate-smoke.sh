@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 GEN="${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-w0-approval-artifact-generate.sh"
 EXEC="${ROOT}/gs-server/deploy/scripts/phase9-abs-rename-w0-text-replace.sh"
 TMP_DIR="$(mktemp -d)"

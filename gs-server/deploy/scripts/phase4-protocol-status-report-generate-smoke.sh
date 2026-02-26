@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
 TMP="$(mktemp -d)"
 trap 'rm -rf "${TMP}"' EXIT
 OUT="${TMP}/out"
@@ -39,7 +42,7 @@ cat > "${verify_ok}" <<'EOF'
 - skip: 0
 EOF
 
-SCRIPT="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-status-report-generate.sh"
+SCRIPT="${REPO_ROOT}/gs-server/deploy/scripts/phase4-protocol-status-report-generate.sh"
 
 blocked_run="$(${SCRIPT} --runtime-evidence "${runtime_blocked}" --verify-report "${verify_ok}" --out-dir "${OUT}")"
 echo "${blocked_run}" | grep -q 'phase4_status=TESTED_NO_GO_RUNTIME_BLOCKED'

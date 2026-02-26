@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
   cat <<'USAGE'
 Usage: phase7-cassandra-upgrade-target-rehearsal-smoke.sh
@@ -11,7 +13,7 @@ USAGE
   exit 0
 fi
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 SCRIPT="${ROOT}/gs-server/deploy/scripts/phase7-cassandra-upgrade-target-rehearsal.sh"
 OUT_DIR="$(mktemp -d)"
 trap 'rm -rf "${OUT_DIR}"' EXIT

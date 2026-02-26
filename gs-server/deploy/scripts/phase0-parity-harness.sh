@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
 MODE="dry-run"
 BASE_URL="http://localhost:18080"
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution"
+OUT_DIR="${REPO_ROOT}/docs/phase0/parity-execution"
 FIXTURE_FILE=""
 TIMEOUT_SEC=20
 
@@ -41,7 +44,7 @@ Options:
   --mode dry-run|run         Default: dry-run
   --base-url URL             Default: http://localhost:18080
   --fixture-file PATH        Optional env file with fixture values
-  --out-dir PATH             Default: /Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-execution
+  --out-dir PATH             Default: ${REPO_ROOT}/docs/phase0/parity-execution
   --timeout-sec N            Default: 20
   -h, --help                 Show help
 

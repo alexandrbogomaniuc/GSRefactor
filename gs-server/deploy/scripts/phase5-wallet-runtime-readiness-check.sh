@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+# shellcheck source=/dev/null
 source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
 
 WALLET_HOST="$(cluster_hosts_get WALLET_ADAPTER_EXTERNAL_HOST 127.0.0.1)"

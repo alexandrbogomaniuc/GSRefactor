@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="/Users/alexb/Documents/Dev/Dev_new"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
+ROOT_DIR="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 OUT_FILE="${ROOT_DIR}/docs/phase0/parity-fixture.env"
 
 BANK_ID=""
@@ -47,7 +50,7 @@ Optional:
   --bsaward-exp-date DD.MM.YYYY  Default: +30 days UTC
   --bsaward-type VALUE        Default: Deposit
   --bsaward-multiplier VALUE  Default: 2
-  --out-file PATH             Default: /Users/alexb/Documents/Dev/Dev_new/docs/phase0/parity-fixture.env
+  --out-file PATH             Default: ${REPO_ROOT}/docs/phase0/parity-fixture.env
 USAGE
 }
 

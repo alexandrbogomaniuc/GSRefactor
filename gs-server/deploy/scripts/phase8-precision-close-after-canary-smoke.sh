@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 CLOSE_SCRIPT="${ROOT}/gs-server/deploy/scripts/phase8-precision-close-after-canary.sh"
 MATRIX_SCRIPT="${ROOT}/gs-server/deploy/scripts/phase8-precision-verification-matrix.sh"
 TMP="$(mktemp -d)"

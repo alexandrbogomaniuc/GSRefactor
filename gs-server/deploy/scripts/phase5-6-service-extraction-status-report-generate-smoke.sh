@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
 TMP="$(mktemp -d)"
 trap 'rm -rf "${TMP}"' EXIT
 OUT="${TMP}/out"
@@ -36,7 +39,7 @@ mk_runtime "${B}" "FAIL" "SKIPPED"
 mk_runtime "${H}" "FAIL" "SKIPPED"
 mk_runtime "${M}" "FAIL" "SKIPPED" "SKIPPED"
 
-SCRIPT="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-6-service-extraction-status-report-generate.sh"
+SCRIPT="${REPO_ROOT}/gs-server/deploy/scripts/phase5-6-service-extraction-status-report-generate.sh"
 
 run1="$(${SCRIPT} --verify-report "${VERIFY_OK}" --gameplay-evidence "${G}" --wallet-evidence "${W}" --bonus-evidence "${B}" --history-evidence "${H}" --mp-evidence "${M}" --out-dir "${OUT}")"
 echo "${run1}" | grep -q 'overall_status=TESTED_NO_GO_RUNTIME_BLOCKED'

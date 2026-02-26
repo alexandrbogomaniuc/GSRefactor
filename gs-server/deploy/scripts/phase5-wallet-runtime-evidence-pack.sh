@@ -2,7 +2,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+# shellcheck source=/dev/null
 source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
 
 BANK_ID="6275"
@@ -16,7 +17,7 @@ READINESS_WALLET_PORT="$(cluster_hosts_get WALLET_ADAPTER_EXTERNAL_PORT 18075)"
 READINESS_GS_HOST="$(cluster_hosts_get GS_EXTERNAL_HOST 127.0.0.1)"
 READINESS_GS_PORT="$(cluster_hosts_get GS_EXTERNAL_PORT 18081)"
 CHECK_DOCKER="true"
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase5/wallet"
+OUT_DIR="${REPO_ROOT}/docs/phase5/wallet"
 
 usage() {
   cat <<USAGE
@@ -94,7 +95,7 @@ readiness_out="${work_dir}/readiness.out"
 canary_out="${work_dir}/canary.out"
 
 readiness_status="$(run_and_capture "${readiness_out}" \
-  /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-runtime-readiness-check.sh \
+  ${REPO_ROOT}/gs-server/deploy/scripts/phase5-wallet-runtime-readiness-check.sh \
   --wallet-host "${READINESS_WALLET_HOST}" --wallet-port "${READINESS_WALLET_PORT}" \
   --gs-host "${READINESS_GS_HOST}" --gs-port "${READINESS_GS_PORT}" \
   --check-docker "${CHECK_DOCKER}")"
@@ -103,7 +104,7 @@ canary_status="SKIPPED"
 if [[ "${readiness_status}" == "PASS" ]]; then
   if [[ -n "${SUB_CASINO_ID}" ]]; then
     canary_status="$(run_and_capture "${canary_out}" \
-      /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-adapter-canary-probe.sh \
+      ${REPO_ROOT}/gs-server/deploy/scripts/phase5-wallet-adapter-canary-probe.sh \
       --bank-id "${BANK_ID}" \
       --token "${TOKEN}" \
       --sub-casino-id "${SUB_CASINO_ID}" \
@@ -112,7 +113,7 @@ if [[ "${readiness_status}" == "PASS" ]]; then
       --wallet-base-url "${WALLET_BASE_URL}")"
   else
     canary_status="$(run_and_capture "${canary_out}" \
-      /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-wallet-adapter-canary-probe.sh \
+      ${REPO_ROOT}/gs-server/deploy/scripts/phase5-wallet-adapter-canary-probe.sh \
       --bank-id "${BANK_ID}" \
       --token "${TOKEN}" \
       --transport "${TRANSPORT}" \

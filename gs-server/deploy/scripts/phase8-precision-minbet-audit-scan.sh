@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-GS_ROOT="/Users/alexb/Documents/Dev/Dev_new/gs-server"
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase8/precision"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
+GS_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+OUT_DIR="${REPO_ROOT}/docs/phase8/precision"
 TS="$(date -u '+%Y%m%d-%H%M%S')"
 OUT_FILE="${OUT_DIR}/phase8-precision-minbet-audit-${TS}.md"
 

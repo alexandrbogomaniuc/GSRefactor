@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 usage() {
   cat <<USAGE
 Usage: $(basename "$0")
@@ -19,7 +21,7 @@ if [[ $# -gt 0 ]]; then
   exit 1
 fi
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 TMPD="$(mktemp -d)"
 trap 'rm -rf "${TMPD}"' EXIT
 

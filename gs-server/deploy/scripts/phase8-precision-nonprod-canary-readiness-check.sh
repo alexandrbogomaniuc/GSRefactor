@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 ALLOW_MISSING_RUNTIME="false"
 GS_CONTAINER="refactor-gs-1"
 LOG_DIR="${ROOT}/Doker/runtime-gs/logs/gs"
@@ -76,7 +79,7 @@ if [[ -d "${LOG_DIR}" ]]; then
   precision_log_count=$({ rg -n "phase8-precision-dual-calc" "${LOG_DIR}" -g '*.log' 2>/dev/null || true; } | wc -l | tr -d ' ')
 fi
 
-matrix_line="$(/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-verification-matrix.sh --out-dir "${ROOT}/docs/phase8/precision")"
+matrix_line="$(${REPO_ROOT}/gs-server/deploy/scripts/phase8-precision-verification-matrix.sh --out-dir "${ROOT}/docs/phase8/precision")"
 matrix_report="${matrix_line#report=}"
 blocking_count="$( { rg -n '^- blockingCategories: ' "${matrix_report}" || true; } | sed -E 's/.*: ([0-9]+)/\1/' | head -n1 )"
 remaining_blockers="$( { rg -n '^- .*-> resolve before Phase 8 closure$' "${matrix_report}" || true; } | sed -E 's/^- //' | paste -sd ';' - )"

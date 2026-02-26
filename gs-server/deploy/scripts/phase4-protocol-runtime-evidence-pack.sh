@@ -2,7 +2,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+# shellcheck source=/dev/null
 source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
 
 BANK_ID="6275"
@@ -15,7 +16,7 @@ TOKEN="test_user_6275"
 RUN_SECURITY_PROBE="false"
 SECURITY_PROBE_REQUIRE_SECRET="false"
 ALLOW_MISSING_RUNTIME="false"
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase4/protocol"
+OUT_DIR="${REPO_ROOT}/docs/phase4/protocol"
 
 usage() {
   cat <<USAGE
@@ -119,7 +120,7 @@ if [[ "${TRANSPORT}" == "docker" ]]; then
   readiness_check_docker="true"
 fi
 readiness_status="$(run_and_capture readiness "${readiness_out}" \
-  /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-runtime-readiness-check.sh \
+  ${REPO_ROOT}/gs-server/deploy/scripts/phase4-runtime-readiness-check.sh \
   --check-docker "${readiness_check_docker}" \
   --transport "${TRANSPORT}")"
 
@@ -140,30 +141,30 @@ fi
 
 if [[ "${skip_runtime_probes}" != "true" ]]; then
   parity_status="$(run_and_capture parity "${parity_out}" \
-    /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-json-xml-parity-check.sh \
+    ${REPO_ROOT}/gs-server/deploy/scripts/phase4-json-xml-parity-check.sh \
     --bank-id "${BANK_ID}" --base-url "${BASE_URL}" --transport "${TRANSPORT}")"
 
   if [[ -n "${SESSION_ID}" ]]; then
     if [[ -n "${SUB_CASINO_ID}" ]]; then
       wallet_status="$(run_and_capture wallet "${wallet_out}" \
-        /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
+        ${REPO_ROOT}/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
         --bank-id "${BANK_ID}" --session-id "${SESSION_ID}" --token "${TOKEN}" --sub-casino-id "${SUB_CASINO_ID}" --transport "${TRANSPORT}" \
         --gs-base-url "${GS_BASE_URL}" --protocol-base-url "${BASE_URL}")"
     else
       wallet_status="$(run_and_capture wallet "${wallet_out}" \
-        /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
+        ${REPO_ROOT}/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
         --bank-id "${BANK_ID}" --session-id "${SESSION_ID}" --token "${TOKEN}" --transport "${TRANSPORT}" \
         --gs-base-url "${GS_BASE_URL}" --protocol-base-url "${BASE_URL}")"
     fi
   else
     if [[ -n "${SUB_CASINO_ID}" ]]; then
       wallet_status="$(run_and_capture wallet "${wallet_out}" \
-        /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
+        ${REPO_ROOT}/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
         --bank-id "${BANK_ID}" --token "${TOKEN}" --sub-casino-id "${SUB_CASINO_ID}" --transport "${TRANSPORT}" \
         --gs-base-url "${GS_BASE_URL}" --protocol-base-url "${BASE_URL}")"
     else
       wallet_status="$(run_and_capture wallet "${wallet_out}" \
-        /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
+        ${REPO_ROOT}/gs-server/deploy/scripts/phase4-protocol-wallet-canary-probe.sh \
         --bank-id "${BANK_ID}" --token "${TOKEN}" --transport "${TRANSPORT}" \
         --gs-base-url "${GS_BASE_URL}" --protocol-base-url "${BASE_URL}")"
     fi
@@ -172,7 +173,7 @@ if [[ "${skip_runtime_probes}" != "true" ]]; then
   security_status="SKIPPED"
   if [[ "${RUN_SECURITY_PROBE}" == "true" ]]; then
     security_status="$(run_and_capture security "${security_out}" \
-      /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase4-protocol-json-security-canary-probe.sh \
+      ${REPO_ROOT}/gs-server/deploy/scripts/phase4-protocol-json-security-canary-probe.sh \
       --bank-id "${BANK_ID}" --base-url "${BASE_URL}" \
       --require-secret "${SECURITY_PROBE_REQUIRE_SECRET}")"
   fi

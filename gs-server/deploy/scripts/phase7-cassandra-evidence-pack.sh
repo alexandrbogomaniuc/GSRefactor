@@ -2,12 +2,13 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# shellcheck source=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/lib/cluster-hosts.sh
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+# shellcheck source=/dev/null
 source "${SCRIPT_DIR}/lib/cluster-hosts.sh"
 
 CASSANDRA_CONTAINER="$(cluster_hosts_get CASSANDRA_REFACTOR_CONTAINER refactor-c1-1)"
-OUTPUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra"
-TABLE_LIST_FILE="/Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/critical-tables.txt"
+OUTPUT_DIR="${REPO_ROOT}/docs/phase7/cassandra"
+TABLE_LIST_FILE="${REPO_ROOT}/docs/phase7/cassandra/critical-tables.txt"
 LIMIT=1
 TS="$(date -u '+%Y%m%d-%H%M%S')"
 MANIFEST="${OUTPUT_DIR}/phase7-cassandra-evidence-pack-${TS}.manifest.txt"
@@ -73,23 +74,23 @@ run_cmd() {
 }
 
 run_cmd preflight \
-  /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase7-cassandra-preflight.sh \
+  ${REPO_ROOT}/gs-server/deploy/scripts/phase7-cassandra-preflight.sh \
   --container "$CASSANDRA_CONTAINER" --output-dir "$OUTPUT_DIR"
 
 run_cmd driver_inventory \
-  /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase7-cassandra-driver-inventory.sh \
+  ${REPO_ROOT}/gs-server/deploy/scripts/phase7-cassandra-driver-inventory.sh \
   --out-dir "$OUTPUT_DIR"
 
 run_cmd schema_export \
-  /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase7-cassandra-schema-export.sh \
+  ${REPO_ROOT}/gs-server/deploy/scripts/phase7-cassandra-schema-export.sh \
   --container "$CASSANDRA_CONTAINER" --output-dir "$OUTPUT_DIR"
 
 run_cmd table_counts \
-  /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase7-cassandra-table-counts.sh \
+  ${REPO_ROOT}/gs-server/deploy/scripts/phase7-cassandra-table-counts.sh \
   --container "$CASSANDRA_CONTAINER" --table-list "$TABLE_LIST_FILE" --output-dir "$OUTPUT_DIR"
 
 run_cmd query_smoke \
-  /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase7-cassandra-query-smoke.sh \
+  ${REPO_ROOT}/gs-server/deploy/scripts/phase7-cassandra-query-smoke.sh \
   --container "$CASSANDRA_CONTAINER" --table-list "$TABLE_LIST_FILE" --limit "$LIMIT" --output-dir "$OUTPUT_DIR"
 
 echo "manifest=${MANIFEST}"

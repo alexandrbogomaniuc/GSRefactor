@@ -6,11 +6,11 @@ phase7_docker_bin() {
 }
 
 phase7_refactor_compose_file() {
-  printf '%s\n' "${PHASE7_REFACTOR_COMPOSE_FILE:-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor/docker-compose.yml}"
+  printf '%s\n' "${PHASE7_REFACTOR_COMPOSE_FILE:-${REPO_ROOT}/gs-server/deploy/docker/refactor/docker-compose.yml}"
 }
 
 phase7_refactor_compose_env_file() {
-  printf '%s\n' "${PHASE7_REFACTOR_COMPOSE_ENV_FILE:-/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor/.env}"
+  printf '%s\n' "${PHASE7_REFACTOR_COMPOSE_ENV_FILE:-${REPO_ROOT}/gs-server/deploy/docker/refactor/.env}"
 }
 
 phase7_refactor_compose_project() {

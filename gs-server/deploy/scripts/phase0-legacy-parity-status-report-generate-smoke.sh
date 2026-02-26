@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
 TMP="$(mktemp -d)"
 trap 'rm -rf "${TMP}"' EXIT
 OUT="${TMP}/out"; mkdir -p "${OUT}"
@@ -36,7 +39,7 @@ bank_multiplayer_disabled
 EOF
 echo -e "# VR\n- pass: 72\n- fail: 0\n- skip: 0" > "${VR}"
 
-SCRIPT="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase0-legacy-parity-status-report-generate.sh"
+SCRIPT="${REPO_ROOT}/gs-server/deploy/scripts/phase0-legacy-parity-status-report-generate.sh"
 run="$(${SCRIPT} --phase0-doc "${P0}" --launch-forensics-doc "${F}" --phase5-6-closure-doc "${P56}" --mp-boundary-doc "${MB}" --mp-shadow-doc "${MS}" --mp-policy-doc "${MP}" --verify-report "${VR}" --out-dir "${OUT}")"
 echo "${run}" | grep -q 'overall_status=TESTED_GUARDED_LEGACY_PARITY_BASELINE_COMPLETE'
 echo "${run}" | grep -q 'frb_bonus_parity_status=TESTED_PARITY_SUITE_STABILIZED'

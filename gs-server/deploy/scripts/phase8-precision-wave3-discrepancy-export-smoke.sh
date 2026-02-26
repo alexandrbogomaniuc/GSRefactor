@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
 usage() {
   cat <<USAGE
 Usage: $(basename "$0")
@@ -32,7 +35,7 @@ cat > "${LOG_FILE}" <<'LOG'
 2026-02-23 16:10:11 WARN [main] phase8-precision-dual-calc metric=templateMaxBetScale2 checkCount=2 mismatchCount=1 templateMaxCredits=25 legacy=2500.0 generalized=2499.0
 LOG
 
-SCRIPT="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-export.sh"
+SCRIPT="${REPO_ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-export.sh"
 "${SCRIPT}" --log-file "${LOG_FILE}" --out-file "${OUT_FILE}" --pretty true > "${TMP_DIR}/run.out"
 
 node - <<'NODE' "${OUT_FILE}" "${TMP_DIR}/run.out"

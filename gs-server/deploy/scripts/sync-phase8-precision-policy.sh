@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 SRC="${ROOT}/gs-server/deploy/config/phase8-precision-policy.json"
 DST="${ROOT}/gs-server/game-server/web-gs/src/main/resources/phase8-precision-policy.json"
 

@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 OUT_DIR="${ROOT}/docs/phase7/cassandra"
 TABLE_LIST_FILE="${OUT_DIR}/critical-tables.txt"
 SOURCE_CONTAINER="gp3-c1-1"

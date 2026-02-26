@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="/Users/alexb/Documents/Dev/Dev_new/gs-server"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 VALIDATOR="${ROOT_DIR}/refactor-services/contracts/validators/validate-session-event-stream.js"
 
 KAFKA_CONTAINER="refactor-kafka-1"

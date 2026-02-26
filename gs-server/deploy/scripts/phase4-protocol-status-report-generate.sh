@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
 RUNTIME_EVIDENCE=""
 VERIFY_REPORT=""
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase4/protocol"
+OUT_DIR="${REPO_ROOT}/docs/phase4/protocol"
 
 usage() {
   cat <<USAGE
@@ -32,10 +35,10 @@ done
 
 mkdir -p "${OUT_DIR}"
 if [[ -z "${RUNTIME_EVIDENCE}" ]]; then
-  RUNTIME_EVIDENCE="$(ls -1t /Users/alexb/Documents/Dev/Dev_new/docs/phase4/protocol/phase4-protocol-runtime-evidence-*.md 2>/dev/null | head -n1 || true)"
+  RUNTIME_EVIDENCE="$(ls -1t ${REPO_ROOT}/docs/phase4/protocol/phase4-protocol-runtime-evidence-*.md 2>/dev/null | head -n1 || true)"
 fi
 if [[ -z "${VERIFY_REPORT}" ]]; then
-  VERIFY_REPORT="$(ls -1t /Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-*.md 2>/dev/null | head -n1 || true)"
+  VERIFY_REPORT="$(ls -1t ${REPO_ROOT}/docs/quality/local-verification/phase5-6-local-verification-*.md 2>/dev/null | head -n1 || true)"
 fi
 
 [[ -f "${RUNTIME_EVIDENCE}" ]] || { echo "Missing runtime evidence report: ${RUNTIME_EVIDENCE}" >&2; exit 2; }

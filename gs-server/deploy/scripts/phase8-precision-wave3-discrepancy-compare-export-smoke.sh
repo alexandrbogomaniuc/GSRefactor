@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
 usage() {
   cat <<USAGE
 Usage: $(basename "$0")
@@ -61,7 +64,7 @@ cat > "${B_JSON}" <<'JSON'
 }
 JSON
 
-SCRIPT="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export.sh"
+SCRIPT="${REPO_ROOT}/gs-server/deploy/scripts/phase8-precision-wave3-discrepancy-compare-export.sh"
 "${SCRIPT}" --a-file "${A_JSON}" --b-file "${B_JSON}" --policy strict --out-file "${OUT_STRICT}" --pretty true > "${OUT_TXT1}"
 "${SCRIPT}" --a-file "${A_JSON}" --b-file "${B_JSON}" --policy demo_sample_pass --out-file "${OUT_DEMO}" --md-out-file "${OUT_MD}" --pretty true > "${OUT_TXT2}"
 "${SCRIPT}" --a-file "${A_JSON}" --b-file "${B_JSON}" --policy strict \

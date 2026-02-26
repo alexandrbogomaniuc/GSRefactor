@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="/Users/alexb/Documents/Dev/Dev_new"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+ROOT_DIR="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 SAMPLES_DIR="${1:-$ROOT_DIR/docs/contracts/ws-v1/examples}"
 
 if [[ ! -d "$SAMPLES_DIR" ]]; then

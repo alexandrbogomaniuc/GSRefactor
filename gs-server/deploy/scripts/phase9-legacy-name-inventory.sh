@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="/Users/alexb/Documents/Dev/Dev_new/gs-server"
-OUT_DIR="/Users/alexb/Documents/Dev/Dev_new/docs/phase9"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
+
+ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+OUT_DIR="${REPO_ROOT}/docs/phase9"
 TIMESTAMP="$(date -u +%Y%m%d-%H%M%S)"
 OUT_FILE="${OUT_DIR}/legacy-name-inventory-gs-${TIMESTAMP}.md"
 
