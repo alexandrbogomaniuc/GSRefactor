@@ -1,0 +1,36 @@
+# post Batch A declarations
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/cwv3/CWStartHistoryAction.java
+1:package com.abs.casino.actions.api.history.cwv3;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/HistoryUrlForm.java
+1:package com.abs.casino.forms.api.history;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/cwv3/CWStartHistoryForm.java
+1:package com.abs.casino.forms.api.history.cwv3;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListAction.java
+1:package com.abs.casino.web.history;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListEntry.java
+1:package com.abs.casino.web.history;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListForm.java
+1:package com.abs.casino.web.history;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListAction.java
+1:package com.abs.casino.web.history;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListForm.java
+1:package com.abs.casino.web.history;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListFormV2.java
+1:package com.abs.casino.web.history;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/actions/SessionKeyAccessAction.java
+1:package com.abs.casino.protection.actions;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/forms/SessionKeyAccessForm.java
+1:package com.abs.casino.protection.forms;
+
+# post Batch A stale refs in rewire scope
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByRoundAction.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportAction.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportForm.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryURLBuilder.java
+--- gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
+--- gs-server/game-server/web-gs/src/main/webapp/gamehistory.jsp
+--- gs-server/game-server/web-gs/src/main/webapp/gamehistoryXML.jsp
+--- gs-server/game-server/web-gs/src/main/webapp/gamehistoryXMLV2.jsp
+--- gs-server/game-server/web-gs/src/main/webapp/handhistory.jsp
+--- gs-server/game-server/web-gs/src/main/webapp/support/supporthistory.jsp
+--- gs-server/game-server/web-gs/src/main/webapp/vabs/VabEngine/VabEngineMain.jspf

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.web.history;
+package com.abs.casino.web.history;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;

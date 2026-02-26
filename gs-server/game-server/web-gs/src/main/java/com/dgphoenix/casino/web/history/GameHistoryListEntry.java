@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.web.history;
+package com.abs.casino.web.history;
 
 import java.io.Serializable;
 

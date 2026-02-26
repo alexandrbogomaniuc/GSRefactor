@@ -1,0 +1,11 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByRoundAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryURLBuilder.java
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
+gs-server/game-server/web-gs/src/main/webapp/gamehistory.jsp
+gs-server/game-server/web-gs/src/main/webapp/gamehistoryXML.jsp
+gs-server/game-server/web-gs/src/main/webapp/gamehistoryXMLV2.jsp
+gs-server/game-server/web-gs/src/main/webapp/handhistory.jsp
+gs-server/game-server/web-gs/src/main/webapp/support/supporthistory.jsp
+gs-server/game-server/web-gs/src/main/webapp/vabs/VabEngine/VabEngineMain.jspf

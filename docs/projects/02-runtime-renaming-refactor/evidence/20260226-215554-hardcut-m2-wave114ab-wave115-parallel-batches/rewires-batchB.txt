@@ -1,0 +1,16 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/cw/CWGuestLogin.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/lobby/LoginHelper.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/ct/CTLoginForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/cw/CWLoginForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/FRBonusHelper.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/serializers/BonusSerializeLoginForm.java
+gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp
+gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp

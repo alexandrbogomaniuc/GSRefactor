@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.web.history;
+package com.abs.casino.web.history;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

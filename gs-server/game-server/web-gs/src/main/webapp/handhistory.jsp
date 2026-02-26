@@ -4,7 +4,7 @@
 <%@ page import="com.dgphoenix.casino.common.util.string.StringIdGenerator" %>
 <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
 <%@ page import="com.dgphoenix.casino.web.history.GameHistoryURLBuilder" %>
-<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
+<%@ page import="com.abs.casino.web.history.GameHistoryListAction" %>
 
 <%!
     Integer getBankId(String sessionId) {

@@ -1,10 +1,10 @@
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
-<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
+<%@ page import="com.abs.casino.web.history.GameHistoryListAction" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter" %>
 <%@ page import="com.dgphoenix.casino.common.util.xml.xmlwriter.Attribute" %>
-<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListEntry" %>
+<%@ page import="com.abs.casino.web.history.GameHistoryListEntry" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="org.apache.struts.action.ActionMessage" %>
 <%@ page import="com.dgphoenix.casino.common.configuration.messages.MessageManager" %>
@@ -41,7 +41,7 @@
     public static final String STATUS_OK = "OK";
     public static final String STATUS_ERROR = "ERROR";
 %>
-<bean:define id="form" name="GameHistoryXMLListForm" type="com.dgphoenix.casino.web.history.GameHistoryXMLListForm"/>
+<bean:define id="form" name="GameHistoryXMLListForm" type="com.abs.casino.web.history.GameHistoryXMLListForm"/>
 <%
     StringBuilderWriter stringWriter = new StringBuilderWriter();
     // generate XML response

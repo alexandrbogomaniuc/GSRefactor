@@ -2064,3 +2064,18 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - scoped declaration migrations: `30`.
   - global tracked source declarations/files now `1904` remaining (`2277` baseline, `373` reduced).
+
+## 2026-02-26 22:18 UTC (Hard-Cut M2 Wave 114A + 114B + 115, stabilized)
+- Executed batched-safe parallel hard-cut migration proposal:
+  - `W114A`: migrated 11 history/protection declaration packages to `com.abs` with bounded rewires in history support and JSP/Struts paths.
+  - `W114B`: attempted 10 login/config declaration migrations, then reverted to `HEAD` for compatibility after repeated fast-gate compile drift.
+  - `W115`: integrated stabilized set and validated.
+- Validation:
+  - fast gate passed on rerun4 after bounded compatibility stabilization.
+  - full 9-step matrix passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-215554-hardcut-m2-wave114ab-wave115-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/118-hard-cut-m2-wave114ab-wave115-stabilized-report-20260226.md`
+- Outcome:
+  - final retained declaration migrations: `11` net (A retained, B reverted).
+  - global tracked source declarations/files now `1893` remaining (`2277` baseline, `384` reduced).

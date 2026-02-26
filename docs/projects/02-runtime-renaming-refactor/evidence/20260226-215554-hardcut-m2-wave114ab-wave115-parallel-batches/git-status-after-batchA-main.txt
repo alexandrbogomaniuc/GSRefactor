@@ -1,0 +1,23 @@
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/cwv3/CWStartHistoryAction.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByRoundAction.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/HistoryUrlForm.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/cwv3/CWStartHistoryForm.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/actions/SessionKeyAccessAction.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/forms/SessionKeyAccessForm.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportAction.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportForm.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListAction.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListEntry.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListForm.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryURLBuilder.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListAction.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListForm.java
+ M gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListFormV2.java
+ M gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
+ M gs-server/game-server/web-gs/src/main/webapp/gamehistory.jsp
+ M gs-server/game-server/web-gs/src/main/webapp/gamehistoryXML.jsp
+ M gs-server/game-server/web-gs/src/main/webapp/gamehistoryXMLV2.jsp
+ M gs-server/game-server/web-gs/src/main/webapp/handhistory.jsp
+ M gs-server/game-server/web-gs/src/main/webapp/support/supporthistory.jsp
+ M gs-server/game-server/web-gs/src/main/webapp/vabs/VabEngine/VabEngineMain.jspf
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260226-215554-hardcut-m2-wave114ab-wave115-parallel-batches/

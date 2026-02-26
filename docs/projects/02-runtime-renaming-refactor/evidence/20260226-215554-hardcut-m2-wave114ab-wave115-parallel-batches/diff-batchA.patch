@@ -1,0 +1,350 @@
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/cwv3/CWStartHistoryAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/cwv3/CWStartHistoryAction.java
+index fac38a05..de4011fb 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/cwv3/CWStartHistoryAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/cwv3/CWStartHistoryAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.actions.api.history.cwv3;
++package com.abs.casino.actions.api.history.cwv3;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByRoundAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByRoundAction.java
+index 4812fb47..b132dc11 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByRoundAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByRoundAction.java
+@@ -12,7 +12,7 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+ import com.dgphoenix.casino.common.util.Triple;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
+-import com.dgphoenix.casino.web.history.GameHistoryListAction;
++import com.abs.casino.web.history.GameHistoryListAction;
+ import com.abs.casino.web.history.GameHistoryServlet;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/HistoryUrlForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/HistoryUrlForm.java
+index 60f20d1d..c9091a92 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/HistoryUrlForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/HistoryUrlForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.forms.api.history;
++package com.abs.casino.forms.api.history;
+ 
+ import org.apache.struts.action.ActionForm;
+ 
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/cwv3/CWStartHistoryForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/cwv3/CWStartHistoryForm.java
+index c98940c7..b092628a 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/cwv3/CWStartHistoryForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/cwv3/CWStartHistoryForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.forms.api.history.cwv3;
++package com.abs.casino.forms.api.history.cwv3;
+ 
+ import com.dgphoenix.casino.actions.enter.CommonActionForm;
+ import com.dgphoenix.casino.common.cache.ExternalGameIdsCache;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/actions/SessionKeyAccessAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/actions/SessionKeyAccessAction.java
+index 3bd2b5f7..5ba68914 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/actions/SessionKeyAccessAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/actions/SessionKeyAccessAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.protection.actions;
++package com.abs.casino.protection.actions;
+ 
+ import com.dgphoenix.casino.common.SessionHelper;
+ import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/forms/SessionKeyAccessForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/forms/SessionKeyAccessForm.java
+index bd0b0550..8be0714a 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/forms/SessionKeyAccessForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/forms/SessionKeyAccessForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.protection.forms;
++package com.abs.casino.protection.forms;
+ 
+ 
+ import org.apache.struts.action.ActionForm;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportAction.java
+index def0c56d..e49a0ff2 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportAction.java
+@@ -3,9 +3,9 @@ package com.abs.casino.support.gamehistory;
+ import com.dgphoenix.casino.account.AccountManager;
+ import com.dgphoenix.casino.common.SessionHelper;
+ import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+-import com.dgphoenix.casino.web.history.GameHistoryListAction;
+-import com.dgphoenix.casino.web.history.GameHistoryListEntry;
+-import com.dgphoenix.casino.web.history.GameHistoryListForm;
++import com.abs.casino.web.history.GameHistoryListAction;
++import com.abs.casino.web.history.GameHistoryListEntry;
++import com.abs.casino.web.history.GameHistoryListForm;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.apache.struts.action.ActionForward;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportForm.java
+index 68cbf46e..f7de0539 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportForm.java
+@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+ import com.abs.casino.common.cache.data.language.LanguageType;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.init.Initializer;
+-import com.dgphoenix.casino.web.history.GameHistoryListForm;
++import com.abs.casino.web.history.GameHistoryListForm;
+ import org.apache.log4j.Logger;
+ import org.apache.struts.action.ActionErrors;
+ import org.apache.struts.action.ActionMapping;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListAction.java
+index 76c4ad04..5da4b4ea 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.history;
++package com.abs.casino.web.history;
+ 
+ import com.dgphoenix.casino.account.AccountManager;
+ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListEntry.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListEntry.java
+index b83f4edc..ac16a45a 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListEntry.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListEntry.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.history;
++package com.abs.casino.web.history;
+ 
+ import java.io.Serializable;
+ 
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListForm.java
+index 1eb5bb89..31b7f415 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.history;
++package com.abs.casino.web.history;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.BaseGameCache;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryURLBuilder.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryURLBuilder.java
+index dddef770..41c7f3cf 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryURLBuilder.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryURLBuilder.java
+@@ -1,7 +1,7 @@
+ package com.abs.casino.web.history;
+ 
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+-import com.dgphoenix.casino.web.history.GameHistoryListAction;
++import com.abs.casino.web.history.GameHistoryListAction;
+ 
+ import javax.servlet.http.HttpServletRequest;
+ import java.util.Map;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListAction.java
+index 88ec1481..881265a1 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListAction.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.history;
++package com.abs.casino.web.history;
+ 
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListForm.java
+index 7118dd0a..1b6719cc 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListForm.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListForm.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.history;
++package com.abs.casino.web.history;
+ 
+ import org.apache.struts.action.ActionErrors;
+ import org.apache.struts.action.ActionMapping;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListFormV2.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListFormV2.java
+index b1c7799e..f504b4e6 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListFormV2.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListFormV2.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.web.history;
++package com.abs.casino.web.history;
+ 
+ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.data.game.GameMode;
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml b/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
+index 742358c8..4e1bbccc 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
++++ b/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
+@@ -4,11 +4,11 @@
+ 
+ <struts-config>
+     <form-beans>
+-        <form-bean name="GameHistoryListForm" type="com.dgphoenix.casino.web.history.GameHistoryListForm"/>
+-        <form-bean name="GameHistoryXMLListForm" type="com.dgphoenix.casino.web.history.GameHistoryXMLListForm"/>
+-        <form-bean name="GameHistoryXMLListFormV2" type="com.dgphoenix.casino.web.history.GameHistoryXMLListFormV2"/>
++        <form-bean name="GameHistoryListForm" type="com.abs.casino.web.history.GameHistoryListForm"/>
++        <form-bean name="GameHistoryXMLListForm" type="com.abs.casino.web.history.GameHistoryXMLListForm"/>
++        <form-bean name="GameHistoryXMLListFormV2" type="com.abs.casino.web.history.GameHistoryXMLListFormV2"/>
+         <form-bean name="GameHistorySupportForm" type="com.abs.casino.support.gamehistory.GameHistorySupportForm"/>
+-        <form-bean name="HistoryUrlForm" type="com.dgphoenix.casino.forms.api.history.HistoryUrlForm"/>
++        <form-bean name="HistoryUrlForm" type="com.abs.casino.forms.api.history.HistoryUrlForm"/>
+         <form-bean name="CacheViewerForm" type="com.abs.casino.web.system.cacheviewer.CacheViewerForm"/>
+         <form-bean name="CommonWalletRegisterForm" type="com.dgphoenix.casino.gs.managers.payment.wallet.common.remote.CommonWalletRegisterForm"/>
+         <form-bean name="EmptyForm" type="com.abs.casino.web.EmptyForm"/>
+@@ -26,7 +26,7 @@
+         <form-bean name="CompareBanksForm" type="com.dgphoenix.casino.support.differencer.banks.CompareBanksForm"/>
+         <form-bean name="CompareTemplatesForm" type="com.dgphoenix.casino.support.differencer.gametemplate.CompareTemplatesForm"/>
+ 
+-        <form-bean name="SessionKeyAccessForm" type="com.dgphoenix.casino.protection.forms.SessionKeyAccessForm"/>
++        <form-bean name="SessionKeyAccessForm" type="com.abs.casino.protection.forms.SessionKeyAccessForm"/>
+ 
+         <form-bean name="GetLeaderboardUrlsForm" type="com.abs.casino.actions.api.GetLeaderboardUrlsForm"/>
+ 
+@@ -103,7 +103,7 @@
+         <form-bean name="STLobbyForm" type="com.dgphoenix.casino.forms.lobby.STLobbyForm" />
+         <!-- End STLobby -->
+ 
+-        <form-bean name="CWStartHistoryForm" type="com.dgphoenix.casino.forms.api.history.cwv3.CWStartHistoryForm"/>
++        <form-bean name="CWStartHistoryForm" type="com.abs.casino.forms.api.history.cwv3.CWStartHistoryForm"/>
+ 
+         <!-- Start Support -->
+         <form-bean name="ServerConfigurationForm" type="com.abs.casino.support.configuration.ServerConfigurationForm" />
+@@ -216,7 +216,7 @@
+                 name="DomainwlForm" scope="request">
+             <forward name="success" path="/support/cache/domain/domainList.jsp"/>
+         </action>
+-        <action path="/sejgds" type="com.dgphoenix.casino.protection.actions.SessionKeyAccessAction"
++        <action path="/sejgds" type="com.abs.casino.protection.actions.SessionKeyAccessAction"
+                 name="SessionKeyAccessForm" scope="request" validate="false">
+             <forward name="success" path="/empty.jsp" redirect="false"/>
+         </action>
+@@ -331,19 +331,19 @@
+         </action>
+ 
+         <!-- -->
+-        <action path="/gamehistory" input="/error_pages/error.jsp" type="com.dgphoenix.casino.web.history.GameHistoryListAction"
++        <action path="/gamehistory" input="/error_pages/error.jsp" type="com.abs.casino.web.history.GameHistoryListAction"
+                 name="GameHistoryListForm" validate="true" scope="request">
+             <forward name="success" path="page.gamehistory"/>
+         </action>
+ 
+ 
+-        <action path="/gamehistoryXML" input="/error_pages/error.jsp" type="com.dgphoenix.casino.web.history.GameHistoryXMLListAction"
++        <action path="/gamehistoryXML" input="/error_pages/error.jsp" type="com.abs.casino.web.history.GameHistoryXMLListAction"
+                 name="GameHistoryXMLListForm" validate="true" scope="request">
+             <forward name="success" path="/gamehistoryXML.jsp"/>
+         </action>
+ 
+         <action path="/gamehistoryXMLV2" input="/error_pages/error.jsp"
+-                type="com.dgphoenix.casino.web.history.GameHistoryXMLListAction"
++                type="com.abs.casino.web.history.GameHistoryXMLListAction"
+                 name="GameHistoryXMLListFormV2" validate="true" scope="request">
+             <forward name="success" path="/gamehistoryXMLV2.jsp"/>
+         </action>
+@@ -567,7 +567,7 @@
+         </action>
+ 
+         <action path="/cwstarthistory"
+-                type="com.dgphoenix.casino.actions.api.history.cwv3.CWStartHistoryAction" name="CWStartHistoryForm"
++                type="com.abs.casino.actions.api.history.cwv3.CWStartHistoryAction" name="CWStartHistoryForm"
+                 validate="true" input="/error_pages/error.jsp" parameter="gsproxy/cwloginv2.do" scope="request">
+         </action>
+ 
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/gamehistory.jsp b/gs-server/game-server/web-gs/src/main/webapp/gamehistory.jsp
+index 533345ca..48a8d69b 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/gamehistory.jsp
++++ b/gs-server/game-server/web-gs/src/main/webapp/gamehistory.jsp
+@@ -1,5 +1,5 @@
+ <%@ page import="com.dgphoenix.casino.init.ApplicationScopeNames" %>
+-<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
++<%@ page import="com.abs.casino.web.history.GameHistoryListAction" %>
+ <%@ page import="com.dgphoenix.casino.common.util.Pair" %>
+ <%@ page import="com.dgphoenix.casino.common.util.DigitFormatter" %>
+ <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
+@@ -315,7 +315,7 @@
+         </tr>
+         <logic:present name="<%=GameHistoryListAction.GAME_HISTORY_LIST%>">
+             <logic:iterate id="entry" name="<%=GameHistoryListAction.GAME_HISTORY_LIST%>"
+-                           type="com.dgphoenix.casino.web.history.GameHistoryListEntry">
++                           type="com.abs.casino.web.history.GameHistoryListEntry">
+                 <tr>
+                     <td>
+                         <a href="gamehistory.jsp#"
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/gamehistoryXML.jsp b/gs-server/game-server/web-gs/src/main/webapp/gamehistoryXML.jsp
+index 81468914..b0cd36c3 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/gamehistoryXML.jsp
++++ b/gs-server/game-server/web-gs/src/main/webapp/gamehistoryXML.jsp
+@@ -1,10 +1,10 @@
+ <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
+ <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
+-<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
++<%@ page import="com.abs.casino.web.history.GameHistoryListAction" %>
+ <%@ page import="java.util.List" %>
+ <%@ page import="com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter" %>
+ <%@ page import="com.dgphoenix.casino.common.util.xml.xmlwriter.Attribute" %>
+-<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListEntry" %>
++<%@ page import="com.abs.casino.web.history.GameHistoryListEntry" %>
+ <%@ page import="java.util.Iterator" %>
+ <%@ page import="org.apache.struts.action.ActionMessage" %>
+ <%@ page import="com.dgphoenix.casino.common.configuration.messages.MessageManager" %>
+@@ -41,7 +41,7 @@
+     public static final String STATUS_OK = "OK";
+     public static final String STATUS_ERROR = "ERROR";
+ %>
+-<bean:define id="form" name="GameHistoryXMLListForm" type="com.dgphoenix.casino.web.history.GameHistoryXMLListForm"/>
++<bean:define id="form" name="GameHistoryXMLListForm" type="com.abs.casino.web.history.GameHistoryXMLListForm"/>
+ <%
+     StringBuilderWriter stringWriter = new StringBuilderWriter();
+     // generate XML response
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/gamehistoryXMLV2.jsp b/gs-server/game-server/web-gs/src/main/webapp/gamehistoryXMLV2.jsp
+index 943d8963..d1015e87 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/gamehistoryXMLV2.jsp
++++ b/gs-server/game-server/web-gs/src/main/webapp/gamehistoryXMLV2.jsp
+@@ -1,8 +1,8 @@
+ <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
+ <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
+-<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
++<%@ page import="com.abs.casino.web.history.GameHistoryListAction" %>
+ <%@ page import="java.util.List" %>
+-<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListEntry" %>
++<%@ page import="com.abs.casino.web.history.GameHistoryListEntry" %>
+ <%@ page import="java.util.Iterator" %>
+ <%@ page import="org.apache.struts.action.ActionMessage" %>
+ <%@ page import="com.dgphoenix.casino.common.configuration.messages.MessageManager" %>
+@@ -42,7 +42,7 @@
+     public static final String STATUS_OK = "OK";
+     public static final String STATUS_ERROR = "ERROR";
+ %>
+-<bean:define id="form" name="GameHistoryXMLListFormV2" type="com.dgphoenix.casino.web.history.GameHistoryXMLListFormV2"/>
++<bean:define id="form" name="GameHistoryXMLListFormV2" type="com.abs.casino.web.history.GameHistoryXMLListFormV2"/>
+ <%
+     StringBuilderWriter stringWriter = new StringBuilderWriter();
+     // generate XML response
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/handhistory.jsp b/gs-server/game-server/web-gs/src/main/webapp/handhistory.jsp
+index ebb27869..061b7eba 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/handhistory.jsp
++++ b/gs-server/game-server/web-gs/src/main/webapp/handhistory.jsp
+@@ -4,7 +4,7 @@
+ <%@ page import="com.dgphoenix.casino.common.util.string.StringIdGenerator" %>
+ <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+ <%@ page import="com.dgphoenix.casino.web.history.GameHistoryURLBuilder" %>
+-<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
++<%@ page import="com.abs.casino.web.history.GameHistoryListAction" %>
+ 
+ <%!
+     Integer getBankId(String sessionId) {
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/support/supporthistory.jsp b/gs-server/game-server/web-gs/src/main/webapp/support/supporthistory.jsp
+index bc6b59d3..9e6a1f45 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/support/supporthistory.jsp
++++ b/gs-server/game-server/web-gs/src/main/webapp/support/supporthistory.jsp
+@@ -1,5 +1,5 @@
+ <%@ page import="com.dgphoenix.casino.init.ApplicationScopeNames" %>
+-<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
++<%@ page import="com.abs.casino.web.history.GameHistoryListAction" %>
+ <%@ page import="com.dgphoenix.casino.common.util.Pair" %>
+ <%@ page import="com.dgphoenix.casino.common.util.DigitFormatter" %>
+ <%@ page import="com.dgphoenix.casino.common.util.logkit.ThreadLog" %>
+diff --git a/gs-server/game-server/web-gs/src/main/webapp/vabs/VabEngine/VabEngineMain.jspf b/gs-server/game-server/web-gs/src/main/webapp/vabs/VabEngine/VabEngineMain.jspf
+index 04f720c6..9574428f 100644
+--- a/gs-server/game-server/web-gs/src/main/webapp/vabs/VabEngine/VabEngineMain.jspf
++++ b/gs-server/game-server/web-gs/src/main/webapp/vabs/VabEngine/VabEngineMain.jspf
+@@ -1,5 +1,5 @@
+ <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+-<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
++<%@ page import="com.abs.casino.web.history.GameHistoryListAction" %>
+ <%@ page import="com.abs.casino.web.history.GameHistoryServlet" %>
+ <%@ page import="org.apache.struts.util.MessageResources" %>
+ <%@ page import="static com.abs.casino.web.history.GameHistoryServlet.PARAM_TIME_ZONE" %>

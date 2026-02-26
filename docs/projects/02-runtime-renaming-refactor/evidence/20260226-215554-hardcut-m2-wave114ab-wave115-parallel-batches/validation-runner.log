@@ -1,0 +1,46 @@
+===== STEP 1 START 2026-02-26T22:08:11Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/common
+CMD: mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+step1|PASS|exit=0
+===== STEP 1 END 2026-02-26T22:08:19Z exit=0 =====
+===== STEP 2 START 2026-02-26T22:08:19Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet
+CMD: mvn -Dcluster.properties=local/local-machine.properties test
+step2|PASS|exit=0
+===== STEP 2 END 2026-02-26T22:08:23Z exit=0 =====
+===== STEP 3 START 2026-02-26T22:08:23Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils
+CMD: mvn -Dcluster.properties=local/local-machine.properties test
+step3|PASS|exit=0
+===== STEP 3 END 2026-02-26T22:08:26Z exit=0 =====
+===== STEP 4 START 2026-02-26T22:08:26Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters
+CMD: mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+step4|PASS|exit=0
+===== STEP 4 END 2026-02-26T22:08:29Z exit=0 =====
+===== STEP 5 START 2026-02-26T22:08:29Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs
+CMD: mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+step5|PASS|exit=0
+===== STEP 5 END 2026-02-26T22:08:34Z exit=0 =====
+===== STEP 6 START 2026-02-26T22:08:34Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache
+CMD: mvn -Dcluster.properties=local/local-machine.properties test
+step6|PASS|exit=0
+===== STEP 6 END 2026-02-26T22:08:38Z exit=0 =====
+===== STEP 7 START 2026-02-26T22:08:38Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs
+CMD: mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+step7|PASS|exit=0
+===== STEP 7 END 2026-02-26T22:08:51Z exit=0 =====
+===== STEP 8 START 2026-02-26T22:08:51Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/mp-server
+CMD: mvn -Dcluster.properties=local/local-machine.properties -pl core,persistance -am -DskipTests package
+step8|PASS|exit=0
+===== STEP 8 END 2026-02-26T22:09:02Z exit=0 =====
+===== STEP 9 START 2026-02-26T22:09:02Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new
+CMD: node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
+step9|PASS|exit=0
+===== STEP 9 END 2026-02-26T22:09:30Z exit=0 =====
+SUMMARY|pass=9|fail=

@@ -7336,3 +7336,14 @@
   - fast gate passed and full validation matrix passed `9/9`.
 - Next:
   - continue next low-risk non-overlapping parallel batch under same evidence-first protocol.
+
+### 2026-02-26 22:18 UTC
+- Continued Project 02 hard-cut runtime renaming with proposed parallel waves `114A/114B`, stabilized at integration wave `115`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-215554-hardcut-m2-wave114ab-wave115-parallel-batches/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/118-hard-cut-m2-wave114ab-wave115-stabilized-report-20260226.md`
+- Result:
+  - retained stable `W114A` migration of 11 declaration packages to `com.abs`; reverted `W114B` due compatibility drift in login-helper/config cluster.
+  - fast gate passed on rerun4 and full validation matrix passed `9/9`.
+- Next:
+  - continue next low-risk non-overlapping parallel batch under same evidence-first protocol.

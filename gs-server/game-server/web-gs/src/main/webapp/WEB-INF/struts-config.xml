@@ -4,11 +4,11 @@
 
 <struts-config>
     <form-beans>
-        <form-bean name="GameHistoryListForm" type="com.dgphoenix.casino.web.history.GameHistoryListForm"/>
-        <form-bean name="GameHistoryXMLListForm" type="com.dgphoenix.casino.web.history.GameHistoryXMLListForm"/>
-        <form-bean name="GameHistoryXMLListFormV2" type="com.dgphoenix.casino.web.history.GameHistoryXMLListFormV2"/>
+        <form-bean name="GameHistoryListForm" type="com.abs.casino.web.history.GameHistoryListForm"/>
+        <form-bean name="GameHistoryXMLListForm" type="com.abs.casino.web.history.GameHistoryXMLListForm"/>
+        <form-bean name="GameHistoryXMLListFormV2" type="com.abs.casino.web.history.GameHistoryXMLListFormV2"/>
         <form-bean name="GameHistorySupportForm" type="com.abs.casino.support.gamehistory.GameHistorySupportForm"/>
-        <form-bean name="HistoryUrlForm" type="com.dgphoenix.casino.forms.api.history.HistoryUrlForm"/>
+        <form-bean name="HistoryUrlForm" type="com.abs.casino.forms.api.history.HistoryUrlForm"/>
         <form-bean name="CacheViewerForm" type="com.abs.casino.web.system.cacheviewer.CacheViewerForm"/>
         <form-bean name="CommonWalletRegisterForm" type="com.dgphoenix.casino.gs.managers.payment.wallet.common.remote.CommonWalletRegisterForm"/>
         <form-bean name="EmptyForm" type="com.abs.casino.web.EmptyForm"/>
@@ -26,7 +26,7 @@
         <form-bean name="CompareBanksForm" type="com.dgphoenix.casino.support.differencer.banks.CompareBanksForm"/>
         <form-bean name="CompareTemplatesForm" type="com.dgphoenix.casino.support.differencer.gametemplate.CompareTemplatesForm"/>
 
-        <form-bean name="SessionKeyAccessForm" type="com.dgphoenix.casino.protection.forms.SessionKeyAccessForm"/>
+        <form-bean name="SessionKeyAccessForm" type="com.abs.casino.protection.forms.SessionKeyAccessForm"/>
 
         <form-bean name="GetLeaderboardUrlsForm" type="com.abs.casino.actions.api.GetLeaderboardUrlsForm"/>
 
@@ -103,7 +103,7 @@
         <form-bean name="STLobbyForm" type="com.dgphoenix.casino.forms.lobby.STLobbyForm" />
         <!-- End STLobby -->
 
-        <form-bean name="CWStartHistoryForm" type="com.dgphoenix.casino.forms.api.history.cwv3.CWStartHistoryForm"/>
+        <form-bean name="CWStartHistoryForm" type="com.abs.casino.forms.api.history.cwv3.CWStartHistoryForm"/>
 
         <!-- Start Support -->
         <form-bean name="ServerConfigurationForm" type="com.abs.casino.support.configuration.ServerConfigurationForm" />
@@ -216,7 +216,7 @@
                 name="DomainwlForm" scope="request">
             <forward name="success" path="/support/cache/domain/domainList.jsp"/>
         </action>
-        <action path="/sejgds" type="com.dgphoenix.casino.protection.actions.SessionKeyAccessAction"
+        <action path="/sejgds" type="com.abs.casino.protection.actions.SessionKeyAccessAction"
                 name="SessionKeyAccessForm" scope="request" validate="false">
             <forward name="success" path="/empty.jsp" redirect="false"/>
         </action>
@@ -331,19 +331,19 @@
         </action>
 
         <!-- -->
-        <action path="/gamehistory" input="/error_pages/error.jsp" type="com.dgphoenix.casino.web.history.GameHistoryListAction"
+        <action path="/gamehistory" input="/error_pages/error.jsp" type="com.abs.casino.web.history.GameHistoryListAction"
                 name="GameHistoryListForm" validate="true" scope="request">
             <forward name="success" path="page.gamehistory"/>
         </action>
 
 
-        <action path="/gamehistoryXML" input="/error_pages/error.jsp" type="com.dgphoenix.casino.web.history.GameHistoryXMLListAction"
+        <action path="/gamehistoryXML" input="/error_pages/error.jsp" type="com.abs.casino.web.history.GameHistoryXMLListAction"
                 name="GameHistoryXMLListForm" validate="true" scope="request">
             <forward name="success" path="/gamehistoryXML.jsp"/>
         </action>
 
         <action path="/gamehistoryXMLV2" input="/error_pages/error.jsp"
-                type="com.dgphoenix.casino.web.history.GameHistoryXMLListAction"
+                type="com.abs.casino.web.history.GameHistoryXMLListAction"
                 name="GameHistoryXMLListFormV2" validate="true" scope="request">
             <forward name="success" path="/gamehistoryXMLV2.jsp"/>
         </action>
@@ -567,7 +567,7 @@
         </action>
 
         <action path="/cwstarthistory"
-                type="com.dgphoenix.casino.actions.api.history.cwv3.CWStartHistoryAction" name="CWStartHistoryForm"
+                type="com.abs.casino.actions.api.history.cwv3.CWStartHistoryAction" name="CWStartHistoryForm"
                 validate="true" input="/error_pages/error.jsp" parameter="gsproxy/cwloginv2.do" scope="request">
         </action>
 

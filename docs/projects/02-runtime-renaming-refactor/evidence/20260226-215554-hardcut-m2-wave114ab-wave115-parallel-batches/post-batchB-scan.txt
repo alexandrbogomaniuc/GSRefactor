@@ -1,0 +1,39 @@
+# post Batch B declarations
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/SpringContextInitializer.java
+1:package com.abs.casino.config;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java
+1:package com.abs.casino.config;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/CWHelper.java
+1:package com.abs.casino.helpers.login;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/LoginHelper.java
+1:package com.abs.casino.helpers.login;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/serializers/CWSerializeLoginForm.java
+1:package com.abs.casino.helpers.login.serializers;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/serializers/SerializeGameLoginForm.java
+1:package com.abs.casino.helpers.login.serializers;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/serializers/SerializeLoginForm.java
+1:package com.abs.casino.helpers.login.serializers;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/CommonLoginForm.java
+1:package com.abs.casino.forms.login;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/AccountInfoAndSessionInfoPair.java
+1:package com.abs.casino.actions.enter;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/pov/StartPovGameParams.java
+1:package com.abs.casino.actions.game.pov;
+
+# post Batch B stale refs in rewire scope
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/cw/CWGuestLogin.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/lobby/LoginHelper.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/ct/CTLoginForm.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/login/cw/CWLoginForm.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/FRBonusHelper.java
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/serializers/BonusSerializeLoginForm.java
+--- gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp
+--- gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp

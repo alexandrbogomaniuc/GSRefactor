@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.abs.casino.common.cache.data.language.LanguageType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.init.Initializer;
-import com.dgphoenix.casino.web.history.GameHistoryListForm;
+import com.abs.casino.web.history.GameHistoryListForm;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;

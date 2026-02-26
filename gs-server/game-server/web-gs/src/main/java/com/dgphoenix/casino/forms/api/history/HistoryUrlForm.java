@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.forms.api.history;
+package com.abs.casino.forms.api.history;
 
 import org.apache.struts.action.ActionForm;
 

@@ -1,0 +1,129 @@
+# pre Batch A declarations
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/cwv3/CWStartHistoryAction.java
+1:package com.dgphoenix.casino.actions.api.history.cwv3;
+3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+4:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+5:import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+6:import com.dgphoenix.casino.common.util.string.StringUtils;
+7:import com.dgphoenix.casino.common.web.BaseAction;
+8:import com.dgphoenix.casino.exceptions.LoginErrorException;
+9:import com.dgphoenix.casino.forms.api.history.cwv3.CWStartHistoryForm;
+10:import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
+11:import com.dgphoenix.casino.helpers.login.CWv3Helper;
+12:import com.dgphoenix.casino.sm.login.GameLoginRequest;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/HistoryUrlForm.java
+1:package com.dgphoenix.casino.forms.api.history;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/cwv3/CWStartHistoryForm.java
+1:package com.dgphoenix.casino.forms.api.history.cwv3;
+3:import com.dgphoenix.casino.actions.enter.CommonActionForm;
+4:import com.dgphoenix.casino.common.cache.ExternalGameIdsCache;
+5:import com.dgphoenix.casino.common.util.string.StringUtils;
+6:import com.dgphoenix.casino.common.web.BaseAction;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListAction.java
+1:package com.dgphoenix.casino.web.history;
+3:import com.dgphoenix.casino.account.AccountManager;
+4:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+5:import com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister;
+6:import com.dgphoenix.casino.common.SessionHelper;
+7:import com.dgphoenix.casino.common.cache.BankInfoCache;
+8:import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+9:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+10:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+11:import com.dgphoenix.casino.common.cache.data.session.GameSession;
+12:import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+13:import com.dgphoenix.casino.common.configuration.messages.MessageManager;
+14:import com.dgphoenix.casino.common.exception.CommonException;
+15:import com.dgphoenix.casino.common.exception.MismatchSessionException;
+16:import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+17:import com.dgphoenix.casino.common.util.CollectionUtils;
+18:import com.dgphoenix.casino.common.util.DigitFormatter;
+19:import com.dgphoenix.casino.common.util.Pair;
+20:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+21:import com.dgphoenix.casino.common.web.BaseAction;
+22:import com.dgphoenix.casino.common.web.GameServerHost;
+23:import com.dgphoenix.casino.gs.GameServer;
+24:import com.dgphoenix.casino.gs.managers.game.history.HistoryManager;
+25:import com.dgphoenix.casino.gs.web.messages.GsMessageManager;
+26:import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+39:import static com.dgphoenix.casino.cassandra.persist.CassandraGameSessionPersister.*;
+40:import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListEntry.java
+1:package com.dgphoenix.casino.web.history;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListForm.java
+1:package com.dgphoenix.casino.web.history;
+3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+4:import com.dgphoenix.casino.common.cache.BaseGameCache;
+5:import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+6:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+7:import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
+8:import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+9:import com.abs.casino.common.cache.data.language.LanguageType;
+10:import com.dgphoenix.casino.common.configuration.messages.MessageManager;
+11:import com.dgphoenix.casino.common.util.Pair;
+12:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+13:import com.dgphoenix.casino.common.web.AbstractPageableForm;
+14:import com.dgphoenix.casino.common.web.IdValueBean;
+27:import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListAction.java
+1:package com.dgphoenix.casino.web.history;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListForm.java
+1:package com.dgphoenix.casino.web.history;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListFormV2.java
+1:package com.dgphoenix.casino.web.history;
+3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+4:import com.dgphoenix.casino.common.cache.data.game.GameMode;
+5:import com.dgphoenix.casino.common.util.string.StringUtils;
+6:import com.dgphoenix.casino.helpers.login.CWv3Helper;
+7:import com.dgphoenix.casino.sm.login.GameLoginRequest;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/actions/SessionKeyAccessAction.java
+1:package com.dgphoenix.casino.protection.actions;
+3:import com.dgphoenix.casino.common.SessionHelper;
+4:import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+5:import com.dgphoenix.casino.common.util.RNG;
+6:import com.dgphoenix.casino.common.util.RSACrypter;
+7:import com.dgphoenix.casino.common.util.string.HexStringConverter;
+8:import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
+9:import com.dgphoenix.casino.protection.forms.SessionKeyAccessForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/forms/SessionKeyAccessForm.java
+1:package com.dgphoenix.casino.protection.forms;
+
+# pre Batch A rewires
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByRoundAction.java
+15:import com.dgphoenix.casino.web.history.GameHistoryListAction;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportAction.java
+6:import com.dgphoenix.casino.web.history.GameHistoryListAction;
+7:import com.dgphoenix.casino.web.history.GameHistoryListEntry;
+8:import com.dgphoenix.casino.web.history.GameHistoryListForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportForm.java
+9:import com.dgphoenix.casino.web.history.GameHistoryListForm;
+--- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryURLBuilder.java
+4:import com.dgphoenix.casino.web.history.GameHistoryListAction;
+--- gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml
+7:        <form-bean name="GameHistoryListForm" type="com.dgphoenix.casino.web.history.GameHistoryListForm"/>
+8:        <form-bean name="GameHistoryXMLListForm" type="com.dgphoenix.casino.web.history.GameHistoryXMLListForm"/>
+9:        <form-bean name="GameHistoryXMLListFormV2" type="com.dgphoenix.casino.web.history.GameHistoryXMLListFormV2"/>
+11:        <form-bean name="HistoryUrlForm" type="com.dgphoenix.casino.forms.api.history.HistoryUrlForm"/>
+29:        <form-bean name="SessionKeyAccessForm" type="com.dgphoenix.casino.protection.forms.SessionKeyAccessForm"/>
+106:        <form-bean name="CWStartHistoryForm" type="com.dgphoenix.casino.forms.api.history.cwv3.CWStartHistoryForm"/>
+219:        <action path="/sejgds" type="com.dgphoenix.casino.protection.actions.SessionKeyAccessAction"
+334:        <action path="/gamehistory" input="/error_pages/error.jsp" type="com.dgphoenix.casino.web.history.GameHistoryListAction"
+340:        <action path="/gamehistoryXML" input="/error_pages/error.jsp" type="com.dgphoenix.casino.web.history.GameHistoryXMLListAction"
+346:                type="com.dgphoenix.casino.web.history.GameHistoryXMLListAction"
+570:                type="com.dgphoenix.casino.actions.api.history.cwv3.CWStartHistoryAction" name="CWStartHistoryForm"
+--- gs-server/game-server/web-gs/src/main/webapp/gamehistory.jsp
+2:<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
+318:                           type="com.dgphoenix.casino.web.history.GameHistoryListEntry">
+--- gs-server/game-server/web-gs/src/main/webapp/gamehistoryXML.jsp
+3:<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
+7:<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListEntry" %>
+44:<bean:define id="form" name="GameHistoryXMLListForm" type="com.dgphoenix.casino.web.history.GameHistoryXMLListForm"/>
+--- gs-server/game-server/web-gs/src/main/webapp/gamehistoryXMLV2.jsp
+3:<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
+5:<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListEntry" %>
+45:<bean:define id="form" name="GameHistoryXMLListFormV2" type="com.dgphoenix.casino.web.history.GameHistoryXMLListFormV2"/>
+--- gs-server/game-server/web-gs/src/main/webapp/handhistory.jsp
+7:<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
+--- gs-server/game-server/web-gs/src/main/webapp/support/supporthistory.jsp
+2:<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
+--- gs-server/game-server/web-gs/src/main/webapp/vabs/VabEngine/VabEngineMain.jspf
+2:<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>

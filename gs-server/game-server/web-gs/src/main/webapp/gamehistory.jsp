@@ -1,5 +1,5 @@
 <%@ page import="com.dgphoenix.casino.init.ApplicationScopeNames" %>
-<%@ page import="com.dgphoenix.casino.web.history.GameHistoryListAction" %>
+<%@ page import="com.abs.casino.web.history.GameHistoryListAction" %>
 <%@ page import="com.dgphoenix.casino.common.util.Pair" %>
 <%@ page import="com.dgphoenix.casino.common.util.DigitFormatter" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
@@ -315,7 +315,7 @@
         </tr>
         <logic:present name="<%=GameHistoryListAction.GAME_HISTORY_LIST%>">
             <logic:iterate id="entry" name="<%=GameHistoryListAction.GAME_HISTORY_LIST%>"
-                           type="com.dgphoenix.casino.web.history.GameHistoryListEntry">
+                           type="com.abs.casino.web.history.GameHistoryListEntry">
                 <tr>
                     <td>
                         <a href="gamehistory.jsp#"

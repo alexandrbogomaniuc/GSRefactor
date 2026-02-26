@@ -1,0 +1,11 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/cwv3/CWStartHistoryAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/HistoryUrlForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/api/history/cwv3/CWStartHistoryForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListEntry.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListForm.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryXMLListFormV2.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/actions/SessionKeyAccessAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/protection/forms/SessionKeyAccessForm.java

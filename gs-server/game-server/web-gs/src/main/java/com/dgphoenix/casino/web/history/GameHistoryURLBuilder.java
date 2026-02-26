@@ -1,7 +1,7 @@
 package com.abs.casino.web.history;
 
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.web.history.GameHistoryListAction;
+import com.abs.casino.web.history.GameHistoryListAction;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
