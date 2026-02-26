@@ -1,0 +1,12 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:5:import com.abs.casino.common.games.SwfLocationInfo;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:53:    public SwfLocationInfo getSwfBase(long bankId, String lang, boolean realMode, HttpServletRequest req, long serverId) {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:117:            return new SwfLocationInfo(serverUrl, baseUrl, serverUrl + swfPath,
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:120:            return new SwfLocationInfo(serverUrl, serverUrl + swfPath + "/" + lang + "/", serverUrl + swfPath,
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/SwfLocationInfo.java:7:public class SwfLocationInfo {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/SwfLocationInfo.java:14:    public SwfLocationInfo(String baseUrl, String swfPath) {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/SwfLocationInfo.java:20:    public SwfLocationInfo(String serverUrl, String baseUrl, String swfPath, boolean useCdn, String cdnCheck) {
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/SwfLocationInfo.java:50:        return "SwfLocationInfo{" +
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/IStartGameHelper.java:3:import com.abs.casino.common.games.SwfLocationInfo;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/games/IStartGameHelper.java:35:    SwfLocationInfo getSwfBase(long bankId, String lang, boolean realMode, HttpServletRequest req, long serverId);
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/filters/StartGameServletFilter.java:3:import com.abs.casino.common.games.SwfLocationInfo;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/filters/StartGameServletFilter.java:64:                    SwfLocationInfo locationInfo = params.getSwfBase(bankId, lang, false, request, -1);

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.games;
+package com.abs.casino.common.games;
 
 /**
  * User: flsh

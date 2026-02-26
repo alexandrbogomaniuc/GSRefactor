@@ -1292,3 +1292,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `3`.
   - global tracked source declarations now `2144` remaining (`2277` baseline, `133` reduced).
+
+## 2026-02-26 14:54 UTC (Hard-Cut M2 Wave 61)
+- Executed hard-cut namespace wave for `SwfLocationInfo`.
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/SwfLocationInfo.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/IStartGameHelper.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/filters/StartGameServletFilter.java`
+- Change detail:
+  - migrated `com.dgphoenix.casino.common.games.SwfLocationInfo` to `com.abs.casino.common.games.SwfLocationInfo`.
+  - rewired dependent imports in helper/filter interfaces.
+- Validation PASS:
+  - full 9-step matrix (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-145155-hardcut-m2-wave61-swf-location-info/`
+- Outcome:
+  - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `3`.
+  - global tracked source declarations now `2143` remaining (`2277` baseline, `134` reduced).

@@ -6879,3 +6879,13 @@
   - migrated interface package to `com.abs`, updated dependent imports, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 61 with next low-fanout declaration migration.
+
+### 2026-02-26 14:54 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 61 (`SwfLocationInfo`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-145155-hardcut-m2-wave61-swf-location-info/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/73-hard-cut-m2-wave61-swf-location-info-report-20260226.md`
+- Result:
+  - migrated class package to `com.abs`, updated dependent imports, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 62 with next low-fanout declaration migration.
