@@ -8,6 +8,7 @@ import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
 import com.dgphoenix.casino.common.configuration.CasinoSystemType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.Pair;
+import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -305,7 +306,8 @@ public class ServerConfigurationAction extends Action {
                 throw new CommonException("Could not get class name");
             }
 
-            Method[] methods = Class.forName(className).getDeclaredMethods();
+            Class<?> configClass = ReflectionUtils.forNameWithCompatibilityAliases(className);
+            Method[] methods = configClass.getDeclaredMethods();
             List<String> getterMethodsName = new LinkedList<String>();
 
             // get all fileds which can be changed
@@ -450,9 +452,10 @@ public class ServerConfigurationAction extends Action {
                     throw new CommonException("Could not get class name");
                 }
 
-                Class<?> type = Class.forName(className).getDeclaredField(
+                Class<?> configClass = ReflectionUtils.forNameWithCompatibilityAliases(className);
+                Class<?> type = configClass.getDeclaredField(
                         StringUtils.uncapitalize(propertyName)).getType();
-                Method method = Class.forName(className)
+                Method method = configClass
                         .getDeclaredMethod(METHOD_SET_PREFIX + propertyName, new Class[]{type});
 
                 Object propertyValue = entry.getValue();
@@ -479,11 +482,11 @@ public class ServerConfigurationAction extends Action {
 
                 Method getter;
                 try {
-                    getter = Class.forName(className)
+                    getter = configClass
                             .getDeclaredMethod(METHOD_GET_PREFIX + propertyName, EMPTY_DECLARED_METHOD);
                 } catch (NoSuchMethodException e) {
                     try {
-                        getter = Class.forName(className)
+                        getter = configClass
                                 .getDeclaredMethod(METHOD_IS_PREFIX + propertyName, EMPTY_DECLARED_METHOD);
                     } catch (NoSuchMethodException ex) {
                         throw new CommonException("Not found getter method", e);

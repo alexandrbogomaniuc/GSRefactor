@@ -5816,3 +5816,11 @@
 - Defined manual waves M1-M4 for runtime-safe rename completion (`com.dgphoenix*`, `MQ*`, and related config/template surfaces).
 - Set strict mini-wave controls (<=3 files per wave + full matrix + rollback artifact).
 - Project 02 completion estimate: `35%`.
+
+### 2026-02-26 06:38 UTC
+- Executed Project 02 manual mini-wave M1.1 in support reflection flow.
+- Updated `ServerConfigurationAction` to use alias-aware class loading (`ReflectionUtils.forNameWithCompatibilityAliases`) instead of direct `Class.forName`.
+- Validation PASS:
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` in `web-gs`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-063800/`

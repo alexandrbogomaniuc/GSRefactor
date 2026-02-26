@@ -58,3 +58,16 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - full validation matrix after each wave,
   - dual-key/dual-read compatibility until post-cutover removal stage.
 - Project 02 completion estimate updated to `35%` (Phase 0 complete, auto-path guarded, manual waves pending).
+
+## 2026-02-26 06:38 UTC (Mini-Wave M1.1)
+- Implemented first manual mini-wave from M1 backlog in support configuration reflection path.
+- Changed file:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/configuration/ServerConfigurationAction.java`
+- Change detail:
+  - replaced direct `Class.forName(className)` resolution with `ReflectionUtils.forNameWithCompatibilityAliases(className)` and reused resolved class object in reflection flow.
+- Validation:
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` in `web-gs`: PASS
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-063800/`
+- Outcome:
+  - support config actions now participate in package-rename compatibility bridge (`com.abs.*`/`com.dgphoenix.*`).
