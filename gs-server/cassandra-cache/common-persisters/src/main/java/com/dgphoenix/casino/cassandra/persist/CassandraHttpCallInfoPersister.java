@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.Insert;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -153,7 +152,7 @@ public class CassandraHttpCallInfoPersister extends AbstractCassandraPersister<S
                 .collect(toList());
     }
 
-    private Optional<HttpCallInfo> toHttpCallInfoOptional(Row row) {
+    private Optional<HttpCallInfo> toHttpCallInfoOptional(com.datastax.driver.core.Row row) {
         Optional<HttpCallInfo> httpCallInfo = Optional.ofNullable(row.getString(JSON_COLUMN_NAME))
                 .map(json -> TABLE.deserializeFromJson(json, HttpCallInfo.class));
 

@@ -135,7 +135,7 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
         Select query = QueryBuilder.select().from(getMainColumnFamilyName());
         query.where().and(eq(ACCOUNT_ID_FIELD, accountId)).and(eq(GAME_ID_FIELD, gameId));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getById");
-        Row row = resultSet.one();
+        com.datastax.driver.core.Row row = resultSet.one();
         return row == null ? null : extractFromResult(row);
     }
 
@@ -145,7 +145,7 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
         query.where().and(eq(ACCOUNT_ID_FIELD, accountId));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getWallet", 2);
         CommonWallet wallet = new CommonWallet(accountId);
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             CommonGameWallet gameWallet = extractFromResult(row);
             wallet.addGameWallet(gameWallet);
         }
@@ -168,7 +168,7 @@ public class CassandraCommonGameWalletPersister extends AbstractCassandraPersist
         execute(query, "removeGameWallet");
     }
 
-    private CommonGameWallet extractFromResult(Row result) {
+    private CommonGameWallet extractFromResult(com.datastax.driver.core.Row result) {
         long roundId = result.getLong(ROUND_ID_FIELD);
         long gameSessionId = result.getLong(GAME_SESSION_ID_FIELD);
         long winAmount = result.getLong(WIN_AMOUNT_FIELD);

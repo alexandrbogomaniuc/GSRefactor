@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -48,7 +47,7 @@ public class CassandraGameSessionExtendedPropertiesPersister extends AbstractCas
         com.datastax.driver.core.Statement select = getSelectAllColumnsQuery()
                 .where(eq(GAME_SESSION_ID, gameSessionId))
                 .limit(1);
-        Row result = execute(select, "select").one();
+        com.datastax.driver.core.Row result = execute(select, "select").one();
         if (result == null) {
             return null;
         }

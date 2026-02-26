@@ -4,7 +4,6 @@ import com.betsoft.casino.mp.model.IMapConfigEntity;
 import com.betsoft.casino.mp.model.MapConfigEntity;
 import com.betsoft.casino.mp.service.IMapConfigService;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -61,7 +60,7 @@ public class MapConfigPersister extends AbstractCassandraPersister<String, Strin
 
     @Override
     public IMapConfigEntity load(int mapId) {
-        Row result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, MAP_ID_COLUMN, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, MAP_ID_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(MAP_ID_COLUMN, mapId))
                         .limit(1),
                 "load mapConfig").one();

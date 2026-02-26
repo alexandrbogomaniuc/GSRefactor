@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -54,7 +53,7 @@ public class CassandraTournamentIconPersister extends AbstractCassandraPersister
     public TournamentIcon getById(long id) {
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(ICON_NAME_FIELD, ICON_HTTP_ADDRESS_FIELD)
                 .where(eq(ICON_ID_FIELD, id)).limit(1);
-        Row row = execute(query, "getById").one();
+        com.datastax.driver.core.Row row = execute(query, "getById").one();
         if (row == null) {
             return null;
         }

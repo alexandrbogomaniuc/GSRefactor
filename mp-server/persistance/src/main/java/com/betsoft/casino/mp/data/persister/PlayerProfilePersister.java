@@ -3,7 +3,6 @@ package com.betsoft.casino.mp.data.persister;
 import com.betsoft.casino.mp.model.PlayerProfile;
 import com.betsoft.casino.mp.service.IPlayerProfileService;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -50,7 +49,7 @@ public class PlayerProfilePersister extends AbstractCassandraPersister<Long, Str
 
     @Override
     public PlayerProfile load(long bankId, long accountId) {
-        Row result = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                         .where()
                         .and(eq(BANK_ID_COLUMN, bankId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))

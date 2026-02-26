@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -80,7 +79,7 @@ public class CassandraIntSequencerPersister extends AbstractCassandraPersister<S
         com.datastax.driver.core.Statement query = QueryBuilder.select(VALUE_COLUMN_NAME).
                 from(getMainColumnFamilyName()).where(eq("KEY", sequencerName)).limit(1);
         com.datastax.driver.core.ResultSet rows = execute(query, "getCurrentValue");
-        Row row = rows.one();
+        com.datastax.driver.core.Row row = rows.one();
         return row == null || row.isNull(VALUE_COLUMN_NAME) ? null : row.getInt(VALUE_COLUMN_NAME);
     }
 
@@ -134,7 +133,7 @@ public class CassandraIntSequencerPersister extends AbstractCassandraPersister<S
             if (!resultSet.wasApplied()) {
                 getLog().warn("Insert failed, sequencer already exist: seq={}, newValue={}", seq, newValue);
                 newCurrentValue = 0;
-                Row row = resultSet.one();
+                com.datastax.driver.core.Row row = resultSet.one();
                 if (row != null) {
                     newCurrentValue = row.getInt(VALUE_COLUMN_NAME);
                 }
@@ -164,7 +163,7 @@ public class CassandraIntSequencerPersister extends AbstractCassandraPersister<S
                                 "attempts count, seq: " + seq.getName());
                     } else {
                         newCurrentValue = 0;
-                        Row row = resultSet.one();
+                        com.datastax.driver.core.Row row = resultSet.one();
                         if (row != null) {
                             newCurrentValue = row.getInt(VALUE_COLUMN_NAME);
                         }
@@ -174,7 +173,7 @@ public class CassandraIntSequencerPersister extends AbstractCassandraPersister<S
                         newDesiredValue = newCurrentValue + CassandraIntegerSequencer.BLOCK;
                     }
                     newCurrentValue = 0;
-                    Row row = resultSet.one();
+                    com.datastax.driver.core.Row row = resultSet.one();
                     if (row != null) {
                         newCurrentValue = row.getInt(VALUE_COLUMN_NAME);
                     }
@@ -212,9 +211,9 @@ public class CassandraIntSequencerPersister extends AbstractCassandraPersister<S
 
     @Override
     public void processAll(TableProcessor<Pair<String, IIntegerSequencer>> tableProcessor) throws IOException {
-        Iterator<Row> iterator = getAll();
+        Iterator<com.datastax.driver.core.Row> iterator = getAll();
         while (iterator.hasNext()) {
-            Row row = iterator.next();
+            com.datastax.driver.core.Row row = iterator.next();
             String name = row.getString(KEY);
             int value = row.getInt(VALUE_COLUMN_NAME);
             CassandraIntegerSequencer sequencer = new CassandraIntegerSequencer(name, value);

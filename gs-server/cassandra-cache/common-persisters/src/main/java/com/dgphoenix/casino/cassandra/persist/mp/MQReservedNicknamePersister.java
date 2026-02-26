@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist.mp;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -68,7 +67,7 @@ public class MQReservedNicknamePersister extends AbstractCassandraPersister<Stri
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(OWNER_COLUMN)
                 .where(eq(REGION_COLUMN, region))
                 .and(eq(NICK_NAME_COLUMN, nickname));
-        Row result = execute(query, "isExist").one();
+        com.datastax.driver.core.Row result = execute(query, "isExist").one();
         return result != null && result.getLong(OWNER_COLUMN) == owner;
     }
 
@@ -93,7 +92,7 @@ public class MQReservedNicknamePersister extends AbstractCassandraPersister<Stri
         }
         com.datastax.driver.core.ResultSet rs = execute(query, "getNickNamesForRegion");
         Set<String> result = new HashSet<>(128);
-        for (Row row : rs) {
+        for (com.datastax.driver.core.Row row : rs) {
             result.add(row.getString(NICK_NAME_COLUMN));
         }
         return result;

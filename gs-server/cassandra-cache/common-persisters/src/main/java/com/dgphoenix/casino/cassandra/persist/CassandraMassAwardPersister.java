@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -105,7 +104,7 @@ public class CassandraMassAwardPersister extends AbstractLongDistributedConfigEn
                 .from(DELAYED_MASS_AWARD_CF)
                 .where(eq(DELAYED_MASS_AWARD_ID, delayedMassAwardId));
         com.datastax.driver.core.ResultSet result = execute(select, "getMassAwardIdByDelayedMassAwardId");
-        Row row = result.one();
+        com.datastax.driver.core.Row row = result.one();
         if (row != null) {
             return row.getLong(MASS_AWARD_ID);
         }
@@ -124,7 +123,7 @@ public class CassandraMassAwardPersister extends AbstractLongDistributedConfigEn
                 .from(DELAYED_MASS_AWARD_CF)
                 .where(eq(MASS_AWARD_ID, massAwardId));
         com.datastax.driver.core.ResultSet result = execute(select, "getDelayedMassAwardId");
-        Row row = result.one();
+        com.datastax.driver.core.Row row = result.one();
         if (row != null) {
             long delayedMassAwardId = row.getLong(DELAYED_MASS_AWARD_ID);
             com.datastax.driver.core.Statement delete = QueryBuilder.delete().from(DELAYED_MASS_AWARD_CF).where(eq(DELAYED_MASS_AWARD_ID, delayedMassAwardId));

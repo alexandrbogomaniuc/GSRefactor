@@ -4,7 +4,6 @@ import com.betsoft.casino.mp.model.ITournamentSession;
 import com.betsoft.casino.mp.model.TournamentSession;
 import com.betsoft.casino.mp.service.ITournamentService;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -43,7 +42,7 @@ public class TournamentSessionPersister extends AbstractCassandraPersister<Long,
 
     @Override
     public TournamentSession get(long tournamentId, long accountId) {
-        Row result = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                         .where(eq(TOURNAMENT_ID_COLUMN, tournamentId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .limit(1),
@@ -64,7 +63,7 @@ public class TournamentSessionPersister extends AbstractCassandraPersister<Long,
                         .where(eq(TOURNAMENT_ID_COLUMN, tournamentId)),
                 "getButTournament");
         List<ITournamentSession> result = new ArrayList<>();
-        for (Row row : rows) {
+        for (com.datastax.driver.core.Row row : rows) {
             TournamentSession session = TABLE.deserializeWithClassFromJson(row.getString(JSON_COLUMN_NAME));
 
             if (session == null) {

@@ -768,3 +768,30 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - GS-only `37.50%`
   - MP-only `60.26%`
   - Combined GS+MP `42.88%`
+
+## 2026-02-26 05:27 UTC (Wave 41)
+- Executed cross-module `Row` import-surface sweep to reduce remaining driver3 imports.
+- Changed scope:
+  - `46` files in common-persisters
+  - `15` files in promo persisters
+  - `25` files in mp persisters
+  - `4` files in cache module
+  - full list: `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-052552/c4-wave41-changed-files-20260226-052552.txt`
+- Validation: PASS
+  - promo/persisters install
+  - common-persisters install
+  - cache tests (`63` pass)
+  - web-gs package
+  - mp subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added under:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-052552/`
+- Inventory delta after Wave 41:
+  - GS `driver3_import_lines`: `305 -> 253` (`-52`)
+  - MP `driver3_import_lines`: `60 -> 35` (`-25`)
+  - Combined: `365 -> 288` (`-77`)
+- Completion snapshot:
+  - GS-only `48.16%`
+  - MP-only `76.82%`
+  - Combined GS+MP `54.93%`
+- Milestone reached:
+  - Combined burn-down passed the 50% target (`54.93%`).

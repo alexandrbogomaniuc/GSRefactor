@@ -4,7 +4,6 @@ import com.betsoft.casino.mp.model.IGameRoomSnapshot;
 import com.betsoft.casino.mp.service.IGameRoomSnapshotPersister;
 import com.datastax.driver.core.ConsistencyLevel;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -78,7 +77,7 @@ public class GameRoomSnapshotPersister extends AbstractCassandraPersister<Long, 
                         .where(eq(ROOM_ID_COLUMN, roomId))
                         .and(eq(ROUND_ID_COLUMN, roundId)),
                 "get");
-        Row row = resultSet.one();
+        com.datastax.driver.core.Row row = resultSet.one();
         if (row == null) {
             return null;
         }

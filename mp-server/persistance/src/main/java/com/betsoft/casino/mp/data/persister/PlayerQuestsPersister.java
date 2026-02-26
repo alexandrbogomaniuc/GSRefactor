@@ -5,7 +5,6 @@ import com.betsoft.casino.mp.model.PlayerQuests;
 import com.betsoft.casino.mp.model.quests.IQuest;
 import com.betsoft.casino.mp.service.IPlayerQuestsService;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -75,7 +74,7 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
 
     @Override
     public PlayerQuests load(long bankId, long gameId, long accountId, Money stake, int mode) {
-        Row result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
                         .where()
                         .and(eq(BANK_ID_COLUMN, bankId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
@@ -106,7 +105,7 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
                                               Money stake, int mode) {
         LOG.debug("loadSpecialModeQuests: specialId={}, bankId={}, accountId={}, gameId={}, stake(cents)={}, mode={} ",
                 tournamentOrBonusId, bankId, accountId, gameId, stake.toFloatCents(), mode);
-        Row result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, SERIALIZED_COLUMN_NAME, GAME_ID_COLUMN, JSON_COLUMN_NAME)
                         .where()
                         .and(eq(SM_ID_COLUMN, tournamentOrBonusId))
                         .and(eq(BANK_ID_COLUMN, bankId))
@@ -145,7 +144,7 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
                         .and(eq(MODE_COLUMN, mode)),
                 "getAllQuests");
         if (result != null) {
-            for (Row row : result) {
+            for (com.datastax.driver.core.Row row : result) {
                 PlayerQuests playerQuests = TABLE.deserializeFromJson(row.getString(JSON_COLUMN_NAME),
                         PlayerQuests.class);
                 if (playerQuests == null) {
@@ -173,7 +172,7 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
                         .and(eq(MODE_COLUMN, mode)),
                 "getAllSpecialModeQuests");
         if (result != null) {
-            for (Row row : result) {
+            for (com.datastax.driver.core.Row row : result) {
                 PlayerQuests tournamentQuests = SPECIAL_MODE_TABLE
                         .deserializeFromJson(row.getString(JSON_COLUMN_NAME),
                         PlayerQuests.class);

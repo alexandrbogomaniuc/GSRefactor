@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -59,7 +58,7 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
         com.datastax.driver.core.Statement select = getSelectColumnsQuery(PROPERTIES)
                 .where(eq(BANK_ID, bankId))
                 .and(eq(EXTERNAL_ID, externalId));
-        Row row = execute(select, "get").one();
+        com.datastax.driver.core.Row row = execute(select, "get").one();
         if (row != null) {
             return row.getMap(PROPERTIES, String.class, String.class);
         }

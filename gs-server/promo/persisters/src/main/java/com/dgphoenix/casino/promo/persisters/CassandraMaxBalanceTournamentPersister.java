@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -53,7 +52,7 @@ public class CassandraMaxBalanceTournamentPersister extends AbstractCassandraPer
         com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(CAMPAIGN_ID_FIELD, tournamentId)), "getByTournament");
         List<MaxBalanceTournamentPlayerDetails> result = new ArrayList<>();
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             ByteBuffer buffer = row.getBytes(SERIALIZED_COLUMN_NAME);
             MaxBalanceTournamentPlayerDetails rank =
@@ -74,7 +73,7 @@ public class CassandraMaxBalanceTournamentPersister extends AbstractCassandraPer
                 .where(eq(ACCOUNT_ID_FIELD, accountId))
                 .and(eq(CAMPAIGN_ID_FIELD, campaignId))
                 .limit(1), "getForAccount");
-        Row row = resultSet.one();
+        com.datastax.driver.core.Row row = resultSet.one();
         MaxBalanceTournamentPlayerDetails result = null;
         if (row != null) {
             String json = row.getString(JSON_COLUMN_NAME);

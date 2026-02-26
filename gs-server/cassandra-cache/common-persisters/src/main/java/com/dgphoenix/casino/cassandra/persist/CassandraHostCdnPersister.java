@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -70,7 +69,7 @@ public class CassandraHostCdnPersister extends AbstractCassandraPersister<String
         com.datastax.driver.core.ResultSet rows = execute(query, "getCdnByIp");
 
         List<CdnCheckResult> result = new ArrayList<>();
-        for (Row row : rows) {
+        for (com.datastax.driver.core.Row row : rows) {
             result.add(new CdnCheckResult(row.getString(CDN_FIELD), row.getInt(TIME_FIELD), row.getLong(LAST_UPDATE_FIELD)));
         }
 

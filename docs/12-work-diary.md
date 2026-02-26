@@ -5709,3 +5709,18 @@
   - GS-only `37.50%`, combined `42.88%`.
 - Next step:
   - commit/push Wave 40 and continue final burn-down waves to cross 50%.
+
+### 2026-02-26 05:27 UTC
+- Continued CASS-V4 migration in `/Users/alexb/Documents/Dev/Dev_new` (Wave 41) with cross-module `Row` import-surface cleanup.
+- Updated 90 runtime files (46 common + 15 promo + 25 mp + 4 cache).
+- Full validation matrix PASS (promo/common/cache/web/mp subset).
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-052552/`
+- Inventory delta:
+  - GS: `305 -> 253`
+  - MP: `60 -> 35`
+  - Combined: `365 -> 288`
+- Completion snapshot:
+  - GS-only `48.16%`, combined `54.93%`.
+- Target reached:
+  - Burn-down exceeded requested 50% threshold.

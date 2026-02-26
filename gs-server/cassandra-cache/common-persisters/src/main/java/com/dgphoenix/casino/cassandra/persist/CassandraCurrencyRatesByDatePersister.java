@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.Batch;
 import com.datastax.driver.core.querybuilder.Insert;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
@@ -75,7 +74,7 @@ public class CassandraCurrencyRatesByDatePersister extends AbstractCassandraPers
                 .where(eq(SOURCE_FIELD, source))
                 .and(eq(DEST_FIELD, target))
                 .and(eq(UPDATE_DATE_FIELD, normalizedDate));
-        Row row = execute(query, "getCurrencyRate").one();
+        com.datastax.driver.core.Row row = execute(query, "getCurrencyRate").one();
         CurrencyRate result = null;
         if (row != null && !row.isNull(RATE_FIELD)) {
             double rate = row.getDouble(RATE_FIELD);

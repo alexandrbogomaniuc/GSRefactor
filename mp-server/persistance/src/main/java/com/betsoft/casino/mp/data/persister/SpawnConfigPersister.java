@@ -3,7 +3,6 @@ package com.betsoft.casino.mp.data.persister;
 import com.betsoft.casino.mp.model.SpawnConfigEntity;
 import com.betsoft.casino.mp.service.ISpawnConfigService;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -51,7 +50,7 @@ public class SpawnConfigPersister extends AbstractCassandraPersister<Long, Strin
 
     @Override
     public SpawnConfigEntity load(long roomId) {
-        Row result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, ROOM_ID_COLUMN, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, ROOM_ID_COLUMN, JSON_COLUMN_NAME)
                         .where()
                         .and(eq(ROOM_ID_COLUMN, roomId))
                         .limit(1),

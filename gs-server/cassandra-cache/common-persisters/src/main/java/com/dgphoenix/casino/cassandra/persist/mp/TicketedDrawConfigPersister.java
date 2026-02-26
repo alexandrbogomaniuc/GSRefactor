@@ -104,7 +104,7 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
         com.datastax.driver.core.ResultSet result = execute(query, "getTicketedDraws");
 
         List<TicketedDrawConfig> configs = new ArrayList<>();
-        for (Row row : result) {
+        for (com.datastax.driver.core.Row row : result) {
             TicketedDrawConfig tdc = CONFIG_TABLE.deserializeWithClassFromJson(row.getString(JSON_COLUMN_NAME));
             if (tdc == null) {
                 tdc = CONFIG_TABLE.deserializeWithClassFrom(row.getBytes(CONFIG_COLUMN));

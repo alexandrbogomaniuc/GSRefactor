@@ -78,7 +78,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
 
         com.datastax.driver.core.ResultSet resultSet = execute(select, "update:: select before");
 
-        Row existRow = resultSet.one();
+        com.datastax.driver.core.Row existRow = resultSet.one();
 
         if (existRow != null) {
 
@@ -126,7 +126,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
         com.datastax.driver.core.ResultSet result = execute(select, "getBattlegroundHistoryByAccountIdAndPeriod");
         List<BattlegroundRound> battlegroundRounds = new ArrayList<>();
         if (result != null) {
-            for (Row row : result) {
+            for (com.datastax.driver.core.Row row : result) {
                 battlegroundRounds.add(deserialize(row));
             }
         }
@@ -144,7 +144,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
         com.datastax.driver.core.ResultSet result = execute(select, "getBattlegroundHistoryByAccountIdAndPeriodAndGameId");
         List<BattlegroundRound> battlegroundRounds = new ArrayList<>();
         if (result != null) {
-            for (Row row : result) {
+            for (com.datastax.driver.core.Row row : result) {
                 battlegroundRounds.add(deserialize(row));
             }
         }
@@ -157,7 +157,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
         com.datastax.driver.core.ResultSet result = execute(select, "getBattlegroundHistoryByGameSessionId");
         List<BattlegroundRound> battlegroundRounds = new ArrayList<>();
         if (result != null) {
-            for (Row row : result) {
+            for (com.datastax.driver.core.Row row : result) {
                 battlegroundRounds.add(deserialize(row));
             }
         }
@@ -183,7 +183,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
         return LOG;
     }
 
-    private BattlegroundRound deserialize(Row row) {
+    private BattlegroundRound deserialize(com.datastax.driver.core.Row row) {
         BattlegroundRound br =
                 TABLE.deserializeFromJson(row.getString(JSON_COLUMN_NAME), BattlegroundRound.class);
         if (br == null) {
@@ -204,7 +204,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
         com.datastax.driver.core.ResultSet result = execute(select, "getBattlegroundHistoryByGameIdAndRoundId");
         List<BattlegroundRound> battlegroundRounds = new ArrayList<>();
         if (result != null) {
-            for (Row row : result) {
+            for (com.datastax.driver.core.Row row : result) {
                 battlegroundRounds.add(deserialize(row));
             }
         }
@@ -266,7 +266,7 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
         com.datastax.driver.core.ResultSet result = execute(select, "getParticipantsByGameSessionId");
         Set<Long> participantsIds = new HashSet<>();
         if (result != null) {
-            for (Row row : result) {
+            for (com.datastax.driver.core.Row row : result) {
                 participantsIds.addAll(row.getSet(ACCOUNT_IDS, Long.class));
             }
         }
@@ -280,14 +280,14 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
         com.datastax.driver.core.ResultSet result = execute(select, "getParticipantsByGameSessionId");
         List<BattlegroundRoundParticipant> battlegroundRounds = new ArrayList<>();
         if (result != null) {
-            for (Row row : result) {
+            for (com.datastax.driver.core.Row row : result) {
                 battlegroundRounds.add(deserializeBattlegroundRoundParticipant(row));
             }
         }
         return battlegroundRounds;
     }
 
-    private BattlegroundRoundParticipant deserializeBattlegroundRoundParticipant(Row row) {
+    private BattlegroundRoundParticipant deserializeBattlegroundRoundParticipant(com.datastax.driver.core.Row row) {
         BattlegroundRoundParticipant p = PARTICIPANT_ROUND_TABLE.deserializeFromJson(
                 row.getString(JSON_COLUMN_NAME), BattlegroundRoundParticipant.class);;
 

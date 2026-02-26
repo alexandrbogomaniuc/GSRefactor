@@ -2,7 +2,6 @@ package com.betsoft.casino.mp.data.persister;
 
 import com.betsoft.casino.mp.model.bots.BotConfigInfo;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -80,7 +79,7 @@ public class BotServiceConfigPersister extends AbstractCassandraPersister<String
                         .where(eq(getKeyColumnName(), key))
                         .limit(1),
                 "get");
-        Row row = rows.one();
+        com.datastax.driver.core.Row row = rows.one();
         String result = null;
         if (row != null) {
             result = row.getString(VALUE);
@@ -90,9 +89,9 @@ public class BotServiceConfigPersister extends AbstractCassandraPersister<String
 
     public Iterable<String> loadAll() {
         List<String> result = new ArrayList<>();
-        Iterator<Row> it = getAll();
+        Iterator<com.datastax.driver.core.Row> it = getAll();
         while (it.hasNext()) {
-            Row row = it.next();
+            com.datastax.driver.core.Row row = it.next();
             String value = row.getString(VALUE);
             result.add(value);
         }

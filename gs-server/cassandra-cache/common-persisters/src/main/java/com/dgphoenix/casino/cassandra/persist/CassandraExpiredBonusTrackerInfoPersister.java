@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -68,7 +67,7 @@ public class CassandraExpiredBonusTrackerInfoPersister extends AbstractCassandra
     }
 
     public Long getLastProcessedDate(String key) {
-        Row row = getAsRow(key, LAST_PROCESSED_DATE_COLUMN);
+        com.datastax.driver.core.Row row = getAsRow(key, LAST_PROCESSED_DATE_COLUMN);
         return row != null ? row.getLong(LAST_PROCESSED_DATE_COLUMN) : null;
     }
 }

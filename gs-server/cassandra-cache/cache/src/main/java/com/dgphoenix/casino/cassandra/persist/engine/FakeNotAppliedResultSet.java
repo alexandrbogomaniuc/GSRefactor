@@ -37,17 +37,17 @@ public class FakeNotAppliedResultSet implements ResultSet {
     }
 
     @Override
-    public Row one() {
+    public com.datastax.driver.core.Row one() {
         return null;
     }
 
     @Override
-    public List<Row> all() {
+    public List<com.datastax.driver.core.Row> all() {
         return null;
     }
 
     @Override
-    public Iterator<Row> iterator() {
+    public Iterator<com.datastax.driver.core.Row> iterator() {
         return Collections.emptyIterator();
     }
 

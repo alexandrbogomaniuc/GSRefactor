@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -53,7 +52,7 @@ public class CassandraBatchOperationStatusPersister extends AbstractCassandraPer
                 .and(eq(OPERATION_TYPE, operationType))
                 .limit(1);
         com.datastax.driver.core.ResultSet rows = execute(query, "getStatus");
-        Row row = rows.one();
+        com.datastax.driver.core.Row row = rows.one();
         return row == null ? null : new Pair<>(Status.valueOf(row.getString(STATUS)), row.getLong(CHANGE_DATE));
     }
 

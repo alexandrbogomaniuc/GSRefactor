@@ -4,7 +4,6 @@ import com.betsoft.casino.mp.model.IPlayerStats;
 import com.betsoft.casino.mp.model.PlayerStats;
 import com.betsoft.casino.mp.service.IPlayerStatsService;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -162,7 +161,7 @@ public class PlayerStatsPersister extends AbstractCassandraPersister<Long, Strin
 
     @Override
     public PlayerStats load(long bankId, long gameId, long accountId) {
-        Row result = execute(getSelectAllColumnsQuery(TABLE)
+        com.datastax.driver.core.Row result = execute(getSelectAllColumnsQuery(TABLE)
                         .where()
                         .and(eq(BANK_ID_COLUMN, bankId))
                         .and(eq(GAME_ID_COLUMN, gameId))
@@ -184,7 +183,7 @@ public class PlayerStatsPersister extends AbstractCassandraPersister<Long, Strin
 
     @Override
     public PlayerStats loadTournamentStats(long tournamentId, long bankId, long gameId, long accountId) {
-        Row result = execute(getSelectAllColumnsQuery(TOURNAMENT_TABLE)
+        com.datastax.driver.core.Row result = execute(getSelectAllColumnsQuery(TOURNAMENT_TABLE)
                         .where()
                         .and(eq(TOURNAMENT_ID_COLUMN, tournamentId))
                         .and(eq(BANK_ID_COLUMN, bankId))

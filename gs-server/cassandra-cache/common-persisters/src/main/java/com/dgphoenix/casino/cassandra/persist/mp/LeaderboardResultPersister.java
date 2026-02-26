@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist.mp;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -48,7 +47,7 @@ public class LeaderboardResultPersister extends AbstractCassandraPersister<Long,
         com.datastax.driver.core.ResultSet result = execute(query, "getLeaderboardIds");
         List<LeaderboardInfo> leaderboards = new ArrayList<>();
         if (result != null) {
-            for (Row row : result) {
+            for (com.datastax.driver.core.Row row : result) {
                 leaderboards.add(new LeaderboardInfo(
                         row.getLong(LEADERBOARD_ID_COLUMN),
                         row.getLong(START_DATE_COLUMN),
@@ -63,7 +62,7 @@ public class LeaderboardResultPersister extends AbstractCassandraPersister<Long,
                 .where(eq(BANK_ID_COLUMN, bankId))
                 .and(eq(LEADERBOARD_ID_COLUMN, leaderboardId))
                 .limit(1);
-        Row row = execute(query, "getLeaderboardResult").one();
+        com.datastax.driver.core.Row row = execute(query, "getLeaderboardResult").one();
         if (row != null) {
             return row.getString(RESULT_COLUMN);
         }

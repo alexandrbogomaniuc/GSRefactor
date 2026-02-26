@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra;
 
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -156,7 +155,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
         Statement select = getSelectColumnsQuery(LOCK_TIME, LOCKER, LAST_LOCKER).
                 where(eq(LOCK_ID, id)).limit(1);
         ResultSet resultSet = execute(select, "getCurrentLocker");
-        Row row = resultSet.one();
+        com.datastax.driver.core.Row row = resultSet.one();
         if (row == null) {
             return null;
         }
@@ -514,7 +513,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
             int total = 0;
             try {
                 ResultSet resultSet = getLockIds();
-                for (Row row : resultSet) {
+                for (com.datastax.driver.core.Row row : resultSet) {
                     long lastUpdateTime = row.getLong(LOCK_TIME);
                     if (System.currentTimeMillis() - lastUpdateTime > CHECK_LOCK_TIME) {
                         String lockId = row.getString(LOCK_ID);

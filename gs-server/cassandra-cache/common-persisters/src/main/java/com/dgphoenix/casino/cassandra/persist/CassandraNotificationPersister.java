@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.ConsistencyLevel;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -37,7 +36,7 @@ public class CassandraNotificationPersister extends AbstractCassandraPersister<L
                 .where(eq(KEY, String.valueOf(concurrentLimit)))
                 .and(eq(SERVER_ID, gameServerId));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getOnlineConcurrentMailNotification");
-        Row row = resultSet.one();
+        com.datastax.driver.core.Row row = resultSet.one();
         if (row == null) {
             return null;
         }

@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -44,7 +43,7 @@ public class CassandraSupportedPromoPlatformsPersister extends AbstractCassandra
     public ISupportedPlatform getSupportedPlatform(long campaignId) {
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(PLATFORM)
                 .where(eq(PROMO_ID, campaignId));
-        Row result = execute(query, "getSupportedPlatform").one();
+        com.datastax.driver.core.Row result = execute(query, "getSupportedPlatform").one();
 
         ISupportedPlatform supportedPlatform = SupportedPlatform.ALL;
         if (result != null) {

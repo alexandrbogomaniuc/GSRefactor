@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -56,7 +55,7 @@ public class CassandraDelayedMassAwardPersister extends AbstractCassandraPersist
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(GS_ID_FIELD, gameServerId));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getUncompleted");
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             DelayedMassAward awardFrb = TABLE.deserializeFromJson(json, DelayedMassAward.class);
             if (awardFrb == null) {

@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -69,7 +68,7 @@ public class CassandraExternalTransactionPersister extends AbstractCassandraPers
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(INTERNAL_ID_FIELD, key));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getByInternalId");
-        Row row = resultSet.one();
+        com.datastax.driver.core.Row row = resultSet.one();
         if (row == null) {
             return null;
         }

@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -73,7 +72,7 @@ public class CassandraCallStatisticsPersister extends AbstractCassandraPersister
         com.datastax.driver.core.Statement select = getSelectColumnsQuery(FAIL_COUNTER, SUCCESS_COUNTER)
                 .where(eq(DATE, date))
                 .and(eq(URL, url));
-        Row row = execute(select, "getCallStatistics").one();
+        com.datastax.driver.core.Row row = execute(select, "getCallStatistics").one();
         if (row == null) {
             return new URLCallCounters(date, url, 0, 0, 0);
         } else {

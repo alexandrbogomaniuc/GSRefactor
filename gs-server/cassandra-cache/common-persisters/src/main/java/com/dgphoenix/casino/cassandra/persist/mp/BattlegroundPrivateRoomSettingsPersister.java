@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist.mp;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -41,7 +40,7 @@ public class BattlegroundPrivateRoomSettingsPersister extends AbstractCassandraP
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(PRIVATE_ROOM_ID, privateRoomId))
                 .limit(1);
-        Row row = execute(query, "load").one();
+        com.datastax.driver.core.Row row = execute(query, "load").one();
         if (row == null) {
             return null;
         }

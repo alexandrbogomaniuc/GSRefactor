@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -44,7 +43,7 @@ public class CassandraSummaryFeedTransformerPersister extends AbstractCassandraP
                 .where(eq(TOURNAMENT_ID_COLUMN, tournamentId))
                 .limit(1);
 
-        Row result = execute(select, "getTransformer").one();
+        com.datastax.driver.core.Row result = execute(select, "getTransformer").one();
         if (result != null) {
             ISummaryFeedTransformer t = TABLE.deserializeWithClassFromJson(result.getString(JSON_COLUMN_NAME));
             if (t == null) {

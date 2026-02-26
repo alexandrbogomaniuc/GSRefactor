@@ -1,7 +1,6 @@
 package com.betsoft.casino.mp.data.persister;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -63,7 +62,7 @@ public class ReservedNicknamePersister extends AbstractCassandraPersister<String
     }
 
     public boolean isExist(String region, String nickname, long owner) {
-        Row result = execute(getSelectColumnsQuery(OWNER_COLUMN)
+        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(OWNER_COLUMN)
                         .where()
                         .and(eq(REGION_COLUMN, region))
                         .and(eq(NICK_NAME_COLUMN, nickname)),
@@ -84,7 +83,7 @@ public class ReservedNicknamePersister extends AbstractCassandraPersister<String
         }
         com.datastax.driver.core.ResultSet rs = execute(where, "getNickNamesForRegion");
         Set<String> result = new HashSet<>(128);
-        for (Row row : rs) {
+        for (com.datastax.driver.core.Row row : rs) {
             result.add(row.getString(NICK_NAME_COLUMN));
         }
         return result;

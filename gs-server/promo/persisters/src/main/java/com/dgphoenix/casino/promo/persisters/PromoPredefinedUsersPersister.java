@@ -103,7 +103,7 @@ public class PromoPredefinedUsersPersister extends AbstractCassandraPersister<Lo
         select.where(eq(PROMO_ID, promoId)).and(eq(BANK_ID, bankId));
         com.datastax.driver.core.ResultSet resultSet = execute(select, "getByPromoId");
         Set<Pair<String, Long>> pairs = new HashSet<>();
-        for (Row row : resultSet.all()) {
+        for (com.datastax.driver.core.Row row : resultSet.all()) {
             pairs.add(new Pair<>(row.getString(EXT_USER_ID), row.getLong(ACCOUNT_ID)));
         }
         return pairs;

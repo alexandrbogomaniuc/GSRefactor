@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -53,7 +52,7 @@ public class CassandraTournamentFeedHistoryPersister extends AbstractCassandraPe
                 .and(eq(TIME_COLUMN, time))
                 .limit(1);
 
-        Row result = execute(query, "getRecords").one();
+        com.datastax.driver.core.Row result = execute(query, "getRecords").one();
         if (result == null) {
             return null;
         }

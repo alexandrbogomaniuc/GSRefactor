@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -59,7 +58,7 @@ public class CassandraUnsendedPromoWinInfoPersister extends AbstractCassandraPer
         com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(GAME_SESSION_ID, gameSessionId)), "getForGameSession");
         List<PromoWinInfo> wins = new ArrayList<>();
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             PromoWinInfo info = TABLE.deserializeFromJson(
                     row.getString(JSON_COLUMN_NAME), PromoWinInfo.class);
 
@@ -77,7 +76,7 @@ public class CassandraUnsendedPromoWinInfoPersister extends AbstractCassandraPer
     }
 
     public PromoWinInfo getByRoundId(long roundId) {
-        Row row = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Row row = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(ROUND_ID, roundId)), "getByRoundId").one();
         if (row != null) {
             PromoWinInfo info = 
@@ -110,7 +109,7 @@ public class CassandraUnsendedPromoWinInfoPersister extends AbstractCassandraPer
         com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(GAME_SESSION_ID, WIN_DATE)
                 .where(eq(ROUND_ID, roundId)), "getAllRecordsByRoundId");
         Set<Pair<Long, Long>> pairs = new HashSet<>();
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             pairs.add(new Pair<>(row.getLong(GAME_SESSION_ID), row.getLong(WIN_DATE)));
         }
         LOG.debug("removeByRoundId: found records for remove={}", pairs.size());

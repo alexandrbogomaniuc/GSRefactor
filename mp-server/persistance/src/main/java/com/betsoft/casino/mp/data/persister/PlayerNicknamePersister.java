@@ -1,7 +1,6 @@
 package com.betsoft.casino.mp.data.persister;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -49,21 +48,21 @@ public class PlayerNicknamePersister extends AbstractCassandraPersister<String, 
     public String getNickname(Long bankId, Long accountId) {
         com.datastax.driver.core.querybuilder.Select query = getSelectColumnsQuery(NICK_NAME_COLUMN);
         query.where().and(eq(BANK_AID_COLUMN, getBankAndAid(bankId, accountId))).limit(1);
-        Row result = execute(query, "getNickname").one();
+        com.datastax.driver.core.Row result = execute(query, "getNickname").one();
         return result == null ? null : result.getString(NICK_NAME_COLUMN);
     }
 
     public boolean isNicknameAvailable(String nickname) {
         com.datastax.driver.core.querybuilder.Select query = getSelectColumnsQuery(BANK_AID_COLUMN);
         query.where().and(eq(NICK_NAME_COLUMN, nickname));
-        Row result = execute(query, "isNicknameAvailable").one();
+        com.datastax.driver.core.Row result = execute(query, "isNicknameAvailable").one();
         return result == null || result.getString(BANK_AID_COLUMN) == null;
     }
 
     public boolean isNicknameAvailable(String nickname, Long bankId, Long accountId) {
         com.datastax.driver.core.querybuilder.Select query = getSelectAllColumnsQuery();
         query.where().and(eq(NICK_NAME_COLUMN, nickname));
-        Row result = execute(query, "isNicknameAvailable").one();
+        com.datastax.driver.core.Row result = execute(query, "isNicknameAvailable").one();
         if(result == null) {
             return true;
         }

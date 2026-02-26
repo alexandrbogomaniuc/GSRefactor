@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -58,7 +57,7 @@ public class CassandraBattlegroundConfigPersister extends AbstractCassandraPersi
         com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(BANK_ID, bankId)), "getConfigs");
         Set<BattlegroundConfig> result = new HashSet<>();
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             ByteBuffer buffer = row.getBytes(SERIALIZED_COLUMN_NAME);
             BattlegroundConfig config = getMainTableDefinition().deserializeFromJson(json, BattlegroundConfig.class);
@@ -74,7 +73,7 @@ public class CassandraBattlegroundConfigPersister extends AbstractCassandraPersi
         com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(BANK_ID, bankId))
                 .and(eq(GAME_ID, gameId)), "getConfig");
-        Row row = resultSet.one();
+        com.datastax.driver.core.Row row = resultSet.one();
         BattlegroundConfig result = null;
         if (row != null) {
             String json = row.getString(JSON_COLUMN_NAME);

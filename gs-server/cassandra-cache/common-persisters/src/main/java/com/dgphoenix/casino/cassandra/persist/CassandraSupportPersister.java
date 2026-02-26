@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -47,7 +46,7 @@ public class CassandraSupportPersister extends AbstractCassandraPersister<String
         if (resultSet.isExhausted()) {
             return emptyList();
         }
-        final List<Row> rows = resultSet.all();
+        final List<com.datastax.driver.core.Row> rows = resultSet.all();
 
         return rows.stream()
                 .filter(Objects::nonNull)
@@ -63,7 +62,7 @@ public class CassandraSupportPersister extends AbstractCassandraPersister<String
         if (resultSet.isExhausted()) {
             return emptyMap();
         }
-        List<Row> rows = resultSet.all();
+        List<com.datastax.driver.core.Row> rows = resultSet.all();
         Map<Long, String> sortedByTimestamp = new TreeMap<>(reverseOrder());
         rows.forEach(row -> {
             if (row != null)

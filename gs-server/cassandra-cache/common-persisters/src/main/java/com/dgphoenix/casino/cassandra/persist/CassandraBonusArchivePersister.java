@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -137,7 +136,7 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
 
     private List<Bonus> getBonusesFromResultSet(com.datastax.driver.core.ResultSet resultSet) {
         List<Bonus> result = new ArrayList<>();
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             Bonus bonus = BONUS_ARCHIVE_TABLE.deserializeFromJson(json, Bonus.class);
 
@@ -168,7 +167,7 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
         Long accountId;
         Long bonusId;
         long bonusPersistTime;
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             awardTime = row.getLong(AWARD_TIME_FIELD);
             accountId = row.getLong(ACCOUNT_ID_FIELD);
             bonusId = row.getLong(BONUS_ID_FIELD);

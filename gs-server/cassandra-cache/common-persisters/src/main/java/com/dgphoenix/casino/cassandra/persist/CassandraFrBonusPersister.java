@@ -151,7 +151,7 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
         select.where().and(QueryBuilder.in(BONUS_ID_FIELD, bonusIds.toArray()));
         com.datastax.driver.core.ResultSet resultSet = execute(select, "getFRBonuses");
         List<FRBonus> result = new ArrayList<>(bonusIds.size());
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             FRBonus bonus = TABLE.deserializeFromJson(json, FRBonus.class);
 
@@ -176,7 +176,7 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
         query.where(eq(ACCOUNT_ID_FIELD, accountId));
         com.datastax.driver.core.ResultSet rows = execute(query, "getActiveBonuses");
         List<Long> bonusIds = new ArrayList<>();
-        for (Row row : rows) {
+        for (com.datastax.driver.core.Row row : rows) {
             long bonusId = row.getLong(BONUS_ID_FIELD);
             if (bonusId > 0) {
                 bonusIds.add(bonusId);
@@ -194,7 +194,7 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
         query.where(eq(EXPIRATION_DATE_FIELD, expirationDate));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getByExpirationDate");
         List<Long> ids = new ArrayList<>();
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             ids.add(row.getLong(BONUS_ID_FIELD));
         }
         StatisticsManager.getInstance().updateRequestStatistics(getClass().getSimpleName() + " getByExpirationDate",
@@ -211,7 +211,7 @@ public class CassandraFrBonusPersister extends AbstractCassandraPersister<Long, 
         Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
         query.where(eq(EXTERNAL_ID_FIELD, key));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getByExtId", 3);
-        Row row = resultSet.one();
+        com.datastax.driver.core.Row row = resultSet.one();
         StatisticsManager.getInstance().updateRequestStatistics(getClass().getSimpleName() + " getByExtId",
                 System.currentTimeMillis() - now);
         if (row == null) {

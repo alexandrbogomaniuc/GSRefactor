@@ -75,14 +75,14 @@ public class CassandraCurrencyPersister extends AbstractStringDistributedConfigE
 
     @Override
     public void processAll(TableProcessor<Pair<String, Currency>> tableProcessor) throws IOException {
-        Iterator<Row> iterator = getAll();
+        Iterator<com.datastax.driver.core.Row> iterator = getAll();
         while (iterator.hasNext()) {
-            Row row = iterator.next();
+            com.datastax.driver.core.Row row = iterator.next();
             processRow(row, tableProcessor);
         }
     }
 
-    private void processRow(Row row, TableProcessor<Pair<String, Currency>> tableProcessor) throws IOException {
+    private void processRow(com.datastax.driver.core.Row row, TableProcessor<Pair<String, Currency>> tableProcessor) throws IOException {
         String key = row.getString(KEY);
         Currency value = _getTableDefinition().deserializeFromJson(row.getString(JSON_COLUMN_NAME), Currency.class);
 

@@ -2,7 +2,6 @@ package com.betsoft.casino.mp.data.persister;
 
 import com.betsoft.casino.mp.model.onlineplayer.OnlinePlayer;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -92,9 +91,9 @@ public class OnlinePlayerPersister extends AbstractCassandraPersister<String, St
 
     public Iterable<OnlinePlayer> loadAll() {
         List<OnlinePlayer> result = new ArrayList<>();
-        Iterator<Row> it = getAll();
+        Iterator<com.datastax.driver.core.Row> it = getAll();
         while (it.hasNext()) {
-            Row row = it.next();
+            com.datastax.driver.core.Row row = it.next();
             OnlinePlayer onlinePlayer = TABLE.deserializeWithClassFromJson(row.getString(JSON_COLUMN_NAME));
             if (onlinePlayer == null) {
                 onlinePlayer = TABLE.deserializeWithClassFrom(row.getBytes(SERIALIZED_COLUMN_NAME));

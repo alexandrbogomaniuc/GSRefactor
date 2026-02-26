@@ -2,7 +2,6 @@ package com.betsoft.casino.mp.data.persister;
 
 import com.betsoft.casino.mp.payment.AbstractPendingOperation;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -91,9 +90,9 @@ public class PendingOperationPersister extends AbstractCassandraPersister<Long, 
     @SuppressWarnings("unused")
     public Iterable<AbstractPendingOperation> loadAll() {
         List<AbstractPendingOperation> result = new ArrayList<>();
-        Iterator<Row> it = getAll();
+        Iterator<com.datastax.driver.core.Row> it = getAll();
         while (it.hasNext()) {
-            Row row = it.next();
+            com.datastax.driver.core.Row row = it.next();
             AbstractPendingOperation operation = TABLE.deserializeWithClassFromJson(row.getString(JSON_COLUMN_NAME));
             if (operation == null) {
                 operation = TABLE.deserializeWithClassFrom(row.getBytes(SERIALIZED_COLUMN_NAME));

@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist.mp;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -47,7 +46,7 @@ public class MQDataPersister extends AbstractCassandraPersister<Long, String> {
                 .where(eq(ACCOUNT_ID_COLUMN, accountId))
                 .and(eq(GAME_ID_COLUMN, gameId))
                 .limit(1);
-        Row row = execute(query, "load").one();
+        com.datastax.driver.core.Row row = execute(query, "load").one();
         if (row == null) {
             return null;
         }

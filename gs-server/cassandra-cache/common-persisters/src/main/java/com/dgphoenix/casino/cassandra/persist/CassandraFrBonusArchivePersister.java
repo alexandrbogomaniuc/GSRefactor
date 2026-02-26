@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -105,7 +104,7 @@ public class CassandraFrBonusArchivePersister extends AbstractCassandraPersister
                 .where(eq(ACCOUNT_ID_FIELD, accountId));
         com.datastax.driver.core.ResultSet rows = execute(select, "getFinishedFRBonusList");
         List<FRBonus> result = new ArrayList<>();
-        for (Row row : rows) {
+        for (com.datastax.driver.core.Row row : rows) {
             String json = row.getString(JSON_COLUMN_NAME);
             FRBonus bonus = BONUS_ARCHIVE_TABLE.deserializeFromJson(json, FRBonus.class);
 
@@ -148,7 +147,7 @@ public class CassandraFrBonusArchivePersister extends AbstractCassandraPersister
         Long accountId;
         Long bonusId;
         long bonusPersistTime;
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             awardTime = row.getLong(AWARD_TIME_FIELD);
             accountId = row.getLong(ACCOUNT_ID_FIELD);
             bonusId = row.getLong(BONUS_ID_FIELD);
@@ -184,7 +183,7 @@ public class CassandraFrBonusArchivePersister extends AbstractCassandraPersister
 
     private List<FRBonus> getFRBonusesFromResultSet(com.datastax.driver.core.ResultSet resultSet) {
         List<FRBonus> result = new ArrayList<>();
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             FRBonus bonus = BONUS_ARCHIVE_TABLE.deserializeFromJson(json, FRBonus.class);
             if (bonus == null) {

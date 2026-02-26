@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -64,8 +63,8 @@ public class CassandraPlayerAliasPersister extends AbstractCassandraPersister<Lo
         com.datastax.driver.core.Statement selectQuery = getSelectAllColumnsQuery(PLAYER_ALIAS_TABLE)
                 .where(eq(NETWORK_TOURNAMENT_ID, networkTournamentId))
                 .and(eq(PLAYER_ALIAS, alias));
-        List<Row> aliases = execute(selectQuery, "getAlias").all();
-        Optional<Row> row = aliases.stream()
+        List<com.datastax.driver.core.Row> aliases = execute(selectQuery, "getAlias").all();
+        Optional<com.datastax.driver.core.Row> row = aliases.stream()
                 .max(Comparator.comparingLong(r -> r.getLong(ALIAS_POSTFIX)));
         if (row.isPresent()) {
             return row.get().getLong(ALIAS_POSTFIX);

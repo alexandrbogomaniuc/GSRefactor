@@ -49,7 +49,7 @@ public class CassandraClientStatisticsPersister extends AbstractCassandraPersist
     }
 
     public Optional<Pair<BrowserInfo, GameClientInfo>> getByGameSessionId(long gameSessionId) {
-        Row row = getByKey(gameSessionId);
+        com.datastax.driver.core.Row row = getByKey(gameSessionId);
         if (row == null) {
             return Optional.empty();
         }

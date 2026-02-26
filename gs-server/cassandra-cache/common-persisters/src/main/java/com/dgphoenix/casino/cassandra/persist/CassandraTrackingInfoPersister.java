@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.ColumnDefinitions;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -142,7 +141,7 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
                         from(getMainColumnFamilyName()).
                         where(eq(getKeyColumnName(), key)
                         ), "getList");
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             String trackedObjectId = row.getString(OBJECT_ID_FIELD);
             Long writeTimes = row.getLong("writetime(" + SERIALIZED_COLUMN_NAME + ")");
             Long writeTimej = row.getLong("writetime(" + JSON_COLUMN_NAME + ")");
@@ -203,7 +202,7 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
                 .from(getMainColumnFamilyName())
                 .where(eq(getKeyColumnName(), key));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getList");
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             String trackedObjectId = row.getString(OBJECT_ID_FIELD);
             Long writeTimes = null;
             Long writeTimej = null;
@@ -253,7 +252,7 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getTrackingInfo");
         T addition = null;
         if (!resultSet.isExhausted()) {
-            Row row = resultSet.one();
+            com.datastax.driver.core.Row row = resultSet.one();
             Long writeTimes = null;
             Long writeTimej = null;
             try {

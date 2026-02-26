@@ -3,7 +3,6 @@ package com.betsoft.casino.mp.data.persister;
 import com.betsoft.casino.mp.model.Money;
 import com.betsoft.casino.mp.service.IWeaponService;
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -91,7 +90,7 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
     }
 
     public Map<Integer, Integer> loadWeapons(long bankId, long accountId, int mode, Money stake, long gameId) {
-        Row result = execute(getSelectColumnsQuery(TABLE, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(TABLE, WEAPONS_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(BANK_ID_COLUMN, bankId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAMEID_COLUMN, gameId))
@@ -116,7 +115,7 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
     @Override
     public Map<Integer, Integer> loadSpecialModeWeapons(long tournamentOrBonusId, long accountId, int mode,
                                                         Money stake, long gameId) {
-        Row result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, WEAPONS_COLUMN, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(SPECIAL_MODE_TABLE, WEAPONS_COLUMN, JSON_COLUMN_NAME)
                         .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
                         .and(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAMEID_COLUMN, gameId))

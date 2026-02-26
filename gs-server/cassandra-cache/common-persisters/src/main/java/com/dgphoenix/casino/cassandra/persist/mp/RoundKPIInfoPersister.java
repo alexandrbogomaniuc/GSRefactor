@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist.mp;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -53,7 +52,7 @@ public class RoundKPIInfoPersister extends AbstractCassandraPersister<Long, Stri
                 .where(eq(GAMESESSION_ID_COLUMN, gameSessionId));
         com.datastax.driver.core.ResultSet rs = execute(query, "load");
         List<RoundKPIInfo> result = new ArrayList<>();
-        for (Row row : rs) {
+        for (com.datastax.driver.core.Row row : rs) {
             RoundKPIInfo roundKPIInfo = TABLE.deserializeFromJson(row.getString(JSON_COLUMN_NAME), RoundKPIInfo.class);
             if (roundKPIInfo == null) {
                 roundKPIInfo = TABLE.deserializeFrom(row.getBytes(SERIALIZED_COLUMN_NAME), RoundKPIInfo.class);

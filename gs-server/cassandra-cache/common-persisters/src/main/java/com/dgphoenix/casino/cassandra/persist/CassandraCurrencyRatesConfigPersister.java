@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -76,7 +75,7 @@ public class CassandraCurrencyRatesConfigPersister extends AbstractCassandraPers
     }
 
     public Long getUpdatePeriod(String currency) {
-        Row row = getAsRow(currency, UPDATE_PERIOD);
+        com.datastax.driver.core.Row row = getAsRow(currency, UPDATE_PERIOD);
         return row != null && !row.isNull(UPDATE_PERIOD) ? row.getLong(UPDATE_PERIOD) : null;
     }
 

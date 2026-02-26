@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.Batch;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -94,13 +93,13 @@ public class CassandraLocalizationsPersister extends AbstractCassandraPersister<
 
     public LocalizationTitles getNetworkPromoLocalizations(long networkPromoCampaignId, String lang) {
         String key = PROMO_TYPE + IDENTIFIER_DELIMITER + networkPromoCampaignId;
-        List<Row> rows = execute(getSelectColumnsQuery(ITEM, LOCALIZATION)
+        List<com.datastax.driver.core.Row> rows = execute(getSelectColumnsQuery(ITEM, LOCALIZATION)
                 .where(eq(KEY, key))
                 .and(eq(LANG, lang.toLowerCase())), "getNetworkPromoLocalizations").all();
         String tournamentRules = "";
         String prizeAllocation = "";
         String howToWin = "";
-        for (Row row : rows) {
+        for (com.datastax.driver.core.Row row : rows) {
             String item = row.getString(ITEM);
             String localization = row.getString(LOCALIZATION);
             switch (item) {
@@ -123,7 +122,7 @@ public class CassandraLocalizationsPersister extends AbstractCassandraPersister<
     public String getLocalizedPromoTitle(long campaignId, String lang) {
         String key = PROMO_TYPE + IDENTIFIER_DELIMITER + campaignId;
         String item = TITLE;
-        Row result = execute(getSelectColumnsQuery(LOCALIZATION)
+        com.datastax.driver.core.Row result = execute(getSelectColumnsQuery(LOCALIZATION)
                 .where(eq(KEY, key))
                 .and(eq(LANG, lang.toLowerCase()))
                 .and(eq(ITEM, item)), "getLocalizedPromoTitle").one();

@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.Batch;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -153,9 +152,9 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
     }
 
     public NetworkPromoEvent getNetworkPromoEvent(long eventId) {
-        Iterator<Row> rows = getAll();
+        Iterator<com.datastax.driver.core.Row> rows = getAll();
         while (rows.hasNext()) {
-            Row campaignData = rows.next();
+            com.datastax.driver.core.Row campaignData = rows.next();
             if (campaignData != null) {
                 ByteBuffer campaignDataAsBytes = campaignData.getBytes(CAMPAIGN_DATA);
                 String json = campaignData.getString(JSON_COLUMN_NAME);
@@ -220,7 +219,7 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
         com.datastax.driver.core.ResultSet campaignsResult = execute(selectCampaignsByClause, "selectCampaignsByClause");
 
         Set<IPromoCampaign> promoCampaigns = new HashSet<>();
-        for (Row campaignResult : campaignsResult) {
+        for (com.datastax.driver.core.Row campaignResult : campaignsResult) {
             long campaignId = campaignResult.getLong(CAMPAIGN_ID);
             Status campaignStatus = status == null
                     ? Status.valueOf(campaignResult.getString(CAMPAIGN_STATUS))
@@ -246,7 +245,7 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
     }
 
     private IPromoCampaign getByIdFromTable(long campaignId, TableDefinition table) {
-        Row campaignData = execute(getSelectColumnsQuery(table, CAMPAIGN_DATA, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Row campaignData = execute(getSelectColumnsQuery(table, CAMPAIGN_DATA, JSON_COLUMN_NAME)
                 .where(eq(CAMPAIGN_ID, campaignId)), "getByIdFromTable").one();
 
         IPromoCampaign promoCampaign = null;
@@ -269,7 +268,7 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
                 .and(eq(GAME_ID, ID_FOR_ALL)), "getPromoIdsByBank");
 
         Set<Long> bankCampaignsIds = new HashSet<>();
-        for (Row campaignIdResult : campaignsIdsByBank) {
+        for (com.datastax.driver.core.Row campaignIdResult : campaignsIdsByBank) {
             long campaignId = campaignIdResult.getLong(CAMPAIGN_ID);
             bankCampaignsIds.add(campaignId);
         }

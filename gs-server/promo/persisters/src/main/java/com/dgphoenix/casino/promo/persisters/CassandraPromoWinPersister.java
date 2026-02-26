@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -57,17 +56,17 @@ public class CassandraPromoWinPersister extends AbstractCassandraPersister<Long,
     public Set<PromoWin> getByPromoId(long promoId) {
         com.datastax.driver.core.ResultSet result = execute(getSelectAllColumnsQuery().where(eq(PROMO_ID, promoId)), "getByPromoId");
         Set<PromoWin> wins = new HashSet<>();
-        for (Row row : result) {
+        for (com.datastax.driver.core.Row row : result) {
             wins.add(getPromoWinEntry(row));
         }
         return wins;
     }
 
     public Set<PromoWin> getAllWins() {
-        Iterator<Row> rows = getAll();
+        Iterator<com.datastax.driver.core.Row> rows = getAll();
         Set<PromoWin> wins = new HashSet<>();
         while (rows.hasNext()) {
-            Row row = rows.next();
+            com.datastax.driver.core.Row row = rows.next();
             wins.add(getPromoWinEntry(row));
         }
         return wins;
@@ -83,7 +82,7 @@ public class CassandraPromoWinPersister extends AbstractCassandraPersister<Long,
         return LOG;
     }
 
-    private PromoWin getPromoWinEntry(Row row) {
+    private PromoWin getPromoWinEntry(com.datastax.driver.core.Row row) {
         long id = row.getLong(PROMO_ID);
         long timeWin = row.getLong(TIME_WIN);
         long accountId = row.getLong(ACCOUNT_ID);

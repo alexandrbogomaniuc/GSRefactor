@@ -164,7 +164,7 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
                 long maxValueTime = 0;
                 BigInteger averageValue = BigInteger.valueOf(0);
 
-                for (Row row : resultSet) {
+                for (com.datastax.driver.core.Row row : resultSet) {
                     long value = row.getLong(METRIC_VALUE_FIELD);
                     long time = row.getLong(LOG_TIME_FIELD);
                     averageValue = averageValue.add(BigInteger.valueOf(value));
@@ -245,7 +245,7 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
     public List<Pair<Long, Long>> getMetricValues(Metric metric, int gameServerId, long startTime, long endTime) {
         com.datastax.driver.core.ResultSet resultSet = queryMetricValues(metric, gameServerId, startTime, endTime);
         List<Pair<Long, Long>> values = new ArrayList<>();
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             values.add(new Pair<>(row.getLong(LOG_TIME_FIELD), row.getLong(METRIC_VALUE_FIELD)));
         }
         return values;
@@ -266,7 +266,7 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
                 and(QueryBuilder.lte(STAT_TIME_FIELD, endTime));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "getMetricValues");
         List<MetricStat> values = new ArrayList<>();
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             MetricStat metricStat = new MetricStat();
             metricStat.setStatTime(row.getLong(STAT_TIME_FIELD));
             metricStat.setAverageValue(row.getLong(AVERAGE_VALUE_FIELD));

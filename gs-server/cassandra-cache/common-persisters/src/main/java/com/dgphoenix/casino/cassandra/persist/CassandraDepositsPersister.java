@@ -34,7 +34,7 @@ public class CassandraDepositsPersister extends AbstractCassandraPersister<Strin
     }
 
     public Long getDeposit(String sessionId) {
-        Row result = getAsRow(sessionId, AMOUNT);
+        com.datastax.driver.core.Row result = getAsRow(sessionId, AMOUNT);
         return result == null ? null : result.getLong(AMOUNT);
     }
 

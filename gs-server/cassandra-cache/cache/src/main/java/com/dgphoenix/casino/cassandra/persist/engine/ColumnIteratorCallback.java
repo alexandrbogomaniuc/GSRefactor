@@ -7,5 +7,5 @@ import com.datastax.driver.core.Row;
  * Date: 11.10.14.
  */
 public interface ColumnIteratorCallback {
-    void process(Row row);
+    void process(com.datastax.driver.core.Row row);
 }

@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -67,7 +66,7 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
                 .and(eq(OBJECT_ID, objectId))
                 .and(eq(RESTRICTION_TYPE, type.ordinal()));
         com.datastax.driver.core.ResultSet resultSet = execute(query, "get");
-        Row row = resultSet.one();
+        com.datastax.driver.core.Row row = resultSet.one();
         if (row != null) {
             String json = row.getString(JSON_COLUMN_NAME);
             result = COUNTRIES_TABLE.deserializeFromJson(json, CountryRestrictionList.class);
