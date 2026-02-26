@@ -89,20 +89,45 @@ done
 tmp_file="$(mktemp)"
 trap 'rm -f "${tmp_file}"' EXIT
 
-node - "${HTML_FILE}" "${CHECKLIST_JSON}" "${OUTBOX_JSON}" "${READINESS_REPORT}" "${AUDIT_REQ_JSON}" "${AUDIT_SCOPE_JSON}" "${tmp_file}" <<'NODE'
+node - "${HTML_FILE}" "${CHECKLIST_JSON}" "${OUTBOX_JSON}" "${READINESS_REPORT}" "${AUDIT_REQ_JSON}" "${AUDIT_SCOPE_JSON}" "${tmp_file}" "${REPO_ROOT}" <<'NODE'
 const fs = require('fs');
 const crypto = require('crypto');
 
-const [htmlFile, checklistFile, outboxFile, readinessFile, auditReqFile, auditScopeFile, outFile] = process.argv.slice(2);
+const [htmlFile, checklistFile, outboxFile, readinessFile, auditReqFile, auditScopeFile, outFile, repoRoot] = process.argv.slice(2);
 const html = fs.readFileSync(htmlFile, 'utf8');
 const checklist = JSON.parse(fs.readFileSync(checklistFile, 'utf8'));
 const outbox = JSON.parse(fs.readFileSync(outboxFile, 'utf8'));
 const syncedAt = new Date().toISOString();
+const normalizedRepoRoot = (repoRoot || '').replace(/\/+$/, '');
+
+function normalizeStringPath(value) {
+  if (typeof value !== 'string' || !normalizedRepoRoot) {
+    return value;
+  }
+  let next = value;
+  next = next.split(`file://${normalizedRepoRoot}`).join('file://$REPO_ROOT');
+  next = next.split(normalizedRepoRoot).join('$REPO_ROOT');
+  return next;
+}
+
+function normalizeDeep(value) {
+  if (Array.isArray(value)) {
+    return value.map(normalizeDeep);
+  }
+  if (value && typeof value === 'object') {
+    const out = {};
+    for (const [k, v] of Object.entries(value)) {
+      out[k] = normalizeDeep(v);
+    }
+    return out;
+  }
+  return normalizeStringPath(value);
+}
 
 function enrichEmbedded(obj) {
-  const clone = JSON.parse(JSON.stringify(obj));
+  const clone = normalizeDeep(JSON.parse(JSON.stringify(obj)));
   const fingerprint = crypto.createHash('sha1')
-    .update(JSON.stringify(obj))
+    .update(JSON.stringify(clone))
     .digest('hex')
     .slice(0, 12);
   clone.__embeddedSyncedAtUtc = syncedAt;

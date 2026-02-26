@@ -75,3 +75,9 @@ Project: Post-Project Audit
   - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationRunbook.jsp`
   - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationDocs.jsp`
 - Validation: command help checks passed; edited files contain no `/Users/alexb` literals.
+
+## 2026-02-26 08:53 UTC
+- Support dashboard portability wave completed.
+- Replaced hardcoded local machine file URLs/commands in embedded support data with `$REPO_ROOT` placeholders.
+- Updated sync script to auto-normalize repo-absolute paths on each embed refresh (`sync-modernization-dashboard-embedded-data.sh`).
+- Validation: JSON parse OK, sync script run OK, onboarding smoke still PASS.

@@ -21,8 +21,8 @@
     "replay429": "stable"
   },
   "commands": {
-    "alertCheck": "/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-session-outbox-alert-check.sh --max-new 10 --max-retry 2 --max-dlq 0 --sample-count 4 --sample-interval-sec 300",
-    "replayReport": "/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase5-session-dlq-report.sh --limit 20"
+    "alertCheck": "$REPO_ROOT/gs-server/deploy/scripts/phase5-session-outbox-alert-check.sh --max-new 10 --max-retry 2 --max-dlq 0 --sample-count 4 --sample-interval-sec 300",
+    "replayReport": "$REPO_ROOT/gs-server/deploy/scripts/phase5-session-dlq-report.sh --limit 20"
   },
   "notes": [
     "DLQ must remain zero during canary window.",

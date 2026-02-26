@@ -6175,3 +6175,19 @@
   - `rg '/Users/alexb'` across edited files => no matches
 - Result: high-use readiness/runbook flows no longer hardcode local-machine absolute paths.
 - Next step: commit/push this portability batch, then continue secondary backlog path cleanup in phase/support tooling.
+
+### 2026-02-26 08:53 UTC
+- Continued portability hardening in support dashboard data (non-code runtime behavior unchanged).
+- Removed machine-specific `/Users/alexb/...` literals from support embedded data + portal payload references:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/audit-requirements-status.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/audit-scope-summary.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/data/session-outbox-health.json`
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/modernizationProgress.html`
+- Patched dashboard embed sync script to keep future sync output portable by normalizing absolute repo paths to `$REPO_ROOT` placeholders:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/sync-modernization-dashboard-embedded-data.sh`
+- Validation:
+  - JSON parse check PASS for updated support data files.
+  - `sync-modernization-dashboard-embedded-data.sh` syntax + run PASS.
+  - `refactor-onboard.mjs smoke` PASS (startgame primary + secondary HTTP 200).
+- Result: support portal/data no longer tied to a single machine path; future sync runs preserve portability.
+- Next step: continue secondary script backlog cleanup (`/Users/alexb` literals across phase scripts) in a separate guarded wave.
