@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.controller.frbonus.dto;
+package com.abs.casino.controller.frbonus.dto;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.google.gson.annotations.SerializedName;

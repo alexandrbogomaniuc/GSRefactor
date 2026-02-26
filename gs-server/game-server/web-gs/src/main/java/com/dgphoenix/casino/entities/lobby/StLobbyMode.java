@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.entities.lobby;
+package com.abs.casino.entities.lobby;
 
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.util.string.StringUtils;

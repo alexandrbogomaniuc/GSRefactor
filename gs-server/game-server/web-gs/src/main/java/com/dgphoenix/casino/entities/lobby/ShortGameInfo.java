@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.entities.lobby;
+package com.abs.casino.entities.lobby;
 
 /**
  * User: Grien

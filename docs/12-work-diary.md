@@ -7270,3 +7270,14 @@
   - migrated 27 package declarations to `com.abs` (15 bonus/frbonus API actions + 12 routing/request classes), rewired dependent imports and Struts action types, and passed full validation `9/9`.
 - Next:
   - continue with next low-risk non-overlapping parallel batch under the same evidence-first protocol.
+
+### 2026-02-26 20:12 UTC
+- Continued Project 02 hard-cut runtime renaming with parallel batch waves `102A/102B` and integration wave `103`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-200827-hardcut-m2-wave102ab-wave103-parallel-batches/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/112-hard-cut-m2-wave102ab-wave103-parallel-batches-report-20260226.md`
+- Result:
+  - migrated 24 net package declarations to `com.abs` (controller response + entity/lobby/web/cache/error scope), with one compatibility reversion in game-history list typing.
+  - fast gate rerun passed and full validation matrix passed `9/9`.
+- Next:
+  - continue next non-overlapping low-risk parallel batch under same evidence-first protocol.

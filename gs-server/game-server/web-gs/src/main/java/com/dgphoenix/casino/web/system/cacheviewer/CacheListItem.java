@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.web.system.cacheviewer;
+package com.abs.casino.web.system.cacheviewer;
 
 /**
  * User: turubarov

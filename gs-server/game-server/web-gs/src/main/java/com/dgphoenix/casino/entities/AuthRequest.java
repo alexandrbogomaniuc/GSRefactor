@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.entities;
+package com.abs.casino.entities;
 
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;

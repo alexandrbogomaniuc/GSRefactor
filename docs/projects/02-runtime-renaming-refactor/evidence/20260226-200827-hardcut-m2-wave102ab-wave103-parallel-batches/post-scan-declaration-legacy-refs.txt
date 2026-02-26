@@ -1,0 +1,13 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/TournamentLobbyAction.java:1:package com.dgphoenix.casino.actions.lobby;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameAction.java:1:package com.dgphoenix.casino.actions.game.battleground;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/STLobbyAction.java:1:package com.dgphoenix.casino.actions.lobby;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBAction.java:1:package com.dgphoenix.casino.actions.game.battleground;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/FRBonusHelper.java:1:package com.dgphoenix.casino.helpers.login;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/CWHelper.java:1:package com.dgphoenix.casino.helpers.login;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java:1:package com.dgphoenix.casino.actions.enter.game;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/BattlegroundPrivateRoomController.java:1:package com.dgphoenix.casino.controller.mqb;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/CWv3Helper.java:1:package com.dgphoenix.casino.helpers.login;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListEntry.java:1:package com.dgphoenix.casino.web.history;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/STLobbyForm.java:1:package com.dgphoenix.casino.forms.lobby;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/LoginHelper.java:1:package com.dgphoenix.casino.helpers.login;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/gamehistory/GameHistorySupportAction.java:1:package com.dgphoenix.casino.support.gamehistory;

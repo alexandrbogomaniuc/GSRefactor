@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.controller.mqb.response;
+package com.abs.casino.controller.mqb.response;
 
 public class GetPrivateRoomIdOkResult extends Result{
 

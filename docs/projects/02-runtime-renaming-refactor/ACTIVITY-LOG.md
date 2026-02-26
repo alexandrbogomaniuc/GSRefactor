@@ -1962,3 +1962,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - scoped declaration migrations: `27 -> 0` legacy declarations, `27` `com.abs` declarations.
   - global tracked source declarations/files now `2050` remaining (`2277` baseline, `227` reduced).
+
+## 2026-02-26 20:12 UTC (Hard-Cut M2 Wave 102A + 102B + 103)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W102A`: migrated 13 FRB transport/MQB response declarations to `com.abs`.
+  - `W102B`: migrated 12 low-risk entity/lobby/web/cache/error declarations to `com.abs`.
+  - `W103`: integrated both batches, applied compatibility correction, and validated.
+- Changed files:
+  - full file list in `docs/projects/02-runtime-renaming-refactor/evidence/20260226-200827-hardcut-m2-wave102ab-wave103-parallel-batches/target-files.txt`.
+- Validation:
+  - fast gate initial failure in `web-gs package` due game-history generic/type drift after migration; compatibility fix applied and rerun passed.
+  - full 9-step matrix passed `9/9` (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-gs`, `cassandra-cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-200827-hardcut-m2-wave102ab-wave103-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/112-hard-cut-m2-wave102ab-wave103-parallel-batches-report-20260226.md`
+- Outcome:
+  - integration-scope declarations moved to `com.abs`: `24` net (1 reverted for compatibility).
+  - global tracked source declarations/files now `2026` remaining (`2277` baseline, `251` reduced).

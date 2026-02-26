@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.controller.frbonus;
+package com.abs.casino.controller.frbonus;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

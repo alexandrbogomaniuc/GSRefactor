@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.controller.frbonus.transport;
+package com.abs.casino.controller.frbonus.transport;
 
 import java.io.Serializable;
 

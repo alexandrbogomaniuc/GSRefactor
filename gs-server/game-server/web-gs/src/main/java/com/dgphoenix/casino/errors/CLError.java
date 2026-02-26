@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.errors;
+package com.abs.casino.errors;
 
 /**
  * User: isirbis

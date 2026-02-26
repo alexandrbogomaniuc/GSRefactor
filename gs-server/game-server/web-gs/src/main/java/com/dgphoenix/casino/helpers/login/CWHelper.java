@@ -12,7 +12,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.entities.AuthRequest;
+import com.abs.casino.entities.AuthRequest;
 import com.dgphoenix.casino.exceptions.LoginErrorException;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;

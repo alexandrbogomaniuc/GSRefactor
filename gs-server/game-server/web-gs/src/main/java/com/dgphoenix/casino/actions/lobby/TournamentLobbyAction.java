@@ -13,7 +13,7 @@ import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
-import com.dgphoenix.casino.entities.lobby.LoginHelper;
+import com.abs.casino.entities.lobby.LoginHelper;
 import com.dgphoenix.casino.exceptions.LoginErrorException;
 import com.dgphoenix.casino.forms.lobby.TournamentLobbyForm;
 import com.dgphoenix.casino.sm.login.LoginResponse;

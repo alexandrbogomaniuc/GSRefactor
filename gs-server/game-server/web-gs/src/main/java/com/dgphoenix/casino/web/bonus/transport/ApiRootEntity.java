@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.web.bonus.transport;
+package com.abs.casino.web.bonus.transport;
 
 /**
  * User: flsh

@@ -1,0 +1,29 @@
+[2026-02-26T20:11:40Z] START step=1 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common
+[2026-02-26T20:11:40Z] CMD mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-26T20:11:46Z] RESULT step=1 status=PASS exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-200827-hardcut-m2-wave102ab-wave103-parallel-batches/01-common-install.log
+[2026-02-26T20:11:46Z] START step=2 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet
+[2026-02-26T20:11:46Z] CMD mvn -Dcluster.properties=local/local-machine.properties test
+[2026-02-26T20:11:49Z] RESULT step=2 status=PASS exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-200827-hardcut-m2-wave102ab-wave103-parallel-batches/02-common-wallet-test.log
+[2026-02-26T20:11:49Z] START step=3 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils
+[2026-02-26T20:11:49Z] CMD mvn -Dcluster.properties=local/local-machine.properties test
+[2026-02-26T20:11:52Z] RESULT step=3 status=PASS exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-200827-hardcut-m2-wave102ab-wave103-parallel-batches/03-sb-utils-test.log
+[2026-02-26T20:11:52Z] START step=4 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters
+[2026-02-26T20:11:52Z] CMD mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-26T20:11:55Z] RESULT step=4 status=PASS exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-200827-hardcut-m2-wave102ab-wave103-parallel-batches/04-promo-persisters-install.log
+[2026-02-26T20:11:55Z] START step=5 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs
+[2026-02-26T20:11:55Z] CMD mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-26T20:11:59Z] RESULT step=5 status=PASS exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-200827-hardcut-m2-wave102ab-wave103-parallel-batches/05-common-persisters-install.log
+[2026-02-26T20:11:59Z] START step=6 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache
+[2026-02-26T20:11:59Z] CMD mvn -Dcluster.properties=local/local-machine.properties test
+[2026-02-26T20:12:03Z] RESULT step=6 status=PASS exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-200827-hardcut-m2-wave102ab-wave103-parallel-batches/06-cassandra-cache-test.log
+[2026-02-26T20:12:03Z] START step=7 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs
+[2026-02-26T20:12:03Z] CMD mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+[2026-02-26T20:12:14Z] RESULT step=7 status=PASS exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-200827-hardcut-m2-wave102ab-wave103-parallel-batches/07-web-gs-package.log
+[2026-02-26T20:12:14Z] START step=8 workdir=/Users/alexb/Documents/Dev/Dev_new/mp-server
+[2026-02-26T20:12:14Z] CMD mvn -Dcluster.properties=local/local-machine.properties -pl core,persistance -am -DskipTests package
+[2026-02-26T20:12:20Z] RESULT step=8 status=PASS exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-200827-hardcut-m2-wave102ab-wave103-parallel-batches/08-mp-core-persistence-package.log
+[2026-02-26T20:12:20Z] START step=9 workdir=/Users/alexb/Documents/Dev/Dev_new
+[2026-02-26T20:12:20Z] CMD node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
+[2026-02-26T20:12:21Z] RESULT step=9 status=PASS exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-200827-hardcut-m2-wave102ab-wave103-parallel-batches/09-refactor-smoke.log
+
+Completed at 2026-02-26T20:12:21Z

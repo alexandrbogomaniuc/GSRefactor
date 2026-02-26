@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.entities.lobby;
+package com.abs.casino.entities.lobby;
 
 import com.dgphoenix.casino.helpers.login.CWHelper;
 import com.dgphoenix.casino.helpers.login.CWv3Helper;

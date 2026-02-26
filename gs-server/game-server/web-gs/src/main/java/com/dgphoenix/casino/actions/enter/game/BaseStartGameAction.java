@@ -63,7 +63,7 @@ import com.dgphoenix.casino.sm.IPlayerSessionManager;
 import com.dgphoenix.casino.sm.PlayerSessionFactory;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
-import com.dgphoenix.casino.web.history.GameHistoryURLBuilder;
+import com.abs.casino.web.history.GameHistoryURLBuilder;
 import com.google.common.base.Joiner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
