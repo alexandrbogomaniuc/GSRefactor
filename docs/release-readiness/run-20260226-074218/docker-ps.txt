@@ -1,0 +1,20 @@
+NAMES                              STATUS                  PORTS
+refactor-multiplayer-service-1     Up 12 hours             0.0.0.0:18079->18079/tcp, [::]:18079->18079/tcp
+refactor-protocol-adapter-1        Up 20 hours             0.0.0.0:18078->18078/tcp, [::]:18078->18078/tcp
+refactor-wallet-adapter-1          Up 20 hours             0.0.0.0:18075->18075/tcp, [::]:18075->18075/tcp
+refactor-history-service-1         Up 20 hours             0.0.0.0:18077->18077/tcp, [::]:18077->18077/tcp
+refactor-config-service-1          Up 20 hours             0.0.0.0:18072->18072/tcp, [::]:18072->18072/tcp
+refactor-gameplay-orchestrator-1   Up 20 hours             0.0.0.0:18074->18074/tcp, [::]:18074->18074/tcp
+refactor-session-service-1         Up 20 hours             0.0.0.0:18073->18073/tcp, [::]:18073->18073/tcp
+refactor-bonus-frb-service-1       Up 20 hours             0.0.0.0:18076->18076/tcp, [::]:18076->18076/tcp
+refactor-mp-1                      Up 20 hours             0.0.0.0:16300->6300/tcp, [::]:16300->6300/tcp, 0.0.0.0:16301->6301/tcp, [::]:16301->6301/tcp
+refactor-gs-1                      Up 12 hours             0.0.0.0:16000->6000/tcp, [::]:16000->6000/tcp, 0.0.0.0:16001->6001/tcp, [::]:16001->6001/tcp, 0.0.0.0:18081->8080/tcp, [::]:18081->8080/tcp, 0.0.0.0:19000->9000/tcp, [::]:19000->9000/tcp
+refactor-static-1                  Up 20 hours             0.0.0.0:18080->80/tcp, [::]:18080->80/tcp
+refactor-c1-refactor-1             Up 20 hours             0.0.0.0:19412->9042/tcp, [::]:19412->9042/tcp
+casino_side                        Up 24 hours             0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp
+refactor-kafka-1                   Up 20 hours             0.0.0.0:19092->29092/tcp, [::]:19092->29092/tcp
+refactor-zookeeper-1               Up 20 hours             0.0.0.0:12181->2181/tcp, [::]:12181->2181/tcp
+refactor-redis-1                   Up 20 hours             0.0.0.0:16379->6379/tcp, [::]:16379->6379/tcp
+echovault-memory                   Up 24 hours             
+cm-module                          Up 24 hours             0.0.0.0:18070->7070/tcp, [::]:18070->7070/tcp
+casino_mysql                       Up 24 hours (healthy)   0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp

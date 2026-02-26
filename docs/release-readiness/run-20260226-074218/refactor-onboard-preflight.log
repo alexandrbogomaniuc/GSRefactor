@@ -1,0 +1,14 @@
+[refactor-onboard] Repo root detected: /Users/alexb/Documents/Dev/Dev_new
+[refactor-onboard] Required repo files are present
+[refactor-onboard] Found docker
+[refactor-onboard] Found java
+[refactor-onboard] Found mvn
+[refactor-onboard] Found node
+[refactor-onboard] Found npm
+[refactor-onboard] Found curl
+[refactor-onboard] Found unzip
+[refactor-onboard] Found rsync (faster file sync path will be used)
+[refactor-onboard] Docker Compose plugin is available
+[refactor-start] Preflight ok: runtime assets will be auto-bootstrapped during 'up' if missing
+[refactor-start] Preflight passed.
+[refactor-onboard] Preflight finished. You can now run the up command.

@@ -6005,3 +6005,18 @@
 - Re-checked launch URL after pushes:
   - `GET /startgame?...bankId=6275...` on `127.0.0.1:18080` -> `HTTP 200`.
 - Next step: continue with next implementation/finalization wave.
+
+### 2026-02-26 07:43 UTC
+- Continued finalization wave with fresh onboarding/runtime validation pack.
+- Executed and captured logs:
+  - `node gs-server/deploy/scripts/refactor-onboard.mjs preflight` -> PASS
+  - `node gs-server/deploy/scripts/refactor-onboard.mjs smoke` -> PASS
+  - `curl -i http://127.0.0.1:18080/startgame?...` -> `HTTP 200`
+- Evidence bundle created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-074218/`
+  - summary: `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/nonprod-validation-refresh-20260226-074218.md`
+- Documentation refresh:
+  - updated `/docs/projects/post-project-audit/Project-Finalization-Report.md` to reference latest validation refresh.
+  - updated `/docs/projects/post-project-audit/README-ONBOARDING.md` to clarify that root `18080/18081` `HTTP 403` can be healthy and smoke/startgame are primary checks.
+  - updated `/docs/projects/PROJECTS-CLOSURE-SUMMARY-20260226.md` with latest validation refresh link.
+- Next step: commit/push this refresh package and save memory.

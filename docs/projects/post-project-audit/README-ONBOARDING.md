@@ -95,6 +95,10 @@ Open these URLs in your browser:
 - GS web: [http://127.0.0.1:18081/](http://127.0.0.1:18081/)
 - Config service health: [http://127.0.0.1:18072/health](http://127.0.0.1:18072/health)
 
+Note:
+- Root URLs on `18080` and `18081` can return `HTTP 403` and still be healthy in this setup.
+- Use `smoke` command results and `/startgame` `HTTP 200` as the primary pass/fail signal.
+
 ### Game launch URL (browser-facing alias, no `cwstartgamev2.do`)
 Use this exact URL for the VND test bank:
 

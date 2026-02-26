@@ -1,6 +1,6 @@
 # Project Finalization Report
 
-Last updated: 2026-02-25 (UTC)
+Last updated: 2026-02-26 (UTC)
 
 ## Executive Summary (Simple English)
 
@@ -52,6 +52,8 @@ Primary source:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/quality/local-verification/phase5-6-local-verification-20260225-194025.md`
 - Non-prod full completion certificate:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/nonprod-full-implementation-test-completion-20260225-194300.md`
+- Latest continuity validation refresh:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/nonprod-validation-refresh-20260226-074218.md`
 
 ## What Is Still Not Done
 

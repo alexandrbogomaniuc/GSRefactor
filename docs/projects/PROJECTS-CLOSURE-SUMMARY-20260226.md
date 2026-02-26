@@ -34,3 +34,5 @@ For both projects/waves, validation repeatedly used:
 ## Notes for handover
 - Remaining legacy tokens in some files are intentional compatibility fallbacks, import directives, or comments and are not open runtime blockers for the completed scope.
 - Diary + per-project activity logs contain complete step-by-step execution trail.
+- Latest non-production continuity validation refresh:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/nonprod-validation-refresh-20260226-074218.md`
