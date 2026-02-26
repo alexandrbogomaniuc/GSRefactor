@@ -6451,3 +6451,13 @@
   - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/30-hard-cut-m2-wave18-history-informer-item-report-20260226.md`
+
+### 2026-02-26 10:34 UTC
+- Completed Project 02 M2 Wave 19 for `Gender` namespace migration.
+- Migrated enum package declaration to `com.abs` and updated dependent `common-wallet` import.
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-103303-hardcut-m2-wave19-gender`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/31-hard-cut-m2-wave19-gender-report-20260226.md`

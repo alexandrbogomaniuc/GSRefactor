@@ -4,7 +4,7 @@ import com.dgphoenix.casino.cassandra.persist.ExtendedAccountInfoPersister;
 import com.dgphoenix.casino.cassandra.persist.ExtendedAccountInfoPersisterInstanceHolder;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.account.Gender;
+import com.abs.casino.common.cache.data.account.Gender;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.exception.CommonException;

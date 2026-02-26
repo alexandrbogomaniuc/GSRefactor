@@ -666,3 +666,16 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-103007-hardcut-m2-wave18-history-informer-item`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/30-hard-cut-m2-wave18-history-informer-item-report-20260226.md`
+
+## 2026-02-26 10:34 UTC (M2 Wave 19 - Gender Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.account.Gender` -> `com.abs.casino.common.cache.data.account.Gender`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/Gender.java`
+  - `gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v3/RESTCWClient.java`
+- Post-scan result: legacy refs `0`, abs refs `1`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-103303-hardcut-m2-wave19-gender`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/31-hard-cut-m2-wave19-gender-report-20260226.md`
