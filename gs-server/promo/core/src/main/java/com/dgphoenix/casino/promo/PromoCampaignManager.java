@@ -16,7 +16,7 @@ import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.currency.ICurrency;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
-import com.dgphoenix.casino.common.config.HostConfiguration;
+import com.abs.casino.common.config.HostConfiguration;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CannotLockException;
 import com.dgphoenix.casino.common.exception.CommonException;

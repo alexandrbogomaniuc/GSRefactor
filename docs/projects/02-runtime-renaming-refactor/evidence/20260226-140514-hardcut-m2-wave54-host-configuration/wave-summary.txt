@@ -1,0 +1,8 @@
+wave=W54-host-configuration
+target=com.dgphoenix.casino.common.config.HostConfiguration
+replacement=com.abs.casino.common.config.HostConfiguration
+pre_legacy_refs=7
+post_legacy_refs=0
+post_abs_refs=8
+validation_passed=9
+validation_failed=0

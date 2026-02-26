@@ -1187,3 +1187,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-135859-hardcut-m2-wave53-cluster-type`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/65-hard-cut-m2-wave53-cluster-type-report-20260226.md`
+
+## 2026-02-26 14:12 UTC (M2 Wave 54 - HostConfiguration Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.config.HostConfiguration` -> `com.abs.casino.common.config.HostConfiguration`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/config/HostConfiguration.java`
+  - `gs-server/common/src/test/java/com/dgphoenix/casino/common/config/HostConfigurationTest.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java`
+  - `gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/SharedGameServerComponentsConfiguration.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java`
+- Post-scan result (wave scope): legacy refs `0`, abs refs `8` (pre-scan legacy refs `7`).
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-140514-hardcut-m2-wave54-host-configuration`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/66-hard-cut-m2-wave54-host-configuration-report-20260226.md`

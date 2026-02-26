@@ -1,0 +1,8 @@
+1:package com.abs.casino.common.config;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java:29:import com.abs.casino.common.config.HostConfiguration;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:23:import com.abs.casino.common.config.HostConfiguration;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/SharedGameServerComponentsConfiguration.java:11:import com.abs.casino.common.config.HostConfiguration;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:19:import com.abs.casino.common.config.HostConfiguration;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:14:import com.abs.casino.common.config.HostConfiguration;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:15:import com.abs.casino.common.config.HostConfiguration;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/dgphoenix/casino/common/config/HostConfigurationTest.java:4:import com.abs.casino.common.config.HostConfiguration;

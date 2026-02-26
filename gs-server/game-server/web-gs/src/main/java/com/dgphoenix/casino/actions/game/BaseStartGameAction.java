@@ -20,7 +20,7 @@ import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
-import com.dgphoenix.casino.common.config.HostConfiguration;
+import com.abs.casino.common.config.HostConfiguration;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.exception.FRBException;
 import com.dgphoenix.casino.common.exception.MaintenanceModeException;

@@ -1,0 +1,7 @@
+HEAD:gs-server/common/src/main/java/com/dgphoenix/casino/common/config/HostConfiguration.java:1:package com.dgphoenix.casino.common.config;
+HEAD:gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:14:import com.dgphoenix.casino.common.config.HostConfiguration;
+HEAD:gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:15:import com.dgphoenix.casino.common.config.HostConfiguration;
+HEAD:gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/SharedGameServerComponentsConfiguration.java:11:import com.dgphoenix.casino.common.config.HostConfiguration;
+HEAD:gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java:29:import com.dgphoenix.casino.common.config.HostConfiguration;
+HEAD:gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:23:import com.dgphoenix.casino.common.config.HostConfiguration;
+HEAD:gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:19:import com.dgphoenix.casino.common.config.HostConfiguration;
