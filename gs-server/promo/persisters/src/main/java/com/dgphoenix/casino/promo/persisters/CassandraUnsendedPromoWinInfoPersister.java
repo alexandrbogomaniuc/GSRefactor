@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -90,14 +89,14 @@ public class CassandraUnsendedPromoWinInfoPersister extends AbstractCassandraPer
 
     public void remove(long gameSessionId) {
         LOG.debug("remove: gameSessionId={}", gameSessionId);
-        execute(QueryBuilder.delete()
+        execute(com.datastax.driver.core.querybuilder.QueryBuilder.delete()
                 .from(getMainColumnFamilyName())
                 .where(eq(GAME_SESSION_ID, gameSessionId)), "remove");
     }
 
     public void remove(long gameSessionId, long date) {
         LOG.debug("remove gameSessionId={}, date={}", gameSessionId, date);
-        execute(QueryBuilder.delete()
+        execute(com.datastax.driver.core.querybuilder.QueryBuilder.delete()
                 .from(getMainColumnFamilyName())
                 .where(eq(GAME_SESSION_ID, gameSessionId))
                 .and(eq(WIN_DATE, date)), "remove[date]");

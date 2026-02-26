@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -65,8 +64,8 @@ public class CassandraCurrencyRatesPersister extends AbstractCassandraPersister<
 
     public CurrencyRate getCurrencyRate(String source, String target) {
         com.datastax.driver.core.Statement query = getSelectColumnsQuery(RATE_FIELD, UPDATE_DATE_FIELD)
-                .where(QueryBuilder.eq(SOURCE_FIELD, source))
-                .and(QueryBuilder.eq(DEST_FIELD, target));
+                .where(com.datastax.driver.core.querybuilder.QueryBuilder.eq(SOURCE_FIELD, source))
+                .and(com.datastax.driver.core.querybuilder.QueryBuilder.eq(DEST_FIELD, target));
         com.datastax.driver.core.Row row = execute(query, "getRate").one();
         CurrencyRate result = null;
         if (row != null && !row.isNull(RATE_FIELD)) {

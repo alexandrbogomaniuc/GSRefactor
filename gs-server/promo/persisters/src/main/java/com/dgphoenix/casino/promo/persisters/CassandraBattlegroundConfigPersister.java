@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -87,13 +86,13 @@ public class CassandraBattlegroundConfigPersister extends AbstractCassandraPersi
     }
 
     public void deleteForBank(long bankId) {
-        execute(QueryBuilder.delete()
+        execute(com.datastax.driver.core.querybuilder.QueryBuilder.delete()
                 .from(getMainColumnFamilyName())
                 .where(eq(BANK_ID, bankId)), "deleteForBank");
     }
 
     public void delete(long bankId, long gameId) {
-        execute(QueryBuilder.delete()
+        execute(com.datastax.driver.core.querybuilder.QueryBuilder.delete()
                 .from(getMainColumnFamilyName())
                 .where(eq(BANK_ID, bankId))
                 .and(eq(GAME_ID, gameId)), "delete");

@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra;
 
-import com.datastax.driver.core.TimestampGenerator;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 
 /**
@@ -8,7 +7,7 @@ import com.dgphoenix.casino.common.util.NtpTimeProvider;
  * User: van0ss
  * Date: 09.02.2017
  */
-class NtpTimeGenerator implements TimestampGenerator {
+class NtpTimeGenerator implements com.datastax.driver.core.TimestampGenerator {
 
     private NtpTimeProvider timeProvider;
 

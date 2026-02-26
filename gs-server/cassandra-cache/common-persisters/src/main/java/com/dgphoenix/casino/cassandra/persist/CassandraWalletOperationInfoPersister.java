@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -112,8 +111,8 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
                 KeySpaceManager.bytesArraySerializer);
         WalletOperationInfo[] result = new WalletOperationInfo[2];
         if(rows != null) {
-            List<Row<Long, String, byte[]>> rowsList = rows.getList();
-            for (Row<Long, String, byte[]> row : rowsList) {
+            List<com.datastax.driver.core.Row<Long, String, byte[]>> rowsList = rows.getList();
+            for (com.datastax.driver.core.Row<Long, String, byte[]> row : rowsList) {
                 ColumnSlice<String, byte[]> rowColumnSlice = row.getColumnSlice();
                 List<HColumn<String, byte[]>> columns = rowColumnSlice.getColumns();
                 for (HColumn<String, byte[]> column : columns) {
@@ -162,9 +161,9 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
         CqlRows<Long, String, byte[]> rows = executeCQL(cql, KeySpaceManager.bytesArraySerializer);
         List<WalletOperationInfo> result = new ArrayList<WalletOperationInfo>();
         if(rows != null) {
-            List<Row<Long, String, byte[]>> rowsList = rows.getList();
+            List<com.datastax.driver.core.Row<Long, String, byte[]>> rowsList = rows.getList();
             LOG.debug("getRecords: rowsList.size()" + rowsList.size());
-            for (Row<Long, String, byte[]> row : rowsList) {
+            for (com.datastax.driver.core.Row<Long, String, byte[]> row : rowsList) {
                 ColumnSlice<String, byte[]> rowColumnSlice = row.getColumnSlice();
                 List<HColumn<String, byte[]>> columns = rowColumnSlice.getColumns();
                 for (HColumn<String, byte[]> column : columns) {
@@ -268,9 +267,9 @@ public class CassandraWalletOperationInfoPersister extends AbstractCassandraPers
             return;
         }
         com.datastax.driver.core.Statement query =
-                QueryBuilder.delete().
+                com.datastax.driver.core.querybuilder.QueryBuilder.delete().
                         from(getMainColumnFamilyName()).
-                        where(QueryBuilder.in(KEY, walletOperationIds));
+                        where(com.datastax.driver.core.querybuilder.QueryBuilder.in(KEY, walletOperationIds));
         execute(query, "delete walletOperations");
     }
 

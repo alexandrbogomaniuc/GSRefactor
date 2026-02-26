@@ -7,10 +7,6 @@
 
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.*;
-import com.datastax.driver.core.schemabuilder.SchemaBuilder;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -46,7 +42,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
                     new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
                     new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), BANK_ID_FIELD)
-            .clusteringOrder(CREATE_TIME_FIELD, SchemaBuilder.Direction.ASC);
+            .clusteringOrder(CREATE_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.ASC);
 
     //CF for items with max iterations
     private static final TableDefinition MAX_ITERATIONS_TABLE = new TableDefinition(MAX_ITERATIONS_ITEM_CF,
@@ -58,7 +54,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
                     new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
                     new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), BANK_ID_FIELD)
-            .clusteringOrder(CREATE_TIME_FIELD, SchemaBuilder.Direction.ASC);
+            .clusteringOrder(CREATE_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.ASC);
 
     /**
      * For instantiate use {@link CassandraPersistenceManager#getPersister(Class)}
@@ -85,7 +81,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
     public void delete(HistoryInformerItem item) {
         LOG.debug("delete {}", item);
 
-        Delete.Where query = QueryBuilder.delete().from(HISTORY_INFORMER_ITEM_CF)
+        com.datastax.driver.core.querybuilder.Delete.Where query = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(HISTORY_INFORMER_ITEM_CF)
                 .where(eq(BANK_ID_FIELD, item.getBankId()))
                 .and(eq(CREATE_TIME_FIELD, item.getCreateTime()))
                 .and(eq(SESSION_ID_FIELD, item.getGameSessionId()));
@@ -96,7 +92,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
     public void deleteFromMaxIterationsCF(HistoryInformerItem item) {
         LOG.debug("deleteFromMaxIterationsCF {}", item);
 
-        Delete.Where query = QueryBuilder.delete().from(MAX_ITERATIONS_ITEM_CF)
+        com.datastax.driver.core.querybuilder.Delete.Where query = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(MAX_ITERATIONS_ITEM_CF)
                 .where(eq(BANK_ID_FIELD, item.getBankId()))
                 .and(eq(CREATE_TIME_FIELD, item.getCreateTime()))
                 .and(eq(SESSION_ID_FIELD, item.getGameSessionId()));
@@ -114,7 +110,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
         ByteBuffer byteBuffer = getMainTableDefinition().serializeToBytes(item);
         String json = getMainTableDefinition().serializeToJson(item);
         try {
-            Insert insert = getInsertQuery()
+            com.datastax.driver.core.querybuilder.Insert insert = getInsertQuery()
                     .value(BANK_ID_FIELD, item.getBankId())
                     .value(CREATE_TIME_FIELD, item.getCreateTime())
                     .value(SESSION_ID_FIELD, item.getGameSessionId())
@@ -139,9 +135,9 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
         ByteBuffer byteBuffer = getMainTableDefinition().serializeToBytes(item);
         try {
             if (item.getIterations() <= maxSendAttempts) {
-                Update.Where update = QueryBuilder.update(HISTORY_INFORMER_ITEM_CF)
-                        .with(QueryBuilder.set(ITERATIONS_FIELD, item.getIterations()))
-                        .and(QueryBuilder.set(LAST_ATTEMPT_TIME_FIELD, System.currentTimeMillis()))
+                com.datastax.driver.core.querybuilder.Update.Where update = com.datastax.driver.core.querybuilder.QueryBuilder.update(HISTORY_INFORMER_ITEM_CF)
+                        .with(com.datastax.driver.core.querybuilder.QueryBuilder.set(ITERATIONS_FIELD, item.getIterations()))
+                        .and(com.datastax.driver.core.querybuilder.QueryBuilder.set(LAST_ATTEMPT_TIME_FIELD, System.currentTimeMillis()))
 
                         .where(eq(BANK_ID_FIELD, item.getBankId()))
                         .and(eq(CREATE_TIME_FIELD, item.getCreateTime()))
@@ -150,12 +146,12 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
                 execute(update, "update");
             } else {
 
-                Batch batch = QueryBuilder.batch(QueryBuilder.delete().from(HISTORY_INFORMER_ITEM_CF)
+                com.datastax.driver.core.querybuilder.Batch batch = com.datastax.driver.core.querybuilder.QueryBuilder.batch(com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(HISTORY_INFORMER_ITEM_CF)
                         .where(eq(BANK_ID_FIELD, item.getBankId()))
                         .and(eq(CREATE_TIME_FIELD, item.getCreateTime()))
                         .and(eq(SESSION_ID_FIELD, item.getGameSessionId())));
 
-                batch.add(QueryBuilder.insertInto(MAX_ITERATIONS_ITEM_CF)
+                batch.add(com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(MAX_ITERATIONS_ITEM_CF)
                         .value(BANK_ID_FIELD, item.getBankId())
                         .value(CREATE_TIME_FIELD, item.getCreateTime())
                         .value(SESSION_ID_FIELD, item.getGameSessionId())
@@ -178,7 +174,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
             throw new NullPointerException("Parameter 'historyItemProcessor' can't be null");
         }
 
-        com.datastax.driver.core.Statement query = QueryBuilder.select(SERIALIZED_COLUMN_NAME, LAST_ATTEMPT_TIME_FIELD, ITERATIONS_FIELD, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(SERIALIZED_COLUMN_NAME, LAST_ATTEMPT_TIME_FIELD, ITERATIONS_FIELD, JSON_COLUMN_NAME)
                 .from(HISTORY_INFORMER_ITEM_CF)
                 .where(eq(BANK_ID_FIELD, bankId))
                 .setFetchSize(3);
@@ -215,7 +211,7 @@ public class CassandraHistoryInformerItemPersister extends AbstractCassandraPers
     }
 
     public HistoryInformerItem loadMaxIterationsItem(long bankId) {
-        Select query = QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(MAX_ITERATIONS_ITEM_CF)
                 .where(eq(BANK_ID_FIELD, bankId))
                 .limit(1);

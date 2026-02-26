@@ -847,3 +847,32 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - GS-only `72.75%`
   - MP-only `100.00%`
   - Combined GS+MP `79.19%`
+
+## 2026-02-26 06:27 UTC (Wave 44)
+- Stabilized cache-module compile/test after Wave 43 follow-up sweep and finished current import-surface burndown.
+- Changed scope:
+  - `71` files in working tree (including runtime/test/docs evidence artifacts).
+  - full list: `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-062700/c4-wave44-changed-files-20260226-062700.txt`
+- Compile-fix focus:
+  - `AbstractCassandraPersister`: restored unresolved Cassandra type references via fully-qualified names.
+  - `KeyspaceConfiguration`: restored unresolved `QueryOptions` / `SocketOptions` / `PoolingOptions` / `HostDistance`.
+  - `KeyspaceManagerImpl`: fixed malformed `persist.engine.Session` wrapper path.
+  - `KeySpaceManagerTest`: fixed unresolved `Metadata` reference.
+- Validation: PASS
+  - promo/persisters install
+  - common-persisters install
+  - cache tests (`63` pass)
+  - web-gs package (`-Dcluster.properties=local/local-machine.properties`)
+  - mp subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added under:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-062700/`
+- Inventory delta after Wave 44:
+  - GS `driver3_import_lines`: `133 -> 0` (`-133`)
+  - MP `driver3_import_lines`: `0 -> 0` (`0`)
+  - Combined: `133 -> 0` (`-133`)
+- Completion snapshot:
+  - GS-only `100.00%` (import-surface metric)
+  - MP-only `100.00%` (import-surface metric)
+  - Combined GS+MP `100.00%` (`639 -> 0` for import-line burndown metric)
+- Note:
+  - This 100% value is import-surface completion only; runtime behavior and production-readiness checks remain governed by audit/cutover milestones.

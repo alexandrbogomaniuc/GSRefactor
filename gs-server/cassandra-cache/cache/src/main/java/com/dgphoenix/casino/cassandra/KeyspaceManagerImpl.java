@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra;
 
-import com.datastax.driver.core.*;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.StringUtils;
@@ -34,8 +33,8 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
     private final SchemaCreator schemaCreator;
 
     private boolean initialized;
-    private Cluster cluster;
-    private Session session;
+    private com.datastax.driver.core.Cluster cluster;
+    private com.datastax.driver.core.Session session;
 
     public KeyspaceManagerImpl(KeyspaceConfiguration configuration, PersistersFactory persistersFactory,
                                String schemaUpdateFilename) {
@@ -56,7 +55,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
     /**
      * Internal/legacy accessor retained for persister engine compatibility.
      */
-    public Session getSession() {
+    public com.datastax.driver.core.Session getSession() {
         return session;
     }
 
@@ -91,7 +90,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
     /**
      * Internal/legacy host view retained for cache-module compatibility tests.
      */
-    public Set<Host> getDownHosts() {
+    public Set<com.datastax.driver.core.Host> getDownHosts() {
         if (!initialized) {
             return Collections.emptySet();
         }
@@ -142,9 +141,9 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
                 configuration.getWriteConsistencyLevel(),
                 configuration.getSerialConsistencyLevel());
 
-        cluster = configuration.buildCluster(Cluster.builder());
-        KeyspaceMetadata metadata = cluster.getMetadata().getKeyspace(keyspaceName);
-        try (Session schemaSession = cluster.connect()) {
+        cluster = configuration.buildCluster(com.datastax.driver.core.Cluster.builder());
+        com.datastax.driver.core.KeyspaceMetadata metadata = cluster.getMetadata().getKeyspace(keyspaceName);
+        try (com.datastax.driver.core.Session schemaSession = cluster.connect()) {
             List<ICassandraPersister> persisters = persistersFactory.getAllPersisters();
             if (metadata == null) {
                 checkState(configuration.isCreateSchema(), "Cassandra schema not found and schema creation disabled");
@@ -184,20 +183,20 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
     }
 
     private int getOnlineHostsCount(String localDataCenter) {
-        Predicate<Host> isRequiredDataCenterHost = host -> StringUtils.isBlank(localDataCenter) || localDataCenter.equals(host.getDatacenter());
+        Predicate<com.datastax.driver.core.Host> isRequiredDataCenterHost = host -> StringUtils.isBlank(localDataCenter) || localDataCenter.equals(host.getDatacenter());
         return (int) cluster.getMetadata().getAllHosts().stream()
                 .filter(isRequiredDataCenterHost)
                 .filter(host -> {
                     boolean hostUp = host.isUp();
                     if (!hostUp) {
-                        LOG.debug("Cassandra. Host {} is down", host);
+                        LOG.debug("Cassandra. com.datastax.driver.core.Host {} is down", host);
                     }
                     return hostUp;
                 })
                 .count();
     }
 
-    private String extractHostAddress(Host host) {
+    private String extractHostAddress(com.datastax.driver.core.Host host) {
         if (host == null) {
             return null;
         }

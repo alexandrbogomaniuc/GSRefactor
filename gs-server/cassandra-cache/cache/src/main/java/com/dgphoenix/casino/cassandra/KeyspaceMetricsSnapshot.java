@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra;
 
 import com.codahale.metrics.Snapshot;
 import com.codahale.metrics.Timer;
-import com.datastax.driver.core.Metrics;
 
 /**
  * Driver-neutral snapshot of Cassandra keyspace driver metrics.
@@ -121,7 +120,7 @@ public final class KeyspaceMetricsSnapshot {
         return UNAVAILABLE;
     }
 
-    public static KeyspaceMetricsSnapshot from(Metrics metrics) {
+    public static KeyspaceMetricsSnapshot from(com.datastax.driver.core.Metrics metrics) {
         if (metrics == null) {
             return unavailable();
         }
@@ -129,7 +128,7 @@ public final class KeyspaceMetricsSnapshot {
         try {
             Timer requestsTimer = metrics.getRequestsTimer();
             Snapshot latencySnapshot = requestsTimer != null ? requestsTimer.getSnapshot() : null;
-            Metrics.Errors errors = metrics.getErrorMetrics();
+            com.datastax.driver.core.Metrics.Errors errors = metrics.getErrorMetrics();
 
             return new KeyspaceMetricsSnapshot(true,
                     safeGaugeValue(metrics.getKnownHosts()),

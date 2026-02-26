@@ -1,0 +1,56 @@
+timestamp_utc=2026-02-26T06:26:10Z
+script=/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/phase7-cassandra-driver-inventory.sh
+repo_root=/Users/alexb/Documents/Dev/Dev_new
+gs_root=/Users/alexb/Documents/Dev/Dev_new/gs-server
+mp_root=/Users/alexb/Documents/Dev/Dev_new/mp-server
+new_games_root=/Users/alexb/Documents/Dev/Dev_new/new-games-server
+
+== GS: Cassandra dependency declarations ==
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/pom.xml:22:        <cassandra.driver.version>3.11.5</cassandra.driver.version>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/pom.xml:28:            <artifactId>cassandra-driver-core</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/pom.xml:29:            <version>${cassandra.driver.version}</version>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/pom.xml:33:            <artifactId>cassandra-driver-mapping</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/pom.xml:34:            <version>${cassandra.driver.version}</version>
+
+== MP: Cassandra dependency declarations ==
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:37:        <cassandra.driver.version>3.5.0</cassandra.driver.version>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:267:                        <artifactId>cassandra-driver-core</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:279:                <artifactId>cassandra-driver-core</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:280:                <version>${cassandra.driver.version}</version>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:295:                <artifactId>spring-data-cassandra</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/pom.xml:300:                        <artifactId>cassandra-driver-core</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/pom.xml:45:            <artifactId>spring-data-cassandra</artifactId>
+/Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/pom.xml:49:            <artifactId>cassandra-driver-core</artifactId>
+
+== NEW_GAMES: Cassandra dependency declarations ==
+
+== GS: Java import inventory ==
+driver3_import_lines=0
+driver4_import_lines=0
+
+-- top files with driver3 imports --
+
+-- driver3 type usage by import --
+
+-- driver4 type usage by import --
+
+== MP: Java import inventory ==
+driver3_import_lines=0
+driver4_import_lines=0
+
+-- top files with driver3 imports --
+
+-- driver3 type usage by import --
+
+-- driver4 type usage by import --
+
+== NEW_GAMES: Java import inventory ==
+driver3_import_lines=0
+driver4_import_lines=0
+
+-- top files with driver3 imports --
+
+-- driver3 type usage by import --
+
+-- driver4 type usage by import --
+

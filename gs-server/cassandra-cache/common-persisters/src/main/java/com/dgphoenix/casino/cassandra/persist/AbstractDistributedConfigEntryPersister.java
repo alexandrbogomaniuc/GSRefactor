@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.ColumnDefinitions;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.configuration.Caching;
@@ -128,7 +127,7 @@ public abstract class AbstractDistributedConfigEntryPersister<KEY, T extends IDi
             if (row.isNull(KEY)) {
                 getLog().error("Column KEY not found");
             }
-            ColumnDefinitions columnDefinitions = row.getColumnDefinitions();
+            com.datastax.driver.core.ColumnDefinitions columnDefinitions = row.getColumnDefinitions();
             com.datastax.driver.core.DataType keyType = columnDefinitions.getType(KEY);
             KEY key = null;
             if (com.datastax.driver.core.DataType.ascii().equals(keyType) || com.datastax.driver.core.DataType.varchar().equals(keyType) ||

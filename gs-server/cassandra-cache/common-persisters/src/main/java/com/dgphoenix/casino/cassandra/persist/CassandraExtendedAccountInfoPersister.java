@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -69,7 +68,7 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
         com.datastax.driver.core.Statement update = getUpdateQuery()
                 .where(eq(BANK_ID, bankId))
                 .and(eq(EXTERNAL_ID, externalId))
-                .with(QueryBuilder.putAll(PROPERTIES, properties));
+                .with(com.datastax.driver.core.querybuilder.QueryBuilder.putAll(PROPERTIES, properties));
         execute(update, "persist");
     }
 
@@ -78,7 +77,7 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
         com.datastax.driver.core.Statement update = getUpdateQuery()
                 .where(eq(BANK_ID, bankId))
                 .and(eq(EXTERNAL_ID, externalId))
-                .with(QueryBuilder.put(PROPERTIES, propertyName, value));
+                .with(com.datastax.driver.core.querybuilder.QueryBuilder.put(PROPERTIES, propertyName, value));
         execute(update, "persist");
     }
 

@@ -1,8 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.mp;
 
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.*;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -44,7 +41,7 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
         ByteBuffer configBuffer = CONFIG_TABLE.serializeWithClassToBytes(config);
         String json = CONFIG_TABLE.serializeWithClassToJson(config);
         try {
-            Insert insert = getInsertQuery(CONFIG_TABLE, null)
+            com.datastax.driver.core.querybuilder.Insert insert = getInsertQuery(CONFIG_TABLE, null)
                     .value(DRAW_ID_COLUMN, config.getId())
                     .value(START_DATE, config.getStartDate())
                     .value(END_DATE, config.getEndDate())
@@ -60,7 +57,7 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
     }
 
     public TicketedDrawConfig getConfig(long id) {
-        Select query = getSelectColumnsQuery(CONFIG_TABLE, CONFIG_COLUMN, JSON_COLUMN_NAME)
+        com.datastax.driver.core.querybuilder.Select query = getSelectColumnsQuery(CONFIG_TABLE, CONFIG_COLUMN, JSON_COLUMN_NAME)
                 .where(eq(DRAW_ID_COLUMN, id))
                 .limit(1);
 
@@ -76,12 +73,12 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
     }
 
     public void removeConfig(long id) {
-        Delete.Where delete = QueryBuilder.delete().from(CF_NAME).where(eq(DRAW_ID_COLUMN, id));
+        com.datastax.driver.core.querybuilder.Delete.Where delete = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(CF_NAME).where(eq(DRAW_ID_COLUMN, id));
         execute(delete, "removeConfig");
     }
 
     public void updateStatus(long id, LeaderboardStatus status) {
-        Update.Assignments update = getUpdateQuery()
+        com.datastax.driver.core.querybuilder.Update.Assignments update = getUpdateQuery()
                 .where(eq(DRAW_ID_COLUMN, id))
                 .with(set(STATUS_COLUMN, status.getCode()));
 
@@ -89,7 +86,7 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
     }
 
     public void updateDate(long id, long date) {
-        Update.Assignments update = getUpdateQuery()
+        com.datastax.driver.core.querybuilder.Update.Assignments update = getUpdateQuery()
                 .where(eq(DRAW_ID_COLUMN, id))
                 .with(set(UPDATE_DATE, date));
 
@@ -97,7 +94,7 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
     }
 
     public List<TicketedDrawConfig> getTicketedDraws(LeaderboardStatus status) {
-        Select.Where query = getSelectColumnsQuery(CONFIG_TABLE, CONFIG_COLUMN, JSON_COLUMN_NAME)
+        com.datastax.driver.core.querybuilder.Select.Where query = getSelectColumnsQuery(CONFIG_TABLE, CONFIG_COLUMN, JSON_COLUMN_NAME)
                 .where(eq(STATUS_COLUMN, status.getCode()));
 
         com.datastax.driver.core.ResultSet result = execute(query, "getTicketedDraws");

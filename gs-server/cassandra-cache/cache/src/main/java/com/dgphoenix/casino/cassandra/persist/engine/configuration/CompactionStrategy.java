@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.engine.configuration;
 
-import com.datastax.driver.core.schemabuilder.TableOptions.CompactionOptions;
 
 import static com.datastax.driver.core.schemabuilder.SchemaBuilder.*;
 
@@ -16,9 +15,9 @@ public class CompactionStrategy {
     public static final CompactionStrategy LEVELED = new CompactionStrategy(leveledStrategy().ssTableSizeInMB(SS_TABLE_SIZE));
     public static final CompactionStrategy SIZE_TIRED = new CompactionStrategy(sizedTieredStategy());
 
-    private final CompactionOptions compactionOptions;
+    private final com.datastax.driver.core.schemabuilder.TableOptions.CompactionOptions compactionOptions;
 
-    private CompactionStrategy(CompactionOptions compactionOptions) {
+    private CompactionStrategy(com.datastax.driver.core.schemabuilder.TableOptions.CompactionOptions compactionOptions) {
         this.compactionOptions = compactionOptions;
     }
 
@@ -49,7 +48,7 @@ public class CompactionStrategy {
         );
     }
 
-    public CompactionOptions getCompactionOptions() {
+    public com.datastax.driver.core.schemabuilder.TableOptions.CompactionOptions getCompactionOptions() {
         return compactionOptions;
     }
 }

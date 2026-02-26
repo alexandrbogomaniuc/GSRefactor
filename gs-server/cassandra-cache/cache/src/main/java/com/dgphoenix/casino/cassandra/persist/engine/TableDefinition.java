@@ -1,10 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.engine;
 
-import com.datastax.driver.core.schemabuilder.Create;
-import com.datastax.driver.core.schemabuilder.SchemaBuilder;
-import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
-import com.datastax.driver.core.schemabuilder.SchemaStatement;
-import com.datastax.driver.core.schemabuilder.TableOptions.SpeculativeRetryValue;
 import com.dgphoenix.casino.cassandra.persist.engine.configuration.Caching;
 import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.dgphoenix.casino.cassandra.persist.engine.configuration.Compression;
@@ -47,8 +42,8 @@ public class TableDefinition {
     private final Set<ColumnDefinition> addedColumns = new HashSet<>();
     private Compression compression;
 
-    private SchemaStatement tableStatement;
-    private final Map<String, SchemaStatement> indexesStatements;
+    private com.datastax.driver.core.schemabuilder.SchemaStatement tableStatement;
+    private final Map<String, com.datastax.driver.core.schemabuilder.SchemaStatement> indexesStatements;
 
     public TableDefinition(String tableName, List<ColumnDefinition> columns, List<String> primaryKeyParts) {
         this(tableName, columns, CollectionUtils.isEmpty(primaryKeyParts) ? new String[0] : new String[]{primaryKeyParts.get(0)});
@@ -57,7 +52,7 @@ public class TableDefinition {
     public TableDefinition(String tableName, List<ColumnDefinition> columns, String... partitionKey) {
         this.tableName = tableName.trim();
         this.columns = columns;
-        Create createStatement = SchemaBuilder.createTable(this.tableName).ifNotExists();
+        com.datastax.driver.core.schemabuilder.Create createStatement = com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable(this.tableName).ifNotExists();
         addPartitionKeyColumns(partitionKey, this.columns, createStatement);
         addColumns(columns, Arrays.asList(partitionKey), createStatement);
         indexesStatements = generateIndexes(columns);
@@ -68,7 +63,7 @@ public class TableDefinition {
         compression(Compression.NONE);
     }
 
-    private void addPartitionKeyColumns(String[] partitionKey, List<ColumnDefinition> columns, Create createStatement) {
+    private void addPartitionKeyColumns(String[] partitionKey, List<ColumnDefinition> columns, com.datastax.driver.core.schemabuilder.Create createStatement) {
         for (String partitionKeyColumnName : partitionKey) {
             ColumnDefinition partitionKeyColumn = columns.stream()
                     .filter(columnDefinition -> columnDefinition.getName().equals(partitionKeyColumnName))
@@ -79,7 +74,7 @@ public class TableDefinition {
         }
     }
 
-    private void addColumns(List<ColumnDefinition> columns, List<String> skipColumns, Create createStatement) {
+    private void addColumns(List<ColumnDefinition> columns, List<String> skipColumns, com.datastax.driver.core.schemabuilder.Create createStatement) {
         for (ColumnDefinition column : columns) {
             String columnName = column.getName();
             if (!skipColumns.contains(columnName)) {
@@ -96,7 +91,7 @@ public class TableDefinition {
         }
     }
 
-    private Map<String, SchemaStatement> generateIndexes(List<ColumnDefinition> columns) {
+    private Map<String, com.datastax.driver.core.schemabuilder.SchemaStatement> generateIndexes(List<ColumnDefinition> columns) {
         return columns.stream()
                 .filter(ColumnDefinition::isIndexed)
                 .collect(toMap(ColumnDefinition::getName, column -> {
@@ -104,7 +99,7 @@ public class TableDefinition {
                     //You cannot index, delete, or and re-adding a counter column
                     checkState(isNonCounterColumn(column), "Counter column cannot be indexed");
                     String columnName = column.getName();
-                    return SchemaBuilder.createIndex(getIndexName(columnName)).ifNotExists()
+                    return com.datastax.driver.core.schemabuilder.SchemaBuilder.createIndex(getIndexName(columnName)).ifNotExists()
                             .onTable(tableName)
                             .andColumn(columnName);
                 }));
@@ -118,11 +113,11 @@ public class TableDefinition {
         return join(Arrays.asList(tableName, columnName, INDEX_POSTFIX), SEPARATOR);
     }
 
-    private Create.Options getOptions() {
-        if (tableStatement instanceof Create) {
-            tableStatement = ((Create) tableStatement).withOptions();
+    private com.datastax.driver.core.schemabuilder.Create.Options getOptions() {
+        if (tableStatement instanceof com.datastax.driver.core.schemabuilder.Create) {
+            tableStatement = ((com.datastax.driver.core.schemabuilder.Create) tableStatement).withOptions();
         }
-        return (Create.Options) tableStatement;
+        return (com.datastax.driver.core.schemabuilder.Create.Options) tableStatement;
     }
 
     public TableDefinition caching(@Nonnull Caching caching) {
@@ -149,12 +144,12 @@ public class TableDefinition {
         return this;
     }
 
-    public TableDefinition clusteringOrder(String columnName, Direction direction) {
+    public TableDefinition clusteringOrder(String columnName, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction direction) {
         getOptions().clusteringOrder(columnName, direction);
         return this;
     }
 
-    public TableDefinition speculativeRetry(SpeculativeRetryValue speculativeRetryValue) {
+    public TableDefinition speculativeRetry(com.datastax.driver.core.schemabuilder.TableOptions.SpeculativeRetryValue speculativeRetryValue) {
         getOptions().speculativeRetry(speculativeRetryValue);
         return this;
     }
@@ -182,11 +177,11 @@ public class TableDefinition {
         return addedColumns;
     }
 
-    public SchemaStatement getCreateTableStatement() {
+    public com.datastax.driver.core.schemabuilder.SchemaStatement getCreateTableStatement() {
         return tableStatement;
     }
 
-    public Map<String, SchemaStatement> getCreateIndexStatements() {
+    public Map<String, com.datastax.driver.core.schemabuilder.SchemaStatement> getCreateIndexStatements() {
         return indexesStatements;
     }
 

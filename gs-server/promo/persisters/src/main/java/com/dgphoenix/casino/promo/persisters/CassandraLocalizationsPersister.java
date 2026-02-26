@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.querybuilder.Batch;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -41,7 +40,7 @@ public class CassandraLocalizationsPersister extends AbstractCassandraPersister<
     public void persistPromoLocalizations(long campaignId, Map<String, String> localizedItems) {
         LOG.info("persist localizations for promo campaign with id = {}, localizations = {}",
                 campaignId, localizedItems);
-        Batch batch = batch();
+        com.datastax.driver.core.querybuilder.Batch batch = batch();
         String key = PROMO_TYPE + IDENTIFIER_DELIMITER + campaignId;
         for (Map.Entry<String, String> itemLangWithLocalization : localizedItems.entrySet()) {
             String itemWithLang = itemLangWithLocalization.getKey();
@@ -55,7 +54,7 @@ public class CassandraLocalizationsPersister extends AbstractCassandraPersister<
     public void persistNetworkPromoLocalizations(long networkPromoCampaignId, Map<String, String> localizedItems) {
         LOG.info("persist localizations for network promo campaign with id = {}, localizations = {}",
                 networkPromoCampaignId, localizedItems);
-        Batch batch = batch();
+        com.datastax.driver.core.querybuilder.Batch batch = batch();
         String key = PROMO_TYPE + IDENTIFIER_DELIMITER + networkPromoCampaignId;
         for (Map.Entry<String, String> entry : localizedItems.entrySet()) {
             String itemWithLang = entry.getKey();
@@ -79,7 +78,7 @@ public class CassandraLocalizationsPersister extends AbstractCassandraPersister<
         execute(batch, "persistNetworkPromoLocalizations");
     }
 
-    private void addInsertStatement(Batch batch, String key, Map.Entry<String, String> entry,
+    private void addInsertStatement(com.datastax.driver.core.querybuilder.Batch batch, String key, Map.Entry<String, String> entry,
                                     Iterator<String> itemAndLang, String item) {
         String lang = itemAndLang.next().toLowerCase();
         String localization = entry.getValue();

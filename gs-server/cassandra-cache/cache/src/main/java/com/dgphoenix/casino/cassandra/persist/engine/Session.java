@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.engine;
 
-import com.datastax.driver.core.*;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.Map;
@@ -38,67 +37,67 @@ public class Session implements com.datastax.driver.core.Session {
     }
 
     @Override
-    public ResultSet execute(String query) {
+    public com.datastax.driver.core.ResultSet execute(String query) {
         return session.execute(query);
     }
 
     @Override
-    public ResultSet execute(String query, Object... values) {
+    public com.datastax.driver.core.ResultSet execute(String query, Object... values) {
         return session.execute(query, values);
     }
 
     @Override
-    public ResultSet execute(String query, Map<String, Object> values) {
+    public com.datastax.driver.core.ResultSet execute(String query, Map<String, Object> values) {
         return session.execute(query, values);
     }
 
     @Override
-    public ResultSet execute(Statement statement) {
+    public com.datastax.driver.core.ResultSet execute(com.datastax.driver.core.Statement statement) {
         return session.execute(statement);
     }
 
     @Override
-    public ResultSetFuture executeAsync(String query) {
+    public com.datastax.driver.core.ResultSetFuture executeAsync(String query) {
         return session.executeAsync(query);
     }
 
     @Override
-    public ResultSetFuture executeAsync(String query, Object... values) {
+    public com.datastax.driver.core.ResultSetFuture executeAsync(String query, Object... values) {
         return session.executeAsync(query, values);
     }
 
     @Override
-    public ResultSetFuture executeAsync(String query, Map<String, Object> values) {
+    public com.datastax.driver.core.ResultSetFuture executeAsync(String query, Map<String, Object> values) {
         return session.executeAsync(query, values);
     }
 
     @Override
-    public ResultSetFuture executeAsync(Statement statement) {
+    public com.datastax.driver.core.ResultSetFuture executeAsync(com.datastax.driver.core.Statement statement) {
         return session.executeAsync(statement);
     }
 
     @Override
-    public PreparedStatement prepare(String query) {
+    public com.datastax.driver.core.PreparedStatement prepare(String query) {
         return session.prepare(query);
     }
 
     @Override
-    public PreparedStatement prepare(RegularStatement statement) {
+    public com.datastax.driver.core.PreparedStatement prepare(com.datastax.driver.core.RegularStatement statement) {
         return session.prepare(statement);
     }
 
     @Override
-    public ListenableFuture<PreparedStatement> prepareAsync(String query) {
+    public ListenableFuture<com.datastax.driver.core.PreparedStatement> prepareAsync(String query) {
         return session.prepareAsync(query);
     }
 
     @Override
-    public ListenableFuture<PreparedStatement> prepareAsync(RegularStatement statement) {
+    public ListenableFuture<com.datastax.driver.core.PreparedStatement> prepareAsync(com.datastax.driver.core.RegularStatement statement) {
         return session.prepareAsync(statement);
     }
 
     @Override
-    public CloseFuture closeAsync() {
+    public com.datastax.driver.core.CloseFuture closeAsync() {
         return session.closeAsync();
     }
 
@@ -113,7 +112,7 @@ public class Session implements com.datastax.driver.core.Session {
     }
 
     @Override
-    public Cluster getCluster() {
+    public com.datastax.driver.core.Cluster getCluster() {
         return session.getCluster();
     }
 
@@ -142,7 +141,7 @@ public class Session implements com.datastax.driver.core.Session {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("Session");
+        sb.append("com.datastax.driver.core.Session");
         sb.append("[keySpace='").append(keySpace).append('\'');
         sb.append(", session=").append(session);
         sb.append(']');

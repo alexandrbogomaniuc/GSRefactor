@@ -1,11 +1,10 @@
 package com.datastax.driver.core.schemabuilder;
 
-import com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions;
 
 /**
  * Use for Cassandra 3.x+
  */
-public class CompressionOptions3 extends CompressionOptions {
+public class CompressionOptions3 extends TableOptions.CompressionOptions {
     // Cassandra 2.x requires 'sstable_compression', Cassandra 3.x+ expects 'class'.
     // Keep 2.x as default for local baseline; set JVM flag
     // -Dcassandra.compression.useClassOption=true when running on Cassandra 3.x+.

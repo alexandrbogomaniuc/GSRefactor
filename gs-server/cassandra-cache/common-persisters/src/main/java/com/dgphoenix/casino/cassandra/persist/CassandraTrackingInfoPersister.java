@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.ColumnDefinitions;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -149,8 +148,8 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
                     writeTimej == null ? -1 : writeTimej);
 
             if (writeTime <= 0) {
-                ColumnDefinitions definitions = resultSet.getColumnDefinitions();
-                for (ColumnDefinitions.Definition definition : definitions) {
+                com.datastax.driver.core.ColumnDefinitions definitions = resultSet.getColumnDefinitions();
+                for (com.datastax.driver.core.ColumnDefinitions.Definition definition : definitions) {
                     LOG.info("getList: writetime(OBJECT_ID) not found: " + definition.getName() + ": " +
                             definition.getType());
                 }
@@ -214,8 +213,8 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
             Long writeTime = Long.max(writeTimes == null ? -1 : writeTimes,
                     writeTimej == null ? -1 : writeTimej);
             if (writeTime <= 0) {
-                ColumnDefinitions definitions = resultSet.getColumnDefinitions();
-                for (ColumnDefinitions.Definition definition : definitions) {
+                com.datastax.driver.core.ColumnDefinitions definitions = resultSet.getColumnDefinitions();
+                for (com.datastax.driver.core.ColumnDefinitions.Definition definition : definitions) {
                     LOG.info("getList: writetime(OBJECT_ID) not found: " + definition.getName() + ": " +
                             definition.getType());
                 }
@@ -263,8 +262,8 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
             Long writeTime = Long.max(writeTimes == null ? -1 : writeTimes,
                     writeTimej == null ? -1 : writeTimej);
             if (writeTime <= 0) {
-                ColumnDefinitions definitions = resultSet.getColumnDefinitions();
-                for (ColumnDefinitions.Definition definition : definitions) {
+                com.datastax.driver.core.ColumnDefinitions definitions = resultSet.getColumnDefinitions();
+                for (com.datastax.driver.core.ColumnDefinitions.Definition definition : definitions) {
                     LOG.info("getList: writetime(OBJECT_ID) not found: " + definition.getName() + ": " +
                             definition.getType());
                 }

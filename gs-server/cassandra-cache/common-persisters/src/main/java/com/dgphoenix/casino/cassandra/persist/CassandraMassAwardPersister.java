@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.common.cache.AbstractDistributedCache;
@@ -99,7 +98,7 @@ public class CassandraMassAwardPersister extends AbstractLongDistributedConfigEn
     }
 
     public Long getMassAwardIdByDelayedMassAwardId(long delayedMassAwardId) {
-        com.datastax.driver.core.Statement select = QueryBuilder.select().column(MASS_AWARD_ID)
+        com.datastax.driver.core.Statement select = com.datastax.driver.core.querybuilder.QueryBuilder.select().column(MASS_AWARD_ID)
                 .from(DELAYED_MASS_AWARD_CF)
                 .where(eq(DELAYED_MASS_AWARD_ID, delayedMassAwardId));
         com.datastax.driver.core.ResultSet result = execute(select, "getMassAwardIdByDelayedMassAwardId");
@@ -111,21 +110,21 @@ public class CassandraMassAwardPersister extends AbstractLongDistributedConfigEn
     }
 
     public void saveDelayedMassAwardId(long delayedMassAwardId, long massAwardId) {
-        com.datastax.driver.core.Statement query = QueryBuilder.insertInto(DELAYED_MASS_AWARD_CF)
+        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(DELAYED_MASS_AWARD_CF)
                 .value(DELAYED_MASS_AWARD_ID, delayedMassAwardId)
                 .value(MASS_AWARD_ID, massAwardId);
         execute(query, "persist delayedMassAwardId");
     }
 
     private void deleteDelayedMassAwardId(long massAwardId) {
-        com.datastax.driver.core.Statement select = QueryBuilder.select().column(DELAYED_MASS_AWARD_ID)
+        com.datastax.driver.core.Statement select = com.datastax.driver.core.querybuilder.QueryBuilder.select().column(DELAYED_MASS_AWARD_ID)
                 .from(DELAYED_MASS_AWARD_CF)
                 .where(eq(MASS_AWARD_ID, massAwardId));
         com.datastax.driver.core.ResultSet result = execute(select, "getDelayedMassAwardId");
         com.datastax.driver.core.Row row = result.one();
         if (row != null) {
             long delayedMassAwardId = row.getLong(DELAYED_MASS_AWARD_ID);
-            com.datastax.driver.core.Statement delete = QueryBuilder.delete().from(DELAYED_MASS_AWARD_CF).where(eq(DELAYED_MASS_AWARD_ID, delayedMassAwardId));
+            com.datastax.driver.core.Statement delete = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(DELAYED_MASS_AWARD_CF).where(eq(DELAYED_MASS_AWARD_ID, delayedMassAwardId));
             execute(delete, "delete delayedMassAwardId");
         }
     }

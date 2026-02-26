@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.engine;
 
-import com.datastax.driver.core.Row;
 
 /**
  * User: flsh

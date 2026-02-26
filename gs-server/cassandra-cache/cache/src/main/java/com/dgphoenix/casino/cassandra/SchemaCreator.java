@@ -1,10 +1,5 @@
 package com.dgphoenix.casino.cassandra;
 
-import com.datastax.driver.core.KeyspaceMetadata;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.TableMetadata;
-import com.datastax.driver.core.schemabuilder.KeyspaceOptions;
-import com.datastax.driver.core.schemabuilder.SchemaBuilder;
 import com.dgphoenix.casino.cassandra.config.ClusterConfig;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -34,7 +29,7 @@ public class SchemaCreator {
     private final String cqlFilename;
 
     public SchemaCreator(ClusterConfig config, String cqlFilename) {
-        checkNotNull(config, "Cluster config should be not null");
+        checkNotNull(config, "com.datastax.driver.core.Cluster config should be not null");
         this.config = config;
         this.cqlFilename = cqlFilename;
     }
@@ -55,7 +50,7 @@ public class SchemaCreator {
                     .put("replication_factor", config.getReplicationFactor())
                     .build();
         }
-        KeyspaceOptions createKeyspace = SchemaBuilder.createKeyspace(keyspaceName).ifNotExists()
+        com.datastax.driver.core.schemabuilder.KeyspaceOptions createKeyspace = com.datastax.driver.core.schemabuilder.SchemaBuilder.createKeyspace(keyspaceName).ifNotExists()
                 .with()
                 .replication(replicationOptions);
         LOG.info("Creating keyspace...");
@@ -73,14 +68,14 @@ public class SchemaCreator {
         LOG.warn("Complete schema creation for: {}", keyspaceName);
     }
 
-    public void updateSchema(KeyspaceMetadata keyspaceMetadata, com.datastax.driver.core.Session session, List<ICassandraPersister> persisters) {
+    public void updateSchema(com.datastax.driver.core.KeyspaceMetadata keyspaceMetadata, com.datastax.driver.core.Session session, List<ICassandraPersister> persisters) {
         String keyspaceName = config.getKeySpace();
         LOG.warn("Begin schema update for: {}", keyspaceName);
         session.execute("USE " + keyspaceName);
         for (ICassandraPersister persister : persisters) {
             LOG.info("Updating schema: {}", persister);
             for (TableDefinition tableDefinition : persister.getAllTableDefinitions()) {
-                TableMetadata existTableMetadata = keyspaceMetadata.getTable(tableDefinition.getTableName());
+                com.datastax.driver.core.TableMetadata existTableMetadata = keyspaceMetadata.getTable(tableDefinition.getTableName());
                 if (existTableMetadata == null) {
                     persister.createTable(session, tableDefinition);
                 } else {
@@ -113,7 +108,7 @@ public class SchemaCreator {
         for (String query : queries) {
             if (isNotBlank(query)) {
                 try {
-                    ResultSet resultSet = session.execute(query);
+                    com.datastax.driver.core.ResultSet resultSet = session.execute(query);
                     LOG.warn("Execute query: {}\nresult: {}", query, resultSet);
                 } catch (Throwable t) {
                     LOG.error("Can't execute CQL:" + query, t);

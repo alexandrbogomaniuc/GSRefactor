@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -75,7 +74,7 @@ public class CassandraIntSequencerPersister extends AbstractCassandraPersister<S
     }
 
     public Integer getCurrentValue(String sequencerName) {
-        com.datastax.driver.core.Statement query = QueryBuilder.select(VALUE_COLUMN_NAME).
+        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(VALUE_COLUMN_NAME).
                 from(getMainColumnFamilyName()).where(eq("KEY", sequencerName)).limit(1);
         com.datastax.driver.core.ResultSet rows = execute(query, "getCurrentValue");
         com.datastax.driver.core.Row row = rows.one();
@@ -96,7 +95,7 @@ public class CassandraIntSequencerPersister extends AbstractCassandraPersister<S
                 //reserve block
                 com.datastax.driver.core.Statement updateQuery = getUpdateQuery()
                         .where(getSimpleKeyClause(name))
-                        .with(QueryBuilder.set(VALUE_COLUMN_NAME, baseValue + block))
+                        .with(com.datastax.driver.core.querybuilder.QueryBuilder.set(VALUE_COLUMN_NAME, baseValue + block))
                         .onlyIf(eq(VALUE_COLUMN_NAME, currentValue));
                 com.datastax.driver.core.ResultSet resultSet = executeWithCheckTimeout(updateQuery, "allocateNextBlock");
                 success = resultSet.wasApplied();
@@ -130,7 +129,7 @@ public class CassandraIntSequencerPersister extends AbstractCassandraPersister<S
                     addInsertion(seq.getName(), VALUE_COLUMN_NAME, newValue).ifNotExists(),
                     "persist[insert]");
             if (!resultSet.wasApplied()) {
-                getLog().warn("Insert failed, sequencer already exist: seq={}, newValue={}", seq, newValue);
+                getLog().warn("com.datastax.driver.core.querybuilder.Insert failed, sequencer already exist: seq={}, newValue={}", seq, newValue);
                 newCurrentValue = 0;
                 com.datastax.driver.core.Row row = resultSet.one();
                 if (row != null) {
@@ -148,7 +147,7 @@ public class CassandraIntSequencerPersister extends AbstractCassandraPersister<S
             int attemptsCount = 0;
             while (!success) {
                 com.datastax.driver.core.Statement query = getUpdateQuery(seq.getName())
-                        .with(QueryBuilder.set(VALUE_COLUMN_NAME, newDesiredValue))
+                        .with(com.datastax.driver.core.querybuilder.QueryBuilder.set(VALUE_COLUMN_NAME, newDesiredValue))
                         .onlyIf(eq(VALUE_COLUMN_NAME, newCurrentValue));
                 com.datastax.driver.core.ResultSet resultSet = executeWithCheckTimeout(query, "persist[update]");
                 success = resultSet.wasApplied();

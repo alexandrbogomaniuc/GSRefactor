@@ -1,9 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.*;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.schemabuilder.SchemaBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -31,16 +27,16 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
     private static final String COLUMN_FAMILY_NAME = "ShortBetInfoCF3";
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_FIELD, DataType.cint(), false, false, true),
-                    new ColumnDefinition(BET_TIME_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(BANK_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(BET_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), BANK_ID_FIELD)
             .caching(Caching.NONE).compaction(CompactionStrategy.LEVELED)
             .gcGraceSeconds(TimeUnit.DAYS.toSeconds(1))
             .compression(Compression.DEFLATE)
-            .clusteringOrder(BET_TIME_FIELD, SchemaBuilder.Direction.DESC);
+            .clusteringOrder(BET_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC);
 
     @Override
     public TableDefinition getMainTableDefinition() {
@@ -53,12 +49,12 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
     }
 
     public void getByBank(long bankId, long startDate, long endDate, IShortBetInfoProcessor processor) throws Exception {
-        Statement query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(BANK_ID_FIELD, bankId))
-                .and(QueryBuilder.gte(BET_TIME_FIELD, startDate))
-                .and(QueryBuilder.lte(BET_TIME_FIELD, endDate));
-        ResultSet resultSet = execute(query, "getByBank");
-        for (Row row : resultSet) {
+                .and(com.datastax.driver.core.querybuilder.QueryBuilder.gte(BET_TIME_FIELD, startDate))
+                .and(com.datastax.driver.core.querybuilder.QueryBuilder.lte(BET_TIME_FIELD, endDate));
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByBank");
+        for (com.datastax.driver.core.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             ShortBetInfo info = TABLE.deserializeFromJson(json, ShortBetInfo.class);
 
@@ -78,13 +74,13 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
     }
 
     private List<ShortBetInfo> getByBankFromTable(long bankId, long startDate, long endDate, TableDefinition table) {
-        Statement query = getSelectColumnsQuery(table, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = getSelectColumnsQuery(table, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(BANK_ID_FIELD, bankId))
-                .and(QueryBuilder.gte(BET_TIME_FIELD, startDate))
-                .and(QueryBuilder.lte(BET_TIME_FIELD, endDate));
-        ResultSet resultSet = execute(query, "getByBank");
+                .and(com.datastax.driver.core.querybuilder.QueryBuilder.gte(BET_TIME_FIELD, startDate))
+                .and(com.datastax.driver.core.querybuilder.QueryBuilder.lte(BET_TIME_FIELD, endDate));
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByBank");
         List<ShortBetInfo> result = new ArrayList<>(resultSet.getAvailableWithoutFetching());
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             String json = row.getString(JSON_COLUMN_NAME);
             ShortBetInfo info = TABLE.deserializeFromJson(json, ShortBetInfo.class);
 
@@ -97,38 +93,38 @@ public class CassandraShortBetInfoPersister extends AbstractCassandraPersister<L
         return result;
     }
 
-    public void prepareToPersist(Map<Session, List<Statement>> statementsMap, ShortBetInfo betInfo,
+    public void prepareToPersist(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, ShortBetInfo betInfo,
                                  List<ByteBuffer> byteBuffersCollector, Integer ttl) {
-        List<Statement> statements = getOrCreateStatements(statementsMap);
+        List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
         String json = getMainTableDefinition().serializeToJson(betInfo);
         ByteBuffer byteBuffer = getMainTableDefinition().serializeToBytes(betInfo);
         byteBuffersCollector.add(byteBuffer);
-        Insert query = getInsertQuery();
+        com.datastax.driver.core.querybuilder.Insert query = getInsertQuery();
         query.value(BANK_ID_FIELD, betInfo.getBankId());
         query.value(BET_TIME_FIELD, betInfo.getTime());
         query.value(ACCOUNT_ID_FIELD, betInfo.getAccountId());
         query.value(SERIALIZED_COLUMN_NAME, byteBuffer);
         query.value(JSON_COLUMN_NAME, json);
         if (ttl != null) {
-            query.using(QueryBuilder.ttl(ttl));
+            query.using(com.datastax.driver.core.querybuilder.QueryBuilder.ttl(ttl));
         }
         statements.add(query);
     }
 
     public void persist(ShortBetInfo betInfo, Integer ttl) {
-        Insert query = getInsertQuery();
+        com.datastax.driver.core.querybuilder.Insert query = getInsertQuery();
         query.value(BANK_ID_FIELD, betInfo.getBankId());
         query.value(BET_TIME_FIELD, betInfo.getTime());
         query.value(ACCOUNT_ID_FIELD, betInfo.getAccountId());
         if (ttl != null) {
-            query.using(QueryBuilder.ttl(ttl));
+            query.using(com.datastax.driver.core.querybuilder.QueryBuilder.ttl(ttl));
         }
         String json = TABLE.serializeToJson(betInfo);
         ByteBuffer byteBuffer = TABLE.serializeToBytes(betInfo);
         try {
             query.value(SERIALIZED_COLUMN_NAME, byteBuffer);
             query.value(JSON_COLUMN_NAME, json);
-            execute(query, "persist", ConsistencyLevel.LOCAL_ONE);
+            execute(query, "persist", com.datastax.driver.core.ConsistencyLevel.LOCAL_ONE);
         } finally {
             releaseBuffer(byteBuffer);
         }

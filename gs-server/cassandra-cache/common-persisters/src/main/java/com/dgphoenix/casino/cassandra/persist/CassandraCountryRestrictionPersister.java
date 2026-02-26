@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -82,7 +81,7 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
     }
 
     public void delete(long objectId, RestrictionType type) {
-        com.datastax.driver.core.Statement query = QueryBuilder.delete()
+        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.delete()
                 .from(getMainColumnFamilyName())
                 .where()
                 .and(eq(OBJECT_ID, objectId))

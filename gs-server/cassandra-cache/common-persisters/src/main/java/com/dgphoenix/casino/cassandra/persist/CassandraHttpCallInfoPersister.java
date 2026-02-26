@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.querybuilder.Insert;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
@@ -64,7 +63,7 @@ public class CassandraHttpCallInfoPersister extends AbstractCassandraPersister<S
         Map<String, String> additionalInfo = httpCallInfo.getAdditionalInfo();
         String sessionId = additionalInfo.get(SESSION_ID.getAttributeName());
         String supportTicketId = additionalInfo.get(SUPPORT_TICKET_ID.getAttributeName());
-        Insert insert = getInsertQuery();
+        com.datastax.driver.core.querybuilder.Insert insert = getInsertQuery();
 
         if (sessionId != null) {
             insert.value(ID_FIELD, sessionId);

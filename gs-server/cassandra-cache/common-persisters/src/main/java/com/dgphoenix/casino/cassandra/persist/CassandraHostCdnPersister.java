@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -59,12 +58,12 @@ public class CassandraHostCdnPersister extends AbstractCassandraPersister<String
     }
 
     public List<CdnCheckResult> getCdnByIp(String ip) {
-        com.datastax.driver.core.Statement query = QueryBuilder.select()
+        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select()
                 .column(CDN_FIELD)
                 .column(TIME_FIELD)
                 .column(LAST_UPDATE_FIELD)
                 .from(COLUMN_FAMILY_NAME)
-                .where(QueryBuilder.eq(IP_FIELD, ip)).limit(1000);
+                .where(com.datastax.driver.core.querybuilder.QueryBuilder.eq(IP_FIELD, ip)).limit(1000);
         com.datastax.driver.core.ResultSet rows = execute(query, "getCdnByIp");
 
         List<CdnCheckResult> result = new ArrayList<>();
@@ -76,11 +75,11 @@ public class CassandraHostCdnPersister extends AbstractCassandraPersister<String
     }
 
     public void remove(String ip, String cdn) {
-        com.datastax.driver.core.Statement query = QueryBuilder.delete()
+        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.delete()
                 .all()
                 .from(COLUMN_FAMILY_NAME)
-                .where(QueryBuilder.eq(IP_FIELD, ip))
-                .and(QueryBuilder.eq(CDN_FIELD, cdn));
+                .where(com.datastax.driver.core.querybuilder.QueryBuilder.eq(IP_FIELD, ip))
+                .and(com.datastax.driver.core.querybuilder.QueryBuilder.eq(CDN_FIELD, cdn));
         execute(query, "deleteItem");
     }
 }

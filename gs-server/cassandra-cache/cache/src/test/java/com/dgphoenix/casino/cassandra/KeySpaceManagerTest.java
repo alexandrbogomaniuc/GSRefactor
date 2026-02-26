@@ -2,7 +2,6 @@ package com.dgphoenix.casino.cassandra;
 
 import com.codahale.metrics.Counter;
 import com.codahale.metrics.Snapshot;
-import com.datastax.driver.core.*;
 import com.dgphoenix.casino.cassandra.config.ClusterConfig;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -36,19 +35,19 @@ public class KeySpaceManagerTest {
     @Mock
     private KeyspaceConfiguration configuration;
     @Mock
-    private Cluster.Builder builder;
+    private com.datastax.driver.core.Cluster.Builder builder;
     @Mock
-    private Cluster cluster;
+    private com.datastax.driver.core.Cluster cluster;
     @Mock
-    private Metadata metadata;
+    private com.datastax.driver.core.Metadata metadata;
     @Mock
-    private KeyspaceMetadata keyspaceMetadata;
+    private com.datastax.driver.core.KeyspaceMetadata keyspaceMetadata;
     @Mock
-    private TableMetadata tableMetadata;
+    private com.datastax.driver.core.TableMetadata tableMetadata;
     @Mock
     private TableDefinition tableDefinition;
     @Mock
-    private Session session;
+    private com.datastax.driver.core.Session session;
     @Mock
     private PersistersFactory persistersFactory;
     @Mock
@@ -61,7 +60,7 @@ public class KeySpaceManagerTest {
     public void setUp() {
         when(cluster.getMetadata()).thenReturn(metadata);
         when(cluster.connect()).thenReturn(session);
-        when(configuration.buildCluster(any(Cluster.Builder.class))).thenReturn(cluster);
+        when(configuration.buildCluster(any(com.datastax.driver.core.Cluster.Builder.class))).thenReturn(cluster);
 
         when(clusterConfig.getKeySpace()).thenReturn("TestKS");
         when(clusterConfig.getReplicationStrategyClass()).thenReturn("org.apache.cassandra.locator.SimpleStrategy");
@@ -91,7 +90,7 @@ public class KeySpaceManagerTest {
     @Test
     public void testInitializationWithSchemaCreation() {
         when(configuration.isCreateSchema()).thenReturn(true);
-        when(configuration.buildCluster(any(Cluster.Builder.class))).thenReturn(cluster);
+        when(configuration.buildCluster(any(com.datastax.driver.core.Cluster.Builder.class))).thenReturn(cluster);
         when(cluster.connect(null)).thenReturn(session);
         when(persister.getAllTableDefinitions()).thenReturn(Collections.singletonList(tableDefinition));
 
@@ -103,7 +102,7 @@ public class KeySpaceManagerTest {
 
     @Test
     public void testInitializationWithCreateTable() {
-        when(configuration.buildCluster(any(Cluster.Builder.class))).thenReturn(cluster);
+        when(configuration.buildCluster(any(com.datastax.driver.core.Cluster.Builder.class))).thenReturn(cluster);
         when(cluster.connect(null)).thenReturn(session);
         when(metadata.getKeyspace(null)).thenReturn(keyspaceMetadata);
         when(persister.getAllTableDefinitions()).thenReturn(Collections.singletonList(tableDefinition));
@@ -116,7 +115,7 @@ public class KeySpaceManagerTest {
 
     @Test
     public void testInitializationWithSchemaUpdate() {
-        when(configuration.buildCluster(any(Cluster.Builder.class))).thenReturn(cluster);
+        when(configuration.buildCluster(any(com.datastax.driver.core.Cluster.Builder.class))).thenReturn(cluster);
         when(cluster.connect(null)).thenReturn(session);
         when(metadata.getKeyspace(null)).thenReturn(keyspaceMetadata);
         when(keyspaceMetadata.getTable(null)).thenReturn(tableMetadata);
@@ -139,7 +138,7 @@ public class KeySpaceManagerTest {
     @Test
     public void testShutdown() {
         when(configuration.isCreateSchema()).thenReturn(true);
-        when(configuration.buildCluster(any(Cluster.Builder.class))).thenReturn(cluster);
+        when(configuration.buildCluster(any(com.datastax.driver.core.Cluster.Builder.class))).thenReturn(cluster);
         when(cluster.connect(null)).thenReturn(session);
 
         keySpaceManager.init();
@@ -153,13 +152,13 @@ public class KeySpaceManagerTest {
     public void testAwaitOnlineHosts() {
         when(configuration.isCreateSchema()).thenReturn(true);
         when(configuration.getMinimumOnlineHosts()).thenReturn(2L);
-        Host firstHost = mock(Host.class);
+        com.datastax.driver.core.Host firstHost = mock(com.datastax.driver.core.Host.class);
         when(firstHost.isUp()).thenReturn(true);
-        Host secondHost = mock(Host.class);
+        com.datastax.driver.core.Host secondHost = mock(com.datastax.driver.core.Host.class);
         when(secondHost.isUp()).thenReturn(true);
-        Set<Host> hosts = ImmutableSet.<Host>builder().add(firstHost, secondHost).build();
+        Set<com.datastax.driver.core.Host> hosts = ImmutableSet.<com.datastax.driver.core.Host>builder().add(firstHost, secondHost).build();
         when(metadata.getAllHosts()).thenReturn(hosts);
-        when(configuration.buildCluster(any(Cluster.Builder.class))).thenReturn(cluster);
+        when(configuration.buildCluster(any(com.datastax.driver.core.Cluster.Builder.class))).thenReturn(cluster);
         when(cluster.connect(null)).thenReturn(session);
 
         keySpaceManager.init();
@@ -171,17 +170,17 @@ public class KeySpaceManagerTest {
         when(configuration.isCreateSchema()).thenReturn(true);
         when(configuration.getMinimumOnlineHosts()).thenReturn(2L);
         when(configuration.getLocalDataCenterName()).thenReturn("dc2");
-        Host firstHost = mock(Host.class);
+        com.datastax.driver.core.Host firstHost = mock(com.datastax.driver.core.Host.class);
         when(firstHost.getDatacenter()).thenReturn("dc1");
-        Host secondHost = mock(Host.class);
+        com.datastax.driver.core.Host secondHost = mock(com.datastax.driver.core.Host.class);
         when(secondHost.getDatacenter()).thenReturn("dc2");
         when(secondHost.isUp()).thenReturn(true);
-        Host thirdHost = mock(Host.class);
+        com.datastax.driver.core.Host thirdHost = mock(com.datastax.driver.core.Host.class);
         when(thirdHost.getDatacenter()).thenReturn("dc2");
         when(thirdHost.isUp()).thenReturn(true);
-        Set<Host> hosts = ImmutableSet.<Host>builder().add(firstHost, secondHost, thirdHost).build();
+        Set<com.datastax.driver.core.Host> hosts = ImmutableSet.<com.datastax.driver.core.Host>builder().add(firstHost, secondHost, thirdHost).build();
         when(metadata.getAllHosts()).thenReturn(hosts);
-        when(configuration.buildCluster(any(Cluster.Builder.class))).thenReturn(cluster);
+        when(configuration.buildCluster(any(com.datastax.driver.core.Cluster.Builder.class))).thenReturn(cluster);
         when(cluster.connect(null)).thenReturn(session);
 
         keySpaceManager.init();
@@ -191,17 +190,17 @@ public class KeySpaceManagerTest {
     @Test
     public void testDownHosts() {
         when(configuration.isCreateSchema()).thenReturn(true);
-        Host firstHost = mock(Host.class);
+        com.datastax.driver.core.Host firstHost = mock(com.datastax.driver.core.Host.class);
         when(firstHost.isUp()).thenReturn(true);
-        Host secondHost = mock(Host.class);
+        com.datastax.driver.core.Host secondHost = mock(com.datastax.driver.core.Host.class);
         when(secondHost.isUp()).thenReturn(false);
-        Host thirdHost = mock(Host.class);
+        com.datastax.driver.core.Host thirdHost = mock(com.datastax.driver.core.Host.class);
         when(thirdHost.isUp()).thenReturn(false);
-        Set<Host> hosts = ImmutableSet.<Host>builder().add(firstHost, secondHost, thirdHost).build();
+        Set<com.datastax.driver.core.Host> hosts = ImmutableSet.<com.datastax.driver.core.Host>builder().add(firstHost, secondHost, thirdHost).build();
         when(metadata.getAllHosts()).thenReturn(hosts);
 
         keySpaceManager.init();
-        Set<Host> downHosts = keySpaceManager.getDownHosts();
+        Set<com.datastax.driver.core.Host> downHosts = keySpaceManager.getDownHosts();
 
         assertEquals("Wrong size of down hosts set", 2, downHosts.size());
     }
@@ -209,18 +208,18 @@ public class KeySpaceManagerTest {
     @Test
     public void testDownHostAddresses() {
         when(configuration.isCreateSchema()).thenReturn(true);
-        Host firstHost = mock(Host.class);
+        com.datastax.driver.core.Host firstHost = mock(com.datastax.driver.core.Host.class);
         when(firstHost.isUp()).thenReturn(true);
 
-        Host secondHost = mock(Host.class);
+        com.datastax.driver.core.Host secondHost = mock(com.datastax.driver.core.Host.class);
         when(secondHost.isUp()).thenReturn(false);
         when(secondHost.getSocketAddress()).thenReturn(new InetSocketAddress("cassandra-down-1", 9042));
 
-        Host thirdHost = mock(Host.class);
+        com.datastax.driver.core.Host thirdHost = mock(com.datastax.driver.core.Host.class);
         when(thirdHost.isUp()).thenReturn(false);
         when(thirdHost.getSocketAddress()).thenReturn(new InetSocketAddress("cassandra-down-2", 9042));
 
-        Set<Host> hosts = ImmutableSet.<Host>builder().add(firstHost, secondHost, thirdHost).build();
+        Set<com.datastax.driver.core.Host> hosts = ImmutableSet.<com.datastax.driver.core.Host>builder().add(firstHost, secondHost, thirdHost).build();
         when(metadata.getAllHosts()).thenReturn(hosts);
 
         keySpaceManager.init();
@@ -234,13 +233,13 @@ public class KeySpaceManagerTest {
     @Test
     public void testAllHostAddresses() {
         when(configuration.isCreateSchema()).thenReturn(true);
-        Host firstHost = mock(Host.class);
+        com.datastax.driver.core.Host firstHost = mock(com.datastax.driver.core.Host.class);
         when(firstHost.getSocketAddress()).thenReturn(new InetSocketAddress("cassandra-up", 9042));
 
-        Host secondHost = mock(Host.class);
+        com.datastax.driver.core.Host secondHost = mock(com.datastax.driver.core.Host.class);
         when(secondHost.getSocketAddress()).thenReturn(new InetSocketAddress("cassandra-down-1", 9042));
 
-        Set<Host> hosts = ImmutableSet.<Host>builder().add(firstHost, secondHost).build();
+        Set<com.datastax.driver.core.Host> hosts = ImmutableSet.<com.datastax.driver.core.Host>builder().add(firstHost, secondHost).build();
         when(metadata.getAllHosts()).thenReturn(hosts);
 
         keySpaceManager.init();
@@ -261,8 +260,8 @@ public class KeySpaceManagerTest {
     @Test
     public void testMetricsSnapshotAfterInit() {
         when(configuration.isCreateSchema()).thenReturn(true);
-        Metrics metrics = mock(Metrics.class);
-        Metrics.Errors errorMetrics = mock(Metrics.Errors.class);
+        com.datastax.driver.core.Metrics metrics = mock(com.datastax.driver.core.Metrics.class);
+        com.datastax.driver.core.Metrics.Errors errorMetrics = mock(com.datastax.driver.core.Metrics.Errors.class);
         com.codahale.metrics.Timer requestsTimer = mock(com.codahale.metrics.Timer.class);
         Snapshot latencySnapshot = mock(Snapshot.class);
 

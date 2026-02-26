@@ -1,7 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.querybuilder.Batch;
-import com.datastax.driver.core.querybuilder.Insert;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -54,10 +52,10 @@ public class CassandraCurrencyRatesByDatePersister extends AbstractCassandraPers
     }
 
     public void createOrUpdate(long date, Set<CurrencyRate> currencyRates) {
-        Batch batch = batch();
+        com.datastax.driver.core.querybuilder.Batch batch = batch();
         long normalizedDate = normalizeDate(date);
         for (CurrencyRate currencyRate : currencyRates) {
-            Insert query = getInsertQuery()
+            com.datastax.driver.core.querybuilder.Insert query = getInsertQuery()
                     .value(SOURCE_FIELD, currencyRate.getSourceCurrency())
                     .value(DEST_FIELD, currencyRate.getDestinationCurrency())
                     .value(UPDATE_DATE_FIELD, normalizedDate)

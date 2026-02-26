@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.*;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -28,10 +27,10 @@ public class CassandraTournamentRankPersister extends AbstractCassandraPersister
 
     private static final TableDefinition TOURNAMENT_RANK_TABLE = new TableDefinition(TOURNAMENT_RANK_CF,
             Arrays.asList(
-                    new ColumnDefinition(CAMPAIGN_ID_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(CAMPAIGN_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), CAMPAIGN_ID_FIELD)
             .compaction(CompactionStrategy.LEVELED);
 
@@ -40,14 +39,14 @@ public class CassandraTournamentRankPersister extends AbstractCassandraPersister
         return TOURNAMENT_RANK_TABLE;
     }
 
-    public void prepareToPersist(Map<Session, List<Statement>> statementsMap, TournamentMemberRanks ranks,
+    public void prepareToPersist(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, TournamentMemberRanks ranks,
                                  List<ByteBuffer> byteBuffersCollector) {
-        List<Statement> statements = getOrCreateStatements(statementsMap);
+        List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
         for (TournamentMemberRank rank : ranks.getRanks()) {
             String json = getMainTableDefinition().serializeToJson(rank);
             ByteBuffer byteBuffer = getMainTableDefinition().serializeToBytes(rank);
             byteBuffersCollector.add(byteBuffer);
-            Statement query = getInsertQuery(getTtl())
+            com.datastax.driver.core.Statement query = getInsertQuery(getTtl())
                     .value(CAMPAIGN_ID_FIELD, rank.getCampaignId())
                     .value(ACCOUNT_ID_FIELD, rank.getAccountId())
                     .value(SERIALIZED_COLUMN_NAME, byteBuffer)
@@ -104,10 +103,10 @@ public class CassandraTournamentRankPersister extends AbstractCassandraPersister
     }
 
     public TournamentMemberRank getForAccount(long campaignId, long accountId) {
-        ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(CAMPAIGN_ID_FIELD, campaignId))
                 .and(eq(ACCOUNT_ID_FIELD, accountId)), "getForAccount");
-        Row row = resultSet.one();
+        com.datastax.driver.core.Row row = resultSet.one();
         TournamentMemberRank result = null;
         if (row != null) {
             result = getMainTableDefinition()
@@ -122,10 +121,10 @@ public class CassandraTournamentRankPersister extends AbstractCassandraPersister
     }
 
     public List<TournamentMemberRank> getByCampaign(long campaignId) {
-        ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.ResultSet resultSet = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .where(eq(CAMPAIGN_ID_FIELD, campaignId)), "getByCampaign");
         List<TournamentMemberRank> result = new ArrayList<>();
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             TournamentMemberRank rank = 
                     getMainTableDefinition().deserializeFromJson(row.getString(JSON_COLUMN_NAME),
                             TournamentMemberRank.class);

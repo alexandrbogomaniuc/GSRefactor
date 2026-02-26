@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
@@ -49,7 +48,7 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
                     new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
                     new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), ACCOUNT_ID_FIELD)
-            .clusteringOrder(AWARD_TIME_FIELD, Direction.DESC);
+            .clusteringOrder(AWARD_TIME_FIELD, com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction.DESC);
 
     private CassandraBonusArchivePersister() {
         super();

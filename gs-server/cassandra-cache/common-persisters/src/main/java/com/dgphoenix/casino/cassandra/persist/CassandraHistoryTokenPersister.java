@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -48,7 +47,7 @@ public class CassandraHistoryTokenPersister extends AbstractCassandraPersister<S
         long startTime = System.currentTimeMillis();
         BankInfo bankInfo = BankInfoCache.getInstance().getBankInfo(bankId);
         int ttl = (ttlSeconds != null) ? (int) TimeUnit.SECONDS.toMillis(ttlSeconds) : bankInfo.getHistoryTokenTTL();
-        com.datastax.driver.core.Statement insert = QueryBuilder.insertInto(TABLE.getTableName())
+        com.datastax.driver.core.Statement insert = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(TABLE.getTableName())
                 .value(TOKEN_FIELD, token)
                 .value(ROUND_ID_FIELD, roundId)
                 .value(EXP_TIME, ((ttl != 0) ? ttl + startTime : Long.MAX_VALUE));

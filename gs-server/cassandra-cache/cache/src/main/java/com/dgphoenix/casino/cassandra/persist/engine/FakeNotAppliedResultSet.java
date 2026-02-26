@@ -1,10 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.engine;
 
-import com.datastax.driver.core.ColumnDefinitions;
-import com.datastax.driver.core.ExecutionInfo;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.exceptions.DriverException;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.Collections;
@@ -15,19 +10,19 @@ import java.util.List;
  * User: Grien
  * Date: 24.12.2014 17:16
  */
-public class FakeNotAppliedResultSet implements ResultSet {
-    private DriverException exception;
+public class FakeNotAppliedResultSet implements com.datastax.driver.core.ResultSet {
+    private com.datastax.driver.core.exceptions.DriverException exception;
 
-    public FakeNotAppliedResultSet(DriverException exception) {
+    public FakeNotAppliedResultSet(com.datastax.driver.core.exceptions.DriverException exception) {
         this.exception = exception;
     }
 
-    public DriverException getException() {
+    public com.datastax.driver.core.exceptions.DriverException getException() {
         return exception;
     }
 
     @Override
-    public ColumnDefinitions getColumnDefinitions() {
+    public com.datastax.driver.core.ColumnDefinitions getColumnDefinitions() {
         return null;
     }
 
@@ -57,7 +52,7 @@ public class FakeNotAppliedResultSet implements ResultSet {
     }
 
     @Override
-    public ListenableFuture<ResultSet> fetchMoreResults() {
+    public ListenableFuture<com.datastax.driver.core.ResultSet> fetchMoreResults() {
         return null;
     }
 
@@ -68,12 +63,12 @@ public class FakeNotAppliedResultSet implements ResultSet {
 
 
     @Override
-    public ExecutionInfo getExecutionInfo() {
+    public com.datastax.driver.core.ExecutionInfo getExecutionInfo() {
         return null;
     }
 
     @Override
-    public List<ExecutionInfo> getAllExecutionInfo() {
+    public List<com.datastax.driver.core.ExecutionInfo> getAllExecutionInfo() {
         return null;
     }
 

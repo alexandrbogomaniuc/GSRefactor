@@ -1,7 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.engine.configuration;
 
-import com.datastax.driver.core.schemabuilder.SchemaBuilder.KeyCaching;
-import com.datastax.driver.core.schemabuilder.TableOptions.CachingRowsPerPartition;
 
 import static com.datastax.driver.core.schemabuilder.SchemaBuilder.noRows;
 import static com.datastax.driver.core.schemabuilder.SchemaBuilder.rows;
@@ -14,26 +12,26 @@ public class Caching {
 
     public static final int CACHING_ROW_NUMBER = 10000;
 
-    public static final Caching NONE = new Caching(KeyCaching.NONE, noRows());
-    public static final Caching ACTUAL_DATA = new Caching(KeyCaching.NONE, rows(CACHING_ROW_NUMBER));
+    public static final Caching NONE = new Caching(com.datastax.driver.core.schemabuilder.SchemaBuilder.KeyCaching.NONE, noRows());
+    public static final Caching ACTUAL_DATA = new Caching(com.datastax.driver.core.schemabuilder.SchemaBuilder.KeyCaching.NONE, rows(CACHING_ROW_NUMBER));
 
-    private final KeyCaching keysCache;
-    private final CachingRowsPerPartition rowsCache;
+    private final com.datastax.driver.core.schemabuilder.SchemaBuilder.KeyCaching keysCache;
+    private final com.datastax.driver.core.schemabuilder.TableOptions.CachingRowsPerPartition rowsCache;
 
-    private Caching(KeyCaching keysCache, CachingRowsPerPartition rowsCache) {
+    private Caching(com.datastax.driver.core.schemabuilder.SchemaBuilder.KeyCaching keysCache, com.datastax.driver.core.schemabuilder.TableOptions.CachingRowsPerPartition rowsCache) {
         this.keysCache = keysCache;
         this.rowsCache = rowsCache;
     }
 
     public static Caching get(int cachingRowNumber) {
-        return new Caching(KeyCaching.NONE, rows(cachingRowNumber));
+        return new Caching(com.datastax.driver.core.schemabuilder.SchemaBuilder.KeyCaching.NONE, rows(cachingRowNumber));
     }
 
-    public KeyCaching getKeysCache() {
+    public com.datastax.driver.core.schemabuilder.SchemaBuilder.KeyCaching getKeysCache() {
         return keysCache;
     }
 
-    public CachingRowsPerPartition getRowsCache() {
+    public com.datastax.driver.core.schemabuilder.TableOptions.CachingRowsPerPartition getRowsCache() {
         return rowsCache;
     }
 }

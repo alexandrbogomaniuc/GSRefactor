@@ -1,8 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.engine.configuration;
 
-import com.datastax.driver.core.schemabuilder.CompressionOptions3;
-import com.datastax.driver.core.schemabuilder.TableOptions;
-import com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions;
 
 /**
  * @author <a href="mailto:fateyev@dgphoenix.com">Anton Fateyev</a>
@@ -10,19 +7,19 @@ import com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions;
  */
 public enum Compression {
 
-    NONE(new CompressionOptions3(TableOptions.CompressionOptions.Algorithm.NONE)),
-    CLIENT(new CompressionOptions3(TableOptions.CompressionOptions.Algorithm.NONE)),
-    DEFLATE(new CompressionOptions3(TableOptions.CompressionOptions.Algorithm.DEFLATE)),
-    LZ4(new CompressionOptions3(TableOptions.CompressionOptions.Algorithm.LZ4)),
-    SNAPPY(new CompressionOptions3(TableOptions.CompressionOptions.Algorithm.SNAPPY));
+    NONE(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE)),
+    CLIENT(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.NONE)),
+    DEFLATE(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.DEFLATE)),
+    LZ4(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.LZ4)),
+    SNAPPY(new com.datastax.driver.core.schemabuilder.CompressionOptions3(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions.Algorithm.SNAPPY));
 
-    private final CompressionOptions compressionOptions;
+    private final com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions compressionOptions;
 
-    Compression(CompressionOptions compressionOptions) {
+    Compression(com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions compressionOptions) {
         this.compressionOptions = compressionOptions;
     }
 
-    public CompressionOptions getCompressionOptions() {
+    public com.datastax.driver.core.schemabuilder.TableOptions.CompressionOptions getCompressionOptions() {
         return compressionOptions;
     }
 }

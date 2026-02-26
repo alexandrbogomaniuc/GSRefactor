@@ -1,7 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.*;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -28,10 +26,10 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(GAME_SESSION_ID_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(BET_ID_FIELD, DataType.cint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(GAME_SESSION_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(BET_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), GAME_SESSION_ID_FIELD)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.getSizeTired(true, TimeUnit.HOURS.toSeconds(1), 0.0))
@@ -47,12 +45,12 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
 
     public PlayerBet getPlayerBet(long gameSessionId, long betId) {
         long now = System.currentTimeMillis();
-        Statement query = QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(getMainColumnFamilyName())
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId))
                 .and(eq(BET_ID_FIELD, (int) betId));
-        ResultSet resultSet = execute(query, "getPlayerBet");
-        Row row = resultSet.one();
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getPlayerBet");
+        com.datastax.driver.core.Row row = resultSet.one();
 
         PlayerBet playerBet = null;
         if (row != null) {
@@ -68,8 +66,8 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
         return playerBet;
     }
 
-    ResultSet getResultSetByGameSessionId(long gameSessionId) {
-        Statement query = QueryBuilder.select(BET_ID_FIELD, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+    com.datastax.driver.core.ResultSet getResultSetByGameSessionId(long gameSessionId) {
+        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(BET_ID_FIELD, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(COLUMN_FAMILY_NAME)
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId));
         return execute(query, "getResultSetByGameSessionId get from temp Table");
@@ -77,8 +75,8 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
 
     public List<PlayerBet> getOnlinePayerBets(long gameSessionId) {
         Map<Integer, PlayerBet> betsMap = new HashMap<>();
-        ResultSet resultSet = getResultSetByGameSessionId(gameSessionId);
-        for (Row row : resultSet) {
+        com.datastax.driver.core.ResultSet resultSet = getResultSetByGameSessionId(gameSessionId);
+        for (com.datastax.driver.core.Row row : resultSet) {
             if (row != null) {
                 int betId = row.getInt(BET_ID_FIELD);
                 if (!betsMap.containsKey(betId)) {
@@ -104,26 +102,26 @@ public class CassandraTempBetPersister extends AbstractCassandraPersister<Long, 
         return new ArrayList<>(betsMap.values());
     }
 
-    ResultSet getResultSetByGameSessionIdAndRounds(long gameSessionId, Set<Long> betIds) {
-        Statement query = QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+    com.datastax.driver.core.ResultSet getResultSetByGameSessionIdAndRounds(long gameSessionId, Set<Long> betIds) {
+        com.datastax.driver.core.Statement query = com.datastax.driver.core.querybuilder.QueryBuilder.select(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
                 .from(COLUMN_FAMILY_NAME)
                 .where(eq(GAME_SESSION_ID_FIELD, gameSessionId))
-                .and(QueryBuilder.in(BET_ID_FIELD, betIds.toArray()));
+                .and(com.datastax.driver.core.querybuilder.QueryBuilder.in(BET_ID_FIELD, betIds.toArray()));
         return execute(query, "getResultSetByGameSessionIdAndRounds from temp Table");
     }
 
-    void addDeleteStatement(Map<Session, List<Statement>> statementsMap, long gameSessionId) {
-        List<Statement> statements = getOrCreateStatements(statementsMap);
+    void addDeleteStatement(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId) {
+        List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
         statements.add(addItemDeletion(COLUMN_FAMILY_NAME, gameSessionId));
     }
 
-    public void prepareToPersistBet(Map<Session, List<Statement>> statementsMap, long gameSessionId, PlayerBet bet,
+    public void prepareToPersistBet(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, long gameSessionId, PlayerBet bet,
                                     List<ByteBuffer> byteBuffersCollector) {
         if (bet == null) {
             getLog().warn("persist: empty bet, gameSessionId={}", gameSessionId);
             return;
         }
-        List<Statement> statements = getOrCreateStatements(statementsMap);
+        List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
         String json = TABLE.serializeToJson(bet);
         ByteBuffer bytes = TABLE.serializeToBytes(bet);
         byteBuffersCollector.add(bytes);

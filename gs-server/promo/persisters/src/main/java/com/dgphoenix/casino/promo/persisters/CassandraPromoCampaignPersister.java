@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.querybuilder.Batch;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -72,7 +71,7 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
         ByteBuffer campaignAsBytes = getMainTableDefinition().serializeWithClassToBytes(campaign);
         String json = getMainTableDefinition().serializeWithClassToJson(campaign);
         try {
-            Batch batch = batch();
+            com.datastax.driver.core.querybuilder.Batch batch = batch();
             TableDefinition storeTable = getStoreTableForStatus(campaign.getStatus());
 
             IPromoCampaign storedCampaign = get(campaign.getId());
@@ -145,7 +144,7 @@ public class CassandraPromoCampaignPersister extends AbstractCassandraPersister<
         return BaseGameCache.getInstance().getAllGamesSet(bankId, defaultCurrency);
     }
 
-    private void addDeletion(Batch batch, long bankId, long gameId, long campaignId) {
+    private void addDeletion(com.datastax.driver.core.querybuilder.Batch batch, long bankId, long gameId, long campaignId) {
         batch.add(addItemDeletion(CAMPAIGN_BY_BANK_AND_GAME_TABLE.getTableName(),
                 eq(BANK_ID, bankId), eq(GAME_ID, gameId), eq(CAMPAIGN_ID, campaignId)));
     }

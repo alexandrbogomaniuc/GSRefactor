@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.inject;
 
-import com.datastax.driver.core.TableMetadata;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.Logger;
@@ -22,7 +21,7 @@ public class AbstractPersister implements ICassandraPersister {
     }
 
     @Override
-    public void updateTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition, TableMetadata tableMetadata) {
+    public void updateTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition, com.datastax.driver.core.TableMetadata tableMetadata) {
 
     }
 

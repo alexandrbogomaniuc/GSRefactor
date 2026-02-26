@@ -1,7 +1,5 @@
 package com.dgphoenix.casino.transactiondata;
 
-import com.datastax.driver.core.CodecRegistry;
-import com.datastax.driver.core.TypeCodec;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
 import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
@@ -247,8 +245,8 @@ public class BasicTransactionDataStorageHelper implements ITransactionDataStorag
             return buffer == null ? null : (T) getObjectTypeCodec().deserialize(buffer, PROTOCOL_VERSION);
         }
 
-        private TypeCodec<Object> getObjectTypeCodec() {
-            TypeCodec<Object> objectTypeCodec = CodecRegistry.DEFAULT_INSTANCE.codecFor(dataType);
+        private com.datastax.driver.core.TypeCodec<Object> getObjectTypeCodec() {
+            com.datastax.driver.core.TypeCodec<Object> objectTypeCodec = com.datastax.driver.core.CodecRegistry.DEFAULT_INSTANCE.codecFor(dataType);
             if (objectTypeCodec == null) {
                 throw new RuntimeException("Cannot find codec for data type: " + dataType);
             }

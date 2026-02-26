@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -44,8 +43,8 @@ public class CassandraPromoCampaignStatisticsPersister extends AbstractCassandra
             execute(getUpdateQuery()
                     .where(eq(CAMPAIGN_ID, campaignId))
                     .and(eq(GS_ID, gsId))
-                    .with(QueryBuilder.set(ROUNDS_COUNT, current.getKey() + roundsCountDelta))
-                    .and(QueryBuilder.set(BET_SUM, current.getValue() + betSumDelta)), "increment:update");
+                    .with(com.datastax.driver.core.querybuilder.QueryBuilder.set(ROUNDS_COUNT, current.getKey() + roundsCountDelta))
+                    .and(com.datastax.driver.core.querybuilder.QueryBuilder.set(BET_SUM, current.getValue() + betSumDelta)), "increment:update");
         }
     }
 

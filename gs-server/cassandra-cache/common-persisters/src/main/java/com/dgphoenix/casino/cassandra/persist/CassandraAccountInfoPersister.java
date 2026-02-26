@@ -1,8 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.*;
-import com.datastax.driver.core.exceptions.QueryExecutionException;
-import com.datastax.driver.core.querybuilder.*;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -44,9 +41,9 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
     private static final Logger LOG = LogManager.getLogger(CassandraAccountInfoPersister.class);
     private static final TableDefinition TABLE = new TableDefinition(ACCOUNT_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), KEY)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED)
@@ -55,9 +52,9 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
 
     private static final TableDefinition EXT_ID_INDEX_TABLE = new TableDefinition(EXT_ID_CF_INDEX,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_FIELD, DataType.cint(), false, false, true),
-                    new ColumnDefinition(EXTERNAL_ID_FIELD, DataType.text(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, DataType.bigint(), false, false, false)
+                    new ColumnDefinition(BANK_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(EXTERNAL_ID_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false)
             ), BANK_ID_FIELD)
             .caching(Caching.ACTUAL_DATA)
             .compaction(CompactionStrategy.LEVELED)
@@ -66,9 +63,9 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
 
     private static final TableDefinition BANK_TESTER_ID_INDEX_TABLE = new TableDefinition(BANK_TESTER_CF_INDEX,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_FIELD, DataType.cint(), false, false, true),
-                    new ColumnDefinition(EXTERNAL_ID_FIELD, DataType.text(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, DataType.bigint(), false, false, false)
+                    new ColumnDefinition(BANK_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(EXTERNAL_ID_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false)
             ), BANK_ID_FIELD)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED)
@@ -94,7 +91,7 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
         return LOG;
     }
 
-    public void prepareToPersist(Map<Session, List<Statement>> statementsMap, AccountInfo account, List<ByteBuffer> byteBuffersCollector) {
+    public void prepareToPersist(Map<com.datastax.driver.core.Session, List<com.datastax.driver.core.Statement>> statementsMap, AccountInfo account, List<ByteBuffer> byteBuffersCollector) {
         if (account.isGuest()) {
             LOG.warn("prepareToPersist: persist skipped [this may be error, please fix], found guest account: {}",
                     account.getId());
@@ -103,13 +100,13 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
         if (LOG.isDebugEnabled()) {
             LOG.debug("prepareToPersist: {}", account.getId());
         }
-        List<Statement> statements = getOrCreateStatements(statementsMap);
+        List<com.datastax.driver.core.Statement> statements = getOrCreateStatements(statementsMap);
         ByteBuffer bytes = TABLE.serializeToBytes(account);
         byteBuffersCollector.add(bytes);
         String json = TABLE.serializeToJson(account);
         statements.add(getUpdateQuery(account.getId()).with().
-                and(QueryBuilder.set(SERIALIZED_COLUMN_NAME, bytes)).
-                and(QueryBuilder.set(JSON_COLUMN_NAME, json)));
+                and(com.datastax.driver.core.querybuilder.QueryBuilder.set(SERIALIZED_COLUMN_NAME, bytes)).
+                and(com.datastax.driver.core.querybuilder.QueryBuilder.set(JSON_COLUMN_NAME, json)));
     }
 
     public void persist(AccountInfo account) {
@@ -134,19 +131,19 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
             time = lastTimestamp + 1;
         }
         LOG.debug("persist account: {}, time={}, lastTimestamp={}", account.getId(), time, lastTimestamp);
-        Update query = getUpdateQuery(account.getId());
-        query.using(QueryBuilder.timestamp(time));
+        com.datastax.driver.core.querybuilder.Update query = getUpdateQuery(account.getId());
+        query.using(com.datastax.driver.core.querybuilder.QueryBuilder.timestamp(time));
         ByteBuffer byteBuffer = TABLE.serializeToBytes(account);
         String json = TABLE.serializeToJson(account);
-        ResultSet result = null;
+        com.datastax.driver.core.ResultSet result = null;
         try {
-            query.with(QueryBuilder.set(SERIALIZED_COLUMN_NAME, byteBuffer));
-            query.with(QueryBuilder.set(JSON_COLUMN_NAME, json));
+            query.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(SERIALIZED_COLUMN_NAME, byteBuffer));
+            query.with(com.datastax.driver.core.querybuilder.QueryBuilder.set(JSON_COLUMN_NAME, json));
             if (newAccount) {
-                Batch batch = QueryBuilder.batch();
+                com.datastax.driver.core.querybuilder.Batch batch = com.datastax.driver.core.querybuilder.QueryBuilder.batch();
                 batch.add(query);
 
-                Insert indexQuery = QueryBuilder.insertInto(EXT_ID_CF_INDEX);
+                com.datastax.driver.core.querybuilder.Insert indexQuery = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(EXT_ID_CF_INDEX);
                 indexQuery.value(BANK_ID_FIELD, account.getBankId()).
                         value(EXTERNAL_ID_FIELD, account.getExternalId()).
                         value(ACCOUNT_ID_FIELD, account.getId());
@@ -200,10 +197,10 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
     }
 
     private Long getAccountId(long bankId, String externalId, String callerClassMethodIdentification) {
-        Select query = QueryBuilder.select(ACCOUNT_ID_FIELD).from(EXT_ID_CF_INDEX);
+        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select(ACCOUNT_ID_FIELD).from(EXT_ID_CF_INDEX);
         query.where(eq(BANK_ID_FIELD, (int) bankId)).and(eq(EXTERNAL_ID_FIELD, externalId));
-        ResultSet resultSet = execute(query, callerClassMethodIdentification);
-        Row row = resultSet.one();
+        com.datastax.driver.core.ResultSet resultSet = execute(query, callerClassMethodIdentification);
+        com.datastax.driver.core.Row row = resultSet.one();
         Long accountId = null;
         if (row != null) {
             accountId = row.getLong(ACCOUNT_ID_FIELD);
@@ -215,7 +212,7 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
         AccountInfo accountInfo = get(id);
         LOG.debug("delete: {}", accountInfo);
         if (accountInfo != null) {
-            Delete query = QueryBuilder.delete().from(EXT_ID_INDEX_TABLE.getTableName());
+            com.datastax.driver.core.querybuilder.Delete query = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(EXT_ID_INDEX_TABLE.getTableName());
             query.where(eq(BANK_ID_FIELD, accountInfo.getBankId()))
                     .and(eq(EXTERNAL_ID_FIELD, accountInfo.getExternalId()));
             execute(query, " delete accountExtIndex");
@@ -227,19 +224,19 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
     public List<Pair<String, Long>> getExtAccountIdsPair(long bankId) {
         long now = System.currentTimeMillis();
         ArrayList<Pair<String, Long>> result = new ArrayList<>();
-        Select query = QueryBuilder.select(EXTERNAL_ID_FIELD, ACCOUNT_ID_FIELD).from(EXT_ID_CF_INDEX);
+        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select(EXTERNAL_ID_FIELD, ACCOUNT_ID_FIELD).from(EXT_ID_CF_INDEX);
         query.where(eq(BANK_ID_FIELD, bankId));
         try {
-            ResultSet resultSet = execute(query, "getExtAccountIdsPair");
-            for (Row row : resultSet) {
+            com.datastax.driver.core.ResultSet resultSet = execute(query, "getExtAccountIdsPair");
+            for (com.datastax.driver.core.Row row : resultSet) {
                 String extId = row.getString(EXTERNAL_ID_FIELD);
                 long accountId = row.getLong(ACCOUNT_ID_FIELD);
                 result.add(new Pair<>(extId, accountId));
             }
             StatisticsManager.getInstance().updateRequestStatistics("getExtAccountIdsPair",
                     System.currentTimeMillis() - now);
-        } catch (QueryExecutionException e) {
-            getLog().error(getClass().getSimpleName() + ":getExtAccountIdsPair execute QueryExecutionException, " +
+        } catch (com.datastax.driver.core.exceptions.QueryExecutionException e) {
+            getLog().error(getClass().getSimpleName() + ":getExtAccountIdsPair execute com.datastax.driver.core.exceptions.QueryExecutionException, " +
                     "duration ms=" + (System.currentTimeMillis() - now), e);
             throw e;
         }
@@ -250,17 +247,17 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
     public List<Long> getAccountIds(long bankId) {
         long now = System.currentTimeMillis();
         ArrayList<Long> result = new ArrayList<>();
-        Select query = QueryBuilder.select(ACCOUNT_ID_FIELD).from(EXT_ID_CF_INDEX);
+        com.datastax.driver.core.querybuilder.Select query = com.datastax.driver.core.querybuilder.QueryBuilder.select(ACCOUNT_ID_FIELD).from(EXT_ID_CF_INDEX);
         query.where(eq(BANK_ID_FIELD, bankId));
         try {
-            ResultSet resultSet = execute(query, "getAccountIds");
-            for (Row row : resultSet) {
+            com.datastax.driver.core.ResultSet resultSet = execute(query, "getAccountIds");
+            for (com.datastax.driver.core.Row row : resultSet) {
                 result.add(row.getLong(ACCOUNT_ID_FIELD));
 
             }
             StatisticsManager.getInstance().updateRequestStatistics("getAccountIds", System.currentTimeMillis() - now);
-        } catch (QueryExecutionException e) {
-            getLog().error(getClass().getSimpleName() + ":getAccountIds execute QueryExecutionException, duration ms=" +
+        } catch (com.datastax.driver.core.exceptions.QueryExecutionException e) {
+            getLog().error(getClass().getSimpleName() + ":getAccountIds execute com.datastax.driver.core.exceptions.QueryExecutionException, duration ms=" +
                     (System.currentTimeMillis() - now), e);
             throw e;
         }
@@ -268,9 +265,9 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
     }
 
     public void exportAccounts(ObjectOutputStream outStream, Long bankId) throws IOException {
-        Iterator<Row> all = bankId == null ? getAll() : getAll(eq(BANK_ID_FIELD, bankId));
+        Iterator<com.datastax.driver.core.Row> all = bankId == null ? getAll() : getAll(eq(BANK_ID_FIELD, bankId));
         while (all.hasNext()) {
-            Row row = all.next();
+            com.datastax.driver.core.Row row = all.next();
             String json = row.getString(JSON_COLUMN_NAME);
             AccountInfo accountInfo = TABLE.deserializeFromJson(json, AccountInfo.class);
 
@@ -290,11 +287,11 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
     }
 
     public Map<Long, AccountInfo> getByIds(Collection<Long> accountIds) {
-        Select query = getSelectColumnsQuery(KEY, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where(QueryBuilder.in(KEY, accountIds.toArray()));
-        ResultSet resultSet = execute(query, "getByIds");
+        com.datastax.driver.core.querybuilder.Select query = getSelectColumnsQuery(KEY, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
+        query.where(com.datastax.driver.core.querybuilder.QueryBuilder.in(KEY, accountIds.toArray()));
+        com.datastax.driver.core.ResultSet resultSet = execute(query, "getByIds");
         Map<Long, AccountInfo> result = new HashMap<>();
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             long accountId = row.getLong(KEY);
             String json = row.getString(JSON_COLUMN_NAME);
             AccountInfo ai = TABLE.deserializeFromJson(json, AccountInfo.class);
@@ -312,9 +309,9 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
 
     @Override
     public void processAll(TableProcessor<Pair<String, AccountInfo>> tableProcessor) throws IOException {
-        Iterator<Row> iterator = getAll();
+        Iterator<com.datastax.driver.core.Row> iterator = getAll();
         while (iterator.hasNext()) {
-            Row row = iterator.next();
+            com.datastax.driver.core.Row row = iterator.next();
             processRow(row, tableProcessor);
         }
     }
@@ -325,17 +322,17 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
         if ("byBank".equals(conditionName)) {
             Long bankId = (Long) conditionValues[0];
             List<Long> accountIds = getAccountIds(bankId);
-            Select query = getSelectColumnsQuery(KEY, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-            query.where(QueryBuilder.in(KEY, accountIds.toArray()));
-            ResultSet resultSet = execute(query, "AccountInfoPersister: processByCondition byIds");
-            for (Row row : resultSet) {
+            com.datastax.driver.core.querybuilder.Select query = getSelectColumnsQuery(KEY, SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
+            query.where(com.datastax.driver.core.querybuilder.QueryBuilder.in(KEY, accountIds.toArray()));
+            com.datastax.driver.core.ResultSet resultSet = execute(query, "AccountInfoPersister: processByCondition byIds");
+            for (com.datastax.driver.core.Row row : resultSet) {
                 processRow(row, tableProcessor);
             }
         }
     }
 
     public void persistTesterIndex(AccountInfo account) {
-        Insert indexQuery = QueryBuilder.insertInto(BANK_TESTER_CF_INDEX);
+        com.datastax.driver.core.querybuilder.Insert indexQuery = com.datastax.driver.core.querybuilder.QueryBuilder.insertInto(BANK_TESTER_CF_INDEX);
         indexQuery.value(BANK_ID_FIELD, account.getBankId()).
                 value(EXTERNAL_ID_FIELD, account.getExternalId()).
                 value(ACCOUNT_ID_FIELD, account.getId());
@@ -343,25 +340,25 @@ public class CassandraAccountInfoPersister extends AbstractCassandraPersister<Lo
     }
 
     public void removeTesterIndex(AccountInfo account) {
-        Delete delete = QueryBuilder.delete().from(BANK_TESTER_CF_INDEX);
-        delete.where(QueryBuilder.eq(BANK_ID_FIELD, account.getBankId())).
-                and(QueryBuilder.eq(EXTERNAL_ID_FIELD, account.getExternalId()));
+        com.datastax.driver.core.querybuilder.Delete delete = com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(BANK_TESTER_CF_INDEX);
+        delete.where(com.datastax.driver.core.querybuilder.QueryBuilder.eq(BANK_ID_FIELD, account.getBankId())).
+                and(com.datastax.driver.core.querybuilder.QueryBuilder.eq(EXTERNAL_ID_FIELD, account.getExternalId()));
         execute(delete, "AccountInfoPersister: refreshTesterIndex:delete");
     }
 
     public Set<String> getTestersExternalId(long bankId) {
-        Select select = QueryBuilder.select(EXTERNAL_ID_FIELD).from(BANK_TESTER_CF_INDEX);
-        select.where(QueryBuilder.eq(BANK_ID_FIELD, bankId));
-        ResultSet resultSet = execute(select, "AccountInfoPersister: getTestersExternalId");
+        com.datastax.driver.core.querybuilder.Select select = com.datastax.driver.core.querybuilder.QueryBuilder.select(EXTERNAL_ID_FIELD).from(BANK_TESTER_CF_INDEX);
+        select.where(com.datastax.driver.core.querybuilder.QueryBuilder.eq(BANK_ID_FIELD, bankId));
+        com.datastax.driver.core.ResultSet resultSet = execute(select, "AccountInfoPersister: getTestersExternalId");
         Set<String> testers = new HashSet<>();
-        for (Row row : resultSet) {
+        for (com.datastax.driver.core.Row row : resultSet) {
             String externalId = row.getString(EXTERNAL_ID_FIELD);
             testers.add(externalId);
         }
         return testers;
     }
 
-    private void processRow(Row row, TableProcessor<Pair<String, AccountInfo>> tableProcessor) throws IOException {
+    private void processRow(com.datastax.driver.core.Row row, TableProcessor<Pair<String, AccountInfo>> tableProcessor) throws IOException {
         String accountId = String.valueOf(row.getLong(KEY));
         AccountInfo accountInfo = TABLE.deserializeFromJson(row.getString(JSON_COLUMN_NAME), AccountInfo.class);
         if (accountInfo == null) {

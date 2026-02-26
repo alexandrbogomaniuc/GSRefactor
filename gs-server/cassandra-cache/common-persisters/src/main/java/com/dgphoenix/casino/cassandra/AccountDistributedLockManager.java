@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra;
 
-import com.datastax.driver.core.schemabuilder.SchemaBuilder;
 import com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.LogManager;
@@ -30,7 +29,7 @@ public class AccountDistributedLockManager extends AbstractLockManager {
     @Override
     public TableDefinition getMainTableDefinition() {
         TableDefinition tableDefinition = super.getMainTableDefinition();
-        tableDefinition.speculativeRetry(SchemaBuilder.always());
+        tableDefinition.speculativeRetry(com.datastax.driver.core.schemabuilder.SchemaBuilder.always());
         return tableDefinition;
     }
 

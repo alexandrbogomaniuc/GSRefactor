@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.engine;
 
-import com.datastax.driver.core.TableMetadata;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Collections;
@@ -27,7 +26,7 @@ public interface ICassandraPersister {
 
     void createTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition);
 
-    void updateTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition, TableMetadata tableMetadata);
+    void updateTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition, com.datastax.driver.core.TableMetadata tableMetadata);
 
     Logger getLog();
 

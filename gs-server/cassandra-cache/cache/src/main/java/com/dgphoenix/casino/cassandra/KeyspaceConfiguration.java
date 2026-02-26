@@ -1,14 +1,11 @@
 package com.dgphoenix.casino.cassandra;
 
-import com.datastax.driver.core.*;
 import com.dgphoenix.casino.cassandra.config.ClusterConfig;
 import com.dgphoenix.casino.cassandra.config.ColumnFamilyConfig;
 import com.dgphoenix.casino.common.configuration.ConfigHelper;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.datastax.driver.core.policies.DCAwareRoundRobinPolicy;
-import com.datastax.driver.core.policies.TokenAwarePolicy;
 
 import java.util.List;
 import java.util.Set;
@@ -29,9 +26,9 @@ public class KeyspaceConfiguration {
     private final ConfigHelper configHelper;
     private final NtpTimeProvider timeProvider;
     private ClusterConfig clusterConfig;
-    private ConsistencyLevel readConsistencyLevel;
-    private ConsistencyLevel writeConsistencyLevel;
-    private ConsistencyLevel serialConsistencyLevel = ConsistencyLevel.LOCAL_SERIAL;
+    private com.datastax.driver.core.ConsistencyLevel readConsistencyLevel;
+    private com.datastax.driver.core.ConsistencyLevel writeConsistencyLevel;
+    private com.datastax.driver.core.ConsistencyLevel serialConsistencyLevel = com.datastax.driver.core.ConsistencyLevel.LOCAL_SERIAL;
 
     public KeyspaceConfiguration(String filename, ConfigHelper configHelper, NtpTimeProvider timeProvider) {
         this.filename = filename;
@@ -45,10 +42,10 @@ public class KeyspaceConfiguration {
         checkNotNull(clusterConfig, "Unparsable config file: %s. File may not exists", filename);
         checkState(isNotBlank(clusterConfig.getKeySpace()), "Config must contain keyspace name: %s", filename);
         checkState(!clusterConfig.getParsedHosts().isEmpty(), "Config contains unparsable host list: %s", clusterConfig.getHosts());
-        readConsistencyLevel = ConsistencyLevel.valueOf(clusterConfig.getReadConsistencyLevel());
-        writeConsistencyLevel = ConsistencyLevel.valueOf(clusterConfig.getWriteConsistencyLevel());
+        readConsistencyLevel = com.datastax.driver.core.ConsistencyLevel.valueOf(clusterConfig.getReadConsistencyLevel());
+        writeConsistencyLevel = com.datastax.driver.core.ConsistencyLevel.valueOf(clusterConfig.getWriteConsistencyLevel());
         if (clusterConfig.getSerialConsistencyLevel() != null) {
-            serialConsistencyLevel = ConsistencyLevel.valueOf(clusterConfig.getSerialConsistencyLevel());
+            serialConsistencyLevel = com.datastax.driver.core.ConsistencyLevel.valueOf(clusterConfig.getSerialConsistencyLevel());
             checkState(serialConsistencyLevel.isSerial(), "Keyspace serial consistency level can be only SERIAL or LOCAL_SERIAL not %s", serialConsistencyLevel);
         }
     }
@@ -59,21 +56,21 @@ public class KeyspaceConfiguration {
                 .collect(Collectors.toList());
     }
 
-    public Cluster buildCluster(Cluster.Builder clusterBuilder) {
+    public com.datastax.driver.core.Cluster buildCluster(com.datastax.driver.core.Cluster.Builder clusterBuilder) {
         if (clusterConfig.isValidateClusterName() && isNotBlank(clusterConfig.getClusterName())) {
             clusterBuilder.withClusterName(clusterConfig.getClusterName());
         } else {
             LOG.info("Skipping Cassandra cluster-name validation (clusterName='{}', validateClusterName={})",
                     clusterConfig.getClusterName(), clusterConfig.isValidateClusterName());
         }
-        QueryOptions options = new QueryOptions();
+        com.datastax.driver.core.QueryOptions options = new com.datastax.driver.core.QueryOptions();
         options.setConsistencyLevel(writeConsistencyLevel);
         clusterBuilder.withQueryOptions(options);
         clusterBuilder.addContactPointsWithPorts(clusterConfig.getParsedHosts());
         clusterBuilder.withTimestampGenerator(new NtpTimeGenerator(timeProvider));
         configureLoadBalancing(clusterBuilder);
 
-        SocketOptions socketOptions = new SocketOptions();
+        com.datastax.driver.core.SocketOptions socketOptions = new com.datastax.driver.core.SocketOptions();
         socketOptions.setConnectTimeoutMillis(clusterConfig.getConnectTimeoutMillis());
         socketOptions.setReadTimeoutMillis(clusterConfig.getReadTimeoutMillis());
         socketOptions.setTcpNoDelay(clusterConfig.isTcpNoDelay());
@@ -81,18 +78,18 @@ public class KeyspaceConfiguration {
         socketOptions.setKeepAlive(clusterConfig.isKeepAlive());
         clusterBuilder.withSocketOptions(socketOptions);
 
-        PoolingOptions poolingOptions = new PoolingOptions();
-        poolingOptions.setMaxConnectionsPerHost(HostDistance.LOCAL, clusterConfig.getMaxConnectionsPerHost());
-        poolingOptions.setCoreConnectionsPerHost(HostDistance.LOCAL, clusterConfig.getCoreConnectionsPerHost());
+        com.datastax.driver.core.PoolingOptions poolingOptions = new com.datastax.driver.core.PoolingOptions();
+        poolingOptions.setMaxConnectionsPerHost(com.datastax.driver.core.HostDistance.LOCAL, clusterConfig.getMaxConnectionsPerHost());
+        poolingOptions.setCoreConnectionsPerHost(com.datastax.driver.core.HostDistance.LOCAL, clusterConfig.getCoreConnectionsPerHost());
         // Must remain above socket read timeout to avoid false connection churn.
         poolingOptions.setHeartbeatIntervalSeconds(clusterConfig.getHeartbeatIntervalSeconds());
         //poolingOptions.setPoolTimeoutMillis(10000);
-        poolingOptions.setMaxRequestsPerConnection(HostDistance.LOCAL, clusterConfig.getMaxRequestsPerConnection());
+        poolingOptions.setMaxRequestsPerConnection(com.datastax.driver.core.HostDistance.LOCAL, clusterConfig.getMaxRequestsPerConnection());
         clusterBuilder.withPoolingOptions(poolingOptions);
         return clusterBuilder.build();
     }
 
-    private void configureLoadBalancing(Cluster.Builder clusterBuilder) {
+    private void configureLoadBalancing(com.datastax.driver.core.Cluster.Builder clusterBuilder) {
         if (!clusterConfig.isEnableDcAwareLoadBalancing()) {
             return;
         }
@@ -102,19 +99,19 @@ public class KeyspaceConfiguration {
             return;
         }
         clusterBuilder.withLoadBalancingPolicy(
-                new TokenAwarePolicy(DCAwareRoundRobinPolicy.builder().withLocalDc(localDc).build()));
+                new com.datastax.driver.core.policies.TokenAwarePolicy(com.datastax.driver.core.policies.DCAwareRoundRobinPolicy.builder().withLocalDc(localDc).build()));
         LOG.info("Enabled DC-aware Cassandra load balancing for localDataCenterName={}", localDc);
     }
 
-    public ConsistencyLevel getReadConsistencyLevel() {
+    public com.datastax.driver.core.ConsistencyLevel getReadConsistencyLevel() {
         return readConsistencyLevel;
     }
 
-    public ConsistencyLevel getWriteConsistencyLevel() {
+    public com.datastax.driver.core.ConsistencyLevel getWriteConsistencyLevel() {
         return writeConsistencyLevel;
     }
 
-    public ConsistencyLevel getSerialConsistencyLevel() {
+    public com.datastax.driver.core.ConsistencyLevel getSerialConsistencyLevel() {
         return serialConsistencyLevel;
     }
 
