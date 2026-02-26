@@ -1,6 +1,5 @@
 package com.betsoft.casino.mp.data.persister;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -26,8 +25,8 @@ public class PlayerNicknamePersister extends AbstractCassandraPersister<String, 
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(NICK_NAME_COLUMN, DataType.text(), false, false, true),
-                    new ColumnDefinition(BANK_AID_COLUMN, DataType.text(), false, true, false)
+                    new ColumnDefinition(NICK_NAME_COLUMN, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(BANK_AID_COLUMN, com.datastax.driver.core.DataType.text(), false, true, false)
             ), NICK_NAME_COLUMN);
 
     @Override

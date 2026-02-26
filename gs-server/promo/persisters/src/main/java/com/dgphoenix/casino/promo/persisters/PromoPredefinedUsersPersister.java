@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.*;
@@ -27,10 +26,10 @@ public class PromoPredefinedUsersPersister extends AbstractCassandraPersister<Lo
 
     private static final TableDefinition PROMO_PREDEFINED_TABLE = new TableDefinition(BG_CONFIG_CF,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(PROMO_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(EXT_USER_ID, DataType.text(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID, DataType.bigint(), false, true, false)
+                    new ColumnDefinition(BANK_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(PROMO_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(EXT_USER_ID, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID, com.datastax.driver.core.DataType.bigint(), false, true, false)
             ), BANK_ID)
             .compaction(CompactionStrategy.LEVELED);
 

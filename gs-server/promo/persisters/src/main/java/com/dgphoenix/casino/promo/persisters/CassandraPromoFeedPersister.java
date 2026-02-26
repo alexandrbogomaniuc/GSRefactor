@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -20,9 +19,9 @@ public class CassandraPromoFeedPersister extends AbstractCassandraPersister<Stri
 
     private static final TableDefinition FEED_TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(TOURNAMENT_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(TIME_COLUMN, DataType.cint(), false, false, true),
-                    new ColumnDefinition(FEED_COLUMN, DataType.varchar())
+                    new ColumnDefinition(TOURNAMENT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(TIME_COLUMN, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(FEED_COLUMN, com.datastax.driver.core.DataType.varchar())
             ), TOURNAMENT_ID_COLUMN);
 
     @Override

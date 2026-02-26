@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.ColumnDefinitions;
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -28,10 +27,10 @@ public class CassandraTrackingInfoPersister extends AbstractCassandraPersister<S
     private static final Logger LOG = LogManager.getLogger(CassandraTrackingInfoPersister.class);
     private static final TableDefinition TABLE = new TableDefinition(TRACKING_INFO_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, DataType.text(), false, false, true), //key is trackerName+gsId
-                    new ColumnDefinition(OBJECT_ID_FIELD, DataType.text(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true), //key is trackerName+gsId
+                    new ColumnDefinition(OBJECT_ID_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), KEY)
             .compaction(CompactionStrategy.getLeveled(true, TimeUnit.HOURS.toSeconds(1)))
             .gcGraceSeconds(TimeUnit.HOURS.toSeconds(4));

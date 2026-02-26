@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -29,10 +28,10 @@ public class CassandraCurrencyRatesConfigPersister extends AbstractCassandraPers
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY,
             Arrays.asList(
-                    new ColumnDefinition(CURRENCY_NAME, DataType.text(), false, false, true),
-                    new ColumnDefinition(CURRENCY_FORMULA, DataType.text(), false, false, false),
-                    new ColumnDefinition(CURRENCY_TARGET, DataType.text(), false, false, false),
-                    new ColumnDefinition(UPDATE_PERIOD, DataType.bigint(), false, false, false) //ALTER TABLE CurrencyRatesConfigCF ADD UPDATE_PERIOD bigint;
+                    new ColumnDefinition(CURRENCY_NAME, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(CURRENCY_FORMULA, com.datastax.driver.core.DataType.text(), false, false, false),
+                    new ColumnDefinition(CURRENCY_TARGET, com.datastax.driver.core.DataType.text(), false, false, false),
+                    new ColumnDefinition(UPDATE_PERIOD, com.datastax.driver.core.DataType.bigint(), false, false, false) //ALTER TABLE CurrencyRatesConfigCF ADD UPDATE_PERIOD bigint;
             ), CURRENCY_NAME);
 
     private CassandraCurrencyRatesConfigPersister() {

@@ -2,7 +2,6 @@ package com.betsoft.casino.mp.data.persister;
 
 import com.betsoft.casino.mp.model.Money;
 import com.betsoft.casino.mp.service.IWeaponService;
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -31,24 +30,24 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(MODE_COLUMN, DataType.cint(), false, false, true),
-                    new ColumnDefinition(STAKE_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAMEID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(WEAPONS_COLUMN, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(BANK_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(MODE_COLUMN, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(STAKE_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(GAMEID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(WEAPONS_COLUMN, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), BANK_ID_COLUMN, ACCOUNT_ID_COLUMN, MODE_COLUMN, GAMEID_COLUMN);
 
     private static final TableDefinition SPECIAL_MODE_TABLE = new TableDefinition(SPECIAL_MODE_CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(SM_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(MODE_COLUMN, DataType.cint(), false, false, true),
-                    new ColumnDefinition(STAKE_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAMEID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(WEAPONS_COLUMN, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(SM_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(MODE_COLUMN, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(STAKE_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(GAMEID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(WEAPONS_COLUMN, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), SM_ID_COLUMN, ACCOUNT_ID_COLUMN, MODE_COLUMN, GAMEID_COLUMN);
 
     public void saveWeapons(long bankId, long accountId, int mode, Money stake, Map<Integer, Integer> weapons, long gameId) {

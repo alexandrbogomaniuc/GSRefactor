@@ -4,7 +4,6 @@ import com.betsoft.casino.mp.model.Money;
 import com.betsoft.casino.mp.model.PlayerQuests;
 import com.betsoft.casino.mp.model.quests.IQuest;
 import com.betsoft.casino.mp.service.IPlayerQuestsService;
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -31,25 +30,25 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(MODE_COLUMN, DataType.cint(), false, false, true),
-                    new ColumnDefinition(STAKE_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(BANK_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(MODE_COLUMN, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(STAKE_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), BANK_ID_COLUMN, ACCOUNT_ID_COLUMN, GAME_ID_COLUMN, MODE_COLUMN);
 
     private static final TableDefinition SPECIAL_MODE_TABLE = new TableDefinition(SPECIAL_MODE_CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(SM_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(BANK_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(MODE_COLUMN, DataType.cint(), false, false, true),
-                    new ColumnDefinition(STAKE_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(SM_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(BANK_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(MODE_COLUMN, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(STAKE_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), SM_ID_COLUMN, BANK_ID_COLUMN, ACCOUNT_ID_COLUMN, GAME_ID_COLUMN, MODE_COLUMN);
 
     @Override

@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -23,11 +22,11 @@ public class CassandraBatchOperationStatusPersister extends AbstractCassandraPer
     private static final Logger LOG = LogManager.getLogger(CassandraBatchOperationStatusPersister.class);
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(ROOM_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ROUND_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(OPERATION_TYPE, DataType.text(), false, false, true),
-                    new ColumnDefinition(STATUS, DataType.text()),
-                    new ColumnDefinition(CHANGE_DATE, DataType.bigint())
+                    new ColumnDefinition(ROOM_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(ROUND_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(OPERATION_TYPE, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(STATUS, com.datastax.driver.core.DataType.text()),
+                    new ColumnDefinition(CHANGE_DATE, com.datastax.driver.core.DataType.bigint())
             ), ROOM_ID, ROUND_ID)
             .compaction(CompactionStrategy.getLeveled(true, TimeUnit.HOURS.toSeconds(8)))
             .gcGraceSeconds(TimeUnit.HOURS.toSeconds(24));

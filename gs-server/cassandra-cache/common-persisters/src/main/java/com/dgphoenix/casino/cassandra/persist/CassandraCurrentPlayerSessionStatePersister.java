@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -31,11 +30,11 @@ public class CassandraCurrentPlayerSessionStatePersister extends AbstractCassand
 
     private static final TableDefinition CURRENT_PLAYER_SESSION_STATE_TABLE
             = new TableDefinition(CURRENT_PLAYER_SESSION_STATE, Arrays.asList(
-                    new ColumnDefinition(KEY, DataType.text(), false, false, false),
-                    new ColumnDefinition(SID_FIELD, DataType.text(), false, true, false),
-                    new ColumnDefinition(DAY_TIME_FIELD, DataType.bigint(), false, false, false),
-                    new ColumnDefinition(IS_FINISH_GAME_SESSION_FIELD, DataType.cboolean(), false, false, false),
-                    new ColumnDefinition(PRIVATE_ROOM_ID_FIELD, DataType.text(), false, true, false)
+                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, false),
+                    new ColumnDefinition(SID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false),
+                    new ColumnDefinition(DAY_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
+                    new ColumnDefinition(IS_FINISH_GAME_SESSION_FIELD, com.datastax.driver.core.DataType.cboolean(), false, false, false),
+                    new ColumnDefinition(PRIVATE_ROOM_ID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false)
 
             ), KEY)
             .caching(Caching.NONE)

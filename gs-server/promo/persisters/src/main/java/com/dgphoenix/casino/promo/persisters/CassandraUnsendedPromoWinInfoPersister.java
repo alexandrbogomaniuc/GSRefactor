@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -29,11 +28,11 @@ public class CassandraUnsendedPromoWinInfoPersister extends AbstractCassandraPer
 
     private static final TableDefinition TABLE = new TableDefinition(TABLE_NAME,
             Arrays.asList(
-                    new ColumnDefinition(GAME_SESSION_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(WIN_DATE, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ROUND_ID, DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(GAME_SESSION_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(WIN_DATE, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(ROUND_ID, com.datastax.driver.core.DataType.bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), GAME_SESSION_ID)
             .compaction(CompactionStrategy.LEVELED)
             .gcGraceSeconds(TimeUnit.DAYS.toMillis(1))

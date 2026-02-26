@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.ConsistencyLevel;
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.IEntityUpdateListener;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -45,11 +44,11 @@ public class CassandraBaseGameInfoPersister extends AbstractStringDistributedCon
     private static final TableDefinition TABLE = new TableDefinition(
             BASE_GAME_INFO_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, DataType.text(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text()),
-                    new ColumnDefinition(BANK_IDX, DataType.text(), false, true, false),
-                    new ColumnDefinition(BANK_AND_CUR_IDX, DataType.text(), false, true, false)
+                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text()),
+                    new ColumnDefinition(BANK_IDX, com.datastax.driver.core.DataType.text(), false, true, false),
+                    new ColumnDefinition(BANK_AND_CUR_IDX, com.datastax.driver.core.DataType.text(), false, true, false)
             ),
             KEY
     );

@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -23,9 +22,9 @@ public class CassandraPlayerAliasPersister extends AbstractCassandraPersister<Lo
     private static final String ALIAS_POSTFIX = "ap";
     private static final TableDefinition PLAYER_ALIAS_TABLE = new TableDefinition(PLAYER_ALIAS_CF,
             Arrays.asList(
-                    new ColumnDefinition(NETWORK_TOURNAMENT_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(PLAYER_ALIAS, DataType.varchar(), false, false, true),
-                    new ColumnDefinition(ALIAS_POSTFIX, DataType.bigint(), false, false, true)
+                    new ColumnDefinition(NETWORK_TOURNAMENT_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(PLAYER_ALIAS, com.datastax.driver.core.DataType.varchar(), false, false, true),
+                    new ColumnDefinition(ALIAS_POSTFIX, com.datastax.driver.core.DataType.bigint(), false, false, true)
             ), NETWORK_TOURNAMENT_ID)
             .compaction(CompactionStrategy.LEVELED);
 

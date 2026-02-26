@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.mp;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.*;
@@ -33,25 +32,25 @@ public class BattlegroundHistoryPersister extends AbstractCassandraPersister<Lon
     private static final TableDefinition TABLE = new TableDefinition(
             CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(DATE_TIME, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID, DataType.cint(), false, true, false),
-                    new ColumnDefinition(ROUND_ID, DataType.bigint(), false, true, false),
-                    new ColumnDefinition(GAMESESSION_ID, DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(DATE_TIME, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID, com.datastax.driver.core.DataType.cint(), false, true, false),
+                    new ColumnDefinition(ROUND_ID, com.datastax.driver.core.DataType.bigint(), false, true, false),
+                    new ColumnDefinition(GAMESESSION_ID, com.datastax.driver.core.DataType.bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), ACCOUNT_ID)
             .clusteringOrder(DATE_TIME, Direction.DESC);
 
     private static final TableDefinition PARTICIPANT_ROUND_TABLE = new TableDefinition(
             CF_PARTICIPANT_NAME,
             Arrays.asList(
-                    new ColumnDefinition(SID, DataType.text(), false, false, true),
-                    new ColumnDefinition(ROUND_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAMESESSION_ID, DataType.bigint(), false, true, false),
-                    new ColumnDefinition(ACCOUNT_IDS, DataType.set(DataType.bigint())),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(SID, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(ROUND_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(GAMESESSION_ID, com.datastax.driver.core.DataType.bigint(), false, true, false),
+                    new ColumnDefinition(ACCOUNT_IDS, com.datastax.driver.core.DataType.set(com.datastax.driver.core.DataType.bigint())),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), SID);
 
     public void create(long accountId, BattlegroundRound battlegroundRound) {

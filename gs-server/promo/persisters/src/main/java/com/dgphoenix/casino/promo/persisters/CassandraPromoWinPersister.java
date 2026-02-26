@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -28,15 +27,15 @@ public class CassandraPromoWinPersister extends AbstractCassandraPersister<Long,
 
     private static final TableDefinition TABLE = new TableDefinition(TABLE_NAME,
             Arrays.asList(
-                    new ColumnDefinition(PROMO_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(TIME_WIN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID, DataType.bigint(), false, false, false),
-                    new ColumnDefinition(GAME_SESSION_ID, DataType.bigint(), false, false, false),
-                    new ColumnDefinition(BANK_ID, DataType.bigint(), false, false, false),
-                    new ColumnDefinition(GAME_ID, DataType.bigint(), false, false, false),
-                    new ColumnDefinition(AMOUNT, DataType.bigint(), false, false, false),
-                    new ColumnDefinition(AMOUNT_IN_PLAYER_CURRENCY, DataType.bigint(), false, false, false),
-                    new ColumnDefinition(TRANSFER_STATUS, DataType.text(), false, false, false)
+                    new ColumnDefinition(PROMO_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(TIME_WIN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID, com.datastax.driver.core.DataType.bigint(), false, false, false),
+                    new ColumnDefinition(GAME_SESSION_ID, com.datastax.driver.core.DataType.bigint(), false, false, false),
+                    new ColumnDefinition(BANK_ID, com.datastax.driver.core.DataType.bigint(), false, false, false),
+                    new ColumnDefinition(GAME_ID, com.datastax.driver.core.DataType.bigint(), false, false, false),
+                    new ColumnDefinition(AMOUNT, com.datastax.driver.core.DataType.bigint(), false, false, false),
+                    new ColumnDefinition(AMOUNT_IN_PLAYER_CURRENCY, com.datastax.driver.core.DataType.bigint(), false, false, false),
+                    new ColumnDefinition(TRANSFER_STATUS, com.datastax.driver.core.DataType.text(), false, false, false)
             ), PROMO_ID
     );
 

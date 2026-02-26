@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Statement;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
@@ -101,10 +100,10 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
     public TableDefinition getMainTableDefinition() {
         return new TableDefinition(getMainColumnFamilyName(),
                 Arrays.asList(
-                        new ColumnDefinition(LOCK_ID, DataType.text(), false, false, true),
-                        new ColumnDefinition(LOCKER, DataType.cint(), false, true, false),
-                        new ColumnDefinition(LAST_LOCKER, DataType.cint()),
-                        new ColumnDefinition(LOCK_TIME, DataType.bigint())
+                        new ColumnDefinition(LOCK_ID, com.datastax.driver.core.DataType.text(), false, false, true),
+                        new ColumnDefinition(LOCKER, com.datastax.driver.core.DataType.cint(), false, true, false),
+                        new ColumnDefinition(LAST_LOCKER, com.datastax.driver.core.DataType.cint()),
+                        new ColumnDefinition(LOCK_TIME, com.datastax.driver.core.DataType.bigint())
                 ), LOCK_ID)
                 .caching(Caching.ACTUAL_DATA)
                 .compaction(CompactionStrategy.getLeveled(true, TimeUnit.HOURS.toSeconds(1)))

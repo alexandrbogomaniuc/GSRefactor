@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.transactiondata;
 
 import com.datastax.driver.core.CodecRegistry;
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.TypeCodec;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
@@ -57,9 +56,9 @@ public class BasicTransactionDataStorageHelper implements ITransactionDataStorag
             put(PAYMENT_TRANSACTION_FIELD, new SimpleKryoSerializeHelper<>(PaymentTransaction.class)).
             put(PROMO_MEMBERS_FIELD, new SimpleKryoSerializeHelper<>(PromoCampaignMemberInfos.class)).
 
-            put(LAST_UPDATE_ID_FIELD, new CassandraSerializeHelper<String>(DataType.ascii())).
-            put(TRACKING_INFO, new CassandraSerializeHelper<String>(DataType.ascii())).
-            put(VERSION_FIELD, new CassandraSerializeHelper<Long>(DataType.bigint())).
+            put(LAST_UPDATE_ID_FIELD, new CassandraSerializeHelper<String>(com.datastax.driver.core.DataType.ascii())).
+            put(TRACKING_INFO, new CassandraSerializeHelper<String>(com.datastax.driver.core.DataType.ascii())).
+            put(VERSION_FIELD, new CassandraSerializeHelper<Long>(com.datastax.driver.core.DataType.bigint())).
 
             build();
 
@@ -232,9 +231,9 @@ public class BasicTransactionDataStorageHelper implements ITransactionDataStorag
     }
 
     protected class CassandraSerializeHelper<T> implements ITDFieldSerializeHelper {
-        private DataType dataType;
+        private com.datastax.driver.core.DataType dataType;
 
-        public CassandraSerializeHelper(DataType dataType) {
+        public CassandraSerializeHelper(com.datastax.driver.core.DataType dataType) {
             this.dataType = dataType;
         }
 

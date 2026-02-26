@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -32,10 +31,10 @@ public class CassandraCurrencyRatesPersister extends AbstractCassandraPersister<
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY,
             Arrays.asList(
-                    new ColumnDefinition(SOURCE_FIELD, DataType.text(), false, false, true),
-                    new ColumnDefinition(DEST_FIELD, DataType.text(), false, false, true),
-                    new ColumnDefinition(RATE_FIELD, DataType.cdouble(), false, false, false),
-                    new ColumnDefinition(UPDATE_DATE_FIELD, DataType.bigint(), false, false, false)
+                    new ColumnDefinition(SOURCE_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(DEST_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(RATE_FIELD, com.datastax.driver.core.DataType.cdouble(), false, false, false),
+                    new ColumnDefinition(UPDATE_DATE_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false)
             ), SOURCE_FIELD, DEST_FIELD);
 
     private CassandraCurrencyRatesPersister() {

@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.ColumnDefinitions;
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.configuration.Caching;
@@ -130,15 +129,15 @@ public abstract class AbstractDistributedConfigEntryPersister<KEY, T extends IDi
                 getLog().error("Column KEY not found");
             }
             ColumnDefinitions columnDefinitions = row.getColumnDefinitions();
-            DataType keyType = columnDefinitions.getType(KEY);
+            com.datastax.driver.core.DataType keyType = columnDefinitions.getType(KEY);
             KEY key = null;
-            if (DataType.ascii().equals(keyType) || DataType.varchar().equals(keyType) ||
-                    DataType.text().equals(keyType)) {
+            if (com.datastax.driver.core.DataType.ascii().equals(keyType) || com.datastax.driver.core.DataType.varchar().equals(keyType) ||
+                    com.datastax.driver.core.DataType.text().equals(keyType)) {
                 key = (KEY) row.getString(KEY);
-            } else if (DataType.cint().equals(keyType)) {
+            } else if (com.datastax.driver.core.DataType.cint().equals(keyType)) {
                 Integer k = row.getInt(KEY);
                 key = (KEY) k;
-            } else if (DataType.bigint().equals(keyType)) {
+            } else if (com.datastax.driver.core.DataType.bigint().equals(keyType)) {
                 Long k = row.getLong(KEY);
                 key = (KEY) k;
             }

@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.mp;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -20,9 +19,9 @@ public class BattlegroundPrivateRoomSettingsPersister extends AbstractCassandraP
     private static final TableDefinition TABLE = new TableDefinition(
             CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(PRIVATE_ROOM_ID, DataType.text(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(PRIVATE_ROOM_ID, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), PRIVATE_ROOM_ID);
 
     public void create(String privateRoomId, BattlegroundPrivateRoomSetting battlegroundPrivateRoomSetting) {

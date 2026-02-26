@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -58,17 +57,17 @@ public class CassandraSummaryTournamentPromoFeedPersister extends AbstractCassan
     private static final TableDefinition SUMMARY_PROMO_FEED_TABLE = new TableDefinition(
             SUMMARY_PROMO_FEED_CF,
             Arrays.asList(
-                    new ColumnDefinition(ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(FEED_URL, DataType.text(), false, false, true),
-                    new ColumnDefinition(START_DATE, DataType.bigint(), true, false, false),
-                    new ColumnDefinition(END_DATE, DataType.bigint(), true, false, false),
-                    new ColumnDefinition(BANK_NAME, DataType.text(), false, false, false),
-                    new ColumnDefinition(CHECKSUM, DataType.text(), false, false, false),
-                    new ColumnDefinition(TOURNAMENT_TYPE, DataType.text(), false, false, false),
-                    new ColumnDefinition(UPDATE_TIME, DataType.bigint(), false, false, false),
-                    new ColumnDefinition(FEED_BODY, DataType.text()),
-                    new ColumnDefinition(MASK_NAME, DataType.cboolean(), false, false, false),
-                    new ColumnDefinition(TOURNAMENT_ID, DataType.bigint(), false, true, false)
+                    new ColumnDefinition(ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(FEED_URL, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(START_DATE, com.datastax.driver.core.DataType.bigint(), true, false, false),
+                    new ColumnDefinition(END_DATE, com.datastax.driver.core.DataType.bigint(), true, false, false),
+                    new ColumnDefinition(BANK_NAME, com.datastax.driver.core.DataType.text(), false, false, false),
+                    new ColumnDefinition(CHECKSUM, com.datastax.driver.core.DataType.text(), false, false, false),
+                    new ColumnDefinition(TOURNAMENT_TYPE, com.datastax.driver.core.DataType.text(), false, false, false),
+                    new ColumnDefinition(UPDATE_TIME, com.datastax.driver.core.DataType.bigint(), false, false, false),
+                    new ColumnDefinition(FEED_BODY, com.datastax.driver.core.DataType.text()),
+                    new ColumnDefinition(MASK_NAME, com.datastax.driver.core.DataType.cboolean(), false, false, false),
+                    new ColumnDefinition(TOURNAMENT_ID, com.datastax.driver.core.DataType.bigint(), false, true, false)
             ), ID)
             .compaction(CompactionStrategy.LEVELED);
 

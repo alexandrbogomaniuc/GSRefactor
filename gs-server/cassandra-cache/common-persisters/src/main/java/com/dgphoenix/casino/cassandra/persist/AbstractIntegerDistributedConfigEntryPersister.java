@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
@@ -15,9 +14,9 @@ public abstract class AbstractIntegerDistributedConfigEntryPersister<T extends I
         extends AbstractDistributedConfigEntryPersister<Integer, T> {
     private final TableDefinition TABLE = new TableDefinition(getMainColumnFamilyName(),
             Arrays.asList(
-                    new ColumnDefinition(KEY, DataType.cint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ),
             Arrays.asList(KEY));
 

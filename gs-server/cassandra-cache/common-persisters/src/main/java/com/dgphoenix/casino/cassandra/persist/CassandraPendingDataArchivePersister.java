@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -28,11 +27,11 @@ public class CassandraPendingDataArchivePersister extends AbstractCassandraPersi
 
     private static final TableDefinition PENDING_DATA_ARCHIVE_TABLE = new TableDefinition(PENDING_DATA_ARCH_CF,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(DATA_NAME_FIELD, DataType.text(), false, false, true),
-                    new ColumnDefinition(CREATION_TIME_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(DATA_NAME_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(CREATION_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), ACCOUNT_ID_FIELD);
 
     private CassandraPendingDataArchivePersister() {

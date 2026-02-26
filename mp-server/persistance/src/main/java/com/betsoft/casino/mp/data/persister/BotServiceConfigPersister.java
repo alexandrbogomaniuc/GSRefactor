@@ -1,7 +1,6 @@
 package com.betsoft.casino.mp.data.persister;
 
 import com.betsoft.casino.mp.model.bots.BotConfigInfo;
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -26,8 +25,8 @@ public class BotServiceConfigPersister extends AbstractCassandraPersister<String
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(KEY, DataType.text(), false, false, true),
-                    new ColumnDefinition(VALUE, DataType.text(), false, true, false)
+                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(VALUE, com.datastax.driver.core.DataType.text(), false, true, false)
             ), KEY);
 
     @Override

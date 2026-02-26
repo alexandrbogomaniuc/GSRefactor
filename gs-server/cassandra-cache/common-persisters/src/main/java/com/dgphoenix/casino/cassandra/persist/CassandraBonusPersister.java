@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.*;
@@ -45,17 +44,17 @@ public class CassandraBonusPersister extends AbstractCassandraPersister<Long, St
 
     private static final TableDefinition TABLE = new TableDefinition(BONUS_CF,
             Arrays.asList(
-                    new ColumnDefinition(BONUS_ID_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(EXTERNAL_ID_FIELD, DataType.text(), false, true, false),
-                    new ColumnDefinition(EXPIRATION_DATE_FIELD, DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(BONUS_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(EXTERNAL_ID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false),
+                    new ColumnDefinition(EXPIRATION_DATE_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), BONUS_ID_FIELD);
 
     private static final TableDefinition ACCOUNT_INDEX_TABLE = new TableDefinition(BONUS_ACC_INDX,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(BONUS_ID_FIELD, DataType.bigint(), false, false, true)
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(BONUS_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true)
             ), ACCOUNT_ID_FIELD);
 
     private CassandraBonusPersister() {

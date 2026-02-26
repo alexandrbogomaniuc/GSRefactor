@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -22,9 +21,9 @@ public class CassandraSupportPersister extends AbstractCassandraPersister<String
     private static final TableDefinition TABLE = new TableDefinition(
             CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(KEY, DataType.text(), false, false, true),
-                    new ColumnDefinition(TIMESTAMP, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(INFO, DataType.text())
+                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(TIMESTAMP, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(INFO, com.datastax.driver.core.DataType.text())
             ),
             KEY);
 

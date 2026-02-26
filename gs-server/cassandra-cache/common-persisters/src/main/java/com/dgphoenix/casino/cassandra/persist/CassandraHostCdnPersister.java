@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -29,10 +28,10 @@ public class CassandraHostCdnPersister extends AbstractCassandraPersister<String
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(IP_FIELD, DataType.text(), false, false, true),
-                    new ColumnDefinition(CDN_FIELD, DataType.text(), false, false, true),
-                    new ColumnDefinition(TIME_FIELD, DataType.cint(), false, false, false),
-                    new ColumnDefinition(LAST_UPDATE_FIELD, DataType.bigint(), false, false, false)
+                    new ColumnDefinition(IP_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(CDN_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(TIME_FIELD, com.datastax.driver.core.DataType.cint(), false, false, false),
+                    new ColumnDefinition(LAST_UPDATE_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false)
             ), IP_FIELD);
 
     private CassandraHostCdnPersister() {

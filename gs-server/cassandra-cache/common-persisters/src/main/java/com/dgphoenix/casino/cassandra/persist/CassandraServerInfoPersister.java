@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.ConsistencyLevel;
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.*;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -28,8 +27,8 @@ public class CassandraServerInfoPersister extends AbstractLongDistributedConfigE
 
     private static final TableDefinition VOTE_MASTER_TABLE = new TableDefinition(VOTE_MASTER_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, DataType.text(), false, false, true),
-                    new ColumnDefinition(GS_ID_FIELD, DataType.cint(), false, false, false)
+                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(GS_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, false)
             ), Collections.singletonList(KEY));
 
     private CassandraServerInfoPersister() {

@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.Batch;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -33,10 +32,10 @@ public class CassandraLocalizationsPersister extends AbstractCassandraPersister<
     private static final String ITEM = "it";
     private static final String LOCALIZATION = "loc";
     private static final TableDefinition TABLE = new TableDefinition(LOCALIZATIONS_CF, Arrays.asList(
-            new ColumnDefinition(KEY, DataType.ascii(), false, false, true),
-            new ColumnDefinition(LANG, DataType.ascii(), false, false, true),
-            new ColumnDefinition(ITEM, DataType.ascii(), false, false, true),
-            new ColumnDefinition(LOCALIZATION, DataType.text(), false, false, false)
+            new ColumnDefinition(KEY, com.datastax.driver.core.DataType.ascii(), false, false, true),
+            new ColumnDefinition(LANG, com.datastax.driver.core.DataType.ascii(), false, false, true),
+            new ColumnDefinition(ITEM, com.datastax.driver.core.DataType.ascii(), false, false, true),
+            new ColumnDefinition(LOCALIZATION, com.datastax.driver.core.DataType.text(), false, false, false)
     ), KEY);
 
     public void persistPromoLocalizations(long campaignId, Map<String, String> localizedItems) {

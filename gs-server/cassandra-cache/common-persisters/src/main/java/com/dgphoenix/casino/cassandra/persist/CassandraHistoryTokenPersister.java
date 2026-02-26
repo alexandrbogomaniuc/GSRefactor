@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -26,9 +25,9 @@ public class CassandraHistoryTokenPersister extends AbstractCassandraPersister<S
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(TOKEN_FIELD, DataType.text(), false, false, true),
-                    new ColumnDefinition(ROUND_ID_FIELD, DataType.bigint(), false, false, false),
-                    new ColumnDefinition(EXP_TIME, DataType.bigint(), false, false, false)
+                    new ColumnDefinition(TOKEN_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(ROUND_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false),
+                    new ColumnDefinition(EXP_TIME, com.datastax.driver.core.DataType.bigint(), false, false, false)
             ), TOKEN_FIELD);
 
     @Override

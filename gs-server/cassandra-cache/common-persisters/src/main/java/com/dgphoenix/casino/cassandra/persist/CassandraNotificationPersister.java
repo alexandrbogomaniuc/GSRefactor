@@ -1,7 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.datastax.driver.core.ConsistencyLevel;
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -22,10 +21,10 @@ public class CassandraNotificationPersister extends AbstractCassandraPersister<L
     private static final String SERVER_ID = "serverId";
     private static final TableDefinition CONCURRENT_NOTIFICATION_TABLE = new TableDefinition(
             CONCURRENT_NOTIFICATION_CF,
-            Arrays.asList(new ColumnDefinition(KEY, DataType.text(), false, false, true),
-                    new ColumnDefinition(SERVER_ID, DataType.cint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())),
+            Arrays.asList(new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(SERVER_ID, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())),
             KEY, SERVER_ID);
 
     private CassandraNotificationPersister() {

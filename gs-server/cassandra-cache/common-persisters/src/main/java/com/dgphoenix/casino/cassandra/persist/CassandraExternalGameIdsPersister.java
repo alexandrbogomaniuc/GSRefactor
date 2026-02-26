@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.common.cache.AbstractDistributedCache;
@@ -29,9 +28,9 @@ public class CassandraExternalGameIdsPersister extends AbstractStringDistributed
     private static final TableDefinition TABLE = new TableDefinition(
             CF,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID, DataType.cint(), false, false, true),
-                    new ColumnDefinition(KEY, DataType.text(), false, false, true),
-                    new ColumnDefinition(ID, DataType.bigint())
+                    new ColumnDefinition(BANK_ID, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(ID, com.datastax.driver.core.DataType.bigint())
             ),
             BANK_ID
     );

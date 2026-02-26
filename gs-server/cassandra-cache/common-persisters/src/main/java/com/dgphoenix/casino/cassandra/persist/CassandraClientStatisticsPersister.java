@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -29,11 +28,11 @@ public class CassandraClientStatisticsPersister extends AbstractCassandraPersist
 
     private static final TableDefinition TABLE = new TableDefinition(CLIENT_STATISTICS_INFO_CF,
             Arrays.asList(
-                    new ColumnDefinition(KEY, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(BROWSER_INFO, DataType.blob()),
-                    new ColumnDefinition(GAME_CLIENT_INFO, DataType.blob()),
-                    new ColumnDefinition(BROWSER_INFO_JSON, DataType.text()),
-                    new ColumnDefinition(GAME_CLIENT_INFO_JSON, DataType.text())
+                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(BROWSER_INFO, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(GAME_CLIENT_INFO, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(BROWSER_INFO_JSON, com.datastax.driver.core.DataType.text()),
+                    new ColumnDefinition(GAME_CLIENT_INFO_JSON, com.datastax.driver.core.DataType.text())
             ), KEY);
 
     public void persistGameClientInfo(long gameSessionId, GameClientInfo gameClientInfo) {

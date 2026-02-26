@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.mp;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.*;
@@ -32,13 +31,13 @@ public class TicketedDrawConfigPersister extends AbstractCassandraPersister<Stri
 
     private static final TableDefinition CONFIG_TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(DRAW_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(STATUS_COLUMN, DataType.cint(), false, true, false),
-                    new ColumnDefinition(START_DATE, DataType.bigint()),
-                    new ColumnDefinition(END_DATE, DataType.bigint()),
-                    new ColumnDefinition(CONFIG_COLUMN, DataType.blob()),
-                    new ColumnDefinition(UPDATE_DATE, DataType.bigint()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(DRAW_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(STATUS_COLUMN, com.datastax.driver.core.DataType.cint(), false, true, false),
+                    new ColumnDefinition(START_DATE, com.datastax.driver.core.DataType.bigint()),
+                    new ColumnDefinition(END_DATE, com.datastax.driver.core.DataType.bigint()),
+                    new ColumnDefinition(CONFIG_COLUMN, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(UPDATE_DATE, com.datastax.driver.core.DataType.bigint()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), DRAW_ID_COLUMN);
 
     public void addConfig(TicketedDrawConfig config) {

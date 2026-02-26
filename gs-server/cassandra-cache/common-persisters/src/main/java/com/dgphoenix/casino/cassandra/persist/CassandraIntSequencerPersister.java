@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -35,8 +34,8 @@ public class CassandraIntSequencerPersister extends AbstractCassandraPersister<S
     private static final TableDefinition TABLE = new TableDefinition(SEQUENCER_CF,
             Arrays.asList(
                     //key is sequencer name
-                    new ColumnDefinition(KEY, DataType.text(), false, false, true),
-                    new ColumnDefinition(VALUE_COLUMN_NAME, DataType.cint(), false, false, false)
+                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(VALUE_COLUMN_NAME, com.datastax.driver.core.DataType.cint(), false, false, false)
             ),
             Collections.singletonList(KEY));
 

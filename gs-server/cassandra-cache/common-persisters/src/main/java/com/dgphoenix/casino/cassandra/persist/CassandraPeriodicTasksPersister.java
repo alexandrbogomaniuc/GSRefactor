@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -24,9 +23,9 @@ public class CassandraPeriodicTasksPersister extends AbstractCassandraPersister<
     private static final String TASK_DATA = "data";
     private static final TableDefinition PERIODIC_TASKS_TABLE = new TableDefinition(PERIODIC_TASKS_TABLE_NAME,
             Arrays.asList(
-                    new ColumnDefinition(TASK_KEY, DataType.text(), false, false, true),
-                    new ColumnDefinition(LAST_EXECUTION_TIME, DataType.bigint(), false, false, false),
-                    new ColumnDefinition(TASK_DATA, DataType.blob(), false, false, false)
+                    new ColumnDefinition(TASK_KEY, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(LAST_EXECUTION_TIME, com.datastax.driver.core.DataType.bigint(), false, false, false),
+                    new ColumnDefinition(TASK_DATA, com.datastax.driver.core.DataType.blob(), false, false, false)
             ), TASK_KEY)
             .compaction(CompactionStrategy.LEVELED)
             .caching(Caching.NONE);

@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -28,8 +27,8 @@ public class CassandraMassAwardPersister extends AbstractLongDistributedConfigEn
 
     private static final TableDefinition DELAYED_MASS_AWARD_TABLE = new TableDefinition(DELAYED_MASS_AWARD_CF,
             Arrays.asList(
-                    new ColumnDefinition(DELAYED_MASS_AWARD_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(MASS_AWARD_ID, DataType.bigint(), false, true, false)
+                    new ColumnDefinition(DELAYED_MASS_AWARD_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(MASS_AWARD_ID, com.datastax.driver.core.DataType.bigint(), false, true, false)
             ), DELAYED_MASS_AWARD_ID);
 
     private CassandraMassAwardPersister() {

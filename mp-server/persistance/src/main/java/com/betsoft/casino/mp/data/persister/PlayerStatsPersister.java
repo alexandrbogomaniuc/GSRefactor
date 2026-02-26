@@ -3,7 +3,6 @@ package com.betsoft.casino.mp.data.persister;
 import com.betsoft.casino.mp.model.IPlayerStats;
 import com.betsoft.casino.mp.model.PlayerStats;
 import com.betsoft.casino.mp.service.IPlayerStatsService;
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -32,24 +31,24 @@ public class PlayerStatsPersister extends AbstractCassandraPersister<Long, Strin
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(VERSION_COLUMN, DataType.bigint()),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(BANK_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(VERSION_COLUMN, com.datastax.driver.core.DataType.bigint()),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), BANK_ID_COLUMN, GAME_ID_COLUMN, ACCOUNT_ID_COLUMN)
             .compaction(CompactionStrategy.LEVELED);
 
     private static final TableDefinition TOURNAMENT_TABLE = new TableDefinition(TOURNAMENT_CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(TOURNAMENT_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(BANK_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(VERSION_COLUMN, DataType.bigint()),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(TOURNAMENT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(BANK_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(VERSION_COLUMN, com.datastax.driver.core.DataType.bigint()),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), TOURNAMENT_ID_COLUMN, BANK_ID_COLUMN, GAME_ID_COLUMN, ACCOUNT_ID_COLUMN)
             .compaction(CompactionStrategy.LEVELED);
 

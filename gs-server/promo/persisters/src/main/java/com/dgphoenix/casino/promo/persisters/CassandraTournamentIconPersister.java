@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -23,9 +22,9 @@ public class CassandraTournamentIconPersister extends AbstractCassandraPersister
 
     private static final TableDefinition TOURNAMENT_ICON_TABLE = new TableDefinition(TOURNAMENT_ICON_CF,
             Arrays.asList(
-                    new ColumnDefinition(ICON_ID_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ICON_NAME_FIELD, DataType.text()),
-                    new ColumnDefinition(ICON_HTTP_ADDRESS_FIELD, DataType.text())
+                    new ColumnDefinition(ICON_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(ICON_NAME_FIELD, com.datastax.driver.core.DataType.text()),
+                    new ColumnDefinition(ICON_HTTP_ADDRESS_FIELD, com.datastax.driver.core.DataType.text())
             ), ICON_ID_FIELD);
 
     public void persist(TournamentIcon icon) {

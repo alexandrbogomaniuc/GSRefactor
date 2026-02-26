@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -22,8 +21,8 @@ public class CassandraArchiverPersister extends AbstractCassandraPersister<Strin
     public static final String LAST_PROCESSED_DATE_COLUMN = "LastProcessedDate";
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(KEY, DataType.text(), false, false, true),
-                    new ColumnDefinition(LAST_PROCESSED_DATE_COLUMN, DataType.bigint(), false, false, false)
+                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(LAST_PROCESSED_DATE_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, false)
             ),
             Collections.singletonList(KEY));
 

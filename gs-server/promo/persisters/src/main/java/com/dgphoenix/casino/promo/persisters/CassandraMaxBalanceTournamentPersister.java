@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -22,10 +21,10 @@ public class CassandraMaxBalanceTournamentPersister extends AbstractCassandraPer
     private static final String ACCOUNT_ID_FIELD = "aid";
     private static final TableDefinition MAX_BALANCE_DETAILS_TABLE = new TableDefinition(MAX_BALANCE_DETAILS_CF,
             Arrays.asList(
-                    new ColumnDefinition(CAMPAIGN_ID_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(CAMPAIGN_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), CAMPAIGN_ID_FIELD)
             .compaction(CompactionStrategy.LEVELED);
 

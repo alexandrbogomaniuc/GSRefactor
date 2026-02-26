@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -23,10 +22,10 @@ public class CassandraCountryRestrictionPersister extends AbstractCassandraPersi
 
     private static final TableDefinition COUNTRIES_TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
         Arrays.asList(
-            new ColumnDefinition(OBJECT_ID, DataType.bigint(), false, false, true),
-            new ColumnDefinition(RESTRICTION_TYPE, DataType.cint(), false, false, true),
-            new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob(), false, false, false),
-            new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+            new ColumnDefinition(OBJECT_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+            new ColumnDefinition(RESTRICTION_TYPE, com.datastax.driver.core.DataType.cint(), false, false, true),
+            new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob(), false, false, false),
+            new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
         ), OBJECT_ID)
         .compaction(CompactionStrategy.LEVELED);
 

@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -25,10 +24,10 @@ public class CassandraPromoCampaignStatisticsPersister extends AbstractCassandra
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(CAMPAIGN_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GS_ID, DataType.cint(), false, false, true),
-                    new ColumnDefinition(ROUNDS_COUNT, DataType.cint(), false, false, false),
-                    new ColumnDefinition(BET_SUM, DataType.cdouble(), false, false, false)
+                    new ColumnDefinition(CAMPAIGN_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(GS_ID, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(ROUNDS_COUNT, com.datastax.driver.core.DataType.cint(), false, false, false),
+                    new ColumnDefinition(BET_SUM, com.datastax.driver.core.DataType.cdouble(), false, false, false)
             ), CAMPAIGN_ID);
 
     public synchronized void increment(long campaignId, int gsId, int roundsCountDelta, double betSumDelta) {

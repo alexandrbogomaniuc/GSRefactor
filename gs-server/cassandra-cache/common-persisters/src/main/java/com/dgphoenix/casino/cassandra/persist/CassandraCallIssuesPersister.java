@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -28,11 +27,11 @@ public class CassandraCallIssuesPersister extends AbstractCassandraPersister {
     private static final TableDefinition TABLE = new TableDefinition(
             COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(DATE_FIELD, DataType.text(), false, false, true),
-                    new ColumnDefinition(URL_FIELD, DataType.text(), false, false, true),
-                    new ColumnDefinition(SUCCESS_COUNT, DataType.bigint()),
-                    new ColumnDefinition(FAIL_COUNT, DataType.bigint()),
-                    new ColumnDefinition(LAST_UPDATE_FIELD, DataType.bigint())
+                    new ColumnDefinition(DATE_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(URL_FIELD, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(SUCCESS_COUNT, com.datastax.driver.core.DataType.bigint()),
+                    new ColumnDefinition(FAIL_COUNT, com.datastax.driver.core.DataType.bigint()),
+                    new ColumnDefinition(LAST_UPDATE_FIELD, com.datastax.driver.core.DataType.bigint())
             ),
             DATE_FIELD
     );

@@ -795,3 +795,28 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - Combined GS+MP `54.93%`
 - Milestone reached:
   - Combined burn-down passed the 50% target (`54.93%`).
+
+## 2026-02-26 05:33 UTC (Wave 42)
+- Executed import-surface cleanup wave to remove direct `DataType` imports across GS and MP modules.
+- Changed scope:
+  - `112` Java files updated (GS+MP runtime/test).
+  - full list: `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-053138/c4-wave42-changed-files-20260226-053138.txt`
+- Refactor type:
+  - removed direct `import com.datastax.driver.core.DataType;`
+  - replaced type references with fully-qualified `com.datastax.driver.core.DataType`
+- Validation: PASS
+  - promo/persisters install
+  - common-persisters install
+  - cache tests (`63` pass)
+  - web-gs package
+  - mp subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added under:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-053138/`
+- Inventory delta after Wave 42:
+  - GS `driver3_import_lines`: `253 -> 175` (`-78`)
+  - MP `driver3_import_lines`: `35 -> 1` (`-34`)
+  - Combined: `288 -> 176` (`-112`)
+- Completion snapshot:
+  - GS-only `64.14%`
+  - MP-only `99.34%`
+  - Combined GS+MP `72.46%`

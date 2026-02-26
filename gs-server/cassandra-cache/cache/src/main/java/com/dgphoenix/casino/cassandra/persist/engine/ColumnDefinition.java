@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.engine;
 
-import com.datastax.driver.core.DataType;
 
 import java.util.Objects;
 
@@ -10,12 +9,12 @@ import java.util.Objects;
  */
 public class ColumnDefinition {
     private final String name;
-    private final DataType type;
+    private final com.datastax.driver.core.DataType type;
     private final boolean staticField;
     private final boolean indexed;
     private final boolean primaryKeyPart;
 
-    public ColumnDefinition(String name, DataType type, boolean staticField, boolean indexed, boolean primaryKeyPart) {
+    public ColumnDefinition(String name, com.datastax.driver.core.DataType type, boolean staticField, boolean indexed, boolean primaryKeyPart) {
         this.name = name.trim();
         this.type = type;
         this.staticField = staticField;
@@ -26,7 +25,7 @@ public class ColumnDefinition {
         }
     }
 
-    public ColumnDefinition(String name, DataType type) {
+    public ColumnDefinition(String name, com.datastax.driver.core.DataType type) {
         this(name, type, false, false, false);
     }
 
@@ -34,7 +33,7 @@ public class ColumnDefinition {
         return name;
     }
 
-    public DataType getType() {
+    public com.datastax.driver.core.DataType getType() {
         return type;
     }
 

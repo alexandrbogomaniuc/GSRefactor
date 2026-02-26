@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.mp;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -23,11 +22,11 @@ public class LeaderboardResultPersister extends AbstractCassandraPersister<Long,
 
     private static final TableDefinition RESULTS_TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(LEADERBOARD_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(END_DATE_COLUMN, DataType.bigint(), false, true, false),
-                    new ColumnDefinition(START_DATE_COLUMN, DataType.bigint()),
-                    new ColumnDefinition(RESULT_COLUMN, DataType.varchar())
+                    new ColumnDefinition(BANK_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(LEADERBOARD_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(END_DATE_COLUMN, com.datastax.driver.core.DataType.bigint(), false, true, false),
+                    new ColumnDefinition(START_DATE_COLUMN, com.datastax.driver.core.DataType.bigint()),
+                    new ColumnDefinition(RESULT_COLUMN, com.datastax.driver.core.DataType.varchar())
             ), BANK_ID_COLUMN);
 
     public void persist(long leaderboardId, long bankId, long startDate, long endDate, String result) {

@@ -1,7 +1,6 @@
 package com.betsoft.casino.mp.data.persister;
 
 import com.betsoft.casino.mp.model.IRoundResultNotification;
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -24,11 +23,11 @@ public class RoundResultNotificationPersister extends AbstractCassandraPersister
 
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(NOTIFICATION_ID_COLUMN, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(NOTIFICATION_ID_COLUMN, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), ACCOUNT_ID_COLUMN, GAME_ID_COLUMN);
 
     public List<IRoundResultNotification> getNotifications(long accountId, long gameId) {

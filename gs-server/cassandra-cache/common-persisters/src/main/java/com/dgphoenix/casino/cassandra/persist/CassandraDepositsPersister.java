@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -20,8 +19,8 @@ public class CassandraDepositsPersister extends AbstractCassandraPersister<Strin
     private static final String TABLE_NAME = "depositsCF";
     private static final TableDefinition TABLE = new TableDefinition(TABLE_NAME,
             Arrays.asList(
-                    new ColumnDefinition(SESSION_ID, DataType.text(), false, false, true),
-                    new ColumnDefinition(AMOUNT, DataType.bigint(), false, false, false)
+                    new ColumnDefinition(SESSION_ID, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(AMOUNT, com.datastax.driver.core.DataType.bigint(), false, false, false)
             ), SESSION_ID)
             .compaction(CompactionStrategy.LEVELED)
             .gcGraceSeconds(TimeUnit.DAYS.toMillis(1))

@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -25,9 +24,9 @@ public class CassandraExtendedAccountInfoPersister extends AbstractCassandraPers
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(EXTERNAL_ID, DataType.text(), false, false, true),
-                    new ColumnDefinition(PROPERTIES, DataType.map(DataType.text(), DataType.text()))
+                    new ColumnDefinition(BANK_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(EXTERNAL_ID, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(PROPERTIES, com.datastax.driver.core.DataType.map(com.datastax.driver.core.DataType.text(), com.datastax.driver.core.DataType.text()))
             ),
             BANK_ID, EXTERNAL_ID);
 

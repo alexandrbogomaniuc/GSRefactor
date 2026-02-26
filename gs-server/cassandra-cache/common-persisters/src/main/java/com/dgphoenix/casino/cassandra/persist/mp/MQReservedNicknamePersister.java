@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.mp;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -28,9 +27,9 @@ public class MQReservedNicknamePersister extends AbstractCassandraPersister<Stri
     //owner: -1 for entire system, else - bankId
     private static final TableDefinition TABLE = new TableDefinition(CF_NAME,
             Arrays.asList(
-                    new ColumnDefinition(REGION_COLUMN, DataType.text(), false, false, true),
-                    new ColumnDefinition(NICK_NAME_COLUMN, DataType.text(), false, false, true),
-                    new ColumnDefinition(OWNER_COLUMN, DataType.bigint(), false, true, false)
+                    new ColumnDefinition(REGION_COLUMN, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(NICK_NAME_COLUMN, com.datastax.driver.core.DataType.text(), false, false, true),
+                    new ColumnDefinition(OWNER_COLUMN, com.datastax.driver.core.DataType.bigint(), false, true, false)
             ), REGION_COLUMN);
 
     @Override

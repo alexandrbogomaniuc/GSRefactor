@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -27,10 +26,10 @@ public class CassandraBattlegroundConfigPersister extends AbstractCassandraPersi
 
     private static final TableDefinition BG_CONFIG_TABLE = new TableDefinition(BG_CONFIG_CF,
             Arrays.asList(
-                    new ColumnDefinition(BANK_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(GAME_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob(), false, false, false),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text(), false, false, false)
+                    new ColumnDefinition(BANK_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(GAME_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob(), false, false, false),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text(), false, false, false)
             ), BANK_ID)
             .compaction(CompactionStrategy.LEVELED);
 

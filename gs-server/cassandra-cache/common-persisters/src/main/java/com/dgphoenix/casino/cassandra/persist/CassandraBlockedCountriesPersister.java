@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -21,7 +20,7 @@ public class CassandraBlockedCountriesPersister extends AbstractCassandraPersist
 
     private static final TableDefinition TABLE = new TableDefinition(COLUMN_FAMILY_NAME,
             Collections.singletonList(
-                    new ColumnDefinition(KEY, DataType.text(), false, false, true)
+                    new ColumnDefinition(KEY, com.datastax.driver.core.DataType.text(), false, false, true)
             ),
             KEY);
 

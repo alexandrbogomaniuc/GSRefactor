@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -41,14 +40,14 @@ public class CassandraBonusArchivePersister extends AbstractCassandraPersister<L
     //Primary key (accountId), timeAwarded clustered order by timeAwarded desc
     private static final TableDefinition BONUS_ARCHIVE_TABLE = new TableDefinition(BONUS_ARCH_CF,
             Arrays.asList(
-                    new ColumnDefinition(ACCOUNT_ID_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(AWARD_TIME_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(STATUS_FIELD, DataType.cint(), false, false, false),
-                    new ColumnDefinition(BONUS_ID_FIELD, DataType.bigint(), false, true, false),
-                    new ColumnDefinition(EXTERNAL_ID_FIELD, DataType.text(), false, true, false),
-                    new ColumnDefinition(PERSIST_DAY, DataType.bigint(), false, true, false),
-                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, DataType.blob()),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text())
+                    new ColumnDefinition(ACCOUNT_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(AWARD_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(STATUS_FIELD, com.datastax.driver.core.DataType.cint(), false, false, false),
+                    new ColumnDefinition(BONUS_ID_FIELD, com.datastax.driver.core.DataType.bigint(), false, true, false),
+                    new ColumnDefinition(EXTERNAL_ID_FIELD, com.datastax.driver.core.DataType.text(), false, true, false),
+                    new ColumnDefinition(PERSIST_DAY, com.datastax.driver.core.DataType.bigint(), false, true, false),
+                    new ColumnDefinition(SERIALIZED_COLUMN_NAME, com.datastax.driver.core.DataType.blob()),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text())
             ), ACCOUNT_ID_FIELD)
             .clusteringOrder(AWARD_TIME_FIELD, Direction.DESC);
 

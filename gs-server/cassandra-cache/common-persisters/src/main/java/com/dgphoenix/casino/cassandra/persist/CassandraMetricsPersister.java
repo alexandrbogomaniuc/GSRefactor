@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.*;
@@ -43,10 +42,10 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
 
     private static final TableDefinition METRICS_TABLE = new TableDefinition(METRICS_CF,
             Arrays.asList(
-                    new ColumnDefinition(METRIC_ID_FIELD, DataType.cint(), false, false, true),
-                    new ColumnDefinition(GAME_SERVER_ID_FIELD, DataType.cint(), false, false, true),
-                    new ColumnDefinition(LOG_TIME_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(METRIC_VALUE_FIELD, DataType.bigint())
+                    new ColumnDefinition(METRIC_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(GAME_SERVER_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(LOG_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(METRIC_VALUE_FIELD, com.datastax.driver.core.DataType.bigint())
             ), METRIC_ID_FIELD, GAME_SERVER_ID_FIELD)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED)
@@ -56,14 +55,14 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
 
     private static final TableDefinition METRICS_STAT_TABLE = new TableDefinition(METRICS_STAT_CF,
             Arrays.asList(
-                    new ColumnDefinition(METRIC_ID_FIELD, DataType.cint(), false, false, true),
-                    new ColumnDefinition(GAME_SERVER_ID_FIELD, DataType.cint(), false, false, true),
-                    new ColumnDefinition(STAT_TIME_FIELD, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(AVERAGE_VALUE_FIELD, DataType.bigint()),
-                    new ColumnDefinition(MIN_VALUE_TIME_FIELD, DataType.bigint()),
-                    new ColumnDefinition(MIN_VALUE_FIELD, DataType.bigint()),
-                    new ColumnDefinition(MAX_VALUE_TIME_FIELD, DataType.bigint()),
-                    new ColumnDefinition(MAX_VALUE_FIELD, DataType.bigint())
+                    new ColumnDefinition(METRIC_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(GAME_SERVER_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(STAT_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(AVERAGE_VALUE_FIELD, com.datastax.driver.core.DataType.bigint()),
+                    new ColumnDefinition(MIN_VALUE_TIME_FIELD, com.datastax.driver.core.DataType.bigint()),
+                    new ColumnDefinition(MIN_VALUE_FIELD, com.datastax.driver.core.DataType.bigint()),
+                    new ColumnDefinition(MAX_VALUE_TIME_FIELD, com.datastax.driver.core.DataType.bigint()),
+                    new ColumnDefinition(MAX_VALUE_FIELD, com.datastax.driver.core.DataType.bigint())
             ), METRIC_ID_FIELD, GAME_SERVER_ID_FIELD)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED)
@@ -72,9 +71,9 @@ public class CassandraMetricsPersister extends AbstractCassandraPersister<Intege
 
     private static final TableDefinition LAST_STAT_TIME_TABLE = new TableDefinition(LAST_STAT_TIME_CF,
             Arrays.asList(
-                    new ColumnDefinition(METRIC_ID_FIELD, DataType.cint(), false, false, true),
-                    new ColumnDefinition(GAME_SERVER_ID_FIELD, DataType.cint(), false, false, true),
-                    new ColumnDefinition(LAST_STAT_TIME_FIELD, DataType.bigint(), false, false, false)
+                    new ColumnDefinition(METRIC_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(GAME_SERVER_ID_FIELD, com.datastax.driver.core.DataType.cint(), false, false, true),
+                    new ColumnDefinition(LAST_STAT_TIME_FIELD, com.datastax.driver.core.DataType.bigint(), false, false, false)
             ), METRIC_ID_FIELD, GAME_SERVER_ID_FIELD)
             .caching(Caching.NONE)
             .compaction(CompactionStrategy.LEVELED)

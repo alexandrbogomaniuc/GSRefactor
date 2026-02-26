@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.datastax.driver.core.DataType;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -21,9 +20,9 @@ public class CassandraSupportedPromoPlatformsPersister extends AbstractCassandra
     private static final String PROMO_PLATFORMS_CF = "PromoPlatformsCf";
     private static final TableDefinition TABLE = new TableDefinition(PROMO_PLATFORMS_CF,
             Arrays.asList(
-                    new ColumnDefinition(PROMO_ID, DataType.bigint(), false, false, true),
-                    new ColumnDefinition(PLATFORM, DataType.blob(), false, false, false),
-                    new ColumnDefinition(JSON_COLUMN_NAME, DataType.text(), false, false, false)
+                    new ColumnDefinition(PROMO_ID, com.datastax.driver.core.DataType.bigint(), false, false, true),
+                    new ColumnDefinition(PLATFORM, com.datastax.driver.core.DataType.blob(), false, false, false),
+                    new ColumnDefinition(JSON_COLUMN_NAME, com.datastax.driver.core.DataType.text(), false, false, false)
             ), PROMO_ID);
 
     public void persist(long campaignId, ISupportedPlatform supportedPlatform) {

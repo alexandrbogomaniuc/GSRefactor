@@ -5724,3 +5724,23 @@
   - GS-only `48.16%`, combined `54.93%`.
 - Target reached:
   - Burn-down exceeded requested 50% threshold.
+
+### 2026-02-26 05:31-05:33 UTC
+- Continued CASS-V4 migration in `/Users/alexb/Documents/Dev/Dev_new` (Wave 42) with cross-module `DataType` import-surface cleanup.
+- Updated 112 files by removing direct `import com.datastax.driver.core.DataType;` and switching to fully-qualified `com.datastax.driver.core.DataType` references.
+- Validation matrix PASS:
+  - `mvn -DskipTests install` (`promo/persisters`)
+  - `mvn -DskipTests install` (`common-persisters`)
+  - `mvn test` (`cache`, `63` tests)
+  - `mvn -DskipTests -Dcluster.properties=local/local-machine.properties package` (`web-gs`)
+  - `mvn -pl core-interfaces,core,persistance -am -DskipTests package` (`mp-server`)
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-053138/`
+- Inventory delta:
+  - GS: `253 -> 175`
+  - MP: `35 -> 1`
+  - Combined: `288 -> 176`
+- Completion snapshot:
+  - Combined burn-down `72.46%` (`639 -> 176`)
+- Next step:
+  - Commit/push Wave 42 and continue remaining import hotspots (`querybuilder`, `schemabuilder`, `Session`, `Statement`).

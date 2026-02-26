@@ -1,6 +1,5 @@
 package com.dgphoenix.casino.cassandra.persist.engine;
 
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.schemabuilder.Create;
 import com.datastax.driver.core.schemabuilder.SchemaBuilder;
 import com.datastax.driver.core.schemabuilder.SchemaBuilder.Direction;
@@ -85,7 +84,7 @@ public class TableDefinition {
             String columnName = column.getName();
             if (!skipColumns.contains(columnName)) {
                 checkState(addedColumns.add(column), DUPLICATE_COLUMN_ERROR, column.getName());
-                DataType columnType = column.getType();
+                com.datastax.driver.core.DataType columnType = column.getType();
                 if (column.isPrimaryKeyPart()) {
                     createStatement.addClusteringColumn(columnName, columnType);
                 } else if (column.isStaticField()) {
@@ -112,7 +111,7 @@ public class TableDefinition {
     }
 
     private boolean isNonCounterColumn(ColumnDefinition column) {
-        return !column.getType().equals(DataType.counter());
+        return !column.getType().equals(com.datastax.driver.core.DataType.counter());
     }
 
     public String getIndexName(String columnName) {
