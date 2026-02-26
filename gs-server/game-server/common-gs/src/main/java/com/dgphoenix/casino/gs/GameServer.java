@@ -30,7 +30,7 @@ import com.dgphoenix.casino.common.cache.data.payment.frb.IFRBonusWin;
 import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.cache.data.session.SessionConstants;
+import com.abs.casino.common.cache.data.session.SessionConstants;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.engine.tracker.DelayedExecutor;

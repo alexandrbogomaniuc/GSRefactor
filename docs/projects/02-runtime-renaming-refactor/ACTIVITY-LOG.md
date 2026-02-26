@@ -830,3 +830,17 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-111555-hardcut-m2-wave28-bank-constants`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/40-hard-cut-m2-wave28-bank-constants-report-20260226.md`
+
+## 2026-02-26 11:25 UTC (M2 Wave 29 - SessionConstants Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.session.SessionConstants` -> `com.abs.casino.common.cache.data.session.SessionConstants`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/SessionConstants.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/SessionInfo.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java`
+- Post-scan result: legacy refs `0`, abs refs `2`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-112208-hardcut-m2-wave29-session-constants`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/41-hard-cut-m2-wave29-session-constants-report-20260226.md`
