@@ -6079,3 +6079,23 @@
     - `/Users/alexb/Documents/Dev/Dev_new/Doker/runtime-gs/webapps/gs/ROOT/support/`
 - Result: support modernization portal is reachable again from GS runtime and stays aligned with source on each startup.
 - Next step: commit/push this runtime-sync fix + evidence and continue finalization validation waves.
+
+### 2026-02-26 08:06 UTC
+- Investigated live browser launch issue (game page loaded but websocket gameplay channel failed).
+- Root cause found in MP room URL generation:
+  - `/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/AbstractStartGameUrlHandler.java`
+  - local/dev URL builder used internal `server.port` (`6300`) for room websocket URL.
+- Fix applied:
+  - room websocket host/port now resolves from handshake URI (`/websocket/mplobby`) first,
+  - then Origin URI fallback,
+  - then `server.port` fallback.
+- Validation:
+  - MP web build PASS (`mvn -pl web -am -DskipTests package`).
+  - Restarted `refactor-mp-1` and re-ran browser launch.
+  - Browser iframe URL now contains `WEB_SOCKET_URL=ws://127.0.0.1:16300/websocket/mpgame`.
+  - MP logs show successful `GetStartGameUrl`, `OpenRoom`, `BuyIn`, and `LOW PING LATENCY` for active SID.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/mp-websocket-external-port-fix-validation-20260226-080619.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-080619/`
+- Result: launch is now functionally playable with GS↔MP websocket traffic on exposed refactor port.
+- Next step: commit/push this MP websocket port fix and continue final production-readiness closure checks.

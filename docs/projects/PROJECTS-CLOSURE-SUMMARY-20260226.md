@@ -38,3 +38,5 @@ For both projects/waves, validation repeatedly used:
 - Diary + per-project activity logs contain complete step-by-step execution trail.
 - Latest non-production continuity validation refresh:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/onboarding-lifecycle-validation-20260226-074518.md`
+- Latest runtime communication blocker fix (GS↔MP gameplay websocket port mapping):
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/mp-websocket-external-port-fix-validation-20260226-080619.md`

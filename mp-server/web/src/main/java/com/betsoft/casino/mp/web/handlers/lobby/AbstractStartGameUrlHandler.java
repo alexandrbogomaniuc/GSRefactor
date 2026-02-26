@@ -279,18 +279,39 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
         String origin = IMessageHandler.getOrigin(session);
         String roomWebSocketUrl;
         if (host.endsWith("mp.local") || host.endsWith("mp.local.com") || host.endsWith(".mydomain")) { //hack for local/dev deploy
-            // For local/dev use browser-origin host and current MP runtime port (server.port),
-            // so returned URL works in dockerized local environments.
+            // For local/dev use the client-facing websocket endpoint from the incoming lobby session.
+            // This avoids leaking internal container ports (for example 6300) into browser game URLs.
             String localHost = host;
+            int localPort = -1;
             try {
-                URI originUri = URI.create(origin);
-                if (!StringUtils.isTrimmedEmpty(originUri.getHost())) {
-                    localHost = originUri.getHost();
+                URI sessionUri = session.getHandshakeInfo().getUri();
+                if (sessionUri != null) {
+                    if (!StringUtils.isTrimmedEmpty(sessionUri.getHost())) {
+                        localHost = sessionUri.getHost();
+                    }
+                    if (sessionUri.getPort() > 0) {
+                        localPort = sessionUri.getPort();
+                    }
                 }
             } catch (Exception ignored) {
-                // Keep fallback host from server config.
+                // Fall back to origin and then server.port.
             }
-            String localPort = System.getProperty("server.port", "8081");
+            if (localPort <= 0) {
+                try {
+                    URI originUri = URI.create(origin);
+                    if (!StringUtils.isTrimmedEmpty(originUri.getHost())) {
+                        localHost = originUri.getHost();
+                    }
+                    if (originUri.getPort() > 0) {
+                        localPort = originUri.getPort();
+                    }
+                } catch (Exception ignored) {
+                    // Keep current fallback values.
+                }
+            }
+            if (localPort <= 0) {
+                localPort = Integer.parseInt(System.getProperty("server.port", "8081"));
+            }
             roomWebSocketUrl = IMessageHandler.getWsProtocol(origin) + localHost + ":" + localPort + "/websocket/";
         } else {
             roomWebSocketUrl = IMessageHandler.getWsProtocol(origin) + "games" + domain + "/" + serverId + "/websocket/";

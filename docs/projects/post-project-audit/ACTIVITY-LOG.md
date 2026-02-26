@@ -14,3 +14,17 @@ Project: Post-Project Audit
 - Evidence captured in:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-080102/`
 - Outcome: `http://127.0.0.1:18081/support/modernizationProgress.html` returns `HTTP 200` and displays current audit portal content.
+
+## 2026-02-26 08:06 UTC
+- Fixed a real runtime cutover blocker in local refactor gameplay flow:
+  - game websocket URL used internal MP port (`6300`) instead of exposed refactor port (`16300`).
+- Patched MP room URL generation in:
+  - `/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/AbstractStartGameUrlHandler.java`
+- Build and runtime verification completed:
+  - MP web module build PASS,
+  - MP container restarted,
+  - browser launch now resolves iframe game websocket to `ws://127.0.0.1:16300/websocket/mpgame`,
+  - MP logs show successful `GetStartGameUrl`, `OpenRoom`, and active gameplay pings.
+- Evidence package:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/mp-websocket-external-port-fix-validation-20260226-080619.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-080619/`
