@@ -1874,3 +1874,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `2`.
   - global tracked source declarations/files now `2107` remaining (`2277` baseline, `170` reduced).
+
+## 2026-02-26 18:33 UTC (Hard-Cut M2 Wave 95)
+- Executed hard-cut namespace wave for `AwardFRBForm`.
+- Changed files:
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBForm.java`
+  - `gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBAction.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml`
+- Change detail:
+  - migrated `com.dgphoenix.casino.actions.api.frbonus.AwardFRBForm` package to `com.abs`.
+  - updated dependent import in `AwardFRBAction`.
+  - rewired Struts `FRBAwardForm` form-bean type to `com.abs`.
+- Validation PASS:
+  - full 9-step matrix (common, common-wallet, sb-utils, promo/persisters, common-persisters, cache, web-gs, mp core/persistance, refactor smoke).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-183115-hardcut-m2-wave95-frbonus-award-form/`
+- Outcome:
+  - wave scope legacy refs reduced from `1` to `0`, `com.abs` refs now `2`.
+  - global tracked source declarations/files now `2106` remaining (`2277` baseline, `171` reduced).

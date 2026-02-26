@@ -48,7 +48,7 @@
         <form-bean name="BSInfoForm" type="com.dgphoenix.casino.actions.api.bonus.GetInfoForm"/>
         <form-bean name="GetBonusForm" type="com.dgphoenix.casino.actions.api.bonus.GetBonusForm"/>
 
-        <form-bean name="FRBAwardForm" type="com.dgphoenix.casino.actions.api.frbonus.AwardFRBForm"/>
+        <form-bean name="FRBAwardForm" type="com.abs.casino.actions.api.frbonus.AwardFRBForm"/>
         <form-bean name="FRBAwardLiteForm" type="com.dgphoenix.casino.actions.api.frbonus.AwardFRBLiteForm"/>
         <form-bean name="FRBCheckForm" type="com.dgphoenix.casino.actions.api.frbonus.CheckFRBForm"/>
         <form-bean name="FRBCancelForm" type="com.abs.casino.actions.api.frbonus.CancelFRBForm"/>

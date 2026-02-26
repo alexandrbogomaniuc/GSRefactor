@@ -1,0 +1,2 @@
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBAction.java:6:import com.abs.casino.actions.api.frbonus.AwardFRBForm;
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:51:        <form-bean name="FRBAwardForm" type="com.abs.casino.actions.api.frbonus.AwardFRBForm"/>
