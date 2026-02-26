@@ -123,7 +123,7 @@
 
         <!-- MaxQuest leaderboards -->
         <form-bean name="GetLeaderboardsForm" type="com.abs.casino.actions.api.mq.GetLeaderboardsForm" />
-        <form-bean name="GetLeaderboardResultsForm" type="com.dgphoenix.casino.actions.api.mq.GetLeaderboardResultsForm" />
+        <form-bean name="GetLeaderboardResultsForm" type="com.abs.casino.actions.api.mq.GetLeaderboardResultsForm" />
 
         <form-bean name="LogViewerForm" type="com.dgphoenix.casino.support.logviewer.LogViewerForm"/>
 

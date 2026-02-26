@@ -7049,3 +7049,13 @@
   - migrated API MQ form package to `com.abs`, updated Struts form-bean type, added cross-package form import in `GetLeaderboardsAction`, and passed full 9/9 build+smoke matrix.
 - Next:
   - continue Wave 78 with `GetLeaderboardResultsForm` migration.
+
+### 2026-02-26 16:47 UTC
+- Continued Project 02 hard-cut runtime renaming with Wave 78 (`GetLeaderboardResultsForm`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-164235-hardcut-m2-wave78-get-leaderboard-results-form/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/90-hard-cut-m2-wave78-get-leaderboard-results-form-report-20260226.md`
+- Result:
+  - migrated API MQ form package to `com.abs`, updated Struts form-bean type, added cross-package form import in `GetLeaderboardResultsAction`, and passed full 9/9 build+smoke matrix.
+- Next:
+  - continue Wave 79 with `GetLeaderboardResultsAction` migration.
