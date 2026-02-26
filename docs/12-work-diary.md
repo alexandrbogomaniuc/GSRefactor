@@ -6535,3 +6535,14 @@
   - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/38-hard-cut-m2-wave26-individual-game-settings-type-report-20260226.md`
+
+### 2026-02-26 11:14 UTC
+- Completed Project 02 M2 Wave 27 for `IServerInfoInternalProvider` namespace migration.
+- Migrated interface package to `com.abs` and rewired imports in `LoadBalancerCache`, `ServerConfigsCache`, and `CassandraServerInfoPersister`.
+- Added explicit `ServerInfo` import in the interface to resolve compile compatibility.
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-111037-hardcut-m2-wave27-server-info-internal-provider`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/39-hard-cut-m2-wave27-server-info-internal-provider-report-20260226.md`

@@ -3,7 +3,7 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.common.cache.LoadBalancerCache;
-import com.dgphoenix.casino.common.cache.data.server.IServerInfoInternalProvider;
+import com.abs.casino.common.cache.data.server.IServerInfoInternalProvider;
 import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

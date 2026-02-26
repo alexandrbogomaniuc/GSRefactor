@@ -796,3 +796,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-110501-hardcut-m2-wave26-individual-game-settings-type`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/38-hard-cut-m2-wave26-individual-game-settings-type-report-20260226.md`
+
+## 2026-02-26 11:14 UTC (M2 Wave 27 - IServerInfoInternalProvider Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.server.IServerInfoInternalProvider` -> `com.abs.casino.common.cache.data.server.IServerInfoInternalProvider`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/server/IServerInfoInternalProvider.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LoadBalancerCache.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ServerConfigsCache.java`
+  - `gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraServerInfoPersister.java`
+- Compatibility correction during wave:
+  - Added explicit `ServerInfo` import in migrated interface because `ServerInfo` remains in `com.dgphoenix`.
+- Post-scan result: legacy refs `0`, abs refs `3`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-111037-hardcut-m2-wave27-server-info-internal-provider`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/39-hard-cut-m2-wave27-server-info-internal-provider-report-20260226.md`

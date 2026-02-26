@@ -1,5 +1,6 @@
-package com.dgphoenix.casino.common.cache.data.server;
+package com.abs.casino.common.cache.data.server;
 
+import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
 import java.util.Map;
 
 public interface IServerInfoInternalProvider {

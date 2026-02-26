@@ -1,0 +1,12 @@
+Wave: W27-server-info-internal-provider
+Date (UTC): 2026-02-26
+Status: COMPLETE
+
+Migrated:
+- com.dgphoenix.casino.common.cache.data.server.IServerInfoInternalProvider -> com.abs.casino.common.cache.data.server.IServerInfoInternalProvider
+
+Compatibility fix:
+- Added import com.dgphoenix.casino.common.cache.data.server.ServerInfo in IServerInfoInternalProvider.
+
+Validation:
+- 9/9 required checks PASS.

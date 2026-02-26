@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import com.dgphoenix.casino.common.cache.data.server.IServerInfoInternalProvider;
+import com.abs.casino.common.cache.data.server.IServerInfoInternalProvider;
 import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
 import com.dgphoenix.casino.common.config.GameServerConfig;
 import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
