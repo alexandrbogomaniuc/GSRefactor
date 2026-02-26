@@ -6063,3 +6063,19 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/START-HERE-REFRACTOR.md`
 - Purpose: ensure first-open discoverability for new machines/users.
 - Next step: commit/push README addition.
+
+### 2026-02-26 08:01 UTC
+- Fixed support portal 404 in running refactor stack by syncing support modernization assets into runtime on every `up`.
+- Code change:
+  - `/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/refactor-start.sh`
+  - added `sync_modernization_support_assets()` and invoked it from `ensure_runtime_assets()`.
+  - synced files from source support folder to runtime support mount:
+    - `modernizationProgress.html`, `modernizationRunbook.jsp`, `modernizationDocs.jsp`, `phase8DiscrepancyViewer.html`
+    - `support/data/{modernization-checklist.json,session-outbox-health.json,audit-requirements-status.json,audit-scope-summary.json}`
+- Validation evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-080102/support-modernizationProgress-head.txt` -> `HTTP/1.1 200 OK`.
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-080102/startgame-head.txt` -> `HTTP/1.1 200 OK`.
+  - Runtime support files now present under:
+    - `/Users/alexb/Documents/Dev/Dev_new/Doker/runtime-gs/webapps/gs/ROOT/support/`
+- Result: support modernization portal is reachable again from GS runtime and stays aligned with source on each startup.
+- Next step: commit/push this runtime-sync fix + evidence and continue finalization validation waves.

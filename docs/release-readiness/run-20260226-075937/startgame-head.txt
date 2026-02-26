@@ -1,0 +1,30 @@
+HTTP/1.1 200 OK
+Server: nginx/1.13.10
+Date: Thu, 26 Feb 2026 07:59:47 GMT
+Content-Type: text/html;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: JSESSIONID=node0q832uxbm0fe3rval87932w8j5.node0;Path=/
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Max Quest: Dragonstone</title>
+
+    <meta http-equiv="Content-Type" content="text/html, charset=utf-8"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta name="MobileOptimized" content="960"/>
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no, minimal-ui"/>
+
+    <meta charset="utf-8"/>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;

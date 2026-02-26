@@ -12,6 +12,8 @@ SYNC_CLUSTER_HOSTS="$SCRIPT_DIR/sync-cluster-hosts.sh"
 BOOTSTRAP_RUNTIME="$SCRIPT_DIR/refactor-bootstrap-runtime.sh"
 
 LEGACY_MP_TARGET_DIR="${LEGACY_MP_TARGET_DIR:-$DEV_NEW_ROOT/mp-server/web/target}"
+SUPPORT_SRC_ROOT="${SUPPORT_SRC_ROOT:-$DEV_NEW_ROOT/gs-server/game-server/web-gs/src/main/webapp/support}"
+RUNTIME_SUPPORT_ROOT="${RUNTIME_SUPPORT_ROOT:-$DEV_NEW_ROOT/Doker/runtime-gs/webapps/gs/ROOT/support}"
 BUILD_IMAGES="${BUILD_IMAGES:-0}"
 AUTO_BOOTSTRAP_RUNTIME="${AUTO_BOOTSTRAP_RUNTIME:-1}"
 
@@ -82,10 +84,39 @@ preflight() {
   fi
 }
 
+sync_modernization_support_assets() {
+  mkdir -p "$RUNTIME_SUPPORT_ROOT" "$RUNTIME_SUPPORT_ROOT/data"
+
+  local support_files=(
+    modernizationProgress.html
+    modernizationRunbook.jsp
+    modernizationDocs.jsp
+    phase8DiscrepancyViewer.html
+  )
+  local support_data_files=(
+    modernization-checklist.json
+    session-outbox-health.json
+    audit-requirements-status.json
+    audit-scope-summary.json
+  )
+  local f
+  for f in "${support_files[@]}"; do
+    if [[ -f "$SUPPORT_SRC_ROOT/$f" ]]; then
+      cp -f "$SUPPORT_SRC_ROOT/$f" "$RUNTIME_SUPPORT_ROOT/$f"
+    fi
+  done
+  for f in "${support_data_files[@]}"; do
+    if [[ -f "$SUPPORT_SRC_ROOT/data/$f" ]]; then
+      cp -f "$SUPPORT_SRC_ROOT/data/$f" "$RUNTIME_SUPPORT_ROOT/data/$f"
+    fi
+  done
+}
+
 ensure_runtime_assets() {
   maybe_bootstrap_runtime
   check_runtime_seed_paths
   check_legacy_mp_artifacts
+  sync_modernization_support_assets
 }
 
 start_stack() {

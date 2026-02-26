@@ -1,0 +1,28 @@
+HTTP/1.1 200 OK
+Last-Modified: Thu, 26 Feb 2026 07:59:16 GMT
+Content-Type: text/html
+Accept-Ranges: bytes
+Content-Length: 144853
+Server: Jetty(9.4.18.v20190429)
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GS Modernization Progress</title>
+  <link rel="stylesheet" href="/support/css/bootstrap.min.css" />
+  <style>
+    body { background: #f5f7fa; padding: 16px; }
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    .cardx {
+      background: #fff;
+      border: 1px solid #d9e1ea;
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+    .meta { color: #567; font-size: 12px; }
+    .prog {
+      background: #e6edf5;
