@@ -32,6 +32,8 @@ For both projects/waves, validation repeatedly used:
 - runtime bank-template audit for banks 6275/6276
 
 ## Notes for handover
+- Quick start page for new machine:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/START-HERE-REFRACTOR.md`
 - Remaining legacy tokens in some files are intentional compatibility fallbacks, import directives, or comments and are not open runtime blockers for the completed scope.
 - Diary + per-project activity logs contain complete step-by-step execution trail.
 - Latest non-production continuity validation refresh:

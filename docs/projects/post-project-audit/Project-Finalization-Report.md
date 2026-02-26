@@ -14,6 +14,9 @@ Current technical status is positive:
 - readiness status: `GO_FOR_DEPLOY_AND_CANARY`
 - technical blocker count: `0`
 
+Single start page for new machine setup:
+- `/Users/alexb/Documents/Dev/Dev_new/docs/START-HERE-REFRACTOR.md`
+
 Primary source:
 - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260225-194216.md`
 

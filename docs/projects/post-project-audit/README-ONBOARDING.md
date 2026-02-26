@@ -1,5 +1,8 @@
 # README-ONBOARDING (Refactor-Only Environment)
 
+Quick entrypoint:
+- `/Users/alexb/Documents/Dev/Dev_new/docs/START-HERE-REFRACTOR.md`
+
 ## What this starts
 This guide starts the **refactored GameServer environment only** from the `GSRefactor` repository (`Dev_new`).
 

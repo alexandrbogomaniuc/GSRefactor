@@ -6045,3 +6045,13 @@
 - Commit: `6d14a9c0` (`Harden onboarding smoke checks and add lifecycle evidence`).
 - Current repo state: clean (`git status` no pending changes).
 - Operational result: full `down -> up -> smoke` flow now passes with startup-tolerant checks and launch alias as required gate.
+
+### 2026-02-26 07:55 UTC
+- Added a new single-entry handover page for new machines:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/START-HERE-REFRACTOR.md`
+- This page now provides one clear flow: preflight -> up -> smoke -> launch URL -> down.
+- Linked this start page from:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/README-ONBOARDING.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/Project-Finalization-Report.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/PROJECTS-CLOSURE-SUMMARY-20260226.md`
+- Next step: commit/push this handover-entrypoint update.
