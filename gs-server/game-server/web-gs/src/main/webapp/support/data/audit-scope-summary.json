@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-02-25T19:16:23Z",
+  "updatedAt": "2026-02-26T07:40:00Z",
   "coreScope": {
     "name": "Core GS Modernization",
     "plainEnglishSummary": "Modernize the Game Server without breaking existing integrations, then move toward a safer service-based architecture with staged rollout and rollback.",
     "deliveryChecklistCompletion": "41/41",
     "cutoverReadiness": "GO_FOR_DEPLOY_AND_CANARY",
-    "whatThisMeans": "Core delivery and runtime/security validation reports now show go-state for controlled canary rollout. The final gate is human/operator approval and execution discipline."
+    "whatThisMeans": "Non-production implementation and verification are complete. For production rollout, only operational change-window approval and controlled execution remain."
   },
   "parallelWorkstreams": [
     {
@@ -74,40 +74,40 @@
   "currentCutoverBlockers": [],
   "latestEvidenceSources": [
     {
-      "label": "Milestone 2 Requirement Reality Check Audit",
-      "path": "docs/Requirement-Reality-Check-Audit.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/Requirement-Reality-Check-Audit.md"
+      "label": "Program Readiness Report (latest factual cutover status)",
+      "path": "docs/release-readiness/program-deploy-readiness-status-20260225-194216.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260225-194216.md"
     },
     {
-      "label": "Milestone 2 Requirement Index",
-      "path": "docs/audit-evidence/requirements-index.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/requirements-index.md"
-    },
-    {
-      "label": "Latest Program Readiness Report (factual cutover status)",
-      "path": "docs/release-readiness/program-deploy-readiness-status-20260225-191623.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260225-191623.md"
+      "label": "Non-Prod Full Implementation Completion",
+      "path": "docs/release-readiness/nonprod-full-implementation-test-completion-20260225-194300.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/nonprod-full-implementation-test-completion-20260225-194300.md"
     },
     {
       "label": "Latest Canary Operator Sign-Off Packet",
-      "path": "docs/release-readiness/canary-operator-signoff-packet-20260225-191120.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/canary-operator-signoff-packet-20260225-191120.md"
+      "path": "docs/release-readiness/canary-operator-signoff-packet-20260225-193300.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/canary-operator-signoff-packet-20260225-193300.md"
     },
     {
-      "label": "Mixed-topology manual full-flow pass evidence",
-      "path": "docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-full-flow-20260224-162730.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-full-flow-20260224-162730.md"
+      "label": "Project 01 Cassandra v4 Closure Report",
+      "path": "docs/projects/01-cassandra-v4-driver-migration/09-cassandra-v4-closure-report-20260226.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/09-cassandra-v4-closure-report-20260226.md"
     },
     {
-      "label": "Phase 7 Cassandra full-copy report",
-      "path": "docs/phase7/cassandra/full-copy/phase7-cassandra-full-data-copy-20260224-155602.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/full-copy/phase7-cassandra-full-data-copy-20260224-155602.md"
+      "label": "Project 02 Runtime Renaming Closure Report",
+      "path": "docs/projects/02-runtime-renaming-refactor/09-runtime-renaming-closure-report-20260226.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/09-runtime-renaming-closure-report-20260226.md"
+    },
+    {
+      "label": "Cross-Project Closure Summary",
+      "path": "docs/projects/PROJECTS-CLOSURE-SUMMARY-20260226.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/PROJECTS-CLOSURE-SUMMARY-20260226.md"
     }
   ],
   "whatNeedsApprovalNext": [
-    "Approve the canary change window (UTC start/end) and execution owner list.",
-    "Run controlled canary for bank 6275 and fill the result record in the operator packet.",
-    "If canary passes, approve expansion to the next bank scope.",
+    "For non-production work: no technical blocker remains.",
+    "For production rollout: approve change window and run controlled canary execution.",
+    "Record canary result in the operator packet before broader rollout.",
     "Keep Casino Manager and New Games reporting separate from core GS rollout status."
   ],
   "plainEnglishSummary": "This dashboard separates delivery output progress from production cutover readiness. The core modernization is currently in GO_FOR_DEPLOY_AND_CANARY state with no open technical blockers in aggregated evidence. Parallel workstreams (New Games and Casino Manager) are real work, but they remain separate from core GS rollout decisions."

@@ -502,7 +502,7 @@
       ]
     }
   ],
-  "__embeddedSyncedAtUtc": "2026-02-25T19:42:46.410Z",
+  "__embeddedSyncedAtUtc": "2026-02-26T07:37:54.477Z",
   "__embeddedFingerprint": "6cde1ded15f4"
 }
   </script>
@@ -538,7 +538,7 @@
     "DLQ must remain zero during canary window.",
     "If trend turns rising for NEW/RETRY, trigger rollback decision gate."
   ],
-  "__embeddedSyncedAtUtc": "2026-02-25T19:42:46.410Z",
+  "__embeddedSyncedAtUtc": "2026-02-26T07:37:54.477Z",
   "__embeddedFingerprint": "aefd8b1510a3"
 }
   </script>
@@ -555,31 +555,31 @@
   "securityHardeningStatus": "TESTED_SECURITY_HARDENING_COMPLETE",
   "blockers": [],
   "source": "/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260225-194216.md",
-  "__embeddedSyncedAtUtc": "2026-02-25T19:42:46.410Z",
+  "__embeddedSyncedAtUtc": "2026-02-26T07:37:54.477Z",
   "__embeddedFingerprint": "bd2f70225918"
 }
   </script>
 
   <script id="embedded-audit-requirements" type="application/json">
 {
-  "updatedAt": "2026-02-25T09:51:34Z",
-  "sourceAuditIndexJson": "docs/projects/post-project-audit/audit-evidence/requirements-index.json",
+  "updatedAt": "2026-02-26T07:40:00Z",
+  "sourceAuditIndexJson": "docs/audit-evidence/requirements-index.json",
   "links": {
     "milestone2AuditReport": {
-      "path": "docs/projects/post-project-audit/Requirement-Reality-Check-Audit.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/Requirement-Reality-Check-Audit.md"
+      "path": "docs/Requirement-Reality-Check-Audit.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/Requirement-Reality-Check-Audit.md"
     },
     "requirementsIndexMarkdown": {
-      "path": "docs/projects/post-project-audit/audit-evidence/requirements-index.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/requirements-index.md"
+      "path": "docs/audit-evidence/requirements-index.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/requirements-index.md"
     },
     "auditEvidenceRoot": {
-      "path": "docs/projects/post-project-audit/audit-evidence",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence"
+      "path": "docs/audit-evidence",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence"
     },
     "latestReadinessReport": {
-      "path": "docs/release-readiness/program-deploy-readiness-status-20260224-163502.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md"
+      "path": "docs/release-readiness/program-deploy-readiness-status-20260225-194216.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260225-194216.md"
     }
   },
   "baselineDocs": [
@@ -588,8 +588,8 @@
     "docs/20-initial-master-prompt-for-ai.md",
     "docs/21-modernization-roadmap-v1.md",
     "docs/22-sprint-01-two-week-execution-plan.md",
-    "docs/projects/new-games/00-product-decisions.md",
-    "docs/projects/new-games/03-milestones.md"
+    "docs/New games Project/00-product-decisions.md",
+    "docs/New games Project/03-milestones.md"
   ],
   "summaryCounts": {
     "totalRequirements": 40,
@@ -607,12 +607,9 @@
     },
     "cutoverReality": {
       "deliveryChecklistCompletion": "41/41 (separate metric)",
-      "currentCutoverReadiness": "NO_GO_CUTOVER_PENDING_VALIDATION",
-      "currentBlockers": [
-        "Phase 4 protocol runtime canary validation failing",
-        "Phase 5/6 core service runtime canary validation failing",
-        "Security dependency lockfile/audit hardening pending"
-      ]
+      "currentCutoverReadiness": "GO_FOR_DEPLOY_AND_CANARY",
+      "currentBlockers": [],
+      "note": "Historical Milestone 2 requirement rows may still mention resolved blockers; use Current Blockers and latest readiness report for live decision state."
     }
   },
   "groupBreakdown": {
@@ -654,8 +651,8 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Latest readiness remains NO_GO because Phase 4 and Phase 5/6 runtime validations are failing their canary routing checks, plus security dependency audit is pending.",
       "folder": "req-gs-01",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-01",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-01",
+      "folderPath": "docs/audit-evidence/req-gs-01",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-01",
       "evidenceLinks": [
         {
           "path": "docs/19-requirements-from-user.md",
@@ -678,16 +675,16 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-mixed-topology-manual-full-flow-pass-20260224-162730.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-mixed-topology-manual-full-flow-pass-20260224-162730.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-mixed-topology-manual-full-flow-pass-20260224-162730.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-mixed-topology-manual-full-flow-pass-20260224-162730.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt"
         }
       ]
     },
@@ -702,8 +699,8 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Phase 4 status report shows `wallet_shadow_probe: FAIL` and `phase4_status: NO_GO_RUNTIME_FAILURE` with current environment staying in legacy fallback.",
       "folder": "req-gs-02",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-02",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-02",
+      "folderPath": "docs/audit-evidence/req-gs-02",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-02",
       "evidenceLinks": [
         {
           "path": "docs/19-requirements-from-user.md",
@@ -730,12 +727,12 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase4-status-20260224-163534.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase4-status-20260224-163534.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase4-status-20260224-163534.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase4-status-20260224-163534.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase4-runtime-legacy-fallback-20260224-163435.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase4-runtime-legacy-fallback-20260224-163435.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase4-runtime-legacy-fallback-20260224-163435.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase4-runtime-legacy-fallback-20260224-163435.txt"
         }
       ]
     },
@@ -750,8 +747,8 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Phase 9 closure explicitly marks broader runtime config/host/protocol/template rename scope as deferred.",
       "folder": "req-gs-03",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-03",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-03",
+      "folderPath": "docs/audit-evidence/req-gs-03",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-03",
       "evidenceLinks": [
         {
           "path": "docs/19-requirements-from-user.md",
@@ -770,16 +767,16 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/151-phase9-branding-namespace-tested-controlled-wave-phase-closure-20260224-110000.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase9-w0-status-20260224-104500.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase9-w0-status-20260224-104500.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase9-w0-status-20260224-104500.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase9-w0-status-20260224-104500.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase9-closure-scope-20260224-110000.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase9-closure-scope-20260224-110000.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase9-closure-scope-20260224-110000.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase9-closure-scope-20260224-110000.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
         }
       ]
     },
@@ -794,8 +791,8 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Phase 5/6 status shows core services up but gameplay/wallet/bonus/history canary probes failing (`NO_GO_RUNTIME_FAILURE`).",
       "folder": "req-gs-04",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-04",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-04",
+      "folderPath": "docs/audit-evidence/req-gs-04",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-04",
       "evidenceLinks": [
         {
           "path": "docs/19-requirements-from-user.md",
@@ -818,16 +815,16 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt"
         }
       ]
     },
@@ -842,8 +839,8 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-gs-05",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-05",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-05",
+      "folderPath": "docs/audit-evidence/req-gs-05",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-05",
       "evidenceLinks": [
         {
           "path": "docs/19-requirements-from-user.md",
@@ -854,8 +851,8 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/20-initial-master-prompt-for-ai.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-repo-governance-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-repo-governance-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-repo-governance-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-repo-governance-proof.txt"
         }
       ]
     },
@@ -870,8 +867,8 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Security hardening report is `TESTED_NO_GO_DEPENDENCY_LOCK_AUDIT_PENDING` and shows `package-lock.json` count `0` across 8 refactor services.",
       "folder": "req-gs-06",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-06",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-06",
+      "folderPath": "docs/audit-evidence/req-gs-06",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-06",
       "evidenceLinks": [
         {
           "path": "docs/19-requirements-from-user.md",
@@ -890,16 +887,16 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-security-hardening-no-go-lockfiles-20260224-110139.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-security-hardening-no-go-lockfiles-20260224-110139.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-security-hardening-no-go-lockfiles-20260224-110139.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-security-hardening-no-go-lockfiles-20260224-110139.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt"
         }
       ]
     },
@@ -914,8 +911,8 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Program readiness remains NO_GO for Phase 4/5 runtime and security blockers; Cassandra rehearsal blocker itself is cleared in readiness.",
       "folder": "req-gs-07",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-07",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-07",
+      "folderPath": "docs/audit-evidence/req-gs-07",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-07",
       "evidenceLinks": [
         {
           "path": "docs/19-requirements-from-user.md",
@@ -946,8 +943,8 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-cassandra-full-copy-summary-20260224-155602.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-cassandra-full-copy-summary-20260224-155602.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-cassandra-full-copy-summary-20260224-155602.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-cassandra-full-copy-summary-20260224-155602.txt"
         }
       ]
     },
@@ -962,8 +959,8 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Evidence is strong for portal specs and guardrail artifacts, but not yet a plain-English tested user guide or audited operator walkthrough proof.",
       "folder": "req-gs-08",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-08",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-08",
+      "folderPath": "docs/audit-evidence/req-gs-08",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-08",
       "evidenceLinks": [
         {
           "path": "docs/19-requirements-from-user.md",
@@ -978,20 +975,20 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-config-portal-artifacts.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-config-portal-artifacts.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-config-portal-artifacts.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-config-portal-artifacts.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase3-config-portal-docs-snippet.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase3-config-portal-docs-snippet.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase3-config-portal-docs-snippet.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase3-config-portal-docs-snippet.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt"
         }
       ]
     },
@@ -1006,8 +1003,8 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Evidence proves practical extension path (New Games via GS) but does not fully prove standardized module contracts/versioning across all future module types.",
       "folder": "req-gs-09",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-09",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-09",
+      "folderPath": "docs/audit-evidence/req-gs-09",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-09",
       "evidenceLinks": [
         {
           "path": "docs/19-requirements-from-user.md",
@@ -1026,20 +1023,20 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
         }
       ]
     },
@@ -1054,8 +1051,8 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Latest Phase 6 line shows `multiplayer_canary_probe=SKIPPED`, so full runtime canary proof is not complete in the audited snapshot.",
       "folder": "req-gs-10",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-10",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-10",
+      "folderPath": "docs/audit-evidence/req-gs-10",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-10",
       "evidenceLinks": [
         {
           "path": "docs/19-requirements-from-user.md",
@@ -1074,16 +1071,16 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/phase5-6/phase5-6-service-extraction-status-report-20260224-163457.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-multiplayer-extraction-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-multiplayer-extraction-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-multiplayer-extraction-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-multiplayer-extraction-proof.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
         }
       ]
     },
@@ -1098,8 +1095,8 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-gs-11",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-11",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-11",
+      "folderPath": "docs/audit-evidence/req-gs-11",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-11",
       "evidenceLinks": [
         {
           "path": "docs/19-requirements-from-user.md",
@@ -1118,12 +1115,12 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/999-phase8-precision-runtime-canary-phase-closure-20260224-142513.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase8-precision-closure-ready-20260224-142513.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase8-precision-closure-ready-20260224-142513.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase8-precision-closure-ready-20260224-142513.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase8-precision-closure-ready-20260224-142513.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
         }
       ]
     },
@@ -1138,8 +1135,8 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-gs-ph-01",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-ph-01",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-ph-01",
+      "folderPath": "docs/audit-evidence/req-gs-ph-01",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-01",
       "evidenceLinks": [
         {
           "path": "docs/21-modernization-roadmap-v1.md",
@@ -1158,20 +1155,20 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-full-flow-20260224-162730.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-mixed-topology-manual-full-flow-pass-20260224-162730.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-mixed-topology-manual-full-flow-pass-20260224-162730.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-mixed-topology-manual-full-flow-pass-20260224-162730.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-mixed-topology-manual-full-flow-pass-20260224-162730.txt"
         }
       ]
     },
@@ -1186,8 +1183,8 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-gs-ph-02",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-ph-02",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-ph-02",
+      "folderPath": "docs/audit-evidence/req-gs-ph-02",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-02",
       "evidenceLinks": [
         {
           "path": "docs/21-modernization-roadmap-v1.md",
@@ -1198,16 +1195,16 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/22-sprint-01-two-week-execution-plan.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-repo-governance-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-repo-governance-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-repo-governance-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-repo-governance-proof.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt"
         }
       ]
     },
@@ -1222,8 +1219,8 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-gs-ph-03",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-ph-03",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-ph-03",
+      "folderPath": "docs/audit-evidence/req-gs-ph-03",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-03",
       "evidenceLinks": [
         {
           "path": "docs/21-modernization-roadmap-v1.md",
@@ -1238,16 +1235,16 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/156-phase2-observability-status-report-baseline-complete-20260224-121500.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-observability-baseline-complete-20260224-121500.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-observability-baseline-complete-20260224-121500.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-observability-baseline-complete-20260224-121500.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-observability-baseline-complete-20260224-121500.txt"
         }
       ]
     },
@@ -1262,32 +1259,32 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Milestone 5 user guide and explicit non-technical operator walk-through proof are still pending in the after-project plan.",
       "folder": "req-gs-ph-04",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-ph-04",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-ph-04",
+      "folderPath": "docs/audit-evidence/req-gs-ph-04",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-04",
       "evidenceLinks": [
         {
           "path": "docs/21-modernization-roadmap-v1.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/21-modernization-roadmap-v1.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-config-portal-artifacts.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-config-portal-artifacts.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-config-portal-artifacts.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-config-portal-artifacts.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase3-config-portal-docs-snippet.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase3-config-portal-docs-snippet.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase3-config-portal-docs-snippet.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase3-config-portal-docs-snippet.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-checklist-key-items-snippet.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-checklist-41-41-summary.txt"
         }
       ]
     },
@@ -1302,8 +1299,8 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Phase 4 wallet shadow probe failure keeps `NO_GO_RUNTIME_FAILURE` in the latest status report.",
       "folder": "req-gs-ph-05",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-ph-05",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-ph-05",
+      "folderPath": "docs/audit-evidence/req-gs-ph-05",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-05",
       "evidenceLinks": [
         {
           "path": "docs/21-modernization-roadmap-v1.md",
@@ -1322,20 +1319,20 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase4-status-20260224-163534.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase4-status-20260224-163534.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase4-status-20260224-163534.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase4-status-20260224-163534.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase4-runtime-legacy-fallback-20260224-163435.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase4-runtime-legacy-fallback-20260224-163435.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase4-runtime-legacy-fallback-20260224-163435.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase4-runtime-legacy-fallback-20260224-163435.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt"
         }
       ]
     },
@@ -1350,8 +1347,8 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Core service canary routing is disabled/failing (`gameplay_canary_probe=FAIL`, `wallet_canary_probe=FAIL`, etc.).",
       "folder": "req-gs-ph-06",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-ph-06",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-ph-06",
+      "folderPath": "docs/audit-evidence/req-gs-ph-06",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-06",
       "evidenceLinks": [
         {
           "path": "docs/21-modernization-roadmap-v1.md",
@@ -1366,20 +1363,20 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase5-canary-disabled-20260224-1634xx.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase5-canary-disabled-20260224-1634xx.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase5-canary-disabled-20260224-1634xx.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase5-canary-disabled-20260224-1634xx.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-readiness-latest-20260224-163502.txt"
         }
       ]
     },
@@ -1394,8 +1391,8 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-gs-ph-07",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-ph-07",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-ph-07",
+      "folderPath": "docs/audit-evidence/req-gs-ph-07",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-07",
       "evidenceLinks": [
         {
           "path": "docs/21-modernization-roadmap-v1.md",
@@ -1406,16 +1403,16 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/phase5-6/phase5-6-service-extraction-status-report-20260224-163457.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-multiplayer-extraction-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-multiplayer-extraction-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-multiplayer-extraction-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-multiplayer-extraction-proof.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase5-6-status-20260224-163457.txt"
         }
       ]
     },
@@ -1430,8 +1427,8 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Program-wide cutover remains blocked by Phase 4/5 runtime and security; Cassandra evidence is rehearsal-grade and row-count parity based.",
       "folder": "req-gs-ph-08",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-ph-08",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-ph-08",
+      "folderPath": "docs/audit-evidence/req-gs-ph-08",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-08",
       "evidenceLinks": [
         {
           "path": "docs/21-modernization-roadmap-v1.md",
@@ -1454,16 +1451,16 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-cassandra-full-copy-summary-20260224-155602.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-cassandra-full-copy-summary-20260224-155602.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-cassandra-full-copy-summary-20260224-155602.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-cassandra-full-copy-summary-20260224-155602.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-cassandra-parity-compare-20260224-155602.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-cassandra-parity-compare-20260224-155602.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-cassandra-parity-compare-20260224-155602.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-cassandra-parity-compare-20260224-155602.txt"
         }
       ]
     },
@@ -1478,8 +1475,8 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-gs-ph-09",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-ph-09",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-ph-09",
+      "folderPath": "docs/audit-evidence/req-gs-ph-09",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-09",
       "evidenceLinks": [
         {
           "path": "docs/21-modernization-roadmap-v1.md",
@@ -1490,12 +1487,12 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/999-phase8-precision-runtime-canary-phase-closure-20260224-142513.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase8-precision-closure-ready-20260224-142513.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase8-precision-closure-ready-20260224-142513.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase8-precision-closure-ready-20260224-142513.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase8-precision-closure-ready-20260224-142513.txt"
         }
       ]
     },
@@ -1510,8 +1507,8 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Phase 9 closure explicitly lists deferred no-go scope for runtime config/host/protocol/template files.",
       "folder": "req-gs-ph-10",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-ph-10",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-ph-10",
+      "folderPath": "docs/audit-evidence/req-gs-ph-10",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-10",
       "evidenceLinks": [
         {
           "path": "docs/21-modernization-roadmap-v1.md",
@@ -1522,16 +1519,16 @@
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/151-phase9-branding-namespace-tested-controlled-wave-phase-closure-20260224-110000.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-roadmap-milestones-v1.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase9-w0-status-20260224-104500.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase9-w0-status-20260224-104500.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase9-w0-status-20260224-104500.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase9-w0-status-20260224-104500.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase9-closure-scope-20260224-110000.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-phase9-closure-scope-20260224-110000.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-phase9-closure-scope-20260224-110000.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-phase9-closure-scope-20260224-110000.txt"
         }
       ]
     },
@@ -1546,28 +1543,28 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Evidence confirms outcomes later, but not a single consolidated Sprint 01 completion packet tied to the exact planned window.",
       "folder": "req-gs-ph-11",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-gs-ph-11",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-gs-ph-11",
+      "folderPath": "docs/audit-evidence/req-gs-ph-11",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-gs-ph-11",
       "evidenceLinks": [
         {
           "path": "docs/22-sprint-01-two-week-execution-plan.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/22-sprint-01-two-week-execution-plan.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-sprint01-plan-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-observability-baseline-complete-20260224-121500.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-observability-baseline-complete-20260224-121500.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-observability-baseline-complete-20260224-121500.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-observability-baseline-complete-20260224-121500.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-legacy-parity-baseline-20260224-124500.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-repo-governance-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/gs-repo-governance-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/gs-repo-governance-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/gs-repo-governance-proof.txt"
         }
       ]
     },
@@ -1582,20 +1579,20 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-ng-01",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-01",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-01",
+      "folderPath": "docs/audit-evidence/req-ng-01",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-01",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/00-product-decisions.md",
+          "path": "docs/New games Project/00-product-decisions.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/00-product-decisions.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
         }
       ]
     },
@@ -1610,24 +1607,24 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Sampled proof is strong for wallet/history and launch integration, but not a full responsibility-by-responsibility verification matrix.",
       "folder": "req-ng-02",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-02",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-02",
+      "folderPath": "docs/audit-evidence/req-ng-02",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-02",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/00-product-decisions.md",
+          "path": "docs/New games Project/00-product-decisions.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/00-product-decisions.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-runtime-ops-handoff-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-runtime-ops-handoff-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-runtime-ops-handoff-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-runtime-ops-handoff-proof.txt"
         }
       ]
     },
@@ -1642,20 +1639,20 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Need explicit code-level or network-level negative proof for all New Games backend paths to prove \"never\".",
       "folder": "req-ng-03",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-03",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-03",
+      "folderPath": "docs/audit-evidence/req-ng-03",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-03",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/00-product-decisions.md",
+          "path": "docs/New games Project/00-product-decisions.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/00-product-decisions.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
         }
       ]
     },
@@ -1670,28 +1667,28 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-ng-04",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-04",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-04",
+      "folderPath": "docs/audit-evidence/req-ng-04",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-04",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/00-product-decisions.md",
+          "path": "docs/New games Project/00-product-decisions.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/00-product-decisions.md"
         },
         {
-          "path": "docs/projects/new-games/03-milestones.md",
+          "path": "docs/New games Project/03-milestones.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
         }
       ]
     },
@@ -1706,32 +1703,32 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-ng-05",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-05",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-05",
+      "folderPath": "docs/audit-evidence/req-ng-05",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-05",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/00-product-decisions.md",
+          "path": "docs/New games Project/00-product-decisions.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/00-product-decisions.md"
         },
         {
-          "path": "docs/projects/new-games/03-milestones.md",
+          "path": "docs/New games Project/03-milestones.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
         }
       ]
     },
@@ -1746,24 +1743,24 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-ng-06",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-06",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-06",
+      "folderPath": "docs/audit-evidence/req-ng-06",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-06",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/00-product-decisions.md",
+          "path": "docs/New games Project/00-product-decisions.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/00-product-decisions.md"
         },
         {
-          "path": "docs/projects/new-games/03-milestones.md",
+          "path": "docs/New games Project/03-milestones.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
         }
       ]
     },
@@ -1778,28 +1775,28 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-ng-07",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-07",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-07",
+      "folderPath": "docs/audit-evidence/req-ng-07",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-07",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/00-product-decisions.md",
+          "path": "docs/New games Project/00-product-decisions.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/00-product-decisions.md"
         },
         {
-          "path": "docs/projects/new-games/03-milestones.md",
+          "path": "docs/New games Project/03-milestones.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt"
         }
       ]
     },
@@ -1814,28 +1811,28 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-ng-08",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-08",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-08",
+      "folderPath": "docs/audit-evidence/req-ng-08",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-08",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/00-product-decisions.md",
+          "path": "docs/New games Project/00-product-decisions.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/00-product-decisions.md"
         },
         {
-          "path": "docs/projects/new-games/03-milestones.md",
+          "path": "docs/New games Project/03-milestones.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt"
         }
       ]
     },
@@ -1850,24 +1847,24 @@
       "isActuallyWorkingToday": "Not proven",
       "blockingReason": "Need direct runtime config or test evidence confirming compliance gates were intentionally not enforced in the audited phase-1 path.",
       "folder": "req-ng-09",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-09",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-09",
+      "folderPath": "docs/audit-evidence/req-ng-09",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-09",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/00-product-decisions.md",
+          "path": "docs/New games Project/00-product-decisions.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/00-product-decisions.md"
         },
         {
-          "path": "docs/projects/new-games/03-milestones.md",
+          "path": "docs/New games Project/03-milestones.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
         }
       ]
     },
@@ -1882,20 +1879,20 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Need code-level change audit to prove strict \"unchanged\" claim across the whole core GS stack.",
       "folder": "req-ng-10",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-10",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-10",
+      "folderPath": "docs/audit-evidence/req-ng-10",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-10",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/00-product-decisions.md",
+          "path": "docs/New games Project/00-product-decisions.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/00-product-decisions.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
         }
       ]
     },
@@ -1910,24 +1907,24 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-ng-11",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-11",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-11",
+      "folderPath": "docs/audit-evidence/req-ng-11",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-11",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/00-product-decisions.md",
+          "path": "docs/New games Project/00-product-decisions.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/00-product-decisions.md"
         },
         {
-          "path": "docs/projects/new-games/03-milestones.md",
+          "path": "docs/New games Project/03-milestones.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
         }
       ]
     },
@@ -1942,20 +1939,20 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-ng-12",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-12",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-12",
+      "folderPath": "docs/audit-evidence/req-ng-12",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-12",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/00-product-decisions.md",
+          "path": "docs/New games Project/00-product-decisions.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/00-product-decisions.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-product-decisions-summary.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
         }
       ]
     },
@@ -1970,16 +1967,16 @@
       "isActuallyWorkingToday": "Partly",
       "blockingReason": "Missing dedicated M0 evidence artifact in the shared evidence bundle used for this audit.",
       "folder": "req-ng-13",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-13",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-13",
+      "folderPath": "docs/audit-evidence/req-ng-13",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-13",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/03-milestones.md",
+          "path": "docs/New games Project/03-milestones.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
         }
       ]
     },
@@ -1994,24 +1991,24 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-ng-14",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-14",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-14",
+      "folderPath": "docs/audit-evidence/req-ng-14",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-14",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/03-milestones.md",
+          "path": "docs/New games Project/03-milestones.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-live-runtime-gs-integration-proof.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-runtime-ops-handoff-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-runtime-ops-handoff-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-runtime-ops-handoff-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-runtime-ops-handoff-proof.txt"
         }
       ]
     },
@@ -2026,20 +2023,20 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-ng-15",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-15",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-15",
+      "folderPath": "docs/audit-evidence/req-ng-15",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-15",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/03-milestones.md",
+          "path": "docs/New games Project/03-milestones.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt"
         }
       ]
     },
@@ -2054,20 +2051,20 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-ng-16",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-16",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-16",
+      "folderPath": "docs/audit-evidence/req-ng-16",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-16",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/03-milestones.md",
+          "path": "docs/New games Project/03-milestones.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-client-parity-and-legacy-regression-proof.txt"
         }
       ]
     },
@@ -2082,24 +2079,24 @@
       "isActuallyWorkingToday": "Yes",
       "blockingReason": null,
       "folder": "req-ng-17",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-17",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-17",
+      "folderPath": "docs/audit-evidence/req-ng-17",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-17",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/03-milestones.md",
+          "path": "docs/New games Project/03-milestones.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-m4-proof-pack-pass-20260213-120017.txt"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-testing-and-perf-baseline-proof.txt"
         }
       ]
     },
@@ -2114,34 +2111,38 @@
       "isActuallyWorkingToday": "No",
       "blockingReason": "No M5 completion/proof artifact present in the audited New Games evidence set.",
       "folder": "req-ng-18",
-      "folderPath": "docs/projects/post-project-audit/audit-evidence/req-ng-18",
-      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-18",
+      "folderPath": "docs/audit-evidence/req-ng-18",
+      "folderFileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-18",
       "evidenceLinks": [
         {
-          "path": "docs/projects/new-games/03-milestones.md",
+          "path": "docs/New games Project/03-milestones.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
+          "path": "docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/shared-evidence/ng-milestones-snapshot.txt"
         }
       ]
     }
   ],
-  "__embeddedSyncedAtUtc": "2026-02-25T19:42:46.410Z",
-  "__embeddedFingerprint": "fe13386b1d69"
+  "snapshotContext": {
+    "type": "MILESTONE_2_BASELINE_WITH_POST_AUDIT_READINESS_OVERLAY",
+    "plainEnglish": "Per-requirement verdicts are the Milestone 2 audit baseline. Live cutover state comes from the latest readiness report and can be more advanced than baseline blocker text in individual requirement rows."
+  },
+  "__embeddedSyncedAtUtc": "2026-02-26T07:37:54.477Z",
+  "__embeddedFingerprint": "9fa5ab03be53"
 }
   </script>
 
   <script id="embedded-audit-scope" type="application/json">
 {
-  "updatedAt": "2026-02-25T19:16:23Z",
+  "updatedAt": "2026-02-26T07:40:00Z",
   "coreScope": {
     "name": "Core GS Modernization",
     "plainEnglishSummary": "Modernize the Game Server without breaking existing integrations, then move toward a safer service-based architecture with staged rollout and rollback.",
     "deliveryChecklistCompletion": "41/41",
     "cutoverReadiness": "GO_FOR_DEPLOY_AND_CANARY",
-    "whatThisMeans": "Core delivery and runtime/security validation reports now show go-state for controlled canary rollout. The final gate is human/operator approval and execution discipline."
+    "whatThisMeans": "Non-production implementation and verification are complete. For production rollout, only operational change-window approval and controlled execution remain."
   },
   "parallelWorkstreams": [
     {
@@ -2152,20 +2153,20 @@
       "plainEnglishSummary": "A separate new-game delivery track (Plinko) progressed strongly and produced real runtime/performance proofs, but it is not the same thing as core GS cutover readiness.",
       "evidence": [
         {
-          "path": "docs/projects/new-games/00-product-decisions.md",
+          "path": "docs/New games Project/00-product-decisions.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/00-product-decisions.md"
         },
         {
-          "path": "docs/projects/new-games/03-milestones.md",
+          "path": "docs/New games Project/03-milestones.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/03-milestones.md"
         },
         {
-          "path": "docs/projects/new-games/evidence/m4-proof-pack-20260213-120017.md",
+          "path": "docs/New games Project/evidence/m4-proof-pack-20260213-120017.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/New%20games%20Project/evidence/m4-proof-pack-20260213-120017.md"
         },
         {
-          "path": "docs/projects/post-project-audit/audit-evidence/req-ng-18/verdict.md",
-          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/req-ng-18/verdict.md"
+          "path": "docs/audit-evidence/req-ng-18/verdict.md",
+          "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence/req-ng-18/verdict.md"
         }
       ]
     },
@@ -2177,11 +2178,11 @@
       "plainEnglishSummary": "This is a separate project track with its own charter, schema mapping, and rollout planning. It should not be counted as GS modernization cutover completion.",
       "evidence": [
         {
-          "path": "docs/projects/casino-manager/00-project-charter.md",
+          "path": "docs/Casino Manager Project/00-project-charter.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/Casino%20Manager%20Project/00-project-charter.md"
         },
         {
-          "path": "docs/projects/casino-manager/README.md",
+          "path": "docs/Casino Manager Project/README.md",
           "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/Casino%20Manager%20Project/README.md"
         }
       ]
@@ -2210,45 +2211,45 @@
   "currentCutoverBlockers": [],
   "latestEvidenceSources": [
     {
-      "label": "Milestone 2 Requirement Reality Check Audit",
-      "path": "docs/projects/post-project-audit/Requirement-Reality-Check-Audit.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/Requirement-Reality-Check-Audit.md"
+      "label": "Program Readiness Report (latest factual cutover status)",
+      "path": "docs/release-readiness/program-deploy-readiness-status-20260225-194216.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260225-194216.md"
     },
     {
-      "label": "Milestone 2 Requirement Index",
-      "path": "docs/projects/post-project-audit/audit-evidence/requirements-index.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/post-project-audit/audit-evidence/requirements-index.md"
-    },
-    {
-      "label": "Latest Program Readiness Report (factual cutover status)",
-      "path": "docs/release-readiness/program-deploy-readiness-status-20260225-191623.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260225-191623.md"
+      "label": "Non-Prod Full Implementation Completion",
+      "path": "docs/release-readiness/nonprod-full-implementation-test-completion-20260225-194300.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/nonprod-full-implementation-test-completion-20260225-194300.md"
     },
     {
       "label": "Latest Canary Operator Sign-Off Packet",
-      "path": "docs/release-readiness/canary-operator-signoff-packet-20260225-191120.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/canary-operator-signoff-packet-20260225-191120.md"
+      "path": "docs/release-readiness/canary-operator-signoff-packet-20260225-193300.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/canary-operator-signoff-packet-20260225-193300.md"
     },
     {
-      "label": "Mixed-topology manual full-flow pass evidence",
-      "path": "docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-full-flow-20260224-162730.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/validation/legacy-mixed-topology/legacy-mixed-topology-manual-full-flow-20260224-162730.md"
+      "label": "Project 01 Cassandra v4 Closure Report",
+      "path": "docs/projects/01-cassandra-v4-driver-migration/09-cassandra-v4-closure-report-20260226.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/09-cassandra-v4-closure-report-20260226.md"
     },
     {
-      "label": "Phase 7 Cassandra full-copy report",
-      "path": "docs/phase7/cassandra/full-copy/phase7-cassandra-full-data-copy-20260224-155602.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/phase7/cassandra/full-copy/phase7-cassandra-full-data-copy-20260224-155602.md"
+      "label": "Project 02 Runtime Renaming Closure Report",
+      "path": "docs/projects/02-runtime-renaming-refactor/09-runtime-renaming-closure-report-20260226.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/09-runtime-renaming-closure-report-20260226.md"
+    },
+    {
+      "label": "Cross-Project Closure Summary",
+      "path": "docs/projects/PROJECTS-CLOSURE-SUMMARY-20260226.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/projects/PROJECTS-CLOSURE-SUMMARY-20260226.md"
     }
   ],
   "whatNeedsApprovalNext": [
-    "Approve the canary change window (UTC start/end) and execution owner list.",
-    "Run controlled canary for bank 6275 and fill the result record in the operator packet.",
-    "If canary passes, approve expansion to the next bank scope.",
+    "For non-production work: no technical blocker remains.",
+    "For production rollout: approve change window and run controlled canary execution.",
+    "Record canary result in the operator packet before broader rollout.",
     "Keep Casino Manager and New Games reporting separate from core GS rollout status."
   ],
   "plainEnglishSummary": "This dashboard separates delivery output progress from production cutover readiness. The core modernization is currently in GO_FOR_DEPLOY_AND_CANARY state with no open technical blockers in aggregated evidence. Parallel workstreams (New Games and Casino Manager) are real work, but they remain separate from core GS rollout decisions.",
-  "__embeddedSyncedAtUtc": "2026-02-25T19:42:46.410Z",
-  "__embeddedFingerprint": "59cddbd79ee2"
+  "__embeddedSyncedAtUtc": "2026-02-26T07:37:54.477Z",
+  "__embeddedFingerprint": "b212f7c530e9"
 }
   </script>
 
@@ -2683,6 +2684,7 @@
       const reqMeta = getEmbeddedSnapshotMeta(req);
       const scopeMeta = getEmbeddedSnapshotMeta(scope);
       const snapshotText = scope.plainEnglishSummary || core.whatThisMeans || 'Audit summary snapshot not available yet.';
+      const baselineContext = req.snapshotContext && req.snapshotContext.plainEnglish ? req.snapshotContext.plainEnglish : '';
 
       el.innerHTML = `
         <div class="cardx">
@@ -2711,6 +2713,7 @@
             | audit scope source: ${escapeHtml(scope.__source || '-')}
             ${scopeMeta ? ` | snapshot synced: ${scopeMeta.syncedAt} | fp: ${scopeMeta.fingerprint}` : ''}
           </div>
+          ${baselineContext ? `<div class="subtle-note" style="margin-top:6px;">${escapeHtml(baselineContext)}</div>` : ''}
         </div>
       `;
     }
@@ -2814,7 +2817,7 @@
       el.innerHTML = `
         <div class="cardx">
           <h4 style="margin-top:0;">Requirement Reality Check</h4>
-          <div class="subtle-note">This section uses the Milestone 2 audit package, which checks original promises against real evidence instead of checklist ticks only.</div>
+          <div class="subtle-note">This section uses the Milestone 2 audit baseline. It is historical evidence and may include issues that were fixed later. Use the Current Blockers card above for live cutover blockers.</div>
           <div class="verdict-grid">${verdictCells || '<div class="meta">No verdict summary available.</div>'}</div>
           <div class="metric-grid">
             <div class="metric-card">

@@ -876,3 +876,11 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - Combined GS+MP `100.00%` (`639 -> 0` for import-line burndown metric)
 - Note:
   - This 100% value is import-surface completion only; runtime behavior and production-readiness checks remain governed by audit/cutover milestones.
+
+## 2026-02-26 07:38 UTC (Closure packaging)
+- Added final closure report artifact for Project 01:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/09-cassandra-v4-closure-report-20260226.md`
+- Linked Project 01 closure report into cross-project handover summary:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/PROJECTS-CLOSURE-SUMMARY-20260226.md`
+- Runtime sanity check captured during closure consistency pass:
+  - `GET /startgame?...bankId=6275...` on `127.0.0.1:18080` returned `HTTP 200`.

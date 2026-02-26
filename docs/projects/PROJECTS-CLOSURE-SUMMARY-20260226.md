@@ -10,6 +10,8 @@ Workspace: `/Users/alexb/Documents/Dev/Dev_new`
 
 ## Project 01 (Cassandra v4)
 - Outcome: import-surface migration completed to zero remaining driver3 import lines in tracked inventory target.
+- Closure artifact:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/09-cassandra-v4-closure-report-20260226.md`
 - Checkpoint evidence (example final wave):
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-062700/`
 

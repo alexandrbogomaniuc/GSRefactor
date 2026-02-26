@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T09:51:34Z",
+  "updatedAt": "2026-02-26T07:40:00Z",
   "sourceAuditIndexJson": "docs/audit-evidence/requirements-index.json",
   "links": {
     "milestone2AuditReport": {
@@ -15,8 +15,8 @@
       "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/audit-evidence"
     },
     "latestReadinessReport": {
-      "path": "docs/release-readiness/program-deploy-readiness-status-20260224-163502.md",
-      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260224-163502.md"
+      "path": "docs/release-readiness/program-deploy-readiness-status-20260225-194216.md",
+      "fileUrl": "file:///Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/program-deploy-readiness-status-20260225-194216.md"
     }
   },
   "baselineDocs": [
@@ -44,12 +44,9 @@
     },
     "cutoverReality": {
       "deliveryChecklistCompletion": "41/41 (separate metric)",
-      "currentCutoverReadiness": "NO_GO_CUTOVER_PENDING_VALIDATION",
-      "currentBlockers": [
-        "Phase 4 protocol runtime canary validation failing",
-        "Phase 5/6 core service runtime canary validation failing",
-        "Security dependency lockfile/audit hardening pending"
-      ]
+      "currentCutoverReadiness": "GO_FOR_DEPLOY_AND_CANARY",
+      "currentBlockers": [],
+      "note": "Historical Milestone 2 requirement rows may still mention resolved blockers; use Current Blockers and latest readiness report for live decision state."
     }
   },
   "groupBreakdown": {
@@ -1564,5 +1561,9 @@
         }
       ]
     }
-  ]
+  ],
+  "snapshotContext": {
+    "type": "MILESTONE_2_BASELINE_WITH_POST_AUDIT_READINESS_OVERLAY",
+    "plainEnglish": "Per-requirement verdicts are the Milestone 2 audit baseline. Live cutover state comes from the latest readiness report and can be more advanced than baseline blocker text in individual requirement rows."
+  }
 }
