@@ -1,0 +1,6 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankConstants.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java
+gs-server/game-server/web-gs/src/main/webapp/support/gameBankConfig/applyGame.jsp
+gs-server/game-server/web-gs/src/main/webapp/support/games/829_step1_AddGameInfoTemplate.jsp
+gs-server/game-server/web-gs/src/main/webapp/support/templateManager/cloneTemplate.jsp

@@ -1,6 +1,6 @@
 <%@ page import="com.dgphoenix.casino.bgm.BaseGameHelper" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.IdObject" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankConstants" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankConstants" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.ILimit" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo" %>

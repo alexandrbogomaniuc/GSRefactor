@@ -813,3 +813,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-111037-hardcut-m2-wave27-server-info-internal-provider`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/39-hard-cut-m2-wave27-server-info-internal-provider-report-20260226.md`
+
+## 2026-02-26 11:19 UTC (M2 Wave 28 - BankConstants Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.bank.BankConstants` -> `com.abs.casino.common.cache.data.bank.BankConstants`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankConstants.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java`
+  - `gs-server/game-server/web-gs/src/main/webapp/support/gameBankConfig/applyGame.jsp`
+  - `gs-server/game-server/web-gs/src/main/webapp/support/games/829_step1_AddGameInfoTemplate.jsp`
+  - `gs-server/game-server/web-gs/src/main/webapp/support/templateManager/cloneTemplate.jsp`
+- Post-scan result: legacy refs `0`, abs refs `5`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-111555-hardcut-m2-wave28-bank-constants`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/40-hard-cut-m2-wave28-bank-constants-report-20260226.md`
