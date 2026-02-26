@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data.payment.transfer.paymentmean;
+package com.abs.casino.common.cache.data.payment.transfer.paymentmean;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 

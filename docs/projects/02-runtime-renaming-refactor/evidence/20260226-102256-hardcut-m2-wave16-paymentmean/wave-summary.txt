@@ -1,0 +1,21 @@
+timestamp_utc=2026-02-26T10:23:58Z
+pre_scan_lines=7
+post_scan_legacy_refs=0
+post_scan_abs_refs=7
+validation_success_commands=9
+validation_failed_commands=0
+
+scope=
+- com.dgphoenix.casino.common.cache.data.payment.transfer.paymentmean.*
+- package declaration migration for payment mean family + PaymentTransaction imports
+
+validation_set=
+- common install
+- common-wallet test
+- sb-utils test
+- promo persisters install
+- common persisters install
+- cassandra cache test
+- web-gs package
+- mp core/persistance package
+- runtime smoke

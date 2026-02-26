@@ -6421,3 +6421,13 @@
   - a temporary boundary attempt touching `common-gs`/JSP imports was rolled back after confirming existing baseline blocker in `common-gs` (`PROTOCOL_VERSION`) is unrelated to this wave.
 - Report added:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/27-hard-cut-m2-wave15-mass-award-restriction-report-20260226.md`
+
+### 2026-02-26 10:24 UTC
+- Completed Project 02 M2 Wave 16 for the `paymentmean` namespace family.
+- Migrated 5 payment-mean model package declarations to `com.abs` and updated `PaymentTransaction` imports.
+- Evidence folder created:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-102256-hardcut-m2-wave16-paymentmean`
+- Validation result:
+  - 9/9 checks passed (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-persisters`, `cache`, `web-gs`, `mp`, `refactor smoke`).
+- Report added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/28-hard-cut-m2-wave16-paymentmean-report-20260226.md`

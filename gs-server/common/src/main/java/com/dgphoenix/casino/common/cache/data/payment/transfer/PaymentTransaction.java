@@ -2,8 +2,8 @@ package com.dgphoenix.casino.common.cache.data.payment.transfer;
 
 import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.payment.transfer.paymentmean.PaymentMeanId;
-import com.dgphoenix.casino.common.cache.data.payment.transfer.paymentmean.PaymentMeanType;
+import com.abs.casino.common.cache.data.payment.transfer.paymentmean.PaymentMeanId;
+import com.abs.casino.common.cache.data.payment.transfer.paymentmean.PaymentMeanType;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
