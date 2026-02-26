@@ -1,0 +1,8 @@
+wave=W56-callbacks-executor
+target=com.dgphoenix.casino.gs.socket.async.CallbacksExecutor
+replacement=com.abs.casino.gs.socket.async.CallbacksExecutor
+pre_legacy_refs=1
+post_legacy_refs=0
+post_abs_refs=1
+validation_passed=9
+validation_failed=0

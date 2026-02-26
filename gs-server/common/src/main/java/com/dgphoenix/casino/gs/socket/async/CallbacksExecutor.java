@@ -1,6 +1,5 @@
-package com.dgphoenix.casino.gs.socket.async;
+package com.abs.casino.gs.socket.async;
 
-import com.abs.casino.gs.socket.async.ICallbacksExecutor;
 import com.dgphoenix.casino.common.util.ExecutorUtils;
 
 import javax.annotation.PreDestroy;
