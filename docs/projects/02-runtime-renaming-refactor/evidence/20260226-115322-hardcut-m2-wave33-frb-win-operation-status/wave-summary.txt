@@ -1,0 +1,9 @@
+Wave: W33-frb-win-operation-status
+Date (UTC): 2026-02-26
+Status: COMPLETE
+
+Migrated:
+- com.dgphoenix.casino.common.cache.data.payment.frb.FRBWinOperationStatus -> com.abs.casino.common.cache.data.payment.frb.FRBWinOperationStatus
+
+Validation:
+- 9/9 required checks PASS.

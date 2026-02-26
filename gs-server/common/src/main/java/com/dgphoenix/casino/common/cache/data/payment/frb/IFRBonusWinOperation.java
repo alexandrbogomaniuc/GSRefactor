@@ -1,6 +1,6 @@
 package com.abs.casino.common.cache.data.payment.frb;
 
-import com.dgphoenix.casino.common.cache.data.payment.frb.FRBWinOperationStatus;
+import com.abs.casino.common.cache.data.payment.frb.FRBWinOperationStatus;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 
 public interface IFRBonusWinOperation {

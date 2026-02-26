@@ -894,3 +894,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-114542-hardcut-m2-wave32-fr-bonus-notification-status`
 - Report:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/44-hard-cut-m2-wave32-fr-bonus-notification-status-report-20260226.md`
+
+## 2026-02-26 11:55 UTC (M2 Wave 33 - FRBWinOperationStatus Completed)
+- Migrated namespace:
+  - `com.dgphoenix.casino.common.cache.data.payment.frb.FRBWinOperationStatus` -> `com.abs.casino.common.cache.data.payment.frb.FRBWinOperationStatus`
+- Changed files:
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/frb/FRBWinOperationStatus.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/TransactionData.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/frb/IFRBonusWinOperation.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBWinOperation.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/CommonFRBonusWin.java`
+  - `gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBonusWin.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/FRBonusManager.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/FRBonusWinTrackerTask.java`
+  - `gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/OriginalFRBonusWinManager.java`
+- Post-scan result: legacy refs `0`, abs refs `8`.
+- Validation matrix: all 9 commands PASS, including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260226-115322-hardcut-m2-wave33-frb-win-operation-status`
+- Report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/45-hard-cut-m2-wave33-frb-win-operation-status-report-20260226.md`
