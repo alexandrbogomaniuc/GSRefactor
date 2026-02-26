@@ -53,7 +53,7 @@ Primary source:
 - Non-prod full completion certificate:
   - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/nonprod-full-implementation-test-completion-20260225-194300.md`
 - Latest continuity validation refresh:
-  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/nonprod-validation-refresh-20260226-074218.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/onboarding-lifecycle-validation-20260226-074518.md`
 
 ## What Is Still Not Done
 

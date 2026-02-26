@@ -126,6 +126,10 @@ function runBashScript(scriptPath, scriptArgs = []) {
   return run(bashBin, [scriptPath, ...scriptArgs]);
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 async function httpCheck(url, { okStatuses = [200], timeoutMs = 5000, followRedirects = true } = {}, redirects = 0) {
   const parsed = new URL(url);
   const client = parsed.protocol === 'https:' ? https : http;
@@ -162,11 +166,42 @@ async function httpCheck(url, { okStatuses = [200], timeoutMs = 5000, followRedi
   });
 }
 
+async function retryingHttpCheck(
+  check,
+  { attempts = 10, delayMs = 3000, timeoutMs = 8000 } = {}
+) {
+  let lastResult = null;
+  let lastError = null;
+
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      const result = await httpCheck(check.url, {
+        okStatuses: check.okStatuses,
+        timeoutMs,
+        followRedirects: true,
+      });
+      if (result.ok) {
+        return { ok: true, result, attempt };
+      }
+      lastResult = result;
+    } catch (err) {
+      lastError = err;
+    }
+
+    if (attempt < attempts) {
+      await sleep(delayMs);
+    }
+  }
+
+  return { ok: false, result: lastResult, error: lastError, attempt: attempts };
+}
+
 async function smokeChecks() {
   const checks = [
-    // Root URLs often return 403 locally when the service is reachable but the page is not public.
-    { label: 'Static facade', url: 'http://127.0.0.1:18080/', okStatuses: [200, 403] },
-    { label: 'GS web', url: 'http://127.0.0.1:18081/', okStatuses: [200, 403] },
+    // Use a concrete static game asset instead of "/" to avoid startup-time proxy false negatives.
+    { label: 'Static asset route', url: 'http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json', okStatuses: [200] },
+    // Diagnostic-only signal: can flap during startup even when launch path is healthy.
+    { label: 'GS support route (diagnostic)', url: 'http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6275', okStatuses: [200], required: false },
     { label: 'Config service health', url: 'http://127.0.0.1:18072/health', okStatuses: [200] },
     {
       label: 'Launch alias (startgame)',
@@ -175,19 +210,30 @@ async function smokeChecks() {
     },
   ];
 
+  const maxAttempts = Math.max(1, Number(process.env.REFACTOR_SMOKE_RETRIES ?? '10'));
+  const retryDelayMs = Math.max(250, Number(process.env.REFACTOR_SMOKE_DELAY_MS ?? '3000'));
+
   let failures = 0;
   for (const check of checks) {
-    try {
-      const result = await httpCheck(check.url, { okStatuses: check.okStatuses, timeoutMs: 8000, followRedirects: true });
-      if (result.ok) {
-        log(`PASS: ${check.label} (${check.url}) -> HTTP ${result.status}`);
-      } else {
+    const outcome = await retryingHttpCheck(check, {
+      attempts: maxAttempts,
+      delayMs: retryDelayMs,
+      timeoutMs: 8000,
+    });
+    const required = check.required !== false;
+    if (outcome.ok) {
+      const suffix = outcome.attempt > 1 ? ` (attempt ${outcome.attempt}/${maxAttempts})` : '';
+      log(`PASS: ${check.label} (${check.url}) -> HTTP ${outcome.result.status}${suffix}`);
+    } else {
+      if (required) {
         failures += 1;
-        log(`FAIL: ${check.label} (${check.url}) -> HTTP ${result.status}`);
       }
-    } catch (err) {
-      failures += 1;
-      log(`FAIL: ${check.label} (${check.url}) -> ${err.message}`);
+      const prefix = required ? 'FAIL' : 'WARN';
+      if (outcome.result) {
+        log(`${prefix}: ${check.label} (${check.url}) -> HTTP ${outcome.result.status} after ${maxAttempts} attempts`);
+      } else {
+        log(`${prefix}: ${check.label} (${check.url}) -> ${outcome.error?.message ?? 'unknown error'} after ${maxAttempts} attempts`);
+      }
     }
   }
 

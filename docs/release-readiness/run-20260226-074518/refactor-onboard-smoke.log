@@ -1,0 +1,5 @@
+[refactor-onboard] FAIL: Static facade (http://127.0.0.1:18080/) -> HTTP 502 after 10 attempts
+[refactor-onboard] PASS: GS web (http://127.0.0.1:18081/) -> HTTP 403 (attempt 8/10)
+[refactor-onboard] PASS: Config service health (http://127.0.0.1:18072/health) -> HTTP 200
+[refactor-onboard] PASS: Launch alias (startgame) (http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 200
+[refactor-onboard] ERROR: Smoke checks failed (1 failure(s)). See lines above.

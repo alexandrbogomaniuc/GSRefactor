@@ -91,13 +91,14 @@ node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
 
 ### Manual checks
 Open these URLs in your browser:
-- Static facade: [http://127.0.0.1:18080/](http://127.0.0.1:18080/)
-- GS web: [http://127.0.0.1:18081/](http://127.0.0.1:18081/)
+- Static asset route: [http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json](http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json)
+- GS support route: [http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6275](http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6275)
 - Config service health: [http://127.0.0.1:18072/health](http://127.0.0.1:18072/health)
 
 Note:
-- Root URLs on `18080` and `18081` can return `HTTP 403` and still be healthy in this setup.
+- Root URLs can return startup-time transport errors and are not used as readiness checks.
 - Use `smoke` command results and `/startgame` `HTTP 200` as the primary pass/fail signal.
+- A `WARN` line for `GS support route (diagnostic)` does not fail onboarding by itself.
 
 ### Game launch URL (browser-facing alias, no `cwstartgamev2.do`)
 Use this exact URL for the VND test bank:
@@ -131,6 +132,9 @@ This usually means one of these:
 - stack is not fully up yet (wait 1-2 minutes and rerun `smoke`)
 - Cassandra data is missing or not prepared for the test bank
 - a service is up but unhealthy (check container logs)
+
+### `smoke` shows only a diagnostic GS warning
+If `smoke` exits successfully and `/startgame` is `HTTP 200`, onboarding is considered successful even if the diagnostic GS support route reports a transient warning.
 
 ## Known limits (important)
 - This onboarding flow starts the **refactor-only** environment, not the legacy stacks.

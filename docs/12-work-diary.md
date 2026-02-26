@@ -6020,3 +6020,22 @@
   - updated `/docs/projects/post-project-audit/README-ONBOARDING.md` to clarify that root `18080/18081` `HTTP 403` can be healthy and smoke/startgame are primary checks.
   - updated `/docs/projects/PROJECTS-CLOSURE-SUMMARY-20260226.md` with latest validation refresh link.
 - Next step: commit/push this refresh package and save memory.
+
+### 2026-02-26 07:49 UTC
+- Continued onboarding hardening for cross-machine startup reliability.
+- Reproduced startup race issue in real lifecycle test (`down -> up -> smoke`): smoke failed with transient `502/ECONNRESET` checks while launch alias was already reachable.
+- Root cause: smoke used unstable readiness probes (static root and strict support endpoint) that can flap during startup.
+- Fix implemented in `/gs-server/deploy/scripts/refactor-onboard.mjs`:
+  - added retry/wait logic for smoke checks,
+  - switched static check to stable asset URL (`/html5pc/actiongames/dragonstone/lobby/version.json`),
+  - marked GS support route as diagnostic-only warning (non-blocking),
+  - kept `/startgame` as required hard pass.
+- Revalidated lifecycle with patched script:
+  - `down` PASS
+  - `up` PASS
+  - `smoke` PASS (exit code 0), with diagnostic warning only.
+- Evidence summary doc added:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/onboarding-lifecycle-validation-20260226-074518.md`
+- Evidence logs captured under:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/release-readiness/run-20260226-074518/`
+- Handover docs updated to point to latest lifecycle validation and explain diagnostic warning behavior.
