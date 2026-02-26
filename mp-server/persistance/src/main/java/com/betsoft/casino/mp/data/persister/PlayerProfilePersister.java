@@ -4,8 +4,6 @@ import com.betsoft.casino.mp.model.PlayerProfile;
 import com.betsoft.casino.mp.service.IPlayerProfileService;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -52,12 +50,12 @@ public class PlayerProfilePersister extends AbstractCassandraPersister<Long, Str
 
     @Override
     public PlayerProfile load(long bankId, long accountId) {
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where()
-                .and(eq(BANK_ID_COLUMN, bankId))
-                .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                .limit(1);
-        Row result = execute(query, "load").one();
+        Row result = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                        .where()
+                        .and(eq(BANK_ID_COLUMN, bankId))
+                        .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .limit(1),
+                "load").one();
         if (result == null) {
             return null;
         }
@@ -74,12 +72,12 @@ public class PlayerProfilePersister extends AbstractCassandraPersister<Long, Str
         ByteBuffer buffer = TABLE.serializeToBytes(profile);
         String json = TABLE.serializeToJson(profile);
         try {
-            Insert insert = getInsertQuery()
-                    .value(BANK_ID_COLUMN, bankId)
-                    .value(ACCOUNT_ID_COLUMN, accountId)
-                    .value(SERIALIZED_COLUMN_NAME, buffer)
-                    .value(JSON_COLUMN_NAME, json);
-            execute(insert, "save");
+            execute(getInsertQuery()
+                            .value(BANK_ID_COLUMN, bankId)
+                            .value(ACCOUNT_ID_COLUMN, accountId)
+                            .value(SERIALIZED_COLUMN_NAME, buffer)
+                            .value(JSON_COLUMN_NAME, json),
+                    "save");
         } finally {
             releaseBuffer(buffer);
         }

@@ -5,8 +5,6 @@ import com.betsoft.casino.mp.model.MapConfigEntity;
 import com.betsoft.casino.mp.service.IMapConfigService;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.querybuilder.Update;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -46,11 +44,11 @@ public class MapConfigPersister extends AbstractCassandraPersister<String, Strin
         ByteBuffer buffer = TABLE.serializeToBytes(mapConfig);
         String json = TABLE.serializeToJson(mapConfig);
         try {
-            Update.Assignments update = getUpdateQuery()
-                    .where(eq(MAP_ID_COLUMN, mapId))
-                    .with(set(SERIALIZED_COLUMN_NAME, buffer))
-                    .and(set(JSON_COLUMN_NAME, json));
-            execute(update, "update mapConfig");
+            execute(getUpdateQuery()
+                            .where(eq(MAP_ID_COLUMN, mapId))
+                            .with(set(SERIALIZED_COLUMN_NAME, buffer))
+                            .and(set(JSON_COLUMN_NAME, json)),
+                    "update mapConfig");
         } finally {
             releaseBuffer(buffer);
         }
@@ -63,10 +61,10 @@ public class MapConfigPersister extends AbstractCassandraPersister<String, Strin
 
     @Override
     public IMapConfigEntity load(int mapId) {
-        Select query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, MAP_ID_COLUMN, JSON_COLUMN_NAME)
-                .where(eq(MAP_ID_COLUMN, mapId))
-                .limit(1);
-        Row result = execute(query, "load mapConfig").one();
+        Row result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, MAP_ID_COLUMN, JSON_COLUMN_NAME)
+                        .where(eq(MAP_ID_COLUMN, mapId))
+                        .limit(1),
+                "load mapConfig").one();
         if (result == null) {
             return null;
         }

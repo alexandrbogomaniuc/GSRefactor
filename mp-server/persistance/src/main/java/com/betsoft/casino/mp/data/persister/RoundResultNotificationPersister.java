@@ -3,7 +3,6 @@ package com.betsoft.casino.mp.data.persister;
 import com.betsoft.casino.mp.model.IRoundResultNotification;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -74,7 +73,7 @@ public class RoundResultNotificationPersister extends AbstractCassandraPersister
     }
 
     public void removeNotification(long accountId, long gameId, long notificationId) {
-        execute(QueryBuilder.delete().from(CF_NAME)
+        execute(com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(CF_NAME)
                         .where(eq(ACCOUNT_ID_COLUMN, accountId))
                         .and(eq(GAME_ID_COLUMN, gameId))
                         .and(eq(NOTIFICATION_ID_COLUMN, notificationId)),

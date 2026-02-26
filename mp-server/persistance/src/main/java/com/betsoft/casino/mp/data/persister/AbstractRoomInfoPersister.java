@@ -2,8 +2,6 @@ package com.betsoft.casino.mp.data.persister;
 
 import com.betsoft.casino.mp.model.room.IRoomInfo;
 import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.hazelcast.core.MapStore;
 
@@ -71,8 +69,7 @@ public abstract class AbstractRoomInfoPersister<ROOM_INFO extends IRoomInfo> ext
 
     @Override
     public Iterable<Long> loadAllKeys() {
-        Select query = QueryBuilder.select(ROOM_ID_COLUMN).from(getMainColumnFamilyName());
-        ResultSet resultSet = execute(query, "loadAllKeys");
+        ResultSet resultSet = execute(getSelectColumnsQuery(ROOM_ID_COLUMN), "loadAllKeys");
         return StreamSupport.stream(resultSet.spliterator(), false)
                 .map(row -> row.getLong(ROOM_ID_COLUMN))
                 .collect(toSet());

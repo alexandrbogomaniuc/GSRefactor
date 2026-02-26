@@ -5,9 +5,6 @@ import com.betsoft.casino.mp.model.PlayerStats;
 import com.betsoft.casino.mp.service.IPlayerStatsService;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.querybuilder.Update;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -76,15 +73,15 @@ public class PlayerStatsPersister extends AbstractCassandraPersister<Long, Strin
         ByteBuffer buffer = TABLE.serializeToBytes(stats);
         String json = TABLE.serializeToJson(stats);
         try {
-            Insert insert = getInsertQuery()
-                    .value(BANK_ID_COLUMN, bankId)
-                    .value(GAME_ID_COLUMN, gameId)
-                    .value(ACCOUNT_ID_COLUMN, accountId)
-                    .value(VERSION_COLUMN, stats.getVersion())
-                    .value(SERIALIZED_COLUMN_NAME, buffer)
-                    .value(JSON_COLUMN_NAME, json)
-                    .ifNotExists();
-            return execute(insert, "insert").wasApplied();
+            return execute(getInsertQuery()
+                            .value(BANK_ID_COLUMN, bankId)
+                            .value(GAME_ID_COLUMN, gameId)
+                            .value(ACCOUNT_ID_COLUMN, accountId)
+                            .value(VERSION_COLUMN, stats.getVersion())
+                            .value(SERIALIZED_COLUMN_NAME, buffer)
+                            .value(JSON_COLUMN_NAME, json)
+                            .ifNotExists(),
+                    "insert").wasApplied();
         } finally {
             releaseBuffer(buffer);
         }
@@ -94,16 +91,16 @@ public class PlayerStatsPersister extends AbstractCassandraPersister<Long, Strin
         ByteBuffer buffer = TABLE.serializeToBytes(stats);
         String json = TABLE.serializeToJson(stats);
         try {
-            Update update = getUpdateQuery();
-            update.where()
-                    .and(eq(BANK_ID_COLUMN, bankId))
-                    .and(eq(GAME_ID_COLUMN, gameId))
-                    .and(eq(ACCOUNT_ID_COLUMN, accountId));
-            update.with(set(SERIALIZED_COLUMN_NAME, buffer))
-                    .and(set(VERSION_COLUMN, stats.getVersion()))
-                    .and(set(JSON_COLUMN_NAME, json));
-            update.onlyIf(eq(VERSION_COLUMN, stats.getVersion() - 1));
-            return execute(update, "update").wasApplied();
+            return execute(getUpdateQuery()
+                            .where()
+                            .and(eq(BANK_ID_COLUMN, bankId))
+                            .and(eq(GAME_ID_COLUMN, gameId))
+                            .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                            .with(set(SERIALIZED_COLUMN_NAME, buffer))
+                            .and(set(VERSION_COLUMN, stats.getVersion()))
+                            .and(set(JSON_COLUMN_NAME, json))
+                            .onlyIf(eq(VERSION_COLUMN, stats.getVersion() - 1)),
+                    "update").wasApplied();
         } finally {
             releaseBuffer(buffer);
         }
@@ -128,16 +125,16 @@ public class PlayerStatsPersister extends AbstractCassandraPersister<Long, Strin
         ByteBuffer buffer = TOURNAMENT_TABLE.serializeToBytes(stats);
         String json = TOURNAMENT_TABLE.serializeToJson(stats);
         try {
-            Insert insert = getInsertQuery()
-                    .value(TOURNAMENT_ID_COLUMN, tournamentId)
-                    .value(BANK_ID_COLUMN, bankId)
-                    .value(GAME_ID_COLUMN, gameId)
-                    .value(ACCOUNT_ID_COLUMN, accountId)
-                    .value(VERSION_COLUMN, stats.getVersion())
-                    .value(SERIALIZED_COLUMN_NAME, buffer)
-                    .value(JSON_COLUMN_NAME, json)
-                    .ifNotExists();
-            return execute(insert, "insert").wasApplied();
+            return execute(getInsertQuery()
+                            .value(TOURNAMENT_ID_COLUMN, tournamentId)
+                            .value(BANK_ID_COLUMN, bankId)
+                            .value(GAME_ID_COLUMN, gameId)
+                            .value(ACCOUNT_ID_COLUMN, accountId)
+                            .value(VERSION_COLUMN, stats.getVersion())
+                            .value(SERIALIZED_COLUMN_NAME, buffer)
+                            .value(JSON_COLUMN_NAME, json)
+                            .ifNotExists(),
+                    "insert").wasApplied();
         } finally {
             releaseBuffer(buffer);
         }
@@ -147,17 +144,17 @@ public class PlayerStatsPersister extends AbstractCassandraPersister<Long, Strin
         ByteBuffer buffer = TOURNAMENT_TABLE.serializeToBytes(stats);
         String json = TOURNAMENT_TABLE.serializeToJson(stats);
         try {
-            Update update = getUpdateQuery();
-            update.where()
-                    .and(eq(TOURNAMENT_ID_COLUMN, tournamentId))
-                    .and(eq(BANK_ID_COLUMN, bankId))
-                    .and(eq(GAME_ID_COLUMN, gameId))
-                    .and(eq(ACCOUNT_ID_COLUMN, accountId));
-            update.with(set(SERIALIZED_COLUMN_NAME, buffer))
-                    .and(set(JSON_COLUMN_NAME, json))
-                    .and(set(VERSION_COLUMN, stats.getVersion()));
-            update.onlyIf(eq(VERSION_COLUMN, stats.getVersion() - 1));
-            return execute(update, "update").wasApplied();
+            return execute(getUpdateQuery()
+                            .where()
+                            .and(eq(TOURNAMENT_ID_COLUMN, tournamentId))
+                            .and(eq(BANK_ID_COLUMN, bankId))
+                            .and(eq(GAME_ID_COLUMN, gameId))
+                            .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                            .with(set(SERIALIZED_COLUMN_NAME, buffer))
+                            .and(set(JSON_COLUMN_NAME, json))
+                            .and(set(VERSION_COLUMN, stats.getVersion()))
+                            .onlyIf(eq(VERSION_COLUMN, stats.getVersion() - 1)),
+                    "update").wasApplied();
         } finally {
             releaseBuffer(buffer);
         }
@@ -165,13 +162,13 @@ public class PlayerStatsPersister extends AbstractCassandraPersister<Long, Strin
 
     @Override
     public PlayerStats load(long bankId, long gameId, long accountId) {
-        Select query = getSelectAllColumnsQuery(TABLE);
-        query.where()
-                .and(eq(BANK_ID_COLUMN, bankId))
-                .and(eq(GAME_ID_COLUMN, gameId))
-                .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                .limit(1);
-        Row result = execute(query, "getStats").one();
+        Row result = execute(getSelectAllColumnsQuery(TABLE)
+                        .where()
+                        .and(eq(BANK_ID_COLUMN, bankId))
+                        .and(eq(GAME_ID_COLUMN, gameId))
+                        .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .limit(1),
+                "getStats").one();
         if (result == null) {
             return new PlayerStats();
         }
@@ -187,14 +184,14 @@ public class PlayerStatsPersister extends AbstractCassandraPersister<Long, Strin
 
     @Override
     public PlayerStats loadTournamentStats(long tournamentId, long bankId, long gameId, long accountId) {
-        Select query = getSelectAllColumnsQuery(TOURNAMENT_TABLE);
-        query.where()
-                .and(eq(TOURNAMENT_ID_COLUMN, tournamentId))
-                .and(eq(BANK_ID_COLUMN, bankId))
-                .and(eq(GAME_ID_COLUMN, gameId))
-                .and(eq(ACCOUNT_ID_COLUMN, accountId))
-                .limit(1);
-        Row result = execute(query, "getStats").one();
+        Row result = execute(getSelectAllColumnsQuery(TOURNAMENT_TABLE)
+                        .where()
+                        .and(eq(TOURNAMENT_ID_COLUMN, tournamentId))
+                        .and(eq(BANK_ID_COLUMN, bankId))
+                        .and(eq(GAME_ID_COLUMN, gameId))
+                        .and(eq(ACCOUNT_ID_COLUMN, accountId))
+                        .limit(1),
+                "getStats").one();
         if (result == null) {
             return new PlayerStats();
         }

@@ -4,8 +4,6 @@ import com.betsoft.casino.mp.model.GameConfigEntity;
 import com.betsoft.casino.mp.service.IGameConfigService;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.querybuilder.Update;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -51,11 +49,11 @@ public class GameConfigPersister extends AbstractCassandraPersister<Long, String
 
     @Override
     public GameConfigEntity load(long roomId) {
-        Select query = getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, ROOM_ID_COLUMN, JSON_COLUMN_NAME);
-        query.where()
-                .and(eq(ROOM_ID_COLUMN, roomId))
-                .limit(1);
-        Row result = execute(query, "load").one();
+        Row result = execute(getSelectColumnsQuery(TABLE, SERIALIZED_COLUMN_NAME, ROOM_ID_COLUMN, JSON_COLUMN_NAME)
+                        .where()
+                        .and(eq(ROOM_ID_COLUMN, roomId))
+                        .limit(1),
+                "load").one();
         if (result == null) {
             return null;
         }
@@ -73,11 +71,11 @@ public class GameConfigPersister extends AbstractCassandraPersister<Long, String
         ByteBuffer buffer = TABLE.serializeToBytes(gameConfig);
         String json = TABLE.serializeToJson(gameConfig);
         try {
-            Update.Assignments update = getUpdateQuery()
-                    .where(eq(ROOM_ID_COLUMN, roomId))
-                    .with(set(SERIALIZED_COLUMN_NAME, buffer))
-                    .and(set(JSON_COLUMN_NAME, json));
-            execute(update, "update");
+            execute(getUpdateQuery()
+                            .where(eq(ROOM_ID_COLUMN, roomId))
+                            .with(set(SERIALIZED_COLUMN_NAME, buffer))
+                            .and(set(JSON_COLUMN_NAME, json)),
+                    "update");
         } finally {
             releaseBuffer(buffer);
         }

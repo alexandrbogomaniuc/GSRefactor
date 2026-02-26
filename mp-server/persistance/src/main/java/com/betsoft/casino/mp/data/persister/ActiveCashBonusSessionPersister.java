@@ -5,8 +5,6 @@ import com.betsoft.casino.mp.service.IActiveCashBonusSessionService;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Insert;
-import com.datastax.driver.core.querybuilder.Select;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -60,9 +58,9 @@ public class ActiveCashBonusSessionPersister extends AbstractCassandraPersister<
 
     @Override
     public List<ActiveCashBonusSession> getByAccountId(long accountId) {
-        Select query = getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME);
-        query.where(eq(ACCOUNT_ID_COLUMN, accountId));
-        ResultSet rows = execute(query, "getByAccountId");
+        ResultSet rows = execute(getSelectColumnsQuery(SERIALIZED_COLUMN_NAME, JSON_COLUMN_NAME)
+                        .where(eq(ACCOUNT_ID_COLUMN, accountId)),
+                "getByAccountId");
         List<ActiveCashBonusSession> result = new ArrayList<>();
         for (Row row : rows) {
             ActiveCashBonusSession session = 
@@ -95,15 +93,15 @@ public class ActiveCashBonusSessionPersister extends AbstractCassandraPersister<
 
     @Override
     public void persist(ActiveCashBonusSession activeSession) {
-        Insert query = getInsertQuery();
         ByteBuffer byteBuffer = TABLE.serializeToBytes(activeSession);
         String json = TABLE.serializeToJson(activeSession);
         try {
-            query.value(KEY_COLUMN, activeSession.getId()).
-                    value(ACCOUNT_ID_COLUMN, activeSession.getAccountId()).
-                    value(SERIALIZED_COLUMN_NAME, byteBuffer).
-                    value(JSON_COLUMN_NAME, json);
-            execute(query, "persist");
+            execute(getInsertQuery()
+                            .value(KEY_COLUMN, activeSession.getId())
+                            .value(ACCOUNT_ID_COLUMN, activeSession.getAccountId())
+                            .value(SERIALIZED_COLUMN_NAME, byteBuffer)
+                            .value(JSON_COLUMN_NAME, json),
+                    "persist");
         } finally {
             releaseBuffer(byteBuffer);
         }

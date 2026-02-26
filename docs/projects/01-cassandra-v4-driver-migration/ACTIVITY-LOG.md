@@ -678,3 +678,24 @@ Project: CASS-V4 (Cassandra v4 + Java driver migration)
   - GS-only `18.85%`
   - MP-only `30.46%`
   - Combined GS+MP `21.60%`
+
+## 2026-02-26 05:13 UTC (Wave 37)
+- Implemented residual MP querybuilder cleanup wave across 12 persister files:
+  - `PlayerStatsPersister`, `SpawnConfigPersister`, `PlayerProfilePersister`, `MapConfigPersister`, `GameConfigPersister`, `ActiveFrbSessionPersister`, `ActiveCashBonusSessionPersister`, `AbstractRoomInfoPersister`, `PlayerNicknamePersister`, `WeaponsPersister`, `RoundResultNotificationPersister`, `PlayerQuestsPersister`.
+- Removed remaining typed querybuilder import/declaration usage and converted to execute-chain flow.
+- Validation: PASS
+  - promo/persisters install
+  - common-persisters install
+  - cache tests (`63` pass)
+  - web-gs package
+  - mp subset package (`core-interfaces,core,persistance` with `-am`).
+- Evidence added under:
+  - `docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-051212/`
+- Inventory delta after Wave 37:
+  - GS `driver3_import_lines`: `396 -> 396`
+  - MP `driver3_import_lines`: `105 -> 84` (`-21`)
+  - Combined: `501 -> 480` (`-21`)
+- Completion snapshot:
+  - GS-only `18.85%`
+  - MP-only `44.37%`
+  - Combined GS+MP `24.88%`

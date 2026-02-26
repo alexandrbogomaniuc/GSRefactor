@@ -3,7 +3,6 @@ package com.betsoft.casino.mp.data.persister;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.*;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -49,21 +48,21 @@ public class PlayerNicknamePersister extends AbstractCassandraPersister<String, 
     }
 
     public String getNickname(Long bankId, Long accountId) {
-        Select query = getSelectColumnsQuery(NICK_NAME_COLUMN);
+        com.datastax.driver.core.querybuilder.Select query = getSelectColumnsQuery(NICK_NAME_COLUMN);
         query.where().and(eq(BANK_AID_COLUMN, getBankAndAid(bankId, accountId))).limit(1);
         Row result = execute(query, "getNickname").one();
         return result == null ? null : result.getString(NICK_NAME_COLUMN);
     }
 
     public boolean isNicknameAvailable(String nickname) {
-        Select query = getSelectColumnsQuery(BANK_AID_COLUMN);
+        com.datastax.driver.core.querybuilder.Select query = getSelectColumnsQuery(BANK_AID_COLUMN);
         query.where().and(eq(NICK_NAME_COLUMN, nickname));
         Row result = execute(query, "isNicknameAvailable").one();
         return result == null || result.getString(BANK_AID_COLUMN) == null;
     }
 
     public boolean isNicknameAvailable(String nickname, Long bankId, Long accountId) {
-        Select query = getSelectAllColumnsQuery();
+        com.datastax.driver.core.querybuilder.Select query = getSelectAllColumnsQuery();
         query.where().and(eq(NICK_NAME_COLUMN, nickname));
         Row result = execute(query, "isNicknameAvailable").one();
         if(result == null) {
@@ -82,17 +81,18 @@ public class PlayerNicknamePersister extends AbstractCassandraPersister<String, 
         ResultSet result;
         String bankAndAid = getBankAndAid(bankId, accountId);
         if (StringUtils.isTrimmedEmpty(oldNickName)) { //newUser, create record
-            Insert insert = getInsertQuery();
+            com.datastax.driver.core.querybuilder.Insert insert = getInsertQuery();
             insert.value(NICK_NAME_COLUMN, newNickname).value(BANK_AID_COLUMN, bankAndAid).ifNotExists();
             result = execute(insert, "changeNickname[new]");
         } else {
             //we cannot use batch: Batch with conditions cannot span multiple partitions
-            Delete delete = QueryBuilder.delete().from(getMainColumnFamilyName());
-            delete.where(QueryBuilder.eq(NICK_NAME_COLUMN, oldNickName)).
-                    onlyIf(QueryBuilder.eq(BANK_AID_COLUMN, bankAndAid));
+            com.datastax.driver.core.querybuilder.Delete delete =
+                    com.datastax.driver.core.querybuilder.QueryBuilder.delete().from(getMainColumnFamilyName());
+            delete.where(com.datastax.driver.core.querybuilder.QueryBuilder.eq(NICK_NAME_COLUMN, oldNickName)).
+                    onlyIf(com.datastax.driver.core.querybuilder.QueryBuilder.eq(BANK_AID_COLUMN, bankAndAid));
             boolean applied = execute(delete, "changeNickname[deleteOld]").wasApplied();
             if(applied) {
-                Insert insert = getInsertQuery();
+                com.datastax.driver.core.querybuilder.Insert insert = getInsertQuery();
                 insert.value(NICK_NAME_COLUMN, newNickname).value(BANK_AID_COLUMN, bankAndAid).ifNotExists();
                 result = execute(insert, "changeNickname[insertNew]");
             } else {

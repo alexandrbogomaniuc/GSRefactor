@@ -7,7 +7,6 @@ import com.betsoft.casino.mp.service.IPlayerQuestsService;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -250,7 +249,7 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
         ByteBuffer buffer = SPECIAL_MODE_TABLE.serializeToBytes(quests);
         String json = SPECIAL_MODE_TABLE.serializeToJson(quests);
         try {
-            execute(QueryBuilder.update(SPECIAL_MODE_CF_NAME)
+            execute(com.datastax.driver.core.querybuilder.QueryBuilder.update(SPECIAL_MODE_CF_NAME)
                             .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
                             .and(eq(BANK_ID_COLUMN, bankId))
                             .and(eq(ACCOUNT_ID_COLUMN, accountId))
@@ -267,12 +266,12 @@ public class PlayerQuestsPersister extends AbstractCassandraPersister<Long, Stri
 
     @Override
     public void removeAllQuests(long gameId) {
-        execute(QueryBuilder.truncate(CF_NAME), "removeAllQuests");
+        execute(com.datastax.driver.core.querybuilder.QueryBuilder.truncate(CF_NAME), "removeAllQuests");
         getLog().debug("remove all quests");
     }
 
     public void removeSpecialModeAllQuests() {
-        execute(QueryBuilder.truncate(SPECIAL_MODE_CF_NAME), "removeSpecialModeAllQuests");
+        execute(com.datastax.driver.core.querybuilder.QueryBuilder.truncate(SPECIAL_MODE_CF_NAME), "removeSpecialModeAllQuests");
         getLog().debug("removeSpecialModeAllQuests");
     }
 

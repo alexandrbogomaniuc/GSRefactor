@@ -5,7 +5,6 @@ import com.betsoft.casino.mp.service.IWeaponService;
 import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
@@ -78,7 +77,7 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
         ByteBuffer byteBuffer = SPECIAL_MODE_TABLE.serializeWithClassToBytes(weapons);
         String json = SPECIAL_MODE_TABLE.serializeToMapJson(weapons, Integer.class, Integer.class);
         try {
-            execute(QueryBuilder.update(SPECIAL_MODE_TABLE.getTableName())
+            execute(com.datastax.driver.core.querybuilder.QueryBuilder.update(SPECIAL_MODE_TABLE.getTableName())
                             .where(eq(SM_ID_COLUMN, tournamentOrBonusId))
                             .and(eq(ACCOUNT_ID_COLUMN, accountId))
                             .and(eq(GAMEID_COLUMN, gameId))
@@ -226,12 +225,12 @@ public class WeaponsPersister extends AbstractCassandraPersister<Long, String> i
 
     @Override
     public void removeAllWeapons() {
-        execute(QueryBuilder.truncate(CF_NAME), "removeAllWeapons");
+        execute(com.datastax.driver.core.querybuilder.QueryBuilder.truncate(CF_NAME), "removeAllWeapons");
         getLog().debug("remove all weapons");
     }
 
     public void removeSpecialModeAllWeapons() {
-        execute(QueryBuilder.truncate(SPECIAL_MODE_CF_NAME), "removeSpecialModeAllWeapons");
+        execute(com.datastax.driver.core.querybuilder.QueryBuilder.truncate(SPECIAL_MODE_CF_NAME), "removeSpecialModeAllWeapons");
         getLog().debug("removeSpecialModeAllWeapons");
     }
 

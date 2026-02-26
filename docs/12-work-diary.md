@@ -5649,3 +5649,18 @@
   - GS-only `18.85%`, combined `21.60%`.
 - Next step:
   - commit/push Wave 36 and continue next MP+GS hotspots toward 50% burn-down target.
+
+### 2026-02-26 05:13 UTC
+- Continued CASS-V4 migration in `/Users/alexb/Documents/Dev/Dev_new` (Wave 37) with residual MP querybuilder cleanup.
+- Updated 12 MP persister files and removed the last querybuilder import from `PlayerNicknamePersister`.
+- Full validation matrix PASS (promo/common/cache/web/mp subset).
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/01-cassandra-v4-driver-migration/evidence/20260226-051212/`
+- Inventory delta:
+  - GS: `396 -> 396`
+  - MP: `105 -> 84`
+  - Combined: `501 -> 480`
+- Completion snapshot:
+  - GS-only `18.85%`, combined `24.88%`.
+- Next step:
+  - commit/push Wave 37 and continue next MP/GS hotspots toward 50% burn-down target.
