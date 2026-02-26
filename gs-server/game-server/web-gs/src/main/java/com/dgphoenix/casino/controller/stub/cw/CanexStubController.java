@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.controller.stub.cw;
+package com.abs.casino.controller.stub.cw;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
@@ -10,7 +10,7 @@ import com.abs.casino.common.client.canex.response.CanexJsonResponse;
 import com.abs.casino.common.client.canex.response.CanexResponse;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.exception.NotEnoughMoneyException;
-import com.dgphoenix.casino.controller.RequestContext;
+import com.abs.casino.controller.RequestContext;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;

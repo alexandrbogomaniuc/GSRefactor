@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.web;
+package com.abs.casino.web;
 
 import org.apache.struts.action.ActionForm;
 

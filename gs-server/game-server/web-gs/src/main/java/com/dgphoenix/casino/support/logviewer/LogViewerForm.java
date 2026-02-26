@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.logviewer;
+package com.abs.casino.support.logviewer;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.util.support.AdditionalInfoAttribute;

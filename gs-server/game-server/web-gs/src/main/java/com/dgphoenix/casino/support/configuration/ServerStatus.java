@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.configuration;
+package com.abs.casino.support.configuration;
 
 public class ServerStatus {
     private String name;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.logviewer;
+package com.abs.casino.support.logviewer;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraHttpCallInfoPersister;

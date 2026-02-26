@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.bankInfo;
+package com.abs.casino.support.bankInfo;
 
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;

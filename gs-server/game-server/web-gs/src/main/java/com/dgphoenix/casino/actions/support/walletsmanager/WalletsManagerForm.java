@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.support.walletsmanager;
+package com.abs.casino.actions.support.walletsmanager;
 
 import com.dgphoenix.casino.common.web.BaseAction;
 import org.apache.struts.action.ActionErrors;

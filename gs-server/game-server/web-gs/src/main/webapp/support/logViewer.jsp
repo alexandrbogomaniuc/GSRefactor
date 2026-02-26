@@ -1,5 +1,5 @@
 <%@ page import="com.dgphoenix.casino.common.util.support.*" %>
-<%@ page import="com.dgphoenix.casino.support.logviewer.LogViewerForm" %>
+<%@ page import="com.abs.casino.support.logviewer.LogViewerForm" %>
 <%@ page import="javax.xml.transform.Source" %>
 <%@ page import="javax.xml.transform.Transformer" %>
 <%@ page import="javax.xml.transform.TransformerFactory" %>

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.controller.mqb;
+package com.abs.casino.controller.mqb;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.web.ClientTypeFactory;

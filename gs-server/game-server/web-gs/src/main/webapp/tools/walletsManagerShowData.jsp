@@ -1,6 +1,6 @@
 <%@ page import="static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty" %>
 <%@ page import="com.dgphoenix.casino.account.AccountManager" %>
-<%@ page import="com.dgphoenix.casino.actions.support.walletsmanager.WalletsManagerAction" %>
+<%@ page import="com.abs.casino.actions.support.walletsmanager.WalletsManagerAction" %>
 <%@ page import="com.dgphoenix.casino.common.SessionHelper" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>

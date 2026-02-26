@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.configuration;
+package com.abs.casino.support.configuration;
 
 import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
 import com.dgphoenix.casino.common.cache.ServerConfigsCache;

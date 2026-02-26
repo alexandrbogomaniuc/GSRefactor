@@ -1,6 +1,6 @@
 <%@ page import="com.dgphoenix.casino.common.util.Pair" %>
-<%@ page import="com.dgphoenix.casino.support.configuration.ServerConfigurationAction" %>
-<%@ page import="com.dgphoenix.casino.support.configuration.ServerConfigurationAction.ServerConfigurationFieldType" %>
+<%@ page import="com.abs.casino.support.configuration.ServerConfigurationAction" %>
+<%@ page import="com.abs.casino.support.configuration.ServerConfigurationAction.ServerConfigurationFieldType" %>
 <%@ page import="java.util.List" %>
 
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>

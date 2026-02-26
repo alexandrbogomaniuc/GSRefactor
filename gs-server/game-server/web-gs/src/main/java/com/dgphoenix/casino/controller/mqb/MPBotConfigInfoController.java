@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.controller.mqb;
+package com.abs.casino.controller.mqb;
 
 import com.dgphoenix.casino.ats.AllAtsResponse;
 import com.dgphoenix.casino.ats.AtsServiceEnableRequest;

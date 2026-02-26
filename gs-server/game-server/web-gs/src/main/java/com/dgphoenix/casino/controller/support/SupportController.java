@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.controller.support;
+package com.abs.casino.controller.support;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

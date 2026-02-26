@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.gamehistory;
+package com.abs.casino.support.gamehistory;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.common.SessionHelper;

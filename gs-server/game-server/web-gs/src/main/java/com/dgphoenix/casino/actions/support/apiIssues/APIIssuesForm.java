@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.support.apiIssues;
+package com.abs.casino.actions.support.apiIssues;
 
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;

@@ -1,11 +1,11 @@
-package com.dgphoenix.casino.config;
+package com.abs.casino.config;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.SubCasinoCache;
-import com.dgphoenix.casino.controller.RequestContext;
-import com.dgphoenix.casino.controller.mqb.MPGameSessionController;
-import com.dgphoenix.casino.controller.stub.cw.CanexStubController;
+import com.abs.casino.controller.RequestContext;
+import com.abs.casino.controller.mqb.MPGameSessionController;
+import com.abs.casino.controller.stub.cw.CanexStubController;
 import com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.dgphoenix.casino.gs.socket.mq.BattlegroundService;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.support.configuration;
+package com.abs.casino.support.configuration;
 
 import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
 import com.dgphoenix.casino.common.exception.CommonException;

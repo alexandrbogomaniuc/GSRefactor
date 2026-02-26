@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.support.walletinfo;
+package com.abs.casino.actions.support.walletinfo;
 
 import com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister;
 import com.dgphoenix.casino.common.web.BaseAction;

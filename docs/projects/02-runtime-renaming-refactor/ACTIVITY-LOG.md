@@ -1996,3 +1996,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - scoped declaration migrations: `20 -> 0` legacy declarations, `20` `com.abs` declarations.
   - global tracked source declarations/files now `2006` remaining (`2277` baseline, `271` reduced).
+
+## 2026-02-26 20:44 UTC (Hard-Cut M2 Wave 106A + 106B + 107)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W106A`: migrated 11 low-risk controller/config declaration packages to `com.abs`.
+  - `W106B`: migrated 19 low-risk support/tool declaration packages to `com.abs` plus bounded rewires in `WEB-INF/struts-config.xml` and support JSPs.
+  - `W107`: integrated both batches and validated.
+- Changed files:
+  - full file list in `docs/projects/02-runtime-renaming-refactor/evidence/20260226-203744-hardcut-m2-wave106ab-wave107-parallel-batches/target-files.txt`.
+- Validation PASS:
+  - fast gate (`web-gs package`, `refactor smoke`) passed.
+  - full 9-step matrix passed `9/9` (`common`, `common-wallet`, `sb-utils`, `promo/persisters`, `common-gs`, `cassandra-cache`, `web-gs`, `mp core/persistance`, `refactor smoke`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-203744-hardcut-m2-wave106ab-wave107-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/114-hard-cut-m2-wave106ab-wave107-parallel-batches-report-20260226.md`
+- Outcome:
+  - scoped declaration migrations: `30 -> 0` legacy declarations, `30` `com.abs` declarations.
+  - global tracked source declarations/files now `1976` remaining (`2277` baseline, `301` reduced).

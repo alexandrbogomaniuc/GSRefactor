@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.controller.battleground;
+package com.abs.casino.controller.battleground;
 
 import com.dgphoenix.casino.battleground.messages.BattlegroundInfo;
 import com.dgphoenix.casino.battleground.messages.BattlegroundRoundHistoryInfo;

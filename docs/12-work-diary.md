@@ -7292,3 +7292,14 @@
   - fast gate rerun passed and full validation matrix passed `9/9`.
 - Next:
   - continue next non-overlapping low-risk parallel batch under same evidence-first protocol.
+
+### 2026-02-26 20:44 UTC
+- Continued Project 02 hard-cut runtime renaming with parallel batch waves `106A/106B` and integration wave `107`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-203744-hardcut-m2-wave106ab-wave107-parallel-batches/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/114-hard-cut-m2-wave106ab-wave107-parallel-batches-report-20260226.md`
+- Result:
+  - migrated 30 package declarations to `com.abs` (controller/config + support/tool scope), including bounded Struts/JSP rewires for support flows.
+  - fast gate passed and full validation matrix passed `9/9`.
+- Next:
+  - continue next non-overlapping low-risk parallel batch under same evidence-first protocol.

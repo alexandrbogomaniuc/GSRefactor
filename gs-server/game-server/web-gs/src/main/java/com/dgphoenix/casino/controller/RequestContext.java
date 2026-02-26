@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.controller;
+package com.abs.casino.controller;
 
 public class RequestContext {
     private Object body;

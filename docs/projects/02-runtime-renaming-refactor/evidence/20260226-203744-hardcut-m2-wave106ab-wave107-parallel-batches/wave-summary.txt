@@ -1,0 +1,17 @@
+Wave group: W106A + W106B with W107 integration validation
+Date (UTC): 2026-02-26
+
+Declaration migration counts (batch scope):
+- Pre legacy declarations: 30
+- Post legacy declarations: 0
+- Post com.abs declarations: 30
+
+Global burndown:
+- Baseline: 2277
+- Remaining: 1976
+- Reduced: 301
+- Burndown completion: 13.219148%
+
+Validation:
+- Fast gate: PASS
+- Full 9-step matrix: PASS (9/9)

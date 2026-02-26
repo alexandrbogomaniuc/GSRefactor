@@ -7,11 +7,11 @@
         <form-bean name="GameHistoryListForm" type="com.dgphoenix.casino.web.history.GameHistoryListForm"/>
         <form-bean name="GameHistoryXMLListForm" type="com.dgphoenix.casino.web.history.GameHistoryXMLListForm"/>
         <form-bean name="GameHistoryXMLListFormV2" type="com.dgphoenix.casino.web.history.GameHistoryXMLListFormV2"/>
-        <form-bean name="GameHistorySupportForm" type="com.dgphoenix.casino.support.gamehistory.GameHistorySupportForm"/>
+        <form-bean name="GameHistorySupportForm" type="com.abs.casino.support.gamehistory.GameHistorySupportForm"/>
         <form-bean name="HistoryUrlForm" type="com.dgphoenix.casino.forms.api.history.HistoryUrlForm"/>
-        <form-bean name="CacheViewerForm" type="com.dgphoenix.casino.web.system.cacheviewer.CacheViewerForm"/>
+        <form-bean name="CacheViewerForm" type="com.abs.casino.web.system.cacheviewer.CacheViewerForm"/>
         <form-bean name="CommonWalletRegisterForm" type="com.dgphoenix.casino.gs.managers.payment.wallet.common.remote.CommonWalletRegisterForm"/>
-        <form-bean name="EmptyForm" type="com.dgphoenix.casino.web.EmptyForm"/>
+        <form-bean name="EmptyForm" type="com.abs.casino.web.EmptyForm"/>
         <form-bean name="BankInfoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.LoadBankInfoForm"/>
         <form-bean name="AwayFromBankInfoForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm"/>
         <form-bean name="GameIdSelectForm" type="com.dgphoenix.casino.support.cache.bank.edit.forms.common.GameIdSelectForm"/>
@@ -106,12 +106,12 @@
         <form-bean name="CWStartHistoryForm" type="com.dgphoenix.casino.forms.api.history.cwv3.CWStartHistoryForm"/>
 
         <!-- Start Support -->
-        <form-bean name="ServerConfigurationForm" type="com.dgphoenix.casino.support.configuration.ServerConfigurationForm" />
-        <form-bean name="WalletInfoForm" type="com.dgphoenix.casino.actions.support.walletinfo.WalletInfoForm" />
-        <form-bean name="WalletsManagerForm" type="com.dgphoenix.casino.actions.support.walletsmanager.WalletsManagerForm" />
+        <form-bean name="ServerConfigurationForm" type="com.abs.casino.support.configuration.ServerConfigurationForm" />
+        <form-bean name="WalletInfoForm" type="com.abs.casino.actions.support.walletinfo.WalletInfoForm" />
+        <form-bean name="WalletsManagerForm" type="com.abs.casino.actions.support.walletsmanager.WalletsManagerForm" />
         <!-- End Support -->
 
-        <form-bean name="APIIssuesForm" type="com.dgphoenix.casino.actions.support.apiIssues.APIIssuesForm"/>
+        <form-bean name="APIIssuesForm" type="com.abs.casino.actions.support.apiIssues.APIIssuesForm"/>
 
         <form-bean name="GetVBAForm" type="com.abs.casino.actions.api.vba.GetVBAForm"/>
 
@@ -119,13 +119,13 @@
         <form-bean name="RefreshBalanceForm" type="com.abs.casino.actions.api.RefreshBalanceForm"/>
         <form-bean name="BonusForm" type="com.dgphoenix.casino.actions.api.bonus.BonusForm"/>
 
-        <form-bean name="BankPropertyInfo" type="com.dgphoenix.casino.support.bankInfo.PropertyInfoForm" />
+        <form-bean name="BankPropertyInfo" type="com.abs.casino.support.bankInfo.PropertyInfoForm" />
 
         <!-- MaxQuest leaderboards -->
         <form-bean name="GetLeaderboardsForm" type="com.abs.casino.actions.api.mq.GetLeaderboardsForm" />
         <form-bean name="GetLeaderboardResultsForm" type="com.abs.casino.actions.api.mq.GetLeaderboardResultsForm" />
 
-        <form-bean name="LogViewerForm" type="com.dgphoenix.casino.support.logviewer.LogViewerForm"/>
+        <form-bean name="LogViewerForm" type="com.abs.casino.support.logviewer.LogViewerForm"/>
 
     </form-beans>
 
@@ -317,14 +317,14 @@
         </action>
         <!--// Differencer tool -->
         <action path="/support/walletinfo" name="WalletInfoForm"
-                type="com.dgphoenix.casino.actions.support.walletinfo.WalletInfoAction" scope="request"
+                type="com.abs.casino.actions.support.walletinfo.WalletInfoAction" scope="request"
                 validate="true" input="/error_pages/error.jsp">
             <forward name="success" path="/support/walletInfo.jsp"/>
             <forward name="error" path="/error_pages/error.jsp"/>
         </action>
 
         <action path="/tools/walletsManager" name="WalletsManagerForm"
-                type="com.dgphoenix.casino.actions.support.walletsmanager.WalletsManagerAction" scope="request"
+                type="com.abs.casino.actions.support.walletsmanager.WalletsManagerAction" scope="request"
                 validate="true" input="/error_pages/error.jsp">
             <forward name="success" path="/tools/walletsManagerShowData.jsp"/>
             <forward name="error" path="/error_pages/error.jsp"/>
@@ -349,12 +349,12 @@
         </action>
 
         <action path="/support/gamehistory" input="/error_pages/error.jsp"
-                type="com.dgphoenix.casino.support.gamehistory.GameHistorySupportAction"
+                type="com.abs.casino.support.gamehistory.GameHistorySupportAction"
                 name="GameHistorySupportForm" validate="true" scope="request">
             <forward name="success" path="/support/supporthistory.jsp"/>
         </action>
 
-        <action path="/support/cacheviewer" type="com.dgphoenix.casino.web.system.cacheviewer.CacheViewerAction"
+        <action path="/support/cacheviewer" type="com.abs.casino.web.system.cacheviewer.CacheViewerAction"
                 name="CacheViewerForm" validate="true" input="/support/cacheviewer.jsp" scope="request">
             <forward name="success" path="/support/cacheviewer.jsp" redirect="false"/>
         </action>
@@ -530,7 +530,7 @@
         <!-- End ported from LOBBY -->
 
         <action path="/support/supportJSP"
-                type="com.dgphoenix.casino.support.SupportJSPAction"
+                type="com.abs.casino.support.SupportJSPAction"
                 scope="request" name="EmptyForm">
         </action>
 
@@ -572,14 +572,14 @@
         </action>
 
         <!-- Start Support -->
-        <action path="/support/serverConfiguration" type="com.dgphoenix.casino.support.configuration.ServerConfigurationAction"
+        <action path="/support/serverConfiguration" type="com.abs.casino.support.configuration.ServerConfigurationAction"
                 name="ServerConfigurationForm" validate="true" input="/support/configuration/serverConfiguration.jsp" scope="request">
             <forward name="main" path="/support/configuration/serverConfiguration.jsp" redirect="false"/>
         </action>
         <!-- End Support -->
 
         <!--AWC API-->
-        <action path="/support/showAPIIssues" type="com.dgphoenix.casino.actions.support.apiIssues.APIIssuesAction" name="APIIssuesForm"
+        <action path="/support/showAPIIssues" type="com.abs.casino.actions.support.apiIssues.APIIssuesAction" name="APIIssuesForm"
                 scope="request" validate="true" input="/error_pages/error.jsp">
             <forward name="success" path="/support/showAPIIssues.jsp"/>
         </action>
@@ -614,7 +614,7 @@
                 type="com.abs.casino.actions.api.RefreshBalanceAction"
                 input="error_pages/error.jsp"/>
 
-        <action path="/bankPropertyInfo" type="com.dgphoenix.casino.support.bankInfo.PropertyInfoAction"
+        <action path="/bankPropertyInfo" type="com.abs.casino.support.bankInfo.PropertyInfoAction"
                 scope="request" validate="true" name="BankPropertyInfo" input="/support/bankInfo/propertyForm.jsp">
             <forward name="form" path="/support/bankInfo/propertyForm.jsp" />
             <forward name="result" path="/support/bankInfo/propertyResult.jsp" />
@@ -631,7 +631,7 @@
         </action>
 
         <action path="/support/logviewer"
-                type="com.dgphoenix.casino.support.logviewer.LogViewerAction" name="LogViewerForm"
+                type="com.abs.casino.support.logviewer.LogViewerAction" name="LogViewerForm"
                 scope="request" validate="true" input="/support/logViewer.jsp">
             <forward name="success" path="/support/logViewer.jsp" redirect="false"/>
         </action>
