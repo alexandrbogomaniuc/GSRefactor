@@ -18,7 +18,7 @@ Multi-language support for all games in the Igaming platform.
 
 ```
 games/
-  template-slot/
+  premium-slot-client/
     locales/
       en/                    ← Reference language (always complete)
         common.json          ← UI strings (Spin, Stop, Settings, etc.)
@@ -124,7 +124,7 @@ Any `{{BRAND_NAME}}` or `{{SUPPORT_EMAIL}}` in translation values will be replac
 npm run i18n:check
 
 # Check a specific game
-npx tsx tools/i18n-check/src/index.ts --game template-slot
+npx tsx tools/i18n-check/src/index.ts --game premium-slot-client
 ```
 
 ### What it validates
@@ -137,7 +137,7 @@ npx tsx tools/i18n-check/src/index.ts --game template-slot
 ```
 🌐 i18n Check: validating translations...
 
-  📦 template-slot: 3 languages, 3 namespaces
+  📦 premium-slot-client: 3 languages, 3 namespaces
 
 ✅ All translations are complete. No missing keys found.
 ```

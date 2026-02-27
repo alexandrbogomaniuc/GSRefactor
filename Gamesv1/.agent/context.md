@@ -20,9 +20,10 @@
 * **Localization**: Implemented `@gs/i18n` with namespace support and MISSING_KEY validation tool.
 * **Documentation Audit**: Archived legacy docs and unified the Master Context in `.agent/`.
 * **Environment**: Fixed Reel type errors and configured IDE path aliases for `@gs/*` workspace packages.
+* **Repo Cleanup**: Normalized canonical client template to `premium-slot-client`, archived legacy tools, and unified root `README.md`.
 
 ### 🚧 In Progress (Current Focus)
-* [games/template-slot] Refining the "Feature Module" system for pluggable game mechanics.
+* [games/premium-slot-client] Refining the "Feature Module" system for pluggable game mechanics.
 * Finalizing AssetPack pipelines for high-performance mobile texture compression.
 
 ### 📅 Backlog

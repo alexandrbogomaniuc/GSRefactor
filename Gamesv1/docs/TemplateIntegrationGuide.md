@@ -47,7 +47,7 @@ Games do not copy core logic. Instead, they depend on `@gs/slot-shell`. This pac
 
 ### Raw Assets (AssetPack)
 The template uses **AssetPack** for optimized asset delivery.
-1. Place your source graphics in `games/[slug]/raw-assets/`.
+1. Place your source graphics in `games/[slug]/assets/`.
 2. Run the build/dev command to compress and package them.
 3. Update `manifest.json` if you add new spritesheets or fonts.
 
@@ -69,3 +69,4 @@ pnpm dev
 - **Isolate feature logic**: Keep specific mechanics inside a feature module.
 - **Use the protocol package**: All network communication must pass through `@gs/protocol`.
 - **Sync i18n**: Run `npm run i18n:check` regularly to ensure all translations are complete.
+

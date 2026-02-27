@@ -7,7 +7,7 @@
  *
  * Usage:
  *   npx tsx tools/i18n-check/src/index.ts                     # check all games
- *   npx tsx tools/i18n-check/src/index.ts --game template-slot # check one game
+ *   npx tsx tools/i18n-check/src/index.ts --game premium-slot-client # check one game
  *
  * Exit code 1 if missing keys are found.
  */

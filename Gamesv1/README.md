@@ -1,36 +1,72 @@
-# Gamesv1 - Igaming Monorepo
+# Gamesv1 Monorepo
 
-A high-performance, compliance-ready monorepo for HTML5 slot games using PixiJS v8 and the `abs.gs.v1` protocol.
+Universal, high-performance slot game development platform using PixiJS v8 and the `@gs` protocol stack.
+
+## 🏗 Repository Structure
+
+- **`games/`**: Slot implementations.
+  - **`premium-slot-client/`**: 🌟 **The Canonical Template.** Use this as the base for all new slot games. Features PixiJS v8, `@pixi/ui` components, and advanced animations.
+  - **`wincraft/`**: Reference implementation of the WinCraft game.
+  - **`_archive/`**: Retired templates and legacy math/mock tools.
+- **`packages/`**: Shared core libraries.
+  - `@gs/protocol`: abs.gs.v1 WebSocket protocol layer.
+  - `@gs/slot-shell`: Common UI components, reel framework, and engine bootstrap.
+  - `@gs/config`: Tiered configuration system.
+  - `@gs/i18n`: Multi-language support.
+- **`tools/`**: Development utilities.
+  - `create-game`: Scaffolding tool for new projects.
+  - `config-gen`: GS registration file generator.
+  - `i18n-check`: Translation validation tool.
+- **`tests/`**: Global contract and unit tests.
+
+---
 
 ## 🚀 Getting Started
 
-This project uses `pnpm` workspaces for dependency management.
-
+### 1. Installation
+Ensure you have `pnpm` installed globally.
 ```bash
-# Install dependencies (from root)
 pnpm install
-
-# Run the canonical template in dev mode
-cd games/template-slot
-npm run dev
 ```
 
-## 📂 Repository Structure
+### 2. Scaffold a New Game
+```bash
+npm run create-game -- --name "My New Game" --id 5001 --slug my-new-game
+```
 
-- **`/games`**: Game implementations. See [template-slot](games/template-slot) for a starting point.
-- **`/packages`**: Core libraries (@gs/protocol, @gs/compliance).
-- **`/tools`**: Development tools including mock servers and config UIs.
-- **`/docs`**: Architecture and compliance documentation.
+### 3. Local Development
+```bash
+cd games/my-new-game
+pnpm dev
+```
 
-For a detailed view of the architecture, see [docs/ARCHITECTURE_TREE.md](docs/ARCHITECTURE_TREE.md).
+### 4. Production Build
+```bash
+cd games/my-new-game
+pnpm build
+```
 
-## 🛠 Tech Stack
+---
 
-- **Graphics**: PixiJS v8
-- **Build Tool**: Vite
-- **Language**: TypeScript
-- **Protocol**: WebSocket (`abs.gs.v1`)
-- **Package Manager**: pnpm
+## 🧪 Testing
 
-## ⚖️ License
-Internal Use Only.
+### Contract Tests (abs.gs.v1)
+Validates that the client-server communication follows the strict financial protocol.
+```bash
+npm run test:contract
+```
+
+### i18n Validation
+Checks for missing translations across all games.
+```bash
+npm run i18n:check
+```
+
+---
+
+## 📐 Standards & Guidelines
+
+- **Architecture**: Always prefer shared logic in `@gs/slot-shell` over copying code.
+- **Art**: Place high-res assets in `raw-assets/` for automated optimization via AssetPack.
+- **Compliance**: Adhere to the checklists in `docs/compliance/`.
+- **Source of Truth**: Refer to [.agent/context.md](.agent/context.md) for current project status.

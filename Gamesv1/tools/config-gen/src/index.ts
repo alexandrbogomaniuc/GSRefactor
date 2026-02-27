@@ -4,7 +4,7 @@
  *
  * Usage (from repo root):
  *   npx tsx tools/config-gen/src/index.ts                           # generates for ALL games
- *   npx tsx tools/config-gen/src/index.ts --game template-slot      # generates for one game
+ *   npx tsx tools/config-gen/src/index.ts --game premium-slot-client      # generates for one game
  *   npx tsx tools/config-gen/src/index.ts --check                   # CI: validates outputs are up-to-date
  *
  * Shortcuts via root package.json:

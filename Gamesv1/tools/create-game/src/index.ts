@@ -14,7 +14,7 @@ program
     .action(async (options) => {
         const { name, id, slug } = options;
         const projectRoot = path.resolve(process.cwd());
-        const templateDir = path.join(projectRoot, 'games', 'template-slot');
+        const templateDir = path.join(projectRoot, 'games', 'premium-slot-client');
         const targetDir = path.join(projectRoot, 'games', slug);
 
         console.log(chalk.cyan(`🎰 GS Platform: Scaffolding new game '${name}' (ID: ${id})...`));
