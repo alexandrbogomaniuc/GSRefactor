@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.feed.tournament;
+package com.abs.casino.promo.feed.tournament;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.exception.CommonException;
@@ -9,7 +9,7 @@ import com.abs.casino.common.promo.feed.tournament.MaxBalanceRecord;
 import com.abs.casino.common.promo.feed.tournament.TournamentFeed;
 import com.dgphoenix.casino.common.upload.JSchUploadClient;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.promo.feed.AbstractFeedWriter;
+import com.abs.casino.promo.feed.AbstractFeedWriter;
 import com.dgphoenix.casino.promo.tournaments.TournamentManager;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;

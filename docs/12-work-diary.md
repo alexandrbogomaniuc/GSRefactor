@@ -7798,3 +7798,21 @@
   - ETA `51.9h` (`6.49` workdays)
 - Next:
   - continue low-fanout declaration-first waves and defer known high-cascade hotspots.
+### 2026-02-27 10:41 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W182A/W182B + W183`.
+- Scope retained:
+  - declaration migrations: `10` (`gs.biz`, `leaderboard`, `promo.feed`, `promo.feed.tournament`).
+  - bounded rewires: `5` (direct importer updates in `common-gs` and `support/archiver`).
+- Validation outcome:
+  - fast gate rerun3: steps `1-8 PASS`, step `9 FAIL` (launch alias `/startgame` returns `HTTP 502`).
+  - full matrix rerun2: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`).
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-101129-hardcut-m2-wave182ab-wave183-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/152-hard-cut-m2-wave182ab-wave183-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1033`, remaining `1244`
+  - burndown `45.366711%`
+  - Project 02 `30.670839%`, Core `65.335419%`, Portfolio `82.667710%`
+  - ETA `51.5h` (`6.44` workdays)
+- Next:
+  - continue low-fanout declaration-first migration while launch alias smoke remains environment-blocked.

@@ -1,0 +1,9 @@
+[2026-02-27T10:15:47Z] START STEP09
+WORKDIR: /Users/alexb/Documents/Dev/Dev_new
+CMD: node gs-server/deploy/scripts/refactor-onboard.mjs smoke 
+[refactor-onboard] PASS: Static asset route (http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json) -> HTTP 200
+[refactor-onboard] WARN: GS support route (diagnostic) (http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6275) -> connect ECONNREFUSED 127.0.0.1:18081 after 10 attempts
+[refactor-onboard] PASS: Config service health (http://127.0.0.1:18072/health) -> HTTP 200
+[refactor-onboard] FAIL: Launch alias (startgame) (http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 502 after 10 attempts
+[refactor-onboard] WARN: Launch alias (secondary) (http://127.0.0.1:18080/startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 502 after 10 attempts
+[refactor-onboard] ERROR: Smoke checks failed (1 failure(s)). See lines above.

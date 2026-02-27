@@ -1,11 +1,11 @@
-package com.dgphoenix.casino.promo.feed.tournament;
+package com.abs.casino.promo.feed.tournament;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.*;
 import com.abs.casino.common.promo.feed.tournament.*;
 import com.dgphoenix.casino.common.upload.JSchUploadClient;
-import com.dgphoenix.casino.promo.feed.AbstractFeedWriter;
+import com.abs.casino.promo.feed.AbstractFeedWriter;
 import com.abs.casino.promo.persisters.CassandraTournamentRankPersister;
 import com.google.common.collect.Multimap;
 import org.apache.commons.csv.CSVFormat;

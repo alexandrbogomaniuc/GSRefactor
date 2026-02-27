@@ -1,0 +1,5 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/AbstractFeedWriter.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/AbstractSummaryFeedWriter.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/SummaryTournamentFeedWriter.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java

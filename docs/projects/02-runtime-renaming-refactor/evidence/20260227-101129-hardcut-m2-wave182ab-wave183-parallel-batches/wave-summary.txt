@@ -1,0 +1,3 @@
+wave_group=W182A/W182B+W183
+plan=declaration-first parallel batches in common-gs
+target_declarations=10

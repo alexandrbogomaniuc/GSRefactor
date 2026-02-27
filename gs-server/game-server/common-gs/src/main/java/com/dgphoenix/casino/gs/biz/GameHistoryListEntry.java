@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.biz;
+package com.abs.casino.gs.biz;
 
 import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
 import org.apache.commons.codec.binary.Base64;

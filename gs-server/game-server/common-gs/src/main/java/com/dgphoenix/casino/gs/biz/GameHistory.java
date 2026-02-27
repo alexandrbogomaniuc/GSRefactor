@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.biz;
+package com.abs.casino.gs.biz;
 
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 

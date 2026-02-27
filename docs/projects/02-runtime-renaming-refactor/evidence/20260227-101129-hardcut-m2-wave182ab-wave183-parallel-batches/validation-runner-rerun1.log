@@ -1,0 +1,3 @@
+[2026-02-27T10:27:25Z] START PRE_SETUP_UTILS_INSTALL: npm --prefix /Users/alexb/Documents/Dev/Dev_new/utils ci
+[2026-02-27T10:27:31Z] FAIL PRE_SETUP_UTILS_INSTALL rc=1 (see /Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-101129-hardcut-m2-wave182ab-wave183-parallel-batches/pre-setup-utils-install-rerun1.log)
+[2026-02-27T10:27:38Z] STATUS_NORMALIZED RESULT=FAIL FAILED_STEP=PRE_SETUP_UTILS_INSTALL

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.feed;
+package com.abs.casino.promo.feed;
 
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.CommonExecutorService;

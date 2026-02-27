@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.leaderboard;
+package com.abs.casino.leaderboard;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
