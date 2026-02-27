@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
 import java.io.IOException;
 
 import com.betsoft.casino.mp.model.*;
-import com.dgphoenix.casino.common.kpi.RoundKPIInfo;
+import com.abs.casino.common.kpi.RoundKPIInfo;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

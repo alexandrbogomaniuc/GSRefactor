@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.hardware;
+package com.abs.casino.common.util.hardware;
 
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.CommonExecutorService;

@@ -1,0 +1,3 @@
+PRE01|rc=0|cmd=cd gs-server/utils && mvn -DskipTests install
+PRE02|rc=0|cmd=cd gs-server/sb-utils && mvn -DskipTests install
+PRE03|rc=0|cmd=cd gs-server/common-promo && mvn -DskipTests install

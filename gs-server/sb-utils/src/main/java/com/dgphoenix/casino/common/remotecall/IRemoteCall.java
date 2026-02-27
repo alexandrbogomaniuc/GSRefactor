@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.remotecall;
+package com.abs.casino.common.remotecall;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 

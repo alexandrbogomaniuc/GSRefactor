@@ -19,7 +19,7 @@ import com.dgphoenix.casino.common.util.FastKryoHelper;
 import com.dgphoenix.casino.common.util.LZ4Compressor;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.gs.managers.bet.PlayerBetPersister;
+import com.abs.casino.gs.managers.bet.PlayerBetPersister;
 import com.esotericsoftware.kryo.Serializer;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.bet;
+package com.abs.casino.gs.managers.bet;
 
 import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;

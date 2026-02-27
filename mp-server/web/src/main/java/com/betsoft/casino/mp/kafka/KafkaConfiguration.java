@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.kafka;
 
 import com.betsoft.casino.mp.service.IServerConfigService;
-import com.dgphoenix.casino.kafka.config.KafkaProperties;
+import com.abs.casino.kafka.config.KafkaProperties;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;

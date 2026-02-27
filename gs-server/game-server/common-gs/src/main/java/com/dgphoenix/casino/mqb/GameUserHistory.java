@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.mqb;
+package com.abs.casino.mqb;
 
 import java.util.Objects;
 

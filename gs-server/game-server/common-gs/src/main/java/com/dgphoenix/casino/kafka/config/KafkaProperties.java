@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.kafka.config;
+package com.abs.casino.kafka.config;
 
 public class KafkaProperties {
     private final String kafkaHosts;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.system;
+package com.abs.casino.system;
 
 import com.google.common.collect.Lists;
 

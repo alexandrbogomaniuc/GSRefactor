@@ -3131,3 +3131,36 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `20`.
   - retained bounded rewires: `8`.
   - global tracked source declarations/files now `986` remaining (`2277` baseline, `1291` reduced, `56.697409%` burndown).
+
+## 2026-02-27 22:33 UTC (Hard-Cut M2 Wave 214A + 214B + 215)
+- Continued batched-safe hard-cut migration from W213 checkpoint with non-overlapping declaration sets:
+  - `W214A`: 10 declaration migrations across hardware, payment-tracker, kafka-config, logout-tracker, and remotecall interfaces/classes.
+  - `W214B`: 10 declaration migrations across KPI/MQ/bet-persister/battleground/system/session/common-web/online-stat surfaces.
+  - `W215`: bounded rewires and validation.
+- Parallel execution mode:
+  - `1 explorer + 2 workers + main` with strict non-overlap ownership.
+- Stabilization:
+  - bounded rewires retained to planned 18+18 lists.
+  - fixed early `STEP01` compile drift in `InvalidPathStrutsActionExceptionHandler` via explicit `BaseAction` import.
+  - fixed `STEP06` mixed-type drift by aligning `BattlegroundConfig` type usage in `BattlegroundService`/`TournamentBuyInHelper` and `IRemoteCall` type usage in remote call command classes used by `RemoteCallHelper`.
+  - rerun4 was rejected as non-canonical after runner used wrong `STEP07` path (`gs-api`); rerun5 re-executed with required `STEP07=web-gs` path.
+  - no blind/global replacement performed.
+  - preserved pre-existing local changes (`cluster-hosts.properties`, `.tmp-w202-*`) outside commit scope.
+- Validation:
+  - fast gate batchA rerun1: `STEP01 FAIL`.
+  - fast gate batchB rerun1: `STEP01 FAIL`.
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01 FAIL`.
+  - rerun2: `STEP06 FAIL`.
+  - rerun3: `STEP06 FAIL`.
+  - rerun4 (non-canonical path drift): `STEP07 FAIL` (`gs-api` path used by runner, discarded).
+  - rerun5 (canonical):
+    - fast gate batchA: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+    - fast gate batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`); retry1 failed (`rc=2`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-215545-hardcut-m2-wave214ab-wave215-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/168-hard-cut-m2-wave214ab-wave215-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `20`.
+  - retained bounded rewires: `36`.
+  - global tracked source declarations/files now `966` remaining (`2277` baseline, `1311` reduced, `57.575757%` burndown).

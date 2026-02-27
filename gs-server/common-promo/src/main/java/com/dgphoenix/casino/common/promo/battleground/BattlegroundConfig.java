@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.promo.battleground;
+package com.abs.casino.common.promo.battleground;
 
 import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 import com.esotericsoftware.kryo.Kryo;

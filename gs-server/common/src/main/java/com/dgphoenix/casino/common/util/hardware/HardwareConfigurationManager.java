@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.hardware;
+package com.abs.casino.common.util.hardware;
 
 import com.abs.casino.common.util.hardware.data.CPUInfo;
 import com.abs.casino.common.util.hardware.data.HardwareInfo;

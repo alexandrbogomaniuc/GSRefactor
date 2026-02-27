@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.sm.tracker.logout;
+package com.abs.casino.sm.tracker.logout;
 
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;

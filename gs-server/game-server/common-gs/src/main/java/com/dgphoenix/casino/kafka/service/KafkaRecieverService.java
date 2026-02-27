@@ -26,7 +26,7 @@ import org.springframework.stereotype.Service;
 
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.common.util.ReflectionUtils;
-import com.dgphoenix.casino.kafka.config.KafkaProperties;
+import com.abs.casino.kafka.config.KafkaProperties;
 import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
 import com.dgphoenix.casino.kafka.dto.KafkaRequest;
 import com.dgphoenix.casino.kafka.dto.KafkaResponse;

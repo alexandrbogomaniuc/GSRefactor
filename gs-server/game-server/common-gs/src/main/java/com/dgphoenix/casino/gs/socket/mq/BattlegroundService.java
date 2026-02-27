@@ -26,7 +26,7 @@ import com.abs.casino.common.client.canex.request.privateroom.PrivateRoom;
 import com.abs.casino.common.client.canex.request.privateroom.Status;
 import com.abs.casino.common.client.canex.request.privateroom.UpdateRoomResponse;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.battleground.BattlegroundConfig;
+import com.abs.casino.common.promo.battleground.BattlegroundConfig;
 import com.dgphoenix.casino.common.util.CommonExecutorService;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;

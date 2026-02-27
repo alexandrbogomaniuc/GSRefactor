@@ -1,0 +1,10 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/util/hardware/CPUInformer.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/util/hardware/HardwareConfigurationManager.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/tracker/PaymentTransactionTracker.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/tracker/PaymentTransactionTrackerTask.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/config/KafkaProperties.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/tracker/logout/LogoutTask.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/tracker/logout/LogoutTracker.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/remotecall/IRemoteCall.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/remotecall/PersistableCall.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/config/KafkaProperties.java

@@ -21,7 +21,7 @@ import com.abs.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
 import com.dgphoenix.casino.gs.managers.payment.transfer.PaymentManager;
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
-import com.dgphoenix.casino.sm.tracker.logout.LogoutTracker;
+import com.abs.casino.sm.tracker.logout.LogoutTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

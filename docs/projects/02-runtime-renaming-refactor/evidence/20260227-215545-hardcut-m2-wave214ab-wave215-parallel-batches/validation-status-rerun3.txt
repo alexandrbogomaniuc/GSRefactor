@@ -1,0 +1,9 @@
+PRE01|rc=0|cmd=cd gs-server/utils && mvn -DskipTests install
+PRE02|rc=0|cmd=cd gs-server/sb-utils && mvn -DskipTests install
+PRE03|rc=0|cmd=cd gs-server/common-promo && mvn -DskipTests install
+STEP01|rc=0|cmd=cd gs-server/common && mvn -DskipTests install
+STEP02|rc=0|cmd=cd gs-server/common-wallet && mvn -DskipTests install
+STEP03|rc=0|cmd=cd gs-server/sb-utils && mvn -DskipTests install
+STEP04|rc=0|cmd=cd gs-server/common-promo && mvn -DskipTests install
+STEP05|rc=0|cmd=cd gs-server/cassandra-cache/common-persisters && mvn -DskipTests install
+STEP06|rc=1|cmd=cd gs-server/game-server/common-gs && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install

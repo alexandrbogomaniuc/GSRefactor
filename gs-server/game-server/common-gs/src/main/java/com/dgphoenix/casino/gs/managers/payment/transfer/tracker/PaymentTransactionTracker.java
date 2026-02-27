@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.transfer.tracker;
+package com.abs.casino.gs.managers.payment.transfer.tracker;
 
 import com.abs.casino.common.engine.tracker.AbstractCommonTracker;
 import com.dgphoenix.casino.common.exception.CommonException;

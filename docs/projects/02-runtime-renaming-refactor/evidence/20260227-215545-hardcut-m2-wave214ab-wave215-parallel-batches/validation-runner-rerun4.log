@@ -1,0 +1,20 @@
+[2026-02-27T22:24:44Z] START PRE01 :: cd gs-server/utils && mvn -DskipTests install
+[2026-02-27T22:24:47Z] END   PRE01 rc=0
+[2026-02-27T22:24:47Z] START PRE02 :: cd gs-server/sb-utils && mvn -DskipTests install
+[2026-02-27T22:24:52Z] END   PRE02 rc=0
+[2026-02-27T22:24:52Z] START PRE03 :: cd gs-server/common-promo && mvn -DskipTests install
+[2026-02-27T22:24:55Z] END   PRE03 rc=0
+[2026-02-27T22:24:55Z] START STEP01 :: cd gs-server/common && mvn -DskipTests install
+[2026-02-27T22:25:00Z] END   STEP01 rc=0
+[2026-02-27T22:25:00Z] START STEP02 :: cd gs-server/common-wallet && mvn -DskipTests install
+[2026-02-27T22:25:04Z] END   STEP02 rc=0
+[2026-02-27T22:25:04Z] START STEP03 :: cd gs-server/sb-utils && mvn -DskipTests install
+[2026-02-27T22:25:09Z] END   STEP03 rc=0
+[2026-02-27T22:25:09Z] START STEP04 :: cd gs-server/common-promo && mvn -DskipTests install
+[2026-02-27T22:25:12Z] END   STEP04 rc=0
+[2026-02-27T22:25:12Z] START STEP05 :: cd gs-server/cassandra-cache/common-persisters && mvn -DskipTests install
+[2026-02-27T22:25:16Z] END   STEP05 rc=0
+[2026-02-27T22:25:16Z] START STEP06 :: cd gs-server/game-server/common-gs && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-27T22:25:28Z] END   STEP06 rc=0
+[2026-02-27T22:25:28Z] START STEP07 :: cd gs-server/game-server/gs-api && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-27T22:25:29Z] END   STEP07 rc=1

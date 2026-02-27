@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 import com.abs.casino.common.configuration.IGameServerConfiguration;
-import com.dgphoenix.casino.kafka.config.KafkaProperties;
+import com.abs.casino.kafka.config.KafkaProperties;
 
 @Configuration
 @ComponentScan({

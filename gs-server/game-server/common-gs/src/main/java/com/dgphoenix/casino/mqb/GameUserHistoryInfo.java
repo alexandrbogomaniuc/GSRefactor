@@ -1,6 +1,6 @@
 package com.abs.casino.mqb;
 
-import com.dgphoenix.casino.mqb.GameUserHistory;
+import com.abs.casino.mqb.GameUserHistory;
 
 import java.util.List;
 import java.util.Objects;

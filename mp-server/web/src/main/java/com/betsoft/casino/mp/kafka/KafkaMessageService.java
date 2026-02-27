@@ -41,7 +41,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dgphoenix.casino.kafka.config.KafkaProperties;
+import com.abs.casino.kafka.config.KafkaProperties;
 import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
 import com.dgphoenix.casino.kafka.dto.KafkaMessage;
 import com.dgphoenix.casino.kafka.dto.KafkaRequest;

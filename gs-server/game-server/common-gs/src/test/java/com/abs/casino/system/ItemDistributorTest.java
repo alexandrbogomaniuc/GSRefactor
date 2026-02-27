@@ -1,6 +1,6 @@
 package com.abs.casino.system;
 
-import com.dgphoenix.casino.system.ItemDistributor;
+import com.abs.casino.system.ItemDistributor;
 import org.junit.Test;
 
 import java.util.*;

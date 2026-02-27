@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.sm.tracker.logout;
+package com.abs.casino.sm.tracker.logout;
 
 import com.abs.casino.common.engine.tracker.AbstractCommonTracker;
 import com.dgphoenix.casino.common.exception.CommonException;

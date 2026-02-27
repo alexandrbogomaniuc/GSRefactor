@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.kpi;
+package com.abs.casino.common.kpi;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;

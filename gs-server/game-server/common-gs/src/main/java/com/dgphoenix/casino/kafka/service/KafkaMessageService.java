@@ -43,7 +43,7 @@ import org.springframework.stereotype.Service;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.abs.casino.kafka.config.KafkaConfiguration;
-import com.dgphoenix.casino.kafka.config.KafkaProperties;
+import com.abs.casino.kafka.config.KafkaProperties;
 import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
 import com.dgphoenix.casino.kafka.dto.BooleanResponseDto;
 import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;

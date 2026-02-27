@@ -11,7 +11,7 @@ import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
-import com.dgphoenix.casino.mqb.GameUserHistory;
+import com.abs.casino.mqb.GameUserHistory;
 import com.abs.casino.mqb.GameUserHistoryInfo;
 import com.abs.casino.services.LoginService;
 import org.junit.Assert;
