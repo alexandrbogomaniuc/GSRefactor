@@ -1,0 +1,12 @@
+pre-setup-utils-install|exit=0|log=pre-setup-utils-install-rerun1.log
+pre-setup-sb-utils-install|exit=0|log=pre-setup-sb-utils-install-rerun1.log
+pre-setup-common-promo-install|exit=0|log=pre-setup-common-promo-install-rerun1.log
+01-common-install|exit=0|log=01-rerun1.log
+02-common-wallet-install|exit=0|log=02-rerun1.log
+03-sb-utils-install|exit=0|log=03-rerun1.log
+04-promo-persisters-install|exit=0|log=04-rerun1.log
+05-common-gs-install|exit=0|log=05-rerun1.log
+06-common-persisters-install|exit=0|log=06-rerun1.log
+07-web-gs-package|exit=0|log=07-rerun1.log
+08-mp-server-persistance-install|exit=1|log=08-rerun1.log
+RESULT=FAIL step=08-mp-server-persistance-install

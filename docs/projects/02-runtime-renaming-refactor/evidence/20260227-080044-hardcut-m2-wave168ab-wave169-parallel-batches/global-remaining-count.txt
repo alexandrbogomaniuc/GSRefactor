@@ -1,0 +1,4 @@
+baseline=2277
+reduced=979
+remaining=1298
+burndown=42.995169%

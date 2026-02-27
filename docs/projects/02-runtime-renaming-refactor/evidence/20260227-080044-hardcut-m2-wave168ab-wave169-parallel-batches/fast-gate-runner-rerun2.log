@@ -1,0 +1,18 @@
+[2026-02-27T08:09:44Z] START gs-server/utils mvn -DskipTests install
+[2026-02-27T08:09:49Z] END gs-server/utils mvn -DskipTests install exit=0 log=fast-gate-utils-install-rerun2.log
+[2026-02-27T08:09:49Z] START gs-server/sb-utils mvn -DskipTests install
+[2026-02-27T08:09:52Z] END gs-server/sb-utils mvn -DskipTests install exit=0 log=fast-gate-sb-utils-install-rerun2.log
+[2026-02-27T08:09:52Z] START gs-server/common mvn -DskipTests install
+[2026-02-27T08:09:55Z] END gs-server/common mvn -DskipTests install exit=0 log=fast-gate-common-install-rerun2.log
+[2026-02-27T08:09:55Z] START gs-server/common-wallet mvn -DskipTests install
+[2026-02-27T08:09:58Z] END gs-server/common-wallet mvn -DskipTests install exit=0 log=fast-gate-common-wallet-install-rerun2.log
+[2026-02-27T08:09:58Z] START gs-server/common-promo mvn -DskipTests install
+[2026-02-27T08:10:01Z] END gs-server/common-promo mvn -DskipTests install exit=0 log=fast-gate-common-promo-install-rerun2.log
+[2026-02-27T08:10:01Z] START gs-server/cassandra-cache/common-persisters mvn -DskipTests install
+[2026-02-27T08:10:04Z] END gs-server/cassandra-cache/common-persisters mvn -DskipTests install exit=0 log=fast-gate-common-persisters-install-rerun2.log
+[2026-02-27T08:10:04Z] START gs-server/game-server/common-gs mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-27T08:10:12Z] END gs-server/game-server/common-gs mvn -Dcluster.properties=local/local-machine.properties -DskipTests install exit=0 log=fast-gate-common-gs-install-rerun2.log
+[2026-02-27T08:10:12Z] START gs-server/game-server/web-gs mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+[2026-02-27T08:10:25Z] END gs-server/game-server/web-gs mvn -Dcluster.properties=local/local-machine.properties -DskipTests package exit=0 log=fast-gate-web-gs-package-rerun2.log
+[2026-02-27T08:10:25Z] START refactor-onboard smoke
+[2026-02-27T08:10:53Z] END refactor-onboard smoke exit=0 log=fast-gate-refactor-smoke-rerun2.log

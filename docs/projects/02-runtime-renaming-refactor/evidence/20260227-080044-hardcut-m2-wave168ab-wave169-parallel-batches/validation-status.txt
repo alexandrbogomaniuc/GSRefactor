@@ -1,0 +1,13 @@
+pre-setup-utils-install|exit=0|log=pre-setup-utils-install-rerun2.log
+pre-setup-sb-utils-install|exit=0|log=pre-setup-sb-utils-install-rerun2.log
+pre-setup-common-promo-install|exit=0|log=pre-setup-common-promo-install-rerun2.log
+01-common-install|exit=0|log=01-rerun2.log
+02-common-wallet-install|exit=0|log=02-rerun2.log
+03-sb-utils-install|exit=0|log=03-rerun2.log
+04-promo-persisters-install|exit=0|log=04-rerun2.log
+05-common-gs-install|exit=0|log=05-rerun2.log
+06-common-persisters-install|exit=0|log=06-rerun2.log
+07-web-gs-package|exit=0|log=07-rerun2.log
+08-mp-server-persistance-install|exit=0|log=08-rerun2.log
+09-smoke|exit=0|log=09-rerun2.log
+RESULT=PASS

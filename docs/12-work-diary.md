@@ -7672,3 +7672,21 @@
   - ETA `53.6h` (`6.70` workdays)
 - Next:
   - continue next non-overlapping low-risk batch set with same evidence-first workflow.
+### 2026-02-27 08:17 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed stabilized `W168A/W168B + W169`.
+- Stabilization outcome:
+  - planned broad A/B migration rolled back after fast-gate rerun1 `common-persisters` failure.
+  - retained low-risk subset: `ICallInfo`, `NtpTimeGenerator` (`2` declarations, `0` rewires).
+- Validation outcome:
+  - fast gate `9/9 PASS` (`rerun2`)
+  - full matrix `9/9 PASS` (`rerun2`)
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-080044-hardcut-m2-wave168ab-wave169-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/145-hard-cut-m2-wave168ab-wave169-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `979`, remaining `1298`
+  - burndown `42.995169%`
+  - Project 02 `30.374396%`, Core `65.187198%`, Portfolio `82.593599%`
+  - ETA `53.5h` (`6.69` workdays)
+- Next:
+  - continue with low-risk non-overlapping subset from `cassandra-cache/cache` while deferring high-cascade rewire batches.

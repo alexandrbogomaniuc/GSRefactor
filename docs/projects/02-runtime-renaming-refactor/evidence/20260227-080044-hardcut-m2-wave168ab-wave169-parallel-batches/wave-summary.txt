@@ -1,0 +1,10 @@
+Wave group: W168A/W168B + W169
+Mode: batched-safe parallel (stabilized)
+Planned targets: 10 declarations (A=5, B=5)
+Planned high-risk exclusions: ICassandraPersister, TableDefinition, ColumnDefinition
+Stabilization retained scope: 2 declarations
+- gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/ICallInfo.java
+- gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/NtpTimeGenerator.java
+Validation:
+- fast gate: PASS 9/9 (rerun2)
+- full matrix: PASS 9/9 (rerun2)

@@ -1,0 +1,9 @@
+Fast gate rerun1 failed at step: gs-server/cassandra-cache/common-persisters mvn -DskipTests install.
+Stabilization action:
+- Rolled back all Group A declaration+rewire edits.
+- Rolled back Group B high-risk declaration/rewire edits.
+Retained final migration subset for this wave:
+- gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/ICallInfo.java
+- gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/NtpTimeGenerator.java
+Reason:
+- minimize cross-module unresolved symbol cascades while preserving incremental progress.

@@ -2587,3 +2587,26 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `12`.
   - retained bounded rewires: `1`.
   - global tracked source declarations/files now `1300` remaining (`2277` baseline, `977` reduced, `42.907334%` burndown).
+
+## 2026-02-27 08:17 UTC (Hard-Cut M2 Wave 168A + 168B + 169, Stabilized)
+- Continued batched-safe hard-cut migration from W167 checkpoint with explorer split and worker ownership:
+  - `W168A`: planned 5 declarations with bounded cross-module rewires.
+  - `W168B`: planned 5 declarations with 1 bounded rewire.
+  - `W169`: stabilization and safe-scope retention.
+- Parallel execution mode:
+  - explorer produced disjoint A/B batches.
+  - worker completed Group A while main handled Group B (thread-cap fallback prevented second worker spawn).
+- Stabilization:
+  - fast gate rerun1 failed at `common-persisters` due unresolved-symbol cascade from broad Group A rewires.
+  - rolled back unsafe edits and retained only low-risk subset: `ICallInfo`, `NtpTimeGenerator`.
+  - fast gate rerun2 passed `9/9`.
+- Validation:
+  - full matrix rerun1 failed at step08 due incorrect module path (`gs-server/mp-server/...`).
+  - full matrix rerun2 passed `9/9` after correcting step08 to `mp-server/persistance/pom.xml`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-080044-hardcut-m2-wave168ab-wave169-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/145-hard-cut-m2-wave168ab-wave169-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `2`.
+  - retained bounded rewires: `0`.
+  - global tracked source declarations/files now `1298` remaining (`2277` baseline, `979` reduced, `42.995169%` burndown).
