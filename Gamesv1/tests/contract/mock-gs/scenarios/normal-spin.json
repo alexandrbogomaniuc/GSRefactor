@@ -1,0 +1,32 @@
+{
+    "name": "Normal Spin Win",
+    "steps": [
+        {
+            "action": "connect",
+            "params": {
+                "baseUrl": "ws://localhost:6001",
+                "token": "valid-token"
+            }
+        },
+        {
+            "action": "spin",
+            "params": {
+                "betAmount": 1.00,
+                "operationId": "op-normal-win"
+            },
+            "expect": {
+                "type": "BET_ACCEPTED",
+                "totalWin": 5.00
+            }
+        },
+        {
+            "action": "settle",
+            "params": {
+                "operationId": "op-normal-win"
+            },
+            "expect": {
+                "type": "SETTLE_ACCEPTED"
+            }
+        }
+    ]
+}

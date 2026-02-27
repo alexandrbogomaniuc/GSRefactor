@@ -1,0 +1,39 @@
+{
+    "name": "Reconnect mid-spin",
+    "steps": [
+        {
+            "action": "connect",
+            "params": {
+                "baseUrl": "ws://localhost:6001"
+            }
+        },
+        {
+            "action": "spin",
+            "params": {
+                "betAmount": 1.00,
+                "operationId": "op-mid-drop"
+            },
+            "expect": {
+                "type": "BET_ACCEPTED"
+            }
+        },
+        {
+            "action": "disconnect",
+            "params": {}
+        },
+        {
+            "action": "connect",
+            "params": {
+                "baseUrl": "ws://localhost:6001"
+            }
+        },
+        {
+            "action": "sync",
+            "params": {},
+            "expect": {
+                "type": "SESSION_SYNC",
+                "lastKnownState": "RESERVED"
+            }
+        }
+    ]
+}

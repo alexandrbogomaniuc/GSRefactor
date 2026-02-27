@@ -1,0 +1,22 @@
+{
+    "name": "Insufficient Funds",
+    "steps": [
+        {
+            "action": "connect",
+            "params": {
+                "baseUrl": "ws://localhost:6001"
+            }
+        },
+        {
+            "action": "spin",
+            "params": {
+                "betAmount": 99999.00,
+                "operationId": "op-nsf"
+            },
+            "expect": {
+                "type": "BET_REJECTED",
+                "reason": "INSUFFICIENT_FUNDS"
+            }
+        }
+    ]
+}

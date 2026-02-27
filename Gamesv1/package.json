@@ -1,0 +1,12 @@
+{
+    "name": "gs-refactor-monorepo",
+    "version": "1.0.0",
+    "scripts": {
+        "test:contract": "npx tsx tests/contract/mock-gs/ScenarioRunner.ts"
+    },
+    "devDependencies": {
+        "tsx": "^4.0.0",
+        "uuid": "^9.0.1",
+        "ws": "^8.19.0"
+    }
+}

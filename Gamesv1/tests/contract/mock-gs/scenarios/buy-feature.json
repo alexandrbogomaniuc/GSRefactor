@@ -1,0 +1,22 @@
+{
+    "name": "Buy Feature",
+    "steps": [
+        {
+            "action": "connect",
+            "params": {
+                "baseUrl": "ws://localhost:6001"
+            }
+        },
+        {
+            "action": "spin",
+            "params": {
+                "betAmount": 100.00,
+                "operationId": "op-buy-feat",
+                "isBuy": true
+            },
+            "expect": {
+                "type": "BET_ACCEPTED"
+            }
+        }
+    ]
+}

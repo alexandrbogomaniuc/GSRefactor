@@ -1,0 +1,32 @@
+{
+    "name": "Duplicate operationId Retry",
+    "steps": [
+        {
+            "action": "connect",
+            "params": {
+                "baseUrl": "ws://localhost:6001"
+            }
+        },
+        {
+            "action": "spin",
+            "params": {
+                "betAmount": 1.00,
+                "operationId": "op-dup-test"
+            },
+            "expect": {
+                "type": "BET_ACCEPTED"
+            }
+        },
+        {
+            "action": "spin",
+            "params": {
+                "betAmount": 1.00,
+                "operationId": "op-dup-test"
+            },
+            "expect": {
+                "type": "BET_ACCEPTED",
+                "isDuplicate": true
+            }
+        }
+    ]
+}

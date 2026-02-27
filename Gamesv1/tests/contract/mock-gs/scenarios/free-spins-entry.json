@@ -1,0 +1,22 @@
+{
+    "name": "Free Spins Entry",
+    "steps": [
+        {
+            "action": "connect",
+            "params": {
+                "baseUrl": "ws://localhost:6001"
+            }
+        },
+        {
+            "action": "spin",
+            "params": {
+                "betAmount": 2.00,
+                "operationId": "op-fs-entry"
+            },
+            "expect": {
+                "type": "BET_ACCEPTED",
+                "featureTriggered": "FREE_SPINS"
+            }
+        }
+    ]
+}
