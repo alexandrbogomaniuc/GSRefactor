@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra;
+package com.abs.casino.cassandra;
 
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
 import com.google.common.collect.ImmutableMap;

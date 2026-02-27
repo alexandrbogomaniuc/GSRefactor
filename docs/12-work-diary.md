@@ -7708,3 +7708,21 @@
   - ETA `53.4h` (`6.68` workdays)
 - Next:
   - continue with minimal low-fanout declarations and avoid rewires into modules compiled before cache artifacts are refreshed.
+### 2026-02-27 08:53 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W172A/W172B + W173`.
+- Scope retained:
+  - declaration-only migrations: `IConfigsInitializer`, `CassandraRemoteCallPersister`, `PersisterDependencyInjector`, `AbstractLockManager` (`4` declarations).
+  - bounded rewires: `0`.
+- Validation outcome:
+  - fast gate `9/9 PASS` (`rerun1`)
+  - full matrix `9/9 PASS` (`rerun1`)
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-084517-hardcut-m2-wave172ab-wave173-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/147-hard-cut-m2-wave172ab-wave173-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `985`, remaining `1292`
+  - burndown `43.258674%`
+  - Project 02 `30.407334%`, Core `65.203667%`, Portfolio `82.601833%`
+  - ETA `53.3h` (`6.66` workdays)
+- Next:
+  - continue low-fanout declaration-only cache migrations or introduce controlled rewires only with prevalidated dependency ordering.

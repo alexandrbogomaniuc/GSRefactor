@@ -2633,3 +2633,24 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `2`.
   - retained bounded rewires: `1`.
   - global tracked source declarations/files now `1296` remaining (`2277` baseline, `981` reduced, `43.083004%` burndown).
+
+## 2026-02-27 08:53 UTC (Hard-Cut M2 Wave 172A + 172B + 173)
+- Continued batched-safe hard-cut migration from W171 checkpoint with declaration-only split:
+  - `W172A`: `IConfigsInitializer`, `CassandraRemoteCallPersister`.
+  - `W172B`: `PersisterDependencyInjector`, `AbstractLockManager`.
+  - `W173`: integration and validation.
+- Parallel execution mode:
+  - worker completed Batch A; main completed Batch B due thread-cap fallback.
+- Stabilization:
+  - no rollback required.
+  - no cross-module rewires in this wave.
+- Validation:
+  - fast gate rerun1 passed `9/9`.
+  - full matrix rerun1 passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-084517-hardcut-m2-wave172ab-wave173-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/147-hard-cut-m2-wave172ab-wave173-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `4`.
+  - retained bounded rewires: `0`.
+  - global tracked source declarations/files now `1292` remaining (`2277` baseline, `985` reduced, `43.258674%` burndown).

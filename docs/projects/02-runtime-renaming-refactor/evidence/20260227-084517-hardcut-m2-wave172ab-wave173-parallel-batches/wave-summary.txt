@@ -1,0 +1,10 @@
+Wave group: W172A/W172B + W173
+Mode: batched-safe parallel (declaration-only)
+Retained scope: 4 declaration migrations
+- gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/IConfigsInitializer.java
+- gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraRemoteCallPersister.java
+- gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/PersisterDependencyInjector.java
+- gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/AbstractLockManager.java
+Validation:
+- fast gate: PASS 9/9 (rerun1)
+- full matrix: PASS 9/9 (rerun1)
