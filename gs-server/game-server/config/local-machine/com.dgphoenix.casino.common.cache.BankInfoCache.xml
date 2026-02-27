@@ -44,7 +44,7 @@
       <properties>
           <entry>
               <string>COMMON_WALLET_REQUEST_CLIENT_CLASS</string>
-              <string>com.dgphoenix.casino.payment.wallet.client.v4.StandartRESTCWClient</string>
+              <string>com.abs.casino.payment.wallet.client.v4.StandartRESTCWClient</string>
           </entry>
           <entry>
               <string>COMMON_WALLET_AUTH_URL</string>

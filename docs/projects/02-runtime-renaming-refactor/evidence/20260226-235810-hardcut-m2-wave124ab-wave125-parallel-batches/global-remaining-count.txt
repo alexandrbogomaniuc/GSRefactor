@@ -1,0 +1,6 @@
+baseline=2277
+gs_remaining=1583
+mp_remaining=217
+remaining_total=1800
+reduced_total=477
+burndown_percent=20.948617

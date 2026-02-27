@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.payment.wallet.client.v3;
+package com.abs.casino.payment.wallet.client.v3;
 
 import com.dgphoenix.casino.cassandra.persist.ExtendedAccountInfoPersister;
 import com.dgphoenix.casino.cassandra.persist.ExtendedAccountInfoPersisterInstanceHolder;
@@ -20,7 +20,7 @@ import org.apache.logging.log4j.Logger;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class RESTCWClient extends com.dgphoenix.casino.payment.wallet.client.v2.RESTCWClient
+public class RESTCWClient extends com.abs.casino.payment.wallet.client.v2.RESTCWClient
         implements ICommonWalletClient {
     private static final Logger LOG = LogManager.getLogger(RESTCWClient.class);
 

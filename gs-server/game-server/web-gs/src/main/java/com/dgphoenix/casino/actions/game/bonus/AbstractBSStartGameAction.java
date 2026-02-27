@@ -1,6 +1,6 @@
 package com.abs.casino.actions.game.bonus;
 
-import com.dgphoenix.casino.actions.enter.LanguageDetector;
+import com.abs.casino.actions.enter.LanguageDetector;
 import com.abs.casino.actions.game.BaseStartGameAction;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;

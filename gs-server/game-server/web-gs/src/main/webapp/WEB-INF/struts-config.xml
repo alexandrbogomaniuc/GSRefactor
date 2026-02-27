@@ -31,7 +31,7 @@
         <form-bean name="GetLeaderboardUrlsForm" type="com.abs.casino.actions.api.GetLeaderboardUrlsForm"/>
 
         <!-- Begin ported from LOBBY -->
-        <form-bean name="EncoderForm" type="com.dgphoenix.casino.actions.system.util.EncoderForm"/>
+        <form-bean name="EncoderForm" type="com.abs.casino.actions.system.util.EncoderForm"/>
 
         <form-bean name="CWStartGameForm" type="com.abs.casino.forms.game.cw.CWStartGameForm" />
         <form-bean name="CWStartGameFormV2" type="com.abs.casino.actions.enter.game.cwv3.CWStartGameForm"/>
@@ -76,8 +76,8 @@
 
         <form-bean name="CTLoginForm" type="com.abs.casino.forms.login.ct.CTLoginForm"/>
         <form-bean name="CTStartGameForm" type="com.abs.casino.forms.game.ct.CTStartGameForm" />
-        <form-bean name="GameListForm" type="com.dgphoenix.casino.actions.enter.game.GameListForm"/>
-        <form-bean name="GameSettingsForm" type="com.dgphoenix.casino.actions.enter.game.GameSettingsForm"/>
+        <form-bean name="GameListForm" type="com.abs.casino.actions.enter.game.GameListForm"/>
+        <form-bean name="GameSettingsForm" type="com.abs.casino.actions.enter.game.GameSettingsForm"/>
 
         <form-bean name="FileUploadForm" type="com.abs.casino.support.cache.bank.edit.forms.language.UploadForm"/>
         <!-- End ported from LOBBY -->
@@ -372,22 +372,22 @@
             <forward name="not_found_error" redirect="false" path="/error_pages/history_not_found.jsp"/>
         </action>
 
-        <action path="/gameSettingsv2" type="com.dgphoenix.casino.actions.enter.game.GameSettingsActionV2"
+        <action path="/gameSettingsv2" type="com.abs.casino.actions.enter.game.GameSettingsActionV2"
                 name="GameSettingsForm" scope="request" validate="true" input="/error_pages/error.jsp">
             <forward name="success" path="/empty.jsp" redirect="false"/>
         </action>
 
-        <action path="/gamelist" type="com.dgphoenix.casino.actions.enter.game.GameListExtAction"
+        <action path="/gamelist" type="com.abs.casino.actions.enter.game.GameListExtAction"
                 name="GameListForm" scope="request" validate="false">
             <forward name="success" path="/empty.jsp" redirect="false"/>
         </action>
 
-        <action path="/gamelistExt" type="com.dgphoenix.casino.actions.enter.game.GameListExtAction"
+        <action path="/gamelistExt" type="com.abs.casino.actions.enter.game.GameListExtAction"
                 name="GameListForm" scope="request" validate="false">
             <forward name="success" path="/empty.jsp" redirect="false"/>
         </action>
 
-        <action path="/frbgamelist" type="com.dgphoenix.casino.actions.enter.game.FRBGameListAction"
+        <action path="/frbgamelist" type="com.abs.casino.actions.enter.game.FRBGameListAction"
                 name="GameListForm" scope="request" validate="false">
             <forward name="success" path="/empty.jsp" redirect="false"/>
         </action>
@@ -517,7 +517,7 @@
         </action>
 
         <action path="/encoderutil"
-                type="com.dgphoenix.casino.actions.system.util.EncoderAction" name="EncoderForm"
+                type="com.abs.casino.actions.system.util.EncoderAction" name="EncoderForm"
                 validate="true" input="/error_pages/error.jsp" scope="request">
             <forward name="common_error" redirect="false" path="/error_pages/error.jsp"/>
             <forward name="success" redirect="false" path="/support/encoderutil.jsp"/>

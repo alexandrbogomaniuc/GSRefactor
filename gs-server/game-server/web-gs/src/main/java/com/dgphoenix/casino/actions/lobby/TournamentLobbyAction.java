@@ -1,7 +1,7 @@
 package com.abs.casino.actions.lobby;
 
 import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.actions.GameServerActionUtils;
+import com.abs.casino.actions.GameServerActionUtils;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;

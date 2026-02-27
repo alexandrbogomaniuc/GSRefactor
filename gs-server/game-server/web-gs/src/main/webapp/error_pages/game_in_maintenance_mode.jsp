@@ -1,5 +1,5 @@
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
-<%@ page import="com.dgphoenix.casino.actions.enter.LanguageDetector" %>
+<%@ page import="com.abs.casino.actions.enter.LanguageDetector" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.dgphoenix.casino.common.exception.StartParameters" %>

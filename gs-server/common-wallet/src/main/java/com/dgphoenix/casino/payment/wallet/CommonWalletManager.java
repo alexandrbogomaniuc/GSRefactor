@@ -32,7 +32,8 @@ import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v4.CWMType;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v4.ICommonWalletClient;
-import com.dgphoenix.casino.payment.wallet.client.v4.RESTCWClient;
+import com.abs.casino.payment.wallet.AbstractWalletProtocolManager;
+import com.abs.casino.payment.wallet.client.v4.RESTCWClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

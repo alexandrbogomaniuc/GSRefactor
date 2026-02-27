@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.payment.wallet.client.v4;
+package com.abs.casino.payment.wallet.client.v4;
 
 public class RESTPostCWClient extends RESTCWClient {
 

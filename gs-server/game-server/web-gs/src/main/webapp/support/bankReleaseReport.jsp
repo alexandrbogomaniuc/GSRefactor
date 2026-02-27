@@ -85,7 +85,7 @@
     private boolean useRange = false;
     private List<Long> fromToBanks = new ArrayList<>();
     private static final String DEFAULT_CW_CLIENT_LEGACY =
-            "com.dgphoenix.casino.payment.wallet.client.v4.StandartRESTCWClient";
+            "com.abs.casino.payment.wallet.client.v4.StandartRESTCWClient";
     private static final String DEFAULT_CW_CLIENT_ABS =
             "com.abs.casino.payment.wallet.client.v4.StandartRESTCWClient";
 

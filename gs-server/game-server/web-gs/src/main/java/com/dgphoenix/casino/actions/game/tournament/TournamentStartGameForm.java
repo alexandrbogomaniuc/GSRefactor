@@ -1,7 +1,7 @@
 package com.abs.casino.actions.game.tournament;
 
 import com.dgphoenix.casino.actions.enter.CommonActionForm;
-import com.dgphoenix.casino.actions.enter.game.IStartGameForm;
+import com.abs.casino.actions.enter.game.IStartGameForm;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;

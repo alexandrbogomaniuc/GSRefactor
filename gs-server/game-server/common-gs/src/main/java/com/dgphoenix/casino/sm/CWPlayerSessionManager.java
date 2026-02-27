@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.sm;
 
-import com.dgphoenix.casino.actions.enter.game.IStartGameForm;
+import com.abs.casino.actions.enter.game.IStartGameForm;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;

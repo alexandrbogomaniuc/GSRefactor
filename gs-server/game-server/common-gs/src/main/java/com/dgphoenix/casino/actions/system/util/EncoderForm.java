@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.system.util;
+package com.abs.casino.actions.system.util;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import org.apache.logging.log4j.LogManager;

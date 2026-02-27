@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions;
+package com.abs.casino.actions;
 
 import com.dgphoenix.casino.common.util.support.Request;
 import com.dgphoenix.casino.common.util.web.HttpRequestContextHolder;

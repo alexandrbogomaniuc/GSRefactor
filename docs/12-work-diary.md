@@ -7393,3 +7393,15 @@
   - updated tracked declarations/files: `1821` remaining (`2277` baseline, `456` reduced, `20.026350%` burndown).
 - Next:
   - continue next non-overlapping batched cycle under the same evidence-first protocol.
+
+### 2026-02-27 00:08 UTC
+- Continued Project 02 hard-cut runtime renaming with parallel batch waves `124A/124B` and integration wave `125`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-235810-hardcut-m2-wave124ab-wave125-parallel-batches/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/123-hard-cut-m2-wave124ab-wave125-parallel-batches-report-20260227.md`
+- Result:
+  - migrated `21` declaration packages to `com.abs` across `common-gs` action/form scope and `common-wallet` protocol/client scope.
+  - fast gate passed on rerun2 after bounded compatibility stabilization; full validation matrix passed `9/9`.
+  - updated tracked declarations/files: `1800` remaining (`2277` baseline, `477` reduced, `20.948617%` burndown).
+- Next:
+  - continue next non-overlapping batched cycle under the same evidence-first protocol.

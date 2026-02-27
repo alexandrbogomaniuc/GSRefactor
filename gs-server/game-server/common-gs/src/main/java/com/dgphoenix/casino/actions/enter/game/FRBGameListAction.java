@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.enter.game;
+package com.abs.casino.actions.enter.game;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameCache;

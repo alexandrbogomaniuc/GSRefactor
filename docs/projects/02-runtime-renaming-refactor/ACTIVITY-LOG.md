@@ -2141,3 +2141,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - scoped declaration migrations: `22`.
   - global tracked source declarations/files now `1821` remaining (`2277` baseline, `456` reduced).
+
+## 2026-02-27 00:08 UTC (Hard-Cut M2 Wave 124A + 124B + 125)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W124A`: migrated 10 `common-gs` action/form declaration packages to `com.abs`.
+  - `W124B`: migrated 11 `common-wallet` protocol/client declaration packages to `com.abs`.
+  - `W125`: integrated both batches with bounded rewires and compatibility stabilization.
+- Changed files:
+  - full file list in `docs/projects/02-runtime-renaming-refactor/evidence/20260226-235810-hardcut-m2-wave124ab-wave125-parallel-batches/target-files.txt`.
+- Validation:
+  - fast gate rerun1 failed on bounded type/import drift (`IStartGameForm` generic bounds, `AbstractWalletProtocolManager` visibility).
+  - applied bounded stabilization, fast gate rerun2 passed.
+  - full 9-step matrix passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260226-235810-hardcut-m2-wave124ab-wave125-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/123-hard-cut-m2-wave124ab-wave125-parallel-batches-report-20260227.md`
+- Outcome:
+  - scoped declaration migrations: `21`.
+  - global tracked source declarations/files now `1800` remaining (`2277` baseline, `477` reduced).

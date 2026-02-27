@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.payment.wallet.client.v2;
+package com.abs.casino.payment.wallet.client.v2;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;

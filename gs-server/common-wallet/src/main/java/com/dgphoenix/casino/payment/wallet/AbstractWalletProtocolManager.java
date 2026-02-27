@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.payment.wallet;
+package com.abs.casino.payment.wallet;
 
 import com.dgphoenix.casino.common.DomainSession;
 import com.dgphoenix.casino.common.SessionHelper;

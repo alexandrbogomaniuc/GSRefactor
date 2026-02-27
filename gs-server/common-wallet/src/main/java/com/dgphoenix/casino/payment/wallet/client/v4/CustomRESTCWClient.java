@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.payment.wallet.client.v4;
+package com.abs.casino.payment.wallet.client.v4;
 
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;

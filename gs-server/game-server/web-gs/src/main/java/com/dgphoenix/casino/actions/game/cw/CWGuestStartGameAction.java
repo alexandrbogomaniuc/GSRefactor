@@ -6,7 +6,7 @@ package com.abs.casino.actions.game.cw;
  */
 
 import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.actions.enter.LanguageDetector;
+import com.abs.casino.actions.enter.LanguageDetector;
 import com.abs.casino.actions.game.BaseStartGameAction;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.payment.wallet.client.v4;
+package com.abs.casino.payment.wallet.client.v4;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
@@ -29,7 +29,7 @@ import static com.dgphoenix.casino.gs.managers.payment.wallet.CCommonWallet.*;
  * User: flsh
  * Date: 9/27/12
  */
-public class RESTCWClient extends com.dgphoenix.casino.payment.wallet.client.v3.RESTCWClient
+public class RESTCWClient extends com.abs.casino.payment.wallet.client.v3.RESTCWClient
         implements ICommonWalletClient {
     private static final long MAX_UNKNOWN_TRANSACTION_TIME = 5 * 60 * 1000;
     private static final Logger LOG = LogManager.getLogger(RESTCWClient.class);

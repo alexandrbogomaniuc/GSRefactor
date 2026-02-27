@@ -1,8 +1,8 @@
 package com.abs.casino.actions.game.tournament;
 
 import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.actions.GameServerActionUtils;
-import com.dgphoenix.casino.actions.enter.LanguageDetector;
+import com.abs.casino.actions.GameServerActionUtils;
+import com.abs.casino.actions.enter.LanguageDetector;
 import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.SessionHelper;

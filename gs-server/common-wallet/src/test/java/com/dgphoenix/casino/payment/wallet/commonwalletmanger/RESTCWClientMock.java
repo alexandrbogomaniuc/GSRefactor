@@ -8,7 +8,7 @@ import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
-import com.dgphoenix.casino.payment.wallet.client.v4.RESTCWClient;
+import com.abs.casino.payment.wallet.client.v4.RESTCWClient;
 
 import java.util.ArrayList;
 import java.util.List;

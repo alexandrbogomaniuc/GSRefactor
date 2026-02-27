@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.enter.game;
+package com.abs.casino.actions.enter.game;
 
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
