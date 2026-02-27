@@ -27,7 +27,7 @@ import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.dgphoenix.casino.gs.socket.InServiceServiceHandler;
 import com.dgphoenix.casino.kafka.dto.*;
 import com.dgphoenix.casino.kafka.service.KafkaMessageService;
-import com.dgphoenix.casino.websocket.IWebSocketSessionsController;
+import com.abs.casino.websocket.IWebSocketSessionsController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

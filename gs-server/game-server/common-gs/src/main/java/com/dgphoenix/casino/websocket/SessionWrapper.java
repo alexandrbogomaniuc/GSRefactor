@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.websocket;
+package com.abs.casino.websocket;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.google.common.base.Splitter;

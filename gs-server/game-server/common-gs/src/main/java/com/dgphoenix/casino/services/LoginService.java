@@ -6,8 +6,8 @@ import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletProtocolManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v3.ICommonWalletClient;
+import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
+import com.abs.casino.gs.managers.payment.wallet.v3.ICommonWalletClient;
 import org.springframework.stereotype.Service;
 
 @Service

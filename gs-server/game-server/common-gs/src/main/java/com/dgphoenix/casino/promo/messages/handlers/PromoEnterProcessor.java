@@ -21,7 +21,7 @@ import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.comma
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 import com.dgphoenix.casino.promo.IPromoMessagesDispatcher;
 import com.abs.casino.promo.persisters.CassandraLocalizationsPersister;
-import com.dgphoenix.casino.websocket.IWebSocketSessionsController;
+import com.abs.casino.websocket.IWebSocketSessionsController;
 import com.google.common.base.Splitter;
 import com.google.common.net.UrlEscapers;
 

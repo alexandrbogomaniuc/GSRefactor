@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.websocket;
+package com.abs.casino.websocket;
 
 /**
  * Created by vladislav on 1/12/17.

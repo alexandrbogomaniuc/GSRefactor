@@ -24,7 +24,7 @@ import com.abs.casino.exceptions.LoginErrorException;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CWError;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
+import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
 import com.dgphoenix.casino.helpers.login.LoginHelper;
 import com.dgphoenix.casino.services.mp.MPGameSessionService;

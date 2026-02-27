@@ -3,7 +3,7 @@ package com.dgphoenix.casino.promo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.PromoNotificationType;
 import com.dgphoenix.casino.common.promo.Status;
-import com.dgphoenix.casino.websocket.IWebSocketSessionsListener;
+import com.abs.casino.websocket.IWebSocketSessionsListener;
 
 import java.util.Collection;
 import java.util.Map;

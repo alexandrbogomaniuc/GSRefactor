@@ -32,7 +32,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusClient;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
+import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 import com.dgphoenix.casino.helpers.login.LoginHelper;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

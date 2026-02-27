@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.websocket;
+package com.abs.casino.websocket;
 
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import org.apache.logging.log4j.LogManager;

@@ -286,7 +286,7 @@
     <!-- STRUTS ACTION END-->
     <servlet>
         <servlet-name>MainWebSocketServlet</servlet-name>
-        <servlet-class>com.dgphoenix.casino.websocket.WebSocketServletImpl</servlet-class>
+        <servlet-class>com.abs.casino.websocket.WebSocketServletImpl</servlet-class>
         <load-on-startup>100</load-on-startup>
     </servlet>
     <servlet-mapping>

@@ -55,8 +55,8 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusNotificationManager
 import com.dgphoenix.casino.gs.managers.payment.transfer.PaymentManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletProtocolManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v3.ICommonWalletClient;
+import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
+import com.abs.casino.gs.managers.payment.wallet.v3.ICommonWalletClient;
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 import com.dgphoenix.casino.services.mp.MPGameSessionService;
 import com.dgphoenix.casino.sm.CWPlayerSessionManager;

@@ -1,0 +1,15 @@
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v3/RESTCWClient.java
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CustomRESTCWClient.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/v4/ICommonWalletClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/BattlegroundService.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/GameUserHistoryService.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/LoginService.java
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/socket/mq/GameUserHistoryServiceTest.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/GetBalanceAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWRegisterAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/CWv3Helper.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/FRBonusHelper.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/LoginHelper.java

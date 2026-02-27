@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.wallet.v3;
+package com.abs.casino.gs.managers.payment.wallet.v3;
 
 public class CommonWalletAuthResult {
 

@@ -1,0 +1,25 @@
+[2026-02-27T12:59:52Z] START PRE01 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/utils cmd=mvn -DskipTests install
+[2026-02-27T12:59:57Z] END   PRE01 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-125224-hardcut-m2-wave196ab-wave197-parallel-batches/PRE01-rerun1.log
+[2026-02-27T12:59:57Z] START PRE02 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils cmd=mvn -DskipTests install
+[2026-02-27T13:00:01Z] END   PRE02 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-125224-hardcut-m2-wave196ab-wave197-parallel-batches/PRE02-rerun1.log
+[2026-02-27T13:00:01Z] START PRE03 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo cmd=mvn -DskipTests install
+[2026-02-27T13:00:04Z] END   PRE03 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-125224-hardcut-m2-wave196ab-wave197-parallel-batches/PRE03-rerun1.log
+[2026-02-27T13:00:04Z] START STEP01 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common cmd=mvn -DskipTests install
+[2026-02-27T13:00:08Z] END   STEP01 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-125224-hardcut-m2-wave196ab-wave197-parallel-batches/STEP01-rerun1.log
+[2026-02-27T13:00:08Z] START STEP02 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet cmd=mvn -DskipTests install
+[2026-02-27T13:00:11Z] END   STEP02 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-125224-hardcut-m2-wave196ab-wave197-parallel-batches/STEP02-rerun1.log
+[2026-02-27T13:00:11Z] START STEP03 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils cmd=mvn -DskipTests install
+[2026-02-27T13:00:14Z] END   STEP03 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-125224-hardcut-m2-wave196ab-wave197-parallel-batches/STEP03-rerun1.log
+[2026-02-27T13:00:14Z] START STEP04 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo cmd=mvn -DskipTests install
+[2026-02-27T13:00:16Z] END   STEP04 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-125224-hardcut-m2-wave196ab-wave197-parallel-batches/STEP04-rerun1.log
+[2026-02-27T13:00:16Z] START STEP05 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters cmd=mvn -DskipTests install
+[2026-02-27T13:00:19Z] END   STEP05 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-125224-hardcut-m2-wave196ab-wave197-parallel-batches/STEP05-rerun1.log
+[2026-02-27T13:00:19Z] START STEP06 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-27T13:00:28Z] END   STEP06 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-125224-hardcut-m2-wave196ab-wave197-parallel-batches/STEP06-rerun1.log
+[2026-02-27T13:00:28Z] START STEP07 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+[2026-02-27T13:00:41Z] END   STEP07 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-125224-hardcut-m2-wave196ab-wave197-parallel-batches/STEP07-rerun1.log
+[2026-02-27T13:00:41Z] START STEP08 dir=/Users/alexb/Documents/Dev/Dev_new/mp-server/persistance cmd=mvn -DskipTests install
+[2026-02-27T13:00:44Z] END   STEP08 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-125224-hardcut-m2-wave196ab-wave197-parallel-batches/STEP08-rerun1.log
+[2026-02-27T13:00:44Z] START STEP09 dir=/Users/alexb/Documents/Dev/Dev_new cmd=node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+[2026-02-27T13:02:06Z] RECOVER START STEP09 dir=/Users/alexb/Documents/Dev/Dev_new cmd=node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+[2026-02-27T13:03:28Z] RECOVER END   STEP09 rc=2 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-125224-hardcut-m2-wave196ab-wave197-parallel-batches/STEP09-rerun1.log

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.websocket;
+package com.abs.casino.websocket;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;

@@ -1,0 +1,4 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/v3/AuthActionType.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/v3/CommonWalletAuthResult.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/v3/GTBetsCommonWalletAuthResult.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/v3/ICommonWalletClient.java

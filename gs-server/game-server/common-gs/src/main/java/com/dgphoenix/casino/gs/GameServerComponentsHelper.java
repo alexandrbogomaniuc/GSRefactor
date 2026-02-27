@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.gs.managers.game.history.HistoryInformerManager;
 import com.dgphoenix.casino.promo.IPromoMessagesDispatcher;
 import com.abs.casino.promo.tournaments.TournamentManager;
-import com.dgphoenix.casino.websocket.IWebSocketSessionsController;
+import com.abs.casino.websocket.IWebSocketSessionsController;
 
 /**
  * User: flsh

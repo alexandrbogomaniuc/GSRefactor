@@ -12,8 +12,8 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.xml.IXmlRequestResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CCommonWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v3.ICommonWalletClient;
+import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
+import com.abs.casino.gs.managers.payment.wallet.v3.ICommonWalletClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -9,7 +9,7 @@ import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
  * Date: 9/27/12
  */
 public interface ICommonWalletClient extends
-        com.dgphoenix.casino.gs.managers.payment.wallet.v3.ICommonWalletClient {
+        com.abs.casino.gs.managers.payment.wallet.v3.ICommonWalletClient {
     boolean refundBet(long operationStartTime, long accountId, String extUserId,
                       CommonWalletOperation debitOperation, long gameId) throws CommonException;
 

@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.Pr
 import com.dgphoenix.casino.common.promo.messages.server.responses.NotificationShownResponse;
 import com.dgphoenix.casino.gs.GameServerComponentsHelper;
 import com.dgphoenix.casino.promo.IPromoMessagesDispatcher;
-import com.dgphoenix.casino.websocket.IWebSocketSessionsController;
+import com.abs.casino.websocket.IWebSocketSessionsController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

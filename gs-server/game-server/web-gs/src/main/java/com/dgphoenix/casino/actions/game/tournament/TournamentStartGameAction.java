@@ -23,7 +23,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.GameServerComponentsHelper;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
+import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.dgphoenix.casino.helpers.login.LoginHelper;
 import com.dgphoenix.casino.promo.PromoCampaignManager;
 import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;

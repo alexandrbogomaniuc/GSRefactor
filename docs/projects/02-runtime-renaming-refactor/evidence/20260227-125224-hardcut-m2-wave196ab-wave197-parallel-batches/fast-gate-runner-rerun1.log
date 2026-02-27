@@ -1,0 +1,45 @@
+==== STEP01 START 2026-02-27 12:56:41 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/common
+CMD: mvn -DskipTests install
+==== STEP01 END 2026-02-27 12:56:46 EXIT=0 RESULT=PASS ====
+STEP01 RESULT=PASS
+==== STEP02 START 2026-02-27 12:56:46 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet
+CMD: mvn -DskipTests install
+==== STEP02 END 2026-02-27 12:56:49 EXIT=0 RESULT=PASS ====
+STEP02 RESULT=PASS
+==== STEP03 START 2026-02-27 12:56:49 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils
+CMD: mvn -DskipTests install
+==== STEP03 END 2026-02-27 12:56:52 EXIT=0 RESULT=PASS ====
+STEP03 RESULT=PASS
+==== STEP04 START 2026-02-27 12:56:52 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo
+CMD: mvn -DskipTests install
+==== STEP04 END 2026-02-27 12:56:54 EXIT=0 RESULT=PASS ====
+STEP04 RESULT=PASS
+==== STEP05 START 2026-02-27 12:56:54 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters
+CMD: mvn -DskipTests install
+==== STEP05 END 2026-02-27 12:56:57 EXIT=0 RESULT=PASS ====
+STEP05 RESULT=PASS
+==== STEP06 START 2026-02-27 12:56:57 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs
+CMD: mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+==== STEP06 END 2026-02-27 12:57:06 EXIT=0 RESULT=PASS ====
+STEP06 RESULT=PASS
+==== STEP07 START 2026-02-27 12:57:06 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs
+CMD: mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+==== STEP07 END 2026-02-27 12:57:19 EXIT=0 RESULT=PASS ====
+STEP07 RESULT=PASS
+==== STEP08 START 2026-02-27 12:57:19 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance
+CMD: mvn -DskipTests install
+==== STEP08 END 2026-02-27 12:57:22 EXIT=0 RESULT=PASS ====
+STEP08 RESULT=PASS
+==== STEP09 START 2026-02-27 12:57:22 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new
+CMD: node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+==== STEP09 END 2026-02-27 12:58:44 EXIT=2 RESULT=FAIL ====
+STEP09 RESULT=FAIL

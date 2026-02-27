@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.wallet.v3;
+package com.abs.casino.gs.managers.payment.wallet.v3;
 
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.exception.CommonException;

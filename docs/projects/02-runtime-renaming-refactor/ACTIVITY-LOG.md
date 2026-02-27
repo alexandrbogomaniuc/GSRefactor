@@ -2908,3 +2908,27 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `13`.
   - retained bounded rewires: `23`.
   - global tracked source declarations/files now `1165` remaining (`2277` baseline, `1112` reduced, `48.836188%` burndown).
+
+## 2026-02-27 13:03 UTC (Hard-Cut M2 Wave 196A + 196B + 197)
+- Continued batched-safe hard-cut migration from W195 checkpoint with non-overlapping declaration sets:
+  - `W196A`: 7 declaration migrations in `websocket`.
+  - `W196B`: 4 declaration migrations in `gs.managers.payment.wallet.v3`.
+  - `W197`: integration and validation.
+- Parallel execution mode:
+  - explorer produced non-overlapping low-risk manifests.
+  - agent thread-cap fallback executed as `1 worker + main` while preserving strict ownership.
+- Stabilization:
+  - no rollback required.
+  - bounded rewires retained in direct Java importer files plus bounded `web.xml` class-string update for `WebSocketServletImpl`.
+  - bounded Java FQCN extension rewire retained in wallet-v4 interface.
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`startgame` alias `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-125224-hardcut-m2-wave196ab-wave197-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/159-hard-cut-m2-wave196ab-wave197-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `11`.
+  - retained bounded rewires: `34`.
+  - global tracked source declarations/files now `1154` remaining (`2277` baseline, `1123` reduced, `49.319280%` burndown).

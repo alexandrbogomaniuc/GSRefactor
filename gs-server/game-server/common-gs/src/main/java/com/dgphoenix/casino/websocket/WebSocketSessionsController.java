@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.websocket;
+package com.abs.casino.websocket;
 
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
