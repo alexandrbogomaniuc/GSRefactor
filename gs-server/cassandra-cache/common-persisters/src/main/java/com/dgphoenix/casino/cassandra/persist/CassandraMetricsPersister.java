@@ -7,8 +7,8 @@ import com.dgphoenix.casino.cassandra.persist.engine.configuration.Caching;
 import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.dgphoenix.casino.cassandra.persist.engine.configuration.Compression;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.system.Metric;
-import com.dgphoenix.casino.common.util.system.MetricStat;
+import com.abs.casino.common.util.system.Metric;
+import com.abs.casino.common.util.system.MetricStat;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.client.canex.request.privateroom.Status;
+import com.abs.casino.common.client.canex.request.privateroom.Status;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.exception.WalletException;
 import com.dgphoenix.casino.common.util.CollectionUtils;

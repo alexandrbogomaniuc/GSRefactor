@@ -1,8 +1,8 @@
 package com.abs.casino.support.logviewer;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.util.support.AdditionalInfoAttribute;
-import com.dgphoenix.casino.common.util.support.HttpCallInfo;
+import com.abs.casino.common.util.support.AdditionalInfoAttribute;
+import com.abs.casino.common.util.support.HttpCallInfo;
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.struts.action.ActionErrors;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static com.dgphoenix.casino.common.util.support.AdditionalInfoAttribute.*;
+import static com.abs.casino.common.util.support.AdditionalInfoAttribute.*;
 import static java.util.stream.Collectors.toList;
 import static org.apache.struts.action.ActionMessages.GLOBAL_MESSAGE;
 

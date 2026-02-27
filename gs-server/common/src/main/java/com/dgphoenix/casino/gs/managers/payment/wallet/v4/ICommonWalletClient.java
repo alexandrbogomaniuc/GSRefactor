@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.gs.managers.payment.wallet.v4;
 
-import com.dgphoenix.casino.common.client.canex.request.privateroom.Status;
+import com.abs.casino.common.client.canex.request.privateroom.Status;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
 

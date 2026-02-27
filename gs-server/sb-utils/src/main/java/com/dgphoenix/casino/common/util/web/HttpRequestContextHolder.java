@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.util.web;
 
-import com.dgphoenix.casino.common.util.support.*;
+import com.abs.casino.common.util.support.*;
 
 /**
  * @author <a href="mailto:noragami@dgphoenix.com">Alexander Aldokhin</a>

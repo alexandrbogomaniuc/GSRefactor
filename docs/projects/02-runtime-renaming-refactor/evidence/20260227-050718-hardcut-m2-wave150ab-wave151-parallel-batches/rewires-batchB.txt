@@ -1,0 +1,11 @@
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClient.java
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/RESTCWClient.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/IJsonCWClient.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/v4/ICommonWalletClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/BattlegroundService.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/PromoNotificationsCreator.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/TournamentsManager.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/mp/MPGameSessionService.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/util/BGStatusUtil.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/BattlegroundPrivateRoomController.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/response/PostPrivateRoomPlayers.java

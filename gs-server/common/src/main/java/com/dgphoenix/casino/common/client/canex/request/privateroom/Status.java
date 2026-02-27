@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.client.canex.request.privateroom;
+package com.abs.casino.common.client.canex.request.privateroom;
 
 public enum Status {
     INVITED,

@@ -21,10 +21,10 @@ import com.dgphoenix.casino.common.client.canex.request.friends.UpdateFriendsRes
 import com.dgphoenix.casino.common.client.canex.request.onlineplayer.OnlinePlayer;
 import com.dgphoenix.casino.common.client.canex.request.onlineplayer.UpdateOnlinePlayersRequest;
 import com.dgphoenix.casino.common.client.canex.request.onlineplayer.UpdateOnlinePlayersResponse;
-import com.dgphoenix.casino.common.client.canex.request.privateroom.Player;
-import com.dgphoenix.casino.common.client.canex.request.privateroom.PrivateRoom;
-import com.dgphoenix.casino.common.client.canex.request.privateroom.Status;
-import com.dgphoenix.casino.common.client.canex.request.privateroom.UpdateRoomResponse;
+import com.abs.casino.common.client.canex.request.privateroom.Player;
+import com.abs.casino.common.client.canex.request.privateroom.PrivateRoom;
+import com.abs.casino.common.client.canex.request.privateroom.Status;
+import com.abs.casino.common.client.canex.request.privateroom.UpdateRoomResponse;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.battleground.BattlegroundConfig;
 import com.dgphoenix.casino.common.util.CommonExecutorService;

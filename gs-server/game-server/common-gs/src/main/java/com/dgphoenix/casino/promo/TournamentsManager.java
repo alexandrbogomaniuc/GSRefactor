@@ -3,7 +3,7 @@ package com.dgphoenix.casino.promo;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.*;
-import com.dgphoenix.casino.common.promo.messages.server.notifications.tournament.LeaderBoard;
+import com.abs.casino.common.promo.messages.server.notifications.tournament.LeaderBoard;
 import com.dgphoenix.casino.promo.persisters.CassandraTournamentRankPersister;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;

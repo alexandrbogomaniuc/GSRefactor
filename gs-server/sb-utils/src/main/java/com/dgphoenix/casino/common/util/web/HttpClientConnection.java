@@ -3,9 +3,9 @@ package com.dgphoenix.casino.common.util.web;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.exception.TransportException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.util.support.ExceptionInfo;
-import com.dgphoenix.casino.common.util.support.Request;
-import com.dgphoenix.casino.common.util.support.Response;
+import com.abs.casino.common.util.support.ExceptionInfo;
+import com.abs.casino.common.util.support.Request;
+import com.abs.casino.common.util.support.Response;
 import com.dgphoenix.casino.common.web.statistics.IStatisticsGetter;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.google.common.collect.ImmutableMap;
@@ -52,7 +52,7 @@ import java.security.Security;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static com.dgphoenix.casino.common.util.support.AdditionalInfoAttribute.REQUEST_TIMEOUT_IN_SECONDS;
+import static com.abs.casino.common.util.support.AdditionalInfoAttribute.REQUEST_TIMEOUT_IN_SECONDS;
 
 public class HttpClientConnection implements IHttpClientConnection {
 

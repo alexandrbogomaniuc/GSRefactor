@@ -5,8 +5,8 @@ import com.dgphoenix.casino.common.promo.messages.server.notifications.PromoNoti
 import com.dgphoenix.casino.common.promo.messages.server.notifications.PromoStatusChanged;
 import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
 import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.TicketsWon;
-import com.dgphoenix.casino.common.promo.messages.server.notifications.tournament.LeaderBoard;
-import com.dgphoenix.casino.common.promo.messages.server.notifications.tournament.TournamentPlace;
+import com.abs.casino.common.promo.messages.server.notifications.tournament.LeaderBoard;
+import com.abs.casino.common.promo.messages.server.notifications.tournament.TournamentPlace;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

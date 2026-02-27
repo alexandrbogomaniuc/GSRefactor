@@ -1,0 +1,48 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 30 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-promo ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-promo ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-promo ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ common-promo >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ common-promo <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ common-promo ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-promo ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.440 s
+[INFO] Finished at: 2026-02-27T05:16:31Z
+[INFO] ------------------------------------------------------------------------

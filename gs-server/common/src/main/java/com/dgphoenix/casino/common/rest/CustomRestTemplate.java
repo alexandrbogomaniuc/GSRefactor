@@ -2,9 +2,9 @@ package com.abs.casino.common.rest;
 
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.support.ExceptionInfo;
-import com.dgphoenix.casino.common.util.support.Request;
-import com.dgphoenix.casino.common.util.support.Response;
+import com.abs.casino.common.util.support.ExceptionInfo;
+import com.abs.casino.common.util.support.Request;
+import com.abs.casino.common.util.support.Response;
 import com.dgphoenix.casino.common.util.web.HttpRequestContextHolder;
 import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableCWClient;
 import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableResponseCode;
@@ -28,7 +28,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.List;
 
-import static com.dgphoenix.casino.common.util.support.AdditionalInfoAttribute.REQUEST_TIMEOUT_IN_SECONDS;
+import static com.abs.casino.common.util.support.AdditionalInfoAttribute.REQUEST_TIMEOUT_IN_SECONDS;
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 import static org.apache.commons.lang.time.DurationFormatUtils.formatDurationHMS;

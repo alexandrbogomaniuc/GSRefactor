@@ -2396,3 +2396,27 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `20`.
   - retained bounded rewires: `6`.
   - global tracked source declarations/files now `1501` remaining (`2277` baseline, `776` reduced, `34.079930%` burndown).
+
+## 2026-02-27 05:25 UTC (Hard-Cut M2 Wave 150A + 150B + 151, Stabilized)
+- Continued batched-safe hard-cut migration from W149 checkpoint with non-overlapping ownership:
+  - `W150A`: migrated 11 declaration packages in `sb-utils/common/util/support` + `utils/common/util/system`.
+  - `W150B`: migrated 10 declaration packages in `common/client/canex/request/privateroom` + `common-promo/messages/server/notifications/tournament`.
+  - `W151`: bounded importer rewires and compatibility stabilization.
+- Parallel execution mode:
+  - explorer produced non-overlapping batch sets.
+  - worker thread-cap limited concurrent workers; retained degraded-safe parallel mode (worker A + main-owned batch B), with strict file ownership maintained.
+- Stabilization:
+  - fast gate `rerun1` failed at step1 (`common`) due stale `IJsonCWClient` import lineage.
+  - fast gate `rerun2` failed at step1 (`common`) due dependency-order drift (`common` before migrated `sb-utils` support declarations).
+  - fast gate `rerun3` failed at step4 (`common-wallet`) due `CanexCWClient` type-identity mismatch against `IJsonCWClient`.
+  - fast gate `rerun4` passed after bounded import/signature alignment and corrected step ordering.
+- Validation:
+  - fast gate `9/9 PASS` on rerun4.
+  - full matrix `9/9 PASS` on rerun1 (with wave-specific pre-setup installs for `utils`, `sb-utils`, `common-promo`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-050718-hardcut-m2-wave150ab-wave151-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/136-hard-cut-m2-wave150ab-wave151-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `21`.
+  - retained bounded rewires: `26`.
+  - global tracked source declarations/files now `1480` remaining (`2277` baseline, `797` reduced, `35.002196%` burndown).

@@ -1,0 +1,10 @@
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/tournament/LeaderBoard.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/tournament/TournamentPlace.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/privateroom/InvitePlayersExtSystem.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/privateroom/InvitePlayersOutput.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/privateroom/InvitePlayersRequest.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/privateroom/InvitePlayersResponse.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/privateroom/Player.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/privateroom/PrivateRoom.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/privateroom/Status.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/privateroom/UpdateRoomResponse.java

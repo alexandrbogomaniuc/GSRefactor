@@ -12,7 +12,7 @@ import com.abs.casino.common.config.HostConfiguration;
 import com.dgphoenix.casino.common.config.UtilsApplicationContextHelper;
 import com.dgphoenix.casino.common.util.ITimeProvider;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
-import com.dgphoenix.casino.common.util.system.SystemPropertyReader;
+import com.abs.casino.common.util.system.SystemPropertyReader;
 import com.dgphoenix.casino.common.web.SharedServletExecutorService;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import com.dgphoenix.casino.system.configuration.identification.ServersCoordinatorService;

@@ -1,0 +1,4 @@
+step1-utils-install|PASS|exit=0
+step2-sb-utils-install|PASS|exit=0
+step3-common-install|PASS|exit=0
+step4-common-wallet-install|FAIL|exit=1

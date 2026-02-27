@@ -23,7 +23,7 @@ import com.dgphoenix.casino.common.transactiondata.ITransactionDataPersister;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItemType;
 import com.dgphoenix.casino.common.util.CommonExecutorService;
 import com.dgphoenix.casino.common.util.IntegerIdGenerator;
-import com.dgphoenix.casino.common.util.system.SystemPropertyReader;
+import com.abs.casino.common.util.system.SystemPropertyReader;
 import com.dgphoenix.casino.gs.lock.RemoteUnlocker;
 import com.dgphoenix.casino.gs.managers.dblink.FreeGameCalculator;
 import com.dgphoenix.casino.gs.managers.game.history.HistoryInformerManager;

@@ -5,8 +5,8 @@ import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.common.util.StreamUtils;
-import com.dgphoenix.casino.common.util.support.HttpCallInfo;
-import com.dgphoenix.casino.common.util.support.HttpMessage;
+import com.abs.casino.common.util.support.HttpCallInfo;
+import com.abs.casino.common.util.support.HttpMessage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,7 +18,7 @@ import java.util.Optional;
 
 import static com.datastax.driver.core.DataType.*;
 import static com.datastax.driver.core.querybuilder.QueryBuilder.select;
-import static com.dgphoenix.casino.common.util.support.AdditionalInfoAttribute.*;
+import static com.abs.casino.common.util.support.AdditionalInfoAttribute.*;
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang3.StringUtils.isEmpty;

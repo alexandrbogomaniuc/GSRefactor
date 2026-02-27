@@ -1,6 +1,6 @@
 package com.abs.casino.common.rest;
 
-import com.dgphoenix.casino.common.util.support.ExceptionInfo;
+import com.abs.casino.common.util.support.ExceptionInfo;
 import com.dgphoenix.casino.common.util.web.HttpRequestContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

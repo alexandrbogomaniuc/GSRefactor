@@ -1,0 +1,24 @@
+[2026-02-27T05:16:21Z] START pre-setup-utils-install
+[2026-02-27T05:16:25Z] PASS  pre-setup-utils-install exit=0
+[2026-02-27T05:16:25Z] START pre-setup-sb-utils-install
+[2026-02-27T05:16:29Z] PASS  pre-setup-sb-utils-install exit=0
+[2026-02-27T05:16:29Z] START pre-setup-common-promo-install
+[2026-02-27T05:16:31Z] PASS  pre-setup-common-promo-install exit=0
+[2026-02-27T05:16:31Z] START step01
+[2026-02-27T05:16:36Z] PASS  step01 exit=0
+[2026-02-27T05:16:36Z] START step02
+[2026-02-27T05:16:40Z] PASS  step02 exit=0
+[2026-02-27T05:16:40Z] START step03
+[2026-02-27T05:16:45Z] PASS  step03 exit=0
+[2026-02-27T05:16:45Z] START step04
+[2026-02-27T05:16:47Z] PASS  step04 exit=0
+[2026-02-27T05:16:47Z] START step05
+[2026-02-27T05:16:55Z] PASS  step05 exit=0
+[2026-02-27T05:16:55Z] START step06
+[2026-02-27T05:16:58Z] PASS  step06 exit=0
+[2026-02-27T05:16:58Z] START step07
+[2026-02-27T05:17:11Z] PASS  step07 exit=0
+[2026-02-27T05:17:11Z] START step08
+[2026-02-27T05:17:17Z] PASS  step08 exit=0
+[2026-02-27T05:17:17Z] START step09
+[2026-02-27T05:17:17Z] PASS  step09 exit=0

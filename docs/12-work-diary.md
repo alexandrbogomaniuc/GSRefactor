@@ -7548,3 +7548,15 @@
   - tracked declarations/files now `1501` remaining (`2277` baseline, `776` reduced, `34.079930%` burndown).
 - Next:
   - continue with next low-risk non-overlapping parallel batch using same worker ownership protocol.
+
+### 2026-02-27 05:25 UTC
+- Dev_new continuity update: completed hard-cut namespace parallel waves `W150A/W150B` with integration `W151` in GSRefactor.
+- Validation status: fast gate PASS `9/9` (rerun4) and full matrix PASS `9/9` (rerun1), including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-050718-hardcut-m2-wave150ab-wave151-parallel-batches/`
+- Outcome:
+  - retained migrations: `21` declarations in `common/client/canex/request/privateroom`, `common-promo/messages/server/notifications/tournament`, `sb-utils/common/util/support`, and `utils/common/util/system` scope.
+  - retained bounded rewires: `26`.
+  - tracked declarations/files now `1480` remaining (`2277` baseline, `797` reduced, `35.002196%` burndown).
+- Next:
+  - continue with next low-risk non-overlapping parallel batch using same worker ownership protocol.

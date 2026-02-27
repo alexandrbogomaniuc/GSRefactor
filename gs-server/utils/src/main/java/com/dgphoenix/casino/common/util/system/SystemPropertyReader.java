@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.system;
+package com.abs.casino.common.util.system;
 
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
