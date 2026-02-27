@@ -11,7 +11,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
-import com.dgphoenix.casino.common.util.xml.IXmlMessage;
+import com.abs.casino.common.util.xml.IXmlMessage;
 import org.apache.log4j.Logger;
 
 public class XmlHandlerSelector extends DefaultHandler implements IXmlHandlerSelector {

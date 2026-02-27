@@ -3,7 +3,7 @@
  * Date: Jun 27, 2003
  * Time: 2:21:46 PM
  */
-package com.dgphoenix.casino.common.util.xml;
+package com.abs.casino.common.util.xml;
 
 public class XmlRequestError {
 

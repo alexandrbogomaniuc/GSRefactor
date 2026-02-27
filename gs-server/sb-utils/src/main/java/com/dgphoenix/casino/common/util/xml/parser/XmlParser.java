@@ -6,9 +6,9 @@
 package com.abs.casino.common.util.xml.parser;
 
 import com.dgphoenix.casino.common.exception.ParserException;
-import com.dgphoenix.casino.common.util.xml.IXmlElement;
-import com.dgphoenix.casino.common.util.xml.IXmlMessage;
-import com.dgphoenix.casino.common.util.xml.XmlElement;
+import com.abs.casino.common.util.xml.IXmlElement;
+import com.abs.casino.common.util.xml.IXmlMessage;
+import com.abs.casino.common.util.xml.XmlElement;
 import org.apache.xerces.parsers.SAXParser;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;

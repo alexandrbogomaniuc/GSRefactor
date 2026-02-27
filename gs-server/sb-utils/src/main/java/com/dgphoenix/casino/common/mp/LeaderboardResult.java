@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.mp;
+package com.abs.casino.common.mp;
 
 import java.util.ArrayList;
 import java.util.List;

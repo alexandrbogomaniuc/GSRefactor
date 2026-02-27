@@ -3,7 +3,7 @@ package com.abs.casino.cassandra.persist.mp;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.common.mp.MQData;
+import com.abs.casino.common.mp.MQData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

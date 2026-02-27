@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.mp;
+package com.abs.casino.common.mp;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;

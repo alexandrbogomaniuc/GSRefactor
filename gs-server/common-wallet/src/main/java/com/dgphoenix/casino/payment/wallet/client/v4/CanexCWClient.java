@@ -29,8 +29,8 @@ import com.dgphoenix.casino.common.client.canex.request.privateroom.Status;
 import com.abs.casino.common.client.canex.response.CanexJsonResponse;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.rest.CustomRestTemplate;
-import com.dgphoenix.casino.common.util.xml.IXmlRequestResult;
-import com.dgphoenix.casino.common.util.xml.XmlRequestResult;
+import com.abs.casino.common.util.xml.IXmlRequestResult;
+import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
 import com.dgphoenix.casino.gs.managers.payment.wallet.SimpleLoggableContainer;
@@ -43,7 +43,7 @@ import org.springframework.http.MediaType;
 import java.util.List;
 import java.util.Map;
 
-public class CanexCWClient extends RESTCWClient implements IJsonCWClient {
+public class CanexCWClient extends com.abs.casino.payment.wallet.client.v4.RESTCWClient implements IJsonCWClient {
 
     private static final Logger LOG = LogManager.getLogger(CanexCWClient.class);
 

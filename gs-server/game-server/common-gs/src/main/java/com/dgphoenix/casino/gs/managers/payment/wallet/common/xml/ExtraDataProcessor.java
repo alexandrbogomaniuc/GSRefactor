@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.gs.managers.payment.wallet.common.xml;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.xml.IXmlElement;
+import com.abs.casino.common.util.xml.IXmlElement;
 import com.abs.casino.common.util.xml.parser.IXmlElementProcessor;
 
 import java.util.LinkedList;

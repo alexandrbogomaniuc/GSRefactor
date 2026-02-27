@@ -3,8 +3,8 @@ package com.abs.casino.cassandra.persist.mp;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.common.mp.LeaderboardStatus;
-import com.dgphoenix.casino.common.mp.TicketedDrawConfig;
+import com.abs.casino.common.mp.LeaderboardStatus;
+import com.abs.casino.common.mp.TicketedDrawConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.dgphoenix.casino.common.mp.LeaderboardStatus.SCHEDULED;
+import static com.abs.casino.common.mp.LeaderboardStatus.SCHEDULED;
 
 public class TicketedDrawConfigPersister extends AbstractCassandraPersister<String, Long> {
     private static final Logger LOG = LogManager.getLogger(TicketedDrawConfigPersister.class);

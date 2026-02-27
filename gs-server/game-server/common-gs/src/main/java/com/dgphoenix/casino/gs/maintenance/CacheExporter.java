@@ -17,7 +17,7 @@ import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.util.xml.ConcurrentHashMapXStreamConverter;
+import com.abs.casino.common.util.xml.ConcurrentHashMapXStreamConverter;
 import com.dgphoenix.casino.gs.maintenance.converters.BaseGameInfoConverter;
 import com.dgphoenix.casino.gs.maintenance.converters.CurrencyConverter;
 import com.dgphoenix.casino.gs.maintenance.converters.ExportableCacheEntryConverter;

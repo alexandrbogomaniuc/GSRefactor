@@ -3,7 +3,7 @@
  * Date: Jan 29, 2003
  * Time: 4:10:12 PM
  */
-package com.dgphoenix.casino.common.util.xml;
+package com.abs.casino.common.util.xml;
 
 import java.io.Reader;
 import java.io.StringReader;

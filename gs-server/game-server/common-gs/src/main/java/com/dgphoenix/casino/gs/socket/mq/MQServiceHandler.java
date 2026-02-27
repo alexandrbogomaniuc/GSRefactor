@@ -44,7 +44,7 @@ import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.AccountException;
 import com.dgphoenix.casino.common.exception.WalletException;
 import com.dgphoenix.casino.common.kpi.RoundKPIInfo;
-import com.dgphoenix.casino.common.mp.*;
+import com.abs.casino.common.mp.*;
 import com.dgphoenix.casino.common.promo.*;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.transport.TObject;

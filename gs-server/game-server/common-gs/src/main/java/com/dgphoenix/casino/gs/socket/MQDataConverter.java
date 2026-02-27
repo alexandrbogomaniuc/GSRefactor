@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.gs.socket;
 
-import com.dgphoenix.casino.common.mp.*;
+import com.abs.casino.common.mp.*;
 import com.dgphoenix.casino.kafka.dto.MQDataDto;
 import com.dgphoenix.casino.kafka.dto.MQQuestAmountDto;
 import com.dgphoenix.casino.kafka.dto.MQQuestDataDto;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.xml;
+package com.abs.casino.common.util.xml;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.core.util.CustomObjectOutputStream;

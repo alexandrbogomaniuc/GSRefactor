@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.test.api;
 
-import com.dgphoenix.casino.common.util.xml.IXmlRequestResult;
+import com.abs.casino.common.util.xml.IXmlRequestResult;
 import org.apache.commons.lang.StringEscapeUtils;
 
 /**

@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.web.jackpot;
 
-import com.dgphoenix.casino.common.util.xml.XMLUtils;
+import com.abs.casino.common.util.xml.XMLUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 import java.util.HashSet;

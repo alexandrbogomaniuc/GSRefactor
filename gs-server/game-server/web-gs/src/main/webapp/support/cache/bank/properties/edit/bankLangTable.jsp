@@ -11,7 +11,7 @@
 <%@ page import="com.dgphoenix.casino.common.configuration.messages.MessageManager" %>
 <%@ page import="java.util.HashSet" %>
 <%@ page import="org.apache.axis.encoding.Base64" %>
-<%@ page import="com.dgphoenix.casino.common.util.xml.XMLUtils" %>
+<%@ page import="com.abs.casino.common.util.xml.XMLUtils" %>
 <%@ page import="java.util.Set" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>

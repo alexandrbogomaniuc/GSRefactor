@@ -1,7 +1,7 @@
 package com.abs.casino.common.client.canex.response;
 
 import com.abs.casino.common.client.canex.request.CanexRequest;
-import com.dgphoenix.casino.common.util.xml.XmlRequestResult;
+import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 import org.apache.logging.log4j.LogManager;

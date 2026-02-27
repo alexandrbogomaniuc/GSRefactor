@@ -1,0 +1,4 @@
+step01|START
+step01|PASS
+step02|START
+step02|FAIL|exit=1

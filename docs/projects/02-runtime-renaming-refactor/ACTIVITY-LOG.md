@@ -2347,3 +2347,28 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `28`.
   - retained bounded rewires: `27`.
   - global tracked source declarations/files now `1559` remaining (`2277` baseline, `718` reduced, `31.532718%` burndown).
+
+## 2026-02-27 04:40 UTC (Hard-Cut M2 Wave 146A + 146B + 147, Stabilized)
+- Continued batched-safe hard-cut migration from W145 checkpoint with non-overlapping ownership:
+  - `W146A`: migrated 20 declaration packages in `sb-utils/common/mp`.
+  - `W146B`: migrated 18 declaration packages in `sb-utils/common/util/xml` + `common-gs` xml test scope.
+  - `W147`: bounded importer rewires and compatibility stabilization.
+- Parallel execution mode:
+  - explorer produced non-overlapping batch sets.
+  - worker thread-cap limited concurrent workers; retained degraded-safe parallel mode (worker A + main-owned batch B), with strict file ownership maintained.
+- Stabilization:
+  - `rerun1` failed (`common-gs` compile) due stale dependency-order artifact.
+  - `rerun2` failed (`common-gs`) on mixed `MQData` type identity.
+  - added `common-persisters` install before `common-gs` in fast gate for this wave.
+  - full matrix `rerun1` failed at `step02` (`common-wallet`) exposing latent package bridge drift.
+  - applied bounded bridge fix in `CanexCWClient` to explicitly extend migrated `com.abs` v4 REST client class.
+- Validation:
+  - fast gate `5/5 PASS` on rerun3.
+  - full matrix `9/9 PASS` on rerun2.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-043019-hardcut-m2-wave146ab-wave147-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/134-hard-cut-m2-wave146ab-wave147-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `38`.
+  - retained bounded rewires: `36`.
+  - global tracked source declarations/files now `1521` remaining (`2277` baseline, `756` reduced, `33.201581%` burndown).

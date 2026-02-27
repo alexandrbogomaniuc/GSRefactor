@@ -3,7 +3,7 @@
  * Date: Jan 15, 2003
  * Time: 8:10:35 PM
  */
-package com.dgphoenix.casino.common.util.xml;
+package com.abs.casino.common.util.xml;
 
 import java.util.HashMap;
 import java.util.LinkedList;

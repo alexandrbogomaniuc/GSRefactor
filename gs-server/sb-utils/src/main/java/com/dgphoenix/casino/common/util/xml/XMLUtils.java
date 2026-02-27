@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.xml;
+package com.abs.casino.common.util.xml;
 
 import com.dgphoenix.casino.common.util.string.StringBuilderWriter;
 import com.thoughtworks.xstream.XStream;

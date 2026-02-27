@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.xml;
+package com.abs.casino.common.util.xml;
 
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.XmlFriendlyReplacer;

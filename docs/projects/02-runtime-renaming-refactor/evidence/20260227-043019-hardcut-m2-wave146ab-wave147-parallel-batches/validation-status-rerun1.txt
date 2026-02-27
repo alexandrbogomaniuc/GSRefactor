@@ -1,0 +1,9 @@
+step01|PASS|exit=0
+step02|FAIL|exit=1
+step03|FAIL|exit=-1
+step04|FAIL|exit=-1
+step05|FAIL|exit=-1
+step06|FAIL|exit=-1
+step07|FAIL|exit=-1
+step08|FAIL|exit=-1
+step09|FAIL|exit=-1

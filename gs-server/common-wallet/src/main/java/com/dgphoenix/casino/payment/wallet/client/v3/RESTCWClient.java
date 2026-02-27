@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.util.xml.IXmlRequestResult;
+import com.abs.casino.common.util.xml.IXmlRequestResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CCommonWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
