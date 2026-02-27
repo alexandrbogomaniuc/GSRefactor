@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.test.api;
+package com.abs.casino.common.util.test.api;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class TestScenarioFactoryProducerTest {
 
-    private static final String PACKAGE = "com.dgphoenix.casino.common.util.test.api";
+    private static final String PACKAGE = "com.abs.casino.common.util.test.api";
 
     private TestScenarioFactoryProducer factoryProducer;
 

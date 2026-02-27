@@ -1,8 +1,8 @@
 package com.dgphoenix.casino.websocket.tournaments.handlers;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.mp.BattlegroundHistoryPersister;
-import com.dgphoenix.casino.cassandra.persist.mp.BattlegroundRound;
+import com.abs.casino.cassandra.persist.mp.BattlegroundHistoryPersister;
+import com.abs.casino.cassandra.persist.mp.BattlegroundRound;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;

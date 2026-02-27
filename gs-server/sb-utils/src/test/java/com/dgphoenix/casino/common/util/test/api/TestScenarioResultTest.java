@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.test.api;
+package com.abs.casino.common.util.test.api;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.dgphoenix.casino.common.util.test.api.ResultStatus.*;
+import static com.abs.casino.common.util.test.api.ResultStatus.*;
 import static org.junit.Assert.*;
 
 /**

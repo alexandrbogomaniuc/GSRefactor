@@ -119,7 +119,7 @@
             <enabled>true</enabled>
         </ColumnFamily>
         <ColumnFamily>
-            <className>com.dgphoenix.casino.cassandra.persist.mp.TicketedDrawConfigPersister</className>
+            <className>com.abs.casino.cassandra.persist.mp.TicketedDrawConfigPersister</className>
             <!-- 120 days -->
             <ttl>10368000</ttl>
             <enabled>true</enabled>
@@ -137,13 +137,13 @@
             <enabled>true</enabled>
         </ColumnFamily>
         <ColumnFamily>
-            <className>com.dgphoenix.casino.cassandra.persist.mp.RoundKPIInfoPersister</className>
+            <className>com.abs.casino.cassandra.persist.mp.RoundKPIInfoPersister</className>
             <!-- 1 day -->
             <ttl>86400</ttl>
             <enabled>true</enabled>
         </ColumnFamily>
         <ColumnFamily>
-            <className>com.dgphoenix.casino.cassandra.persist.mp.BattlegroundHistoryPersister</className>
+            <className>com.abs.casino.cassandra.persist.mp.BattlegroundHistoryPersister</className>
             <!-- 120 days -->
             <ttl>10368000</ttl>
             <enabled>true</enabled>
@@ -161,7 +161,7 @@
             <enabled>true</enabled>
         </ColumnFamily>
         <ColumnFamily>
-            <className>com.dgphoenix.casino.cassandra.persist.mp.BattlegroundPrivateRoomSettingsPersister</className>
+            <className>com.abs.casino.cassandra.persist.mp.BattlegroundPrivateRoomSettingsPersister</className>
             <!-- 120 days -->
             <ttl>10368000</ttl>
             <enabled>true</enabled>

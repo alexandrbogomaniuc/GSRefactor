@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.promo.tournaments.messages;
 
-import com.dgphoenix.casino.cassandra.persist.mp.BattlegroundRound;
+import com.abs.casino.cassandra.persist.mp.BattlegroundRound;
 import com.dgphoenix.casino.common.transport.TObject;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;

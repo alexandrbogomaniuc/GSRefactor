@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra.persist.mp;
+package com.abs.casino.cassandra.persist.mp;
 
 public class LeaderboardInfo {
     private long leaderboardId;

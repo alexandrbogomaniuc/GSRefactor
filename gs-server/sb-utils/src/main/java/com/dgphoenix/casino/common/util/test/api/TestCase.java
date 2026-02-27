@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.test.api;
+package com.abs.casino.common.util.test.api;
 
 /**
  * Verification typical use of single API endpoint. May contain multiple verification steps.

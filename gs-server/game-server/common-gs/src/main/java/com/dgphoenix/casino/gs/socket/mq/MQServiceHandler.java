@@ -3,7 +3,7 @@ package com.dgphoenix.casino.gs.socket.mq;
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.*;
-import com.dgphoenix.casino.cassandra.persist.mp.*;
+import com.abs.casino.cassandra.persist.mp.*;
 import com.dgphoenix.casino.common.GameSessionExtendedProperties;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;

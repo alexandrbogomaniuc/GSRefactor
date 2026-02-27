@@ -1,0 +1,14 @@
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/ClientFactory.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/RequestLogEntry.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/ResultStatus.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/TestCase.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/TestCaseResult.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/TestParameters.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/TestScenario.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/TestScenarioFactory.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/TestScenarioFactoryImpl.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/TestScenarioFactoryProducer.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/TestScenarioImpl.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/TestScenarioResult.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/TestStep.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/test/api/TestStepResult.java

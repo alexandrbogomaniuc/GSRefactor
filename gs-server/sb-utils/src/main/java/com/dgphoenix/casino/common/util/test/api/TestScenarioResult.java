@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.test.api;
+package com.abs.casino.common.util.test.api;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -9,7 +9,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.dgphoenix.casino.common.util.test.api.ResultStatus.*;
+import static com.abs.casino.common.util.test.api.ResultStatus.*;
 import static com.google.common.collect.FluentIterable.from;
 
 /**

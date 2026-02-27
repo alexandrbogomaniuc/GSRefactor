@@ -7441,3 +7441,15 @@
   - updated tracked declarations/files: `1719` remaining (`2277` baseline, `558` reduced, `24.505929%` burndown).
 - Next:
   - continue next non-overlapping batched cycle under the same evidence-first protocol.
+
+### 2026-02-27 01:26 UTC
+- Continued Project 02 hard-cut runtime renaming with parallel batch waves `132A/132B` and integration wave `133`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-011942-hardcut-m2-wave132ab-wave133-parallel-batches/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/127-hard-cut-m2-wave132ab-wave133-parallel-batches-report-20260227.md`
+- Result:
+  - migrated `31` declaration packages to `com.abs` across `cassandra.persist.mp` and `sb-utils/common.util.test.api` scope (including aligned sb-utils test package declarations from owned rewires).
+  - fast gate passed on rerun1; full validation matrix passed `9/9`.
+  - updated tracked declarations/files: `1688` remaining (`2277` baseline, `589` reduced, `25.867369%` burndown).
+- Next:
+  - continue next non-overlapping batched cycle under the same evidence-first protocol.

@@ -2213,3 +2213,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - scoped declaration migrations: `29`.
   - global tracked source declarations/files now `1719` remaining (`2277` baseline, `558` reduced).
+
+## 2026-02-27 01:26 UTC (Hard-Cut M2 Wave 132A + 132B + 133)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W132A`: migrated 12 `cassandra.persist.mp` declaration packages to `com.abs`.
+  - `W132B`: migrated 14 `sb-utils/common.util.test.api` declaration packages to `com.abs`.
+  - `W133`: integrated both batches with bounded rewires in owned importer/test files.
+- Changed files:
+  - full file list in `docs/projects/02-runtime-renaming-refactor/evidence/20260227-011942-hardcut-m2-wave132ab-wave133-parallel-batches/target-files.txt`.
+- Validation:
+  - fast gate passed on rerun1 (`5/5`).
+  - full 9-step matrix passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-011942-hardcut-m2-wave132ab-wave133-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/127-hard-cut-m2-wave132ab-wave133-parallel-batches-report-20260227.md`
+- Outcome:
+  - scoped declaration migrations: `31` net.
+  - global tracked source declarations/files now `1688` remaining (`2277` baseline, `589` reduced).

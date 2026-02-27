@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.test.api;
+package com.abs.casino.common.util.test.api;
 
 import org.junit.Before;
 import org.junit.Test;

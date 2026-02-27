@@ -1,0 +1,10 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/BattlegroundService.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/GetBattlegroundHistoryResponse.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/handlers/GetBattlegroundHistoryHandler.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/mq/GetLeaderboardResultsAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/mq/GetLeaderboardsAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameAction.java
+gs-server/game-server/web-gs/src/main/resources/ClusterConfig.xml
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra.persist.mp;
+package com.abs.casino.cassandra.persist.mp;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
