@@ -1,0 +1,26 @@
+[2026-02-27T09:51:49Z] START PRE_UTILS: /Users/alexb/Documents/Dev/Dev_new/gs-server/utils mvn -DskipTests install
+[2026-02-27T09:51:54Z] END   PRE_UTILS: exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/pre-setup-utils-install-rerun1.log
+[2026-02-27T09:51:54Z] START PRE_SB_UTILS: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils mvn -DskipTests install
+[2026-02-27T09:52:00Z] END   PRE_SB_UTILS: exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/pre-setup-sb-utils-install-rerun1.log
+[2026-02-27T09:52:00Z] START PRE_COMMON_PROMO: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo mvn -DskipTests install
+[2026-02-27T09:52:02Z] END   PRE_COMMON_PROMO: exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/pre-setup-common-promo-install-rerun1.log
+[2026-02-27T09:52:02Z] START STEP01: /Users/alexb/Documents/Dev/Dev_new/gs-server/common mvn -DskipTests install
+[2026-02-27T09:52:08Z] END   STEP01: exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/01-rerun1.log
+[2026-02-27T09:52:08Z] START STEP02: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet mvn -DskipTests install
+[2026-02-27T09:52:11Z] END   STEP02: exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/02-rerun1.log
+[2026-02-27T09:52:11Z] START STEP03: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils mvn -DskipTests install
+[2026-02-27T09:52:15Z] END   STEP03: exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/03-rerun1.log
+[2026-02-27T09:52:15Z] START STEP04: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo mvn -DskipTests install
+[2026-02-27T09:52:17Z] END   STEP04: exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/04-rerun1.log
+[2026-02-27T09:52:17Z] START STEP05: /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters mvn -DskipTests install
+[2026-02-27T09:52:20Z] END   STEP05: exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/05-rerun1.log
+[2026-02-27T09:52:20Z] START STEP06: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-27T09:52:29Z] END   STEP06: exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/06-rerun1.log
+[2026-02-27T09:52:29Z] START STEP07: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+[2026-02-27T09:52:43Z] END   STEP07: exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/07-rerun1.log
+[2026-02-27T09:52:43Z] START STEP08: /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance mvn -DskipTests install
+[2026-02-27T09:52:46Z] END   STEP08: exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/08-rerun1.log
+[2026-02-27T09:52:46Z] START STEP09: /Users/alexb/Documents/Dev/Dev_new node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+[2026-02-27T09:53:15Z] END   STEP09: exit=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/09-rerun1.log
+[2026-02-27T09:53:15Z] STATUS_FILE=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/validation-status-rerun1.txt
+[2026-02-27T09:53:15Z] RESULT=PASS

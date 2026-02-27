@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.dblink;
+package com.abs.casino.gs.managers.dblink;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraFRBonusWinPersister;

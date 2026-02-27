@@ -11,7 +11,7 @@ import com.abs.casino.gs.api.service.xml.GetActiveToken;
 import com.abs.casino.gs.api.service.xml.GetEnvironment;
 import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableCWClient;
 import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableContainer;
-import com.dgphoenix.casino.gs.singlegames.tools.util.StringUtils;
+import com.abs.casino.gs.singlegames.tools.util.StringUtils;
 import com.thoughtworks.xstream.XStream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

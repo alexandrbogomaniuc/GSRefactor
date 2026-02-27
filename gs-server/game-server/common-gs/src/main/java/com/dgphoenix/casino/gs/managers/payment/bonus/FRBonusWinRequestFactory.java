@@ -12,7 +12,7 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.gs.managers.dblink.FRBonusDBLink;
+import com.abs.casino.gs.managers.dblink.FRBonusDBLink;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

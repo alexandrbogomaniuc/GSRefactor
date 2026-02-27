@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.IPrizeWonHelper;
 import com.dgphoenix.casino.common.promo.IPromoTemplate;
-import com.dgphoenix.casino.gs.managers.dblink.IGameDBLink;
+import com.abs.casino.gs.managers.dblink.IGameDBLink;
 
 /**
  * @author <a href="mailto:fateyev@dgphoenix.com">Anton Fateyev</a>

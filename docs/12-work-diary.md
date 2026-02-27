@@ -7780,3 +7780,21 @@
   - ETA `52.4h` (`6.55` workdays)
 - Next:
   - continue low-fanout declaration-first batches in `common-gs` while deferring high-cascade hubs.
+### 2026-02-27 09:55 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W180A/W180B + W181`.
+- Scope retained:
+  - declaration migrations: `17` (`dblink` + `util` package sets).
+  - bounded rewires: `52` (direct Java importer updates for migrated packages).
+- Validation outcome:
+  - fast gate `9/9 PASS` (`rerun1`)
+  - full matrix `9/9 PASS` (`rerun1`)
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/151-hard-cut-m2-wave180ab-wave181-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1023`, remaining `1254`
+  - burndown `44.927536%`
+  - Project 02 `30.615942%`, Core `65.307971%`, Portfolio `82.653986%`
+  - ETA `51.9h` (`6.49` workdays)
+- Next:
+  - continue low-fanout declaration-first waves and defer known high-cascade hotspots.

@@ -16,7 +16,7 @@ import com.dgphoenix.casino.common.transactiondata.storeddate.identifier.StoredI
 import com.dgphoenix.casino.common.util.IdGenerator;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.gs.managers.dblink.IGameDBLink;
+import com.abs.casino.gs.managers.dblink.IGameDBLink;
 import com.dgphoenix.casino.promo.PromoCampaignManager;
 import com.dgphoenix.casino.promo.TournamentRankCalculatorService;
 import org.apache.logging.log4j.LogManager;

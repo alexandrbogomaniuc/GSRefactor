@@ -22,7 +22,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusClient;
 import com.dgphoenix.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableCWClient;
 import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableContainer;
-import com.dgphoenix.casino.gs.singlegames.tools.util.StringUtils;
+import com.abs.casino.gs.singlegames.tools.util.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

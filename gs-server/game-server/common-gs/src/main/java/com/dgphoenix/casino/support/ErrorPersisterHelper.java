@@ -12,7 +12,7 @@ import com.abs.casino.common.util.support.ExceptionInfo;
 import com.abs.casino.common.util.support.HttpCallInfo;
 import com.abs.casino.common.util.web.HttpRequestContextHolder;
 import com.abs.casino.common.util.web.WebTools;
-import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
+import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.dgphoenix.casino.kafka.dto.RoundInfoResultDto;
 import com.abs.casino.promo.tournaments.messages.Error;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

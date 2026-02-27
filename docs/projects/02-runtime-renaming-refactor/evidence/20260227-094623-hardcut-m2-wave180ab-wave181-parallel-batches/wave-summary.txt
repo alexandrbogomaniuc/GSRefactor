@@ -1,0 +1,14 @@
+wave_group=W180A/W180B+W181
+retained_declarations=17
+retained_rewires=52
+fast_gate=PASS_9/9_rerun1
+full_matrix=PASS_9/9_rerun1
+baseline=2277
+reduced=1023
+remaining=1254
+burndown_percent=44.927536
+project02_weighted_percent=30.615942
+core_weighted_percent=65.307971
+portfolio_weighted_percent=82.653986
+eta_hours=51.9
+eta_workdays=6.49

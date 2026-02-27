@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.singlegames.tools.util;
+package com.abs.casino.gs.singlegames.tools.util;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

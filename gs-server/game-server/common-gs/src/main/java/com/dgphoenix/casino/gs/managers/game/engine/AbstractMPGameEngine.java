@@ -2,7 +2,7 @@ package com.dgphoenix.casino.gs.managers.game.engine;
 
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
+import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.dgphoenix.casino.gs.managers.game.core.AbstractGameProcessor;
 import com.dgphoenix.casino.gs.managers.game.room.IRoom;
 

@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.gs.singlegames.tools.cbservtools;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
+import com.abs.casino.gs.managers.dblink.IDBLink;
 
 
 /**

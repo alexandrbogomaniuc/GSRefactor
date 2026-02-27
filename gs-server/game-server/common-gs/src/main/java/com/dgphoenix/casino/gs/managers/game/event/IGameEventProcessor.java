@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.gs.managers.game.event;
 
-import com.dgphoenix.casino.gs.managers.dblink.IGameDBLink;
+import com.abs.casino.gs.managers.dblink.IGameDBLink;
 
 /**
  * User: Grien

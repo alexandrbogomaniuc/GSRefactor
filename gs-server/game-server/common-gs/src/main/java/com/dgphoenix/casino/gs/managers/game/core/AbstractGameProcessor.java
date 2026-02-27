@@ -13,8 +13,8 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.logkit.GameLog;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.managers.dblink.DBLinkCache;
-import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
+import com.abs.casino.gs.managers.dblink.DBLinkCache;
+import com.abs.casino.gs.managers.dblink.IDBLink;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

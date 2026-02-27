@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.FRBException;
-import com.dgphoenix.casino.gs.managers.dblink.FRBonusDBLink;
+import com.abs.casino.gs.managers.dblink.FRBonusDBLink;
 
 public interface IFRBonusWinManager {
 

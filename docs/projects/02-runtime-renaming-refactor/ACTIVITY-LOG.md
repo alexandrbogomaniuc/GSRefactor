@@ -2720,3 +2720,26 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `13`.
   - retained bounded rewires: `10`.
   - global tracked source declarations/files now `1271` remaining (`2277` baseline, `1006` reduced, `44.180940%` burndown).
+
+## 2026-02-27 09:55 UTC (Hard-Cut M2 Wave 180A + 180B + 181)
+- Continued batched-safe hard-cut migration from W179 checkpoint with low-fanout common-gs split:
+  - `W180A`: 10 declaration migrations in `gs.managers.dblink`.
+  - `W180B`: 7 declaration migrations in `gs.singlegames.tools.util`.
+  - `W181`: integration and validation.
+- Parallel execution mode:
+  - explorer produced A/B split and defer list.
+  - thread-cap fallback enforced `1 worker + main` while keeping non-overlapping ownership.
+- Stabilization:
+  - no rollback required.
+  - importer fanout exceeded initial estimate; bounded rewire scope expanded to all direct Java importers of migrated packages.
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun1 passed `9/9`.
+  - full matrix rerun1 passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-094623-hardcut-m2-wave180ab-wave181-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/151-hard-cut-m2-wave180ab-wave181-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `17`.
+  - retained bounded rewires: `52`.
+  - global tracked source declarations/files now `1254` remaining (`2277` baseline, `1023` reduced, `44.927536%` burndown).

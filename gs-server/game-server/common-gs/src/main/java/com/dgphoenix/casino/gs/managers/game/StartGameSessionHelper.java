@@ -46,7 +46,7 @@ import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTrackerTask
 import com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 import com.dgphoenix.casino.gs.persistance.LasthandPersister;
-import com.dgphoenix.casino.gs.singlegames.tools.util.LasthandHelper;
+import com.abs.casino.gs.singlegames.tools.util.LasthandHelper;
 import com.dgphoenix.casino.sm.IPlayerSessionManager;
 import com.dgphoenix.casino.sm.PlayerSessionFactory;
 import org.apache.logging.log4j.LogManager;

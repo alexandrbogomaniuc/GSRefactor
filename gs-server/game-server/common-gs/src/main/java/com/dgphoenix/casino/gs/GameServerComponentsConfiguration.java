@@ -25,7 +25,7 @@ import com.dgphoenix.casino.common.util.CommonExecutorService;
 import com.dgphoenix.casino.common.util.IntegerIdGenerator;
 import com.abs.casino.common.util.system.SystemPropertyReader;
 import com.dgphoenix.casino.gs.lock.RemoteUnlocker;
-import com.dgphoenix.casino.gs.managers.dblink.FreeGameCalculator;
+import com.abs.casino.gs.managers.dblink.FreeGameCalculator;
 import com.dgphoenix.casino.gs.managers.game.history.HistoryInformerManager;
 import com.dgphoenix.casino.gs.managers.game.settings.DynamicCoinManager;
 import com.dgphoenix.casino.gs.managers.game.settings.GameSettingsManager;

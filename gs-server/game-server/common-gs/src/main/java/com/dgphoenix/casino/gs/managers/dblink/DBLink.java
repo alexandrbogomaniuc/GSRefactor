@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.dblink;
+package com.abs.casino.gs.managers.dblink;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraPlayerGameSettingsPersister;
@@ -50,7 +50,7 @@ import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.ArchiveBetTools;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.CBGameException;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
-import com.dgphoenix.casino.gs.singlegames.tools.util.LasthandHelper;
+import com.abs.casino.gs.singlegames.tools.util.LasthandHelper;
 import com.dgphoenix.casino.unj.api.AbstractSharedGameState;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.collections.CollectionUtils;

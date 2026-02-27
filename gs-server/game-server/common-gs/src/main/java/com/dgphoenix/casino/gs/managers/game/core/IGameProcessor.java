@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
+import com.abs.casino.gs.managers.dblink.IDBLink;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

@@ -23,7 +23,7 @@ import com.dgphoenix.casino.common.util.AccountIdGenerator;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.managers.dblink.FreeGameCalculator;
+import com.abs.casino.gs.managers.dblink.FreeGameCalculator;
 import com.dgphoenix.casino.gs.managers.payment.bonus.*;
 import com.dgphoenix.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManager;

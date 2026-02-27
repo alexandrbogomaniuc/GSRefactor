@@ -3,7 +3,7 @@ package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processor
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
-import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
+import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 import com.google.common.collect.ImmutableSet;
 

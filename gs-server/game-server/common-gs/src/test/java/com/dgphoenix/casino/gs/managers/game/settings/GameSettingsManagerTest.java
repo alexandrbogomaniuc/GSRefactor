@@ -11,7 +11,7 @@ import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.managers.dblink.DBLink;
+import com.abs.casino.gs.managers.dblink.DBLink;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.*;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.gs.managers.dblink.IGameDBLink;
+import com.abs.casino.gs.managers.dblink.IGameDBLink;
 import com.dgphoenix.casino.gs.managers.game.event.IGameEvent;
 import com.dgphoenix.casino.gs.managers.game.event.IGameEventProcessor;
 import com.dgphoenix.casino.promo.TournamentRanksExtractor;

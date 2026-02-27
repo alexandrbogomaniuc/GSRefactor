@@ -23,7 +23,7 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.logkit.LogUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.gs.managers.dblink.FRBonusDBLink;
+import com.abs.casino.gs.managers.dblink.FRBonusDBLink;
 import com.abs.casino.gs.managers.payment.bonus.client.frb.FRBonusWinResult;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableCWClient;

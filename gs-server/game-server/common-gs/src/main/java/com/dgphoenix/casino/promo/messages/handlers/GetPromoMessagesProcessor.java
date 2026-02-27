@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
 import com.dgphoenix.casino.common.promo.messages.server.responses.GetPromoMessagesResponse;
 import com.dgphoenix.casino.common.promo.messages.server.responses.GetPromoNotificationsResponse;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
-import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
+import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.command.ILockedCommandProcessor;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;

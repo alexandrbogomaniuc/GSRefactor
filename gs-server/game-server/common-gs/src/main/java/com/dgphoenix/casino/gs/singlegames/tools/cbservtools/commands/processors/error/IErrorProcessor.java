@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.error;
 
-import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
+import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.GameError;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.responses.ErrorResponse;
 

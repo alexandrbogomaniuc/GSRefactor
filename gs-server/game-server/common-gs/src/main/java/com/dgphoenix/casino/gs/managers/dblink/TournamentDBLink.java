@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.dblink;
+package com.abs.casino.gs.managers.dblink;
 
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;

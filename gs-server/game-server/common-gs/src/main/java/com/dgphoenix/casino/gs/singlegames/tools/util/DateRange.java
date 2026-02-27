@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.singlegames.tools.util;
+package com.abs.casino.gs.singlegames.tools.util;
 
 import java.io.Serializable;
 import java.util.Date;
