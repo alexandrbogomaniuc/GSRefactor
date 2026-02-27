@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.util;
 
 import com.dgphoenix.casino.kafka.dto.BGOStatus;
-import com.dgphoenix.casino.kafka.dto.privateroom.request.StatusOnlinePlayer;
+import com.abs.casino.kafka.dto.privateroom.request.StatusOnlinePlayer;
 
 public class BGOStatusUtil {
     public static StatusOnlinePlayer fromBGOStatus(BGOStatus tbgoStatus) {

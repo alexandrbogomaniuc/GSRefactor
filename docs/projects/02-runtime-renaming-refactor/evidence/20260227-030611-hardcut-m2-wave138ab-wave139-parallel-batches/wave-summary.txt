@@ -1,0 +1,7 @@
+wave_group=W138A+W138B+W139 (stabilized)
+status=PASS
+scoped_declaration_migrations=15
+scoped_rewires=3
+notes=W138B deferred for compatibility safety (sb-utils xstreampool/vault slice); retained W138A privateroom request/response DTO scope
+fast_gate=PASS (rerun2)
+full_matrix=PASS 9/9 (rerun2)

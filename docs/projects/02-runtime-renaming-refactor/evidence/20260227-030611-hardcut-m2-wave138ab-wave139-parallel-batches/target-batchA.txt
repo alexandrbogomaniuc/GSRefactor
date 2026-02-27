@@ -1,0 +1,15 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/DeactivateRoomDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/GetParticipantAccountIdsInRoundDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/ParticipantGameSessionDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/PrivateRoomIdDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/PrivateRoomURLDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/StatusOnlinePlayer.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/UpdateFriendsDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/UpdateOnlinePlayersDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/UpdateRoomDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/CollectionResponseDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/PrivateRoomInfoResultDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/RoomInfoResultDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/UpdateFriendsResultDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/UpdateOnlinePlayersResultDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/UpdateRoomResultDto.java

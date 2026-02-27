@@ -1,0 +1,49 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:gsn-common-gs >-----------------
+[INFO] Building gsn-common-gs 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:2.8:copy (default) @ gsn-common-gs ---
+[INFO] Configured Artifact: javax.xml.bind:jaxb-api:2.2.7:jar
+[INFO] Configured Artifact: javax.xml.ws:jaxws-api:2.2.9:jar
+[INFO] javax.xml.bind:jaxb-api:2.2.7:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] javax.xml.ws:jaxws-api:2.2.9:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ gsn-common-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-gs ---
+[INFO] Compiling 106 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (compile-generated-sources) @ gsn-common-gs ---
+[INFO] Compiling 103 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ gsn-common-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 22 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common-gs ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-common-gs ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-common-gs ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/gsn-common-gs-1.0.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-common-gs ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-gs/1.0/gsn-common-gs-1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/gsn-common-gs-1.0.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-gs/1.0/gsn-common-gs-1.0.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.728 s
+[INFO] Finished at: 2026-02-27T03:12:59Z
+[INFO] ------------------------------------------------------------------------

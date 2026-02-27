@@ -1,0 +1,82 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 24 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ utils-restricted ---
+[INFO] Compiling 5 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ utils-restricted ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.abs.casino.common.util.test.api.TestCaseResultTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in com.abs.casino.common.util.test.api.TestCaseResultTest
+Running com.abs.casino.common.util.test.api.TestScenarioFactoryProducerTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 sec - in com.abs.casino.common.util.test.api.TestScenarioFactoryProducerTest
+Running com.abs.casino.common.util.test.api.TestScenarioResultTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.099 sec - in com.abs.casino.common.util.test.api.TestScenarioResultTest
+Running com.abs.casino.common.util.test.api.TestScenarioImplTest
+log4j:WARN No appenders could be found for logger (com.abs.casino.common.util.test.api.TestScenarioImpl).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 sec - in com.abs.casino.common.util.test.api.TestScenarioImplTest
+Running com.dgphoenix.casino.common.util.test.api.TestCaseResultTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.dgphoenix.casino.common.util.test.api.TestCaseResultTest
+Running com.dgphoenix.casino.common.util.test.api.TestScenarioFactoryProducerTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 sec - in com.dgphoenix.casino.common.util.test.api.TestScenarioFactoryProducerTest
+Running com.dgphoenix.casino.common.util.test.api.TestScenarioResultTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 sec - in com.dgphoenix.casino.common.util.test.api.TestScenarioResultTest
+Running com.dgphoenix.casino.common.util.test.api.TestScenarioImplTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in com.dgphoenix.casino.common.util.test.api.TestScenarioImplTest
+Running com.dgphoenix.casino.common.util.ReflectionUtilsCompatibilityTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.dgphoenix.casino.common.util.ReflectionUtilsCompatibilityTest
+Running com.dgphoenix.casino.common.util.StringPropertyHelperTest
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 sec - in com.dgphoenix.casino.common.util.StringPropertyHelperTest
+Running com.dgphoenix.casino.common.util.web.WebToolsTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 sec - in com.dgphoenix.casino.common.util.web.WebToolsTest
+Running com.dgphoenix.casino.common.util.DateUtilsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0 sec - in com.dgphoenix.casino.common.util.DateUtilsTest
+Running com.dgphoenix.casino.common.util.DigitFormatterTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in com.dgphoenix.casino.common.util.DigitFormatterTest
+Running com.dgphoenix.casino.common.util.KryoSerializationTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.199 sec - in com.dgphoenix.casino.common.util.KryoSerializationTest
+Running com.dgphoenix.casino.common.util.CollectionUtilsTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.dgphoenix.casino.common.util.CollectionUtilsTest
+Running com.dgphoenix.casino.common.util.CalendarUtilsTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in com.dgphoenix.casino.common.util.CalendarUtilsTest
+Running com.dgphoenix.casino.common.util.string.MatrixUtilsTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in com.dgphoenix.casino.common.util.string.MatrixUtilsTest
+Running com.dgphoenix.casino.common.util.string.CollectionParserTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in com.dgphoenix.casino.common.util.string.CollectionParserTest
+Running com.dgphoenix.casino.common.geoip.GeoIpTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 sec - in com.dgphoenix.casino.common.geoip.GeoIpTest
+Running com.dgphoenix.casino.common.GameSessionExtendedPropertiesTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in com.dgphoenix.casino.common.GameSessionExtendedPropertiesTest
+
+Results :
+
+Tests run: 70, Failures: 0, Errors: 0, Skipped: 1
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.532 s
+[INFO] Finished at: 2026-02-27T03:14:12Z
+[INFO] ------------------------------------------------------------------------

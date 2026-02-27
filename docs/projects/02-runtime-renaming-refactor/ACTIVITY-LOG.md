@@ -2270,3 +2270,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - net retained declaration migrations: `25`
   - global tracked source declarations/files now `1642` remaining (`2277` baseline, `635` reduced, `27.888450%` burndown)
+
+## 2026-02-27 03:06 UTC (Hard-Cut M2 Wave 138A + 138B + 139, Stabilized)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W138A`: 15 declaration migrations in `common-gs/kafka/dto/privateroom/{request,response}`.
+  - `W138B`: planned 12 declaration migrations in `sb-utils/common/vault` + `sb-utils/common.util.xml.xstreampool`.
+  - `W139`: bounded integration rewires.
+- Stabilization:
+  - `rerun1` failed in `common-gs` due unresolved `com.abs...xstreampool` under current dependency order.
+  - deferred `W138B` for compatibility safety.
+  - retained `W138A` + 3 bounded rewires (`KafkaRequestMultiPlayer`, `BattlegroundService`, `BGOStatusUtil`).
+- Validation:
+  - `rerun2` fast gate PASS `5/5`.
+  - `rerun2` full matrix PASS `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-030611-hardcut-m2-wave138ab-wave139-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/130-hard-cut-m2-wave138ab-wave139-stabilized-report-20260227.md`
+- Outcome:
+  - net retained declaration migrations: `15`
+  - global tracked source declarations/files now `1627` remaining (`2277` baseline, `650` reduced, `28.546333%` burndown)
