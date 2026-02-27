@@ -1,0 +1,4 @@
+[2026-02-27 10:55:17] STEP1 START name=common
+workdir=/Users/alexb/Documents/Dev/Dev_new/common
+cmd=mvn -DskipTests install
+run_step:cd:7: no such file or directory: /Users/alexb/Documents/Dev/Dev_new/common

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.tournaments;
+package com.abs.casino.promo.tournaments;
 
 public interface ErrorCodes {
     int INTERNAL_ERROR = 1;

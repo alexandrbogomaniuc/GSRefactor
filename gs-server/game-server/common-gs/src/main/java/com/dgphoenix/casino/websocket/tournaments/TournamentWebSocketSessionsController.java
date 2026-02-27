@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
-import com.dgphoenix.casino.promo.tournaments.ErrorCodes;
+import com.abs.casino.promo.tournaments.ErrorCodes;
 import com.dgphoenix.casino.promo.tournaments.handlers.TournamentMessageHandlersFactory;
 import com.abs.casino.promo.tournaments.messages.BalanceUpdated;
 import com.abs.casino.promo.tournaments.messages.Error;

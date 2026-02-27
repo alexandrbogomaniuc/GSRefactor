@@ -10,7 +10,7 @@ import com.abs.casino.common.promo.feed.tournament.TournamentFeed;
 import com.dgphoenix.casino.common.upload.JSchUploadClient;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.promo.feed.AbstractFeedWriter;
-import com.dgphoenix.casino.promo.tournaments.TournamentManager;
+import com.abs.casino.promo.tournaments.TournamentManager;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.logging.log4j.LogManager;

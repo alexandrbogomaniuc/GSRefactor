@@ -7816,3 +7816,21 @@
   - ETA `51.5h` (`6.44` workdays)
 - Next:
   - continue low-fanout declaration-first migration while launch alias smoke remains environment-blocked.
+### 2026-02-27 11:07 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W184A/W184B + W185`.
+- Scope retained:
+  - declaration migrations: `11` (`cache` + `promo.tournaments`).
+  - bounded rewires: `21` (direct importer/static-import updates in `common-gs`, `web-gs`, and `support/archiver`).
+- Validation outcome:
+  - fast gate rerun4: steps `1-8 PASS`, step `9 FAIL` (launch alias `/startgame` returns `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`).
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-104909-hardcut-m2-wave184ab-wave185-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/153-hard-cut-m2-wave184ab-wave185-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1044`, remaining `1233`
+  - burndown `45.849802%`
+  - Project 02 `30.731225%`, Core `65.365613%`, Portfolio `82.682806%`
+  - ETA `51.0h` (`6.38` workdays)
+- Next:
+  - continue declaration-first migration while launch alias smoke remains environment-blocked.

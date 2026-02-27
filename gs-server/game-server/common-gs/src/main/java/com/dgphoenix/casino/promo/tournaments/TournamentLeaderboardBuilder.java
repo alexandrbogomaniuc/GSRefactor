@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.tournaments;
+package com.abs.casino.promo.tournaments;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.common.SessionHelper;

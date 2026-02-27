@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.tournaments;
+package com.abs.casino.promo.tournaments;
 
 /** String constants for parameters to replace in tournament welcome message and rules */
 public enum Placeholder {

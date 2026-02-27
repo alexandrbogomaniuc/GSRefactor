@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.gs.persistance.remotecall;
 
-import com.dgphoenix.casino.cache.CachesHolder;
+import com.abs.casino.cache.CachesHolder;
 import com.dgphoenix.casino.cassandra.persist.AbstractDistributedConfigEntryPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.common.exception.CommonException;

@@ -1,6 +1,6 @@
 package com.abs.casino.actions.api;
 
-import com.dgphoenix.casino.cache.PingSessionCache;
+import com.abs.casino.cache.PingSessionCache;
 import com.abs.casino.common.util.web.WebTools;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;

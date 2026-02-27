@@ -1,6 +1,6 @@
 package com.abs.casino.init;
 
-import com.dgphoenix.casino.cache.PingSessionCache;
+import com.abs.casino.cache.PingSessionCache;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.DistributedLockManager;
 import com.dgphoenix.casino.cassandra.IRemoteUnlocker;

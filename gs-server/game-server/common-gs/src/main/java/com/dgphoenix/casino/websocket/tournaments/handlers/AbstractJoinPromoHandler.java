@@ -13,7 +13,7 @@ import com.dgphoenix.casino.websocket.tournaments.ISocketClient;
 
 import java.util.function.Consumer;
 
-import static com.dgphoenix.casino.promo.tournaments.ErrorCodes.INVALID_SESSION;
+import static com.abs.casino.promo.tournaments.ErrorCodes.INVALID_SESSION;
 
 public abstract class AbstractJoinPromoHandler<MESSAGE extends TObject> implements IMessageHandler<MESSAGE> {
     protected final ErrorPersisterHelper errorPersisterHelper;

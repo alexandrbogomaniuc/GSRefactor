@@ -1,6 +1,6 @@
 package com.abs.casino.init;
 
-import com.dgphoenix.casino.cache.CachesHolder;
+import com.abs.casino.cache.CachesHolder;
 import com.dgphoenix.casino.cassandra.*;
 import com.dgphoenix.casino.common.configuration.ConfigHelper;
 import com.dgphoenix.casino.common.util.JsonHelper;

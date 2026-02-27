@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
-import static com.dgphoenix.casino.promo.tournaments.ErrorCodes.*;
+import static com.abs.casino.promo.tournaments.ErrorCodes.*;
 
 public class GetBattlegroundHistoryHandler implements IMessageHandler<GetBattlegroundHistory> {
 

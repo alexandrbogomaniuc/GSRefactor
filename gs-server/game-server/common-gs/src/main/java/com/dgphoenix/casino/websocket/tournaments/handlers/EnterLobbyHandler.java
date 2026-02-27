@@ -28,7 +28,7 @@ import com.abs.casino.promo.persisters.CassandraBattlegroundConfigPersister;
 import com.abs.casino.promo.persisters.CassandraLocalizationsPersister;
 import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import com.abs.casino.promo.persisters.CassandraTournamentIconPersister;
-import com.dgphoenix.casino.promo.tournaments.ErrorCodes;
+import com.abs.casino.promo.tournaments.ErrorCodes;
 import com.abs.casino.promo.tournaments.messages.*;
 import com.abs.casino.promo.tournaments.messages.*;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;

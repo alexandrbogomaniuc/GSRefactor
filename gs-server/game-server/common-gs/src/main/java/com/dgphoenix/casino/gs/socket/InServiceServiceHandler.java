@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dgphoenix.casino.cache.CachesHolder;
+import com.abs.casino.cache.CachesHolder;
 import com.dgphoenix.casino.cassandra.AccountDistributedLockManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.DistributedLockManager;

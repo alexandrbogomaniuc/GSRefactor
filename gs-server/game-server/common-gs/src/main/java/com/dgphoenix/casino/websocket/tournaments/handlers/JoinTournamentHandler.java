@@ -37,7 +37,7 @@ import java.net.URLEncoder;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static com.dgphoenix.casino.promo.tournaments.ErrorCodes.*;
+import static com.abs.casino.promo.tournaments.ErrorCodes.*;
 
 public class JoinTournamentHandler extends AbstractJoinPromoHandler<JoinTournament> {
 

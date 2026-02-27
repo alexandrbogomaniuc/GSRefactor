@@ -2766,3 +2766,26 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `10`.
   - retained bounded rewires: `5`.
   - global tracked source declarations/files now `1244` remaining (`2277` baseline, `1033` reduced, `45.366711%` burndown).
+
+## 2026-02-27 11:07 UTC (Hard-Cut M2 Wave 184A + 184B + 185)
+- Continued batched-safe hard-cut migration from W183 checkpoint with non-overlapping cache/tournament split:
+  - `W184A`: 6 declaration migrations in `cache`.
+  - `W184B`: 5 declaration migrations in `promo.tournaments`.
+  - `W185`: integration and validation.
+- Parallel execution mode:
+  - explorer selected low-fanout non-overlapping split.
+  - thread-cap fallback enforced `1 worker + main` while keeping strict file ownership.
+- Stabilization:
+  - no rollback required.
+  - bounded rewire set expanded after compile surfaced additional tournament static-import dependencies.
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun4: steps `1-8 PASS`, step `9 FAIL` (`startgame` alias `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-104909-hardcut-m2-wave184ab-wave185-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/153-hard-cut-m2-wave184ab-wave185-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `11`.
+  - retained bounded rewires: `21`.
+  - global tracked source declarations/files now `1233` remaining (`2277` baseline, `1044` reduced, `45.849802%` burndown).

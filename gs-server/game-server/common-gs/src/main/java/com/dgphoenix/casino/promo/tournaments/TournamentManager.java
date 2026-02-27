@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.tournaments;
+package com.abs.casino.promo.tournaments;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import static com.dgphoenix.casino.promo.feed.tournament.TournamentFeedWriter.TOURNAMENT_FEED_FILE_NAME;
+import static com.abs.casino.promo.feed.tournament.TournamentFeedWriter.TOURNAMENT_FEED_FILE_NAME;
 import static com.jcraft.jsch.ChannelSftp.SSH_FX_NO_SUCH_FILE;
 
 public class TournamentManager implements IPromoCampaignsObserver {

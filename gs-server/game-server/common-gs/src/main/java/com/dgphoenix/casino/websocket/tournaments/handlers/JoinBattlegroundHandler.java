@@ -13,7 +13,7 @@ import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.gs.socket.mq.TournamentBuyInHelper;
 import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
-import com.dgphoenix.casino.promo.tournaments.ErrorCodes;
+import com.abs.casino.promo.tournaments.ErrorCodes;
 import com.abs.casino.promo.tournaments.messages.Error;
 import com.abs.casino.promo.tournaments.messages.JoinBattleground;
 import com.abs.casino.promo.tournaments.messages.JoinBattlegroundResponse;
@@ -26,7 +26,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.function.Consumer;
 
-import static com.dgphoenix.casino.promo.tournaments.ErrorCodes.NOT_LOGGED_IN;
+import static com.abs.casino.promo.tournaments.ErrorCodes.NOT_LOGGED_IN;
 
 public class JoinBattlegroundHandler extends AbstractJoinPromoHandler<JoinBattleground> {
 

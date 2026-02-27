@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.function.Consumer;
 
-import static com.dgphoenix.casino.promo.tournaments.ErrorCodes.*;
+import static com.abs.casino.promo.tournaments.ErrorCodes.*;
 
 public class GetTournamentDetailsHandler extends AbstractLobbyHandler<GetTournamentDetails> {
 

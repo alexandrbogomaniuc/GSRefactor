@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cache;
+package com.abs.casino.cache;
 
 
 import com.dgphoenix.casino.common.util.xml.xmlwriter.Attribute;

@@ -1,0 +1,29 @@
+[2026-02-27 10:58:31] START fast-gate-rerun3
+STEP01 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common
+[2026-02-27 10:58:31] START STEP01 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common cmd=mvn -DskipTests install
+[2026-02-27 10:58:35] END STEP01 RESULT=PASS rc=0
+STEP02 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet
+[2026-02-27 10:58:35] START STEP02 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet cmd=mvn -DskipTests install
+[2026-02-27 10:58:38] END STEP02 RESULT=PASS rc=0
+STEP03 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils
+[2026-02-27 10:58:38] START STEP03 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils cmd=mvn -DskipTests install
+[2026-02-27 10:58:41] END STEP03 RESULT=PASS rc=0
+STEP04 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo
+[2026-02-27 10:58:41] START STEP04 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo cmd=mvn -DskipTests install
+[2026-02-27 10:58:43] END STEP04 RESULT=PASS rc=0
+STEP05 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters
+[2026-02-27 10:58:43] START STEP05 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters cmd=mvn -DskipTests install
+[2026-02-27 10:58:46] END STEP05 RESULT=PASS rc=0
+STEP06 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs
+[2026-02-27 10:58:46] START STEP06 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-27 10:58:49] END STEP06 RESULT=FAIL rc=1
+STEP07 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs
+[2026-02-27 10:58:49] START STEP07 workdir=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+[2026-02-27 10:58:53] END STEP07 RESULT=FAIL rc=1
+STEP08 workdir=/Users/alexb/Documents/Dev/Dev_new/mp-server/persistance
+[2026-02-27 10:58:53] START STEP08 workdir=/Users/alexb/Documents/Dev/Dev_new/mp-server/persistance cmd=mvn -DskipTests install
+[2026-02-27 10:58:55] END STEP08 RESULT=PASS rc=0
+STEP09 workdir=/Users/alexb/Documents/Dev/Dev_new
+[2026-02-27 10:58:55] START STEP09 workdir=/Users/alexb/Documents/Dev/Dev_new cmd=node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+[2026-02-27 11:00:17] END STEP09 RESULT=FAIL rc=2
+[2026-02-27 11:00:17] END fast-gate-rerun3

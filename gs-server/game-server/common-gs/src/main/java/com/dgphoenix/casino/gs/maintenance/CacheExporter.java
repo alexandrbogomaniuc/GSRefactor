@@ -5,7 +5,7 @@
 package com.abs.casino.gs.maintenance;
 
 import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.cache.CachesHolder;
+import com.abs.casino.cache.CachesHolder;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraBankInfoPersister;
 import com.dgphoenix.casino.cassandra.persist.CassandraBaseGameInfoPersister;

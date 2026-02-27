@@ -5,9 +5,9 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.IPromoCampaign;
 import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.promo.tournaments.ErrorCodes;
-import com.dgphoenix.casino.promo.tournaments.TournamentLeaderboard;
-import com.dgphoenix.casino.promo.tournaments.TournamentManager;
+import com.abs.casino.promo.tournaments.ErrorCodes;
+import com.abs.casino.promo.tournaments.TournamentLeaderboard;
+import com.abs.casino.promo.tournaments.TournamentManager;
 import com.abs.casino.promo.tournaments.messages.Error;
 import com.abs.casino.promo.tournaments.messages.GetLeaderboard;
 import com.abs.casino.promo.tournaments.messages.Leaderboard;
@@ -18,8 +18,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.function.Consumer;
 
-import static com.dgphoenix.casino.promo.tournaments.ErrorCodes.INTERNAL_ERROR;
-import static com.dgphoenix.casino.promo.tournaments.ErrorCodes.NOT_LOGGED_IN;
+import static com.abs.casino.promo.tournaments.ErrorCodes.INTERNAL_ERROR;
+import static com.abs.casino.promo.tournaments.ErrorCodes.NOT_LOGGED_IN;
 
 public class GetLeaderboardHandler extends AbstractLobbyHandler<GetLeaderboard> {
 

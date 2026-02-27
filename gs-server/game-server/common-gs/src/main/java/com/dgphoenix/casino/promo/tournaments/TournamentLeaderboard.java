@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.tournaments;
+package com.abs.casino.promo.tournaments;
 
 import com.abs.casino.promo.tournaments.messages.PlaceInfo;
 

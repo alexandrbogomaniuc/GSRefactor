@@ -1,6 +1,6 @@
 package com.abs.casino.web.system.cacheviewer;
 
-import com.dgphoenix.casino.cache.CachesHolder;
+import com.abs.casino.cache.CachesHolder;
 import com.dgphoenix.casino.common.cache.*;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.server.ServerInfo;

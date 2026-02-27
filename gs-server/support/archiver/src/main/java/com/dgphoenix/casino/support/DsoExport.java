@@ -1,7 +1,7 @@
 package com.abs.casino.support;
 
 import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.cache.CachesHolder;
+import com.abs.casino.cache.CachesHolder;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.CurrencyCache;
