@@ -1,0 +1,13 @@
+{
+    "gameId": "0000",
+    "gameName": "TemplateSlot",
+    "version": "1.0.0",
+    "reels": {
+        "rows": 3,
+        "cols": 5
+    },
+    "features": {
+        "freeSpins": true,
+        "buyFeature": false
+    }
+}

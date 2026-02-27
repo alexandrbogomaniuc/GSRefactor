@@ -1,4 +1,4 @@
-import { createTransport } from '../../src/net';
+import { createTransport } from '../../packages/gs-protocol/src';
 
 // === Basic Jest-styled Mock Setup for Node environments ===
 let wsInstances: any[] = [];

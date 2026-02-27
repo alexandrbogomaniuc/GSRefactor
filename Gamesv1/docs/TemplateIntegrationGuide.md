@@ -1,55 +1,70 @@
-# 🎰 GS Platform: 3rd Party Game Integration Guide
+# Template Integration Guide (Igaming Monorepo)
 
-Welcome to the Game Server (GS) V1 Template! This guide explains how to use the underlying boilerplates to spin up a new HTML5 Slot Game, adjust its math model, and hook up new art assets.
+This guide explains how to use the canonical template and the scaffolding tool to create new slot games.
 
-## 1. Scaffolding a New Game
-To create a new game, run the provided scaffolding script from the `Gamesv1` root directory:
+## 🛠 Using the Scaffolder
 
-```powershell
-.\CLI-create-game.ps1 -GameName "MyNewSlot" -GameId "my_new_slot_v1"
-```
+The `create-game` tool automates the process of setting up a new game project in the `/games` directory.
 
-This will duplicate the `slot-template` into a new folder named `MyNewSlot`, update the configuration files, and install the base `npm` dependencies.
+### Command
+Run the following command from the root of the repository:
 
-## 2. Configuring the Math Model & DB Parameters
-1. Navigate to your new game directory: `cd MyNewSlot`
-2. Open `public/master-game-config.json` (or wherever your config lives). Update the `RTP`, `minBet`, `maxBet`, and exposure limits to match your Math Specification.
-3. Open `config-ui.html` in your browser. This internal tool will read your updated configuration and output the raw SQL `INSERT` statements needed by the Backend team to register this game inside the GS Database.
-
-## 3. Wiring up Art and Assets
-By default, the template ships with a generic PIXI.js engine rendering colored squares.
-
-### A. The Loading Screen (Preloader)
-Open `index.html` and `src/style.css`.
-- Replace the `.bgaming-logo` text with your game's logo SVG.
-- The dual-colored wipe mask (`clip-path`) is already built-in. Just drop your logo vectors into the `.logo-outline` and `.logo-fill` sub-containers.
-
-### B. The Reels and Symbols
-Open `src/ui/Reel.ts`.
-- The `createSymbol()` method currently generates PIXI.Graphics squares.
-- **Action Required:** Replace these graphics with `PIXI.Sprite.from('assets/your_symbol.png')`.
-- Hook up your sprite atlas in `main.ts` using `PIXI.Assets.load()`.
-
-## 4. Understanding the GS WebSocket Protocol
-You **should not** need to edit `src/network/GSWebSocketClient.ts`.
-The template strictly enforces the `abs.gs.v1` interface.
-
-- **Idempotency:** The `SlotEngine.ts` generates a UUID for `operationId` during `BET_REQUEST`. It passes that exact same UUID during `SETTLE_REQUEST`.
-- **Drops & Reconnects:** If a socket drops during a spin (the `RESERVED` state), the client auto-sends `RECONNECT_REQUEST`. It will listen for `SESSION_SYNC` to either replay the missing result or drop back to `READY` if the server settled it cleanly.
-
-## 5. Development & Testing
-Run the local Vite dev server:
 ```bash
-npm run dev
+pnpm create-game --name "My Awesome Slot" --id 5002 --slug awesome-slot
 ```
 
-Navigate to `http://localhost:5174/?playerId=testuser`
-
-### Using the Mock Server
-You must run the local mock GS server to receive valid math evaluation grids.
-See `docs/mock-server-readme.md` (if available) or ensure your backend dev environment is running locally on port 6001.
+### Options
+- `--name`: The display name of the game.
+- `--id`: The unique Game ID for the back-end.
+- `--slug`: The directory name and package slug.
 
 ---
-**Compliance Reminders:**
-- **Do not** tamper with the `cert-hud` in `index.html`. It must always be visible.
-- Autoplay loops **must** pause and clear their interval if the WebSocket emits a `SESSION_PAUSE` (Reality Check) or if the player's balance drops below the minimum bet.
+
+## 🏗 Game Architecture
+
+Each game created via the scaffolder follows a clean separation of concerns.
+
+### `game.settings.json`
+The central configuration file for the game. Defines:
+- Game ID & Name
+- Reel layout (Rows/Cols)
+- Enabled feature modules (Free Spins, Buy Feature, etc.)
+
+### `/src/game/features/`
+This is where game-specific feature modules reside. Modules are designed to be "pluggable" and can be enabled or disabled via configuration.
+
+### Shared Logic (@gs/slot-shell)
+Games do not copy core logic. Instead, they depend on `@gs/slot-shell`. This package provides:
+- **Reels Framework**: `SlotMachine`, `Reel`, and `Symbol` components.
+- **UI Shell**: Settings menus, volume controls, and buttons.
+- **Engine**: The core PixiJS v8 bootstrap and screen management.
+
+---
+
+## 🎨 Asset Management
+
+### Placeholder Atlas
+The template uses a generic asset atlas for symbols. To brand your game:
+1. Replace the assets in `games/[slug]/assets/`.
+2. Update the `manifest.json` to point to your new graphics.
+
+---
+
+## 🧪 Development Workflow
+
+```bash
+# 1. Scaffold game
+pnpm create-game --name MyGame --id 1234 --slug my-game
+
+# 2. Install shared dependencies
+pnpm install
+
+# 3. Start development server
+cd games/my-game
+pnpm dev
+```
+
+## ✅ Best Practices
+- **Do not modify `@gs/slot-shell`** unless the change applies to ALL games.
+- **Isolate feature logic**: Keep specific mechanics (like "Expanding Wilds") inside a feature module.
+- **Use the protocol package**: All network communication must pass through `@gs/protocol`.

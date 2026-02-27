@@ -2,17 +2,24 @@
     "name": "gs-refactor-monorepo",
     "version": "1.0.0",
     "scripts": {
-        "test:contract": "npx tsx tests/contract/mock-gs/ScenarioRunner.ts"
+        "test:contract": "npx tsx tests/contract/mock-gs/ScenarioRunner.ts",
+        "create-game": "npx tsx tools/create-game/src/index.ts"
     },
     "devDependencies": {
         "@types/node": "^25.3.2",
         "@types/uuid": "^10.0.0",
         "@types/ws": "^8.18.1",
         "tsx": "^4.0.0",
+        "typescript": "^5.9.3",
         "uuid": "^9.0.1",
         "ws": "^8.19.0"
     },
     "dependencies": {
         "zod": "^4.3.6"
-    }
+    },
+    "workspaces": [
+        "packages/*",
+        "games/*",
+        "tools/*"
+    ]
 }

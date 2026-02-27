@@ -1,20 +1,34 @@
-## Production-Grade Slot Game Structure
+# Project Architecture (Monorepo)
 
-When building a new slot game using this repository template, code MUST be partitioned into the following exact directories. This prevents "Spaghetti Game Code" where networking logic leaks directly into visual UI elements.
+This repository is organized as a workspace monorepo to ensure clean separation between core protocol logic, shared tools, and individual game implementations.
+
+## Directory Structure
+
+### `/packages/`
+Contains reusable core libraries shared across games and tools.
+- `gs-protocol`: Pure stateless layer. Translates raw WebSocket frames into normalized Game Events.
+- `gs-compliance`: Regulatory requirement implementations (timing, logging, Reality Checks).
+- `gs-operator-bridge`: Inner-iframe PostMessage handshakes and operator integrations.
+- `gs-core`: Shared game state machines, grid evaluators, and UX utilities.
+
+### `/games/`
+Standalone game projects using the core packages.
+- `template-slot`: The canonical, production-grade PixiJS v8 / Vite template. **START HERE** for new games.
+- `wincraft`: Implementation of the WinCraft slot game.
+
+### `/tools/`
+Development and testing infrastructure.
+- `mock-gs`: WebSocket mock server for contract testing.
+- `mock-slot-template`: Legacy mock server and math tuner UI.
 
 ### `/docs/`
-- `/docs/protocol/` - Markdown files verifying the server's `abs.gs.v1` and `ExtGame` JSON schemas.
-- `/docs/compliance/` - Checklists ensuring all regulatory requirements (timings, turboplay, logging) are implemented.
-- `/docs/operator-integrations/` - Guides detailing inner-iframe PostMessage handshakes for custom casinos.
-
-### `/src/`
-- `/src/net/` - Pure stateless layer. Translates raw WebSocket frames / HTTP Fetch calls into normalized Game Events. (No PixiJS code goes here).
-- `/src/compliance/` - Mandatory timing enforcement modules, profile loggers, and Reality Check modals.
-- `/src/game/` - The definitive State Machine and Core Logic loop. Holds grid definitions, win evaluators, and balance projections.
-- `/src/ux/` - The View Layer. All visual PixiJS containers, Spine animations, Particles, and interaction handlers.
-- `/src/debug/` - Development-only scripts: FPS Overlays, Cheat Panels (forcing specific wins), and VRAM profilers.
+System-wide documentation and standards.
+- `/docs/protocol/`: `abs.gs.v1` and `ExtGame` JSON schemas.
+- `/docs/compliance/`: Regulatory checklists and requirements.
 
 ### `/tests/`
-- `/tests/contract/` - Automated tests that hit the MCP Server verifying that `/src/net/` correctly understands the JSON payloads sent by the C#/Go Backend.
-- `/tests/e2e/` - Headless Playwright tests ensuring an entire 100-spin session evaluates without unhandled exceptions or memory leaks.
+Global test suites.
+- `/tests/contract/`: Automated unit/contract tests for the protocol layer.
 
+### `/.agent/`
+Project-specific rules and context for AI coding assistants.

@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "allowJs": true,
+        "noEmit": true,
+        "baseUrl": ".",
+        "paths": {
+            "@gs/*": [
+                "packages/*/src"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "games",
+        "tools",
+        "tests",
+        "docs"
+    ]
+}
