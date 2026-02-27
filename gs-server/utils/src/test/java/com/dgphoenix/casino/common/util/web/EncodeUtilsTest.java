@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.web;
 
-import com.dgphoenix.casino.services.externallobby.data.AccountInfoWrapper;
+import com.abs.casino.services.externallobby.data.AccountInfoWrapper;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 

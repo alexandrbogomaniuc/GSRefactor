@@ -1,0 +1,10 @@
+gs-server/common/src/test/java/com/dgphoenix/casino/common/cache/BankPartnerIdCacheTest.java
+gs-server/common/src/test/java/com/dgphoenix/casino/common/cache/CurrencyRateMultiplierLoaderTest.java
+gs-server/common/src/test/java/com/dgphoenix/casino/common/cache/data/bank/BankInfoAliasCompatibilityTest.java
+gs-server/common/src/test/java/com/dgphoenix/casino/common/config/GameServerConfigTest.java
+gs-server/common/src/test/java/com/dgphoenix/casino/common/config/HostConfigurationTest.java
+gs-server/common/src/test/java/com/dgphoenix/casino/common/util/AccountIdGeneratorTest.java
+gs-server/common/src/test/java/com/dgphoenix/casino/common/util/CoinGenerator.java
+gs-server/common/src/test/java/com/dgphoenix/casino/common/util/CurrencyGenerator.java
+gs-server/common/src/test/java/com/dgphoenix/casino/common/util/KryoSerializationTest.java
+gs-server/common/src/test/java/com/dgphoenix/casino/common/util/LimitGenerator.java

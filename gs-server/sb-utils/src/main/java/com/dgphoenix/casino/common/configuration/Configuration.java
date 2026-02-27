@@ -1,8 +1,8 @@
 package com.abs.casino.common.configuration;
 
-import com.dgphoenix.casino.common.configuration.resource.FileObserveFactory;
+import com.abs.casino.common.configuration.resource.FileObserveFactory;
 import com.abs.casino.common.configuration.resource.event.PropertyChangedEvent;
-import com.dgphoenix.casino.common.configuration.resource.listener.IPropertyListener;
+import com.abs.casino.common.configuration.resource.listener.IPropertyListener;
 import com.abs.casino.common.configuration.resource.observable.IFileObservable;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.exception.ObjectNotFoundException;

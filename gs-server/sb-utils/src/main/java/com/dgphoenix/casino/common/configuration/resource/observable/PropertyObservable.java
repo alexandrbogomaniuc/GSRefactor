@@ -1,7 +1,7 @@
 package com.abs.casino.common.configuration.resource.observable;
 
 import com.abs.casino.common.configuration.resource.event.PropertyChangedEvent;
-import com.dgphoenix.casino.common.configuration.resource.listener.IPropertyListener;
+import com.abs.casino.common.configuration.resource.listener.IPropertyListener;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import org.apache.log4j.Logger;

@@ -1,0 +1,10 @@
+gs-server/common/src/test/java/com/dgphoenix/casino/common/util/StringIdGeneratorTest.java
+gs-server/common/src/test/java/com/dgphoenix/casino/common/web/MobileDetectorTest.java
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/persistance/CassandraTransactionDataPersisterTest.java
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/services/bonus/ForbiddenGamesForBonusProviderTest.java
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/system/ItemDistributorTest.java
+gs-server/rng/src/test/java/com/dgphoenix/casino/common/util/RNGTest.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/configuration/resource/FileObserveFactory.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/configuration/resource/listener/IPropertyListener.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/utils/MBeanUtils.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/services/externallobby/data/AccountInfoWrapper.java

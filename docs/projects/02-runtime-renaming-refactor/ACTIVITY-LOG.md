@@ -3100,3 +3100,34 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `23`.
   - retained bounded rewires: `0`.
   - global tracked source declarations/files now `1006` remaining (`2277` baseline, `1271` reduced, `55.819060%` burndown).
+
+## 2026-02-27 21:30 UTC (Hard-Cut M2 Wave 212A + 212B + 213)
+- Continued batched-safe hard-cut migration from W211 checkpoint with non-overlapping declaration sets:
+  - `W212A`: 10 declaration migrations in `common` test surfaces.
+  - `W212B`: 10 declaration migrations in `common`/`common-gs`/`rng` test surfaces plus low-fanout `sb-utils` declarations.
+  - `W213`: bounded rewires and validation.
+- Parallel execution mode:
+  - `1 explorer + 2 workers + main` with strict non-overlap ownership.
+- Stabilization:
+  - bounded rewires retained to planned 8-file scope (`BaseDiagnosisServlet`, `ThreadsCheckTask`, `Configuration`, `ServerConfiguration`, `IFileObservable`, `PropertyObservable`, `WebToolsTest`, `EncodeUtilsTest`).
+  - resolved post-cut compile drift with minimal import/access fixes inside migrated declaration tests (explicit legacy-type imports and protected-access helper in `AccountIdGeneratorTest`).
+  - no blind/global replacement performed.
+  - preserved pre-existing local changes (`cluster-hosts.properties`, `.tmp-w202-*`) outside commit scope.
+- Validation:
+  - fast gate batchA rerun1: `STEP01 FAIL`.
+  - fast gate batchB rerun1: `STEP01 FAIL`.
+  - full matrix rerun1: `PRE01 FAIL`.
+  - rerun2: prewarm stabilized, but `STEP01 FAIL` (test import/access drift).
+  - rerun3: `STEP01 FAIL` (remaining test drift in `AccountIdGeneratorTest` / `StringIdGeneratorTest`).
+  - rerun4: `STEP06 FAIL` (`ForbiddenGamesForBonusProviderTest` unresolved type).
+  - rerun5 (canonical):
+    - fast gate batchA: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+    - fast gate batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`); retry1 failed (`rc=2`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-210136-hardcut-m2-wave212ab-wave213-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/167-hard-cut-m2-wave212ab-wave213-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `20`.
+  - retained bounded rewires: `8`.
+  - global tracked source declarations/files now `986` remaining (`2277` baseline, `1291` reduced, `56.697409%` burndown).

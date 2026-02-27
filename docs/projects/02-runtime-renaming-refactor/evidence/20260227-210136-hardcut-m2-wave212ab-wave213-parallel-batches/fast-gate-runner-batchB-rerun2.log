@@ -1,0 +1,119 @@
+[2026-02-27T21:10:39Z] START STEP01
+[2026-02-27T21:10:39Z] START STEP01
+[2026-02-27T21:10:39Z] DIR gs-server/common
+[2026-02-27T21:10:39Z] DIR gs-server/common
+[2026-02-27T21:10:39Z] CMD mvn -DskipTests install
+[2026-02-27T21:10:39Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 141 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-common ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common ---
+[INFO] Compiling 12 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/test-classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/util/CurrencyGenerator.java:[3,48] error: package com.abs.casino.common.cache.data.currency does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/util/CurrencyGenerator.java:[4,48] error: package com.abs.casino.common.cache.data.currency does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/config/GameServerConfigTest.java:[17,12] error: cannot find symbol
+[ERROR]   symbol:   class GameServerConfigTemplate
+  location: class GameServerConfigTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/cache/BankPartnerIdCacheTest.java:[10,18] error: cannot find symbol
+[ERROR]   symbol:   class BankPartnerIdCache
+  location: class BankPartnerIdCacheTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/util/LimitGenerator.java:[3,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/cache/CurrencyRateMultiplierLoaderTest.java:[3,44] error: cannot find symbol
+[ERROR]   symbol:   class BankInfo
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/cache/CurrencyRateMultiplierLoaderTest.java:[23,12] error: cannot find symbol
+[ERROR]   symbol:   class BankInfoCache
+  location: class CurrencyRateMultiplierLoaderTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/cache/CurrencyRateMultiplierLoaderTest.java:[25,12] error: cannot find symbol
+[ERROR]   symbol:   class BankInfo
+  location: class CurrencyRateMultiplierLoaderTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/cache/CurrencyRateMultiplierLoaderTest.java:[27,12] error: cannot find symbol
+[ERROR]   symbol:   class CurrencyRateMultiplierLoader
+  location: class CurrencyRateMultiplierLoaderTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/util/CoinGenerator.java:[3,44] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/config/HostConfigurationTest.java:[5,34] error: cannot find symbol
+[ERROR]   symbol:   class ServerConfigsCache
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/config/HostConfigurationTest.java:[30,12] error: cannot find symbol
+[ERROR]   symbol:   class ServerConfigsCache
+  location: class HostConfigurationTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/config/HostConfigurationTest.java:[32,12] error: cannot find symbol
+[ERROR]   symbol:   class GameServerConfig
+  location: class HostConfigurationTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/config/HostConfigurationTest.java:[34,12] error: cannot find symbol
+[INFO] 14 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.891 s
+[INFO] Finished at: 2026-02-27T21:10:41Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:testCompile (default-testCompile) on project gsn-common: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/util/CurrencyGenerator.java:[3,48] error: package com.abs.casino.common.cache.data.currency does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/util/CurrencyGenerator.java:[4,48] error: package com.abs.casino.common.cache.data.currency does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/config/GameServerConfigTest.java:[17,12] error: cannot find symbol
+[ERROR]   symbol:   class GameServerConfigTemplate
+[ERROR]   location: class GameServerConfigTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/cache/BankPartnerIdCacheTest.java:[10,18] error: cannot find symbol
+[ERROR]   symbol:   class BankPartnerIdCache
+[ERROR]   location: class BankPartnerIdCacheTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/util/LimitGenerator.java:[3,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/cache/CurrencyRateMultiplierLoaderTest.java:[3,44] error: cannot find symbol
+[ERROR]   symbol:   class BankInfo
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/cache/CurrencyRateMultiplierLoaderTest.java:[23,12] error: cannot find symbol
+[ERROR]   symbol:   class BankInfoCache
+[ERROR]   location: class CurrencyRateMultiplierLoaderTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/cache/CurrencyRateMultiplierLoaderTest.java:[25,12] error: cannot find symbol
+[ERROR]   symbol:   class BankInfo
+[ERROR]   location: class CurrencyRateMultiplierLoaderTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/cache/CurrencyRateMultiplierLoaderTest.java:[27,12] error: cannot find symbol
+[ERROR]   symbol:   class CurrencyRateMultiplierLoader
+[ERROR]   location: class CurrencyRateMultiplierLoaderTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/util/CoinGenerator.java:[3,44] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/config/HostConfigurationTest.java:[5,34] error: cannot find symbol
+[ERROR]   symbol:   class ServerConfigsCache
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/config/HostConfigurationTest.java:[30,12] error: cannot find symbol
+[ERROR]   symbol:   class ServerConfigsCache
+[ERROR]   location: class HostConfigurationTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/config/HostConfigurationTest.java:[32,12] error: cannot find symbol
+[ERROR]   symbol:   class GameServerConfig
+[ERROR]   location: class HostConfigurationTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/test/java/com/abs/casino/common/config/HostConfigurationTest.java:[34,12] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[2026-02-27T21:10:42Z] FAIL STEP01 rc=1
+[2026-02-27T21:10:42Z] FAIL STEP01 rc=1

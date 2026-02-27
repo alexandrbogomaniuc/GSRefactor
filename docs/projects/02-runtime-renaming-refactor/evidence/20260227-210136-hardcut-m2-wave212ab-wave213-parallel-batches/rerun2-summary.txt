@@ -1,0 +1,9 @@
+stabilization_rc=0
+fast_gate_batchA_status=FAIL
+fast_gate_batchA_first_failed_step=STEP01
+fast_gate_batchB_status=FAIL
+fast_gate_batchB_first_failed_step=STEP01
+prewarm_status=PASS
+prewarm_first_failed_step=NONE
+validation_status=FAIL
+validation_first_failed_step=STEP01

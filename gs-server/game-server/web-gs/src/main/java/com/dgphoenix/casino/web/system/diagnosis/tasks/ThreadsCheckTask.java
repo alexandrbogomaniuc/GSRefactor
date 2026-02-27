@@ -1,6 +1,6 @@
 package com.abs.casino.web.system.diagnosis.tasks;
 
-import com.dgphoenix.casino.common.utils.MBeanUtils;
+import com.abs.casino.common.utils.MBeanUtils;
 
 public class ThreadsCheckTask extends AbstractCheckTask {
     private static final double OVERLOAD_RATE = 0.9;

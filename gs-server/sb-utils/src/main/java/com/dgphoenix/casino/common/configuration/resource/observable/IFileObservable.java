@@ -1,6 +1,6 @@
 package com.abs.casino.common.configuration.resource.observable;
 
-import com.dgphoenix.casino.common.configuration.resource.listener.IPropertyListener;
+import com.abs.casino.common.configuration.resource.listener.IPropertyListener;
 
 public interface IFileObservable {	
 	void addListener(IPropertyListener listener);

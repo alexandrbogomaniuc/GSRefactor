@@ -1,6 +1,6 @@
 package com.abs.casino.common.configuration;
 
-import com.dgphoenix.casino.common.configuration.resource.FileObserveFactory;
+import com.abs.casino.common.configuration.resource.FileObserveFactory;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
