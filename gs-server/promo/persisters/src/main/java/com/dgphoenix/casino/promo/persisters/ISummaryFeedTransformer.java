@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.promo.persisters;
 
-import com.dgphoenix.casino.common.promo.feed.tournament.ISummaryTournamentFeedEntry;
+import com.abs.casino.common.promo.feed.tournament.ISummaryTournamentFeedEntry;
 
 import java.util.List;
 

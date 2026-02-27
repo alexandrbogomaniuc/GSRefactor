@@ -2177,3 +2177,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - scoped declaration migrations: `28`.
   - global tracked source declarations/files now `1772` remaining (`2277` baseline, `505` reduced).
+
+## 2026-02-27 00:48 UTC (Hard-Cut M2 Wave 128A + 128B + 129)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W128A`: migrated 11 `support/archiver` declaration packages to `com.abs` and rewired launch scripts.
+  - `W128B`: migrated 14 `common-promo` tournament-feed declaration packages to `com.abs` with bounded importer rewires.
+  - `W129`: integrated both batches and stabilized dependency-order validation for touched promo/common-gs path.
+- Changed files:
+  - full file list in `docs/projects/02-runtime-renaming-refactor/evidence/20260227-003110-hardcut-m2-wave128ab-wave129-parallel-batches/target-files.txt`.
+- Validation:
+  - initial fast-gate attempts exposed dependency-order/type drift during mixed artifact state.
+  - applied bounded stabilization (`common-promo` + `promo/persisters` pre-install), fast gate rerun4 passed `5/5`.
+  - full 9-step matrix passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-003110-hardcut-m2-wave128ab-wave129-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/125-hard-cut-m2-wave128ab-wave129-parallel-batches-report-20260227.md`
+- Outcome:
+  - scoped declaration migrations: `25`.
+  - global tracked source declarations/files now `1747` remaining (`2277` baseline, `530` reduced).

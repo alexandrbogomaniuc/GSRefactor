@@ -3,7 +3,7 @@ package com.dgphoenix.casino.promo.feed.tournament;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.*;
-import com.dgphoenix.casino.common.promo.feed.tournament.*;
+import com.abs.casino.common.promo.feed.tournament.*;
 import com.dgphoenix.casino.common.upload.JSchUploadClient;
 import com.dgphoenix.casino.promo.feed.AbstractFeedWriter;
 import com.dgphoenix.casino.promo.persisters.CassandraTournamentRankPersister;

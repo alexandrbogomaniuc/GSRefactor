@@ -1,0 +1,2 @@
+gs-server/support/archiver/run-archiver.sh
+gs-server/support/archiver/run-dso-export.sh

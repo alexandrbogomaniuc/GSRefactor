@@ -1,0 +1,7 @@
+fast-gate rerun4 status
+1) PASS (exit 0) - mvn -f gs-server/common-promo/pom.xml install -DskipTests -Dcluster.properties=local/local-machine.properties
+2) PASS (exit 0) - mvn -f gs-server/promo/persisters/pom.xml install -DskipTests -Dcluster.properties=local/local-machine.properties
+3) PASS (exit 0) - mvn -f gs-server/game-server/common-gs/pom.xml install -DskipTests -Dcluster.properties=local/local-machine.properties
+4) PASS (exit 0) - mvn -f gs-server/game-server/web-gs/pom.xml package -DskipTests -Dcluster.properties=local/local-machine.properties
+5) PASS (exit 0) - node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
+FINAL: PASS (5/5 passed)

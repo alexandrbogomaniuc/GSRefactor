@@ -5,7 +5,7 @@ import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.dgphoenix.casino.common.promo.TournamentObjective;
-import com.dgphoenix.casino.common.promo.feed.tournament.*;
+import com.abs.casino.common.promo.feed.tournament.*;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.promo.masker.SummaryFeedNameMasker;
 import com.abs.casino.promo.masker.TournamentSummaryFeedNameMasker;

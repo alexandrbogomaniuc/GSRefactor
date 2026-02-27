@@ -1,0 +1,176 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:gsn-common-gs >-----------------
+[INFO] Building gsn-common-gs 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:2.8:copy (default) @ gsn-common-gs ---
+[INFO] Configured Artifact: javax.xml.bind:jaxb-api:2.2.7:jar
+[INFO] Configured Artifact: javax.xml.ws:jaxws-api:2.2.9:jar
+[INFO] javax.xml.bind:jaxb-api:2.2.7:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] javax.xml.ws:jaxws-api:2.2.9:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ gsn-common-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-gs ---
+[INFO] Compiling 65 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[6,0] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[30,102] error: cannot find symbol
+[ERROR]   symbol: class TournamentFeed
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[38,43] error: cannot find symbol
+[ERROR]   symbol:   class IRecordProducer
+  location: class TournamentFeedWriter<T>
+  where T is a type-variable:
+    T extends TournamentPromoTemplate<?> declared in class TournamentFeedWriter
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[65,14] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+  location: class TournamentFeedWriter<T>
+  where T is a type-variable:
+    T extends TournamentPromoTemplate<?> declared in class TournamentFeedWriter
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[81,95] error: cannot find symbol
+[ERROR]   symbol:   class IRecordProducer
+  location: class TournamentFeedWriter<T>
+  where T is a type-variable:
+    T extends TournamentPromoTemplate<?> declared in class TournamentFeedWriter
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[81,12] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+  location: class TournamentFeedWriter<T>
+  where T is a type-variable:
+    T extends TournamentPromoTemplate<?> declared in class TournamentFeedWriter
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[93,48] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+  location: class TournamentFeedWriter<T>
+  where T is a type-variable:
+    T extends TournamentPromoTemplate<?> declared in class TournamentFeedWriter
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[105,51] error: cannot find symbol
+[ERROR]   symbol:   class ITournamentFeedRecord
+  location: class TournamentFeedWriter<T>
+  where T is a type-variable:
+    T extends TournamentPromoTemplate<?> declared in class TournamentFeedWriter
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/SummaryTournamentFeedWriter.java:[4,0] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentManager.java:[7,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentLeaderboardBuilder.java:[9,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentLeaderboardBuilder.java:[10,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentManager.java:[162,11] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+  location: class TournamentManager
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentLeaderboardBuilder.java:[114,11] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+  location: class TournamentLeaderboardBuilder
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentLeaderboardBuilder.java:[258,12] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+  location: class TournamentLeaderboardBuilder
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java:[7,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java:[8,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java:[9,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java:[23,119] error: cannot find symbol
+[ERROR]   symbol: class TournamentFeed
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java:[37,14] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+  location: class MaxBalanceTournamentFeedWriter<T>
+  where T is a type-variable:
+    T extends MaxBalanceTournamentPromoTemplate declared in class MaxBalanceTournamentFeedWriter
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java:[46,48] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+  location: class MaxBalanceTournamentFeedWriter<T>
+  where T is a type-variable:
+    T extends MaxBalanceTournamentPromoTemplate declared in class MaxBalanceTournamentFeedWriter
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java:[58,51] error: cannot find symbol
+[ERROR]   symbol:   class ITournamentFeedRecord
+  location: class MaxBalanceTournamentFeedWriter<T>
+  where T is a type-variable:
+    T extends MaxBalanceTournamentPromoTemplate declared in class MaxBalanceTournamentFeedWriter
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/SummaryTournamentFeedWriter.java:[189,38] error: cannot find symbol
+[INFO] 23 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.246 s
+[INFO] Finished at: 2026-02-27T00:38:47Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common-gs: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[6,0] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[30,102] error: cannot find symbol
+[ERROR]   symbol: class TournamentFeed
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[38,43] error: cannot find symbol
+[ERROR]   symbol:   class IRecordProducer
+[ERROR]   location: class TournamentFeedWriter<T>
+[ERROR]   where T is a type-variable:
+[ERROR]     T extends TournamentPromoTemplate<?> declared in class TournamentFeedWriter
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[65,14] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+[ERROR]   location: class TournamentFeedWriter<T>
+[ERROR]   where T is a type-variable:
+[ERROR]     T extends TournamentPromoTemplate<?> declared in class TournamentFeedWriter
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[81,95] error: cannot find symbol
+[ERROR]   symbol:   class IRecordProducer
+[ERROR]   location: class TournamentFeedWriter<T>
+[ERROR]   where T is a type-variable:
+[ERROR]     T extends TournamentPromoTemplate<?> declared in class TournamentFeedWriter
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[81,12] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+[ERROR]   location: class TournamentFeedWriter<T>
+[ERROR]   where T is a type-variable:
+[ERROR]     T extends TournamentPromoTemplate<?> declared in class TournamentFeedWriter
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[93,48] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+[ERROR]   location: class TournamentFeedWriter<T>
+[ERROR]   where T is a type-variable:
+[ERROR]     T extends TournamentPromoTemplate<?> declared in class TournamentFeedWriter
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/TournamentFeedWriter.java:[105,51] error: cannot find symbol
+[ERROR]   symbol:   class ITournamentFeedRecord
+[ERROR]   location: class TournamentFeedWriter<T>
+[ERROR]   where T is a type-variable:
+[ERROR]     T extends TournamentPromoTemplate<?> declared in class TournamentFeedWriter
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/SummaryTournamentFeedWriter.java:[4,0] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentManager.java:[7,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentLeaderboardBuilder.java:[9,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentLeaderboardBuilder.java:[10,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentManager.java:[162,11] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+[ERROR]   location: class TournamentManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentLeaderboardBuilder.java:[114,11] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+[ERROR]   location: class TournamentLeaderboardBuilder
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentLeaderboardBuilder.java:[258,12] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+[ERROR]   location: class TournamentLeaderboardBuilder
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java:[7,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java:[8,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java:[9,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java:[23,119] error: cannot find symbol
+[ERROR]   symbol: class TournamentFeed
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java:[37,14] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+[ERROR]   location: class MaxBalanceTournamentFeedWriter<T>
+[ERROR]   where T is a type-variable:
+[ERROR]     T extends MaxBalanceTournamentPromoTemplate declared in class MaxBalanceTournamentFeedWriter
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java:[46,48] error: cannot find symbol
+[ERROR]   symbol:   class TournamentFeed
+[ERROR]   location: class MaxBalanceTournamentFeedWriter<T>
+[ERROR]   where T is a type-variable:
+[ERROR]     T extends MaxBalanceTournamentPromoTemplate declared in class MaxBalanceTournamentFeedWriter
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/MaxBalanceTournamentFeedWriter.java:[58,51] error: cannot find symbol
+[ERROR]   symbol:   class ITournamentFeedRecord
+[ERROR]   location: class MaxBalanceTournamentFeedWriter<T>
+[ERROR]   where T is a type-variable:
+[ERROR]     T extends MaxBalanceTournamentPromoTemplate declared in class MaxBalanceTournamentFeedWriter
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/tournament/SummaryTournamentFeedWriter.java:[189,38] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

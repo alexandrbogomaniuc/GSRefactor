@@ -1,6 +1,6 @@
 package com.abs.casino.promo.masker;
 
-import com.dgphoenix.casino.common.promo.feed.tournament.SummaryTournamentFeedEntry;
+import com.abs.casino.common.promo.feed.tournament.SummaryTournamentFeedEntry;
 
 import java.util.List;
 import java.util.stream.Collectors;

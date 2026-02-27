@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.promo.feed.tournament;
+package com.abs.casino.common.promo.feed.tournament;
 
 import com.dgphoenix.casino.common.cache.Identifiable;
 import com.dgphoenix.casino.common.promo.TournamentObjective;

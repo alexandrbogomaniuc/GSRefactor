@@ -1,7 +1,7 @@
 package com.abs.casino.promo.masker;
 
-import com.dgphoenix.casino.common.promo.feed.tournament.RoundCountRecord;
-import com.dgphoenix.casino.common.promo.feed.tournament.SummaryTournamentFeedEntry;
+import com.abs.casino.common.promo.feed.tournament.RoundCountRecord;
+import com.abs.casino.common.promo.feed.tournament.SummaryTournamentFeedEntry;
 import org.junit.Before;
 import org.junit.Test;
 

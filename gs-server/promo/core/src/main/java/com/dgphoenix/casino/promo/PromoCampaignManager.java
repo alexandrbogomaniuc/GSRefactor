@@ -23,7 +23,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.exception.PromoCreationException;
 import com.dgphoenix.casino.common.lock.LockingInfo;
 import com.dgphoenix.casino.common.promo.*;
-import com.dgphoenix.casino.common.promo.feed.tournament.SummaryTournamentFeedEntry;
+import com.abs.casino.common.promo.feed.tournament.SummaryTournamentFeedEntry;
 import com.dgphoenix.casino.common.util.DatePeriod;
 import com.dgphoenix.casino.common.util.IdGenerator;
 import com.dgphoenix.casino.common.util.Pair;

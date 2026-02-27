@@ -4,7 +4,7 @@ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.*;
-import com.dgphoenix.casino.common.promo.feed.tournament.TournamentFeed;
+import com.abs.casino.common.promo.feed.tournament.TournamentFeed;
 import com.dgphoenix.casino.common.upload.JSchUploadClient;
 import com.dgphoenix.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.util.web.HttpClientConnection;

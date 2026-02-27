@@ -1,0 +1,111 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-promo-persisters >--------------
+[INFO] Building gsn-promo-persisters 1.2
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-promo-persisters ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-promo-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-promo-persisters ---
+[INFO] Compiling 6 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/ISummaryFeedTransformer.java:[3,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/ISummaryFeedTransformer.java:[8,72] error: cannot find symbol
+[ERROR]   symbol:   class ISummaryTournamentFeedEntry
+  location: interface ISummaryFeedTransformer
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/ISummaryFeedTransformer.java:[8,9] error: cannot find symbol
+[ERROR]   symbol:   class ISummaryTournamentFeedEntry
+  location: interface ISummaryFeedTransformer
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[8,0] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[127,16] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeed
+  location: class CassandraSummaryTournamentPromoFeedPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[137,16] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeed
+  location: class CassandraSummaryTournamentPromoFeedPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[157,28] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeedEntry
+  location: class CassandraSummaryTournamentPromoFeedPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[163,28] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeedEntry
+  location: class CassandraSummaryTournamentPromoFeedPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[169,28] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeedEntry
+  location: class CassandraSummaryTournamentPromoFeedPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[202,16] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeedEntry
+  location: class CassandraSummaryTournamentPromoFeedPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[223,12] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeed
+  location: class CassandraSummaryTournamentPromoFeedPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/masker/TournamentSummaryFeedNameMasker.java:[3,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/masker/TournamentSummaryFeedNameMasker.java:[8,75] error: cannot find symbol
+[ERROR]   symbol: class SummaryTournamentFeedEntry
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/masker/TournamentSummaryFeedNameMasker.java:[9,23] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeedEntry
+  location: class TournamentSummaryFeedNameMasker
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/masker/TournamentSummaryFeedNameMasker.java:[11,48] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeedEntry
+  location: class TournamentSummaryFeedNameMasker
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/masker/TournamentSummaryFeedNameMasker.java:[16,16] error: cannot find symbol
+[INFO] 16 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.137 s
+[INFO] Finished at: 2026-02-27T00:38:43Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-promo-persisters: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/ISummaryFeedTransformer.java:[3,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/ISummaryFeedTransformer.java:[8,72] error: cannot find symbol
+[ERROR]   symbol:   class ISummaryTournamentFeedEntry
+[ERROR]   location: interface ISummaryFeedTransformer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/ISummaryFeedTransformer.java:[8,9] error: cannot find symbol
+[ERROR]   symbol:   class ISummaryTournamentFeedEntry
+[ERROR]   location: interface ISummaryFeedTransformer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[8,0] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[127,16] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeed
+[ERROR]   location: class CassandraSummaryTournamentPromoFeedPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[137,16] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeed
+[ERROR]   location: class CassandraSummaryTournamentPromoFeedPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[157,28] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeedEntry
+[ERROR]   location: class CassandraSummaryTournamentPromoFeedPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[163,28] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeedEntry
+[ERROR]   location: class CassandraSummaryTournamentPromoFeedPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[169,28] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeedEntry
+[ERROR]   location: class CassandraSummaryTournamentPromoFeedPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[202,16] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeedEntry
+[ERROR]   location: class CassandraSummaryTournamentPromoFeedPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[223,12] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeed
+[ERROR]   location: class CassandraSummaryTournamentPromoFeedPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/masker/TournamentSummaryFeedNameMasker.java:[3,50] error: package com.abs.casino.common.promo.feed.tournament does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/masker/TournamentSummaryFeedNameMasker.java:[8,75] error: cannot find symbol
+[ERROR]   symbol: class SummaryTournamentFeedEntry
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/masker/TournamentSummaryFeedNameMasker.java:[9,23] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeedEntry
+[ERROR]   location: class TournamentSummaryFeedNameMasker
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/masker/TournamentSummaryFeedNameMasker.java:[11,48] error: cannot find symbol
+[ERROR]   symbol:   class SummaryTournamentFeedEntry
+[ERROR]   location: class TournamentSummaryFeedNameMasker
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/masker/TournamentSummaryFeedNameMasker.java:[16,16] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

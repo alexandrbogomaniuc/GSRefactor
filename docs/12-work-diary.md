@@ -7417,3 +7417,15 @@
   - updated tracked declarations/files: `1772` remaining (`2277` baseline, `505` reduced, `22.178305%` burndown).
 - Next:
   - continue next non-overlapping batched cycle under the same evidence-first protocol.
+
+### 2026-02-27 00:48 UTC
+- Continued Project 02 hard-cut runtime renaming with parallel batch waves `128A/128B` and integration wave `129`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-003110-hardcut-m2-wave128ab-wave129-parallel-batches/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/125-hard-cut-m2-wave128ab-wave129-parallel-batches-report-20260227.md`
+- Result:
+  - migrated `25` declaration packages to `com.abs` across `support/archiver` and `common-promo/feed/tournament` scope, including bounded importer/script rewires.
+  - fast gate passed on rerun4 after bounded dependency-order stabilization; full validation matrix passed `9/9`.
+  - updated tracked declarations/files: `1747` remaining (`2277` baseline, `530` reduced, `23.276241%` burndown).
+- Next:
+  - continue next non-overlapping batched cycle under the same evidence-first protocol.

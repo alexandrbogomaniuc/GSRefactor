@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.promo.feed.tournament;
+package com.abs.casino.common.promo.feed.tournament;
 
 public interface ITournamentFeedRecord<T> extends Comparable<T> {
     String getRank();

@@ -2,8 +2,8 @@ package com.dgphoenix.casino.common.promo.ai;
 
 import com.dgphoenix.casino.common.promo.IPromoCampaign;
 import com.dgphoenix.casino.common.promo.TournamentMemberRank;
-import com.dgphoenix.casino.common.promo.feed.tournament.IRecordProducer;
-import com.dgphoenix.casino.common.promo.feed.tournament.TournamentFeed;
+import com.abs.casino.common.promo.feed.tournament.IRecordProducer;
+import com.abs.casino.common.promo.feed.tournament.TournamentFeed;
 import com.google.common.collect.Multimap;
 
 public interface IPromoFeedTransformer {

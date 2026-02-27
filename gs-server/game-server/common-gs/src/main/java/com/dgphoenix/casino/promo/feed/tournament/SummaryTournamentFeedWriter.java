@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.promo.feed.tournament;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.common.promo.feed.tournament.*;
+import com.abs.casino.common.promo.feed.tournament.*;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.gs.status.ServersStatusWatcher;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.promo.feed.tournament;
+package com.abs.casino.common.promo.feed.tournament;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
