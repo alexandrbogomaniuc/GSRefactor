@@ -1,0 +1,27 @@
+[2026-02-27T06:18:17Z] START step1-utils-install
+[2026-02-27T06:18:17Z] CMD cd /Users/alexb/Documents/Dev/Dev_new/gs-server/utils && mvn -DskipTests install
+[2026-02-27T06:18:19Z] END step1-utils-install rc=0
+[2026-02-27T06:18:19Z] START step2-sb-utils-install
+[2026-02-27T06:18:19Z] CMD cd /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils && mvn -DskipTests install
+[2026-02-27T06:18:22Z] END step2-sb-utils-install rc=0
+[2026-02-27T06:18:22Z] START step3-common-install
+[2026-02-27T06:18:22Z] CMD cd /Users/alexb/Documents/Dev/Dev_new/gs-server/common && mvn -DskipTests install
+[2026-02-27T06:18:25Z] END step3-common-install rc=0
+[2026-02-27T06:18:25Z] START step4-common-wallet-install
+[2026-02-27T06:18:25Z] CMD cd /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet && mvn -DskipTests install
+[2026-02-27T06:18:28Z] END step4-common-wallet-install rc=0
+[2026-02-27T06:18:28Z] START step5-common-promo-install
+[2026-02-27T06:18:28Z] CMD cd /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo && mvn -DskipTests install
+[2026-02-27T06:18:30Z] END step5-common-promo-install rc=0
+[2026-02-27T06:18:30Z] START step6-common-persisters-install
+[2026-02-27T06:18:30Z] CMD cd /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters && mvn -DskipTests install
+[2026-02-27T06:18:33Z] END step6-common-persisters-install rc=0
+[2026-02-27T06:18:33Z] START step7-common-gs-install
+[2026-02-27T06:18:33Z] CMD cd /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs && mvn -DskipTests -Dcluster.properties=common.properties install
+[2026-02-27T06:18:40Z] END step7-common-gs-install rc=0
+[2026-02-27T06:18:40Z] START step8-web-gs-package
+[2026-02-27T06:18:40Z] CMD cd /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs && mvn -DskipTests -Dcluster.properties=common.properties package
+[2026-02-27T06:18:52Z] END step8-web-gs-package rc=0
+[2026-02-27T06:18:52Z] START step9-refactor-smoke
+[2026-02-27T06:18:52Z] CMD cd /Users/alexb/Documents/Dev/Dev_new && node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
+[2026-02-27T06:19:20Z] END step9-refactor-smoke rc=0

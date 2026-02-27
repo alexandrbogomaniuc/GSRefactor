@@ -2480,3 +2480,24 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `21`.
   - retained bounded rewires: `6`.
   - global tracked source declarations/files now `1386` remaining (`2277` baseline, `891` reduced, `39.130435%` burndown).
+
+## 2026-02-27 06:20 UTC (Hard-Cut M2 Wave 158A + 158B + 159, Stabilized)
+- Continued batched-safe hard-cut migration from W157 checkpoint with non-overlapping ownership:
+  - `W158A`: migrated 12 declaration packages in `gs.maintenance`, `gs.maintenance.converters`, and `gs.managers.payment.wallet.common.xml`.
+  - `W158B`: migrated 10 declaration packages in `common.promo.ai` and `gs.managers.payment.bonus.client.frb`.
+  - `W159`: bounded importer rewires and compatibility stabilization.
+- Parallel execution mode:
+  - explorer verified no declaration or rewire overlap.
+  - worker-thread cap limited concurrent workers; retained degraded-safe parallel mode (worker A + main-owned batch B), with strict file ownership maintained.
+- Stabilization:
+  - fast gate initial run failed at `step5 common-persisters` due dependency order after `common.promo.ai` migration.
+  - fast gate `rerun2` added `common-promo` install pre-step and passed `9/9`.
+- Validation:
+  - full matrix `9/9 PASS` on rerun1.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-061319-hardcut-m2-wave158ab-wave159-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/140-hard-cut-m2-wave158ab-wave159-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `22`.
+  - retained bounded rewires: `9`.
+  - global tracked source declarations/files now `1364` remaining (`2277` baseline, `913` reduced, `40.096618%` burndown).

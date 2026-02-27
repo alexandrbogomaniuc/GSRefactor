@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.wallet.common.xml;
+package com.abs.casino.gs.managers.payment.wallet.common.xml;
 
 import com.abs.casino.common.util.xml.parser.XmlHandler;
 

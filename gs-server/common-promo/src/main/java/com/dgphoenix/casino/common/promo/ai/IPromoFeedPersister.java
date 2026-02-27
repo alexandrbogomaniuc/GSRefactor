@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.promo.ai;
+package com.abs.casino.common.promo.ai;
 
 public interface IPromoFeedPersister {
 

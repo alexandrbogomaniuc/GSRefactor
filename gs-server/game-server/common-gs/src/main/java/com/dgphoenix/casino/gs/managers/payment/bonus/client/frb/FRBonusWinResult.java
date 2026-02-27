@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.bonus.client.frb;
+package com.abs.casino.gs.managers.payment.bonus.client.frb;
 
 
 public class FRBonusWinResult {

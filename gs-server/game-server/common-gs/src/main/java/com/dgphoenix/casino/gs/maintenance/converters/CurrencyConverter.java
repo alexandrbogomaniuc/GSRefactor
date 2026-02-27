@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.maintenance.converters;
+package com.abs.casino.gs.maintenance.converters;
 
 import com.dgphoenix.casino.common.cache.CurrencyCache;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;

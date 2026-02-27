@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.maintenance;
+package com.abs.casino.gs.maintenance;
 
 import java.io.Serializable;
 import java.util.Date;

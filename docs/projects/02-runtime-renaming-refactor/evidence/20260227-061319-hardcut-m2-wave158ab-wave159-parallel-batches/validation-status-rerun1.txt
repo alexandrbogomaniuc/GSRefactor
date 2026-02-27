@@ -1,0 +1,13 @@
+pre-setup-1 utils install: PASS
+pre-setup-2 sb-utils install: PASS
+pre-setup-3 common-promo install: PASS
+step01: PASS
+step02: PASS
+step03: PASS
+step04: PASS
+step05: PASS
+step06: PASS
+step07: PASS
+step08: PASS
+step09: PASS
+canonical-copy: PASS

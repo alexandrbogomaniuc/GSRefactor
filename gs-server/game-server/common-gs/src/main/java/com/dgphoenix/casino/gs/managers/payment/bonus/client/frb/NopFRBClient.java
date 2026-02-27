@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.bonus.client.frb;
+package com.abs.casino.gs.managers.payment.bonus.client.frb;
 
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBWinOperation;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin;

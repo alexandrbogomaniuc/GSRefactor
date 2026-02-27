@@ -1,0 +1,6 @@
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/mp/MQReservedNicknamePersister.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/FRBonusNotificationManager.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/IFRBonusClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/OriginalFRBonusWinManager.java
+gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPromoFeedPersister.java
+gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraTournamentFeedHistoryPersister.java

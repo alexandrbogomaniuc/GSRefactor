@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.maintenance.converters;
+package com.abs.casino.gs.maintenance.converters;
 
 import com.dgphoenix.casino.common.cache.CoinsCache;
 import com.dgphoenix.casino.common.cache.LimitsCache;

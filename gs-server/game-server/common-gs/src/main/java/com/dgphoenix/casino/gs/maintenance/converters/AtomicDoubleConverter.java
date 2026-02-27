@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.maintenance.converters;
+package com.abs.casino.gs.maintenance.converters;
 
 import com.google.common.util.concurrent.AtomicDouble;
 import com.thoughtworks.xstream.converters.Converter;

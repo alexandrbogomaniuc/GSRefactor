@@ -1,0 +1,10 @@
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ai/IMQReservedNicknamePersister.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ai/IPromoFeedPersister.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ai/IPromoFeedTransformer.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ai/IPromoFeedTransformerPersister.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ai/ITournamentFeedHistoryPersister.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/frb/FRBRESTClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/frb/FRBRESTGetClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/frb/FRBRESTNotificationClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/frb/FRBonusWinResult.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/frb/NopFRBClient.java

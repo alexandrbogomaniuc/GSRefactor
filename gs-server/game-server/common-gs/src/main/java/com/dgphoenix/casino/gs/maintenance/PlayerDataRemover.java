@@ -2,7 +2,7 @@
  * User: plastical
  * Date: 18.03.2010
  */
-package com.dgphoenix.casino.gs.maintenance;
+package com.abs.casino.gs.maintenance;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

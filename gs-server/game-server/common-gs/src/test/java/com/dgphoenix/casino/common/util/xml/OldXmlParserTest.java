@@ -20,7 +20,7 @@ public class OldXmlParserTest extends TestCase {
         super.setUp();
         Map<String, XmlHandler> handlers = new HashMap<String, XmlHandler>();
         XmlHandlerRegistry.instance().register("EXTSYSTEM",
-                new com.dgphoenix.casino.gs.managers.payment.wallet.common.xml.CWHandler());
+                new com.abs.casino.gs.managers.payment.wallet.common.xml.CWHandler());
     }
 
     @Test
