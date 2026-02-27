@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.promo.MaxBalanceTournamentPromoTemplate;
 import com.abs.casino.common.promo.feed.tournament.ITournamentFeedRecord;
 import com.abs.casino.common.promo.feed.tournament.MaxBalanceRecord;
 import com.abs.casino.common.promo.feed.tournament.TournamentFeed;
-import com.dgphoenix.casino.common.upload.JSchUploadClient;
+import com.abs.casino.common.upload.JSchUploadClient;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.promo.feed.AbstractFeedWriter;
 import com.abs.casino.promo.tournaments.TournamentManager;

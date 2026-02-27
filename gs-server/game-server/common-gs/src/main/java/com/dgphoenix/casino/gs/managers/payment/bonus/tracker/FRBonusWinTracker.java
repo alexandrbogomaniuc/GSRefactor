@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.payment.bonus.tracker;
 
 
-import com.dgphoenix.casino.common.engine.tracker.AbstractCommonTracker;
+import com.abs.casino.common.engine.tracker.AbstractCommonTracker;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.log4j.Logger;

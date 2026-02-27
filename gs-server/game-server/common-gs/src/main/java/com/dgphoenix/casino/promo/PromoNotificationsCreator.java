@@ -1,8 +1,8 @@
 package com.dgphoenix.casino.promo;
 
 import com.dgphoenix.casino.common.promo.*;
-import com.dgphoenix.casino.common.promo.messages.server.notifications.PromoNotification;
-import com.dgphoenix.casino.common.promo.messages.server.notifications.PromoStatusChanged;
+import com.abs.casino.common.promo.messages.server.notifications.PromoNotification;
+import com.abs.casino.common.promo.messages.server.notifications.PromoStatusChanged;
 import com.abs.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
 import com.abs.casino.common.promo.messages.server.notifications.prizes.TicketsWon;
 import com.abs.casino.common.promo.messages.server.notifications.tournament.LeaderBoard;

@@ -9,7 +9,7 @@ import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.abs.casino.common.util.xml.parser.Parser;
 import com.abs.casino.gs.managers.game.session.CloseGameSessionNotifyRequest;
 import com.abs.casino.gs.managers.game.session.INotifyResponseProcessor;
-import com.dgphoenix.casino.statistics.http.HttpClientCallbackHandler;
+import com.abs.casino.statistics.http.HttpClientCallbackHandler;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

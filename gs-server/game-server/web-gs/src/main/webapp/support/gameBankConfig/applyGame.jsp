@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.bgm.BaseGameHelper" %>
+<%@ page import="com.abs.casino.bgm.BaseGameHelper" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.IdObject" %>
 <%@ page import="com.abs.casino.common.cache.data.bank.BankConstants" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>

@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.cassandra.persist;
 
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItem;
-import com.dgphoenix.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
+import com.abs.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
 
 import java.nio.ByteBuffer;
 import java.util.HashMap;

@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.gs.managers.payment.transfer.tracker;
 
-import com.dgphoenix.casino.common.engine.tracker.AbstractCommonTracker;
+import com.abs.casino.common.engine.tracker.AbstractCommonTracker;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.log4j.Logger;

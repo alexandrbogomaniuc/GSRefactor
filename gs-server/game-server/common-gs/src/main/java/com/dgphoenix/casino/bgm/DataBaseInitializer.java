@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.bgm;
+package com.abs.casino.bgm;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

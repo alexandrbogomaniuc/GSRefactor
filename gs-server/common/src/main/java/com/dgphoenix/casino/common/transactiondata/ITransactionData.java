@@ -18,7 +18,7 @@ import com.dgphoenix.casino.common.promo.PromoCampaignMember;
 import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItem;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItemType;
-import com.dgphoenix.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
+import com.abs.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
 
 import java.util.Map;
 

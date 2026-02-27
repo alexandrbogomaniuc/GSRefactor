@@ -12,7 +12,7 @@ import com.dgphoenix.casino.common.cache.data.game.GameGroup;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItem;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItemType;
-import com.dgphoenix.casino.common.transactiondata.storeddate.identifier.LasthandStoredInfo;
+import com.abs.casino.common.transactiondata.storeddate.identifier.LasthandStoredInfo;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import org.apache.logging.log4j.LogManager;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.promo.messages.server.notifications;
+package com.abs.casino.common.promo.messages.server.notifications;
 
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 

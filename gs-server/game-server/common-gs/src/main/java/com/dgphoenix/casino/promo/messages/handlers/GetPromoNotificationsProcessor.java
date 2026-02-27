@@ -3,7 +3,7 @@ package com.abs.casino.promo.messages.handlers;
 import com.dgphoenix.casino.common.promo.PromoCampaignMember;
 import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
 import com.dgphoenix.casino.common.promo.PromoNotificationType;
-import com.dgphoenix.casino.common.promo.messages.server.notifications.PromoNotification;
+import com.abs.casino.common.promo.messages.server.notifications.PromoNotification;
 import com.abs.casino.common.promo.messages.server.responses.GetPromoNotificationsResponse;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.web.BaseAction;

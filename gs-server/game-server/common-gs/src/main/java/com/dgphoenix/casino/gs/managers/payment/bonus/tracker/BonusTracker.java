@@ -2,8 +2,8 @@ package com.abs.casino.gs.managers.payment.bonus.tracker;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraTrackingInfoPersister;
-import com.dgphoenix.casino.common.engine.tracker.AbstractCommonTracker;
-import com.dgphoenix.casino.common.engine.tracker.TrackingInfo;
+import com.abs.casino.common.engine.tracker.AbstractCommonTracker;
+import com.abs.casino.common.engine.tracker.TrackingInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.statistics.http;
+package com.abs.casino.statistics.http;
 
 public class StatisticsKey {
     public final String date;

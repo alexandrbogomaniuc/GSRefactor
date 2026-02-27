@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.statistics.http;
+package com.abs.casino.statistics.http;
 
 import com.abs.casino.common.util.web.HttpClientConnectionStatistics;
 

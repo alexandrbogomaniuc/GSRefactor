@@ -5,7 +5,7 @@ import com.dgphoenix.casino.cassandra.persist.CassandraBonusPersister;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
-import com.dgphoenix.casino.common.engine.tracker.AbstractCommonTrackingTask;
+import com.abs.casino.common.engine.tracker.AbstractCommonTrackingTask;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;

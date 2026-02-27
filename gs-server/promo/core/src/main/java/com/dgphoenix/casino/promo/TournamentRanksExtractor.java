@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.promo.TournamentMemberRanks;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItem;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItemType;
-import com.dgphoenix.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
+import com.abs.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
 
 public final class TournamentRanksExtractor {
     private TournamentRanksExtractor() {

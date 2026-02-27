@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.*;
 import com.abs.casino.common.promo.feed.tournament.TournamentFeed;
-import com.dgphoenix.casino.common.upload.JSchUploadClient;
+import com.abs.casino.common.upload.JSchUploadClient;
 import com.dgphoenix.casino.common.util.string.StringIdGenerator;
 import com.abs.casino.common.util.web.HttpClientConnection;
 import com.abs.casino.promo.icon.TournamentIcon;

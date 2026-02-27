@@ -5,7 +5,7 @@ import com.dgphoenix.casino.cassandra.persist.CassandraPaymentTransactionPersist
 import com.dgphoenix.casino.cassandra.persist.IStoredDataProcessor;
 import com.dgphoenix.casino.common.cache.data.payment.transfer.PaymentTransaction;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItem;
-import com.dgphoenix.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
+import com.abs.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 
 import java.nio.ByteBuffer;

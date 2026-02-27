@@ -20,7 +20,7 @@ import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.abs.casino.common.util.xml.parser.Parser;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;
-import com.dgphoenix.casino.statistics.http.HttpClientCallbackHandler;
+import com.abs.casino.statistics.http.HttpClientCallbackHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

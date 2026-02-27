@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.upload;
+package com.abs.casino.common.upload;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 

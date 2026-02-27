@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.statistics.http;
+package com.abs.casino.statistics.http;
 
 import com.dgphoenix.casino.cassandra.persist.IHttpClientStatisticsPersister;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;

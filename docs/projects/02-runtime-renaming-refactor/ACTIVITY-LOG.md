@@ -2998,3 +2998,25 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `21`.
   - retained bounded rewires: `33`.
   - global tracked source declarations/files now `1103` remaining (`2277` baseline, `1174` reduced, `51.559069%` burndown).
+
+## 2026-02-27 15:52 UTC (Hard-Cut M2 Wave 204A + 204B + 205)
+- Continued batched-safe hard-cut migration from W203 checkpoint with non-overlapping declaration sets:
+  - `W204A`: 10 declaration migrations in `statistics.http` and `common.engine.tracker`.
+  - `W204B`: 10 declaration migrations in promo notifications, stored-data identifiers, `bgm`, and upload callback/client surfaces.
+  - `W205`: integration and validation.
+- Parallel execution mode:
+  - `1 explorer + 2 workers + main` with strict non-overlap ownership.
+- Stabilization:
+  - bounded importer/FQCN rewires retained only for moved symbols from `rewires-batchA-all.txt` and `rewires-batchB-all.txt`.
+  - fast-gate rerun1 hit transient compile ordering at `STEP01`; rerun2 stabilized and passed `STEP01-08`.
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun2 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`).
+  - full matrix rerun1 (canonical): `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`; recovery retry executed once and failed).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-153111-hardcut-m2-wave204ab-wave205-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/163-hard-cut-m2-wave204ab-wave205-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `20`.
+  - retained bounded rewires: `60`.
+  - global tracked source declarations/files now `1083` remaining (`2277` baseline, `1194` reduced, `52.437418%` burndown).

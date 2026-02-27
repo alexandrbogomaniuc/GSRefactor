@@ -1,6 +1,6 @@
 package com.abs.casino.web.system.diagnosis.tasks;
 
-import com.dgphoenix.casino.common.engine.tracker.AbstractCommonTracker;
+import com.abs.casino.common.engine.tracker.AbstractCommonTracker;
 
 import java.util.concurrent.TimeUnit;
 

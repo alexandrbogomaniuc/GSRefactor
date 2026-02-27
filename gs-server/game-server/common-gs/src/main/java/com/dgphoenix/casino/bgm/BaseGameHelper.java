@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.bgm;
+package com.abs.casino.bgm;
 
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;

@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.sm.tracker.logout;
 
-import com.dgphoenix.casino.common.engine.tracker.AbstractCommonTracker;
+import com.abs.casino.common.engine.tracker.AbstractCommonTracker;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

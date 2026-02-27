@@ -1,7 +1,7 @@
 package com.abs.casino.support.cache.bank.edit.actions.common;
 
 
-import com.dgphoenix.casino.bgm.BaseGameHelper;
+import com.abs.casino.bgm.BaseGameHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.CoinsCache;
 import com.dgphoenix.casino.common.cache.LimitsCache;

@@ -1,6 +1,6 @@
 package com.abs.casino.common.promo.messages.server.notifications.prizes;
 
-import com.dgphoenix.casino.common.promo.messages.server.notifications.PromoNotification;
+import com.abs.casino.common.promo.messages.server.notifications.PromoNotification;
 
 /**
  * Created by vladislav on 1/24/17.

@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.transactiondata.storeddate;
 
-import com.dgphoenix.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
+import com.abs.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
 
 /**
  * User: Grien

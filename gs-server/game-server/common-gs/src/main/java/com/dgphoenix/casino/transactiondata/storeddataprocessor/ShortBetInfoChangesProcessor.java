@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bet.ShortBetInfo;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItem;
-import com.dgphoenix.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
+import com.abs.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 
 import java.nio.ByteBuffer;
