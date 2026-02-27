@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.transactiondata.storeddate.identifier;
+package com.abs.casino.common.transactiondata.storeddate.identifier;
 
 import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusSystemType;

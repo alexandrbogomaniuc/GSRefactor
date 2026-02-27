@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.client.canex.request.friends;
+package com.abs.casino.common.client.canex.request.friends;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;

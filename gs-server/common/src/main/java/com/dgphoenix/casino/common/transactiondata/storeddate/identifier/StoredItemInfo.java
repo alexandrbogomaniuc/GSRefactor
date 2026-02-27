@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.transactiondata.storeddate.identifier;
+package com.abs.casino.common.transactiondata.storeddate.identifier;
 
 /**
  * User: Grien

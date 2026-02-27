@@ -1,0 +1,16 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/friends/Friend.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/friends/GetFriendsExtSystem.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/friends/GetFriendsOutput.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/friends/GetFriendsRequest.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/friends/GetFriendsResponse.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/friends/Status.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/friends/UpdateFriendsRequest.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/friends/UpdateFriendsResponse.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/GetOnlinePlayersExtSystem.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/GetOnlinePlayersOutput.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/GetOnlinePlayersRequest.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/GetOnlinePlayersResponse.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/OnlinePlayer.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/Status.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/UpdateOnlinePlayersRequest.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlineplayer/UpdateOnlinePlayersResponse.java

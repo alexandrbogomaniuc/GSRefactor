@@ -1,0 +1,9 @@
+baseline=2277
+reduced=690
+remaining=1587
+burndown_percent=30.303030
+project02_percent=28.787879
+core_percent=64.393940
+portfolio_percent=82.196970
+eta_hours=65.4
+eta_workdays=8.18

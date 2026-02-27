@@ -2309,3 +2309,18 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - net retained declaration migrations: `14` (`W140A` retained, `W140B` deferred).
   - global tracked source declarations/files now `1613` remaining (`2277` baseline, `664` reduced, `29.161177%` burndown).
+
+## 2026-02-27 04:04 UTC (Hard-Cut M2 Wave 142A + 142B + 143)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W142A`: migrated 16 declaration packages in `common/client/canex/request/{friends,onlineplayer}`.
+  - `W142B`: migrated 10 declaration packages in `common/client/canex/request/onlinerooms` + `common/transactiondata/storeddate/identifier`.
+  - `W143`: integrated both batches with bounded verification (no additional rewires retained).
+- Validation:
+  - fast gate passed on rerun1 (`5/5`).
+  - full 9-step matrix passed on rerun1 (`9/9`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-040102-hardcut-m2-wave142ab-wave143-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/132-hard-cut-m2-wave142ab-wave143-parallel-batches-report-20260227.md`
+- Outcome:
+  - scoped declaration migrations retained: `26`.
+  - global tracked source declarations/files now `1587` remaining (`2277` baseline, `690` reduced, `30.303030%` burndown).

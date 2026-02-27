@@ -1,0 +1,1 @@
+main: package declarations only (com.dgphoenix -> com.abs)

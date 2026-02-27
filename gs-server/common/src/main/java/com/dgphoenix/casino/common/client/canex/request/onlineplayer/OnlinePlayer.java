@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.client.canex.request.onlineplayer;
+package com.abs.casino.common.client.canex.request.onlineplayer;
 
 import com.abs.casino.common.client.canex.request.CanexJsonRequest;
 import com.fasterxml.jackson.annotation.JsonProperty;
