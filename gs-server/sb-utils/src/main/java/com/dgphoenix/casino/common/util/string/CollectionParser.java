@@ -1,9 +1,9 @@
 package com.dgphoenix.casino.common.util.string;
 
-import com.dgphoenix.casino.common.util.string.mappers.DoubleMapper;
-import com.dgphoenix.casino.common.util.string.mappers.FromStringMapper;
-import com.dgphoenix.casino.common.util.string.mappers.IntMapper;
-import com.dgphoenix.casino.common.util.string.mappers.LongMapper;
+import com.abs.casino.common.util.string.mappers.DoubleMapper;
+import com.abs.casino.common.util.string.mappers.FromStringMapper;
+import com.abs.casino.common.util.string.mappers.IntMapper;
+import com.abs.casino.common.util.string.mappers.LongMapper;
 import java.util.Collection;
 import java.util.StringTokenizer;
 

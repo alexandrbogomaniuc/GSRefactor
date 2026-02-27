@@ -1,0 +1,10 @@
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/vault/AbstractCathegory.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/vault/FeaturedCathegory.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/vault/GameCathegory.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/vault/GameEntry.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/vault/VaultError.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/vault/VaultGamesKey.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/vault/VaultStartResponse.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/util/hardware/data/CPUInfo.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/util/hardware/data/HardwareInfo.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/util/hardware/data/MemoryInfo.java

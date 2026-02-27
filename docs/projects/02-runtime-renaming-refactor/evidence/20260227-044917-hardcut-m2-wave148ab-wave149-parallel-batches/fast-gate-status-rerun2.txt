@@ -1,0 +1,6 @@
+step1-common-install|PASS|exit=0
+step2-sb-utils-install|PASS|exit=0
+step3-common-persisters-install|PASS|exit=0
+step4-common-gs-install|PASS|exit=0
+step5-web-gs-package|PASS|exit=0
+step6-refactor-smoke|PASS|exit=0

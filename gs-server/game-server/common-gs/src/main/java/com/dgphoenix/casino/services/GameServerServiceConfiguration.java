@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.promo.network.NetworkTournamentInfo;
 import com.dgphoenix.casino.common.util.DatePeriod;
 import com.abs.casino.common.util.xml.TransientFieldsAllowedProvider;
 import com.abs.casino.common.util.xml.TransientFieldsReflectionProvider;
-import com.dgphoenix.casino.common.util.xml.xstreampool.XStreamPool;
+import com.abs.casino.common.util.xml.xstreampool.XStreamPool;
 import com.dgphoenix.casino.gs.managers.payment.bonus.CreationBonusHelper;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.services.bonus.ForbiddenGamesForBonusProvider;

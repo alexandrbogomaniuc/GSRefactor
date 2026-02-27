@@ -1,0 +1,28 @@
+[validation] step08 started at 2026-02-27T04:57:25Z
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.betsoft.casino.mp:persistance >------------------
+[INFO] Building Casino MP Games persistance layer 1.0.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The POM for com.betsoft.casino.mp:core-interfaces:jar:1.0.0-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for com.betsoft.casino.mp:core:jar:1.0.0-SNAPSHOT is missing, no dependency information available
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.916 s
+[INFO] Finished at: 2026-02-27T04:57:26Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal on project persistance: Could not resolve dependencies for project com.betsoft.casino.mp:persistance:jar:1.0.0-SNAPSHOT
+[ERROR] dependency: com.betsoft.casino.mp:core-interfaces:jar:1.0.0-SNAPSHOT (compile)
+[ERROR] 	Could not find artifact com.betsoft.casino.mp:core-interfaces:jar:1.0.0-SNAPSHOT
+[ERROR] dependency: com.betsoft.casino.mp:core:jar:1.0.0-SNAPSHOT (compile)
+[ERROR] 	Could not find artifact com.betsoft.casino.mp:core:jar:1.0.0-SNAPSHOT
+[ERROR] 
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException

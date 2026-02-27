@@ -1,0 +1,3 @@
+step1-sb-utils-install|PASS|exit=0
+step2-common-persisters-install|PASS|exit=0
+step3-common-gs-install|FAIL|exit=1

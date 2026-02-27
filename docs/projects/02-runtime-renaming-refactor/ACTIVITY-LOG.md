@@ -2372,3 +2372,27 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `38`.
   - retained bounded rewires: `36`.
   - global tracked source declarations/files now `1521` remaining (`2277` baseline, `756` reduced, `33.201581%` burndown).
+
+## 2026-02-27 05:15 UTC (Hard-Cut M2 Wave 148A + 148B + 149, Stabilized)
+- Continued batched-safe hard-cut migration from W147 checkpoint with non-overlapping ownership:
+  - `W148A`: migrated 10 declaration packages in `sb-utils/common/util/string/mappers` + `sb-utils/common/util/xml/xstreampool`.
+  - `W148B`: migrated 10 declaration packages in `sb-utils/common/vault` + `common/util/hardware/data`.
+  - `W149`: bounded importer rewires and validation stabilization.
+- Parallel execution mode:
+  - explorer produced non-overlapping batch sets.
+  - worker thread-cap limited concurrent workers; retained degraded-safe parallel mode (worker A + main-owned batch B), with strict file ownership maintained.
+- Stabilization:
+  - fast gate `rerun1` failed at `common-gs` because migrated `hardware.data` declarations were not yet installed from `common`.
+  - fast gate `rerun2` aligned dependency order by adding `common` install pre-step.
+  - full matrix `rerun1` failed at `step08` due module-POM mp-server invocation (missing reactor deps).
+  - full matrix `rerun2` corrected to root reactor invocation (`mp-server/pom.xml -pl persistance -am`).
+- Validation:
+  - fast gate `6/6 PASS` on rerun2.
+  - full matrix `9/9 PASS` on rerun2.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-044917-hardcut-m2-wave148ab-wave149-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/135-hard-cut-m2-wave148ab-wave149-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `20`.
+  - retained bounded rewires: `6`.
+  - global tracked source declarations/files now `1501` remaining (`2277` baseline, `776` reduced, `34.079930%` burndown).

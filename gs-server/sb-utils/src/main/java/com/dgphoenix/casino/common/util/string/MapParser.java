@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.util.string;
 
-import com.dgphoenix.casino.common.util.string.mappers.*;
+import com.abs.casino.common.util.string.mappers.*;
 import com.google.common.base.Splitter;
 
 import java.util.HashMap;

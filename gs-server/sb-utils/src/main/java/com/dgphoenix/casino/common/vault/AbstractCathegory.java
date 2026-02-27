@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.vault;
+package com.abs.casino.common.vault;
 
 /**
  * Created by nkurtushin on 31.05.17.

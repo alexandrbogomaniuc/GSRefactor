@@ -18,7 +18,7 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import com.dgphoenix.casino.common.util.SynchroTimeProvider;
 import com.dgphoenix.casino.common.util.hardware.HardwareConfigurationManager;
-import com.dgphoenix.casino.common.util.hardware.data.HardwareInfo;
+import com.abs.casino.common.util.hardware.data.HardwareInfo;
 import com.dgphoenix.casino.common.util.logkit.LoggingUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.util.web.HttpClientConnection;

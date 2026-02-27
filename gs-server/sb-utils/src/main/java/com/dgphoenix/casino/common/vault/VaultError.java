@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.vault;
+package com.abs.casino.common.vault;
 
 import java.util.ArrayList;
 import java.util.Arrays;

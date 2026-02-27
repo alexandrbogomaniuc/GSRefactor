@@ -1,8 +1,8 @@
 package com.dgphoenix.casino.common.util.hardware;
 
-import com.dgphoenix.casino.common.util.hardware.data.CPUInfo;
-import com.dgphoenix.casino.common.util.hardware.data.HardwareInfo;
-import com.dgphoenix.casino.common.util.hardware.data.MemoryInfo;
+import com.abs.casino.common.util.hardware.data.CPUInfo;
+import com.abs.casino.common.util.hardware.data.HardwareInfo;
+import com.abs.casino.common.util.hardware.data.MemoryInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hyperic.sigar.*;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.xml.xstreampool;
+package com.abs.casino.common.util.xml.xstreampool;
 
 import com.thoughtworks.xstream.XStream;
 

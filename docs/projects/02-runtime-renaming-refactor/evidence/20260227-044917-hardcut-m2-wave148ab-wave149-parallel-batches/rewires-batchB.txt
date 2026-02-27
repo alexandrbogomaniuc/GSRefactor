@@ -1,0 +1,3 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/server/ServerInfo.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/util/hardware/HardwareConfigurationManager.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/Initializer.java
