@@ -1,0 +1,4 @@
+PRE01: cd gs-server/utils && mvn -DskipTests install
+PRE01 rc=0
+PRE02: cd gs-server/casino-services && mvn -DskipTests install
+PRE02 rc=1

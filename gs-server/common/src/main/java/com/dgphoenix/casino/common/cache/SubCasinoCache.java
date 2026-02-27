@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.cache;
 
+import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.CollectionUtils;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util;
+package com.abs.casino.common.util;
 
 import com.google.gson.Gson;
 import org.springframework.http.MediaType;

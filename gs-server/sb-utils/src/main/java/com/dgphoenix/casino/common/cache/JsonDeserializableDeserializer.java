@@ -2,6 +2,7 @@ package com.dgphoenix.casino.common.cache;
 
 import java.io.IOException;
 
+import com.abs.casino.common.cache.JsonDeserializable;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 

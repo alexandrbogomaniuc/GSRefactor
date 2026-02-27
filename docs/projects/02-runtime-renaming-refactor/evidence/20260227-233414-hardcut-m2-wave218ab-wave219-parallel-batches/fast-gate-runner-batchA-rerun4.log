@@ -1,0 +1,8 @@
+STEP01: cd gs-server/common && mvn -DskipTests install
+STEP01 rc=0
+STEP02: cd gs-server/common-wallet && mvn -DskipTests install
+STEP02 rc=0
+STEP03: cd gs-server/sb-utils && mvn -DskipTests install
+STEP03 rc=0
+STEP04: cd gs-server/common-gs && mvn -DskipTests install
+STEP04 rc=1

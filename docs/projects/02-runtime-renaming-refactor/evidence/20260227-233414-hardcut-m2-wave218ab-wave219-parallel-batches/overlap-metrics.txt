@@ -1,0 +1,8 @@
+decl_overlap=0
+rewire_overlap=0
+cross_overlap_Adecl_Brewire=0
+cross_overlap_Bdecl_Arewire=0
+batchA_decl_count=10
+batchB_decl_count=10
+batchA_rewire_count=0
+batchB_rewire_count=0

@@ -3,6 +3,7 @@ package com.dgphoenix.casino.common.cache;
 import java.io.IOException;
 import java.util.Set;
 import java.util.stream.Collectors;
+import com.abs.casino.common.cache.JsonDeserializable;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import io.github.classgraph.ClassGraph;

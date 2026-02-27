@@ -3193,3 +3193,33 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - additional stabilization declaration migration retained: `1`.
   - total retained declaration migrations: `21`.
   - global tracked source declarations/files now `945` remaining (`2277` baseline, `1332` reduced, `58.498024%` burndown).
+
+## 2026-02-27 23:58 UTC (Hard-Cut M2 Wave 218A + 218B + 219)
+- Continued batched-safe hard-cut migration from W217 checkpoint with non-overlapping declaration sets:
+  - `W218A`: 10 declaration migrations across `common/cache`, `common/cache/data/game`, and `common/util` surfaces.
+  - `W218B`: 10 declaration migrations across `sb-utils/common/cache` and `sb-utils/common/util` surfaces.
+  - `W219`: integration and validation.
+- Parallel execution mode:
+  - `1 explorer + 2 workers + main` with strict non-overlap ownership.
+- Stabilization:
+  - planned rewires remained empty for both batches (`rewires-batchA-all.txt` and `rewires-batchB-all.txt`).
+  - fixed `STEP01` compile drift by aligning imports for moved declarations (`IDistributedConfigCache`, `ICreateGameListener`, `MiniGameInfo`, `GameLanguageHelper`, `RoundFinishedHelper`).
+  - fixed `STEP03` compile drift by aligning legacy-package JSON interfaces to moved `com.abs` declarations (`JsonSelfSerializable`, `JsonDeserializableDeserializer`, `JsonDeserializableModule`).
+  - rerun4 was rejected as non-canonical after runner path drift (`STEP04` wrong module path); rerun5 re-executed with canonical path map.
+  - full-matrix rerun1 was rejected as non-canonical after PRE path drift (`PRE02` wrong module path); rerun2 re-executed with canonical PRE map.
+  - no blind/global replacement performed.
+  - preserved pre-existing local changes (`cluster-hosts.properties`, `.tmp-w202-*`) outside commit scope.
+- Validation:
+  - fast gate batchA rerun1: `STEP01 FAIL`.
+  - fast gate batchA rerun2: `STEP01 FAIL`.
+  - fast gate batchA rerun3: `STEP03 FAIL`.
+  - fast gate batchA rerun5 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - fast gate batchB rerun1 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - full matrix rerun2 (canonical): `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`); retry1 failed (`rc=2`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-233414-hardcut-m2-wave218ab-wave219-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/170-hard-cut-m2-wave218ab-wave219-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `20`.
+  - retained bounded rewires: `0`.
+  - global tracked source declarations/files now `925` remaining (`2277` baseline, `1352` reduced, `59.376373%` burndown).

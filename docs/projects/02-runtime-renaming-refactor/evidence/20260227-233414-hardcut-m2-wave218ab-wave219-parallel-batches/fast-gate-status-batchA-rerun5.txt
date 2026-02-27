@@ -1,0 +1,4 @@
+result=FAIL
+first_failed_step=STEP09
+rc=2
+timestamp_utc=2026-02-27T23:46:16Z

@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.cache;
 
+import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.dgphoenix.casino.cassandra.persist.ICassandraBaseGameInfoPersister;
 import com.dgphoenix.casino.common.cache.data.account.PlayerDeviceType;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;

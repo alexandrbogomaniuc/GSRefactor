@@ -1,0 +1,23 @@
+[batchA declarations package-lines after cut]
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ICreateGameListener.java: package com.abs.casino.common.cache;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/IDistributedConfigCache.java: package com.abs.casino.common.cache;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/IRemoteCallSender.java: package com.abs.casino.common.cache;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameLanguageHelper.java: package com.abs.casino.common.cache.data.game;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/MiniGameInfo.java: package com.abs.casino.common.cache.data.game;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/RoundFinishedHelper.java: package com.abs.casino.common.cache.data.game;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/util/CurrencyHelper.java: package com.abs.casino.common.util;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/util/HttpServletUtils.java: package com.abs.casino.common.util;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/util/NewThreadRejectionHandler.java: package com.abs.casino.common.util;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/util/StringLongPair.java: package com.abs.casino.common.util;
+
+[batchB declarations package-lines after cut]
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/IServerStatusProvider.java: package com.abs.casino.common.cache;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/ITrackingCache.java: package com.abs.casino.common.cache;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/JsonAdditionalSerializer.java: package com.abs.casino.common.cache;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/JsonDeserializable.java: package com.abs.casino.common.cache;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/MultiThreadedExportableCache.java: package com.abs.casino.common.cache;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/BeanPropertyUtils.java: package com.abs.casino.common.util;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/BidirectionalMap.java: package com.abs.casino.common.util;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/ConversationWrapper.java: package com.abs.casino.common.util;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/InternalRNG.java: package com.abs.casino.common.util;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/NetDiagUtils.java: package com.abs.casino.common.util;

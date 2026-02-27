@@ -1,0 +1,4 @@
+STEP01 rc=0
+STEP02 rc=0
+STEP03 rc=0
+STEP04 rc=1

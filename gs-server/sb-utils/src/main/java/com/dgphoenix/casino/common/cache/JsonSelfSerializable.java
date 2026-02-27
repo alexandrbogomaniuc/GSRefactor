@@ -2,6 +2,8 @@ package com.dgphoenix.casino.common.cache;
 
 import java.io.IOException;
 
+import com.abs.casino.common.cache.JsonAdditionalSerializer;
+import com.abs.casino.common.cache.JsonDeserializable;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.core.type.WritableTypeId;

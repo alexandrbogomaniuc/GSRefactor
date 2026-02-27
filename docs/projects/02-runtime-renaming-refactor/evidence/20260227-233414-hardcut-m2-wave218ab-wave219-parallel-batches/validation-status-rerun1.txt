@@ -1,0 +1,4 @@
+PRE01 rc=0
+PRE02 rc=1
+result=FAIL
+first_failed_step=PRE02

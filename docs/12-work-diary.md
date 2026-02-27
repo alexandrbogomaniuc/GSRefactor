@@ -8101,3 +8101,23 @@
   - burndown `58.498024%`
   - Project 02 `36.964974%`, Core `68.482487%`, Portfolio `84.241243%`
   - ETA `39.0h` (`4.88` workdays)
+### 2026-02-27 23:58 UTC
+- Continued Project 02 hard-cut execution in `Dev_new` and completed `W218A/W218B + W219` using batched-safe parallel mode (`1 explorer + 2 workers + main`).
+- Scope retained:
+  - declaration migrations: `20`.
+  - bounded rewires: `0` (planned rewire manifests empty).
+- Stabilization/validation highlights:
+  - fixed `STEP01` import drift in `common` after declaration package cut (`IDistributedConfigCache`, `ICreateGameListener`, `MiniGameInfo`, `GameLanguageHelper`, `RoundFinishedHelper`).
+  - fixed `STEP03` `sb-utils` JSON interface coupling by explicitly importing moved `com.abs` declarations in legacy-package interfaces.
+  - discarded non-canonical fast-gate rerun4 (wrong `STEP04` path) and non-canonical full-matrix rerun1 (wrong `PRE02` path), then re-ran canonical sequences.
+  - canonical validation state: fast gate batchA rerun5 + batchB rerun1 and full matrix rerun2 all `STEP01-08 PASS`; `STEP09`/retry remain expected `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-233414-hardcut-m2-wave218ab-wave219-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/170-hard-cut-m2-wave218ab-wave219-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1352`, remaining `925`
+  - burndown `59.376373%`
+  - Project 02 `37.520004%`, Core `68.760002%`, Portfolio `84.380001%`
+  - ETA `38.2h` (`4.78` workdays)
+- Next:
+  - continue declaration-first overlap-safe waves while tracking `STEP09` `/startgame` alias `HTTP 502` as an external blocker.

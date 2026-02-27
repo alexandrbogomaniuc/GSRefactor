@@ -1,0 +1,1 @@
+STEP01: cd gs-server/common && mvn -DskipTests install

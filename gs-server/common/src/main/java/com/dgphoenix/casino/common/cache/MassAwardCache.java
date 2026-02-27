@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.cache;
 
+import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.dgphoenix.casino.common.cache.data.bonus.BaseMassAward;
 import com.dgphoenix.casino.common.exception.BonusException;
 import org.apache.logging.log4j.LogManager;
