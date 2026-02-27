@@ -7744,3 +7744,21 @@
   - ETA `53.1h` (`6.64` workdays)
 - Next:
   - continue declaration-only cache migrations while isolating smoke-tooling path assumptions in fast-gate scripts.
+### 2026-02-27 09:24 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W176A/W176B + W177`.
+- Scope retained:
+  - declaration-only migrations: `Compression`, `Caching`, `CompactionStrategy`, `ICassandraPersister` (`4` declarations).
+  - bounded rewires: `0`.
+- Validation outcome:
+  - fast gate `9/9 PASS` (`rerun1`)
+  - full matrix `9/9 PASS` (`rerun2`; rerun1 failed only due incorrect step08 runner path)
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-091037-hardcut-m2-wave176ab-wave177-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/149-hard-cut-m2-wave176ab-wave177-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `993`, remaining `1284`
+  - burndown `43.610013%`
+  - Project 02 `30.451252%`, Core `65.225626%`, Portfolio `82.612813%`
+  - ETA `52.9h` (`6.62` workdays)
+- Next:
+  - continue declaration-only cache migrations for remaining low-fanout declarations before bounded rewire batches.

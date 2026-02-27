@@ -1,0 +1,49 @@
+===== PRE-SETUP-UTILS START 2026-02-27T09:21:16Z =====
+cwd: /Users/alexb/Documents/Dev/Dev_new/gs-server/utils
+cmd: mvn -DskipTests install
+===== PRE-SETUP-UTILS END exit=0 2026-02-27T09:21:22Z =====
+===== PRE-SETUP-SB-UTILS START 2026-02-27T09:21:22Z =====
+cwd: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils
+cmd: mvn -DskipTests install
+===== PRE-SETUP-SB-UTILS END exit=0 2026-02-27T09:21:26Z =====
+===== PRE-SETUP-COMMON-PROMO START 2026-02-27T09:21:26Z =====
+cwd: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo
+cmd: mvn -DskipTests install
+===== PRE-SETUP-COMMON-PROMO END exit=0 2026-02-27T09:21:29Z =====
+===== STEP01 START 2026-02-27T09:21:29Z =====
+cwd: /Users/alexb/Documents/Dev/Dev_new/gs-server/common
+cmd: mvn -DskipTests install
+===== STEP01 END exit=0 2026-02-27T09:21:33Z =====
+===== STEP02 START 2026-02-27T09:21:33Z =====
+cwd: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet
+cmd: mvn -DskipTests install
+===== STEP02 END exit=0 2026-02-27T09:21:36Z =====
+===== STEP03 START 2026-02-27T09:21:36Z =====
+cwd: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils
+cmd: mvn -DskipTests install
+===== STEP03 END exit=0 2026-02-27T09:21:41Z =====
+===== STEP04 START 2026-02-27T09:21:41Z =====
+cwd: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo
+cmd: mvn -DskipTests install
+===== STEP04 END exit=0 2026-02-27T09:21:44Z =====
+===== STEP05 START 2026-02-27T09:21:44Z =====
+cwd: /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters
+cmd: mvn -DskipTests install
+===== STEP05 END exit=0 2026-02-27T09:21:49Z =====
+===== STEP06 START 2026-02-27T09:21:49Z =====
+cwd: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs
+cmd: mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+===== STEP06 END exit=0 2026-02-27T09:21:58Z =====
+===== STEP07 START 2026-02-27T09:21:58Z =====
+cwd: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs
+cmd: mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+===== STEP07 END exit=0 2026-02-27T09:22:13Z =====
+===== STEP08 START 2026-02-27T09:22:13Z =====
+cwd: /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance
+cmd: mvn -DskipTests install
+===== STEP08 END exit=0 2026-02-27T09:22:16Z =====
+===== STEP09 START 2026-02-27T09:22:16Z =====
+cwd: /Users/alexb/Documents/Dev/Dev_new
+cmd: node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+===== STEP09 END exit=0 2026-02-27T09:22:44Z =====
+===== MATRIX COMPLETE PASS 2026-02-27T09:22:44Z =====

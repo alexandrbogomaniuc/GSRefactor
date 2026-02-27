@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra.persist.engine.configuration;
+package com.abs.casino.cassandra.persist.engine.configuration;
 
 
 /**

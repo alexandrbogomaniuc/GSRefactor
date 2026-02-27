@@ -2675,3 +2675,25 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `4`.
   - retained bounded rewires: `0`.
   - global tracked source declarations/files now `1288` remaining (`2277` baseline, `989` reduced, `43.434343%` burndown).
+
+## 2026-02-27 09:24 UTC (Hard-Cut M2 Wave 176A + 176B + 177)
+- Continued batched-safe hard-cut migration from W175 checkpoint with declaration-only split:
+  - `W176A`: `Compression`, `Caching`.
+  - `W176B`: `CompactionStrategy`, `ICassandraPersister`.
+  - `W177`: integration and validation.
+- Parallel execution mode:
+  - worker completed Batch A; main completed Batch B due thread-cap fallback.
+- Stabilization:
+  - no source rollback required.
+  - full-matrix rerun1 failed at step08 due incorrect runner path (`gs-server/mp-server/persistance`), not source regressions.
+  - rerun2 passed after using corrected path (`/mp-server/persistance`).
+- Validation:
+  - fast gate rerun1 passed `9/9`.
+  - full matrix rerun2 passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-091037-hardcut-m2-wave176ab-wave177-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/149-hard-cut-m2-wave176ab-wave177-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `4`.
+  - retained bounded rewires: `0`.
+  - global tracked source declarations/files now `1284` remaining (`2277` baseline, `993` reduced, `43.610013%` burndown).

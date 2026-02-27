@@ -1,0 +1,2 @@
+gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/configuration/Compression.java
+gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/configuration/Caching.java
