@@ -1,0 +1,121 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:gsn-common-gs >-----------------
+[INFO] Building gsn-common-gs 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:2.8:copy (default) @ gsn-common-gs ---
+[INFO] Configured Artifact: javax.xml.bind:jaxb-api:2.2.7:jar
+[INFO] Configured Artifact: javax.xml.ws:jaxws-api:2.2.9:jar
+[INFO] javax.xml.bind:jaxb-api:2.2.7:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] javax.xml.ws:jaxws-api:2.2.9:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ gsn-common-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-gs ---
+[INFO] Compiling 103 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (compile-generated-sources) @ gsn-common-gs ---
+[INFO] Compiling 103 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ gsn-common-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 22 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common-gs ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-common-gs ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.dgphoenix.casino.filters.XssSanitizerWrapperTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.225 sec - in com.dgphoenix.casino.filters.XssSanitizerWrapperTest
+Running com.dgphoenix.casino.GeoIpTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.656 sec - in com.dgphoenix.casino.GeoIpTest
+Running com.dgphoenix.casino.gs.managers.payment.bonus.CreationBonusHelperTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.085 sec - in com.dgphoenix.casino.gs.managers.payment.bonus.CreationBonusHelperTest
+Running com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManagerTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 sec - in com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManagerTest
+Running com.dgphoenix.casino.gs.managers.game.settings.DynamicCoinManagerTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.068 sec - in com.dgphoenix.casino.gs.managers.game.settings.DynamicCoinManagerTest
+Running com.dgphoenix.casino.gs.managers.game.settings.GamesLevelHelperTest
+Tests run: 33, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.114 sec - in com.dgphoenix.casino.gs.managers.game.settings.GamesLevelHelperTest
+Running com.dgphoenix.casino.gs.managers.game.settings.GameSettingsManagerTest
+Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.142 sec - in com.dgphoenix.casino.gs.managers.game.settings.GameSettingsManagerTest
+Running com.dgphoenix.casino.gs.managers.freegame.FreeGameCalculatorTest
+Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 sec - in com.dgphoenix.casino.gs.managers.freegame.FreeGameCalculatorTest
+Running com.dgphoenix.casino.gs.persistance.CassandraTransactionDataPersisterTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.09 sec - in com.dgphoenix.casino.gs.persistance.CassandraTransactionDataPersisterTest
+Running com.dgphoenix.casino.gs.socket.mq.MQServiceHandlerTest
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/Users/alexb/.m2/repository/org/apache/logging/log4j/log4j-slf4j-impl/2.20.0/log4j-slf4j-impl-2.20.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/alexb/.m2/repository/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/alexb/.m2/repository/org/slf4j/slf4j-nop/1.6.1/slf4j-nop-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.102 sec - in com.dgphoenix.casino.gs.socket.mq.MQServiceHandlerTest
+Running com.dgphoenix.casino.gs.socket.mq.GameUserHistoryServiceTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 sec - in com.dgphoenix.casino.gs.socket.mq.GameUserHistoryServiceTest
+Running com.dgphoenix.casino.tracker.CurrencyUpdateProcessorTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in com.dgphoenix.casino.tracker.CurrencyUpdateProcessorTest
+Running com.dgphoenix.casino.KryoSerializationTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.635 sec - in com.dgphoenix.casino.KryoSerializationTest
+Running com.dgphoenix.casino.system.ItemDistributorTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in com.dgphoenix.casino.system.ItemDistributorTest
+Running com.dgphoenix.casino.common.util.compress.LZ4Test
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.004 sec <<< FAILURE! - in com.dgphoenix.casino.common.util.compress.LZ4Test
+testCompressEmptyString(com.dgphoenix.casino.common.util.compress.LZ4Test)  Time elapsed: 0.004 sec  <<< ERROR!
+java.lang.ExceptionInInitializerError
+	at com.dgphoenix.casino.common.util.compress.LZ4Test.testCompressor(LZ4Test.java:31)
+	at com.dgphoenix.casino.common.util.compress.LZ4Test.testCompressEmptyString(LZ4Test.java:22)
+Caused by: java.lang.UnsupportedOperationException: Unsupported OS/arch, cannot find /net/jpountz/util/darwin/aarch64/liblz4-java.dylib. Please try building from source.
+	at com.dgphoenix.casino.common.util.compress.LZ4Test.testCompressor(LZ4Test.java:31)
+	at com.dgphoenix.casino.common.util.compress.LZ4Test.testCompressEmptyString(LZ4Test.java:22)
+
+testCompressString(com.dgphoenix.casino.common.util.compress.LZ4Test)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class com.dgphoenix.casino.common.util.LZ4Compressor
+	at com.dgphoenix.casino.common.util.compress.LZ4Test.testCompressor(LZ4Test.java:31)
+	at com.dgphoenix.casino.common.util.compress.LZ4Test.testCompressString(LZ4Test.java:17)
+
+Running com.dgphoenix.casino.common.util.xml.OldXmlParserTest
+log4j:WARN No appenders could be found for logger (com.abs.casino.common.util.xml.parser.XmlHandlerRegistry).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 sec - in com.dgphoenix.casino.common.util.xml.OldXmlParserTest
+Running com.dgphoenix.casino.services.bonus.ForbiddenGamesForBonusProviderTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.041 sec - in com.dgphoenix.casino.services.bonus.ForbiddenGamesForBonusProviderTest
+Running com.dgphoenix.casino.services.geoip.CountryRestrictionServiceTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 sec - in com.dgphoenix.casino.services.geoip.CountryRestrictionServiceTest
+
+Results :
+
+Tests in error: 
+  LZ4Test.testCompressEmptyString:22->testCompressor:31 » ExceptionInInitializer
+  LZ4Test.testCompressString:17->testCompressor:31 NoClassDefFound Could not ini...
+
+Tests run: 131, Failures: 0, Errors: 2, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.550 s
+[INFO] Finished at: 2026-02-27T03:29:48Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.19.1:test (default-test) on project gsn-common-gs: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/surefire-reports for the individual test results.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

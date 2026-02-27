@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.promo.messages.client.requests;
+package com.abs.casino.common.promo.messages.client.requests;
 
 import com.dgphoenix.casino.common.cache.Identifiable;
 

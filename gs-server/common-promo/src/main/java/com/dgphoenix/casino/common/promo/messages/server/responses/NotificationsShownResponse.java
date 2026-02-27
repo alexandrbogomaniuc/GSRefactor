@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.promo.messages.server.responses;
+package com.abs.casino.common.promo.messages.server.responses;
 
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 import org.apache.commons.lang.StringUtils;

@@ -1,0 +1,9 @@
+wave_group=W140A+W140B+W141
+planned_batchA_declarations=14
+planned_batchB_declarations=14
+retained_batchA_declarations=14
+retained_batchB_declarations=0
+deferred_batchB=true
+retained_rewires=0
+validation_fast_gate=PASS_rerun3
+validation_full_matrix=PASS_9of9_rerun3

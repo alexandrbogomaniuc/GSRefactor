@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.promo.messages.client.requests;
+package com.abs.casino.common.promo.messages.client.requests;
 
 /**
  * @deprecated It is the old version of {@link com.dgphoenix.casino.common.promo.messages.client.requests.NotificationsShown}

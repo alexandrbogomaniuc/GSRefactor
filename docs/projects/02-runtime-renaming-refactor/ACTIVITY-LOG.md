@@ -2289,3 +2289,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - net retained declaration migrations: `15`
   - global tracked source declarations/files now `1627` remaining (`2277` baseline, `650` reduced, `28.546333%` burndown)
+
+## 2026-02-27 03:35 UTC (Hard-Cut M2 Wave 140A + 140B + 141, Stabilized)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W140A`: planned 14 declaration migrations in `common-promo/messages/{client/requests,server/notifications/prizes,server/responses}`.
+  - `W140B`: planned 14 declaration migrations in `sb-utils/src/test` scope.
+  - `W141`: integration/stabilization and authoritative validation.
+- Stabilization:
+  - `rerun1` failed at `sb-utils` test compile due B-scope package compatibility drift.
+  - deferred `W140B` for compatibility safety (`stabilization-batchB-restore-list.txt`).
+  - `rerun2` failed at `common-gs` due non-parity command flags (tests executed; arm64 LZ4 native mismatch).
+  - aligned gate parity (`-DskipTests` where required), `rerun3` passed.
+- Validation:
+  - fast gate `5/5 PASS` (rerun3).
+  - full matrix `9/9 PASS` (rerun3).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-032629-hardcut-m2-wave140ab-wave141-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/131-hard-cut-m2-wave140ab-wave141-stabilized-report-20260227.md`
+- Outcome:
+  - net retained declaration migrations: `14` (`W140A` retained, `W140B` deferred).
+  - global tracked source declarations/files now `1613` remaining (`2277` baseline, `664` reduced, `29.161177%` burndown).
