@@ -1,0 +1,72 @@
+[refactor-onboard] Repo root detected: /Users/alexb/Documents/Dev/Dev_new
+[refactor-onboard] Required repo files are present
+[refactor-onboard] Found docker
+[refactor-onboard] Found java
+[refactor-onboard] Found mvn
+[refactor-onboard] Found node
+[refactor-onboard] Found npm
+[refactor-onboard] Found curl
+[refactor-onboard] Found unzip
+[refactor-onboard] Found rsync (faster file sync path will be used)
+[refactor-onboard] Docker Compose plugin is available
+[refactor-start] Preflight ok: runtime assets will be auto-bootstrapped during 'up' if missing
+[refactor-start] /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/scripts/sync-cluster-hosts.sh
+Synced cluster host config:
+  source: /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/config/cluster-hosts.properties
+  env:    /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor/.cluster-hosts.env
+  compose:/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor/.env
+  legacy: /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/configs/.env
+  nginx:  /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/configs/static/cluster-hosts.inc
+  startgame rewrite: /Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/configs/static/startgame-rewrite.inc
+  portal: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/resources/cluster-hosts.properties
+  runtime gs classpath: /Users/alexb/Documents/Dev/Dev_new/gs-server/../Doker/runtime-gs/webapps/gs/ROOT/WEB-INF/classes/cluster-hosts.properties
+[refactor-start] docker compose -p refactor --env-file .env up -d c1-refactor zookeeper redis
+time="2026-02-27T02:22:22Z" level=warning msg="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container refactor-redis-1 Running 
+ Container refactor-zookeeper-1 Running 
+ Container refactor-c1-refactor-1 Recreate 
+ Container refactor-c1-refactor-1 Recreated 
+ Container refactor-c1-refactor-1 Starting 
+ Container refactor-c1-refactor-1 Started 
+[refactor-start] docker compose -p refactor --env-file .env up -d kafka
+time="2026-02-27T02:22:23Z" level=warning msg="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container refactor-zookeeper-1 Running 
+ Container refactor-kafka-1 Running 
+[refactor-start] docker compose -p refactor --env-file .env up -d config-service session-service gameplay-orchestrator wallet-adapter bonus-frb-service history-service multiplayer-service protocol-adapter mp gs static
+time="2026-02-27T02:22:23Z" level=warning msg="/Users/alexb/Documents/Dev/Dev_new/gs-server/deploy/docker/refactor/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container refactor-config-service-1 Running 
+ Container refactor-redis-1 Running 
+ Container refactor-c1-refactor-1 Running 
+ Container refactor-zookeeper-1 Running 
+ Container refactor-kafka-1 Running 
+ Container refactor-mp-1 Recreate 
+ Container refactor-mp-1 Recreated 
+ Container refactor-gs-1 Recreate 
+ Container refactor-gs-1 Recreated 
+ Container refactor-static-1 Running 
+ Container refactor-multiplayer-service-1 Starting 
+ Container refactor-mp-1 Starting 
+ Container refactor-protocol-adapter-1 Starting 
+ Container refactor-history-service-1 Starting 
+ Container refactor-bonus-frb-service-1 Starting 
+ Container refactor-gameplay-orchestrator-1 Starting 
+ Container refactor-session-service-1 Starting 
+ Container refactor-wallet-adapter-1 Starting 
+ Container refactor-mp-1 Started 
+ Container refactor-gs-1 Starting 
+ Container refactor-history-service-1 Started 
+ Container refactor-gameplay-orchestrator-1 Started 
+ Container refactor-multiplayer-service-1 Started 
+ Container refactor-wallet-adapter-1 Started 
+ Container refactor-session-service-1 Started 
+ Container refactor-protocol-adapter-1 Started 
+ Container refactor-bonus-frb-service-1 Started 
+ Container refactor-gs-1 Started 
+[refactor-start] Quick health checks
+curl: (22) The requested URL returned error: 502
+[refactor-start] static facade check failed
+[refactor-start] config-service ok
+curl: (56) Recv failure: Connection reset by peer
+[refactor-start] gs http check failed
+[refactor-start] Launch alias URL (refactor static facade): http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en
+[refactor-onboard] Refactor environment start command finished. Run smoke if you want a quick check.

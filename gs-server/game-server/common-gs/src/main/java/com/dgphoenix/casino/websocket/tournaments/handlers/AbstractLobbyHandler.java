@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.websocket.tournaments.handlers;
+package com.abs.casino.websocket.tournaments.handlers;
 
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;

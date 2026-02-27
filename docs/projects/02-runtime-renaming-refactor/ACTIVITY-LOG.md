@@ -2242,3 +2242,31 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - updated tracked declarations/files: `1668` remaining (`2277` baseline, `609` reduced, `26.745718%` burndown).
 - Next:
   - continue next non-overlapping batched cycle under the same evidence-first protocol.
+
+## 2026-02-27 02:54 UTC (Hard-Cut M2 Wave 136A + 136B + 137, Stabilized)
+- Continued batched-safe hard-cut migration from W135 checkpoint with non-overlapping ownership:
+  - Planned `W136A`: `websocket/tournaments/handlers` + `sb-utils/common/socket` declarations.
+  - Planned `W136B`: `promo/messages/handlers` + `transactiondata/storeddataprocessor` declarations.
+  - Integration `W137`: bounded importer rewires.
+- Stabilization and retention:
+  - Deferred `sb-utils/common/socket` declaration slice for runtime compatibility.
+  - Retained stable declaration migrations in:
+    - `common-gs/websocket/tournaments/handlers` (`8`)
+    - `common-gs/promo/messages/handlers` (`8`)
+    - `common-gs/transactiondata/storeddataprocessor` (`9`)
+  - Retained bounded rewires (`4`) in:
+    - `GameServerComponentsConfiguration.java`
+    - `GameCommandsProcessorsConfiguration.java`
+    - `WebSocketSessionsController.java`
+    - `TournamentMessageHandlersFactory.java`
+- Validation:
+  - `rerun1`: fail (compile + smoke)
+  - `rerun2`: compile pass, smoke fail
+  - `rerun3`: steps `1..8` pass, smoke fail (runtime OOM instability)
+  - `rerun4`: fast gate `5/5 PASS`; full matrix `9/9 PASS`
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-021132-hardcut-m2-wave136ab-wave137-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/129-hard-cut-m2-wave136ab-wave137-parallel-batches-report-20260227.md`
+- Outcome:
+  - net retained declaration migrations: `25`
+  - global tracked source declarations/files now `1642` remaining (`2277` baseline, `635` reduced, `27.888450%` burndown)

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.transactiondata.storeddataprocessor;
+package com.abs.casino.transactiondata.storeddataprocessor;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister;

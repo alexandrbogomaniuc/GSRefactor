@@ -12,7 +12,7 @@ import com.dgphoenix.casino.promo.tournaments.messages.*;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
 import com.dgphoenix.casino.websocket.tournaments.IMessageHandler;
 import com.dgphoenix.casino.websocket.tournaments.TournamentWebSocketMessageListener;
-import com.dgphoenix.casino.websocket.tournaments.handlers.*;
+import com.abs.casino.websocket.tournaments.handlers.*;
 import com.google.common.collect.Lists;
 
 import java.util.List;

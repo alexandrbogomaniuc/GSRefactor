@@ -7463,3 +7463,14 @@
   - tracked declarations/files now `1668` remaining (`2277` baseline, `609` reduced, `26.745718%` burndown).
 - Next:
   - continue with next low-risk non-overlapping parallel batch using same worker ownership protocol.
+
+### 2026-02-27 02:54 UTC
+- Dev_new continuity update: completed stabilized hard-cut integration for proposed `W136A/W136B` as `W137` in GSRefactor.
+- Validation status: fast gate PASS (rerun4) and full matrix PASS `9/9` (rerun4), including runtime smoke.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-021132-hardcut-m2-wave136ab-wave137-parallel-batches/`
+- Outcome:
+  - retained migrations: `25` declarations (websocket tournament handlers + promo message handlers + stored-data processors), with `sb-utils/common/socket` deferred for compatibility safety.
+  - tracked declarations/files now `1642` remaining (`2277` baseline, `635` reduced, `27.888450%` burndown).
+- Next:
+  - continue with next low-risk non-overlapping parallel batch using same worker ownership protocol.

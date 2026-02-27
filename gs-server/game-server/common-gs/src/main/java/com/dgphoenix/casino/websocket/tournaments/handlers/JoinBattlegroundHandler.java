@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.websocket.tournaments.handlers;
+package com.abs.casino.websocket.tournaments.handlers;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.common.cache.BankInfoCache;

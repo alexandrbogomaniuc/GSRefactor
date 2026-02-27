@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.messages.handlers;
+package com.abs.casino.promo.messages.handlers;
 
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.IAccountInfo;

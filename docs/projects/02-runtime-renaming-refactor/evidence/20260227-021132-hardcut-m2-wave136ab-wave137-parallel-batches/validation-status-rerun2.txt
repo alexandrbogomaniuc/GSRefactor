@@ -1,0 +1,9 @@
+step1-common-install|PASS|exit=0
+step2-common-wallet-test|PASS|exit=0
+step3-sb-utils-test|PASS|exit=0
+step4-promo-persisters-install|PASS|exit=0
+step5-common-gs-install|PASS|exit=0
+step6-cassandra-cache-test|PASS|exit=0
+step7-web-gs-package|PASS|exit=0
+step8-mp-core-persistance-package|PASS|exit=0
+step9-refactor-smoke|FAIL|exit=2

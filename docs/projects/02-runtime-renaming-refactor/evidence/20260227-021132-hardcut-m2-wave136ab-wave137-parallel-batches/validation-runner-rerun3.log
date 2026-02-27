@@ -1,0 +1,18 @@
+2026-02-27T02:43:10+0000|START|step01|mvn -f gs-server/common/pom.xml install -DskipTests -Dcluster.properties=local/local-machine.properties
+2026-02-27T02:43:15+0000|PASS|step01|exit=0
+2026-02-27T02:43:15+0000|START|step02|mvn -f gs-server/common-wallet/pom.xml test -Dcluster.properties=local/local-machine.properties
+2026-02-27T02:43:18+0000|PASS|step02|exit=0
+2026-02-27T02:43:18+0000|START|step03|mvn -f gs-server/sb-utils/pom.xml test -Dcluster.properties=local/local-machine.properties
+2026-02-27T02:43:21+0000|PASS|step03|exit=0
+2026-02-27T02:43:21+0000|START|step04|mvn -f gs-server/promo/persisters/pom.xml install -DskipTests -Dcluster.properties=local/local-machine.properties
+2026-02-27T02:43:24+0000|PASS|step04|exit=0
+2026-02-27T02:43:24+0000|START|step05|mvn -f gs-server/game-server/common-gs/pom.xml install -DskipTests -Dcluster.properties=local/local-machine.properties
+2026-02-27T02:43:30+0000|PASS|step05|exit=0
+2026-02-27T02:43:30+0000|START|step06|mvn -f gs-server/cassandra-cache/pom.xml test -Dcluster.properties=local/local-machine.properties
+2026-02-27T02:43:34+0000|PASS|step06|exit=0
+2026-02-27T02:43:34+0000|START|step07|mvn -f gs-server/game-server/web-gs/pom.xml package -DskipTests -Dcluster.properties=local/local-machine.properties
+2026-02-27T02:43:46+0000|PASS|step07|exit=0
+2026-02-27T02:43:46+0000|START|step08|mvn -f mp-server/pom.xml package -pl core,persistance -am -DskipTests -Dcluster.properties=local/local-machine.properties
+2026-02-27T02:43:51+0000|PASS|step08|exit=0
+2026-02-27T02:43:51+0000|START|step09|node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
+2026-02-27T02:45:13+0000|FAIL|step09|exit=2

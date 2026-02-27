@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.messages.handlers;
+package com.abs.casino.promo.messages.handlers;
 
 import com.dgphoenix.casino.common.promo.PromoCampaignMember;
 import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;

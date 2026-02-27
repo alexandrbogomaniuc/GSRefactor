@@ -1,0 +1,17 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/AbstractMessageHandler.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoMessagesProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoNotificationsProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/IMessageHandler.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/MessagesHandlersFactory.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/NotificationShownHandler.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/NotificationsShownProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/PromoEnterProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/AccountChangesProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/GameSessionHistoryChangesProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/LasthandChangesProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PaymentTransactionChangesProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PlayerBetChangesProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PlayerBetTransferProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PromoCampaignMembersChangesProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PromoTournamentRankChangesProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/ShortBetInfoChangesProcessor.java
