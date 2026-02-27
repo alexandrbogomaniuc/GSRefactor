@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.*;
 import com.dgphoenix.casino.common.transport.TObject;
 import com.abs.casino.promo.tournaments.messages.PrizeInfo;
-import com.dgphoenix.casino.websocket.tournaments.IMessageHandler;
+import com.abs.casino.websocket.tournaments.IMessageHandler;
 
 import java.util.ArrayList;
 import java.util.Comparator;

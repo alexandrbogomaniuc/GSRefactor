@@ -27,8 +27,8 @@ import com.abs.casino.promo.tournaments.messages.JoinTournament;
 import com.abs.casino.promo.tournaments.messages.JoinTournamentResponse;
 import com.abs.casino.promo.tournaments.messages.PlayerTournamentStateChanged;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
-import com.dgphoenix.casino.websocket.tournaments.ISocketClient;
-import com.dgphoenix.casino.websocket.tournaments.TournamentWebSocketMessageListener;
+import com.abs.casino.websocket.tournaments.ISocketClient;
+import com.abs.casino.websocket.tournaments.TournamentWebSocketMessageListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

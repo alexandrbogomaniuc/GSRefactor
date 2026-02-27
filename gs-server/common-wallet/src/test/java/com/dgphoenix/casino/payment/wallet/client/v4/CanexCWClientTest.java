@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.payment.wallet.client.v4;
 
-import com.dgphoenix.casino.common.client.LoggableWithResponseCodeClient;
+import com.abs.casino.common.client.LoggableWithResponseCodeClient;
 import com.abs.casino.common.client.canex.request.RequestType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.rest.CustomRestTemplate;

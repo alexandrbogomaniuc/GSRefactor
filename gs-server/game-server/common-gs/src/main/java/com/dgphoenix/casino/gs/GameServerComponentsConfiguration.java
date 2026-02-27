@@ -67,7 +67,7 @@ import com.dgphoenix.casino.transactiondata.BasicTransactionDataCreator;
 import com.abs.casino.transactiondata.storeddataprocessor.*;
 import com.dgphoenix.casino.websocket.IWebSocketSessionsController;
 import com.dgphoenix.casino.websocket.WebSocketSessionsController;
-import com.dgphoenix.casino.websocket.tournaments.TournamentWebSocketSessionsController;
+import com.abs.casino.websocket.tournaments.TournamentWebSocketSessionsController;
 import org.quartz.Scheduler;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;

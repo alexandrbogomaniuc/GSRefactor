@@ -1,0 +1,4 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/AbstractLoggableClient.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/IJsonCWClient.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/IJsonRequest.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/LoggableWithResponseCodeClient.java

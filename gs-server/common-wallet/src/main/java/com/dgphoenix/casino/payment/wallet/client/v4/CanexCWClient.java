@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.client.IJsonCWClient;
+import com.abs.casino.common.client.IJsonCWClient;
 import com.abs.casino.common.client.canex.request.CanexJsonRequest;
 import com.abs.casino.common.client.canex.request.CanexRequest;
 import com.abs.casino.common.client.canex.request.RequestType;

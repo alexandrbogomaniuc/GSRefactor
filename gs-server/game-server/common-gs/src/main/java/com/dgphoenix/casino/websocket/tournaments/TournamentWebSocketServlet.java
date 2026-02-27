@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.websocket.tournaments;
+package com.abs.casino.websocket.tournaments;
 
 import org.eclipse.jetty.websocket.servlet.WebSocketServlet;
 import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;

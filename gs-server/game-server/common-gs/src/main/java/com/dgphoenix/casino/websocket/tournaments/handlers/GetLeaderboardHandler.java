@@ -12,7 +12,7 @@ import com.abs.casino.promo.tournaments.messages.Error;
 import com.abs.casino.promo.tournaments.messages.GetLeaderboard;
 import com.abs.casino.promo.tournaments.messages.Leaderboard;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
-import com.dgphoenix.casino.websocket.tournaments.ISocketClient;
+import com.abs.casino.websocket.tournaments.ISocketClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

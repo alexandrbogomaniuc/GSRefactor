@@ -1,0 +1,9 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/GsonClassSerializer.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/GsonFactory.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/IMessageHandler.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/ISocketClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/TournamentClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/TournamentWebSocket.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/TournamentWebSocketMessageListener.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/TournamentWebSocketServlet.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/TournamentWebSocketSessionsController.java

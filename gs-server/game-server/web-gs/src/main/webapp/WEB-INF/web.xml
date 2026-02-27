@@ -296,7 +296,7 @@
 
     <servlet>
         <servlet-name>MQTournamentLobbyWebSocketServlet</servlet-name>
-        <servlet-class>com.dgphoenix.casino.websocket.tournaments.TournamentWebSocketServlet</servlet-class>
+        <servlet-class>com.abs.casino.websocket.tournaments.TournamentWebSocketServlet</servlet-class>
         <load-on-startup>100</load-on-startup>
     </servlet>
     <servlet-mapping>

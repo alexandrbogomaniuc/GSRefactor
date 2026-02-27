@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.client;
+package com.abs.casino.common.client;
 
 import com.abs.casino.common.client.canex.request.friends.GetFriendsResponse;
 import com.abs.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersResponse;

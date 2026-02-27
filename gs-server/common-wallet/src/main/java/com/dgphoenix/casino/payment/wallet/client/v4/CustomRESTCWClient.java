@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.client.AbstractLoggableClient;
+import com.abs.casino.common.client.AbstractLoggableClient;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.exception.WalletException;
 import com.abs.casino.common.rest.CustomRestTemplate;

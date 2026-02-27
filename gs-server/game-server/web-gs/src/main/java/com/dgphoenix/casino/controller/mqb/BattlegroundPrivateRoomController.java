@@ -1,9 +1,9 @@
 package com.abs.casino.controller.mqb;
 
-import com.dgphoenix.casino.common.client.canex.request.friends.UpdateFriendsRequest;
-import com.dgphoenix.casino.common.client.canex.request.friends.UpdateFriendsResponse;
-import com.dgphoenix.casino.common.client.canex.request.onlineplayer.UpdateOnlinePlayersRequest;
-import com.dgphoenix.casino.common.client.canex.request.onlineplayer.UpdateOnlinePlayersResponse;
+import com.abs.casino.common.client.canex.request.friends.UpdateFriendsRequest;
+import com.abs.casino.common.client.canex.request.friends.UpdateFriendsResponse;
+import com.abs.casino.common.client.canex.request.onlineplayer.UpdateOnlinePlayersRequest;
+import com.abs.casino.common.client.canex.request.onlineplayer.UpdateOnlinePlayersResponse;
 import com.abs.casino.common.client.canex.request.privateroom.PrivateRoom;
 import com.abs.casino.common.client.canex.request.privateroom.UpdateRoomResponse;
 import com.dgphoenix.casino.common.exception.CommonException;

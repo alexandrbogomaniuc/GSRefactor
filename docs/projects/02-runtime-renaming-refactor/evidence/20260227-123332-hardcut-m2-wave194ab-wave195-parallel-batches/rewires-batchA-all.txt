@@ -1,0 +1,9 @@
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClient.java
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CustomRESTCWClient.java
+gs-server/common-wallet/src/test/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClientTest.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/CanexJsonRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/BattlegroundService.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/util/BGFStatusUtil.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/BattlegroundPrivateRoomController.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/response/PostFriendsResponse.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/response/PostOnlinePlayersResponse.java

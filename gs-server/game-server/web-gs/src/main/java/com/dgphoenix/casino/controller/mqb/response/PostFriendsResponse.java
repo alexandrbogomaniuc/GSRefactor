@@ -1,6 +1,6 @@
 package com.abs.casino.controller.mqb.response;
 
-import com.dgphoenix.casino.common.client.canex.request.friends.Friend;
+import com.abs.casino.common.client.canex.request.friends.Friend;
 
 import java.util.List;
 

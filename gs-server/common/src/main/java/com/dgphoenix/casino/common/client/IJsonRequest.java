@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.client;
+package com.abs.casino.common.client;
 
 public interface IJsonRequest {
 }

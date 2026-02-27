@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.websocket.tournaments;
+package com.abs.casino.websocket.tournaments;
 
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.transport.ITransportObject;

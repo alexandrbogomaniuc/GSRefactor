@@ -117,7 +117,7 @@ import com.abs.casino.promo.tournaments.messages.PlayerTournamentStateChanged;
 import com.dgphoenix.casino.services.mp.MPGameSessionService;
 import com.dgphoenix.casino.sm.PlayerSessionFactory;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
-import com.dgphoenix.casino.websocket.tournaments.TournamentWebSocketMessageListener;
+import com.abs.casino.websocket.tournaments.TournamentWebSocketMessageListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.commons.collections.CollectionUtils;

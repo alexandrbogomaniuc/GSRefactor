@@ -1,6 +1,6 @@
 package com.abs.casino.controller.mqb.response;
 
-import com.dgphoenix.casino.common.client.canex.request.onlineplayer.OnlinePlayer;
+import com.abs.casino.common.client.canex.request.onlineplayer.OnlinePlayer;
 
 import java.util.List;
 

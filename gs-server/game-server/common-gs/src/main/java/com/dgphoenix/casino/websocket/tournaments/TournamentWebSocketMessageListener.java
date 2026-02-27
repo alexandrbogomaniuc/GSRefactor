@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.websocket.tournaments;
+package com.abs.casino.websocket.tournaments;
 
 import com.dgphoenix.casino.cassandra.IEntityUpdateListener;
 import com.dgphoenix.casino.common.transport.TObject;

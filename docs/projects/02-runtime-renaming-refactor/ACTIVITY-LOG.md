@@ -2885,3 +2885,26 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `16`.
   - retained bounded rewires: `10`.
   - global tracked source declarations/files now `1178` remaining (`2277` baseline, `1099` reduced, `48.265262%` burndown).
+
+## 2026-02-27 12:45 UTC (Hard-Cut M2 Wave 194A + 194B + 195)
+- Continued batched-safe hard-cut migration from W193 checkpoint with non-overlapping declaration sets:
+  - `W194A`: 4 declaration migrations in `common.client`.
+  - `W194B`: 9 declaration migrations in `websocket.tournaments`.
+  - `W195`: integration and validation.
+- Parallel execution mode:
+  - explorer produced non-overlapping low-risk manifests.
+  - agent thread-cap fallback executed as `1 worker + main` while preserving strict ownership.
+- Stabilization:
+  - no rollback required.
+  - bounded rewires retained in direct Java importer files plus bounded `web.xml` class-string update for `TournamentWebSocketServlet`.
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`startgame` alias `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-123332-hardcut-m2-wave194ab-wave195-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/158-hard-cut-m2-wave194ab-wave195-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `13`.
+  - retained bounded rewires: `23`.
+  - global tracked source declarations/files now `1165` remaining (`2277` baseline, `1112` reduced, `48.836188%` burndown).

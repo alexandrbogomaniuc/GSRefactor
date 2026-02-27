@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.websocket.tournaments;
+package com.abs.casino.websocket.tournaments;
 
 import com.abs.casino.promo.tournaments.messages.Error;
 import com.abs.casino.promo.tournaments.messages.*;

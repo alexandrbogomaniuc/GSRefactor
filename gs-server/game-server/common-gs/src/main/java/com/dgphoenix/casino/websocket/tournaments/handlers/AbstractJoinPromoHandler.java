@@ -8,8 +8,8 @@ import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.promo.tournaments.messages.Error;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
-import com.dgphoenix.casino.websocket.tournaments.IMessageHandler;
-import com.dgphoenix.casino.websocket.tournaments.ISocketClient;
+import com.abs.casino.websocket.tournaments.IMessageHandler;
+import com.abs.casino.websocket.tournaments.ISocketClient;
 
 import java.util.function.Consumer;
 

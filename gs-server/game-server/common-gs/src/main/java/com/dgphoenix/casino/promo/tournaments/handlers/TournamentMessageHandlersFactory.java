@@ -11,8 +11,8 @@ import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import com.abs.casino.promo.tournaments.messages.*;
 import com.abs.casino.promo.tournaments.messages.*;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
-import com.dgphoenix.casino.websocket.tournaments.IMessageHandler;
-import com.dgphoenix.casino.websocket.tournaments.TournamentWebSocketMessageListener;
+import com.abs.casino.websocket.tournaments.IMessageHandler;
+import com.abs.casino.websocket.tournaments.TournamentWebSocketMessageListener;
 import com.abs.casino.websocket.tournaments.handlers.*;
 import com.google.common.collect.Lists;
 

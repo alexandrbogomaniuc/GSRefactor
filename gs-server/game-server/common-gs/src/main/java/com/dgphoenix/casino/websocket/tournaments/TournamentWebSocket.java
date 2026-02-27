@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.websocket.tournaments;
+package com.abs.casino.websocket.tournaments;
 
 import com.google.gson.Gson;
 import org.apache.commons.collections.CollectionUtils;
