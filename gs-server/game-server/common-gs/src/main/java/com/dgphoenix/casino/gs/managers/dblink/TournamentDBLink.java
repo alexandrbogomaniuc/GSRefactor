@@ -17,7 +17,7 @@ import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.IdGenerator;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
-import com.dgphoenix.casino.unj.api.AbstractSharedGameState;
+import com.abs.casino.unj.api.AbstractSharedGameState;
 
 import java.util.Collections;
 import java.util.List;

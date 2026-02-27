@@ -51,7 +51,7 @@ import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.ArchiveBetTools;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.CBGameException;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
 import com.abs.casino.gs.singlegames.tools.util.LasthandHelper;
-import com.dgphoenix.casino.unj.api.AbstractSharedGameState;
+import com.abs.casino.unj.api.AbstractSharedGameState;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;

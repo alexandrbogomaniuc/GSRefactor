@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.statistics;
+package com.abs.casino.statistics;
 
 import com.dgphoenix.casino.common.util.Pair;
 import org.apache.commons.collections.map.ListOrderedMap;

@@ -2860,3 +2860,28 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `15`.
   - retained bounded rewires: `9`.
   - global tracked source declarations/files now `1194` remaining (`2277` baseline, `1083` reduced, `47.562582%` burndown).
+
+## 2026-02-27 12:26 UTC (Hard-Cut M2 Wave 192A + 192B + 193)
+- Continued batched-safe hard-cut migration from W191 checkpoint with non-overlapping declaration sets:
+  - `W192A`: 8 declaration migrations in `gamecombos` + `unj.api`.
+  - `W192B`: 8 declaration migrations in `common.geoip` + `statistics`.
+  - `W193`: integration and validation.
+- Parallel execution mode:
+  - explorer generated non-overlapping low-risk manifests.
+  - agent thread-cap fallback executed as `1 worker + main` while preserving strict file ownership.
+- Stabilization:
+  - no rollback required.
+  - bounded rewires retained in direct Java importer files plus one bounded `web.xml` class-string update for `RegistratorServlet`.
+  - initial fast-gate ordering issue at `STEP01` resolved by prewarm rerun (`rerun2`).
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun1: `STEP01 FAIL` (`rc=1`, cross-module compile ordering after package move).
+  - fast gate rerun2: steps `1-8 PASS`, step `9 FAIL` (`startgame` alias `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-121109-hardcut-m2-wave192ab-wave193-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/157-hard-cut-m2-wave192ab-wave193-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `16`.
+  - retained bounded rewires: `10`.
+  - global tracked source declarations/files now `1178` remaining (`2277` baseline, `1099` reduced, `48.265262%` burndown).

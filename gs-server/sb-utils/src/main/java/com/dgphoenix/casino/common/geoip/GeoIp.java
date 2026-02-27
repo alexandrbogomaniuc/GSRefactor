@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.geoip;
+package com.abs.casino.common.geoip;
 
 import com.dgphoenix.casino.common.util.IGeoIp;
 import com.maxmind.db.CHMCache;

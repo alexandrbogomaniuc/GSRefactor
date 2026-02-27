@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gamecombos;
+package com.abs.casino.gamecombos;
 
 
 public enum ComboFeature {

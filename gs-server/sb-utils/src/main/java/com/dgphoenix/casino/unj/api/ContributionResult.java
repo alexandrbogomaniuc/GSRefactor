@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.unj.api;
+package com.abs.casino.unj.api;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 

@@ -11,8 +11,8 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.gs.persistance.LasthandPersister;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
-import com.dgphoenix.casino.unj.api.AbstractSharedGameState;
-import com.dgphoenix.casino.unj.api.SharedGameStates;
+import com.abs.casino.unj.api.AbstractSharedGameState;
+import com.abs.casino.unj.api.SharedGameStates;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

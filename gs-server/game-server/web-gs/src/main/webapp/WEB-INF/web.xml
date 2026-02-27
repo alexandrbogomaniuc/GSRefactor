@@ -98,7 +98,7 @@
     <!-- Stress test statistics collector (remove on production!!!) -->
     <servlet>
         <servlet-name>registrator</servlet-name>
-        <servlet-class>com.dgphoenix.casino.statistics.RegistratorServlet</servlet-class>
+        <servlet-class>com.abs.casino.statistics.RegistratorServlet</servlet-class>
         <init-param>
             <param-name>log</param-name>
             <param-value>/www/logs/tomcat.gs/statistics.log</param-value>

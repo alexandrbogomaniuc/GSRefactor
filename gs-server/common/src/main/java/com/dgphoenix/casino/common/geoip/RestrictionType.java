@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.geoip;
+package com.abs.casino.common.geoip;
 
 public enum RestrictionType {
     PROMO {

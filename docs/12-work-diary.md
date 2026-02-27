@@ -7888,3 +7888,22 @@
   - ETA `49.4h` (`6.17` workdays)
 - Next:
   - continue declaration-first migration while launch alias smoke remains environment-blocked.
+### 2026-02-27 12:26 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W192A/W192B + W193`.
+- Scope retained:
+  - declaration migrations: `16` (`gamecombos`, `unj.api`, `common.geoip`, `statistics`).
+  - bounded rewires: `10` (direct importer/static-import rewires plus one bounded `web.xml` class-string rewire).
+- Validation outcome:
+  - fast gate rerun1: `STEP01 FAIL` (`rc=1`, cross-module compile ordering after package move).
+  - fast gate rerun2: steps `1-8 PASS`, step `9 FAIL` (launch alias `/startgame` returns `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`).
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-121109-hardcut-m2-wave192ab-wave193-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/157-hard-cut-m2-wave192ab-wave193-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1099`, remaining `1178`
+  - burndown `48.265262%`
+  - Project 02 `31.033157%`, Core `65.516579%`, Portfolio `82.758289%`
+  - ETA `48.7h` (`6.09` workdays)
+- Next:
+  - continue declaration-first migration while launch alias smoke remains environment-blocked.

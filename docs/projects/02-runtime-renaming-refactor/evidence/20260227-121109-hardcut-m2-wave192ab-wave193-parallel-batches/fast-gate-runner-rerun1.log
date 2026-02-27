@@ -1,0 +1,5 @@
+==== STEP01 START 2026-02-27 12:17:01 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/common
+CMD: mvn -DskipTests install
+==== STEP01 END 2026-02-27 12:17:04 EXIT=1 RESULT=FAIL ====
+STEP01 RESULT=FAIL
