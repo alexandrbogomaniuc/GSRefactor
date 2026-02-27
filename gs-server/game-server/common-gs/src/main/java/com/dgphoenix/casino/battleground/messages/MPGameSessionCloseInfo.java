@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.battleground.messages;
+package com.abs.casino.battleground.messages;
 
 import java.util.List;
 

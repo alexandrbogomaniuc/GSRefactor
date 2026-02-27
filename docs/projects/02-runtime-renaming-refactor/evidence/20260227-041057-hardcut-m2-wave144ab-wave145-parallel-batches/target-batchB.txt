@@ -1,0 +1,15 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/BattlegroundInfo.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/Leaderboard.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/NewTournament.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/PlaceInfo.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/PlayerTournamentStateChanged.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/PrizeInfo.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/PrizePlaceInfo.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/ShortTournamentInfo.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/TournamentDetails.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/TournamentStateChanged.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/BattlegroundRoundHistory.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/GameRoundEntry.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/MPGameSessionCloseInfo.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/RoomStartedInfo.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/RoomWasDeactivated.java

@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.transport.TObject;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.promo.tournaments.messages.Error;
+import com.abs.casino.promo.tournaments.messages.Error;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
 import com.dgphoenix.casino.websocket.tournaments.IMessageHandler;
 import com.dgphoenix.casino.websocket.tournaments.ISocketClient;

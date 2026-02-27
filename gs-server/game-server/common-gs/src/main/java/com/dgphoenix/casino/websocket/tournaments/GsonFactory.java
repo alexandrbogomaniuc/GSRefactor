@@ -1,7 +1,8 @@
 package com.dgphoenix.casino.websocket.tournaments;
 
-import com.dgphoenix.casino.promo.tournaments.messages.Error;
-import com.dgphoenix.casino.promo.tournaments.messages.*;
+import com.abs.casino.promo.tournaments.messages.Error;
+import com.abs.casino.promo.tournaments.messages.*;
+import com.abs.casino.promo.tournaments.messages.*;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

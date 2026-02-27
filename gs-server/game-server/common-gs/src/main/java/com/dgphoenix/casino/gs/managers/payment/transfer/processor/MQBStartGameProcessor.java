@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.gs.managers.payment.transfer.processor;
 
 import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.battleground.messages.RoomStartedInfo;
+import com.abs.casino.battleground.messages.RoomStartedInfo;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;

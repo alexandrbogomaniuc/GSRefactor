@@ -3,8 +3,8 @@ package com.dgphoenix.casino.websocket.tournaments;
 import com.dgphoenix.casino.cassandra.IEntityUpdateListener;
 import com.dgphoenix.casino.common.transport.TObject;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
-import com.dgphoenix.casino.promo.tournaments.messages.BalanceUpdated;
-import com.dgphoenix.casino.promo.tournaments.messages.PlayerTournamentStateChanged;
+import com.abs.casino.promo.tournaments.messages.BalanceUpdated;
+import com.abs.casino.promo.tournaments.messages.PlayerTournamentStateChanged;
 
 public class TournamentWebSocketMessageListener implements IEntityUpdateListener<String, TObject> {
     private final TournamentWebSocketSessionsController webSocketSessionsController;

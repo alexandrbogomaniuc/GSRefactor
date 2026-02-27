@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.websocket.tournaments;
 
 import com.dgphoenix.casino.common.transport.ITransportObject;
-import com.dgphoenix.casino.promo.tournaments.messages.BattlegroundInfo;
+import com.abs.casino.promo.tournaments.messages.BattlegroundInfo;
 import com.dgphoenix.casino.websocket.WebSocketMessageCallback;
 import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;

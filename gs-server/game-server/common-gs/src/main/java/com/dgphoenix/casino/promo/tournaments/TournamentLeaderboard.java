@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.promo.tournaments;
 
-import com.dgphoenix.casino.promo.tournaments.messages.PlaceInfo;
+import com.abs.casino.promo.tournaments.messages.PlaceInfo;
 
 import java.util.List;
 

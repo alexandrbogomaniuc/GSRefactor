@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.gs.socket.mq;
 
-import com.dgphoenix.casino.battleground.messages.RoomWasDeactivated;
+import com.abs.casino.battleground.messages.RoomWasDeactivated;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.google.gson.Gson;

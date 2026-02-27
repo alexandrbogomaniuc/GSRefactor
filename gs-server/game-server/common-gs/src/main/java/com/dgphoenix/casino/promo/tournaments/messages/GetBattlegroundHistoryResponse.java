@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.tournaments.messages;
+package com.abs.casino.promo.tournaments.messages;
 
 import com.abs.casino.cassandra.persist.mp.BattlegroundRound;
 import com.dgphoenix.casino.common.transport.TObject;

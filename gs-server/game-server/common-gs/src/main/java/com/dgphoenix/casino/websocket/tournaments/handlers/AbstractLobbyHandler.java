@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.*;
 import com.dgphoenix.casino.common.transport.TObject;
-import com.dgphoenix.casino.promo.tournaments.messages.PrizeInfo;
+import com.abs.casino.promo.tournaments.messages.PrizeInfo;
 import com.dgphoenix.casino.websocket.tournaments.IMessageHandler;
 
 import java.util.ArrayList;

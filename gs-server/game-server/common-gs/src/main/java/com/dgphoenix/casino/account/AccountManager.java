@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.api.ICommonManager;
 import com.dgphoenix.casino.common.cache.*;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.bank.PlayerGameSettingsType;
+import com.abs.casino.common.cache.data.bank.PlayerGameSettingsType;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusSystemType;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;

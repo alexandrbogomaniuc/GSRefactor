@@ -2,7 +2,7 @@ package com.dgphoenix.casino.websocket.tournaments;
 
 import com.dgphoenix.casino.common.transport.TObject;
 import com.dgphoenix.casino.promo.tournaments.ErrorCodes;
-import com.dgphoenix.casino.promo.tournaments.messages.Error;
+import com.abs.casino.promo.tournaments.messages.Error;
 import org.apache.logging.log4j.Logger;
 
 import java.util.function.Consumer;

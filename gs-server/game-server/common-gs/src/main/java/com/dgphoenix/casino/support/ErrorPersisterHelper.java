@@ -14,7 +14,7 @@ import com.dgphoenix.casino.common.util.web.HttpRequestContextHolder;
 import com.dgphoenix.casino.common.util.web.WebTools;
 import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
 import com.dgphoenix.casino.kafka.dto.RoundInfoResultDto;
-import com.dgphoenix.casino.promo.tournaments.messages.Error;
+import com.abs.casino.promo.tournaments.messages.Error;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

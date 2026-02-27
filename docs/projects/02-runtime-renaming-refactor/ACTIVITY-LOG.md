@@ -2324,3 +2324,26 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - scoped declaration migrations retained: `26`.
   - global tracked source declarations/files now `1587` remaining (`2277` baseline, `690` reduced, `30.303030%` burndown).
+
+## 2026-02-27 04:21 UTC (Hard-Cut M2 Wave 144A + 144B + 145, Stabilized)
+- Continued batched-safe hard-cut migration from W143 checkpoint with non-overlapping ownership:
+  - `W144A`: migrated 13 declaration packages in `common-gs/promo/tournaments/messages`.
+  - `W144B`: migrated 15 declaration packages in `common-gs/promo/tournaments/messages` + `common-gs/battleground/messages`.
+  - `W145`: integration rewires and compatibility stabilization in `common-gs` importers.
+- Stabilization:
+  - `rerun1..2` failed on stale tournament import references.
+  - bounded import rewires applied for moved tournament/battleground declarations.
+  - `rerun3..5` exposed and resolved type-identity drift in:
+    - `AccountManager` (`PlayerGameSettingsType`)
+    - `PaymentManager` (`PaymentMeanType`, `PaymentMeanId`)
+  - aligned `common-gs` validation command with explicit `-Dcluster.properties=common.properties`.
+- Validation:
+  - fast gate `5/5 PASS` on rerun6.
+  - full matrix `9/9 PASS` on rerun1.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-041057-hardcut-m2-wave144ab-wave145-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/133-hard-cut-m2-wave144ab-wave145-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `28`.
+  - retained bounded rewires: `27`.
+  - global tracked source declarations/files now `1559` remaining (`2277` baseline, `718` reduced, `31.532718%` burndown).

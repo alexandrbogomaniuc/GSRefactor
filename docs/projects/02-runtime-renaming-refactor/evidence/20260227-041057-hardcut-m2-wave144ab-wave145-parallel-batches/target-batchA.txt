@@ -1,0 +1,13 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/EnterLobby.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/EnterLobbyResponse.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/GetBattlegroundHistory.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/GetBattlegroundHistoryResponse.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/GetLeaderboard.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/GetTournamentDetails.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/JoinBattleground.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/JoinBattlegroundResponse.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/JoinTournament.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/JoinTournamentResponse.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/Error.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/BalanceUpdated.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/messages/NetworkTournament.java

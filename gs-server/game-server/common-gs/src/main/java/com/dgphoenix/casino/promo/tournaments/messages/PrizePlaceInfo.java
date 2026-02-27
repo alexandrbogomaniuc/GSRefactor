@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.tournaments.messages;
+package com.abs.casino.promo.tournaments.messages;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;

@@ -9,8 +9,8 @@ import com.dgphoenix.casino.common.cache.data.payment.transfer.PaymentSystemType
 import com.dgphoenix.casino.common.cache.data.payment.transfer.PaymentTransaction;
 import com.dgphoenix.casino.common.cache.data.payment.transfer.TransactionStatus;
 import com.dgphoenix.casino.common.cache.data.payment.transfer.TransactionType;
-import com.dgphoenix.casino.common.cache.data.payment.transfer.paymentmean.PaymentMeanId;
-import com.dgphoenix.casino.common.cache.data.payment.transfer.paymentmean.PaymentMeanType;
+import com.abs.casino.common.cache.data.payment.transfer.paymentmean.PaymentMeanId;
+import com.abs.casino.common.cache.data.payment.transfer.paymentmean.PaymentMeanType;
 import com.dgphoenix.casino.common.cache.data.payment.transfer.processor.IPaymentProcessor;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.exception.CommonException;
