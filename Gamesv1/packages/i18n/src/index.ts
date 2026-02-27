@@ -1,5 +1,5 @@
 /**
- * @gs/i18n — Lightweight i18n loader for the Igaming platform.
+ * @gamesv1/i18n — Lightweight i18n loader for the Igaming platform.
  *
  * Features:
  *   - Namespace-based translation files (common, paytable, rules)
@@ -168,3 +168,4 @@ export class I18n {
 
 /** Global singleton instance — import and use directly */
 export const i18n = new I18n();
+

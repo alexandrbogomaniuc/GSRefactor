@@ -35,8 +35,8 @@ The central configuration file for the game. Defines:
 ### `/src/game/features/`
 This is where game-specific feature modules reside. Modules are designed to be "pluggable" and can be enabled or disabled via configuration.
 
-### Shared Logic (@gs/slot-shell)
-Games do not copy core logic. Instead, they depend on `@gs/slot-shell`. This package provides:
+### Shared Logic (@gamesv1/ui-kit)
+Games do not copy core logic. Instead, they depend on `@gamesv1/ui-kit`. This package provides:
 - **Reels Framework**: `SlotMachine`, `Reel`, and `SlotSymbol` components.
 - **UI Shell**: Settings menus, volume controls, and buttons.
 - **Engine**: The core PixiJS v8 bootstrap and screen management.
@@ -65,8 +65,9 @@ pnpm dev
 ```
 
 ## ✅ Best Practices
-- **Do not modify `@gs/slot-shell`** unless the change applies to ALL games.
+- **Do not modify `@gamesv1/ui-kit`** unless the change applies to ALL games.
 - **Isolate feature logic**: Keep specific mechanics inside a feature module.
-- **Use the protocol package**: All network communication must pass through `@gs/protocol`.
+- **Use the protocol package**: All network communication must pass through `@gamesv1/core-protocol`.
 - **Sync i18n**: Run `npm run i18n:check` regularly to ensure all translations are complete.
+
 

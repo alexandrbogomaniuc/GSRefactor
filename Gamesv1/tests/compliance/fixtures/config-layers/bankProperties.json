@@ -1,0 +1,13 @@
+{
+  "currencyCode": "USD",
+  "minBet": 50,
+  "maxBet": 5000,
+  "defaultBet": 100,
+  "maxExposure": 100000,
+  "minReelSpinTime": {
+    "normalMs": 2500
+  },
+  "turboplay": {
+    "allowed": false
+  }
+}

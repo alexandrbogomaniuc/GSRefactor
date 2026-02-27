@@ -1,80 +1,111 @@
-import { resolveConfig, assertCompliance, ConfigurationLayer, DefaultBankProperties } from '../../src/compliance/ComplianceConfig';
-import { DefaultFeatureFlags } from '../../src/compliance/FeatureFlags';
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-async function runComplianceTests() {
-    console.log("🚀 Starting Compliance Config Tests...");
+import { resolveConfig, resolveConfigWithMetadata } from "../../packages/core-compliance/src/config/ConfigResolver.ts";
+import type { ConfigResolverInput } from "../../packages/core-compliance/src/config/RuntimeConfigSchema.ts";
 
-    let passed = 0;
-    let failed = 0;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const fixtureDir = path.join(__dirname, "fixtures", "config-layers");
 
-    const test = (name: string, fn: () => void) => {
-        try {
-            fn();
-            console.log(`✅ ${name}`);
-            passed++;
-        } catch (e: any) {
-            console.error(`❌ ${name}`);
-            console.error(`   ${e.message}`);
-            failed++;
-        }
-    };
+const loadFixture = <T>(name: string): T => {
+  const filePath = path.join(fixtureDir, `${name}.json`);
+  return JSON.parse(readFileSync(filePath, "utf8")) as T;
+};
 
-    test("Resolves default fallback values accurately", () => {
-        const config = resolveConfig();
-        if (config.flags.minReelsSpinningTimeSecs !== DefaultFeatureFlags.minReelsSpinningTimeSecs) {
-            throw new Error("Default min spin time mismatch.");
-        }
-        if (config.bank.currencyCode !== DefaultBankProperties.currencyCode) {
-            throw new Error("Default bank value mismatch.");
-        }
-    });
+const createInput = (): ConfigResolverInput => ({
+  templateDefaults: loadFixture("templateDefaults"),
+  bankProperties: loadFixture("bankProperties"),
+  gameOverrides: loadFixture("gameOverrides"),
+  currencyOverrides: loadFixture("currencyOverrides"),
+  launchParams: loadFixture("launchParams"),
+  devMode: false,
+});
 
-    test("Overrides stack explicitly by precedence (Cert > Licensee > Launch > Bank)", () => {
-        const certConfig: ConfigurationLayer = { flags: { minReelsSpinningTimeSecs: 3.0 } };
-        const licenseeConfig: ConfigurationLayer = { flags: { autoplayAllowed: false } };
-        const launchParams: ConfigurationLayer = { bank: { currencyCode: "EUR" } };
-        const bankOverrides = { fractionDigits: 0 };
+let passed = 0;
+let failed = 0;
 
-        const config = resolveConfig(certConfig, licenseeConfig, launchParams, bankOverrides);
+const test = (name: string, fn: () => void) => {
+  try {
+    fn();
+    console.log(`PASS ${name}`);
+    passed += 1;
+  } catch (error) {
+    failed += 1;
+    console.error(`FAIL ${name}`);
+    console.error(error);
+  }
+};
 
-        if (config.flags.minReelsSpinningTimeSecs !== 3.0) throw new Error("Cert config failed override");
-        if (config.flags.autoplayAllowed !== false) throw new Error("Licensee config failed override");
-        if (config.bank.currencyCode !== "EUR") throw new Error("Launch param bank failed override");
-        if (config.bank.fractionDigits !== 0) throw new Error("Bank override failed");
-    });
+test("applies precedence template < bank < game < currency < launch", () => {
+  const resolved = resolveConfig(createInput());
 
-    test("Assert Compliance throws correctly on fraction/truncation conflict", () => {
-        let threw = false;
-        try {
-            resolveConfig({}, {}, {}, { fractionDigits: 2, truncateCents: true });
-        } catch (e: any) {
-            if (e.message.includes("`truncateCents` is true, but `fractionDigits` is > 0")) threw = true;
-        }
-        if (!threw) throw new Error("Did not throw on fraction exception");
-    });
+  assert.equal(resolved.currencyCode, "USD");
+  assert.equal(resolved.minBet, 50);
+  assert.equal(resolved.maxBet, 5000);
+  assert.equal(resolved.defaultBet, 200);
+  assert.equal(resolved.maxExposure, 100000);
 
-    test("Assert Compliance throws correctly on bad turboplay multipliers", () => {
-        let threw = false;
-        try {
-            resolveConfig({}, {}, { flags: { turboplayAllowed: true, turboplaySpeedMultiplier: 1.0 } });
-        } catch (e: any) {
-            if (e.message.includes("speed multiplier is strictly non-accelerated at 1")) threw = true;
-        }
-        if (!threw) throw new Error("Did not throw on turboplay speed limits");
-    });
+  assert.equal(resolved.betConfig.mode, "dynamic");
+  if (resolved.betConfig.mode === "dynamic") {
+    assert.equal(resolved.betConfig.dynamicBetConstraints.step, 50);
+  }
 
-    test("Assert Compliance min bounds on spin timer", () => {
-        let threw = false;
-        try {
-            resolveConfig({ flags: { minReelsSpinningTimeSecs: -1 } });
-        } catch (e: any) {
-            if (e.message.includes("cannot be negative")) threw = true;
-        }
-        if (!threw) throw new Error("Did not throw on negative spin time");
-    });
+  assert.equal(resolved.turboplay.allowed, true);
+  assert.equal(resolved.turboplay.speedId, "turbo-x3");
+  assert.equal(resolved.turboplay.preferred, true);
 
-    console.log(`\n🎉 Tests completed: ${passed} passed, ${failed} failed.`);
-    if (failed > 0) process.exit(1);
+  assert.equal(resolved.soundDefaults.masterVolume, 0.5);
+  assert.equal(resolved.localization.defaultLang, "en-US");
+  assert.equal(resolved.localization.showMissingLocalizationError, true);
+  assert.equal(resolved.localization.contentPath, "/cdn/content");
+  assert.equal(resolved.localization.customTranslationsEnabled, true);
+});
+
+test("falls back to template bet ladder when currency override is missing", () => {
+  const input = createInput();
+  input.bankProperties = {
+    currencyCode: "GBP",
+    minBet: 10,
+    maxBet: 500,
+    defaultBet: 100,
+  };
+  input.launchParams = { currencyCode: "GBP" };
+
+  const resolved = resolveConfig(input);
+  assert.equal(resolved.betConfig.mode, "ladder");
+  assert.equal(resolved.defaultBet, 100);
+});
+
+test("logs diff entries per overriding layer", () => {
+  const { diffLog } = resolveConfigWithMetadata({
+    ...createInput(),
+    devMode: true,
+  });
+
+  const minBetOverride = diffLog.find(
+    (entry) => entry.key === "minBet" && entry.layer === "bankProperties",
+  );
+  assert.ok(minBetOverride);
+
+  const defaultBetOverride = diffLog.find(
+    (entry) => entry.key === "defaultBet" && entry.layer === "launchParams",
+  );
+  assert.ok(defaultBetOverride);
+});
+
+test("throws on invalid constraints", () => {
+  const input = createInput();
+  input.bankProperties.minBet = 6000;
+  input.bankProperties.maxBet = 5000;
+
+  assert.throws(() => resolveConfig(input), /minBet cannot be greater than maxBet/);
+});
+
+console.log(`\nConfigResolver tests: ${passed} passed, ${failed} failed.`);
+if (failed > 0) {
+  process.exit(1);
 }
 
-runComplianceTests().catch(console.error);

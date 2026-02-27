@@ -4,7 +4,7 @@
  *
  * Usage (from repo root):
  *   npx tsx tools/config-gen/src/index.ts                           # generates for ALL games
- *   npx tsx tools/config-gen/src/index.ts --game premium-slot-client      # generates for one game
+ *   npx tsx tools/config-gen/src/index.ts --game premium-slot      # generates for one game
  *   npx tsx tools/config-gen/src/index.ts --check                   # CI: validates outputs are up-to-date
  *
  * Shortcuts via root package.json:
@@ -15,7 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-// ─── Types (mirrors @gs/config GsRegistrationSchema) ─────────────────────────
+// ─── Types (mirrors @gamesv1/core-compliance GsRegistrationSchema) ─────────────────────────
 
 interface MathModel {
     id: string;
@@ -357,3 +357,5 @@ if (check) {
 } else {
     console.log(`\n✅ Done. Generated for ${totalGenerated} game(s).`);
 }
+
+

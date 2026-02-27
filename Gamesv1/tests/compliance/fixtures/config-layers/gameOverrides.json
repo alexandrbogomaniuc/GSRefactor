@@ -1,0 +1,12 @@
+{
+  "turboplay": {
+    "allowed": true,
+    "speedId": "turbo-x3"
+  },
+  "soundDefaults": {
+    "masterVolume": 0.5
+  },
+  "localization": {
+    "showMissingLocalizationError": true
+  }
+}

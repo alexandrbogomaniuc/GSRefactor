@@ -34,11 +34,29 @@ importers:
         specifier: ^8.19.0
         version: 8.19.0
 
-  games/premium-slot-client:
+  games/premium-slot:
     dependencies:
       '@esotericsoftware/spine-pixi-v8':
         specifier: ^4.2.74
         version: 4.2.106(pixi.js@8.16.0)
+      '@gamesv1/core-compliance':
+        specifier: workspace:*
+        version: link:../../packages/core-compliance
+      '@gamesv1/core-protocol':
+        specifier: workspace:*
+        version: link:../../packages/core-protocol
+      '@gamesv1/i18n':
+        specifier: workspace:*
+        version: link:../../packages/i18n
+      '@gamesv1/operator-pariplay':
+        specifier: workspace:*
+        version: link:../../packages/operator-pariplay
+      '@gamesv1/pixi-engine':
+        specifier: workspace:*
+        version: link:../../packages/pixi-engine
+      '@gamesv1/ui-kit':
+        specifier: workspace:*
+        version: link:../../packages/ui-kit
       '@pixi/sound':
         specifier: ^6.0.1
         version: 6.0.1(pixi.js@8.16.0)
@@ -80,40 +98,48 @@ importers:
         specifier: ^6.2.0
         version: 6.4.1(@types/node@25.3.2)(tsx@4.21.0)
 
-  packages/gs-compliance: {}
-
-  packages/gs-config:
+  packages/core-compliance:
     dependencies:
       zod:
         specifier: ^3.23.8
         version: 3.25.76
 
-  packages/gs-core: {}
-
-  packages/gs-operator-bridge: {}
-
-  packages/gs-protocol:
+  packages/core-protocol:
     dependencies:
       zod:
-        specifier: ^3.0.0
+        specifier: ^3.23.8
         version: 3.25.76
 
-  packages/gs-slot-shell:
+  packages/i18n: {}
+
+  packages/operator-pariplay: {}
+
+  packages/pixi-engine:
     dependencies:
-      '@esotericsoftware/spine-pixi-v8':
-        specifier: ^4.2.74
-        version: 4.2.106(pixi.js@8.16.0)
-      '@pixi/ui':
-        specifier: ^2.3.2
-        version: 2.3.2(pixi.js@8.16.0)
-      gsap:
-        specifier: ^3.12.0
-        version: 3.14.2
+      '@pixi/sound':
+        specifier: ^6.0.1
+        version: 6.0.1(pixi.js@8.16.0)
+      motion:
+        specifier: ^12.4.7
+        version: 12.34.3
       pixi.js:
         specifier: ^8.8.1
         version: 8.16.0
 
-  packages/i18n: {}
+  packages/ui-kit:
+    dependencies:
+      '@gamesv1/pixi-engine':
+        specifier: workspace:*
+        version: link:../pixi-engine
+      '@pixi/ui':
+        specifier: ^2.3.2
+        version: 2.3.2(pixi.js@8.16.0)
+      motion:
+        specifier: ^12.4.7
+        version: 12.34.3
+      pixi.js:
+        specifier: ^8.8.1
+        version: 8.16.0
 
   tools/config-gen:
     devDependencies:
@@ -1903,9 +1929,6 @@ packages:
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
-
-  gsap@3.14.2:
-    resolution: {integrity: sha512-P8/mMxVLU7o4+55+1TCnQrPmgjPKnwkzkXOK1asnR9Jg2lna4tEY5qBJjMmAaOBDDZWtlRjBXjLa0w53G/uBLA==}
 
   handlebars@4.7.8:
     resolution: {integrity: sha512-vafaFqs8MZkRrSX7sFVUdo3ap/eNiLnb4IakshzvP56X5Nr1iGKAIqdX6tMlm6HcNRIkr6AxO5jFEoJzzpT8aQ==}
@@ -4327,8 +4350,6 @@ snapshots:
       sharp: 0.33.5
 
   graceful-fs@4.2.11: {}
-
-  gsap@3.14.2: {}
 
   handlebars@4.7.8:
     dependencies:

@@ -1,0 +1,19 @@
+{
+  "USD": {
+    "betConfig": {
+      "mode": "dynamic",
+      "dynamicBetConstraints": {
+        "minStep": 50,
+        "maxStep": 5000,
+        "step": 50
+      }
+    },
+    "defaultBet": 150,
+    "localization": {
+      "defaultLang": "en-US"
+    }
+  },
+  "EUR": {
+    "defaultBet": 25
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "@gamesv1/core-compliance",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "dependencies": {
+    "zod": "^4.3.6"
+  }
+}

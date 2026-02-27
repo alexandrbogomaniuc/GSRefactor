@@ -1,0 +1,12 @@
+{
+  "name": "@gamesv1/ui-kit",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "dependencies": {
+    "@gamesv1/pixi-engine": "workspace:*",
+    "@pixi/ui": "^2.3.2",
+    "motion": "^12.4.7",
+    "pixi.js": "^8.8.1"
+  }
+}

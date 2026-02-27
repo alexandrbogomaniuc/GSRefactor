@@ -1,0 +1,11 @@
+{
+  "name": "@gamesv1/pixi-engine",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "dependencies": {
+    "@pixi/sound": "^6.0.1",
+    "motion": "^12.4.7",
+    "pixi.js": "^8.8.1"
+  }
+}

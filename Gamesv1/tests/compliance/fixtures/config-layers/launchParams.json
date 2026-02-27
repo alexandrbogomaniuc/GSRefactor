@@ -1,0 +1,12 @@
+{
+  "currencyCode": "USD",
+  "defaultBet": 200,
+  "turboplay": {
+    "preferred": true
+  },
+  "localization": {
+    "customTranslationsEnabled": true,
+    "contentPath": "/cdn/content"
+  },
+  "devMode": true
+}

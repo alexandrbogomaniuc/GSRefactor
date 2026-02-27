@@ -8,7 +8,7 @@ Multi-language support for all games in the Igaming platform.
 
 | Component | Location | Purpose |
 |---|---|---|
-| `@gs/i18n` | `/packages/i18n` | Lightweight i18n loader with namespace + fallback support |
+| `@gamesv1/i18n` | `/packages/i18n` | Lightweight i18n loader with namespace + fallback support |
 | Locale files | `games/<game>/locales/<lang>/` | Per-game, per-language translation JSON files |
 | `i18n-check` | `/tools/i18n-check` | CI tool to validate translation completeness |
 
@@ -18,7 +18,7 @@ Multi-language support for all games in the Igaming platform.
 
 ```
 games/
-  premium-slot-client/
+  premium-slot/
     locales/
       en/                    ← Reference language (always complete)
         common.json          ← UI strings (Spin, Stop, Settings, etc.)
@@ -64,7 +64,7 @@ games/
 
 ### Usage in code
 ```typescript
-import { i18n } from "@gs/i18n";
+import { i18n } from "@gamesv1/i18n";
 
 // Simple key (defaults to 'common' namespace)
 i18n.t("SPIN");              // → "SPIN"
@@ -124,7 +124,7 @@ Any `{{BRAND_NAME}}` or `{{SUPPORT_EMAIL}}` in translation values will be replac
 npm run i18n:check
 
 # Check a specific game
-npx tsx tools/i18n-check/src/index.ts --game premium-slot-client
+npx tsx tools/i18n-check/src/index.ts --game premium-slot
 ```
 
 ### What it validates
@@ -137,7 +137,7 @@ npx tsx tools/i18n-check/src/index.ts --game premium-slot-client
 ```
 🌐 i18n Check: validating translations...
 
-  📦 premium-slot-client: 3 languages, 3 namespaces
+  📦 premium-slot: 3 languages, 3 namespaces
 
 ✅ All translations are complete. No missing keys found.
 ```
@@ -151,3 +151,5 @@ npx tsx tools/i18n-check/src/index.ts --game premium-slot-client
 - **Never hardcode text**: All user-visible strings must go through `i18n.t()`.
 - **Use interpolation** for dynamic values — don't concatenate strings.
 - **Run `i18n:check` before merge** to catch missing translations early.
+
+

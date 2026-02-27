@@ -14,7 +14,7 @@ program
     .action(async (options) => {
         const { name, id, slug } = options;
         const projectRoot = path.resolve(process.cwd());
-        const templateDir = path.join(projectRoot, 'games', 'premium-slot-client');
+        const templateDir = path.join(projectRoot, 'games', 'premium-slot');
         const targetDir = path.join(projectRoot, 'games', slug);
 
         console.log(chalk.cyan(`🎰 GS Platform: Scaffolding new game '${name}' (ID: ${id})...`));
@@ -32,7 +32,7 @@ program
             await fs.ensureDir(path.join(targetDir, 'gs'));
 
             // 2. Copy game.settings.json from the shared slot-shell package
-            const templateSettingsPath = path.join(projectRoot, 'packages', 'gs-slot-shell', 'src', 'config', 'game.settings.json');
+            const templateSettingsPath = path.join(projectRoot, 'packages', 'ui-kit', 'src', 'config', 'game.settings.json');
             const targetSettingsPath = path.join(targetDir, 'game.settings.json');
 
             if (await fs.pathExists(templateSettingsPath)) {
@@ -61,8 +61,8 @@ program
                     "build": "tsc && vite build"
                 },
                 dependencies: {
-                    "@gs/slot-shell": "workspace:*",
-                    "@gs/protocol": "workspace:*",
+                    "@gamesv1/ui-kit": "workspace:*",
+                    "@gamesv1/core-protocol": "workspace:*",
                     "pixi.js": "^8.8.1"
                 },
                 devDependencies: {
@@ -85,3 +85,4 @@ program
     });
 
 program.parse();
+

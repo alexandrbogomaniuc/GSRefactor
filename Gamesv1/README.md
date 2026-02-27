@@ -1,72 +1,50 @@
 # Gamesv1 Monorepo
 
-Universal, high-performance slot game development platform using PixiJS v8 and the `@gs` protocol stack.
+Clean monorepo for slot clients with strict package boundaries and one active reference game.
 
-## 🏗 Repository Structure
+## Repository Layout
 
-- **`games/`**: Slot implementations.
-  - **`premium-slot-client/`**: 🌟 **The Canonical Template.** Use this as the base for all new slot games. Features PixiJS v8, `@pixi/ui` components, and advanced animations.
-  - **`wincraft/`**: Reference implementation of the WinCraft game.
-  - **`_archive/`**: Retired templates and legacy math/mock tools.
-- **`packages/`**: Shared core libraries.
-  - `@gs/protocol`: abs.gs.v1 WebSocket protocol layer.
-  - `@gs/slot-shell`: Common UI components, reel framework, and engine bootstrap.
-  - `@gs/config`: Tiered configuration system.
-  - `@gs/i18n`: Multi-language support.
-- **`tools/`**: Development utilities.
-  - `create-game`: Scaffolding tool for new projects.
-  - `config-gen`: GS registration file generator.
-  - `i18n-check`: Translation validation tool.
-- **`tests/`**: Global contract and unit tests.
+- `packages/core-protocol`: `IGameTransport`, abs.gs.v1 WS transport, extgame HTTP transport, Zod message schemas.
+- `packages/core-compliance`: runtime config resolution, truncate-cents checks, min spin time and compliance flags.
+- `packages/operator-pariplay`: operator iframe bridge (`postMessage`) and typings.
+- `packages/pixi-engine`: Pixi app init, asset loading, audio plugin, resize/layout loop, navigation.
+- `packages/ui-kit`: shared slot UI, HUD controls, dialogs/popups, reusable visual components.
+- `games/premium-slot`: reference "gold standard" game.
+- `games/_archive`: legacy/archived games and experiments.
 
----
+## Workspace
 
-## 🚀 Getting Started
+This repo uses `pnpm` workspaces (`pnpm-workspace.yaml` + root `package.json` workspaces).
 
-### 1. Installation
-Ensure you have `pnpm` installed globally.
+## Install
+
 ```bash
-pnpm install
+corepack pnpm install
 ```
 
-### 2. Scaffold a New Game
+## Run Dev
+
 ```bash
-npm run create-game -- --name "My New Game" --id 5001 --slug my-new-game
+corepack pnpm run dev
 ```
 
-### 3. Local Development
+## Build
+
 ```bash
-cd games/my-new-game
-pnpm dev
+corepack pnpm run build
 ```
 
-### 4. Production Build
+## Contract Tests
+
 ```bash
-cd games/my-new-game
-pnpm build
+corepack pnpm run test:contract
 ```
 
----
+## Architecture Rules
 
-## 🧪 Testing
+- Games must not call `window.postMessage` directly: use `@gamesv1/operator-pariplay`.
+- Games must not call `WebSocket` directly: use `@gamesv1/core-protocol`.
+- Games must use manifest/bundle keys (no inline asset-path strings in game logic).
+- Prefer shared code in `packages/*`; keep game folders thin.
 
-### Contract Tests (abs.gs.v1)
-Validates that the client-server communication follows the strict financial protocol.
-```bash
-npm run test:contract
-```
 
-### i18n Validation
-Checks for missing translations across all games.
-```bash
-npm run i18n:check
-```
-
----
-
-## 📐 Standards & Guidelines
-
-- **Architecture**: Always prefer shared logic in `@gs/slot-shell` over copying code.
-- **Art**: Place high-res assets in `raw-assets/` for automated optimization via AssetPack.
-- **Compliance**: Adhere to the checklists in `docs/compliance/`.
-- **Source of Truth**: Refer to [.agent/context.md](.agent/context.md) for current project status.

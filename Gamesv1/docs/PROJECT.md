@@ -9,7 +9,7 @@ Welcome to the GS Monorepo. This project provides a high-quality baseline for cr
 - **[Localization System](./LOCALIZATION.md)**: Rules for multi-language support.
 
 ## 🏗 Repository Structure
-- `games/`: Ready-to-run slot implementations (e.g., premium-slot-client).
+- `games/`: Ready-to-run slot implementations (e.g., premium-slot).
 - `packages/`: Shared logic (Protocol, Shell, Config, i18n).
 - tools/: Development utilities (Scaffolder, Config Generator, i18n Validator).
 - tests/: Global contract and compliance test suites.
@@ -26,4 +26,5 @@ Before claiming a documentation task is complete, ensure:
 ---
 > [!NOTE]
 > This repository uses **pnpm workspaces**. Ensure you run `pnpm install` from the root to link all local packages correctly.
+
 
