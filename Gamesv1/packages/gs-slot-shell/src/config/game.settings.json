@@ -8,6 +8,7 @@
     },
     "features": {
         "freeSpins": true,
-        "buyFeature": false
+        "buyFeature": false,
+        "autoplay": true
     }
 }

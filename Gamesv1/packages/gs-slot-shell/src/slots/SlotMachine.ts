@@ -8,7 +8,7 @@ export class SlotMachine extends Container {
   private ticker: Ticker;
 
   // Callbacks
-  public onSpinComplete: () => void = () => {};
+  public onSpinComplete: () => void = () => { };
 
   constructor() {
     super();
@@ -58,9 +58,9 @@ export class SlotMachine extends Container {
           // We generate 3 symbols plus some buffers.
           // The reel expects an array. Since we unshift, we pass them in bottom-to-top order.
           const mockResult = [
-            Math.floor(Math.random() * GameConfig.symbolColors.length),
-            Math.floor(Math.random() * GameConfig.symbolColors.length),
-            Math.floor(Math.random() * GameConfig.symbolColors.length),
+            Math.floor(Math.random() * GameConfig.symbolCount),
+            Math.floor(Math.random() * GameConfig.symbolCount),
+            Math.floor(Math.random() * GameConfig.symbolCount),
           ];
           reel.stop(mockResult);
         },

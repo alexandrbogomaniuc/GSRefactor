@@ -31,9 +31,8 @@ program
             await fs.ensureDir(path.join(targetDir, 'locales'));
             await fs.ensureDir(path.join(targetDir, 'gs'));
 
-            // 2. Copy game.settings.json from template
-            // Note: Assuming it exists in template-slot/src/game/config/game.settings.json
-            const templateSettingsPath = path.join(templateDir, 'src', 'game', 'config', 'game.settings.json');
+            // 2. Copy game.settings.json from the shared slot-shell package
+            const templateSettingsPath = path.join(projectRoot, 'packages', 'gs-slot-shell', 'src', 'config', 'game.settings.json');
             const targetSettingsPath = path.join(targetDir, 'game.settings.json');
 
             if (await fs.pathExists(templateSettingsPath)) {

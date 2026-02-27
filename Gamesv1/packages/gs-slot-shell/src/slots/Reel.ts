@@ -26,7 +26,7 @@ export class Reel extends Container {
     for (let i = 0; i < totalSymbols; i++) {
       const sym = new SlotSymbol();
       // Random initial
-      sym.setSymbol(Math.floor(Math.random() * GameConfig.symbolColors.length));
+      sym.setSymbol(Math.floor(Math.random() * GameConfig.symbolCount));
       sym.y = this.getSymbolY(i);
       this.symbolList.push(sym);
       this.reelContainer.addChild(sym);
@@ -76,7 +76,7 @@ export class Reel extends Container {
         bottomSym.setSymbol(nextId);
       } else {
         bottomSym.setSymbol(
-          Math.floor(Math.random() * GameConfig.symbolColors.length),
+          Math.floor(Math.random() * GameConfig.symbolCount),
         );
       }
 
