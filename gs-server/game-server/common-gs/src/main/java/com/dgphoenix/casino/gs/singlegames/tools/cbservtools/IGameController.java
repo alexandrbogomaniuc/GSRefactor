@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.singlegames.tools.cbservtools;
+package com.abs.casino.gs.singlegames.tools.cbservtools;
 
 /**
  * User: flsh

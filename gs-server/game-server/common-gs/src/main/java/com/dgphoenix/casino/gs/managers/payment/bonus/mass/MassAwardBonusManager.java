@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.bonus.mass;
+package com.abs.casino.gs.managers.payment.bonus.mass;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.DistributedLockManager;
@@ -15,8 +15,8 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.lock.LockingInfo;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.restriction.NoAwardRestriction;
-import com.dgphoenix.casino.gs.managers.payment.bonus.restriction.PlayerBalanceRestriction;
+import com.abs.casino.gs.managers.payment.bonus.restriction.NoAwardRestriction;
+import com.abs.casino.gs.managers.payment.bonus.restriction.PlayerBalanceRestriction;
 import com.dgphoenix.casino.gs.persistance.remotecall.ChangeMassAwardStatusCall;
 import com.dgphoenix.casino.gs.persistance.remotecall.DeleteMassAwardCall;
 import com.dgphoenix.casino.gs.persistance.remotecall.RefreshConfigCall;

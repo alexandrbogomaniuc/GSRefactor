@@ -1,9 +1,9 @@
 <%@ page import="java.util.Map" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bonus.restriction.MassAwardRestriction" %>
+<%@ page import="com.abs.casino.common.cache.data.bonus.restriction.MassAwardRestriction" %>
 <%@ page import="com.dgphoenix.casino.common.cache.MassAwardCache" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bonus.BaseMassAward" %>
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.bonus.mass.MassAwardBonusManager" %>
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.bonus.restriction.NoAwardRestriction" %>
+<%@ page import="com.abs.casino.gs.managers.payment.bonus.mass.MassAwardBonusManager" %>
+<%@ page import="com.abs.casino.gs.managers.payment.bonus.restriction.NoAwardRestriction" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
 <%
     String responseStart = "<table border=\"1\"><tr><td>MassAwardId</td><td>Restriction</td><td>MassAward</td></tr>";

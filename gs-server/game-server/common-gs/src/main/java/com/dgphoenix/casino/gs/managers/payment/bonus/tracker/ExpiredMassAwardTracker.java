@@ -12,7 +12,7 @@ import com.dgphoenix.casino.common.cache.data.bonus.BonusSystemType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.lock.LockingInfo;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.mass.MassAwardBonusManager;
+import com.abs.casino.gs.managers.payment.bonus.mass.MassAwardBonusManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

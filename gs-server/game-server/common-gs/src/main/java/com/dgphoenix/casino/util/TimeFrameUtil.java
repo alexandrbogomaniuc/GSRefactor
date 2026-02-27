@@ -7,7 +7,7 @@ import java.time.format.DateTimeParseException;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.dgphoenix.casino.ats.TimeFrame;
+import com.abs.casino.ats.TimeFrame;
 import com.dgphoenix.casino.kafka.dto.TimeFrameDto;
 
 public class TimeFrameUtil {

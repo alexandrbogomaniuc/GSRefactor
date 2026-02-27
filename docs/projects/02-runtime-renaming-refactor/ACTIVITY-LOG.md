@@ -3049,3 +3049,29 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `26`.
   - retained bounded rewires: `31`.
   - global tracked source declarations/files now `1057` remaining (`2277` baseline, `1220` reduced, `53.579271%` burndown).
+
+## 2026-02-27 16:58 UTC (Hard-Cut M2 Wave 208A + 208B + 209)
+- Continued batched-safe hard-cut migration from W207 checkpoint with non-overlapping declaration sets:
+  - `W208A`: 18 declaration migrations in `gs.singlegames.tools.cbservtools`.
+  - `W208B`: 10 declaration migrations in battleground/lock/wallet-client tests/timeframe/tournament handlers and bonus mass/restriction surfaces.
+  - `W209`: integration and validation.
+- Parallel execution mode:
+  - `1 explorer + 2 workers + main` with strict non-overlap ownership.
+- Stabilization:
+  - bounded importer/FQCN rewires retained only for moved symbols from `rewires-batchA-all.txt` and `rewires-batchB-all.txt`.
+  - fixed `STEP06` compile drift by aligning `MassAwardBonusManager` imports to migrated restriction package.
+  - fixed `STEP07` compile drift by aligning `BattlegroundControllerTest` battleground message imports and `support/getMassAwardRestrictions.jsp` `MassAwardRestriction` import.
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun1: `STEP06 FAIL` (`rc=1`).
+  - fast gate rerun2: `STEP07 FAIL` (`rc=1`).
+  - fast gate rerun3: `STEP07 FAIL` (`rc=1`).
+  - fast gate rerun4 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=1`, launch alias `HTTP 502`).
+  - full matrix rerun1 (canonical): `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=1`, launch alias `HTTP 502`; recovery retry executed once and failed).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-163500-hardcut-m2-wave208ab-wave209-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/165-hard-cut-m2-wave208ab-wave209-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `28`.
+  - retained bounded rewires: `43`.
+  - global tracked source declarations/files now `1029` remaining (`2277` baseline, `1248` reduced, `54.808959%` burndown).

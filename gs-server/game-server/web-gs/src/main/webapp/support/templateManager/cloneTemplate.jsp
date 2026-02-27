@@ -16,7 +16,7 @@
             Class.forName(absClassName);
             return absClassName;
         } catch (ClassNotFoundException ignore) {
-            return "com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+            return "com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
         }
     }
 

@@ -1,7 +1,7 @@
 package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors;
 
 import com.abs.casino.gs.managers.dblink.IDBLink;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.GameError;
+import com.abs.casino.gs.singlegames.tools.cbservtools.GameError;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.annotations.PostProcessor;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.annotations.PreProcessor;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.command.ICommandRelated;

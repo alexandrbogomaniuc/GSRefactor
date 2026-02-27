@@ -74,7 +74,7 @@ import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 import com.dgphoenix.casino.gs.persistance.LasthandPersister;
 import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.GameSessionStateListenersFactory;
+import com.abs.casino.gs.singlegames.tools.cbservtools.GameSessionStateListenersFactory;
 import com.abs.casino.init.ShutdownFilter;
 import com.abs.casino.leaderboard.LeaderboardWinTracker;
 import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
@@ -95,7 +95,7 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import static com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameSessionStateListener.State;
+import static com.abs.casino.gs.singlegames.tools.cbservtools.IGameSessionStateListener.State;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class GameServer implements IGameServer, ICommonManager {

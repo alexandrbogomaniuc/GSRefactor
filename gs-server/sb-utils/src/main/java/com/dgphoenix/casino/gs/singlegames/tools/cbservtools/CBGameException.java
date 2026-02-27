@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.singlegames.tools.cbservtools;
+package com.abs.casino.gs.singlegames.tools.cbservtools;
 
 import com.dgphoenix.casino.common.util.logkit.GameLog;
 import com.dgphoenix.casino.common.exception.AbstractSendAlertException;

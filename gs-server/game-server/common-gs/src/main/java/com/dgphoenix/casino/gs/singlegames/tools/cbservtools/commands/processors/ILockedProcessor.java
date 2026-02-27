@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.Set;
 
-import static com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController.*;
+import static com.abs.casino.gs.singlegames.tools.cbservtools.IGameController.*;
 
 public interface ILockedProcessor {
 

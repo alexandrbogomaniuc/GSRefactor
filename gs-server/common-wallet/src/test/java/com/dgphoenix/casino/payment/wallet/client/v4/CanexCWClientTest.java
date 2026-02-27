@@ -4,7 +4,7 @@ import com.abs.casino.common.client.LoggableWithResponseCodeClient;
 import com.abs.casino.common.client.canex.request.RequestType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.rest.CustomRestTemplate;
-import com.dgphoenix.casino.payment.wallet.client.RestAPIClientTest;
+import com.abs.casino.payment.wallet.client.RestAPIClientTest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Ignore;

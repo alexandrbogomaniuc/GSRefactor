@@ -9,7 +9,7 @@
             <gameType>MP</gameType>
             <group>ACTION_GAMES</group>
             <variableType>COIN</variableType>
-            <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+            <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
             <coinsString>1,15,3,4,5</coinsString>
             <langsString>en</langsString>
             <propertiesString></propertiesString>
@@ -27,7 +27,7 @@
             <gameType>MP</gameType>
             <group>ACTION_GAMES</group>
             <variableType>COIN</variableType>
-            <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+            <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
             <coinsString></coinsString>
             <langsString>en</langsString>
             <propertiesString></propertiesString>
@@ -45,7 +45,7 @@
             <gameType>MP</gameType>
             <group>ACTION_GAMES</group>
             <variableType>COIN</variableType>
-            <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+            <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
             <coinsString>1,15,3,4,5</coinsString>
             <langsString>en</langsString>
             <propertiesString></propertiesString>
@@ -63,7 +63,7 @@
             <gameType>MP</gameType>
             <group>ACTION_GAMES</group>
             <variableType>COIN</variableType>
-            <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+            <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
             <coinsString></coinsString>
             <langsString>en</langsString>
             <propertiesString></propertiesString>
@@ -81,7 +81,7 @@
             <gameType>MP</gameType>
             <group>ACTION_GAMES</group>
             <variableType>COIN</variableType>
-            <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+            <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
             <coinsString></coinsString>
             <langsString>en</langsString>
             <propertiesString></propertiesString>
@@ -99,7 +99,7 @@
             <gameType>MP</gameType>
             <group>ACTION_GAMES</group>
             <variableType>COIN</variableType>
-            <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+            <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
             <coinsString></coinsString>
             <langsString>en</langsString>
             <propertiesString></propertiesString>
@@ -117,7 +117,7 @@
             <gameType>MP</gameType>
             <group>ACTION_GAMES</group>
             <variableType>COIN</variableType>
-            <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+            <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
             <coinsString></coinsString>
             <langsString>en</langsString>
             <propertiesString></propertiesString>
@@ -135,7 +135,7 @@
             <gameType>MP</gameType>
             <group>ACTION_GAMES</group>
             <variableType>COIN</variableType>
-            <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+            <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
             <coinsString></coinsString>
             <langsString>en</langsString>
             <propertiesString></propertiesString>

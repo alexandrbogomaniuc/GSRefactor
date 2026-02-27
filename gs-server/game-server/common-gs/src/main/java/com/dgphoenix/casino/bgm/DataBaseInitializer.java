@@ -58,7 +58,7 @@ public class DataBaseInitializer implements ServletContextListener {
 
         Long jackPotId = null;
         Map<String, String> properties = null;
-        String spGameProcessor = "com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+        String spGameProcessor = "com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
 
         jackPotId = null;
         properties = new ConcurrentStringMap<String>();

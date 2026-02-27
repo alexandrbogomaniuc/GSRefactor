@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.tournaments.handlers;
+package com.abs.casino.promo.tournaments.handlers;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;

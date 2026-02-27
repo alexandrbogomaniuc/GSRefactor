@@ -34,7 +34,7 @@
     try {
         Class.forName(spGameProcessor);
     } catch (ClassNotFoundException ignore) {
-        spGameProcessor = "com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
+        spGameProcessor = "com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor";
     }
     List langs = Arrays.asList("en");
 

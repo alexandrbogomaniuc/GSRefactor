@@ -33,7 +33,7 @@ import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.managers.payment.bonus.mass.MassAwardBonusManager;
+import com.abs.casino.gs.managers.payment.bonus.mass.MassAwardBonusManager;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusNotificationTracker;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusNotificationTrackerTask;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusWinTracker;

@@ -11,7 +11,7 @@ import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTrackerTask;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
+import com.abs.casino.gs.singlegames.tools.cbservtools.IGameController;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.ILockedProcessor;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.annotations.PreProcessor;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;

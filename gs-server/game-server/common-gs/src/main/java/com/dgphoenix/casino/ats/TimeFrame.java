@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.ats;
+package com.abs.casino.ats;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;

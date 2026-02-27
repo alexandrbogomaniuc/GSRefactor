@@ -1,9 +1,9 @@
-package com.dgphoenix.casino.gs.singlegames.tools.cbservtools;
+package com.abs.casino.gs.singlegames.tools.cbservtools;
 
 import java.util.Hashtable;
 import java.util.StringTokenizer;
 
-import static com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController.RESINVALIDPARAMETERERROR;
+import static com.abs.casino.gs.singlegames.tools.cbservtools.IGameController.RESINVALIDPARAMETERERROR;
 
 public class Tools {
     private Tools () {

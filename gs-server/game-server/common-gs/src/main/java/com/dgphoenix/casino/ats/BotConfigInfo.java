@@ -2,7 +2,7 @@ package com.abs.casino.ats;
 
 import java.util.Set;
 
-import com.dgphoenix.casino.ats.TimeFrame;
+import com.abs.casino.ats.TimeFrame;
 import com.dgphoenix.casino.kafka.dto.BotConfigInfoDto;
 import com.dgphoenix.casino.kafka.dto.TimeFrameDto;
 import com.abs.casino.util.TimeFrameUtil;

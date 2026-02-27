@@ -1,7 +1,7 @@
 package com.abs.casino.filters;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
+import com.abs.casino.gs.singlegames.tools.cbservtools.IGameController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

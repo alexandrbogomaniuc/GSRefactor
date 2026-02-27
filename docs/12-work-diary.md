@@ -8041,3 +8041,24 @@
   - ETA `43.7h` (`5.46` workdays)
 - Next:
   - continue declaration-first migration while launch alias smoke remains environment-blocked.
+### 2026-02-27 16:58 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W208A/W208B + W209`.
+- Scope retained:
+  - declaration migrations: `28` (`cbservtools` + bounded battleground/bonus-lock/timeframe/wallet-client test surfaces).
+  - bounded rewires: `43` (`rewires-batchA-all.txt` + `rewires-batchB-all.txt`).
+- Stabilization outcome:
+  - fixed `STEP06` compile drift in `MassAwardBonusManager` restriction imports.
+  - fixed `STEP07` compile drift in `BattlegroundControllerTest` message imports and `support/getMassAwardRestrictions.jsp` `MassAwardRestriction` import.
+- Validation outcome (canonical):
+  - fast gate rerun4: `STEP01-08 PASS`, `STEP09 FAIL` (`/startgame` alias `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=1`, `/startgame` alias `HTTP 502`; recovery retry executed once and failed).
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-163500-hardcut-m2-wave208ab-wave209-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/165-hard-cut-m2-wave208ab-wave209-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1248`, remaining `1029`
+  - burndown `54.808959%`
+  - Project 02 `34.633847%`, Core `67.316924%`, Portfolio `83.658462%`
+  - ETA `42.5h` (`5.32` workdays)
+- Next:
+  - continue declaration-first migration while launch alias smoke remains environment-blocked.

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.payment.wallet.client;
+package com.abs.casino.payment.wallet.client;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.http.HttpHeaders;

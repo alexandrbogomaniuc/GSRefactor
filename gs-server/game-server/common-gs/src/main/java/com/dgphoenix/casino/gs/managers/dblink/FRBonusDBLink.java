@@ -24,7 +24,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.dgphoenix.casino.gs.persistance.LasthandPersister;
 import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.CBGameException;
+import com.abs.casino.gs.singlegames.tools.cbservtools.CBGameException;
 
 import java.util.HashMap;
 import java.util.Map;

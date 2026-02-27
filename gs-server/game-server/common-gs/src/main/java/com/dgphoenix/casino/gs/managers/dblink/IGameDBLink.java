@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.data.bank.ICoin;
 import com.dgphoenix.casino.common.cache.data.bank.ILimit;
 import com.dgphoenix.casino.common.cache.data.currency.ICurrency;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.CBGameException;
+import com.abs.casino.gs.singlegames.tools.cbservtools.CBGameException;
 import com.abs.casino.unj.api.AbstractSharedGameState;
 
 import java.util.List;

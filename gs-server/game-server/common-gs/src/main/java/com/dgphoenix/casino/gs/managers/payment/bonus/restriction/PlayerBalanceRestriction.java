@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.bonus.restriction;
+package com.abs.casino.gs.managers.payment.bonus.restriction;
 
 import com.dgphoenix.casino.common.cache.data.account.IAccountInfo;
 import com.dgphoenix.casino.common.cache.data.bonus.BaseBonus;

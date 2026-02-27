@@ -3,7 +3,7 @@ import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
 import com.abs.casino.gs.managers.game.session.GameSessionManager;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.CM2Date;
+import com.abs.casino.gs.singlegames.tools.cbservtools.CM2Date;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.action.ActionForward;

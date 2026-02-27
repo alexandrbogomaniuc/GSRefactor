@@ -12,7 +12,7 @@
                 <gameType>MP</gameType>
                 <group>ACTION_GAMES</group>
                 <variableType>COIN</variableType>
-                <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+                <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
                 <coinsString></coinsString>
                 <langsString>en</langsString>
                 <propertiesString>LGA_APPROVED=TRUE;DEVELOPMENT_VERSION=FALSE;JACKPOT3_GAME=FALSE;KEY_SINGLE_GAME_ID_FOR_ALL_PLATFORMS=TRUE;DEFCOIN=2;ISENABLED=TRUE;CDN_SUPPORT=TRUE;KEY_ACS_ENABLED=FALSE;MAX_WIN=25000;RTP=97.5;</propertiesString>
@@ -40,7 +40,7 @@
                 <gameType>MP</gameType>
                 <group>ACTION_GAMES</group>
                 <variableType>COIN</variableType>
-                <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+                <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
                 <coinsString></coinsString>
                 <langsString>en</langsString>
                 <propertiesString>LGA_APPROVED=TRUE;DEVELOPMENT_VERSION=FALSE;JACKPOT3_GAME=FALSE;KEY_SINGLE_GAME_ID_FOR_ALL_PLATFORMS=TRUE;DEFCOIN=2;ISENABLED=TRUE;CDN_SUPPORT=TRUE;KEY_ACS_ENABLED=FALSE;MAX_WIN=25000;RTP=97.5;</propertiesString>
@@ -68,7 +68,7 @@
                 <gameType>MP</gameType>
                 <group>ACTION_GAMES</group>
                 <variableType>COIN</variableType>
-                <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+                <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
                 <coinsString></coinsString>
                 <langsString>en</langsString>
                 <propertiesString>LGA_APPROVED=TRUE;DEVELOPMENT_VERSION=FALSE;JACKPOT3_GAME=FALSE;KEY_SINGLE_GAME_ID_FOR_ALL_PLATFORMS=TRUE;DEFCOIN=2;ISENABLED=TRUE;CDN_SUPPORT=TRUE;KEY_ACS_ENABLED=FALSE;MAX_WIN=15000;RTP=97.5;</propertiesString>
@@ -96,7 +96,7 @@
                 <gameType>MP</gameType>
                 <group>ACTION_GAMES</group>
                 <variableType>COIN</variableType>
-                <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+                <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
                 <coinsString></coinsString>
                 <langsString>en</langsString>
                 <propertiesString>LGA_APPROVED=TRUE;DEVELOPMENT_VERSION=FALSE;JACKPOT3_GAME=FALSE;KEY_SINGLE_GAME_ID_FOR_ALL_PLATFORMS=TRUE;DEFCOIN=2;ISENABLED=TRUE;CDN_SUPPORT=TRUE;KEY_ACS_ENABLED=FALSE;MAX_WIN=25000;RTP=97.5;</propertiesString>
@@ -124,7 +124,7 @@
                 <gameType>MP</gameType>
                 <group>ACTION_GAMES</group>
                 <variableType>COIN</variableType>
-                <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+                <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
                 <coinsString></coinsString>
                 <langsString>en</langsString>
                 <propertiesString>LGA_APPROVED=TRUE;DEVELOPMENT_VERSION=FALSE;JACKPOT3_GAME=FALSE;KEY_SINGLE_GAME_ID_FOR_ALL_PLATFORMS=TRUE;DEFCOIN=2;ISENABLED=TRUE;CDN_SUPPORT=TRUE;KEY_ACS_ENABLED=FALSE;MAX_WIN=25000;RTP=97.5;</propertiesString>
@@ -152,7 +152,7 @@
                 <gameType>MP</gameType>
                 <group>ACTION_GAMES</group>
                 <variableType>COIN</variableType>
-                <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+                <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
                 <coinsString></coinsString>
                 <langsString>en</langsString>
                 <propertiesString>LGA_APPROVED=TRUE;DEVELOPMENT_VERSION=FALSE;JACKPOT3_GAME=FALSE;KEY_SINGLE_GAME_ID_FOR_ALL_PLATFORMS=TRUE;DEFCOIN=2;ISENABLED=TRUE;CDN_SUPPORT=TRUE;KEY_ACS_ENABLED=FALSE;MAX_WIN=25000;RTP=97.5;</propertiesString>
@@ -180,7 +180,7 @@
                 <gameType>MP</gameType>
                 <group>ACTION_GAMES</group>
                 <variableType>COIN</variableType>
-                <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+                <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
                 <coinsString></coinsString>
                 <langsString>en</langsString>
                 <propertiesString>LGA_APPROVED=TRUE;DEVELOPMENT_VERSION=FALSE;JACKPOT3_GAME=FALSE;KEY_SINGLE_GAME_ID_FOR_ALL_PLATFORMS=TRUE;DEFCOIN=2;ISENABLED=TRUE;CDN_SUPPORT=TRUE;KEY_ACS_ENABLED=FALSE;MAX_WIN=25000;RTP=97.5;</propertiesString>
@@ -208,7 +208,7 @@
                 <gameType>MP</gameType>
                 <group>ACTION_GAMES</group>
                 <variableType>COIN</variableType>
-                <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
+                <gsClassName>com.abs.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
                 <coinsString></coinsString>
                 <langsString>en</langsString>
                 <propertiesString>LGA_APPROVED=TRUE;DEVELOPMENT_VERSION=FALSE;MP_GAME_FOLDER_NAME=game;JACKPOT3_GAME=FALSE;KEY_SINGLE_GAME_ID_FOR_ALL_PLATFORMS=TRUE;DEFCOIN=2;ISENABLED=TRUE;CDN_SUPPORT=TRUE;KEY_ACS_ENABLED=FALSE;MAX_WIN=15000;RTP=97.5;</propertiesString>

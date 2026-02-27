@@ -32,7 +32,7 @@ import com.abs.casino.gs.managers.dblink.TournamentDBLink;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.dgphoenix.casino.gs.persistance.LasthandPersister;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
+import com.abs.casino.gs.singlegames.tools.cbservtools.IGameController;
 import com.abs.casino.gs.singlegames.tools.util.LasthandHelper;
 import com.abs.casino.promo.persisters.CassandraBattlegroundConfigPersister;
 import com.abs.casino.promo.tournaments.messages.BattlegroundInfo;

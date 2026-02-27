@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.bonus.mass;
+package com.abs.casino.gs.managers.payment.bonus.mass;
 
 import com.dgphoenix.casino.common.cache.data.bonus.*;
 import com.dgphoenix.casino.common.exception.CommonException;

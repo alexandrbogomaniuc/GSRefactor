@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.lock;
+package com.abs.casino.gs.lock;
 
 import static com.dgphoenix.casino.gs.persistance.remotecall.KafkaResponseConverterUtil.convertToType;
 
