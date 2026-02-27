@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.feeds;
+package com.abs.casino.common.feeds;
 
 public class RoundWinsEntry {
 

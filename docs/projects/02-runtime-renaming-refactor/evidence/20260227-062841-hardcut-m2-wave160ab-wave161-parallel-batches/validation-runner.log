@@ -1,0 +1,25 @@
+[2026-02-27T06:38:41Z] START pre-setup-utils-install
+[2026-02-27T06:38:45Z] END pre-setup-utils-install exit=0 log=pre-setup-utils-install-rerun2.log
+[2026-02-27T06:38:45Z] START pre-setup-sb-utils-install
+[2026-02-27T06:38:48Z] END pre-setup-sb-utils-install exit=0 log=pre-setup-sb-utils-install-rerun2.log
+[2026-02-27T06:38:48Z] START pre-setup-common-promo-install
+[2026-02-27T06:38:51Z] END pre-setup-common-promo-install exit=0 log=pre-setup-common-promo-install-rerun2.log
+[2026-02-27T06:38:51Z] START 01-common-install
+[2026-02-27T06:38:55Z] END 01-common-install exit=0 log=01-rerun2.log
+[2026-02-27T06:38:55Z] START 02-common-wallet-install
+[2026-02-27T06:38:57Z] END 02-common-wallet-install exit=0 log=02-rerun2.log
+[2026-02-27T06:38:57Z] START 03-sb-utils-install
+[2026-02-27T06:39:00Z] END 03-sb-utils-install exit=0 log=03-rerun2.log
+[2026-02-27T06:39:00Z] START 04-promo-persisters-install
+[2026-02-27T06:39:03Z] END 04-promo-persisters-install exit=0 log=04-rerun2.log
+[2026-02-27T06:39:03Z] START 05-common-gs-install
+[2026-02-27T06:39:17Z] END 05-common-gs-install exit=0 log=05-rerun2.log
+[2026-02-27T06:39:17Z] START 06-common-persisters-install
+[2026-02-27T06:39:20Z] END 06-common-persisters-install exit=0 log=06-rerun2.log
+[2026-02-27T06:39:20Z] START 07-web-gs-package
+[2026-02-27T06:39:34Z] END 07-web-gs-package exit=0 log=07-rerun2.log
+[2026-02-27T06:39:34Z] START 08-mp-server-persistance-install
+[2026-02-27T06:39:39Z] END 08-mp-server-persistance-install exit=0 log=08-rerun2.log
+[2026-02-27T06:39:39Z] START 09-smoke
+[2026-02-27T06:40:08Z] END 09-smoke exit=0 log=09-rerun2.log
+[2026-02-27T06:40:08Z] ALL_STEPS_PASS promoting rerun2 artifacts to canonical

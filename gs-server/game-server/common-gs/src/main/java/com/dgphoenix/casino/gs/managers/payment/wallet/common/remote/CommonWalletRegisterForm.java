@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.wallet.common.remote;
+package com.abs.casino.gs.managers.payment.wallet.common.remote;
 
 import org.apache.struts.action.ActionForm;
 

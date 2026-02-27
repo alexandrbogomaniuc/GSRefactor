@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.mail;
+package com.abs.casino.common.mail;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.string.StringUtils;

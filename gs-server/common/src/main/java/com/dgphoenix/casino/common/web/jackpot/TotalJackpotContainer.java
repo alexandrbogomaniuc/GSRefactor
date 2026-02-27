@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.web.jackpot;
+package com.abs.casino.common.web.jackpot;
 
 import com.abs.casino.common.util.xml.XMLUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;

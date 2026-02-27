@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.external.operation;
+package com.abs.casino.gs.external.operation;
 
 /**
  * Created by ANGeL

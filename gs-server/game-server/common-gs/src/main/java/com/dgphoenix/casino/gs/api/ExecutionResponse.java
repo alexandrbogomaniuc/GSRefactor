@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.api;
+package com.abs.casino.gs.api;
 
 public class ExecutionResponse {
     private final Object result;

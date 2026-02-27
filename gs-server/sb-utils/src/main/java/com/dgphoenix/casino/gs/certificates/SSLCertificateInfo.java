@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.certificates;
+package com.abs.casino.gs.certificates;
 
 import java.util.Date;
 

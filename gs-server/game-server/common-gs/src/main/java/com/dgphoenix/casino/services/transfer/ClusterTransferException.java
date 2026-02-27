@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.services.transfer;
+package com.abs.casino.services.transfer;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.promo.icon;
+package com.abs.casino.common.promo.icon;
 
 public class TournamentIcon {
     private long id;

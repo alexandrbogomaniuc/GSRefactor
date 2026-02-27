@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.slottest.utils;
+package com.abs.casino.slottest.utils;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.logkit.ThreadLog;

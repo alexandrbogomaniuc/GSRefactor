@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.wallet.common.remote;
+package com.abs.casino.gs.managers.payment.wallet.common.remote;
 
 import com.dgphoenix.casino.actions.enter.CommonActionForm;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;

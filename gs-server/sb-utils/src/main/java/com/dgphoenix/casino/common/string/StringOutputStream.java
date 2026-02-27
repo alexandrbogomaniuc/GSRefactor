@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.string;
+package com.abs.casino.common.string;
 
 import java.io.IOException;
 import java.io.OutputStream;

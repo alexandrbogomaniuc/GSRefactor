@@ -2501,3 +2501,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `22`.
   - retained bounded rewires: `9`.
   - global tracked source declarations/files now `1364` remaining (`2277` baseline, `913` reduced, `40.096618%` burndown).
+
+## 2026-02-27 06:42 UTC (Hard-Cut M2 Wave 160A + 160B + 161, Stabilized)
+- Continued batched-safe hard-cut migration from W159 checkpoint with non-overlapping ownership:
+  - `W160A`: migrated 10 declaration packages in `gs.api`, `gs.external.operation`, `gs.managers.game.socket`, `gs.managers.payment.wallet.common.remote`, `gs.managers.payment.wallet.common.stub`, `gs.managers.payment.wallet.processor`, `services.transfer`.
+  - `W160B`: migrated 10 declaration packages in `common.promo.icon`, `common.feeds`, `common.mail`, `common.string`, `common.web.jackpot`, `gs.certificates`, `slottest.utils`.
+  - `W161`: no external Java rewires retained.
+- Stabilization:
+  - corrected explorer-provided path mismatches in batch B before final edit pass.
+  - fast gate passed `9/9`.
+  - full matrix rerun2 passed `9/9` after correcting step04 module path (`gs-server/promo/persisters`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-062841-hardcut-m2-wave160ab-wave161-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/141-hard-cut-m2-wave160ab-wave161-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `20`.
+  - retained bounded rewires: `0`.
+  - global tracked source declarations/files now `1343` remaining (`2277` baseline, `934` reduced, `41.018884%` burndown).

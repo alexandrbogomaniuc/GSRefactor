@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.api;
+package com.abs.casino.gs.api;
 
 import java.util.Date;
 import java.util.concurrent.Callable;

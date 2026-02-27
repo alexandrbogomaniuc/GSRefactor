@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.feeds;
+package com.abs.casino.common.feeds;
 
 import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 import com.abs.casino.tools.annotations.IgnoreValidation;
