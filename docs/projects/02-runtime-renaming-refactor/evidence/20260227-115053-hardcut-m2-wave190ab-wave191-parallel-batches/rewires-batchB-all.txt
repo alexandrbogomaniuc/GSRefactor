@@ -1,0 +1,8 @@
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IParticipantEvent.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/engine/AbstractMPGameEngine.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/engine/AbstractSPGameEngine.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/engine/IGameEngine.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/room/RoomManager.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/SPGameProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/PromoGameEventProcessor.java

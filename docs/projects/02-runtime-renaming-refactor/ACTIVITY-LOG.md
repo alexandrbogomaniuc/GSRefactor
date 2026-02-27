@@ -2836,3 +2836,27 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `13`.
   - retained bounded rewires: `34`.
   - global tracked source declarations/files now `1209` remaining (`2277` baseline, `1068` reduced, `46.903821%` burndown).
+
+## 2026-02-27 12:04 UTC (Hard-Cut M2 Wave 190A + 190B + 191)
+- Continued batched-safe hard-cut migration from W189 checkpoint with non-overlapping settings/engine-room split:
+  - `W190A`: 7 declaration migrations in `gs.managers.game.settings` (+ direct tests).
+  - `W190B`: 8 declaration migrations in `gs.managers.game.engine`, `gs.managers.game.event`, `gs.managers.game.room`.
+  - `W191`: integration and validation.
+- Parallel execution mode:
+  - explorer prepared non-overlapping low-risk batches.
+  - thread-cap fallback enforced `1 worker + main` while preserving strict file ownership.
+- Stabilization:
+  - no rollback required.
+  - corrected one explorer path mismatch (`IGameEventProcessor` is in `common-gs`) before validation.
+  - bounded rewires retained in direct Java importers plus one bounded JSP import rewire.
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun1: steps `1-8 PASS`, step `9 FAIL` (`startgame` alias `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-115053-hardcut-m2-wave190ab-wave191-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/156-hard-cut-m2-wave190ab-wave191-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `15`.
+  - retained bounded rewires: `9`.
+  - global tracked source declarations/files now `1194` remaining (`2277` baseline, `1083` reduced, `47.562582%` burndown).

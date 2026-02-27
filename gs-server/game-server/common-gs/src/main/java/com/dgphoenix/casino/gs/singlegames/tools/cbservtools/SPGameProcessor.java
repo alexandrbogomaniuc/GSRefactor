@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.gs.managers.dblink.*;
-import com.dgphoenix.casino.gs.managers.game.engine.AbstractSPGameEngine;
+import com.abs.casino.gs.managers.game.engine.AbstractSPGameEngine;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
 import org.apache.logging.log4j.LogManager;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.game.settings;
+package com.abs.casino.gs.managers.game.settings;
 
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BaseGameCache;

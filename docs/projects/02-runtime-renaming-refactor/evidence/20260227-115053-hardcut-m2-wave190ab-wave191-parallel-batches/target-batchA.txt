@@ -1,0 +1,7 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/settings/DynamicCoinManager.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/settings/GameSettingsManager.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/settings/GamesLevelContext.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/settings/GamesLevelHelper.java
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/game/settings/DynamicCoinManagerTest.java
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/game/settings/GameSettingsManagerTest.java
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/game/settings/GamesLevelHelperTest.java

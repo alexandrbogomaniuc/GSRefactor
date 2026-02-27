@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.game.settings;
+package com.abs.casino.gs.managers.game.settings;
 
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;
@@ -20,7 +20,7 @@ import java.util.*;
 import java.util.function.Predicate;
 
 import static com.dgphoenix.casino.common.cache.data.game.BaseGameConstants.*;
-import static com.dgphoenix.casino.gs.managers.game.settings.GamesLevelHelper.forbiddenCoins;
+import static com.abs.casino.gs.managers.game.settings.GamesLevelHelper.forbiddenCoins;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;

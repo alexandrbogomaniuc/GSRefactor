@@ -11,7 +11,7 @@ import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.dgphoenix.casino.common.cache.data.game.GameGroup;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.gs.managers.dblink.FreeGameCalculator;
-import com.dgphoenix.casino.gs.managers.game.settings.GameSettingsManager;
+import com.abs.casino.gs.managers.game.settings.GameSettingsManager;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.junit.Before;

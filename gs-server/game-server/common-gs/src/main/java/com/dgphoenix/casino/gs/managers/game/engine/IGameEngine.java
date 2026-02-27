@@ -1,11 +1,11 @@
-package com.dgphoenix.casino.gs.managers.game.engine;
+package com.abs.casino.gs.managers.game.engine;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.dgphoenix.casino.gs.managers.game.core.IGameProcessor;
-import com.dgphoenix.casino.gs.managers.game.room.IRoom;
+import com.abs.casino.gs.managers.game.room.IRoom;
 
 /**
  * Created

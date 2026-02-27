@@ -39,7 +39,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.ISendBetInterceptor;
 import com.dgphoenix.casino.gs.LocalSessionTracker;
-import com.dgphoenix.casino.gs.managers.game.settings.GameSettingsManager;
+import com.abs.casino.gs.managers.game.settings.GameSettingsManager;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletOperation;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.game.event;
+package com.abs.casino.gs.managers.game.event;
 
 /**
  * User: Grien

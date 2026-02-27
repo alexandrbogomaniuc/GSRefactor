@@ -3,7 +3,7 @@
  * Date: 28.11.2008
  * Time: 19:31:48
  */
-package com.dgphoenix.casino.gs.managers.game.engine;
+package com.abs.casino.gs.managers.game.engine;
 
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;

@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.cache.data.game.GameGroup;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.managers.game.settings.GameSettingsManager;
+import com.abs.casino.gs.managers.game.settings.GameSettingsManager;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

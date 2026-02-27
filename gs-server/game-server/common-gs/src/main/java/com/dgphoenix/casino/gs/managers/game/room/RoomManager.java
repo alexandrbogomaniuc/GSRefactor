@@ -3,11 +3,11 @@
  * Date: 01.12.2008
  * Time: 12:50:28
  */
-package com.dgphoenix.casino.gs.managers.game.room;
+package com.abs.casino.gs.managers.game.room;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.managers.game.engine.GameEngineManager;
-import com.dgphoenix.casino.gs.managers.game.engine.IGameEngine;
+import com.abs.casino.gs.managers.game.engine.GameEngineManager;
+import com.abs.casino.gs.managers.game.engine.IGameEngine;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
