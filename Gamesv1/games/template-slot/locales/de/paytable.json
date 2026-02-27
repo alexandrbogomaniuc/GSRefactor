@@ -1,0 +1,11 @@
+{
+    "TITLE": "Auszahlungstabelle",
+    "SYMBOL_PREFIX": "Symbol",
+    "WILD": "Wild",
+    "WILD_DESC": "Ersetzt alle Symbole außer Scatter.",
+    "SCATTER": "Scatter",
+    "SCATTER_DESC": "3 oder mehr lösen Freispiele aus.",
+    "PAYLINE_LABEL": "Gewinnlinie {{number}}",
+    "PAYS_LEFT_TO_RIGHT": "Alle Gewinne werden von links nach rechts ausgezahlt.",
+    "HIGHEST_WIN_ONLY": "Nur der höchste Gewinn pro Linie wird ausgezahlt."
+}

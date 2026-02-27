@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "noEmit": true,
+        "types": [
+            "node"
+        ],
+        "typeRoots": [
+            "../../node_modules/@types"
+        ]
+    },
+    "include": [
+        "src"
+    ]
+}

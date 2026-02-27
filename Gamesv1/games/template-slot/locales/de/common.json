@@ -1,0 +1,20 @@
+{
+    "GAME_TITLE": "Vorlage Slot",
+    "SPIN": "DREHEN",
+    "STOP": "STOPP",
+    "AUTOPLAY": "Automatisches Spiel",
+    "AUTOPLAY_START": "Autoplay starten",
+    "AUTOPLAY_STOP": "Autoplay stoppen",
+    "SETTINGS": "Einstellungen",
+    "SOUND_ON": "Ton Ein",
+    "SOUND_OFF": "Ton Aus",
+    "TURBO_ON": "Turbo Ein",
+    "TURBO_OFF": "Turbo Aus",
+    "BET": "Einsatz",
+    "BALANCE": "Guthaben",
+    "WIN": "Gewinn",
+    "TOTAL_BET": "Gesamteinsatz",
+    "LOADING": "Laden...",
+    "ERROR_GENERIC": "Etwas ist schiefgelaufen. Bitte aktualisieren Sie die Seite.",
+    "BRAND_WELCOME": "Willkommen bei {{BRAND_NAME}}"
+}

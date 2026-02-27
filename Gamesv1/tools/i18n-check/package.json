@@ -1,0 +1,9 @@
+{
+    "name": "@tools/i18n-check",
+    "version": "1.0.0",
+    "type": "module",
+    "private": true,
+    "devDependencies": {
+        "@types/node": "^25.3.2"
+    }
+}
