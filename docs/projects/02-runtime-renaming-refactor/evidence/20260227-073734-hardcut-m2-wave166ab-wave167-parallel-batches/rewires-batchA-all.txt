@@ -1,0 +1,5 @@
+gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/CassandraPersistenceManager.java
+gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/IKeyspaceManager.java
+gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/PersistersFactory.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/CassandraPersistenceContextConfiguration.java
+mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/config/CassandraContextConfiguration.java

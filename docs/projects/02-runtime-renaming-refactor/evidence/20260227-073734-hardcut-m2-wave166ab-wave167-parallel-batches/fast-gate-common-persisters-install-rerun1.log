@@ -1,0 +1,535 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-common-persisters >-------------
+[INFO] Building gsn-common-persisters 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-persisters ---
+[INFO] Compiling 13 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[3,46] error: package com.abs.casino.cassandra.persist.engine does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[4,46] error: package com.abs.casino.cassandra.persist.engine does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[5,46] error: package com.abs.casino.cassandra.persist.engine does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[6,60] error: package com.abs.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[7,34] error: package com.abs.casino.common.cache does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[8,34] error: package com.abs.casino.common.cache does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[9,34] error: package com.abs.casino.common.cache does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[10,47] error: cannot find symbol
+[ERROR]   symbol:   class AccountInfo
+  location: package com.abs.casino.common.cache.data.account
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[11,47] error: cannot find symbol
+[ERROR]   symbol:   class GameSession
+  location: package com.abs.casino.common.cache.data.session
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[12,47] error: cannot find symbol
+[ERROR]   symbol:   class SessionInfo
+  location: package com.abs.casino.common.cache.data.session
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[13,33] error: package com.abs.casino.common.lock does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[14,33] error: package com.abs.casino.common.lock does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[15,33] error: package com.abs.casino.common.lock does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[16,0] error: package com.abs.casino.common.transactiondata does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[17,55] error: package com.abs.casino.common.transactiondata.storeddate does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[18,55] error: package com.abs.casino.common.transactiondata.storeddate does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[19,33] error: package com.abs.casino.common.util does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[20,33] error: package com.abs.casino.common.util does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[21,33] error: package com.abs.casino.common.util does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[22,40] error: package com.abs.casino.common.util.string does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[23,40] error: package com.abs.casino.common.util.string does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[24,43] error: package com.abs.casino.common.web.statistics does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[40,55] error: cannot find symbol
+[ERROR]   symbol: class AbstractCassandraPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[41,19] error: cannot find symbol
+[ERROR]   symbol: class ITransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[41,46] error: cannot find symbol
+[ERROR]   symbol: class ChangeLockListener
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[41,66] error: cannot find symbol
+[ERROR]   symbol: class IDistributedCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[41,92] error: cannot find symbol
+[ERROR]   symbol: class ITransactionData
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[39,1] error: cannot find symbol
+[ERROR]   symbol: class CacheKeyInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[67,41] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[76,25] error: cannot find symbol
+[ERROR]   symbol:   class TableDefinition
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[101,25] error: cannot find symbol
+[ERROR]   symbol:   class TableDefinition
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[113,26] error: cannot find symbol
+[ERROR]   symbol:   class StoredItemType
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[113,42] error: cannot find symbol
+[ERROR]   symbol:   class IStoredDataProcessor
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[114,23] error: cannot find symbol
+[ERROR]   symbol:   class TransactionDataInvalidatedListener
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[116,12] error: cannot find symbol
+[ERROR]   symbol:   class CassandraAccountInfoPersister
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[131,41] error: cannot find symbol
+[ERROR]   symbol:   class CassandraAccountInfoPersister
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[135,45] error: cannot find symbol
+[ERROR]   symbol:   class StoredItemType
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[135,66] error: cannot find symbol
+[ERROR]   symbol:   class IStoredDataProcessor
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[140,11] error: cannot find symbol
+[ERROR]   symbol:   class TableDefinition
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[145,16] error: cannot find symbol
+[ERROR]   symbol:   class TableDefinition
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[167,45] error: cannot find symbol
+[ERROR]   symbol:   class TransactionDataInvalidatedListener
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[172,16] error: cannot find symbol
+[ERROR]   symbol:   class OnlineSessionInfo
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[274,33] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[338,74] error: cannot find symbol
+[ERROR]   symbol:   class TrackingStatus
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[338,26] error: cannot find symbol
+[ERROR]   symbol:   class TrackingState
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[350,85] error: cannot find symbol
+[ERROR]   symbol:   class TrackingStatus
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[350,20] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[350,33] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[350,38] error: cannot find symbol
+[ERROR]   symbol:   class TrackingState
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[350,53] error: cannot find symbol
+[ERROR]   symbol:   class TrackingInfo
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[378,74] error: cannot find symbol
+[ERROR]   symbol:   class TrackingStatus
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[389,70] error: cannot find symbol
+[ERROR]   symbol:   class TrackingStatus
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[401,36] error: cannot find symbol
+[ERROR]   symbol:   class TrackingStatus
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[402,36] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionDataProcessor
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[424,58] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionDataProcessor
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[454,30] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[470,24] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[518,48] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[520,48] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[581,14] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[611,12] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[634,29] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[695,31] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[754,30] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[814,39] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[873,31] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[908,42] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[978,30] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1040,11] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1045,11] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1063,32] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1063,11] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1130,20] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1130,33] error: cannot find symbol
+[ERROR]   symbol:   class GameSession
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1134,24] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1150,24] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1169,82] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1196,11] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1196,16] error: cannot find symbol
+[ERROR]   symbol:   class TrackingState
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1196,31] error: cannot find symbol
+[ERROR]   symbol:   class TrackingInfo
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1229,16] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1289,11] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1320,12] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1368,26] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1384,126] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1384,12] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1384,17] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1402,87] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1402,11] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1420,69] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1420,92] error: cannot find symbol
+[ERROR]   symbol:   class TrackingState
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1431,35] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1431,58] error: cannot find symbol
+[ERROR]   symbol:   class TrackingState
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1436,27] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1447,28] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1459,43] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1464,43] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1473,11] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1488,23] error: cannot find symbol
+[INFO] 99 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.452 s
+[INFO] Finished at: 2026-02-27T07:41:09Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common-persisters: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[3,46] error: package com.abs.casino.cassandra.persist.engine does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[4,46] error: package com.abs.casino.cassandra.persist.engine does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[5,46] error: package com.abs.casino.cassandra.persist.engine does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[6,60] error: package com.abs.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[7,34] error: package com.abs.casino.common.cache does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[8,34] error: package com.abs.casino.common.cache does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[9,34] error: package com.abs.casino.common.cache does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[10,47] error: cannot find symbol
+[ERROR]   symbol:   class AccountInfo
+[ERROR]   location: package com.abs.casino.common.cache.data.account
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[11,47] error: cannot find symbol
+[ERROR]   symbol:   class GameSession
+[ERROR]   location: package com.abs.casino.common.cache.data.session
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[12,47] error: cannot find symbol
+[ERROR]   symbol:   class SessionInfo
+[ERROR]   location: package com.abs.casino.common.cache.data.session
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[13,33] error: package com.abs.casino.common.lock does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[14,33] error: package com.abs.casino.common.lock does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[15,33] error: package com.abs.casino.common.lock does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[16,0] error: package com.abs.casino.common.transactiondata does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[17,55] error: package com.abs.casino.common.transactiondata.storeddate does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[18,55] error: package com.abs.casino.common.transactiondata.storeddate does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[19,33] error: package com.abs.casino.common.util does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[20,33] error: package com.abs.casino.common.util does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[21,33] error: package com.abs.casino.common.util does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[22,40] error: package com.abs.casino.common.util.string does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[23,40] error: package com.abs.casino.common.util.string does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[24,43] error: package com.abs.casino.common.web.statistics does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[40,55] error: cannot find symbol
+[ERROR]   symbol: class AbstractCassandraPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[41,19] error: cannot find symbol
+[ERROR]   symbol: class ITransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[41,46] error: cannot find symbol
+[ERROR]   symbol: class ChangeLockListener
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[41,66] error: cannot find symbol
+[ERROR]   symbol: class IDistributedCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[41,92] error: cannot find symbol
+[ERROR]   symbol: class ITransactionData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[39,1] error: cannot find symbol
+[ERROR]   symbol: class CacheKeyInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[67,41] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[76,25] error: cannot find symbol
+[ERROR]   symbol:   class TableDefinition
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[101,25] error: cannot find symbol
+[ERROR]   symbol:   class TableDefinition
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[113,26] error: cannot find symbol
+[ERROR]   symbol:   class StoredItemType
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[113,42] error: cannot find symbol
+[ERROR]   symbol:   class IStoredDataProcessor
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[114,23] error: cannot find symbol
+[ERROR]   symbol:   class TransactionDataInvalidatedListener
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[116,12] error: cannot find symbol
+[ERROR]   symbol:   class CassandraAccountInfoPersister
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[131,41] error: cannot find symbol
+[ERROR]   symbol:   class CassandraAccountInfoPersister
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[135,45] error: cannot find symbol
+[ERROR]   symbol:   class StoredItemType
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[135,66] error: cannot find symbol
+[ERROR]   symbol:   class IStoredDataProcessor
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[140,11] error: cannot find symbol
+[ERROR]   symbol:   class TableDefinition
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[145,16] error: cannot find symbol
+[ERROR]   symbol:   class TableDefinition
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[167,45] error: cannot find symbol
+[ERROR]   symbol:   class TransactionDataInvalidatedListener
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[172,16] error: cannot find symbol
+[ERROR]   symbol:   class OnlineSessionInfo
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[274,33] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[338,74] error: cannot find symbol
+[ERROR]   symbol:   class TrackingStatus
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[338,26] error: cannot find symbol
+[ERROR]   symbol:   class TrackingState
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[350,85] error: cannot find symbol
+[ERROR]   symbol:   class TrackingStatus
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[350,20] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[350,33] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[350,38] error: cannot find symbol
+[ERROR]   symbol:   class TrackingState
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[350,53] error: cannot find symbol
+[ERROR]   symbol:   class TrackingInfo
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[378,74] error: cannot find symbol
+[ERROR]   symbol:   class TrackingStatus
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[389,70] error: cannot find symbol
+[ERROR]   symbol:   class TrackingStatus
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[401,36] error: cannot find symbol
+[ERROR]   symbol:   class TrackingStatus
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[402,36] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionDataProcessor
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[424,58] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionDataProcessor
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[454,30] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[470,24] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[518,48] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[520,48] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[581,14] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[611,12] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[634,29] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[695,31] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[754,30] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[814,39] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[873,31] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[908,42] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[978,30] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1040,11] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1045,11] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1063,32] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1063,11] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1130,20] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1130,33] error: cannot find symbol
+[ERROR]   symbol:   class GameSession
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1134,24] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1150,24] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1169,82] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1196,11] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1196,16] error: cannot find symbol
+[ERROR]   symbol:   class TrackingState
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1196,31] error: cannot find symbol
+[ERROR]   symbol:   class TrackingInfo
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1229,16] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1289,11] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1320,12] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1368,26] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1384,126] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1384,12] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1384,17] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1402,87] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1402,11] error: cannot find symbol
+[ERROR]   symbol:   class Pair
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1420,69] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1420,92] error: cannot find symbol
+[ERROR]   symbol:   class TrackingState
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1431,35] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1431,58] error: cannot find symbol
+[ERROR]   symbol:   class TrackingState
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1436,27] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1447,28] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1459,43] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1464,43] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1473,11] error: cannot find symbol
+[ERROR]   symbol:   class ITransactionData
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1488,23] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

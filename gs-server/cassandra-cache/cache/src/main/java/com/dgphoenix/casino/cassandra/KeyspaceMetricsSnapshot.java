@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra;
+package com.abs.casino.cassandra;
 
 import com.codahale.metrics.Snapshot;
 import com.codahale.metrics.Timer;

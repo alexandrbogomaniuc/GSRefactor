@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra;
+package com.abs.casino.cassandra;
 
 /**
  * @author <a href="mailto:fateyev@dgphoenix.com">Anton Fateyev</a>

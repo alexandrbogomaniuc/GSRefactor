@@ -1,6 +1,6 @@
-package com.dgphoenix.casino.cassandra;
+package com.abs.casino.cassandra;
 
-import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -153,7 +153,7 @@ public class KeyspaceManagerImpl implements IKeyspaceManager {
             }
         }
 
-        session = new com.dgphoenix.casino.cassandra.persist.engine.Session(keyspaceName, cluster.connect(keyspaceName));
+        session = new com.abs.casino.cassandra.persist.engine.Session(keyspaceName, cluster.connect(keyspaceName));
 
         try {
             awaitOnlineHosts(configuration.getMinimumOnlineHosts(), configuration.getLocalDataCenterName());

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra.config;
+package com.abs.casino.cassandra.config;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 

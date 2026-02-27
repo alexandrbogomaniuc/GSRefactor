@@ -1,0 +1,16 @@
+Batch B rollback note
+
+Failure observed:
+- Fast gate rerun1 failed at `common-persisters` install.
+- Root failure was `CassandraTransactionDataPersister` transitive symbol-resolution cascade after Batch B + broad rewires crossed still-unmigrated `com.dgphoenix` dependency boundaries.
+
+Stabilization action:
+- Rolled back all main-owned Batch B and overlap rewires.
+- Retained only:
+  - Batch A declarations (10 files),
+  - shared `PersistersFactory` declaration migration (1 file),
+  - `IKeyspaceManager` bounded rewire (1 file).
+
+Result:
+- Fast gate rerun2 PASS.
+- Full matrix rerun1 PASS.

@@ -1,7 +1,7 @@
-package com.dgphoenix.casino.cassandra.config;
+package com.abs.casino.cassandra.config;
 
-import com.dgphoenix.casino.common.configuration.IXmlConfig;
-import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.configuration.IXmlConfig;
+import com.abs.casino.common.util.CollectionUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 

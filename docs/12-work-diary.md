@@ -7653,3 +7653,22 @@
   - ETA `54.1h` (`6.76` workdays)
 - Next:
   - continue next non-overlapping low-risk batch set with same evidence-first workflow.
+### 2026-02-27 07:52 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed stabilized `W166A/W166B + W167`.
+- Stabilization outcome:
+  - retained `W166A` (10 declarations)
+  - retained shared `PersistersFactory` declaration + `IKeyspaceManager` bounded rewire
+  - rolled back remaining `W166B` and overlap rewires after `common-persisters` failure in fast gate rerun1
+- Validation outcome:
+  - fast gate `9/9 PASS` (`rerun2`)
+  - full matrix `9/9 PASS` (`rerun1`)
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-073734-hardcut-m2-wave166ab-wave167-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/144-hard-cut-m2-wave166ab-wave167-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `977`, remaining `1300`
+  - burndown `42.907334%`
+  - Project 02 `30.363417%`, Core `65.181709%`, Portfolio `82.590854%`
+  - ETA `53.6h` (`6.70` workdays)
+- Next:
+  - continue next non-overlapping low-risk batch set with same evidence-first workflow.

@@ -2564,3 +2564,26 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `12`.
   - retained bounded rewires: `1`.
   - global tracked source declarations/files now `1312` remaining (`2277` baseline, `965` reduced, `42.380325%` burndown).
+
+## 2026-02-27 07:52 UTC (Hard-Cut M2 Wave 166A + 166B + 167, Stabilized)
+- Continued batched-safe hard-cut migration from W165 checkpoint with non-overlapping ownership:
+  - `W166A`: migrated 10 declaration packages in `cassandra-cache/cache` keyspace/configuration scope.
+  - `W166B`: initially migrated 10 declaration packages in `cassandra-cache/cache` factory/locking/persist scope with broad rewires.
+  - `W167`: bounded stabilization and safe-scope retention.
+- Parallel execution mode:
+  - explorer produced two non-overlapping declaration batches with explicit rewire lists.
+  - worker owned Batch A; main owned Batch B due thread-cap fallback.
+- Stabilization:
+  - fast gate rerun1 failed at `common-persisters` install due unresolved-symbol cascade in `CassandraTransactionDataPersister` after Batch B + cross-boundary rewires.
+  - rolled back main-owned Batch B and overlap rewires.
+  - retained safe subset: Batch A declarations + shared `PersistersFactory` declaration + `IKeyspaceManager` bounded rewire.
+  - fast gate rerun2 passed `9/9`.
+- Validation:
+  - full matrix `9/9 PASS` on rerun1 (with pre-setup installs for `utils`, `sb-utils`, `common-promo`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-073734-hardcut-m2-wave166ab-wave167-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/144-hard-cut-m2-wave166ab-wave167-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `12`.
+  - retained bounded rewires: `1`.
+  - global tracked source declarations/files now `1300` remaining (`2277` baseline, `977` reduced, `42.907334%` burndown).

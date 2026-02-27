@@ -1,0 +1,6 @@
+gs-server/utils mvn -DskipTests install|PASS|exit=0|log=fast-gate-utils-install.log
+gs-server/sb-utils mvn -DskipTests install|PASS|exit=0|log=fast-gate-sb-utils-install.log
+gs-server/common mvn -DskipTests install|PASS|exit=0|log=fast-gate-common-install.log
+gs-server/common-wallet mvn -DskipTests install|PASS|exit=0|log=fast-gate-common-wallet-install.log
+gs-server/common-promo mvn -DskipTests install|PASS|exit=0|log=fast-gate-common-promo-install.log
+gs-server/cassandra-cache/common-persisters mvn -DskipTests install|FAIL|exit=1|log=fast-gate-common-persisters-install.log

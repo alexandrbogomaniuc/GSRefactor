@@ -1,6 +1,6 @@
-package com.dgphoenix.casino.cassandra;
+package com.abs.casino.cassandra;
 
-import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
 
 import java.util.List;
 import java.util.Set;

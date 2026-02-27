@@ -1,0 +1,12 @@
+[2026-02-27T07:40:51Z] START gs-server/utils mvn -DskipTests install
+[2026-02-27T07:40:56Z] END gs-server/utils mvn -DskipTests install exit=0 log=fast-gate-utils-install.log
+[2026-02-27T07:40:56Z] START gs-server/sb-utils mvn -DskipTests install
+[2026-02-27T07:40:59Z] END gs-server/sb-utils mvn -DskipTests install exit=0 log=fast-gate-sb-utils-install.log
+[2026-02-27T07:40:59Z] START gs-server/common mvn -DskipTests install
+[2026-02-27T07:41:02Z] END gs-server/common mvn -DskipTests install exit=0 log=fast-gate-common-install.log
+[2026-02-27T07:41:02Z] START gs-server/common-wallet mvn -DskipTests install
+[2026-02-27T07:41:05Z] END gs-server/common-wallet mvn -DskipTests install exit=0 log=fast-gate-common-wallet-install.log
+[2026-02-27T07:41:05Z] START gs-server/common-promo mvn -DskipTests install
+[2026-02-27T07:41:07Z] END gs-server/common-promo mvn -DskipTests install exit=0 log=fast-gate-common-promo-install.log
+[2026-02-27T07:41:07Z] START gs-server/cassandra-cache/common-persisters mvn -DskipTests install
+[2026-02-27T07:41:09Z] END gs-server/cassandra-cache/common-persisters mvn -DskipTests install exit=1 log=fast-gate-common-persisters-install.log

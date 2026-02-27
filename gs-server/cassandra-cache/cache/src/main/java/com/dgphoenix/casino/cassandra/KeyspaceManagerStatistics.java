@@ -1,6 +1,6 @@
-package com.dgphoenix.casino.cassandra;
+package com.abs.casino.cassandra;
 
-import com.dgphoenix.casino.common.web.statistics.IStatisticsGetter;
+import com.abs.casino.common.web.statistics.IStatisticsGetter;
 
 import java.util.function.Supplier;
 
