@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.api.service.xml;
+package com.abs.casino.gs.api.service.xml;
 
 import com.thoughtworks.xstream.XStream;
 

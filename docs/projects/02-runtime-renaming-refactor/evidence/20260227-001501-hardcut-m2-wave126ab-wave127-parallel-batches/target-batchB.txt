@@ -1,0 +1,12 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/xml/APIServiceTest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/xml/EnvironmentAccount.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/xml/EnvironmentAccounts.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/xml/EnvironmentRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/xml/EnvironmentResponse.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/xml/FundAccount.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/xml/FundRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/xml/FundResponse.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/xml/GetActiveToken.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/xml/GetEnvironment.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/xml/TokenRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/xml/TokenResponse.java

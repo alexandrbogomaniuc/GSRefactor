@@ -7405,3 +7405,15 @@
   - updated tracked declarations/files: `1800` remaining (`2277` baseline, `477` reduced, `20.948617%` burndown).
 - Next:
   - continue next non-overlapping batched cycle under the same evidence-first protocol.
+
+### 2026-02-27 00:24 UTC
+- Continued Project 02 hard-cut runtime renaming with parallel batch waves `126A/126B` and integration wave `127`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-001501-hardcut-m2-wave126ab-wave127-parallel-batches/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/124-hard-cut-m2-wave126ab-wave127-parallel-batches-report-20260227.md`
+- Result:
+  - migrated `28` declaration packages to `com.abs` in `common-gs` (inservice Kafka handlers + API XML request/response scope).
+  - fast gate passed on rerun2 after bounded JSP import/type stabilization; full validation matrix passed `9/9`.
+  - updated tracked declarations/files: `1772` remaining (`2277` baseline, `505` reduced, `22.178305%` burndown).
+- Next:
+  - continue next non-overlapping batched cycle under the same evidence-first protocol.

@@ -1,0 +1,20 @@
+2026-02-27T00:21:29Z | START step1 gs-server/common install -DskipTests
+2026-02-27T00:21:34Z | PASS step1 gs-server/common install -DskipTests exit=0
+2026-02-27T00:21:34Z | START step2 gs-server/common-wallet test
+2026-02-27T00:21:38Z | PASS step2 gs-server/common-wallet test exit=0
+2026-02-27T00:21:38Z | START step3 gs-server/sb-utils test
+2026-02-27T00:21:41Z | PASS step3 gs-server/sb-utils test exit=0
+2026-02-27T00:21:41Z | START step4 gs-server/promo/persisters install -DskipTests
+2026-02-27T00:21:43Z | PASS step4 gs-server/promo/persisters install -DskipTests exit=0
+2026-02-27T00:21:43Z | START step5 gs-server/game-server/common-gs install -DskipTests
+2026-02-27T00:21:50Z | PASS step5 gs-server/game-server/common-gs install -DskipTests exit=0
+2026-02-27T00:21:50Z | START step6 gs-server/cassandra-cache test
+2026-02-27T00:21:54Z | PASS step6 gs-server/cassandra-cache test exit=0
+2026-02-27T00:21:54Z | START step7 gs-server/game-server/web-gs package -DskipTests
+2026-02-27T00:22:05Z | PASS step7 gs-server/game-server/web-gs package -DskipTests exit=0
+2026-02-27T00:22:05Z | START step8 mp-server package -pl core,persistance -am -DskipTests
+2026-02-27T00:22:11Z | PASS step8 mp-server package -pl core,persistance -am -DskipTests exit=0
+2026-02-27T00:22:11Z | START step9 repo root smoke script
+2026-02-27T00:22:39Z | PASS step9 repo root smoke script exit=0
+2026-02-27T00:22:39Z | SUMMARY pass=9 fail= status_file=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-001501-hardcut-m2-wave126ab-wave127-parallel-batches/validation-status.txt
+2026-02-27T00:22:54Z | SUMMARY-NORMALIZED pass=9 fail=0 status_file=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-001501-hardcut-m2-wave126ab-wave127-parallel-batches/validation-status.txt

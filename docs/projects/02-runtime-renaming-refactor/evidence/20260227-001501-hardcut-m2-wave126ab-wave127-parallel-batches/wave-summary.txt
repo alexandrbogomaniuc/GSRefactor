@@ -1,0 +1,16 @@
+wave_group=W126A+W126B+W127
+batchA_declarations=16
+batchB_declarations=12
+total_declarations_migrated=28
+validation_fast_gate=PASS-rerun2
+validation_full_matrix=9/9 PASS
+baseline=2277
+remaining=1772
+reduced=505
+burndown_percent=22.178305
+project01_percent=100.000000
+project02_percent=27.772288
+core_percent=63.886144
+portfolio_percent=81.943072
+eta_hours=76.5
+eta_workdays=9.56

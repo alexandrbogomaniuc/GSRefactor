@@ -1,0 +1,2 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/RESTServiceClient.java
+gs-server/game-server/web-gs/src/main/webapp/tools/api/service.jsp

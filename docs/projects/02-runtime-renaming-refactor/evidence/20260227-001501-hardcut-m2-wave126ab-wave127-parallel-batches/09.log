@@ -1,0 +1,9 @@
+2026-02-27T00:22:11Z | START step9 repo root smoke script
+2026-02-27T00:22:11Z | CMD node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
+[refactor-onboard] PASS: Static asset route (http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json) -> HTTP 200
+[refactor-onboard] WARN: GS support route (diagnostic) (http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6275) -> HTTP 500 after 10 attempts
+[refactor-onboard] PASS: Config service health (http://127.0.0.1:18072/health) -> HTTP 200
+[refactor-onboard] PASS: Launch alias (startgame) (http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 200
+[refactor-onboard] PASS: Launch alias (secondary) (http://127.0.0.1:18080/startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 200
+[refactor-onboard] Smoke checks passed. The refactor launch alias is reachable.
+2026-02-27T00:22:39Z | PASS step9 repo root smoke script exit=0

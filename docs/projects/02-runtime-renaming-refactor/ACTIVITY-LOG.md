@@ -2159,3 +2159,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - scoped declaration migrations: `21`.
   - global tracked source declarations/files now `1800` remaining (`2277` baseline, `477` reduced).
+
+## 2026-02-27 00:24 UTC (Hard-Cut M2 Wave 126A + 126B + 127)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W126A`: migrated 16 `common-gs` inservice Kafka handler declaration packages to `com.abs`.
+  - `W126B`: migrated 12 `common-gs` API XML request/response declaration packages to `com.abs`.
+  - `W127`: integrated both batches with bounded importer rewires.
+- Changed files:
+  - full file list in `docs/projects/02-runtime-renaming-refactor/evidence/20260227-001501-hardcut-m2-wave126ab-wave127-parallel-batches/target-files.txt`.
+- Validation:
+  - fast gate rerun1 failed on JSP import/type drift in `tools/api/service.jsp`.
+  - applied bounded JSP import fix, fast gate rerun2 passed.
+  - full 9-step matrix passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-001501-hardcut-m2-wave126ab-wave127-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/124-hard-cut-m2-wave126ab-wave127-parallel-batches-report-20260227.md`
+- Outcome:
+  - scoped declaration migrations: `28`.
+  - global tracked source declarations/files now `1772` remaining (`2277` baseline, `505` reduced).

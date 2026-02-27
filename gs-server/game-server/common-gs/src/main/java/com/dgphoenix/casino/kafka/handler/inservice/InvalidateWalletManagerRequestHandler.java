@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.kafka.handler.inservice;
+package com.abs.casino.kafka.handler.inservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
