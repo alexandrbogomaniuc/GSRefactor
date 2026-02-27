@@ -1,0 +1,11 @@
+Wave group: W170A/W170B + W171
+Mode: batched-safe parallel (stabilized)
+Planned targets: 4 declarations (A=2, B=2)
+Planned high-risk exclusions: CassandraPersistenceManager, TableDefinition, ColumnDefinition, ICassandraPersister, AbstractCassandraPersister
+Stabilization retained scope: 2 declarations + 1 bounded rewire
+- gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/ColumnIteratorCallback.java
+- gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/FakeNotAppliedResultSet.java
+- gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/AbstractCassandraPersister.java
+Validation:
+- fast gate: PASS 9/9 (rerun2)
+- full matrix: PASS 9/9 (rerun1)

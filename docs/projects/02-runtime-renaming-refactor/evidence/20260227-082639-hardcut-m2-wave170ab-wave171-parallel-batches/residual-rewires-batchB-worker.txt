@@ -1,0 +1,35 @@
+1:package com.dgphoenix.casino.cassandra;
+5:import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
+6:import com.dgphoenix.casino.common.util.Pair;
+7:import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+3:import com.dgphoenix.casino.cache.CachesHolder;
+4:import com.dgphoenix.casino.cassandra.*;
+7:import com.dgphoenix.casino.common.configuration.ConfigHelper;
+8:import com.dgphoenix.casino.common.util.JsonHelper;
+9:import com.dgphoenix.casino.common.util.NtpTimeProvider;
+10:import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
+11:import com.dgphoenix.casino.init.DefaultConfigsInitializer;
+12:import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+60:        return new JsonHelper("com.dgphoenix.casino.*");
+1:package com.dgphoenix.casino.init;
+3:import com.dgphoenix.casino.account.AccountManager;
+4:import com.dgphoenix.casino.cache.CachesHolder;
+6:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+7:import com.dgphoenix.casino.cassandra.persist.*;
+8:import com.dgphoenix.casino.common.cache.*;
+9:import com.dgphoenix.casino.common.configuration.CasinoSystemType;
+10:import com.dgphoenix.casino.common.exception.CommonException;
+11:import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+12:import com.dgphoenix.casino.common.util.IdGenerator;
+13:import com.dgphoenix.casino.common.util.IntegerIdGenerator;
+7:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+8:import com.dgphoenix.casino.common.configuration.ConfigHelper;
+9:import com.dgphoenix.casino.common.util.JsonHelper;
+10:import com.dgphoenix.casino.common.util.NtpTimeProvider;
+1:<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+2:<%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
+3:<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraBetPersister" %>
+4:<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraRoundGameSessionPersister" %>
+5:<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraTempBetPersister" %>
+6:<%@ page import="com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager" %>
+4:import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;

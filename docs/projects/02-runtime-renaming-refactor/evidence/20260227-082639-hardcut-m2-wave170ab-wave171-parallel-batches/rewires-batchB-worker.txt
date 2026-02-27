@@ -1,0 +1,11 @@
+gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/CassandraPersistenceManager.java
+gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/KeyspaceManagerFactory.java
+gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/PersistersFactory.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/CassandraPersistenceContextConfiguration.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/DefaultConfigsInitializer.java
+mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/config/CassandraContextConfiguration.java
+gs-server/game-server/web-gs/src/main/webapp/support/checkPersisters.jsp
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/CassandraPersistenceManagerTest.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/KeyspaceManagerFactoryTest.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/PersistersFactoryTest.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/inject/PersisterDependencyInjectorTest.java

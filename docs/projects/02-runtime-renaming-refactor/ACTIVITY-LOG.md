@@ -2610,3 +2610,26 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `2`.
   - retained bounded rewires: `0`.
   - global tracked source declarations/files now `1298` remaining (`2277` baseline, `979` reduced, `42.995169%` burndown).
+
+## 2026-02-27 08:38 UTC (Hard-Cut M2 Wave 170A + 170B + 171, Stabilized)
+- Continued batched-safe hard-cut migration from W169 checkpoint with explorer split and worker ownership:
+  - `W170A`: planned 2 declarations with bounded rewires.
+  - `W170B`: planned 2 declarations with bounded rewires.
+  - `W171`: stabilization and safe-scope retention.
+- Parallel execution mode:
+  - explorer produced safer split and fallback.
+  - worker completed Group A while main handled Group B (thread-cap fallback prevented second worker spawn).
+- Stabilization:
+  - fast gate rerun1 failed at `common-persisters` due unresolved `com.abs.casino.cassandra.IEntityUpdateListener` in compile path.
+  - rolled back broad A/B edits.
+  - retained safe cache-internal subset: `ColumnIteratorCallback`, `FakeNotAppliedResultSet`, plus bounded import rewire in `AbstractCassandraPersister`.
+  - fast gate rerun2 passed `9/9`.
+- Validation:
+  - full matrix rerun1 passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-082639-hardcut-m2-wave170ab-wave171-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/146-hard-cut-m2-wave170ab-wave171-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `2`.
+  - retained bounded rewires: `1`.
+  - global tracked source declarations/files now `1296` remaining (`2277` baseline, `981` reduced, `43.083004%` burndown).
