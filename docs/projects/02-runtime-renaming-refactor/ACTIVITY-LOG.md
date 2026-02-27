@@ -2195,3 +2195,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - scoped declaration migrations: `25`.
   - global tracked source declarations/files now `1747` remaining (`2277` baseline, `530` reduced).
+
+## 2026-02-27 01:11 UTC (Hard-Cut M2 Wave 130A + 130B + 131)
+- Executed batched-safe parallel hard-cut migration with non-overlapping ownership:
+  - `W130A`: migrated 17 `mp-server/kafka/dto/privateroom` declaration packages to `com.abs`.
+  - `W130B`: migrated 12 `mp-server/kafka/dto/bots` declaration packages to `com.abs`.
+  - `W131`: integrated both batches with bounded importer stabilization in MP web handler path.
+- Changed files:
+  - full file list in `docs/projects/02-runtime-renaming-refactor/evidence/20260227-005510-hardcut-m2-wave130ab-wave131-parallel-batches/target-files.txt`.
+- Validation:
+  - fast gate rerun1/2 failed on unresolved privateroom DTO imports and reactor-order artifact issues.
+  - applied bounded integration stabilization (migrated `KafkaMultiPlayerResponseService` DTO imports; reverted non-applicable `BGOStatusUtil` rewire), fast gate rerun4 passed `4/4`.
+  - full 9-step matrix passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-005510-hardcut-m2-wave130ab-wave131-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/126-hard-cut-m2-wave130ab-wave131-parallel-batches-report-20260227.md`
+- Outcome:
+  - scoped declaration migrations: `29`.
+  - global tracked source declarations/files now `1719` remaining (`2277` baseline, `558` reduced).

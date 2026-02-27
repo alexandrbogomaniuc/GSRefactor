@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.kafka.dto.privateroom.request;
+package com.abs.casino.kafka.dto.privateroom.request;
 
 import com.dgphoenix.casino.kafka.dto.BGFriendDto;
 import com.dgphoenix.casino.kafka.dto.KafkaRequest;

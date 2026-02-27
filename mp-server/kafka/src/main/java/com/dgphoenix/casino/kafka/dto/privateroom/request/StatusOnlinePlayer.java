@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.kafka.dto.privateroom.request;
+package com.abs.casino.kafka.dto.privateroom.request;
 
 public enum StatusOnlinePlayer {
     online(0),

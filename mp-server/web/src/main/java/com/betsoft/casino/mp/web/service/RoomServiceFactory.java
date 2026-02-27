@@ -33,7 +33,7 @@ import com.betsoft.casino.utils.ITransportObject;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.kafka.dto.RunningRoomDto;
-import com.dgphoenix.casino.kafka.dto.privateroom.response.DeactivateRoomResultDto;
+import com.abs.casino.kafka.dto.privateroom.response.DeactivateRoomResultDto;
 import com.hazelcast.core.*;
 import com.hazelcast.core.Member;
 import org.apache.logging.log4j.LogManager;

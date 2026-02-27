@@ -6,7 +6,7 @@
 <%@ page import="com.betsoft.casino.mp.transport.Avatar" %>
 <%@ page import="com.dgphoenix.casino.common.util.RNG" %>
 <%@ page import="com.betsoft.casino.mp.web.socket.BotServiceClient" %>
-<%@ page import="com.dgphoenix.casino.kafka.dto.bots.response.BotStatusResponse" %>
+<%@ page import="com.abs.casino.kafka.dto.bots.response.BotStatusResponse" %>
 <%@ page import="com.betsoft.casino.mp.model.IAvatar" %>
 <%
     try {

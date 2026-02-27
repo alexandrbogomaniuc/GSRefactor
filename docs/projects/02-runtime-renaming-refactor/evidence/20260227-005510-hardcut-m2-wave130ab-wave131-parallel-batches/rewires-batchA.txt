@@ -1,0 +1,11 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/util/BGOStatusUtil.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/privateroom/CurrentBattlegroundRoomInfoForPlayerHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/privateroom/DeactivateRoomHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/privateroom/ParticipantGameSessionHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/privateroom/PrivateRoomIDHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/privateroom/PrivateRoomInfoHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/privateroom/PrivateRoomURLHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/privateroom/UpdateFriendsHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/privateroom/UpdateOnlinePlayersHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/privateroom/UpdatePlayersStatusHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.kafka.dto.bots.response;
+package com.abs.casino.kafka.dto.bots.response;
 
 import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
 

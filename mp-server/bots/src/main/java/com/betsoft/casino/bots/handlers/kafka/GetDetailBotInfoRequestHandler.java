@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.betsoft.casino.bots.service.MQBBotServiceHandler;
 import com.dgphoenix.casino.kafka.dto.StringResponseDto;
-import com.dgphoenix.casino.kafka.dto.bots.request.GetDetailBotInfoRequest;
+import com.abs.casino.kafka.dto.bots.request.GetDetailBotInfoRequest;
 
 @Component
 public class GetDetailBotInfoRequestHandler implements KafkaBotRequestHandler<GetDetailBotInfoRequest, StringResponseDto> {

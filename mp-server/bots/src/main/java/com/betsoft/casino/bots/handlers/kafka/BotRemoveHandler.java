@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.betsoft.casino.bots.service.MQBBotServiceHandler;
 import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
-import com.dgphoenix.casino.kafka.dto.bots.request.RemoveBotRequest;
+import com.abs.casino.kafka.dto.bots.request.RemoveBotRequest;
 
 
 @Component

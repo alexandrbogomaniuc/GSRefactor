@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.kafka.dto.privateroom.response;
+package com.abs.casino.kafka.dto.privateroom.response;
 
 import java.util.List;
 

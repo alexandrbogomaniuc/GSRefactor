@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.betsoft.casino.bots.service.MQBBotServiceHandler;
-import com.dgphoenix.casino.kafka.dto.bots.request.BotSitOutRequest;
-import com.dgphoenix.casino.kafka.dto.bots.response.BotLogOutResultDto;
+import com.abs.casino.kafka.dto.bots.request.BotSitOutRequest;
+import com.abs.casino.kafka.dto.bots.response.BotLogOutResultDto;
 
 
 @Component

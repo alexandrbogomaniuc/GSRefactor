@@ -1,0 +1,12 @@
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/request/BotGetStatusRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/request/BotLogInRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/request/BotSitOutRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/request/BotStatusRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/request/ConfirmNextRoundBuyInRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/request/GetBotsMapRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/request/GetDetailBotInfoRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/request/RemoveBotRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/response/BotLogInResultDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/response/BotLogOutResultDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/response/BotStatusResponse.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/response/BotsMapResponseDto.java

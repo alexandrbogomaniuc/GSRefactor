@@ -1,0 +1,4 @@
+step1|PASS|exit=0
+step2|PASS|exit=0
+step3|PASS|exit=0
+step4|PASS|exit=0

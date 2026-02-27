@@ -1,0 +1,11 @@
+mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/BotLogInHandler.java
+mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/BotLogOutHandler.java
+mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/BotRemoveHandler.java
+mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/ConfirmNextRoundBuyInRequestHandler.java
+mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/GetBotsMapRequestHandler.java
+mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/GetDetailBotInfoRequestHandler.java
+mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/StatusForExisitingBotHandler.java
+mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/StatusForNewBotHandler.java
+mp-server/bots/src/main/java/com/betsoft/casino/bots/service/MQBBotServiceHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/BotServiceClient.java
+mp-server/web/src/main/webapp/ats/createAtsForStressTest.jsp

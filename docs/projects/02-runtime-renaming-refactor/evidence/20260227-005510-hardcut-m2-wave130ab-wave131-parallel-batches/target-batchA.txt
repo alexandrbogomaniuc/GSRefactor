@@ -1,0 +1,17 @@
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/DeactivateRoomDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/GetParticipantAccountIdsInRoundDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/ParticipantGameSessionDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/PrivateRoomIdDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/PrivateRoomURLDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/StatusOnlinePlayer.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/UpdateFriendsDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/UpdateOnlinePlayersDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/request/UpdateRoomDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/CollectionResponseDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/DeactivateRoomResultDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/PrivateRoomIdResultDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/PrivateRoomInfoResultDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/RoomInfoResultDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/UpdateFriendsResultDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/UpdateOnlinePlayersResultDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/UpdateRoomResultDto.java

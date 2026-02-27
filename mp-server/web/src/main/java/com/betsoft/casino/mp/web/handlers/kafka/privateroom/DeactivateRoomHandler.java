@@ -1,8 +1,8 @@
 package com.betsoft.casino.mp.web.handlers.kafka.privateroom;
 
 import com.betsoft.casino.mp.web.handlers.kafka.KafkaMultiPlayerResponseService;
-import com.dgphoenix.casino.kafka.dto.privateroom.request.DeactivateRoomDto;
-import com.dgphoenix.casino.kafka.dto.privateroom.response.DeactivateRoomResultDto;
+import com.abs.casino.kafka.dto.privateroom.request.DeactivateRoomDto;
+import com.abs.casino.kafka.dto.privateroom.response.DeactivateRoomResultDto;
 import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
 import org.springframework.stereotype.Component;
 
