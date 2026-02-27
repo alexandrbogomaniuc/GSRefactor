@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.util;
+package com.abs.casino.util;
 
 import com.dgphoenix.casino.kafka.dto.BGOStatus;
 import com.abs.casino.kafka.dto.privateroom.request.StatusOnlinePlayer;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.util;
+package com.abs.casino.util;
 
 import java.util.Set;
 

@@ -2518,3 +2518,27 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `20`.
   - retained bounded rewires: `0`.
   - global tracked source declarations/files now `1343` remaining (`2277` baseline, `934` reduced, `41.018884%` burndown).
+
+## 2026-02-27 07:20 UTC (Hard-Cut M2 Wave 162A + 162B + 163, Stabilized)
+- Continued batched-safe hard-cut migration from W161 checkpoint with non-overlapping ownership:
+  - `W162A`: migrated 10 declaration packages in `cassandra.inject` tests, `payment.wallet.commonwalletmanger` tests, `controller.mqb` tests, and `common.util.compress` tests.
+  - `W162B`: migrated 10 declaration packages in `gs.singlegames.tools.cbservtools.autofinish`, `gs.managers.freegame` tests, `controller.frbonus` tests, `gs.managers.game.favorite` tests, and `util` classes.
+  - `W163`: bounded importer rewires in `ats/BotConfigInfo`, `gs/socket/mq/BattlegroundService`, and `services/mp/MPBotConfigInfoService`.
+- Parallel execution mode:
+  - explorer produced non-overlapping low-risk batches.
+  - worker A completed batch A (10/10), worker B completed batch B + rewires (13/13), no overlap.
+- Stabilization:
+  - fast gate initial/rerun2 failed at `common-gs` due mixed `friends.Status` lineage after utility package migration.
+  - fixed compatibility mapping by restoring `com.dgphoenix...friends.Status` in `BGFStatusUtil`.
+  - fast gate rerun3/rerun4 then failed at `web-gs` test compile due mixed service/model import lineage in `GameUserHistoryInfoControllerTest`.
+  - aligned test imports to current migrated package boundaries; targeted `web-gs` precheck rerun5 passed.
+  - fast gate rerun6 passed `9/9` and promoted to canonical evidence.
+- Validation:
+  - full matrix `9/9 PASS` on rerun1 (with pre-setup installs for `utils`, `sb-utils`, `common-promo`) and canonical promotion.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-064930-hardcut-m2-wave162ab-wave163-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/142-hard-cut-m2-wave162ab-wave163-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `20`.
+  - retained bounded rewires: `3`.
+  - global tracked source declarations/files now `1324` remaining (`2277` baseline, `953` reduced, `41.853316%` burndown).

@@ -1,0 +1,10 @@
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/inject/AbstractPersister.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/inject/AlphaPersister.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/inject/BravoPersister.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/inject/CharliePersister.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/inject/PersisterDependencyInjectorTest.java
+gs-server/common-wallet/src/test/java/com/dgphoenix/casino/payment/wallet/commonwalletmanger/CommonWalletManagerTest.java
+gs-server/common-wallet/src/test/java/com/dgphoenix/casino/payment/wallet/commonwalletmanger/RESTCWClientMock.java
+gs-server/game-server/web-gs/src/test/java/com/dgphoenix/casino/controller/mqb/GameUserHistoryInfoControllerTest.java
+gs-server/game-server/web-gs/src/test/java/com/dgphoenix/casino/controller/mqb/MPGameSessionControllerTest.java
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/common/util/compress/LZ4Test.java

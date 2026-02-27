@@ -1,0 +1,7 @@
+gs-server/utils mvn -DskipTests install|PASS|exit=0
+gs-server/sb-utils mvn -DskipTests install|PASS|exit=0
+gs-server/common mvn -DskipTests install|PASS|exit=0
+gs-server/common-wallet mvn -DskipTests install|PASS|exit=0
+gs-server/common-promo mvn -DskipTests install|PASS|exit=0
+gs-server/cassandra-cache/common-persisters mvn -DskipTests install|PASS|exit=0
+gs-server/game-server/common-gs mvn -DskipTests install|FAIL|exit=1

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.util;
+package com.abs.casino.util;
 
 import com.abs.casino.common.client.canex.request.privateroom.Status;
 import com.dgphoenix.casino.kafka.dto.BGStatus;

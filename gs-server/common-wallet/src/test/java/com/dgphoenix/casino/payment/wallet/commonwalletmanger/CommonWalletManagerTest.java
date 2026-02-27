@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.payment.wallet.commonwalletmanger;
+package com.abs.casino.payment.wallet.commonwalletmanger;
 
 import com.dgphoenix.casino.common.DomainSessionFactory;
 import com.dgphoenix.casino.common.cache.BankInfoCache;

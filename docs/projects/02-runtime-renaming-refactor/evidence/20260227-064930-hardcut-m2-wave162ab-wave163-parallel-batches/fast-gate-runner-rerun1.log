@@ -1,0 +1,21 @@
+[2026-02-27T06:57:43Z] START gs-server/utils mvn -DskipTests install
+gs-server/utils mvn -DskipTests install|PASS|exit=0
+[2026-02-27T06:57:47Z] END gs-server/utils mvn -DskipTests install exit=0 log=fast-gate-utils-install.log
+[2026-02-27T06:57:47Z] START gs-server/sb-utils mvn -DskipTests install
+gs-server/sb-utils mvn -DskipTests install|PASS|exit=0
+[2026-02-27T06:57:51Z] END gs-server/sb-utils mvn -DskipTests install exit=0 log=fast-gate-sb-utils-install.log
+[2026-02-27T06:57:51Z] START gs-server/common mvn -DskipTests install
+gs-server/common mvn -DskipTests install|PASS|exit=0
+[2026-02-27T06:57:55Z] END gs-server/common mvn -DskipTests install exit=0 log=fast-gate-common-install.log
+[2026-02-27T06:57:55Z] START gs-server/common-wallet mvn -DskipTests install
+gs-server/common-wallet mvn -DskipTests install|PASS|exit=0
+[2026-02-27T06:57:57Z] END gs-server/common-wallet mvn -DskipTests install exit=0 log=fast-gate-common-wallet-install.log
+[2026-02-27T06:57:57Z] START gs-server/common-promo mvn -DskipTests install
+gs-server/common-promo mvn -DskipTests install|PASS|exit=0
+[2026-02-27T06:58:00Z] END gs-server/common-promo mvn -DskipTests install exit=0 log=fast-gate-common-promo-install.log
+[2026-02-27T06:58:00Z] START gs-server/cassandra-cache/common-persisters mvn -DskipTests install
+gs-server/cassandra-cache/common-persisters mvn -DskipTests install|PASS|exit=0
+[2026-02-27T06:58:02Z] END gs-server/cassandra-cache/common-persisters mvn -DskipTests install exit=0 log=fast-gate-common-persisters-install.log
+[2026-02-27T06:58:02Z] START gs-server/game-server/common-gs mvn -DskipTests install
+gs-server/game-server/common-gs mvn -DskipTests install|FAIL|exit=1
+[2026-02-27T06:58:05Z] END gs-server/game-server/common-gs mvn -DskipTests install exit=1 log=fast-gate-common-gs-install.log

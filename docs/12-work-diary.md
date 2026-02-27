@@ -7620,3 +7620,18 @@
   - tracked declarations/files now `1343` remaining (`2277` baseline, `934` reduced, `41.018884%` burndown).
 - Next:
   - continue with next low-risk non-overlapping parallel batch using same worker ownership protocol.
+### 2026-02-27 07:20 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W162A/W162B + W163` with stabilized bounded rewires.
+- Validation outcome:
+  - fast gate `9/9 PASS` (`rerun6`)
+  - full matrix `9/9 PASS` (`rerun1`)
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-064930-hardcut-m2-wave162ab-wave163-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/142-hard-cut-m2-wave162ab-wave163-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `953`, remaining `1324`
+  - burndown `41.853316%`
+  - Project 02 `30.231665%`, Core `65.115832%`, Portfolio `82.557916%`
+  - ETA `54.6h` (`6.83` workdays)
+- Next:
+  - continue next non-overlapping low-risk batch set with same evidence-first workflow.

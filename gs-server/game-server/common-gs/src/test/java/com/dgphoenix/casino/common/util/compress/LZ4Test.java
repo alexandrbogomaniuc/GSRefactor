@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.compress;
+package com.abs.casino.common.util.compress;
 
 import org.junit.Test;
 

@@ -1,0 +1,8 @@
+gs-server/utils mvn -DskipTests install|PASS|exit=0|log=fast-gate-utils-install-rerun3.log
+gs-server/sb-utils mvn -DskipTests install|PASS|exit=0|log=fast-gate-sb-utils-install-rerun3.log
+gs-server/common mvn -DskipTests install|PASS|exit=0|log=fast-gate-common-install-rerun3.log
+gs-server/common-wallet mvn -DskipTests install|PASS|exit=0|log=fast-gate-common-wallet-install-rerun3.log
+gs-server/common-promo mvn -DskipTests install|PASS|exit=0|log=fast-gate-common-promo-install-rerun3.log
+gs-server/cassandra-cache/common-persisters mvn -DskipTests install|PASS|exit=0|log=fast-gate-common-persisters-install-rerun3.log
+gs-server/game-server/common-gs mvn -Dcluster.properties=local/local-machine.properties -DskipTests install|PASS|exit=0|log=fast-gate-common-gs-install-rerun3.log
+gs-server/game-server/web-gs mvn -Dcluster.properties=local/local-machine.properties -DskipTests package|FAIL|exit=1|log=fast-gate-web-gs-package-rerun3.log

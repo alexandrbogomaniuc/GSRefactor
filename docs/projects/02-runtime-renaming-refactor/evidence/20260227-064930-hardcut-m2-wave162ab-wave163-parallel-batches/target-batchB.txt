@@ -1,0 +1,10 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/autofinish/HttpServletResponse.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/autofinish/ServletOutputStreamExt.java
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/freegame/FreeGameCalculatorTest.java
+gs-server/game-server/web-gs/src/test/java/com/dgphoenix/casino/controller/frbonus/LongDateDeserializerTest.java
+gs-server/game-server/web-gs/src/test/java/com/dgphoenix/casino/gs/managers/game/favorite/JspClassTest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/util/BGFStatusUtil.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/util/BGOStatusUtil.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/util/BGStatusUtil.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/util/BotConfigInfoUtil.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/util/TimeFrameUtil.java

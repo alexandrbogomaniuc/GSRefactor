@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.payment.wallet.commonwalletmanger;
+package com.abs.casino.payment.wallet.commonwalletmanger;
 
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;

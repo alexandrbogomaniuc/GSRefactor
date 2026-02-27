@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra.inject;
+package com.abs.casino.cassandra.inject;
 
 import com.dgphoenix.casino.cassandra.PersisterDependencyInjector;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;

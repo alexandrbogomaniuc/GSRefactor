@@ -1,10 +1,10 @@
-package com.dgphoenix.casino.controller.mqb;
+package com.abs.casino.controller.mqb;
 
+import com.abs.casino.gs.socket.mq.GameUserHistoryService;
+import com.abs.casino.mqb.GameUserHistoryInfo;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.socket.mq.GameUserHistoryService;
 import com.dgphoenix.casino.mqb.GameUserHistory;
-import com.dgphoenix.casino.mqb.GameUserHistoryInfo;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.util;
+package com.abs.casino.util;
 
 import com.dgphoenix.casino.common.client.canex.request.friends.Status;
 import com.dgphoenix.casino.kafka.dto.BGFStatus;

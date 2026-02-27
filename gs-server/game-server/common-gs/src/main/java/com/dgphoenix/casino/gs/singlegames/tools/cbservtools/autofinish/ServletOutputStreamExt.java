@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.autofinish;
+package com.abs.casino.gs.singlegames.tools.cbservtools.autofinish;
 
 
 import javax.servlet.ServletOutputStream;

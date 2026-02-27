@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra.inject;
+package com.abs.casino.cassandra.inject;
 
 /**
  * @author <a href="mailto:noragami@dgphoenix.com">Alexander Aldokhin</a>
