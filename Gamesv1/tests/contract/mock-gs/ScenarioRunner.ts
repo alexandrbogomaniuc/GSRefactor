@@ -2,6 +2,15 @@ import { GsMockServer } from './GsMockServer';
 import WebSocket from 'ws';
 import * as fs from 'fs';
 import * as path from 'path';
+import { z } from 'zod';
+
+// Define strict schemas for validation
+const EnvelopeSchema = z.object({
+    version: z.string(),
+    type: z.string(),
+    operationId: z.string().optional(),
+    payload: z.any()
+});
 
 class ScenarioRunner {
     private server: GsMockServer;
@@ -23,7 +32,7 @@ class ScenarioRunner {
         console.log(`✅ Scenario ${scenario.name} completed.`);
     }
 
-    private async executeStep(step: any) {
+    private async executeStep(step: { action: string; params?: any; expect?: any }) {
         console.log(`  ➡️ Action: ${step.action}`);
 
         switch (step.action) {
@@ -51,8 +60,9 @@ class ScenarioRunner {
             this.ws.on('open', () => {
                 this.sendRaw({ type: 'GAME_READY', payload: { token: 'test' } });
             });
-            this.ws.on('message', (data) => {
+            this.ws.on('message', (data: Buffer) => {
                 const msg = JSON.parse(data.toString());
+                this.validate(msg);
                 this.capturedFrames.push(msg);
                 if (msg.type === 'SESSION_ACCEPTED') resolve();
             });
@@ -67,8 +77,9 @@ class ScenarioRunner {
                 payload: { betAmount: params.betAmount }
             });
 
-            const listener = (data: any) => {
+            const listener = (data: Buffer) => {
                 const msg = JSON.parse(data.toString());
+                this.validate(msg);
                 if (msg.type === 'BET_ACCEPTED' || msg.type === 'BET_REJECTED') {
                     this.ws?.off('message', listener);
                     resolve();
@@ -86,8 +97,9 @@ class ScenarioRunner {
                 payload: {}
             });
 
-            const listener = (data: any) => {
+            const listener = (data: Buffer) => {
                 const msg = JSON.parse(data.toString());
+                this.validate(msg);
                 if (msg.type === 'SETTLE_ACCEPTED') {
                     this.ws?.off('message', listener);
                     resolve();
@@ -104,8 +116,9 @@ class ScenarioRunner {
                 payload: {}
             });
 
-            const listener = (data: any) => {
+            const listener = (data: Buffer) => {
                 const msg = JSON.parse(data.toString());
+                this.validate(msg);
                 if (msg.type === 'SESSION_SYNC') {
                     this.ws?.off('message', listener);
                     resolve();
@@ -113,6 +126,14 @@ class ScenarioRunner {
             };
             this.ws?.on('message', listener);
         });
+    }
+
+    private validate(msg: any) {
+        const result = EnvelopeSchema.safeParse(msg);
+        if (!result.success) {
+            console.error(`❌ Protocol Violation: ${JSON.stringify(result.error.format())}`);
+            throw new Error("Protocol Validation Failed");
+        }
     }
 
     private sendRaw(envelopePatch: any) {
@@ -137,7 +158,7 @@ class ScenarioRunner {
 
 async function main() {
     const runner = new ScenarioRunner();
-    const scenarioDir = path.join(__dirname, 'scenarios');
+    const scenarioDir = path.join(process.cwd(), 'tests', 'contract', 'mock-gs', 'scenarios');
     const files = fs.readdirSync(scenarioDir).filter(f => f.endsWith('.json'));
 
     try {

@@ -26,10 +26,10 @@ export class GsMockServer {
     }
 
     private setup() {
-        this.wss.on('connection', (ws) => {
+        this.wss.on('connection', (ws: WebSocket) => {
             console.log('🔌 Client connected to Mock GS');
 
-            ws.on('message', (data) => {
+            ws.on('message', (data: Buffer) => {
                 try {
                     const envelope = JSON.parse(data.toString()) as GSMessageEnvelope;
                     this.handleRequest(ws, envelope);
@@ -99,6 +99,13 @@ export class GsMockServer {
         }
 
         this.sendResponse(ws, env, "BET_ACCEPTED", result);
+
+        // Handle specific scenario for delayed balance
+        if (env.operationId === 'op-delayed-balance') {
+            setTimeout(() => {
+                this.sendResponse(ws, env, "BALANCE", { balance: 999.00 });
+            }, 100);
+        }
     }
 
     private sendResponse(ws: WebSocket, env: GSMessageEnvelope, type: string, payload: any) {

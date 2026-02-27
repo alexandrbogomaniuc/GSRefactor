@@ -1,0 +1,22 @@
+{
+    "name": "Delayed Wallet Message",
+    "steps": [
+        {
+            "action": "connect",
+            "params": {
+                "baseUrl": "ws://localhost:6001"
+            }
+        },
+        {
+            "action": "spin",
+            "params": {
+                "betAmount": 1.00,
+                "operationId": "op-delayed-balance"
+            },
+            "expect": {
+                "type": "BET_ACCEPTED",
+                "delayBalance": true
+            }
+        }
+    ]
+}

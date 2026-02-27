@@ -5,8 +5,14 @@
         "test:contract": "npx tsx tests/contract/mock-gs/ScenarioRunner.ts"
     },
     "devDependencies": {
+        "@types/node": "^25.3.2",
+        "@types/uuid": "^10.0.0",
+        "@types/ws": "^8.18.1",
         "tsx": "^4.0.0",
         "uuid": "^9.0.1",
         "ws": "^8.19.0"
+    },
+    "dependencies": {
+        "zod": "^4.3.6"
     }
 }
