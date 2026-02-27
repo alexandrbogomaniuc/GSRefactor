@@ -1,0 +1,5 @@
+[2026-02-27T17:23:07Z] START STEP01 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common cmd=mvn -DskipTests install
+[2026-02-27T17:23:36Z] END STEP01 rc=0
+[2026-02-27T17:23:36Z] START STEP02 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet cmd=mvn -DskipTests install
+[2026-02-27T17:23:39Z] END STEP02 rc=1
+[2026-02-27T17:23:39Z] RESULT FAIL failed_step=STEP02

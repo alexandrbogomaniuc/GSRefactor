@@ -1,4 +1,4 @@
-package com.dgphoenix.casino;
+package com.abs.casino;
 
 import com.abs.casino.tools.kryo.KryoSerializationValidator;
 import com.abs.casino.tools.kryo.generator.RandomValueGenerator;

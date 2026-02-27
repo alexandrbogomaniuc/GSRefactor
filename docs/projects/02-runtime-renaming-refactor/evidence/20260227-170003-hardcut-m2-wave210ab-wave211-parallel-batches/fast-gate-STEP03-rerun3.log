@@ -1,0 +1,387 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 153 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ utils-restricted ---
+[INFO] Compiling 19 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/test-classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[18,28] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+  location: class CalendarUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[19,29] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+  location: class CalendarUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[27,28] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+  location: class CalendarUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[28,27] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+  location: class CalendarUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[36,33] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+  location: class CalendarUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[37,32] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+  location: class CalendarUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[44,30] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+  location: class CalendarUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[45,31] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+  location: class CalendarUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/CollectionParserTest.java:[12,8] error: cannot find symbol
+[ERROR]   symbol:   class CollectionParser
+  location: class CollectionParserTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/CollectionParserTest.java:[12,38] error: cannot find symbol
+[ERROR]   symbol:   class CollectionParser
+  location: class CollectionParserTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/CollectionParserTest.java:[24,8] error: cannot find symbol
+[ERROR]   symbol:   class CollectionParser
+  location: class CollectionParserTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/CollectionParserTest.java:[24,38] error: cannot find symbol
+[ERROR]   symbol:   class CollectionParser
+  location: class CollectionParserTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/CollectionParserTest.java:[36,8] error: cannot find symbol
+[ERROR]   symbol:   class CollectionParser
+  location: class CollectionParserTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/CollectionParserTest.java:[36,38] error: cannot find symbol
+[ERROR]   symbol:   class CollectionParser
+  location: class CollectionParserTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/DateUtilsTest.java:[42,73] error: cannot find symbol
+[ERROR]   symbol:   variable DateUtils
+  location: class DateUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/DateUtilsTest.java:[43,70] error: cannot find symbol
+[ERROR]   symbol:   variable DateUtils
+  location: class DateUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CollectionUtilsTest.java:[31,39] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class CollectionUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CollectionUtilsTest.java:[38,39] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class CollectionUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[13,26] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[17,27] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[19,29] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[23,31] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[32,24] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[33,25] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[41,20] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[43,25] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[44,26] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[51,35] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[52,20] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[53,25] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[55,26] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[62,28] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[74,28] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+  location: class MatrixUtilsTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[15,8] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+  location: class GameSessionExtendedPropertiesTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[15,55] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+  location: class GameSessionExtendedPropertiesTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[27,8] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+  location: class GameSessionExtendedPropertiesTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[27,55] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+  location: class GameSessionExtendedPropertiesTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[42,8] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+  location: class GameSessionExtendedPropertiesTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[42,55] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+  location: class GameSessionExtendedPropertiesTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[64,8] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+  location: class GameSessionExtendedPropertiesTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[64,55] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+  location: class GameSessionExtendedPropertiesTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/ReflectionUtilsCompatibilityTest.java:[11,26] error: cannot find symbol
+[ERROR]   symbol:   variable ReflectionUtils
+  location: class ReflectionUtilsCompatibilityTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/ReflectionUtilsCompatibilityTest.java:[19,26] error: cannot find symbol
+[ERROR]   symbol:   variable ReflectionUtils
+  location: class ReflectionUtilsCompatibilityTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/ReflectionUtilsCompatibilityTest.java:[27,8] error: cannot find symbol
+[ERROR]   symbol:   variable ReflectionUtils
+  location: class ReflectionUtilsCompatibilityTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[24,24] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class StringPropertyHelperTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[32,24] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class StringPropertyHelperTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[41,8] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class StringPropertyHelperTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[46,8] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class StringPropertyHelperTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[51,24] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class StringPropertyHelperTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[61,24] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class StringPropertyHelperTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[69,23] error: package CollectionUtils does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[69,54] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class StringPropertyHelperTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[79,24] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class StringPropertyHelperTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[89,8] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class StringPropertyHelperTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[97,8] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class StringPropertyHelperTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[110,24] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class StringPropertyHelperTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[122,8] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class StringPropertyHelperTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[129,8] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+  location: class StringPropertyHelperTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[136,8] error: cannot find symbol
+[INFO] 59 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.263 s
+[INFO] Finished at: 2026-02-27T17:28:06Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:testCompile (default-testCompile) on project utils-restricted: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[18,28] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+[ERROR]   location: class CalendarUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[19,29] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+[ERROR]   location: class CalendarUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[27,28] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+[ERROR]   location: class CalendarUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[28,27] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+[ERROR]   location: class CalendarUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[36,33] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+[ERROR]   location: class CalendarUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[37,32] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+[ERROR]   location: class CalendarUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[44,30] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+[ERROR]   location: class CalendarUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java:[45,31] error: cannot find symbol
+[ERROR]   symbol:   variable CalendarUtils
+[ERROR]   location: class CalendarUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/CollectionParserTest.java:[12,8] error: cannot find symbol
+[ERROR]   symbol:   class CollectionParser
+[ERROR]   location: class CollectionParserTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/CollectionParserTest.java:[12,38] error: cannot find symbol
+[ERROR]   symbol:   class CollectionParser
+[ERROR]   location: class CollectionParserTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/CollectionParserTest.java:[24,8] error: cannot find symbol
+[ERROR]   symbol:   class CollectionParser
+[ERROR]   location: class CollectionParserTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/CollectionParserTest.java:[24,38] error: cannot find symbol
+[ERROR]   symbol:   class CollectionParser
+[ERROR]   location: class CollectionParserTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/CollectionParserTest.java:[36,8] error: cannot find symbol
+[ERROR]   symbol:   class CollectionParser
+[ERROR]   location: class CollectionParserTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/CollectionParserTest.java:[36,38] error: cannot find symbol
+[ERROR]   symbol:   class CollectionParser
+[ERROR]   location: class CollectionParserTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/DateUtilsTest.java:[42,73] error: cannot find symbol
+[ERROR]   symbol:   variable DateUtils
+[ERROR]   location: class DateUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/DateUtilsTest.java:[43,70] error: cannot find symbol
+[ERROR]   symbol:   variable DateUtils
+[ERROR]   location: class DateUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CollectionUtilsTest.java:[31,39] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class CollectionUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CollectionUtilsTest.java:[38,39] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class CollectionUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[13,26] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[17,27] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[19,29] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[23,31] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[32,24] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[33,25] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[41,20] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[43,25] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[44,26] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[51,35] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[52,20] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[53,25] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[55,26] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[62,28] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:[74,28] error: cannot find symbol
+[ERROR]   symbol:   variable MatrixUtils
+[ERROR]   location: class MatrixUtilsTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[15,8] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+[ERROR]   location: class GameSessionExtendedPropertiesTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[15,55] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+[ERROR]   location: class GameSessionExtendedPropertiesTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[27,8] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+[ERROR]   location: class GameSessionExtendedPropertiesTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[27,55] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+[ERROR]   location: class GameSessionExtendedPropertiesTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[42,8] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+[ERROR]   location: class GameSessionExtendedPropertiesTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[42,55] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+[ERROR]   location: class GameSessionExtendedPropertiesTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[64,8] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+[ERROR]   location: class GameSessionExtendedPropertiesTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java:[64,55] error: cannot find symbol
+[ERROR]   symbol:   class GameSessionExtendedProperties
+[ERROR]   location: class GameSessionExtendedPropertiesTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/ReflectionUtilsCompatibilityTest.java:[11,26] error: cannot find symbol
+[ERROR]   symbol:   variable ReflectionUtils
+[ERROR]   location: class ReflectionUtilsCompatibilityTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/ReflectionUtilsCompatibilityTest.java:[19,26] error: cannot find symbol
+[ERROR]   symbol:   variable ReflectionUtils
+[ERROR]   location: class ReflectionUtilsCompatibilityTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/ReflectionUtilsCompatibilityTest.java:[27,8] error: cannot find symbol
+[ERROR]   symbol:   variable ReflectionUtils
+[ERROR]   location: class ReflectionUtilsCompatibilityTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[24,24] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class StringPropertyHelperTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[32,24] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class StringPropertyHelperTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[41,8] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class StringPropertyHelperTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[46,8] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class StringPropertyHelperTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[51,24] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class StringPropertyHelperTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[61,24] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class StringPropertyHelperTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[69,23] error: package CollectionUtils does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[69,54] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class StringPropertyHelperTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[79,24] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class StringPropertyHelperTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[89,8] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class StringPropertyHelperTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[97,8] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class StringPropertyHelperTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[110,24] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class StringPropertyHelperTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[122,8] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class StringPropertyHelperTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[129,8] error: cannot find symbol
+[ERROR]   symbol:   variable CollectionUtils
+[ERROR]   location: class StringPropertyHelperTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java:[136,8] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

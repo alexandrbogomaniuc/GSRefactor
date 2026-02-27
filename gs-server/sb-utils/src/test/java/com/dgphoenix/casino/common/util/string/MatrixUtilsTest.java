@@ -1,5 +1,6 @@
-package com.dgphoenix.casino.common.util.string;
+package com.abs.casino.common.util.string;
 
+import com.dgphoenix.casino.common.util.string.MatrixUtils;
 import org.junit.Assert;
 import org.junit.Test;
 

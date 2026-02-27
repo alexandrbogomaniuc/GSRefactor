@@ -8062,3 +8062,24 @@
   - ETA `42.5h` (`5.32` workdays)
 - Next:
   - continue declaration-first migration while launch alias smoke remains environment-blocked.
+### 2026-02-27 17:49 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W210A/W210B + W211`.
+- Scope retained:
+  - declaration migrations: `23` (`sb-utils/utils/common-gs/common-wallet/common-promo/common-persisters` test surfaces).
+  - bounded rewires: `0` (planned rewire manifests empty).
+- Stabilization outcome:
+  - used `1 explorer + 2 workers + main` ownership split with zero overlap.
+  - fixed test compile drift with minimal import/access adjustments inside moved declaration files only.
+- Validation outcome (canonical):
+  - fast gate rerun4: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, `/startgame` smoke alias).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, retry executed once and failed).
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-170003-hardcut-m2-wave210ab-wave211-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/166-hard-cut-m2-wave210ab-wave211-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1271`, remaining `1006`
+  - burndown `55.819060%`
+  - Project 02 `35.272132%`, Core `67.636066%`, Portfolio `83.818033%`
+  - ETA `41.5h` (`5.19` workdays)
+- Next:
+  - continue declaration-first migration while launch alias smoke remains environment-blocked.

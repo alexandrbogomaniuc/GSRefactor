@@ -3075,3 +3075,28 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `28`.
   - retained bounded rewires: `43`.
   - global tracked source declarations/files now `1029` remaining (`2277` baseline, `1248` reduced, `54.808959%` burndown).
+
+## 2026-02-27 17:49 UTC (Hard-Cut M2 Wave 210A + 210B + 211)
+- Continued batched-safe hard-cut migration from W209 checkpoint with non-overlapping declaration sets:
+  - `W210A`: 11 declaration migrations in `sb-utils`/`utils` test surfaces.
+  - `W210B`: 12 declaration migrations in `common-gs`/`common-wallet`/`common-promo`/`common-persisters` test surfaces.
+  - `W211`: integration and validation.
+- Parallel execution mode:
+  - `1 explorer + 2 workers + main` with strict non-overlap ownership.
+- Stabilization:
+  - planned bounded rewires remained empty (`rewires-batchA-all.txt` and `rewires-batchB-all.txt` both empty).
+  - resolved post-cut test compile drift with minimal import/access fixes in migrated declarations (no non-owned file overlap).
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun1: `STEP02 FAIL`.
+  - fast gate rerun2: `STEP02 FAIL`.
+  - fast gate rerun3: `STEP03/STEP04/STEP06 FAIL`.
+  - fast gate rerun4 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias).
+  - full matrix rerun1 (canonical): `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`; recovery retry executed once and failed).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-170003-hardcut-m2-wave210ab-wave211-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/166-hard-cut-m2-wave210ab-wave211-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `23`.
+  - retained bounded rewires: `0`.
+  - global tracked source declarations/files now `1006` remaining (`2277` baseline, `1271` reduced, `55.819060%` burndown).

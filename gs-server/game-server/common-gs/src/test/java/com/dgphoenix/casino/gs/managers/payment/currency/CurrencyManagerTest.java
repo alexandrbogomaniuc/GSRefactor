@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.currency;
+package com.abs.casino.gs.managers.payment.currency;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraCurrencyPersister;
@@ -11,6 +11,8 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.exception.InvalidCurrencyRateException;
 import com.dgphoenix.casino.common.exception.UnknownCurrencyException;
 import com.dgphoenix.casino.common.util.Pair;
+import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManager;
+import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
 import org.junit.Before;
 import org.junit.Test;
@@ -52,7 +54,7 @@ public class CurrencyManagerTest {
         when(applicationContext.getBean(CassandraPersistenceManager.class)).thenReturn(cassandraPersistenceManager);
         when(applicationContext.getBean(RemoteCallHelper.class)).thenReturn(remoteCallHelper);
         when(applicationContext.getBean(CurrencyRatesManager.class)).thenReturn(currencyRatesManager);
-        currencyManager = new CurrencyManager(applicationContext, currencyCache, bankInfoCache);
+        currencyManager = new TestCurrencyManager(applicationContext, currencyCache, bankInfoCache);
         expectedCurrency = new Currency(CURRENCY_CODE, CURRENCY_SYMBOL);
     }
 
@@ -121,5 +123,11 @@ public class CurrencyManagerTest {
         when(bankInfoCache.getBankInfo(BANK_ID)).thenReturn(bankInfo);
 
         currencyManager.setupCurrency(CURRENCY_CODE, CURRENCY_SYMBOL, BANK_ID);
+    }
+
+    private static final class TestCurrencyManager extends CurrencyManager {
+        private TestCurrencyManager(ApplicationContext context, CurrencyCache currencyCache, BankInfoCache bankInfoCache) {
+            super(context, currencyCache, bankInfoCache);
+        }
     }
 }

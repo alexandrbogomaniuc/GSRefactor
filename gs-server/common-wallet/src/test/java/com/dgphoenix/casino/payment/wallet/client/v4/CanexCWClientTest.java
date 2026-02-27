@@ -1,8 +1,9 @@
-package com.dgphoenix.casino.payment.wallet.client.v4;
+package com.abs.casino.payment.wallet.client.v4;
 
 import com.abs.casino.common.client.LoggableWithResponseCodeClient;
 import com.abs.casino.common.client.canex.request.RequestType;
 import com.dgphoenix.casino.common.exception.CommonException;
+import com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient;
 import com.abs.casino.common.rest.CustomRestTemplate;
 import com.abs.casino.payment.wallet.client.RestAPIClientTest;
 import com.google.gson.Gson;
@@ -27,7 +28,7 @@ public class CanexCWClientTest extends RestAPIClientTest {
 
     private static final String BASE_PATH = "canex/";
 
-    private CanexCWClient client;
+    private TestCanexCWClient client;
 
     @Test
     public void testAuthRequest() throws CommonException, IOException {
@@ -45,14 +46,14 @@ public class CanexCWClientTest extends RestAPIClientTest {
                 .andExpect(withBody("auth.json"))
                 .andRespond(withSuccessResponse("auth.json"));
 
-        client = new CanexCWClient(123L, restTemplate);
+        client = new TestCanexCWClient(123L, restTemplate);
         Map<String, String> params = new HashMap<>();
         params.put("token", "12345");
         params.put("bankId", "123");
         params.put("gameId", "777");
         params.put("hash", "some-hash");
-        params.put(CanexCWClient.REQUEST_TYPE, RequestType.AUTH.name());
-        client.doRequest(params, "https://test.canex.com/auth", 123L, 10);
+        params.put(TestCanexCWClient.requestTypeKey(), RequestType.AUTH.name());
+        client.doRequestPublic(params, "https://test.canex.com/auth", 123L, 10);
 
     }
 
@@ -64,5 +65,19 @@ public class CanexCWClientTest extends RestAPIClientTest {
     @Override
     protected MediaType getMediaType() {
         return MediaType.APPLICATION_JSON;
+    }
+
+    private static class TestCanexCWClient extends CanexCWClient {
+        public TestCanexCWClient(long bankId, CustomRestTemplate restTemplate) {
+            super(bankId, restTemplate);
+        }
+
+        public static String requestTypeKey() {
+            return REQUEST_TYPE;
+        }
+
+        public void doRequestPublic(Map<String, String> params, String url, long bankId, long timeout) throws CommonException {
+            super.doRequest(params, url, bankId, timeout);
+        }
     }
 }

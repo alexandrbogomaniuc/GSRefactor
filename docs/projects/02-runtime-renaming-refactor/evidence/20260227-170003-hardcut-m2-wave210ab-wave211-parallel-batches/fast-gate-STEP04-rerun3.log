@@ -1,0 +1,297 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 41 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-promo ---
+[INFO] Compiling 2 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/test-classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[34,25] error: cannot find symbol
+[ERROR]   symbol:   class ICampaignStatisticsProvider
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[170,26] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[12,12] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[34,72] error: cannot find symbol
+[ERROR]   symbol:   class ICampaignStatisticsProvider
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[73,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[73,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[83,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[83,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[93,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[93,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[104,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[104,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[114,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[114,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[124,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[124,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[136,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[136,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[148,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[148,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[160,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[160,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class MaxPerformanceTournamentTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[171,34] error: package TournamentObjective does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[16,21] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[21,45] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[22,8] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[28,8] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[28,40] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[31,8] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[39,8] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[39,38] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[40,8] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[40,39] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[41,8] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[41,38] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[43,8] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[50,28] error: cannot find symbol
+[ERROR]   symbol:   variable PromoCampaignMember
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[51,39] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[54,55] error: cannot find symbol
+[ERROR]   symbol:   variable PromoCampaignMember
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[55,59] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[56,59] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[57,58] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[58,58] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+  location: class PromoCampaignMemberTest
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[68,42] error: cannot find symbol
+[INFO] 44 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.944 s
+[INFO] Finished at: 2026-02-27T17:28:09Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:testCompile (default-testCompile) on project common-promo: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[34,25] error: cannot find symbol
+[ERROR]   symbol:   class ICampaignStatisticsProvider
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[170,26] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[12,12] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[34,72] error: cannot find symbol
+[ERROR]   symbol:   class ICampaignStatisticsProvider
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[73,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[73,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[83,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[83,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[93,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[93,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[104,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[104,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[114,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[114,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[124,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[124,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[136,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[136,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[148,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[148,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[160,8] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[160,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class MaxPerformanceTournamentTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java:[171,34] error: package TournamentObjective does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[16,21] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[21,45] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[22,8] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[28,8] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[28,40] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[31,8] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[39,8] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[39,38] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[40,8] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[40,39] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[41,8] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[41,38] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[43,8] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[50,28] error: cannot find symbol
+[ERROR]   symbol:   variable PromoCampaignMember
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[51,39] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[54,55] error: cannot find symbol
+[ERROR]   symbol:   variable PromoCampaignMember
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[55,59] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[56,59] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[57,58] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[58,58] error: cannot find symbol
+[ERROR]   symbol:   class AwardedPrize
+[ERROR]   location: class PromoCampaignMemberTest
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberTest.java:[68,42] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

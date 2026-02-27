@@ -1,4 +1,4 @@
-package com.dgphoenix.casino;
+package com.abs.casino;
 
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.currency.ICurrency;

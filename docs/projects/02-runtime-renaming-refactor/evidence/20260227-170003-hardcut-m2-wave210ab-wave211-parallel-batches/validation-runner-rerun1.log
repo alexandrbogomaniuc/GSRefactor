@@ -1,0 +1,26 @@
+2026-02-27T17:43:40Z START PRE01 dir=gs-server/utils cmd=mvn -DskipTests install
+2026-02-27T17:43:45Z PASS PRE01 rc=0
+2026-02-27T17:43:45Z START PRE02 dir=gs-server/sb-utils cmd=mvn -DskipTests install
+2026-02-27T17:43:50Z PASS PRE02 rc=0
+2026-02-27T17:43:50Z START PRE03 dir=gs-server/common-promo cmd=mvn -DskipTests install
+2026-02-27T17:43:53Z PASS PRE03 rc=0
+2026-02-27T17:43:53Z START STEP01 dir=gs-server/common cmd=mvn -DskipTests install
+2026-02-27T17:43:57Z PASS STEP01 rc=0
+2026-02-27T17:43:57Z START STEP02 dir=gs-server/common-wallet cmd=mvn -DskipTests install
+2026-02-27T17:44:01Z PASS STEP02 rc=0
+2026-02-27T17:44:01Z START STEP03 dir=gs-server/sb-utils cmd=mvn -DskipTests install
+2026-02-27T17:44:05Z PASS STEP03 rc=0
+2026-02-27T17:44:05Z START STEP04 dir=gs-server/common-promo cmd=mvn -DskipTests install
+2026-02-27T17:44:07Z PASS STEP04 rc=0
+2026-02-27T17:44:07Z START STEP05 dir=gs-server/cassandra-cache/common-persisters cmd=mvn -DskipTests install
+2026-02-27T17:44:11Z PASS STEP05 rc=0
+2026-02-27T17:44:11Z START STEP06 dir=gs-server/game-server/common-gs cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+2026-02-27T17:44:23Z PASS STEP06 rc=0
+2026-02-27T17:44:23Z START STEP07 dir=gs-server/game-server/web-gs cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+2026-02-27T17:44:38Z PASS STEP07 rc=0
+2026-02-27T17:44:38Z START STEP08 dir=mp-server/persistance cmd=mvn -DskipTests install
+2026-02-27T17:44:41Z PASS STEP08 rc=0
+2026-02-27T17:44:41Z START STEP09 dir=. cmd=node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+2026-02-27T17:46:03Z FAIL STEP09 rc=2
+2026-02-27T17:46:03Z START STEP09-retry1 dir=. cmd=node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+2026-02-27T17:47:25Z FAIL STEP09-retry1 rc=2

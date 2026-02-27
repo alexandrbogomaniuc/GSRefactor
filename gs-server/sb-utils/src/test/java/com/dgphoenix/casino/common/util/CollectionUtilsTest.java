@@ -1,5 +1,6 @@
-package com.dgphoenix.casino.common.util;
+package com.abs.casino.common.util;
 
+import com.dgphoenix.casino.common.util.CollectionUtils;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;

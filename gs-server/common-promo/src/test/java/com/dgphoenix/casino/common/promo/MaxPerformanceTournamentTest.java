@@ -1,5 +1,8 @@
-package com.dgphoenix.casino.common.promo;
+package com.abs.casino.common.promo;
 
+import com.dgphoenix.casino.common.promo.DesiredPrize;
+import com.dgphoenix.casino.common.promo.ICampaignStatisticsProvider;
+import com.dgphoenix.casino.common.promo.TournamentObjective;
 import com.dgphoenix.casino.common.currency.CurrencyRate;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;

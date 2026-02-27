@@ -1,5 +1,7 @@
-package com.dgphoenix.casino.common.util;
+package com.abs.casino.common.util;
 
+import com.dgphoenix.casino.common.util.NtpTimeProvider;
+import com.dgphoenix.casino.common.util.NtpWrapper;
 import junit.framework.Assert;
 import org.apache.commons.net.ntp.TimeInfo;
 import org.junit.Before;
@@ -11,6 +13,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.net.InetAddress;
 import java.util.Random;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -39,7 +42,9 @@ public class NtpTimeProviderTest {
 
     @Before
     public void setUp() throws Exception {
-        timeProvider = new NtpTimeProvider(ntpWrapper, 15);
+        Constructor<NtpTimeProvider> constructor = NtpTimeProvider.class.getDeclaredConstructor(NtpWrapper.class, long.class);
+        constructor.setAccessible(true);
+        timeProvider = constructor.newInstance(ntpWrapper, 15L);
         when(timeInfo.getOffset()).thenAnswer(new Answer<Long>() {
             @Override
             public Long answer(InvocationOnMock invocationOnMock) throws Throwable {

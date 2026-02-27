@@ -1,0 +1,43 @@
+==== STEP01 START 2026-02-27 17:27:48 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/common
+CMD: mvn -DskipTests install
+==== STEP01 END 2026-02-27 17:27:56 EXIT=0 RESULT=PASS ====
+STEP01 RESULT=PASS
+==== STEP02 START 2026-02-27 17:27:56 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet
+CMD: mvn -DskipTests install
+==== STEP02 END 2026-02-27 17:27:59 EXIT=0 RESULT=PASS ====
+STEP02 RESULT=PASS
+==== STEP03 START 2026-02-27 17:27:59 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils
+CMD: mvn -DskipTests install
+==== STEP03 END 2026-02-27 17:28:06 EXIT=1 RESULT=FAIL ====
+STEP03 RESULT=FAIL
+==== STEP04 START 2026-02-27 17:28:06 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo
+CMD: mvn -DskipTests install
+==== STEP04 END 2026-02-27 17:28:09 EXIT=1 RESULT=FAIL ====
+STEP04 RESULT=FAIL
+==== STEP05 START 2026-02-27 17:28:09 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters
+CMD: mvn -DskipTests install
+==== STEP05 END 2026-02-27 17:28:17 EXIT=0 RESULT=PASS ====
+STEP05 RESULT=PASS
+==== STEP06 START 2026-02-27 17:28:17 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs
+CMD: mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+==== STEP06 END 2026-02-27 17:28:54 EXIT=1 RESULT=FAIL ====
+STEP06 RESULT=FAIL
+==== STEP07 START 2026-02-27 17:28:54 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs
+CMD: mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+==== STEP07 END 2026-02-27 17:29:41 EXIT=0 RESULT=PASS ====
+STEP07 RESULT=PASS
+==== STEP08 START 2026-02-27 17:29:41 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance
+CMD: mvn -DskipTests install
+==== STEP08 END 2026-02-27 17:29:55 EXIT=0 RESULT=PASS ====
+STEP08 RESULT=PASS
+==== STEP09 START 2026-02-27 17:29:55 ====
+DIR: /Users/alexb/Documents/Dev/Dev_new
+CMD: node gs-server/deploy/scripts/refactor-onboard.mjs smoke
