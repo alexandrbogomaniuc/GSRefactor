@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.CurrencyCache;
 import com.abs.casino.common.config.CommonContextConfiguration;
-import com.dgphoenix.casino.common.configuration.CasinoSystemType;
+import com.abs.casino.common.configuration.CasinoSystemType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguration;

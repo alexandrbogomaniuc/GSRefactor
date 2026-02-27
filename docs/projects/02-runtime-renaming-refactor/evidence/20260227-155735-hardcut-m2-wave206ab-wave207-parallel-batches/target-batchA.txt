@@ -1,0 +1,16 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/IPromoMessagesDispatcher.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/ITournamentsListener.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/PlayerAliasManager.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/PromoMessagesDispatcher.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/PromoNotificationsCreator.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/TournamentsManager.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/IKafkaRequestMultiPlayer.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/INotActualPromoListener.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/IPlayerAliasService.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/NotAvailableStatisticsProvider.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoFeedWriter.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/TournamentPlaceholdersCache.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/TournamentRankCalculatorService.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/TournamentRanksExtractor.java
+gs-server/promo/core/src/test/java/com/dgphoenix/casino/promo/TournamentPlaceholdersCacheTest.java

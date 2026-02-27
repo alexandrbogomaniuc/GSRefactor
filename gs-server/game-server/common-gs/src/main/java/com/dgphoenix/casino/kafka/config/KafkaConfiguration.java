@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
-import com.dgphoenix.casino.common.configuration.IGameServerConfiguration;
+import com.abs.casino.common.configuration.IGameServerConfiguration;
 import com.dgphoenix.casino.kafka.config.KafkaProperties;
 
 @Configuration

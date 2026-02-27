@@ -6,7 +6,7 @@ import com.dgphoenix.casino.kafka.dto.*;
 import com.abs.casino.kafka.dto.privateroom.request.*;
 import com.abs.casino.kafka.dto.privateroom.response.*;
 import com.dgphoenix.casino.kafka.service.KafkaMessageService;
-import com.dgphoenix.casino.promo.IKafkaRequestMultiPlayer;
+import com.abs.casino.promo.IKafkaRequestMultiPlayer;
 import com.abs.casino.kafka.dto.StringResponseDto;
 import com.abs.casino.kafka.dto.privateroom.response.DeactivateRoomResultDto;
 import com.abs.casino.kafka.dto.privateroom.response.PrivateRoomIdResultDto;

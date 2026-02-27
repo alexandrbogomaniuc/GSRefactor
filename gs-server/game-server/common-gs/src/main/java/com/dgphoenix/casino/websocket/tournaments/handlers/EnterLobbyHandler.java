@@ -22,7 +22,7 @@ import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.gs.socket.mq.TournamentBuyInHelper;
-import com.dgphoenix.casino.promo.PromoCampaignManager;
+import com.abs.casino.promo.PromoCampaignManager;
 import com.abs.casino.promo.icon.TournamentIcon;
 import com.abs.casino.promo.persisters.CassandraBattlegroundConfigPersister;
 import com.abs.casino.promo.persisters.CassandraLocalizationsPersister;

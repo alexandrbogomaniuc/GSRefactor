@@ -1,8 +1,8 @@
 package com.abs.casino.gs.managers.game.socket;
 
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.configuration.ServerConfiguration;
-import com.dgphoenix.casino.common.engine.IControllable;
+import com.abs.casino.common.configuration.ServerConfiguration;
+import com.abs.casino.common.engine.IControllable;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.socket.ISocketClient;
 import com.abs.casino.common.socket.ISocketServerObserver;

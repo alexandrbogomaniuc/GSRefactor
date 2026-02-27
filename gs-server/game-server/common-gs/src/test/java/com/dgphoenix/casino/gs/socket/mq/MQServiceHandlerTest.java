@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.CommonExecutorService;
 import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
-import com.dgphoenix.casino.promo.PromoCampaignManager;
+import com.abs.casino.promo.PromoCampaignManager;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
 import org.junit.Before;
 import org.junit.Test;

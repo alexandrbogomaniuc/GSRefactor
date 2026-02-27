@@ -6,7 +6,7 @@ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.IConfigsInitializer;
 import com.dgphoenix.casino.cassandra.persist.*;
 import com.dgphoenix.casino.common.cache.*;
-import com.dgphoenix.casino.common.configuration.CasinoSystemType;
+import com.abs.casino.common.configuration.CasinoSystemType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.IdGenerator;

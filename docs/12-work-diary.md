@@ -8019,3 +8019,25 @@
   - ETA `44.8h` (`5.60` workdays)
 - Next:
   - continue declaration-first migration while launch alias smoke remains environment-blocked.
+### 2026-02-27 16:28 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W206A/W206B + W207`.
+- Scope retained:
+  - declaration migrations: `26` (`common-gs/promo` + `promo/core` + `sb-utils common.configuration/common.engine`).
+  - bounded rewires: `31` (`rewires-batchA-all.txt` + `rewires-batchB-all.txt`).
+- Stabilization outcome:
+  - corrected three wrong import rewires in `GameServerComponentsConfiguration` (`KafkaRequestMultiPlayer`, `TournamentMessageHandlersFactory`, `GameServerConfiguration`).
+  - resolved `ConfigHelper` type mismatch in `CassandraPersistenceContextConfiguration` used by `KeyspaceConfigurationFactory`.
+  - warm-installed `promo/persisters` and `promo/core` and corrected validation runner `STEP08` path to `mp-server/persistance`.
+- Validation outcome (canonical rerun5):
+  - fast gate rerun5: `STEP01-08 PASS`, `STEP09 FAIL` (`/startgame` alias `HTTP 502`).
+  - full matrix rerun5: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, `/startgame` alias `HTTP 502`; recovery retry executed once and failed).
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-155735-hardcut-m2-wave206ab-wave207-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/164-hard-cut-m2-wave206ab-wave207-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1220`, remaining `1057`
+  - burndown `53.579271%`
+  - Project 02 `33.856805%`, Core `66.928403%`, Portfolio `83.464201%`
+  - ETA `43.7h` (`5.46` workdays)
+- Next:
+  - continue declaration-first migration while launch alias smoke remains environment-blocked.

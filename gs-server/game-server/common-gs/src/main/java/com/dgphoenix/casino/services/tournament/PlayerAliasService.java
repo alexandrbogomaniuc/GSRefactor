@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.promo.PlayerIdentificationType;
 import com.dgphoenix.casino.common.util.IIntegerIdGenerator;
 import com.dgphoenix.casino.common.util.Triple;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.promo.IPlayerAliasService;
+import com.abs.casino.promo.IPlayerAliasService;
 import com.abs.casino.promo.persisters.CassandraPromoCampaignMembersPersister;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;

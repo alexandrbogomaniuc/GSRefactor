@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo;
+package com.abs.casino.promo;
 
 import com.google.common.cache.Cache;
 import org.junit.Before;

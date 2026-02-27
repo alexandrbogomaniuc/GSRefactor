@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.ServerConfigsCache;
 import com.dgphoenix.casino.common.cache.ServerConfigsTemplateCache;
 import com.dgphoenix.casino.common.config.GameServerConfig;
 import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
-import com.dgphoenix.casino.common.configuration.CasinoSystemType;
+import com.abs.casino.common.configuration.CasinoSystemType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.ReflectionUtils;

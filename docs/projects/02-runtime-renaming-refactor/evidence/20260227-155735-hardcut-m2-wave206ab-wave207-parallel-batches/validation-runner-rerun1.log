@@ -1,0 +1,2 @@
+[2026-02-27T16:08:31Z] START PRE01 dir=gs-server/utils cmd=mvn -DskipTests install
+[2026-02-27T16:08:34Z] FAIL PRE01 rc=1

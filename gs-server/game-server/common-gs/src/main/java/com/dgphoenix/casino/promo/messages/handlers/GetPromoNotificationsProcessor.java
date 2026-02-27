@@ -11,7 +11,7 @@ import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.command.ILockedCommandProcessor;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
-import com.dgphoenix.casino.promo.PromoNotificationsCreator;
+import com.abs.casino.promo.PromoNotificationsCreator;
 import com.google.common.base.Splitter;
 
 import javax.servlet.ServletRequest;

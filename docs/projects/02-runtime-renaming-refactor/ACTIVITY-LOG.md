@@ -3020,3 +3020,32 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `20`.
   - retained bounded rewires: `60`.
   - global tracked source declarations/files now `1083` remaining (`2277` baseline, `1194` reduced, `52.437418%` burndown).
+
+## 2026-02-27 16:28 UTC (Hard-Cut M2 Wave 206A + 206B + 207)
+- Continued batched-safe hard-cut migration from W205 checkpoint with non-overlapping declaration sets:
+  - `W206A`: 16 declaration migrations in `common-gs` promo and `promo/core` surfaces.
+  - `W206B`: 10 declaration migrations in `sb-utils` `common.configuration` and `common.engine`.
+  - `W207`: integration and validation.
+- Parallel execution mode:
+  - `1 explorer + 2 workers + main` with strict non-overlap ownership.
+- Stabilization:
+  - bounded importer/FQCN rewires retained only for moved symbols from `rewires-batchA-all.txt` and `rewires-batchB-all.txt`.
+  - corrected three wrong import rewires in `GameServerComponentsConfiguration` to actual declaration packages (`KafkaRequestMultiPlayer`, `TournamentMessageHandlersFactory`, `GameServerConfiguration`).
+  - resolved `ConfigHelper` type mismatch in `CassandraPersistenceContextConfiguration` for `KeyspaceConfigurationFactory` constructor compatibility.
+  - warm-installed `promo/persisters` and `promo/core` before canonical rerun.
+  - corrected validation runner `STEP08` path to `mp-server/persistance`.
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun1: `STEP01 FAIL` (`rc=1`).
+  - fast gate rerun2: `STEP06 FAIL` (`rc=1`).
+  - fast gate rerun3: `STEP06 FAIL` (`rc=1`, `ConfigHelper` type mismatch).
+  - fast gate rerun4: `STEP08 FAIL` (`rc=1`, runner path mismatch).
+  - fast gate rerun5 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`).
+  - full matrix rerun5 (canonical): `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`; recovery retry executed once and failed).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-155735-hardcut-m2-wave206ab-wave207-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/164-hard-cut-m2-wave206ab-wave207-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `26`.
+  - retained bounded rewires: `31`.
+  - global tracked source declarations/files now `1057` remaining (`2277` baseline, `1220` reduced, `53.579271%` burndown).

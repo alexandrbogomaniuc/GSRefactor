@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.configuration;
+package com.abs.casino.common.configuration;
 
 import com.dgphoenix.casino.common.configuration.resource.FileObserveFactory;
 import com.abs.casino.common.configuration.resource.event.PropertyChangedEvent;

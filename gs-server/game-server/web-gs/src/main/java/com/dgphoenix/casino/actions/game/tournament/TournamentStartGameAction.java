@@ -25,7 +25,7 @@ import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.GameServerComponentsHelper;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.dgphoenix.casino.helpers.login.LoginHelper;
-import com.dgphoenix.casino.promo.PromoCampaignManager;
+import com.abs.casino.promo.PromoCampaignManager;
 import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import com.dgphoenix.casino.sm.IPlayerSessionManager;
 import com.dgphoenix.casino.sm.PlayerSessionFactory;

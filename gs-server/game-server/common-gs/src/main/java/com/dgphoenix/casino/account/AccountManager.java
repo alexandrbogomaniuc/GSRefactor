@@ -13,7 +13,7 @@ import com.dgphoenix.casino.common.cache.data.bonus.BonusSystemType;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.configuration.CasinoSystemType;
+import com.abs.casino.common.configuration.CasinoSystemType;
 import com.dgphoenix.casino.common.exception.AccountException;
 import com.dgphoenix.casino.common.exception.BonusException;
 import com.dgphoenix.casino.common.exception.CommonException;

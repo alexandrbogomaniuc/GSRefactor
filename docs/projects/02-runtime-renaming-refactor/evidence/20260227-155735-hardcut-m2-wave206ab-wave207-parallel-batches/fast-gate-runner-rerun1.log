@@ -1,0 +1,2 @@
+[2026-02-27T16:08:09Z] START STEP01 dir=gs-server/common cmd=mvn -DskipTests install
+[2026-02-27T16:08:12Z] FAIL STEP01 rc=1

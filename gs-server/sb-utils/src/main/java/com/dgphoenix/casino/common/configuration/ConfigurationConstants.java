@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.configuration;
+package com.abs.casino.common.configuration;
 
 public interface ConfigurationConstants {
     public static final String DEFAULT_ARRAY_DELIMITER = " ";

@@ -107,7 +107,7 @@ import com.dgphoenix.casino.kafka.dto.TournamentInfoDto;
 import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
 import com.abs.casino.leaderboard.LeaderboardWinTracker;
 import com.abs.casino.leaderboard.LeaderboardWinUploader;
-import com.dgphoenix.casino.promo.PromoCampaignManager;
+import com.abs.casino.promo.PromoCampaignManager;
 import com.abs.casino.promo.events.process.ParticipantEventProcessor;
 import com.abs.casino.promo.events.process.PromoGameEventProcessor;
 import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;

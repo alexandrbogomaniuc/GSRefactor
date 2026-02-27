@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.engine;
+package com.abs.casino.common.engine;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import org.apache.log4j.Logger;

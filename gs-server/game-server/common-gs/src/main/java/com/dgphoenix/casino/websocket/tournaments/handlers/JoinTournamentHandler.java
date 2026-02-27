@@ -20,7 +20,7 @@ import com.dgphoenix.casino.gs.socket.mq.ForceCreateDetailsException;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.gs.socket.mq.TournamentBuyInHelper;
 import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
-import com.dgphoenix.casino.promo.PlayerAliasManager;
+import com.abs.casino.promo.PlayerAliasManager;
 import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import com.abs.casino.promo.tournaments.messages.Error;
 import com.abs.casino.promo.tournaments.messages.JoinTournament;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo;
+package com.abs.casino.promo;
 
 /**
  * Created by vladislav on 3/22/17.

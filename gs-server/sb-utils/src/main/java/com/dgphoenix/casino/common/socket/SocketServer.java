@@ -1,6 +1,6 @@
 package com.abs.casino.common.socket;
 
-import com.dgphoenix.casino.common.engine.IControllable;
+import com.abs.casino.common.engine.IControllable;
 import com.dgphoenix.casino.common.exception.CommonException;
 import org.apache.log4j.Logger;
 

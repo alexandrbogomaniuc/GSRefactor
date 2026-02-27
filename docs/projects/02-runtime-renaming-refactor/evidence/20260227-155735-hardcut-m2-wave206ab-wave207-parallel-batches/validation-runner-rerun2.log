@@ -1,0 +1,18 @@
+[2026-02-27T16:12:24Z] START PRE01 dir=gs-server/utils cmd=mvn -DskipTests install
+[2026-02-27T16:12:26Z] PASS PRE01
+[2026-02-27T16:12:26Z] START PRE02 dir=gs-server/sb-utils cmd=mvn -DskipTests install
+[2026-02-27T16:12:29Z] PASS PRE02
+[2026-02-27T16:12:29Z] START PRE03 dir=gs-server/common-promo cmd=mvn -DskipTests install
+[2026-02-27T16:12:31Z] PASS PRE03
+[2026-02-27T16:12:31Z] START STEP01 dir=gs-server/common cmd=mvn -DskipTests install
+[2026-02-27T16:12:34Z] PASS STEP01
+[2026-02-27T16:12:34Z] START STEP02 dir=gs-server/common-wallet cmd=mvn -DskipTests install
+[2026-02-27T16:12:36Z] PASS STEP02
+[2026-02-27T16:12:36Z] START STEP03 dir=gs-server/sb-utils cmd=mvn -DskipTests install
+[2026-02-27T16:12:39Z] PASS STEP03
+[2026-02-27T16:12:39Z] START STEP04 dir=gs-server/common-promo cmd=mvn -DskipTests install
+[2026-02-27T16:12:41Z] PASS STEP04
+[2026-02-27T16:12:41Z] START STEP05 dir=gs-server/cassandra-cache/common-persisters cmd=mvn -DskipTests install
+[2026-02-27T16:12:44Z] PASS STEP05
+[2026-02-27T16:12:44Z] START STEP06 dir=gs-server/game-server/common-gs cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-27T16:12:47Z] FAIL STEP06 rc=1

@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.util;
 
-import com.dgphoenix.casino.common.configuration.CasinoSystemType;
+import com.abs.casino.common.configuration.CasinoSystemType;
 
 /**
  * User: flsh

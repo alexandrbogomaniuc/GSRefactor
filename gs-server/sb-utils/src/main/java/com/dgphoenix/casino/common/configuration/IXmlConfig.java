@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.configuration;
+package com.abs.casino.common.configuration;
 
 import java.io.Serializable;
 

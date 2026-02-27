@@ -10,7 +10,7 @@ import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.comma
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.error.IErrorProcessor;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.error.SessionExpiredErrorProcessor;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.pre.FailedOperationHandleEnterProcessor;
-import com.dgphoenix.casino.promo.PromoNotificationsCreator;
+import com.abs.casino.promo.PromoNotificationsCreator;
 import com.abs.casino.promo.messages.handlers.GetPromoMessagesProcessor;
 import com.abs.casino.promo.messages.handlers.GetPromoNotificationsProcessor;
 import com.abs.casino.promo.messages.handlers.NotificationsShownProcessor;
