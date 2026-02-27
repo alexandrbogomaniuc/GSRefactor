@@ -3,7 +3,7 @@
  * Date: Jan 15, 2003
  * Time: 7:12:32 PM
  */
-package com.dgphoenix.casino.common.util.xml.parser;
+package com.abs.casino.common.util.xml.parser;
 
 import com.dgphoenix.casino.common.exception.ParserException;
 import com.dgphoenix.casino.common.util.xml.IXmlElement;

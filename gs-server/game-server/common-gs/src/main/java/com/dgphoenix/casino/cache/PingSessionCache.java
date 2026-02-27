@@ -11,7 +11,7 @@ import com.dgphoenix.casino.common.util.system.IMetricEvaluator;
 import com.dgphoenix.casino.common.util.system.Metric;
 import com.dgphoenix.casino.common.util.web.HttpClientConnection;
 import com.dgphoenix.casino.common.util.xml.XmlRequestResult;
-import com.dgphoenix.casino.common.util.xml.parser.Parser;
+import com.abs.casino.common.util.xml.parser.Parser;
 import com.dgphoenix.casino.common.web.statistics.IStatisticsGetter;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.system.MetricsManager;

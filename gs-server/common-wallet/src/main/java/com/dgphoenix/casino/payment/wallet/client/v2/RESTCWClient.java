@@ -17,7 +17,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.util.web.HttpClientConnection;
 import com.dgphoenix.casino.common.util.xml.IXmlRequestResult;
 import com.dgphoenix.casino.common.util.xml.XmlRequestResult;
-import com.dgphoenix.casino.common.util.xml.parser.Parser;
+import com.abs.casino.common.util.xml.parser.Parser;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;
 import com.dgphoenix.casino.statistics.http.HttpClientCallbackHandler;

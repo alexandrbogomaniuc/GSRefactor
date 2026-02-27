@@ -1,0 +1,9 @@
+wave_group=W134A+W134B+W135
+declarations_migrated=20
+batch_a_scope=sb-utils/common.util.xml.parser (10)
+batch_b_scope=promo.events.process (10)
+integration_note=bounded importer rewires + HistoryInformerItem type alignment
+fast_gate_final=PASS (rerun4)
+full_matrix_final=PASS (rerun4, 9/9)
+first_compile_blocker_fixed=HistoryInformerManager import mismatch (com.dgphoenix vs com.abs HistoryInformerItem)
+runtime_stabilization=refactor runtime recovered after cassandra target OOM; final smoke PASS

@@ -2230,3 +2230,15 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - scoped declaration migrations: `31` net.
   - global tracked source declarations/files now `1688` remaining (`2277` baseline, `589` reduced).
+
+### 2026-02-27 02:01 UTC
+- Continued Project 02 hard-cut runtime renaming with parallel batch waves `134A/134B` and integration wave `135`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-013115-hardcut-m2-wave134ab-wave135-parallel-batches/validation-status.txt`
+  - `docs/projects/02-runtime-renaming-refactor/128-hard-cut-m2-wave134ab-wave135-parallel-batches-report-20260227.md`
+- Result:
+  - migrated `20` declaration packages to `com.abs` across `sb-utils/common.util.xml.parser` and `promo/events/process`, with bounded importer rewires and compatibility-safe `HistoryInformerManager` alignment.
+  - fast gate passed on rerun4; full validation matrix passed `9/9` on rerun4.
+  - updated tracked declarations/files: `1668` remaining (`2277` baseline, `609` reduced, `26.745718%` burndown).
+- Next:
+  - continue next non-overlapping batched cycle under the same evidence-first protocol.

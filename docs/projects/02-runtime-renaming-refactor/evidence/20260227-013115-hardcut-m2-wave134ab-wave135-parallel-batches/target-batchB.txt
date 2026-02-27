@@ -1,0 +1,10 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/PrizeWonBalanceChanger.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/PromoGameEventProcessor.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/events/process/BetEventQualifier.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/events/process/BonusEventQualifier.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/events/process/EndRoundEventQualifier.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/events/process/EventProcessorContext.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/events/process/MqEndRoundEventQualifier.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventQualifier.java
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/events/process/WinEventQualifier.java

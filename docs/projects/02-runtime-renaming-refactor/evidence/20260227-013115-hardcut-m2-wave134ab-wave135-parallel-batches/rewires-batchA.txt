@@ -1,0 +1,12 @@
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v2/RESTCWClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/cache/PingSessionCache.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/history/HistoryInformerManager.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/RESTClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/frb/FRBRESTClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/frb/FRBRESTNotificationClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/common/xml/CWHandler.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/common/xml/CWResponseProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/common/xml/ExtraDataHandler.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/common/xml/ExtraDataProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/processor/NotifyResponseProcessor.java
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/common/util/xml/OldXmlParserTest.java

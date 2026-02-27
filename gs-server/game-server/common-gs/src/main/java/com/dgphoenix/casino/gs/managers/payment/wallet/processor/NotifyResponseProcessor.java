@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.web.HttpClientConnection;
 import com.dgphoenix.casino.common.util.xml.XmlRequestResult;
-import com.dgphoenix.casino.common.util.xml.parser.Parser;
+import com.abs.casino.common.util.xml.parser.Parser;
 import com.dgphoenix.casino.gs.managers.game.session.CloseGameSessionNotifyRequest;
 import com.dgphoenix.casino.gs.managers.game.session.INotifyResponseProcessor;
 import com.dgphoenix.casino.statistics.http.HttpClientCallbackHandler;

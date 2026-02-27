@@ -1,0 +1,6 @@
+overall|FAIL
+cmd1|PASS|exit=0
+cmd2|PASS|exit=0
+cmd3|FAIL|exit=1
+cmd4|PASS|exit=0
+cmd5|PASS|exit=0

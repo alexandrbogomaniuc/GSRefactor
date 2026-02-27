@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.xml.parser;
+package com.abs.casino.common.util.xml.parser;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.xml.IXmlElement;

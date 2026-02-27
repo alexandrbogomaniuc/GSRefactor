@@ -1,0 +1,5 @@
+step1-sb-utils-test|PASS|exit=0
+step2-promo-core-install|PASS|exit=0
+step3-common-gs-install|FAIL|exit=1
+step4-web-gs-package|PASS|exit=0
+step5-refactor-smoke|PASS|exit=0

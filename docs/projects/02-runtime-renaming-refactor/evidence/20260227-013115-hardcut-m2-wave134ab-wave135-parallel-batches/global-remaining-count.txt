@@ -1,0 +1,8 @@
+baseline=2277
+reduced=609
+remaining=1668
+burndown_percent=26.745718
+project02_percent=28.343215
+core_percent=64.171607
+portfolio_percent=82.085804
+updated_utc=2026-02-27T02:01:00Z

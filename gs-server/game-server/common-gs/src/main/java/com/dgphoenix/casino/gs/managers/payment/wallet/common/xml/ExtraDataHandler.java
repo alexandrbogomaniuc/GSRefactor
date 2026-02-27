@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.gs.managers.payment.wallet.common.xml;
 
-import com.dgphoenix.casino.common.util.xml.parser.XmlHandler;
+import com.abs.casino.common.util.xml.parser.XmlHandler;
 
 /**
  * User: flsh

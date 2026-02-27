@@ -13,7 +13,7 @@ import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.web.HttpClientConnection;
 import com.dgphoenix.casino.common.util.xml.IXmlRequestResult;
 import com.dgphoenix.casino.common.util.xml.XmlRequestResult;
-import com.dgphoenix.casino.common.util.xml.parser.Parser;
+import com.abs.casino.common.util.xml.parser.Parser;
 import com.dgphoenix.casino.common.web.bonus.CBonus;
 import com.dgphoenix.casino.gs.managers.payment.bonus.AbstractBonusClient;
 import com.dgphoenix.casino.gs.managers.payment.bonus.IBonusClient;

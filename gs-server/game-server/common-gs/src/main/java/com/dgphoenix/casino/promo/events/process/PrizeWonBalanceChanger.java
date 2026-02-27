@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.events.process;
+package com.abs.casino.promo.events.process;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;

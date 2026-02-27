@@ -1,9 +1,9 @@
 package com.dgphoenix.casino.common.util.xml;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.xml.parser.Parser;
-import com.dgphoenix.casino.common.util.xml.parser.XmlHandler;
-import com.dgphoenix.casino.common.util.xml.parser.XmlHandlerRegistry;
+import com.abs.casino.common.util.xml.parser.Parser;
+import com.abs.casino.common.util.xml.parser.XmlHandler;
+import com.abs.casino.common.util.xml.parser.XmlHandlerRegistry;
 import junit.framework.TestCase;
 import org.junit.Test;
 
