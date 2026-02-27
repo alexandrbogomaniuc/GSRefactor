@@ -1,4 +1,4 @@
-package com.abs.casino.common.promo.messages.server.notifications.prizes;
+package com.dgphoenix.casino.common.promo.messages.server.notifications.prizes;
 
 import com.dgphoenix.casino.common.promo.messages.server.notifications.PromoNotification;
 

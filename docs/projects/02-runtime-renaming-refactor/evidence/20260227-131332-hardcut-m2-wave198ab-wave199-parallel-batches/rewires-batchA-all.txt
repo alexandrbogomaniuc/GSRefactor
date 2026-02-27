@@ -1,0 +1,6 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/BattlegroundService.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/GameUserHistoryService.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/GameServerServiceConfiguration.java
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/socket/mq/GameUserHistoryServiceTest.java

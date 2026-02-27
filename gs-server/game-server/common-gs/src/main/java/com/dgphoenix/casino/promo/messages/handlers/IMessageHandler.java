@@ -1,7 +1,7 @@
 package com.abs.casino.promo.messages.handlers;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.messages.client.requests.ClientRequest;
+import com.abs.casino.common.promo.messages.client.requests.ClientRequest;
 import com.abs.casino.websocket.IWebSocketSessionsController;
 
 /**

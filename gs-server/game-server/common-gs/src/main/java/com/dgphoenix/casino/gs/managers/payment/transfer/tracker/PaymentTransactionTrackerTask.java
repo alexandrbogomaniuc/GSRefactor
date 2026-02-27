@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.payment.transfer.PaymentTransaction;
 import com.dgphoenix.casino.common.cache.data.payment.transfer.TransactionStatus;
-import com.dgphoenix.casino.common.cache.data.payment.transfer.processor.IPaymentProcessor;
+import com.abs.casino.common.cache.data.payment.transfer.processor.IPaymentProcessor;
 import com.dgphoenix.casino.common.engine.tracker.AbstractCommonTrackingTask;
 import com.dgphoenix.casino.common.exception.CannotLockException;
 import com.dgphoenix.casino.common.exception.CommonException;

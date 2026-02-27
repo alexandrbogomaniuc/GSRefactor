@@ -2,7 +2,7 @@ package com.abs.casino.gs.managers.payment.transfer.processor;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.payment.transfer.PaymentTransaction;
-import com.dgphoenix.casino.common.cache.data.payment.transfer.processor.IPaymentProcessor;
+import com.abs.casino.common.cache.data.payment.transfer.processor.IPaymentProcessor;
 import com.dgphoenix.casino.common.exception.CommonException;
 
 /**

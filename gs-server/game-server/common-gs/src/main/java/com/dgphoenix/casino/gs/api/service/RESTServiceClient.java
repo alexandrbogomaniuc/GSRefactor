@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.api.service;
+package com.abs.casino.gs.api.service;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
@@ -105,7 +105,7 @@ public class RESTServiceClient implements ILoggableCWClient {
 
         XStream parser = new XStream();
         XStream.setupDefaultSecurity(parser);
-        parser.allowTypesByWildcard(new String[]{"com.dgphoenix.casino.gs.api.service.xml.**"});
+        parser.allowTypesByWildcard(new String[]{"com.abs.casino.gs.api.service.xml.**"});
         parser.autodetectAnnotations(true);
         parser.processAnnotations(GetEnvironment.class);
         GetEnvironment response = (GetEnvironment) parser.fromXML(
@@ -130,7 +130,7 @@ public class RESTServiceClient implements ILoggableCWClient {
 
         XStream parser = new XStream();
         XStream.setupDefaultSecurity(parser);
-        parser.allowTypesByWildcard(new String[]{"com.dgphoenix.casino.gs.api.service.xml.**"});
+        parser.allowTypesByWildcard(new String[]{"com.abs.casino.gs.api.service.xml.**"});
         parser.autodetectAnnotations(true);
         parser.processAnnotations(FundAccount.class);
         FundAccount response = (FundAccount) parser.fromXML(
@@ -155,7 +155,7 @@ public class RESTServiceClient implements ILoggableCWClient {
 
         XStream parser = new XStream();
         XStream.setupDefaultSecurity(parser);
-        parser.allowTypesByWildcard(new String[]{"com.dgphoenix.casino.gs.api.service.xml.**"});
+        parser.allowTypesByWildcard(new String[]{"com.abs.casino.gs.api.service.xml.**"});
         parser.autodetectAnnotations(true);
         parser.processAnnotations(GetActiveToken.class);
         GetActiveToken response = (GetActiveToken) parser.fromXML(

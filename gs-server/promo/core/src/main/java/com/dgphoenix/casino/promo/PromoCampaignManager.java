@@ -28,7 +28,7 @@ import com.dgphoenix.casino.common.util.DatePeriod;
 import com.dgphoenix.casino.common.util.IdGenerator;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.promo.exception.UnsupportedCurrencyException;
+import com.abs.casino.promo.exception.UnsupportedCurrencyException;
 import com.abs.casino.promo.persisters.*;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;

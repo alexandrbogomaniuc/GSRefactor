@@ -1,0 +1,2 @@
+gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/exception/UnsupportedCurrencyException.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/RESTServiceClient.java

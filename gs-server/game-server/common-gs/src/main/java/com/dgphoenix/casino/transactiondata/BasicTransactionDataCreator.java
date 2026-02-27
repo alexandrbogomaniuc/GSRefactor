@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.transactiondata;
+package com.abs.casino.transactiondata;
 
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.transactiondata.ITransactionDataCreator;

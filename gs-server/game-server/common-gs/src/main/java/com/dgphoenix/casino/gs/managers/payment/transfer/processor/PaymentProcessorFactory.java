@@ -5,7 +5,7 @@
 package com.abs.casino.gs.managers.payment.transfer.processor;
 
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.payment.transfer.processor.IPaymentProcessor;
+import com.abs.casino.common.cache.data.payment.transfer.processor.IPaymentProcessor;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ReflectionUtils;
 import org.apache.logging.log4j.LogManager;

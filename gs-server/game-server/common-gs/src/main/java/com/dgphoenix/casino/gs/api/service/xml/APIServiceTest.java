@@ -47,7 +47,7 @@ public class APIServiceTest {
 
         XStream parser = new XStream();
         XStream.setupDefaultSecurity(parser);
-        parser.allowTypesByWildcard(new String[]{"com.dgphoenix.casino.gs.api.service.xml.**"});
+        parser.allowTypesByWildcard(new String[]{"com.abs.casino.gs.api.service.xml.**"});
         parser.autodetectAnnotations(true);
         parser.processAnnotations(GetEnvironment.class);
         GetEnvironment envResp = (GetEnvironment) parser.fromXML(envResponse);
@@ -69,7 +69,7 @@ public class APIServiceTest {
 
         parser = new XStream();
         XStream.setupDefaultSecurity(parser);
-        parser.allowTypesByWildcard(new String[]{"com.dgphoenix.casino.gs.api.service.xml.**"});
+        parser.allowTypesByWildcard(new String[]{"com.abs.casino.gs.api.service.xml.**"});
         parser.autodetectAnnotations(true);
         parser.processAnnotations(FundAccount.class);
         FundAccount fundResp = (FundAccount) parser.fromXML(fundResponse);
@@ -91,7 +91,7 @@ public class APIServiceTest {
 
         parser = new XStream();
         XStream.setupDefaultSecurity(parser);
-        parser.allowTypesByWildcard(new String[]{"com.dgphoenix.casino.gs.api.service.xml.**"});
+        parser.allowTypesByWildcard(new String[]{"com.abs.casino.gs.api.service.xml.**"});
         parser.autodetectAnnotations(true);
         parser.processAnnotations(GetActiveToken.class);
         GetActiveToken tokenResp = (GetActiveToken) parser.fromXML(tokenResponse);

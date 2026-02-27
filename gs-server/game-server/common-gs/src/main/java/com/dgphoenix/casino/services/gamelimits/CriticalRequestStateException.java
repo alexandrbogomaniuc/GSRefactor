@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.services.gamelimits;
+package com.abs.casino.services.gamelimits;
 
 /**
  * @author <a href="mailto:dader@dgphoenix.com">Timur Shaymardanov</a>

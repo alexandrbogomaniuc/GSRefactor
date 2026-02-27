@@ -1,0 +1,46 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-utils-restricted >--------------
+[INFO] Building gsn-utils-restricted 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-utils-restricted ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-utils-restricted ---
+[INFO] Compiling 9 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-utils-restricted ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-utils-restricted ---
+[INFO] Compiling 3 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.10:test (default-test) @ gsn-utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-utils-restricted ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.735 s
+[INFO] Finished at: 2026-02-27T13:42:09Z
+[INFO] ------------------------------------------------------------------------

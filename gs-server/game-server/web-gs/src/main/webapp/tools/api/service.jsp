@@ -1,6 +1,6 @@
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.gs.api.service.RESTServiceClient" %>
+<%@ page import="com.abs.casino.gs.api.service.RESTServiceClient" %>
 <%@ page import="com.abs.casino.gs.api.service.xml.*" %>
 <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
 <%@ page import="com.dgphoenix.casino.common.exception.CommonException" %>

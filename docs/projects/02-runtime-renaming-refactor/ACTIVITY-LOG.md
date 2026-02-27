@@ -2932,3 +2932,26 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `11`.
   - retained bounded rewires: `34`.
   - global tracked source declarations/files now `1154` remaining (`2277` baseline, `1123` reduced, `49.319280%` burndown).
+
+## 2026-02-27 14:04 UTC (Hard-Cut M2 Wave 198A + 198B + 199)
+- Continued batched-safe hard-cut migration from W197 checkpoint with non-overlapping declaration sets:
+  - `W198A`: 8 declaration migrations in `services*` and `transactiondata*`.
+  - `W198B`: narrowed safe subset to 2 declarations (`UnsupportedCurrencyException`, `RESTServiceClient`) after lock-package rollback.
+  - `W199`: integration and validation.
+- Parallel execution mode:
+  - explorer/worker/main mode used with thread-cap fallback while preserving strict ownership.
+- Stabilization:
+  - corrected mixed namespace compile drift in `MPBotConfigInfoService` wiring, `LoginService`, payment transfer `IPaymentProcessor` imports, promo message handler request/response imports, and `GameUserHistoryServiceTest` type bindings.
+  - restored promo prize-notification package consistency in `common-promo` (kept `com.dgphoenix` for this cluster) to clear module compile failures.
+  - updated `RESTServiceClient` and `APIServiceTest` XStream allowlist to `com.abs.casino.gs.api.service.xml.**`.
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun8: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`startgame` alias `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`; recovery retry executed once).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-131332-hardcut-m2-wave198ab-wave199-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/160-hard-cut-m2-wave198ab-wave199-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `10`.
+  - retained bounded rewires: `8`.
+  - global tracked source declarations/files now `1144` remaining (`2277` baseline, `1133` reduced, `49.758454%` burndown).

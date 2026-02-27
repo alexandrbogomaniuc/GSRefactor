@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.transactiondata;
+package com.abs.casino.transactiondata;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;

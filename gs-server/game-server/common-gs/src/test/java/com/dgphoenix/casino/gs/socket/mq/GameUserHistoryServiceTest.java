@@ -12,8 +12,8 @@ import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.dgphoenix.casino.mqb.GameUserHistory;
-import com.dgphoenix.casino.mqb.GameUserHistoryInfo;
-import com.dgphoenix.casino.services.LoginService;
+import com.abs.casino.mqb.GameUserHistoryInfo;
+import com.abs.casino.services.LoginService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -32,7 +32,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class GameUserHistoryServiceTest {
 
-    private GameUserHistoryService gameUserHistoryService;
+    private com.abs.casino.gs.socket.mq.GameUserHistoryService gameUserHistoryService;
 
     @Mock
     private CassandraPersistenceManager cpm;
@@ -50,7 +50,7 @@ public class GameUserHistoryServiceTest {
     @Before
     public void setUp() {
         when(cpm.getPersister(CassandraGameSessionPersister.class)).thenReturn(gameSessionPersister);
-        gameUserHistoryService = new GameUserHistoryService(loginService, cpm, accountManager, gameInfoManager);
+        gameUserHistoryService = new com.abs.casino.gs.socket.mq.GameUserHistoryService(loginService, cpm, accountManager, gameInfoManager);
     }
 
     @Test

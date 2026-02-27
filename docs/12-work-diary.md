@@ -7943,3 +7943,24 @@
   - ETA `47.7h` (`5.97` workdays)
 - Next:
   - continue declaration-first migration while launch alias smoke remains environment-blocked.
+### 2026-02-27 14:04 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W198A/W198B + W199`.
+- Scope retained:
+  - declaration migrations: `10` (8 in `services*`/`transactiondata*` + 2 safe-subset declarations in `promo.exception` and `gs.api.service`).
+  - bounded rewires: `8` (normalized in `rewires-batchA-all.txt` and `rewires-batchB-all.txt`).
+- Stabilization outcome:
+  - fixed compile drift exposed during reruns (`MPBotConfigInfoService` bindings, `LoginService` namespace, payment transfer `IPaymentProcessor` imports, promo message handler request/response imports, `GameUserHistoryServiceTest` type alignment, REST API XStream allowlists).
+  - restored promo prize-notification package consistency in `common-promo` to resolve duplicate-class failures.
+- Validation outcome:
+  - fast gate rerun8: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`startgame` alias `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`; `STEP09` recovery retry executed once).
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-131332-hardcut-m2-wave198ab-wave199-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/160-hard-cut-m2-wave198ab-wave199-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1133`, remaining `1144`
+  - burndown `49.758454%`
+  - Project 02 `31.442425%`, Core `65.721213%`, Portfolio `82.860606%`
+  - ETA `47.3h` (`5.91` workdays)
+- Next:
+  - continue declaration-first migration while launch alias smoke remains environment-blocked.

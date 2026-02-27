@@ -1,0 +1,72 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 129 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[3,33] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[18,35] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: class LockInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[29,24] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: class LockInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[33,55] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: class LockInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[38,40] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: class LockInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[18,97] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: class LockInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[40,13] error: cannot find symbol
+[INFO] 7 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.538 s
+[INFO] Finished at: 2026-02-27T13:20:34Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project utils-restricted: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[3,33] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[18,35] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: class LockInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[29,24] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: class LockInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[33,55] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: class LockInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[38,40] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: class LockInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[18,97] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: class LockInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[40,13] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

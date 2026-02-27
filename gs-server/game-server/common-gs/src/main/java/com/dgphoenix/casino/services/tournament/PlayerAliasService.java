@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.services.tournament;
+package com.abs.casino.services.tournament;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.cache.data.account.IAccountInfo;

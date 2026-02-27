@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.services.geoip;
+package com.abs.casino.services.geoip;
 
 import com.dgphoenix.casino.GeoIp;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;

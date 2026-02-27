@@ -1,0 +1,36 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-wallet >-----------------
+[INFO] Building common-wallet 1.0.67
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-wallet ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ common-wallet ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-wallet ---
+[INFO] Compiling 11 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ common-wallet ---
+[INFO] Copying 108 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-wallet ---
+[INFO] Compiling 2 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-wallet ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-wallet ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/common-wallet-1.0.67.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-wallet ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-wallet/1.0.67/common-wallet-1.0.67.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/common-wallet-1.0.67.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-wallet/1.0.67/common-wallet-1.0.67.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.628 s
+[INFO] Finished at: 2026-02-27T13:42:16Z
+[INFO] ------------------------------------------------------------------------

@@ -40,7 +40,7 @@ import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.engine.tracker.DelayedExecutor;
 import com.dgphoenix.casino.common.exception.*;
-import com.dgphoenix.casino.common.games.*;
+import com.abs.casino.common.games.*;
 import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
 import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
 import com.dgphoenix.casino.common.remotecall.PersistableCall;
@@ -78,7 +78,7 @@ import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.GameSessionStateLis
 import com.abs.casino.init.ShutdownFilter;
 import com.abs.casino.leaderboard.LeaderboardWinTracker;
 import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
-import com.dgphoenix.casino.services.PlayerBetHistoryService;
+import com.abs.casino.services.PlayerBetHistoryService;
 import com.dgphoenix.casino.services.bonus.ForbiddenGamesForBonusProvider;
 import com.dgphoenix.casino.sm.tracker.logout.LogoutTracker;
 import com.dgphoenix.casino.system.MetricsManager;
