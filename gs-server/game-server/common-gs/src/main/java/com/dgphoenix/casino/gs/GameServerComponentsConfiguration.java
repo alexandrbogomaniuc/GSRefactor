@@ -34,7 +34,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.mass.DelayedMassAwardManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.mass.MassAwardBonusManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.tracker.ExpiredMassAwardTracker;
+import com.abs.casino.gs.managers.payment.bonus.tracker.ExpiredMassAwardTracker;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;

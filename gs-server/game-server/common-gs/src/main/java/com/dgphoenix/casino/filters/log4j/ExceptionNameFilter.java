@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.filters.log4j;
+package com.abs.casino.filters.log4j;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Marker;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.filters;
+package com.abs.casino.filters;
 
 import org.apache.logging.log4j.ThreadContext;
 

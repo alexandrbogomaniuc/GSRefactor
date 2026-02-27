@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.bonus.tracker;
+package com.abs.casino.gs.managers.payment.bonus.tracker;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.DistributedLockManager;

@@ -15,7 +15,7 @@ import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.configuration.messages.MessageManager;
 import com.dgphoenix.casino.common.exception.BonusException;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.property.PropertyUtils;
+import com.abs.casino.common.util.property.PropertyUtils;
 import com.dgphoenix.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.web.BaseAction;
 import com.dgphoenix.casino.common.web.MobileDetector;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.filters;
+package com.abs.casino.filters;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;

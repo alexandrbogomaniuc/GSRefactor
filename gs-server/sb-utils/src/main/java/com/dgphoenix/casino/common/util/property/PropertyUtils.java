@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.property;
+package com.abs.casino.common.util.property;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import java.util.Map;

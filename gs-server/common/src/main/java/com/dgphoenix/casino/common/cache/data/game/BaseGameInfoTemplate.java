@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.configuration.messages.MessageManager;
-import com.dgphoenix.casino.common.util.property.PropertyUtils;
+import com.abs.casino.common.util.property.PropertyUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoException;
@@ -28,7 +28,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import static com.dgphoenix.casino.common.cache.data.bank.BankInfo.MAP_SPLITTER;
-import static com.dgphoenix.casino.common.util.property.PropertyUtils.*;
+import static com.abs.casino.common.util.property.PropertyUtils.*;
 import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 public class BaseGameInfoTemplate implements IDistributedConfigEntry, Identifiable, KryoSerializable, JsonSelfSerializable<BaseGameInfoTemplate> {

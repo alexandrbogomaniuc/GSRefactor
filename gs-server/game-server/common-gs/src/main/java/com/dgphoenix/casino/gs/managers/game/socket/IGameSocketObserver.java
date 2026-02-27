@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.gs.managers.game.socket;
 
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.socket.ISocketClient;
+import com.abs.casino.common.socket.ISocketClient;
 
 /**
  * Created

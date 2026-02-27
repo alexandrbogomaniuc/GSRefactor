@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.filters;
+package com.abs.casino.filters;
 
 import com.google.common.collect.ImmutableMap;
 import org.junit.Test;

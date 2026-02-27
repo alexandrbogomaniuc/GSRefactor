@@ -1,0 +1,17 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/BonusTracker.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/BonusTrackerTask.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredBonusTracker.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredFRBonusTracker.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredMassAwardTracker.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/FRBonusNotificationTracker.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/FRBonusNotificationTrackerTask.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/FRBonusWinTracker.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/FRBonusWinTrackerTask.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/property/BooleanProperty.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/property/EnumProperty.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/property/JavaClassProperty.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/property/MandatoryProperty.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/property/NumericProperty.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/property/PropertyUtils.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/property/StringProperty.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/property/UrlProperty.java

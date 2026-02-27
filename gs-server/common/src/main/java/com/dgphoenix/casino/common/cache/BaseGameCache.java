@@ -11,7 +11,7 @@ import com.dgphoenix.casino.common.cache.data.game.*;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.persist.StreamPersister;
 import com.dgphoenix.casino.common.util.CollectionUtils;
-import com.dgphoenix.casino.common.util.property.PropertyUtils;
+import com.abs.casino.common.util.property.PropertyUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.google.common.cache.CacheBuilder;

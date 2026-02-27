@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.common.cache.data.game;
 
 import com.dgphoenix.casino.common.util.InheritFromTemplate;
-import com.dgphoenix.casino.common.util.property.*;
+import com.abs.casino.common.util.property.*;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

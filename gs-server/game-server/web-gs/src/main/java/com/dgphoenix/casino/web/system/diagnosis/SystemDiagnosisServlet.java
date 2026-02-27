@@ -13,7 +13,7 @@ import com.dgphoenix.casino.common.web.diagnostic.BaseDiagnosisServlet;
 import com.dgphoenix.casino.common.web.diagnostic.CheckTask;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.managers.payment.bonus.tracker.FRBonusWinTracker;
+import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusWinTracker;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import com.abs.casino.web.system.diagnosis.tasks.CassandraStateMonitoringTask;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.property;
+package com.abs.casino.common.util.property;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -2442,3 +2442,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `38`.
   - retained bounded rewires: `53`.
   - global tracked source declarations/files now `1442` remaining (`2277` baseline, `835` reduced, `36.671058%` burndown).
+
+## 2026-02-27 05:47 UTC (Hard-Cut M2 Wave 154A + 154B + 155, Stabilized)
+- Continued batched-safe hard-cut migration from W153 checkpoint with non-overlapping ownership:
+  - `W154A`: migrated 17 declaration packages in `common/socket` + `filters`.
+  - `W154B`: migrated 17 declaration packages in `common/util/property` + `gs/managers/payment/bonus/tracker`.
+  - `W155`: bounded importer rewires and compatibility validation.
+- Parallel execution mode:
+  - explorer verified no declaration or rewire overlap.
+  - worker-thread cap limited concurrent workers; retained degraded-safe parallel mode (worker A + main-owned batch B), with strict file ownership maintained.
+- Validation:
+  - fast gate `8/8 PASS` on rerun1.
+  - full matrix `9/9 PASS` on rerun1.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-054024-hardcut-m2-wave154ab-wave155-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/138-hard-cut-m2-wave154ab-wave155-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `34`.
+  - retained bounded rewires: `24`.
+  - global tracked source declarations/files now `1407` remaining (`2277` baseline, `870` reduced, `38.208169%` burndown).

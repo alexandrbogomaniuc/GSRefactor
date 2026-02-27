@@ -49,7 +49,7 @@ import com.dgphoenix.casino.common.promo.*;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.transport.TObject;
 import com.dgphoenix.casino.common.util.*;
-import com.dgphoenix.casino.common.util.property.PropertyUtils;
+import com.abs.casino.common.util.property.PropertyUtils;
 import com.dgphoenix.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.web.HttpRequestContextHolder;

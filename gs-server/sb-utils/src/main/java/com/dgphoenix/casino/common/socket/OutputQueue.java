@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.socket;
+package com.abs.casino.common.socket;
 
 import org.apache.log4j.Logger;
 
