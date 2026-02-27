@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.bonus;
+package com.abs.casino.bonus;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.transfer.processor;
+package com.abs.casino.gs.managers.payment.transfer.processor;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.payment.transfer.PaymentTransaction;

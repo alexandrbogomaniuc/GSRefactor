@@ -1,0 +1,24 @@
+[2026-02-27T05:55:52Z] START step1-utils-install
+CMD: cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/utils' && mvn -DskipTests install
+[2026-02-27T05:55:56Z] PASS step1-utils-install exit=0
+[2026-02-27T05:55:56Z] START step2-sb-utils-install
+CMD: cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils' && mvn -DskipTests install
+[2026-02-27T05:56:00Z] PASS step2-sb-utils-install exit=0
+[2026-02-27T05:56:00Z] START step3-common-install
+CMD: cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/common' && mvn -DskipTests install
+[2026-02-27T05:56:04Z] PASS step3-common-install exit=0
+[2026-02-27T05:56:04Z] START step4-common-wallet-install
+CMD: cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet' && mvn -DskipTests install
+[2026-02-27T05:56:07Z] PASS step4-common-wallet-install exit=0
+[2026-02-27T05:56:07Z] START step5-common-persisters-install
+CMD: cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters' && mvn -DskipTests install
+[2026-02-27T05:56:09Z] PASS step5-common-persisters-install exit=0
+[2026-02-27T05:56:09Z] START step6-common-gs-install
+CMD: cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs' && mvn -DskipTests -Dcluster.properties=common.properties install
+[2026-02-27T05:56:17Z] PASS step6-common-gs-install exit=0
+[2026-02-27T05:56:17Z] START step7-web-gs-package
+CMD: cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs' && mvn -DskipTests -Dcluster.properties=common.properties package
+[2026-02-27T05:56:29Z] PASS step7-web-gs-package exit=0
+[2026-02-27T05:56:29Z] START step8-refactor-smoke
+CMD: cd '/Users/alexb/Documents/Dev/Dev_new' && node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke
+[2026-02-27T05:56:57Z] PASS step8-refactor-smoke exit=0

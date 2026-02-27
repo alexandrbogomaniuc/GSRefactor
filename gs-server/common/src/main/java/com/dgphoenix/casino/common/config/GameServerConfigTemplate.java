@@ -50,7 +50,7 @@ public class GameServerConfigTemplate implements IDistributedConfigEntry, Identi
     private boolean dropFreeBalance = true;
     private boolean lastHandExpirationServer = false;
     private boolean stressTestMode = false;
-    private String closeGameProcessorClassName = "com.dgphoenix.casino.gs.managers.payment.transfer.processor.DefaultCloseGameProcessor";
+    private String closeGameProcessorClassName = "com.abs.casino.gs.managers.payment.transfer.processor.DefaultCloseGameProcessor";
     private long lastHandExpirationPeriod = 60;
     private long lastHandExpirationCheckPeriod = 1440;
     private long freeBalance = DEFAULT_FREE_BALANCE;

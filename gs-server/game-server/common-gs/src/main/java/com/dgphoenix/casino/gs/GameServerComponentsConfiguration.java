@@ -53,7 +53,7 @@ import com.dgphoenix.casino.promo.feed.tournament.SummaryTournamentFeedWriter;
 import com.abs.casino.promo.messages.handlers.MessagesHandlersFactory;
 import com.dgphoenix.casino.promo.tournaments.TournamentManager;
 import com.dgphoenix.casino.promo.tournaments.handlers.TournamentMessageHandlersFactory;
-import com.dgphoenix.casino.promo.wins.handlers.PrizeWonHandlersFactory;
+import com.abs.casino.promo.wins.handlers.PrizeWonHandlersFactory;
 import com.dgphoenix.casino.services.LoginService;
 import com.dgphoenix.casino.services.PlayerBetHistoryService;
 import com.dgphoenix.casino.services.geoip.CountryRestrictionService;

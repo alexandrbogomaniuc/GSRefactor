@@ -17,7 +17,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.managers.payment.transfer.processor.PaymentProcessorFactory;
+import com.abs.casino.gs.managers.payment.transfer.processor.PaymentProcessorFactory;
 import com.dgphoenix.casino.gs.managers.payment.transfer.tracker.PaymentTransactionTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

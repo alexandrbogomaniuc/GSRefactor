@@ -1,0 +1,10 @@
+wave_group=W156A+W156B+W157
+planned_batchA_declarations=10
+planned_batchB_declarations=11
+retained_batchA_declarations=10
+retained_batchB_declarations=11
+deferred_batchA=false
+deferred_batchB=false
+retained_rewires=6
+validation_fast_gate=PASS_8of8_rerun1
+validation_full_matrix=PASS_9of9_rerun1

@@ -24,7 +24,7 @@ public class KryoSerializationTest {
         );
         KryoSerializationValidator validator = new KryoSerializationValidator(customGenerators);
         assertTrue(validator.validate("com.dgphoenix.casino.gs"));
-        assertTrue(validator.validate("com.dgphoenix.casino.configuration"));
+        assertTrue(validator.validate("com.abs.casino.configuration"));
         assertTrue(validator.validate("com.dgphoenix.casino.common.promo"));
         assertTrue(validator.validate("com.dgphoenix.casino.promo"));
     }

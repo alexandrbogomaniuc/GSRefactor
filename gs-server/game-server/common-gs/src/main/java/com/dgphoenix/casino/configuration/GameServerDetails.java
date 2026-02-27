@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.configuration;
+package com.abs.casino.configuration;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;

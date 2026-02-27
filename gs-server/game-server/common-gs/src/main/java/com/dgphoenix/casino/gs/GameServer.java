@@ -65,7 +65,7 @@ import com.abs.casino.gs.managers.payment.bonus.tracker.BonusTracker;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusNotificationTracker;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusWinTracker;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager;
-import com.dgphoenix.casino.gs.managers.payment.transfer.processor.EmptyStartGameProcessor;
+import com.abs.casino.gs.managers.payment.transfer.processor.EmptyStartGameProcessor;
 import com.dgphoenix.casino.gs.managers.payment.transfer.tracker.PaymentTransactionTracker;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletPersister;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;

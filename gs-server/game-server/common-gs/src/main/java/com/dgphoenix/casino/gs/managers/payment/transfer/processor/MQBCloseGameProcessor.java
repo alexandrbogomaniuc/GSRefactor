@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.transfer.processor;
+package com.abs.casino.gs.managers.payment.transfer.processor;
 
 import com.abs.casino.battleground.messages.GameRoundEntry;
 import com.abs.casino.battleground.messages.MPGameSessionCloseInfo;

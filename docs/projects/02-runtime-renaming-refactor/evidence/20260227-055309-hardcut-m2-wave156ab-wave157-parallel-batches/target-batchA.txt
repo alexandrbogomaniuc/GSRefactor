@@ -1,0 +1,10 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/configuration/ClusterInfo.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/configuration/Clusters.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/configuration/GameServerDetails.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/configuration/Node.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/configuration/SSHConnectionParams.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/wins/handlers/CacheBonusWonHandler.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/wins/handlers/FRBonusWonHandler.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/wins/handlers/InstantMoneyWonHandler.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/wins/handlers/PrizeWonHandlersFactory.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/wins/handlers/TicketWonHandler.java

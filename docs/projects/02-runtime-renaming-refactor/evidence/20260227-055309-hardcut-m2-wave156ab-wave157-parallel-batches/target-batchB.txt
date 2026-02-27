@@ -1,0 +1,11 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/bonus/Bonus.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/bonus/BonusInfoRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/bonus/BonusInfoResponse.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/bonus/GetBonusInfoResponse.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/processor/AbstractPaymentProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/processor/DefaultCloseGameProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/processor/EmptyStartGameProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/processor/MQBCloseGameProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/processor/MQBStartGameProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/processor/NotificationCloseGameProcessor.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/processor/PaymentProcessorFactory.java

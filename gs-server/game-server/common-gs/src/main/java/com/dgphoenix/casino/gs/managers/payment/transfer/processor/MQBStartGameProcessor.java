@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.transfer.processor;
+package com.abs.casino.gs.managers.payment.transfer.processor;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.abs.casino.battleground.messages.RoomStartedInfo;
