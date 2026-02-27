@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra;
+package com.abs.casino.cassandra;
 
 import com.dgphoenix.casino.common.lock.ILockManager;
 

@@ -7726,3 +7726,21 @@
   - ETA `53.3h` (`6.66` workdays)
 - Next:
   - continue low-fanout declaration-only cache migrations or introduce controlled rewires only with prevalidated dependency ordering.
+### 2026-02-27 09:07 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W174A/W174B + W175`.
+- Scope retained:
+  - declaration-only migrations: `DistributedLockManager`, `IRemoteUnlocker`, `Session`, `IEntityUpdateListener` (`4` declarations).
+  - bounded rewires: `0`.
+- Validation outcome:
+  - fast gate `9/9 PASS` (`rerun2`; rerun1 smoke-tooling failure only)
+  - full matrix `9/9 PASS` (`rerun1`)
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-085908-hardcut-m2-wave174ab-wave175-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/148-hard-cut-m2-wave174ab-wave175-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `989`, remaining `1288`
+  - burndown `43.434343%`
+  - Project 02 `30.429293%`, Core `65.214647%`, Portfolio `82.607323%`
+  - ETA `53.1h` (`6.64` workdays)
+- Next:
+  - continue declaration-only cache migrations while isolating smoke-tooling path assumptions in fast-gate scripts.

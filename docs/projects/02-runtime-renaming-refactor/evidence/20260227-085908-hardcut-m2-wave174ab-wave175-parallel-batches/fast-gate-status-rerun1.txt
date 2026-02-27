@@ -1,0 +1,9 @@
+step1-utils-install|PASS|exit=0
+step2-sb-utils-install|PASS|exit=0
+step3-common-install|PASS|exit=0
+step4-common-wallet-install|PASS|exit=0
+step5-common-promo-install|PASS|exit=0
+step6-common-persisters-install|PASS|exit=0
+step7-common-gs-install|PASS|exit=0
+step8-web-gs-package|PASS|exit=0
+step9-refactor-smoke|FAIL|exit=127|log=fast-gate-refactor-smoke-rerun1.log

@@ -1,0 +1,18 @@
+[2026-02-27T09:01:14Z] START /Users/alexb/Documents/Dev/Dev_new/gs-server/utils mvn -DskipTests install
+[2026-02-27T09:01:19Z] END /Users/alexb/Documents/Dev/Dev_new/gs-server/utils mvn -DskipTests install exit=0 log=fast-gate-utils-install-rerun1.log
+[2026-02-27T09:01:19Z] START /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils mvn -DskipTests install
+[2026-02-27T09:01:24Z] END /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils mvn -DskipTests install exit=0 log=fast-gate-sb-utils-install-rerun1.log
+[2026-02-27T09:01:24Z] START /Users/alexb/Documents/Dev/Dev_new/gs-server/common mvn -DskipTests install
+[2026-02-27T09:01:27Z] END /Users/alexb/Documents/Dev/Dev_new/gs-server/common mvn -DskipTests install exit=0 log=fast-gate-common-install-rerun1.log
+[2026-02-27T09:01:27Z] START /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet mvn -DskipTests install
+[2026-02-27T09:01:30Z] END /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet mvn -DskipTests install exit=0 log=fast-gate-common-wallet-install-rerun1.log
+[2026-02-27T09:01:30Z] START /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo mvn -DskipTests install
+[2026-02-27T09:01:33Z] END /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo mvn -DskipTests install exit=0 log=fast-gate-common-promo-install-rerun1.log
+[2026-02-27T09:01:33Z] START /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters mvn -DskipTests install
+[2026-02-27T09:01:35Z] END /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters mvn -DskipTests install exit=0 log=fast-gate-common-persisters-install-rerun1.log
+[2026-02-27T09:01:35Z] START /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-27T09:01:45Z] END /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs mvn -Dcluster.properties=local/local-machine.properties -DskipTests install exit=0 log=fast-gate-common-gs-install-rerun1.log
+[2026-02-27T09:01:45Z] START /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+[2026-02-27T09:02:00Z] END /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs mvn -Dcluster.properties=local/local-machine.properties -DskipTests package exit=0 log=fast-gate-web-gs-package-rerun1.log
+[2026-02-27T09:02:00Z] START refactor-onboard smoke
+[2026-02-27T09:02:15Z] END refactor-onboard smoke exit=127 log=fast-gate-refactor-smoke-rerun1.log
