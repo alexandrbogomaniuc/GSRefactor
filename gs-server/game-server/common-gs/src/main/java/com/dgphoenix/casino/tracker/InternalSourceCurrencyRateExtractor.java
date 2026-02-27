@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.tracker;
+package com.abs.casino.tracker;
 
 import com.dgphoenix.casino.common.currency.CurrencyRate;
 import com.abs.casino.common.util.web.HttpClientConnection;

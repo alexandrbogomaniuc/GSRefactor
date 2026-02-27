@@ -2697,3 +2697,26 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `4`.
   - retained bounded rewires: `0`.
   - global tracked source declarations/files now `1284` remaining (`2277` baseline, `993` reduced, `43.610013%` burndown).
+
+## 2026-02-27 09:41 UTC (Hard-Cut M2 Wave 178A + 178B + 179)
+- Continued batched-safe hard-cut migration from W177 checkpoint using non-overlapping parallel ownership:
+  - `W178A`: 7 declaration migrations in `cbservtools` command processors.
+  - `W178B`: 6 declaration migrations in `tracker`.
+  - `W179`: integration and validation.
+- Parallel execution mode:
+  - explorer selected low-fanout batches.
+  - thread-cap fallback forced `1 worker + main`, but ownership remained non-overlapping.
+- Stabilization:
+  - no rollback required.
+  - bounded importer rewires applied in `common-gs` dependents.
+  - test package alignment applied for `CurrencyUpdateProcessorTest` to keep `testCompile` compatibility.
+- Validation:
+  - fast gate rerun1 passed `9/9`.
+  - full matrix rerun1 passed `9/9`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-093205-hardcut-m2-wave178ab-wave179-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/150-hard-cut-m2-wave178ab-wave179-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `13`.
+  - retained bounded rewires: `10`.
+  - global tracked source declarations/files now `1271` remaining (`2277` baseline, `1006` reduced, `44.180940%` burndown).

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.command;
+package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.command;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;

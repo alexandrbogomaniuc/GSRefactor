@@ -1,0 +1,48 @@
+[2026-02-27 09:37:14] START PRE01 pre-setup-utils-install
+WORKDIR=/Users/alexb/Documents/Dev/Dev_new/gs-server/utils
+CMD=mvn -DskipTests install 
+[2026-02-27 09:37:18] END PRE01 pre-setup-utils-install EXIT=0 LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-093205-hardcut-m2-wave178ab-wave179-parallel-batches/pre-setup-utils-install-rerun1.log
+[2026-02-27 09:37:18] START PRE02 pre-setup-sb-utils-install
+WORKDIR=/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils
+CMD=mvn -DskipTests install 
+[2026-02-27 09:37:22] END PRE02 pre-setup-sb-utils-install EXIT=0 LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-093205-hardcut-m2-wave178ab-wave179-parallel-batches/pre-setup-sb-utils-install-rerun1.log
+[2026-02-27 09:37:22] START PRE03 pre-setup-common-promo-install
+WORKDIR=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo
+CMD=mvn -DskipTests install 
+[2026-02-27 09:37:24] END PRE03 pre-setup-common-promo-install EXIT=0 LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-093205-hardcut-m2-wave178ab-wave179-parallel-batches/pre-setup-common-promo-install-rerun1.log
+[2026-02-27 09:37:24] START STEP01 01-common-install
+WORKDIR=/Users/alexb/Documents/Dev/Dev_new/gs-server/common
+CMD=mvn -DskipTests install 
+[2026-02-27 09:37:28] END STEP01 01-common-install EXIT=0 LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-093205-hardcut-m2-wave178ab-wave179-parallel-batches/01-rerun1.log
+[2026-02-27 09:37:28] START STEP02 02-common-wallet-install
+WORKDIR=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet
+CMD=mvn -DskipTests install 
+[2026-02-27 09:37:31] END STEP02 02-common-wallet-install EXIT=0 LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-093205-hardcut-m2-wave178ab-wave179-parallel-batches/02-rerun1.log
+[2026-02-27 09:37:31] START STEP03 03-sb-utils-install
+WORKDIR=/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils
+CMD=mvn -DskipTests install 
+[2026-02-27 09:37:34] END STEP03 03-sb-utils-install EXIT=0 LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-093205-hardcut-m2-wave178ab-wave179-parallel-batches/03-rerun1.log
+[2026-02-27 09:37:34] START STEP04 04-common-promo-install
+WORKDIR=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo
+CMD=mvn -DskipTests install 
+[2026-02-27 09:37:36] END STEP04 04-common-promo-install EXIT=0 LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-093205-hardcut-m2-wave178ab-wave179-parallel-batches/04-rerun1.log
+[2026-02-27 09:37:36] START STEP05 05-common-persisters-install
+WORKDIR=/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters
+CMD=mvn -DskipTests install 
+[2026-02-27 09:37:39] END STEP05 05-common-persisters-install EXIT=0 LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-093205-hardcut-m2-wave178ab-wave179-parallel-batches/05-rerun1.log
+[2026-02-27 09:37:39] START STEP06 06-common-gs-install
+WORKDIR=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs
+CMD=mvn -Dcluster.properties=local/local-machine.properties -DskipTests install 
+[2026-02-27 09:37:51] END STEP06 06-common-gs-install EXIT=0 LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-093205-hardcut-m2-wave178ab-wave179-parallel-batches/06-rerun1.log
+[2026-02-27 09:37:51] START STEP07 07-web-gs-package
+WORKDIR=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs
+CMD=mvn -Dcluster.properties=local/local-machine.properties -DskipTests package 
+[2026-02-27 09:38:04] END STEP07 07-web-gs-package EXIT=0 LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-093205-hardcut-m2-wave178ab-wave179-parallel-batches/07-rerun1.log
+[2026-02-27 09:38:04] START STEP08 08-mp-server-persistance-install
+WORKDIR=/Users/alexb/Documents/Dev/Dev_new/mp-server/persistance
+CMD=mvn -DskipTests install 
+[2026-02-27 09:38:09] END STEP08 08-mp-server-persistance-install EXIT=0 LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-093205-hardcut-m2-wave178ab-wave179-parallel-batches/08-rerun1.log
+[2026-02-27 09:38:09] START STEP09 09-smoke-refactor-onboard
+WORKDIR=/Users/alexb/Documents/Dev/Dev_new
+CMD=node gs-server/deploy/scripts/refactor-onboard.mjs smoke 
+[2026-02-27 09:38:38] END STEP09 09-smoke-refactor-onboard EXIT=0 LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-093205-hardcut-m2-wave178ab-wave179-parallel-batches/09-rerun1.log

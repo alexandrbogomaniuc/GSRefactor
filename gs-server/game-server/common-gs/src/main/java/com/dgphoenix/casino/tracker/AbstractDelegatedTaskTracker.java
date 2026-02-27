@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.tracker;
+package com.abs.casino.tracker;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraTrackingInfoPersister;

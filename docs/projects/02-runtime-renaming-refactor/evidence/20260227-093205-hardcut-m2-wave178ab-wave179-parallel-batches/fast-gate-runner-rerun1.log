@@ -1,0 +1,37 @@
+[2026-02-27T09:35:09Z] STEP01 START gs-server/utils mvn -DskipTests install
+CWD: /Users/alexb/Documents/Dev/Dev_new/gs-server/utils
+CMD: mvn -DskipTests install
+STEP01 RESULT PASS
+[2026-02-27T09:35:13Z] STEP02 START gs-server/sb-utils mvn -DskipTests install
+CWD: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils
+CMD: mvn -DskipTests install
+STEP02 RESULT PASS
+[2026-02-27T09:35:17Z] STEP03 START gs-server/common mvn -DskipTests install
+CWD: /Users/alexb/Documents/Dev/Dev_new/gs-server/common
+CMD: mvn -DskipTests install
+STEP03 RESULT PASS
+[2026-02-27T09:35:22Z] STEP04 START gs-server/common-wallet mvn -DskipTests install
+CWD: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet
+CMD: mvn -DskipTests install
+STEP04 RESULT PASS
+[2026-02-27T09:35:24Z] STEP05 START gs-server/common-promo mvn -DskipTests install
+CWD: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo
+CMD: mvn -DskipTests install
+STEP05 RESULT PASS
+[2026-02-27T09:35:27Z] STEP06 START gs-server/cassandra-cache/common-persisters mvn -DskipTests install
+CWD: /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters
+CMD: mvn -DskipTests install
+STEP06 RESULT PASS
+[2026-02-27T09:35:30Z] STEP07 START gs-server/game-server/common-gs mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+CWD: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs
+CMD: mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+STEP07 RESULT PASS
+[2026-02-27T09:35:38Z] STEP08 START gs-server/game-server/web-gs mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+CWD: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs
+CMD: mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+STEP08 RESULT PASS
+[2026-02-27T09:35:51Z] STEP09 START refactor onboard smoke
+CWD: /Users/alexb/Documents/Dev/Dev_new
+CMD: node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+STEP09 RESULT PASS
+FINAL RESULT PASS

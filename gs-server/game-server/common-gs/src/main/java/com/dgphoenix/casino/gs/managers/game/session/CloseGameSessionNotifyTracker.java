@@ -1,8 +1,8 @@
 package com.dgphoenix.casino.gs.managers.game.session;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.tracker.AbstractDelegatedTaskTracker;
-import com.dgphoenix.casino.tracker.DelegatedTask;
+import com.abs.casino.tracker.AbstractDelegatedTaskTracker;
+import com.abs.casino.tracker.DelegatedTask;
 import org.apache.log4j.Logger;
 
 

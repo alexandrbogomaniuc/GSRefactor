@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.GameCommandsProcessor;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.ILockedProcessor;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.command.*;
+import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.command.*;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.error.IErrorProcessor;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.error.SessionExpiredErrorProcessor;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.pre.FailedOperationHandleEnterProcessor;

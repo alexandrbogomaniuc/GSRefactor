@@ -7762,3 +7762,21 @@
   - ETA `52.9h` (`6.62` workdays)
 - Next:
   - continue declaration-only cache migrations for remaining low-fanout declarations before bounded rewire batches.
+### 2026-02-27 09:41 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W178A/W178B + W179`.
+- Scope retained:
+  - declaration migrations: `13` (`cbservtools` command processors + `tracker`).
+  - bounded rewires: `10` (direct `common-gs` importer updates).
+- Validation outcome:
+  - fast gate `9/9 PASS` (`rerun1`)
+  - full matrix `9/9 PASS` (`rerun1`)
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-093205-hardcut-m2-wave178ab-wave179-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/150-hard-cut-m2-wave178ab-wave179-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1006`, remaining `1271`
+  - burndown `44.180940%`
+  - Project 02 `30.522617%`, Core `65.261309%`, Portfolio `82.630654%`
+  - ETA `52.4h` (`6.55` workdays)
+- Next:
+  - continue low-fanout declaration-first batches in `common-gs` while deferring high-cascade hubs.

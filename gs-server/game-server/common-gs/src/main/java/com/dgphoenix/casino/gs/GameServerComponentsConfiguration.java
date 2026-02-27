@@ -62,7 +62,7 @@ import com.dgphoenix.casino.services.mp.MPGameSessionService;
 import com.dgphoenix.casino.services.tournament.PlayerAliasService;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
-import com.dgphoenix.casino.tracker.CurrencyUpdateProcessor;
+import com.abs.casino.tracker.CurrencyUpdateProcessor;
 import com.dgphoenix.casino.transactiondata.BasicTransactionDataCreator;
 import com.abs.casino.transactiondata.storeddataprocessor.*;
 import com.dgphoenix.casino.websocket.IWebSocketSessionsController;

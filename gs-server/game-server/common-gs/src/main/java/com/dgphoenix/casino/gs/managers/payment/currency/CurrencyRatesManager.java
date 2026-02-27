@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.currency.IHistoricalCurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.tracker.CurrencyUpdateProcessor;
+import com.abs.casino.tracker.CurrencyUpdateProcessor;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;

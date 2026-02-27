@@ -3,8 +3,8 @@ package com.dgphoenix.casino.leaderboard;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
-import com.dgphoenix.casino.tracker.AbstractDelegatedTaskTracker;
-import com.dgphoenix.casino.tracker.DelegatedTask;
+import com.abs.casino.tracker.AbstractDelegatedTaskTracker;
+import com.abs.casino.tracker.DelegatedTask;
 import org.apache.log4j.Logger;
 
 public class LeaderboardWinTracker extends AbstractDelegatedTaskTracker<LeaderboardWinTrackerTask> {
