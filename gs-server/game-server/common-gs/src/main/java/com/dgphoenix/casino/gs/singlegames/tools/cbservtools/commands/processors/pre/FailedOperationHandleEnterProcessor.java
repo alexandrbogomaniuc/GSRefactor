@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.pre;
+package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.pre;
 
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
@@ -12,8 +12,8 @@ import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTrackerTask;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.ILockedProcessor;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.annotations.PreProcessor;
+import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.ILockedProcessor;
+import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.annotations.PreProcessor;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 import org.springframework.core.annotation.Order;
 

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.configuration.resource.observable;
+package com.abs.casino.common.configuration.resource.observable;
 
 import com.dgphoenix.casino.common.configuration.resource.event.PropertyChangedEvent;
 import com.dgphoenix.casino.common.configuration.resource.listener.IPropertyListener;

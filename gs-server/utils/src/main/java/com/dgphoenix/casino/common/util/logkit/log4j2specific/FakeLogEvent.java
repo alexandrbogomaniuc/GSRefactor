@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.logkit.log4j2specific;
+package com.abs.casino.common.util.logkit.log4j2specific;
 
 import org.apache.logging.log4j.core.AbstractLogEvent;
 

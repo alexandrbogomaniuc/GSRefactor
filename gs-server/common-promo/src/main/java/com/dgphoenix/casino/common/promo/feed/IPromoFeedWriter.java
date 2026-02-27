@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.promo.feed;
+package com.abs.casino.common.promo.feed;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.IPromoCampaign;

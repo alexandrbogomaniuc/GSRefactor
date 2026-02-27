@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.common.configuration.resource;
 
-import com.dgphoenix.casino.common.configuration.resource.observable.IFileObservable;
-import com.dgphoenix.casino.common.configuration.resource.observable.PropertyObservable;
+import com.abs.casino.common.configuration.resource.observable.IFileObservable;
+import com.abs.casino.common.configuration.resource.observable.PropertyObservable;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 

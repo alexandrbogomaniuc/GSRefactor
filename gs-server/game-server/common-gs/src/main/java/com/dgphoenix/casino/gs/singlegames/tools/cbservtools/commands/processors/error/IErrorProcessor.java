@@ -1,8 +1,8 @@
-package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.error;
+package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.error;
 
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.GameError;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.responses.ErrorResponse;
+import com.abs.casino.gs.singlegames.tools.cbservtools.commands.responses.ErrorResponse;
 
 import javax.annotation.Nullable;
 

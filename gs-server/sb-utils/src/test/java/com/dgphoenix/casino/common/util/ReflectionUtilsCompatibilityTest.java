@@ -11,7 +11,7 @@ public class ReflectionUtilsCompatibilityTest {
         Class<?> loaded = ReflectionUtils.forNameWithCompatibilityAliases(
                 "com.abs.casino.common.util.compat.AbsToDgProbe");
 
-        assertEquals("com.dgphoenix.casino.common.util.compat.AbsToDgProbe", loaded.getName());
+        assertEquals("com.abs.casino.common.util.compat.AbsToDgProbe", loaded.getName());
     }
 
     @Test

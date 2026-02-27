@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.IPromoCampaign;
 import com.dgphoenix.casino.common.promo.IPromoTemplate;
 import com.dgphoenix.casino.common.promo.Status;
-import com.dgphoenix.casino.common.promo.feed.IPromoFeedWriter;
+import com.abs.casino.common.promo.feed.IPromoFeedWriter;
 import com.dgphoenix.casino.common.upload.JSchUploadClient;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.google.gson.Gson;

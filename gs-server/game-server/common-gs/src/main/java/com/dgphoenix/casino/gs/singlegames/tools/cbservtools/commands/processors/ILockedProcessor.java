@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors;
+package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors;
 
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.exception.CommonException;

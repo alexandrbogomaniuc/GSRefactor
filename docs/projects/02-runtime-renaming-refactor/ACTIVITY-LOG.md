@@ -2955,3 +2955,24 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `10`.
   - retained bounded rewires: `8`.
   - global tracked source declarations/files now `1144` remaining (`2277` baseline, `1133` reduced, `49.758454%` burndown).
+
+## 2026-02-27 14:58 UTC (Hard-Cut M2 Wave 200A + 200B + 201)
+- Continued batched-safe hard-cut migration from W199 checkpoint with non-overlapping declaration sets:
+  - `W200A`: 10 declaration migrations in `cbservtools.commands.processors*` and `commands.responses*`.
+  - `W200B`: 10 declaration migrations in `common-promo.feed/network`, `configuration.observable`, `IJPWinQualifier`, `CountryRestrictionServiceTest`, and `log4j2specific` utilities.
+  - `W201`: integration and validation.
+- Parallel execution mode:
+  - `1 explorer + 2 workers + main` with strict non-overlap ownership.
+- Stabilization:
+  - bounded importer/FQCN rewires only for moved symbols (`GameCommandsProcessorsConfiguration`, command processor imports, `DBLink`, `AbstractFeedWriter`, `GameServerServiceConfiguration`, `Configuration`, `FileObserveFactory`, `ReflectionUtilsCompatibilityTest`, `GameLogger`).
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`startgame` alias `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`; recovery retry executed once).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-144036-hardcut-m2-wave200ab-wave201-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/161-hard-cut-m2-wave200ab-wave201-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `20`.
+  - retained bounded rewires: `16`.
+  - global tracked source declarations/files now `1124` remaining (`2277` baseline, `1153` reduced, `50.636803%` burndown).

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.promo.network;
+package com.abs.casino.common.promo.network;
 
 import com.dgphoenix.casino.common.promo.INetworkPromoEventTemplate;
 import com.esotericsoftware.kryo.Kryo;

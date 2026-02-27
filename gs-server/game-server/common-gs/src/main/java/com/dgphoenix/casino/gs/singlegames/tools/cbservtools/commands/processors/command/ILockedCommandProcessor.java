@@ -1,6 +1,6 @@
 package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.command;
 
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.ILockedProcessor;
+import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.ILockedProcessor;
 
 /**
  * Created by vladislav on 2/14/17.

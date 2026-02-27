@@ -1,13 +1,13 @@
-package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors;
+package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors;
 
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.GameError;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.annotations.PostProcessor;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.annotations.PreProcessor;
+import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.annotations.PostProcessor;
+import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.annotations.PreProcessor;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.command.ICommandRelated;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.command.ILockedCommandProcessor;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.command.IUnlockedCommandProcessor;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.error.IErrorProcessor;
+import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.error.IErrorProcessor;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import org.apache.logging.log4j.LogManager;

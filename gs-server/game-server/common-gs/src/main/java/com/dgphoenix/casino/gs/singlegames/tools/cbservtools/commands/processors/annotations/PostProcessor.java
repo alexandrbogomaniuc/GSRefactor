@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.annotations;
+package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

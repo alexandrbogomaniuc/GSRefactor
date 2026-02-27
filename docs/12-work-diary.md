@@ -7964,3 +7964,21 @@
   - ETA `47.3h` (`5.91` workdays)
 - Next:
   - continue declaration-first migration while launch alias smoke remains environment-blocked.
+### 2026-02-27 14:58 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W200A/W200B + W201`.
+- Scope retained:
+  - declaration migrations: `20` (`cbservtools.commands.*` + `common-promo.feed/network` + `configuration.observable` + bounded utility/test surfaces).
+  - bounded rewires: `16` (`rewires-batchA-all.txt` and `rewires-batchB-all.txt`).
+- Validation outcome:
+  - fast gate rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`startgame` alias `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`; `STEP09` recovery retry executed once).
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-144036-hardcut-m2-wave200ab-wave201-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/161-hard-cut-m2-wave200ab-wave201-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1153`, remaining `1124`
+  - burndown `50.636803%`
+  - Project 02 `31.997455%`, Core `65.998728%`, Portfolio `82.999364%`
+  - ETA `46.5h` (`5.81` workdays)
+- Next:
+  - continue declaration-first migration while launch alias smoke remains environment-blocked.
