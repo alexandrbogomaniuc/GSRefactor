@@ -2,7 +2,7 @@ package com.abs.casino.helpers.login.serializers;
 
 import com.abs.casino.forms.game.CommonStartGameForm;
 import com.abs.casino.forms.login.cw.CWLoginForm;
-import com.dgphoenix.casino.sm.login.CWLoginRequest;
+import com.abs.casino.sm.login.CWLoginRequest;
 import org.apache.commons.beanutils.BeanUtils;
 
 import java.lang.reflect.InvocationTargetException;

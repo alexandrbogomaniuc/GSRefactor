@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.init;
+package com.abs.casino.init;
 
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;

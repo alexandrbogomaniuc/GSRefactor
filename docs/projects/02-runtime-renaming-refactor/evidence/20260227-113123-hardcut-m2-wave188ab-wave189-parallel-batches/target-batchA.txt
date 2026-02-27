@@ -1,0 +1,7 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/login/BonusGameLoginRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/login/CWLoginRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/login/GameLoginRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/login/LoginRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/login/LoginResponse.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/login/SLLoginRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/login/VietbetLoginRequest.java

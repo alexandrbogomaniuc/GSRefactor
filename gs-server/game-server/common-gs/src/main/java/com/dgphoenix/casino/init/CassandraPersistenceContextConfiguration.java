@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.configuration.ConfigHelper;
 import com.dgphoenix.casino.common.util.JsonHelper;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
-import com.dgphoenix.casino.init.DefaultConfigsInitializer;
+import com.abs.casino.init.DefaultConfigsInitializer;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

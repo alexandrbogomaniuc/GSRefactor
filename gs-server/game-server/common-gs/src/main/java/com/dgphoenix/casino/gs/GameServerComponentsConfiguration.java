@@ -46,7 +46,7 @@ import com.dgphoenix.casino.gs.socket.InServiceServiceHandler;
 import com.abs.casino.gs.socket.mq.GameUserHistoryService;
 import com.dgphoenix.casino.gs.socket.mq.*;
 import com.dgphoenix.casino.gs.status.ServersStatusWatcher;
-import com.dgphoenix.casino.init.QuartzInitializer;
+import com.abs.casino.init.QuartzInitializer;
 import com.dgphoenix.casino.kafka.service.KafkaMessageService;
 import com.dgphoenix.casino.promo.*;
 import com.abs.casino.promo.feed.tournament.SummaryTournamentFeedWriter;

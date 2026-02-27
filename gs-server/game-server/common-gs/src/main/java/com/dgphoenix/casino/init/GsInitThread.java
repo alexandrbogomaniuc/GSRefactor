@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.init;
+package com.abs.casino.init;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.engine.tracker.DelayedExecutor;

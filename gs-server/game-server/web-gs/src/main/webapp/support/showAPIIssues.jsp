@@ -1,6 +1,6 @@
 <%@ page import="com.abs.casino.actions.support.apiIssues.APIIssuesForm" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.dgphoenix.casino.init.ApplicationScopeNames" %>
+<%@ page import="com.abs.casino.init.ApplicationScopeNames" %>
 <%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraCallStatisticsPersister" %>
 <%@ page import="com.abs.casino.actions.support.apiIssues.APIIssuesAction" %>
 <%@ page import="java.text.DecimalFormat" %>

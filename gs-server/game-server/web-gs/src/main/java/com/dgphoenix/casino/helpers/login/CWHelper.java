@@ -19,8 +19,8 @@ import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.dgphoenix.casino.helpers.login.LoginHelper;
 import com.dgphoenix.casino.sm.CWPlayerSessionManager;
 import com.dgphoenix.casino.sm.PlayerSessionFactory;
-import com.dgphoenix.casino.sm.login.CWLoginRequest;
-import com.dgphoenix.casino.sm.login.LoginResponse;
+import com.abs.casino.sm.login.CWLoginRequest;
+import com.abs.casino.sm.login.LoginResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

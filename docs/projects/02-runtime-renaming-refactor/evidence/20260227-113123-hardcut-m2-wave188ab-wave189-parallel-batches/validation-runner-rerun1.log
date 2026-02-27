@@ -1,0 +1,38 @@
+[2026-02-27 11:38:26] START PRE01 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/utils cmd=mvn -DskipTests install
+PRE01 rc=0
+[2026-02-27 11:38:32] END   PRE01 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-113123-hardcut-m2-wave188ab-wave189-parallel-batches/PRE01-rerun1.log
+[2026-02-27 11:38:32] START PRE02 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils cmd=mvn -DskipTests install
+PRE02 rc=0
+[2026-02-27 11:38:37] END   PRE02 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-113123-hardcut-m2-wave188ab-wave189-parallel-batches/PRE02-rerun1.log
+[2026-02-27 11:38:37] START PRE03 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo cmd=mvn -DskipTests install
+PRE03 rc=0
+[2026-02-27 11:38:41] END   PRE03 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-113123-hardcut-m2-wave188ab-wave189-parallel-batches/PRE03-rerun1.log
+[2026-02-27 11:38:41] START STEP01 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common cmd=mvn -DskipTests install
+STEP01 rc=0
+[2026-02-27 11:38:50] END   STEP01 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-113123-hardcut-m2-wave188ab-wave189-parallel-batches/STEP01-rerun1.log
+[2026-02-27 11:38:50] START STEP02 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet cmd=mvn -DskipTests install
+STEP02 rc=0
+[2026-02-27 11:38:56] END   STEP02 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-113123-hardcut-m2-wave188ab-wave189-parallel-batches/STEP02-rerun1.log
+[2026-02-27 11:38:56] START STEP03 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils cmd=mvn -DskipTests install
+STEP03 rc=0
+[2026-02-27 11:39:02] END   STEP03 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-113123-hardcut-m2-wave188ab-wave189-parallel-batches/STEP03-rerun1.log
+[2026-02-27 11:39:02] START STEP04 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo cmd=mvn -DskipTests install
+STEP04 rc=0
+[2026-02-27 11:39:05] END   STEP04 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-113123-hardcut-m2-wave188ab-wave189-parallel-batches/STEP04-rerun1.log
+[2026-02-27 11:39:05] START STEP05 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters cmd=mvn -DskipTests install
+STEP05 rc=0
+[2026-02-27 11:39:09] END   STEP05 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-113123-hardcut-m2-wave188ab-wave189-parallel-batches/STEP05-rerun1.log
+[2026-02-27 11:39:09] START STEP06 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+STEP06 rc=0
+[2026-02-27 11:39:24] END   STEP06 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-113123-hardcut-m2-wave188ab-wave189-parallel-batches/STEP06-rerun1.log
+[2026-02-27 11:39:24] START STEP07 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+STEP07 rc=0
+[2026-02-27 11:39:43] END   STEP07 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-113123-hardcut-m2-wave188ab-wave189-parallel-batches/STEP07-rerun1.log
+[2026-02-27 11:39:43] START STEP08 dir=/Users/alexb/Documents/Dev/Dev_new/mp-server/persistance cmd=mvn -DskipTests install
+STEP08 rc=0
+[2026-02-27 11:39:47] END   STEP08 rc=0 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-113123-hardcut-m2-wave188ab-wave189-parallel-batches/STEP08-rerun1.log
+[2026-02-27 11:39:47] START STEP09 dir=/Users/alexb/Documents/Dev/Dev_new cmd=node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+STEP09 rc=2
+[2026-02-27 11:41:11] END   STEP09 rc=2 log=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-113123-hardcut-m2-wave188ab-wave189-parallel-batches/STEP09-rerun1.log
+RESULT=FAIL
+FAILED_STEP=STEP09

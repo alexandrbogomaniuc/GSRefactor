@@ -9,7 +9,7 @@ import com.abs.casino.exceptions.LoginErrorException;
 import com.abs.casino.forms.api.history.cwv3.CWStartHistoryForm;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.abs.casino.helpers.login.CWv3Helper;
-import com.dgphoenix.casino.sm.login.GameLoginRequest;
+import com.abs.casino.sm.login.GameLoginRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.action.ActionForward;

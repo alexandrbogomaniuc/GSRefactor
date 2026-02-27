@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.init;
+package com.abs.casino.init;
 
 /**
  * User: flsh

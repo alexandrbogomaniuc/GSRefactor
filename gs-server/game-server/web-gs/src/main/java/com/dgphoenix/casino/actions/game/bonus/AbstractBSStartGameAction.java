@@ -18,7 +18,7 @@ import com.abs.casino.forms.game.CommonStartGameForm;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 import com.dgphoenix.casino.helpers.login.LoginHelper;
-import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;
+import com.abs.casino.sm.login.BonusGameLoginRequest;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;

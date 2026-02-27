@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.init;
+package com.abs.casino.init;
 
 import com.dgphoenix.casino.cassandra.AccountDistributedLockManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;

@@ -1,5 +1,5 @@
 <%@ page import="com.dgphoenix.casino.gs.GameServer" %>
-<%@ page import="com.dgphoenix.casino.init.ShutdownFilter" %>
+<%@ page import="com.abs.casino.init.ShutdownFilter" %>
 
 <%
     ShutdownFilter shutdownFilter = GameServer.getInstance().getShutdownFilter();

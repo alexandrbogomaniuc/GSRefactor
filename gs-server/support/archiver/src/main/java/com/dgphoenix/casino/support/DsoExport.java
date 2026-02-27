@@ -11,7 +11,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguration;
 import com.abs.casino.gs.maintenance.CacheExporter;
-import com.dgphoenix.casino.init.CassandraPersistenceContextConfiguration;
+import com.abs.casino.init.CassandraPersistenceContextConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.Duration;

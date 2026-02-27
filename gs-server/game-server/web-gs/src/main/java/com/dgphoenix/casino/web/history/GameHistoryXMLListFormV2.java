@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.helpers.login.CWv3Helper;
-import com.dgphoenix.casino.sm.login.GameLoginRequest;
+import com.abs.casino.sm.login.GameLoginRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.action.ActionErrors;

@@ -16,7 +16,7 @@ import com.dgphoenix.casino.common.web.BaseAction;
 import com.abs.casino.entities.lobby.LoginHelper;
 import com.abs.casino.exceptions.LoginErrorException;
 import com.abs.casino.forms.lobby.TournamentLobbyForm;
-import com.dgphoenix.casino.sm.login.LoginResponse;
+import com.abs.casino.sm.login.LoginResponse;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.init;
+package com.abs.casino.init;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.abs.casino.cache.CachesHolder;

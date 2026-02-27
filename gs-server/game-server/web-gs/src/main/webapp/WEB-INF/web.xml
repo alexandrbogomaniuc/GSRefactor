@@ -20,7 +20,7 @@
 
     <filter>
         <filter-name>ShutdownFilter</filter-name>
-        <filter-class>com.dgphoenix.casino.init.ShutdownFilter</filter-class>
+        <filter-class>com.abs.casino.init.ShutdownFilter</filter-class>
         <async-supported>true</async-supported>
     </filter>
     <filter-mapping>

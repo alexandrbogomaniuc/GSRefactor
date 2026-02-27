@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.sm.login;
+package com.abs.casino.sm.login;
 
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.util.CollectionUtils;

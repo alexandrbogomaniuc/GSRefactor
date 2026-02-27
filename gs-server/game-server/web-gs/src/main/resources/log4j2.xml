@@ -65,7 +65,7 @@
         <Logger name="critical" level="ERROR" additivity="false">
             <AppenderRef ref="Exception" level="error" />
         </Logger>
-        <Logger name="com.dgphoenix.casino.init.Initializer" level="${common_log_level}" additivity="false">
+        <Logger name="com.abs.casino.init.Initializer" level="${common_log_level}" additivity="false">
             <AppenderRef ref="INIT" level="${common_log_level}" />
             <AppenderRef ref="COMMON" level="${common_log_level}" />
             <AppenderRef ref="ERROR" level="error" />

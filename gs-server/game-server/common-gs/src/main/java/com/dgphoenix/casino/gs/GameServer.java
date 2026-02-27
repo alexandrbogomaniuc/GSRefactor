@@ -75,7 +75,7 @@ import com.dgphoenix.casino.gs.persistance.LasthandPersister;
 import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.GameSessionStateListenersFactory;
-import com.dgphoenix.casino.init.ShutdownFilter;
+import com.abs.casino.init.ShutdownFilter;
 import com.abs.casino.leaderboard.LeaderboardWinTracker;
 import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import com.dgphoenix.casino.services.PlayerBetHistoryService;

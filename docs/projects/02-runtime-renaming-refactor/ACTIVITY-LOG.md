@@ -2812,3 +2812,27 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `11`.
   - retained bounded rewires: `19`.
   - global tracked source declarations/files now `1222` remaining (`2277` baseline, `1055` reduced, `46.332894%` burndown).
+
+## 2026-02-27 11:41 UTC (Hard-Cut M2 Wave 188A + 188B + 189)
+- Continued batched-safe hard-cut migration from W187 checkpoint with non-overlapping login/init split:
+  - `W188A`: 7 declaration migrations in `sm.login`.
+  - `W188B`: 6 declaration migrations in `init`.
+  - `W189`: integration and validation.
+- Parallel execution mode:
+  - explorer selected non-overlapping low-risk batches.
+  - thread-cap fallback enforced `1 worker + main` while preserving strict file ownership.
+- Stabilization:
+  - no rollback required.
+  - bounded rewires retained in direct Java importer files.
+  - bounded non-Java rewires retained in `web-gs` (`web.xml`, JSP, `log4j2.xml`) for `com.abs.casino.init.*` class references.
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun1: steps `1-8 PASS`, step `9 FAIL` (`startgame` alias `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-113123-hardcut-m2-wave188ab-wave189-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/155-hard-cut-m2-wave188ab-wave189-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `13`.
+  - retained bounded rewires: `34`.
+  - global tracked source declarations/files now `1209` remaining (`2277` baseline, `1068` reduced, `46.903821%` burndown).

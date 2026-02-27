@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.init.ApplicationScopeNames" %>
+<%@ page import="com.abs.casino.init.ApplicationScopeNames" %>
 <%@ page import="com.abs.casino.web.history.GameHistoryListAction" %>
 <%@ page import="com.dgphoenix.casino.common.util.Pair" %>
 <%@ page import="com.dgphoenix.casino.common.util.DigitFormatter" %>

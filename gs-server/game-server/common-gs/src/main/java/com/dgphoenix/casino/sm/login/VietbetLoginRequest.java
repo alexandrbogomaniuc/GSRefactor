@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.sm.login;
+package com.abs.casino.sm.login;
 
 /**
  * User: shegan

@@ -7852,3 +7852,21 @@
   - ETA `50.5h` (`6.32` workdays)
 - Next:
   - continue declaration-first migration while launch alias smoke remains environment-blocked.
+### 2026-02-27 11:41 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W188A/W188B + W189`.
+- Scope retained:
+  - declaration migrations: `13` (`sm.login` + `init`).
+  - bounded rewires: `34` (direct Java importer rewires + bounded non-Java class-string rewires in `web-gs`).
+- Validation outcome:
+  - fast gate rerun1: steps `1-8 PASS`, step `9 FAIL` (launch alias `/startgame` returns `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`).
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-113123-hardcut-m2-wave188ab-wave189-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/155-hard-cut-m2-wave188ab-wave189-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1068`, remaining `1209`
+  - burndown `46.903821%`
+  - Project 02 `30.862977%`, Core `65.431488%`, Portfolio `82.715744%`
+  - ETA `50.0h` (`6.25` workdays)
+- Next:
+  - continue declaration-first migration while launch alias smoke remains environment-blocked.

@@ -3,7 +3,7 @@ package com.abs.casino.support;
 import com.abs.casino.common.config.CommonContextConfiguration;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguration;
-import com.dgphoenix.casino.init.CassandraPersistenceContextConfiguration;
+import com.abs.casino.init.CassandraPersistenceContextConfiguration;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
