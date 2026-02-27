@@ -14,7 +14,7 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.XmlApiBaseAction;
 import com.dgphoenix.casino.gs.GameServerComponentsHelper;
-import com.dgphoenix.casino.promo.persisters.CassandraTournamentRankPersister;
+import com.abs.casino.promo.persisters.CassandraTournamentRankPersister;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForward;

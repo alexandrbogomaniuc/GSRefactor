@@ -12,7 +12,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.lock.LockingInfo;
 import com.dgphoenix.casino.common.util.ExecutorUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.util.web.HttpClientConnection;
+import com.abs.casino.common.util.web.HttpClientConnection;
 import com.abs.casino.common.util.xml.IXmlRequestResult;
 import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.abs.casino.common.util.xml.parser.Parser;

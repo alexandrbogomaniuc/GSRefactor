@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.filters;
 
-import com.dgphoenix.casino.common.util.web.HttpRequestContextHolder;
+import com.abs.casino.common.util.web.HttpRequestContextHolder;
 
 import javax.servlet.*;
 import java.io.IOException;

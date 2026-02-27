@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.CommonExecutorService;
 import com.dgphoenix.casino.common.util.ExecutorUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.util.web.HttpClientConnection;
+import com.abs.casino.common.util.web.HttpClientConnection;
 import com.dgphoenix.casino.gs.status.ServersStatusWatcher;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import com.thoughtworks.xstream.XStream;

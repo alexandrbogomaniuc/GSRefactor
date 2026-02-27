@@ -34,7 +34,7 @@ import com.dgphoenix.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
 import com.dgphoenix.casino.kafka.dto.*;
 import com.abs.casino.kafka.dto.privateroom.request.*;
 import com.abs.casino.kafka.dto.privateroom.response.*;
-import com.dgphoenix.casino.promo.persisters.CassandraBattlegroundConfigPersister;
+import com.abs.casino.promo.persisters.CassandraBattlegroundConfigPersister;
 import com.dgphoenix.casino.services.LoginService;
 import com.dgphoenix.casino.util.BGFStatusUtil;
 import com.dgphoenix.casino.util.BGOStatusUtil;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.promo.persisters;
+package com.abs.casino.promo.persisters;
 
 import com.abs.casino.common.promo.feed.tournament.ISummaryTournamentFeedEntry;
 

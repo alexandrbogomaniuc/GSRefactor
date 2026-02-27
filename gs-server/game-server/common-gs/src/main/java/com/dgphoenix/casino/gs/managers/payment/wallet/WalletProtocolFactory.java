@@ -17,7 +17,7 @@ import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.managers.dblink.EmptyDBLink;
 import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;
-import com.dgphoenix.casino.promo.persisters.CassandraUnsendedPromoWinInfoPersister;
+import com.abs.casino.promo.persisters.CassandraUnsendedPromoWinInfoPersister;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

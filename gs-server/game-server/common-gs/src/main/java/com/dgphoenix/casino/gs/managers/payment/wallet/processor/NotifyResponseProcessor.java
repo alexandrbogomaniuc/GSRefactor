@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
-import com.dgphoenix.casino.common.util.web.HttpClientConnection;
+import com.abs.casino.common.util.web.HttpClientConnection;
 import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.abs.casino.common.util.xml.parser.Parser;
 import com.dgphoenix.casino.gs.managers.game.session.CloseGameSessionNotifyRequest;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.web;
+package com.abs.casino.common.util.web;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import org.apache.commons.codec.binary.Base64;

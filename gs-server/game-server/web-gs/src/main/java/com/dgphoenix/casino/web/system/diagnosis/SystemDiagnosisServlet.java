@@ -8,7 +8,7 @@ import com.abs.casino.common.config.MountMonitoringEntry;
 import com.dgphoenix.casino.common.currency.CurrencyRate;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.CommonExecutorService;
-import com.dgphoenix.casino.common.util.web.HttpClientConnection;
+import com.abs.casino.common.util.web.HttpClientConnection;
 import com.dgphoenix.casino.common.web.diagnostic.BaseDiagnosisServlet;
 import com.dgphoenix.casino.common.web.diagnostic.CheckTask;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;

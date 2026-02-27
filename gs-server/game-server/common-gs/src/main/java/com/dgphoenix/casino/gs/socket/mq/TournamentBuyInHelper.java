@@ -34,7 +34,7 @@ import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.dgphoenix.casino.gs.persistance.LasthandPersister;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
 import com.dgphoenix.casino.gs.singlegames.tools.util.LasthandHelper;
-import com.dgphoenix.casino.promo.persisters.CassandraBattlegroundConfigPersister;
+import com.abs.casino.promo.persisters.CassandraBattlegroundConfigPersister;
 import com.abs.casino.promo.tournaments.messages.BattlegroundInfo;
 import com.dgphoenix.casino.websocket.tournaments.ISocketClient;
 import com.dgphoenix.casino.websocket.tournaments.TournamentClient;

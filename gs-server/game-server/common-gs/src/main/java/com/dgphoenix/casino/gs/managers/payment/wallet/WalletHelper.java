@@ -27,7 +27,7 @@ import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTrackerTask
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 import com.dgphoenix.casino.gs.persistance.LasthandPersister;
 import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
-import com.dgphoenix.casino.promo.persisters.CassandraUnsendedPromoWinInfoPersister;
+import com.abs.casino.promo.persisters.CassandraUnsendedPromoWinInfoPersister;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import com.google.common.primitives.Ints;
 import com.google.common.primitives.Shorts;

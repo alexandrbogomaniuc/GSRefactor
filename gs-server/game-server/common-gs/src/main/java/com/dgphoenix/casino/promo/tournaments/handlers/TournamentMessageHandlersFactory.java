@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.transport.ITransportObject;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.gs.socket.mq.TournamentBuyInHelper;
 import com.dgphoenix.casino.promo.PlayerAliasManager;
-import com.dgphoenix.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
+import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import com.abs.casino.promo.tournaments.messages.*;
 import com.abs.casino.promo.tournaments.messages.*;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;

@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.tracker;
 
 import com.dgphoenix.casino.common.currency.CurrencyRate;
-import com.dgphoenix.casino.common.util.web.HttpClientConnection;
+import com.abs.casino.common.util.web.HttpClientConnection;
 import com.google.common.base.Splitter;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.logging.log4j.LogManager;

@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.*;
 import com.dgphoenix.casino.common.transport.TObject;
 import com.dgphoenix.casino.common.util.CollectionUtils;
-import com.dgphoenix.casino.promo.persisters.CassandraLocalizationsPersister;
+import com.abs.casino.promo.persisters.CassandraLocalizationsPersister;
 import com.abs.casino.promo.tournaments.messages.Error;
 import com.abs.casino.promo.tournaments.messages.GetTournamentDetails;
 import com.abs.casino.promo.tournaments.messages.TournamentDetails;

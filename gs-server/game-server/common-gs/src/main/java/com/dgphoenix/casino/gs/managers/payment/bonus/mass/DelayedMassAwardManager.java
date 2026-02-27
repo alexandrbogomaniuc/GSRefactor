@@ -15,7 +15,7 @@ import com.dgphoenix.casino.common.cache.data.bonus.DelayedMassAwardDelivery;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.web.HttpClientConnection;
+import com.abs.casino.common.util.web.HttpClientConnection;
 import com.dgphoenix.casino.gs.GameServer;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableMap;

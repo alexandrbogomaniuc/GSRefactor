@@ -11,7 +11,7 @@ import com.abs.casino.common.promo.feed.tournament.TournamentFeed;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.gs.singlegames.tools.util.NumberUtils;
-import com.dgphoenix.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
+import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import com.abs.casino.promo.tournaments.messages.PlaceInfo;
 import com.abs.casino.promo.tournaments.messages.PrizeInfo;
 import com.abs.casino.promo.tournaments.messages.PrizePlaceInfo;

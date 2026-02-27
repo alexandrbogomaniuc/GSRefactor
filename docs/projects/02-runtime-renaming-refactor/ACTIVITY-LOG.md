@@ -2420,3 +2420,25 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `21`.
   - retained bounded rewires: `26`.
   - global tracked source declarations/files now `1480` remaining (`2277` baseline, `797` reduced, `35.002196%` burndown).
+
+## 2026-02-27 05:37 UTC (Hard-Cut M2 Wave 152A + 152B + 153, Stabilized)
+- Continued batched-safe hard-cut migration from W151 checkpoint with non-overlapping ownership:
+  - `W152A`: migrated 20 declaration packages in `sb-utils/common/util/web` + `utils/common/util/web`.
+  - `W152B`: migrated 18 declaration packages in `promo/persisters`.
+  - `W153`: bounded importer rewires and compatibility stabilization.
+- Parallel execution mode:
+  - explorer produced non-overlapping declaration batches with 3 rewire overlaps.
+  - worker-thread cap limited concurrent workers; retained degraded-safe parallel mode (worker A + main-owned batch B), with strict file ownership maintained.
+- Stabilization:
+  - fast gate `rerun1` failed at `step8` (`common-gs`) due mixed canex request DTO lineage in `MQServiceHandler`.
+  - aligned canex request imports and FQCN status types to `com.abs` lineage in `MQServiceHandler`.
+  - fast gate `rerun2` passed (`10/10`).
+- Validation:
+  - full matrix `9/9 PASS` on rerun1 (with pre-setup installs for `utils`, `sb-utils`, `common-promo`, `promo-core`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-052810-hardcut-m2-wave152ab-wave153-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/137-hard-cut-m2-wave152ab-wave153-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `38`.
+  - retained bounded rewires: `53`.
+  - global tracked source declarations/files now `1442` remaining (`2277` baseline, `835` reduced, `36.671058%` burndown).

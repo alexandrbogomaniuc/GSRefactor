@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.web;
+package com.abs.casino.common.util.web;
 
 import org.apache.http.conn.ssl.X509HostnameVerifier;
 import org.apache.log4j.Logger;

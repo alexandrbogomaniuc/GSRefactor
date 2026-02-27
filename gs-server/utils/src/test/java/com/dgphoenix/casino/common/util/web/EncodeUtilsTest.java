@@ -1,11 +1,11 @@
-package com.dgphoenix.casino.common.util.web;
+package com.abs.casino.common.util.web;
 
 import com.dgphoenix.casino.services.externallobby.data.AccountInfoWrapper;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
-import static com.dgphoenix.casino.common.util.web.EncodeUtils.decodeObject;
-import static com.dgphoenix.casino.common.util.web.EncodeUtils.encodeObject;
+import static com.abs.casino.common.util.web.EncodeUtils.decodeObject;
+import static com.abs.casino.common.util.web.EncodeUtils.encodeObject;
 import static junit.framework.Assert.assertEquals;
 
 public class EncodeUtilsTest {

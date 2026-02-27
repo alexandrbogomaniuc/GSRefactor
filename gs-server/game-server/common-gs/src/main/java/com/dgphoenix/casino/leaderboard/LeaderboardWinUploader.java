@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.exception.TransportException;
 import com.abs.casino.common.mp.LeaderboardResult;
 import com.abs.casino.common.mp.LeaderboardResultWrapper;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.util.web.HttpClientConnection;
+import com.abs.casino.common.util.web.HttpClientConnection;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.google.gson.Gson;
 import org.apache.commons.codec.digest.DigestUtils;

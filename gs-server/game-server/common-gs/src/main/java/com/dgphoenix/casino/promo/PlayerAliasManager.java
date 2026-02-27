@@ -3,7 +3,7 @@ package com.dgphoenix.casino.promo;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.exception.AlreadyExistsException;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.promo.persisters.CassandraPlayerAliasPersister;
+import com.abs.casino.promo.persisters.CassandraPlayerAliasPersister;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

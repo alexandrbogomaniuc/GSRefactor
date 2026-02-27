@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.web;
+package com.abs.casino.common.util.web;
 
 import com.dgphoenix.casino.common.util.FastKryoHelper;
 import com.esotericsoftware.kryo.util.UnsafeUtil;

@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.*;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
-import com.dgphoenix.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
+import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import org.springframework.stereotype.Service;
 
 @Service

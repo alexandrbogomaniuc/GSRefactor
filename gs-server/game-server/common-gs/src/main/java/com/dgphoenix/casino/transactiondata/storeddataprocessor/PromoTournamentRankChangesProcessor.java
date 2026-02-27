@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.promo.TournamentMemberRanks;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItem;
 import com.dgphoenix.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.promo.persisters.CassandraTournamentRankPersister;
+import com.abs.casino.promo.persisters.CassandraTournamentRankPersister;
 
 import java.nio.ByteBuffer;
 import java.util.HashMap;

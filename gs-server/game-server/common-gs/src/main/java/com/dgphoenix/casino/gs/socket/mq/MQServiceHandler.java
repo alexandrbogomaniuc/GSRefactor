@@ -33,12 +33,12 @@ import com.dgphoenix.casino.common.cache.data.payment.transfer.TransactionType;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.client.canex.request.friends.Friend;
-import com.dgphoenix.casino.common.client.canex.request.friends.GetFriendsResponse;
-import com.dgphoenix.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersResponse;
-import com.dgphoenix.casino.common.client.canex.request.onlineplayer.OnlinePlayer;
-import com.dgphoenix.casino.common.client.canex.request.onlinerooms.Player;
-import com.dgphoenix.casino.common.client.canex.request.onlinerooms.Room;
+import com.abs.casino.common.client.canex.request.friends.Friend;
+import com.abs.casino.common.client.canex.request.friends.GetFriendsResponse;
+import com.abs.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersResponse;
+import com.abs.casino.common.client.canex.request.onlineplayer.OnlinePlayer;
+import com.abs.casino.common.client.canex.request.onlinerooms.Player;
+import com.abs.casino.common.client.canex.request.onlinerooms.Room;
 import com.dgphoenix.casino.common.currency.CurrencyRate;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.AccountException;
@@ -52,7 +52,7 @@ import com.dgphoenix.casino.common.util.*;
 import com.dgphoenix.casino.common.util.property.PropertyUtils;
 import com.dgphoenix.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.util.web.HttpRequestContextHolder;
+import com.abs.casino.common.util.web.HttpRequestContextHolder;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.managers.dblink.DBLinkCache;
@@ -110,7 +110,7 @@ import com.dgphoenix.casino.leaderboard.LeaderboardWinUploader;
 import com.dgphoenix.casino.promo.PromoCampaignManager;
 import com.abs.casino.promo.events.process.ParticipantEventProcessor;
 import com.abs.casino.promo.events.process.PromoGameEventProcessor;
-import com.dgphoenix.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
+import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import com.abs.casino.promo.tournaments.messages.BalanceUpdated;
 import com.abs.casino.promo.tournaments.messages.BattlegroundInfo;
 import com.abs.casino.promo.tournaments.messages.PlayerTournamentStateChanged;
@@ -1749,7 +1749,7 @@ public class MQServiceHandler {
         }
     }
 
-    protected static BGFStatus convertStatusToTBGStatus(com.dgphoenix.casino.common.client.canex.request.friends.Status status) {
+    protected static BGFStatus convertStatusToTBGStatus(com.abs.casino.common.client.canex.request.friends.Status status) {
         if(status == null) {
             return null;
         }
@@ -1789,8 +1789,8 @@ public class MQServiceHandler {
             return null;
         }
 
-        com.dgphoenix.casino.common.client.canex.request.friends.Status status = friend.getStatus() == null ?
-                com.dgphoenix.casino.common.client.canex.request.friends.Status.friend :
+        com.abs.casino.common.client.canex.request.friends.Status status = friend.getStatus() == null ?
+                com.abs.casino.common.client.canex.request.friends.Status.friend :
                 friend.getStatus();
 
         BGFriendDto tbgFriend = new BGFriendDto(nickname, externalId, convertStatusToTBGStatus(status));
@@ -1929,7 +1929,7 @@ public class MQServiceHandler {
         return tbgFriends;
     }
 
-    protected static BGOStatus convertStatusToTBOStatus(com.dgphoenix.casino.common.client.canex.request.onlineplayer.Status status) {
+    protected static BGOStatus convertStatusToTBOStatus(com.abs.casino.common.client.canex.request.onlineplayer.Status status) {
         if(status == null) {
             return null;
         }
@@ -1963,9 +1963,9 @@ public class MQServiceHandler {
             return null;
         }
 
-        com.dgphoenix.casino.common.client.canex.request.onlineplayer.Status status = onlinePlayer.isOnline() ?
-                com.dgphoenix.casino.common.client.canex.request.onlineplayer.Status.online :
-                com.dgphoenix.casino.common.client.canex.request.onlineplayer.Status.offline;
+        com.abs.casino.common.client.canex.request.onlineplayer.Status status = onlinePlayer.isOnline() ?
+                com.abs.casino.common.client.canex.request.onlineplayer.Status.online :
+                com.abs.casino.common.client.canex.request.onlineplayer.Status.offline;
 
         BGOnlinePlayerDto tbgOnlinePlayer = new BGOnlinePlayerDto(nickname, externalId, convertStatusToTBOStatus(status));
 

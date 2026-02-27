@@ -1,0 +1,8 @@
+step1-utils-install|PASS|exit=0
+step2-sb-utils-install|PASS|exit=0
+step3-common-install|PASS|exit=0
+step4-common-wallet-install|PASS|exit=0
+step5-common-promo-install|PASS|exit=0
+step6-promo-persisters-install|PASS|exit=0
+step7-promo-core-install|PASS|exit=0
+step8-common-gs-install|FAIL|exit=1

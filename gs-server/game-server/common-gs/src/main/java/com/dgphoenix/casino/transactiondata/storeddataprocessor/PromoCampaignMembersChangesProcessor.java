@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItem;
 import com.dgphoenix.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.promo.persisters.CassandraPromoCampaignMembersPersister;
+import com.abs.casino.promo.persisters.CassandraPromoCampaignMembersPersister;
 
 import java.nio.ByteBuffer;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.web;
+package com.abs.casino.common.util.web;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;

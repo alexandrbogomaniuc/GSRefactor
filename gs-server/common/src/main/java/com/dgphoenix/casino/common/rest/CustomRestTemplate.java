@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.util.support.ExceptionInfo;
 import com.abs.casino.common.util.support.Request;
 import com.abs.casino.common.util.support.Response;
-import com.dgphoenix.casino.common.util.web.HttpRequestContextHolder;
+import com.abs.casino.common.util.web.HttpRequestContextHolder;
 import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableCWClient;
 import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableResponseCode;
 import com.google.common.collect.ImmutableMap;

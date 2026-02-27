@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.statistics.http;
 
-import com.dgphoenix.casino.common.util.web.HttpClientConnectionStatistics;
+import com.abs.casino.common.util.web.HttpClientConnectionStatistics;
 
 import java.util.Collections;
 import java.util.Map;

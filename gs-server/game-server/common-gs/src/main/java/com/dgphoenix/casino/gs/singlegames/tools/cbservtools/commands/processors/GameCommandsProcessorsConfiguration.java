@@ -15,7 +15,7 @@ import com.abs.casino.promo.messages.handlers.GetPromoMessagesProcessor;
 import com.abs.casino.promo.messages.handlers.GetPromoNotificationsProcessor;
 import com.abs.casino.promo.messages.handlers.NotificationsShownProcessor;
 import com.abs.casino.promo.messages.handlers.PromoEnterProcessor;
-import com.dgphoenix.casino.promo.persisters.CassandraLocalizationsPersister;
+import com.abs.casino.promo.persisters.CassandraLocalizationsPersister;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

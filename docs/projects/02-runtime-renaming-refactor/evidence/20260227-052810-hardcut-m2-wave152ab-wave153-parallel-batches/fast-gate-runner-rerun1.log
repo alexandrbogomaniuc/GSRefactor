@@ -1,0 +1,16 @@
+[2026-02-27T05:33:24Z] START step1-utils-install
+[2026-02-27T05:33:28Z] PASS  step1-utils-install exit=0
+[2026-02-27T05:33:28Z] START step2-sb-utils-install
+[2026-02-27T05:33:31Z] PASS  step2-sb-utils-install exit=0
+[2026-02-27T05:33:31Z] START step3-common-install
+[2026-02-27T05:33:35Z] PASS  step3-common-install exit=0
+[2026-02-27T05:33:35Z] START step4-common-wallet-install
+[2026-02-27T05:33:38Z] PASS  step4-common-wallet-install exit=0
+[2026-02-27T05:33:38Z] START step5-common-promo-install
+[2026-02-27T05:33:40Z] PASS  step5-common-promo-install exit=0
+[2026-02-27T05:33:40Z] START step6-promo-persisters-install
+[2026-02-27T05:33:43Z] PASS  step6-promo-persisters-install exit=0
+[2026-02-27T05:33:43Z] START step7-promo-core-install
+[2026-02-27T05:33:45Z] PASS  step7-promo-core-install exit=0
+[2026-02-27T05:33:45Z] START step8-common-gs-install
+[2026-02-27T05:33:50Z] FAIL  step8-common-gs-install exit=1

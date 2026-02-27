@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.ExecutorUtils;
 import com.abs.casino.common.util.system.IMetricEvaluator;
 import com.abs.casino.common.util.system.Metric;
-import com.dgphoenix.casino.common.util.web.HttpClientConnection;
+import com.abs.casino.common.util.web.HttpClientConnection;
 import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.abs.casino.common.util.xml.parser.Parser;
 import com.dgphoenix.casino.common.web.statistics.IStatisticsGetter;

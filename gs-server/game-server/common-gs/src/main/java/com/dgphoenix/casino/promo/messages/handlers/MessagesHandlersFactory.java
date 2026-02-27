@@ -2,7 +2,7 @@ package com.abs.casino.promo.messages.handlers;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
-import com.dgphoenix.casino.promo.persisters.CassandraLocalizationsPersister;
+import com.abs.casino.promo.persisters.CassandraLocalizationsPersister;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 
 import java.util.Map;

@@ -1,0 +1,20 @@
+[2026-02-27T05:34:22Z] START step1-utils-install
+[2026-02-27T05:34:26Z] PASS  step1-utils-install exit=0
+[2026-02-27T05:34:26Z] START step2-sb-utils-install
+[2026-02-27T05:34:30Z] PASS  step2-sb-utils-install exit=0
+[2026-02-27T05:34:30Z] START step3-common-install
+[2026-02-27T05:34:33Z] PASS  step3-common-install exit=0
+[2026-02-27T05:34:33Z] START step4-common-wallet-install
+[2026-02-27T05:34:36Z] PASS  step4-common-wallet-install exit=0
+[2026-02-27T05:34:36Z] START step5-common-promo-install
+[2026-02-27T05:34:38Z] PASS  step5-common-promo-install exit=0
+[2026-02-27T05:34:38Z] START step6-promo-persisters-install
+[2026-02-27T05:34:41Z] PASS  step6-promo-persisters-install exit=0
+[2026-02-27T05:34:41Z] START step7-promo-core-install
+[2026-02-27T05:34:43Z] PASS  step7-promo-core-install exit=0
+[2026-02-27T05:34:43Z] START step8-common-gs-install
+[2026-02-27T05:34:50Z] PASS  step8-common-gs-install exit=0
+[2026-02-27T05:34:50Z] START step9-web-gs-package
+[2026-02-27T05:35:02Z] PASS  step9-web-gs-package exit=0
+[2026-02-27T05:35:02Z] START step10-refactor-smoke
+[2026-02-27T05:35:30Z] PASS  step10-refactor-smoke exit=0

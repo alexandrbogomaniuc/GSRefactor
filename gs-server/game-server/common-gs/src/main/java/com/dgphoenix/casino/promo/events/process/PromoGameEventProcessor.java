@@ -10,7 +10,7 @@ import com.dgphoenix.casino.gs.managers.dblink.IGameDBLink;
 import com.dgphoenix.casino.gs.managers.game.event.IGameEvent;
 import com.dgphoenix.casino.gs.managers.game.event.IGameEventProcessor;
 import com.dgphoenix.casino.promo.TournamentRanksExtractor;
-import com.dgphoenix.casino.promo.persisters.CassandraTournamentRankPersister;
+import com.abs.casino.promo.persisters.CassandraTournamentRankPersister;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
