@@ -1,0 +1,48 @@
+===== PRE01 START 2026-02-27T11:21:12Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/utils
+CMD: mvn -DskipTests install
+===== PRE01 END rc=0 2026-02-27T11:21:18Z =====
+===== PRE02 START 2026-02-27T11:21:18Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils
+CMD: mvn -DskipTests install
+===== PRE02 END rc=0 2026-02-27T11:21:23Z =====
+===== PRE03 START 2026-02-27T11:21:23Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo
+CMD: mvn -DskipTests install
+===== PRE03 END rc=0 2026-02-27T11:21:27Z =====
+===== STEP01 START 2026-02-27T11:21:27Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/common
+CMD: mvn -DskipTests install
+===== STEP01 END rc=0 2026-02-27T11:21:33Z =====
+===== STEP02 START 2026-02-27T11:21:33Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet
+CMD: mvn -DskipTests install
+===== STEP02 END rc=0 2026-02-27T11:21:36Z =====
+===== STEP03 START 2026-02-27T11:21:36Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils
+CMD: mvn -DskipTests install
+===== STEP03 END rc=0 2026-02-27T11:21:40Z =====
+===== STEP04 START 2026-02-27T11:21:40Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo
+CMD: mvn -DskipTests install
+===== STEP04 END rc=0 2026-02-27T11:21:43Z =====
+===== STEP05 START 2026-02-27T11:21:43Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters
+CMD: mvn -DskipTests install
+===== STEP05 END rc=0 2026-02-27T11:21:49Z =====
+===== STEP06 START 2026-02-27T11:21:49Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs
+CMD: mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+===== STEP06 END rc=0 2026-02-27T11:22:03Z =====
+===== STEP07 START 2026-02-27T11:22:03Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs
+CMD: mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+===== STEP07 END rc=0 2026-02-27T11:22:23Z =====
+===== STEP08 START 2026-02-27T11:22:23Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance
+CMD: mvn -DskipTests install
+===== STEP08 END rc=0 2026-02-27T11:22:29Z =====
+===== STEP09 START 2026-02-27T11:22:29Z =====
+DIR: /Users/alexb/Documents/Dev/Dev_new
+CMD: node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+===== STEP09 END rc=2 2026-02-27T11:24:00Z =====

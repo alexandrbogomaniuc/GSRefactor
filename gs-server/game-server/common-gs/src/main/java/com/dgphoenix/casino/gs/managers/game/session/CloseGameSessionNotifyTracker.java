@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.game.session;
+package com.abs.casino.gs.managers.game.session;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.tracker.AbstractDelegatedTaskTracker;

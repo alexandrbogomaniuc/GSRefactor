@@ -19,7 +19,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.AbstractBonusClient;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
 import com.dgphoenix.casino.gs.managers.payment.bonus.IDescriptionProducer;
 import com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusClient;
-import com.dgphoenix.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
+import com.abs.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableCWClient;
 import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableContainer;
 import com.abs.casino.gs.singlegames.tools.util.StringUtils;

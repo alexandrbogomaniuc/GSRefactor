@@ -57,7 +57,7 @@ import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
 import com.abs.casino.gs.managers.dblink.DBLinkCache;
 import com.abs.casino.gs.managers.dblink.IDBLink;
-import com.dgphoenix.casino.gs.managers.game.session.GameSessionManager;
+import com.abs.casino.gs.managers.game.session.GameSessionManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;

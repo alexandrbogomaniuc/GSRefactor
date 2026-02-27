@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItemType;
 import com.abs.casino.gs.managers.dblink.DBLinkCache;
-import com.dgphoenix.casino.gs.managers.game.session.GameSessionManager;
+import com.abs.casino.gs.managers.game.session.GameSessionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

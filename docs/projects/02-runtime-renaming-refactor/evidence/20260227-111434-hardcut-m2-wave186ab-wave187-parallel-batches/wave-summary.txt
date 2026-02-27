@@ -1,0 +1,5 @@
+Wave group: W186A/W186B + W187
+Declarations retained: 11
+Bounded rewires retained: 19
+Fast gate rerun1: STEP01-08 PASS, STEP09 FAIL (startgame 502)
+Full matrix rerun1: PRE01-03 PASS, STEP01-08 PASS, STEP09 FAIL (startgame 502)

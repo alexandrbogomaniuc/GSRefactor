@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.exception.FatalException;
 import com.dgphoenix.casino.common.util.hardware.HardwareConfigurationManager;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.TransactionDataTracker;
-import com.dgphoenix.casino.gs.managers.game.session.CloseGameSessionNotifyTracker;
+import com.abs.casino.gs.managers.game.session.CloseGameSessionNotifyTracker;
 import com.dgphoenix.casino.sm.tracker.logout.LogoutTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

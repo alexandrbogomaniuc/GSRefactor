@@ -569,7 +569,7 @@
         </entry>
         <entry>
           <string>FRBONUS_REQUEST_CLIENT_CLASS</string>
-          <string>com.dgphoenix.casino.gs.managers.payment.bonus.client.frb.FRBRESTGetClient</string>
+          <string>com.abs.casino.gs.managers.payment.bonus.client.frb.FRBRESTGetClient</string>
         </entry>
         <entry>
           <string>NOT_PERSIST_FRBWIN_OPS</string>
@@ -613,7 +613,7 @@
         </entry>
         <entry>
           <string>BONUS_REQUEST_CLIENT_CLASS</string>
-          <string>com.dgphoenix.casino.gs.managers.payment.bonus.client.RESTGetClient</string>
+          <string>com.abs.casino.gs.managers.payment.bonus.client.RESTGetClient</string>
         </entry>
         <entry>
           <string>FREE_ROUND_VALIDITY_IN_MINUTES</string>

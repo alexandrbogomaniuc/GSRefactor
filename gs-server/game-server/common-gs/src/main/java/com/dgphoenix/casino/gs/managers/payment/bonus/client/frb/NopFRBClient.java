@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.managers.payment.bonus.AbstractBonusClient;
 import com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusClient;
-import com.dgphoenix.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
+import com.abs.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
 
 /**
  * User: Grien

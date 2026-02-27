@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.bonus.client;
+package com.abs.casino.gs.managers.payment.bonus.client;
 
 public class RESTGetClient extends RESTClient {
 

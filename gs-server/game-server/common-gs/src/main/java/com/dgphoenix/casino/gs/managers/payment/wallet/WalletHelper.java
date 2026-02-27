@@ -20,7 +20,7 @@ import com.dgphoenix.casino.common.promo.PromoWinInfo;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.gs.managers.game.session.GameSessionManager;
+import com.abs.casino.gs.managers.game.session.GameSessionManager;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTrackerTask;

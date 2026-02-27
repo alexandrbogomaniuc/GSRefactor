@@ -2789,3 +2789,26 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `11`.
   - retained bounded rewires: `21`.
   - global tracked source declarations/files now `1233` remaining (`2277` baseline, `1044` reduced, `45.849802%` burndown).
+
+## 2026-02-27 11:24 UTC (Hard-Cut M2 Wave 186A + 186B + 187)
+- Continued batched-safe hard-cut migration from W185 checkpoint with non-overlapping session/bonus-client split:
+  - `W186A`: 5 declaration migrations in `gs.managers.game.session`.
+  - `W186B`: 6 declaration migrations in `gs.managers.payment.bonus.client`.
+  - `W187`: integration and validation.
+- Parallel execution mode:
+  - explorer selected low-fanout non-overlapping batches.
+  - thread-cap fallback enforced `1 worker + main` while preserving strict file ownership.
+- Stabilization:
+  - no rollback required.
+  - bounded rewires included direct Java importers and bounded BankInfoCache XML class-string rewires.
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun1: steps `1-8 PASS`, step `9 FAIL` (`startgame` alias `HTTP 502`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-111434-hardcut-m2-wave186ab-wave187-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/154-hard-cut-m2-wave186ab-wave187-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `11`.
+  - retained bounded rewires: `19`.
+  - global tracked source declarations/files now `1222` remaining (`2277` baseline, `1055` reduced, `46.332894%` burndown).

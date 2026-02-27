@@ -2,8 +2,8 @@ package com.dgphoenix.casino.gs.managers.payment.bonus;
 
 import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
-import com.dgphoenix.casino.gs.managers.payment.bonus.client.BonusAuthResult;
+import com.abs.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
+import com.abs.casino.gs.managers.payment.bonus.client.BonusAuthResult;
 
 /**
  * User: ktd

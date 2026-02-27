@@ -1,0 +1,13 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/account/AccountManager.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/IBonusClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/IFRBonusClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/frb/FRBRESTClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/frb/NopFRBClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/AbstractPlayerSessionManager.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/IGetAccountInfoProvider.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/AbstractBonusAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java
+gs-server/game-server/config/local-machine/com.dgphoenix.casino.common.cache.BankInfoCache.xml
+gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BankInfoCache.xml
+gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.BankInfoCache.xml

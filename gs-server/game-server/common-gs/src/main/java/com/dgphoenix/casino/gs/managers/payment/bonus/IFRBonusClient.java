@@ -3,7 +3,7 @@ package com.dgphoenix.casino.gs.managers.payment.bonus;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBWinOperation;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
+import com.abs.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
 import com.abs.casino.gs.managers.payment.bonus.client.frb.FRBonusWinResult;
 
 public interface IFRBonusClient {
