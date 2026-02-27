@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.persistance.bet;
+package com.abs.casino.gs.persistance.bet;
 
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;

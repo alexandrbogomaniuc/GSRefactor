@@ -1,0 +1,23 @@
+[batchA declaration package lines after cut]
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/ResultType.java: package com.abs.casino.common.web;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/IGameServer.java: package com.abs.casino.gs;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/IExternalLogger.java: package com.abs.casino.gs.managers.payment.transfer;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/ILasthandPersister.java: package com.abs.casino.gs.persistance;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/bet/NoneBetPersister.java: package com.abs.casino.gs.persistance.bet;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/KafkaResponseConverterUtil.java: package com.abs.casino.gs.persistance.remotecall;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/AddBatchWinRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/logkit/IGameLogger.java: package com.abs.casino.common.util.logkit;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/string/CommonArrayUtils.java: package com.abs.casino.common.util.string;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/xmlwriter/BufferedXmlWriter.java: package com.abs.casino.common.util.xml.xmlwriter;
+
+[batchB declaration package lines after cut]
+gs-server/common/src/main/java/com/dgphoenix/casino/common/api/ICommonManager.java: package com.abs.casino.common.api;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/service/KafkaRecieverService.java: package com.abs.casino.kafka.service;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/bonus/CancelMassFRBonusAward.java: package com.abs.casino.services.bonus;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/AbstractPlayerSessionManager.java: package com.abs.casino.sm;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/payment/MinMaxWalletValue.java: package com.abs.casino.common.cache.data.payment;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/session/DeviationStatistics.java: package com.abs.casino.common.cache.data.session;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/currency/ICurrencyRateChangedListener.java: package com.abs.casino.common.currency;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java: package com.abs.casino.common.lock;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/transport/IdentifiableRequest.java: package com.abs.casino.common.transport;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/web/statistics/RawStatisticsServlet.java: package com.abs.casino.common.web.statistics;

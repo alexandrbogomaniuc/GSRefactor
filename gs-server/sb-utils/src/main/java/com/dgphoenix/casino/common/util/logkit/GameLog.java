@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.util.logkit;
 
+import com.abs.casino.common.util.logkit.IGameLogger;
 import org.apache.log4j.Logger;
 
 public class GameLog implements IGameLogger.IContextProvider {

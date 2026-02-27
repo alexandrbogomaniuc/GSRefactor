@@ -1,0 +1,9 @@
+STEP01: cd gs-server/common && mvn -DskipTests install
+STEP02: cd gs-server/common-wallet && mvn -DskipTests install
+STEP03: cd gs-server/sb-utils && mvn -DskipTests install
+STEP04: cd gs-server/common-promo && mvn -DskipTests install
+STEP05: cd gs-server/cassandra-cache/common-persisters && mvn -DskipTests install
+STEP06: cd gs-server/game-server/common-gs && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+STEP07: cd gs-server/game-server/web-gs && mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+STEP08: cd mp-server/persistance && mvn -DskipTests install
+STEP09: cd . && node gs-server/deploy/scripts/refactor-onboard.mjs smoke

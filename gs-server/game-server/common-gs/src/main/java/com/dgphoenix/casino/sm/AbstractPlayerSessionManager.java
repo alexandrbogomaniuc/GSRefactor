@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.sm;
+package com.abs.casino.sm;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
@@ -22,6 +22,8 @@ import com.dgphoenix.casino.gs.managers.payment.transfer.PaymentManager;
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
 import com.abs.casino.sm.tracker.logout.LogoutTracker;
+import com.dgphoenix.casino.sm.IGetAccountInfoProvider;
+import com.dgphoenix.casino.sm.IPlayerSessionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

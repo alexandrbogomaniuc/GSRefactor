@@ -1,0 +1,10 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/api/ICommonManager.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/service/KafkaRecieverService.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/bonus/CancelMassFRBonusAward.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/AbstractPlayerSessionManager.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/payment/MinMaxWalletValue.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/session/DeviationStatistics.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/currency/ICurrencyRateChangedListener.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/transport/IdentifiableRequest.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/web/statistics/RawStatisticsServlet.java

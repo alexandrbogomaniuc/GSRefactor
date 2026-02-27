@@ -3164,3 +3164,32 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `20`.
   - retained bounded rewires: `36`.
   - global tracked source declarations/files now `966` remaining (`2277` baseline, `1311` reduced, `57.575757%` burndown).
+
+## 2026-02-27 23:25 UTC (Hard-Cut M2 Wave 216A + 216B + 217)
+- Continued batched-safe hard-cut migration from W215 checkpoint with non-overlapping declaration sets:
+  - `W216A`: 10 planned declaration migrations across `common/web`, `common-gs` persistance/kafka handler, and `sb-utils` utility surfaces.
+  - `W216B`: 10 planned declaration migrations across `common/api`, `common-gs` kafka/bonus/sm, and `sb-utils` cache/currency/transport/statistics surfaces.
+  - `W217`: bounded rewires + validation.
+- Parallel execution mode:
+  - `1 explorer + 2 workers + main` with strict non-overlap ownership.
+- Stabilization:
+  - initial fast-gate batchA exposed same-package coupling drift at `STEP03` and chained `common-gs` drift at `STEP06`.
+  - fixed drift using minimal explicit imports/type-alignment in touched ownership zones (`IGameLogger`, `XmlWriter`, `ServerLockInfo`, `StatisticsManager`, `IPlayerSessionManager`, `IGetAccountInfoProvider`, `IGameServer`, `ILasthandPersister`, `NoneBetPersister`, `KafkaMessageService`).
+  - one additional declaration migration retained as stabilization: `KafkaMessageService` (`com.dgphoenix` -> `com.abs`).
+  - no blind/global replacement performed.
+  - preserved pre-existing local changes (`cluster-hosts.properties`, `.tmp-w202-*`) outside commit scope.
+- Validation:
+  - fast gate batchA rerun1: `STEP03 FAIL`.
+  - fast gate batchA rerun2: `STEP03 FAIL`.
+  - fast gate batchA rerun3-rerun9: `STEP06 FAIL`.
+  - fast gate batchA rerun10 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - fast gate batchB rerun1 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - full matrix rerun1 (canonical): `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`); retry1 failed (`rc=2`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-230214-hardcut-m2-wave216ab-wave217-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/169-hard-cut-m2-wave216ab-wave217-parallel-batches-report-20260227.md`
+- Outcome:
+  - planned declaration migrations retained: `20`.
+  - additional stabilization declaration migration retained: `1`.
+  - total retained declaration migrations: `21`.
+  - global tracked source declarations/files now `945` remaining (`2277` baseline, `1332` reduced, `58.498024%` burndown).

@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.util.logkit;
 
+import com.abs.casino.common.util.logkit.IGameLogger;
 import com.abs.casino.common.util.logkit.log4j2specific.DynamicAppender;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs;
+package com.abs.casino.gs;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;

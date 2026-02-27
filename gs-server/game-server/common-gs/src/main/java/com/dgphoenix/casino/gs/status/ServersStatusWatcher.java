@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvid
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.ExecutorUtils;
 import com.dgphoenix.casino.gs.IGameServerStatusListener;
-import com.dgphoenix.casino.kafka.service.KafkaMessageService;
+import com.abs.casino.kafka.service.KafkaMessageService;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

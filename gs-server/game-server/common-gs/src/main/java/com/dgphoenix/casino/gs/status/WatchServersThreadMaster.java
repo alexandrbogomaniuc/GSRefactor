@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
 import com.abs.casino.common.cache.data.server.ServerOnlineStatus;
 import com.dgphoenix.casino.gs.IGameServerStatusListener;
 import com.dgphoenix.casino.kafka.dto.NotifyOnServerStatusesUpdatedRequest;
-import com.dgphoenix.casino.kafka.service.KafkaMessageService;
+import com.abs.casino.kafka.service.KafkaMessageService;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

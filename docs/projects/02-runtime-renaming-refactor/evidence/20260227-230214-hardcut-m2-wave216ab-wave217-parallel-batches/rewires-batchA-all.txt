@@ -1,0 +1,6 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/lock/RemoteUnlocker.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/KafkaRequestMultiPlayer.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/InServiceServiceHandler.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/status/ServersStatusWatcher.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/status/WatchServersThreadMaster.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/service/KafkaMessageService.java

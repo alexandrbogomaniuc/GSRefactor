@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.kafka.service;
+package com.abs.casino.kafka.service;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -60,7 +60,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 
 import reactor.core.publisher.Mono;
 
-import static com.dgphoenix.casino.gs.persistance.remotecall.KafkaResponseConverterUtil.convertToType;
+import static com.abs.casino.gs.persistance.remotecall.KafkaResponseConverterUtil.convertToType;
 
 @Service
 public class KafkaMessageService {

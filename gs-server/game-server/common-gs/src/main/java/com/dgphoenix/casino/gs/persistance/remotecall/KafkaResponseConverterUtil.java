@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.persistance.remotecall;
+package com.abs.casino.gs.persistance.remotecall;
 
 import java.util.concurrent.ExecutionException;
 import java.util.function.Function;

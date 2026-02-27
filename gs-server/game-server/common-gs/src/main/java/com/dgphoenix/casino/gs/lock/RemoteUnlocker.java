@@ -1,6 +1,6 @@
 package com.abs.casino.gs.lock;
 
-import static com.dgphoenix.casino.gs.persistance.remotecall.KafkaResponseConverterUtil.convertToType;
+import static com.abs.casino.gs.persistance.remotecall.KafkaResponseConverterUtil.convertToType;
 
 import java.util.Date;
 
@@ -13,7 +13,7 @@ import com.dgphoenix.casino.common.lock.ILockManager;
 import com.dgphoenix.casino.kafka.dto.BooleanResponseDto;
 import com.dgphoenix.casino.kafka.dto.KafkaResponse;
 import com.dgphoenix.casino.kafka.dto.RemoteUnlockRequest;
-import com.dgphoenix.casino.kafka.service.KafkaMessageService;
+import com.abs.casino.kafka.service.KafkaMessageService;
 
 import reactor.core.publisher.Mono;
 

@@ -8083,3 +8083,21 @@
   - ETA `41.5h` (`5.19` workdays)
 - Next:
   - continue declaration-first migration while launch alias smoke remains environment-blocked.
+### 2026-02-27 23:25 UTC
+- Resumed Project 02 hard-cut namespace migration and completed `W216A/W216B + W217` in `Dev_new`.
+- Delivery summary:
+  - planned declarations migrated: `20`.
+  - stabilization declaration migration retained: `1` (`KafkaMessageService`).
+  - total declaration migrations retained: `21`.
+- Canonical validation summary:
+  - batchA fast gate rerun10: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`).
+  - batchB fast gate rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`).
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-230214-hardcut-m2-wave216ab-wave217-parallel-batches/`
+  - `docs/projects/02-runtime-renaming-refactor/169-hard-cut-m2-wave216ab-wave217-parallel-batches-report-20260227.md`
+- Updated hard-cut metrics:
+  - baseline `2277`, reduced `1332`, remaining `945`
+  - burndown `58.498024%`
+  - Project 02 `36.964974%`, Core `68.482487%`, Portfolio `84.241243%`
+  - ETA `39.0h` (`4.88` workdays)

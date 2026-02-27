@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.services.bonus;
+package com.abs.casino.services.bonus;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;

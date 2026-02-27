@@ -1,0 +1,24 @@
+# package checks
+[batchA declarations]
+1:package com.dgphoenix.casino.common.web;
+1:package com.dgphoenix.casino.gs;
+1:package com.dgphoenix.casino.gs.managers.payment.transfer;
+1:package com.dgphoenix.casino.gs.persistance;
+1:package com.dgphoenix.casino.gs.persistance.bet;
+1:package com.dgphoenix.casino.gs.persistance.remotecall;
+1:package com.dgphoenix.casino.kafka.handler;
+1:package com.dgphoenix.casino.common.util.logkit;
+1:package com.dgphoenix.casino.common.util.string;
+1:package com.dgphoenix.casino.common.util.xml.xmlwriter;
+
+[batchB declarations]
+1:package com.dgphoenix.casino.common.api;
+1:package com.dgphoenix.casino.kafka.service;
+1:package com.dgphoenix.casino.services.bonus;
+1:package com.dgphoenix.casino.sm;
+1:package com.dgphoenix.casino.common.cache.data.payment;
+1:package com.dgphoenix.casino.common.cache.data.session;
+1:package com.dgphoenix.casino.common.currency;
+1:package com.dgphoenix.casino.common.lock;
+1:package com.dgphoenix.casino.common.transport;
+1:package com.dgphoenix.casino.common.web.statistics;

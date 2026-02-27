@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.gs.persistance;
 
+import com.abs.casino.gs.persistance.ILasthandPersister;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraLasthandPersister;
 import com.dgphoenix.casino.common.SessionHelper;

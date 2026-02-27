@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.logkit;
+package com.abs.casino.common.util.logkit;
 
 import org.apache.log4j.Logger;
 

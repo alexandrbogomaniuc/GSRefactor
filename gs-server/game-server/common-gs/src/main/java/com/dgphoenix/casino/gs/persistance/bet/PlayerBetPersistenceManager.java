@@ -18,6 +18,7 @@ import com.dgphoenix.casino.common.util.Triple;
 import com.dgphoenix.casino.gs.GameServerComponentsHelper;
 import com.abs.casino.gs.managers.bet.PlayerBetPersister;
 import com.abs.casino.gs.managers.game.history.HistoryInformerManager;
+import com.abs.casino.gs.persistance.bet.NoneBetPersister;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

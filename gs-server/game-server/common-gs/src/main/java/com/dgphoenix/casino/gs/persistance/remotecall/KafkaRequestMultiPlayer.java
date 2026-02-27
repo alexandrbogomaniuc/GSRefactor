@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.kafka.dto.*;
 import com.abs.casino.kafka.dto.privateroom.request.*;
 import com.abs.casino.kafka.dto.privateroom.response.*;
-import com.dgphoenix.casino.kafka.service.KafkaMessageService;
+import com.abs.casino.kafka.service.KafkaMessageService;
 import com.abs.casino.promo.IKafkaRequestMultiPlayer;
 import com.abs.casino.kafka.dto.StringResponseDto;
 import com.abs.casino.kafka.dto.privateroom.response.DeactivateRoomResultDto;
@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static com.dgphoenix.casino.gs.persistance.remotecall.KafkaResponseConverterUtil.convertToType;
+import static com.abs.casino.gs.persistance.remotecall.KafkaResponseConverterUtil.convertToType;
 
 
 public class KafkaRequestMultiPlayer implements IKafkaRequestMultiPlayer {

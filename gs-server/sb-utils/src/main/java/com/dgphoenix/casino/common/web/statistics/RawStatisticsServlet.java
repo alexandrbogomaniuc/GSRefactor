@@ -1,5 +1,6 @@
-package com.dgphoenix.casino.common.web.statistics;
+package com.abs.casino.common.web.statistics;
 
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletConfig;

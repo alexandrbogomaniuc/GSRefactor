@@ -1,0 +1,96 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 165 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/xmlwriter/BufferedXmlWriter.java:[10,39] error: cannot find symbol
+[ERROR]   symbol: class XmlWriter
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[16,35] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: class LockInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[27,24] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: class LockInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[31,55] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: class LockInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[36,40] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: class LockInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/xmlwriter/BufferedXmlWriter.java:[32,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/xmlwriter/BufferedXmlWriter.java:[34,8] error: cannot find symbol
+[ERROR]   symbol:   variable super
+  location: class BufferedXmlWriter
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/xmlwriter/BufferedXmlWriter.java:[38,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/xmlwriter/BufferedXmlWriter.java:[40,8] error: cannot find symbol
+[ERROR]   symbol:   variable super
+  location: class BufferedXmlWriter
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/xmlwriter/BufferedXmlWriter.java:[44,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[16,97] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: class LockInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[38,13] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: class LockInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/logkit/IGameLogger.java:[9,7] error: duplicate class: com.abs.casino.common.util.logkit.IGameLogger
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/CBGameException.java:[73,15] error: cannot access IGameLogger
+[INFO] 14 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.493 s
+[INFO] Finished at: 2026-02-27T23:06:10Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project utils-restricted: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/xmlwriter/BufferedXmlWriter.java:[10,39] error: cannot find symbol
+[ERROR]   symbol: class XmlWriter
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[16,35] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: class LockInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[27,24] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: class LockInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[31,55] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: class LockInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[36,40] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: class LockInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/xmlwriter/BufferedXmlWriter.java:[32,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/xmlwriter/BufferedXmlWriter.java:[34,8] error: cannot find symbol
+[ERROR]   symbol:   variable super
+[ERROR]   location: class BufferedXmlWriter
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/xmlwriter/BufferedXmlWriter.java:[38,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/xmlwriter/BufferedXmlWriter.java:[40,8] error: cannot find symbol
+[ERROR]   symbol:   variable super
+[ERROR]   location: class BufferedXmlWriter
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/xmlwriter/BufferedXmlWriter.java:[44,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[16,97] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: class LockInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/LockInfo.java:[38,13] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: class LockInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/logkit/IGameLogger.java:[9,7] error: duplicate class: com.abs.casino.common.util.logkit.IGameLogger
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/CBGameException.java:[73,15] error: cannot access IGameLogger
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

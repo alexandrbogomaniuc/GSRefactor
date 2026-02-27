@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.kafka.service;
+package com.abs.casino.kafka.service;
 
 import java.time.Duration;
 import java.util.Arrays;

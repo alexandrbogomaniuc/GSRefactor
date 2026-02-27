@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.transfer;
+package com.abs.casino.gs.managers.payment.transfer;
 
 /**
  * User: flsh

@@ -221,7 +221,7 @@
     <servlet>
         <display-name>Statistics servlet</display-name>
         <servlet-name>statistics</servlet-name>
-        <servlet-class>com.dgphoenix.casino.common.web.statistics.RawStatisticsServlet</servlet-class>
+        <servlet-class>com.abs.casino.common.web.statistics.RawStatisticsServlet</servlet-class>
         <init-param>
             <param-name>enabled</param-name>
             <param-value>true</param-value>

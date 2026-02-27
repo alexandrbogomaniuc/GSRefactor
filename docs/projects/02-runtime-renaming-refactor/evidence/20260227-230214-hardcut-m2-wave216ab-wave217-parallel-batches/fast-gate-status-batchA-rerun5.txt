@@ -1,0 +1,8 @@
+STEP01 rc=0
+STEP02 rc=0
+STEP03 rc=0
+STEP04 rc=0
+STEP05 rc=0
+STEP06 rc=1
+first_failed_step=STEP06
+result=FAIL
