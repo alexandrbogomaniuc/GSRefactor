@@ -1,8 +1,8 @@
-package com.dgphoenix.casino.cassandra;
+package com.abs.casino.cassandra;
 
-import com.dgphoenix.casino.cassandra.persist.CassandraPersisterMock;
-import com.dgphoenix.casino.cassandra.persist.ISimplePersister;
-import com.dgphoenix.casino.cassandra.persist.SimplePersisterImpl;
+import com.abs.casino.cassandra.persist.CassandraPersisterMock;
+import com.abs.casino.cassandra.persist.ISimplePersister;
+import com.abs.casino.cassandra.persist.SimplePersisterImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;

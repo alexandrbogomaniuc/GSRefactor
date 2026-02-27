@@ -1,0 +1,4 @@
+[2026-02-27T07:21:31Z] START gs-server/utils mvn -DskipTests install
+[2026-02-27T07:21:35Z] END gs-server/utils mvn -DskipTests install exit=0 log=fast-gate-utils-install.log
+[2026-02-27T07:21:36Z] START gs-server/sb-utils mvn -DskipTests install
+[2026-02-27T07:21:38Z] END gs-server/sb-utils mvn -DskipTests install exit=1 log=fast-gate-sb-utils-install.log

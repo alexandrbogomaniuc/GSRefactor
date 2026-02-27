@@ -12,7 +12,7 @@
 
     <columnFamilies>
         <ColumnFamily>
-            <className>com.dgphoenix.casino.cassandra.persist.CassandraPersisterMock</className>
+            <className>com.abs.casino.cassandra.persist.CassandraPersisterMock</className>
             <!-- 120 days -->
             <ttl>10368000</ttl>
             <enabled>true</enabled>

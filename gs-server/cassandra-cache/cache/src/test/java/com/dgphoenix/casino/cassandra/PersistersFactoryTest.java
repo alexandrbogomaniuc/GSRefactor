@@ -1,10 +1,10 @@
-package com.dgphoenix.casino.cassandra;
+package com.abs.casino.cassandra;
 
-import com.dgphoenix.casino.cassandra.config.ColumnFamilyConfig;
-import com.dgphoenix.casino.cassandra.persist.CassandraPersisterMock;
-import com.dgphoenix.casino.cassandra.persist.CassandraRemoteCallPersister;
-import com.dgphoenix.casino.cassandra.persist.ISimplePersister;
-import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.cassandra.config.ColumnFamilyConfig;
+import com.abs.casino.cassandra.persist.CassandraPersisterMock;
+import com.abs.casino.cassandra.persist.CassandraRemoteCallPersister;
+import com.abs.casino.cassandra.persist.ISimplePersister;
+import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -46,7 +46,7 @@ public class PersistersFactoryTest {
 
     @Test
     public void testInitNonExistentPersister() {
-        when(cfConfig.getClassName()).thenReturn("com.dgphoenix.casino.cassandra.UnExistentPersister");
+        when(cfConfig.getClassName()).thenReturn("com.abs.casino.cassandra.UnExistentPersister");
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(startsWith("Wrong persister class name"));
 
@@ -55,7 +55,7 @@ public class PersistersFactoryTest {
 
     @Test
     public void testInitNotCassandraPersister() {
-        when(cfConfig.getClassName()).thenReturn("com.dgphoenix.casino.cassandra.persist.WrongPersister");
+        when(cfConfig.getClassName()).thenReturn("com.abs.casino.cassandra.persist.WrongPersister");
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Persister must implement ICassandraPersister");
 
@@ -64,7 +64,7 @@ public class PersistersFactoryTest {
 
     @Test
     public void testInitializePersisters() {
-        when(cfConfig.getClassName()).thenReturn("com.dgphoenix.casino.cassandra.persist.CassandraPersisterMock");
+        when(cfConfig.getClassName()).thenReturn("com.abs.casino.cassandra.persist.CassandraPersisterMock");
 
         persistersFactory.initializePersisters(Collections.singletonList(cfConfig), ANY, ANY, LOCAL_SERIAL);
 
@@ -75,7 +75,7 @@ public class PersistersFactoryTest {
 
     @Test
     public void testGetPersisterByClass() {
-        when(cfConfig.getClassName()).thenReturn("com.dgphoenix.casino.cassandra.persist.CassandraPersisterMock");
+        when(cfConfig.getClassName()).thenReturn("com.abs.casino.cassandra.persist.CassandraPersisterMock");
 
         persistersFactory.initializePersisters(Collections.singletonList(cfConfig), ANY, ANY, LOCAL_SERIAL);
         ICassandraPersister persister = persistersFactory.getPersister(CassandraRemoteCallPersister.class);
@@ -89,7 +89,7 @@ public class PersistersFactoryTest {
 
     @Test
     public void testGetPersisterByInterface() {
-        when(cfConfig.getClassName()).thenReturn("com.dgphoenix.casino.cassandra.persist.CassandraPersisterMock");
+        when(cfConfig.getClassName()).thenReturn("com.abs.casino.cassandra.persist.CassandraPersisterMock");
 
         persistersFactory.initializePersisters(Collections.singletonList(cfConfig), ANY, ANY, LOCAL_SERIAL);
         List<ISimplePersister> persister = persistersFactory.getPersistersByInterface(ISimplePersister.class);
@@ -101,10 +101,10 @@ public class PersistersFactoryTest {
     @Test
     public void testGetPersisterListByInterface() {
         ColumnFamilyConfig config1 = mock(ColumnFamilyConfig.class);
-        String persisterClassName1 = "com.dgphoenix.casino.cassandra.persist.CassandraPersisterMock";
+        String persisterClassName1 = "com.abs.casino.cassandra.persist.CassandraPersisterMock";
         when(config1.getClassName()).thenReturn(persisterClassName1);
         ColumnFamilyConfig config2 = mock(ColumnFamilyConfig.class);
-        String persisterClassName2 = "com.dgphoenix.casino.cassandra.persist.SimplePersisterImpl";
+        String persisterClassName2 = "com.abs.casino.cassandra.persist.SimplePersisterImpl";
         when(config2.getClassName()).thenReturn(persisterClassName2);
 
         persistersFactory.initializePersisters(Arrays.asList(config1, config2), ANY, ANY, LOCAL_SERIAL);

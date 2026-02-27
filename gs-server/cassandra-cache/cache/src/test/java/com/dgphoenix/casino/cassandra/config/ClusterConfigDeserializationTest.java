@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra.config;
+package com.abs.casino.cassandra.config;
 
 import com.google.common.collect.ImmutableMap;
 import com.thoughtworks.xstream.XStream;
@@ -64,8 +64,8 @@ public class ClusterConfigDeserializationTest {
         assertFalse("DC-aware load balancing should be disabled by default", config.isEnableDcAwareLoadBalancing());
         assertNotNull("Actual column config list must be not null", config.getColumnFamilyConfigs());
         assertEquals("Actual replication factor doesn't equals", 1, config.getReplicationFactor());
-        assertCFEquals(new ColumnFamilyConfig("com.dgphoenix.casino.alert.AlertPersister", 604800, true), config.getColumnFamilyConfigs().get(0));
-        assertCFEquals(new ColumnFamilyConfig("com.dgphoenix.casino.alert.BucketPersister", 604800, true), config.getColumnFamilyConfigs().get(1));
+        assertCFEquals(new ColumnFamilyConfig("com.abs.casino.alert.AlertPersister", 604800, true), config.getColumnFamilyConfigs().get(0));
+        assertCFEquals(new ColumnFamilyConfig("com.abs.casino.alert.BucketPersister", 604800, true), config.getColumnFamilyConfigs().get(1));
     }
 
     @Test
@@ -95,8 +95,8 @@ public class ClusterConfigDeserializationTest {
         assertEquals("Actual maxRequestsPerConnection doesn't equals", 4096, config.getMaxRequestsPerConnection());
         assertTrue("DC-aware load balancing should be enabled", config.isEnableDcAwareLoadBalancing());
         assertNotNull("Actual column config list must be not null", config.getColumnFamilyConfigs());
-        assertCFEquals(new ColumnFamilyConfig("com.dgphoenix.casino.alert.AlertPersister", 604800, true), config.getColumnFamilyConfigs().get(0));
-        assertCFEquals(new ColumnFamilyConfig("com.dgphoenix.casino.alert.BucketPersister", 604800, true), config.getColumnFamilyConfigs().get(1));
+        assertCFEquals(new ColumnFamilyConfig("com.abs.casino.alert.AlertPersister", 604800, true), config.getColumnFamilyConfigs().get(0));
+        assertCFEquals(new ColumnFamilyConfig("com.abs.casino.alert.BucketPersister", 604800, true), config.getColumnFamilyConfigs().get(1));
         assertEquals(getExpectedDCRFConfig().entrySet(), config.getDataCenterReplicationFactor().entrySet());
     }
 

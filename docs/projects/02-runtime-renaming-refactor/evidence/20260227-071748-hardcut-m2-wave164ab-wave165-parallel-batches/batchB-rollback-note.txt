@@ -1,0 +1,12 @@
+Batch B rollback note
+
+Reason:
+- Batch B test package migrations caused broad same-package symbol resolution failures during `sb-utils` testCompile in fast gate rerun1.
+
+Action:
+- Restored all Batch B files to HEAD state.
+- Retained only Batch A declaration migrations + one bounded test-resource rewire.
+
+Result:
+- Fast gate rerun2 PASS.
+- Full matrix rerun1 PASS.

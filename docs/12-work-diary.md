@@ -7635,3 +7635,21 @@
   - ETA `54.6h` (`6.83` workdays)
 - Next:
   - continue next non-overlapping low-risk batch set with same evidence-first workflow.
+### 2026-02-27 07:35 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed stabilized `W164A/W164B + W165`.
+- Stabilization outcome:
+  - retained `W164A` (12 declarations + 1 bounded rewire)
+  - `W164B` rolled back for safety after `sb-utils` `testCompile` break in fast gate rerun1
+- Validation outcome:
+  - fast gate `9/9 PASS` (`rerun2`)
+  - full matrix `9/9 PASS` (`rerun1`)
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-071748-hardcut-m2-wave164ab-wave165-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/143-hard-cut-m2-wave164ab-wave165-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `965`, remaining `1312`
+  - burndown `42.380325%`
+  - Project 02 `30.297541%`, Core `65.148771%`, Portfolio `82.574385%`
+  - ETA `54.1h` (`6.76` workdays)
+- Next:
+  - continue next non-overlapping low-risk batch set with same evidence-first workflow.

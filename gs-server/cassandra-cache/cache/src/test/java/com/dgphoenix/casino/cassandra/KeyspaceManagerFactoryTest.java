@@ -1,6 +1,6 @@
-package com.dgphoenix.casino.cassandra;
+package com.abs.casino.cassandra;
 
-import com.dgphoenix.casino.cassandra.config.ClusterConfig;
+import com.abs.casino.cassandra.config.ClusterConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;

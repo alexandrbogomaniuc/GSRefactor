@@ -1,8 +1,8 @@
-package com.dgphoenix.casino.cassandra.persist.engine;
+package com.abs.casino.cassandra.persist.engine;
 
-import com.dgphoenix.casino.cassandra.persist.engine.configuration.Caching;
-import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStrategy;
-import com.dgphoenix.casino.cassandra.persist.engine.configuration.Compression;
+import com.abs.casino.cassandra.persist.engine.configuration.Caching;
+import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
+import com.abs.casino.cassandra.persist.engine.configuration.Compression;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
@@ -11,10 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import static com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister.DEFAULT_GC_GRACE_PERIOD_IN_SECONDS;
-import static com.dgphoenix.casino.cassandra.persist.engine.TableDefinition.INDEX_POSTFIX;
-import static com.dgphoenix.casino.cassandra.persist.engine.TableDefinition.SEPARATOR;
-import static com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStrategy.SS_TABLE_SIZE;
+import static com.abs.casino.cassandra.persist.engine.ICassandraPersister.DEFAULT_GC_GRACE_PERIOD_IN_SECONDS;
+import static com.abs.casino.cassandra.persist.engine.TableDefinition.INDEX_POSTFIX;
+import static com.abs.casino.cassandra.persist.engine.TableDefinition.SEPARATOR;
+import static com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy.SS_TABLE_SIZE;
 import static org.junit.Assert.*;
 
 /**

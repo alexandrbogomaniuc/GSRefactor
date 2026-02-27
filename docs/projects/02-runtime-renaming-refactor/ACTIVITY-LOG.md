@@ -2542,3 +2542,25 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `20`.
   - retained bounded rewires: `3`.
   - global tracked source declarations/files now `1324` remaining (`2277` baseline, `953` reduced, `41.853316%` burndown).
+
+## 2026-02-27 07:35 UTC (Hard-Cut M2 Wave 164A + 164B + 165, Stabilized)
+- Continued batched-safe hard-cut migration from W163 checkpoint with non-overlapping ownership:
+  - `W164A`: migrated 12 declaration packages in `cassandra` test scopes.
+  - `W164B`: initially migrated 12 declaration packages in `sb-utils` test scopes.
+  - `W165`: bounded stabilization and safe-scope retention.
+- Parallel execution mode:
+  - explorer produced two non-overlapping low-risk batches with one bounded rewire.
+  - worker owned Batch A; main owned Batch B due thread-cap fallback.
+- Stabilization:
+  - fast gate rerun1 failed at `sb-utils` install (`testCompile`) due broad same-package symbol-resolution breaks from Batch B package-boundary migration.
+  - rolled back Batch B to `HEAD` for safety and retained Batch A only.
+  - fast gate rerun2 passed `9/9`.
+- Validation:
+  - full matrix `9/9 PASS` on rerun1 (with pre-setup installs for `utils`, `sb-utils`, `common-promo`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-071748-hardcut-m2-wave164ab-wave165-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/143-hard-cut-m2-wave164ab-wave165-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `12`.
+  - retained bounded rewires: `1`.
+  - global tracked source declarations/files now `1312` remaining (`2277` baseline, `965` reduced, `42.380325%` burndown).

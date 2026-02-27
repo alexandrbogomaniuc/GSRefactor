@@ -1,0 +1,12 @@
+gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/GameSessionExtendedPropertiesTest.java
+gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/geoip/GeoIpTest.java
+gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CalendarUtilsTest.java
+gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/CollectionUtilsTest.java
+gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/DateUtilsTest.java
+gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/DigitFormatterTest.java
+gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/KryoSerializationTest.java
+gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/ReflectionUtilsCompatibilityTest.java
+gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/StringPropertyHelperTest.java
+gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/compat/AbsToDgProbe.java
+gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/CollectionParserTest.java
+gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java

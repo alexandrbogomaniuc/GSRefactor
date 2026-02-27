@@ -1,0 +1,12 @@
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/CassandraPersistenceManagerTest.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/KeySpaceManagerTest.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/KeyspaceConfigurationFactoryTest.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/KeyspaceConfigurationTest.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/KeyspaceManagerFactoryTest.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/PersistersFactoryTest.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/config/ClusterConfigDeserializationTest.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/persist/CassandraPersisterMock.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/persist/ISimplePersister.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/persist/SimplePersisterImpl.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/persist/WrongPersister.java
+gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/persist/engine/TableDefinitionTest.java

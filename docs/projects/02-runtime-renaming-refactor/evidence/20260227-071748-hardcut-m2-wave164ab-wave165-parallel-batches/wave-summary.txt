@@ -1,0 +1,17 @@
+wave_group=W164A+W164B+W165
+planned_batchA_declarations=12
+planned_batchB_declarations=12
+planned_batchA_rewires_all=1
+planned_batchB_rewires_all=0
+planned_rewire_overlap=0
+planned_batchA_worker_rewires=1
+planned_batchB_worker_rewires=0
+actual_batchA_declarations=12
+actual_batchB_declarations=0
+actual_batchA_rewires=1
+actual_batchB_rewires=0
+actual_rewire_overlap=0
+batchB_status=rolled_back_for_safety
+fast_gate_final=PASS_9_of_9_rerun2
+full_matrix_final=PASS_9_of_9_rerun1
+global_remaining_count=1312
