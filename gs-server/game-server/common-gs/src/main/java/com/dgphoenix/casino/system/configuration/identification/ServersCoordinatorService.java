@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.system.configuration.identification;
+package com.abs.casino.system.configuration.identification;
 
 import java.io.Closeable;
 import java.io.IOException;

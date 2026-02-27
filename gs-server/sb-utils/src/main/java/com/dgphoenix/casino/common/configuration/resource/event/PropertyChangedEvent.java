@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.configuration.resource.event;
+package com.abs.casino.common.configuration.resource.event;
 
 public class PropertyChangedEvent implements IChangeEvent{
 	private final String propertyName;

@@ -15,8 +15,8 @@ import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import com.abs.casino.common.util.system.SystemPropertyReader;
 import com.dgphoenix.casino.common.web.SharedServletExecutorService;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
-import com.dgphoenix.casino.system.configuration.identification.ServersCoordinatorService;
-import com.dgphoenix.casino.system.configuration.identification.ZookeeperProperties;
+import com.abs.casino.system.configuration.identification.ServersCoordinatorService;
+import com.abs.casino.system.configuration.identification.ZookeeperProperties;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

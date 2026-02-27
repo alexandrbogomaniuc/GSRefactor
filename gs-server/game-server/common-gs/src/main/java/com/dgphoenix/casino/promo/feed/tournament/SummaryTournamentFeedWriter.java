@@ -4,7 +4,7 @@ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.common.promo.feed.tournament.*;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.gs.status.ServersStatusWatcher;
+import com.abs.casino.gs.status.ServersStatusWatcher;
 import com.abs.casino.promo.feed.AbstractSummaryFeedWriter;
 import com.abs.casino.promo.persisters.CassandraSummaryFeedTransformerPersister;
 import com.abs.casino.promo.persisters.CassandraSummaryTournamentPromoFeedPersister;

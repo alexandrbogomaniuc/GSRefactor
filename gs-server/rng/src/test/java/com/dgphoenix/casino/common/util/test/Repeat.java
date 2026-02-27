@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.test;
+package com.abs.casino.common.util.test;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

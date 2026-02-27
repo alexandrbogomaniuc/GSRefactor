@@ -1,0 +1,38 @@
+[2026-02-27T15:24:02Z] RUN PRE01
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/PRE01-rerun2.log
+[2026-02-27T15:24:05Z] PASS PRE01
+[2026-02-27T15:24:05Z] RUN PRE02
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/PRE02-rerun2.log
+[2026-02-27T15:24:08Z] PASS PRE02
+[2026-02-27T15:24:08Z] RUN PRE03
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/PRE03-rerun2.log
+[2026-02-27T15:24:10Z] PASS PRE03
+[2026-02-27T15:24:10Z] RUN STEP01
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/STEP01-rerun2.log
+[2026-02-27T15:24:13Z] PASS STEP01
+[2026-02-27T15:24:13Z] RUN STEP02
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/STEP02-rerun2.log
+[2026-02-27T15:24:16Z] PASS STEP02
+[2026-02-27T15:24:16Z] RUN STEP03
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/STEP03-rerun2.log
+[2026-02-27T15:24:19Z] PASS STEP03
+[2026-02-27T15:24:19Z] RUN STEP04
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/STEP04-rerun2.log
+[2026-02-27T15:24:21Z] PASS STEP04
+[2026-02-27T15:24:21Z] RUN STEP05
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/STEP05-rerun2.log
+[2026-02-27T15:24:24Z] PASS STEP05
+[2026-02-27T15:24:24Z] RUN STEP06
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/STEP06-rerun2.log
+[2026-02-27T15:24:33Z] PASS STEP06
+[2026-02-27T15:24:33Z] RUN STEP07
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/STEP07-rerun2.log
+[2026-02-27T15:24:45Z] PASS STEP07
+[2026-02-27T15:24:45Z] RUN STEP08
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/STEP08-rerun2.log
+[2026-02-27T15:24:47Z] PASS STEP08
+[2026-02-27T15:24:47Z] RUN STEP09
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/STEP09-rerun2.log
+[2026-02-27T15:26:09Z] FAIL STEP09 rc=2
+[2026-02-27T15:26:09Z] RETRY STEP09 attempt=1 LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/STEP09-rerun2-retry1.log
+[2026-02-27T15:27:30Z] FAIL STEP09 retry=1 rc=2

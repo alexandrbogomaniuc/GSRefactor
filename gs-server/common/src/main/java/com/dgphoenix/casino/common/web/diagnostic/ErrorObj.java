@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.web.diagnostic;
+package com.abs.casino.common.web.diagnostic;
 
 import java.util.Objects;
 

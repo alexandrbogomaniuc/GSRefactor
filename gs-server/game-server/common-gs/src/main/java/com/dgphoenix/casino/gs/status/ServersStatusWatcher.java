@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.status;
+package com.abs.casino.gs.status;
 
 import com.dgphoenix.casino.common.cache.LoadBalancerCache;
 import com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvider;

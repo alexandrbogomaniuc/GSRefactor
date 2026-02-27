@@ -1,8 +1,8 @@
 package com.dgphoenix.casino.common.util;
 
 
-import com.dgphoenix.casino.common.util.test.Repeat;
-import com.dgphoenix.casino.common.util.test.RepeatRule;
+import com.abs.casino.common.util.test.Repeat;
+import com.abs.casino.common.util.test.RepeatRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;

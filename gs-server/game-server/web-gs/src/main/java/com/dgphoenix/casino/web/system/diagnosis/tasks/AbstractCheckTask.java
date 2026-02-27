@@ -1,6 +1,6 @@
 package com.abs.casino.web.system.diagnosis.tasks;
 
-import com.dgphoenix.casino.common.web.diagnostic.CheckTask;
+import com.abs.casino.common.web.diagnostic.CheckTask;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

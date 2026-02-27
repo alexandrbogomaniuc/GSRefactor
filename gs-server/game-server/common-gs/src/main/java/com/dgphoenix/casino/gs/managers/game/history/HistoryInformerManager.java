@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.game.history;
+package com.abs.casino.gs.managers.game.history;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.DistributedLockManager;

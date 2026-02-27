@@ -1,7 +1,7 @@
 package com.abs.casino.web.system.diagnosis;
 
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.web.diagnostic.BaseDiagnosisServlet;
+import com.abs.casino.common.web.diagnostic.BaseDiagnosisServlet;
 import com.dgphoenix.casino.common.util.CommonExecutorService;
 import com.dgphoenix.casino.gs.GameServer;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusWinTracker;

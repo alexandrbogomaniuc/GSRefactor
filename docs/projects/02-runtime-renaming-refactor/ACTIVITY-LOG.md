@@ -2976,3 +2976,25 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `20`.
   - retained bounded rewires: `16`.
   - global tracked source declarations/files now `1124` remaining (`2277` baseline, `1153` reduced, `50.636803%` burndown).
+
+## 2026-02-27 15:28 UTC (Hard-Cut M2 Wave 202A + 202B + 203)
+- Continued batched-safe hard-cut migration from W201 checkpoint with non-overlapping declaration sets:
+  - `W202A`: 10 declaration migrations in `common.promo.messages.server.notifications.prizes`, `common.web.diagnostic`, and `configuration.resource.event`.
+  - `W202B`: 11 declaration migrations in `gs.managers.game.core/history`, `gs.status`, `system.configuration.identification`, and RNG test helpers.
+  - `W203`: integration rewires and validation.
+- Parallel execution mode:
+  - `1 explorer + 2 workers + main` with strict non-overlap ownership.
+- Stabilization:
+  - bounded importer/FQCN rewires retained only for moved symbols from `rewires-batchA-all.txt` and `rewires-batchB-all.txt`.
+  - added one bounded JSP import rewire in `web-gs/src/main/webapp/vabs/html5template.jspf` (`HistoryManager`) discovered during post-merge namespace scan.
+  - no blind/global replacement performed.
+- Validation:
+  - fast gate rerun2 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`).
+  - full matrix rerun2 (canonical): `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`; recovery retry executed once).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/162-hard-cut-m2-wave202ab-wave203-parallel-batches-report-20260227.md`
+- Outcome:
+  - retained declaration migrations: `21`.
+  - retained bounded rewires: `33`.
+  - global tracked source declarations/files now `1103` remaining (`2277` baseline, `1174` reduced, `51.559069%` burndown).

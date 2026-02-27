@@ -2,7 +2,7 @@ package com.abs.casino.promo.messages.handlers;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.promo.messages.client.requests.NotificationsShown;
-import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
+import com.abs.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
 import com.abs.casino.common.promo.messages.server.responses.NotificationsShownResponse;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.gs.GameServerComponentsHelper;

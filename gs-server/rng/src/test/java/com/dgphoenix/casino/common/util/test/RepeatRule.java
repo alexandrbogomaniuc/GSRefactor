@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.test;
+package com.abs.casino.common.util.test;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;

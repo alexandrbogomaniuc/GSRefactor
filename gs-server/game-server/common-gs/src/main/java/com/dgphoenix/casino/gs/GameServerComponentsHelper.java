@@ -2,7 +2,7 @@ package com.dgphoenix.casino.gs;
 
 import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.gs.managers.game.history.HistoryInformerManager;
+import com.abs.casino.gs.managers.game.history.HistoryInformerManager;
 import com.dgphoenix.casino.promo.IPromoMessagesDispatcher;
 import com.abs.casino.promo.tournaments.TournamentManager;
 import com.abs.casino.websocket.IWebSocketSessionsController;

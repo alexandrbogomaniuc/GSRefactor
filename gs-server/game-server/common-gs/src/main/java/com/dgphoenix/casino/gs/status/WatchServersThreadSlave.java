@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.status;
+package com.abs.casino.gs.status;
 
 import java.util.Map;
 

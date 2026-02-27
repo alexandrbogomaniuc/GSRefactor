@@ -7982,3 +7982,21 @@
   - ETA `46.5h` (`5.81` workdays)
 - Next:
   - continue declaration-first migration while launch alias smoke remains environment-blocked.
+### 2026-02-27 15:28 UTC
+- Resumed Project 02 hard-cut namespace migration in `Dev_new` and completed `W202A/W202B + W203`.
+- Scope retained:
+  - declaration migrations: `21` (`common.promo.messages.server.notifications.prizes`, `common.web.diagnostic`, `configuration.resource.event`, `gs.managers.game.core/history`, `gs.status`, `system.configuration.identification`, RNG test helpers).
+  - bounded rewires: `33` (`rewires-batchA-all.txt` + `rewires-batchB-all.txt` + one bounded JSP import integration fix in `vabs/html5template.jspf`).
+- Validation outcome (canonical rerun2):
+  - fast gate rerun2: `STEP01-08 PASS`, `STEP09 FAIL` (launch alias `/startgame` returns `HTTP 502`).
+  - full matrix rerun2: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, launch alias `HTTP 502`; recovery retry executed once).
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/162-hard-cut-m2-wave202ab-wave203-parallel-batches-report-20260227.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1174`, remaining `1103`
+  - burndown `51.559069%`
+  - Project 02 `32.580236%`, Core `66.290118%`, Portfolio `83.145059%`
+  - ETA `45.6h` (`5.70` workdays)
+- Next:
+  - continue declaration-first migration while launch alias smoke remains environment-blocked.

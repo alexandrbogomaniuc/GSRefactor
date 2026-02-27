@@ -1,0 +1,28 @@
+[2026-02-27T15:15:10Z] START PRE01 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/utils cmd=mvn -DskipTests install
+[2026-02-27T15:15:18Z] END PRE01 rc=0
+[2026-02-27T15:15:18Z] START PRE02 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils cmd=mvn -DskipTests install
+[2026-02-27T15:15:23Z] END PRE02 rc=0
+[2026-02-27T15:15:23Z] START PRE03 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo cmd=mvn -DskipTests install
+[2026-02-27T15:15:25Z] END PRE03 rc=0
+[2026-02-27T15:15:25Z] START STEP01 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common cmd=mvn -DskipTests install
+[2026-02-27T15:15:29Z] END STEP01 rc=0
+[2026-02-27T15:15:29Z] START STEP02 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet cmd=mvn -DskipTests install
+[2026-02-27T15:15:31Z] END STEP02 rc=0
+[2026-02-27T15:15:31Z] START STEP03 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils cmd=mvn -DskipTests install
+[2026-02-27T15:15:34Z] END STEP03 rc=0
+[2026-02-27T15:15:34Z] START STEP04 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo cmd=mvn -DskipTests install
+[2026-02-27T15:15:36Z] END STEP04 rc=0
+[2026-02-27T15:15:36Z] START STEP05 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters cmd=mvn -DskipTests install
+[2026-02-27T15:15:39Z] END STEP05 rc=0
+[2026-02-27T15:15:39Z] START STEP06 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[2026-02-27T15:15:48Z] END STEP06 rc=0
+[2026-02-27T15:15:48Z] START STEP07 dir=/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs cmd=mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+[2026-02-27T15:16:00Z] END STEP07 rc=0
+[2026-02-27T15:16:00Z] START STEP08 dir=/Users/alexb/Documents/Dev/Dev_new/mp-server/persistance cmd=mvn -DskipTests install
+[2026-02-27T15:16:03Z] END STEP08 rc=0
+[2026-02-27T15:16:03Z] START STEP09 dir=/Users/alexb/Documents/Dev/Dev_new cmd=node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+[2026-02-27T15:17:25Z] END STEP09 rc=2
+[2026-02-27T15:17:25Z] STEP09 recovery retry triggered after rc=2
+[2026-02-27T15:17:25Z] START STEP09 dir=/Users/alexb/Documents/Dev/Dev_new cmd=node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+[2026-02-27T15:18:47Z] END STEP09 rc=2
+[2026-02-27T15:18:47Z] RESULT FAIL failed_step=STEP09

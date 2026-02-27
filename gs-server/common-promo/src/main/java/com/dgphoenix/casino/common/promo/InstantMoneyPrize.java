@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.common.promo;
 
-import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.InstantMoneyWon;
-import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
+import com.abs.casino.common.promo.messages.server.notifications.prizes.InstantMoneyWon;
+import com.abs.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

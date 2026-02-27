@@ -1,0 +1,27 @@
+[2026-02-27T15:22:02Z] RUN STEP01
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/fast-gate-STEP01-rerun2.log
+[2026-02-27T15:22:05Z] PASS STEP01
+[2026-02-27T15:22:05Z] RUN STEP02
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/fast-gate-STEP02-rerun2.log
+[2026-02-27T15:22:07Z] PASS STEP02
+[2026-02-27T15:22:07Z] RUN STEP03
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/fast-gate-STEP03-rerun2.log
+[2026-02-27T15:22:11Z] PASS STEP03
+[2026-02-27T15:22:11Z] RUN STEP04
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/fast-gate-STEP04-rerun2.log
+[2026-02-27T15:22:13Z] PASS STEP04
+[2026-02-27T15:22:13Z] RUN STEP05
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/fast-gate-STEP05-rerun2.log
+[2026-02-27T15:22:16Z] PASS STEP05
+[2026-02-27T15:22:16Z] RUN STEP06
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/fast-gate-STEP06-rerun2.log
+[2026-02-27T15:22:25Z] PASS STEP06
+[2026-02-27T15:22:25Z] RUN STEP07
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/fast-gate-STEP07-rerun2.log
+[2026-02-27T15:22:38Z] PASS STEP07
+[2026-02-27T15:22:38Z] RUN STEP08
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/fast-gate-STEP08-rerun2.log
+[2026-02-27T15:22:40Z] PASS STEP08
+[2026-02-27T15:22:40Z] RUN STEP09
+LOG=/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260227-150630-hardcut-m2-wave202ab-wave203-parallel-batches/fast-gate-STEP09-rerun2.log
+[2026-02-27T15:24:02Z] FAIL STEP09 rc=2

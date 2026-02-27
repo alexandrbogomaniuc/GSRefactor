@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.game.core;
+package com.abs.casino.gs.managers.game.core;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.common.SessionHelper;
