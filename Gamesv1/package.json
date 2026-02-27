@@ -3,7 +3,9 @@
     "version": "1.0.0",
     "scripts": {
         "test:contract": "npx tsx tests/contract/mock-gs/ScenarioRunner.ts",
-        "create-game": "npx tsx tools/create-game/src/index.ts"
+        "create-game": "npx tsx tools/create-game/src/index.ts",
+        "config:gen": "npx tsx tools/config-gen/src/index.ts",
+        "config:check": "npx tsx tools/config-gen/src/index.ts --check"
     },
     "devDependencies": {
         "@types/node": "^25.3.2",

@@ -1,10 +1,31 @@
 import { z } from 'zod';
 
 // 1. Static Game Settings (Design-time)
+export const MathModelSchema = z.object({
+    id: z.string(),
+    rtp: z.number(),
+    label: z.string().optional(),
+});
+
+export type MathModel = z.infer<typeof MathModelSchema>;
+
+export const GsRegistrationSchema = z.object({
+    mathModels: z.array(MathModelSchema).min(1),
+    volatility: z.enum(["low", "medium-low", "medium", "medium-high", "high"]),
+    possibleMaxWinMultiplier: z.number(),
+    capWinMultiplier: z.number(),
+    releaseTime: z.number(), // seconds
+    isFrb: z.boolean().default(false),
+    ocb: z.boolean().default(false),
+});
+
+export type GsRegistration = z.infer<typeof GsRegistrationSchema>;
+
 export const GameSettingsSchema = z.object({
     schemaVersion: z.string().default("1.0.0"),
     gameId: z.string(),
     gameName: z.string(),
+    version: z.string().optional(),
     reels: z.object({
         rows: z.number(),
         cols: z.number(),
@@ -12,7 +33,9 @@ export const GameSettingsSchema = z.object({
     features: z.object({
         freeSpins: z.boolean().default(false),
         buyFeature: z.boolean().default(false),
+        autoplay: z.boolean().default(true),
     }).default({}),
+    gs: GsRegistrationSchema.optional(),
 });
 
 export type GameSettings = z.infer<typeof GameSettingsSchema>;

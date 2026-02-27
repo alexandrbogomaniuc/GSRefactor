@@ -57,3 +57,54 @@ const { rows, cols } = RuntimeStore.game.reels;
 ## 🧪 Simulation
 You can simulate a "No Cents" bank by appending:
 `?devBank=USD_TRUNC` to the game URL.
+
+---
+
+## 🎰 GS Registration & Config Gen
+
+### The `gs` Block in `game.settings.json`
+
+Each game can define a `gs` section in its `game.settings.json` containing GS platform registration data:
+
+```json
+{
+  "gs": {
+    "mathModels": [{ "id": "M1", "rtp": 96.54, "label": "Default" }],
+    "volatility": "medium-high",
+    "possibleMaxWinMultiplier": 5000,
+    "capWinMultiplier": 10000,
+    "releaseTime": 3,
+    "isFrb": false,
+    "ocb": false
+  }
+}
+```
+
+### Generating Template Params
+
+The `config-gen` tool reads `game.settings.json` and deterministically produces three output files in `games/<slug>/gs/`:
+
+| Output | Format | Purpose |
+|---|---|---|
+| `template-params.properties` | Key=Value | GS platform ingestion |
+| `template-params.json` | JSON | Programmatic consumption |
+| `registration.md` | Markdown | Human-readable review |
+
+```bash
+# Generate for all games
+npm run config:gen
+
+# Generate for one game
+npx tsx tools/config-gen/src/index.ts --game my-game
+
+# CI validation (checks outputs are up-to-date)
+npm run config:check
+```
+
+### Validation Rules (config-gen)
+- **RTP Precision**: All RTP values must be rounded to exactly 2 decimal places.
+- **RTP Array Length**: Must equal the number of math models.
+- **Win Multiplier Separation**: `possibleMaxWinMultiplier` must NOT equal `capWinMultiplier`.
+- **Win Multiplier Order**: `possibleMaxWinMultiplier` must be ≤ `capWinMultiplier`.
+- **Release Time**: Must be positive (in seconds).
+
