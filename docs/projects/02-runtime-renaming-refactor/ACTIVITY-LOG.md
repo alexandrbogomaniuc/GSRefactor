@@ -4198,3 +4198,8 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `11`; bounded rewires/regressions: `0`.
   - global tracked source declarations/files now `2081` remaining (`2277` baseline, `196` reduced, `8.607817%` burndown).
+
+## 2026-02-28 17:03 UTC (Push Marker W312 + W313)
+- Pushed wave completion commit `14c3db479` to `origin/main`.
+- Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-165301-hardcut-m2-wave312-wave313-kafka-handler-sm-core/`.
+- Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).

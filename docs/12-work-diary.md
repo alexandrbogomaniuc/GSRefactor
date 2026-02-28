@@ -9007,3 +9007,13 @@
   - baseline `2277`, reduced `196`, remaining `2081`, burndown `8.607817%`
   - Project 02 `26.075977%`, Core `63.037989%`, Portfolio `81.518994%`
   - ETA `95.5h` (`11.94` workdays)
+
+### 2026-02-28 17:03 UTC
+- Pushed Project 02 hard-cut `W312 + W313` completion commit to `origin/main`.
+  - commit: `14c3db479`
+  - evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-165301-hardcut-m2-wave312-wave313-kafka-handler-sm-core/`
+- Canonical matrix at push point remains: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+- Completion metrics at push point:
+  - baseline `2277`, reduced `196`, remaining `2081`, burndown `8.607817%`
+  - Project 02 `26.075977%`, Core `63.037989%`, Portfolio `81.518994%`
+  - ETA `95.5h` (`11.94` workdays)
