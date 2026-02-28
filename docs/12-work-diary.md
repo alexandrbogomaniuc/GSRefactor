@@ -9068,3 +9068,13 @@
   - baseline `2277`, reduced `221`, remaining `2056`, burndown `9.705753%`
   - Project 02 `26.213219%`, Core `63.106610%`, Portfolio `81.553305%`
   - ETA `94.4h` (`11.80` workdays)
+
+### 2026-02-28 17:58 UTC
+- Pushed Project 02 hard-cut `W316 + W317` completion commit to `origin/main`.
+  - commit: `3c2b788df`
+  - evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-173327-hardcut-m2-wave316-wave317-kafka-dto-quest-currency-crash/`
+- Canonical matrix at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+- Completion metrics at push point:
+  - baseline `2277`, reduced `221`, remaining `2056`, burndown `9.705753%`
+  - Project 02 `26.213219%`, Core `63.106610%`, Portfolio `81.553305%`
+  - ETA `94.4h` (`11.80` workdays)
