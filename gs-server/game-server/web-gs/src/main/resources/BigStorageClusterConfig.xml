@@ -13,7 +13,7 @@
 
     <columnFamilies>
         <ColumnFamily>
-            <className>com.dgphoenix.casino.cassandra.persist.CassandraBigStorageBetPersister</className>
+            <className>com.abs.casino.cassandra.persist.CassandraBigStorageBetPersister</className>
             <ttl>${bigstorage.cassandra.betcf.ttl}</ttl>
             <enabled>true</enabled>
         </ColumnFamily>

@@ -9331,3 +9331,23 @@
   - baseline `2277`, reduced `315`, remaining `1962`, burndown `13.833992%`
   - Project 02 `26.729249%`, Core `63.364625%`, Portfolio `81.682312%`
   - ETA `90.0h` (`11.25` workdays)
+
+### 2026-02-28 23:05 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new_fasttrack` and completed `W336 + W337`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `10` (`CassandraServerConfigTemplatePersister`, `CassandraSubCasinoPersister`, `CassandraBaseGameInfoPersister`, `CassandraBigStorageBetPersister`, `CassandraCurrencyRatesByDatePersister`, `CassandraCurrentPlayerSessionStatePersister`, `CassandraDelayedMassAwardFailedDeliveryPersister`, `CassandraFrbWinOperationPersister`, `CassandraGameSessionExtendedPropertiesPersister`, `CassandraHistoryInformerItemPersister`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent mode remained constrained by thread-limit, so execution continued ownership-safe on main.
+  - `rerun1` failed at `STEP05` due moved declarations crossing unmoved same-package boundaries.
+  - bounded compatibility imports added in `CassandraCurrentPlayerSessionStatePersister`, `CassandraBigStorageBetPersister`, and `CassandraBaseGameInfoPersister`.
+  - canonical validation reached on `rerun2`:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new_fasttrack/docs/projects/02-runtime-renaming-refactor/evidence/20260228-225328-hardcut-m2-wave336-wave337-persisters-lowfanout10/`
+  - `/Users/alexb/Documents/Dev/Dev_new_fasttrack/docs/projects/02-runtime-renaming-refactor/229-hard-cut-m2-wave336-wave337-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `325`, remaining `1952`, burndown `14.273166%`
+  - Project 02 `26.784146%`, Core `63.392073%`, Portfolio `81.696036%`
+  - ETA `89.5h` (`11.19` workdays)

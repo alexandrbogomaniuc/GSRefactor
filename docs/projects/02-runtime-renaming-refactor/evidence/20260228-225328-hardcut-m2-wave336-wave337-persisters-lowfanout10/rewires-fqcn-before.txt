@@ -1,0 +1,10 @@
+com.dgphoenix.casino.cassandra.persist.CassandraServerConfigTemplatePersister -> com.abs.casino.cassandra.persist.CassandraServerConfigTemplatePersister
+com.dgphoenix.casino.cassandra.persist.CassandraSubCasinoPersister -> com.abs.casino.cassandra.persist.CassandraSubCasinoPersister
+com.dgphoenix.casino.cassandra.persist.CassandraBaseGameInfoPersister -> com.abs.casino.cassandra.persist.CassandraBaseGameInfoPersister
+com.dgphoenix.casino.cassandra.persist.CassandraBigStorageBetPersister -> com.abs.casino.cassandra.persist.CassandraBigStorageBetPersister
+com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesByDatePersister -> com.abs.casino.cassandra.persist.CassandraCurrencyRatesByDatePersister
+com.dgphoenix.casino.cassandra.persist.CassandraCurrentPlayerSessionStatePersister -> com.abs.casino.cassandra.persist.CassandraCurrentPlayerSessionStatePersister
+com.dgphoenix.casino.cassandra.persist.CassandraDelayedMassAwardFailedDeliveryPersister -> com.abs.casino.cassandra.persist.CassandraDelayedMassAwardFailedDeliveryPersister
+com.dgphoenix.casino.cassandra.persist.CassandraFrbWinOperationPersister -> com.abs.casino.cassandra.persist.CassandraFrbWinOperationPersister
+com.dgphoenix.casino.cassandra.persist.CassandraGameSessionExtendedPropertiesPersister -> com.abs.casino.cassandra.persist.CassandraGameSessionExtendedPropertiesPersister
+com.dgphoenix.casino.cassandra.persist.CassandraHistoryInformerItemPersister -> com.abs.casino.cassandra.persist.CassandraHistoryInformerItemPersister

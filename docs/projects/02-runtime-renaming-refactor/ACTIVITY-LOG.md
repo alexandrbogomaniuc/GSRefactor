@@ -4451,3 +4451,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `10`; bounded rewires/regressions: `0`.
   - global tracked source declarations/files now `1962` remaining (`2277` baseline, `315` reduced, `13.833992%` burndown).
+
+## 2026-02-28 23:05 UTC (Hard-Cut M2 Wave 336 + 337)
+- Continued hard-cut execution from W334/W335 with declaration-first overlap-safe `common-persisters` low-fanout batch.
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `10`
+    - `CassandraServerConfigTemplatePersister`, `CassandraSubCasinoPersister`, `CassandraBaseGameInfoPersister`, `CassandraBigStorageBetPersister`, `CassandraCurrencyRatesByDatePersister`, `CassandraCurrentPlayerSessionStatePersister`, `CassandraDelayedMassAwardFailedDeliveryPersister`, `CassandraFrbWinOperationPersister`, `CassandraGameSessionExtendedPropertiesPersister`, `CassandraHistoryInformerItemPersister`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - `rerun1` failed at `STEP05` from moved declarations crossing unmoved same-package boundaries.
+  - bounded compatibility imports added in `CassandraCurrentPlayerSessionStatePersister`, `CassandraBigStorageBetPersister`, and `CassandraBaseGameInfoPersister`.
+  - `rerun2` reached canonical profile:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-225328-hardcut-m2-wave336-wave337-persisters-lowfanout10/`
+  - report: `docs/projects/02-runtime-renaming-refactor/229-hard-cut-m2-wave336-wave337-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `10`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `1952` remaining (`2277` baseline, `325` reduced, `14.273166%` burndown).

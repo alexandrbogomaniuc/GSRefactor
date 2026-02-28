@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.payment.currency;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesByDatePersister;
+import com.abs.casino.cassandra.persist.CassandraCurrencyRatesByDatePersister;
 import com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesPersister;
 import com.abs.casino.common.currency.CurrencyRate;
 import com.abs.casino.common.currency.ICurrencyRateManager;

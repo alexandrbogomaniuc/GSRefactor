@@ -1,6 +1,7 @@
-package com.dgphoenix.casino.cassandra.persist;
+package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.IEntityUpdateListener;
+import com.dgphoenix.casino.cassandra.persist.ICassandraBaseGameInfoPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.AbstractDistributedCache;

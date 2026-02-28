@@ -5,7 +5,7 @@
  * Date: 11.01.2018
  */
 
-package com.dgphoenix.casino.cassandra.persist;
+package com.abs.casino.cassandra.persist;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
