@@ -1,0 +1,10 @@
+com.dgphoenix.casino.cassandra.persist.CassandraMassAwardPersister -> com.abs.casino.cassandra.persist.CassandraMassAwardPersister
+com.dgphoenix.casino.cassandra.persist.CassandraMassAwardRestrictionPersister -> com.abs.casino.cassandra.persist.CassandraMassAwardRestrictionPersister
+com.dgphoenix.casino.cassandra.persist.CassandraPeriodicTasksPersister -> com.abs.casino.cassandra.persist.CassandraPeriodicTasksPersister
+com.dgphoenix.casino.cassandra.persist.CassandraServerInfoPersister -> com.abs.casino.cassandra.persist.CassandraServerInfoPersister
+com.dgphoenix.casino.cassandra.persist.CassandraSubCasinoGroupPersister -> com.abs.casino.cassandra.persist.CassandraSubCasinoGroupPersister
+com.dgphoenix.casino.cassandra.persist.CassandraSupportPersister -> com.abs.casino.cassandra.persist.CassandraSupportPersister
+com.dgphoenix.casino.cassandra.persist.CassandraBaseGameInfoTemplatePersister -> com.abs.casino.cassandra.persist.CassandraBaseGameInfoTemplatePersister
+com.dgphoenix.casino.cassandra.persist.CassandraBonusArchivePersister -> com.abs.casino.cassandra.persist.CassandraBonusArchivePersister
+com.dgphoenix.casino.cassandra.persist.CassandraCurrencyPersister -> com.abs.casino.cassandra.persist.CassandraCurrencyPersister
+com.dgphoenix.casino.cassandra.persist.CassandraDelayedMassAwardHistoryPersister -> com.abs.casino.cassandra.persist.CassandraDelayedMassAwardHistoryPersister

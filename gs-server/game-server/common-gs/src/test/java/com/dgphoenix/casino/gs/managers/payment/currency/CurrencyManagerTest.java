@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.payment.currency;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraCurrencyPersister;
+import com.abs.casino.cassandra.persist.CassandraCurrencyPersister;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.CurrencyCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;

@@ -3,7 +3,7 @@ package com.abs.casino.gs;
 import com.abs.casino.GeoIp;
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraServerInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraServerInfoPersister;
 import com.dgphoenix.casino.common.cache.LoadBalancerCache;
 import com.dgphoenix.casino.common.cache.ServerConfigsCache;
 import com.abs.casino.common.cache.data.server.ServerCoordinatorInfoProvider;

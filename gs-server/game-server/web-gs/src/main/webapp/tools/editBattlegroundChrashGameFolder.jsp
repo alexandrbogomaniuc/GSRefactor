@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraBaseGameInfoTemplatePersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraBaseGameInfoTemplatePersister" %>
 <%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
 <%@ page import="com.abs.casino.common.promo.battleground.BattlegroundConfig" %>

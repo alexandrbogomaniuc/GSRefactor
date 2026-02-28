@@ -1,7 +1,7 @@
 package com.abs.casino.promo.feed;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraPeriodicTasksPersister;
+import com.abs.casino.cassandra.persist.CassandraPeriodicTasksPersister;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.IPromoCampaign;
 import com.dgphoenix.casino.common.promo.IPromoTemplate;

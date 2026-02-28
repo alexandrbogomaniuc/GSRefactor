@@ -1,6 +1,7 @@
-package com.dgphoenix.casino.cassandra.persist;
+package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.common.cache.AbstractDistributedCache;
+import com.dgphoenix.casino.cassandra.persist.ICachePersister;
 import com.dgphoenix.casino.common.cache.CurrencyCache;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.abs.casino.common.persist.StreamPersister;

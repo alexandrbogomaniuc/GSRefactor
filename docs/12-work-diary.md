@@ -9351,3 +9351,22 @@
   - baseline `2277`, reduced `325`, remaining `1952`, burndown `14.273166%`
   - Project 02 `26.784146%`, Core `63.392073%`, Portfolio `81.696036%`
   - ETA `89.5h` (`11.19` workdays)
+
+### 2026-02-28 23:17 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new_fasttrack` and completed `W338 + W339`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `10` (`CassandraMassAwardPersister`, `CassandraMassAwardRestrictionPersister`, `CassandraPeriodicTasksPersister`, `CassandraServerInfoPersister`, `CassandraSubCasinoGroupPersister`, `CassandraSupportPersister`, `CassandraBaseGameInfoTemplatePersister`, `CassandraBonusArchivePersister`, `CassandraCurrencyPersister`, `CassandraDelayedMassAwardHistoryPersister`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent mode remained constrained by thread-limit, so execution continued ownership-safe on main.
+  - proactive bounded compatibility imports were added for moved classes implementing legacy `ICachePersister` (`CassandraMassAwardRestrictionPersister`, `CassandraCurrencyPersister`).
+  - canonical validation reached on `rerun1`:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new_fasttrack/docs/projects/02-runtime-renaming-refactor/evidence/20260228-230708-hardcut-m2-wave338-wave339-persisters-lowfanout10/`
+  - `/Users/alexb/Documents/Dev/Dev_new_fasttrack/docs/projects/02-runtime-renaming-refactor/230-hard-cut-m2-wave338-wave339-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `335`, remaining `1942`, burndown `14.712341%`
+  - Project 02 `26.839043%`, Core `63.419521%`, Portfolio `81.709761%`
+  - ETA `89.0h` (`11.13` workdays)

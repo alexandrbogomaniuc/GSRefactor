@@ -4470,3 +4470,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `10`; bounded rewires/regressions: `0`.
   - global tracked source declarations/files now `1952` remaining (`2277` baseline, `325` reduced, `14.273166%` burndown).
+
+## 2026-02-28 23:17 UTC (Hard-Cut M2 Wave 338 + 339)
+- Continued hard-cut execution from W336/W337 with declaration-first overlap-safe `common-persisters` low-fanout batch.
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `10`
+    - `CassandraMassAwardPersister`, `CassandraMassAwardRestrictionPersister`, `CassandraPeriodicTasksPersister`, `CassandraServerInfoPersister`, `CassandraSubCasinoGroupPersister`, `CassandraSupportPersister`, `CassandraBaseGameInfoTemplatePersister`, `CassandraBonusArchivePersister`, `CassandraCurrencyPersister`, `CassandraDelayedMassAwardHistoryPersister`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - proactive bounded compatibility imports added for moved classes implementing legacy `ICachePersister` (`CassandraMassAwardRestrictionPersister`, `CassandraCurrencyPersister`).
+  - `rerun1` reached canonical profile:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-230708-hardcut-m2-wave338-wave339-persisters-lowfanout10/`
+  - report: `docs/projects/02-runtime-renaming-refactor/230-hard-cut-m2-wave338-wave339-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `10`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `1942` remaining (`2277` baseline, `335` reduced, `14.712341%` burndown).

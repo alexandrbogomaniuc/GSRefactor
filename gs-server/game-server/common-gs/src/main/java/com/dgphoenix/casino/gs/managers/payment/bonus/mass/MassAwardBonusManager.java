@@ -2,10 +2,10 @@ package com.abs.casino.gs.managers.payment.bonus.mass;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.DistributedLockManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraDelayedMassAwardHistoryPersister;
+import com.abs.casino.cassandra.persist.CassandraDelayedMassAwardHistoryPersister;
 import com.dgphoenix.casino.cassandra.persist.CassandraDelayedMassAwardPersister;
-import com.dgphoenix.casino.cassandra.persist.CassandraMassAwardPersister;
-import com.dgphoenix.casino.cassandra.persist.CassandraMassAwardRestrictionPersister;
+import com.abs.casino.cassandra.persist.CassandraMassAwardPersister;
+import com.abs.casino.cassandra.persist.CassandraMassAwardRestrictionPersister;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.MassAwardCache;
 import com.dgphoenix.casino.common.cache.data.bonus.*;

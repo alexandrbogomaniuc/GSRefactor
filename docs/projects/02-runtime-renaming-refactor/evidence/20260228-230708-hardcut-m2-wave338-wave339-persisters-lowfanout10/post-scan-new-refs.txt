@@ -1,0 +1,24 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/MassAwardBonusManager.java:7:import com.abs.casino.cassandra.persist.CassandraMassAwardPersister;
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:91:            <className>com.abs.casino.cassandra.persist.CassandraMassAwardPersister</className>
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/MassAwardBonusManager.java:8:import com.abs.casino.cassandra.persist.CassandraMassAwardRestrictionPersister;
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:95:            <className>com.abs.casino.cassandra.persist.CassandraMassAwardRestrictionPersister</className>
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/feed/AbstractFeedWriter.java:4:import com.abs.casino.cassandra.persist.CassandraPeriodicTasksPersister;
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:161:            <className>com.abs.casino.cassandra.persist.CassandraPeriodicTasksPersister</className>
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/SharedGameServerComponentsConfiguration.java:6:import com.abs.casino.cassandra.persist.CassandraServerInfoPersister;
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:75:            <className>com.abs.casino.cassandra.persist.CassandraServerInfoPersister</className>
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:144:            <className>com.abs.casino.cassandra.persist.CassandraSubCasinoGroupPersister</className>
+gs-server/game-server/web-gs/src/main/webapp/support/langTools.jsp:1:<%@ page import="com.abs.casino.cassandra.persist.CassandraSubCasinoGroupPersister" %>
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/SessionErrorsCache.java:4:import com.abs.casino.cassandra.persist.CassandraSupportPersister;
+gs-server/game-server/web-gs/src/main/resources/ClusterConfig.xml:74:            <className>com.abs.casino.cassandra.persist.CassandraSupportPersister</className>
+gs-server/game-server/web-gs/src/main/webapp/support/gameBankConfig/removeGame.jsp:1:<%@ page import="com.abs.casino.cassandra.persist.CassandraBaseGameInfoTemplatePersister" %>
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:59:            <className>com.abs.casino.cassandra.persist.CassandraBaseGameInfoTemplatePersister</className>
+gs-server/game-server/web-gs/src/main/webapp/tools/editBattlegroundChrashGameFolder.jsp:1:<%@ page import="com.abs.casino.cassandra.persist.CassandraBaseGameInfoTemplatePersister" %>
+gs-server/support/archiver/src/main/java/com/dgphoenix/casino/support/CassandraBonusArchiver.java:4:import com.abs.casino.cassandra.persist.CassandraBonusArchivePersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/BonusManager.java:6:import com.abs.casino.cassandra.persist.CassandraBonusArchivePersister;
+gs-server/game-server/web-gs/src/main/resources/ClusterConfig.xml:42:            <className>com.abs.casino.cassandra.persist.CassandraBonusArchivePersister</className>
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/currency/CurrencyManager.java:4:import com.abs.casino.cassandra.persist.CassandraCurrencyPersister;
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/payment/currency/CurrencyManagerTest.java:4:import com.abs.casino.cassandra.persist.CassandraCurrencyPersister;
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:63:            <className>com.abs.casino.cassandra.persist.CassandraCurrencyPersister</className>
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/MassAwardBonusManager.java:5:import com.abs.casino.cassandra.persist.CassandraDelayedMassAwardHistoryPersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/DelayedMassAwardManager.java:7:import com.abs.casino.cassandra.persist.CassandraDelayedMassAwardHistoryPersister;
+gs-server/game-server/web-gs/src/main/resources/ClusterConfig.xml:66:            <className>com.abs.casino.cassandra.persist.CassandraDelayedMassAwardHistoryPersister</className>

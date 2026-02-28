@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraSubCasinoGroupPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraSubCasinoGroupPersister" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BaseGameCache" %>
 <%@ page import="com.dgphoenix.casino.common.cache.SubCasinoCache" %>
