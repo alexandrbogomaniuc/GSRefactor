@@ -51,7 +51,7 @@ import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.GameServerComponentsHelper;
 import com.abs.casino.gs.managers.game.StartGameSessionHelper;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusNotificationManager;
+import com.abs.casino.gs.managers.payment.bonus.FRBonusNotificationManager;
 import com.abs.casino.gs.managers.payment.transfer.PaymentManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletProtocolManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;

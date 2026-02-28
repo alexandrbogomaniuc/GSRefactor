@@ -14,7 +14,7 @@ import com.abs.casino.common.web.bonus.BonusError;
 import com.abs.casino.common.web.bonus.BonusErrors;
 import com.abs.casino.common.web.bonus.CBonus;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusManager;
+import com.abs.casino.gs.managers.payment.bonus.IFRBonusManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.action.ActionForward;

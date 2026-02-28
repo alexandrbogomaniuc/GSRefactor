@@ -40,7 +40,7 @@ import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusNotificationManager;
+import com.abs.casino.gs.managers.payment.bonus.FRBonusNotificationManager;
 import com.abs.casino.gs.managers.payment.transfer.PaymentManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletOperation;
 import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletProtocolManager;

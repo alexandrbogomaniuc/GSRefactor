@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.bonus;
+package com.abs.casino.gs.managers.payment.bonus;
 
 import com.dgphoenix.casino.common.cache.PromoBonusCache;
 import com.dgphoenix.casino.common.cache.data.bonus.PromoBonus;

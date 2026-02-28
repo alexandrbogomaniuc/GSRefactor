@@ -35,7 +35,7 @@ import com.abs.casino.common.web.login.apub.GameServerResponse;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusClient;
+import com.abs.casino.gs.managers.payment.bonus.IFRBonusClient;
 import com.abs.casino.gs.managers.payment.currency.CurrencyManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;

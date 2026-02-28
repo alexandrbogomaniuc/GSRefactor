@@ -71,7 +71,7 @@ import com.abs.casino.gs.managers.game.engine.IGameEngine;
 import com.dgphoenix.casino.gs.managers.payment.IStartGameProcessor;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
+import com.abs.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
 import com.abs.casino.gs.managers.payment.bonus.tracker.BonusTracker;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusNotificationTracker;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusWinTracker;

@@ -62,7 +62,7 @@ import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.gs.managers.game.session.GameSessionManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
+import com.abs.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
 import com.abs.casino.gs.managers.payment.currency.CurrencyRatesManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;

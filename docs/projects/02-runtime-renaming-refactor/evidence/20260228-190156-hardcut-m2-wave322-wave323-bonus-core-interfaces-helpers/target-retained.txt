@@ -1,0 +1,16 @@
+com.dgphoenix.casino.gs.managers.payment.bonus.AbstractFRBonusWinManager -> com.abs.casino.gs.managers.payment.bonus.AbstractFRBonusWinManager
+com.dgphoenix.casino.gs.managers.payment.bonus.EmptyFRBonusWinManager -> com.abs.casino.gs.managers.payment.bonus.EmptyFRBonusWinManager
+com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinAlertStatus -> com.abs.casino.gs.managers.payment.bonus.FRBonusWinAlertStatus
+com.dgphoenix.casino.gs.managers.payment.bonus.PromoBonusManager -> com.abs.casino.gs.managers.payment.bonus.PromoBonusManager
+com.dgphoenix.casino.gs.managers.payment.bonus.IDescriptionProducer -> com.abs.casino.gs.managers.payment.bonus.IDescriptionProducer
+com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusWinManager -> com.abs.casino.gs.managers.payment.bonus.IFRBonusWinManager
+com.dgphoenix.casino.gs.managers.payment.bonus.AbstractBonusManager -> com.abs.casino.gs.managers.payment.bonus.AbstractBonusManager
+com.dgphoenix.casino.gs.managers.payment.bonus.CreationBonusHelper -> com.abs.casino.gs.managers.payment.bonus.CreationBonusHelper
+com.dgphoenix.casino.gs.managers.payment.bonus.AbstractBonusClient -> com.abs.casino.gs.managers.payment.bonus.AbstractBonusClient
+com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusClient -> com.abs.casino.gs.managers.payment.bonus.IFRBonusClient
+com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusManager -> com.abs.casino.gs.managers.payment.bonus.IFRBonusManager
+com.dgphoenix.casino.gs.managers.payment.bonus.IBonusClient -> com.abs.casino.gs.managers.payment.bonus.IBonusClient
+com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusNotificationManager -> com.abs.casino.gs.managers.payment.bonus.FRBonusNotificationManager
+com.dgphoenix.casino.gs.managers.payment.bonus.IBonusManager -> com.abs.casino.gs.managers.payment.bonus.IBonusManager
+com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory -> com.abs.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory
+com.dgphoenix.casino.gs.managers.payment.bonus.OriginalFRBonusWinManager -> com.abs.casino.gs.managers.payment.bonus.OriginalFRBonusWinManager

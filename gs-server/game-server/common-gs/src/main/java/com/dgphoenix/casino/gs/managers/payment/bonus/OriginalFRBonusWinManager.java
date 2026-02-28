@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.bonus;
+package com.abs.casino.gs.managers.payment.bonus;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
@@ -24,10 +24,14 @@ import com.abs.casino.common.util.ReflectionUtils;
 import com.abs.casino.common.util.logkit.LogUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.gs.managers.dblink.FRBonusDBLink;
+import com.abs.casino.gs.managers.payment.bonus.AbstractFRBonusWinManager;
+import com.abs.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
+import com.abs.casino.gs.managers.payment.bonus.IFRBonusClient;
 import com.abs.casino.gs.managers.payment.bonus.client.frb.FRBonusWinResult;
 import com.abs.casino.gs.managers.payment.currency.CurrencyRatesManager;
 import com.abs.casino.gs.managers.payment.wallet.ILoggableCWClient;
 import com.abs.casino.gs.managers.payment.wallet.SimpleLoggableContainer;
+import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;

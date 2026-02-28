@@ -16,7 +16,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.IBonusClient;
+import com.abs.casino.gs.managers.payment.bonus.IBonusClient;
 import com.abs.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
 import com.abs.casino.gs.managers.payment.transfer.PaymentManager;
 import com.abs.casino.gs.persistance.GameSessionPersister;

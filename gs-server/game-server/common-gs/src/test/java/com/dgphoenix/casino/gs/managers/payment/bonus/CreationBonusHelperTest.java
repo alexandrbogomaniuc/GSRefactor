@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusGameMode;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
-import com.dgphoenix.casino.gs.managers.payment.bonus.CreationBonusHelper;
+import com.abs.casino.gs.managers.payment.bonus.CreationBonusHelper;
 import com.abs.casino.services.bonus.ForbiddenGamesForBonusProvider;
 import com.google.common.collect.Sets;
 import org.junit.Before;

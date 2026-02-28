@@ -1,0 +1,8 @@
+com.dgphoenix.casino.gs.managers.payment.bonus.AbstractBonusClient -> com.abs.casino.gs.managers.payment.bonus.AbstractBonusClient
+com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusClient -> com.abs.casino.gs.managers.payment.bonus.IFRBonusClient
+com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusManager -> com.abs.casino.gs.managers.payment.bonus.IFRBonusManager
+com.dgphoenix.casino.gs.managers.payment.bonus.IBonusClient -> com.abs.casino.gs.managers.payment.bonus.IBonusClient
+com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusNotificationManager -> com.abs.casino.gs.managers.payment.bonus.FRBonusNotificationManager
+com.dgphoenix.casino.gs.managers.payment.bonus.IBonusManager -> com.abs.casino.gs.managers.payment.bonus.IBonusManager
+com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory -> com.abs.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory
+com.dgphoenix.casino.gs.managers.payment.bonus.OriginalFRBonusWinManager -> com.abs.casino.gs.managers.payment.bonus.OriginalFRBonusWinManager

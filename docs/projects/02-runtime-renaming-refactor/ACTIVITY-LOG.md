@@ -4287,3 +4287,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Pushed wave completion commit `b9617ecd1` to `origin/main`.
 - Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-184023-hardcut-m2-wave320-wave321-gs-persister-wallet-currency/`.
 - Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+
+## 2026-02-28 19:19 UTC (Hard-Cut M2 Wave 322 + 323)
+- Continued hard-cut execution from W320/W321 with declaration-first overlap-safe `common-gs` `gs.managers.payment.bonus` cluster.
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `16`
+    - `AbstractFRBonusWinManager`, `EmptyFRBonusWinManager`, `FRBonusWinAlertStatus`, `PromoBonusManager`, `IDescriptionProducer`, `IFRBonusWinManager`, `AbstractBonusManager`, `CreationBonusHelper`, `AbstractBonusClient`, `IFRBonusClient`, `IFRBonusManager`, `IBonusClient`, `FRBonusNotificationManager`, `IBonusManager`, `FRBonusWinRequestFactory`, `OriginalFRBonusWinManager`.
+  - deferred from initial target due high-fanout boundary risk: `BonusManager`, `FRBonusManager`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1-rerun4 stabilized `STEP06` mixed package/protected-access boundaries across moved/deferred bonus classes.
+  - rerun5 stabilized `STEP07` mixed interface imports in `AbstractBonusAction` (`com.abs` vs `com.dgphoenix`).
+  - rerun6 reached canonical profile:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-190156-hardcut-m2-wave322-wave323-bonus-core-interfaces-helpers/`
+  - report: `docs/projects/02-runtime-renaming-refactor/222-hard-cut-m2-wave322-wave323-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `16`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `2018` remaining (`2277` baseline, `259` reduced, `11.374616%` burndown).

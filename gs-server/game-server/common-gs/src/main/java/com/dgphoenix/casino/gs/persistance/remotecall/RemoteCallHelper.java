@@ -23,7 +23,7 @@ import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
+import com.abs.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.dgphoenix.casino.gs.socket.InServiceServiceHandler;
 import com.abs.casino.gs.persistance.remotecall.RefreshConfigCall;

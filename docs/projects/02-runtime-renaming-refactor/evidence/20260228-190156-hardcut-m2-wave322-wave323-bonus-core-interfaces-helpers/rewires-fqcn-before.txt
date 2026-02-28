@@ -1,0 +1,16 @@
+com.dgphoenix.casino.gs.managers.payment.bonus.AbstractFRBonusWinManager|old_refs=5|new=> com.abs.casino.gs.managers.payment.bonus.AbstractFRBonusWinManager|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.EmptyFRBonusWinManager|old_refs=5|new=> com.abs.casino.gs.managers.payment.bonus.EmptyFRBonusWinManager|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinAlertStatus|old_refs=5|new=> com.abs.casino.gs.managers.payment.bonus.FRBonusWinAlertStatus|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.PromoBonusManager|old_refs=5|new=> com.abs.casino.gs.managers.payment.bonus.PromoBonusManager|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.IDescriptionProducer|old_refs=9|new=> com.abs.casino.gs.managers.payment.bonus.IDescriptionProducer|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusWinManager|old_refs=9|new=> com.abs.casino.gs.managers.payment.bonus.IFRBonusWinManager|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.AbstractBonusManager|old_refs=11|new=> com.abs.casino.gs.managers.payment.bonus.AbstractBonusManager|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.CreationBonusHelper|old_refs=11|new=> com.abs.casino.gs.managers.payment.bonus.CreationBonusHelper|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.AbstractBonusClient|old_refs=17|new=> com.abs.casino.gs.managers.payment.bonus.AbstractBonusClient|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusClient|old_refs=17|new=> com.abs.casino.gs.managers.payment.bonus.IFRBonusClient|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusManager|old_refs=17|new=> com.abs.casino.gs.managers.payment.bonus.IFRBonusManager|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.IBonusClient|old_refs=27|new=> com.abs.casino.gs.managers.payment.bonus.IBonusClient|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusNotificationManager|old_refs=25|new=> com.abs.casino.gs.managers.payment.bonus.FRBonusNotificationManager|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.IBonusManager|old_refs=25|new=> com.abs.casino.gs.managers.payment.bonus.IBonusManager|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory|old_refs=33|new=> com.abs.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory|new_refs=5
+com.dgphoenix.casino.gs.managers.payment.bonus.OriginalFRBonusWinManager|old_refs=85|new=> com.abs.casino.gs.managers.payment.bonus.OriginalFRBonusWinManager|new_refs=3

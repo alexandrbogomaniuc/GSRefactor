@@ -26,7 +26,7 @@ import com.abs.casino.common.web.BaseAction;
 import com.abs.casino.common.web.login.apub.GameServerResponse;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.IBonusClient;
+import com.abs.casino.gs.managers.payment.bonus.IBonusClient;
 import com.abs.casino.gs.managers.payment.bonus.client.BonusAuthResult;
 import com.abs.casino.gs.managers.payment.currency.CurrencyManager;
 import com.abs.casino.gs.persistance.GameSessionPersister;

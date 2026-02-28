@@ -9,7 +9,7 @@ import com.abs.casino.common.util.DatePeriod;
 import com.abs.casino.common.util.xml.TransientFieldsAllowedProvider;
 import com.abs.casino.common.util.xml.TransientFieldsReflectionProvider;
 import com.abs.casino.common.util.xml.xstreampool.XStreamPool;
-import com.dgphoenix.casino.gs.managers.payment.bonus.CreationBonusHelper;
+import com.abs.casino.gs.managers.payment.bonus.CreationBonusHelper;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.abs.casino.services.bonus.ForbiddenGamesForBonusProvider;
 import com.abs.casino.services.gamelimits.GameManagerUtils;

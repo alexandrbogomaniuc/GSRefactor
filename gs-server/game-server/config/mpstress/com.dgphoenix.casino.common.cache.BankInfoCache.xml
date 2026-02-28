@@ -586,7 +586,7 @@
         </entry>
         <entry>
           <string>FRBWINM_CLASS</string>
-          <string>com.dgphoenix.casino.gs.managers.payment.bonus.OriginalFRBonusWinManager</string>
+          <string>com.abs.casino.gs.managers.payment.bonus.OriginalFRBonusWinManager</string>
         </entry>
         <entry>
           <string>ISENABLED</string>
@@ -1286,7 +1286,7 @@
         </entry>
         <entry>
           <string>FRBWINM_CLASS</string>
-          <string>com.dgphoenix.casino.gs.managers.payment.bonus.OriginalFRBonusWinManager</string>
+          <string>com.abs.casino.gs.managers.payment.bonus.OriginalFRBonusWinManager</string>
         </entry>
         <entry>
           <string>ISENABLED</string>
