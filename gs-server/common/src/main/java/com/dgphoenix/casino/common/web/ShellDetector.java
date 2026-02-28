@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
-import com.dgphoenix.casino.common.cache.data.game.Html5PcVersionMode;
+import com.abs.casino.common.cache.data.game.Html5PcVersionMode;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.abs.casino.common.web.MobileDetector;
 

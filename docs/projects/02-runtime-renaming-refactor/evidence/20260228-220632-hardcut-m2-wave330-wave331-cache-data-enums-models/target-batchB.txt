@@ -1,0 +1,6 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/MassAwardType.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/DelayedMassAwardDelivery.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/PaymentMode.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/SubCasinoGroup.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusType.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/DelayedMassAward.java

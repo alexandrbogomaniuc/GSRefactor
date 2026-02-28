@@ -1,0 +1,6 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BankMiniGameInfo.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/MaxQuestWeaponMode.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/WOStatisticsContainer.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameSessionInfo.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/URLCallCounters.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/Html5PcVersionMode.java

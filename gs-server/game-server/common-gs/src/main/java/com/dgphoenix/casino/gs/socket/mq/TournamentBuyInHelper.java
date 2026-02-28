@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.cache.data.payment.IWallet;
-import com.dgphoenix.casino.common.cache.data.payment.PaymentMode;
+import com.abs.casino.common.cache.data.payment.PaymentMode;
 import com.abs.casino.common.cache.data.payment.transfer.ExternalPaymentTransaction;
 import com.abs.casino.common.cache.data.payment.transfer.TransactionStatus;
 import com.abs.casino.common.cache.data.payment.transfer.TransactionType;

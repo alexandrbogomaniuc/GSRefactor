@@ -1,0 +1,12 @@
+com.dgphoenix.casino.common.cache.data.game.BankMiniGameInfo com.abs.casino.common.cache.data.game.BankMiniGameInfo
+com.dgphoenix.casino.common.cache.data.bank.MaxQuestWeaponMode com.abs.casino.common.cache.data.bank.MaxQuestWeaponMode
+com.dgphoenix.casino.common.cache.data.payment.WOStatisticsContainer com.abs.casino.common.cache.data.payment.WOStatisticsContainer
+com.dgphoenix.casino.common.cache.data.game.GameSessionInfo com.abs.casino.common.cache.data.game.GameSessionInfo
+com.dgphoenix.casino.common.cache.data.URLCallCounters com.abs.casino.common.cache.data.URLCallCounters
+com.dgphoenix.casino.common.cache.data.game.Html5PcVersionMode com.abs.casino.common.cache.data.game.Html5PcVersionMode
+com.dgphoenix.casino.common.cache.data.bonus.MassAwardType com.abs.casino.common.cache.data.bonus.MassAwardType
+com.dgphoenix.casino.common.cache.data.bonus.DelayedMassAwardDelivery com.abs.casino.common.cache.data.bonus.DelayedMassAwardDelivery
+com.dgphoenix.casino.common.cache.data.payment.PaymentMode com.abs.casino.common.cache.data.payment.PaymentMode
+com.dgphoenix.casino.common.cache.data.bank.SubCasinoGroup com.abs.casino.common.cache.data.bank.SubCasinoGroup
+com.dgphoenix.casino.common.cache.data.bonus.BonusType com.abs.casino.common.cache.data.bonus.BonusType
+com.dgphoenix.casino.common.cache.data.bonus.DelayedMassAward com.abs.casino.common.cache.data.bonus.DelayedMassAward

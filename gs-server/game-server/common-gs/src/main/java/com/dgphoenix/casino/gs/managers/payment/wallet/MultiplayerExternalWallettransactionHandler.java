@@ -2,7 +2,7 @@ package com.dgphoenix.casino.gs.managers.payment.wallet;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraExternalTransactionPersister;
-import com.dgphoenix.casino.common.cache.data.payment.PaymentMode;
+import com.abs.casino.common.cache.data.payment.PaymentMode;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
 import com.abs.casino.common.cache.data.payment.transfer.ExternalPaymentTransaction;
 import com.abs.casino.common.cache.data.payment.transfer.TransactionStatus;

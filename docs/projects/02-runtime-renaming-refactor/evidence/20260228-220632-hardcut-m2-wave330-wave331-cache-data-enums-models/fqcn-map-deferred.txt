@@ -1,0 +1,2 @@
+com.dgphoenix.casino.common.cache.data.bonus.BonusType com.abs.casino.common.cache.data.bonus.BonusType
+com.dgphoenix.casino.common.cache.data.bonus.DelayedMassAward com.abs.casino.common.cache.data.bonus.DelayedMassAward

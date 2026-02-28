@@ -2,7 +2,7 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.dgphoenix.casino.common.cache.SubCasinoCache;
 import com.dgphoenix.casino.common.cache.SubCasinoGroupCache;
-import com.dgphoenix.casino.common.cache.data.bank.SubCasinoGroup;
+import com.abs.casino.common.cache.data.bank.SubCasinoGroup;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

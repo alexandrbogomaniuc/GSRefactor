@@ -4,7 +4,7 @@ package com.dgphoenix.casino.common.cache;
 import com.abs.casino.common.cache.ExportableCacheEntry;
 import com.abs.casino.common.cache.AbstractExportableCache;
 import com.dgphoenix.casino.common.cache.data.payment.WOStatistics;
-import com.dgphoenix.casino.common.cache.data.payment.WOStatisticsContainer;
+import com.abs.casino.common.cache.data.payment.WOStatisticsContainer;
 import com.dgphoenix.casino.common.exception.CommonException;
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data.payment;
+package com.abs.casino.common.cache.data.payment;
 
 /**
  * User: flsh
