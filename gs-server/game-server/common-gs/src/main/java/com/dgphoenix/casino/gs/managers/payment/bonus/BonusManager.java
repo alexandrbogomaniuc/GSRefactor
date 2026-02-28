@@ -20,7 +20,7 @@ import com.dgphoenix.casino.common.exception.BonusException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.FRBException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
-import com.dgphoenix.casino.common.transactiondata.TransactionData;
+import com.abs.casino.common.transactiondata.TransactionData;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.IdGenerator;
 import com.dgphoenix.casino.common.util.ReflectionUtils;

@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.cache.IDistributedCache;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
-import com.dgphoenix.casino.common.transactiondata.TransactionDataInvalidatedListener;
+import com.abs.casino.common.transactiondata.TransactionDataInvalidatedListener;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.ExecutorUtils;
 import com.dgphoenix.casino.common.web.statistics.IStatisticsGetter;

@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
-import com.dgphoenix.casino.common.transactiondata.TransactionData;
+import com.abs.casino.common.transactiondata.TransactionData;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;

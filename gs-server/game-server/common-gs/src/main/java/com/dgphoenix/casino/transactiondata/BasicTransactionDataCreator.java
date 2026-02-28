@@ -1,8 +1,8 @@
 package com.abs.casino.transactiondata;
 
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
-import com.dgphoenix.casino.common.transactiondata.ITransactionDataCreator;
-import com.dgphoenix.casino.common.transactiondata.TransactionData;
+import com.abs.casino.common.transactiondata.ITransactionDataCreator;
+import com.abs.casino.common.transactiondata.TransactionData;
 
 /**
  * User: Grien

@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.DBException;
 import com.abs.casino.common.exception.MismatchSessionException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
-import com.dgphoenix.casino.common.transactiondata.ITransactionDataCreator;
+import com.abs.casino.common.transactiondata.ITransactionDataCreator;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;

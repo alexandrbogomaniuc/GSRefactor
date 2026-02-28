@@ -2,8 +2,8 @@ package com.dgphoenix.casino.common;
 
 import com.dgphoenix.casino.common.cache.IAccountManager;
 import com.dgphoenix.casino.common.lock.ILockManager;
-import com.dgphoenix.casino.common.transactiondata.ITransactionDataCreator;
-import com.dgphoenix.casino.common.transactiondata.ITransactionDataPersister;
+import com.abs.casino.common.transactiondata.ITransactionDataCreator;
+import com.abs.casino.common.transactiondata.ITransactionDataPersister;
 
 
 /** Creates DomainSession objects with default dependencies */

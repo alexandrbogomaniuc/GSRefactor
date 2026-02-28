@@ -1,8 +1,9 @@
-package com.dgphoenix.casino.common.transactiondata;
+package com.abs.casino.common.transactiondata;
 
 import com.dgphoenix.casino.common.cache.IDistributedCache;
 import com.dgphoenix.casino.common.lock.LockingInfo;
 import com.dgphoenix.casino.common.lock.ServerLockInfo;
+import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 
 import java.util.List;
 
