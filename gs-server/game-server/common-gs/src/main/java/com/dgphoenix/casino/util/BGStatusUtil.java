@@ -1,7 +1,7 @@
 package com.abs.casino.util;
 
 import com.abs.casino.common.client.canex.request.privateroom.Status;
-import com.dgphoenix.casino.kafka.dto.BGStatus;
+import com.abs.casino.kafka.dto.BGStatus;
 
 public class BGStatusUtil {
     public static Status fromBGStatus(BGStatus tbgStatus) {

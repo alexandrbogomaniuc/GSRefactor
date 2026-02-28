@@ -1,6 +1,6 @@
 package com.abs.casino.kafka.dto;
 
-import com.dgphoenix.casino.kafka.dto.BattlegroundRoundInfoDto;
+import com.abs.casino.kafka.dto.BattlegroundRoundInfoDto;
 
 public class RoundInfoResultDto {
     private long accountId;

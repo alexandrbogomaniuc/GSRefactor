@@ -9017,3 +9017,23 @@
   - baseline `2277`, reduced `196`, remaining `2081`, burndown `8.607817%`
   - Project 02 `26.075977%`, Core `63.037989%`, Portfolio `81.518994%`
   - ETA `95.5h` (`11.94` workdays)
+
+### 2026-02-28 17:24 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W314 + W315`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `16` (`BGFStatus`, `BGFriendDto`, `BGOStatus`, `BGOnlinePlayerDto`, `BGPlayerDto`, `BGStatus`, `BGUpdatePrivateRoomRequest`, `BGUpdateRoomResultDto`, `BattlegroundInfoDto`, `BattlegroundRoundInfoDto`, `BotConfigInfoDto`, `RMSPlayerDto`, `RMSRoomDto`, `RoundPlayerDto`, `TimeFrameDto`, `TournamentInfoDto`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent mode remained constrained by thread-limit, so execution continued ownership-safe on main.
+  - `rerun1` failed `STEP06` due moved DTO same-package dependency assumptions; `rerun2` failed `STEP06` due wildcard import resolution drift.
+  - bounded compatibility imports + localized import normalization in `BattlegroundService` and `KafkaRequestMultiPlayer` restored compile stability.
+  - canonical validation reached on `rerun3`:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-170717-hardcut-m2-wave314-wave315-kafka-dto-battleground-core/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/218-hard-cut-m2-wave314-wave315-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `212`, remaining `2065`, burndown `9.310496%`
+  - Project 02 `26.163812%`, Core `63.081906%`, Portfolio `81.540953%`
+  - ETA `94.8h` (`11.85` workdays)

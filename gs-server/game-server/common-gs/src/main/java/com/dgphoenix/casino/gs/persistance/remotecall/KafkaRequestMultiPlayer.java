@@ -7,6 +7,7 @@ import com.abs.casino.kafka.dto.GetPrivateRoomInfoRequest;
 import com.abs.casino.kafka.dto.TournamentEndedDto;
 
 import com.abs.casino.kafka.dto.BotConfigInfosResponse;
+import com.abs.casino.kafka.dto.BotConfigInfoDto;
 
 import com.abs.casino.kafka.dto.UpsertBotConfigInfoRequest;
 

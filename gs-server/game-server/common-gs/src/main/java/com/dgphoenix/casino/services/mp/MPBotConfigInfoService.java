@@ -3,7 +3,7 @@ package com.abs.casino.services.mp;
 import com.abs.casino.ats.BotConfigInfo;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
-import com.dgphoenix.casino.kafka.dto.BotConfigInfoDto;
+import com.abs.casino.kafka.dto.BotConfigInfoDto;
 import com.abs.casino.util.BotConfigInfoUtil;
 
 import org.apache.logging.log4j.LogManager;

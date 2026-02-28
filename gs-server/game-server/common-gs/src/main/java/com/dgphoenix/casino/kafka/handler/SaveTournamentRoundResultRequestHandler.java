@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.abs.casino.kafka.dto.SaveTournamentRoundResultRequest;
-import com.dgphoenix.casino.kafka.dto.TournamentInfoDto;
+import com.abs.casino.kafka.dto.TournamentInfoDto;
 
 @Component
 public class SaveTournamentRoundResultRequestHandler 

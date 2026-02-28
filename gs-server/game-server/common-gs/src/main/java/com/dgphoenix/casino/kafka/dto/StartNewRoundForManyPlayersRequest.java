@@ -1,6 +1,6 @@
 package com.abs.casino.kafka.dto;
 
-import com.dgphoenix.casino.kafka.dto.RoundPlayerDto;
+import com.abs.casino.kafka.dto.RoundPlayerDto;
 
 import com.dgphoenix.casino.kafka.dto.KafkaRequest;
 

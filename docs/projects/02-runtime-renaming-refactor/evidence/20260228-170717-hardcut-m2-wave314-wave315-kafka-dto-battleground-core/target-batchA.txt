@@ -1,0 +1,8 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BGFStatus.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BGFriendDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BGOStatus.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BGOnlinePlayerDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BGPlayerDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BGStatus.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BGUpdatePrivateRoomRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BGUpdateRoomResultDto.java

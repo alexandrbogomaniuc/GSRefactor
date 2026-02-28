@@ -33,7 +33,7 @@ import com.dgphoenix.casino.common.util.CommonExecutorService;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.dgphoenix.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
-import com.dgphoenix.casino.kafka.dto.*;
+import com.abs.casino.kafka.dto.*;
 import com.abs.casino.kafka.dto.privateroom.request.*;
 import com.abs.casino.kafka.dto.privateroom.response.*;
 import com.abs.casino.promo.persisters.CassandraBattlegroundConfigPersister;

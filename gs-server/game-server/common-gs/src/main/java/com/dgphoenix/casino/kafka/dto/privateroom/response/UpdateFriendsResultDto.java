@@ -2,7 +2,7 @@ package com.abs.casino.kafka.dto.privateroom.response;
 
 import java.util.List;
 
-import com.dgphoenix.casino.kafka.dto.BGFriendDto;
+import com.abs.casino.kafka.dto.BGFriendDto;
 import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
 
 public class UpdateFriendsResultDto extends BasicKafkaResponse {

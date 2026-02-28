@@ -3,8 +3,8 @@ package com.abs.casino.util;
 import java.util.Set;
 
 import com.abs.casino.ats.BotConfigInfo;
-import com.dgphoenix.casino.kafka.dto.BotConfigInfoDto;
-import com.dgphoenix.casino.kafka.dto.TimeFrameDto;
+import com.abs.casino.kafka.dto.BotConfigInfoDto;
+import com.abs.casino.kafka.dto.TimeFrameDto;
 
 public class BotConfigInfoUtil {
     public static BotConfigInfo fromTBotConfigInfo(BotConfigInfoDto tBotConfigInfo) {

@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.abs.casino.ats.TimeFrame;
-import com.dgphoenix.casino.kafka.dto.TimeFrameDto;
+import com.abs.casino.kafka.dto.TimeFrameDto;
 
 public class TimeFrameUtil {
     public static TimeFrameDto toTTimeFrame(TimeFrame tf) {

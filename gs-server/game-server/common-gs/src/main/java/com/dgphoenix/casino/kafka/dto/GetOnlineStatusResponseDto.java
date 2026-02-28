@@ -1,7 +1,7 @@
 package com.abs.casino.kafka.dto;
 
 import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
-import com.dgphoenix.casino.kafka.dto.BGOnlinePlayerDto;
+import com.abs.casino.kafka.dto.BGOnlinePlayerDto;
 
 import java.util.List;
 

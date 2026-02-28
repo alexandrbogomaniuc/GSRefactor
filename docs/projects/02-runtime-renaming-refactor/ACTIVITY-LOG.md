@@ -4203,3 +4203,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Pushed wave completion commit `14c3db479` to `origin/main`.
 - Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-165301-hardcut-m2-wave312-wave313-kafka-handler-sm-core/`.
 - Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+
+## 2026-02-28 17:24 UTC (Hard-Cut M2 Wave 314 + 315)
+- Continued hard-cut execution from W313 with declaration-first overlap-safe `common-gs kafka/dto battleground` batch.
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `16`
+    - `BGFStatus`, `BGFriendDto`, `BGOStatus`, `BGOnlinePlayerDto`, `BGPlayerDto`, `BGStatus`, `BGUpdatePrivateRoomRequest`, `BGUpdateRoomResultDto`, `BattlegroundInfoDto`, `BattlegroundRoundInfoDto`, `BotConfigInfoDto`, `RMSPlayerDto`, `RMSRoomDto`, `RoundPlayerDto`, `TimeFrameDto`, `TournamentInfoDto`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1 failed at `STEP06` due moved DTO same-package dependency assumptions (`KafkaRequest`, `BasicKafkaResponse`, `PlaceDto`).
+  - rerun2 failed at `STEP06` due wildcard import resolution drift (`BGStatus`/`BotConfigInfoDto` boundaries).
+  - applied bounded compatibility imports and localized import normalization in `BattlegroundService`/`KafkaRequestMultiPlayer`.
+  - rerun3 reached canonical profile:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-170717-hardcut-m2-wave314-wave315-kafka-dto-battleground-core/`
+  - report: `docs/projects/02-runtime-renaming-refactor/218-hard-cut-m2-wave314-wave315-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `16`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `2065` remaining (`2277` baseline, `212` reduced, `9.310496%` burndown).

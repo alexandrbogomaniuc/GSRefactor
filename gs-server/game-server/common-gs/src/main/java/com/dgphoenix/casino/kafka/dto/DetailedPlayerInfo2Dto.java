@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
-import com.dgphoenix.casino.kafka.dto.BattlegroundInfoDto;
+import com.abs.casino.kafka.dto.BattlegroundInfoDto;
 import com.dgphoenix.casino.kafka.dto.CashBonusDto;
 import com.dgphoenix.casino.kafka.dto.FRBonusDto;
-import com.dgphoenix.casino.kafka.dto.TournamentInfoDto;
+import com.abs.casino.kafka.dto.TournamentInfoDto;
 
 public class DetailedPlayerInfo2Dto extends BasicKafkaResponse {
     private long bankId; 
