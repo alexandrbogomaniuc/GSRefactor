@@ -8165,3 +8165,24 @@
   - ETA `36.4h` (`4.55` workdays)
 - Next:
   - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external.
+### 2026-02-28 01:06 UTC
+- Continued Project 02 hard-cut execution in `Dev_new` and completed `W224A/W224B + W225` with batched-safe parallel mode (`1 explorer + 2 workers + main`).
+- Scope retained:
+  - declaration migrations: `20`.
+  - bounded rewires: `10`.
+- Stabilization/validation highlights:
+  - batchA fast gate rerun1/rerun2 failed at `STEP06` due moved declarations losing same-package visibility to legacy types.
+  - fixed with minimal import-only compatibility in moved declarations (`KafkaOuterRequestHandler`, `KafkaInServiceRequestHandler`, `AbstractSendAlertException`, `KafkaRequest`, `BGPlayerDto`, `BotConfigInfoDto`).
+  - canonical validation profile reached:
+    - batchA fast gate rerun3: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - batchB fast gate rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-010600-hardcut-m2-wave224ab-wave225-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/173-hard-cut-m2-wave224ab-wave225-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1416`, remaining `861`, burndown `62.186210%`
+  - Project 02 `39.296100%`, Core `69.648050%`, Portfolio `84.824025%`
+  - ETA `35.6h` (`4.45` workdays)
+- Next:
+  - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external.

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.socket.mq;
+package com.abs.casino.gs.socket.mq;
 
 import com.abs.casino.battleground.messages.RoomWasDeactivated;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;

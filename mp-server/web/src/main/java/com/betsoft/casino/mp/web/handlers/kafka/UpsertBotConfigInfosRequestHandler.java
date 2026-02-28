@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.kafka.dto.BotConfigInfoDto;
 import com.dgphoenix.casino.kafka.dto.BotConfigInfosResponse;
-import com.dgphoenix.casino.kafka.dto.UpsertBotConfigInfoRequest;
+import com.abs.casino.kafka.dto.UpsertBotConfigInfoRequest;
 import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
 
 

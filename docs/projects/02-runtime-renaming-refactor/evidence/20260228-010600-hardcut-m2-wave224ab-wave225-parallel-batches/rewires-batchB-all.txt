@@ -1,0 +1,10 @@
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/EnableBotServiceHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/GetAllBotConfigInfosRequestHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/GetBotConfigInfoByNickNameRequestHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/GetBotConfigInfoByUserNameRequestHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/GetBotConfigInfoRequestHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/IsBotServiceEnabledRequestHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/RemoveBotConfigInfoRequestHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/TournamentEndedHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/UpsertBotConfigInfosRequestHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/privateroom/PrivateRoomInfoHandler.java

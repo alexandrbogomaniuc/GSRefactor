@@ -1,4 +1,6 @@
-package com.dgphoenix.casino.kafka.dto;
+package com.abs.casino.kafka.dto;
+
+import com.dgphoenix.casino.kafka.dto.KafkaRequest;
 
 public class EnableBotServiceRequest implements KafkaRequest {
     private boolean enable;

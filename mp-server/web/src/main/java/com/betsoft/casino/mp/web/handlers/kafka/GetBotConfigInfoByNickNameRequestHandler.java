@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.web.handlers.kafka;
 import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.kafka.dto.BotConfigInfoDto;
-import com.dgphoenix.casino.kafka.dto.GetBotConfigInfoByNickNameRequest;
+import com.abs.casino.kafka.dto.GetBotConfigInfoByNickNameRequest;
 import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
 
 

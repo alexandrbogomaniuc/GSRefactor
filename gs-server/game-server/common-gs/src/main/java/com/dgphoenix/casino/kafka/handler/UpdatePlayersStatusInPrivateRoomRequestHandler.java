@@ -1,5 +1,6 @@
-package com.dgphoenix.casino.kafka.handler;
+package com.abs.casino.kafka.handler;
 
+import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

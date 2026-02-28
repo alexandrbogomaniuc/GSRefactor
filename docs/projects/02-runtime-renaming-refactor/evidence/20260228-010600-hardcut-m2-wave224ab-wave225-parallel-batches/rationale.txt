@@ -1,0 +1,13 @@
+W224 batch selection at commit b3c4362a:
+- Batch A: 10 declaration files (common-gs kafka handlers + dto/task/exception), selected for explicit zero-rewire fanout.
+- Batch B: 10 declaration files (common-gs kafka.dto bot/private-room/tournament request DTOs), each with low explicit fanout (mostly one importer) and no web-gs hotspot ownership.
+
+Why low risk / parallel safe:
+- Both batches are declaration-first and non-overlapping.
+- Batch A remains declaration-only with zero explicit rewires.
+- Batch B rewires are bounded to mp-server/web and common-gs kafka handler files (no web-gs rewires detected).
+- Strict ownership checks pass: declaration overlap, rewire overlap, and cross overlaps are all zero.
+
+Execution posture:
+- Executor-ready from current repository state without global replacement.
+- Rewire ownership is isolated to Batch B; Batch A can run as zero-rewire declaration-only.

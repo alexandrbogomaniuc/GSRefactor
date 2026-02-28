@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.bonus;
+package com.abs.casino.gs.managers.payment.bonus;
 
 /**
  * Created by User on 09.07.2014.

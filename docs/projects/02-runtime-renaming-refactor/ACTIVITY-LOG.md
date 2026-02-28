@@ -3276,3 +3276,29 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `24`.
   - retained bounded rewires: `0`.
   - global tracked source declarations/files now `881` remaining (`2277` baseline, `1396` reduced, `61.308740%` burndown).
+
+## 2026-02-28 01:06 UTC (Hard-Cut M2 Wave 224A + 224B + 225)
+- Continued batched-safe hard-cut migration from W223 checkpoint with non-overlapping declaration sets:
+  - `W224A`: 10 declaration migrations in `game-server/common-gs` handler/dto/exception/task surfaces.
+  - `W224B`: 10 declaration migrations in `game-server/common-gs/kafka/dto` and 10 bounded rewires in `mp-server/web` kafka handlers.
+  - `W225`: integration and validation.
+- Parallel execution mode:
+  - `1 explorer + 2 workers + main` with strict non-overlap ownership.
+- Stabilization:
+  - fast gate batchA rerun1 and rerun2 failed at `STEP06` due moved declarations losing same-package visibility to legacy types.
+  - fixed with minimal import-only compatibility in moved declarations (`KafkaOuterRequestHandler`, `KafkaInServiceRequestHandler`, `AbstractSendAlertException`, `KafkaRequest`, `BGPlayerDto`, `BotConfigInfoDto`).
+  - no blind/global replacement performed.
+  - preserved pre-existing local changes (`cluster-hosts.properties`, `.tmp-w202-*`, prior uncommitted evidence folder) outside commit scope.
+- Validation:
+  - fast gate batchA rerun1: `STEP06 FAIL`.
+  - fast gate batchA rerun2: `STEP06 FAIL`.
+  - fast gate batchA rerun3 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - fast gate batchB rerun1 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - full matrix rerun1 (canonical): `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`); retry1 failed (`rc=2`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-010600-hardcut-m2-wave224ab-wave225-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/173-hard-cut-m2-wave224ab-wave225-parallel-batches-report-20260228.md`
+- Outcome:
+  - retained declaration migrations: `20`.
+  - retained bounded rewires: `10`.
+  - global tracked source declarations/files now `861` remaining (`2277` baseline, `1416` reduced, `62.186210%` burndown).

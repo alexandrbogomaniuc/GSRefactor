@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.kafka.dto.BooleanResponseDto;
-import com.dgphoenix.casino.kafka.dto.IsBotServiceEnabledRequest;
+import com.abs.casino.kafka.dto.IsBotServiceEnabledRequest;
 import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
 
 @Component
