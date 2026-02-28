@@ -1,0 +1,25 @@
+# package-checks (before from HEAD)
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/NotifyPrivateRoomWasDeactivatedRequestHandler.java: package com.dgphoenix.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/PushOnlineRoomsPlayersRequestHandler.java: package com.dgphoenix.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/RefundBuyInRequestHandler.java: package com.dgphoenix.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/RemoveMQReservedNicknamesRequestHandler.java: package com.dgphoenix.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/SaveCashBonusRoundResultRequestHandler.java: package com.dgphoenix.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/SavePlayerBetForFRBRequestHandler.java: package com.dgphoenix.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/SaveTournamentRoundResultRequestHandler.java: package com.dgphoenix.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/SessionTouchRequestHandler.java: package com.dgphoenix.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/SitInRequestHandler.java: package com.dgphoenix.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/SitOutCashBonusSessionRequestHandler.java: package com.dgphoenix.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/SitOutTournamentSessionRequestHandler.java: package com.dgphoenix.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/StartNewRoundForManyPlayersRequestHandler.java: package com.dgphoenix.casino.kafka.handler;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java: package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java: package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java: package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java: package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoLocalization.java: package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentEventQualifier.java: package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentRankPersister.java: package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PlayerListType.java: package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PrizeType.java: package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoPeriod.java: package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java: package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java: package com.dgphoenix.casino.common.promo;

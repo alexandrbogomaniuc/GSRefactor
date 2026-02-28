@@ -1,5 +1,6 @@
-package com.dgphoenix.casino.common.promo;
+package com.abs.casino.common.promo;
 
+import com.dgphoenix.casino.common.promo.*;
 import java.io.IOException;
 
 import com.dgphoenix.casino.common.cache.JsonSelfSerializable;

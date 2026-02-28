@@ -1,0 +1,12 @@
+W222 batch selection (commit a4367392):
+- Batch A: 12 declaration files in common-gs kafka handlers.
+- Batch B: 12 declaration files in common-promo qualifier/template/type layer.
+
+Why these are low-risk for parallel hard-cut:
+- Declaration-only scope in both batches (10-20 each).
+- Zero overlap between declaration ownership sets.
+- Rewire ownership from explicit Java FQCN references is empty for both batches, yielding zero rewire overlap and zero cross-overlap.
+- Avoids web-gs hotspot declarations and broad config rewires.
+
+Execution posture:
+- Batches are executor-ready from current repo state with strict no-overlap and minimal rewire burden.

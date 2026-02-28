@@ -1,5 +1,6 @@
-package com.dgphoenix.casino.common.promo;
+package com.abs.casino.common.promo;
 
+import com.dgphoenix.casino.common.promo.*;
 import com.abs.casino.tools.annotations.Preset;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;

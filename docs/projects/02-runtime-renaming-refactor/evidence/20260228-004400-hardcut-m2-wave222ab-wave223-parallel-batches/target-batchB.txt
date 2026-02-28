@@ -1,0 +1,12 @@
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoLocalization.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentEventQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentRankPersister.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PlayerListType.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PrizeType.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoPeriod.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java

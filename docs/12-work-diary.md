@@ -8143,3 +8143,25 @@
   - ETA `37.4h` (`4.68` workdays)
 - Next:
   - continue declaration-first overlap-safe hard-cut waves while tracking `STEP09` `/startgame` smoke alias `HTTP 502` as external blocker.
+### 2026-02-28 00:44 UTC
+- Continued Project 02 hard-cut execution in `Dev_new` and completed `W222A/W222B + W223` with batched-safe parallel mode (`1 explorer + 2 workers + main`).
+- Scope retained:
+  - declaration migrations: `24`.
+  - bounded rewires: `0` (planned rewire manifests empty).
+- Stabilization/validation highlights:
+  - fast gate batchA rerun1 failed at `STEP04` due moved `common-promo` declarations losing same-package visibility to legacy promo declarations.
+  - fixed with minimal import-only stabilization in moved promo declarations (`import com.dgphoenix.casino.common.promo.*;`).
+  - proactively applied prior-proven handler compatibility import in moved `kafka/handler` declarations (`import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;`).
+  - canonical validation profile reached:
+    - batchA fast gate rerun2: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - batchB fast gate rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-004400-hardcut-m2-wave222ab-wave223-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/172-hard-cut-m2-wave222ab-wave223-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1396`, remaining `881`, burndown `61.308740%`
+  - Project 02 `38.741070%`, Core `69.370535%`, Portfolio `84.685268%`
+  - ETA `36.4h` (`4.55` workdays)
+- Next:
+  - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external.

@@ -1,0 +1,516 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 54 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[12,47] error: cannot find symbol
+[ERROR]   symbol: class IPrizeQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[15,17] error: cannot find symbol
+[ERROR]   symbol:   class IPrizeQualifier
+  location: class CompoundPrizeQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[18,32] error: cannot find symbol
+[ERROR]   symbol:   class IPromoTemplate
+  location: class CompoundPrizeQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[18,57] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+  location: class CompoundPrizeQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[18,85] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class CompoundPrizeQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[28,37] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class CompoundPrizeQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[35,40] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+  location: class CompoundPrizeQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[35,68] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class CompoundPrizeQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[39,29] error: cannot find symbol
+[ERROR]   symbol:   class IPrizeQualifier
+  location: class CompoundPrizeQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[15,49] error: cannot find symbol
+[ERROR]   symbol: class IParticipantEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[21,30] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[21,58] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[21,78] error: cannot find symbol
+[ERROR]   symbol:   class PlayerBetEvent
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[48,32] error: cannot find symbol
+[ERROR]   symbol:   class IPromoCampaign
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[48,57] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[48,85] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[49,32] error: cannot find symbol
+[ERROR]   symbol:   class PlayerBonusEvent
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[54,30] error: cannot find symbol
+[ERROR]   symbol:   class IPromoCampaign
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[54,55] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[54,83] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[55,30] error: cannot find symbol
+[ERROR]   symbol:   class PlayerWinEvent
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentEventQualifier.java:[8,51] error: cannot find symbol
+[ERROR]   symbol: class IPlayerBetQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[14,37] error: cannot find symbol
+[ERROR]   symbol: class IPlayerWinQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[28,30] error: cannot find symbol
+[ERROR]   symbol:   class IPromoCampaign
+  location: class WinQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[28,55] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+  location: class WinQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[28,83] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class WinQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[29,30] error: cannot find symbol
+[ERROR]   symbol:   class PlayerWinEvent
+  location: class WinQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentRankPersister.java:[7,17] error: cannot find symbol
+[ERROR]   symbol:   class TournamentMemberRank
+  location: interface ITournamentRankPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentRankPersister.java:[8,4] error: cannot find symbol
+[ERROR]   symbol:   class TournamentMemberRank
+  location: interface ITournamentRankPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java:[10,59] error: cannot find symbol
+[ERROR]   symbol: class IPlayerBetQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java:[25,30] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+  location: class FixedRateByAmountBetEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java:[25,58] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class FixedRateByAmountBetEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java:[25,78] error: cannot find symbol
+[ERROR]   symbol:   class PlayerBetEvent
+  location: class FixedRateByAmountBetEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[9,50] error: cannot find symbol
+[ERROR]   symbol: class IParticipantEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[12,12] error: cannot find symbol
+[ERROR]   symbol:   class IPlayerBetQualifier
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[14,37] error: cannot find symbol
+[ERROR]   symbol:   class IPlayerBetQualifier
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[19,30] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[19,58] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[19,78] error: cannot find symbol
+[ERROR]   symbol:   class PlayerBetEvent
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[28,32] error: cannot find symbol
+[ERROR]   symbol:   class IPromoCampaign
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[28,57] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[28,85] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[29,32] error: cannot find symbol
+[ERROR]   symbol:   class PlayerBonusEvent
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[34,30] error: cannot find symbol
+[ERROR]   symbol:   class IPromoCampaign
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[34,55] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[34,83] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[35,30] error: cannot find symbol
+[ERROR]   symbol:   class PlayerWinEvent
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[47,35] error: cannot find symbol
+[ERROR]   symbol:   class IPromoCampaign
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[47,60] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[47,88] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[48,35] error: cannot find symbol
+[ERROR]   symbol:   class EndRoundEvent
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoPeriod.java:[23,12] error: cannot find symbol
+[ERROR]   symbol:   class TimeSlot
+  location: class PromoPeriod
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoPeriod.java:[38,11] error: cannot find symbol
+[ERROR]   symbol:   class TimeSlot
+  location: class PromoPeriod
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoPeriod.java:[42,35] error: cannot find symbol
+[ERROR]   symbol:   class TimeSlot
+  location: class PromoPeriod
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[20,55] error: cannot find symbol
+[ERROR]   symbol: class MaxBalanceTournamentPromoTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[22,29] error: cannot find symbol
+[ERROR]   symbol:   class TournamentObjective
+  location: class TotalWagerTournamentPromoTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[24,79] error: cannot find symbol
+[ERROR]   symbol:   class TournamentObjective
+  location: class TotalWagerTournamentPromoTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[24,110] error: cannot find symbol
+[ERROR]   symbol:   class TournamentRankQualifier
+  location: class TotalWagerTournamentPromoTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[33,11] error: cannot find symbol
+[ERROR]   symbol:   class PromoType
+  location: class TotalWagerTournamentPromoTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[38,15] error: cannot find symbol
+[ERROR]   symbol:   class TournamentObjective
+  location: class TotalWagerTournamentPromoTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[15,61] error: cannot find symbol
+[ERROR]   symbol:   class IPrizeQualifier
+  location: class CompoundPrizeQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[17,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[19,13] error: cannot find symbol
+[ERROR]   symbol:   class IPrizeQualifier
+  location: class CompoundPrizeQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[27,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[34,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[43,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[48,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[54,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[57,27] error: cannot find symbol
+[ERROR]   symbol:   class IPrizeQualifier
+  location: class CompoundPrizeQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[20,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[28,12] error: cannot find symbol
+[ERROR]   symbol:   class TournamentMemberRank
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[31,43] error: cannot find symbol
+[ERROR]   symbol:   class TournamentMemberRank
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[39,16] error: cannot find symbol
+[ERROR]   symbol:   class RoundStat
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[39,42] error: cannot find symbol
+[ERROR]   symbol:   class RoundStat
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[47,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[53,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[60,8] error: cannot find symbol
+[ERROR]   symbol:   class TournamentMemberRank
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[63,12] error: cannot find symbol
+[ERROR]   symbol:   class RoundStat
+  location: class HighestWinEventQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[82,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[88,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[27,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[47,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[53,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java:[24,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java:[44,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java:[51,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[18,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[27,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[33,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[58,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[64,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[67,24] error: cannot find symbol
+[ERROR]   symbol:   class IPlayerBetQualifier
+  location: class ByAmountBetRoundQualifier
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoPeriod.java:[100,27] error: cannot find symbol
+[ERROR]   symbol:   class TimeSlot
+  location: class PromoPeriod
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoPeriod.java:[121,70] error: cannot find symbol
+[ERROR]   symbol:   class TimeSlot
+  location: class PromoPeriod
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[22,93] error: cannot find symbol
+[ERROR]   symbol:   variable TournamentObjective
+  location: class TotalWagerTournamentPromoTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[32,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[34,15] error: cannot find symbol
+[ERROR]   symbol:   variable PromoType
+  location: class TotalWagerTournamentPromoTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[37,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[42,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[45,8] error: cannot find symbol
+[INFO] 100 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.030 s
+[INFO] Finished at: 2026-02-28T00:49:41Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project common-promo: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[12,47] error: cannot find symbol
+[ERROR]   symbol: class IPrizeQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[15,17] error: cannot find symbol
+[ERROR]   symbol:   class IPrizeQualifier
+[ERROR]   location: class CompoundPrizeQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[18,32] error: cannot find symbol
+[ERROR]   symbol:   class IPromoTemplate
+[ERROR]   location: class CompoundPrizeQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[18,57] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+[ERROR]   location: class CompoundPrizeQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[18,85] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class CompoundPrizeQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[28,37] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class CompoundPrizeQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[35,40] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+[ERROR]   location: class CompoundPrizeQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[35,68] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class CompoundPrizeQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[39,29] error: cannot find symbol
+[ERROR]   symbol:   class IPrizeQualifier
+[ERROR]   location: class CompoundPrizeQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[15,49] error: cannot find symbol
+[ERROR]   symbol: class IParticipantEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[21,30] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[21,58] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[21,78] error: cannot find symbol
+[ERROR]   symbol:   class PlayerBetEvent
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[48,32] error: cannot find symbol
+[ERROR]   symbol:   class IPromoCampaign
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[48,57] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[48,85] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[49,32] error: cannot find symbol
+[ERROR]   symbol:   class PlayerBonusEvent
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[54,30] error: cannot find symbol
+[ERROR]   symbol:   class IPromoCampaign
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[54,55] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[54,83] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[55,30] error: cannot find symbol
+[ERROR]   symbol:   class PlayerWinEvent
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentEventQualifier.java:[8,51] error: cannot find symbol
+[ERROR]   symbol: class IPlayerBetQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[14,37] error: cannot find symbol
+[ERROR]   symbol: class IPlayerWinQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[28,30] error: cannot find symbol
+[ERROR]   symbol:   class IPromoCampaign
+[ERROR]   location: class WinQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[28,55] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+[ERROR]   location: class WinQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[28,83] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class WinQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[29,30] error: cannot find symbol
+[ERROR]   symbol:   class PlayerWinEvent
+[ERROR]   location: class WinQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentRankPersister.java:[7,17] error: cannot find symbol
+[ERROR]   symbol:   class TournamentMemberRank
+[ERROR]   location: interface ITournamentRankPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentRankPersister.java:[8,4] error: cannot find symbol
+[ERROR]   symbol:   class TournamentMemberRank
+[ERROR]   location: interface ITournamentRankPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java:[10,59] error: cannot find symbol
+[ERROR]   symbol: class IPlayerBetQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java:[25,30] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+[ERROR]   location: class FixedRateByAmountBetEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java:[25,58] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class FixedRateByAmountBetEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java:[25,78] error: cannot find symbol
+[ERROR]   symbol:   class PlayerBetEvent
+[ERROR]   location: class FixedRateByAmountBetEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[9,50] error: cannot find symbol
+[ERROR]   symbol: class IParticipantEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[12,12] error: cannot find symbol
+[ERROR]   symbol:   class IPlayerBetQualifier
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[14,37] error: cannot find symbol
+[ERROR]   symbol:   class IPlayerBetQualifier
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[19,30] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[19,58] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[19,78] error: cannot find symbol
+[ERROR]   symbol:   class PlayerBetEvent
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[28,32] error: cannot find symbol
+[ERROR]   symbol:   class IPromoCampaign
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[28,57] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[28,85] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[29,32] error: cannot find symbol
+[ERROR]   symbol:   class PlayerBonusEvent
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[34,30] error: cannot find symbol
+[ERROR]   symbol:   class IPromoCampaign
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[34,55] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[34,83] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[35,30] error: cannot find symbol
+[ERROR]   symbol:   class PlayerWinEvent
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[47,35] error: cannot find symbol
+[ERROR]   symbol:   class IPromoCampaign
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[47,60] error: cannot find symbol
+[ERROR]   symbol:   class PromoCampaignMember
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[47,88] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[48,35] error: cannot find symbol
+[ERROR]   symbol:   class EndRoundEvent
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoPeriod.java:[23,12] error: cannot find symbol
+[ERROR]   symbol:   class TimeSlot
+[ERROR]   location: class PromoPeriod
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoPeriod.java:[38,11] error: cannot find symbol
+[ERROR]   symbol:   class TimeSlot
+[ERROR]   location: class PromoPeriod
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoPeriod.java:[42,35] error: cannot find symbol
+[ERROR]   symbol:   class TimeSlot
+[ERROR]   location: class PromoPeriod
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[20,55] error: cannot find symbol
+[ERROR]   symbol: class MaxBalanceTournamentPromoTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[22,29] error: cannot find symbol
+[ERROR]   symbol:   class TournamentObjective
+[ERROR]   location: class TotalWagerTournamentPromoTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[24,79] error: cannot find symbol
+[ERROR]   symbol:   class TournamentObjective
+[ERROR]   location: class TotalWagerTournamentPromoTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[24,110] error: cannot find symbol
+[ERROR]   symbol:   class TournamentRankQualifier
+[ERROR]   location: class TotalWagerTournamentPromoTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[33,11] error: cannot find symbol
+[ERROR]   symbol:   class PromoType
+[ERROR]   location: class TotalWagerTournamentPromoTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[38,15] error: cannot find symbol
+[ERROR]   symbol:   class TournamentObjective
+[ERROR]   location: class TotalWagerTournamentPromoTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[15,61] error: cannot find symbol
+[ERROR]   symbol:   class IPrizeQualifier
+[ERROR]   location: class CompoundPrizeQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[17,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[19,13] error: cannot find symbol
+[ERROR]   symbol:   class IPrizeQualifier
+[ERROR]   location: class CompoundPrizeQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[27,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[34,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[43,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[48,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[54,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CompoundPrizeQualifier.java:[57,27] error: cannot find symbol
+[ERROR]   symbol:   class IPrizeQualifier
+[ERROR]   location: class CompoundPrizeQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[20,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[28,12] error: cannot find symbol
+[ERROR]   symbol:   class TournamentMemberRank
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[31,43] error: cannot find symbol
+[ERROR]   symbol:   class TournamentMemberRank
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[39,16] error: cannot find symbol
+[ERROR]   symbol:   class RoundStat
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[39,42] error: cannot find symbol
+[ERROR]   symbol:   class RoundStat
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[47,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[53,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[60,8] error: cannot find symbol
+[ERROR]   symbol:   class TournamentMemberRank
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[63,12] error: cannot find symbol
+[ERROR]   symbol:   class RoundStat
+[ERROR]   location: class HighestWinEventQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[82,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/HighestWinEventQualifier.java:[88,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[27,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[47,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/WinQualifier.java:[53,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java:[24,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java:[44,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FixedRateByAmountBetEventQualifier.java:[51,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[18,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[27,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[33,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[58,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[64,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetRoundQualifier.java:[67,24] error: cannot find symbol
+[ERROR]   symbol:   class IPlayerBetQualifier
+[ERROR]   location: class ByAmountBetRoundQualifier
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoPeriod.java:[100,27] error: cannot find symbol
+[ERROR]   symbol:   class TimeSlot
+[ERROR]   location: class PromoPeriod
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoPeriod.java:[121,70] error: cannot find symbol
+[ERROR]   symbol:   class TimeSlot
+[ERROR]   location: class PromoPeriod
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[22,93] error: cannot find symbol
+[ERROR]   symbol:   variable TournamentObjective
+[ERROR]   location: class TotalWagerTournamentPromoTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[32,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[34,15] error: cannot find symbol
+[ERROR]   symbol:   variable PromoType
+[ERROR]   location: class TotalWagerTournamentPromoTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[37,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[42,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TotalWagerTournamentPromoTemplate.java:[45,8] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
