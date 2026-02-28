@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.InServiceServiceHandler;
-import com.dgphoenix.casino.kafka.dto.GameServerInfoDto;
-import com.dgphoenix.casino.kafka.dto.GameServerInfoResponseDto;
-import com.dgphoenix.casino.kafka.dto.GetGameServersInfoRequest;
+import com.abs.casino.kafka.dto.GameServerInfoDto;
+import com.abs.casino.kafka.dto.GameServerInfoResponseDto;
+import com.abs.casino.kafka.dto.GetGameServersInfoRequest;
 
 @Component
 public class GetGameServerInfosRequestHandler implements KafkaOuterRequestHandler<GetGameServersInfoRequest, GameServerInfoResponseDto> {

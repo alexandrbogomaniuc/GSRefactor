@@ -1,0 +1,30 @@
+ M docs/12-work-diary.md
+ M docs/projects/02-runtime-renaming-refactor/ACTIVITY-LOG.md
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/InServiceServiceHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GameServerInfoDto.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GameServerInfoResponseDto.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetExternalAccountIdsRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetExternalAccountIdsResponseDto.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetGameServersInfoRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetOnlineStatusRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetOnlineStatusResponseDto.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SendBalanceUpdatedRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SendPlayerTournamentStateChangedRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SendPromoNotificationsRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/UpdateStubBalanceByExternalUserIdRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/GetExternalAccountIdsRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/GetGameServerInfosRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/GetOnlineStatusRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/SendBalanceUpdatedRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/SendPlayerTournamentStateChangedRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/SendPromoNotificationsRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/UpdateStubBalanceByExternalUserIdRequestHandler.java
+ M gs-server/game-server/web-gs/src/main/resources/cluster-hosts.properties
+?? .tmp-w202-batchA.txt
+?? .tmp-w202-batchB.txt
+?? docs/projects/02-runtime-renaming-refactor/186-hard-cut-m2-wave250-wave251-parallel-batches-report-20260228.md
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-002035-hardcut-m2-wave222ab-wave223-parallel-batches/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-035231-hardcut-m2-wave242ab-wave243-parallel-batches/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-035609-hardcut-m2-wave242ab-wave243-parallel-batches/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-040443-hardcut-m2-wave242-wave243-mp-kafka-cluster/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-053950-hardcut-m2-wave250-wave251-kafka-dto-status-server-info/

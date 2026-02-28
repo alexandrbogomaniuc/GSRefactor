@@ -1,0 +1,2 @@
+Low-risk declaration batch selected from common-gs kafka DTO request/response surfaces with limited fan-out to dedicated handlers and InServiceServiceHandler/RemoteCallHelper.
+No blind global replace; rewires are direct import-only updates.

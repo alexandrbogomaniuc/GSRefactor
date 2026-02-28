@@ -1,0 +1,11 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SendBalanceUpdatedRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SendPlayerTournamentStateChangedRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SendPromoNotificationsRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/UpdateStubBalanceByExternalUserIdRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GameServerInfoDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GameServerInfoResponseDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetGameServersInfoRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetOnlineStatusRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetOnlineStatusResponseDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetExternalAccountIdsRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetExternalAccountIdsResponseDto.java

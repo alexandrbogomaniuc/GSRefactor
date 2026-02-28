@@ -43,7 +43,7 @@ import com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.abs.casino.gs.status.ServersStatusWatcher;
-import com.dgphoenix.casino.kafka.dto.GameServerInfoDto;
+import com.abs.casino.kafka.dto.GameServerInfoDto;
 import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
 
 @Component

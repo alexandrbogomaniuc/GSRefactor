@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
-import com.dgphoenix.casino.kafka.dto.GetExternalAccountIdsRequest;
-import com.dgphoenix.casino.kafka.dto.GetExternalAccountIdsResponseDto;
+import com.abs.casino.kafka.dto.GetExternalAccountIdsRequest;
+import com.abs.casino.kafka.dto.GetExternalAccountIdsResponseDto;
 
 @Component
 public class GetExternalAccountIdsRequestHandler implements KafkaOuterRequestHandler<GetExternalAccountIdsRequest, GetExternalAccountIdsResponseDto> {

@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
-import com.dgphoenix.casino.kafka.dto.GetOnlineStatusRequest;
-import com.dgphoenix.casino.kafka.dto.GetOnlineStatusResponseDto;
+import com.abs.casino.kafka.dto.GetOnlineStatusRequest;
+import com.abs.casino.kafka.dto.GetOnlineStatusResponseDto;
 
 @Component
 public class GetOnlineStatusRequestHandler implements KafkaOuterRequestHandler<GetOnlineStatusRequest, GetOnlineStatusResponseDto> {

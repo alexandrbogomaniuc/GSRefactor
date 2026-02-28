@@ -1,0 +1,12 @@
+# Package checks (after)
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SendBalanceUpdatedRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SendPlayerTournamentStateChangedRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SendPromoNotificationsRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/UpdateStubBalanceByExternalUserIdRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GameServerInfoDto.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GameServerInfoResponseDto.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetGameServersInfoRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetOnlineStatusRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetOnlineStatusResponseDto.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetExternalAccountIdsRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetExternalAccountIdsResponseDto.java: package com.abs.casino.kafka.dto;
