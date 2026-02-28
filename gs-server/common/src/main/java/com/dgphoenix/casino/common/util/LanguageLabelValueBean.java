@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util;
+package com.abs.casino.common.util;
 
 import com.abs.casino.common.cache.data.language.LanguageType;
 import org.apache.struts.util.LabelValueBean;

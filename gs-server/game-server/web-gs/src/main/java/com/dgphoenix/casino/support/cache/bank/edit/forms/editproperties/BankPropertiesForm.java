@@ -2,9 +2,9 @@ package com.abs.casino.support.cache.bank.edit.forms.editproperties;
 
 
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.util.CurrencyLabelValueListBean;
-import com.dgphoenix.casino.common.util.LanguageLabelValueBean;
-import com.dgphoenix.casino.common.util.LimitLabelValueListBean;
+import com.abs.casino.common.util.CurrencyLabelValueListBean;
+import com.abs.casino.common.util.LanguageLabelValueBean;
+import com.abs.casino.common.util.LimitLabelValueListBean;
 import com.abs.casino.common.util.property.BooleanProperty;
 import com.abs.casino.common.util.property.MandatoryProperty;
 import com.abs.casino.common.util.property.NumericProperty;

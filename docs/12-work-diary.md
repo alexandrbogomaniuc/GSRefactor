@@ -8631,3 +8631,22 @@
   - baseline `2277`, reduced `1737`, remaining `540`, burndown `76.284585%`
   - Project 02 `47.223096%`, Core `73.611548%`, Portfolio `86.805774%`
   - ETA `22.1h` (`2.76` workdays)
+
+### 2026-02-28 09:13 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W274 + W275`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `10`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - rerun1 failed at `STEP01/PRE01` due moved `RefererDomains` losing same-package visibility to unmigrated `CollectionUtils`; fixed with explicit compatibility import.
+  - post-rerun2 hardening added explicit `com.abs` `LongPair` import in `CassandraGameSessionPersister`; reran full matrix on rerun3.
+  - canonical validation reached on rerun3:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-085357-hardcut-m2-wave274-wave275-common-util-enums-beans/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/198-hard-cut-m2-wave274-wave275-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1747`, remaining `530`, burndown `76.723759%`
+  - Project 02 `47.358402%`, Core `73.679201%`, Portfolio `86.839600%`
+  - ETA `21.7h` (`2.71` workdays)

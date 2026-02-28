@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util;
+package com.abs.casino.common.util;
 
 import com.dgphoenix.casino.common.cache.LimitsCache;
 import com.dgphoenix.casino.common.cache.data.bank.Limit;

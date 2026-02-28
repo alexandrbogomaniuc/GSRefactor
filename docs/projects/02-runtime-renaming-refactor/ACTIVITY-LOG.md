@@ -3811,3 +3811,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 11`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+11`.
   - global tracked source declarations/files now `540` remaining (`2277` baseline, `1737` reduced, `76.284585%` burndown).
+
+## 2026-02-28 09:13 UTC (Hard-Cut M2 Wave 274 + 275)
+- Continued hard-cut execution from W273 with declaration-first overlap-safe batch in `common.util` low-risk surfaces:
+  - `W274`: 10 declaration migrations retained (`ReportTypeEnum`, `ReportPeriodEnum`, `LogoutActionType`, `LanguageLabelValueBean`, `LimitLabelValueListBean`, `CurrencyLabelValueListBean`, `LongPair`, `LongPairComparator`, `LongPairUpdateCondition`, `RefererDomains`).
+  - `W275`: integration and validation.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1 failed at `STEP01/PRE01` because moved `RefererDomains` lost same-package visibility to unmigrated `CollectionUtils`; fixed with explicit compatibility import.
+  - post-rerun2 correctness hardening added explicit `com.abs` `LongPair` import in `CassandraGameSessionPersister` to avoid wildcard/stale-classpath masking; reran full matrix on rerun3.
+  - canonical validation reached on rerun3:
+    - fast gate batchA: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-085357-hardcut-m2-wave274-wave275-common-util-enums-beans/`
+  - report: `docs/projects/02-runtime-renaming-refactor/198-hard-cut-m2-wave274-wave275-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 10`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+10`.
+  - global tracked source declarations/files now `530` remaining (`2277` baseline, `1747` reduced, `76.723759%` burndown).

@@ -13,6 +13,7 @@ import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.util.LongPair;
 import com.dgphoenix.casino.common.util.*;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;

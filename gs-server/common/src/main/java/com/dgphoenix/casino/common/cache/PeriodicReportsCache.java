@@ -2,8 +2,8 @@ package com.dgphoenix.casino.common.cache;
 
 import com.abs.casino.common.cache.data.report.PeriodicReportInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.ReportPeriodEnum;
-import com.dgphoenix.casino.common.util.ReportTypeEnum;
+import com.abs.casino.common.util.ReportPeriodEnum;
+import com.abs.casino.common.util.ReportTypeEnum;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
