@@ -1,7 +1,7 @@
 package com.abs.casino.common.util.test.api;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.ObjectCreator;
+import com.abs.casino.common.util.ObjectCreator;
 import com.dgphoenix.casino.common.util.ReflectionUtils;
 
 import java.util.HashMap;

@@ -1,6 +1,6 @@
 package com.abs.casino.common.util;
 
-import com.dgphoenix.casino.common.util.DateUtils;
+import com.abs.casino.common.util.DateUtils;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;

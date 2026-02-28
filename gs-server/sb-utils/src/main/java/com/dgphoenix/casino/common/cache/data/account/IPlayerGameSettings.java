@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data.account;
+package com.abs.casino.common.cache.data.account;
 
 import com.dgphoenix.casino.common.cache.data.bank.ICoin;
 import com.dgphoenix.casino.common.cache.data.bank.ILimit;

@@ -1,0 +1,12 @@
+com.dgphoenix.casino.common.GameSessionExtendedProperties com.abs.casino.common.GameSessionExtendedProperties
+com.dgphoenix.casino.common.cache.data.session.GameSessionStatistics com.abs.casino.common.cache.data.session.GameSessionStatistics
+com.dgphoenix.casino.common.cache.data.session.IGameSession com.abs.casino.common.cache.data.session.IGameSession
+com.dgphoenix.casino.common.cache.data.account.IPlayerGameSettings com.abs.casino.common.cache.data.account.IPlayerGameSettings
+com.dgphoenix.casino.common.util.AccountIdGenerator com.abs.casino.common.util.AccountIdGenerator
+com.dgphoenix.casino.common.util.DateUtils com.abs.casino.common.util.DateUtils
+com.dgphoenix.casino.common.util.InheritFromTemplate com.abs.casino.common.util.InheritFromTemplate
+com.dgphoenix.casino.common.util.ObjectCreator com.abs.casino.common.util.ObjectCreator
+com.dgphoenix.casino.common.util.CookieUtils com.abs.casino.common.util.CookieUtils
+com.dgphoenix.casino.common.util.DESCrypter com.abs.casino.common.util.DESCrypter
+com.dgphoenix.casino.common.util.SynchroTimeProvider com.abs.casino.common.util.SynchroTimeProvider
+com.dgphoenix.casino.common.util.IGeoIp com.abs.casino.common.util.IGeoIp

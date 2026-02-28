@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util;
+package com.abs.casino.common.util;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

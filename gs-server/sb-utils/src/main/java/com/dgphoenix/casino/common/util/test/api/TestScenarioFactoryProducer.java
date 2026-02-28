@@ -1,7 +1,7 @@
 package com.abs.casino.common.util.test.api;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.ObjectCreator;
+import com.abs.casino.common.util.ObjectCreator;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;

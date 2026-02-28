@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util;
+package com.abs.casino.common.util;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Cookie;

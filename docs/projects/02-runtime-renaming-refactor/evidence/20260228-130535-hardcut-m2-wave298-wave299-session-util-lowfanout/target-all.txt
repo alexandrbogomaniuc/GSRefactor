@@ -1,0 +1,12 @@
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/GameSessionExtendedProperties.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/session/GameSessionStatistics.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/session/IGameSession.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/account/IPlayerGameSettings.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/AccountIdGenerator.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/DateUtils.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/InheritFromTemplate.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/ObjectCreator.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/CookieUtils.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/DESCrypter.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/SynchroTimeProvider.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/IGeoIp.java

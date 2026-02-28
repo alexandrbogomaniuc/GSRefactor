@@ -4048,3 +4048,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 12`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+12`.
   - global tracked source declarations/files now `455` remaining (`2277` baseline, `1822` reduced, `80.017567%` burndown).
+
+## 2026-02-28 13:15 UTC (Hard-Cut M2 Wave 298 + 299)
+- Continued hard-cut execution from W297 with declaration-first overlap-safe `sb-utils` session/util low-fanout batch.
+  - `W298`: retained `6` declaration migrations (`GameSessionExtendedProperties`, `GameSessionStatistics`, `IGameSession`, `IPlayerGameSettings`, `AccountIdGenerator`, `DateUtils`).
+  - `W299`: retained `6` declaration migrations (`InheritFromTemplate`, `ObjectCreator`, `CookieUtils`, `DESCrypter`, `SynchroTimeProvider`, `IGeoIp`).
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1 failed at `STEP03/PRE02` because moved `SynchroTimeProvider` lost same-package visibility to unmoved `ITimeProvider` + `ExecutorUtils`.
+  - rerun2 repeated same failure because initial import patch did not apply.
+  - rerun3 fix added bounded explicit compatibility imports in moved `SynchroTimeProvider`; canonical validation reached:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-130535-hardcut-m2-wave298-wave299-session-util-lowfanout/`
+  - report: `docs/projects/02-runtime-renaming-refactor/210-hard-cut-m2-wave298-wave299-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `12`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `444` remaining (`2277` baseline, `1833` reduced, `80.500659%` burndown).

@@ -1,0 +1,120 @@
+[2026-02-28T13:07:44Z] START PRE01
+[2026-02-28T13:07:44Z] START PRE01
+[2026-02-28T13:07:44Z] DIR gs-server/utils
+[2026-02-28T13:07:44Z] DIR gs-server/utils
+[2026-02-28T13:07:44Z] CMD mvn -DskipTests install
+[2026-02-28T13:07:44Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-utils-restricted >--------------
+[INFO] Building gsn-utils-restricted 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-utils-restricted ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-utils-restricted ---
+[INFO] Compiling 25 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-utils-restricted ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-utils-restricted ---
+[INFO] Compiling 4 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.10:test (default-test) @ gsn-utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-utils-restricted ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.760 s
+[INFO] Finished at: 2026-02-28T13:07:46Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T13:07:46Z] PASS PRE01 rc=0
+[2026-02-28T13:07:46Z] PASS PRE01 rc=0
+[2026-02-28T13:07:46Z] START PRE02
+[2026-02-28T13:07:46Z] START PRE02
+[2026-02-28T13:07:46Z] DIR gs-server/sb-utils
+[2026-02-28T13:07:46Z] DIR gs-server/sb-utils
+[2026-02-28T13:07:46Z] CMD mvn -DskipTests install
+[2026-02-28T13:07:46Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 247 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/SynchroTimeProvider.java:[22,44] error: cannot find symbol
+[ERROR]   symbol: class ITimeProvider
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/SynchroTimeProvider.java:[41,12] error: cannot find symbol
+[ERROR]   symbol:   class ITimeProvider
+  location: class SynchroTimeProvider
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/SynchroTimeProvider.java:[90,35] error: cannot find symbol
+[ERROR]   symbol:   class ITimeProvider
+  location: class SynchroTimeProvider
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/SynchroTimeProvider.java:[96,8] error: cannot find symbol
+[ERROR]   symbol:   variable ExecutorUtils
+  location: class SynchroTimeProvider
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/SynchroTimeProvider.java:[104,4] error: method does not override or implement a method from a supertype
+[INFO] 5 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.290 s
+[INFO] Finished at: 2026-02-28T13:07:48Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project utils-restricted: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/SynchroTimeProvider.java:[22,44] error: cannot find symbol
+[ERROR]   symbol: class ITimeProvider
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/SynchroTimeProvider.java:[41,12] error: cannot find symbol
+[ERROR]   symbol:   class ITimeProvider
+[ERROR]   location: class SynchroTimeProvider
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/SynchroTimeProvider.java:[90,35] error: cannot find symbol
+[ERROR]   symbol:   class ITimeProvider
+[ERROR]   location: class SynchroTimeProvider
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/SynchroTimeProvider.java:[96,8] error: cannot find symbol
+[ERROR]   symbol:   variable ExecutorUtils
+[ERROR]   location: class SynchroTimeProvider
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/SynchroTimeProvider.java:[104,4] error: method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[2026-02-28T13:07:48Z] FAIL PRE02 rc=1
+[2026-02-28T13:07:48Z] FAIL PRE02 rc=1

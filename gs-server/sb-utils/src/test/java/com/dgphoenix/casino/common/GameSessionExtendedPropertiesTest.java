@@ -1,6 +1,6 @@
 package com.abs.casino.common;
 
-import com.dgphoenix.casino.common.GameSessionExtendedProperties;
+import com.abs.casino.common.GameSessionExtendedProperties;
 import com.dgphoenix.casino.common.exception.CommonException;
 import org.junit.Test;
 

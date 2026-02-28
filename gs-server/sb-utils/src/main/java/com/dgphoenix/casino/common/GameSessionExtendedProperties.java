@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common;
+package com.abs.casino.common;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.esotericsoftware.kryo.Kryo;

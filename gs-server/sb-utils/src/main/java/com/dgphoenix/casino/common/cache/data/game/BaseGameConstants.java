@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.cache.data.game;
 
-import com.dgphoenix.casino.common.util.InheritFromTemplate;
+import com.abs.casino.common.util.InheritFromTemplate;
 import com.abs.casino.common.util.property.*;
 
 import java.lang.reflect.Field;
