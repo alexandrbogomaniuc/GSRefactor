@@ -1,0 +1,10 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/ForeignServerException.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/PaymentTransactionRevokeException.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/PaymentTransactionTimeoutException.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/WebServiceException.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/ConfigurationException.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/ServiceNotAvailableException.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/PlayerHasBetsException.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/NotEnoughMoneyException.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/DBException.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/AccountException.java

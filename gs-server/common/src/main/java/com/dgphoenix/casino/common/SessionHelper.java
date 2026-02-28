@@ -3,7 +3,7 @@ package com.dgphoenix.casino.common;
 import com.dgphoenix.casino.common.cache.data.payment.IWallet;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.DBException;
+import com.abs.casino.common.exception.DBException;
 import com.abs.casino.common.exception.MismatchSessionException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.transactiondata.ITransactionDataCreator;

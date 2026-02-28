@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.gs.managers.payment.wallet;
 
-import com.dgphoenix.casino.common.exception.NotEnoughMoneyException;
+import com.abs.casino.common.exception.NotEnoughMoneyException;
 import com.google.common.collect.EvictingQueue;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;

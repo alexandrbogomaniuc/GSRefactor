@@ -1,0 +1,10 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/WebServiceException.java:1:package com.abs.casino.common.exception;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/PaymentTransactionRevokeException.java:1:package com.abs.casino.common.exception;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/ServiceNotAvailableException.java:1:package com.abs.casino.common.exception;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/NotEnoughMoneyException.java:1:package com.abs.casino.common.exception;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/ConfigurationException.java:1:package com.abs.casino.common.exception;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/DBException.java:1:package com.abs.casino.common.exception;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/PlayerHasBetsException.java:1:package com.abs.casino.common.exception;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/AccountException.java:1:package com.abs.casino.common.exception;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/PaymentTransactionTimeoutException.java:1:package com.abs.casino.common.exception;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/ForeignServerException.java:1:package com.abs.casino.common.exception;

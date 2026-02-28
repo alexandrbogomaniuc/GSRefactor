@@ -1,7 +1,5 @@
 package com.abs.casino.common.exception;
 
-import com.dgphoenix.casino.common.exception.AccountException;
-
 /**
  * User: plastical
  * Date: 11.05.2010

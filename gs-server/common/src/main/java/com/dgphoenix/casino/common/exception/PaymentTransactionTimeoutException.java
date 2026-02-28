@@ -1,4 +1,6 @@
-package com.dgphoenix.casino.common.exception;
+package com.abs.casino.common.exception;
+
+import com.dgphoenix.casino.common.exception.CommonException;
 
 /**
  * Created by mic on 19.09.14.

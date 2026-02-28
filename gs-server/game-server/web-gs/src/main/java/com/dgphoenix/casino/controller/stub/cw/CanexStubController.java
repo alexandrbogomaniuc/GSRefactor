@@ -9,7 +9,7 @@ import com.abs.casino.common.client.canex.request.RequestType;
 import com.abs.casino.common.client.canex.response.CanexJsonResponse;
 import com.abs.casino.common.client.canex.response.CanexResponse;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.NotEnoughMoneyException;
+import com.abs.casino.common.exception.NotEnoughMoneyException;
 import com.abs.casino.controller.RequestContext;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper;

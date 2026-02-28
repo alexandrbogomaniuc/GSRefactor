@@ -1,0 +1,2 @@
+Selected low-risk remaining common exceptions with low-to-moderate fanout and no known duplicate FQCN collisions.
+Excluded high-fanout `WalletException`/`FRBException` for later dedicated wave.

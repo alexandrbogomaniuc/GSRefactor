@@ -3673,3 +3673,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 10`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+10`.
   - global tracked source declarations/files now `599` remaining (`2277` baseline, `1678` reduced, `73.693456%` burndown).
+
+## 2026-02-28 07:04 UTC (Hard-Cut M2 Wave 260 + 261)
+- Continued hard-cut execution from W259 with declaration-first overlap-safe batch in `common` exception surfaces:
+  - `W260`: 10 declaration migrations in common exception declarations.
+  - `W261`: integration and validation.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - compile compatibility retained by adding explicit `CommonException` import in moved declarations.
+  - intentionally deferred `WalletException` and `FRBException` because of higher fanout for a dedicated wave.
+  - no blind/global replacement performed.
+  - canonical validation reached:
+    - fast gate batchA rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-065619-hardcut-m2-wave260-wave261-common-exceptions-core/`
+  - report: `docs/projects/02-runtime-renaming-refactor/191-hard-cut-m2-wave260-wave261-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 10`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+10`.
+  - global tracked source declarations/files now `589` remaining (`2277` baseline, `1688` reduced, `74.132631%` burndown).

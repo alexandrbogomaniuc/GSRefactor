@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
 import com.dgphoenix.casino.common.cache.data.bet.ShortBetInfo;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.DBException;
+import com.abs.casino.common.exception.DBException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItemType;
 import com.dgphoenix.casino.common.util.Pair;
