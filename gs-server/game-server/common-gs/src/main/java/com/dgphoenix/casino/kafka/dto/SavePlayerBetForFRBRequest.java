@@ -1,4 +1,8 @@
-package com.dgphoenix.casino.kafka.dto;
+package com.abs.casino.kafka.dto;
+
+import com.dgphoenix.casino.kafka.dto.RoundInfoResultDto;
+
+import com.dgphoenix.casino.kafka.dto.KafkaRequest;
 
 public class SavePlayerBetForFRBRequest implements KafkaRequest {
     private String sessionId;

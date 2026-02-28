@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
-import com.dgphoenix.casino.kafka.dto.SitOutTournamentSessionRequest;
-import com.dgphoenix.casino.kafka.dto.SitOutTournamentSessionResultDto;
+import com.abs.casino.kafka.dto.SitOutTournamentSessionRequest;
+import com.abs.casino.kafka.dto.SitOutTournamentSessionResultDto;
 
 @Component
 public class SitOutTournamentSessionRequestHandler implements

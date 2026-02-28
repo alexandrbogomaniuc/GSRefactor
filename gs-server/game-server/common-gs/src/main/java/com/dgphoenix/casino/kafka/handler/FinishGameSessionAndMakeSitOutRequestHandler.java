@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.kafka.dto.BooleanResponseDto;
-import com.dgphoenix.casino.kafka.dto.FinishGameSessionAndMakeSitOutRequest;
+import com.abs.casino.kafka.dto.FinishGameSessionAndMakeSitOutRequest;
 
 @Component
 public class FinishGameSessionAndMakeSitOutRequestHandler

@@ -1,0 +1,2 @@
+Scope: recover positive declaration momentum after W243 by migrating low-risk common-gs Kafka roundflow DTOs in two strict disjoint batches.
+Safety: declaration-only package cuts in one module, no blind/global replace; rewires constrained to direct imports/FQCN call sites.

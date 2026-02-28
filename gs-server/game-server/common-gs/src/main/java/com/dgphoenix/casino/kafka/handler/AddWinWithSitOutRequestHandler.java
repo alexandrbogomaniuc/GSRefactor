@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
-import com.dgphoenix.casino.kafka.dto.AddWinResultDto;
-import com.dgphoenix.casino.kafka.dto.AddWinWithSitOutRequest;
+import com.abs.casino.kafka.dto.AddWinResultDto;
+import com.abs.casino.kafka.dto.AddWinWithSitOutRequest;
 
 @Component
 public class AddWinWithSitOutRequestHandler 

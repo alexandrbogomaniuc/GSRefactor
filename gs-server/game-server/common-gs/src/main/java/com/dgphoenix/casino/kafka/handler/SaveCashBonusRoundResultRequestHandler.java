@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.kafka.dto.CashBonusDto;
-import com.dgphoenix.casino.kafka.dto.SaveCashBonusRoundResultRequest;
+import com.abs.casino.kafka.dto.SaveCashBonusRoundResultRequest;
 
 @Component
 public class SaveCashBonusRoundResultRequestHandler 

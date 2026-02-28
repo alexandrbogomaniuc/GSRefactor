@@ -1,0 +1,10 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/AddBatchWinRequestDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/AddBatchWinResponseDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/AddWinRequestDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/AddWinResultDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/AddWinWithSitOutRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetBatchAddWinStatusRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetPaymentOperationStatus2Request.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SaveCashBonusRoundResultRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SavePlayerBetForFRBRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SaveTournamentRoundResultRequest.java

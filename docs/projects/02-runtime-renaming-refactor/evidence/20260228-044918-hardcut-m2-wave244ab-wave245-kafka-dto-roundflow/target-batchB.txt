@@ -1,0 +1,10 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/FinishGameSessionAndMakeSitOutRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SitInRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SitInResponseDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutCashBonusSessionRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutCashBonusSessionResultDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutRequest2.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutResultDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutTournamentSessionRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutTournamentSessionResultDto.java

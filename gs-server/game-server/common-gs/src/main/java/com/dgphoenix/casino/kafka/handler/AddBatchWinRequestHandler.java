@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
-import com.dgphoenix.casino.kafka.dto.AddBatchWinRequestDto;
-import com.dgphoenix.casino.kafka.dto.AddBatchWinResponseDto;
+import com.abs.casino.kafka.dto.AddBatchWinRequestDto;
+import com.abs.casino.kafka.dto.AddBatchWinResponseDto;
 import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
 
 @Component

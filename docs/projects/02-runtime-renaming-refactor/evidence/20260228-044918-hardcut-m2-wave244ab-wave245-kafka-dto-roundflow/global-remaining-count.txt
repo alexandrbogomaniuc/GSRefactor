@@ -1,0 +1,10 @@
+baseline=2277
+previous_remaining=688
+dg_to_abs_delta=19
+abs_to_dg_delta=0
+current_remaining=669
+current_reduced=1608
+burndown_percent=70.619236
+project02_percent=44.624391
+core_percent=72.312195
+portfolio_percent=86.156098

@@ -3518,3 +3518,24 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - declaration delta: `com.dgphoenix -> com.abs = 11`, stabilization regressions `com.abs -> com.dgphoenix = 14`, net `-3`.
   - global tracked source declarations/files now `688` remaining (`2277` baseline, `1589` reduced, `69.784805%` burndown).
 
+
+## 2026-02-28 05:03 UTC (Hard-Cut M2 Wave 244A + 244B + 245)
+- Continued hard-cut execution from W243 with declaration-first overlap-safe batches in `common-gs` kafka dto surfaces:
+  - `W244A`: 10 declaration migrations (`Add*`, `Get*`, `Save*` round/payment DTOs).
+  - `W244B`: 10 declaration migrations attempted (`Sit*` / finish-session DTOs), with 1 bounded revert (`SitOutRequest2`) due duplicate FQCN collision against mp-server kafka DTO.
+  - `W245`: integration and validation.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited in this session; strict-disjoint manifests were enforced in main-agent execution.
+- Stabilization/validation highlights:
+  - fixed runner environment drift at `STEP06/STEP07` by using `-Dcluster.properties=local/local-machine.properties`.
+  - resolved `STEP06` duplicate-FQCN compile drift by reverting `SitOutRequest2` migration in `common-gs` only.
+  - no blind/global replacement performed.
+  - canonical validation reached:
+    - fast gate batchA rerun2: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB rerun2: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-044918-hardcut-m2-wave244ab-wave245-kafka-dto-roundflow/`
+  - report: `docs/projects/02-runtime-renaming-refactor/183-hard-cut-m2-wave244ab-wave245-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 19`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+19`.
+  - global tracked source declarations/files now `669` remaining (`2277` baseline, `1608` reduced, `70.619236%` burndown).

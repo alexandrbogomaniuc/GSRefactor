@@ -1,4 +1,8 @@
-package com.dgphoenix.casino.kafka.dto;
+package com.abs.casino.kafka.dto;
+
+import com.dgphoenix.casino.kafka.dto.TournamentInfoDto;
+
+import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
 
 public class SitOutTournamentSessionResultDto extends BasicKafkaResponse {
     private TournamentInfoDto tournamentSession;
