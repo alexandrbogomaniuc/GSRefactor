@@ -9,7 +9,7 @@
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.time.Duration" %>
 <%@ page import="org.springframework.http.MediaType" %>
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesConfigPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraCurrencyRatesConfigPersister" %>
 <%@ page import="java.util.Set" %>
 <%
     ApplicationContext context = ApplicationContextHelper.getApplicationContext();

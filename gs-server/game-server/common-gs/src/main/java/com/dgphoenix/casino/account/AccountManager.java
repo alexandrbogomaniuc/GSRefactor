@@ -3,7 +3,7 @@ package com.dgphoenix.casino.account;
 import com.abs.casino.common.cache.AbstractExportableCache;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister;
-import com.dgphoenix.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.abs.casino.common.api.ICommonManager;
 import com.dgphoenix.casino.common.cache.*;

@@ -1,0 +1,47 @@
+gs-server/support/archiver/src/main/java/com/dgphoenix/casino/support/CassandraFRBonusArchiver.java:4:import com.abs.casino.cassandra.persist.CassandraFrBonusArchivePersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/PlayerBetHistoryService.java:4:import com.abs.casino.cassandra.persist.CassandraTempBetPersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/bonus/CancelMassFRBonusAward.java:7:import com.abs.casino.cassandra.persist.CassandraFrBonusPersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/account/AccountManager.java:6:import com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/tracker/CurrencyUpdateProcessorTest.java:4:import com.abs.casino.cassandra.persist.CassandraCurrencyRatesConfigPersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/TournamentBuyInHelper.java:5:import com.abs.casino.cassandra.persist.CassandraExternalTransactionPersister;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBigStorageBetPersister.java:3:import com.abs.casino.cassandra.persist.CassandraBetPersister;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBigStorageBetPersister.java:4:import com.abs.casino.cassandra.persist.CassandraRoundGameSessionPersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/SessionTimerExpiredProcessor.java:4:import com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBigStorageRoundGameSessionPersister.java:3:import com.abs.casino.cassandra.persist.CassandraRoundGameSessionPersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/bet/PlayerBetPersistenceManager.java:4:import com.abs.casino.cassandra.persist.CassandraBetPersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/MultiplayerExternalWallettransactionHandler.java:4:import com.abs.casino.cassandra.persist.CassandraExternalTransactionPersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/ExternalTransactionHandler.java:4:import com.abs.casino.cassandra.persist.CassandraExternalTransactionPersister;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:4:import com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/WalletHelper.java:5:import com.abs.casino.cassandra.persist.CassandraCommonGameWalletPersister;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java:8:import com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/frb/FRBRESTNotificationClient.java:5:import com.abs.casino.cassandra.persist.CassandraFrBonusArchivePersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/frb/FRBRESTNotificationClient.java:6:import com.abs.casino.cassandra.persist.CassandraFrBonusPersister;
+gs-server/game-server/web-gs/src/main/webapp/support/finishRounds.jsp:3:<%@ page import="com.abs.casino.cassandra.persist.CassandraCommonGameWalletPersister" %>
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryServlet.java:5:import com.abs.casino.cassandra.persist.CassandraTempBetPersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/FRBonusManager.java:6:import com.abs.casino.cassandra.persist.CassandraFrBonusArchivePersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/FRBonusManager.java:7:import com.abs.casino.cassandra.persist.CassandraFrBonusPersister;
+gs-server/game-server/web-gs/src/main/webapp/support/currency/initRatesConfig.jsp:4:<%@ page import="com.abs.casino.cassandra.persist.CassandraCurrencyRatesConfigPersister" %>
+gs-server/game-server/web-gs/src/main/webapp/support/currency/showBrokenRates.jsp:12:<%@ page import="com.abs.casino.cassandra.persist.CassandraCurrencyRatesConfigPersister" %>
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredBonusTracker.java:5:import com.abs.casino.cassandra.persist.CassandraBonusPersister;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/BonusTrackerTask.java:4:import com.abs.casino.cassandra.persist.CassandraBonusPersister;
+gs-server/game-server/web-gs/src/main/resources/ClusterConfig.xml:16:            <className>com.abs.casino.cassandra.persist.CassandraBetPersister</className>
+gs-server/game-server/web-gs/src/main/resources/ClusterConfig.xml:21:            <className>com.abs.casino.cassandra.persist.CassandraRoundGameSessionPersister</className>
+gs-server/game-server/web-gs/src/main/resources/ClusterConfig.xml:46:            <className>com.abs.casino.cassandra.persist.CassandraFrBonusArchivePersister</className>
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredFRBonusTracker.java:6:import com.abs.casino.cassandra.persist.CassandraFrBonusPersister;
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:83:            <className>com.abs.casino.cassandra.persist.CassandraCommonGameWalletPersister</className>
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:103:            <className>com.abs.casino.cassandra.persist.CassandraExternalTransactionPersister</className>
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:117:            <className>com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister</className>
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:122:            <className>com.abs.casino.cassandra.persist.CassandraBonusPersister</className>
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:126:            <className>com.abs.casino.cassandra.persist.CassandraFrBonusPersister</className>
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:140:            <className>com.abs.casino.cassandra.persist.CassandraCurrencyRatesConfigPersister</className>
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:152:            <className>com.abs.casino.cassandra.persist.CassandraTempBetPersister</className>
+gs-server/game-server/web-gs/src/main/webapp/support/games/getLasthands.jsp:3:<%@ page import="com.abs.casino.cassandra.persist.CassandraCommonGameWalletPersister" %>
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/BonusManager.java:7:import com.abs.casino.cassandra.persist.CassandraBonusPersister;
+gs-server/game-server/web-gs/src/main/webapp/support/getAccountInfo.jsp:13:<%@ page import="com.abs.casino.cassandra.persist.CassandraFrBonusPersister" %>
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PlayerBetChangesProcessor.java:4:import com.abs.casino.cassandra.persist.CassandraBetPersister;
+gs-server/game-server/web-gs/src/main/webapp/support/checkPersisters.jsp:3:<%@ page import="com.abs.casino.cassandra.persist.CassandraBetPersister" %>
+gs-server/game-server/web-gs/src/main/webapp/support/checkPersisters.jsp:4:<%@ page import="com.abs.casino.cassandra.persist.CassandraRoundGameSessionPersister" %>
+gs-server/game-server/web-gs/src/main/webapp/support/checkPersisters.jsp:5:<%@ page import="com.abs.casino.cassandra.persist.CassandraTempBetPersister" %>
+gs-server/game-server/web-gs/src/main/webapp/support/getRounds.jsp:3:<%@ page import="com.abs.casino.cassandra.persist.CassandraCommonGameWalletPersister" %>
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/tracker/CurrencyUpdateProcessor.java:4:import com.abs.casino.cassandra.persist.CassandraCurrencyRatesConfigPersister;
+gs-server/game-server/web-gs/src/main/webapp/support/handleOfflineCreditInRounds.jsp:3:<%@ page import="com.abs.casino.cassandra.persist.CassandraCommonGameWalletPersister" %>

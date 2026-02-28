@@ -1,6 +1,6 @@
 <%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraLasthandPersister" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraCommonGameWalletPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraCommonGameWalletPersister" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.payment.IWallet" %>
 <%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>

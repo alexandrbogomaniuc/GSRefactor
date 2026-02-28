@@ -1,6 +1,6 @@
 package com.abs.casino.cassandra.persist;
 
-import com.dgphoenix.casino.cassandra.persist.CassandraRoundGameSessionPersister;
+import com.abs.casino.cassandra.persist.CassandraRoundGameSessionPersister;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

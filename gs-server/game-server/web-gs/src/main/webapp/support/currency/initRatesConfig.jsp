@@ -1,7 +1,7 @@
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
 <%@ page import="org.springframework.context.ApplicationContext" %>
 <%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesConfigPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraCurrencyRatesConfigPersister" %>
 <%@ page import="java.util.concurrent.TimeUnit" %>
 <%
     ApplicationContext context = ApplicationContextHelper.getApplicationContext();

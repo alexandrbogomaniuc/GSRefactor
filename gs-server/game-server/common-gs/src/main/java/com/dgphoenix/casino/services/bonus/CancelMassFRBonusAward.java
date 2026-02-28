@@ -4,7 +4,7 @@ import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister;
 import com.abs.casino.cassandra.persist.CassandraDelayedMassAwardPersister;
-import com.dgphoenix.casino.cassandra.persist.CassandraFrBonusPersister;
+import com.abs.casino.cassandra.persist.CassandraFrBonusPersister;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.MassAwardCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;

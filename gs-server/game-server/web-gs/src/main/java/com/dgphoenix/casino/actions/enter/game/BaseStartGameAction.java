@@ -5,7 +5,7 @@ import com.abs.casino.actions.enter.AccountInfoAndSessionInfoPair;
 import com.abs.casino.actions.enter.CommonActionForm;
 import com.abs.casino.actions.enter.game.IStartGameForm;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
 import com.dgphoenix.casino.cassandra.persist.CassandraLasthandPersister;
 import com.dgphoenix.casino.cassandra.persist.CassandraPlayerSessionState;
 import com.dgphoenix.casino.common.SessionHelper;

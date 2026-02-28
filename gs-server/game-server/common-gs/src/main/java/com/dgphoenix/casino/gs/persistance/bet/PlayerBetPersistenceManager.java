@@ -1,7 +1,7 @@
 package com.abs.casino.gs.persistance.bet;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraBetPersister;
+import com.abs.casino.cassandra.persist.CassandraBetPersister;
 import com.abs.casino.cassandra.persist.CassandraBigStorageBetPersister;
 import com.abs.casino.cassandra.persist.CassandraShortBetInfoPersister;
 import com.dgphoenix.casino.common.SessionHelper;

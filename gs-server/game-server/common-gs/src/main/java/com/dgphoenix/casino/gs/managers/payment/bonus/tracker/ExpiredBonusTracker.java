@@ -2,7 +2,7 @@ package com.abs.casino.gs.managers.payment.bonus.tracker;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.DistributedLockManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraBonusPersister;
+import com.abs.casino.cassandra.persist.CassandraBonusPersister;
 import com.abs.casino.cassandra.persist.CassandraExpiredBonusTrackerInfoPersister;
 import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
 import com.abs.casino.common.exception.BonusException;

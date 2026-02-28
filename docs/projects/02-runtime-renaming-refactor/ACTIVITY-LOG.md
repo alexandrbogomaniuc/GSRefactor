@@ -4513,3 +4513,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Pushed wave completion commit `c07c2d11e` to `origin/main`.
 - Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-232024-hardcut-m2-wave340-wave341-persisters-lowfanout10/`.
 - Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+
+## 2026-02-28 23:45 UTC (Hard-Cut M2 Wave 342 + 343)
+- Continued hard-cut execution from W340/W341 with declaration-first overlap-safe `common-persisters` low-fanout batch.
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `10`
+    - `CassandraBonusPersister`, `CassandraBetPersister`, `CassandraCurrencyRatesConfigPersister`, `CassandraExternalTransactionPersister`, `CassandraFrBonusArchivePersister`, `CassandraCommonGameWalletPersister`, `CassandraFrBonusPersister`, `CassandraRoundGameSessionPersister`, `CassandraExtendedAccountInfoPersister`, `CassandraTempBetPersister`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - `rerun1` failed at `STEP05` due moved `CassandraExtendedAccountInfoPersister` missing unmoved boundary type `ExtendedAccountInfoPersister`.
+  - bounded compatibility fix added explicit legacy import in moved class.
+  - `rerun2` reached canonical profile:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-233503-hardcut-m2-wave342-wave343-persisters-lowfanout10/`
+  - report: `docs/projects/02-runtime-renaming-refactor/232-hard-cut-m2-wave342-wave343-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `10`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `1922` remaining (`2277` baseline, `355` reduced, `15.590689%` burndown).

@@ -1,6 +1,6 @@
 <%@ page import="com.dgphoenix.casino.account.AccountManager" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.account.AccountInfo" %>
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraCommonGameWalletPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraCommonGameWalletPersister" %>
 <%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>

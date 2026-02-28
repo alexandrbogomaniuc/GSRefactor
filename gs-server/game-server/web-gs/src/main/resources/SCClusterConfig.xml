@@ -80,7 +80,7 @@
             <enabled>true</enabled>
         </ColumnFamily>
         <ColumnFamily>
-            <className>com.dgphoenix.casino.cassandra.persist.CassandraCommonGameWalletPersister</className>
+            <className>com.abs.casino.cassandra.persist.CassandraCommonGameWalletPersister</className>
             <enabled>true</enabled>
         </ColumnFamily>
         <ColumnFamily>
@@ -100,7 +100,7 @@
             <enabled>true</enabled>
         </ColumnFamily>
         <ColumnFamily>
-            <className>com.dgphoenix.casino.cassandra.persist.CassandraExternalTransactionPersister</className>
+            <className>com.abs.casino.cassandra.persist.CassandraExternalTransactionPersister</className>
             <enabled>true</enabled>
         </ColumnFamily>
         <ColumnFamily>
@@ -114,16 +114,16 @@
         </ColumnFamily>
 
         <ColumnFamily>
-            <className>com.dgphoenix.casino.cassandra.persist.CassandraExtendedAccountInfoPersister</className>
+            <className>com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister</className>
             <enabled>true</enabled>
         </ColumnFamily>
 
         <ColumnFamily>
-            <className>com.dgphoenix.casino.cassandra.persist.CassandraBonusPersister</className>
+            <className>com.abs.casino.cassandra.persist.CassandraBonusPersister</className>
             <enabled>true</enabled>
         </ColumnFamily>
         <ColumnFamily>
-            <className>com.dgphoenix.casino.cassandra.persist.CassandraFrBonusPersister</className>
+            <className>com.abs.casino.cassandra.persist.CassandraFrBonusPersister</className>
             <enabled>true</enabled>
         </ColumnFamily>
         <ColumnFamily>
@@ -137,7 +137,7 @@
             <ttl>7776000</ttl>
         </ColumnFamily>
         <ColumnFamily>
-            <className>com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesConfigPersister</className>
+            <className>com.abs.casino.cassandra.persist.CassandraCurrencyRatesConfigPersister</className>
             <enabled>true</enabled>
         </ColumnFamily>
         <ColumnFamily>
@@ -149,7 +149,7 @@
             <enabled>true</enabled>
         </ColumnFamily>
         <ColumnFamily>
-            <className>com.dgphoenix.casino.cassandra.persist.CassandraTempBetPersister</className>
+            <className>com.abs.casino.cassandra.persist.CassandraTempBetPersister</className>
             <enabled>true</enabled>
         </ColumnFamily>
         <ColumnFamily>

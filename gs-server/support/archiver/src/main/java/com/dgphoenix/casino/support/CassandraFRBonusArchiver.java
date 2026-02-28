@@ -1,7 +1,7 @@
 package com.abs.casino.support;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraFrBonusArchivePersister;
+import com.abs.casino.cassandra.persist.CassandraFrBonusArchivePersister;
 import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 

@@ -1,0 +1,5 @@
+com.dgphoenix.casino.cassandra.persist.CassandraBonusPersister
+com.dgphoenix.casino.cassandra.persist.CassandraBetPersister
+com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesConfigPersister
+com.dgphoenix.casino.cassandra.persist.CassandraExternalTransactionPersister
+com.dgphoenix.casino.cassandra.persist.CassandraFrBonusArchivePersister

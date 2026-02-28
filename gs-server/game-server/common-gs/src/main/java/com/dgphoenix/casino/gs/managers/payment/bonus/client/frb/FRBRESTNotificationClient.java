@@ -2,8 +2,8 @@ package com.abs.casino.gs.managers.payment.bonus.client.frb;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraFrBonusArchivePersister;
-import com.dgphoenix.casino.cassandra.persist.CassandraFrBonusPersister;
+import com.abs.casino.cassandra.persist.CassandraFrBonusArchivePersister;
+import com.abs.casino.cassandra.persist.CassandraFrBonusPersister;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;

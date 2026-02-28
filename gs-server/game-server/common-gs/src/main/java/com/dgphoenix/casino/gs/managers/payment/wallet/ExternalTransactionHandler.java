@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.payment.wallet;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraExternalTransactionPersister;
+import com.abs.casino.cassandra.persist.CassandraExternalTransactionPersister;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.abs.casino.common.cache.data.payment.PaymentMode;
