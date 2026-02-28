@@ -8789,3 +8789,23 @@
   - baseline `2277`, reduced `1789`, remaining `488`, burndown `78.568292%`
   - Project 02 `47.926657%`, Core `73.963329%`, Portfolio `86.981665%`
   - ETA `20.0h` (`2.50` workdays)
+
+### 2026-02-28 12:05 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W290 + W291`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `4` (`NtpSyncInfo`, `LookAheadReader`, `RSACrypter`, `ZipUtils`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent parallel target remained constrained by thread limit; ownership-safe execution continued on main.
+  - no compile/package stabilization rewires were required beyond bounded usage rewires for moved util classes.
+  - bounded rewires aligned moved FQCN imports in `EncoderAction` (`ZipUtils`) and `SessionKeyAccessAction` (`RSACrypter`).
+  - canonical validation reached on rerun1:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-115455-hardcut-m2-wave290-wave291-common-util-lowfanout/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/206-hard-cut-m2-wave290-wave291-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1793`, remaining `484`, burndown `78.743961%`
+  - Project 02 `47.980777%`, Core `73.990388%`, Portfolio `86.995194%`
+  - ETA `19.8h` (`2.48` workdays)

@@ -1,6 +1,6 @@
 package com.abs.casino.actions.system.util;
 
-import com.dgphoenix.casino.common.util.ZipUtils;
+import com.abs.casino.common.util.ZipUtils;
 import com.abs.casino.common.web.BaseAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
