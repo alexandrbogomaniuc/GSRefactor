@@ -3223,3 +3223,29 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `20`.
   - retained bounded rewires: `0`.
   - global tracked source declarations/files now `925` remaining (`2277` baseline, `1352` reduced, `59.376373%` burndown).
+
+## 2026-02-28 00:18 UTC (Hard-Cut M2 Wave 220A + 220B + 221)
+- Continued batched-safe hard-cut migration from W219 checkpoint with non-overlapping declaration sets:
+  - `W220A`: 10 declaration migrations in `game-server/common-gs/kafka/handler` request-handler surfaces.
+  - `W220B`: 10 declaration migrations in adjacent `game-server/common-gs/kafka/handler` request-handler surfaces.
+  - `W221`: integration and validation.
+- Parallel execution mode:
+  - `1 explorer + 2 workers + main` with strict non-overlap ownership.
+- Stabilization:
+  - planned rewire manifests were empty for both batches.
+  - fast gate batchA rerun1 failed at `STEP06` because moved handlers no longer shared package scope with legacy `KafkaOuterRequestHandler` (`com.dgphoenix`).
+  - fixed drift with minimal explicit imports in moved handlers (`import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;`).
+  - no blind/global replacement performed.
+  - preserved pre-existing local changes (`cluster-hosts.properties`, `.tmp-w202-*`) outside commit scope.
+- Validation:
+  - fast gate batchA rerun1: `STEP06 FAIL`.
+  - fast gate batchA rerun2 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - fast gate batchB rerun1 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - full matrix rerun1 (canonical): `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`); retry1 failed (`rc=2`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260227-235912-hardcut-m2-wave220ab-wave221-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/171-hard-cut-m2-wave220ab-wave221-parallel-batches-report-20260228.md`
+- Outcome:
+  - retained declaration migrations: `20`.
+  - retained bounded rewires: `0`.
+  - global tracked source declarations/files now `905` remaining (`2277` baseline, `1372` reduced, `60.255599%` burndown).

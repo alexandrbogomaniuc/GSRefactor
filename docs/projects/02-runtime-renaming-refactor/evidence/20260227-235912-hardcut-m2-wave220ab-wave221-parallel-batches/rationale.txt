@@ -1,0 +1,11 @@
+Selected two disjoint W220 batches from `gs-server/game-server/common-gs` package cluster `com.dgphoenix.casino.kafka.handler`.
+
+Why this is low risk:
+- All selected declarations are leaf `*RequestHandler` classes with zero Java importer fanout in current gs-server/mp-server sources.
+- Selected classes also have zero class-name references outside their own declaration file in Java sources, reducing hidden same-package coupling risk.
+- No `web-gs` declaration files were selected.
+- Rewire manifests are empty (0), so there is no importer overlap and no cross-overlap.
+
+Batching strategy:
+- W220A and W220B split the same low-fanout handler family into two non-overlapping 10-file sets.
+- This keeps each parallel worker inside one narrow package cluster while maintaining strict overlap guards.

@@ -1,0 +1,23 @@
+[batchA declarations package-lines after cut]
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/AddMQReservedNicknamesRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/AddWinRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/AddWinWithSitOutRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/BuyInRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/CheckBuyInRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/CloseFRBonusAndSessionRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/CloseGameSessionRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/FinishGameSessionAndMakeSitOutRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/GetBalanceRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/GetBatchAddWinStatusRequestHandler.java: package com.abs.casino.kafka.handler;
+
+[batchB declarations package-lines after cut]
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/GetCrashGamesSettingsRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/GetDetailedPlayerInfo2RequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/GetExternalAccountIdsRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/GetFriendsRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/GetGameServerInfosRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/GetMQDataRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/GetOnlineStatusRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/GetPaymentOperationStatus2RequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/InvitePlayersToPrivateRoomRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/LeaveMultiPlayerLobbyRequestHandler.java: package com.abs.casino.kafka.handler;
