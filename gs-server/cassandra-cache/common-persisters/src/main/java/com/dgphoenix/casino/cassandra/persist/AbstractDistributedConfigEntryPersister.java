@@ -4,7 +4,7 @@ import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.configuration.Caching;
 import com.dgphoenix.casino.common.cache.AbstractDistributedCache;
-import com.dgphoenix.casino.common.cache.ILoadingCache;
+import com.abs.casino.common.cache.ILoadingCache;
 import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;

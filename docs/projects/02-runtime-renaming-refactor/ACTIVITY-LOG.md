@@ -3791,3 +3791,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 7`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+7`.
   - global tracked source declarations/files now `551` remaining (`2277` baseline, `1726` reduced, `75.801493%` burndown).
+
+## 2026-02-28 08:41 UTC (Hard-Cut M2 Wave 272 + 273)
+- Continued hard-cut execution from W271 with declaration-first overlap-safe batch in `utils/common` surfaces:
+  - `W272`: 11 declaration migrations retained in `common.util`, `common.cache`, `common.lock`.
+  - `W273`: integration and validation.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1 failed at `STEP01/PRE01` due moved util declarations losing same-package visibility to unmigrated helpers (`CollectionUtils`, `ExecutorUtils`, `FastByteArrayOutputStream`); fixed with explicit compatibility imports.
+  - rerun3 failed at `STEP06` due `CommonExecutorService` constructor-type fanout mismatch (`com.abs` vs `com.dgphoenix`) in `common-gs`; deferred `CommonExecutorService` from this wave.
+  - post-rerun4 residual scan found two legacy JSP imports for moved `StreamUtils`; rewired and reran full matrix (rerun5).
+  - canonical validation reached on rerun5:
+    - fast gate batchA: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-082447-hardcut-m2-wave272-wave273-utils-common-util-cache-lock/`
+  - report: `docs/projects/02-runtime-renaming-refactor/197-hard-cut-m2-wave272-wave273-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 11`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+11`.
+  - global tracked source declarations/files now `540` remaining (`2277` baseline, `1737` reduced, `76.284585%` burndown).

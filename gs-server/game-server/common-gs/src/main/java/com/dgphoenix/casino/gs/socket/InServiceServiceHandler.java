@@ -20,7 +20,7 @@ import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.IDistributedCache;
-import com.dgphoenix.casino.common.cache.ILoadingCache;
+import com.abs.casino.common.cache.ILoadingCache;
 import com.dgphoenix.casino.common.cache.LoadBalancerCache;
 import com.dgphoenix.casino.common.cache.ServerConfigsCache;
 import com.dgphoenix.casino.common.cache.SubCasinoCache;

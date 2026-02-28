@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.data.config;
 
 import com.dgphoenix.casino.cassandra.*;
 import com.dgphoenix.casino.common.configuration.ConfigHelper;
-import com.dgphoenix.casino.common.util.JsonHelper;
+import com.abs.casino.common.util.JsonHelper;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

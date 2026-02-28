@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.StreamUtils;
+import com.abs.casino.common.util.StreamUtils;
 import com.abs.casino.gs.biz.GameHistory;
 import com.abs.casino.gs.biz.GameHistoryListEntry;
 import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;

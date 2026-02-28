@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util;
+package com.abs.casino.common.util;
 
 import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.TimeInfo;

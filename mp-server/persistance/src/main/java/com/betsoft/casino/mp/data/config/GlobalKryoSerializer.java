@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.data.config;
 
-import com.dgphoenix.casino.common.util.FastKryoHelper;
+import com.abs.casino.common.util.FastKryoHelper;
 import com.dgphoenix.casino.common.util.KryoHelper;
 import com.hazelcast.nio.serialization.ByteArraySerializer;
 import org.apache.logging.log4j.LogManager;

@@ -7,7 +7,7 @@ import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStr
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.PromoCampaignMember;
 import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
-import com.dgphoenix.casino.common.util.StreamUtils;
+import com.abs.casino.common.util.StreamUtils;
 import com.google.common.collect.Sets;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

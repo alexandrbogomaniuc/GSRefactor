@@ -2,7 +2,7 @@ package com.dgphoenix.casino.cassandra.persist.engine;
 
 import com.abs.casino.cassandra.persist.engine.ColumnIteratorCallback;
 import com.abs.casino.cassandra.persist.engine.FakeNotAppliedResultSet;
-import com.dgphoenix.casino.common.util.StreamUtils;
+import com.abs.casino.common.util.StreamUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.util.UnsafeUtil;

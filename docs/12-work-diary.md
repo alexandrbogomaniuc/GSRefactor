@@ -8610,3 +8610,24 @@
   - baseline `2277`, reduced `1726`, remaining `551`, burndown `75.801493%`
   - Project 02 `47.074260%`, Core `73.537130%`, Portfolio `86.768565%`
   - ETA `22.6h` (`2.83` workdays)
+
+### 2026-02-28 08:41 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W272 + W273`.
+- Scope retained (after stabilization defer of `CommonExecutorService`):
+  - declaration migrations (`com.dgphoenix -> com.abs`): `11`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - rerun1 failed at `STEP01/PRE01` due moved util declarations losing same-package visibility to unmigrated helpers; fixed with explicit compatibility imports.
+  - rerun3 failed at `STEP06` due `CommonExecutorService` constructor-type fanout mismatch in `common-gs`; deferred from this wave.
+  - post-rerun4 residual scan found two legacy JSP imports for moved `StreamUtils`; rewired and reran full matrix.
+  - canonical validation reached on rerun5:
+    - fast gate batchA: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-082447-hardcut-m2-wave272-wave273-utils-common-util-cache-lock/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/197-hard-cut-m2-wave272-wave273-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1737`, remaining `540`, burndown `76.284585%`
+  - Project 02 `47.223096%`, Core `73.611548%`, Portfolio `86.805774%`
+  - ETA `22.1h` (`2.76` workdays)

@@ -3,7 +3,7 @@ package com.abs.casino.init;
 import com.abs.casino.cache.CachesHolder;
 import com.dgphoenix.casino.cassandra.*;
 import com.dgphoenix.casino.common.configuration.ConfigHelper;
-import com.dgphoenix.casino.common.util.JsonHelper;
+import com.abs.casino.common.util.JsonHelper;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
 import com.abs.casino.init.DefaultConfigsInitializer;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util;
+package com.abs.casino.common.util;
 
 import net.jpountz.lz4.LZ4Factory;
 import net.jpountz.lz4.LZ4FastDecompressor;

@@ -28,9 +28,9 @@ public class LZ4Test {
         //System.out.println("data size=" + data.length);
         ByteBuffer sourceBuffer = ByteBuffer.allocateDirect(data.length);
         sourceBuffer.put(data);
-        ByteBuffer destBuffer = com.dgphoenix.casino.common.util.LZ4Compressor.getInstance().compress(sourceBuffer);
+        ByteBuffer destBuffer = com.abs.casino.common.util.LZ4Compressor.getInstance().compress(sourceBuffer);
 
-        ByteBuffer uncompressedBuffer = com.dgphoenix.casino.common.util.LZ4Compressor.getInstance().
+        ByteBuffer uncompressedBuffer = com.abs.casino.common.util.LZ4Compressor.getInstance().
                 uncompress(destBuffer);
         byte[] restored = new byte[uncompressedBuffer.remaining()];
         uncompressedBuffer.get(restored);

@@ -1,6 +1,6 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.util.stream.Collectors" %>
-<%@ page import="com.dgphoenix.casino.common.util.StreamUtils" %>
+<%@ page import="com.abs.casino.common.util.StreamUtils" %>
 <%@ page import="com.google.common.base.Splitter" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>

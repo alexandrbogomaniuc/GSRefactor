@@ -4,7 +4,7 @@ import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.common.util.StreamUtils;
+import com.abs.casino.common.util.StreamUtils;
 import com.abs.casino.common.util.support.HttpCallInfo;
 import com.abs.casino.common.util.support.HttpMessage;
 import org.apache.logging.log4j.LogManager;

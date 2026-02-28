@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.web;
 
-import com.dgphoenix.casino.common.util.FastKryoHelper;
+import com.abs.casino.common.util.FastKryoHelper;
 import com.esotericsoftware.kryo.util.UnsafeUtil;
 import org.apache.commons.codec.binary.Base64;
 

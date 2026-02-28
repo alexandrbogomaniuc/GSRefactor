@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache;
+package com.abs.casino.common.cache;
 
 /**
  * Created by grien on 15.05.15.

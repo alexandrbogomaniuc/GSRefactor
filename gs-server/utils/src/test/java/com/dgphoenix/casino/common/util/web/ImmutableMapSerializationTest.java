@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.web;
 
-import com.dgphoenix.casino.common.util.FastKryoHelper;
+import com.abs.casino.common.util.FastKryoHelper;
 import com.google.common.collect.ImmutableMap;
 import org.junit.Assert;
 import org.junit.Test;

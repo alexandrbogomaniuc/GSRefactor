@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.configuration.messages.MessageManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.DigitFormatter;
-import com.dgphoenix.casino.common.util.StreamUtils;
+import com.abs.casino.common.util.StreamUtils;
 import com.dgphoenix.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;

@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.CurrencyCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.FastKryoHelper;
+import com.abs.casino.common.util.FastKryoHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

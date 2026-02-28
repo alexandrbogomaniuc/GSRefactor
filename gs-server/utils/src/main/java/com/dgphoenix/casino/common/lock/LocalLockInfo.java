@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.lock;
+package com.abs.casino.common.lock;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
