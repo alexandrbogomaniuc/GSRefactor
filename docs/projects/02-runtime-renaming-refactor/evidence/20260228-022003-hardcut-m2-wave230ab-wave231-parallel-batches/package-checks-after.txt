@@ -1,0 +1,25 @@
+# Post package lines (batchA)
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGFStatus.java: 7:package com.abs.casino.thrift;
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGOStatus.java: 7:package com.abs.casino.thrift;
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBattlegroundInfo.java: 7:package com.abs.casino.thrift;
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBattlegroundRoundInfo.java: 7:package com.abs.casino.thrift;
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TFRBonus.java: 7:package com.abs.casino.thrift;
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TMQQuestData.java: 7:package com.abs.casino.thrift;
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TMQTreasureQuestProgress.java: 7:package com.abs.casino.thrift;
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TMQuestAmount.java: 7:package com.abs.casino.thrift;
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TMQuestPrize.java: 7:package com.abs.casino.thrift;
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TPlace.java: 7:package com.abs.casino.thrift;
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TRMSPlayer.java: 7:package com.abs.casino.thrift;
+
+# Post package lines (batchB)
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGFStatus.java: 1:package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGOStatus.java: 1:package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BattlegroundInfoDto.java: 1:package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BattlegroundRoundInfoDto.java: 1:package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/FRBonusDto.java: 1:package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/MQQuestDataDto.java: 1:package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/MQQuestAmountDto.java: 1:package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/MQQuestPrizeDto.java: 1:package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/MQTreasureQuestProgressDto.java: 1:package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/PlaceDto.java: 1:package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RMSPlayerDto.java: 1:package com.abs.casino.kafka.dto;

@@ -1,0 +1,11 @@
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGFStatus.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGOStatus.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BattlegroundInfoDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BattlegroundRoundInfoDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/FRBonusDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/MQQuestDataDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/MQQuestAmountDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/MQQuestPrizeDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/MQTreasureQuestProgressDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/PlaceDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RMSPlayerDto.java

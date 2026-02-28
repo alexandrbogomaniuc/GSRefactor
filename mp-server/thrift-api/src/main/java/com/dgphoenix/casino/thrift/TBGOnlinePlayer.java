@@ -494,7 +494,7 @@ public class TBGOnlinePlayer implements org.apache.thrift.TBase<TBGOnlinePlayer,
             break;
           case 3: // STATUS
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.status = com.dgphoenix.casino.thrift.TBGOStatus.findByValue(iprot.readI32());
+              struct.status = com.abs.casino.thrift.TBGOStatus.findByValue(iprot.readI32());
               struct.setStatusIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
@@ -582,7 +582,7 @@ public class TBGOnlinePlayer implements org.apache.thrift.TBase<TBGOnlinePlayer,
         struct.setExternalIdIsSet(true);
       }
       if (incoming.get(2)) {
-        struct.status = com.dgphoenix.casino.thrift.TBGOStatus.findByValue(iprot.readI32());
+        struct.status = com.abs.casino.thrift.TBGOStatus.findByValue(iprot.readI32());
         struct.setStatusIsSet(true);
       }
     }

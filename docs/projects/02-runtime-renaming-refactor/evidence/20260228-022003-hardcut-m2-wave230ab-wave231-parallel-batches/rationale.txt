@@ -1,0 +1,5 @@
+Wave group proposal: W230A/W230B + W231.
+- Batch A (11 declarations): remaining thrift-api classes plus 2 in-module thrift rewires (`TBGFriend`, `TBGOnlinePlayer`) for class-level FQCN alignment.
+- Batch B (11 declarations): aligned kafka/dto declarations only; no retained external rewires after stabilization.
+- Overlap guarantees: decl overlap=0, rewire overlap=0, cross overlaps=0.
+- Risk profile: low. Declaration-first execution with no `web-gs` rewires and no retained `common-gs`/`mp-web` integration rewires.

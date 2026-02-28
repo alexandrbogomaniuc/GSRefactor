@@ -1,0 +1,11 @@
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGFStatus.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGOStatus.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBattlegroundInfo.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBattlegroundRoundInfo.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TFRBonus.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TMQQuestData.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TMQTreasureQuestProgress.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TMQuestAmount.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TMQuestPrize.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TPlace.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TRMSPlayer.java

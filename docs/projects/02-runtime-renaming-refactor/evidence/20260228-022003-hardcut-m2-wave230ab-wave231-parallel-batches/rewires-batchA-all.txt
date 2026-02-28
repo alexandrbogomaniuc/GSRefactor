@@ -1,0 +1,2 @@
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGFriend.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGOnlinePlayer.java

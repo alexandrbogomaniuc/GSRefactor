@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package com.dgphoenix.casino.thrift;
+package com.abs.casino.thrift;
 
 @SuppressWarnings({"cast", "rawtypes", "serial", "unchecked", "unused"})
 public class TPlace implements org.apache.thrift.TBase<TPlace, TPlace._Fields>, java.io.Serializable, Cloneable, Comparable<TPlace> {

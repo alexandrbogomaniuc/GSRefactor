@@ -3351,3 +3351,27 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `32`.
   - retained bounded rewires: `0`.
   - global tracked source declarations/files now `801` remaining (`2277` baseline, `1476` reduced, `64.822135%` burndown).
+
+## 2026-02-28 02:20 UTC (Hard-Cut M2 Wave 230A + 230B + 231)
+- Continued batched-safe hard-cut migration from W229 checkpoint with non-overlapping declaration sets:
+  - `W230A`: 11 declaration migrations in `mp-server/thrift-api`.
+  - `W230B`: 11 declaration migrations in `mp-server/kafka/dto`.
+  - `W231`: integration and validation.
+- Parallel execution mode target:
+  - `1 explorer + 2 workers + main` (subagent spawn was blocked by agent thread limit, so equivalent strict ownership execution was applied on main with explicit manifests).
+- Stabilization:
+  - initial batchB external rewire attempts caused compile drift in `common-gs`; those rewires were discarded.
+  - retained declaration-first execution shape with bounded rewires only in batchA (`TBGFriend`, `TBGOnlinePlayer` FQCN alignment).
+  - no blind/global replacement performed.
+  - preserved pre-existing local changes (`cluster-hosts.properties`, `.tmp-w202-*`, prior uncommitted evidence folder) outside commit scope.
+- Validation:
+  - fast gate batchA rerun4 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - fast gate batchB rerun4 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - full matrix rerun1 (canonical): `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`); retry1 failed (`rc=2`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-022003-hardcut-m2-wave230ab-wave231-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/176-hard-cut-m2-wave230ab-wave231-parallel-batches-report-20260228.md`
+- Outcome:
+  - retained declaration migrations: `22`.
+  - retained bounded rewires: `2`.
+  - global tracked source declarations/files now `779` remaining (`2277` baseline, `1498` reduced, `65.788318%` burndown).
