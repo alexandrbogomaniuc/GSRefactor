@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.currency;
+package com.abs.casino.gs.managers.payment.currency;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraCurrencyPersister;

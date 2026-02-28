@@ -1,0 +1,11 @@
+com.dgphoenix.casino.gs.IGameServerStatusListener|old_refs=15|new=> com.abs.casino.gs.IGameServerStatusListener|new_refs=3
+com.dgphoenix.casino.gs.LocalSessionTracker|old_refs=11|new=> com.abs.casino.gs.LocalSessionTracker|new_refs=3
+com.dgphoenix.casino.gs.TransactionDataTracker|old_refs=103|new=> com.abs.casino.gs.TransactionDataTracker|new_refs=3
+com.dgphoenix.casino.gs.persistance.GameSessionPersister|old_refs=79|new=> com.abs.casino.gs.persistance.GameSessionPersister|new_refs=3
+com.dgphoenix.casino.gs.persistance.LasthandPersister|old_refs=67|new=> com.abs.casino.gs.persistance.LasthandPersister|new_refs=3
+com.dgphoenix.casino.gs.persistance.PlayerSessionPersister|old_refs=49|new=> com.abs.casino.gs.persistance.PlayerSessionPersister|new_refs=3
+com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager|old_refs=76|new=> com.abs.casino.gs.persistance.bet.PlayerBetPersistenceManager|new_refs=3
+com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker|old_refs=72|new=> com.abs.casino.gs.managers.payment.wallet.tracker.WalletTracker|new_refs=6
+com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTrackerTask|old_refs=25|new=> com.abs.casino.gs.managers.payment.wallet.tracker.WalletTrackerTask|new_refs=3
+com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManager|old_refs=27|new=> com.abs.casino.gs.managers.payment.currency.CurrencyManager|new_refs=3
+com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager|old_refs=53|new=> com.abs.casino.gs.managers.payment.currency.CurrencyRatesManager|new_refs=3

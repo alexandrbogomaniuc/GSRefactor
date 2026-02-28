@@ -44,7 +44,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusNotificationManager;
 import com.abs.casino.gs.managers.payment.transfer.PaymentManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
-import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
+import com.abs.casino.gs.persistance.GameSessionPersister;
 import com.abs.casino.helpers.login.LoginHelper;
 import com.abs.casino.sm.login.LoginRequest;
 import com.abs.casino.sm.login.LoginResponse;

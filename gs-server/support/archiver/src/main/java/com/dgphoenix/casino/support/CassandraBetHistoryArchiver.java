@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.common.util.StreamUtils;
 import com.abs.casino.gs.biz.GameHistory;
 import com.abs.casino.gs.biz.GameHistoryListEntry;
-import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
+import com.abs.casino.gs.persistance.bet.PlayerBetPersistenceManager;
 import com.google.common.collect.Lists;
 import com.thoughtworks.xstream.XStream;
 import org.apache.commons.lang.ArrayUtils;

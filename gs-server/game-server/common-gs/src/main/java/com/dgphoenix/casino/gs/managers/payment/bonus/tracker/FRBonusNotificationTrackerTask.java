@@ -12,7 +12,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.common.util.logkit.LogUtils;
 import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.TransactionDataTracker;
+import com.abs.casino.gs.TransactionDataTracker;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusNotificationManager;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;

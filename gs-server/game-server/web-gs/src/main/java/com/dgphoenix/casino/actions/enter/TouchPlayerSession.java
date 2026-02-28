@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.BaseAction;
-import com.dgphoenix.casino.gs.LocalSessionTracker;
+import com.abs.casino.gs.LocalSessionTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.action.ActionForm;

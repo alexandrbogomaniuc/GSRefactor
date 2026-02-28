@@ -19,7 +19,7 @@ import com.dgphoenix.casino.common.promo.*;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.common.util.DatePeriod;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager;
+import com.abs.casino.gs.managers.payment.currency.CurrencyRatesManager;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.gs.socket.mq.TournamentBuyInHelper;
 import com.abs.casino.promo.PromoCampaignManager;

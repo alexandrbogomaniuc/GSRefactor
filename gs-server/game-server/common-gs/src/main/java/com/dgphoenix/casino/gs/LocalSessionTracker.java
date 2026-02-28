@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs;
+package com.abs.casino.gs;
 
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.exception.CommonException;

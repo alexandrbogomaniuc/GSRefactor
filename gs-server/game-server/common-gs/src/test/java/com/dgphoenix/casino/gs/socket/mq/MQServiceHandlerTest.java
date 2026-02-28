@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.CommonExecutorService;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.gs.socket.mq.TournamentBuyInHelper;
-import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
+import com.abs.casino.gs.persistance.bet.PlayerBetPersistenceManager;
 import com.abs.casino.promo.PromoCampaignManager;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
 import org.junit.Before;

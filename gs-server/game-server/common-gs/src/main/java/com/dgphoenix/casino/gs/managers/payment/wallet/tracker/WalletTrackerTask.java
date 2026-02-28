@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.wallet.tracker;
+package com.abs.casino.gs.managers.payment.wallet.tracker;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.common.SessionHelper;
@@ -13,7 +13,7 @@ import com.abs.casino.common.engine.tracker.AbstractCommonTrackingTask;
 import com.abs.casino.common.exception.CannotLockException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.TransactionDataTracker;
+import com.abs.casino.gs.TransactionDataTracker;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;

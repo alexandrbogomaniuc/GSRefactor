@@ -57,7 +57,7 @@ import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletProtocolManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.abs.casino.gs.managers.payment.wallet.v3.ICommonWalletClient;
-import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
+import com.abs.casino.gs.persistance.GameSessionPersister;
 import com.abs.casino.services.mp.MPGameSessionService;
 import com.abs.casino.sm.CWPlayerSessionManager;
 import com.abs.casino.sm.IPlayerSessionManager;

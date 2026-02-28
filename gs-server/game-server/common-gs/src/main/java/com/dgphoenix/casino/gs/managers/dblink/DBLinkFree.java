@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.gs.persistance.LasthandPersister;
+import com.abs.casino.gs.persistance.LasthandPersister;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import com.abs.casino.unj.api.AbstractSharedGameState;
 import com.abs.casino.unj.api.SharedGameStates;

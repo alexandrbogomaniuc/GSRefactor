@@ -24,7 +24,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.util.logkit.GameLog;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
-import com.dgphoenix.casino.gs.persistance.LasthandPersister;
+import com.abs.casino.gs.persistance.LasthandPersister;
 
 import java.math.BigDecimal;
 import java.math.MathContext;

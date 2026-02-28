@@ -12,7 +12,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
+import com.abs.casino.gs.persistance.GameSessionPersister;
 import com.abs.casino.sm.login.LoginRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -27,7 +27,7 @@ import com.dgphoenix.casino.gs.GameServer;
 import com.abs.casino.gs.managers.dblink.FreeGameCalculator;
 import com.dgphoenix.casino.gs.managers.payment.bonus.*;
 import com.abs.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
-import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManager;
+import com.abs.casino.gs.managers.payment.currency.CurrencyManager;
 import com.abs.casino.sm.AbstractPlayerSessionManager;
 import com.abs.casino.sm.IGetAccountInfoProvider;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

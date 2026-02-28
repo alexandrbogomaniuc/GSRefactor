@@ -18,7 +18,7 @@ import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.Triple;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.gs.managers.game.history.HistoryManager;
-import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
+import com.abs.casino.gs.persistance.bet.PlayerBetPersistenceManager;
 import com.abs.casino.gs.singlegames.tools.cbservtools.ArchiveBetTools;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

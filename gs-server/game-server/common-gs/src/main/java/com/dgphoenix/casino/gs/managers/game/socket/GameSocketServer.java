@@ -8,7 +8,7 @@ import com.abs.casino.common.socket.ISocketClient;
 import com.abs.casino.common.socket.ISocketServerObserver;
 import com.abs.casino.common.socket.SocketServer;
 import com.abs.casino.common.socket.SocketTools;
-import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
+import com.abs.casino.gs.persistance.PlayerSessionPersister;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

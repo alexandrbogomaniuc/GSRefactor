@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.util.RNG;
 import com.abs.casino.common.util.RSACrypter;
 import com.abs.casino.common.util.string.HexStringConverter;
-import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
+import com.abs.casino.gs.persistance.PlayerSessionPersister;
 import com.abs.casino.protection.forms.SessionKeyAccessForm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

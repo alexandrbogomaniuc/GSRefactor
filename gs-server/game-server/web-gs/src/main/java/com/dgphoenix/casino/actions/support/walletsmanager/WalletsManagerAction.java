@@ -18,7 +18,7 @@ import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusNotificationTrack
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusNotificationTrackerTask;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
-import com.dgphoenix.casino.gs.persistance.LasthandPersister;
+import com.abs.casino.gs.persistance.LasthandPersister;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.*;

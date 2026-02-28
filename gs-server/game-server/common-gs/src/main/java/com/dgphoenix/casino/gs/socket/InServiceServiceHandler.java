@@ -35,7 +35,7 @@ import com.dgphoenix.casino.common.promo.Status;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.GameServerComponentsHelper;
-import com.dgphoenix.casino.gs.IGameServerStatusListener;
+import com.abs.casino.gs.IGameServerStatusListener;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;

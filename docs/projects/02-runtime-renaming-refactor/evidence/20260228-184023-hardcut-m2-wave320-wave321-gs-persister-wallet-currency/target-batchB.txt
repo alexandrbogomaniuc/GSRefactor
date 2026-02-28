@@ -1,0 +1,6 @@
+com.dgphoenix.casino.gs.persistance.PlayerSessionPersister -> com.abs.casino.gs.persistance.PlayerSessionPersister
+com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager -> com.abs.casino.gs.persistance.bet.PlayerBetPersistenceManager
+com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker -> com.abs.casino.gs.managers.payment.wallet.tracker.WalletTracker
+com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTrackerTask -> com.abs.casino.gs.managers.payment.wallet.tracker.WalletTrackerTask
+com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManager -> com.abs.casino.gs.managers.payment.currency.CurrencyManager
+com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager -> com.abs.casino.gs.managers.payment.currency.CurrencyRatesManager

@@ -3,10 +3,10 @@
 <%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraBetPersister" %>
 <%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraRoundGameSessionPersister" %>
 <%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraTempBetPersister" %>
-<%@ page import="com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager" %>
+<%@ page import="com.abs.casino.gs.persistance.bet.PlayerBetPersistenceManager" %>
 <%@ page import="org.apache.http.entity.ContentType" %>
 <%@ page import="java.io.PrintWriter" %>
-<%@ page import="com.dgphoenix.casino.cassandra.PersisterDependencyInjector" %>
+<%@ page import="com.abs.casino.cassandra.PersisterDependencyInjector" %>
 <%
     response.setContentType(ContentType.TEXT_PLAIN.getMimeType());
     CassandraPersistenceManager persistenceManager = ApplicationContextHelper.getBean(CassandraPersistenceManager.class);

@@ -4264,3 +4264,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `11`; bounded rewires/regressions: `0`.
   - global tracked source declarations/files now `2045` remaining (`2277` baseline, `232` reduced, `10.188845%` burndown).
+
+## 2026-02-28 18:57 UTC (Hard-Cut M2 Wave 320 + 321)
+- Continued hard-cut execution from W318/W319 with declaration-first overlap-safe `common-gs gs/persistance/wallet-tracker/currency` batch.
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `11`
+    - `IGameServerStatusListener`, `LocalSessionTracker`, `TransactionDataTracker`, `GameSessionPersister`, `LasthandPersister`, `PlayerSessionPersister`, `PlayerBetPersistenceManager`, `WalletTracker`, `WalletTrackerTask`, `CurrencyManager`, `CurrencyRatesManager`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - `rerun1` failed at `STEP06` (`TransactionDataTracker` missing unmoved `GameServer` import after move).
+  - `rerun2-rerun4` failed at `STEP07` due JSPC import drift in support pages; applied bounded import rewires.
+  - `rerun5` reached canonical profile:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-184023-hardcut-m2-wave320-wave321-gs-persister-wallet-currency/`
+  - report: `docs/projects/02-runtime-renaming-refactor/221-hard-cut-m2-wave320-wave321-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `11`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `2034` remaining (`2277` baseline, `243` reduced, `10.671937%` burndown).

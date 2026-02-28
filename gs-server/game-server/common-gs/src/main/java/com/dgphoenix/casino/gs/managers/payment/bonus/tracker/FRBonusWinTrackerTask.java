@@ -11,7 +11,7 @@ import com.abs.casino.common.engine.tracker.AbstractCommonTrackingTask;
 import com.abs.casino.common.exception.CannotLockException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.TransactionDataTracker;
+import com.abs.casino.gs.TransactionDataTracker;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
 import com.dgphoenix.casino.gs.managers.payment.bonus.IFRBonusWinManager;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

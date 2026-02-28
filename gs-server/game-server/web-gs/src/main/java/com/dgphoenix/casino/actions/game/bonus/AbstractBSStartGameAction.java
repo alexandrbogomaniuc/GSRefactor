@@ -16,7 +16,7 @@ import com.abs.casino.entities.game.requests.BonusStartGameRequest;
 import com.abs.casino.entities.game.requests.StartGameResponse;
 import com.abs.casino.forms.game.CommonStartGameForm;
 import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
+import com.abs.casino.gs.persistance.GameSessionPersister;
 import com.abs.casino.helpers.login.LoginHelper;
 import com.abs.casino.sm.login.BonusGameLoginRequest;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

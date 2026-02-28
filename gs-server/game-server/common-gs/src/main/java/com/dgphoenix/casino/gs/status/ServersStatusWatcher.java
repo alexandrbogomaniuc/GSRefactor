@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.LoadBalancerCache;
 import com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.ExecutorUtils;
-import com.dgphoenix.casino.gs.IGameServerStatusListener;
+import com.abs.casino.gs.IGameServerStatusListener;
 import com.abs.casino.kafka.service.KafkaMessageService;
 
 import javax.annotation.PostConstruct;

@@ -3,7 +3,7 @@ package com.abs.casino.services;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraTempBetPersister;
 import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
-import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
+import com.abs.casino.gs.persistance.bet.PlayerBetPersistenceManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;

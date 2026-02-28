@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.wallet.tracker;
+package com.abs.casino.gs.managers.payment.wallet.tracker;
 
 import com.abs.casino.common.engine.tracker.AbstractCommonTracker;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

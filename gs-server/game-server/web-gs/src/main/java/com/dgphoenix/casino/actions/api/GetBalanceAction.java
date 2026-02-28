@@ -13,7 +13,7 @@ import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletProtocolManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.abs.casino.gs.managers.payment.wallet.v3.ICommonWalletClient;
-import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
+import com.abs.casino.gs.persistance.PlayerSessionPersister;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.action.ActionForward;

@@ -4,7 +4,7 @@ import com.dgphoenix.casino.cassandra.persist.IStoredDataProcessor;
 import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItem;
 import com.abs.casino.common.transactiondata.storeddate.identifier.PlayerBetTransferStoredInfo;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
+import com.abs.casino.gs.persistance.bet.PlayerBetPersistenceManager;
 
 import java.nio.ByteBuffer;
 import java.util.HashMap;

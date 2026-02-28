@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.persistance;
+package com.abs.casino.gs.persistance;
 
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;

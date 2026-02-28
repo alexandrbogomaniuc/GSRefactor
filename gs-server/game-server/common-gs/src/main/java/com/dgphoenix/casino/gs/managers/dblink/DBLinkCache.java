@@ -13,7 +13,7 @@ import com.dgphoenix.casino.common.util.ExecutorUtils;
 import com.abs.casino.common.web.statistics.IStatisticsGetter;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.TransactionDataTracker;
+import com.abs.casino.gs.TransactionDataTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.cliffc.high_scale_lib.NonBlockingHashMapLong;

@@ -26,7 +26,7 @@ import com.abs.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletProtocolManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;
-import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
+import com.abs.casino.gs.persistance.PlayerSessionPersister;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

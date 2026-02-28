@@ -8,7 +8,7 @@ import com.abs.casino.common.exception.CannotLockException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.TransactionDataTracker;
+import com.abs.casino.gs.TransactionDataTracker;
 import com.abs.casino.sm.IPlayerSessionManager;
 import com.abs.casino.sm.PlayerSessionFactory;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

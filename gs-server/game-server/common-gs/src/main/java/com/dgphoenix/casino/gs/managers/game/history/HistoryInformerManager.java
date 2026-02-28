@@ -18,7 +18,7 @@ import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.abs.casino.common.util.xml.parser.Parser;
 import com.abs.casino.gs.biz.GameHistory;
 import com.abs.casino.gs.biz.GameHistoryListEntry;
-import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
+import com.abs.casino.gs.persistance.bet.PlayerBetPersistenceManager;
 import com.thoughtworks.xstream.XStream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

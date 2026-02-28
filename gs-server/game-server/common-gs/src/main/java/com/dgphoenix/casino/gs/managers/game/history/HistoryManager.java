@@ -8,8 +8,8 @@ import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
-import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
+import com.abs.casino.gs.persistance.GameSessionPersister;
+import com.abs.casino.gs.persistance.bet.PlayerBetPersistenceManager;
 
 import java.util.Collections;
 import java.util.Date;

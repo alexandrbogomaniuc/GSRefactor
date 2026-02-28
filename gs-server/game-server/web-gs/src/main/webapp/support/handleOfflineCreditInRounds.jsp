@@ -9,7 +9,7 @@
 <%@ page import="com.dgphoenix.casino.common.SessionHelper" %>
 <%@ page import="com.dgphoenix.casino.common.transactiondata.ITransactionData" %>
 <%@ page import="com.abs.casino.common.exception.WalletException" %>
-<%@ page import="com.dgphoenix.casino.gs.persistance.LasthandPersister" %>
+<%@ page import="com.abs.casino.gs.persistance.LasthandPersister" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.account.LasthandInfo" %>
 <%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraGameSessionPersister" %>
 <%@ page import="static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty" %>
@@ -24,7 +24,7 @@
 <%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.dgphoenix.casino.gs.singlegames.tools.util.LasthandHelper" %>
+<%@ page import="com.abs.casino.gs.singlegames.tools.util.LasthandHelper" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String bankIdParam = request.getParameter("bankId");

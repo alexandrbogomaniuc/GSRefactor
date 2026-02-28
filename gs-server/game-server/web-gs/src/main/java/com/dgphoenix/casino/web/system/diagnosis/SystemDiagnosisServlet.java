@@ -14,7 +14,7 @@ import com.abs.casino.common.web.diagnostic.CheckTask;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusWinTracker;
-import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
+import com.abs.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import com.abs.casino.web.system.diagnosis.tasks.CassandraStateMonitoringTask;
 import org.apache.logging.log4j.LogManager;

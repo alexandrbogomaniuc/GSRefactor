@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.persistance;
+package com.abs.casino.gs.persistance;
 
 import com.abs.casino.gs.persistance.ILasthandPersister;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;

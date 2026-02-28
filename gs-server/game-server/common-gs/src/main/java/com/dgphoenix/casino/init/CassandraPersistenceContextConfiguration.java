@@ -9,7 +9,7 @@ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.common.configuration.ConfigHelper;
 import com.abs.casino.common.util.JsonHelper;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
-import com.dgphoenix.casino.gs.persistance.bet.PlayerBetPersistenceManager;
+import com.abs.casino.gs.persistance.bet.PlayerBetPersistenceManager;
 import com.abs.casino.init.DefaultConfigsInitializer;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.springframework.context.annotation.Bean;

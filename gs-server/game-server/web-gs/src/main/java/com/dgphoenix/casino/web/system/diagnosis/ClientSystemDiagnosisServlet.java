@@ -5,7 +5,7 @@ import com.abs.casino.common.web.diagnostic.BaseDiagnosisServlet;
 import com.dgphoenix.casino.common.util.CommonExecutorService;
 import com.dgphoenix.casino.gs.GameServer;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusWinTracker;
-import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
+import com.abs.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.abs.casino.web.system.diagnosis.tasks.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

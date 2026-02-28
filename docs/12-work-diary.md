@@ -9107,3 +9107,22 @@
   - baseline `2277`, reduced `232`, remaining `2045`, burndown `10.188845%`
   - Project 02 `26.273606%`, Core `63.136803%`, Portfolio `81.568401%`
   - ETA `93.9h` (`11.74` workdays)
+
+### 2026-02-28 18:57 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W320 + W321`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `11` (`IGameServerStatusListener`, `LocalSessionTracker`, `TransactionDataTracker`, `GameSessionPersister`, `LasthandPersister`, `PlayerSessionPersister`, `PlayerBetPersistenceManager`, `WalletTracker`, `WalletTrackerTask`, `CurrencyManager`, `CurrencyRatesManager`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - `rerun1` failed at `STEP06` due missing compatibility import in moved `TransactionDataTracker` (`GameServer` boundary).
+  - `rerun2-rerun4` failed at `STEP07` due JSPC import drift in support pages; applied bounded import rewires.
+  - canonical validation reached on `rerun5`:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-184023-hardcut-m2-wave320-wave321-gs-persister-wallet-currency/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/221-hard-cut-m2-wave320-wave321-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `243`, remaining `2034`, burndown `10.671937%`
+  - Project 02 `26.333992%`, Core `63.166996%`, Portfolio `81.583498%`
+  - ETA `93.4h` (`11.67` workdays)

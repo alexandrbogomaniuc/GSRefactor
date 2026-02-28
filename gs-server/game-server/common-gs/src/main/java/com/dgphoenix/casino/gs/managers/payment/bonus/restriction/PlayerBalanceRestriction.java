@@ -6,7 +6,7 @@ import com.abs.casino.common.cache.data.bonus.restriction.MassAwardRestriction;
 import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager;
+import com.abs.casino.gs.managers.payment.currency.CurrencyRatesManager;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
