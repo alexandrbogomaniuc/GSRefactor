@@ -8186,3 +8186,24 @@
   - ETA `35.6h` (`4.45` workdays)
 - Next:
   - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external.
+### 2026-02-28 01:40 UTC
+- Continued Project 02 hard-cut execution in `Dev_new` and completed `W226A/W226B + W227` with batched-safe parallel mode (`1 explorer + 2 workers + main`).
+- Scope retained:
+  - declaration migrations: `28`.
+  - bounded rewires: `2`.
+- Stabilization/validation highlights:
+  - refined initial high-rewire plan into low-rewire strict-disjoint batches (`rewires 1+1`, no `web-gs` rewires).
+  - no additional compile stabilization required after worker edits.
+  - canonical validation profile reached:
+    - batchA fast gate rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - batchB fast gate rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-014059-hardcut-m2-wave226ab-wave227-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/174-hard-cut-m2-wave226ab-wave227-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1444`, remaining `833`, burndown `63.416776%`
+  - Project 02 `40.073142%`, Core `70.036571%`, Portfolio `85.018286%`
+  - ETA `34.5h` (`4.31` workdays)
+- Next:
+  - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external.

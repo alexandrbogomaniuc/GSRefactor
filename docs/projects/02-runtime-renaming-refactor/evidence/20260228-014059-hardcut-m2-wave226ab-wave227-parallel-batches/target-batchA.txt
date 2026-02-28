@@ -1,0 +1,14 @@
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/MQClassData.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TActiveBattlegroundRoundInfoMQ.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGCreateRoomRequest.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGDeactivateResult.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGDeactivateRoomRequest.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGGetPrivateRoomIdRequest.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGGetPrivateRoomIdResult.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGPrivateRoomInfoResult.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGUpdateFriendsRequest.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGUpdateFriendsResult.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGUpdateOnlinePlayersRequest.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBGUpdateOnlinePlayersResult.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotConfigInfo.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TRoomInfo.java

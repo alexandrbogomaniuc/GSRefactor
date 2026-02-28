@@ -3302,3 +3302,27 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `20`.
   - retained bounded rewires: `10`.
   - global tracked source declarations/files now `861` remaining (`2277` baseline, `1416` reduced, `62.186210%` burndown).
+
+## 2026-02-28 01:40 UTC (Hard-Cut M2 Wave 226A + 226B + 227)
+- Continued batched-safe hard-cut migration from W225 checkpoint with non-overlapping declaration sets:
+  - `W226A`: 14 declaration migrations in `mp-server/thrift-api` plus 1 bounded rewire in `MQThriftService`.
+  - `W226B`: 14 declaration migrations in `mp-server/thrift-api` plus 1 bounded rewire in `GameServerThriftService`.
+  - `W227`: integration and validation.
+- Parallel execution mode:
+  - `1 explorer + 2 workers + main` with strict non-overlap ownership.
+- Stabilization:
+  - refined explorer output to avoid high-rewire plan; selected low-rewire strict-disjoint plan (`rewires: 1 + 1`, no `web-gs` rewires).
+  - no additional compile stabilization required after worker edits.
+  - no blind/global replacement performed.
+  - preserved pre-existing local changes (`cluster-hosts.properties`, `.tmp-w202-*`, prior uncommitted evidence folder) outside commit scope.
+- Validation:
+  - fast gate batchA rerun1 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - fast gate batchB rerun1 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - full matrix rerun1 (canonical): `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`); retry1 failed (`rc=2`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-014059-hardcut-m2-wave226ab-wave227-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/174-hard-cut-m2-wave226ab-wave227-parallel-batches-report-20260228.md`
+- Outcome:
+  - retained declaration migrations: `28`.
+  - retained bounded rewires: `2`.
+  - global tracked source declarations/files now `833` remaining (`2277` baseline, `1444` reduced, `63.416776%` burndown).

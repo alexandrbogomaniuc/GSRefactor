@@ -6,6 +6,21 @@
  */
 package com.dgphoenix.casino.thrift;
 
+import com.abs.casino.thrift.BankName;
+import com.abs.casino.thrift.CommonException;
+import com.abs.casino.thrift.GameServerInfo;
+import com.abs.casino.thrift.JBoolean;
+import com.abs.casino.thrift.TAddWinRequest;
+import com.abs.casino.thrift.TAddWinResult;
+import com.abs.casino.thrift.TBuyInResult;
+import com.abs.casino.thrift.TCloseFRBonusResult;
+import com.abs.casino.thrift.TCrashGameSetting;
+import com.abs.casino.thrift.TCurrencyRate;
+import com.abs.casino.thrift.TRefundResult;
+import com.abs.casino.thrift.TSitInResult;
+import com.abs.casino.thrift.TSitOutResult;
+import com.abs.casino.thrift.TStartNewRoundResult;
+
 @SuppressWarnings({"cast", "rawtypes", "serial", "unchecked", "unused"})
 public class GameServerThriftService {
 
@@ -19461,7 +19476,7 @@ public class GameServerThriftService {
               break;
             case 8: // IS_BET
               if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-                struct.isBet = com.dgphoenix.casino.thrift.JBoolean.findByValue(iprot.readI32());
+                struct.isBet = com.abs.casino.thrift.JBoolean.findByValue(iprot.readI32());
                 struct.setIsBetIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
@@ -19629,7 +19644,7 @@ public class GameServerThriftService {
           struct.setBankIdIsSet(true);
         }
         if (incoming.get(7)) {
-          struct.isBet = com.dgphoenix.casino.thrift.JBoolean.findByValue(iprot.readI32());
+          struct.isBet = com.abs.casino.thrift.JBoolean.findByValue(iprot.readI32());
           struct.setIsBetIsSet(true);
         }
         if (incoming.get(8)) {

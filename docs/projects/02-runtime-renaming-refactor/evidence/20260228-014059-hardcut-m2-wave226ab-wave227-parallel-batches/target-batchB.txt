@@ -1,0 +1,14 @@
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/BankName.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/CommonException.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/GameServerInfo.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/JBoolean.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TAddWinRequest.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TAddWinResult.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBuyInResult.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TCloseFRBonusResult.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TCrashGameSetting.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TCurrencyRate.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TRefundResult.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TSitInResult.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TSitOutResult.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TStartNewRoundResult.java

@@ -6,6 +6,21 @@
  */
 package com.dgphoenix.casino.thrift;
 
+import com.abs.casino.thrift.MQClassData;
+import com.abs.casino.thrift.TActiveBattlegroundRoundInfoMQ;
+import com.abs.casino.thrift.TBGCreateRoomRequest;
+import com.abs.casino.thrift.TBGDeactivateResult;
+import com.abs.casino.thrift.TBGDeactivateRoomRequest;
+import com.abs.casino.thrift.TBGGetPrivateRoomIdRequest;
+import com.abs.casino.thrift.TBGGetPrivateRoomIdResult;
+import com.abs.casino.thrift.TBGPrivateRoomInfoResult;
+import com.abs.casino.thrift.TBGUpdateFriendsRequest;
+import com.abs.casino.thrift.TBGUpdateFriendsResult;
+import com.abs.casino.thrift.TBGUpdateOnlinePlayersRequest;
+import com.abs.casino.thrift.TBGUpdateOnlinePlayersResult;
+import com.abs.casino.thrift.TBotConfigInfo;
+import com.abs.casino.thrift.TRoomInfo;
+
 @SuppressWarnings({"cast", "rawtypes", "serial", "unchecked", "unused"})
 public class MQThriftService {
 

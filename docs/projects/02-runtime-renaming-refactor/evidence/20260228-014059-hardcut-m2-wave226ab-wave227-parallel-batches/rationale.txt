@@ -1,0 +1,24 @@
+W226 refined strict-safety selection at commit dbfa7f6f:
+- Batch A: 14 declarations in `mp-server/thrift-api` (MQ/private-room request/response surface).
+- Batch B: 14 declarations in `mp-server/thrift-api` (GS round/payment response/request surface).
+
+Why this satisfies stricter constraints:
+- Both batches are in the requested 10-20 declaration range.
+- Rewires are aggressively minimized:
+  - Batch A rewires: 1 file (`MQThriftService.java`)
+  - Batch B rewires: 1 file (`GameServerThriftService.java`)
+  - Total rewires: 2 (well under preferred <=12).
+- Web-gs rewires are zero in both batches.
+- Strict disjoint ownership holds:
+  - declaration overlap = 0
+  - rewire overlap = 0
+  - cross overlaps (A decl vs B rewire, B decl vs A rewire) = 0.
+
+Selection method tightening vs prior W226 pass:
+- Rewire derivation includes both:
+  - explicit Java import/FQCN references,
+  - same-package simple-name references inside `com.dgphoenix.casino.thrift` (word-boundary scan),
+  to reduce hidden same-package drift risk.
+
+Execution posture:
+- Executor-ready from current state with bounded, non-overlapping ownership and near declaration-only migration surface.
