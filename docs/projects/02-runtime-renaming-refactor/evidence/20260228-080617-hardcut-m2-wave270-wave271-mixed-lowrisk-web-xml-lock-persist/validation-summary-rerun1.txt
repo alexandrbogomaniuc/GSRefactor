@@ -1,0 +1,5 @@
+fast_gate_batchA=status=FAIL;first_failed_step=STEP01;failed_command=mvn -DskipTests install
+fast_gate_batchB=status=FAIL;first_failed_step=STEP01;failed_command=mvn -DskipTests install
+prewarm=status=FAIL;first_failed_step=PRE02;failed_command=mvn -DskipTests install
+validation=status=FAIL;first_failed_step=PRE02;failed_command=mvn -DskipTests install
+step09_retry1=status=FAIL;rc=SKIP

@@ -1,0 +1,7 @@
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/persist/StreamPersister.java:1:package com.abs.casino.common.persist;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/persist/TableProcessor.java:1:package com.abs.casino.common.persist;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/currency/IHistoricalCurrencyRateManager.java:1:package com.abs.casino.common.currency;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/web/IPageableForm.java:1:package com.abs.casino.common.web;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/web/IdValueBean.java:1:package com.abs.casino.common.web;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/web/PagingTag.java:1:package com.abs.casino.common.web;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/web/PagingTagV2.java:1:package com.abs.casino.common.web;

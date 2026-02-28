@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.CurrencyNotFoundException;
-import com.dgphoenix.casino.common.persist.StreamPersister;
+import com.abs.casino.common.persist.StreamPersister;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.persist;
+package com.abs.casino.common.persist;
 
 import com.dgphoenix.casino.common.util.Pair;
 

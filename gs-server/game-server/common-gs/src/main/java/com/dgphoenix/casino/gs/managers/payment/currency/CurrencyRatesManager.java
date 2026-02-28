@@ -5,7 +5,7 @@ import com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesByDatePersis
 import com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesPersister;
 import com.dgphoenix.casino.common.currency.CurrencyRate;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.currency.IHistoricalCurrencyRateManager;
+import com.abs.casino.common.currency.IHistoricalCurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.Pair;

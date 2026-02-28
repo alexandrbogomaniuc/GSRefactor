@@ -11,7 +11,7 @@ import com.dgphoenix.casino.common.configuration.messages.MessageManager;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.web.AbstractPageableForm;
-import com.dgphoenix.casino.common.web.IdValueBean;
+import com.abs.casino.common.web.IdValueBean;
 import com.google.common.collect.Collections2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

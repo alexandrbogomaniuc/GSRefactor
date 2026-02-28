@@ -2,8 +2,8 @@ package com.dgphoenix.casino.common.cache;
 
 import com.dgphoenix.casino.cassandra.persist.ILazyLoadingPersister;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.persist.StreamPersister;
-import com.dgphoenix.casino.common.persist.TableProcessor;
+import com.abs.casino.common.persist.StreamPersister;
+import com.abs.casino.common.persist.TableProcessor;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.web.statistics.IStatisticsGetter;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;

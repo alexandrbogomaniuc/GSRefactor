@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.currency;
+package com.abs.casino.common.currency;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 

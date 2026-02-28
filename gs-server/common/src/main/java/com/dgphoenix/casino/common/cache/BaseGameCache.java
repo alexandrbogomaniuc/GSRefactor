@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.currency.ICurrency;
 import com.dgphoenix.casino.common.cache.data.game.*;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.persist.StreamPersister;
+import com.abs.casino.common.persist.StreamPersister;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.abs.casino.common.util.property.PropertyUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;

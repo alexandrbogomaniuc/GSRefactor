@@ -1,0 +1,81 @@
+[2026-02-28T08:07:32Z] START STEP01
+[2026-02-28T08:07:32Z] START STEP01
+[2026-02-28T08:07:32Z] DIR gs-server/common
+[2026-02-28T08:07:32Z] DIR gs-server/common
+[2026-02-28T08:07:32Z] CMD mvn -DskipTests install
+[2026-02-28T08:07:32Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 197 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyCache.java:[13,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyCache.java:[42,12] error: cannot find symbol
+[ERROR]   symbol:   class StreamPersister
+  location: class CurrencyCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[13,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[46,12] error: cannot find symbol
+[ERROR]   symbol:   class StreamPersister
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[58,39] error: cannot find symbol
+[ERROR]   symbol:   class StreamPersister
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[11,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[12,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/AbstractLazyLoadingExportableCache.java:[5,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/AbstractLazyLoadingExportableCache.java:[6,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CacheExportProcessor.java:[3,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CacheExportProcessor.java:[13,79] error: cannot find symbol
+[ERROR]   symbol: class TableProcessor
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[11,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[12,36] error: package com.abs.casino.common.persist does not exist
+[INFO] 13 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.300 s
+[INFO] Finished at: 2026-02-28T08:07:36Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyCache.java:[13,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyCache.java:[42,12] error: cannot find symbol
+[ERROR]   symbol:   class StreamPersister
+[ERROR]   location: class CurrencyCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[13,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[46,12] error: cannot find symbol
+[ERROR]   symbol:   class StreamPersister
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[58,39] error: cannot find symbol
+[ERROR]   symbol:   class StreamPersister
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[11,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[12,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/AbstractLazyLoadingExportableCache.java:[5,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/AbstractLazyLoadingExportableCache.java:[6,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CacheExportProcessor.java:[3,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CacheExportProcessor.java:[13,79] error: cannot find symbol
+[ERROR]   symbol: class TableProcessor
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[11,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[12,36] error: package com.abs.casino.common.persist does not exist
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[2026-02-28T08:07:36Z] FAIL STEP01 rc=1
+[2026-02-28T08:07:36Z] FAIL STEP01 rc=1

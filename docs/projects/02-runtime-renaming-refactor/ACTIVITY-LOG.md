@@ -3771,3 +3771,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 7`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+7`.
   - global tracked source declarations/files now `558` remaining (`2277` baseline, `1719` reduced, `75.494071%` burndown).
+
+## 2026-02-28 08:22 UTC (Hard-Cut M2 Wave 270 + 271)
+- Continued hard-cut execution from W269 with declaration-first overlap-safe low-risk helper batch in `sb-utils`:
+  - `W270`: 7 declaration migrations (`common.web`, `common.persist`, `common.currency`).
+  - `W271`: integration and validation.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1 failed at `PRE02` due mixed-package `xmlwriter` dependency after partial move; `xmlwriter` changes were rolled back from this wave.
+  - rerun2/rerun3 failed at `STEP05` due `ServerLockInfo` mixed-type drift and stale imports; lock-surface edits were rolled back and stale imports reverted.
+  - no blind/global replacement performed.
+  - canonical validation reached on rerun4:
+    - fast gate batchA: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-080617-hardcut-m2-wave270-wave271-mixed-lowrisk-web-xml-lock-persist/`
+  - report: `docs/projects/02-runtime-renaming-refactor/196-hard-cut-m2-wave270-wave271-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 7`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+7`.
+  - global tracked source declarations/files now `551` remaining (`2277` baseline, `1726` reduced, `75.801493%` burndown).
