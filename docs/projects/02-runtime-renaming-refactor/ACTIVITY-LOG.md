@@ -3731,3 +3731,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - baseline `2277`, reduced `1701`, remaining `576`, burndown `74.703557%`
   - Project 02 `46.735996%`, Core `73.367998%`, Portfolio `86.683999%`
   - ETA `23.7h` (`2.97` workdays)
+
+## 2026-02-28 07:55 UTC (Hard-Cut M2 Wave 266 + 267)
+- Continued hard-cut execution from W265 with declaration-first overlap-safe batch in `sb-utils/common/exception` low-risk surfaces:
+  - `W266`: 11 declaration migrations in exception declarations.
+  - `W267`: integration and validation.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - fast gate rerun1 and full matrix rerun1 failed at `STEP03` due moved exceptions extending unmigrated `CommonException` without explicit imports.
+  - fixed with minimal compatibility imports in moved declarations for `CommonException`.
+  - no blind/global replacement performed.
+  - canonical validation reached:
+    - fast gate batchA rerun2: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB rerun2: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun2: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-073605-hardcut-m2-wave266-wave267-sbutils-common-exception-lowrisk/`
+  - report: `docs/projects/02-runtime-renaming-refactor/194-hard-cut-m2-wave266-wave267-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 11`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+11`.
+  - global tracked source declarations/files now `565` remaining (`2277` baseline, `1712` reduced, `75.186649%` burndown).

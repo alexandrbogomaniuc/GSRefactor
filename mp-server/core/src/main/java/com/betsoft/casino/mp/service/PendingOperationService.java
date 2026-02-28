@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.model.IPlayerBet;
 import com.betsoft.casino.mp.model.IRoomPlayerInfo;
 import com.betsoft.casino.mp.model.battleground.IBattlegroundRoundInfo;
 import com.betsoft.casino.mp.payment.*;
-import com.dgphoenix.casino.common.exception.ObjectAlreadyExistsException;
+import com.abs.casino.common.exception.ObjectAlreadyExistsException;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import org.apache.logging.log4j.LogManager;

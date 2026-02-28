@@ -1,7 +1,7 @@
 package com.abs.casino.promo;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.common.exception.AlreadyExistsException;
+import com.abs.casino.common.exception.AlreadyExistsException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.promo.persisters.CassandraPlayerAliasPersister;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

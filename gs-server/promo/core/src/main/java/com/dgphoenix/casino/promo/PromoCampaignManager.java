@@ -20,7 +20,7 @@ import com.abs.casino.common.config.HostConfiguration;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CannotLockException;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.PromoCreationException;
+import com.abs.casino.common.exception.PromoCreationException;
 import com.dgphoenix.casino.common.lock.LockingInfo;
 import com.dgphoenix.casino.common.promo.*;
 import com.abs.casino.common.promo.feed.tournament.SummaryTournamentFeedEntry;

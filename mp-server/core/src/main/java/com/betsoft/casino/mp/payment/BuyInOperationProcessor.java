@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.payment;
 
 import com.betsoft.casino.mp.service.ISocketService;
-import com.dgphoenix.casino.common.exception.ObjectAlreadyExistsException;
+import com.abs.casino.common.exception.ObjectAlreadyExistsException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -13,7 +13,7 @@ import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
 import com.dgphoenix.casino.common.config.UtilsApplicationContextHelper;
 import com.dgphoenix.casino.common.configuration.messages.MessageManager;
-import com.dgphoenix.casino.common.exception.FatalException;
+import com.abs.casino.common.exception.FatalException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import com.dgphoenix.casino.common.util.SynchroTimeProvider;

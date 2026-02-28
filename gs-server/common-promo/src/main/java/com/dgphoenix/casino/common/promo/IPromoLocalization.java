@@ -1,7 +1,7 @@
 package com.abs.casino.common.promo;
 
 import com.dgphoenix.casino.common.promo.*;
-import com.dgphoenix.casino.common.exception.PromoCreationException;
+import com.abs.casino.common.exception.PromoCreationException;
 
 public interface IPromoLocalization {
     void setItem(String itemName, String itemValue) throws PromoCreationException;

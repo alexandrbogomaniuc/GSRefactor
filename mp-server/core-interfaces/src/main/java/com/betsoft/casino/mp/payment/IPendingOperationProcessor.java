@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.payment;
 
 import com.betsoft.casino.mp.service.ISocketService;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.ObjectAlreadyExistsException;
+import com.abs.casino.common.exception.ObjectAlreadyExistsException;
 
 /**
  * User: flsh

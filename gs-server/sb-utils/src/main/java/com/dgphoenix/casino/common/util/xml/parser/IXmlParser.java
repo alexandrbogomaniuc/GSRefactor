@@ -5,7 +5,7 @@
  */
 package com.abs.casino.common.util.xml.parser;
 
-import com.dgphoenix.casino.common.exception.ParserException;
+import com.abs.casino.common.exception.ParserException;
 import com.abs.casino.common.util.xml.IXmlMessage;
 
 public interface IXmlParser {

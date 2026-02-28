@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.exception;
+package com.abs.casino.common.exception;
 
 /**
  * Created by inter on 23.04.15.

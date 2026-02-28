@@ -8549,3 +8549,23 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-071951-hardcut-m2-wave264-wave265-common-transactiondata-core/`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/193-hard-cut-m2-wave264-wave265-parallel-batches-report-20260228.md`
 - Metrics refresh: baseline `2277`, reduced `1701`, remaining `576`, burndown `74.703557%`; Project 02 `46.735996%`; Core `73.367998%`; Portfolio `86.683999%`; ETA `23.7h` (`2.97` workdays).
+
+### 2026-02-28 07:55 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W266 + W267`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `11`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - fast gate rerun1 and full matrix rerun1 failed at `STEP03` because moved exception declarations lost same-package visibility to unmigrated `CommonException`.
+  - fixed with minimal explicit `CommonException` compatibility imports in moved declarations.
+  - canonical validation reached on rerun2:
+    - fast gate batchA: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-073605-hardcut-m2-wave266-wave267-sbutils-common-exception-lowrisk/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/194-hard-cut-m2-wave266-wave267-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1712`, remaining `565`, burndown `75.186649%`
+  - Project 02 `46.884832%`, Core `73.442416%`, Portfolio `86.721208%`
+  - ETA `23.3h` (`2.91` workdays)

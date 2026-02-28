@@ -3,7 +3,7 @@ package com.abs.casino.init;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.abs.casino.common.engine.tracker.DelayedExecutor;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.FatalException;
+import com.abs.casino.common.exception.FatalException;
 import com.abs.casino.common.util.hardware.HardwareConfigurationManager;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.TransactionDataTracker;

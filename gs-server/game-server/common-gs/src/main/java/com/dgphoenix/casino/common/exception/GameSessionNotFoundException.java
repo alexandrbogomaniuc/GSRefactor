@@ -1,6 +1,6 @@
 package com.abs.casino.common.exception;
 
-import com.dgphoenix.casino.common.exception.AbstractSendAlertException;
+import com.abs.casino.common.exception.AbstractSendAlertException;
 /**
  * Used to indicate incorrect game session id.
  *
