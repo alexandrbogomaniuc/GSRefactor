@@ -1,0 +1,2 @@
+Scope: declaration-first migration of low-fanout common-gs Kafka bot-config/private-room DTOs with strict disjoint ownership.
+Safety: no blind/global replacement; rewires constrained to direct imports and known wildcard consumer file (`KafkaRequestMultiPlayer`).

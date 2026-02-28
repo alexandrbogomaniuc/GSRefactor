@@ -1,5 +1,7 @@
 package com.dgphoenix.casino.gs.socket.mq;
 
+import com.abs.casino.kafka.dto.GetPrivateRoomInfoRequest;
+
 import com.dgphoenix.casino.account.AccountManager;
 import com.abs.casino.battleground.messages.*;
 import com.abs.casino.battleground.messages.*;

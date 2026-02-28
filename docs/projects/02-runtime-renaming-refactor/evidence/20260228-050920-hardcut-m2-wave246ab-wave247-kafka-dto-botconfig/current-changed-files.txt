@@ -1,0 +1,25 @@
+ M docs/12-work-diary.md
+ M docs/projects/02-runtime-renaming-refactor/ACTIVITY-LOG.md
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/KafkaRequestMultiPlayer.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/BattlegroundService.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BotConfigInfosResponse.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/EnableBotServiceRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetAllBotConfigInfosRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetBotConfigInfoByNickNameRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetBotConfigInfoByUserNameRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetBotConfigInfoRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetPrivateRoomInfoRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/IsBotServiceEnabledRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/RemoveBotConfigInfoRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/TournamentEndedDto.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/UpdatePrivateRoomRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/UpsertBotConfigInfoRequest.java
+ M gs-server/game-server/web-gs/src/main/resources/cluster-hosts.properties
+?? .tmp-w202-batchA.txt
+?? .tmp-w202-batchB.txt
+?? docs/projects/02-runtime-renaming-refactor/184-hard-cut-m2-wave246ab-wave247-parallel-batches-report-20260228.md
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-002035-hardcut-m2-wave222ab-wave223-parallel-batches/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-035231-hardcut-m2-wave242ab-wave243-parallel-batches/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-035609-hardcut-m2-wave242ab-wave243-parallel-batches/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-040443-hardcut-m2-wave242-wave243-mp-kafka-cluster/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-050920-hardcut-m2-wave246ab-wave247-kafka-dto-botconfig/

@@ -1,0 +1,6 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/RemoveBotConfigInfoRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/UpsertBotConfigInfoRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BotConfigInfosResponse.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/TournamentEndedDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetPrivateRoomInfoRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/UpdatePrivateRoomRequest.java

@@ -3539,3 +3539,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 19`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+19`.
   - global tracked source declarations/files now `669` remaining (`2277` baseline, `1608` reduced, `70.619236%` burndown).
+
+## 2026-02-28 05:18 UTC (Hard-Cut M2 Wave 246A + 246B + 247)
+- Continued hard-cut execution from W245 with declaration-first overlap-safe batches in `common-gs` kafka dto surfaces:
+  - `W246A`: 6 declaration migrations in bot-config request DTOs.
+  - `W246B`: 6 declaration migrations in bot-config/private-room response/request DTOs.
+  - `W247`: integration and validation.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited in this session; strict-disjoint manifests were enforced in main-agent execution.
+- Stabilization/validation highlights:
+  - aligned wildcard consumer imports in `KafkaRequestMultiPlayer`/`BattlegroundService` for moved `com.abs` DTOs.
+  - no blind/global replacement performed.
+  - canonical validation reached:
+    - fast gate batchA rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-050920-hardcut-m2-wave246ab-wave247-kafka-dto-botconfig/`
+  - report: `docs/projects/02-runtime-renaming-refactor/184-hard-cut-m2-wave246ab-wave247-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 12`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+12`.
+  - global tracked source declarations/files now `657` remaining (`2277` baseline, `1620` reduced, `71.146245%` burndown).

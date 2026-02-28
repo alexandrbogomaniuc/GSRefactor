@@ -1,5 +1,29 @@
 package com.dgphoenix.casino.gs.persistance.remotecall;
 
+import com.abs.casino.kafka.dto.UpdatePrivateRoomRequest;
+
+import com.abs.casino.kafka.dto.GetPrivateRoomInfoRequest;
+
+import com.abs.casino.kafka.dto.TournamentEndedDto;
+
+import com.abs.casino.kafka.dto.BotConfigInfosResponse;
+
+import com.abs.casino.kafka.dto.UpsertBotConfigInfoRequest;
+
+import com.abs.casino.kafka.dto.RemoveBotConfigInfoRequest;
+
+import com.abs.casino.kafka.dto.IsBotServiceEnabledRequest;
+
+import com.abs.casino.kafka.dto.GetBotConfigInfoByNickNameRequest;
+
+import com.abs.casino.kafka.dto.GetBotConfigInfoByUserNameRequest;
+
+import com.abs.casino.kafka.dto.GetBotConfigInfoRequest;
+
+import com.abs.casino.kafka.dto.GetAllBotConfigInfosRequest;
+
+import com.abs.casino.kafka.dto.EnableBotServiceRequest;
+
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.kafka.dto.*;

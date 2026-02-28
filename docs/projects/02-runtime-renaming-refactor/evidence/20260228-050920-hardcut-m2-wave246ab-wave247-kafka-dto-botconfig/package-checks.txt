@@ -1,0 +1,13 @@
+# Package checks (before)
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/EnableBotServiceRequest.java: package com.dgphoenix.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetAllBotConfigInfosRequest.java: package com.dgphoenix.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetBotConfigInfoRequest.java: package com.dgphoenix.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetBotConfigInfoByUserNameRequest.java: package com.dgphoenix.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetBotConfigInfoByNickNameRequest.java: package com.dgphoenix.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/IsBotServiceEnabledRequest.java: package com.dgphoenix.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/RemoveBotConfigInfoRequest.java: package com.dgphoenix.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/UpsertBotConfigInfoRequest.java: package com.dgphoenix.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BotConfigInfosResponse.java: package com.dgphoenix.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/TournamentEndedDto.java: package com.dgphoenix.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetPrivateRoomInfoRequest.java: package com.dgphoenix.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/UpdatePrivateRoomRequest.java: package com.dgphoenix.casino.kafka.dto;

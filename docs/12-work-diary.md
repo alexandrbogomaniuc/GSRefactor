@@ -8383,3 +8383,24 @@
   - ETA `27.8h` (`3.48` workdays)
 - Next:
   - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external environment blocker.
+
+### 2026-02-28 05:18 UTC
+- Continued Project 02 hard-cut execution in `Dev_new` and completed `W246A/W246B + W247` with canonical validation.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `12`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - aligned wildcard consumer imports in `KafkaRequestMultiPlayer`/`BattlegroundService` for moved DTOs.
+  - canonical validation reached:
+    - fast gate batchA rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-050920-hardcut-m2-wave246ab-wave247-kafka-dto-botconfig/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/184-hard-cut-m2-wave246ab-wave247-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1620`, remaining `657`, burndown `71.146245%`
+  - Project 02 `44.957411%`, Core `72.478706%`, Portfolio `86.239353%`
+  - ETA `27.3h` (`3.41` workdays)
+- Next:
+  - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external environment blocker.
