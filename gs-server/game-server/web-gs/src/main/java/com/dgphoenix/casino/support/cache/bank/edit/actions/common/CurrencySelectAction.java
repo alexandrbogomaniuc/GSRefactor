@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.CurrencyCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
-import com.dgphoenix.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper;
+import com.abs.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper;
 import com.dgphoenix.casino.common.configuration.messages.MessageManager;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.support.cache.bank.edit.forms.common.GameViewBean;

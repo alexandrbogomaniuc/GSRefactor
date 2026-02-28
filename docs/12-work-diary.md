@@ -8932,3 +8932,25 @@
   - baseline `2277`, reduced `1850`, remaining `427`, burndown `81.247255%`
   - Project 02 `48.752011%`, Core `74.376005%`, Portfolio `87.188003%`
   - ETA `17.4h` (`2.18` workdays)
+
+### 2026-02-28 14:20 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W304 + W305`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `4` (`TransportException`, `ImmutableBaseGameInfoWrapper`, `DatePeriod`, `CalendarUtils`).
+  - deferred from initial target due mixed-type/package-visibility drift: `AbstractDistributedCache`, `ILimit`, `GameType`, `GameGroup`, `GameVariableType`, `ServerMessage`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent parallel target remained constrained by thread limit; ownership-safe execution continued on main.
+  - rerun1-rerun4 failed at `PRE02/STEP03` due moved `cache/game` declarations crossing unmoved same-package boundaries and duplicate-type drift.
+  - rerun5 failed at `PRE03/STEP04` due `ServerMessage` protected-access boundary after move; `STEP01` enum package mismatch also surfaced.
+  - rerun6-rerun7 fixed `STEP01`/`STEP06` via bounded compatibility bridge in `ShellDetector` and localized moved `DatePeriod` boundary type in `MQServiceHandler`.
+  - rerun8 reached canonical profile:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-135900-hardcut-m2-wave304-wave305-cache-game-lowfanout/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/213-hard-cut-m2-wave304-wave305-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1854`, remaining `423`, burndown `81.422925%`
+  - Project 02 `48.806134%`, Core `74.403067%`, Portfolio `87.201533%`
+  - ETA `17.2h` (`2.15` workdays)

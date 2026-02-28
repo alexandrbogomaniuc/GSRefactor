@@ -3,7 +3,7 @@ package com.dgphoenix.casino.common.promo;
 import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.DatePeriod;
+import com.abs.casino.common.util.DatePeriod;
 import com.esotericsoftware.kryo.KryoSerializable;
 
 import java.util.List;

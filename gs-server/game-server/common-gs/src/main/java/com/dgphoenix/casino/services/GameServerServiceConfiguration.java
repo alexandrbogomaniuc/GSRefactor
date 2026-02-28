@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.currency.CurrencyRate;
 import com.dgphoenix.casino.common.promo.*;
 import com.abs.casino.common.promo.network.NetworkTournamentEvent;
 import com.abs.casino.common.promo.network.NetworkTournamentInfo;
-import com.dgphoenix.casino.common.util.DatePeriod;
+import com.abs.casino.common.util.DatePeriod;
 import com.abs.casino.common.util.xml.TransientFieldsAllowedProvider;
 import com.abs.casino.common.util.xml.TransientFieldsReflectionProvider;
 import com.abs.casino.common.util.xml.xstreampool.XStreamPool;

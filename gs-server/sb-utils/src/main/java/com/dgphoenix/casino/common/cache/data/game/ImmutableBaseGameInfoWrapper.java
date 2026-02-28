@@ -1,7 +1,11 @@
-package com.dgphoenix.casino.common.cache.data.game;
+package com.abs.casino.common.cache.data.game;
 
 import com.dgphoenix.casino.common.cache.data.account.PlayerDeviceType;
 import com.dgphoenix.casino.common.cache.data.bank.ICoin;
+import com.dgphoenix.casino.common.cache.data.game.GameGroup;
+import com.dgphoenix.casino.common.cache.data.game.GameType;
+import com.dgphoenix.casino.common.cache.data.game.GameVariableType;
+import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.bank.ILimit;
 import com.dgphoenix.casino.common.cache.data.currency.ICurrency;
 import com.dgphoenix.casino.common.exception.CommonException;

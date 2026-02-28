@@ -1,7 +1,7 @@
 package com.abs.casino.common.util.web;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.TransportException;
+import com.abs.casino.common.exception.TransportException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.support.ExceptionInfo;
 import com.abs.casino.common.util.support.Request;

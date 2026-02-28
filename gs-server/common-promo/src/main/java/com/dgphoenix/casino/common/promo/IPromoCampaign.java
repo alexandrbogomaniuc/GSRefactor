@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.common.promo;
 
 import com.dgphoenix.casino.common.cache.Identifiable;
-import com.dgphoenix.casino.common.util.DatePeriod;
+import com.abs.casino.common.util.DatePeriod;
 import com.esotericsoftware.kryo.KryoSerializable;
 
 import java.util.Map;

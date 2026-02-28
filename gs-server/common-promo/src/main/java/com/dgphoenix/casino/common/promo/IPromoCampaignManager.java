@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.data.account.IAccountInfo;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.promo.feed.tournament.SummaryTournamentFeedEntry;
-import com.dgphoenix.casino.common.util.DatePeriod;
+import com.abs.casino.common.util.DatePeriod;
 import com.dgphoenix.casino.common.util.Pair;
 
 import java.util.Collection;

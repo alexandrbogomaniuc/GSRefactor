@@ -2,7 +2,7 @@ package com.abs.casino.leaderboard;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.exception.TransportException;
+import com.abs.casino.common.exception.TransportException;
 import com.abs.casino.common.mp.LeaderboardResult;
 import com.abs.casino.common.mp.LeaderboardResultWrapper;
 import com.dgphoenix.casino.common.util.string.StringUtils;

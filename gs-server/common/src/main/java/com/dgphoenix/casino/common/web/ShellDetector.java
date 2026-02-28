@@ -28,6 +28,10 @@ public final class ShellDetector {
     private ShellDetector() {
     }
 
+    private static Html5PcVersionMode asLegacyMode(com.abs.casino.common.cache.data.game.Html5PcVersionMode mode) {
+        return Html5PcVersionMode.valueOf(mode.name());
+    }
+
 
     public static boolean isMobileShell(BaseGameInfoTemplate template, boolean singleGID, String userAgent,
                                         String platform, boolean isHtml5Pc) {
@@ -48,7 +52,7 @@ public final class ShellDetector {
         Html5PcVersionMode html5PcMode;
         IBaseGameInfo gameInfo = BaseGameCache.getInstance().getGameInfoById(bankInfo.getId(), template.getGameId(), bankInfo.getDefaultCurrency());
         if (gameInfo != null) {
-            html5PcMode = gameInfo.getHtml5PcVersionMode();
+            html5PcMode = asLegacyMode(gameInfo.getHtml5PcVersionMode());
         } else {
             html5PcMode = template.getDefaultGameInfo().getHtml5PcVersionMode();
         }

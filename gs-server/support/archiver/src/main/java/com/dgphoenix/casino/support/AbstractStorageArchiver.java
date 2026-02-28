@@ -4,7 +4,7 @@ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraArchiverPersister;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.CalendarUtils;
+import com.abs.casino.common.util.CalendarUtils;
 import com.abs.casino.common.util.xml.ConcurrentHashMapXStreamConverter;
 import com.abs.casino.common.util.xml.ConcurrentStringMapXStreamConverter;
 import com.thoughtworks.xstream.XStream;

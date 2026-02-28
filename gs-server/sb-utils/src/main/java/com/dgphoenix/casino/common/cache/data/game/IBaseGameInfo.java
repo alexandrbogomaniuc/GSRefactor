@@ -1,5 +1,7 @@
 package com.dgphoenix.casino.common.cache.data.game;
 
+import com.abs.casino.common.cache.data.game.ClientGeneration;
+import com.abs.casino.common.cache.data.game.Html5PcVersionMode;
 import com.dgphoenix.casino.common.cache.Identifiable;
 import com.dgphoenix.casino.common.cache.data.account.PlayerDeviceType;
 import com.dgphoenix.casino.common.cache.data.bank.ICoin;

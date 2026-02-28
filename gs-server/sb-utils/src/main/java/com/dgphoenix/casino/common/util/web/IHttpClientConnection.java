@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.web;
 
-import com.dgphoenix.casino.common.exception.TransportException;
+import com.abs.casino.common.exception.TransportException;
 import org.apache.http.HttpEntity;
 
 import java.util.Map;

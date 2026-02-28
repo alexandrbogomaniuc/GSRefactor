@@ -4105,3 +4105,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `9`; bounded rewires/regressions: `0`.
   - global tracked source declarations/files now `427` remaining (`2277` baseline, `1850` reduced, `81.247255%` burndown).
+
+## 2026-02-28 14:20 UTC (Hard-Cut M2 Wave 304 + 305)
+- Continued hard-cut execution from W303 with declaration-first overlap-safe `sb-utils` `cache/game/util` batch.
+  - `W304`: retained `2` declaration migrations (`TransportException`, `ImmutableBaseGameInfoWrapper`).
+  - `W305`: retained `2` declaration migrations (`DatePeriod`, `CalendarUtils`).
+  - deferred from initial target due mixed-type/package-visibility drift: `AbstractDistributedCache`, `ILimit`, `GameType`, `GameGroup`, `GameVariableType`, `ServerMessage`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1-rerun4 failed at `PRE02/STEP03` on `sb-utils` same-package and duplicate-type drift (`AbstractDistributedCache`, `game/bank` cluster, `Html5PcVersionMode` boundary).
+  - rerun5 reached `PRE02 PASS` but failed at `PRE03/STEP04` due moved `ServerMessage` protected-access boundary and surfaced `STEP01` enum package mismatch.
+  - rerun6-rerun7 fixed `STEP01`/`STEP06` drift via bounded compatibility bridge in `ShellDetector` and localized moved `DatePeriod` boundary use in `MQServiceHandler`.
+  - rerun8 reached canonical profile:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-135900-hardcut-m2-wave304-wave305-cache-game-lowfanout/`
+  - report: `docs/projects/02-runtime-renaming-refactor/213-hard-cut-m2-wave304-wave305-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `4`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `423` remaining (`2277` baseline, `1854` reduced, `81.422925%` burndown).

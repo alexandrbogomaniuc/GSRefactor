@@ -1,0 +1,10 @@
+com.dgphoenix.casino.common.cache.AbstractDistributedCache -> com.abs.casino.common.cache.AbstractDistributedCache
+com.dgphoenix.casino.common.exception.TransportException -> com.abs.casino.common.exception.TransportException
+com.dgphoenix.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper -> com.abs.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper
+com.dgphoenix.casino.common.cache.data.bank.ILimit -> com.abs.casino.common.cache.data.bank.ILimit
+com.dgphoenix.casino.common.cache.data.game.GameType -> com.abs.casino.common.cache.data.game.GameType
+com.dgphoenix.casino.common.cache.data.game.GameGroup -> com.abs.casino.common.cache.data.game.GameGroup
+com.dgphoenix.casino.common.cache.data.game.GameVariableType -> com.abs.casino.common.cache.data.game.GameVariableType
+com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage -> com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage
+com.dgphoenix.casino.common.util.DatePeriod -> com.abs.casino.common.util.DatePeriod
+com.dgphoenix.casino.common.util.CalendarUtils -> com.abs.casino.common.util.CalendarUtils

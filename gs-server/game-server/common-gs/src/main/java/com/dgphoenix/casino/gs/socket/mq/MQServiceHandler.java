@@ -3863,7 +3863,7 @@ public class MQServiceHandler {
                     tournamentId, accountInfo.getId());
             throw new com.dgphoenix.casino.common.exception.CommonException("Player not joined to tournament");
         }
-        DatePeriod period = promoCampaign.getActionPeriod();
+        com.abs.casino.common.util.DatePeriod period = promoCampaign.getActionPeriod();
         return new TournamentInfoDto(
                 tournamentId,
                 promoCampaign.getName(),
