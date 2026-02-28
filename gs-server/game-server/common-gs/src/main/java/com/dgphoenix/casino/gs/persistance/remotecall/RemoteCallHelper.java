@@ -26,6 +26,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.dgphoenix.casino.gs.socket.InServiceServiceHandler;
+import com.abs.casino.gs.persistance.remotecall.RefreshConfigCall;
 import com.abs.casino.kafka.dto.InvalidateAllBaseGameInfoRequest;
 import com.abs.casino.kafka.dto.InvalidateBonusClientRequest;
 import com.abs.casino.kafka.dto.InvalidateFrBonusClientRequest;

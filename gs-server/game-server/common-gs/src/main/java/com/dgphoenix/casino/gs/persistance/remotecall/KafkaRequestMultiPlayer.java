@@ -46,7 +46,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static com.dgphoenix.casino.gs.persistance.remotecall.KafkaResponseConverterUtil.convertToType;
+import static com.abs.casino.gs.persistance.remotecall.KafkaResponseConverterUtil.convertToType;
 
 
 public class KafkaRequestMultiPlayer implements IKafkaRequestMultiPlayer {

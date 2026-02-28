@@ -25,7 +25,7 @@ import com.abs.casino.gs.maintenance.converters.CurrencyConverter;
 import com.abs.casino.gs.maintenance.converters.ExportableCacheEntryConverter;
 import com.abs.casino.gs.maintenance.ICacheExporter;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManager;
-import com.dgphoenix.casino.gs.persistance.remotecall.RefreshConfigCall;
+import com.abs.casino.gs.persistance.remotecall.RefreshConfigCall;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import com.thoughtworks.xstream.XStream;

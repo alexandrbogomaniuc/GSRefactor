@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusGameMode;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
-import com.dgphoenix.casino.services.bonus.ForbiddenGamesForBonusProvider;
+import com.abs.casino.services.bonus.ForbiddenGamesForBonusProvider;
 import com.google.common.collect.Sets;
 
 import java.util.*;

@@ -60,7 +60,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 
 import reactor.core.publisher.Mono;
 
-import static com.dgphoenix.casino.gs.persistance.remotecall.KafkaResponseConverterUtil.convertToType;
+import static com.abs.casino.gs.persistance.remotecall.KafkaResponseConverterUtil.convertToType;
 
 @Service
 public class KafkaMessageService {

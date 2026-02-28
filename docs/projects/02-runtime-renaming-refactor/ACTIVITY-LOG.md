@@ -4247,3 +4247,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `9`; bounded rewires/regressions: `0`.
   - global tracked source declarations/files now `2056` remaining (`2277` baseline, `221` reduced, `9.705753%` burndown).
+
+## 2026-02-28 18:33 UTC (Hard-Cut M2 Wave 318 + 319)
+- Continued hard-cut execution from W317 with declaration-first overlap-safe `common-gs` remote-call/service/helper batch.
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `11`
+    - `ChangeMassAwardStatusCall`, `DeleteMassAwardCall`, `KafkaResponseConverterUtil`, `RefreshConfigCall`, `ForceCreateDetailsException`, `NotCriticalWalletException`, `DeactivatedRoomNotificationTask`, `ForbiddenGamesForBonusProvider`, `MPGameSessionService`, `StartGameSessionHelper`, `PaymentManager`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - bounded rewires applied to static converter imports and service/helper/exception callsites in `common-gs` + `web-gs`.
+  - canonical validation reached on rerun1:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-182258-hardcut-m2-wave318-wave319-remotecall-service-corehelpers/`
+  - report: `docs/projects/02-runtime-renaming-refactor/220-hard-cut-m2-wave318-wave319-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `11`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `2045` remaining (`2277` baseline, `232` reduced, `10.188845%` burndown).

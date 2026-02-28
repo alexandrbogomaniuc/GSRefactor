@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.gs.socket.mq.BattlegroundService;
-import com.dgphoenix.casino.services.mp.MPGameSessionService;
+import com.abs.casino.services.mp.MPGameSessionService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.DependsOn;

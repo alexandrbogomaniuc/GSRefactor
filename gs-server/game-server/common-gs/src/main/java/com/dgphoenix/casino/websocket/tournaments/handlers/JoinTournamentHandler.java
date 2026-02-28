@@ -16,7 +16,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.BaseAction;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CWError;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
-import com.dgphoenix.casino.gs.socket.mq.ForceCreateDetailsException;
+import com.abs.casino.gs.socket.mq.ForceCreateDetailsException;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.gs.socket.mq.TournamentBuyInHelper;
 import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;

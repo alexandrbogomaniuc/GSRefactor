@@ -26,7 +26,7 @@ import com.abs.casino.common.web.bonus.BonusErrors;
 import com.abs.casino.common.web.bonus.CBonus;
 import com.dgphoenix.casino.gs.managers.payment.bonus.*;
 import com.abs.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
-import com.dgphoenix.casino.services.bonus.ForbiddenGamesForBonusProvider;
+import com.abs.casino.services.bonus.ForbiddenGamesForBonusProvider;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

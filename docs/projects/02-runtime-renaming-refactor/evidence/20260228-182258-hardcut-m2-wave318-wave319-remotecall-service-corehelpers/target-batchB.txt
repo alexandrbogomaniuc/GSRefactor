@@ -1,0 +1,5 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/DeactivatedRoomNotificationTask.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/bonus/ForbiddenGamesForBonusProvider.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/mp/MPGameSessionService.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/StartGameSessionHelper.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java

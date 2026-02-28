@@ -4,7 +4,7 @@ import com.dgphoenix.casino.battleground.messages.MPGameSessionFinishResponse;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.gs.socket.mq.BattlegroundService;
-import com.dgphoenix.casino.services.mp.MPGameSessionService;
+import com.abs.casino.services.mp.MPGameSessionService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

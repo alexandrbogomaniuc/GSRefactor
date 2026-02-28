@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.persistance.remotecall;
+package com.abs.casino.gs.persistance.remotecall;
 
 import com.abs.casino.cache.CachesHolder;
 import com.dgphoenix.casino.cassandra.persist.AbstractDistributedConfigEntryPersister;

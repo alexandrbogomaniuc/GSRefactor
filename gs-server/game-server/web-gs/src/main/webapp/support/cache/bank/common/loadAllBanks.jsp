@@ -3,7 +3,7 @@
 <%@ page import="com.dgphoenix.casino.system.configuration.PlayerSessionConfiguration" %>
 <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
 <%@ page import="com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper" %>
-<%@ page import="com.dgphoenix.casino.gs.persistance.remotecall.RefreshConfigCall" %>
+<%@ page import="com.abs.casino.gs.persistance.remotecall.RefreshConfigCall" %>
 <%--
   Created by IntelliJ IDEA.
   User: vik

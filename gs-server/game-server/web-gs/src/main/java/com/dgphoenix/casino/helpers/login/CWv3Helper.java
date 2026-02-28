@@ -27,7 +27,7 @@ import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
 import com.abs.casino.helpers.login.LoginHelper;
-import com.dgphoenix.casino.services.mp.MPGameSessionService;
+import com.abs.casino.services.mp.MPGameSessionService;
 import com.abs.casino.sm.CWv3PlayerSessionManager;
 import com.abs.casino.sm.PlayerSessionFactory;
 import com.abs.casino.sm.login.GameLoginRequest;

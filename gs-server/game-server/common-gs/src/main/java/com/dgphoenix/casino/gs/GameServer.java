@@ -91,7 +91,7 @@ import com.abs.casino.init.ShutdownFilter;
 import com.abs.casino.leaderboard.LeaderboardWinTracker;
 import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import com.abs.casino.services.PlayerBetHistoryService;
-import com.dgphoenix.casino.services.bonus.ForbiddenGamesForBonusProvider;
+import com.abs.casino.services.bonus.ForbiddenGamesForBonusProvider;
 import com.abs.casino.sm.tracker.logout.LogoutTracker;
 import com.dgphoenix.casino.system.MetricsManager;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

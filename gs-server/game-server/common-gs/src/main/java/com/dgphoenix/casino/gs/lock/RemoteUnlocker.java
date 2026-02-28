@@ -1,6 +1,6 @@
 package com.abs.casino.gs.lock;
 
-import static com.dgphoenix.casino.gs.persistance.remotecall.KafkaResponseConverterUtil.convertToType;
+import static com.abs.casino.gs.persistance.remotecall.KafkaResponseConverterUtil.convertToType;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.persistance.remotecall;
+package com.abs.casino.gs.persistance.remotecall;
 
 import com.dgphoenix.casino.common.cache.MassAwardCache;
 import com.dgphoenix.casino.common.cache.data.bonus.BaseMassAward;

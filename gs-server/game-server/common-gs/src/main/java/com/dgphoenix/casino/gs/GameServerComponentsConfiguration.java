@@ -58,7 +58,7 @@ import com.abs.casino.services.LoginService;
 import com.abs.casino.services.PlayerBetHistoryService;
 import com.abs.casino.services.geoip.CountryRestrictionService;
 import com.abs.casino.services.mp.MPBotConfigInfoService;
-import com.dgphoenix.casino.services.mp.MPGameSessionService;
+import com.abs.casino.services.mp.MPGameSessionService;
 import com.abs.casino.services.tournament.PlayerAliasService;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

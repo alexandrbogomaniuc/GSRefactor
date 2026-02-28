@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.services.mp;
+package com.abs.casino.services.mp;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraCurrentPlayerSessionStatePersister;

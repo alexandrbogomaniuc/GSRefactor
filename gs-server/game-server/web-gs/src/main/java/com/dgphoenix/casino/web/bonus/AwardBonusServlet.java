@@ -23,7 +23,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.IBonusClient;
 import com.dgphoenix.casino.gs.managers.payment.bonus.IBonusManager;
 import com.abs.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
-import com.dgphoenix.casino.services.bonus.ForbiddenGamesForBonusProvider;
+import com.abs.casino.services.bonus.ForbiddenGamesForBonusProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

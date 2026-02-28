@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.services.bonus;
+package com.abs.casino.services.bonus;
 
 import com.dgphoenix.casino.common.cache.SubCasinoCache;
 import com.google.common.collect.ImmutableSet;
