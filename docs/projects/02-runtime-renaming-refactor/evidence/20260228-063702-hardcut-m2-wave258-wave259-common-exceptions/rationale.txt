@@ -1,0 +1,1 @@
+W258 declaration-first low-risk batch in gs-server/common exceptions (non-duplicate targets) with bounded direct import rewires only.

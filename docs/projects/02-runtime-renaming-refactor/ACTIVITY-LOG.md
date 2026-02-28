@@ -3652,3 +3652,24 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 11`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+11`.
   - global tracked source declarations/files now `609` remaining (`2277` baseline, `1668` reduced, `73.254282%` burndown).
+
+
+## 2026-02-28 06:52 UTC (Hard-Cut M2 Wave 258 + 259)
+- Continued hard-cut execution from W257 with declaration-first overlap-safe batch in `common` exception surfaces:
+  - `W258`: 10 declaration migrations in common exception declarations.
+  - `W259`: integration and validation.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - fast gate rerun1 and full matrix rerun1 failed at `STEP06` due moved exceptions losing same-package visibility to base exception classes.
+  - fixed with minimal compatibility imports in moved declarations (`CommonException`, `AccountException`, `ObjectNotFoundException`).
+  - full matrix rerun2 stalled in `STEP09-retry1`; rerun3 used timeout-bounded `STEP09` invocation and reached canonical profile.
+  - no blind/global replacement performed.
+  - canonical validation reached:
+    - fast gate batchA rerun3: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun3: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-063702-hardcut-m2-wave258-wave259-common-exceptions/`
+  - report: `docs/projects/02-runtime-renaming-refactor/190-hard-cut-m2-wave258-wave259-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 10`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+10`.
+  - global tracked source declarations/files now `599` remaining (`2277` baseline, `1678` reduced, `73.693456%` burndown).

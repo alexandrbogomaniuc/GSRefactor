@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.exception.AccountLockedException;
+import com.abs.casino.common.exception.AccountLockedException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ITimeProvider;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;

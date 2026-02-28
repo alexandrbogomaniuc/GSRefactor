@@ -1,0 +1,4 @@
+[2026-02-28T06:43:49Z] START STEP09-retry1
+[2026-02-28T06:43:49Z] DIR .
+[2026-02-28T06:43:49Z] CMD node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+[refactor-onboard] PASS: Static asset route (http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json) -> HTTP 200
