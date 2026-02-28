@@ -3950,3 +3950,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 10`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+10`.
   - global tracked source declarations/files now `492` remaining (`2277` baseline, `1785` reduced, `78.392622%` burndown).
+
+## 2026-02-28 11:47 UTC (Hard-Cut M2 Wave 288 + 289)
+- Continued hard-cut execution from W287 with declaration-first overlap-safe wallet helper/external-handler batch.
+  - `W288`: 2 declaration migrations retained (`IWalletHelper`, `WalletHelper`).
+  - `W289`: 2 declaration migrations retained (`ExternalTransactionHandler`, `MultiplayerExternalWallettransactionHandler`).
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1 failed at `STEP01` due moved `IWalletHelper` losing same-package visibility to unmoved wallet declarations.
+  - applied bounded compatibility imports for `CommonWalletOperation`, `CommonGameWallet`, `CommonWallet`, and `IWalletOperation` in moved declarations.
+  - canonical validation reached on rerun2:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-113954-hardcut-m2-wave288-wave289-wallet-helper-externalhandlers/`
+  - report: `docs/projects/02-runtime-renaming-refactor/205-hard-cut-m2-wave288-wave289-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 4`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+4`.
+  - global tracked source declarations/files now `488` remaining (`2277` baseline, `1789` reduced, `78.568292%` burndown).

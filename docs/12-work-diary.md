@@ -8769,3 +8769,23 @@
   - baseline `2277`, reduced `1785`, remaining `492`, burndown `78.392622%`
   - Project 02 `47.872539%`, Core `73.936269%`, Portfolio `86.968135%`
   - ETA `20.2h` (`2.53` workdays)
+
+### 2026-02-28 11:47 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W288 + W289`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `4` (`IWalletHelper`, `WalletHelper`, `ExternalTransactionHandler`, `MultiplayerExternalWallettransactionHandler`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent parallel target remained constrained by thread limit; ownership-safe execution continued on main.
+  - rerun1 failed at `STEP01` due moved `IWalletHelper` losing same-package visibility to unmoved wallet declarations.
+  - fixed with bounded compatibility imports (`CommonWalletOperation`, `CommonGameWallet`, `CommonWallet`, `IWalletOperation`) in moved declarations.
+  - canonical validation reached on rerun2:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-113954-hardcut-m2-wave288-wave289-wallet-helper-externalhandlers/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/205-hard-cut-m2-wave288-wave289-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1789`, remaining `488`, burndown `78.568292%`
+  - Project 02 `47.926657%`, Core `73.963329%`, Portfolio `86.981665%`
+  - ETA `20.0h` (`2.50` workdays)

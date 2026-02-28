@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.wallet;
+package com.abs.casino.gs.managers.payment.wallet;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
@@ -22,6 +22,10 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.gs.managers.game.session.GameSessionManager;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager;
+import com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet;
+import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
+import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
+import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletOperation;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTrackerTask;
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;

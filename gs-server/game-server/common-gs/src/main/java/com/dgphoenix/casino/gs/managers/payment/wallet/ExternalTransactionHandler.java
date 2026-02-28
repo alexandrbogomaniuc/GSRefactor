@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.wallet;
+package com.abs.casino.gs.managers.payment.wallet;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraExternalTransactionPersister;
@@ -11,6 +11,8 @@ import com.abs.casino.common.cache.data.payment.transfer.ExternalPaymentTransact
 import com.abs.casino.common.cache.data.payment.transfer.TransactionStatus;
 import com.abs.casino.common.exception.WalletException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.dgphoenix.casino.gs.managers.payment.wallet.IExternalWalletTransactionHandler;
+import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletOperation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

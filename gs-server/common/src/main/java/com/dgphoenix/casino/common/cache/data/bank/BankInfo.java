@@ -2156,7 +2156,7 @@ public class BankInfo implements IDistributedConfigEntry, Identifiable,
         return PropertyUtils.getStringProperty(properties, KEY_VIVO_SERVER_ID);
     }
 
-    private static final String DEFAULT_EXT_HANDLER = "com.dgphoenix.casino.gs.managers.payment.wallet.ExternalTransactionHandler";
+    private static final String DEFAULT_EXT_HANDLER = "com.abs.casino.gs.managers.payment.wallet.ExternalTransactionHandler";
 
     public String getExternalTransactionHandlerClassName() {
         String handler = PropertyUtils.getStringProperty(properties, KEY_EXTERNAL_WALLET_TRANSACTION_HANDLER_CLASS_NAME);
