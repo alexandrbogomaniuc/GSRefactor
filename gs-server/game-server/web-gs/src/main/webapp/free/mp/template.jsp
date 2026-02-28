@@ -11,7 +11,7 @@
 <%@ page import="com.abs.casino.actions.game.pov.StartPovGameParams" %>
 <%@ page import="com.google.gson.Gson" %>
 <%@ page import="static org.apache.http.entity.ContentType.APPLICATION_JSON" %>
-<%@ page import="com.dgphoenix.casino.common.config.HostConfiguration" %>
+<%@ page import="com.abs.casino.common.config.HostConfiguration" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
 <%
     String cdnUrl = request.getParameter(BaseAction.KEY_CDN);

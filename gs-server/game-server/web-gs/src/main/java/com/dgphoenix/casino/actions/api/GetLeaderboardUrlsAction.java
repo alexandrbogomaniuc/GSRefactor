@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.promo.IPromoCampaign;
 import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
-import com.dgphoenix.casino.common.web.JsonResultForLeaderboardUrls;
+import com.abs.casino.common.web.JsonResultForLeaderboardUrls;
 import com.dgphoenix.casino.gs.GameServerComponentsHelper;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -11,7 +11,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.dgphoenix.casino.common.util.property.EnumProperty" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
-<%@ page import="com.dgphoenix.casino.common.config.HostConfiguration" %>
+<%@ page import="com.abs.casino.common.config.HostConfiguration" %>
 <%
 
     if (StringUtils.isTrimmedEmpty(request.getParameter("bankId"))) {

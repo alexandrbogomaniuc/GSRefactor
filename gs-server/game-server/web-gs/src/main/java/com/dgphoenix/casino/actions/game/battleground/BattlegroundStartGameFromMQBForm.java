@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
-import com.dgphoenix.casino.common.web.ClientTypeFactory;
+import com.abs.casino.common.web.ClientTypeFactory;
 import com.dgphoenix.casino.common.web.MobileDetector;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

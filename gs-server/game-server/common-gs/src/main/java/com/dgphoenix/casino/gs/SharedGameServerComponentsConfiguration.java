@@ -13,7 +13,7 @@ import com.abs.casino.common.config.UtilsApplicationContextHelper;
 import com.dgphoenix.casino.common.util.ITimeProvider;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import com.abs.casino.common.util.system.SystemPropertyReader;
-import com.dgphoenix.casino.common.web.SharedServletExecutorService;
+import com.abs.casino.common.web.SharedServletExecutorService;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import com.abs.casino.system.configuration.identification.ServersCoordinatorService;
 import com.abs.casino.system.configuration.identification.ZookeeperProperties;

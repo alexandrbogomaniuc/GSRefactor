@@ -2,7 +2,7 @@ package com.abs.casino.gs.managers.payment.bonus.client;
 
 import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.web.bonus.CBonus;
+import com.abs.casino.common.web.bonus.CBonus;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CCommonWallet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

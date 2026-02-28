@@ -7,7 +7,7 @@
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
-<%@ page import="com.dgphoenix.casino.common.config.HostConfiguration" %>
+<%@ page import="com.abs.casino.common.config.HostConfiguration" %>
 
 <%
     String extUserId = request.getParameter("extUserId");

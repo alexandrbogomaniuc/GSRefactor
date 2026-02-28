@@ -7,7 +7,7 @@
 <%@ page import="com.dgphoenix.casino.common.cache.SubCasinoCache" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.dgphoenix.casino.common.config.HostConfiguration" %>
+<%@ page import="com.abs.casino.common.config.HostConfiguration" %>
 <%@ page contentType="text/html" pageEncoding="utf-8" %>
 <%--
   Author: svvedenskiy

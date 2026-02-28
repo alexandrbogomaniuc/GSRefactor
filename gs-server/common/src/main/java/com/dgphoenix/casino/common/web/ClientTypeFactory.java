@@ -1,6 +1,7 @@
-package com.dgphoenix.casino.common.web;
+package com.abs.casino.common.web;
 
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
+import com.dgphoenix.casino.common.web.MobileDetector;
 
 import javax.servlet.http.HttpServletRequest;
 

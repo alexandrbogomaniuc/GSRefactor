@@ -1,7 +1,7 @@
 package com.abs.casino.controller.mqb;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.web.ClientTypeFactory;
+import com.abs.casino.common.web.ClientTypeFactory;
 import com.abs.casino.gs.socket.mq.GameUserHistoryService;
 import com.abs.casino.mqb.GameUserHistoryInfo;
 import com.google.common.base.Throwables;

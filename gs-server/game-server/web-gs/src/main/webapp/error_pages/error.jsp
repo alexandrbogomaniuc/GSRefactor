@@ -1,14 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.session.ClientType" %>
 <%@ page import="com.dgphoenix.casino.common.web.BaseAction" %>
-<%@ page import="com.dgphoenix.casino.common.web.ClientTypeFactory" %>
+<%@ page import="com.abs.casino.common.web.ClientTypeFactory" %>
 <%@ page import="com.dgphoenix.casino.gs.GameServer" %>
 <%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
 <%@ page import="org.apache.struts.Globals" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
-<%@ page import="com.dgphoenix.casino.common.config.HostConfiguration" %>
+<%@ page import="com.abs.casino.common.config.HostConfiguration" %>
 <%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="template" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>

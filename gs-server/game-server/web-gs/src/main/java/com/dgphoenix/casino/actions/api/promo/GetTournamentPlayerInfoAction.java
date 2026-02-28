@@ -12,7 +12,7 @@ import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
 import com.dgphoenix.casino.common.promo.TournamentMemberRank;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.XmlApiBaseAction;
+import com.abs.casino.common.web.XmlApiBaseAction;
 import com.dgphoenix.casino.gs.GameServerComponentsHelper;
 import com.abs.casino.promo.persisters.CassandraTournamentRankPersister;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

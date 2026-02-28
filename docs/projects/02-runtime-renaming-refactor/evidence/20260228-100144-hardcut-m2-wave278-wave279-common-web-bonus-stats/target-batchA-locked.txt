@@ -1,0 +1,5 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/AbstractPageableForm.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/CBonus.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/ClientTypeFactory.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/GameServerHost.java

@@ -1,0 +1,16 @@
+Deferred from exploratory pre-batch attempt (not retained in this wave due cross-module duplicate-FQCN collisions):
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CashBonusDto.java
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CurrencyRateDto.java
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/MQQuestPrizeDto.java
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/RoundPlayerDto.java
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BGFriendDto.java
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/RMSPlayerDto.java
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/VoidKafkaResponse.java
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BonusStatusDto.java
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BotConfigInfoDto.java
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/MQTreasureQuestProgressDto.java
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BooleanResponseDto.java
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/TournamentInfoDto.java
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BGUpdateRoomResultDto.java
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/PromoNotificationType.java
+Reason: collision with mp-server/kafka classes already published under identical com.abs FQCN.

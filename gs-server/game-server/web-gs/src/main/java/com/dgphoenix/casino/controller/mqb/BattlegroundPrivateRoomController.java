@@ -8,7 +8,7 @@ import com.abs.casino.common.client.canex.request.privateroom.PrivateRoom;
 import com.abs.casino.common.client.canex.request.privateroom.UpdateRoomResponse;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
-import com.dgphoenix.casino.common.web.ClientTypeFactory;
+import com.abs.casino.common.web.ClientTypeFactory;
 import com.abs.casino.controller.mqb.response.*;
 import com.dgphoenix.casino.gs.socket.mq.BattlegroundService;
 import com.abs.casino.kafka.dto.privateroom.response.DeactivateRoomResultDto;

@@ -8669,3 +8669,23 @@
   - baseline `2277`, reduced `1750`, remaining `527`, burndown `76.855512%`
   - Project 02 `47.398994%`, Core `73.699497%`, Portfolio `86.849748%`
   - ETA `21.6h` (`2.70` workdays)
+
+### 2026-02-28 10:15 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W278 + W279`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `10` (`AbstractPageableForm`, `BonusErrors`, `CBonus`, `ClientTypeFactory`, `GameServerHost`, `JsonResultForLeaderboardUrls`, `SharedServletExecutorService`, `ShellDetector`, `StatisticsBuilder`, `XmlApiBaseAction`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - exploratory kafka-dto leaf batch was deferred after compile collisions with `mp-server/kafka` duplicate `com.abs` DTO FQCNs.
+  - fixed `STEP06` drift by explicit `com.abs` DTO imports in `RemoteCallHelper`.
+  - fixed `STEP07` JSPC drift by aligning six JSP `HostConfiguration` imports to `com.abs`.
+  - canonical validation reached on rerun4:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-100144-hardcut-m2-wave278-wave279-common-web-bonus-stats/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/200-hard-cut-m2-wave278-wave279-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1760`, remaining `517`, burndown `77.294686%`
+  - Project 02 `47.534293%`, Core `73.767147%`, Portfolio `86.883574%`
+  - ETA `21.2h` (`2.65` workdays)

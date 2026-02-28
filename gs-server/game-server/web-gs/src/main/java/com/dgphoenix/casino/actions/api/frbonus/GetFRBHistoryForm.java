@@ -11,7 +11,7 @@ import org.apache.struts.action.ActionMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
-import static com.dgphoenix.casino.common.web.bonus.BonusErrors.INVALID_PARAMETERS;
+import static com.abs.casino.common.web.bonus.BonusErrors.INVALID_PARAMETERS;
 
 public class GetFRBHistoryForm extends BonusForm {
     private static final Logger LOG = LogManager.getLogger(GetFRBHistoryForm.class);

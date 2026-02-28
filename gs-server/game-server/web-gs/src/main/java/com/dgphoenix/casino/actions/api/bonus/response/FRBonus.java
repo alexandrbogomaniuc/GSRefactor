@@ -3,7 +3,7 @@ package com.abs.casino.actions.api.bonus.response;
 import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
 import com.dgphoenix.casino.actions.api.bonus.BonusForm;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.web.bonus.CBonus;
+import com.abs.casino.common.web.bonus.CBonus;
 import com.google.gson.annotations.SerializedName;
 
 import java.time.Instant;

@@ -1,4 +1,6 @@
-package com.dgphoenix.casino.common.web;
+package com.abs.casino.common.web;
+
+import com.dgphoenix.casino.common.web.IPageableForm;
 
 import org.apache.struts.action.ActionForm;
 

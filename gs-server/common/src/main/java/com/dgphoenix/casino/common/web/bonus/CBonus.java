@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.web.bonus;
+package com.abs.casino.common.web.bonus;
 
 public interface CBonus {
 

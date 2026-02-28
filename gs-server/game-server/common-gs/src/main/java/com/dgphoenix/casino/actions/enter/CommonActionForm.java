@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.util.logkit.ThreadLog;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
-import com.dgphoenix.casino.common.web.ClientTypeFactory;
+import com.abs.casino.common.web.ClientTypeFactory;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.log4j.Logger;

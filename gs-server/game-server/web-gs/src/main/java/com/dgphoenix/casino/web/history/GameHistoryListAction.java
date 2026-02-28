@@ -19,7 +19,7 @@ import com.dgphoenix.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.web.BaseAction;
-import com.dgphoenix.casino.common.web.GameServerHost;
+import com.abs.casino.common.web.GameServerHost;
 import com.dgphoenix.casino.gs.GameServer;
 import com.abs.casino.gs.managers.game.history.HistoryManager;
 import com.abs.casino.gs.web.messages.GsMessageManager;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.web;
+package com.abs.casino.common.web;
 
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
@@ -7,6 +7,7 @@ import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.cache.data.game.Html5PcVersionMode;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+import com.dgphoenix.casino.common.web.MobileDetector;
 
 import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
 

@@ -24,7 +24,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.web.HttpClientConnection;
 import com.abs.casino.common.web.IdValueBean;
 import com.dgphoenix.casino.common.web.statistics.IStatisticsGetter;
-import com.dgphoenix.casino.common.web.statistics.StatisticsBuilder;
+import com.abs.casino.common.web.statistics.StatisticsBuilder;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
 import com.abs.casino.gs.managers.dblink.DBLinkCache;

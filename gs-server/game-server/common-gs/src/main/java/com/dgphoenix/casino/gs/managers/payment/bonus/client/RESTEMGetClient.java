@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.web.bonus.CBonus;
+import com.abs.casino.common.web.bonus.CBonus;
 
 import java.util.Map;
 

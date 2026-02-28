@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.SubCasinoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.BaseAction;
-import com.dgphoenix.casino.common.web.bonus.BonusErrors;
+import com.abs.casino.common.web.bonus.BonusErrors;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionErrors;

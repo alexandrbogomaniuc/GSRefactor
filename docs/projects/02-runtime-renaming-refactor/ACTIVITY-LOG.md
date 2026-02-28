@@ -3849,3 +3849,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 3`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+3`.
   - global tracked source declarations/files now `527` remaining (`2277` baseline, `1750` reduced, `76.855512%` burndown).
+
+## 2026-02-28 10:15 UTC (Hard-Cut M2 Wave 278 + 279)
+- Continued hard-cut execution from W277 with declaration-first overlap-safe batch in `common/web`, `common/web/bonus`, and `common/web/statistics`.
+  - `W278`: 5 declaration migrations retained.
+  - `W279`: 5 declaration migrations retained.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - exploratory kafka-dto leaf batch was deferred due cross-module duplicate-FQCN collisions with `mp-server/kafka`.
+  - `STEP06` compile drift in `RemoteCallHelper` fixed by explicit `com.abs` DTO imports (`SendPromoNotificationsRequest`, `UpdateStubBalanceByExternalUserIdRequest`, `SendPlayerTournamentStateChangedRequest`, `SendBalanceUpdatedRequest`).
+  - `STEP07` JSPC drift fixed by aligning six JSP `HostConfiguration` imports to `com.abs`.
+  - canonical validation reached on rerun4:
+    - fast gate batchA: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-100144-hardcut-m2-wave278-wave279-common-web-bonus-stats/`
+  - report: `docs/projects/02-runtime-renaming-refactor/200-hard-cut-m2-wave278-wave279-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 10`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+10`.
+  - global tracked source declarations/files now `517` remaining (`2277` baseline, `1760` reduced, `77.294686%` burndown).

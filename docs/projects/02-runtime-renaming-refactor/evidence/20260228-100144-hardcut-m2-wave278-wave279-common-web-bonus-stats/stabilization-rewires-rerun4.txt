@@ -1,0 +1,12 @@
+Bounded stabilization rewires applied:
+- gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/RemoteCallHelper.java
+  - Added explicit com.abs DTO imports to avoid wildcard resolution drift:
+    SendPromoNotificationsRequest, UpdateStubBalanceByExternalUserIdRequest,
+    SendPlayerTournamentStateChangedRequest, SendBalanceUpdatedRequest.
+- web-gs JSP HostConfiguration compatibility import alignment (com.abs):
+  - gs-server/game-server/web-gs/src/main/webapp/error_pages/error.jsp
+  - gs-server/game-server/web-gs/src/main/webapp/free/mp/template.jsp
+  - gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp
+  - gs-server/game-server/web-gs/src/main/webapp/support/bankReleaseReport.jsp
+  - gs-server/game-server/web-gs/src/main/webapp/tools/bankProperties.jsp
+  - gs-server/game-server/web-gs/src/main/webapp/tools/setStubAccountBalance.jsp

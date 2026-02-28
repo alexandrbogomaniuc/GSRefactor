@@ -26,7 +26,7 @@ import com.dgphoenix.casino.common.util.IdGenerator;
 import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.bonus.BonusError;
-import com.dgphoenix.casino.common.web.bonus.BonusErrors;
+import com.abs.casino.common.web.bonus.BonusErrors;
 import com.dgphoenix.casino.gs.GameServer;
 import com.abs.casino.gs.managers.payment.bonus.mass.MassAwardBonusManager;
 import com.abs.casino.gs.managers.payment.bonus.tracker.BonusTracker;
