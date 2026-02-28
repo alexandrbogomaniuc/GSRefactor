@@ -4222,3 +4222,8 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `16`; bounded rewires/regressions: `0`.
   - global tracked source declarations/files now `2065` remaining (`2277` baseline, `212` reduced, `9.310496%` burndown).
+
+## 2026-02-28 17:26 UTC (Push Marker W314 + W315)
+- Pushed wave completion commit `38f8e4198` to `origin/main`.
+- Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-170717-hardcut-m2-wave314-wave315-kafka-dto-battleground-core/`.
+- Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
