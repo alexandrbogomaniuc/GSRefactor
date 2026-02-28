@@ -3,7 +3,7 @@ package com.abs.casino.kafka.handler.inservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dgphoenix.casino.gs.socket.InServiceServiceHandler;
+import com.abs.casino.gs.socket.InServiceServiceHandler;
 import com.abs.casino.kafka.dto.InvalidatePromoCampaignCacheRequest;
 import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
 import com.abs.casino.kafka.handler.KafkaInServiceAsyncRequestHandler;

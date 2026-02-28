@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.BaseAction;
-import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.abs.casino.support.cache.bank.edit.actions.common.AbstractCRUDAction;
 import com.abs.casino.support.cache.bank.edit.forms.common.SubcasinoForm;
 import org.apache.logging.log4j.LogManager;

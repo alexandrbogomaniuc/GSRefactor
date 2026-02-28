@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.cache.data.bank.Limit;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.game.*;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

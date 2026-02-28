@@ -4,7 +4,7 @@ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
 import com.dgphoenix.casino.common.promo.SignificantEventType;
-import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.abs.casino.promo.TournamentRankCalculatorService;
 import com.abs.casino.promo.events.process.*;
 import org.springframework.context.annotation.Bean;

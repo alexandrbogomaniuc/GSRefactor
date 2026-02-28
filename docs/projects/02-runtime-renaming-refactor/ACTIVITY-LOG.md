@@ -4336,3 +4336,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Pushed wave completion commit `178d57c05` to `origin/main`.
 - Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-192547-hardcut-m2-wave324-wave325-kafka-dto-core-primitives/`.
 - Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+
+## 2026-02-28 20:30 UTC (Hard-Cut M2 Wave 326 + 327)
+- Continued hard-cut execution from W324/W325 with declaration-first overlap-safe `wallet/socket/remotecall/support` batch.
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `6`
+    - `InServiceServiceHandler`, `MQDataConverter`, `TournamentBuyInHelper`, `KafkaRequestMultiPlayer`, `RemoteCallHelper`, `ErrorPersisterHelper`.
+  - deferred from current wave due duplicate-class boundary risk: `MultiplayerExternalWallettransactionHandler`, `WalletHelper`, `WalletProtocolFactory`, `BattlegroundService`.
+  - deferred from prior boundary set kept deferred: `MQServiceHandler`, `BasicKafkaResponse`, `KafkaHandlerException`, `KafkaMessage`, `KafkaRequest`, `KafkaResponse`, `VoidKafkaResponse`, `GameServerComponentsHelper`, `BonusManager`, `FRBonusManager`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - `rerun1-rerun7`: fixed `STEP06` moved/deferred boundaries with bounded compatibility imports and defer rollback for duplicate-class wallet/battleground declarations.
+  - `rerun8-rerun10`: fixed `STEP07` JSPC import drift (`RoundFinishedHelper`, `BaseGameConstants`) via bounded explicit JSP imports.
+  - `rerun11` reached canonical validation:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-195111-hardcut-m2-wave326-wave327-wallet-socket-remotecall-support/`
+  - report: `docs/projects/02-runtime-renaming-refactor/224-hard-cut-m2-wave326-wave327-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `6`; bounded rewires/regressions: `4` (defer rollback only).
+  - global tracked source declarations/files now `2002` remaining (`2277` baseline, `275` reduced, `12.077295%` burndown).

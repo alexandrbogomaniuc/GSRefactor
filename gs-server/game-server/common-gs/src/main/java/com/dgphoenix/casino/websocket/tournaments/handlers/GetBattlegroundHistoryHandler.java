@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.util.Pair;
 import com.abs.casino.promo.tournaments.messages.Error;
 import com.abs.casino.promo.tournaments.messages.GetBattlegroundHistory;
 import com.abs.casino.promo.tournaments.messages.GetBattlegroundHistoryResponse;
-import com.dgphoenix.casino.support.ErrorPersisterHelper;
+import com.abs.casino.support.ErrorPersisterHelper;
 import com.abs.casino.websocket.tournaments.IMessageHandler;
 import com.abs.casino.websocket.tournaments.ISocketClient;
 import org.apache.logging.log4j.LogManager;

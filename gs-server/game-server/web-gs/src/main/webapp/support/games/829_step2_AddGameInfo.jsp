@@ -1,4 +1,5 @@
 <%@ page import="com.dgphoenix.casino.common.cache.CurrencyCache" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>

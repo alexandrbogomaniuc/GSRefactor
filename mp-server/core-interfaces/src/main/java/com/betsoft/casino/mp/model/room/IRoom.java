@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.service.*;
 import com.betsoft.casino.mp.web.IGameSocketClient;
 import com.betsoft.casino.utils.ITransportObject;
 import com.betsoft.casino.utils.InboundObject;
-import com.dgphoenix.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.Identifiable;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ILongIdGenerator;
 import com.dgphoenix.casino.common.util.string.StringUtils;

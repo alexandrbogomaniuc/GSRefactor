@@ -1,5 +1,5 @@
 <%@page import="com.dgphoenix.casino.common.cache.data.bank.SubCasino,
-                com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+                com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>

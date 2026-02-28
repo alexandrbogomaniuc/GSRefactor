@@ -13,7 +13,7 @@ import com.abs.casino.common.exception.UnknownCurrencyException;
 import com.dgphoenix.casino.common.util.Pair;
 import com.abs.casino.gs.managers.payment.currency.CurrencyManager;
 import com.abs.casino.gs.managers.payment.currency.CurrencyRatesManager;
-import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

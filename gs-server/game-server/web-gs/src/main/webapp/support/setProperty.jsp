@@ -6,7 +6,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
 <%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
-<%@ page import="com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%!
     List<String> whiteList = new ArrayList<>(10);

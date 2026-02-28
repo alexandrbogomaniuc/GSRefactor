@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.lock.LockingInfo;
 import com.dgphoenix.casino.common.util.ExecutorUtils;
-import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.abs.casino.sm.IPlayerSessionManager;
 import com.abs.casino.sm.PlayerSessionFactory;
 import org.apache.logging.log4j.LogManager;

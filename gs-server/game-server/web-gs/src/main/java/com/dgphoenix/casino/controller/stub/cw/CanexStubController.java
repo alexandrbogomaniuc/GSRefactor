@@ -13,7 +13,7 @@ import com.abs.casino.common.exception.NotEnoughMoneyException;
 import com.abs.casino.controller.RequestContext;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
-import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

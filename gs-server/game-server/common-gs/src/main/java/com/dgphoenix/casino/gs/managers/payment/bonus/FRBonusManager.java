@@ -46,7 +46,7 @@ import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusWinTrackerTask;
 import com.abs.casino.gs.persistance.GameSessionPersister;
 import com.abs.casino.gs.persistance.LasthandPersister;
 import com.abs.casino.gs.persistance.PlayerSessionPersister;
-import com.dgphoenix.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
+import com.abs.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
 import com.abs.casino.kafka.dto.BonusStatusDto;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

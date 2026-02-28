@@ -62,7 +62,7 @@ import com.abs.casino.services.mp.MPGameSessionService;
 import com.abs.casino.sm.CWPlayerSessionManager;
 import com.abs.casino.sm.IPlayerSessionManager;
 import com.abs.casino.sm.PlayerSessionFactory;
-import com.dgphoenix.casino.support.ErrorPersisterHelper;
+import com.abs.casino.support.ErrorPersisterHelper;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import com.abs.casino.web.history.GameHistoryURLBuilder;
 import com.google.common.base.Joiner;

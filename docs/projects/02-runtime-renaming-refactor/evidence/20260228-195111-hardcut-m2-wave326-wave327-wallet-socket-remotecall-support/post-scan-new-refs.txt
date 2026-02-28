@@ -1,0 +1,99 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/bgm/BaseGameHelper.java:11:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java:88:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:41:import com.abs.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:42:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:45:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:48:import com.abs.casino.gs.socket.mq.TournamentBuyInHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:65:import com.abs.casino.support.ErrorPersisterHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/PromotionContextConfiguration.java:7:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/maintenance/CacheExporter.java:29:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/BonusManager.java:38:import com.abs.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/FRBonusManager.java:49:import com.abs.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/MassAwardBonusManager.java:23:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/currency/CurrencyManager.java:16:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/RemoteCallHelper.java:28:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/BattlegroundService.java:35:import com.abs.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:124:import com.abs.casino.support.ErrorPersisterHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:76:import com.abs.casino.gs.socket.MQDataConverter;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:79:import com.abs.casino.gs.socket.mq.TournamentBuyInHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/BankShutdownJob.java:13:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/GetGameServerInfosRequestHandler.java:10:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/InvalidateAllBaseGameInfoRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/InvalidateBonusClientRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/InvalidateFrBonusClientRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/InvalidateFrBonusWinManagerRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/InvalidateLocalBaseGameInfoRequestHandler.java:8:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/InvalidatePromoCampaignCacheRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/InvalidateWalletManagerRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/NotifyPromoCampaignCreatedRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/NotifyPromoCampaignStatusChangedRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/NotifySessionClosedRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/RefreshConfigRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/RemoteUnlockRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/SendBalanceUpdatedRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/SendPlayerTournamentStateChangedRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/SendPromoNotificationsRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/UpdateStubBalanceByExternalUserIdRequestHandler.java:6:import com.abs.casino.gs.socket.InServiceServiceHandler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/handlers/TournamentMessageHandlersFactory.java:13:import com.abs.casino.support.ErrorPersisterHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/handlers/TournamentMessageHandlersFactory.java:8:import com.abs.casino.gs.socket.mq.TournamentBuyInHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/mp/MPBotConfigInfoService.java:5:import com.abs.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/mp/MPGameSessionService.java:19:import com.abs.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/TournamentWebSocketMessageListener.java:5:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/TournamentWebSocketSessionsController.java:9:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/handlers/AbstractJoinPromoHandler.java:10:import com.abs.casino.support.ErrorPersisterHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/handlers/EnterLobbyHandler.java:24:import com.abs.casino.gs.socket.mq.TournamentBuyInHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/handlers/EnterLobbyHandler.java:34:import com.abs.casino.support.ErrorPersisterHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/handlers/GetBattlegroundHistoryHandler.java:13:import com.abs.casino.support.ErrorPersisterHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/handlers/GetLeaderboardHandler.java:14:import com.abs.casino.support.ErrorPersisterHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/handlers/GetTournamentDetailsHandler.java:13:import com.abs.casino.support.ErrorPersisterHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/handlers/JoinBattlegroundHandler.java:14:import com.abs.casino.gs.socket.mq.TournamentBuyInHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/handlers/JoinBattlegroundHandler.java:20:import com.abs.casino.support.ErrorPersisterHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/handlers/JoinTournamentHandler.java:21:import com.abs.casino.gs.socket.mq.TournamentBuyInHelper;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/handlers/JoinTournamentHandler.java:29:import com.abs.casino.support.ErrorPersisterHelper;
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/payment/currency/CurrencyManagerTest.java:16:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandlerTest.java:10:import com.abs.casino.gs.socket.mq.TournamentBuyInHelper;
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandlerTest.java:13:import com.abs.casino.support.ErrorPersisterHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java:65:import com.abs.casino.support.ErrorPersisterHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:51:import com.abs.casino.support.ErrorPersisterHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/TournamentLobbyAction.java:20:import com.abs.casino.support.ErrorPersisterHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/ControllerContextConfiguration.java:10:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/stub/cw/CanexStubController.java:16:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/LoginHelper.java:27:import com.abs.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:16:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java:9:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:18:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/AddPropertyAction.java:6:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/EditPropertiesAction.java:7:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/configuration/ServerConfigurationAction.java:12:import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
+gs-server/game-server/web-gs/src/main/webapp/config/stub/cwv3/wager.jsp:9:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/config/stub/cwv3_long/wager.jsp:9:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/config/stub/wager.jsp:8:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/config/stub/wager_sleep.jsp:8:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/EditTemplateProperty.jsp:5:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/common/loadAllBanks.jsp:5:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/common/removeBank.jsp:7:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/copyBankV3.jsp:10:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/copyLanguages.jsp:7:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/createSubCasino.jsp:2:                com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/currency/switchToInternalRatesExtractor.jsp:4:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/currencyBank.jsp:5:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/currencyFractionsConfig.jsp:5:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/disableGames.jsp:7:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/exportImportCoins.jsp:16:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/gameBankConfig/applyGame.jsp:11:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/gameBankConfig/removeGame.jsp:12:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/games/829_FixTemplate.jsp:3:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/games/829_step1_AddGameInfoTemplate.jsp:3:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/langTools.jsp:14:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/reinitBonusClient.jsp:1:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/reinitFrBonusClient.jsp:1:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/reinitFrBonusWinManager.jsp:1:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/reinitGamesList.jsp:9:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/reinitWalletManager.jsp:1:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/rouletteInternalLimits.jsp:8:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/setProperty.jsp:9:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/setup_replaceurl_pm_st.jsp:8:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/templateManager/cloneTemplate.jsp:8:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/templateManager/invalidateBgi.jsp:12:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/templateManager/setProperty.jsp:5:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+gs-server/game-server/web-gs/src/main/webapp/support/updateCaches.jsp:6:<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>

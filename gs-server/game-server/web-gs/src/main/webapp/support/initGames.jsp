@@ -1,4 +1,5 @@
 <%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
 <%@ page import="java.io.PrintWriter" %>

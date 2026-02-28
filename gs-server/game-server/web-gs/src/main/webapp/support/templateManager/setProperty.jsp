@@ -1,6 +1,8 @@
 <%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.game.*" %>
-<%@ page import="com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
+<%@ page import="com.abs.casino.common.cache.data.game.RoundFinishedHelper" %>
+<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
 <%!
     String fixAdditionalFlashvars(String src) {
         return src.replace("+", "=").replace("|", ";");

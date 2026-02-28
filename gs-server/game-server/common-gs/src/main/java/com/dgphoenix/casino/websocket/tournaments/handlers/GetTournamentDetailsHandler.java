@@ -10,7 +10,7 @@ import com.abs.casino.promo.persisters.CassandraLocalizationsPersister;
 import com.abs.casino.promo.tournaments.messages.Error;
 import com.abs.casino.promo.tournaments.messages.GetTournamentDetails;
 import com.abs.casino.promo.tournaments.messages.TournamentDetails;
-import com.dgphoenix.casino.support.ErrorPersisterHelper;
+import com.abs.casino.support.ErrorPersisterHelper;
 import com.abs.casino.websocket.tournaments.ISocketClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

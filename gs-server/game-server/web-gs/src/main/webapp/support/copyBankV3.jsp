@@ -1,4 +1,5 @@
 <%@ page import="com.abs.casino.bgm.BaseGameHelper" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
 <%@ page import="com.dgphoenix.casino.common.cache.*" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.Coin" %>
@@ -6,7 +7,7 @@
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.SubCasino" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
 <%@ page import="com.dgphoenix.casino.common.exception.CommonException" %>
-<%@ page import="com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
 <%@ page import="static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty" %>
 <%@ page import="com.google.common.base.Function" %>
 <%@ page import="com.google.common.base.Splitter" %>

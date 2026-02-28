@@ -2,7 +2,7 @@ package com.abs.casino.websocket.tournaments;
 
 import com.abs.casino.cassandra.IEntityUpdateListener;
 import com.dgphoenix.casino.common.transport.TObject;
-import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.abs.casino.promo.tournaments.messages.BalanceUpdated;
 import com.abs.casino.promo.tournaments.messages.PlayerTournamentStateChanged;
 

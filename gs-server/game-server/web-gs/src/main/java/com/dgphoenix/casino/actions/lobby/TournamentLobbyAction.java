@@ -17,7 +17,7 @@ import com.abs.casino.entities.lobby.LoginHelper;
 import com.abs.casino.exceptions.LoginErrorException;
 import com.abs.casino.forms.lobby.TournamentLobbyForm;
 import com.abs.casino.sm.login.LoginResponse;
-import com.dgphoenix.casino.support.ErrorPersisterHelper;
+import com.abs.casino.support.ErrorPersisterHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.action.ActionForward;

@@ -3,7 +3,7 @@ package com.abs.casino.support.cache.bank.edit.actions.editproperties;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.abs.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;

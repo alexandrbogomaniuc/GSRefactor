@@ -4,7 +4,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BaseGameCache" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

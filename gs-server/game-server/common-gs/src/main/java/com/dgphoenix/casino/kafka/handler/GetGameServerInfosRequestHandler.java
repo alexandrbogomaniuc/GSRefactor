@@ -7,7 +7,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dgphoenix.casino.gs.socket.InServiceServiceHandler;
+import com.abs.casino.gs.socket.InServiceServiceHandler;
 import com.abs.casino.kafka.dto.GameServerInfoDto;
 import com.abs.casino.kafka.dto.GameServerInfoResponseDto;
 import com.abs.casino.kafka.dto.GetGameServersInfoRequest;

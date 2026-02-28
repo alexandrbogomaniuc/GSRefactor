@@ -7,7 +7,7 @@ import com.abs.casino.controller.RequestContext;
 import com.abs.casino.controller.mqb.MPGameSessionController;
 import com.abs.casino.controller.stub.cw.CanexStubController;
 import com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
-import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.dgphoenix.casino.gs.socket.mq.BattlegroundService;
 import com.abs.casino.services.mp.MPGameSessionService;
 import org.springframework.context.annotation.Bean;

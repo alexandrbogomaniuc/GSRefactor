@@ -48,7 +48,7 @@ import com.abs.casino.gs.persistance.GameSessionPersister;
 import com.abs.casino.helpers.login.LoginHelper;
 import com.abs.casino.sm.login.LoginRequest;
 import com.abs.casino.sm.login.LoginResponse;
-import com.dgphoenix.casino.support.ErrorPersisterHelper;
+import com.abs.casino.support.ErrorPersisterHelper;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

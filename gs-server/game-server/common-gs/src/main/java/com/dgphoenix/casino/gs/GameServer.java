@@ -85,7 +85,7 @@ import com.abs.casino.gs.persistance.GameSessionPersister;
 import com.abs.casino.gs.persistance.ILasthandPersister;
 import com.abs.casino.gs.persistance.LasthandPersister;
 import com.abs.casino.gs.persistance.PlayerSessionPersister;
-import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.abs.casino.gs.singlegames.tools.cbservtools.GameSessionStateListenersFactory;
 import com.abs.casino.init.ShutdownFilter;
 import com.abs.casino.leaderboard.LeaderboardWinTracker;

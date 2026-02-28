@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.persistance.remotecall;
+package com.abs.casino.gs.persistance.remotecall;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.*;
@@ -25,7 +25,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.abs.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
-import com.dgphoenix.casino.gs.socket.InServiceServiceHandler;
+import com.abs.casino.gs.socket.InServiceServiceHandler;
 import com.abs.casino.gs.persistance.remotecall.RefreshConfigCall;
 import com.abs.casino.kafka.dto.InvalidateAllBaseGameInfoRequest;
 import com.abs.casino.kafka.dto.InvalidateBonusClientRequest;

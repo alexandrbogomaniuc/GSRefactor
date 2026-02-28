@@ -20,7 +20,7 @@ import com.abs.casino.gs.managers.payment.bonus.restriction.PlayerBalanceRestric
 import com.abs.casino.gs.persistance.remotecall.ChangeMassAwardStatusCall;
 import com.abs.casino.gs.persistance.remotecall.DeleteMassAwardCall;
 import com.abs.casino.gs.persistance.remotecall.RefreshConfigCall;
-import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
+import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;

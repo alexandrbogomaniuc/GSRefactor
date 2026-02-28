@@ -4,7 +4,7 @@
 <%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BaseGameCache" %>
 <%@ page import="com.abs.casino.gs.persistance.remotecall.RefreshConfigCall" %>
-<%@ page import="com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head><title>Remove bank page</title></head>

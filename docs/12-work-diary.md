@@ -9197,3 +9197,24 @@
   - baseline `2277`, reduced `269`, remaining `2008`, burndown `11.813790%`
   - Project 02 `26.476724%`, Core `63.238362%`, Portfolio `81.619181%`
   - ETA `92.2h` (`11.53` workdays)
+
+### 2026-02-28 20:30 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W326 + W327` with bounded deferrals.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `6` (`InServiceServiceHandler`, `MQDataConverter`, `TournamentBuyInHelper`, `KafkaRequestMultiPlayer`, `RemoteCallHelper`, `ErrorPersisterHelper`).
+  - deferred due duplicate-class compile boundaries: `MultiplayerExternalWallettransactionHandler`, `WalletHelper`, `WalletProtocolFactory`, `BattlegroundService`, `MQServiceHandler`, `BasicKafkaResponse`, `KafkaHandlerException`, `KafkaMessage`, `KafkaRequest`, `KafkaResponse`, `VoidKafkaResponse`, `GameServerComponentsHelper`, `BonusManager`, `FRBonusManager`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `4` (defer rollback only).
+- Stabilization/validation highlights:
+  - subagent mode remained constrained by thread-limit, so execution continued ownership-safe on main.
+  - `rerun1-rerun7` stabilized `STEP06` moved/deferred boundaries.
+  - `rerun8-rerun10` stabilized `STEP07` JSPC import drift in support/template/game config JSPs.
+  - canonical validation reached on `rerun11`:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-195111-hardcut-m2-wave326-wave327-wallet-socket-remotecall-support/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/224-hard-cut-m2-wave326-wave327-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `275`, remaining `2002`, burndown `12.077295%`
+  - Project 02 `26.509662%`, Core `63.254831%`, Portfolio `81.627416%`
+  - ETA `91.9h` (`11.49` workdays)

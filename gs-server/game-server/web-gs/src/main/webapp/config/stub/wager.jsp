@@ -5,7 +5,7 @@
 <%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
 <%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper.ExtAccountInfoStub" %>
 <%@ page import="java.util.Date" %>
-<%@ page import="com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper" %>
+<%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     String userId = "";
