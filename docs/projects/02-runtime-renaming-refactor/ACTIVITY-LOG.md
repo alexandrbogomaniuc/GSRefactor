@@ -4386,3 +4386,29 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Pushed wave completion commit `2752d4074` to `origin/main`.
 - Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-205232-hardcut-m2-wave328-wave329-mixed-interfaces-data-lowcoupling10/`.
 - Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+
+## 2026-02-28 22:18 UTC (Hard-Cut M2 Wave 330 + 331)
+- Continued hard-cut execution from W328/W329 with declaration-first overlap-safe `common/cache/data` enums/models batch.
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `10`
+    - `BankMiniGameInfo`, `MaxQuestWeaponMode`, `WOStatisticsContainer`, `GameSessionInfo`, `URLCallCounters`,
+      `Html5PcVersionMode`, `MassAwardType`, `DelayedMassAwardDelivery`, `PaymentMode`, `SubCasinoGroup`.
+  - deferred from current wave due boundary-type incompatibility:
+    - `BonusType`, `DelayedMassAward`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - `rerun1` failed at `STEP06` due moved `BonusType`/`DelayedMassAward` boundary mismatch in `common-gs`.
+  - bounded rollback deferred those 2 declarations only.
+  - `rerun2` reached canonical validation:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-220632-hardcut-m2-wave330-wave331-cache-data-enums-models/`
+  - report: `docs/projects/02-runtime-renaming-refactor/226-hard-cut-m2-wave330-wave331-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `10`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `1987` remaining (`2277` baseline, `290` reduced, `12.736056%` burndown).
+
+## 2026-02-28 22:19 UTC (Push Marker W330 + W331)
+- Pushed wave completion commit `36425d4ff` to `origin/main`.
+- Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-220632-hardcut-m2-wave330-wave331-cache-data-enums-models/`.
+- Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).

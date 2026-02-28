@@ -9259,3 +9259,34 @@
   - baseline `2277`, reduced `280`, remaining `1997`, burndown `12.296882%`
   - Project 02 `26.537110%`, Core `63.268555%`, Portfolio `81.634278%`
   - ETA `91.7h` (`11.46` workdays)
+
+### 2026-02-28 22:18 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W330 + W331` with bounded deferrals.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `10` (`BankMiniGameInfo`, `MaxQuestWeaponMode`, `WOStatisticsContainer`, `GameSessionInfo`, `URLCallCounters`, `Html5PcVersionMode`, `MassAwardType`, `DelayedMassAwardDelivery`, `PaymentMode`, `SubCasinoGroup`).
+  - deferred due boundary-type incompatibility: `BonusType`, `DelayedMassAward`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent mode remained constrained by thread-limit, so execution continued ownership-safe on main.
+  - `rerun1` failed at `STEP06` due mixed-boundary type incompatibility for moved `BonusType`/`DelayedMassAward`.
+  - bounded rollback deferred those two declarations only; retained `10` declaration set.
+  - `rerun2` canonical validation reached:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-220632-hardcut-m2-wave330-wave331-cache-data-enums-models/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/226-hard-cut-m2-wave330-wave331-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `290`, remaining `1987`, burndown `12.736056%`
+  - Project 02 `26.592007%`, Core `63.296004%`, Portfolio `81.648002%`
+  - ETA `91.2h` (`11.41` workdays)
+
+### 2026-02-28 22:19 UTC
+- Pushed Project 02 hard-cut `W330 + W331` completion commit to `origin/main`.
+  - commit: `36425d4ff`
+  - evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-220632-hardcut-m2-wave330-wave331-cache-data-enums-models/`
+- Canonical matrix at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+- Completion metrics at push point:
+  - baseline `2277`, reduced `290`, remaining `1987`, burndown `12.736056%`
+  - Project 02 `26.592007%`, Core `63.296004%`, Portfolio `81.648002%`
+  - ETA `91.2h` (`11.41` workdays)
