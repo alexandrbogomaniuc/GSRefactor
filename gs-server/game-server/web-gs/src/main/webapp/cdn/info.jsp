@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraHostCdnPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraHostCdnPersister" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="com.abs.casino.common.games.CdnCheckResult" %>
 <%@ page import="java.util.List" %>

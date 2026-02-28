@@ -1,7 +1,7 @@
 package com.abs.casino.system;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraMetricsPersister;
+import com.abs.casino.cassandra.persist.CassandraMetricsPersister;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.ExecutorUtils;
 import com.dgphoenix.casino.common.util.Pair;

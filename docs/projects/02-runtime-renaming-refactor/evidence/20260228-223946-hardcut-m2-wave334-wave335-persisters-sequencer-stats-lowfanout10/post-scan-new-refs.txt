@@ -1,0 +1,16 @@
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:39:            <className>com.abs.casino.cassandra.persist.CassandraIntSequencerPersister</className>
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:35:            <className>com.abs.casino.cassandra.persist.CassandraSequencerPersister</className>
+gs-server/game-server/web-gs/src/main/resources/ClusterConfig.xml:176:            <className>com.abs.casino.cassandra.persist.CassandraBatchOperationStatusPersister</className>
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/support/apiIssues/APIIssuesAction.java:4:import com.abs.casino.cassandra.persist.CassandraCallIssuesPersister;
+gs-server/game-server/web-gs/src/main/webapp/support/cache/bank/properties/edit/editProperties.jsp:1:<%@ page import="com.abs.casino.cassandra.persist.CassandraCallIssuesPersister" %>
+gs-server/game-server/web-gs/src/main/resources/ClusterConfig.xml:86:            <className>com.abs.casino.cassandra.persist.CassandraCallIssuesPersister</className>
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/support/apiIssues/APIIssuesAction.java:5:import com.abs.casino.cassandra.persist.CassandraCallStatisticsPersister;
+gs-server/game-server/web-gs/src/main/webapp/support/showAPIIssues.jsp:4:<%@ page import="com.abs.casino.cassandra.persist.CassandraCallStatisticsPersister" %>
+gs-server/game-server/web-gs/src/main/resources/ClusterConfig.xml:81:            <className>com.abs.casino.cassandra.persist.CassandraCallStatisticsPersister</className>
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:67:            <className>com.abs.casino.cassandra.persist.CassandraDomainWhiteListPersister</className>
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:156:            <className>com.abs.casino.cassandra.persist.CassandraHostCdnPersister</className>
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/login/InitCdnHostServlet.java:4:import com.abs.casino.cassandra.persist.CassandraHostCdnPersister;
+gs-server/game-server/web-gs/src/main/webapp/cdn/info.jsp:1:<%@ page import="com.abs.casino.cassandra.persist.CassandraHostCdnPersister" %>
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/system/MetricsManager.java:4:import com.abs.casino.cassandra.persist.CassandraMetricsPersister;
+gs-server/game-server/web-gs/src/main/resources/ClusterConfig.xml:98:            <className>com.abs.casino.cassandra.persist.CassandraMetricsPersister</className>
+gs-server/game-server/web-gs/src/main/resources/SCClusterConfig.xml:35:            <className>com.abs.casino.cassandra.persist.CassandraSequencerPersister</className>

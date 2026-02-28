@@ -1,0 +1,10 @@
+com.dgphoenix.casino.cassandra.persist.CassandraIntSequencerPersister -> com.abs.casino.cassandra.persist.CassandraIntSequencerPersister
+com.dgphoenix.casino.cassandra.persist.CassandraSequencerPersister -> com.abs.casino.cassandra.persist.CassandraSequencerPersister
+com.dgphoenix.casino.cassandra.persist.CassandraBatchOperationStatusPersister -> com.abs.casino.cassandra.persist.CassandraBatchOperationStatusPersister
+com.dgphoenix.casino.cassandra.persist.CassandraCallIssuesPersister -> com.abs.casino.cassandra.persist.CassandraCallIssuesPersister
+com.dgphoenix.casino.cassandra.persist.CassandraCallStatisticsPersister -> com.abs.casino.cassandra.persist.CassandraCallStatisticsPersister
+com.dgphoenix.casino.cassandra.persist.CassandraDomainWhiteListPersister -> com.abs.casino.cassandra.persist.CassandraDomainWhiteListPersister
+com.dgphoenix.casino.cassandra.persist.CassandraHostCdnPersister -> com.abs.casino.cassandra.persist.CassandraHostCdnPersister
+com.dgphoenix.casino.cassandra.persist.CassandraMetricsPersister -> com.abs.casino.cassandra.persist.CassandraMetricsPersister
+com.dgphoenix.casino.cassandra.persist.CassandraIntegerSequencer -> com.abs.casino.cassandra.persist.CassandraIntegerSequencer
+com.dgphoenix.casino.cassandra.persist.CassandraSequencer -> com.abs.casino.cassandra.persist.CassandraSequencer

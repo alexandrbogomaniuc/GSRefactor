@@ -1,7 +1,7 @@
 package com.abs.casino.web.login;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraHostCdnPersister;
+import com.abs.casino.cassandra.persist.CassandraHostCdnPersister;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;

@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraCallIssuesPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraCallIssuesPersister" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
 <%@ page import="com.abs.casino.common.cache.data.URLCallCounters" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>

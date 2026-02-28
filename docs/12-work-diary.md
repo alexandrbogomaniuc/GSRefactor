@@ -9311,3 +9311,23 @@
   - baseline `2277`, reduced `305`, remaining `1972`, burndown `13.394817%`
   - Project 02 `26.674352%`, Core `63.337176%`, Portfolio `81.668588%`
   - ETA `90.5h` (`11.31` workdays)
+
+### 2026-02-28 22:51 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new_fasttrack` and completed `W334 + W335`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `10` (`CassandraIntSequencerPersister`, `CassandraSequencerPersister`, `CassandraBatchOperationStatusPersister`, `CassandraCallIssuesPersister`, `CassandraCallStatisticsPersister`, `CassandraDomainWhiteListPersister`, `CassandraHostCdnPersister`, `CassandraMetricsPersister`, `CassandraIntegerSequencer`, `CassandraSequencer`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent mode remained constrained by thread-limit, so execution continued ownership-safe on main.
+  - `rerun1` failed at `STEP05` due moved `CassandraCallStatisticsPersister` not resolving unmoved `IHttpClientStatisticsPersister`.
+  - bounded compatibility fix added explicit legacy interface import in moved `CassandraCallStatisticsPersister`.
+  - canonical validation reached on `rerun2`:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new_fasttrack/docs/projects/02-runtime-renaming-refactor/evidence/20260228-223946-hardcut-m2-wave334-wave335-persisters-sequencer-stats-lowfanout10/`
+  - `/Users/alexb/Documents/Dev/Dev_new_fasttrack/docs/projects/02-runtime-renaming-refactor/228-hard-cut-m2-wave334-wave335-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `315`, remaining `1962`, burndown `13.833992%`
+  - Project 02 `26.729249%`, Core `63.364625%`, Portfolio `81.682312%`
+  - ETA `90.0h` (`11.25` workdays)
