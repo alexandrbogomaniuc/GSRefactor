@@ -1,0 +1,4 @@
+Selection rationale:
+- Declaration-first migration of remaining kafka/dto request and model surfaces with low fanout.
+- Strictly disjoint ownership across batches via explicit manifests.
+- Zero planned rewires; no central base declaration movement in this wave.

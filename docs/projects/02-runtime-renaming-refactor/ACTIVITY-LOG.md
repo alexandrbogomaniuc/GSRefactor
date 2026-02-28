@@ -3447,3 +3447,27 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `20`.
   - retained bounded rewires: `0`.
   - global tracked source declarations/files now `719` remaining (`2277` baseline, `1558` reduced, `68.423364%` burndown).
+
+## 2026-02-28 03:31 UTC (Hard-Cut M2 Wave 238A + 238B + 239)
+- Continued batched-safe hard-cut migration from W237 checkpoint with non-overlapping declaration sets:
+  - `W238A`: 10 declaration migrations in `mp-server/kafka/dto` player/status/config/rate/room model surfaces.
+  - `W238B`: 10 declaration migrations in `mp-server/kafka/dto` request/round/response/refund/unlock surfaces.
+  - `W239`: integration and validation.
+- Parallel execution mode target:
+  - `1 explorer + 2 workers + main` (subagent spawn remained thread-limited in this session, so equivalent strict ownership execution used explicit manifests on main).
+- Stabilization:
+  - declaration-first execution with no retained rewires in either batch.
+  - no additional compile stabilization required.
+  - no blind/global replacement performed.
+  - preserved pre-existing local changes (`cluster-hosts.properties`, `.tmp-w202-*`, prior uncommitted evidence folder) outside commit scope.
+- Validation:
+  - fast gate batchA rerun1 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - fast gate batchB rerun1 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - full matrix rerun1 (canonical): `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`); retry1 failed (`rc=2`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-032224-hardcut-m2-wave238ab-wave239-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/180-hard-cut-m2-wave238ab-wave239-parallel-batches-report-20260228.md`
+- Outcome:
+  - retained declaration migrations: `20`.
+  - retained bounded rewires: `0`.
+  - global tracked source declarations/files now `699` remaining (`2277` baseline, `1578` reduced, `69.301713%` burndown).

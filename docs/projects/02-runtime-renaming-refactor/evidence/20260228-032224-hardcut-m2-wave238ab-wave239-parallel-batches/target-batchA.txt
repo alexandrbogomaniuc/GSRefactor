@@ -1,0 +1,10 @@
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGStatus.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGPlayerDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGFriendDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGOnlinePlayerDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/TimeFrameDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BotConfigInfoDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CurrencyRateDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RoundPlayerDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RunningRoomDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RMSRoomDto.java

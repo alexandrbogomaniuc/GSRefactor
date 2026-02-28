@@ -1,0 +1,10 @@
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SavePlayerBetForFRBRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SessionTouchRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitInRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutRequest2.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutResultDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/StartNewRoundForManyPlayersRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/StringResponseDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RefundBuyInRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RemoteUnlockRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/FinishGameSessionAndMakeSitOutRequest.java

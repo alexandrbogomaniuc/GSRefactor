@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.kafka.dto;
+package com.abs.casino.kafka.dto;
 
 public class RemoteUnlockRequest implements KafkaRequest {
     private String lockManagerName;

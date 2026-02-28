@@ -1,0 +1,21 @@
+# Package checks (after)
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGStatus.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGPlayerDto.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGFriendDto.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGOnlinePlayerDto.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/TimeFrameDto.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BotConfigInfoDto.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CurrencyRateDto.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RoundPlayerDto.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RunningRoomDto.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RMSRoomDto.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SavePlayerBetForFRBRequest.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SessionTouchRequest.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitInRequest.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutRequest2.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutResultDto.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/StartNewRoundForManyPlayersRequest.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/StringResponseDto.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RefundBuyInRequest.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RemoteUnlockRequest.java: package com.abs.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/FinishGameSessionAndMakeSitOutRequest.java: package com.abs.casino.kafka.dto;
