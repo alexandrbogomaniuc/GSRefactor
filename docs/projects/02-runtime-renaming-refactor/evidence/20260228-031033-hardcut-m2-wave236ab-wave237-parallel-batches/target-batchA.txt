@@ -1,0 +1,10 @@
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetBalanceRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetBatchAddWinStatusRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetCrashGamesSettingsRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetExternalAccountIdsRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetExternalAccountIdsResponseDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetFriendsRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetFriendsResponseDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetOnlineStatusRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetOnlineStatusResponseDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetPrivateRoomInfoRequest.java

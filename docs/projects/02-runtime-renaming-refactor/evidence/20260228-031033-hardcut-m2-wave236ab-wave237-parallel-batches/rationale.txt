@@ -1,0 +1,4 @@
+Selection rationale:
+- Declaration-first batch selection from remaining kafka/dto request/response surfaces.
+- Strictly disjoint ownership across batchA/batchB with explicit manifests.
+- Avoided central base declarations to keep risk low; planned rewires retained at zero.

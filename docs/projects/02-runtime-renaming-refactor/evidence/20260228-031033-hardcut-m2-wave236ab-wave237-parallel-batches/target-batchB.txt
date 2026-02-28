@@ -1,0 +1,10 @@
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetServerRunningRoomsRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetServerRunningRoomsResponse.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/InvitePlayersToPrivateRoomRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/LeaveMultiPlayerLobbyRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/NotifyOnServerStatusesUpdatedRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/NotifyPrivateRoomWasDeactivatedRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/PingRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/PushOnlineRoomsPlayersRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RemoveMQReservedNicknamesRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/UpdatePlayersStatusInPrivateRoomRequest.java

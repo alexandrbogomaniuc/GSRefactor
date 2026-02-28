@@ -1,0 +1,21 @@
+# Package checks (before)
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetBalanceRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetBatchAddWinStatusRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetCrashGamesSettingsRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetExternalAccountIdsRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetExternalAccountIdsResponseDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetFriendsRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetFriendsResponseDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetOnlineStatusRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetOnlineStatusResponseDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetPrivateRoomInfoRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetServerRunningRoomsRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetServerRunningRoomsResponse.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/InvitePlayersToPrivateRoomRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/LeaveMultiPlayerLobbyRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/NotifyOnServerStatusesUpdatedRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/NotifyPrivateRoomWasDeactivatedRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/PingRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/PushOnlineRoomsPlayersRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RemoveMQReservedNicknamesRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/UpdatePlayersStatusInPrivateRoomRequest.java: package com.dgphoenix.casino.kafka.dto;
