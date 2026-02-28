@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.model;
 
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.CBGameException;
+import com.abs.casino.gs.singlegames.tools.cbservtools.CBGameException;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;

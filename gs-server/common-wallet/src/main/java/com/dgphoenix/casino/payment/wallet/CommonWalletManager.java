@@ -33,6 +33,7 @@ import com.abs.casino.gs.managers.payment.wallet.CommonWalletStatusResult;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.abs.casino.gs.managers.payment.wallet.IWalletHelper;
+import com.abs.casino.gs.managers.payment.wallet.WalletPersister;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import com.abs.casino.gs.managers.payment.wallet.v4.CWMType;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v4.ICommonWalletClient;

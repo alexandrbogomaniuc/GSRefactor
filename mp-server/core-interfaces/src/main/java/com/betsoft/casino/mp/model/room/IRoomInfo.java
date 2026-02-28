@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.model.Money;
 import com.betsoft.casino.mp.model.MoneyType;
 import com.betsoft.casino.mp.model.RoomState;
 import com.betsoft.casino.mp.service.IRoomPlayerInfoService;
-import com.abs.casino.common.cache.Identifiable;
+import com.dgphoenix.casino.common.cache.Identifiable;
 
 import java.util.Set;
 

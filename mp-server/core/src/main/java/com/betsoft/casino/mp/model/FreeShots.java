@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.model;
 
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.CBGameException;
+import com.abs.casino.gs.singlegames.tools.cbservtools.CBGameException;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

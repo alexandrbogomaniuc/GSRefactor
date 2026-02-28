@@ -6,7 +6,7 @@
 <%@ page import="com.google.common.cache.CacheLoader" %>
 <%@ page import="com.dgphoenix.casino.common.web.statistics.StatisticsManager" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.dgphoenix.casino.common.web.statistics.IStatisticsGetter" %>
+<%@ page import="com.abs.casino.common.web.statistics.IStatisticsGetter" %>
 
 <%!
     static LoadingCache<String, List<String>> cache = CacheBuilder.newBuilder()

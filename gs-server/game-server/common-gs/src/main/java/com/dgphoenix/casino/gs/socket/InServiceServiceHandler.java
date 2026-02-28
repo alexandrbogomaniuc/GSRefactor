@@ -28,7 +28,7 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.abs.casino.common.cache.data.currency.ICurrency;
-import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
+import com.abs.casino.common.cache.data.server.ServerInfo;
 import com.dgphoenix.casino.common.config.GameServerConfig;
 import com.dgphoenix.casino.common.lock.ILockManager;
 import com.dgphoenix.casino.common.promo.Status;

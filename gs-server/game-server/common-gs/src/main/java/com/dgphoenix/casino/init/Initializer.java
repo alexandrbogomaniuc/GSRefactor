@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.cache.LoadBalancerCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
-import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
+import com.abs.casino.common.cache.data.server.ServerInfo;
 import com.abs.casino.common.config.UtilsApplicationContextHelper;
 import com.dgphoenix.casino.common.configuration.messages.MessageManager;
 import com.abs.casino.common.exception.FatalException;

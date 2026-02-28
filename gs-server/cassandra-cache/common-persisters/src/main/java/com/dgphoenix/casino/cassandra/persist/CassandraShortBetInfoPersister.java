@@ -6,7 +6,7 @@ import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.Caching;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.cassandra.persist.engine.configuration.Compression;
-import com.dgphoenix.casino.common.cache.data.bet.ShortBetInfo;
+import com.abs.casino.common.cache.data.bet.ShortBetInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -5,7 +5,7 @@ import com.abs.casino.common.cache.CacheKeyInfo;
 import com.abs.casino.common.cache.ITrackingCache;
 import com.dgphoenix.casino.common.cache.*;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
+import com.abs.casino.common.cache.data.server.ServerInfo;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.Pair;

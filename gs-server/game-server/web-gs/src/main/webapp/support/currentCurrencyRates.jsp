@@ -1,5 +1,5 @@
 <%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesPersister" %>
-<%@ page import="com.dgphoenix.casino.common.currency.CurrencyRate" %>
+<%@ page import="com.abs.casino.common.currency.CurrencyRate" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>

@@ -29,8 +29,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
 
-import com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
-import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
+import com.abs.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
+import com.abs.casino.common.cache.data.server.ServerInfo;
 
 public class ServersCoordinatorService implements ServerCoordinatorInfoProvider, Closeable {
     private static final Logger LOG = LogManager.getLogger(ServersCoordinatorService.class);

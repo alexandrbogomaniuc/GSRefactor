@@ -18,7 +18,7 @@
 <%@ page import="com.abs.casino.gs.managers.game.settings.GameSettingsManager" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
 <%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
-<%@ page import="com.dgphoenix.casino.support.tool.*" %>
+<%@ page import="com.abs.casino.support.tool.*" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <%

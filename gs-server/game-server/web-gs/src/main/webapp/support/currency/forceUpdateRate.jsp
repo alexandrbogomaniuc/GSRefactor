@@ -1,9 +1,9 @@
 <%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
 <%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesPersister" %>
-<%@ page import="com.dgphoenix.casino.common.currency.CurrencyRate" %>
-<%@ page import="com.dgphoenix.casino.common.currency.ICurrencyRateManager" %>
+<%@ page import="com.abs.casino.common.currency.CurrencyRate" %>
+<%@ page import="com.abs.casino.common.currency.ICurrencyRateManager" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
-<%@ page import="com.dgphoenix.casino.tracker.CurrencyUpdateProcessor" %>
+<%@ page import="com.abs.casino.tracker.CurrencyUpdateProcessor" %>
 <%@ page import="org.springframework.context.ApplicationContext" %>
 <%@ page import="java.io.PrintWriter" %>
 <%

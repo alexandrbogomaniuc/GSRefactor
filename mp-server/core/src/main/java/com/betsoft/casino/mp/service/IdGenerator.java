@@ -1,9 +1,9 @@
 package com.betsoft.casino.mp.service;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.ILongIdGenerator;
-import com.dgphoenix.casino.common.util.ISequencer;
-import com.dgphoenix.casino.common.util.ISequencerPersister;
+import com.abs.casino.common.util.ILongIdGenerator;
+import com.abs.casino.common.util.ISequencer;
+import com.abs.casino.common.util.ISequencerPersister;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

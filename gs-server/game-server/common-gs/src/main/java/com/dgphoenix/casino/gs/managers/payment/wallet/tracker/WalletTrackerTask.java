@@ -14,6 +14,7 @@ import com.abs.casino.common.exception.CannotLockException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.GameServer;
 import com.abs.casino.gs.TransactionDataTracker;
+import com.abs.casino.gs.managers.payment.wallet.WalletPersister;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;

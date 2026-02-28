@@ -1,10 +1,7 @@
 package com.betsoft.casino.mp.service;
 
-import com.betsoft.casino.mp.maxblastchampions.model.CrashRoundInfo;
-import com.betsoft.casino.mp.maxblastchampions.model.GameMap;
 import com.betsoft.casino.mp.model.GameType;
 import com.betsoft.casino.mp.model.ICrashRoundInfo;
-import com.betsoft.casino.mp.model.ISeat;
 import com.betsoft.casino.mp.model.room.IRoom;
 import com.betsoft.casino.utils.ITransportObject;
 import com.hazelcast.spring.context.SpringAware;
@@ -15,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 import java.io.Serializable;
+import java.lang.reflect.Method;
 import java.util.StringJoiner;
 
 @SpringAware
@@ -55,11 +53,7 @@ public class SendUpdateCrashHistoryTask implements Runnable, Serializable, Appli
                 return;
             }
             if (senderServerId != serverConfigService.getServerId()) {
-                if(gameType.isBattleGroundGame()) {
-                    ((GameMap) room.getMap()).addCrashHistory((CrashRoundInfo) crashRoundInfo);
-                } else {
-                    ((com.betsoft.casino.mp.maxcrashgame.model.GameMap) room.getMap()).addCrashHistory((com.betsoft.casino.mp.maxcrashgame.model.CrashRoundInfo) crashRoundInfo);
-                }
+                appendCrashHistory(room.getMap(), crashRoundInfo);
                 LOG.debug("save crashRoundInfo from other server, {}", crashRoundInfo);
             }
         } catch (Exception e) {
@@ -81,6 +75,20 @@ public class SendUpdateCrashHistoryTask implements Runnable, Serializable, Appli
                 .add("crashRoundInfo=" + crashRoundInfo)
                 .add("context=" + context)
                 .toString();
+    }
+
+    private static void appendCrashHistory(Object map, ICrashRoundInfo info) throws Exception {
+        for (Method method : map.getClass().getMethods()) {
+            if (!"addCrashHistory".equals(method.getName()) || method.getParameterCount() != 1) {
+                continue;
+            }
+            Class<?> parameterType = method.getParameterTypes()[0];
+            if (parameterType.isAssignableFrom(info.getClass())) {
+                method.invoke(map, info);
+                return;
+            }
+        }
+        throw new NoSuchMethodException("addCrashHistory(<ICrashRoundInfo>) not found for map " + map.getClass().getName());
     }
 }
 

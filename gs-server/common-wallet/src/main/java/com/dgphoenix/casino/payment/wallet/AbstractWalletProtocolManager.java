@@ -19,6 +19,7 @@ import com.abs.casino.common.exception.WalletException;
 import com.dgphoenix.casino.common.util.IdGenerator;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.gs.managers.payment.wallet.IWalletHelper;
+import com.abs.casino.gs.managers.payment.wallet.WalletPersister;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import org.apache.logging.log4j.Logger;
 

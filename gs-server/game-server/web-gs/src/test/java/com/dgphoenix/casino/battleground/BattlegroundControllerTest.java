@@ -5,7 +5,7 @@ import com.abs.casino.battleground.messages.BattlegroundRoundHistory;
 import com.abs.casino.battleground.messages.BattlegroundRoundHistoryInfo;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.controller.battleground.BattlegroundController;
+import com.abs.casino.controller.battleground.BattlegroundController;
 import com.dgphoenix.casino.gs.socket.mq.BattlegroundService;
 import org.junit.Assert;
 import org.junit.Before;

@@ -1,5 +1,5 @@
 <%@ page import="com.dgphoenix.casino.common.util.IdGenerator" %>
-<%@ page import="com.dgphoenix.casino.common.util.ISequencer" %>
+<%@ page import="com.abs.casino.common.util.ISequencer" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     final String[] sequencerKeys = {

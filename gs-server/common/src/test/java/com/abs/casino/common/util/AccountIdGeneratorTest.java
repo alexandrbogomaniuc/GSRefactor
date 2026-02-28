@@ -1,6 +1,6 @@
 package com.abs.casino.common.util;
 
-import com.dgphoenix.casino.common.util.AccountIdGenerator;
+import com.abs.casino.common.util.AccountIdGenerator;
 import junit.framework.TestCase;
 
 /**

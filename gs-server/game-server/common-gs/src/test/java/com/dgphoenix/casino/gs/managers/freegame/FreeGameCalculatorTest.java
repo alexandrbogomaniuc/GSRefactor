@@ -27,7 +27,7 @@ import java.util.List;
 import static com.abs.casino.common.cache.data.game.BaseGameConstants.KEY_FREEBALANCE;
 import static com.abs.casino.common.cache.data.game.BaseGameConstants.KEY_FREEBALANCE_MULTIPLIER;
 import static com.dgphoenix.casino.common.config.GameServerConfigTemplate.DEFAULT_FREE_BALANCE;
-import static com.dgphoenix.casino.gs.managers.dblink.FreeGameCalculator.DEFAULT_MQ_STAKES_RESERVE;
+import static com.abs.casino.gs.managers.dblink.FreeGameCalculator.DEFAULT_MQ_STAKES_RESERVE;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;

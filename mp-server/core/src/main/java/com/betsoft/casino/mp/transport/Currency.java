@@ -1,7 +1,6 @@
 package com.betsoft.casino.mp.transport;
 
 import com.abs.casino.common.cache.data.currency.ICurrency;
-import com.betsoft.casino.mp.model.ICurrency;
 
 import java.io.Serializable;
 
@@ -23,8 +22,23 @@ public class Currency implements ICurrency, Serializable {
     }
 
     @Override
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    @Override
     public String getSymbol() {
         return symbol;
+    }
+
+    @Override
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    @Override
+    public boolean isDefault(long bankId) {
+        return false;
     }
 
     @Override

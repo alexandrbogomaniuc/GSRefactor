@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.common.util.CookieUtils" %>
+<%@ page import="com.abs.casino.common.util.CookieUtils" %>
 <%
     String anyJavaPresent = CookieUtils.getCookieValue(request, "AnyJavaPresent");
     boolean needJavaDetection = anyJavaPresent == null;

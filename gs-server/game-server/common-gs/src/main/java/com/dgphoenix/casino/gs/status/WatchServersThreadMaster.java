@@ -1,8 +1,8 @@
 package com.abs.casino.gs.status;
 
 import com.dgphoenix.casino.common.cache.LoadBalancerCache;
-import com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
-import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
+import com.abs.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
+import com.abs.casino.common.cache.data.server.ServerInfo;
 import com.abs.casino.common.cache.data.server.ServerOnlineStatus;
 import com.abs.casino.gs.IGameServerStatusListener;
 import com.abs.casino.kafka.dto.NotifyOnServerStatusesUpdatedRequest;

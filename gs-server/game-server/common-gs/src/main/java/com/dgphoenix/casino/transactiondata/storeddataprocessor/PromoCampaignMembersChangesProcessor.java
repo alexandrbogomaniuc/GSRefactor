@@ -3,7 +3,7 @@ package com.abs.casino.transactiondata.storeddataprocessor;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.IStoredDataProcessor;
 import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
-import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItem;
+import com.abs.casino.common.transactiondata.storeddate.StoredItem;
 import com.abs.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.promo.persisters.CassandraPromoCampaignMembersPersister;

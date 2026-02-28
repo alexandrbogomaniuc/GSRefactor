@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.data.service.ClusterInfoService;
 import com.betsoft.casino.mp.data.service.ServerConfigService;
 import com.betsoft.casino.mp.service.*;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.IKeyspaceManager;
+import com.abs.casino.cassandra.IKeyspaceManager;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import com.hazelcast.cache.HazelcastCachingProvider;
 import com.hazelcast.config.*;

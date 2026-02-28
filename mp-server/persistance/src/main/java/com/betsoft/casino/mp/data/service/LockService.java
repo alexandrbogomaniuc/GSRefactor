@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.data.service;
 
 import com.betsoft.casino.mp.data.persister.LockPersister;
-import com.dgphoenix.casino.cassandra.IRemoteUnlocker;
+import com.abs.casino.cassandra.IRemoteUnlocker;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.lock.ILockManager;
 import com.dgphoenix.casino.common.lock.LockingInfo;

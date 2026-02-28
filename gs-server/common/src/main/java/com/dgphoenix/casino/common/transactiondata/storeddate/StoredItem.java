@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.transactiondata.storeddate;
+package com.abs.casino.common.transactiondata.storeddate;
 
 import com.abs.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
 

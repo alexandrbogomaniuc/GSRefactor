@@ -1,7 +1,11 @@
 package com.betsoft.casino.mp.data.config;
 
-import com.dgphoenix.casino.cassandra.*;
-import com.dgphoenix.casino.common.configuration.ConfigHelper;
+import com.abs.casino.cassandra.IKeyspaceManager;
+import com.abs.casino.cassandra.KeyspaceConfigurationFactory;
+import com.abs.casino.cassandra.KeyspaceManagerFactory;
+import com.abs.casino.cassandra.PersisterDependencyInjector;
+import com.abs.casino.common.configuration.ConfigHelper;
+import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.common.util.JsonHelper;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import org.apache.logging.log4j.LogManager;

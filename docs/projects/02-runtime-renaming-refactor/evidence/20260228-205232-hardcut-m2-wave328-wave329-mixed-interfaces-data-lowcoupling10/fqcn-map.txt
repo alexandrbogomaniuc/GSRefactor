@@ -1,0 +1,12 @@
+com.dgphoenix.casino.common.api.IAccountInfoPersister com.abs.casino.common.api.IAccountInfoPersister
+com.dgphoenix.casino.common.ILoadBalancer com.abs.casino.common.ILoadBalancer
+com.dgphoenix.casino.gs.managers.ICloseGameProcessor com.abs.casino.gs.managers.ICloseGameProcessor
+com.dgphoenix.casino.gs.managers.payment.IStartGameProcessor com.abs.casino.gs.managers.payment.IStartGameProcessor
+com.dgphoenix.casino.gs.managers.payment.wallet.v4.ICommonWalletClient com.abs.casino.gs.managers.payment.wallet.v4.ICommonWalletClient
+com.dgphoenix.casino.common.cache.data.bet.ShortBetInfo com.abs.casino.common.cache.data.bet.ShortBetInfo
+com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvider com.abs.casino.common.cache.data.server.ServerCoordinatorInfoProvider
+com.dgphoenix.casino.common.transactiondata.storeddate.StoredItem com.abs.casino.common.transactiondata.storeddate.StoredItem
+com.dgphoenix.casino.common.transactiondata.storeddate.StoredItemType com.abs.casino.common.transactiondata.storeddate.StoredItemType
+com.dgphoenix.casino.common.lock.ILockManager com.abs.casino.common.lock.ILockManager
+com.dgphoenix.casino.common.lock.LockingInfo com.abs.casino.common.lock.LockingInfo
+com.dgphoenix.casino.common.cache.data.server.ServerInfo com.abs.casino.common.cache.data.server.ServerInfo

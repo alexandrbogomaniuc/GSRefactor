@@ -28,7 +28,7 @@ import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
 import com.dgphoenix.casino.common.cache.data.game.*;
 import com.dgphoenix.casino.common.cache.data.payment.IWallet;
 import com.abs.casino.common.cache.data.payment.frb.IFRBonusWin;
-import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
+import com.abs.casino.common.cache.data.server.ServerInfo;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.abs.casino.common.cache.data.session.SessionConstants;

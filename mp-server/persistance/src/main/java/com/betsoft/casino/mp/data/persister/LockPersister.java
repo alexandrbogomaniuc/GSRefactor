@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.data.persister;
 
-import com.dgphoenix.casino.cassandra.AbstractLockManager;
+import com.abs.casino.cassandra.AbstractLockManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,5 +1,5 @@
 <%@ page import="com.dgphoenix.casino.common.cache.LoadBalancerCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.server.ServerInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.server.ServerInfo" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="java.util.Collection" %>
