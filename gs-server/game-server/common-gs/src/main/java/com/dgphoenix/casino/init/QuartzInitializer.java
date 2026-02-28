@@ -1,7 +1,7 @@
 package com.abs.casino.init;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraBankInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraBankInfoPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import org.apache.logging.log4j.LogManager;

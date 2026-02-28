@@ -2,7 +2,7 @@ package com.abs.casino.support.cache.bank.edit.actions.addbank;
 
 import com.abs.casino.bgm.BaseGameHelper;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraBankInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraBankInfoPersister;
 import com.dgphoenix.casino.common.cache.*;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;

@@ -2,7 +2,7 @@ package com.abs.casino.services.mp;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraCurrentPlayerSessionStatePersister;
-import com.dgphoenix.casino.cassandra.persist.CassandraPlayerSessionState;
+import com.abs.casino.cassandra.persist.CassandraPlayerSessionState;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;

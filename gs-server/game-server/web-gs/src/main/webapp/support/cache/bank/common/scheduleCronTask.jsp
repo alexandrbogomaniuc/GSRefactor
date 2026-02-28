@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraBankInfoPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraBankInfoPersister" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
 <%@ page import="com.abs.casino.init.QuartzInitializer" %>

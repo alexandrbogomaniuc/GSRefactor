@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra.persist;
+package com.abs.casino.cassandra.persist;
 
 public class CassandraPlayerSessionState {
 

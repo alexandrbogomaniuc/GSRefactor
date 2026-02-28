@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraGameSessionPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraGameSessionPersister" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.session.GameSession" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
 <%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>

@@ -1,8 +1,8 @@
 package com.abs.casino.transactiondata.storeddataprocessor;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraLasthandPersister;
-import com.dgphoenix.casino.cassandra.persist.IStoredDataProcessor;
+import com.abs.casino.cassandra.persist.CassandraLasthandPersister;
+import com.abs.casino.cassandra.persist.IStoredDataProcessor;
 import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
 import com.abs.casino.common.transactiondata.storeddate.StoredItem;
 import com.abs.casino.common.transactiondata.storeddate.identifier.LasthandStoredInfo;

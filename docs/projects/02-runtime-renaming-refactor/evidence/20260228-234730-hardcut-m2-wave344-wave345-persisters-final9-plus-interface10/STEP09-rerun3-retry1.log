@@ -1,0 +1,10 @@
+[2026-02-28T23:57:24Z] START STEP09-retry1
+[2026-02-28T23:57:24Z] DIR .
+[2026-02-28T23:57:24Z] CMD node gs-server/deploy/scripts/refactor-onboard.mjs smoke (timeout=300s)
+[refactor-onboard] PASS: Static asset route (http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json) -> HTTP 200
+[refactor-onboard] WARN: GS support route (diagnostic) (http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6275) -> read ECONNRESET after 10 attempts
+[refactor-onboard] PASS: Config service health (http://127.0.0.1:18072/health) -> HTTP 200
+[refactor-onboard] FAIL: Launch alias (startgame) (http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 502 after 10 attempts
+[refactor-onboard] WARN: Launch alias (secondary) (http://127.0.0.1:18080/startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 502 after 10 attempts
+[refactor-onboard] ERROR: Smoke checks failed (1 failure(s)). See lines above.
+[2026-02-28T23:58:46Z] FAIL STEP09-retry1 rc=2

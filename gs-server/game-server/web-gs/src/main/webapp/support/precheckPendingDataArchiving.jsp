@@ -1,5 +1,5 @@
 <%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraTransactionDataPersister" %>
 <%@ page import="com.dgphoenix.casino.common.SessionHelper" %>
 <%@ page import="com.dgphoenix.casino.common.cache.ServerConfigsCache" %>
 <%@ page import="com.abs.casino.common.cache.data.payment.bonus.CommonFRBonusWin" %>

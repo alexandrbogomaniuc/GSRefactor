@@ -8,7 +8,7 @@ import com.abs.casino.actions.enter.game.routing.GameplayOrchestratorRoutingBrid
 import com.abs.casino.actions.enter.game.routing.MultiplayerServiceRoutingBridge;
 import com.abs.casino.actions.enter.game.routing.ProtocolAdapterRoutingBridge;
 import com.abs.casino.actions.enter.game.routing.SessionServiceRoutingBridge;
-import com.dgphoenix.casino.cassandra.persist.CassandraPlayerSessionState;
+import com.abs.casino.cassandra.persist.CassandraPlayerSessionState;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;

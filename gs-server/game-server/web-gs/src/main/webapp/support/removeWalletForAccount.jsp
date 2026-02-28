@@ -2,7 +2,7 @@
 <%@ page import="com.dgphoenix.casino.common.cache.data.payment.IWallet" %>
 <%@ page import="com.dgphoenix.casino.common.transactiondata.ITransactionData" %>
 <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraTransactionDataPersister" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     String _accountId = request.getParameter("accountId");

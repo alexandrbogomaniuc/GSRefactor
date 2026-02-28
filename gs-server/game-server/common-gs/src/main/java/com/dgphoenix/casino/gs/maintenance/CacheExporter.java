@@ -9,7 +9,7 @@ import com.abs.casino.common.cache.AbstractExportableCache;
 import com.dgphoenix.casino.account.AccountManager;
 import com.abs.casino.cache.CachesHolder;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraBankInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraBankInfoPersister;
 import com.abs.casino.cassandra.persist.CassandraBaseGameInfoPersister;
 import com.dgphoenix.casino.common.cache.*;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;

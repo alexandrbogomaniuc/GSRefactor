@@ -1,5 +1,5 @@
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraTransactionDataPersister" %>
 <%@ page import="com.abs.casino.common.transactiondata.TrackingStatus" %>
 <%@ page import="com.abs.casino.common.transactiondata.TrackingState" %>
 <%@ page import="com.abs.casino.common.transactiondata.TrackingInfo" %>

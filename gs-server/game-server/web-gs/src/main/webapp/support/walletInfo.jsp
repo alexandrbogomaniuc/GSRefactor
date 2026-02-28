@@ -7,9 +7,9 @@
 <%@ page import="com.dgphoenix.casino.common.transactiondata.ITransactionData" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus" %>
 <%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation" %>
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraLasthandPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraLasthandPersister" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraTransactionDataPersister" %>
 <%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
 <%--

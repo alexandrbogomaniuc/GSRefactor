@@ -1,5 +1,5 @@
 <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraAccountInfoPersister" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.account.AccountInfo" %>
 <%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>

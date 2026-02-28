@@ -2,7 +2,7 @@ package com.abs.casino.gs;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.DistributedLockManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister;
+import com.abs.casino.cassandra.persist.CassandraTransactionDataPersister;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.LoadBalancerCache;

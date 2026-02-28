@@ -1,0 +1,3 @@
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExtendedAccountInfoPersister.java:6:import com.abs.casino.cassandra.persist.ExtendedAccountInfoPersister;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCurrentPlayerSessionStatePersister.java:6:import com.abs.casino.cassandra.persist.CassandraPlayerSessionState;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:7:import com.abs.casino.cassandra.persist.CassandraAccountInfoPersister;

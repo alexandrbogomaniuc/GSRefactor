@@ -2,7 +2,7 @@ package com.abs.casino.transactiondata.storeddataprocessor;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraBetPersister;
-import com.dgphoenix.casino.cassandra.persist.IStoredDataProcessor;
+import com.abs.casino.cassandra.persist.IStoredDataProcessor;
 import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
 import com.abs.casino.common.transactiondata.storeddate.StoredItem;
 import com.abs.casino.common.transactiondata.storeddate.identifier.PlayerBetStoredInfo;

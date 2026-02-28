@@ -1,0 +1,10 @@
+com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister -> com.abs.casino.cassandra.persist.CassandraAccountInfoPersister
+com.dgphoenix.casino.cassandra.persist.CassandraTrackingInfoPersister -> com.abs.casino.cassandra.persist.CassandraTrackingInfoPersister
+com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister -> com.abs.casino.cassandra.persist.CassandraTransactionDataPersister
+com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesPersister -> com.abs.casino.cassandra.persist.CassandraCurrencyRatesPersister
+com.dgphoenix.casino.cassandra.persist.CassandraBankInfoPersister -> com.abs.casino.cassandra.persist.CassandraBankInfoPersister
+com.dgphoenix.casino.cassandra.persist.CassandraLasthandPersister -> com.abs.casino.cassandra.persist.CassandraLasthandPersister
+com.dgphoenix.casino.cassandra.persist.CassandraPlayerSessionState -> com.abs.casino.cassandra.persist.CassandraPlayerSessionState
+com.dgphoenix.casino.cassandra.persist.IStoredDataProcessor -> com.abs.casino.cassandra.persist.IStoredDataProcessor
+com.dgphoenix.casino.cassandra.persist.CassandraGameSessionPersister -> com.abs.casino.cassandra.persist.CassandraGameSessionPersister
+com.dgphoenix.casino.cassandra.persist.ExtendedAccountInfoPersister -> com.abs.casino.cassandra.persist.ExtendedAccountInfoPersister

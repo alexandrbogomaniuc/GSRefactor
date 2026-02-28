@@ -6,7 +6,7 @@ import com.dgphoenix.casino.account.AccountManager;
 import com.abs.casino.battleground.messages.*;
 import com.abs.casino.battleground.messages.*;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraAccountInfoPersister;
 import com.abs.casino.cassandra.persist.mp.*;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;

@@ -2,7 +2,7 @@ package com.abs.casino.gs.managers.payment.bonus.mass;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraAccountInfoPersister;
 import com.abs.casino.cassandra.persist.CassandraDelayedMassAwardFailedDeliveryPersister;
 import com.abs.casino.cassandra.persist.CassandraDelayedMassAwardHistoryPersister;
 import com.abs.casino.cassandra.persist.CassandraDelayedMassAwardPersister;

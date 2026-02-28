@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.*;
+import static com.abs.casino.cassandra.persist.CassandraTransactionDataPersister.*;
 import static com.abs.casino.common.util.FastKryoHelper.*;
 
 /**

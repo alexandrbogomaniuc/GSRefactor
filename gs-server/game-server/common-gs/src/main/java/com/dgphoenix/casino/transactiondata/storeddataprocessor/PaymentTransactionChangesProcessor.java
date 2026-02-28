@@ -2,7 +2,7 @@ package com.abs.casino.transactiondata.storeddataprocessor;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraPaymentTransactionPersister;
-import com.dgphoenix.casino.cassandra.persist.IStoredDataProcessor;
+import com.abs.casino.cassandra.persist.IStoredDataProcessor;
 import com.abs.casino.common.cache.data.payment.transfer.PaymentTransaction;
 import com.abs.casino.common.transactiondata.storeddate.StoredItem;
 import com.abs.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;

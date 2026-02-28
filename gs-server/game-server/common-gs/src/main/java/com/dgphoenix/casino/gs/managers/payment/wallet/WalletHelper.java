@@ -3,7 +3,7 @@ package com.dgphoenix.casino.gs.managers.payment.wallet;
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraCommonGameWalletPersister;
-import com.dgphoenix.casino.cassandra.persist.CassandraTrackingInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraTrackingInfoPersister;
 import com.abs.casino.cassandra.persist.CassandraWalletOperationInfoPersister;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;

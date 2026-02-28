@@ -1,6 +1,6 @@
 package com.abs.casino.actions.support.walletinfo;
 
-import com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister;
+import com.abs.casino.cassandra.persist.CassandraTransactionDataPersister;
 import com.abs.casino.common.web.BaseAction;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;

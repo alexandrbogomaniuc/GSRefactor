@@ -11,7 +11,7 @@
 <%@ page import="com.abs.casino.common.exception.WalletException" %>
 <%@ page import="com.abs.casino.gs.persistance.LasthandPersister" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.account.LasthandInfo" %>
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraGameSessionPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraGameSessionPersister" %>
 <%@ page import="static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty" %>
 <%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.*" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.game.GameMode" %>

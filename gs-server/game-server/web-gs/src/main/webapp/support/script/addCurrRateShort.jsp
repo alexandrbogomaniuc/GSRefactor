@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesPersister" %>
+<%@ page import="com.abs.casino.cassandra.persist.CassandraCurrencyRatesPersister" %>
 <%@ page import="com.abs.casino.common.currency.CurrencyRate" %>
 <%@ page import="com.abs.casino.tracker.CurrencyUpdateProcessor" %>
 <%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>

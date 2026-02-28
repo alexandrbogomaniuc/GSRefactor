@@ -1,8 +1,8 @@
 package com.abs.casino.actions.support.walletinfo;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraLasthandPersister;
-import com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister;
+import com.abs.casino.cassandra.persist.CassandraLasthandPersister;
+import com.abs.casino.cassandra.persist.CassandraTransactionDataPersister;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;

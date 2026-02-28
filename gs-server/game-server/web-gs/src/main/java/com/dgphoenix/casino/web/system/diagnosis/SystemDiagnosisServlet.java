@@ -2,7 +2,7 @@ package com.abs.casino.web.system.diagnosis;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.IKeyspaceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesPersister;
+import com.abs.casino.cassandra.persist.CassandraCurrencyRatesPersister;
 import com.abs.casino.common.config.FreeSpaceThresholdType;
 import com.abs.casino.common.config.MountMonitoringEntry;
 import com.abs.casino.common.currency.CurrencyRate;

@@ -2,7 +2,7 @@ package com.abs.casino.web.history;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraAccountInfoPersister;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
@@ -36,7 +36,7 @@ import java.text.DateFormat;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static com.dgphoenix.casino.cassandra.persist.CassandraGameSessionPersister.*;
+import static com.abs.casino.cassandra.persist.CassandraGameSessionPersister.*;
 import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 /**

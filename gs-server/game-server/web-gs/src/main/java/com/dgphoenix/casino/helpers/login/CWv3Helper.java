@@ -1,7 +1,7 @@
 package com.abs.casino.helpers.login;
 
 import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraPlayerSessionState;
+import com.abs.casino.cassandra.persist.CassandraPlayerSessionState;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;

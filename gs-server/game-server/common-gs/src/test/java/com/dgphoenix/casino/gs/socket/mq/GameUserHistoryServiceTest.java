@@ -2,7 +2,7 @@ package com.abs.casino.gs.socket.mq;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraGameSessionPersister;
+import com.abs.casino.cassandra.persist.CassandraGameSessionPersister;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;

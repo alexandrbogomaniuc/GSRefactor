@@ -1,0 +1,5 @@
+com.dgphoenix.casino.cassandra.persist.CassandraLasthandPersister
+com.dgphoenix.casino.cassandra.persist.CassandraPlayerSessionState
+com.dgphoenix.casino.cassandra.persist.IStoredDataProcessor
+com.dgphoenix.casino.cassandra.persist.CassandraGameSessionPersister
+com.dgphoenix.casino.cassandra.persist.ExtendedAccountInfoPersister

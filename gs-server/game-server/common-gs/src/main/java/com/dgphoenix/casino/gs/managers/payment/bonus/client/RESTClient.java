@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.payment.bonus.client;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraGameSessionPersister;
+import com.abs.casino.cassandra.persist.CassandraGameSessionPersister;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.data.bonus.Bonus;

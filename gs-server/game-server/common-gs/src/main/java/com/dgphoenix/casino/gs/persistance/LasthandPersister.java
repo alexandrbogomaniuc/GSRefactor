@@ -2,7 +2,7 @@ package com.abs.casino.gs.persistance;
 
 import com.abs.casino.gs.persistance.ILasthandPersister;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraLasthandPersister;
+import com.abs.casino.cassandra.persist.CassandraLasthandPersister;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
