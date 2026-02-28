@@ -8809,3 +8809,23 @@
   - baseline `2277`, reduced `1793`, remaining `484`, burndown `78.743961%`
   - Project 02 `47.980777%`, Core `73.990388%`, Portfolio `86.995194%`
   - ETA `19.8h` (`2.48` workdays)
+
+### 2026-02-28 12:22 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W292 + W293`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `11` (`IIntegerIdGenerator`, `IIntegerSequencer`, `IIntegerSequencerPersister`, `ILongIdGenerator`, `ISequencer`, `ISequencerPersister`, `IntegerIdGenerator`, `IntegerSequencer`, `LongIdGenerator`, `LongIdGeneratorFactory`, `Sequencer`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent parallel target remained constrained by thread limit; ownership-safe execution continued on main.
+  - rerun1 failed at `PRE02/STEP03` due moved `IntegerSequencer`/`Sequencer` losing same-package visibility to unmoved `ExecutorUtils`; fixed with explicit compatibility imports.
+  - rerun2 failed at `STEP06` due duplicate-type compatibility drift (`sb-utils` moved types vs unmoved `gs-server/common` duplicates) after initial usage rewires.
+  - bounded stabilization rolled back class-usage rewires for this cluster while retaining declaration migration; canonical validation reached on rerun3:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-120911-hardcut-m2-wave292-wave293-sequencer-idgen-cluster/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/207-hard-cut-m2-wave292-wave293-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1804`, remaining `473`, burndown `79.227053%`
+  - Project 02 `48.129606%`, Core `74.064803%`, Portfolio `87.032402%`
+  - ETA `19.2h` (`2.40` workdays)

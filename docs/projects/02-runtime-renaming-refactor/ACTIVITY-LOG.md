@@ -3989,3 +3989,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 4`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+4`.
   - global tracked source declarations/files now `484` remaining (`2277` baseline, `1793` reduced, `78.743961%` burndown).
+
+## 2026-02-28 12:22 UTC (Hard-Cut M2 Wave 292 + 293)
+- Continued hard-cut execution from W291 with declaration-first overlap-safe sequencer/id-generator cluster in `sb-utils/common/util`.
+  - `W292`: 6 declaration migrations retained (`IIntegerIdGenerator`, `IIntegerSequencer`, `IIntegerSequencerPersister`, `ILongIdGenerator`, `ISequencer`, `ISequencerPersister`).
+  - `W293`: 5 declaration migrations retained (`IntegerIdGenerator`, `IntegerSequencer`, `LongIdGenerator`, `LongIdGeneratorFactory`, `Sequencer`).
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1 failed at `PRE02/STEP03` (`sb-utils`) because moved sequencer classes lost same-package visibility to unmoved `ExecutorUtils`; fixed with bounded compatibility imports in moved `IntegerSequencer` and `Sequencer`.
+  - rerun2 failed at `STEP06` due duplicate-type compatibility drift between moved `sb-utils` sequencer/id-generator types and unmoved `gs-server/common` equivalents after initial usage rewires.
+  - bounded stabilization rolled back class-usage rewires for this cluster (declaration move retained) to preserve compatibility with unmoved duplicate type surface.
+  - canonical validation reached on rerun3:
+    - fast gate batchA: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-120911-hardcut-m2-wave292-wave293-sequencer-idgen-cluster/`
+  - report: `docs/projects/02-runtime-renaming-refactor/207-hard-cut-m2-wave292-wave293-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 11`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+11`.
+  - global tracked source declarations/files now `473` remaining (`2277` baseline, `1804` reduced, `79.227053%` burndown).

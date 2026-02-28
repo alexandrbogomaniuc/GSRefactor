@@ -1,0 +1,21 @@
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:3:import com.dgphoenix.casino.common.util.ISequencer;
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:4:import com.dgphoenix.casino.common.util.ISequencerPersister;
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:29:import com.dgphoenix.casino.common.util.ILongIdGenerator;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/IGameServer.java:12:import com.dgphoenix.casino.common.util.ILongIdGenerator;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/tournament/PlayerAliasService.java:8:import com.dgphoenix.casino.common.util.IIntegerIdGenerator;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraSequencer.java:7:import com.dgphoenix.casino.common.util.ISequencer;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraIntSequencerPersister.java:9:import com.dgphoenix.casino.common.util.IIntegerSequencer;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraIntSequencerPersister.java:10:import com.dgphoenix.casino.common.util.IIntegerSequencerPersister;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraIntegerSequencer.java:6:import com.dgphoenix.casino.common.util.IIntegerSequencer;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraSequencerPersister.java:9:import com.dgphoenix.casino.common.util.ISequencer;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraSequencerPersister.java:10:import com.dgphoenix.casino.common.util.ISequencerPersister;
+mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/SequencerPersister.java:9:import com.dgphoenix.casino.common.util.ISequencer;
+mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/SequencerPersister.java:10:import com.dgphoenix.casino.common.util.ISequencerPersister;
+mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/persister/CassandraSequencer.java:5:import com.dgphoenix.casino.common.util.ISequencer;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/AbstractFRBonusWinManager.java:9:import com.dgphoenix.casino.common.util.ILongIdGenerator;
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/IdGenerator.java:4:import com.dgphoenix.casino.common.util.ILongIdGenerator;
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/IdGenerator.java:5:import com.dgphoenix.casino.common.util.ISequencer;
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/IdGenerator.java:6:import com.dgphoenix.casino.common.util.ISequencerPersister;
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java:11:import com.dgphoenix.casino.common.util.ILongIdGenerator;
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IGameState.java:9:import com.dgphoenix.casino.common.util.ILongIdGenerator;
+gs-server/game-server/web-gs/src/main/webapp/support/setIdGeneratorStartValue.jsp:2:<%@ page import="com.dgphoenix.casino.common.util.ISequencer" %>

@@ -1,0 +1,15 @@
+mp-server/games/revengeofra/src/test/java/com/betsoft/casino/mp/revengeofra/TestModel.java:17:import com.dgphoenix.casino.common.util.LongIdGenerator;
+mp-server/games/bg_sectorx/src/test/java/com/betsoft/casino/mp/bgsectorx/TestModel.java:22:import com.dgphoenix.casino.common.util.LongIdGenerator;
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:17:import com.dgphoenix.casino.common.util.LongIdGenerator;
+mp-server/games/bg_missionamazon/src/test/java/com/betsoft/casino/mp/bgmissionamazon/TestModel.java:17:import com.dgphoenix.casino.common.util.LongIdGenerator;
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:15:import com.dgphoenix.casino.common.util.LongIdGenerator;
+mp-server/games/pirates/src/test/java/com/betsoft/casino/mp/pirates/TestModel.java:21:import com.dgphoenix.casino.common.util.LongIdGenerator;
+mp-server/games/sectorx/src/test/java/com/betsoft/casino/mp/sectorx/TestModel.java:22:import com.dgphoenix.casino.common.util.LongIdGenerator;
+mp-server/games/amazon/src/test/java/com/betsoft/casino/mp/amazon/TestModel.java:18:import com.dgphoenix.casino.common.util.LongIdGenerator;
+mp-server/games/piratespov/src/test/java/com/betsoft/casino/mp/piratespov/TestModel.java:18:import com.dgphoenix.casino.common.util.LongIdGenerator;
+mp-server/games/piratesdmc/src/test/java/com/betsoft/casino/mp/piratesdmc/TestModel.java:18:import com.dgphoenix.casino.common.util.LongIdGenerator;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:25:import com.dgphoenix.casino.common.util.IntegerIdGenerator;
+mp-server/games/missionamazon/src/test/java/com/betsoft/casino/mp/missionamazon/TestModel.java:20:import com.dgphoenix.casino.common.util.LongIdGenerator;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/DefaultConfigsInitializer.java:13:import com.dgphoenix.casino.common.util.IntegerIdGenerator;
+mp-server/games/bg_dragonstone/src/test/java/com/betsoft/casino/mp/bgdragonstone/TestModel.java:18:import com.dgphoenix.casino.common.util.LongIdGenerator;
+mp-server/games/dragonstone/src/test/java/com/betsoft/casino/mp/dragonstone/TestModel.java:18:import com.dgphoenix.casino.common.util.LongIdGenerator;
