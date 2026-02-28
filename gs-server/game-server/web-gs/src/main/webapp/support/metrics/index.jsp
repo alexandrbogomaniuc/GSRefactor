@@ -1,5 +1,5 @@
-<%@ page import="com.dgphoenix.casino.system.MetricsManager" %>
-<%@ page import="com.dgphoenix.casino.common.util.system.Metric" %>
+<%@ page import="com.abs.casino.system.MetricsManager" %>
+<%@ page import="com.abs.casino.common.util.system.Metric" %>
 <%@ page import="java.util.concurrent.TimeUnit" %>
 <%@ page import="com.dgphoenix.casino.common.util.Pair" %>
 <%@ page import="java.util.List" %>
@@ -10,7 +10,7 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.text.DateFormat" %>
-<%@ page import="com.dgphoenix.casino.common.util.system.MetricStat" %>
+<%@ page import="com.abs.casino.common.util.system.MetricStat" %>
 <%@ page import="com.dgphoenix.casino.gs.GameServer" %>
 <%@ page import="java.util.TimeZone" %>
 <%!

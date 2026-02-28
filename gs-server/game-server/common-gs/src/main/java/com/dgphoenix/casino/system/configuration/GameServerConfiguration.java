@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.system.configuration;
 
-import com.dgphoenix.casino.GeoIp;
+import com.abs.casino.GeoIp;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraBlockedCountriesPersister;
 import com.dgphoenix.casino.common.cache.ServerConfigsCache;

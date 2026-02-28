@@ -1,6 +1,6 @@
 package com.abs.casino.actions.api.bonus;
 
-import com.dgphoenix.casino.actions.enter.CommonActionForm;
+import com.abs.casino.actions.enter.CommonActionForm;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.SubCasinoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;

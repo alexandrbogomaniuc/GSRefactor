@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.system;
+package com.abs.casino.system;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraMetricsPersister;

@@ -9166,3 +9166,24 @@
   - baseline `2277`, reduced `259`, remaining `2018`, burndown `11.374616%`
   - Project 02 `26.421827%`, Core `63.210913%`, Portfolio `81.605457%`
   - ETA `92.7h` (`11.58` workdays)
+
+### 2026-02-28 19:46 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W324 + W325`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `10` (`BonusStatusDto`, `MQDataDto`, `MQDataWrapperDto`, `MQQuestAmountDto`, `MQQuestDataDto`, `MQQuestPrizeDto`, `MQTreasureQuestProgressDto`, `GeoIp`, `MetricsManager`, `CommonActionForm`).
+  - deferred due duplicate-class compile boundaries: `BasicKafkaResponse`, `KafkaHandlerException`, `KafkaMessage`, `KafkaRequest`, `KafkaResponse`, `VoidKafkaResponse`, `GameServerComponentsHelper`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - `rerun1` failed `STEP06` (duplicate class boundary on moved `KafkaResponse`).
+  - `rerun2` failed `STEP06` (duplicate class boundary on moved `GameServerComponentsHelper`).
+  - `rerun3` failed `STEP07` (JSP import drift in `support/metrics/index.jsp`).
+  - canonical validation reached on `rerun4`:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-192547-hardcut-m2-wave324-wave325-kafka-dto-core-primitives/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/223-hard-cut-m2-wave324-wave325-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `269`, remaining `2008`, burndown `11.813790%`
+  - Project 02 `26.476724%`, Core `63.238362%`, Portfolio `81.619181%`
+  - ETA `92.2h` (`11.53` workdays)

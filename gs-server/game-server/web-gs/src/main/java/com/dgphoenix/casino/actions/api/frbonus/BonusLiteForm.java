@@ -1,6 +1,6 @@
 package com.abs.casino.actions.api.frbonus;
 
-import com.dgphoenix.casino.actions.enter.CommonActionForm;
+import com.abs.casino.actions.enter.CommonActionForm;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionErrors;

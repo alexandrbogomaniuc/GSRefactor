@@ -1,6 +1,6 @@
 package com.abs.casino.gs.managers.payment.wallet.common.remote;
 
-import com.dgphoenix.casino.actions.enter.CommonActionForm;
+import com.abs.casino.actions.enter.CommonActionForm;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.abs.casino.common.util.DigitFormatter;
 import com.abs.casino.common.util.logkit.ThreadLog;

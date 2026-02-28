@@ -4311,3 +4311,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Pushed wave completion commit `1514b7b93` to `origin/main`.
 - Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-190156-hardcut-m2-wave322-wave323-bonus-core-interfaces-helpers/`.
 - Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+
+## 2026-02-28 19:46 UTC (Hard-Cut M2 Wave 324 + 325)
+- Continued hard-cut execution from W322/W323 with declaration-first overlap-safe mixed batch (`kafka dto quest leaf` + low-fanout utility/forms).
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `10`
+    - `BonusStatusDto`, `MQDataDto`, `MQDataWrapperDto`, `MQQuestAmountDto`, `MQQuestDataDto`, `MQQuestPrizeDto`, `MQTreasureQuestProgressDto`, `GeoIp`, `MetricsManager`, `CommonActionForm`.
+  - deferred due compile-boundary duplicate-class risk: `BasicKafkaResponse`, `KafkaHandlerException`, `KafkaMessage`, `KafkaRequest`, `KafkaResponse`, `VoidKafkaResponse`, `GameServerComponentsHelper`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1 failed at `STEP06` on duplicate class boundary for moved `KafkaResponse`.
+  - rerun2 failed at `STEP06` on duplicate class boundary for moved `GameServerComponentsHelper`.
+  - rerun3 failed at `STEP07` due JSP import drift in `support/metrics/index.jsp`.
+  - rerun4 reached canonical profile:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-192547-hardcut-m2-wave324-wave325-kafka-dto-core-primitives/`
+  - report: `docs/projects/02-runtime-renaming-refactor/223-hard-cut-m2-wave324-wave325-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `10`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `2008` remaining (`2277` baseline, `269` reduced, `11.813790%` burndown).

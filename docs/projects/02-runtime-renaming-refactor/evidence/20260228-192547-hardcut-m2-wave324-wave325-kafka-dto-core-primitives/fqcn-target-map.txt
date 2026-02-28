@@ -1,0 +1,10 @@
+com.dgphoenix.casino.kafka.dto.BonusStatusDto|com.abs.casino.kafka.dto.BonusStatusDto
+com.dgphoenix.casino.kafka.dto.MQDataDto|com.abs.casino.kafka.dto.MQDataDto
+com.dgphoenix.casino.kafka.dto.MQDataWrapperDto|com.abs.casino.kafka.dto.MQDataWrapperDto
+com.dgphoenix.casino.kafka.dto.MQQuestAmountDto|com.abs.casino.kafka.dto.MQQuestAmountDto
+com.dgphoenix.casino.kafka.dto.MQQuestDataDto|com.abs.casino.kafka.dto.MQQuestDataDto
+com.dgphoenix.casino.kafka.dto.MQQuestPrizeDto|com.abs.casino.kafka.dto.MQQuestPrizeDto
+com.dgphoenix.casino.kafka.dto.MQTreasureQuestProgressDto|com.abs.casino.kafka.dto.MQTreasureQuestProgressDto
+com.dgphoenix.casino.GeoIp|com.abs.casino.GeoIp
+com.dgphoenix.casino.system.MetricsManager|com.abs.casino.system.MetricsManager
+com.dgphoenix.casino.actions.enter.CommonActionForm|com.abs.casino.actions.enter.CommonActionForm

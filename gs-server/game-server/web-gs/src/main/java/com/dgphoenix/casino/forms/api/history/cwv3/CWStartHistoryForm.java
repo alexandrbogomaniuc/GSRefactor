@@ -1,6 +1,6 @@
 package com.abs.casino.forms.api.history.cwv3;
 
-import com.dgphoenix.casino.actions.enter.CommonActionForm;
+import com.abs.casino.actions.enter.CommonActionForm;
 import com.dgphoenix.casino.common.cache.ExternalGameIdsCache;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.BaseAction;

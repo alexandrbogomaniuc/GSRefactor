@@ -1,0 +1,10 @@
+com.dgphoenix.casino.kafka.dto.BonusStatusDto|old_refs=0|new=> com.abs.casino.kafka.dto.BonusStatusDto|new_refs=4
+com.dgphoenix.casino.kafka.dto.MQDataDto|old_refs=0|new=> com.abs.casino.kafka.dto.MQDataDto|new_refs=8
+com.dgphoenix.casino.kafka.dto.MQDataWrapperDto|old_refs=0|new=> com.abs.casino.kafka.dto.MQDataWrapperDto|new_refs=3
+com.dgphoenix.casino.kafka.dto.MQQuestAmountDto|old_refs=0|new=> com.abs.casino.kafka.dto.MQQuestAmountDto|new_refs=2
+com.dgphoenix.casino.kafka.dto.MQQuestDataDto|old_refs=0|new=> com.abs.casino.kafka.dto.MQQuestDataDto|new_refs=2
+com.dgphoenix.casino.kafka.dto.MQQuestPrizeDto|old_refs=0|new=> com.abs.casino.kafka.dto.MQQuestPrizeDto|new_refs=2
+com.dgphoenix.casino.kafka.dto.MQTreasureQuestProgressDto|old_refs=0|new=> com.abs.casino.kafka.dto.MQTreasureQuestProgressDto|new_refs=2
+com.dgphoenix.casino.GeoIp|old_refs=0|new=> com.abs.casino.GeoIp|new_refs=7
+com.dgphoenix.casino.system.MetricsManager|old_refs=0|new=> com.abs.casino.system.MetricsManager|new_refs=4
+com.dgphoenix.casino.actions.enter.CommonActionForm|old_refs=0|new=> com.abs.casino.actions.enter.CommonActionForm|new_refs=20

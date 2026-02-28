@@ -1,0 +1,7 @@
+com.dgphoenix.casino.kafka.dto.BasicKafkaResponse|deferred
+com.dgphoenix.casino.kafka.dto.KafkaHandlerException|deferred
+com.dgphoenix.casino.kafka.dto.KafkaMessage|deferred
+com.dgphoenix.casino.kafka.dto.KafkaRequest|deferred
+com.dgphoenix.casino.kafka.dto.KafkaResponse|deferred
+com.dgphoenix.casino.kafka.dto.VoidKafkaResponse|deferred
+com.dgphoenix.casino.gs.GameServerComponentsHelper|deferred

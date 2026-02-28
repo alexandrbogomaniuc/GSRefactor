@@ -1,6 +1,6 @@
 package com.abs.casino;
 
-import com.dgphoenix.casino.GeoIp;
+import com.abs.casino.GeoIp;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

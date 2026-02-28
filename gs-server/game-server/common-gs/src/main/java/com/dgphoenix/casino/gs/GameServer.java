@@ -5,7 +5,7 @@
  */
 package com.dgphoenix.casino.gs;
 
-import com.dgphoenix.casino.GeoIp;
+import com.abs.casino.GeoIp;
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.AccountDistributedLockManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
@@ -93,7 +93,7 @@ import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import com.abs.casino.services.PlayerBetHistoryService;
 import com.abs.casino.services.bonus.ForbiddenGamesForBonusProvider;
 import com.abs.casino.sm.tracker.logout.LogoutTracker;
-import com.dgphoenix.casino.system.MetricsManager;
+import com.abs.casino.system.MetricsManager;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,6 +1,6 @@
 package com.abs.casino.gs;
 
-import com.dgphoenix.casino.GeoIp;
+import com.abs.casino.GeoIp;
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.AccountDistributedLockManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;

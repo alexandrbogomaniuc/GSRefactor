@@ -14,7 +14,7 @@ import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.abs.casino.common.util.xml.parser.Parser;
 import com.abs.casino.common.web.statistics.IStatisticsGetter;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.system.MetricsManager;
+import com.abs.casino.system.MetricsManager;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import org.apache.log4j.Logger;

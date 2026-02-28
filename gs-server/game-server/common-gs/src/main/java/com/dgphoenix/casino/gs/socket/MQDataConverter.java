@@ -1,11 +1,11 @@
 package com.dgphoenix.casino.gs.socket;
 
 import com.abs.casino.common.mp.*;
-import com.dgphoenix.casino.kafka.dto.MQDataDto;
-import com.dgphoenix.casino.kafka.dto.MQQuestAmountDto;
-import com.dgphoenix.casino.kafka.dto.MQQuestDataDto;
-import com.dgphoenix.casino.kafka.dto.MQQuestPrizeDto;
-import com.dgphoenix.casino.kafka.dto.MQTreasureQuestProgressDto;
+import com.abs.casino.kafka.dto.MQDataDto;
+import com.abs.casino.kafka.dto.MQQuestAmountDto;
+import com.abs.casino.kafka.dto.MQQuestDataDto;
+import com.abs.casino.kafka.dto.MQQuestPrizeDto;
+import com.abs.casino.kafka.dto.MQTreasureQuestProgressDto;
 
 import java.util.ArrayList;
 import java.util.HashSet;

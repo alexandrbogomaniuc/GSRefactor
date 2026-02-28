@@ -1,0 +1,13 @@
+com.dgphoenix.casino.kafka.dto.BonusStatusDto|old_refs=3|new=> com.abs.casino.kafka.dto.BonusStatusDto|new_refs=1
+com.dgphoenix.casino.kafka.dto.MQDataDto|old_refs=7|new=> com.abs.casino.kafka.dto.MQDataDto|new_refs=1
+com.dgphoenix.casino.kafka.dto.MQDataWrapperDto|old_refs=2|new=> com.abs.casino.kafka.dto.MQDataWrapperDto|new_refs=1
+com.dgphoenix.casino.kafka.dto.MQQuestAmountDto|old_refs=2|new=> com.abs.casino.kafka.dto.MQQuestAmountDto|new_refs=0
+com.dgphoenix.casino.kafka.dto.MQQuestDataDto|old_refs=2|new=> com.abs.casino.kafka.dto.MQQuestDataDto|new_refs=0
+com.dgphoenix.casino.kafka.dto.MQQuestPrizeDto|old_refs=2|new=> com.abs.casino.kafka.dto.MQQuestPrizeDto|new_refs=0
+com.dgphoenix.casino.kafka.dto.MQTreasureQuestProgressDto|old_refs=2|new=> com.abs.casino.kafka.dto.MQTreasureQuestProgressDto|new_refs=0
+com.dgphoenix.casino.kafka.dto.BasicKafkaResponse|old_refs=35|new=> com.abs.casino.kafka.dto.BasicKafkaResponse|new_refs=14
+com.dgphoenix.casino.kafka.dto.KafkaHandlerException|old_refs=7|new=> com.abs.casino.kafka.dto.KafkaHandlerException|new_refs=4
+com.dgphoenix.casino.kafka.dto.KafkaMessage|old_refs=1|new=> com.abs.casino.kafka.dto.KafkaMessage|new_refs=2
+com.dgphoenix.casino.kafka.dto.KafkaRequest|old_refs=84|new=> com.abs.casino.kafka.dto.KafkaRequest|new_refs=26
+com.dgphoenix.casino.kafka.dto.KafkaResponse|old_refs=9|new=> com.abs.casino.kafka.dto.KafkaResponse|new_refs=14
+com.dgphoenix.casino.kafka.dto.VoidKafkaResponse|old_refs=26|new=> com.abs.casino.kafka.dto.VoidKafkaResponse|new_refs=11

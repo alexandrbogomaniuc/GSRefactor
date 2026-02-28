@@ -34,7 +34,7 @@ import com.abs.casino.gs.managers.payment.wallet.WalletPersister;
 import com.abs.casino.init.ApplicationScopeNames;
 import com.abs.casino.init.GsInitThread;
 import com.abs.casino.statistics.http.HttpClientCallbackHandler;
-import com.dgphoenix.casino.system.MetricsManager;
+import com.abs.casino.system.MetricsManager;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 
 import org.apache.logging.log4j.LogManager;

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.abs.casino.kafka.dto.GetMQDataRequest;
-import com.dgphoenix.casino.kafka.dto.MQDataWrapperDto;
+import com.abs.casino.kafka.dto.MQDataWrapperDto;
 
 @Component
 public class GetMQDataRequestHandler 
