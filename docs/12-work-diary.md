@@ -9228,3 +9228,34 @@
   - baseline `2277`, reduced `275`, remaining `2002`, burndown `12.077295%`
   - Project 02 `26.509662%`, Core `63.254831%`, Portfolio `81.627416%`
   - ETA `91.9h` (`11.49` workdays)
+
+### 2026-02-28 22:06 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W328 + W329`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `5` (`ShortBetInfo`, `ServerCoordinatorInfoProvider`, `StoredItem`, `StoredItemType`, `ServerInfo`).
+  - deferred due boundary fanout risk: `ILockManager`, `LockingInfo`, `IAccountInfoPersister`, `ILoadBalancer`, `ICloseGameProcessor`, `IStartGameProcessor`, `ICommonWalletClient`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent mode remained constrained by thread-limit, so execution continued ownership-safe on main.
+  - `rerun1-rerun14` stabilized `STEP07` (`web-gs` JSP/import drift) and `STEP08` (`mp-server` core/core-interfaces/persistance alignment) to canonical profile.
+  - rebased wave commit onto `origin/main` `d1456d89a` (non-overlapping `Gamesv1` changes only).
+  - `rerun15` post-rebase canonical validation reached:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-205232-hardcut-m2-wave328-wave329-mixed-interfaces-data-lowcoupling10/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/225-hard-cut-m2-wave328-wave329-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `280`, remaining `1997`, burndown `12.296882%`
+  - Project 02 `26.537110%`, Core `63.268555%`, Portfolio `81.634278%`
+  - ETA `91.7h` (`11.46` workdays)
+
+### 2026-02-28 22:07 UTC
+- Pushed Project 02 hard-cut `W328 + W329` completion commit to `origin/main`.
+  - commit: `2752d4074`
+  - evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-205232-hardcut-m2-wave328-wave329-mixed-interfaces-data-lowcoupling10/`
+- Canonical matrix at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+- Completion metrics at push point:
+  - baseline `2277`, reduced `280`, remaining `1997`, burndown `12.296882%`
+  - Project 02 `26.537110%`, Core `63.268555%`, Portfolio `81.634278%`
+  - ETA `91.7h` (`11.46` workdays)

@@ -4361,3 +4361,28 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Pushed wave completion commit `f7978ec23` to `origin/main`.
 - Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-195111-hardcut-m2-wave326-wave327-wallet-socket-remotecall-support/`.
 - Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+
+## 2026-02-28 22:06 UTC (Hard-Cut M2 Wave 328 + 329)
+- Continued hard-cut execution from W326/W327 with declaration-first overlap-safe `common data interfaces/transaction` batch.
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `5`
+    - `ShortBetInfo`, `ServerCoordinatorInfoProvider`, `StoredItem`, `StoredItemType`, `ServerInfo`.
+  - deferred from current wave due boundary fanout risk:
+    - `ILockManager`, `LockingInfo`, `IAccountInfoPersister`, `ILoadBalancer`, `ICloseGameProcessor`, `IStartGameProcessor`, `ICommonWalletClient`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - `rerun1-rerun14`: stabilized `STEP07` (`web-gs` JSP/import drift) and `STEP08` (`mp-server` core/core-interfaces/persistance alignment) until canonical profile.
+  - wave commit rebased onto `origin/main` `d1456d89a` (non-overlapping `Gamesv1` changes).
+  - `rerun15` post-rebase canonical validation:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-205232-hardcut-m2-wave328-wave329-mixed-interfaces-data-lowcoupling10/`
+  - report: `docs/projects/02-runtime-renaming-refactor/225-hard-cut-m2-wave328-wave329-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `5`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `1997` remaining (`2277` baseline, `280` reduced, `12.296882%` burndown).
+
+## 2026-02-28 22:07 UTC (Push Marker W328 + W329)
+- Pushed wave completion commit `2752d4074` to `origin/main`.
+- Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-205232-hardcut-m2-wave328-wave329-mixed-interfaces-data-lowcoupling10/`.
+- Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
