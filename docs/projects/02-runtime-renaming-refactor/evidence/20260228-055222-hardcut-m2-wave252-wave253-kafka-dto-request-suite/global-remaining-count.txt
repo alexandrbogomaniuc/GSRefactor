@@ -1,0 +1,12 @@
+baseline=2277
+previous_remaining=635
+dg_to_abs_delta=11
+abs_to_dg_delta=0
+current_remaining=624
+current_reduced=1653
+burndown_percent=72.595520
+project02_percent=45.873215
+core_percent=72.936608
+portfolio_percent=86.468304
+eta_hours=25.8
+eta_workdays=3.23

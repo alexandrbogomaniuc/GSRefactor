@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
-import com.dgphoenix.casino.kafka.dto.AddMQReservedNicknamesRequest;
+import com.abs.casino.kafka.dto.AddMQReservedNicknamesRequest;
 import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
 
 @Component

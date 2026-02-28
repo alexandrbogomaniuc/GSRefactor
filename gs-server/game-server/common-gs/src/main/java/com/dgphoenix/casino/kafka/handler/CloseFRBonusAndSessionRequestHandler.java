@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
-import com.dgphoenix.casino.kafka.dto.CloseFRBonusAndSessionRequest;
+import com.abs.casino.kafka.dto.CloseFRBonusAndSessionRequest;
 import com.dgphoenix.casino.kafka.dto.CloseFRBonusResultDto;
 
 @Component

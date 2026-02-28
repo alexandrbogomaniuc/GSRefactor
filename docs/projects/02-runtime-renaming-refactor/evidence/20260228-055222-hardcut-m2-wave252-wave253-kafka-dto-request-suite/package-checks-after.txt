@@ -1,0 +1,12 @@
+# Package checks (after)
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/AddMQReservedNicknamesRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CheckBuyInRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CloseFRBonusAndSessionRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CloseGameSessionRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetBalanceRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetCrashGamesSettingsRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetDetailedPlayerInfo2Request.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvitePlayersToPrivateRoomRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/LeaveMultiPlayerLobbyRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/PingRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SessionTouchRequest.java: package com.abs.casino.kafka.dto;

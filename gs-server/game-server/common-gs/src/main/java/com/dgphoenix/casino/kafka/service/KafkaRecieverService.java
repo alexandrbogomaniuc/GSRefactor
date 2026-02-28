@@ -30,7 +30,7 @@ import com.abs.casino.kafka.config.KafkaProperties;
 import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
 import com.dgphoenix.casino.kafka.dto.KafkaRequest;
 import com.dgphoenix.casino.kafka.dto.KafkaResponse;
-import com.dgphoenix.casino.kafka.dto.PingRequest;
+import com.abs.casino.kafka.dto.PingRequest;
 import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
 import com.dgphoenix.casino.kafka.handler.KafkaInServiceRequestHandlerFactory;
 import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandlerFactory;

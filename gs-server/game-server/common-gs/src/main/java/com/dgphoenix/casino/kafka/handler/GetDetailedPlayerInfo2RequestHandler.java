@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.kafka.dto.DetailedPlayerInfo2Dto;
-import com.dgphoenix.casino.kafka.dto.GetDetailedPlayerInfo2Request;
+import com.abs.casino.kafka.dto.GetDetailedPlayerInfo2Request;
 
 @Component
 public class GetDetailedPlayerInfo2RequestHandler 

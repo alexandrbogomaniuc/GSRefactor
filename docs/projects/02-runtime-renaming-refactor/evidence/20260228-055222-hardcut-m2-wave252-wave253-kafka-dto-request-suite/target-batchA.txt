@@ -1,0 +1,11 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/AddMQReservedNicknamesRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CheckBuyInRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CloseFRBonusAndSessionRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CloseGameSessionRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetBalanceRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetCrashGamesSettingsRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetDetailedPlayerInfo2Request.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvitePlayersToPrivateRoomRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/LeaveMultiPlayerLobbyRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/PingRequest.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SessionTouchRequest.java

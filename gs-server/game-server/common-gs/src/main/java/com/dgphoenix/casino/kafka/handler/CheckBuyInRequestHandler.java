@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.kafka.dto.BuyInRequest;
 import com.dgphoenix.casino.kafka.dto.BuyInResultDto;
-import com.dgphoenix.casino.kafka.dto.CheckBuyInRequest;
+import com.abs.casino.kafka.dto.CheckBuyInRequest;
 
 @Component
 public class CheckBuyInRequestHandler

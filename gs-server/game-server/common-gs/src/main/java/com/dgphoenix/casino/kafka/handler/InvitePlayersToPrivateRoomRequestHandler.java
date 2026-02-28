@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.kafka.dto.BooleanResponseDto;
-import com.dgphoenix.casino.kafka.dto.InvitePlayersToPrivateRoomRequest;
+import com.abs.casino.kafka.dto.InvitePlayersToPrivateRoomRequest;
 
 @Component
 public class InvitePlayersToPrivateRoomRequestHandler 
