@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # Performance Budget & Guidelines
 
 ## Practical "Red Flags" List
@@ -22,3 +26,4 @@
 | Minimum | iOS | Safari | iPhone 8 / X | 30 - 60 FPS (some framedrops acceptable limits) |
 | Minimum | Android | Chrome | Samsung Galaxy S10 | 30 - 60 FPS
 | Desktop | Windows/macOS | Chrome/Safari | Any modern laptop | Solid 60 FPS
+

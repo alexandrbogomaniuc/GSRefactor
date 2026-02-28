@@ -12,8 +12,19 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@gamesv1/*": ["packages/*/src"]
+      "@gamesv1/*": [
+        "packages/*/src"
+      ],
+      "@pixi/layout": [
+        "packages/pixi-layout/src"
+      ]
     }
   },
-  "exclude": ["node_modules", "games", "tools", "tests", "docs"]
+  "exclude": [
+    "node_modules",
+    "games",
+    "tools",
+    "tests",
+    "docs"
+  ]
 }

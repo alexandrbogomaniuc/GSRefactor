@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # Master Instruction Spec for Web Slots UI “Wow FX”
 
 This document contains recommendations for building a premium, production-quality web game UI with high-end “wow” effects (wins, transitions, symbol highlights, particles, glow) that runs smoothly across desktop and mobile browsers.
@@ -59,3 +63,4 @@ This document contains recommendations for building a premium, production-qualit
 - **Symbol Landing Impact**: Quick scale punch (1.0 -> 1.08 -> 1.0), expanding impact ring, tiny spark particles.
 - **Line Win Highlight**: Dim background, glow pulse on symbols, draw win line, micro sparkle drift.
 - **Big Win Sequence**: Background vignette, animated rays, scale pop + glow on text, coined fountain burst, confetti, screen shake on milestones.
+

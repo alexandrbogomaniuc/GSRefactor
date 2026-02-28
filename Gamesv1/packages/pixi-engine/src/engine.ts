@@ -8,6 +8,7 @@ import { Application, Assets, extensions, ResizePlugin } from "pixi.js";
 import "pixi.js/app";
 
 import { CreationAudioPlugin } from "./audio/AudioPlugin";
+import { ResponsiveLayoutManager } from "./layout/ResponsiveLayoutManager";
 import { CreationNavigationPlugin } from "./navigation/NavigationPlugin";
 import { CreationResizePlugin } from "./resize/ResizePlugin";
 import { getResolution } from "./utils/getResolution";
@@ -24,6 +25,8 @@ export interface EngineInitOptions extends Partial<ApplicationOptions> {
 }
 
 export class CreationEngine extends Application {
+  public layout!: ResponsiveLayoutManager;
+
   public async init(opts: EngineInitOptions): Promise<void> {
     const {
       assetManifest,
@@ -39,6 +42,9 @@ export class CreationEngine extends Application {
 
     document.getElementById("pixi-container")!.appendChild(this.canvas);
     document.addEventListener("visibilitychange", this.visibilityChange);
+
+    const debugLayout = new URLSearchParams(window.location.search).get("layoutDebug") === "1";
+    this.layout = new ResponsiveLayoutManager(this, { debugEnabled: debugLayout });
 
     if (assetManifest) {
       await Assets.init({ manifest: assetManifest as never, basePath: assetBasePath });

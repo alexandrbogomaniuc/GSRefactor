@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # 📘 Game Server (GS) Database Registration Guide
 
 *This document explains how to take a newly designed game and register it so the "Game Server" (GS) actually knows it exists and allows players to launch it.*
@@ -37,3 +41,4 @@ Copy the exact SQL text that was generated in Step 4 and email it or slack it to
 When the developers run the script, two things happen inside the GS brain:
 1. **Catalog Update:** The GS learns the name and ID of the game.
 2. **Math Lock-In:** The GS memorizes the absolute Maximum Payout (Max Exposure). If the game gets hacked or glitches and tries to pay a player $1,000,000, but the database says the Max Exposure is $500,000, the server will physically block the transaction. This is why the DB registration is completely mandatory for every new game.
+

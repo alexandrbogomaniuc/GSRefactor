@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # 📖 Project Activity & Explanation Log
 
 *As requested, this file will serve as a plain-English log of what I am building, why I am building it, and how it works. I will update this log as we progress through the project.*

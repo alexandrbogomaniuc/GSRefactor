@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # PROJECT: GS Gamesv1 Universal Slot Template
 
 Welcome to the GS Monorepo. This project provides a high-quality baseline for creating compliance-ready slot games.
@@ -26,5 +30,6 @@ Before claiming a documentation task is complete, ensure:
 ---
 > [!NOTE]
 > This repository uses **pnpm workspaces**. Ensure you run `pnpm install` from the root to link all local packages correctly.
+
 
 

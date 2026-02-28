@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # Project Architecture (Monorepo)
 
 This repository is organized as a workspace monorepo to ensure clean separation between core protocol logic, shared tools, and individual game implementations.
@@ -32,3 +36,4 @@ Global test suites.
 
 ### `/.agent/`
 Project-specific rules and context for AI coding assistants.
+

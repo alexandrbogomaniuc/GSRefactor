@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # Template Integration Guide (Igaming Monorepo)
 
 This guide explains how to use the canonical template and the scaffolding tool to create new slot games.
@@ -69,5 +73,6 @@ pnpm dev
 - **Isolate feature logic**: Keep specific mechanics inside a feature module.
 - **Use the protocol package**: All network communication must pass through `@gamesv1/core-protocol`.
 - **Sync i18n**: Run `npm run i18n:check` regularly to ensure all translations are complete.
+
 
 

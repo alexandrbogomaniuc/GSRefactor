@@ -1,4 +1,5 @@
 import type { BGM, SFX } from "./audio/audio";
+import type { ResponsiveLayoutManager } from "./layout/ResponsiveLayoutManager";
 import type { Navigation } from "./navigation/navigation";
 import type {
   CreationResizePluginOptions,
@@ -15,6 +16,7 @@ declare global {
         setMasterVolume: (volume: number) => void;
       };
       navigation: Navigation;
+      layout: ResponsiveLayoutManager;
     }
 
     interface ApplicationOptions extends CreationResizePluginOptions {}

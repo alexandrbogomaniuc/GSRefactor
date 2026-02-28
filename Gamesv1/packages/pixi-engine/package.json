@@ -6,6 +6,7 @@
   "dependencies": {
     "@pixi/sound": "^6.0.1",
     "motion": "^12.4.7",
-    "pixi.js": "^8.8.1"
+    "pixi.js": "^8.8.1",
+    "@pixi/layout": "workspace:*"
   }
 }

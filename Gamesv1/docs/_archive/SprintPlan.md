@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # Sprint Plan: Gamesv1 Template Implementation
 
 ## Sprint 1: Boilerplate, Tooling & Networking Base
@@ -39,3 +43,4 @@
 - [ ] Final E2E GS Mock simulation demonstrating the Golden Flow.
 - [ ] Perform UI/UX QA on mobile viewports.
 - [ ] Create documentation and utility scripts (e.g., scaffolding CLI or Bash script) explaining how to use this template to generate new games.
+

@@ -1,17 +1,19 @@
-# Asset Pipeline Rules (Quality + Performance)
+# Asset Pipeline Rules (Canonical)
 
-Core principles:
-- No “random PNG dumping”. Assets must be packed and optimized.
-- Use atlases for sprites/UI where batching matters.
-- Use compressed GPU textures (KTX2/Basis) for shipping builds.
-- Bundle assets per scene (boot/basegame/bonus) for fast startup.
+This rule file must stay aligned with:
+- `docs/ART_AND_PROMO_PIPELINE.md`
+- `docs/ASSET_MANIFEST_SPEC.md`
 
-Project conventions:
-- Raw art goes in: assets_src/
-- Built/optimized assets go in: assets_build/
-- Gameplay code never references raw file paths; only asset keys/aliases via AssetService.
-- Enforce naming conventions: snake_case for files, consistent symbol IDs.
+## Path Contract
 
-Mobile constraints:
-- Keep textures within reasonable size; prefer multiple atlases over single gigantic sheets.
-- Avoid huge transparent full-screen textures.
+- Raw source assets: `games/<gameId>/raw-assets/`
+- Generated runtime manifest: `games/<gameId>/src/manifest.json`
+- Runtime bundled outputs: under game `public/assets/` and `dist/` during build.
+
+## Rules
+
+1. No direct raw file-path usage in runtime game logic.
+2. Access assets via manifest aliases/bundle keys only.
+3. Keep atlas/page sizes and texture budgets within canonical quality gates.
+4. Keep promo/preloader/big-win media listed in per-game asset manifest.
+5. If pipeline behavior changes, update canonical docs first, then this rule file.

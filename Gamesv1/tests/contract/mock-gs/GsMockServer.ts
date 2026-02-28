@@ -1,5 +1,5 @@
 import { WebSocketServer, WebSocket } from 'ws';
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'node:crypto';
 
 export interface GSMessageEnvelope {
     version: string;
@@ -112,7 +112,7 @@ export class GsMockServer {
         const response: GSMessageEnvelope = {
             version: "1.0",
             type: type,
-            traceId: env.traceId || uuidv4(),
+            traceId: env.traceId || randomUUID(),
             sessionId: env.sessionId || "mock-session",
             bankId: env.bankId || "mock-bank",
             gameId: env.gameId || "mock-game",

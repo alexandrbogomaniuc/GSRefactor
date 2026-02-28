@@ -1,5 +1,7 @@
 export * from "./assets";
 export * from "./config/GameConfig";
+export * from "./config/HudSchema";
+export * from "./layout/HudLayout";
 export * from "./popups/PausePopup";
 export * from "./popups/SettingsPopup";
 export * from "./slots/Reel";

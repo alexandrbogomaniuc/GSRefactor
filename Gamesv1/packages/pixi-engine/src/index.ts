@@ -4,6 +4,6 @@ export * from "./audio/audio";
 export * from "./navigation/navigation";
 export * from "./resize/ResizePlugin";
 export * from "./utils/storage";
-
-export * from './utils/random';
-
+export * from "./utils/random";
+export * from "./layout/ResponsiveLayoutManager";
+export * from "./layout/LayoutContext";

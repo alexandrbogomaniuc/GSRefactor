@@ -101,8 +101,8 @@ importers:
   packages/core-compliance:
     dependencies:
       zod:
-        specifier: ^3.23.8
-        version: 3.25.76
+        specifier: ^4.3.6
+        version: 4.3.6
 
   packages/core-protocol:
     dependencies:
@@ -116,6 +116,9 @@ importers:
 
   packages/pixi-engine:
     dependencies:
+      '@pixi/layout':
+        specifier: workspace:*
+        version: link:../pixi-layout
       '@pixi/sound':
         specifier: ^6.0.1
         version: 6.0.1(pixi.js@8.16.0)
@@ -126,11 +129,16 @@ importers:
         specifier: ^8.8.1
         version: 8.16.0
 
+  packages/pixi-layout: {}
+
   packages/ui-kit:
     dependencies:
       '@gamesv1/pixi-engine':
         specifier: workspace:*
         version: link:../pixi-engine
+      '@pixi/layout':
+        specifier: workspace:*
+        version: link:../pixi-layout
       '@pixi/ui':
         specifier: ^2.3.2
         version: 2.3.2(pixi.js@8.16.0)

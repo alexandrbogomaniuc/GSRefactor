@@ -2,6 +2,12 @@ import { Container, Graphics, Ticker } from "pixi.js";
 import { GameConfig } from "../config/GameConfig";
 import { Reel } from "./Reel";
 
+export interface SpinOptions {
+  minSpinDurationMs?: number;
+  spinStaggerMs?: number;
+  speedMultiplier?: number;
+}
+
 export class SlotMachine extends Container {
   private reels: Reel[] = [];
   private isSpinning: boolean = false;
@@ -39,17 +45,23 @@ export class SlotMachine extends Container {
     this.ticker.start();
   }
 
-  public spin() {
+  public spin(options: SpinOptions = {}) {
     if (this.isSpinning) return;
     this.isSpinning = true;
 
-    this.reels.forEach((reel) => reel.spin());
+    const minSpinDurationMs =
+      options.minSpinDurationMs ?? Math.round(GameConfig.minSpinDuration * 1000);
+    const speedMultiplier = options.speedMultiplier ?? 1;
+
+    this.reels.forEach((reel) => reel.spin(speedMultiplier));
 
     // Mock a server wait time then stop
-    setTimeout(() => this.stop(), GameConfig.minSpinDuration * 1000);
+    setTimeout(() => this.stop(options), minSpinDurationMs);
   }
 
-  public stop() {
+  public stop(options: SpinOptions = {}) {
+    const spinStaggerMs = options.spinStaggerMs ?? Math.round(GameConfig.spinStagger * 1000);
+
     // Send stop commands with stagger
     this.reels.forEach((reel, index) => {
       setTimeout(
@@ -64,13 +76,13 @@ export class SlotMachine extends Container {
           ];
           reel.stop(mockResult);
         },
-        index * GameConfig.spinStagger * 1000,
+        index * spinStaggerMs,
       );
     });
 
     // Calculate total time until last reel stops (roughly)
     const totalStopDelay =
-      (this.reels.length - 1) * GameConfig.spinStagger * 1000 + 500;
+      (this.reels.length - 1) * spinStaggerMs + 500;
     setTimeout(() => {
       this.isSpinning = false;
       this.onSpinComplete();

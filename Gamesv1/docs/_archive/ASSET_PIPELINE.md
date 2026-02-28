@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # Asset Pipeline
 
 ## Workflow: `assets_src` → `assets_build`
@@ -28,3 +32,4 @@ We consolidate textures to reduce draw calls:
 - [ ] Are animations pre-rendered cleanly and appropriately sized, or exported via Spine?
 - [ ] Do any new textures break maximum atlas dimensions (2048x2048 recommended for mobile)?
 - [ ] Has the AssetPack build run locally without warnings?
+

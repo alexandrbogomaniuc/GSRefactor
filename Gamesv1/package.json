@@ -1,34 +1,36 @@
 {
-    "name":  "gamesv1-monorepo",
-    "version":  "1.0.0",
-    "private":  true,
-    "scripts":  {
-                    "dev":  "corepack pnpm --filter @games/premium-slot dev",
-                    "build":  "corepack pnpm --filter @games/premium-slot build",
-                    "lint":  "corepack pnpm --filter @games/premium-slot lint",
-                    "test:contract":  "npx tsx tests/contract/mock-gs/ScenarioRunner.ts",
-                    "create-game":  "npx tsx tools/create-game/src/index.ts",
-                    "config:gen":  "npx tsx tools/config-gen/src/index.ts",
-                    "config:check":  "npx tsx tools/config-gen/src/index.ts --check",
-                    "i18n:check":  "npx tsx tools/i18n-check/src/index.ts",
-                    "check:boundaries":  "node tools/check-boundaries/index.mjs",
-                    "test:config":  "node --experimental-strip-types tests/compliance/config.test.ts"
-                },
-    "devDependencies":  {
-                            "@types/node":  "^25.3.2",
-                            "@types/uuid":  "^10.0.0",
-                            "@types/ws":  "^8.18.1",
-                            "tsx":  "^4.0.0",
-                            "typescript":  "^5.9.3",
-                            "uuid":  "^9.0.1",
-                            "ws":  "^8.19.0"
-                        },
-    "dependencies":  {
-                         "zod":  "^4.3.6"
-                     },
-    "workspaces":  [
-                       "packages/*",
-                       "games/*",
-                       "tools/*"
-                   ]
+  "name": "gamesv1-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "corepack pnpm --filter @games/premium-slot dev",
+    "build": "corepack pnpm --filter @games/premium-slot build",
+    "lint": "corepack pnpm --filter @games/premium-slot lint",
+    "test:contract": "node --experimental-strip-types tests/contract/mock-gs/ScenarioRunner.ts",
+    "create-game": "node --experimental-strip-types tools/create-game.ts",
+    "config:gen": "npx tsx tools/config-gen/src/index.ts",
+    "config:check": "npx tsx tools/config-gen/src/index.ts --check",
+    "i18n:check": "npx tsx tools/i18n-check/src/index.ts",
+    "check:boundaries": "node tools/check-boundaries/index.mjs",
+    "test:config": "node --experimental-strip-types tests/compliance/config.test.ts",
+    "test:animation-policy": "node --experimental-strip-types tests/compliance/animation-policy.test.ts",
+    "test:layout": "corepack pnpm --filter @games/premium-slot exec node --experimental-strip-types ../../tests/layout/layout-matrix.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.2",
+    "@types/uuid": "^10.0.0",
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.0.0",
+    "typescript": "^5.9.3",
+    "uuid": "^9.0.1",
+    "ws": "^8.19.0"
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  },
+  "workspaces": [
+    "packages/*",
+    "games/*",
+    "tools/*"
+  ]
 }

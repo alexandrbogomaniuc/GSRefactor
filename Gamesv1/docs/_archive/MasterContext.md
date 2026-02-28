@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # PROJECT: GS Gamesv1 Universal Slot Template
 # DOCUMENT: Master Context & Source of Truth
 
@@ -34,3 +38,4 @@
 * **Important Decision:** The end-user is a Project Manager/Owner, not a developer. All technical steps must be preceded by simple, analogy-based explanations.
 * **Important Decision:** The GS (Game Server) backend is strictly "Not Ready". Focus heavily on providing configuration scaffolds, isolated mock testing, and DB registration guides so that when the GS *is* ready, games can plug right in.
 * **Rule:** Strict idempotency is enforced. The client generates a unique `operationId` (a unique tracking stamp) for every single spin request to ensure the GS never accidentally double-charges a player.
+

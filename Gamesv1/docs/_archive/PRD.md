@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # Product Requirements Document (PRD): Gamesv1 Template
 
 ## 1. Objective
@@ -54,3 +58,4 @@ Create a unified, compliant, and highly reusable HTML5/PixiJS Slot Game Template
 ## 4. User Journeys
 1. **Happy Path:** Player loads -> Auto-connects -> Spins manually -> Wins -> Balance updates.
 2. **Disconnection Recovery:** Player spins -> Network drops before `BET_ACCEPTED` -> Player reloads -> Client sends `RECONNECT_REQUEST` with `lastAckSeq` -> GS sends `SESSION_SYNC` resolving the pending spin -> Client animates the recovered result.
+

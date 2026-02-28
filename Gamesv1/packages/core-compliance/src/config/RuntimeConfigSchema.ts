@@ -134,7 +134,7 @@ export const LayerConfigSchema = z.object({
 
 export type LayerConfig = z.infer<typeof LayerConfigSchema>;
 
-export const CurrencyOverridesSchema = z.record(LayerConfigSchema);
+export const CurrencyOverridesSchema = z.record(z.string(), LayerConfigSchema);
 export type CurrencyOverrides = z.infer<typeof CurrencyOverridesSchema>;
 
 export const LaunchParamsSchema = LayerConfigSchema.extend({

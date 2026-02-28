@@ -5,7 +5,8 @@ export class WinCounter extends Container {
   private targetValue: number = 0;
   private currentValue: number = 0;
   private isCounting: boolean = false;
-  private countDuration: number = 2; // seconds
+  private countDuration: number = 1.2; // seconds
+  private title: string = "WIN";
 
   constructor() {
     super();
@@ -27,18 +28,24 @@ export class WinCounter extends Container {
     this.visible = false;
   }
 
-  public showWin(amount: number) {
-    this.targetValue = amount;
+  public showWin(amount: number, title = "WIN") {
+    this.title = title;
+    this.targetValue = Math.max(0, amount);
     this.currentValue = 0;
     this.isCounting = true;
     this.visible = true;
 
-    this.countText.text = "MEGA WIN\n0";
+    this.countText.text = `${this.title}\n$0`;
 
     // Simple scale pop
     this.scale.set(0.1);
+  }
 
-    // Very basic mock tween directly in the ticker since we aren't pulling in GSAP logic here
+  public hideNow() {
+    this.isCounting = false;
+    this.visible = false;
+    this.currentValue = 0;
+    this.targetValue = 0;
   }
 
   private tick(dt: number) {
@@ -57,13 +64,8 @@ export class WinCounter extends Container {
     if (this.currentValue >= this.targetValue) {
       this.currentValue = this.targetValue;
       this.isCounting = false;
-
-      // Auto hide after 2 seconds
-      setTimeout(() => {
-        this.visible = false;
-      }, 2000);
     }
 
-    this.countText.text = `MEGA WIN\n$Math.floor(this.currentValue)`;
+    this.countText.text = `${this.title}\n$${Math.floor(this.currentValue)}`;
   }
 }

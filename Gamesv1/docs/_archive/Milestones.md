@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # 🚀 Gamesv1 Template: Progress & Milestones
 
 This document tracks the high-level progress of the Gamesv1 Template development.
@@ -49,3 +53,4 @@ This document tracks the high-level progress of the Gamesv1 Template development
 
 ---
 *Last Updated: (Auto-generated)*
+

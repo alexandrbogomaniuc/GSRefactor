@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # Non-Functional Requirements (NFR): Gamesv1 Template
 
 ## 1. Performance & Scale
@@ -33,3 +37,4 @@
   - Standard `console.log` statements must be stripped in production builds.
   - Fatal errors (unrecoverable network, missing critical assets) must trigger a unique standard error code structure: `{ code, category, message, retryable }`.
 - **Telemetry Injection:** All outbound WebSocket JSON envelopes *must* contain the exact canonical fields: `version`, `type`, `traceId`, `sessionId`, `bankId`, `gameId`, `operationId`, `timestamp`, `seq`, and `payload`.
+

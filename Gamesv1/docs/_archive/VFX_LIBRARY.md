@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # VFX Library
 
 ## Reusable Effects (Top 20)
@@ -26,3 +30,4 @@
 - **Small Win**: Quick light sweep over winning symbols. Coin sound tick, small scale pulse. (Duration: 0.5s - 1.0s)
 - **Medium Win**: Brighter glow, symbols pop off background, short coin particle burst, medium fanfare sound. (Duration: 1.5s - 2.5s)
 - **Big Win**: Full sequence. Screen darkens, large text elements fly in, intense camera shake, heavy sustained coin/gem particle shower, epic fanfare. Expects skipped or full timeline payout. (Duration: 5s - 10s)
+

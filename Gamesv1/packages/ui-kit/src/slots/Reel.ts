@@ -14,7 +14,8 @@ export class Reel extends Container {
   private targetResult: number[] | null = null;
 
   // Timers
-  private easeInSpeed: number = 3000; // pixels per sec
+  private baseEaseInSpeed: number = 3000; // pixels per sec
+  private currentMaxSpeed: number = 3000;
 
   constructor(id: number) {
     super();
@@ -37,10 +38,11 @@ export class Reel extends Container {
     return index * (GameConfig.symbolHeight + GameConfig.rowSpacing);
   }
 
-  public spin() {
+  public spin(speedMultiplier = 1) {
     this.isSpinning = true;
     this.speed = 0;
     this.targetResult = null;
+    this.currentMaxSpeed = this.baseEaseInSpeed * Math.max(0.5, speedMultiplier);
   }
 
   public stop(result: number[]) {
@@ -52,9 +54,9 @@ export class Reel extends Container {
     if (!this.isSpinning) return;
 
     // Accelerate
-    if (this.speed < this.easeInSpeed && this.targetResult === null) {
+    if (this.speed < this.currentMaxSpeed && this.targetResult === null) {
       this.speed += 5000 * timeSeconds;
-      if (this.speed > this.easeInSpeed) this.speed = this.easeInSpeed;
+      if (this.speed > this.currentMaxSpeed) this.speed = this.currentMaxSpeed;
     }
 
     // Move symbols down

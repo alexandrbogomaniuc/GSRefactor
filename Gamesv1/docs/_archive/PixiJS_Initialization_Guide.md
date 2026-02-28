@@ -1,3 +1,7 @@
+> [!WARNING]
+> This document is archived and may be outdated.
+> Do not use it as source of truth.
+> Canonical entrypoint: `docs/MasterContext.md` and `docs/DOCS_MAP.md`.
 # 🎨 PixiJS UI & Graphics Initialization Guide
 
 *This document explains how the visual side of our slot machine template is put together and why it works the way it does.*
@@ -30,3 +34,4 @@ We have completely separated the "Brain" of the game from the "Paintbrush".
    - **Crucially:** The Brain waits until the Paintbrush confirms the animation is 100% finished before sending the final `SETTLE_REQUEST` to the server.
 
 This separation means you can completely redesign how the game *looks* without ever accidentally breaking the GS casino backend integration!
+
