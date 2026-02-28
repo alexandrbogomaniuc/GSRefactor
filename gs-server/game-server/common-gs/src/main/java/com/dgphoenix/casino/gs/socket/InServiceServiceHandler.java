@@ -15,7 +15,7 @@ import com.abs.casino.cache.CachesHolder;
 import com.dgphoenix.casino.cassandra.AccountDistributedLockManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.DistributedLockManager;
-import com.dgphoenix.casino.cassandra.persist.AbstractDistributedConfigEntryPersister;
+import com.abs.casino.cassandra.persist.AbstractDistributedConfigEntryPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameCache;

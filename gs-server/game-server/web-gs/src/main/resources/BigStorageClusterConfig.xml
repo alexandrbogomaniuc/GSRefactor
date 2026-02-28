@@ -18,7 +18,7 @@
             <enabled>true</enabled>
         </ColumnFamily>
         <ColumnFamily>
-            <className>com.dgphoenix.casino.cassandra.persist.CassandraBigStorageRoundGameSessionPersister</className>
+            <className>com.abs.casino.cassandra.persist.CassandraBigStorageRoundGameSessionPersister</className>
             <ttl>${bigstorage.cassandra.roundgamesessions.ttl}</ttl>
             <enabled>true</enabled>
         </ColumnFamily>

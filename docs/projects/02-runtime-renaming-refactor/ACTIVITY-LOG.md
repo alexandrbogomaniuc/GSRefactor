@@ -4412,3 +4412,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Pushed wave completion commit `36425d4ff` to `origin/main`.
 - Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-220632-hardcut-m2-wave330-wave331-cache-data-enums-models/`.
 - Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+
+## 2026-02-28 22:36 UTC (Hard-Cut M2 Wave 332 + 333)
+- Continued hard-cut execution from W330/W331 with declaration-first overlap-safe `common-persisters` low-fanout batch.
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `15`
+    - `AbstractDistributedConfigEntryPersister`, `AbstractIntegerDistributedConfigEntryPersister`, `AbstractLongDistributedConfigEntryPersister`, `AbstractStringDistributedConfigEntryPersister`, `IGameSessionProcessor`, `CassandraClientStatisticsPersister`, `CassandraArchiverPersister`, `CassandraNotificationPersister`, `CassandraPendingDataArchivePersister`, `CassandraBigStorageRoundGameSessionPersister`, `CassandraDepositsPersister`, `CassandraExternalGameIdsPersister`, `CassandraHistoryTokenPersister`, `CassandraBlockedCountriesPersister`, `CassandraCountryRestrictionPersister`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - `rerun1` failed at `STEP05` due missing moved-boundary imports in `common-persisters`; fixed via bounded compatibility imports in `CassandraBigStorageRoundGameSessionPersister` and `CassandraExternalGameIdsPersister`.
+  - `rerun2` failed at `STEP06` due `IGameSessionProcessor` mixed package-type mismatch in `HistoryManager` call path.
+  - bounded compatibility fix set `CassandraGameSessionPersister` processor signatures to explicit `com.abs.casino.cassandra.persist.IGameSessionProcessor`.
+  - `rerun3` reached canonical profile:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-222142-hardcut-m2-wave332-wave333-persisters-lowfanout15/`
+  - report: `docs/projects/02-runtime-renaming-refactor/227-hard-cut-m2-wave332-wave333-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `15`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `1972` remaining (`2277` baseline, `305` reduced, `13.394817%` burndown).

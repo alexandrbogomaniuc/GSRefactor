@@ -795,7 +795,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
         return result;
     }
 
-    public void processGameSessions(List<Long> gameSessionIds, IGameSessionProcessor processor) {
+    public void processGameSessions(List<Long> gameSessionIds, com.abs.casino.cassandra.persist.IGameSessionProcessor processor) {
         int chunkSize = IN_CLAUSE_SIZE;
         int chunkCount = gameSessionIds.size() / chunkSize + (gameSessionIds.size() % chunkSize != 0 ? 1 : 0);
         for (int i = 0; i < chunkCount; i++) {
@@ -817,7 +817,7 @@ public class CassandraGameSessionPersister extends AbstractCassandraPersister<Lo
     }
 
     public void processGameSessionsForAccount(long accountId, List<Long> gameIds, Date startDate, Date endDate,
-                                              int mode, IGameSessionProcessor processor) {
+                                              int mode, com.abs.casino.cassandra.persist.IGameSessionProcessor processor) {
         com.datastax.driver.core.querybuilder.Select selectFromIndexTable = getSelect(accountId, gameIds, startDate, endDate, mode);
         selectFromIndexTable.setFetchSize(1000);
         com.datastax.driver.core.ResultSet result = execute(selectFromIndexTable, "selectAccountGameSessions");

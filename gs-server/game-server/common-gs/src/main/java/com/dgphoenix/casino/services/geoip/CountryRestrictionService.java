@@ -2,7 +2,7 @@ package com.abs.casino.services.geoip;
 
 import com.abs.casino.GeoIp;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraCountryRestrictionPersister;
+import com.abs.casino.cassandra.persist.CassandraCountryRestrictionPersister;
 import com.abs.casino.common.exception.BadArgumentException;
 import com.abs.casino.common.geoip.CountryRestrictionList;
 import com.abs.casino.common.geoip.RestrictionType;

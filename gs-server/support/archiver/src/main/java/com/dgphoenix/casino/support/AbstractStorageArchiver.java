@@ -1,7 +1,7 @@
 package com.abs.casino.support;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraArchiverPersister;
+import com.abs.casino.cassandra.persist.CassandraArchiverPersister;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.common.util.CalendarUtils;

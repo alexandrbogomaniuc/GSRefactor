@@ -2,7 +2,7 @@ package com.abs.casino.gs.managers.game.history;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraGameSessionPersister;
-import com.dgphoenix.casino.cassandra.persist.IGameSessionProcessor;
+import com.abs.casino.cassandra.persist.IGameSessionProcessor;
 import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.exception.CommonException;

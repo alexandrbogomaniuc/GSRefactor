@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra.persist;
+package com.abs.casino.cassandra.persist;
 
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 
