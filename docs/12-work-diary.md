@@ -9218,3 +9218,13 @@
   - baseline `2277`, reduced `275`, remaining `2002`, burndown `12.077295%`
   - Project 02 `26.509662%`, Core `63.254831%`, Portfolio `81.627416%`
   - ETA `91.9h` (`11.49` workdays)
+
+### 2026-02-28 20:31 UTC
+- Pushed Project 02 hard-cut `W326 + W327` completion commit to `origin/main`.
+  - commit: `f7978ec23`
+  - evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-195111-hardcut-m2-wave326-wave327-wallet-socket-remotecall-support/`
+- Canonical matrix at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+- Completion metrics at push point:
+  - baseline `2277`, reduced `275`, remaining `2002`, burndown `12.077295%`
+  - Project 02 `26.509662%`, Core `63.254831%`, Portfolio `81.627416%`
+  - ETA `91.9h` (`11.49` workdays)

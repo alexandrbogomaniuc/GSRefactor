@@ -4356,3 +4356,8 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `6`; bounded rewires/regressions: `4` (defer rollback only).
   - global tracked source declarations/files now `2002` remaining (`2277` baseline, `275` reduced, `12.077295%` burndown).
+
+## 2026-02-28 20:31 UTC (Push Marker W326 + W327)
+- Pushed wave completion commit `f7978ec23` to `origin/main`.
+- Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-195111-hardcut-m2-wave326-wave327-wallet-socket-remotecall-support/`.
+- Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
