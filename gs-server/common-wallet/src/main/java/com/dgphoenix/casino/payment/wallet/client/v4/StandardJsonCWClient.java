@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.rest.CustomRestTemplate;
 import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CCommonWallet;
-import com.dgphoenix.casino.gs.managers.payment.wallet.SimpleLoggableContainer;
+import com.abs.casino.gs.managers.payment.wallet.SimpleLoggableContainer;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

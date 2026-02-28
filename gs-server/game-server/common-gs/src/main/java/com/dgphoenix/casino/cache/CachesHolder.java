@@ -6,7 +6,7 @@ import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.common.cache.*;
 import com.dgphoenix.casino.common.util.IdGenerator;
 import com.abs.casino.gs.managers.dblink.DBLinkCache;
-import com.dgphoenix.casino.gs.managers.payment.wallet.WalletPersister;
+import com.abs.casino.gs.managers.payment.wallet.WalletPersister;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

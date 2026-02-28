@@ -1,0 +1,3 @@
+status=FAIL
+first_failed_step=STEP07
+failed_command=mvn -DskipTests -Dcluster.properties=local/local-machine.properties install

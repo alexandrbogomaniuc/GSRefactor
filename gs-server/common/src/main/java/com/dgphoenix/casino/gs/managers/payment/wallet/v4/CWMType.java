@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.wallet.v4;
+package com.abs.casino.gs.managers.payment.wallet.v4;
 
 /**
  * Description of CWMType.

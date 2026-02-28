@@ -3930,3 +3930,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 4`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+4`.
   - global tracked source declarations/files now `502` remaining (`2277` baseline, `1775` reduced, `77.953448%` burndown).
+
+## 2026-02-28 11:46 UTC (Hard-Cut M2 Wave 286 + 287)
+- Continued hard-cut execution from W285 with declaration-first overlap-safe wallet loggable/persister batch.
+  - `W286`: 5 declaration migrations retained (`IWalletPersister`, `ILoggableResponseCode`, `ILoggableContainer`, `ILoggableCWClient`, `SimpleLoggableContainer`).
+  - `W287`: 5 declaration migrations retained (`WalletPersister`, `WalletAlertStatus`, `CWMType`, `CommonWalletStatusResult`, `CommonWalletWagerResult`).
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1 failed at `STEP01` due moved status/wager result types surfacing wildcard-import same-package drift in legacy wallet interfaces/clients.
+  - rerun2 failed at `STEP02` due mixed loggable interface package types in `common-wallet`; fixed with bounded explicit `com.abs` loggable imports in v2/v4 clients.
+  - rerun3 failed at `STEP06` due missing explicit compatibility import for moved `AccountLockedException` in `GameServer`.
+  - rerun4 failed at `STEP07` due JSP import drift for moved `FRBWinOperationStatus` in `walletsManagerShowData.jsp`.
+  - canonical validation reached on rerun5:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-111506-hardcut-m2-wave286-wave287-wallet-loggable-persister/`
+  - report: `docs/projects/02-runtime-renaming-refactor/204-hard-cut-m2-wave286-wave287-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 10`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+10`.
+  - global tracked source declarations/files now `492` remaining (`2277` baseline, `1785` reduced, `78.392622%` burndown).

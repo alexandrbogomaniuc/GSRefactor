@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v4.CWMType;
+import com.abs.casino.gs.managers.payment.wallet.v4.CWMType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

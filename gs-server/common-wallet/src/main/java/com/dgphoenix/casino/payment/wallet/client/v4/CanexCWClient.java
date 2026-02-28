@@ -33,7 +33,7 @@ import com.abs.casino.common.util.xml.IXmlRequestResult;
 import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
-import com.dgphoenix.casino.gs.managers.payment.wallet.SimpleLoggableContainer;
+import com.abs.casino.gs.managers.payment.wallet.SimpleLoggableContainer;
 import com.google.gson.Gson;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;

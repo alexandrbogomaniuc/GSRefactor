@@ -1,0 +1,16 @@
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCommonGameWalletPersister.java
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v2/RESTCWClient.java
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClient.java
+gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/StandardJsonCWClient.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/AbstractLoggableClient.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/client/LoggableWithResponseCodeClient.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/rest/CustomRestTemplate.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/ILoggableCWClient.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/SimpleLoggableContainer.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/WalletPersister.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/service/RESTServiceClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/OriginalFRBonusWinManager.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/RESTClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/frb/FRBRESTClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/client/frb/FRBRESTNotificationClient.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/WalletProtocolFactory.java

@@ -13,6 +13,8 @@ import com.abs.casino.common.exception.WalletException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.xml.IXmlRequestResult;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletStatusResult;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v4.ICommonWalletClient;
 import org.apache.logging.log4j.LogManager;

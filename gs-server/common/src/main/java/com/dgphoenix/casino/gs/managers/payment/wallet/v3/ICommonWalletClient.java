@@ -3,7 +3,7 @@ package com.abs.casino.gs.managers.payment.wallet.v3;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletStatusResult;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletStatusResult;
 
 import java.util.Map;
 

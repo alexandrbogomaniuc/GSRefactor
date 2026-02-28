@@ -1,7 +1,7 @@
 package com.abs.casino.common.client;
 
-import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableCWClient;
-import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableContainer;
+import com.abs.casino.gs.managers.payment.wallet.ILoggableCWClient;
+import com.abs.casino.gs.managers.payment.wallet.ILoggableContainer;
 import com.google.common.base.Joiner;
 import org.apache.commons.lang.StringUtils;
 

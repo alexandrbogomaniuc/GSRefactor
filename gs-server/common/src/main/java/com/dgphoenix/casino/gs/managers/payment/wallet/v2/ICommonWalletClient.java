@@ -6,6 +6,8 @@ import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.WalletException;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletStatusResult;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 
 /**

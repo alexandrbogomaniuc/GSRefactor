@@ -1,7 +1,7 @@
 package com.abs.casino.common.client;
 
 
-import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableResponseCode;
+import com.abs.casino.gs.managers.payment.wallet.ILoggableResponseCode;
 
 public class LoggableWithResponseCodeClient extends AbstractLoggableClient implements ILoggableResponseCode {
     @Override

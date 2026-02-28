@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
-import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletPersister;
+import com.abs.casino.gs.managers.payment.wallet.IWalletPersister;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,6 +1,6 @@
 package com.abs.casino.payment.wallet.client.v4;
 
-import com.dgphoenix.casino.gs.managers.payment.wallet.v4.CWMType;
+import com.abs.casino.gs.managers.payment.wallet.v4.CWMType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

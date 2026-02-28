@@ -9,9 +9,10 @@ import com.abs.casino.common.client.AbstractLoggableClient;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.WalletException;
 import com.abs.casino.common.rest.CustomRestTemplate;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletStatusResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v4.CWMType;
+import com.abs.casino.gs.managers.payment.wallet.v4.CWMType;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v4.ICommonWalletClient;
 
 import java.util.Collections;

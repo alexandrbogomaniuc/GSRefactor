@@ -21,8 +21,8 @@ import com.abs.casino.common.util.xml.IXmlRequestResult;
 import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.abs.casino.common.util.xml.parser.Parser;
 import com.abs.casino.common.web.bonus.CBonus;
-import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableCWClient;
-import com.dgphoenix.casino.gs.managers.payment.wallet.ILoggableContainer;
+import com.abs.casino.gs.managers.payment.wallet.ILoggableCWClient;
+import com.abs.casino.gs.managers.payment.wallet.ILoggableContainer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

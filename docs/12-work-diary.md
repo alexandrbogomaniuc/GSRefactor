@@ -8747,3 +8747,25 @@
   - baseline `2277`, reduced `1775`, remaining `502`, burndown `77.953448%`
   - Project 02 `47.737241%`, Core `73.868621%`, Portfolio `86.934310%`
   - ETA `20.6h` (`2.57` workdays)
+
+### 2026-02-28 11:46 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W286 + W287`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `10` (`IWalletPersister`, `ILoggableResponseCode`, `ILoggableContainer`, `ILoggableCWClient`, `SimpleLoggableContainer`, `WalletPersister`, `WalletAlertStatus`, `CWMType`, `CommonWalletStatusResult`, `CommonWalletWagerResult`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent parallel target remained constrained by thread limit; ownership-safe execution continued on main.
+  - rerun1 failed at `STEP01` due moved status/wager result types surfacing wildcard-import same-package drift in legacy wallet interfaces/clients.
+  - rerun2 failed at `STEP02` due mixed loggable interface package types in `common-wallet`; fixed with explicit `com.abs` imports in v2/v4 wallet clients.
+  - rerun3 failed at `STEP06` due missing `AccountLockedException` compatibility import in `GameServer`.
+  - rerun4 failed at `STEP07` due JSP import drift for moved `FRBWinOperationStatus`; fixed in `walletsManagerShowData.jsp`.
+  - canonical validation reached on rerun5:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-111506-hardcut-m2-wave286-wave287-wallet-loggable-persister/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/204-hard-cut-m2-wave286-wave287-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1785`, remaining `492`, burndown `78.392622%`
+  - Project 02 `47.872539%`, Core `73.936269%`, Portfolio `86.968135%`
+  - ETA `20.2h` (`2.53` workdays)

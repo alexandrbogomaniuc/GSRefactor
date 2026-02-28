@@ -11,7 +11,7 @@ import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
-import com.dgphoenix.casino.gs.managers.payment.wallet.WalletAlertStatus;
+import com.abs.casino.gs.managers.payment.wallet.WalletAlertStatus;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTrackerTask;
 import org.apache.logging.log4j.LogManager;

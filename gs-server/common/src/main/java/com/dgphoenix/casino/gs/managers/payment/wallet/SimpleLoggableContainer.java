@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.wallet;
+package com.abs.casino.gs.managers.payment.wallet;
 
 import static org.apache.commons.lang.StringUtils.EMPTY;
 

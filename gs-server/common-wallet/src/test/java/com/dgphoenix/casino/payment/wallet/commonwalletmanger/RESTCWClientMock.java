@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
 import com.abs.casino.payment.wallet.client.v4.RESTCWClient;
 

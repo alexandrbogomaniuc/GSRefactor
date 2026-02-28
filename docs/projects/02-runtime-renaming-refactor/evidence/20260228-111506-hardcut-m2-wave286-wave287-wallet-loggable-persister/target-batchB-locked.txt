@@ -1,0 +1,5 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/WalletPersister.java
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/WalletAlertStatus.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/v4/CWMType.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/CommonWalletStatusResult.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/CommonWalletWagerResult.java

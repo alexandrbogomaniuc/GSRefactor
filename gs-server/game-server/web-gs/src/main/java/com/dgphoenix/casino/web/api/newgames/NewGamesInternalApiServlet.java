@@ -22,7 +22,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
 import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletProtocolManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;

@@ -43,7 +43,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusNotificationManager
 import com.dgphoenix.casino.gs.managers.payment.transfer.PaymentManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletOperation;
 import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletProtocolManager;
-import com.dgphoenix.casino.gs.managers.payment.wallet.WalletPersister;
+import com.abs.casino.gs.managers.payment.wallet.WalletPersister;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTrackerTask;

@@ -1,0 +1,5 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletPersister.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/ILoggableResponseCode.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/ILoggableContainer.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/ILoggableCWClient.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/SimpleLoggableContainer.java
