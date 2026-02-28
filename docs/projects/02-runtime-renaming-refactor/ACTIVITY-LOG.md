@@ -3496,3 +3496,25 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `14`.
   - retained bounded rewires: `0`.
   - global tracked source declarations/files now `685` remaining (`2277` baseline, `1592` reduced, `69.916557%` burndown).
+
+## 2026-02-28 04:39 UTC (Hard-Cut M2 Wave 242A + 242B + 243)
+- Continued hard-cut execution from W241 with pending MP kafka cluster dirty scope and canonical validation.
+- Scope retained:
+  - `W242A`: MP kafka declaration package migrations.
+  - `W242B`: MP bots/web rewires plus bounded `common-gs` compile stabilization after local cache invalidation.
+  - `W243`: integration validation.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning was thread-limited in this session; strict-disjoint manifests were enforced in main-agent execution.
+- Stabilization/validation highlights:
+  - resolved `STEP06` compile-path drift (`GetPrivateRoomInfoRequest`, converter static-import alignment, duplicate-FQCN collisions in `common-gs` kafka dto/socket surfaces).
+  - no blind/global replacement performed.
+  - canonical validation reached:
+    - fast gate batchA rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-043108-hardcut-m2-wave242ab-wave243-mp-kafka-cluster-stabilized/`
+  - report: `docs/projects/02-runtime-renaming-refactor/182-hard-cut-m2-wave242ab-wave243-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 11`, stabilization regressions `com.abs -> com.dgphoenix = 14`, net `-3`.
+  - global tracked source declarations/files now `688` remaining (`2277` baseline, `1589` reduced, `69.784805%` burndown).
+

@@ -2,9 +2,9 @@ package com.betsoft.casino.mp.web.handlers.kafka;
 
 import org.springframework.stereotype.Component;
 
-import com.dgphoenix.casino.kafka.dto.SitOutRequest2;
-import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
-import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
+import com.abs.casino.kafka.dto.SitOutRequest2;
+import com.abs.casino.kafka.dto.VoidKafkaResponse;
+import com.abs.casino.kafka.handler.KafkaOuterRequestHandler;
 
 
 @Component

@@ -2,12 +2,12 @@ package com.betsoft.casino.mp.kafka;
 
 import com.dgphoenix.casino.common.util.ReflectionUtils;
 import com.abs.casino.kafka.config.KafkaProperties;
-import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
-import com.dgphoenix.casino.kafka.dto.KafkaRequest;
-import com.dgphoenix.casino.kafka.dto.KafkaResponse;
-import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
-import com.dgphoenix.casino.kafka.handler.KafkaInServiceRequestHandlerFactory;
-import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandlerFactory;
+import com.abs.casino.kafka.dto.KafkaHandlerException;
+import com.abs.casino.kafka.dto.KafkaRequest;
+import com.abs.casino.kafka.dto.KafkaResponse;
+import com.abs.casino.kafka.dto.VoidKafkaResponse;
+import com.abs.casino.kafka.handler.KafkaInServiceRequestHandlerFactory;
+import com.abs.casino.kafka.handler.KafkaOuterRequestHandlerFactory;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

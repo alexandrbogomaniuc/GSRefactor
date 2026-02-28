@@ -21,10 +21,10 @@ import org.apache.logging.log4j.Logger;
 
 import com.betsoft.casino.bots.handlers.kafka.KafkaBotRequestHandlerFactory;
 import com.dgphoenix.casino.common.util.ReflectionUtils;
-import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
-import com.dgphoenix.casino.kafka.dto.KafkaRequest;
-import com.dgphoenix.casino.kafka.dto.KafkaResponse;
-import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
+import com.abs.casino.kafka.dto.KafkaHandlerException;
+import com.abs.casino.kafka.dto.KafkaRequest;
+import com.abs.casino.kafka.dto.KafkaResponse;
+import com.abs.casino.kafka.dto.VoidKafkaResponse;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

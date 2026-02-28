@@ -1,0 +1,2 @@
+Scope applies pending MP Kafka hard-cut package migration already present in working tree and bounded common-gs compile stabilization required after local build cache invalidation.
+No blind/global replacement used; edits remain scoped to changed files.

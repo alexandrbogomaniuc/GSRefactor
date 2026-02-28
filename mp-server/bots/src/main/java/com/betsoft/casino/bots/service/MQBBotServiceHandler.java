@@ -13,7 +13,7 @@ import com.betsoft.casino.mp.web.GsonFactory;
 import com.betsoft.casino.mp.web.GsonMessageSerializer;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
+import com.abs.casino.kafka.dto.KafkaHandlerException;
 import com.abs.casino.kafka.dto.bots.response.BotLogInResultDto;
 import com.abs.casino.kafka.dto.bots.response.BotLogOutResultDto;
 import com.abs.casino.kafka.dto.bots.response.BotStatusResponse;

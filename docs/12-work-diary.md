@@ -8339,3 +8339,25 @@
   - ETA `28.5h` (`3.57` workdays)
 - Next:
   - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external environment blocker.
+
+### 2026-02-28 04:39 UTC
+- Continued Project 02 hard-cut execution in `Dev_new` and completed `W242A/W242B + W243` with canonical validation.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `11`.
+  - bounded rewires + compile stabilization regressions (`com.abs -> com.dgphoenix`): `14`.
+- Stabilization/validation highlights:
+  - recovered `STEP06` compile-path drift after local cache invalidation by bounded fixes in `common-gs` (`GetPrivateRoomInfoRequest`, converter static-import alignment, duplicate-FQCN collisions).
+  - canonical validation reached:
+    - fast gate batchA rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-043108-hardcut-m2-wave242ab-wave243-mp-kafka-cluster-stabilized/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/182-hard-cut-m2-wave242ab-wave243-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1589`, remaining `688`, burndown `69.784805%`
+  - Project 02 `44.097109%`, Core `72.048555%`, Portfolio `86.024277%`
+  - ETA `28.6h` (`3.58` workdays)
+- Next:
+  - recover net declaration momentum in the next wave while keeping canonical validation profile (`STEP01-08 PASS`, `STEP09` external `HTTP 502`).
+

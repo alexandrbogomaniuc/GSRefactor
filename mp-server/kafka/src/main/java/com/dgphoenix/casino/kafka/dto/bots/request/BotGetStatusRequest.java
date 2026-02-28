@@ -1,6 +1,6 @@
 package com.abs.casino.kafka.dto.bots.request;
 
-import com.dgphoenix.casino.kafka.dto.KafkaRequest;
+import com.abs.casino.kafka.dto.KafkaRequest;
 
 public class BotGetStatusRequest implements KafkaRequest {
     private long botId;

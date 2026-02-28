@@ -20,7 +20,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.kafka.dto.KafkaMessage;
+import com.abs.casino.kafka.dto.KafkaMessage;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

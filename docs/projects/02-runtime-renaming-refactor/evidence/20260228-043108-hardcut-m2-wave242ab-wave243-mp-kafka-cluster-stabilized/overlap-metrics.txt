@@ -1,0 +1,5 @@
+batchA_declarations=39
+batchB_declarations=64
+decl_overlap=0
+rewire_overlap=0
+cross_overlaps=0

@@ -42,11 +42,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.abs.casino.kafka.config.KafkaProperties;
-import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
-import com.dgphoenix.casino.kafka.dto.KafkaMessage;
-import com.dgphoenix.casino.kafka.dto.KafkaRequest;
-import com.dgphoenix.casino.kafka.dto.KafkaResponse;
-import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
+import com.abs.casino.kafka.dto.BasicKafkaResponse;
+import com.abs.casino.kafka.dto.KafkaMessage;
+import com.abs.casino.kafka.dto.KafkaRequest;
+import com.abs.casino.kafka.dto.KafkaResponse;
+import com.abs.casino.kafka.dto.VoidKafkaResponse;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

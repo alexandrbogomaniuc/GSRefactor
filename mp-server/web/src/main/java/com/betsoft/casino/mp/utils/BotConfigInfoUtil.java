@@ -6,8 +6,8 @@ import java.util.Set;
 import com.betsoft.casino.mp.model.GameType;
 import com.betsoft.casino.mp.model.bots.BotConfigInfo;
 import com.betsoft.casino.mp.model.bots.TimeFrame;
-import com.dgphoenix.casino.kafka.dto.BotConfigInfoDto;
-import com.dgphoenix.casino.kafka.dto.TimeFrameDto;
+import com.abs.casino.kafka.dto.BotConfigInfoDto;
+import com.abs.casino.kafka.dto.TimeFrameDto;
 
 public class BotConfigInfoUtil {
     public static BotConfigInfoDto toTBotConfigInfo(BotConfigInfo info){

@@ -1,8 +1,8 @@
 package com.betsoft.casino.mp.web.handlers.kafka;
 
-import com.dgphoenix.casino.kafka.dto.BonusStatusDto;
-import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
-import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
+import com.abs.casino.kafka.dto.BonusStatusDto;
+import com.abs.casino.kafka.dto.VoidKafkaResponse;
+import com.abs.casino.kafka.handler.KafkaOuterRequestHandler;
 import org.springframework.stereotype.Component;
 
 

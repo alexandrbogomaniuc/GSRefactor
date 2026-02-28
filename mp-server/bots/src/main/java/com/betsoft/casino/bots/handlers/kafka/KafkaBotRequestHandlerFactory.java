@@ -1,8 +1,8 @@
 package com.betsoft.casino.bots.handlers.kafka;
 
-import com.dgphoenix.casino.kafka.dto.KafkaRequest;
-import com.dgphoenix.casino.kafka.dto.KafkaResponse;
-import com.dgphoenix.casino.kafka.handler.KafkaRequestHandlerFactory;
+import com.abs.casino.kafka.dto.KafkaRequest;
+import com.abs.casino.kafka.dto.KafkaResponse;
+import com.abs.casino.kafka.handler.KafkaRequestHandlerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

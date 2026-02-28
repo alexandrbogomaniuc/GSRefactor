@@ -1,7 +1,7 @@
 package com.abs.casino.kafka.dto.privateroom.request;
 
-import com.dgphoenix.casino.kafka.dto.BGFriendDto;
-import com.dgphoenix.casino.kafka.dto.KafkaRequest;
+import com.abs.casino.kafka.dto.BGFriendDto;
+import com.abs.casino.kafka.dto.KafkaRequest;
 
 import java.util.List;
 

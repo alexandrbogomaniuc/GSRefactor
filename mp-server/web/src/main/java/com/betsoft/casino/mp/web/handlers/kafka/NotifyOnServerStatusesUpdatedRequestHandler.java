@@ -3,9 +3,9 @@ package com.betsoft.casino.mp.web.handlers.kafka;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dgphoenix.casino.kafka.dto.NotifyOnServerStatusesUpdatedRequest;
-import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
-import com.dgphoenix.casino.kafka.handler.KafkaInServiceRequestHandler;
+import com.abs.casino.kafka.dto.NotifyOnServerStatusesUpdatedRequest;
+import com.abs.casino.kafka.dto.VoidKafkaResponse;
+import com.abs.casino.kafka.handler.KafkaInServiceRequestHandler;
 
 @Component
 public class NotifyOnServerStatusesUpdatedRequestHandler implements KafkaInServiceRequestHandler<NotifyOnServerStatusesUpdatedRequest, VoidKafkaResponse> {

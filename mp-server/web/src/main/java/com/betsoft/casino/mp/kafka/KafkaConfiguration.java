@@ -11,7 +11,7 @@ import org.springframework.core.env.Environment;
 
 @Configuration
 @ComponentScan({
-        "com.dgphoenix.casino.kafka.handler",
+        "com.abs.casino.kafka.handler",
         "com.betsoft.casino.mp.kafka"
 })
 public class KafkaConfiguration {

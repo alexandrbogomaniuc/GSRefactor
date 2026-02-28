@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.web.handlers.kafka.privateroom;
 import com.betsoft.casino.mp.web.handlers.kafka.KafkaMultiPlayerResponseService;
 import com.abs.casino.kafka.dto.privateroom.request.PrivateRoomIdDto;
 import com.abs.casino.kafka.dto.privateroom.response.PrivateRoomIdResultDto;
-import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
+import com.abs.casino.kafka.handler.KafkaOuterRequestHandler;
 import org.springframework.stereotype.Component;
 
 

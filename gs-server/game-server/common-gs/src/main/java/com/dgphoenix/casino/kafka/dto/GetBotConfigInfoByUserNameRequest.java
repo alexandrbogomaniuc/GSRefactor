@@ -1,4 +1,4 @@
-package com.abs.casino.kafka.dto;
+package com.dgphoenix.casino.kafka.dto;
 
 import com.dgphoenix.casino.kafka.dto.KafkaRequest;
 

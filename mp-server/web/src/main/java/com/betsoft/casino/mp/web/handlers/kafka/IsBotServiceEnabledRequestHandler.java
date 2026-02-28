@@ -3,9 +3,9 @@ package com.betsoft.casino.mp.web.handlers.kafka;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dgphoenix.casino.kafka.dto.BooleanResponseDto;
+import com.abs.casino.kafka.dto.BooleanResponseDto;
 import com.abs.casino.kafka.dto.IsBotServiceEnabledRequest;
-import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
+import com.abs.casino.kafka.handler.KafkaOuterRequestHandler;
 
 @Component
 public class IsBotServiceEnabledRequestHandler 

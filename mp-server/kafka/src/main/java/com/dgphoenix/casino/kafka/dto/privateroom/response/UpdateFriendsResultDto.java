@@ -1,7 +1,7 @@
 package com.abs.casino.kafka.dto.privateroom.response;
 
-import com.dgphoenix.casino.kafka.dto.BGFriendDto;
-import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
+import com.abs.casino.kafka.dto.BGFriendDto;
+import com.abs.casino.kafka.dto.BasicKafkaResponse;
 
 import java.util.List;
 

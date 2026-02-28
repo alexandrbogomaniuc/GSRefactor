@@ -2,8 +2,8 @@ package com.abs.casino.kafka.dto.privateroom.request;
 
 import java.util.List;
 
-import com.dgphoenix.casino.kafka.dto.BGPlayerDto;
-import com.dgphoenix.casino.kafka.dto.KafkaRequest;
+import com.abs.casino.kafka.dto.BGPlayerDto;
+import com.abs.casino.kafka.dto.KafkaRequest;
 
 public class UpdateRoomDto implements KafkaRequest {
     private String privateRoomId;

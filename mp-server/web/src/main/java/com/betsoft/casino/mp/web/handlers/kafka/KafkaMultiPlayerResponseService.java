@@ -37,7 +37,7 @@ import com.dgphoenix.casino.common.cache.Identifiable;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.kafka.dto.*;
+import com.abs.casino.kafka.dto.*;
 import com.abs.casino.kafka.dto.privateroom.request.*;
 import com.abs.casino.kafka.dto.privateroom.response.*;
 import org.apache.logging.log4j.LogManager;

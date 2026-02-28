@@ -1,7 +1,7 @@
 package com.abs.casino.kafka.dto.bots.response;
 
 import com.betsoft.casino.mp.model.bots.dto.BotsMap;
-import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
+import com.abs.casino.kafka.dto.BasicKafkaResponse;
 
 public class BotsMapResponseDto extends BasicKafkaResponse {
     private BotsMap botsMap;

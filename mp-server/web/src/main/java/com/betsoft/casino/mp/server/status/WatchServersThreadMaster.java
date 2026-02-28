@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.kafka.KafkaMessageService;
 import com.betsoft.casino.mp.server.ServerCoordinatorInfoProvider;
 import com.betsoft.casino.mp.service.ServerConfigDto;
 import com.betsoft.casino.mp.service.ServerOnlineStatus;
-import com.dgphoenix.casino.kafka.dto.NotifyOnServerStatusesUpdatedRequest;
+import com.abs.casino.kafka.dto.NotifyOnServerStatusesUpdatedRequest;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

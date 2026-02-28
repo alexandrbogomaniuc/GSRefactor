@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.utils;
 
 import com.betsoft.casino.mp.model.friends.Status;
-import com.dgphoenix.casino.kafka.dto.BGFStatus;
+import com.abs.casino.kafka.dto.BGFStatus;
 
 public class BGFStatusUtil {
     public static Status fromBGFStatus(BGFStatus tbgfStatus) {

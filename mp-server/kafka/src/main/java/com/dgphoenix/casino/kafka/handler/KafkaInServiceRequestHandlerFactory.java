@@ -1,12 +1,12 @@
-package com.dgphoenix.casino.kafka.handler;
+package com.abs.casino.kafka.handler;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dgphoenix.casino.kafka.dto.KafkaRequest;
-import com.dgphoenix.casino.kafka.dto.KafkaResponse;
+import com.abs.casino.kafka.dto.KafkaRequest;
+import com.abs.casino.kafka.dto.KafkaResponse;
 
 @Component("inServiceRequestHandlerFactory")
 public class KafkaInServiceRequestHandlerFactory implements KafkaRequestHandlerFactory {
