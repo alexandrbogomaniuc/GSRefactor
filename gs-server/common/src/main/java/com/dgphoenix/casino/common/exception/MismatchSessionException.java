@@ -1,6 +1,6 @@
 package com.abs.casino.common.exception;
 
-import com.dgphoenix.casino.common.exception.ObjectNotFoundException;
+import com.abs.casino.common.exception.ObjectNotFoundException;
 
 /**
  * Created by grien on 23.07.15.

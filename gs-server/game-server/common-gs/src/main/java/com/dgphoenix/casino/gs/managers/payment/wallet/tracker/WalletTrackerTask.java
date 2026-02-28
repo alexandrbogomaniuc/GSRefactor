@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.abs.casino.common.engine.tracker.AbstractCommonTrackingTask;
-import com.dgphoenix.casino.common.exception.CannotLockException;
+import com.abs.casino.common.exception.CannotLockException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.TransactionDataTracker;

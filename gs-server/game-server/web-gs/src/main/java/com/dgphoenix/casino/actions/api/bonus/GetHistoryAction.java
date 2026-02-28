@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bonus.BaseBonus;
 import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
 import com.dgphoenix.casino.common.exception.BonusException;
-import com.dgphoenix.casino.common.exception.XmlWriterException;
+import com.abs.casino.common.exception.XmlWriterException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
 import com.dgphoenix.casino.common.web.bonus.BonusError;

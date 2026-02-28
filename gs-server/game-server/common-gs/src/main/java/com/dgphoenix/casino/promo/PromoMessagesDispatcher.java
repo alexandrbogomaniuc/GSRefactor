@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.exception.CannotLockException;
+import com.abs.casino.common.exception.CannotLockException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.*;
 import com.abs.casino.common.promo.messages.server.notifications.PromoNotification;

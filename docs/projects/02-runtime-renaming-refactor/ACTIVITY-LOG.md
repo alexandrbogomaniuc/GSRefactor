@@ -3751,3 +3751,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 11`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+11`.
   - global tracked source declarations/files now `565` remaining (`2277` baseline, `1712` reduced, `75.186649%` burndown).
+
+## 2026-02-28 08:06 UTC (Hard-Cut M2 Wave 268 + 269)
+- Continued hard-cut execution from W267 with declaration-first overlap-safe follow-up batch in `sb-utils/common/exception`:
+  - `W268`: 7 declaration migrations in exception declarations.
+  - `W269`: integration and validation.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - fast gate rerun1 failed at `STEP01` due ordering artifact (`STEP01` consuming updated `com.abs` imports before refreshed `sb-utils` artifact install).
+  - full matrix rerun1 failed at `STEP06` due mixed moved/unmoved exception types in `common-gs`; fixed with explicit moved-type imports in `GameServer`/`StartGameSessionHelper`.
+  - no blind/global replacement performed.
+  - canonical validation reached:
+    - fast gate batchA rerun2: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB rerun2: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun2: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-075049-hardcut-m2-wave268-wave269-sbutils-common-exception-followup/`
+  - report: `docs/projects/02-runtime-renaming-refactor/195-hard-cut-m2-wave268-wave269-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 7`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+7`.
+  - global tracked source declarations/files now `558` remaining (`2277` baseline, `1719` reduced, `75.494071%` burndown).

@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.web;
 
-import com.dgphoenix.casino.common.exception.XmlWriterException;
+import com.abs.casino.common.exception.XmlWriterException;
 import com.dgphoenix.casino.common.util.string.StringBuilderWriter;
 import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
 import org.apache.log4j.Logger;

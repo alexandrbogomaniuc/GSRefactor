@@ -6,7 +6,7 @@ import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.configuration.Caching;
 import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.dgphoenix.casino.common.ILoadBalancer;
-import com.dgphoenix.casino.common.exception.CannotLockException;
+import com.abs.casino.common.exception.CannotLockException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.lock.*;
 import com.dgphoenix.casino.common.util.ExecutorUtils;

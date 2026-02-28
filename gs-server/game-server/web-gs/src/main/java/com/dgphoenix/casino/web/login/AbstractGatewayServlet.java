@@ -1,7 +1,7 @@
 package com.abs.casino.web.login;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.exception.BadArgumentException;
+import com.abs.casino.common.exception.BadArgumentException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.xml.XMLUtils;
 import com.dgphoenix.casino.common.web.AbstractLobbyRequest;

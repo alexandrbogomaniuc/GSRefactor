@@ -9,7 +9,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.Writer;
 
-import com.dgphoenix.casino.common.exception.XmlWriterException;
+import com.abs.casino.common.exception.XmlWriterException;
 
 public class FormattedXmlWriter extends XmlWriter {
     private static final String SPACER = "    ";

@@ -24,7 +24,7 @@ import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.config.UtilsApplicationContextHelper;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.DBException;
-import com.dgphoenix.casino.common.exception.GameException;
+import com.abs.casino.common.exception.GameException;
 import com.abs.casino.common.games.IStartGameHelper;
 import com.abs.casino.common.games.StartGameHelpers;
 import com.abs.casino.common.jackpot.IJPWinQualifier;

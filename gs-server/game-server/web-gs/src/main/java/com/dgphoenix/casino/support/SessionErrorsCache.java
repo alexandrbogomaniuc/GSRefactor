@@ -2,7 +2,7 @@ package com.abs.casino.support;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraSupportPersister;
-import com.dgphoenix.casino.common.exception.ObjectNotFoundException;
+import com.abs.casino.common.exception.ObjectNotFoundException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;

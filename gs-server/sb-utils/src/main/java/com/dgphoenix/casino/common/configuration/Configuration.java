@@ -5,7 +5,7 @@ import com.abs.casino.common.configuration.resource.event.PropertyChangedEvent;
 import com.abs.casino.common.configuration.resource.listener.IPropertyListener;
 import com.abs.casino.common.configuration.resource.observable.IFileObservable;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.ObjectNotFoundException;
+import com.abs.casino.common.exception.ObjectNotFoundException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.ConcurrentBidirectionalMap;
 import org.apache.commons.configuration.ConfigurationException;

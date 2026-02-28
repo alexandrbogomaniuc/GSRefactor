@@ -23,7 +23,7 @@ import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
 import com.abs.casino.common.config.HostConfiguration;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.FRBException;
-import com.dgphoenix.casino.common.exception.MaintenanceModeException;
+import com.abs.casino.common.exception.MaintenanceModeException;
 import com.dgphoenix.casino.common.promo.IPromoCampaign;
 import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;

@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.util;
 
-import com.dgphoenix.casino.common.exception.GameException;
+import com.abs.casino.common.exception.GameException;
 import org.apache.log4j.Logger;
 
 import java.util.*;

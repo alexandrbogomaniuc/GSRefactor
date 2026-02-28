@@ -8569,3 +8569,24 @@
   - baseline `2277`, reduced `1712`, remaining `565`, burndown `75.186649%`
   - Project 02 `46.884832%`, Core `73.442416%`, Portfolio `86.721208%`
   - ETA `23.3h` (`2.91` workdays)
+
+### 2026-02-28 08:06 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W268 + W269`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `7`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - rerun1 fast gates failed at `STEP01` due ordering artifact (`STEP01` before refreshed `sb-utils` install for moved `com.abs` exceptions).
+  - full matrix rerun1 failed at `STEP06` due mixed moved/unmoved exception types in `common-gs`.
+  - fixed with explicit moved-type imports in `GameServer` and `StartGameSessionHelper` (`MaintenanceModeException`, `StartParameters`, `GameException`).
+  - canonical validation reached on rerun2:
+    - fast gate batchA: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-075049-hardcut-m2-wave268-wave269-sbutils-common-exception-followup/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/195-hard-cut-m2-wave268-wave269-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1719`, remaining `558`, burndown `75.494071%`
+  - Project 02 `46.979546%`, Core `73.489773%`, Portfolio `86.744886%`
+  - ETA `22.9h` (`2.86` workdays)

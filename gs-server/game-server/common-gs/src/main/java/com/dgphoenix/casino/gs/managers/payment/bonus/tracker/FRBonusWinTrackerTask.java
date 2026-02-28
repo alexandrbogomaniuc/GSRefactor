@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBWinOperation;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin;
 import com.abs.casino.common.cache.data.payment.frb.FRBWinOperationStatus;
 import com.abs.casino.common.engine.tracker.AbstractCommonTrackingTask;
-import com.dgphoenix.casino.common.exception.CannotLockException;
+import com.abs.casino.common.exception.CannotLockException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.TransactionDataTracker;

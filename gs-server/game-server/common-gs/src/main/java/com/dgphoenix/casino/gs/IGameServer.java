@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.MaintenanceModeException;
+import com.abs.casino.common.exception.MaintenanceModeException;
 import com.dgphoenix.casino.common.util.ILongIdGenerator;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 

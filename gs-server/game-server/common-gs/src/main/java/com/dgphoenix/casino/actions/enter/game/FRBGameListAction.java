@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.cache.data.game.GameGroup;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.configuration.messages.MessageManager;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.XmlWriterException;
+import com.abs.casino.common.exception.XmlWriterException;
 import com.dgphoenix.casino.common.util.string.StringBuilderWriter;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.util.xml.xmlwriter.Attribute;

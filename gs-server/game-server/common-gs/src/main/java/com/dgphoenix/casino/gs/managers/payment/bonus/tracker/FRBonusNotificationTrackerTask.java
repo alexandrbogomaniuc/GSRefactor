@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusNotification;
 import com.abs.casino.common.cache.data.payment.frb.FRBonusNotificationStatus;
 import com.abs.casino.common.engine.tracker.AbstractCommonTrackingTask;
-import com.dgphoenix.casino.common.exception.CannotLockException;
+import com.abs.casino.common.exception.CannotLockException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.logkit.LogUtils;

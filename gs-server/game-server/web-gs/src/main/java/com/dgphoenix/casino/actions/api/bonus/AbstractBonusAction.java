@@ -15,7 +15,7 @@ import com.dgphoenix.casino.common.cache.data.game.GameType;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.exception.BonusException;
-import com.dgphoenix.casino.common.exception.XmlWriterException;
+import com.abs.casino.common.exception.XmlWriterException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
