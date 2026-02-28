@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package com.dgphoenix.casino.thrift;
+package com.abs.casino.thrift;
 
 @SuppressWarnings({"cast", "rawtypes", "serial", "unchecked", "unused"})
 public class TMQData implements org.apache.thrift.TBase<TMQData, TMQData._Fields>, java.io.Serializable, Cloneable, Comparable<TMQData> {

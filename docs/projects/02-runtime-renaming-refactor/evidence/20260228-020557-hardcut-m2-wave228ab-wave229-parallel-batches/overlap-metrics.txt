@@ -1,0 +1,21 @@
+commit=3deb730c
+batchA_declarations=20
+batchB_declarations=12
+batchA_rewires=0
+batchB_rewires=0
+
+metrics:
+- declaration_overlap_count=0
+- rewire_overlap_count=0
+- cross_overlap_count_aDecl_vs_bRewire=0
+- cross_overlap_count_bDecl_vs_aRewire=0
+- total_cross_overlap_count=0
+
+dependency_scan:
+- batchA_inbound_edges_from_non_batch=0
+- batchA_outbound_edges_to_non_batch=7
+- batchB_inbound_edges_from_non_batch=0
+- batchB_outbound_edges_to_non_batch=0
+- cross_edges_between_batches=0
+
+web_gs_rewires=0

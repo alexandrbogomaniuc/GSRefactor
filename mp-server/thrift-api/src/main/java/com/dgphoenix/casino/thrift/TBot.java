@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package com.dgphoenix.casino.thrift;
+package com.abs.casino.thrift;
 
 @SuppressWarnings({"cast", "rawtypes", "serial", "unchecked", "unused"})
 public class TBot implements org.apache.thrift.TBase<TBot, TBot._Fields>, java.io.Serializable, Cloneable, Comparable<TBot> {
@@ -1284,7 +1284,7 @@ public class TBot implements org.apache.thrift.TBase<TBot, TBot._Fields>, java.i
             break;
           case 11: // BOT_STATE
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.botState = com.dgphoenix.casino.thrift.TBotState.findByValue(iprot.readI32());
+              struct.botState = com.abs.casino.thrift.TBotState.findByValue(iprot.readI32());
               struct.setBotStateIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
@@ -1504,7 +1504,7 @@ public class TBot implements org.apache.thrift.TBase<TBot, TBot._Fields>, java.i
         struct.setExpiresAtIsSet(true);
       }
       if (incoming.get(10)) {
-        struct.botState = com.dgphoenix.casino.thrift.TBotState.findByValue(iprot.readI32());
+        struct.botState = com.abs.casino.thrift.TBotState.findByValue(iprot.readI32());
         struct.setBotStateIsSet(true);
       }
       if (incoming.get(11)) {

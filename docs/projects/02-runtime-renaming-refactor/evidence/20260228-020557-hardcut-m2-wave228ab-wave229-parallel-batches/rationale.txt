@@ -1,0 +1,20 @@
+Selection goal: next two parallel-safe declaration batches at commit 3deb730c with strict ownership disjointness and minimal rewires.
+
+Why these two batches:
+1) Both batches are inside mp-server/thrift-api generated thrift declarations, which keeps runtime impact localized and avoids web-gs rewires.
+2) Both batches satisfy requested declaration size bounds:
+   - Batch A: 20 declarations
+   - Batch B: 12 declarations
+3) Rewires are minimized to zero external dependent rewires:
+   - Batch A inbound dependency edges from non-batch files = 0
+   - Batch B inbound dependency edges from non-batch files = 0
+   Therefore no separate rewire-owner files are required for either worker.
+4) Strict disjointness is preserved:
+   - no declaration overlap,
+   - no rewire overlap,
+   - no declaration-vs-rewire cross overlap,
+   - no dependency edges between batch A and batch B declaration sets.
+
+Risk notes:
+- Batch A still has 7 outbound same-package edges to legacy thrift declarations (internal declaration-side compatibility imports may be needed during execution).
+- Batch B is fully closed in the remaining same-package graph (0 inbound, 0 outbound), making it the lowest-risk declaration-only lane.

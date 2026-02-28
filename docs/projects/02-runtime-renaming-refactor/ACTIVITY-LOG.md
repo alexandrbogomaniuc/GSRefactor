@@ -3326,3 +3326,28 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `28`.
   - retained bounded rewires: `2`.
   - global tracked source declarations/files now `833` remaining (`2277` baseline, `1444` reduced, `63.416776%` burndown).
+
+## 2026-02-28 02:05 UTC (Hard-Cut M2 Wave 228A + 228B + 229)
+- Continued batched-safe hard-cut migration from W227 checkpoint with non-overlapping declaration sets:
+  - `W228A`: 20 declaration migrations in `mp-server/thrift-api`.
+  - `W228B`: 12 declaration migrations in `mp-server/thrift-api`.
+  - `W229`: integration and validation.
+- Parallel execution mode:
+  - `1 explorer + 2 workers + main` with strict non-overlap ownership.
+- Stabilization:
+  - explorer selected strict-disjoint declaration-only plan (`rewires: 0 + 0`, no `web-gs` rewires).
+  - retained minimal in-file namespace alignment in owned `TBot.java` (`TBotState` FQCN update).
+  - no additional compile stabilization required.
+  - no blind/global replacement performed.
+  - preserved pre-existing local changes (`cluster-hosts.properties`, `.tmp-w202-*`, prior uncommitted evidence folder) outside commit scope.
+- Validation:
+  - fast gate batchA rerun1 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - fast gate batchB rerun1 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - full matrix rerun1 (canonical): `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`); retry1 failed (`rc=2`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-020557-hardcut-m2-wave228ab-wave229-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/175-hard-cut-m2-wave228ab-wave229-parallel-batches-report-20260228.md`
+- Outcome:
+  - retained declaration migrations: `32`.
+  - retained bounded rewires: `0`.
+  - global tracked source declarations/files now `801` remaining (`2277` baseline, `1476` reduced, `64.822135%` burndown).

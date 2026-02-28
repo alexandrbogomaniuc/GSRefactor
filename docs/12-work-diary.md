@@ -8207,3 +8207,25 @@
   - ETA `34.5h` (`4.31` workdays)
 - Next:
   - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external.
+### 2026-02-28 02:05 UTC
+- Continued Project 02 hard-cut execution in `Dev_new` and completed `W228A/W228B + W229` with batched-safe parallel mode (`1 explorer + 2 workers + main`).
+- Scope retained:
+  - declaration migrations: `32`.
+  - bounded rewires: `0`.
+- Stabilization/validation highlights:
+  - explorer produced strict-disjoint declaration-only batches with zero rewires.
+  - retained minimal in-file namespace alignment in owned `TBot.java` (`TBotState` FQCN update).
+  - no additional compile stabilization required.
+  - canonical validation profile reached:
+    - batchA fast gate rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - batchB fast gate rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-020557-hardcut-m2-wave228ab-wave229-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/175-hard-cut-m2-wave228ab-wave229-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1476`, remaining `801`, burndown `64.822135%`
+  - Project 02 `40.961190%`, Core `70.480595%`, Portfolio `85.240298%`
+  - ETA `33.2h` (`4.15` workdays)
+- Next:
+  - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external.

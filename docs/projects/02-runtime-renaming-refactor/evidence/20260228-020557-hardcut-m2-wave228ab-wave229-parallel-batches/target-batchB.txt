@@ -1,0 +1,12 @@
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/MQBBotService.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotLogInResult.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotLogOutResult.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotStatus.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotsMap.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBot.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TBotState.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/CurrencyRate.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/MpServerThriftService.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TRoomPlayerInfo.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TTimeFrame.java
+mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TMQEnemyQuestProgress.java
