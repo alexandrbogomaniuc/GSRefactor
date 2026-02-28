@@ -3,16 +3,16 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStrategy;
+import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.common.cache.CacheKeyInfo;
 import com.dgphoenix.casino.common.cache.IDistributedCache;
 import com.dgphoenix.casino.common.cache.LoadBalancerCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.lock.ChangeLockListener;
+import com.abs.casino.common.lock.ChangeLockListener;
 import com.dgphoenix.casino.common.lock.LockingInfo;
-import com.dgphoenix.casino.common.lock.ServerLockInfo;
+import com.abs.casino.common.lock.ServerLockInfo;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.common.transactiondata.ITransactionDataProcessor;
 import com.abs.casino.common.transactiondata.OnlineSessionInfo;
@@ -28,7 +28,7 @@ import com.dgphoenix.casino.common.transactiondata.storeddate.StoredItemType;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+import com.abs.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.google.common.cache.Cache;
@@ -619,8 +619,8 @@ public class CassandraTransactionDataPersister extends AbstractCassandraPersiste
 
     private Pair<Boolean, List<com.datastax.driver.core.ResultSet>> executeSingleBatch(com.datastax.driver.core.Session session, List<com.datastax.driver.core.Statement> statements,
                                                               String callerClassMethodIdentification) {
-        String keySpace = (com.dgphoenix.casino.cassandra.persist.engine.Session.class.isInstance(session) ?
-                ((com.dgphoenix.casino.cassandra.persist.engine.Session) session).getKeySpace() :
+        String keySpace = (com.abs.casino.cassandra.persist.engine.Session.class.isInstance(session) ?
+                ((com.abs.casino.cassandra.persist.engine.Session) session).getKeySpace() :
                 "unknown");
         List<com.datastax.driver.core.ResultSet> resultSetsByKs = new ArrayList<>(statements.size());
         for (com.datastax.driver.core.Statement statement : statements) {

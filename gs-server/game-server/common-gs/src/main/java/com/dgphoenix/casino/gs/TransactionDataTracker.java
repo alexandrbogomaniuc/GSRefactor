@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.gs;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.DistributedLockManager;
+import com.abs.casino.cassandra.DistributedLockManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
@@ -15,7 +15,7 @@ import com.abs.casino.common.exception.CannotLockException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.ObjectNotFoundException;
 import com.dgphoenix.casino.common.lock.LockingInfo;
-import com.dgphoenix.casino.common.lock.ServerLockInfo;
+import com.abs.casino.common.lock.ServerLockInfo;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.common.transactiondata.ITransactionDataProcessor;
 import com.abs.casino.common.transactiondata.OnlineSessionInfo;
@@ -29,7 +29,7 @@ import com.abs.casino.common.transactiondata.ITransactionDataPersister;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.ExecutorUtils;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+import com.abs.casino.common.util.string.StringIdGenerator;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusNotificationTracker;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusNotificationTrackerTask;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusWinTracker;

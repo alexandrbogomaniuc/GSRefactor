@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusSystemType;
+import com.abs.casino.common.cache.data.bonus.BonusSystemType;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.game.GameGroup;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;

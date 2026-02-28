@@ -1,7 +1,7 @@
 package com.abs.casino.common.cache.data.account;
 
-import com.dgphoenix.casino.common.cache.data.bank.ICoin;
-import com.dgphoenix.casino.common.cache.data.bank.ILimit;
+import com.abs.casino.common.cache.data.bank.ICoin;
+import com.abs.casino.common.cache.data.bank.ILimit;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.abs.casino.promo.events.process;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.DistributedLockManager;
+import com.abs.casino.cassandra.DistributedLockManager;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;

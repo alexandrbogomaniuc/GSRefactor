@@ -1,5 +1,5 @@
 <%@ page import="com.dgphoenix.casino.common.exception.CommonException" %>
-<%@ page import="com.dgphoenix.casino.common.util.DigitFormatter" %>
+<%@ page import="com.abs.casino.common.util.DigitFormatter" %>
 <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
 <%@ page import="com.dgphoenix.casino.gs.GameServer" %>
 <%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>

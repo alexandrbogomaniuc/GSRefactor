@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-import static com.dgphoenix.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
+import static com.abs.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
 
 @RestController
 @RequestMapping("/ats")

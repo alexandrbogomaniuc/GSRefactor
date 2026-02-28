@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.actions.api.bonus;
 
+import com.abs.casino.common.cache.data.bonus.BonusSystemType;
 import com.dgphoenix.casino.account.AccountManager;
 import com.abs.casino.actions.api.bonus.response.JSONResponse;
 import com.dgphoenix.casino.common.cache.BankInfoCache;

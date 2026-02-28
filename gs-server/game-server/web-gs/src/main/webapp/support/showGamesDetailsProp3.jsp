@@ -14,10 +14,10 @@
 <%@ page import="java.io.IOException" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.util.stream.Collectors" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper" %>
+<%@ page import="com.abs.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper" %>
 <%@ page import="com.abs.casino.gs.managers.game.settings.GameSettingsManager" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameConstants" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
 <%@ page import="com.dgphoenix.casino.support.tool.*" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 

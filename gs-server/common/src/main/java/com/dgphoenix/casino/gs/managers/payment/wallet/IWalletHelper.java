@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusSystemType;
+import com.abs.casino.common.cache.data.bonus.BonusSystemType;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;

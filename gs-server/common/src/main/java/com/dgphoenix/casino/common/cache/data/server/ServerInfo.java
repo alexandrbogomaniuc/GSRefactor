@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.common.cache.data.server;
 
 import com.dgphoenix.casino.common.cache.Identifiable;
-import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.cache.JsonSelfSerializable;
 import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
 import com.abs.casino.common.util.hardware.data.HardwareInfo;
 import com.dgphoenix.casino.common.util.string.StringUtils;

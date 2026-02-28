@@ -4,6 +4,8 @@
  */
 package com.abs.casino.gs.maintenance;
 
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
 import com.dgphoenix.casino.account.AccountManager;
 import com.abs.casino.cache.CachesHolder;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;

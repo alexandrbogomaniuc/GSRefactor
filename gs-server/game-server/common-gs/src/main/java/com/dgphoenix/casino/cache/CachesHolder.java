@@ -1,5 +1,6 @@
 package com.abs.casino.cache;
 
+import com.abs.casino.common.cache.AbstractExportableCache;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.*;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;

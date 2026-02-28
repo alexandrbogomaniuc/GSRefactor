@@ -1,9 +1,10 @@
 package com.dgphoenix.casino.common.cache.data.game;
 
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
 import com.abs.casino.common.cache.data.game.GameLanguageHelper;
 import com.abs.casino.common.cache.data.game.RoundFinishedHelper;
 import com.dgphoenix.casino.common.cache.Identifiable;
-import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.cache.JsonSelfSerializable;
 import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.configuration.messages.MessageManager;
@@ -475,7 +476,8 @@ public class BaseGameInfoTemplate implements IDistributedConfigEntry, Identifiab
 
     private boolean isPcVersionFlashOnly() {
         return defaultGameInfo.getPlayerDeviceType() == null
-                && defaultGameInfo.getHtml5PcVersionMode() == Html5PcVersionMode.NOT_AVAILABLE;
+                && defaultGameInfo.getHtml5PcVersionMode()
+                == com.abs.casino.common.cache.data.game.Html5PcVersionMode.NOT_AVAILABLE;
     }
 
     private boolean isHasToGoClient() {

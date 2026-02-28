@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.cache.data.bonus;
 
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.esotericsoftware.kryo.Kryo;

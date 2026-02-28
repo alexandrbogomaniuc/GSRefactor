@@ -1,4 +1,5 @@
 package com.betsoft.casino.mp.piratespov;
+import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.betsoft.casino.mp.model.ICurrency;
 import com.betsoft.casino.mp.piratespov.model.PlayerRoundInfo;
 import java.util.HashSet;

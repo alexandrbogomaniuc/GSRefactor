@@ -1,14 +1,14 @@
 package com.dgphoenix.casino.common.cache.data.bank;
 
 import com.dgphoenix.casino.common.cache.Identifiable;
-import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.cache.JsonSelfSerializable;
 import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.abs.casino.common.cache.data.bank.BankConstants;
 import com.abs.casino.common.cache.data.bank.IndividualGameSettingsType;
 import com.abs.casino.common.cache.data.bank.MaxQuestClientLogLevel;
 import com.abs.casino.common.cache.data.bank.PlayerGameSettingsType;
-import com.dgphoenix.casino.common.util.BidirectionalMultivalueMap;
+import com.abs.casino.common.util.BidirectionalMultivalueMap;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.abs.casino.common.util.LogoutActionType;
 import com.abs.casino.common.util.RefererDomains;

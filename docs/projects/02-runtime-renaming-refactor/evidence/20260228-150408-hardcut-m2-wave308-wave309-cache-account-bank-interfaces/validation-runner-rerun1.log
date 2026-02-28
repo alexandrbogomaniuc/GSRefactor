@@ -1,0 +1,295 @@
+[2026-02-28T15:05:27Z] START PRE01
+[2026-02-28T15:05:27Z] START PRE01
+[2026-02-28T15:05:27Z] DIR gs-server/utils
+[2026-02-28T15:05:27Z] DIR gs-server/utils
+[2026-02-28T15:05:27Z] CMD mvn -DskipTests install
+[2026-02-28T15:05:27Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-utils-restricted >--------------
+[INFO] Building gsn-utils-restricted 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-utils-restricted ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-utils-restricted ---
+[INFO] Compiling 25 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-utils-restricted ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-utils-restricted ---
+[INFO] Compiling 4 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.10:test (default-test) @ gsn-utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-utils-restricted ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.088 s
+[INFO] Finished at: 2026-02-28T15:05:30Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T15:05:30Z] PASS PRE01 rc=0
+[2026-02-28T15:05:30Z] PASS PRE01 rc=0
+[2026-02-28T15:05:30Z] START PRE02
+[2026-02-28T15:05:30Z] START PRE02
+[2026-02-28T15:05:30Z] DIR gs-server/sb-utils
+[2026-02-28T15:05:30Z] DIR gs-server/sb-utils
+[2026-02-28T15:05:30Z] CMD mvn -DskipTests install
+[2026-02-28T15:05:30Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 288 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ utils-restricted ---
+[INFO] Compiling 19 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted-sources.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ utils-restricted ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.624 s
+[INFO] Finished at: 2026-02-28T15:05:34Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T15:05:34Z] PASS PRE02 rc=0
+[2026-02-28T15:05:34Z] PASS PRE02 rc=0
+[2026-02-28T15:05:34Z] START PRE03
+[2026-02-28T15:05:34Z] START PRE03
+[2026-02-28T15:05:34Z] DIR gs-server/common-promo
+[2026-02-28T15:05:34Z] DIR gs-server/common-promo
+[2026-02-28T15:05:34Z] CMD mvn -DskipTests install
+[2026-02-28T15:05:34Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 56 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-promo ---
+[INFO] Compiling 2 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-promo ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-promo ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ common-promo >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ common-promo <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ common-promo ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo-sources.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-promo ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.650 s
+[INFO] Finished at: 2026-02-28T15:05:36Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T15:05:36Z] PASS PRE03 rc=0
+[2026-02-28T15:05:36Z] PASS PRE03 rc=0
+[2026-02-28T15:05:36Z] START STEP01
+[2026-02-28T15:05:36Z] START STEP01
+[2026-02-28T15:05:36Z] DIR gs-server/common
+[2026-02-28T15:05:36Z] DIR gs-server/common
+[2026-02-28T15:05:36Z] CMD mvn -DskipTests install
+[2026-02-28T15:05:36Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 242 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BankMiniGameInfo.java:[41,97] error: incompatible types: bad type in conditional expression
+[ERROR]     inference variable T has incompatible bounds
+      equality constraints: ICoin
+      lower bounds: Coin
+  where T is a type-variable:
+    T extends Object declared in method <T>unmodifiableList(List<? extends T>)
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BankMiniGameInfo.java:[43,82] error: incompatible types: List<com.abs.casino.common.cache.data.bank.ICoin> cannot be converted to List<com.dgphoenix.casino.common.cache.data.bank.ICoin>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[47,108] error: type argument Coin is not within bounds of type-variable COIN
+[ERROR]   where COIN is a type-variable:
+    COIN extends ICoin declared in interface IBaseGameInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[273,15] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[120,51] error: no suitable method found for composeGameKey(Long,long,Currency)
+[ERROR]     method BaseGameCache.composeGameKey(long,long,ICurrency) is not applicable
+      (argument mismatch; Currency cannot be converted to ICurrency)
+    method BaseGameCache.composeGameKey(long,long,String) is not applicable
+      (argument mismatch; Currency cannot be converted to String)
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[123,48] error: no suitable method found for composeGameKey(Long,long,Currency)
+[ERROR]     method BaseGameCache.composeGameKey(long,long,ICurrency) is not applicable
+      (argument mismatch; Currency cannot be converted to ICurrency)
+    method BaseGameCache.composeGameKey(long,long,String) is not applicable
+      (argument mismatch; Currency cannot be converted to String)
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[154,55] error: incompatible types: Limit cannot be converted to ILimit
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[262,80] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[295,44] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[365,53] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[389,46] error: no suitable method found for getGameInfo(long,long,Currency)
+[ERROR]     method BaseGameCache.getGameInfo(long,long,ICurrency) is not applicable
+      (argument mismatch; Currency cannot be converted to ICurrency)
+    method BaseGameCache.getGameInfo(long,long,String) is not applicable
+      (argument mismatch; Currency cannot be converted to String)
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[421,122] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[426,133] error: incompatible types: bad type in conditional expression
+[ERROR]     Currency cannot be converted to ICurrency
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[446,133] error: incompatible types: bad type in conditional expression
+[ERROR]     Currency cannot be converted to ICurrency
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[622,73] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[63,97] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[100,93] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[127,97] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[139,97] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[151,97] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:[64,47] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/ShellDetector.java:[53,144] error: incompatible types: Currency cannot be converted to ICurrency
+[INFO] 22 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.019 s
+[INFO] Finished at: 2026-02-28T15:05:39Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BankMiniGameInfo.java:[41,97] error: incompatible types: bad type in conditional expression
+[ERROR]     inference variable T has incompatible bounds
+[ERROR]       equality constraints: ICoin
+[ERROR]       lower bounds: Coin
+[ERROR]   where T is a type-variable:
+[ERROR]     T extends Object declared in method <T>unmodifiableList(List<? extends T>)
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BankMiniGameInfo.java:[43,82] error: incompatible types: List<com.abs.casino.common.cache.data.bank.ICoin> cannot be converted to List<com.dgphoenix.casino.common.cache.data.bank.ICoin>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[47,108] error: type argument Coin is not within bounds of type-variable COIN
+[ERROR]   where COIN is a type-variable:
+[ERROR]     COIN extends ICoin declared in interface IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[273,15] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[120,51] error: no suitable method found for composeGameKey(Long,long,Currency)
+[ERROR]     method BaseGameCache.composeGameKey(long,long,ICurrency) is not applicable
+[ERROR]       (argument mismatch; Currency cannot be converted to ICurrency)
+[ERROR]     method BaseGameCache.composeGameKey(long,long,String) is not applicable
+[ERROR]       (argument mismatch; Currency cannot be converted to String)
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[123,48] error: no suitable method found for composeGameKey(Long,long,Currency)
+[ERROR]     method BaseGameCache.composeGameKey(long,long,ICurrency) is not applicable
+[ERROR]       (argument mismatch; Currency cannot be converted to ICurrency)
+[ERROR]     method BaseGameCache.composeGameKey(long,long,String) is not applicable
+[ERROR]       (argument mismatch; Currency cannot be converted to String)
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[154,55] error: incompatible types: Limit cannot be converted to ILimit
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[262,80] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[295,44] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[365,53] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[389,46] error: no suitable method found for getGameInfo(long,long,Currency)
+[ERROR]     method BaseGameCache.getGameInfo(long,long,ICurrency) is not applicable
+[ERROR]       (argument mismatch; Currency cannot be converted to ICurrency)
+[ERROR]     method BaseGameCache.getGameInfo(long,long,String) is not applicable
+[ERROR]       (argument mismatch; Currency cannot be converted to String)
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[421,122] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[426,133] error: incompatible types: bad type in conditional expression
+[ERROR]     Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[446,133] error: incompatible types: bad type in conditional expression
+[ERROR]     Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[622,73] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[63,97] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[100,93] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[127,97] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[139,97] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[151,97] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:[64,47] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/ShellDetector.java:[53,144] error: incompatible types: Currency cannot be converted to ICurrency
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[2026-02-28T15:05:39Z] FAIL STEP01 rc=1
+[2026-02-28T15:05:39Z] FAIL STEP01 rc=1

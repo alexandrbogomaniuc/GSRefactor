@@ -3,17 +3,17 @@
 <%@ page import="com.dgphoenix.casino.common.cache.CurrencyCache" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.Coin" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameConstants" %>
-<%@ page import="com.dgphoenix.casino.common.util.logkit.ThreadLog" %>
-<%@ page import="com.dgphoenix.casino.common.util.web.HttpClientConnection" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
+<%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
+<%@ page import="com.abs.casino.common.util.web.HttpClientConnection" %>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
 <%@ page import="java.io.File" %>
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.StringTokenizer" %>
-<%@ page import="static com.dgphoenix.casino.common.util.DigitFormatter.doubleToMoney" %>
+<%@ page import="static com.abs.casino.common.util.DigitFormatter.doubleToMoney" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.ILimit" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.ILimit" %>
 <%@ page import="java.util.stream.Collectors" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%!

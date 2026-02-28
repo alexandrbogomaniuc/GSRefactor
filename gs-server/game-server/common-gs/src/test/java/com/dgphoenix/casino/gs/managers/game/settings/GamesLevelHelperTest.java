@@ -2,7 +2,7 @@ package com.abs.casino.gs.managers.game.settings;
 
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameConstants;
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.abs.casino.common.currency.ICurrencyRateManager;
@@ -19,7 +19,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.*;
 import java.util.function.Predicate;
 
-import static com.dgphoenix.casino.common.cache.data.game.BaseGameConstants.*;
+import static com.abs.casino.common.cache.data.game.BaseGameConstants.*;
 import static com.abs.casino.gs.managers.game.settings.GamesLevelHelper.forbiddenCoins;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;

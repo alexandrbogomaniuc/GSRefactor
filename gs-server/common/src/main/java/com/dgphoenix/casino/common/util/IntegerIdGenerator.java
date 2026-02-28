@@ -4,9 +4,14 @@
  */
 package com.dgphoenix.casino.common.util;
 
-import com.dgphoenix.casino.common.cache.AbstractExportableCache;
-import com.dgphoenix.casino.common.cache.CacheKeyInfo;
-import com.dgphoenix.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
+import com.abs.casino.common.cache.CacheKeyInfo;
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.util.IIntegerIdGenerator;
+import com.abs.casino.common.util.IIntegerSequencer;
+import com.abs.casino.common.util.IIntegerSequencerPersister;
+import com.abs.casino.common.util.ISequencer;
+import com.abs.casino.common.util.IntegerSequencer;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.persist.StreamPersister;
 import com.abs.casino.common.persist.TableProcessor;
@@ -20,7 +25,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-@CacheKeyInfo(description = "key is class FQN")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "key is class FQN")
 public class IntegerIdGenerator extends AbstractExportableCache<IntegerSequencer> implements IIntegerIdGenerator {
     private static final Logger LOG = LogManager.getLogger(IntegerIdGenerator.class);
     private static final IntegerIdGenerator instance = new IntegerIdGenerator();

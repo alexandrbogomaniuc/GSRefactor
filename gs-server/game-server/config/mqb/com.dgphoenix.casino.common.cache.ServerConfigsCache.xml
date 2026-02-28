@@ -1,5 +1,5 @@
 <object-stream>
-  <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+  <com.abs.casino.common.cache.ExportableCacheEntry>
     <key>1</key>
     <value class="com.dgphoenix.casino.common.config.GameServerConfigTemplate">
       <serverId>1</serverId>
@@ -245,8 +245,8 @@
         </entry>
       </properties>
     </value>
-  </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-   <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+  </com.abs.casino.common.cache.ExportableCacheEntry>
+   <com.abs.casino.common.cache.ExportableCacheEntry>
     <key>2</key>
     <value class="com.dgphoenix.casino.common.config.GameServerConfigTemplate">
       <serverId>2</serverId>
@@ -452,8 +452,8 @@
         </entry>
       </properties>
     </value>
-  </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-  <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+  </com.abs.casino.common.cache.ExportableCacheEntry>
+  <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>3</key>
         <value class="com.dgphoenix.casino.common.config.GameServerConfigTemplate">
             <serverId>3</serverId>
@@ -659,8 +659,8 @@
                 </entry>
             </properties>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-  <!--<com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+  <!--<com.abs.casino.common.cache.ExportableCacheEntry>
         <key>4</key>
         <value class="com.dgphoenix.casino.common.config.GameServerConfigTemplate">
             <serverId>4</serverId>
@@ -850,6 +850,6 @@
                 </entry>
             </properties>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>-->
+    </com.abs.casino.common.cache.ExportableCacheEntry>-->
 </object-stream>
 

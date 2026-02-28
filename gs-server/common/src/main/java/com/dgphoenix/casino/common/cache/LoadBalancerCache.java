@@ -1,5 +1,8 @@
 package com.dgphoenix.casino.common.cache;
 
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
+import com.abs.casino.common.cache.IServerStatusProvider;
 import com.dgphoenix.casino.common.ILoadBalancer;
 import com.abs.casino.common.cache.data.server.IServerInfoInternalProvider;
 import com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
@@ -18,7 +21,7 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
-@CacheKeyInfo(description = "registeredServer.id")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "registeredServer.id")
 public class LoadBalancerCache extends AbstractExportableCache<ServerInfo> implements ILoadBalancer, IServerStatusProvider {
     private static final Logger LOG = LogManager.getLogger(LoadBalancerCache.class);
 

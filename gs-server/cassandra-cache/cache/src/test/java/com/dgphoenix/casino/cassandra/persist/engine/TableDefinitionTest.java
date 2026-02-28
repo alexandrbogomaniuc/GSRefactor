@@ -12,8 +12,8 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import static com.abs.casino.cassandra.persist.engine.ICassandraPersister.DEFAULT_GC_GRACE_PERIOD_IN_SECONDS;
-import static com.abs.casino.cassandra.persist.engine.TableDefinition.INDEX_POSTFIX;
-import static com.abs.casino.cassandra.persist.engine.TableDefinition.SEPARATOR;
+import static com.dgphoenix.casino.cassandra.persist.engine.TableDefinition.INDEX_POSTFIX;
+import static com.dgphoenix.casino.cassandra.persist.engine.TableDefinition.SEPARATOR;
 import static com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy.SS_TABLE_SIZE;
 import static org.junit.Assert.*;
 

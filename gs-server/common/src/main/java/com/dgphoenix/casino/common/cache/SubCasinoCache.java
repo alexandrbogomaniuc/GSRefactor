@@ -1,5 +1,7 @@
 package com.dgphoenix.casino.common.cache;
 
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
 import com.dgphoenix.casino.common.exception.CommonException;
@@ -21,7 +23,7 @@ import java.util.concurrent.ConcurrentMap;
  * Date: 19.05.2010
  */
 
-@CacheKeyInfo(description = "subCasino.id")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "subCasino.id")
 public class SubCasinoCache extends AbstractExportableCache<SubCasino> implements IDistributedConfigCache {
     private static final Logger LOG = LogManager.getLogger(SubCasinoCache.class);
 

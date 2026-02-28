@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.payment.IWallet;
 import com.dgphoenix.casino.common.transport.TObject;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+import com.abs.casino.common.util.string.StringIdGenerator;
 import com.abs.casino.common.util.support.AdditionalInfoAttribute;
 import com.abs.casino.common.util.support.ExceptionInfo;
 import com.abs.casino.common.util.support.HttpCallInfo;

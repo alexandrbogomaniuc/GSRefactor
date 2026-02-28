@@ -1,6 +1,6 @@
 package com.abs.casino.cassandra;
 
-import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
+import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;

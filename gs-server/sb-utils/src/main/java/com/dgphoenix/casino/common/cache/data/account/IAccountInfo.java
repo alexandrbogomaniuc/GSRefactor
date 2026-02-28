@@ -1,7 +1,7 @@
-package com.dgphoenix.casino.common.cache.data.account;
+package com.abs.casino.common.cache.data.account;
 
 import com.dgphoenix.casino.common.cache.Identifiable;
-import com.dgphoenix.casino.common.cache.data.currency.ICurrency;
+import com.abs.casino.common.cache.data.currency.ICurrency;
 
 /**
  * User: flsh

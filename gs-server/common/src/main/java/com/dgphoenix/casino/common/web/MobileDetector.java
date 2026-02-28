@@ -3,7 +3,7 @@ package com.abs.casino.common.web;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
-import com.dgphoenix.casino.common.cache.data.account.PlayerDeviceType;
+import com.abs.casino.common.cache.data.account.PlayerDeviceType;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;

@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.RNG;
-import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+import com.abs.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.entities.AuthRequest;
 import com.abs.casino.exceptions.LoginErrorException;

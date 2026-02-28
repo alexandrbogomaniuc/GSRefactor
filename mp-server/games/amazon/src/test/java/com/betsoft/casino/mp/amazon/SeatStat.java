@@ -1,5 +1,6 @@
 package com.betsoft.casino.mp.amazon;
 
+import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.betsoft.casino.mp.amazon.model.PlayerRoundInfo;
 import com.betsoft.casino.mp.model.ICurrency;
 

@@ -3,7 +3,7 @@ package com.abs.casino.init;
 import com.dgphoenix.casino.account.AccountManager;
 import com.abs.casino.cache.CachesHolder;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.IConfigsInitializer;
+import com.abs.casino.cassandra.IConfigsInitializer;
 import com.dgphoenix.casino.cassandra.persist.*;
 import com.dgphoenix.casino.common.cache.*;
 import com.abs.casino.common.configuration.CasinoSystemType;

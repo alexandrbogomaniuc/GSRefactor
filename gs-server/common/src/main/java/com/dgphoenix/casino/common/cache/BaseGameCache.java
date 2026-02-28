@@ -1,14 +1,18 @@
 package com.dgphoenix.casino.common.cache;
 
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.abs.casino.common.cache.ILoadingCache;
 import com.dgphoenix.casino.cassandra.persist.ICassandraBaseGameInfoPersister;
-import com.dgphoenix.casino.common.cache.data.account.PlayerDeviceType;
+import com.abs.casino.common.cache.data.account.PlayerDeviceType;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;
 import com.dgphoenix.casino.common.cache.data.bank.Limit;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.currency.ICurrency;
+import com.abs.casino.common.cache.data.currency.ICurrency;
+import com.abs.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper;
 import com.dgphoenix.casino.common.cache.data.game.*;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.persist.StreamPersister;
@@ -37,7 +41,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
 
 @SuppressWarnings("rawtypes")
-@CacheKeyInfo(description = "bank.id + game.id [ + currency.code + profile.id ]")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "bank.id + game.id [ + currency.code + profile.id ]")
 public class BaseGameCache extends AbstractExportableCache<BaseGameInfo>
         implements IDistributedConfigCache<BaseGameInfo>, ILoadingCache {
     private static final Logger LOG = LogManager.getLogger(BaseGameCache.class);

@@ -1,5 +1,5 @@
 <object-stream>
-  <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+  <com.abs.casino.common.cache.ExportableCacheEntry>
     <key>1</key>
     <value class="com.dgphoenix.casino.common.config.GameServerConfigTemplate">
       <serverId>1</serverId>
@@ -219,5 +219,5 @@
         </entry>
       </properties>
     </value>
-  </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+  </com.abs.casino.common.cache.ExportableCacheEntry>
 </object-stream>

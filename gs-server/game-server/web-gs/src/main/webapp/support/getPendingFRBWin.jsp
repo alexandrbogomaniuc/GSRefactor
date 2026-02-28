@@ -4,7 +4,7 @@
 <%@ page import="com.dgphoenix.casino.common.transactiondata.ITransactionData" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.account.AccountInfo" %>
-<%@ page import="com.dgphoenix.casino.common.util.logkit.ThreadLog" %>
+<%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
 <%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
 <%--

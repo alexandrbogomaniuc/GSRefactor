@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.cache.data.bank;
 
+import com.abs.casino.common.cache.data.bank.ILimit;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.Serializer;
 import com.esotericsoftware.kryo.io.Input;

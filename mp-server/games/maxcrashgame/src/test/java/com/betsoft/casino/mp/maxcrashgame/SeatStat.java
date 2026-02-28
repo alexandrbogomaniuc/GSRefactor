@@ -1,5 +1,6 @@
 package com.betsoft.casino.mp.maxcrashgame;
 
+import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.betsoft.casino.mp.maxcrashgame.model.PlayerRoundInfo;
 import com.betsoft.casino.mp.model.ICurrency;
 import java.util.HashSet;

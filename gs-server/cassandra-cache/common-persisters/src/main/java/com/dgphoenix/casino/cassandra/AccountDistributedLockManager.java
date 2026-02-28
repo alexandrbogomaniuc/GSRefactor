@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.cassandra;
 
+import com.abs.casino.cassandra.AbstractLockManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.LogManager;

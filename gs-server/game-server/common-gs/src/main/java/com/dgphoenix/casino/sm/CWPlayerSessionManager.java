@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+import com.abs.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;

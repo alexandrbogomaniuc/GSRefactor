@@ -1,5 +1,5 @@
 <object-stream>
-  <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+  <com.abs.casino.common.cache.ExportableCacheEntry>
     <key>6274</key>
     <value class="com.dgphoenix.casino.common.cache.data.bank.BankInfo">
       <id>6274</id>
@@ -695,8 +695,8 @@
         <refererDomainsList/>
       </forbiddenRefererDomains>
     </value>
-  </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-  <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+  </com.abs.casino.common.cache.ExportableCacheEntry>
+  <com.abs.casino.common.cache.ExportableCacheEntry>
     <key>6275</key>
     <value class="com.dgphoenix.casino.common.cache.data.bank.BankInfo">
       <id>6275</id>
@@ -1395,5 +1395,5 @@
         <refererDomainsList/>
       </forbiddenRefererDomains>
     </value>
-  </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+  </com.abs.casino.common.cache.ExportableCacheEntry>
 </object-stream>

@@ -1,5 +1,6 @@
-package com.abs.casino.cassandra;
+package com.dgphoenix.casino.cassandra;
 
+import com.abs.casino.cassandra.KeyspaceMetricsSnapshot;
 import com.abs.casino.common.web.statistics.IStatisticsGetter;
 
 import java.util.function.Supplier;

@@ -4,7 +4,7 @@ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.ExecutorUtils;
-import com.dgphoenix.casino.common.util.ISequencer;
+import com.abs.casino.common.util.ISequencer;
 import com.abs.casino.common.util.logkit.LogUtils;
 import com.abs.casino.common.util.logkit.ThreadLog;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;

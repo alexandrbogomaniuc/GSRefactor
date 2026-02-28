@@ -1,5 +1,6 @@
 package com.betsoft.casino.mp.model.playerinfo;
 
+import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.betsoft.casino.mp.model.*;
 
 import java.util.Map;

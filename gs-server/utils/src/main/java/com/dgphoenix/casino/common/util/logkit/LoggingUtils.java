@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.logkit;
 
-import com.dgphoenix.casino.common.util.logkit.GameLog;
+import com.abs.casino.common.util.logkit.GameLog;
 
 /**
  * User: Grien

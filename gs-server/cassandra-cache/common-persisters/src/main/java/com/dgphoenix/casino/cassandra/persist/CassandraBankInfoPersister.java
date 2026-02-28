@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.dgphoenix.casino.cassandra.IEntityUpdateListener;
+import com.abs.casino.cassandra.IEntityUpdateListener;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.CurrencyCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;

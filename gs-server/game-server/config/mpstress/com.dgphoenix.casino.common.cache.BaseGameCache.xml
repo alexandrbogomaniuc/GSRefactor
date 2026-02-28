@@ -1,5 +1,5 @@
 <object-stream>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6274+838</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>838</id>
@@ -16,8 +16,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6275+838</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>838</id>
@@ -34,8 +34,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6274+856</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>856</id>
@@ -52,8 +52,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6275+856</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>856</id>
@@ -70,8 +70,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6274+859</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>859</id>
@@ -88,8 +88,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6275+859</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>859</id>
@@ -106,8 +106,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6274+862</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>862</id>
@@ -124,8 +124,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6275+862</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>862</id>
@@ -142,8 +142,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6274+866</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>866</id>
@@ -160,8 +160,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6275+866</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>866</id>
@@ -178,8 +178,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6274+867</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>867</id>
@@ -196,8 +196,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6275+867</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>867</id>
@@ -214,8 +214,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6274+875</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>875</id>
@@ -232,8 +232,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6275+875</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>875</id>
@@ -250,8 +250,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6274+864</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>864</id>
@@ -268,8 +268,8 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>6275+864</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo">
             <id>864</id>
@@ -286,5 +286,5 @@
             <isMobile>false</isMobile>
             <lastUpdateDate>0</lastUpdateDate>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
 </object-stream>

@@ -1,6 +1,6 @@
 package com.abs.casino.cassandra.inject;
 
-import com.dgphoenix.casino.cassandra.PersisterDependencyInjector;
+import com.abs.casino.cassandra.PersisterDependencyInjector;
 import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
 import com.google.common.collect.ImmutableMap;
 import org.apache.commons.lang3.tuple.Pair;

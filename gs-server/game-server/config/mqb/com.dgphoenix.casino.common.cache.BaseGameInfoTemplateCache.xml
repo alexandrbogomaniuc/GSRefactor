@@ -1,5 +1,5 @@
 <object-stream>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>838</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate">
             <gameId>838</gameId>
@@ -26,8 +26,8 @@
             <oldTranslation>false</oldTranslation>
             <isFrbGame>true</isFrbGame>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>856</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate">
             <gameId>856</gameId>
@@ -54,8 +54,8 @@
             <oldTranslation>false</oldTranslation>
             <isFrbGame>false</isFrbGame>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>859</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate">
             <gameId>859</gameId>
@@ -82,8 +82,8 @@
             <oldTranslation>false</oldTranslation>
             <isFrbGame>false</isFrbGame>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>862</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate">
             <gameId>862</gameId>
@@ -110,8 +110,8 @@
             <oldTranslation>false</oldTranslation>
             <isFrbGame>false</isFrbGame>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>866</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate">
             <gameId>866</gameId>
@@ -138,8 +138,8 @@
             <oldTranslation>false</oldTranslation>
             <isFrbGame>false</isFrbGame>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>867</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate">
             <gameId>867</gameId>
@@ -166,8 +166,8 @@
             <oldTranslation>false</oldTranslation>
             <isFrbGame>false</isFrbGame>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>864</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate">
             <gameId>864</gameId>
@@ -194,8 +194,8 @@
             <oldTranslation>false</oldTranslation>
             <isFrbGame>false</isFrbGame>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
-    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
+    <com.abs.casino.common.cache.ExportableCacheEntry>
         <key>875</key>
         <value class="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate">
             <gameId>875</gameId>
@@ -222,5 +222,5 @@
             <oldTranslation>false</oldTranslation>
             <isFrbGame>true</isFrbGame>
         </value>
-    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+    </com.abs.casino.common.cache.ExportableCacheEntry>
 </object-stream>

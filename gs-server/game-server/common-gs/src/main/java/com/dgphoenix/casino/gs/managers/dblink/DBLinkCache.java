@@ -24,7 +24,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-@CacheKeyInfo(description = "dbLink.id")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "dbLink.id")
 public class DBLinkCache implements IDistributedCache<Long, IDBLink> {
     private static final DBLinkCache instance = new DBLinkCache();
     public static final long SLEEPTIME = 90000;

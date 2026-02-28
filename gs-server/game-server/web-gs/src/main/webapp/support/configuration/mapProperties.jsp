@@ -1,5 +1,5 @@
 <%@ page import="com.dgphoenix.casino.common.config.GameServerConfigTemplate" %>
-<%@ page import="com.dgphoenix.casino.common.util.property.*" %>
+<%@ page import="com.abs.casino.common.util.property.*" %>
 <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
 <%@ page import="java.lang.reflect.Field" %>
 <%@ page import="java.lang.reflect.Modifier" %>

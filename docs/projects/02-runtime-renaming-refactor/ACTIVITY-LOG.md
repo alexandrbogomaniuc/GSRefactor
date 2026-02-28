@@ -4143,3 +4143,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `10`; bounded rewires/regressions: `0`.
   - global tracked source declarations/files now `2108` remaining (`2277` baseline, `169` reduced, `7.422047%` burndown).
+
+## 2026-02-28 16:21 UTC (Hard-Cut M2 Wave 308 + 309)
+- Continued hard-cut execution from W307 with declaration-first overlap-safe `sb-utils` cache/account/bank interfaces batch.
+  - `W308`: retained `5` declaration migrations (`AbstractDistributedCache`, `AbstractExportableCache`, `ExportableCacheEntry`, `IAccountInfo`, `PlayerDeviceType`).
+  - `W309`: retained `5` declaration migrations (`ICoin`, `ILimit`, `BonusSystemType`, `ICurrency`, `BaseGameConstants`).
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - initial blocker reproduced at `STEP07` (`web-gs`) with unresolved moved symbols in actions/cache viewer.
+  - bounded compile rewires fixed action/class imports, then surfaced JSPC-only `STEP07` drift from legacy imports/tag handlers.
+  - applied bounded JSP/TLD import rewires for moved `com.abs` types (`ThreadLog`, `HttpClientConnection`, `DigitFormatter`, `CalendarUtils`, `ImmutableBaseGameInfoWrapper`, xmlwriter types, battleground config/persister, moved exceptions, `PagingTag/PagingTagV2`).
+  - rerun8 reached canonical profile:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-150408-hardcut-m2-wave308-wave309-cache-account-bank-interfaces/`
+  - report: `docs/projects/02-runtime-renaming-refactor/215-hard-cut-m2-wave308-wave309-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `10`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `2098` remaining (`2277` baseline, `179` reduced, `7.861221%` burndown).

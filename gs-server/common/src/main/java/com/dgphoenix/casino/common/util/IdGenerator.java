@@ -4,9 +4,13 @@
  */
 package com.dgphoenix.casino.common.util;
 
-import com.dgphoenix.casino.common.cache.AbstractExportableCache;
-import com.dgphoenix.casino.common.cache.CacheKeyInfo;
-import com.dgphoenix.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
+import com.abs.casino.common.cache.CacheKeyInfo;
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.util.ILongIdGenerator;
+import com.abs.casino.common.util.ISequencer;
+import com.abs.casino.common.util.ISequencerPersister;
+import com.abs.casino.common.util.Sequencer;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.persist.StreamPersister;
 import com.abs.casino.common.persist.TableProcessor;
@@ -20,7 +24,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-@CacheKeyInfo(description = "key is class FQN")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "key is class FQN")
 public class IdGenerator extends AbstractExportableCache<Sequencer> implements ILongIdGenerator {
     private static final Logger LOG = LogManager.getLogger(IdGenerator.class);
 

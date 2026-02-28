@@ -1,0 +1,10 @@
+com.dgphoenix.casino.common.cache.AbstractDistributedCache -> com.abs.casino.common.cache.AbstractDistributedCache
+com.dgphoenix.casino.common.cache.AbstractExportableCache -> com.abs.casino.common.cache.AbstractExportableCache
+com.dgphoenix.casino.common.cache.ExportableCacheEntry -> com.abs.casino.common.cache.ExportableCacheEntry
+com.dgphoenix.casino.common.cache.data.account.IAccountInfo -> com.abs.casino.common.cache.data.account.IAccountInfo
+com.dgphoenix.casino.common.cache.data.account.PlayerDeviceType -> com.abs.casino.common.cache.data.account.PlayerDeviceType
+com.dgphoenix.casino.common.cache.data.bank.ICoin -> com.abs.casino.common.cache.data.bank.ICoin
+com.dgphoenix.casino.common.cache.data.bank.ILimit -> com.abs.casino.common.cache.data.bank.ILimit
+com.dgphoenix.casino.common.cache.data.bonus.BonusSystemType -> com.abs.casino.common.cache.data.bonus.BonusSystemType
+com.dgphoenix.casino.common.cache.data.currency.ICurrency -> com.abs.casino.common.cache.data.currency.ICurrency
+com.dgphoenix.casino.common.cache.data.game.BaseGameConstants -> com.abs.casino.common.cache.data.game.BaseGameConstants

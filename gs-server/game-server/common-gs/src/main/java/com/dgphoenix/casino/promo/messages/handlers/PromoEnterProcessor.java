@@ -1,7 +1,7 @@
 package com.abs.casino.promo.messages.handlers;
 
 import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.data.account.IAccountInfo;
+import com.abs.casino.common.cache.data.account.IAccountInfo;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;

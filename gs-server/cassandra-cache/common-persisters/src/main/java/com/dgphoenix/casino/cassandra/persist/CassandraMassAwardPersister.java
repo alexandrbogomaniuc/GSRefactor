@@ -2,10 +2,10 @@ package com.dgphoenix.casino.cassandra.persist;
 
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.common.cache.AbstractDistributedCache;
+import com.abs.casino.common.cache.AbstractDistributedCache;
 import com.dgphoenix.casino.common.cache.MassAwardCache;
 import com.dgphoenix.casino.common.cache.data.bonus.BaseMassAward;
-import com.dgphoenix.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.BonusException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

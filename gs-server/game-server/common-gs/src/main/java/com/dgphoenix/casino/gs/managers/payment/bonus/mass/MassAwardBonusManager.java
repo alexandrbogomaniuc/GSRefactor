@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.payment.bonus.mass;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.DistributedLockManager;
+import com.abs.casino.cassandra.DistributedLockManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraDelayedMassAwardHistoryPersister;
 import com.dgphoenix.casino.cassandra.persist.CassandraDelayedMassAwardPersister;
 import com.dgphoenix.casino.cassandra.persist.CassandraMassAwardPersister;
@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.MassAwardCache;
 import com.dgphoenix.casino.common.cache.data.bonus.*;
 import com.abs.casino.common.cache.data.bonus.restriction.MassAwardRestriction;
-import com.dgphoenix.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.BonusException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.lock.LockingInfo;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;

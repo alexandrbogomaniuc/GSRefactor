@@ -1,5 +1,8 @@
 package com.dgphoenix.casino.common.cache;
 
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.ICreateGameListener;
 import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.abs.casino.common.cache.data.game.MiniGameInfo;
@@ -20,7 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
-@CacheKeyInfo(description = "game.id")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "game.id")
 public class BaseGameInfoTemplateCache extends AbstractExportableCache<BaseGameInfoTemplate> implements IDistributedConfigCache {
     private static final Logger LOG = LogManager.getLogger(BaseGameInfoTemplateCache.class);
     private static final BaseGameInfoTemplateCache instance = new BaseGameInfoTemplateCache();

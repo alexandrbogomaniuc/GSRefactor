@@ -1,7 +1,7 @@
 package com.abs.casino.web.system.diagnosis.tasks;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.IKeyspaceManager;
+import com.abs.casino.cassandra.IKeyspaceManager;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.common.web.diagnostic.CheckTask;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;

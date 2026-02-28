@@ -1,10 +1,10 @@
 <%@ page import="com.dgphoenix.casino.cassandra.persist.CassandraBaseGameInfoTemplatePersister" %>
 <%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
 <%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
-<%@ page import="com.dgphoenix.casino.common.promo.battleground.BattlegroundConfig" %>
+<%@ page import="com.abs.casino.common.promo.battleground.BattlegroundConfig" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameConstants" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 

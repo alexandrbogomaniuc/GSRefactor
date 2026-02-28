@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.cache;
 
+import com.abs.casino.common.cache.ExportableCacheEntry;
 import com.abs.casino.common.persist.TableProcessor;
 import com.dgphoenix.casino.common.util.Pair;
 

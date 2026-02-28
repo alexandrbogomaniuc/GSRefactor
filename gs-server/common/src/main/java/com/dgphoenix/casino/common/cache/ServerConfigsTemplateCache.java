@@ -1,5 +1,7 @@
 package com.dgphoenix.casino.common.cache;
 
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Collections;
@@ -13,7 +15,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
  * Date: 10.06.14.
  */
 
-@CacheKeyInfo(description = "gsConfig.id")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "gsConfig.id")
 public class ServerConfigsTemplateCache extends AbstractExportableCache<GameServerConfigTemplate> {
     private static final ServerConfigsTemplateCache instance = new ServerConfigsTemplateCache();
 

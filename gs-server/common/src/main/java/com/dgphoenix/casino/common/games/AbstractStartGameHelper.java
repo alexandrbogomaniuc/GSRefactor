@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.cache.CurrencyCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameConstants;
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import org.apache.log4j.Logger;

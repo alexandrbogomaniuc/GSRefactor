@@ -1,5 +1,6 @@
 package com.betsoft.casino.mp.model;
 
+import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.betsoft.casino.mp.transport.Avatar;
 import com.betsoft.casino.mp.transport.Currency;
 import com.betsoft.casino.mp.web.ISocketClient;

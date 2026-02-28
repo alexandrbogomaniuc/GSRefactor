@@ -1,6 +1,6 @@
 package com.abs.casino.promo;
 
-import com.dgphoenix.casino.common.cache.data.account.IAccountInfo;
+import com.abs.casino.common.cache.data.account.IAccountInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.IPromoCampaign;
 

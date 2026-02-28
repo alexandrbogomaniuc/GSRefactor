@@ -1,5 +1,6 @@
 package com.betsoft.casino.mp.common.testmodel;
 
+import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.model.battleground.IBattlegroundRoundInfo;
 import com.betsoft.casino.mp.model.battleground.IBgPlace;

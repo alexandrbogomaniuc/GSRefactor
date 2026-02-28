@@ -3,7 +3,7 @@
 <%@ page import="com.dgphoenix.casino.common.cache.data.game.GameGroup" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo" %>
-<%@ page import="com.dgphoenix.casino.common.util.logkit.ThreadLog" %>
+<%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>

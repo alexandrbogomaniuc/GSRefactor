@@ -1,16 +1,16 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.dgphoenix.casino.cassandra.IEntityUpdateListener;
+import com.abs.casino.cassandra.IEntityUpdateListener;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.common.cache.AbstractDistributedCache;
+import com.abs.casino.common.cache.AbstractDistributedCache;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;
 import com.dgphoenix.casino.common.cache.data.bank.Limit;
-import com.dgphoenix.casino.common.cache.data.currency.ICurrency;
+import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.game.GameVariableType;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;

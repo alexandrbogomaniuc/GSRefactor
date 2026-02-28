@@ -30,6 +30,7 @@ import com.abs.casino.gs.managers.dblink.DBLinkCache;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.gs.managers.dblink.TournamentDBLink;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.dgphoenix.casino.gs.persistance.LasthandPersister;
 import com.abs.casino.gs.singlegames.tools.cbservtools.IGameController;

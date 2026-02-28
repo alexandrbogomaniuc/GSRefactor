@@ -1,7 +1,7 @@
 package com.abs.casino.common.util;
 
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.currency.ICurrency;
+import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.abs.casino.tools.kryo.generator.GeneratorPriority;
 import com.abs.casino.tools.kryo.generator.RandomValueGenerator;
 import org.apache.commons.math3.random.RandomDataGenerator;

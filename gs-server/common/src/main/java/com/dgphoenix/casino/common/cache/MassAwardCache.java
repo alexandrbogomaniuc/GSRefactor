@@ -1,8 +1,10 @@
 package com.dgphoenix.casino.common.cache;
 
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.dgphoenix.casino.common.cache.data.bonus.BaseMassAward;
-import com.dgphoenix.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.BonusException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +22,7 @@ import java.util.concurrent.ConcurrentMap;
  * Date: 11.07.13
  */
 
-@CacheKeyInfo(description = "massAward.id")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "massAward.id")
 public class MassAwardCache extends AbstractExportableCache<BaseMassAward> implements IDistributedConfigCache {
     private static final Logger LOG = LogManager.getLogger(MassAwardCache.class);
     // massAwardId-> BaseMassAward

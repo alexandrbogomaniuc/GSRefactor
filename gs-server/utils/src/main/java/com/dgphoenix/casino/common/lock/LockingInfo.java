@@ -1,6 +1,7 @@
 package com.dgphoenix.casino.common.lock;
 
 import com.abs.casino.common.lock.LocalLockInfo;
+import com.abs.casino.common.lock.ServerLockInfo;
 
 /**
  * User: flsh

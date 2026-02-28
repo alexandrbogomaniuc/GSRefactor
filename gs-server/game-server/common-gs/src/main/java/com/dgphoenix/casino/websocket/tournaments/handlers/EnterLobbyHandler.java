@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.CurrencyCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.account.IAccountInfo;
+import com.abs.casino.common.cache.data.account.IAccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;

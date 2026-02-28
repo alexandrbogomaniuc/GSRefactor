@@ -1,10 +1,10 @@
 package com.abs.casino.cassandra;
 
 import com.abs.casino.cassandra.config.ClusterConfig;
-import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
-import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
+import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.configuration.ConfigHelper;
-import com.abs.casino.common.exception.CommonException;
+import com.dgphoenix.casino.common.exception.CommonException;
 import com.google.common.collect.ImmutableMap;
 import org.apache.commons.configuration.ConfigurationUtils;
 import org.apache.logging.log4j.LogManager;

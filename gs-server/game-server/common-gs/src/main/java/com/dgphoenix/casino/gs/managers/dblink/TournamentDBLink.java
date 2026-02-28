@@ -2,13 +2,13 @@ package com.abs.casino.gs.managers.dblink;
 
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.account.IPlayerGameSettings;
+import com.abs.casino.common.cache.data.account.IPlayerGameSettings;
 import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
-import com.dgphoenix.casino.common.cache.data.bank.ICoin;
-import com.dgphoenix.casino.common.cache.data.bank.ILimit;
+import com.abs.casino.common.cache.data.bank.ICoin;
+import com.abs.casino.common.cache.data.bank.ILimit;
 import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.currency.ICurrency;
+import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.payment.IWallet;

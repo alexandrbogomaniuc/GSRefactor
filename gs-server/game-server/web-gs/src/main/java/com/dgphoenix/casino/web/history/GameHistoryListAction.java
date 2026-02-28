@@ -17,7 +17,7 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.abs.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+import com.abs.casino.common.util.string.StringIdGenerator;
 import com.abs.casino.common.web.BaseAction;
 import com.abs.casino.common.web.GameServerHost;
 import com.dgphoenix.casino.gs.GameServer;

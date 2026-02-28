@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.game.history;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.DistributedLockManager;
+import com.abs.casino.cassandra.DistributedLockManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraHistoryInformerItemPersister;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.abs.casino.common.cache.data.HistoryInformerItem;

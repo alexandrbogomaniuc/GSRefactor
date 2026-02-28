@@ -3,7 +3,7 @@ package com.abs.casino.forms.game.ct;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+import com.abs.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.BaseAction;
 import org.apache.log4j.LogManager;

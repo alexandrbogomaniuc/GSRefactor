@@ -1,5 +1,5 @@
 <%@page session="false" %>
-<%@ page import="com.dgphoenix.casino.common.util.logkit.ThreadLog" %>
+<%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
 <%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
 <%@ page import="java.io.BufferedReader" %>
 <%@ page import="java.io.InputStreamReader" %>

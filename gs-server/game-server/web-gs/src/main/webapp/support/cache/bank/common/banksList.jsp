@@ -5,7 +5,7 @@
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Collections" %>
-<%@ page import="com.dgphoenix.casino.common.util.property.EnumProperty" %>
+<%@ page import="com.abs.casino.common.util.property.EnumProperty" %>
 <%--
   Created by IntelliJ IDEA.
   User: quant

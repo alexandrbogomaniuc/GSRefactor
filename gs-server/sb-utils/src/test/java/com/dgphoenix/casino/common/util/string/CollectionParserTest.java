@@ -1,6 +1,5 @@
 package com.abs.casino.common.util.string;
 
-import com.dgphoenix.casino.common.util.string.CollectionParser;
 import org.junit.Assert;
 import org.junit.Test;
 

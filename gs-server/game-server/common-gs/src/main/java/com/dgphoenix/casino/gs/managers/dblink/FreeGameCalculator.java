@@ -3,7 +3,7 @@ package com.abs.casino.gs.managers.dblink;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameConstants;
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
 import com.dgphoenix.casino.common.cache.data.game.GameGroup;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.abs.casino.common.currency.ICurrencyRateManager;
@@ -15,8 +15,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Collections;
 
-import static com.dgphoenix.casino.common.cache.data.game.BaseGameConstants.KEY_FREEBALANCE;
-import static com.dgphoenix.casino.common.cache.data.game.BaseGameConstants.KEY_FREEBALANCE_MULTIPLIER;
+import static com.abs.casino.common.cache.data.game.BaseGameConstants.KEY_FREEBALANCE;
+import static com.abs.casino.common.cache.data.game.BaseGameConstants.KEY_FREEBALANCE_MULTIPLIER;
 import static com.dgphoenix.casino.common.config.GameServerConfigTemplate.DEFAULT_FREE_BALANCE;
 import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
 

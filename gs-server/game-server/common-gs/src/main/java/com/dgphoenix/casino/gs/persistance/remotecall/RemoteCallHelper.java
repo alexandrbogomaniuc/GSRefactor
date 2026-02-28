@@ -2,6 +2,7 @@ package com.dgphoenix.casino.gs.persistance.remotecall;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.*;
+import com.abs.casino.cassandra.persist.CassandraRemoteCallPersister;
 import com.dgphoenix.casino.common.cache.*;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
@@ -14,8 +15,8 @@ import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.PromoNotificationType;
 import com.dgphoenix.casino.common.promo.*;
-import com.dgphoenix.casino.common.remotecall.IRemoteCall;
-import com.dgphoenix.casino.common.remotecall.PersistableCall;
+import com.abs.casino.common.remotecall.IRemoteCall;
+import com.abs.casino.common.remotecall.PersistableCall;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.IdGenerator;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;

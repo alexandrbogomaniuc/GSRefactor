@@ -39,7 +39,7 @@ import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.RNG;
-import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+import com.abs.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.BaseAction;
 import com.abs.casino.common.web.ClientTypeFactory;

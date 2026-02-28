@@ -2,6 +2,7 @@ package com.dgphoenix.casino.common.cache.data.account;
 
 import com.dgphoenix.casino.common.cache.CoinsCache;
 import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.data.account.IPlayerGameSettings;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;
 import com.dgphoenix.casino.common.cache.data.bank.Limit;
 import com.dgphoenix.casino.common.util.string.StringUtils;

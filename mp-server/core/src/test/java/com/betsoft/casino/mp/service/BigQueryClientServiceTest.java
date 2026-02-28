@@ -1,5 +1,6 @@
 package com.betsoft.casino.mp.service;
 
+import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.betsoft.casino.mp.common.AbstractGameRoom;
 import com.betsoft.casino.mp.maxblastchampions.model.PlayerRoundInfo;
 import com.betsoft.casino.mp.model.*;

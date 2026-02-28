@@ -1,7 +1,7 @@
 package com.abs.casino.cassandra;
 
 import com.abs.casino.cassandra.config.ColumnFamilyConfig;
-import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
+import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
 import com.abs.casino.common.util.ReflectionUtils;
 import org.apache.commons.lang.ClassUtils;
 import org.apache.logging.log4j.LogManager;

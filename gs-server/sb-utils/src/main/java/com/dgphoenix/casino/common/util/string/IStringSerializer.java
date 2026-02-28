@@ -1,4 +1,4 @@
-package com.abs.casino.common.util.string;
+package com.dgphoenix.casino.common.util.string;
 
 /**
  * User: flsh

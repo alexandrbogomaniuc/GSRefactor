@@ -1,9 +1,9 @@
 package com.abs.casino.gs.managers.dblink;
 
-import com.dgphoenix.casino.common.cache.data.account.IPlayerGameSettings;
-import com.dgphoenix.casino.common.cache.data.bank.ICoin;
-import com.dgphoenix.casino.common.cache.data.bank.ILimit;
-import com.dgphoenix.casino.common.cache.data.currency.ICurrency;
+import com.abs.casino.common.cache.data.account.IPlayerGameSettings;
+import com.abs.casino.common.cache.data.bank.ICoin;
+import com.abs.casino.common.cache.data.bank.ILimit;
+import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.gs.singlegames.tools.cbservtools.CBGameException;
 import com.abs.casino.unj.api.AbstractSharedGameState;

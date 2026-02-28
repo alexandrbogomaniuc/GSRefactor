@@ -3,7 +3,7 @@ package com.dgphoenix.casino.gs.persistance.remotecall;
 import com.dgphoenix.casino.common.cache.MassAwardCache;
 import com.dgphoenix.casino.common.cache.data.bonus.BaseMassAward;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
-import com.dgphoenix.casino.common.remotecall.IRemoteCall;
+import com.abs.casino.common.remotecall.IRemoteCall;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;

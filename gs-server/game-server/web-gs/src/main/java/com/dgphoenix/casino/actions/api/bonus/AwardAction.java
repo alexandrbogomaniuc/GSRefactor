@@ -11,7 +11,7 @@ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusGameMode;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusSystemType;
+import com.abs.casino.common.cache.data.bonus.BonusSystemType;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusType;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.abs.casino.common.exception.BonusException;

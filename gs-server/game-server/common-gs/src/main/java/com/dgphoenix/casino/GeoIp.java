@@ -1,6 +1,6 @@
 package com.dgphoenix.casino;
 
-import com.dgphoenix.casino.common.util.IGeoIp;
+import com.abs.casino.common.util.IGeoIp;
 import com.maxmind.db.CHMCache;
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.exception.GeoIp2Exception;

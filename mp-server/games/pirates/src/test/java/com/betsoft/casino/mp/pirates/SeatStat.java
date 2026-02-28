@@ -1,5 +1,6 @@
 package com.betsoft.casino.mp.pirates;
 
+import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.betsoft.casino.mp.model.ICurrency;
 import com.betsoft.casino.mp.pirates.model.PlayerRoundInfo;
 

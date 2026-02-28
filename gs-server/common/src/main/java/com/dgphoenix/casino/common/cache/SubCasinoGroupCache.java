@@ -1,6 +1,8 @@
 package com.dgphoenix.casino.common.cache;
 
 
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
 import com.dgphoenix.casino.common.cache.data.bank.SubCasinoGroup;
 import com.dgphoenix.casino.common.exception.CommonException;
 import org.apache.log4j.Logger;
@@ -15,7 +17,7 @@ import java.util.concurrent.ConcurrentMap;
  * Created by inter on 01.06.15.
  */
 
-@CacheKeyInfo(description = "subCasinoGroup.name")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "subCasinoGroup.name")
 public class SubCasinoGroupCache extends AbstractExportableCache<SubCasinoGroup> {
     private static final Logger LOG = Logger.getLogger(SubCasinoGroupCache.class);
 

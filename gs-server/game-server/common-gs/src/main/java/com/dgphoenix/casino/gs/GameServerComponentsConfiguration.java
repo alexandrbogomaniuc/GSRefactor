@@ -4,7 +4,7 @@ import com.dgphoenix.casino.GeoIp;
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.AccountDistributedLockManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.IRemoteUnlocker;
+import com.abs.casino.cassandra.IRemoteUnlocker;
 import com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister;
 import com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister;
 import com.dgphoenix.casino.common.DomainSessionFactory;

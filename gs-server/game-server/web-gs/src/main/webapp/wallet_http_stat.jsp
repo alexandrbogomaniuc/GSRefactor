@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.common.util.web.HttpClientConnectionStatistics" %>
+<%@ page import="com.abs.casino.common.util.web.HttpClientConnectionStatistics" %>
 <%@ page import="com.dgphoenix.casino.gs.GameServer" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Date" %>

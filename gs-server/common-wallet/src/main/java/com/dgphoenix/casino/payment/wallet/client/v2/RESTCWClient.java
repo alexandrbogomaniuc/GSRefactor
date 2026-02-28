@@ -20,6 +20,7 @@ import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.abs.casino.common.util.xml.parser.Parser;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletStatusResult;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.abs.casino.gs.managers.payment.wallet.ILoggableCWClient;
 import com.abs.casino.gs.managers.payment.wallet.ILoggableContainer;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;

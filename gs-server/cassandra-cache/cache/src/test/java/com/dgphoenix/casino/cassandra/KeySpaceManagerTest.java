@@ -4,7 +4,7 @@ import com.codahale.metrics.Counter;
 import com.codahale.metrics.Snapshot;
 import com.abs.casino.cassandra.config.ClusterConfig;
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
-import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.google.common.collect.ImmutableSet;
 import org.junit.Before;
 import org.junit.Rule;

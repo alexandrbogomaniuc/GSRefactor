@@ -6,10 +6,10 @@
 <%@ page import="java.util.Iterator" %>
 <%@ page import="org.apache.struts.action.ActionMessage" %>
 <%@ page import="com.dgphoenix.casino.common.configuration.messages.MessageManager" %>
-<%@ page import="com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter" %>
-<%@ page import="com.dgphoenix.casino.common.util.xml.xmlwriter.Attribute" %>
+<%@ page import="com.abs.casino.common.util.xml.xmlwriter.XmlWriter" %>
+<%@ page import="com.abs.casino.common.util.xml.xmlwriter.Attribute" %>
 <%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringBuilderWriter" %>
+<%@ page import="com.abs.casino.common.util.string.StringBuilderWriter" %>
 <%@ page contentType="text/xml;charset=UTF-8" language="java" %>
 <%!
     public static final String ROOT_TAG_GAME_HISTORY = GameServerConfiguration.getInstance().getBrandApiRootShortTagName() +

@@ -2,7 +2,7 @@ package com.abs.casino.cassandra;
 
 import com.abs.casino.cassandra.config.ClusterConfig;
 import com.abs.casino.common.configuration.ConfigHelper;
-import com.abs.casino.common.util.NtpTimeProvider;
+import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;

@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameConstants;
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;

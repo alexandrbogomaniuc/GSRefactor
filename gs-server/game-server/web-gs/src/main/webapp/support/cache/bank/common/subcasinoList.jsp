@@ -5,7 +5,7 @@
 <%@ page import="org.apache.commons.lang.StringUtils" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.util.property.EnumProperty" %>
+<%@ page import="com.abs.casino.common.util.property.EnumProperty" %>
 
 <%
     String filterProperty = request.getParameter("filterProperty");

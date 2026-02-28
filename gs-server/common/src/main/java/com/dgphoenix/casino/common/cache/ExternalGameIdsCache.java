@@ -1,6 +1,7 @@
 package com.dgphoenix.casino.common.cache;
 
 
+import com.abs.casino.common.cache.ExportableCacheEntry;
 import com.dgphoenix.casino.common.cache.data.IdObject;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
@@ -9,7 +10,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 
 import java.util.regex.Pattern;
 
-@CacheKeyInfo(description = "externalGameId + bank.id")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "externalGameId + bank.id")
 public class ExternalGameIdsCache extends AbstractLazyLoadingExportableCache<String, IdObject> {
     public static final IdObject NONE = new IdObject() {
         @Override

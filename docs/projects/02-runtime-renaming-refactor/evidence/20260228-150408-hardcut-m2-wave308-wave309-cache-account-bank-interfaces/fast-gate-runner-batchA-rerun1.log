@@ -1,0 +1,369 @@
+[2026-02-28T15:05:21Z] START STEP01
+[2026-02-28T15:05:21Z] START STEP01
+[2026-02-28T15:05:21Z] DIR gs-server/common
+[2026-02-28T15:05:21Z] DIR gs-server/common
+[2026-02-28T15:05:21Z] CMD mvn -DskipTests install
+[2026-02-28T15:05:21Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 242 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BankMiniGameInfo.java:[4,44] error: cannot find symbol
+[ERROR]   symbol:   class ICoin
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[8,47] error: cannot find symbol
+[ERROR]   symbol:   class PlayerDeviceType
+  location: package com.abs.casino.common.cache.data.account
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[13,48] error: package com.abs.casino.common.cache.data.currency does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[223,11] error: cannot find symbol
+[ERROR]   symbol:   class PlayerDeviceType
+  location: class BaseGameInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[269,11] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[277,28] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[6,47] error: cannot find symbol
+[ERROR]   symbol:   class PlayerDeviceType
+  location: package com.abs.casino.common.cache.data.account
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[11,48] error: package com.abs.casino.common.cache.data.currency does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/cassandra/persist/ICassandraBaseGameInfoPersister.java:[3,48] error: package com.abs.casino.common.cache.data.currency does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[178,49] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[197,53] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[201,59] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[205,86] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[210,69] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[230,65] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[243,85] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[251,75] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[281,70] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[298,55] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[305,70] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[305,96] error: cannot find symbol
+[ERROR]   symbol:   class PlayerDeviceType
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[312,53] error: cannot find symbol
+[ERROR]   symbol:   class PlayerDeviceType
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[328,58] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[335,78] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[344,103] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[355,85] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[411,77] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[460,62] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[548,63] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[577,59] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[589,67] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[598,72] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[609,67] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/cassandra/persist/ICassandraBaseGameInfoPersister.java:[23,48] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: interface ICassandraBaseGameInfoPersister<BGI>
+  where BGI is a type-variable:
+    BGI extends IBaseGameInfo declared in interface ICassandraBaseGameInfoPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[12,44] error: cannot find symbol
+[ERROR]   symbol:   class BaseGameConstants
+  location: package com.abs.casino.common.cache.data.game
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[7,34] error: cannot find symbol
+[ERROR]   symbol:   class AbstractExportableCache
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[9,34] error: cannot find symbol
+[ERROR]   symbol:   class ExportableCacheEntry
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[24,40] error: cannot find symbol
+[ERROR]   symbol: class AbstractExportableCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[121,28] error: cannot find symbol
+[ERROR]   symbol:   class ExportableCacheEntry
+  location: class IntegerIdGenerator
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java:[4,47] error: cannot find symbol
+[ERROR]   symbol:   class IAccountInfo
+  location: package com.abs.casino.common.cache.data.account
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java:[6,48] error: package com.abs.casino.common.cache.data.currency does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java:[11,20] error: cannot find symbol
+[ERROR]   symbol:   class IAccountInfo
+  location: interface MassAwardRestriction
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java:[11,63] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+  location: interface MassAwardRestriction
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/storeddate/identifier/LasthandStoredInfo.java:[4,45] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+  location: package com.abs.casino.common.cache.data.bonus
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/storeddate/identifier/LasthandStoredInfo.java:[14,12] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+  location: class LasthandStoredInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/storeddate/identifier/LasthandStoredInfo.java:[16,73] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+  location: class LasthandStoredInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/storeddate/identifier/LasthandStoredInfo.java:[47,11] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+  location: class LasthandStoredInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/storeddate/identifier/LasthandStoredInfo.java:[51,35] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+  location: class LasthandStoredInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/storeddate/identifier/LasthandStoredInfo.java:[70,69] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+  location: class LasthandStoredInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletHelper.java:[7,45] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+  location: package com.abs.casino.common.cache.data.bonus
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletHelper.java:[39,29] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+  location: interface IWalletHelper
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletHelper.java:[42,28] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+  location: interface IWalletHelper
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[7,34] error: cannot find symbol
+[ERROR]   symbol:   class AbstractExportableCache
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[9,34] error: cannot find symbol
+[ERROR]   symbol:   class ExportableCacheEntry
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[24,33] error: cannot find symbol
+[ERROR]   symbol: class AbstractExportableCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[122,28] error: cannot find symbol
+[ERROR]   symbol:   class ExportableCacheEntry
+  location: class IdGenerator
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[6,47] error: cannot find symbol
+[ERROR]   symbol:   class PlayerDeviceType
+  location: package com.abs.casino.common.cache.data.account
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[54,18] error: cannot find symbol
+[INFO] 58 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.562 s
+[INFO] Finished at: 2026-02-28T15:05:25Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BankMiniGameInfo.java:[4,44] error: cannot find symbol
+[ERROR]   symbol:   class ICoin
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[8,47] error: cannot find symbol
+[ERROR]   symbol:   class PlayerDeviceType
+[ERROR]   location: package com.abs.casino.common.cache.data.account
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[13,48] error: package com.abs.casino.common.cache.data.currency does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[223,11] error: cannot find symbol
+[ERROR]   symbol:   class PlayerDeviceType
+[ERROR]   location: class BaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[269,11] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[277,28] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[6,47] error: cannot find symbol
+[ERROR]   symbol:   class PlayerDeviceType
+[ERROR]   location: package com.abs.casino.common.cache.data.account
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[11,48] error: package com.abs.casino.common.cache.data.currency does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/cassandra/persist/ICassandraBaseGameInfoPersister.java:[3,48] error: package com.abs.casino.common.cache.data.currency does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[178,49] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[197,53] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[201,59] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[205,86] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[210,69] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[230,65] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[243,85] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[251,75] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[281,70] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[298,55] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[305,70] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[305,96] error: cannot find symbol
+[ERROR]   symbol:   class PlayerDeviceType
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[312,53] error: cannot find symbol
+[ERROR]   symbol:   class PlayerDeviceType
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[328,58] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[335,78] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[344,103] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[355,85] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[411,77] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[460,62] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[548,63] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[577,59] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[589,67] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[598,72] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[609,67] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/cassandra/persist/ICassandraBaseGameInfoPersister.java:[23,48] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: interface ICassandraBaseGameInfoPersister<BGI>
+[ERROR]   where BGI is a type-variable:
+[ERROR]     BGI extends IBaseGameInfo declared in interface ICassandraBaseGameInfoPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[12,44] error: cannot find symbol
+[ERROR]   symbol:   class BaseGameConstants
+[ERROR]   location: package com.abs.casino.common.cache.data.game
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[7,34] error: cannot find symbol
+[ERROR]   symbol:   class AbstractExportableCache
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[9,34] error: cannot find symbol
+[ERROR]   symbol:   class ExportableCacheEntry
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[24,40] error: cannot find symbol
+[ERROR]   symbol: class AbstractExportableCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[121,28] error: cannot find symbol
+[ERROR]   symbol:   class ExportableCacheEntry
+[ERROR]   location: class IntegerIdGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java:[4,47] error: cannot find symbol
+[ERROR]   symbol:   class IAccountInfo
+[ERROR]   location: package com.abs.casino.common.cache.data.account
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java:[6,48] error: package com.abs.casino.common.cache.data.currency does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java:[11,20] error: cannot find symbol
+[ERROR]   symbol:   class IAccountInfo
+[ERROR]   location: interface MassAwardRestriction
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java:[11,63] error: cannot find symbol
+[ERROR]   symbol:   class ICurrency
+[ERROR]   location: interface MassAwardRestriction
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/storeddate/identifier/LasthandStoredInfo.java:[4,45] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+[ERROR]   location: package com.abs.casino.common.cache.data.bonus
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/storeddate/identifier/LasthandStoredInfo.java:[14,12] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+[ERROR]   location: class LasthandStoredInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/storeddate/identifier/LasthandStoredInfo.java:[16,73] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+[ERROR]   location: class LasthandStoredInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/storeddate/identifier/LasthandStoredInfo.java:[47,11] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+[ERROR]   location: class LasthandStoredInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/storeddate/identifier/LasthandStoredInfo.java:[51,35] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+[ERROR]   location: class LasthandStoredInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/storeddate/identifier/LasthandStoredInfo.java:[70,69] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+[ERROR]   location: class LasthandStoredInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletHelper.java:[7,45] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+[ERROR]   location: package com.abs.casino.common.cache.data.bonus
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletHelper.java:[39,29] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+[ERROR]   location: interface IWalletHelper
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletHelper.java:[42,28] error: cannot find symbol
+[ERROR]   symbol:   class BonusSystemType
+[ERROR]   location: interface IWalletHelper
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[7,34] error: cannot find symbol
+[ERROR]   symbol:   class AbstractExportableCache
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[9,34] error: cannot find symbol
+[ERROR]   symbol:   class ExportableCacheEntry
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[24,33] error: cannot find symbol
+[ERROR]   symbol: class AbstractExportableCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[122,28] error: cannot find symbol
+[ERROR]   symbol:   class ExportableCacheEntry
+[ERROR]   location: class IdGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[6,47] error: cannot find symbol
+[ERROR]   symbol:   class PlayerDeviceType
+[ERROR]   location: package com.abs.casino.common.cache.data.account
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[54,18] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[2026-02-28T15:05:25Z] FAIL STEP01 rc=1
+[2026-02-28T15:05:25Z] FAIL STEP01 rc=1

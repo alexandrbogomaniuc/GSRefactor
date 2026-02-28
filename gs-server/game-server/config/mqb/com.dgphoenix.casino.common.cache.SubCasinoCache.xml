@@ -1,5 +1,5 @@
 <object-stream>CassandraSubCasinoGroupPersisterCassandraSubCasinoGroupPersister
-  <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+  <com.abs.casino.common.cache.ExportableCacheEntry>
     <key>507</key>
     <value class="com.dgphoenix.casino.common.cache.data.bank.SubCasino">
       <id>507</id>
@@ -15,5 +15,5 @@
 		  <string>default.mqbase.com</string>
       </domainNames>
     </value>
-  </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
+  </com.abs.casino.common.cache.ExportableCacheEntry>
 </object-stream>

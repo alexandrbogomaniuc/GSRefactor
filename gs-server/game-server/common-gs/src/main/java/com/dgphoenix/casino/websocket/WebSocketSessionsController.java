@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.promo.PromoCampaignMember;
 import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+import com.abs.casino.common.util.string.StringIdGenerator;
 import com.abs.casino.common.web.statistics.IStatisticsGetter;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;

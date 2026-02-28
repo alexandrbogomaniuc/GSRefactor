@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.abs.casino.common.cache.data.language.LanguageType;
 import com.dgphoenix.casino.common.configuration.messages.MessageManager;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+import com.abs.casino.common.util.string.StringIdGenerator;
 import com.abs.casino.common.web.AbstractPageableForm;
 import com.abs.casino.common.web.IdValueBean;
 import com.google.common.collect.Collections2;

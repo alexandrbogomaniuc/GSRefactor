@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.payment.wallet;
 
 import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.CacheKeyInfo;
+import com.abs.casino.common.cache.CacheKeyInfo;
 import com.dgphoenix.casino.common.cache.IDistributedCache;
 import com.dgphoenix.casino.common.cache.data.payment.IWallet;
 import org.apache.logging.log4j.LogManager;
@@ -15,7 +15,7 @@ import java.util.Map;
  * Date: 4/26/12
  */
 
-@CacheKeyInfo(description = "persister.accountId")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "persister.accountId")
 public class WalletPersister implements IDistributedCache<String, IWallet> {
     private static final WalletPersister instance = new WalletPersister();
     private static final Logger LOG = LogManager.getLogger(WalletPersister.class);

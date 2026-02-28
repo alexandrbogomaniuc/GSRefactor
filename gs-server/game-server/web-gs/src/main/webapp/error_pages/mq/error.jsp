@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.dgphoenix.casino.common.util.logkit.ThreadLog" %>
+<%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="com.dgphoenix.casino.gs.GameServer" %>
 <%@ page import="java.util.Date" %>

@@ -1,6 +1,6 @@
 package com.abs.casino.common.web;
 
-import com.dgphoenix.casino.common.web.IPageableForm;
+import com.abs.casino.common.web.IPageableForm;
 
 import org.apache.struts.action.ActionForm;
 

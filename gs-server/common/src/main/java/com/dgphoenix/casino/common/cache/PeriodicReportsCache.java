@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.cache;
 
+import com.abs.casino.common.cache.AbstractDistributedCache;
 import com.abs.casino.common.cache.data.report.PeriodicReportInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.util.ReportPeriodEnum;
@@ -9,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-@CacheKeyInfo(description = "gameServer.id + bank.id + reportPeriod.name + ReportType.name")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "gameServer.id + bank.id + reportPeriod.name + ReportType.name")
 public class PeriodicReportsCache extends AbstractDistributedCache<PeriodicReportInfo> {
 
     //key - gameServerId+bankId+ReportPeriodEnum+ReportTypeEnum

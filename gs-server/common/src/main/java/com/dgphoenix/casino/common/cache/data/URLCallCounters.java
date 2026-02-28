@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.cache.data;
 
-import com.dgphoenix.casino.common.util.DateUtils;
+import com.abs.casino.common.util.DateUtils;
 
 public class URLCallCounters {
     private String date;

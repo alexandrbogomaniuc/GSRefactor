@@ -2,7 +2,8 @@ package com.abs.casino.bgm;
 
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;
-import com.dgphoenix.casino.common.cache.data.bank.ILimit;
+import com.abs.casino.common.cache.data.bank.ILimit;
+import com.abs.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper;
 import com.dgphoenix.casino.common.cache.data.bank.Limit;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.game.*;

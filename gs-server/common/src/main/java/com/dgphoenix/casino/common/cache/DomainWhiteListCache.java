@@ -1,5 +1,7 @@
 package com.dgphoenix.casino.common.cache;
 
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.abs.casino.common.cache.data.domain.DomainWhiteList;
 
@@ -11,7 +13,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-@CacheKeyInfo(description = "domain.id")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "domain.id")
 public class DomainWhiteListCache extends AbstractExportableCache<DomainWhiteList> implements IDistributedConfigCache {
     // gameId -> whiteList
     private final ConcurrentMap<Integer, DomainWhiteList> domains = new ConcurrentHashMap<>();

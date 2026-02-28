@@ -1,8 +1,8 @@
 package com.dgphoenix.casino.cassandra.persist.engine;
 
-import com.dgphoenix.casino.cassandra.persist.engine.configuration.Caching;
-import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStrategy;
-import com.dgphoenix.casino.cassandra.persist.engine.configuration.Compression;
+import com.abs.casino.cassandra.persist.engine.configuration.Caching;
+import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
+import com.abs.casino.cassandra.persist.engine.configuration.Compression;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.abs.casino.common.util.FastKryoHelper;
 import com.abs.casino.common.util.JsonHelper;

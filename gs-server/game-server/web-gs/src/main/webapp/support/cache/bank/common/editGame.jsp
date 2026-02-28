@@ -1,7 +1,7 @@
-<%@ page import="static com.dgphoenix.casino.common.cache.data.game.BaseGameConstants.containsProperty" %>
-<%@ page import="static com.dgphoenix.casino.common.cache.data.game.BaseGameConstants.isMandatoryProperty" %>
-<%@ page import="static com.dgphoenix.casino.common.cache.data.game.BaseGameConstants.isBooleanProperty" %>
-<%@ page import="static com.dgphoenix.casino.common.cache.data.game.BaseGameConstants.*" %>
+<%@ page import="static com.abs.casino.common.cache.data.game.BaseGameConstants.containsProperty" %>
+<%@ page import="static com.abs.casino.common.cache.data.game.BaseGameConstants.isMandatoryProperty" %>
+<%@ page import="static com.abs.casino.common.cache.data.game.BaseGameConstants.isBooleanProperty" %>
+<%@ page import="static com.abs.casino.common.cache.data.game.BaseGameConstants.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>

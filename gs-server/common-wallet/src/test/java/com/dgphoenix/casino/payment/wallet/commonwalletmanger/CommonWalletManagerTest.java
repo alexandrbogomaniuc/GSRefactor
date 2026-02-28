@@ -11,6 +11,7 @@ import com.abs.casino.common.config.CommonContextConfiguration;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.transactiondata.ITransactionDataPersister;
 import com.dgphoenix.casino.common.util.IdGenerator;
+import com.abs.casino.gs.managers.payment.wallet.IWalletHelper;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import com.abs.casino.gs.managers.payment.wallet.v4.CWMType;
 import com.dgphoenix.casino.payment.wallet.CommonWalletManager;

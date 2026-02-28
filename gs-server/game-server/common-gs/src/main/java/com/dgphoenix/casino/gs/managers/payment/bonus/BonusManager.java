@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.gs.managers.payment.bonus;
 
+import com.abs.casino.common.cache.data.bonus.BonusSystemType;
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraBonusArchivePersister;

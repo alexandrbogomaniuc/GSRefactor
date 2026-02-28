@@ -13,7 +13,7 @@ import com.abs.casino.common.promo.messages.server.notifications.PromoStatusChan
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.ExecutorUtils;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+import com.abs.casino.common.util.string.StringIdGenerator;
 import com.abs.casino.common.web.statistics.IStatisticsGetter;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.websocket.IWebSocketSessionsController;

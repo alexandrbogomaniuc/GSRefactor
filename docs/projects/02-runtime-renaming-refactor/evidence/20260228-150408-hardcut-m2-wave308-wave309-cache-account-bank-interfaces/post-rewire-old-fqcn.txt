@@ -1,0 +1,10 @@
+com.dgphoenix.casino.common.cache.AbstractDistributedCache|0
+com.dgphoenix.casino.common.cache.AbstractExportableCache|0
+com.dgphoenix.casino.common.cache.ExportableCacheEntry|0
+com.dgphoenix.casino.common.cache.data.account.IAccountInfo|0
+com.dgphoenix.casino.common.cache.data.account.PlayerDeviceType|0
+com.dgphoenix.casino.common.cache.data.bank.ICoin|0
+com.dgphoenix.casino.common.cache.data.bank.ILimit|0
+com.dgphoenix.casino.common.cache.data.bonus.BonusSystemType|0
+com.dgphoenix.casino.common.cache.data.currency.ICurrency|0
+com.dgphoenix.casino.common.cache.data.game.BaseGameConstants|0

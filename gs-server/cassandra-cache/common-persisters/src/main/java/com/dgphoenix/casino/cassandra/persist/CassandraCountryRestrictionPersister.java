@@ -3,7 +3,7 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStrategy;
+import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.common.geoip.CountryRestrictionList;
 import com.abs.casino.common.geoip.RestrictionType;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;

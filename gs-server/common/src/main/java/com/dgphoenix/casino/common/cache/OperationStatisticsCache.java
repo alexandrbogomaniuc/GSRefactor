@@ -1,6 +1,8 @@
 package com.dgphoenix.casino.common.cache;
 
 
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
 import com.dgphoenix.casino.common.cache.data.payment.WOStatistics;
 import com.dgphoenix.casino.common.cache.data.payment.WOStatisticsContainer;
 import com.dgphoenix.casino.common.exception.CommonException;
@@ -10,7 +12,7 @@ import java.io.ObjectOutputStream;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-@CacheKeyInfo(description = "bankId")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "bankId")
 public class OperationStatisticsCache extends AbstractExportableCache<WOStatisticsContainer> {
 
     private static final OperationStatisticsCache instance = new OperationStatisticsCache();

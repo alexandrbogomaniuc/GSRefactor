@@ -1,5 +1,6 @@
 package com.abs.casino.gs.managers.dblink;
 
+import com.abs.casino.common.cache.data.bank.ICoin;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraPlayerGameSettingsPersister;
 import com.dgphoenix.casino.common.SessionHelper;
@@ -12,7 +13,7 @@ import com.dgphoenix.casino.common.cache.data.account.PlayerGameSettings;
 import com.dgphoenix.casino.common.cache.data.bank.*;
 import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameConstants;
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.abs.casino.common.cache.data.bank.PlayerGameSettingsType;

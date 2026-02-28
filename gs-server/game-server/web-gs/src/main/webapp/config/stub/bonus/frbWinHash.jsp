@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.dgphoenix.casino.common.exception.BonusException" %>
+<%@ page import="com.abs.casino.common.exception.BonusException" %>
 <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>

@@ -1,8 +1,9 @@
 package com.abs.casino.services.gamelimits;
 
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameCache;
-import com.dgphoenix.casino.common.cache.data.account.PlayerDeviceType;
+import com.abs.casino.common.cache.data.account.PlayerDeviceType;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.cache.data.game.*;

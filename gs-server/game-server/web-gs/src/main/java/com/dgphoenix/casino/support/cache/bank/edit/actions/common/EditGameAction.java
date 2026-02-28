@@ -5,13 +5,13 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;
 import com.dgphoenix.casino.common.cache.data.bank.Limit;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameConstants;
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.abs.casino.common.util.DigitFormatter;
-import com.dgphoenix.casino.common.util.InheritFromTemplate;
+import com.abs.casino.common.util.InheritFromTemplate;
 import com.abs.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.BaseAction;
@@ -34,7 +34,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.dgphoenix.casino.common.cache.data.game.BaseGameConstants.*;
+import static com.abs.casino.common.cache.data.game.BaseGameConstants.*;
 import static org.apache.struts.action.ActionMessages.GLOBAL_MESSAGE;
 
 public class EditGameAction extends Action {

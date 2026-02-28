@@ -4,6 +4,7 @@
  */
 package com.dgphoenix.casino.common.cache;
 
+import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.abs.casino.common.cache.ILoadingCache;
 import com.dgphoenix.casino.cassandra.persist.ICachePersister;
@@ -31,7 +32,7 @@ import java.util.concurrent.ExecutionException;
 
 import static com.google.common.base.Preconditions.checkState;
 
-@CacheKeyInfo(description = "currency.code")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "currency.code")
 public class CurrencyCache extends AbstractExportableCache<Currency> implements IDistributedConfigCache, ILoadingCache {
     private static final Logger LOG = LogManager.getLogger(CurrencyCache.class);
     private static final CurrencyCache instance = new CurrencyCache();

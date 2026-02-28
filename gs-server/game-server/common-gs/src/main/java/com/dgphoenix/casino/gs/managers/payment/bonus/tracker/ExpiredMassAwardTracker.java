@@ -2,13 +2,13 @@ package com.abs.casino.gs.managers.payment.bonus.tracker;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.DistributedLockManager;
+import com.abs.casino.cassandra.DistributedLockManager;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.MassAwardCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bonus.BaseMassAward;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusMassAwardBonusTemplate;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusSystemType;
+import com.abs.casino.common.cache.data.bonus.BonusSystemType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.lock.LockingInfo;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;

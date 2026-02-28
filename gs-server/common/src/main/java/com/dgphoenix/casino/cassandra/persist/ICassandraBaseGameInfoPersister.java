@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.cassandra.persist;
 
-import com.dgphoenix.casino.common.cache.data.currency.ICurrency;
+import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 
