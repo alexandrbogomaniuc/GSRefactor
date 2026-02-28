@@ -8404,3 +8404,24 @@
   - ETA `27.3h` (`3.41` workdays)
 - Next:
   - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external environment blocker.
+
+### 2026-02-28 05:52 UTC
+- Continued Project 02 hard-cut execution in `Dev_new` and completed `W248 + W249` with canonical validation.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `11`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - fast gate rerun1 failed at `STEP06` because moved DTOs lost same-package visibility to `KafkaRequest`.
+  - fixed with minimal compatibility import in moved DTO declarations (`import com.dgphoenix.casino.kafka.dto.KafkaRequest;`).
+  - canonical validation reached:
+    - fast gate batchA rerun2: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun2: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-052523-hardcut-m2-wave248-wave249-kafka-dto-invalidate-notify/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/185-hard-cut-m2-wave248-wave249-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1631`, remaining `646`, burndown `71.629337%`
+  - Project 02 `45.262679%`, Core `72.631340%`, Portfolio `86.315670%`
+  - ETA `26.8h` (`3.36` workdays)
+- Next:
+  - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external environment blocker.

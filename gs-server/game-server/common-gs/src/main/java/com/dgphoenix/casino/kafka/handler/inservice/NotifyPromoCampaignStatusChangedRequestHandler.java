@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.InServiceServiceHandler;
-import com.dgphoenix.casino.kafka.dto.NotifyPromoCampaignStatusChangedRequest;
+import com.abs.casino.kafka.dto.NotifyPromoCampaignStatusChangedRequest;
 import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
 import com.dgphoenix.casino.kafka.handler.KafkaInServiceAsyncRequestHandler;
 

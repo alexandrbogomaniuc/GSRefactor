@@ -1,0 +1,34 @@
+ M docs/12-work-diary.md
+ M docs/projects/02-runtime-renaming-refactor/ACTIVITY-LOG.md
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/RemoteCallHelper.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidateAllBaseGameInfoRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidateBonusClientRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidateFrBonusClientRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidateFrBonusWinManagerRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidateLocalBaseGameInfoRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidatePromoCampaignCacheRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidateWalletManagerRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/NotifyPromoCampaignCreatedRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/NotifyPromoCampaignStatusChangedRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/NotifySessionClosedRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/RefreshConfigRequest.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/InvalidateAllBaseGameInfoRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/InvalidateBonusClientRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/InvalidateFrBonusClientRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/InvalidateFrBonusWinManagerRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/InvalidateLocalBaseGameInfoRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/InvalidatePromoCampaignCacheRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/InvalidateWalletManagerRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/NotifyPromoCampaignCreatedRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/NotifyPromoCampaignStatusChangedRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/NotifySessionClosedRequestHandler.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/RefreshConfigRequestHandler.java
+ M gs-server/game-server/web-gs/src/main/resources/cluster-hosts.properties
+?? .tmp-w202-batchA.txt
+?? .tmp-w202-batchB.txt
+?? docs/projects/02-runtime-renaming-refactor/185-hard-cut-m2-wave248-wave249-parallel-batches-report-20260228.md
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-002035-hardcut-m2-wave222ab-wave223-parallel-batches/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-035231-hardcut-m2-wave242ab-wave243-parallel-batches/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-035609-hardcut-m2-wave242ab-wave243-parallel-batches/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-040443-hardcut-m2-wave242-wave243-mp-kafka-cluster/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-052523-hardcut-m2-wave248-wave249-kafka-dto-invalidate-notify/

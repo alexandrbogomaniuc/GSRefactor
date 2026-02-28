@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import com.dgphoenix.casino.common.cache.CurrencyCache;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.gs.socket.InServiceServiceHandler;
-import com.dgphoenix.casino.kafka.dto.InvalidateLocalBaseGameInfoRequest;
+import com.abs.casino.kafka.dto.InvalidateLocalBaseGameInfoRequest;
 import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
 import com.dgphoenix.casino.kafka.handler.KafkaInServiceAsyncRequestHandler;
 

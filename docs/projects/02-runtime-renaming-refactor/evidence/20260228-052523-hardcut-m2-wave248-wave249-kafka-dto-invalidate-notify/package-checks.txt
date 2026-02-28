@@ -1,0 +1,12 @@
+# Package checks (before)
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidateAllBaseGameInfoRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidateBonusClientRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidateFrBonusClientRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidateFrBonusWinManagerRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidateLocalBaseGameInfoRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidatePromoCampaignCacheRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidateWalletManagerRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/RefreshConfigRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/NotifyPromoCampaignCreatedRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/NotifyPromoCampaignStatusChangedRequest.java: package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/NotifySessionClosedRequest.java: package com.abs.casino.kafka.dto;

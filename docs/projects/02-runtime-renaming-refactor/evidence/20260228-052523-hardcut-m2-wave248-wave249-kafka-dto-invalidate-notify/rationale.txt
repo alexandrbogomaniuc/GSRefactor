@@ -1,0 +1,3 @@
+Low-risk declaration batch selected from common-gs kafka/dto invalidate+notify+refresh requests.
+Fan-out is bounded to RemoteCallHelper and matching in-service handlers only.
+No blind global replace; rewires are import-only and scope-limited.

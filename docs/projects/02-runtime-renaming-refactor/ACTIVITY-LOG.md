@@ -3559,3 +3559,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 12`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+12`.
   - global tracked source declarations/files now `657` remaining (`2277` baseline, `1620` reduced, `71.146245%` burndown).
+
+## 2026-02-28 05:52 UTC (Hard-Cut M2 Wave 248 + 249)
+- Continued hard-cut execution from W247 with declaration-first overlap-safe batch in `common-gs` kafka dto surfaces:
+  - `W248`: 11 declaration migrations in invalidate/notify/refresh request DTOs.
+  - `W249`: integration and validation.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - fast gate rerun1 failed at `STEP06` because moved DTOs lost same-package visibility to `KafkaRequest`.
+  - fixed with minimal compatibility import in moved DTO declarations (`import com.dgphoenix.casino.kafka.dto.KafkaRequest;`).
+  - no blind/global replacement performed.
+  - canonical validation reached:
+    - fast gate batchA rerun2: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun2: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-052523-hardcut-m2-wave248-wave249-kafka-dto-invalidate-notify/`
+  - report: `docs/projects/02-runtime-renaming-refactor/185-hard-cut-m2-wave248-wave249-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 11`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+11`.
+  - global tracked source declarations/files now `646` remaining (`2277` baseline, `1631` reduced, `71.629337%` burndown).
