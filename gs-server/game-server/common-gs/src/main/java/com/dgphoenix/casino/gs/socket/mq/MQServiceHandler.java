@@ -42,7 +42,7 @@ import com.abs.casino.common.client.canex.request.onlinerooms.Room;
 import com.dgphoenix.casino.common.currency.CurrencyRate;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.abs.casino.common.exception.AccountException;
-import com.dgphoenix.casino.common.exception.WalletException;
+import com.abs.casino.common.exception.WalletException;
 import com.abs.casino.common.kpi.RoundKPIInfo;
 import com.abs.casino.common.mp.*;
 import com.dgphoenix.casino.common.promo.*;

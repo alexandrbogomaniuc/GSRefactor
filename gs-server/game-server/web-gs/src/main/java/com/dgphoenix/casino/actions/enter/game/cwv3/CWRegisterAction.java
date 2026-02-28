@@ -7,6 +7,7 @@ import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.exception.*;
+import com.abs.casino.common.exception.WalletException;
 import com.dgphoenix.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManager;

@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.abs.casino.common.client.canex.request.privateroom.Status;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.WalletException;
+import com.abs.casino.common.exception.WalletException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.xml.IXmlRequestResult;

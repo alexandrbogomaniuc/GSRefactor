@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.exception.AlreadyExistsException;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.WalletException;
+import com.abs.casino.common.exception.WalletException;
 import com.dgphoenix.casino.common.promo.*;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.Pair;

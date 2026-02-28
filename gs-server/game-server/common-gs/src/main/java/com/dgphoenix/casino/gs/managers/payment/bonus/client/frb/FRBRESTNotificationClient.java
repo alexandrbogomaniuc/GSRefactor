@@ -12,7 +12,7 @@ import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusNotification;
 import com.dgphoenix.casino.common.exception.BonusException;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.FRBException;
+import com.abs.casino.common.exception.FRBException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;

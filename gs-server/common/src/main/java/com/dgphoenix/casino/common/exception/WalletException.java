@@ -1,5 +1,6 @@
-package com.dgphoenix.casino.common.exception;
+package com.abs.casino.common.exception;
 
+import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CWError;
 
 /**

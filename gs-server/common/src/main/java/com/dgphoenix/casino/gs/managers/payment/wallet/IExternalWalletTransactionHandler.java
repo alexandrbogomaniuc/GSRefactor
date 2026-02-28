@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.gs.managers.payment.wallet;
 
-import com.dgphoenix.casino.common.exception.WalletException;
+import com.abs.casino.common.exception.WalletException;
 
 /**
  * User: flsh

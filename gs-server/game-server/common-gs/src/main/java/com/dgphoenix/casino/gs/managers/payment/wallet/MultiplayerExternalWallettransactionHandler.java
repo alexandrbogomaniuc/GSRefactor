@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.data.payment.PaymentMode;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
 import com.dgphoenix.casino.common.cache.data.payment.transfer.ExternalPaymentTransaction;
 import com.dgphoenix.casino.common.cache.data.payment.transfer.TransactionStatus;
-import com.dgphoenix.casino.common.exception.WalletException;
+import com.abs.casino.common.exception.WalletException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

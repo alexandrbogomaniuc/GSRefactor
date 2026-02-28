@@ -1,0 +1,2 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/WalletException.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/FRBException.java

@@ -1,0 +1,2 @@
+Migrate final two remaining common exceptions (`WalletException`, `FRBException`) after prior low-risk exception waves.
+Bounded import rewires only; wildcard users with symbol references receive explicit `com.abs` imports.

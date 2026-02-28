@@ -8524,3 +8524,11 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-065619-hardcut-m2-wave260-wave261-common-exceptions-core/`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/191-hard-cut-m2-wave260-wave261-parallel-batches-report-20260228.md`
 - Metrics refresh: baseline `2277`, reduced `1688`, remaining `589`, burndown `74.132631%`; Project 02 `46.560099%`; Core `73.280049%`; Portfolio `86.640024%`; ETA `24.3h` (`3.04` workdays).
+
+### 2026-02-28 07:14 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W262 + W263`.
+- Canonical validation profile retained: fast gate `STEP01-08 PASS`, `STEP09 FAIL (rc=2)`; full matrix `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL (rc=2)`, retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-070700-hardcut-m2-wave262-wave263-common-exceptions-wallet-frb/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/192-hard-cut-m2-wave262-wave263-parallel-batches-report-20260228.md`
+- Metrics refresh: baseline `2277`, reduced `1690`, remaining `587`, burndown `74.220465%`; Project 02 `46.587160%`; Core `73.293580%`; Portfolio `86.646790%`; ETA `24.2h` (`3.03` workdays).

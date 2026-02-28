@@ -21,6 +21,7 @@ import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.*;
+import com.abs.casino.common.exception.WalletException;
 import com.dgphoenix.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.string.StringUtils;

@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin;
 import com.abs.casino.common.cache.data.payment.frb.IFRBonusWinOperation;
 import com.dgphoenix.casino.common.exception.BonusException;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.FRBException;
+import com.abs.casino.common.exception.FRBException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.IdGenerator;
 import com.abs.casino.common.util.web.HttpClientConnection;

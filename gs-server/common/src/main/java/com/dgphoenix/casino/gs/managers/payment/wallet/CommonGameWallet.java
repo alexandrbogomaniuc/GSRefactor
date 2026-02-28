@@ -3,7 +3,7 @@ package com.dgphoenix.casino.gs.managers.payment.wallet;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.exception.WalletException;
+import com.abs.casino.common.exception.WalletException;
 import com.dgphoenix.casino.common.promo.PromoWinInfo;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.esotericsoftware.kryo.Kryo;

@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBWinOperation;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin;
-import com.dgphoenix.casino.common.exception.FRBException;
+import com.abs.casino.common.exception.FRBException;
 import com.dgphoenix.casino.common.util.ILongIdGenerator;
 import com.dgphoenix.casino.gs.GameServer;
 import com.abs.casino.gs.managers.dblink.FRBonusDBLink;

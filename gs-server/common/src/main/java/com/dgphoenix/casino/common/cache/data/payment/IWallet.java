@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.common.cache.data.payment;
 
 import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-import com.dgphoenix.casino.common.exception.WalletException;
+import com.abs.casino.common.exception.WalletException;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet;
 import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletOperation;
 

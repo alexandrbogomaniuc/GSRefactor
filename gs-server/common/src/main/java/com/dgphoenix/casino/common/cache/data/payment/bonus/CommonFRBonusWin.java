@@ -2,7 +2,7 @@ package com.abs.casino.common.cache.data.payment.bonus;
 
 import com.abs.casino.common.cache.data.payment.frb.FRBWinOperationStatus;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBWinOperation;
-import com.dgphoenix.casino.common.exception.FRBException;
+import com.abs.casino.common.exception.FRBException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;

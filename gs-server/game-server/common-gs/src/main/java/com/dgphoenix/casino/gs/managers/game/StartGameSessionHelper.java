@@ -28,6 +28,8 @@ import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.*;
+import com.abs.casino.common.exception.FRBException;
+import com.abs.casino.common.exception.WalletException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;

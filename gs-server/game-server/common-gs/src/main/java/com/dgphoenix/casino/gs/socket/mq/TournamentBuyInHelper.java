@@ -19,7 +19,7 @@ import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.exception.WalletException;
+import com.abs.casino.common.exception.WalletException;
 import com.abs.casino.common.promo.battleground.BattlegroundConfig;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.IdGenerator;
