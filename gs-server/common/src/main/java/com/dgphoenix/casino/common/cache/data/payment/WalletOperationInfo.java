@@ -1,5 +1,7 @@
-package com.dgphoenix.casino.common.cache.data.payment;
+package com.abs.casino.common.cache.data.payment;
 
+import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

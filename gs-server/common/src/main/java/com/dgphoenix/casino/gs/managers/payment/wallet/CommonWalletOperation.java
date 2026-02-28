@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.gs.managers.payment.wallet;
 
-import com.dgphoenix.casino.common.cache.data.payment.AbstractWalletOperation;
+import com.abs.casino.common.cache.data.payment.AbstractWalletOperation;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
 import com.esotericsoftware.kryo.Kryo;

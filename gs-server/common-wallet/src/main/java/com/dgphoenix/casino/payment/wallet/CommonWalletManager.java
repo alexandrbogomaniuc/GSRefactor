@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationAdditionalProperties;
+import com.abs.casino.common.cache.data.payment.WalletOperationAdditionalProperties;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;

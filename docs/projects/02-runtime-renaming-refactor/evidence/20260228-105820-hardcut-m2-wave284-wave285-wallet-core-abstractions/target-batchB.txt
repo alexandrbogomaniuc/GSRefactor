@@ -1,0 +1,2 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/WalletOperationInfo.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/WalletOperationAdditionalProperties.java

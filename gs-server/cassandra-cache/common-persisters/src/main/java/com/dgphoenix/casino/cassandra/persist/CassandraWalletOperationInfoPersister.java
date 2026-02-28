@@ -5,7 +5,7 @@ import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationInfo;
+import com.abs.casino.common.cache.data.payment.WalletOperationInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.CalendarUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
