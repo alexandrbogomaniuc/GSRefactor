@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
 import com.abs.casino.common.configuration.CasinoSystemType;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.ReflectionUtils;
+import com.abs.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;

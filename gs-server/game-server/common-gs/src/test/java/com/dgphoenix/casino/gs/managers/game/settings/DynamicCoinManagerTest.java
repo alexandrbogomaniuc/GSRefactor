@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.cache.data.game.BaseGameConstants;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.dgphoenix.casino.common.cache.data.game.GameVariableType;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
-import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
+import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.google.common.collect.ImmutableMap;
 import org.junit.Before;

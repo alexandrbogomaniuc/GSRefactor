@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.dgphoenix.casino.common.util.DigitFormatter.doubleToMoney;
+import static com.abs.casino.common.util.DigitFormatter.doubleToMoney;
 import static junit.framework.Assert.assertEquals;
 
 public class JspClassTest {

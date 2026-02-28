@@ -3,7 +3,7 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.common.cache.CacheKeyInfo;
+import com.abs.casino.common.cache.CacheKeyInfo;
 import com.dgphoenix.casino.common.cache.IDistributedCache;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBWinOperation;
 import org.apache.logging.log4j.LogManager;

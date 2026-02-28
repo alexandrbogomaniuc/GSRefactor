@@ -15,7 +15,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.MismatchSessionException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.CollectionUtils;
-import com.dgphoenix.casino.common.util.DigitFormatter;
+import com.abs.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.string.StringIdGenerator;
 import com.abs.casino.common.web.BaseAction;

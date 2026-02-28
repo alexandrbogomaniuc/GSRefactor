@@ -25,7 +25,7 @@ import com.abs.casino.common.exception.CurrencyMismatchException;
 import com.abs.casino.common.exception.InvalidCurrencyRateException;
 import com.abs.casino.common.exception.UnknownCurrencyException;
 import com.abs.casino.common.exception.WalletException;
-import com.dgphoenix.casino.common.util.DigitFormatter;
+import com.abs.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.MobileDetector;

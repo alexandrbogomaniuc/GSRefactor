@@ -1,0 +1,369 @@
+[2026-02-28T14:27:20Z] START STEP01
+[2026-02-28T14:27:20Z] START STEP01
+[2026-02-28T14:27:20Z] DIR gs-server/common
+[2026-02-28T14:27:20Z] DIR gs-server/common
+[2026-02-28T14:27:20Z] CMD mvn -DskipTests install
+[2026-02-28T14:27:20Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 246 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:[4,34] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:[46,26] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/AccountInfo.java:[4,34] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/AccountInfo.java:[32,92] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/MassAwardCache.java:[5,38] error: cannot find symbol
+[ERROR]   symbol:   class BonusException
+  location: package com.abs.casino.common.exception
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseMassAward.java:[4,34] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseMassAward.java:[30,76] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/MassAwardCache.java:[41,52] error: cannot find symbol
+[ERROR]   symbol:   class BonusException
+  location: class MassAwardCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseBonus.java:[3,34] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseBonus.java:[27,33] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfoTemplate.java:[6,34] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfoTemplate.java:[36,102] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[6,34] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[47,122] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/server/ServerInfo.java:[4,34] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/server/ServerInfo.java:[21,92] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[8,34] error: cannot find symbol
+[ERROR]   symbol:   class CacheKeyInfo
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[23,1] error: cannot find symbol
+[ERROR]   symbol: class CacheKeyInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[3,38] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: package com.abs.casino.common.web.bonus
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[14,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[15,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[16,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[17,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[18,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[19,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[20,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[21,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[22,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[23,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[25,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[26,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[27,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[28,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[29,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[30,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[31,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[32,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[33,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[34,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[35,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[36,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[37,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[38,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[39,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[40,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[41,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[42,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[43,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[45,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+  location: class BonusErrors
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/FRBException.java:[3,38] error: cannot find symbol
+[ERROR]   symbol:   class BonusException
+  location: package com.abs.casino.common.exception
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/FRBException.java:[5,34] error: cannot find symbol
+[ERROR]   symbol: class BonusException
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/TransactionDataFactory.java:[6,33] error: cannot find symbol
+[ERROR]   symbol:   class ReflectionUtils
+  location: package com.abs.casino.common.util
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/BaseAction.java:[7,33] error: cannot find symbol
+[ERROR]   symbol:   class DigitFormatter
+  location: package com.abs.casino.common.util
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/WalletPersister.java:[4,34] error: cannot find symbol
+[ERROR]   symbol:   class CacheKeyInfo
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/WalletPersister.java:[18,1] error: cannot find symbol
+[ERROR]   symbol: class CacheKeyInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[8,34] error: cannot find symbol
+[ERROR]   symbol:   class CacheKeyInfo
+  location: package com.abs.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[23,1] error: cannot find symbol
+[ERROR]   symbol: class CacheKeyInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/InvalidCurrencyRateException.java:[3,37] error: cannot find symbol
+[ERROR]   symbol:   class CurrencyRate
+  location: package com.abs.casino.common.currency
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/InvalidCurrencyRateException.java:[7,40] error: cannot find symbol
+[INFO] 59 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.366 s
+[INFO] Finished at: 2026-02-28T14:27:24Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:[4,34] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:[46,26] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/AccountInfo.java:[4,34] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/AccountInfo.java:[32,92] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/MassAwardCache.java:[5,38] error: cannot find symbol
+[ERROR]   symbol:   class BonusException
+[ERROR]   location: package com.abs.casino.common.exception
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseMassAward.java:[4,34] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseMassAward.java:[30,76] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/MassAwardCache.java:[41,52] error: cannot find symbol
+[ERROR]   symbol:   class BonusException
+[ERROR]   location: class MassAwardCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseBonus.java:[3,34] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseBonus.java:[27,33] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfoTemplate.java:[6,34] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfoTemplate.java:[36,102] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[6,34] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[47,122] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/server/ServerInfo.java:[4,34] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/server/ServerInfo.java:[21,92] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[8,34] error: cannot find symbol
+[ERROR]   symbol:   class CacheKeyInfo
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java:[23,1] error: cannot find symbol
+[ERROR]   symbol: class CacheKeyInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[3,38] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: package com.abs.casino.common.web.bonus
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[14,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[15,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[16,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[17,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[18,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[19,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[20,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[21,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[22,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[23,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[25,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[26,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[27,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[28,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[29,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[30,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[31,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[32,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[33,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[34,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[35,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[36,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[37,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[38,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[39,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[40,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[41,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[42,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[43,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/bonus/BonusErrors.java:[45,24] error: cannot find symbol
+[ERROR]   symbol:   class BonusError
+[ERROR]   location: class BonusErrors
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/FRBException.java:[3,38] error: cannot find symbol
+[ERROR]   symbol:   class BonusException
+[ERROR]   location: package com.abs.casino.common.exception
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/FRBException.java:[5,34] error: cannot find symbol
+[ERROR]   symbol: class BonusException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/TransactionDataFactory.java:[6,33] error: cannot find symbol
+[ERROR]   symbol:   class ReflectionUtils
+[ERROR]   location: package com.abs.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/BaseAction.java:[7,33] error: cannot find symbol
+[ERROR]   symbol:   class DigitFormatter
+[ERROR]   location: package com.abs.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/WalletPersister.java:[4,34] error: cannot find symbol
+[ERROR]   symbol:   class CacheKeyInfo
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/WalletPersister.java:[18,1] error: cannot find symbol
+[ERROR]   symbol: class CacheKeyInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[8,34] error: cannot find symbol
+[ERROR]   symbol:   class CacheKeyInfo
+[ERROR]   location: package com.abs.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java:[23,1] error: cannot find symbol
+[ERROR]   symbol: class CacheKeyInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/InvalidCurrencyRateException.java:[3,37] error: cannot find symbol
+[ERROR]   symbol:   class CurrencyRate
+[ERROR]   location: package com.abs.casino.common.currency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/InvalidCurrencyRateException.java:[7,40] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[2026-02-28T14:27:24Z] FAIL STEP01 rc=1
+[2026-02-28T14:27:24Z] FAIL STEP01 rc=1

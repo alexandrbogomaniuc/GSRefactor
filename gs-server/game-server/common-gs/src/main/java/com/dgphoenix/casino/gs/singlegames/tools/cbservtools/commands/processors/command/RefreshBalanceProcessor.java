@@ -2,7 +2,7 @@ package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.comm
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
-import com.dgphoenix.casino.common.util.DigitFormatter;
+import com.abs.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.gs.singlegames.tools.cbservtools.IGameController;

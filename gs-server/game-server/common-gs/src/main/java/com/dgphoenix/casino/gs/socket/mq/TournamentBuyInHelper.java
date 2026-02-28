@@ -17,7 +17,7 @@ import com.abs.casino.common.cache.data.payment.transfer.TransactionType;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
+import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.WalletException;
 import com.abs.casino.common.promo.battleground.BattlegroundConfig;

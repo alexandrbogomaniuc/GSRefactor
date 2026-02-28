@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.data.bonus.BaseMassAward;
 import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusGameMode;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusType;
-import com.dgphoenix.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.BonusException;
 import com.dgphoenix.casino.common.exception.CommonException;
 
 import java.util.List;

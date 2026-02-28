@@ -27,7 +27,7 @@ import com.betsoft.casino.mp.utils.BGStatusUtil;
 import com.betsoft.casino.mp.web.ISocketClient;
 import com.betsoft.casino.teststand.TestStandError;
 import com.betsoft.casino.teststand.TestStandLocal;
-import com.dgphoenix.casino.common.currency.CurrencyRate;
+import com.abs.casino.common.currency.CurrencyRate;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.mp.*;
 import com.dgphoenix.casino.common.util.CollectionUtils;

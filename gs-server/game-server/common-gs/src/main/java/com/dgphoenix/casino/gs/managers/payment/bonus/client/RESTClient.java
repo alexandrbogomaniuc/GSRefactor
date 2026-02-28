@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.BonusException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.CollectionUtils;

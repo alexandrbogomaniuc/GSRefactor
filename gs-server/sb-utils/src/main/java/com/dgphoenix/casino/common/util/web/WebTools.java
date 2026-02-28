@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.web;
 
-import com.dgphoenix.casino.common.util.KryoHelper;
+import com.abs.casino.common.util.KryoHelper;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.Charsets;
 import org.apache.http.NameValuePair;

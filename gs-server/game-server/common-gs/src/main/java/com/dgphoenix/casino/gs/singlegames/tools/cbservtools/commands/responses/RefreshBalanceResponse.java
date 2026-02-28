@@ -1,6 +1,6 @@
 package com.abs.casino.gs.singlegames.tools.cbservtools.commands.responses;
 
-import com.dgphoenix.casino.common.util.DigitFormatter;
+import com.abs.casino.common.util.DigitFormatter;
 import com.abs.casino.gs.singlegames.tools.cbservtools.IGameController;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 

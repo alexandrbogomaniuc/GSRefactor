@@ -1,6 +1,6 @@
 package com.abs.casino.common.web.bonus;
 
-import com.dgphoenix.casino.common.web.bonus.BonusError;
+import com.abs.casino.common.web.bonus.BonusError;
 
 /**
  * User: ktd

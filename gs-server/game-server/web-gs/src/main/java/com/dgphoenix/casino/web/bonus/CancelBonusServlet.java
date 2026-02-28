@@ -2,10 +2,10 @@ package com.abs.casino.web.bonus;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
-import com.dgphoenix.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.BonusException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.xml.xmlwriter.XmlWriter;
-import com.dgphoenix.casino.common.web.bonus.BonusError;
+import com.abs.casino.common.web.bonus.BonusError;
 import com.abs.casino.common.web.bonus.BonusErrors;
 import com.abs.casino.common.web.bonus.CBonus;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;

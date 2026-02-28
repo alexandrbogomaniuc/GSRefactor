@@ -1,6 +1,6 @@
 package com.abs.casino.tracker;
 
-import com.dgphoenix.casino.common.currency.CurrencyRate;
+import com.abs.casino.common.currency.CurrencyRate;
 import com.abs.casino.common.exception.TransportException;
 import com.abs.casino.common.util.web.HttpClientConnection;
 import org.apache.commons.lang.StringUtils;

@@ -3,7 +3,7 @@ package com.abs.casino.tracker;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesConfigPersister;
 import com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesPersister;
-import com.dgphoenix.casino.common.currency.CurrencyRate;
+import com.abs.casino.common.currency.CurrencyRate;
 import com.dgphoenix.casino.common.util.Pair;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;

@@ -1,6 +1,6 @@
 package com.abs.casino.common.util;
 
-import com.dgphoenix.casino.common.util.ReflectionUtils;
+import com.abs.casino.common.util.ReflectionUtils;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

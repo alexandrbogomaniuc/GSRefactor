@@ -31,7 +31,7 @@ import com.abs.casino.common.jackpot.IJPWinQualifier;
 import com.dgphoenix.casino.common.promo.IPromoCampaign;
 import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.DigitFormatter;
+import com.abs.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.IdGenerator;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import com.abs.casino.common.util.logkit.GameLog;

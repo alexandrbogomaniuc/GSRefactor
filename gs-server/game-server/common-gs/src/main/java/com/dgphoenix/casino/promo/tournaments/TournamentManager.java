@@ -1,7 +1,7 @@
 package com.abs.casino.promo.tournaments;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
+import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.*;
 import com.abs.casino.common.promo.feed.tournament.TournamentFeed;

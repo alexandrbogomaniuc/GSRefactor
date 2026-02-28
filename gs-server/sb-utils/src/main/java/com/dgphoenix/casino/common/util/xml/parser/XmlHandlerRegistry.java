@@ -7,7 +7,7 @@ package com.abs.casino.common.util.xml.parser;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.ObjectNotFoundException;
-import com.dgphoenix.casino.common.util.ReflectionUtils;
+import com.abs.casino.common.util.ReflectionUtils;
 import org.apache.log4j.Logger;
 import java.util.HashMap;
 import java.util.Iterator;

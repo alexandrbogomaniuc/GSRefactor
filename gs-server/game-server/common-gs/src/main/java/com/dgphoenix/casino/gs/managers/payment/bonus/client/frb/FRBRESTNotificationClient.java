@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
 import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
 import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusNotification;
-import com.dgphoenix.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.BonusException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.FRBException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;

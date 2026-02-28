@@ -1,7 +1,7 @@
 package com.abs.casino.services;
 
 import com.dgphoenix.casino.common.cache.*;
-import com.dgphoenix.casino.common.currency.CurrencyRate;
+import com.abs.casino.common.currency.CurrencyRate;
 import com.dgphoenix.casino.common.promo.*;
 import com.abs.casino.common.promo.network.NetworkTournamentEvent;
 import com.abs.casino.common.promo.network.NetworkTournamentInfo;

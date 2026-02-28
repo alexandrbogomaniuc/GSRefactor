@@ -11,7 +11,7 @@ import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.WalletException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.ReflectionUtils;
+import com.abs.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.gs.managers.dblink.EmptyDBLink;
@@ -25,7 +25,7 @@ import java.lang.reflect.Constructor;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import static com.dgphoenix.casino.common.util.ReflectionUtils.canInvokeMethod;
+import static com.abs.casino.common.util.ReflectionUtils.canInvokeMethod;
 import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 /**

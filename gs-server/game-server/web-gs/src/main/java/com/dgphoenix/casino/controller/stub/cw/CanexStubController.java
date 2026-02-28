@@ -11,7 +11,7 @@ import com.abs.casino.common.client.canex.response.CanexResponse;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.NotEnoughMoneyException;
 import com.abs.casino.controller.RequestContext;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
 import org.springframework.http.HttpStatus;

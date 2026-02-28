@@ -15,7 +15,7 @@ import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.WalletException;
-import com.dgphoenix.casino.common.util.DigitFormatter;
+import com.abs.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.IdGenerator;
 import com.abs.casino.common.util.NumberUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;

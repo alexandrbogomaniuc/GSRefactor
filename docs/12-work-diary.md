@@ -8954,3 +8954,18 @@
   - baseline `2277`, reduced `1854`, remaining `423`, burndown `81.422925%`
   - Project 02 `48.806134%`, Core `74.403067%`, Portfolio `87.201533%`
   - ETA `17.2h` (`2.15` workdays)
+
+### 2026-02-28 14:59 UTC
+- Continued Project 02 hard-cut namespace migration in `Dev_new` for `W306+W307` (10 retained declaration moves):
+  - `CurrencyRate`, `ICurrencyRateManager`, `BonusException`, `BonusError`, `CommonWalletErrors`, `ReflectionUtils`, `DigitFormatter`, `KryoHelper`, `JsonSelfSerializable`, `CacheKeyInfo`.
+- Subagent mode remained blocked (`agent thread limit reached`), so execution continued ownership-safe on main agent.
+- Validation convergence after bounded stabilization across rerun6-rerun11 reached canonical profile:
+  - fast gate A/B: `STEP01-08 PASS`, `STEP09 rc=2`
+  - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2`, retry1 `rc=2`.
+- Evidence and report:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-142644-hardcut-m2-wave306-wave307-mixed-lowfanout-coreutils/`
+  - `docs/projects/02-runtime-renaming-refactor/214-hard-cut-m2-wave306-wave307-parallel-batches-report-20260228.md`
+- Metrics refresh (checkpoint basis `2277` baseline, prior reduced `159`):
+  - baseline `2277`, reduced `169`, remaining `2108`, burndown `7.422047%`
+  - Project 02 `25.927756%`, Core `62.963878%`, Portfolio `81.481939%`
+  - ETA `~96.8h` (`~12.10` workdays).

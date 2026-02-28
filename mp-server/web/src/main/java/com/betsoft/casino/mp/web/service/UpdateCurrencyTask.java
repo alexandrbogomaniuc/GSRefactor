@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.web.service;
 
 import com.betsoft.casino.mp.service.CurrencyRateService;
-import com.dgphoenix.casino.common.currency.CurrencyRate;
+import com.abs.casino.common.currency.CurrencyRate;
 import com.hazelcast.spring.context.SpringAware;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

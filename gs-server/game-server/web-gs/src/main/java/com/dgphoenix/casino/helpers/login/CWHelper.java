@@ -15,7 +15,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.entities.AuthRequest;
 import com.abs.casino.exceptions.LoginErrorException;
 import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.dgphoenix.casino.helpers.login.LoginHelper;
 import com.dgphoenix.casino.sm.CWPlayerSessionManager;
 import com.dgphoenix.casino.sm.PlayerSessionFactory;

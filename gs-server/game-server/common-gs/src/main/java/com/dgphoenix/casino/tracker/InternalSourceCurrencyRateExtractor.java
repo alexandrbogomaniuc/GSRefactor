@@ -1,6 +1,6 @@
 package com.abs.casino.tracker;
 
-import com.dgphoenix.casino.common.currency.CurrencyRate;
+import com.abs.casino.common.currency.CurrencyRate;
 import com.abs.casino.common.util.web.HttpClientConnection;
 import com.google.common.base.Splitter;
 import org.apache.commons.collections.CollectionUtils;

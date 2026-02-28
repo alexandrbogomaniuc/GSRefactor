@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.model.battleground.IBattlegroundRoundInfo;
 import com.betsoft.casino.mp.model.friends.Friend;
 import com.betsoft.casino.mp.model.onlineplayer.OnlinePlayer;
 import com.betsoft.casino.mp.model.quests.IQuest;
-import com.dgphoenix.casino.common.currency.CurrencyRate;
+import com.abs.casino.common.currency.CurrencyRate;
 import com.dgphoenix.casino.common.exception.CommonException;
 import reactor.core.publisher.Mono;
 

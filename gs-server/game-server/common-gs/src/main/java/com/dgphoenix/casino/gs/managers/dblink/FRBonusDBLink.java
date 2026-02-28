@@ -16,7 +16,7 @@ import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin;
 import com.abs.casino.common.cache.data.payment.frb.IFRBonusWin;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.BonusException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;

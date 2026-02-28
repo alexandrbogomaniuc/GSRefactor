@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.model.bots;
 import com.betsoft.casino.mp.model.GameType;
 import com.betsoft.casino.mp.model.IAvatar;
 import com.dgphoenix.casino.common.cache.Identifiable;
-import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.cache.JsonSelfSerializable;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

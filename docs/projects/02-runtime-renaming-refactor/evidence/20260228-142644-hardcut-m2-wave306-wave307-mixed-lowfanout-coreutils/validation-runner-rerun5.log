@@ -1,0 +1,419 @@
+[2026-02-28T14:33:27Z] START PRE01
+[2026-02-28T14:33:27Z] START PRE01
+[2026-02-28T14:33:27Z] DIR gs-server/utils
+[2026-02-28T14:33:27Z] DIR gs-server/utils
+[2026-02-28T14:33:27Z] CMD mvn -DskipTests install
+[2026-02-28T14:33:27Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-utils-restricted >--------------
+[INFO] Building gsn-utils-restricted 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-utils-restricted ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-utils-restricted ---
+[INFO] Compiling 25 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-utils-restricted ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-utils-restricted ---
+[INFO] Compiling 4 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.10:test (default-test) @ gsn-utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-utils-restricted ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.833 s
+[INFO] Finished at: 2026-02-28T14:33:30Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T14:33:30Z] PASS PRE01 rc=0
+[2026-02-28T14:33:30Z] PASS PRE01 rc=0
+[2026-02-28T14:33:30Z] START PRE02
+[2026-02-28T14:33:30Z] START PRE02
+[2026-02-28T14:33:30Z] DIR gs-server/sb-utils
+[2026-02-28T14:33:30Z] DIR gs-server/sb-utils
+[2026-02-28T14:33:30Z] CMD mvn -DskipTests install
+[2026-02-28T14:33:30Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 277 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ utils-restricted ---
+[INFO] Compiling 19 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ utils-restricted ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ utils-restricted ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.824 s
+[INFO] Finished at: 2026-02-28T14:33:33Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T14:33:33Z] PASS PRE02 rc=0
+[2026-02-28T14:33:33Z] PASS PRE02 rc=0
+[2026-02-28T14:33:33Z] START PRE03
+[2026-02-28T14:33:33Z] START PRE03
+[2026-02-28T14:33:33Z] DIR gs-server/common-promo
+[2026-02-28T14:33:33Z] DIR gs-server/common-promo
+[2026-02-28T14:33:33Z] CMD mvn -DskipTests install
+[2026-02-28T14:33:33Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 54 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-promo ---
+[INFO] Compiling 2 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-promo ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-promo ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ common-promo >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ common-promo <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ common-promo ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-promo ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.572 s
+[INFO] Finished at: 2026-02-28T14:33:35Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T14:33:35Z] PASS PRE03 rc=0
+[2026-02-28T14:33:35Z] PASS PRE03 rc=0
+[2026-02-28T14:33:35Z] START STEP01
+[2026-02-28T14:33:35Z] START STEP01
+[2026-02-28T14:33:35Z] DIR gs-server/common
+[2026-02-28T14:33:35Z] DIR gs-server/common
+[2026-02-28T14:33:35Z] CMD mvn -DskipTests install
+[2026-02-28T14:33:35Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 236 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-common ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-common ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-common ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/gsn-common-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-common ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common/1.0-SNAPSHOT/gsn-common-1.0-SNAPSHOT.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/gsn-common-1.0-SNAPSHOT.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common/1.0-SNAPSHOT/gsn-common-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.180 s
+[INFO] Finished at: 2026-02-28T14:33:39Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T14:33:39Z] PASS STEP01 rc=0
+[2026-02-28T14:33:39Z] PASS STEP01 rc=0
+[2026-02-28T14:33:39Z] START STEP02
+[2026-02-28T14:33:39Z] START STEP02
+[2026-02-28T14:33:39Z] DIR gs-server/common-wallet
+[2026-02-28T14:33:39Z] DIR gs-server/common-wallet
+[2026-02-28T14:33:39Z] CMD mvn -DskipTests install
+[2026-02-28T14:33:39Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-wallet >-----------------
+[INFO] Building common-wallet 1.0.67
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-wallet ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ common-wallet ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-wallet ---
+[INFO] Compiling 11 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ common-wallet ---
+[INFO] Copying 108 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-wallet ---
+[INFO] Compiling 4 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-wallet ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-wallet ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/common-wallet-1.0.67.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-wallet ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-wallet/1.0.67/common-wallet-1.0.67.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/common-wallet-1.0.67.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-wallet/1.0.67/common-wallet-1.0.67.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.245 s
+[INFO] Finished at: 2026-02-28T14:33:42Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T14:33:42Z] PASS STEP02 rc=0
+[2026-02-28T14:33:42Z] PASS STEP02 rc=0
+[2026-02-28T14:33:42Z] START STEP03
+[2026-02-28T14:33:42Z] START STEP03
+[2026-02-28T14:33:42Z] DIR gs-server/sb-utils
+[2026-02-28T14:33:42Z] DIR gs-server/sb-utils
+[2026-02-28T14:33:42Z] CMD mvn -DskipTests install
+[2026-02-28T14:33:42Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 277 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ utils-restricted ---
+[INFO] Compiling 19 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ utils-restricted ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ utils-restricted ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.104 s
+[INFO] Finished at: 2026-02-28T14:33:46Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T14:33:46Z] PASS STEP03 rc=0
+[2026-02-28T14:33:46Z] PASS STEP03 rc=0
+[2026-02-28T14:33:46Z] START STEP04
+[2026-02-28T14:33:46Z] START STEP04
+[2026-02-28T14:33:46Z] DIR gs-server/common-promo
+[2026-02-28T14:33:46Z] DIR gs-server/common-promo
+[2026-02-28T14:33:46Z] CMD mvn -DskipTests install
+[2026-02-28T14:33:46Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 54 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-promo ---
+[INFO] Compiling 2 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-promo ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-promo ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ common-promo >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ common-promo <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ common-promo ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-promo ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.946 s
+[INFO] Finished at: 2026-02-28T14:33:49Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T14:33:49Z] PASS STEP04 rc=0
+[2026-02-28T14:33:49Z] PASS STEP04 rc=0
+[2026-02-28T14:33:49Z] START STEP05
+[2026-02-28T14:33:49Z] START STEP05
+[2026-02-28T14:33:49Z] DIR gs-server/cassandra-cache/common-persisters
+[2026-02-28T14:33:49Z] DIR gs-server/cassandra-cache/common-persisters
+[2026-02-28T14:33:49Z] CMD mvn -DskipTests install
+[2026-02-28T14:33:49Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-common-persisters >-------------
+[INFO] Building gsn-common-persisters 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-persisters ---
+[INFO] Compiling 17 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraMassAwardPersister.java:[49,14] error: exception BonusException is never thrown in body of corresponding try statement
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraMassAwardPersister.java:[47,48] error: unreported exception BonusException; must be caught or declared to be thrown
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraGameSessionPersister.java:[822,36] error: cannot find symbol
+[ERROR]   symbol:   variable StreamUtils
+  location: class CassandraGameSessionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraGameSessionPersister.java:[911,15] error: cannot find symbol
+[INFO] 4 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.815 s
+[INFO] Finished at: 2026-02-28T14:33:51Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common-persisters: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraMassAwardPersister.java:[49,14] error: exception BonusException is never thrown in body of corresponding try statement
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraMassAwardPersister.java:[47,48] error: unreported exception BonusException; must be caught or declared to be thrown
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraGameSessionPersister.java:[822,36] error: cannot find symbol
+[ERROR]   symbol:   variable StreamUtils
+[ERROR]   location: class CassandraGameSessionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraGameSessionPersister.java:[911,15] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[2026-02-28T14:33:51Z] FAIL STEP05 rc=1
+[2026-02-28T14:33:51Z] FAIL STEP05 rc=1

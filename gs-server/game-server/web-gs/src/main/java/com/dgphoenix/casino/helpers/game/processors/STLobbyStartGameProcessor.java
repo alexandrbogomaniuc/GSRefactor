@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.DigitFormatter;
+import com.abs.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.entities.game.requests.STLobbyStartGameRequest;
 import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletProtocolManager;

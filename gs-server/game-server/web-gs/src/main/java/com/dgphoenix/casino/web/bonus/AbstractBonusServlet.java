@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
-import com.dgphoenix.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.BonusException;
 import com.abs.casino.common.exception.XmlWriterException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.common.util.xml.xmlwriter.XmlWriter;

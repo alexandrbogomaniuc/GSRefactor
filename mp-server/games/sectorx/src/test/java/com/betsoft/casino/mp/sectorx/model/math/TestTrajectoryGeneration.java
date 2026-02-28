@@ -12,7 +12,7 @@ import com.betsoft.casino.mp.sectorx.model.math.config.PredefinedPathParam;
 import com.betsoft.casino.mp.sectorx.model.math.config.SpawnConfig;
 import com.betsoft.casino.mp.sectorx.model.math.config.SpawnConfigLoader;
 import com.abs.casino.common.kpi.RoundKPIInfo;
-import com.dgphoenix.casino.common.util.KryoHelper;
+import com.abs.casino.common.util.KryoHelper;
 import com.dgphoenix.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.Triple;
 import org.apache.commons.codec.binary.Base64;

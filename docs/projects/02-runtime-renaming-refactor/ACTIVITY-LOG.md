@@ -4125,3 +4125,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `4`; bounded rewires/regressions: `0`.
   - global tracked source declarations/files now `423` remaining (`2277` baseline, `1854` reduced, `81.422925%` burndown).
+
+## 2026-02-28 14:59 UTC (Hard-Cut M2 Wave 306 + 307)
+- Continued hard-cut execution from W305 with declaration-first overlap-safe `sb-utils` mixed low-fanout batch.
+  - `W306`: retained `5` declaration migrations (`CurrencyRate`, `ICurrencyRateManager`, `BonusException`, `BonusError`, `CommonWalletErrors`).
+  - `W307`: retained `5` declaration migrations (`ReflectionUtils`, `DigitFormatter`, `KryoHelper`, `JsonSelfSerializable`, `CacheKeyInfo`).
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1-rerun5 resolved `STEP01/STEP05` compile-order and mixed package-boundary drift.
+  - rerun6-rerun10 resolved `STEP06` wallet/bonus/currency boundary drift.
+  - rerun11 reached canonical validation:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-142644-hardcut-m2-wave306-wave307-mixed-lowfanout-coreutils/`
+  - report: `docs/projects/02-runtime-renaming-refactor/214-hard-cut-m2-wave306-wave307-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `10`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `2108` remaining (`2277` baseline, `169` reduced, `7.422047%` burndown).

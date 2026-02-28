@@ -2,7 +2,7 @@ package com.dgphoenix.casino.gs.managers.payment.bonus;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bonus.BaseBonus;
-import com.dgphoenix.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.BonusException;
 
 import java.util.List;
 

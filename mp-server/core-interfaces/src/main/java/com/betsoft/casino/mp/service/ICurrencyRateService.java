@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.service;
 
-import com.dgphoenix.casino.common.currency.CurrencyRate;
+import com.abs.casino.common.currency.CurrencyRate;
 
 import java.util.Set;
 

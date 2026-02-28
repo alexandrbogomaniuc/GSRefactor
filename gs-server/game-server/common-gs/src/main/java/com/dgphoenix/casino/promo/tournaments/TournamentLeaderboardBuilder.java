@@ -3,7 +3,7 @@ package com.abs.casino.promo.tournaments;
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
+import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.promo.*;
 import com.abs.casino.common.promo.feed.tournament.MaxBalanceRecord;

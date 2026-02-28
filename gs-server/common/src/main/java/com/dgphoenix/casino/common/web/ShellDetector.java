@@ -37,7 +37,7 @@ public final class ShellDetector {
                                         String platform, boolean isHtml5Pc) {
         boolean isForceHtml5 = "html5".equalsIgnoreCase(platform);
         boolean isMobileBrowser = MobileDetector.isMobile(userAgent);
-        Html5PcVersionMode html5PcMode = template.getDefaultGameInfo().getHtml5PcVersionMode();
+        Html5PcVersionMode html5PcMode = asLegacyMode(template.getDefaultGameInfo().getHtml5PcVersionMode());
         boolean isUnified = html5PcMode.equals(Html5PcVersionMode.UNIFIED);
 
         String playerDeviceType = templates.getPlayerDeviceType(template.getGameId());
@@ -54,7 +54,7 @@ public final class ShellDetector {
         if (gameInfo != null) {
             html5PcMode = asLegacyMode(gameInfo.getHtml5PcVersionMode());
         } else {
-            html5PcMode = template.getDefaultGameInfo().getHtml5PcVersionMode();
+            html5PcMode = asLegacyMode(template.getDefaultGameInfo().getHtml5PcVersionMode());
         }
         boolean isHtml5Pc = html5PcMode.equals(Html5PcVersionMode.AVAILABLE)
                 || (html5PcMode.equals(Html5PcVersionMode.DEVELOPMENT) && bankInfo.isStubMode())

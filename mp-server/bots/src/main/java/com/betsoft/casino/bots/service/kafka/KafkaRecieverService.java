@@ -20,7 +20,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.betsoft.casino.bots.handlers.kafka.KafkaBotRequestHandlerFactory;
-import com.dgphoenix.casino.common.util.ReflectionUtils;
+import com.abs.casino.common.util.ReflectionUtils;
 import com.abs.casino.kafka.dto.KafkaHandlerException;
 import com.abs.casino.kafka.dto.KafkaRequest;
 import com.abs.casino.kafka.dto.KafkaResponse;

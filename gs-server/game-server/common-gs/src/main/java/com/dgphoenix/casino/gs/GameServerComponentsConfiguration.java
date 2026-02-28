@@ -13,7 +13,7 @@ import com.dgphoenix.casino.common.api.IAccountInfoPersister;
 import com.dgphoenix.casino.common.cache.*;
 import com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
 import com.abs.casino.common.config.HostConfiguration;
-import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
+import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.lock.ILockManager;
 import com.dgphoenix.casino.common.promo.IPrizeWonHandlersFactory;
 import com.dgphoenix.casino.common.promo.IPromoCampaignManager;

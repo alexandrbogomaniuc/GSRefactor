@@ -1,7 +1,7 @@
 package com.abs.casino.gs;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
+import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
 import com.dgphoenix.casino.common.promo.SignificantEventType;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;

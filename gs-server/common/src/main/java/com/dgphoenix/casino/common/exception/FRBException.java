@@ -1,7 +1,5 @@
 package com.abs.casino.common.exception;
 
-import com.dgphoenix.casino.common.exception.BonusException;
-
 public class FRBException extends BonusException {
 
     private String errorCode;

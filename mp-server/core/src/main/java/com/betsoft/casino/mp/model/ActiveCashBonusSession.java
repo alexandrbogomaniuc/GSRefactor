@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.model;
 import java.io.IOException;
 import java.io.Serializable;
 
-import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.cache.JsonSelfSerializable;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

@@ -1,6 +1,6 @@
 package com.betsoft.casino.utils;
 
-import com.dgphoenix.casino.common.util.ReflectionUtils;
+import com.abs.casino.common.util.ReflectionUtils;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

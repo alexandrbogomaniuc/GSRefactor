@@ -37,7 +37,7 @@ import com.abs.casino.common.games.IStartGameHelper;
 import com.abs.casino.common.games.NewTranslationGameHelper;
 import com.abs.casino.common.games.StartGameHelpers;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
+import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.abs.casino.common.engine.tracker.DelayedExecutor;
 import com.dgphoenix.casino.common.exception.*;
 import com.abs.casino.common.exception.AccountLockedException;

@@ -7,7 +7,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.BaseAction;
 import com.abs.casino.exceptions.LoginErrorException;
 import com.abs.casino.forms.api.history.cwv3.CWStartHistoryForm;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.abs.casino.helpers.login.CWv3Helper;
 import com.abs.casino.sm.login.GameLoginRequest;
 import org.apache.logging.log4j.LogManager;

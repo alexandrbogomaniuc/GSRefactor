@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.kafka;
 
-import com.dgphoenix.casino.common.util.ReflectionUtils;
+import com.abs.casino.common.util.ReflectionUtils;
 import com.abs.casino.kafka.config.KafkaProperties;
 import com.abs.casino.kafka.dto.KafkaHandlerException;
 import com.abs.casino.kafka.dto.KafkaRequest;

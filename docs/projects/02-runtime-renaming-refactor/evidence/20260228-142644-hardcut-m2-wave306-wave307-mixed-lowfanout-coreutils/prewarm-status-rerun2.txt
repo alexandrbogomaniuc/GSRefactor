@@ -1,0 +1,3 @@
+status=FAIL
+first_failed_step=PRE02
+failed_command=mvn -DskipTests install

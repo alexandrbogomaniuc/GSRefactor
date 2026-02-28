@@ -2,7 +2,7 @@ package com.abs.casino.common.util;
 
 import org.junit.Test;
 
-import static com.dgphoenix.casino.common.util.DigitFormatter.denominateMoney;
+import static com.abs.casino.common.util.DigitFormatter.denominateMoney;
 import static org.junit.Assert.*;
 
 /**

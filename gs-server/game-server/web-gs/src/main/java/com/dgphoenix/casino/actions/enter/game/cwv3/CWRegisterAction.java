@@ -11,7 +11,7 @@ import com.abs.casino.common.exception.CurrencyMismatchException;
 import com.abs.casino.common.exception.InvalidCurrencyRateException;
 import com.abs.casino.common.exception.UnknownCurrencyException;
 import com.abs.casino.common.exception.WalletException;
-import com.dgphoenix.casino.common.util.DigitFormatter;
+import com.abs.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManager;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;

@@ -3,7 +3,7 @@ package com.dgphoenix.casino.cassandra.persist;
 import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.common.currency.CurrencyRate;
+import com.abs.casino.common.currency.CurrencyRate;
 import com.abs.casino.common.util.StreamUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

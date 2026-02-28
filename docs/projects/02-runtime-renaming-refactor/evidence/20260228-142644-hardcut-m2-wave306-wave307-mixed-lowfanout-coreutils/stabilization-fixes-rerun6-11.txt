@@ -1,0 +1,14 @@
+rerun6:
+- CassandraMassAwardPersister import boundary fixed to legacy BonusException type.
+- CassandraGameSessionPersister import boundary fixed to moved StreamUtils.
+
+rerun7-rerun10:
+- Legacy boundary alignment in wallet handlers/helpers (MultiplayerExternalWallettransactionHandler, WalletHelper) to remove duplicate-class drift.
+- Bonus and currency exception/type alignment fixes across common/common-gs:
+  - BonusErrors -> BonusError package consistency
+  - InvalidCurrencyRateException -> CurrencyRate package consistency
+  - BonusManager/MassAwardBonusManager catch/throw boundary adjustments
+  - FRBException hierarchy aligned to com.abs BonusException.
+
+rerun11:
+- Full compile chain stabilized through STEP08 with expected STEP09 rc=2 profile.

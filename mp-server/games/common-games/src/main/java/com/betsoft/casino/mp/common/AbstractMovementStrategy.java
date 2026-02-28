@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
 import com.betsoft.casino.mp.model.IEnemy;
 import com.betsoft.casino.mp.model.IMap;
 import com.betsoft.casino.mp.model.IMovementStrategy;
-import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.cache.JsonSelfSerializable;
 import com.esotericsoftware.kryo.KryoSerializable;
 
 /**

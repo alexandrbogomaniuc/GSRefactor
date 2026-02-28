@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.CoinsCache;
 import com.dgphoenix.casino.common.cache.LimitsCache;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;
 import com.dgphoenix.casino.common.cache.data.bank.Limit;
-import com.dgphoenix.casino.common.util.DigitFormatter;
+import com.abs.casino.common.util.DigitFormatter;
 import com.abs.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;

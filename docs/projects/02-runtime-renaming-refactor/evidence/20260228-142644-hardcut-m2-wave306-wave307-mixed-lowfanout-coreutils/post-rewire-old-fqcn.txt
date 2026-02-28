@@ -1,0 +1,10 @@
+0 com.dgphoenix.casino.common.currency.CurrencyRate
+0 com.dgphoenix.casino.common.currency.ICurrencyRateManager
+0 com.dgphoenix.casino.common.exception.BonusException
+0 com.dgphoenix.casino.common.web.bonus.BonusError
+0 com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors
+0 com.dgphoenix.casino.common.util.ReflectionUtils
+0 com.dgphoenix.casino.common.util.DigitFormatter
+0 com.dgphoenix.casino.common.util.KryoHelper
+0 com.dgphoenix.casino.common.cache.JsonSelfSerializable
+0 com.dgphoenix.casino.common.cache.CacheKeyInfo

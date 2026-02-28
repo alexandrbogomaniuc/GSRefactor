@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.promo;
 
-import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.cache.JsonSelfSerializable;
 import com.abs.casino.gs.managers.game.event.IGameEvent;
 import com.esotericsoftware.kryo.KryoSerializable;
 

@@ -5,7 +5,7 @@ import com.dgphoenix.casino.cassandra.DistributedLockManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraExpiredBonusTrackerInfoPersister;
 import com.dgphoenix.casino.cassandra.persist.CassandraFrBonusPersister;
 import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
-import com.dgphoenix.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.BonusException;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.lock.LockingInfo;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;

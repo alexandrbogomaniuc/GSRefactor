@@ -10,7 +10,7 @@ import com.betsoft.casino.mp.payment.PendingOperationType;
 import com.betsoft.casino.mp.service.*;
 import com.betsoft.casino.mp.web.IGameSocketClient;
 import com.betsoft.casino.mp.web.ILobbySocketClient;
-import com.dgphoenix.casino.common.currency.CurrencyRate;
+import com.abs.casino.common.currency.CurrencyRate;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.LongIdGenerator;
 import com.dgphoenix.casino.common.util.Pair;

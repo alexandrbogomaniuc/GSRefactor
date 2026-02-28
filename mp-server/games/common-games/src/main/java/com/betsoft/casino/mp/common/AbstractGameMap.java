@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.common.scenarios.SpawnGroup;
 import com.betsoft.casino.mp.common.scenarios.SpawnScenario;
 import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.model.movement.*;
-import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.cache.JsonSelfSerializable;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.Triple;

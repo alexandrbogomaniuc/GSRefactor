@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.service;
 
 import com.betsoft.casino.mp.model.ICrashGameSetting;
 import com.betsoft.casino.mp.transport.CrashGameSetting;
-import com.dgphoenix.casino.common.currency.CurrencyRate;
+import com.abs.casino.common.currency.CurrencyRate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;

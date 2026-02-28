@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.data.bank.Coin;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
 import com.dgphoenix.casino.common.cache.data.game.GameVariableType;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
-import com.dgphoenix.casino.common.util.DigitFormatter;
+import com.abs.casino.common.util.DigitFormatter;
 import com.abs.casino.support.cache.bank.edit.forms.common.GameInfoForm;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.StaxDriver;

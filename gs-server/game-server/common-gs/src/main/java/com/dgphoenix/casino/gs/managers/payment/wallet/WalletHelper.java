@@ -1,4 +1,4 @@
-package com.abs.casino.gs.managers.payment.wallet;
+package com.dgphoenix.casino.gs.managers.payment.wallet;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;

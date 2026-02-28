@@ -20,7 +20,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.FRBException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.ReflectionUtils;
+import com.abs.casino.common.util.ReflectionUtils;
 import com.abs.casino.common.util.logkit.LogUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.gs.managers.dblink.FRBonusDBLink;

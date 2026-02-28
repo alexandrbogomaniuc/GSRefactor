@@ -600,12 +600,12 @@ public class BaseGameInfo implements IDistributedConfigEntry, Identifiable, Kryo
     }
 
     @Override
-    public Html5PcVersionMode getHtml5PcVersionMode() {
+    public com.abs.casino.common.cache.data.game.Html5PcVersionMode getHtml5PcVersionMode() {
         String mode = getProperty(BaseGameConstants.KEY_HTML5PC_VERSION_MODE);
         if (isTrimmedEmpty(mode)) {
-            return Html5PcVersionMode.NOT_AVAILABLE;
+            return com.abs.casino.common.cache.data.game.Html5PcVersionMode.NOT_AVAILABLE;
         } else {
-            return Html5PcVersionMode.valueOf(mode);
+            return com.abs.casino.common.cache.data.game.Html5PcVersionMode.valueOf(mode);
         }
     }
 
@@ -1007,12 +1007,13 @@ public class BaseGameInfo implements IDistributedConfigEntry, Identifiable, Kryo
     }
 
     @Override
-    public ClientGeneration getClientGeneration() {
-        ClientGeneration result = ClientGeneration.UNDEFINED;
+    public com.abs.casino.common.cache.data.game.ClientGeneration getClientGeneration() {
+        com.abs.casino.common.cache.data.game.ClientGeneration result =
+                com.abs.casino.common.cache.data.game.ClientGeneration.UNDEFINED;
         String generation = getProperty(BaseGameConstants.KEY_CLIENT_GENERATION);
         if (!StringUtils.isTrimmedEmpty(generation)) {
             try {
-                result = ClientGeneration.valueOf(generation);
+                result = com.abs.casino.common.cache.data.game.ClientGeneration.valueOf(generation);
             } catch (IllegalArgumentException e) {
                 LOG.error("Illegal CLIENT_GENERATION: {}, id={}", generation, id);
             }

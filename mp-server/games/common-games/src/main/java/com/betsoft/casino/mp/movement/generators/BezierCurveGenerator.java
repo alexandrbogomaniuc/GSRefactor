@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.model.movement.Point;
 import com.betsoft.casino.mp.model.movement.Trajectory;
 import com.betsoft.casino.mp.model.movement.PossiblePoints;
 import com.betsoft.casino.mp.movement.common.SpawnCurvePoint;
-import com.dgphoenix.casino.common.util.KryoHelper;
+import com.abs.casino.common.util.KryoHelper;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.Triple;

@@ -5,7 +5,7 @@ import com.dgphoenix.casino.cassandra.IKeyspaceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraCurrencyRatesPersister;
 import com.abs.casino.common.config.FreeSpaceThresholdType;
 import com.abs.casino.common.config.MountMonitoringEntry;
-import com.dgphoenix.casino.common.currency.CurrencyRate;
+import com.abs.casino.common.currency.CurrencyRate;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.CommonExecutorService;
 import com.abs.casino.common.util.web.HttpClientConnection;

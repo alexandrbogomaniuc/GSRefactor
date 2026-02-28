@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.model;
 
-import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.cache.JsonSelfSerializable;
 import com.dgphoenix.casino.common.util.Pair;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.google.common.util.concurrent.AtomicDouble;

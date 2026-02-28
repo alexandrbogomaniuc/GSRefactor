@@ -16,16 +16,15 @@ import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.dgphoenix.casino.common.cache.data.game.GameType;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.BonusException;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.abs.casino.common.exception.FRBException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.common.transactiondata.TransactionData;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.IdGenerator;
-import com.dgphoenix.casino.common.util.ReflectionUtils;
+import com.abs.casino.common.util.ReflectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.bonus.BonusError;
+import com.abs.casino.common.web.bonus.BonusError;
 import com.abs.casino.common.web.bonus.BonusErrors;
 import com.dgphoenix.casino.gs.GameServer;
 import com.abs.casino.gs.managers.payment.bonus.mass.MassAwardBonusManager;
@@ -127,7 +126,7 @@ public class BonusManager implements IBonusManager {
 
         try {
             instantiateClient(bankId);
-        } catch (FRBException ex) {
+        } catch (BonusException ex) {
             LOG.error("IBonusClient not found bankId={}", bankId, ex);
             throw new BonusException("IBonusClient not found", ex);
         }

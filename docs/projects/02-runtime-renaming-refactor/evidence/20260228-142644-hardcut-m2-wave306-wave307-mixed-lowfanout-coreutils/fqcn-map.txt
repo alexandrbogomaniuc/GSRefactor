@@ -1,0 +1,10 @@
+com.dgphoenix.casino.common.currency.CurrencyRate -> com.abs.casino.common.currency.CurrencyRate
+com.dgphoenix.casino.common.currency.ICurrencyRateManager -> com.abs.casino.common.currency.ICurrencyRateManager
+com.dgphoenix.casino.common.exception.BonusException -> com.abs.casino.common.exception.BonusException
+com.dgphoenix.casino.common.web.bonus.BonusError -> com.abs.casino.common.web.bonus.BonusError
+com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors -> com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors
+com.dgphoenix.casino.common.util.ReflectionUtils -> com.abs.casino.common.util.ReflectionUtils
+com.dgphoenix.casino.common.util.DigitFormatter -> com.abs.casino.common.util.DigitFormatter
+com.dgphoenix.casino.common.util.KryoHelper -> com.abs.casino.common.util.KryoHelper
+com.dgphoenix.casino.common.cache.JsonSelfSerializable -> com.abs.casino.common.cache.JsonSelfSerializable
+com.dgphoenix.casino.common.cache.CacheKeyInfo -> com.abs.casino.common.cache.CacheKeyInfo

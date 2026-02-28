@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.model;
 
 import com.dgphoenix.casino.common.cache.Identifiable;
-import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.cache.JsonSelfSerializable;
 import com.esotericsoftware.kryo.KryoSerializable;
 
 /**

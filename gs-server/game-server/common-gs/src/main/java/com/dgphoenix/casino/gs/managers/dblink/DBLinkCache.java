@@ -2,7 +2,7 @@ package com.abs.casino.gs.managers.dblink;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister;
-import com.dgphoenix.casino.common.cache.CacheKeyInfo;
+import com.abs.casino.common.cache.CacheKeyInfo;
 import com.dgphoenix.casino.common.cache.IDistributedCache;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
 import com.dgphoenix.casino.common.exception.CommonException;

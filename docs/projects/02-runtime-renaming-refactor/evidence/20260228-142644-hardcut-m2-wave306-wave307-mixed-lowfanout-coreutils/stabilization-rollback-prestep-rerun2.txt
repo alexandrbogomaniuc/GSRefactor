@@ -1,0 +1,2 @@
+rollback_dirs=gs-server/utils,gs-server/common,gs-server/common-wallet
+rollback_count=0

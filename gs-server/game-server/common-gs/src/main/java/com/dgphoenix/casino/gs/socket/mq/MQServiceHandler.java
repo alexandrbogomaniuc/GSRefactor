@@ -39,8 +39,8 @@ import com.abs.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersR
 import com.abs.casino.common.client.canex.request.onlineplayer.OnlinePlayer;
 import com.abs.casino.common.client.canex.request.onlinerooms.Player;
 import com.abs.casino.common.client.canex.request.onlinerooms.Room;
-import com.dgphoenix.casino.common.currency.CurrencyRate;
-import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
+import com.abs.casino.common.currency.CurrencyRate;
+import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.abs.casino.common.exception.AccountException;
 import com.abs.casino.common.exception.WalletException;
 import com.abs.casino.common.kpi.RoundKPIInfo;
@@ -62,7 +62,6 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager;
-import com.abs.casino.gs.managers.payment.wallet.MultiplayerExternalWallettransactionHandler;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;
