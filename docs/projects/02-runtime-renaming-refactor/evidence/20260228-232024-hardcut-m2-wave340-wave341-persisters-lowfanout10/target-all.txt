@@ -1,0 +1,10 @@
+com.dgphoenix.casino.cassandra.persist.IShortBetInfoProcessor
+com.dgphoenix.casino.cassandra.persist.CassandraShortBetInfoPersister
+com.dgphoenix.casino.cassandra.persist.CassandraExpiredBonusTrackerInfoPersister
+com.dgphoenix.casino.cassandra.persist.CassandraPlayerSessionHistoryPersister
+com.dgphoenix.casino.cassandra.persist.CassandraWalletOperationInfoPersister
+com.dgphoenix.casino.cassandra.persist.CassandraHttpCallInfoPersister
+com.dgphoenix.casino.cassandra.persist.CassandraFRBonusWinPersister
+com.dgphoenix.casino.cassandra.persist.CassandraPlayerGameSettingsPersister
+com.dgphoenix.casino.cassandra.persist.CassandraDelayedMassAwardPersister
+com.dgphoenix.casino.cassandra.persist.CassandraPaymentTransactionPersister

@@ -1,7 +1,7 @@
 package com.abs.casino.transactiondata.storeddataprocessor;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraShortBetInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraShortBetInfoPersister;
 import com.dgphoenix.casino.cassandra.persist.IStoredDataProcessor;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;

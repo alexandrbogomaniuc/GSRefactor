@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra.persist;
+package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.common.cache.data.bet.ShortBetInfo;
 

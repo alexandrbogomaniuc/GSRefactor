@@ -1,7 +1,7 @@
 package com.abs.casino.support;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraHttpCallInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraHttpCallInfoPersister;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.payment.IWallet;
 import com.dgphoenix.casino.common.transport.TObject;
@@ -24,7 +24,7 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.function.Function;
 
-import static com.dgphoenix.casino.cassandra.persist.CassandraHttpCallInfoPersister.composeKey;
+import static com.abs.casino.cassandra.persist.CassandraHttpCallInfoPersister.composeKey;
 import static com.abs.casino.common.util.support.AdditionalInfoAttribute.*;
 import static com.abs.casino.common.web.BaseAction.*;
 import static java.lang.System.currentTimeMillis;

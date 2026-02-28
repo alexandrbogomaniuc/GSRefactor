@@ -1,7 +1,7 @@
 package com.abs.casino.support.logviewer;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraHttpCallInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraHttpCallInfoPersister;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.common.util.support.AdditionalInfoAttribute;
 import com.abs.casino.common.util.support.HttpCallInfo;

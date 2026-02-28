@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.payment.transfer;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraPaymentTransactionPersister;
+import com.abs.casino.cassandra.persist.CassandraPaymentTransactionPersister;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;

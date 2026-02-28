@@ -1,0 +1,5 @@
+com.dgphoenix.casino.cassandra.persist.CassandraHttpCallInfoPersister
+com.dgphoenix.casino.cassandra.persist.CassandraFRBonusWinPersister
+com.dgphoenix.casino.cassandra.persist.CassandraPlayerGameSettingsPersister
+com.dgphoenix.casino.cassandra.persist.CassandraDelayedMassAwardPersister
+com.dgphoenix.casino.cassandra.persist.CassandraPaymentTransactionPersister

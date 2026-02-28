@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.dblink;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.CassandraFRBonusWinPersister;
+import com.abs.casino.cassandra.persist.CassandraFRBonusWinPersister;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
