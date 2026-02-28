@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.events;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.logkit.ThreadLog;
+import com.abs.casino.common.util.logkit.ThreadLog;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.xml.xmlwriter;
 
-import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+import com.abs.casino.common.util.xml.xmlwriter.XmlWriter;
 
 import java.io.OutputStream;
 import java.io.Writer;

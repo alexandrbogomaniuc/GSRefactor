@@ -34,7 +34,7 @@ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.IdGenerator;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
-import com.dgphoenix.casino.common.util.logkit.GameLog;
+import com.abs.casino.common.util.logkit.GameLog;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.gs.ISendBetInterceptor;

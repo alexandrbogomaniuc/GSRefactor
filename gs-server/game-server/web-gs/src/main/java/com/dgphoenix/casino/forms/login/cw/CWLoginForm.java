@@ -1,7 +1,7 @@
 package com.abs.casino.forms.login.cw;
 
 import com.dgphoenix.casino.common.util.DigitFormatter;
-import com.dgphoenix.casino.common.util.logkit.ThreadLog;
+import com.abs.casino.common.util.logkit.ThreadLog;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.BaseAction;
 import com.abs.casino.forms.login.CommonLoginForm;

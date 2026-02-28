@@ -12,7 +12,7 @@ import com.betsoft.casino.mp.web.IGameSocketClient;
 import com.betsoft.casino.mp.web.ILobbySocketClient;
 import com.betsoft.casino.mp.web.IMessageSerializer;
 import com.betsoft.casino.mp.web.service.SocketService;
-import com.dgphoenix.casino.common.web.statistics.IntervalStatistics;
+import com.abs.casino.common.web.statistics.IntervalStatistics;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.reactive.socket.WebSocketMessage;

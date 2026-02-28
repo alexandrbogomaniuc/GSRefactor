@@ -2,7 +2,7 @@
  * Author: Andrey Nazarov
  * Date: 22.03.2006
  */
-package com.dgphoenix.casino.common.web.statistics;
+package com.abs.casino.common.web.statistics;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.google.common.util.concurrent.AtomicDouble;

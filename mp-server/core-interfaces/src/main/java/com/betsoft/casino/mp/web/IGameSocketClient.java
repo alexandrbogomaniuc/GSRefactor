@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.web;
 
 import com.betsoft.casino.mp.model.GameType;
 import com.betsoft.casino.mp.model.ISeat;
-import com.dgphoenix.casino.common.web.statistics.IntervalStatistics;
+import com.abs.casino.common.web.statistics.IntervalStatistics;
 import org.apache.logging.log4j.Logger;
 
 /**

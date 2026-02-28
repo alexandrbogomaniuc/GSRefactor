@@ -3,7 +3,7 @@
  * Date: 13.10.2002
  * Time: 16:22:43
  */
-package com.dgphoenix.casino.common.util.xml.xmlwriter;
+package com.abs.casino.common.util.xml.xmlwriter;
 
 public class Attribute {
     private String name;

@@ -1,7 +1,7 @@
 package com.abs.casino.cache;
 
 
-import com.dgphoenix.casino.common.util.xml.xmlwriter.Attribute;
+import com.abs.casino.common.util.xml.xmlwriter.Attribute;
 
 import java.util.List;
 import java.util.Map;

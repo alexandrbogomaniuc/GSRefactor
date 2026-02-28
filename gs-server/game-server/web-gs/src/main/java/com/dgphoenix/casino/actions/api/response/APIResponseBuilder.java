@@ -5,7 +5,7 @@ import com.abs.casino.actions.api.response.Response;
 import com.abs.casino.actions.api.response.SuccessResponse;
 import com.abs.casino.actions.api.response.UpperCaseNameCoder;
 import com.abs.casino.common.exception.XmlWriterException;
-import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+import com.abs.casino.common.util.xml.xmlwriter.XmlWriter;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.XppDriver;
 import com.thoughtworks.xstream.security.AnyTypePermission;

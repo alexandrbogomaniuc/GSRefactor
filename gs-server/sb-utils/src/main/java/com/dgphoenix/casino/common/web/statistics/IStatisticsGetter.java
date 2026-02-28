@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.web.statistics;
+package com.abs.casino.common.web.statistics;
 
 /**
  * User: flsh

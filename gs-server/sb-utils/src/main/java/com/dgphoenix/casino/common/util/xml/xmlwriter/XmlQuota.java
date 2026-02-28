@@ -3,7 +3,7 @@
  * Date: 27.10.2002
  * Time: 21:26:10
  */
-package com.dgphoenix.casino.common.util.xml.xmlwriter;
+package com.abs.casino.common.util.xml.xmlwriter;
 
 public class XmlQuota {
 

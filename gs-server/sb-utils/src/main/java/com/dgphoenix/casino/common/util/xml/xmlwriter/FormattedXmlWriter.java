@@ -3,7 +3,7 @@
  * Date: 13.10.2002
  * Time: 14:21:07
  */
-package com.dgphoenix.casino.common.util.xml.xmlwriter;
+package com.abs.casino.common.util.xml.xmlwriter;
 
 import java.io.OutputStream;
 import java.io.PrintWriter;

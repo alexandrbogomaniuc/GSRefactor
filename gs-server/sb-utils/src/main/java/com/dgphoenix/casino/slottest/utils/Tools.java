@@ -1,7 +1,7 @@
 package com.abs.casino.slottest.utils;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.logkit.ThreadLog;
+import com.abs.casino.common.util.logkit.ThreadLog;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

@@ -8911,3 +8911,24 @@
   - baseline `2277`, reduced `1841`, remaining `436`, burndown `80.851998%`
   - Project 02 `48.630235%`, Core `74.315117%`, Portfolio `87.157559%`
   - ETA `17.8h` (`2.22` workdays)
+
+### 2026-02-28 13:54 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W302 + W303`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `9` (`GameLog`, `LogUtils`, `ThreadLog`, `IStatisticsGetter`, `IntervalStatistics`, `Attribute`, `FormattedXmlWriter`, `XmlQuota`, `XmlWriter`).
+  - deferred from initial target due mixed-type wallet boundary drift: `PromoWinInfo`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent parallel target remained constrained by thread limit; ownership-safe execution continued on main.
+  - rerun1 failed at `PRE01` due compile-order drift in `gs-server/utils` (pre-step rewires to moved `GameLog` before `sb-utils` install); fixed by bounded pre-step rollback in `utils/common/common-wallet`.
+  - rerun2 failed at `STEP06` due `PromoWinInfo` boundary incompatibility in wallet surfaces; fixed by bounded rollback/defer of `PromoWinInfo`.
+  - rerun3 reached canonical profile with bounded compatibility imports in `StatisticsManager` for moved `IStatisticsGetter`/`IntervalStatistics`:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-134248-hardcut-m2-wave302-wave303-xmlwriter-logkit-stats-promo/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/212-hard-cut-m2-wave302-wave303-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1850`, remaining `427`, burndown `81.247255%`
+  - Project 02 `48.752011%`, Core `74.376005%`, Portfolio `87.188003%`
+  - ETA `17.4h` (`2.18` workdays)

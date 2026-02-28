@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
 import com.dgphoenix.casino.common.exception.BonusException;
 import com.abs.casino.common.exception.XmlWriterException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+import com.abs.casino.common.util.xml.xmlwriter.XmlWriter;
 import com.abs.casino.common.web.bonus.CBonus;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import com.abs.casino.gs.singlegames.tools.util.StringUtils;

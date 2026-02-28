@@ -10,7 +10,7 @@ import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.common.transactiondata.TransactionDataInvalidatedListener;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.ExecutorUtils;
-import com.dgphoenix.casino.common.web.statistics.IStatisticsGetter;
+import com.abs.casino.common.web.statistics.IStatisticsGetter;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.TransactionDataTracker;

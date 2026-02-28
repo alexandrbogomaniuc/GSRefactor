@@ -1,0 +1,5 @@
+target_all_count=10
+target_retained_count=9
+target_deferred_count=1
+rewire_candidate_file_count=74
+overlap_decl_rewire_count=0

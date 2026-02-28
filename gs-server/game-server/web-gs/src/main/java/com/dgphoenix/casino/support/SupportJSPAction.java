@@ -1,6 +1,6 @@
 package com.abs.casino.support;
 
-import com.dgphoenix.casino.common.util.logkit.ThreadLog;
+import com.abs.casino.common.util.logkit.ThreadLog;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;

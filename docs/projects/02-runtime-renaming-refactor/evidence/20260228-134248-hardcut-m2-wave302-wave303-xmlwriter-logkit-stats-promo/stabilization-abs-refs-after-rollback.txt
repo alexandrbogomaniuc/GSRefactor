@@ -1,0 +1,24 @@
+=== com.dgphoenix.casino.common.util.logkit.GameLog
+gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/logkit/LoggingUtils.java:3:import com.dgphoenix.casino.common.util.logkit.GameLog;
+
+=== com.dgphoenix.casino.common.util.logkit.LogUtils
+
+=== com.dgphoenix.casino.common.util.logkit.ThreadLog
+gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/TransactionData.java:27:import com.dgphoenix.casino.common.util.logkit.ThreadLog;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/PromoBonusCache.java:5:import com.dgphoenix.casino.common.util.logkit.ThreadLog;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:20:import com.dgphoenix.casino.common.util.logkit.ThreadLog;
+
+=== com.dgphoenix.casino.common.web.statistics.IStatisticsGetter
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/AbstractLazyLoadingExportableCache.java:9:import com.dgphoenix.casino.common.web.statistics.IStatisticsGetter;
+
+=== com.dgphoenix.casino.common.web.statistics.IntervalStatistics
+
+=== com.dgphoenix.casino.common.util.xml.xmlwriter.Attribute
+
+=== com.dgphoenix.casino.common.util.xml.xmlwriter.FormattedXmlWriter
+
+=== com.dgphoenix.casino.common.util.xml.xmlwriter.XmlQuota
+
+=== com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/XmlApiBaseAction.java:6:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+

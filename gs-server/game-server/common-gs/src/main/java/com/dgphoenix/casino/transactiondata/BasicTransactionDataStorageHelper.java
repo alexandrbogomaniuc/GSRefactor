@@ -15,7 +15,7 @@ import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.common.transactiondata.ITransactionDataStorageHelper;
 import com.abs.casino.common.transactiondata.TransactionData;
-import com.dgphoenix.casino.common.web.statistics.IStatisticsGetter;
+import com.abs.casino.common.web.statistics.IStatisticsGetter;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.esotericsoftware.kryo.util.UnsafeUtil;
 import com.google.common.collect.ImmutableMap;

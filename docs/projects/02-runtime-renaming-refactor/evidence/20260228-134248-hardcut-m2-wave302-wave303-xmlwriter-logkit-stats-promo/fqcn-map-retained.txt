@@ -1,0 +1,9 @@
+com.dgphoenix.casino.common.util.logkit.GameLog -> com.abs.casino.common.util.logkit.GameLog
+com.dgphoenix.casino.common.util.logkit.LogUtils -> com.abs.casino.common.util.logkit.LogUtils
+com.dgphoenix.casino.common.util.logkit.ThreadLog -> com.abs.casino.common.util.logkit.ThreadLog
+com.dgphoenix.casino.common.web.statistics.IStatisticsGetter -> com.abs.casino.common.web.statistics.IStatisticsGetter
+com.dgphoenix.casino.common.web.statistics.IntervalStatistics -> com.abs.casino.common.web.statistics.IntervalStatistics
+com.dgphoenix.casino.common.util.xml.xmlwriter.Attribute -> com.abs.casino.common.util.xml.xmlwriter.Attribute
+com.dgphoenix.casino.common.util.xml.xmlwriter.FormattedXmlWriter -> com.abs.casino.common.util.xml.xmlwriter.FormattedXmlWriter
+com.dgphoenix.casino.common.util.xml.xmlwriter.XmlQuota -> com.abs.casino.common.util.xml.xmlwriter.XmlQuota
+com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter -> com.abs.casino.common.util.xml.xmlwriter.XmlWriter

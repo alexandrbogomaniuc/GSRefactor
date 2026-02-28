@@ -50,7 +50,7 @@ import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
 import com.dgphoenix.casino.common.remotecall.PersistableCall;
 import com.dgphoenix.casino.common.util.*;
 import com.abs.casino.common.util.hardware.HardwareConfigurationManager;
-import com.dgphoenix.casino.common.util.logkit.LogUtils;
+import com.abs.casino.common.util.logkit.LogUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.system.Metric;
 import com.abs.casino.common.util.web.HttpClientConnection;

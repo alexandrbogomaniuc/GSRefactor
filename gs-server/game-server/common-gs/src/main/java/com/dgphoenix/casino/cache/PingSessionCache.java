@@ -12,7 +12,7 @@ import com.abs.casino.common.util.system.Metric;
 import com.abs.casino.common.util.web.HttpClientConnection;
 import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.abs.casino.common.util.xml.parser.Parser;
-import com.dgphoenix.casino.common.web.statistics.IStatisticsGetter;
+import com.abs.casino.common.web.statistics.IStatisticsGetter;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.system.MetricsManager;
 import com.google.common.cache.Cache;
