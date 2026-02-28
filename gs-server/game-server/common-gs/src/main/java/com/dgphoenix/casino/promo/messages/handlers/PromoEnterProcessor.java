@@ -13,7 +13,7 @@ import com.abs.casino.common.promo.messages.client.requests.PromoEnter;
 import com.abs.casino.common.promo.messages.server.responses.PromoEnterResponse;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import com.dgphoenix.casino.gs.GameServerComponentsHelper;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.gs.singlegames.tools.cbservtools.IGameController;

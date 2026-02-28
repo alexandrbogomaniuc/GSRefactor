@@ -1,0 +1,3 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/AbstractLobbyRequest.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/BasicGameServerResponse.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/CommonStatus.java

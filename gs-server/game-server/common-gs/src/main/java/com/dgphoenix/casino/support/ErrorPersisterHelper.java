@@ -26,7 +26,7 @@ import java.util.function.Function;
 
 import static com.dgphoenix.casino.cassandra.persist.CassandraHttpCallInfoPersister.composeKey;
 import static com.abs.casino.common.util.support.AdditionalInfoAttribute.*;
-import static com.dgphoenix.casino.common.web.BaseAction.*;
+import static com.abs.casino.common.web.BaseAction.*;
 import static java.lang.System.currentTimeMillis;
 import static java.util.function.Function.identity;
 

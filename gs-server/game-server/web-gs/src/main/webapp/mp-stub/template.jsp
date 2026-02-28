@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.common.web.BaseAction" %>
+<%@ page import="com.abs.casino.common.web.BaseAction" %>
 <%@ page import="com.dgphoenix.casino.gs.GameServer" %>
 <!DOCTYPE html>
 <head>

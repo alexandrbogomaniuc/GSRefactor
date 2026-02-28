@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.BaseGameCache;
 import com.dgphoenix.casino.common.cache.CurrencyCache;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;

@@ -3,7 +3,7 @@ package com.abs.casino.support.cache.bank.edit.actions.editproperties;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bank.Limit;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.abs.casino.support.CacheObjectComparator;
 import com.abs.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm;

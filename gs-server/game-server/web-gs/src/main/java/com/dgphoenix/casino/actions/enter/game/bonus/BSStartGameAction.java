@@ -19,7 +19,7 @@ import com.abs.casino.common.exception.CurrencyMismatchException;
 import com.abs.casino.common.exception.InvalidCurrencyRateException;
 import com.abs.casino.common.exception.UnknownCurrencyException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import com.abs.casino.common.web.login.apub.GameServerResponse;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;

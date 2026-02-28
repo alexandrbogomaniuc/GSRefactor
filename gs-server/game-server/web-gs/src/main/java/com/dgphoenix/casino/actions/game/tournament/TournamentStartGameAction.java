@@ -24,7 +24,7 @@ import com.dgphoenix.casino.common.promo.MaxBalanceTournamentPlayerDetails;
 import com.dgphoenix.casino.common.promo.Status;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.GameServerComponentsHelper;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;

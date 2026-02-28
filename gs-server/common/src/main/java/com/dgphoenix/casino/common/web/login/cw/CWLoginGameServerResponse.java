@@ -1,6 +1,6 @@
 package com.abs.casino.common.web.login.cw;
 
-import com.dgphoenix.casino.common.web.BasicGameServerResponse;
+import com.abs.casino.common.web.BasicGameServerResponse;
 
 public class CWLoginGameServerResponse extends BasicGameServerResponse {
     private String sessionId;

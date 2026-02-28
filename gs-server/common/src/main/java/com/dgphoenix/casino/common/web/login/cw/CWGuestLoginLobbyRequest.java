@@ -1,6 +1,6 @@
 package com.abs.casino.common.web.login.cw;
 
-import com.dgphoenix.casino.common.web.AbstractLobbyRequest;
+import com.abs.casino.common.web.AbstractLobbyRequest;
 
 /**
  * User: plastical

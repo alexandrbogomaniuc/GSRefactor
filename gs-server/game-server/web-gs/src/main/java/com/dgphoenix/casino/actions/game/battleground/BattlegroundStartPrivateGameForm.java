@@ -4,7 +4,7 @@ import com.dgphoenix.casino.actions.enter.CommonActionForm;
 import com.abs.casino.actions.enter.game.IStartGameForm;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import com.abs.casino.common.web.ClientTypeFactory;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

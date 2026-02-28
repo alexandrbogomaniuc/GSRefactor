@@ -1,7 +1,7 @@
 package com.abs.casino.forms.game.cw.shell;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import com.abs.casino.forms.game.cw.CWGuestStartGameForm;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

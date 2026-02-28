@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.session.ClientType" %>
-<%@ page import="com.dgphoenix.casino.common.web.BaseAction" %>
+<%@ page import="com.abs.casino.common.web.BaseAction" %>
 <%@ page import="com.abs.casino.common.web.ClientTypeFactory" %>
 <%@ page import="com.dgphoenix.casino.gs.GameServer" %>
 <%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>

@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.common.web.BaseAction" %>
+<%@ page import="com.abs.casino.common.web.BaseAction" %>
 <%@ page import="com.dgphoenix.casino.common.util.logkit.ThreadLog" %>
 <%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
 <%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>

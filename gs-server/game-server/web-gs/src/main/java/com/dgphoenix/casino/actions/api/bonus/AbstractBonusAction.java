@@ -19,7 +19,7 @@ import com.abs.casino.common.exception.XmlWriterException;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import com.dgphoenix.casino.common.web.bonus.BonusError;
 import com.abs.casino.common.web.bonus.BonusErrors;
 import com.abs.casino.common.web.bonus.CBonus;

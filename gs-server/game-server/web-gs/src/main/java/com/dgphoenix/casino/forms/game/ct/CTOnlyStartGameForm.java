@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionErrors;

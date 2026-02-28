@@ -8689,3 +8689,22 @@
   - baseline `2277`, reduced `1760`, remaining `517`, burndown `77.294686%`
   - Project 02 `47.534293%`, Core `73.767147%`, Portfolio `86.883574%`
   - ETA `21.2h` (`2.65` workdays)
+
+### 2026-02-28 10:29 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W280 + W281`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `6` (`AbstractLobbyRequest`, `BasicGameServerResponse`, `CommonStatus`, `JsonResult`, `MobileDetector`, `BaseAction`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent parallel target remained constrained by thread limit; ownership-safe execution continued on main.
+  - bounded compatibility rewires aligned moved `common.web` imports across high-fanout Java/JSP consumers.
+  - canonical validation reached on rerun1:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-102006-hardcut-m2-wave280-wave281-common-web-core/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/201-hard-cut-m2-wave280-wave281-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1766`, remaining `511`, burndown `77.558191%`
+  - Project 02 `47.615472%`, Core `73.807736%`, Portfolio `86.903868%`
+  - ETA `21.0h` (`2.62` workdays)

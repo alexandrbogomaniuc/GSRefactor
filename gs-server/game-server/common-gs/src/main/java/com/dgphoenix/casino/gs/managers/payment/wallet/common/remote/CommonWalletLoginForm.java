@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.util.DigitFormatter;
 import com.dgphoenix.casino.common.util.logkit.ThreadLog;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionErrors;

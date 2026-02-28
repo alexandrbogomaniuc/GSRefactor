@@ -41,7 +41,7 @@ import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.string.StringIdGenerator;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import com.abs.casino.common.web.ClientTypeFactory;
 import com.abs.casino.common.web.ShellDetector;
 import com.abs.casino.common.web.login.apub.APUBConstants;

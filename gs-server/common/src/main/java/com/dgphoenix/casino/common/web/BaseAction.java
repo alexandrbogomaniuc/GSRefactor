@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.web;
+package com.abs.casino.common.web;
 
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;

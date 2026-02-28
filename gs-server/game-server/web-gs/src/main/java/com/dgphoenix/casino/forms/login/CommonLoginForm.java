@@ -2,7 +2,7 @@ package com.abs.casino.forms.login;
 
 import com.dgphoenix.casino.actions.enter.CommonActionForm;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;

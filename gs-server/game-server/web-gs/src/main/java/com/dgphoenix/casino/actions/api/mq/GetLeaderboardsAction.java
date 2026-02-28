@@ -3,7 +3,7 @@ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.mp.LeaderboardInfo;
 import com.abs.casino.cassandra.persist.mp.LeaderboardResultPersister;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;

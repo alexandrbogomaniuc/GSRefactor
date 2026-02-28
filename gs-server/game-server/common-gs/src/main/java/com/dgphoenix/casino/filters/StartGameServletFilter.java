@@ -6,7 +6,7 @@ import com.abs.casino.common.games.SwfLocationInfo;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

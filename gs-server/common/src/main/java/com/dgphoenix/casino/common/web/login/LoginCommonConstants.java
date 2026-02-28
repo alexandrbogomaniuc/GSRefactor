@@ -1,6 +1,6 @@
 package com.abs.casino.common.web.login;
 
-import com.dgphoenix.casino.common.web.CommonStatus;
+import com.abs.casino.common.web.CommonStatus;
 
 /**
  * User: plastical

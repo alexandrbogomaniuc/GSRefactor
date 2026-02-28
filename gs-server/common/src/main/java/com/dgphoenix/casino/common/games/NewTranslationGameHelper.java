@@ -11,7 +11,7 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;

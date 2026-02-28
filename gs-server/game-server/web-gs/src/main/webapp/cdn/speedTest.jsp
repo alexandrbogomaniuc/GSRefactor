@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.common.web.BaseAction" %>
+<%@ page import="com.abs.casino.common.web.BaseAction" %>
 <%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>

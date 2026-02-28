@@ -3869,3 +3869,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 10`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+10`.
   - global tracked source declarations/files now `517` remaining (`2277` baseline, `1760` reduced, `77.294686%` burndown).
+
+## 2026-02-28 10:29 UTC (Hard-Cut M2 Wave 280 + 281)
+- Continued hard-cut execution from W279 with declaration-first overlap-safe batch in `common/web` core surfaces.
+  - `W280`: 3 declaration migrations retained (`AbstractLobbyRequest`, `BasicGameServerResponse`, `CommonStatus`).
+  - `W281`: 3 declaration migrations retained (`JsonResult`, `MobileDetector`, `BaseAction`).
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - bounded compatibility rewires aligned moved `common.web` imports across high-fanout Java/JSP consumers (no blind/global replace).
+  - canonical validation reached on rerun1:
+    - fast gate batchA: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-102006-hardcut-m2-wave280-wave281-common-web-core/`
+  - report: `docs/projects/02-runtime-renaming-refactor/201-hard-cut-m2-wave280-wave281-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 6`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+6`.
+  - global tracked source declarations/files now `511` remaining (`2277` baseline, `1766` reduced, `77.558191%` burndown).

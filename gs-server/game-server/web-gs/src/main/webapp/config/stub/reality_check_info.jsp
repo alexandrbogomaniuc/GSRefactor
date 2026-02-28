@@ -3,7 +3,7 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
-<%@ page import="com.dgphoenix.casino.common.web.BaseAction" %><%--
+<%@ page import="com.abs.casino.common.web.BaseAction" %><%--
   Created by IntelliJ IDEA.
   User: quant
   Date: 07.11.18

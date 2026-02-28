@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.dgphoenix.casino.common.web.BaseAction" %>
+<%@ page import="com.abs.casino.common.web.BaseAction" %>
 <%@ page import="org.apache.struts.Globals" %>
 <%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="template" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>

@@ -1,7 +1,7 @@
 package com.abs.casino.common.web;
 
-import com.dgphoenix.casino.common.web.BaseAction;
-import com.dgphoenix.casino.common.web.JsonResult;
+import com.abs.casino.common.web.BaseAction;
+import com.abs.casino.common.web.JsonResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.struts.Globals;
 import org.apache.struts.action.*;

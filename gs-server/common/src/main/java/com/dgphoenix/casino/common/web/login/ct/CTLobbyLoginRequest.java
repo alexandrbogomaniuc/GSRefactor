@@ -1,7 +1,7 @@
 package com.abs.casino.common.web.login.ct;
 
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.web.AbstractLobbyRequest;
+import com.abs.casino.common.web.AbstractLobbyRequest;
 
 /**
  * Created by : angel

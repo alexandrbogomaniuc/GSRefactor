@@ -1,6 +1,6 @@
 package com.abs.casino.common.web.login.ct;
 
-import com.dgphoenix.casino.common.web.BasicGameServerResponse;
+import com.abs.casino.common.web.BasicGameServerResponse;
 
 /**
  * Created by : angel

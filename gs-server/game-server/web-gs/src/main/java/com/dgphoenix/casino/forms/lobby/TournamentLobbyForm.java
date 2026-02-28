@@ -1,7 +1,7 @@
 package com.abs.casino.forms.lobby;
 
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 

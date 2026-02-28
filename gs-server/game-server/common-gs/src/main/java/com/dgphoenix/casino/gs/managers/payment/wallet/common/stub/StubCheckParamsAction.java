@@ -1,6 +1,6 @@
 package com.abs.casino.gs.managers.payment.wallet.common.stub;
 
-import com.dgphoenix.casino.common.web.BaseAction;
+import com.abs.casino.common.web.BaseAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.action.ActionForm;

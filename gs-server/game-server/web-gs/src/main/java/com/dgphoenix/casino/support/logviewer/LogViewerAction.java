@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-import static com.dgphoenix.casino.common.web.BaseAction.SUCCESS_FORWARD;
+import static com.abs.casino.common.web.BaseAction.SUCCESS_FORWARD;
 import static java.util.Collections.emptyList;
 
 /**

@@ -1,0 +1,3 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/JsonResult.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/BaseAction.java

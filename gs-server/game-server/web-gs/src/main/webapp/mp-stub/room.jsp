@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.common.web.BaseAction" %>
+<%@ page import="com.abs.casino.common.web.BaseAction" %>
 <!DOCTYPE html>
 <head>
     <title>Lobby Test Client</title>
