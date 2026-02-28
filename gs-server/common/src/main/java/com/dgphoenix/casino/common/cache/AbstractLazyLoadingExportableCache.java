@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.cache;
 
+import com.abs.casino.common.cache.ILoadingCache;
 import com.dgphoenix.casino.cassandra.persist.ILazyLoadingPersister;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.persist.StreamPersister;

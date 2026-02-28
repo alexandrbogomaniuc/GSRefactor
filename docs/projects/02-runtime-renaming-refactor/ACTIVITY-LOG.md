@@ -3830,3 +3830,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 10`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+10`.
   - global tracked source declarations/files now `530` remaining (`2277` baseline, `1747` reduced, `76.723759%` burndown).
+
+## 2026-02-28 09:44 UTC (Hard-Cut M2 Wave 276 + 277)
+- Continued Project 02 hard-cut execution in `Dev_new` and completed `W276 + W277` with canonical validation profile.
+- Scope retained after stabilization/defer:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `3` (`UtilsApplicationContextHelper`, `GameLogger`, `LoggingUtils`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix` declarations): `0`.
+- Stabilization/validation highlights:
+  - initial `W276/W277` attempt surfaced high-fanout type drift on lock/load-balancer/time-provider/bank-types surfaces; deferred `7` declarations (`ILoadBalancer`, `ILockManager`, `LockingInfo`, `CommonExecutorService`, `NtpTimeProvider`, `Coin`, `Limit`).
+  - clean/incremental compile drift repairs required for canonical matrix recovery:
+    - compatibility imports for moved `ResultType`, `ILoadingCache`, `ICurrencyRateMultiplierRetriever`, moved currency exceptions, moved `RoundFinishedHelper`, moved `UtilsApplicationContextHelper`, and moved `NtpWrapper`.
+  - canonical validation reached on rerun6:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL (rc=2)`
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL (rc=2)`, retry1 `rc=2`.
+- Evidence/report:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-091631-hardcut-m2-wave276-wave277-utils-core-lock-ntp-logkit-banktypes/`
+  - `docs/projects/02-runtime-renaming-refactor/199-hard-cut-m2-wave276-wave277-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 3`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+3`.
+  - global tracked source declarations/files now `527` remaining (`2277` baseline, `1750` reduced, `76.855512%` burndown).

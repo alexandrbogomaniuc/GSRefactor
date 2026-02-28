@@ -9,7 +9,7 @@ import com.dgphoenix.casino.common.cache.ServerConfigsCache;
 import com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
 import com.dgphoenix.casino.common.cache.data.server.ServerInfo;
 import com.abs.casino.common.config.HostConfiguration;
-import com.dgphoenix.casino.common.config.UtilsApplicationContextHelper;
+import com.abs.casino.common.config.UtilsApplicationContextHelper;
 import com.dgphoenix.casino.common.util.ITimeProvider;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import com.abs.casino.common.util.system.SystemPropertyReader;

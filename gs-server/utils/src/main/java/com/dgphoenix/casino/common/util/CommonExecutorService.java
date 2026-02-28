@@ -1,6 +1,6 @@
 package com.dgphoenix.casino.common.util;
 
-import com.dgphoenix.casino.common.config.UtilsApplicationContextHelper;
+import com.abs.casino.common.config.UtilsApplicationContextHelper;
 import com.abs.casino.common.configuration.IGameServerConfiguration;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 

@@ -8650,3 +8650,22 @@
   - baseline `2277`, reduced `1747`, remaining `530`, burndown `76.723759%`
   - Project 02 `47.358402%`, Core `73.679201%`, Portfolio `86.839600%`
   - ETA `21.7h` (`2.71` workdays)
+
+### 2026-02-28 09:44 UTC
+- Continued Project 02 hard-cut execution in `Dev_new` and completed `W276 + W277` with canonical validation profile.
+- Scope retained after stabilization/defer:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `3` (`UtilsApplicationContextHelper`, `GameLogger`, `LoggingUtils`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix` declarations): `0`.
+- Stabilization/validation highlights:
+  - initial `W276/W277` plan exposed high-fanout type drift; deferred `7` declarations (`ILoadBalancer`, `ILockManager`, `LockingInfo`, `CommonExecutorService`, `NtpTimeProvider`, `Coin`, `Limit`) to keep low-risk sequencing.
+  - applied bounded compile-compat rewires for moved `ResultType`, moved cache interfaces (`ILoadingCache`, `ICurrencyRateMultiplierRetriever`), moved currency exceptions, moved `RoundFinishedHelper`, moved `UtilsApplicationContextHelper`, and moved `NtpWrapper`.
+  - canonical validation reached on rerun6:
+    - fast gate batchA/batchB `STEP01-08 PASS`, `STEP09 FAIL (rc=2)`
+    - full matrix `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL (rc=2)`, retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-091631-hardcut-m2-wave276-wave277-utils-core-lock-ntp-logkit-banktypes/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/199-hard-cut-m2-wave276-wave277-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1750`, remaining `527`, burndown `76.855512%`
+  - Project 02 `47.398994%`, Core `73.699497%`, Portfolio `86.849748%`
+  - ETA `21.6h` (`2.70` workdays)

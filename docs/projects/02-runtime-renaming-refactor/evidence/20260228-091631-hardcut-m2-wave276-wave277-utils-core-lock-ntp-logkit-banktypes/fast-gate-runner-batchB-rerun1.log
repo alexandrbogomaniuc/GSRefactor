@@ -1,0 +1,373 @@
+[2026-02-28T09:21:33Z] START STEP01
+[2026-02-28T09:21:33Z] START STEP01
+[2026-02-28T09:21:33Z] DIR gs-server/common
+[2026-02-28T09:21:33Z] DIR gs-server/common
+[2026-02-28T09:21:33Z] CMD mvn -DskipTests install
+[2026-02-28T09:21:33Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 211 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/GameSession.java:[3,44] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/GameSession.java:[634,16] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class GameSession
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/GameSession.java:[645,39] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class GameSession
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[7,44] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[8,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[10,44] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[11,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[47,108] error: cannot find symbol
+[ERROR]   symbol: class Coin
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[47,114] error: cannot find symbol
+[ERROR]   symbol: class Limit
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[507,17] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[525,12] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: class BaseGameCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[70,12] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: class BaseGameInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[71,17] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class BaseGameInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java:[10,44] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java:[11,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[97,49] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class BaseGameInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[117,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: class BaseGameInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[117,62] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class BaseGameInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[492,16] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class BaseGameInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[497,30] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class BaseGameInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[502,11] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: class BaseGameInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[507,25] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: class BaseGameInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java:[134,53] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: class BankInfoCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java:[135,32] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class BankInfoCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[5,44] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[6,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[27,12] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: class PlayerGameSettings
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[35,63] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class PlayerGameSettings
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[35,76] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: class PlayerGameSettings
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[43,32] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class PlayerGameSettings
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[50,17] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class PlayerGameSettings
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[85,16] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class PlayerGameSettings
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[89,30] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class PlayerGameSettings
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[94,11] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: class PlayerGameSettings
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[98,25] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: class PlayerGameSettings
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/LimitLabelValueListBean.java:[4,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java:[4,33] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java:[13,18] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: class DomainSessionFactory
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionDataPersister.java:[4,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java:[18,32] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: class DomainSessionFactory
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[7,33] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[8,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionDataPersister.java:[21,25] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: interface ITransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[26,12] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: class DomainSession
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[29,18] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: class DomainSession
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[49,25] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: class DomainSession
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[66,11] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: class DomainSession
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LoadBalancerCache.java:[3,28] error: cannot find symbol
+[ERROR]   symbol:   class ILoadBalancer
+  location: package com.abs.casino.common
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LoadBalancerCache.java:[22,86] error: cannot find symbol
+[ERROR]   symbol: class ILoadBalancer
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LimitsCache.java:[3,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LimitsCache.java:[19,11] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: class LimitsCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LimitsCache.java:[24,16] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+  location: class LimitsCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java:[3,44] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: package com.abs.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java:[19,11] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class CoinsCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java:[24,11] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class CoinsCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java:[29,16] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+  location: class CoinsCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java:[34,16] error: cannot find symbol
+[INFO] 57 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.137 s
+[INFO] Finished at: 2026-02-28T09:21:35Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/GameSession.java:[3,44] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/GameSession.java:[634,16] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class GameSession
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/GameSession.java:[645,39] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class GameSession
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[7,44] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[8,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[10,44] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[11,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[47,108] error: cannot find symbol
+[ERROR]   symbol: class Coin
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[47,114] error: cannot find symbol
+[ERROR]   symbol: class Limit
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[507,17] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[525,12] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: class BaseGameCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[70,12] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: class BaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[71,17] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class BaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java:[10,44] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java:[11,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[97,49] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class BaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[117,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: class BaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[117,62] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class BaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[492,16] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class BaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[497,30] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class BaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[502,11] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: class BaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:[507,25] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: class BaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java:[134,53] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: class BankInfoCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java:[135,32] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class BankInfoCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[5,44] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[6,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[27,12] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: class PlayerGameSettings
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[35,63] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class PlayerGameSettings
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[35,76] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: class PlayerGameSettings
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[43,32] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class PlayerGameSettings
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[50,17] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class PlayerGameSettings
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[85,16] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class PlayerGameSettings
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[89,30] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class PlayerGameSettings
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[94,11] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: class PlayerGameSettings
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java:[98,25] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: class PlayerGameSettings
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/LimitLabelValueListBean.java:[4,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java:[4,33] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java:[13,18] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: class DomainSessionFactory
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionDataPersister.java:[4,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java:[18,32] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: class DomainSessionFactory
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[7,33] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[8,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionDataPersister.java:[21,25] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: interface ITransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[26,12] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: class DomainSession
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[29,18] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: class DomainSession
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[49,25] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: class DomainSession
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[66,11] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: class DomainSession
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LoadBalancerCache.java:[3,28] error: cannot find symbol
+[ERROR]   symbol:   class ILoadBalancer
+[ERROR]   location: package com.abs.casino.common
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LoadBalancerCache.java:[22,86] error: cannot find symbol
+[ERROR]   symbol: class ILoadBalancer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LimitsCache.java:[3,44] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LimitsCache.java:[19,11] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: class LimitsCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LimitsCache.java:[24,16] error: cannot find symbol
+[ERROR]   symbol:   class Limit
+[ERROR]   location: class LimitsCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java:[3,44] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: package com.abs.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java:[19,11] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class CoinsCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java:[24,11] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class CoinsCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java:[29,16] error: cannot find symbol
+[ERROR]   symbol:   class Coin
+[ERROR]   location: class CoinsCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java:[34,16] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[2026-02-28T09:21:35Z] FAIL STEP01 rc=1
+[2026-02-28T09:21:35Z] FAIL STEP01 rc=1

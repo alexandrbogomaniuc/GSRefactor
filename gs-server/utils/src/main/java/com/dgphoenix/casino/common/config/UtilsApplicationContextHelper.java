@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.config;
+package com.abs.casino.common.config;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

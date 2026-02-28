@@ -6,6 +6,7 @@ package com.dgphoenix.casino.common.cache;
 
 import com.abs.casino.common.cache.data.bank.BankConstants;
 import com.abs.casino.common.cache.IDistributedConfigCache;
+import com.abs.casino.common.cache.ICurrencyRateMultiplierRetriever;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;
 import com.dgphoenix.casino.common.cache.data.bank.Limit;

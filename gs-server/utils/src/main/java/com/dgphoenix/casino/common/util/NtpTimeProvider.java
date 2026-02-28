@@ -1,6 +1,7 @@
 package com.dgphoenix.casino.common.util;
 
-import com.dgphoenix.casino.common.config.UtilsApplicationContextHelper;
+import com.abs.casino.common.config.UtilsApplicationContextHelper;
+import com.abs.casino.common.util.NtpWrapper;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import org.apache.commons.net.ntp.NtpV3Packet;
 import org.apache.commons.net.ntp.TimeInfo;

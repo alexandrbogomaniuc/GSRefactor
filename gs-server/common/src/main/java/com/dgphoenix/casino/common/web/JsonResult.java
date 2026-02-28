@@ -1,5 +1,7 @@
 package com.dgphoenix.casino.common.web;
 
+import com.abs.casino.common.web.ResultType;
+
 public class JsonResult {
 
     private final String message;

@@ -1,5 +1,7 @@
 package com.dgphoenix.casino.common.lock;
 
+import com.abs.casino.common.lock.LocalLockInfo;
+
 /**
  * User: flsh
  * Date: 03.02.15.

@@ -1,0 +1,530 @@
+[2026-02-28T09:25:25Z] START PRE01
+[2026-02-28T09:25:25Z] START PRE01
+[2026-02-28T09:25:25Z] DIR gs-server/utils
+[2026-02-28T09:25:25Z] DIR gs-server/utils
+[2026-02-28T09:25:25Z] CMD mvn -DskipTests install
+[2026-02-28T09:25:25Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-utils-restricted >--------------
+[INFO] Building gsn-utils-restricted 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-utils-restricted ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-utils-restricted ---
+[INFO] Compiling 30 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-utils-restricted ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-utils-restricted ---
+[INFO] Compiling 4 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.10:test (default-test) @ gsn-utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-utils-restricted ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/target/gsn-utils-restricted-1.0-SNAPSHOT-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.370 s
+[INFO] Finished at: 2026-02-28T09:25:29Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T09:25:29Z] PASS PRE01 rc=0
+[2026-02-28T09:25:29Z] PASS PRE01 rc=0
+[2026-02-28T09:25:29Z] START PRE02
+[2026-02-28T09:25:29Z] START PRE02
+[2026-02-28T09:25:29Z] DIR gs-server/sb-utils
+[2026-02-28T09:25:29Z] DIR gs-server/sb-utils
+[2026-02-28T09:25:29Z] CMD mvn -DskipTests install
+[2026-02-28T09:25:29Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 200 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ utils-restricted ---
+[INFO] Compiling 19 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ utils-restricted ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ utils-restricted ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.394 s
+[INFO] Finished at: 2026-02-28T09:25:33Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T09:25:33Z] PASS PRE02 rc=0
+[2026-02-28T09:25:33Z] PASS PRE02 rc=0
+[2026-02-28T09:25:33Z] START PRE03
+[2026-02-28T09:25:33Z] START PRE03
+[2026-02-28T09:25:33Z] DIR gs-server/common-promo
+[2026-02-28T09:25:33Z] DIR gs-server/common-promo
+[2026-02-28T09:25:33Z] CMD mvn -DskipTests install
+[2026-02-28T09:25:33Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 54 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-promo ---
+[INFO] Compiling 2 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-promo ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-promo ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ common-promo >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ common-promo <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ common-promo ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-promo ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.043 s
+[INFO] Finished at: 2026-02-28T09:25:36Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T09:25:36Z] PASS PRE03 rc=0
+[2026-02-28T09:25:36Z] PASS PRE03 rc=0
+[2026-02-28T09:25:36Z] START STEP01
+[2026-02-28T09:25:36Z] START STEP01
+[2026-02-28T09:25:36Z] DIR gs-server/common
+[2026-02-28T09:25:36Z] DIR gs-server/common
+[2026-02-28T09:25:36Z] CMD mvn -DskipTests install
+[2026-02-28T09:25:36Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 201 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-common ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-common ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-common ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/gsn-common-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-common ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common/1.0-SNAPSHOT/gsn-common-1.0-SNAPSHOT.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/gsn-common-1.0-SNAPSHOT.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common/1.0-SNAPSHOT/gsn-common-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.430 s
+[INFO] Finished at: 2026-02-28T09:25:40Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T09:25:40Z] PASS STEP01 rc=0
+[2026-02-28T09:25:40Z] PASS STEP01 rc=0
+[2026-02-28T09:25:40Z] START STEP02
+[2026-02-28T09:25:40Z] START STEP02
+[2026-02-28T09:25:40Z] DIR gs-server/common-wallet
+[2026-02-28T09:25:40Z] DIR gs-server/common-wallet
+[2026-02-28T09:25:40Z] CMD mvn -DskipTests install
+[2026-02-28T09:25:40Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-wallet >-----------------
+[INFO] Building common-wallet 1.0.67
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-wallet ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ common-wallet ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-wallet ---
+[INFO] Compiling 11 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ common-wallet ---
+[INFO] Copying 108 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-wallet ---
+[INFO] Compiling 4 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-wallet ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-wallet ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/common-wallet-1.0.67.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-wallet ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-wallet/1.0.67/common-wallet-1.0.67.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/common-wallet-1.0.67.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-wallet/1.0.67/common-wallet-1.0.67.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.772 s
+[INFO] Finished at: 2026-02-28T09:25:44Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T09:25:44Z] PASS STEP02 rc=0
+[2026-02-28T09:25:44Z] PASS STEP02 rc=0
+[2026-02-28T09:25:44Z] START STEP03
+[2026-02-28T09:25:44Z] START STEP03
+[2026-02-28T09:25:44Z] DIR gs-server/sb-utils
+[2026-02-28T09:25:44Z] DIR gs-server/sb-utils
+[2026-02-28T09:25:44Z] CMD mvn -DskipTests install
+[2026-02-28T09:25:44Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 200 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ utils-restricted ---
+[INFO] Compiling 19 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ utils-restricted ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ utils-restricted ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.359 s
+[INFO] Finished at: 2026-02-28T09:25:48Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T09:25:48Z] PASS STEP03 rc=0
+[2026-02-28T09:25:48Z] PASS STEP03 rc=0
+[2026-02-28T09:25:48Z] START STEP04
+[2026-02-28T09:25:48Z] START STEP04
+[2026-02-28T09:25:48Z] DIR gs-server/common-promo
+[2026-02-28T09:25:48Z] DIR gs-server/common-promo
+[2026-02-28T09:25:48Z] CMD mvn -DskipTests install
+[2026-02-28T09:25:48Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 54 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-promo ---
+[INFO] Compiling 2 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-promo ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-promo ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ common-promo >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ common-promo <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ common-promo ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-promo ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.770 s
+[INFO] Finished at: 2026-02-28T09:25:51Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T09:25:51Z] PASS STEP04 rc=0
+[2026-02-28T09:25:51Z] PASS STEP04 rc=0
+[2026-02-28T09:25:51Z] START STEP05
+[2026-02-28T09:25:51Z] START STEP05
+[2026-02-28T09:25:51Z] DIR gs-server/cassandra-cache/common-persisters
+[2026-02-28T09:25:51Z] DIR gs-server/cassandra-cache/common-persisters
+[2026-02-28T09:25:51Z] CMD mvn -DskipTests install
+[2026-02-28T09:25:51Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-common-persisters >-------------
+[INFO] Building gsn-common-persisters 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-persisters ---
+[INFO] Compiling 12 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-common-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common-persisters ---
+[INFO] Compiling 2 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-common-persisters ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-common-persisters ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-common-persisters >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-common-persisters <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-common-persisters ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-common-persisters ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.208 s
+[INFO] Finished at: 2026-02-28T09:25:54Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T09:25:54Z] PASS STEP05 rc=0
+[2026-02-28T09:25:54Z] PASS STEP05 rc=0
+[2026-02-28T09:25:54Z] START STEP06
+[2026-02-28T09:25:54Z] START STEP06
+[2026-02-28T09:25:54Z] DIR gs-server/game-server/common-gs
+[2026-02-28T09:25:54Z] DIR gs-server/game-server/common-gs
+[2026-02-28T09:25:54Z] CMD mvn -DskipTests -Dcluster.properties=local/local-machine.properties install
+[2026-02-28T09:25:54Z] CMD mvn -DskipTests -Dcluster.properties=local/local-machine.properties install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:gsn-common-gs >-----------------
+[INFO] Building gsn-common-gs 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:2.8:copy (default) @ gsn-common-gs ---
+[INFO] Configured Artifact: javax.xml.bind:jaxb-api:2.2.7:jar
+[INFO] Configured Artifact: javax.xml.ws:jaxws-api:2.2.9:jar
+[INFO] javax.xml.bind:jaxb-api:2.2.7:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] javax.xml.ws:jaxws-api:2.2.9:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ gsn-common-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-gs ---
+[INFO] Compiling 516 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/Initializer.java:[76,80] error: incompatible types: LoadBalancerCache cannot be converted to ILoadBalancer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/InServiceServiceHandler.java:[67,23] error: incompatible types: AccountDistributedLockManager cannot be converted to ILockManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/InServiceServiceHandler.java:[70,23] error: incompatible types: DistributedLockManager cannot be converted to ILockManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventProcessor.java:[150,57] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventProcessor.java:[194,97] error: incompatible types: Pair<Boolean,com.dgphoenix.casino.common.lock.LockingInfo> cannot be converted to Pair<Boolean,com.abs.casino.common.lock.LockingInfo>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/lock/RemoteUnlocker.java:[20,7] error: RemoteUnlocker is not abstract and does not override abstract method unlock(int,Class<? extends ILockManager>,String,long) in IRemoteUnlocker
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/lock/RemoteUnlocker.java:[31,19] error: name clash: unlock(int,Class<? extends com.abs.casino.common.lock.ILockManager>,String,long) in RemoteUnlocker and unlock(int,Class<? extends com.dgphoenix.casino.common.lock.ILockManager>,String,long) in IRemoteUnlocker have the same erasure, yet neither overrides the other
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/lock/RemoteUnlocker.java:[30,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:[219,55] error: incompatible types: com.abs.casino.common.util.CommonExecutorService cannot be converted to com.dgphoenix.casino.common.util.CommonExecutorService
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:[427,54] error: incompatible types: LoadBalancerCache cannot be converted to ILoadBalancer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:[430,15] error: incompatible types: AccountDistributedLockManager cannot be converted to ILockManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/history/HistoryInformerManager.java:[164,42] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/history/HistoryInformerManager.java:[221,39] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/MassAwardBonusManager.java:[135,50] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/MassAwardBonusManager.java:[165,46] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/MassAwardBonusManager.java:[185,50] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/MassAwardBonusManager.java:[212,46] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredMassAwardTracker.java:[66,50] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredMassAwardTracker.java:[98,46] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/TransactionDataTracker.java:[246,57] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/TransactionDataTracker.java:[259,50] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/BankShutdownJob.java:[73,38] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/BankShutdownJob.java:[90,35] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/BankShutdownJob.java:[97,39] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/BankShutdownJob.java:[137,39] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredBonusTracker.java:[158,57] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredBonusTracker.java:[169,46] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/CassandraPersistenceContextConfiguration.java:[42,107] error: incompatible types: com.abs.casino.common.util.NtpTimeProvider cannot be converted to com.dgphoenix.casino.common.util.NtpTimeProvider
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredFRBonusTracker.java:[159,57] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredFRBonusTracker.java:[170,46] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[INFO] 30 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.884 s
+[INFO] Finished at: 2026-02-28T09:26:00Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common-gs: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/Initializer.java:[76,80] error: incompatible types: LoadBalancerCache cannot be converted to ILoadBalancer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/InServiceServiceHandler.java:[67,23] error: incompatible types: AccountDistributedLockManager cannot be converted to ILockManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/InServiceServiceHandler.java:[70,23] error: incompatible types: DistributedLockManager cannot be converted to ILockManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventProcessor.java:[150,57] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventProcessor.java:[194,97] error: incompatible types: Pair<Boolean,com.dgphoenix.casino.common.lock.LockingInfo> cannot be converted to Pair<Boolean,com.abs.casino.common.lock.LockingInfo>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/lock/RemoteUnlocker.java:[20,7] error: RemoteUnlocker is not abstract and does not override abstract method unlock(int,Class<? extends ILockManager>,String,long) in IRemoteUnlocker
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/lock/RemoteUnlocker.java:[31,19] error: name clash: unlock(int,Class<? extends com.abs.casino.common.lock.ILockManager>,String,long) in RemoteUnlocker and unlock(int,Class<? extends com.dgphoenix.casino.common.lock.ILockManager>,String,long) in IRemoteUnlocker have the same erasure, yet neither overrides the other
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/lock/RemoteUnlocker.java:[30,4] error: method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:[219,55] error: incompatible types: com.abs.casino.common.util.CommonExecutorService cannot be converted to com.dgphoenix.casino.common.util.CommonExecutorService
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:[427,54] error: incompatible types: LoadBalancerCache cannot be converted to ILoadBalancer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:[430,15] error: incompatible types: AccountDistributedLockManager cannot be converted to ILockManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/history/HistoryInformerManager.java:[164,42] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/history/HistoryInformerManager.java:[221,39] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/MassAwardBonusManager.java:[135,50] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/MassAwardBonusManager.java:[165,46] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/MassAwardBonusManager.java:[185,50] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/MassAwardBonusManager.java:[212,46] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredMassAwardTracker.java:[66,50] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredMassAwardTracker.java:[98,46] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/TransactionDataTracker.java:[246,57] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/TransactionDataTracker.java:[259,50] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/BankShutdownJob.java:[73,38] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/BankShutdownJob.java:[90,35] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/BankShutdownJob.java:[97,39] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/BankShutdownJob.java:[137,39] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredBonusTracker.java:[158,57] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredBonusTracker.java:[169,46] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/CassandraPersistenceContextConfiguration.java:[42,107] error: incompatible types: com.abs.casino.common.util.NtpTimeProvider cannot be converted to com.dgphoenix.casino.common.util.NtpTimeProvider
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredFRBonusTracker.java:[159,57] error: incompatible types: com.dgphoenix.casino.common.lock.LockingInfo cannot be converted to com.abs.casino.common.lock.LockingInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredFRBonusTracker.java:[170,46] error: incompatible types: com.abs.casino.common.lock.LockingInfo cannot be converted to com.dgphoenix.casino.common.lock.LockingInfo
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[2026-02-28T09:26:00Z] FAIL STEP06 rc=1
+[2026-02-28T09:26:00Z] FAIL STEP06 rc=1
