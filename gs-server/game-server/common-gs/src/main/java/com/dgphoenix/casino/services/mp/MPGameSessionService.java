@@ -18,7 +18,7 @@ import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
 import com.dgphoenix.casino.gs.socket.mq.BattlegroundService;
-import com.dgphoenix.casino.kafka.dto.GetMQDataRequest;
+import com.abs.casino.kafka.dto.GetMQDataRequest;
 import com.dgphoenix.casino.kafka.dto.SitOutRequest2;
 
 import org.apache.logging.log4j.LogManager;

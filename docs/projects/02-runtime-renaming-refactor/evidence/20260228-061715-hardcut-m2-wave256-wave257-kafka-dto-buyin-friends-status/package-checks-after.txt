@@ -1,0 +1,11 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetFriendsRequest.java:1:package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/DetailedPlayerInfo2Dto.java:1:package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetMQDataRequest.java:1:package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CrashGameSettingsResponseDto.java:1:package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/RoundInfoResultDto.java:1:package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/NotifyOnServerStatusesUpdatedRequest.java:1:package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/StringResponseDto.java:1:package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CloseFRBonusResultDto.java:1:package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetFriendsResponseDto.java:1:package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BuyInResultDto.java:1:package com.abs.casino.kafka.dto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BuyInRequest.java:1:package com.abs.casino.kafka.dto;

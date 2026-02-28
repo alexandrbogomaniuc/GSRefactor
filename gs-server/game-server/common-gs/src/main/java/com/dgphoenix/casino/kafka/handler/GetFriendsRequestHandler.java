@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
-import com.dgphoenix.casino.kafka.dto.GetFriendsRequest;
-import com.dgphoenix.casino.kafka.dto.GetFriendsResponseDto;
+import com.abs.casino.kafka.dto.GetFriendsRequest;
+import com.abs.casino.kafka.dto.GetFriendsResponseDto;
 
 @Component
 public class GetFriendsRequestHandler 

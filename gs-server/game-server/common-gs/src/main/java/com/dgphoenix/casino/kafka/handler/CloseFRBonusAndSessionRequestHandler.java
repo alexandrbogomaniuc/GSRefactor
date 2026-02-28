@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.abs.casino.kafka.dto.CloseFRBonusAndSessionRequest;
-import com.dgphoenix.casino.kafka.dto.CloseFRBonusResultDto;
+import com.abs.casino.kafka.dto.CloseFRBonusResultDto;
 
 @Component
 public class CloseFRBonusAndSessionRequestHandler

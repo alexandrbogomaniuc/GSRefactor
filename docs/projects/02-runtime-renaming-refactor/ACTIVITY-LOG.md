@@ -3633,3 +3633,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 11`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+11`.
   - global tracked source declarations/files now `613` remaining (`2277` baseline, `1664` reduced, `73.078612%` burndown).
+
+## 2026-02-28 06:26 UTC (Hard-Cut M2 Wave 256 + 257)
+- Continued hard-cut execution from W255 with declaration-first overlap-safe batch in `common-gs` kafka dto buy-in/friends/status surfaces:
+  - `W256`: 11 declaration migrations in buy-in/friends/status request/response DTOs.
+  - `W257`: integration and validation.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - fast gate rerun1 and full matrix rerun1 failed at `STEP06` (missing explicit imports after package moves).
+  - fixed with minimal compatibility imports in moved DTO declarations for unmigrated DTO dependencies.
+  - no blind/global replacement performed.
+  - canonical validation reached:
+    - fast gate batchA rerun2: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun2: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-061715-hardcut-m2-wave256-wave257-kafka-dto-buyin-friends-status/`
+  - report: `docs/projects/02-runtime-renaming-refactor/189-hard-cut-m2-wave256-wave257-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 11`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+11`.
+  - global tracked source declarations/files now `609` remaining (`2277` baseline, `1668` reduced, `73.254282%` burndown).

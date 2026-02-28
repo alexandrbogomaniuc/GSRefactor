@@ -1,0 +1,1 @@
+W256 declaration-first low-risk batch in common-gs kafka dto focusing on buy-in/friends/status DTOs with direct, bounded consumer import rewires only.

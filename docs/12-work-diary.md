@@ -8486,3 +8486,24 @@
   - ETA `25.3h` (`3.16` workdays)
 - Next:
   - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external environment blocker.
+
+### 2026-02-28 06:26 UTC
+- Continued Project 02 hard-cut execution in `Dev_new` and completed `W256 + W257` with canonical validation.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `11`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - fast gate rerun1 and full matrix rerun1 failed at `STEP06` due missing explicit imports after package moves.
+  - fixed with minimal compatibility imports in moved DTO declarations (`KafkaRequest`, `BasicKafkaResponse`, `BGFriendDto`, `CrashGameSettingDto`, `BattlegroundRoundInfoDto`, `FRBonusDto`, `CashBonusDto`, `TournamentInfoDto`, `BattlegroundInfoDto`).
+  - canonical validation reached:
+    - fast gate batchA rerun2: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun2: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-061715-hardcut-m2-wave256-wave257-kafka-dto-buyin-friends-status/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/189-hard-cut-m2-wave256-wave257-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1668`, remaining `609`, burndown `73.254282%`
+  - Project 02 `46.289487%`, Core `73.144743%`, Portfolio `86.572372%`
+  - ETA `25.1h` (`3.14` workdays)
+- Next:
+  - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external environment blocker.

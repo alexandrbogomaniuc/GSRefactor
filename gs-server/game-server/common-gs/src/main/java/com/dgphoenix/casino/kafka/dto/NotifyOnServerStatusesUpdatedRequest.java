@@ -1,8 +1,9 @@
-package com.dgphoenix.casino.kafka.dto;
+package com.abs.casino.kafka.dto;
 
 import java.util.Map;
 
 import com.abs.casino.common.cache.data.server.ServerOnlineStatus;
+import com.dgphoenix.casino.kafka.dto.KafkaRequest;
 
 public class NotifyOnServerStatusesUpdatedRequest implements KafkaRequest {
     private Map<Integer, ServerOnlineStatus> changedServers;

@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
-import com.dgphoenix.casino.kafka.dto.BuyInRequest;
-import com.dgphoenix.casino.kafka.dto.BuyInResultDto;
+import com.abs.casino.kafka.dto.BuyInRequest;
+import com.abs.casino.kafka.dto.BuyInResultDto;
 
 @Component
 public class BuyInRequestHandler implements KafkaOuterRequestHandler<BuyInRequest, BuyInResultDto> {

@@ -1,4 +1,7 @@
-package com.dgphoenix.casino.kafka.dto;
+package com.abs.casino.kafka.dto;
+
+import com.dgphoenix.casino.kafka.dto.BGFriendDto;
+import com.dgphoenix.casino.kafka.dto.KafkaRequest;
 
 public class GetFriendsRequest implements KafkaRequest {
     private BGFriendDto friend;
