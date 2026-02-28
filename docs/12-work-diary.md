@@ -9187,3 +9187,13 @@
   - baseline `2277`, reduced `269`, remaining `2008`, burndown `11.813790%`
   - Project 02 `26.476724%`, Core `63.238362%`, Portfolio `81.619181%`
   - ETA `92.2h` (`11.53` workdays)
+
+### 2026-02-28 19:46 UTC
+- Pushed Project 02 hard-cut `W324 + W325` completion commit to `origin/main`.
+  - commit: `178d57c05`
+  - evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-192547-hardcut-m2-wave324-wave325-kafka-dto-core-primitives/`
+- Canonical matrix at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+- Completion metrics at push point:
+  - baseline `2277`, reduced `269`, remaining `2008`, burndown `11.813790%`
+  - Project 02 `26.476724%`, Core `63.238362%`, Portfolio `81.619181%`
+  - ETA `92.2h` (`11.53` workdays)
