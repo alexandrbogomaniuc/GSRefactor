@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.actions.enter.game;
+package com.abs.casino.actions.enter.game;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.abs.casino.actions.enter.AccountInfoAndSessionInfoPair;

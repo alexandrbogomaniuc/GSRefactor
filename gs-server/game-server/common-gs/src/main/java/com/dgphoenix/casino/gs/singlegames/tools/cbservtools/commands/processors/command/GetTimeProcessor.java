@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.dgphoenix.casino.common.util.NtpTimeProvider;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.gs.singlegames.tools.cbservtools.IGameController;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

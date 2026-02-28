@@ -1,7 +1,7 @@
 package com.abs.casino.websocket;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 
 /**
  * Created by vladislav on 12/1/16.

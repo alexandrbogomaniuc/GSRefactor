@@ -18,7 +18,7 @@ import com.dgphoenix.casino.gs.GameServerComponentsHelper;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.gs.singlegames.tools.cbservtools.IGameController;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.command.ILockedCommandProcessor;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 import com.abs.casino.promo.IPromoMessagesDispatcher;
 import com.abs.casino.promo.persisters.CassandraLocalizationsPersister;
 import com.abs.casino.websocket.IWebSocketSessionsController;

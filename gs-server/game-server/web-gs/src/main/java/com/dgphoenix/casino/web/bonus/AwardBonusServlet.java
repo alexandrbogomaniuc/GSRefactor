@@ -1,7 +1,7 @@
 package com.abs.casino.web.bonus;
 
 import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
+import com.abs.casino.actions.api.bonus.AbstractBonusAction;
 import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameCache;

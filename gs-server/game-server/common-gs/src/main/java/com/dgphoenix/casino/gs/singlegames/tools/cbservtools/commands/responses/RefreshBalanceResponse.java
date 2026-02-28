@@ -2,7 +2,7 @@ package com.abs.casino.gs.singlegames.tools.cbservtools.commands.responses;
 
 import com.abs.casino.common.util.DigitFormatter;
 import com.abs.casino.gs.singlegames.tools.cbservtools.IGameController;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

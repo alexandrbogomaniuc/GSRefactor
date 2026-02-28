@@ -3,7 +3,7 @@ package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.comm
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.gs.managers.dblink.IDBLink;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 
 import javax.annotation.Nullable;
 import javax.servlet.ServletRequest;

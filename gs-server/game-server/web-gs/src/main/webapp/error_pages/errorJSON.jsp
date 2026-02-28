@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.actions.api.bonus.BonusForm" %>
+<%@ page import="com.abs.casino.actions.api.bonus.BonusForm" %>
 <%@ page import="java.util.Enumeration" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map" %>
@@ -6,7 +6,7 @@
 <%@ page import="org.apache.struts.action.ActionErrors" %>
 <%@ page import="org.apache.struts.Globals" %>
 <%@ page import="org.apache.struts.action.ActionMessage" %>
-<%@ page import="com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction"%>
+<%@ page import="com.abs.casino.actions.api.bonus.AbstractBonusAction"%>
 <%@ page contentType="application/json;charset=UTF-8"%>
 
 

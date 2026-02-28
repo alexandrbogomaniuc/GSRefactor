@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response;
+package com.abs.casino.gs.singlegames.tools.cbservtools.response;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Joiner.MapJoiner;

@@ -12,7 +12,7 @@ import com.abs.casino.exceptions.LoginErrorException;
 import com.abs.casino.forms.game.CommonFRBStartGameForm;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.abs.casino.helpers.login.FRBonusHelper;
-import com.dgphoenix.casino.helpers.login.LoginHelper;
+import com.abs.casino.helpers.login.LoginHelper;
 import com.abs.casino.helpers.login.serializers.BonusSerializeLoginForm;
 import com.abs.casino.sm.login.BonusGameLoginRequest;
 import com.abs.casino.sm.login.LoginResponse;

@@ -2,8 +2,8 @@ package com.abs.casino.actions.api.frbonus;
 
 import com.abs.casino.actions.api.frbonus.GetFRBHistoryForm;
 import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
-import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+import com.abs.casino.actions.api.bonus.AbstractBonusAction;
+import com.abs.casino.actions.api.bonus.BonusForm;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;

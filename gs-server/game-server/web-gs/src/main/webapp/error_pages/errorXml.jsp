@@ -3,7 +3,7 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.Set" %>
-<%@ page import="com.dgphoenix.casino.actions.api.bonus.BonusForm" %>
+<%@ page import="com.abs.casino.actions.api.bonus.BonusForm" %>
 <%@ page import="java.util.Enumeration" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 

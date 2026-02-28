@@ -12,7 +12,7 @@ import com.abs.casino.common.util.string.StringIdGenerator;
 import com.abs.casino.common.web.statistics.IStatisticsGetter;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 import com.abs.casino.promo.messages.handlers.IMessageHandler;
 import com.abs.casino.promo.messages.handlers.MessagesHandlersFactory;
 import com.google.common.collect.Lists;

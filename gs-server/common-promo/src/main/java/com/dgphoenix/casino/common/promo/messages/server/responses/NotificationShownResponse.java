@@ -1,6 +1,6 @@
 package com.abs.casino.common.promo.messages.server.responses;
 
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 
 /**
  * @deprecated It is the old version of {@link com.dgphoenix.casino.common.promo.messages.server.responses.NotificationsShownResponse}

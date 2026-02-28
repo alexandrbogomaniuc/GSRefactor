@@ -1,7 +1,7 @@
 package com.abs.casino.common.promo.messages.server.notifications.prizes;
 
 
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 
 public class InstantMoneyWon extends PrizeWonNotification {
     private long amount;

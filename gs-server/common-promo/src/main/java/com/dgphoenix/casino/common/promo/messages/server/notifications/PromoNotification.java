@@ -1,6 +1,6 @@
 package com.abs.casino.common.promo.messages.server.notifications;
 
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 
 /**
  * Created by vladislav on 12/19/16.

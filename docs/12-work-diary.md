@@ -8969,3 +8969,23 @@
   - baseline `2277`, reduced `169`, remaining `2108`, burndown `7.422047%`
   - Project 02 `25.927756%`, Core `62.963878%`, Portfolio `81.481939%`
   - ETA `~96.8h` (`~12.10` workdays).
+
+### 2026-02-28 16:45 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W310 + W311` with bounded deferrals.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `6` (`AbstractBonusAction`, `BonusForm`, `BaseStartGameAction` [enter/game], `LoginHelper` [helpers/login], `ServerMessage`, `ServerResponse`).
+  - deferred from initial target due instability/compile-order drift: `GameType`, `GameGroup`, `GameVariableType`, `Identifiable`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - initial rerun failed fast-gate at `STEP01` due `Identifiable` dependency order (`STEP01` before `sb-utils` artifact install).
+  - applied bounded rollback/defer for `Identifiable` and pre-installed `sb-utils`.
+  - canonical validation reached on rerun1:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-162546-hardcut-m2-wave310-wave311-webgs-cbserv-gameenums/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/216-hard-cut-m2-wave310-wave311-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `185`, remaining `2092`, burndown `8.124725%`
+  - Project 02 `26.015591%`, Core `63.007796%`, Portfolio `81.503898%`
+  - ETA `96.0h` (`12.00` workdays)

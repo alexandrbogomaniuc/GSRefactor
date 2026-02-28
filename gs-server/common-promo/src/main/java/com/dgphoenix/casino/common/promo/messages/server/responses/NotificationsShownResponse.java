@@ -1,6 +1,6 @@
 package com.abs.casino.common.promo.messages.server.responses;
 
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 import org.apache.commons.lang.StringUtils;
 
 /**

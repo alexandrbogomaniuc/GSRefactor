@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response;
+package com.abs.casino.gs.singlegames.tools.cbservtools.response;
 
 /**
  * Created by vladislav on 2/15/17.

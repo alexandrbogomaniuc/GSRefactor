@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.helpers.login;
+package com.abs.casino.helpers.login;
 
 import com.dgphoenix.casino.account.AccountManager;
 import com.dgphoenix.casino.common.SessionHelper;

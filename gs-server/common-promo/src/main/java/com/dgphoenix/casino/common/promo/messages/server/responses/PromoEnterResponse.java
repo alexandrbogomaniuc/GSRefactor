@@ -2,8 +2,8 @@ package com.abs.casino.common.promo.messages.server.responses;
 
 import com.dgphoenix.casino.common.promo.PromoType;
 import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 
 import java.util.ArrayList;
 import java.util.HashSet;

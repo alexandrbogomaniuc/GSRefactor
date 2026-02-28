@@ -14,7 +14,7 @@ import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTrackerTask
 import com.abs.casino.gs.singlegames.tools.cbservtools.IGameController;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.ILockedProcessor;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.annotations.PreProcessor;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 import org.springframework.core.annotation.Order;
 
 import javax.annotation.Nullable;

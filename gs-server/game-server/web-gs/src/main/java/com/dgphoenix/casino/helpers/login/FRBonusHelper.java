@@ -21,7 +21,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CWError;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
-import com.dgphoenix.casino.helpers.login.LoginHelper;
+import com.abs.casino.helpers.login.LoginHelper;
 import com.abs.casino.sm.CWv3PlayerSessionManager;
 import com.dgphoenix.casino.sm.PlayerSessionFactory;
 import com.abs.casino.sm.login.BonusGameLoginRequest;

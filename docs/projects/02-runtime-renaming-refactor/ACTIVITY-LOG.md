@@ -4162,3 +4162,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `10`; bounded rewires/regressions: `0`.
   - global tracked source declarations/files now `2098` remaining (`2277` baseline, `179` reduced, `7.861221%` burndown).
+
+## 2026-02-28 16:45 UTC (Hard-Cut M2 Wave 310 + 311)
+- Continued hard-cut execution from W309 with declaration-first overlap-safe `web-gs/cbserv` batch.
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `6`
+    - `AbstractBonusAction`, `BonusForm`, `BaseStartGameAction` (enter/game), `LoginHelper` (helpers/login), `ServerMessage`, `ServerResponse`.
+  - deferred from initial target due instability/compile-order drift: `GameType`, `GameGroup`, `GameVariableType`, `Identifiable`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - initial rerun failed fast-gate at `STEP01` due unresolved `Identifiable` in compile order before `sb-utils` artifact install.
+  - applied bounded rollback/defer for `Identifiable` and pre-installed `sb-utils` to align dependency order.
+  - canonical validation reached on rerun1:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-162546-hardcut-m2-wave310-wave311-webgs-cbserv-gameenums/`
+  - report: `docs/projects/02-runtime-renaming-refactor/216-hard-cut-m2-wave310-wave311-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `6`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `2092` remaining (`2277` baseline, `185` reduced, `8.124725%` burndown).

@@ -16,7 +16,7 @@ public enum LoginHelper {
     GUEST("guest", CWHelper.getInstance());
 
     private final String name;
-    private final com.dgphoenix.casino.helpers.login.LoginHelper helper;
+    private final com.abs.casino.helpers.login.LoginHelper helper;
 
     private static final Map<String, LoginHelper> helpers = new HashMap<>();
 
@@ -26,7 +26,7 @@ public enum LoginHelper {
         }
     }
 
-    LoginHelper(String name, com.dgphoenix.casino.helpers.login.LoginHelper helper) {
+    LoginHelper(String name, com.abs.casino.helpers.login.LoginHelper helper) {
         this.name = name;
         this.helper = helper;
     }
@@ -39,7 +39,7 @@ public enum LoginHelper {
         return name;
     }
 
-    public com.dgphoenix.casino.helpers.login.LoginHelper getHelper() {
+    public com.abs.casino.helpers.login.LoginHelper getHelper() {
         return helper;
     }
 }

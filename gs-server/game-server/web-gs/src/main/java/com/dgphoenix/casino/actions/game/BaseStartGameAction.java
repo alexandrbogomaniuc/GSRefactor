@@ -45,7 +45,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusNotificationManager
 import com.dgphoenix.casino.gs.managers.payment.transfer.PaymentManager;
 import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
-import com.dgphoenix.casino.helpers.login.LoginHelper;
+import com.abs.casino.helpers.login.LoginHelper;
 import com.abs.casino.sm.login.LoginRequest;
 import com.abs.casino.sm.login.LoginResponse;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
@@ -400,7 +400,7 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
             redirect.addParameter(BaseAction.PARAM_CASHIER_URL, cachierUrl);
         }
         if (bankInfo.isInGameHistoryEnabled()) {
-            String gameHistoryUrl = com.dgphoenix.casino.actions.enter.game.BaseStartGameAction
+            String gameHistoryUrl = com.abs.casino.actions.enter.game.BaseStartGameAction
                     .getGameHistoryUrl(request, sessionId, bankInfo, gameId, lang);
             if (!isTrimmedEmpty(gameHistoryUrl)) {
                 redirect.addParameter(BaseAction.GAME_HISTORY_URL, gameHistoryUrl);
@@ -414,7 +414,7 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
 
         boolean hasPromoCampaign = gameSession.hasPromoCampaign();
         if (hasPromoCampaign) {
-            String promoIdsString = com.dgphoenix.casino.actions.enter.game.BaseStartGameAction
+            String promoIdsString = com.abs.casino.actions.enter.game.BaseStartGameAction
                     .getPromoIdsString(gameSession);
             redirect.addParameter(PROMO_IDS, promoIdsString);
 
@@ -424,14 +424,14 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
                 promoCampaigns.add(promoCampaignManager.getPromoCampaign(promoId));
             }
 
-            String promoDetailsURL = com.dgphoenix.casino.actions.enter.game.BaseStartGameAction
+            String promoDetailsURL = com.abs.casino.actions.enter.game.BaseStartGameAction
                     .getPromoDetailsURL(bankInfo.getId(), promoCampaigns);
             if (!isTrimmedEmpty(promoDetailsURL)) {
                 redirect.addParameter(PROMO_DETAILS_URL, promoDetailsURL);
             }
 
             redirect.addParameter(SHOW_PROMO_BAR,
-                    com.dgphoenix.casino.actions.enter.game.BaseStartGameAction.needToShowPromoBar(promoCampaigns));
+                    com.abs.casino.actions.enter.game.BaseStartGameAction.needToShowPromoBar(promoCampaigns));
         }
 
         //start

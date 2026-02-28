@@ -29,7 +29,7 @@ import com.abs.casino.forms.game.cw.CWGuestStartGameForm;
 import com.abs.casino.forms.login.cw.CWLoginForm;
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 import com.abs.casino.helpers.login.CWHelper;
-import com.dgphoenix.casino.helpers.login.LoginHelper;
+import com.abs.casino.helpers.login.LoginHelper;
 import com.abs.casino.helpers.login.serializers.CWSerializeLoginForm;
 import com.abs.casino.sm.login.CWLoginRequest;
 import com.abs.casino.sm.login.LoginResponse;
