@@ -8321,3 +8321,21 @@
   - ETA `29.1h` (`3.64` workdays)
 - Next:
   - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external environment blocker.
+### 2026-02-28 03:44 UTC
+- Continued Project 02 hard-cut execution in `Dev_new` and completed `W240A/W240B + W241` with declaration-first overlap-safe execution.
+- Scope retained:
+  - declaration migrations: `14`.
+  - bounded rewires: `0`.
+- Validation (canonical):
+  - fast gate batchA rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+  - fast gate batchB rerun1: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+  - full matrix rerun1: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-033605-hardcut-m2-wave240ab-wave241-parallel-batches/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/181-hard-cut-m2-wave240ab-wave241-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1592`, remaining `685`, burndown `69.916557%`
+  - Project 02 `44.180364%`, Core `72.090182%`, Portfolio `86.045091%`
+  - ETA `28.5h` (`3.57` workdays)
+- Next:
+  - continue overlap-safe declaration-first hard-cut waves while keeping `STEP09` `/startgame` `HTTP 502` tracked as external environment blocker.

@@ -1,0 +1,4 @@
+Selection rationale:
+- Declaration-first migration of non-base kafka/dto request/response surfaces.
+- Strictly disjoint ownership across batches via explicit manifests.
+- Deferred central base declarations (KafkaRequest/KafkaResponse/KafkaMessage/BasicKafkaResponse/KafkaHandlerException) to dedicated rewire-aware wave.

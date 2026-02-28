@@ -1,0 +1,15 @@
+# Package checks (before)
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/AddWinRequestDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BonusStatusDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BooleanResponseDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BuyInResultDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CrashGameSettingsResponseDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/DetailedPlayerInfo2Dto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/MQDataDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/MQDataWrapperDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutCashBonusSessionRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutCashBonusSessionResultDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutTournamentSessionRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutTournamentSessionResultDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/UpdateCurrencyRatesRequestResponse.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/VoidKafkaResponse.java: package com.dgphoenix.casino.kafka.dto;

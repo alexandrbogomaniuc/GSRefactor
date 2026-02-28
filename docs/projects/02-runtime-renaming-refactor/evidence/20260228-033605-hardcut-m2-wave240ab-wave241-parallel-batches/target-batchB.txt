@@ -1,0 +1,4 @@
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutTournamentSessionRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutTournamentSessionResultDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/UpdateCurrencyRatesRequestResponse.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/VoidKafkaResponse.java
