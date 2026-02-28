@@ -9126,3 +9126,13 @@
   - baseline `2277`, reduced `243`, remaining `2034`, burndown `10.671937%`
   - Project 02 `26.333992%`, Core `63.166996%`, Portfolio `81.583498%`
   - ETA `93.4h` (`11.67` workdays)
+
+### 2026-02-28 18:59 UTC
+- Pushed Project 02 hard-cut `W320 + W321` completion commit to `origin/main`.
+  - commit: `b9617ecd1`
+  - evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-184023-hardcut-m2-wave320-wave321-gs-persister-wallet-currency/`
+- Canonical matrix at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+- Completion metrics at push point:
+  - baseline `2277`, reduced `243`, remaining `2034`, burndown `10.671937%`
+  - Project 02 `26.333992%`, Core `63.166996%`, Portfolio `81.583498%`
+  - ETA `93.4h` (`11.67` workdays)

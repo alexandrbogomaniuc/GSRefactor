@@ -4282,3 +4282,8 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `11`; bounded rewires/regressions: `0`.
   - global tracked source declarations/files now `2034` remaining (`2277` baseline, `243` reduced, `10.671937%` burndown).
+
+## 2026-02-28 18:59 UTC (Push Marker W320 + W321)
+- Pushed wave completion commit `b9617ecd1` to `origin/main`.
+- Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-184023-hardcut-m2-wave320-wave321-gs-persister-wallet-currency/`.
+- Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
