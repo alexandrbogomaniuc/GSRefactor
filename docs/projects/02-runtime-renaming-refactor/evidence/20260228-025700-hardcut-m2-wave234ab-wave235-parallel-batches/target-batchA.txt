@@ -1,0 +1,10 @@
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BuyInRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetPaymentOperationStatus2Request.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SaveTournamentRoundResultRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/AddWinResultDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/StartNewRoundForManyPlayersResponseDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetMQDataRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BotConfigInfosResponse.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CashBonusDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/StartNewRoundResponseDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/StartNewRoundRequest.java

@@ -1,0 +1,21 @@
+# Package checks (before)
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BuyInRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetPaymentOperationStatus2Request.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SaveTournamentRoundResultRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/AddWinResultDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/StartNewRoundForManyPlayersResponseDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetMQDataRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BotConfigInfosResponse.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CashBonusDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/StartNewRoundResponseDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/StartNewRoundRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CloseFRBonusResultDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GameServerInfoDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/TournamentInfoDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/LongResponseDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RoundInfoResultDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SaveCashBonusRoundResultRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutRequest.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGUpdateRoomResultDto.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetDetailedPlayerInfo2Request.java: package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitInResponseDto.java: package com.dgphoenix.casino.kafka.dto;

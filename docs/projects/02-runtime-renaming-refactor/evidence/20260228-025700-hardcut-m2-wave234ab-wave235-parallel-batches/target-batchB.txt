@@ -1,0 +1,10 @@
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CloseFRBonusResultDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GameServerInfoDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/TournamentInfoDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/LongResponseDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RoundInfoResultDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SaveCashBonusRoundResultRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGUpdateRoomResultDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetDetailedPlayerInfo2Request.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/SitInResponseDto.java

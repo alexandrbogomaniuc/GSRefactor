@@ -1,0 +1,4 @@
+Selection rationale:
+- Chosen from mp-server kafka DTO surfaces with declaration-first package migrations.
+- Strictly disjoint file ownership across batches; no planned rewires.
+- Avoided central base declarations (e.g., KafkaRequest/KafkaResponse) to keep risk low.
