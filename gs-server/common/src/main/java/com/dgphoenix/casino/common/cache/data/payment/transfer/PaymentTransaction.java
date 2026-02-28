@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data.payment.transfer;
+package com.abs.casino.common.cache.data.payment.transfer;
 
 import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;

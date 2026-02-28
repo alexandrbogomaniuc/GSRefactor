@@ -5,7 +5,7 @@
 </head>
 <body>
 <%@ page import="com.dgphoenix.casino.common.SessionHelper" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.payment.transfer.PaymentTransaction" %>
+<%@ page import="com.abs.casino.common.cache.data.payment.transfer.PaymentTransaction" %>
 <%@ page import="com.dgphoenix.casino.common.util.logkit.ThreadLog" %>
 <%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
 <%

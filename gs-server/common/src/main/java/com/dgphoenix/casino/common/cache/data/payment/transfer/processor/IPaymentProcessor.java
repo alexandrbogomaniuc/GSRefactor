@@ -1,7 +1,7 @@
 package com.abs.casino.common.cache.data.payment.transfer.processor;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.payment.transfer.PaymentTransaction;
+import com.abs.casino.common.cache.data.payment.transfer.PaymentTransaction;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;
 import com.dgphoenix.casino.common.exception.CommonException;
 

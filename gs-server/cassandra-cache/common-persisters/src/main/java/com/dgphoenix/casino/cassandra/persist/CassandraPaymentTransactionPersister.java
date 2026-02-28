@@ -8,7 +8,7 @@ import com.dgphoenix.casino.common.SessionHelper;
 import com.dgphoenix.casino.common.cache.CacheKeyInfo;
 import com.dgphoenix.casino.common.cache.IDistributedCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.payment.transfer.PaymentTransaction;
+import com.abs.casino.common.cache.data.payment.transfer.PaymentTransaction;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import org.apache.logging.log4j.LogManager;

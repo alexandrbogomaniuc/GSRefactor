@@ -1,0 +1,5 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/TransactionType.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/TransactionStatus.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/PaymentSystemType.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/PaymentTransaction.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/ExternalPaymentTransaction.java

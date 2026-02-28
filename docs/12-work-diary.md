@@ -8708,3 +8708,23 @@
   - baseline `2277`, reduced `1766`, remaining `511`, burndown `77.558191%`
   - Project 02 `47.615472%`, Core `73.807736%`, Portfolio `86.903868%`
   - ETA `21.0h` (`2.62` workdays)
+
+### 2026-02-28 10:54 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W282 + W283`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `5` (`TransactionType`, `TransactionStatus`, `PaymentSystemType`, `PaymentTransaction`, `ExternalPaymentTransaction`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent parallel target remained constrained by thread limit; ownership-safe execution continued on main.
+  - initial mixed payment-package batch was rolled back after `STEP01` same-package visibility drift in unmigrated wallet-operation surfaces.
+  - bounded JSP import compatibility alignments were required for already-moved classes (`TrackingStatus/State/Info`, `CommonFRBonusWin`, `FRBWinOperationStatus`, `WalletException`) to recover `STEP07`.
+  - canonical validation reached on rerun6:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-103325-hardcut-m2-wave282-wave283-payment-transfer-stats/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/202-hard-cut-m2-wave282-wave283-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1771`, remaining `506`, burndown `77.777778%`
+  - Project 02 `47.683122%`, Core `73.841561%`, Portfolio `86.920780%`
+  - ETA `20.7h` (`2.59` workdays)

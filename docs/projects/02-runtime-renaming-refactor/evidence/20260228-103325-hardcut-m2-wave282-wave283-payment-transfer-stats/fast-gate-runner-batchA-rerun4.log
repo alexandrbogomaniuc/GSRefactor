@@ -1,0 +1,389 @@
+[2026-02-28T10:41:55Z] START STEP01
+[2026-02-28T10:41:55Z] DIR gs-server/common
+[2026-02-28T10:41:55Z] START STEP01
+[2026-02-28T10:41:55Z] DIR gs-server/common
+[2026-02-28T10:41:55Z] CMD mvn -DskipTests install
+[2026-02-28T10:41:55Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 222 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-common ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-common ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-common ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/gsn-common-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-common ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common/1.0-SNAPSHOT/gsn-common-1.0-SNAPSHOT.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/gsn-common-1.0-SNAPSHOT.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common/1.0-SNAPSHOT/gsn-common-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.522 s
+[INFO] Finished at: 2026-02-28T10:42:01Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T10:42:01Z] PASS STEP01 rc=0
+[2026-02-28T10:42:01Z] PASS STEP01 rc=0
+[2026-02-28T10:42:01Z] START STEP02
+[2026-02-28T10:42:01Z] START STEP02
+[2026-02-28T10:42:01Z] DIR gs-server/common-wallet
+[2026-02-28T10:42:01Z] DIR gs-server/common-wallet
+[2026-02-28T10:42:01Z] CMD mvn -DskipTests install
+[2026-02-28T10:42:01Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-wallet >-----------------
+[INFO] Building common-wallet 1.0.67
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-wallet ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ common-wallet ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-wallet ---
+[INFO] Compiling 11 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ common-wallet ---
+[INFO] Copying 108 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-wallet ---
+[INFO] Compiling 4 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-wallet ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-wallet ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/common-wallet-1.0.67.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-wallet ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-wallet/1.0.67/common-wallet-1.0.67.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/common-wallet-1.0.67.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-wallet/1.0.67/common-wallet-1.0.67.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.808 s
+[INFO] Finished at: 2026-02-28T10:42:03Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T10:42:03Z] PASS STEP02 rc=0
+[2026-02-28T10:42:03Z] PASS STEP02 rc=0
+[2026-02-28T10:42:03Z] START STEP03
+[2026-02-28T10:42:03Z] START STEP03
+[2026-02-28T10:42:03Z] DIR gs-server/sb-utils
+[2026-02-28T10:42:03Z] DIR gs-server/sb-utils
+[2026-02-28T10:42:03Z] CMD mvn -DskipTests install
+[2026-02-28T10:42:03Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 200 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ utils-restricted ---
+[INFO] Compiling 19 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ utils-restricted ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ utils-restricted ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.053 s
+[INFO] Finished at: 2026-02-28T10:42:07Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T10:42:07Z] PASS STEP03 rc=0
+[2026-02-28T10:42:07Z] PASS STEP03 rc=0
+[2026-02-28T10:42:07Z] START STEP04
+[2026-02-28T10:42:07Z] START STEP04
+[2026-02-28T10:42:07Z] DIR gs-server/common-promo
+[2026-02-28T10:42:07Z] DIR gs-server/common-promo
+[2026-02-28T10:42:07Z] CMD mvn -DskipTests install
+[2026-02-28T10:42:07Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 54 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-promo ---
+[INFO] Compiling 2 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-promo ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-promo ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ common-promo >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ common-promo <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ common-promo ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-promo ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.572 s
+[INFO] Finished at: 2026-02-28T10:42:09Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T10:42:09Z] PASS STEP04 rc=0
+[2026-02-28T10:42:09Z] PASS STEP04 rc=0
+[2026-02-28T10:42:09Z] START STEP05
+[2026-02-28T10:42:09Z] START STEP05
+[2026-02-28T10:42:09Z] DIR gs-server/cassandra-cache/common-persisters
+[2026-02-28T10:42:09Z] DIR gs-server/cassandra-cache/common-persisters
+[2026-02-28T10:42:09Z] CMD mvn -DskipTests install
+[2026-02-28T10:42:09Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-common-persisters >-------------
+[INFO] Building gsn-common-persisters 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-persisters ---
+[INFO] Compiling 12 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-common-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common-persisters ---
+[INFO] Compiling 2 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-common-persisters ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-common-persisters ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-common-persisters >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-common-persisters <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-common-persisters ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-common-persisters ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.991 s
+[INFO] Finished at: 2026-02-28T10:42:12Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T10:42:12Z] PASS STEP05 rc=0
+[2026-02-28T10:42:12Z] PASS STEP05 rc=0
+[2026-02-28T10:42:12Z] START STEP06
+[2026-02-28T10:42:12Z] START STEP06
+[2026-02-28T10:42:12Z] DIR gs-server/game-server/common-gs
+[2026-02-28T10:42:12Z] DIR gs-server/game-server/common-gs
+[2026-02-28T10:42:12Z] CMD mvn -DskipTests -Dcluster.properties=local/local-machine.properties install
+[2026-02-28T10:42:12Z] CMD mvn -DskipTests -Dcluster.properties=local/local-machine.properties install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:gsn-common-gs >-----------------
+[INFO] Building gsn-common-gs 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:2.8:copy (default) @ gsn-common-gs ---
+[INFO] Configured Artifact: javax.xml.bind:jaxb-api:2.2.7:jar
+[INFO] Configured Artifact: javax.xml.ws:jaxws-api:2.2.9:jar
+[INFO] javax.xml.bind:jaxb-api:2.2.7:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] javax.xml.ws:jaxws-api:2.2.9:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ gsn-common-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-gs ---
+[INFO] Compiling 512 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (compile-generated-sources) @ gsn-common-gs ---
+[INFO] Compiling 512 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ gsn-common-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 22 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common-gs ---
+[INFO] Compiling 16 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-common-gs ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-common-gs ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/gsn-common-gs-1.0.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-common-gs ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-gs/1.0/gsn-common-gs-1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/gsn-common-gs-1.0.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-gs/1.0/gsn-common-gs-1.0.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.493 s
+[INFO] Finished at: 2026-02-28T10:42:22Z
+[INFO] ------------------------------------------------------------------------
+[2026-02-28T10:42:22Z] PASS STEP06 rc=0
+[2026-02-28T10:42:22Z] PASS STEP06 rc=0
+[2026-02-28T10:42:22Z] START STEP07
+[2026-02-28T10:42:22Z] START STEP07
+[2026-02-28T10:42:22Z] DIR gs-server/game-server/web-gs
+[2026-02-28T10:42:22Z] DIR gs-server/game-server/web-gs
+[2026-02-28T10:42:22Z] CMD mvn -DskipTests -Dcluster.properties=local/local-machine.properties install
+[2026-02-28T10:42:22Z] CMD mvn -DskipTests -Dcluster.properties=local/local-machine.properties install
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.dgphoenix.casino:gsn-web-gs:war:1.89.0
+[WARNING] 'version' contains an expression but should be a constant. @ com.dgphoenix.casino:gsn-web-gs:${current.version}, /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/pom.xml, line 13, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-web-gs >-------------------
+[INFO] Building gsn-web-gs 1.89.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ gsn-web-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 43 resources
+[INFO] 
+[INFO] --- resources:2.6:resources (gs-resources) @ gsn-web-gs ---
+[WARNING]  Parameter 'resources' is read-only, must not be used in configuration
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 43 resources
+[INFO] Copying 59 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/css
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/css_nucleus
+[INFO] Copying 104 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/js
+[INFO] Copying 501 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/images
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/images_nucleus
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-web-gs ---
+[INFO] Compiling 295 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/classes
+[INFO] 
+[INFO] --- jetty-jspc:9.4.3.v20170317:jspc (jspc) @ gsn-web-gs ---
+[INFO] Logging initialized @4439ms to org.eclipse.jetty.util.log.Slf4jLog
+[INFO] Compiling gamehistoryXMLV2.jsp,jvmdetect.jsp,popup/popup.jsp,popup/language.jsp,version.jsp,localized_games.jsp,tools/walletsManagerShowData.jsp,tools/banksList.jsp,tools/pendingOperations.jsp,tools/addBattlegroundGames.jsp,tools/bankEndpoints.jsp,tools/api/service.jsp,tools/editBattlegroundChrashGameFolder.jsp,tools/setStubAccountBalance.jsp,tools/subCasinoInfo.jsp,tools/bankProperties.jsp,tools/walletsManager.jsp,checkURL.jsp,defaultstlobby.jsp,config/stub/bonus/frbWin.jsp,config/stub/bonus/accountinfoGBP.jsp,config/stub/bonus/release.jsp,config/stub/bonus/auth.jsp,config/stub/bonus/frbWinError.jsp,config/stub/bonus/frbWinHash.jsp,config/stub/bonus/accountinfo.jsp,config/stub/status.jsp,config/stub/balance.jsp,config/stub/jwt_stub.jsp,config/stub/reality_check_info.jsp,config/stub/refund_error.jsp,config/stub/wager_error_315.jsp,config/stub/cwv3/refund.jsp,config/stub/cwv3/auth.jsp,config/stub/cwv3/wager.jsp,config/stub/status_error.jsp,config/stub/wager_301_error.jsp,config/stub/wager_error_314.jsp,config/stub/wager_error_300.jsp,config/stub/wager_error_316.jsp,config/stub/wager_error.jsp,config/stub/wager_bad_win.jsp,config/stub/wager_if_bet_error.jsp,config/stub/wager_bad_bet.jsp,config/stub/refund.jsp,config/stub/wager_bet_win_different_balance.jsp,config/stub/wager_if_negativebet_error.jsp,config/stub/auth.jsp,config/stub/wager_error_323.jsp,config/stub/wager_error_322.jsp,config/stub/wager_if_win_error.jsp,config/stub/wager_311_error.jsp,config/stub/tournaments/winners_ok.jsp,config/stub/tournaments/winners_error_403.jsp,config/stub/tournaments/winners_error_400.jsp,config/stub/tournaments/winners_invalid_response.jsp,config/stub/tournaments/winners_error_500.jsp,config/stub/wager_sleep.jsp,config/stub/wager.jsp,config/stub/cwv3_long/refund.jsp,config/stub/cwv3_long/auth.jsp,config/stub/cwv3_long/wager.jsp,stlobbies/tournaments/tournament.jsp,free/mp/template.jsp,real/mp/template.jsp,help2.jsp,gsroundhistory.jsp,gossip/popup.jsp,gamelist.jsp,standlobby.jsp,checkStatus.jsp,frb/frbPopup.jsp,handhistory.jsp,cdn/info.jsp,cdn/speedTest.jsp,support/metrics/index.jsp,support/currentCurrencyRates2.jsp,support/autoFrbLists.jsp,support/bankInfo/propertyResult.jsp,support/bankInfo/propertyForm.jsp,support/configuration/fieldProperties.jsp,support/configuration/mapProperties.jsp,support/configuration/serverConfiguration.jsp,support/EditTemplateProperty.jsp,support/version.jsp,support/listExteralIdsByBank.jsp,support/error.jsp,support/reinitFrBonusClient.jsp,support/cacheviewer.jsp,support/getGameSession.jsp,support/setIdGeneratorStartValue.jsp,support/modernizationRunbook.jsp,support/createSubCasino.jsp,support/cache/background/view.jsp,support/cache/background/reset.jsp,support/cache/bank/acs/acsConfig.jsp,support/cache/bank/common/bankInfo.jsp,support/cache/bank/common/addGame.jsp,support/cache/bank/common/banksList.jsp,support/cache/bank/common/loadAllBanks.jsp,support/cache/bank/common/subcasinoSelect.jsp,support/cache/bank/common/newBankNSubCasino.jsp,support/cache/bank/common/banksNSubCasinos.jsp,support/cache/bank/common/editGame.jsp,support/cache/bank/common/addSubcasino.jsp,support/cache/bank/common/subcasinoList.jsp,support/cache/bank/common/properties.jsp,support/cache/bank/common/subCasinoInfo.jsp,support/cache/bank/common/systemInfo.jsp,support/cache/bank/common/addFreeBank.jsp,support/cache/bank/common/removeBank.jsp,support/cache/bank/common/addBank.jsp,support/cache/bank/common/scheduleCronTask.jsp,support/cache/bank/properties/set_post_property.jsp,support/cache/bank/properties/languageTable.jsp,support/cache/bank/properties/edit/languageTable.jsp,support/cache/bank/properties/edit/editProperties.jsp,support/cache/bank/properties/edit/allBanks.jsp,support/cache/bank/properties/edit/bankLangTable.jsp,support/cache/bank/properties/editProperties.jsp,support/cache/domain/domainList.jsp,support/cache/domain/gameList.jsp,support/checkPersisters.jsp,support/precheckPendingDataArchiving.jsp,support/updateFrbGames.jsp,support/import-base-game-info.jsp,support/updateCaches.jsp,support/setProperty.jsp,support/showcassandra_account-ext.jsp,support/health/ping.jsp,support/health/check.jsp,support/encoderutil.jsp,support/correctedCurrency.jsp,support/getRounds.jsp,support/configPortal.jsp,support/reinitWalletManager.jsp,support/showGamesDetailsProp3.jsp,support/clearLastHand.jsp,support/reinitCurrencyRateMultipliers.jsp,support/convertCurrency.jsp,support/showGamesDetailsProp2.jsp,support/supporthistory.jsp,support/getPendingFRBWin.jsp,support/removeWalletForAccount.jsp,support/currentCurrencyRates.jsp,support/script/addCurrRate.jsp,support/script/addCurrRateShort.jsp,support/GameConfig/getGamesConfigByBanks.jsp,support/export-base-game-info.jsp,support/exportImportCoins.jsp,support/viewWallets.jsp,support/sleeper.jsp,support/saveIcon.jsp,support/currencyBank.jsp,support/listGameIds.jsp,support/reinitFrBonusWinManager.jsp,support/logoutPlayers.jsp,support/resetAllStubBalances.jsp,support/getMassAwardRestrictions.jsp,support/showAPIIssues.jsp,support/showcassandra_account.jsp,support/handleOfflineCreditInRounds.jsp,support/reinitGamesList.jsp,support/getSessionError.jsp,support/cancelMassFRBonusAward.jsp,support/index.jsp,support/updateIcon.jsp,support/copyLanguages.jsp,support/bonusexp.jsp,support/walletInfo.jsp,support/initGames.jsp,support/templateManager/getTemplates.jsp,support/templateManager/GameTemplate.jsp,support/templateManager/cloneTemplate.jsp,support/templateManager/setProperty.jsp,support/templateManager/compareTemplates.jsp,support/templateManager/ClusterList.jsp,support/templateManager/invalidateBgi.jsp,support/templateManager/index.jsp,support/modernizationDocs.jsp,support/isShutDown.jsp,support/deleteForbiddenCurrenciesProp.jsp,support/rouletteInternalLimits.jsp,support/setlimits.jsp,support/showBanksDetailsProp.jsp,support/langTools.jsp,support/viewFRBCoin.jsp,support/setup_replaceurl_pm_st.jsp,support/getAccountInfo.jsp,support/bankReleaseReport.jsp,support/currencyFractionsConfig.jsp,support/getBanksWithGame2.jsp,support/clusterHosts.jsp,support/customGameList.jsp,support/disableGames.jsp,support/games/getGameInfos.jsp,support/games/listExteralIdsByBank.jsp,support/games/829_step2_AddGameInfo.jsp,support/games/829_FixTemplate.jsp,support/games/getLasthands.jsp,support/games/getGameInfoTemplates.jsp,support/games/829_step1_AddGameInfoTemplate.jsp,support/games/gameClientGeneration.jsp,support/getCdnSettingsCsv.jsp,support/currency/switchToInternalRatesExtractor.jsp,support/currency/showBrokenRates.jsp,support/currency/forceUpdateRate.jsp,support/currency/initRatesConfig.jsp,support/prepareToShutdown.jsp,support/copyBankV3.jsp,support/gameBankConfig/GameClass.jsp,support/gameBankConfig/removeGame.jsp,support/gameBankConfig/editGameForm.jsp,support/gameBankConfig/compareBanksGames.jsp,support/gameBankConfig/applyGame.jsp,support/gameBankConfig/deleteGameForm.jsp,support/gameBankConfig/gameConfig.jsp,support/logViewer.jsp,support/reinitBonusClient.jsp,support/finishRounds.jsp,getVersion.jsp,templates/main.jsp,empty.jsp,checkServerId.jsp,register.jsp,error_pages/error.jsp,error_pages/loc/loginerror_s.jsp,error_pages/loc/gamedisablederror.jsp,error_pages/loc/loadingerror.jsp,error_pages/loc/sessionerror.jsp,error_pages/loc/gamestartederror.jsp,error_pages/loc/disconnecterror.jsp,error_pages/error_eurobet.jsp,error_pages/loginerror_s.jsp,error_pages/gamedisablederror.jsp,error_pages/loadingerror.jsp,error_pages/gameserver_notfound_error.jsp,error_pages/errorXml.jsp,error_pages/incorrect_parameters_error.jsp,error_pages/error_header_si.jsp,error_pages/game_in_maintenance_mode.jsp,error_pages/reuse_launch_url_error.jsp,error_pages/sessionerror.jsp,error_pages/history_not_found.jsp,error_pages/mq/error.jsp,error_pages/mq/fatal_error_808.jsp,error_pages/mq/fatal_error_821.jsp,error_pages/mq/fatal_error_843.jsp,error_pages/mq/fatal_error_30429.jsp,error_pages/mq/fatal_error_856.jsp,error_pages/mq/fatal_error_864.jsp,error_pages/mq/fatal_error_859.jsp,error_pages/mq/fatal_error_867.jsp,error_pages/mq/fatal_error_866.jsp,error_pages/mq/fatal_error_862.jsp,error_pages/mq/fatal_error_863.jsp,error_pages/mq/fatal_error_875.jsp,error_pages/mq/fatal_error_838.jsp,error_pages/mq/fatal_error_829.jsp,error_pages/mq/fatal_error.jsp,error_pages/mq/fatal_error_779.jsp,error_pages/error_footer.jsp,error_pages/errorJSON.jsp,error_pages/gamestartederror.jsp,error_pages/disconnecterror.jsp,error_pages/error_ptpt.jsp,error_pages/gameinfo_error.jsp,error_pages/error_header.jsp,error_pages/ng_maintenance_mode.jsp,getFlash.jsp,vabs/VabEngine/EngineHeader.jsp,vabs/VabEngine/VabParameters.jsp,vabs/show.jsp,logout.jsp,gamehistory.jsp,mp-stub/template.jsp,mp-stub/room.jsp,wallet_http_stat.jsp,gameSessionHistory.jsp,gamehistoryXML.jsp from includes=**/*.jsp, **/*.jspx excludes=webscripts/**
+[INFO] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.866 s
+[INFO] Finished at: 2026-02-28T10:42:28Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.eclipse.jetty:jetty-jspc-maven-plugin:9.4.3.v20170317:jspc (jspc) on project gsn-web-gs: Failure processing jsps: org.apache.jasper.JasperException: Unable to compile class for JSP: 
+[ERROR] 
+[ERROR] An error occurred at line: [34] in the generated java file: [/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/generated-jsps/org/apache/jsp/support/viewWallets_jsp.java]
+[ERROR] Only a type can be imported. com.dgphoenix.casino.common.cache.data.payment.frb.FRBWinOperationStatus resolves to a package
+[ERROR] 
+[ERROR] An error occurred at line: 156 in the jsp file: /support/viewWallets.jsp
+[ERROR] FRBWinOperationStatus.FAIL cannot be resolved to a type
+[ERROR] 153:                         if (frbWin != null) {
+[ERROR] 154:                             FRBWinOperation operation = frbWin.getOperation();
+[ERROR] 155:                             if (operation != null) {
+[ERROR] 156:                                 operation.setExternalStatus(FRBWinOperationStatus.FAIL);
+[ERROR] 157:                             }
+[ERROR] 158:                         }
+[ERROR] 159:                     }
+[ERROR] 
+[ERROR] 
+[ERROR] Stacktrace:
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[2026-02-28T10:42:28Z] FAIL STEP07 rc=1
+[2026-02-28T10:42:28Z] FAIL STEP07 rc=1

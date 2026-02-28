@@ -3887,3 +3887,27 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 6`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+6`.
   - global tracked source declarations/files now `511` remaining (`2277` baseline, `1766` reduced, `77.558191%` burndown).
+
+## 2026-02-28 10:54 UTC (Hard-Cut M2 Wave 282 + 283)
+- Continued hard-cut execution from W281 with declaration-first overlap-safe batch in `common/cache/data/payment/transfer`.
+  - `W282`: 5 declaration migrations retained (`TransactionType`, `TransactionStatus`, `PaymentSystemType`, `PaymentTransaction`, `ExternalPaymentTransaction`).
+  - `W283`: initial 5 payment declaration candidates were deferred/rolled back due same-package visibility fanout in unmigrated wallet-operation surfaces.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1 failed at `STEP01` from mixed payment package move (`WalletOperationStatus` duplicate-class/package-visibility drift).
+  - rerun2-rerun5 failed at `STEP07` due JSPC stale imports for already-moved classes.
+  - bounded JSP import alignments applied for moved types:
+    - `TrackingStatus`, `TrackingState`, `TrackingInfo`
+    - `CommonFRBonusWin`
+    - `FRBWinOperationStatus`
+    - `WalletException`
+  - canonical validation reached on rerun6:
+    - fast gate batchA: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-103325-hardcut-m2-wave282-wave283-payment-transfer-stats/`
+  - report: `docs/projects/02-runtime-renaming-refactor/202-hard-cut-m2-wave282-wave283-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 5`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+5`.
+  - global tracked source declarations/files now `506` remaining (`2277` baseline, `1771` reduced, `77.777778%` burndown).
