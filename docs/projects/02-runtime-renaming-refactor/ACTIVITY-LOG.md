@@ -4306,3 +4306,8 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `16`; bounded rewires/regressions: `0`.
   - global tracked source declarations/files now `2018` remaining (`2277` baseline, `259` reduced, `11.374616%` burndown).
+
+## 2026-02-28 19:22 UTC (Push Marker W322 + W323)
+- Pushed wave completion commit `1514b7b93` to `origin/main`.
+- Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-190156-hardcut-m2-wave322-wave323-bonus-core-interfaces-helpers/`.
+- Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
