@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.kafka.dto.BooleanResponseDto;
-import com.dgphoenix.casino.kafka.dto.PushOnlineRoomsPlayersRequest;
+import com.abs.casino.kafka.dto.PushOnlineRoomsPlayersRequest;
 
 @Component
 public class PushOnlineRoomsPlayersRequestHandler 

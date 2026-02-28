@@ -3615,3 +3615,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 11`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+11`.
   - global tracked source declarations/files now `624` remaining (`2277` baseline, `1653` reduced, `72.595520%` burndown).
+
+## 2026-02-28 06:15 UTC (Hard-Cut M2 Wave 254 + 255)
+- Continued hard-cut execution from W253 with declaration-first overlap-safe batch in `common-gs` kafka dto round/private-room surfaces:
+  - `W254`: 11 declaration migrations in round/private-room request/response DTOs.
+  - `W255`: integration and validation.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - retained compile compatibility with minimal explicit imports for unmigrated DTO dependencies (`KafkaRequest`, `BasicKafkaResponse`, `RoundPlayerDto`, `StartNewRoundResponseDto`, `CurrencyRateDto`, `BGUpdatePrivateRoomRequest`, `RMSRoomDto`).
+  - no blind/global replacement performed.
+  - canonical validation reached:
+    - fast gate batchA rerun2: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix rerun2: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-060140-hardcut-m2-wave254-wave255-kafka-dto-round-private-room/`
+  - report: `docs/projects/02-runtime-renaming-refactor/188-hard-cut-m2-wave254-wave255-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 11`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+11`.
+  - global tracked source declarations/files now `613` remaining (`2277` baseline, `1664` reduced, `73.078612%` burndown).

@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
-import com.dgphoenix.casino.kafka.dto.StartNewRoundForManyPlayersRequest;
-import com.dgphoenix.casino.kafka.dto.StartNewRoundForManyPlayersResponseDto;
+import com.abs.casino.kafka.dto.StartNewRoundForManyPlayersRequest;
+import com.abs.casino.kafka.dto.StartNewRoundForManyPlayersResponseDto;
 
 @Component
 public class StartNewRoundForManyPlayersRequestHandler implements

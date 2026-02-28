@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.InServiceServiceHandler;
 import com.dgphoenix.casino.kafka.dto.BooleanResponseDto;
-import com.dgphoenix.casino.kafka.dto.RemoteUnlockRequest;
+import com.abs.casino.kafka.dto.RemoteUnlockRequest;
 import com.dgphoenix.casino.kafka.handler.KafkaInServiceRequestHandler;
 import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
 

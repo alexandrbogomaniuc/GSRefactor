@@ -1,4 +1,8 @@
-package com.dgphoenix.casino.kafka.dto;
+package com.abs.casino.kafka.dto;
+
+import com.dgphoenix.casino.kafka.dto.BGUpdatePrivateRoomRequest;
+
+import com.dgphoenix.casino.kafka.dto.KafkaRequest;
 
 public class UpdatePlayersStatusInPrivateRoomRequest implements KafkaRequest {
     private BGUpdatePrivateRoomRequest request;

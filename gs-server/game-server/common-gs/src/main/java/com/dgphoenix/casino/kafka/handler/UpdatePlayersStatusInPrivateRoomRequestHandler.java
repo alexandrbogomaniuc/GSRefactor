@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.kafka.dto.BGUpdateRoomResultDto;
-import com.dgphoenix.casino.kafka.dto.UpdatePlayersStatusInPrivateRoomRequest;
+import com.abs.casino.kafka.dto.UpdatePlayersStatusInPrivateRoomRequest;
 
 @Component
 public class UpdatePlayersStatusInPrivateRoomRequestHandler 

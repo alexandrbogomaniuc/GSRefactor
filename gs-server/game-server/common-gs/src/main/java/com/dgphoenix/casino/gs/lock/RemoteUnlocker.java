@@ -12,7 +12,7 @@ import com.dgphoenix.casino.cassandra.IRemoteUnlocker;
 import com.dgphoenix.casino.common.lock.ILockManager;
 import com.dgphoenix.casino.kafka.dto.BooleanResponseDto;
 import com.dgphoenix.casino.kafka.dto.KafkaResponse;
-import com.dgphoenix.casino.kafka.dto.RemoteUnlockRequest;
+import com.abs.casino.kafka.dto.RemoteUnlockRequest;
 import com.abs.casino.kafka.service.KafkaMessageService;
 
 import reactor.core.publisher.Mono;

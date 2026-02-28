@@ -1,4 +1,8 @@
-package com.dgphoenix.casino.kafka.dto;
+package com.abs.casino.kafka.dto;
+
+import com.dgphoenix.casino.kafka.dto.StartNewRoundResponseDto;
+
+import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
 
 import java.util.Map;
 

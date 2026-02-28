@@ -1,0 +1,2 @@
+Low-risk declaration batch selected from common-gs kafka round/private-room request/response DTOs with bounded fan-out to direct handlers and remote unlockers.
+No blind global replace; rewires are direct import-only updates.

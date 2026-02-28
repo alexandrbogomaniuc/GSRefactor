@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.abs.casino.kafka.dto.GetBalanceRequest;
-import com.dgphoenix.casino.kafka.dto.LongResponseDto;
+import com.abs.casino.kafka.dto.LongResponseDto;
 
 @Component
 public class GetBalanceRequestHandler
