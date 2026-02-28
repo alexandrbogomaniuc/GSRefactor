@@ -1,6 +1,6 @@
 package com.abs.casino.kafka.dto;
 
-import com.dgphoenix.casino.kafka.dto.StartNewRoundResponseDto;
+import com.abs.casino.kafka.dto.StartNewRoundResponseDto;
 
 import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
 

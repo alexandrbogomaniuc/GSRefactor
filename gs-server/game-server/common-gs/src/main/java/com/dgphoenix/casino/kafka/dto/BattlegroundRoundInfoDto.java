@@ -1,6 +1,6 @@
 package com.abs.casino.kafka.dto;
 
-import com.dgphoenix.casino.kafka.dto.PlaceDto;
+import com.abs.casino.kafka.dto.PlaceDto;
 
 import java.util.List;
 

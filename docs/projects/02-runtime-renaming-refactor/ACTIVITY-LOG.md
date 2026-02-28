@@ -4227,3 +4227,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Pushed wave completion commit `38f8e4198` to `origin/main`.
 - Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-170717-hardcut-m2-wave314-wave315-kafka-dto-battleground-core/`.
 - Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+
+## 2026-02-28 17:55 UTC (Hard-Cut M2 Wave 316 + 317)
+- Continued hard-cut execution from W315 with declaration-first overlap-safe `common-gs kafka/dto` batch.
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `9`
+    - `CrashGameSettingDto`, `CurrencyRateDto`, `FRBonusDto`, `PromoNotificationType`, `PlaceDto`, `BooleanResponseDto`, `CashBonusDto`, `SitOutRequest2`, `StartNewRoundResponseDto`.
+  - deferred from initial candidate due compile-boundary instability: `BonusStatusDto`, `MQQuestAmountDto`, `MQQuestDataDto`, `MQQuestPrizeDto`, `MQTreasureQuestProgressDto`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1 failed at `STEP06` on `BonusStatusDto` duplicate/access drift.
+  - applied bounded defer/rollback of `BonusStatusDto` and retained compatibility imports for legacy bonus callsites.
+  - rerun2 failed at `STEP07` due `LoginHelper` type mismatch (`com.dgphoenix...SitOutRequest2` vs moved `com.abs...SitOutRequest2`).
+  - rerun3 reached canonical profile:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-173327-hardcut-m2-wave316-wave317-kafka-dto-quest-currency-crash/`
+  - report: `docs/projects/02-runtime-renaming-refactor/219-hard-cut-m2-wave316-wave317-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `9`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `2056` remaining (`2277` baseline, `221` reduced, `9.705753%` burndown).

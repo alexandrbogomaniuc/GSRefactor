@@ -1,7 +1,7 @@
 package com.abs.casino.kafka.dto;
 
 import com.dgphoenix.casino.kafka.dto.KafkaRequest;
-import com.dgphoenix.casino.kafka.dto.PromoNotificationType;
+import com.abs.casino.kafka.dto.PromoNotificationType;
 
 import java.util.Set;
 

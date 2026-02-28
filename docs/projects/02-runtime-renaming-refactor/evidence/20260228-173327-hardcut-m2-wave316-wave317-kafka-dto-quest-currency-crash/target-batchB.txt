@@ -1,0 +1,4 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BooleanResponseDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CashBonusDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutRequest2.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/StartNewRoundResponseDto.java

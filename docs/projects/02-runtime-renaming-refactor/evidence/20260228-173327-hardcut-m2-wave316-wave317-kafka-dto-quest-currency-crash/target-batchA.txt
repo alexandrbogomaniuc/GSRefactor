@@ -1,0 +1,5 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CrashGameSettingDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CurrencyRateDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/FRBonusDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/PromoNotificationType.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/PlaceDto.java

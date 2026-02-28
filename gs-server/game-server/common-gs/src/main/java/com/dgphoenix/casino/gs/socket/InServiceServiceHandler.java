@@ -152,12 +152,12 @@ public class InServiceServiceHandler {
         }
     }
 
-    public void sendPromoNotifications(String sessionId, long campaignId, Set<com.dgphoenix.casino.kafka.dto.PromoNotificationType> notificationsTypes) {
+    public void sendPromoNotifications(String sessionId, long campaignId, Set<com.abs.casino.kafka.dto.PromoNotificationType> notificationsTypes) {
         try {
             LOG.debug("sendPromoNotifications: sessionId = {}, campaignId = {}, notificationsTypes = {}",
                     sessionId, campaignId, notificationsTypes);
             Set<com.dgphoenix.casino.common.promo.PromoNotificationType> types = new HashSet<>();
-            for (com.dgphoenix.casino.kafka.dto.PromoNotificationType notificationType : notificationsTypes) {
+            for (com.abs.casino.kafka.dto.PromoNotificationType notificationType : notificationsTypes) {
                 types.add(com.dgphoenix.casino.common.promo.PromoNotificationType.valueOf(notificationType.name()));
             }
             GameServerComponentsHelper.getPromoMessagesDispatcher()

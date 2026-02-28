@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.abs.casino.cassandra.IRemoteUnlocker;
 import com.dgphoenix.casino.common.lock.ILockManager;
-import com.dgphoenix.casino.kafka.dto.BooleanResponseDto;
+import com.abs.casino.kafka.dto.BooleanResponseDto;
 import com.dgphoenix.casino.kafka.dto.KafkaResponse;
 import com.abs.casino.kafka.dto.RemoteUnlockRequest;
 import com.abs.casino.kafka.service.KafkaMessageService;

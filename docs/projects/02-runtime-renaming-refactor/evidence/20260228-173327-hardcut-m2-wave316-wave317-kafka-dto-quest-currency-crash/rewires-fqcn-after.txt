@@ -1,0 +1,34 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/lock/RemoteUnlocker.java:13:import com.abs.casino.kafka.dto.BooleanResponseDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/KafkaRequestMultiPlayer.java:27:import com.abs.casino.kafka.dto.BooleanResponseDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/KafkaRequestMultiPlayer.java:28:import com.abs.casino.kafka.dto.SitOutRequest2;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/RemoteCallHelper.java:223:                Set<com.abs.casino.kafka.dto.PromoNotificationType> types = notificationsTypes.stream()
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/RemoteCallHelper.java:225:                        .map(com.abs.casino.kafka.dto.PromoNotificationType::valueOf)
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/InServiceServiceHandler.java:155:    public void sendPromoNotifications(String sessionId, long campaignId, Set<com.abs.casino.kafka.dto.PromoNotificationType> notificationsTypes) {
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/InServiceServiceHandler.java:160:            for (com.abs.casino.kafka.dto.PromoNotificationType notificationType : notificationsTypes) {
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:108:import com.abs.casino.kafka.dto.StartNewRoundResponseDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:307:                                tFRBonus = new com.abs.casino.kafka.dto.FRBonusDto(bonus.getId(), bonus.getTimeAwarded(),
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:90:import com.abs.casino.kafka.dto.CashBonusDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:92:import com.abs.casino.kafka.dto.CrashGameSettingDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:93:import com.abs.casino.kafka.dto.CurrencyRateDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:95:import com.abs.casino.kafka.dto.FRBonusDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:99:import com.abs.casino.kafka.dto.PlaceDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BattlegroundRoundInfoDto.java:3:import com.abs.casino.kafka.dto.PlaceDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CrashGameSettingsResponseDto.java:6:import com.abs.casino.kafka.dto.CrashGameSettingDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/DetailedPlayerInfo2Dto.java:8:import com.abs.casino.kafka.dto.CashBonusDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/DetailedPlayerInfo2Dto.java:9:import com.abs.casino.kafka.dto.FRBonusDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SendPromoNotificationsRequest.java:4:import com.abs.casino.kafka.dto.PromoNotificationType;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutCashBonusSessionResultDto.java:3:import com.abs.casino.kafka.dto.CashBonusDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/StartNewRoundForManyPlayersResponseDto.java:3:import com.abs.casino.kafka.dto.StartNewRoundResponseDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/UpdateCurrencyRatesRequestResponse.java:3:import com.abs.casino.kafka.dto.CurrencyRateDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/CloseGameSessionRequestHandler.java:9:import com.abs.casino.kafka.dto.BooleanResponseDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/FinishGameSessionAndMakeSitOutRequestHandler.java:9:import com.abs.casino.kafka.dto.BooleanResponseDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/InvitePlayersToPrivateRoomRequestHandler.java:9:import com.abs.casino.kafka.dto.BooleanResponseDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/PushOnlineRoomsPlayersRequestHandler.java:8:import com.abs.casino.kafka.dto.BooleanResponseDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/SaveCashBonusRoundResultRequestHandler.java:8:import com.abs.casino.kafka.dto.CashBonusDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/SavePlayerBetForFRBRequestHandler.java:8:import com.abs.casino.kafka.dto.BooleanResponseDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/SessionTouchRequestHandler.java:8:import com.abs.casino.kafka.dto.BooleanResponseDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/StartNewRoundRequestHandler.java:9:import com.abs.casino.kafka.dto.StartNewRoundResponseDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/inservice/RemoteUnlockRequestHandler.java:7:import com.abs.casino.kafka.dto.BooleanResponseDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/service/KafkaMessageService.java:48:import com.abs.casino.kafka.dto.BooleanResponseDto;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/mp/MPGameSessionService.java:22:import com.abs.casino.kafka.dto.SitOutRequest2;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/LoginHelper.java:28:import com.abs.casino.kafka.dto.SitOutRequest2;

@@ -87,16 +87,16 @@ import com.abs.casino.kafka.dto.BGUpdateRoomResultDto;
 import com.abs.casino.kafka.dto.BattlegroundInfoDto;
 import com.abs.casino.kafka.dto.BattlegroundRoundInfoDto;
 import com.abs.casino.kafka.dto.BuyInResultDto;
-import com.dgphoenix.casino.kafka.dto.CashBonusDto;
+import com.abs.casino.kafka.dto.CashBonusDto;
 import com.abs.casino.kafka.dto.CloseFRBonusResultDto;
-import com.dgphoenix.casino.kafka.dto.CrashGameSettingDto;
-import com.dgphoenix.casino.kafka.dto.CurrencyRateDto;
+import com.abs.casino.kafka.dto.CrashGameSettingDto;
+import com.abs.casino.kafka.dto.CurrencyRateDto;
 import com.abs.casino.kafka.dto.DetailedPlayerInfo2Dto;
-import com.dgphoenix.casino.kafka.dto.FRBonusDto;
+import com.abs.casino.kafka.dto.FRBonusDto;
 import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
 import com.dgphoenix.casino.kafka.dto.MQDataDto;
 import com.dgphoenix.casino.kafka.dto.MQDataWrapperDto;
-import com.dgphoenix.casino.kafka.dto.PlaceDto;
+import com.abs.casino.kafka.dto.PlaceDto;
 import com.abs.casino.kafka.dto.RMSPlayerDto;
 import com.abs.casino.kafka.dto.RMSRoomDto;
 import com.abs.casino.kafka.dto.RoundInfoResultDto;
@@ -105,7 +105,7 @@ import com.abs.casino.kafka.dto.SitInResponseDto;
 import com.abs.casino.kafka.dto.SitOutCashBonusSessionResultDto;
 import com.abs.casino.kafka.dto.SitOutResultDto;
 import com.abs.casino.kafka.dto.SitOutTournamentSessionResultDto;
-import com.dgphoenix.casino.kafka.dto.StartNewRoundResponseDto;
+import com.abs.casino.kafka.dto.StartNewRoundResponseDto;
 import com.abs.casino.kafka.dto.TournamentInfoDto;
 import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
 import com.abs.casino.leaderboard.LeaderboardWinTracker;
@@ -304,7 +304,7 @@ public class MQServiceHandler {
                                 }
                             }
                             if (bonus != null) {
-                                tFRBonus = new com.dgphoenix.casino.kafka.dto.FRBonusDto(bonus.getId(), bonus.getTimeAwarded(),
+                                tFRBonus = new com.abs.casino.kafka.dto.FRBonusDto(bonus.getId(), bonus.getTimeAwarded(),
                                         bonus.getStartDate() != null ? bonus.getStartDate() : 0,
                                         bonus.getExpirationDate() != null ? bonus.getExpirationDate() : -1,
                                         bonus.getRounds(), bonus.getRoundsLeft(), bonus.getWinSum(),

@@ -220,9 +220,9 @@ public class RemoteCallHelper implements IPromoCampaignsObserver, IRemotePromoNo
                     System.currentTimeMillis() - now);
         } else {
             try {
-                Set<com.dgphoenix.casino.kafka.dto.PromoNotificationType> types = notificationsTypes.stream()
+                Set<com.abs.casino.kafka.dto.PromoNotificationType> types = notificationsTypes.stream()
                         .map(Object::toString)
-                        .map(com.dgphoenix.casino.kafka.dto.PromoNotificationType::valueOf)
+                        .map(com.abs.casino.kafka.dto.PromoNotificationType::valueOf)
                         .collect(Collectors.toSet());
 
                 SendPromoNotificationsRequest request = new SendPromoNotificationsRequest(sessionId, campaignId, types);

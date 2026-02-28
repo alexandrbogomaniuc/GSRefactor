@@ -45,7 +45,7 @@ import com.abs.casino.common.util.ReflectionUtils;
 import com.abs.casino.kafka.config.KafkaConfiguration;
 import com.abs.casino.kafka.config.KafkaProperties;
 import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
-import com.dgphoenix.casino.kafka.dto.BooleanResponseDto;
+import com.abs.casino.kafka.dto.BooleanResponseDto;
 import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
 import com.dgphoenix.casino.kafka.dto.KafkaMessage;
 import com.dgphoenix.casino.kafka.dto.KafkaRequest;

@@ -1,6 +1,6 @@
 package com.abs.casino.kafka.dto;
 
-import com.dgphoenix.casino.kafka.dto.CurrencyRateDto;
+import com.abs.casino.kafka.dto.CurrencyRateDto;
 
 import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
 

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.abs.casino.kafka.dto.StartNewRoundRequest;
-import com.dgphoenix.casino.kafka.dto.StartNewRoundResponseDto;
+import com.abs.casino.kafka.dto.StartNewRoundResponseDto;
 
 @Component
 public class StartNewRoundRequestHandler

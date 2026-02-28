@@ -3,7 +3,7 @@ package com.abs.casino.kafka.dto;
 import java.util.Set;
 
 import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
-import com.dgphoenix.casino.kafka.dto.CrashGameSettingDto;
+import com.abs.casino.kafka.dto.CrashGameSettingDto;
 
 public class CrashGameSettingsResponseDto extends BasicKafkaResponse {
     private Set<CrashGameSettingDto> settings;

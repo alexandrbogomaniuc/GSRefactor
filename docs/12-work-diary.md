@@ -9047,3 +9047,24 @@
   - baseline `2277`, reduced `212`, remaining `2065`, burndown `9.310496%`
   - Project 02 `26.163812%`, Core `63.081906%`, Portfolio `81.540953%`
   - ETA `94.8h` (`11.85` workdays)
+
+### 2026-02-28 17:55 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W316 + W317` with bounded deferrals.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `9` (`CrashGameSettingDto`, `CurrencyRateDto`, `FRBonusDto`, `PromoNotificationType`, `PlaceDto`, `BooleanResponseDto`, `CashBonusDto`, `SitOutRequest2`, `StartNewRoundResponseDto`).
+  - deferred from initial target due compile-boundary instability: `BonusStatusDto`, `MQQuestAmountDto`, `MQQuestDataDto`, `MQQuestPrizeDto`, `MQTreasureQuestProgressDto`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent mode remained constrained by thread-limit, so execution continued ownership-safe on main.
+  - `rerun1` failed `STEP06` on `BonusStatusDto` duplicate/access drift; deferred `BonusStatusDto` in this wave.
+  - `rerun2` failed `STEP07` on `LoginHelper` mixed-package `SitOutRequest2` mismatch; fixed with bounded import normalization.
+  - canonical validation reached on `rerun3`:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-173327-hardcut-m2-wave316-wave317-kafka-dto-quest-currency-crash/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/219-hard-cut-m2-wave316-wave317-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `221`, remaining `2056`, burndown `9.705753%`
+  - Project 02 `26.213219%`, Core `63.106610%`, Portfolio `81.553305%`
+  - ETA `94.4h` (`11.80` workdays)

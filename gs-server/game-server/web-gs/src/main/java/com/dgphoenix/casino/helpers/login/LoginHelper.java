@@ -25,7 +25,7 @@ import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.abs.casino.gs.managers.payment.wallet.v3.ICommonWalletClient;
 import com.dgphoenix.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
-import com.dgphoenix.casino.kafka.dto.SitOutRequest2;
+import com.abs.casino.kafka.dto.SitOutRequest2;
 import com.abs.casino.sm.IPlayerSessionManager;
 import com.abs.casino.sm.PlayerSessionFactory;
 import com.abs.casino.sm.login.GameLoginRequest;
