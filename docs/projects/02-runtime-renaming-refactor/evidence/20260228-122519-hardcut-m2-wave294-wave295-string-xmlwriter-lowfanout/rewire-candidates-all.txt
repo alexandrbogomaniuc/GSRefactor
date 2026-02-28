@@ -1,0 +1,75 @@
+mp-server/bots/src/main/java/com/betsoft/casino/bots/model/RicochetBullet.java:13:import static com.dgphoenix.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentManager.java:9:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java:45:import static com.dgphoenix.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/PromoMessagesDispatcher.java:16:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/GameListExtAction.java:13:import com.dgphoenix.casino.common.util.string.StringBuilderWriter;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/GameListExtAction.java:15:import com.dgphoenix.casino.common.util.xml.xmlwriter.Attribute;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/GameListExtAction.java:16:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/FRBGameListAction.java:13:import com.dgphoenix.casino.common.util.string.StringBuilderWriter;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/FRBGameListAction.java:15:import com.dgphoenix.casino.common.util.xml.xmlwriter.Attribute;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/FRBGameListAction.java:16:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:31:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/support/ErrorPersisterHelper.java:9:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/cache/GameListInfo.java:4:import com.dgphoenix.casino.common.util.xml.xmlwriter.Attribute;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:53:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/TransactionDataTracker.java:32:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/WebSocketSessionsController.java:11:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/CWHelper.java:13:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/LoginHelper.java:17:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/AbstractPlayerSessionManager.java:14:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/CWPlayerSessionManager.java:12:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/CollectionParserTest.java:3:import com.dgphoenix.casino.common.util.string.CollectionParser;
+gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/string/MatrixUtilsTest.java:3:import com.dgphoenix.casino.common.util.string.MatrixUtils;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/logkit/LogUtils.java:4:import com.dgphoenix.casino.common.util.string.StringBuilderWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/RefreshBalanceAction.java:11:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/xmlwriter/BufferedXmlWriter.java:3:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/XMLUtils.java:3:import com.dgphoenix.casino.common.util.string.StringBuilderWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBLiteAction.java:14:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBAction.java:12:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CheckFRBAction.java:10:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBAction.java:13:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:13:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoLiteAction.java:14:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/STLobbyAction.java:19:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryAction.java:15:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBLiteAction.java:11:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoAction.java:14:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBAction.java:17:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/XmlApiBaseAction.java:5:import com.dgphoenix.casino.common.util.string.StringBuilderWriter;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/XmlApiBaseAction.java:6:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/webapp/gamehistoryXML.jsp:5:<%@ page import="com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter" %>
+gs-server/game-server/web-gs/src/main/webapp/gamehistoryXML.jsp:6:<%@ page import="com.dgphoenix.casino.common.util.xml.xmlwriter.Attribute" %>
+gs-server/game-server/web-gs/src/main/webapp/gamehistoryXML.jsp:12:<%@ page import="com.dgphoenix.casino.common.util.string.StringBuilderWriter" %>
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListAction.java:20:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/web-gs/src/main/webapp/gameSessionHistory.jsp:7:<%@ page import="com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter" %>
+gs-server/game-server/web-gs/src/main/webapp/gameSessionHistory.jsp:21:<%@ page import="com.dgphoenix.casino.common.util.string.StringBuilderWriter" %>
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryListForm.java:12:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/APIResponseBuilder.java:8:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/cw/CWStartGameForm.java:4:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/diagnostic/BaseDiagnosisServlet.java:5:import com.dgphoenix.casino.common.util.string.StringBuilderWriter;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/web/BaseAction.java:9:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java:42:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/GetBonusAction.java:13:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/GetHistoryAction.java:15:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/CheckAction.java:10:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/CancelAction.java:11:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/AwardAction.java:20:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/GetInfoAction.java:15:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/game/ct/CTOnlyStartGameForm.java:6:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/AbstractBonusAction.java:21:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java:18:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AbstractBonusServlet.java:11:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CancelBonusServlet.java:7:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/GetBonusHistoryServlet.java:11:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CheckBonusServlet.java:8:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/GetBonusInfoServlet.java:10:import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/TransactionData.java:28:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/SessionInfo.java:5:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/TransactionDataFactory.java:7:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/AccountInfo.java:8:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/common/src/test/java/com/abs/casino/common/util/StringIdGeneratorTest.java:5:import com.dgphoenix.casino.common.util.string.StringIdGenerator;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:19:import static com.dgphoenix.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
+gs-server/game-server/web-gs/src/main/webapp/gamehistoryXMLV2.jsp:9:<%@ page import="com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter" %>
+gs-server/game-server/web-gs/src/main/webapp/gamehistoryXMLV2.jsp:10:<%@ page import="com.dgphoenix.casino.common.util.xml.xmlwriter.Attribute" %>
+gs-server/game-server/web-gs/src/main/webapp/gamehistoryXMLV2.jsp:12:<%@ page import="com.dgphoenix.casino.common.util.string.StringBuilderWriter" %>
+gs-server/game-server/web-gs/src/main/webapp/handhistory.jsp:4:<%@ page import="com.dgphoenix.casino.common.util.string.StringIdGenerator" %>

@@ -8829,3 +8829,24 @@
   - baseline `2277`, reduced `1804`, remaining `473`, burndown `79.227053%`
   - Project 02 `48.129606%`, Core `74.064803%`, Portfolio `87.032402%`
   - ETA `19.2h` (`2.40` workdays)
+
+### 2026-02-28 12:40 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W294 + W295`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `6` (`CollectionParser`, `DateTimeUtils`, `IStringSerializer`, `MapParser`, `MatrixUtils`, `StringIdGenerator`).
+  - deferred from initial candidate due duplicate-type/package-visibility drift: `StringBuilderWriter`, `Attribute`, `FormattedXmlWriter`, `XmlQuota`, `XmlWriter`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent parallel target remained constrained by thread limit; ownership-safe execution continued on main.
+  - rerun1-rerun3 failed at `PRE02/STEP03` from mixed moved/unmoved dependencies in `string` subpackage; fixed with bounded compatibility imports and deferring `StringBuilderWriter` + `xmlwriter` declarations.
+  - rerun4 failed at `STEP06` due legacy wildcard resolution in `MQServiceHandler` for moved `MultiplayerExternalWallettransactionHandler`; fixed with explicit moved-handler import.
+  - canonical validation reached on rerun5:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-122519-hardcut-m2-wave294-wave295-string-xmlwriter-lowfanout/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/208-hard-cut-m2-wave294-wave295-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1810`, remaining `467`, burndown `79.490558%`
+  - Project 02 `48.210786%`, Core `74.105393%`, Portfolio `87.052696%`
+  - ETA `19.0h` (`2.37` workdays)

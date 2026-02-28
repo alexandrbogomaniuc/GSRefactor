@@ -62,6 +62,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyRatesManager;
+import com.abs.casino.gs.managers.payment.wallet.MultiplayerExternalWallettransactionHandler;
 import com.dgphoenix.casino.gs.managers.payment.wallet.*;
 import com.dgphoenix.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;

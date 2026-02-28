@@ -4009,3 +4009,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 11`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+11`.
   - global tracked source declarations/files now `473` remaining (`2277` baseline, `1804` reduced, `79.227053%` burndown).
+
+## 2026-02-28 12:40 UTC (Hard-Cut M2 Wave 294 + 295)
+- Continued hard-cut execution from W293 with declaration-first overlap-safe `common/util/string` + `xmlwriter` candidate batch.
+  - `W294`: retained `5` declaration migrations (`CollectionParser`, `DateTimeUtils`, `IStringSerializer`, `MapParser`, `MatrixUtils`).
+  - `W295`: retained `1` declaration migration (`StringIdGenerator`).
+  - deferred from initial target due duplicate-type/package-visibility drift: `StringBuilderWriter`, `Attribute`, `FormattedXmlWriter`, `XmlQuota`, `XmlWriter`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`); strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1-rerun3 failed at `PRE02/STEP03` because moved string declarations initially lost compatibility with already-moved `string.mappers`/`CommonArrayUtils` and unmoved `StringUtils`; fixed via bounded imports and by deferring `StringBuilderWriter`.
+  - rerun4 failed at `STEP06` on pre-existing handler package-visibility drift (`MultiplayerExternalWallettransactionHandler` moved package vs legacy wildcard resolution in `MQServiceHandler`); fixed with bounded explicit import to moved handler.
+  - rerun5 reached canonical validation:
+    - fast gate batchA: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - fast gate batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-122519-hardcut-m2-wave294-wave295-string-xmlwriter-lowfanout/`
+  - report: `docs/projects/02-runtime-renaming-refactor/208-hard-cut-m2-wave294-wave295-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 6`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+6`.
+  - global tracked source declarations/files now `467` remaining (`2277` baseline, `1810` reduced, `79.490558%` burndown).

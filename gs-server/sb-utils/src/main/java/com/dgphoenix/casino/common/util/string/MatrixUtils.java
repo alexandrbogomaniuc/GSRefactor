@@ -1,5 +1,6 @@
-package com.dgphoenix.casino.common.util.string;
+package com.abs.casino.common.util.string;
 
+import com.abs.casino.common.util.string.CommonArrayUtils;
 import org.apache.commons.lang.ArrayUtils;
 
 import java.util.Arrays;
