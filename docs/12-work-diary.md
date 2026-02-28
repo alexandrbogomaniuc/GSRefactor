@@ -8850,3 +8850,24 @@
   - baseline `2277`, reduced `1810`, remaining `467`, burndown `79.490558%`
   - Project 02 `48.210786%`, Core `74.105393%`, Portfolio `87.052696%`
   - ETA `19.0h` (`2.37` workdays)
+
+### 2026-02-28 12:59 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W296 + W297`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `12` (`JsonDeserializableDeserializer`, `JsonDeserializableModule`, `UniversalCollectionModule`, `ClientGeneration`, `Html5PcVersionMode`, `ServerLockInfo`, `ChangeLockListener`, `BidirectionalMultivalueMap`, `ConcurrentBidirectionalMap`, `EnumMapSerializer`, `FastByteArrayOutputStream`, `Controllable`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent parallel target remained constrained by thread limit; ownership-safe execution continued on main.
+  - rerun1 failed at `STEP01/PRE01` due external-module rewires to moved classes before `sb-utils` compile/install order; rolled back external rewires.
+  - rerun2 failed at `STEP03/PRE02` due over-rollback in `sb-utils` same-module imports (`ConcurrentBidirectionalMap` duplicate/cannot-access drift).
+  - bounded stabilization kept `com.abs` rewires only for in-module `sb-utils` consumers while external modules remained on legacy imports.
+  - canonical validation reached on rerun3:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-124659-hardcut-m2-wave296-wave297-cache-util-lowfanout/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/209-hard-cut-m2-wave296-wave297-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1822`, remaining `455`, burndown `80.017567%`
+  - Project 02 `48.373153%`, Core `74.186577%`, Portfolio `87.093288%`
+  - ETA `18.5h` (`2.31` workdays)

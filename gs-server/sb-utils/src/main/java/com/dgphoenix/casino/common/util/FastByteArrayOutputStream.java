@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package com.dgphoenix.casino.common.util;
+package com.abs.casino.common.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

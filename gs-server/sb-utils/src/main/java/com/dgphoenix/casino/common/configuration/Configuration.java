@@ -7,7 +7,7 @@ import com.abs.casino.common.configuration.resource.observable.IFileObservable;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.ObjectNotFoundException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
-import com.dgphoenix.casino.common.util.ConcurrentBidirectionalMap;
+import com.abs.casino.common.util.ConcurrentBidirectionalMap;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.log4j.Logger;

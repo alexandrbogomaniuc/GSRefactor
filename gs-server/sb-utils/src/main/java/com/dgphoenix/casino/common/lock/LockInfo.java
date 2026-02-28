@@ -1,6 +1,6 @@
 package com.abs.casino.common.lock;
 
-import com.dgphoenix.casino.common.lock.ServerLockInfo;
+import com.abs.casino.common.lock.ServerLockInfo;
 
 import java.util.HashMap;
 import java.util.List;

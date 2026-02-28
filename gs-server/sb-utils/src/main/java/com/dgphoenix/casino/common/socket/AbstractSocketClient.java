@@ -1,7 +1,7 @@
 package com.abs.casino.common.socket;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.Controllable;
+import com.abs.casino.common.util.Controllable;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.thoughtworks.xstream.XStream;
 import org.apache.log4j.Logger;

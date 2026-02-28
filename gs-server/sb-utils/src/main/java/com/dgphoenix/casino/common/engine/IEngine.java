@@ -1,6 +1,6 @@
 package com.abs.casino.common.engine;
 
-import com.dgphoenix.casino.common.util.Controllable;
+import com.abs.casino.common.util.Controllable;
 
 /**
  * Created

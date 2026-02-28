@@ -1,0 +1,6 @@
+target_all_count=12
+target_batchA_count=6
+target_batchB_count=6
+rewire_candidate_count=11
+overlap_decl_rewire_count=0
+raw_package_count_head=456

@@ -4029,3 +4029,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration delta: `com.dgphoenix -> com.abs = 6`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+6`.
   - global tracked source declarations/files now `467` remaining (`2277` baseline, `1810` reduced, `79.490558%` burndown).
+
+## 2026-02-28 12:59 UTC (Hard-Cut M2 Wave 296 + 297)
+- Continued hard-cut execution from W295 with declaration-first overlap-safe low-fanout `sb-utils` cache/game/lock/util batch.
+  - `W296`: retained `6` declaration migrations (`JsonDeserializableDeserializer`, `JsonDeserializableModule`, `UniversalCollectionModule`, `ClientGeneration`, `Html5PcVersionMode`, `ServerLockInfo`).
+  - `W297`: retained `6` declaration migrations (`ChangeLockListener`, `BidirectionalMultivalueMap`, `ConcurrentBidirectionalMap`, `EnumMapSerializer`, `FastByteArrayOutputStream`, `Controllable`).
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1 failed at `STEP01/PRE01` from external-module rewires to moved `com.abs` classes before `sb-utils` compile/install order; rolled back external rewires.
+  - rerun2 failed at `STEP03/PRE02` due over-rollback in `sb-utils` same-module imports (`ConcurrentBidirectionalMap` duplicate/cannot-access drift).
+  - applied bounded stabilization: kept `com.abs` rewires only for in-module `sb-utils` consumers (`Configuration`, `IEngine`, `LockInfo`, `AbstractSocketClient`) while external modules remained on legacy imports.
+  - rerun3 reached canonical validation:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-124659-hardcut-m2-wave296-wave297-cache-util-lowfanout/`
+  - report: `docs/projects/02-runtime-renaming-refactor/209-hard-cut-m2-wave296-wave297-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration delta: `com.dgphoenix -> com.abs = 12`, stabilization regressions `com.abs -> com.dgphoenix = 0`, net `+12`.
+  - global tracked source declarations/files now `455` remaining (`2277` baseline, `1822` reduced, `80.017567%` burndown).
