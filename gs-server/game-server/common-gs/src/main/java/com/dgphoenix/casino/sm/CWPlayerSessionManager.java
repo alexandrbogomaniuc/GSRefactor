@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.sm;
+package com.abs.casino.sm;
 
 import com.abs.casino.actions.enter.game.IStartGameForm;
 import com.abs.casino.sm.AbstractPlayerSessionManager;

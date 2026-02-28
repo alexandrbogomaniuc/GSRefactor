@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.sm;
+package com.abs.casino.sm;
 
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.util.ReflectionUtils;

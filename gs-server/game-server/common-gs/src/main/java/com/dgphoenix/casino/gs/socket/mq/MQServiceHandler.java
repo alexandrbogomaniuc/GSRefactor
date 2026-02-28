@@ -118,7 +118,7 @@ import com.abs.casino.promo.tournaments.messages.BalanceUpdated;
 import com.abs.casino.promo.tournaments.messages.BattlegroundInfo;
 import com.abs.casino.promo.tournaments.messages.PlayerTournamentStateChanged;
 import com.dgphoenix.casino.services.mp.MPGameSessionService;
-import com.dgphoenix.casino.sm.PlayerSessionFactory;
+import com.abs.casino.sm.PlayerSessionFactory;
 import com.dgphoenix.casino.support.ErrorPersisterHelper;
 import com.abs.casino.websocket.tournaments.TournamentWebSocketMessageListener;
 import com.google.gson.Gson;

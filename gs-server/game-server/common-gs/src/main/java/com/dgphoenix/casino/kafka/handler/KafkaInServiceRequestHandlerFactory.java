@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.kafka.handler;
+package com.abs.casino.kafka.handler;
 
 import java.util.List;
 

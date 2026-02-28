@@ -29,7 +29,7 @@ import com.dgphoenix.casino.gs.managers.payment.bonus.*;
 import com.abs.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
 import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManager;
 import com.abs.casino.sm.AbstractPlayerSessionManager;
-import com.dgphoenix.casino.sm.IGetAccountInfoProvider;
+import com.abs.casino.sm.IGetAccountInfoProvider;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

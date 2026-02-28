@@ -29,7 +29,7 @@ import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
 import com.abs.casino.helpers.login.LoginHelper;
 import com.dgphoenix.casino.services.mp.MPGameSessionService;
 import com.abs.casino.sm.CWv3PlayerSessionManager;
-import com.dgphoenix.casino.sm.PlayerSessionFactory;
+import com.abs.casino.sm.PlayerSessionFactory;
 import com.abs.casino.sm.login.GameLoginRequest;
 import com.abs.casino.sm.login.LoginResponse;
 import org.apache.logging.log4j.LogManager;

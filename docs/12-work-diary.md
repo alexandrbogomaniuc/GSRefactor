@@ -8989,3 +8989,21 @@
   - baseline `2277`, reduced `185`, remaining `2092`, burndown `8.124725%`
   - Project 02 `26.015591%`, Core `63.007796%`, Portfolio `81.503898%`
   - ETA `96.0h` (`12.00` workdays)
+
+### 2026-02-28 17:01 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W312 + W313`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `11` (`KafkaRequestHandler`, `KafkaInServiceRequestHandler`, `KafkaInServiceRequestHandlerFactory`, `KafkaInServiceAsyncRequestHandler`, `KafkaRequestHandlerFactory`, `KafkaOuterRequestHandlerFactory`, `KafkaOuterRequestHandler`, `CWPlayerSessionManager`, `IGetAccountInfoProvider`, `IPlayerSessionManager`, `PlayerSessionFactory`).
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent mode remained constrained by thread-limit, so execution continued ownership-safe on main.
+  - canonical validation on rerun1:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-165301-hardcut-m2-wave312-wave313-kafka-handler-sm-core`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/217-hard-cut-m2-wave312-wave313-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `196`, remaining `2081`, burndown `8.607817%`
+  - Project 02 `26.075977%`, Core `63.037989%`, Portfolio `81.518994%`
+  - ETA `95.5h` (`11.94` workdays)

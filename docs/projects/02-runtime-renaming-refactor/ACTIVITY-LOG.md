@@ -4181,3 +4181,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `6`; bounded rewires/regressions: `0`.
   - global tracked source declarations/files now `2092` remaining (`2277` baseline, `185` reduced, `8.124725%` burndown).
+
+## 2026-02-28 17:01 UTC (Hard-Cut M2 Wave 312 + 313)
+- Continued hard-cut execution from W311 with declaration-first overlap-safe `common-gs kafka/handler + sm core` batch.
+  - retained declaration migrations (`com.dgphoenix -> com.abs`): `11`
+    - `KafkaRequestHandler`, `KafkaInServiceRequestHandler`, `KafkaInServiceRequestHandlerFactory`, `KafkaInServiceAsyncRequestHandler`, `KafkaRequestHandlerFactory`, `KafkaOuterRequestHandlerFactory`, `KafkaOuterRequestHandler`, `CWPlayerSessionManager`, `IGetAccountInfoProvider`, `IPlayerSessionManager`, `PlayerSessionFactory`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - bounded rewires updated source consumers from moved `kafka.handler` and `sm` FQCNs.
+  - canonical validation reached on rerun1:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-165301-hardcut-m2-wave312-wave313-kafka-handler-sm-core/`
+  - report: `docs/projects/02-runtime-renaming-refactor/217-hard-cut-m2-wave312-wave313-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `11`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `2081` remaining (`2277` baseline, `196` reduced, `8.607817%` burndown).

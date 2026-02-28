@@ -22,8 +22,8 @@ import com.dgphoenix.casino.gs.managers.payment.transfer.PaymentManager;
 import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
 import com.abs.casino.sm.tracker.logout.LogoutTracker;
-import com.dgphoenix.casino.sm.IGetAccountInfoProvider;
-import com.dgphoenix.casino.sm.IPlayerSessionManager;
+import com.abs.casino.sm.IGetAccountInfoProvider;
+import com.abs.casino.sm.IPlayerSessionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

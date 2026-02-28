@@ -1,6 +1,6 @@
 package com.abs.casino.kafka.handler;
 
-import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
+import com.abs.casino.kafka.handler.KafkaOuterRequestHandler;
 
 import java.util.Set;
 

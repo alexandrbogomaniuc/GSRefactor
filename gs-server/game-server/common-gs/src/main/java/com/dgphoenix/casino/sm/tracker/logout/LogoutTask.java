@@ -9,8 +9,8 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.dgphoenix.casino.gs.GameServer;
 import com.dgphoenix.casino.gs.TransactionDataTracker;
-import com.dgphoenix.casino.sm.IPlayerSessionManager;
-import com.dgphoenix.casino.sm.PlayerSessionFactory;
+import com.abs.casino.sm.IPlayerSessionManager;
+import com.abs.casino.sm.PlayerSessionFactory;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 

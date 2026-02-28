@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.abs.casino.kafka.dto.AddBatchWinRequestDto;
 import com.abs.casino.kafka.dto.AddBatchWinResponseDto;
-import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
+import com.abs.casino.kafka.handler.KafkaOuterRequestHandler;
 
 @Component
 public class AddBatchWinRequestHandler 

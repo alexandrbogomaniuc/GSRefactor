@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import com.dgphoenix.casino.gs.socket.InServiceServiceHandler;
 import com.abs.casino.kafka.dto.SendPlayerTournamentStateChangedRequest;
 import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
-import com.dgphoenix.casino.kafka.handler.KafkaInServiceAsyncRequestHandler;
+import com.abs.casino.kafka.handler.KafkaInServiceAsyncRequestHandler;
 
 @Component
 public class SendPlayerTournamentStateChangedRequestHandler
