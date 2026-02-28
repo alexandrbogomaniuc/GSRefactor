@@ -1,0 +1,23 @@
+# Pre package lines (batchA)
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/EnableBotServiceRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetAllBotConfigInfosRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetBotConfigInfoByNickNameRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetBotConfigInfoByUserNameRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetBotConfigInfoRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/IsBotServiceEnabledRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RemoveBotConfigInfoRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/UpsertBotConfigInfoRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/TournamentEndedDto.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GameServerInfoResponseDto.java: 1:package com.dgphoenix.casino.kafka.dto;
+
+# Pre package lines (batchB)
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetGameServersInfoRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/AddBatchWinRequestDto.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/AddBatchWinResponseDto.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/AddMQReservedNicknamesRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/AddWinWithSitOutRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGUpdatePrivateRoomRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CheckBuyInRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CloseFRBonusAndSessionRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CloseGameSessionRequest.java: 1:package com.dgphoenix.casino.kafka.dto;
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CrashGameSettingDto.java: 1:package com.dgphoenix.casino.kafka.dto;

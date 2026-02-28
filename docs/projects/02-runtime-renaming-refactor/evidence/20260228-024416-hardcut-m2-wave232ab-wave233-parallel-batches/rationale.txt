@@ -1,0 +1,6 @@
+Wave group proposal: W232A/W232B + W233.
+- Batch A (10 declarations): low-fanout bot-config/tournament/game-server-response dto slice.
+- Batch B (10 declarations): low-fanout request dto slice aligned to add/buyin/session surfaces.
+- Declaration-first execution with empty retained rewires for both batches.
+- Overlap guarantees: declaration overlap=0, rewire overlap=0, cross overlaps=0.
+- Risk profile: low. No web-gs rewires and no retained common-gs/mp-web rewires.

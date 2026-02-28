@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.kafka.dto;
+package com.abs.casino.kafka.dto;
 
 public class CloseGameSessionRequest implements KafkaRequest {
     private String sessionId;

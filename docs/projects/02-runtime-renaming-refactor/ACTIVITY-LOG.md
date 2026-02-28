@@ -3375,3 +3375,27 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - retained declaration migrations: `22`.
   - retained bounded rewires: `2`.
   - global tracked source declarations/files now `779` remaining (`2277` baseline, `1498` reduced, `65.788318%` burndown).
+
+## 2026-02-28 02:44 UTC (Hard-Cut M2 Wave 232A + 232B + 233)
+- Continued batched-safe hard-cut migration from W231 checkpoint with non-overlapping declaration sets:
+  - `W232A`: 10 declaration migrations in `mp-server/kafka/dto` (bot-config + tournament/game-server response surfaces).
+  - `W232B`: 10 declaration migrations in `mp-server/kafka/dto` (request/add/buyin/session surfaces).
+  - `W233`: integration and validation.
+- Parallel execution mode target:
+  - `1 explorer + 2 workers + main` (subagent spawn remained limited in this session, so equivalent strict ownership execution used explicit manifests on main).
+- Stabilization:
+  - declaration-first execution with no retained rewires in either batch.
+  - no additional compile stabilization required.
+  - no blind/global replacement performed.
+  - preserved pre-existing local changes (`cluster-hosts.properties`, `.tmp-w202-*`, prior uncommitted evidence folder) outside commit scope.
+- Validation:
+  - fast gate batchA rerun1 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - fast gate batchB rerun1 (canonical): `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`, smoke alias `/startgame`).
+  - full matrix rerun1 (canonical): `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`); retry1 failed (`rc=2`).
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-024416-hardcut-m2-wave232ab-wave233-parallel-batches/`
+  - report: `docs/projects/02-runtime-renaming-refactor/177-hard-cut-m2-wave232ab-wave233-parallel-batches-report-20260228.md`
+- Outcome:
+  - retained declaration migrations: `20`.
+  - retained bounded rewires: `0`.
+  - global tracked source declarations/files now `759` remaining (`2277` baseline, `1518` reduced, `66.666667%` burndown).

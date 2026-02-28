@@ -1,0 +1,10 @@
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetGameServersInfoRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/AddBatchWinRequestDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/AddBatchWinResponseDto.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/AddMQReservedNicknamesRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/AddWinWithSitOutRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGUpdatePrivateRoomRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CheckBuyInRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CloseFRBonusAndSessionRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CloseGameSessionRequest.java
+mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CrashGameSettingDto.java
