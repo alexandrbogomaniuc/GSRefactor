@@ -33,20 +33,25 @@ Steps (must be followed in order):
 
 4. Implement outcome mapping stub:
 - Create `src/outcome/OutcomeMapper.ts`.
-- Export a mapper function with TODO hooks for provider payload normalization.
+- Export a mapper function with TODO hooks for GS payload normalization.
 
 5. Integrate shared HUD schema + feature flags:
 - Create `src/config/hud.ts` importing shared HUD schema from `@gamesv1/ui-kit`.
 - Create `src/config/featureFlags.ts` using `FeatureFlags` from `@gamesv1/core-compliance`.
 
-6. Run smoke tests using config stubs:
+6. Enforce canonical runtime expectations:
+- HTTP runtime path via `@gamesv1/core-protocol`.
+- No direct WebSocket/financial ownership in game module.
+- Client treated as presentation-only for wallet/session truth.
+
+7. Run smoke tests using config stubs:
 - Ensure `tests/smoke/configs/guest.json`, `free.json`, `real.json` exist.
 - Run:
 ```bash
 npm --prefix games/<gameId> run smoke:test
 ```
 
-7. Produce release checklist + PR summary:
+8. Produce release checklist + PR summary:
 - Fill `docs/release-checklist.md`.
 - Fill `docs/pr-summary.md` with scope, risks, tests, and rollback notes.
 

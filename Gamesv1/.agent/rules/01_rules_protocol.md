@@ -1,50 +1,37 @@
-# Non-Negotiable Rules for Slot Game Protocol Integration
+# Non-Negotiable Protocol Rules
 
-This document defines the strict rule set for building, refactoring, and maintaining slot games within this ecosystem using the `abs.gs.v1` protocol and the `gs-protocol-mcp` context layer.
+This rule file defines protocol and state-ownership requirements for Gamesv1.
 
-## 1. Operation Idempotency
-Every monetary action (spin, buy feature, or gamble if server-charged) **MUST** include an `operationId` (UUID/GUID).
-- **Retries:** If a network timeout or disconnect occurs, the client's retry payloads **MUST reuse the exact SAME `operationId`** associated with the original action. 
-- **Consequence:** Failing to do so can result in double-charging the player's balance.
+## 1. Canonical Runtime Path
 
-## 2. State Echo (Do Not Invent Endpoints)
-The `abs.gs.v1` server is the absolute sole authority over game state.
-- If the protocol provides a `gameState` during initialization (`Enter` message) or during recovery, the client must store it.
-- When required by subsequent requests (e.g., passing a `lastAction` or `resumeState`), the client must echo back the exact state object previously provided. 
-- **Rule:** Do NOT invent, assume, or manually construct state objects locally to send to the server.
+- Production target is GS HTTP runtime path.
+- `abs.gs.v1` WebSocket is legacy/experimental only.
 
-## 3. Transport Abstraction
-Game logic must never be tightly coupled to the underlying network transport (WebSocket vs. HTTP).
-- Always provide and rely on an `IGameTransport` interface.
-- Core game state machines should only listen to normalized events (e.g., `onSpinResult`, `onBalanceUpdated`) emitted by the abstraction layer, completely agnostic to whether the payload arrived via a WS frame or an HTTP fetch polyfill.
+## 2. Ownership and Truth
 
-## 4. Compliance First
-Regulatory and compliance features must be fully implemented in the baseline template *before* any game-specific theme/art content is developed:
-- `turboplay` limits and toggles.
-- Minimum spin time enforcement.
-- Mandatory `postMessage` event dispatching (for operator outer-frames/iFrames).
-- Spin profiling and RNG certification logging overlays.
-- Bank properties and currency formatting constraints.
+- GS owns session, wallet, DB state, restore state, requestCounter, and idempotency decisions.
+- Client is presentation-only for financial/state truth.
+- Client must not invent authoritative state.
 
-## 5. Performance Budget & Scene Growth
-Slot games run infinitely. Uncontrolled scene graph growth will cause mobile browser tabs to crash due to out-of-memory errors.
-- **Rule:** Never instantiate new PIXI objects endlessly without destroying or pooling them (e.g., particles, win lines, flying coins).
-- Add dev-only instrumentation (like a native `DebugOverlay`) to detect increasing scene object counts and monitor texture memory/VRAM consumption.
+## 3. Idempotency + Sequencing
 
-## 6. No Secret Leakage
-Never expose passwords, tokens, or security keys.
-- **Rule:** Never commit `secretKeys`, `PATs`, or `operatorTokens` to the repository.
-- Ensure the MCP redaction layer (`gs-protocol-mcp/redactor.ts`) and any client-side logging filters actively mask `[REDACTED]` over patterns resembling authorization strings.
+- Monetary requests must include stable idempotency key.
+- Retries must reuse the same key.
+- Client must follow GS requestCounter/ordering expectations.
 
----
+## 4. Transport Abstraction
 
-## 🏁 Definition of Done (DoD) Checklist
+- Game logic must stay transport-agnostic via `IGameTransport`.
+- No direct `WebSocket` calls from game modules.
 
-Before a slot game client or core engine pull request can be considered "Done", it must pass all of the following validations:
+## 5. Scope Constraints
 
-- [ ] **Idempotency Validated**: Disconnecting the network precisely during a Spin request and reconnecting proves the retry payload reused the original `operationId`.
-- [ ] **State Recovery Tested**: Reloading the browser mid-Free-Spins correctly parses the `Enter` message state and resumes from the exact exact spin index without requiring a new Bet.
-- [ ] **No Magic Endpoints**: The client only communicates over defined `abs.gs.v1` channels and echoes state matching the server schemas (Verified via `gs-protocol-mcp` schema validations).
-- [ ] **Compliance Verified**: The spin duration honors the configured `minSpinTime`, and the operator iFrame successfully receives `SessionReady` and `BalanceUpdate` `postMessage` payloads.
-- [ ] **Zero Memory Leaks**: Running 500 automated spins does not steadily increase the PIXI render tree object count.
-- [ ] **Secrets Audited**: A source code sweep confirms no hardcoded Bearer tokens, API keys, or developer signatures exist in checked-in files.
+- Operator-specific messaging (`postMessage`, Pariplay bridge) is out of canonical scope.
+- Multiplayer is out of scope.
+
+## 6. Definition of Done (Protocol)
+
+- [ ] HTTP init + transaction + restore flow validated.
+- [ ] Retry/idempotency behavior validated.
+- [ ] Sequencing/requestCounter behavior validated.
+- [ ] No client-owned wallet/DB state logic introduced.

@@ -14,7 +14,8 @@
     "check:boundaries": "node tools/check-boundaries/index.mjs",
     "test:config": "node --experimental-strip-types tests/compliance/config.test.ts",
     "test:animation-policy": "node --experimental-strip-types tests/compliance/animation-policy.test.ts",
-    "test:layout": "corepack pnpm --filter @games/premium-slot exec node --experimental-strip-types ../../tests/layout/layout-matrix.test.ts"
+    "test:layout": "corepack pnpm --filter @games/premium-slot exec node --experimental-strip-types ../../tests/layout/layout-matrix.test.ts",
+    "release:pack": "node --experimental-strip-types tools/release-pack/create-release.ts"
   },
   "devDependencies": {
     "@types/node": "^25.3.2",

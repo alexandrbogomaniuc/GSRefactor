@@ -1,89 +1,84 @@
 # RELEASE_PROCESS
 
-This document is the production release checklist for Gamesv1.
-It is written for both release managers and AI agents.
+Production release checklist for Gamesv1.
+This checklist is for release managers and AI agents.
 
 ## 0) Inputs Required Before Any Release
+
 1. Target `gameId` (example: `premium-slot`).
 2. Target environment (`staging` or `production`).
 3. CDN base URL and version tag.
-4. Operator launch URL templates for `guest`, `free`, and `real` modes.
-5. DB change window / deployment window.
-
----
+4. GS launch URL templates for `guest`, `free`, and `real` modes.
+5. Deployment/change window.
 
 ## A) What Is Stored In GS DB
 
-At minimum, GS DB registration must store these fields for each game release:
+At minimum, GS registration data must include:
 
-1. `game_catalog` identity entry:
+1. Catalog identity
 - `game_id`
 - `game_name`
 - `version`
-- `status` (draft/active/disabled)
+- `status`
 
-2. Client launch routing:
-- `entrypoint_url` (CDN URL to built client)
-- `asset_manifest_url` (usually `manifest.json` under the same CDN release)
+2. Client routing
+- `entrypoint_url`
+- `asset_manifest_url`
 
-3. Feature and compliance flags:
-- autoplay/turboplay toggles
-- min spin timing flags
-- operator bridge requirements (if market/operator requires messaging)
+3. Runtime/compliance profile
+- feature flags
+- min spin timing / turbo/autoplay policy
+- limits and exposure
 
-4. RTP and math models:
+4. Math profile
 - model IDs
 - RTP values
 - volatility
 
-5. Financial and safety limits:
+5. Financial constraints
 - min/max/default bet
-- max exposure / cap multipliers
-- currency or truncation constraints (when market requires integer cents)
+- currency/truncation settings
 
-### Source of Truth for DB Payload
+Source artifacts in repo:
 - `games/<gameId>/game.settings.json`
 - `games/<gameId>/gs/template-params.properties`
 - `games/<gameId>/gs/template-params.json`
 - `games/<gameId>/gs/registration.md`
 
-Generate those artifacts with:
+Generate artifacts:
 ```bash
 npm run config:gen
 ```
 
----
-
-## B) End-to-End Release Steps (Numbered Checklist)
+## B) End-to-End Release Steps
 
 ### 1. Build + AssetPack
-1. Run type build for target game:
+1. Build target game:
 ```bash
 corepack pnpm --filter @games/<gameId> build
 ```
-2. Run Vite build so AssetPack executes in build mode:
+2. Run production asset build:
 ```bash
 corepack pnpm --filter @games/<gameId> exec vite build
 ```
-3. Confirm output artifacts:
-- game bundle in `games/<gameId>/dist/`
-- generated manifest in `games/<gameId>/src/manifest.json`
+3. Verify outputs:
+- `games/<gameId>/dist/`
+- `games/<gameId>/src/manifest.json`
 
 Release gate:
-- Build exits with code 0.
-- No missing asset aliases in manifest.
+- build exits 0
+- manifest has no missing aliases
 
-### 2. Upload CDN
-1. Upload `dist/` and required static assets to versioned CDN path:
-- Example: `/games/<gameId>/<version>/...`
+### 2. Upload CDN/static
+1. Upload client bundle and static assets to versioned CDN path.
 2. Record final `entrypoint_url` and `asset_manifest_url`.
 
 Release gate:
-- CDN URLs are reachable over HTTPS.
-- Cache headers/versioning policy are applied.
+- URLs reachable via HTTPS
+- cache/version policy applied
 
 ### 3. Generate Release Manifest
-1. Create a release manifest artifact (JSON) including:
+Create release metadata JSON with:
 - `gameId`
 - `version`
 - `entrypointUrl`
@@ -91,126 +86,101 @@ Release gate:
 - `buildTimestamp`
 - `gitSha`
 - `environment`
-2. Store it with release artifacts (or in deployment metadata store).
 
 Release gate:
-- Manifest references exact deployed CDN version.
+- metadata references exact deployed version
 
-### 4. Generate SQL Registration Artifact
-1. Generate GS template params first:
+### 4. Generate GS Registration Artifact
+1. Generate template params:
 ```bash
 npm run config:gen
 ```
-2. Produce SQL artifact (example path):
-- `games/<gameId>/gs/registration.sql`
-3. SQL artifact must include:
-- game_catalog upsert (id/name/version/entrypoint)
-- feature flags
-- RTP models
-- financial limits
+2. Produce SQL/registration artifact.
+3. Validate that DB registration fields align with release metadata.
 
 Release gate:
-- SQL reviewed by release manager.
-- SQL matches current template-params outputs.
+- registration artifact reviewed
+- artifact version == CDN version == manifest version
 
 ### 5. Deploy
-1. Apply SQL registration change in target environment.
-2. Deploy/activate CDN entrypoint URL in operator routing.
-3. Roll out according to environment policy (staging first, then production).
+1. Apply GS registration changes.
+2. Activate CDN entrypoint for target environment.
+3. Promote per environment policy.
 
 Release gate:
-- DB registration and CDN routing reference the same release version.
+- GS registration and CDN route same release version
 
-### 6. Verify Via Launch URLs (guest/free/real)
-1. Test `guest` launch URL.
-2. Test `free` launch URL.
-3. Test `real` launch URL.
+### 6. Verify Launch URLs
+1. Validate `guest` launch URL.
+2. Validate `free` launch URL.
+3. Validate `real` launch URL.
 4. Verify:
-- game boots and session starts
-- spin round completes with balance updates
-- localization/assets load correctly
+- boot completes
+- runtime session loads
+- round request/response flow succeeds
+- balance/session updates are reflected from GS responses
 
 Release gate:
-- All three launch modes pass.
-- No protocol errors in console/network logs.
+- all three modes pass
+- no protocol/runtime errors in logs
 
----
+## C) Runtime Handshake (Canonical HTTP Path)
 
-## C) Runtime Handshake (Client Expectations)
+### 1. Session Init
+1. Client calls GS HTTP init/enter endpoint.
+2. GS returns session, wallet snapshot, and runtime config.
+3. Client stores response as read-only source state.
 
-### 1. Connect/Auth/Session Sync
-1. Client opens transport (`WS` abs.gs.v1 or `EXTGAME`).
-2. Client sends auth/init payload.
-3. Client expects one of:
-- `SESSION_ACCEPTED`
-- `SESSION_SYNC`
-4. Client records balance/session state from accepted/sync payload.
+### 2. Round Transaction Flow
+1. Client submits transaction request with idempotency key + sequencing data.
+2. GS validates requestCounter/idempotency and resolves outcome.
+3. GS returns updated wallet/session/result state.
+4. Client renders result; client does not own wallet truth.
 
-### 2. Round Financial Flow
-1. Client sends `BET_REQUEST` with `operationId`.
-2. Client waits for `BET_ACCEPTED` (or reject/error).
-3. Client sends `SETTLE_REQUEST` with the same `operationId`.
-4. Client waits for `SETTLE_ACCEPTED`.
-5. Client updates balance from balance snapshot/update event.
+### 3. Restore/Recovery
+1. On reload/reconnect, client calls init/enter again.
+2. GS returns restore state if an interrupted round exists.
+3. Client resumes presentation from GS-provided restore payload.
 
-### 3. Reconnect Recovery
-1. On reconnect, client expects sync/restore state (`SESSION_SYNC` for WS or state echo flow for ExtGame).
-2. Any retry of a monetary action must reuse the original `operationId`.
-3. ExtGame mode must echo `gameState` and `lastAction` on transaction calls.
+## D) Legacy Note
 
----
+- `abs.gs.v1` WebSocket transport is legacy/experimental only.
+- Production target architecture is GS HTTP runtime path.
 
-## Code Map (Step -> Implementation Files)
+## Code Map (Step -> Implementation)
 
-### Step 1: Build + AssetPack
-- `packages/pixi-engine/src/engine.ts` (asset manifest init, bundle loading, base path resolution)
-- `packages/ui-kit/src/assets.ts` (shared asset key surface)
-- `packages/pixi-engine/src/resize/ResizePlugin.ts` (runtime canvas/device behavior after build)
-
-Support tooling outside `packages/`:
-- `games/<gameId>/scripts/assetpack-vite-plugin.ts`
+### Build + Asset Packaging
 - `games/<gameId>/vite.config.ts`
+- `games/<gameId>/scripts/assetpack-vite-plugin.ts`
+- `packages/pixi-engine/src/engine.ts`
 
-### Step 2: CDN Runtime Loading Expectations
-- `packages/pixi-engine/src/engine.ts` (loads manifest bundles from deployed base path)
-- `packages/i18n/src/index.ts` (loads locale JSON from deployed path)
+### Runtime Transport + Schemas
+- `packages/core-protocol/src/http/ExtGameTransport.ts`
+- `packages/core-protocol/src/IGameTransport.ts`
+- `packages/core-protocol/src/schemas.ts`
 
-### Step 3: Release Manifest Data Contracts
-- `packages/core-protocol/src/schemas.ts` (transport envelope schema)
-- `packages/core-compliance/src/config/RuntimeConfigSchema.ts` (runtime config fields/constraints)
+### Runtime Config + Compliance
+- `packages/core-compliance/src/config/RuntimeConfigSchema.ts`
+- `packages/core-compliance/src/config/ConfigResolver.ts`
+- `packages/core-compliance/src/animation/AnimationPolicy.ts`
 
-### Step 4: SQL Registration Artifact Data Source
-- `packages/core-compliance/src/FeatureFlags.ts` (flag model)
-- `packages/core-compliance/src/ComplianceConfig.ts` (bank + flag compliance rules)
-- `packages/core-compliance/src/config/RuntimeConfigSchema.ts` (limits, bets, exposure model)
-- `packages/core-compliance/src/config/ConfigResolver.ts` (layer precedence for resolved runtime values)
+### Registration Artifacts
+- `tools/config-gen/src/index.ts`
+- `games/<gameId>/gs/*`
 
-Support tooling outside `packages/`:
-- `tools/config-gen/src/index.ts` (generates `template-params` + `registration.md` artifacts)
+### Verification
+- `tests/contract/mock-gs/ScenarioRunner.ts`
+- `tests/compliance/config.test.ts`
+- `tests/compliance/animation-policy.test.ts`
+- `tests/layout/layout-matrix.test.ts`
 
-### Step 5: Deploy / Operator Integration
-- `packages/operator-pariplay/src/PariplayBridge.ts` (operator frame messaging contract)
-- `packages/core-protocol/src/index.ts` (transport selection WS vs EXTGAME)
+## Final Sign-off Checklist
 
-### Step 6: Launch Verification + Runtime Handshake
-- `packages/core-protocol/src/IGameTransport.ts` (required connect/spin/settle interface)
-- `packages/core-protocol/src/ws/GsWsTransport.ts` (WS handshake, bet/settle handling, balance events)
-- `packages/core-protocol/src/http/ExtGameTransport.ts` (Enter/processTransaction flow, state echo)
-- `packages/core-protocol/src/SpinProfiling.ts` (round telemetry payload support)
-
-Verification support outside `packages/`:
-- `tests/contract/transport.contract.test.ts`
-
----
-
-## Final Sign-off Checklist (Release Manager + AI)
-1. Build + AssetPack passed for target game.
-2. CDN upload completed and URLs recorded.
-3. Release manifest created and archived.
-4. SQL registration artifact generated and reviewed.
-5. Deployment completed in target environment.
-6. Guest launch URL verified.
-7. Free launch URL verified.
-8. Real launch URL verified.
-9. Handshake + settle flow validated in logs.
-10. Reconnect/idempotency behavior validated.
+1. Build + asset packaging passed.
+2. CDN/static upload completed and version recorded.
+3. Release metadata generated.
+4. GS registration artifact generated and reviewed.
+5. Deployment completed.
+6. Guest/free/real launch checks passed.
+7. HTTP runtime init + transaction + restore behavior validated.
+8. Idempotency/request sequencing validated.

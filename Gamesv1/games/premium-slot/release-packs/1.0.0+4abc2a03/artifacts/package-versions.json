@@ -1,0 +1,38 @@
+{
+  "@games/premium-slot": {
+    "source": "games/premium-slot/package.json",
+    "version": "0.0.0"
+  },
+  "@gamesv1/core-compliance": {
+    "source": "packages/core-compliance/package.json",
+    "version": "1.0.0"
+  },
+  "@gamesv1/core-protocol": {
+    "source": "packages/core-protocol/package.json",
+    "version": "1.0.0"
+  },
+  "@gamesv1/i18n": {
+    "source": "packages/i18n/package.json",
+    "version": "1.0.0"
+  },
+  "@gamesv1/operator-pariplay": {
+    "source": "packages/operator-pariplay/package.json",
+    "version": "1.0.0"
+  },
+  "@gamesv1/pixi-engine": {
+    "source": "packages/pixi-engine/package.json",
+    "version": "1.0.0"
+  },
+  "@gamesv1/ui-kit": {
+    "source": "packages/ui-kit/package.json",
+    "version": "1.0.0"
+  },
+  "@pixi/layout": {
+    "source": "packages/pixi-layout/package.json",
+    "version": "1.0.0"
+  },
+  "gamesv1-monorepo": {
+    "source": "repo-root",
+    "version": "1.0.0"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "files": [
+    {
+      "bytes": 6489,
+      "path": "asset.manifest.json",
+      "sha256": "d81c139b53885721c60682a978b6eedd3419d149c5848d55a84c1690c348f6e4"
+    },
+    {
+      "bytes": 4616,
+      "path": "client-bundle.manifest.json",
+      "sha256": "a55835547e1e909b1fcff8ba426f70c269968d2aec98ddb52da8f232c13fe4e4"
+    },
+    {
+      "bytes": 621,
+      "path": "gs-compatibility.json",
+      "sha256": "455e8256552f85e38e507b60dbc5cc5fa78c29c0954ef43d17de29f320ef7b9b"
+    },
+    {
+      "bytes": 1769,
+      "path": "localization.manifest.json",
+      "sha256": "9025532fb1a53c44a72cd8ca1a79d29bd5460cd4268f8deefcdd2f0b0d9572e2"
+    },
+    {
+      "bytes": 217,
+      "path": "math-package.manifest-reference.json",
+      "sha256": "d60b2f7eed8506696e5c3931f0f09505d3e0c46374f2c03f84ec0755a6da6a4d"
+    },
+    {
+      "bytes": 927,
+      "path": "package-versions.json",
+      "sha256": "c64230c532adae2990979995da62f373968e21b21d9fb545ffd139af62a5ca9e"
+    },
+    {
+      "bytes": 405,
+      "path": "release-metadata.json",
+      "sha256": "e07e43c22def7db9da159deff834a956fee5f9de515577d54cd8957a89038c44"
+    }
+  ],
+  "releaseId": "1.0.0+189a40ce"
+}

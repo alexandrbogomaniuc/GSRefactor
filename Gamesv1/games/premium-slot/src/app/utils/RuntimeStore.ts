@@ -32,4 +32,8 @@ export const RuntimeStore = {
   get localization() {
     return this.get().localization;
   },
+
+  get capabilities() {
+    return this.get().capabilities;
+  },
 };

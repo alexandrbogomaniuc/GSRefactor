@@ -1,0 +1,6 @@
+{
+  "launchTimeInjection": false,
+  "path": "games/premium-slot/gs/template-params.json",
+  "sha256": "64c68970898ba4fcd96c6116fce1fc17e8867f0258d482fd91348367acd0c29d",
+  "strategy": "gs-template-params-reference"
+}

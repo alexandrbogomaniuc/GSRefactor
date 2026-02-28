@@ -1,0 +1,244 @@
+{
+  "assetCount": 25,
+  "bundles": {
+    "bundles": [
+      {
+        "assets": [],
+        "name": "default"
+      },
+      {
+        "assets": [
+          {
+            "alias": [
+              "main/logo-white.svg",
+              "logo-white.svg"
+            ],
+            "data": {
+              "tags": {
+                "m": true
+              }
+            },
+            "src": [
+              "main/logo-white.svg"
+            ]
+          },
+          {
+            "alias": [
+              "main/sounds/bgm-main.mp3",
+              "bgm-main.mp3"
+            ],
+            "data": {
+              "tags": {
+                "m": true
+              }
+            },
+            "src": [
+              "main/sounds/bgm-main.ogg",
+              "main/sounds/bgm-main.mp3"
+            ]
+          },
+          {
+            "alias": [
+              "main/sounds/sfx-hover.wav",
+              "sfx-hover.wav"
+            ],
+            "data": {
+              "tags": {
+                "m": true
+              }
+            },
+            "src": [
+              "main/sounds/sfx-hover.ogg",
+              "main/sounds/sfx-hover.mp3"
+            ]
+          },
+          {
+            "alias": [
+              "main/sounds/sfx-press.wav",
+              "sfx-press.wav"
+            ],
+            "data": {
+              "tags": {
+                "m": true
+              }
+            },
+            "src": [
+              "main/sounds/sfx-press.ogg",
+              "main/sounds/sfx-press.mp3"
+            ]
+          },
+          {
+            "alias": [
+              "main/ui",
+              "ui"
+            ],
+            "data": {
+              "tags": {
+                "m": true,
+                "tps": true
+              }
+            },
+            "src": [
+              "main/ui@0.5x.webp.json",
+              "main/ui@0.5x.png.json",
+              "main/ui.webp.json",
+              "main/ui.png.json"
+            ]
+          }
+        ],
+        "name": "main"
+      },
+      {
+        "assets": [
+          {
+            "alias": [
+              "preload/logo.svg",
+              "logo.svg"
+            ],
+            "data": {
+              "tags": {
+                "m": true
+              }
+            },
+            "src": [
+              "preload/logo.svg"
+            ]
+          }
+        ],
+        "name": "preload"
+      }
+    ]
+  },
+  "files": [
+    {
+      "bytes": 12260,
+      "path": "BitmapFont-H-rnPb1W.js",
+      "sha256": "f6c61a0a4d562ef9c2123b128799c0dcd66b62f9da8522443dff9fdca086c7fc"
+    },
+    {
+      "bytes": 39731,
+      "path": "browserAll-CXxbMOKx.js",
+      "sha256": "33c3911a604d71e9452af1d6bcfb631ff8cf0c9bba1b5064796e4e6fb6020ec4"
+    },
+    {
+      "bytes": 10611,
+      "path": "BufferResource-C6AxxXtV.js",
+      "sha256": "35eebe55c6bcb16c5421abcd620d7718191ba2399204cebb367ba70558744867"
+    },
+    {
+      "bytes": 17614,
+      "path": "CanvasRenderer-DKHBm5iz.js",
+      "sha256": "36664fb8143784df5f1cf3c537f9e3f6d49f560b945395dc441ae990dd1ee511"
+    },
+    {
+      "bytes": 518540,
+      "path": "index-CvmHa5sG.js",
+      "sha256": "f14bd9e95939659d8105f1b8c6d7032696a6f283e82217b4de86fc8da51079f7"
+    },
+    {
+      "bytes": 7683,
+      "path": "main/logo-white.svg",
+      "sha256": "86e51d08826477b1857224579a83f8f12dfe6283f2842a1966cc9e8784d570fb"
+    },
+    {
+      "bytes": 972360,
+      "path": "main/sounds/bgm-main.mp3",
+      "sha256": "c71aa48eb594b00c164c46e4823ff1dab1e1e1942c312bc9bfb6dca56f05ac3e"
+    },
+    {
+      "bytes": 325167,
+      "path": "main/sounds/bgm-main.ogg",
+      "sha256": "812747a608996adf5d0f33e337fba192cd242e8cc64b2b02ad3e016bd8007125"
+    },
+    {
+      "bytes": 6636,
+      "path": "main/sounds/sfx-hover.mp3",
+      "sha256": "68ca9b9e9f620f9f70e2cb1db68dbe186ff5edd9877782562a431364dd9e4881"
+    },
+    {
+      "bytes": 4622,
+      "path": "main/sounds/sfx-hover.ogg",
+      "sha256": "81614d2809cd4ba963ac01926a16732413ad6458b310af7cdbebbcffddd4c6ad"
+    },
+    {
+      "bytes": 2892,
+      "path": "main/sounds/sfx-press.mp3",
+      "sha256": "592e973cce7b7fadbf66384735af7c5f93bb244a50dcbf851e67ad868a0f3141"
+    },
+    {
+      "bytes": 4204,
+      "path": "main/sounds/sfx-press.ogg",
+      "sha256": "ad0ff0b83c352c2c32479457c8b098f741e062c0f17344930178d8c63cfad832"
+    },
+    {
+      "bytes": 2685,
+      "path": "main/ui.png",
+      "sha256": "634190a722aa16d874cc6ae804b5ed7f9e0cbb594a308fb173903058d02ab7be"
+    },
+    {
+      "bytes": 868,
+      "path": "main/ui.png.json",
+      "sha256": "0699cc939f8cade072bc4e7be211e5b9f44dd67ccee3baa7d43519b3ca62d8bd"
+    },
+    {
+      "bytes": 4980,
+      "path": "main/ui.webp",
+      "sha256": "519c240ad1d79cba58ccb770156d77db6e42b29daf2041b4ce216cd87ec45c1e"
+    },
+    {
+      "bytes": 869,
+      "path": "main/ui.webp.json",
+      "sha256": "cac446584ee607ad09e0969ab7d36fe10c2c206cca13ab5afa14a9e315d337d2"
+    },
+    {
+      "bytes": 1913,
+      "path": "main/ui@0.5x.png",
+      "sha256": "9680cddbfd696163961b120aaa1d87de858b2895764d3d1e5a48e9c9730f4333"
+    },
+    {
+      "bytes": 869,
+      "path": "main/ui@0.5x.png.json",
+      "sha256": "310d1d02a782185f95922f12f7d99f2e1e7958daaf8e80e59d6317405a581b48"
+    },
+    {
+      "bytes": 2338,
+      "path": "main/ui@0.5x.webp",
+      "sha256": "7d0ad08bfba96a9eefa7384a8268cd8ecf24962f4a83482c6639e0d27fbd3f0b"
+    },
+    {
+      "bytes": 870,
+      "path": "main/ui@0.5x.webp.json",
+      "sha256": "9b055b57f73177540a2b72c8a721a16840e332779a9ecd680c4023790887fbcf"
+    },
+    {
+      "bytes": 7683,
+      "path": "preload/logo.svg",
+      "sha256": "c5422297ebc1d636485c9619c0b8b5d515102db334433d513582cd74def9a131"
+    },
+    {
+      "bytes": 45867,
+      "path": "RenderTargetSystem-BEVNWhpo.js",
+      "sha256": "7515a696e63f8bf89c198155e7875331416e71eada406a597a06987c23f9ed4b"
+    },
+    {
+      "bytes": 68569,
+      "path": "WebGLRenderer-GEoWnDqd.js",
+      "sha256": "260a9e20fff9cb382dc69dde07ee4613ef7c80cc6447f6cf55895d2a78432f60"
+    },
+    {
+      "bytes": 38343,
+      "path": "WebGPURenderer-L4uCDzs0.js",
+      "sha256": "4dfb001eff4b890dac2a19ed50166e5e2a6073db030b710fddbdb2f350aa2a11"
+    },
+    {
+      "bytes": 11945,
+      "path": "webworkerAll-Cmu3OZUd.js",
+      "sha256": "7f3e12115ecf373c02b3a135d2a7e4471fbb02db5db213a8ef346d1323b6dbbf"
+    }
+  ],
+  "runtimeAssetRoot": "dist/assets",
+  "source": {
+    "path": "games/premium-slot/src/manifest.json",
+    "sha256": "262e9148b5e67eb66af733822bf1f82d71e605ca0f6f0cd447c929f96f5cf109"
+  }
+}

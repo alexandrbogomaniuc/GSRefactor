@@ -1,0 +1,18 @@
+{
+  "artifacts": {
+    "assetManifest": "artifacts/asset.manifest.json",
+    "canaryChecklist": "CANARY_CHECKLIST.md",
+    "checksums": "checksums.sha256.json",
+    "clientBundleManifest": "artifacts/client-bundle.manifest.json",
+    "gsCompatibility": "artifacts/gs-compatibility.json",
+    "localizationManifest": "artifacts/localization.manifest.json",
+    "mathPackageManifestReference": "artifacts/math-package.manifest-reference.json",
+    "packageVersions": "artifacts/package-versions.json",
+    "registrationPack": "GS_REGISTRATION_PACK.md",
+    "releaseMetadata": "artifacts/release-metadata.json",
+    "rollbackPack": "ROLLBACK_PACK.md",
+    "smokeChecklist": "SMOKE_TEST_CHECKLIST.md"
+  },
+  "outputDir": "games/premium-slot/release-packs/1.0.0+4abc2a03",
+  "releaseId": "1.0.0+4abc2a03"
+}

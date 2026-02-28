@@ -1,20 +1,40 @@
-# Protocol: ExtGame API
+# Protocol: GS HTTP Runtime Path (Canonical)
 
 ## Overview
-The ExtGame API provides a secondary (often HTTP-based) integration standard depending on the operator matrix. While similar to the WebSocket flow, its state transitions rely heavily on RESTful patterns and specifically defined transaction endpoints.
 
-## Core Flow and Endpoints
+This document defines the canonical production runtime path for Gamesv1 clients.
+The client interacts with GS over HTTP runtime endpoints and treats GS responses as authoritative state.
 
-### 1. `Start` / `Enter`
-- **Purpose**: Authenticates the session token and initializes the player's wallet.
-- **Payload**: Contains token, currency, and operator configuration.
-- **Returns**: The current `gameState` and active configurations. If an interrupted game exists, it returns the `lastAction` required for recovery.
+## Ownership Model
 
-### 2. `processTransaction`
-- **Purpose**: The sole endpoint responsible for executing math model logic (spins, bonuses, gambles).
-- **Idempotency**: Requests must provide a unique transaction reference (similar to `abs.gs.v1`'s `operationId`). Retries due to network failure must resubmit this exact reference.
-- **Returns**: The evaluated win lines, grid state, and updated `gameState`.
+- GS owns session, wallet, DB state, restore data, requestCounter, and idempotency decisions.
+- Browser client is presentation-only.
+- Client must never fabricate or authoritatively mutate financial/session state.
 
-### 3. `gameState` Object
-- The `gameState` serves as the absolute source of truth. The client must never infer game progression.
-- If the server explicitly requests state tracking to be echoed back on subsequent actions, the client must preserve this verbatim without manual modification.
+## Canonical Flow
+
+### 1. Init/Enter
+- Client sends launch/session token and context.
+- GS returns session + wallet snapshot + runtime config.
+- Client stores this as source state for rendering.
+
+### 2. processTransaction
+- Client sends financial action request with required idempotency key and sequencing data.
+- GS validates requestCounter/idempotency and resolves outcome.
+- GS returns updated wallet/session/game state.
+
+### 3. Restore
+- On reconnect/reload, client re-enters via HTTP init endpoint.
+- GS may return restore payload for interrupted round state.
+- Client resumes presentation from GS restore payload.
+
+## Rules
+
+1. Retry requests must preserve idempotency keys.
+2. Client must respect GS sequencing/requestCounter semantics.
+3. Client must apply GS-provided config/limits before initiating requests.
+4. Client must not derive wallet truth from local estimates.
+
+## Legacy Compatibility
+
+`abs.gs.v1` WebSocket may exist for experiments/legacy integrations, but it is not canonical production runtime.

@@ -61,6 +61,63 @@ export class ConfigManager {
         contentPath: "./locales",
         customTranslationsEnabled: false,
       },
+      capabilities: {
+        turbo: {
+          allowed: true,
+          speedId: "turbo-x2",
+          preferred: false,
+        },
+        animationPolicy: {
+          forcedSpinStopAllowed: true,
+          forcedSkipWinPresentation: true,
+          minReelSpinTimeMs: {
+            normal: 2000,
+            turbo: 1200,
+          },
+          autoplayMinDelayMs: 250,
+        },
+        sound: {
+          enabledByDefault: true,
+          showToggle: true,
+          masterVolume: 0.8,
+          bgmVolume: 0.7,
+          sfxVolume: 0.8,
+        },
+        localization: {
+          defaultLanguage: "en",
+          showMissingLocalizationError: false,
+          contentPath: "./locales",
+          customTranslationsEnabled: false,
+        },
+        spinProfiling: {
+          enabled: false,
+          payloadKey: "PRECSPINSTAT",
+        },
+        walletMessaging: {
+          delayedWalletMessages: false,
+          externalWalletMessages: false,
+        },
+        features: {
+          autoplay: true,
+          buyFeature: true,
+          buyFeatureForCashBonus: false,
+          freeSpins: true,
+          respin: false,
+          holdAndWin: false,
+          inGameHistory: true,
+          holidayMode: false,
+          customSkins: false,
+        },
+        bigWinFlow: {
+          enabled: true,
+          allowSkipPresentation: true,
+          thresholds: {
+            bigMultiplier: 10,
+            hugeMultiplier: 25,
+            megaMultiplier: 50,
+          },
+        },
+      },
       realityCheck: {
         enabled: false,
         intervalMinutes: 60,
@@ -86,6 +143,14 @@ export class ConfigManager {
     return {
       soundDefaults: {
         masterVolume: 0.75,
+      },
+      capabilities: {
+        walletMessaging: {
+          delayedWalletMessages: true,
+        },
+        spinProfiling: {
+          enabled: true,
+        },
       },
     };
   }
@@ -131,6 +196,16 @@ export class ConfigManager {
     const defaultBet = urlParams.get("defaultBet");
     if (defaultBet) {
       launchParams.defaultBet = Number(defaultBet);
+    }
+
+    const glDefaultBet = urlParams.get("GL_DEFAULT_BET");
+    if (glDefaultBet) {
+      launchParams.GL_DEFAULT_BET = Number(glDefaultBet);
+    }
+
+    const defCoin = urlParams.get("DEFCOIN");
+    if (defCoin) {
+      launchParams.DEFCOIN = Number(defCoin);
     }
 
     return launchParams;

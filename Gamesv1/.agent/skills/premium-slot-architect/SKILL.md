@@ -11,13 +11,17 @@ Design a production-grade, reusable slot game client architecture (mobile-first)
 ## Instructions
 1) Propose a folder structure with clear module boundaries:
    - engine/ (rendering, time, events, assets, audio)
-   - game/slots (reels, symbols, wins, math bridge)
+   - game/slots (reels, symbols, wins, protocol bridge)
    - themes/ (art + config only)
    - scenes/ (boot, preload, base game, bonus)
-2) Enforce a “Theme Pack” pattern: theme defines visuals + layout + timings, code is shared.
-3) Require a server-authoritative outcome interface and state restore plan.
+2) Enforce a "Theme Pack" pattern: theme defines visuals + layout + timings, code is shared.
+3) Require GS-authoritative runtime plan:
+   - canonical HTTP runtime path
+   - client presentation-only financial/state behavior
+   - restore from GS payloads only
 4) Always produce acceptance criteria for architecture changes.
 
 ## Constraints
 - Do not bake asset file paths into gameplay logic.
 - Do not mix Pixi versions or deprecated APIs.
+- Do not assume operator-specific messaging is part of canonical path.

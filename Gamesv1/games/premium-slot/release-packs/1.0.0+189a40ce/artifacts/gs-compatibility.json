@@ -1,0 +1,16 @@
+{
+  "assetManifestUrl": "https://cdn.example.com/games/premium-slot/1.0.0/manifest.json",
+  "clientEntrypointUrl": "https://cdn.example.com/games/premium-slot/1.0.0/index.html",
+  "launchTimeMathInjectionAllowed": false,
+  "localizationBaseUrl": "https://cdn.example.com/games/premium-slot/1.0.0/locales/",
+  "mathPackageReferencePath": "games/premium-slot/gs/template-params.json",
+  "requiredCapabilities": [
+    "idempotency",
+    "requestCounter",
+    "restore",
+    "wallet-authoritative-server"
+  ],
+  "runtimeTarget": "gs-http-runtime",
+  "staticAssetsFromCdn": true,
+  "websocketSupport": "legacy-experimental"
+}

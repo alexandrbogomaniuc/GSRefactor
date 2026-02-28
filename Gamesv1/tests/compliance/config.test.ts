@@ -96,6 +96,37 @@ test("logs diff entries per overriding layer", () => {
   assert.ok(defaultBetOverride);
 });
 
+test("applies legacy GL_DEFAULT_BET fallback when launch defaultBet is absent", () => {
+  const input = createInput();
+  input.launchParams = {
+    currencyCode: "USD",
+    GL_DEFAULT_BET: 275,
+  };
+
+  const { config, diffLog, warnings } = resolveConfigWithMetadata(input);
+  assert.equal(config.defaultBet, 275);
+  assert.ok(
+    diffLog.some((entry) => entry.layer === "launchParams.legacy.GL_DEFAULT_BET"),
+  );
+  assert.ok(
+    warnings.some((warning) => warning.key === "GL_DEFAULT_BET"),
+  );
+});
+
+test("surfaces unsupported config keys in warnings", () => {
+  const input = createInput() as ConfigResolverInput & {
+    launchParams: ConfigResolverInput["launchParams"] & {
+      UNKNOWN_FLAG?: boolean;
+    };
+  };
+  input.launchParams.UNKNOWN_FLAG = true;
+
+  const { warnings } = resolveConfigWithMetadata(input);
+  assert.ok(
+    warnings.some((warning) => warning.key === "UNKNOWN_FLAG"),
+  );
+});
+
 test("throws on invalid constraints", () => {
   const input = createInput();
   input.bankProperties.minBet = 6000;

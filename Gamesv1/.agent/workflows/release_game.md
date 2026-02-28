@@ -1,27 +1,31 @@
 # /release_game - Execute Production Release Workflow
 
 When triggered:
-1) Read `docs/RELEASE_PROCESS.md` fully and extract target `gameId`, environment, and version.
+1) Read `docs/RELEASE_PROCESS.md` and capture `gameId`, environment, version.
 2) Generate/check GS registration artifacts:
 ```bash
 npm run config:gen
 ```
-3) Run build + assetpack release build:
+3) Run build + production asset packaging:
 ```bash
 corepack pnpm --filter @games/<gameId> build
 corepack pnpm --filter @games/<gameId> exec vite build
 ```
-4) Produce release manifest + SQL registration artifact.
-5) Perform deployment steps (DB registration + CDN routing activation).
-6) Verify launch URLs in `guest`, `free`, and `real` modes.
-7) Validate runtime handshake sequence and reconnect expectations.
-8) Output a release summary with pass/fail for every numbered checklist item.
+4) Produce release metadata + registration SQL artifact.
+5) Perform deployment steps (GS registration + CDN/static activation).
+6) Verify launch URLs for `guest`, `free`, `real`.
+7) Validate canonical HTTP runtime behavior:
+- init/enter session load
+- transaction request/response flow
+- restore on reconnect/reload
+8) Output pass/fail release summary for every checklist item.
 
 Mandatory validation points:
-- `BET_REQUEST -> BET_ACCEPTED -> SETTLE_REQUEST -> SETTLE_ACCEPTED -> balance update`
-- Retry/idempotency uses identical `operationId`
-- Reconnect yields sync/recovery behavior (WS session sync or ExtGame state echo)
+- Idempotency keys stable across retries
+- requestCounter/sequencing respected
+- Client treats GS wallet/session as authoritative
+- Artifact versions match (`CDN`, `manifest`, `SQL`, `DB`)
 
 Acceptance:
-- Every checklist item in `docs/RELEASE_PROCESS.md` is marked pass/fail with evidence.
-- Artifacts exist and map to the same version (`CDN`, `manifest`, `SQL`, `DB`).
+- Every `docs/RELEASE_PROCESS.md` checklist item has evidence.
+- Release artifacts map to the same version and git SHA.

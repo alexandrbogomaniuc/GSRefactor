@@ -1,4 +1,4 @@
-export * from "./FeatureFlags";
+export * from "./FeatureFlags.ts";
 export {
   type BankProperties,
   type ConfigurationLayer,
@@ -6,5 +6,6 @@ export {
   DefaultBankProperties,
   assertCompliance,
   resolveConfig as resolveComplianceConfig,
-} from "./ComplianceConfig";
-export * from "./RuntimeConfig";
+} from "./ComplianceConfig.ts";
+export * from "./RuntimeConfig.ts";
+export * from "./animation/index.ts";

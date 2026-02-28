@@ -1,0 +1,14 @@
+{
+  "createdAt": "2026-02-28T08:41:23Z",
+  "deterministicSource": "git-commit-date",
+  "gameId": "premium-slot",
+  "gameName": "TemplateSlot",
+  "gitSha": "4abc2a035760b102abe41dcfa62ebb02c2ed36b3",
+  "packagingRules": {
+    "launchTimeMathInjectionAllowed": false,
+    "noSecretsInArtifacts": true,
+    "staticAndMathArtifactsSeparated": true
+  },
+  "releaseId": "1.0.0+4abc2a03",
+  "version": "1.0.0"
+}

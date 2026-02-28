@@ -1,27 +1,28 @@
 # Docs Map
 
-Index of canonical and archived documentation.
+Index of canonical and archived/deprecated documentation.
 
 ## Canonical Docs
 
-- `docs/MasterContext.md`: single canonical project context and boundaries.
-- `docs/RELEASE_PROCESS.md`: release manager and agent release checklist.
-- `docs/CONFIG_SYSTEM.md`: runtime config layering and generation flow.
-- `docs/LOCALIZATION.md`: translation architecture and validation rules.
+- `docs/MasterContext.md`: canonical architecture context and runtime ownership.
+- `docs/PROJECT.md`: project charter and target architecture.
+- `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`: client capability/behavior spec.
+- `docs/RELEASE_PROCESS.md`: release packaging and deployment checklist.
+- `docs/RELEASE_ARTIFACTS.md`: deterministic release-pack artifact contract.
+- `docs/GS_REGISTRATION_ARTIFACTS.md`: GS Ops registration/enable/rollback artifact usage.
+- `docs/CONFIG_SYSTEM.md`: config layering and runtime resolution.
+- `docs/LOCALIZATION.md`: localization architecture and validation.
 - `docs/ART_AND_PROMO_PIPELINE.md`: art deliverables, export specs, quality gates.
-- `docs/ASSET_MANIFEST_SPEC.md`: per-game art manifest schema and validation rules.
-- `docs/protocol/abs-gs-v1.md`: websocket protocol expectations.
-- `docs/protocol/extgame.md`: extgame HTTP transport behavior.
-- `docs/protocol/spin-profiling.md`: spin profiling contract.
-- `docs/compliance/client-requirements-checklist.md`: compliance checklist.
-- `docs/compliance/config-resolution.md`: config resolution behavior.
-- `docs/game/round-lifecycle.md`: round lifecycle reference.
-- `docs/qa/AAA_quality_gate.md`: QA quality gate.
-- `docs/qa/bug-template.md`: bug report template.
+- `docs/ASSET_MANIFEST_SPEC.md`: per-game art manifest schema.
+- `docs/protocol/extgame.md`: canonical GS HTTP runtime transport path.
+
+## Deprecated (Still Present)
+
+- `docs/protocol/abs-gs-v1.md`: legacy/experimental only; not canonical production path.
 
 ## Archived Docs
 
-All archived/outdated guides are under `docs/_archive/` and include a warning header.
+All archived docs are in `docs/_archive/` and include a warning header.
 
 Current archived set:
 - `docs/_archive/ActivityLog.md`
@@ -43,8 +44,8 @@ Current archived set:
 
 ## How To Update Docs Without Causing Contradictions
 
-Short rule:
-1. Edit `docs/MasterContext.md` first when a rule or boundary changes.
-2. Update only the affected canonical guide(s) in this map.
-3. If an old guide conflicts, move it to `docs/_archive/` and prepend the archive warning header.
-4. Do not keep duplicate guidance in both `.agent/context.md` and docs; `.agent/context.md` must point to `docs/MasterContext.md`.
+1. Update `docs/MasterContext.md` first for architecture decisions.
+2. Update only impacted canonical docs listed above.
+3. If a doc is superseded, move it to `docs/_archive/` with warning header.
+4. If a doc is legacy but intentionally kept, mark it "Deprecated" in this map.
+5. `.agent` rules/workflows must mirror canonical docs; they must not introduce alternate architecture truth.

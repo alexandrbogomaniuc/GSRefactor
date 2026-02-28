@@ -1,40 +1,55 @@
 # MasterContext
 
-This is the single canonical project context for Gamesv1.
-If any other guide conflicts with this file, `docs/MasterContext.md` wins.
+This is the canonical architecture context for Gamesv1.
+If any other doc conflicts, this file wins.
 
-## Project Scope
+## Program Goal
 
-Gamesv1 is a monorepo for compliance-ready slot clients.
+Gamesv1 is the best-in-class GS slot client shell + release-packaging environment.
 
-Primary goals:
-1. Keep one reference game (`games/premium-slot`) as the quality baseline.
-2. Keep shared logic in `packages/*` with strict boundaries.
-3. Keep protocol/compliance/operator behavior centralized and testable.
+## Canonical Runtime Target
 
-## Canonical Structure
+- Canonical runtime path is GS HTTP runtime transport.
+- Browser client is presentation-only and must not own financial/state truth.
+- GS is the source of truth for:
+  - session
+  - wallet
+  - DB state
+  - restore/recovery state
+  - requestCounter sequencing
+  - idempotency decisions
 
-- `packages/core-protocol`: network transport abstractions and schemas.
-- `packages/core-compliance`: runtime config layering, compliance logic, animation/timing policy.
-- `packages/operator-pariplay`: all operator frame `postMessage` integration.
-- `packages/pixi-engine`: app bootstrap, navigation, resize, layout manager, asset loading.
-- `packages/ui-kit`: shared gameplay UI and HUD components.
+## Transport Policy
+
+- HTTP runtime is primary and required for production path.
+- `abs.gs.v1` WebSocket is legacy/experimental only.
+- Game modules must consume transport via `@gamesv1/core-protocol` abstractions.
+
+## Asset/Release Policy
+
+- Runtime assets are loaded from CDN/static origin.
+- Gamesv1 produces versioned release artifacts for GS registration and rollout.
+
+## Scope Guardrails
+
+- Ignore Pariplay/operator-specific messaging in canonical architecture.
+- Multiplayer is out of scope.
+- No core doc should imply the client or any public game server owns DB/session/wallet state.
+
+## Package Responsibilities
+
+- `packages/core-protocol`: GS HTTP runtime client, transport interfaces, schemas.
+- `packages/core-compliance`: config layering + compliance/timing behavior.
+- `packages/pixi-engine`: rendering/runtime shell and asset bootstrap.
+- `packages/ui-kit`: shared slot UI/HUD primitives.
 - `games/premium-slot`: reference implementation.
 
-## Non-Negotiable Boundaries
+## Source Of Truth Map
 
-1. Game code must not call `WebSocket` directly.
-2. Game code must not call `window.postMessage` directly.
-3. Game logic must not hardcode runtime asset paths; use manifest/bundle aliases.
-4. Runtime behavior is server-authoritative for monetary outcomes.
+See `docs/DOCS_MAP.md`.
 
-## Source-of-Truth Docs
+## Update Rule
 
-See `docs/DOCS_MAP.md` for canonical and archived documentation.
-
-## Update Policy
-
-When changing architecture or process rules:
-1. Update this file first.
-2. Update the specific canonical guide.
-3. Archive or fix any contradictory guide in `docs/_archive`.
+1. Update this file first for any architecture decision.
+2. Update affected canonical docs.
+3. Archive or mark deprecated any contradictory document.

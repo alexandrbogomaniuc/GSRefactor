@@ -1,29 +1,32 @@
-# Operator Integrations & Client Compliance
+# Client Requirements Checklist (Canonical)
 
-Before a slot game client is deemed production-ready, it must strictly adhere to the following checklist. Compliance features take priority over game-specific aesthetics.
+Use this checklist together with `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`.
 
----
+## 1. Financial/State Ownership
 
-## Technical & Regulatory Checklist
+- [ ] Client treats GS as source of truth for wallet/session/restore state.
+- [ ] Client does not own or persist authoritative financial state.
+- [ ] Idempotency keys are stable across retries.
+- [ ] requestCounter/ordering requirements from GS are respected.
 
-### [ ] 1. Bank Properties & Formats
-- [ ] Display currency strings according to locale and `fractionDigits` settings provided by the `Enter` configuration (e.g. `1,234.56 USD` vs `1 234,56 €`).
-- [ ] Validate max bet constraints dynamically.
+## 2. Runtime Compliance
 
-### [ ] 2. `minSpinTime` Enforcement
-- [ ] Ensure that spins artificially delay rendering loop evaluations if the spin time elapsed is lower than `minSpinTime` (often 2500ms or 3000ms in specific jurisdictions).
-- [ ] Ensure that stopping reels early does not complete the cycle before `minSpinTime`.
+- [ ] `minSpinTime` policy is enforced.
+- [ ] turbo/autoplay behavior respects resolved runtime config.
+- [ ] currency formatting/truncation follows resolved config.
 
-### [ ] 3. Turboplay / Autoplay Hooks
-- [ ] Implement toggleable turboplay that overrides visual timings but still honors server-sent `minSpinTime` metrics.
-- [ ] Autoplay loops **must pause** on connection timeouts and wait indefinitely for a user-acknowledgement before resuming auto-spins.
+## 3. Transport Behavior
 
-### [ ] 4. Telemetry: `postMessage` Integration
-- [ ] Operator iFrames / outer wrappers expect `postMessage` payloads.
-- [ ] Fire `SessionReady` upon full client loading.
-- [ ] Fire `BalanceUpdate` immediately after wins are locally settled.
-- [ ] Escalate `SessionError` payloads if unrecoverable disconnects occur, triggering external modal UI.
+- [ ] Canonical runtime path uses GS HTTP init + transaction flow.
+- [ ] reconnect/reload path resumes using GS restore payload.
+- [ ] WebSocket-specific behavior is not required for production readiness.
 
-### [ ] 5. Spin Profiling
-- [ ] Measure exact time elapsed from emitting a Spin Request (via `operationId`) to the exact local execution of the results.
-- [ ] Provide dev-mode overlays capturing FPS and performance allocations.
+## 4. Packaging and Assets
+
+- [ ] Assets load through manifest bundles from CDN/static origin.
+- [ ] No hardcoded runtime asset paths in gameplay logic.
+
+## 5. Observability and Safety
+
+- [ ] Spin profiling/telemetry hooks are wired where required.
+- [ ] No secrets/tokens are exposed in production logs.

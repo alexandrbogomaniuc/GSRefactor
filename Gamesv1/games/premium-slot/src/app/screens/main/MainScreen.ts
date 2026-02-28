@@ -169,15 +169,25 @@ export class MainScreen extends Container {
     this.uiLayer.addChild(this.statusText);
 
     const params = new URLSearchParams(window.location.search);
+    const capabilityMatrix = runtimeConfig.capabilities;
+    const capabilityFeatures = capabilityMatrix.features;
+
     const featureVisibility = {
       spin: params.get("spin") !== "0",
       turbo:
-        this.animationPolicy.value.turbo.allowed &&
+        capabilityMatrix.turbo.allowed &&
         params.get("turbo") !== "0",
-      autoplay: params.get("autoplay") !== "0",
-      buybonus: params.get("buybonus") !== "0",
+      autoplay:
+        capabilityFeatures.autoplay &&
+        params.get("autoplay") !== "0",
+      buybonus:
+        (capabilityFeatures.buyFeature ||
+          capabilityFeatures.buyFeatureForCashBonus) &&
+        params.get("buybonus") !== "0",
       pause: params.get("pause") !== "0",
-      settings: params.get("settings") !== "0",
+      settings:
+        capabilityMatrix.sound.showToggle &&
+        params.get("settings") !== "0",
     };
 
     this.hudLayout = new ResponsiveHudLayoutController([

@@ -1,3 +1,3 @@
-export * from "./config/RuntimeConfigSchema";
-export * from "./config/ConfigResolver";
-export * from "./animation";
+export * from "./ResolvedRuntimeConfig.ts";
+export * from "./ConfigResolver.ts";
+export * from "./CapabilityMatrix.ts";
