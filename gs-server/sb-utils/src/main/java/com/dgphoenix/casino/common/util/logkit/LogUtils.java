@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.common.util.logkit;
 
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.string.StringBuilderWriter;
+import com.abs.casino.common.util.string.StringBuilderWriter;
 
 import java.io.PrintWriter;
 

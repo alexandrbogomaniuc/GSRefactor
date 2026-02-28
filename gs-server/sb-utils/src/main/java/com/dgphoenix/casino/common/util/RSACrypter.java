@@ -1,7 +1,7 @@
 package com.abs.casino.common.util;
 
 
-import com.dgphoenix.casino.common.util.string.HexStringConverter;
+import com.abs.casino.common.util.string.HexStringConverter;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 
 import java.math.BigInteger;

@@ -1,0 +1,10 @@
+com.dgphoenix.casino.common.util.GameTools -> com.abs.casino.common.util.GameTools
+com.dgphoenix.casino.common.util.NumberUtils -> com.abs.casino.common.util.NumberUtils
+com.dgphoenix.casino.common.util.ConcurrentHashSet -> com.abs.casino.common.util.ConcurrentHashSet
+com.dgphoenix.casino.common.util.ITimeProvider -> com.abs.casino.common.util.ITimeProvider
+com.dgphoenix.casino.gs.managers.payment.wallet.CWError -> com.abs.casino.gs.managers.payment.wallet.CWError
+com.dgphoenix.casino.common.util.string.StringBuilderWriter -> com.abs.casino.common.util.string.StringBuilderWriter
+com.dgphoenix.casino.common.util.string.HexStringConverter -> com.abs.casino.common.util.string.HexStringConverter
+com.dgphoenix.casino.common.transport.ITransportObject -> com.abs.casino.common.transport.ITransportObject
+com.dgphoenix.casino.common.transport.InboundObject -> com.abs.casino.common.transport.InboundObject
+com.dgphoenix.casino.common.transport.TInboundObject -> com.abs.casino.common.transport.TInboundObject

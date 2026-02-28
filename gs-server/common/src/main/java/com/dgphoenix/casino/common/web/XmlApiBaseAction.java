@@ -2,7 +2,7 @@ package com.abs.casino.common.web;
 
 import com.abs.casino.common.exception.XmlWriterException;
 import com.abs.casino.common.web.BaseAction;
-import com.dgphoenix.casino.common.util.string.StringBuilderWriter;
+import com.abs.casino.common.util.string.StringBuilderWriter;
 import com.dgphoenix.casino.common.util.xml.xmlwriter.XmlWriter;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;

@@ -1,7 +1,7 @@
 package com.abs.casino.gs.singlegames.tools.util;
 
 import com.abs.casino.common.exception.GameException;
-import com.dgphoenix.casino.common.util.GameTools;
+import com.abs.casino.common.util.GameTools;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import org.apache.log4j.Logger;
 

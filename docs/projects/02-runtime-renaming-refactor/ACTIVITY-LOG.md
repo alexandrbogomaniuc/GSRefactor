@@ -4066,3 +4066,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Outcome:
   - declaration migrations retained: `12`; bounded rewires/regressions: `0`.
   - global tracked source declarations/files now `444` remaining (`2277` baseline, `1833` reduced, `80.500659%` burndown).
+
+## 2026-02-28 13:36 UTC (Hard-Cut M2 Wave 300 + 301)
+- Continued hard-cut execution from W299 with declaration-first overlap-safe `sb-utils` util/string/transport low-fanout batch.
+  - `W300`: retained `5` declaration migrations (`GameTools`, `NumberUtils`, `ConcurrentHashSet`, `StringBuilderWriter`, `HexStringConverter`).
+  - `W301`: retained `3` declaration migrations (`ITransportObject`, `InboundObject`, `TInboundObject`).
+  - deferred from initial target due mixed-type boundary drift: `ITimeProvider`, `CWError`.
+- Parallel execution target remained `1 explorer + 2 workers + main`, but subagent spawning stayed thread-limited (`agent thread limit reached`) for explorer/worker/awaiter; strict ownership-safe fallback executed on main.
+- Stabilization/validation highlights:
+  - rerun1 failed at `STEP02` in `common-wallet` due `CWError` mixed-type drift (`com.dgphoenix` vs `com.abs`); resolved by bounded rollback/defer of `CWError` move.
+  - rerun2 failed at `STEP06` in `common-gs` due `ITimeProvider` boundary incompatibility (`NtpTimeProvider` type mismatch); resolved by bounded rollback/defer of `ITimeProvider` move.
+  - rerun3 applied bounded transport compatibility imports (`TInboundObject` -> unmoved `TObject`, `TObject` -> moved `ITransportObject`) and reached canonical profile:
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260228-132457-hardcut-m2-wave300-wave301-util-transport-leaf/`
+  - report: `docs/projects/02-runtime-renaming-refactor/211-hard-cut-m2-wave300-wave301-parallel-batches-report-20260228.md`
+- Outcome:
+  - declaration migrations retained: `8`; bounded rewires/regressions: `0`.
+  - global tracked source declarations/files now `436` remaining (`2277` baseline, `1841` reduced, `80.851998%` burndown).

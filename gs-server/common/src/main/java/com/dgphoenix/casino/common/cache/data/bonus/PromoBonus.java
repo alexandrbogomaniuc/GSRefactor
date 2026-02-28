@@ -1,7 +1,7 @@
 package com.dgphoenix.casino.common.cache.data.bonus;
 
 import com.dgphoenix.casino.common.cache.VersionedDistributedCacheEntry;
-import com.dgphoenix.casino.common.util.ConcurrentHashSet;
+import com.abs.casino.common.util.ConcurrentHashSet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -8890,3 +8890,24 @@
   - baseline `2277`, reduced `1833`, remaining `444`, burndown `80.500659%`
   - Project 02 `48.521990%`, Core `74.260995%`, Portfolio `87.130498%`
   - ETA `18.1h` (`2.26` workdays)
+
+### 2026-02-28 13:36 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed `W300 + W301`.
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `8` (`GameTools`, `NumberUtils`, `ConcurrentHashSet`, `StringBuilderWriter`, `HexStringConverter`, `ITransportObject`, `InboundObject`, `TInboundObject`).
+  - deferred from initial target due mixed-type boundary drift: `ITimeProvider`, `CWError`.
+  - bounded rewires/stabilization regressions (`com.abs -> com.dgphoenix`): `0`.
+- Stabilization/validation highlights:
+  - subagent parallel target remained constrained by thread limit; ownership-safe execution continued on main.
+  - rerun1 failed at `STEP02` due `CWError` mixed-type drift in `common-wallet`; fixed by bounded rollback/defer of `CWError`.
+  - rerun2 failed at `STEP06` due `ITimeProvider` boundary incompatibility in `common-gs`; fixed by bounded rollback/defer of `ITimeProvider`.
+  - rerun3 reached canonical profile with bounded transport compatibility imports (`TInboundObject` imports unmoved `TObject`; `TObject` imports moved `ITransportObject`):
+    - fast gate batchA/batchB: `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`)
+    - full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL` (`rc=2`), retry1 `rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-132457-hardcut-m2-wave300-wave301-util-transport-leaf/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/211-hard-cut-m2-wave300-wave301-parallel-batches-report-20260228.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `1841`, remaining `436`, burndown `80.851998%`
+  - Project 02 `48.630235%`, Core `74.315117%`, Portfolio `87.157559%`
+  - ETA `17.8h` (`2.22` workdays)

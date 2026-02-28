@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
 import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.web.IGameSocketClient;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.ConcurrentHashSet;
+import com.abs.casino.common.util.ConcurrentHashSet;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;

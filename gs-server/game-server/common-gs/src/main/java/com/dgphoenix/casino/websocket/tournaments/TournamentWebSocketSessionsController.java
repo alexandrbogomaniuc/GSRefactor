@@ -1,7 +1,7 @@
 package com.abs.casino.websocket.tournaments;
 
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
-import com.dgphoenix.casino.common.transport.ITransportObject;
+import com.abs.casino.common.transport.ITransportObject;
 import com.dgphoenix.casino.common.transport.TObject;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;
 import com.dgphoenix.casino.common.util.string.StringUtils;

@@ -1,6 +1,6 @@
 package com.abs.casino.websocket.tournaments;
 
-import com.dgphoenix.casino.common.transport.ITransportObject;
+import com.abs.casino.common.transport.ITransportObject;
 import org.eclipse.jetty.websocket.api.Session;
 
 public interface ISocketClient extends Session {

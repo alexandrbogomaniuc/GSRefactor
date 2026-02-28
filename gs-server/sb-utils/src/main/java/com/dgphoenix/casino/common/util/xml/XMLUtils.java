@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.xml;
 
-import com.dgphoenix.casino.common.util.string.StringBuilderWriter;
+import com.abs.casino.common.util.string.StringBuilderWriter;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.HierarchicalStreamDriver;
 import com.thoughtworks.xstream.io.xml.CompactWriter;

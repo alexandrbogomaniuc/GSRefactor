@@ -3,7 +3,7 @@ package com.abs.casino.promo.tournaments.handlers;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
-import com.dgphoenix.casino.common.transport.ITransportObject;
+import com.abs.casino.common.transport.ITransportObject;
 import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 import com.dgphoenix.casino.gs.socket.mq.TournamentBuyInHelper;
 import com.abs.casino.promo.PlayerAliasManager;

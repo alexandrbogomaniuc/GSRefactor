@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.transport;
 
+import com.abs.casino.common.transport.ITransportObject;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

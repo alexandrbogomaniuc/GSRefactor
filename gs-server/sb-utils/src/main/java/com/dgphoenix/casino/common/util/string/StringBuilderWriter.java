@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.string;
+package com.abs.casino.common.util.string;
 
 import java.io.Serializable;
 import java.io.Writer;

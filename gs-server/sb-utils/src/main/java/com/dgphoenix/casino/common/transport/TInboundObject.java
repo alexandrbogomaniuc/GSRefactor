@@ -1,4 +1,6 @@
-package com.dgphoenix.casino.common.transport;
+package com.abs.casino.common.transport;
+
+import com.dgphoenix.casino.common.transport.TObject;
 
 /**
  * User: flsh

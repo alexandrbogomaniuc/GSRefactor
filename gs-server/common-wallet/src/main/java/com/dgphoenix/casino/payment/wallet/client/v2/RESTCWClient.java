@@ -11,7 +11,7 @@ import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.WalletException;
 import com.dgphoenix.casino.common.promo.PromoWinInfo;
 import com.dgphoenix.casino.common.util.CollectionUtils;
-import com.dgphoenix.casino.common.util.NumberUtils;
+import com.abs.casino.common.util.NumberUtils;
 import com.abs.casino.common.util.property.PropertyUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.web.HttpClientConnection;

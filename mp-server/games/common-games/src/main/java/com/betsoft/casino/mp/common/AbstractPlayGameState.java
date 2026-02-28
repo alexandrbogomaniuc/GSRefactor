@@ -9,7 +9,7 @@ import com.betsoft.casino.teststand.TestStandLocal;
 import com.betsoft.casino.utils.ITransportObject;
 import com.betsoft.casino.utils.InboundObject;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.ConcurrentHashSet;
+import com.abs.casino.common.util.ConcurrentHashSet;
 import com.dgphoenix.casino.common.util.RNG;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.esotericsoftware.kryo.Kryo;
