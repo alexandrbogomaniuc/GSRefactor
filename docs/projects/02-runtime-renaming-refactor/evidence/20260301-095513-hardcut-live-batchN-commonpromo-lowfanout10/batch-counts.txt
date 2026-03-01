@@ -1,0 +1,4 @@
+intended=10
+retained=10
+deferred=0
+not_applicable=0

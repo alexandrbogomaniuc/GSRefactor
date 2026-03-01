@@ -1,0 +1,10 @@
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/MqEndRoundEvent.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/MaxPerformanceEventQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IMaterialPrize.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IParticipantEventQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrizeQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/EnterType.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IParticipantEvent.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/RankPrize.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/LocalizationTitles.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoType.java

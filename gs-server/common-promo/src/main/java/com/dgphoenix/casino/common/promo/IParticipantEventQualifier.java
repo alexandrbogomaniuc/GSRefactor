@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.promo;
+package com.abs.casino.common.promo;
 import com.abs.casino.common.promo.*;
 
 /**
