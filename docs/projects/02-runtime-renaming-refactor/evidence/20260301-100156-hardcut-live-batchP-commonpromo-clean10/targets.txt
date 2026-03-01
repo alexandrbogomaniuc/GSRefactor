@@ -1,0 +1,10 @@
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PrizeStatus.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPromoTemplate.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AwardedPrize.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoNotificationType.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrize.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/MaxBalanceTournamentPlayerDetails.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignManager.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentObjective.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SignificantEventType.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentMemberRank.java

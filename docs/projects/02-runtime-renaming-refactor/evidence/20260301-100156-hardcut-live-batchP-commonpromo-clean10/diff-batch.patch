@@ -1,0 +1,100 @@
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AwardedPrize.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AwardedPrize.java
+index db941554e..edd7830f5 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AwardedPrize.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AwardedPrize.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ import com.dgphoenix.casino.common.cache.Identifiable;
+ import com.abs.casino.common.cache.JsonSelfSerializable;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrize.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrize.java
+index cbc4e7bf3..99e31333c 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrize.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrize.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ import com.dgphoenix.casino.common.cache.Identifiable;
+ import com.abs.casino.common.currency.ICurrencyRateManager;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignManager.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignManager.java
+index c1a47633c..d0207eb1a 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignManager.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignManager.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ import com.abs.casino.common.promo.*;
+ 
+ import com.abs.casino.common.promo.INetworkPromoCampaign;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/MaxBalanceTournamentPlayerDetails.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/MaxBalanceTournamentPlayerDetails.java
+index b71bc65fc..92f6d1d80 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/MaxBalanceTournamentPlayerDetails.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/MaxBalanceTournamentPlayerDetails.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PrizeStatus.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PrizeStatus.java
+index 1941ec43e..1905258a9 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PrizeStatus.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PrizeStatus.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ /**
+  * User: flsh
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoNotificationType.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoNotificationType.java
+index 9c92be312..1102318a1 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoNotificationType.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoNotificationType.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ /**
+  * Created by vladislav on 4/4/17.
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SignificantEventType.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SignificantEventType.java
+index 304f05140..a96836457 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SignificantEventType.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SignificantEventType.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ /**
+  * User: flsh
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentMemberRank.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentMemberRank.java
+index a31486790..fdb31df62 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentMemberRank.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentMemberRank.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentObjective.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentObjective.java
+index 33dbe6315..d0f4d1adb 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentObjective.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentObjective.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ import com.abs.casino.common.currency.ICurrencyRateManager;
+ import com.abs.casino.common.currency.IHistoricalCurrencyRateManager;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPromoTemplate.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPromoTemplate.java
+index 8bc18be93..6a24a6d3d 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPromoTemplate.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPromoTemplate.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ import com.abs.casino.common.currency.ICurrencyRateManager;
+ import com.dgphoenix.casino.common.exception.CommonException;
