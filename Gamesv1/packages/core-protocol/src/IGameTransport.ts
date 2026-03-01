@@ -34,11 +34,17 @@ export interface RequestMetadata {
 }
 
 export interface BootstrapRequest {
-  sessionId?: string;
+  sessionId: string;
+  gameId?: number;
+  bankId?: number;
+  playerId?: string;
+  language?: string;
+  launchParams?: Record<string, unknown>;
 }
 
 export interface OpenGameRequest {
   sessionId: string;
+  requestCounter?: number;
   bankId?: number;
   playerId?: string;
   gameId?: number;
@@ -51,17 +57,23 @@ export interface OpenGameResponse {
   sessionId: string;
   balance: number;
   requestCounter: number;
+  currencyCode?: string;
   minBet?: number;
   maxBet?: number;
   currentStateVersion?: string;
   unresolvedRoundState?: unknown;
   presentationPayload?: unknown;
   runtimeConfig?: Record<string, unknown>;
+  capabilities?: Record<string, unknown>;
+  wallet?: Record<string, unknown>;
+  session?: Record<string, unknown>;
+  restore?: Record<string, unknown>;
 }
 
 export interface PlayRoundRequest {
   betAmount: number;
   betType: string;
+  roundInput?: Record<string, unknown>;
   metadata?: RequestMetadata;
 }
 
@@ -72,8 +84,7 @@ export interface PlayRoundResponse {
   requestCounter: number;
   currentStateVersion?: string;
   presentationPayload?: unknown;
-  rawPlaceBet: unknown;
-  rawCollect: unknown;
+  raw: unknown;
 }
 
 export interface FeatureActionRequest {
@@ -118,7 +129,7 @@ export interface IGameTransport {
   featureAction(request: FeatureActionRequest): Promise<FeatureActionResponse>;
   resumeGame(request?: ResumeGameRequest): Promise<OpenGameResponse>;
   closeGame(request?: CloseGameRequest): Promise<void>;
-  readHistory(request?: HistoryRequest): Promise<HistoryResponse>;
+  getHistory(request?: HistoryRequest): Promise<HistoryResponse>;
   disconnect(): void;
   on(event: TransportEvent, callback: (...args: any[]) => void): void;
 

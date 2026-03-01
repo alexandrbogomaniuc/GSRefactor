@@ -1,63 +1,65 @@
-# MasterContext
+﻿# MasterContext
 
-This is the canonical architecture context for Gamesv1.
-If any other doc conflicts, this file wins.
+Canonical architecture context for Gamesv1.
+If any document conflicts with this file and `docs/gs/*`, those sources win.
 
 ## Program Goal
 
-Gamesv1 is the best-in-class GS slot client shell + release-packaging environment.
+Gamesv1 is the best-in-class GS slot browser client shell and release-packaging environment.
 
-## Canonical Runtime Target
+## Locked Runtime Target
 
-- Canonical runtime path is GS HTTP runtime transport.
-- Browser client is presentation-only and must not own financial/state truth.
-- GS is the source of truth for:
-  - session
-  - wallet
-  - DB state
-  - restore/recovery state
-  - requestCounter sequencing
-  - idempotency decisions
+1. Canonical runtime transport is GS HTTP slot-browser-v1.
+2. Browser talks only to GS public runtime endpoints.
+3. Internal slot-engine host is private/internal only.
+4. Browser is presentation-only for financial/session state truth.
+5. Static assets are loaded from CDN/static origin.
+6. Gamesv1 outputs versioned release artifacts for GS registration.
 
-## Transport Policy
+## GS Authority Boundaries
 
-- HTTP runtime is primary and required for production path.
-- `abs.gs.v1` WebSocket is legacy/experimental only.
-- Game modules must consume transport via `@gamesv1/core-protocol` abstractions.
-- Browser transport scope is `browser -> GS` only.
-- Browser must not directly communicate with internal slot-engine services.
+GS is authoritative for:
+- session lifecycle
+- wallet and balance truth
+- DB persistence
+- requestCounter sequencing
+- idempotency decisions
+- unfinished-round restore and routing
+- runtime config resolution
 
-## Internal Engine Boundary
+Browser must never own or fabricate authoritative wallet/DB/session truth.
 
-- Internal slot-engine sidecar/host is private GS infrastructure.
-- RNG lives in the internal slot-engine host (server-side).
-- Slot-engine audit/debug data is server-side only and not part of browser UI state ownership.
+## Transport Canon
 
-## Asset/Release Policy
+Canonical browser operations:
+- `bootstrap`
+- `opengame`
+- `playround`
+- `featureaction`
+- `resumegame`
+- `closegame`
+- `gethistory`
 
-- Runtime assets are loaded from CDN/static origin.
-- Gamesv1 produces versioned release artifacts for GS registration and rollout.
-
-## Scope Guardrails
-
-- Ignore Pariplay/operator-specific messaging in canonical architecture.
-- Multiplayer is out of scope.
-- No core doc should imply the client or any public game server owns DB/session/wallet state.
+Legacy `abs.gs.v1` WebSocket is legacy/experimental only.
 
 ## Package Responsibilities
 
-- `packages/core-protocol`: GS HTTP runtime client, transport interfaces, schemas.
-- `packages/core-compliance`: config layering + compliance/timing behavior.
-- `packages/pixi-engine`: rendering/runtime shell and asset bootstrap.
-- `packages/ui-kit`: shared slot UI/HUD primitives.
-- `games/premium-slot`: reference implementation.
+- `packages/core-protocol`: canonical GS browser runtime transport and envelopes.
+- `packages/core-compliance`: capability matrix, config layering, compliance policy.
+- `packages/pixi-engine`: rendering bootstrap, asset loading, layout/runtime loop.
+- `packages/ui-kit`: shared HUD/menus/dialog shell.
+- `games/premium-slot`: reference game consuming canonical packages.
 
-## Source Of Truth Map
+## Source-of-Truth Docs
 
-See `docs/DOCS_MAP.md`.
+- Architecture: `docs/MasterContext.md`, `docs/PROJECT.md`
+- GS contracts: `docs/gs/bootstrap-config-contract.md`, `docs/gs/browser-runtime-api-contract.md`
+- Error model: `docs/gs/browser-error-codes.md`
+- Runtime sequences: `docs/gs/browser-runtime-sequence-diagrams.md`
+- Release registration: `docs/gs/release-registration-contract.md`, `docs/gs/enable-disable-canary-rollback.md`
 
 ## Update Rule
 
-1. Update this file first for any architecture decision.
-2. Update affected canonical docs.
-3. Archive or mark deprecated any contradictory document.
+1. Update `docs/gs/*` first when contract behavior changes.
+2. Update this file and `docs/PROJECT.md` to keep architecture canon aligned.
+3. Archive or deprecate conflicting docs under `docs/_archive/` or legacy protocol notes.

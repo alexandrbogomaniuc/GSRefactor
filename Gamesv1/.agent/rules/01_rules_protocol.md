@@ -1,39 +1,47 @@
-# Non-Negotiable Protocol Rules
+﻿# Non-Negotiable Protocol Rules
 
-This rule file defines protocol and state-ownership requirements for Gamesv1.
+This rule file defines protocol and ownership requirements for Gamesv1.
 
-## 1. Canonical Runtime Path
+## 1. Canonical runtime source
 
-- Production target is GS HTTP runtime path.
-- `abs.gs.v1` WebSocket is legacy/experimental only.
+Use `docs/gs/browser-runtime-api-contract.md` and `docs/gs/bootstrap-config-contract.md`.
 
-## 2. Ownership and Truth
+## 2. Canonical browser operations
 
-- GS owns session, wallet, DB state, restore state, requestCounter, and idempotency decisions.
-- Client is presentation-only for financial/state truth.
-- Client must not invent authoritative state.
-- Browser communicates only with GS runtime endpoints.
-- Internal slot-engine host/RNG/audit data are server-side concerns, not browser-owned state.
+- `bootstrap`
+- `opengame`
+- `playround`
+- `featureaction`
+- `resumegame`
+- `closegame`
+- `gethistory`
 
-## 3. Idempotency + Sequencing
+## 3. Ownership and truth
 
-- Monetary requests must include stable idempotency key.
-- Retries must reuse the same key.
-- Client must follow GS requestCounter/ordering expectations.
+- GS owns session, wallet, DB state, restore state, requestCounter, idempotency, routing, and config resolution.
+- Browser is presentation-only for financial/session truth.
+- Browser never consumes internal slot-engine audit data as UI state truth.
 
-## 4. Transport Abstraction
+## 4. Transport boundaries
 
-- Game logic must stay transport-agnostic via `IGameTransport`.
-- No direct `WebSocket` calls from game modules.
+- Canonical path is browser -> GS HTTP runtime only.
+- No direct game-level `WebSocket` runtime path.
+- Legacy `abs.gs.v1` is experimental only and not canonical.
 
-## 5. Scope Constraints
+## 5. Idempotency and sequencing
 
-- Operator-specific messaging (`postMessage`, Pariplay bridge) is out of canonical scope.
+- Money-impacting calls must carry stable idempotency identity on retries.
+- requestCounter must be monotonic and server-authoritative.
+- currentStateVersion must be forwarded when provided.
+
+## 6. Scope constraints
+
+- Operator-specific messaging is outside canonical runtime path.
 - Multiplayer is out of scope.
 
-## 6. Definition of Done (Protocol)
+## 7. Definition of done
 
-- [ ] HTTP init + transaction + restore flow validated.
-- [ ] Retry/idempotency behavior validated.
-- [ ] Sequencing/requestCounter behavior validated.
-- [ ] No client-owned wallet/DB state logic introduced.
+- [ ] transport methods align to slot-browser-v1 operation set
+- [ ] premium-slot renders server presentation payloads only
+- [ ] no game module owns wallet/DB state truth
+- [ ] release artifacts match `docs/gs/release-registration-contract.md`

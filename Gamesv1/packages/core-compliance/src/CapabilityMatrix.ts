@@ -1,4 +1,4 @@
-import { z } from "zod";
+﻿import { z } from "zod";
 
 const Volume = z.number().min(0).max(1);
 
@@ -17,6 +17,7 @@ export const AnimationPolicyCapabilitySchema = z
       turbo: z.number().int().nonnegative(),
     }),
     autoplayMinDelayMs: z.number().int().nonnegative(),
+    lowPerformanceMode: z.boolean(),
   })
   .superRefine((value, ctx) => {
     if (value.minReelSpinTimeMs.turbo > value.minReelSpinTimeMs.normal) {
@@ -30,6 +31,7 @@ export const AnimationPolicyCapabilitySchema = z
 
 export const SoundCapabilitySchema = z.object({
   enabledByDefault: z.boolean(),
+  modeByDefault: z.enum(["on", "off", "muted"]),
   showToggle: z.boolean(),
   masterVolume: Volume,
   bgmVolume: Volume,
@@ -39,9 +41,11 @@ export const SoundCapabilitySchema = z.object({
 export const LocalizationCapabilitySchema = z.object({
   defaultLanguage: z.string().min(2),
   localizedTitleKey: z.string().min(1),
+  localizedTitle: z.string().optional(),
   showMissingLocalizationError: z.boolean(),
   contentPath: z.string().min(1),
   customTranslationsEnabled: z.boolean(),
+  serverNotificationsEnabled: z.boolean(),
 });
 
 export const SpinProfilingCapabilitySchema = z.object({
@@ -52,6 +56,12 @@ export const SpinProfilingCapabilitySchema = z.object({
 export const WalletMessagingCapabilitySchema = z.object({
   delayedWalletMessages: z.boolean(),
   externalWalletMessages: z.boolean(),
+});
+
+export const WalletDisplayPolicyCapabilitySchema = z.object({
+  showBalance: z.boolean(),
+  showCurrencyCode: z.boolean(),
+  showDelayedIndicator: z.boolean(),
 });
 
 export const HistoryCapabilitySchema = z.object({
@@ -68,16 +78,31 @@ export const RuntimePoliciesCapabilitySchema = z.object({
   unfinishedRoundRestoreSupported: z.boolean(),
 });
 
+export const SessionUiPolicyCapabilitySchema = z.object({
+  showSessionTimer: z.boolean(),
+  showRealityCheckBanner: z.boolean(),
+  closeButtonPolicy: z.enum(["allow", "confirm", "hidden"]),
+});
+
+export const JackpotHooksCapabilitySchema = z.object({
+  enabled: z.boolean(),
+  source: z.enum(["none", "gs"]),
+});
+
 export const FeatureFlagsCapabilitySchema = z.object({
   autoplay: z.boolean(),
   buyFeature: z.boolean(),
   buyFeatureForCashBonus: z.boolean(),
+  buyFeatureDisabledForCashBonus: z.boolean(),
   freeSpins: z.boolean(),
   respin: z.boolean(),
   holdAndWin: z.boolean(),
   inGameHistory: z.boolean(),
   holidayMode: z.boolean(),
   customSkins: z.boolean(),
+  frb: z.boolean(),
+  ofrb: z.boolean(),
+  jackpotHooks: z.boolean(),
 });
 
 export const BigWinFlowCapabilitySchema = z
@@ -115,8 +140,11 @@ export const CapabilityMatrixSchema = z.object({
   localization: LocalizationCapabilitySchema,
   spinProfiling: SpinProfilingCapabilitySchema,
   walletMessaging: WalletMessagingCapabilitySchema,
+  walletDisplay: WalletDisplayPolicyCapabilitySchema,
   history: HistoryCapabilitySchema,
   runtimePolicies: RuntimePoliciesCapabilitySchema,
+  sessionUi: SessionUiPolicyCapabilitySchema,
+  jackpotHooks: JackpotHooksCapabilitySchema,
   features: FeatureFlagsCapabilitySchema,
   bigWinFlow: BigWinFlowCapabilitySchema,
 });
@@ -136,14 +164,18 @@ export const CapabilityMatrixPatchSchema = z.object({
         })
         .optional(),
       autoplayMinDelayMs: z.number().int().nonnegative().optional(),
+      lowPerformanceMode: z.boolean().optional(),
     })
     .optional(),
   sound: SoundCapabilitySchema.partial().optional(),
   localization: LocalizationCapabilitySchema.partial().optional(),
   spinProfiling: SpinProfilingCapabilitySchema.partial().optional(),
   walletMessaging: WalletMessagingCapabilitySchema.partial().optional(),
+  walletDisplay: WalletDisplayPolicyCapabilitySchema.partial().optional(),
   history: HistoryCapabilitySchema.partial().optional(),
   runtimePolicies: RuntimePoliciesCapabilitySchema.partial().optional(),
+  sessionUi: SessionUiPolicyCapabilitySchema.partial().optional(),
+  jackpotHooks: JackpotHooksCapabilitySchema.partial().optional(),
   features: FeatureFlagsCapabilitySchema.partial().optional(),
   bigWinFlow: z
     .object({
@@ -169,16 +201,18 @@ export const DefaultCapabilityMatrix: CapabilityMatrix = {
     preferred: false,
   },
   animationPolicy: {
-    forcedSpinStopAllowed: false,
+    forcedSpinStopAllowed: true,
     forcedSkipWinPresentation: true,
     minReelSpinTimeMs: {
       normal: 2000,
       turbo: 1200,
     },
     autoplayMinDelayMs: 300,
+    lowPerformanceMode: false,
   },
   sound: {
     enabledByDefault: true,
+    modeByDefault: "on",
     showToggle: true,
     masterVolume: 0.8,
     bgmVolume: 0.7,
@@ -187,9 +221,11 @@ export const DefaultCapabilityMatrix: CapabilityMatrix = {
   localization: {
     defaultLanguage: "en",
     localizedTitleKey: "game.title",
+    localizedTitle: "",
     showMissingLocalizationError: false,
     contentPath: "./locales",
     customTranslationsEnabled: false,
+    serverNotificationsEnabled: false,
   },
   spinProfiling: {
     enabled: false,
@@ -198,6 +234,11 @@ export const DefaultCapabilityMatrix: CapabilityMatrix = {
   walletMessaging: {
     delayedWalletMessages: false,
     externalWalletMessages: false,
+  },
+  walletDisplay: {
+    showBalance: true,
+    showCurrencyCode: true,
+    showDelayedIndicator: true,
   },
   history: {
     enabled: true,
@@ -211,16 +252,29 @@ export const DefaultCapabilityMatrix: CapabilityMatrix = {
     currentStateVersionSupported: true,
     unfinishedRoundRestoreSupported: true,
   },
+  sessionUi: {
+    showSessionTimer: false,
+    showRealityCheckBanner: true,
+    closeButtonPolicy: "confirm",
+  },
+  jackpotHooks: {
+    enabled: false,
+    source: "none",
+  },
   features: {
     autoplay: true,
     buyFeature: false,
     buyFeatureForCashBonus: false,
+    buyFeatureDisabledForCashBonus: true,
     freeSpins: true,
     respin: false,
     holdAndWin: false,
     inGameHistory: true,
     holidayMode: false,
     customSkins: false,
+    frb: false,
+    ofrb: false,
+    jackpotHooks: false,
   },
   bigWinFlow: {
     enabled: true,
@@ -246,17 +300,28 @@ const CAPABILITY_FAMILY_KEYS: Record<string, readonly string[]> = {
     "forcedSkipWinPresentation",
     "minReelSpinTimeMs",
     "autoplayMinDelayMs",
+    "lowPerformanceMode",
   ],
-  sound: ["enabledByDefault", "showToggle", "masterVolume", "bgmVolume", "sfxVolume"],
+  sound: [
+    "enabledByDefault",
+    "modeByDefault",
+    "showToggle",
+    "masterVolume",
+    "bgmVolume",
+    "sfxVolume",
+  ],
   localization: [
     "defaultLanguage",
     "localizedTitleKey",
+    "localizedTitle",
     "showMissingLocalizationError",
     "contentPath",
     "customTranslationsEnabled",
+    "serverNotificationsEnabled",
   ],
   spinProfiling: ["enabled", "payloadKey"],
   walletMessaging: ["delayedWalletMessages", "externalWalletMessages"],
+  walletDisplay: ["showBalance", "showCurrencyCode", "showDelayedIndicator"],
   history: ["enabled", "url", "openInSameWindow"],
   runtimePolicies: [
     "requestCounterRequired",
@@ -265,16 +330,22 @@ const CAPABILITY_FAMILY_KEYS: Record<string, readonly string[]> = {
     "currentStateVersionSupported",
     "unfinishedRoundRestoreSupported",
   ],
+  sessionUi: ["showSessionTimer", "showRealityCheckBanner", "closeButtonPolicy"],
+  jackpotHooks: ["enabled", "source"],
   features: [
     "autoplay",
     "buyFeature",
     "buyFeatureForCashBonus",
+    "buyFeatureDisabledForCashBonus",
     "freeSpins",
     "respin",
     "holdAndWin",
     "inGameHistory",
     "holidayMode",
     "customSkins",
+    "frb",
+    "ofrb",
+    "jackpotHooks",
   ],
   bigWinFlow: ["enabled", "allowSkipPresentation", "thresholds"],
 };

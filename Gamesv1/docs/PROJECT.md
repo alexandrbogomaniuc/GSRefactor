@@ -1,57 +1,51 @@
-# PROJECT
+﻿# PROJECT
 
 High-level architecture charter for Gamesv1.
 
 ## 1. Mission
 
-Build and maintain the reference client shell and packaging stack for GS slot games.
+Build and maintain the reference GS slot browser client shell and deterministic release-packaging stack.
 
-Outcome target:
-- New slots ship faster with consistent runtime behavior and release quality.
-- Financial and state correctness stays server-owned by GS.
-
-## 2. Architecture Alignment
+## 2. Locked Architecture
 
 ### Runtime ownership
-- GS owns session, wallet, DB state, restore path, requestCounter, and idempotency.
-- Browser client renders and orchestrates UX only.
-- Internal slot-engine host and RNG are server-side/private GS infrastructure.
-- Browser transport is GS-only; browser never talks directly to slot-engine runtime.
+- GS owns session, wallet, DB state, restore behavior, requestCounter, idempotency, routing, and config resolution.
+- Browser is presentation-only and renders GS-provided truth.
+- Internal slot-engine sidecar and RNG are GS-private/internal.
 
-### Transport
-- Primary: GS HTTP runtime flow (`/v1/opengame`, `/v1/placebet`, `/v1/collect`, `/v1/readhistory`).
-- Legacy: abs.gs.v1 WebSocket only for experiments/backward compatibility.
+### Canonical transport
+- Browser -> GS only, using slot-browser-v1 HTTP operations.
+- Canonical operations: `bootstrap`, `opengame`, `playround`, `featureaction`, `resumegame`, `closegame`, `gethistory`.
+- Legacy `abs.gs.v1` WebSocket is non-canonical, experimental only.
 
-### Assets
-- Client assets are served from CDN/static origin.
-- Client code uses manifest aliases/bundles, not hardcoded paths.
-
-### Release packaging
-- Every release is versioned and emits GS registration artifacts and deployment metadata.
+### Assets and release
+- Static client assets are served from CDN/static origin.
+- Each release produces immutable, versioned artifacts for GS registration, canary, and rollback.
 
 ## 3. Scope
 
 In scope:
-- single-player slot client shell
-- runtime compliance behaviors
-- release packaging and registration artifacts
+- single-player slot browser client shell
+- capability/config compliance runtime behavior
+- deterministic release artifact generation
 
 Out of scope:
-- Pariplay/operator-specific messaging integration
+- operator-specific messaging as canonical runtime path
 - multiplayer
+- browser-direct internal slot-engine integrations
 
-## 4. Core Layers
+## 4. Core layers
 
-1. Protocol layer (`packages/core-protocol`): normalized transport/events, HTTP runtime contract.
-2. Compliance layer (`packages/core-compliance`): resolved config, limits, timing policy.
-3. Engine layer (`packages/pixi-engine`): rendering loop, layout, asset bootstrap.
-4. UI layer (`packages/ui-kit`): reusable controls/HUD/slot visuals.
-5. Game layer (`games/premium-slot`): feature composition and content.
+1. Protocol layer: `packages/core-protocol`
+2. Compliance layer: `packages/core-compliance`
+3. Engine layer: `packages/pixi-engine`
+4. UI layer: `packages/ui-kit`
+5. Game layer: `games/premium-slot`
 
-## 5. Non-Negotiable Constraints
+## 5. Non-negotiable constraints
 
-1. Client does not authoritatively mutate wallet or DB state.
-2. Game code does not open raw WebSocket or direct HTTP financial calls outside protocol package.
-3. Runtime path must be compatible with GS HTTP handshake and recovery behavior.
-4. Release outputs must be versioned and traceable to git SHA.
-5. Slot-engine audit data stays server-side and is not modeled as browser UI truth.
+1. Browser never authoritatively mutates wallet/session/DB truth.
+2. Game code must not directly use `window.postMessage` or `WebSocket` for canonical runtime.
+3. Browser transport contracts come from `docs/gs/browser-runtime-api-contract.md`.
+4. Bootstrap config truth comes from `docs/gs/bootstrap-config-contract.md`.
+5. Release registration artifact contract comes from `docs/gs/release-registration-contract.md`.

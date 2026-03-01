@@ -1,4 +1,4 @@
-import { GsHttpRuntimeTransport } from "./GsHttpRuntimeTransport";
+import { GsHttpRuntimeTransport } from "./GsHttpRuntimeTransport.ts";
 
 /**
  * @deprecated Use GsHttpRuntimeTransport directly.

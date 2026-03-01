@@ -2,7 +2,7 @@
 
 > [!WARNING]
 > This protocol path is legacy/experimental for Gamesv1.
-> Canonical production runtime is GS HTTP path documented in `docs/protocol/gs-http-runtime.md`.
+> Canonical production runtime is documented in `docs/gs/browser-runtime-api-contract.md`.
 
 ## Status
 

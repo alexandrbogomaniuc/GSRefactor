@@ -21,12 +21,17 @@ setEngine(appEngine);
     assetBasePath: "assets",
   });
 
-  await ConfigManager.init();
+  let bootstrapSnapshot: Awaited<ReturnType<typeof gsRuntimeClient.bootstrap>> | null = null;
   try {
-    await gsRuntimeClient.bootstrap();
+    bootstrapSnapshot = await gsRuntimeClient.bootstrap();
   } catch (error) {
     console.error("[GS Runtime Bootstrap] Failed:", error);
   }
+  await ConfigManager.init({
+    runtimeConfigFromGs: bootstrapSnapshot?.runtimeConfig,
+    capabilitiesFromGs: bootstrapSnapshot?.capabilities,
+    currencyCodeFromGs: bootstrapSnapshot?.currencyCode,
+  });
   userSettings.init();
 
   const urlParams = new URLSearchParams(window.location.search);

@@ -1,4 +1,4 @@
-import { z } from "zod";
+﻿import { z } from "zod";
 
 import {
   CapabilityMatrixPatchSchema,
@@ -52,6 +52,7 @@ export const MinReelSpinTimeConfigSchema = MinReelSpinTimeBaseSchema.refine(
 
 export const SoundDefaultsSchema = z.object({
   enabled: z.boolean(),
+  modeByDefault: z.enum(["on", "off", "muted"]),
   masterVolume: Volume,
   bgmVolume: Volume,
   sfxVolume: Volume,
@@ -60,15 +61,34 @@ export const SoundDefaultsSchema = z.object({
 export const LocalizationSettingsSchema = z.object({
   defaultLang: z.string().min(2),
   localizedTitleKey: z.string().min(1),
+  localizedTitle: z.string().optional(),
   showMissingLocalizationError: z.boolean(),
   contentPath: z.string().min(1),
   customTranslationsEnabled: z.boolean(),
+  serverNotificationsEnabled: z.boolean(),
 });
 
 export const HistorySettingsSchema = z.object({
   enabled: z.boolean(),
   url: z.string().min(1),
   openInSameWindow: z.boolean(),
+});
+
+export const WalletDisplayPolicySchema = z.object({
+  showBalance: z.boolean(),
+  showCurrencyCode: z.boolean(),
+  showDelayedIndicator: z.boolean(),
+});
+
+export const SessionUiPolicySchema = z.object({
+  showSessionTimer: z.boolean(),
+  showRealityCheckBanner: z.boolean(),
+  closeButtonPolicy: z.enum(["allow", "confirm", "hidden"]),
+});
+
+export const JackpotHooksSchema = z.object({
+  enabled: z.boolean(),
+  source: z.enum(["none", "gs"]),
 });
 
 export const RuntimePoliciesSchema = z.object({
@@ -97,6 +117,9 @@ export const ResolvedRuntimeConfigSchema = z
     soundDefaults: SoundDefaultsSchema,
     localization: LocalizationSettingsSchema,
     history: HistorySettingsSchema,
+    walletDisplay: WalletDisplayPolicySchema,
+    sessionUi: SessionUiPolicySchema,
+    jackpotHooks: JackpotHooksSchema,
     runtimePolicies: RuntimePoliciesSchema,
     realityCheck: RealityCheckConfigSchema,
     capabilities: CapabilityMatrixSchema,
@@ -186,6 +209,9 @@ export const LayerRuntimeConfigSchema = z.object({
   soundDefaults: SoundDefaultsSchema.partial().optional(),
   localization: LocalizationSettingsSchema.partial().optional(),
   history: HistorySettingsSchema.partial().optional(),
+  walletDisplay: WalletDisplayPolicySchema.partial().optional(),
+  sessionUi: SessionUiPolicySchema.partial().optional(),
+  jackpotHooks: JackpotHooksSchema.partial().optional(),
   runtimePolicies: RuntimePoliciesSchema.partial().optional(),
   realityCheck: RealityCheckConfigSchema.partial().optional(),
   capabilities: CapabilityMatrixPatchSchema.optional(),
@@ -243,6 +269,7 @@ export const DefaultResolvedRuntimeConfig: ResolvedRuntimeConfig = {
   },
   soundDefaults: {
     enabled: true,
+    modeByDefault: "on",
     masterVolume: 0.8,
     bgmVolume: 0.7,
     sfxVolume: 0.8,
@@ -250,14 +277,30 @@ export const DefaultResolvedRuntimeConfig: ResolvedRuntimeConfig = {
   localization: {
     defaultLang: "en",
     localizedTitleKey: "game.title",
+    localizedTitle: "",
     showMissingLocalizationError: false,
     contentPath: "./locales",
     customTranslationsEnabled: false,
+    serverNotificationsEnabled: false,
   },
   history: {
     enabled: true,
     url: "/history",
     openInSameWindow: true,
+  },
+  walletDisplay: {
+    showBalance: true,
+    showCurrencyCode: true,
+    showDelayedIndicator: true,
+  },
+  sessionUi: {
+    showSessionTimer: false,
+    showRealityCheckBanner: true,
+    closeButtonPolicy: "confirm",
+  },
+  jackpotHooks: {
+    enabled: false,
+    source: "none",
   },
   runtimePolicies: {
     requestCounterRequired: true,

@@ -1,4 +1,4 @@
-import {
+﻿import {
   type BootstrapRequest,
   type CloseGameRequest,
   type FeatureActionRequest,
@@ -14,7 +14,7 @@ import {
   type RequestMetadata,
   type ResumeGameRequest,
   type TransportEvent,
-} from "../IGameTransport";
+} from "../IGameTransport.ts";
 
 type ErrorEnvelope = {
   error?: {
@@ -23,24 +23,19 @@ type ErrorEnvelope = {
   };
 };
 
-type PlaceBetResponse = {
-  roundId: string;
-  balance?: number;
-  requestCounter?: number;
-  currentStateVersion?: string;
-  math?: unknown;
-} & ErrorEnvelope;
-
-type CollectResponse = {
-  roundId: string;
-  balance: number;
-  winAmount?: number;
-  requestCounter?: number;
-  currentStateVersion?: string;
-} & ErrorEnvelope;
-
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
+
+const asString = (value: unknown): string | undefined =>
+  typeof value === "string" && value.length > 0 ? value : undefined;
+
+const asNumber = (value: unknown): number | undefined =>
+  typeof value === "number" && Number.isFinite(value) ? value : undefined;
+
+const asHistoryList = (value: unknown): Array<Record<string, unknown>> =>
+  Array.isArray(value)
+    ? value.filter((item): item is Record<string, unknown> => isRecord(item))
+    : [];
 
 export class GsHttpRuntimeTransport implements IGameTransport {
   private config: GameInitConfig | null = null;
@@ -55,123 +50,108 @@ export class GsHttpRuntimeTransport implements IGameTransport {
     request?: BootstrapRequest,
   ): Promise<OpenGameResponse> {
     this.config = { ...config };
-    const sessionId = request?.sessionId ?? config.sessionId ?? "";
+
+    const sessionId = request?.sessionId ?? config.sessionId;
     if (!sessionId) {
       throw new Error("GS runtime bootstrap requires sessionId.");
     }
 
-    return this.openGame({
+    const body: Record<string, unknown> = {
       sessionId,
-      bankId: config.bankId ? Number(config.bankId) : undefined,
-      playerId: config.playerId,
-      gameId: Number(config.gameId),
-      gsInternalBaseUrl: config.gsInternalBaseUrl,
-      language: config.language,
-      internalClientCode: config.internalClientCode,
-    });
+      gameId: request?.gameId ?? (config.gameId ? Number(config.gameId) : undefined),
+      bankId: request?.bankId ?? (config.bankId ? Number(config.bankId) : undefined),
+      playerId: request?.playerId ?? config.playerId,
+      language: request?.language ?? config.language,
+      launchParams: request?.launchParams ?? {},
+    };
+
+    const raw = await this.postJson<Record<string, unknown>, Record<string, unknown>>(
+      "/v1/bootstrap",
+      body,
+    );
+
+    return this.applySessionSnapshot(raw);
   }
 
   public async openGame(request: OpenGameRequest): Promise<OpenGameResponse> {
     this.assertConfig();
 
-    const response = await this.postJson<OpenGameRequest, OpenGameResponse>(
+    const raw = await this.postJson<OpenGameRequest, Record<string, unknown>>(
       "/v1/opengame",
       request,
     );
 
-    this.sessionId = response.sessionId;
-    this.requestCounter = response.requestCounter;
-    this.currentStateVersion = response.currentStateVersion;
-
-    this.emit("balance", response.balance);
-    this.emit("ready", response);
-
-    return response;
+    return this.applySessionSnapshot(raw);
   }
 
   public async playRound(request: PlayRoundRequest): Promise<PlayRoundResponse> {
     this.assertConfig();
     this.assertSession();
 
-    const placeRequestCounter = this.resolveRequestCounter(request.metadata);
+    const requestCounter = this.resolveRequestCounter(request.metadata);
     const clientOperationId =
-      request.metadata?.clientOperationId ?? this.nextOperationId("placebet");
+      request.metadata?.clientOperationId ?? this.nextOperationId("playround");
     const idempotencyKey =
       request.metadata?.idempotencyKey ?? `idem:${clientOperationId}`;
 
-    const placeBody: Record<string, unknown> = {
+    const body: Record<string, unknown> = {
       sessionId: this.sessionId,
-      requestCounter: placeRequestCounter,
+      requestCounter,
       clientOperationId,
-      bets: [{ betType: request.betType, betAmount: request.betAmount }],
+      idempotencyKey,
+      currentStateVersion:
+        request.metadata?.currentStateVersion ?? this.currentStateVersion,
+      betAmount: request.betAmount,
+      betType: request.betType,
+      roundInput: request.roundInput ?? {},
     };
-    if (request.metadata?.currentStateVersion ?? this.currentStateVersion) {
-      placeBody.currentStateVersion =
-        request.metadata?.currentStateVersion ?? this.currentStateVersion;
-    }
 
-    const place = await this.postJson<Record<string, unknown>, PlaceBetResponse>(
-      "/v1/placebet",
-      placeBody,
+    const raw = await this.postJson<Record<string, unknown>, Record<string, unknown>>(
+      "/v1/playround",
+      body,
       {
         idempotencyKey,
         clientOperationId,
       },
     );
 
-    const collectRequestCounter =
-      place.requestCounter ?? placeRequestCounter + 1;
-    const collectClientOperationId = `${clientOperationId}:collect`;
-    const collectIdempotencyKey = `${idempotencyKey}:collect`;
+    const nextRequestCounter =
+      asNumber(raw.requestCounter) ??
+      asNumber(isRecord(raw.session) ? raw.session.requestCounter : undefined) ??
+      requestCounter;
 
-    const collectBody: Record<string, unknown> = {
-      sessionId: this.sessionId,
-      requestCounter: collectRequestCounter,
-      roundId: place.roundId,
-      clientOperationId: collectClientOperationId,
-    };
-    if (request.metadata?.currentStateVersion ?? this.currentStateVersion) {
-      collectBody.currentStateVersion =
-        request.metadata?.currentStateVersion ?? this.currentStateVersion;
-    }
-
-    const collect = await this.postJson<Record<string, unknown>, CollectResponse>(
-      "/v1/collect",
-      collectBody,
-      {
-        idempotencyKey: collectIdempotencyKey,
-        clientOperationId: collectClientOperationId,
-      },
-    );
-
-    this.requestCounter = collect.requestCounter ?? collectRequestCounter;
+    this.requestCounter = nextRequestCounter;
     this.currentStateVersion =
-      collect.currentStateVersion ??
-      place.currentStateVersion ??
+      asString(raw.currentStateVersion) ??
+      asString(isRecord(raw.session) ? raw.session.currentStateVersion : undefined) ??
       this.currentStateVersion;
 
-    const presentationPayload = {
-      source: "gs-runtime-v1",
-      roundId: place.roundId,
-      betAmount: request.betAmount,
-      betType: request.betType,
-      math: place.math ?? null,
-      winAmount: collect.winAmount ?? 0,
-      balance: collect.balance,
-    };
+    const balance =
+      asNumber(raw.balance) ??
+      asNumber(isRecord(raw.wallet) ? raw.wallet.balance : undefined) ??
+      0;
+
+    const winAmount =
+      asNumber(raw.winAmount) ??
+      asNumber(isRecord(raw.round) ? raw.round.winAmount : undefined) ??
+      0;
+
+    const roundId =
+      asString(raw.roundId) ??
+      asString(isRecord(raw.round) ? raw.round.roundId : undefined) ??
+      `${clientOperationId}:round`;
 
     const response: PlayRoundResponse = {
-      roundId: place.roundId,
-      balance: collect.balance,
-      winAmount: collect.winAmount ?? 0,
+      roundId,
+      balance,
+      winAmount,
       requestCounter: this.requestCounter,
       currentStateVersion: this.currentStateVersion,
-      presentationPayload,
-      rawPlaceBet: place,
-      rawCollect: collect,
+      presentationPayload: raw.presentationPayload,
+      raw,
     };
 
-    this.emit("balance", response.balance);
+    this.emit("balance", balance);
     this.emit("round", response);
     return response;
   }
@@ -184,7 +164,7 @@ export class GsHttpRuntimeTransport implements IGameTransport {
 
     const requestCounter = this.resolveRequestCounter(request.metadata);
     const clientOperationId =
-      request.metadata?.clientOperationId ?? this.nextOperationId(request.action);
+      request.metadata?.clientOperationId ?? this.nextOperationId(`feature-${request.action}`);
     const idempotencyKey =
       request.metadata?.idempotencyKey ?? `idem:${clientOperationId}`;
 
@@ -194,11 +174,10 @@ export class GsHttpRuntimeTransport implements IGameTransport {
       action: request.action,
       payload: request.payload ?? {},
       clientOperationId,
+      idempotencyKey,
+      currentStateVersion:
+        request.metadata?.currentStateVersion ?? this.currentStateVersion,
     };
-    if (request.metadata?.currentStateVersion ?? this.currentStateVersion) {
-      body.currentStateVersion =
-        request.metadata?.currentStateVersion ?? this.currentStateVersion;
-    }
 
     const raw = await this.postJson<Record<string, unknown>, Record<string, unknown>>(
       "/v1/featureaction",
@@ -209,12 +188,9 @@ export class GsHttpRuntimeTransport implements IGameTransport {
       },
     );
 
-    this.requestCounter =
-      (typeof raw.requestCounter === "number" ? raw.requestCounter : requestCounter);
+    this.requestCounter = asNumber(raw.requestCounter) ?? requestCounter;
     this.currentStateVersion =
-      (typeof raw.currentStateVersion === "string"
-        ? raw.currentStateVersion
-        : this.currentStateVersion);
+      asString(raw.currentStateVersion) ?? this.currentStateVersion;
 
     const response: FeatureActionResponse = {
       requestCounter: this.requestCounter,
@@ -228,20 +204,36 @@ export class GsHttpRuntimeTransport implements IGameTransport {
   }
 
   public async resumeGame(request?: ResumeGameRequest): Promise<OpenGameResponse> {
+    this.assertConfig();
+
     const sessionId = request?.sessionId ?? this.sessionId ?? this.config?.sessionId;
     if (!sessionId) {
       throw new Error("resumeGame requires an existing sessionId.");
     }
 
-    return this.openGame({
+    const metadata = request?.metadata;
+    const requestCounter = this.resolveRequestCounter(metadata);
+
+    const body: Record<string, unknown> = {
       sessionId,
-      bankId: this.config?.bankId ? Number(this.config.bankId) : undefined,
-      playerId: this.config?.playerId,
-      gameId: this.config?.gameId ? Number(this.config.gameId) : undefined,
-      gsInternalBaseUrl: this.config?.gsInternalBaseUrl,
-      language: this.config?.language,
-      internalClientCode: this.config?.internalClientCode,
-    });
+      requestCounter,
+      clientOperationId:
+        metadata?.clientOperationId ?? this.nextOperationId("resumegame"),
+      idempotencyKey:
+        metadata?.idempotencyKey ?? `idem:${metadata?.clientOperationId ?? "resumegame"}`,
+      currentStateVersion: metadata?.currentStateVersion ?? this.currentStateVersion,
+    };
+
+    const raw = await this.postJson<Record<string, unknown>, Record<string, unknown>>(
+      "/v1/resumegame",
+      body,
+      {
+        idempotencyKey: asString(body.idempotencyKey),
+        clientOperationId: asString(body.clientOperationId),
+      },
+    );
+
+    return this.applySessionSnapshot(raw);
   }
 
   public async closeGame(request?: CloseGameRequest): Promise<void> {
@@ -251,25 +243,25 @@ export class GsHttpRuntimeTransport implements IGameTransport {
     const requestCounter = this.resolveRequestCounter(request?.metadata);
     const clientOperationId =
       request?.metadata?.clientOperationId ?? this.nextOperationId("closegame");
+    const idempotencyKey =
+      request?.metadata?.idempotencyKey ?? `idem:${clientOperationId}`;
 
     const body: Record<string, unknown> = {
       sessionId: this.sessionId,
       requestCounter,
       reason: request?.reason ?? "client-close",
       clientOperationId,
+      idempotencyKey,
+      currentStateVersion:
+        request?.metadata?.currentStateVersion ?? this.currentStateVersion,
     };
-    if (request?.metadata?.currentStateVersion ?? this.currentStateVersion) {
-      body.currentStateVersion =
-        request?.metadata?.currentStateVersion ?? this.currentStateVersion;
-    }
 
     try {
       await this.postJson<Record<string, unknown>, Record<string, unknown>>(
         "/v1/closegame",
         body,
         {
-          idempotencyKey:
-            request?.metadata?.idempotencyKey ?? `idem:${clientOperationId}`,
+          idempotencyKey,
           clientOperationId,
         },
       );
@@ -283,46 +275,47 @@ export class GsHttpRuntimeTransport implements IGameTransport {
     }
   }
 
-  public async readHistory(request?: HistoryRequest): Promise<HistoryResponse> {
+  public async getHistory(request?: HistoryRequest): Promise<HistoryResponse> {
     this.assertConfig();
     this.assertSession();
 
     const requestCounter = this.resolveRequestCounter(request?.metadata);
+
     const body: Record<string, unknown> = {
       sessionId: this.sessionId,
       requestCounter,
       pageNumber: request?.pageNumber ?? 0,
+      currentStateVersion:
+        request?.metadata?.currentStateVersion ?? this.currentStateVersion,
+      clientOperationId:
+        request?.metadata?.clientOperationId ?? this.nextOperationId("gethistory"),
+      idempotencyKey:
+        request?.metadata?.idempotencyKey ?? undefined,
     };
-    if (request?.metadata?.currentStateVersion ?? this.currentStateVersion) {
-      body.currentStateVersion =
-        request?.metadata?.currentStateVersion ?? this.currentStateVersion;
-    }
 
     const raw = await this.postJson<Record<string, unknown>, Record<string, unknown>>(
-      "/v1/readhistory",
+      "/v1/gethistory",
       body,
     );
 
-    this.requestCounter =
-      (typeof raw.requestCounter === "number" ? raw.requestCounter : requestCounter);
+    this.requestCounter = asNumber(raw.requestCounter) ?? requestCounter;
     this.currentStateVersion =
-      (typeof raw.currentStateVersion === "string"
-        ? raw.currentStateVersion
-        : this.currentStateVersion);
-
-    const history = Array.isArray(raw.history)
-      ? raw.history.filter((item): item is Record<string, unknown> => isRecord(item))
-      : [];
+      asString(raw.currentStateVersion) ?? this.currentStateVersion;
 
     const response: HistoryResponse = {
       requestCounter: this.requestCounter,
       currentStateVersion: this.currentStateVersion,
-      history,
+      history: asHistoryList(raw.history),
       raw,
     };
 
     this.emit("history", response);
     return response;
+  }
+
+  // Deprecated alias kept for old call sites.
+  public async readHistory(request?: HistoryRequest): Promise<HistoryResponse> {
+    return this.getHistory(request);
   }
 
   public disconnect(): void {
@@ -341,6 +334,10 @@ export class GsHttpRuntimeTransport implements IGameTransport {
   public async connect(config: GameInitConfig): Promise<void> {
     await this.bootstrap(config, {
       sessionId: config.sessionId ?? "legacy-session",
+      gameId: config.gameId ? Number(config.gameId) : undefined,
+      bankId: config.bankId ? Number(config.bankId) : undefined,
+      playerId: config.playerId,
+      language: config.language,
     });
   }
 
@@ -355,9 +352,7 @@ export class GsHttpRuntimeTransport implements IGameTransport {
   }
 
   public async settle(_operationId: string): Promise<any> {
-    throw new Error(
-      "settle() is deprecated for GS HTTP runtime transport; use playRound().",
-    );
+    throw new Error("settle() is deprecated; use playRound().");
   }
 
   private resolveRequestCounter(metadata?: RequestMetadata): number {
@@ -378,7 +373,7 @@ export class GsHttpRuntimeTransport implements IGameTransport {
 
   private assertSession(): void {
     if (!this.sessionId) {
-      throw new Error("No active GS session. Call openGame()/resumeGame() first.");
+      throw new Error("No active GS session. Call bootstrap()/openGame()/resumeGame() first.");
     }
   }
 
@@ -388,6 +383,59 @@ export class GsHttpRuntimeTransport implements IGameTransport {
     for (const listener of listeners) {
       listener(...args);
     }
+  }
+
+  private applySessionSnapshot(raw: Record<string, unknown>): OpenGameResponse {
+    const session = isRecord(raw.session) ? raw.session : {};
+    const wallet = isRecord(raw.wallet) ? raw.wallet : {};
+
+    const sessionId =
+      asString(raw.sessionId) ??
+      asString(session.sessionId) ??
+      this.sessionId;
+
+    const requestCounter =
+      asNumber(raw.requestCounter) ??
+      asNumber(session.requestCounter) ??
+      this.requestCounter;
+
+    const currentStateVersion =
+      asString(raw.currentStateVersion) ??
+      asString(session.currentStateVersion) ??
+      this.currentStateVersion;
+
+    const balance =
+      asNumber(raw.balance) ??
+      asNumber(wallet.balance) ??
+      0;
+
+    this.sessionId = sessionId;
+    this.requestCounter = requestCounter;
+    this.currentStateVersion = currentStateVersion;
+
+    const response: OpenGameResponse = {
+      sessionId,
+      balance,
+      requestCounter,
+      currencyCode:
+        asString(raw.currencyCode) ??
+        asString(wallet.currencyCode),
+      minBet: asNumber(raw.minBet),
+      maxBet: asNumber(raw.maxBet),
+      currentStateVersion,
+      unresolvedRoundState: raw.unresolvedRoundState ?? raw.restore,
+      presentationPayload: raw.presentationPayload,
+      runtimeConfig: isRecord(raw.runtimeConfig) ? raw.runtimeConfig : undefined,
+      capabilities: isRecord(raw.capabilities) ? raw.capabilities : undefined,
+      wallet,
+      session,
+      restore: isRecord(raw.restore) ? raw.restore : undefined,
+    };
+
+    this.emit("balance", response.balance);
+    this.emit("ready", response);
+
+    return response;
   }
 
   private async postJson<TReq, TRes>(

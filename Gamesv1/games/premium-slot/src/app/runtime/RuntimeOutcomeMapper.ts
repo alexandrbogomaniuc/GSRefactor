@@ -1,4 +1,4 @@
-import type { PlayRoundResponse } from "@gamesv1/core-protocol";
+﻿import type { PlayRoundResponse } from "@gamesv1/core-protocol";
 import { GameConfig } from "@gamesv1/ui-kit";
 
 export interface SlotPresentationOutcome {
@@ -10,12 +10,8 @@ export interface SlotPresentationOutcome {
 
 type RuntimePresentationPayload = {
   reelStopColumns?: unknown;
-  math?: {
-    details?: {
-      ballInfo?: Array<{ slot?: unknown }>;
-      reelStopColumns?: unknown;
-    };
-  };
+  slotIndex?: unknown;
+  winAmount?: unknown;
 };
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
@@ -43,34 +39,13 @@ const normalizeColumns = (columns: number[][]): number[][] =>
     column.slice(0, GameConfig.numRows).map((id) => id % GameConfig.symbolCount),
   );
 
-const extractSlotIndex = (result: PlayRoundResponse): number => {
-  const payload = asRuntimePayload(result.presentationPayload);
-  const slotRaw = payload?.math?.details?.ballInfo?.[0]?.slot;
-  const parsed = Number(slotRaw);
+const resolveSlotIndex = (payload: RuntimePresentationPayload): number => {
+  const parsed = Number(payload.slotIndex);
   if (!Number.isFinite(parsed)) {
-    throw new Error(
-      "Missing required presentationPayload.math.details.ballInfo[0].slot from runtime round response.",
-    );
+    return 0;
   }
 
   return Math.max(0, Math.floor(parsed));
-};
-
-const buildReelColumnsFromSlot = (slotIndex: number, winAmount: number): number[][] => {
-  const centerSymbol = slotIndex % GameConfig.symbolCount;
-  const winningColumn = [centerSymbol, centerSymbol, centerSymbol];
-  const nonWinningColumn = (reel: number): number[] => [
-    (slotIndex + reel + 1) % GameConfig.symbolCount,
-    (slotIndex + reel + 2) % GameConfig.symbolCount,
-    (slotIndex + reel + 3) % GameConfig.symbolCount,
-  ];
-
-  const reels: number[][] = [];
-  for (let reel = 0; reel < GameConfig.numReels; reel += 1) {
-    const isCenterWinReel = winAmount > 0 && reel >= 1 && reel <= 3;
-    reels.push(isCenterWinReel ? winningColumn.slice() : nonWinningColumn(reel));
-  }
-  return reels;
 };
 
 export const mapPlayRoundToSlotOutcome = (
@@ -81,18 +56,21 @@ export const mapPlayRoundToSlotOutcome = (
     throw new Error("Missing runtime presentationPayload in playRound response.");
   }
 
-  const payloadColumns = payload.reelStopColumns ?? payload.math?.details?.reelStopColumns;
-  const reelStopColumns = isValidReelStopColumns(payloadColumns)
-    ? normalizeColumns(payloadColumns)
-    : undefined;
+  if (!isValidReelStopColumns(payload.reelStopColumns)) {
+    throw new Error(
+      "Missing or invalid presentationPayload.reelStopColumns in playRound response.",
+    );
+  }
 
-  const slotIndex = extractSlotIndex(result);
-  const winAmount = Math.max(0, Math.round(result.winAmount));
+  const payloadWinAmount = Number(payload.winAmount);
+  const winAmount = Number.isFinite(payloadWinAmount)
+    ? Math.max(0, Math.round(payloadWinAmount))
+    : Math.max(0, Math.round(result.winAmount));
 
   return {
     roundId: result.roundId,
     winAmount,
-    reelStopColumns: reelStopColumns ?? buildReelColumnsFromSlot(slotIndex, winAmount),
-    slotIndex,
+    reelStopColumns: normalizeColumns(payload.reelStopColumns),
+    slotIndex: resolveSlotIndex(payload),
   };
 };

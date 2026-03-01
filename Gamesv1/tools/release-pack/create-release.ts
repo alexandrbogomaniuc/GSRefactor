@@ -270,8 +270,17 @@ const buildClientBundleManifest = (gameDir: string) => {
 };
 
 const buildMathManifestReference = (gameDir: string, repoRoot: string) => {
+  const explicitMathManifest = path.join(gameDir, "math", "math-pack.manifest.json");
   const explicitMathPack = path.join(gameDir, "math", "math-pack.json");
-  const gsTemplateParams = path.join(gameDir, "gs", "template-params.json");
+
+  if (fs.existsSync(explicitMathManifest)) {
+    return {
+      strategy: "static-math-manifest",
+      path: toPosix(path.relative(repoRoot, explicitMathManifest)),
+      sha256: sha256(explicitMathManifest),
+      launchTimeInjection: false,
+    };
+  }
 
   if (fs.existsSync(explicitMathPack)) {
     return {
@@ -282,21 +291,12 @@ const buildMathManifestReference = (gameDir: string, repoRoot: string) => {
     };
   }
 
-  if (fs.existsSync(gsTemplateParams)) {
-    return {
-      strategy: "gs-template-params-reference",
-      path: toPosix(path.relative(repoRoot, gsTemplateParams)),
-      sha256: sha256(gsTemplateParams),
-      launchTimeInjection: false,
-    };
-  }
-
   return {
     strategy: "missing",
     path: null,
     sha256: null,
     launchTimeInjection: false,
-    warning: "No math-pack.json or gs/template-params.json found.",
+    warning: "No math-pack.manifest.json or math-pack.json found.",
   };
 };
 
@@ -318,7 +318,16 @@ const main = () => {
     throw new Error(`Missing game.settings.json in games/${args.gameId}`);
   }
 
-  const gameSettings = readJson<{ gameId: string; gameName: string; version?: string; features?: Record<string, boolean> }>(
+  const gameSettings = readJson<{
+    gameId: string;
+    gameName: string;
+    version?: string;
+    features?: Record<string, boolean>;
+    gs?: {
+      mathModels?: Array<Record<string, unknown>>;
+      limits?: Record<string, unknown>;
+    };
+  }>(
     gameSettingsPath,
   );
 
@@ -328,7 +337,6 @@ const main = () => {
   const releaseId = `${releaseVersion}+${gitSha.slice(0, 8)}`;
 
   if (!args.skipBuild) {
-    run("node --experimental-strip-types tools/config-gen/src/index.ts", repoRoot);
     run(`corepack pnpm --filter @games/${args.gameId} build`, repoRoot);
     run(`corepack pnpm --filter @games/${args.gameId} exec vite build`, repoRoot);
   }
@@ -341,7 +349,7 @@ const main = () => {
 
   const staticOrigin = args.staticOrigin.replace(/\/$/, "");
   const gsCompatibility = {
-    runtimeTarget: "gs-http-runtime",
+    runtimeTarget: "slot-browser-v1",
     websocketSupport: "legacy-experimental",
     launchTimeMathInjectionAllowed: false,
     staticAssetsFromCdn: true,
@@ -355,6 +363,22 @@ const main = () => {
     assetManifestUrl: `${staticOrigin}/${args.gameId}/${releaseVersion}/manifest.json`,
     localizationBaseUrl: `${staticOrigin}/${args.gameId}/${releaseVersion}/locales/`,
     mathPackageReferencePath: mathPackageManifestReference.path,
+  };
+
+  const registrationArtifact = {
+    gameId: args.gameId,
+    gameName: gameSettings.gameName,
+    version: releaseVersion,
+    releaseId,
+    gitSha,
+    entrypointUrl: gsCompatibility.clientEntrypointUrl,
+    assetManifestUrl: gsCompatibility.assetManifestUrl,
+    localizationBaseUrl: gsCompatibility.localizationBaseUrl,
+    mathPackageReference: mathPackageManifestReference,
+    featureFlags: gameSettings.features ?? {},
+    rtpModels: gameSettings.gs?.mathModels ?? [],
+    limits: gameSettings.gs?.limits ?? {},
+    canaryEligible: true,
   };
 
   const releaseMetadata = {
@@ -389,6 +413,7 @@ const main = () => {
   const packageVersionsPath = path.join(artifactsDir, "package-versions.json");
   const releaseMetadataPath = path.join(artifactsDir, "release-metadata.json");
   const compatibilityPath = path.join(artifactsDir, "gs-compatibility.json");
+  const registrationArtifactPath = path.join(artifactsDir, "registration-artifact.json");
 
   writeStableJson(clientBundleManifestPath, bundleManifest);
   writeStableJson(assetManifestPath, assetManifest);
@@ -397,6 +422,7 @@ const main = () => {
   writeStableJson(packageVersionsPath, packageVersions);
   writeStableJson(releaseMetadataPath, releaseMetadata);
   writeStableJson(compatibilityPath, gsCompatibility);
+  writeStableJson(registrationArtifactPath, registrationArtifact);
 
   const allArtifactFiles = collectDigests(artifactsDir);
   const checksumsPath = path.join(outputDir, "checksums.sha256.json");
@@ -446,6 +472,7 @@ const main = () => {
     "- package versions",
     "- release metadata",
     "- GS compatibility metadata",
+    "- registration artifact",
     "- checksums",
     "",
     "## GS Ops Actions",
@@ -530,6 +557,7 @@ const main = () => {
       packageVersions: toPosix(path.relative(outputDir, packageVersionsPath)),
       releaseMetadata: toPosix(path.relative(outputDir, releaseMetadataPath)),
       gsCompatibility: toPosix(path.relative(outputDir, compatibilityPath)),
+      registrationArtifact: toPosix(path.relative(outputDir, registrationArtifactPath)),
       checksums: toPosix(path.relative(outputDir, checksumsPath)),
       registrationPack: toPosix(path.relative(outputDir, registrationPackPath)),
       rollbackPack: toPosix(path.relative(outputDir, rollbackPackPath)),

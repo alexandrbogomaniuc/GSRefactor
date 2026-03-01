@@ -4,7 +4,7 @@ Gamesv1 is the client-shell and release-packaging environment for new GS slots.
 
 ## Target Architecture (Canonical)
 
-1. Runtime transport target: GS HTTP runtime path.
+1. Runtime transport target: GS HTTP slot-browser-v1 path.
 2. Browser is presentation-only for financial/state truth.
 3. GS owns session, wallet, DB state, restore, requestCounter, and idempotency.
 4. Static assets are loaded from CDN/static origin.
@@ -80,6 +80,8 @@ One reference example is kept under `docs/examples/release-pack/`.
 
 - `docs/MasterContext.md`
 - `docs/PROJECT.md`
+- `docs/gs/bootstrap-config-contract.md`
+- `docs/gs/browser-runtime-api-contract.md`
 - `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`
 - `docs/RELEASE_PROCESS.md`
 - `docs/DOCS_MAP.md`

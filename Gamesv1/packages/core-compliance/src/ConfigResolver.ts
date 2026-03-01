@@ -1,4 +1,4 @@
-import {
+﻿import {
   collectCapabilityWarnings,
   type CapabilityWarning,
 } from "./CapabilityMatrix.ts";
@@ -46,6 +46,9 @@ const LAYER_ALLOWED_KEYS = new Set([
   "soundDefaults",
   "localization",
   "history",
+  "walletDisplay",
+  "sessionUi",
+  "jackpotHooks",
   "runtimePolicies",
   "realityCheck",
   "capabilities",
@@ -164,11 +167,13 @@ const harmonizeRuntimeAndCapabilities = (
 
   if (patch.soundDefaults) {
     next.capabilities.sound.enabledByDefault = next.soundDefaults.enabled;
+    next.capabilities.sound.modeByDefault = next.soundDefaults.modeByDefault;
     next.capabilities.sound.masterVolume = next.soundDefaults.masterVolume;
     next.capabilities.sound.bgmVolume = next.soundDefaults.bgmVolume;
     next.capabilities.sound.sfxVolume = next.soundDefaults.sfxVolume;
   } else if (patch.capabilities?.sound) {
     next.soundDefaults.enabled = next.capabilities.sound.enabledByDefault;
+    next.soundDefaults.modeByDefault = next.capabilities.sound.modeByDefault;
     next.soundDefaults.masterVolume = next.capabilities.sound.masterVolume;
     next.soundDefaults.bgmVolume = next.capabilities.sound.bgmVolume;
     next.soundDefaults.sfxVolume = next.capabilities.sound.sfxVolume;
@@ -177,19 +182,25 @@ const harmonizeRuntimeAndCapabilities = (
   if (patch.localization) {
     next.capabilities.localization.defaultLanguage = next.localization.defaultLang;
     next.capabilities.localization.localizedTitleKey = next.localization.localizedTitleKey;
+    next.capabilities.localization.localizedTitle = next.localization.localizedTitle;
     next.capabilities.localization.showMissingLocalizationError =
       next.localization.showMissingLocalizationError;
     next.capabilities.localization.contentPath = next.localization.contentPath;
     next.capabilities.localization.customTranslationsEnabled =
       next.localization.customTranslationsEnabled;
+    next.capabilities.localization.serverNotificationsEnabled =
+      next.localization.serverNotificationsEnabled;
   } else if (patch.capabilities?.localization) {
     next.localization.defaultLang = next.capabilities.localization.defaultLanguage;
     next.localization.localizedTitleKey = next.capabilities.localization.localizedTitleKey;
+    next.localization.localizedTitle = next.capabilities.localization.localizedTitle;
     next.localization.showMissingLocalizationError =
       next.capabilities.localization.showMissingLocalizationError;
     next.localization.contentPath = next.capabilities.localization.contentPath;
     next.localization.customTranslationsEnabled =
       next.capabilities.localization.customTranslationsEnabled;
+    next.localization.serverNotificationsEnabled =
+      next.capabilities.localization.serverNotificationsEnabled;
   }
 
   if (patch.history) {
@@ -200,6 +211,36 @@ const harmonizeRuntimeAndCapabilities = (
     next.history.enabled = next.capabilities.history.enabled;
     next.history.url = next.capabilities.history.url;
     next.history.openInSameWindow = next.capabilities.history.openInSameWindow;
+  }
+
+  if (patch.walletDisplay) {
+    next.capabilities.walletDisplay.showBalance = next.walletDisplay.showBalance;
+    next.capabilities.walletDisplay.showCurrencyCode = next.walletDisplay.showCurrencyCode;
+    next.capabilities.walletDisplay.showDelayedIndicator =
+      next.walletDisplay.showDelayedIndicator;
+  } else if (patch.capabilities?.walletDisplay) {
+    next.walletDisplay.showBalance = next.capabilities.walletDisplay.showBalance;
+    next.walletDisplay.showCurrencyCode = next.capabilities.walletDisplay.showCurrencyCode;
+    next.walletDisplay.showDelayedIndicator =
+      next.capabilities.walletDisplay.showDelayedIndicator;
+  }
+
+  if (patch.sessionUi) {
+    next.capabilities.sessionUi.showSessionTimer = next.sessionUi.showSessionTimer;
+    next.capabilities.sessionUi.showRealityCheckBanner = next.sessionUi.showRealityCheckBanner;
+    next.capabilities.sessionUi.closeButtonPolicy = next.sessionUi.closeButtonPolicy;
+  } else if (patch.capabilities?.sessionUi) {
+    next.sessionUi.showSessionTimer = next.capabilities.sessionUi.showSessionTimer;
+    next.sessionUi.showRealityCheckBanner = next.capabilities.sessionUi.showRealityCheckBanner;
+    next.sessionUi.closeButtonPolicy = next.capabilities.sessionUi.closeButtonPolicy;
+  }
+
+  if (patch.jackpotHooks) {
+    next.capabilities.jackpotHooks.enabled = next.jackpotHooks.enabled;
+    next.capabilities.jackpotHooks.source = next.jackpotHooks.source;
+  } else if (patch.capabilities?.jackpotHooks) {
+    next.jackpotHooks.enabled = next.capabilities.jackpotHooks.enabled;
+    next.jackpotHooks.source = next.capabilities.jackpotHooks.source;
   }
 
   if (patch.runtimePolicies) {
@@ -228,7 +269,22 @@ const harmonizeRuntimeAndCapabilities = (
 
   if (patch.capabilities?.features) {
     const features = next.capabilities.features;
-    next.capabilities.walletMessaging.externalWalletMessages ||= features.inGameHistory;
+
+    if (features.buyFeatureForCashBonus) {
+      features.buyFeatureDisabledForCashBonus = false;
+    }
+    if (features.buyFeatureDisabledForCashBonus) {
+      features.buyFeatureForCashBonus = false;
+    }
+
+    if (features.jackpotHooks) {
+      next.capabilities.jackpotHooks.enabled = true;
+      if (next.capabilities.jackpotHooks.source === "none") {
+        next.capabilities.jackpotHooks.source = "gs";
+      }
+      next.jackpotHooks.enabled = true;
+      next.jackpotHooks.source = next.capabilities.jackpotHooks.source;
+    }
   }
 
   return next;

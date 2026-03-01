@@ -8,7 +8,7 @@
     "build": "corepack pnpm --filter @games/premium-slot build",
     "lint": "corepack pnpm --filter @games/premium-slot lint",
     "test": "corepack pnpm run test:config && corepack pnpm run test:animation-policy && corepack pnpm run test:contract",
-    "test:contract": "node --experimental-strip-types tests/contract/mock-gs/ScenarioRunner.ts",
+    "test:contract": "node --experimental-strip-types tests/contract/browser-runtime.contract.test.ts",
     "create-game": "node --experimental-strip-types tools/create-game.ts",
     "config:gen": "npx tsx tools/config-gen/src/index.ts",
     "config:check": "npx tsx tools/config-gen/src/index.ts --check",

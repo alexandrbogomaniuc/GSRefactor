@@ -1,11 +1,8 @@
-# CURRENT_STATE_AUDIT
+﻿# CURRENT_STATE_AUDIT
 
-Code-grounded audit of Gamesv1 using commands executed on this machine.
+Code-grounded audit of Gamesv1 based on commands run on 2026-03-01.
 
-Date: 2026-03-01  
-Branch: `main`
-
-## 1) Validation Commands Actually Run
+## 1) Commands executed and results
 
 ### Build
 Command:
@@ -14,6 +11,10 @@ corepack pnpm run build
 ```
 Result: PASS (`exit 0`)
 
+Observed output summary:
+- Root script executed `corepack pnpm --filter @games/premium-slot build`
+- `@games/premium-slot` build executed `tsc`
+
 ### Tests
 Command:
 ```bash
@@ -21,82 +22,66 @@ corepack pnpm run test
 ```
 Result: PASS (`exit 0`)
 
-Observed test summary from output:
+Observed output summary:
 - `test:config`: 8 passed, 0 failed
 - `test:animation-policy`: 6 passed, 0 failed
-- `test:contract`: all scenarios passed
+- `test:contract`: 8 passed, 0 failed
+- Contract suite now validates browser runtime operations (`bootstrap`, `opengame`, `playround`, `featureaction`, `resumegame`, `gethistory`) including requestCounter/idempotency/restore behavior.
 
-### Notes
-- `test:layout` was **not** executed in this audit pass.
-- Node emitted `MODULE_TYPELESS_PACKAGE_JSON` warnings during tests.
+### Output capture file
+Command outputs and root tree are recorded in:
+- `docs/generated/ORCHESTRATOR_OUTPUTS.md`
 
-## 2) Repo Hygiene Checks (Actual Commands)
+## 2) Repo hygiene checks
 
 ### Tracked generated/dependency paths
 Command:
 ```bash
-git ls-files | rg "(^|/)node_modules/|(^|/)dist/|(^|/)build/|(^|/)\\.cache/|(^|/)release-packs/"
+git ls-files | rg "(^|/)node_modules/|(^|/)dist/|(^|/)build/|(^|/)\.cache/|(^|/)release-packs/"
 ```
-Result: no matches (clean tracked source for those generated paths)
+Result: no matches (command exit 1 due no matches)
 
-### Scaffolder duplication
+### Canonical scaffolder path
 Command:
 ```bash
+Test-Path tools/create-game.ts
 Test-Path tools/create-game
 ```
-Result: `False` (duplicate scaffolder package removed)
+Result:
+- `tools/create-game.ts`: `True`
+- `tools/create-game`: `False`
 
-Canonical scaffolder is:
-- `tools/create-game.ts`
-- script: `corepack pnpm run create-game -- --gameId <gameId> --name "<name>" --themeId <themeId> --languages en,es,de`
-
-### Package manager pin
-Command output (from `package.json`):
-- `packageManager=pnpm@10.30.3`
-
-## 3) Canonical vs Legacy Boundaries
+## 3) Canonical vs legacy scope
 
 Canonical runtime docs:
-- `docs/protocol/gs-http-runtime.md`
-- `docs/protocol/browser-runtime-api-contract.md`
+- `docs/gs/bootstrap-config-contract.md`
+- `docs/gs/browser-runtime-api-contract.md`
+- `docs/gs/browser-error-codes.md`
+- `docs/gs/browser-runtime-sequence-diagrams.md`
 
-Legacy/optional:
-- `docs/protocol/abs-gs-v1.md` (legacy/experimental)
-- `packages/operator-pariplay/*` (optional legacy/operator integration surface)
+Legacy/experimental transport adapters still present:
+- `packages/core-protocol/src/ws/GsWsTransport.ts`
+- `packages/core-protocol/src/http/ExtGameTransport.ts`
 
-Non-canonical generated docs:
-- `docs/generated/*` (machine-specific outputs)
-- `docs/examples/release-pack/*` (one intentionally committed example)
+Status: legacy adapters are retained but non-canonical.
 
-## 4) Premium-Slot Runtime Scope Check
+## 4) Runtime boundary checks in premium-slot
 
-Command used:
+Command:
 ```bash
-rg -n "@gamesv1/operator-pariplay|window\\.postMessage|new WebSocket" games/premium-slot/src games/premium-slot/package.json games/premium-slot/vite.config.ts
+rg -n "@gamesv1/operator-pariplay|window\.postMessage|new WebSocket" games/premium-slot/src games/premium-slot/package.json games/premium-slot/vite.config.ts
 ```
-Result: no matches.
+Result: no matches (command exit 1 due no matches)
 
 Interpretation:
-- Canonical game path does not include operator bridge dependency or direct browser messaging/socket calls.
-- Transport is expected via `@gamesv1/core-protocol`.
+- Canonical premium-slot runtime path does not directly depend on operator bridge APIs.
+- No direct `window.postMessage` or raw `WebSocket` calls in premium-slot source.
 
-## 5) Documentation Alignment Snapshot
+## 5) Current honest status
 
-Updated canonical map:
-- `docs/DOCS_MAP.md` points transport truth to `docs/protocol/gs-http-runtime.md`.
-- `docs/RELEASE_PROCESS.md` code map references current files:
-  - `packages/core-protocol/src/http/GsHttpRuntimeTransport.ts`
-  - `packages/core-compliance/src/ResolvedRuntimeConfig.ts`
-  - `packages/core-compliance/src/ConfigResolver.ts`
-
-Generated orchestration output moved out of canonical docs:
-- `docs/generated/ORCHESTRATOR_OUTPUTS.md`
-
-## 6) Current Honest Status
-
-What is confirmed by command output in this audit:
+Confirmed by command output in this audit:
 1. Build passes.
-2. Root test command passes.
-3. Tracked generated/dependency artifacts (`node_modules/dist/build/.cache/release-packs`) are clean.
-4. Duplicate scaffolder package path was removed; one canonical create-game path remains.
-5. Canonical runtime doc naming is GS HTTP specific (`gs-http-runtime.md`) and legacy WS is explicitly separate.
+2. Test suite passes.
+3. Browser-runtime contract tests replace canonical WS/ExtGame contract dependency.
+4. Canonical docs point to `docs/gs/*` contract set.
+5. Legacy WS/ExtGame/operator tests are moved under `tests/_archive/` and removed from canonical test scripts.

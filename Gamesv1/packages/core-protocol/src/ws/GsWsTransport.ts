@@ -13,7 +13,10 @@ import {
   type PlayRoundResponse,
   type ResumeGameRequest,
   type TransportEvent,
-} from "../IGameTransport";
+} from "../IGameTransport.ts";
+
+// Legacy/experimental abs.gs.v1 transport only.
+// Not canonical for slot-browser-v1 browser runtime.
 
 // A lightweight browser-compatible UUID generation mock
 function uuidv4() {
@@ -207,8 +210,7 @@ export class GsWsTransport implements IGameTransport {
             requestCounter: this.seq,
             currentStateVersion: request.metadata?.currentStateVersion,
             presentationPayload: bet,
-            rawPlaceBet: bet,
-            rawCollect: collect,
+            raw: { bet, collect },
         };
     }
 
@@ -227,7 +229,7 @@ export class GsWsTransport implements IGameTransport {
         this.disconnect();
     }
 
-    public async readHistory(_request?: HistoryRequest): Promise<HistoryResponse> {
-        throw new Error("WS legacy transport does not implement readHistory.");
+    public async getHistory(_request?: HistoryRequest): Promise<HistoryResponse> {
+        throw new Error("WS legacy transport does not implement getHistory.");
     }
 }

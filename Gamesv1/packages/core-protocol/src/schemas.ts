@@ -20,8 +20,18 @@ export const ExtGameRequestSchema = z.object({
 
 export type ExtGameRequest = z.infer<typeof ExtGameRequestSchema>;
 
+export const RuntimeBootstrapRequestSchema = z.object({
+  sessionId: z.string().min(1),
+  gameId: z.number().optional(),
+  bankId: z.number().optional(),
+  playerId: z.string().optional(),
+  language: z.string().optional(),
+  launchParams: z.record(z.string(), z.unknown()).optional(),
+});
+
 export const RuntimeOpenGameRequestSchema = z.object({
   sessionId: z.string().min(1),
+  requestCounter: z.number().int().nonnegative().optional(),
   bankId: z.number().optional(),
   playerId: z.string().optional(),
   gameId: z.number().optional(),
@@ -30,32 +40,37 @@ export const RuntimeOpenGameRequestSchema = z.object({
   internalClientCode: z.string().optional(),
 });
 
-export const RuntimePlaceBetRequestSchema = z.object({
-  sessionId: z.string().min(1),
+const RuntimeOperationMetadataSchema = z.object({
   requestCounter: z.number().int().nonnegative(),
-  clientOperationId: z.string().optional(),
-  currentStateVersion: z.string().optional(),
-  bets: z
-    .array(
-      z.object({
-        betType: z.string().min(1),
-        betAmount: z.number().positive(),
-      }),
-    )
-    .min(1),
-});
-
-export const RuntimeCollectRequestSchema = z.object({
-  sessionId: z.string().min(1),
-  requestCounter: z.number().int().nonnegative(),
-  roundId: z.string().min(1),
-  clientOperationId: z.string().optional(),
+  clientOperationId: z.string().min(1),
+  idempotencyKey: z.string().min(1).optional(),
   currentStateVersion: z.string().optional(),
 });
 
-export const RuntimeReadHistoryRequestSchema = z.object({
+export const RuntimePlayRoundRequestSchema = RuntimeOperationMetadataSchema.extend({
+  sessionId: z.string().min(1),
+  betType: z.string().min(1),
+  betAmount: z.number().positive(),
+  roundInput: z.record(z.string(), z.unknown()).optional(),
+});
+
+export const RuntimeFeatureActionRequestSchema = RuntimeOperationMetadataSchema.extend({
+  sessionId: z.string().min(1),
+  action: z.string().min(1),
+  payload: z.record(z.string(), z.unknown()).optional(),
+});
+
+export const RuntimeResumeGameRequestSchema = RuntimeOperationMetadataSchema.partial().extend({
+  sessionId: z.string().min(1),
+});
+
+export const RuntimeCloseGameRequestSchema = RuntimeOperationMetadataSchema.partial().extend({
+  sessionId: z.string().min(1),
+  reason: z.string().optional(),
+});
+
+export const RuntimeGetHistoryRequestSchema = RuntimeOperationMetadataSchema.partial().extend({
   sessionId: z.string().min(1),
   requestCounter: z.number().int().nonnegative(),
   pageNumber: z.number().int().nonnegative().default(0),
-  currentStateVersion: z.string().optional(),
 });

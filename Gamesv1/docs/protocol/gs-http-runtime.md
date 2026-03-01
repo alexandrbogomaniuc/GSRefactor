@@ -1,55 +1,23 @@
-# Protocol: GS HTTP Runtime Path (Canonical)
+﻿# Protocol: GS HTTP Runtime (Compatibility Pointer)
 
-## Overview
+This file is a compatibility pointer only.
+Canonical runtime contract now lives in:
 
-This document defines the canonical production runtime path for Gamesv1 clients.
-The client interacts with GS over HTTP runtime endpoints and treats GS responses as authoritative state.
+- `docs/gs/browser-runtime-api-contract.md`
+- `docs/gs/bootstrap-config-contract.md`
+- `docs/gs/browser-runtime-sequence-diagrams.md`
 
-## Ownership Model
+## Canonical endpoint semantics
 
-- GS owns session, wallet, DB state, restore data, requestCounter, and idempotency decisions.
-- Browser client is presentation-only.
-- Client must never fabricate or authoritatively mutate financial/session state.
-- Browser only communicates with GS runtime endpoints.
-- Internal slot-engine/RNG concerns are server-side only and not directly visible to the browser transport model.
+- `/v1/bootstrap`
+- `/v1/opengame`
+- `/v1/playround`
+- `/v1/featureaction`
+- `/v1/resumegame`
+- `/v1/closegame`
+- `/v1/gethistory`
 
-## Canonical Flow
+## Deprecated semantics
 
-### 1. Open Game (`POST /v1/opengame`)
-- Client sends launch/session token and context.
-- GS returns session + wallet snapshot + runtime config.
-- Client stores this as source state for rendering.
-- Browser API operation name in client: `bootstrap/openGame`.
-
-### 2. Play Round (`POST /v1/placebet` + `POST /v1/collect`)
-- Client sends bet request with requestCounter/idempotency/clientOperationId.
-- GS validates requestCounter/idempotency and resolves outcome.
-- Client settles with `collect` and receives updated wallet/session state.
-- Browser API operation name in client: `playRound`.
-
-### 3. Restore (`POST /v1/opengame` via resume)
-- On reconnect/reload, client re-enters via HTTP init endpoint.
-- GS may return restore payload for interrupted round state.
-- Client resumes presentation from GS restore payload.
-- Browser API operation name in client: `resumeGame`.
-
-### 4. History (`POST /v1/readhistory`)
-- Browser reads GS-facing history endpoint when enabled.
-- Browser API operation name in client: `readHistory`.
-
-## Rules
-
-1. Retry requests must preserve idempotency keys.
-2. Client must respect GS sequencing/requestCounter semantics.
-3. Client must apply GS-provided config/limits before initiating requests.
-4. Client must not derive wallet truth from local estimates.
-5. Client must treat server audit artifacts as diagnostics, not browser-owned runtime truth.
-
-## Legacy Compatibility
-
-`abs.gs.v1` WebSocket may exist for experiments/legacy integrations, but it is not canonical production runtime.
-
-## Reference Contract
-
-Detailed browser runtime endpoint contract:
-- `docs/protocol/browser-runtime-api-contract.md`
+The older browser-facing `/v1/placebet` + `/v1/collect` split is deprecated in canonical scope.
+Any references to those endpoints are legacy/experimental only.

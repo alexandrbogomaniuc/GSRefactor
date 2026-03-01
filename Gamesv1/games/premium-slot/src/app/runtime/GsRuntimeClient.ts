@@ -91,7 +91,14 @@ export class GsRuntimeClient {
       language: launch.language,
     };
 
-    const opened = await transport.bootstrap(this.config);
+    const opened = await transport.bootstrap(this.config, {
+      sessionId: launch.sessionId,
+      gameId: launch.gameId,
+      bankId: launch.bankId,
+      playerId: launch.playerId,
+      language: launch.language,
+      launchParams: Object.fromEntries(new URLSearchParams(window.location.search).entries()),
+    });
     this.applyOpenSnapshot(opened);
     return opened;
   }
@@ -129,11 +136,11 @@ export class GsRuntimeClient {
     return result;
   }
 
-  public async readHistory(pageNumber = 0): Promise<Array<Record<string, unknown>>> {
+  public async getHistory(pageNumber = 0): Promise<Array<Record<string, unknown>>> {
     const transport = this.assertTransport();
     const snapshot = SessionRuntimeStore.get();
 
-    const response = await transport.readHistory({
+    const response = await transport.getHistory({
       pageNumber,
       metadata: {
         requestCounter: snapshot.requestCounter + 1,
@@ -147,6 +154,11 @@ export class GsRuntimeClient {
     });
 
     return response.history;
+  }
+
+  // Deprecated alias kept for old call sites.
+  public async readHistory(pageNumber = 0): Promise<Array<Record<string, unknown>>> {
+    return this.getHistory(pageNumber);
   }
 
   public async close(reason = "client-close"): Promise<void> {

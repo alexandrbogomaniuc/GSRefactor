@@ -1,70 +1,51 @@
-# Docs Map
+﻿# Docs Map
 
-Index of canonical and archived/deprecated documentation.
+Canonical and archived documentation index.
 
-## Canonical Docs
+## Canonical docs
 
-- `docs/MasterContext.md`: canonical architecture context and runtime ownership.
-- `docs/PROJECT.md`: project charter and target architecture.
+- `docs/MasterContext.md`: architecture canon and ownership boundaries.
+- `docs/PROJECT.md`: project charter for locked GS architecture.
 - `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`: client capability/behavior spec.
-- `docs/CAPABILITY_MATRIX.md`: executable capability matrix and runtime fields.
-- `docs/RELEASE_PROCESS.md`: release packaging and deployment checklist.
-- `docs/RELEASE_ARTIFACTS.md`: deterministic release-pack artifact contract.
-- `docs/GS_REGISTRATION_ARTIFACTS.md`: GS Ops registration/enable/rollback artifact usage.
-- `docs/CONFIG_SYSTEM.md`: config layering and runtime resolution.
-- `docs/LOCALIZATION.md`: localization architecture and validation.
-- `docs/ART_AND_PROMO_PIPELINE.md`: art deliverables, export specs, quality gates.
-- `docs/ASSET_MANIFEST_SPEC.md`: per-game art manifest schema.
-- `docs/protocol/gs-http-runtime.md`: canonical GS HTTP runtime transport path.
-- `docs/protocol/browser-runtime-api-contract.md`: browser-facing GS runtime API contract.
-- `docs/CURRENT_STATE_AUDIT.md`: latest code-grounded architecture and compliance audit snapshot.
+- `docs/CAPABILITY_MATRIX.md`: executable capability matrix mapping.
+- `docs/CONFIG_SYSTEM.md`: layered config and resolver behavior.
+- `docs/RELEASE_PROCESS.md`: release-manager execution checklist.
 
-## Source Of Truth By Concern
+## Canonical GS contracts (`docs/gs/`)
 
-- Architecture/runtime ownership: `docs/MasterContext.md`, `docs/PROJECT.md`
-- Transport/handshake: `docs/protocol/gs-http-runtime.md`
-- Browser API contract: `docs/protocol/browser-runtime-api-contract.md`
-- Capability behavior: `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`, `docs/CAPABILITY_MATRIX.md`
-- Config layering/resolution: `docs/CONFIG_SYSTEM.md`
-- Release/registration flow: `docs/RELEASE_PROCESS.md`, `docs/RELEASE_ARTIFACTS.md`, `docs/GS_REGISTRATION_ARTIFACTS.md`
-- New-game scaffolding: `tools/create-game.ts`, `.agent/workflows/new_game.md`
+- `docs/gs/bootstrap-config-contract.md`: bootstrap payload and config ownership.
+- `docs/gs/browser-runtime-api-contract.md`: browser runtime endpoint contract.
+- `docs/gs/browser-error-codes.md`: browser-facing runtime error classes.
+- `docs/gs/browser-runtime-sequence-diagrams.md`: end-to-end runtime sequences.
+- `docs/gs/release-registration-contract.md`: required release artifact contracts.
+- `docs/gs/enable-disable-canary-rollback.md`: operational rollout/rollback contract.
 
-## Generated / Non-Canonical Docs
+## Protocol notes
 
-- `docs/generated/*`: machine-specific command outputs and generated diagnostics.
-- `docs/examples/release-pack/*`: intentionally kept sample generated release-pack metadata.
+- `docs/protocol/gs-http-runtime.md`: compatibility pointer to canonical `docs/gs/*` contracts.
+- `docs/protocol/browser-runtime-api-contract.md`: compatibility pointer to canonical `docs/gs/*` contracts.
+- `docs/protocol/abs-gs-v1.md`: legacy/experimental only.
 
-## Deprecated (Still Present)
+## Source of truth by concern
 
-- `docs/protocol/abs-gs-v1.md`: legacy/experimental only; not canonical production path.
-- `packages/operator-pariplay/*`: optional legacy/operator integration surface, not canonical runtime.
+- Architecture: `docs/MasterContext.md`, `docs/PROJECT.md`
+- Runtime API: `docs/gs/browser-runtime-api-contract.md`
+- Bootstrap config: `docs/gs/bootstrap-config-contract.md`
+- Capabilities/config: `docs/CAPABILITY_MATRIX.md`, `docs/CONFIG_SYSTEM.md`
+- Release/registration: `docs/RELEASE_PROCESS.md`, `docs/gs/release-registration-contract.md`
+- Canary/rollback: `docs/gs/enable-disable-canary-rollback.md`
+- Agent protocol rules: `.agent/rules/01_rules_protocol.md`
 
-## Archived Docs
+## Archived and deprecated
 
-All archived docs are in `docs/_archive/` and include a warning header.
+- Archived docs live under `docs/_archive/` with warning headers.
+- Legacy WebSocket protocol docs are retained but non-canonical.
+- `/v1/placebet` and `/v1/collect` browser contract assumptions are deprecated and replaced by `/v1/playround`.
+- Legacy WS/operator tests are archived under `tests/_archive/`.
 
-Current archived set:
-- `docs/_archive/ActivityLog.md`
-- `docs/_archive/ARCHITECTURE_TREE.md`
-- `docs/_archive/ASSET_PIPELINE.md`
-- `docs/_archive/GSDatabaseRegistrationGuide.md`
-- `docs/_archive/Independent_Development_Guide.md`
-- `docs/_archive/MasterContext.md`
-- `docs/_archive/Milestones.md`
-- `docs/_archive/NFR.md`
-- `docs/_archive/PERF_BUDGET.md`
-- `docs/_archive/PixiJS_Initialization_Guide.md`
-- `docs/_archive/PRD.md`
-- `docs/_archive/PROJECT.md`
-- `docs/_archive/SprintPlan.md`
-- `docs/_archive/TemplateIntegrationGuide.md`
-- `docs/_archive/VFX_LIBRARY.md`
-- `docs/_archive/WowFxRecommendations.md`
+## Contradiction prevention rule
 
-## How To Update Docs Without Causing Contradictions
-
-1. Update `docs/MasterContext.md` first for architecture decisions.
-2. Update only impacted canonical docs listed above.
-3. If a doc is superseded, move it to `docs/_archive/` with warning header.
-4. If a doc is legacy but intentionally kept, mark it "Deprecated" in this map.
-5. `.agent` rules/workflows must mirror canonical docs; they must not introduce alternate architecture truth.
+When behavior changes:
+1. update `docs/gs/*` first,
+2. update core canon docs,
+3. archive/deprecate older conflicting docs.
