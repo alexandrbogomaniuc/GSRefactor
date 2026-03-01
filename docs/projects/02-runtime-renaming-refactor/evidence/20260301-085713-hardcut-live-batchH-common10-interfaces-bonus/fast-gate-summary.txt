@@ -1,0 +1,4 @@
+fast-gate-common-r13=PASS
+fast-gate-common-wallet-r2=PASS
+fast-gate-common-gs-r1=FAIL (pre-existing persister import drift)
+canonical-runner-r1=FAIL (PRE03/STEP04 at common-promo; pre-existing drift)

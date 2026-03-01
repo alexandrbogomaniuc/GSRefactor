@@ -5,7 +5,7 @@ import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusGameMode;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
 import com.dgphoenix.casino.common.cache.data.bonus.BonusType;
-import com.dgphoenix.casino.common.cache.data.bonus.MassAwardBonusTemplate;
+import com.abs.casino.common.cache.data.bonus.MassAwardBonusTemplate;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;

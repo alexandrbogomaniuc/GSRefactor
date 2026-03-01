@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.api;
+package com.abs.casino.common.api;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 

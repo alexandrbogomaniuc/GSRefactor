@@ -1,0 +1,107 @@
+ M docs/phase7/cassandra/full-copy/run-20260224-143418/csv/rcasinoks_httpcallinfocf.clean.csv
+ M docs/phase7/cassandra/full-copy/run-20260224-143418/csv/rcasinoks_httpcallinfocf.csv
+ M docs/phase7/cassandra/full-copy/run-20260224-154745/csv/rcasinoks_httpcallinfocf.clean.csv
+ M docs/phase7/cassandra/full-copy/run-20260224-154745/csv/rcasinoks_httpcallinfocf.csv
+ M docs/phase7/cassandra/full-copy/run-20260224-155110/csv/rcasinoks_httpcallinfocf.clean.csv
+ M docs/phase7/cassandra/full-copy/run-20260224-155110/csv/rcasinoks_httpcallinfocf.csv
+ M docs/phase7/cassandra/full-copy/run-20260224-155602/csv/rcasinoks_httpcallinfocf.clean.csv
+ M docs/phase7/cassandra/full-copy/run-20260224-155602/csv/rcasinoks_httpcallinfocf.csv
+ M docs/phase9/runtime-naming-cleanup/evidence/20260225-202457-class_refs.txt
+ M docs/phase9/runtime-naming-cleanup/evidence/20260225-class_refs.txt
+ M docs/phase9/runtime-naming-cleanup/evidence/20260226-062924-class_refs.txt
+ M docs/phase9/runtime-naming-cleanup/evidence/20260226-063101-class_refs.txt
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-063100/20260226-063101-class_refs.txt
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-091520-hardcut-m0-baseline/mp-runtime-token-inventory.txt
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-091520-hardcut-m0-baseline/runtime-classstring-inventory.txt
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-200827-hardcut-m2-wave102ab-wave103-parallel-batches/post-scan-legacy-refs.txt
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-200827-hardcut-m2-wave102ab-wave103-parallel-batches/pre-scan-legacy-refs.txt
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-203744-hardcut-m2-wave106ab-wave107-parallel-batches/post-scan-legacy-refs.txt
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-203744-hardcut-m2-wave106ab-wave107-parallel-batches/pre-scan-legacy-refs.txt
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-205749-hardcut-m2-wave108ab-wave109-parallel-batches/post-scan-legacy-refs.txt
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-205749-hardcut-m2-wave108ab-wave109-parallel-batches/pre-scan-legacy-refs.txt
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-212148-hardcut-m2-wave110ab-wave111-parallel-batches/diff-batchA.patch
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-212148-hardcut-m2-wave110ab-wave111-parallel-batches/pre-batchB-rewires-scan.txt
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-214021-hardcut-m2-wave112ab-wave113-parallel-batches/diff-batchA.patch
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-215554-hardcut-m2-wave114ab-wave115-parallel-batches/diff-batchB.patch
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-221842-hardcut-m2-wave116ab-wave117-parallel-batches/diff-batchA.patch
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-221842-hardcut-m2-wave116ab-wave117-parallel-batches/diff-integrated.patch
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260226-221842-hardcut-m2-wave116ab-wave117-parallel-batches/pre-batchB-scan.txt
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260228-135900-hardcut-m2-wave304-wave305-cache-game-lowfanout/fast-gate-runner-batchA-rerun2.log
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260228-135900-hardcut-m2-wave304-wave305-cache-game-lowfanout/fast-gate-runner-batchB-rerun2.log
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260228-135900-hardcut-m2-wave304-wave305-cache-game-lowfanout/fqcn-map-deferred.txt
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260228-135900-hardcut-m2-wave304-wave305-cache-game-lowfanout/fqcn-map.txt
+ M docs/projects/02-runtime-renaming-refactor/evidence/20260228-135900-hardcut-m2-wave304-wave305-cache-game-lowfanout/validation-runner-rerun2.log
+ M gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/AbstractLockManager.java
+ M gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/CassandraPersistenceManager.java
+ M gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/KeyspaceManagerStatistics.java
+ M gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraRemoteCallPersister.java
+ M gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/AbstractCassandraPersister.java
+ M gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/TableDefinition.java
+ M gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/CassandraPersistenceManagerTest.java
+ M gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/KeySpaceManagerTest.java
+ M gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/PersistersFactoryTest.java
+ M gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/persist/CassandraPersisterMock.java
+ M gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/persist/SimplePersisterImpl.java
+ M gs-server/cassandra-cache/cache/src/test/java/com/dgphoenix/casino/cassandra/persist/engine/TableDefinitionTest.java
+ M gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/AbstractIntegerDistributedConfigEntryPersister.java
+ M gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBaseGameInfoPersister.java
+ M gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallStatisticsPersister.java
+ M gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCurrencyPersister.java
+ M gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExtendedAccountInfoPersister.java
+ M gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalGameIdsPersister.java
+ M gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraMassAwardRestrictionPersister.java
+ M gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraServerConfigTemplatePersister.java
+ M gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java
+ M gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java
+ M gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IHighFrequencyPrize.java
+ M gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IMoneyPrize.java
+ M gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoCampaign.java
+ M gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoEvent.java
+ M gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentRankQualifier.java
+ M gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IVirtualPrize.java
+ M gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/InstantMoneyPrize.java
+ M gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkPromoEvent.java
+ M gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoPeriod.java
+ M gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TicketPrize.java
+ M gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java
+ M gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPrize.java
+ M gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentRankQualifier.java
+ M gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ExportableCacheEntryContainer.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/cache/CachesHolder.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/SharedGameServerComponentsConfiguration.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/RemoteCallHelper.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/Initializer.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventProcessor.java
+ M gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/AbstractPlayerSessionManager.java
+ M gs-server/game-server/web-gs/src/main/webapp/support/gameBankConfig/GameClass.jsp
+ M gs-server/game-server/web-gs/src/main/webapp/support/langTools.jsp
+ M gs-server/game-server/web-gs/src/main/webapp/support/showGamesDetailsProp3.jsp
+ M gs-server/game-server/web-gs/src/main/webapp/support/updateCaches.jsp
+ M gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/ITimeProvider.java
+ M gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/SynchroTimeProvider.java
+ M gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/NtpTimeProvider.java
+?? .tmp-current-evidence-path-batchF.txt
+?? .tmp-current-evidence-path-batchG.txt
+?? .tmp-current-evidence-path-batchH.txt
+?? .tmp-current-evidence-path-wave318.txt
+?? .tmp-current-evidence-path-wave320.txt
+?? .tmp-current-evidence-path-wave324.txt
+?? .tmp-current-evidence-path-wave326.txt
+?? .tmp-current-evidence-path.txt
+?? .tmp-w202-batchA.txt
+?? .tmp-w202-batchB.txt
+?? com.abs
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-002035-hardcut-m2-wave222ab-wave223-parallel-batches/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-035231-hardcut-m2-wave242ab-wave243-parallel-batches/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-035609-hardcut-m2-wave242ab-wave243-parallel-batches/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-040443-hardcut-m2-wave242-wave243-mp-kafka-cluster/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-062956-hardcut-m2-wave258-wave259-kafka-dto-status-quest-timeframe/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-095328-hardcut-m2-wave278-wave279-kafka-dto-leaf-suite/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260228-203442-hardcut-m2-wave328-wave329-sbutils-enums-time-string-triple/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260301-074657-hardcut-live-batch-cassandra-persist7/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260301-075607-hardcut-live-batchB-promo-cassandra10/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260301-082419-hardcut-live-batchC-promo8-persisters9/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260301-083915-hardcut-live-batchE-persisters7/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260301-084632-hardcut-live-batchF-commonpromo12/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260301-085713-hardcut-live-batchH-common10-interfaces-bonus/

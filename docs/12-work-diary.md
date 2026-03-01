@@ -9500,3 +9500,26 @@
   - baseline `2277`, reduced `2073`, remaining `204`, burndown `91.041282%`
   - Project 02 `51.769482%`, Core `75.884741%`, Portfolio `87.942371%`
   - ETA `~8.3h` (`~1.04` workdays)
+
+### 2026-03-01 09:06 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed live `Batch H`.
+- Batch intent: `10` declarations; retained: `6`.
+- Scope retained (`com.dgphoenix -> com.abs`):
+  - `IAccountInfoPersister`, `CurrencyRateMultiplierContainer`, `MassAwardBonusTemplate`, `FRBMassAwardBonusTemplate`, `DelayedMassAward`, `IExternalWalletTransactionHandler`.
+- Deferred during stabilization (kept legacy package):
+  - `DomainSessionFactory`, `IAccountManager`, `VersionedDistributedCacheEntry`, `PlayerGameSettings`.
+- Bounded compatibility rewires:
+  - `CurrencyRateMultiplierLoader` import updated to moved `CurrencyRateMultiplierContainer`.
+  - `BonusMassAwardBonusTemplate` import updated to moved `MassAwardBonusTemplate`.
+  - `FRBMassAwardBonusTemplate` explicit legacy imports for `BaseBonus`, `FRBonus`, `BonusStatus`.
+- Validation:
+  - fast gate PASS: `gs-server/common`, `gs-server/common-wallet`.
+  - canonical runner attempt: FAIL at `PRE03/STEP04` (`common-promo`) due pre-existing drift profile.
+  - `common-gs` still fails with pre-existing `com.abs.casino.cassandra.persist.*` import drift.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-085713-hardcut-live-batchH-common10-interfaces-bonus/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/235-hard-cut-live-batchH-common-interfaces-bonus-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2079`, remaining `198`, burndown `91.304348%`
+  - Project 02 `51.850531%`, Core `75.925265%`, Portfolio `87.962633%`
+  - ETA `~8.0h` (`~1.01` workdays)

@@ -1,5 +1,8 @@
-package com.dgphoenix.casino.common.cache.data.bonus;
+package com.abs.casino.common.cache.data.bonus;
 
+import com.dgphoenix.casino.common.cache.data.bonus.BaseBonus;
+import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
+import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

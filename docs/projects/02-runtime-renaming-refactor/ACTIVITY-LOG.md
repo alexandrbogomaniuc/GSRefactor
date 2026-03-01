@@ -4607,3 +4607,25 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - baseline `2277`, reduced `2073`, remaining `204`, burndown `91.041282%`
   - Project 02 `51.769482%`, Core `75.884741%`, Portfolio `87.942371%`
   - ETA `~8.3h` (`~1.04` workdays)
+
+## 2026-03-01 09:06 UTC (Hard-cut live batch H: common interfaces/bonus)
+- Continued Project 02 hard-cut migration from dirty in-progress workspace with low-risk declaration-first sequencing.
+- Batch intent was `10` declarations; retained after stabilization: `6`.
+  - moved: `IAccountInfoPersister`, `CurrencyRateMultiplierContainer`, `MassAwardBonusTemplate`, `FRBMassAwardBonusTemplate`, `DelayedMassAward`, `IExternalWalletTransactionHandler`.
+  - deferred: `DomainSessionFactory`, `IAccountManager`, `VersionedDistributedCacheEntry`, `PlayerGameSettings` (duplicate-FQCN/signature drift in current mixed workspace).
+- Bounded compatibility rewires:
+  - `CurrencyRateMultiplierLoader` import to moved `CurrencyRateMultiplierContainer`,
+  - `BonusMassAwardBonusTemplate` import to moved `MassAwardBonusTemplate`,
+  - explicit legacy imports in moved `FRBMassAwardBonusTemplate` (`BaseBonus`, `FRBonus`, `BonusStatus`).
+- Validation snapshot:
+  - `gs-server/common` fast gate PASS (`fast-gate-common-r13.log`),
+  - `gs-server/common-wallet` fast gate PASS (`fast-gate-common-wallet-r2.log`),
+  - canonical matrix attempt fails at `PRE03/STEP04` in `common-promo` (pre-existing drift),
+  - `common-gs` still fails with pre-existing `com.abs.casino.cassandra.persist.*` import drift.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-085713-hardcut-live-batchH-common10-interfaces-bonus/`
+  - report: `docs/projects/02-runtime-renaming-refactor/235-hard-cut-live-batchH-common-interfaces-bonus-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2079`, remaining `198`, burndown `91.304348%`
+  - Project 02 `51.850531%`, Core `75.925265%`, Portfolio `87.962633%`
+  - ETA `~8.0h` (`~1.01` workdays)

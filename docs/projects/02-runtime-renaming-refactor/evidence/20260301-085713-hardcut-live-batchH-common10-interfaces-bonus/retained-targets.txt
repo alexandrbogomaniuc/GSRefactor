@@ -1,0 +1,8 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/api/IAccountInfoPersister.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyRateMultiplierContainer.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyRateMultiplierLoader.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/DelayedMassAward.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/FRBMassAwardBonusTemplate.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/MassAwardBonusTemplate.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IExternalWalletTransactionHandler.java
