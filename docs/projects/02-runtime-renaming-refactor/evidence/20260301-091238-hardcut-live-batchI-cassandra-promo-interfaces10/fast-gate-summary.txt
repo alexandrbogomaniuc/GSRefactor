@@ -1,0 +1,14 @@
+[START] common
+common rc=1
+[START] common-wallet
+common-wallet rc=1
+[START] sb-utils
+sb-utils rc=0
+[START] utils
+utils rc=0
+[START] common-promo
+common-promo rc=1
+[START] common-persisters
+common-persisters rc=1
+[START] common-gs
+common-gs rc=1

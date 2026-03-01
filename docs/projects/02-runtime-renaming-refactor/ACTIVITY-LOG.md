@@ -4629,3 +4629,24 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - baseline `2277`, reduced `2079`, remaining `198`, burndown `91.304348%`
   - Project 02 `51.850531%`, Core `75.925265%`, Portfolio `87.962633%`
   - ETA `~8.0h` (`~1.01` workdays)
+
+## 2026-03-01 09:12 UTC (Hard-cut live batch I: cassandra/promo interfaces)
+- Continued Project 02 hard-cut migration from dirty in-progress workspace using bounded low-risk interface-first sequencing.
+- Batch intent was `10` declarations; retained after stabilization: `8`.
+  - moved: `ICachePersister`, `ICassandraBaseGameInfoPersister`, `IHttpClientStatisticsPersister`, `ILazyLoadingPersister`, `ExtendedAccountInfoPersisterInstanceHolder`, `IStringSerializer`, `IPromoCountryRestrictionService`, `INetworkPromoCampaign`.
+  - deferred: `IRemotePromoNotifier`, `ILoadBalancer` (to avoid crossing pre-existing modified/common-gs boundary surfaces in this push).
+- Bounded compatibility rewires:
+  - cassandra interface/holder import rewires in clean callsites (`RESTCWClient`, `HttpClientCallbackHandler`, `CurrencyCache`, `BaseGameCache`, `AbstractLazyLoadingExportableCache`),
+  - promo interface rewires in clean callsites (`CountryRestrictionService`, `GameServerComponentsConfiguration`, `NetworkPromoCampaign`, `IPromoCampaignManager`, `PromoCampaignManager`).
+- Validation snapshot (canonical runner):
+  - `fast_gate_batchA`: `FAIL` at `STEP01` (`common` duplicate-class drift profile),
+  - `fast_gate_batchB`: `FAIL` at `STEP01`,
+  - `prewarm`: `FAIL` at `PRE03` (`common-promo` pre-existing drift),
+  - `validation`: `FAIL` at `PRE03`, `STEP09` retry skipped.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-091238-hardcut-live-batchI-cassandra-promo-interfaces10/`
+  - report: `docs/projects/02-runtime-renaming-refactor/236-hard-cut-live-batchI-cassandra-promo-interfaces-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2087`, remaining `190`, burndown `91.655687%`
+  - Project 02 `51.957593%`, Core `75.978797%`, Portfolio `87.989398%`
+  - ETA `~7.7h` (`~0.96` workdays)

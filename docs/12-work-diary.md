@@ -9523,3 +9523,20 @@
   - baseline `2277`, reduced `2079`, remaining `198`, burndown `91.304348%`
   - Project 02 `51.850531%`, Core `75.925265%`, Portfolio `87.962633%`
   - ETA `~8.0h` (`~1.01` workdays)
+
+### 2026-03-01 09:12 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed live `Batch I`.
+- Batch intent: `10` declarations; retained: `8`.
+- Retained moves (`com.dgphoenix -> com.abs`):
+  - `ICachePersister`, `ICassandraBaseGameInfoPersister`, `IHttpClientStatisticsPersister`, `ILazyLoadingPersister`, `ExtendedAccountInfoPersisterInstanceHolder`, `IStringSerializer`, `IPromoCountryRestrictionService`, `INetworkPromoCampaign`.
+- Deferred during stabilization:
+  - `IRemotePromoNotifier`, `ILoadBalancer`.
+- Validation:
+  - canonical runner profile remained blocked by pre-existing drift (`STEP01` in `common`, `PRE03` in `common-promo`).
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-091238-hardcut-live-batchI-cassandra-promo-interfaces10/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/236-hard-cut-live-batchI-cassandra-promo-interfaces-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2087`, remaining `190`, burndown `91.655687%`
+  - Project 02 `51.957593%`, Core `75.978797%`, Portfolio `87.989398%`
+  - ETA `~7.7h` (`~0.96` workdays)

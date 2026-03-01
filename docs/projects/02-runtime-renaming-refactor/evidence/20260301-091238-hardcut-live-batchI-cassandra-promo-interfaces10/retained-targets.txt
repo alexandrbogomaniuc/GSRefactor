@@ -1,0 +1,8 @@
+ICachePersister
+ICassandraBaseGameInfoPersister
+IHttpClientStatisticsPersister
+ILazyLoadingPersister
+ExtendedAccountInfoPersisterInstanceHolder
+IStringSerializer
+IPromoCountryRestrictionService
+INetworkPromoCampaign

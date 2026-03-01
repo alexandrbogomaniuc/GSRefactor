@@ -6,7 +6,7 @@ import com.abs.casino.cassandra.persist.CassandraCountryRestrictionPersister;
 import com.abs.casino.common.exception.BadArgumentException;
 import com.abs.casino.common.geoip.CountryRestrictionList;
 import com.abs.casino.common.geoip.RestrictionType;
-import com.dgphoenix.casino.common.promo.IPromoCountryRestrictionService;
+import com.abs.casino.common.promo.IPromoCountryRestrictionService;
 import com.dgphoenix.casino.common.util.Pair;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;

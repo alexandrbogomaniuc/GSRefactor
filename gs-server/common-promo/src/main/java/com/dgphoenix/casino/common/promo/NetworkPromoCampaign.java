@@ -1,5 +1,6 @@
 package com.dgphoenix.casino.common.promo;
 
+import com.abs.casino.common.promo.INetworkPromoCampaign;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.util.DatePeriod;
 import com.esotericsoftware.kryo.Kryo;

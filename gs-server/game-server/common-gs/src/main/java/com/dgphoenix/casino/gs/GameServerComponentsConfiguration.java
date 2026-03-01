@@ -17,7 +17,7 @@ import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.lock.ILockManager;
 import com.dgphoenix.casino.common.promo.IPrizeWonHandlersFactory;
 import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
-import com.dgphoenix.casino.common.promo.IPromoCountryRestrictionService;
+import com.abs.casino.common.promo.IPromoCountryRestrictionService;
 import com.abs.casino.common.transactiondata.ITransactionDataCreator;
 import com.abs.casino.common.transactiondata.ITransactionDataPersister;
 import com.abs.casino.common.transactiondata.storeddate.StoredItemType;

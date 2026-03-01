@@ -1,0 +1,6 @@
+baseline=2277
+pre_remaining=198
+post_remaining=190
+reduced_total=2087
+batch_reduction=8
+burndown=91.655687

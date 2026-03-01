@@ -7,7 +7,7 @@ package com.dgphoenix.casino.common.cache;
 import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.abs.casino.common.cache.ILoadingCache;
-import com.dgphoenix.casino.cassandra.persist.ICachePersister;
+import com.abs.casino.cassandra.persist.ICachePersister;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.currency.Currency;
 import com.dgphoenix.casino.common.exception.CommonException;

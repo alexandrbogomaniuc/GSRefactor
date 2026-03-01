@@ -4,7 +4,7 @@ import com.abs.casino.common.cache.ExportableCacheEntry;
 import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.ILoadingCache;
 import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-import com.dgphoenix.casino.cassandra.persist.ILazyLoadingPersister;
+import com.abs.casino.cassandra.persist.ILazyLoadingPersister;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.persist.StreamPersister;
 import com.abs.casino.common.persist.TableProcessor;

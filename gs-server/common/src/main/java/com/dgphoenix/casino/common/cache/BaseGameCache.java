@@ -5,7 +5,7 @@ import com.abs.casino.common.cache.ExportableCacheEntry;
 import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.abs.casino.common.cache.ILoadingCache;
-import com.dgphoenix.casino.cassandra.persist.ICassandraBaseGameInfoPersister;
+import com.abs.casino.cassandra.persist.ICassandraBaseGameInfoPersister;
 import com.abs.casino.common.cache.data.account.PlayerDeviceType;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.bank.Coin;

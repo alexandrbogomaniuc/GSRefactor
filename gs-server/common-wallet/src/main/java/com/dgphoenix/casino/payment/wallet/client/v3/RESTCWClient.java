@@ -1,7 +1,7 @@
 package com.abs.casino.payment.wallet.client.v3;
 
 import com.abs.casino.cassandra.persist.ExtendedAccountInfoPersister;
-import com.dgphoenix.casino.cassandra.persist.ExtendedAccountInfoPersisterInstanceHolder;
+import com.abs.casino.cassandra.persist.ExtendedAccountInfoPersisterInstanceHolder;
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.abs.casino.common.cache.data.account.Gender;
