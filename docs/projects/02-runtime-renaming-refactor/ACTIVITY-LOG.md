@@ -4890,3 +4890,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - baseline `2277`, reduced `2220`, remaining `57`, burndown `97.496706%`
   - Project 02 `53.754184%`, Core `76.877092%`, Portfolio `88.438546%`
   - ETA `~2.4h` (`~0.30` workdays)
+
+## 2026-03-01 10:29 UTC (Hard-cut live batch W: common cache/data 25)
+- Continued Project 02 hard-cut migration from dirty in-progress workspace using declaration-first high-throughput batching.
+- Batch intent was `25` declarations; retained after stabilization: `25`.
+  - moved: `AccountInfo`, `BankInfo`, `SubCasino`, `PlayerBet`, `BaseBonus`, `BaseMassAward`, `Bonus`, `BonusStatus`, `FRBonus`, `Currency`, `BaseGameInfo`, `BaseGameInfoTemplate`, `GameSession`, `SessionInfo`, `GameServerConfigTemplate`, `MessageManager`, `BankInfoCache`, `BaseGameCache`, `BaseGameInfoTemplateCache`, `CurrencyCache`, `LoadBalancerCache`, `SubCasinoCache`, `SubCasinoGroupCache`, `DomainSession`, `SessionHelper`.
+- Bounded compatibility rewires:
+  - rewired `import com.dgphoenix...` to `import com.abs...` only for imports whose source declaration is already moved to `com.abs`,
+  - no blind/global replace.
+- Validation snapshot:
+  - focused fast gates: `common FAIL`, `common-wallet FAIL`, `sb-utils FAIL`, `common-gs FAIL`, `common-promo FAIL`.
+  - canonical runner profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-102953-hardcut-live-batchW-common-cachedata25/`
+  - report: `docs/projects/02-runtime-renaming-refactor/250-hard-cut-live-batchW-common-cachedata25-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2245`, remaining `32`, burndown `98.594642%`
+  - Project 02 `54.091889%`, Core `77.045945%`, Portfolio `88.522972%`
+  - ETA `~1.3h` (`~0.17` workdays)

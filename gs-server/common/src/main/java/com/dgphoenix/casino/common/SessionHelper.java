@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common;
+package com.abs.casino.common;
 
 import com.dgphoenix.casino.common.cache.data.payment.IWallet;
 import com.dgphoenix.casino.common.cache.data.session.SessionInfo;

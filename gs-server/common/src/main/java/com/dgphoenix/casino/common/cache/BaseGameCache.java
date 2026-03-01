@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache;
+package com.abs.casino.common.cache;
 
 import com.abs.casino.common.cache.data.game.BaseGameConstants;
 import com.abs.casino.common.cache.ExportableCacheEntry;
@@ -7,10 +7,10 @@ import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.abs.casino.common.cache.ILoadingCache;
 import com.abs.casino.cassandra.persist.ICassandraBaseGameInfoPersister;
 import com.abs.casino.common.cache.data.account.PlayerDeviceType;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.bank.Coin;
-import com.dgphoenix.casino.common.cache.data.bank.Limit;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.Coin;
+import com.abs.casino.common.cache.data.bank.Limit;
+import com.abs.casino.common.cache.data.currency.Currency;
 import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.abs.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper;
 import com.dgphoenix.casino.common.cache.data.game.*;

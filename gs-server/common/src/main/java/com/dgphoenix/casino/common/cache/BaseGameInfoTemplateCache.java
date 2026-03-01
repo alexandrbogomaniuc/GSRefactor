@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache;
+package com.abs.casino.common.cache;
 
 import com.abs.casino.common.cache.data.game.BaseGameConstants;
 import com.abs.casino.common.cache.ExportableCacheEntry;
@@ -7,7 +7,7 @@ import com.abs.casino.common.cache.ICreateGameListener;
 import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.abs.casino.common.cache.data.game.MiniGameInfo;
 import com.dgphoenix.casino.common.cache.data.game.*;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.session.ClientType;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;

@@ -1,9 +1,9 @@
-package com.dgphoenix.casino.common.config;
+package com.abs.casino.common.config;
 
 import com.abs.casino.common.config.FreeSpaceThresholdType;
 import com.abs.casino.common.config.MountMonitoringEntry;
-import com.dgphoenix.casino.common.cache.Identifiable;
-import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
+import com.abs.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.data.IDistributedConfigEntry;
 import com.abs.casino.common.configuration.CasinoSystemType;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.abs.casino.common.util.property.BooleanProperty;

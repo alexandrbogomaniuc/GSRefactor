@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.configuration.messages;
+package com.abs.casino.common.configuration.messages;
 
 import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;

@@ -1,13 +1,13 @@
-package com.dgphoenix.casino.common.cache.data.game;
+package com.abs.casino.common.cache.data.game;
 
 import com.abs.casino.common.cache.data.game.BaseGameConstants;
 import com.abs.casino.common.cache.data.game.GameLanguageHelper;
 import com.abs.casino.common.cache.data.game.RoundFinishedHelper;
-import com.dgphoenix.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.Identifiable;
 import com.abs.casino.common.cache.JsonSelfSerializable;
-import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.configuration.messages.MessageManager;
+import com.abs.casino.common.cache.data.IDistributedConfigEntry;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.configuration.messages.MessageManager;
 import com.abs.casino.common.util.property.PropertyUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.esotericsoftware.kryo.Kryo;

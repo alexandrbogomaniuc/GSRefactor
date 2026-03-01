@@ -1,0 +1,1110 @@
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/AccountInfo.java
+package com.abs.casino.common.cache.data.account;
+
+import com.abs.casino.common.cache.data.account.IAccountInfo;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.string.StringIdGenerator;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
+/**
+ * Created by ANGeL Date: Sep 17, 2008 Time: 6:03:59 PM
+ */
+public class AccountInfo implements IDistributedCacheEntry, IAccountInfo, KryoSerializable, JsonSelfSerializable<AccountInfo> {
+    private static final Logger LOG = LogManager.getLogger(AccountInfo.class);
+    public static final String BIRTH_DATE = "BIRTH_DATE";
+    public static final String GENDER = "GENDER";
+    /**
+     * VERSION 1 changes:
+     * -add field 'testUser'
+     */
+    private static final byte VERSION = 3;
+
+    private long id;
+    private String nickName;
+    private String externalId;
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java
+package com.abs.casino.common.cache.data.bank;
+
+import com.abs.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.cache.data.IDistributedConfigEntry;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.bank.BankConstants;
+import com.abs.casino.common.cache.data.bank.IndividualGameSettingsType;
+import com.abs.casino.common.cache.data.bank.MaxQuestClientLogLevel;
+import com.abs.casino.common.cache.data.bank.PlayerGameSettingsType;
+import com.abs.casino.common.util.BidirectionalMultivalueMap;
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.LogoutActionType;
+import com.abs.casino.common.util.RefererDomains;
+import com.abs.casino.common.util.property.*;
+import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.Registration;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.google.common.base.Splitter;
+import com.google.common.collect.Maps;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+
+import static com.abs.casino.common.util.property.PropertyUtils.getBooleanProperty;
+import static com.abs.casino.common.util.property.PropertyUtils.getLongProperty;
+import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
+
+public class BankInfo implements IDistributedConfigEntry, Identifiable, 
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/SubCasino.java
+package com.abs.casino.common.cache.data.bank;
+
+import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.dgphoenix.casino.common.cache.Identifiable;
+import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * User: flsh
+ * Date: 18.12.12
+ */
+public class SubCasino implements IDistributedConfigEntry, Identifiable, KryoSerializable {
+    private static final int VERSION = 0;
+    private long id;
+    private String name;
+    private long defaultBank;
+    private List<Long> bankIds = new ArrayList<Long>();
+    private List<String> domainNames = new ArrayList<String>();
+
+    public SubCasino() {
+    }
+
+    public SubCasino(long id) {
+        this.id = id;
+    }
+
+    public SubCasino(long id, String name, long defaultBank, List<Long> bankIds, List<String> domainNames) {
+        this.id = id;
+        this.name = name;
+        this.defaultBank = defaultBank;
+        this.bankIds = bankIds;
+        this.domainNames = domainNames;
+    }
+
+    @Override
+    public long getId() {
+        return id;
+    }
+
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bet/PlayerBet.java
+package com.abs.casino.common.cache.data.bet;
+
+import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.dgphoenix.casino.common.cache.Identifiable;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+import java.util.Date;
+
+@XStreamAlias("Bet")
+public class PlayerBet implements IDistributedCacheEntry, Identifiable, Comparable<PlayerBet>, KryoSerializable {
+    private static final byte VERSION = 3;
+    private static final String UNJ_WIN = "UNJ_WIN";
+    private static final String UNJ_NAME = "UNJ_NAME";
+
+    @XStreamAsAttribute
+    @XStreamAlias("id")
+    private long id;
+
+    @XStreamAsAttribute
+    @XStreamAlias("r")
+    private long roundId;
+
+    @XStreamAsAttribute
+    @XStreamAlias("s")
+    private int gameStateId;
+
+    @XStreamAsAttribute
+    @XStreamAlias("d")
+    private String data;
+
+    @XStreamAsAttribute
+    @XStreamAlias("sd")
+    private String servletData;
+
+    @XStreamAsAttribute
+    @XStreamAlias("b")
+    private long bet;
+
+    @XStreamAsAttribute
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseBonus.java
+package com.abs.casino.common.cache.data.bonus;
+
+import com.abs.casino.common.cache.JsonSelfSerializable;
+import com.dgphoenix.casino.common.cache.VersionedDistributedCacheEntry;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+public abstract class BaseBonus<BB extends BaseBonus> extends VersionedDistributedCacheEntry 
+    implements KryoSerializable, JsonSelfSerializable<BB> {
+
+    private static final Logger LOG = LogManager.getLogger(BaseBonus.class);
+
+    protected long id;
+    protected long accountId;
+    protected long bankId;
+    protected String extId;
+    protected String description;
+    protected String comment;
+    protected List<Long> gameIds;
+    protected long betSum;
+    protected long timeAwarded;
+    protected Long endTime = null;
+    protected BonusStatus status;
+    protected boolean internal = false;
+    protected Long massAwardId = null;
+    protected long lastUpdateDate;
+
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseMassAward.java
+package com.abs.casino.common.cache.data.bonus;
+
+import com.dgphoenix.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.JsonSelfSerializable;
+import com.dgphoenix.casino.common.cache.VersionedDistributedCacheEntry;
+import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
+import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+
+import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
+
+/**
+ * User: flsh
+ * Date: 11.07.13
+ */
+public class BaseMassAward<T extends MassAwardBonusTemplate> extends VersionedDistributedCacheEntry
+        implements IDistributedConfigEntry, Identifiable, KryoSerializable, JsonSelfSerializable<BaseMassAward> {
+    private static final byte VERSION = 3;
+    private long id;
+    private String bankIds;
+    private String accountIds;
+
+    //newAccounts - list of pairs bankId/extUserId for new/nonexisting players: 1/zzz,2/aaa,3/bbb
+    private String newAccounts;
+    private MassAwardType type;
+
+    private T template;
+    private Double maxWinMultiplier;
+    private Long maxWinLimit;
+
+    private BonusStatus status;
+
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/Bonus.java
+package com.abs.casino.common.cache.data.bonus;
+
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.util.*;
+
+public class Bonus extends BaseBonus<Bonus> {
+    private static final byte VERSION = 6;
+    private static final Logger LOG = LogManager.getLogger(Bonus.class);
+    private BonusType type;
+    private long amount;
+    private double rolloverMultiplier;
+    // Fractional part of super.betSum. BetSum is a rollover and now it may be incremented not only by an entire bet
+    // but also by some percent( gameInfo.getProperty(BaseGameConstants.KEY_ROLLOVER_PERCENT) ) of a bet.
+    private double rolloverFractionalPart;
+    private boolean autoReleased;
+
+    private BonusGameMode bonusGameMode;
+
+    private long expirationDate;
+    private long balance;
+
+    private Long lastGameSessionId;
+
+    private long startDate;
+
+    private Long maxWinLimit;
+    private Long bonusEndBalance;
+
+    public Bonus() {
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusStatus.java
+package com.abs.casino.common.cache.data.bonus;
+
+public enum BonusStatus {
+    ACTIVE, RELEASED, LOST, CANCELLED, EXPIRED, RELEASING, CANCELLING, CLOSED
+}
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/FRBonus.java
+package com.abs.casino.common.cache.data.bonus;
+
+import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+
+public class FRBonus extends BaseBonus<FRBonus> {
+    private static final byte VERSION = 3;
+    private static final Logger LOG = LogManager.getLogger(FRBonus.class);
+    private long roundsLeft;
+    private long rounds;
+    private long winSum;
+    private Long startDate;
+    private Long expirationDate;
+    private Long dateOfFirstUse = null;
+    // Number of days the Free round should be available after the player have entered the Free round bonus
+    private Long freeRoundValidity;
+    private long frbTableRoundChips;
+    private Long coinValue;
+    private Long maxWinLimit;
+
+
+    public FRBonus() {
+    }
+
+    public FRBonus(long id, long accountId, long bankId, String extId, String description, String comment,
+                   List<Long> gameIds, long betSum, long timeAwarded, Long endTime,
+                   BonusStatus status, boolean internal, Long massAwardId, long roundsLeft, long rounds, long winSum,
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/currency/Currency.java
+package com.abs.casino.common.cache.data.currency;
+
+import com.abs.casino.common.cache.data.currency.ICurrency;
+import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.dgphoenix.casino.common.cache.CurrencyCache;
+import com.abs.casino.common.cache.data.IDistributedConfigEntry;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.Registration;
+import com.esotericsoftware.kryo.Serializer;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.esotericsoftware.kryo.serializers.CollectionSerializer;
+import com.thoughtworks.xstream.converters.MarshallingContext;
+import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import javax.xml.bind.annotation.XmlTransient;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+/**
+ * User: flsh
+ * Date: Jun 28, 2010
+ */
+public class Currency implements IDistributedConfigEntry, KryoSerializable, ICurrency {
+    public static final int CURRENCY_LENGTH = 3;
+    public static final CurrencySerializer SERIALIZER = new CurrencySerializer();
+    public static final CurrencyListSerializer LIST_SERIALIZER = new CurrencyListSerializer();
+
+    private static final Logger LOG = LogManager.getLogger(Currency.class);
+    private static final int VERSION = 1;
+    /**
+     * ISO 4217 currency code for this currency.
+     */
+    private String code;
+    private String symbol;
+    private String basicCurrency;
+    private String minimalFraction;
+
+    public Currency() {
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java
+package com.abs.casino.common.cache.data.game;
+
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
+import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.cache.data.IDistributedConfigEntry;
+import com.abs.casino.common.cache.data.account.PlayerDeviceType;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.Coin;
+import com.abs.casino.common.cache.data.bank.Limit;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.currency.ICurrency;
+import com.abs.casino.common.config.HostConfiguration;
+import com.abs.casino.common.configuration.messages.MessageManager;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.StreamUtils;
+import com.abs.casino.common.util.logkit.ThreadLog;
+import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.google.common.base.Splitter;
+import com.google.common.collect.ImmutableSet;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import com.thoughtworks.xstream.converters.MarshallingContext;
+import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.util.*;
+import java.util.stream.Collectors;
+
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfoTemplate.java
+package com.abs.casino.common.cache.data.game;
+
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
+import com.abs.casino.common.cache.data.game.GameLanguageHelper;
+import com.abs.casino.common.cache.data.game.RoundFinishedHelper;
+import com.abs.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.cache.data.IDistributedConfigEntry;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.configuration.messages.MessageManager;
+import com.abs.casino.common.util.property.PropertyUtils;
+import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoException;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.google.common.collect.Maps;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import static com.dgphoenix.casino.common.cache.data.bank.BankInfo.MAP_SPLITTER;
+import static com.abs.casino.common.util.property.PropertyUtils.*;
+import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+
+public class BaseGameInfoTemplate implements IDistributedConfigEntry, Identifiable, KryoSerializable, JsonSelfSerializable<BaseGameInfoTemplate> {
+    private static final Logger LOG = LogManager.getLogger(BaseGameInfoTemplate.class);
+    private static final int VERSION = 1;
+    private static final String DEFAULT_TESTSTAND_ROWCOUNT = "4";
+
+    private long gameId;
+    private String gameName;
+    private boolean jackpotGame;
+    private Integer gameVariationIdBase;
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/GameSession.java
+package com.abs.casino.common.cache.data.session;
+
+import com.abs.casino.common.cache.data.bank.Coin;
+import com.abs.casino.common.cache.data.bet.PlayerBet;
+import com.abs.casino.common.cache.data.bonus.BonusStatus;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.session.IGameSession;
+import com.abs.casino.gamecombos.ComboFeature;
+import com.abs.casino.gamecombos.GameSessionCommonStatistics;
+import com.abs.casino.unj.api.ContributionResult;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+
+import java.util.*;
+
+public class GameSession implements IGameSession, KryoSerializable {
+    private static final byte VERSION = 11;
+    private long id;
+    private long accountId;
+    private long bankId;
+    private long gameId;
+    private long startTime;
+    private Long endTime;
+    private long income;
+    private long payout;
+    private long negativeBet;
+    private int betsCount;
+    private int roundsCount;
+    private long lastPlayerBetId;
+    private boolean createNewBet = true;
+    private boolean realMoney;
+    private double pcrSum;
+    private double bcrSum;
+    private Currency currency;
+    private String currencyFraction;
+
+    private Long bonusId;
+    private Long frbonusId;
+    private BonusStatus bonusStatus;
+    private BonusStatus frbonusStatus;
+    private String externalSessionId;
+
+    private long startBalance;
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/SessionInfo.java
+package com.abs.casino.common.cache.data.session;
+
+import com.abs.casino.common.cache.data.session.SessionConstants;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.util.string.StringIdGenerator;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
+/**
+ * Created by ANGeL Date: Sep 17, 2008 Time: 6:37:32 PM
+ */
+public class SessionInfo implements IDistributedCacheEntry, KryoSerializable {
+    private static final byte VERSION = 7;
+    private String sessionId;
+    private String externalSessionId;
+    private long accountId;
+    private String host;
+    private ClientType clientType;
+    private long startTime;
+    private Long endTime;
+    private volatile long lastActivityTime;
+    private int loginServerId;
+    private Long gameSessionId;
+    private long playedGamesCount;
+    private int lastPlayedMode;
+    private String secretKey;
+    private String lastCloseGameReason;
+    private Long lastGameSessionId;
+    private long lastRealityCheckTime;
+    private long casinoLoginTime;
+    private long realityCheckInterval;
+    private boolean forceHttps;
+    private String privateRoomId;
+
+    public SessionInfo() {
+    }
+
+    public SessionInfo(long accountId, ClientType clientType, String sessionId, String host, String externalSessionId,
+                       int loginServerId, long startTime, String privateRoomId) {
+        this.accountId = accountId;
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/config/GameServerConfigTemplate.java
+package com.abs.casino.common.config;
+
+import com.abs.casino.common.config.FreeSpaceThresholdType;
+import com.abs.casino.common.config.MountMonitoringEntry;
+import com.abs.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.data.IDistributedConfigEntry;
+import com.abs.casino.common.configuration.CasinoSystemType;
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.property.BooleanProperty;
+import com.abs.casino.common.util.property.NumericProperty;
+import com.abs.casino.common.util.property.PropertyUtils;
+import com.abs.casino.common.util.property.StringProperty;
+import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.google.common.base.Splitter;
+import com.google.common.collect.Sets;
+import org.apache.commons.net.util.SubnetUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import javax.annotation.Nonnull;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.google.common.base.Preconditions.checkArgument;
+import static org.apache.commons.lang.StringUtils.isBlank;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
+
+/**
+ * User: flsh
+ * Date: 10.06.14.
+ */
+public class GameServerConfigTemplate implements IDistributedConfigEntry, Identifiable, KryoSerializable {
+    public static final int TEMPLATE_ID = 1;
+    private static final short VERSION = 2;
+    private static final int DEFAULT_THRIFT_PORT = 6000;
+    private static final int DEFAULT_CM_THRIFT_PORT = 6001;
+    private static final Logger LOG = LogManager.getLogger(GameServerConfigTemplate.class);
+    private long systemId = 1;
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/configuration/messages/MessageManager.java
+package com.abs.casino.common.configuration.messages;
+
+import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
+import org.apache.commons.lang.LocaleUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.struts.util.MessageResources;
+
+import java.util.Locale;
+
+import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+
+public class MessageManager {
+    private static final MessageManager instance = new MessageManager();
+    private static final Logger LOG = LogManager.getLogger(MessageManager.class);
+
+    public static final String APPLICATION_MESSAGE_BUNDLE =
+            "com.dgphoenix.casino.common.configuration.messages.ApplicationMessage";
+
+    public static final String LOCALIZATION_MESSAGE_BUNDLE =
+            "com.dgphoenix.casino.common.configuration.messages.LocalizationMessage";
+
+    public static final String GAME_SERVLET_MESSAGE_BUNDLE =
+            "com.dgphoenix.casino.common.configuration.messages.GameServletMessage";
+
+    public static final String BANK_PREFIX = "BANK.";
+    public static final String SUBCASINO_PREFIX = "SUBCASINO.";
+    public static final String CW_ERROR_PREFIX = "CW_ERROR.";
+    public static final String GAME_NAME_PREFIX = "game.name.";
+
+    private MessageManager() {
+    }
+
+    public static MessageManager getInstance() {
+        return instance;
+    }
+
+    private String getResourceMessage(Locale locale, String messageBundleName, String key) {
+        return MessageResources.getMessageResources(messageBundleName).getMessage(locale, key);
+    }
+
+    private String getResourceMessage(String messageBundleName, String key) {
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java
+/**
+ * User: flsh
+ * Date: 08.07.2009
+ */
+package com.abs.casino.common.cache;
+
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
+import com.abs.casino.common.cache.data.bank.BankConstants;
+import com.abs.casino.common.cache.IDistributedConfigCache;
+import com.abs.casino.common.cache.ICurrencyRateMultiplierRetriever;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.Coin;
+import com.abs.casino.common.cache.data.bank.Limit;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.StreamUtils;
+import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.google.common.base.Splitter;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.cliffc.high_scale_lib.NonBlockingHashMapLong;
+
+import javax.validation.constraints.NotNull;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ExecutionException;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+@com.abs.casino.common.cache.CacheKeyInfo(description = "bank.id")
+public class BankInfoCache extends AbstractExportableCache<BankInfo> implements IDistributedConfigCache, ICurrencyRateMultiplierRetriever {
+    private static final Logger LOG = LogManager.getLogger(BankInfoCache.class);
+    private static final BankInfoCache instance = new BankInfoCache();
+
+    // bankId -> BankInfo
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java
+package com.abs.casino.common.cache;
+
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
+import com.abs.casino.common.cache.IDistributedConfigCache;
+import com.abs.casino.common.cache.ILoadingCache;
+import com.abs.casino.cassandra.persist.ICassandraBaseGameInfoPersister;
+import com.abs.casino.common.cache.data.account.PlayerDeviceType;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.Coin;
+import com.abs.casino.common.cache.data.bank.Limit;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.currency.ICurrency;
+import com.abs.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper;
+import com.dgphoenix.casino.common.cache.data.game.*;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.persist.StreamPersister;
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.property.PropertyUtils;
+import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.collect.ImmutableMap;
+import one.util.streamex.EntryStream;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.concurrent.ExecutionException;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
+
+@SuppressWarnings("rawtypes")
+@com.abs.casino.common.cache.CacheKeyInfo(description = "bank.id + game.id [ + currency.code + profile.id ]")
+public class BaseGameCache extends AbstractExportableCache<BaseGameInfo>
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameInfoTemplateCache.java
+package com.abs.casino.common.cache;
+
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
+import com.abs.casino.common.cache.ICreateGameListener;
+import com.abs.casino.common.cache.IDistributedConfigCache;
+import com.abs.casino.common.cache.data.game.MiniGameInfo;
+import com.dgphoenix.casino.common.cache.data.game.*;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.cliffc.high_scale_lib.NonBlockingHashMapLong;
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
+
+@com.abs.casino.common.cache.CacheKeyInfo(description = "game.id")
+public class BaseGameInfoTemplateCache extends AbstractExportableCache<BaseGameInfoTemplate> implements IDistributedConfigCache {
+    private static final Logger LOG = LogManager.getLogger(BaseGameInfoTemplateCache.class);
+    private static final BaseGameInfoTemplateCache instance = new BaseGameInfoTemplateCache();
+    private BaseGameInfoTemplate tournamentGameInfoTemplate;
+    private BaseGameInfoTemplate networkTournamentGameInfoTemplate;
+    private static final BaseGameInfo TOURNAMENT_GAME_INFO = new BaseGameInfo();
+    private static final BaseGameInfo NETWORK_TOURNAMENT_GAME_INFO = new BaseGameInfo();
+
+    //gameId->BaseGameInfoTemplate
+    private NonBlockingHashMapLong<BaseGameInfoTemplate> games = new NonBlockingHashMapLong<>(1024);
+
+    //gameName->gameId
+    private final ConcurrentMap<String, Long> gamesByName = new ConcurrentHashMap<>(1024);
+
+    private Set<Long> jackpotGames = null;
+    private List<BaseGameInfo> defGamesList = null;
+    private Set<Long> multiplayerGames = null;
+
+    private final Set<Long> frbGames = Sets.newConcurrentHashSet();
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyCache.java
+/**
+ * User: flsh
+ * Date: Jun 28, 2010
+ */
+package com.abs.casino.common.cache;
+
+import com.abs.casino.common.cache.AbstractExportableCache;
+import com.abs.casino.common.cache.IDistributedConfigCache;
+import com.abs.casino.common.cache.ILoadingCache;
+import com.abs.casino.cassandra.persist.ICachePersister;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CurrencyNotFoundException;
+import com.abs.casino.common.persist.StreamPersister;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.primitives.Ints;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import javax.annotation.Nonnull;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+
+import static com.google.common.base.Preconditions.checkState;
+
+@com.abs.casino.common.cache.CacheKeyInfo(description = "currency.code")
+public class CurrencyCache extends AbstractExportableCache<Currency> implements IDistributedConfigCache, ILoadingCache {
+    private static final Logger LOG = LogManager.getLogger(CurrencyCache.class);
+    private static final CurrencyCache instance = new CurrencyCache();
+
+    private ICachePersister<String, Currency> persister;
+
+    //Key - Currency.code
+    private LoadingCache<String, Currency> currencies;
+    private StreamPersister<String, Currency> streamPersister;
+
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LoadBalancerCache.java
+package com.abs.casino.common.cache;
+
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
+import com.abs.casino.common.cache.IServerStatusProvider;
+import com.abs.casino.common.ILoadBalancer;
+import com.abs.casino.common.cache.data.server.IServerInfoInternalProvider;
+import com.abs.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
+import com.abs.casino.common.cache.data.server.ServerInfo;
+import com.abs.casino.common.cache.data.server.ServerOnlineStatus;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.RNG;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import javax.annotation.PostConstruct;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
+
+@com.abs.casino.common.cache.CacheKeyInfo(description = "registeredServer.id")
+public class LoadBalancerCache extends AbstractExportableCache<ServerInfo> implements ILoadBalancer, IServerStatusProvider {
+    private static final Logger LOG = LogManager.getLogger(LoadBalancerCache.class);
+
+    // serverId->ServerInfo
+    private final Map<Integer, ServerInfo> registeredServers = new ConcurrentHashMap<>();
+    private final Set<Integer> knownServers = Collections.newSetFromMap(new ConcurrentHashMap<>());
+
+    private final IServerInfoInternalProvider serverInfoProvider;
+    private final ServerCoordinatorInfoProvider serverCoordinatorInfoProvider;
+
+    public LoadBalancerCache(IServerInfoInternalProvider serverInfoProvider,
+                             ServerCoordinatorInfoProvider serverCoordinatorInfoProvider, ServerInfo thisServerInfo) {
+        this.serverInfoProvider = serverInfoProvider;
+        this.serverCoordinatorInfoProvider = serverCoordinatorInfoProvider;
+        put(thisServerInfo);
+    }
+
+    @PostConstruct
+    private void init() {
+        initializeServers();
+    }
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/SubCasinoCache.java
+package com.abs.casino.common.cache;
+
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
+import com.abs.casino.common.cache.IDistributedConfigCache;
+import com.abs.casino.common.cache.data.bank.SubCasino;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.dgphoenix.casino.common.util.string.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
+/**
+ * User: plastical
+ * Date: 19.05.2010
+ */
+
+@com.abs.casino.common.cache.CacheKeyInfo(description = "subCasino.id")
+public class SubCasinoCache extends AbstractExportableCache<SubCasino> implements IDistributedConfigCache {
+    private static final Logger LOG = LogManager.getLogger(SubCasinoCache.class);
+
+    private final ConcurrentMap<Long, SubCasino> subCasinosMap = new ConcurrentHashMap<>();
+
+    private final ConcurrentMap<String, SubCasino> byDomainNameMap = new ConcurrentHashMap<>();
+    //key - bankId, value - subCasinoId;
+    private final ConcurrentMap<Long, Long> bankToSubCasinoIdMap = new ConcurrentHashMap<>();
+
+    public static SubCasinoCache getInstance() {
+        return instance;
+    }
+
+    private static final SubCasinoCache instance = new SubCasinoCache();
+
+    private SubCasinoCache() {
+    }
+
+    public synchronized void put(long subCasinoId, long bankId, boolean isDefault) {
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/SubCasinoGroupCache.java
+package com.abs.casino.common.cache;
+
+
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.cache.AbstractExportableCache;
+import com.abs.casino.common.cache.data.bank.SubCasinoGroup;
+import com.dgphoenix.casino.common.exception.CommonException;
+import org.apache.log4j.Logger;
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
+/**
+ * Created by inter on 01.06.15.
+ */
+
+@com.abs.casino.common.cache.CacheKeyInfo(description = "subCasinoGroup.name")
+public class SubCasinoGroupCache extends AbstractExportableCache<SubCasinoGroup> {
+    private static final Logger LOG = Logger.getLogger(SubCasinoGroupCache.class);
+
+    private final ConcurrentMap<String, SubCasinoGroup> subCasinosGroupMap = new ConcurrentHashMap<>();
+
+    private static final SubCasinoGroupCache instance = new SubCasinoGroupCache();
+
+    public static SubCasinoGroupCache getInstance() {
+        return instance;
+    }
+
+    private SubCasinoGroupCache() {
+
+    }
+
+    @Override
+    public void put(SubCasinoGroup subCasinoGroup) throws CommonException {
+        if (subCasinosGroupMap.containsKey(subCasinoGroup.getName())) {
+            throw new CommonException("SubCasinoGroup already exist, name=" + subCasinoGroup.getName());
+        }
+        if (subCasinoGroup.getName() == null) {
+            throw new CommonException("Cannot add SubCasinoGroup with empty name");
+        }
+        subCasinosGroupMap.put(subCasinoGroup.getName(), subCasinoGroup);
+    }
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java
+package com.abs.casino.common;
+
+import com.dgphoenix.casino.common.cache.IAccountManager;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.DBException;
+import com.abs.casino.common.exception.MismatchSessionException;
+import com.dgphoenix.casino.common.lock.ILockManager;
+import com.dgphoenix.casino.common.lock.LockingInfo;
+import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.transactiondata.ITransactionDataCreator;
+import com.abs.casino.common.transactiondata.ITransactionDataPersister;
+import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.string.StringIdGenerator;
+import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.concurrent.atomic.AtomicLong;
+
+public class DomainSession {
+    protected static final Logger LOG = LogManager.getLogger(DomainSession.class);
+
+    private static final AtomicLong activeTransactionsCount = new AtomicLong(0);
+    private ITransactionData transactionData;
+    private LockingInfo lockInfo;
+    private String sessionId = null;
+    private volatile boolean inProgress = false;
+    private final ILockManager lockManager;
+    private final ITransactionDataPersister persister;
+    private final ITransactionDataCreator defaultTransactionDataCreator;
+    private final IAccountManager accountManager;
+
+    static {
+        StatisticsManager.getInstance().registerStatisticsGetter("DomainSession activeTransactionsCount",
+                () -> String.valueOf(activeTransactionsCount.get()));
+    }
+
+    /**
+     * @deprecated since 'persister' is no more a static field
+     * Exists for backward compatibility with 'common-wallet' module.
+     * @return ITransactionDataPersister for current thread session
+     */
+    @Deprecated
+    public static ITransactionDataPersister getPersister() {
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/SessionHelper.java
+package com.abs.casino.common;
+
+import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.DBException;
+import com.abs.casino.common.exception.MismatchSessionException;
+import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.transactiondata.ITransactionDataCreator;
+import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet;
+
+import java.util.Map;
+
+/**
+ * Created by ANGeL
+ * Date: Sep 16, 2008
+ * Time: 5:07:10 PM
+ */
+public class SessionHelper {
+    public static final String TOKEN = "token";
+    private static final SessionHelper instance = new SessionHelper();
+    private static final ThreadLocal<DomainSession> session = new ThreadLocal<>();
+
+    private DomainSessionFactory domainSessionFactory;
+
+    public static SessionHelper getInstance() {
+        return instance;
+    }
+
+    private SessionHelper() {
+    }
+
+    public DomainSession getDomainSession() {
+        DomainSession ds = session.get();
+        if (ds == null) {
+            ds = createDomainSession();
+            session.set(ds);
+        }
+        return ds;
+    }
+
+    private DomainSession createDomainSession() {

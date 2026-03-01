@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache;
+package com.abs.casino.common.cache;
 
 import com.abs.casino.common.cache.ExportableCacheEntry;
 import com.abs.casino.common.cache.AbstractExportableCache;
@@ -8,8 +8,8 @@ import com.abs.casino.common.cache.data.server.IServerInfoInternalProvider;
 import com.abs.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
 import com.abs.casino.common.cache.data.server.ServerInfo;
 import com.abs.casino.common.cache.data.server.ServerOnlineStatus;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.RNG;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

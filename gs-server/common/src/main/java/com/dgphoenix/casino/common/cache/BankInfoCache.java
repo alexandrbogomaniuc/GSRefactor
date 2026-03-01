@@ -2,18 +2,18 @@
  * User: flsh
  * Date: 08.07.2009
  */
-package com.dgphoenix.casino.common.cache;
+package com.abs.casino.common.cache;
 
 import com.abs.casino.common.cache.ExportableCacheEntry;
 import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.data.bank.BankConstants;
 import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.abs.casino.common.cache.ICurrencyRateMultiplierRetriever;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.bank.Coin;
-import com.dgphoenix.casino.common.cache.data.bank.Limit;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.Coin;
+import com.abs.casino.common.cache.data.bank.Limit;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.abs.casino.common.util.StreamUtils;
