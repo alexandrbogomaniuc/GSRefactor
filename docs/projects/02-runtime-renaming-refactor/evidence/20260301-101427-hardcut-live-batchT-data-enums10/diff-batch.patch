@@ -1,0 +1,100 @@
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/IDistributedConfigEntry.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/IDistributedConfigEntry.java
+index 50108db3e..c697b7293 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/IDistributedConfigEntry.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/IDistributedConfigEntry.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data;
++package com.abs.casino.common.cache.data;
+ 
+ import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+ 
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/IdObject.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/IdObject.java
+index 47a91c400..1b5d15620 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/IdObject.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/IdObject.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data;
++package com.abs.casino.common.cache.data;
+ 
+ import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+ import com.dgphoenix.casino.common.cache.Identifiable;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/LasthandInfo.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/LasthandInfo.java
+index fad4d24ac..0a0516abf 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/LasthandInfo.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/LasthandInfo.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.account;
++package com.abs.casino.common.cache.data.account;
+ 
+ import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+ import com.dgphoenix.casino.common.cache.Identifiable;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusGameMode.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusGameMode.java
+index 5f82ba6a8..a18c7e008 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusGameMode.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusGameMode.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.bonus;
++package com.abs.casino.common.cache.data.bonus;
+ 
+ public enum BonusGameMode {
+     ALL, EXCEPT, ONLY
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusType.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusType.java
+index be1e3f04d..42ff397a5 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusType.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusType.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.bonus;
++package com.abs.casino.common.cache.data.bonus;
+ 
+ public enum BonusType {
+     DEPOSIT, SLOTS, LOSS, PRIZE, PROMO, SPECIAL
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/WalletOperationType.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/WalletOperationType.java
+index d8a4ad552..5640f21ad 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/WalletOperationType.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/WalletOperationType.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.payment;
++package com.abs.casino.common.cache.data.payment;
+ 
+ /**
+  * User: plastical
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBWinOperation.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBWinOperation.java
+index cfba96efe..e94e2b06b 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBWinOperation.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBWinOperation.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.payment.bonus;
++package com.abs.casino.common.cache.data.payment.bonus;
+ 
+ 
+ import com.abs.casino.common.cache.data.payment.frb.FRBWinOperationStatus;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBonusNotification.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBonusNotification.java
+index 3da9c4f89..6cbbb531d 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBonusNotification.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBonusNotification.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.payment.bonus;
++package com.abs.casino.common.cache.data.payment.bonus;
+ 
+ import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
+ import com.abs.casino.common.cache.data.payment.frb.FRBonusNotificationStatus;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBonusWin.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBonusWin.java
+index 3212a7069..eebd303cb 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBonusWin.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/bonus/FRBonusWin.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.payment.bonus;
++package com.abs.casino.common.cache.data.payment.bonus;
+ 
+ import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+ import com.abs.casino.common.cache.data.payment.bonus.CommonFRBonusWin;
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/promo/PromoWinInfo.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/promo/PromoWinInfo.java
+index 7e249f8dc..b5d5eb965 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/promo/PromoWinInfo.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/promo/PromoWinInfo.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;

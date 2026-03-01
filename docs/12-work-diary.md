@@ -9710,3 +9710,19 @@
   - baseline `2277`, reduced `2181`, remaining `96`, burndown `95.783926%`
   - Project 02 `53.227364%`, Core `76.613682%`, Portfolio `88.306841%`
   - ETA `~4.0h` (`~0.50` workdays)
+
+### 2026-03-01 10:15 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed live `Batch T`.
+- Batch intent: `10` declarations; retained: `10`.
+- Retained moves (`com.dgphoenix -> com.abs`):
+  - `BonusType`, `BonusGameMode`, `WalletOperationType`, `FRBonusNotification`, `FRBWinOperation`, `FRBonusWin`, `LasthandInfo`, `IdObject`, `IDistributedConfigEntry`, `PromoWinInfo`.
+- Validation:
+  - focused fast gates: `common FAIL`, `common-wallet FAIL`, `sb-utils PASS`, `common-gs FAIL`, `common-promo FAIL`.
+  - canonical runner: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE03`, `validation FAIL PRE03`, `STEP09 retry SKIP`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-101427-hardcut-live-batchT-data-enums10/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/247-hard-cut-live-batchT-data-enums10-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2191`, remaining `86`, burndown `96.223101%`
+  - Project 02 `53.362446%`, Core `76.681223%`, Portfolio `88.340611%`
+  - ETA `~3.6h` (`~0.45` workdays)

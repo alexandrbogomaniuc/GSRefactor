@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data;
+package com.abs.casino.common.cache.data;
 
 import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
 import com.dgphoenix.casino.common.cache.Identifiable;

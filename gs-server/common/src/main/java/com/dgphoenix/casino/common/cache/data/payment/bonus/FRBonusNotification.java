@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data.payment.bonus;
+package com.abs.casino.common.cache.data.payment.bonus;
 
 import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
 import com.abs.casino.common.cache.data.payment.frb.FRBonusNotificationStatus;

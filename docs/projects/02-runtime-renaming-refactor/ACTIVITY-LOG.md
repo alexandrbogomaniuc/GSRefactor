@@ -4833,3 +4833,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - baseline `2277`, reduced `2181`, remaining `96`, burndown `95.783926%`
   - Project 02 `53.227364%`, Core `76.613682%`, Portfolio `88.306841%`
   - ETA `~4.0h` (`~0.50` workdays)
+
+## 2026-03-01 10:15 UTC (Hard-cut live batch T: data/enums 10)
+- Continued Project 02 hard-cut migration from dirty in-progress workspace using declaration-first low-risk batching.
+- Batch intent was `10` declarations; retained after stabilization: `10`.
+  - moved: `BonusType`, `BonusGameMode`, `WalletOperationType`, `FRBonusNotification`, `FRBWinOperation`, `FRBonusWin`, `LasthandInfo`, `IdObject`, `IDistributedConfigEntry`, `PromoWinInfo`.
+- Bounded compatibility rewires:
+  - package-only declaration migration for retained low-fanout data/enum targets,
+  - no blind/global replace.
+- Validation snapshot:
+  - focused fast gates: `common FAIL`, `common-wallet FAIL`, `sb-utils PASS`, `common-gs FAIL`, `common-promo FAIL`.
+  - canonical runner profile unchanged: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE03`, `validation FAIL PRE03`, `STEP09 retry SKIP`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-101427-hardcut-live-batchT-data-enums10/`
+  - report: `docs/projects/02-runtime-renaming-refactor/247-hard-cut-live-batchT-data-enums10-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2191`, remaining `86`, burndown `96.223101%`
+  - Project 02 `53.362446%`, Core `76.681223%`, Portfolio `88.340611%`
+  - ETA `~3.6h` (`~0.45` workdays)
