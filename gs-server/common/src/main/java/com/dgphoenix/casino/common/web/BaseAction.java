@@ -1,15 +1,15 @@
 package com.abs.casino.common.web;
 
 import com.abs.casino.common.cache.data.game.BaseGameConstants;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.configuration.messages.MessageManager;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.configuration.messages.MessageManager;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.DigitFormatter;
 import com.abs.casino.common.util.StreamUtils;
 import com.abs.casino.common.util.string.StringIdGenerator;
-import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.Globals;

@@ -1,6 +1,6 @@
 package com.abs.casino.common.currency;
 
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 
 /**
  * User: flsh

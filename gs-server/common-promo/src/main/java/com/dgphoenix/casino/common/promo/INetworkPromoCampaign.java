@@ -1,7 +1,7 @@
 package com.abs.casino.common.promo;
 
-import com.dgphoenix.casino.common.promo.INetworkPromoEvent;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.INetworkPromoEvent;
+import com.abs.casino.common.exception.CommonException;
 
 import java.util.Map;
 import java.util.Set;

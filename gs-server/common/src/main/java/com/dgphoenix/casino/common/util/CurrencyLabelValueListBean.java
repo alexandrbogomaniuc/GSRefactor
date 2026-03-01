@@ -1,7 +1,7 @@
 package com.abs.casino.common.util;
 
-import com.dgphoenix.casino.common.cache.CurrencyCache;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.CurrencyCache;
+import com.abs.casino.common.cache.data.currency.Currency;
 import org.apache.struts.util.LabelValueBean;
 
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package com.abs.casino.common.cache.data.session;
 
 
-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
 
 import java.util.Date;
 

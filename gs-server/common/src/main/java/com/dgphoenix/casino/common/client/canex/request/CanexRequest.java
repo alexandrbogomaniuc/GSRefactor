@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Map;
 
-import static com.dgphoenix.casino.gs.managers.payment.wallet.CCommonWallet.*;
+import static com.abs.casino.gs.managers.payment.wallet.CCommonWallet.*;;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CanexRequest {

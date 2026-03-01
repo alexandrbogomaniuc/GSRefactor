@@ -1,6 +1,6 @@
 package com.abs.casino.common.cache;
 
-import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
+import com.abs.casino.common.cache.data.IDistributedConfigEntry;
 
 /**
  * User: flsh

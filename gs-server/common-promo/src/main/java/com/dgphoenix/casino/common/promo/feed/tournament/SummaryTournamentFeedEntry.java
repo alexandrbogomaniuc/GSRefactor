@@ -1,6 +1,6 @@
 package com.abs.casino.common.promo.feed.tournament;
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 

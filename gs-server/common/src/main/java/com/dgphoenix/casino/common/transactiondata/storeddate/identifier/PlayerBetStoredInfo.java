@@ -1,6 +1,6 @@
 package com.abs.casino.common.transactiondata.storeddate.identifier;
 
-import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
+import com.abs.casino.common.cache.data.bet.PlayerBet;
 
 /**
  * User: Grien

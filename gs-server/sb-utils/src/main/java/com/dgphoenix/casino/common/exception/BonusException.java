@@ -1,7 +1,7 @@
 package com.abs.casino.common.exception;
 
 import com.abs.casino.common.web.bonus.BonusError;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 /**
  * User: ktd

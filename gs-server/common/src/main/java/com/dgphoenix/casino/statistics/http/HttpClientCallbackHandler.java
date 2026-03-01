@@ -1,8 +1,8 @@
 package com.abs.casino.statistics.http;
 
 import com.abs.casino.cassandra.persist.IHttpClientStatisticsPersister;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.CommonExecutorService;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.CommonExecutorService;
 import com.abs.casino.common.util.web.HttpClientConnectionStatistics;
 import com.abs.casino.common.util.web.IHttpClientConnectionCallbackHandler;
 import org.apache.commons.lang.time.FastDateFormat;

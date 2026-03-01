@@ -1,7 +1,7 @@
 package com.abs.casino.common.util.system;
 
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 
 /** Provides API to read system properties */
 public class SystemPropertyReader {

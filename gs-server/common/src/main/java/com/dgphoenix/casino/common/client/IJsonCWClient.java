@@ -4,7 +4,7 @@ import com.abs.casino.common.client.canex.request.friends.GetFriendsResponse;
 import com.abs.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersResponse;
 import com.abs.casino.common.client.canex.request.onlinerooms.Room;
 import com.abs.casino.common.client.canex.request.privateroom.PrivateRoom;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 import java.util.List;
 

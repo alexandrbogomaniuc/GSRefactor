@@ -1,6 +1,6 @@
 package com.abs.casino.common.util;
 
-import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.CollectionUtils;
 
 import java.util.Map;
 import java.util.TreeMap;

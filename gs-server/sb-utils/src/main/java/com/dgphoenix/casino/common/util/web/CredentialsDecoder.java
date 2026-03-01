@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.web;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import org.apache.commons.codec.binary.Base64;
 
 import javax.crypto.Cipher;

@@ -1,11 +1,11 @@
 package com.abs.casino.common.util;
 
-import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.*;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;;
 
 /**
  * User: isirbis

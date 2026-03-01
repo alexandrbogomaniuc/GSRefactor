@@ -14,7 +14,7 @@ import com.abs.casino.common.util.Sequencer;
 import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.persist.StreamPersister;
 import com.abs.casino.common.persist.TableProcessor;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

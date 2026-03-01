@@ -1,6 +1,6 @@
 package com.abs.casino.common.configuration;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.logkit.ThreadLog;
 import com.thoughtworks.xstream.XStream;
 import org.apache.commons.configuration.ConfigurationUtils;

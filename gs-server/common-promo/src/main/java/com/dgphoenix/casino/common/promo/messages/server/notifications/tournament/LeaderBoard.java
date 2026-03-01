@@ -1,7 +1,7 @@
 package com.abs.casino.common.promo.messages.server.notifications.tournament;
 
 import com.abs.casino.common.promo.messages.server.notifications.PromoNotification;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 
 import java.util.ArrayList;

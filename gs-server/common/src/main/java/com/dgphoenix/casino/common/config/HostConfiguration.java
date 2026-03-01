@@ -1,10 +1,10 @@
 package com.abs.casino.common.config;
 
 import com.abs.casino.common.config.ClusterType;
-import com.dgphoenix.casino.common.cache.ServerConfigsCache;
-import com.dgphoenix.casino.common.config.GameServerConfig;
-import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.cache.ServerConfigsCache;
+import com.abs.casino.common.config.GameServerConfig;
+import com.abs.casino.common.config.GameServerConfigTemplate;
+import com.abs.casino.common.util.string.StringUtils;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;

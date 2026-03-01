@@ -1,6 +1,6 @@
 package com.abs.casino.common.config;
 
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.ApplicationContextHelper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

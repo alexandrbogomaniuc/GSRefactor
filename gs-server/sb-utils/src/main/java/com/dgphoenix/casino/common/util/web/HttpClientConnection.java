@@ -1,13 +1,13 @@
 package com.abs.casino.common.util.web;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.TransportException;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.support.ExceptionInfo;
 import com.abs.casino.common.util.support.Request;
 import com.abs.casino.common.util.support.Response;
 import com.abs.casino.common.web.statistics.IStatisticsGetter;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import com.google.common.collect.ImmutableMap;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.*;

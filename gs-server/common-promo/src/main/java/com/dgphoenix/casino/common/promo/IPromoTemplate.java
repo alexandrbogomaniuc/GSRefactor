@@ -2,7 +2,7 @@ package com.abs.casino.common.promo;
 
 import com.abs.casino.common.cache.JsonSelfSerializable;
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.DatePeriod;
 import com.esotericsoftware.kryo.KryoSerializable;
 

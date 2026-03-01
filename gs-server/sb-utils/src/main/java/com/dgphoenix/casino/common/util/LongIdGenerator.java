@@ -2,8 +2,8 @@ package com.abs.casino.common.util;
 
 import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.ExportableCacheEntry;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;

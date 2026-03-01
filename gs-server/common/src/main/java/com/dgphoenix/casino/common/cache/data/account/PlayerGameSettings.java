@@ -1,11 +1,11 @@
 package com.abs.casino.common.cache.data.account;
 
-import com.dgphoenix.casino.common.cache.CoinsCache;
-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.CoinsCache;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
 import com.abs.casino.common.cache.data.account.IPlayerGameSettings;
-import com.dgphoenix.casino.common.cache.data.bank.Coin;
-import com.dgphoenix.casino.common.cache.data.bank.Limit;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.cache.data.bank.Coin;
+import com.abs.casino.common.cache.data.bank.Limit;
+import com.abs.casino.common.util.string.StringUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

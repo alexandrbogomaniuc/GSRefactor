@@ -1,6 +1,6 @@
 package com.abs.casino.common.lock;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 /**
  * User: flsh

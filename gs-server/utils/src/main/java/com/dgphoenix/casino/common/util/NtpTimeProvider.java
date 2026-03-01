@@ -3,7 +3,7 @@ package com.abs.casino.common.util;
 import com.abs.casino.common.config.UtilsApplicationContextHelper;
 import com.abs.casino.common.util.ITimeProvider;
 import com.abs.casino.common.util.NtpWrapper;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import org.apache.commons.net.ntp.NtpV3Packet;
 import org.apache.commons.net.ntp.TimeInfo;
 import org.apache.log4j.Logger;
@@ -20,7 +20,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkState;
 

@@ -1,7 +1,7 @@
 package com.abs.casino.common.rest;
 
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.support.ExceptionInfo;
 import com.abs.casino.common.util.support.Request;
 import com.abs.casino.common.util.support.Response;

@@ -1,6 +1,6 @@
 package com.abs.casino.common.api;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.account.AccountInfo;
 
 /**
  * User: flsh

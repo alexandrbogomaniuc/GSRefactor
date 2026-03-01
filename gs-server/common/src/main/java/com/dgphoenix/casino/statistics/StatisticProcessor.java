@@ -1,6 +1,6 @@
 package com.abs.casino.statistics;
 
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

@@ -1,11 +1,11 @@
 package com.abs.casino.common.cache.data.payment.bonus;
 
-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
 import com.abs.casino.common.cache.data.payment.bonus.CommonFRBonusWin;
 import com.abs.casino.common.cache.data.payment.frb.FRBWinOperationStatus;
 import com.abs.casino.common.cache.data.payment.frb.IFRBonusWin;
 import com.abs.casino.common.exception.FRBException;
-import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.CollectionUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

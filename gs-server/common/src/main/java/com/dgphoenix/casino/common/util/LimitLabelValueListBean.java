@@ -1,7 +1,7 @@
 package com.abs.casino.common.util;
 
-import com.dgphoenix.casino.common.cache.LimitsCache;
-import com.dgphoenix.casino.common.cache.data.bank.Limit;
+import com.abs.casino.common.cache.LimitsCache;
+import com.abs.casino.common.cache.data.bank.Limit;
 import org.apache.struts.util.LabelValueBean;
 
 import java.util.ArrayList;

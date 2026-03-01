@@ -1,6 +1,6 @@
 package com.abs.casino.gs.managers.payment.wallet;
 
-import com.dgphoenix.casino.gs.managers.payment.wallet.CWError;
+import com.abs.casino.gs.managers.payment.wallet.CWError;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;

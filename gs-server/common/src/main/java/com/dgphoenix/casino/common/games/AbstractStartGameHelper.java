@@ -3,21 +3,21 @@ package com.abs.casino.common.games;
 import com.abs.casino.common.games.IDelegatedStartGameHelper;
 import com.abs.casino.common.games.ICassandraHostCdnPersister;
 import com.abs.casino.common.games.IStartGameHelper;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameCache;
-import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
-import com.dgphoenix.casino.common.cache.CurrencyCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameCache;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.CurrencyCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.currency.Currency;
 import com.abs.casino.common.cache.data.game.BaseGameConstants;
-import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
+import com.abs.casino.common.cache.data.session.GameSession;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static com.dgphoenix.casino.common.configuration.messages.MessageManager.getLocalizedTitleOrDefault;
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.configuration.messages.MessageManager.getLocalizedTitleOrDefault;;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;;
 
 public abstract class AbstractStartGameHelper implements IStartGameHelper {
     protected final long gameId;

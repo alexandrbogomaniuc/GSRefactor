@@ -1,8 +1,8 @@
 package com.abs.casino.common.cache;
 
-import com.dgphoenix.casino.common.cache.IDistributedCache;
-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.IDistributedCache;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.exception.CommonException;
 
 /**
  * User: flsh

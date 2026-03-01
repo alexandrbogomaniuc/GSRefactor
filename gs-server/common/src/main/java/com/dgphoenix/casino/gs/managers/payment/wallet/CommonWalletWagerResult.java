@@ -1,6 +1,6 @@
 package com.abs.casino.gs.managers.payment.wallet;
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 
 public class CommonWalletWagerResult {
     private String extSystemTransactionId;

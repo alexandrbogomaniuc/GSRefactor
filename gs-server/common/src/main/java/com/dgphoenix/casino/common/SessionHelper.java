@@ -1,16 +1,16 @@
 package com.abs.casino.common;
 
-import com.dgphoenix.casino.common.cache.data.payment.IWallet;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.DBException;
 import com.abs.casino.common.exception.MismatchSessionException;
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.common.transactiondata.ITransactionDataCreator;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.CollectionUtils;
-import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.gs.managers.payment.wallet.CommonGameWallet;
 
 import java.util.Map;
 

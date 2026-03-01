@@ -1,7 +1,7 @@
 package com.abs.casino.common.util.hardware;
 
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.CommonExecutorService;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.CommonExecutorService;
 
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;

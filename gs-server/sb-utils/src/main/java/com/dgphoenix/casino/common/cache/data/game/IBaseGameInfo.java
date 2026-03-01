@@ -7,7 +7,7 @@ import com.abs.casino.common.cache.data.account.PlayerDeviceType;
 import com.abs.casino.common.cache.data.bank.ICoin;
 import com.abs.casino.common.cache.data.bank.ILimit;
 import com.abs.casino.common.cache.data.currency.ICurrency;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 

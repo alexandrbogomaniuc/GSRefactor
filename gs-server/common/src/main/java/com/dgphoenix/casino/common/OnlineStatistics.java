@@ -1,6 +1,6 @@
 package com.abs.casino.common;
 
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.game.GameMode;
 
 import java.util.Date;
 

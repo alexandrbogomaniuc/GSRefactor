@@ -1,6 +1,6 @@
 package com.abs.casino.common.promo;
 
-import com.dgphoenix.casino.common.promo.Status;
+import com.abs.casino.common.promo.Status;
 
 /**
  * Created by vladislav on 3/24/17.

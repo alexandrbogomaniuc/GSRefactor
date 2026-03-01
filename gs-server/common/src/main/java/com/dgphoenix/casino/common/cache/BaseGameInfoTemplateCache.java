@@ -6,7 +6,7 @@ import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.ICreateGameListener;
 import com.abs.casino.common.cache.IDistributedConfigCache;
 import com.abs.casino.common.cache.data.game.MiniGameInfo;
-import com.dgphoenix.casino.common.cache.data.game.*;
+import com.abs.casino.common.cache.data.game.*;
 import com.abs.casino.common.cache.data.session.ClientType;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;

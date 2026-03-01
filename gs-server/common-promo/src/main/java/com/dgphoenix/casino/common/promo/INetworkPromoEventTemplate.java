@@ -1,7 +1,7 @@
 package com.abs.casino.common.promo;
 
-import com.dgphoenix.casino.common.promo.IPrize;
-import com.dgphoenix.casino.common.promo.IPromoTemplate;
+import com.abs.casino.common.promo.IPrize;
+import com.abs.casino.common.promo.IPromoTemplate;
 
 /**
  * User: flsh

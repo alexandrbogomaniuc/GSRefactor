@@ -1,6 +1,6 @@
 package com.abs.casino.gs.socket.async;
 
-import com.dgphoenix.casino.common.util.ExecutorUtils;
+import com.abs.casino.common.util.ExecutorUtils;
 
 import javax.annotation.PreDestroy;
 import java.util.concurrent.LinkedBlockingQueue;

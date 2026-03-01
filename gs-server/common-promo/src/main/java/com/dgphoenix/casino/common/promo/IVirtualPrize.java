@@ -1,6 +1,6 @@
 package com.abs.casino.common.promo;
 
-import com.dgphoenix.casino.common.promo.IPrize;
+import com.abs.casino.common.promo.IPrize;
 /**
  * User: flsh
  * Date: 11.01.17.

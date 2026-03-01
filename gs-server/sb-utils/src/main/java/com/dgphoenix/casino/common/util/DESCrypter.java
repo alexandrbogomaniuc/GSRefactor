@@ -1,7 +1,7 @@
 package com.abs.casino.common.util;
 
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.string.HexStringConverter;
 
 import javax.crypto.Cipher;

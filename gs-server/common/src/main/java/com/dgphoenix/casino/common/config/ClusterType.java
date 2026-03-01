@@ -1,6 +1,6 @@
 package com.abs.casino.common.config;
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 
 public enum ClusterType {
     PRODUCTION("production"),

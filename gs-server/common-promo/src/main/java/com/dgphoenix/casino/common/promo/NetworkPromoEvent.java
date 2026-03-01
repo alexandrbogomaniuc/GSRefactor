@@ -1,7 +1,7 @@
 package com.abs.casino.common.promo;
 
 import com.abs.casino.common.promo.INetworkPromoEvent;
-import com.dgphoenix.casino.common.util.DatePeriod;
+import com.abs.casino.common.util.DatePeriod;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

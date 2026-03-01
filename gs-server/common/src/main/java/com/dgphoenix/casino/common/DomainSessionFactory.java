@@ -1,7 +1,7 @@
 package com.abs.casino.common;
 
-import com.dgphoenix.casino.common.cache.IAccountManager;
-import com.dgphoenix.casino.common.lock.ILockManager;
+import com.abs.casino.common.cache.IAccountManager;
+import com.abs.casino.common.lock.ILockManager;
 import com.abs.casino.common.transactiondata.ITransactionDataCreator;
 import com.abs.casino.common.transactiondata.ITransactionDataPersister;
 

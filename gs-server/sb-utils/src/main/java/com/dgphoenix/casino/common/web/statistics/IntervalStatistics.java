@@ -4,7 +4,7 @@
  */
 package com.abs.casino.common.web.statistics;
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.google.common.util.concurrent.AtomicDouble;
 
 import java.io.Serializable;

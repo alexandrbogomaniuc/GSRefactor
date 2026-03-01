@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.test.api;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 /**
  * Verification typical case of integration with EC. Contains one or more API endpoints verification.

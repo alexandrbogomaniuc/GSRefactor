@@ -1,8 +1,8 @@
 package com.abs.casino.common.promo;
 
-import com.dgphoenix.casino.common.promo.DesiredPrize;
-import com.dgphoenix.casino.common.promo.IPrize;
-import com.dgphoenix.casino.common.promo.IPromoTemplate;
+import com.abs.casino.common.promo.DesiredPrize;
+import com.abs.casino.common.promo.IPrize;
+import com.abs.casino.common.promo.IPromoTemplate;
 
 /**
  * Created by vladislav on 3/29/17.

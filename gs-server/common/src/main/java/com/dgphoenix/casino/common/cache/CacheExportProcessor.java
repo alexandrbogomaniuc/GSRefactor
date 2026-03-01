@@ -1,9 +1,9 @@
 package com.abs.casino.common.cache;
 
 import com.abs.casino.common.cache.ExportableCacheEntry;
-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
 import com.abs.casino.common.persist.TableProcessor;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

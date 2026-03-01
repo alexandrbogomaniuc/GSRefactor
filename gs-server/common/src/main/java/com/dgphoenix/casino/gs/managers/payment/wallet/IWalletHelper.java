@@ -1,18 +1,18 @@
 package com.abs.casino.gs.managers.payment.wallet;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.account.LasthandInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bet.PlayerBet;
 import com.abs.casino.common.cache.data.bonus.BonusSystemType;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.PromoWinInfo;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
-import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletOperation;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.PromoWinInfo;
+import com.abs.casino.gs.managers.payment.wallet.CommonGameWallet;
+import com.abs.casino.gs.managers.payment.wallet.CommonWallet;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletOperation;
+import com.abs.casino.gs.managers.payment.wallet.IWalletOperation;
 
 import java.util.List;
 import java.util.Map;

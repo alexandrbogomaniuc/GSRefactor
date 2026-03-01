@@ -3,8 +3,8 @@ package com.abs.casino.common.cache.data.payment.bonus;
 
 import com.abs.casino.common.cache.data.payment.frb.FRBWinOperationStatus;
 import com.abs.casino.common.cache.data.payment.frb.IFRBonusWinOperation;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.util.string.StringUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

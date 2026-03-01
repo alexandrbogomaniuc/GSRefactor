@@ -1,7 +1,7 @@
 package com.abs.casino.common.promo.feed.tournament;
 
-import com.dgphoenix.casino.common.cache.Identifiable;
-import com.dgphoenix.casino.common.promo.TournamentObjective;
+import com.abs.casino.common.cache.Identifiable;
+import com.abs.casino.common.promo.TournamentObjective;
 
 import java.util.Date;
 

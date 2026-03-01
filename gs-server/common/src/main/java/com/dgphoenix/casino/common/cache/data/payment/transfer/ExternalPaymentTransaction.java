@@ -1,7 +1,7 @@
 package com.abs.casino.common.cache.data.payment.transfer;
 
 import com.abs.casino.common.cache.data.payment.PaymentMode;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletOperation;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

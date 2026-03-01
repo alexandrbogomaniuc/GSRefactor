@@ -1,6 +1,6 @@
 package com.abs.casino.common.cache.data.report;
 
-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
 import com.abs.casino.common.util.ReportPeriodEnum;
 import com.abs.casino.common.util.ReportTypeEnum;
 

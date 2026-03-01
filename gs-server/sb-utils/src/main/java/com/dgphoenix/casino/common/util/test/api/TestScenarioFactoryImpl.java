@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.test.api;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

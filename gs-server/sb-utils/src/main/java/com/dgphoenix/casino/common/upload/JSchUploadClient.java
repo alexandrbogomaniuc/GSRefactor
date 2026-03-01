@@ -1,6 +1,6 @@
 package com.abs.casino.common.upload;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.jcraft.jsch.*;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

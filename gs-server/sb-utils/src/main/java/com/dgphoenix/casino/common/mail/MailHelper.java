@@ -1,7 +1,7 @@
 package com.abs.casino.common.mail;
 
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.string.StringUtils;
 
 import javax.mail.Message;
 import javax.mail.Session;

@@ -7,8 +7,8 @@ import java.io.ObjectOutputStream;
 import java.util.Collections;
 import java.util.Map;
 
-import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.config.GameServerConfigTemplate;
+import com.abs.casino.common.exception.CommonException;
 
 /**
  * User: flsh

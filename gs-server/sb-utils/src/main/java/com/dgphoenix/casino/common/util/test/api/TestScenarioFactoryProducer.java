@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.test.api;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.ObjectCreator;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -12,7 +12,7 @@ import java.lang.reflect.Modifier;
 import java.util.Map;
 import java.util.Set;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 

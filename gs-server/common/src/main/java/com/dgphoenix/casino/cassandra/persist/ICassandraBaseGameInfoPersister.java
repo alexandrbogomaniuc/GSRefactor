@@ -1,8 +1,8 @@
 package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.common.cache.data.currency.ICurrency;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
-import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+import com.abs.casino.common.cache.data.game.BaseGameInfo;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
 
 import java.util.List;
 import java.util.Map;

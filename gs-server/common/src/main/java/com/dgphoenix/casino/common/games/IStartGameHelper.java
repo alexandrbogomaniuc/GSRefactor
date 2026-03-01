@@ -1,7 +1,7 @@
 package com.abs.casino.common.games;
 
 import com.abs.casino.common.games.SwfLocationInfo;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.GameSession;
 
 import javax.servlet.http.HttpServletRequest;
 

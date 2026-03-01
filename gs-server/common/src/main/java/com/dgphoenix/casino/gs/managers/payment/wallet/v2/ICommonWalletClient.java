@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.payment.wallet.v2;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.currency.Currency;
 import com.abs.casino.common.cache.data.payment.WalletOperationStatus;
 import com.abs.casino.common.cache.data.session.ClientType;
 import com.abs.casino.common.exception.CommonException;
@@ -9,7 +9,7 @@ import com.abs.casino.common.exception.WalletException;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletStatusResult;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
 import com.abs.casino.gs.managers.payment.wallet.IWalletHelper;
-import com.dgphoenix.casino.gs.managers.payment.wallet.*;
+import com.abs.casino.gs.managers.payment.wallet.*;
 
 /**
  * User: plastical

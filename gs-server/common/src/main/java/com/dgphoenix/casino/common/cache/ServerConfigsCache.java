@@ -11,8 +11,8 @@ import java.util.concurrent.ConcurrentMap;
 
 import com.abs.casino.common.cache.data.server.IServerInfoInternalProvider;
 import com.abs.casino.common.cache.data.server.ServerInfo;
-import com.dgphoenix.casino.common.config.GameServerConfig;
-import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
+import com.abs.casino.common.config.GameServerConfig;
+import com.abs.casino.common.config.GameServerConfigTemplate;
 import com.google.common.collect.Sets;
 
 /**

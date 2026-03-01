@@ -1,10 +1,10 @@
 package com.abs.casino.gs.managers.payment.wallet;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
-import com.dgphoenix.casino.common.cache.data.payment.IWallet;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.cache.data.payment.WalletOperationStatus;
 import com.abs.casino.common.cache.data.session.ClientType;
 import com.abs.casino.common.cache.data.session.SessionInfo;
 import com.abs.casino.common.exception.WalletException;

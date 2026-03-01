@@ -1,6 +1,6 @@
 package com.abs.casino.common.engine;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import org.apache.log4j.Logger;
 
 import java.rmi.RemoteException;

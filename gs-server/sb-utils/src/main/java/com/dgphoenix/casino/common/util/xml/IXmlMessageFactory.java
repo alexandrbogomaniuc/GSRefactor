@@ -5,7 +5,7 @@
  */
 package com.abs.casino.common.util.xml;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 import java.io.InputStream;
 import java.io.Reader;

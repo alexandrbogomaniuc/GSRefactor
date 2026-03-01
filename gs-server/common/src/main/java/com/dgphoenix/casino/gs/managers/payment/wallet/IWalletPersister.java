@@ -1,6 +1,6 @@
 package com.abs.casino.gs.managers.payment.wallet;
 
-import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.cache.data.payment.IWallet;
 
 /**
  * User: flsh

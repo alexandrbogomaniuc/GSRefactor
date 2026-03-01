@@ -1,8 +1,8 @@
 package com.abs.casino.common.promo.network;
 
-import com.dgphoenix.casino.common.promo.EnterType;
-import com.dgphoenix.casino.common.promo.LocalizationTitles;
-import com.dgphoenix.casino.common.promo.PlayerIdentificationType;
+import com.abs.casino.common.promo.EnterType;
+import com.abs.casino.common.promo.LocalizationTitles;
+import com.abs.casino.common.promo.PlayerIdentificationType;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

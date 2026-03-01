@@ -1,7 +1,7 @@
 package com.abs.casino.common.promo;
 
-import com.dgphoenix.casino.common.promo.TournamentObjective;
-import com.dgphoenix.casino.common.promo.TournamentRankQualifier;
+import com.abs.casino.common.promo.TournamentObjective;
+import com.abs.casino.common.promo.TournamentRankQualifier;
 
 import java.util.Set;
 

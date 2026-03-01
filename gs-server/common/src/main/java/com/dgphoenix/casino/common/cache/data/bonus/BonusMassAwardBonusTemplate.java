@@ -1,12 +1,12 @@
 package com.abs.casino.common.cache.data.bonus;
 
-import com.dgphoenix.casino.common.cache.data.bonus.BaseBonus;
-import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusGameMode;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusType;
+import com.abs.casino.common.cache.data.bonus.BaseBonus;
+import com.abs.casino.common.cache.data.bonus.Bonus;
+import com.abs.casino.common.cache.data.bonus.BonusGameMode;
+import com.abs.casino.common.cache.data.bonus.BonusStatus;
+import com.abs.casino.common.cache.data.bonus.BonusType;
 import com.abs.casino.common.cache.data.bonus.MassAwardBonusTemplate;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

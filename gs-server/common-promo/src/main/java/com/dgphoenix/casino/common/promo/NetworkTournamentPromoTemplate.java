@@ -1,8 +1,8 @@
 package com.abs.casino.common.promo;
 
-import com.dgphoenix.casino.common.promo.TournamentObjective;
-import com.dgphoenix.casino.common.promo.TournamentPromoTemplate;
-import com.dgphoenix.casino.common.promo.TournamentRankQualifier;
+import com.abs.casino.common.promo.TournamentObjective;
+import com.abs.casino.common.promo.TournamentPromoTemplate;
+import com.abs.casino.common.promo.TournamentRankQualifier;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;

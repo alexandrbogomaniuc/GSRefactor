@@ -9,11 +9,11 @@ import com.abs.casino.common.cache.data.bank.IndividualGameSettingsType;
 import com.abs.casino.common.cache.data.bank.MaxQuestClientLogLevel;
 import com.abs.casino.common.cache.data.bank.PlayerGameSettingsType;
 import com.abs.casino.common.util.BidirectionalMultivalueMap;
-import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.CollectionUtils;
 import com.abs.casino.common.util.LogoutActionType;
 import com.abs.casino.common.util.RefererDomains;
 import com.abs.casino.common.util.property.*;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.Registration;
@@ -39,7 +39,7 @@ import java.util.concurrent.TimeUnit;
 
 import static com.abs.casino.common.util.property.PropertyUtils.getBooleanProperty;
 import static com.abs.casino.common.util.property.PropertyUtils.getLongProperty;
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class BankInfo implements IDistributedConfigEntry, Identifiable, 

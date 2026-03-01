@@ -1,9 +1,9 @@
 package com.abs.casino.common.promo;
 
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.DesiredPrize;
-import com.dgphoenix.casino.common.promo.IPrize;
-import com.dgphoenix.casino.common.promo.PromoCampaignMember;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.DesiredPrize;
+import com.abs.casino.common.promo.IPrize;
+import com.abs.casino.common.promo.PromoCampaignMember;
 
 /**
  * User: flsh

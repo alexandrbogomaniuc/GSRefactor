@@ -2,7 +2,7 @@ package com.abs.casino.unj.api;
 
 
 import com.abs.casino.common.cache.JsonSelfSerializable;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

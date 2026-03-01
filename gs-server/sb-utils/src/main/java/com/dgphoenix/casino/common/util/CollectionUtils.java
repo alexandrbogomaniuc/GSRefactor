@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import java.util.*;
 import java.util.Map.Entry;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang.StringUtils.strip;
 

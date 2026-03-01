@@ -1,6 +1,6 @@
 package com.abs.casino.common.promo;
 
-import com.dgphoenix.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.Identifiable;
 import com.abs.casino.common.util.DatePeriod;
 import com.esotericsoftware.kryo.KryoSerializable;
 

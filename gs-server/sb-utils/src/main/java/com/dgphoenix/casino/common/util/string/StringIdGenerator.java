@@ -1,8 +1,8 @@
 package com.abs.casino.common.util.string;
 
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.RNG;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.util.RNG;
+import com.abs.casino.common.util.string.StringUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.net.util.Base64;
 

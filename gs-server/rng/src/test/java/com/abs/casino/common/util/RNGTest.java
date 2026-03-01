@@ -1,7 +1,7 @@
 package com.abs.casino.common.util;
 
 
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.abs.casino.common.util.test.Repeat;
 import com.abs.casino.common.util.test.RepeatRule;
 import org.junit.Rule;

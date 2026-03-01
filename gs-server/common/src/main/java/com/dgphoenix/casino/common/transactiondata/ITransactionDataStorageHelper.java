@@ -1,6 +1,6 @@
 package com.abs.casino.common.transactiondata;
 
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.transactiondata.ITransactionData;
 
 import java.nio.ByteBuffer;
 import java.util.Map;

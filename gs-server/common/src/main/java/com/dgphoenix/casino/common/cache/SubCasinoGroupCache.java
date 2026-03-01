@@ -4,7 +4,7 @@ package com.abs.casino.common.cache;
 import com.abs.casino.common.cache.ExportableCacheEntry;
 import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.data.bank.SubCasinoGroup;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;

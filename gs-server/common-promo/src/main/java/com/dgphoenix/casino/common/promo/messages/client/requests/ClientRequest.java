@@ -1,6 +1,6 @@
 package com.abs.casino.common.promo.messages.client.requests;
 
-import com.dgphoenix.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.Identifiable;
 
 /**
  * Created by vladislav on 12/20/16.

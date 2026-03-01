@@ -5,7 +5,7 @@
  */
 package com.abs.casino.common.util.xml.parser;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.ReflectionUtils;
 import com.abs.casino.common.util.xml.IXmlElement;
 import org.apache.log4j.Logger;

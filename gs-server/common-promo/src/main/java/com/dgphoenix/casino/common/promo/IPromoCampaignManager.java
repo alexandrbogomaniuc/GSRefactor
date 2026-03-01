@@ -4,10 +4,10 @@ import com.abs.casino.common.promo.*;
 import com.abs.casino.common.promo.INetworkPromoCampaign;
 import com.abs.casino.common.cache.data.account.IAccountInfo;
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.promo.feed.tournament.SummaryTournamentFeedEntry;
 import com.abs.casino.common.util.DatePeriod;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 
 import java.util.Collection;
 import java.util.List;

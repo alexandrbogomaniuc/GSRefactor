@@ -2,8 +2,8 @@ package com.abs.casino.common.promo;
 
 import com.abs.casino.common.promo.messages.server.notifications.prizes.FRBWon;
 import com.abs.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
-import com.dgphoenix.casino.common.promo.AbstractPrize;
-import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.promo.AbstractPrize;
+import com.abs.casino.common.util.CollectionUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

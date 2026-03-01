@@ -1,7 +1,7 @@
 package com.abs.casino.common.cache.data.game;
 
 import com.abs.casino.common.cache.data.game.BaseGameConstants;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BankInfoCache;
 import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
 import com.abs.casino.common.cache.Identifiable;
 import com.abs.casino.common.cache.JsonSelfSerializable;
@@ -14,12 +14,12 @@ import com.abs.casino.common.cache.data.currency.Currency;
 import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.abs.casino.common.config.HostConfiguration;
 import com.abs.casino.common.configuration.messages.MessageManager;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.CollectionUtils;
 import com.abs.casino.common.util.StreamUtils;
 import com.abs.casino.common.util.logkit.ThreadLog;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
@@ -43,7 +43,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 public class BaseGameInfo implements IDistributedConfigEntry, Identifiable, KryoSerializable, IBaseGameInfo<Coin, Limit>, JsonSelfSerializable<BaseGameInfo> {
 

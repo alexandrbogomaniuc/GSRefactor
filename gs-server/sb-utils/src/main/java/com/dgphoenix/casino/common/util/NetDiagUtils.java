@@ -1,6 +1,6 @@
 package com.abs.casino.common.util;
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;

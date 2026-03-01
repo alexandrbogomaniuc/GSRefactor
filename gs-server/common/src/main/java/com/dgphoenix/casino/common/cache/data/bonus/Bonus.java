@@ -2,7 +2,7 @@ package com.abs.casino.common.cache.data.bonus;
 
 import com.abs.casino.common.cache.data.game.BaseGameConstants;
 import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

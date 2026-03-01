@@ -1,13 +1,13 @@
 package com.abs.casino.gs.managers.payment.wallet.v3;
 
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletOperation;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletStatusResult;
 
 import java.util.Map;
 
-public interface ICommonWalletClient extends com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient {
+public interface ICommonWalletClient extends com.abs.casino.gs.managers.payment.wallet.v2.ICommonWalletClient {
 
     public CommonWalletAuthResult auth(String token, ClientType clType) throws CommonException;
 

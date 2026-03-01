@@ -1,9 +1,9 @@
 package com.abs.casino.gs.managers.payment.wallet;
 
-import com.dgphoenix.casino.common.SessionHelper;
+import com.abs.casino.common.SessionHelper;
 import com.abs.casino.common.cache.CacheKeyInfo;
-import com.dgphoenix.casino.common.cache.IDistributedCache;
-import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.cache.IDistributedCache;
+import com.abs.casino.common.cache.data.payment.IWallet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -2,7 +2,7 @@ package com.abs.casino.common.cache;
 
 import com.abs.casino.common.cache.AbstractDistributedCache;
 import com.abs.casino.common.cache.data.report.PeriodicReportInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.ReportPeriodEnum;
 import com.abs.casino.common.util.ReportTypeEnum;
 

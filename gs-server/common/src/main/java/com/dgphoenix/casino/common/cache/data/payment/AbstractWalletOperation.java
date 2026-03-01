@@ -1,8 +1,8 @@
 package com.abs.casino.common.cache.data.payment;
 
-import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletOperation;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+import com.abs.casino.gs.managers.payment.wallet.IWalletOperation;
+import com.abs.casino.common.cache.data.payment.WalletOperationType;
+import com.abs.casino.common.cache.data.payment.WalletOperationStatus;
 
 import java.util.Date;
 

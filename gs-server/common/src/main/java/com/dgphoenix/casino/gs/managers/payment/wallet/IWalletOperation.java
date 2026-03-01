@@ -1,8 +1,8 @@
 package com.abs.casino.gs.managers.payment.wallet;
 
-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.data.payment.WalletOperationStatus;
+import com.abs.casino.common.cache.data.payment.WalletOperationType;
 
 /**
  * User: plastical

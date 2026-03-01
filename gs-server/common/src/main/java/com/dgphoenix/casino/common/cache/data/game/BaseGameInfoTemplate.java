@@ -9,7 +9,7 @@ import com.abs.casino.common.cache.data.IDistributedConfigEntry;
 import com.abs.casino.common.cache.data.session.ClientType;
 import com.abs.casino.common.configuration.messages.MessageManager;
 import com.abs.casino.common.util.property.PropertyUtils;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoException;
 import com.esotericsoftware.kryo.KryoSerializable;
@@ -30,9 +30,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import static com.dgphoenix.casino.common.cache.data.bank.BankInfo.MAP_SPLITTER;
+import static com.abs.casino.common.cache.data.bank.BankInfo.MAP_SPLITTER;
 import static com.abs.casino.common.util.property.PropertyUtils.*;
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 public class BaseGameInfoTemplate implements IDistributedConfigEntry, Identifiable, KryoSerializable, JsonSelfSerializable<BaseGameInfoTemplate> {
     private static final Logger LOG = LogManager.getLogger(BaseGameInfoTemplate.class);

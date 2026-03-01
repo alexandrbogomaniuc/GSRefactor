@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.string;
 
-import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.CollectionUtils;
 import org.apache.commons.codec.binary.Base64;
 
 import java.io.*;

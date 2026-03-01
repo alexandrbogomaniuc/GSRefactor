@@ -1,10 +1,10 @@
 package com.abs.casino.common.util;
 
-import com.dgphoenix.casino.common.util.ExecutorUtils;
-import com.dgphoenix.casino.common.util.ITimeProvider;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.ExecutorUtils;
+import com.abs.casino.common.util.ITimeProvider;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.statistics.IStatisticsGetter;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.TimeInfo;
 import org.apache.log4j.Logger;

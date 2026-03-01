@@ -1,6 +1,6 @@
 package com.abs.casino.common.promo.feed.tournament;
 
-import com.dgphoenix.casino.common.promo.TournamentMemberRank;
+import com.abs.casino.common.promo.TournamentMemberRank;
 
 public interface IRecordProducer {
 

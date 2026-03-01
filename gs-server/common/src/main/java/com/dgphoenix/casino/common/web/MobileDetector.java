@@ -1,12 +1,12 @@
 package com.abs.casino.common.web;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameCache;
-import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameCache;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
 import com.abs.casino.common.cache.data.account.PlayerDeviceType;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
+import com.abs.casino.common.cache.data.session.ClientType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

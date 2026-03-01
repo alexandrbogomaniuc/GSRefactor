@@ -4956,3 +4956,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
   - ETA `~0.0h` (`~0.00` workdays)
+
+## 2026-03-01 11:13 UTC (Hard-cut stabilization: core dependency import rewire)
+- Executed bounded CRLF-safe import rewires to stabilize post-hard-cut compile boundaries across `common`, `sb-utils`, `utils`, and `common-promo`.
+- Rewired imports only where `com.abs` declarations already exist (discovered-type map), preserving no-blind-replace policy.
+- Installed refreshed dependency jars (`rng`, `sb-utils`, `utils`, `common-promo`) and recovered `gs-server/common` compile to PASS.
+- Canonical validation run (`run-rerun1.sh`) captured under:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-111154-hardcut-live-stabilization-core-deps-abs-import-rewire`
+- Validation summary:
+  - `fast_gate_batchA FAIL STEP02`
+  - `fast_gate_batchB FAIL STEP02`
+  - `prewarm FAIL PRE02`
+  - `validation FAIL PRE02`
+  - `STEP09 retry SKIP`
+- Metrics unchanged (declaration completion already final):
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+  - ETA `~0.0h` (`~0.00` workdays)

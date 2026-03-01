@@ -1,7 +1,7 @@
 package com.abs.casino.common.cache.data.bet;
 
-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-import com.dgphoenix.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.Identifiable;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

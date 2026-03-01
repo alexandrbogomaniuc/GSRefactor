@@ -2,7 +2,7 @@ package com.abs.casino.common.util;
 
 import com.abs.casino.common.config.UtilsApplicationContextHelper;
 import com.abs.casino.common.configuration.IGameServerConfiguration;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

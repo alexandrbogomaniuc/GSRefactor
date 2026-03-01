@@ -1,6 +1,6 @@
 package com.abs.casino.common.promo;
 
-import com.dgphoenix.casino.common.promo.IMaterialPrize;
+import com.abs.casino.common.promo.IMaterialPrize;
 /**
  * User: flsh
  * Date: 29.06.2022.

@@ -1,6 +1,6 @@
 package com.abs.casino.common.upload;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 /**
  * @author <a href="mailto:zomac@dgphoenix.com">Roman Sorokin</a>

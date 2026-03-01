@@ -9820,3 +9820,17 @@
   - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
   - ETA `~0.0h` (`~0.00` workdays)
+
+## 2026-03-01 11:13 UTC (Project 02 hard-cut stabilization batch)
+- Ran bounded CRLF-safe import rewires across `gs-server/common`, `gs-server/sb-utils`, `gs-server/utils`, and `gs-server/common-promo` to resolve post-hard-cut mixed namespace compile drift.
+- Installed refreshed artifacts for dependency alignment:
+  - `rng` PASS (`mvn -DskipTests install`)
+  - `sb-utils` PASS with main-only policy (`mvn -Dmaven.test.skip=true install`)
+  - `utils` PASS with main-only policy (`mvn -Dmaven.test.skip=true install`)
+  - `common-promo` PASS with main-only policy (`mvn -Dmaven.test.skip=true install`)
+- Verified `gs-server/common` build gate recovered (`mvn -DskipTests install` -> PASS).
+- Canonical runner evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-111154-hardcut-live-stabilization-core-deps-abs-import-rewire`
+  - summary: `fast_gate_batchA FAIL STEP02`, `fast_gate_batchB FAIL STEP02`, `prewarm FAIL PRE02`, `validation FAIL PRE02`, `STEP09 retry SKIP`.
+- Metrics (unchanged): baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`; Project02 `54.645725%`; Core `77.322863%`; Portfolio `88.661431%`; ETA `~0.0h`.
+- Next step: address `common-wallet` mixed-type incompatibilities (STEP02) and decide canonical PRE02 policy for sb-utils testCompile path.

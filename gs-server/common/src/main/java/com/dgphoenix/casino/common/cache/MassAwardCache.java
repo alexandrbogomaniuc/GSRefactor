@@ -3,7 +3,7 @@ package com.abs.casino.common.cache;
 import com.abs.casino.common.cache.ExportableCacheEntry;
 import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.IDistributedConfigCache;
-import com.dgphoenix.casino.common.cache.data.bonus.BaseMassAward;
+import com.abs.casino.common.cache.data.bonus.BaseMassAward;
 import com.abs.casino.common.exception.BonusException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

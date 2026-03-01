@@ -3,7 +3,7 @@ package com.abs.casino.common.util.web;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 public class EncoderResponce {
 

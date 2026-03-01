@@ -1,8 +1,8 @@
 package com.abs.casino.common.transactiondata;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.SessionInfo;
 
 /**
  * User: flsh

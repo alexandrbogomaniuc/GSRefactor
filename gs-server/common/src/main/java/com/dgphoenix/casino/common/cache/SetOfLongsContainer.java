@@ -1,6 +1,6 @@
 package com.abs.casino.common.cache;
 
-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
 
 import java.util.Set;
 

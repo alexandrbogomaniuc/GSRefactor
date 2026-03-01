@@ -2,7 +2,7 @@ package com.abs.casino.common.promo;
 
 import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.abs.casino.common.currency.IHistoricalCurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 import java.math.BigDecimal;
 import java.util.Collections;

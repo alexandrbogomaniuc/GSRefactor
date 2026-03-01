@@ -1,6 +1,6 @@
 package com.abs.casino.common.cache.data.payment;
 
-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
 import com.abs.casino.common.cache.data.game.GameSessionInfo;
 
 import java.util.List;

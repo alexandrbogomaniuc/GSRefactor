@@ -1,12 +1,12 @@
 package com.abs.casino.common.cache.data.bonus;
 
-import com.dgphoenix.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.Identifiable;
 import com.abs.casino.common.cache.JsonSelfSerializable;
-import com.dgphoenix.casino.common.cache.VersionedDistributedCacheEntry;
-import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.util.CollectionUtils;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.cache.VersionedDistributedCacheEntry;
+import com.abs.casino.common.cache.data.IDistributedConfigEntry;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
