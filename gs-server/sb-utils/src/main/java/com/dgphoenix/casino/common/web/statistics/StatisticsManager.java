@@ -3,11 +3,11 @@
  * Date: 22.03.2006
  */
 
-package com.dgphoenix.casino.common.web.statistics;
+package com.abs.casino.common.web.statistics;
 
 import com.abs.casino.common.web.statistics.IStatisticsGetter;
 import com.abs.casino.common.web.statistics.IntervalStatistics;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;

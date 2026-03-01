@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.system.configuration;
+package com.abs.casino.system.configuration;
 
 import com.abs.casino.GeoIp;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
@@ -6,8 +6,8 @@ import com.abs.casino.cassandra.persist.CassandraBlockedCountriesPersister;
 import com.dgphoenix.casino.common.cache.ServerConfigsCache;
 import com.abs.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
 import com.abs.casino.common.cache.data.server.ServerInfo;
-import com.dgphoenix.casino.common.config.GameServerConfig;
-import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
+import com.abs.casino.common.config.GameServerConfig;
+import com.abs.casino.common.config.GameServerConfigTemplate;
 import com.abs.casino.common.config.MountMonitoringEntry;
 import com.abs.casino.common.configuration.CasinoSystemType;
 import com.abs.casino.common.configuration.IGameServerConfiguration;

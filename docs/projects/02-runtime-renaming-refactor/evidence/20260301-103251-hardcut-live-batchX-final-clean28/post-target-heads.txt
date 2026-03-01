@@ -1,0 +1,1109 @@
+===== gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/ColumnDefinition.java
+package com.abs.casino.cassandra.persist.engine;
+
+
+import java.util.Objects;
+
+/**
+ * User: flsh
+ * Date: 26.09.14.
+ */
+public class ColumnDefinition {
+    private final String name;
+    private final com.datastax.driver.core.DataType type;
+    private final boolean staticField;
+    private final boolean indexed;
+    private final boolean primaryKeyPart;
+
+    public ColumnDefinition(String name, com.datastax.driver.core.DataType type, boolean staticField, boolean indexed, boolean primaryKeyPart) {
+        this.name = name.trim();
+        this.type = type;
+        this.staticField = staticField;
+        this.indexed = indexed;
+        this.primaryKeyPart = primaryKeyPart;
+        if (staticField && (indexed || primaryKeyPart)) {
+            throw new IllegalStateException("Static field cannot be indexed or primary key part");
+        }
+    }
+
+    public ColumnDefinition(String name, com.datastax.driver.core.DataType type) {
+        this(name, type, false, false, false);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public com.datastax.driver.core.DataType getType() {
+        return type;
+    }
+
+    public boolean isStaticField() {
+===== gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/ICassandraPersister.java
+package com.abs.casino.cassandra.persist.engine;
+import org.apache.logging.log4j.Logger;
+
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * User: Grien
+ * Date: 25.12.2012 19:40
+ */
+public interface ICassandraPersister {
+    String ID_DELIMITER = "+";
+    int DEFAULT_GC_GRACE_PERIOD_IN_SECONDS = 3600 * 3;
+    String DATE_FORMAT = "yyyy-MM-dd HH:mm:ssZ";
+
+    TableDefinition getMainTableDefinition();
+
+    default String getMainColumnFamilyName() {
+        return getMainTableDefinition().getTableName();
+    }
+
+    default List<TableDefinition> getAllTableDefinitions() {
+        return Collections.singletonList(getMainTableDefinition());
+    }
+
+    void createTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition);
+
+    void updateTable(com.datastax.driver.core.Session session, TableDefinition tableDefinition, com.datastax.driver.core.TableMetadata tableMetadata);
+
+    Logger getLog();
+
+    void initSession(com.datastax.driver.core.Session session);
+
+    void init();
+
+    void shutdown();
+
+    void setTtl(Integer ttl);
+
+    Integer getTtl();
+===== gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/AccountDistributedLockManager.java
+package com.abs.casino.cassandra;
+
+import com.abs.casino.cassandra.AbstractLockManager;
+import com.abs.casino.cassandra.persist.CassandraTransactionDataPersister;
+import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+/**
+ * Created by grien on 17.02.15.
+ */
+public class AccountDistributedLockManager extends AbstractLockManager {
+    //ReadTimeouts under high load hint: alter table ACC_DLM_CF with speculative_retry = 'ALWAYS';
+    private static final String LOCK_CF = "ACC_DLM_CF";
+    private static final Logger LOG = LogManager.getLogger(AccountDistributedLockManager.class);
+
+    private AccountDistributedLockManager() {
+        super(2000, 2000, 10000, 8);
+    }
+
+    @SuppressWarnings("unused")
+    private void setTransactionDataPersister(CassandraTransactionDataPersister transactionDataPersister) {
+        registerListener(transactionDataPersister);
+    }
+
+    public String getMainColumnFamilyName() {
+        return LOCK_CF;
+    }
+
+    @Override
+    public TableDefinition getMainTableDefinition() {
+        TableDefinition tableDefinition = super.getMainTableDefinition();
+        tableDefinition.speculativeRetry(com.datastax.driver.core.schemabuilder.SchemaBuilder.always());
+        return tableDefinition;
+    }
+
+    @Override
+    public Logger getLog() {
+        return LOG;
+    }
+===== gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java
+package com.abs.casino.payment.wallet;
+
+import com.dgphoenix.casino.common.DomainSession;
+import com.dgphoenix.casino.common.SessionHelper;
+import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
+import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
+import com.dgphoenix.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.payment.WalletOperationAdditionalProperties;
+import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
+import com.dgphoenix.casino.common.cache.data.session.ClientType;
+import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.dgphoenix.casino.common.configuration.messages.MessageManager;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.DBException;
+import com.abs.casino.common.exception.WalletException;
+import com.abs.casino.common.games.IStartGameHelper;
+import com.abs.casino.common.games.StartGameHelpers;
+import com.abs.casino.common.promo.PromoWinInfo;
+import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.util.DigitFormatter;
+import com.dgphoenix.casino.common.util.IdGenerator;
+import com.abs.casino.common.util.NumberUtils;
+import com.abs.casino.common.util.ReflectionUtils;
+import com.abs.casino.common.util.string.StringUtils;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletStatusResult;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
+import com.abs.casino.gs.managers.payment.wallet.IWalletHelper;
+import com.abs.casino.gs.managers.payment.wallet.WalletPersister;
+import com.dgphoenix.casino.gs.managers.payment.wallet.*;
+import com.abs.casino.gs.managers.payment.wallet.v4.CWMType;
+import com.abs.casino.gs.managers.payment.wallet.v4.ICommonWalletClient;
+import com.abs.casino.payment.wallet.AbstractWalletProtocolManager;
+===== gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v4/CanexCWClient.java
+package com.abs.casino.payment.wallet.client.v4;
+
+import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.dgphoenix.casino.common.cache.BaseGameCache;
+import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.dgphoenix.casino.common.cache.data.currency.Currency;
+import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
+import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
+import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+import com.dgphoenix.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.client.IJsonCWClient;
+import com.abs.casino.common.client.canex.request.CanexJsonRequest;
+import com.abs.casino.common.client.canex.request.CanexRequest;
+import com.abs.casino.common.client.canex.request.RequestType;
+import com.abs.casino.common.client.canex.request.friends.GetFriendsOutput;
+import com.abs.casino.common.client.canex.request.friends.GetFriendsRequest;
+import com.abs.casino.common.client.canex.request.friends.GetFriendsResponse;
+import com.abs.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersOutput;
+import com.abs.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersRequest;
+import com.abs.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersResponse;
+import com.abs.casino.common.client.canex.request.onlinerooms.PushRoomsPlayersOutput;
+import com.abs.casino.common.client.canex.request.onlinerooms.PushRoomsPlayersRequest;
+import com.abs.casino.common.client.canex.request.onlinerooms.Room;
+import com.abs.casino.common.client.canex.request.privateroom.InvitePlayersOutput;
+import com.abs.casino.common.client.canex.request.privateroom.InvitePlayersRequest;
+import com.abs.casino.common.client.canex.request.privateroom.PrivateRoom;
+import com.abs.casino.common.client.canex.request.privateroom.Status;
+import com.abs.casino.common.client.canex.response.CanexJsonResponse;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.rest.CustomRestTemplate;
+import com.abs.casino.common.util.xml.IXmlRequestResult;
+import com.abs.casino.common.util.xml.XmlRequestResult;
+import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
+import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
+import com.abs.casino.gs.managers.payment.wallet.SimpleLoggableContainer;
+import com.google.gson.Gson;
+import org.apache.commons.lang.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionData.java
+package com.abs.casino.common.transactiondata;
+
+import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.dgphoenix.casino.common.cache.Identifiable;
+import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
+import com.dgphoenix.casino.common.cache.data.account.PlayerGameSettings;
+import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
+import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
+import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
+import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusNotification;
+import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin;
+import com.abs.casino.common.cache.data.payment.transfer.PaymentTransaction;
+import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.dgphoenix.casino.common.promo.PromoCampaignMember;
+import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
+import com.abs.casino.common.transactiondata.storeddate.StoredItem;
+import com.abs.casino.common.transactiondata.storeddate.StoredItemType;
+import com.abs.casino.common.transactiondata.TrackingInfo;
+import com.abs.casino.common.transactiondata.TrackingState;
+import com.abs.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
+
+import java.util.Map;
+
+/**
+ * User: Grien
+ * Date: 30.05.2014 16:40
+ */
+public interface ITransactionData extends IDistributedCacheEntry, Identifiable {
+    long getVersion();
+
+    void setVersion(long version);
+
+    void incrementVersion();
+
+    int getBankId();
+
+    String getLockId();
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IdGenerator.java
+/**
+ * User: flsh
+ * Date: 07.07.2009
+ */
+package com.abs.casino.common.util;
+
+import com.abs.casino.common.cache.AbstractExportableCache;
+import com.abs.casino.common.cache.CacheKeyInfo;
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.util.ILongIdGenerator;
+import com.abs.casino.common.util.ISequencer;
+import com.abs.casino.common.util.ISequencerPersister;
+import com.abs.casino.common.util.Sequencer;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.persist.StreamPersister;
+import com.abs.casino.common.persist.TableProcessor;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
+@com.abs.casino.common.cache.CacheKeyInfo(description = "key is class FQN")
+public class IdGenerator extends AbstractExportableCache<Sequencer> implements ILongIdGenerator {
+    private static final Logger LOG = LogManager.getLogger(IdGenerator.class);
+
+    private static final IdGenerator instance = new IdGenerator();
+    //key is class FQN
+    private static final ConcurrentMap<String, ISequencer> ids = new ConcurrentHashMap<>();
+    private ISequencerPersister persister;
+
+    public static IdGenerator getInstance() {
+        return instance;
+    }
+
+    private IdGenerator() {
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/util/IntegerIdGenerator.java
+/**
+ * User: flsh
+ * Date: 07.07.2009
+ */
+package com.abs.casino.common.util;
+
+import com.abs.casino.common.cache.AbstractExportableCache;
+import com.abs.casino.common.cache.CacheKeyInfo;
+import com.abs.casino.common.cache.ExportableCacheEntry;
+import com.abs.casino.common.util.IIntegerIdGenerator;
+import com.abs.casino.common.util.IIntegerSequencer;
+import com.abs.casino.common.util.IIntegerSequencerPersister;
+import com.abs.casino.common.util.ISequencer;
+import com.abs.casino.common.util.IntegerSequencer;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.persist.StreamPersister;
+import com.abs.casino.common.persist.TableProcessor;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
+@com.abs.casino.common.cache.CacheKeyInfo(description = "key is class FQN")
+public class IntegerIdGenerator extends AbstractExportableCache<IntegerSequencer> implements IIntegerIdGenerator {
+    private static final Logger LOG = LogManager.getLogger(IntegerIdGenerator.class);
+    private static final IntegerIdGenerator instance = new IntegerIdGenerator();
+    //key is class FQN
+    private static final ConcurrentMap<String, IIntegerSequencer> ids = new ConcurrentHashMap<>();
+    private IIntegerSequencerPersister persister;
+
+    public static IntegerIdGenerator getInstance() {
+        return instance;
+    }
+
+    private IntegerIdGenerator() {
+===== gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/CCommonWallet.java
+package com.abs.casino.gs.managers.payment.wallet;
+
+public class CCommonWallet {
+    public static final String PARAM_USERID = "userId";
+    public static final String PARAM_BANKID = "bankId";
+    public static final String PARAM_BET = "bet";
+    public static final String PARAM_WIN = "win";
+    public static final String PARAM_REAL_BET = "realBet";
+    public static final String PARAM_REAL_WIN = "realWin";
+    public static final String PARAM_SW_BET = "swBet";
+    public static final String PARAM_SW_COMPENSATED_WIN = "swCompensatedWin";
+    public static final String PARAM_188BET_REAL_WIN = "realWin188Bet";
+    public static final String PARAM_GAME_TYPE = "gameType";
+    public static final String PARAM_NEGATIVE_BET = "negativeBet";
+    public static final String PARAM_ROUND_FINISHED = "isRoundFinished";
+    public static final String PARAM_ROUND_STARTED = "isRoundStarted";
+    public static final String PARAM_ROUNDID = "roundId";
+    public static final String PARAM_REALGAMEROUNDID = "realGameRoundId";
+    public static final String PARAM_GAMEID = "gameId";
+    public static final String PARAM_BALANCE = "balance";
+    public static final String PARAM_APIPASSWORD = "apipassword";
+    public static final String PARAM_GAMESESSIONID = "gameSessionId";
+    public static final String PARAM_CURRENCY = "currency";
+    public static final String PARAM_CASINOTRANSACTIONID = "casinoTransactionId";
+    public static final String PARAM_CWTRANSACTIONID = "ExtSystemTransactionId";
+    public static final String PARAM_SESSIONID = "SessionId";
+    public static final String PARAM_PARTNER_ID = "PartnerID";
+    public static final String PARAM_PARTNER_KEY = "PartnerKey";
+    public static final String PARAM_SESSION = "session";
+    public static final String VALUE_TRUE = "true";
+    public static final String VALUE_FALSE = "false";
+    public static final String CASINO_TAG = "casino".toUpperCase();
+    public static final String REQUEST_TAG = "request".toUpperCase();
+    public static final String RESPONSE_TAG = "response".toUpperCase();
+    public static final String USERNAME_TAG = "username".toUpperCase();
+    public static final String USERID_TAG = "userId".toUpperCase();
+    public static final String EMAIL_TAG = "email".toUpperCase();
+    public static final String FIRSTNAME_TAG = "firstname".toUpperCase();
+    public static final String LASTNAME_TAG = "lastname".toUpperCase();
+    public static final String CURRENCY_TAG = "currency".toUpperCase();
+===== gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/CommonGameWallet.java
+package com.abs.casino.gs.managers.payment.wallet;
+
+import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
+import com.dgphoenix.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.exception.WalletException;
+import com.dgphoenix.casino.common.promo.PromoWinInfo;
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.Map;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+import static org.apache.commons.lang.StringUtils.isBlank;
+
+/**
+ * User: flsh
+ * Date: 6/28/12
+ */
+public class CommonGameWallet implements KryoSerializable {
+    private static final Logger LOG = LogManager.getLogger(CommonGameWallet.class);
+
+    public static final String PROP_ORIGINAL_WIN = "originalWin";
+    public static final String PROP_DOUBLE_UP_COUNT = "doubleUpCount";
+
+    //version 4 must be skipped, next version = 5
+    private static final byte VERSION = 3;
+    private static final String PROPERTY_SEPARATOR = ";";
+    private static final String VALUE_SEPARATOR = "=";
+
+    private int gameId;
+    private Long roundId;
+    private Long gameSessionId;
+    private long winAmount;
+    private long betAmount;
+===== gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/CommonWallet.java
+package com.abs.casino.gs.managers.payment.wallet;
+
+import com.abs.casino.common.cache.data.payment.AbstractWallet;
+import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
+import com.dgphoenix.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.exception.WalletException;
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.*;
+
+public class CommonWallet extends AbstractWallet implements IWallet, KryoSerializable {
+    private static final byte VERSION = 0;
+    private static final Logger LOG = LogManager.getLogger(CommonWallet.class);
+    private Map<Integer, CommonGameWallet> gameWalletsMap = new HashMap<>(2);
+    private long serverBalance;
+
+    public CommonWallet() {
+    }
+
+    public CommonWallet(long accountId) {
+        super(accountId);
+    }
+
+    @Override
+    public boolean isHasAnyGameWalletWithAnyAmount() {
+        for (Map.Entry<Integer, CommonGameWallet> entry : getGameWalletsMap().entrySet()) {
+            CommonGameWallet commonGameWallet = entry.getValue();
+            if (commonGameWallet != null && (commonGameWallet.getBetAmount() > 0 || commonGameWallet.getWinAmount() > 0)) {
+                return true;
+            }
+
+        }
+===== gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/CommonWalletOperation.java
+package com.abs.casino.gs.managers.payment.wallet;
+
+import com.abs.casino.common.cache.data.payment.AbstractWalletOperation;
+import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+
+public class CommonWalletOperation extends AbstractWalletOperation implements KryoSerializable {
+    private static final byte VERSION = 5;
+    private String externalTransactionId;
+    private String externalRoundId;
+    private String cmd;
+    private long realBet = -1;
+    private long realWin = -1;
+    private long swBet = -1;
+    private long swCompensatedWin = -1;
+    private long trackTime = 0;
+    private int trackAttempt = 0;
+
+    public CommonWalletOperation() {
+    }
+
+    public CommonWalletOperation(long id, long accountId, Long gameSessionId, Long roundId, long amount,
+                                 WalletOperationType type, WalletOperationStatus externalStatus,
+                                 WalletOperationStatus internalStatus, long startTime, long endTime, String description,
+                                 String externalTransactionId, String externalRoundId, long negativeBet, String cmd,
+                                 long realBet, long realWin) {
+        super(id, accountId, gameSessionId, roundId, amount, type, externalStatus, internalStatus,
+                description, startTime, endTime, negativeBet);
+
+        this.externalRoundId = externalRoundId;
+        this.externalTransactionId = externalTransactionId;
+        this.cmd = cmd;
+        this.realBet = realBet;
+        this.realWin = realWin;
+    }
+
+===== gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletProtocolManager.java
+package com.abs.casino.gs.managers.payment.wallet;
+
+import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.dgphoenix.casino.common.cache.data.game.GameMode;
+import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.exception.WalletException;
+import com.abs.casino.gs.managers.payment.wallet.IWalletHelper;
+import com.abs.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;
+
+/**
+ * User: plastical
+ * Date: 02.03.2010
+ */
+public interface IWalletProtocolManager {
+    ICommonWalletClient getClient();
+
+    void init(IWalletHelper helper);
+
+    void setJarInfo(String jarInfo);
+
+    long getBankId();
+
+    BankInfo getBankInfo();
+
+    IWallet handleCreateWallet(AccountInfo accountInfo, long gameSessionId, int gameId, GameMode mode,
+                               ClientType clientType);
+
+    void handleDestroyWallet(AccountInfo account, int gameId, GameMode mode, IWallet wallet) throws WalletException;
+
+    void handleDebit(long accountId, long betAmount, IWalletDBLink dbLink, SessionInfo sessionInfo,
+                     IExternalWalletTransactionHandler extHandler, long mpRoundId) throws WalletException;
+
+    void handleNegativeBet(long accountId, long bankId, long betAmount, IWalletDBLink dbLink, SessionInfo sessionInfo)
+            throws WalletException;
+
+    void handleGameLogicCompleted(long accountId, long betAmount, long winAmount) throws WalletException;
+===== gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/RemoteClientStubHelper.java
+package com.abs.casino.gs.managers.payment.wallet;
+
+import com.abs.casino.common.exception.NotEnoughMoneyException;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
+import com.google.common.collect.EvictingQueue;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Queues;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.Serializable;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * User: flsh
+ * Date: 5/6/11
+ */
+public class RemoteClientStubHelper {
+    private static final Logger LOG = LogManager.getLogger(RemoteClientStubHelper.class);
+
+    private static final RemoteClientStubHelper instance = new RemoteClientStubHelper();
+    private final Map<String, ExtAccountInfoStub> infosMap = new ConcurrentHashMap<>();
+    private static final int CACHE_SIZE = 300;
+    private final Queue<Long> processedWins;
+    private final Map<Long, Long> processedBetsWithAmount;
+    private final Map<Long, String> processedUnjContrAmount;
+
+    {
+        EvictingQueue<Long> queue = EvictingQueue.create(CACHE_SIZE);
+        processedWins = Queues.synchronizedQueue(queue);
+        processedBetsWithAmount = Collections.synchronizedMap(new LinkedHashMap<Long, Long>() {
+            @Override
+            protected boolean removeEldestEntry(Map.Entry<Long, Long> eldest) {
+                return size() > CACHE_SIZE;
+            }
+        });
+        processedUnjContrAmount = Collections.synchronizedMap(new LinkedHashMap<Long, String>() {
+            @Override
+===== gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/v2/ICommonWalletClient.java
+package com.abs.casino.gs.managers.payment.wallet.v2;
+
+import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.dgphoenix.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.payment.WalletOperationStatus;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.WalletException;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletStatusResult;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
+import com.abs.casino.gs.managers.payment.wallet.IWalletHelper;
+import com.dgphoenix.casino.gs.managers.payment.wallet.*;
+
+/**
+ * User: plastical
+ * Date: 17.05.2010
+ */
+public interface ICommonWalletClient {
+    String CLIENT_TYPE_PARAM = "clientType";
+
+    CommonWalletWagerResult wager(long accountId, String extUserId,
+                                  String bet, //bet_amount|transactionID
+                                  String win, //win_amount|transactionID
+                                  Boolean isRoundFinished, long gsRoundId, long mpRoundId,
+                                  long gameId, long bankId,
+                                  CommonWalletOperation operation,
+                                  CommonWallet wallet, ClientType clienttype,
+                                  Currency currency)
+            throws CommonException;
+
+    CommonWalletStatusResult getExternalTransactionStatus(long accountId, String extUserId,
+                                                          long transactionId, long bankId,
+                                                          CommonWalletOperation operation)
+            throws CommonException;
+
+    void setWalletHelper(IWalletHelper walletHelper);
+
+    double getBalance(long accountId, String extUserId, long bankId, Currency currency) throws CommonException;
+
+    void cancelTransaction(long accountId, String extUserId, long transactionId, long bankId)
+===== gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/v4/ICommonWalletClient.java
+package com.abs.casino.gs.managers.payment.wallet.v4;
+
+import com.abs.casino.common.client.canex.request.privateroom.Status;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
+
+/**
+ * User: flsh
+ * Date: 9/27/12
+ */
+public interface ICommonWalletClient extends
+        com.abs.casino.gs.managers.payment.wallet.v3.ICommonWalletClient {
+    boolean refundBet(long operationStartTime, long accountId, String extUserId,
+                      CommonWalletOperation debitOperation, long gameId) throws CommonException;
+
+    boolean updatePlayerStatusInPrivateRoom(String privateRoomId, String nickname, String externalId, Status status, int bankId) throws CommonException;
+}
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/account/AccountManager.java
+package com.abs.casino.account;
+
+import com.abs.casino.common.cache.AbstractExportableCache;
+import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.persist.CassandraAccountInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.api.ICommonManager;
+import com.dgphoenix.casino.common.cache.*;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.PlayerGameSettingsType;
+import com.abs.casino.common.cache.data.bonus.BonusSystemType;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.configuration.CasinoSystemType;
+import com.abs.casino.common.exception.AccountException;
+import com.abs.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.transactiondata.storeddate.StoredItemType;
+import com.abs.casino.common.util.AccountIdGenerator;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.Pair;
+import com.dgphoenix.casino.gs.GameServer;
+import com.abs.casino.gs.managers.dblink.FreeGameCalculator;
+import com.abs.casino.gs.managers.payment.bonus.BonusManager;
+import com.abs.casino.gs.managers.payment.bonus.FRBonusManager;
+import com.abs.casino.gs.managers.payment.bonus.IBonusClient;
+import com.abs.casino.gs.managers.payment.bonus.IFRBonusClient;
+import com.abs.casino.gs.managers.payment.bonus.IFRBonusManager;
+import com.abs.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
+import com.abs.casino.gs.managers.payment.currency.CurrencyManager;
+import com.abs.casino.sm.AbstractPlayerSessionManager;
+import com.abs.casino.sm.IGetAccountInfoProvider;
+import com.abs.casino.system.configuration.GameServerConfiguration;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsHelper.java
+package com.abs.casino.gs;
+
+import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
+import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.gs.managers.game.history.HistoryInformerManager;
+import com.abs.casino.promo.IPromoMessagesDispatcher;
+import com.abs.casino.promo.tournaments.TournamentManager;
+import com.abs.casino.websocket.IWebSocketSessionsController;
+
+/**
+ * User: flsh
+ * Date: 28.11.16.
+ *
+ * @deprecated Use constructor injection or ApplicationContextHelper.getBean
+ */
+@Deprecated
+public class GameServerComponentsHelper {
+
+    public static TournamentManager getTournamentManager() {
+        return ApplicationContextHelper.getApplicationContext().
+                getBean("tournamentManager", TournamentManager.class);
+    }
+
+    public static IPromoCampaignManager getPromoCampaignManager() {
+        return ApplicationContextHelper.getApplicationContext().
+                getBean("promoCampaignManager", IPromoCampaignManager.class);
+    }
+
+    public static IPromoMessagesDispatcher getPromoMessagesDispatcher() {
+        return ApplicationContextHelper.getApplicationContext().
+                getBean("promoMessagesDispatcher", IPromoMessagesDispatcher.class);
+    }
+
+    public static IWebSocketSessionsController getWebSocketSessionsController() {
+        return ApplicationContextHelper.getApplicationContext().
+                getBean("webSocketSessionsController", IWebSocketSessionsController.class);
+    }
+
+    public static HistoryInformerManager getHistoryInformerManager() {
+        return ApplicationContextHelper.getApplicationContext().
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/BonusManager.java
+package com.abs.casino.gs.managers.payment.bonus;
+
+import com.abs.casino.common.cache.data.bonus.BonusSystemType;
+import com.abs.casino.account.AccountManager;
+import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.persist.CassandraBonusArchivePersister;
+import com.abs.casino.cassandra.persist.CassandraBonusPersister;
+import com.abs.casino.cassandra.persist.CassandraTrackingInfoPersister;
+import com.abs.casino.common.SessionHelper;
+import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameCache;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.dgphoenix.casino.common.cache.data.bonus.*;
+import com.abs.casino.common.cache.data.game.BaseGameInfoTemplate;
+import com.abs.casino.common.cache.data.game.GameType;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.transactiondata.TransactionData;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.dgphoenix.casino.common.util.IdGenerator;
+import com.abs.casino.common.util.ReflectionUtils;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.common.web.bonus.BonusError;
+import com.abs.casino.common.web.bonus.BonusErrors;
+import com.dgphoenix.casino.gs.GameServer;
+import com.abs.casino.gs.managers.payment.bonus.IBonusClient;
+import com.abs.casino.gs.managers.payment.bonus.IBonusManager;
+import com.abs.casino.gs.managers.payment.bonus.mass.MassAwardBonusManager;
+import com.abs.casino.gs.managers.payment.bonus.tracker.BonusTracker;
+import com.abs.casino.gs.persistance.GameSessionPersister;
+import com.abs.casino.gs.persistance.LasthandPersister;
+import com.abs.casino.gs.persistance.PlayerSessionPersister;
+import com.abs.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
+import com.abs.casino.kafka.dto.BonusStatusDto;
+import org.apache.logging.log4j.LogManager;
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/FRBonusManager.java
+package com.abs.casino.gs.managers.payment.bonus;
+
+import com.abs.casino.common.cache.data.bonus.BonusSystemType;
+import com.abs.casino.account.AccountManager;
+import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.persist.CassandraFrBonusArchivePersister;
+import com.abs.casino.cassandra.persist.CassandraFrBonusPersister;
+import com.abs.casino.common.SessionHelper;
+import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.dgphoenix.casino.common.cache.data.bonus.*;
+import com.abs.casino.common.cache.data.bonus.restriction.MassAwardRestriction;
+import com.abs.casino.common.cache.data.game.BaseGameInfoTemplate;
+import com.abs.casino.common.cache.data.payment.bonus.FRBWinOperation;
+import com.abs.casino.common.cache.data.payment.bonus.FRBonusNotification;
+import com.abs.casino.common.cache.data.payment.bonus.FRBonusWin;
+import com.abs.casino.common.cache.data.payment.frb.FRBWinOperationStatus;
+import com.abs.casino.common.cache.data.payment.frb.FRBonusNotificationStatus;
+import com.abs.casino.common.cache.data.payment.frb.IFRBonusWin;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.currency.ICurrencyRateManager;
+import com.abs.casino.common.exception.BonusException;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.FRBException;
+import com.abs.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.transactiondata.TransactionData;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.CollectionUtils;
+import com.dgphoenix.casino.common.util.IdGenerator;
+import com.abs.casino.common.util.ReflectionUtils;
+import com.abs.casino.common.util.string.StringUtils;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.dgphoenix.casino.gs.GameServer;
+import com.abs.casino.gs.managers.payment.bonus.IFRBonusClient;
+import com.abs.casino.gs.managers.payment.bonus.IFRBonusManager;
+import com.abs.casino.gs.managers.payment.bonus.IFRBonusWinManager;
+import com.abs.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/WalletProtocolFactory.java
+package com.abs.casino.gs.managers.payment.wallet;
+
+import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.dgphoenix.casino.common.cache.data.game.GameMode;
+import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+import com.dgphoenix.casino.common.cache.data.session.ClientType;
+import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.WalletException;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.ReflectionUtils;
+import com.abs.casino.common.util.string.StringUtils;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.gs.managers.payment.wallet.IWalletHelper;
+import com.abs.casino.gs.managers.payment.wallet.ILoggableCWClient;
+import com.abs.casino.gs.managers.payment.wallet.SimpleLoggableContainer;
+import com.abs.casino.gs.managers.payment.wallet.WalletPersister;
+import com.abs.casino.gs.managers.dblink.EmptyDBLink;
+import com.abs.casino.gs.managers.dblink.IDBLink;
+import com.abs.casino.gs.managers.payment.wallet.IExternalWalletTransactionHandler;
+import com.abs.casino.gs.managers.payment.wallet.IWalletDBLink;
+import com.abs.casino.gs.managers.payment.wallet.IWalletProtocolManager;
+import com.abs.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;
+import com.abs.casino.promo.persisters.CassandraUnsendedPromoWinInfoPersister;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.lang.reflect.Constructor;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
+import static com.abs.casino.common.util.ReflectionUtils.canInvokeMethod;
+import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+
+/**
+ * User: plastical
+ * Date: 02.03.2010
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/BattlegroundService.java
+package com.abs.casino.gs.socket.mq;
+
+import com.abs.casino.kafka.dto.GetPrivateRoomInfoRequest;
+
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.battleground.messages.*;
+import com.abs.casino.battleground.messages.*;
+import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.persist.CassandraAccountInfoPersister;
+import com.abs.casino.cassandra.persist.mp.*;
+import com.dgphoenix.casino.common.SessionHelper;
+import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
+import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
+import com.dgphoenix.casino.common.cache.data.session.ClientType;
+import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.client.canex.request.friends.Friend;
+import com.abs.casino.common.client.canex.request.friends.UpdateFriendsRequest;
+import com.abs.casino.common.client.canex.request.friends.UpdateFriendsResponse;
+import com.abs.casino.common.client.canex.request.onlineplayer.OnlinePlayer;
+import com.abs.casino.common.client.canex.request.onlineplayer.UpdateOnlinePlayersRequest;
+import com.abs.casino.common.client.canex.request.onlineplayer.UpdateOnlinePlayersResponse;
+import com.abs.casino.common.client.canex.request.privateroom.Player;
+import com.abs.casino.common.client.canex.request.privateroom.PrivateRoom;
+import com.abs.casino.common.client.canex.request.privateroom.Status;
+import com.abs.casino.common.client.canex.request.privateroom.UpdateRoomResponse;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.battleground.BattlegroundConfig;
+import com.abs.casino.common.util.CommonExecutorService;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
+import com.abs.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
+import com.abs.casino.kafka.dto.*;
+import com.abs.casino.kafka.dto.privateroom.request.*;
+import com.abs.casino.kafka.dto.privateroom.response.*;
+import com.abs.casino.promo.persisters.CassandraBattlegroundConfigPersister;
+import com.abs.casino.services.LoginService;
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java
+package com.abs.casino.gs.socket.mq;
+
+import com.dgphoenix.casino.account.AccountManager;
+import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.dgphoenix.casino.cassandra.persist.*;
+import com.abs.casino.cassandra.persist.mp.*;
+import com.abs.casino.common.GameSessionExtendedProperties;
+import com.dgphoenix.casino.common.SessionHelper;
+import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.dgphoenix.casino.common.cache.BaseGameCache;
+import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+import com.dgphoenix.casino.common.cache.CurrencyCache;
+import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.dgphoenix.casino.common.cache.data.bank.Coin;
+import com.abs.casino.common.cache.data.bank.ILimit;
+import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
+import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
+import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
+import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
+import com.dgphoenix.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.game.BaseGameConstants;
+import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
+import com.dgphoenix.casino.common.cache.data.game.GameType;
+import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.cache.data.payment.PaymentMode;
+import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
+import com.abs.casino.common.cache.data.payment.transfer.ExternalPaymentTransaction;
+import com.abs.casino.common.cache.data.payment.transfer.TransactionStatus;
+import com.abs.casino.common.cache.data.payment.transfer.TransactionType;
+import com.dgphoenix.casino.common.cache.data.session.ClientType;
+import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.client.canex.request.friends.Friend;
+import com.abs.casino.common.client.canex.request.friends.GetFriendsResponse;
+import com.abs.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersResponse;
+import com.abs.casino.common.client.canex.request.onlineplayer.OnlinePlayer;
+import com.abs.casino.common.client.canex.request.onlinerooms.Player;
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/system/configuration/GameServerConfiguration.java
+package com.abs.casino.system.configuration;
+
+import com.abs.casino.GeoIp;
+import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.persist.CassandraBlockedCountriesPersister;
+import com.dgphoenix.casino.common.cache.ServerConfigsCache;
+import com.abs.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
+import com.abs.casino.common.cache.data.server.ServerInfo;
+import com.abs.casino.common.config.GameServerConfig;
+import com.abs.casino.common.config.GameServerConfigTemplate;
+import com.abs.casino.common.config.MountMonitoringEntry;
+import com.abs.casino.common.configuration.CasinoSystemType;
+import com.abs.casino.common.configuration.IGameServerConfiguration;
+import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.struts.util.PropertyMessageResources;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
+public class GameServerConfiguration implements IGameServerConfiguration {
+    private static final String MESSAGE_BUNDLE = "com.dgphoenix.casino.gs.web.messages.ApplicationMessage";
+    private static final Logger LOG = LogManager.getLogger(GameServerConfiguration.class);
+
+    private final GameServerConfig config;
+    private final CassandraBlockedCountriesPersister blockedCountriesPersister;
+    private final GeoIp geoIp;
+
+    public GameServerConfiguration(ServerConfigsCache configsCache, GeoIp geoIp,
+                                   CassandraPersistenceManager persistenceManager, ServerCoordinatorInfoProvider serverIdProvider) {
+        Integer gameServerId = serverIdProvider.getServerId();
+        if (gameServerId == null) {
+            LOG.fatal("Couldn't find serverId. Seems ServerIdProvider is not initialized.");
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/exception/CommonException.java
+package com.abs.casino.common.exception;
+
+/**
+ * Created by ANGeL
+ * Date: Sep 16, 2008
+ * Time: 5:08:35 PM
+ */
+public class CommonException extends Exception {
+    public CommonException() {
+        super();
+    }
+
+    public CommonException(String message) {
+        super(message);
+    }
+
+    public CommonException(Throwable cause) {
+        super(cause);
+    }
+
+    public CommonException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/CollectionUtils.java
+package com.abs.casino.common.util;
+
+import com.abs.casino.common.util.BidirectionalMultivalueMap;
+import com.google.common.base.Joiner;
+import com.google.common.base.Splitter;
+import com.google.common.collect.Maps;
+import org.apache.log4j.Logger;
+
+import java.util.*;
+import java.util.Map.Entry;
+
+import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.google.common.base.Preconditions.checkArgument;
+import static org.apache.commons.lang.StringUtils.strip;
+
+/**
+ * User: plastical
+ * Date: 24.02.2010
+ */
+public class CollectionUtils {
+    private static final Logger LOG = Logger.getLogger(CollectionUtils.class);
+
+    public static boolean isEmpty(Collection collection) {
+        return collection == null || collection.isEmpty();
+    }
+
+    public static boolean isEmpty(Map map) {
+        return map == null || map.isEmpty();
+    }
+
+    public static <T extends Map<String, String>> T copyProperties(T original) {
+        try {
+            if (original != null) {
+                Class<T> klass = (Class<T>) original.getClass();
+                T copy = klass.newInstance();
+
+                if (!original.isEmpty()) {
+                    for (Entry<String, String> entry : original.entrySet()) {
+                        copy.put(entry.getKey(), entry.getValue());
+                    }
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/string/StringUtils.java
+package com.abs.casino.common.util.string;
+
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import org.apache.commons.codec.binary.Base64;
+
+import java.io.*;
+import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
+
+/**
+ * Created by ANGeL
+ * Date: Jan 10, 2008
+ * Time: 5:48:09 PM
+ */
+public class StringUtils {
+    private static final String PATTERN = "                    ";
+
+    private static final char[] HEX_DIGITS = {
+            '0', '1', '2', '3', '4', '5', '6', '7',
+            '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'
+    };
+
+    private static final String BINARY_DATA_V2_HEADER = "BDv2";
+
+    private static MessageDigest md5Helper;
+    private static MessageDigest sha1Helper;
+
+    static {
+        try {
+            if (md5Helper == null) {
+                md5Helper = MessageDigest.getInstance("MD5");
+            }
+            if(sha1Helper == null) {
+                sha1Helper = MessageDigest.getInstance("SHA-1");
+            }
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException();
+        }
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/web/statistics/StatisticsManager.java
+/**
+ * Author: Andrey Nazarov
+ * Date: 22.03.2006
+ */
+
+package com.abs.casino.common.web.statistics;
+
+import com.abs.casino.common.web.statistics.IStatisticsGetter;
+import com.abs.casino.common.web.statistics.IntervalStatistics;
+import com.abs.casino.common.util.string.StringUtils;
+
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class StatisticsManager {
+    private static StatisticsManager instance = new StatisticsManager();
+    private boolean enableStatistics = false;
+
+    private final Map<String, IntervalStatistics> requestStatistics =
+            new ConcurrentHashMap<String, IntervalStatistics>(128);
+    private final Map<String, IStatisticsGetter> statisticGetters = new ConcurrentHashMap<String, IStatisticsGetter>(128);
+    private String id = "unknown";
+    private long lastResetDate = System.currentTimeMillis();
+
+    public static StatisticsManager getInstance() {
+        return instance;
+    }
+
+    public Map<String, Comparator> sortComparators = new HashMap<String, Comparator>(5);
+
+    private StatisticsManager() {
+        sortComparators.put("name", new Comparator<IntervalStatistics>() {
+            @Override
+            public int compare(IntervalStatistics o1, IntervalStatistics o2) {
+                return o1.getName().toLowerCase().compareTo( o2.getName().toLowerCase() );
+            }
+        });
+        sortComparators.put("avg", new Comparator<IntervalStatistics>() {
+            @Override
+            public int compare(IntervalStatistics o1, IntervalStatistics o2) {

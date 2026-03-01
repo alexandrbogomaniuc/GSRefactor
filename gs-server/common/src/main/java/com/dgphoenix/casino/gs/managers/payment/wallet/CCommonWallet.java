@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.wallet;
+package com.abs.casino.gs.managers.payment.wallet;
 
 public class CCommonWallet {
     public static final String PARAM_USERID = "userId";

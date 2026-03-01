@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util;
+package com.abs.casino.common.util;
 
 import com.abs.casino.common.util.BidirectionalMultivalueMap;
 import com.google.common.base.Joiner;

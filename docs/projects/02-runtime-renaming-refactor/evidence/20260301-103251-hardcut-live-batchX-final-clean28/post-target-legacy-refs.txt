@@ -1,0 +1,230 @@
+1:package com.abs.casino.cassandra.persist.engine;
+1:package com.abs.casino.cassandra.persist.engine;
+1:package com.abs.casino.cassandra;
+5:import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+1:package com.abs.casino.payment.wallet;
+3:import com.dgphoenix.casino.common.DomainSession;
+4:import com.dgphoenix.casino.common.SessionHelper;
+5:import com.dgphoenix.casino.common.cache.BankInfoCache;
+6:import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+7:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+8:import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
+9:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+10:import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
+11:import com.dgphoenix.casino.common.cache.data.game.GameMode;
+13:import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+14:import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
+15:import com.dgphoenix.casino.common.cache.data.session.ClientType;
+16:import com.dgphoenix.casino.common.cache.data.session.GameSession;
+17:import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+18:import com.dgphoenix.casino.common.configuration.messages.MessageManager;
+25:import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+27:import com.dgphoenix.casino.common.util.IdGenerator;
+31:import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+37:import com.dgphoenix.casino.gs.managers.payment.wallet.*;
+64:    private final com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient client;
+121:    protected com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient instantiateClient()
+132:            return (com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient) clientConstructor.newInstance(bankInfo.getId());
+159:    public com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient getClient() {
+877:                com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient pureClient = getClient();
+1:package com.abs.casino.payment.wallet.client.v4;
+3:import com.dgphoenix.casino.common.cache.BankInfoCache;
+4:import com.dgphoenix.casino.common.cache.BaseGameCache;
+5:import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+6:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+7:import com.dgphoenix.casino.common.cache.data.currency.Currency;
+8:import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
+9:import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
+10:import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+11:import com.dgphoenix.casino.common.cache.data.session.ClientType;
+30:import com.dgphoenix.casino.common.exception.CommonException;
+34:import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
+35:import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
+1:package com.abs.casino.common.transactiondata;
+3:import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+4:import com.dgphoenix.casino.common.cache.Identifiable;
+5:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+6:import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
+7:import com.dgphoenix.casino.common.cache.data.account.PlayerGameSettings;
+8:import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
+9:import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
+10:import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
+11:import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+12:import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusNotification;
+13:import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin;
+15:import com.dgphoenix.casino.common.cache.data.session.GameSession;
+16:import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+17:import com.dgphoenix.casino.common.promo.PromoCampaignMember;
+18:import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
+5:package com.abs.casino.common.util;
+17:import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+5:package com.abs.casino.common.util;
+18:import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+1:package com.abs.casino.gs.managers.payment.wallet;
+1:package com.abs.casino.gs.managers.payment.wallet;
+3:import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+4:import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
+5:import com.dgphoenix.casino.common.cache.data.session.ClientType;
+7:import com.dgphoenix.casino.common.promo.PromoWinInfo;
+8:import com.dgphoenix.casino.common.util.CollectionUtils;
+1:package com.abs.casino.gs.managers.payment.wallet;
+4:import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+5:import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+6:import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
+7:import com.dgphoenix.casino.common.cache.data.session.ClientType;
+9:import com.dgphoenix.casino.common.util.CollectionUtils;
+1:package com.abs.casino.gs.managers.payment.wallet;
+4:import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+5:import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
+1:package com.abs.casino.gs.managers.payment.wallet;
+3:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+4:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+5:import com.dgphoenix.casino.common.cache.data.game.GameMode;
+6:import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+7:import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+1:package com.abs.casino.gs.managers.payment.wallet;
+1:package com.abs.casino.gs.managers.payment.wallet.v2;
+3:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+4:import com.dgphoenix.casino.common.cache.data.currency.Currency;
+12:import com.dgphoenix.casino.gs.managers.payment.wallet.*;
+1:package com.abs.casino.gs.managers.payment.wallet.v4;
+4:import com.dgphoenix.casino.common.exception.CommonException;
+5:import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
+1:package com.abs.casino.account;
+4:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+9:import com.dgphoenix.casino.common.cache.*;
+26:import com.dgphoenix.casino.gs.GameServer;
+46:import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+1:package com.abs.casino.gs;
+3:import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
+4:import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+1:package com.abs.casino.gs.managers.payment.bonus;
+5:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+10:import com.dgphoenix.casino.common.cache.BankInfoCache;
+15:import com.dgphoenix.casino.common.cache.data.bonus.*;
+25:import com.dgphoenix.casino.common.util.IdGenerator;
+30:import com.dgphoenix.casino.gs.GameServer;
+1:package com.abs.casino.gs.managers.payment.bonus;
+5:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+9:import com.dgphoenix.casino.common.cache.BankInfoCache;
+13:import com.dgphoenix.casino.common.cache.data.bonus.*;
+32:import com.dgphoenix.casino.common.util.IdGenerator;
+35:import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+36:import com.dgphoenix.casino.gs.GameServer;
+1:package com.abs.casino.gs.managers.payment.wallet;
+3:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+4:import com.dgphoenix.casino.common.cache.BankInfoCache;
+5:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+6:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+7:import com.dgphoenix.casino.common.cache.data.game.GameMode;
+8:import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+9:import com.dgphoenix.casino.common.cache.data.session.ClientType;
+10:import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+11:import com.dgphoenix.casino.common.exception.CommonException;
+16:import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+36:import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+1:package com.abs.casino.gs.socket.mq;
+8:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+11:import com.dgphoenix.casino.common.SessionHelper;
+12:import com.dgphoenix.casino.common.cache.BankInfoCache;
+13:import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+14:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+15:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+16:import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
+17:import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
+18:import com.dgphoenix.casino.common.cache.data.session.ClientType;
+19:import com.dgphoenix.casino.common.cache.data.session.GameSession;
+30:import com.dgphoenix.casino.common.exception.CommonException;
+1:package com.abs.casino.gs.socket.mq;
+3:import com.dgphoenix.casino.account.AccountManager;
+4:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+5:import com.dgphoenix.casino.cassandra.persist.*;
+8:import com.dgphoenix.casino.common.SessionHelper;
+9:import com.dgphoenix.casino.common.cache.BankInfoCache;
+10:import com.dgphoenix.casino.common.cache.BaseGameCache;
+11:import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
+12:import com.dgphoenix.casino.common.cache.CurrencyCache;
+13:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+14:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+15:import com.dgphoenix.casino.common.cache.data.bank.Coin;
+17:import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
+18:import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
+19:import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
+20:import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
+21:import com.dgphoenix.casino.common.cache.data.currency.Currency;
+23:import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
+24:import com.dgphoenix.casino.common.cache.data.game.GameType;
+25:import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+26:import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+28:import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+29:import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
+33:import com.dgphoenix.casino.common.cache.data.session.ClientType;
+34:import com.dgphoenix.casino.common.cache.data.session.GameSession;
+35:import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+48:import com.dgphoenix.casino.common.promo.*;
+51:import com.dgphoenix.casino.common.util.*;
+58:import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+59:import com.dgphoenix.casino.gs.GameServer;
+63:import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
+67:import com.dgphoenix.casino.gs.managers.payment.wallet.*;
+98:import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
+112:import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
+138:import static com.dgphoenix.casino.common.cache.data.game.GameMode.*;
+139:import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+454:                com.dgphoenix.casino.common.cache.data.game.GameMode gameMode = resolveMQMode(mode);
+810:                                (int) gameSession.getGameId(), com.dgphoenix.casino.common.cache.data.game.GameMode.REAL,
+1041:                                (int) gameSession.getGameId(), com.dgphoenix.casino.common.cache.data.game.GameMode.REAL,
+1551:                                    account.getBankId(), gameSessionId, gameId, com.dgphoenix.casino.common.cache.data.game.GameMode.REAL,
+1619:            if (!(cw2Client instanceof com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient)) {
+1626:            com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
+1627:                    (com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
+1725:            if (!(cw2Client instanceof com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient)) {
+1731:            com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
+1732:                    (com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
+1909:            if (!(cw2Client instanceof com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient)) {
+1915:            com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
+1916:                    (com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
+2074:            if (!(cw2Client instanceof com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient)) {
+2080:            com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
+2081:                    (com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
+2487:                    com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient client = WalletProtocolFactory.getInstance()
+2745:                    } catch (com.dgphoenix.casino.common.exception.CommonException e) {
+2888:                } catch (com.dgphoenix.casino.common.exception.CommonException e) {
+3407:                    (int) gameSession.getGameId(), com.dgphoenix.casino.common.cache.data.game.GameMode.REAL, sessionInfo.getClientType());
+3550:     * @throws com.dgphoenix.casino.common.exception.CommonException if cuurency not found or conversion rate not found
+3553:            throws com.dgphoenix.casino.common.exception.CommonException {
+3709:    private long getAccountId(String sessionId) throws com.dgphoenix.casino.common.exception.CommonException {
+3755:    private long getRebuyAmount(long tournamentId, String playerCurrency) throws com.dgphoenix.casino.common.exception.CommonException {
+3767:            throws com.dgphoenix.casino.common.exception.CommonException {
+3774:            throw new com.dgphoenix.casino.common.exception.CommonException("bonus is invalid");
+3778:            throw new com.dgphoenix.casino.common.exception.CommonException("bonus is not ready yet");
+3782:            throw new com.dgphoenix.casino.common.exception.CommonException("gameId is not found for this bonus");
+3806:            throws com.dgphoenix.casino.common.exception.CommonException {
+3811:        if (!com.dgphoenix.casino.common.util.CollectionUtils.isEmpty(battlegroundInfos)) {
+3835:            throws com.dgphoenix.casino.common.exception.CommonException {
+3841:            throw new com.dgphoenix.casino.common.exception.CommonException("Tournament not found");
+3868:            throw new com.dgphoenix.casino.common.exception.CommonException("Player not joined to tournament");
+3888:    private com.dgphoenix.casino.common.cache.data.game.GameMode resolveMQMode(String mode) {
+3921:            } catch (com.dgphoenix.casino.common.exception.CommonException e) {
+3948:            throws com.dgphoenix.casino.common.exception.CommonException {
+4020:            throws com.dgphoenix.casino.common.exception.CommonException {
+4167:                    (int) gameSession.getGameId(), com.dgphoenix.casino.common.cache.data.game.GameMode.REAL,
+4239:            throws com.dgphoenix.casino.common.exception.CommonException {
+4535:                    com.dgphoenix.casino.common.cache.data.game.GameMode.REAL, gameSession.getClientType());
+4863:            if (!(cw2Client instanceof com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient)) {
+4869:            com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
+4870:                    (com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
+1:package com.abs.casino.system.configuration;
+4:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+6:import com.dgphoenix.casino.common.cache.ServerConfigsCache;
+14:import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+15:import com.dgphoenix.casino.common.util.string.StringUtils;
+16:import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+29:    private static final String MESSAGE_BUNDLE = "com.dgphoenix.casino.gs.web.messages.ApplicationMessage";
+1:package com.abs.casino.common.exception;
+1:package com.abs.casino.common.util;
+12:import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+252:     * Obtain instance via static factory method modifyStringProperty in {@link com.dgphoenix.casino.common.util.CollectionUtils}
+1:package com.abs.casino.common.util.string;
+3:import com.dgphoenix.casino.common.util.CollectionUtils;
+6:package com.abs.casino.common.web.statistics;

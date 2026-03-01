@@ -9775,3 +9775,19 @@
   - baseline `2277`, reduced `2245`, remaining `32`, burndown `98.594642%`
   - Project 02 `54.091889%`, Core `77.045945%`, Portfolio `88.522972%`
   - ETA `~1.3h` (`~0.17` workdays)
+
+### 2026-03-01 10:33 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed live `Batch X`.
+- Batch intent: `28` declarations; retained: `28`.
+- Validation:
+  - focused fast gates: `common FAIL`, `common-wallet FAIL`, `sb-utils FAIL`, `common-gs FAIL`, `common-promo FAIL`.
+  - canonical runner: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-103251-hardcut-live-batchX-final-clean28/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/251-hard-cut-live-batchX-final-clean28-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2273`, remaining `4`, burndown `99.824330%`
+  - Project 02 `54.470119%`, Core `77.235059%`, Portfolio `88.617530%`
+  - ETA `~0.2h` (`~0.02` workdays)
+- Residual blocker:
+  - `13` `package com.dgphoenix` declarations remain in pre-existing dirty files outside selective staging scope.

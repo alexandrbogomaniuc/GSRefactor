@@ -1,0 +1,11 @@
+baseline=2277
+pre_remaining=32
+post_remaining=4
+reduced_total=2273
+batch_reduction=28
+burndown=99.824330
+project02=54.470119
+core_total=77.235059
+entire_portfolio=88.617530
+eta_hours=0.2
+eta_workdays=0.02

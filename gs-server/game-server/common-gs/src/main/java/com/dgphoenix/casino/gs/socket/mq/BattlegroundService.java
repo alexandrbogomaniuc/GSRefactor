@@ -1,8 +1,8 @@
-package com.dgphoenix.casino.gs.socket.mq;
+package com.abs.casino.gs.socket.mq;
 
 import com.abs.casino.kafka.dto.GetPrivateRoomInfoRequest;
 
-import com.dgphoenix.casino.account.AccountManager;
+import com.abs.casino.account.AccountManager;
 import com.abs.casino.battleground.messages.*;
 import com.abs.casino.battleground.messages.*;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
@@ -29,8 +29,8 @@ import com.abs.casino.common.client.canex.request.privateroom.Status;
 import com.abs.casino.common.client.canex.request.privateroom.UpdateRoomResponse;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.promo.battleground.BattlegroundConfig;
-import com.dgphoenix.casino.common.util.CommonExecutorService;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.CommonExecutorService;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.abs.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
 import com.abs.casino.kafka.dto.*;
@@ -41,7 +41,7 @@ import com.abs.casino.services.LoginService;
 import com.abs.casino.util.BGFStatusUtil;
 import com.abs.casino.util.BGOStatusUtil;
 import com.abs.casino.util.BGStatusUtil;
-import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
+import com.abs.casino.gs.socket.mq.MQServiceHandler;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;

@@ -4908,3 +4908,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - baseline `2277`, reduced `2245`, remaining `32`, burndown `98.594642%`
   - Project 02 `54.091889%`, Core `77.045945%`, Portfolio `88.522972%`
   - ETA `~1.3h` (`~0.17` workdays)
+
+## 2026-03-01 10:33 UTC (Hard-cut live batch X: final clean 28)
+- Continued Project 02 hard-cut migration from dirty in-progress workspace using aggressive clean-file batching.
+- Batch intent was `28` declarations; retained after stabilization: `28`.
+- Bounded compatibility rewires:
+  - rewired `import com.dgphoenix...` to `import com.abs...` only when imported declaration is already moved,
+  - no blind/global replace.
+- Validation snapshot:
+  - focused fast gates: `common FAIL`, `common-wallet FAIL`, `sb-utils FAIL`, `common-gs FAIL`, `common-promo FAIL`.
+  - canonical runner profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-103251-hardcut-live-batchX-final-clean28/`
+  - report: `docs/projects/02-runtime-renaming-refactor/251-hard-cut-live-batchX-final-clean28-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2273`, remaining `4`, burndown `99.824330%`
+  - Project 02 `54.470119%`, Core `77.235059%`, Portfolio `88.617530%`
+  - ETA `~0.2h` (`~0.02` workdays)
+- Residual blocker:
+  - `13` package declarations still at `com.dgphoenix` in `gs-server`, all in pre-existing dirty files outside selective staging scope.

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util.string;
+package com.abs.casino.common.util.string;
 
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import org.apache.commons.codec.binary.Base64;

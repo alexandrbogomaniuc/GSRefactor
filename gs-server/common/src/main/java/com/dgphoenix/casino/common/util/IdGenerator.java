@@ -2,7 +2,7 @@
  * User: flsh
  * Date: 07.07.2009
  */
-package com.dgphoenix.casino.common.util;
+package com.abs.casino.common.util;
 
 import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.CacheKeyInfo;
@@ -11,7 +11,7 @@ import com.abs.casino.common.util.ILongIdGenerator;
 import com.abs.casino.common.util.ISequencer;
 import com.abs.casino.common.util.ISequencerPersister;
 import com.abs.casino.common.util.Sequencer;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.persist.StreamPersister;
 import com.abs.casino.common.persist.TableProcessor;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;

@@ -1,15 +1,15 @@
-package com.dgphoenix.casino.gs.managers.payment.wallet;
+package com.abs.casino.gs.managers.payment.wallet;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;
 import com.dgphoenix.casino.common.cache.data.payment.IWallet;
 import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.session.SessionInfo;
 import com.abs.casino.common.exception.WalletException;
 import com.abs.casino.gs.managers.payment.wallet.IWalletHelper;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;
+import com.abs.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;
 
 /**
  * User: plastical

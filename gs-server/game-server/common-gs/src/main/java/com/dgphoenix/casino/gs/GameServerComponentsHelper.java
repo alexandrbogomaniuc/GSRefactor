@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs;
+package com.abs.casino.gs;
 
 import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
 import com.dgphoenix.casino.common.util.ApplicationContextHelper;

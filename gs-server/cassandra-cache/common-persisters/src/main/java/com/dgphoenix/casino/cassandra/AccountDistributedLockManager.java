@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra;
+package com.abs.casino.cassandra;
 
 import com.abs.casino.cassandra.AbstractLockManager;
 import com.abs.casino.cassandra.persist.CassandraTransactionDataPersister;
