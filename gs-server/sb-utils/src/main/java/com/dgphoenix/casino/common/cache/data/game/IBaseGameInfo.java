@@ -1,8 +1,8 @@
-package com.dgphoenix.casino.common.cache.data.game;
+package com.abs.casino.common.cache.data.game;
 
 import com.abs.casino.common.cache.data.game.ClientGeneration;
 import com.abs.casino.common.cache.data.game.Html5PcVersionMode;
-import com.dgphoenix.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.Identifiable;
 import com.abs.casino.common.cache.data.account.PlayerDeviceType;
 import com.abs.casino.common.cache.data.bank.ICoin;
 import com.abs.casino.common.cache.data.bank.ILimit;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data.bank;
+package com.abs.casino.common.cache.data.bank;
 
 import com.abs.casino.common.cache.data.bank.ILimit;
 import com.esotericsoftware.kryo.Kryo;

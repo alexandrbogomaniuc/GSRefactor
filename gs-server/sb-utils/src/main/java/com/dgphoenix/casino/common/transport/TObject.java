@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.transport;
+package com.abs.casino.common.transport;
 
 import com.abs.casino.common.transport.ITransportObject;
 import com.esotericsoftware.kryo.Kryo;

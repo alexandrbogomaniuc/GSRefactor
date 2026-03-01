@@ -1,9 +1,9 @@
-package com.dgphoenix.casino.common.cache.data.payment;
+package com.abs.casino.common.cache.data.payment;
 
-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
 import com.abs.casino.common.exception.WalletException;
 import com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet;
-import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletOperation;
+import com.abs.casino.gs.managers.payment.wallet.IWalletOperation;
 
 import java.util.Collection;
 import java.util.Map;

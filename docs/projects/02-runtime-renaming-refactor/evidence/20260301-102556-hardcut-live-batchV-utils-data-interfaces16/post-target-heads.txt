@@ -1,0 +1,570 @@
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameGroup.java
+package com.abs.casino.common.cache.data.game;
+
+import com.dgphoenix.casino.common.exception.CommonException;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * User: flsh
+ * Date: 06.04.2009
+ */
+public enum GameGroup {
+    SLOTS("Slots", 1),
+    TABLE("Table", 2),
+    KENO("Keno", 3),
+    VIDEOPOKER("Video Poker", 4),
+    SOFT_GAMES("Soft Games", 5),
+    PYRAMID_POKER("Pyramid Poker", 6),
+    SOFT_GAME_ARCADE("Arcade Soft Game", 7),
+    MULTIHAND_POKER("Multihand Poker", 8),
+    MULTISTACK_POKER("Multistack Poker", 8),
+    RUSH_THE_ROYAL("Rush The Royal", 4),
+    LIVE("Live Dealer Games", 13),
+    ACTION_GAMES("Action Games", 14);
+
+    private String groupName;
+    private int groupId;
+
+    private static final Map<String, GameGroup> byNameMap = new HashMap<String, GameGroup>(11);
+
+    static {
+        GameGroup[] values = GameGroup.values();
+        for (GameGroup group : values) {
+            byNameMap.put(group.getGroupName().toLowerCase(), group);
+        }
+    }
+
+    GameGroup(String name, int groupId) {
+        this.groupName = name;
+        this.groupId = groupId;
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameType.java
+package com.abs.casino.common.cache.data.game;
+
+/**
+ * Created
+ * Date: 27.11.2008
+ * Time: 16:03:46
+ */
+public enum GameType{
+    SP("SP"),
+    MP("MP");
+    
+    private String name;
+    private GameType(String name) {
+		this.name = name;
+	}
+    
+    public String getName() {
+		return name;
+	}
+}
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameVariableType.java
+package com.abs.casino.common.cache.data.game;
+
+
+/**
+ * User: plastical
+ * Date: 30.03.2010
+ */
+public enum GameVariableType {
+    LIMIT, COIN
+}
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/IBaseGameInfo.java
+package com.abs.casino.common.cache.data.game;
+
+import com.abs.casino.common.cache.data.game.ClientGeneration;
+import com.abs.casino.common.cache.data.game.Html5PcVersionMode;
+import com.abs.casino.common.cache.Identifiable;
+import com.abs.casino.common.cache.data.account.PlayerDeviceType;
+import com.abs.casino.common.cache.data.bank.ICoin;
+import com.abs.casino.common.cache.data.bank.ILimit;
+import com.abs.casino.common.cache.data.currency.ICurrency;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.thoughtworks.xstream.converters.MarshallingContext;
+import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * User: flsh
+ * Date: 18.07.17.
+ */
+public interface IBaseGameInfo<COIN extends ICoin, LIMIT extends ILimit> extends Identifiable {
+
+    void setId(long id);
+
+    Map<String, String> getProperties();
+
+    void setProperties(Map<String, String> properties);
+
+    Map<String, String> getPropertiesMap();
+
+    String getProperty(String propertyName);
+
+    void setProperty(String key, String value);
+
+    void removeProperty(String key);
+
+    String getExternalId();
+
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/transport/TObject.java
+package com.abs.casino.common.transport;
+
+import com.abs.casino.common.transport.ITransportObject;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
+
+/**
+ * User: flsh
+ * Date: 03.06.17.
+ */
+public abstract class TObject implements ITransportObject, KryoSerializable, Serializable {
+    public static final int SERVER_RID = -1;
+    public static final int FREQUENCY_LIMIT = 500;
+    protected long date;
+    protected int rid;
+    protected transient Byte version;
+
+    public TObject() {}
+
+    public TObject(long date, int rid) {
+        this.date = date;
+        this.rid = rid;
+    }
+
+    @Override
+    public int getFrequencyLimit() {
+        return FREQUENCY_LIMIT;
+    }
+
+    @Override
+    public long getDate() {
+        return date;
+    }
+
+    @Override
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/ExecutorUtils.java
+package com.abs.casino.common.util;
+
+import org.apache.log4j.Logger;
+
+import java.util.List;
+import java.util.concurrent.*;
+
+public class ExecutorUtils {
+    private static final Logger LOG = Logger.getLogger(ExecutorUtils.class);
+    private static final ExecutorService scheduler = Executors.newCachedThreadPool();
+
+    public static void shutdownService(final String invoker, final ExecutorService service, final long timeOutInMillis) {
+        scheduler.execute(new Runnable() {
+            @Override
+            public void run() {
+                shutdownServiceSynchronously(invoker, service, timeOutInMillis);
+            }
+        });
+    }
+
+    public static void shutdownServiceSynchronously(String invoker, ExecutorService service, long timeOutInMillis) {
+        LOG.info(invoker + " shutdown started");
+        service.shutdown();
+        try {
+            service.awaitTermination(timeOutInMillis, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            LOG.error("destroy await termination was interrupted!!!", e);
+        }
+        if (!service.isTerminated()) {
+            if(service instanceof ScheduledThreadPoolExecutor) {
+                final ScheduledThreadPoolExecutor executor = (ScheduledThreadPoolExecutor) service;
+                LOG.debug("shutdownServiceSynchronously: " + invoker + " taskCount=" + executor.getTaskCount() +
+                        ", activeThreadsCount=" + executor.getActiveCount());
+            }
+            try {
+                LOG.info("Service still running, immediate shutdown");
+                final List<Runnable> unfinished = service.shutdownNow();
+                LOG.info("Unfinished tasks: " + invoker + "=" + unfinished.size());
+                for (Runnable runnable : unfinished) {
+                    LOG.debug("shutdownServiceSynchronously, unfinished=" + invoker + ": " + runnable.toString());
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/CWError.java
+package com.abs.casino.gs.managers.payment.wallet;
+
+import java.io.Serializable;
+
+/**
+ * User: flsh
+ * Date: Jun 29, 2010
+ */
+public class CWError implements Serializable {
+    private final int code;
+    private final String description;
+    private final boolean sendErrorMessageToClient;
+    private final boolean cancelOperation;
+
+    public CWError(int code, String description) {
+        this.code = code;
+        this.description = description;
+        this.sendErrorMessageToClient = false;
+        this.cancelOperation = false;
+    }
+
+    public CWError(int code, String description, boolean sendErrorMessageToClient, boolean cancelOperation) {
+        this.code = code;
+        this.description = description;
+        this.sendErrorMessageToClient = sendErrorMessageToClient;
+        this.cancelOperation = cancelOperation;
+    }
+
+    public static CWError fromPrototype(CWError prototype, boolean sendErrorMessageToClient, boolean cancelOperation) {
+        return new CWError(prototype.getCode(), prototype.getDescription(), sendErrorMessageToClient, cancelOperation);
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+===== gs-server/rng/src/main/java/com/dgphoenix/casino/common/util/RNG.java
+package com.abs.casino.common.util;
+
+import cern.jet.random.Exponential;
+import cern.jet.random.Uniform;
+import cern.jet.random.engine.DRand;
+import cern.jet.random.engine.MersenneTwister;
+import cern.jet.random.engine.RandomEngine;
+
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.Date;
+import java.util.List;
+
+public class RNG {
+    private static final int DEFAULT_LOOP_LEN = 10;
+    private static final MersenneTwister twister;
+    private static final SecureRandom randomLoop;
+
+    private static final RandomEngine randomEngine = new DRand();
+
+    private static final Uniform uniform;
+
+    static {
+        long seed = System.nanoTime();
+        int addSeed = 0;
+
+        byte[] fileData = new byte[4];
+        byte[] fileDataLoopSeed = new byte[20];
+
+        boolean initComplete = false;
+
+        DataInputStream dis = null;
+        try {
+            File file = new File("/dev/random");
+===== gs-server/utils/src/main/java/com/dgphoenix/casino/common/cache/data/bank/Coin.java
+package com.abs.casino.common.cache.data.bank;
+
+import com.abs.casino.common.cache.data.bank.ICoin;
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.Serializer;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * Unnecessary type, can be simplified to int value
+ */
+public class Coin implements Serializable, ICoin<Coin> {
+    private static final Logger LOG = LogManager.getLogger(Coin.class);
+    private static final int VERSION = 0;
+    private final long id;
+    private final long value;
+
+    private static final ConcurrentHashMap<Long, Coin> coinsById = new ConcurrentHashMap<>(128);
+    private static final ConcurrentHashMap<Long, Coin> coinsByValue = new ConcurrentHashMap<>(128);
+
+    static {
+        addNewCoin(13, 1);
+        addNewCoin(11, 2);
+        addNewCoin(30, 3);
+        addNewCoin(33, 4);
+        addNewCoin(12, 5);
+        addNewCoin(31, 6);
+        addNewCoin(63, 7);
+===== gs-server/utils/src/main/java/com/dgphoenix/casino/common/cache/data/bank/Limit.java
+package com.abs.casino.common.cache.data.bank;
+
+import com.abs.casino.common.cache.data.bank.ILimit;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.Serializer;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import org.apache.commons.math3.util.Pair;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class Limit implements Serializable, ILimit<Limit> {
+    private static final int VERSION = 0;
+    private static final Logger LOG = LogManager.getLogger(Limit.class);
+    private static final long GENERIC_LIMIT_ID = -1;
+    private final long id;
+    private final int minValue;
+    private final int maxValue;
+
+    private static final ConcurrentHashMap<Pair<Integer, Integer>, Limit> limitsByValue = new ConcurrentHashMap<>(256);
+    //Contains only registered ids (> 0)
+    private static final ConcurrentHashMap<Long, Limit> limitsById = new ConcurrentHashMap<>(256);
+
+    static {
+        addLimitWithRegisteredId(24, 2, 25);
+        addLimitWithRegisteredId(22, 5, 10000);
+        addLimitWithRegisteredId(28, 10, 10000); // mg
+        addLimitWithRegisteredId(13, 25, 500);
+        addLimitWithRegisteredId(12, 25, 2500);
+        addLimitWithRegisteredId(11, 25, 12500);
+        addLimitWithRegisteredId(20, 50, 5000);
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameMode.java
+package com.abs.casino.common.cache.data.game;
+
+import com.dgphoenix.casino.common.util.string.StringUtils;
+
+/**
+ * Created
+ * Date: 28.11.2008
+ * Time: 12:44:08
+ */
+public enum GameMode {
+    REAL("Real", "real"),
+    FREE("Fun", "free"),
+    BONUS("Bonus", "real");
+
+    private final String moneyType;
+    private final String modePath;
+
+    GameMode(String moneyType, String modePath) {
+        this.moneyType = moneyType;
+        this.modePath = modePath;
+    }
+
+    public String getMoneyType() {
+        return moneyType;
+    }
+
+    public String getModePath() {
+        return modePath;
+    }
+
+    public static GameMode getByName(String stringValueOfGameMode) {
+        if (StringUtils.isTrimmedEmpty(stringValueOfGameMode)) {
+            return FREE;
+        }
+        String mode = stringValueOfGameMode.trim();
+        if (BONUS.name().equalsIgnoreCase(mode)) {
+            return BONUS;
+        } else if (REAL.name().equalsIgnoreCase(mode)) {
+            return REAL;
+        }
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/WalletOperationStatus.java
+package com.abs.casino.common.cache.data.payment;
+
+/**
+ * User: plastical
+ * Date: 02.03.2010
+ */
+public enum WalletOperationStatus {
+    STARTED, GAME_LOGIC_COMPLETED, COMPLETED, PENDING, FAIL, PEENDING_SEND_ALERT
+}
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/IWallet.java
+package com.abs.casino.common.cache.data.payment;
+
+import com.abs.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.exception.WalletException;
+import com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet;
+import com.abs.casino.gs.managers.payment.wallet.IWalletOperation;
+
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * User: plastical
+ * Date: 04.03.2010
+ */
+public interface IWallet extends IDistributedCacheEntry {
+    Set<Integer> getWalletGamesIds();
+
+    long getAccountId();
+
+    IWalletOperation getCurrentWalletOperation(int gameId);
+
+    IWalletOperation getCurrentWalletOperation(CommonGameWallet commonGameWallet);
+
+    boolean isAnyWalletOperationExist();
+
+    boolean hasGameWallets();
+
+    boolean isHasAnyGameWalletWithAnyAmount();
+
+    boolean isHasAnyGameWalletWithNotEmptyRoundId();
+
+    //gameId:roundId
+    Map<Integer, Long> getUnfinishedGames();
+
+    int getGameWalletsSize();
+
+    long getServerBalance();
+
+    void setServerBalance(long serverBalance);
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/ClientType.java
+package com.abs.casino.common.cache.data.session;
+
+public enum ClientType {
+
+    FLASH(1l), WIN32(2l), AIR(3l), MOBILE(4l), ANDROID(5l), IOSMOBILE(6l), WINDOWSPHONE(7l), ELECTRON(8l);
+
+    private long id;
+
+    private ClientType(long id) {
+        this.id = id;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public static ClientType getById(long id) {
+        switch ((int) id) {
+            case 1: {
+                return FLASH;
+            }
+            case 2: {
+                return WIN32;
+            }
+            case 3: {
+                return AIR;
+            }
+            case 4: {
+                return MOBILE;
+            }
+            case 5: {
+                return ANDROID;
+            }
+            case 6: {
+                return IOSMOBILE;
+            }
+            case 7: {
+                return WINDOWSPHONE;
+            }
+            case 8: {
+===== gs-server/common/src/main/java/com/dgphoenix/casino/common/util/ApplicationContextHelper.java
+package com.abs.casino.common.util;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
+/**
+ * @author <a href="mailto:fateyev@dgphoenix.com">Anton Fateyev</a>
+ * @since 14.09.16
+ */
+public class ApplicationContextHelper implements ApplicationContextAware {
+
+    private static final Logger LOG = LogManager.getLogger(ApplicationContextHelper.class);
+
+    private static volatile ApplicationContext applicationContext;
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        ApplicationContextHelper.applicationContext = applicationContext;
+    }
+
+    public static ApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
+
+    public ApplicationContextHelper() {
+        LOG.debug("ApplicationContextHelper created");
+    }
+
+    public static <T> T getBean(Class<T> clazz) {
+        return applicationContext.getBean(clazz);
+    }
+}
+===== gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/CommonExecutorService.java
+package com.abs.casino.common.util;
+
+import com.abs.casino.common.config.UtilsApplicationContextHelper;
+import com.abs.casino.common.configuration.IGameServerConfiguration;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class CommonExecutorService implements ScheduledExecutorService {
+    private static final long MAX_TIME_OUT_MILLIS = TimeUnit.SECONDS.toMillis(90);
+    private static final int DEFAULT_COMMON_EXECUTOR_SERVICE_POOL_SIZE = 10;
+
+    private final int poolSize;
+    private final ConcurrentHashMap<String, AtomicInteger> executionTaskCounter = new ConcurrentHashMap<>();
+    private ScheduledThreadPoolExecutor pool;
+
+    public CommonExecutorService() {
+        IGameServerConfiguration gameServerConfiguration1 = UtilsApplicationContextHelper.getApplicationContext().getBean("gameServerConfiguration", IGameServerConfiguration.class);
+        String poolSizeParam = gameServerConfiguration1.getStringPropertySilent("COMMON_EXECUTOR_SERVICE_POOL_SIZE");
+        poolSize = poolSizeParam != null ? Integer.parseInt(poolSizeParam) : DEFAULT_COMMON_EXECUTOR_SERVICE_POOL_SIZE;
+    }
+
+    @PostConstruct
+    private void init() {
+        pool = new ScheduledThreadPoolExecutor(poolSize);
+        StatisticsManager.getInstance().registerStatisticsGetter(this.getClass().getSimpleName(),
+                () -> "poolSize=" + pool.getPoolSize()
+                        + ", corePoolSize=" + pool.getCorePoolSize()
+                        + ", largestPoolSize=" + pool.getLargestPoolSize()
+                        + ", maximumPoolSize=" + pool.getMaximumPoolSize()
+                        + ", completedTaskCount=" + pool.getCompletedTaskCount()
+                        + ", taskCount=" + pool.getTaskCount()
+                        + ", activeCount=" + pool.getActiveCount()
+                        + ", executionTaskCounter= " + executionTaskCounter);
+    }

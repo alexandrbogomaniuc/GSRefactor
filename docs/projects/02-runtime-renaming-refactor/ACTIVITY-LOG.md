@@ -4871,3 +4871,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - baseline `2277`, reduced `2204`, remaining `73`, burndown `96.794027%`
   - Project 02 `53.538053%`, Core `76.769026%`, Portfolio `88.384513%`
   - ETA `~3.1h` (`~0.38` workdays)
+
+## 2026-03-01 10:26 UTC (Hard-cut live batch V: utils/data/interfaces 16)
+- Continued Project 02 hard-cut migration from dirty in-progress workspace using declaration-first low-risk batching.
+- Batch intent was `16` declarations; retained after stabilization: `16`.
+  - moved: `GameGroup`, `GameType`, `GameVariableType`, `IBaseGameInfo`, `TObject`, `ExecutorUtils`, `CWError`, `RNG`, `Coin`, `Limit`, `GameMode`, `WalletOperationStatus`, `IWallet`, `ClientType`, `ApplicationContextHelper`, `CommonExecutorService`.
+- Bounded compatibility rewires:
+  - `IBaseGameInfo` import rewired to moved `Identifiable` package,
+  - `IWallet` imports rewired to moved `IDistributedCacheEntry` and moved `IWalletOperation`,
+  - no blind/global replace.
+- Validation snapshot:
+  - focused fast gates: `common FAIL`, `common-wallet FAIL`, `sb-utils FAIL`, `common-gs FAIL`, `common-promo FAIL`.
+  - canonical runner profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-102556-hardcut-live-batchV-utils-data-interfaces16/`
+  - report: `docs/projects/02-runtime-renaming-refactor/249-hard-cut-live-batchV-utils-data-interfaces16-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2220`, remaining `57`, burndown `97.496706%`
+  - Project 02 `53.754184%`, Core `76.877092%`, Portfolio `88.438546%`
+  - ETA `~2.4h` (`~0.30` workdays)

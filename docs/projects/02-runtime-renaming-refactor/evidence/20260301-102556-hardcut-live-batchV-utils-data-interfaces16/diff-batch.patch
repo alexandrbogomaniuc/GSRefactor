@@ -1,0 +1,172 @@
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameMode.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameMode.java
+index ba0e3c2d2..7c069659a 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameMode.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameMode.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.game;
++package com.abs.casino.common.cache.data.game;
+ 
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ 
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/IWallet.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/IWallet.java
+index c32dd9cc2..0f7b86517 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/IWallet.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/IWallet.java
+@@ -1,9 +1,9 @@
+-package com.dgphoenix.casino.common.cache.data.payment;
++package com.abs.casino.common.cache.data.payment;
+ 
+-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
++import com.abs.casino.common.cache.IDistributedCacheEntry;
+ import com.abs.casino.common.exception.WalletException;
+ import com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet;
+-import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletOperation;
++import com.abs.casino.gs.managers.payment.wallet.IWalletOperation;
+ 
+ import java.util.Collection;
+ import java.util.Map;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/WalletOperationStatus.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/WalletOperationStatus.java
+index 31bc95dc8..4abfca254 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/WalletOperationStatus.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/WalletOperationStatus.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.payment;
++package com.abs.casino.common.cache.data.payment;
+ 
+ /**
+  * User: plastical
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/ClientType.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/ClientType.java
+index 8da73a0ca..286854c76 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/ClientType.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/session/ClientType.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.session;
++package com.abs.casino.common.cache.data.session;
+ 
+ public enum ClientType {
+ 
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/ApplicationContextHelper.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/ApplicationContextHelper.java
+index deead890c..3f7583463 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/ApplicationContextHelper.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/util/ApplicationContextHelper.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.util;
++package com.abs.casino.common.util;
+ 
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/gs-server/rng/src/main/java/com/dgphoenix/casino/common/util/RNG.java b/gs-server/rng/src/main/java/com/dgphoenix/casino/common/util/RNG.java
+index 54a1ca62c..3617a0e72 100644
+--- a/gs-server/rng/src/main/java/com/dgphoenix/casino/common/util/RNG.java
++++ b/gs-server/rng/src/main/java/com/dgphoenix/casino/common/util/RNG.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.util;
++package com.abs.casino.common.util;
+ 
+ import cern.jet.random.Exponential;
+ import cern.jet.random.Uniform;
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameGroup.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameGroup.java
+index c43410eda..5993f705e 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameGroup.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameGroup.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.game;
++package com.abs.casino.common.cache.data.game;
+ 
+ import com.dgphoenix.casino.common.exception.CommonException;
+ 
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameType.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameType.java
+index 9d2e2c77b..8528b546a 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameType.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameType.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.game;
++package com.abs.casino.common.cache.data.game;
+ 
+ /**
+  * Created
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameVariableType.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameVariableType.java
+index d90e7ce85..1a21c2640 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameVariableType.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameVariableType.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.game;
++package com.abs.casino.common.cache.data.game;
+ 
+ 
+ /**
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/IBaseGameInfo.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/IBaseGameInfo.java
+index 9ae91b047..864ce8f7f 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/IBaseGameInfo.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/IBaseGameInfo.java
+@@ -1,8 +1,8 @@
+-package com.dgphoenix.casino.common.cache.data.game;
++package com.abs.casino.common.cache.data.game;
+ 
+ import com.abs.casino.common.cache.data.game.ClientGeneration;
+ import com.abs.casino.common.cache.data.game.Html5PcVersionMode;
+-import com.dgphoenix.casino.common.cache.Identifiable;
++import com.abs.casino.common.cache.Identifiable;
+ import com.abs.casino.common.cache.data.account.PlayerDeviceType;
+ import com.abs.casino.common.cache.data.bank.ICoin;
+ import com.abs.casino.common.cache.data.bank.ILimit;
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/transport/TObject.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/transport/TObject.java
+index 77d86aa33..9513e3a8a 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/transport/TObject.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/transport/TObject.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.transport;
++package com.abs.casino.common.transport;
+ 
+ import com.abs.casino.common.transport.ITransportObject;
+ import com.esotericsoftware.kryo.Kryo;
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/ExecutorUtils.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/ExecutorUtils.java
+index ef92106f4..faf854007 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/ExecutorUtils.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/ExecutorUtils.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.util;
++package com.abs.casino.common.util;
+ 
+ import org.apache.log4j.Logger;
+ 
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/CWError.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/CWError.java
+index 89e05f487..4961117e4 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/CWError.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/CWError.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.gs.managers.payment.wallet;
++package com.abs.casino.gs.managers.payment.wallet;
+ 
+ import java.io.Serializable;
+ 
+diff --git a/gs-server/utils/src/main/java/com/dgphoenix/casino/common/cache/data/bank/Coin.java b/gs-server/utils/src/main/java/com/dgphoenix/casino/common/cache/data/bank/Coin.java
+index 744363c3c..42a3243ff 100644
+--- a/gs-server/utils/src/main/java/com/dgphoenix/casino/common/cache/data/bank/Coin.java
++++ b/gs-server/utils/src/main/java/com/dgphoenix/casino/common/cache/data/bank/Coin.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.bank;
++package com.abs.casino.common.cache.data.bank;
+ 
+ import com.abs.casino.common.cache.data.bank.ICoin;
+ import com.dgphoenix.casino.common.util.CollectionUtils;
+diff --git a/gs-server/utils/src/main/java/com/dgphoenix/casino/common/cache/data/bank/Limit.java b/gs-server/utils/src/main/java/com/dgphoenix/casino/common/cache/data/bank/Limit.java
+index 52c29cc83..1fec0fbbe 100644
+--- a/gs-server/utils/src/main/java/com/dgphoenix/casino/common/cache/data/bank/Limit.java
++++ b/gs-server/utils/src/main/java/com/dgphoenix/casino/common/cache/data/bank/Limit.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.bank;
++package com.abs.casino.common.cache.data.bank;
+ 
+ import com.abs.casino.common.cache.data.bank.ILimit;
+ import com.esotericsoftware.kryo.Kryo;
+diff --git a/gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/CommonExecutorService.java b/gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/CommonExecutorService.java
+index 2c100758a..54dc29032 100644
+--- a/gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/CommonExecutorService.java
++++ b/gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/CommonExecutorService.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.util;
++package com.abs.casino.common.util;
+ 
+ import com.abs.casino.common.config.UtilsApplicationContextHelper;
+ import com.abs.casino.common.configuration.IGameServerConfiguration;
