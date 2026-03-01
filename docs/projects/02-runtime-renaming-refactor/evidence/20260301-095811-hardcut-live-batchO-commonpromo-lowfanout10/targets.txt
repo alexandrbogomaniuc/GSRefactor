@@ -1,0 +1,10 @@
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaign.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AbstractPrize.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AbstractParticipantEvent.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PlayerWinEvent.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PlayerBetEvent.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PlayerIdentificationType.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkPromoCampaign.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/MaxBalanceTournamentPromoTemplate.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMemberInfos.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoTemplate.java

@@ -4743,3 +4743,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - baseline `2277`, reduced `2138`, remaining `139`, burndown `93.895477%`
   - Project 02 `52.646511%`, Core `76.323256%`, Portfolio `88.161628%`
   - ETA `~5.7h` (`~0.71` workdays)
+
+## 2026-03-01 09:59 UTC (Hard-cut live batch O: common-promo low-fanout 10)
+- Continued Project 02 hard-cut migration from dirty in-progress workspace using declaration-first low-risk batching.
+- Batch intent was `10` declarations; retained after stabilization: `10`.
+  - moved: `PromoCampaign`, `AbstractPrize`, `AbstractParticipantEvent`, `PlayerWinEvent`, `PlayerBetEvent`, `PlayerIdentificationType`, `NetworkPromoCampaign`, `MaxBalanceTournamentPromoTemplate`, `PromoCampaignMemberInfos`, `IPromoTemplate`.
+- Bounded compatibility rewires:
+  - package-only declaration migration for retained low-fanout targets,
+  - no blind/global replace and no high-fanout manager/core moves.
+- Validation snapshot:
+  - focused fast gates: `common-promo/promo-core/promo-persisters/common-gs/common FAIL` on known mixed-workspace drift profiles.
+  - canonical runner profile unchanged: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE03`, `validation FAIL PRE03`, `STEP09 retry SKIP`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-095811-hardcut-live-batchO-commonpromo-lowfanout10/`
+  - report: `docs/projects/02-runtime-renaming-refactor/242-hard-cut-live-batchO-commonpromo-lowfanout10-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2148`, remaining `129`, burndown `94.334651%`
+  - Project 02 `52.781593%`, Core `76.390796%`, Portfolio `88.195398%`
+  - ETA `~5.3h` (`~0.66` workdays)

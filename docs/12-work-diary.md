@@ -9630,3 +9630,19 @@
   - baseline `2277`, reduced `2138`, remaining `139`, burndown `93.895477%`
   - Project 02 `52.646511%`, Core `76.323256%`, Portfolio `88.161628%`
   - ETA `~5.7h` (`~0.71` workdays)
+
+### 2026-03-01 09:59 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed live `Batch O`.
+- Batch intent: `10` declarations; retained: `10`.
+- Retained moves (`com.dgphoenix -> com.abs`):
+  - `PromoCampaign`, `AbstractPrize`, `AbstractParticipantEvent`, `PlayerWinEvent`, `PlayerBetEvent`, `PlayerIdentificationType`, `NetworkPromoCampaign`, `MaxBalanceTournamentPromoTemplate`, `PromoCampaignMemberInfos`, `IPromoTemplate`.
+- Validation:
+  - focused fast gates: `common-promo/promo-core/promo-persisters/common-gs/common FAIL` on known mixed-workspace drift profiles.
+  - canonical runner: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE03`, `validation FAIL PRE03`, `STEP09 retry SKIP`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-095811-hardcut-live-batchO-commonpromo-lowfanout10/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/242-hard-cut-live-batchO-commonpromo-lowfanout10-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2148`, remaining `129`, burndown `94.334651%`
+  - Project 02 `52.781593%`, Core `76.390796%`, Portfolio `88.195398%`
+  - ETA `~5.3h` (`~0.66` workdays)
