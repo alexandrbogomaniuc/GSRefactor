@@ -1,0 +1,136 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 133 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java:[5,40] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+  location: package com.dgphoenix.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java:[6,39] error: cannot find symbol
+[ERROR]   symbol:   class ITimeProvider
+  location: package com.dgphoenix.casino.common.util
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java:[18,51] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java:[25,22] error: cannot find symbol
+[ERROR]   symbol:   class ITimeProvider
+  location: class TimeSlot
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java:[87,32] error: cannot find symbol
+[ERROR]   symbol:   class ITimeProvider
+  location: class TimeSlot
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java:[91,11] error: cannot find symbol
+[ERROR]   symbol:   class ITimeProvider
+  location: class TimeSlot
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java:[3,40] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+  location: package com.dgphoenix.casino.common.cache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java:[4,39] error: cannot find symbol
+[ERROR]   symbol:   class DatePeriod
+  location: package com.dgphoenix.casino.common.util
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java:[5,39] error: cannot find symbol
+[ERROR]   symbol:   class ITimeProvider
+  location: package com.dgphoenix.casino.common.util
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java:[29,8] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:[32,17] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class PromoCampaignMember
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:[103,16] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class PromoCampaignMember
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:[107,40] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class PromoCampaignMember
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:[113,37] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class PromoCampaignMember
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:[119,16] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class PromoCampaignMember
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:[129,38] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class PromoCampaignMember
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AwardedPrize.java:[69,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+  location: class AwardedPrize
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PrizeStatus.java:[7,7] error: duplicate class: com.abs.casino.common.promo.PrizeStatus
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java:[44,12] error: cannot access PrizeStatus
+[INFO] 19 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.819 s
+[INFO] Finished at: 2026-03-01T10:08:14Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project common-promo: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java:[5,40] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+[ERROR]   location: package com.dgphoenix.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java:[6,39] error: cannot find symbol
+[ERROR]   symbol:   class ITimeProvider
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java:[18,51] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java:[25,22] error: cannot find symbol
+[ERROR]   symbol:   class ITimeProvider
+[ERROR]   location: class TimeSlot
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java:[87,32] error: cannot find symbol
+[ERROR]   symbol:   class ITimeProvider
+[ERROR]   location: class TimeSlot
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java:[91,11] error: cannot find symbol
+[ERROR]   symbol:   class ITimeProvider
+[ERROR]   location: class TimeSlot
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java:[3,40] error: cannot find symbol
+[ERROR]   symbol:   class JsonSelfSerializable
+[ERROR]   location: package com.dgphoenix.casino.common.cache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java:[4,39] error: cannot find symbol
+[ERROR]   symbol:   class DatePeriod
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java:[5,39] error: cannot find symbol
+[ERROR]   symbol:   class ITimeProvider
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java:[29,8] error: cannot find symbol
+[ERROR]   symbol: class JsonSelfSerializable
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:[32,17] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class PromoCampaignMember
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:[103,16] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class PromoCampaignMember
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:[107,40] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class PromoCampaignMember
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:[113,37] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class PromoCampaignMember
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:[119,16] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class PromoCampaignMember
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:[129,38] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class PromoCampaignMember
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AwardedPrize.java:[69,33] error: cannot find symbol
+[ERROR]   symbol:   class DesiredPrize
+[ERROR]   location: class AwardedPrize
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PrizeStatus.java:[7,7] error: duplicate class: com.abs.casino.common.promo.PrizeStatus
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java:[44,12] error: cannot access PrizeStatus
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

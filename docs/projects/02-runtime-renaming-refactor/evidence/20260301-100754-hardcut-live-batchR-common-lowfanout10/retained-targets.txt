@@ -1,0 +1,10 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/PeriodicReportsCache.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/IAccountManager.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/OperationStatisticsCache.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/VersionedDistributedCacheEntry.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/IStartGameProcessor.java
+gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/ICloseGameProcessor.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ServerConfigsTemplateCache.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LimitsCache.java
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java

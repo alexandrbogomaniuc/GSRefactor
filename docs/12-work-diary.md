@@ -9678,3 +9678,19 @@
   - baseline `2277`, reduced `2161`, remaining `116`, burndown `94.905578%`
   - Project 02 `52.957200%`, Core `76.478600%`, Portfolio `88.239300%`
   - ETA `~4.8h` (`~0.60` workdays)
+
+### 2026-03-01 10:09 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed live `Batch R`.
+- Batch intent: `10` declarations; retained: `10`.
+- Retained moves (`com.dgphoenix -> com.abs`):
+  - `PeriodicReportsCache`, `IAccountManager`, `DomainSessionFactory`, `OperationStatisticsCache`, `VersionedDistributedCacheEntry`, `IStartGameProcessor`, `ICloseGameProcessor`, `ServerConfigsTemplateCache`, `LimitsCache`, `CoinsCache`.
+- Validation:
+  - focused fast gates: `common FAIL`, `common-wallet FAIL`, `sb-utils PASS`, `common-promo FAIL`, `common-gs FAIL`.
+  - canonical runner: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE03`, `validation FAIL PRE03`, `STEP09 retry SKIP`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-100754-hardcut-live-batchR-common-lowfanout10/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/245-hard-cut-live-batchR-common-lowfanout10-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2171`, remaining `106`, burndown `95.344751%`
+  - Project 02 `53.092282%`, Core `76.546141%`, Portfolio `88.273071%`
+  - ETA `~4.4h` (`~0.55` workdays)

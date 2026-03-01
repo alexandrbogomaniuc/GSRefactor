@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers;
+package com.abs.casino.gs.managers;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.session.ClientType;

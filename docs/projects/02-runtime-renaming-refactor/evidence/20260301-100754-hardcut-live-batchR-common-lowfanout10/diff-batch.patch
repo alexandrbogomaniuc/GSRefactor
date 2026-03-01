@@ -1,0 +1,100 @@
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java
+index e019cc33f..896dbaf45 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common;
++package com.abs.casino.common;
+ 
+ import com.dgphoenix.casino.common.cache.IAccountManager;
+ import com.dgphoenix.casino.common.lock.ILockManager;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java
+index 3609f1cac..96ddbc353 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CoinsCache.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ import com.dgphoenix.casino.common.cache.data.bank.Coin;
+ 
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/IAccountManager.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/IAccountManager.java
+index 0b82c63b5..d2b3b1165 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/IAccountManager.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/IAccountManager.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+ import com.dgphoenix.casino.common.exception.CommonException;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LimitsCache.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LimitsCache.java
+index ca8263651..f87dfd24a 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LimitsCache.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LimitsCache.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ import com.dgphoenix.casino.common.cache.data.bank.Limit;
+ 
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/OperationStatisticsCache.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/OperationStatisticsCache.java
+index b0fda5d4e..23d51cb1a 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/OperationStatisticsCache.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/OperationStatisticsCache.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ 
+ import com.abs.casino.common.cache.ExportableCacheEntry;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/PeriodicReportsCache.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/PeriodicReportsCache.java
+index b4d3719b7..4103a9c95 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/PeriodicReportsCache.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/PeriodicReportsCache.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ import com.abs.casino.common.cache.AbstractDistributedCache;
+ import com.abs.casino.common.cache.data.report.PeriodicReportInfo;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ServerConfigsTemplateCache.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ServerConfigsTemplateCache.java
+index 63790bf7c..ff59d6e2b 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ServerConfigsTemplateCache.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ServerConfigsTemplateCache.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ import com.abs.casino.common.cache.ExportableCacheEntry;
+ import com.abs.casino.common.cache.AbstractExportableCache;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/VersionedDistributedCacheEntry.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/VersionedDistributedCacheEntry.java
+index 9fb03ea82..c7a942420 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/VersionedDistributedCacheEntry.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/VersionedDistributedCacheEntry.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ /**
+  * User: flsh
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/ICloseGameProcessor.java b/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/ICloseGameProcessor.java
+index 435800e95..b2a7624f5 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/ICloseGameProcessor.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/ICloseGameProcessor.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.gs.managers;
++package com.abs.casino.gs.managers;
+ 
+ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+ import com.dgphoenix.casino.common.cache.data.session.ClientType;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/IStartGameProcessor.java b/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/IStartGameProcessor.java
+index 494c28427..fd78828f9 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/IStartGameProcessor.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/IStartGameProcessor.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.gs.managers.payment;
++package com.abs.casino.gs.managers.payment;
+ 
+ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+ import com.dgphoenix.casino.common.cache.data.session.GameSession;

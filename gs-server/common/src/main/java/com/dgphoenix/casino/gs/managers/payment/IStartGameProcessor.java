@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment;
+package com.abs.casino.gs.managers.payment;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.session.GameSession;
