@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache;
+package com.abs.casino.common.cache;
 
 import com.abs.casino.common.cache.ExportableCacheEntry;
 import java.io.Serializable;

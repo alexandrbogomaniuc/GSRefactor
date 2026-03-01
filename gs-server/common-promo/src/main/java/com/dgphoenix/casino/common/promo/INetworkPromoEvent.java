@@ -1,5 +1,6 @@
-package com.dgphoenix.casino.common.promo;
+package com.abs.casino.common.promo;
 
+import com.dgphoenix.casino.common.promo.INetworkPromoEventTemplate;
 /**
  * User: flsh
  * Date: 4.12.2020.

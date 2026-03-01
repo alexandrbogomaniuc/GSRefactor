@@ -1,0 +1,189 @@
+diff --git a/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/AbstractLockManager.java b/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/AbstractLockManager.java
+index ad8783486..44ca522a3 100644
+--- a/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/AbstractLockManager.java
++++ b/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/AbstractLockManager.java
+@@ -3,9 +3,9 @@ package com.abs.casino.cassandra;
+ import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
+ import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
+ import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+-import com.abs.casino.cassandra.persist.engine.configuration.Caching;
+-import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
+-import com.dgphoenix.casino.common.ILoadBalancer;
++import com.dgphoenix.casino.cassandra.persist.engine.configuration.Caching;
++import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStrategy;
++import com.abs.casino.common.ILoadBalancer;
+ import com.abs.casino.common.exception.CannotLockException;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.abs.casino.common.lock.ChangeLockListener;
+diff --git a/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/KeyspaceManagerStatistics.java b/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/KeyspaceManagerStatistics.java
+index ede20d08f..c86580897 100644
+--- a/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/KeyspaceManagerStatistics.java
++++ b/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/KeyspaceManagerStatistics.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.cassandra;
++package com.abs.casino.cassandra;
+ 
+ import com.abs.casino.cassandra.KeyspaceMetricsSnapshot;
+ import com.abs.casino.common.web.statistics.IStatisticsGetter;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IHighFrequencyPrize.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IHighFrequencyPrize.java
+index 92a8dcb59..f009a7e39 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IHighFrequencyPrize.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IHighFrequencyPrize.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ /**
+  * User: flsh
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IMoneyPrize.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IMoneyPrize.java
+index a6e93d6c9..e2e189bff 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IMoneyPrize.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IMoneyPrize.java
+@@ -1,5 +1,6 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
++import com.dgphoenix.casino.common.promo.IMaterialPrize;
+ /**
+  * User: flsh
+  * Date: 29.06.2022.
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoEvent.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoEvent.java
+index 51bbdb664..97c310845 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoEvent.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoEvent.java
+@@ -1,5 +1,6 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
++import com.dgphoenix.casino.common.promo.INetworkPromoEventTemplate;
+ /**
+  * User: flsh
+  * Date: 4.12.2020.
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IRemotePromoNotifier.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IRemotePromoNotifier.java
+index bb8aca121..1f0dcfb7f 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IRemotePromoNotifier.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IRemotePromoNotifier.java
+@@ -1,6 +1,7 @@
+-package com.dgphoenix.casino.common.promo;
+-
+-import java.util.Set;
++package com.abs.casino.common.promo;
++
++import com.dgphoenix.casino.common.promo.PromoNotificationType;
++import java.util.Set;
+ 
+ /**
+  * User: flsh
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentRankQualifier.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentRankQualifier.java
+index 387bec8d5..47137065e 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentRankQualifier.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentRankQualifier.java
+@@ -1,5 +1,6 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
++import com.dgphoenix.casino.common.promo.TournamentMemberRank;
+ import java.util.Comparator;
+ 
+ /**
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IVirtualPrize.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IVirtualPrize.java
+index f66492ac2..a009f24ba 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IVirtualPrize.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IVirtualPrize.java
+@@ -1,5 +1,6 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
++import com.dgphoenix.casino.common.promo.IPrize;
+ /**
+  * User: flsh
+  * Date: 11.01.17.
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ExportableCacheEntryContainer.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ExportableCacheEntryContainer.java
+index ba0c6825c..c33979037 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ExportableCacheEntryContainer.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ExportableCacheEntryContainer.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ import com.abs.casino.common.cache.ExportableCacheEntry;
+ import java.io.Serializable;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LoadBalancerCache.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LoadBalancerCache.java
+index 46170cd0d..6d51c1fca 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LoadBalancerCache.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/LoadBalancerCache.java
+@@ -3,7 +3,7 @@ package com.dgphoenix.casino.common.cache;
+ import com.abs.casino.common.cache.ExportableCacheEntry;
+ import com.abs.casino.common.cache.AbstractExportableCache;
+ import com.abs.casino.common.cache.IServerStatusProvider;
+-import com.dgphoenix.casino.common.ILoadBalancer;
++import com.abs.casino.common.ILoadBalancer;
+ import com.abs.casino.common.cache.data.server.IServerInfoInternalProvider;
+ import com.abs.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
+ import com.abs.casino.common.cache.data.server.ServerInfo;
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/RemoteCallHelper.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/RemoteCallHelper.java
+index a1811369d..4715768c0 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/RemoteCallHelper.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/RemoteCallHelper.java
+@@ -2,6 +2,13 @@ package com.abs.casino.gs.persistance.remotecall;
+ 
+ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+ import com.dgphoenix.casino.cassandra.persist.*;
++import com.abs.casino.cassandra.persist.CassandraShortBetInfoPersister;
++import com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
++import com.abs.casino.cassandra.persist.CassandraMassAwardRestrictionPersister;
++import com.abs.casino.cassandra.persist.CassandraExternalGameIdsPersister;
++import com.abs.casino.cassandra.persist.CassandraCallStatisticsPersister;
++import com.abs.casino.cassandra.persist.CassandraCurrencyPersister;
++import com.abs.casino.cassandra.persist.CassandraBaseGameInfoPersister;
+ import com.abs.casino.cassandra.persist.CassandraRemoteCallPersister;
+ import com.dgphoenix.casino.common.cache.*;
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+@@ -12,9 +19,10 @@ import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
+ import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+ import com.abs.casino.common.cache.data.server.ServerInfo;
+ import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
+-import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.promo.PromoNotificationType;
+-import com.dgphoenix.casino.common.promo.*;
++import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.promo.IRemotePromoNotifier;
++import com.dgphoenix.casino.common.promo.PromoNotificationType;
++import com.dgphoenix.casino.common.promo.*;
+ import com.abs.casino.common.remotecall.IRemoteCall;
+ import com.abs.casino.common.remotecall.PersistableCall;
+ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventProcessor.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventProcessor.java
+index 66bf82b26..a33844766 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventProcessor.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventProcessor.java
+@@ -1,6 +1,8 @@
+ package com.abs.casino.promo.events.process;
+ 
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.common.promo.IHighFrequencyPrize;
++import com.abs.casino.common.promo.IRemotePromoNotifier;
++import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+ import com.abs.casino.cassandra.DistributedLockManager;
+ import com.dgphoenix.casino.common.SessionHelper;
+ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/ITimeProvider.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/ITimeProvider.java
+index e7d97fbea..4630bb387 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/ITimeProvider.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/ITimeProvider.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.util;
++package com.abs.casino.common.util;
+ 
+ /**
+  * User: flsh
+diff --git a/gs-server/utils/src/main/java/com/dgphoenix/casino/common/ILoadBalancer.java b/gs-server/utils/src/main/java/com/dgphoenix/casino/common/ILoadBalancer.java
+index 75e693f83..45ead8803 100644
+--- a/gs-server/utils/src/main/java/com/dgphoenix/casino/common/ILoadBalancer.java
++++ b/gs-server/utils/src/main/java/com/dgphoenix/casino/common/ILoadBalancer.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common;
++package com.abs.casino.common;
+ 
+ /**
+  * User: flsh

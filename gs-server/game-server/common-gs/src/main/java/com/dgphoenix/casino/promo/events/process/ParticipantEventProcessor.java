@@ -1,5 +1,7 @@
 package com.abs.casino.promo.events.process;
 
+import com.abs.casino.common.promo.IHighFrequencyPrize;
+import com.abs.casino.common.promo.IRemotePromoNotifier;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.DistributedLockManager;
 import com.dgphoenix.casino.common.SessionHelper;

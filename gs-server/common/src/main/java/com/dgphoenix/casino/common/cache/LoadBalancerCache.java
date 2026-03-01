@@ -3,7 +3,7 @@ package com.dgphoenix.casino.common.cache;
 import com.abs.casino.common.cache.ExportableCacheEntry;
 import com.abs.casino.common.cache.AbstractExportableCache;
 import com.abs.casino.common.cache.IServerStatusProvider;
-import com.dgphoenix.casino.common.ILoadBalancer;
+import com.abs.casino.common.ILoadBalancer;
 import com.abs.casino.common.cache.data.server.IServerInfoInternalProvider;
 import com.abs.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
 import com.abs.casino.common.cache.data.server.ServerInfo;

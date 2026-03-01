@@ -9557,3 +9557,22 @@
   - baseline `2277`, reduced `2098`, remaining `179`, burndown `92.138779%`
   - Project 02 `52.106183%`, Core `76.053092%`, Portfolio `88.026546%`
   - ETA `~7.3h` (`~0.91` workdays)
+
+### 2026-03-01 09:32 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed live `Batch K`.
+- Batch intent: `10` declarations; retained: `10`.
+- Retained moves (`com.dgphoenix -> com.abs`):
+  - `KeyspaceManagerStatistics`, `IHighFrequencyPrize`, `IMoneyPrize`, `INetworkPromoEvent`, `IRemotePromoNotifier`, `ITournamentRankQualifier`, `IVirtualPrize`, `ExportableCacheEntryContainer`, `ITimeProvider`, `ILoadBalancer`.
+- Bounded rewires:
+  - `AbstractLockManager` + `LoadBalancerCache` imports rewired to moved `ILoadBalancer`.
+  - `ParticipantEventProcessor` + `RemoteCallHelper` imports rewired to moved `IRemotePromoNotifier`.
+- Validation:
+  - focused fast gates: `sb-utils PASS`; `common-promo/common/cassandra-cache/common-gs FAIL` on existing mixed-workspace drift profiles.
+  - canonical runner: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE03`, `validation FAIL PRE03`, `STEP09 retry SKIP`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-093214-hardcut-live-batchK-promo-cache-util-cassandra10/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/238-hard-cut-live-batchK-promo-cache-util-cassandra10-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2108`, remaining `169`, burndown `92.577953%`
+  - Project 02 `52.241265%`, Core `76.120633%`, Portfolio `88.060316%`
+  - ETA `~6.9h` (`~0.86` workdays)

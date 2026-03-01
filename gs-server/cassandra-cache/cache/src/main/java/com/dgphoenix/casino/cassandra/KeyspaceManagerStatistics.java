@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra;
+package com.abs.casino.cassandra;
 
 import com.abs.casino.cassandra.KeyspaceMetricsSnapshot;
 import com.abs.casino.common.web.statistics.IStatisticsGetter;

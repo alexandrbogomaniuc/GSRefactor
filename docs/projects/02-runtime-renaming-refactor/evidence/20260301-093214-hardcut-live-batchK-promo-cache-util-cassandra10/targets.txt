@@ -1,0 +1,10 @@
+com.dgphoenix.casino.cassandra.KeyspaceManagerStatistics
+com.dgphoenix.casino.common.promo.IHighFrequencyPrize
+com.dgphoenix.casino.common.promo.IMoneyPrize
+com.dgphoenix.casino.common.promo.INetworkPromoEvent
+com.dgphoenix.casino.common.promo.IRemotePromoNotifier
+com.dgphoenix.casino.common.promo.ITournamentRankQualifier
+com.dgphoenix.casino.common.promo.IVirtualPrize
+com.dgphoenix.casino.common.cache.ExportableCacheEntryContainer
+com.dgphoenix.casino.common.util.ITimeProvider
+com.dgphoenix.casino.common.ILoadBalancer
