@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.gs.managers.payment.wallet;
+package com.abs.casino.gs.managers.payment.wallet;
 
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.game.GameMode;

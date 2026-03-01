@@ -9694,3 +9694,19 @@
   - baseline `2277`, reduced `2171`, remaining `106`, burndown `95.344751%`
   - Project 02 `53.092282%`, Core `76.546141%`, Portfolio `88.273071%`
   - ETA `~4.4h` (`~0.55` workdays)
+
+### 2026-03-01 10:11 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed live `Batch S`.
+- Batch intent: `10` declarations; retained: `10`.
+- Retained moves (`com.dgphoenix -> com.abs`):
+  - `WalletHelper`, `MultiplayerExternalWallettransactionHandler`, `DomainWhiteListCache`, `MassAwardCache`, `ExternalGameIdsCache`, `PlayerGameSettings`, `ServerConfigsCache`, `GameServerConfig`, `IWalletDBLink`, `IWalletOperation`.
+- Validation:
+  - focused fast gates: `common FAIL`, `common-wallet FAIL`, `sb-utils PASS`, `common-gs FAIL`, `common-promo FAIL`.
+  - canonical runner: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE03`, `validation FAIL PRE03`, `STEP09 retry SKIP`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-101040-hardcut-live-batchS-common-wallet10/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/246-hard-cut-live-batchS-common-wallet10-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2181`, remaining `96`, burndown `95.783926%`
+  - Project 02 `53.227364%`, Core `76.613682%`, Portfolio `88.306841%`
+  - ETA `~4.0h` (`~0.50` workdays)

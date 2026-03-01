@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.config;
+package com.abs.casino.common.config;
 
 public class GameServerConfig {
     private int serverId;

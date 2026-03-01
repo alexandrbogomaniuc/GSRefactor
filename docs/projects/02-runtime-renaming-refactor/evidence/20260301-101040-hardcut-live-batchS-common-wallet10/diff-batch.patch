@@ -1,0 +1,100 @@
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/DomainWhiteListCache.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/DomainWhiteListCache.java
+index b4e5e5da4..a23097d58 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/DomainWhiteListCache.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/DomainWhiteListCache.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ import com.abs.casino.common.cache.ExportableCacheEntry;
+ import com.abs.casino.common.cache.AbstractExportableCache;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ExternalGameIdsCache.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ExternalGameIdsCache.java
+index 3467add37..5ca2560ac 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ExternalGameIdsCache.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ExternalGameIdsCache.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ 
+ import com.abs.casino.common.cache.ExportableCacheEntry;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/MassAwardCache.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/MassAwardCache.java
+index b90f97550..d87348327 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/MassAwardCache.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/MassAwardCache.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ import com.abs.casino.common.cache.ExportableCacheEntry;
+ import com.abs.casino.common.cache.AbstractExportableCache;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ServerConfigsCache.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ServerConfigsCache.java
+index 3fa118d1d..495c93b4b 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ServerConfigsCache.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ServerConfigsCache.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ import java.util.ArrayList;
+ import java.util.Collection;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java
+index 96ab1882e..a5f751b43 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/PlayerGameSettings.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache.data.account;
++package com.abs.casino.common.cache.data.account;
+ 
+ import com.dgphoenix.casino.common.cache.CoinsCache;
+ import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/config/GameServerConfig.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/config/GameServerConfig.java
+index faa4488e9..0a243e781 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/config/GameServerConfig.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/config/GameServerConfig.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.config;
++package com.abs.casino.common.config;
+ 
+ public class GameServerConfig {
+     private int serverId;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletDBLink.java b/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletDBLink.java
+index ecdf1cd2b..d02d994f5 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletDBLink.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletDBLink.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.gs.managers.payment.wallet;
++package com.abs.casino.gs.managers.payment.wallet;
+ 
+ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+ import com.dgphoenix.casino.common.cache.data.game.GameMode;
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletOperation.java b/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletOperation.java
+index a3eafe90b..cf5b12257 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletOperation.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/IWalletOperation.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.gs.managers.payment.wallet;
++package com.abs.casino.gs.managers.payment.wallet;
+ 
+ import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+ import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/MultiplayerExternalWallettransactionHandler.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/MultiplayerExternalWallettransactionHandler.java
+index 595b911fe..65e2da44e 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/MultiplayerExternalWallettransactionHandler.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/MultiplayerExternalWallettransactionHandler.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.gs.managers.payment.wallet;
++package com.abs.casino.gs.managers.payment.wallet;
+ 
+ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+ import com.abs.casino.cassandra.persist.CassandraExternalTransactionPersister;
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/WalletHelper.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/WalletHelper.java
+index ded6518fb..d3509fa93 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/WalletHelper.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/WalletHelper.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.gs.managers.payment.wallet;
++package com.abs.casino.gs.managers.payment.wallet;
+ 
+ import com.dgphoenix.casino.account.AccountManager;
+ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
