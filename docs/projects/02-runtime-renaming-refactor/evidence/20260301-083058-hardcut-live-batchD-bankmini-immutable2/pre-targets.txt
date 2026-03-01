@@ -1,0 +1,2 @@
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BankMiniGameInfo.java:1:package com.dgphoenix.casino.common.cache.data.game;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/ImmutableBaseGameInfoWrapper.java:1:package com.dgphoenix.casino.common.cache.data.game;

@@ -9450,3 +9450,36 @@
   - baseline `2277`, reduced `365`, remaining `1912`, burndown `16.029864%`
   - Project 02 `27.003734%`, Core `63.501867%`, Portfolio `81.750934%`
   - ETA `87.5h` (`10.94` workdays)
+
+### 2026-03-01 07:56-08:12 UTC
+- Continued Project 02 hard-cut live batch stabilization from dirty in-progress workspace state.
+- Executed canonical rerun script in evidence folder:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-075607-hardcut-live-batchB-promo-cassandra10/run-rerun1.sh`
+- Applied bounded compatibility corrections to restore build gates after mixed namespace drift:
+  - normalized `cassandra/persist` boundary imports (including `persist.mp` vs non-`mp` split),
+  - rolled back high-fanout declarations to `com.dgphoenix` where required (`IBaseGameInfo`/`GameType` family, key `persist` interfaces),
+  - fixed `common-gs` bonus-manager import split (`BonusManager/FRBonusManager` remain `com.dgphoenix`; bonus contracts remain `com.abs`),
+  - fixed `web-gs` JSP imports for game data types/constants (`localized_games.jsp`, `help2.jsp`, `support/gameBankConfig/GameClass.jsp`, and related support JSPs).
+- Validation result (canonical profile in evidence summary):
+  - `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL rc=2`, retry `rc=2`.
+- Result:
+  - Build gates recovered; smoke blocker profile unchanged (`STEP09` external).
+- Next:
+  - continue next low-risk declaration wave on top of recovered gate baseline; keep batch evidence and metric refresh cadence.
+
+### 2026-03-01 08:32 UTC
+- Continued Project 02 hard-cut refactor in `Dev_new` from dirty workspace state; attempted one broader 17-declaration batch first, then safely pivoted to a low-fanout batch after compile drift.
+- Executed final retained batch D:
+  - declarations moved: `ImmutableBaseGameInfoWrapper`, `BankMiniGameInfo` (`com.dgphoenix -> com.abs`)
+  - bounded import rewires: `BaseGameCache`, `BaseGameHelper`, `CurrencySelectAction`, `BankMiniGameInfo`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-083058-hardcut-live-batchD-bankmini-immutable2/`
+  - `fast-gate-summary.txt`, `pre/post` scans, `diff-batch.patch`.
+- Validation result:
+  - fast-gate module compiles passed:
+    - `gs-server/sb-utils`, `gs-server/common`,
+    - `gs-server/game-server/common-gs` and `web-gs` with `-Dcluster.properties=local/local-machine.properties`.
+- Metrics:
+  - legacy declarations now `303` remaining (`1974` reduced of `2277`, burndown `86.693017%`).
+- Next:
+  - continue with next low-fanout batch and run full canonical 9-step matrix on the third accumulated batch or before any push.

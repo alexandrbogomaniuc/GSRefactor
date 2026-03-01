@@ -1,0 +1,13 @@
+Batch D fast gate commands (2026-03-01 UTC):
+1) cd gs-server/sb-utils && mvn -DskipTests install
+   Result: BUILD SUCCESS
+2) cd gs-server/common && mvn -DskipTests install
+   Result: BUILD SUCCESS
+3) cd gs-server/game-server/common-gs && mvn -DskipTests -Dcluster.properties=local/local-machine.properties install
+   Result: BUILD SUCCESS
+4) cd gs-server/game-server/web-gs && mvn -DskipTests -Dcluster.properties=local/local-machine.properties install
+   Result: BUILD SUCCESS
+
+Notes:
+- Running common-gs/web-gs without -Dcluster.properties failed due unresolved config path in this workspace.
+- Using local/local-machine.properties is the stable local fast-gate profile.

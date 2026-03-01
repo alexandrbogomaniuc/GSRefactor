@@ -1,5 +1,6 @@
 package com.abs.casino.common.cache.data.game;
 
+import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
 import com.abs.casino.common.cache.data.game.MiniGameInfo;
 import com.abs.casino.common.cache.data.bank.ICoin;
 import com.abs.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper;

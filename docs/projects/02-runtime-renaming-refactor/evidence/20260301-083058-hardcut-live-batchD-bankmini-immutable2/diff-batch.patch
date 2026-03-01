@@ -1,0 +1,38 @@
+diff --git a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BankMiniGameInfo.java b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BankMiniGameInfo.java
+index 7a080cbc2..e6fbf5b49 100644
+--- a/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BankMiniGameInfo.java
++++ b/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BankMiniGameInfo.java
+@@ -1,5 +1,6 @@
+-package com.dgphoenix.casino.common.cache.data.game;
++package com.abs.casino.common.cache.data.game;
+ 
++import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
+ import com.abs.casino.common.cache.data.game.MiniGameInfo;
+ import com.abs.casino.common.cache.data.bank.ICoin;
+ import com.abs.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper;
+diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java
+index a1ea7256b..bce0cebb7 100644
+--- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java
++++ b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CurrencySelectAction.java
+@@ -6,7 +6,7 @@ import com.dgphoenix.casino.common.cache.CurrencyCache;
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+ import com.dgphoenix.casino.common.cache.data.currency.Currency;
+ import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+-import com.abs.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper;
++import com.abs.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper;
+ import com.dgphoenix.casino.common.configuration.messages.MessageManager;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.abs.casino.support.cache.bank.edit.forms.common.GameViewBean;
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/ImmutableBaseGameInfoWrapper.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/ImmutableBaseGameInfoWrapper.java
+index 816e6b1f6..ce4727f9d 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/ImmutableBaseGameInfoWrapper.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/ImmutableBaseGameInfoWrapper.java
+@@ -1,6 +1,8 @@
+ package com.abs.casino.common.cache.data.game;
+ 
+ import com.abs.casino.common.cache.data.account.PlayerDeviceType;
++import com.abs.casino.common.cache.data.game.ClientGeneration;
++import com.abs.casino.common.cache.data.game.Html5PcVersionMode;
+ import com.abs.casino.common.cache.data.bank.ICoin;
+ import com.dgphoenix.casino.common.cache.data.game.GameGroup;
+ import com.dgphoenix.casino.common.cache.data.game.GameType;

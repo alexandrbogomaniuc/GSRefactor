@@ -4561,3 +4561,30 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Pushed wave completion commit `d6642c8f9` to `origin/main`.
 - Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260228-234730-hardcut-m2-wave344-wave345-persisters-final9-plus-interface10/`.
 - Canonical matrix unchanged at push point: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 rc=2` (retry1 `rc=2`).
+
+## 2026-03-01 - Hard-cut live batch stabilization (evidence rerun1)
+- Evidence: `docs/projects/02-runtime-renaming-refactor/evidence/20260301-075607-hardcut-live-batchB-promo-cassandra10/`
+- Ran canonical runner and recovered gate profile after mixed import/package drift.
+- Canonical validation: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL (rc=2)`, retry `rc=2`.
+- Notes:
+  - corrected `persist` import boundaries (`com.dgphoenix` vs `com.abs`, including `persist.mp`),
+  - fixed `common-gs` bonus-manager import split,
+  - fixed `web-gs` JSP game-type/constants import drift.
+- Status: ready for next declaration batch; smoke blocker unchanged.
+
+## 2026-03-01 08:32 UTC (Hard-cut live batch D: BankMiniGameInfo + ImmutableBaseGameInfoWrapper)
+- Continued Project 02 hard-cut migration from dirty in-progress workspace state using bounded low-fanout fallback (subagent threads still capped).
+- Applied declaration migrations (`com.dgphoenix -> com.abs`): `2`
+  - `ImmutableBaseGameInfoWrapper`
+  - `BankMiniGameInfo`
+- Applied bounded import rewires required by moved wrapper (`4` callsites):
+  - `BaseGameCache`, `BaseGameHelper`, `CurrencySelectAction`, `BankMiniGameInfo`.
+- Fast-gate validation (module-level):
+  - `gs-server/sb-utils`: `BUILD SUCCESS`
+  - `gs-server/common`: `BUILD SUCCESS`
+  - `gs-server/game-server/common-gs`: `BUILD SUCCESS` with `-Dcluster.properties=local/local-machine.properties`
+  - `gs-server/game-server/web-gs`: `BUILD SUCCESS` with `-Dcluster.properties=local/local-machine.properties`
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-083058-hardcut-live-batchD-bankmini-immutable2/`
+- Outcome:
+  - tracked legacy package declarations reduced from `305` to `303` (baseline `2277`, reduced `1974`, burndown `86.693017%`).
