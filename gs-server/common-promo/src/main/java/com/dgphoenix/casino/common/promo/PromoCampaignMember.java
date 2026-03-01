@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.promo;
+package com.abs.casino.common.promo;
 
 import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
 import com.dgphoenix.casino.common.cache.Identifiable;
@@ -9,7 +9,7 @@ import com.esotericsoftware.kryo.io.Output;
 
 import java.util.*;
 
-import static com.dgphoenix.casino.common.promo.AwardedPrize.BY_AWARD_DATE;
+import static com.abs.casino.common.promo.AwardedPrize.BY_AWARD_DATE;
 import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
 
 /**

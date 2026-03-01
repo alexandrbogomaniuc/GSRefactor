@@ -1,0 +1,5 @@
+common-promo=1
+promo-core=1
+promo-persisters=1
+common-gs=1
+common=1

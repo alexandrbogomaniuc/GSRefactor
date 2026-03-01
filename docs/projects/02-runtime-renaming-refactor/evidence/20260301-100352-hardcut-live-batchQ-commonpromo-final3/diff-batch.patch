@@ -1,0 +1,39 @@
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaign.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaign.java
+index f383f3e3d..4f691c2e0 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaign.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaign.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ import com.dgphoenix.casino.common.cache.Identifiable;
+ import com.abs.casino.common.util.DatePeriod;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java
+index 8de3def5d..2e5607a90 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+ import com.dgphoenix.casino.common.cache.Identifiable;
+@@ -9,7 +9,7 @@ import com.esotericsoftware.kryo.io.Output;
+ 
+ import java.util.*;
+ 
+-import static com.dgphoenix.casino.common.promo.AwardedPrize.BY_AWARD_DATE;
++import static com.abs.casino.common.promo.AwardedPrize.BY_AWARD_DATE;
+ import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
+ 
+ /**
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/Status.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/Status.java
+index 4f4e05ce9..1b99e2958 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/Status.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/Status.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ /**
+  * User: flsh

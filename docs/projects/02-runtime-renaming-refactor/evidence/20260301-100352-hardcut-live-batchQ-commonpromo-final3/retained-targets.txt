@@ -1,0 +1,3 @@
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaign.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/Status.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java

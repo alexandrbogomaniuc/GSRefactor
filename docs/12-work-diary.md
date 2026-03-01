@@ -9662,3 +9662,19 @@
   - baseline `2277`, reduced `2158`, remaining `119`, burndown `94.773825%`
   - Project 02 `52.916675%`, Core `76.458337%`, Portfolio `88.229169%`
   - ETA `~4.9h` (`~0.61` workdays)
+
+### 2026-03-01 10:04 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed live `Batch Q`.
+- Batch intent: `3` declarations; retained: `3`.
+- Retained moves (`com.dgphoenix -> com.abs`):
+  - `IPromoCampaign`, `Status`, `PromoCampaignMember`.
+- Validation:
+  - focused fast gates: `common-promo/promo-core/promo-persisters/common-gs/common FAIL` on known mixed-workspace drift profiles.
+  - canonical runner: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE03`, `validation FAIL PRE03`, `STEP09 retry SKIP`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-100352-hardcut-live-batchQ-commonpromo-final3/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/244-hard-cut-live-batchQ-commonpromo-final3-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2161`, remaining `116`, burndown `94.905578%`
+  - Project 02 `52.957200%`, Core `76.478600%`, Portfolio `88.239300%`
+  - ETA `~4.8h` (`~0.60` workdays)
