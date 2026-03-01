@@ -9483,3 +9483,20 @@
   - legacy declarations now `303` remaining (`1974` reduced of `2277`, burndown `86.693017%`).
 - Next:
   - continue with next low-fanout batch and run full canonical 9-step matrix on the third accumulated batch or before any push.
+
+### 2026-03-01 08:53 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed live `Batch G` (`common` low-fanout).
+- Scope retained:
+  - declaration migrations (`com.dgphoenix -> com.abs`): `10` (`AbstractLazyLoadingExportableCache`, `BackgroundImagesCache`, `BankPartnerIdCache`, `CacheExportProcessor`, `CurrencyRateMultiplierLoader`, `PromoBonusCache`, `SetOfLongsContainer`, `BonusMassAwardBonusTemplate`, `PromoBonus`, `WOStatistics`).
+  - bounded rewires/stabilization imports: `6` (moved-file compatibility imports + `WOStatisticsContainer` bridge import).
+- Validation highlights:
+  - module fast gate: `gs-server/common` PASS (`fast-gate-common-r4.log`).
+  - canonical runner attempt executed; failed on pre-existing profile in `common-promo` (`PRE03` / `STEP04`), and `common-gs` remains blocked by pre-existing `com.abs.casino.cassandra.persist.*` import drift unrelated to this batch.
+  - validation summary: `validation-summary-rerun1.txt`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-084754-hardcut-live-batchG-common10/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/234-hard-cut-live-batchG-common10-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2073`, remaining `204`, burndown `91.041282%`
+  - Project 02 `51.769482%`, Core `75.884741%`, Portfolio `87.942371%`
+  - ETA `~8.3h` (`~1.04` workdays)

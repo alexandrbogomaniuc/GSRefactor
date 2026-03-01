@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache;
+package com.abs.casino.common.cache;
 
 import javax.validation.constraints.NotNull;
 import java.util.Map;

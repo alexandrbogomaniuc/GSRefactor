@@ -1,0 +1,127 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 263 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/SetOfLongsContainer.java:[9,44] error: cannot find symbol
+[ERROR]   symbol: class IDistributedCacheEntry
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/AbstractLazyLoadingExportableCache.java:[26,76] error: cannot find symbol
+[ERROR]   symbol: class IDistributedCacheEntry
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CacheExportProcessor.java:[14,44] error: cannot find symbol
+[ERROR]   symbol: class IDistributedCacheEntry
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[14,49] error: cannot find symbol
+[ERROR]   symbol: class MassAwardBonusTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[16,12] error: cannot find symbol
+[ERROR]   symbol:   class BonusType
+  location: class BonusMassAwardBonusTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[21,12] error: cannot find symbol
+[ERROR]   symbol:   class BonusGameMode
+  location: class BonusMassAwardBonusTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[29,50] error: cannot find symbol
+[ERROR]   symbol:   class BonusType
+  location: class BonusMassAwardBonusTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[30,39] error: cannot find symbol
+[ERROR]   symbol:   class BonusGameMode
+  location: class BonusMassAwardBonusTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[42,11] error: cannot find symbol
+[ERROR]   symbol:   class BaseBonus
+  location: class BonusMassAwardBonusTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[53,11] error: cannot find symbol
+[ERROR]   symbol:   class BonusType
+  location: class BonusMassAwardBonusTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[57,37] error: cannot find symbol
+[ERROR]   symbol:   class BonusType
+  location: class BonusMassAwardBonusTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[77,11] error: cannot find symbol
+[ERROR]   symbol:   class BonusGameMode
+  location: class BonusMassAwardBonusTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[81,46] error: cannot find symbol
+[ERROR]   symbol:   class BonusGameMode
+  location: class BonusMassAwardBonusTemplate
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyRateMultiplierLoader.java:[15,68] error: cannot find symbol
+[ERROR]   symbol: class CurrencyRateMultiplierContainer
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyRateMultiplierLoader.java:[17,18] error: cannot find symbol
+[ERROR]   symbol:   class CurrencyRateMultiplierContainer
+  location: class CurrencyRateMultiplierLoader
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyRateMultiplierLoader.java:[19,18] error: cannot find symbol
+[ERROR]   symbol:   class BankInfoCache
+  location: class CurrencyRateMultiplierLoader
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyRateMultiplierLoader.java:[21,40] error: cannot find symbol
+[ERROR]   symbol:   class BankInfoCache
+  location: class CurrencyRateMultiplierLoader
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyRateMultiplierLoader.java:[27,11] error: cannot find symbol
+[INFO] 18 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.108 s
+[INFO] Finished at: 2026-03-01T08:49:08Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/SetOfLongsContainer.java:[9,44] error: cannot find symbol
+[ERROR]   symbol: class IDistributedCacheEntry
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/AbstractLazyLoadingExportableCache.java:[26,76] error: cannot find symbol
+[ERROR]   symbol: class IDistributedCacheEntry
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CacheExportProcessor.java:[14,44] error: cannot find symbol
+[ERROR]   symbol: class IDistributedCacheEntry
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[14,49] error: cannot find symbol
+[ERROR]   symbol: class MassAwardBonusTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[16,12] error: cannot find symbol
+[ERROR]   symbol:   class BonusType
+[ERROR]   location: class BonusMassAwardBonusTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[21,12] error: cannot find symbol
+[ERROR]   symbol:   class BonusGameMode
+[ERROR]   location: class BonusMassAwardBonusTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[29,50] error: cannot find symbol
+[ERROR]   symbol:   class BonusType
+[ERROR]   location: class BonusMassAwardBonusTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[30,39] error: cannot find symbol
+[ERROR]   symbol:   class BonusGameMode
+[ERROR]   location: class BonusMassAwardBonusTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[42,11] error: cannot find symbol
+[ERROR]   symbol:   class BaseBonus
+[ERROR]   location: class BonusMassAwardBonusTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[53,11] error: cannot find symbol
+[ERROR]   symbol:   class BonusType
+[ERROR]   location: class BonusMassAwardBonusTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[57,37] error: cannot find symbol
+[ERROR]   symbol:   class BonusType
+[ERROR]   location: class BonusMassAwardBonusTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[77,11] error: cannot find symbol
+[ERROR]   symbol:   class BonusGameMode
+[ERROR]   location: class BonusMassAwardBonusTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BonusMassAwardBonusTemplate.java:[81,46] error: cannot find symbol
+[ERROR]   symbol:   class BonusGameMode
+[ERROR]   location: class BonusMassAwardBonusTemplate
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyRateMultiplierLoader.java:[15,68] error: cannot find symbol
+[ERROR]   symbol: class CurrencyRateMultiplierContainer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyRateMultiplierLoader.java:[17,18] error: cannot find symbol
+[ERROR]   symbol:   class CurrencyRateMultiplierContainer
+[ERROR]   location: class CurrencyRateMultiplierLoader
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyRateMultiplierLoader.java:[19,18] error: cannot find symbol
+[ERROR]   symbol:   class BankInfoCache
+[ERROR]   location: class CurrencyRateMultiplierLoader
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyRateMultiplierLoader.java:[21,40] error: cannot find symbol
+[ERROR]   symbol:   class BankInfoCache
+[ERROR]   location: class CurrencyRateMultiplierLoader
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyRateMultiplierLoader.java:[27,11] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

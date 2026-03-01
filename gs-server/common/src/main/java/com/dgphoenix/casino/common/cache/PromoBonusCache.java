@@ -1,8 +1,8 @@
-package com.dgphoenix.casino.common.cache;
+package com.abs.casino.common.cache;
 
 import com.abs.casino.common.cache.ExportableCacheEntry;
 import com.abs.casino.common.cache.AbstractExportableCache;
-import com.dgphoenix.casino.common.cache.data.bonus.PromoBonus;
+import com.abs.casino.common.cache.data.bonus.PromoBonus;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.util.logkit.ThreadLog;
 import org.apache.logging.log4j.LogManager;

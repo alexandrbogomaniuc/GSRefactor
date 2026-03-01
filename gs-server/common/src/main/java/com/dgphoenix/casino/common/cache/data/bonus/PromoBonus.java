@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache.data.bonus;
+package com.abs.casino.common.cache.data.bonus;
 
 import com.dgphoenix.casino.common.cache.VersionedDistributedCacheEntry;
 import com.abs.casino.common.util.ConcurrentHashSet;

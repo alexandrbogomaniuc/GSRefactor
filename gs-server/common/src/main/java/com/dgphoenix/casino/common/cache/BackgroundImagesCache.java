@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.cache;
+package com.abs.casino.common.cache;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

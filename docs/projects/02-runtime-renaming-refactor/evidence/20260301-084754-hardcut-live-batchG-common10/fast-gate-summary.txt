@@ -1,0 +1,4 @@
+fast-gate-common-baseline=PASS
+fast-gate-common-r4=PASS
+fast-gate-common-gs-r2=FAIL (pre-existing persister import drift)
+canonical-runner-r1=FAIL (PRE03/STEP04 at common-promo; pre-existing drift)

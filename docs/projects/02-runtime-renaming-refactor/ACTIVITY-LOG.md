@@ -4588,3 +4588,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-083058-hardcut-live-batchD-bankmini-immutable2/`
 - Outcome:
   - tracked legacy package declarations reduced from `305` to `303` (baseline `2277`, reduced `1974`, burndown `86.693017%`).
+
+## 2026-03-01 08:53 UTC (Hard-cut live batch G: common low-fanout 10)
+- Continued Project 02 hard-cut migration from dirty in-progress workspace using bounded low-fanout module-safe batching.
+- Applied declaration migrations (`com.dgphoenix -> com.abs`): `10`
+  - `AbstractLazyLoadingExportableCache`, `BackgroundImagesCache`, `BankPartnerIdCache`, `CacheExportProcessor`, `CurrencyRateMultiplierLoader`, `PromoBonusCache`, `SetOfLongsContainer`, `BonusMassAwardBonusTemplate`, `PromoBonus`, `WOStatistics`.
+- Bounded stabilization fixes:
+  - explicit compatibility imports in moved classes for unmoved same-package neighbors,
+  - `WOStatisticsContainer` import bridge to moved `WOStatistics`.
+- Validation snapshot:
+  - `gs-server/common` fast gate PASS (`fast-gate-common-r4.log`),
+  - canonical matrix attempt fails at `PRE03/STEP04` in `common-promo` (pre-existing module drift profile),
+  - `common-gs` failure profile remains pre-existing `com.abs.casino.cassandra.persist.*` import drift unrelated to this batch.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-084754-hardcut-live-batchG-common10/`
+  - report: `docs/projects/02-runtime-renaming-refactor/234-hard-cut-live-batchG-common10-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2073`, remaining `204`, burndown `91.041282%`
+  - Project 02 `51.769482%`, Core `75.884741%`, Portfolio `87.942371%`
+  - ETA `~8.3h` (`~1.04` workdays)
