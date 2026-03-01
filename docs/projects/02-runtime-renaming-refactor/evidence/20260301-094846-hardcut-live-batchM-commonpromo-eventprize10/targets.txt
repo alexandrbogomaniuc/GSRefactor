@@ -1,0 +1,10 @@
+com.dgphoenix.casino.common.promo.NetworkTournamentPromoTemplate
+com.dgphoenix.casino.common.promo.CacheBonusPrize
+com.dgphoenix.casino.common.promo.FRBonusPrize
+com.dgphoenix.casino.common.promo.BetAmountPrizeQualifier
+com.dgphoenix.casino.common.promo.EndRoundEvent
+com.dgphoenix.casino.common.promo.RoundStat
+com.dgphoenix.casino.common.promo.TournamentMemberRanks
+com.dgphoenix.casino.common.promo.RankRange
+com.dgphoenix.casino.common.promo.PlayerBonusEvent
+com.dgphoenix.casino.common.promo.RoundQualificationStat

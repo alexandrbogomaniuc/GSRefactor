@@ -5,7 +5,7 @@ import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.dgphoenix.casino.common.promo.TournamentMemberRank;
-import com.dgphoenix.casino.common.promo.TournamentMemberRanks;
+import com.abs.casino.common.promo.TournamentMemberRanks;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimap;
 import org.apache.logging.log4j.LogManager;

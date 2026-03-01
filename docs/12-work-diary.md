@@ -9595,3 +9595,22 @@
   - baseline `2277`, reduced `2118`, remaining `159`, burndown `93.017127%`
   - Project 02 `52.376347%`, Core `76.188174%`, Portfolio `88.094087%`
   - ETA `~6.5h` (`~0.81` workdays)
+
+### 2026-03-01 09:48 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed live `Batch M`.
+- Batch intent: `10` declarations; retained: `10`.
+- Retained moves (`com.dgphoenix -> com.abs`):
+  - `NetworkTournamentPromoTemplate`, `CacheBonusPrize`, `FRBonusPrize`, `BetAmountPrizeQualifier`, `EndRoundEvent`, `RoundStat`, `TournamentMemberRanks`, `RankRange`, `PlayerBonusEvent`, `RoundQualificationStat`.
+- Bounded rewires:
+  - explicit legacy imports added inside moved declarations for unmoved promo dependencies,
+  - explicit import rewires for moved `TournamentMemberRanks` in `TournamentRanksExtractor`, `CassandraTournamentRankPersister`, `PromoTournamentRankChangesProcessor`.
+- Validation:
+  - focused fast gates: `common-promo/promo-core/promo-persisters/common-gs/common FAIL` on known mixed-workspace drift profiles.
+  - canonical runner: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE03`, `validation FAIL PRE03`, `STEP09 retry SKIP`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-094846-hardcut-live-batchM-commonpromo-eventprize10/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/240-hard-cut-live-batchM-commonpromo-eventprize10-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2128`, remaining `149`, burndown `93.456302%`
+  - Project 02 `52.511429%`, Core `76.255715%`, Portfolio `88.127857%`
+  - ETA `~6.1h` (`~0.76` workdays)

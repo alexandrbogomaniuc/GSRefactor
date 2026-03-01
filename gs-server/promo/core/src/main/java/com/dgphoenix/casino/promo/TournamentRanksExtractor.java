@@ -1,6 +1,6 @@
 package com.abs.casino.promo;
 
-import com.dgphoenix.casino.common.promo.TournamentMemberRanks;
+import com.abs.casino.common.promo.TournamentMemberRanks;
 import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.common.transactiondata.storeddate.StoredItem;
 import com.abs.casino.common.transactiondata.storeddate.StoredItemType;

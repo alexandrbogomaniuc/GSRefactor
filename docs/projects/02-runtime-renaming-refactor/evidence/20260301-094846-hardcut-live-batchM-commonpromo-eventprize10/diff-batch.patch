@@ -1,0 +1,204 @@
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/BetAmountPrizeQualifier.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/BetAmountPrizeQualifier.java
+index ce07af0f3..780792b55 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/BetAmountPrizeQualifier.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/BetAmountPrizeQualifier.java
+@@ -1,8 +1,12 @@
+-package com.dgphoenix.casino.common.promo;
+-
+-import com.abs.casino.common.currency.ICurrencyRateManager;
+-import com.dgphoenix.casino.common.exception.CommonException;
+-import com.esotericsoftware.kryo.Kryo;
++package com.abs.casino.common.promo;
++
++import com.abs.casino.common.currency.ICurrencyRateManager;
++import com.dgphoenix.casino.common.exception.CommonException;
++import com.dgphoenix.casino.common.promo.DesiredPrize;
++import com.dgphoenix.casino.common.promo.IPromoTemplate;
++import com.dgphoenix.casino.common.promo.IPrizeQualifier;
++import com.dgphoenix.casino.common.promo.PromoCampaignMember;
++import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+ import com.google.common.base.Preconditions;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CacheBonusPrize.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CacheBonusPrize.java
+index b18f70a81..7512ce514 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CacheBonusPrize.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CacheBonusPrize.java
+@@ -1,8 +1,9 @@
+-package com.dgphoenix.casino.common.promo;
+-
+-import com.abs.casino.common.promo.messages.server.notifications.prizes.CacheBonusWon;
+-import com.abs.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
+-import com.dgphoenix.casino.common.util.CollectionUtils;
++package com.abs.casino.common.promo;
++
++import com.abs.casino.common.promo.messages.server.notifications.prizes.CacheBonusWon;
++import com.abs.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
++import com.dgphoenix.casino.common.promo.AbstractPrize;
++import com.dgphoenix.casino.common.util.CollectionUtils;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/EndRoundEvent.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/EndRoundEvent.java
+index 2011fddef..3ee5cda07 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/EndRoundEvent.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/EndRoundEvent.java
+@@ -1,8 +1,10 @@
+-package com.dgphoenix.casino.common.promo;
+-
+-import java.io.IOException;
+-
+-import com.esotericsoftware.kryo.Kryo;
++package com.abs.casino.common.promo;
++
++import java.io.IOException;
++
++import com.dgphoenix.casino.common.promo.AbstractParticipantEvent;
++import com.dgphoenix.casino.common.promo.SignificantEventType;
++import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+ import com.fasterxml.jackson.core.JsonGenerator;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FRBonusPrize.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FRBonusPrize.java
+index 38637fb52..abebea3bc 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FRBonusPrize.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FRBonusPrize.java
+@@ -1,8 +1,9 @@
+-package com.dgphoenix.casino.common.promo;
+-
+-import com.abs.casino.common.promo.messages.server.notifications.prizes.FRBWon;
+-import com.abs.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
+-import com.dgphoenix.casino.common.util.CollectionUtils;
++package com.abs.casino.common.promo;
++
++import com.abs.casino.common.promo.messages.server.notifications.prizes.FRBWon;
++import com.abs.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
++import com.dgphoenix.casino.common.promo.AbstractPrize;
++import com.dgphoenix.casino.common.util.CollectionUtils;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkTournamentPromoTemplate.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkTournamentPromoTemplate.java
+index 936bde895..c29077494 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkTournamentPromoTemplate.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkTournamentPromoTemplate.java
+@@ -1,6 +1,10 @@
+-package com.dgphoenix.casino.common.promo;
+-
+-import com.esotericsoftware.kryo.Kryo;
++package com.abs.casino.common.promo;
++
++import com.dgphoenix.casino.common.promo.TournamentObjective;
++import com.dgphoenix.casino.common.promo.TournamentPromoTemplate;
++import com.dgphoenix.casino.common.promo.TournamentRankQualifier;
++
++import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+ import com.fasterxml.jackson.core.JsonGenerator;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PlayerBonusEvent.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PlayerBonusEvent.java
+index af1e393ab..a69f9ea23 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PlayerBonusEvent.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PlayerBonusEvent.java
+@@ -1,9 +1,11 @@
+-package com.dgphoenix.casino.common.promo;
+-
+-import java.io.IOException;
+-
+-import com.abs.casino.gamecombos.ReelDetails;
+-import com.esotericsoftware.kryo.Kryo;
++package com.abs.casino.common.promo;
++
++import java.io.IOException;
++
++import com.abs.casino.gamecombos.ReelDetails;
++import com.dgphoenix.casino.common.promo.AbstractParticipantEvent;
++import com.dgphoenix.casino.common.promo.SignificantEventType;
++import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+ import com.fasterxml.jackson.core.JsonGenerator;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/RankRange.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/RankRange.java
+index f2a379f50..2e294c1ad 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/RankRange.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/RankRange.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/RoundQualificationStat.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/RoundQualificationStat.java
+index d413eda81..6448319ed 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/RoundQualificationStat.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/RoundQualificationStat.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/RoundStat.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/RoundStat.java
+index 8793c8a61..df0a4ff2e 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/RoundStat.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/RoundStat.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentMemberRanks.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentMemberRanks.java
+index b172a43d8..1482cd646 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentMemberRanks.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentMemberRanks.java
+@@ -1,6 +1,8 @@
+-package com.dgphoenix.casino.common.promo;
+-
+-import java.util.HashMap;
++package com.abs.casino.common.promo;
++
++import com.dgphoenix.casino.common.promo.TournamentMemberRank;
++
++import java.util.HashMap;
+ import java.util.Map;
+ 
+ public class TournamentMemberRanks {
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PromoTournamentRankChangesProcessor.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PromoTournamentRankChangesProcessor.java
+index a61e813c1..944bacd29 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PromoTournamentRankChangesProcessor.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PromoTournamentRankChangesProcessor.java
+@@ -2,7 +2,7 @@ package com.abs.casino.transactiondata.storeddataprocessor;
+ 
+ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+ import com.abs.casino.cassandra.persist.IStoredDataProcessor;
+-import com.dgphoenix.casino.common.promo.TournamentMemberRanks;
++import com.abs.casino.common.promo.TournamentMemberRanks;
+ import com.abs.casino.common.transactiondata.storeddate.StoredItem;
+ import com.abs.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
+ import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+diff --git a/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/TournamentRanksExtractor.java b/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/TournamentRanksExtractor.java
+index 1a9bc57a6..2bc90c9a8 100644
+--- a/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/TournamentRanksExtractor.java
++++ b/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/TournamentRanksExtractor.java
+@@ -1,6 +1,6 @@
+ package com.abs.casino.promo;
+ 
+-import com.dgphoenix.casino.common.promo.TournamentMemberRanks;
++import com.abs.casino.common.promo.TournamentMemberRanks;
+ import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+ import com.abs.casino.common.transactiondata.storeddate.StoredItem;
+ import com.abs.casino.common.transactiondata.storeddate.StoredItemType;
+diff --git a/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraTournamentRankPersister.java b/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraTournamentRankPersister.java
+index d01d701e1..3b89b183a 100644
+--- a/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraTournamentRankPersister.java
++++ b/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraTournamentRankPersister.java
+@@ -5,7 +5,7 @@ import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
+ import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+ import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStrategy;
+ import com.dgphoenix.casino.common.promo.TournamentMemberRank;
+-import com.dgphoenix.casino.common.promo.TournamentMemberRanks;
++import com.abs.casino.common.promo.TournamentMemberRanks;
+ import com.google.common.collect.LinkedListMultimap;
+ import com.google.common.collect.Multimap;
+ import org.apache.logging.log4j.LogManager;

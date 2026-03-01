@@ -1,7 +1,8 @@
-package com.dgphoenix.casino.common.promo;
+package com.abs.casino.common.promo;
 
 import com.abs.casino.common.promo.messages.server.notifications.prizes.CacheBonusWon;
 import com.abs.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
+import com.dgphoenix.casino.common.promo.AbstractPrize;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;

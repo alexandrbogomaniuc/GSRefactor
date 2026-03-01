@@ -1,7 +1,9 @@
-package com.dgphoenix.casino.common.promo;
+package com.abs.casino.common.promo;
 
 import java.io.IOException;
 
+import com.dgphoenix.casino.common.promo.AbstractParticipantEvent;
+import com.dgphoenix.casino.common.promo.SignificantEventType;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
