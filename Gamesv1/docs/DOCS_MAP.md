@@ -7,6 +7,7 @@ Index of canonical and archived/deprecated documentation.
 - `docs/MasterContext.md`: canonical architecture context and runtime ownership.
 - `docs/PROJECT.md`: project charter and target architecture.
 - `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`: client capability/behavior spec.
+- `docs/CAPABILITY_MATRIX.md`: executable capability matrix and runtime fields.
 - `docs/RELEASE_PROCESS.md`: release packaging and deployment checklist.
 - `docs/RELEASE_ARTIFACTS.md`: deterministic release-pack artifact contract.
 - `docs/GS_REGISTRATION_ARTIFACTS.md`: GS Ops registration/enable/rollback artifact usage.
@@ -15,6 +16,17 @@ Index of canonical and archived/deprecated documentation.
 - `docs/ART_AND_PROMO_PIPELINE.md`: art deliverables, export specs, quality gates.
 - `docs/ASSET_MANIFEST_SPEC.md`: per-game art manifest schema.
 - `docs/protocol/extgame.md`: canonical GS HTTP runtime transport path.
+- `docs/protocol/browser-runtime-api-contract.md`: browser-facing GS runtime API contract.
+- `docs/CURRENT_STATE_AUDIT.md`: latest code-grounded architecture and compliance audit snapshot.
+
+## Source Of Truth By Concern
+
+- Architecture/runtime ownership: `docs/MasterContext.md`, `docs/PROJECT.md`
+- Transport/handshake: `docs/protocol/extgame.md`
+- Browser API contract: `docs/protocol/browser-runtime-api-contract.md`
+- Capability behavior: `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`, `docs/CAPABILITY_MATRIX.md`
+- Config layering/resolution: `docs/CONFIG_SYSTEM.md`
+- Release/registration flow: `docs/RELEASE_PROCESS.md`, `docs/RELEASE_ARTIFACTS.md`, `docs/GS_REGISTRATION_ARTIFACTS.md`
 
 ## Deprecated (Still Present)
 

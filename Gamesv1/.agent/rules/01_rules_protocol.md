@@ -12,6 +12,8 @@ This rule file defines protocol and state-ownership requirements for Gamesv1.
 - GS owns session, wallet, DB state, restore state, requestCounter, and idempotency decisions.
 - Client is presentation-only for financial/state truth.
 - Client must not invent authoritative state.
+- Browser communicates only with GS runtime endpoints.
+- Internal slot-engine host/RNG/audit data are server-side concerns, not browser-owned state.
 
 ## 3. Idempotency + Sequencing
 

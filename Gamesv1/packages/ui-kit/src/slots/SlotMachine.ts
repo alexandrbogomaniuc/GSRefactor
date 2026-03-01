@@ -6,6 +6,7 @@ export interface SpinOptions {
   minSpinDurationMs?: number;
   spinStaggerMs?: number;
   speedMultiplier?: number;
+  reelStopColumns: number[][];
 }
 
 export class SlotMachine extends Container {
@@ -45,8 +46,19 @@ export class SlotMachine extends Container {
     this.ticker.start();
   }
 
-  public spin(options: SpinOptions = {}) {
+  public spin(options: SpinOptions) {
     if (this.isSpinning) return;
+    if (!options.reelStopColumns || options.reelStopColumns.length !== this.reels.length) {
+      throw new Error("SlotMachine.spin requires reelStopColumns from server presentation payload.");
+    }
+    for (let index = 0; index < options.reelStopColumns.length; index += 1) {
+      const column = options.reelStopColumns[index];
+      if (!column || column.length < GameConfig.numRows) {
+        throw new Error(
+          `Invalid reel stop column at index ${index}. Expected at least ${GameConfig.numRows} symbols.`,
+        );
+      }
+    }
     this.isSpinning = true;
 
     const minSpinDurationMs =
@@ -59,22 +71,15 @@ export class SlotMachine extends Container {
     setTimeout(() => this.stop(options), minSpinDurationMs);
   }
 
-  public stop(options: SpinOptions = {}) {
+  public stop(options: SpinOptions) {
     const spinStaggerMs = options.spinStaggerMs ?? Math.round(GameConfig.spinStagger * 1000);
 
     // Send stop commands with stagger
     this.reels.forEach((reel, index) => {
       setTimeout(
         () => {
-          // Generate a mock result column
-          // We generate 3 symbols plus some buffers.
-          // The reel expects an array. Since we unshift, we pass them in bottom-to-top order.
-          const mockResult = [
-            Math.floor(Math.random() * GameConfig.symbolCount),
-            Math.floor(Math.random() * GameConfig.symbolCount),
-            Math.floor(Math.random() * GameConfig.symbolCount),
-          ];
-          reel.stop(mockResult);
+          const resolvedColumn = options.reelStopColumns[index];
+          reel.stop(resolvedColumn.slice(0, GameConfig.numRows));
         },
         index * spinStaggerMs,
       );

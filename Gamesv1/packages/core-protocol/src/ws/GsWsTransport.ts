@@ -1,4 +1,19 @@
-import { IGameTransport, GameInitConfig, TransportEvent } from '../IGameTransport';
+import {
+  type BootstrapRequest,
+  type CloseGameRequest,
+  type FeatureActionRequest,
+  type FeatureActionResponse,
+  type GameInitConfig,
+  type HistoryRequest,
+  type HistoryResponse,
+  type IGameTransport,
+  type OpenGameRequest,
+  type OpenGameResponse,
+  type PlayRoundRequest,
+  type PlayRoundResponse,
+  type ResumeGameRequest,
+  type TransportEvent,
+} from "../IGameTransport";
 
 // A lightweight browser-compatible UUID generation mock
 function uuidv4() {
@@ -144,5 +159,75 @@ export class GsWsTransport implements IGameTransport {
             }
             return;
         }
+    }
+
+    public async bootstrap(config: GameInitConfig, request?: BootstrapRequest): Promise<OpenGameResponse> {
+        await this.connect({
+            ...config,
+            sessionId: request?.sessionId ?? config.sessionId,
+        });
+
+        return {
+            sessionId: this.config.sessionId ?? "",
+            balance: 0,
+            requestCounter: this.seq,
+            currentStateVersion: undefined,
+            presentationPayload: undefined,
+            unresolvedRoundState: undefined,
+            runtimeConfig: undefined,
+        };
+    }
+
+    public async openGame(request: OpenGameRequest): Promise<OpenGameResponse> {
+        if (!this.config) {
+            throw new Error("WS legacy transport requires bootstrap/connect before openGame.");
+        }
+
+        await this.connect({
+            ...this.config,
+            sessionId: request.sessionId,
+            gameId: String(request.gameId ?? this.config.gameId),
+        });
+
+        return {
+            sessionId: request.sessionId,
+            balance: 0,
+            requestCounter: this.seq,
+        };
+    }
+
+    public async playRound(request: PlayRoundRequest): Promise<PlayRoundResponse> {
+        const operationId = request.metadata?.clientOperationId ?? uuidv4();
+        const bet = await this.spin(request.betAmount, operationId);
+        const collect = await this.settle(operationId);
+        return {
+            roundId: String(bet?.roundId ?? ""),
+            balance: Number(collect?.balance ?? bet?.balance ?? 0),
+            winAmount: Number(bet?.totalWin ?? 0),
+            requestCounter: this.seq,
+            currentStateVersion: request.metadata?.currentStateVersion,
+            presentationPayload: bet,
+            rawPlaceBet: bet,
+            rawCollect: collect,
+        };
+    }
+
+    public async featureAction(_request: FeatureActionRequest): Promise<FeatureActionResponse> {
+        throw new Error("WS legacy transport does not implement featureAction.");
+    }
+
+    public async resumeGame(request?: ResumeGameRequest): Promise<OpenGameResponse> {
+        return this.openGame({
+            sessionId: request?.sessionId ?? this.config?.sessionId ?? "",
+            gameId: Number(this.config?.gameId ?? 0),
+        });
+    }
+
+    public async closeGame(_request?: CloseGameRequest): Promise<void> {
+        this.disconnect();
+    }
+
+    public async readHistory(_request?: HistoryRequest): Promise<HistoryResponse> {
+        throw new Error("WS legacy transport does not implement readHistory.");
     }
 }

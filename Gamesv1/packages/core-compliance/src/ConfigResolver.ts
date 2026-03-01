@@ -45,6 +45,8 @@ const LAYER_ALLOWED_KEYS = new Set([
   "minReelSpinTime",
   "soundDefaults",
   "localization",
+  "history",
+  "runtimePolicies",
   "realityCheck",
   "capabilities",
 ]);
@@ -174,6 +176,7 @@ const harmonizeRuntimeAndCapabilities = (
 
   if (patch.localization) {
     next.capabilities.localization.defaultLanguage = next.localization.defaultLang;
+    next.capabilities.localization.localizedTitleKey = next.localization.localizedTitleKey;
     next.capabilities.localization.showMissingLocalizationError =
       next.localization.showMissingLocalizationError;
     next.capabilities.localization.contentPath = next.localization.contentPath;
@@ -181,11 +184,46 @@ const harmonizeRuntimeAndCapabilities = (
       next.localization.customTranslationsEnabled;
   } else if (patch.capabilities?.localization) {
     next.localization.defaultLang = next.capabilities.localization.defaultLanguage;
+    next.localization.localizedTitleKey = next.capabilities.localization.localizedTitleKey;
     next.localization.showMissingLocalizationError =
       next.capabilities.localization.showMissingLocalizationError;
     next.localization.contentPath = next.capabilities.localization.contentPath;
     next.localization.customTranslationsEnabled =
       next.capabilities.localization.customTranslationsEnabled;
+  }
+
+  if (patch.history) {
+    next.capabilities.history.enabled = next.history.enabled;
+    next.capabilities.history.url = next.history.url;
+    next.capabilities.history.openInSameWindow = next.history.openInSameWindow;
+  } else if (patch.capabilities?.history) {
+    next.history.enabled = next.capabilities.history.enabled;
+    next.history.url = next.capabilities.history.url;
+    next.history.openInSameWindow = next.capabilities.history.openInSameWindow;
+  }
+
+  if (patch.runtimePolicies) {
+    next.capabilities.runtimePolicies.requestCounterRequired =
+      next.runtimePolicies.requestCounterRequired;
+    next.capabilities.runtimePolicies.idempotencyKeyRequired =
+      next.runtimePolicies.idempotencyKeyRequired;
+    next.capabilities.runtimePolicies.clientOperationIdRequired =
+      next.runtimePolicies.clientOperationIdRequired;
+    next.capabilities.runtimePolicies.currentStateVersionSupported =
+      next.runtimePolicies.currentStateVersionSupported;
+    next.capabilities.runtimePolicies.unfinishedRoundRestoreSupported =
+      next.runtimePolicies.unfinishedRoundRestoreSupported;
+  } else if (patch.capabilities?.runtimePolicies) {
+    next.runtimePolicies.requestCounterRequired =
+      next.capabilities.runtimePolicies.requestCounterRequired;
+    next.runtimePolicies.idempotencyKeyRequired =
+      next.capabilities.runtimePolicies.idempotencyKeyRequired;
+    next.runtimePolicies.clientOperationIdRequired =
+      next.capabilities.runtimePolicies.clientOperationIdRequired;
+    next.runtimePolicies.currentStateVersionSupported =
+      next.capabilities.runtimePolicies.currentStateVersionSupported;
+    next.runtimePolicies.unfinishedRoundRestoreSupported =
+      next.capabilities.runtimePolicies.unfinishedRoundRestoreSupported;
   }
 
   if (patch.capabilities?.features) {

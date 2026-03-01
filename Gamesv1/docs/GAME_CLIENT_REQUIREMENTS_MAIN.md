@@ -8,6 +8,9 @@ Canonical client capability and behavior requirements.
 2. Client treats GS responses as source of truth for wallet/session/state.
 3. Client never invents or mutates authoritative financial state locally.
 4. Retries must preserve GS idempotency keys and sequencing metadata.
+5. Browser transport scope is `browser -> GS` only.
+6. Internal slot-engine/RNG/audit paths are server-side/private and out of browser state ownership.
+7. Client runtime transport must support: `bootstrap/openGame`, `playRound`, `featureAction`, `resumeGame`, `closeGame`, and browser-facing history access.
 
 ## B. Financial/State Safety
 

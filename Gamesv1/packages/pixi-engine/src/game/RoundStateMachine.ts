@@ -1,5 +1,3 @@
-import { PariplayBridge } from '../operator/PariplayBridge';
-
 /**
  * Strict enumeration of the Slot Round Lifecycle stages.
  */
@@ -38,13 +36,13 @@ export class RoundStateMachine {
         operationId: null
     };
 
-    private bridge: PariplayBridge | null = null;
+    private onRoundEndedHook: (() => void) | null = null;
 
     // Callbacks for the visual engine
     public onStateTransition: (from: RoundState, to: RoundState) => void = () => { };
 
-    constructor(bridge: PariplayBridge | null = null) {
-        this.bridge = bridge;
+    constructor(onRoundEndedHook: (() => void) | null = null) {
+        this.onRoundEndedHook = onRoundEndedHook;
     }
 
     public get state(): RoundState {
@@ -93,8 +91,8 @@ export class RoundStateMachine {
     private handleStateEntry(state: RoundState): void {
         switch (state) {
             case RoundState.ROUND_END:
-                // Rule: "roundEnded" postMessage is sent only after ALL animations/features are done.
-                this.bridge?.send('roundEnded');
+                // Round-end signal hook for integration layers outside core runtime state.
+                this.onRoundEndedHook?.();
                 break;
             case RoundState.READY:
                 // Reset per-round context
@@ -105,10 +103,9 @@ export class RoundStateMachine {
 
     /**
      * Triggered when the LAST server response for the round is received.
-     * Rule: Send "ticketReceived" to operator.
      */
     public onFinalServerResponse(): void {
-        this.bridge?.send('ticketReceived');
+        // No-op in canonical runtime path; hook retained for optional integration layers.
     }
 
     public setTurbo(enabled: boolean): void {

@@ -12,6 +12,7 @@ export class Reel extends Container {
   private positionY: number = 0;
   private speed: number = 0;
   private targetResult: number[] | null = null;
+  private nextGeneratedSymbolId: number;
 
   // Timers
   private baseEaseInSpeed: number = 3000; // pixels per sec
@@ -20,14 +21,14 @@ export class Reel extends Container {
   constructor(id: number) {
     super();
     this.id = id;
+    this.nextGeneratedSymbolId = id % GameConfig.symbolCount;
     this.addChild(this.reelContainer);
 
     // Initialize symbols (grid rows + extra buffers for wrap-around)
     const totalSymbols = GameConfig.numRows + GameConfig.extraSymbols;
     for (let i = 0; i < totalSymbols; i++) {
       const sym = new SlotSymbol();
-      // Random initial
-      sym.setSymbol(Math.floor(Math.random() * GameConfig.symbolCount));
+      sym.setSymbol(this.consumeGeneratedSymbolId());
       sym.y = this.getSymbolY(i);
       this.symbolList.push(sym);
       this.reelContainer.addChild(sym);
@@ -42,6 +43,7 @@ export class Reel extends Container {
     this.isSpinning = true;
     this.speed = 0;
     this.targetResult = null;
+    this.nextGeneratedSymbolId = (this.id + 1) % GameConfig.symbolCount;
     this.currentMaxSpeed = this.baseEaseInSpeed * Math.max(0.5, speedMultiplier);
   }
 
@@ -77,9 +79,7 @@ export class Reel extends Container {
         const nextId = this.targetResult.pop()!;
         bottomSym.setSymbol(nextId);
       } else {
-        bottomSym.setSymbol(
-          Math.floor(Math.random() * GameConfig.symbolCount),
-        );
+        bottomSym.setSymbol(this.consumeGeneratedSymbolId());
       }
 
       this.symbolList.unshift(bottomSym);
@@ -95,6 +95,13 @@ export class Reel extends Container {
     }
 
     this.updateSymbolPositions();
+  }
+
+  private consumeGeneratedSymbolId(): number {
+    const value = this.nextGeneratedSymbolId;
+    this.nextGeneratedSymbolId =
+      (this.nextGeneratedSymbolId + 1) % GameConfig.symbolCount;
+    return value;
   }
 
   private updateSymbolPositions() {

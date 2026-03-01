@@ -5,8 +5,14 @@
     "preferred": true
   },
   "localization": {
+    "localizedTitleKey": "game.title.runtime",
     "customTranslationsEnabled": true,
     "contentPath": "/cdn/content"
+  },
+  "history": {
+    "enabled": true,
+    "url": "/history?scope=player",
+    "openInSameWindow": true
   },
   "devMode": true
 }

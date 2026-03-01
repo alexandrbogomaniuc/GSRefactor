@@ -19,7 +19,7 @@ type FileEntry = {
 
 const usage = `
 Usage:
-  npx tsx tools/create-game.ts --gameId <game-id> --name "<Game Name>" --themeId <theme-id> [--languages en,es,de] [--dry-run] [--force]
+  npm run create-game -- --gameId <game-id> --name "<Game Name>" --themeId <theme-id> [--languages en,es,de] [--dry-run] [--force]
 
 Required:
   --gameId     Lowercase kebab-case identifier (example: dragon-flare)

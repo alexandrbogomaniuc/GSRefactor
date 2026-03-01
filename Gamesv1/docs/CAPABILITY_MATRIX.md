@@ -69,6 +69,7 @@ Path:
 
 Fields:
 - `defaultLanguage`
+- `localizedTitleKey`
 - `showMissingLocalizationError`
 - `contentPath`
 - `customTranslationsEnabled`
@@ -121,10 +122,16 @@ Fields:
 - `bigWinFlow.thresholds.hugeMultiplier`
 - `bigWinFlow.thresholds.megaMultiplier`
 
-## 9) In-Game History
+## 9) In-Game History + Launch Rules
 
 Path:
 - `capabilities.features.inGameHistory`
+- `capabilities.history`
+
+Fields:
+- `history.enabled`
+- `history.url`
+- `history.openInSameWindow`
 
 ## 10) Holiday Mode / Optional Skin Flags
 
@@ -134,6 +141,19 @@ Path:
 Fields:
 - `holidayMode`
 - `customSkins`
+
+## 11) Bootstrap Runtime Policy Group
+
+Path:
+- `capabilities.runtimePolicies`
+- mirrored root field: `runtimePolicies`
+
+Fields:
+- `requestCounterRequired`
+- `idempotencyKeyRequired`
+- `clientOperationIdRequired`
+- `currentStateVersionSupported`
+- `unfinishedRoundRestoreSupported`
 
 ## Legacy Fallbacks
 
@@ -147,6 +167,16 @@ Resolver supports launch legacy fallback values for default bet:
 Fallback order for `defaultBet` when `launchParams.defaultBet` is absent:
 1. `GL_DEFAULT_BET` (or `legacyDefaults.GL_DEFAULT_BET`)
 2. `DEFCOIN` (or `legacyDefaults.DEFCOIN`)
+
+## Max Bet / Exposure Resolution Rules
+
+Resolved config validation enforces:
+1. `minBet <= maxBet`
+2. `defaultBet` must be inside `minBet..maxBet`
+3. `maxBet <= maxExposure`
+4. `defaultBet <= maxExposure`
+5. For dynamic bet mode, `dynamicBetConstraints.maxStep <= maxExposure`
+6. History URL must not use `javascript:` scheme
 
 ## Dev Diff + Warning Logs
 

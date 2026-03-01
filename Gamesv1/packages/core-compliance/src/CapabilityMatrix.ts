@@ -38,6 +38,7 @@ export const SoundCapabilitySchema = z.object({
 
 export const LocalizationCapabilitySchema = z.object({
   defaultLanguage: z.string().min(2),
+  localizedTitleKey: z.string().min(1),
   showMissingLocalizationError: z.boolean(),
   contentPath: z.string().min(1),
   customTranslationsEnabled: z.boolean(),
@@ -51,6 +52,20 @@ export const SpinProfilingCapabilitySchema = z.object({
 export const WalletMessagingCapabilitySchema = z.object({
   delayedWalletMessages: z.boolean(),
   externalWalletMessages: z.boolean(),
+});
+
+export const HistoryCapabilitySchema = z.object({
+  enabled: z.boolean(),
+  url: z.string().min(1),
+  openInSameWindow: z.boolean(),
+});
+
+export const RuntimePoliciesCapabilitySchema = z.object({
+  requestCounterRequired: z.boolean(),
+  idempotencyKeyRequired: z.boolean(),
+  clientOperationIdRequired: z.boolean(),
+  currentStateVersionSupported: z.boolean(),
+  unfinishedRoundRestoreSupported: z.boolean(),
 });
 
 export const FeatureFlagsCapabilitySchema = z.object({
@@ -100,6 +115,8 @@ export const CapabilityMatrixSchema = z.object({
   localization: LocalizationCapabilitySchema,
   spinProfiling: SpinProfilingCapabilitySchema,
   walletMessaging: WalletMessagingCapabilitySchema,
+  history: HistoryCapabilitySchema,
+  runtimePolicies: RuntimePoliciesCapabilitySchema,
   features: FeatureFlagsCapabilitySchema,
   bigWinFlow: BigWinFlowCapabilitySchema,
 });
@@ -125,6 +142,8 @@ export const CapabilityMatrixPatchSchema = z.object({
   localization: LocalizationCapabilitySchema.partial().optional(),
   spinProfiling: SpinProfilingCapabilitySchema.partial().optional(),
   walletMessaging: WalletMessagingCapabilitySchema.partial().optional(),
+  history: HistoryCapabilitySchema.partial().optional(),
+  runtimePolicies: RuntimePoliciesCapabilitySchema.partial().optional(),
   features: FeatureFlagsCapabilitySchema.partial().optional(),
   bigWinFlow: z
     .object({
@@ -167,6 +186,7 @@ export const DefaultCapabilityMatrix: CapabilityMatrix = {
   },
   localization: {
     defaultLanguage: "en",
+    localizedTitleKey: "game.title",
     showMissingLocalizationError: false,
     contentPath: "./locales",
     customTranslationsEnabled: false,
@@ -178,6 +198,18 @@ export const DefaultCapabilityMatrix: CapabilityMatrix = {
   walletMessaging: {
     delayedWalletMessages: false,
     externalWalletMessages: false,
+  },
+  history: {
+    enabled: true,
+    url: "/history",
+    openInSameWindow: true,
+  },
+  runtimePolicies: {
+    requestCounterRequired: true,
+    idempotencyKeyRequired: true,
+    clientOperationIdRequired: true,
+    currentStateVersionSupported: true,
+    unfinishedRoundRestoreSupported: true,
   },
   features: {
     autoplay: true,
@@ -218,12 +250,21 @@ const CAPABILITY_FAMILY_KEYS: Record<string, readonly string[]> = {
   sound: ["enabledByDefault", "showToggle", "masterVolume", "bgmVolume", "sfxVolume"],
   localization: [
     "defaultLanguage",
+    "localizedTitleKey",
     "showMissingLocalizationError",
     "contentPath",
     "customTranslationsEnabled",
   ],
   spinProfiling: ["enabled", "payloadKey"],
   walletMessaging: ["delayedWalletMessages", "externalWalletMessages"],
+  history: ["enabled", "url", "openInSameWindow"],
+  runtimePolicies: [
+    "requestCounterRequired",
+    "idempotencyKeyRequired",
+    "clientOperationIdRequired",
+    "currentStateVersionSupported",
+    "unfinishedRoundRestoreSupported",
+  ],
   features: [
     "autoplay",
     "buyFeature",

@@ -59,9 +59,24 @@ export const SoundDefaultsSchema = z.object({
 
 export const LocalizationSettingsSchema = z.object({
   defaultLang: z.string().min(2),
+  localizedTitleKey: z.string().min(1),
   showMissingLocalizationError: z.boolean(),
   contentPath: z.string().min(1),
   customTranslationsEnabled: z.boolean(),
+});
+
+export const HistorySettingsSchema = z.object({
+  enabled: z.boolean(),
+  url: z.string().min(1),
+  openInSameWindow: z.boolean(),
+});
+
+export const RuntimePoliciesSchema = z.object({
+  requestCounterRequired: z.boolean(),
+  idempotencyKeyRequired: z.boolean(),
+  clientOperationIdRequired: z.boolean(),
+  currentStateVersionSupported: z.boolean(),
+  unfinishedRoundRestoreSupported: z.boolean(),
 });
 
 export const RealityCheckConfigSchema = z.object({
@@ -81,6 +96,8 @@ export const ResolvedRuntimeConfigSchema = z
     minReelSpinTime: MinReelSpinTimeConfigSchema,
     soundDefaults: SoundDefaultsSchema,
     localization: LocalizationSettingsSchema,
+    history: HistorySettingsSchema,
+    runtimePolicies: RuntimePoliciesSchema,
     realityCheck: RealityCheckConfigSchema,
     capabilities: CapabilityMatrixSchema,
   })
@@ -98,6 +115,22 @@ export const ResolvedRuntimeConfigSchema = z
         code: z.ZodIssueCode.custom,
         path: ["defaultBet"],
         message: "defaultBet must be within minBet/maxBet",
+      });
+    }
+
+    if (config.maxBet > config.maxExposure) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["maxBet"],
+        message: "maxBet cannot exceed maxExposure",
+      });
+    }
+
+    if (config.defaultBet > config.maxExposure) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["defaultBet"],
+        message: "defaultBet cannot exceed maxExposure",
       });
     }
 
@@ -122,6 +155,20 @@ export const ResolvedRuntimeConfigSchema = z
         path: ["betConfig", "dynamicBetConstraints", "minStep"],
         message: "dynamic minStep cannot exceed maxStep",
       });
+    } else if (config.betConfig.dynamicBetConstraints.maxStep > config.maxExposure) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["betConfig", "dynamicBetConstraints", "maxStep"],
+        message: "dynamic maxStep cannot exceed maxExposure",
+      });
+    }
+
+    if (config.history.enabled && config.history.url.startsWith("javascript:")) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["history", "url"],
+        message: "history URL cannot use javascript: scheme",
+      });
     }
   });
 
@@ -138,6 +185,8 @@ export const LayerRuntimeConfigSchema = z.object({
   minReelSpinTime: MinReelSpinTimeBaseSchema.partial().optional(),
   soundDefaults: SoundDefaultsSchema.partial().optional(),
   localization: LocalizationSettingsSchema.partial().optional(),
+  history: HistorySettingsSchema.partial().optional(),
+  runtimePolicies: RuntimePoliciesSchema.partial().optional(),
   realityCheck: RealityCheckConfigSchema.partial().optional(),
   capabilities: CapabilityMatrixPatchSchema.optional(),
 });
@@ -200,9 +249,22 @@ export const DefaultResolvedRuntimeConfig: ResolvedRuntimeConfig = {
   },
   localization: {
     defaultLang: "en",
+    localizedTitleKey: "game.title",
     showMissingLocalizationError: false,
     contentPath: "./locales",
     customTranslationsEnabled: false,
+  },
+  history: {
+    enabled: true,
+    url: "/history",
+    openInSameWindow: true,
+  },
+  runtimePolicies: {
+    requestCounterRequired: true,
+    idempotencyKeyRequired: true,
+    clientOperationIdRequired: true,
+    currentStateVersionSupported: true,
+    unfinishedRoundRestoreSupported: true,
   },
   realityCheck: {
     enabled: false,

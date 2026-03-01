@@ -2,6 +2,8 @@ import { LoadScreen } from "./app/screens/LoadScreen";
 import { MainScreen } from "./app/screens/main/MainScreen";
 import { userSettings } from "./app/utils/userSettings";
 import { ConfigManager } from "./app/utils/ConfigManager";
+import { gsRuntimeClient } from "./app/runtime";
+import { ResolvedRuntimeConfigStore } from "./app/stores";
 import { CreationEngine, setEngine } from "@gamesv1/pixi-engine";
 import { i18n } from "@gamesv1/i18n";
 import manifest from "./manifest.json";
@@ -20,17 +22,23 @@ setEngine(appEngine);
   });
 
   await ConfigManager.init();
+  try {
+    await gsRuntimeClient.bootstrap();
+  } catch (error) {
+    console.error("[GS Runtime Bootstrap] Failed:", error);
+  }
   userSettings.init();
 
   const urlParams = new URLSearchParams(window.location.search);
   const devLang = urlParams.get("lang");
   const brandName = urlParams.get("brand") || "Casino";
-  const language = devLang || "en";
+  const language = devLang || ResolvedRuntimeConfigStore.localization.defaultLang || "en";
+  const localesPath = ResolvedRuntimeConfigStore.localization.contentPath;
 
   await i18n.init({
     language,
     fallbackLanguage: "en",
-    localesPath: "./locales",
+    localesPath,
     namespaces: ["common", "paytable", "rules"],
     brandOverrides: {
       BRAND_NAME: brandName,

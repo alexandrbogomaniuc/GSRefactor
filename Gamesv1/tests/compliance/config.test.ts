@@ -59,9 +59,12 @@ test("applies precedence template < bank < game < currency < launch", () => {
 
   assert.equal(resolved.soundDefaults.masterVolume, 0.5);
   assert.equal(resolved.localization.defaultLang, "en-US");
+  assert.equal(resolved.localization.localizedTitleKey, "game.title.runtime");
   assert.equal(resolved.localization.showMissingLocalizationError, true);
   assert.equal(resolved.localization.contentPath, "/cdn/content");
   assert.equal(resolved.localization.customTranslationsEnabled, true);
+  assert.equal(resolved.history.url, "/history?scope=player");
+  assert.equal(resolved.history.openInSameWindow, true);
 });
 
 test("falls back to template bet ladder when currency override is missing", () => {
@@ -133,6 +136,27 @@ test("throws on invalid constraints", () => {
   input.bankProperties.maxBet = 5000;
 
   assert.throws(() => resolveConfig(input), /minBet cannot be greater than maxBet/);
+});
+
+test("throws when maxBet exceeds maxExposure", () => {
+  const input = createInput();
+  input.bankProperties.maxBet = 6000;
+  input.bankProperties.maxExposure = 5000;
+
+  assert.throws(() => resolveConfig(input), /maxBet cannot exceed maxExposure/);
+});
+
+test("throws when history URL uses javascript scheme", () => {
+  const input = createInput();
+  input.launchParams = {
+    history: {
+      enabled: true,
+      url: "javascript:alert(1)",
+      openInSameWindow: true,
+    },
+  };
+
+  assert.throws(() => resolveConfig(input), /history URL cannot use javascript/);
 });
 
 console.log(`\nConfigResolver tests: ${passed} passed, ${failed} failed.`);

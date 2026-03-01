@@ -4,7 +4,7 @@ import {
   LaunchParams,
   LayerConfig,
 } from "@gamesv1/core-compliance";
-import { RuntimeStore } from "./RuntimeStore";
+import { ResolvedRuntimeConfigStore } from "../stores/ResolvedRuntimeConfigStore";
 
 export class ConfigManager {
   public static async init() {
@@ -23,7 +23,7 @@ export class ConfigManager {
       devMode: import.meta.env.DEV,
     });
 
-    RuntimeStore.set(resolved);
+    ResolvedRuntimeConfigStore.set(resolved);
   }
 
   private static async loadTemplateDefaults(): Promise<LayerConfig> {
@@ -57,9 +57,22 @@ export class ConfigManager {
       },
       localization: {
         defaultLang: "en",
+        localizedTitleKey: "game.title",
         showMissingLocalizationError: false,
         contentPath: "./locales",
         customTranslationsEnabled: false,
+      },
+      history: {
+        enabled: true,
+        url: "/history",
+        openInSameWindow: true,
+      },
+      runtimePolicies: {
+        requestCounterRequired: true,
+        idempotencyKeyRequired: true,
+        clientOperationIdRequired: true,
+        currentStateVersionSupported: true,
+        unfinishedRoundRestoreSupported: true,
       },
       capabilities: {
         turbo: {
@@ -85,6 +98,7 @@ export class ConfigManager {
         },
         localization: {
           defaultLanguage: "en",
+          localizedTitleKey: "game.title",
           showMissingLocalizationError: false,
           contentPath: "./locales",
           customTranslationsEnabled: false,
@@ -96,6 +110,18 @@ export class ConfigManager {
         walletMessaging: {
           delayedWalletMessages: false,
           externalWalletMessages: false,
+        },
+        history: {
+          enabled: true,
+          url: "/history",
+          openInSameWindow: true,
+        },
+        runtimePolicies: {
+          requestCounterRequired: true,
+          idempotencyKeyRequired: true,
+          clientOperationIdRequired: true,
+          currentStateVersionSupported: true,
+          unfinishedRoundRestoreSupported: true,
         },
         features: {
           autoplay: true,

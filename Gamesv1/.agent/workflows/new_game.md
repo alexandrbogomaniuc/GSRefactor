@@ -43,6 +43,7 @@ Steps (must be followed in order):
 - HTTP runtime path via `@gamesv1/core-protocol`.
 - No direct WebSocket/financial ownership in game module.
 - Client treated as presentation-only for wallet/session truth.
+- No browser-direct slot-engine integration or slot-engine audit state in UI truth.
 
 7. Run smoke tests using config stubs:
 - Ensure `tests/smoke/configs/guest.json`, `free.json`, `real.json` exist.

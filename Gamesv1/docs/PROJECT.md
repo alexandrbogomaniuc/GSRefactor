@@ -15,9 +15,11 @@ Outcome target:
 ### Runtime ownership
 - GS owns session, wallet, DB state, restore path, requestCounter, and idempotency.
 - Browser client renders and orchestrates UX only.
+- Internal slot-engine host and RNG are server-side/private GS infrastructure.
+- Browser transport is GS-only; browser never talks directly to slot-engine runtime.
 
 ### Transport
-- Primary: GS HTTP runtime flow (`Enter` + `processTransaction` style contract).
+- Primary: GS HTTP runtime flow (`/v1/opengame`, `/v1/placebet`, `/v1/collect`, `/v1/readhistory`).
 - Legacy: abs.gs.v1 WebSocket only for experiments/backward compatibility.
 
 ### Assets
@@ -52,3 +54,4 @@ Out of scope:
 2. Game code does not open raw WebSocket or direct HTTP financial calls outside protocol package.
 3. Runtime path must be compatible with GS HTTP handshake and recovery behavior.
 4. Release outputs must be versioned and traceable to git SHA.
+5. Slot-engine audit data stays server-side and is not modeled as browser UI truth.

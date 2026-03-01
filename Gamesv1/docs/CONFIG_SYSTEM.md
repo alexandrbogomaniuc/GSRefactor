@@ -1,110 +1,81 @@
-# Igaming Configuration System
+# CONFIG_SYSTEM
 
-A tiered initialization system designed to balance local game design requirements with dynamic server-side regulatory and bank constraints.
+Production config resolution model for Gamesv1 Phase-1.
 
-## 🏗 Precedence Layers
+## Ownership
 
-The configuration is resolved in the following order (bottom is lowest precedence):
+1. GS is authoritative for runtime limits and financial/state behavior.
+2. Browser resolves and applies config for presentation/compliance behavior only.
+3. Browser must not become source of truth for wallet/session/DB state.
 
-| Layer | Source | Description |
-| :--- | :--- | :--- |
-| **Dev Overrides** | URL Params / `dev-bank.json` | Used by QA/Devs to simulate environments. |
-| **Customer Config** | Server Payload | Feature flags (Autoplay, Turboplay, Min Spin Time). |
-| **Bank Config** | Server Payload | Commercial limits (Currency, Bet Levels, Max Win). |
-| **Game Settings** | `game.settings.json` | Static game identity (ID, Reels, Features). |
+## Layering (Highest Precedence First)
 
----
+1. `launchParams` (bootstrap/launch values)
+2. `currencyOverrides.<currency>`
+3. `gameOverrides`
+4. `bankProperties`
+5. `templateDefaults`
 
-## 📐 Data Schemas
+Resolver input shape:
+- `templateDefaults`
+- `bankProperties`
+- `gameOverrides`
+- `currencyOverrides`
+- `launchParams`
 
-### 1. Game Settings (`GameSettingsSchema`)
-Stored in the game repository. Defines the fixed structure of the game.
-- `reels`: Rows and columns.
-- `features`: Enabled/disabled core mechanics (e.g., Free Spins).
+Implementation:
+- `packages/core-compliance/src/ResolvedRuntimeConfig.ts`
+- `packages/core-compliance/src/ConfigResolver.ts`
+- `packages/core-compliance/src/CapabilityMatrix.ts`
 
-### 2. Bank Config (`RuntimeBankConfigSchema`)
-Determined by the currency and operator bank.
-- `truncateCents`: If `true`, all bets and wins must be integers.
-- `fractionDigits`: UI formatting (e.g., 2 for $1.00).
-- `minBet` / `maxBet`: Dynamic limits applied to the Bet Selector.
+## Resolved Runtime Contract
 
-### 3. Customer Config (`CustomerConfigSchema`)
-Determined by the operator/jurisdiction requirements.
-- `minSpinTime`: Mandatory delay before reels can stop (e.g., 2.5s for UK compliance).
-- `autoplayEnabled`: Hard kill switch for autoplay functionality.
+One object drives the shell:
+- `ResolvedRuntimeConfig`
 
----
+Primary families:
+1. Betting/limits:
+- `betConfig` (ladder or dynamic constraints)
+- `minBet`, `maxBet`, `defaultBet`, `maxExposure`
+2. Timing/animation:
+- `turboplay`
+- `minReelSpinTime`
+- `capabilities.animationPolicy`
+3. Localization:
+- `localization.defaultLang`
+- `localization.localizedTitleKey`
+- `localization.contentPath`
+- `localization.showMissingLocalizationError`
+4. History behavior:
+- `history.url`
+- `history.openInSameWindow`
+5. Feature/capability flags:
+- buy feature, free spins/respin/Hold&Win, big win flow, delayed wallet messages, spin profiling, etc.
 
-## ⚖️ Validation Rules
+## Legacy Fallbacks
 
-During `resolveRuntimeConfig()`, the system enforces specific consistency checks:
-1. **Truncation Sync**: If `truncateCents` is true, an error is thrown if `minBet`, `maxBet`, or `defaultBet` have decimal values.
-2. **Bet Boundaries**: `minBet` <= `defaultBet` <= `maxBet`.
-3. **Contradiction Management**: Ensures that if a game feature requires the "Buy Feature" but it's disabled globally for the customer, the UI reacts appropriately.
+When `launchParams.defaultBet` is absent, resolver applies:
+1. `GL_DEFAULT_BET`
+2. `DEFCOIN`
 
----
+These can also be provided under `launchParams.legacyDefaults`.
 
-## 🛠 Usage in Game
+## Validation Rules
 
-```typescript
-import { RuntimeStore } from "@app/utils/RuntimeStore";
+Resolver schema enforces:
+1. `minBet <= maxBet`
+2. `defaultBet` inside `minBet..maxBet`
+3. `maxBet <= maxExposure`
+4. `defaultBet <= maxExposure`
+5. dynamic mode `maxStep <= maxExposure`
+6. history URL cannot use `javascript:` scheme
 
-// Accessing the resolved config
-const { minBet, currency } = RuntimeStore.bank;
-const { rows, cols } = RuntimeStore.game.reels;
-```
+## Dev Diff / Diagnostics
 
-## 🧪 Simulation
-You can simulate a "No Cents" bank by appending:
-`?devBank=USD_TRUNC` to the game URL.
+In dev mode, resolver emits:
+1. per-layer override diff log
+2. unsupported key warnings
+3. legacy fallback warnings
+4. missing currency override warnings
 
----
-
-## 🎰 GS Registration & Config Gen
-
-### The `gs` Block in `game.settings.json`
-
-Each game can define a `gs` section in its `game.settings.json` containing GS platform registration data:
-
-```json
-{
-  "gs": {
-    "mathModels": [{ "id": "M1", "rtp": 96.54, "label": "Default" }],
-    "volatility": "medium-high",
-    "possibleMaxWinMultiplier": 5000,
-    "capWinMultiplier": 10000,
-    "releaseTime": 3,
-    "isFrb": false,
-    "ocb": false
-  }
-}
-```
-
-### Generating Template Params
-
-The `config-gen` tool reads `game.settings.json` and deterministically produces three output files in `games/<slug>/gs/`:
-
-| Output | Format | Purpose |
-|---|---|---|
-| `template-params.properties` | Key=Value | GS platform ingestion |
-| `template-params.json` | JSON | Programmatic consumption |
-| `registration.md` | Markdown | Human-readable review |
-
-```bash
-# Generate for all games
-npm run config:gen
-
-# Generate for one game
-npx tsx tools/config-gen/src/index.ts --game my-game
-
-# CI validation (checks outputs are up-to-date)
-npm run config:check
-```
-
-### Validation Rules (config-gen)
-- **RTP Precision**: All RTP values must be rounded to exactly 2 decimal places.
-- **RTP Array Length**: Must equal the number of math models.
-- **Win Multiplier Separation**: `possibleMaxWinMultiplier` must NOT equal `capWinMultiplier`.
-- **Win Multiplier Order**: `possibleMaxWinMultiplier` must be ≤ `capWinMultiplier`.
-- **Release Time**: Must be positive (in seconds).
-
+This is for troubleshooting only and does not alter GS authority model.

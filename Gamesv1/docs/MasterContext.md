@@ -24,6 +24,14 @@ Gamesv1 is the best-in-class GS slot client shell + release-packaging environmen
 - HTTP runtime is primary and required for production path.
 - `abs.gs.v1` WebSocket is legacy/experimental only.
 - Game modules must consume transport via `@gamesv1/core-protocol` abstractions.
+- Browser transport scope is `browser -> GS` only.
+- Browser must not directly communicate with internal slot-engine services.
+
+## Internal Engine Boundary
+
+- Internal slot-engine sidecar/host is private GS infrastructure.
+- RNG lives in the internal slot-engine host (server-side).
+- Slot-engine audit/debug data is server-side only and not part of browser UI state ownership.
 
 ## Asset/Release Policy
 

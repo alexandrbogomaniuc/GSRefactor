@@ -55,6 +55,12 @@ corepack pnpm run test:layout
 corepack pnpm run test:contract
 ```
 
+## Create New Game (Canonical)
+
+```bash
+npm run create-game -- --gameId <gameId> --name "<name>" --themeId <themeId> --languages en,es,de
+```
+
 ## Artifact Outputs
 
 Per release, Gamesv1 must produce:

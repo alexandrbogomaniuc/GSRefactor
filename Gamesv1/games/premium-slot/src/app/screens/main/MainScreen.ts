@@ -16,12 +16,17 @@ import {
   SlotMachine,
   UiAssetKeys,
 } from "@gamesv1/ui-kit";
+import { gsRuntimeClient, mapPlayRoundToSlotOutcome } from "../../runtime";
+import {
+  PresentationStateStore,
+  ResolvedRuntimeConfigStore,
+  SessionRuntimeStore,
+} from "../../stores";
 
 import { AppAssetKeys } from "../../assets/assetKeys";
 import { ParticleBurst } from "../../../game/fx/ParticleBurst";
 import { WinHighlight } from "../../../game/fx/WinHighlight";
 import { WinCounter } from "../../../game/ui/WinCounter";
-import { RuntimeStore } from "../../utils/RuntimeStore";
 import { DebugOverlay } from "./DebugOverlay";
 
 export class MainScreen extends Container {
@@ -54,11 +59,12 @@ export class MainScreen extends Container {
 
   private readonly animationPolicy: AnimationPolicyEngine;
   private readonly hudLayout: ResponsiveHudLayoutController;
+  private pendingRoundOutcome: ReturnType<typeof mapPlayRoundToSlotOutcome> | null = null;
 
   constructor() {
     super();
 
-    const runtimeConfig = RuntimeStore.get();
+    const runtimeConfig = ResolvedRuntimeConfigStore.get();
     this.animationPolicy = new AnimationPolicyEngine(
       createAnimationPolicy({
         runtimeConfig,
@@ -237,19 +243,23 @@ export class MainScreen extends Container {
 
     this.slotMachine.onSpinComplete = () => this.handleSpinComplete();
     this.refreshTurboButtonLabel();
+    PresentationStateStore.patch({
+      turboSelected: this.turboSelected,
+    });
   }
 
   private toggleTurbo() {
     if (!this.animationPolicy.value.turbo.allowed) return;
     this.turboSelected = !this.turboSelected;
     this.refreshTurboButtonLabel();
+    PresentationStateStore.patch({ turboSelected: this.turboSelected });
   }
 
   private refreshTurboButtonLabel() {
     this.turboStateText.text = this.turboSelected ? "Turbo: ON" : "Turbo: OFF";
   }
 
-  private handleSpin() {
+  private async handleSpin() {
     if (this.isPresentingWin && this.animationPolicy.shouldAllowForcedSkip()) {
       this.skipWinPresentation();
       return;
@@ -258,19 +268,59 @@ export class MainScreen extends Container {
     if (this.isSpinning || this.isPresentingWin) return;
 
     this.isSpinning = true;
+    PresentationStateStore.patch({ isSpinning: true, statusText: "ROUND_REQUESTED" });
     this.winHighlight.clear();
     this.statusText.visible = false;
 
     const timing = this.animationPolicy.resolveSpinTiming(this.turboSelected);
+    const betAmount = ResolvedRuntimeConfigStore.limits.defaultBet;
 
-    this.slotMachine.spin({
-      minSpinDurationMs: timing.minSpinMs,
-      spinStaggerMs: timing.spinStaggerMs,
-      speedMultiplier: timing.speedMultiplier,
-    });
+    try {
+      const round = await gsRuntimeClient.playRound(
+        betAmount,
+        this.resolveBetTypeFromRuntime(),
+      );
+      const outcome = mapPlayRoundToSlotOutcome(round);
+      this.pendingRoundOutcome = outcome;
+
+      this.slotMachine.spin({
+        minSpinDurationMs: timing.minSpinMs,
+        spinStaggerMs: timing.spinStaggerMs,
+        speedMultiplier: timing.speedMultiplier,
+        reelStopColumns: outcome.reelStopColumns,
+      });
+    } catch (error) {
+      this.isSpinning = false;
+      this.pendingRoundOutcome = null;
+      PresentationStateStore.patch({
+        isSpinning: false,
+        statusText: `ROUND_FAILED: ${String(error)}`,
+      });
+      this.statusText.text = "ROUND FAILED";
+      this.statusText.visible = true;
+      setTimeout(() => {
+        this.statusText.visible = false;
+      }, 1000);
+    }
   }
 
   private handleSpinComplete() {
+    const outcome = this.pendingRoundOutcome;
+    if (!outcome) {
+      this.isSpinning = false;
+      PresentationStateStore.patch({
+        isSpinning: false,
+        statusText: "ROUND_FAILED: missing transport outcome",
+      });
+      this.statusText.text = "MISSING TRANSPORT OUTCOME";
+      this.statusText.visible = true;
+      setTimeout(() => {
+        this.statusText.visible = false;
+      }, 1000);
+      return;
+    }
+
+    this.pendingRoundOutcome = null;
     const reels = this.slotMachine.getReels();
     const winSymbols = [
       reels[0].getVisibleSymbols()[1],
@@ -278,8 +328,8 @@ export class MainScreen extends Container {
       reels[2].getVisibleSymbols()[1],
     ];
 
-    const winAmount = this.generateMockWinAmount();
-    const defaultBet = RuntimeStore.limits.defaultBet;
+    const winAmount = outcome.winAmount;
+    const defaultBet = ResolvedRuntimeConfigStore.limits.defaultBet;
     const multiplier = defaultBet > 0 ? winAmount / defaultBet : 0;
     const tier = this.animationPolicy.classifyWinByMultiplier(multiplier);
 
@@ -295,6 +345,12 @@ export class MainScreen extends Container {
 
     this.isSpinning = false;
     this.isPresentingWin = true;
+    PresentationStateStore.patch({
+      isSpinning: false,
+      isPresentingWin: true,
+      lastWinAmount: winAmount,
+      statusText: `ROUND_SETTLED:${outcome.roundId}`,
+    });
 
     const presentationMs = this.animationPolicy.getWinPresentationDurationMs(tier, false);
 
@@ -302,12 +358,6 @@ export class MainScreen extends Container {
     this.currentWinPresentationTimeout = setTimeout(() => {
       this.finishWinPresentation();
     }, presentationMs);
-  }
-
-  private generateMockWinAmount(): number {
-    const bet = Math.max(1, RuntimeStore.limits.defaultBet);
-    const randomMultiplier = Math.random() * 70;
-    return Math.round(bet * randomMultiplier);
   }
 
   private getTierLabel(tier: WinTier): string {
@@ -334,6 +384,10 @@ export class MainScreen extends Container {
     this.statusText.visible = false;
     this.winCounter.hideNow();
     this.isPresentingWin = false;
+    PresentationStateStore.patch({
+      isPresentingWin: false,
+      statusText: skipped ? "ROUND_PRESENTATION_SKIPPED" : "ROUND_PRESENTATION_FINISHED",
+    });
 
     if (skipped) {
       const delay = this.animationPolicy.getAutoplayDelayMs("none", true);
@@ -370,6 +424,13 @@ export class MainScreen extends Container {
   }
 
   public reset() {}
+
+  private resolveBetTypeFromRuntime(): string {
+    const session = SessionRuntimeStore.getSnapshot();
+    const sessionHint = session?.sessionId ? "SESSION" : "NOSESSION";
+    const defaultBet = ResolvedRuntimeConfigStore.limits.defaultBet;
+    return `${sessionHint}:BET_${defaultBet}`;
+  }
 
   public resize(width: number, height: number) {
     const viewport = engine().layout.getViewport();

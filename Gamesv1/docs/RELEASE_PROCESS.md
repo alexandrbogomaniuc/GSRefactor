@@ -142,6 +142,10 @@ Release gate:
 2. GS returns restore state if an interrupted round exists.
 3. Client resumes presentation from GS-provided restore payload.
 
+Boundary note:
+- Browser transport remains `browser -> GS` only.
+- Internal slot-engine/RNG/audit paths are private GS internals and not browser integration points.
+
 ## D) Legacy Note
 
 - `abs.gs.v1` WebSocket transport is legacy/experimental only.
