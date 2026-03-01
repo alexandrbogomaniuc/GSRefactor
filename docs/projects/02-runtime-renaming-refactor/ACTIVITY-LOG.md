@@ -4973,3 +4973,97 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
   - ETA `~0.0h` (`~0.00` workdays)
+
+## 2026-03-01 11:30 UTC (Hard-cut stabilization: STEP02/03/04/05 recovered, blocker moved to STEP06)
+- Continued Project 02 hard-cut stabilization in  using bounded import/type normalization (no blind global replace).
+- Cleared prior canonical blockers:
+  - STEP02  PASS ([INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.037 s
+[INFO] Finished at: 2026-03-01T11:30:39Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] The goal you specified requires a project to execute but there is no POM in this directory (/Users/alexb/Documents/Dev/Dev_new). Please verify you invoked Maven from the correct directory. -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MissingProjectException)
+  - PRE02  PASS ([INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.032 s
+[INFO] Finished at: 2026-03-01T11:30:40Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] The goal you specified requires a project to execute but there is no POM in this directory (/Users/alexb/Documents/Dev/Dev_new). Please verify you invoked Maven from the correct directory. -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MissingProjectException)
+  - STEP04/PRE03  PASS ([INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.034 s
+[INFO] Finished at: 2026-03-01T11:30:41Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] The goal you specified requires a project to execute but there is no POM in this directory (/Users/alexb/Documents/Dev/Dev_new). Please verify you invoked Maven from the correct directory. -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MissingProjectException)
+  - STEP05  PASS after  +  dependency reinstall.
+- Canonical latest () now fails at STEP06 in  ( ->  access boundary).
+- Evidence: 
+- Report: 
+- Metrics unchanged: baseline , reduced , remaining , burndown , Project02 , Core , Portfolio .
+- ETA refresh (remaining stabilization):  ( workdays).
+
+### 2026-03-01 11:38 UTC
+- Executed stabilization wave focused on cross-module namespace boundary normalization after hard-cut completion.
+- Evidence:   - /Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-113821-hardcut-live-stabilization-crossmodule-boundary-normalization
+- Report:   - /Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/256-hard-cut-live-stabilization-crossmodule-boundary-normalization-report-20260301.md
+- Result: FAIL (promo/core + common-gs boundary mismatches between  and  types).
+- Metrics unchanged: baseline , reduced , remaining , burndown .
+- ETA revised for stabilization completion:  ( workdays).
+
+## 2026-03-01 11:40 UTC (Correction: stabilization cross-module boundary wave)
+- Corrected malformed shell-expanded log text from prior append and recorded canonical state for this wave.
+- Wave status: FAIL (no push) due cross-module type boundary mismatches (`com.dgphoenix` vs `com.abs`) in `promo/core` and `common-gs`.
+- Evidence folder:
+  - /Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-113821-hardcut-live-stabilization-crossmodule-boundary-normalization
+- Report:
+  - /Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/256-hard-cut-live-stabilization-crossmodule-boundary-normalization-report-20260301.md
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA (stabilization completion): `~28-36h` (`~3.5-4.5` workdays).
+
+## 2026-03-01 11:58 UTC (Hard-cut stabilization: STEP08 recovered, canonical now on STEP09 external smoke profile)
+- Continued Project 02 post-hard-cut stabilization in `/Users/alexb/Documents/Dev/Dev_new`.
+- Applied bounded namespace normalization only in `mp-server/persistance/src/main/java` to remove mixed-package type boundaries (`com.dgphoenix` -> `com.abs`) in 41 files.
+- Validation evidence:
+  - `STEP08` direct gate: PASS (`mvn -DskipTests install` in `mp-server/persistance`).
+  - Canonical rerun (`rerun3`) profile:
+    - `fast_gate_batchA FAIL STEP09 rc=2`
+    - `fast_gate_batchB FAIL STEP09 rc=2`
+    - `prewarm PASS`
+    - `validation FAIL STEP09 rc=2`
+    - `STEP09 retry rc=2`
+  - Failure remains the known external smoke blocker (`/startgame ...` HTTP 503).
+- Evidence folders:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-114628-hardcut-live-stabilization-canonical-rerun-post-step07fix`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-115005-hardcut-live-stabilization-canonical-rerun-post-step08fix`
+- Metrics unchanged (hard-cut declarations already complete):
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - declaration hard-cut ETA: `0.0h`
+  - stabilization closure ETA: `~8-14h` (`~1.0-1.75` workdays), dominated by external STEP09 smoke environment recovery.

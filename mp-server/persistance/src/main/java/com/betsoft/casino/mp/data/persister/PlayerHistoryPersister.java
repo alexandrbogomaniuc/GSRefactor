@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.data.persister;
 
-import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -4,9 +4,9 @@ import com.betsoft.casino.mp.model.Money;
 import com.betsoft.casino.mp.model.PlayerQuests;
 import com.betsoft.casino.mp.model.quests.IQuest;
 import com.betsoft.casino.mp.service.IPlayerQuestsService;
-import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
-import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

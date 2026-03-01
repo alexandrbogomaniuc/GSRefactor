@@ -1,16 +1,16 @@
 package com.betsoft.casino.mp.data.persister;
 
-import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
-import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.persist.StreamPersister;
 import com.abs.casino.common.persist.TableProcessor;
 import com.abs.casino.common.util.ISequencer;
 import com.abs.casino.common.util.ISequencerPersister;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import com.google.common.base.Preconditions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -2,9 +2,9 @@ package com.betsoft.casino.mp.data.persister;
 
 import com.betsoft.casino.mp.model.SpawnConfigEntity;
 import com.betsoft.casino.mp.service.ISpawnConfigService;
-import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
-import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

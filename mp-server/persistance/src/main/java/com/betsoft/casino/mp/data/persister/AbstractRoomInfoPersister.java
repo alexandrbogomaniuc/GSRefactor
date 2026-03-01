@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.data.persister;
 
 import com.betsoft.casino.mp.model.room.IRoomInfo;
-import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
 import com.hazelcast.core.MapStore;
 
 import java.nio.ByteBuffer;

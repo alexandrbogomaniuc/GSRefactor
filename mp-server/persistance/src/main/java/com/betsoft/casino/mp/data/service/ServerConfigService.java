@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.service.IServerConfigService;
 import com.betsoft.casino.mp.service.ServerConfig;
 import com.betsoft.casino.mp.service.ServerConfigDto;
 import com.betsoft.casino.mp.service.ServerOnlineStatus;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;

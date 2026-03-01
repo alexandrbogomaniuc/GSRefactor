@@ -2,9 +2,9 @@ package com.betsoft.casino.mp.data.service;
 
 import com.betsoft.casino.mp.data.persister.LockPersister;
 import com.abs.casino.cassandra.IRemoteUnlocker;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.lock.ILockManager;
-import com.dgphoenix.casino.common.lock.LockingInfo;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.lock.ILockManager;
+import com.abs.casino.common.lock.LockingInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;

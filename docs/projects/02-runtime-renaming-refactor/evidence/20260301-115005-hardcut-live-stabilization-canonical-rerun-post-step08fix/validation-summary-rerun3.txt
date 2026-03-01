@@ -1,0 +1,5 @@
+fast_gate_batchA=status=FAIL;first_failed_step=STEP09;failed_command=node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+fast_gate_batchB=status=FAIL;first_failed_step=STEP09;failed_command=node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+prewarm=status=PASS;first_failed_step=NONE;failed_command=NONE
+validation=status=FAIL;first_failed_step=STEP09;failed_command=node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+step09_retry1=status=FAIL;rc=2

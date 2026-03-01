@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.data.service;
 
-import com.dgphoenix.casino.common.ILoadBalancer;
+import com.abs.casino.common.ILoadBalancer;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.Member;
 import org.apache.logging.log4j.LogManager;
