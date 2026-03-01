@@ -2,7 +2,7 @@
 
 > [!WARNING]
 > This protocol path is legacy/experimental for Gamesv1.
-> Canonical production runtime is GS HTTP path documented in `docs/protocol/extgame.md`.
+> Canonical production runtime is GS HTTP path documented in `docs/protocol/gs-http-runtime.md`.
 
 ## Status
 

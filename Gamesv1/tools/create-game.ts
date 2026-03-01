@@ -19,7 +19,7 @@ type FileEntry = {
 
 const usage = `
 Usage:
-  npm run create-game -- --gameId <game-id> --name "<Game Name>" --themeId <theme-id> [--languages en,es,de] [--dry-run] [--force]
+  corepack pnpm run create-game -- --gameId <game-id> --name "<Game Name>" --themeId <theme-id> [--languages en,es,de] [--dry-run] [--force]
 
 Required:
   --gameId     Lowercase kebab-case identifier (example: dragon-flare)
@@ -371,8 +371,8 @@ console.log("Smoke tests passed for guest/free/real configs.");
 - Math pack and outcome mapper are stubs and must be replaced before production
 
 ## Validation
-- [ ] Smoke test: npm --prefix games/${options.gameId} run smoke:test
-- [ ] Build: npm --prefix games/${options.gameId} run build
+- [ ] Smoke test: corepack pnpm --filter @games/${options.gameId} run smoke:test
+- [ ] Build: corepack pnpm --filter @games/${options.gameId} run build
 
 ## Rollback
 - Revert this game folder and remove workspace references if added elsewhere.
@@ -478,7 +478,9 @@ const createGame = async (): Promise<void> => {
   }
 
   console.log(`[create-game] Scaffold complete: games/${options.gameId}`);
-  console.log(`[create-game] Run smoke tests: npm --prefix games/${options.gameId} run smoke:test`);
+  console.log(
+    `[create-game] Run smoke tests: corepack pnpm --filter @games/${options.gameId} run smoke:test`,
+  );
 };
 
 void createGame();

@@ -30,8 +30,8 @@
 ```json
 // Attach GS HTTP runtime requests/responses here (tokens redacted)
 // Example:
-// [OUT] POST /Enter { launchToken: "***" }
-// [IN]  200 /Enter { sessionId: "...", wallet: {...}, config: {...} }
+// [OUT] POST /v1/opengame { sessionId: "...", ... }
+// [IN]  200 /v1/opengame { sessionId: "...", balance: ..., requestCounter: ..., runtimeConfig: {...} }
 // [OUT] POST /v1/placebet { clientOperationId: "...", requestCounter: 17, ... }
 // [IN]  200 /v1/placebet { roundId: "...", math: {...}, ... }
 // [OUT] POST /v1/collect { roundId: "...", requestCounter: 18, ... }

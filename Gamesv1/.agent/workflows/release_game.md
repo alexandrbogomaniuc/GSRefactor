@@ -4,7 +4,7 @@ When triggered:
 1) Read `docs/RELEASE_PROCESS.md` and capture `gameId`, environment, version.
 2) Generate/check GS registration artifacts:
 ```bash
-npm run config:gen
+corepack pnpm run config:gen
 ```
 3) Run build + production asset packaging:
 ```bash
@@ -15,8 +15,8 @@ corepack pnpm --filter @games/<gameId> exec vite build
 5) Perform deployment steps (GS registration + CDN/static activation).
 6) Verify launch URLs for `guest`, `free`, `real`.
 7) Validate canonical HTTP runtime behavior:
-- init/enter session load
-- transaction request/response flow
+- `POST /v1/opengame` session load
+- `POST /v1/placebet` + `POST /v1/collect` round flow
 - restore on reconnect/reload
 - browser->GS transport only (no direct slot-engine/browser coupling)
 - server-side slot-engine audit data not treated as browser UI state

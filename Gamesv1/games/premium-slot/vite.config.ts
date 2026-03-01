@@ -17,7 +17,6 @@ export default defineConfig({
     alias: {
       "@gamesv1/core-protocol": pkg("core-protocol"),
       "@gamesv1/core-compliance": pkg("core-compliance"),
-      "@gamesv1/operator-pariplay": pkg("operator-pariplay"),
       "@gamesv1/ui-kit": pkg("ui-kit"),
       "@gamesv1/pixi-engine": pkg("pixi-engine"),
       "@gamesv1/i18n": pkg("i18n"),

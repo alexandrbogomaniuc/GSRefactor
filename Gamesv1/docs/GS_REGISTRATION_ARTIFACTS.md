@@ -19,6 +19,10 @@ From `games/<gameId>/release-packs/<releaseId>/`:
 11. `CANARY_CHECKLIST.md`
 12. `SMOKE_TEST_CHECKLIST.md`
 
+Notes:
+- `games/<gameId>/release-packs/` is generated and gitignored.
+- Use `docs/examples/release-pack/` only for static documentation examples.
+
 ## GS Ops Registration Flow
 
 1. Validate checksums.

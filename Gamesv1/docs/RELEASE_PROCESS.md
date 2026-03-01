@@ -47,7 +47,7 @@ Source artifacts in repo:
 
 Generate artifacts:
 ```bash
-npm run config:gen
+corepack pnpm run config:gen
 ```
 
 ## B) End-to-End Release Steps
@@ -93,7 +93,7 @@ Release gate:
 ### 4. Generate GS Registration Artifact
 1. Generate template params:
 ```bash
-npm run config:gen
+corepack pnpm run config:gen
 ```
 2. Produce SQL/registration artifact.
 3. Validate that DB registration fields align with release metadata.
@@ -127,18 +127,18 @@ Release gate:
 ## C) Runtime Handshake (Canonical HTTP Path)
 
 ### 1. Session Init
-1. Client calls GS HTTP init/enter endpoint.
+1. Client calls `POST /v1/opengame`.
 2. GS returns session, wallet snapshot, and runtime config.
 3. Client stores response as read-only source state.
 
 ### 2. Round Transaction Flow
-1. Client submits transaction request with idempotency key + sequencing data.
-2. GS validates requestCounter/idempotency and resolves outcome.
-3. GS returns updated wallet/session/result state.
+1. Client submits `POST /v1/placebet` with idempotency key + sequencing data.
+2. Client submits `POST /v1/collect` for settle/collect.
+3. GS validates requestCounter/idempotency and returns updated wallet/session/result state.
 4. Client renders result; client does not own wallet truth.
 
 ### 3. Restore/Recovery
-1. On reload/reconnect, client calls init/enter again.
+1. On reload/reconnect, client calls `POST /v1/opengame` again (`resumeGame` flow).
 2. GS returns restore state if an interrupted round exists.
 3. Client resumes presentation from GS-provided restore payload.
 
@@ -159,13 +159,13 @@ Boundary note:
 - `packages/pixi-engine/src/engine.ts`
 
 ### Runtime Transport + Schemas
-- `packages/core-protocol/src/http/ExtGameTransport.ts`
+- `packages/core-protocol/src/http/GsHttpRuntimeTransport.ts`
 - `packages/core-protocol/src/IGameTransport.ts`
 - `packages/core-protocol/src/schemas.ts`
 
 ### Runtime Config + Compliance
-- `packages/core-compliance/src/config/RuntimeConfigSchema.ts`
-- `packages/core-compliance/src/config/ConfigResolver.ts`
+- `packages/core-compliance/src/ResolvedRuntimeConfig.ts`
+- `packages/core-compliance/src/ConfigResolver.ts`
 - `packages/core-compliance/src/animation/AnimationPolicy.ts`
 
 ### Registration Artifacts

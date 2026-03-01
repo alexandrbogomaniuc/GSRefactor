@@ -12,3 +12,5 @@ coverage
 **/dist/
 **/build/
 **/.cache/
+**/release-packs/
+docs/generated/*.tmp

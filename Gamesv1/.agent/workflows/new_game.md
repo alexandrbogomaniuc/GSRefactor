@@ -11,7 +11,7 @@ Required Inputs:
 
 Canonical Command:
 ```bash
-npm run create-game -- --gameId <gameId> --name "<name>" --themeId <themeId> --languages en,es,de
+corepack pnpm run create-game -- --gameId <gameId> --name "<name>" --themeId <themeId> --languages en,es,de
 ```
 
 Steps (must be followed in order):
@@ -49,7 +49,7 @@ Steps (must be followed in order):
 - Ensure `tests/smoke/configs/guest.json`, `free.json`, `real.json` exist.
 - Run:
 ```bash
-npm --prefix games/<gameId> run smoke:test
+corepack pnpm --filter @games/<gameId> run smoke:test
 ```
 
 8. Produce release checklist + PR summary:

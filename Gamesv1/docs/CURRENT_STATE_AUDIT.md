@@ -1,129 +1,102 @@
 # CURRENT_STATE_AUDIT
 
-Phase-1 architecture alignment audit based on the current Gamesv1 codebase.
+Code-grounded audit of Gamesv1 using commands executed on this machine.
 
-Date: 2026-02-28
+Date: 2026-03-01  
 Branch: `main`
 
-## 1) Canon Alignment Check
+## 1) Validation Commands Actually Run
 
-Status: PASS
+### Build
+Command:
+```bash
+corepack pnpm run build
+```
+Result: PASS (`exit 0`)
 
-- Canonical runtime target is GS HTTP in:
-  - `docs/MasterContext.md`
-  - `docs/PROJECT.md`
-  - `docs/protocol/extgame.md`
-  - `.agent/rules/01_rules_protocol.md`
-- WebSocket path is explicitly marked legacy/experimental in:
-  - `docs/protocol/abs-gs-v1.md`
-  - `docs/RELEASE_PROCESS.md`
-  - `.agent/rules/agent_rules.md`
-- Browser state ownership is presentation-only; GS owns session/wallet/DB/restore/requestCounter/idempotency in canonical docs.
+### Tests
+Command:
+```bash
+corepack pnpm run test
+```
+Result: PASS (`exit 0`)
 
-## 2) Capability Matrix Coverage
+Observed test summary from output:
+- `test:config`: 8 passed, 0 failed
+- `test:animation-policy`: 6 passed, 0 failed
+- `test:contract`: all scenarios passed
 
-Status: PASS
+### Notes
+- `test:layout` was **not** executed in this audit pass.
+- Node emitted `MODULE_TYPELESS_PACKAGE_JSON` warnings during tests.
 
-Implemented in:
-- `packages/core-compliance/src/CapabilityMatrix.ts`
-- `packages/core-compliance/src/ResolvedRuntimeConfig.ts`
-- `packages/core-compliance/src/ConfigResolver.ts`
+## 2) Repo Hygiene Checks (Actual Commands)
 
-Covered families:
-1. Turbo / min spin time / forced spin stop
-2. Sound defaults + sound toggle visibility
-3. Localization policies + `contentPath` + localization error behavior + `localizedTitleKey`
-4. Spin profiling (`PRECSPINSTAT`)
-5. Delayed wallet/external wallet messaging flags
-6. Buy feature + buy feature for cash bonus
-7. History URL + same-window rule (`history.openInSameWindow`)
-8. Free spins / respin / Hold&Win / big-huge-mega win flow
-9. Legacy fallback order: `GL_DEFAULT_BET` -> `DEFCOIN`
-10. Max bet/exposure rules (`maxBet <= maxExposure`, `defaultBet <= maxExposure`)
+### Tracked generated/dependency paths
+Command:
+```bash
+git ls-files | rg "(^|/)node_modules/|(^|/)dist/|(^|/)build/|(^|/)\\.cache/|(^|/)release-packs/"
+```
+Result: no matches (clean tracked source for those generated paths)
 
-Validation coverage:
-- `tests/compliance/config.test.ts`
-- `tests/compliance/fixtures/config-layers/*.json`
+### Scaffolder duplication
+Command:
+```bash
+Test-Path tools/create-game
+```
+Result: `False` (duplicate scaffolder package removed)
 
-## 3) Transport Model Check
+Canonical scaffolder is:
+- `tools/create-game.ts`
+- script: `corepack pnpm run create-game -- --gameId <gameId> --name "<name>" --themeId <themeId> --languages en,es,de`
 
-Status: PASS (with documented legacy adapters)
+### Package manager pin
+Command output (from `package.json`):
+- `packageManager=pnpm@10.30.3`
 
-- Canonical browser transport model: browser -> GS only.
-- No browser -> slot-engine direct communication modeled in canonical flow.
-- Internal slot-engine/RNG/audit treated as server-side only in:
-  - `docs/MasterContext.md`
-  - `docs/PROJECT.md`
-  - `docs/protocol/extgame.md`
-  - `.agent/workflows/release_game.md`
+## 3) Canonical vs Legacy Boundaries
 
-Core transport package notes:
-- `packages/core-protocol/src/http/ExtGameTransport.ts`: GS HTTP runtime transport.
-- `packages/core-protocol/src/index.ts`: supports canonical `HTTP_GS`/`EXTGAME`; retains `WS`/`WS_LEGACY`.
-- `packages/core-protocol/src/ws/GsWsTransport.ts`: legacy adapter retained for experimental/backward compatibility.
+Canonical runtime docs:
+- `docs/protocol/gs-http-runtime.md`
+- `docs/protocol/browser-runtime-api-contract.md`
 
-## 4) Release Artifact Pipeline Check
+Legacy/optional:
+- `docs/protocol/abs-gs-v1.md` (legacy/experimental)
+- `packages/operator-pariplay/*` (optional legacy/operator integration surface)
 
-Status: PASS
+Non-canonical generated docs:
+- `docs/generated/*` (machine-specific outputs)
+- `docs/examples/release-pack/*` (one intentionally committed example)
 
-Pipeline implementation:
-- `tools/release-pack/create-release.ts`
-- `package.json` script: `release:pack`
+## 4) Premium-Slot Runtime Scope Check
 
-Output set produced by command:
-- `npm run release:pack -- --game premium-slot --static-origin https://cdn.example.com/games --skip-build`
+Command used:
+```bash
+rg -n "@gamesv1/operator-pariplay|window\\.postMessage|new WebSocket" games/premium-slot/src games/premium-slot/package.json games/premium-slot/vite.config.ts
+```
+Result: no matches.
 
-Required artifacts generated:
-- client bundle manifest
-- asset manifest
-- localization manifest
-- math package manifest reference
-- hashes/checksums
-- GS registration pack
-- rollback pack
-- canary checklist
-- smoke-test checklist
+Interpretation:
+- Canonical game path does not include operator bridge dependency or direct browser messaging/socket calls.
+- Transport is expected via `@gamesv1/core-protocol`.
 
-Reference docs:
-- `docs/RELEASE_ARTIFACTS.md`
-- `docs/GS_REGISTRATION_ARTIFACTS.md`
+## 5) Documentation Alignment Snapshot
 
-## 5) Legacy/Experimental WS Inventory
+Updated canonical map:
+- `docs/DOCS_MAP.md` points transport truth to `docs/protocol/gs-http-runtime.md`.
+- `docs/RELEASE_PROCESS.md` code map references current files:
+  - `packages/core-protocol/src/http/GsHttpRuntimeTransport.ts`
+  - `packages/core-compliance/src/ResolvedRuntimeConfig.ts`
+  - `packages/core-compliance/src/ConfigResolver.ts`
 
-These are intentionally retained but non-canonical:
+Generated orchestration output moved out of canonical docs:
+- `docs/generated/ORCHESTRATOR_OUTPUTS.md`
 
-1. `packages/core-protocol/src/ws/GsWsTransport.ts`
-2. `packages/core-protocol/src/schemas.ts` (`AbsEnvelopeSchema`)
-3. `tests/contract/mock-gs/*` (WS mock server + runner)
-4. `tests/contract/transport.contract.test.ts` (includes WS transport assertions)
-5. `docs/protocol/abs-gs-v1.md` (deprecated protocol doc)
+## 6) Current Honest Status
 
-Policy:
-- Keep as legacy/experimental compatibility surface only.
-- Do not use for new production integrations.
-
-## 6) Canonical Create-Game Path
-
-Status: PASS
-
-- Canonical command:
-  - `npm run create-game -- --gameId <gameId> --name "<name>" --themeId <themeId> --languages en,es,de`
-- Canonical workflow:
-  - `.agent/workflows/new_game.md`
-- Scaffold implementation:
-  - `tools/create-game.ts`
-
-## 7) Build/Test Summary
-
-Executed and passing:
-1. `corepack pnpm build` -> PASS
-2. `npm run test:config` -> PASS
-3. `npm run test:animation-policy` -> PASS
-4. `npm run test:layout` -> PASS
-5. `npm run test:contract` -> PASS
-6. `npm run release:pack -- --game premium-slot --static-origin https://cdn.example.com/games --skip-build` -> PASS
-
-## 8) Open Risks
-
-1. Legacy WS adapter remains in `core-protocol` and contract tests; must stay clearly labeled non-canonical.
-2. `tools/create-game/` subpackage exists alongside canonical `tools/create-game.ts`; only `npm run create-game` should be used operationally.
+What is confirmed by command output in this audit:
+1. Build passes.
+2. Root test command passes.
+3. Tracked generated/dependency artifacts (`node_modules/dist/build/.cache/release-packs`) are clean.
+4. Duplicate scaffolder package path was removed; one canonical create-game path remains.
+5. Canonical runtime doc naming is GS HTTP specific (`gs-http-runtime.md`) and legacy WS is explicitly separate.

@@ -49,6 +49,7 @@ corepack pnpm run build
 ## Tests
 
 ```bash
+corepack pnpm run test
 corepack pnpm run test:config
 corepack pnpm run test:animation-policy
 corepack pnpm run test:layout
@@ -58,8 +59,10 @@ corepack pnpm run test:contract
 ## Create New Game (Canonical)
 
 ```bash
-npm run create-game -- --gameId <gameId> --name "<name>" --themeId <themeId> --languages en,es,de
+corepack pnpm run create-game -- --gameId <gameId> --name "<name>" --themeId <themeId> --languages en,es,de
 ```
+
+Authoritative scaffolder: `tools/create-game.ts`.
 
 ## Artifact Outputs
 
@@ -69,6 +72,9 @@ Per release, Gamesv1 must produce:
 - Asset manifest/bundles
 - GS registration artifacts (`template-params.*`, release manifest, SQL artifact)
 - Versioned release metadata tied to git SHA
+
+Generated release-pack outputs under `games/<gameId>/release-packs/` are build artifacts and are gitignored.
+One reference example is kept under `docs/examples/release-pack/`.
 
 ## Source Of Truth Docs
 

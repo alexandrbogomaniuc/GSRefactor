@@ -15,22 +15,29 @@ Index of canonical and archived/deprecated documentation.
 - `docs/LOCALIZATION.md`: localization architecture and validation.
 - `docs/ART_AND_PROMO_PIPELINE.md`: art deliverables, export specs, quality gates.
 - `docs/ASSET_MANIFEST_SPEC.md`: per-game art manifest schema.
-- `docs/protocol/extgame.md`: canonical GS HTTP runtime transport path.
+- `docs/protocol/gs-http-runtime.md`: canonical GS HTTP runtime transport path.
 - `docs/protocol/browser-runtime-api-contract.md`: browser-facing GS runtime API contract.
 - `docs/CURRENT_STATE_AUDIT.md`: latest code-grounded architecture and compliance audit snapshot.
 
 ## Source Of Truth By Concern
 
 - Architecture/runtime ownership: `docs/MasterContext.md`, `docs/PROJECT.md`
-- Transport/handshake: `docs/protocol/extgame.md`
+- Transport/handshake: `docs/protocol/gs-http-runtime.md`
 - Browser API contract: `docs/protocol/browser-runtime-api-contract.md`
 - Capability behavior: `docs/GAME_CLIENT_REQUIREMENTS_MAIN.md`, `docs/CAPABILITY_MATRIX.md`
 - Config layering/resolution: `docs/CONFIG_SYSTEM.md`
 - Release/registration flow: `docs/RELEASE_PROCESS.md`, `docs/RELEASE_ARTIFACTS.md`, `docs/GS_REGISTRATION_ARTIFACTS.md`
+- New-game scaffolding: `tools/create-game.ts`, `.agent/workflows/new_game.md`
+
+## Generated / Non-Canonical Docs
+
+- `docs/generated/*`: machine-specific command outputs and generated diagnostics.
+- `docs/examples/release-pack/*`: intentionally kept sample generated release-pack metadata.
 
 ## Deprecated (Still Present)
 
 - `docs/protocol/abs-gs-v1.md`: legacy/experimental only; not canonical production path.
+- `packages/operator-pariplay/*`: optional legacy/operator integration surface, not canonical runtime.
 
 ## Archived Docs
 

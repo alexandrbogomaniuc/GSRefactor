@@ -18,7 +18,7 @@ export default tseslint.config(
         {
           object: "window",
           property: "postMessage",
-          message: "Use @gamesv1/operator-pariplay for operator communication.",
+          message: "Operator messaging is out of canonical runtime scope for Gamesv1.",
         },
       ],
     },
