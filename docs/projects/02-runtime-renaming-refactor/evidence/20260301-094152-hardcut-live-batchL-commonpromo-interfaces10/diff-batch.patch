@@ -1,0 +1,231 @@
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/GameBonusKey.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/GameBonusKey.java
+index 29d64f20f..825b2e5ef 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/GameBonusKey.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/GameBonusKey.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ICampaignStatisticsProvider.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ICampaignStatisticsProvider.java
+index a3d654f37..de6532640 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ICampaignStatisticsProvider.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ICampaignStatisticsProvider.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ /**
+  * User: flsh
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IConcurrentPromoTemplate.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IConcurrentPromoTemplate.java
+index d5ff0ac6d..41a4a05d7 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IConcurrentPromoTemplate.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IConcurrentPromoTemplate.java
+@@ -1,8 +1,12 @@
+-package com.dgphoenix.casino.common.promo;
+-
+-/**
+- * Created by vladislav on 3/29/17.
+- */
++package com.abs.casino.common.promo;
++
++import com.dgphoenix.casino.common.promo.DesiredPrize;
++import com.dgphoenix.casino.common.promo.IPrize;
++import com.dgphoenix.casino.common.promo.IPromoTemplate;
++
++/**
++ * Created by vladislav on 3/29/17.
++ */
+ public interface IConcurrentPromoTemplate<T extends IPrize, IPT extends IPromoTemplate> extends IPromoTemplate<T, IPT> {
+     boolean processQualifiedConcurrentPrize(long prizeId, DesiredPrize desiredPrize);
+ }
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoEvent.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoEvent.java
+index 97c310845..f154915d6 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoEvent.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoEvent.java
+@@ -1,6 +1,6 @@
+ package com.abs.casino.common.promo;
+ 
+-import com.dgphoenix.casino.common.promo.INetworkPromoEventTemplate;
++import com.abs.casino.common.promo.INetworkPromoEventTemplate;
+ /**
+  * User: flsh
+  * Date: 4.12.2020.
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoEventTemplate.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoEventTemplate.java
+index 0a8348bce..11c9d017c 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoEventTemplate.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoEventTemplate.java
+@@ -1,7 +1,10 @@
+-package com.dgphoenix.casino.common.promo;
+-
+-/**
+- * User: flsh
++package com.abs.casino.common.promo;
++
++import com.dgphoenix.casino.common.promo.IPrize;
++import com.dgphoenix.casino.common.promo.IPromoTemplate;
++
++/**
++ * User: flsh
+  * Date: 10.12.2020.
+  */
+ public interface INetworkPromoEventTemplate<P extends IPrize, IPT extends INetworkPromoEventTemplate> extends IPromoTemplate<P, IPT> {
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrizeWonHandler.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrizeWonHandler.java
+index fe0638888..c5c891b24 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrizeWonHandler.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrizeWonHandler.java
+@@ -1,9 +1,12 @@
+-package com.dgphoenix.casino.common.promo;
+-
+-import com.dgphoenix.casino.common.exception.CommonException;
+-
+-/**
+- * User: flsh
++package com.abs.casino.common.promo;
++
++import com.dgphoenix.casino.common.exception.CommonException;
++import com.dgphoenix.casino.common.promo.DesiredPrize;
++import com.dgphoenix.casino.common.promo.IPrize;
++import com.dgphoenix.casino.common.promo.PromoCampaignMember;
++
++/**
++ * User: flsh
+  * Date: 10.12.16.
+  */
+ public interface IPrizeWonHandler<T extends IPrize> {
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrizeWonHelper.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrizeWonHelper.java
+index 8a9c8342e..0eac41edf 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrizeWonHelper.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrizeWonHelper.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ /**
+  * User: flsh
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignsObserver.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignsObserver.java
+index dc75879d0..964de61e4 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignsObserver.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignsObserver.java
+@@ -1,8 +1,10 @@
+-package com.dgphoenix.casino.common.promo;
+-
+-/**
+- * Created by vladislav on 3/24/17.
+- */
++package com.abs.casino.common.promo;
++
++import com.dgphoenix.casino.common.promo.Status;
++
++/**
++ * Created by vladislav on 3/24/17.
++ */
+ public interface IPromoCampaignsObserver {
+     void notifyCampaignCreated(long campaignId);
+ 
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentPromoTemplate.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentPromoTemplate.java
+index 030cf1fa8..18127b38c 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentPromoTemplate.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ITournamentPromoTemplate.java
+@@ -1,6 +1,9 @@
+-package com.dgphoenix.casino.common.promo;
+-
+-import java.util.Set;
++package com.abs.casino.common.promo;
++
++import com.dgphoenix.casino.common.promo.TournamentObjective;
++import com.dgphoenix.casino.common.promo.TournamentRankQualifier;
++
++import java.util.Set;
+ 
+ /**
+  * User: flsh
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SupportedPlatform.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SupportedPlatform.java
+index 49a4b18a5..bfb9ce95e 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SupportedPlatform.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SupportedPlatform.java
+@@ -1,7 +1,6 @@
+-package com.dgphoenix.casino.common.promo;
+-import com.abs.casino.common.promo.*;
+-
+-public enum SupportedPlatform implements ISupportedPlatform {
++package com.abs.casino.common.promo;
++
++public enum SupportedPlatform implements ISupportedPlatform {
+     ALL(null) {
+         @Override
+         public boolean isPlatformSupported(Long clientTypeId) {
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPlayerDetails.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPlayerDetails.java
+index 6939b0fe0..5987ef285 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPlayerDetails.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPlayerDetails.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ public interface TournamentPlayerDetails {
+ }
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/network/NetworkTournamentEvent.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/network/NetworkTournamentEvent.java
+index a656bb2ed..5d1ff715c 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/network/NetworkTournamentEvent.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/network/NetworkTournamentEvent.java
+@@ -1,6 +1,6 @@
+ package com.abs.casino.common.promo.network;
+ 
+-import com.dgphoenix.casino.common.promo.INetworkPromoEventTemplate;
++import com.abs.casino.common.promo.INetworkPromoEventTemplate;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;
+ import com.esotericsoftware.kryo.io.Input;
+diff --git a/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java b/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java
+index dbb960292..8bf65e801 100644
+--- a/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java
++++ b/gs-server/common-promo/src/test/java/com/dgphoenix/casino/common/promo/MaxPerformanceTournamentTest.java
+@@ -1,7 +1,7 @@
+ package com.abs.casino.common.promo;
+ 
+ import com.dgphoenix.casino.common.promo.DesiredPrize;
+-import com.dgphoenix.casino.common.promo.ICampaignStatisticsProvider;
++import com.abs.casino.common.promo.ICampaignStatisticsProvider;
+ import com.dgphoenix.casino.common.promo.TournamentObjective;
+ import com.abs.casino.common.currency.CurrencyRate;
+ import com.abs.casino.common.currency.ICurrencyRateManager;
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/PrizeWonBalanceChanger.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/PrizeWonBalanceChanger.java
+index 5a000a286..dc6ce11d0 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/PrizeWonBalanceChanger.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/PrizeWonBalanceChanger.java
+@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.BankInfoCache;
+ import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.promo.IPrizeWonHelper;
++import com.abs.casino.common.promo.IPrizeWonHelper;
+ import com.dgphoenix.casino.common.promo.IPromoTemplate;
+ import com.abs.casino.gs.managers.dblink.IGameDBLink;
+ 
+diff --git a/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/NotAvailableStatisticsProvider.java b/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/NotAvailableStatisticsProvider.java
+index bac570305..d26f75d0f 100644
+--- a/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/NotAvailableStatisticsProvider.java
++++ b/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/NotAvailableStatisticsProvider.java
+@@ -1,6 +1,6 @@
+ package com.abs.casino.promo;
+ 
+-import com.dgphoenix.casino.common.promo.ICampaignStatisticsProvider;
++import com.abs.casino.common.promo.ICampaignStatisticsProvider;
+ 
+ /**
+  * @author <a href="mailto:fateyev@dgphoenix.com">Anton Fateyev</a>
+diff --git a/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSupportedPromoPlatformsPersister.java b/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSupportedPromoPlatformsPersister.java
+index 1dcdedb1e..b95dfe9fa 100644
+--- a/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSupportedPromoPlatformsPersister.java
++++ b/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSupportedPromoPlatformsPersister.java
+@@ -5,7 +5,7 @@ import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
+ import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
+ import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+ import com.abs.casino.common.promo.ISupportedPlatform;
+-import com.dgphoenix.casino.common.promo.SupportedPlatform;
++import com.abs.casino.common.promo.SupportedPlatform;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 

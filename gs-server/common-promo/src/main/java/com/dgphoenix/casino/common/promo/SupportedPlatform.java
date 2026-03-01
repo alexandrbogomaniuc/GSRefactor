@@ -1,5 +1,4 @@
-package com.dgphoenix.casino.common.promo;
-import com.abs.casino.common.promo.*;
+package com.abs.casino.common.promo;
 
 public enum SupportedPlatform implements ISupportedPlatform {
     ALL(null) {

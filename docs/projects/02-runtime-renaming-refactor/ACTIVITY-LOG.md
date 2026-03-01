@@ -4689,3 +4689,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - baseline `2277`, reduced `2108`, remaining `169`, burndown `92.577953%`
   - Project 02 `52.241265%`, Core `76.120633%`, Portfolio `88.060316%`
   - ETA `~6.9h` (`~0.86` workdays)
+
+## 2026-03-01 09:41 UTC (Hard-cut live batch L: common-promo interfaces + DTO)
+- Continued Project 02 hard-cut migration from dirty in-progress workspace with declaration-first low-risk promo clustering.
+- Batch intent was `10` declarations; retained after stabilization: `10`.
+  - moved: `ITournamentPromoTemplate`, `IConcurrentPromoTemplate`, `IPrizeWonHelper`, `IPromoCampaignsObserver`, `IPrizeWonHandler`, `INetworkPromoEventTemplate`, `ICampaignStatisticsProvider`, `TournamentPlayerDetails`, `GameBonusKey`, `SupportedPlatform`.
+- Bounded compatibility rewires:
+  - explicit legacy imports added in moved interfaces for unmoved promo dependencies,
+  - direct consumer imports rewired in `INetworkPromoEvent`, `NetworkTournamentEvent`, `MaxPerformanceTournamentTest`, `PrizeWonBalanceChanger`, `NotAvailableStatisticsProvider`, `CassandraSupportedPromoPlatformsPersister`.
+- Validation snapshot:
+  - focused fast gates: `common-promo/promo-core/promo-persisters/common-gs/common FAIL` on existing mixed-workspace drift profiles.
+  - canonical runner profile unchanged: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE03`, `validation FAIL PRE03`, `STEP09 retry SKIP`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-094152-hardcut-live-batchL-commonpromo-interfaces10/`
+  - report: `docs/projects/02-runtime-renaming-refactor/239-hard-cut-live-batchL-commonpromo-interfaces10-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2118`, remaining `159`, burndown `93.017127%`
+  - Project 02 `52.376347%`, Core `76.188174%`, Portfolio `88.094087%`
+  - ETA `~6.5h` (`~0.81` workdays)

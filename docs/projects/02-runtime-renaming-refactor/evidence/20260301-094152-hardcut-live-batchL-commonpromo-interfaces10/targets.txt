@@ -1,0 +1,10 @@
+com.dgphoenix.casino.common.promo.ITournamentPromoTemplate
+com.dgphoenix.casino.common.promo.IConcurrentPromoTemplate
+com.dgphoenix.casino.common.promo.IPrizeWonHelper
+com.dgphoenix.casino.common.promo.IPromoCampaignsObserver
+com.dgphoenix.casino.common.promo.IPrizeWonHandler
+com.dgphoenix.casino.common.promo.INetworkPromoEventTemplate
+com.dgphoenix.casino.common.promo.ICampaignStatisticsProvider
+com.dgphoenix.casino.common.promo.TournamentPlayerDetails
+com.dgphoenix.casino.common.promo.GameBonusKey
+com.dgphoenix.casino.common.promo.SupportedPlatform

@@ -1,7 +1,7 @@
 package com.abs.casino.common.promo;
 
 import com.dgphoenix.casino.common.promo.DesiredPrize;
-import com.dgphoenix.casino.common.promo.ICampaignStatisticsProvider;
+import com.abs.casino.common.promo.ICampaignStatisticsProvider;
 import com.dgphoenix.casino.common.promo.TournamentObjective;
 import com.abs.casino.common.currency.CurrencyRate;
 import com.abs.casino.common.currency.ICurrencyRateManager;

@@ -1,4 +1,6 @@
-package com.dgphoenix.casino.common.promo;
+package com.abs.casino.common.promo;
+
+import com.dgphoenix.casino.common.promo.Status;
 
 /**
  * Created by vladislav on 3/24/17.

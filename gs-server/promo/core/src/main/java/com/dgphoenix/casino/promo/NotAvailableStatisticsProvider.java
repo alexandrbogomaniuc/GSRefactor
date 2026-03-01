@@ -1,6 +1,6 @@
 package com.abs.casino.promo;
 
-import com.dgphoenix.casino.common.promo.ICampaignStatisticsProvider;
+import com.abs.casino.common.promo.ICampaignStatisticsProvider;
 
 /**
  * @author <a href="mailto:fateyev@dgphoenix.com">Anton Fateyev</a>

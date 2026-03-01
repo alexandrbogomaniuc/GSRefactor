@@ -1,6 +1,6 @@
 package com.abs.casino.common.promo.network;
 
-import com.dgphoenix.casino.common.promo.INetworkPromoEventTemplate;
+import com.abs.casino.common.promo.INetworkPromoEventTemplate;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

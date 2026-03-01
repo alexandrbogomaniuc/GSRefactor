@@ -4,7 +4,7 @@ import com.dgphoenix.casino.common.cache.BankInfoCache;
 import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.IPrizeWonHelper;
+import com.abs.casino.common.promo.IPrizeWonHelper;
 import com.dgphoenix.casino.common.promo.IPromoTemplate;
 import com.abs.casino.gs.managers.dblink.IGameDBLink;
 
