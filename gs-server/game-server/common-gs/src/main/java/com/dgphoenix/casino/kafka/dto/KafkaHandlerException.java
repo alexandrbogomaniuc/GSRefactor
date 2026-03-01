@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.kafka.dto;
+package com.abs.casino.kafka.dto;
 
 public class KafkaHandlerException extends RuntimeException {
     private static final long serialVersionUID = -7408312232089893083L;

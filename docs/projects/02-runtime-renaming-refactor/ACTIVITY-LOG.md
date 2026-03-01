@@ -4851,3 +4851,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - baseline `2277`, reduced `2191`, remaining `86`, burndown `96.223101%`
   - Project 02 `53.362446%`, Core `76.681223%`, Portfolio `88.340611%`
   - ETA `~3.6h` (`~0.45` workdays)
+
+
+## 2026-03-01 10:22 UTC (Hard-cut live batch U: kafka/lock/cache-interfaces 13)
+- Continued Project 02 hard-cut migration from dirty in-progress workspace using declaration-first low-risk batching.
+- Batch intent was `13` declarations; retained after stabilization: `13`.
+  - moved: `BasicKafkaResponse`, `VoidKafkaResponse`, `KafkaResponse`, `KafkaRequest`, `KafkaMessage`, `KafkaHandlerException`, `ILockManager`, `LockingInfo`, `IDistributedCache`, `IDistributedCacheEntry`, `Identifiable`, `Pair`, `Triple`.
+- Bounded compatibility rewires:
+  - package-only declaration migration for retained targets,
+  - no blind/global replace,
+  - subagent parallel mode attempted but blocked by thread-limit; bounded single-agent fallback used.
+- Validation snapshot:
+  - focused fast gates: `common FAIL`, `common-wallet FAIL`, `sb-utils FAIL`, `common-gs FAIL`, `common-promo FAIL`.
+  - canonical runner profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE02`, `validation FAIL PRE02`, `STEP09 retry SKIP`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-102006-hardcut-live-batchU-kafka-lock-cacheiface13/`
+  - report: `docs/projects/02-runtime-renaming-refactor/248-hard-cut-live-batchU-kafka-lock-cacheiface13-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2204`, remaining `73`, burndown `96.794027%`
+  - Project 02 `53.538053%`, Core `76.769026%`, Portfolio `88.384513%`
+  - ETA `~3.1h` (`~0.38` workdays)

@@ -1,0 +1,205 @@
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BasicKafkaResponse.java
+package com.abs.casino.kafka.dto;
+
+public abstract class BasicKafkaResponse implements KafkaResponse {
+    private boolean success;
+    private int statusCode;
+    private String reasonPhrases;
+
+    public BasicKafkaResponse() { }
+
+    public BasicKafkaResponse(boolean success, int statusCode, String reasonPhrases) {
+        this.success = success;
+        this.statusCode = statusCode;
+        this.reasonPhrases = reasonPhrases;
+    }
+
+    @Override
+    public boolean isSuccess() {
+        return success;
+    }
+
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/VoidKafkaResponse.java
+package com.abs.casino.kafka.dto;
+
+public class VoidKafkaResponse extends BasicKafkaResponse {
+    public VoidKafkaResponse() {}
+
+    public VoidKafkaResponse(boolean success, int errorCode, String errorDetails) {
+        super(success, errorCode, errorDetails);
+    }
+
+    public static VoidKafkaResponse success() {
+        return new VoidKafkaResponse(true, 0, "");
+    }
+
+    public static VoidKafkaResponse failure(int errorCode, String details) {
+        return new VoidKafkaResponse(false, errorCode, details);
+    }
+
+    public static VoidKafkaResponse unknownFailure(String details) {
+        return new VoidKafkaResponse(false, -1, details);
+    }
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaResponse.java
+package com.abs.casino.kafka.dto;
+
+public interface KafkaResponse extends KafkaMessage {
+    boolean isSuccess();
+    int getStatusCode();
+    String getReasonPhrases();
+}
+
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaRequest.java
+package com.abs.casino.kafka.dto;
+
+public interface KafkaRequest extends KafkaMessage {
+}
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaMessage.java
+package com.abs.casino.kafka.dto;
+
+public interface KafkaMessage {
+
+}
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaHandlerException.java
+package com.abs.casino.kafka.dto;
+
+public class KafkaHandlerException extends RuntimeException {
+    private static final long serialVersionUID = -7408312232089893083L;
+
+    private int code;
+
+    public KafkaHandlerException(int code, String message) {
+        super(message);
+        this.code = code;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+}
+===== gs-server/utils/src/main/java/com/dgphoenix/casino/common/lock/ILockManager.java
+package com.abs.casino.common.lock;
+
+import com.dgphoenix.casino.common.exception.CommonException;
+
+/**
+ * User: flsh
+ * Date: 04.02.15.
+ */
+public interface ILockManager {
+    LockingInfo lock(String id) throws CommonException;
+
+    boolean unlock(String id, long lockTime) throws CommonException;
+
+    LockingInfo lock(String id, final long timeout) throws CommonException;
+
+    LockingInfo tryLock(String id) throws CommonException;
+
+    boolean isLockOwner(String id);
+
+    void unlock(LockingInfo lockInfo);
+===== gs-server/utils/src/main/java/com/dgphoenix/casino/common/lock/LockingInfo.java
+package com.abs.casino.common.lock;
+
+import com.abs.casino.common.lock.LocalLockInfo;
+import com.abs.casino.common.lock.ServerLockInfo;
+
+/**
+ * User: flsh
+ * Date: 03.02.15.
+ */
+public class LockingInfo {
+    private LocalLockInfo localLockInfo;
+    private ServerLockInfo serverLockInfo;
+
+    public LockingInfo(LocalLockInfo localLockInfo, ServerLockInfo serverLockInfo) {
+        this.localLockInfo = localLockInfo;
+        this.serverLockInfo = serverLockInfo;
+    }
+
+    public LocalLockInfo getLocalLockInfo() {
+        return localLockInfo;
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/IDistributedCache.java
+package com.abs.casino.common.cache;
+
+import java.util.Map;
+
+/**
+ * User: flsh Date: 09.07.2009 ()
+ */
+public interface IDistributedCache<CACHE_KEY, CACHED_VALUE> {
+    public final static String NO_INFO = "no_info";
+    public final static String ID_DELIMITER = "+";
+    
+    CACHED_VALUE getObject(String id);
+    Map<CACHE_KEY, CACHED_VALUE> getAllObjects();    
+    int size();
+    String getAdditionalInfo();
+    String printDebug();
+}
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/IDistributedCacheEntry.java
+package com.abs.casino.common.cache;
+
+import java.io.Serializable;
+
+/**
+ * User: flsh
+ * Date: 17.09.2009
+ */
+public interface IDistributedCacheEntry extends Serializable {
+}
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/Identifiable.java
+package com.abs.casino.common.cache;
+
+import java.io.Serializable;
+
+/**
+ * User: flsh
+ * Date: 17.09.2009
+ */
+public interface Identifiable extends Serializable {
+    public long getId();
+}
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/Pair.java
+package com.abs.casino.common.util;
+
+public class Pair<K, V> {
+    private K key;
+    private V value;
+
+    public Pair() {
+    }
+
+    public Pair(K key, V value) {
+        super();
+        this.key = key;
+        this.value = value;
+    }
+
+    public K getKey() {
+        return key;
+    }
+
+    public void setKey(K key) {
+===== gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/Triple.java
+package com.abs.casino.common.util;
+
+public class Triple<S, T, U> {
+    private final Pair<S, Pair<T, U>> triple;
+
+    public Triple(final S first, final T second, final U third) {
+        triple = new Pair<S, Pair<T, U>>(first, new Pair<T, U>(second, third));
+    }
+
+    public S first() {
+        return triple.getKey();
+    }
+
+    public T second() {
+        return triple.getValue().getKey();
+    }
+
+    public U third() {
+        return triple.getValue().getValue();
+    }

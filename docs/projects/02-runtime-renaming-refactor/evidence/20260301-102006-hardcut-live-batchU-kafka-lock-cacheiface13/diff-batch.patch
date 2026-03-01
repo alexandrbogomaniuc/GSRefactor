@@ -1,0 +1,130 @@
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BasicKafkaResponse.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BasicKafkaResponse.java
+index db09f74e8..a70e7d267 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BasicKafkaResponse.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BasicKafkaResponse.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.kafka.dto;
++package com.abs.casino.kafka.dto;
+ 
+ public abstract class BasicKafkaResponse implements KafkaResponse {
+     private boolean success;
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaHandlerException.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaHandlerException.java
+index 24051ab56..cd7cccf05 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaHandlerException.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaHandlerException.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.kafka.dto;
++package com.abs.casino.kafka.dto;
+ 
+ public class KafkaHandlerException extends RuntimeException {
+     private static final long serialVersionUID = -7408312232089893083L;
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaMessage.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaMessage.java
+index 34953152b..1e576bc36 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaMessage.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaMessage.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.kafka.dto;
++package com.abs.casino.kafka.dto;
+ 
+ public interface KafkaMessage {
+ 
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaRequest.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaRequest.java
+index 5a35ad6f4..a8474614f 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaRequest.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaRequest.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.kafka.dto;
++package com.abs.casino.kafka.dto;
+ 
+ public interface KafkaRequest extends KafkaMessage {
+ }
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaResponse.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaResponse.java
+index 7b609071e..7be20c483 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaResponse.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaResponse.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.kafka.dto;
++package com.abs.casino.kafka.dto;
+ 
+ public interface KafkaResponse extends KafkaMessage {
+     boolean isSuccess();
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/VoidKafkaResponse.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/VoidKafkaResponse.java
+index 67dabf42c..f31ff1950 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/VoidKafkaResponse.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/VoidKafkaResponse.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.kafka.dto;
++package com.abs.casino.kafka.dto;
+ 
+ public class VoidKafkaResponse extends BasicKafkaResponse {
+     public VoidKafkaResponse() {}
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/IDistributedCache.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/IDistributedCache.java
+index cd00cb3fc..a729115a0 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/IDistributedCache.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/IDistributedCache.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ import java.util.Map;
+ 
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/IDistributedCacheEntry.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/IDistributedCacheEntry.java
+index f16c681f8..0febf5058 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/IDistributedCacheEntry.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/IDistributedCacheEntry.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ import java.io.Serializable;
+ 
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/Identifiable.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/Identifiable.java
+index 3033d6137..1af9cc0eb 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/Identifiable.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/Identifiable.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.cache;
++package com.abs.casino.common.cache;
+ 
+ import java.io.Serializable;
+ 
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/Pair.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/Pair.java
+index 2cdad72df..ddcbc1fc4 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/Pair.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/Pair.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.util;
++package com.abs.casino.common.util;
+ 
+ public class Pair<K, V> {
+     private K key;
+diff --git a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/Triple.java b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/Triple.java
+index 530429b95..a992fcf27 100644
+--- a/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/Triple.java
++++ b/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/Triple.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.util;
++package com.abs.casino.common.util;
+ 
+ public class Triple<S, T, U> {
+     private final Pair<S, Pair<T, U>> triple;
+diff --git a/gs-server/utils/src/main/java/com/dgphoenix/casino/common/lock/ILockManager.java b/gs-server/utils/src/main/java/com/dgphoenix/casino/common/lock/ILockManager.java
+index b65348ea2..e909c0d23 100644
+--- a/gs-server/utils/src/main/java/com/dgphoenix/casino/common/lock/ILockManager.java
++++ b/gs-server/utils/src/main/java/com/dgphoenix/casino/common/lock/ILockManager.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.lock;
++package com.abs.casino.common.lock;
+ 
+ import com.dgphoenix.casino.common.exception.CommonException;
+ 
+diff --git a/gs-server/utils/src/main/java/com/dgphoenix/casino/common/lock/LockingInfo.java b/gs-server/utils/src/main/java/com/dgphoenix/casino/common/lock/LockingInfo.java
+index ca173fbfa..f227cd45a 100644
+--- a/gs-server/utils/src/main/java/com/dgphoenix/casino/common/lock/LockingInfo.java
++++ b/gs-server/utils/src/main/java/com/dgphoenix/casino/common/lock/LockingInfo.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.common.lock;
++package com.abs.casino.common.lock;
+ 
+ import com.abs.casino.common.lock.LocalLockInfo;
+ import com.abs.casino.common.lock.ServerLockInfo;

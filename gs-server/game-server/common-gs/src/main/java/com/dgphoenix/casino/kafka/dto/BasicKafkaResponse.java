@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.kafka.dto;
+package com.abs.casino.kafka.dto;
 
 public abstract class BasicKafkaResponse implements KafkaResponse {
     private boolean success;

@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.common.util;
+package com.abs.casino.common.util;
 
 public class Triple<S, T, U> {
     private final Pair<S, Pair<T, U>> triple;
