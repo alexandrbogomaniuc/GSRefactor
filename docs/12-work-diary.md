@@ -9540,3 +9540,20 @@
   - baseline `2277`, reduced `2087`, remaining `190`, burndown `91.655687%`
   - Project 02 `51.957593%`, Core `75.978797%`, Portfolio `87.989398%`
   - ETA `~7.7h` (`~0.96` workdays)
+
+### 2026-03-01 09:23 UTC
+- Continued Project 02 hard-cut namespace migration in `/Users/alexb/Documents/Dev/Dev_new` and completed live `Batch J`.
+- Batch intent: `15` declarations; retained: `11`.
+- Retained moves (`com.dgphoenix -> com.abs`):
+  - `AlwaysQualifyBetQualifier`, `ByAmountBetEventQualifier`, `NoPrizeQualifier`, `SpinCountPrizeQualifier`, `DelegatedEventQualifier`, `IPlayerBetQualifier`, `IPlayerBonusQualifier`, `IPlayerWinQualifier`, `TournamentSimpleBetEventQualifier`, `ISupportedPlatform`, `IPrizeWonHandlersFactory`.
+- Not-applicable (already moved in HEAD):
+  - `WinQualifier`, `ByAmountBetRoundQualifier`, `FixedRateByAmountBetEventQualifier`, `ITournamentEventQualifier`.
+- Validation:
+  - canonical runner profile remained blocked by pre-existing drift (`STEP01` in common install path, `PRE03` in `common-promo`).
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-092323-hardcut-live-batchJ-promo-qualifiers15/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/237-hard-cut-live-batchJ-promo-qualifiers-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2098`, remaining `179`, burndown `92.138779%`
+  - Project 02 `52.106183%`, Core `76.053092%`, Portfolio `88.026546%`
+  - ETA `~7.3h` (`~0.91` workdays)

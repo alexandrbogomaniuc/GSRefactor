@@ -1,0 +1,8 @@
+[START] common-promo
+common-promo rc=1
+[START] promo-persisters
+promo-persisters rc=1
+[START] promo-core
+promo-core rc=1
+[START] common-gs
+common-gs rc=1

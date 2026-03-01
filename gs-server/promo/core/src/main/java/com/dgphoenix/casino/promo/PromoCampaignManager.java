@@ -1,4 +1,5 @@
 package com.abs.casino.promo;
+import com.abs.casino.common.promo.*;
 
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.cassandra.DistributedLockManager;

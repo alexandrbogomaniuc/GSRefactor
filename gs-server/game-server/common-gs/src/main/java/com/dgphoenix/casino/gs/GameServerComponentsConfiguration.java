@@ -1,4 +1,5 @@
 package com.abs.casino.gs;
+import com.abs.casino.common.promo.*;
 
 import com.abs.casino.GeoIp;
 import com.dgphoenix.casino.account.AccountManager;
@@ -15,7 +16,7 @@ import com.abs.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
 import com.abs.casino.common.config.HostConfiguration;
 import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.lock.ILockManager;
-import com.dgphoenix.casino.common.promo.IPrizeWonHandlersFactory;
+import com.abs.casino.common.promo.IPrizeWonHandlersFactory;
 import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
 import com.abs.casino.common.promo.IPromoCountryRestrictionService;
 import com.abs.casino.common.transactiondata.ITransactionDataCreator;

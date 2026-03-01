@@ -1,0 +1,216 @@
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AlwaysQualifyBetQualifier.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AlwaysQualifyBetQualifier.java
+index f4c06b5a7..f0ea84817 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AlwaysQualifyBetQualifier.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AlwaysQualifyBetQualifier.java
+@@ -1,4 +1,5 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
++import com.dgphoenix.casino.common.promo.*;
+ 
+ import com.abs.casino.common.currency.ICurrencyRateManager;
+ import com.dgphoenix.casino.common.exception.CommonException;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetEventQualifier.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetEventQualifier.java
+index 3360bde76..49de96e51 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetEventQualifier.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetEventQualifier.java
+@@ -1,4 +1,5 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
++import com.dgphoenix.casino.common.promo.*;
+ 
+ import com.abs.casino.common.currency.ICurrencyRateManager;
+ import com.dgphoenix.casino.common.exception.CommonException;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DelegatedEventQualifier.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DelegatedEventQualifier.java
+index 54f2ab178..0060dcf25 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DelegatedEventQualifier.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DelegatedEventQualifier.java
+@@ -1,4 +1,5 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
++import com.dgphoenix.casino.common.promo.*;
+ 
+ import com.abs.casino.common.currency.ICurrencyRateManager;
+ import com.dgphoenix.casino.common.exception.CommonException;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IParticipantEventQualifier.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IParticipantEventQualifier.java
+index 4eb312d48..96b17828f 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IParticipantEventQualifier.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IParticipantEventQualifier.java
+@@ -1,4 +1,5 @@
+ package com.dgphoenix.casino.common.promo;
++import com.abs.casino.common.promo.*;
+ 
+ /**
+  * User: flsh
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerBetQualifier.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerBetQualifier.java
+index 3bd91db6e..530c8e7c5 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerBetQualifier.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerBetQualifier.java
+@@ -1,4 +1,5 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
++import com.dgphoenix.casino.common.promo.*;
+ 
+ import com.abs.casino.common.currency.ICurrencyRateManager;
+ import com.dgphoenix.casino.common.exception.CommonException;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerBonusQualifier.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerBonusQualifier.java
+index 61d3719b3..7b05c1ae9 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerBonusQualifier.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerBonusQualifier.java
+@@ -1,4 +1,5 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
++import com.dgphoenix.casino.common.promo.*;
+ 
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.esotericsoftware.kryo.KryoSerializable;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerWinQualifier.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerWinQualifier.java
+index 132b3a157..cf44a1b4e 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerWinQualifier.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerWinQualifier.java
+@@ -1,4 +1,5 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
++import com.dgphoenix.casino.common.promo.*;
+ 
+ import com.abs.casino.common.currency.ICurrencyRateManager;
+ import com.dgphoenix.casino.common.exception.CommonException;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrizeWonHandlersFactory.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrizeWonHandlersFactory.java
+index e5e831378..622d9c6a8 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrizeWonHandlersFactory.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrizeWonHandlersFactory.java
+@@ -1,4 +1,5 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
++import com.dgphoenix.casino.common.promo.*;
+ 
+ import com.dgphoenix.casino.common.exception.CommonException;
+ 
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignManager.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignManager.java
+index ac874c937..c1a47633c 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignManager.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignManager.java
+@@ -1,4 +1,5 @@
+ package com.dgphoenix.casino.common.promo;
++import com.abs.casino.common.promo.*;
+ 
+ import com.abs.casino.common.promo.INetworkPromoCampaign;
+ import com.abs.casino.common.cache.data.account.IAccountInfo;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ISupportedPlatform.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ISupportedPlatform.java
+index 43b64cd75..de9ca3f9e 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ISupportedPlatform.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ISupportedPlatform.java
+@@ -1,4 +1,5 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
++import com.dgphoenix.casino.common.promo.*;
+ 
+ public interface ISupportedPlatform {
+ 
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NoPrizeQualifier.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NoPrizeQualifier.java
+index ccdd69adc..0adaff46a 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NoPrizeQualifier.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NoPrizeQualifier.java
+@@ -1,4 +1,5 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
++import com.dgphoenix.casino.common.promo.*;
+ 
+ import com.abs.casino.common.currency.ICurrencyRateManager;
+ import com.dgphoenix.casino.common.exception.CommonException;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SpinCountPrizeQualifier.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SpinCountPrizeQualifier.java
+index cd5ce45ac..b64b38ae3 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SpinCountPrizeQualifier.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SpinCountPrizeQualifier.java
+@@ -1,4 +1,5 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
++import com.dgphoenix.casino.common.promo.*;
+ 
+ import com.abs.casino.common.currency.ICurrencyRateManager;
+ import com.dgphoenix.casino.common.exception.CommonException;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SupportedPlatform.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SupportedPlatform.java
+index 22cf07f67..49a4b18a5 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SupportedPlatform.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SupportedPlatform.java
+@@ -1,4 +1,5 @@
+ package com.dgphoenix.casino.common.promo;
++import com.abs.casino.common.promo.*;
+ 
+ public enum SupportedPlatform implements ISupportedPlatform {
+     ALL(null) {
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentSimpleBetEventQualifier.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentSimpleBetEventQualifier.java
+index a58095ded..6425498d4 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentSimpleBetEventQualifier.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentSimpleBetEventQualifier.java
+@@ -1,4 +1,5 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
++import com.dgphoenix.casino.common.promo.*;
+ 
+ import com.abs.casino.common.currency.ICurrencyRateManager;
+ import com.dgphoenix.casino.common.exception.CommonException;
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java
+index bd902e2b5..138e24477 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java
+@@ -1,4 +1,5 @@
+ package com.abs.casino.gs;
++import com.abs.casino.common.promo.*;
+ 
+ import com.abs.casino.GeoIp;
+ import com.dgphoenix.casino.account.AccountManager;
+@@ -15,7 +16,7 @@ import com.abs.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
+ import com.abs.casino.common.config.HostConfiguration;
+ import com.abs.casino.common.currency.ICurrencyRateManager;
+ import com.dgphoenix.casino.common.lock.ILockManager;
+-import com.dgphoenix.casino.common.promo.IPrizeWonHandlersFactory;
++import com.abs.casino.common.promo.IPrizeWonHandlersFactory;
+ import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
+ import com.abs.casino.common.promo.IPromoCountryRestrictionService;
+ import com.abs.casino.common.transactiondata.ITransactionDataCreator;
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/wins/handlers/PrizeWonHandlersFactory.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/wins/handlers/PrizeWonHandlersFactory.java
+index 01736e8ba..dbc193e70 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/wins/handlers/PrizeWonHandlersFactory.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/wins/handlers/PrizeWonHandlersFactory.java
+@@ -1,4 +1,5 @@
+ package com.abs.casino.promo.wins.handlers;
++import com.abs.casino.common.promo.*;
+ 
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.promo.*;
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/GameServerServiceConfiguration.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/GameServerServiceConfiguration.java
+index cff64af36..e7643838e 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/GameServerServiceConfiguration.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/GameServerServiceConfiguration.java
+@@ -1,4 +1,5 @@
+ package com.abs.casino.services;
++import com.abs.casino.common.promo.*;
+ 
+ import com.dgphoenix.casino.common.cache.*;
+ import com.abs.casino.common.currency.CurrencyRate;
+diff --git a/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java b/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java
+index 5113d6b1e..f2122d87a 100644
+--- a/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java
++++ b/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java
+@@ -1,4 +1,5 @@
+ package com.abs.casino.promo;
++import com.abs.casino.common.promo.*;
+ 
+ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+ import com.dgphoenix.casino.cassandra.DistributedLockManager;
+diff --git a/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSupportedPromoPlatformsPersister.java b/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSupportedPromoPlatformsPersister.java
+index 0cda36346..1dcdedb1e 100644
+--- a/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSupportedPromoPlatformsPersister.java
++++ b/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSupportedPromoPlatformsPersister.java
+@@ -1,9 +1,10 @@
+ package com.abs.casino.promo.persisters;
++import com.abs.casino.common.promo.*;
+ 
+ import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
+ import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
+ import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+-import com.dgphoenix.casino.common.promo.ISupportedPlatform;
++import com.abs.casino.common.promo.ISupportedPlatform;
+ import com.dgphoenix.casino.common.promo.SupportedPlatform;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;

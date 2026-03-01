@@ -1,4 +1,5 @@
 package com.dgphoenix.casino.common.promo;
+import com.abs.casino.common.promo.*;
 
 /**
  * User: flsh

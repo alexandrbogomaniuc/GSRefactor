@@ -1,0 +1,11 @@
+AlwaysQualifyBetQualifier
+ByAmountBetEventQualifier
+NoPrizeQualifier
+SpinCountPrizeQualifier
+DelegatedEventQualifier
+IPlayerBetQualifier
+IPlayerBonusQualifier
+IPlayerWinQualifier
+TournamentSimpleBetEventQualifier
+ISupportedPlatform
+IPrizeWonHandlersFactory

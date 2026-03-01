@@ -1,0 +1,4 @@
+WinQualifier
+ByAmountBetRoundQualifier
+FixedRateByAmountBetEventQualifier
+ITournamentEventQualifier

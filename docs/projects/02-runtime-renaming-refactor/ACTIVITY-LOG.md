@@ -4650,3 +4650,24 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - baseline `2277`, reduced `2087`, remaining `190`, burndown `91.655687%`
   - Project 02 `51.957593%`, Core `75.978797%`, Portfolio `87.989398%`
   - ETA `~7.7h` (`~0.96` workdays)
+
+## 2026-03-01 09:23 UTC (Hard-cut live batch J: promo qualifiers/interfaces)
+- Continued Project 02 hard-cut migration from dirty in-progress workspace with declaration-first low-risk promo clustering.
+- Batch intent was `15` declarations; retained after stabilization: `11`.
+  - moved: `AlwaysQualifyBetQualifier`, `ByAmountBetEventQualifier`, `NoPrizeQualifier`, `SpinCountPrizeQualifier`, `DelegatedEventQualifier`, `IPlayerBetQualifier`, `IPlayerBonusQualifier`, `IPlayerWinQualifier`, `TournamentSimpleBetEventQualifier`, `ISupportedPlatform`, `IPrizeWonHandlersFactory`.
+  - not applicable (already moved in HEAD): `WinQualifier`, `ByAmountBetRoundQualifier`, `FixedRateByAmountBetEventQualifier`, `ITournamentEventQualifier`.
+- Bounded compatibility rewires:
+  - moved promo declarations now explicitly import legacy promo neighbors where required,
+  - clean callsites rewired for moved promo declarations (`GameServerServiceConfiguration`, `GameServerComponentsConfiguration`, `PrizeWonHandlersFactory`, `PromoCampaignManager`, `CassandraSupportedPromoPlatformsPersister`, and old-package promo wrappers/interfaces).
+- Validation snapshot (canonical runner):
+  - `fast_gate_batchA`: `FAIL` at `STEP01`.
+  - `fast_gate_batchB`: `FAIL` at `STEP01`.
+  - `prewarm`: `FAIL` at `PRE03`.
+  - `validation`: `FAIL` at `PRE03`; `STEP09` retry skipped.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-092323-hardcut-live-batchJ-promo-qualifiers15/`
+  - report: `docs/projects/02-runtime-renaming-refactor/237-hard-cut-live-batchJ-promo-qualifiers-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2098`, remaining `179`, burndown `92.138779%`
+  - Project 02 `52.106183%`, Core `76.053092%`, Portfolio `88.026546%`
+  - ETA `~7.3h` (`~0.91` workdays)

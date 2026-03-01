@@ -1,0 +1,73 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-promo-persisters >--------------
+[INFO] Building gsn-promo-persisters 1.2
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-promo-persisters ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-promo-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-promo-persisters ---
+[INFO] Compiling 22 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/PromoPredefinedUsersPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraTournamentRankPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSupportedPromoPlatformsPersister.java:[7,34] error: cannot find symbol
+[ERROR]   symbol:   class ISupportedPlatform
+  location: package com.abs.casino.common.promo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSupportedPromoPlatformsPersister.java:[29,41] error: cannot find symbol
+[ERROR]   symbol:   class ISupportedPlatform
+  location: class CassandraSupportedPromoPlatformsPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSupportedPromoPlatformsPersister.java:[43,11] error: cannot find symbol
+[ERROR]   symbol:   class ISupportedPlatform
+  location: class CassandraSupportedPromoPlatformsPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPromoCampaignPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPromoCampaignPersister.java:[7,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraBattlegroundConfigPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPlayerAliasPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraMaxBalanceTournamentPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPromoCampaignMembersPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraUnsendedPromoWinInfoPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraUnsendedPromoWinInfoPersister.java:[7,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[INFO] 14 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.702 s
+[INFO] Finished at: 2026-03-01T09:24:34Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-promo-persisters: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/PromoPredefinedUsersPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraTournamentRankPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSupportedPromoPlatformsPersister.java:[7,34] error: cannot find symbol
+[ERROR]   symbol:   class ISupportedPlatform
+[ERROR]   location: package com.abs.casino.common.promo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSupportedPromoPlatformsPersister.java:[29,41] error: cannot find symbol
+[ERROR]   symbol:   class ISupportedPlatform
+[ERROR]   location: class CassandraSupportedPromoPlatformsPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSupportedPromoPlatformsPersister.java:[43,11] error: cannot find symbol
+[ERROR]   symbol:   class ISupportedPlatform
+[ERROR]   location: class CassandraSupportedPromoPlatformsPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPromoCampaignPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPromoCampaignPersister.java:[7,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraBattlegroundConfigPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraSummaryTournamentPromoFeedPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPlayerAliasPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraMaxBalanceTournamentPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraPromoCampaignMembersPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraUnsendedPromoWinInfoPersister.java:[6,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/persisters/src/main/java/com/dgphoenix/casino/promo/persisters/CassandraUnsendedPromoWinInfoPersister.java:[7,66] error: package com.dgphoenix.casino.cassandra.persist.engine.configuration does not exist
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
