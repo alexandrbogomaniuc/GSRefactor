@@ -27,7 +27,7 @@ cat > "${SCAN_ROOT}/src/b.txt" <<'TXT'
 mq_token_should_be_reviewed
 TXT
 cat > "${SCAN_ROOT}/src/c.txt" <<'TXT'
-package com.abs.demo;
+package com.dgphoenix.demo;
 TXT
 cat > "${SCAN_ROOT}/config/safe.xml" <<'TXT'
 maxquest config label

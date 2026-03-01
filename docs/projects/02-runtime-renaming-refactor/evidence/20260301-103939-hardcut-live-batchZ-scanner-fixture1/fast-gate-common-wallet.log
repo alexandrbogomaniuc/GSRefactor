@@ -1,0 +1,77 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-wallet >-----------------
+[INFO] Building common-wallet 1.0.67
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-wallet ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ common-wallet ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-wallet ---
+[INFO] Compiling 13 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v3/RESTCWClient.java:[4,39] error: cannot find symbol
+[ERROR]   symbol:   class ExtendedAccountInfoPersisterInstanceHolder
+  location: package com.abs.casino.cassandra.persist
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java:[19,38] error: cannot find symbol
+[ERROR]   symbol:   class CommonException
+  location: package com.abs.casino.common.exception
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java:[30,40] error: cannot find symbol
+[ERROR]   symbol:   class StringUtils
+  location: package com.abs.casino.common.util.string
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java:[39,51] error: cannot find symbol
+[ERROR]   symbol:   class ICommonWalletClient
+  location: package com.abs.casino.gs.managers.payment.wallet.v4
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java:[78,51] error: cannot find symbol
+[ERROR]   symbol:   class CommonException
+  location: class CommonWalletManager
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java:[92,82] error: cannot find symbol
+[ERROR]   symbol:   class CommonException
+  location: class CommonWalletManager
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java:[122,19] error: cannot find symbol
+[ERROR]   symbol:   class CommonException
+  location: class CommonWalletManager
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java:[139,79] error: cannot find symbol
+[INFO] 8 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.896 s
+[INFO] Finished at: 2026-03-01T10:39:56Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project common-wallet: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v3/RESTCWClient.java:[4,39] error: cannot find symbol
+[ERROR]   symbol:   class ExtendedAccountInfoPersisterInstanceHolder
+[ERROR]   location: package com.abs.casino.cassandra.persist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java:[19,38] error: cannot find symbol
+[ERROR]   symbol:   class CommonException
+[ERROR]   location: package com.abs.casino.common.exception
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java:[30,40] error: cannot find symbol
+[ERROR]   symbol:   class StringUtils
+[ERROR]   location: package com.abs.casino.common.util.string
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java:[39,51] error: cannot find symbol
+[ERROR]   symbol:   class ICommonWalletClient
+[ERROR]   location: package com.abs.casino.gs.managers.payment.wallet.v4
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java:[78,51] error: cannot find symbol
+[ERROR]   symbol:   class CommonException
+[ERROR]   location: class CommonWalletManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java:[92,82] error: cannot find symbol
+[ERROR]   symbol:   class CommonException
+[ERROR]   location: class CommonWalletManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java:[122,19] error: cannot find symbol
+[ERROR]   symbol:   class CommonException
+[ERROR]   location: class CommonWalletManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/CommonWalletManager.java:[139,79] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

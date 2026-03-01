@@ -1,0 +1,1 @@
+gs-server/deploy/scripts/phase9-abs-rename-candidate-scan-smoke.sh

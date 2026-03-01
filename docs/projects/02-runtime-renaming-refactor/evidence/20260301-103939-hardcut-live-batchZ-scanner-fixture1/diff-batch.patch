@@ -1,0 +1,13 @@
+diff --git a/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan-smoke.sh b/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan-smoke.sh
+index c9c643ab4..cde2bf4f5 100755
+--- a/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan-smoke.sh
++++ b/gs-server/deploy/scripts/phase9-abs-rename-candidate-scan-smoke.sh
+@@ -27,7 +27,7 @@ cat > "${SCAN_ROOT}/src/b.txt" <<'TXT'
+ mq_token_should_be_reviewed
+ TXT
+ cat > "${SCAN_ROOT}/src/c.txt" <<'TXT'
+-package com.dgphoenix.demo;
++package com.abs.demo;
+ TXT
+ cat > "${SCAN_ROOT}/config/safe.xml" <<'TXT'
+ maxquest config label

@@ -4943,3 +4943,16 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - ETA `~0.05h` (`~0.01` workdays)
 - Residual blocker:
   - only scanner smoke fixture text literal remains at `gs-server/deploy/scripts/phase9-abs-rename-candidate-scan-smoke.sh`.
+
+## 2026-03-01 10:39 UTC (Hard-cut live batch Z: scanner fixture 1)
+- Completed final residual package-literal cleanup in scanner smoke fixture.
+- Validation snapshot:
+  - focused fast gates: `common FAIL`, `common-wallet FAIL`, `sb-utils FAIL`, `common-gs FAIL`, `common-promo FAIL`.
+  - canonical runner profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-103939-hardcut-live-batchZ-scanner-fixture1/`
+  - report: `docs/projects/02-runtime-renaming-refactor/253-hard-cut-live-batchZ-scanner-fixture1-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+  - ETA `~0.0h` (`~0.00` workdays)
