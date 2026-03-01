@@ -23,6 +23,8 @@ Steps:
 - `locales/<lang>/paytable.json`
 - `locales/<lang>/rules.json`
 - `math/math-pack.manifest.json`
+- `docs/asset-manifest.sample.json`
+- `raw-assets/preload`, `raw-assets/main`, `raw-assets/promo`
 - `src/` entrypoints
 3. Register translation keys (`src/i18n/keys.ts`), no raw strings in runtime code.
 4. Implement `src/runtime/OutcomeMapper.ts` stub using browser-visible `presentationPayload` only.

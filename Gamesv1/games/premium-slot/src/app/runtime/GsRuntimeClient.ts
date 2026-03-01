@@ -1,5 +1,6 @@
 import {
   createTransport,
+  type FeatureActionResponse,
   type GameInitConfig,
   type IGameTransport,
   type OpenGameResponse,
@@ -159,6 +160,34 @@ export class GsRuntimeClient {
   // Deprecated alias kept for old call sites.
   public async readHistory(pageNumber = 0): Promise<Array<Record<string, unknown>>> {
     return this.getHistory(pageNumber);
+  }
+
+  public async featureAction(
+    action: string,
+    payload: Record<string, unknown> = {},
+  ): Promise<FeatureActionResponse> {
+    const transport = this.assertTransport();
+    const snapshot = SessionRuntimeStore.get();
+    const nextCounter = snapshot.requestCounter + 1;
+    const operationKey = `feature-${action}-${nextCounter}`;
+
+    const response = await transport.featureAction({
+      action,
+      payload,
+      metadata: {
+        requestCounter: nextCounter,
+        clientOperationId: operationKey,
+        idempotencyKey: operationKey,
+        currentStateVersion: snapshot.currentStateVersion,
+      },
+    });
+
+    SessionRuntimeStore.patch({
+      requestCounter: response.requestCounter,
+      currentStateVersion: response.currentStateVersion,
+    });
+
+    return response;
   }
 
   public async close(reason = "client-close"): Promise<void> {

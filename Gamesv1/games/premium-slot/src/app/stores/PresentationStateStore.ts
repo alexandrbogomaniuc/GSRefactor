@@ -2,16 +2,22 @@ export interface PresentationState {
   isSpinning: boolean;
   isPresentingWin: boolean;
   turboSelected: boolean;
+  soundEnabled: boolean;
   statusText: string;
   lastWinAmount: number;
+  lastMessages: string[];
+  activeFeatureModules: string[];
 }
 
 let state: PresentationState = {
   isSpinning: false,
   isPresentingWin: false,
   turboSelected: false,
+  soundEnabled: true,
   statusText: "",
   lastWinAmount: 0,
+  lastMessages: [],
+  activeFeatureModules: [],
 };
 
 export const PresentationStateStore = {
@@ -32,8 +38,11 @@ export const PresentationStateStore = {
       isSpinning: false,
       isPresentingWin: false,
       turboSelected: false,
+      soundEnabled: true,
       statusText: "",
       lastWinAmount: 0,
+      lastMessages: [],
+      activeFeatureModules: [],
     };
   },
 };

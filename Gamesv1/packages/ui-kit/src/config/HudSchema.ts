@@ -9,8 +9,10 @@ export interface HudSchema {
     spin: boolean;
     autoplay: boolean;
     turbo: boolean;
+    buyFeature: boolean;
     sound: boolean;
-    menu: boolean;
+    settings: boolean;
+    history: boolean;
   };
 }
 
@@ -25,8 +27,10 @@ export const DefaultHudSchema: HudSchema = {
     spin: true,
     autoplay: true,
     turbo: true,
+    buyFeature: true,
     sound: true,
-    menu: true,
+    settings: true,
+    history: true,
   },
 };
 

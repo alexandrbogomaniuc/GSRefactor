@@ -35,6 +35,7 @@ Canonical and archived documentation index.
 - Release/registration: `docs/RELEASE_PROCESS.md`, `docs/gs/release-registration-contract.md`
 - Canary/rollback: `docs/gs/enable-disable-canary-rollback.md`
 - Agent protocol rules: `.agent/rules/01_rules_protocol.md`
+- Premium reference architecture: `games/premium-slot/docs/ARCHITECTURE_MAP.md`
 
 ## Archived and deprecated
 

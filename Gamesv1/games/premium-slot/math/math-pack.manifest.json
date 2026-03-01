@@ -1,0 +1,8 @@
+﻿{
+  "id": "premium-slot-math-default",
+  "modelVersion": "0.1.0-stub",
+  "rtp": 96.54,
+  "volatility": "medium-high",
+  "certified": false,
+  "source": "replace-with-certified-math-package-before-production"
+}

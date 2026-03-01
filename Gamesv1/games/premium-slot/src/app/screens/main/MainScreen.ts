@@ -1,22 +1,26 @@
-import { FancyButton } from "@pixi/ui";
-import { Container, Text } from "pixi.js";
+﻿import { Container, Text } from "pixi.js";
 
 import {
   AnimationPolicyEngine,
   createAnimationPolicy,
+  type ResolvedConfig,
   type WinTier,
 } from "@gamesv1/core-compliance";
 import { engine } from "@gamesv1/pixi-engine";
 import {
-  Button,
   GameConfig,
-  PausePopup,
-  ResponsiveHudLayoutController,
+  PremiumTemplateHud,
+  type PremiumHudControlId,
+  type PremiumHudVisibility,
   SettingsPopup,
   SlotMachine,
   UiAssetKeys,
 } from "@gamesv1/ui-kit";
-import { gsRuntimeClient, mapPlayRoundToSlotOutcome } from "../../runtime";
+import {
+  gsRuntimeClient,
+  mapPlayRoundToPresentation,
+  type RoundPresentationModel,
+} from "../../runtime";
 import {
   PresentationStateStore,
   ResolvedRuntimeConfigStore,
@@ -24,13 +28,74 @@ import {
 } from "../../stores";
 
 import { AppAssetKeys } from "../../assets/assetKeys";
+import { userSettings } from "../../utils/userSettings";
+import {
+  FeatureModuleManager,
+  type FeatureFrame,
+} from "../../../game/features";
 import { ParticleBurst } from "../../../game/fx/ParticleBurst";
 import { WinHighlight } from "../../../game/fx/WinHighlight";
 import { WinCounter } from "../../../game/ui/WinCounter";
 import { DebugOverlay } from "./DebugOverlay";
 
+type PendingRoundResolution = {
+  presentation: RoundPresentationModel;
+  featureFrame: FeatureFrame;
+  balance: number;
+};
+
+const buildBaseHudVisibility = (runtimeConfig: ResolvedConfig): PremiumHudVisibility => ({
+  controls: {
+    spin: true,
+    turbo: runtimeConfig.capabilities.turbo.allowed,
+    autoplay: runtimeConfig.capabilities.features.autoplay,
+    buyFeature:
+      runtimeConfig.capabilities.features.buyFeature ||
+      runtimeConfig.capabilities.features.buyFeatureForCashBonus,
+    sound: runtimeConfig.capabilities.sound.showToggle,
+    settings: runtimeConfig.capabilities.sessionUi.closeButtonPolicy !== "hidden",
+    history:
+      runtimeConfig.capabilities.features.inGameHistory && runtimeConfig.capabilities.history.enabled,
+  },
+  metrics: {
+    balance: runtimeConfig.walletDisplay.showBalance,
+    bet: true,
+    win: true,
+  },
+});
+
+const applyQueryOverrides = (visibility: PremiumHudVisibility): PremiumHudVisibility => {
+  const params = new URLSearchParams(window.location.search);
+  const controls = { ...visibility.controls };
+
+  const maybeOverride = (key: PremiumHudControlId, queryKey?: string) => {
+    const resolvedQueryKey = queryKey ?? key;
+    const value = params.get(resolvedQueryKey);
+    if (value === "0") controls[key] = false;
+    if (value === "1") controls[key] = true;
+  };
+
+  maybeOverride("spin");
+  maybeOverride("turbo");
+  maybeOverride("autoplay");
+  maybeOverride("buyFeature", "buybonus");
+  maybeOverride("sound");
+  maybeOverride("settings");
+  maybeOverride("history");
+
+  return {
+    controls,
+    metrics: { ...visibility.metrics },
+  };
+};
+
+const formatMessages = (messages: string[]): string =>
+  messages.filter(Boolean).slice(0, 3).join(" | ");
+
 export class MainScreen extends Container {
   public static assetBundles = ["main"];
+
+  private readonly runtimeConfig: ResolvedConfig;
 
   private reelsLayer: Container;
   private fxLayer: Container;
@@ -41,38 +106,41 @@ export class MainScreen extends Container {
   private particleBurst: ParticleBurst;
   private winCounter: WinCounter;
   private debugOverlay: DebugOverlay;
-
-  private spinButton: Button;
-  private turboToggleButton: Button;
-  private autoplayButton: Button;
-  private buyBonusButton: Button;
-  private pauseButton: FancyButton;
-  private settingsButton: FancyButton;
+  private hud: PremiumTemplateHud;
   private statusText: Text;
-  private turboStateText: Text;
 
   private paused = false;
   private isSpinning = false;
   private isPresentingWin = false;
   private turboSelected = false;
+  private soundEnabled = true;
+  private suppressHeavyFxForRound = false;
   private currentWinPresentationTimeout: ReturnType<typeof setTimeout> | null = null;
 
   private readonly animationPolicy: AnimationPolicyEngine;
-  private readonly hudLayout: ResponsiveHudLayoutController;
-  private pendingRoundOutcome: ReturnType<typeof mapPlayRoundToSlotOutcome> | null = null;
+  private readonly featureModules: FeatureModuleManager;
+  private readonly baseHudVisibility: PremiumHudVisibility;
+
+  private pendingRound: PendingRoundResolution | null = null;
 
   constructor() {
     super();
 
-    const runtimeConfig = ResolvedRuntimeConfigStore.get();
+    this.runtimeConfig = ResolvedRuntimeConfigStore.get();
     this.animationPolicy = new AnimationPolicyEngine(
       createAnimationPolicy({
-        runtimeConfig,
-        forcedSkipWinPresentation: true,
-        lowPerformanceMode: import.meta.env.DEV ? false : false,
+        runtimeConfig: this.runtimeConfig,
+        forcedSkipWinPresentation:
+          this.runtimeConfig.capabilities.animationPolicy.forcedSkipWinPresentation,
+        lowPerformanceMode: this.runtimeConfig.capabilities.animationPolicy.lowPerformanceMode,
       }),
     );
+
+    this.featureModules = new FeatureModuleManager(this.runtimeConfig);
+    this.baseHudVisibility = applyQueryOverrides(buildBaseHudVisibility(this.runtimeConfig));
+
     this.turboSelected = this.animationPolicy.value.turbo.selected;
+    this.soundEnabled = this.runtimeConfig.soundDefaults.modeByDefault !== "off";
 
     this.reelsLayer = new Container();
     this.fxLayer = new Container();
@@ -94,78 +162,22 @@ export class MainScreen extends Container {
     this.winCounter = new WinCounter();
     this.uiLayer.addChild(this.winCounter);
 
-    this.debugOverlay = new DebugOverlay();
-    this.addChild(this.debugOverlay);
-
-    this.spinButton = new Button({ text: "SPIN", width: 210, height: 100 });
-    this.spinButton.onPress.connect(() => this.handleSpin());
-    this.uiLayer.addChild(this.spinButton);
-
-    this.turboToggleButton = new Button({ text: "TURBO", width: 190, height: 84, fontSize: 24 });
-    this.turboToggleButton.onPress.connect(() => this.toggleTurbo());
-    this.uiLayer.addChild(this.turboToggleButton);
-
-    this.autoplayButton = new Button({ text: "AUTO", width: 190, height: 84, fontSize: 24 });
-    this.autoplayButton.onPress.connect(() => {
-      this.statusText.text = "AUTOPLAY DEMO";
-      this.statusText.visible = true;
-      setTimeout(() => (this.statusText.visible = false), 700);
-    });
-    this.uiLayer.addChild(this.autoplayButton);
-
-    this.buyBonusButton = new Button({ text: "BUY", width: 190, height: 84, fontSize: 24 });
-    this.buyBonusButton.onPress.connect(() => {
-      this.statusText.text = "BUY BONUS DEMO";
-      this.statusText.visible = true;
-      setTimeout(() => (this.statusText.visible = false), 700);
-    });
-    this.uiLayer.addChild(this.buyBonusButton);
-
-    const buttonAnimation = {
-      hover: { props: { scale: { x: 1.1, y: 1.1 } }, duration: 100 },
-      pressed: { props: { scale: { x: 0.9, y: 0.9 } }, duration: 100 },
-    };
-
-    this.pauseButton = new FancyButton({
-      defaultView: UiAssetKeys.ICON_PAUSE,
-      anchor: 0.5,
-      animations: buttonAnimation,
-    });
-    this.pauseButton.onPress.connect(() =>
-      engine().navigation.presentPopup(PausePopup),
-    );
-    this.uiLayer.addChild(this.pauseButton);
-
-    this.settingsButton = new FancyButton({
-      defaultView: UiAssetKeys.ICON_SETTINGS,
-      anchor: 0.5,
-      animations: buttonAnimation,
-    });
-    this.settingsButton.onPress.connect(() =>
-      engine().navigation.presentPopup(SettingsPopup),
-    );
-    this.uiLayer.addChild(this.settingsButton);
-
-    this.turboStateText = new Text({
-      text: "Turbo: OFF",
-      style: {
-        fontFamily: "Arial",
-        fontSize: 22,
-        fill: 0xffef9f,
-        stroke: { color: 0x000000, width: 3 },
-        fontWeight: "700",
+    this.hud = new PremiumTemplateHud();
+    this.hud.applyVisibility(this.baseHudVisibility);
+    this.hud.setCallbacks({
+      onControlPress: (controlId) => {
+        void this.handleHudControl(controlId);
       },
     });
-    this.turboStateText.anchor.set(0.5);
-    this.uiLayer.addChild(this.turboStateText);
+    this.uiLayer.addChild(this.hud);
 
     this.statusText = new Text({
       text: "",
       style: {
         fontFamily: "Arial",
-        fontSize: 28,
+        fontSize: 24,
         fill: 0xffffff,
-        stroke: { color: 0x000000, width: 4 },
+        stroke: { color: 0x111111, width: 3 },
         fontWeight: "700",
         align: "center",
       },
@@ -174,89 +186,90 @@ export class MainScreen extends Container {
     this.statusText.visible = false;
     this.uiLayer.addChild(this.statusText);
 
-    const params = new URLSearchParams(window.location.search);
-    const capabilityMatrix = runtimeConfig.capabilities;
-    const capabilityFeatures = capabilityMatrix.features;
-
-    const featureVisibility = {
-      spin: params.get("spin") !== "0",
-      turbo:
-        capabilityMatrix.turbo.allowed &&
-        params.get("turbo") !== "0",
-      autoplay:
-        capabilityFeatures.autoplay &&
-        params.get("autoplay") !== "0",
-      buybonus:
-        (capabilityFeatures.buyFeature ||
-          capabilityFeatures.buyFeatureForCashBonus) &&
-        params.get("buybonus") !== "0",
-      pause: params.get("pause") !== "0",
-      settings:
-        capabilityMatrix.sound.showToggle &&
-        params.get("settings") !== "0",
-    };
-
-    this.hudLayout = new ResponsiveHudLayoutController([
-      {
-        id: "spin",
-        object: this.spinButton,
-        width: 210,
-        height: 100,
-        visible: featureVisibility.spin,
-      },
-      {
-        id: "turbo",
-        object: this.turboToggleButton,
-        width: 190,
-        height: 84,
-        visible: featureVisibility.turbo,
-      },
-      {
-        id: "autoplay",
-        object: this.autoplayButton,
-        width: 190,
-        height: 84,
-        visible: featureVisibility.autoplay,
-      },
-      {
-        id: "buybonus",
-        object: this.buyBonusButton,
-        width: 190,
-        height: 84,
-        visible: featureVisibility.buybonus,
-      },
-      {
-        id: "pause",
-        object: this.pauseButton,
-        width: 68,
-        height: 68,
-        visible: featureVisibility.pause,
-      },
-      {
-        id: "settings",
-        object: this.settingsButton,
-        width: 68,
-        height: 68,
-        visible: featureVisibility.settings,
-      },
-    ]);
+    this.debugOverlay = new DebugOverlay();
+    this.addChild(this.debugOverlay);
 
     this.slotMachine.onSpinComplete = () => this.handleSpinComplete();
-    this.refreshTurboButtonLabel();
+
+    this.refreshHudState(0);
     PresentationStateStore.patch({
       turboSelected: this.turboSelected,
+      soundEnabled: this.soundEnabled,
+      lastMessages: [],
+      activeFeatureModules: this.featureModules.listEnabledModules(),
     });
+    this.showStatus(`FEATURE MODULES: ${this.featureModules.listEnabledModules().join(", ")}`);
   }
 
-  private toggleTurbo() {
+  private async handleHudControl(controlId: PremiumHudControlId): Promise<void> {
+    switch (controlId) {
+      case "spin":
+        await this.handleSpin();
+        break;
+      case "turbo":
+        this.toggleTurbo();
+        break;
+      case "autoplay":
+        this.showStatus("AUTOPLAY CONFIGURED");
+        break;
+      case "buyFeature":
+        await this.handleBuyFeature();
+        break;
+      case "sound":
+        this.toggleSound();
+        break;
+      case "settings":
+        engine().navigation.presentPopup(SettingsPopup);
+        break;
+      case "history":
+        await this.handleHistory();
+        break;
+      default:
+        break;
+    }
+  }
+
+  private toggleTurbo(): void {
     if (!this.animationPolicy.value.turbo.allowed) return;
     this.turboSelected = !this.turboSelected;
-    this.refreshTurboButtonLabel();
-    PresentationStateStore.patch({ turboSelected: this.turboSelected });
+    PresentationStateStore.patch({
+      turboSelected: this.turboSelected,
+      soundEnabled: this.soundEnabled,
+    });
+    this.refreshHudState(PresentationStateStore.get().lastWinAmount);
   }
 
-  private refreshTurboButtonLabel() {
-    this.turboStateText.text = this.turboSelected ? "Turbo: ON" : "Turbo: OFF";
+  private toggleSound(): void {
+    this.soundEnabled = !this.soundEnabled;
+    if (this.soundEnabled) {
+      userSettings.setMasterVolume(this.runtimeConfig.soundDefaults.masterVolume);
+      this.showStatus("SOUND ENABLED");
+    } else {
+      userSettings.setMasterVolume(0);
+      this.showStatus("SOUND DISABLED");
+    }
+    PresentationStateStore.patch({ soundEnabled: this.soundEnabled });
+    this.refreshHudState(PresentationStateStore.get().lastWinAmount);
+  }
+
+  private async handleHistory(): Promise<void> {
+    try {
+      const history = await gsRuntimeClient.getHistory(0);
+      this.showStatus(`HISTORY ITEMS: ${history.length}`);
+    } catch (error) {
+      this.showStatus(`HISTORY FAILED: ${String(error)}`);
+    }
+  }
+
+  private async handleBuyFeature(): Promise<void> {
+    try {
+      await gsRuntimeClient.featureAction("buy-feature", {
+        betAmount: ResolvedRuntimeConfigStore.limits.defaultBet,
+      });
+      this.showStatus("BUY FEATURE ACTION SENT");
+    } catch (error) {
+      this.showStatus(`BUY FEATURE FAILED: ${String(error)}`);
+    }
   }
 
   private async handleSpin() {
@@ -268,59 +281,72 @@ export class MainScreen extends Container {
     if (this.isSpinning || this.isPresentingWin) return;
 
     this.isSpinning = true;
-    PresentationStateStore.patch({ isSpinning: true, statusText: "ROUND_REQUESTED" });
+    this.pendingRound = null;
+    this.suppressHeavyFxForRound = false;
+
     this.winHighlight.clear();
-    this.statusText.visible = false;
+    this.showStatus("ROUND REQUESTED");
+    PresentationStateStore.patch({ isSpinning: true, statusText: "ROUND_REQUESTED" });
 
     const timing = this.animationPolicy.resolveSpinTiming(this.turboSelected);
     const betAmount = ResolvedRuntimeConfigStore.limits.defaultBet;
 
     try {
-      const round = await gsRuntimeClient.playRound(
-        betAmount,
-        this.resolveBetTypeFromRuntime(),
-      );
-      const outcome = mapPlayRoundToSlotOutcome(round);
-      this.pendingRoundOutcome = outcome;
+      const round = await gsRuntimeClient.playRound(betAmount, this.resolveBetTypeFromRuntime());
+      const presentation = mapPlayRoundToPresentation(round);
+      const featureFrame = this.featureModules.resolve(presentation);
+
+      this.pendingRound = {
+        presentation,
+        featureFrame,
+        balance: round.balance,
+      };
 
       this.slotMachine.spin({
         minSpinDurationMs: timing.minSpinMs,
         spinStaggerMs: timing.spinStaggerMs,
         speedMultiplier: timing.speedMultiplier,
-        reelStopColumns: outcome.reelStopColumns,
+        reelStopColumns: presentation.reels.stopColumns,
       });
     } catch (error) {
       this.isSpinning = false;
-      this.pendingRoundOutcome = null;
+      this.pendingRound = null;
       PresentationStateStore.patch({
         isSpinning: false,
         statusText: `ROUND_FAILED: ${String(error)}`,
       });
-      this.statusText.text = "ROUND FAILED";
-      this.statusText.visible = true;
-      setTimeout(() => {
-        this.statusText.visible = false;
-      }, 1000);
+      this.showStatus("ROUND FAILED");
     }
   }
 
   private handleSpinComplete() {
-    const outcome = this.pendingRoundOutcome;
-    if (!outcome) {
+    const resolution = this.pendingRound;
+    if (!resolution) {
       this.isSpinning = false;
+      this.showStatus("MISSING ROUND PRESENTATION PAYLOAD");
       PresentationStateStore.patch({
         isSpinning: false,
-        statusText: "ROUND_FAILED: missing transport outcome",
+        statusText: "ROUND_FAILED: missing presentation payload",
       });
-      this.statusText.text = "MISSING TRANSPORT OUTCOME";
-      this.statusText.visible = true;
-      setTimeout(() => {
-        this.statusText.visible = false;
-      }, 1000);
       return;
     }
 
-    this.pendingRoundOutcome = null;
+    this.pendingRound = null;
+
+    const { presentation, featureFrame } = resolution;
+    this.applyDynamicControlVisibility(featureFrame);
+
+    const mergedMessages = [
+      ...presentation.messages,
+      ...featureFrame.messages,
+      ...presentation.featureOverlays.map((overlay) => overlay.label),
+      ...featureFrame.overlays.map((overlay) => overlay.label),
+    ];
+    this.showStatus(formatMessages(mergedMessages));
+
+    this.applySoundCues([...presentation.soundCues, ...featureFrame.soundCues]);
+    this.applyAnimationCues([...presentation.animationCues, ...featureFrame.animationCues]);
+
     const reels = this.slotMachine.getReels();
     const winSymbols = [
       reels[0].getVisibleSymbols()[1],
@@ -328,19 +354,18 @@ export class MainScreen extends Container {
       reels[2].getVisibleSymbols()[1],
     ];
 
-    const winAmount = outcome.winAmount;
+    const winAmount = presentation.winAmount;
     const defaultBet = ResolvedRuntimeConfigStore.limits.defaultBet;
     const multiplier = defaultBet > 0 ? winAmount / defaultBet : 0;
     const tier = this.animationPolicy.classifyWinByMultiplier(multiplier);
 
-    if (this.animationPolicy.shouldPlayHeavyWinFx(tier)) {
+    if (!this.suppressHeavyFxForRound && this.animationPolicy.shouldPlayHeavyWinFx(tier)) {
       this.winHighlight.showWin(winSymbols);
       this.particleBurst.play(0, -100);
     } else {
       this.winHighlight.clear();
     }
 
-    this.showTierOverlay(tier, multiplier, winAmount);
     this.winCounter.showWin(winAmount, this.getTierLabel(tier));
 
     this.isSpinning = false;
@@ -349,15 +374,60 @@ export class MainScreen extends Container {
       isSpinning: false,
       isPresentingWin: true,
       lastWinAmount: winAmount,
-      statusText: `ROUND_SETTLED:${outcome.roundId}`,
+      soundEnabled: this.soundEnabled,
+      lastMessages: mergedMessages,
+      activeFeatureModules: featureFrame.activeModules,
+      statusText: `ROUND_SETTLED:${presentation.roundId}`,
     });
 
-    const presentationMs = this.animationPolicy.getWinPresentationDurationMs(tier, false);
+    this.refreshHudState(winAmount);
 
+    const presentationMs = this.animationPolicy.getWinPresentationDurationMs(tier, false);
     this.clearWinPresentationTimeout();
     this.currentWinPresentationTimeout = setTimeout(() => {
       this.finishWinPresentation();
     }, presentationMs);
+  }
+
+  private applyDynamicControlVisibility(featureFrame: FeatureFrame): void {
+    if (featureFrame.controlVisibility.buyFeature !== undefined) {
+      this.hud.applyVisibility({
+        controls: {
+          buyFeature: featureFrame.controlVisibility.buyFeature,
+        },
+      });
+    }
+  }
+
+  private applySoundCues(cues: string[]): void {
+    for (const cue of cues) {
+      if (cue === "jackpot-stinger" && this.soundEnabled) {
+        engine().audio.sfx.play(UiAssetKeys.SFX_PRESS, { volume: 1 });
+      }
+
+      if (cue === "mute-bgm") {
+        userSettings.setBgmVolume(0);
+      }
+    }
+  }
+
+  private applyAnimationCues(cues: string[]): void {
+    this.suppressHeavyFxForRound = cues.includes("disable-heavy-win-fx");
+
+    if (cues.includes("force-skip-presentation")) {
+      this.skipWinPresentation();
+    }
+  }
+
+  private refreshHudState(winAmount: number): void {
+    const session = SessionRuntimeStore.getSnapshot();
+    this.hud.setState({
+      balance: session?.balance ?? 0,
+      bet: ResolvedRuntimeConfigStore.limits.defaultBet,
+      win: winAmount,
+      turboSelected: this.turboSelected,
+      soundEnabled: this.soundEnabled,
+    });
   }
 
   private getTierLabel(tier: WinTier): string {
@@ -367,10 +437,9 @@ export class MainScreen extends Container {
     return "WIN";
   }
 
-  private showTierOverlay(tier: WinTier, multiplier: number, winAmount: number) {
-    const tierLabel = this.getTierLabel(tier);
-    this.statusText.text = `${tierLabel}\n${multiplier.toFixed(1)}x (${winAmount})`;
-    this.statusText.visible = true;
+  private showStatus(text: string): void {
+    this.statusText.text = text;
+    this.statusText.visible = text.length > 0;
   }
 
   private skipWinPresentation() {
@@ -381,7 +450,6 @@ export class MainScreen extends Container {
 
   private finishWinPresentation(skipped = false) {
     this.winHighlight.clear();
-    this.statusText.visible = false;
     this.winCounter.hideNow();
     this.isPresentingWin = false;
     PresentationStateStore.patch({
@@ -435,10 +503,10 @@ export class MainScreen extends Container {
   public resize(width: number, height: number) {
     const viewport = engine().layout.getViewport();
     const safe = viewport.safeArea;
-    const hudSpace = viewport.orientation === "portrait" ? 270 : 170;
+    const hudSpace = viewport.orientation === "portrait" ? 290 : 210;
 
     const centerX = width * 0.5;
-    const availableTop = safe.top + 20;
+    const availableTop = safe.top + 90;
     const availableBottom = height - safe.bottom - hudSpace;
     const centerY = (availableTop + availableBottom) * 0.5;
 
@@ -452,10 +520,7 @@ export class MainScreen extends Container {
     const availableWidth = width - safe.left - safe.right - 40;
     const availableHeight = availableBottom - availableTop;
 
-    const scale = Math.min(
-      availableWidth / machineWidth,
-      availableHeight / machineHeight,
-    );
+    const scale = Math.min(availableWidth / machineWidth, availableHeight / machineHeight);
 
     this.reelsLayer.scale.set(scale);
     this.fxLayer.scale.set(scale);
@@ -469,32 +534,26 @@ export class MainScreen extends Container {
     this.uiLayer.x = 0;
     this.uiLayer.y = 0;
 
-    this.hudLayout.apply({
+    this.hud.resize({
       width,
       height,
       orientation: viewport.orientation,
       safeArea: safe,
     });
 
-    if (this.hudLayout.isFeatureVisible("turbo")) {
-      this.turboStateText.visible = true;
-      this.turboStateText.x = this.turboToggleButton.x;
-      this.turboStateText.y = this.turboToggleButton.y - 56;
-    } else {
-      this.turboStateText.visible = false;
-    }
-
     this.statusText.x = width * 0.5;
-    this.statusText.y = safe.top + 100;
+    this.statusText.y = safe.top + 86;
 
     this.winCounter.x = width * 0.5;
-    this.winCounter.y = safe.top + 200;
+    this.winCounter.y = safe.top + 180;
 
     this.debugOverlay.resize(width, height);
   }
 
   public async show(): Promise<void> {
-    engine().audio.bgm.play(AppAssetKeys.BGM_MAIN, { volume: 0.5 });
+    engine().audio.bgm.play(AppAssetKeys.BGM_MAIN, {
+      volume: this.runtimeConfig.soundDefaults.bgmVolume,
+    });
   }
 
   public async hide() {
@@ -502,8 +561,6 @@ export class MainScreen extends Container {
   }
 
   public blur() {
-    if (!engine().navigation.currentPopup) {
-      engine().navigation.presentPopup(PausePopup);
-    }
+    this.showStatus("SESSION PAUSED");
   }
 }

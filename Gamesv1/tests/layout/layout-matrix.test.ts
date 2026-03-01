@@ -7,9 +7,10 @@ const baseItems = [
   { id: "spin", width: 210, height: 100, visible: true },
   { id: "turbo", width: 190, height: 84, visible: true },
   { id: "autoplay", width: 190, height: 84, visible: true },
-  { id: "buybonus", width: 190, height: 84, visible: true },
-  { id: "pause", width: 68, height: 68, visible: true },
-  { id: "settings", width: 68, height: 68, visible: true },
+  { id: "buyFeature", width: 190, height: 84, visible: true },
+  { id: "sound", width: 190, height: 84, visible: true },
+  { id: "settings", width: 190, height: 84, visible: true },
+  { id: "history", width: 190, height: 84, visible: true },
 ];
 
 const matrix = [
@@ -40,7 +41,7 @@ for (const scenario of matrix) {
   test(`layout matrix ${scenario.name}`, () => {
     const visibleItems = baseItems.map((item) => ({
       ...item,
-      visible: item.id !== "buybonus" && item.id !== "autoplay",
+      visible: item.id !== "buyFeature" && item.id !== "history",
     }));
 
     const { layout } = computeHudLayout(visibleItems, {
@@ -50,7 +51,7 @@ for (const scenario of matrix) {
       safeArea: scenario.safeArea,
     });
 
-    assert.equal(layout.items.length, 4);
+    assert.equal(layout.items.length, 5);
     assert.equal(hasRowGaps(layout), false);
 
     for (const item of layout.items) {

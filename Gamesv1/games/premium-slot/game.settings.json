@@ -9,9 +9,12 @@
     "features": {
         "freeSpins": true,
         "buyFeature": false,
-        "autoplay": true
+        "autoplay": true,
+        "history": true
     },
     "gs": {
+        "runtimeTarget": "slot-browser-v1",
+        "mathManifestPath": "math/math-pack.manifest.json",
         "mathModels": [
             {
                 "id": "M1",
