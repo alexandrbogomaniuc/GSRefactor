@@ -1,4 +1,4 @@
-package com.dgphoenix.casino.cassandra.persist.engine;
+package com.abs.casino.cassandra.persist.engine;
 
 import com.abs.casino.cassandra.persist.engine.ColumnIteratorCallback;
 import com.abs.casino.cassandra.persist.engine.FakeNotAppliedResultSet;

@@ -1,11 +1,12 @@
-package com.dgphoenix.casino.cassandra;
+package com.abs.casino.cassandra;
 
+import com.abs.casino.cassandra.KeyspaceManagerStatistics;
 import com.abs.casino.cassandra.IConfigsInitializer;
 import com.abs.casino.cassandra.IKeyspaceManager;
 import com.abs.casino.cassandra.KeyspaceManagerFactory;
 import com.abs.casino.cassandra.PersisterDependencyInjector;
-import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.common.util.Pair;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 
 import javax.annotation.PostConstruct;

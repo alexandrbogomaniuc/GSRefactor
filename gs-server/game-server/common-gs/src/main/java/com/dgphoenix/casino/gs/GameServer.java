@@ -3,14 +3,21 @@
  * Date: Oct 16, 2008
  * Time: 3:37:30 PM
  */
-package com.dgphoenix.casino.gs;
+package com.abs.casino.gs;
 
 import com.abs.casino.GeoIp;
 import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.cassandra.AccountDistributedLockManager;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.AccountDistributedLockManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.DistributedLockManager;
 import com.dgphoenix.casino.cassandra.persist.*;
+import com.abs.casino.cassandra.persist.CassandraShortBetInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraMassAwardRestrictionPersister;
+import com.abs.casino.cassandra.persist.CassandraExternalGameIdsPersister;
+import com.abs.casino.cassandra.persist.CassandraCallStatisticsPersister;
+import com.abs.casino.cassandra.persist.CassandraCurrencyPersister;
+import com.abs.casino.cassandra.persist.CassandraBaseGameInfoPersister;
 import com.abs.casino.cassandra.persist.CassandraRemoteCallPersister;
 import com.abs.casino.cassandra.persist.mp.BattlegroundHistoryPersister;
 import com.abs.casino.cassandra.persist.mp.RoundKPIInfoPersister;
@@ -29,15 +36,15 @@ import com.dgphoenix.casino.common.cache.data.game.*;
 import com.dgphoenix.casino.common.cache.data.payment.IWallet;
 import com.abs.casino.common.cache.data.payment.frb.IFRBonusWin;
 import com.abs.casino.common.cache.data.server.ServerInfo;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.session.GameSession;
 import com.abs.casino.common.cache.data.session.SessionConstants;
 import com.abs.casino.common.games.IHelperCreator;
 import com.abs.casino.common.games.IDelegatedStartGameHelper;
 import com.abs.casino.common.games.IStartGameHelper;
 import com.abs.casino.common.games.NewTranslationGameHelper;
 import com.abs.casino.common.games.StartGameHelpers;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.cache.data.session.SessionInfo;
 import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.abs.casino.common.engine.tracker.DelayedExecutor;
 import com.dgphoenix.casino.common.exception.*;
@@ -62,7 +69,7 @@ import com.abs.casino.common.util.system.Metric;
 import com.abs.casino.common.util.web.HttpClientConnection;
 import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.gs.IGameServer;
-import com.dgphoenix.casino.gs.managers.ICloseGameProcessor;
+import com.abs.casino.gs.managers.ICloseGameProcessor;
 import com.abs.casino.gs.managers.dblink.DBLinkCache;
 import com.abs.casino.gs.managers.dblink.FRBonusDBLink;
 import com.abs.casino.gs.managers.dblink.IDBLink;

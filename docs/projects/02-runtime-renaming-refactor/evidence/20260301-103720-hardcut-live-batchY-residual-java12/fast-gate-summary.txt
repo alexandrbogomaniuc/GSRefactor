@@ -1,0 +1,5 @@
+common=FAIL rc=1
+common-wallet=FAIL rc=1
+sb-utils=FAIL rc=1
+common-gs=FAIL rc=1
+common-promo=FAIL rc=1

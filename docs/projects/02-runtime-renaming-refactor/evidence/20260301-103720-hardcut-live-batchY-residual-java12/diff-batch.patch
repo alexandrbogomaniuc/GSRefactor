@@ -1,0 +1,217 @@
+diff --git a/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/CassandraPersistenceManager.java b/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/CassandraPersistenceManager.java
+index 88b6e5880..bfc81d322 100644
+--- a/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/CassandraPersistenceManager.java
++++ b/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/CassandraPersistenceManager.java
+@@ -1,11 +1,12 @@
+-package com.dgphoenix.casino.cassandra;
++package com.abs.casino.cassandra;
+ 
++import com.abs.casino.cassandra.KeyspaceManagerStatistics;
+ import com.abs.casino.cassandra.IConfigsInitializer;
+ import com.abs.casino.cassandra.IKeyspaceManager;
+ import com.abs.casino.cassandra.KeyspaceManagerFactory;
+ import com.abs.casino.cassandra.PersisterDependencyInjector;
+-import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
++import com.abs.casino.common.util.Pair;
+ import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+ 
+ import javax.annotation.PostConstruct;
+diff --git a/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/AbstractCassandraPersister.java b/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/AbstractCassandraPersister.java
+index bc8eac2d9..95646ea0b 100644
+--- a/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/AbstractCassandraPersister.java
++++ b/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/AbstractCassandraPersister.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.cassandra.persist.engine;
++package com.abs.casino.cassandra.persist.engine;
+ 
+ import com.abs.casino.cassandra.persist.engine.ColumnIteratorCallback;
+ import com.abs.casino.cassandra.persist.engine.FakeNotAppliedResultSet;
+diff --git a/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/TableDefinition.java b/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/TableDefinition.java
+index 9c183c04e..364170de4 100644
+--- a/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/TableDefinition.java
++++ b/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/TableDefinition.java
+@@ -1,4 +1,4 @@
+-package com.dgphoenix.casino.cassandra.persist.engine;
++package com.abs.casino.cassandra.persist.engine;
+ 
+ import com.abs.casino.cassandra.persist.engine.configuration.Caching;
+ import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java
+index 25502e19b..a7ec3af23 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java
+@@ -1,7 +1,7 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+-import com.abs.casino.common.cache.JsonSelfSerializable;
+-import com.abs.casino.common.util.DatePeriod;
++import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
++import com.dgphoenix.casino.common.util.DatePeriod;
+ import com.dgphoenix.casino.common.util.ITimeProvider;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/InstantMoneyPrize.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/InstantMoneyPrize.java
+index b54c8edb2..9f2db7de4 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/InstantMoneyPrize.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/InstantMoneyPrize.java
+@@ -1,7 +1,8 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+-import com.abs.casino.common.promo.messages.server.notifications.prizes.InstantMoneyWon;
+-import com.abs.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
++import com.abs.casino.common.promo.IMoneyPrize;
++import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.InstantMoneyWon;
++import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkPromoEvent.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkPromoEvent.java
+index 7f10fe42d..acf6770b7 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkPromoEvent.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkPromoEvent.java
+@@ -1,6 +1,7 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+-import com.abs.casino.common.util.DatePeriod;
++import com.abs.casino.common.promo.INetworkPromoEvent;
++import com.dgphoenix.casino.common.util.DatePeriod;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TicketPrize.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TicketPrize.java
+index 38d7a8078..648530703 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TicketPrize.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TicketPrize.java
+@@ -1,7 +1,8 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+-import com.abs.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
+-import com.abs.casino.common.promo.messages.server.notifications.prizes.TicketsWon;
++import com.abs.casino.common.promo.IHighFrequencyPrize;
++import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
++import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.TicketsWon;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java
+index 421d2845e..390e9775e 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java
+@@ -1,9 +1,9 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+ import java.io.IOException;
+ 
+-import com.abs.casino.common.cache.JsonSelfSerializable;
+-import com.dgphoenix.casino.common.util.ITimeProvider;
++import com.abs.casino.common.cache.JsonSelfSerializable;
++import com.abs.casino.common.util.ITimeProvider;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;
+ import com.esotericsoftware.kryo.io.Input;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPrize.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPrize.java
+index 525b770ce..a15ae11ea 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPrize.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPrize.java
+@@ -1,8 +1,9 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
+-import com.abs.casino.common.currency.ICurrencyRateManager;
++import com.abs.casino.common.promo.IVirtualPrize;
++import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.abs.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
++import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentRankQualifier.java b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentRankQualifier.java
+index 86a0f3307..6a58edaa9 100644
+--- a/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentRankQualifier.java
++++ b/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentRankQualifier.java
+@@ -1,5 +1,6 @@
+-package com.dgphoenix.casino.common.promo;
++package com.abs.casino.common.promo;
+ 
++import com.abs.casino.common.promo.ITournamentRankQualifier;
+ import java.util.Collections;
+ import java.util.EnumSet;
+ import java.util.Set;
+diff --git a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java
+index bf6e85920..869096bc0 100644
+--- a/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java
++++ b/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java
+@@ -3,14 +3,21 @@
+  * Date: Oct 16, 2008
+  * Time: 3:37:30 PM
+  */
+-package com.dgphoenix.casino.gs;
++package com.abs.casino.gs;
+ 
+ import com.abs.casino.GeoIp;
+ import com.dgphoenix.casino.account.AccountManager;
+-import com.dgphoenix.casino.cassandra.AccountDistributedLockManager;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.AccountDistributedLockManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.abs.casino.cassandra.DistributedLockManager;
+ import com.dgphoenix.casino.cassandra.persist.*;
++import com.abs.casino.cassandra.persist.CassandraShortBetInfoPersister;
++import com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
++import com.abs.casino.cassandra.persist.CassandraMassAwardRestrictionPersister;
++import com.abs.casino.cassandra.persist.CassandraExternalGameIdsPersister;
++import com.abs.casino.cassandra.persist.CassandraCallStatisticsPersister;
++import com.abs.casino.cassandra.persist.CassandraCurrencyPersister;
++import com.abs.casino.cassandra.persist.CassandraBaseGameInfoPersister;
+ import com.abs.casino.cassandra.persist.CassandraRemoteCallPersister;
+ import com.abs.casino.cassandra.persist.mp.BattlegroundHistoryPersister;
+ import com.abs.casino.cassandra.persist.mp.RoundKPIInfoPersister;
+@@ -29,15 +36,15 @@ import com.dgphoenix.casino.common.cache.data.game.*;
+ import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+ import com.abs.casino.common.cache.data.payment.frb.IFRBonusWin;
+ import com.abs.casino.common.cache.data.server.ServerInfo;
+-import com.dgphoenix.casino.common.cache.data.session.ClientType;
+-import com.dgphoenix.casino.common.cache.data.session.GameSession;
++import com.abs.casino.common.cache.data.session.ClientType;
++import com.abs.casino.common.cache.data.session.GameSession;
+ import com.abs.casino.common.cache.data.session.SessionConstants;
+ import com.abs.casino.common.games.IHelperCreator;
+ import com.abs.casino.common.games.IDelegatedStartGameHelper;
+ import com.abs.casino.common.games.IStartGameHelper;
+ import com.abs.casino.common.games.NewTranslationGameHelper;
+ import com.abs.casino.common.games.StartGameHelpers;
+-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
++import com.abs.casino.common.cache.data.session.SessionInfo;
+ import com.abs.casino.common.currency.ICurrencyRateManager;
+ import com.abs.casino.common.engine.tracker.DelayedExecutor;
+ import com.dgphoenix.casino.common.exception.*;
+@@ -62,7 +69,7 @@ import com.abs.casino.common.util.system.Metric;
+ import com.abs.casino.common.util.web.HttpClientConnection;
+ import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+ import com.abs.casino.gs.IGameServer;
+-import com.dgphoenix.casino.gs.managers.ICloseGameProcessor;
++import com.abs.casino.gs.managers.ICloseGameProcessor;
+ import com.abs.casino.gs.managers.dblink.DBLinkCache;
+ import com.abs.casino.gs.managers.dblink.FRBonusDBLink;
+ import com.abs.casino.gs.managers.dblink.IDBLink;
+diff --git a/gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/NtpTimeProvider.java b/gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/NtpTimeProvider.java
+index d06c47651..d6732ae10 100644
+--- a/gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/NtpTimeProvider.java
++++ b/gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/NtpTimeProvider.java
+@@ -1,6 +1,7 @@
+-package com.dgphoenix.casino.common.util;
++package com.abs.casino.common.util;
+ 
+ import com.abs.casino.common.config.UtilsApplicationContextHelper;
++import com.abs.casino.common.util.ITimeProvider;
+ import com.abs.casino.common.util.NtpWrapper;
+ import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+ import org.apache.commons.net.ntp.NtpV3Packet;

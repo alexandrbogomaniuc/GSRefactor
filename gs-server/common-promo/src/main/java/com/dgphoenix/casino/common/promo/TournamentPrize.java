@@ -1,8 +1,9 @@
-package com.dgphoenix.casino.common.promo;
+package com.abs.casino.common.promo;
 
-import com.abs.casino.common.currency.ICurrencyRateManager;
+import com.abs.casino.common.promo.IVirtualPrize;
+import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.abs.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
+import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

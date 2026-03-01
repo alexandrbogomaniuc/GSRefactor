@@ -1,0 +1,492 @@
+===== gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/CassandraPersistenceManager.java
+package com.abs.casino.cassandra;
+
+import com.abs.casino.cassandra.KeyspaceManagerStatistics;
+import com.abs.casino.cassandra.IConfigsInitializer;
+import com.abs.casino.cassandra.IKeyspaceManager;
+import com.abs.casino.cassandra.KeyspaceManagerFactory;
+import com.abs.casino.cassandra.PersisterDependencyInjector;
+import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.common.util.Pair;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import java.util.*;
+import java.util.stream.Collectors;
+
+/**
+ * @author <a href="mailto:fateyev@dgphoenix.com">Anton Fateyev</a>
+ * @since 26.09.16
+ */
+public class CassandraPersistenceManager {
+
+    private final KeyspaceManagerFactory keyspaceManagerFactory;
+    private final Map<String, IKeyspaceManager> keyspaceManagers;
+    private final PersisterDependencyInjector persisterDependencyInjector;
+    private IConfigsInitializer configsInitializer;
+
+    public CassandraPersistenceManager(KeyspaceManagerFactory keyspaceManagerFactory, PersisterDependencyInjector persisterDependencyInjector) {
+        this.keyspaceManagerFactory = keyspaceManagerFactory;
+        this.persisterDependencyInjector = persisterDependencyInjector;
+        keyspaceManagers = new LinkedHashMap<>();
+    }
+
+    public CassandraPersistenceManager addKeyspace(String configFilename, String schemaScriptFilename) {
+        IKeyspaceManager keyspaceManager = keyspaceManagerFactory.create(configFilename, schemaScriptFilename, persisterDependencyInjector);
+        keyspaceManagers.put(keyspaceManager.getKeyspaceName(), keyspaceManager);
+        return this;
+    }
+
+    public CassandraPersistenceManager withConfigsInitializer(IConfigsInitializer configsInitializer) {
+===== gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/AbstractCassandraPersister.java
+package com.abs.casino.cassandra.persist.engine;
+
+import com.abs.casino.cassandra.persist.engine.ColumnIteratorCallback;
+import com.abs.casino.cassandra.persist.engine.FakeNotAppliedResultSet;
+import com.abs.casino.common.util.StreamUtils;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.util.UnsafeUtil;
+
+import java.nio.ByteBuffer;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import static com.google.common.base.Preconditions.checkState;
+
+/**
+ * User: Grien
+ * Date: 25.12.2012 19:42
+ */
+public abstract class AbstractCassandraPersister<KEY, COLUMN> implements ICassandraPersister {
+    public static final String VERSION_FIELD = "v";
+
+    protected static final String KEY = "key";
+    protected static final int MAX_WRITE_ATEMPTS_COUNT = 100;
+    protected static final String SERIALIZED_COLUMN_NAME = "scn";
+    protected static final String JSON_COLUMN_NAME = "jcn";
+    protected static final ByteBuffer EMPTY_BYTE_BUFFER = ByteBuffer.wrap(new byte[]{0});
+    protected static final int IN_CLAUSE_SIZE = 1000;
+
+    private com.datastax.driver.core.Session session;
+    private com.datastax.driver.core.ConsistencyLevel readConsistency;
+    private com.datastax.driver.core.ConsistencyLevel writeConsistency;
+    private com.datastax.driver.core.ConsistencyLevel serialConsistency;
+    private int ttl = 0;//load from config
+
+    protected boolean initialized;
+
+    protected AbstractCassandraPersister() {
+===== gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/TableDefinition.java
+package com.abs.casino.cassandra.persist.engine;
+
+import com.abs.casino.cassandra.persist.engine.configuration.Caching;
+import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
+import com.abs.casino.cassandra.persist.engine.configuration.Compression;
+import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.FastKryoHelper;
+import com.abs.casino.common.util.JsonHelper;
+import com.abs.casino.common.util.LZ4Compressor;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.Serializer;
+import com.esotericsoftware.kryo.io.ByteBufferInput;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.util.UnsafeUtil;
+
+import javax.annotation.Nonnull;
+
+import java.nio.ByteBuffer;
+import java.util.*;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
+import static java.util.stream.Collectors.toMap;
+import static org.apache.commons.lang.StringUtils.join;
+
+/**
+ * User: flsh
+ * Date: 25.09.14.
+ *
+ * @author <a href="mailto:fateyev@dgphoenix.com">Anton Fateyev</a>
+ * @since 25.05.16
+ */
+public class TableDefinition {
+    static final String INDEX_POSTFIX = "idx";
+    static final String SEPARATOR = "_";
+    private static final String DUPLICATE_COLUMN_ERROR = "Duplicate column found: %s";
+
+    private final String tableName;
+===== gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java
+package com.abs.casino.common.promo;
+
+import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
+import com.dgphoenix.casino.common.util.DatePeriod;
+import com.dgphoenix.casino.common.util.ITimeProvider;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * User: flsh
+ * Date: 22.11.16.
+ */
+public class DesiredPrize implements KryoSerializable,
+        JsonSelfSerializable<DesiredPrize>, Serializable {
+    private static final byte VERSION = 4;
+
+    public static final Comparator<DesiredPrize> BY_START_DATE = new Comparator<DesiredPrize>() {
+        @Override
+        public int compare(DesiredPrize o1, DesiredPrize o2) {
+            return Long.signum(o1.getStartDate() - o2.getStartDate());
+        }
+    };
+
+    private long promoPrizeId;
+    //start date when the prize may be won
+===== gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/InstantMoneyPrize.java
+package com.abs.casino.common.promo;
+
+import com.abs.casino.common.promo.IMoneyPrize;
+import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.InstantMoneyWon;
+import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+
+/**
+ * User: flsh
+ * Date: 21.11.16.
+ */
+public class InstantMoneyPrize extends AbstractPrize implements IMoneyPrize {
+    private static final byte VERSION = 0;
+
+    protected long amount;
+
+    private InstantMoneyPrize() {
+    }
+
+    public InstantMoneyPrize(long amount) {
+        this.amount = amount;
+    }
+
+    @Override
+    public PrizeWonNotification getWonMessage() {
+        return new InstantMoneyWon(amount);
+    }
+
+    @Override
+    public long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(long amount) {
+        this.amount = amount;
+    }
+
+    @Override
+===== gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkPromoEvent.java
+package com.abs.casino.common.promo;
+
+import com.abs.casino.common.promo.INetworkPromoEvent;
+import com.dgphoenix.casino.common.util.DatePeriod;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * User: flsh
+ * Date: 5.12.2020.
+ */
+public class NetworkPromoEvent extends PromoCampaign implements INetworkPromoEvent {
+    private static final byte VERSION = 1;
+    private long parentPromoCampaignId;
+    private String summaryFeedUrl;
+
+    public NetworkPromoEvent(long id, long parentPromoCampaignId, INetworkPromoEventTemplate template, String name,
+                             EnterType enterType, DatePeriod period, Status status, Set<Long> bankIds,
+                             Set<Long> gameIds, String baseCurrency, Map<Long, String> promoDetailURLs,
+                             PlayerIdentificationType playerIdentificationType) {
+        super(id, template, name, enterType, period, status, bankIds, gameIds, baseCurrency, promoDetailURLs,
+                playerIdentificationType);
+        this.parentPromoCampaignId = parentPromoCampaignId;
+    }
+
+    @Override
+    public long getParentPromoCampaignId() {
+        return parentPromoCampaignId;
+    }
+
+    public void setParentPromoCampaignId(long parentPromoCampaignId) {
+        this.parentPromoCampaignId = parentPromoCampaignId;
+    }
+
+    public String getSummaryFeedUrl() {
+        return summaryFeedUrl;
+===== gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TicketPrize.java
+package com.abs.casino.common.promo;
+
+import com.abs.casino.common.promo.IHighFrequencyPrize;
+import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
+import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.TicketsWon;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+
+/**
+ * User: flsh
+ * Date: 21.11.16.
+ */
+public class TicketPrize extends AbstractPrize implements IHighFrequencyPrize {
+    private static final byte VERSION = 0;
+
+    public TicketPrize() {
+        super();
+    }
+
+    @Override
+    public PrizeWonNotification getWonMessage() {
+        return new TicketsWon(1);
+    }
+
+    @Override
+    public void write(Kryo kryo, Output output) {
+        output.writeByte(VERSION);
+        super.baseWrite(kryo, output);
+    }
+
+    @Override
+    public void read(Kryo kryo, Input input) {
+        byte ver = input.readByte();
+        super.baseRead(kryo, input);
+    }
+
+    @Override
+    public String toString() {
+        return "TicketPrize[" +
+===== gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java
+package com.abs.casino.common.promo;
+
+import java.io.IOException;
+
+import com.abs.casino.common.cache.JsonSelfSerializable;
+import com.abs.casino.common.util.ITimeProvider;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.KryoSerializable;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+
+public class TimeSlot implements KryoSerializable, JsonSelfSerializable<TimeSlot> {
+    private static final byte VERSION = 0;
+    private long prizeId; //AbstractPrize.id
+    private long startDate;
+    private long endDate;
+    private long winUnlockTime;
+    private boolean prizeWon;
+    private transient ITimeProvider timeProvider;
+
+    public TimeSlot() {}
+
+    public TimeSlot(long prizeId, long startDate, long endDate, long winUnlockTime) {
+        this.prizeId = prizeId;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.winUnlockTime = winUnlockTime;
+    }
+
+    public long getPrizeId() {
+        return prizeId;
+    }
+
+    public void setPrizeId(long prizeId) {
+===== gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPrize.java
+package com.abs.casino.common.promo;
+
+import com.abs.casino.common.promo.IVirtualPrize;
+import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
+import com.dgphoenix.casino.common.exception.CommonException;
+import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+
+import java.util.Set;
+
+public class TournamentPrize implements IVirtualPrize {
+    private static final byte VERSION = 0;
+
+    private long id;
+    private IParticipantEventQualifier eventQualifier;
+    private Set<RankPrize> prizesPool;
+
+    @Override
+    public long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public IParticipantEventQualifier getEventQualifier() {
+        return eventQualifier;
+    }
+
+    public void setEventQualifier(IParticipantEventQualifier eventQualifier) {
+        this.eventQualifier = eventQualifier;
+    }
+
+    public Set<RankPrize> getPrizesPool() {
+        return prizesPool;
+    }
+===== gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentRankQualifier.java
+package com.abs.casino.common.promo;
+
+import com.abs.casino.common.promo.ITournamentRankQualifier;
+import java.util.Collections;
+import java.util.EnumSet;
+import java.util.Set;
+
+/**
+ * User: flsh
+ * Date: 18.01.17.
+ */
+public enum TournamentRankQualifier implements ITournamentRankQualifier {
+    SCORE_AND_ENTER_TIME {
+        @Override
+        public int compare(TournamentMemberRank o1, TournamentMemberRank o2) {
+            if (o1.getScore() == o2.getScore()) {
+                return o1.getPlayerEnterTime() < o2.getPlayerEnterTime() ? -1 :
+                        (o1.getPlayerEnterTime() == o2.getPlayerEnterTime() ? 0 : 1);
+            }
+            return defaultCompare(o1, o2);
+        }
+
+        @Override
+        public Set<SignificantEventType> getSignificantEvents() {
+            return Collections.emptySet();
+        }
+    },
+    SCORE_AND_ACHIEVEMENT_TIME {
+        @Override
+        public int compare(TournamentMemberRank o1, TournamentMemberRank o2) {
+            if (o1.getScore() == o2.getScore()) {
+                return o1.getSaveTime() < o2.getSaveTime() ? -1 : (o1.getSaveTime() == o2.getSaveTime() ? 0 : 1);
+            }
+            return defaultCompare(o1, o2);
+        }
+
+        @Override
+        public Set<SignificantEventType> getSignificantEvents() {
+            return Collections.emptySet();
+        }
+===== gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java
+/**
+ * Created by ANGeL
+ * Date: Oct 16, 2008
+ * Time: 3:37:30 PM
+ */
+package com.abs.casino.gs;
+
+import com.abs.casino.GeoIp;
+import com.dgphoenix.casino.account.AccountManager;
+import com.abs.casino.cassandra.AccountDistributedLockManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.DistributedLockManager;
+import com.dgphoenix.casino.cassandra.persist.*;
+import com.abs.casino.cassandra.persist.CassandraShortBetInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraMassAwardRestrictionPersister;
+import com.abs.casino.cassandra.persist.CassandraExternalGameIdsPersister;
+import com.abs.casino.cassandra.persist.CassandraCallStatisticsPersister;
+import com.abs.casino.cassandra.persist.CassandraCurrencyPersister;
+import com.abs.casino.cassandra.persist.CassandraBaseGameInfoPersister;
+import com.abs.casino.cassandra.persist.CassandraRemoteCallPersister;
+import com.abs.casino.cassandra.persist.mp.BattlegroundHistoryPersister;
+import com.abs.casino.cassandra.persist.mp.RoundKPIInfoPersister;
+import com.dgphoenix.casino.common.DomainSession;
+import com.dgphoenix.casino.common.SessionHelper;
+import com.abs.casino.common.api.ICommonManager;
+import com.dgphoenix.casino.common.cache.*;
+import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
+import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
+import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
+import com.abs.casino.common.cache.data.bonus.BonusSystemType;
+import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
+import com.dgphoenix.casino.common.cache.data.game.*;
+import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.cache.data.payment.frb.IFRBonusWin;
+import com.abs.casino.common.cache.data.server.ServerInfo;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.session.GameSession;
+===== gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/NtpTimeProvider.java
+package com.abs.casino.common.util;
+
+import com.abs.casino.common.config.UtilsApplicationContextHelper;
+import com.abs.casino.common.util.ITimeProvider;
+import com.abs.casino.common.util.NtpWrapper;
+import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import org.apache.commons.net.ntp.NtpV3Packet;
+import org.apache.commons.net.ntp.TimeInfo;
+import org.apache.log4j.Logger;
+
+import javax.annotation.PreDestroy;
+import javax.xml.bind.DatatypeConverter;
+import java.net.InetAddress;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+
+import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkState;
+
+/**
+ * The same as SynchroTimeProvider, but with whole-system linear timestamps and microseconds
+ * User: van0ss
+ * Date: 21.02.2017
+ */
+public class NtpTimeProvider implements ITimeProvider {
+    private static final Logger LOG = Logger.getLogger(NtpTimeProvider.class);
+    private static final Logger CRITICAL_LOG = Logger.getLogger("critical");
+
+    private final NtpWrapper ntpClient;
+    private InetAddress serverHost;
+    private static final int DEFAULT_TIMEOUT = 3000;
+    private static final long CRITICAL_OFFSET_CHANGE = TimeUnit.DAYS.toMillis(1);
+    private static final long SOCKET_TIMEOUT_WARN_INTERVAL_MS = TimeUnit.MINUTES.toMillis(1);

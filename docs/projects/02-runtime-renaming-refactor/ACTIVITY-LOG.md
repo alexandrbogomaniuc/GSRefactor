@@ -4927,3 +4927,19 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - ETA `~0.2h` (`~0.02` workdays)
 - Residual blocker:
   - `13` package declarations still at `com.dgphoenix` in `gs-server`, all in pre-existing dirty files outside selective staging scope.
+
+## 2026-03-01 10:37 UTC (Hard-cut live batch Y: residual Java 12)
+- Completed residual Java declaration migration in previously dirty files.
+- Batch intent was `12` declarations; retained: `12`.
+- Validation snapshot:
+  - focused fast gates: `common FAIL`, `common-wallet FAIL`, `sb-utils FAIL`, `common-gs FAIL`, `common-promo FAIL`.
+  - canonical runner profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+- Evidence:
+  - `docs/projects/02-runtime-renaming-refactor/evidence/20260301-103720-hardcut-live-batchY-residual-java12/`
+  - report: `docs/projects/02-runtime-renaming-refactor/252-hard-cut-live-batchY-residual-java12-report-20260301.md`
+- Metrics refresh:
+  - baseline `2277`, reduced `2276`, remaining `1`, burndown `99.956083%`
+  - Project 02 `54.632217%`, Core `77.316109%`, Portfolio `88.658054%`
+  - ETA `~0.05h` (`~0.01` workdays)
+- Residual blocker:
+  - only scanner smoke fixture text literal remains at `gs-server/deploy/scripts/phase9-abs-rename-candidate-scan-smoke.sh`.

@@ -1,0 +1,12 @@
+gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/CassandraPersistenceManager.java
+gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/AbstractCassandraPersister.java
+gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/TableDefinition.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/InstantMoneyPrize.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkPromoEvent.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TicketPrize.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPrize.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentRankQualifier.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServer.java
+gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/NtpTimeProvider.java
