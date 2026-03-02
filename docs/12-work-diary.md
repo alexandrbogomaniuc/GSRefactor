@@ -10582,3 +10582,16 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-214657-hardcut-live-batchBRBS-bots-stringutils-import-rewire21/`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/279-hard-cut-live-batchBRBS-bots-stringutils-import-rewire21-report-20260302.md`
 - Result: bots fail-head cleared; next action is push BR+BS checkpoint and continue with web package-lane normalization.
+
+### 2026-03-02 22:16 UTC
+- Push checkpoint for `Batch BR+BS` completed.
+- Commit pushed to `origin/main`:
+  - `04502e1d2` (`refactor: hard-cut batchBRBS bots stringutils imports`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-214657-hardcut-live-batchBRBS-bots-stringutils-import-rewire21/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/279-hard-cut-live-batchBRBS-bots-stringutils-import-rewire21-report-20260302.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.30-3.00h` (`~0.04-0.38` workdays), next lane is web package normalization (`common.mp`, `kafka.dto`, `IRemoteUnlocker`).
