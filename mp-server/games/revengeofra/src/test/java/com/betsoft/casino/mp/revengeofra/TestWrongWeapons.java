@@ -7,8 +7,7 @@ import com.betsoft.casino.mp.revengeofra.model.math.EnemyData;
 import com.betsoft.casino.mp.revengeofra.model.math.EnemyType;
 import com.betsoft.casino.mp.revengeofra.model.math.MathData;
 import com.betsoft.casino.mp.revengeofra.model.math.WeaponData;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.Triple;
+import com.abs.casino.common.util.Pair;
 
 import java.util.Comparator;
 import java.util.List;

@@ -1,0 +1,8 @@
+mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/GameMap.java
+mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/GameRoom.java
+mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayGameState.java
+mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayerRoundInfo.java
+mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/QualifyGameState.java
+mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/RoomSeats.java
+mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/WaitingPlayersGameState.java
+mp-server/games/revengeofra/src/test/java/com/betsoft/casino/mp/revengeofra/TestWrongWeapons.java

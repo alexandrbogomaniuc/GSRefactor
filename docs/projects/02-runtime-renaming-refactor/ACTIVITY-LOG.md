@@ -5420,3 +5420,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - previous pirates-common-math Triple head-fail cleared; fail-shift advanced downstream into revengeofra boundary harmonization.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 20:12 UTC (Hard-cut live Batch BL+BM)
+- Continued Project 02 stabilization with integrated live batches `BL+BM` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BL (`7` rewires): normalized `revengeofra` `PlayerRoundInfo` `Pair`, `GameRoom/PlayGameState/WaitingPlayersGameState/QualifyGameState` `CommonException`, and `PlayGameState` `Pair/Triple` imports.
+  - BM (`4` rewires): normalized `revengeofra` `GameMap` `Pair`, `RoomSeats` `CommonException`, and `TestWrongWeapons` `Pair` import + stale legacy `Triple` import removal.
+  - retained total: `11` import/signature-boundary rewires across `8` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `web` FAIL, harmonized `clashofthegods` compile PASS.
+  - `web` first-fail shifted from `revengeofra` to `dragonstone` boundary lane (`PlayerRoundInfo` Pair mismatches + state/room throws-contract drift).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not BL/BM import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-195147-hardcut-live-batchBLBM-revengeofra-boundary-import-rewire11/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/276-hard-cut-live-batchBLBM-revengeofra-boundary-import-rewire11-report-20260302.md`
+- Measured movement:
+  - cleared `revengeofra` head-fail lane and advanced downstream into `dragonstone` boundary harmonization.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

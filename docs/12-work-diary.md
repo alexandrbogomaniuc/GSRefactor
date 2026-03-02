@@ -10465,3 +10465,22 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.40-3.00h` (`~0.05-0.38` workdays), next lane is `revengeofra` CommonException/Pair/Triple boundary harmonization.
+
+### 2026-03-02 20:12 UTC
+- Continued Project 02 stabilization with integrated live batches `BL+BM` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BL (`7` rewires): `revengeofra` `PlayerRoundInfo` `Pair`; `GameRoom/PlayGameState/WaitingPlayersGameState/QualifyGameState` `CommonException`; `PlayGameState` `Pair/Triple` import normalization.
+  - BM (`4` rewires): `revengeofra` `GameMap` `Pair`, `RoomSeats` `CommonException`, and `TestWrongWeapons` `Pair` import normalization + stale `Triple` import removal.
+  - retained total: `11` import/signature-boundary rewires across `8` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `web` FAIL; harmonized `clashofthegods` compile PASS.
+  - `web` first-fail shifted from `revengeofra` lane to `dragonstone` boundary lane (`PlayerRoundInfo` Pair and room/state throws-contract drift).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-195147-hardcut-live-batchBLBM-revengeofra-boundary-import-rewire11/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/276-hard-cut-live-batchBLBM-revengeofra-boundary-import-rewire11-report-20260302.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- Next step:
+  - commit/push BL+BM checkpoint, then execute bounded `dragonstone` Pair/CommonException boundary harmonization wave.

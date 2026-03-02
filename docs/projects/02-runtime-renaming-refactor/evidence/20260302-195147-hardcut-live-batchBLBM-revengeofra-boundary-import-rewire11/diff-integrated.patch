@@ -1,0 +1,110 @@
+diff --git a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/GameMap.java b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/GameMap.java
+index bc0a6c6c4..564cfe3ef 100644
+--- a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/GameMap.java
++++ b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/GameMap.java
+@@ -8,7 +8,7 @@ import com.betsoft.casino.mp.common.scenarios.TypeAndSkin;
+ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.movement.*;
+ import com.betsoft.casino.mp.revengeofra.model.math.*;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import com.abs.casino.common.util.RNG;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+diff --git a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/GameRoom.java b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/GameRoom.java
+index a62bca2c5..fa5ffefd6 100644
+--- a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/GameRoom.java
++++ b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/GameRoom.java
+@@ -10,7 +10,7 @@ import com.betsoft.casino.mp.revengeofra.model.math.EnemyType;
+ import com.betsoft.casino.mp.revengeofra.model.math.MathData;
+ import com.betsoft.casino.mp.service.*;
+ import com.betsoft.casino.mp.web.IGameSocketClient;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.hazelcast.core.IExecutorService;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.context.ApplicationContext;
+diff --git a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayGameState.java b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayGameState.java
+index 5f5a5c880..7005c14e3 100644
+--- a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayGameState.java
++++ b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayGameState.java
+@@ -10,10 +10,10 @@ import com.betsoft.casino.mp.utils.ErrorCodes;
+ import com.betsoft.casino.teststand.TestStandFeature;
+ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.betsoft.casino.utils.TObject;
+-import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.abs.casino.common.util.RNG;
+-import com.dgphoenix.casino.common.util.Triple;
++import com.abs.casino.common.exception.CommonException;
++import com.abs.casino.common.util.Pair;
++import com.abs.casino.common.util.RNG;
++import com.abs.casino.common.util.Triple;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ import reactor.core.Disposable;
+diff --git a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayerRoundInfo.java b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayerRoundInfo.java
+index 97d9a2567..778d2cd2e 100644
+--- a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayerRoundInfo.java
++++ b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayerRoundInfo.java
+@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.revengeofra.model.math.EnemyRange;
+ import com.betsoft.casino.mp.revengeofra.model.math.EnemyType;
+ import com.betsoft.casino.mp.revengeofra.model.math.MathData;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import com.google.common.util.concurrent.AtomicDouble;
+ 
+ import java.util.*;
+diff --git a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/QualifyGameState.java b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/QualifyGameState.java
+index 937d3fbbc..6321d4637 100644
+--- a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/QualifyGameState.java
++++ b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/QualifyGameState.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.mp.revengeofra.model;
+ 
+ import com.betsoft.casino.mp.common.AbstractQualifyGameState;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ 
+ public class QualifyGameState extends AbstractQualifyGameState<GameRoom, Seat, GameMap, QualifyGameState> {
+     public QualifyGameState() {}
+diff --git a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/RoomSeats.java b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/RoomSeats.java
+index 1123e52dc..8e98ec694 100644
+--- a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/RoomSeats.java
++++ b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/RoomSeats.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.revengeofra.model;
+ 
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import java.io.Serializable;
+ import java.util.Arrays;
+ import java.util.Iterator;
+diff --git a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/WaitingPlayersGameState.java b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/WaitingPlayersGameState.java
+index 3929c54d2..db8f8a91d 100644
+--- a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/WaitingPlayersGameState.java
++++ b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/WaitingPlayersGameState.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.mp.revengeofra.model;
+ 
+ import com.betsoft.casino.mp.common.AbstractSingleNodeWaitingPlayerGameState;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ 
+ public class WaitingPlayersGameState extends AbstractSingleNodeWaitingPlayerGameState<GameRoom, Seat, GameMap, WaitingPlayersGameState> {
+     public WaitingPlayersGameState() {}
+diff --git a/mp-server/games/revengeofra/src/test/java/com/betsoft/casino/mp/revengeofra/TestWrongWeapons.java b/mp-server/games/revengeofra/src/test/java/com/betsoft/casino/mp/revengeofra/TestWrongWeapons.java
+index fbe6300de..9b987784c 100644
+--- a/mp-server/games/revengeofra/src/test/java/com/betsoft/casino/mp/revengeofra/TestWrongWeapons.java
++++ b/mp-server/games/revengeofra/src/test/java/com/betsoft/casino/mp/revengeofra/TestWrongWeapons.java
+@@ -7,8 +7,7 @@ import com.betsoft.casino.mp.revengeofra.model.math.EnemyData;
+ import com.betsoft.casino.mp.revengeofra.model.math.EnemyType;
+ import com.betsoft.casino.mp.revengeofra.model.math.MathData;
+ import com.betsoft.casino.mp.revengeofra.model.math.WeaponData;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.Triple;
++import com.abs.casino.common.util.Pair;
+ 
+ import java.util.Comparator;
+ import java.util.List;

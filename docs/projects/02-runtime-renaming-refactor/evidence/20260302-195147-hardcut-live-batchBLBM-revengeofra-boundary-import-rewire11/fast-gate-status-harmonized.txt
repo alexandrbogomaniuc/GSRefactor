@@ -1,0 +1,1 @@
+harmonized_consumer_compile=PASS

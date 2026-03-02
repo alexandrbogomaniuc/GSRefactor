@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.revengeofra.model.math.EnemyRange;
 import com.betsoft.casino.mp.revengeofra.model.math.EnemyType;
 import com.betsoft.casino.mp.revengeofra.model.math.MathData;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 import com.google.common.util.concurrent.AtomicDouble;
 
 import java.util.*;
