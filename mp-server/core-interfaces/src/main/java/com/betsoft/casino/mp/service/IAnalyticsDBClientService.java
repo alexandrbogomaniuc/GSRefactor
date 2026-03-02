@@ -7,7 +7,7 @@ import com.betsoft.casino.mp.model.IRMSRoom;
 import com.betsoft.casino.mp.model.IRoundResult;
 import com.betsoft.casino.mp.model.ISeat;
 import com.betsoft.casino.mp.model.room.IRoom;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 
 public interface IAnalyticsDBClientService {
 

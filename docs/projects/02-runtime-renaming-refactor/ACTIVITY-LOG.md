@@ -5133,3 +5133,32 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - `common-games` legacy imports reduced from `22` to `0` (delta `-22`).
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 15:49 UTC (Hard-cut live Batch AH+AI+AJ+AK)
+- Continued Project 02 stabilization in `/Users/alexb/Documents/Dev/Dev_new` using parallel batched-safe interface-boundary normalization.
+- Changes:
+  - Batch AH (`IGameState`, `ITimedEvent`): `CommonException` import normalization.
+  - Batch AI (`IRoom`, `ISeat`): `CommonException` import normalization.
+  - Batch AJ (`IPlayerRoundInfo`, `IShootResult`, `IAnalyticsDBClientService`): `Pair` import normalization.
+  - Batch AK (`ISocketService`, `IGame`, `IActionGameSeat`, `IRoomInfoService`, `ILobbySessionService`): `CommonException` import normalization.
+  - Bounded one-file fix in `StubCurrency` removed conflicting `com.abs...ICurrency` import.
+  - Net retained impact: `49` import/signature-boundary normalizations across `13` files.
+- Validation:
+  - targeted mp fast gates:
+    - `mvn -pl games/common-games -am -DskipTests compile` -> PASS
+    - `mvn -pl web -am -DskipTests compile` -> FAIL (first-fail moved to `bg_maxblastchampions` `RNG`/`DateTimeUtils` legacy imports)
+    - `mvn -pl games/clashofthegods -am -DskipTests compile` -> FAIL (`clashofthegods-math` Pair/Triple mixed-namespace type-boundary mismatches)
+  - canonical full matrix:
+    - `fast_gate_batchA FAIL STEP09`
+    - `fast_gate_batchB FAIL STEP09`
+    - `prewarm PASS`
+    - `validation FAIL STEP09`
+    - `STEP09 retry1 rc=2`
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-153306-hardcut-live-batchAHAIAJAK-coreinterfaces-boundary-normalization/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/262-hard-cut-live-batchAHAIAJAK-coreinterfaces-boundary-normalization-report-20260302.md`
+- Measured movement:
+  - `core-interfaces` legacy `CommonException` imports: `16 -> 7`.
+  - `core-interfaces` legacy `Pair` imports: `6 -> 3`.
+  - `common-games` compile gate recovered from FAIL to PASS.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

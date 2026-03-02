@@ -10005,3 +10005,22 @@
 - ETA refresh:
   - declaration hard-cut ETA `0.0h` (complete)
   - stabilization ETA `~4-8h` (`~0.50-1.00` workdays)
+
+### 2026-03-02 15:49 UTC
+- Continued Project 02 stabilization with integrated live batches `AH+AI+AJ+AK` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content (parallel-safe ownership):
+  - AH+AI: normalized `CommonException` interface imports in `IGameState`, `ITimedEvent`, `IRoom`, `ISeat`.
+  - AJ: normalized `Pair` interface imports in `IPlayerRoundInfo`, `IShootResult`, `IAnalyticsDBClientService`.
+  - AK: normalized `CommonException` interface imports in `ISocketService`, `IGame`, `IActionGameSeat`, `IRoomInfoService`, `ILobbySessionService`.
+  - local blocker fix: removed conflicting `com.abs...ICurrency` import in `StubCurrency`.
+- Validation:
+  - targeted mp fast gates improved: `common-games` compile now PASS; `web` and `clashofthegods` remain FAIL with first-fail shifted to `bg_maxblastchampions` (`RNG`/`DateTimeUtils` imports) and `clashofthegods-math` (`Pair`/`Triple` mixed-type boundaries).
+  - canonical profile remains stable: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 rc=2`.
+- Measured movement:
+  - `core-interfaces` legacy `CommonException` imports reduced `16 -> 7`.
+  - `core-interfaces` legacy `Pair` imports reduced `6 -> 3`.
+  - `common-games` first-fail gate recovered to PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-153306-hardcut-live-batchAHAIAJAK-coreinterfaces-boundary-normalization/`
+- Next step:
+  - continue with bounded batch on `bg_maxblastchampions` legacy utility imports and `clashofthegods-math` Pair/Triple interface boundaries.

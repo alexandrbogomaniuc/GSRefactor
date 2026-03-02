@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.model;
 import com.betsoft.casino.mp.common.Coords;
 import com.betsoft.casino.mp.common.MinePoint;
 import com.betsoft.casino.mp.common.SeatBullet;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 import java.util.ArrayList;
 import java.util.List;

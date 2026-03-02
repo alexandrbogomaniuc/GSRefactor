@@ -1,0 +1,3 @@
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/IAnalyticsDBClientService.java:10:import com.abs.casino.common.util.Pair;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IPlayerRoundInfo.java:4:import com.abs.casino.common.util.Pair;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IShootResult.java:3:import com.abs.casino.common.util.Pair;

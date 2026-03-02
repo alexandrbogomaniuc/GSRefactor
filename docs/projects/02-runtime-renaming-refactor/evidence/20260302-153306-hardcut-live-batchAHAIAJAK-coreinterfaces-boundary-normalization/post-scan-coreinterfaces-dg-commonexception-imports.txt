@@ -1,0 +1,7 @@
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/exceptions/ServiceNotStartedException.java:3:import com.dgphoenix.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/events/IEvent.java:3:import com.dgphoenix.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/payment/IPendingOperationProcessor.java:4:import com.dgphoenix.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/exceptions/BuyInFailedException.java:3:import com.dgphoenix.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/IBotServiceClient.java:7:import com.dgphoenix.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/INicknameService.java:3:import com.dgphoenix.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/IRoomServiceFactory.java:6:import com.dgphoenix.casino.common.exception.CommonException;

@@ -1,0 +1,14 @@
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/events/ITimedEvent.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IActionGameSeat.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IGame.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IGameState.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IPlayerRoundInfo.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ISeat.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IShootResult.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/IAnalyticsDBClientService.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/ILobbySessionService.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/IRoomInfoService.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/ISocketService.java
+?? docs/gs/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260302-153306-hardcut-live-batchAHAIAJAK-coreinterfaces-boundary-normalization/

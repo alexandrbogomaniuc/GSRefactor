@@ -1,0 +1,20 @@
+150:[ERROR] COMPILATION ERROR : 
+152:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/WaitingPlayersGameState.java:[13,40] cannot find symbol
+155:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java:[29,40] cannot find symbol
+158:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java:[45,54] cannot find symbol
+161:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java:[45,1] static import only from classes and interfaces
+162:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/MaxBlastChampionsTestStand.java:[6,40] cannot find symbol
+165:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/PlayGameState.java:[15,40] cannot find symbol
+216:[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project bg_maxblastchampions: Compilation failure: Compilation failure: 
+217:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/WaitingPlayersGameState.java:[13,40] cannot find symbol
+218:[ERROR]   symbol:   class RNG
+219:[ERROR]   location: package com.dgphoenix.casino.common.util
+220:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java:[29,40] cannot find symbol
+221:[ERROR]   symbol:   class RNG
+222:[ERROR]   location: package com.dgphoenix.casino.common.util
+223:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java:[45,54] cannot find symbol
+224:[ERROR]   symbol:   class DateTimeUtils
+225:[ERROR]   location: package com.dgphoenix.casino.common.util.string
+226:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java:[45,1] static import only from classes and interfaces
+227:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/MaxBlastChampionsTestStand.java:[6,40] cannot find symbol
+228:[ERROR]   symbol:   class RNG

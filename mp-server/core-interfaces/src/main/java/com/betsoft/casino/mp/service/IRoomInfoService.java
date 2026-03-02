@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.service;
 
 import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.model.room.IRoomInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.hazelcast.core.EntryEvent;
 import com.hazelcast.core.EntryListener;
 import com.hazelcast.core.MapEvent;

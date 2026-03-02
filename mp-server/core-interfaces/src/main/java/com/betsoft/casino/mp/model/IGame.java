@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.model.gameconfig.IGameConfig;
 import com.betsoft.casino.mp.model.gameconfig.ISpawnConfig;
 import com.betsoft.casino.mp.service.IGameConfigService;
 import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 import java.util.List;
 

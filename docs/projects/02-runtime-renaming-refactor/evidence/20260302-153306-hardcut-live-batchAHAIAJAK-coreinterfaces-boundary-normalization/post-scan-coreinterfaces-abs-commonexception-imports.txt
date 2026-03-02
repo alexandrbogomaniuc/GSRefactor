@@ -1,0 +1,9 @@
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/events/ITimedEvent.java:3:import com.abs.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/ISocketService.java:10:import com.abs.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/IRoomInfoService.java:5:import com.abs.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/ILobbySessionService.java:5:import com.abs.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IGameState.java:8:import com.abs.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IActionGameSeat.java:6:import com.abs.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java:10:import com.abs.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IGame.java:8:import com.abs.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ISeat.java:8:import com.abs.casino.common.exception.CommonException;

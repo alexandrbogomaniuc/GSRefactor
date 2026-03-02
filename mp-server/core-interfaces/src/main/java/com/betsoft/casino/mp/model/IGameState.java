@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.model.room.IRoomInfo;
 import com.betsoft.casino.mp.utils.ErrorCodes;
 import com.betsoft.casino.utils.TInboundObject;
 import com.abs.casino.common.cache.JsonSelfSerializable;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.ILongIdGenerator;
 import com.esotericsoftware.kryo.KryoSerializable;
 import org.apache.logging.log4j.Logger;

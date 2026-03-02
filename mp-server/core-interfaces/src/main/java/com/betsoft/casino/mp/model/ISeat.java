@@ -5,7 +5,7 @@ import com.betsoft.casino.utils.ITransportObject;
 import com.betsoft.casino.utils.InboundObject;
 import com.dgphoenix.casino.common.cache.Identifiable;
 import com.abs.casino.common.cache.JsonSelfSerializable;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.esotericsoftware.kryo.KryoSerializable;
 
 /**

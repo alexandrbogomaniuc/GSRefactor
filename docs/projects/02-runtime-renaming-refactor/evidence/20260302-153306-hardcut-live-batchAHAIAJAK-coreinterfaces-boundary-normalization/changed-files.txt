@@ -1,0 +1,12 @@
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/events/ITimedEvent.java
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IActionGameSeat.java
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IGame.java
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IGameState.java
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IPlayerRoundInfo.java
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ISeat.java
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IShootResult.java
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/IAnalyticsDBClientService.java
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/ILobbySessionService.java
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/IRoomInfoService.java
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/ISocketService.java

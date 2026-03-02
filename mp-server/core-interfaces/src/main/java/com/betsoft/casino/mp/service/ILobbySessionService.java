@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.service;
 
 import com.betsoft.casino.mp.model.ILobbySession;
 import com.betsoft.casino.mp.web.ILobbySocketClient;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 import java.util.Collection;
 
