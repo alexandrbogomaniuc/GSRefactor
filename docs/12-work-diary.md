@@ -9993,3 +9993,15 @@
   - `common-games` legacy imports (`^import com.dgphoenix`) reduced from `22` to `0`.
 - Next step:
   - commit/push this wave and continue with low-risk post-import type-boundary normalization batches in `mp-common-games`.
+
+### 2026-03-02 15:26 UTC
+- Pushed `Batch AF+AG` commit to `origin/main`:
+  - commit `e9cd8de37`
+  - report `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/261-hard-cut-live-batchAFAG-common-games-import-rewire22-report-20260302.md`
+  - evidence `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-150403-hardcut-live-batchAFAG-common-games-import-rewire22/`
+- Metrics snapshot unchanged for declaration tracker:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - declaration hard-cut ETA `0.0h` (complete)
+  - stabilization ETA `~4-8h` (`~0.50-1.00` workdays)
