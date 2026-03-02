@@ -1,0 +1,325 @@
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/config/SampleDataInitializer.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/config/SampleDataInitializer.java
+index d8426b253..58e2720db 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/config/SampleDataInitializer.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/config/SampleDataInitializer.java
+@@ -9,7 +9,7 @@ import com.betsoft.casino.mp.service.RoomPlayerInfoService;
+ import com.betsoft.casino.mp.service.RoomTemplateService;
+ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
+ import com.betsoft.casino.mp.web.service.SocketService;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import org.apache.logging.log4j.LogManager;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebSocketRouter.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebSocketRouter.java
+index 9991d2af1..21e434344 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebSocketRouter.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebSocketRouter.java
+@@ -24,7 +24,7 @@ import com.betsoft.casino.mp.web.NettyServer;
+ import com.betsoft.casino.mp.web.service.*;
+ import com.betsoft.casino.mp.web.socket.*;
+ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+-import com.dgphoenix.casino.cassandra.IRemoteUnlocker;
++import com.abs.casino.cassandra.IRemoteUnlocker;
+ import com.abs.casino.common.config.UtilsApplicationContextHelper;
+ import com.google.gson.Gson;
+ import com.hazelcast.core.HazelcastInstance;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/controllers/MapConfigController.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/controllers/MapConfigController.java
+index efb7a8b44..6dbd7b668 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/controllers/MapConfigController.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/controllers/MapConfigController.java
+@@ -8,7 +8,7 @@ import com.betsoft.casino.mp.model.gameconfig.IMapConfig;
+ import com.betsoft.casino.mp.service.IMapConfigService;
+ import com.betsoft.casino.mp.service.RoomPlayerInfoService;
+ import com.betsoft.casino.mp.web.service.RefreshMapConfigTask;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.http.HttpStatus;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/BuyInHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/BuyInHandler.java
+index e1f5c6611..d14885b73 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/BuyInHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/BuyInHandler.java
+@@ -15,7 +15,7 @@ import com.betsoft.casino.mp.web.IGameSocketClient;
+ import com.betsoft.casino.mp.web.IMessageSerializer;
+ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
+ import com.betsoft.casino.mp.web.service.SocketService;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.stereotype.Component;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/ReBuyHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/ReBuyHandler.java
+index 58365606c..b2b321a67 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/ReBuyHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/ReBuyHandler.java
+@@ -15,7 +15,7 @@ import com.betsoft.casino.mp.web.IGameSocketClient;
+ import com.betsoft.casino.mp.web.IMessageSerializer;
+ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
+ import com.betsoft.casino.mp.web.service.SocketService;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.stereotype.Component;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitInHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitInHandler.java
+index dc2e9f70e..f0ef1f0e6 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitInHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitInHandler.java
+@@ -31,7 +31,7 @@ import com.betsoft.casino.mp.web.handlers.lobby.EnterLobbyHandler;
+ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
+ import com.betsoft.casino.mp.web.service.SitOutTask;
+ import com.betsoft.casino.mp.web.service.SocketService;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.abs.casino.common.currency.CurrencyRate;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/bots/BotSitInHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/bots/BotSitInHandler.java
+index ee8cc2a72..7cb219f60 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/bots/BotSitInHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/bots/BotSitInHandler.java
+@@ -14,7 +14,7 @@ import com.betsoft.casino.mp.web.IMessageSerializer;
+ import com.betsoft.casino.mp.web.handlers.game.SitInHandler;
+ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
+ import com.betsoft.casino.utils.TObject;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.web.reactive.socket.WebSocketSession;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
+index 62a1ff6fc..7ad719395 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
+@@ -32,7 +32,7 @@ import com.betsoft.casino.mp.web.service.ChangeBonusStatusTask;
+ import com.betsoft.casino.mp.web.service.ChangeTournamentStateTask;
+ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
+ import com.betsoft.casino.utils.ITransportObject;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.abs.casino.common.cache.Identifiable;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.abs.casino.common.util.RNG;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/ChangeAvatarHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/ChangeAvatarHandler.java
+index 9c52940d8..8ac9c513a 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/ChangeAvatarHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/ChangeAvatarHandler.java
+@@ -12,7 +12,7 @@ import com.betsoft.casino.mp.utils.ErrorCodes;
+ import com.betsoft.casino.mp.web.handlers.MessageHandler;
+ import com.betsoft.casino.mp.web.service.LobbyManager;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.google.gson.Gson;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/ChangeTooltipsHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/ChangeTooltipsHandler.java
+index 07387cedf..ec5bc8257 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/ChangeTooltipsHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/ChangeTooltipsHandler.java
+@@ -10,7 +10,7 @@ import com.betsoft.casino.mp.transport.ChangeToolTips;
+ import com.betsoft.casino.mp.web.handlers.MessageHandler;
+ import com.betsoft.casino.mp.web.service.LobbyManager;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.google.gson.Gson;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/CloseRoundResultNotificationHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/CloseRoundResultNotificationHandler.java
+index a792a5a87..4d1d63e67 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/CloseRoundResultNotificationHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/CloseRoundResultNotificationHandler.java
+@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.transport.CloseRoundResultNotification;
+ import com.betsoft.casino.mp.web.handlers.MessageHandler;
+ import com.betsoft.casino.mp.web.service.LobbyManager;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.google.gson.Gson;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/CollectQuestsHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/CollectQuestsHandler.java
+index a816e8cb5..f44287a43 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/CollectQuestsHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/CollectQuestsHandler.java
+@@ -14,7 +14,7 @@ import com.betsoft.casino.mp.web.service.CollectResult;
+ import com.betsoft.casino.mp.web.service.LobbyManager;
+ import com.betsoft.casino.mp.web.service.QuestCollectTask;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.google.gson.Gson;
+ import com.hazelcast.core.IExecutorService;
+ import com.hazelcast.core.Member;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java
+index 0ca92f51d..e3b79597b 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java
+@@ -27,10 +27,10 @@ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+ import com.abs.casino.common.cache.data.game.BaseGameConstants;
+ import com.abs.casino.common.currency.CurrencyRate;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.mp.MQData;
+-import com.dgphoenix.casino.common.mp.MQQuestData;
+-import com.dgphoenix.casino.common.mp.MQTreasureQuestProgress;
+-import com.dgphoenix.casino.common.mp.MQuestPrize;
++import com.abs.casino.common.mp.MQData;
++import com.abs.casino.common.mp.MQQuestData;
++import com.abs.casino.common.mp.MQTreasureQuestProgress;
++import com.abs.casino.common.mp.MQuestPrize;
+ import com.dgphoenix.casino.common.util.CollectionUtils;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.abs.casino.kafka.dto.BattlegroundInfoDto;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetQuestsHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetQuestsHandler.java
+index 95b53baeb..c3d4f166d 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetQuestsHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetQuestsHandler.java
+@@ -12,7 +12,7 @@ import com.betsoft.casino.mp.web.handlers.MessageHandler;
+ import com.betsoft.casino.mp.web.service.LobbyManager;
+ import com.betsoft.casino.mp.web.service.QuestListTask;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.google.gson.Gson;
+ import com.hazelcast.core.IExecutorService;
+ import com.hazelcast.core.Member;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetWeaponsHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetWeaponsHandler.java
+index ee326f35a..7869fde22 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetWeaponsHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetWeaponsHandler.java
+@@ -11,7 +11,7 @@ import com.betsoft.casino.mp.transport.Weapon;
+ import com.betsoft.casino.mp.web.handlers.MessageHandler;
+ import com.betsoft.casino.mp.web.service.LobbyManager;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.google.gson.Gson;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/LobbyReBuyHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/LobbyReBuyHandler.java
+index f5a780dd8..836abe0ec 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/LobbyReBuyHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/LobbyReBuyHandler.java
+@@ -15,7 +15,7 @@ import com.betsoft.casino.mp.web.service.LobbyManager;
+ import com.betsoft.casino.mp.web.service.SocketService;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+ import com.betsoft.casino.utils.TInboundObject;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.google.gson.Gson;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/ChangeBonusStatusTask.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/ChangeBonusStatusTask.java
+index b015e2ec6..fe6be3770 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/ChangeBonusStatusTask.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/ChangeBonusStatusTask.java
+@@ -10,7 +10,7 @@ import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
+ import com.betsoft.casino.mp.service.LobbySessionService;
+ import com.betsoft.casino.mp.service.RoomPlayerInfoService;
+ import com.betsoft.casino.mp.web.ISocketClient;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.hazelcast.spring.context.SpringAware;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/ChangeTournamentStateTask.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/ChangeTournamentStateTask.java
+index 6cb197092..386568c1a 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/ChangeTournamentStateTask.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/ChangeTournamentStateTask.java
+@@ -11,7 +11,7 @@ import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
+ import com.betsoft.casino.mp.service.LobbySessionService;
+ import com.betsoft.casino.mp.service.RoomPlayerInfoService;
+ import com.betsoft.casino.mp.web.ISocketClient;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.hazelcast.spring.context.SpringAware;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java
+index 46a39884c..543fb2d99 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java
+@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.data.persister.PlayerNicknamePersister;
+ import com.betsoft.casino.mp.data.persister.ReservedNicknamePersister;
+ import com.betsoft.casino.mp.service.INicknameService;
+ import com.betsoft.casino.mp.service.ISocketService;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RemoteUnlocker.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RemoteUnlocker.java
+index d14d06d5d..b110d6543 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RemoteUnlocker.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RemoteUnlocker.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.mp.web.service;
+ 
+ import com.betsoft.casino.mp.kafka.KafkaMessageService;
+-import com.dgphoenix.casino.cassandra.IRemoteUnlocker;
++import com.abs.casino.cassandra.IRemoteUnlocker;
+ import com.dgphoenix.casino.common.lock.ILockManager;
+ import com.abs.casino.kafka.dto.BooleanResponseDto;
+ import com.abs.casino.kafka.dto.KafkaResponse;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java
+index 8f6d1c51e..dd7a15565 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java
+@@ -30,7 +30,7 @@ import com.betsoft.casino.mp.transport.Error;
+ import com.betsoft.casino.mp.utils.ErrorCodes;
+ import com.betsoft.casino.mp.web.IGameSocketClient;
+ import com.betsoft.casino.utils.ITransportObject;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.abs.casino.kafka.dto.RunningRoomDto;
+ import com.abs.casino.kafka.dto.privateroom.response.DeactivateRoomResultDto;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java
+index b73e64173..240dc2dba 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java
+@@ -29,7 +29,7 @@ import com.betsoft.casino.teststand.TestStandError;
+ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.abs.casino.common.currency.CurrencyRate;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.mp.*;
++import com.abs.casino.common.mp.*;
+ import com.dgphoenix.casino.common.util.CollectionUtils;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+@@ -73,8 +73,8 @@ import com.abs.casino.kafka.dto.GetPaymentOperationStatus2Request;
+ import com.abs.casino.kafka.dto.GetServerRunningRoomsRequest;
+ import com.abs.casino.kafka.dto.GetServerRunningRoomsResponse;
+ import com.abs.casino.kafka.dto.InvitePlayersToPrivateRoomRequest;
+-import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
+-import com.dgphoenix.casino.kafka.dto.KafkaResponse;
++import com.abs.casino.kafka.dto.KafkaHandlerException;
++import com.abs.casino.kafka.dto.KafkaResponse;
+ import com.abs.casino.kafka.dto.LeaveMultiPlayerLobbyRequest;
+ import com.abs.casino.kafka.dto.LongResponseDto;
+ import com.abs.casino.kafka.dto.MQDataDto;
+@@ -112,7 +112,7 @@ import com.abs.casino.kafka.dto.StringResponseDto;
+ import com.abs.casino.kafka.dto.TournamentInfoDto;
+ import com.abs.casino.kafka.dto.UpdateCurrencyRatesRequestResponse;
+ import com.abs.casino.kafka.dto.UpdatePlayersStatusInPrivateRoomRequest;
+-import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
++import com.abs.casino.kafka.dto.VoidKafkaResponse;
+ import org.apache.commons.lang3.mutable.MutableObject;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/BotGameWebSocketHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/BotGameWebSocketHandler.java
+index 78196497d..bbebb7f82 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/BotGameWebSocketHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/BotGameWebSocketHandler.java
+@@ -14,7 +14,7 @@ import com.betsoft.casino.mp.web.handlers.game.bots.BotSitInHandler;
+ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
+ import com.betsoft.casino.mp.web.service.SocketService;
+ import com.betsoft.casino.utils.TObject;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.web.reactive.socket.WebSocketMessage;

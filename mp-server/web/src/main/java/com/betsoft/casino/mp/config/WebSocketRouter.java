@@ -24,7 +24,7 @@ import com.betsoft.casino.mp.web.NettyServer;
 import com.betsoft.casino.mp.web.service.*;
 import com.betsoft.casino.mp.web.socket.*;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.IRemoteUnlocker;
+import com.abs.casino.cassandra.IRemoteUnlocker;
 import com.abs.casino.common.config.UtilsApplicationContextHelper;
 import com.google.gson.Gson;
 import com.hazelcast.core.HazelcastInstance;

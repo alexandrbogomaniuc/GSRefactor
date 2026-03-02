@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.data.persister.PlayerNicknamePersister;
 import com.betsoft.casino.mp.data.persister.ReservedNicknamePersister;
 import com.betsoft.casino.mp.service.INicknameService;
 import com.betsoft.casino.mp.service.ISocketService;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.common.util.RNG;
 import org.apache.logging.log4j.LogManager;

@@ -12,7 +12,7 @@ import com.betsoft.casino.mp.utils.ErrorCodes;
 import com.betsoft.casino.mp.web.handlers.MessageHandler;
 import com.betsoft.casino.mp.web.service.LobbyManager;
 import com.betsoft.casino.mp.web.ILobbySocketClient;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

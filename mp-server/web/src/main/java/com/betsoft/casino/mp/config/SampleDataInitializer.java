@@ -9,7 +9,7 @@ import com.betsoft.casino.mp.service.RoomPlayerInfoService;
 import com.betsoft.casino.mp.service.RoomTemplateService;
 import com.betsoft.casino.mp.web.service.RoomServiceFactory;
 import com.betsoft.casino.mp.web.service.SocketService;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import org.apache.logging.log4j.LogManager;

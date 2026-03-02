@@ -8,7 +8,7 @@ import com.betsoft.casino.mp.model.gameconfig.IMapConfig;
 import com.betsoft.casino.mp.service.IMapConfigService;
 import com.betsoft.casino.mp.service.RoomPlayerInfoService;
 import com.betsoft.casino.mp.web.service.RefreshMapConfigTask;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;

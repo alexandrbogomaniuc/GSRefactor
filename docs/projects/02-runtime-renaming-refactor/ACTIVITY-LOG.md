@@ -5492,3 +5492,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared bots string-utils `RicochetBullet` fail-head and advanced first-fail into web package normalization lane.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 22:53 UTC (Hard-cut live Batch BT+BU)
+- Continued Project 02 stabilization with integrated live batches `BT+BU` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BT (`10` rewires): normalized web fail-head imports for `common.mp`, `kafka.dto`, and `IRemoteUnlocker`.
+  - BU (`19` rewires): normalized `CassandraPersistenceManager` imports across web config/controllers/handlers/services/socket classes.
+  - retained total: `29` import-only rewires across `23` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL, harmonized `clashofthegods` compile PASS.
+  - `web` first-fail shifted off unresolved package lane into deeper type/signature boundary lane (`GetStartGameUrlHandler` overrides, `RemoteUnlocker` generic type mismatch, `WebSocketRouter` cassandra-manager type compatibility).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not BT/BU import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-222311-hardcut-live-batchBTBU-web-packages-cassandra-import-rewire29/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/280-hard-cut-live-batchBTBU-web-packages-cassandra-import-rewire29-report-20260302.md`
+- Measured movement:
+  - cleared web unresolved package frontier and exposed next constrained compatibility lane for final stabilization passes.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

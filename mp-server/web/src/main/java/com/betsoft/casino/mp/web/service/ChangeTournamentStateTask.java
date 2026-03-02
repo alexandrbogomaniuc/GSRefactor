@@ -11,7 +11,7 @@ import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
 import com.betsoft.casino.mp.service.LobbySessionService;
 import com.betsoft.casino.mp.service.RoomPlayerInfoService;
 import com.betsoft.casino.mp.web.ISocketClient;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.hazelcast.spring.context.SpringAware;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

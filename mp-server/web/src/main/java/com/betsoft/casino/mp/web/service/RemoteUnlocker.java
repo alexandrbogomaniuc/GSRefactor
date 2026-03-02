@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.web.service;
 
 import com.betsoft.casino.mp.kafka.KafkaMessageService;
-import com.dgphoenix.casino.cassandra.IRemoteUnlocker;
+import com.abs.casino.cassandra.IRemoteUnlocker;
 import com.dgphoenix.casino.common.lock.ILockManager;
 import com.abs.casino.kafka.dto.BooleanResponseDto;
 import com.abs.casino.kafka.dto.KafkaResponse;

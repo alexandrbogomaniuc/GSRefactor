@@ -30,7 +30,7 @@ import com.betsoft.casino.mp.transport.Error;
 import com.betsoft.casino.mp.utils.ErrorCodes;
 import com.betsoft.casino.mp.web.IGameSocketClient;
 import com.betsoft.casino.utils.ITransportObject;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.abs.casino.kafka.dto.RunningRoomDto;
 import com.abs.casino.kafka.dto.privateroom.response.DeactivateRoomResultDto;

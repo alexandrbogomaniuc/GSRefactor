@@ -31,7 +31,7 @@ import com.betsoft.casino.mp.web.handlers.lobby.EnterLobbyHandler;
 import com.betsoft.casino.mp.web.service.RoomServiceFactory;
 import com.betsoft.casino.mp.web.service.SitOutTask;
 import com.betsoft.casino.mp.web.service.SocketService;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.common.currency.CurrencyRate;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.string.StringUtils;

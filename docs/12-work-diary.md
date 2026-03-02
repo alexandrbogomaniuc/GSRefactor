@@ -10595,3 +10595,18 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.30-3.00h` (`~0.04-0.38` workdays), next lane is web package normalization (`common.mp`, `kafka.dto`, `IRemoteUnlocker`).
+
+### 2026-03-02 22:53 UTC
+- Continued Project 02 stabilization with integrated `BT+BU` wave in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BT (`10` rewires): web fail-head import normalization (`common.mp`, `kafka.dto`, `IRemoteUnlocker`).
+  - BU (`19` rewires): web cassandra manager import normalization (`CassandraPersistenceManager`).
+  - retained total: `29` import-only rewires across `23` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL, harmonized COTG compile PASS.
+  - `web` no longer fails on missing package imports; fail-head is now type/signature compatibility drift in `GetStartGameUrlHandler` lineage, `RemoteUnlocker` generic type contract, and `WebSocketRouter`/`EnterLobbyHandler` cassandra manager type boundaries.
+  - canonical rerun profile remains `STEP09` FAIL (known smoke-stage external/runtime lane), with prewarm PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-222311-hardcut-live-batchBTBU-web-packages-cassandra-import-rewire29/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/280-hard-cut-live-batchBTBU-web-packages-cassandra-import-rewire29-report-20260302.md`
+- Result: unresolved package lane is cleared; next action is bounded type/signature boundary harmonization in web layer.
