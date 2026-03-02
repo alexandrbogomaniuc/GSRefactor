@@ -1,0 +1,29 @@
+846:[ERROR] COMPILATION ERROR : 
+848:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:[1186,11] exception com.dgphoenix.casino.common.exception.CommonException is never thrown in body of corresponding try statement
+849:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:[1184,28] unreported exception com.abs.casino.common.exception.CommonException; must be caught or declared to be thrown
+850:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:[721,25] method map in interface java.util.stream.Stream<T> cannot be applied to given types;
+859:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:[721,30] invalid method reference
+909:[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project web: Compilation failure: Compilation failure: 
+910:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:[1186,11] exception com.dgphoenix.casino.common.exception.CommonException is never thrown in body of corresponding try statement
+911:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RoomServiceFactory.java:[1184,28] unreported exception com.abs.casino.common.exception.CommonException; must be caught or declared to be thrown
+912:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:[721,25] method map in interface java.util.stream.Stream<T> cannot be applied to given types;
+913:[ERROR]   required: java.util.function.Function<? super com.betsoft.casino.mp.model.IRoomPlayerInfo,? extends R>
+914:[ERROR]   found: Identifiable::getId
+915:[ERROR]   reason: cannot infer type-variable(s) R
+916:[ERROR]     (argument mismatch; invalid method reference
+917:[ERROR]       method getId in interface com.abs.casino.common.cache.Identifiable cannot be applied to given types
+918:[ERROR]         required: no arguments
+919:[ERROR]         found: com.betsoft.casino.mp.model.IRoomPlayerInfo
+920:[ERROR]         reason: actual and formal argument lists differ in length)
+921:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:[721,30] invalid method reference
+922:[ERROR]   non-static method getId() cannot be referenced from a static context
+923:[ERROR] -> [Help 1]
+924:[ERROR] 
+925:[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+926:[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+927:[ERROR] 
+928:[ERROR] For more information about the errors and possible solutions, please read the following articles:
+929:[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+930:[ERROR] 
+931:[ERROR] After correcting the problems, you can resume the build with the command
+932:[ERROR]   mvn <args> -rf :web

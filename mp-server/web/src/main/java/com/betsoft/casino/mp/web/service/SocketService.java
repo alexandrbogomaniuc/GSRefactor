@@ -28,7 +28,7 @@ import com.betsoft.casino.mp.web.ISocketClient;
 import com.betsoft.casino.teststand.TestStandError;
 import com.betsoft.casino.teststand.TestStandLocal;
 import com.abs.casino.common.currency.CurrencyRate;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.mp.*;
 import com.dgphoenix.casino.common.util.CollectionUtils;
 import com.dgphoenix.casino.common.util.string.StringUtils;
@@ -1844,7 +1844,7 @@ public class SocketService implements ISocketService {
             }
         } catch (Exception e) {
             LOG.error("saveCashBonusRoundResult failed, bonusId={}", bonus.getId(), e);
-            throw new com.dgphoenix.casino.common.exception.CommonException("saveCashBonusRoundResult call failed", e);
+            throw new com.abs.casino.common.exception.CommonException("saveCashBonusRoundResult call failed", e);
         }
         return mutable.getValue();
     }
@@ -1991,7 +1991,7 @@ public class SocketService implements ISocketService {
             }
         } catch (Exception e) {
             LOG.error("sitOutCashBonusSession failed, bonusId={}", bonus.getId(), e);
-            throw new com.dgphoenix.casino.common.exception.CommonException("saveCashBonusRoundResult call failed", e);
+            throw new com.abs.casino.common.exception.CommonException("saveCashBonusRoundResult call failed", e);
         }
         ISitOutCashBonusSessionResult value = mutable.getValue();
         LOG.debug("sitOutCashBonusSession result: {}", value);
@@ -2058,7 +2058,7 @@ public class SocketService implements ISocketService {
      */
     @Override
     public void addMQReservedNicknames(String region, long owner, Set<String> nicknames) throws
-            com.dgphoenix.casino.common.exception.CommonException {
+            com.abs.casino.common.exception.CommonException {
         try {
             AddMQReservedNicknamesRequest request =
                     new AddMQReservedNicknamesRequest(region, owner, nicknames);
@@ -2073,7 +2073,7 @@ public class SocketService implements ISocketService {
             }
         } catch (Exception e) {
             LOG.error("Failed call addMQReservedNicknames", e);
-            throw new com.dgphoenix.casino.common.exception.CommonException("call failed", e);
+            throw new com.abs.casino.common.exception.CommonException("call failed", e);
         }
     }
 
@@ -2086,7 +2086,7 @@ public class SocketService implements ISocketService {
      */
     @Override
     public void removeMQReservedNicknames(String region, long owner, Set<String> nicknames) throws
-            com.dgphoenix.casino.common.exception.CommonException {
+            com.abs.casino.common.exception.CommonException {
         try {
             RemoveMQReservedNicknamesRequest request =
                     new RemoveMQReservedNicknamesRequest(region, owner, nicknames);
@@ -2101,7 +2101,7 @@ public class SocketService implements ISocketService {
             }
         } catch (Exception e) {
             LOG.error("Failed call removeMQReservedNicknames", e);
-            throw new com.dgphoenix.casino.common.exception.CommonException("call failed", e);
+            throw new com.abs.casino.common.exception.CommonException("call failed", e);
         }
     }
 

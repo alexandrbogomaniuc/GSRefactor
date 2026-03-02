@@ -22,7 +22,7 @@ import com.betsoft.casino.mp.utils.ErrorCodes;
 import com.betsoft.casino.mp.web.handlers.MessageHandler;
 import com.betsoft.casino.mp.web.service.*;
 import com.betsoft.casino.mp.web.ILobbySocketClient;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 import com.abs.casino.common.cache.data.game.BaseGameConstants;
 import com.abs.casino.common.currency.CurrencyRate;

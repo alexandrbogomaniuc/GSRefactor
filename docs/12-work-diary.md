@@ -10623,3 +10623,18 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.20-2.50h` (`~0.03-0.31` workdays), next lane is web boundary harmonization for type/signature compatibility.
+
+### 2026-03-02 23:27 UTC
+- Continued Project 02 stabilization with integrated `BV+BW` wave in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BV (`3` rewires): `RemoteUnlocker` generic contract alignment (`ILockManager`) and cassandra manager type alignment in `WebSocketRouter`/`EnterLobbyHandler`.
+  - BW (`8` rewires): `CommonException` namespace/signature alignment in `AbstractStartGameUrlHandler` and `SocketService`.
+  - retained total: `11` import/signature-boundary rewires across `5` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL, harmonized COTG compile PASS.
+  - web compile no longer fails on prior broad override/generic lane; current fail-head narrowed to `RoomServiceFactory` mixed exception namespace handling and `KafkaMultiPlayerResponseService` method-reference typing at line `721`.
+  - canonical rerun profile remains `STEP09` FAIL (known smoke-stage external/runtime lane), with prewarm PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-230338-hardcut-live-batchBVBW-web-boundary-signature-import-rewire12/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/281-hard-cut-live-batchBVBW-web-boundary-signature-import-rewire11-report-20260302.md`
+- Result: downstream web fail frontier is now localized; next action is bounded two-file harmonization (`RoomServiceFactory`, `KafkaMultiPlayerResponseService`).

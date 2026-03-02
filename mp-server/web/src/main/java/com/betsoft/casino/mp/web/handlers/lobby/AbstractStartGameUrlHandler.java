@@ -15,7 +15,7 @@ import com.betsoft.casino.mp.web.service.LobbyManager;
 import com.betsoft.casino.mp.web.service.RoomServiceFactory;
 import com.betsoft.casino.mp.web.ILobbySocketClient;
 import com.betsoft.casino.utils.TInboundObject;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.google.gson.Gson;
 import org.springframework.web.reactive.socket.WebSocketSession;

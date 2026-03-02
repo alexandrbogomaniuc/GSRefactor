@@ -1,0 +1,119 @@
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebSocketRouter.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebSocketRouter.java
+index 21e434344..324f6a34e 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebSocketRouter.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebSocketRouter.java
+@@ -23,7 +23,7 @@ import com.betsoft.casino.mp.web.IMessageSerializer;
+ import com.betsoft.casino.mp.web.NettyServer;
+ import com.betsoft.casino.mp.web.service.*;
+ import com.betsoft.casino.mp.web.socket.*;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.abs.casino.cassandra.IRemoteUnlocker;
+ import com.abs.casino.common.config.UtilsApplicationContextHelper;
+ import com.google.gson.Gson;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/AbstractStartGameUrlHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/AbstractStartGameUrlHandler.java
+index d3ccd4f0b..b248717e4 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/AbstractStartGameUrlHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/AbstractStartGameUrlHandler.java
+@@ -15,7 +15,7 @@ import com.betsoft.casino.mp.web.service.LobbyManager;
+ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+ import com.betsoft.casino.utils.TInboundObject;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.google.gson.Gson;
+ import org.springframework.web.reactive.socket.WebSocketSession;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java
+index e3b79597b..4b351d720 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java
+@@ -22,7 +22,7 @@ import com.betsoft.casino.mp.utils.ErrorCodes;
+ import com.betsoft.casino.mp.web.handlers.MessageHandler;
+ import com.betsoft.casino.mp.web.service.*;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
++import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+ import com.abs.casino.common.cache.data.game.BaseGameConstants;
+ import com.abs.casino.common.currency.CurrencyRate;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RemoteUnlocker.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RemoteUnlocker.java
+index b110d6543..a2ec02cb7 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RemoteUnlocker.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RemoteUnlocker.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.web.service;
+ 
+ import com.betsoft.casino.mp.kafka.KafkaMessageService;
+ import com.abs.casino.cassandra.IRemoteUnlocker;
+-import com.dgphoenix.casino.common.lock.ILockManager;
++import com.abs.casino.common.lock.ILockManager;
+ import com.abs.casino.kafka.dto.BooleanResponseDto;
+ import com.abs.casino.kafka.dto.KafkaResponse;
+ import com.abs.casino.kafka.dto.RemoteUnlockRequest;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java
+index 240dc2dba..676ce024e 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java
+@@ -28,7 +28,7 @@ import com.betsoft.casino.mp.web.ISocketClient;
+ import com.betsoft.casino.teststand.TestStandError;
+ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.abs.casino.common.currency.CurrencyRate;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.abs.casino.common.mp.*;
+ import com.dgphoenix.casino.common.util.CollectionUtils;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+@@ -1844,7 +1844,7 @@ public class SocketService implements ISocketService {
+             }
+         } catch (Exception e) {
+             LOG.error("saveCashBonusRoundResult failed, bonusId={}", bonus.getId(), e);
+-            throw new com.dgphoenix.casino.common.exception.CommonException("saveCashBonusRoundResult call failed", e);
++            throw new com.abs.casino.common.exception.CommonException("saveCashBonusRoundResult call failed", e);
+         }
+         return mutable.getValue();
+     }
+@@ -1991,7 +1991,7 @@ public class SocketService implements ISocketService {
+             }
+         } catch (Exception e) {
+             LOG.error("sitOutCashBonusSession failed, bonusId={}", bonus.getId(), e);
+-            throw new com.dgphoenix.casino.common.exception.CommonException("saveCashBonusRoundResult call failed", e);
++            throw new com.abs.casino.common.exception.CommonException("saveCashBonusRoundResult call failed", e);
+         }
+         ISitOutCashBonusSessionResult value = mutable.getValue();
+         LOG.debug("sitOutCashBonusSession result: {}", value);
+@@ -2058,7 +2058,7 @@ public class SocketService implements ISocketService {
+      */
+     @Override
+     public void addMQReservedNicknames(String region, long owner, Set<String> nicknames) throws
+-            com.dgphoenix.casino.common.exception.CommonException {
++            com.abs.casino.common.exception.CommonException {
+         try {
+             AddMQReservedNicknamesRequest request =
+                     new AddMQReservedNicknamesRequest(region, owner, nicknames);
+@@ -2073,7 +2073,7 @@ public class SocketService implements ISocketService {
+             }
+         } catch (Exception e) {
+             LOG.error("Failed call addMQReservedNicknames", e);
+-            throw new com.dgphoenix.casino.common.exception.CommonException("call failed", e);
++            throw new com.abs.casino.common.exception.CommonException("call failed", e);
+         }
+     }
+ 
+@@ -2086,7 +2086,7 @@ public class SocketService implements ISocketService {
+      */
+     @Override
+     public void removeMQReservedNicknames(String region, long owner, Set<String> nicknames) throws
+-            com.dgphoenix.casino.common.exception.CommonException {
++            com.abs.casino.common.exception.CommonException {
+         try {
+             RemoveMQReservedNicknamesRequest request =
+                     new RemoveMQReservedNicknamesRequest(region, owner, nicknames);
+@@ -2101,7 +2101,7 @@ public class SocketService implements ISocketService {
+             }
+         } catch (Exception e) {
+             LOG.error("Failed call removeMQReservedNicknames", e);
+-            throw new com.dgphoenix.casino.common.exception.CommonException("call failed", e);
++            throw new com.abs.casino.common.exception.CommonException("call failed", e);
+         }
+     }
+ 

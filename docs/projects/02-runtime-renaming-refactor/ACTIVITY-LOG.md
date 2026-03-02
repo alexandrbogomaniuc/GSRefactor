@@ -5510,3 +5510,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared web unresolved package frontier and exposed next constrained compatibility lane for final stabilization passes.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 23:27 UTC (Hard-cut live Batch BV+BW)
+- Continued Project 02 stabilization with integrated live batches `BV+BW` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BV (`3` rewires): aligned `RemoteUnlocker` `ILockManager` and `WebSocketRouter`/`EnterLobbyHandler` `CassandraPersistenceManager` namespaces (`com.dgphoenix -> com.abs`).
+  - BW (`8` rewires): aligned `CommonException` namespace/signature usage in `AbstractStartGameUrlHandler` and `SocketService` (`com.dgphoenix -> com.abs`).
+  - retained total: `11` import/signature-boundary rewires across `5` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL, harmonized `clashofthegods` compile PASS.
+  - `web` first-fail shifted off prior override/generic mismatch lane into two-file lane:
+    - `RoomServiceFactory` mixed `CommonException` namespace catch/throw mismatch,
+    - `KafkaMultiPlayerResponseService` method-reference typing issue at line `721`.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not BV/BW import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-230338-hardcut-live-batchBVBW-web-boundary-signature-import-rewire12/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/281-hard-cut-live-batchBVBW-web-boundary-signature-import-rewire11-report-20260302.md`
+- Measured movement:
+  - narrowed web fail-head from broad signature/type drift to two localized files.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).
