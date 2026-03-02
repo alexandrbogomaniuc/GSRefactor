@@ -1,0 +1,24 @@
+175:[ERROR] COMPILATION ERROR : 
+177:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java:[279,51] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+182:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java:[336,57] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+235:[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project pirates-math: Compilation failure: Compilation failure: 
+236:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java:[279,51] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+237:[ERROR]   required: java.util.List<com.abs.casino.common.util.Triple<T,V,java.lang.Double>>
+238:[ERROR]   found: java.util.List<com.dgphoenix.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>>
+239:[ERROR]   reason: cannot infer type-variable(s) T,V
+240:[ERROR]     (argument mismatch; java.util.List<com.dgphoenix.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>> cannot be converted to java.util.List<com.abs.casino.common.util.Triple<T,V,java.lang.Double>>)
+241:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java:[336,57] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+242:[ERROR]   required: java.util.List<com.abs.casino.common.util.Triple<T,V,java.lang.Double>>
+243:[ERROR]   found: java.util.List<com.dgphoenix.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>>
+244:[ERROR]   reason: cannot infer type-variable(s) T,V
+245:[ERROR]     (argument mismatch; java.util.List<com.dgphoenix.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>> cannot be converted to java.util.List<com.abs.casino.common.util.Triple<T,V,java.lang.Double>>)
+246:[ERROR] -> [Help 1]
+247:[ERROR] 
+248:[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+249:[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+250:[ERROR] 
+251:[ERROR] For more information about the errors and possible solutions, please read the following articles:
+252:[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+253:[ERROR] 
+254:[ERROR] After correcting the problems, you can resume the build with the command
+255:[ERROR]   mvn <args> -rf :pirates-math

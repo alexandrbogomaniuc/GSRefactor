@@ -8,7 +8,7 @@ import com.betsoft.casino.mp.pirates.model.math.*;
 import com.betsoft.casino.mp.service.*;
 import com.betsoft.casino.mp.web.IGameSocketClient;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.hazelcast.core.IExecutorService;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.ApplicationContext;

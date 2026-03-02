@@ -1,0 +1,4 @@
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameMap.java
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameRoom.java
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java

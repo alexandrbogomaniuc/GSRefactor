@@ -1,0 +1,4 @@
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java:13:import com.abs.casino.common.util.RNG;
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:19:import com.abs.casino.common.util.RNG;
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameMap.java:17:import com.abs.casino.common.util.RNG;
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameRoom.java:11:import com.abs.casino.common.util.RNG;

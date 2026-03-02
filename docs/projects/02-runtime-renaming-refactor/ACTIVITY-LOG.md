@@ -5286,3 +5286,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared payment-lane checked-exception mismatch lane and advanced `web` first-fail into narrower game-module import cleanup.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 17:16 UTC (Hard-cut live Batch AX+AY)
+- Continued Project 02 stabilization with integrated live batches `AX+AY` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - AX (`1` rewire): normalized `RNG` import in `pirates-math/ShotCalculator` (`com.dgphoenix -> com.abs`).
+  - AY (`3` rewires): normalized `RNG` imports in `pirates` model files (`GameMap`, `GameRoom`, `PlayGameState`).
+  - retained total: `4` import-only rewires across `4` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `web` FAIL, `clashofthegods` PASS.
+  - `web` first-fail remained in `ShotCalculator` but advanced from missing RNG import to tighter generic boundary mismatch:
+    - `GameTools.getRandomPair` expects `List<com.abs...Triple<...>>` while call site still provides `List<com.dgphoenix...Triple<...>>`.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+  - canonical failures remain environment-level Maven dependency resolution in current sandbox (external repo/DNS), not batch-local logic regression.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-171440-hardcut-live-batchAXAY-pirates-rng-import-rewire4/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/269-hard-cut-live-batchAXAY-pirates-rng-import-rewire4-report-20260302.md`
+- Measured movement:
+  - RNG import lane fully normalized in targeted pirates files and first-fail advanced into remaining Triple namespace/type-boundary cleanup.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

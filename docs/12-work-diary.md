@@ -10218,3 +10218,22 @@
   - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh tightened to `~0.1-0.8h` (`~0.01-0.10` workdays), focused on `pirates-math` RNG namespace cleanup and immediate downstream web-first-fail lane.
+
+### 2026-03-02 17:16 UTC
+- Continued Project 02 stabilization with integrated live batches `AX+AY` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - AX (`1` rewire): `pirates-math/ShotCalculator` `RNG` import normalization.
+  - AY (`3` rewires): `pirates` model `RNG` import normalization (`GameMap`, `GameRoom`, `PlayGameState`).
+  - retained total: `4` import-only rewires across `4` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `web` FAIL; `clashofthegods` PASS.
+  - `web` first-fail moved from missing RNG import to `ShotCalculator` Triple namespace/type-boundary mismatch in `GameTools.getRandomPair` usage.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+  - canonical failures remain infra-level in this sandbox (external Maven repo DNS resolution), not AX/AY local logic regressions.
+- Measured movement:
+  - targeted pirates RNG lane is now normalized; first-fail advanced to next tight generic boundary lane.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-171440-hardcut-live-batchAXAY-pirates-rng-import-rewire4/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/269-hard-cut-live-batchAXAY-pirates-rng-import-rewire4-report-20260302.md`
+- Next step:
+  - commit AX+AY wave, attempt push, then run bounded Triple namespace normalization in `pirates-math` `ShotCalculator`.

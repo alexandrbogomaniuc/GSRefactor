@@ -1,0 +1,8 @@
+ M mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java
+ M mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameMap.java
+ M mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameRoom.java
+ M mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java
+?? docs/gs-canonical-pack-clean-20260302T163759Z.tar.gz
+?? docs/gs.zip
+?? docs/gs/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260302-171440-hardcut-live-batchAXAY-pirates-rng-import-rewire4/
