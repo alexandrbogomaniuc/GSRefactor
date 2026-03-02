@@ -1,14 +1,14 @@
 package com.abs.casino.promo.feed;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraPeriodicTasksPersister;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.IPromoCampaign;
-import com.dgphoenix.casino.common.promo.IPromoTemplate;
-import com.dgphoenix.casino.common.promo.Status;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.IPromoCampaign;
+import com.abs.casino.common.promo.IPromoTemplate;
+import com.abs.casino.common.promo.Status;
 import com.abs.casino.common.promo.feed.IPromoFeedWriter;
 import com.abs.casino.common.upload.JSchUploadClient;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jcraft.jsch.JSchException;

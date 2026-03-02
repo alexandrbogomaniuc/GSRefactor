@@ -6,9 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameCache" %>
-<%@ page import="com.dgphoenix.casino.common.configuration.messages.MessageManager" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameCache" %>
+<%@ page import="com.abs.casino.common.configuration.messages.MessageManager" %>
 <%@ page import="java.util.HashSet" %>
 <%@ page import="org.apache.axis.encoding.Base64" %>
 <%@ page import="com.abs.casino.common.util.xml.XMLUtils" %>

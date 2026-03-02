@@ -1,8 +1,8 @@
 package com.abs.casino.web.system.diagnosis.tasks;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.IKeyspaceManager;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.ApplicationContextHelper;
 
 import java.util.Collection;
 import java.util.Set;

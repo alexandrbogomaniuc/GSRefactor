@@ -1,15 +1,15 @@
-<%@ page import="com.dgphoenix.casino.account.AccountManager" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.account.AccountInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bonus.BaseBonus" %>
+<%@ page import="com.abs.casino.account.AccountManager" %>
+<%@ page import="com.abs.casino.common.cache.data.account.AccountInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.bonus.BaseBonus" %>
 <%@ page import="com.abs.casino.common.exception.BonusException" %>
 <%@ page import="com.abs.casino.gs.managers.payment.bonus.AbstractBonusManager" %>
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager" %>
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager" %>
+<%@ page import="com.abs.casino.gs.managers.payment.bonus.BonusManager" %>
+<%@ page import="com.abs.casino.gs.managers.payment.bonus.FRBonusManager" %>
 <%@ page import="java.io.IOException" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="com.dgphoenix.casino.common.exception.CommonException" %>
+<%@ page import="com.abs.casino.common.exception.CommonException" %>
 <%!
     private static final String STATUS_OK = "ok";
 %>

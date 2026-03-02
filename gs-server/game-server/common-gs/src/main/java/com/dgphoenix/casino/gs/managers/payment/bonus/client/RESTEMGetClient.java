@@ -1,9 +1,9 @@
 package com.abs.casino.gs.managers.payment.bonus.client;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bonus.Bonus;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.web.bonus.CBonus;
 
 import java.util.Map;

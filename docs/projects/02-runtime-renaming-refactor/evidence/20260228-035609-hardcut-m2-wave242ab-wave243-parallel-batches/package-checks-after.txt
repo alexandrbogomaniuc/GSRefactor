@@ -1,0 +1,18 @@
+# Package checks (after)
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/ExternalPaymentTransaction.java: package com.abs.casino.common.cache.data.payment.transfer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/PaymentSystemType.java: package com.abs.casino.common.cache.data.payment.transfer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/PaymentTransaction.java: package com.abs.casino.common.cache.data.payment.transfer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/TransactionStatus.java: package com.abs.casino.common.cache.data.payment.transfer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/TransactionType.java: package com.abs.casino.common.cache.data.payment.transfer;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/ChangeMassAwardStatusCall.java: package com.abs.casino.gs.persistance.remotecall;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/DeleteMassAwardCall.java: package com.abs.casino.gs.persistance.remotecall;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/KafkaRequestMultiPlayer.java: package com.abs.casino.gs.persistance.remotecall;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/RefreshConfigCall.java: package com.abs.casino.gs.persistance.remotecall;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/RemoteCallHelper.java: package com.abs.casino.gs.persistance.remotecall;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaInServiceAsyncRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaInServiceRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaInServiceRequestHandlerFactory.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaOuterRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaOuterRequestHandlerFactory.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaRequestHandler.java: package com.abs.casino.kafka.handler;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaRequestHandlerFactory.java: package com.abs.casino.kafka.handler;

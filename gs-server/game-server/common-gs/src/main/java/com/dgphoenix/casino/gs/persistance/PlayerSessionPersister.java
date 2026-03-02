@@ -1,11 +1,11 @@
 package com.abs.casino.gs.persistance;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraPlayerSessionHistoryPersister;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.util.ApplicationContextHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

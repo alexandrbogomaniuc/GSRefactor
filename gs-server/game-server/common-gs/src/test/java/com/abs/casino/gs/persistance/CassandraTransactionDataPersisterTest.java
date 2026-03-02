@@ -1,18 +1,18 @@
 package com.abs.casino.gs.persistance;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.account.LasthandInfo;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.payment.WalletOperationStatus;
+import com.abs.casino.common.cache.data.payment.WalletOperationType;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.common.transactiondata.TransactionData;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
+import com.abs.casino.gs.managers.payment.wallet.CommonGameWallet;
+import com.abs.casino.gs.managers.payment.wallet.CommonWallet;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletOperation;
 import junit.framework.TestCase;
 
 /**

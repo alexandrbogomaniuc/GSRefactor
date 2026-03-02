@@ -1,14 +1,14 @@
 package com.abs.casino.gs.socket.mq;
 
-import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraGameSessionPersister;
-import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.game.BaseGameInfoTemplate;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.abs.casino.mqb.GameUserHistory;
 import com.abs.casino.mqb.GameUserHistoryInfo;

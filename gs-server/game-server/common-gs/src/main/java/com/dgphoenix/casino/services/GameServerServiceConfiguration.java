@@ -1,9 +1,9 @@
 package com.abs.casino.services;
 import com.abs.casino.common.promo.*;
 
-import com.dgphoenix.casino.common.cache.*;
+import com.abs.casino.common.cache.*;
 import com.abs.casino.common.currency.CurrencyRate;
-import com.dgphoenix.casino.common.promo.*;
+import com.abs.casino.common.promo.*;
 import com.abs.casino.common.promo.network.NetworkTournamentEvent;
 import com.abs.casino.common.promo.network.NetworkTournamentInfo;
 import com.abs.casino.common.util.DatePeriod;
@@ -11,7 +11,7 @@ import com.abs.casino.common.util.xml.TransientFieldsAllowedProvider;
 import com.abs.casino.common.util.xml.TransientFieldsReflectionProvider;
 import com.abs.casino.common.util.xml.xstreampool.XStreamPool;
 import com.abs.casino.gs.managers.payment.bonus.CreationBonusHelper;
-import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
+import com.abs.casino.gs.socket.mq.MQServiceHandler;
 import com.abs.casino.services.bonus.ForbiddenGamesForBonusProvider;
 import com.abs.casino.services.gamelimits.GameManagerUtils;
 import com.abs.casino.services.ServiceUtils;

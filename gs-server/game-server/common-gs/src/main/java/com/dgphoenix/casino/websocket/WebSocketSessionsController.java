@@ -1,17 +1,17 @@
 package com.abs.casino.websocket;
 
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.PromoCampaignMember;
-import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.PromoCampaignMember;
+import com.abs.casino.common.promo.PromoCampaignMemberInfos;
+import com.abs.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.util.Pair;
 import com.abs.casino.common.util.string.StringIdGenerator;
 import com.abs.casino.common.web.statistics.IStatisticsGetter;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.gs.GameServer;
+import com.abs.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.gs.GameServer;
 import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 import com.abs.casino.promo.messages.handlers.IMessageHandler;
 import com.abs.casino.promo.messages.handlers.MessagesHandlersFactory;

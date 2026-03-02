@@ -1,19 +1,19 @@
 package com.abs.casino.gs.managers.game.settings;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.bank.Coin;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.Coin;
 import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.abs.casino.common.cache.data.game.BaseGameConstants;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
-import com.dgphoenix.casino.common.cache.data.game.GameVariableType;
-import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+import com.abs.casino.common.cache.data.game.BaseGameInfoTemplate;
+import com.abs.casino.common.cache.data.game.GameVariableType;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.property.PropertyUtils;
-import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import org.apache.log4j.Logger;
 
 import java.util.Comparator;

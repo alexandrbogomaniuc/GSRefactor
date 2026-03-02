@@ -1,5 +1,5 @@
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
-<%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %><%--
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.system.configuration.GameServerConfiguration" %><%--
   Created by IntelliJ IDEA.
   User: hawk
   Date: 26.04.2021

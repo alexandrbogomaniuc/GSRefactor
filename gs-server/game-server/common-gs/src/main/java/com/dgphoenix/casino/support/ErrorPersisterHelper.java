@@ -1,11 +1,11 @@
 package com.abs.casino.support;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraHttpCallInfoPersister;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.payment.IWallet;
-import com.dgphoenix.casino.common.transport.TObject;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.transport.TObject;
+import com.abs.casino.common.util.Pair;
 import com.abs.casino.common.util.string.StringIdGenerator;
 import com.abs.casino.common.util.support.AdditionalInfoAttribute;
 import com.abs.casino.common.util.support.ExceptionInfo;
@@ -15,7 +15,7 @@ import com.abs.casino.common.util.web.WebTools;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.kafka.dto.RoundInfoResultDto;
 import com.abs.casino.promo.tournaments.messages.Error;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

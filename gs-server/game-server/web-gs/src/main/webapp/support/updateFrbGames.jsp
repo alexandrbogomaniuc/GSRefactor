@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameInfoTemplateCache" %>
 <%@ page import="java.util.HashSet" %>
 <%@ page import="java.util.StringTokenizer" %>
 <%

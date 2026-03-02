@@ -8,7 +8,7 @@ import org.apache.struts.action.ActionMessage;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 /**
  * User: mic

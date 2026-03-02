@@ -1,6 +1,6 @@
 package com.abs.casino.cassandra;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 
 public interface IConfigsInitializer {
 

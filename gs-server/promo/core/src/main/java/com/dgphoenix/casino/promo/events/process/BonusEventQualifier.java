@@ -1,7 +1,7 @@
 package com.abs.casino.promo.events.process;
 
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.*;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

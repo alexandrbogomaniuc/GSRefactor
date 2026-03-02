@@ -1,16 +1,16 @@
 package com.abs.casino.actions.api;
 
-import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.DigitFormatter;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.BaseAction;
 import com.abs.casino.common.web.ClientTypeFactory;
-import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletProtocolManager;
-import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
+import com.abs.casino.gs.managers.payment.wallet.IWalletProtocolManager;
+import com.abs.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.abs.casino.gs.managers.payment.wallet.v3.ICommonWalletClient;
 import com.abs.casino.gs.persistance.PlayerSessionPersister;

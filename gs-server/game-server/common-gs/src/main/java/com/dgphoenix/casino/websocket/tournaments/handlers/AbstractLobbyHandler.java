@@ -1,9 +1,9 @@
 package com.abs.casino.websocket.tournaments.handlers;
 
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.*;
-import com.dgphoenix.casino.common.transport.TObject;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.*;
+import com.abs.casino.common.transport.TObject;
 import com.abs.casino.promo.tournaments.messages.PrizeInfo;
 import com.abs.casino.websocket.tournaments.IMessageHandler;
 

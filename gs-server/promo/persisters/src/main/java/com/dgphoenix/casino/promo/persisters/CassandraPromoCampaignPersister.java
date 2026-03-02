@@ -1,18 +1,18 @@
 package com.abs.casino.promo.persisters;
 
-import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
-import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.configuration.Caching;
-import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStrategy;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.promo.IPromoCampaign;
-import com.dgphoenix.casino.common.promo.NetworkPromoCampaign;
-import com.dgphoenix.casino.common.promo.NetworkPromoEvent;
-import com.dgphoenix.casino.common.promo.Status;
+import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import com.abs.casino.cassandra.persist.engine.configuration.Caching;
+import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.promo.IPromoCampaign;
+import com.abs.casino.common.promo.NetworkPromoCampaign;
+import com.abs.casino.common.promo.NetworkPromoEvent;
+import com.abs.casino.common.promo.Status;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

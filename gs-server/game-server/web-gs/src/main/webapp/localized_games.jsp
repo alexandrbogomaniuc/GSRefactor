@@ -1,8 +1,8 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.GameGroup" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameCache" %>
+<%@ page import="com.abs.casino.common.cache.data.game.GameGroup" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.abs.casino.common.cache.data.game.IBaseGameInfo" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameInfoTemplateCache" %>
 <%@ page import="com.google.common.collect.Sets" %>
 <%@ page import="java.util.stream.Collectors" %>
 <%@ page import="com.google.gson.Gson" %>
@@ -10,7 +10,7 @@
 <%@ page import="java.util.concurrent.TimeUnit" %>
 <%@ page import="com.google.common.cache.LoadingCache" %>
 <%@ page import="com.google.common.cache.CacheLoader" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfoTemplate" %>
 <%!
     private static String getGameTitle(Long gameId) {
         BaseGameInfoTemplate tmpl = BaseGameInfoTemplateCache.getInstance().getBaseGameInfoTemplateById(gameId);

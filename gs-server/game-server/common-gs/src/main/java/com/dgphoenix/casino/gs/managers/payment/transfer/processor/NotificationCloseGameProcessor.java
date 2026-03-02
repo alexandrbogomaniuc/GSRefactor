@@ -1,14 +1,14 @@
 package com.abs.casino.gs.managers.payment.transfer.processor;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.web.HttpClientConnection;
-import com.dgphoenix.casino.gs.managers.ICloseGameProcessor;
+import com.abs.casino.gs.managers.ICloseGameProcessor;
 import com.abs.casino.gs.singlegames.tools.util.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,6 +1,6 @@
 package com.abs.casino.filters;
 
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

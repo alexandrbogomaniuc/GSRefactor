@@ -1,6 +1,6 @@
 package com.abs.casino.transactiondata;
 
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.common.transactiondata.ITransactionDataCreator;
 import com.abs.casino.common.transactiondata.TransactionData;
 

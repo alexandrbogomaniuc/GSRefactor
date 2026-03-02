@@ -1,5 +1,5 @@
 <%@ page contentType="text/xml;charset=UTF-8" %>
-<%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
+<%@ page import="com.abs.casino.system.configuration.GameServerConfiguration" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.Set" %>

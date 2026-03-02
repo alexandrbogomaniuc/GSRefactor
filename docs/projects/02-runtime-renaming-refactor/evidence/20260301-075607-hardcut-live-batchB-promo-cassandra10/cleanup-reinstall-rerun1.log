@@ -1,0 +1,395 @@
+[2026-03-01T07:57:02Z] CLEAN01 sb-utils
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ utils-restricted ---
+[INFO] Deleting /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 311 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/string/IStringSerializer.java:[7,7] error: duplicate class: com.abs.casino.common.util.string.IStringSerializer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/string/StringUtils.java:[293,72] error: cannot access IStringSerializer
+[INFO] 2 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.306 s
+[INFO] Finished at: 2026-03-01T07:57:05Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project utils-restricted: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/string/IStringSerializer.java:[7,7] error: duplicate class: com.abs.casino.common.util.string.IStringSerializer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/string/StringUtils.java:[293,72] error: cannot access IStringSerializer
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+rc=1
+[2026-03-01T07:57:05Z] CLEAN02 common-promo
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ common-promo ---
+[INFO] Deleting /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 133 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-promo ---
+[INFO] Compiling 2 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-promo ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-promo ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ common-promo >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ common-promo <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ common-promo ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo-sources.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-promo ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.238 s
+[INFO] Finished at: 2026-03-01T07:57:08Z
+[INFO] ------------------------------------------------------------------------
+rc=0
+[2026-03-01T07:57:08Z] CLEAN03 common-persisters
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-common-persisters >-------------
+[INFO] Building gsn-common-persisters 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ gsn-common-persisters ---
+[INFO] Deleting /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-persisters ---
+[INFO] Compiling 87 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/IShortBetInfoProcessor.java:[3,49] error: cannot find symbol
+[ERROR]   symbol:   class ShortBetInfo
+  location: package com.dgphoenix.casino.common.cache.data.bet
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/IShortBetInfoProcessor.java:[6,17] error: cannot find symbol
+[ERROR]   symbol:   class ShortBetInfo
+  location: interface IShortBetInfoProcessor
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraServerInfoPersister.java:[7,52] error: package com.dgphoenix.casino.common.cache.data.server does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraServerInfoPersister.java:[18,94] error: cannot find symbol
+[ERROR]   symbol: class ServerInfo
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraServerInfoPersister.java:[53,21] error: cannot find symbol
+[ERROR]   symbol:   class ServerInfo
+  location: class CassandraServerInfoPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraServerInfoPersister.java:[61,24] error: cannot find symbol
+[ERROR]   symbol:   class ServerInfo
+  location: class CassandraServerInfoPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraServerInfoPersister.java:[86,11] error: cannot find symbol
+[ERROR]   symbol:   class ServerInfo
+  location: class CassandraServerInfoPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:[10,49] error: cannot find symbol
+[ERROR]   symbol:   class ShortBetInfo
+  location: package com.dgphoenix.casino.common.cache.data.bet
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:[71,16] error: cannot find symbol
+[ERROR]   symbol:   class ShortBetInfo
+  location: class CassandraShortBetInfoPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:[77,17] error: cannot find symbol
+[ERROR]   symbol:   class ShortBetInfo
+  location: class CassandraShortBetInfoPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:[97,128] error: cannot find symbol
+[ERROR]   symbol:   class ShortBetInfo
+  location: class CassandraShortBetInfoPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:[115,24] error: cannot find symbol
+[ERROR]   symbol:   class ShortBetInfo
+  location: class CassandraShortBetInfoPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBetPersister.java:[13,61] error: package com.dgphoenix.casino.common.transactiondata.storeddate does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBetPersister.java:[14,61] error: package com.dgphoenix.casino.common.transactiondata.storeddate does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[26,61] error: package com.dgphoenix.casino.common.transactiondata.storeddate does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[27,61] error: package com.dgphoenix.casino.common.transactiondata.storeddate does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[122,26] error: cannot find symbol
+[ERROR]   symbol:   class StoredItemType
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/IStoredDataProcessor.java:[3,61] error: package com.dgphoenix.casino.common.transactiondata.storeddate does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraAccountInfoPersister.java:[9,32] error: cannot find symbol
+[ERROR]   symbol:   class IAccountInfoPersister
+  location: package com.abs.casino.common.api
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraAccountInfoPersister.java:[33,19] error: cannot find symbol
+[ERROR]   symbol: class IAccountInfoPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[144,45] error: cannot find symbol
+[ERROR]   symbol:   class StoredItemType
+  location: class CassandraTransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/IStoredDataProcessor.java:[15,17] error: cannot find symbol
+[ERROR]   symbol:   class StoredItem
+  location: interface IStoredDataProcessor<T,I>
+  where T,I are type-variables:
+    T extends Object declared in interface IStoredDataProcessor
+    I extends StoredItemInfo<T> declared in interface IStoredDataProcessor
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBaseGameInfoPersister.java:[3,39] error: cannot find symbol
+[ERROR]   symbol:   class ICassandraBaseGameInfoPersister
+  location: package com.abs.casino.cassandra.persist
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraMassAwardRestrictionPersister.java:[3,39] error: cannot find symbol
+[ERROR]   symbol:   class ICachePersister
+  location: package com.abs.casino.cassandra.persist
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraSubCasinoGroupPersister.java:[5,50] error: cannot find symbol
+[ERROR]   symbol:   class SubCasinoGroup
+  location: package com.dgphoenix.casino.common.cache.data.bank
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraSubCasinoGroupPersister.java:[15,100] error: cannot find symbol
+[ERROR]   symbol: class SubCasinoGroup
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraSubCasinoGroupPersister.java:[59,11] error: cannot find symbol
+[ERROR]   symbol:   class SubCasinoGroup
+  location: class CassandraSubCasinoGroupPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraDelayedMassAwardFailedDeliveryPersister.java:[6,51] error: cannot find symbol
+[ERROR]   symbol:   class DelayedMassAwardDelivery
+  location: package com.dgphoenix.casino.common.cache.data.bonus
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraDelayedMassAwardFailedDeliveryPersister.java:[41,23] error: cannot find symbol
+[ERROR]   symbol:   class DelayedMassAwardDelivery
+  location: class CassandraDelayedMassAwardFailedDeliveryPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraDelayedMassAwardFailedDeliveryPersister.java:[55,11] error: cannot find symbol
+[ERROR]   symbol:   class DelayedMassAwardDelivery
+  location: class CassandraDelayedMassAwardFailedDeliveryPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCurrencyPersister.java:[3,39] error: cannot find symbol
+[ERROR]   symbol:   class ICachePersister
+  location: package com.abs.casino.cassandra.persist
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalGameIdsPersister.java:[3,39] error: cannot find symbol
+[ERROR]   symbol:   class ILazyLoadingPersister
+  location: package com.abs.casino.cassandra.persist
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalTransactionPersister.java:[6,53] error: cannot find symbol
+[ERROR]   symbol:   class PaymentMode
+  location: package com.dgphoenix.casino.common.cache.data.payment
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalTransactionPersister.java:[51,35] error: cannot find symbol
+[ERROR]   symbol:   class PaymentMode
+  location: class CassandraExternalTransactionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalTransactionPersister.java:[65,54] error: cannot find symbol
+[ERROR]   symbol:   class PaymentMode
+  location: class CassandraExternalTransactionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallIssuesPersister.java:[6,45] error: cannot find symbol
+[ERROR]   symbol:   class URLCallCounters
+  location: package com.dgphoenix.casino.common.cache.data
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallIssuesPersister.java:[42,24] error: cannot find symbol
+[ERROR]   symbol:   class URLCallCounters
+  location: class CassandraCallIssuesPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallIssuesPersister.java:[52,22] error: cannot find symbol
+[ERROR]   symbol:   class URLCallCounters
+  location: class CassandraCallIssuesPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallStatisticsPersister.java:[3,39] error: cannot find symbol
+[ERROR]   symbol:   class IHttpClientStatisticsPersister
+  location: package com.abs.casino.cassandra.persist
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallStatisticsPersister.java:[7,45] error: cannot find symbol
+[ERROR]   symbol:   class URLCallCounters
+  location: package com.dgphoenix.casino.common.cache.data
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallStatisticsPersister.java:[71,12] error: cannot find symbol
+[INFO] 41 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.631 s
+[INFO] Finished at: 2026-03-01T07:57:10Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common-persisters: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/IShortBetInfoProcessor.java:[3,49] error: cannot find symbol
+[ERROR]   symbol:   class ShortBetInfo
+[ERROR]   location: package com.dgphoenix.casino.common.cache.data.bet
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/IShortBetInfoProcessor.java:[6,17] error: cannot find symbol
+[ERROR]   symbol:   class ShortBetInfo
+[ERROR]   location: interface IShortBetInfoProcessor
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraServerInfoPersister.java:[7,52] error: package com.dgphoenix.casino.common.cache.data.server does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraServerInfoPersister.java:[18,94] error: cannot find symbol
+[ERROR]   symbol: class ServerInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraServerInfoPersister.java:[53,21] error: cannot find symbol
+[ERROR]   symbol:   class ServerInfo
+[ERROR]   location: class CassandraServerInfoPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraServerInfoPersister.java:[61,24] error: cannot find symbol
+[ERROR]   symbol:   class ServerInfo
+[ERROR]   location: class CassandraServerInfoPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraServerInfoPersister.java:[86,11] error: cannot find symbol
+[ERROR]   symbol:   class ServerInfo
+[ERROR]   location: class CassandraServerInfoPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:[10,49] error: cannot find symbol
+[ERROR]   symbol:   class ShortBetInfo
+[ERROR]   location: package com.dgphoenix.casino.common.cache.data.bet
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:[71,16] error: cannot find symbol
+[ERROR]   symbol:   class ShortBetInfo
+[ERROR]   location: class CassandraShortBetInfoPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:[77,17] error: cannot find symbol
+[ERROR]   symbol:   class ShortBetInfo
+[ERROR]   location: class CassandraShortBetInfoPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:[97,128] error: cannot find symbol
+[ERROR]   symbol:   class ShortBetInfo
+[ERROR]   location: class CassandraShortBetInfoPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:[115,24] error: cannot find symbol
+[ERROR]   symbol:   class ShortBetInfo
+[ERROR]   location: class CassandraShortBetInfoPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBetPersister.java:[13,61] error: package com.dgphoenix.casino.common.transactiondata.storeddate does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBetPersister.java:[14,61] error: package com.dgphoenix.casino.common.transactiondata.storeddate does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[26,61] error: package com.dgphoenix.casino.common.transactiondata.storeddate does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[27,61] error: package com.dgphoenix.casino.common.transactiondata.storeddate does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[122,26] error: cannot find symbol
+[ERROR]   symbol:   class StoredItemType
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/IStoredDataProcessor.java:[3,61] error: package com.dgphoenix.casino.common.transactiondata.storeddate does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraAccountInfoPersister.java:[9,32] error: cannot find symbol
+[ERROR]   symbol:   class IAccountInfoPersister
+[ERROR]   location: package com.abs.casino.common.api
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraAccountInfoPersister.java:[33,19] error: cannot find symbol
+[ERROR]   symbol: class IAccountInfoPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[144,45] error: cannot find symbol
+[ERROR]   symbol:   class StoredItemType
+[ERROR]   location: class CassandraTransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/IStoredDataProcessor.java:[15,17] error: cannot find symbol
+[ERROR]   symbol:   class StoredItem
+[ERROR]   location: interface IStoredDataProcessor<T,I>
+[ERROR]   where T,I are type-variables:
+[ERROR]     T extends Object declared in interface IStoredDataProcessor
+[ERROR]     I extends StoredItemInfo<T> declared in interface IStoredDataProcessor
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBaseGameInfoPersister.java:[3,39] error: cannot find symbol
+[ERROR]   symbol:   class ICassandraBaseGameInfoPersister
+[ERROR]   location: package com.abs.casino.cassandra.persist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraMassAwardRestrictionPersister.java:[3,39] error: cannot find symbol
+[ERROR]   symbol:   class ICachePersister
+[ERROR]   location: package com.abs.casino.cassandra.persist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraSubCasinoGroupPersister.java:[5,50] error: cannot find symbol
+[ERROR]   symbol:   class SubCasinoGroup
+[ERROR]   location: package com.dgphoenix.casino.common.cache.data.bank
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraSubCasinoGroupPersister.java:[15,100] error: cannot find symbol
+[ERROR]   symbol: class SubCasinoGroup
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraSubCasinoGroupPersister.java:[59,11] error: cannot find symbol
+[ERROR]   symbol:   class SubCasinoGroup
+[ERROR]   location: class CassandraSubCasinoGroupPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraDelayedMassAwardFailedDeliveryPersister.java:[6,51] error: cannot find symbol
+[ERROR]   symbol:   class DelayedMassAwardDelivery
+[ERROR]   location: package com.dgphoenix.casino.common.cache.data.bonus
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraDelayedMassAwardFailedDeliveryPersister.java:[41,23] error: cannot find symbol
+[ERROR]   symbol:   class DelayedMassAwardDelivery
+[ERROR]   location: class CassandraDelayedMassAwardFailedDeliveryPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraDelayedMassAwardFailedDeliveryPersister.java:[55,11] error: cannot find symbol
+[ERROR]   symbol:   class DelayedMassAwardDelivery
+[ERROR]   location: class CassandraDelayedMassAwardFailedDeliveryPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCurrencyPersister.java:[3,39] error: cannot find symbol
+[ERROR]   symbol:   class ICachePersister
+[ERROR]   location: package com.abs.casino.cassandra.persist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalGameIdsPersister.java:[3,39] error: cannot find symbol
+[ERROR]   symbol:   class ILazyLoadingPersister
+[ERROR]   location: package com.abs.casino.cassandra.persist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalTransactionPersister.java:[6,53] error: cannot find symbol
+[ERROR]   symbol:   class PaymentMode
+[ERROR]   location: package com.dgphoenix.casino.common.cache.data.payment
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalTransactionPersister.java:[51,35] error: cannot find symbol
+[ERROR]   symbol:   class PaymentMode
+[ERROR]   location: class CassandraExternalTransactionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalTransactionPersister.java:[65,54] error: cannot find symbol
+[ERROR]   symbol:   class PaymentMode
+[ERROR]   location: class CassandraExternalTransactionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallIssuesPersister.java:[6,45] error: cannot find symbol
+[ERROR]   symbol:   class URLCallCounters
+[ERROR]   location: package com.dgphoenix.casino.common.cache.data
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallIssuesPersister.java:[42,24] error: cannot find symbol
+[ERROR]   symbol:   class URLCallCounters
+[ERROR]   location: class CassandraCallIssuesPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallIssuesPersister.java:[52,22] error: cannot find symbol
+[ERROR]   symbol:   class URLCallCounters
+[ERROR]   location: class CassandraCallIssuesPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallStatisticsPersister.java:[3,39] error: cannot find symbol
+[ERROR]   symbol:   class IHttpClientStatisticsPersister
+[ERROR]   location: package com.abs.casino.cassandra.persist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallStatisticsPersister.java:[7,45] error: cannot find symbol
+[ERROR]   symbol:   class URLCallCounters
+[ERROR]   location: package com.dgphoenix.casino.common.cache.data
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallStatisticsPersister.java:[71,12] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+rc=1
+[2026-03-01T07:57:10Z] CLEAN04 common-wallet
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-wallet >-----------------
+[INFO] Building common-wallet 1.0.67
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ common-wallet ---
+[INFO] Deleting /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-wallet ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ common-wallet ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-wallet ---
+[INFO] Compiling 13 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v3/RESTCWClient.java:[4,39] error: cannot find symbol
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.016 s
+[INFO] Finished at: 2026-03-01T07:57:12Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project common-wallet: Compilation failure
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/java/com/dgphoenix/casino/payment/wallet/client/v3/RESTCWClient.java:[4,39] error: cannot find symbol
+[ERROR] 
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+rc=1
+summary rc1=1 rc2=0 rc3=1 rc4=1

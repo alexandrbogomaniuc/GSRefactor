@@ -1,16 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ page import="com.dgphoenix.casino.common.cache.*" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.Coin" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.Limit" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.*" %>
+<%@ page import="com.abs.casino.common.cache.*" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.Coin" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.Limit" %>
+<%@ page import="com.abs.casino.common.cache.data.currency.Currency" %>
+<%@ page import="com.abs.casino.common.cache.data.game.*" %>
 <%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
 <%@ page import="com.abs.casino.common.cache.data.game.ImmutableBaseGameInfoWrapper" %>
 <%@ page import="com.abs.casino.common.cache.data.game.RoundFinishedHelper" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%@ page import="com.google.common.collect.FluentIterable" %>
 <%@ page import="com.google.common.base.Splitter" %>
 

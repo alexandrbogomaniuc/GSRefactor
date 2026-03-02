@@ -3,7 +3,7 @@ package com.abs.casino.kafka.dto.privateroom.request;
 import java.util.List;
 
 import com.abs.casino.kafka.dto.BGFriendDto;
-import com.dgphoenix.casino.kafka.dto.KafkaRequest;
+import com.abs.casino.kafka.dto.KafkaRequest;
 
 public class UpdateFriendsDto implements KafkaRequest {
     private String nickname;

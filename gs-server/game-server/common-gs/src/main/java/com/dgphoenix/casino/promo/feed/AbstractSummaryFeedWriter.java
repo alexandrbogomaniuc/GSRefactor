@@ -1,12 +1,12 @@
 package com.abs.casino.promo.feed;
 
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.CommonExecutorService;
-import com.dgphoenix.casino.common.util.ExecutorUtils;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.CommonExecutorService;
+import com.abs.casino.common.util.ExecutorUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.web.HttpClientConnection;
 import com.abs.casino.gs.status.ServersStatusWatcher;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 import net.schmizz.sshj.SSHClient;

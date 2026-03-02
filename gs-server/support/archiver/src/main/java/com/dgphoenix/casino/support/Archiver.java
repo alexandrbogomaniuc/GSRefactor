@@ -1,8 +1,8 @@
 package com.abs.casino.support;
 
 import com.abs.casino.common.config.CommonContextConfiguration;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguration;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.gs.SharedGameServerComponentsConfiguration;
 import com.abs.casino.init.CassandraPersistenceContextConfiguration;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;

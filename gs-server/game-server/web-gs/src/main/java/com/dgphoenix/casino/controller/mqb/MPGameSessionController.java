@@ -1,10 +1,10 @@
 package com.abs.casino.controller.mqb;
 
 import com.abs.casino.battleground.messages.MPGameSessionFinishResponse;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.gs.socket.mq.BattlegroundService;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.gs.socket.mq.BattlegroundService;
 import com.abs.casino.services.mp.MPGameSessionService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

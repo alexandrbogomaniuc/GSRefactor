@@ -1,6 +1,6 @@
 package com.abs.casino.services.bonus;
 
-import com.dgphoenix.casino.common.cache.SubCasinoCache;
+import com.abs.casino.common.cache.SubCasinoCache;
 import com.google.common.collect.ImmutableSet;
 
 import java.util.Optional;

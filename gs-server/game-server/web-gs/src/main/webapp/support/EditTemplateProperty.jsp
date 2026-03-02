@@ -1,9 +1,9 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfoTemplate" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfo" %>
 <%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
-<%@ page import="com.dgphoenix.casino.common.exception.CommonException" %>
+<%@ page import="com.abs.casino.common.exception.CommonException" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.TreeMap" %>
 <%--

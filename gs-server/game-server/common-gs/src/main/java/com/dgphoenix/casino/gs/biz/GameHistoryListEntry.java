@@ -1,6 +1,6 @@
 package com.abs.casino.gs.biz;
 
-import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
+import com.abs.casino.common.cache.data.bet.PlayerBet;
 import org.apache.commons.codec.binary.Base64;
 
 import java.io.Serializable;

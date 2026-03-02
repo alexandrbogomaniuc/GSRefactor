@@ -1,19 +1,19 @@
 package com.abs.casino.payment.wallet.commonwalletmanger;
 
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.gs.managers.payment.wallet.CommonWallet;
+import com.abs.casino.gs.managers.payment.wallet.CommonWalletOperation;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
-import com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
+import com.abs.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
 import com.abs.casino.payment.wallet.client.v4.RESTCWClient;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 public class RESTCWClientMock extends RESTCWClient {
     public RESTCWClientMock(long bankId) {

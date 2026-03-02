@@ -1,0 +1,785 @@
+STEP01: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/common' && mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 168 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionDataPersister.java:[4,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionDataPersister.java:[5,33] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionDataPersister.java:[20,25] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: interface ITransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionDataPersister.java:[26,20] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+  location: interface ITransactionDataPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java:[4,33] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java:[13,18] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: class DomainSessionFactory
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java:[18,32] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: class DomainSessionFactory
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[7,33] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[8,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[26,12] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: class DomainSession
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[29,18] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: class DomainSession
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[49,25] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: class DomainSession
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[66,11] error: cannot find symbol
+[INFO] 13 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.384 s
+[INFO] Finished at: 2026-02-28T03:53:53Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionDataPersister.java:[4,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionDataPersister.java:[5,33] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionDataPersister.java:[20,25] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: interface ITransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionDataPersister.java:[26,20] error: cannot find symbol
+[ERROR]   symbol:   class ServerLockInfo
+[ERROR]   location: interface ITransactionDataPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java:[4,33] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java:[13,18] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: class DomainSessionFactory
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSessionFactory.java:[18,32] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: class DomainSessionFactory
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[7,33] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[8,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[26,12] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: class DomainSession
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[29,18] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: class DomainSession
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[49,25] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: class DomainSession
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/DomainSession.java:[66,11] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+STEP01 rc=1
+STEP02: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet' && mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-wallet >-----------------
+[INFO] Building common-wallet 1.0.67
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-wallet ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ common-wallet ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-wallet ---
+[INFO] Compiling 11 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ common-wallet ---
+[INFO] Copying 108 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-wallet ---
+[INFO] Compiling 4 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-wallet ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-wallet ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/common-wallet-1.0.67.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-wallet ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-wallet/1.0.67/common-wallet-1.0.67.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/common-wallet-1.0.67.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-wallet/1.0.67/common-wallet-1.0.67.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.206 s
+[INFO] Finished at: 2026-02-28T03:53:56Z
+[INFO] ------------------------------------------------------------------------
+STEP02 rc=0
+STEP03: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils' && mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 177 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ utils-restricted ---
+[INFO] Compiling 19 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted-sources.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ utils-restricted ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.510 s
+[INFO] Finished at: 2026-02-28T03:54:00Z
+[INFO] ------------------------------------------------------------------------
+STEP03 rc=0
+STEP04: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo' && mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 54 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-promo ---
+[INFO] Compiling 2 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-promo ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-promo ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ common-promo >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ common-promo <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ common-promo ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-promo ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.619 s
+[INFO] Finished at: 2026-02-28T03:54:03Z
+[INFO] ------------------------------------------------------------------------
+STEP04 rc=0
+STEP05: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters' && mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-common-persisters >-------------
+[INFO] Building gsn-common-persisters 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-persisters ---
+[INFO] Compiling 15 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalTransactionPersister.java:[7,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalTransactionPersister.java:[56,11] error: cannot find symbol
+[ERROR]   symbol:   class ExternalPaymentTransaction
+  location: class CassandraExternalTransactionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalTransactionPersister.java:[65,11] error: cannot find symbol
+[ERROR]   symbol:   class ExternalPaymentTransaction
+  location: class CassandraExternalTransactionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalTransactionPersister.java:[84,24] error: cannot find symbol
+[ERROR]   symbol:   class ExternalPaymentTransaction
+  location: class CassandraExternalTransactionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[11,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[26,34] error: cannot find symbol
+[ERROR]   symbol: class PaymentTransaction
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[59,128] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class CassandraPaymentTransactionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[68,66] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class CassandraPaymentTransactionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[100,35] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class CassandraPaymentTransactionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[116,21] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class CassandraPaymentTransactionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[128,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class CassandraPaymentTransactionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[194,42] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class CassandraPaymentTransactionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[210,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class CassandraPaymentTransactionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[231,23] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class CassandraPaymentTransactionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[250,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class CassandraPaymentTransactionPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[265,21] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: interface PaymentTransactionProcessor
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[14,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1063,32] error: cannot find symbol
+[INFO] 18 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.327 s
+[INFO] Finished at: 2026-02-28T03:54:05Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common-persisters: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalTransactionPersister.java:[7,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalTransactionPersister.java:[56,11] error: cannot find symbol
+[ERROR]   symbol:   class ExternalPaymentTransaction
+[ERROR]   location: class CassandraExternalTransactionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalTransactionPersister.java:[65,11] error: cannot find symbol
+[ERROR]   symbol:   class ExternalPaymentTransaction
+[ERROR]   location: class CassandraExternalTransactionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalTransactionPersister.java:[84,24] error: cannot find symbol
+[ERROR]   symbol:   class ExternalPaymentTransaction
+[ERROR]   location: class CassandraExternalTransactionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[11,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[26,34] error: cannot find symbol
+[ERROR]   symbol: class PaymentTransaction
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[59,128] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class CassandraPaymentTransactionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[68,66] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class CassandraPaymentTransactionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[100,35] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class CassandraPaymentTransactionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[116,21] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class CassandraPaymentTransactionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[128,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class CassandraPaymentTransactionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[194,42] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class CassandraPaymentTransactionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[210,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class CassandraPaymentTransactionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[231,23] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class CassandraPaymentTransactionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[250,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class CassandraPaymentTransactionPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPaymentTransactionPersister.java:[265,21] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: interface PaymentTransactionProcessor
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[14,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraTransactionDataPersister.java:[1063,32] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+STEP05 rc=1
+STEP06: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs' && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:gsn-common-gs >-----------------
+[INFO] Building gsn-common-gs 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:2.8:copy (default) @ gsn-common-gs ---
+[INFO] Configured Artifact: javax.xml.bind:jaxb-api:2.2.7:jar
+[INFO] Configured Artifact: javax.xml.ws:jaxws-api:2.2.9:jar
+[INFO] javax.xml.bind:jaxb-api:2.2.7:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] javax.xml.ws:jaxws-api:2.2.9:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ gsn-common-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-gs ---
+[INFO] Compiling 446 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:[30,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:[31,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:[32,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/TournamentBuyInHelper.java:[14,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/TournamentBuyInHelper.java:[15,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/TournamentBuyInHelper.java:[16,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/StartGameSessionHelper.java:[25,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/StartGameSessionHelper.java:[26,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/InServiceServiceHandler.java:[33,33] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/InServiceServiceHandler.java:[56,30] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: class InServiceServiceHandler
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/InServiceServiceHandler.java:[271,32] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: class InServiceServiceHandler
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[8,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[9,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[10,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[11,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[47,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class PaymentManager
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[73,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class PaymentManager
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[97,37] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class PaymentManager
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[103,68] error: cannot find symbol
+[ERROR]   symbol:   class TransactionType
+  location: class PaymentManager
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[104,80] error: cannot find symbol
+[ERROR]   symbol:   class PaymentSystemType
+  location: class PaymentManager
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[101,18] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class PaymentManager
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[129,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class PaymentManager
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[138,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class PaymentManager
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventProcessor.java:[10,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventProcessor.java:[189,26] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: class ParticipantEventProcessor
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/lock/RemoteUnlocker.java:[12,33] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/lock/RemoteUnlocker.java:[31,56] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: class RemoteUnlocker
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:[17,33] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/history/HistoryInformerManager.java:[12,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/MassAwardBonusManager.java:[15,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredMassAwardTracker.java:[13,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:[424,12] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+  location: class GameServerComponentsConfiguration
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/TransactionDataTracker.java:[17,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/BankShutdownJob.java:[11,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/tracker/PaymentTransactionTrackerTask.java:[8,56] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: package com.abs.casino.common.cache.data.payment.transfer
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/tracker/PaymentTransactionTrackerTask.java:[9,56] error: cannot find symbol
+[ERROR]   symbol:   class TransactionStatus
+  location: package com.abs.casino.common.cache.data.payment.transfer
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/tracker/PaymentTransactionTrackerTask.java:[151,35] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class PaymentTransactionTrackerTask
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/processor/AbstractPaymentProcessor.java:[4,56] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: package com.abs.casino.common.cache.data.payment.transfer
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/processor/AbstractPaymentProcessor.java:[26,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class AbstractPaymentProcessor
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredBonusTracker.java:[10,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+  location: package com.abs.casino.common.lock
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/ExternalTransactionHandler.java:[10,56] error: cannot find symbol
+[ERROR]   symbol:   class ExternalPaymentTransaction
+  location: package com.abs.casino.common.cache.data.payment.transfer
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/ExternalTransactionHandler.java:[11,56] error: cannot find symbol
+[ERROR]   symbol:   class TransactionStatus
+  location: package com.abs.casino.common.cache.data.payment.transfer
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PaymentTransactionChangesProcessor.java:[6,56] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: package com.abs.casino.common.cache.data.payment.transfer
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PaymentTransactionChangesProcessor.java:[19,80] error: cannot find symbol
+[ERROR]   symbol: class PaymentTransaction
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PaymentTransactionChangesProcessor.java:[19,115] error: cannot find symbol
+[ERROR]   symbol: class PaymentTransaction
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PaymentTransactionChangesProcessor.java:[29,35] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class PaymentTransactionChangesProcessor
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PaymentTransactionChangesProcessor.java:[29,70] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: class PaymentTransactionChangesProcessor
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/BasicTransactionDataStorageHelper.java:[11,56] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+  location: package com.abs.casino.common.cache.data.payment.transfer
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/MultiplayerExternalWallettransactionHandler.java:[7,56] error: cannot find symbol
+[ERROR]   symbol:   class ExternalPaymentTransaction
+  location: package com.abs.casino.common.cache.data.payment.transfer
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/MultiplayerExternalWallettransactionHandler.java:[8,56] error: cannot find symbol
+[ERROR]   symbol:   class TransactionStatus
+  location: package com.abs.casino.common.cache.data.payment.transfer
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/MultiplayerExternalWallettransactionHandler.java:[41,12] error: cannot find symbol
+[ERROR]   symbol:   class ExternalPaymentTransaction
+  location: class MultiplayerExternalWallettransactionHandler
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredFRBonusTracker.java:[10,33] error: cannot find symbol
+[INFO] 52 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.536 s
+[INFO] Finished at: 2026-02-28T03:54:10Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common-gs: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:[30,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:[31,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:[32,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/TournamentBuyInHelper.java:[14,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/TournamentBuyInHelper.java:[15,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/TournamentBuyInHelper.java:[16,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/StartGameSessionHelper.java:[25,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/StartGameSessionHelper.java:[26,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/InServiceServiceHandler.java:[33,33] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/InServiceServiceHandler.java:[56,30] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: class InServiceServiceHandler
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/InServiceServiceHandler.java:[271,32] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: class InServiceServiceHandler
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[8,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[9,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[10,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[11,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[47,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class PaymentManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[73,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class PaymentManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[97,37] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class PaymentManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[103,68] error: cannot find symbol
+[ERROR]   symbol:   class TransactionType
+[ERROR]   location: class PaymentManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[104,80] error: cannot find symbol
+[ERROR]   symbol:   class PaymentSystemType
+[ERROR]   location: class PaymentManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[101,18] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class PaymentManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[129,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class PaymentManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/PaymentManager.java:[138,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class PaymentManager
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventProcessor.java:[10,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/ParticipantEventProcessor.java:[189,26] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: class ParticipantEventProcessor
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/lock/RemoteUnlocker.java:[12,33] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/lock/RemoteUnlocker.java:[31,56] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: class RemoteUnlocker
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:[17,33] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/history/HistoryInformerManager.java:[12,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/mass/MassAwardBonusManager.java:[15,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredMassAwardTracker.java:[13,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/GameServerComponentsConfiguration.java:[424,12] error: cannot find symbol
+[ERROR]   symbol:   class ILockManager
+[ERROR]   location: class GameServerComponentsConfiguration
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/TransactionDataTracker.java:[17,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/init/BankShutdownJob.java:[11,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/tracker/PaymentTransactionTrackerTask.java:[8,56] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: package com.abs.casino.common.cache.data.payment.transfer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/tracker/PaymentTransactionTrackerTask.java:[9,56] error: cannot find symbol
+[ERROR]   symbol:   class TransactionStatus
+[ERROR]   location: package com.abs.casino.common.cache.data.payment.transfer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/tracker/PaymentTransactionTrackerTask.java:[151,35] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class PaymentTransactionTrackerTask
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/processor/AbstractPaymentProcessor.java:[4,56] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: package com.abs.casino.common.cache.data.payment.transfer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/transfer/processor/AbstractPaymentProcessor.java:[26,11] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class AbstractPaymentProcessor
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredBonusTracker.java:[10,33] error: cannot find symbol
+[ERROR]   symbol:   class LockingInfo
+[ERROR]   location: package com.abs.casino.common.lock
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/ExternalTransactionHandler.java:[10,56] error: cannot find symbol
+[ERROR]   symbol:   class ExternalPaymentTransaction
+[ERROR]   location: package com.abs.casino.common.cache.data.payment.transfer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/ExternalTransactionHandler.java:[11,56] error: cannot find symbol
+[ERROR]   symbol:   class TransactionStatus
+[ERROR]   location: package com.abs.casino.common.cache.data.payment.transfer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PaymentTransactionChangesProcessor.java:[6,56] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: package com.abs.casino.common.cache.data.payment.transfer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PaymentTransactionChangesProcessor.java:[19,80] error: cannot find symbol
+[ERROR]   symbol: class PaymentTransaction
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PaymentTransactionChangesProcessor.java:[19,115] error: cannot find symbol
+[ERROR]   symbol: class PaymentTransaction
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PaymentTransactionChangesProcessor.java:[29,35] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class PaymentTransactionChangesProcessor
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/storeddataprocessor/PaymentTransactionChangesProcessor.java:[29,70] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: class PaymentTransactionChangesProcessor
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/transactiondata/BasicTransactionDataStorageHelper.java:[11,56] error: cannot find symbol
+[ERROR]   symbol:   class PaymentTransaction
+[ERROR]   location: package com.abs.casino.common.cache.data.payment.transfer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/MultiplayerExternalWallettransactionHandler.java:[7,56] error: cannot find symbol
+[ERROR]   symbol:   class ExternalPaymentTransaction
+[ERROR]   location: package com.abs.casino.common.cache.data.payment.transfer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/MultiplayerExternalWallettransactionHandler.java:[8,56] error: cannot find symbol
+[ERROR]   symbol:   class TransactionStatus
+[ERROR]   location: package com.abs.casino.common.cache.data.payment.transfer
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/MultiplayerExternalWallettransactionHandler.java:[41,12] error: cannot find symbol
+[ERROR]   symbol:   class ExternalPaymentTransaction
+[ERROR]   location: class MultiplayerExternalWallettransactionHandler
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/tracker/ExpiredFRBonusTracker.java:[10,33] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+STEP06 rc=1
+STEP07: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs' && mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.dgphoenix.casino:gsn-web-gs:war:1.89.0
+[WARNING] 'version' contains an expression but should be a constant. @ com.dgphoenix.casino:gsn-web-gs:${current.version}, /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/pom.xml, line 13, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-web-gs >-------------------
+[INFO] Building gsn-web-gs 1.89.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ gsn-web-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 43 resources
+[INFO] 
+[INFO] --- resources:2.6:resources (gs-resources) @ gsn-web-gs ---
+[WARNING]  Parameter 'resources' is read-only, must not be used in configuration
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 43 resources
+[INFO] Copying 59 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/css
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/css_nucleus
+[INFO] Copying 104 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/js
+[INFO] Copying 501 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/images
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/images_nucleus
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-web-gs ---
+[INFO] Compiling 295 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/CTStartGameProcessor.java:[8,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/CTStartGameProcessor.java:[9,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[INFO] 2 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.549 s
+[INFO] Finished at: 2026-02-28T03:54:13Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-web-gs: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/CTStartGameProcessor.java:[8,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/game/processors/CTStartGameProcessor.java:[9,56] error: package com.abs.casino.common.cache.data.payment.transfer does not exist
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+STEP07 rc=1
+STEP08: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/mp-server/persistance' && mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.betsoft.casino.mp:persistance >------------------
+[INFO] Building Casino MP Games persistance layer 1.0.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ persistance ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ persistance ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ persistance ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.6.0:testCompile (default-testCompile) @ persistance ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ persistance ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ persistance ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/target/persistance-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ persistance ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/target/persistance-1.0.0-SNAPSHOT.jar to /Users/alexb/.m2/repository/com/betsoft/casino/mp/persistance/1.0.0-SNAPSHOT/persistance-1.0.0-SNAPSHOT.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/pom.xml to /Users/alexb/.m2/repository/com/betsoft/casino/mp/persistance/1.0.0-SNAPSHOT/persistance-1.0.0-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.504 s
+[INFO] Finished at: 2026-02-28T03:54:15Z
+[INFO] ------------------------------------------------------------------------
+STEP08 rc=0
+STEP09: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new' && node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+[refactor-onboard] PASS: Static asset route (http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json) -> HTTP 200
+[refactor-onboard] WARN: GS support route (diagnostic) (http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6275) -> read ECONNRESET after 10 attempts
+[refactor-onboard] PASS: Config service health (http://127.0.0.1:18072/health) -> HTTP 200
+[refactor-onboard] FAIL: Launch alias (startgame) (http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 502 after 10 attempts
+[refactor-onboard] WARN: Launch alias (secondary) (http://127.0.0.1:18080/startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 502 after 10 attempts
+[refactor-onboard] ERROR: Smoke checks failed (1 failure(s)). See lines above.
+STEP09 rc=2
+STATUS_FILE: /Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-035231-hardcut-m2-wave242ab-wave243-parallel-batches/fast-gate-status-batchA-rerun1.txt
+STEP01-08_FAIL rc1=1 rc2=0 rc3=0 rc4=0 rc5=1 rc6=1 rc7=1 rc8=0 STEP09_rc=2

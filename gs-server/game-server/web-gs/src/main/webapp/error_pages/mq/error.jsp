@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="com.dgphoenix.casino.gs.GameServer" %>
+<%@ page import="com.abs.casino.gs.GameServer" %>
 <%@ page import="java.util.Date" %>
 <%@ page isErrorPage="true" %>
 <jsp:include page="/error_pages/error_header.jsp"/>

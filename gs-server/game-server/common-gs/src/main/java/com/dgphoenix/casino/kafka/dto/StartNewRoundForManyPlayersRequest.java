@@ -2,7 +2,7 @@ package com.abs.casino.kafka.dto;
 
 import com.abs.casino.kafka.dto.RoundPlayerDto;
 
-import com.dgphoenix.casino.kafka.dto.KafkaRequest;
+import com.abs.casino.kafka.dto.KafkaRequest;
 
 import java.util.List;
 

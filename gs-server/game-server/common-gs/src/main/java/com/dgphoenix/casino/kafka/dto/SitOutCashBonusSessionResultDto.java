@@ -2,7 +2,7 @@ package com.abs.casino.kafka.dto;
 
 import com.abs.casino.kafka.dto.CashBonusDto;
 
-import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
+import com.abs.casino.kafka.dto.BasicKafkaResponse;
 
 public class SitOutCashBonusSessionResultDto extends BasicKafkaResponse {
     private CashBonusDto cashBonus;

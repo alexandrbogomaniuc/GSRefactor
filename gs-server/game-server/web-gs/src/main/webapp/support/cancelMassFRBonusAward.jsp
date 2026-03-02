@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%@ page import="com.abs.casino.services.bonus.CancelMassFRBonusAward" %>
 <%@ page import="org.apache.commons.lang.exception.ExceptionUtils" %>
 <%--

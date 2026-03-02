@@ -1,10 +1,10 @@
-<%@ page import="com.dgphoenix.casino.account.AccountManager" %>
-<%@ page import="com.dgphoenix.casino.common.cache.SubCasinoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.account.AccountInfo" %>
-<%@ page import="com.dgphoenix.casino.common.exception.CommonException" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
-<%@ page import="com.dgphoenix.casino.gs.GameServer" %>
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
+<%@ page import="com.abs.casino.account.AccountManager" %>
+<%@ page import="com.abs.casino.common.cache.SubCasinoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.account.AccountInfo" %>
+<%@ page import="com.abs.casino.common.exception.CommonException" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.gs.GameServer" %>
+<%@ page import="com.abs.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="static org.apache.commons.lang3.StringUtils.isNotBlank" %>

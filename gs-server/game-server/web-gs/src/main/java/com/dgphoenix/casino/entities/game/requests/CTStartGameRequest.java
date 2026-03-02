@@ -1,7 +1,7 @@
 package com.abs.casino.entities.game.requests;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.session.SessionInfo;
 import com.abs.casino.forms.game.ct.CommonCTStartGameForm;
 import com.abs.casino.helpers.game.processors.CTStartGameProcessor;
 

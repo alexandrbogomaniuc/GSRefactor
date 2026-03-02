@@ -1,12 +1,12 @@
 package com.abs.casino.web.history;
 
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
 import com.abs.casino.web.history.GameHistoryListAction;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 public class GameHistoryURLBuilder {
     private static final String BANK_ID = "bankId";

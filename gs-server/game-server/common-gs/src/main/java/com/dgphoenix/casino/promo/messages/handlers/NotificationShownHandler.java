@@ -1,10 +1,10 @@
 package com.abs.casino.promo.messages.handlers;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.promo.messages.client.requests.NotificationShown;
 import com.abs.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
 import com.abs.casino.common.promo.messages.server.responses.NotificationShownResponse;
-import com.dgphoenix.casino.gs.GameServerComponentsHelper;
+import com.abs.casino.gs.GameServerComponentsHelper;
 import com.abs.casino.promo.IPromoMessagesDispatcher;
 import com.abs.casino.websocket.IWebSocketSessionsController;
 import org.apache.logging.log4j.LogManager;

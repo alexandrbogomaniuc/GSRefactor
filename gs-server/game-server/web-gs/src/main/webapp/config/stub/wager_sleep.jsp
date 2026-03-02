@@ -1,9 +1,9 @@
 <%@ page import="com.abs.casino.common.exception.NotEnoughMoneyException" %>
 <%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.CCommonWallet" %>
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper.ExtAccountInfoStub" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.gs.managers.payment.wallet.CCommonWallet" %>
+<%@ page import="com.abs.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
+<%@ page import="com.abs.casino.gs.managers.payment.wallet.RemoteClientStubHelper.ExtAccountInfoStub" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>

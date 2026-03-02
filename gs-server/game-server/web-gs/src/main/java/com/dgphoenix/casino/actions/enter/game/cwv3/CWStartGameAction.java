@@ -1,6 +1,6 @@
 package com.abs.casino.actions.enter.game.cwv3;
 
-import com.dgphoenix.casino.account.AccountManager;
+import com.abs.casino.account.AccountManager;
 import com.abs.casino.actions.enter.AccountInfoAndSessionInfoPair;
 import com.abs.casino.actions.enter.LanguageDetector;
 import com.abs.casino.actions.enter.game.BaseStartGameAction;
@@ -9,18 +9,18 @@ import com.abs.casino.actions.enter.game.routing.MultiplayerServiceRoutingBridge
 import com.abs.casino.actions.enter.game.routing.ProtocolAdapterRoutingBridge;
 import com.abs.casino.actions.enter.game.routing.SessionServiceRoutingBridge;
 import com.abs.casino.cassandra.persist.CassandraPlayerSessionState;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
-import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.payment.IWallet;
 import com.abs.casino.common.cache.data.server.ServerInfo;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.exception.*;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.exception.*;
 import com.abs.casino.common.exception.MaintenanceModeException;
 import com.abs.casino.common.exception.StartParameters;
 import com.abs.casino.common.exception.CurrencyMismatchException;
@@ -28,20 +28,20 @@ import com.abs.casino.common.exception.InvalidCurrencyRateException;
 import com.abs.casino.common.exception.UnknownCurrencyException;
 import com.abs.casino.common.exception.WalletException;
 import com.abs.casino.common.util.DigitFormatter;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.MobileDetector;
 import com.abs.casino.common.web.login.apub.GameServerResponse;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
+import com.abs.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.gs.GameServer;
+import com.abs.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.abs.casino.gs.managers.payment.bonus.IFRBonusClient;
 import com.abs.casino.gs.managers.payment.currency.CurrencyManager;
-import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
+import com.abs.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.abs.casino.gs.persistance.GameSessionPersister;
 import com.abs.casino.helpers.login.LoginHelper;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.action.ActionForward;
@@ -275,7 +275,7 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                             serverBalance, actionForm.getBalance());
 
                     if (WalletProtocolFactory.getInstance().isWalletBankWithGetBalanceSupported(bankInfo)) {
-                        com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient client =
+                        com.abs.casino.gs.managers.payment.wallet.v2.ICommonWalletClient client =
                                 WalletProtocolFactory.getInstance()
                                         .getWalletProtocolManager(accountInfo.getBankId())
                                         .getClient();

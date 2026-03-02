@@ -1,11 +1,11 @@
 package com.abs.casino.promo;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.common.cache.data.account.AccountInfo;
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.*;
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.*;
+import com.abs.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import org.springframework.stereotype.Service;
 

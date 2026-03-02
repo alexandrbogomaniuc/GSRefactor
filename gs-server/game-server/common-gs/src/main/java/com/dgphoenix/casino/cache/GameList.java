@@ -1,6 +1,6 @@
 package com.abs.casino.cache;
 
-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
 
 public class GameList implements IDistributedCacheEntry {
     private long bankId;

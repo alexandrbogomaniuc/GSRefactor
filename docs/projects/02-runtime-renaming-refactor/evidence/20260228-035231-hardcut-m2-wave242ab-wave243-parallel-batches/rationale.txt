@@ -1,0 +1,6 @@
+Selection rationale:
+- Declaration-first migration on two strict-disjoint low-risk package clusters in gs-server.
+- Batch A moves only payment transfer cache data package declarations.
+- Batch B moves only lock package declarations.
+- Cross-hit overlap is zero, so parallel-safe ownership is preserved.
+- Retains runtime safety by bounded package/import rewires only; no blind/global replacement.

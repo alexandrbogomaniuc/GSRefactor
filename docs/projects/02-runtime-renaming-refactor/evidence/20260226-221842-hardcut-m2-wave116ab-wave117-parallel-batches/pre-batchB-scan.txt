@@ -54,7 +54,7 @@
 29:import com.dgphoenix.casino.forms.login.cw.CWLoginForm;
 30:import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 31:import com.dgphoenix.casino.helpers.login.CWHelper;
-32:import com.dgphoenix.casino.helpers.login.LoginHelper;
+32:import com.abs.casino.helpers.login.LoginHelper;
 33:import com.dgphoenix.casino.helpers.login.serializers.CWSerializeLoginForm;
 34:import com.dgphoenix.casino.sm.login.CWLoginRequest;
 35:import com.dgphoenix.casino.sm.login.LoginResponse;
@@ -73,7 +73,7 @@
 12:import com.dgphoenix.casino.forms.game.CommonFRBStartGameForm;
 13:import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 14:import com.abs.casino.helpers.login.FRBonusHelper;
-15:import com.dgphoenix.casino.helpers.login.LoginHelper;
+15:import com.abs.casino.helpers.login.LoginHelper;
 16:import com.abs.casino.helpers.login.serializers.BonusSerializeLoginForm;
 17:import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;
 18:import com.dgphoenix.casino.sm.login.LoginResponse;
@@ -124,16 +124,16 @@
 45:import com.dgphoenix.casino.gs.managers.payment.transfer.PaymentManager;
 46:import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 47:import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
-48:import com.dgphoenix.casino.helpers.login.LoginHelper;
+48:import com.abs.casino.helpers.login.LoginHelper;
 49:import com.dgphoenix.casino.sm.login.LoginRequest;
 50:import com.dgphoenix.casino.sm.login.LoginResponse;
 51:import com.dgphoenix.casino.support.ErrorPersisterHelper;
 52:import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 69:import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
-403:            String gameHistoryUrl = com.dgphoenix.casino.actions.enter.game.BaseStartGameAction
-417:            String promoIdsString = com.dgphoenix.casino.actions.enter.game.BaseStartGameAction
-427:            String promoDetailsURL = com.dgphoenix.casino.actions.enter.game.BaseStartGameAction
-434:                    com.dgphoenix.casino.actions.enter.game.BaseStartGameAction.needToShowPromoBar(promoCampaigns));
+403:            String gameHistoryUrl = com.abs.casino.actions.enter.game.BaseStartGameAction
+417:            String promoIdsString = com.abs.casino.actions.enter.game.BaseStartGameAction
+427:            String promoDetailsURL = com.abs.casino.actions.enter.game.BaseStartGameAction
+434:                    com.abs.casino.actions.enter.game.BaseStartGameAction.needToShowPromoBar(promoCampaigns));
 --- gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/pov/StartPovGameParams.java
 1:package com.dgphoenix.casino.actions.game.pov;
 

@@ -1,17 +1,17 @@
 package com.abs.casino.gs.managers.game.history;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.DistributedLockManager;
 import com.abs.casino.cassandra.persist.CassandraHistoryInformerItemPersister;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BankInfoCache;
 import com.abs.casino.common.cache.data.HistoryInformerItem;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.lock.LockingInfo;
-import com.dgphoenix.casino.common.util.ExecutorUtils;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bet.PlayerBet;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.lock.LockingInfo;
+import com.abs.casino.common.util.ExecutorUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.web.HttpClientConnection;
 import com.abs.casino.common.util.xml.IXmlRequestResult;
 import com.abs.casino.common.util.xml.XmlRequestResult;

@@ -3,8 +3,8 @@ package com.abs.casino.gs.persistance.remotecall;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Function;
 
-import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
-import com.dgphoenix.casino.kafka.dto.KafkaResponse;
+import com.abs.casino.kafka.dto.BasicKafkaResponse;
+import com.abs.casino.kafka.dto.KafkaResponse;
 
 import reactor.core.publisher.Mono;
 

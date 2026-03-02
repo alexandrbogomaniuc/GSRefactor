@@ -1,0 +1,12 @@
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/ChangeMassAwardStatusCall.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/DeleteMassAwardCall.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/KafkaRequestMultiPlayer.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/RefreshConfigCall.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/RemoteCallHelper.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaInServiceAsyncRequestHandler.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaInServiceRequestHandler.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaInServiceRequestHandlerFactory.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaOuterRequestHandler.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaOuterRequestHandlerFactory.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaRequestHandler.java
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaRequestHandlerFactory.java

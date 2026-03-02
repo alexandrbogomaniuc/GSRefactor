@@ -1,12 +1,12 @@
 package com.abs.casino.transactiondata.storeddataprocessor;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraGameSessionPersister;
 import com.abs.casino.cassandra.persist.IStoredDataProcessor;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.GameSession;
 import com.abs.casino.common.transactiondata.storeddate.StoredItem;
 import com.abs.casino.common.transactiondata.storeddate.identifier.StoredItemInfo;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.ApplicationContextHelper;
 
 import java.nio.ByteBuffer;
 import java.util.HashMap;

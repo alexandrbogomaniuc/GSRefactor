@@ -12,39 +12,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.abs.casino.cache.CachesHolder;
-import com.dgphoenix.casino.cassandra.AccountDistributedLockManager;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.AccountDistributedLockManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.DistributedLockManager;
 import com.abs.casino.cassandra.persist.AbstractDistributedConfigEntryPersister;
-import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameCache;
-import com.dgphoenix.casino.common.cache.IDistributedCache;
+import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameCache;
+import com.abs.casino.common.cache.IDistributedCache;
 import com.abs.casino.common.cache.ILoadingCache;
-import com.dgphoenix.casino.common.cache.LoadBalancerCache;
-import com.dgphoenix.casino.common.cache.ServerConfigsCache;
-import com.dgphoenix.casino.common.cache.SubCasinoCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.LoadBalancerCache;
+import com.abs.casino.common.cache.ServerConfigsCache;
+import com.abs.casino.common.cache.SubCasinoCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.SubCasino;
+import com.abs.casino.common.cache.data.currency.Currency;
 import com.abs.casino.common.cache.data.currency.ICurrency;
 import com.abs.casino.common.cache.data.server.ServerInfo;
-import com.dgphoenix.casino.common.config.GameServerConfig;
-import com.dgphoenix.casino.common.lock.ILockManager;
-import com.dgphoenix.casino.common.promo.Status;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.GameServerComponentsHelper;
+import com.abs.casino.common.config.GameServerConfig;
+import com.abs.casino.common.lock.ILockManager;
+import com.abs.casino.common.promo.Status;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.gs.GameServer;
+import com.abs.casino.gs.GameServerComponentsHelper;
 import com.abs.casino.gs.IGameServerStatusListener;
-import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
+import com.abs.casino.gs.managers.payment.bonus.BonusManager;
+import com.abs.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.abs.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
-import com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
-import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
-import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
+import com.abs.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
+import com.abs.casino.gs.managers.payment.wallet.WalletProtocolFactory;
+import com.abs.casino.gs.socket.mq.MQServiceHandler;
 import com.abs.casino.gs.status.ServersStatusWatcher;
 import com.abs.casino.kafka.dto.GameServerInfoDto;
-import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
+import com.abs.casino.kafka.dto.KafkaHandlerException;
 
 @Component
 public class InServiceServiceHandler {
@@ -156,9 +156,9 @@ public class InServiceServiceHandler {
         try {
             LOG.debug("sendPromoNotifications: sessionId = {}, campaignId = {}, notificationsTypes = {}",
                     sessionId, campaignId, notificationsTypes);
-            Set<com.dgphoenix.casino.common.promo.PromoNotificationType> types = new HashSet<>();
+            Set<com.abs.casino.common.promo.PromoNotificationType> types = new HashSet<>();
             for (com.abs.casino.kafka.dto.PromoNotificationType notificationType : notificationsTypes) {
-                types.add(com.dgphoenix.casino.common.promo.PromoNotificationType.valueOf(notificationType.name()));
+                types.add(com.abs.casino.common.promo.PromoNotificationType.valueOf(notificationType.name()));
             }
             GameServerComponentsHelper.getPromoMessagesDispatcher()
                     .sendPromoNotificationsAsync(sessionId, campaignId, types);

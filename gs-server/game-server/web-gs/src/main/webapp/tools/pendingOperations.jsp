@@ -4,10 +4,10 @@
     <title>Resolve pending CT operations</title>
 </head>
 <body>
-<%@ page import="com.dgphoenix.casino.common.SessionHelper" %>
+<%@ page import="com.abs.casino.common.SessionHelper" %>
 <%@ page import="com.abs.casino.common.cache.data.payment.transfer.PaymentTransaction" %>
 <%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%
 
     long accId = -1;

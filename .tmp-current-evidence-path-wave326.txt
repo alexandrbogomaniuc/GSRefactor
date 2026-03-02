@@ -1,0 +1,1 @@
+docs/projects/02-runtime-renaming-refactor/evidence/20260228-195111-hardcut-m2-wave326-wave327-wallet-socket-remotecall-support

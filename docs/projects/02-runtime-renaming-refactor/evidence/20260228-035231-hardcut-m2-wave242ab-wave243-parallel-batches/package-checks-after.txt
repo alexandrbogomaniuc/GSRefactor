@@ -1,0 +1,11 @@
+# Package checks (after)
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/ExternalPaymentTransaction.java: package com.abs.casino.common.cache.data.payment.transfer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/PaymentSystemType.java: package com.abs.casino.common.cache.data.payment.transfer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/PaymentTransaction.java: package com.abs.casino.common.cache.data.payment.transfer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/TransactionStatus.java: package com.abs.casino.common.cache.data.payment.transfer;
+gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/transfer/TransactionType.java: package com.abs.casino.common.cache.data.payment.transfer;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/ChangeLockListener.java: package com.abs.casino.common.lock;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/lock/ServerLockInfo.java: package com.abs.casino.common.lock;
+gs-server/utils/src/main/java/com/dgphoenix/casino/common/lock/ILockManager.java: package com.abs.casino.common.lock;
+gs-server/utils/src/main/java/com/dgphoenix/casino/common/lock/LocalLockInfo.java: package com.abs.casino.common.lock;
+gs-server/utils/src/main/java/com/dgphoenix/casino/common/lock/LockingInfo.java: package com.abs.casino.common.lock;

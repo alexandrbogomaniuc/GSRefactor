@@ -1,40 +1,40 @@
 package com.abs.casino.payment.wallet;
 
-import com.dgphoenix.casino.common.DomainSession;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.DomainSession;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.account.LasthandInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.game.BaseGameInfo;
+import com.abs.casino.common.cache.data.game.GameMode;
 import com.abs.casino.common.cache.data.payment.WalletOperationAdditionalProperties;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.configuration.messages.MessageManager;
+import com.abs.casino.common.cache.data.payment.WalletOperationStatus;
+import com.abs.casino.common.cache.data.payment.WalletOperationType;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.configuration.messages.MessageManager;
 import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.DBException;
 import com.abs.casino.common.exception.WalletException;
 import com.abs.casino.common.games.IStartGameHelper;
 import com.abs.casino.common.games.StartGameHelpers;
 import com.abs.casino.common.promo.PromoWinInfo;
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.common.util.DigitFormatter;
-import com.dgphoenix.casino.common.util.IdGenerator;
+import com.abs.casino.common.util.IdGenerator;
 import com.abs.casino.common.util.NumberUtils;
 import com.abs.casino.common.util.ReflectionUtils;
 import com.abs.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletStatusResult;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.abs.casino.gs.managers.payment.wallet.IWalletHelper;
 import com.abs.casino.gs.managers.payment.wallet.WalletPersister;
-import com.dgphoenix.casino.gs.managers.payment.wallet.*;
+import com.abs.casino.gs.managers.payment.wallet.*;
 import com.abs.casino.gs.managers.payment.wallet.v4.CWMType;
 import com.abs.casino.gs.managers.payment.wallet.v4.ICommonWalletClient;
 import com.abs.casino.payment.wallet.AbstractWalletProtocolManager;
@@ -61,7 +61,7 @@ public class CommonWalletManager extends AbstractWalletProtocolManager<CommonWal
     private static final String DEFAULT_REVOKE_RECORD = "routine wallet revoke";
     private static final String DEFAULT_NEGATIVE_BET_RECORD = "negative bet";
     private static final String REQUEST_PARAM_CMD = "CMD";
-    private final com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient client;
+    private final com.abs.casino.gs.managers.payment.wallet.v2.ICommonWalletClient client;
     //this handler used for tracking (transaction failure processing)
     //IExternalWalletTransactionHandler implementations MUST be stateless
     protected IExternalWalletTransactionHandler extHandler;
@@ -118,7 +118,7 @@ public class CommonWalletManager extends AbstractWalletProtocolManager<CommonWal
         return operation.getInternalStatus() == WalletOperationStatus.PENDING && gameId == 209;
     }
 
-    protected com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient instantiateClient()
+    protected com.abs.casino.gs.managers.payment.wallet.v2.ICommonWalletClient instantiateClient()
             throws CommonException {
         String klazz = bankInfo.getCWRequestClientClass();
         if (StringUtils.isTrimmedEmpty(klazz)) {
@@ -129,7 +129,7 @@ public class CommonWalletManager extends AbstractWalletProtocolManager<CommonWal
         try {
             Class<?> aClass = ReflectionUtils.forNameWithCompatibilityAliases(klazz);
             Constructor<?> clientConstructor = aClass.getConstructor(long.class);
-            return (com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient) clientConstructor.newInstance(bankInfo.getId());
+            return (com.abs.casino.gs.managers.payment.wallet.v2.ICommonWalletClient) clientConstructor.newInstance(bankInfo.getId());
         } catch (Exception e) {
             getLog().error("instantiateClient bankId:{} can't instantiate client", bankInfo.getId(), e);
             throw new CommonException(e);
@@ -156,7 +156,7 @@ public class CommonWalletManager extends AbstractWalletProtocolManager<CommonWal
     }
 
     @Override
-    public com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient getClient() {
+    public com.abs.casino.gs.managers.payment.wallet.v2.ICommonWalletClient getClient() {
         return client;
     }
 
@@ -874,7 +874,7 @@ public class CommonWalletManager extends AbstractWalletProtocolManager<CommonWal
         } else {
             long operationId = debitOperation.getId();
             try {
-                com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient pureClient = getClient();
+                com.abs.casino.gs.managers.payment.wallet.v2.ICommonWalletClient pureClient = getClient();
                 if (!(pureClient instanceof ICommonWalletClient)) {
                     throw new CommonException("CWClient is not support refundBet, pureClient=" + pureClient);
                 }

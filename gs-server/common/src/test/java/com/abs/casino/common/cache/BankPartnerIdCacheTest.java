@@ -1,6 +1,6 @@
 package com.abs.casino.common.cache;
 
-import com.dgphoenix.casino.common.cache.BankPartnerIdCache;
+import com.abs.casino.common.cache.BankPartnerIdCache;
 import org.junit.Before;
 import org.junit.Test;
 

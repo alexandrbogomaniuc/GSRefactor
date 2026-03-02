@@ -1,13 +1,13 @@
 package com.abs.casino.gs.managers.payment.bonus;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
-import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBWinOperation;
-import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bonus.BonusStatus;
+import com.abs.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.payment.bonus.FRBWinOperation;
+import com.abs.casino.common.cache.data.payment.bonus.FRBonusWin;
 import com.abs.casino.common.exception.FRBException;
 import com.abs.casino.common.util.ILongIdGenerator;
-import com.dgphoenix.casino.gs.GameServer;
+import com.abs.casino.gs.GameServer;
 import com.abs.casino.gs.managers.dblink.FRBonusDBLink;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

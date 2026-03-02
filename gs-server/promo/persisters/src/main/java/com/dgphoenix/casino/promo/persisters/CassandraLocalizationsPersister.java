@@ -1,9 +1,9 @@
 package com.abs.casino.promo.persisters;
 
-import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
-import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.common.promo.LocalizationTitles;
+import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import com.abs.casino.common.promo.LocalizationTitles;
 import com.google.common.base.Splitter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

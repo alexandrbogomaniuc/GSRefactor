@@ -1,12 +1,12 @@
 <%@ page import="com.abs.casino.cassandra.persist.CassandraAccountInfoPersister" %>
-<%@ page import="com.dgphoenix.casino.common.SessionHelper" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin" %>
-<%@ page import="com.dgphoenix.casino.common.transactiondata.ITransactionData" %>
+<%@ page import="com.abs.casino.common.SessionHelper" %>
+<%@ page import="com.abs.casino.common.cache.data.payment.bonus.FRBonusWin" %>
+<%@ page import="com.abs.casino.common.transactiondata.ITransactionData" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.account.AccountInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.account.AccountInfo" %>
 <%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
-<%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.cassandra.CassandraPersistenceManager" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhevlakoval

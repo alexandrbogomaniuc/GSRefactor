@@ -1,14 +1,14 @@
 package com.abs.casino.config;
 
-import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.SubCasinoCache;
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.SubCasinoCache;
 import com.abs.casino.controller.RequestContext;
 import com.abs.casino.controller.mqb.MPGameSessionController;
 import com.abs.casino.controller.stub.cw.CanexStubController;
-import com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
+import com.abs.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
 import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
-import com.dgphoenix.casino.gs.socket.mq.BattlegroundService;
+import com.abs.casino.gs.socket.mq.BattlegroundService;
 import com.abs.casino.services.mp.MPGameSessionService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

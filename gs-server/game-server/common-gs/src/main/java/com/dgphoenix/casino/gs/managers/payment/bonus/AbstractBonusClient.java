@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.payment.bonus;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
 
 /**
  * User: ktd

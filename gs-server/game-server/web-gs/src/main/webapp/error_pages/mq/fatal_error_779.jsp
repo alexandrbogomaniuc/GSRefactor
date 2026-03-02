@@ -2,8 +2,8 @@
 <%@ page import="org.apache.commons.lang.LocaleUtils" %>
 <%@ page import="org.apache.struts.Globals" %>
 <%@ page import="java.util.Locale" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
-<%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.system.configuration.GameServerConfiguration" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%

@@ -1,11 +1,11 @@
 package com.abs.casino.promo.wins.handlers;
 
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.*;
-import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bonus.FRBonus;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.*;
+import com.abs.casino.gs.managers.payment.bonus.FRBonusManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,9 +1,9 @@
 package com.abs.casino.system.configuration;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.string.StringUtils;
 
 /**
  * User: plastical

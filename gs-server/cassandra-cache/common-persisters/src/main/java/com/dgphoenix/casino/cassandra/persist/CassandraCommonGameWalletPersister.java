@@ -1,15 +1,15 @@
 package com.abs.casino.cassandra.persist;
 
-import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
-import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.cassandra.persist.engine.configuration.Compression;
-import com.dgphoenix.casino.common.cache.data.payment.IWallet;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
+import com.abs.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.gs.managers.payment.wallet.CommonGameWallet;
+import com.abs.casino.gs.managers.payment.wallet.CommonWallet;
 import com.abs.casino.gs.managers.payment.wallet.IWalletPersister;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,8 +1,8 @@
 package com.abs.casino.support.cache.bank.edit.actions.editproperties;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.bank.Limit;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.Limit;
 import com.abs.casino.common.web.BaseAction;
 import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.abs.casino.support.CacheObjectComparator;
@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 import static org.apache.struts.action.ActionMessages.GLOBAL_MESSAGE;
 
 public class EditPropertiesAction extends Action {

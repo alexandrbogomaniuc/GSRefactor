@@ -1,23 +1,23 @@
 package com.abs.casino.services.mp;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraCurrentPlayerSessionStatePersister;
 import com.abs.casino.cassandra.persist.CassandraPlayerSessionState;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.session.GameSession;
 import com.abs.casino.common.client.canex.request.privateroom.Player;
 import com.abs.casino.common.client.canex.request.privateroom.PrivateRoom;
 import com.abs.casino.common.client.canex.request.privateroom.Status;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.gs.GameServer;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.gs.GameServer;
 import com.abs.casino.gs.persistance.remotecall.KafkaRequestMultiPlayer;
-import com.dgphoenix.casino.gs.socket.mq.BattlegroundService;
+import com.abs.casino.gs.socket.mq.BattlegroundService;
 import com.abs.casino.kafka.dto.GetMQDataRequest;
 import com.abs.casino.kafka.dto.SitOutRequest2;
 

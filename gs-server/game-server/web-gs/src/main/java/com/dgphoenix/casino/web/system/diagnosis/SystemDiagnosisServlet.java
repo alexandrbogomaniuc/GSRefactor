@@ -1,21 +1,21 @@
 package com.abs.casino.web.system.diagnosis;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.IKeyspaceManager;
 import com.abs.casino.cassandra.persist.CassandraCurrencyRatesPersister;
 import com.abs.casino.common.config.FreeSpaceThresholdType;
 import com.abs.casino.common.config.MountMonitoringEntry;
 import com.abs.casino.common.currency.CurrencyRate;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.CommonExecutorService;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.CommonExecutorService;
 import com.abs.casino.common.util.web.HttpClientConnection;
 import com.abs.casino.common.web.diagnostic.BaseDiagnosisServlet;
 import com.abs.casino.common.web.diagnostic.CheckTask;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.gs.GameServer;
+import com.abs.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.gs.GameServer;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusWinTracker;
 import com.abs.casino.gs.managers.payment.wallet.tracker.WalletTracker;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import com.abs.casino.web.system.diagnosis.tasks.CassandraStateMonitoringTask;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,9 +1,9 @@
 package com.abs.casino.gs.managers.game.settings;
 
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
 import com.abs.casino.common.cache.data.game.BaseGameConstants;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
-import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+import com.abs.casino.common.cache.data.game.BaseGameInfoTemplate;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
 import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.abs.casino.common.util.property.PropertyUtils;
 

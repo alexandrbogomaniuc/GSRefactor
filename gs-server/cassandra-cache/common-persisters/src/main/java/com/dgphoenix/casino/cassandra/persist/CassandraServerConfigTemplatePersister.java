@@ -1,9 +1,10 @@
 package com.abs.casino.cassandra.persist;
 
+import com.abs.casino.cassandra.persist.AbstractIntegerDistributedConfigEntryPersister;
 import com.abs.casino.common.cache.AbstractDistributedCache;
-import com.dgphoenix.casino.common.cache.ServerConfigsCache;
-import com.dgphoenix.casino.common.cache.ServerConfigsTemplateCache;
-import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
+import com.abs.casino.common.cache.ServerConfigsCache;
+import com.abs.casino.common.cache.ServerConfigsTemplateCache;
+import com.abs.casino.common.config.GameServerConfigTemplate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

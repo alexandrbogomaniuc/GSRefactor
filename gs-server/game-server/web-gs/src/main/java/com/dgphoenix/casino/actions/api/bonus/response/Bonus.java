@@ -3,7 +3,7 @@ package com.abs.casino.actions.api.bonus.response;
 
 import com.abs.casino.actions.api.bonus.AbstractBonusAction;
 import com.abs.casino.actions.api.bonus.BonusForm;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.web.bonus.CBonus;
 import com.google.gson.annotations.SerializedName;
 
@@ -27,7 +27,7 @@ public class Bonus extends BaseBonus {
     @SerializedName(CBonus.EXPDATE)
     protected String expDate;
 
-    public Bonus(com.dgphoenix.casino.common.cache.data.bonus.Bonus bonus, BonusForm form) throws CommonException {
+    public Bonus(com.abs.casino.common.cache.data.bonus.Bonus bonus, BonusForm form) throws CommonException {
         super(bonus, form);
         this.type = bonus.getType().toString();
         this.amount = bonus.getAmount();

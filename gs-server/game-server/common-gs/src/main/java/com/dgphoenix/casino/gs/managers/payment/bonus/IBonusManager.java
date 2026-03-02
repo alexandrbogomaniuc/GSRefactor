@@ -1,12 +1,12 @@
 package com.abs.casino.gs.managers.payment.bonus;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bonus.BaseMassAward;
-import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusGameMode;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusType;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bonus.BaseMassAward;
+import com.abs.casino.common.cache.data.bonus.Bonus;
+import com.abs.casino.common.cache.data.bonus.BonusGameMode;
+import com.abs.casino.common.cache.data.bonus.BonusType;
 import com.abs.casino.common.exception.BonusException;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 import java.util.List;
 

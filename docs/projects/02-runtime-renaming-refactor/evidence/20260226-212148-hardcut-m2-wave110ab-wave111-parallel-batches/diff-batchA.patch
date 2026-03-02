@@ -53,7 +53,7 @@ index b8f00bdf..280b5759 100644
 +package com.abs.casino.web.bonus;
  
  import com.dgphoenix.casino.account.AccountManager;
- import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
+ import com.abs.casino.actions.api.bonus.AbstractBonusAction;
 diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CancelBonusServlet.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CancelBonusServlet.java
 index 0c5d8bce..6d3b89ff 100644
 --- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/CancelBonusServlet.java

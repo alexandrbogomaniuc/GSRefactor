@@ -1,0 +1,12 @@
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AlwaysQualifyBetQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/ByAmountBetEventQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DelegatedEventQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/GameBonusKey.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NoPrizeQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/SpinCountPrizeQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentSimpleBetEventQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/FRBonusPrize.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/CacheBonusPrize.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerBetQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerWinQualifier.java
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPlayerBonusQualifier.java

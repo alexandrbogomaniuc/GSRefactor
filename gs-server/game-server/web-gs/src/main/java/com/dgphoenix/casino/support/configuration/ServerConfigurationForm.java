@@ -1,9 +1,9 @@
 package com.abs.casino.support.configuration;
 
-import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.config.GameServerConfigTemplate;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.util.string.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts.action.ActionErrors;

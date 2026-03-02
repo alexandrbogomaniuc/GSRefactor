@@ -1,7 +1,7 @@
 package com.abs.casino.common.promo;
 
-import com.dgphoenix.casino.common.promo.AwardedPrize;
-import com.dgphoenix.casino.common.promo.PromoCampaignMember;
+import com.abs.casino.common.promo.AwardedPrize;
+import com.abs.casino.common.promo.PromoCampaignMember;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,5 +1,5 @@
 <%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%@ page import="com.abs.casino.gs.managers.payment.currency.CurrencyRatesManager" %>
 <%
     String sourceCurrency = request.getParameter("source");

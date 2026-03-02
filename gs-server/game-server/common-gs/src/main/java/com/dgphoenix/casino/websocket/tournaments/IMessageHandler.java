@@ -1,6 +1,6 @@
 package com.abs.casino.websocket.tournaments;
 
-import com.dgphoenix.casino.common.transport.TObject;
+import com.abs.casino.common.transport.TObject;
 import com.abs.casino.promo.tournaments.ErrorCodes;
 import com.abs.casino.promo.tournaments.messages.Error;
 import org.apache.logging.log4j.Logger;

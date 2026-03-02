@@ -1,8 +1,8 @@
 package com.abs.casino.promo.wins.handlers;
 import com.abs.casino.common.promo.*;
 
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.*;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.*;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

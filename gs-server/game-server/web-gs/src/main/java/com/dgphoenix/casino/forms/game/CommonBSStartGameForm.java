@@ -1,8 +1,8 @@
 package com.abs.casino.forms.game;
 
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.game.GameMode;
 import com.abs.casino.forms.game.CommonBonusStartGameForm;
-import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
+import com.abs.casino.gs.managers.payment.bonus.BonusManager;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 

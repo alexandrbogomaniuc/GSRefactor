@@ -1,12 +1,12 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.abs.casino.common.exception.BonusException" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
+<%@ page import="com.abs.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
 
 <%
     String userId = request.getParameter("userId");

@@ -1,8 +1,8 @@
 package com.abs.casino.services;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraTempBetPersister;
-import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
+import com.abs.casino.common.cache.data.bet.PlayerBet;
 import com.abs.casino.gs.persistance.bet.PlayerBetPersistenceManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 @Service
 public class PlayerBetHistoryService {

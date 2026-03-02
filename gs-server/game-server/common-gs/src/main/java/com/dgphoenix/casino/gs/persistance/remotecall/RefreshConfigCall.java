@@ -2,10 +2,10 @@ package com.abs.casino.gs.persistance.remotecall;
 
 import com.abs.casino.cache.CachesHolder;
 import com.abs.casino.cassandra.persist.AbstractDistributedConfigEntryPersister;
-import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.remotecall.IRemoteCall;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.ApplicationContextHelper;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

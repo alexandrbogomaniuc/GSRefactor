@@ -1,8 +1,8 @@
 package com.abs.casino.gs;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.exception.CommonException;
 import org.apache.logging.log4j.Logger;
 
 /**

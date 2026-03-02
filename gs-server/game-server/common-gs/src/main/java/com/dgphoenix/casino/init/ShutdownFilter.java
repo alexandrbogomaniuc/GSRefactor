@@ -1,7 +1,7 @@
 package com.abs.casino.init;
 
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.gs.GameServer;
+import com.abs.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.gs.GameServer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

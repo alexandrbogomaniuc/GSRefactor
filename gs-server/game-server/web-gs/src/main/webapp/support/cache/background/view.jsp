@@ -1,5 +1,5 @@
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BackgroundImagesCache" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.common.cache.BackgroundImagesCache" %>
 <%
     try {
         out.println(ApplicationContextHelper.getApplicationContext().getBean(BackgroundImagesCache.class));

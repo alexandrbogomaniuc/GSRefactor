@@ -1,10 +1,10 @@
 package com.abs.casino.promo.tournaments.handlers;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
+import com.abs.casino.common.promo.IPromoCampaignManager;
 import com.abs.casino.common.transport.ITransportObject;
-import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
+import com.abs.casino.gs.socket.mq.MQServiceHandler;
 import com.abs.casino.gs.socket.mq.TournamentBuyInHelper;
 import com.abs.casino.promo.PlayerAliasManager;
 import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;

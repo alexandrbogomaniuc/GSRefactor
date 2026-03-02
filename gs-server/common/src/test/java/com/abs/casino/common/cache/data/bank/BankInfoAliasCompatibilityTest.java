@@ -1,6 +1,6 @@
 package com.abs.casino.common.cache.data.bank;
 
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
 import com.abs.casino.common.cache.data.bank.MaxQuestWeaponMode;
 import com.abs.casino.common.cache.data.bank.MaxQuestClientLogLevel;
 import org.junit.Test;

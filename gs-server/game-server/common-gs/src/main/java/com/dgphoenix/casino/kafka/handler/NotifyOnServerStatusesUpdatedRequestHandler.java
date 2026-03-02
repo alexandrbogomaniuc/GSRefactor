@@ -4,9 +4,9 @@ import com.abs.casino.kafka.handler.KafkaInServiceRequestHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dgphoenix.casino.common.cache.LoadBalancerCache;
+import com.abs.casino.common.cache.LoadBalancerCache;
 import com.abs.casino.kafka.dto.NotifyOnServerStatusesUpdatedRequest;
-import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
+import com.abs.casino.kafka.dto.VoidKafkaResponse;
 
 
 @Component

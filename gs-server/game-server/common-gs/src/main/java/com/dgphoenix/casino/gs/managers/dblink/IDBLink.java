@@ -1,17 +1,17 @@
 package com.abs.casino.gs.managers.dblink;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
-import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
-import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
-import com.dgphoenix.casino.common.cache.data.payment.IWallet;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.account.LasthandInfo;
+import com.abs.casino.common.cache.data.bet.PlayerBet;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
+import com.abs.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.DBException;
-import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletDBLink;
+import com.abs.casino.gs.managers.payment.wallet.IWalletDBLink;
 import com.abs.casino.gs.singlegames.tools.cbservtools.CBGameException;
 
 /**

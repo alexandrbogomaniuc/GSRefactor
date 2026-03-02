@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.game.engine;
 
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.gs.managers.game.core.AbstractGameProcessor;
 import com.abs.casino.gs.managers.game.room.IRoom;

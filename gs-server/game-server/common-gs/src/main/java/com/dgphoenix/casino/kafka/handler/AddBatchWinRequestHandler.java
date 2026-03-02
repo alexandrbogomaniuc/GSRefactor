@@ -3,7 +3,7 @@ package com.abs.casino.kafka.handler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
+import com.abs.casino.gs.socket.mq.MQServiceHandler;
 import com.abs.casino.kafka.dto.AddBatchWinRequestDto;
 import com.abs.casino.kafka.dto.AddBatchWinResponseDto;
 import com.abs.casino.kafka.handler.KafkaOuterRequestHandler;

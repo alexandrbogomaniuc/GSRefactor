@@ -1,7 +1,7 @@
 package com.abs.casino.support.cache.bank.edit.actions.common;
 
-import com.dgphoenix.casino.common.cache.SubCasinoCache;
-import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
+import com.abs.casino.common.cache.SubCasinoCache;
+import com.abs.casino.common.cache.data.bank.SubCasino;
 import com.abs.casino.support.cache.bank.edit.forms.common.SubcasinoForm;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.StaxDriver;

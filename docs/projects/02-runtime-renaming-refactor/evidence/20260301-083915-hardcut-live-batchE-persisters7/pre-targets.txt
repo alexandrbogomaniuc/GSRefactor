@@ -1,0 +1,7 @@
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExtendedAccountInfoPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalGameIdsPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraMassAwardRestrictionPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBaseGameInfoPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallStatisticsPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCurrencyPersister.java:1:package com.dgphoenix.casino.cassandra.persist;

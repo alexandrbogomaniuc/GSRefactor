@@ -1,7 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
 import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
-import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import org.apache.logging.log4j.Logger;
 
 /**

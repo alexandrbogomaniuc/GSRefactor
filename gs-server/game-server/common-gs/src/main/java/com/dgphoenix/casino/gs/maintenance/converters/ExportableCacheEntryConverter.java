@@ -1,7 +1,7 @@
 package com.abs.casino.gs.maintenance.converters;
 
 import com.abs.casino.common.cache.ExportableCacheEntry;
-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
 import com.abs.casino.common.util.ReflectionUtils;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;

@@ -1,6 +1,6 @@
 package com.abs.casino.support.tool;
 
-import com.dgphoenix.casino.common.cache.data.game.GameVariableType;
+import com.abs.casino.common.cache.data.game.GameVariableType;
 
 import java.util.HashMap;
 import java.util.List;

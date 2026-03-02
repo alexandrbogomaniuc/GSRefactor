@@ -1,14 +1,14 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.CurrencyCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.SubCasinoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.Coin" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.GameVariableType" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameCache" %>
+<%@ page import="com.abs.casino.common.cache.CurrencyCache" %>
+<%@ page import="com.abs.casino.common.cache.SubCasinoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.Coin" %>
+<%@ page import="com.abs.casino.common.cache.data.currency.Currency" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.game.GameVariableType" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.game.IBaseGameInfo" %>
 <%
     String value;
     List<Long> bankIds = null;

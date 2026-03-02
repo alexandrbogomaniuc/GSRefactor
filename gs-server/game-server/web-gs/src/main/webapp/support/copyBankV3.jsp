@@ -1,20 +1,20 @@
 <%@ page import="com.abs.casino.bgm.BaseGameHelper" %>
 <%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
-<%@ page import="com.dgphoenix.casino.common.cache.*" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.Coin" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.Limit" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.SubCasino" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
-<%@ page import="com.dgphoenix.casino.common.exception.CommonException" %>
+<%@ page import="com.abs.casino.common.cache.*" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.Coin" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.Limit" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.SubCasino" %>
+<%@ page import="com.abs.casino.common.cache.data.currency.Currency" %>
+<%@ page import="com.abs.casino.common.exception.CommonException" %>
 <%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
-<%@ page import="static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty" %>
+<%@ page import="static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty" %>
 <%@ page import="com.google.common.base.Function" %>
 <%@ page import="com.google.common.base.Splitter" %>
 <%@ page import="com.google.common.collect.Iterables" %>
 <%@ page import="com.google.common.collect.Lists" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.*" %>
+<%@ page import="com.abs.casino.common.cache.data.game.*" %>
 <%--
 gs1.sb.xxx.com/support/xpro/copyBankV2.jsp?source=979&target=1071&extId=1071&extDescr=www.mbitcasino.com&defcoin=2&targetCoins=2|5|10|25|50|100&targetCurrency=MBC&targetLimit=1
 

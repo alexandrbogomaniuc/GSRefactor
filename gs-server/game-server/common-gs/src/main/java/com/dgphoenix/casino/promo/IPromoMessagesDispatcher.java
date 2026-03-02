@@ -1,8 +1,8 @@
 package com.abs.casino.promo;
 
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.PromoNotificationType;
-import com.dgphoenix.casino.common.promo.Status;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.PromoNotificationType;
+import com.abs.casino.common.promo.Status;
 import com.abs.casino.websocket.IWebSocketSessionsListener;
 
 import java.util.Collection;

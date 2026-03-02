@@ -1,9 +1,9 @@
 package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
-import com.dgphoenix.casino.common.util.NtpTimeProvider;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.promo.IPromoCampaignManager;
+import com.abs.casino.common.util.NtpTimeProvider;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.GameCommandsProcessor;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.ILockedProcessor;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.command.*;
@@ -16,7 +16,7 @@ import com.abs.casino.promo.messages.handlers.GetPromoNotificationsProcessor;
 import com.abs.casino.promo.messages.handlers.NotificationsShownProcessor;
 import com.abs.casino.promo.messages.handlers.PromoEnterProcessor;
 import com.abs.casino.promo.persisters.CassandraLocalizationsPersister;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

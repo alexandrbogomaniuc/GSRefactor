@@ -3,7 +3,7 @@ package com.abs.casino.kafka.dto.privateroom.response;
 import java.util.List;
 
 import com.abs.casino.kafka.dto.BGPlayerDto;
-import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
+import com.abs.casino.kafka.dto.BasicKafkaResponse;
 
 public class UpdateRoomResultDto extends BasicKafkaResponse {
     private String privateRoomId;

@@ -5,7 +5,7 @@ import org.apache.commons.codec.binary.Base64;
 import java.security.MessageDigest;
 import java.util.*;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 import static org.apache.commons.lang.StringUtils.*;
 
 public class StringUtils {

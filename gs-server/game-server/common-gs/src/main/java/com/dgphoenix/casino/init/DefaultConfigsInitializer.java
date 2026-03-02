@@ -1,16 +1,16 @@
 package com.abs.casino.init;
 
-import com.dgphoenix.casino.account.AccountManager;
+import com.abs.casino.account.AccountManager;
 import com.abs.casino.cache.CachesHolder;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.IConfigsInitializer;
-import com.dgphoenix.casino.cassandra.persist.*;
-import com.dgphoenix.casino.common.cache.*;
+import com.abs.casino.cassandra.persist.*;
+import com.abs.casino.common.cache.*;
 import com.abs.casino.common.configuration.CasinoSystemType;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.IdGenerator;
-import com.dgphoenix.casino.common.util.IntegerIdGenerator;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.IdGenerator;
+import com.abs.casino.common.util.IntegerIdGenerator;
 import com.abs.casino.gs.maintenance.CacheExporter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

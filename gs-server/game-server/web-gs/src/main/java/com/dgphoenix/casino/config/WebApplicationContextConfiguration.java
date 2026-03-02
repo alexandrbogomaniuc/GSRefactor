@@ -2,7 +2,7 @@ package com.abs.casino.config;
 
 import com.abs.casino.config.ControllerContextConfiguration;
 import com.abs.casino.common.config.CommonContextConfiguration;
-import com.dgphoenix.casino.common.util.ExecutorUtils;
+import com.abs.casino.common.util.ExecutorUtils;
 import com.abs.casino.gs.GameServerComponentsConfiguration;
 import com.abs.casino.gs.PromotionContextConfiguration;
 import com.abs.casino.gs.SharedGameServerComponentsConfiguration;

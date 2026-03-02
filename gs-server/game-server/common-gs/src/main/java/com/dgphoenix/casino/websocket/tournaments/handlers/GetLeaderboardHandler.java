@@ -1,10 +1,10 @@
 package com.abs.casino.websocket.tournaments.handlers;
 
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.IPromoCampaign;
-import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.IPromoCampaign;
+import com.abs.casino.common.promo.IPromoCampaignManager;
+import com.abs.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.promo.tournaments.ErrorCodes;
 import com.abs.casino.promo.tournaments.TournamentLeaderboard;
 import com.abs.casino.promo.tournaments.TournamentManager;

@@ -1,16 +1,16 @@
 package com.abs.casino.gs.managers.dblink;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
-import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
-import com.dgphoenix.casino.common.cache.data.payment.IWallet;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
+import com.abs.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.gs.persistance.LasthandPersister;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import com.abs.casino.unj.api.AbstractSharedGameState;
 import com.abs.casino.unj.api.SharedGameStates;
 import org.apache.logging.log4j.LogManager;

@@ -1,28 +1,28 @@
 package com.abs.casino.gs.managers.payment.bonus;
 
-import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraFRBonusWinPersister;
-import com.dgphoenix.casino.common.DomainSession;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
-import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
+import com.abs.casino.common.DomainSession;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bonus.BonusStatus;
+import com.abs.casino.common.cache.data.bonus.FRBonus;
 import com.abs.casino.common.cache.data.payment.bonus.CommonFRBonusWin;
-import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBWinOperation;
-import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusWin;
+import com.abs.casino.common.cache.data.payment.bonus.FRBWinOperation;
+import com.abs.casino.common.cache.data.payment.bonus.FRBonusWin;
 import com.abs.casino.common.cache.data.payment.frb.FRBWinOperationStatus;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.FRBException;
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.common.util.ReflectionUtils;
 import com.abs.casino.common.util.logkit.LogUtils;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.gs.managers.dblink.FRBonusDBLink;
 import com.abs.casino.gs.managers.payment.bonus.AbstractFRBonusWinManager;
 import com.abs.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
@@ -31,16 +31,16 @@ import com.abs.casino.gs.managers.payment.bonus.client.frb.FRBonusWinResult;
 import com.abs.casino.gs.managers.payment.currency.CurrencyRatesManager;
 import com.abs.casino.gs.managers.payment.wallet.ILoggableCWClient;
 import com.abs.casino.gs.managers.payment.wallet.SimpleLoggableContainer;
-import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
-import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.gs.managers.payment.bonus.FRBonusManager;
+import com.abs.casino.gs.managers.payment.wallet.WalletProtocolFactory;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Constructor;
 import java.util.Set;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 public class OriginalFRBonusWinManager extends AbstractFRBonusWinManager<FRBonusWin, FRBWinOperation> {
 

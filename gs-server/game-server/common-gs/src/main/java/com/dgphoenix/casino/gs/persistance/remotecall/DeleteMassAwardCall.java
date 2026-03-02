@@ -1,7 +1,7 @@
 package com.abs.casino.gs.persistance.remotecall;
 
-import com.dgphoenix.casino.common.cache.MassAwardCache;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.MassAwardCache;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.remotecall.IRemoteCall;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;

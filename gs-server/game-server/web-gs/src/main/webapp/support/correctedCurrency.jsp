@@ -1,10 +1,10 @@
-<%@ page import="com.dgphoenix.casino.common.cache.CurrencyCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.account.AccountInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
+<%@ page import="com.abs.casino.common.cache.CurrencyCache" %>
+<%@ page import="com.abs.casino.common.cache.data.account.AccountInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.currency.Currency" %>
 <%@ page import="java.io.PrintWriter" %>
-<%@ page import="com.dgphoenix.casino.common.SessionHelper" %>
-<%@ page import="com.dgphoenix.casino.common.transactiondata.ITransactionData" %>
-<%@ page import="com.dgphoenix.casino.account.AccountManager" %>
+<%@ page import="com.abs.casino.common.SessionHelper" %>
+<%@ page import="com.abs.casino.common.transactiondata.ITransactionData" %>
+<%@ page import="com.abs.casino.account.AccountManager" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhevlakoval

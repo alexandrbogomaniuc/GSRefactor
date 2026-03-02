@@ -1,10 +1,10 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.SubCasinoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.SubCasino" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.SubCasinoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.SubCasino" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
 <%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

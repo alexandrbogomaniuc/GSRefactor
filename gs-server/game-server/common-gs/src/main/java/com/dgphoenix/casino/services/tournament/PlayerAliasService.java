@@ -1,13 +1,13 @@
 package com.abs.casino.services.tournament;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.common.cache.data.account.IAccountInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.IPromoCampaign;
-import com.dgphoenix.casino.common.promo.PlayerIdentificationType;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.IPromoCampaign;
+import com.abs.casino.common.promo.PlayerIdentificationType;
 import com.abs.casino.common.util.IIntegerIdGenerator;
-import com.dgphoenix.casino.common.util.Triple;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.util.Triple;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.promo.IPlayerAliasService;
 import com.abs.casino.promo.persisters.CassandraPromoCampaignMembersPersister;
 import com.google.common.cache.CacheBuilder;

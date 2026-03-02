@@ -1,0 +1,6 @@
+Selection rationale:
+- Declaration-first migration over two strict-disjoint package clusters with cross-hit overlap zero.
+- Batch A: payment transfer cache data declarations in common module (5 files).
+- Batch B: game-server kafka handler + remote-call declarations (12 files).
+- Avoided lock-module ordering drift from prior failed attempt.
+- Bounded package/import rewires only; no blind/global replacement.

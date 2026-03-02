@@ -1,7 +1,7 @@
 package com.abs.casino.sm.login;
 
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.util.CollectionUtils;
 
 import java.util.HashMap;
 import java.util.Map;

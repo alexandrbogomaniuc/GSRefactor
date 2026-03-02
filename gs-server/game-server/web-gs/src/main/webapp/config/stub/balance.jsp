@@ -1,5 +1,5 @@
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.CCommonWallet" %>
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
+<%@ page import="com.abs.casino.gs.managers.payment.wallet.CCommonWallet" %>
+<%@ page import="com.abs.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     String userId = request.getParameter(CCommonWallet.PARAM_USERID);

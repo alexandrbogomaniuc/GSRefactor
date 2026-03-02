@@ -1,8 +1,8 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
-<%@ page import="com.dgphoenix.casino.common.util.Pair" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.util.Pair" %>
 <%@ page import="com.abs.casino.common.util.string.StringIdGenerator" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%@ page import="com.abs.casino.web.history.GameHistoryURLBuilder" %>
 <%@ page import="com.abs.casino.web.history.GameHistoryListAction" %>
 

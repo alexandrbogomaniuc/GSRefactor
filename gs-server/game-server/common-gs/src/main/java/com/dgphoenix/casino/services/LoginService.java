@@ -1,11 +1,11 @@
 package com.abs.casino.services;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletProtocolManager;
-import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.gs.managers.payment.wallet.IWalletProtocolManager;
+import com.abs.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.abs.casino.gs.managers.payment.wallet.v3.ICommonWalletClient;
 import org.springframework.stereotype.Service;

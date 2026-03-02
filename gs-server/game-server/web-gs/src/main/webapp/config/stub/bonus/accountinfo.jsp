@@ -1,7 +1,7 @@
-<%@ page import="com.dgphoenix.casino.account.AccountManager" %>
-<%@ page import="com.dgphoenix.casino.common.cache.SubCasinoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.account.AccountInfo" %>
-<%@ page import="com.dgphoenix.casino.common.exception.CommonException" %>
+<%@ page import="com.abs.casino.account.AccountManager" %>
+<%@ page import="com.abs.casino.common.cache.SubCasinoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.account.AccountInfo" %>
+<%@ page import="com.abs.casino.common.exception.CommonException" %>
 <%@ page import="static org.apache.commons.lang.StringUtils.isNotBlank" %>
 
 <%

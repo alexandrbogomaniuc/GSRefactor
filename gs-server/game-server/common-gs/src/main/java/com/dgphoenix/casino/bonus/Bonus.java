@@ -1,6 +1,6 @@
 package com.abs.casino.bonus;
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 import java.io.Serializable;

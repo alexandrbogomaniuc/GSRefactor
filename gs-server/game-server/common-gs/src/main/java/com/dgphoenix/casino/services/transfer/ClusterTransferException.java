@@ -1,6 +1,6 @@
 package com.abs.casino.services.transfer;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 import javax.xml.ws.WebFault;
 

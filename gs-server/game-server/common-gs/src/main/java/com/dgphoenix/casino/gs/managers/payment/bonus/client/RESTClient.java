@@ -1,15 +1,15 @@
 package com.abs.casino.gs.managers.payment.bonus.client;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraGameSessionPersister;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.BaseGameCache;
-import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.BaseGameCache;
+import com.abs.casino.common.cache.data.bonus.Bonus;
+import com.abs.casino.common.cache.data.session.GameSession;
 import com.abs.casino.common.exception.BonusException;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.CollectionUtils;
 import com.abs.casino.common.util.web.HttpClientConnection;
 import com.abs.casino.common.util.xml.IXmlRequestResult;
 import com.abs.casino.common.util.xml.XmlRequestResult;
@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 import static org.apache.commons.lang.StringUtils.EMPTY;
 
 /**

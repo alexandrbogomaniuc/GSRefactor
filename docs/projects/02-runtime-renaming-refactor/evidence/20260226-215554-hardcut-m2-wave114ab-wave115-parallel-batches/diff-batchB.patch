@@ -19,7 +19,7 @@ index 3287fd95..bdcd1975 100644
 -import com.dgphoenix.casino.actions.enter.AccountInfoAndSessionInfoPair;
 +import com.abs.casino.actions.enter.AccountInfoAndSessionInfoPair;
  import com.dgphoenix.casino.actions.enter.LanguageDetector;
- import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
+ import com.abs.casino.actions.enter.game.BaseStartGameAction;
  import com.dgphoenix.casino.common.SessionHelper;
 diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/BaseStartGameAction.java
 index 2fece7b4..eb8fbd66 100644
@@ -42,7 +42,7 @@ index 4332ec28..df8882cc 100644
  import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManager;
  import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
  import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
--import com.dgphoenix.casino.helpers.login.LoginHelper;
+-import com.abs.casino.helpers.login.LoginHelper;
 +import com.abs.casino.helpers.login.LoginHelper;
  import com.dgphoenix.casino.sm.IPlayerSessionManager;
  import com.dgphoenix.casino.sm.PlayerSessionFactory;
@@ -58,13 +58,13 @@ index 2826ece2..45baf517 100644
 -import com.dgphoenix.casino.actions.enter.AccountInfoAndSessionInfoPair;
 +import com.abs.casino.actions.enter.AccountInfoAndSessionInfoPair;
  import com.dgphoenix.casino.actions.enter.LanguageDetector;
- import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
+ import com.abs.casino.actions.enter.game.BaseStartGameAction;
  import com.abs.casino.actions.enter.game.routing.GameplayOrchestratorRoutingBridge;
 @@ -34,7 +34,7 @@ import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManager;
  import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
  import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
  import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
--import com.dgphoenix.casino.helpers.login.LoginHelper;
+-import com.abs.casino.helpers.login.LoginHelper;
 +import com.abs.casino.helpers.login.LoginHelper;
  import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
  import org.apache.logging.log4j.LogManager;
@@ -77,7 +77,7 @@ index 163eded5..250dc2c8 100644
  import com.dgphoenix.casino.gs.managers.payment.transfer.PaymentManager;
  import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
  import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
--import com.dgphoenix.casino.helpers.login.LoginHelper;
+-import com.abs.casino.helpers.login.LoginHelper;
 +import com.abs.casino.helpers.login.LoginHelper;
  import com.dgphoenix.casino.sm.login.LoginRequest;
  import com.dgphoenix.casino.sm.login.LoginResponse;
@@ -90,7 +90,7 @@ index 7b056e86..342b1800 100644
  import com.dgphoenix.casino.forms.game.CommonStartGameForm;
  import com.dgphoenix.casino.gs.GameServer;
  import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
--import com.dgphoenix.casino.helpers.login.LoginHelper;
+-import com.abs.casino.helpers.login.LoginHelper;
 +import com.abs.casino.helpers.login.LoginHelper;
  import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;
  import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
@@ -104,7 +104,7 @@ index a2c8a052..b23de53b 100644
  import com.dgphoenix.casino.forms.login.cw.CWLoginForm;
  import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 -import com.dgphoenix.casino.helpers.login.CWHelper;
--import com.dgphoenix.casino.helpers.login.LoginHelper;
+-import com.abs.casino.helpers.login.LoginHelper;
 -import com.dgphoenix.casino.helpers.login.serializers.CWSerializeLoginForm;
 +import com.abs.casino.helpers.login.CWHelper;
 +import com.abs.casino.helpers.login.LoginHelper;
@@ -120,7 +120,7 @@ index 8f1f0806..c7e6b594 100644
  import com.dgphoenix.casino.forms.game.CommonFRBStartGameForm;
  import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
  import com.abs.casino.helpers.login.FRBonusHelper;
--import com.dgphoenix.casino.helpers.login.LoginHelper;
+-import com.abs.casino.helpers.login.LoginHelper;
 +import com.abs.casino.helpers.login.LoginHelper;
  import com.abs.casino.helpers.login.serializers.BonusSerializeLoginForm;
  import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;
@@ -143,7 +143,7 @@ index e90b0eb8..981c6932 100644
  import com.dgphoenix.casino.gs.GameServer;
  import com.dgphoenix.casino.gs.GameServerComponentsHelper;
  import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
--import com.dgphoenix.casino.helpers.login.LoginHelper;
+-import com.abs.casino.helpers.login.LoginHelper;
 +import com.abs.casino.helpers.login.LoginHelper;
  import com.dgphoenix.casino.promo.PromoCampaignManager;
  import com.dgphoenix.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
@@ -193,7 +193,7 @@ index 8e332576..8b7ba742 100644
      GUEST("guest", CWHelper.getInstance());
  
      private final String name;
--    private final com.dgphoenix.casino.helpers.login.LoginHelper helper;
+-    private final com.abs.casino.helpers.login.LoginHelper helper;
 +    private final com.abs.casino.helpers.login.LoginHelper helper;
  
      private static final Map<String, LoginHelper> helpers = new HashMap<>();
@@ -202,7 +202,7 @@ index 8e332576..8b7ba742 100644
          }
      }
  
--    LoginHelper(String name, com.dgphoenix.casino.helpers.login.LoginHelper helper) {
+-    LoginHelper(String name, com.abs.casino.helpers.login.LoginHelper helper) {
 +    LoginHelper(String name, com.abs.casino.helpers.login.LoginHelper helper) {
          this.name = name;
          this.helper = helper;
@@ -211,7 +211,7 @@ index 8e332576..8b7ba742 100644
          return name;
      }
  
--    public com.dgphoenix.casino.helpers.login.LoginHelper getHelper() {
+-    public com.abs.casino.helpers.login.LoginHelper getHelper() {
 +    public com.abs.casino.helpers.login.LoginHelper getHelper() {
          return helper;
      }
@@ -269,7 +269,7 @@ index a5ac1736..aa93e890 100644
  import com.dgphoenix.casino.gs.managers.payment.wallet.CWError;
  import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
  import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
--import com.dgphoenix.casino.helpers.login.LoginHelper;
+-import com.abs.casino.helpers.login.LoginHelper;
 +import com.abs.casino.helpers.login.LoginHelper;
  import com.dgphoenix.casino.sm.CWv3PlayerSessionManager;
  import com.dgphoenix.casino.sm.PlayerSessionFactory;

@@ -1,19 +1,19 @@
 package com.abs.casino.gs.managers.freegame;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.bank.Coin;
-import com.dgphoenix.casino.common.cache.data.bank.Limit;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.Coin;
+import com.abs.casino.common.cache.data.bank.Limit;
 import com.abs.casino.common.cache.data.game.BaseGameConstants;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameInfo;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
-import com.dgphoenix.casino.common.cache.data.game.GameGroup;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.data.game.BaseGameInfo;
+import com.abs.casino.common.cache.data.game.BaseGameInfoTemplate;
+import com.abs.casino.common.cache.data.game.GameGroup;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.gs.managers.dblink.FreeGameCalculator;
 import com.abs.casino.gs.managers.game.settings.GameSettingsManager;
 import com.abs.casino.gs.managers.payment.currency.CurrencyRatesManager;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +26,7 @@ import java.util.List;
 
 import static com.abs.casino.common.cache.data.game.BaseGameConstants.KEY_FREEBALANCE;
 import static com.abs.casino.common.cache.data.game.BaseGameConstants.KEY_FREEBALANCE_MULTIPLIER;
-import static com.dgphoenix.casino.common.config.GameServerConfigTemplate.DEFAULT_FREE_BALANCE;
+import static com.abs.casino.common.config.GameServerConfigTemplate.DEFAULT_FREE_BALANCE;
 import static com.abs.casino.gs.managers.dblink.FreeGameCalculator.DEFAULT_MQ_STAKES_RESERVE;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.*;

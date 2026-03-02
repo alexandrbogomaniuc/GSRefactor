@@ -1,19 +1,19 @@
 package com.abs.casino.gs.managers.payment.wallet;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
-import com.dgphoenix.casino.common.cache.data.payment.IWallet;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.WalletException;
 import com.abs.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.common.util.ReflectionUtils;
 import com.abs.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.gs.managers.payment.wallet.IWalletHelper;
 import com.abs.casino.gs.managers.payment.wallet.ILoggableCWClient;
 import com.abs.casino.gs.managers.payment.wallet.SimpleLoggableContainer;
@@ -33,7 +33,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 import static com.abs.casino.common.util.ReflectionUtils.canInvokeMethod;
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 /**
  * User: plastical

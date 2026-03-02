@@ -1,0 +1,198 @@
+16:[ERROR] COMPILATION ERROR : 
+18:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/TournamentRankCalculatorService.java:[19,63] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+19:[ERROR]   required: Class<P>
+26:/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/TournamentRankCalculatorService.java:[30,101] error: incompatible types: com.dgphoenix.casino.common.promo.MaxBalanceTournamentPlayerDetails cannot be converted to com.abs.casino.common.promo.MaxBalanceTournamentPlayerDetails
+27:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[79,82] error: incompatible types: com.dgphoenix.casino.common.promo.IPromoCampaign cannot be converted to com.abs.casino.common.promo.IPromoCampaign
+28:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[81,88] error: incompatible types: NetworkPromoEvent cannot be converted to IPromoCampaign
+29:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[118,16] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+30:[ERROR]   required: Class<P>
+37:/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[120,66] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+38:[ERROR]   required: Class<P>
+45:/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[122,57] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+46:[ERROR]   required: Class<P>
+53:/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[123,69] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+54:[ERROR]   required: Class<P>
+61:/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[131,63] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+62:[ERROR]   required: Class<P>
+69:/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[133,58] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+70:[ERROR]   required: Class<P>
+77:/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[135,51] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+78:[ERROR]   required: Class<P>
+85:/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[183,94] error: incompatible types: com.abs.casino.common.promo.TournamentObjective cannot be converted to com.dgphoenix.casino.common.promo.TournamentObjective
+86:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[194,74] error: incompatible types: com.dgphoenix.casino.common.util.Pair<Integer,Double> cannot be converted to com.abs.casino.common.util.Pair<Integer,Double>
+87:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[227,97] error: incompatible types: com.dgphoenix.casino.common.util.Pair<Integer,Double> cannot be converted to com.abs.casino.common.util.Pair<Integer,Double>
+88:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[290,61] error: incompatible types: com.abs.casino.common.promo.ISupportedPlatform cannot be converted to com.dgphoenix.casino.common.promo.ISupportedPlatform
+89:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[291,44] error: incompatible types: PromoCampaign cannot be converted to IPromoCampaign
+90:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[340,58] error: incompatible types: com.abs.casino.common.promo.ISupportedPlatform cannot be converted to com.dgphoenix.casino.common.promo.ISupportedPlatform
+91:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[348,44] error: incompatible types: com.abs.casino.common.promo.IPromoCampaign cannot be converted to com.dgphoenix.casino.common.promo.IPromoCampaign
+92:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[376,65] error: incompatible types: com.dgphoenix.casino.common.promo.IPromoCampaign cannot be converted to com.abs.casino.common.promo.IPromoCampaign
+93:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[378,71] error: incompatible types: NetworkPromoEvent cannot be converted to IPromoCampaign
+94:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[436,80] error: incompatible types: Set<com.dgphoenix.casino.common.promo.IPromoCampaign> cannot be converted to Set<com.abs.casino.common.promo.IPromoCampaign>
+95:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[477,80] error: incompatible types: Set<com.dgphoenix.casino.common.promo.IPromoCampaign> cannot be converted to Set<com.abs.casino.common.promo.IPromoCampaign>
+96:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[497,69] error: incompatible types: com.abs.casino.common.promo.Status cannot be converted to com.dgphoenix.casino.common.promo.Status
+97:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[501,33] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+98:[ERROR]   required: Class<P>
+105:/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[505,33] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+106:[ERROR]   required: Class<P>
+113:/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[509,33] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+114:[ERROR]   required: Class<P>
+121:/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[522,89] error: incompatible types: Set<com.dgphoenix.casino.common.promo.IPromoCampaign> cannot be converted to Set<com.abs.casino.common.promo.IPromoCampaign>
+122:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[527,45] error: incompatible types: com.dgphoenix.casino.common.promo.ISupportedPlatform cannot be converted to com.abs.casino.common.promo.ISupportedPlatform
+123:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[542,53] error: incompatible types: Set<com.dgphoenix.casino.common.promo.IPromoCampaign> cannot be converted to Set<com.abs.casino.common.promo.IPromoCampaign>
+124:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[557,46] error: incompatible types: com.dgphoenix.casino.common.promo.IPromoCampaign cannot be converted to com.abs.casino.common.promo.IPromoCampaign
+125:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[630,33] error: incompatible types: com.abs.casino.common.promo.PromoCampaignMember cannot be converted to com.dgphoenix.casino.common.promo.PromoCampaignMember
+126:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[640,50] error: incompatible types: com.abs.casino.common.promo.PromoCampaignMember cannot be converted to com.dgphoenix.casino.common.promo.PromoCampaignMember
+127:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[650,73] error: incompatible types: Set<com.dgphoenix.casino.common.promo.PromoCampaignMember> cannot be converted to Set<com.abs.casino.common.promo.PromoCampaignMember>
+128:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[659,37] error: no suitable method found for addAll(Set<com.dgphoenix.casino.common.promo.PromoCampaignMember>)
+129:[ERROR]     method Collection.addAll(Collection<? extends com.abs.casino.common.promo.PromoCampaignMember>) is not applicable
+130:      (argument mismatch; Set<com.dgphoenix.casino.common.promo.PromoCampaignMember> cannot be converted to Collection<? extends com.abs.casino.common.promo.PromoCampaignMember>)
+132:      (argument mismatch; Set<com.dgphoenix.casino.common.promo.PromoCampaignMember> cannot be converted to Collection<? extends com.abs.casino.common.promo.PromoCampaignMember>)
+133:/Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[748,68] error: incompatible types: com.dgphoenix.casino.common.promo.IPromoCampaign cannot be converted to com.abs.casino.common.promo.IPromoCampaign
+134:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[811,48] error: incompatible types: NetworkPromoCampaign cannot be converted to IPromoCampaign
+135:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[813,48] error: incompatible types: com.abs.casino.common.promo.IPromoCampaign cannot be converted to com.dgphoenix.casino.common.promo.IPromoCampaign
+136:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[830,58] error: incompatible types: com.dgphoenix.casino.common.promo.IPromoCampaign cannot be converted to com.abs.casino.common.promo.IPromoCampaign
+137:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[882,58] error: incompatible types: com.dgphoenix.casino.common.promo.IPromoCampaign cannot be converted to com.abs.casino.common.promo.IPromoCampaign
+138:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[957,88] error: incompatible types: List<com.dgphoenix.casino.common.promo.TournamentMemberRank> cannot be converted to List<com.abs.casino.common.promo.TournamentMemberRank>
+139:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[1015,56] error: incompatible types: com.abs.casino.common.promo.TournamentMemberRank cannot be converted to com.dgphoenix.casino.common.promo.TournamentMemberRank
+140:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[1034,76] error: incompatible types: com.dgphoenix.casino.common.promo.PromoCampaignMember cannot be converted to com.abs.casino.common.promo.PromoCampaignMember
+141:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[1042,36] error: incompatible types: com.abs.casino.common.promo.PromoCampaignMember cannot be converted to com.dgphoenix.casino.common.promo.PromoCampaignMember
+142:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[1052,97] error: incompatible types: com.abs.casino.common.promo.Status cannot be converted to com.dgphoenix.casino.common.promo.Status
+143:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[1080,99] error: incompatible types: com.abs.casino.common.promo.Status cannot be converted to com.dgphoenix.casino.common.promo.Status
+144:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[1094,101] error: incompatible types: com.abs.casino.common.promo.Status cannot be converted to com.dgphoenix.casino.common.promo.Status
+145:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[1120,42] error: incompatible types: com.abs.casino.common.promo.Status cannot be converted to com.dgphoenix.casino.common.promo.Status
+154:[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-promo-core: Compilation failure: Compilation failure: 
+155:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/TournamentRankCalculatorService.java:[19,63] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+156:[ERROR]   required: Class<P>
+157:[ERROR]   found: Class<CassandraMaxBalanceTournamentPersister>
+158:[ERROR]   reason: inference variable P has incompatible bounds
+159:[ERROR]     equality constraints: CassandraMaxBalanceTournamentPersister
+160:[ERROR]     upper bounds: ICassandraPersister
+161:[ERROR]   where P is a type-variable:
+162:[ERROR]     P extends ICassandraPersister declared in method <P>getPersister(Class<P>)
+163:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/TournamentRankCalculatorService.java:[30,101] error: incompatible types: com.dgphoenix.casino.common.promo.MaxBalanceTournamentPlayerDetails cannot be converted to com.abs.casino.common.promo.MaxBalanceTournamentPlayerDetails
+164:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[79,82] error: incompatible types: com.dgphoenix.casino.common.promo.IPromoCampaign cannot be converted to com.abs.casino.common.promo.IPromoCampaign
+165:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[81,88] error: incompatible types: NetworkPromoEvent cannot be converted to IPromoCampaign
+166:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[118,16] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+167:[ERROR]   required: Class<P>
+168:[ERROR]   found: Class<CassandraSupportedPromoPlatformsPersister>
+169:[ERROR]   reason: inference variable P has incompatible bounds
+170:[ERROR]     equality constraints: CassandraSupportedPromoPlatformsPersister
+171:[ERROR]     upper bounds: ICassandraPersister
+172:[ERROR]   where P is a type-variable:
+173:[ERROR]     P extends ICassandraPersister declared in method <P>getPersister(Class<P>)
+174:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[120,66] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+175:[ERROR]   required: Class<P>
+176:[ERROR]   found: Class<CassandraPromoCampaignStatisticsPersister>
+177:[ERROR]   reason: inference variable P has incompatible bounds
+178:[ERROR]     equality constraints: CassandraPromoCampaignStatisticsPersister
+179:[ERROR]     upper bounds: ICassandraPersister
+180:[ERROR]   where P is a type-variable:
+181:[ERROR]     P extends ICassandraPersister declared in method <P>getPersister(Class<P>)
+182:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[122,57] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+183:[ERROR]   required: Class<P>
+184:[ERROR]   found: Class<CassandraTournamentRankPersister>
+185:[ERROR]   reason: inference variable P has incompatible bounds
+186:[ERROR]     equality constraints: CassandraTournamentRankPersister
+187:[ERROR]     upper bounds: ICassandraPersister
+188:[ERROR]   where P is a type-variable:
+189:[ERROR]     P extends ICassandraPersister declared in method <P>getPersister(Class<P>)
+190:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[123,69] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+191:[ERROR]   required: Class<P>
+192:[ERROR]   found: Class<CassandraSummaryTournamentPromoFeedPersister>
+193:[ERROR]   reason: inference variable P has incompatible bounds
+194:[ERROR]     equality constraints: CassandraSummaryTournamentPromoFeedPersister
+195:[ERROR]     upper bounds: ICassandraPersister
+196:[ERROR]   where P is a type-variable:
+197:[ERROR]     P extends ICassandraPersister declared in method <P>getPersister(Class<P>)
+198:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[131,63] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+199:[ERROR]   required: Class<P>
+200:[ERROR]   found: Class<PromoPredefinedUsersPersister>
+201:[ERROR]   reason: inference variable P has incompatible bounds
+202:[ERROR]     equality constraints: PromoPredefinedUsersPersister
+203:[ERROR]     upper bounds: ICassandraPersister
+204:[ERROR]   where P is a type-variable:
+205:[ERROR]     P extends ICassandraPersister declared in method <P>getPersister(Class<P>)
+206:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[133,58] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+207:[ERROR]   required: Class<P>
+208:[ERROR]   found: Class<CassandraUnsendedPromoWinInfoPersister>
+209:[ERROR]   reason: inference variable P has incompatible bounds
+210:[ERROR]     equality constraints: CassandraUnsendedPromoWinInfoPersister
+211:[ERROR]     upper bounds: ICassandraPersister
+212:[ERROR]   where P is a type-variable:
+213:[ERROR]     P extends ICassandraPersister declared in method <P>getPersister(Class<P>)
+214:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[135,51] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+215:[ERROR]   required: Class<P>
+216:[ERROR]   found: Class<CassandraPromoWinPersister>
+217:[ERROR]   reason: inference variable P has incompatible bounds
+218:[ERROR]     equality constraints: CassandraPromoWinPersister
+219:[ERROR]     upper bounds: ICassandraPersister
+220:[ERROR]   where P is a type-variable:
+221:[ERROR]     P extends ICassandraPersister declared in method <P>getPersister(Class<P>)
+222:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[183,94] error: incompatible types: com.abs.casino.common.promo.TournamentObjective cannot be converted to com.dgphoenix.casino.common.promo.TournamentObjective
+223:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[194,74] error: incompatible types: com.dgphoenix.casino.common.util.Pair<Integer,Double> cannot be converted to com.abs.casino.common.util.Pair<Integer,Double>
+224:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[227,97] error: incompatible types: com.dgphoenix.casino.common.util.Pair<Integer,Double> cannot be converted to com.abs.casino.common.util.Pair<Integer,Double>
+225:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[290,61] error: incompatible types: com.abs.casino.common.promo.ISupportedPlatform cannot be converted to com.dgphoenix.casino.common.promo.ISupportedPlatform
+226:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[291,44] error: incompatible types: PromoCampaign cannot be converted to IPromoCampaign
+227:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[340,58] error: incompatible types: com.abs.casino.common.promo.ISupportedPlatform cannot be converted to com.dgphoenix.casino.common.promo.ISupportedPlatform
+228:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[348,44] error: incompatible types: com.abs.casino.common.promo.IPromoCampaign cannot be converted to com.dgphoenix.casino.common.promo.IPromoCampaign
+229:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[376,65] error: incompatible types: com.dgphoenix.casino.common.promo.IPromoCampaign cannot be converted to com.abs.casino.common.promo.IPromoCampaign
+230:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[378,71] error: incompatible types: NetworkPromoEvent cannot be converted to IPromoCampaign
+231:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[436,80] error: incompatible types: Set<com.dgphoenix.casino.common.promo.IPromoCampaign> cannot be converted to Set<com.abs.casino.common.promo.IPromoCampaign>
+232:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[477,80] error: incompatible types: Set<com.dgphoenix.casino.common.promo.IPromoCampaign> cannot be converted to Set<com.abs.casino.common.promo.IPromoCampaign>
+233:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[497,69] error: incompatible types: com.abs.casino.common.promo.Status cannot be converted to com.dgphoenix.casino.common.promo.Status
+234:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[501,33] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+235:[ERROR]   required: Class<P>
+236:[ERROR]   found: Class<CassandraPromoCampaignPersister>
+237:[ERROR]   reason: inference variable P has incompatible bounds
+238:[ERROR]     equality constraints: CassandraPromoCampaignPersister
+239:[ERROR]     upper bounds: ICassandraPersister
+240:[ERROR]   where P is a type-variable:
+241:[ERROR]     P extends ICassandraPersister declared in method <P>getPersister(Class<P>)
+242:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[505,33] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+243:[ERROR]   required: Class<P>
+244:[ERROR]   found: Class<CassandraPromoCampaignMembersPersister>
+245:[ERROR]   reason: inference variable P has incompatible bounds
+246:[ERROR]     equality constraints: CassandraPromoCampaignMembersPersister
+247:[ERROR]     upper bounds: ICassandraPersister
+248:[ERROR]   where P is a type-variable:
+249:[ERROR]     P extends ICassandraPersister declared in method <P>getPersister(Class<P>)
+250:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[509,33] error: method getPersister in class CassandraPersistenceManager cannot be applied to given types;
+251:[ERROR]   required: Class<P>
+252:[ERROR]   found: Class<CassandraLocalizationsPersister>
+253:[ERROR]   reason: inference variable P has incompatible bounds
+254:[ERROR]     equality constraints: CassandraLocalizationsPersister
+255:[ERROR]     upper bounds: ICassandraPersister
+256:[ERROR]   where P is a type-variable:
+257:[ERROR]     P extends ICassandraPersister declared in method <P>getPersister(Class<P>)
+258:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[522,89] error: incompatible types: Set<com.dgphoenix.casino.common.promo.IPromoCampaign> cannot be converted to Set<com.abs.casino.common.promo.IPromoCampaign>
+259:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[527,45] error: incompatible types: com.dgphoenix.casino.common.promo.ISupportedPlatform cannot be converted to com.abs.casino.common.promo.ISupportedPlatform
+260:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[542,53] error: incompatible types: Set<com.dgphoenix.casino.common.promo.IPromoCampaign> cannot be converted to Set<com.abs.casino.common.promo.IPromoCampaign>
+261:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[557,46] error: incompatible types: com.dgphoenix.casino.common.promo.IPromoCampaign cannot be converted to com.abs.casino.common.promo.IPromoCampaign
+262:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[630,33] error: incompatible types: com.abs.casino.common.promo.PromoCampaignMember cannot be converted to com.dgphoenix.casino.common.promo.PromoCampaignMember
+263:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[640,50] error: incompatible types: com.abs.casino.common.promo.PromoCampaignMember cannot be converted to com.dgphoenix.casino.common.promo.PromoCampaignMember
+264:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[650,73] error: incompatible types: Set<com.dgphoenix.casino.common.promo.PromoCampaignMember> cannot be converted to Set<com.abs.casino.common.promo.PromoCampaignMember>
+265:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[659,37] error: no suitable method found for addAll(Set<com.dgphoenix.casino.common.promo.PromoCampaignMember>)
+266:[ERROR]     method Collection.addAll(Collection<? extends com.abs.casino.common.promo.PromoCampaignMember>) is not applicable
+267:[ERROR]       (argument mismatch; Set<com.dgphoenix.casino.common.promo.PromoCampaignMember> cannot be converted to Collection<? extends com.abs.casino.common.promo.PromoCampaignMember>)
+268:[ERROR]     method Set.addAll(Collection<? extends com.abs.casino.common.promo.PromoCampaignMember>) is not applicable
+269:[ERROR]       (argument mismatch; Set<com.dgphoenix.casino.common.promo.PromoCampaignMember> cannot be converted to Collection<? extends com.abs.casino.common.promo.PromoCampaignMember>)
+270:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[748,68] error: incompatible types: com.dgphoenix.casino.common.promo.IPromoCampaign cannot be converted to com.abs.casino.common.promo.IPromoCampaign
+271:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[811,48] error: incompatible types: NetworkPromoCampaign cannot be converted to IPromoCampaign
+272:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[813,48] error: incompatible types: com.abs.casino.common.promo.IPromoCampaign cannot be converted to com.dgphoenix.casino.common.promo.IPromoCampaign
+273:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[830,58] error: incompatible types: com.dgphoenix.casino.common.promo.IPromoCampaign cannot be converted to com.abs.casino.common.promo.IPromoCampaign
+274:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[882,58] error: incompatible types: com.dgphoenix.casino.common.promo.IPromoCampaign cannot be converted to com.abs.casino.common.promo.IPromoCampaign
+275:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[957,88] error: incompatible types: List<com.dgphoenix.casino.common.promo.TournamentMemberRank> cannot be converted to List<com.abs.casino.common.promo.TournamentMemberRank>
+276:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[1015,56] error: incompatible types: com.abs.casino.common.promo.TournamentMemberRank cannot be converted to com.dgphoenix.casino.common.promo.TournamentMemberRank
+277:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[1034,76] error: incompatible types: com.dgphoenix.casino.common.promo.PromoCampaignMember cannot be converted to com.abs.casino.common.promo.PromoCampaignMember
+278:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[1042,36] error: incompatible types: com.abs.casino.common.promo.PromoCampaignMember cannot be converted to com.dgphoenix.casino.common.promo.PromoCampaignMember
+279:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[1052,97] error: incompatible types: com.abs.casino.common.promo.Status cannot be converted to com.dgphoenix.casino.common.promo.Status
+280:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[1080,99] error: incompatible types: com.abs.casino.common.promo.Status cannot be converted to com.dgphoenix.casino.common.promo.Status
+281:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[1094,101] error: incompatible types: com.abs.casino.common.promo.Status cannot be converted to com.dgphoenix.casino.common.promo.Status
+282:[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/PromoCampaignManager.java:[1120,42] error: incompatible types: com.abs.casino.common.promo.Status cannot be converted to com.dgphoenix.casino.common.promo.Status
+283:[ERROR] -> [Help 1]
+284:[ERROR] 
+285:[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+286:[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+287:[ERROR] 
+288:[ERROR] For more information about the errors and possible solutions, please read the following articles:
+289:[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

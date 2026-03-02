@@ -1,15 +1,15 @@
 package com.abs.casino.actions.api;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.SubCasinoCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.bank.SubCasino;
-import com.dgphoenix.casino.common.promo.IPromoCampaign;
-import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.SubCasinoCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.SubCasino;
+import com.abs.casino.common.promo.IPromoCampaign;
+import com.abs.casino.common.promo.IPromoCampaignManager;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.BaseAction;
 import com.abs.casino.common.web.JsonResultForLeaderboardUrls;
-import com.dgphoenix.casino.gs.GameServerComponentsHelper;
+import com.abs.casino.gs.GameServerComponentsHelper;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.struts.action.ActionForward;

@@ -1,7 +1,7 @@
-<%@ page import="com.dgphoenix.casino.common.cache.LoadBalancerCache" %>
+<%@ page import="com.abs.casino.common.cache.LoadBalancerCache" %>
 <%@ page import="com.abs.casino.common.cache.data.server.ServerInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="java.util.Collection" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%

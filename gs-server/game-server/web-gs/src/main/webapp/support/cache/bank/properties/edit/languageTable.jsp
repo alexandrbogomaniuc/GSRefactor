@@ -1,10 +1,10 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameCache" %>
-<%@ page import="com.dgphoenix.casino.common.configuration.messages.MessageManager" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameCache" %>
+<%@ page import="com.abs.casino.common.configuration.messages.MessageManager" %>
 <%@ page import="java.util.HashSet" %>
 <%@ page import="com.abs.casino.common.util.xml.XMLUtils" %>
 <%@ page import="org.apache.axis.encoding.Base64" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>

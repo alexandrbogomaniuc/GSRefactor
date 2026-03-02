@@ -1,6 +1,6 @@
 <%@ page import="com.abs.casino.cassandra.persist.CassandraBankInfoPersister" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
 <%@ page import="com.abs.casino.init.QuartzInitializer" %>
 <%@ page import="org.quartz.TriggerKey" %>
 <%@ page import="org.springframework.context.ApplicationContext" %>
@@ -8,7 +8,7 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="org.quartz.Trigger" %>
 <%@ page import="org.quartz.JobKey" %>
-<%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
+<%@ page import="com.abs.casino.cassandra.CassandraPersistenceManager" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     CassandraPersistenceManager persistenceManager = ApplicationContextHelper.getApplicationContext()

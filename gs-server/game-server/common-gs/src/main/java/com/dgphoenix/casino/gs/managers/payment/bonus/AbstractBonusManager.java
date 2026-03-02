@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.payment.bonus;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bonus.BaseBonus;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bonus.BaseBonus;
 import com.abs.casino.common.exception.BonusException;
 
 import java.util.List;

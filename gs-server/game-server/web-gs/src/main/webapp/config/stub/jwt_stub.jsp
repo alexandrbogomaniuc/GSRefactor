@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%
     String username = request.getParameter("username");
     String password = request.getParameter("password");

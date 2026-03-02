@@ -1,10 +1,10 @@
 package com.abs.casino.support.cache.bank.edit.actions.common;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameCache;
-import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameCache;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.currency.Currency;
 import com.abs.casino.support.cache.bank.edit.forms.common.AwayFromBankInfoForm;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;

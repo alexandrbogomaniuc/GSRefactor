@@ -1,0 +1,6 @@
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CashBonusDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CurrencyRateDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/MQQuestPrizeDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/RoundPlayerDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BGFriendDto.java
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/RMSPlayerDto.java

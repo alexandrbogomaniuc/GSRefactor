@@ -1,7 +1,7 @@
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
-<%@ page import="com.dgphoenix.casino.common.cache.LoadBalancerCache" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.cache.LoadBalancerCache" %>
 <%@ page import="com.abs.casino.common.cache.data.server.ServerInfo" %>
-<%@ page import="com.dgphoenix.casino.gs.GameServer" %>
+<%@ page import="com.abs.casino.gs.GameServer" %>
 <%
     String sessionId = request.getParameter("sessionId");
     String roundId = "-1";

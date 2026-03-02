@@ -1,6 +1,6 @@
 package com.abs.casino.gs.socket.mq;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 public class ForceCreateDetailsException extends Exception {
     private final CommonException exception;

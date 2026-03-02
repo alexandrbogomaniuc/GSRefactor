@@ -1,11 +1,11 @@
 package com.abs.casino.promo.events.process;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.*;
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.*;
+import com.abs.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.gs.managers.dblink.IGameDBLink;
 import com.abs.casino.gs.managers.game.event.IGameEvent;
 import com.abs.casino.gs.managers.game.event.IGameEventProcessor;

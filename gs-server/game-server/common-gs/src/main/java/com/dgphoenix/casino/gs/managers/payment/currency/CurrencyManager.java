@@ -1,18 +1,18 @@
 package com.abs.casino.gs.managers.payment.currency;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraCurrencyPersister;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.CurrencyCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.CurrencyCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.currency.Currency;
 import com.abs.casino.common.currency.CurrencyRate;
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.InvalidCurrencyRateException;
 import com.abs.casino.common.exception.UnknownCurrencyException;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.Pair;
 import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import com.google.common.base.CharMatcher;
 import org.springframework.context.ApplicationContext;

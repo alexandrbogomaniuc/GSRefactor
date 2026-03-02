@@ -1,7 +1,7 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.*" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.abs.casino.common.cache.data.game.*" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%
 
     java.util.Collection<BaseGameInfoTemplate> templates = new ArrayList<>();

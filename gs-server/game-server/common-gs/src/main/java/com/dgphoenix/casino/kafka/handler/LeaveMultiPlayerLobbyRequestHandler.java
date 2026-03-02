@@ -5,9 +5,9 @@ import com.abs.casino.kafka.handler.KafkaOuterRequestHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
+import com.abs.casino.gs.socket.mq.MQServiceHandler;
 import com.abs.casino.kafka.dto.LeaveMultiPlayerLobbyRequest;
-import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
+import com.abs.casino.kafka.dto.VoidKafkaResponse;
 
 @Component
 public class LeaveMultiPlayerLobbyRequestHandler 

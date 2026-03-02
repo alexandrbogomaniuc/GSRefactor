@@ -1,6 +1,6 @@
 package com.abs.casino.kafka.dto;
 
-import com.dgphoenix.casino.kafka.dto.KafkaRequest;
+import com.abs.casino.kafka.dto.KafkaRequest;
 
 public class InvalidateFrBonusClientRequest implements KafkaRequest {
     private long bankId;

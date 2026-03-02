@@ -1,17 +1,17 @@
 package com.abs.casino.web.bonus;
 
-import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bonus.Bonus;
 import com.abs.casino.common.exception.BonusException;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.xml.xmlwriter.XmlWriter;
 import com.abs.casino.common.web.bonus.BonusError;
 import com.abs.casino.common.web.bonus.BonusErrors;
 import com.abs.casino.common.web.bonus.CBonus;
-import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
+import com.abs.casino.gs.managers.payment.bonus.BonusManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

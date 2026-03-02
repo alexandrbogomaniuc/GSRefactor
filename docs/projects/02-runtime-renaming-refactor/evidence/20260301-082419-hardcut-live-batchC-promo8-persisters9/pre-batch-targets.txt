@@ -1,0 +1,17 @@
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBaseGameInfoPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TicketPrize.java:1:package com.dgphoenix.casino.common.promo;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/AbstractIntegerDistributedConfigEntryPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkPromoEvent.java:1:package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPrize.java:1:package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java:1:package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/InstantMoneyPrize.java:1:package com.dgphoenix.casino.common.promo;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraMassAwardRestrictionPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExtendedAccountInfoPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExternalGameIdsPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraServerConfigTemplatePersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCurrencyPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraCallStatisticsPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/INetworkPromoCampaign.java:1:package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentRankQualifier.java:1:package com.dgphoenix.casino.common.promo;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java:1:package com.dgphoenix.casino.common.promo;

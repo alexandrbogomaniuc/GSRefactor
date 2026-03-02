@@ -1,6 +1,6 @@
 package com.abs.casino.kafka.dto;
 
-import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
+import com.abs.casino.kafka.dto.BasicKafkaResponse;
 
 public class SitInResponseDto extends BasicKafkaResponse {
     private long gameSessionId;

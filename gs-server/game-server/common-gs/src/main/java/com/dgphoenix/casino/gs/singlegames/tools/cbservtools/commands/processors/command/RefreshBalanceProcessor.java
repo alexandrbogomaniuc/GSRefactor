@@ -1,9 +1,9 @@
 package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.command;
 
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.common.util.DigitFormatter;
-import com.dgphoenix.casino.common.util.NtpTimeProvider;
+import com.abs.casino.common.util.NtpTimeProvider;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.gs.singlegames.tools.cbservtools.IGameController;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.responses.RefreshBalanceResponse;

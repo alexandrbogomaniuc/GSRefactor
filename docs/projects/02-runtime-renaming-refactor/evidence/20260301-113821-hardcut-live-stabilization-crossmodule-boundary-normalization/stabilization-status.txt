@@ -1,0 +1,5 @@
+status=FAIL
+first_blocker_module=gs-server/promo/core
+secondary_blocker_module=gs-server/game-server/common-gs
+evidence_created_utc=2026-03-01T11:38:27Z
+legacy_imports_in_abs_java=0

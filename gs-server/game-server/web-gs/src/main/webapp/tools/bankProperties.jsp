@@ -1,16 +1,16 @@
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="java.lang.reflect.Field" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
 <%@ page import="com.abs.casino.common.util.property.BooleanProperty" %>
 <%@ page import="com.abs.casino.common.util.property.StringProperty" %>
 <%@ page import="com.abs.casino.common.util.property.NumericProperty" %>
 <%@ page import="java.lang.reflect.Modifier" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.abs.casino.common.util.property.EnumProperty" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
 <%@ page import="com.abs.casino.common.config.HostConfiguration" %>
 <%
 
@@ -35,7 +35,7 @@
 
     Map<String, String> bankInfoProperties = bankInfo.getProperties();
 
-    List<String> filteredValues = Arrays.asList("false", "FALSE", "NONE", ".jar", ".xml", "com.dgphoenix.casino.");
+    List<String> filteredValues = Arrays.asList("false", "FALSE", "NONE", ".jar", ".xml", "com.abs.casino.");
     List<String> filteredProperties = Arrays.asList("_CLASS", "PASS", "MIGRATION", "SERVER_TYPE", "KEY_MOST_PLAYED_GAMES");
 
     Field[] fields = BankInfo.class.getDeclaredFields();

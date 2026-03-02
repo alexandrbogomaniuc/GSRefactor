@@ -1,20 +1,20 @@
 package com.abs.casino.payment.wallet.client.v4;
 
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.payment.WalletOperationStatus;
+import com.abs.casino.common.cache.data.session.ClientType;
 import com.abs.casino.common.client.AbstractLoggableClient;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.WalletException;
 import com.abs.casino.common.rest.CustomRestTemplate;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletStatusResult;
 import com.abs.casino.gs.managers.payment.wallet.IWalletHelper;
-import com.dgphoenix.casino.gs.managers.payment.wallet.*;
+import com.abs.casino.gs.managers.payment.wallet.*;
 import com.abs.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 import com.abs.casino.gs.managers.payment.wallet.v4.CWMType;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v4.ICommonWalletClient;
+import com.abs.casino.gs.managers.payment.wallet.v4.ICommonWalletClient;
 
 import java.util.Collections;
 

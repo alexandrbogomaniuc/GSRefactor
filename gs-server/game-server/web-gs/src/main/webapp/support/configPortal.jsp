@@ -1,5 +1,5 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.abs.casino.common.util.property.BooleanProperty" %>
 <%@ page import="com.abs.casino.common.util.property.EnumProperty" %>
 <%@ page import="com.abs.casino.common.util.property.MandatoryProperty" %>

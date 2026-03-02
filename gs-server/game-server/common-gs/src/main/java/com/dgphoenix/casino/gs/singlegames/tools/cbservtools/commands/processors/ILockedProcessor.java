@@ -1,8 +1,8 @@
 package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors;
 
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 import com.google.common.collect.ImmutableSet;

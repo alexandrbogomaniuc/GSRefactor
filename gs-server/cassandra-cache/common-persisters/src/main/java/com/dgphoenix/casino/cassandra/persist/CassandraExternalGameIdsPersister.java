@@ -1,15 +1,15 @@
 package com.abs.casino.cassandra.persist;
 
-import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.cassandra.persist.ILazyLoadingPersister;
+import com.abs.casino.cassandra.persist.ILazyLoadingPersister;
+import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.common.cache.AbstractDistributedCache;
-import com.dgphoenix.casino.common.cache.ExternalGameIdsCache;
-import com.dgphoenix.casino.common.cache.data.IdObject;
+import com.abs.casino.common.cache.ExternalGameIdsCache;
+import com.abs.casino.common.cache.data.IdObject;
 import com.abs.casino.common.persist.StreamPersister;
 import com.abs.casino.common.persist.TableProcessor;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.util.string.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

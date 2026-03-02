@@ -1,10 +1,10 @@
 package com.abs.casino.payment.wallet.client.v4;
 
-import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.data.game.BaseGameInfoTemplate;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.gs.managers.payment.wallet.CommonWallet;
 
 import java.util.Map;
 

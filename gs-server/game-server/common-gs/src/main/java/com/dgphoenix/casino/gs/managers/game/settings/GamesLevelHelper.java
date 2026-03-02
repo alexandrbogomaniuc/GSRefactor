@@ -1,9 +1,9 @@
 package com.abs.casino.gs.managers.game.settings;
 
-import com.dgphoenix.casino.common.cache.data.bank.Coin;
+import com.abs.casino.common.cache.data.bank.Coin;
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.string.StringUtils;
 import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;

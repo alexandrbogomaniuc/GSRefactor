@@ -1,9 +1,9 @@
 package com.abs.casino.actions.enter;
 
-import com.dgphoenix.casino.common.cache.BaseGameCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+import com.abs.casino.common.cache.BaseGameCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
 import com.abs.casino.common.web.MobileDetector;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

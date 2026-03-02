@@ -1,14 +1,14 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.SubCasinoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.Coin" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameCache" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.abs.casino.common.cache.SubCasinoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.Coin" %>
+<%@ page import="com.abs.casino.common.cache.data.currency.Currency" %>
 <%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.GameVariableType" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfoTemplate" %>
+<%@ page import="com.abs.casino.common.cache.data.game.GameVariableType" %>
+<%@ page import="com.abs.casino.common.cache.data.game.IBaseGameInfo" %>
 <%@ page import="java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 

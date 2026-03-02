@@ -1,9 +1,9 @@
 package com.abs.casino.web.system.diagnosis.tasks;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.IKeyspaceManager;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

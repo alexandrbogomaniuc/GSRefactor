@@ -1,8 +1,8 @@
 package com.abs.casino.gs.managers.payment.bonus;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bonus.BonusStatus;
+import com.abs.casino.common.cache.data.session.SessionInfo;
 import com.abs.casino.common.exception.FRBException;
 import com.abs.casino.gs.managers.dblink.FRBonusDBLink;
 

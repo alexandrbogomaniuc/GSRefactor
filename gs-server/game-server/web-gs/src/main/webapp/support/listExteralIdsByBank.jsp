@@ -1,8 +1,8 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameInfoTemplateCache" %>
 <%@ page import="java.util.Set" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
-<%@ page import="com.dgphoenix.casino.common.cache.ExternalGameIdsCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfoTemplate" %>
+<%@ page import="com.abs.casino.common.cache.ExternalGameIdsCache" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
 <%
 
     String bankString = request.getParameter("bank");

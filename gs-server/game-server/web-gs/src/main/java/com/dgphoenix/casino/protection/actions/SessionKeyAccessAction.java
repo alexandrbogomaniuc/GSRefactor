@@ -1,8 +1,8 @@
 package com.abs.casino.protection.actions;
 
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.util.RNG;
 import com.abs.casino.common.util.RSACrypter;
 import com.abs.casino.common.util.string.HexStringConverter;
 import com.abs.casino.gs.persistance.PlayerSessionPersister;

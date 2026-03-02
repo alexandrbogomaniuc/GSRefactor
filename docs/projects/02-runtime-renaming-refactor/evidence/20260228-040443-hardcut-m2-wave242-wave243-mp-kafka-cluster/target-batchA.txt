@@ -1,0 +1,11 @@
+/Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BasicKafkaResponse.java
+/Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaHandlerException.java
+/Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaMessage.java
+/Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaRequest.java
+/Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaResponse.java
+/Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaInServiceRequestHandler.java
+/Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaInServiceRequestHandlerFactory.java
+/Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaOuterRequestHandler.java
+/Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaOuterRequestHandlerFactory.java
+/Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaRequestHandler.java
+/Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaRequestHandlerFactory.java

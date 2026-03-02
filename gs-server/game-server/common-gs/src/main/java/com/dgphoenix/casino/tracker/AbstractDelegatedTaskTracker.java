@@ -1,10 +1,10 @@
 package com.abs.casino.tracker;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraTrackingInfoPersister;
 import com.abs.casino.common.engine.tracker.AbstractCommonTracker;
 import com.abs.casino.common.engine.tracker.ICommonTrackingTaskDelegate;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.ApplicationContextHelper;
 import org.apache.log4j.Logger;
 
 import java.util.Map;

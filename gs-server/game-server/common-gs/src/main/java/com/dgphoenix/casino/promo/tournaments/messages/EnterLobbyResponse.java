@@ -1,6 +1,6 @@
 package com.abs.casino.promo.tournaments.messages;
 
-import com.dgphoenix.casino.common.transport.TObject;
+import com.abs.casino.common.transport.TObject;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

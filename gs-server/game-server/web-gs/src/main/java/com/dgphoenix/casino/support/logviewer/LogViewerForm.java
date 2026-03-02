@@ -1,6 +1,6 @@
 package com.abs.casino.support.logviewer;
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.support.AdditionalInfoAttribute;
 import com.abs.casino.common.util.support.HttpCallInfo;
 import com.google.common.collect.ImmutableList;

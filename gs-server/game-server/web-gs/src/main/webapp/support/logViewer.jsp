@@ -6,7 +6,7 @@
 <%@ page import="javax.xml.transform.stream.StreamResult" %>
 <%@ page import="static org.apache.commons.lang3.StringUtils.substringAfter" %>
 <%@ page import="static com.abs.casino.common.util.support.AdditionalInfoAttribute.EXTERNAL_ID" %>
-<%@ page import="static com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister.ID_DELIMITER" %>
+<%@ page import="static com.abs.casino.cassandra.persist.engine.ICassandraPersister.ID_DELIMITER" %>
 <%@ page import="javax.xml.transform.stream.StreamSource" %>
 <%@ page import="static javax.xml.transform.OutputKeys.OMIT_XML_DECLARATION" %>
 <%@ page import="static javax.xml.transform.OutputKeys.INDENT" %>

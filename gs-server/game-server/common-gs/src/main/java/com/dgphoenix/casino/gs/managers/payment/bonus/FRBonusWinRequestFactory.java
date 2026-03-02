@@ -1,17 +1,17 @@
 package com.abs.casino.gs.managers.payment.bonus;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraFrbWinOperationPersister;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBWinOperation;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.payment.bonus.FRBWinOperation;
+import com.abs.casino.common.cache.data.session.SessionInfo;
 import com.abs.casino.common.exception.DBException;
 import com.abs.casino.common.exception.FRBException;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.common.util.ReflectionUtils;
-import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.gs.managers.dblink.FRBonusDBLink;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

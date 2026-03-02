@@ -1,7 +1,7 @@
 package com.abs.casino.common.util;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.util.Pair;
 import com.abs.casino.common.util.string.StringIdGenerator;
 import junit.framework.TestCase;
 

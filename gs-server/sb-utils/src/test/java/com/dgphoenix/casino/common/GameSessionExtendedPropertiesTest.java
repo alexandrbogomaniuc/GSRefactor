@@ -1,7 +1,7 @@
 package com.abs.casino.common;
 
 import com.abs.casino.common.GameSessionExtendedProperties;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import org.junit.Test;
 
 import java.util.HashMap;

@@ -1,10 +1,10 @@
-<%@ page import="com.dgphoenix.casino.common.util.IdGenerator" %>
+<%@ page import="com.abs.casino.common.util.IdGenerator" %>
 <%@ page import="com.abs.casino.common.util.ISequencer" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     final String[] sequencerKeys = {
             "com.abs.casino.gs.biz.DBWalletOperation",
-            "com.dgphoenix.casino.gs.biz.DBWalletOperation"
+            "com.abs.casino.gs.biz.DBWalletOperation"
     };
     ISequencer sequencer = null;
     String activeSequencerKey = null;

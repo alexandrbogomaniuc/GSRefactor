@@ -1,6 +1,6 @@
 package com.abs.casino.promo.masker;
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 
 import java.util.List;
 

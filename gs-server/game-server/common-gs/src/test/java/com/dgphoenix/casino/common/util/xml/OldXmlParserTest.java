@@ -1,6 +1,6 @@
 package com.abs.casino.common.util.xml;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.xml.parser.Parser;
 import com.abs.casino.common.util.xml.parser.XmlHandler;
 import com.abs.casino.common.util.xml.parser.XmlHandlerRegistry;

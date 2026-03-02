@@ -110,7 +110,7 @@
 [INFO] -------------------------------------------------------------
 [ERROR] COMPILATION ERROR : 
 [INFO] -------------------------------------------------------------
-[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameType.java:[8,7] error: duplicate class: com.abs.casino.common.cache.data.game.GameType
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameType.java:[8,7] error: duplicate class: com.dgphoenix.casino.common.cache.data.game.GameType
 [ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/IBaseGameInfo.java:[63,4] error: cannot access GameType
 [INFO] 2 errors 
 [INFO] -------------------------------------------------------------
@@ -121,7 +121,7 @@
 [INFO] Finished at: 2026-02-28T14:03:32Z
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project utils-restricted: Compilation failure: Compilation failure: 
-[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameType.java:[8,7] error: duplicate class: com.abs.casino.common.cache.data.game.GameType
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/GameType.java:[8,7] error: duplicate class: com.dgphoenix.casino.common.cache.data.game.GameType
 [ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/IBaseGameInfo.java:[63,4] error: cannot access GameType
 [ERROR] -> [Help 1]
 [ERROR] 

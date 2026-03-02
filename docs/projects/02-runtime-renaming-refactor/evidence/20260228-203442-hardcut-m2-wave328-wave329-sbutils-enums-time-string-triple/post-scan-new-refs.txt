@@ -1,0 +1,84 @@
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBaseGameInfoPersister.java:15:import com.abs.casino.common.cache.data.game.GameVariableType;
+gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraRoundGameSessionPersister.java:7:import com.abs.casino.common.util.Triple;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/DesiredPrize.java:5:import com.abs.casino.common.util.ITimeProvider;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoPeriod.java:7:import com.abs.casino.common.util.ITimeProvider;
+gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TimeSlot.java:6:import com.abs.casino.common.util.ITimeProvider;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/FRBGameListAction.java:8:import com.abs.casino.common.cache.data.game.GameGroup;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/GameListExtAction.java:10:import com.abs.casino.common.cache.data.game.GameGroup;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/GameSettingsActionV2.java:12:import com.abs.casino.common.cache.data.game.GameVariableType;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/SharedGameServerComponentsConfiguration.java:13:import com.abs.casino.common.util.ITimeProvider;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/maintenance/converters/BaseGameInfoConverter.java:10:import com.abs.casino.common.cache.data.game.GameType;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/maintenance/converters/BaseGameInfoConverter.java:11:import com.abs.casino.common.cache.data.game.GameVariableType;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/maintenance/converters/BaseGameInfoConverter.java:9:import com.abs.casino.common.cache.data.game.GameGroup;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/dblink/BonusDBLink.java:18:import com.abs.casino.common.cache.data.game.GameVariableType;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/dblink/FreeGameCalculator.java:7:import com.abs.casino.common.cache.data.game.GameGroup;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/settings/DynamicCoinManager.java:10:import com.abs.casino.common.cache.data.game.GameVariableType;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/bonus/BonusManager.java:17:import com.abs.casino.common.cache.data.game.GameType;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/LasthandPersister.java:12:import com.abs.casino.common.cache.data.game.GameGroup;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/bet/PlayerBetPersistenceManager.java:17:import com.abs.casino.common.util.Triple;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/MQServiceHandler.java:24:import com.abs.casino.common.cache.data.game.GameType;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/services/tournament/PlayerAliasService.java:9:import com.abs.casino.common.util.Triple;
+gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/sm/AbstractPlayerSessionManager.java:12:import com.abs.casino.common.util.ITimeProvider;
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/freegame/FreeGameCalculatorTest.java:11:import com.abs.casino.common.cache.data.game.GameGroup;
+gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/game/settings/DynamicCoinManagerTest.java:10:import com.abs.casino.common.cache.data.game.GameVariableType;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/AbstractBonusAction.java:15:import com.abs.casino.common.cache.data.game.GameType;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByRoundAction.java:12:import com.abs.casino.common.util.Triple;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/history/vba/HistoryByTokenAction.java:11:import com.abs.casino.common.util.Triple;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:15:import com.abs.casino.common.cache.data.game.GameType;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/lobby/STLobbyAction.java:12:import com.abs.casino.common.cache.data.game.GameGroup;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/CWv3Helper.java:12:import com.abs.casino.common.cache.data.game.GameType;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CreateNewGameAction.java:13:import com.abs.casino.common.cache.data.game.GameGroup;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CreateNewGameAction.java:14:import com.abs.casino.common.cache.data.game.GameType;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/CreateNewGameAction.java:15:import com.abs.casino.common.cache.data.game.GameVariableType;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/LoadGameInfoAction.java:7:import com.abs.casino.common.cache.data.game.GameVariableType;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/tool/GameDetails.java:3:import com.abs.casino.common.cache.data.game.GameVariableType;
+gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryServlet.java:18:import com.abs.casino.common.util.Triple;
+gs-server/game-server/web-gs/src/main/webapp/defaultstlobby.jsp:3:<%@ page import="com.abs.casino.common.cache.data.game.GameGroup" %>
+gs-server/game-server/web-gs/src/main/webapp/localized_games.jsp:2:<%@ page import="com.abs.casino.common.cache.data.game.GameGroup" %>
+gs-server/game-server/web-gs/src/main/webapp/support/GameConfig/getGamesConfigByBanks.jsp:10:<%@ page import="com.abs.casino.common.cache.data.game.GameVariableType" %>
+gs-server/game-server/web-gs/src/main/webapp/support/exportImportCoins.jsp:11:<%@ page import="com.abs.casino.common.cache.data.game.GameVariableType" %>
+gs-server/game-server/web-gs/src/main/webapp/support/gameBankConfig/compareBanksGames.jsp:6:<%@ page import="com.abs.casino.common.cache.data.game.GameGroup" %>
+gs-server/game-server/web-gs/src/main/webapp/support/rouletteInternalLimits.jsp:7:<%@ page import="com.abs.casino.common.cache.data.game.GameVariableType" %>
+gs-server/game-server/web-gs/src/main/webapp/support/showGamesDetailsProp2.jsp:9:<%@ page import="com.abs.casino.common.cache.data.game.GameVariableType" %>
+gs-server/game-server/web-gs/src/main/webapp/support/showGamesDetailsProp3.jsp:7:<%@ page import="com.abs.casino.common.cache.data.game.GameVariableType" %>
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/ImmutableBaseGameInfoWrapper.java:5:import com.abs.casino.common.cache.data.game.GameGroup;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/ImmutableBaseGameInfoWrapper.java:6:import com.abs.casino.common.cache.data.game.GameType;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/ImmutableBaseGameInfoWrapper.java:7:import com.abs.casino.common.cache.data.game.GameVariableType;
+gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/SynchroTimeProvider.java:4:import com.abs.casino.common.util.ITimeProvider;
+mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/CrashGameBotStrategyCustom.java:4:import com.abs.casino.common.util.Triple;
+mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/NaturalBattleGroundSectorXStrategy.java:21:import com.abs.casino.common.util.Triple;
+mp-server/bots/src/main/java/com/betsoft/casino/bots/utils/BezierCurve.java:4:import com.abs.casino.common.util.Triple;
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/gameconfig/GameTools.java:5:import com.abs.casino.common.util.Triple;
+mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/MathData.java:7:import com.abs.casino.common.util.Triple;
+mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/PayTableInst.java:7:import com.abs.casino.common.util.Triple;
+mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java:18:import com.abs.casino.common.util.Triple;
+mp-server/games/bg_sectorx/src/test/java/com/betsoft/casino/mp/bgsectorx/model/math/TestTrajectoryGeneration.java:16:import com.abs.casino.common.util.Triple;
+mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/MathData.java:7:import com.abs.casino.common.util.Triple;
+mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/PayTableInst.java:8:import com.abs.casino.common.util.Triple;
+mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/AbstractEnemyData.java:5:import com.abs.casino.common.util.Triple;
+mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/IEnemyData.java:5:import com.abs.casino.common.util.Triple;
+mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/EnemyGame.java:16:import com.abs.casino.common.util.Triple;
+mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/PlayGameState.java:15:import com.abs.casino.common.util.Triple;
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestPoints.java:8:import com.abs.casino.common.util.Triple;
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameMap.java:10:import com.abs.casino.common.util.Triple;
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:7:import com.abs.casino.common.util.Triple;
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/BezierCurveGenerator.java:12:import com.abs.casino.common.util.Triple;
+mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/MathData.java:7:import com.abs.casino.common.util.Triple;
+mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/PayTableInst.java:8:import com.abs.casino.common.util.Triple;
+mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java:13:import com.abs.casino.common.util.Triple;
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathData.java:6:import com.abs.casino.common.util.Triple;
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/PayTableInst.java:6:import com.abs.casino.common.util.Triple;
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java:14:import com.abs.casino.common.util.Triple;
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:20:import com.abs.casino.common.util.Triple;
+mp-server/games/pirates/src/test/java/com/betsoft/casino/mp/pirates/model/TestModelData.java:8:import com.abs.casino.common.util.Triple;
+mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/PlayGameState.java:18:import com.abs.casino.common.util.Triple;
+mp-server/games/piratesdmc/src/test/java/com/betsoft/casino/mp/piratesdmc/model/TestModelData.java:8:import com.abs.casino.common.util.Triple;
+mp-server/games/piratespov-math/src/main/java/com/betsoft/casino/mp/piratespov/model/math/MathData.java:6:import com.abs.casino.common.util.Triple;
+mp-server/games/piratespov-math/src/main/java/com/betsoft/casino/mp/piratespov/model/math/PayTableInst.java:6:import com.abs.casino.common.util.Triple;
+mp-server/games/piratespov-math/src/main/java/com/betsoft/casino/mp/piratespov/model/math/ShotCalculator.java:16:import com.abs.casino.common.util.Triple;
+mp-server/games/revengeofra-math/src/main/java/com/betsoft/casino/mp/revengeofra/model/math/MathData.java:6:import com.abs.casino.common.util.Triple;
+mp-server/games/revengeofra-math/src/main/java/com/betsoft/casino/mp/revengeofra/model/math/PayTableInst.java:7:import com.abs.casino.common.util.Triple;
+mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/EnemyGame.java:18:import com.abs.casino.common.util.Triple;
+mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayGameState.java:16:import com.abs.casino.common.util.Triple;
+mp-server/games/revengeofra/src/test/java/com/betsoft/casino/mp/revengeofra/TestWrongWeapons.java:11:import com.abs.casino.common.util.Triple;
+mp-server/games/sectorx/src/test/java/com/betsoft/casino/mp/sectorx/model/math/TestTrajectoryGeneration.java:17:import com.abs.casino.common.util.Triple;

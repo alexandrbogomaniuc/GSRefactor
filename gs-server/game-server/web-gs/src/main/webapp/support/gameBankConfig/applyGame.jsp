@@ -1,18 +1,18 @@
 <%@ page import="com.abs.casino.bgm.BaseGameHelper" %>
 <%@ page import="com.abs.casino.common.cache.data.game.RoundFinishedHelper" %>
 <%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.IdObject" %>
+<%@ page import="com.abs.casino.common.cache.data.IdObject" %>
 <%@ page import="com.abs.casino.common.cache.data.bank.BankConstants" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.abs.casino.common.cache.data.bank.ILimit" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.session.ClientType" %>
-<%@ page import="com.dgphoenix.casino.common.exception.CommonException" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.session.ClientType" %>
+<%@ page import="com.abs.casino.common.exception.CommonException" %>
 <%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
 <%@ page import="java.io.IOException" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
-<%@ page import="static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty" %>
+<%@ page import="static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 

@@ -1,6 +1,6 @@
 package com.abs.casino.common.config;
 
-import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
+import com.abs.casino.common.config.GameServerConfigTemplate;
 import org.junit.Before;
 import org.junit.Test;
 

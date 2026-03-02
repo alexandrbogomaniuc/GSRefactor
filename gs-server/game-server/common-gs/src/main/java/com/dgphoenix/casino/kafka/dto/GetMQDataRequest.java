@@ -1,6 +1,6 @@
 package com.abs.casino.kafka.dto;
 
-import com.dgphoenix.casino.kafka.dto.KafkaRequest;
+import com.abs.casino.kafka.dto.KafkaRequest;
 
 public class GetMQDataRequest implements KafkaRequest {
     private long accountId;

@@ -1,6 +1,6 @@
 package com.abs.casino.services.bonus;
 
-import com.dgphoenix.casino.common.cache.SubCasinoCache;
+import com.abs.casino.common.cache.SubCasinoCache;
 import com.abs.casino.services.bonus.ForbiddenGamesForBonusProvider;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.Before;

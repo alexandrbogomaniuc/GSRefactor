@@ -1,6 +1,6 @@
 package com.abs.casino.websocket;
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.google.common.base.Splitter;
 import org.apache.commons.collections.CollectionUtils;
 import org.eclipse.jetty.websocket.api.*;

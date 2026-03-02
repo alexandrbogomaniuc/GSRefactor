@@ -1,12 +1,12 @@
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
+<%@ page import="com.abs.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
 <%@ page import="static com.google.common.base.Preconditions.*" %>
-<%@ page import="com.dgphoenix.casino.common.SessionHelper" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.account.AccountInfo" %>
-<%@ page import="com.dgphoenix.casino.account.AccountManager" %>
-<%@ page import="com.dgphoenix.casino.common.cache.SubCasinoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.common.SessionHelper" %>
+<%@ page import="com.abs.casino.common.cache.data.account.AccountInfo" %>
+<%@ page import="com.abs.casino.account.AccountManager" %>
+<%@ page import="com.abs.casino.common.cache.SubCasinoCache" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
 <%@ page import="com.abs.casino.common.config.HostConfiguration" %>
 
 <%

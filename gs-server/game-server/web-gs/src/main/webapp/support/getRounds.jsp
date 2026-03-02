@@ -1,11 +1,11 @@
-<%@ page import="com.dgphoenix.casino.account.AccountManager" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.account.AccountInfo" %>
+<%@ page import="com.abs.casino.account.AccountManager" %>
+<%@ page import="com.abs.casino.common.cache.data.account.AccountInfo" %>
 <%@ page import="com.abs.casino.cassandra.persist.CassandraCommonGameWalletPersister" %>
-<%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
-<%@ page import="com.dgphoenix.casino.common.SessionHelper" %>
-<%@ page import="com.dgphoenix.casino.common.transactiondata.ITransactionData" %>
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.*" %>
+<%@ page import="com.abs.casino.cassandra.CassandraPersistenceManager" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.common.SessionHelper" %>
+<%@ page import="com.abs.casino.common.transactiondata.ITransactionData" %>
+<%@ page import="com.abs.casino.gs.managers.payment.wallet.*" %>
 <%@ page import="java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%

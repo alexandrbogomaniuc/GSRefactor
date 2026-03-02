@@ -1,8 +1,8 @@
 package com.abs.casino.gs.socket.mq;
 
 import com.abs.casino.battleground.messages.RoomWasDeactivated;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.util.string.StringUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.commons.codec.digest.HmacAlgorithms;

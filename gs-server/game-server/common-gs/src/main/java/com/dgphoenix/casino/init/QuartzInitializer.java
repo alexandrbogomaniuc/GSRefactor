@@ -1,9 +1,9 @@
 package com.abs.casino.init;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraBankInfoPersister;
-import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import com.abs.casino.common.cache.data.bank.BankInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.quartz.*;

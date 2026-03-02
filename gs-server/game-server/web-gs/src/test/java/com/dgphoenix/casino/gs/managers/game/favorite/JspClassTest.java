@@ -1,6 +1,6 @@
 package com.abs.casino.gs.managers.game.favorite;
 
-import com.dgphoenix.casino.common.cache.data.bank.Coin;
+import com.abs.casino.common.cache.data.bank.Coin;
 import com.google.common.base.Joiner;
 import org.junit.Test;
 

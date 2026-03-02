@@ -1,17 +1,17 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.CommonGameWallet" %>
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.CommonWallet" %>
-<%@ page import="static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty" %>
-<%@ page import="com.dgphoenix.casino.common.SessionHelper" %>
-<%@ page import="com.dgphoenix.casino.common.transactiondata.ITransactionData" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus" %>
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletOperation" %>
+<%@ page import="com.abs.casino.gs.managers.payment.wallet.CommonGameWallet" %>
+<%@ page import="com.abs.casino.gs.managers.payment.wallet.CommonWallet" %>
+<%@ page import="static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty" %>
+<%@ page import="com.abs.casino.common.SessionHelper" %>
+<%@ page import="com.abs.casino.common.transactiondata.ITransactionData" %>
+<%@ page import="com.abs.casino.common.cache.data.payment.WalletOperationStatus" %>
+<%@ page import="com.abs.casino.gs.managers.payment.wallet.CommonWalletOperation" %>
 <%@ page import="com.abs.casino.cassandra.persist.CassandraLasthandPersister" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="com.abs.casino.cassandra.persist.CassandraTransactionDataPersister" %>
-<%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.cassandra.CassandraPersistenceManager" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
 <%--
   Created by IntelliJ IDEA.
   User: quant

@@ -1,9 +1,9 @@
-<%@ page import="com.dgphoenix.casino.common.cache.CurrencyCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.CurrencyCache" %>
+<%@ page import="com.abs.casino.common.cache.data.currency.Currency" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
-<%@ page import="com.dgphoenix.casino.common.exception.CommonException" %>
+<%@ page import="com.abs.casino.common.exception.CommonException" %>
 <%@ page import="java.util.List" %>
 <%
     long bankId = 271;

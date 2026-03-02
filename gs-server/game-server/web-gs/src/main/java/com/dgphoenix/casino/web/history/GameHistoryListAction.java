@@ -1,29 +1,29 @@
 package com.abs.casino.web.history;
 
-import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraAccountInfoPersister;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.configuration.messages.MessageManager;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.configuration.messages.MessageManager;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.MismatchSessionException;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.CollectionUtils;
 import com.abs.casino.common.util.DigitFormatter;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 import com.abs.casino.common.util.string.StringIdGenerator;
 import com.abs.casino.common.web.BaseAction;
 import com.abs.casino.common.web.GameServerHost;
-import com.dgphoenix.casino.gs.GameServer;
+import com.abs.casino.gs.GameServer;
 import com.abs.casino.gs.managers.game.history.HistoryManager;
 import com.abs.casino.gs.web.messages.GsMessageManager;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import org.apache.commons.lang.LocaleUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -37,7 +37,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static com.abs.casino.cassandra.persist.CassandraGameSessionPersister.*;
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 /**
  * User: flsh

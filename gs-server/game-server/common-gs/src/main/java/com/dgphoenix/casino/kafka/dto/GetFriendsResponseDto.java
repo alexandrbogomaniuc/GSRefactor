@@ -3,7 +3,7 @@ package com.abs.casino.kafka.dto;
 import java.util.List;
 
 import com.abs.casino.kafka.dto.BGFriendDto;
-import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
+import com.abs.casino.kafka.dto.BasicKafkaResponse;
 
 public class GetFriendsResponseDto extends BasicKafkaResponse {
     private List<BGFriendDto> friends;

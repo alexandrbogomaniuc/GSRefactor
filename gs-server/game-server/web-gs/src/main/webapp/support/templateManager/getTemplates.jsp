@@ -1,5 +1,5 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfoTemplate" %>
 <%@ page import="java.util.*" %>
 <%@include file="GameTemplate.jsp" %>
 

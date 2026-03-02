@@ -1,9 +1,9 @@
 package com.abs.casino.gs.singlegames.tools.cbservtools;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.session.GameSession;
 import com.abs.casino.common.util.ReflectionUtils;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

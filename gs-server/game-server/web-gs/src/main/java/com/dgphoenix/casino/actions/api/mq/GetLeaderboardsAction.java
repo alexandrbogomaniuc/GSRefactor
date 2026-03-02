@@ -1,8 +1,8 @@
 package com.abs.casino.actions.api.mq;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.mp.LeaderboardInfo;
 import com.abs.casino.cassandra.persist.mp.LeaderboardResultPersister;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.common.web.BaseAction;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

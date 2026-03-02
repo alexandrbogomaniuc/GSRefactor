@@ -1,12 +1,12 @@
 package com.abs.casino.tracker;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraCurrencyRatesConfigPersister;
 import com.abs.casino.cassandra.persist.CassandraCurrencyRatesPersister;
 import com.abs.casino.common.currency.CurrencyRate;
-import com.dgphoenix.casino.common.util.ExecutorUtils;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.common.util.ExecutorUtils;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

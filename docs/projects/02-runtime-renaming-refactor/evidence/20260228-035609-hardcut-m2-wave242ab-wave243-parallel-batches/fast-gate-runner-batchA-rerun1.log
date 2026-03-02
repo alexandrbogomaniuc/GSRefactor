@@ -1,0 +1,481 @@
+STEP01: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/common' && mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 165 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-common ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-common ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-common ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/gsn-common-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-common ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common/1.0-SNAPSHOT/gsn-common-1.0-SNAPSHOT.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/gsn-common-1.0-SNAPSHOT.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common/1.0-SNAPSHOT/gsn-common-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.871 s
+[INFO] Finished at: 2026-02-28T03:57:20Z
+[INFO] ------------------------------------------------------------------------
+STEP01 rc=0
+STEP02: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet' && mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-wallet >-----------------
+[INFO] Building common-wallet 1.0.67
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-wallet ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ common-wallet ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-wallet ---
+[INFO] Compiling 11 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ common-wallet ---
+[INFO] Copying 108 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-wallet ---
+[INFO] Compiling 4 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-wallet ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-wallet ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/common-wallet-1.0.67.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-wallet ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-wallet/1.0.67/common-wallet-1.0.67.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-wallet/target/common-wallet-1.0.67.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-wallet/1.0.67/common-wallet-1.0.67.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.528 s
+[INFO] Finished at: 2026-02-28T03:57:23Z
+[INFO] ------------------------------------------------------------------------
+STEP02 rc=0
+STEP03: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils' && mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 175 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ utils-restricted ---
+[INFO] Compiling 19 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ utils-restricted ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ utils-restricted ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ utils-restricted ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/target/utils-restricted-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.596 s
+[INFO] Finished at: 2026-02-28T03:57:27Z
+[INFO] ------------------------------------------------------------------------
+STEP03 rc=0
+STEP04: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo' && mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 54 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-promo ---
+[INFO] Compiling 2 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-promo ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-promo ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ common-promo >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ common-promo <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ common-promo ---
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-promo ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/target/common-promo-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.585 s
+[INFO] Finished at: 2026-02-28T03:57:29Z
+[INFO] ------------------------------------------------------------------------
+STEP04 rc=0
+STEP05: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters' && mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-common-persisters >-------------
+[INFO] Building gsn-common-persisters 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-persisters ---
+[INFO] Compiling 14 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-common-persisters ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common-persisters ---
+[INFO] Compiling 2 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-common-persisters ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-common-persisters ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-common-persisters >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-common-persisters <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-common-persisters ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0-sources.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-common-persisters ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0.pom
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0-sources.jar to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.022 s
+[INFO] Finished at: 2026-02-28T03:57:32Z
+[INFO] ------------------------------------------------------------------------
+STEP05 rc=0
+STEP06: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs' && mvn -Dcluster.properties=local/local-machine.properties -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:gsn-common-gs >-----------------
+[INFO] Building gsn-common-gs 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:2.8:copy (default) @ gsn-common-gs ---
+[INFO] Configured Artifact: javax.xml.bind:jaxb-api:2.2.7:jar
+[INFO] Configured Artifact: javax.xml.ws:jaxws-api:2.2.9:jar
+[INFO] javax.xml.bind:jaxb-api:2.2.7:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] javax.xml.ws:jaxws-api:2.2.9:jar already exists in /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/endorsed
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ gsn-common-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-gs ---
+[INFO] Compiling 464 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/KafkaRequestMultiPlayer.java:[153,55] error: cannot access GetPrivateRoomInfoRequest
+[ERROR]   bad source file: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetPrivateRoomInfoRequest.java
+    file does not contain class com.dgphoenix.casino.kafka.dto.GetPrivateRoomInfoRequest
+    Please remove or make sure it appears in the correct subdirectory of the sourcepath.
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/service/KafkaMessageService.java:[63,0] error: cannot find symbol
+[ERROR]   symbol:   static convertToType
+  location: class
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/KafkaRequestMultiPlayer.java:[21,0] error: cannot find symbol
+[INFO] 3 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.835 s
+[INFO] Finished at: 2026-02-28T03:57:36Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common-gs: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/KafkaRequestMultiPlayer.java:[153,55] error: cannot access GetPrivateRoomInfoRequest
+[ERROR]   bad source file: /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetPrivateRoomInfoRequest.java
+[ERROR]     file does not contain class com.dgphoenix.casino.kafka.dto.GetPrivateRoomInfoRequest
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the sourcepath.
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/service/KafkaMessageService.java:[63,0] error: cannot find symbol
+[ERROR]   symbol:   static convertToType
+[ERROR]   location: class
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/KafkaRequestMultiPlayer.java:[21,0] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+STEP06 rc=1
+STEP07: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs' && mvn -Dcluster.properties=local/local-machine.properties -DskipTests package
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.dgphoenix.casino:gsn-web-gs:war:1.89.0
+[WARNING] 'version' contains an expression but should be a constant. @ com.dgphoenix.casino:gsn-web-gs:${current.version}, /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/pom.xml, line 13, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-web-gs >-------------------
+[INFO] Building gsn-web-gs 1.89.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ gsn-web-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 43 resources
+[INFO] 
+[INFO] --- resources:2.6:resources (gs-resources) @ gsn-web-gs ---
+[WARNING]  Parameter 'resources' is read-only, must not be used in configuration
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 43 resources
+[INFO] Copying 59 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/css
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/css_nucleus
+[INFO] Copying 104 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/js
+[INFO] Copying 501 resources to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/static/images
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/images_nucleus
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-web-gs ---
+[INFO] Compiling 296 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/LoginHelper.java:[27,47] error: cannot find symbol
+[ERROR]   symbol:   class KafkaRequestMultiPlayer
+  location: package com.abs.casino.gs.persistance.remotecall
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/LoginHelper.java:[56,27] error: cannot find symbol
+[ERROR]   symbol:   class KafkaRequestMultiPlayer
+  location: class LoginHelper<R,L>
+  where R,L are type-variables:
+    R extends AuthRequest declared in class LoginHelper
+    L extends LoginRequest declared in class LoginHelper
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:[15,47] error: cannot find symbol
+[ERROR]   symbol:   class RefreshConfigCall
+  location: package com.abs.casino.gs.persistance.remotecall
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:[16,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+  location: package com.abs.casino.gs.persistance.remotecall
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/stub/cw/CanexStubController.java:[16,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+  location: package com.abs.casino.gs.persistance.remotecall
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/stub/cw/CanexStubController.java:[42,18] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+  location: class CanexStubController
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/stub/cw/CanexStubController.java:[47,78] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+  location: class CanexStubController
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:[18,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+  location: package com.abs.casino.gs.persistance.remotecall
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/ControllerContextConfiguration.java:[10,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+  location: package com.abs.casino.gs.persistance.remotecall
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/ControllerContextConfiguration.java:[36,82] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+  location: class ControllerContextConfiguration
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/AddPropertyAction.java:[6,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+  location: package com.abs.casino.gs.persistance.remotecall
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/configuration/ServerConfigurationAction.java:[12,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+  location: package com.abs.casino.gs.persistance.remotecall
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/EditPropertiesAction.java:[7,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+  location: package com.abs.casino.gs.persistance.remotecall
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java:[9,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+  location: package com.abs.casino.gs.persistance.remotecall
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java:[32,18] error: cannot find symbol
+[INFO] 15 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.142 s
+[INFO] Finished at: 2026-02-28T03:57:41Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-web-gs: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/LoginHelper.java:[27,47] error: cannot find symbol
+[ERROR]   symbol:   class KafkaRequestMultiPlayer
+[ERROR]   location: package com.abs.casino.gs.persistance.remotecall
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/helpers/login/LoginHelper.java:[56,27] error: cannot find symbol
+[ERROR]   symbol:   class KafkaRequestMultiPlayer
+[ERROR]   location: class LoginHelper<R,L>
+[ERROR]   where R,L are type-variables:
+[ERROR]     R extends AuthRequest declared in class LoginHelper
+[ERROR]     L extends LoginRequest declared in class LoginHelper
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:[15,47] error: cannot find symbol
+[ERROR]   symbol:   class RefreshConfigCall
+[ERROR]   location: package com.abs.casino.gs.persistance.remotecall
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateBankAction.java:[16,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+[ERROR]   location: package com.abs.casino.gs.persistance.remotecall
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/stub/cw/CanexStubController.java:[16,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+[ERROR]   location: package com.abs.casino.gs.persistance.remotecall
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/stub/cw/CanexStubController.java:[42,18] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+[ERROR]   location: class CanexStubController
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/stub/cw/CanexStubController.java:[47,78] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+[ERROR]   location: class CanexStubController
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/EditGameAction.java:[18,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+[ERROR]   location: package com.abs.casino.gs.persistance.remotecall
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/ControllerContextConfiguration.java:[10,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+[ERROR]   location: package com.abs.casino.gs.persistance.remotecall
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/ControllerContextConfiguration.java:[36,82] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+[ERROR]   location: class ControllerContextConfiguration
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/AddPropertyAction.java:[6,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+[ERROR]   location: package com.abs.casino.gs.persistance.remotecall
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/configuration/ServerConfigurationAction.java:[12,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+[ERROR]   location: package com.abs.casino.gs.persistance.remotecall
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/EditPropertiesAction.java:[7,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+[ERROR]   location: package com.abs.casino.gs.persistance.remotecall
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java:[9,47] error: cannot find symbol
+[ERROR]   symbol:   class RemoteCallHelper
+[ERROR]   location: package com.abs.casino.gs.persistance.remotecall
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/common/DomainNameAction.java:[32,18] error: cannot find symbol
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+STEP07 rc=1
+STEP08: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new/mp-server/persistance' && mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.betsoft.casino.mp:persistance >------------------
+[INFO] Building Casino MP Games persistance layer 1.0.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ persistance ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ persistance ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ persistance ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.6.0:testCompile (default-testCompile) @ persistance ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ persistance ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ persistance ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/target/persistance-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ persistance ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/target/persistance-1.0.0-SNAPSHOT.jar to /Users/alexb/.m2/repository/com/betsoft/casino/mp/persistance/1.0.0-SNAPSHOT/persistance-1.0.0-SNAPSHOT.jar
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/pom.xml to /Users/alexb/.m2/repository/com/betsoft/casino/mp/persistance/1.0.0-SNAPSHOT/persistance-1.0.0-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.322 s
+[INFO] Finished at: 2026-02-28T03:57:44Z
+[INFO] ------------------------------------------------------------------------
+STEP08 rc=0
+STEP09: bash -lc cd '/Users/alexb/Documents/Dev/Dev_new' && node gs-server/deploy/scripts/refactor-onboard.mjs smoke
+[refactor-onboard] PASS: Static asset route (http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json) -> HTTP 200
+[refactor-onboard] WARN: GS support route (diagnostic) (http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6275) -> read ECONNRESET after 10 attempts
+[refactor-onboard] PASS: Config service health (http://127.0.0.1:18072/health) -> HTTP 200
+[refactor-onboard] FAIL: Launch alias (startgame) (http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 502 after 10 attempts
+[refactor-onboard] WARN: Launch alias (secondary) (http://127.0.0.1:18080/startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 502 after 10 attempts
+[refactor-onboard] ERROR: Smoke checks failed (1 failure(s)). See lines above.
+STEP09 rc=2
+STATUS_FILE: /Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260228-035609-hardcut-m2-wave242ab-wave243-parallel-batches/fast-gate-status-batchA-rerun1.txt
+STEP01-08_FAIL rc1=0 rc2=0 rc3=0 rc4=0 rc5=0 rc6=1 rc7=1 rc8=0 STEP09_rc=2

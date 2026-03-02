@@ -1,9 +1,9 @@
 package com.abs.casino.gs.managers.payment.wallet.processor;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.CollectionUtils;
 import com.abs.casino.common.util.web.HttpClientConnection;
 import com.abs.casino.common.util.xml.XmlRequestResult;
 import com.abs.casino.common.util.xml.parser.Parser;

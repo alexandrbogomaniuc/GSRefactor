@@ -1,33 +1,33 @@
 package com.abs.casino.init;
 
 import com.abs.casino.cache.PingSessionCache;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.DistributedLockManager;
 import com.abs.casino.cassandra.IRemoteUnlocker;
-import com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
-import com.dgphoenix.casino.cassandra.persist.*;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
-import com.dgphoenix.casino.common.cache.LoadBalancerCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
+import com.abs.casino.cassandra.persist.*;
+import com.abs.casino.cassandra.persist.ExtendedAccountInfoPersisterInstanceHolder;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.LoadBalancerCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.game.BaseGameInfoTemplate;
 import com.abs.casino.common.cache.data.server.ServerInfo;
 import com.abs.casino.common.config.UtilsApplicationContextHelper;
-import com.dgphoenix.casino.common.configuration.messages.MessageManager;
+import com.abs.casino.common.configuration.messages.MessageManager;
 import com.abs.casino.common.exception.FatalException;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.NtpTimeProvider;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.NtpTimeProvider;
 import com.abs.casino.common.util.SynchroTimeProvider;
 import com.abs.casino.common.util.hardware.HardwareConfigurationManager;
 import com.abs.casino.common.util.hardware.data.HardwareInfo;
 import com.abs.casino.common.util.logkit.LoggingUtils;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.web.HttpClientConnection;
 import com.abs.casino.common.web.IdValueBean;
 import com.abs.casino.common.web.statistics.IStatisticsGetter;
 import com.abs.casino.common.web.statistics.StatisticsBuilder;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.gs.GameServer;
+import com.abs.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.gs.GameServer;
 import com.abs.casino.gs.managers.dblink.DBLinkCache;
 import com.abs.casino.gs.managers.payment.bonus.tracker.ExpiredBonusTracker;
 import com.abs.casino.gs.managers.payment.bonus.tracker.ExpiredFRBonusTracker;
@@ -36,7 +36,7 @@ import com.abs.casino.init.ApplicationScopeNames;
 import com.abs.casino.init.GsInitThread;
 import com.abs.casino.statistics.http.HttpClientCallbackHandler;
 import com.abs.casino.system.MetricsManager;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -50,7 +50,7 @@ import java.net.UnknownHostException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-import static com.dgphoenix.casino.common.configuration.messages.MessageManager.GAME_NAME_PREFIX;
+import static com.abs.casino.common.configuration.messages.MessageManager.GAME_NAME_PREFIX;
 
 public class Initializer implements ServletContextListener {
 

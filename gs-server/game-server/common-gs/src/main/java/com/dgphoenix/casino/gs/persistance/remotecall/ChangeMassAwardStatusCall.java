@@ -1,10 +1,10 @@
 package com.abs.casino.gs.persistance.remotecall;
 
-import com.dgphoenix.casino.common.cache.MassAwardCache;
-import com.dgphoenix.casino.common.cache.data.bonus.BaseMassAward;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
+import com.abs.casino.common.cache.MassAwardCache;
+import com.abs.casino.common.cache.data.bonus.BaseMassAward;
+import com.abs.casino.common.cache.data.bonus.BonusStatus;
 import com.abs.casino.common.remotecall.IRemoteCall;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;

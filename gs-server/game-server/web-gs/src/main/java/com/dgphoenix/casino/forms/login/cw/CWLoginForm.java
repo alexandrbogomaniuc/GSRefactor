@@ -2,10 +2,10 @@ package com.abs.casino.forms.login.cw;
 
 import com.abs.casino.common.util.DigitFormatter;
 import com.abs.casino.common.util.logkit.ThreadLog;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.BaseAction;
 import com.abs.casino.forms.login.CommonLoginForm;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CCommonWallet;
+import com.abs.casino.gs.managers.payment.wallet.CCommonWallet;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionErrors;

@@ -1,10 +1,10 @@
 package com.abs.casino.gs.managers.dblink;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
-import com.dgphoenix.casino.common.cache.data.payment.IWallet;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.gs.managers.payment.wallet.IWalletDBLink;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.gs.managers.payment.wallet.IWalletDBLink;
 
 import java.util.Collections;
 import java.util.Map;

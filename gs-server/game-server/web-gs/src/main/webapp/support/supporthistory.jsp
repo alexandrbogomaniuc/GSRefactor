@@ -1,11 +1,11 @@
 <%@ page import="com.abs.casino.init.ApplicationScopeNames" %>
 <%@ page import="com.abs.casino.web.history.GameHistoryListAction" %>
-<%@ page import="com.dgphoenix.casino.common.util.Pair" %>
+<%@ page import="com.abs.casino.common.util.Pair" %>
 <%@ page import="com.abs.casino.common.util.DigitFormatter" %>
 <%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.account.AccountInfo" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
-<%@ page import="com.dgphoenix.casino.account.AccountManager" %>
+<%@ page import="com.abs.casino.common.cache.data.account.AccountInfo" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.account.AccountManager" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="template" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>

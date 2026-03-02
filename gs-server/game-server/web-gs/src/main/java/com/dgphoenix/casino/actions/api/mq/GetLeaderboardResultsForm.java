@@ -1,7 +1,7 @@
 package com.abs.casino.actions.api.mq;
 
 import com.abs.casino.actions.enter.CommonActionForm;
-import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
+import com.abs.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

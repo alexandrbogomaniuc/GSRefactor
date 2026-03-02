@@ -1,12 +1,12 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.abs.casino.common.cache.data.bank.PlayerGameSettingsType" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameCache" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfo" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
 <%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.game.IBaseGameInfo" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     StringBuilder sb = new StringBuilder();

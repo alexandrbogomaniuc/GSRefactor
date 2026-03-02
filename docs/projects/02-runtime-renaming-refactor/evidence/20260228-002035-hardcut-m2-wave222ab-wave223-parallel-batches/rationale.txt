@@ -1,0 +1,9 @@
+W222A/W222B were selected as non-overlapping, low-risk declaration batches from remaining com.dgphoenix Java declarations under gs-server.
+
+Selection basis:
+- Hard constraints: 10-20 declarations per batch, declaration overlap=0, rewire overlap=0, cross overlaps=0.
+- Risk controls: preferred declarations with zero explicit Java import fanout (rewire-minimized), avoided web-gs declaration hotspots, and excluded non-source artifacts.
+- Batch A focuses on common-gs Kafka handler declarations with zero explicit importer rewires in current gs-server/mp-server Java source.
+- Batch B focuses on common-promo qualifier/template/type declarations with zero explicit importer rewires in current gs-server/mp-server Java source.
+
+Observed overlap metrics for this plan are zero across declaration/rewire/cross dimensions.

@@ -1,8 +1,8 @@
-<%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.*" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameCache" %>
+<%@ page import="com.abs.casino.common.cache.data.currency.Currency" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.game.*" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameCache" %>
 <%@ page import="java.util.*" %>
 
 <%

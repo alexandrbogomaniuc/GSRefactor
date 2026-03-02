@@ -1,25 +1,25 @@
 package com.abs.casino.gs.persistance.bet;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraBetPersister;
 import com.abs.casino.cassandra.persist.CassandraBigStorageBetPersister;
 import com.abs.casino.cassandra.persist.CassandraShortBetInfoPersister;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bet.PlayerBet;
 import com.abs.casino.common.cache.data.bet.ShortBetInfo;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.DBException;
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.common.transactiondata.storeddate.StoredItemType;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.Triple;
-import com.dgphoenix.casino.gs.GameServerComponentsHelper;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.util.Triple;
+import com.abs.casino.gs.GameServerComponentsHelper;
 import com.abs.casino.gs.managers.bet.PlayerBetPersister;
 import com.abs.casino.gs.managers.game.history.HistoryInformerManager;
 import com.abs.casino.gs.persistance.bet.NoneBetPersister;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

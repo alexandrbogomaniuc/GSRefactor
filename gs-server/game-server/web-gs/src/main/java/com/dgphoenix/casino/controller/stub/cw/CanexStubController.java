@@ -1,18 +1,18 @@
 package com.abs.casino.controller.stub.cw;
 
-import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.SubCasinoCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.SubCasinoCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
 import com.abs.casino.common.client.canex.request.CanexRequest;
 import com.abs.casino.common.client.canex.request.RequestType;
 import com.abs.casino.common.client.canex.response.CanexJsonResponse;
 import com.abs.casino.common.client.canex.response.CanexResponse;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.NotEnoughMoneyException;
 import com.abs.casino.controller.RequestContext;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
-import com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
+import com.abs.casino.gs.managers.payment.wallet.RemoteClientStubHelper;
 import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.dgphoenix.casino.gs.managers.payment.wallet.CCommonWallet.*;
+import static com.abs.casino.gs.managers.payment.wallet.CCommonWallet.*;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 @RestController

@@ -1,15 +1,15 @@
-<%@ page import="com.dgphoenix.casino.common.cache.*" %>
+<%@ page import="com.abs.casino.common.cache.*" %>
 <%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.Coin" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.Limit" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.SubCasino" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.*" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.Coin" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.Limit" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.SubCasino" %>
+<%@ page import="com.abs.casino.common.cache.data.currency.Currency" %>
+<%@ page import="com.abs.casino.common.cache.data.game.*" %>
 <%@ page import="com.abs.casino.common.cache.data.game.RoundFinishedHelper" %>
-<%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
+<%@ page import="com.abs.casino.system.configuration.GameServerConfiguration" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
 <%@ page import="com.google.common.collect.ComparisonChain" %>
 <%@ page import="java.util.stream.Collectors" %>
@@ -24,7 +24,7 @@
             Class.forName(absClassName);
             return absClassName;
         } catch (ClassNotFoundException ignore) {
-            return "com.dgphoenix.casino.singlegames.game.GameServlet";
+            return "com.abs.casino.singlegames.game.GameServlet";
         }
     }
 %>

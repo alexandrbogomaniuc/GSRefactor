@@ -1,7 +1,7 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameInfoTemplateCache" %>
 <%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfoTemplate" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.Collection" %>
@@ -228,7 +228,7 @@
         if (gameControllerClass.startsWith("com.casino.singlegames.")) {
             prefix = "agcc-";
             ind = 3;
-        } else if (gameControllerClass.startsWith("com.dgphoenix.casino.singlegames.")
+        } else if (gameControllerClass.startsWith("com.abs.casino.singlegames.")
                 || gameControllerClass.startsWith("com.abs.casino.singlegames.")) {
             prefix = "";
             ind = 4;

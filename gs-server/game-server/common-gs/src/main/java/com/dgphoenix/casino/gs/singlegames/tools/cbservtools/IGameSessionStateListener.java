@@ -1,6 +1,6 @@
 package com.abs.casino.gs.singlegames.tools.cbservtools;
 
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.GameSession;
 
 /**
  * User: Grien

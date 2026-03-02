@@ -1,6 +1,6 @@
 package com.abs.casino.cassandra;
 
-import com.dgphoenix.casino.common.util.NtpTimeProvider;
+import com.abs.casino.common.util.NtpTimeProvider;
 
 /**
  * Adapter NtpTimeProvider for cassandra driver

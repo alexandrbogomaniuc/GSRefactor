@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.dgphoenix.casino.common.cache.SubCasinoCache" %>
+<%@ page import="com.abs.casino.common.cache.SubCasinoCache" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.SubCasino" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.SubCasino" %>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
 <%@ page import="com.abs.casino.common.util.property.EnumProperty" %>
 
 <%

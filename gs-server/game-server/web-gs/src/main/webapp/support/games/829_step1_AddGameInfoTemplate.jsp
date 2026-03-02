@@ -1,9 +1,9 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameInfoTemplateCache" %>
 <%@ page import="com.abs.casino.common.cache.data.game.BaseGameConstants" %>
 <%@ page import="com.abs.casino.gs.persistance.remotecall.RemoteCallHelper" %>
 <%@ page import="com.abs.casino.common.cache.data.bank.BankConstants" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.*" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.Limit" %>
+<%@ page import="com.abs.casino.common.cache.data.game.*" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.Limit" %>
 <%@ page import="java.util.*" %>
 <%
     BaseGameInfoTemplate template;

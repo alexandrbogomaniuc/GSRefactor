@@ -1,8 +1,8 @@
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%@ page import="com.abs.casino.cassandra.persist.CassandraAccountInfoPersister" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.account.AccountInfo" %>
-<%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.common.cache.data.account.AccountInfo" %>
+<%@ page import="com.abs.casino.cassandra.CassandraPersistenceManager" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     CassandraPersistenceManager persistenceManager = ApplicationContextHelper.getApplicationContext()

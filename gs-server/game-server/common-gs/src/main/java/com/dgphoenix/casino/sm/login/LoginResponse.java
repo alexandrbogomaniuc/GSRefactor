@@ -1,7 +1,7 @@
 package com.abs.casino.sm.login;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.session.SessionInfo;
 
 /**
  * User: isirbis

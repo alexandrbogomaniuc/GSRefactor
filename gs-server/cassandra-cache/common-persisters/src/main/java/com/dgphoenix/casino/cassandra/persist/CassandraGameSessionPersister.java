@@ -1,24 +1,24 @@
 package com.abs.casino.cassandra.persist;
 
-import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
-import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.Caching;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.cassandra.persist.engine.configuration.Compression;
 import com.abs.casino.common.cache.CacheKeyInfo;
-import com.dgphoenix.casino.common.cache.CurrencyCache;
-import com.dgphoenix.casino.common.cache.IDistributedCache;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.CurrencyCache;
+import com.abs.casino.common.cache.IDistributedCache;
+import com.abs.casino.common.cache.data.bonus.BonusStatus;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.session.GameSession;
 import com.abs.casino.common.util.CalendarUtils;
 import com.abs.casino.common.util.LongPair;
 import com.abs.casino.common.util.StreamUtils;
-import com.dgphoenix.casino.common.util.*;
-import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.util.*;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 
 import org.apache.commons.lang.mutable.MutableInt;
 import org.apache.logging.log4j.LogManager;

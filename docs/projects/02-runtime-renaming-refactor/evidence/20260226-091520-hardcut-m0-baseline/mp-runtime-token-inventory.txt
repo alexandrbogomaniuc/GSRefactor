@@ -306,7 +306,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/config/CassandraContextConfiguration.java:5:import com.dgphoenix.casino.common.util.JsonHelper;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/config/CassandraContextConfiguration.java:6:import com.dgphoenix.casino.common.util.NtpTimeProvider;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:35:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:36:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:36:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:37:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:38:import com.dgphoenix.casino.common.util.RNG;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:39:import com.dgphoenix.casino.common.util.string.StringUtils;
@@ -368,7 +368,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/amazon/src/test/java/com/betsoft/casino/mp/amazon/TestModel.java:19:import com.dgphoenix.casino.common.util.RNG;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/MinesHandler.java:16:import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/service/IAnalyticsDBClientService.java:10:import com.dgphoenix.casino.common.util.Pair;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core/src/main/java/com/betsoft/casino/mp/model/RoundInfo.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core/src/main/java/com/betsoft/casino/mp/model/RoundInfo.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CloseFRBonusResultDto.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathQuestData.java:5:import com.dgphoenix.casino.common.util.Pair;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/PurchaseWeaponLootBoxHandler.java:18:import com.dgphoenix.casino.common.exception.CommonException;
@@ -848,7 +848,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetBotConfigInfoByNickNameRequest.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/request/ConfirmNextRoundBuyInRequest.java:1:package com.dgphoenix.casino.kafka.dto.bots.request;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/request/ConfirmNextRoundBuyInRequest.java:3:import com.dgphoenix.casino.kafka.dto.KafkaRequest;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IEnemyClass.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IEnemyClass.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IEnemyClass.java:4:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_dragonstone/pom.xml:19:            <groupId>com.dgphoenix.casino</groupId>
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/StatisticsService.java:3:import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
@@ -875,7 +875,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RemoteUnlocker.java:7:import com.dgphoenix.casino.kafka.dto.KafkaResponse;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RemoteUnlocker.java:8:import com.dgphoenix.casino.kafka.dto.RemoteUnlockRequest;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/RMSRoomDto.java:1:package com.dgphoenix.casino.kafka.dto;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IRoomEnemy.java:4:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IRoomEnemy.java:4:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQualifyGameState.java:6:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/response/BotStatusResponse.java:1:package com.dgphoenix.casino.kafka.dto.bots.response;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/bots/response/BotStatusResponse.java:3:import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
@@ -1063,7 +1063,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayerRoundInfo.java:6:import com.dgphoenix.casino.common.util.Pair;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayerRoundInfo.java:7:import com.dgphoenix.casino.common.util.RNG;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayerRoundInfo.java:8:import com.dgphoenix.casino.common.util.string.StringUtils;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ISeat.java:6:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ISeat.java:6:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ISeat.java:7:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ISeat.java:8:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/test/java/com/betsoft/casino/mp/common/TeleportTrajectoryGeneratorTest.java:4:import com.dgphoenix.casino.common.util.RNG;
@@ -1358,7 +1358,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/TMQEnemyQuestProgress.java:7:package com.dgphoenix.casino.thrift;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/thrift-api/src/main/java/com/dgphoenix/casino/thrift/CurrencyRate.java:7:package com.dgphoenix.casino.thrift;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/WaitingPlayersGameState.java:4:import com.dgphoenix.casino.common.exception.CommonException;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IRoomTemplate.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IRoomTemplate.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IEnemyStat.java:3:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IGame.java:8:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/model/RicochetBullet.java:13:import static com.dgphoenix.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
@@ -1369,7 +1369,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IPlayerRoundInfo.java:4:import com.dgphoenix.casino.common.util.Pair;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/StatusForNewBotHandler.java:7:import com.dgphoenix.casino.kafka.dto.bots.request.BotStatusRequest;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/StatusForNewBotHandler.java:8:import com.dgphoenix.casino.kafka.dto.bots.response.BotStatusResponse;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/bots/BotConfigInfo.java:5:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/bots/BotConfigInfo.java:5:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/bots/BotConfigInfo.java:6:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/PlayerRoundInfo.java:7:import com.dgphoenix.casino.common.util.Pair;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/KafkaBotRequestHandlerFactory.java:3:import com.dgphoenix.casino.kafka.dto.KafkaRequest;
@@ -1392,7 +1392,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IChestProb.java:3:import com.dgphoenix.casino.common.util.RNG;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/ConfirmNextRoundBuyInRequestHandler.java:7:import com.dgphoenix.casino.kafka.dto.bots.request.ConfirmNextRoundBuyInRequest;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/ConfirmNextRoundBuyInRequestHandler.java:8:import com.dgphoenix.casino.kafka.dto.bots.response.BotStatusResponse;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/quests/IQuest.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/quests/IQuest.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IShootResult.java:3:import com.dgphoenix.casino.common.util.Pair;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/BotLogOutHandler.java:7:import com.dgphoenix.casino.kafka.dto.bots.request.BotSitOutRequest;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/BotLogOutHandler.java:8:import com.dgphoenix.casino.kafka.dto.bots.response.BotLogOutResultDto;
@@ -1400,15 +1400,15 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/GameMap.java:19:import com.dgphoenix.casino.common.util.Pair;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/GameMap.java:20:import com.dgphoenix.casino.common.util.RNG;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/GameMap.java:42:    private static final int CRABS_GROUP = -1;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java:9:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java:9:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java:10:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java:11:import com.dgphoenix.casino.common.util.ILongIdGenerator;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java:12:import com.dgphoenix.casino.common.util.string.StringUtils;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/GetBotsMapRequestHandler.java:8:import com.dgphoenix.casino.kafka.dto.bots.request.GetBotsMapRequest;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/GetBotsMapRequestHandler.java:9:import com.dgphoenix.casino.kafka.dto.bots.response.BotsMapResponseDto;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IEnemy.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IEnemy.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IEnemy.java:4:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoomInfo.java:8:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoomInfo.java:8:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/LimitChecker.java:12:    private static final int CRABS_LIMIT = 30;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/LimitChecker.java:92:        return getCount(ENEMY_4) + getCount(ENEMY_5) + getCount(ENEMY_6) + getCount(ENEMY_7) + getCount(ENEMY_8) < CRABS_LIMIT;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/LimitChecker.java:100:        return CRABS_LIMIT - getCrabsCount();
@@ -1418,15 +1418,15 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/KafkaBotRequestHandler.java:3:import com.dgphoenix.casino.kafka.dto.KafkaRequest;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/KafkaBotRequestHandler.java:4:import com.dgphoenix.casino.kafka.dto.KafkaResponse;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/kafka/KafkaBotRequestHandler.java:5:import com.dgphoenix.casino.kafka.handler.KafkaRequestHandler;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IRoomPlayerInfo.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IRoomPlayerInfo.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/Enemy.java:9:import com.dgphoenix.casino.common.util.string.StringUtils;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ITransportEnemy.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ITransportEnemy.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/EnemyGame.java:14:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/gameconfig/GameTools.java:3:import com.dgphoenix.casino.common.util.Pair;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/gameconfig/GameTools.java:4:import com.dgphoenix.casino.common.util.RNG;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/gameconfig/GameTools.java:5:import com.dgphoenix.casino.common.util.Triple;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IActiveCashBonusSession.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ILeaderboard.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IActiveCashBonusSession.java:3:import com.abs.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ILeaderboard.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ILeaderboard.java:4:import com.dgphoenix.casino.common.mp.LeaderboardStatus;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/piratesdmc/pom.xml:19:            <groupId>com.dgphoenix.casino</groupId>
 /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/BattleGroundRoomBot.java:21:import com.dgphoenix.casino.common.util.RNG;

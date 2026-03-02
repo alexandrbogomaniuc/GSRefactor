@@ -1,8 +1,8 @@
 package com.abs.casino.promo;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.*;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.*;
 import com.abs.casino.common.promo.messages.server.notifications.tournament.LeaderBoard;
 import com.abs.casino.promo.persisters.CassandraTournamentRankPersister;
 import com.google.common.collect.Lists;

@@ -1,13 +1,13 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameCache" %>
+<%@ page import="com.abs.casino.common.cache.data.currency.Currency" %>
 <%@ page import="java.util.Set" %>
 <%@ page import="java.util.StringTokenizer" %>
 <%@ page import="java.util.TreeSet" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
-<%@ page import="com.dgphoenix.casino.common.util.CollectionUtils" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfoTemplate" %>
+<%@ page import="com.abs.casino.common.util.CollectionUtils" %>
+<%@ page import="com.abs.casino.common.cache.data.game.IBaseGameInfo" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     response.setContentType("text");

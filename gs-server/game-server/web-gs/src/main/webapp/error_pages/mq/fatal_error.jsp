@@ -3,7 +3,7 @@
 <%@ page import="org.apache.struts.Globals" %>
 <%@ page import="java.util.Locale" %>
 <%@ page import="java.net.URLDecoder" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%@ page import="static org.apache.commons.lang.StringUtils.isNotBlank" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 

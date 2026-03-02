@@ -28,9 +28,9 @@ import com.abs.casino.kafka.dto.BooleanResponseDto;
 import com.abs.casino.kafka.dto.SitOutRequest2;
 import com.abs.casino.kafka.dto.BonusStatusDto;
 
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.kafka.dto.*;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.kafka.dto.*;
 import com.abs.casino.kafka.dto.privateroom.request.*;
 import com.abs.casino.kafka.dto.privateroom.response.*;
 import com.abs.casino.kafka.service.KafkaMessageService;

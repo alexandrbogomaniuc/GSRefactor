@@ -1,6 +1,6 @@
 package com.abs.casino.common.promo;
 
-import com.dgphoenix.casino.common.promo.*;
+import com.abs.casino.common.promo.*;
 import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.abs.casino.common.currency.IHistoricalCurrencyRateManager;
 import com.abs.casino.common.exception.CommonException;

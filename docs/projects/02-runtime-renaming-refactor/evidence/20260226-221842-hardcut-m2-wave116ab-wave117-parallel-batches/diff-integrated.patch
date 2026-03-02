@@ -17,7 +17,7 @@ index d35141e3..5987d578 100644
 +package com.abs.casino.actions.game.battleground;
  
  import com.dgphoenix.casino.actions.enter.LanguageDetector;
- import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
+ import com.abs.casino.actions.enter.game.BaseStartGameAction;
 diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBForm.java
 index 183776c7..06cc76a0 100644
 --- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBForm.java
@@ -37,7 +37,7 @@ index aae914f9..f1dba493 100644
 +package com.abs.casino.actions.game.battleground;
  
  import com.dgphoenix.casino.actions.enter.LanguageDetector;
- import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
+ import com.abs.casino.actions.enter.game.BaseStartGameAction;
 diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameForm.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameForm.java
 index 8370daaf..b8e86ba0 100644
 --- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameForm.java
@@ -107,7 +107,7 @@ index 8f1f0806..9bd5dd55 100644
 +import com.abs.casino.forms.game.CommonFRBStartGameForm;
  import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
  import com.abs.casino.helpers.login.FRBonusHelper;
- import com.dgphoenix.casino.helpers.login.LoginHelper;
+ import com.abs.casino.helpers.login.LoginHelper;
 diff --git a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/pov/StartPovGameParams.java b/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/pov/StartPovGameParams.java
 index 12b2dc7d..17be5dce 100644
 --- a/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/pov/StartPovGameParams.java

@@ -1,17 +1,17 @@
 package com.abs.casino.actions.enter.game;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameCache;
-import com.dgphoenix.casino.common.cache.SubCasinoCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.game.GameGroup;
-import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
-import com.dgphoenix.casino.common.configuration.messages.MessageManager;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameCache;
+import com.abs.casino.common.cache.SubCasinoCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.game.GameGroup;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
+import com.abs.casino.common.configuration.messages.MessageManager;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.XmlWriterException;
 import com.abs.casino.common.util.string.StringBuilderWriter;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.xml.xmlwriter.Attribute;
 import com.abs.casino.common.util.xml.xmlwriter.XmlWriter;
 import org.apache.log4j.Logger;

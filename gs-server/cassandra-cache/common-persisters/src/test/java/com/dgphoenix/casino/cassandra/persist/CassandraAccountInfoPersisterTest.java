@@ -1,7 +1,7 @@
 package com.abs.casino.cassandra.persist;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.currency.Currency;
 import junit.framework.TestCase;
 import org.junit.Test;
 

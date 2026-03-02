@@ -1,6 +1,6 @@
 package com.abs.casino.actions.api;
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.BaseAction;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;

@@ -1,7 +1,7 @@
 package com.abs.casino.gs.managers.payment.wallet.tracker;
 
 import com.abs.casino.common.engine.tracker.AbstractCommonTracker;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import org.apache.log4j.Logger;
 
 import java.util.Map;

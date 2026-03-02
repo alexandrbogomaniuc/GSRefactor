@@ -1,9 +1,9 @@
 package com.abs.casino.system.configuration;
 
 import com.abs.casino.GeoIp;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraBlockedCountriesPersister;
-import com.dgphoenix.casino.common.cache.ServerConfigsCache;
+import com.abs.casino.common.cache.ServerConfigsCache;
 import com.abs.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
 import com.abs.casino.common.cache.data.server.ServerInfo;
 import com.abs.casino.common.config.GameServerConfig;
@@ -11,9 +11,9 @@ import com.abs.casino.common.config.GameServerConfigTemplate;
 import com.abs.casino.common.config.MountMonitoringEntry;
 import com.abs.casino.common.configuration.CasinoSystemType;
 import com.abs.casino.common.configuration.IGameServerConfiguration;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

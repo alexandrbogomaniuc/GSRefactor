@@ -1,10 +1,10 @@
 package com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.command;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraGameSessionExtendedPropertiesPersister;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 import org.apache.logging.log4j.LogManager;

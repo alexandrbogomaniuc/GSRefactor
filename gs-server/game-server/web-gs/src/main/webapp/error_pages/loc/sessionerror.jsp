@@ -1,6 +1,6 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="../error_header.jsp"/>
 <%

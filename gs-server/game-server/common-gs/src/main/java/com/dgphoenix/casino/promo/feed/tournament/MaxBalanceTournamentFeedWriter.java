@@ -1,14 +1,14 @@
 package com.abs.casino.promo.feed.tournament;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.IPromoCampaign;
-import com.dgphoenix.casino.common.promo.MaxBalanceTournamentPromoTemplate;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.IPromoCampaign;
+import com.abs.casino.common.promo.MaxBalanceTournamentPromoTemplate;
 import com.abs.casino.common.promo.feed.tournament.ITournamentFeedRecord;
 import com.abs.casino.common.promo.feed.tournament.MaxBalanceRecord;
 import com.abs.casino.common.promo.feed.tournament.TournamentFeed;
 import com.abs.casino.common.upload.JSchUploadClient;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.promo.feed.AbstractFeedWriter;
 import com.abs.casino.promo.tournaments.TournamentManager;
 import org.apache.commons.csv.CSVFormat;

@@ -1,6 +1,6 @@
 package com.abs.casino.cassandra.persist;
 
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.GameSession;
 
 /**
  * Created by quant on 07.04.17.

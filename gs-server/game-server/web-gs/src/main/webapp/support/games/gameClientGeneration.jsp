@@ -1,7 +1,7 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameInfoTemplateCache" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.util.Comparator" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfo" %>
 <%
     PrintWriter writer = response.getWriter();
     response.setContentType("text/plain");

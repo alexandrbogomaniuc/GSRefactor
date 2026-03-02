@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.common.util.Pair" %>
+<%@ page import="com.abs.casino.common.util.Pair" %>
 <%@ page import="com.abs.casino.support.configuration.ServerConfigurationAction" %>
 <%@ page import="com.abs.casino.support.configuration.ServerConfigurationAction.ServerConfigurationFieldType" %>
 <%@ page import="java.util.List" %>

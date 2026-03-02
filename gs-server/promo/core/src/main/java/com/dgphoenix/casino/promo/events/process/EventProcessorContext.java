@@ -1,10 +1,10 @@
 package com.abs.casino.promo.events.process;
 
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.promo.DesiredPrize;
-import com.dgphoenix.casino.common.promo.IPromoCampaign;
-import com.dgphoenix.casino.common.promo.PromoCampaignMember;
-import com.dgphoenix.casino.common.promo.PromoNotificationType;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.promo.DesiredPrize;
+import com.abs.casino.common.promo.IPromoCampaign;
+import com.abs.casino.common.promo.PromoCampaignMember;
+import com.abs.casino.common.promo.PromoNotificationType;
 
 import java.util.EnumSet;
 import java.util.HashSet;

@@ -1,7 +1,7 @@
 package com.abs.casino.actions.enter.game;
 
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.session.ClientType;
 
 /**
  * User: flsh

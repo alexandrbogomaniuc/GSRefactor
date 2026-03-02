@@ -1,20 +1,20 @@
 package com.abs.casino.actions.lobby;
 
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
 import com.abs.casino.common.cache.data.account.PlayerDeviceType;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bonus.Bonus;
+import com.abs.casino.common.cache.data.bonus.BonusStatus;
 import com.abs.casino.common.cache.data.game.BaseGameConstants;
-import com.dgphoenix.casino.common.cache.data.game.GameGroup;
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
-import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
-import com.dgphoenix.casino.common.configuration.messages.MessageManager;
+import com.abs.casino.common.cache.data.game.GameGroup;
+import com.abs.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
+import com.abs.casino.common.configuration.messages.MessageManager;
 import com.abs.casino.common.exception.BonusException;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.property.PropertyUtils;
 import com.abs.casino.common.util.string.StringIdGenerator;
 import com.abs.casino.common.web.BaseAction;
@@ -24,7 +24,7 @@ import com.abs.casino.entities.lobby.ShortGameInfo;
 import com.abs.casino.entities.lobby.StLobbyMode;
 import com.abs.casino.exceptions.LoginErrorException;
 import com.abs.casino.forms.lobby.STLobbyForm;
-import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
+import com.abs.casino.gs.managers.payment.bonus.BonusManager;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.abs.casino.sm.login.CWLoginRequest;
 import com.abs.casino.sm.login.GameLoginRequest;
@@ -39,8 +39,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
-import static com.dgphoenix.casino.common.configuration.messages.MessageManager.GAME_NAME_PREFIX;
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.configuration.messages.MessageManager.GAME_NAME_PREFIX;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 /**
  * User: Grien

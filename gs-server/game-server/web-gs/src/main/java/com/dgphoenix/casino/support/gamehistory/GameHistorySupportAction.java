@@ -1,8 +1,8 @@
 package com.abs.casino.support.gamehistory;
 
-import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.data.session.SessionInfo;
 import com.abs.casino.web.history.GameHistoryListAction;
 import com.abs.casino.web.history.GameHistoryListEntry;
 import com.abs.casino.web.history.GameHistoryListForm;

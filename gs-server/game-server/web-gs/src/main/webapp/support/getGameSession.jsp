@@ -1,7 +1,7 @@
 <%@ page import="com.abs.casino.cassandra.persist.CassandraGameSessionPersister" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.session.GameSession" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
-<%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
+<%@ page import="com.abs.casino.common.cache.data.session.GameSession" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.cassandra.CassandraPersistenceManager" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhevlakoval

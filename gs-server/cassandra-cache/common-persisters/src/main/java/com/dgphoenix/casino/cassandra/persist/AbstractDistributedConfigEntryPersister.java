@@ -1,13 +1,13 @@
 package com.abs.casino.cassandra.persist;
 
-import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
-import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.Caching;
 import com.abs.casino.common.cache.AbstractDistributedCache;
 import com.abs.casino.common.cache.ILoadingCache;
-import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.cache.data.IDistributedConfigEntry;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.nio.ByteBuffer;

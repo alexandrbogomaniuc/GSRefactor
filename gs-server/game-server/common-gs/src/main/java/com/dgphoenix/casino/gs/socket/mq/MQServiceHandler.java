@@ -1,38 +1,38 @@
 package com.abs.casino.gs.socket.mq;
 
-import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.cassandra.persist.*;
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.persist.*;
 import com.abs.casino.cassandra.persist.mp.*;
 import com.abs.casino.common.GameSessionExtendedProperties;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.BaseGameCache;
-import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
-import com.dgphoenix.casino.common.cache.CurrencyCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.bank.Coin;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.BaseGameCache;
+import com.abs.casino.common.cache.BaseGameInfoTemplateCache;
+import com.abs.casino.common.cache.CurrencyCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.Coin;
 import com.abs.casino.common.cache.data.bank.ILimit;
-import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
-import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
-import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.bet.PlayerBet;
+import com.abs.casino.common.cache.data.bonus.Bonus;
+import com.abs.casino.common.cache.data.bonus.BonusStatus;
+import com.abs.casino.common.cache.data.bonus.FRBonus;
+import com.abs.casino.common.cache.data.currency.Currency;
 import com.abs.casino.common.cache.data.game.BaseGameConstants;
-import com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate;
-import com.dgphoenix.casino.common.cache.data.game.GameType;
-import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
-import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.cache.data.game.BaseGameInfoTemplate;
+import com.abs.casino.common.cache.data.game.GameType;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
+import com.abs.casino.common.cache.data.payment.IWallet;
 import com.abs.casino.common.cache.data.payment.PaymentMode;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
+import com.abs.casino.common.cache.data.payment.WalletOperationStatus;
+import com.abs.casino.common.cache.data.payment.WalletOperationType;
 import com.abs.casino.common.cache.data.payment.transfer.ExternalPaymentTransaction;
 import com.abs.casino.common.cache.data.payment.transfer.TransactionStatus;
 import com.abs.casino.common.cache.data.payment.transfer.TransactionType;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.SessionInfo;
 import com.abs.casino.common.client.canex.request.friends.Friend;
 import com.abs.casino.common.client.canex.request.friends.GetFriendsResponse;
 import com.abs.casino.common.client.canex.request.onlineplayer.GetOnlinePlayersResponse;
@@ -45,26 +45,26 @@ import com.abs.casino.common.exception.AccountException;
 import com.abs.casino.common.exception.WalletException;
 import com.abs.casino.common.kpi.RoundKPIInfo;
 import com.abs.casino.common.mp.*;
-import com.dgphoenix.casino.common.promo.*;
+import com.abs.casino.common.promo.*;
 import com.abs.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.common.transport.TObject;
-import com.dgphoenix.casino.common.util.*;
+import com.abs.casino.common.util.*;
 import com.abs.casino.common.util.DigitFormatter;
 import com.abs.casino.common.util.KryoHelper;
 import com.abs.casino.common.util.property.PropertyUtils;
 import com.abs.casino.common.util.string.StringIdGenerator;
 import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.web.HttpRequestContextHolder;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
-import com.dgphoenix.casino.gs.GameServer;
+import com.abs.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.gs.GameServer;
 import com.abs.casino.gs.managers.dblink.DBLinkCache;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.gs.managers.game.session.GameSessionManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
+import com.abs.casino.gs.managers.payment.bonus.BonusManager;
 import com.abs.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.abs.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
 import com.abs.casino.gs.managers.payment.currency.CurrencyRatesManager;
-import com.dgphoenix.casino.gs.managers.payment.wallet.*;
+import com.abs.casino.gs.managers.payment.wallet.*;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.abs.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.abs.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;
@@ -95,7 +95,7 @@ import com.abs.casino.kafka.dto.CrashGameSettingDto;
 import com.abs.casino.kafka.dto.CurrencyRateDto;
 import com.abs.casino.kafka.dto.DetailedPlayerInfo2Dto;
 import com.abs.casino.kafka.dto.FRBonusDto;
-import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
+import com.abs.casino.kafka.dto.KafkaHandlerException;
 import com.abs.casino.kafka.dto.MQDataDto;
 import com.abs.casino.kafka.dto.MQDataWrapperDto;
 import com.abs.casino.kafka.dto.PlaceDto;
@@ -109,7 +109,7 @@ import com.abs.casino.kafka.dto.SitOutResultDto;
 import com.abs.casino.kafka.dto.SitOutTournamentSessionResultDto;
 import com.abs.casino.kafka.dto.StartNewRoundResponseDto;
 import com.abs.casino.kafka.dto.TournamentInfoDto;
-import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
+import com.abs.casino.kafka.dto.VoidKafkaResponse;
 import com.abs.casino.leaderboard.LeaderboardWinTracker;
 import com.abs.casino.leaderboard.LeaderboardWinUploader;
 import com.abs.casino.promo.PromoCampaignManager;
@@ -135,8 +135,8 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
 
-import static com.dgphoenix.casino.common.cache.data.game.GameMode.*;
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.cache.data.game.GameMode.*;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 /**
  * Service for handling thrift requests from MQ servers
@@ -451,7 +451,7 @@ public class MQServiceHandler {
                         && accountInfo.isGuest()) {
                     throw new KafkaHandlerException(-1, "Guest account wrong game mode: " + mode);
                 }
-                com.dgphoenix.casino.common.cache.data.game.GameMode gameMode = resolveMQMode(mode);
+                com.abs.casino.common.cache.data.game.GameMode gameMode = resolveMQMode(mode);
                 IBaseGameInfo gameInfo = BaseGameCache.getInstance()
                         .getGameInfoById(accountInfo.getBankId(), gameId, accountInfo.getCurrency());
                 transactionId = getTransactionId((int) gameId, accountInfo.getBankId(), transactionData);
@@ -807,7 +807,7 @@ public class MQServiceHandler {
                     IWallet wallet = SessionHelper.getInstance().getTransactionData().getWallet();
                     if (wallet == null) {
                         wallet = WalletProtocolFactory.getInstance().interceptCreateWallet(account, account.getBankId(), gameSession.getId(),
-                                (int) gameSession.getGameId(), com.dgphoenix.casino.common.cache.data.game.GameMode.REAL,
+                                (int) gameSession.getGameId(), com.abs.casino.common.cache.data.game.GameMode.REAL,
                                 gameSession.getClientType());
                     }
                     CommonGameWallet gameWallet = wallet.getGameWallet((int) gameSession.getGameId());
@@ -1038,7 +1038,7 @@ public class MQServiceHandler {
                     IWallet wallet = SessionHelper.getInstance().getTransactionData().getWallet();
                     if (wallet == null) {
                         wallet = WalletProtocolFactory.getInstance().interceptCreateWallet(account, account.getBankId(), gameSession.getId(),
-                                (int) gameSession.getGameId(), com.dgphoenix.casino.common.cache.data.game.GameMode.REAL,
+                                (int) gameSession.getGameId(), com.abs.casino.common.cache.data.game.GameMode.REAL,
                                 gameSession.getClientType());
                     }
                     CommonGameWallet gameWallet = wallet.getGameWallet((int) gameSession.getGameId());
@@ -1548,7 +1548,7 @@ public class MQServiceHandler {
                         int gameId = transaction.getGameId().intValue();
                         if (operationFromExt != null) {
                             CommonWallet cWallet = (CommonWallet) WalletProtocolFactory.getInstance().interceptCreateWallet(account,
-                                    account.getBankId(), gameSessionId, gameId, com.dgphoenix.casino.common.cache.data.game.GameMode.REAL,
+                                    account.getBankId(), gameSessionId, gameId, com.abs.casino.common.cache.data.game.GameMode.REAL,
                                     ClientType.FLASH);
                             CommonWalletOperation operation = cWallet.getGameWalletBetOperation(gameId);
                             LOG.debug("refundBuyIn: restore CommonWalletOperation, operationFromExt={}, from wallet operation={}",
@@ -1616,15 +1616,15 @@ public class MQServiceHandler {
                         request.getPrivateRoomId(), request.getPlayers());
             }
 
-            if (!(cw2Client instanceof com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient)) {
+            if (!(cw2Client instanceof com.abs.casino.payment.wallet.client.v4.CanexCWClient)) {
                 LOG.error("updatePlayersStatusInPrivateRoom: CWClient does not support " +
                         "updatePlayerStatusInPrivateRoom bankId:{}", bankId);
                 return new BGUpdateRoomResultDto(500, "Error: CWClient does not support " +
                         "updatePlayerStatusInPrivateRoom bankId:" + bankId, request.getPrivateRoomId(), request.getPlayers());
             }
 
-            com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
-                    (com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
+            com.abs.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
+                    (com.abs.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
 
             StringBuilder sb = new StringBuilder();
             for(BGPlayerDto tbgPlayer : request.getPlayers()) {
@@ -1722,14 +1722,14 @@ public class MQServiceHandler {
                 return false;
             }
 
-            if (!(cw2Client instanceof com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient)) {
+            if (!(cw2Client instanceof com.abs.casino.payment.wallet.client.v4.CanexCWClient)) {
                 LOG.error("invitePlayersToPrivateRoom: CWClient does not support " +
                         "invitePlayersToPrivateRoom bankId:{}", bankId);
                 return false;
             }
 
-            com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
-                    (com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
+            com.abs.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
+                    (com.abs.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
 
             List<String> externalIds = new ArrayList<>();
 
@@ -1906,14 +1906,14 @@ public class MQServiceHandler {
                 return tbgFriends;
             }
 
-            if (!(cw2Client instanceof com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient)) {
+            if (!(cw2Client instanceof com.abs.casino.payment.wallet.client.v4.CanexCWClient)) {
                 LOG.error("getFriends: CWClient does not support " +
                         "getFriends bankId:{}", bankId);
                 return tbgFriends;
             }
 
-            com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
-                    (com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
+            com.abs.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
+                    (com.abs.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
 
             LOG.debug("getFriends: externalId: {}", externalId, tbgFriend.getNickname());
 
@@ -2071,14 +2071,14 @@ public class MQServiceHandler {
                 return null;
             }
 
-            if (!(cw2Client instanceof com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient)) {
+            if (!(cw2Client instanceof com.abs.casino.payment.wallet.client.v4.CanexCWClient)) {
                 LOG.error("getOnlineStatus: CWClient does not support " +
                         "getOnlineStatus bankId:{}", bankId);
                 return null;
             }
 
-            com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
-                    (com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
+            com.abs.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
+                    (com.abs.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
 
             List<String> externalIds = new ArrayList<>();
 
@@ -2484,7 +2484,7 @@ public class MQServiceHandler {
                 long balance;
                 BankInfo bankInfo = BankInfoCache.getInstance().getBankInfo(account.getBankId());
                 if (WalletProtocolFactory.getInstance().isWalletBankWithGetBalanceSupported(bankInfo)) {
-                    com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient client = WalletProtocolFactory.getInstance()
+                    com.abs.casino.gs.managers.payment.wallet.v2.ICommonWalletClient client = WalletProtocolFactory.getInstance()
                             .getWalletProtocolManager(account.getBankId())
                             .getClient();
                     try {
@@ -2742,7 +2742,7 @@ public class MQServiceHandler {
                         } else {
                             BonusManager.getInstance().releaseBonus(bonus);
                         }
-                    } catch (com.dgphoenix.casino.common.exception.CommonException e) {
+                    } catch (com.abs.casino.common.exception.CommonException e) {
                         LOG.error("Bonus release failed, but processing started, bonus={}", bonus, e);
                         if (bonus.getStatus().equals(BonusStatus.RELEASED) ||
                                 bonus.getStatus().equals(BonusStatus.RELEASING)) {
@@ -2885,7 +2885,7 @@ public class MQServiceHandler {
                             BonusManager.getInstance().releaseBonus(bonus);
                         }
                     }
-                } catch (com.dgphoenix.casino.common.exception.CommonException e) {
+                } catch (com.abs.casino.common.exception.CommonException e) {
                     LOG.error("sitOutCashBonusSession: bonus release failed, but processing started, bonus={}, " +
                             "readyToRelease={}", bonus, readyToRelease, e);
                     if (bonus.getStatus().equals(BonusStatus.RELEASED) ||
@@ -3404,7 +3404,7 @@ public class MQServiceHandler {
                 transaction.getExtId());
         try {
             WalletProtocolFactory.getInstance().interceptCreateWallet(account, account.getBankId(), gameSession.getId(),
-                    (int) gameSession.getGameId(), com.dgphoenix.casino.common.cache.data.game.GameMode.REAL, sessionInfo.getClientType());
+                    (int) gameSession.getGameId(), com.abs.casino.common.cache.data.game.GameMode.REAL, sessionInfo.getClientType());
             WalletProtocolFactory.getInstance().interceptDebit(account.getId(), account.getBankId(), amount, dbLink,
                     sessionInfo, handler, mpRoundId);
             makeBet(sessionInfo, dbLink, gameSession, account, amount);
@@ -3547,10 +3547,10 @@ public class MQServiceHandler {
      * @param bankInfo {@code BankInfo} bank info
      * @param currency {@code Currency} currency for conversion
      * @return max possible profit
-     * @throws com.dgphoenix.casino.common.exception.CommonException if cuurency not found or conversion rate not found
+     * @throws com.abs.casino.common.exception.CommonException if cuurency not found or conversion rate not found
      */
     public double getCrashMaxProfit(IBaseGameInfo gameInfo, BankInfo bankInfo, Currency currency)
-            throws com.dgphoenix.casino.common.exception.CommonException {
+            throws com.abs.casino.common.exception.CommonException {
         @SuppressWarnings("unchecked")
         Map<String, String> properties = gameInfo.getPropertiesMap();
         long maxPlayerProfitInRound = getMaxPlayerProfitInRound(bankInfo, properties, BaseGameConstants.KEY_CRASHGAME_MAX_PLAYER_PROFIT);
@@ -3706,7 +3706,7 @@ public class MQServiceHandler {
         }
     }
 
-    private long getAccountId(String sessionId) throws com.dgphoenix.casino.common.exception.CommonException {
+    private long getAccountId(String sessionId) throws com.abs.casino.common.exception.CommonException {
         SessionHelper.getInstance().lock(sessionId);
         try {
             SessionHelper.getInstance().openSession();
@@ -3752,7 +3752,7 @@ public class MQServiceHandler {
         return !accountInfo.isGuest() && isReal;
     }
 
-    private long getRebuyAmount(long tournamentId, String playerCurrency) throws com.dgphoenix.casino.common.exception.CommonException {
+    private long getRebuyAmount(long tournamentId, String playerCurrency) throws com.abs.casino.common.exception.CommonException {
         long rebuyAmount = 0;
         IPromoCampaign promoCampaign = campaignManager.getPromoCampaign(tournamentId);
         if (promoCampaign != null && promoCampaign.getTemplate() instanceof MaxBalanceTournamentPromoTemplate) {
@@ -3764,22 +3764,22 @@ public class MQServiceHandler {
     }
 
     private CashBonusDto getBonus(long bonusId, long gameId, AccountInfo accountInfo)
-            throws com.dgphoenix.casino.common.exception.CommonException {
+            throws com.abs.casino.common.exception.CommonException {
         if (bonusId < 0) {
             return null;
         }
         Bonus bonus = BonusManager.getInstance().getById(bonusId);
         if (bonus == null || bonus.getStatus() != BonusStatus.ACTIVE || bonus.getAccountId() != accountInfo.getId()) {
             LOG.error("Bonus is invalid, bonusId={}, bonus={}, accountId={}", bonusId, bonus, accountInfo.getId());
-            throw new com.dgphoenix.casino.common.exception.CommonException("bonus is invalid");
+            throw new com.abs.casino.common.exception.CommonException("bonus is invalid");
         }
         if (!bonus.isReady()) {
             LOG.error("Bonus not ready, bonusId={}, bonus={}", bonusId, bonus);
-            throw new com.dgphoenix.casino.common.exception.CommonException("bonus is not ready yet");
+            throw new com.abs.casino.common.exception.CommonException("bonus is not ready yet");
         }
         if (!BonusManager.getInstance().bonusIsValidForGameId(bonus, accountInfo, gameId)) {
             LOG.error("gameId is not found for this bonus, bonusId={}, bonus={}", bonusId, bonus);
-            throw new com.dgphoenix.casino.common.exception.CommonException("gameId is not found for this bonus");
+            throw new com.abs.casino.common.exception.CommonException("gameId is not found for this bonus");
         }
         return new CashBonusDto(bonus.getId(), bonus.getTimeAwarded(), bonus.getExpirationDate(), bonus.getBalance(),
                 bonus.getAmount(), bonus.getAmountToRelease(), bonus.getRolloverMultiplier(), bonus.getBetSum(),
@@ -3803,12 +3803,12 @@ public class MQServiceHandler {
     }
 
     private List<BattlegroundInfoDto> getBattlegroundInfo(String sessionId, BankInfo bankInfo, Currency currency)
-            throws com.dgphoenix.casino.common.exception.CommonException {
+            throws com.abs.casino.common.exception.CommonException {
         Set<BattlegroundInfo> battlegroundInfos = tournamentBuyInHelper.
                 getBattlegroundInfos(sessionId, bankInfo.getId(), currency.getCode());
 
         List<BattlegroundInfoDto> result = null;
-        if (!com.dgphoenix.casino.common.util.CollectionUtils.isEmpty(battlegroundInfos)) {
+        if (!com.abs.casino.common.util.CollectionUtils.isEmpty(battlegroundInfos)) {
             result = new ArrayList<>(battlegroundInfos.size());
             for (BattlegroundInfo info : battlegroundInfos) {
                 result.add(convert(info));
@@ -3832,13 +3832,13 @@ public class MQServiceHandler {
     }
 
     private TournamentInfoDto getTournamentInfo(long tournamentId, AccountInfo accountInfo)
-            throws com.dgphoenix.casino.common.exception.CommonException {
+            throws com.abs.casino.common.exception.CommonException {
         if (tournamentId < 0) {
             return null;
         }
         IPromoCampaign promoCampaign = campaignManager.getPromoCampaign(tournamentId);
         if (promoCampaign == null) {
-            throw new com.dgphoenix.casino.common.exception.CommonException("Tournament not found");
+            throw new com.abs.casino.common.exception.CommonException("Tournament not found");
         }
         boolean reBuyAllowed = false;
         long buyInPrice = 0;
@@ -3865,7 +3865,7 @@ public class MQServiceHandler {
         if (details == null) {
             LOG.error("getTournamentInfo, playerDetails not found, tournamentId={}, accountId={}",
                     tournamentId, accountInfo.getId());
-            throw new com.dgphoenix.casino.common.exception.CommonException("Player not joined to tournament");
+            throw new com.abs.casino.common.exception.CommonException("Player not joined to tournament");
         }
         com.abs.casino.common.util.DatePeriod period = promoCampaign.getActionPeriod();
         return new TournamentInfoDto(
@@ -3885,7 +3885,7 @@ public class MQServiceHandler {
                 resetBalanceAfterRebuy);
     }
 
-    private com.dgphoenix.casino.common.cache.data.game.GameMode resolveMQMode(String mode) {
+    private com.abs.casino.common.cache.data.game.GameMode resolveMQMode(String mode) {
         if ("real".equalsIgnoreCase(mode) || "frb".equalsIgnoreCase(mode) || "tournament".equalsIgnoreCase(mode)) {
             return REAL;
         } else if ("cashbonus".equalsIgnoreCase(mode)) {
@@ -3918,7 +3918,7 @@ public class MQServiceHandler {
         if (dbLink == null) {
             try {
                 dbLink = GameServer.getInstance().restartGame(sessionInfo, gameSession);
-            } catch (com.dgphoenix.casino.common.exception.CommonException e) {
+            } catch (com.abs.casino.common.exception.CommonException e) {
                 LOG.error("Unable to create dbLink", e);
                 throw new KafkaHandlerException(-1, "Internal error, cannot create dbLink: " + e.getMessage());
             }
@@ -3945,7 +3945,7 @@ public class MQServiceHandler {
     }
 
     private void checkAvailablePromos(GameSession gameSession, AccountInfo accountInfo)
-            throws com.dgphoenix.casino.common.exception.CommonException {
+            throws com.abs.casino.common.exception.CommonException {
         if (!gameSession.isFRBonusGameSession() && !gameSession.isBonusGameSession() && gameSession.isRealMoney()) {
             Set<IPromoCampaign> active = campaignManager.getTournamentsForMultiplayerGames(gameSession.getBankId(),
                     gameSession.getGameId(), Status.STARTED, accountInfo);
@@ -4017,7 +4017,7 @@ public class MQServiceHandler {
     }
 
     private void storeLeaderboardContributions(long gameSessionId, long roundId, Map<Long, Double> contributions)
-            throws com.dgphoenix.casino.common.exception.CommonException {
+            throws com.abs.casino.common.exception.CommonException {
         LOG.info("Storing leaderboard contributions for gameSessionId={}, roundId={}: {}", gameSessionId,
                 roundId, contributions);
         GameSessionExtendedProperties properties = extendedPropertiesPersister.get(gameSessionId);
@@ -4164,7 +4164,7 @@ public class MQServiceHandler {
         boolean needSendWin = true;
         try {
             WalletProtocolFactory.getInstance().interceptCreateWallet(account, account.getBankId(), gameSession.getId(),
-                    (int) gameSession.getGameId(), com.dgphoenix.casino.common.cache.data.game.GameMode.REAL,
+                    (int) gameSession.getGameId(), com.abs.casino.common.cache.data.game.GameMode.REAL,
                     gameSession.getClientType());
             dbLink.updateLastActivity();
             String extTransactionId = getExternalTransactionIdForMpGame(account.getId(), roomId, roundId);
@@ -4236,7 +4236,7 @@ public class MQServiceHandler {
 
     private void makeWin(SessionInfo sessionInfo, GameSession gameSession, IDBLink dbLink, long winAmount,
                          long returnedBet, boolean roundFinished, RoundInfoResultDto roundInfoResult, Long operationId)
-            throws com.dgphoenix.casino.common.exception.CommonException {
+            throws com.abs.casino.common.exception.CommonException {
         gameSession.update(Math.round(roundInfoResult.getBet() * 100), Math.round(roundInfoResult.getPayout() * 100), 0, 0,
                 null, null, operationId);
         dbLink.interceptBet(0, winAmount + returnedBet);
@@ -4532,7 +4532,7 @@ public class MQServiceHandler {
         if (wallet == null) {
             wallet = (CommonWallet) WalletProtocolFactory.getInstance().interceptCreateWallet(account,
                     account.getBankId(), gameSession.getId(), gameId,
-                    com.dgphoenix.casino.common.cache.data.game.GameMode.REAL, gameSession.getClientType());
+                    com.abs.casino.common.cache.data.game.GameMode.REAL, gameSession.getClientType());
         }
         CommonWalletOperation operation = wallet.getCurrentWalletOperation(gameId);
         if (operation != null) {
@@ -4860,14 +4860,14 @@ public class MQServiceHandler {
                 return false;
             }
 
-            if (!(cw2Client instanceof com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient)) {
+            if (!(cw2Client instanceof com.abs.casino.payment.wallet.client.v4.CanexCWClient)) {
                 LOG.error("pushOnlineRoomsPlayers: CWClient does not support " +
                         "pushOnlineRoomsPlayers bankId:{}", bankId);
                 return false;
             }
 
-            com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
-                    (com.dgphoenix.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
+            com.abs.casino.payment.wallet.client.v4.CanexCWClient canexCWClient =
+                    (com.abs.casino.payment.wallet.client.v4.CanexCWClient) cw2Client;
 
             return canexCWClient.pushRoomsPlayers(rooms);
 

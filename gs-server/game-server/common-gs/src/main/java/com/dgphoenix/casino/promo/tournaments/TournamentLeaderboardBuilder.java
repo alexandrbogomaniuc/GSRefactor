@@ -1,15 +1,15 @@
 package com.abs.casino.promo.tournaments;
 
-import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.data.account.AccountInfo;
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.*;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.*;
 import com.abs.casino.common.promo.feed.tournament.MaxBalanceRecord;
 import com.abs.casino.common.promo.feed.tournament.TournamentFeed;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.gs.singlegames.tools.util.NumberUtils;
 import com.abs.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 import com.abs.casino.promo.tournaments.messages.PlaceInfo;

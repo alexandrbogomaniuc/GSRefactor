@@ -1,4 +1,4 @@
-<%@ page import="com.dgphoenix.casino.gs.GameServer" %>
+<%@ page import="com.abs.casino.gs.GameServer" %>
 <%@ page import="com.abs.casino.init.ShutdownFilter" %>
 
 <%

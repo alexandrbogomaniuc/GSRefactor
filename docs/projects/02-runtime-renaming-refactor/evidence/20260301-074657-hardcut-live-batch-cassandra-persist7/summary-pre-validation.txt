@@ -1,0 +1,4 @@
+timestamp_utc=2026-03-01T07:46:57Z
+batch=live-cassandra-persist7
+targets=ExtendedAccountInfoPersister,ExtendedAccountInfoPersisterInstanceHolder,ILazyLoadingPersister,ICachePersister,ICassandraBaseGameInfoPersister,IHttpClientStatisticsPersister,IAccountInfoPersister
+remaining_after=300

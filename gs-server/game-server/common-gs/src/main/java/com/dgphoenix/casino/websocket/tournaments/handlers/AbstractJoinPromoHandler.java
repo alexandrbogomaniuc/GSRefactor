@@ -1,11 +1,11 @@
 package com.abs.casino.websocket.tournaments.handlers;
 
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.transport.TObject;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.transport.TObject;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.promo.tournaments.messages.Error;
 import com.abs.casino.support.ErrorPersisterHelper;
 import com.abs.casino.websocket.tournaments.IMessageHandler;

@@ -1,5 +1,5 @@
 <%@ page import="com.abs.casino.common.web.BaseAction" %>
-<%@ page import="com.dgphoenix.casino.gs.GameServer" %>
+<%@ page import="com.abs.casino.gs.GameServer" %>
 <%@ page import="org.apache.struts.Globals" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>

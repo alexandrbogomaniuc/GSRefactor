@@ -1,6 +1,6 @@
 package com.abs.casino.common.util;
 
-import com.dgphoenix.casino.common.util.NtpTimeProvider;
+import com.abs.casino.common.util.NtpTimeProvider;
 import com.abs.casino.common.util.NtpWrapper;
 import junit.framework.Assert;
 import org.apache.commons.net.ntp.TimeInfo;

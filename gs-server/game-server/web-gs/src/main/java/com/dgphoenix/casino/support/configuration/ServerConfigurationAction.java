@@ -1,13 +1,13 @@
 package com.abs.casino.support.configuration;
 
-import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-import com.dgphoenix.casino.common.cache.ServerConfigsCache;
-import com.dgphoenix.casino.common.cache.ServerConfigsTemplateCache;
-import com.dgphoenix.casino.common.config.GameServerConfig;
-import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
+import com.abs.casino.common.cache.IDistributedCacheEntry;
+import com.abs.casino.common.cache.ServerConfigsCache;
+import com.abs.casino.common.cache.ServerConfigsTemplateCache;
+import com.abs.casino.common.config.GameServerConfig;
+import com.abs.casino.common.config.GameServerConfigTemplate;
 import com.abs.casino.common.configuration.CasinoSystemType;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.Pair;
 import com.abs.casino.common.util.ReflectionUtils;
 import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
 import org.apache.commons.lang.StringUtils;

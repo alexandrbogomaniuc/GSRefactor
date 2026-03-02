@@ -1,7 +1,7 @@
 package com.abs.casino.exceptions;
 
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.gs.managers.payment.wallet.CWError;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.gs.managers.payment.wallet.CWError;
 
 /**
  * User: isirbis

@@ -1,23 +1,23 @@
 package com.abs.casino.payment.wallet.client.v4;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.currency.Currency;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationStatus;
-import com.dgphoenix.casino.common.cache.data.payment.WalletOperationType;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.currency.Currency;
+import com.abs.casino.common.cache.data.payment.WalletOperationStatus;
+import com.abs.casino.common.cache.data.payment.WalletOperationType;
+import com.abs.casino.common.cache.data.session.ClientType;
 import com.abs.casino.common.client.canex.request.privateroom.Status;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.WalletException;
-import com.dgphoenix.casino.common.util.CollectionUtils;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.xml.IXmlRequestResult;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletStatusResult;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletWagerResult;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
-import com.dgphoenix.casino.gs.managers.payment.wallet.*;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v4.ICommonWalletClient;
+import com.abs.casino.gs.managers.payment.wallet.*;
+import com.abs.casino.gs.managers.payment.wallet.v4.ICommonWalletClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.dgphoenix.casino.gs.managers.payment.wallet.CCommonWallet.*;
+import static com.abs.casino.gs.managers.payment.wallet.CCommonWallet.*;
 
 /**
  * User: flsh

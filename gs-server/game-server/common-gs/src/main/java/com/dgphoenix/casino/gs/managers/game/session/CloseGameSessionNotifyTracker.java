@@ -1,6 +1,6 @@
 package com.abs.casino.gs.managers.game.session;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.tracker.AbstractDelegatedTaskTracker;
 import com.abs.casino.tracker.DelegatedTask;
 import org.apache.log4j.Logger;

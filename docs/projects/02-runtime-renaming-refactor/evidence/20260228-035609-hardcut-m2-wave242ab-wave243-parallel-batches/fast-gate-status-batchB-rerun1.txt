@@ -1,0 +1,1 @@
+STEP01-08_FAIL rc1=0 rc2=0 rc3=0 rc4=0 rc5=0 rc6=1 rc7=1 rc8=0 STEP09_rc=2

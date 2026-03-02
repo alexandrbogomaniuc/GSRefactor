@@ -1,9 +1,9 @@
 package com.abs.casino.common.cache;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.CurrencyRateMultiplierContainer;
-import com.dgphoenix.casino.common.cache.CurrencyRateMultiplierLoader;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.CurrencyRateMultiplierContainer;
+import com.abs.casino.common.cache.CurrencyRateMultiplierLoader;
+import com.abs.casino.common.cache.data.bank.BankInfo;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

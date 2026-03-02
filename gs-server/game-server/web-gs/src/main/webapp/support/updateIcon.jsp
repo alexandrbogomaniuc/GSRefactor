@@ -1,8 +1,8 @@
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
-<%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.cassandra.CassandraPersistenceManager" %>
 <%@ page import="com.abs.casino.promo.persisters.CassandraTournamentIconPersister" %>
 <%@ page import="com.abs.casino.promo.icon.TournamentIcon" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%!
     CassandraPersistenceManager cpm =
             ApplicationContextHelper.getApplicationContext().getBean(CassandraPersistenceManager.class);

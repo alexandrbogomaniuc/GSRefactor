@@ -1,6 +1,6 @@
 package com.abs.casino.cassandra;
 
-import com.dgphoenix.casino.common.lock.ILockManager;
+import com.abs.casino.common.lock.ILockManager;
 
 public interface IRemoteUnlocker {
 

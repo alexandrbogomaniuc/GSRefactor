@@ -1,6 +1,6 @@
 package com.abs.casino.sm.login;
 
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.game.GameMode;
 
 /**
  * User: isirbis

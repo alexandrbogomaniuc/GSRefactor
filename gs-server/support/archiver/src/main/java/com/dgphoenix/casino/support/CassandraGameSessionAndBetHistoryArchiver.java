@@ -1,7 +1,7 @@
 package com.abs.casino.support;
 
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.exception.CommonException;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

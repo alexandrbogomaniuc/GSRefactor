@@ -2,8 +2,8 @@
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="com.abs.casino.common.games.CdnCheckResult" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.cassandra.CassandraPersistenceManager" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%!
     PrintWriter pr;

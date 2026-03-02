@@ -1,6 +1,6 @@
 package com.abs.casino.common.promo;
 
-import com.dgphoenix.casino.common.promo.*;
+import com.abs.casino.common.promo.*;
 import com.abs.casino.common.exception.PromoCreationException;
 
 public interface IPromoLocalization {

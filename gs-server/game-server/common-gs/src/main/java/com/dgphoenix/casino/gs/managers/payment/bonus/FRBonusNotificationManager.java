@@ -1,10 +1,10 @@
 package com.abs.casino.gs.managers.payment.bonus;
 
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
-import com.dgphoenix.casino.common.cache.data.payment.bonus.FRBonusNotification;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.data.bonus.BonusStatus;
+import com.abs.casino.common.cache.data.payment.bonus.FRBonusNotification;
 import com.abs.casino.common.cache.data.payment.frb.FRBonusNotificationStatus;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.gs.managers.payment.bonus.client.frb.FRBRESTNotificationClient;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusNotificationTracker;
 import org.apache.logging.log4j.LogManager;

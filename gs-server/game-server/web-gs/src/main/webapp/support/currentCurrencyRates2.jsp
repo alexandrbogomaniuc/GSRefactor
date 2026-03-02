@@ -1,15 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.dgphoenix.casino.common.cache.CurrencyCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
+<%@ page import="com.abs.casino.common.cache.CurrencyCache" %>
+<%@ page import="com.abs.casino.common.cache.data.currency.Currency" %>
 <%@ page import="com.abs.casino.gs.managers.payment.currency.CurrencyRatesManager" %>
-<%@ page import="com.dgphoenix.casino.common.exception.CommonException" %>
+<%@ page import="com.abs.casino.common.exception.CommonException" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.fasterxml.jackson.databind.ObjectMapper" %>
 <%@ page import="com.fasterxml.jackson.annotation.JsonInclude" %>
 <%@ page import="static org.apache.http.entity.ContentType.APPLICATION_JSON" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Collection" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
 
 <%!
     static class ConvertedCurrency {

@@ -1,7 +1,7 @@
 package com.abs.casino.gs;
 
-import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.promo.IPromoCampaignManager;
+import com.abs.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.gs.managers.game.history.HistoryInformerManager;
 import com.abs.casino.promo.IPromoMessagesDispatcher;
 import com.abs.casino.promo.tournaments.TournamentManager;

@@ -6,11 +6,11 @@
 package com.abs.casino.gs;
 
 import com.abs.casino.GeoIp;
-import com.dgphoenix.casino.account.AccountManager;
+import com.abs.casino.account.AccountManager;
 import com.abs.casino.cassandra.AccountDistributedLockManager;
 import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.DistributedLockManager;
-import com.dgphoenix.casino.cassandra.persist.*;
+import com.abs.casino.cassandra.persist.*;
 import com.abs.casino.cassandra.persist.CassandraShortBetInfoPersister;
 import com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
 import com.abs.casino.cassandra.persist.CassandraMassAwardRestrictionPersister;
@@ -21,19 +21,19 @@ import com.abs.casino.cassandra.persist.CassandraBaseGameInfoPersister;
 import com.abs.casino.cassandra.persist.CassandraRemoteCallPersister;
 import com.abs.casino.cassandra.persist.mp.BattlegroundHistoryPersister;
 import com.abs.casino.cassandra.persist.mp.RoundKPIInfoPersister;
-import com.dgphoenix.casino.common.DomainSession;
-import com.dgphoenix.casino.common.SessionHelper;
+import com.abs.casino.common.DomainSession;
+import com.abs.casino.common.SessionHelper;
 import com.abs.casino.common.api.ICommonManager;
-import com.dgphoenix.casino.common.cache.*;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.bonus.Bonus;
-import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
+import com.abs.casino.common.cache.*;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.account.LasthandInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bonus.Bonus;
+import com.abs.casino.common.cache.data.bonus.BonusStatus;
 import com.abs.casino.common.cache.data.bonus.BonusSystemType;
-import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
-import com.dgphoenix.casino.common.cache.data.game.*;
-import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.cache.data.bonus.FRBonus;
+import com.abs.casino.common.cache.data.game.*;
+import com.abs.casino.common.cache.data.payment.IWallet;
 import com.abs.casino.common.cache.data.payment.frb.IFRBonusWin;
 import com.abs.casino.common.cache.data.server.ServerInfo;
 import com.abs.casino.common.cache.data.session.ClientType;
@@ -47,16 +47,16 @@ import com.abs.casino.common.games.StartGameHelpers;
 import com.abs.casino.common.cache.data.session.SessionInfo;
 import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.abs.casino.common.engine.tracker.DelayedExecutor;
-import com.dgphoenix.casino.common.exception.*;
+import com.abs.casino.common.exception.*;
 import com.abs.casino.common.exception.AccountLockedException;
 import com.abs.casino.common.exception.CannotCloseMultiplayerGameException;
 import com.abs.casino.common.exception.MaintenanceModeException;
 import com.abs.casino.common.exception.StartParameters;
 import com.abs.casino.common.games.*;
-import com.dgphoenix.casino.common.promo.IPromoCampaignManager;
-import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
+import com.abs.casino.common.promo.IPromoCampaignManager;
+import com.abs.casino.common.promo.PromoCampaignMemberInfos;
 import com.abs.casino.common.remotecall.PersistableCall;
-import com.dgphoenix.casino.common.util.*;
+import com.abs.casino.common.util.*;
 import com.abs.casino.common.util.LongIdGeneratorFactory;
 import com.abs.casino.common.util.ReflectionUtils;
 import com.abs.casino.common.util.BidirectionalMultivalueMap;
@@ -64,10 +64,10 @@ import com.abs.casino.common.util.IIntegerIdGenerator;
 import com.abs.casino.common.util.ILongIdGenerator;
 import com.abs.casino.common.util.hardware.HardwareConfigurationManager;
 import com.abs.casino.common.util.logkit.LogUtils;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.util.system.Metric;
 import com.abs.casino.common.util.web.HttpClientConnection;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.gs.IGameServer;
 import com.abs.casino.gs.managers.ICloseGameProcessor;
 import com.abs.casino.gs.managers.dblink.DBLinkCache;
@@ -75,9 +75,9 @@ import com.abs.casino.gs.managers.dblink.FRBonusDBLink;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.gs.managers.game.engine.GameEngineManager;
 import com.abs.casino.gs.managers.game.engine.IGameEngine;
-import com.dgphoenix.casino.gs.managers.payment.IStartGameProcessor;
-import com.dgphoenix.casino.gs.managers.payment.bonus.BonusManager;
-import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
+import com.abs.casino.gs.managers.payment.IStartGameProcessor;
+import com.abs.casino.gs.managers.payment.bonus.BonusManager;
+import com.abs.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.abs.casino.gs.managers.payment.bonus.FRBonusWinRequestFactory;
 import com.abs.casino.gs.managers.payment.bonus.tracker.BonusTracker;
 import com.abs.casino.gs.managers.payment.bonus.tracker.FRBonusNotificationTracker;
@@ -86,7 +86,7 @@ import com.abs.casino.gs.managers.payment.currency.CurrencyRatesManager;
 import com.abs.casino.gs.managers.payment.transfer.processor.EmptyStartGameProcessor;
 import com.abs.casino.gs.managers.payment.transfer.tracker.PaymentTransactionTracker;
 import com.abs.casino.gs.managers.payment.wallet.WalletPersister;
-import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
+import com.abs.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 import com.abs.casino.gs.managers.payment.wallet.tracker.WalletTracker;
 import com.abs.casino.gs.persistance.GameSessionPersister;
 import com.abs.casino.gs.persistance.ILasthandPersister;
@@ -101,7 +101,7 @@ import com.abs.casino.services.PlayerBetHistoryService;
 import com.abs.casino.services.bonus.ForbiddenGamesForBonusProvider;
 import com.abs.casino.sm.tracker.logout.LogoutTracker;
 import com.abs.casino.system.MetricsManager;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.ApplicationContext;
@@ -118,8 +118,8 @@ import static com.abs.casino.gs.singlegames.tools.cbservtools.IGameSessionStateL
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class GameServer implements IGameServer, ICommonManager {
-    private static final Logger LOG = LogManager.getLogger(com.dgphoenix.casino.gs.GameServer.class);
-    private static final com.dgphoenix.casino.gs.GameServer instance = new com.dgphoenix.casino.gs.GameServer();
+    private static final Logger LOG = LogManager.getLogger(com.abs.casino.gs.GameServer.class);
+    private static final com.abs.casino.gs.GameServer instance = new com.abs.casino.gs.GameServer();
     public static final long SERVER_INFO_UPDATE_INTERVAL = 5000;
 
     private final GameServerConfiguration gameServerConfiguration;
@@ -170,7 +170,7 @@ public class GameServer implements IGameServer, ICommonManager {
         playerBetHistoryService = applicationContext.getBean("playerBetHistoryService", PlayerBetHistoryService.class);
     }
 
-    public static com.dgphoenix.casino.gs.GameServer getInstance() {
+    public static com.abs.casino.gs.GameServer getInstance() {
         return instance;
     }
 
@@ -230,7 +230,7 @@ public class GameServer implements IGameServer, ICommonManager {
             BonusTracker.getInstance().startup();
             LeaderboardWinTracker.getInstance().startup();
 
-            executor.scheduleWithFixedDelay(new com.dgphoenix.casino.gs.GameServer.RemoteCallUpdaterTask(), SERVER_INFO_UPDATE_INTERVAL,
+            executor.scheduleWithFixedDelay(new com.abs.casino.gs.GameServer.RemoteCallUpdaterTask(), SERVER_INFO_UPDATE_INTERVAL,
                     SERVER_INFO_UPDATE_INTERVAL, TimeUnit.MILLISECONDS);
             LongIdGeneratorFactory.getInstance().addGenerator(IdGenerator.getInstance());
             initialized = true;
@@ -311,7 +311,7 @@ public class GameServer implements IGameServer, ICommonManager {
      */
     public void dsoStarted() {
         host = "games" + gameServerConfiguration.getGsDomain();
-        executor.scheduleWithFixedDelay(new com.dgphoenix.casino.gs.GameServer.ServerInfoUpdaterTask(), SERVER_INFO_UPDATE_INTERVAL,
+        executor.scheduleWithFixedDelay(new com.abs.casino.gs.GameServer.ServerInfoUpdaterTask(), SERVER_INFO_UPDATE_INTERVAL,
                 SERVER_INFO_UPDATE_INTERVAL, TimeUnit.MILLISECONDS);
     }
 

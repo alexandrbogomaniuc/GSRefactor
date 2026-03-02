@@ -1,9 +1,9 @@
 package com.abs.casino.promo.tournaments;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.*;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.*;
 import com.abs.casino.common.promo.feed.tournament.TournamentFeed;
 import com.abs.casino.common.upload.JSchUploadClient;
 import com.abs.casino.common.util.string.StringIdGenerator;
@@ -14,7 +14,7 @@ import com.abs.casino.promo.persisters.CassandraTournamentIconPersister;
 import com.abs.casino.promo.tournaments.messages.NewTournament;
 import com.abs.casino.promo.tournaments.messages.ShortTournamentInfo;
 import com.abs.casino.promo.tournaments.messages.TournamentStateChanged;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import com.abs.casino.websocket.tournaments.ISocketClient;
 import com.abs.casino.websocket.tournaments.TournamentWebSocketSessionsController;
 import com.jcraft.jsch.JSchException;

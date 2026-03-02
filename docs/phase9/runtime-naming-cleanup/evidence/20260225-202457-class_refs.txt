@@ -332,7 +332,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/service/LockService.java:5:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/service/LockService.java:6:import com.dgphoenix.casino.common.lock.ILockManager;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/persistance/src/main/java/com/betsoft/casino/mp/data/service/LockService.java:7:import com.dgphoenix.casino.common.lock.LockingInfo;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core/src/main/java/com/betsoft/casino/mp/model/RoundInfo.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core/src/main/java/com/betsoft/casino/mp/model/RoundInfo.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/IKafkaRequestMultiPlayer.java:1:package com.dgphoenix.casino.promo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/promo/core/src/main/java/com/dgphoenix/casino/promo/IKafkaRequestMultiPlayer.java:3:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/support/archiver/src/main/java/com/dgphoenix/casino/support/CassandraPlayerSessionArchiver.java:1:package com.dgphoenix.casino.support;
@@ -1030,7 +1030,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/BotServiceClient.java:25:import com.dgphoenix.casino.kafka.dto.bots.response.BotStatusResponse;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/BotServiceClient.java:26:import com.dgphoenix.casino.kafka.dto.bots.response.BotsMapResponseDto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/client/canex/request/onlinerooms/PushRoomsPlayersOutput.java:1:package com.dgphoenix.casino.common.client.canex.request.onlinerooms;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IRoomTemplate.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IRoomTemplate.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentManager.java:1:package com.dgphoenix.casino.promo.tournaments;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentManager.java:3:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/tournaments/TournamentManager.java:4:import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
@@ -1070,7 +1070,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/events/process/PrizeWonBalanceChanger.java:9:import com.dgphoenix.casino.gs.managers.dblink.IGameDBLink;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:5:import com.dgphoenix.casino.common.util.RNG;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/AddWinRequestDto.java:1:package com.dgphoenix.casino.kafka.dto;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/bots/BotConfigInfo.java:5:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/bots/BotConfigInfo.java:5:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/bots/BotConfigInfo.java:6:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CurrencyRateDto.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/VoidKafkaResponse.java:1:package com.dgphoenix.casino.kafka.dto;
@@ -1341,7 +1341,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/TournamentEndedHandler.java:5:import com.dgphoenix.casino.kafka.handler.KafkaOuterRequestHandler;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/RoomInfoResultDto.java:1:package com.dgphoenix.casino.kafka.dto.privateroom.response;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/RoomInfoResultDto.java:3:import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/quests/IQuest.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/quests/IQuest.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/UnknownCurrencyException.java:1:package com.dgphoenix.casino.common.exception;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/NotificationShownHandler.java:1:package com.dgphoenix.casino.promo.messages.handlers;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/NotificationShownHandler.java:3:import com.dgphoenix.casino.common.exception.CommonException;
@@ -1374,14 +1374,14 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/NotificationsShownProcessor.java:9:import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/NotificationsShownProcessor.java:10:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/NotificationsShownProcessor.java:11:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.command.ILockedCommandProcessor;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/NotificationsShownProcessor.java:12:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/NotificationsShownProcessor.java:13:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/NotificationsShownProcessor.java:12:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/NotificationsShownProcessor.java:13:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/NotificationsShownProcessor.java:14:import com.dgphoenix.casino.promo.IPromoMessagesDispatcher;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/NotificationsShownProcessor.java:15:import com.dgphoenix.casino.websocket.IWebSocketSessionsController;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IEnemyClass.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IEnemyClass.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IEnemyClass.java:4:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:35:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:36:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:36:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:37:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:38:import com.dgphoenix.casino.common.util.RNG;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:39:import com.dgphoenix.casino.common.util.string.StringUtils;
@@ -1407,8 +1407,8 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoMessagesProcessor.java:9:import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoMessagesProcessor.java:10:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoMessagesProcessor.java:11:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.command.ILockedCommandProcessor;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoMessagesProcessor.java:12:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoMessagesProcessor.java:13:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoMessagesProcessor.java:12:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoMessagesProcessor.java:13:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoMessagesProcessor.java:14:import com.dgphoenix.casino.promo.PromoNotificationsCreator;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/AddWinWithSitOutRequest.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/GetExternalAccountIdsResponseDto.java:1:package com.dgphoenix.casino.kafka.dto;
@@ -1435,7 +1435,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/PromoEnterProcessor.java:18:import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/PromoEnterProcessor.java:19:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/PromoEnterProcessor.java:20:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.command.ILockedCommandProcessor;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/PromoEnterProcessor.java:21:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/PromoEnterProcessor.java:21:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/PromoEnterProcessor.java:22:import com.dgphoenix.casino.promo.IPromoMessagesDispatcher;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/PromoEnterProcessor.java:23:import com.dgphoenix.casino.promo.persisters.CassandraLocalizationsPersister;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/PromoEnterProcessor.java:24:import com.dgphoenix.casino.websocket.IWebSocketSessionsController;
@@ -1455,10 +1455,10 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoNotificationsProcessor.java:10:import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoNotificationsProcessor.java:11:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoNotificationsProcessor.java:12:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.command.ILockedCommandProcessor;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoNotificationsProcessor.java:13:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoNotificationsProcessor.java:13:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/promo/messages/handlers/GetPromoNotificationsProcessor.java:14:import com.dgphoenix.casino.promo.PromoNotificationsCreator;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/exception/DBException.java:1:package com.dgphoenix.casino.common.exception;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IRoomEnemy.java:4:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IRoomEnemy.java:4:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BGPlayerDto.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/GetServerRunningRoomsRequestHandler.java:3:import com.dgphoenix.casino.kafka.dto.GetServerRunningRoomsRequest;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/GetServerRunningRoomsRequestHandler.java:4:import com.dgphoenix.casino.kafka.dto.GetServerRunningRoomsResponse;
@@ -1889,7 +1889,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/BuyInRequest.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CloseFRBonusAndSessionRequest.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/PlaceDto.java:1:package com.dgphoenix.casino.kafka.dto;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IEnemy.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IEnemy.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IEnemy.java:4:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/GameListExtAction.java:1:package com.dgphoenix.casino.actions.enter.game;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/GameListExtAction.java:3:import com.dgphoenix.casino.common.cache.BankInfoCache;
@@ -1919,7 +1919,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionDataPersister.java:5:import com.dgphoenix.casino.common.lock.ServerLockInfo;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/LobbyReBuyHandler.java:18:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/StartNewRoundResponseDto.java:1:package com.dgphoenix.casino.kafka.dto;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ISeat.java:6:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ISeat.java:6:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ISeat.java:7:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ISeat.java:8:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/OnlineSessionInfo.java:1:package com.dgphoenix.casino.common.transactiondata;
@@ -1974,7 +1974,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/actions/GameServerActionUtils.java:5:import com.dgphoenix.casino.gs.GameServer;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionData.java:1:package com.dgphoenix.casino.common.transactiondata;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionData.java:3:import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionData.java:4:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionData.java:4:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionData.java:5:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionData.java:6:import com.dgphoenix.casino.common.cache.data.account.LasthandInfo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/ITransactionData.java:7:import com.dgphoenix.casino.common.cache.data.account.PlayerGameSettings;
@@ -2013,7 +2013,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/ChangeTooltipsHandler.java:13:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaResponse.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/CrashGameSettingDto.java:1:package com.dgphoenix.casino.kafka.dto;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ILeaderboard.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ILeaderboard.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ILeaderboard.java:4:import com.dgphoenix.casino.common.mp.LeaderboardStatus;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/battleground/messages/MPGameSessionFinishResponse.java:1:package com.dgphoenix.casino.battleground.messages;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/transactiondata/storeddate/identifier/LasthandStoredInfo.java:1:package com.dgphoenix.casino.common.transactiondata.storeddate.identifier;
@@ -2057,7 +2057,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/geoip/CountryRestrictionList.java:1:package com.dgphoenix.casino.common.geoip;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/Money.java:3:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/UpsertBotConfigInfoRequest.java:1:package com.dgphoenix.casino.kafka.dto;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IRoomPlayerInfo.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IRoomPlayerInfo.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/service/KafkaMessageService.java:1:package com.dgphoenix.casino.kafka.service;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/service/KafkaMessageService.java:43:import com.dgphoenix.casino.common.util.Pair;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/service/KafkaMessageService.java:44:import com.dgphoenix.casino.common.util.ReflectionUtils;
@@ -2091,7 +2091,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:14:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:15:import com.dgphoenix.casino.common.util.LongIdGenerator;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:16:import com.dgphoenix.casino.common.util.Pair;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java:9:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java:9:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java:10:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java:11:import com.dgphoenix.casino.common.util.ILongIdGenerator;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java:12:import com.dgphoenix.casino.common.util.string.StringUtils;
@@ -2228,11 +2228,11 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:2076:            throw new com.dgphoenix.casino.common.exception.CommonException("call failed", e);
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:2089:            com.dgphoenix.casino.common.exception.CommonException {
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:2104:            throw new com.dgphoenix.casino.common.exception.CommonException("call failed", e);
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IActiveCashBonusSession.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IActiveCashBonusSession.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/UpdateCurrencyRatesRequestHandler.java:1:package com.dgphoenix.casino.kafka.handler;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/UpdateCurrencyRatesRequestHandler.java:6:import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/UpdateCurrencyRatesRequestHandler.java:7:import com.dgphoenix.casino.kafka.dto.UpdateCurrencyRatesRequestResponse;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoomInfo.java:8:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoomInfo.java:8:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/kafka/src/main/java/com/dgphoenix/casino/kafka/dto/TournamentEndedDto.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/login/apub/GameServerResponse.java:1:package com.dgphoenix.casino.common.web.login.apub;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/UpdateCurrencyTask.java:4:import com.dgphoenix.casino.common.currency.CurrencyRate;
@@ -2257,7 +2257,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/login/cw/CWGuestLoginGameServerResponse.java:1:package com.dgphoenix.casino.common.web.login.cw;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/login/cw/CWGuestLoginGameServerResponse.java:3:import com.dgphoenix.casino.common.web.BasicGameServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/movement/PossiblePoints.java:3:import com.dgphoenix.casino.common.util.RNG;
-/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ITransportEnemy.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/ITransportEnemy.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaInServiceRequestHandlerFactory.java:1:package com.dgphoenix.casino.kafka.handler;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaInServiceRequestHandlerFactory.java:8:import com.dgphoenix.casino.kafka.dto.KafkaRequest;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/handler/KafkaInServiceRequestHandlerFactory.java:9:import com.dgphoenix.casino.kafka.dto.KafkaResponse;
@@ -2626,7 +2626,7 @@
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/dragonstone-math/pom.xml:19:            <groupId>com.dgphoenix.casino</groupId>
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_sectorx/src/main/java/com/betsoft/casino/mp/bgsectorx/model/WaitingPlayersGameState.java:4:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/config/GameServerConfigTemplate.java:1:package com.dgphoenix.casino.common.config;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/config/GameServerConfigTemplate.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/config/GameServerConfigTemplate.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/config/GameServerConfigTemplate.java:4:import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/config/GameServerConfigTemplate.java:5:import com.dgphoenix.casino.common.configuration.CasinoSystemType;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/config/GameServerConfigTemplate.java:6:import com.dgphoenix.casino.common.util.CollectionUtils;
@@ -3112,7 +3112,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/IRemoteCallSender.java:1:package com.dgphoenix.casino.common.cache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/LasthandInfo.java:1:package com.dgphoenix.casino.common.cache.data.account;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/LasthandInfo.java:3:import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/LasthandInfo.java:4:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/account/LasthandInfo.java:4:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/DeactivateRoomResultDto.java:1:package com.dgphoenix.casino.kafka.dto.privateroom.response;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/DeactivateRoomResultDto.java:3:import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/sectorx/src/main/java/com/betsoft/casino/mp/sectorx/model/SectorXTestStand.java:6:import com.dgphoenix.casino.common.util.RNG;
@@ -3136,7 +3136,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/privateroom/response/PrivateRoomIdResultDto.java:3:import com.dgphoenix.casino.kafka.dto.BasicKafkaResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/IdObject.java:1:package com.dgphoenix.casino.common.cache.data;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/IdObject.java:3:import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/IdObject.java:4:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/IdObject.java:4:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BackgroundImagesCache.java:1:package com.dgphoenix.casino.common.cache;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_missionamazon/src/main/java/com/betsoft/casino/mp/bgmissionamazon/model/GameMap.java:12:import com.dgphoenix.casino.common.util.Pair;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_missionamazon/src/main/java/com/betsoft/casino/mp/bgmissionamazon/model/GameMap.java:13:import com.dgphoenix.casino.common.util.RNG;
@@ -3194,7 +3194,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/PeriodicReportsCache.java:6:import com.dgphoenix.casino.common.util.ReportTypeEnum;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bet/PlayerBet.java:1:package com.dgphoenix.casino.common.cache.data.bet;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bet/PlayerBet.java:3:import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bet/PlayerBet.java:4:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bet/PlayerBet.java:4:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/bet/PlayerBetPersister.java:1:package com.dgphoenix.casino.gs.managers.bet;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/bet/PlayerBetPersister.java:3:import com.dgphoenix.casino.common.cache.data.bet.PlayerBet;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/bet/PlayerBetPersister.java:4:import com.dgphoenix.casino.common.cache.data.session.GameSession;
@@ -3317,7 +3317,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:1:package com.dgphoenix.casino.common.cache.data.game;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:3:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:4:import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:5:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:5:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:6:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:7:import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfo.java:8:import com.dgphoenix.casino.common.cache.data.account.PlayerDeviceType;
@@ -3350,7 +3350,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/generator/DataGenerator.java:1:package com.dgphoenix.casino.tools.kryo.generator;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/generator/DataGenerator.java:3:import com.dgphoenix.casino.tools.kryo.InstanceCreator;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfoTemplate.java:1:package com.dgphoenix.casino.common.cache.data.game;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfoTemplate.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfoTemplate.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfoTemplate.java:4:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfoTemplate.java:5:import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/game/BaseGameInfoTemplate.java:6:import com.dgphoenix.casino.common.cache.data.session.ClientType;
@@ -3436,7 +3436,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SendPlayerTournamentStateChangedRequest.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/generator/ByteGenerator.java:1:package com.dgphoenix.casino.tools.kryo.generator;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/server/ServerInfo.java:1:package com.dgphoenix.casino.common.cache.data.server;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/server/ServerInfo.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/server/ServerInfo.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/server/ServerInfo.java:4:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/server/ServerInfo.java:5:import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/server/ServerInfo.java:6:import com.dgphoenix.casino.common.util.hardware.data.HardwareInfo;
@@ -3453,7 +3453,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/FRBonusDto.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/generator/SetGenerator.java:1:package com.dgphoenix.casino.tools.kryo.generator;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseMassAward.java:1:package com.dgphoenix.casino.common.cache.data.bonus;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseMassAward.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseMassAward.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseMassAward.java:4:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseMassAward.java:5:import com.dgphoenix.casino.common.cache.VersionedDistributedCacheEntry;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/BaseMassAward.java:6:import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
@@ -3496,7 +3496,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/StartNewRoundRequest.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/ILoggableResponseCode.java:1:package com.dgphoenix.casino.gs.managers.payment.wallet;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java:1:package com.dgphoenix.casino.common.cache.data.bonus.restriction;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java:4:import com.dgphoenix.casino.common.cache.data.account.IAccountInfo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java:5:import com.dgphoenix.casino.common.cache.data.bonus.BaseBonus;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/restriction/MassAwardRestriction.java:6:import com.dgphoenix.casino.common.cache.data.currency.ICurrency;
@@ -3527,12 +3527,12 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/generator/NumberGenerator.java:1:package com.dgphoenix.casino.tools.kryo.generator;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/DelayedMassAward.java:1:package com.dgphoenix.casino.common.cache.data.bonus;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/DelayedMassAward.java:3:import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/DelayedMassAward.java:4:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/DelayedMassAward.java:4:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutCashBonusSessionResultDto.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/payment/frb/FRBWinOperationStatus.java:1:package com.dgphoenix.casino.common.cache.data.payment.frb;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/DelayedMassAwardDelivery.java:1:package com.dgphoenix.casino.common.cache.data.bonus;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/DelayedMassAwardDelivery.java:3:import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/DelayedMassAwardDelivery.java:4:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bonus/DelayedMassAwardDelivery.java:4:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/generator/ShortGenerator.java:1:package com.dgphoenix.casino.tools.kryo.generator;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SavePlayerBetForFRBRequest.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/SimpleLoggableContainer.java:1:package com.dgphoenix.casino.gs.managers.payment.wallet;
@@ -3902,7 +3902,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/persist/engine/configuration/Compression.java:1:package com.dgphoenix.casino.cassandra.persist.engine.configuration;
 /Users/alexb/Documents/Dev/Dev_new/mp-server/games/missionamazon/src/main/java/com/betsoft/casino/mp/missionamazon/model/QualifyGameState.java:4:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:1:package com.dgphoenix.casino.common.cache.data.bank;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:4:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:5:import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/BankInfo.java:6:import com.dgphoenix.casino.common.cache.data.currency.Currency;
@@ -4031,7 +4031,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/cache/src/main/java/com/dgphoenix/casino/cassandra/KeyspaceManagerFactory.java:1:package com.dgphoenix.casino.cassandra;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/SubCasino.java:1:package com.dgphoenix.casino.common.cache.data.bank;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/SubCasino.java:3:import com.dgphoenix.casino.common.cache.BankInfoCache;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/SubCasino.java:4:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/SubCasino.java:4:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/data/bank/SubCasino.java:5:import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/SitOutTournamentSessionRequest.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/configuration/Clusters.java:1:package com.dgphoenix.casino.configuration;
@@ -4365,9 +4365,9 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/lobby/LoginHelper.java:1:package com.dgphoenix.casino.entities.lobby;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/lobby/LoginHelper.java:3:import com.dgphoenix.casino.helpers.login.CWHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/lobby/LoginHelper.java:4:import com.dgphoenix.casino.helpers.login.CWv3Helper;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/lobby/LoginHelper.java:19:    private final com.dgphoenix.casino.helpers.login.LoginHelper helper;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/lobby/LoginHelper.java:29:    LoginHelper(String name, com.dgphoenix.casino.helpers.login.LoginHelper helper) {
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/lobby/LoginHelper.java:42:    public com.dgphoenix.casino.helpers.login.LoginHelper getHelper() {
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/lobby/LoginHelper.java:19:    private final com.abs.casino.helpers.login.LoginHelper helper;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/lobby/LoginHelper.java:29:    LoginHelper(String name, com.abs.casino.helpers.login.LoginHelper helper) {
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/entities/lobby/LoginHelper.java:42:    public com.abs.casino.helpers.login.LoginHelper getHelper() {
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/BGUpdateRoomResultDto.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/system/MetricsManager.java:1:package com.dgphoenix.casino.system;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/system/MetricsManager.java:3:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
@@ -5809,7 +5809,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/TournamentLobbyForm.java:3:import com.dgphoenix.casino.common.util.string.StringUtils;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/TournamentLobbyForm.java:4:import com.dgphoenix.casino.common.web.BaseAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBForm.java:1:package com.dgphoenix.casino.actions.api.frbonus;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBForm.java:4:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBForm.java:4:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/ForceCreateDetailsException.java:1:package com.dgphoenix.casino.gs.socket.mq;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/socket/mq/ForceCreateDetailsException.java:3:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/CheckBuyInRequest.java:1:package com.dgphoenix.casino.kafka.dto;
@@ -5841,7 +5841,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/payment/currency/CurrencyManagerTest.java:13:import com.dgphoenix.casino.common.util.Pair;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/payment/currency/CurrencyManagerTest.java:14:import com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBLiteForm.java:1:package com.dgphoenix.casino.actions.api.frbonus;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBLiteForm.java:4:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBLiteForm.java:4:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/STLobbyForm.java:1:package com.dgphoenix.casino.forms.lobby;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/STLobbyForm.java:3:import com.dgphoenix.casino.actions.enter.CommonActionForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/forms/lobby/STLobbyForm.java:4:import com.dgphoenix.casino.common.cache.data.game.GameMode;
@@ -5964,7 +5964,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/payment/bonus/CreationBonusHelperTest.java:8:import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/gs/managers/payment/bonus/CreationBonusHelperTest.java:9:import com.dgphoenix.casino.services.bonus.ForbiddenGamesForBonusProvider;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoForm.java:1:package com.dgphoenix.casino.actions.api.frbonus;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoForm.java:3:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoForm.java:3:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.CurrencyCache.xml:2:    <com.dgphoenix.casino.common.cache.ExportableCacheEntry>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.CurrencyCache.xml:4:        <value class="com.dgphoenix.casino.common.cache.data.currency.Currency">
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.CurrencyCache.xml:8:    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
@@ -5978,7 +5978,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.CurrencyCache.xml:25:        <value class="com.dgphoenix.casino.common.cache.data.currency.Currency">
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mpstress/com.dgphoenix.casino.common.cache.CurrencyCache.xml:29:    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBLiteForm.java:1:package com.dgphoenix.casino.actions.api.frbonus;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBLiteForm.java:3:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBLiteForm.java:3:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/RoundPlayerDto.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/test/java/com/dgphoenix/casino/filters/XssSanitizerWrapperTest.java:1:package com.dgphoenix.casino.filters;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/sm/CWv3PlayerSessionManager.java:1:package com.dgphoenix.casino.sm;
@@ -6023,7 +6023,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/gamehistoryXML.jsp:44:<bean:define id="form" name="GameHistoryXMLListForm" type="com.dgphoenix.casino.web.history.GameHistoryXMLListForm"/>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBLiteAction.java:1:package com.dgphoenix.casino.actions.api.frbonus;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBLiteAction.java:4:import com.dgphoenix.casino.account.AccountManager;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBLiteAction.java:5:import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBLiteAction.java:5:import com.abs.casino.actions.api.bonus.AbstractBonusAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBLiteAction.java:6:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBLiteAction.java:7:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBLiteAction.java:8:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
@@ -6219,7 +6219,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExpiredBonusTrackerInfoPersister.java:7:import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraExpiredBonusTrackerInfoPersister.java:8:import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBAction.java:1:package com.dgphoenix.casino.actions.api.frbonus;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBAction.java:4:import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBAction.java:4:import com.abs.casino.actions.api.bonus.AbstractBonusAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBAction.java:5:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBAction.java:6:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBAction.java:7:import com.dgphoenix.casino.common.cache.data.bonus.BonusStatus;
@@ -6258,7 +6258,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/IShortBetInfoProcessor.java:1:package com.dgphoenix.casino.cassandra.persist;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/IShortBetInfoProcessor.java:3:import com.dgphoenix.casino.common.cache.data.bet.ShortBetInfo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CheckFRBAction.java:1:package com.dgphoenix.casino.actions.api.frbonus;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CheckFRBAction.java:3:import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CheckFRBAction.java:3:import com.abs.casino.actions.api.bonus.AbstractBonusAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CheckFRBAction.java:4:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CheckFRBAction.java:5:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CheckFRBAction.java:6:import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
@@ -6375,8 +6375,8 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/autofinish/HttpServletResponse.java:1:package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.autofinish;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvitePlayersToPrivateRoomRequest.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBAction.java:1:package com.dgphoenix.casino.actions.api.frbonus;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBAction.java:3:import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBAction.java:4:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBAction.java:3:import com.abs.casino.actions.api.bonus.AbstractBonusAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBAction.java:4:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBAction.java:5:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBAction.java:6:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBAction.java:7:import com.dgphoenix.casino.common.cache.data.bonus.BaseBonus;
@@ -6417,9 +6417,9 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/ng_maintenance_mode.jsp:5:<%@ page import="com.dgphoenix.casino.common.exception.StartParameters" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/ng_maintenance_mode.jsp:6:<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/error_ptpt.jsp:2:<%@ page import="com.dgphoenix.casino.common.web.BaseAction" %>
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/errorJSON.jsp:1:<%@ page import="com.dgphoenix.casino.actions.api.bonus.BonusForm" %>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/errorJSON.jsp:1:<%@ page import="com.abs.casino.actions.api.bonus.BonusForm" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/errorJSON.jsp:5:<%@ page import="com.dgphoenix.casino.common.web.bonus.CBonus" %>
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/errorJSON.jsp:9:<%@ page import="com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction"%>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/errorJSON.jsp:9:<%@ page import="com.abs.casino.actions.api.bonus.AbstractBonusAction"%>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/mq/fatal_error_779.jsp:5:<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/mq/fatal_error_779.jsp:6:<%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/mq/fatal_error.jsp:6:<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
@@ -6432,7 +6432,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/BankSelectAction.java:6:import com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/InvalidateLocalBaseGameInfoRequest.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoLiteForm.java:1:package com.dgphoenix.casino.actions.api.frbonus;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoLiteForm.java:3:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoLiteForm.java:3:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBatchOperationStatusPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBatchOperationStatusPersister.java:9:import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBatchOperationStatusPersister.java:10:import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -6455,7 +6455,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/editproperties/AddPropertyAction.java:7:import com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/mq/fatal_error_866.jsp:6:<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBForm.java:1:package com.dgphoenix.casino.actions.api.frbonus;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBForm.java:3:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBForm.java:3:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/IBaseServlet.java:1:package com.dgphoenix.casino.gs.singlegames.tools.cbservtools;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/IBaseServlet.java:3:import com.dgphoenix.casino.gs.managers.dblink.IGameDBLink;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/MQDataDto.java:1:package com.dgphoenix.casino.kafka.dto;
@@ -6500,7 +6500,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/game_in_maintenance_mode.jsp:5:<%@ page import="com.dgphoenix.casino.common.exception.StartParameters" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/game_in_maintenance_mode.jsp:6:<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/errorXml.jsp:2:<%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/errorXml.jsp:6:<%@ page import="com.dgphoenix.casino.actions.api.bonus.BonusForm" %>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/errorXml.jsp:6:<%@ page import="com.abs.casino.actions.api.bonus.BonusForm" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/error_eurobet.jsp:1:<%@ page import="com.dgphoenix.casino.common.web.BaseAction" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/error_eurobet.jsp:2:<%@ page import="com.dgphoenix.casino.gs.GameServer" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/error_pages/loc/sessionerror.jsp:3:<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
@@ -6605,7 +6605,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:116:        <form-bean name="GetVBAForm" type="com.dgphoenix.casino.actions.api.vba.GetVBAForm"/>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:118:        <form-bean name="GetTournamentPlayerInfoForm" type="com.dgphoenix.casino.actions.api.promo.GetTournamentPlayerInfoForm"/>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:119:        <form-bean name="RefreshBalanceForm" type="com.dgphoenix.casino.actions.api.RefreshBalanceForm"/>
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:120:        <form-bean name="BonusForm" type="com.dgphoenix.casino.actions.api.bonus.BonusForm"/>
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:120:        <form-bean name="BonusForm" type="com.abs.casino.actions.api.bonus.BonusForm"/>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:122:        <form-bean name="BankPropertyInfo" type="com.dgphoenix.casino.support.bankInfo.PropertyInfoForm" />
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:125:        <form-bean name="GetLeaderboardsForm" type="com.dgphoenix.casino.actions.api.mq.GetLeaderboardsForm" />
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:126:        <form-bean name="GetLeaderboardResultsForm" type="com.dgphoenix.casino.actions.api.mq.GetLeaderboardResultsForm" />
@@ -6713,7 +6713,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/AbstractStringDistributedConfigEntryPersister.java:6:import com.dgphoenix.casino.common.cache.data.IDistributedConfigEntry;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoLiteAction.java:1:package com.dgphoenix.casino.actions.api.frbonus;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoLiteAction.java:4:import com.dgphoenix.casino.account.AccountManager;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoLiteAction.java:5:import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoLiteAction.java:5:import com.abs.casino.actions.api.bonus.AbstractBonusAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoLiteAction.java:6:import com.dgphoenix.casino.common.SessionHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoLiteAction.java:7:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoLiteAction.java:8:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
@@ -6775,7 +6775,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.CurrencyCache.xml:25:        <value class="com.dgphoenix.casino.common.cache.data.currency.Currency">
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.CurrencyCache.xml:29:    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryForm.java:1:package com.dgphoenix.casino.actions.api.frbonus;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryForm.java:4:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryForm.java:4:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryForm.java:13:import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryForm.java:14:import static com.dgphoenix.casino.common.web.bonus.BonusErrors.INVALID_PARAMETERS;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/reinitBonusClient.jsp:1:<%@ page import="com.dgphoenix.casino.gs.persistance.remotecall.RemoteCallHelper" %>
@@ -6928,7 +6928,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameCache.xml:282:            <gsClassName>com.dgphoenix.casino.gs.singlegames.tools.cbservtools.SPGameProcessor</gsClassName>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/config/mqb/com.dgphoenix.casino.common.cache.BaseGameCache.xml:289:    </com.dgphoenix.casino.common.cache.ExportableCacheEntry>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBForm.java:1:package com.dgphoenix.casino.actions.api.frbonus;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBForm.java:4:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBForm.java:4:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/GetPrivateRoomInfoRequest.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/gameBankConfig/GameClass.jsp:3:<%@ page import="com.dgphoenix.casino.common.cache.*" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/gameBankConfig/GameClass.jsp:4:<%@ page import="com.dgphoenix.casino.common.cache.data.bank.Coin" %>
@@ -7062,8 +7062,8 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/error/SessionExpiredErrorProcessor.java:5:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.responses.ErrorResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryAction.java:1:package com.dgphoenix.casino.actions.api.frbonus;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryAction.java:3:import com.dgphoenix.casino.account.AccountManager;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryAction.java:4:import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryAction.java:5:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryAction.java:4:import com.abs.casino.actions.api.bonus.AbstractBonusAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryAction.java:5:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryAction.java:6:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryAction.java:7:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBHistoryAction.java:8:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
@@ -7356,7 +7356,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IConcurrentPromoTemplate.java:1:package com.dgphoenix.casino.common.promo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/KafkaMessage.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBLiteAction.java:1:package com.dgphoenix.casino.actions.api.frbonus;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBLiteAction.java:4:import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBLiteAction.java:4:import com.abs.casino.actions.api.bonus.AbstractBonusAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBLiteAction.java:5:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBLiteAction.java:6:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CancelFRBLiteAction.java:7:import com.dgphoenix.casino.common.cache.data.bonus.FRBonus;
@@ -7392,7 +7392,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TournamentPrize.java:5:import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoAction.java:1:package com.dgphoenix.casino.actions.api.frbonus;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoAction.java:4:import com.dgphoenix.casino.account.AccountManager;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoAction.java:5:import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoAction.java:5:import com.abs.casino.actions.api.bonus.AbstractBonusAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoAction.java:6:import com.dgphoenix.casino.common.SessionHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoAction.java:7:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/GetFRBInfoAction.java:8:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
@@ -7413,7 +7413,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/RefreshBalanceProcessor.java:7:import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/RefreshBalanceProcessor.java:8:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/RefreshBalanceProcessor.java:9:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.responses.RefreshBalanceResponse;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/RefreshBalanceProcessor.java:10:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/RefreshBalanceProcessor.java:10:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBonusPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBonusPersister.java:7:import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraBonusPersister.java:8:import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -7480,7 +7480,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/supporthistory.jsp:263:                       type="com.dgphoenix.casino.web.history.GameHistoryListEntry">
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/kafka/dto/MQQuestPrizeDto.java:1:package com.dgphoenix.casino.kafka.dto;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CheckFRBForm.java:1:package com.dgphoenix.casino.actions.api.frbonus;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CheckFRBForm.java:4:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/CheckFRBForm.java:4:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java:1:package com.dgphoenix.casino.support.cache.bank.edit.actions.domains;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java:3:import com.dgphoenix.casino.common.cache.DomainWhiteListCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/domains/DomainForManyAction.java:4:import com.dgphoenix.casino.common.cache.data.domain.DomainWhiteList;
@@ -7583,7 +7583,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/IGameController.java:1:package com.dgphoenix.casino.gs.singlegames.tools.cbservtools;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBAction.java:1:package com.dgphoenix.casino.actions.api.frbonus;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBAction.java:4:import com.dgphoenix.casino.account.AccountManager;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBAction.java:5:import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBAction.java:5:import com.abs.casino.actions.api.bonus.AbstractBonusAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBAction.java:6:import com.dgphoenix.casino.common.SessionHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBAction.java:7:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/frbonus/AwardFRBAction.java:8:import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
@@ -7625,7 +7625,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/SessionTimerExpiredProcessor.java:7:import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/SessionTimerExpiredProcessor.java:8:import com.dgphoenix.casino.common.util.NtpTimeProvider;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/SessionTimerExpiredProcessor.java:9:import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/SessionTimerExpiredProcessor.java:10:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/SessionTimerExpiredProcessor.java:10:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraGameSessionPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraGameSessionPersister.java:6:import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraGameSessionPersister.java:7:import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -7677,7 +7677,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/GetTimeProcessor.java:8:import com.dgphoenix.casino.common.util.NtpTimeProvider;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/GetTimeProcessor.java:9:import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/GetTimeProcessor.java:10:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/GetTimeProcessor.java:11:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/GetTimeProcessor.java:11:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:8:import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraShortBetInfoPersister.java:9:import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
@@ -7749,7 +7749,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/IUnlockedCommandProcessor.java:3:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/IUnlockedCommandProcessor.java:4:import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/IUnlockedCommandProcessor.java:5:import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/IUnlockedCommandProcessor.java:6:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/IUnlockedCommandProcessor.java:6:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/updateCaches.jsp:1:<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/updateCaches.jsp:2:<%@ page import="com.dgphoenix.casino.common.cache.BaseGameCache" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/support/updateCaches.jsp:3:<%@ page import="com.dgphoenix.casino.common.cache.data.currency.Currency" %>
@@ -7881,7 +7881,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/SessionTimerStopProcessor.java:6:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/SessionTimerStopProcessor.java:7:import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/SessionTimerStopProcessor.java:8:import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/SessionTimerStopProcessor.java:9:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/command/SessionTimerStopProcessor.java:9:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkPromoEvent.java:1:package com.dgphoenix.casino.common.promo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/NetworkPromoEvent.java:3:import com.dgphoenix.casino.common.util.DatePeriod;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/actions/addbank/CreateFreeBankAction.java:1:package com.dgphoenix.casino.support.cache.bank.edit.actions.addbank;
@@ -7960,7 +7960,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/pre/FailedOperationHandleEnterProcessor.java:14:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/pre/FailedOperationHandleEnterProcessor.java:15:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.ILockedProcessor;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/pre/FailedOperationHandleEnterProcessor.java:16:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.annotations.PreProcessor;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/pre/FailedOperationHandleEnterProcessor.java:17:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/pre/FailedOperationHandleEnterProcessor.java:17:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/ErrorResponse.java:1:package com.dgphoenix.casino.actions.api.response;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/util/NumberUtils.java:1:package com.dgphoenix.casino.gs.singlegames.tools.util;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/mp/BattlegroundHistoryPersister.java:1:package com.dgphoenix.casino.cassandra.persist.mp;
@@ -7995,7 +7995,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/test/java/com/dgphoenix/casino/cassandra/persist/CassandraBankInfoPersisterTest.java:44:        bank.setProperty(BankInfo.KEY_EXTENDED_GAMEPLAY_PROCESSOR, "com.dgphoenix.casino.slotsstories.game.ExtendedGameplayProcessor");
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/response/SuccessResponse.java:1:package com.dgphoenix.casino.actions.api.response;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AwardedPrize.java:1:package com.dgphoenix.casino.common.promo;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AwardedPrize.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AwardedPrize.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/AwardedPrize.java:4:import com.dgphoenix.casino.common.cache.JsonSelfSerializable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/annotations/PostProcessor.java:1:package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.annotations;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/util/DateRange.java:1:package com.dgphoenix.casino.gs.singlegames.tools.util;
@@ -8090,7 +8090,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/ILockedProcessor.java:4:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/ILockedProcessor.java:5:import com.dgphoenix.casino.common.transactiondata.ITransactionData;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/ILockedProcessor.java:6:import com.dgphoenix.casino.gs.managers.dblink.IDBLink;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/ILockedProcessor.java:7:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/ILockedProcessor.java:7:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/processors/ILockedProcessor.java:16:import static com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController.*;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPeriodicTasksPersister.java:1:package com.dgphoenix.casino.cassandra.persist;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/CassandraPeriodicTasksPersister.java:7:import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
@@ -8197,7 +8197,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:27:<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/real/mp/template.jsp:28:<%@ page import="com.dgphoenix.casino.gs.socket.mq.BattlegroundService" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/responses/ErrorResponse.java:1:package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.responses;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/responses/ErrorResponse.java:3:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/responses/ErrorResponse.java:3:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameInfoForm.java:1:package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameInfoForm.java:3:import com.dgphoenix.casino.common.cache.BaseGameCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameInfoForm.java:4:import com.dgphoenix.casino.common.cache.CurrencyCache;
@@ -8223,7 +8223,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/responses/RefreshBalanceResponse.java:1:package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.responses;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/responses/RefreshBalanceResponse.java:3:import com.dgphoenix.casino.common.util.DigitFormatter;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/responses/RefreshBalanceResponse.java:4:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.IGameController;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/responses/RefreshBalanceResponse.java:5:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/responses/RefreshBalanceResponse.java:5:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/SubcasinoForm.java:1:package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/SubcasinoForm.java:4:import com.dgphoenix.casino.common.cache.SubCasinoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/SubcasinoForm.java:5:import com.dgphoenix.casino.common.util.string.StringUtils;
@@ -8284,7 +8284,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/config/stub/cwv3_long/refund.jsp:3:<%@ page import="com.dgphoenix.casino.gs.GameServer" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/webapp/config/stub/cwv3_long/refund.jsp:4:<%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/responses/CompositeResponse.java:1:package com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.responses;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/responses/CompositeResponse.java:3:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/commands/responses/CompositeResponse.java:3:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/common/GameViewBean.java:1:package com.dgphoenix.casino.support.cache.bank.edit.forms.common;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/maintenance/ICacheExporter.java:1:package com.dgphoenix.casino.gs.maintenance;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/cassandra-cache/common-persisters/src/main/java/com/dgphoenix/casino/cassandra/persist/mp/TicketedDrawInfo.java:1:package com.dgphoenix.casino.cassandra.persist.mp;
@@ -8459,7 +8459,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/vault/GameEntry.java:1:package com.dgphoenix.casino.common.vault;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/LimitExceededException.java:1:package com.dgphoenix.casino.gs.singlegames.tools.cbservtools;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/LimitExceededException.java:4:import com.dgphoenix.casino.common.exception.CommonException;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/LimitExceededException.java:5:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/singlegames/tools/cbservtools/LimitExceededException.java:5:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/maintenance/LastGameSessionWrapper.java:1:package com.dgphoenix.casino.gs.maintenance;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/GetHistoryAction.java:1:package com.dgphoenix.casino.actions.api.bonus;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/GetHistoryAction.java:3:import com.dgphoenix.casino.account.AccountManager;
@@ -9053,8 +9053,8 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/addBank/NewBankForm.java:1:package com.dgphoenix.casino.support.cache.bank.edit.forms.addBank;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/cache/bank/edit/forms/addBank/NewBankForm.java:3:import com.dgphoenix.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/Bonus.java:1:package com.dgphoenix.casino.actions.api.bonus.response;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/Bonus.java:4:import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/Bonus.java:5:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/Bonus.java:4:import com.abs.casino.actions.api.bonus.AbstractBonusAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/Bonus.java:5:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/Bonus.java:6:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/Bonus.java:7:import com.dgphoenix.casino.common.web.bonus.CBonus;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/Bonus.java:30:    public Bonus(com.dgphoenix.casino.common.cache.data.bonus.Bonus bonus, BonusForm form) throws CommonException {
@@ -9072,8 +9072,8 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/DeleteMassAwardCall.java:4:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/remotecall/DeleteMassAwardCall.java:5:import com.dgphoenix.casino.common.remotecall.IRemoteCall;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/JSONResponse.java:1:package com.dgphoenix.casino.actions.api.bonus.response;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/JSONResponse.java:3:import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/JSONResponse.java:4:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/JSONResponse.java:3:import com.abs.casino.actions.api.bonus.AbstractBonusAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/JSONResponse.java:4:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/JSONResponse.java:5:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/JSONResponse.java:6:import com.dgphoenix.casino.common.web.bonus.BonusErrors;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/JSONResponse.java:7:import com.dgphoenix.casino.common.web.bonus.CBonus;
@@ -9094,8 +9094,8 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/web/IdValueBean.java:1:package com.dgphoenix.casino.common.web;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/src/test/java/com/dgphoenix/casino/common/util/web/TestEntity.java:1:package com.dgphoenix.casino.common.util.web;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/FRBonus.java:1:package com.dgphoenix.casino.actions.api.bonus.response;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/FRBonus.java:3:import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/FRBonus.java:4:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/FRBonus.java:3:import com.abs.casino.actions.api.bonus.AbstractBonusAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/FRBonus.java:4:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/FRBonus.java:5:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/FRBonus.java:6:import com.dgphoenix.casino.common.web.bonus.CBonus;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/FRBonus.java:33:    public FRBonus(com.dgphoenix.casino.common.cache.data.bonus.FRBonus frBonus, BonusForm form) throws CommonException {
@@ -9247,8 +9247,8 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/currency/ICurrencyRateManager.java:1:package com.dgphoenix.casino.common.currency;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/currency/ICurrencyRateManager.java:3:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/BaseBonus.java:1:package com.dgphoenix.casino.actions.api.bonus.response;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/BaseBonus.java:3:import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/BaseBonus.java:4:import com.dgphoenix.casino.actions.api.bonus.BonusForm;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/BaseBonus.java:3:import com.abs.casino.actions.api.bonus.AbstractBonusAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/BaseBonus.java:4:import com.abs.casino.actions.api.bonus.BonusForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/BaseBonus.java:5:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/BaseBonus.java:6:import com.dgphoenix.casino.common.web.bonus.CBonus;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/api/bonus/response/BaseBonus.java:30:    public BaseBonus(com.dgphoenix.casino.common.cache.data.bonus.BaseBonus bonus, BonusForm form) throws CommonException {
@@ -9422,7 +9422,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/exception/JackPotCannotBeWonException.java:1:package com.dgphoenix.casino.common.exception;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/support/bankInfo/PropertyInfoForm.java:1:package com.dgphoenix.casino.support.bankInfo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/feed/tournament/SummaryTournamentFeed.java:1:package com.dgphoenix.casino.common.promo.feed.tournament;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/feed/tournament/SummaryTournamentFeed.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/feed/tournament/SummaryTournamentFeed.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/feed/tournament/SummaryTournamentFeed.java:4:import com.dgphoenix.casino.common.promo.TournamentObjective;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/PlayerSessionPersister.java:1:package com.dgphoenix.casino.gs.persistance;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/persistance/PlayerSessionPersister.java:3:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
@@ -9488,7 +9488,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/exception/BonusException.java:3:import com.dgphoenix.casino.common.web.bonus.BonusError;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:1:package com.dgphoenix.casino.common.promo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:3:import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:4:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:4:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/PromoCampaignMember.java:12:import static com.dgphoenix.casino.common.promo.AwardedPrize.BY_AWARD_DATE;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/IGameServerStatusListener.java:1:package com.dgphoenix.casino.gs;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/support/walletsmanager/WalletsManagerAction.java:1:package com.dgphoenix.casino.actions.support.walletsmanager;
@@ -9555,7 +9555,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/support/walletsmanager/WalletsManagerForm.java:3:import com.dgphoenix.casino.common.web.BaseAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/logkit/log4j2specific/FakeLogEvent.java:1:package com.dgphoenix.casino.common.util.logkit.log4j2specific;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaign.java:1:package com.dgphoenix.casino.common.promo;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaign.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaign.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaign.java:4:import com.dgphoenix.casino.common.util.DatePeriod;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/LocalizationTitles.java:1:package com.dgphoenix.casino.common.promo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/feed/tournament/NetworkSummaryPlayerInfo.java:1:package com.dgphoenix.casino.common.promo.feed.tournament;
@@ -9567,7 +9567,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/utils/src/main/java/com/dgphoenix/casino/common/util/logkit/LoggingUtils.java:1:package com.dgphoenix.casino.common.util.logkit;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/feed/tournament/RoundCountRecord.java:1:package com.dgphoenix.casino.common.promo.feed.tournament;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrize.java:1:package com.dgphoenix.casino.common.promo;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrize.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrize.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrize.java:4:import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrize.java:5:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPrize.java:6:import com.dgphoenix.casino.common.promo.messages.server.notifications.prizes.PrizeWonNotification;
@@ -9603,7 +9603,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java:29:import com.dgphoenix.casino.forms.login.cw.CWLoginForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java:30:import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java:31:import com.dgphoenix.casino.helpers.login.CWHelper;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java:32:import com.dgphoenix.casino.helpers.login.LoginHelper;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java:32:import com.abs.casino.helpers.login.LoginHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java:33:import com.dgphoenix.casino.helpers.login.serializers.CWSerializeLoginForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java:34:import com.dgphoenix.casino.sm.login.CWLoginRequest;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cw/CWGuestStartGameAction.java:35:import com.dgphoenix.casino.sm.login.LoginResponse;
@@ -9635,7 +9635,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/BetAmountPrizeQualifier.java:110:        xStream.allowTypesByWildcard(new String[]{"com.dgphoenix.casino.**"});
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBAction.java:1:package com.dgphoenix.casino.actions.game.battleground;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBAction.java:3:import com.dgphoenix.casino.actions.enter.LanguageDetector;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBAction.java:4:import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBAction.java:4:import com.abs.casino.actions.enter.game.BaseStartGameAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBAction.java:5:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBAction.java:6:import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartGameFromMQBAction.java:7:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
@@ -9690,7 +9690,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/exception/FatalException.java:1:package com.dgphoenix.casino.common.exception;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameAction.java:1:package com.dgphoenix.casino.actions.game.battleground;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameAction.java:3:import com.dgphoenix.casino.actions.enter.LanguageDetector;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameAction.java:4:import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameAction.java:4:import com.abs.casino.actions.enter.game.BaseStartGameAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameAction.java:5:import com.dgphoenix.casino.cassandra.persist.mp.BattlegroundPrivateRoomSetting;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameAction.java:6:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/battleground/BattlegroundStartPrivateGameAction.java:7:import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
@@ -9792,7 +9792,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java:12:import com.dgphoenix.casino.forms.game.CommonFRBStartGameForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java:13:import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java:14:import com.dgphoenix.casino.helpers.login.FRBonusHelper;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java:15:import com.dgphoenix.casino.helpers.login.LoginHelper;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java:15:import com.abs.casino.helpers.login.LoginHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java:16:import com.dgphoenix.casino.helpers.login.serializers.BonusSerializeLoginForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java:17:import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/cwv3/frb/CWStartFRBGameAction.java:18:import com.dgphoenix.casino.sm.login.LoginResponse;
@@ -9845,7 +9845,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:3:import com.dgphoenix.casino.account.AccountManager;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:4:import com.dgphoenix.casino.actions.GameServerActionUtils;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:5:import com.dgphoenix.casino.actions.enter.LanguageDetector;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:6:import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:6:import com.abs.casino.actions.enter.game.BaseStartGameAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:7:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:8:import com.dgphoenix.casino.common.SessionHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:9:import com.dgphoenix.casino.common.cache.BankInfoCache;
@@ -9866,7 +9866,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:24:import com.dgphoenix.casino.gs.GameServer;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:25:import com.dgphoenix.casino.gs.GameServerComponentsHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:26:import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:27:import com.dgphoenix.casino.helpers.login.LoginHelper;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:27:import com.abs.casino.helpers.login.LoginHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:28:import com.dgphoenix.casino.promo.PromoCampaignManager;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:29:import com.dgphoenix.casino.promo.persisters.CassandraMaxBalanceTournamentPersister;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/tournament/TournamentStartGameAction.java:30:import com.dgphoenix.casino.sm.IPlayerSessionManager;
@@ -9937,16 +9937,16 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:45:import com.dgphoenix.casino.gs.managers.payment.transfer.PaymentManager;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:46:import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:47:import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:48:import com.dgphoenix.casino.helpers.login.LoginHelper;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:48:import com.abs.casino.helpers.login.LoginHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:49:import com.dgphoenix.casino.sm.login.LoginRequest;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:50:import com.dgphoenix.casino.sm.login.LoginResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:51:import com.dgphoenix.casino.support.ErrorPersisterHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:52:import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:69:import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:403:            String gameHistoryUrl = com.dgphoenix.casino.actions.enter.game.BaseStartGameAction
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:417:            String promoIdsString = com.dgphoenix.casino.actions.enter.game.BaseStartGameAction
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:427:            String promoDetailsURL = com.dgphoenix.casino.actions.enter.game.BaseStartGameAction
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:434:                    com.dgphoenix.casino.actions.enter.game.BaseStartGameAction.needToShowPromoBar(promoCampaigns));
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:403:            String gameHistoryUrl = com.abs.casino.actions.enter.game.BaseStartGameAction
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:417:            String promoIdsString = com.abs.casino.actions.enter.game.BaseStartGameAction
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:427:            String promoDetailsURL = com.abs.casino.actions.enter.game.BaseStartGameAction
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/BaseStartGameAction.java:434:                    com.abs.casino.actions.enter.game.BaseStartGameAction.needToShowPromoBar(promoCampaigns));
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/frbonus/transport/AbstractResponse.java:1:package com.dgphoenix.casino.controller.frbonus.transport;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/engine/tracker/ICommonTrackingTaskDelegate.java:1:package com.dgphoenix.casino.common.engine.tracker;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/engine/tracker/ICommonTrackingTaskDelegate.java:3:import com.dgphoenix.casino.common.exception.CommonException;
@@ -9979,7 +9979,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java:17:import com.dgphoenix.casino.forms.game.CommonStartGameForm;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java:18:import com.dgphoenix.casino.gs.GameServer;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java:19:import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java:20:import com.dgphoenix.casino.helpers.login.LoginHelper;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java:20:import com.abs.casino.helpers.login.LoginHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java:21:import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/bonus/AbstractBSStartGameAction.java:22:import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/frbonus/dto/BaseRequest.java:1:package com.dgphoenix.casino.controller.frbonus.dto;
@@ -10000,7 +10000,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/api/ExecutionRequest.java:1:package com.dgphoenix.casino.gs.api;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/game/pov/StartPovGameParams.java:1:package com.dgphoenix.casino.actions.game.pov;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/client/requests/ClientRequest.java:1:package com.dgphoenix.casino.common.promo.messages.client.requests;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/client/requests/ClientRequest.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/client/requests/ClientRequest.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/string/CollectionParser.java:1:package com.dgphoenix.casino.common.util.string;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/string/CollectionParser.java:3:import com.dgphoenix.casino.common.util.string.mappers.DoubleMapper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/string/CollectionParser.java:4:import com.dgphoenix.casino.common.util.string.mappers.FromStringMapper;
@@ -10112,7 +10112,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/MPBotConfigInfoController.java:19:import static com.dgphoenix.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/string/StringBuilderWriter.java:1:package com.dgphoenix.casino.common.util.string;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/prizes/TicketsWon.java:1:package com.dgphoenix.casino.common.promo.messages.server.notifications.prizes;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/prizes/TicketsWon.java:3:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/prizes/TicketsWon.java:3:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignManager.java:1:package com.dgphoenix.casino.common.promo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignManager.java:3:import com.dgphoenix.casino.common.cache.data.account.IAccountInfo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/IPromoCampaignManager.java:4:import com.dgphoenix.casino.common.currency.ICurrencyRateManager;
@@ -10133,7 +10133,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/cw/CWGuestLogin.java:3:import com.dgphoenix.casino.account.AccountManager;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/cw/CWGuestLogin.java:4:import com.dgphoenix.casino.actions.enter.AccountInfoAndSessionInfoPair;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/cw/CWGuestLogin.java:5:import com.dgphoenix.casino.actions.enter.LanguageDetector;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/cw/CWGuestLogin.java:6:import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/cw/CWGuestLogin.java:6:import com.abs.casino.actions.enter.game.BaseStartGameAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/cw/CWGuestLogin.java:7:import com.dgphoenix.casino.common.SessionHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/cw/CWGuestLogin.java:8:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/cw/CWGuestLogin.java:9:import com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache;
@@ -10165,7 +10165,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/kpi/RoundKPIInfo.java:1:package com.dgphoenix.casino.common.kpi;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/remotecall/PersistableCall.java:1:package com.dgphoenix.casino.common.remotecall;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/remotecall/PersistableCall.java:3:import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/remotecall/PersistableCall.java:4:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/remotecall/PersistableCall.java:4:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/remotecall/PersistableCall.java:5:import com.dgphoenix.casino.common.exception.CommonException;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/prizes/FRBWon.java:1:package com.dgphoenix.casino.common.promo.messages.server.notifications.prizes;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/status/WatchServersThreadSlave.java:1:package com.dgphoenix.casino.gs.status;
@@ -10202,13 +10202,13 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/mp/MQQuestData.java:1:package com.dgphoenix.casino.common.mp;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/mp/LeaderboardWinner.java:1:package com.dgphoenix.casino.common.mp;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/prizes/InstantMoneyWon.java:1:package com.dgphoenix.casino.common.promo.messages.server.notifications.prizes;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/prizes/InstantMoneyWon.java:4:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/prizes/InstantMoneyWon.java:4:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/string/StringIdGenerator.java:1:package com.dgphoenix.casino.common.util.string;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/string/StringIdGenerator.java:3:import com.dgphoenix.casino.common.util.Pair;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/string/StringIdGenerator.java:4:import com.dgphoenix.casino.common.util.RNG;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/PromoStatusChanged.java:1:package com.dgphoenix.casino.common.promo.messages.server.notifications;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/PromoStatusChanged.java:3:import com.dgphoenix.casino.common.promo.Status;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/PromoStatusChanged.java:4:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/PromoStatusChanged.java:4:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/status/ServersStatusWatcher.java:1:package com.dgphoenix.casino.gs.status;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/status/ServersStatusWatcher.java:3:import com.dgphoenix.casino.common.cache.LoadBalancerCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/status/ServersStatusWatcher.java:4:import com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
@@ -10240,7 +10240,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/response/GetPrivateRoomIdOkResult.java:1:package com.dgphoenix.casino.controller.mqb.response;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/tournament/TournamentPlace.java:1:package com.dgphoenix.casino.common.promo.messages.server.notifications.tournament;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/tournament/TournamentPlace.java:3:import com.dgphoenix.casino.common.promo.messages.server.notifications.PromoNotification;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/tournament/TournamentPlace.java:4:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/tournament/TournamentPlace.java:4:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/mp/MQuestPrize.java:1:package com.dgphoenix.casino.common.mp;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/InternalRNG.java:1:package com.dgphoenix.casino.common.util;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/ForwardActionServlet.java:1:package com.dgphoenix.casino.config;
@@ -10261,7 +10261,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/tournament/LeaderBoard.java:1:package com.dgphoenix.casino.common.promo.messages.server.notifications.tournament;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/tournament/LeaderBoard.java:3:import com.dgphoenix.casino.common.promo.messages.server.notifications.PromoNotification;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/tournament/LeaderBoard.java:4:import com.dgphoenix.casino.common.util.string.StringUtils;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/tournament/LeaderBoard.java:5:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/tournament/LeaderBoard.java:5:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/response/PostOnlinePlayersResponse.java:1:package com.dgphoenix.casino.controller.mqb.response;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/response/PostOnlinePlayersResponse.java:3:import com.dgphoenix.casino.common.client.canex.request.onlineplayer.OnlinePlayer;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/IGameServer.java:1:package com.dgphoenix.casino.gs;
@@ -10299,7 +10299,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/ZipUtils.java:1:package com.dgphoenix.casino.common.util;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/mp/LeaderboardAwardType.java:1:package com.dgphoenix.casino.common.mp;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/PromoNotification.java:1:package com.dgphoenix.casino.common.promo.messages.server.notifications;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/PromoNotification.java:3:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/notifications/PromoNotification.java:3:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/controller/mqb/response/BaseResult.java:1:package com.dgphoenix.casino.controller.mqb.response;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/mp/LeaderboardAward.java:1:package com.dgphoenix.casino.common.mp;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/config/WebApplicationContextConfiguration.java:1:package com.dgphoenix.casino.config;
@@ -10348,8 +10348,8 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/PromoEnterResponse.java:1:package com.dgphoenix.casino.common.promo.messages.server.responses;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/PromoEnterResponse.java:3:import com.dgphoenix.casino.common.promo.PromoType;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/PromoEnterResponse.java:4:import com.dgphoenix.casino.common.util.string.StringUtils;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/PromoEnterResponse.java:5:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/PromoEnterResponse.java:6:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/PromoEnterResponse.java:5:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/PromoEnterResponse.java:6:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/mp/LeaderboardConfig.java:1:package com.dgphoenix.casino.common.mp;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java:1:package com.dgphoenix.casino.web.api.newgames;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/api/newgames/NewGamesInternalApiServlet.java:3:import com.dgphoenix.casino.account.AccountManager;
@@ -10382,7 +10382,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/EmptyForm.java:1:package com.dgphoenix.casino.web;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/routing/GameplayOrchestratorRoutingBridge.java:1:package com.dgphoenix.casino.actions.enter.game.routing;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/NotificationsShownResponse.java:1:package com.dgphoenix.casino.common.promo.messages.server.responses;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/NotificationsShownResponse.java:3:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/NotificationsShownResponse.java:3:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/mp/BuyInResultErrors.java:1:package com.dgphoenix.casino.common.mp;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/session/GameSessionManager.java:1:package com.dgphoenix.casino.gs.managers.game.session;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/game/session/GameSessionManager.java:3:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
@@ -10409,7 +10409,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/frb/RestartGameForm.java:1:package com.dgphoenix.casino.actions.enter.game.frb;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java:1:package com.dgphoenix.casino.web.bonus;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java:3:import com.dgphoenix.casino.account.AccountManager;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java:4:import com.dgphoenix.casino.actions.api.bonus.AbstractBonusAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java:4:import com.abs.casino.actions.api.bonus.AbstractBonusAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java:5:import com.dgphoenix.casino.common.SessionHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java:6:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java:7:import com.dgphoenix.casino.common.cache.BaseGameCache;
@@ -10433,7 +10433,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java:25:import com.dgphoenix.casino.gs.managers.payment.bonus.client.BonusAccountInfoResult;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AwardBonusServlet.java:26:import com.dgphoenix.casino.services.bonus.ForbiddenGamesForBonusProvider;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/NotificationShownResponse.java:1:package com.dgphoenix.casino.common.promo.messages.server.responses;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/NotificationShownResponse.java:3:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/NotificationShownResponse.java:3:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/NotificationShownResponse.java:6: * @deprecated It is the old version of {@link com.dgphoenix.casino.common.promo.messages.server.responses.NotificationsShownResponse}
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/mp/LeaderboardType.java:1:package com.dgphoenix.casino.common.mp;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/bonus/AbstractBonusServlet.java:1:package com.dgphoenix.casino.web.bonus;
@@ -10490,7 +10490,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:3:import com.dgphoenix.casino.account.AccountManager;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:4:import com.dgphoenix.casino.actions.enter.LanguageDetector;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:5:import com.dgphoenix.casino.actions.enter.game.routing.BonusFrbServiceRoutingBridge;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:6:import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:6:import com.abs.casino.actions.enter.game.BaseStartGameAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:7:import com.dgphoenix.casino.common.SessionHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:8:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:9:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
@@ -10512,15 +10512,15 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:25:import com.dgphoenix.casino.gs.managers.payment.currency.CurrencyManager;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:26:import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:27:import com.dgphoenix.casino.gs.persistance.PlayerSessionPersister;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:28:import com.dgphoenix.casino.helpers.login.LoginHelper;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:28:import com.abs.casino.helpers.login.LoginHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:29:import com.dgphoenix.casino.sm.IPlayerSessionManager;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:30:import com.dgphoenix.casino.sm.PlayerSessionFactory;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/bonus/BSStartGameAction.java:31:import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoMessagesResponse.java:1:package com.dgphoenix.casino.common.promo.messages.server.responses;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoMessagesResponse.java:3:import com.dgphoenix.casino.common.promo.messages.server.notifications.PromoNotification;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoMessagesResponse.java:4:import com.dgphoenix.casino.common.util.string.StringUtils;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoMessagesResponse.java:5:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoMessagesResponse.java:6:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoMessagesResponse.java:5:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoMessagesResponse.java:6:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoMessagesResponse.java:12: * @deprecated It is the old version of {@link com.dgphoenix.casino.common.promo.messages.server.responses.GetPromoNotificationsResponse}
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/BidirectionalMap.java:1:package com.dgphoenix.casino.common.util;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/AccountInfoAndSessionInfoPair.java:1:package com.dgphoenix.casino.actions.enter;
@@ -10534,8 +10534,8 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoNotificationsResponse.java:1:package com.dgphoenix.casino.common.promo.messages.server.responses;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoNotificationsResponse.java:3:import com.dgphoenix.casino.common.promo.messages.server.notifications.PromoNotification;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoNotificationsResponse.java:4:import com.dgphoenix.casino.common.util.string.StringUtils;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoNotificationsResponse.java:5:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoNotificationsResponse.java:6:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoNotificationsResponse.java:5:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/messages/server/responses/GetPromoNotificationsResponse.java:6:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerResponse;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryURLBuilder.java:1:package com.dgphoenix.casino.web.history;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryURLBuilder.java:3:import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/history/GameHistoryURLBuilder.java:8:import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
@@ -10657,7 +10657,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:3:import com.dgphoenix.casino.account.AccountManager;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:4:import com.dgphoenix.casino.actions.enter.AccountInfoAndSessionInfoPair;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:5:import com.dgphoenix.casino.actions.enter.LanguageDetector;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:6:import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:6:import com.abs.casino.actions.enter.game.BaseStartGameAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:7:import com.dgphoenix.casino.actions.enter.game.routing.GameplayOrchestratorRoutingBridge;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:8:import com.dgphoenix.casino.actions.enter.game.routing.MultiplayerServiceRoutingBridge;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:9:import com.dgphoenix.casino.actions.enter.game.routing.ProtocolAdapterRoutingBridge;
@@ -10688,7 +10688,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:34:import com.dgphoenix.casino.gs.managers.payment.wallet.WalletProtocolFactory;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:35:import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:36:import com.dgphoenix.casino.gs.persistance.GameSessionPersister;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:37:import com.dgphoenix.casino.helpers.login.LoginHelper;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:37:import com.abs.casino.helpers.login.LoginHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:38:import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWStartGameAction.java:272:                        com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient client =
 /Users/alexb/Documents/Dev/Dev_new/gs-server/common-promo/src/main/java/com/dgphoenix/casino/common/promo/TicketPrize.java:1:package com.dgphoenix.casino.common.promo;
@@ -10766,7 +10766,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/support/Request.java:1:package com.dgphoenix.casino.common.util.support;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWRegisterAction.java:1:package com.dgphoenix.casino.actions.enter.game.cwv3;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWRegisterAction.java:3:import com.dgphoenix.casino.account.AccountManager;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWRegisterAction.java:4:import com.dgphoenix.casino.actions.enter.game.BaseStartGameAction;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWRegisterAction.java:4:import com.abs.casino.actions.enter.game.BaseStartGameAction;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWRegisterAction.java:5:import com.dgphoenix.casino.common.SessionHelper;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWRegisterAction.java:6:import com.dgphoenix.casino.common.cache.BankInfoCache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/actions/enter/game/cwv3/CWRegisterAction.java:7:import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
@@ -11324,7 +11324,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/WebSocketSessionsController.java:12:import com.dgphoenix.casino.common.web.statistics.IStatisticsGetter;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/WebSocketSessionsController.java:13:import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/WebSocketSessionsController.java:14:import com.dgphoenix.casino.gs.GameServer;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/WebSocketSessionsController.java:15:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/WebSocketSessionsController.java:15:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/WebSocketSessionsController.java:16:import com.dgphoenix.casino.promo.messages.handlers.IMessageHandler;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/WebSocketSessionsController.java:17:import com.dgphoenix.casino.promo.messages.handlers.MessagesHandlersFactory;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/tournaments/handlers/AbstractJoinPromoHandler.java:1:package com.dgphoenix.casino.websocket.tournaments.handlers;
@@ -11373,7 +11373,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/web-gs/src/main/java/com/dgphoenix/casino/web/system/cacheviewer/CacheViewerAction.java:33:import static com.dgphoenix.casino.common.cache.IDistributedCache.ID_DELIMITER;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/IWebSocketSessionsController.java:1:package com.dgphoenix.casino.websocket;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/IWebSocketSessionsController.java:3:import com.dgphoenix.casino.common.exception.CommonException;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/IWebSocketSessionsController.java:4:import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/websocket/IWebSocketSessionsController.java:4:import com.abs.casino.gs.singlegames.tools.cbservtools.response.ServerMessage;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/IXmlMessage.java:6:package com.dgphoenix.casino.common.util.xml;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/ExternalTransactionHandler.java:1:package com.dgphoenix.casino.gs.managers.payment.wallet;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/game-server/common-gs/src/main/java/com/dgphoenix/casino/gs/managers/payment/wallet/ExternalTransactionHandler.java:3:import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
@@ -12555,7 +12555,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/DESCrypter.java:5:import com.dgphoenix.casino.common.util.string.HexStringConverter;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/session/IGameSession.java:1:package com.dgphoenix.casino.common.cache.data.session;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/session/IGameSession.java:3:import com.dgphoenix.casino.common.cache.IDistributedCacheEntry;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/session/IGameSession.java:4:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/session/IGameSession.java:4:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/JsonDeserializableDeserializer.java:1:package com.dgphoenix.casino.common.cache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/JsonAdditionalSerializer.java:1:package com.dgphoenix.casino.common.cache;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/parser/Parser.java:6:package com.dgphoenix.casino.common.util.xml.parser;
@@ -12572,7 +12572,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/session/DeviationStatistics.java:1:package com.dgphoenix.casino.common.cache.data.session;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/FastByteArrayOutputStream.java:18:package com.dgphoenix.casino.common.util;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/account/IAccountInfo.java:1:package com.dgphoenix.casino.common.cache.data.account;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/account/IAccountInfo.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/account/IAccountInfo.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/account/IAccountInfo.java:4:import com.dgphoenix.casino.common.cache.data.currency.ICurrency;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/transport/TObject.java:1:package com.dgphoenix.casino.common.transport;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/util/xml/parser/IXmlHandlerSelector.java:6:package com.dgphoenix.casino.common.util.xml.parser;
@@ -12654,7 +12654,7 @@
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/KryoSerializationTest.java:21:        assertTrue(validator.validate("com.dgphoenix.casino.common.engine"));
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/test/java/com/dgphoenix/casino/common/util/KryoSerializationTest.java:22:        assertTrue(validator.validate("com.dgphoenix.casino.common.promo"));
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/IBaseGameInfo.java:1:package com.dgphoenix.casino.common.cache.data.game;
-/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/IBaseGameInfo.java:3:import com.dgphoenix.casino.common.cache.Identifiable;
+/Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/IBaseGameInfo.java:3:import com.abs.casino.common.cache.Identifiable;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/IBaseGameInfo.java:4:import com.dgphoenix.casino.common.cache.data.account.PlayerDeviceType;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/IBaseGameInfo.java:5:import com.dgphoenix.casino.common.cache.data.bank.ICoin;
 /Users/alexb/Documents/Dev/Dev_new/gs-server/sb-utils/src/main/java/com/dgphoenix/casino/common/cache/data/game/IBaseGameInfo.java:6:import com.dgphoenix.casino.common.cache.data.bank.ILimit;

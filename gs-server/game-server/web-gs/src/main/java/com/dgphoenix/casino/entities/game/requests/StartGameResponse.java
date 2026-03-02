@@ -1,6 +1,6 @@
 package com.abs.casino.entities.game.requests;
 
-import com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo;
+import com.abs.casino.common.cache.data.game.IBaseGameInfo;
 
 import java.util.List;
 

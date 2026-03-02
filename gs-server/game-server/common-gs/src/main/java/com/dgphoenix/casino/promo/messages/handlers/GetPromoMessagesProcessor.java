@@ -1,11 +1,11 @@
 package com.abs.casino.promo.messages.handlers;
 
-import com.dgphoenix.casino.common.promo.AwardedPrize;
-import com.dgphoenix.casino.common.promo.PromoCampaignMember;
-import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
+import com.abs.casino.common.promo.AwardedPrize;
+import com.abs.casino.common.promo.PromoCampaignMember;
+import com.abs.casino.common.promo.PromoCampaignMemberInfos;
 import com.abs.casino.common.promo.messages.server.responses.GetPromoMessagesResponse;
 import com.abs.casino.common.promo.messages.server.responses.GetPromoNotificationsResponse;
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.transactiondata.ITransactionData;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.gs.singlegames.tools.cbservtools.IGameController;
 import com.abs.casino.gs.singlegames.tools.cbservtools.commands.processors.command.ILockedCommandProcessor;

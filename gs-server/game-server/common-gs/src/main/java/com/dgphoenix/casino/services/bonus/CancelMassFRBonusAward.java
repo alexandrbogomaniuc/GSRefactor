@@ -1,17 +1,17 @@
 package com.abs.casino.services.bonus;
 
-import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraAccountInfoPersister;
 import com.abs.casino.cassandra.persist.CassandraDelayedMassAwardPersister;
 import com.abs.casino.cassandra.persist.CassandraFrBonusPersister;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.MassAwardCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bonus.*;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.MassAwardCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bonus.*;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.gs.managers.payment.bonus.FRBonusManager;
 import com.abs.casino.gs.managers.payment.bonus.mass.MassAwardBonusManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

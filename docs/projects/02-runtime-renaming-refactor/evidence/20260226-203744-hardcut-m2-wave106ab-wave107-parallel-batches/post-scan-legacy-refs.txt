@@ -190,7 +190,7 @@ gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:95:      
 gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:99:        <form-bean name="MCWv3StartGameFRBForm" type="com.dgphoenix.casino.forms.game.CommonFRBStartGameForm" />
 gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:103:        <form-bean name="STLobbyForm" type="com.dgphoenix.casino.forms.lobby.STLobbyForm" />
 gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:106:        <form-bean name="CWStartHistoryForm" type="com.dgphoenix.casino.forms.api.history.cwv3.CWStartHistoryForm"/>
-gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:120:        <form-bean name="BonusForm" type="com.dgphoenix.casino.actions.api.bonus.BonusForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:120:        <form-bean name="BonusForm" type="com.abs.casino.actions.api.bonus.BonusForm"/>
 gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:136:                handler="com.dgphoenix.casino.common.web.InvalidPathStrutsActionExceptionHandler"
 gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:146:        <action path="/support/newBankNSubCasino" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.NewBankNSubCasinoAction"
 gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:150:        <action path="/support/BankNSubCasinoControl" type="com.dgphoenix.casino.support.cache.bank.edit.actions.common.BanksNSubCasinosAction"

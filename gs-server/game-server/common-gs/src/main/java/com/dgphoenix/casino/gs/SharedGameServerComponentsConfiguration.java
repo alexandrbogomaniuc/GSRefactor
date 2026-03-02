@@ -1,20 +1,20 @@
 package com.abs.casino.gs;
 
 import com.abs.casino.GeoIp;
-import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraServerInfoPersister;
-import com.dgphoenix.casino.common.cache.LoadBalancerCache;
-import com.dgphoenix.casino.common.cache.ServerConfigsCache;
+import com.abs.casino.common.cache.LoadBalancerCache;
+import com.abs.casino.common.cache.ServerConfigsCache;
 import com.abs.casino.common.cache.data.server.ServerCoordinatorInfoProvider;
 import com.abs.casino.common.cache.data.server.ServerInfo;
 import com.abs.casino.common.config.HostConfiguration;
 import com.abs.casino.common.config.UtilsApplicationContextHelper;
-import com.dgphoenix.casino.common.util.ITimeProvider;
-import com.dgphoenix.casino.common.util.NtpTimeProvider;
+import com.abs.casino.common.util.ITimeProvider;
+import com.abs.casino.common.util.NtpTimeProvider;
 import com.abs.casino.common.util.system.SystemPropertyReader;
 import com.abs.casino.common.web.SharedServletExecutorService;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import com.abs.casino.system.configuration.identification.ServersCoordinatorService;
 import com.abs.casino.system.configuration.identification.ZookeeperProperties;
 

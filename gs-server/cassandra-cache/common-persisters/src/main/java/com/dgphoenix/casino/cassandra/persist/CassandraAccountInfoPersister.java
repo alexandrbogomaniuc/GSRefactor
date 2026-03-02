@@ -1,21 +1,21 @@
 package com.abs.casino.cassandra.persist;
 
-import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
-import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
+import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.TableDefinition;
 import com.abs.casino.cassandra.persist.engine.configuration.Caching;
 import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
 import com.abs.casino.cassandra.persist.engine.configuration.Compression;
-import com.dgphoenix.casino.common.api.IAccountInfoPersister;
+import com.abs.casino.common.api.IAccountInfoPersister;
 import com.abs.casino.common.cache.ExportableCacheEntry;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.account.AccountInfo;
 import com.abs.casino.common.configuration.CasinoSystemType;
 import com.abs.casino.common.configuration.ServerConfiguration;
 import com.abs.casino.common.persist.StreamPersister;
 import com.abs.casino.common.persist.TableProcessor;
-import com.dgphoenix.casino.common.util.NtpTimeProvider;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.util.NtpTimeProvider;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

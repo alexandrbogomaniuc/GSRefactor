@@ -3,9 +3,9 @@ package com.abs.casino.filters;
 import com.abs.casino.common.games.IStartGameHelper;
 import com.abs.casino.common.games.StartGameHelpers;
 import com.abs.casino.common.games.SwfLocationInfo;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.common.web.BaseAction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 /**
  * User: flsh

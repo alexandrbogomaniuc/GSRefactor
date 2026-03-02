@@ -1,12 +1,12 @@
 package com.abs.casino.account;
 
 import com.abs.casino.common.cache.AbstractExportableCache;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraAccountInfoPersister;
 import com.abs.casino.cassandra.persist.CassandraExtendedAccountInfoPersister;
 import com.abs.casino.common.SessionHelper;
 import com.abs.casino.common.api.ICommonManager;
-import com.dgphoenix.casino.common.cache.*;
+import com.abs.casino.common.cache.*;
 import com.abs.casino.common.cache.data.account.AccountInfo;
 import com.abs.casino.common.cache.data.bank.BankInfo;
 import com.abs.casino.common.cache.data.bank.PlayerGameSettingsType;
@@ -23,7 +23,7 @@ import com.abs.casino.common.transactiondata.storeddate.StoredItemType;
 import com.abs.casino.common.util.AccountIdGenerator;
 import com.abs.casino.common.util.ApplicationContextHelper;
 import com.abs.casino.common.util.Pair;
-import com.dgphoenix.casino.gs.GameServer;
+import com.abs.casino.gs.GameServer;
 import com.abs.casino.gs.managers.dblink.FreeGameCalculator;
 import com.abs.casino.gs.managers.payment.bonus.BonusManager;
 import com.abs.casino.gs.managers.payment.bonus.FRBonusManager;
@@ -43,7 +43,7 @@ import java.io.ObjectOutputStream;
 import java.util.Collection;
 import java.util.Map;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty;
+import static com.abs.casino.common.util.string.StringUtils.isTrimmedEmpty;
 
 @com.abs.casino.common.cache.CacheKeyInfo(description = "accountInfo.id")
 public class AccountManager extends AbstractExportableCache<AccountInfo> implements ICommonManager, IAccountManager {

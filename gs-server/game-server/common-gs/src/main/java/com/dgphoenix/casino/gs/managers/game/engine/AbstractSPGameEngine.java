@@ -1,6 +1,6 @@
 package com.abs.casino.gs.managers.game.engine;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.gs.managers.game.core.AbstractGameProcessor;
 import com.abs.casino.gs.managers.game.room.IRoom;
 

@@ -5,10 +5,10 @@
 <%@ page import="com.abs.casino.web.history.GameHistoryListEntry" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="org.apache.struts.action.ActionMessage" %>
-<%@ page import="com.dgphoenix.casino.common.configuration.messages.MessageManager" %>
+<%@ page import="com.abs.casino.common.configuration.messages.MessageManager" %>
 <%@ page import="com.abs.casino.common.util.xml.xmlwriter.XmlWriter" %>
 <%@ page import="com.abs.casino.common.util.xml.xmlwriter.Attribute" %>
-<%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
+<%@ page import="com.abs.casino.system.configuration.GameServerConfiguration" %>
 <%@ page import="com.abs.casino.common.util.string.StringBuilderWriter" %>
 <%@ page contentType="text/xml;charset=UTF-8" language="java" %>
 <%!

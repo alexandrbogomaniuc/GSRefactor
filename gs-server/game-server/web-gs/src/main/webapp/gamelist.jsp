@@ -1,10 +1,10 @@
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfoTemplate" %>
 <%@ page import="java.util.concurrent.TimeUnit" %>
 <%@ page import="com.google.common.cache.CacheBuilder" %>
 <%@ page import="com.google.common.cache.LoadingCache" %>
 <%@ page import="com.google.common.cache.CacheLoader" %>
-<%@ page import="com.dgphoenix.casino.common.web.statistics.StatisticsManager" %>
+<%@ page import="com.abs.casino.common.web.statistics.StatisticsManager" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.abs.casino.common.web.statistics.IStatisticsGetter" %>
 

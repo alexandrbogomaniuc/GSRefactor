@@ -1,18 +1,18 @@
 <%@ page import="com.abs.casino.common.web.BaseAction" %>
 <%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%@ page import="java.util.TimeZone" %>
 <%@ page import="java.util.SimpleTimeZone" %>
-<%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameInfoTemplateCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.BaseGameInfoTemplate" %>
+<%@ page import="com.abs.casino.system.configuration.GameServerConfiguration" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameInfoTemplateCache" %>
+<%@ page import="com.abs.casino.common.cache.data.game.BaseGameInfoTemplate" %>
 <%@ page import="com.abs.casino.actions.game.pov.StartPovGameParams" %>
 <%@ page import="com.google.gson.Gson" %>
 <%@ page import="static org.apache.http.entity.ContentType.APPLICATION_JSON" %>
 <%@ page import="com.abs.casino.common.config.HostConfiguration" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
 <%
     String cdnUrl = request.getParameter(BaseAction.KEY_CDN);
     HostConfiguration hostConfiguration = ApplicationContextHelper.getBean(HostConfiguration.class);

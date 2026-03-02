@@ -2,9 +2,9 @@ package com.abs.casino.common.config;
 
 import com.abs.casino.common.config.ClusterType;
 import com.abs.casino.common.config.HostConfiguration;
-import com.dgphoenix.casino.common.cache.ServerConfigsCache;
-import com.dgphoenix.casino.common.config.GameServerConfig;
-import com.dgphoenix.casino.common.config.GameServerConfigTemplate;
+import com.abs.casino.common.cache.ServerConfigsCache;
+import com.abs.casino.common.config.GameServerConfig;
+import com.abs.casino.common.config.GameServerConfigTemplate;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

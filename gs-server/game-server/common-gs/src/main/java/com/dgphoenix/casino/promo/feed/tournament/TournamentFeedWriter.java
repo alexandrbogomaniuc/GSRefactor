@@ -1,8 +1,8 @@
 package com.abs.casino.promo.feed.tournament;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.*;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.*;
 import com.abs.casino.common.promo.feed.tournament.*;
 import com.abs.casino.common.upload.JSchUploadClient;
 import com.abs.casino.promo.feed.AbstractFeedWriter;

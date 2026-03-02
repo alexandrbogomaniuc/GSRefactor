@@ -1,7 +1,7 @@
 package com.abs.casino.websocket.tournaments;
 
 import com.abs.casino.common.transport.TInboundObject;
-import com.dgphoenix.casino.common.transport.TObject;
+import com.abs.casino.common.transport.TObject;
 import com.abs.casino.common.util.ReflectionUtils;
 import com.google.gson.*;
 

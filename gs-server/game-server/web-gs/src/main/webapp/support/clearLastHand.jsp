@@ -1,9 +1,9 @@
-<%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
+<%@ page import="com.abs.casino.cassandra.CassandraPersistenceManager" %>
 <%@ page import="com.abs.casino.cassandra.persist.CassandraLasthandPersister" %>
 <%@ page import="com.abs.casino.common.cache.data.bonus.BonusSystemType" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
 <%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%--
 User: vladislav
 Date: 19/05/15

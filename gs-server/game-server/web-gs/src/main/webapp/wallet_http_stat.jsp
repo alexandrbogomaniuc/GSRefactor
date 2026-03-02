@@ -1,5 +1,5 @@
 <%@ page import="com.abs.casino.common.util.web.HttpClientConnectionStatistics" %>
-<%@ page import="com.dgphoenix.casino.gs.GameServer" %>
+<%@ page import="com.abs.casino.gs.GameServer" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.Collections" %>

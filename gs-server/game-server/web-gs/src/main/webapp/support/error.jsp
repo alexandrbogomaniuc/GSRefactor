@@ -1,5 +1,5 @@
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%--
   Created by IntelliJ IDEA.

@@ -5,7 +5,7 @@
  */
 package com.abs.casino.gs.managers.game.room;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.gs.managers.game.engine.GameEngineManager;
 import com.abs.casino.gs.managers.game.engine.IGameEngine;
 import org.apache.logging.log4j.LogManager;

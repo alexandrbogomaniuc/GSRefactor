@@ -234,7 +234,7 @@ gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:109:     
 gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:110:        <form-bean name="WalletInfoForm" type="com.dgphoenix.casino.actions.support.walletinfo.WalletInfoForm" />
 gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:111:        <form-bean name="WalletsManagerForm" type="com.dgphoenix.casino.actions.support.walletsmanager.WalletsManagerForm" />
 gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:114:        <form-bean name="APIIssuesForm" type="com.dgphoenix.casino.actions.support.apiIssues.APIIssuesForm"/>
-gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:120:        <form-bean name="BonusForm" type="com.dgphoenix.casino.actions.api.bonus.BonusForm"/>
+gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:120:        <form-bean name="BonusForm" type="com.abs.casino.actions.api.bonus.BonusForm"/>
 gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:122:        <form-bean name="BankPropertyInfo" type="com.dgphoenix.casino.support.bankInfo.PropertyInfoForm" />
 gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:128:        <form-bean name="LogViewerForm" type="com.dgphoenix.casino.support.logviewer.LogViewerForm"/>
 gs-server/game-server/web-gs/src/main/webapp/WEB-INF/struts-config.xml:136:                handler="com.dgphoenix.casino.common.web.InvalidPathStrutsActionExceptionHandler"

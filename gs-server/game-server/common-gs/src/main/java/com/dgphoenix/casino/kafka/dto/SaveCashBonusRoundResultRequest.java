@@ -4,7 +4,7 @@ import com.abs.casino.kafka.dto.RoundInfoResultDto;
 
 import com.abs.casino.kafka.dto.MQDataDto;
 
-import com.dgphoenix.casino.kafka.dto.KafkaRequest;
+import com.abs.casino.kafka.dto.KafkaRequest;
 
 public class SaveCashBonusRoundResultRequest implements KafkaRequest {
     private long accountId;

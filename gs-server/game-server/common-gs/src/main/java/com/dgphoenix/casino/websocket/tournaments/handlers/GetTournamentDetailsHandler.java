@@ -1,11 +1,11 @@
 package com.abs.casino.websocket.tournaments.handlers;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.*;
-import com.dgphoenix.casino.common.transport.TObject;
-import com.dgphoenix.casino.common.util.CollectionUtils;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.*;
+import com.abs.casino.common.transport.TObject;
+import com.abs.casino.common.util.CollectionUtils;
 import com.abs.casino.promo.persisters.CassandraLocalizationsPersister;
 import com.abs.casino.promo.tournaments.messages.Error;
 import com.abs.casino.promo.tournaments.messages.GetTournamentDetails;

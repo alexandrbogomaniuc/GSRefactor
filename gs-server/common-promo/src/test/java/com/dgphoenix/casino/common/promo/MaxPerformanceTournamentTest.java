@@ -1,11 +1,11 @@
 package com.abs.casino.common.promo;
 
-import com.dgphoenix.casino.common.promo.DesiredPrize;
+import com.abs.casino.common.promo.DesiredPrize;
 import com.abs.casino.common.promo.ICampaignStatisticsProvider;
-import com.dgphoenix.casino.common.promo.TournamentObjective;
+import com.abs.casino.common.promo.TournamentObjective;
 import com.abs.casino.common.currency.CurrencyRate;
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import junit.framework.Assert;
 import org.junit.Test;
 

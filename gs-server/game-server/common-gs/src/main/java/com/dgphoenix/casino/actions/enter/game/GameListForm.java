@@ -1,9 +1,9 @@
 package com.abs.casino.actions.enter.game;
 
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.util.string.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -12,7 +12,7 @@ import org.apache.struts.action.ActionMessage;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static com.dgphoenix.casino.common.util.string.StringUtils.getMD5;
+import static com.abs.casino.common.util.string.StringUtils.getMD5;
 
 public class GameListForm extends ActionForm {
     private final static Logger LOG = Logger.getLogger(GameListForm.class);

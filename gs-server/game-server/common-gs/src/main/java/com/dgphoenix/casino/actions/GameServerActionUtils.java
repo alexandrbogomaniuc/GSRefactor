@@ -2,7 +2,7 @@ package com.abs.casino.actions;
 
 import com.abs.casino.common.util.support.Request;
 import com.abs.casino.common.util.web.HttpRequestContextHolder;
-import com.dgphoenix.casino.gs.GameServer;
+import com.abs.casino.gs.GameServer;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;

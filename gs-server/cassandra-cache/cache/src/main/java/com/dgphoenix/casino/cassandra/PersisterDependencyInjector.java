@@ -1,6 +1,6 @@
 package com.abs.casino.cassandra;
 
-import com.dgphoenix.casino.cassandra.persist.engine.ICassandraPersister;
+import com.abs.casino.cassandra.persist.engine.ICassandraPersister;
 import com.google.common.collect.ImmutableMap;
 import one.util.streamex.StreamEx;
 import org.apache.commons.lang3.tuple.Pair;

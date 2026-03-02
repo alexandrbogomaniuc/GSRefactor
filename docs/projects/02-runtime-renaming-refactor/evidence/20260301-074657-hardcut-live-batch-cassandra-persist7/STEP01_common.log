@@ -1,0 +1,133 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 248 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyCache.java:[157,59] error: incompatible types: cannot infer type arguments for CacheExportProcessor<>
+[ERROR]     reason: no instance(s) of type variable(s) T exist so that CacheExportProcessor<T> conforms to TableProcessor<Pair<String,Currency>>
+  where T is a type-variable:
+    T extends IDistributedCacheEntry declared in class CacheExportProcessor
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[50,44] error: type argument BaseGameInfo is not within bounds of type-variable BGI
+[ERROR]   where BGI is a type-variable:
+    BGI extends IBaseGameInfo declared in interface ICassandraBaseGameInfoPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[62,71] error: type argument BaseGameInfo is not within bounds of type-variable BGI
+[ERROR]   where BGI is a type-variable:
+    BGI extends IBaseGameInfo declared in interface ICassandraBaseGameInfoPersister
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[648,35] error: incompatible types: CacheExportProcessor<BaseGameInfo> cannot be converted to TableProcessor<Pair<String,BaseGameInfo>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[653,43] error: incompatible types: CacheExportProcessor<BaseGameInfo> cannot be converted to TableProcessor<Pair<String,BaseGameInfo>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[658,47] error: incompatible types: CacheExportProcessor<BaseGameInfo> cannot be converted to TableProcessor<Pair<String,BaseGameInfo>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[63,80] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[100,76] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[127,80] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[139,80] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[151,80] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:[63,66] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:[66,81] error: incompatible types: BaseGameInfo cannot be converted to IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/ShellDetector.java:[53,76] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/AbstractLazyLoadingExportableCache.java:[108,35] error: incompatible types: <anonymous TableProcessor<com.dgphoenix.casino.common.util.Pair<KEY,VALUE>>> cannot be converted to TableProcessor<com.abs.casino.common.util.Pair<KEY,VALUE>>
+[ERROR]   where KEY,VALUE are type-variables:
+    KEY extends Object declared in class AbstractLazyLoadingExportableCache
+    VALUE extends IDistributedCacheEntry declared in class AbstractLazyLoadingExportableCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/AbstractLazyLoadingExportableCache.java:[119,43] error: incompatible types: <anonymous TableProcessor<com.dgphoenix.casino.common.util.Pair<KEY,VALUE>>> cannot be converted to TableProcessor<com.abs.casino.common.util.Pair<KEY,VALUE>>
+[ERROR]   where KEY,VALUE are type-variables:
+    KEY extends Object declared in class AbstractLazyLoadingExportableCache
+    VALUE extends IDistributedCacheEntry declared in class AbstractLazyLoadingExportableCache
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java:[104,36] error: incompatible types: cannot infer type-variable(s) R
+[ERROR]     (argument mismatch; invalid method reference
+      method getId in interface Identifiable cannot be applied to given types
+        required: no arguments
+        found: IBaseGameInfo
+        reason: actual and formal argument lists differ in length)
+  where R,T are type-variables:
+    R extends Object declared in method <R>map(Function<? super T,? extends R>)
+    T extends Object declared in interface Stream
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java:[104,37] error: invalid method reference
+[ERROR]   non-static method getId() cannot be referenced from a static context
+/Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ExternalGameIdsCache.java:[46,72] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[102,101] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[117,101] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[139,101] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[152,101] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[173,74] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[184,93] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[198,70] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[206,70] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[213,70] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[INFO] 28 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.805 s
+[INFO] Finished at: 2026-03-01T07:47:07Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile (default-compile) on project gsn-common: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/CurrencyCache.java:[157,59] error: incompatible types: cannot infer type arguments for CacheExportProcessor<>
+[ERROR]     reason: no instance(s) of type variable(s) T exist so that CacheExportProcessor<T> conforms to TableProcessor<Pair<String,Currency>>
+[ERROR]   where T is a type-variable:
+[ERROR]     T extends IDistributedCacheEntry declared in class CacheExportProcessor
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[50,44] error: type argument BaseGameInfo is not within bounds of type-variable BGI
+[ERROR]   where BGI is a type-variable:
+[ERROR]     BGI extends IBaseGameInfo declared in interface ICassandraBaseGameInfoPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[62,71] error: type argument BaseGameInfo is not within bounds of type-variable BGI
+[ERROR]   where BGI is a type-variable:
+[ERROR]     BGI extends IBaseGameInfo declared in interface ICassandraBaseGameInfoPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[648,35] error: incompatible types: CacheExportProcessor<BaseGameInfo> cannot be converted to TableProcessor<Pair<String,BaseGameInfo>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[653,43] error: incompatible types: CacheExportProcessor<BaseGameInfo> cannot be converted to TableProcessor<Pair<String,BaseGameInfo>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BaseGameCache.java:[658,47] error: incompatible types: CacheExportProcessor<BaseGameInfo> cannot be converted to TableProcessor<Pair<String,BaseGameInfo>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[63,80] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[100,76] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[127,80] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[139,80] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/AbstractStartGameHelper.java:[151,80] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:[63,66] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/games/NewTranslationGameHelper.java:[66,81] error: incompatible types: BaseGameInfo cannot be converted to IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/ShellDetector.java:[53,76] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/AbstractLazyLoadingExportableCache.java:[108,35] error: incompatible types: <anonymous TableProcessor<com.dgphoenix.casino.common.util.Pair<KEY,VALUE>>> cannot be converted to TableProcessor<com.abs.casino.common.util.Pair<KEY,VALUE>>
+[ERROR]   where KEY,VALUE are type-variables:
+[ERROR]     KEY extends Object declared in class AbstractLazyLoadingExportableCache
+[ERROR]     VALUE extends IDistributedCacheEntry declared in class AbstractLazyLoadingExportableCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/AbstractLazyLoadingExportableCache.java:[119,43] error: incompatible types: <anonymous TableProcessor<com.dgphoenix.casino.common.util.Pair<KEY,VALUE>>> cannot be converted to TableProcessor<com.abs.casino.common.util.Pair<KEY,VALUE>>
+[ERROR]   where KEY,VALUE are type-variables:
+[ERROR]     KEY extends Object declared in class AbstractLazyLoadingExportableCache
+[ERROR]     VALUE extends IDistributedCacheEntry declared in class AbstractLazyLoadingExportableCache
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java:[104,36] error: incompatible types: cannot infer type-variable(s) R
+[ERROR]     (argument mismatch; invalid method reference
+[ERROR]       method getId in interface Identifiable cannot be applied to given types
+[ERROR]         required: no arguments
+[ERROR]         found: IBaseGameInfo
+[ERROR]         reason: actual and formal argument lists differ in length)
+[ERROR]   where R,T are type-variables:
+[ERROR]     R extends Object declared in method <R>map(Function<? super T,? extends R>)
+[ERROR]     T extends Object declared in interface Stream
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/BankInfoCache.java:[104,37] error: invalid method reference
+[ERROR]   non-static method getId() cannot be referenced from a static context
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/cache/ExternalGameIdsCache.java:[46,72] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[102,101] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[117,101] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[139,101] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[152,101] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[173,74] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[184,93] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[198,70] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[206,70] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/gs-server/common/src/main/java/com/dgphoenix/casino/common/web/MobileDetector.java:[213,70] error: incompatible types: com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo cannot be converted to com.abs.casino.common.cache.data.game.IBaseGameInfo
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

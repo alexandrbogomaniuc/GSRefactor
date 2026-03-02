@@ -1,14 +1,14 @@
 package com.abs.casino.gs.managers.payment.currency;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraCurrencyRatesByDatePersister;
 import com.abs.casino.cassandra.persist.CassandraCurrencyRatesPersister;
 import com.abs.casino.common.currency.CurrencyRate;
 import com.abs.casino.common.currency.ICurrencyRateManager;
 import com.abs.casino.common.currency.IHistoricalCurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.Pair;
 import com.abs.casino.tracker.CurrencyUpdateProcessor;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;

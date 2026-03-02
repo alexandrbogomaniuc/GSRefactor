@@ -1,12 +1,12 @@
 package com.abs.casino.gs.socket.mq;
 
-import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.common.cache.BankInfoCache;
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.CommonExecutorService;
-import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.CommonExecutorService;
+import com.abs.casino.gs.socket.mq.MQServiceHandler;
 import com.abs.casino.gs.socket.mq.TournamentBuyInHelper;
 import com.abs.casino.gs.persistance.bet.PlayerBetPersistenceManager;
 import com.abs.casino.promo.PromoCampaignManager;

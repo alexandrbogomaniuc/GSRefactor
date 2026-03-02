@@ -34,7 +34,7 @@ index 071af23e..8f1f0806 100644
 -import com.dgphoenix.casino.forms.game.CommonFRBStartGameForm;
 -import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 -import com.dgphoenix.casino.helpers.login.FRBonusHelper;
--import com.dgphoenix.casino.helpers.login.LoginHelper;
+-import com.abs.casino.helpers.login.LoginHelper;
 -import com.dgphoenix.casino.helpers.login.serializers.BonusSerializeLoginForm;
 -import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;
 -import com.dgphoenix.casino.sm.login.LoginResponse;
@@ -42,7 +42,7 @@ index 071af23e..8f1f0806 100644
 +import com.dgphoenix.casino.forms.game.CommonFRBStartGameForm;
 +import com.dgphoenix.casino.gs.managers.payment.bonus.FRBonusManager;
 +import com.abs.casino.helpers.login.FRBonusHelper;
-+import com.dgphoenix.casino.helpers.login.LoginHelper;
++import com.abs.casino.helpers.login.LoginHelper;
 +import com.abs.casino.helpers.login.serializers.BonusSerializeLoginForm;
 +import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;
 +import com.dgphoenix.casino.sm.login.LoginResponse;
@@ -294,7 +294,7 @@ index 30ff4469..a5ac1736 100644
 +import com.dgphoenix.casino.gs.managers.payment.wallet.CWError;
 +import com.dgphoenix.casino.gs.managers.payment.wallet.CommonWalletErrors;
 +import com.dgphoenix.casino.gs.managers.payment.wallet.v3.CommonWalletAuthResult;
-+import com.dgphoenix.casino.helpers.login.LoginHelper;
++import com.abs.casino.helpers.login.LoginHelper;
 +import com.dgphoenix.casino.sm.CWv3PlayerSessionManager;
  import com.dgphoenix.casino.sm.PlayerSessionFactory;
  import com.dgphoenix.casino.sm.login.BonusGameLoginRequest;

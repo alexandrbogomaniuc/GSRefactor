@@ -1,0 +1,6 @@
+Selection rationale:
+- Isolated mp-server kafka namespace cluster to avoid GS runtime compile-risk after two failed GS-target attempts.
+- Batch A retains all 11 remaining mp-server declarations (dto base + handler) as one coupled, low-runtime-impact migration set.
+- Batch B intentionally no-op to preserve strict non-overlap under coupled dependencies.
+- Bounded package/import rewires only inside mp-server; no blind/global replacement.
+- GS validation matrix remains the canonical push gate.

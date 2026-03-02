@@ -1,9 +1,9 @@
 <%@ page import="com.abs.casino.cassandra.persist.CassandraCallIssuesPersister" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
 <%@ page import="com.abs.casino.common.cache.data.URLCallCounters" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
 <%@ page import="com.abs.casino.common.util.property.*" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%@ page import="com.abs.casino.statistics.http.HttpClientCallbackHandler" %>
 <%@ page import="com.abs.casino.support.cache.bank.edit.forms.editproperties.BankPropertiesForm" %>
 <%@ page import="org.apache.commons.lang.time.FastDateFormat" %>
@@ -11,8 +11,8 @@
 <%@ page import="java.lang.reflect.Modifier" %>
 <%@ page import="java.text.Format" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.dgphoenix.casino.cassandra.CassandraPersistenceManager" %>
-<%@ page import="com.dgphoenix.casino.common.util.ApplicationContextHelper" %>
+<%@ page import="com.abs.casino.cassandra.CassandraPersistenceManager" %>
+<%@ page import="com.abs.casino.common.util.ApplicationContextHelper" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>

@@ -1,9 +1,9 @@
 <%@ page import="com.abs.casino.common.web.BaseAction" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%@ page import="com.abs.casino.common.util.logkit.ThreadLog" %>
-<%@ page import="com.dgphoenix.casino.system.configuration.GameServerConfiguration" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BankInfoCache" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.bank.BankInfo" %>
+<%@ page import="com.abs.casino.system.configuration.GameServerConfiguration" %>
+<%@ page import="com.abs.casino.common.cache.BankInfoCache" %>
+<%@ page import="com.abs.casino.common.cache.data.bank.BankInfo" %>
 <%
     String cdnUrl = (String) request.getAttribute(BaseAction.KEY_CDN);
     String lobbyUrl = request.getScheme() + "://" + (StringUtils.isTrimmedEmpty(cdnUrl) ? request.getServerName() : cdnUrl);

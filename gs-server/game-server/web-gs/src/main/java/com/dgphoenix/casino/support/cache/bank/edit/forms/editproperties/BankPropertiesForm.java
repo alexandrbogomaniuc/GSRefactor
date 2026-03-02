@@ -1,7 +1,7 @@
 package com.abs.casino.support.cache.bank.edit.forms.editproperties;
 
 
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
 import com.abs.casino.common.util.CurrencyLabelValueListBean;
 import com.abs.casino.common.util.LanguageLabelValueBean;
 import com.abs.casino.common.util.LimitLabelValueListBean;
@@ -23,7 +23,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.*;
 
-import static com.dgphoenix.casino.common.cache.data.bank.BankInfo.KEY_FREE_BALANCE;
+import static com.abs.casino.common.cache.data.bank.BankInfo.KEY_FREE_BALANCE;
 import static org.apache.struts.action.ActionErrors.GLOBAL_MESSAGE;
 
 public class BankPropertiesForm extends ActionForm {

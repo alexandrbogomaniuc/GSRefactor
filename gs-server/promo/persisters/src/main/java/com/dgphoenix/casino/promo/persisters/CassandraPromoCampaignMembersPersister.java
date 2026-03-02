@@ -1,12 +1,12 @@
 package com.abs.casino.promo.persisters;
 
-import com.dgphoenix.casino.cassandra.persist.engine.AbstractCassandraPersister;
-import com.dgphoenix.casino.cassandra.persist.engine.ColumnDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.TableDefinition;
-import com.dgphoenix.casino.cassandra.persist.engine.configuration.CompactionStrategy;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.promo.PromoCampaignMember;
-import com.dgphoenix.casino.common.promo.PromoCampaignMemberInfos;
+import com.abs.casino.cassandra.persist.engine.AbstractCassandraPersister;
+import com.abs.casino.cassandra.persist.engine.ColumnDefinition;
+import com.abs.casino.cassandra.persist.engine.TableDefinition;
+import com.abs.casino.cassandra.persist.engine.configuration.CompactionStrategy;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.promo.PromoCampaignMember;
+import com.abs.casino.common.promo.PromoCampaignMemberInfos;
 import com.abs.casino.common.util.StreamUtils;
 import com.google.common.collect.Sets;
 import org.apache.logging.log4j.LogManager;

@@ -132,7 +132,7 @@
 116:        <form-bean name="GetVBAForm" type="com.abs.casino.actions.api.vba.GetVBAForm"/>
 118:        <form-bean name="GetTournamentPlayerInfoForm" type="com.abs.casino.actions.api.promo.GetTournamentPlayerInfoForm"/>
 119:        <form-bean name="RefreshBalanceForm" type="com.abs.casino.actions.api.RefreshBalanceForm"/>
-120:        <form-bean name="BonusForm" type="com.dgphoenix.casino.actions.api.bonus.BonusForm"/>
+120:        <form-bean name="BonusForm" type="com.abs.casino.actions.api.bonus.BonusForm"/>
 122:        <form-bean name="BankPropertyInfo" type="com.abs.casino.support.bankInfo.PropertyInfoForm" />
 125:        <form-bean name="GetLeaderboardsForm" type="com.abs.casino.actions.api.mq.GetLeaderboardsForm" />
 126:        <form-bean name="GetLeaderboardResultsForm" type="com.abs.casino.actions.api.mq.GetLeaderboardResultsForm" />

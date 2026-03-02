@@ -1,5 +1,5 @@
-<%@ page import="com.dgphoenix.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
-<%@ page import="com.dgphoenix.casino.common.util.string.StringUtils" %>
+<%@ page import="com.abs.casino.gs.managers.payment.wallet.RemoteClientStubHelper" %>
+<%@ page import="com.abs.casino.common.util.string.StringUtils" %>
 <%
     String userId = request.getParameter("userId");
     String bonusId = request.getParameter("bonusId");

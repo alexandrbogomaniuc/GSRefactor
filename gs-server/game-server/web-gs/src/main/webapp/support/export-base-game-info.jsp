@@ -1,9 +1,9 @@
 <%@ page import="java.io.File" %>
-<%@ page import="com.dgphoenix.casino.common.cache.BaseGameCache" %>
+<%@ page import="com.abs.casino.common.cache.BaseGameCache" %>
 <%@ page import="java.io.BufferedWriter" %>
 <%@ page import="java.io.FileWriter" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.dgphoenix.casino.common.cache.data.game.IBaseGameInfo" %>
+<%@ page import="com.abs.casino.common.cache.data.game.IBaseGameInfo" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     long now = System.currentTimeMillis();

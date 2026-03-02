@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.abs.casino.gs.socket.InServiceServiceHandler;
 import com.abs.casino.kafka.dto.SendBalanceUpdatedRequest;
-import com.dgphoenix.casino.kafka.dto.VoidKafkaResponse;
+import com.abs.casino.kafka.dto.VoidKafkaResponse;
 import com.abs.casino.kafka.handler.KafkaInServiceAsyncRequestHandler;
 
 @Component

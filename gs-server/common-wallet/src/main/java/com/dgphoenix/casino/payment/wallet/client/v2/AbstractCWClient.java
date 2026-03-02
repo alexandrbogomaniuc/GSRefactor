@@ -1,13 +1,13 @@
 package com.abs.casino.payment.wallet.client.v2;
 
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.abs.casino.gs.managers.payment.wallet.IWalletHelper;
-import com.dgphoenix.casino.gs.managers.payment.wallet.*;
-import com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;
+import com.abs.casino.gs.managers.payment.wallet.*;
+import com.abs.casino.gs.managers.payment.wallet.v2.ICommonWalletClient;
 import com.abs.casino.gs.managers.payment.wallet.v4.CWMType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

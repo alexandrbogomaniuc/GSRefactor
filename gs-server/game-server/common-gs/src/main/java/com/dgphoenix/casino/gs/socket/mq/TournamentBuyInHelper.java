@@ -1,35 +1,35 @@
 package com.abs.casino.gs.socket.mq;
 
-import com.dgphoenix.casino.account.AccountManager;
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.account.AccountManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.cassandra.persist.CassandraExternalTransactionPersister;
 import com.abs.casino.cassandra.persist.CassandraLasthandPersister;
-import com.dgphoenix.casino.common.SessionHelper;
-import com.dgphoenix.casino.common.cache.BankInfoCache;
-import com.dgphoenix.casino.common.cache.data.account.AccountInfo;
-import com.dgphoenix.casino.common.cache.data.bank.BankInfo;
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
-import com.dgphoenix.casino.common.cache.data.payment.IWallet;
+import com.abs.casino.common.SessionHelper;
+import com.abs.casino.common.cache.BankInfoCache;
+import com.abs.casino.common.cache.data.account.AccountInfo;
+import com.abs.casino.common.cache.data.bank.BankInfo;
+import com.abs.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.payment.IWallet;
 import com.abs.casino.common.cache.data.payment.PaymentMode;
 import com.abs.casino.common.cache.data.payment.transfer.ExternalPaymentTransaction;
 import com.abs.casino.common.cache.data.payment.transfer.TransactionStatus;
 import com.abs.casino.common.cache.data.payment.transfer.TransactionType;
-import com.dgphoenix.casino.common.cache.data.session.ClientType;
-import com.dgphoenix.casino.common.cache.data.session.GameSession;
-import com.dgphoenix.casino.common.cache.data.session.SessionInfo;
+import com.abs.casino.common.cache.data.session.ClientType;
+import com.abs.casino.common.cache.data.session.GameSession;
+import com.abs.casino.common.cache.data.session.SessionInfo;
 import com.abs.casino.common.currency.ICurrencyRateManager;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.WalletException;
 import com.abs.casino.common.promo.battleground.BattlegroundConfig;
-import com.dgphoenix.casino.common.transactiondata.ITransactionData;
-import com.dgphoenix.casino.common.util.IdGenerator;
-import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.gs.GameServer;
-import com.dgphoenix.casino.gs.GameServerComponentsHelper;
+import com.abs.casino.common.transactiondata.ITransactionData;
+import com.abs.casino.common.util.IdGenerator;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.gs.GameServer;
+import com.abs.casino.gs.GameServerComponentsHelper;
 import com.abs.casino.gs.managers.dblink.DBLinkCache;
 import com.abs.casino.gs.managers.dblink.IDBLink;
 import com.abs.casino.gs.managers.dblink.TournamentDBLink;
-import com.dgphoenix.casino.gs.managers.payment.wallet.*;
+import com.abs.casino.gs.managers.payment.wallet.*;
 import com.abs.casino.gs.managers.payment.wallet.CommonWalletErrors;
 import com.abs.casino.gs.socket.mq.ForceCreateDetailsException;
 import com.abs.casino.gs.managers.payment.wallet.tracker.WalletTracker;
@@ -210,7 +210,7 @@ public class TournamentBuyInHelper {
         boolean needSendWin;
         try {
             WalletProtocolFactory.getInstance().interceptCreateWallet(account, account.getBankId(), gameSession.getId(),
-                    (int) gameSession.getGameId(), com.dgphoenix.casino.common.cache.data.game.GameMode.REAL,
+                    (int) gameSession.getGameId(), com.abs.casino.common.cache.data.game.GameMode.REAL,
                     gameSession.getClientType());
             dbLink.updateLastActivity();
             Long roundId = dbLink.getRoundId();

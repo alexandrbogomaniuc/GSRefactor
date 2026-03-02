@@ -1,7 +1,7 @@
 package com.abs.casino.web;
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 
 public class VH {
     private static final String VERSION = "?version=";

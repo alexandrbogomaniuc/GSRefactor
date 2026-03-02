@@ -1,15 +1,15 @@
 package com.abs.casino.promo.feed.tournament;
 
-import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.common.promo.feed.tournament.*;
-import com.dgphoenix.casino.common.util.CollectionUtils;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.CollectionUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.gs.status.ServersStatusWatcher;
 import com.abs.casino.promo.feed.AbstractSummaryFeedWriter;
 import com.abs.casino.promo.persisters.CassandraSummaryFeedTransformerPersister;
 import com.abs.casino.promo.persisters.CassandraSummaryTournamentPromoFeedPersister;
 import com.abs.casino.promo.persisters.ISummaryFeedTransformer;
-import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
+import com.abs.casino.system.configuration.GameServerConfiguration;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;

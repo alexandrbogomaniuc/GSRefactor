@@ -1,14 +1,14 @@
 package com.abs.casino.websocket.tournaments;
 
-import com.dgphoenix.casino.common.cache.data.game.GameMode;
+import com.abs.casino.common.cache.data.game.GameMode;
 import com.abs.casino.common.transport.ITransportObject;
-import com.dgphoenix.casino.common.transport.TObject;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.string.StringUtils;
-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+import com.abs.casino.common.transport.TObject;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.string.StringUtils;
+import com.abs.casino.common.web.statistics.StatisticsManager;
 import com.abs.casino.gs.persistance.remotecall.RemoteCallHelper;
-import com.dgphoenix.casino.gs.socket.mq.MQServiceHandler;
-import com.dgphoenix.casino.kafka.dto.KafkaHandlerException;
+import com.abs.casino.gs.socket.mq.MQServiceHandler;
+import com.abs.casino.kafka.dto.KafkaHandlerException;
 import com.abs.casino.promo.tournaments.ErrorCodes;
 import com.abs.casino.promo.tournaments.handlers.TournamentMessageHandlersFactory;
 import com.abs.casino.promo.tournaments.messages.BalanceUpdated;

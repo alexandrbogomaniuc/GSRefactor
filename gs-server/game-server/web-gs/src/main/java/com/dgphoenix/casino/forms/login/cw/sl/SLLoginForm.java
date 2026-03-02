@@ -1,7 +1,7 @@
 package com.abs.casino.forms.login.cw.sl;
 
 import com.abs.casino.common.util.logkit.ThreadLog;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.abs.casino.forms.login.cw.CWLoginForm;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
