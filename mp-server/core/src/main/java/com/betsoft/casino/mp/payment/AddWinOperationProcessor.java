@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.model.IAddWinResult;
 import com.betsoft.casino.mp.model.Money;
 import com.betsoft.casino.mp.model.PaymentTransactionStatus;
 import com.betsoft.casino.mp.service.ISocketService;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.exception.ObjectAlreadyExistsException;
 import com.abs.casino.common.mp.TransactionErrorCodes;
 import org.apache.logging.log4j.LogManager;

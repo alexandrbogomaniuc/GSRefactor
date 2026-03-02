@@ -5267,3 +5267,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared `BGPrivateRoomInfoService` mixed namespace blocker and advanced first-fail to next `core` consumer boundary lane.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 17:09 UTC (Hard-cut live Batch AV+AW)
+- Continued Project 02 stabilization with integrated live batches `AV+AW` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - AV (`2` rewires): normalized `CommonException` imports in `IPendingOperationProcessor` and `AddWinOperationProcessor` (`com.dgphoenix -> com.abs`).
+  - AW (`1` rewire): normalized `CommonException` import in `SitOutOperationProcessor` (`com.dgphoenix -> com.abs`).
+  - retained total: `3` import/signature-boundary rewires across `3` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `web` FAIL, `clashofthegods` PASS.
+  - `web` first-fail moved from payment-lane exception mismatch to `pirates-math` residual import lane:
+    - `ShotCalculator` unresolved `com.dgphoenix...RNG` (`cannot find symbol RNG`).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+  - canonical failures remain environment-level Maven dependency resolution in current sandbox (external repo/DNS), not batch-local logic regression.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-170619-hardcut-live-batchAVAW-payment-commonexception-rewire3/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/268-hard-cut-live-batchAVAW-payment-commonexception-rewire3-report-20260302.md`
+- Measured movement:
+  - cleared payment-lane checked-exception mismatch lane and advanced `web` first-fail into narrower game-module import cleanup.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

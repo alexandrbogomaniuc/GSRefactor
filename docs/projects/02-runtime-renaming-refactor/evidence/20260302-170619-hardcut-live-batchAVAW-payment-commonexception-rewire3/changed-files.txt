@@ -1,0 +1,3 @@
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/payment/IPendingOperationProcessor.java
+mp-server/core/src/main/java/com/betsoft/casino/mp/payment/AddWinOperationProcessor.java
+mp-server/core/src/main/java/com/betsoft/casino/mp/payment/SitOutOperationProcessor.java

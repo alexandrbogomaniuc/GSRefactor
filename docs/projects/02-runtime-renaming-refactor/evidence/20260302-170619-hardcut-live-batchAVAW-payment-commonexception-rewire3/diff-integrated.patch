@@ -1,0 +1,50 @@
+diff --git a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/payment/IPendingOperationProcessor.java b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/payment/IPendingOperationProcessor.java
+index 4db374e0d..e72d742ce 100644
+--- a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/payment/IPendingOperationProcessor.java
++++ b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/payment/IPendingOperationProcessor.java
+@@ -1,8 +1,8 @@
+ package com.betsoft.casino.mp.payment;
+ 
+-import com.betsoft.casino.mp.service.ISocketService;
+-import com.dgphoenix.casino.common.exception.CommonException;
+-import com.abs.casino.common.exception.ObjectAlreadyExistsException;
++import com.betsoft.casino.mp.service.ISocketService;
++import com.abs.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.ObjectAlreadyExistsException;
+ 
+ /**
+  * User: flsh
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/payment/AddWinOperationProcessor.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/payment/AddWinOperationProcessor.java
+index c8661fa2d..a74f22ff4 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/payment/AddWinOperationProcessor.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/payment/AddWinOperationProcessor.java
+@@ -1,11 +1,11 @@
+ package com.betsoft.casino.mp.payment;
+ 
+ import com.betsoft.casino.mp.model.IAddWinResult;
+-import com.betsoft.casino.mp.model.Money;
+-import com.betsoft.casino.mp.model.PaymentTransactionStatus;
+-import com.betsoft.casino.mp.service.ISocketService;
+-import com.dgphoenix.casino.common.exception.CommonException;
+-import com.abs.casino.common.exception.ObjectAlreadyExistsException;
++import com.betsoft.casino.mp.model.Money;
++import com.betsoft.casino.mp.model.PaymentTransactionStatus;
++import com.betsoft.casino.mp.service.ISocketService;
++import com.abs.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.ObjectAlreadyExistsException;
+ import com.abs.casino.common.mp.TransactionErrorCodes;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/payment/SitOutOperationProcessor.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/payment/SitOutOperationProcessor.java
+index 390e40f5b..e6558ff1f 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/payment/SitOutOperationProcessor.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/payment/SitOutOperationProcessor.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.payment;
+ 
+ import com.betsoft.casino.mp.model.GameType;
+ import com.betsoft.casino.mp.service.ISocketService;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.abs.casino.common.exception.ObjectAlreadyExistsException;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;

@@ -1,0 +1,6 @@
+mp-server/core/src/main/java/com/betsoft/casino/mp/payment/SitOutOperationProcessor.java:5:import com.abs.casino.common.exception.CommonException;
+mp-server/core/src/main/java/com/betsoft/casino/mp/payment/SitOutOperationProcessor.java:18:    public boolean process(ISocketService socketService, int serverId, SitOutPendingOperation operation) throws CommonException {
+mp-server/core/src/main/java/com/betsoft/casino/mp/payment/AddWinOperationProcessor.java:7:import com.abs.casino.common.exception.CommonException;
+mp-server/core/src/main/java/com/betsoft/casino/mp/payment/AddWinOperationProcessor.java:22:    public boolean process(ISocketService socketService, int serverId, AddWinPendingOperation operation) throws CommonException {
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/payment/IPendingOperationProcessor.java:4:import com.abs.casino.common.exception.CommonException;
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/payment/IPendingOperationProcessor.java:13:    boolean process(ISocketService socketService, int serverId, P operation) throws CommonException;

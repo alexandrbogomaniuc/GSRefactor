@@ -10188,3 +10188,22 @@
   - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh tightened to `~0.2-1.2h` (`~0.03-0.15` workdays), focused on payment-lane exception boundary normalization (`AddWinOperationProcessor`).
+
+### 2026-03-02 17:09 UTC
+- Continued Project 02 stabilization with integrated live batches `AV+AW` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - AV (`2` rewires): `IPendingOperationProcessor` + `AddWinOperationProcessor` `CommonException` import normalization.
+  - AW (`1` rewire): `SitOutOperationProcessor` `CommonException` import normalization.
+  - retained total: `3` import/signature-boundary rewires across `3` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `web` FAIL; `clashofthegods` PASS.
+  - `web` first-fail moved to `pirates-math` `ShotCalculator` unresolved `com.dgphoenix...RNG` import lane.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+  - canonical failures remain infra-level in this sandbox (external Maven repo DNS resolution), not AV/AW local logic regressions.
+- Measured movement:
+  - payment-lane exception boundary blocker cleared and first-fail advanced to narrow game-module import cleanup.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-170619-hardcut-live-batchAVAW-payment-commonexception-rewire3/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/268-hard-cut-live-batchAVAW-payment-commonexception-rewire3-report-20260302.md`
+- Next step:
+  - commit AV+AW wave, attempt push, then execute bounded `pirates-math` RNG import normalization wave.
