@@ -10450,3 +10450,18 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - Next step:
   - commit/push BJ+BK checkpoint, then execute bounded `revengeofra` CommonException/Pair/Triple boundary harmonization wave.
+
+### 2026-03-02 19:35 UTC
+- Push checkpoint for `Batch BJ+BK` completed.
+- Commit pushed to `origin/main`:
+  - `7bbbeedd8` (`refactor: hard-cut batchBJBK pirates chain boundaries`)
+- Branch state after push:
+  - `main` synchronized with `origin/main` for tracked files in this wave.
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-192813-hardcut-live-batchBJBK-pirates-chain-boundary-import-rewire28/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/275-hard-cut-live-batchBJBK-pirates-chain-boundary-import-rewire28-report-20260302.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.40-3.00h` (`~0.05-0.38` workdays), next lane is `revengeofra` CommonException/Pair/Triple boundary harmonization.
