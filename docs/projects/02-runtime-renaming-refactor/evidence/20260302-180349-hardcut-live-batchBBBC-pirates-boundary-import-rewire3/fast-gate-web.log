@@ -1,0 +1,274 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.betsoft.casino:mp-bots:jar:1.0.0-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.springframework.boot:spring-boot-maven-plugin is missing. @ line 236, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project com.betsoft.casino:mp-casino:pom:1.0.0-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Tektosyne                                                          [jar]
+[INFO] mp-casino                                                          [pom]
+[INFO] Casino MP Games core interfaces                                    [jar]
+[INFO] Casino MP Games                                                    [pom]
+[INFO] MP Common Games                                                    [jar]
+[INFO] Max Quest: Crash. Math model                                       [jar]
+[INFO] Max Quest: Crash                                                   [jar]
+[INFO] Max Quest: Max Blast Champions Model data                          [jar]
+[INFO] Max Quest: Max Blast Champions                                     [jar]
+[INFO] Casino MP Games core                                               [jar]
+[INFO] Pirates math model                                                 [jar]
+[INFO] Pirates: Dead Mans Cove                                            [jar]
+[INFO] Max Quest: Amazon. Math model                                      [jar]
+[INFO] Max Quest: Amazon                                                  [jar]
+[INFO] Pirates common math model                                          [jar]
+[INFO] Pirates: POV                                                       [jar]
+[INFO] Pirates: DMC                                                       [jar]
+[INFO] MQ: Revenge of Ra. Math model                                      [jar]
+[INFO] MQ: Revenge of Ra                                                  [jar]
+[INFO] Max Quest: Dragonstone. Math model                                 [jar]
+[INFO] Max Quest: Dragonstone                                             [jar]
+[INFO] Max Quest: Clash of the Gods. Math model                           [jar]
+[INFO] Max Quest: Clash of the Gods                                       [jar]
+[INFO] Max Quest: BG Dragonstone. Math model                              [jar]
+[INFO] Max Quest: BG Dragonstone                                          [jar]
+[INFO] Max Quest: Mission Amazon. Math model                              [jar]
+[INFO] Max Quest: Mission Amazon                                          [jar]
+[INFO] BG Max Quest: Mission Amazon. Math model                           [jar]
+[INFO] BG Max Quest: Mission Amazon                                       [jar]
+[INFO] Max Quest: Sector X. Math model                                    [jar]
+[INFO] Max Quest: Sector X                                                [jar]
+[INFO] BG Max Quest: Sector X. Math model                                 [jar]
+[INFO] BG Max Quest: Sector X                                             [jar]
+[INFO] Casino MP Games persistance layer                                  [jar]
+[INFO] Kafka interfaces                                                   [jar]
+[INFO] mp-bots                                                            [jar]
+[INFO] Casino MP Games Web                                                [war]
+[INFO] 
+[INFO] ----------------------< org.kynosarges:tektosyne >----------------------
+[INFO] Building Tektosyne 6.0.1-BSG                                      [1/37]
+[INFO]   from tektosyne/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ tektosyne ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/tektosyne/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ tektosyne ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 62 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/tektosyne/target/classes
+[INFO] 
+[INFO] --------------------< com.betsoft.casino:mp-casino >--------------------
+[INFO] Building mp-casino 1.0.0-SNAPSHOT                                 [2/37]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:core-interfaces >----------------
+[INFO] Building Casino MP Games core interfaces 1.0.0-SNAPSHOT           [3/37]
+[INFO]   from core-interfaces/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ core-interfaces ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ core-interfaces ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --------------------< com.betsoft.casino.mp:games >---------------------
+[INFO] Building Casino MP Games 1.0.0-SNAPSHOT                           [4/37]
+[INFO]   from games/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:mp-common-games >----------------
+[INFO] Building MP Common Games 1.0.0-SNAPSHOT                           [5/37]
+[INFO]   from games/common-games/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ mp-common-games ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 100 resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ mp-common-games ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --------------< com.betsoft.casino.mp:maxcrashgame-math >---------------
+[INFO] Building Max Quest: Crash. Math model 1.0.0-SNAPSHOT              [6/37]
+[INFO]   from games/maxcrashgame-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ maxcrashgame-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/maxcrashgame-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ maxcrashgame-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -----------------< com.betsoft.casino.mp:maxcrashgame >-----------------
+[INFO] Building Max Quest: Crash 1.0.0-SNAPSHOT                          [7/37]
+[INFO]   from games/maxcrashgame/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ maxcrashgame ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/maxcrashgame/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ maxcrashgame ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ----------< com.betsoft.casino.mp:bg_maxblastchampions-math >-----------
+[INFO] Building Max Quest: Max Blast Champions Model data 1.0.0-SNAPSHOT [8/37]
+[INFO]   from games/bg_maxblastchampions-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_maxblastchampions-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_maxblastchampions-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------< com.betsoft.casino.mp:bg_maxblastchampions >-------------
+[INFO] Building Max Quest: Max Blast Champions 1.0.0-SNAPSHOT            [9/37]
+[INFO]   from games/bg_maxblastchampions/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ bg_maxblastchampions ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ bg_maxblastchampions ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ---------------------< com.betsoft.casino.mp:core >---------------------
+[INFO] Building Casino MP Games core 1.0.0-SNAPSHOT                     [10/37]
+[INFO]   from core/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 28 resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ core ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -----------------< com.betsoft.casino.mp:pirates-math >-----------------
+[INFO] Building Pirates math model 1.0.0-SNAPSHOT                       [11/37]
+[INFO]   from games/pirates-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ pirates-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ pirates-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------------< com.betsoft.casino.mp:pirates >--------------------
+[INFO] Building Pirates: Dead Mans Cove 1.0.0-SNAPSHOT                  [12/37]
+[INFO]   from games/pirates/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ pirates ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ pirates ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 19 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/target/classes
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java: Some input files use or override a deprecated API.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java: Recompile with -Xlint:deprecation for details.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayerRoundInfo.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayerRoundInfo.java: Recompile with -Xlint:unchecked for details.
+[INFO] Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/EnemyGame.java:[38,45] unreported exception com.dgphoenix.casino.common.exception.CommonException; must be caught or declared to be thrown
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:[124,115] incompatible types: java.util.List<com.abs.casino.common.util.Triple<java.lang.Integer,java.lang.Boolean,java.lang.Integer>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Triple<java.lang.Integer,java.lang.Boolean,java.lang.Integer>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:[331,75] incompatible types: java.util.Map<com.dgphoenix.casino.common.util.Pair<java.lang.Integer,java.lang.Integer>,java.lang.Double> cannot be converted to java.util.Map<com.abs.casino.common.util.Pair<java.lang.Integer,java.lang.Integer>,java.lang.Double>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:[1257,93] incompatible types: java.util.List<com.abs.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:[1312,61] incompatible types: java.util.List<com.abs.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameRoom.java:[206,17] addFreeShotsToQueue(com.betsoft.casino.mp.pirates.model.Seat,com.betsoft.casino.mp.model.IAddFreeShotsToQueue) in com.betsoft.casino.mp.pirates.model.GameRoom cannot override addFreeShotsToQueue(SEAT,com.betsoft.casino.mp.model.IAddFreeShotsToQueue) in com.betsoft.casino.mp.common.AbstractActionGameRoom
+  overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameRoom.java:[96,17] placeMineToMap(com.betsoft.casino.mp.pirates.model.Seat,com.betsoft.casino.mp.model.IMineCoordinates) in com.betsoft.casino.mp.pirates.model.GameRoom cannot override placeMineToMap(SEAT,com.betsoft.casino.mp.model.IMineCoordinates) in com.betsoft.casino.mp.common.AbstractActionGameRoom
+  overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/WaitingPlayersGameState.java:[18,20] setPlayGameState() in com.betsoft.casino.mp.pirates.model.WaitingPlayersGameState cannot override setPlayGameState() in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState
+  overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/QualifyGameState.java:[21,17] setWaitingPlayersGameState() in com.betsoft.casino.mp.pirates.model.QualifyGameState cannot override setWaitingPlayersGameState() in com.betsoft.casino.mp.common.AbstractQualifyGameState
+  overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[INFO] 9 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Tektosyne 6.0.1-BSG ................................ SUCCESS [  1.191 s]
+[INFO] mp-casino 1.0.0-SNAPSHOT ........................... SUCCESS [  0.001 s]
+[INFO] Casino MP Games core interfaces 1.0.0-SNAPSHOT ..... SUCCESS [  0.278 s]
+[INFO] Casino MP Games 1.0.0-SNAPSHOT ..................... SUCCESS [  0.001 s]
+[INFO] MP Common Games 1.0.0-SNAPSHOT ..................... SUCCESS [  0.809 s]
+[INFO] Max Quest: Crash. Math model 1.0.0-SNAPSHOT ........ SUCCESS [  0.043 s]
+[INFO] Max Quest: Crash 1.0.0-SNAPSHOT .................... SUCCESS [  0.052 s]
+[INFO] Max Quest: Max Blast Champions Model data 1.0.0-SNAPSHOT SUCCESS [  0.040 s]
+[INFO] Max Quest: Max Blast Champions 1.0.0-SNAPSHOT ...... SUCCESS [  0.035 s]
+[INFO] Casino MP Games core 1.0.0-SNAPSHOT ................ SUCCESS [  0.225 s]
+[INFO] Pirates math model 1.0.0-SNAPSHOT .................. SUCCESS [  0.029 s]
+[INFO] Pirates: Dead Mans Cove 1.0.0-SNAPSHOT ............. FAILURE [  0.983 s]
+[INFO] Max Quest: Amazon. Math model 1.0.0-SNAPSHOT ....... SKIPPED
+[INFO] Max Quest: Amazon 1.0.0-SNAPSHOT ................... SKIPPED
+[INFO] Pirates common math model 1.0.0-SNAPSHOT ........... SKIPPED
+[INFO] Pirates: POV 1.0.0-SNAPSHOT ........................ SKIPPED
+[INFO] Pirates: DMC 1.0.0-SNAPSHOT ........................ SKIPPED
+[INFO] MQ: Revenge of Ra. Math model 1.0.0-SNAPSHOT ....... SKIPPED
+[INFO] MQ: Revenge of Ra 1.0.0-SNAPSHOT ................... SKIPPED
+[INFO] Max Quest: Dragonstone. Math model 1.0.0-SNAPSHOT .. SKIPPED
+[INFO] Max Quest: Dragonstone 1.0.0-SNAPSHOT .............. SKIPPED
+[INFO] Max Quest: Clash of the Gods. Math model 1.0.0-SNAPSHOT SKIPPED
+[INFO] Max Quest: Clash of the Gods 1.0.0-SNAPSHOT ........ SKIPPED
+[INFO] Max Quest: BG Dragonstone. Math model 1.0.0-SNAPSHOT SKIPPED
+[INFO] Max Quest: BG Dragonstone 1.0.0-SNAPSHOT ........... SKIPPED
+[INFO] Max Quest: Mission Amazon. Math model 1.0.0-SNAPSHOT SKIPPED
+[INFO] Max Quest: Mission Amazon 1.0.0-SNAPSHOT ........... SKIPPED
+[INFO] BG Max Quest: Mission Amazon. Math model 1.0.0-SNAPSHOT SKIPPED
+[INFO] BG Max Quest: Mission Amazon 1.0.0-SNAPSHOT ........ SKIPPED
+[INFO] Max Quest: Sector X. Math model 1.0.0-SNAPSHOT ..... SKIPPED
+[INFO] Max Quest: Sector X 1.0.0-SNAPSHOT ................. SKIPPED
+[INFO] BG Max Quest: Sector X. Math model 1.0.0-SNAPSHOT .. SKIPPED
+[INFO] BG Max Quest: Sector X 1.0.0-SNAPSHOT .............. SKIPPED
+[INFO] Casino MP Games persistance layer 1.0.0-SNAPSHOT ... SKIPPED
+[INFO] Kafka interfaces 1.0.0-SNAPSHOT .................... SKIPPED
+[INFO] mp-bots 1.0.0-SNAPSHOT ............................. SKIPPED
+[INFO] Casino MP Games Web 1.0.0-SNAPSHOT ................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.924 s
+[INFO] Finished at: 2026-03-02T18:04:52Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project pirates: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/EnemyGame.java:[38,45] unreported exception com.dgphoenix.casino.common.exception.CommonException; must be caught or declared to be thrown
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:[124,115] incompatible types: java.util.List<com.abs.casino.common.util.Triple<java.lang.Integer,java.lang.Boolean,java.lang.Integer>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Triple<java.lang.Integer,java.lang.Boolean,java.lang.Integer>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:[331,75] incompatible types: java.util.Map<com.dgphoenix.casino.common.util.Pair<java.lang.Integer,java.lang.Integer>,java.lang.Double> cannot be converted to java.util.Map<com.abs.casino.common.util.Pair<java.lang.Integer,java.lang.Integer>,java.lang.Double>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:[1257,93] incompatible types: java.util.List<com.abs.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:[1312,61] incompatible types: java.util.List<com.abs.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameRoom.java:[206,17] addFreeShotsToQueue(com.betsoft.casino.mp.pirates.model.Seat,com.betsoft.casino.mp.model.IAddFreeShotsToQueue) in com.betsoft.casino.mp.pirates.model.GameRoom cannot override addFreeShotsToQueue(SEAT,com.betsoft.casino.mp.model.IAddFreeShotsToQueue) in com.betsoft.casino.mp.common.AbstractActionGameRoom
+[ERROR]   overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameRoom.java:[96,17] placeMineToMap(com.betsoft.casino.mp.pirates.model.Seat,com.betsoft.casino.mp.model.IMineCoordinates) in com.betsoft.casino.mp.pirates.model.GameRoom cannot override placeMineToMap(SEAT,com.betsoft.casino.mp.model.IMineCoordinates) in com.betsoft.casino.mp.common.AbstractActionGameRoom
+[ERROR]   overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/WaitingPlayersGameState.java:[18,20] setPlayGameState() in com.betsoft.casino.mp.pirates.model.WaitingPlayersGameState cannot override setPlayGameState() in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState
+[ERROR]   overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/QualifyGameState.java:[21,17] setWaitingPlayersGameState() in com.betsoft.casino.mp.pirates.model.QualifyGameState cannot override setWaitingPlayersGameState() in com.betsoft.casino.mp.common.AbstractQualifyGameState
+[ERROR]   overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :pirates

@@ -10278,3 +10278,22 @@
   - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh tightened to `~0.03-0.25h` (`~0.00-0.03` workdays), focused on pirates model boundary harmonization (`PlayerRoundInfo` Pair and `EnemyGame/PlayGameState` CommonException lanes).
+
+### 2026-03-02 18:05 UTC
+- Continued Project 02 stabilization with integrated live batches `BB+BC` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BB (`1` rewire): `PlayerRoundInfo` `Pair` import normalization.
+  - BC (`2` rewires): `EnemyGame` + `PlayGameState` `CommonException` import normalization.
+  - retained total: `3` import/signature-boundary rewires across `3` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `web` FAIL; `clashofthegods` PASS.
+  - `web` first-fail narrowed to residual pirates boundaries (`EnemyGame` dependent unreported `com.dgphoenix...CommonException` and `PlayGameState` Pair/Triple mixed-namespace incompatibilities).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+  - canonical failures remain infra-level in this sandbox (external Maven repo DNS resolution), not BB/BC local logic regressions.
+- Measured movement:
+  - `PlayerRoundInfo` Pair lane cleared and remaining pirates boundary surface tightened.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-180349-hardcut-live-batchBBBC-pirates-boundary-import-rewire3/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/271-hard-cut-live-batchBBBC-pirates-boundary-import-rewire3-report-20260302.md`
+- Next step:
+  - commit BB+BC wave, attempt push, then execute bounded PlayGameState Pair/Triple namespace cleanup and dependent EnemyGame boundary follow-through.

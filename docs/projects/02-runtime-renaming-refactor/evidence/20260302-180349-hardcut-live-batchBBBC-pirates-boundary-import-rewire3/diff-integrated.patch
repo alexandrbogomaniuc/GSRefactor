@@ -1,0 +1,39 @@
+diff --git a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/EnemyGame.java b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/EnemyGame.java
+index e4515f89e..ea584c509 100644
+--- a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/EnemyGame.java
++++ b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/EnemyGame.java
+@@ -12,7 +12,7 @@ import com.betsoft.casino.mp.pirates.model.math.EnemyType;
+ import com.betsoft.casino.mp.pirates.model.math.ShotCalculator;
+ import com.betsoft.casino.mp.service.IGameConfigService;
+ import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import org.apache.logging.log4j.Logger;
+ 
+ import java.util.List;
+diff --git a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java
+index 0cd303965..68cc8fc80 100644
+--- a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java
++++ b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java
+@@ -14,7 +14,7 @@ import com.betsoft.casino.mp.pirates.model.math.*;
+ import com.betsoft.casino.teststand.TestStandFeature;
+ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.betsoft.casino.utils.TObject;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+ import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.Triple;
+diff --git a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayerRoundInfo.java b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayerRoundInfo.java
+index 6b3e8d28c..b1e658e34 100644
+--- a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayerRoundInfo.java
++++ b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayerRoundInfo.java
+@@ -7,7 +7,7 @@ import com.betsoft.casino.mp.model.Money;
+ import com.betsoft.casino.mp.pirates.model.math.EnemyRange;
+ import com.betsoft.casino.mp.pirates.model.math.EnemyType;
+ import com.betsoft.casino.mp.pirates.model.math.MathData;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import com.google.common.util.concurrent.AtomicDouble;
+ 
+ import java.util.ArrayList;

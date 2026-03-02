@@ -1,0 +1,31 @@
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/EnemyGame.java:36:            throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayerRoundInfo.java:115:                Map<String, Pair<AtomicInteger, AtomicDouble>> additionalWins_ = new HashMap<>();
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayerRoundInfo.java:121:                    additionalWins_.put(description, new Pair<>(number, win));
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayerRoundInfo.java:223:        Pair<AtomicInteger, AtomicDouble> multiplier = getAdditionalWins().get("Multiplier");
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayerRoundInfo.java:224:        Pair<AtomicInteger, AtomicDouble> killAwardWin = getAdditionalWins().get("KillAwardWin");
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayerRoundInfo.java:225:        Pair<AtomicInteger, AtomicDouble> totalGemsPayout = getAdditionalWins().get("totalGemsPayout");
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:72:    protected void setWaitingGameState() throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:77:    protected void setQualifyGameState() throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:87:    public void init() throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:102:    protected void updateWithLock() throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:314:    private void calculateMinesOnMap() throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:317:        Map<Pair<Integer, Integer>, Double> customDistances;
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:319:        customDistances.put(new Pair<>(EnemyType.Boss.getId(), 1), 80.);
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:320:        customDistances.put(new Pair<>(EnemyType.Boss.getId(), 2), 80.);
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:321:        customDistances.put(new Pair<>(EnemyType.Boss.getId(), 3), 80.);
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:367:    public void nextSubRound() throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:769:    public void placeMineToMap(Seat seat, IMineCoordinates mineCoordinates) throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:847:    public void processShot(Seat seat, IShot shot, boolean isInternalShot) throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:986:    protected void shootWithRegularWeapon(long time, Seat seat, IShot shot) throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:997:    private void shootWithCombinedWeapon(long time, Seat seat, IShot shot) throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:1013:    private void processSingleShotResult(Seat seat, IShot shot, ShotMessages messages, ShootResult result) throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:1032:            throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:1047:                                                                     ShotMessages messages) throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:1257:                        List<Pair<Integer, Money>> additionalWins = result.getAdditionalWins();
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:1258:                        List<Pair<Integer, Money>> realAdditionalWin = new ArrayList<>();
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:1265:                                for (Pair<Integer, Money> additionalWin_ : additionalWins) {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:1500:            Pair<Integer, Integer> weaponForKey = MathQuestData.getRandomWeapon(prizeId);
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:1544:            List<IWinPrize>> hitResultBySeats, int specialWeaponId, List<Pair<Integer, Money>> additionalWin,
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:1566:                for (Pair<Integer, Money> wins : additionalWin) {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:1599:                                       double damageMultiplier) throws CommonException {
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java:1648:    public void restoreGameRoom(GameRoom gameRoom) throws CommonException {

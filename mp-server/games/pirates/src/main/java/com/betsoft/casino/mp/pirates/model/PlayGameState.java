@@ -14,7 +14,7 @@ import com.betsoft.casino.mp.pirates.model.math.*;
 import com.betsoft.casino.teststand.TestStandFeature;
 import com.betsoft.casino.teststand.TestStandLocal;
 import com.betsoft.casino.utils.TObject;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.Pair;
 import com.abs.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.Triple;

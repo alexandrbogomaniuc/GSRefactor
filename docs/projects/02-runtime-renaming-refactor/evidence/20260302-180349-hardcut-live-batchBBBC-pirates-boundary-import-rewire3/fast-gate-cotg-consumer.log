@@ -1,0 +1,106 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.betsoft.casino:mp-bots:jar:1.0.0-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.springframework.boot:spring-boot-maven-plugin is missing. @ line 236, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project com.betsoft.casino:mp-casino:pom:1.0.0-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Tektosyne                                                          [jar]
+[INFO] mp-casino                                                          [pom]
+[INFO] Casino MP Games core interfaces                                    [jar]
+[INFO] Casino MP Games                                                    [pom]
+[INFO] MP Common Games                                                    [jar]
+[INFO] Max Quest: Clash of the Gods. Math model                           [jar]
+[INFO] Max Quest: Clash of the Gods                                       [jar]
+[INFO] 
+[INFO] ----------------------< org.kynosarges:tektosyne >----------------------
+[INFO] Building Tektosyne 6.0.1-BSG                                       [1/7]
+[INFO]   from tektosyne/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ tektosyne ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/tektosyne/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ tektosyne ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 62 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/tektosyne/target/classes
+[INFO] 
+[INFO] --------------------< com.betsoft.casino:mp-casino >--------------------
+[INFO] Building mp-casino 1.0.0-SNAPSHOT                                  [2/7]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:core-interfaces >----------------
+[INFO] Building Casino MP Games core interfaces 1.0.0-SNAPSHOT            [3/7]
+[INFO]   from core-interfaces/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ core-interfaces ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ core-interfaces ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --------------------< com.betsoft.casino.mp:games >---------------------
+[INFO] Building Casino MP Games 1.0.0-SNAPSHOT                            [4/7]
+[INFO]   from games/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:mp-common-games >----------------
+[INFO] Building MP Common Games 1.0.0-SNAPSHOT                            [5/7]
+[INFO]   from games/common-games/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ mp-common-games ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 100 resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ mp-common-games ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------< com.betsoft.casino.mp:clashofthegods-math >--------------
+[INFO] Building Max Quest: Clash of the Gods. Math model 1.0.0-SNAPSHOT   [6/7]
+[INFO]   from games/clashofthegods-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ clashofthegods-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ clashofthegods-math ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ----------------< com.betsoft.casino.mp:clashofthegods >----------------
+[INFO] Building Max Quest: Clash of the Gods 1.0.0-SNAPSHOT               [7/7]
+[INFO]   from games/clashofthegods/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ clashofthegods ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ clashofthegods ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Tektosyne 6.0.1-BSG ................................ SUCCESS [  1.112 s]
+[INFO] mp-casino 1.0.0-SNAPSHOT ........................... SUCCESS [  0.001 s]
+[INFO] Casino MP Games core interfaces 1.0.0-SNAPSHOT ..... SUCCESS [  0.250 s]
+[INFO] Casino MP Games 1.0.0-SNAPSHOT ..................... SUCCESS [  0.001 s]
+[INFO] MP Common Games 1.0.0-SNAPSHOT ..................... SUCCESS [  0.689 s]
+[INFO] Max Quest: Clash of the Gods. Math model 1.0.0-SNAPSHOT SUCCESS [  0.040 s]
+[INFO] Max Quest: Clash of the Gods 1.0.0-SNAPSHOT ........ SUCCESS [  0.037 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.303 s
+[INFO] Finished at: 2026-03-02T18:04:55Z
+[INFO] ------------------------------------------------------------------------

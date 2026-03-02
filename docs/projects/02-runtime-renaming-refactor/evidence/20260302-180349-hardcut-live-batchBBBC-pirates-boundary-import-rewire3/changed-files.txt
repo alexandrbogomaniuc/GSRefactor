@@ -1,0 +1,3 @@
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayerRoundInfo.java
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/EnemyGame.java
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java

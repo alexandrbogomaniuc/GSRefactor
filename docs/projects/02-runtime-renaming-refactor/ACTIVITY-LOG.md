@@ -5325,3 +5325,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - `ShotCalculator` Triple boundary lane cleared; first-fail advanced to narrower pirates model boundary set.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 18:05 UTC (Hard-cut live Batch BB+BC)
+- Continued Project 02 stabilization with integrated live batches `BB+BC` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BB (`1` rewire): normalized `PlayerRoundInfo` `Pair` import (`com.dgphoenix -> com.abs`).
+  - BC (`2` rewires): normalized `EnemyGame` + `PlayGameState` `CommonException` imports (`com.dgphoenix -> com.abs`).
+  - retained total: `3` import/signature-boundary rewires across `3` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `web` FAIL, `clashofthegods` PASS.
+  - `web` first-fail narrowed to residual pirates boundary lanes:
+    - `EnemyGame` unreported `com.dgphoenix...CommonException` at dependent call boundary,
+    - `PlayGameState` Pair/Triple incompatibilities at remaining mixed-namespace call sites.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+  - canonical failures remain environment-level Maven dependency resolution in current sandbox (external repo/DNS), not batch-local logic regression.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-180349-hardcut-live-batchBBBC-pirates-boundary-import-rewire3/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/271-hard-cut-live-batchBBBC-pirates-boundary-import-rewire3-report-20260302.md`
+- Measured movement:
+  - top `PlayerRoundInfo` Pair mismatch lane cleared; remaining pirates boundary set tightened and isolated.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).
