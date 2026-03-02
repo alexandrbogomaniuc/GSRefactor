@@ -10518,3 +10518,18 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - Next step:
   - commit/push BN+BO checkpoint, then execute bounded `mp-server/bots` RNG import harmonization wave.
+
+### 2026-03-02 20:59 UTC
+- Push checkpoint for `Batch BN+BO` completed.
+- Commit pushed to `origin/main`:
+  - `817f4c4b0` (`refactor: hard-cut batchBNBO dragonstone boundary imports`)
+- Branch state after push:
+  - `main` synchronized with `origin/main` for tracked files in this wave.
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-202723-hardcut-live-batchBNBO-dragonstone-boundary-import-rewire19/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/277-hard-cut-live-batchBNBO-dragonstone-boundary-import-rewire19-report-20260302.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.70-5.50h` (`~0.09-0.69` workdays), next lane is `mp-server/bots` RNG import harmonization.
