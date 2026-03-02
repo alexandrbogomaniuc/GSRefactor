@@ -10552,3 +10552,18 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - Next step:
   - commit/push BP+BQ checkpoint, then execute bounded bots string-utils dependency harmonization (`RicochetBullet` lane).
+
+### 2026-03-02 21:37 UTC
+- Push checkpoint for `Batch BP+BQ` completed.
+- Commit pushed to `origin/main`:
+  - `ba0bb3564` (`refactor: hard-cut batchBPBQ bots rng imports`)
+- Branch state after push:
+  - `main` synchronized with `origin/main` for tracked files in this wave.
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-210858-hardcut-live-batchBPBQ-bots-rng-import-rewire26/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/278-hard-cut-live-batchBPBQ-bots-rng-import-rewire26-report-20260302.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.50-4.00h` (`~0.06-0.50` workdays), next lane is bots string-utils dependency alignment (`RicochetBullet` `DateTimeUtils`).
