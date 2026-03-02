@@ -10382,3 +10382,18 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - Next step:
   - commit/push BF+BG checkpoint, then execute bounded amazon exception/Pair boundary normalization wave.
+
+### 2026-03-02 18:48 UTC
+- Push checkpoint for `Batch BF+BG` completed.
+- Commit pushed to `origin/main`:
+  - `3af166802` (`refactor: hard-cut batchBFBG multi-game rng imports`)
+- Branch state after push:
+  - `main` synchronized with `origin/main` for tracked files in this wave.
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-184147-hardcut-live-batchBFBG-multi-game-rng-import-rewire26/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/273-hard-cut-live-batchBFBG-multi-game-rng-import-rewire26-report-20260302.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~1.00-6.00h` (`~0.13-0.75` workdays), next lane is amazon `CommonException` throws-contract and `Pair` namespace harmonization.
