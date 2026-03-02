@@ -1,0 +1,81 @@
+[2026-03-02T18:20:19Z] START cotg-consumer
+[2026-03-02T18:20:19Z] DIR mp-server/games/clashofthegods
+[2026-03-02T18:20:19Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< com.betsoft.casino.mp:clashofthegods >----------------
+[INFO] Building Max Quest: Clash of the Gods 1.0.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ clashofthegods ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ clashofthegods ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ clashofthegods ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.6.0:testCompile (default-testCompile) @ clashofthegods ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 16 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/target/test-classes
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/CollectResultData.java: /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/CollectResultData.java uses or overrides a deprecated API.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/CollectResultData.java: Recompile with -Xlint:deprecation for details.
+[INFO] Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/SeatStat.java:[4,1] a type with the same simple name is already defined by the single-type-import of com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:[17,40] cannot find symbol
+  symbol:   class LongIdGenerator
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:[232,30] cannot find symbol
+  symbol:   variable LongIdGenerator
+  location: class com.betsoft.casino.mp.clashofthegods.TestModel
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:[240,21] incompatible types: com.betsoft.casino.mp.common.testmodel.StubCurrency cannot be converted to com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:[252,70] incompatible types: com.betsoft.casino.mp.common.testmodel.StubCurrency cannot be converted to com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:[544,112] sitIn(java.lang.String,long,java.lang.String,java.lang.String,java.lang.Long,long,long,long,int,java.lang.Long,java.lang.String) in com.betsoft.casino.mp.common.testmodel.StubSocketService cannot implement sitIn(java.lang.String,long,java.lang.String,java.lang.String,java.lang.Long,long,long,long,int,java.lang.Long,java.lang.String) in com.betsoft.casino.mp.service.ISocketService
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:[588,9] cannot find symbol
+  symbol:   variable LongIdGenerator
+  location: class com.betsoft.casino.mp.clashofthegods.TestModel
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java:[23,81] incompatible types: com.dgphoenix.casino.common.util.Pair<java.lang.Double,java.lang.Double> cannot be converted to com.abs.casino.common.util.Pair<java.lang.Double,java.lang.Double>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java:[39,89] incompatible types: com.dgphoenix.casino.common.util.Pair<java.lang.Double,java.lang.Double> cannot be converted to com.abs.casino.common.util.Pair<java.lang.Double,java.lang.Double>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java:[194,17] incompatible types: com.betsoft.casino.mp.common.testmodel.StubCurrency cannot be converted to com.abs.casino.common.cache.data.currency.ICurrency
+[INFO] 10 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.495 s
+[INFO] Finished at: 2026-03-02T18:20:22Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:testCompile (default-testCompile) on project clashofthegods: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/SeatStat.java:[4,1] a type with the same simple name is already defined by the single-type-import of com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:[17,40] cannot find symbol
+[ERROR]   symbol:   class LongIdGenerator
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:[232,30] cannot find symbol
+[ERROR]   symbol:   variable LongIdGenerator
+[ERROR]   location: class com.betsoft.casino.mp.clashofthegods.TestModel
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:[240,21] incompatible types: com.betsoft.casino.mp.common.testmodel.StubCurrency cannot be converted to com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:[252,70] incompatible types: com.betsoft.casino.mp.common.testmodel.StubCurrency cannot be converted to com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:[544,112] sitIn(java.lang.String,long,java.lang.String,java.lang.String,java.lang.Long,long,long,long,int,java.lang.Long,java.lang.String) in com.betsoft.casino.mp.common.testmodel.StubSocketService cannot implement sitIn(java.lang.String,long,java.lang.String,java.lang.String,java.lang.Long,long,long,long,int,java.lang.Long,java.lang.String) in com.betsoft.casino.mp.service.ISocketService
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java:[588,9] cannot find symbol
+[ERROR]   symbol:   variable LongIdGenerator
+[ERROR]   location: class com.betsoft.casino.mp.clashofthegods.TestModel
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java:[23,81] incompatible types: com.dgphoenix.casino.common.util.Pair<java.lang.Double,java.lang.Double> cannot be converted to com.abs.casino.common.util.Pair<java.lang.Double,java.lang.Double>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java:[39,89] incompatible types: com.dgphoenix.casino.common.util.Pair<java.lang.Double,java.lang.Double> cannot be converted to com.abs.casino.common.util.Pair<java.lang.Double,java.lang.Double>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java:[194,17] incompatible types: com.betsoft.casino.mp.common.testmodel.StubCurrency cannot be converted to com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[2026-03-02T18:20:22Z] FAIL cotg-consumer rc=1

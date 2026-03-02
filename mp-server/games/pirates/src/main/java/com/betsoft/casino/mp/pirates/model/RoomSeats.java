@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.pirates.model;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 import java.io.Serializable;
 import java.util.Arrays;

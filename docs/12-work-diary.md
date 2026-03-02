@@ -10308,3 +10308,22 @@
   - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh tightened to `~0.01-0.12h` (`~0.00-0.02` workdays), focused on residual pirates `PlayGameState` Pair/Triple namespace harmonization and dependent EnemyGame boundary.
+
+### 2026-03-02 18:32 UTC
+- Continued Project 02 stabilization with integrated live batches `BD+BE` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BD (`3` rewires): `PlayGameState` Pair/Triple import normalization + `MathQuestData` Pair import normalization.
+  - BE (`6` rewires): `CommonException` import normalization in `GameRoom`, `WaitingPlayersGameState`, `QualifyGameState`, `RoomSeats`, and two pirates shot calculators.
+  - retained total: `9` import/signature-boundary rewires across `8` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `web` FAIL; harmonized `clashofthegods` compile PASS.
+  - `web` first-fail shifted from pirates boundaries to amazon unresolved RNG imports (`GameMap`, `EnemyGame`, `PlayGameState`).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-181911-hardcut-live-batchBDBE-pirates-boundary-import-rewire8/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/272-hard-cut-live-batchBDBE-pirates-boundary-import-rewire9-report-20260302.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- Next step:
+  - commit/push BD+BE checkpoint, then execute bounded amazon RNG import normalization wave.

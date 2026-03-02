@@ -5345,3 +5345,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - top `PlayerRoundInfo` Pair mismatch lane cleared; remaining pirates boundary set tightened and isolated.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 18:32 UTC (Hard-cut live Batch BD+BE)
+- Continued Project 02 stabilization with integrated live batches `BD+BE` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BD (`3` rewires): normalized `PlayGameState` `Pair/Triple` imports and `MathQuestData` `Pair` import (`com.dgphoenix -> com.abs`).
+  - BE (`6` rewires): normalized `CommonException` imports in pirates room/state + math shot calculators (`com.dgphoenix -> com.abs`).
+  - retained total: `9` import/signature-boundary rewires across `8` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `web` FAIL, harmonized `clashofthegods` compile PASS.
+  - `web` first-fail moved off pirates boundaries into amazon RNG lane:
+    - `GameMap`, `EnemyGame`, `PlayGameState` unresolved `com.dgphoenix...RNG` imports.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not batch-local import semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-181911-hardcut-live-batchBDBE-pirates-boundary-import-rewire8/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/272-hard-cut-live-batchBDBE-pirates-boundary-import-rewire9-report-20260302.md`
+- Measured movement:
+  - residual pirates Pair/Triple/CommonException boundary lane cleared in targeted files; first-fail advanced to amazon RNG import normalization.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

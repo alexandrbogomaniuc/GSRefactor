@@ -1,0 +1,8 @@
+mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathQuestData.java
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameRoom.java
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/QualifyGameState.java
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/RoomSeats.java
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/WaitingPlayersGameState.java

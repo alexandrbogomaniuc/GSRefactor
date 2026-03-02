@@ -11,7 +11,7 @@ import com.betsoft.casino.teststand.TestStandLocal;
 import com.abs.casino.common.util.Pair;
 import com.abs.casino.common.util.RNG;
 import com.abs.casino.common.util.Triple;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import org.apache.logging.log4j.Logger;
 import java.math.BigDecimal;
 import java.math.MathContext;

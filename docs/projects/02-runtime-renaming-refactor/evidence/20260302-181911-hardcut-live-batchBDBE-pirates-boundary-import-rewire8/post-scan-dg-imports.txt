@@ -1,0 +1,11 @@
+mp-server/games/pirates/src/test/java/com/betsoft/casino/mp/pirates/TestWrongWeapons.java:9:import com.dgphoenix.casino.common.util.Pair;
+mp-server/games/pirates/src/test/java/com/betsoft/casino/mp/pirates/TestQuests.java:6:import com.dgphoenix.casino.common.util.Pair;
+mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/PayTableInst.java:7:import com.dgphoenix.casino.common.util.Pair;
+mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/PayTableInst.java:8:import com.dgphoenix.casino.common.util.Triple;
+mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/MathData.java:6:import com.dgphoenix.casino.common.util.Pair;
+mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/MathData.java:7:import com.dgphoenix.casino.common.util.Triple;
+mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java:11:import com.dgphoenix.casino.common.util.Pair;
+mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java:13:import com.dgphoenix.casino.common.util.Triple;
+mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameMap.java:16:import com.dgphoenix.casino.common.util.Pair;
+mp-server/games/pirates/src/test/java/com/betsoft/casino/mp/pirates/model/TestModelData.java:6:import com.dgphoenix.casino.common.util.Pair;
+mp-server/games/pirates/src/test/java/com/betsoft/casino/mp/pirates/model/TestModelData.java:8:import com.dgphoenix.casino.common.util.Triple;

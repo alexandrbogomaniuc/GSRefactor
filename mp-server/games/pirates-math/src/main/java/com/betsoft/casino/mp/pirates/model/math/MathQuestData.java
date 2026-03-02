@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.pirates.model.math;
 
 import com.betsoft.casino.mp.model.SpecialWeaponType;
 import com.betsoft.casino.mp.model.gameconfig.GameTools;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 import com.google.common.util.concurrent.AtomicDouble;
 import java.util.Arrays;
 import java.util.HashMap;

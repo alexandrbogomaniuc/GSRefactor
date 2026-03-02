@@ -1,0 +1,24 @@
+221:[ERROR] COMPILATION ERROR : 
+223:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/GameMap.java:[13,40] cannot find symbol
+226:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java:[17,40] cannot find symbol
+229:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/PlayGameState.java:[18,40] cannot find symbol
+280:[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project amazon: Compilation failure: Compilation failure: 
+281:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/GameMap.java:[13,40] cannot find symbol
+282:[ERROR]   symbol:   class RNG
+283:[ERROR]   location: package com.dgphoenix.casino.common.util
+284:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java:[17,40] cannot find symbol
+285:[ERROR]   symbol:   class RNG
+286:[ERROR]   location: package com.dgphoenix.casino.common.util
+287:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/PlayGameState.java:[18,40] cannot find symbol
+288:[ERROR]   symbol:   class RNG
+289:[ERROR]   location: package com.dgphoenix.casino.common.util
+290:[ERROR] -> [Help 1]
+291:[ERROR] 
+292:[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+293:[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+294:[ERROR] 
+295:[ERROR] For more information about the errors and possible solutions, please read the following articles:
+296:[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+297:[ERROR] 
+298:[ERROR] After correcting the problems, you can resume the build with the command
+299:[ERROR]   mvn <args> -rf :amazon

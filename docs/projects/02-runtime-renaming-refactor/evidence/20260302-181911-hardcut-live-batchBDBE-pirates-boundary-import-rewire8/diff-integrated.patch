@@ -1,0 +1,120 @@
+diff --git a/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java b/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java
+index 29526808f..6575d52eb 100644
+--- a/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java
++++ b/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java
+@@ -7,7 +7,7 @@ import com.betsoft.casino.mp.model.gameconfig.GameTools;
+ import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
+ import com.betsoft.casino.teststand.TestStandFeature;
+ import com.betsoft.casino.teststand.TestStandLocal;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+ import com.dgphoenix.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.Triple;
+diff --git a/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathQuestData.java b/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathQuestData.java
+index a959b25e5..b67d46e67 100644
+--- a/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathQuestData.java
++++ b/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathQuestData.java
+@@ -1,9 +1,9 @@
+ package com.betsoft.casino.mp.pirates.model.math;
+ 
+-import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.betsoft.casino.mp.model.gameconfig.GameTools;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.google.common.util.concurrent.AtomicDouble;
++import com.betsoft.casino.mp.model.SpecialWeaponType;
++import com.betsoft.casino.mp.model.gameconfig.GameTools;
++import com.abs.casino.common.util.Pair;
++import com.google.common.util.concurrent.AtomicDouble;
+ import java.util.Arrays;
+ import java.util.HashMap;
+ import java.util.List;
+diff --git a/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java b/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java
+index 2be1c61af..a2a84fa70 100644
+--- a/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java
++++ b/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java
+@@ -11,7 +11,7 @@ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.abs.casino.common.util.Pair;
+ import com.abs.casino.common.util.RNG;
+ import com.abs.casino.common.util.Triple;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import org.apache.logging.log4j.Logger;
+ import java.math.BigDecimal;
+ import java.math.MathContext;
+diff --git a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameRoom.java b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameRoom.java
+index a37d3142e..2e25f8b03 100644
+--- a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameRoom.java
++++ b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/GameRoom.java
+@@ -7,7 +7,7 @@ import com.betsoft.casino.mp.model.room.ISingleNodeRoomInfo;
+ import com.betsoft.casino.mp.pirates.model.math.*;
+ import com.betsoft.casino.mp.service.*;
+ import com.betsoft.casino.mp.web.IGameSocketClient;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.abs.casino.common.util.RNG;
+ import com.hazelcast.core.IExecutorService;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java
+index 68cc8fc80..c9dba1ded 100644
+--- a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java
++++ b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/PlayGameState.java
+@@ -11,14 +11,14 @@ import com.betsoft.casino.mp.model.movement.Trajectory;
+ import com.betsoft.casino.mp.model.quests.IQuest;
+ import com.betsoft.casino.mp.model.quests.ITreasureProgress;
+ import com.betsoft.casino.mp.pirates.model.math.*;
+-import com.betsoft.casino.teststand.TestStandFeature;
+-import com.betsoft.casino.teststand.TestStandLocal;
+-import com.betsoft.casino.utils.TObject;
++import com.betsoft.casino.teststand.TestStandFeature;
++import com.betsoft.casino.teststand.TestStandLocal;
++import com.betsoft.casino.utils.TObject;
+ import com.abs.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import com.abs.casino.common.util.RNG;
+-import com.dgphoenix.casino.common.util.Triple;
+-import com.google.common.collect.ImmutableList;
++import com.abs.casino.common.util.Triple;
++import com.google.common.collect.ImmutableList;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ import org.kynosarges.tektosyne.geometry.PointI;
+ 
+diff --git a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/QualifyGameState.java b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/QualifyGameState.java
+index f1478496f..7a097642f 100644
+--- a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/QualifyGameState.java
++++ b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/QualifyGameState.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.mp.pirates.model;
+ 
+ import com.betsoft.casino.mp.common.AbstractQualifyGameState;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ 
+ /**
+  * User: flsh
+diff --git a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/RoomSeats.java b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/RoomSeats.java
+index 8367837ce..09fcc1116 100644
+--- a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/RoomSeats.java
++++ b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/RoomSeats.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.pirates.model;
+ 
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ 
+ import java.io.Serializable;
+ import java.util.Arrays;
+diff --git a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/WaitingPlayersGameState.java b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/WaitingPlayersGameState.java
+index 9d1b0448c..3ecd8b347 100644
+--- a/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/WaitingPlayersGameState.java
++++ b/mp-server/games/pirates/src/main/java/com/betsoft/casino/mp/pirates/model/WaitingPlayersGameState.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.mp.pirates.model;
+ 
+ import com.betsoft.casino.mp.common.AbstractSingleNodeWaitingPlayerGameState;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ 
+ /**
+  * User: flsh
