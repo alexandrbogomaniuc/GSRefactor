@@ -5305,3 +5305,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - RNG import lane fully normalized in targeted pirates files and first-fail advanced into remaining Triple namespace/type-boundary cleanup.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 17:30 UTC (Hard-cut live Batch AZ+BA)
+- Continued Project 02 stabilization with integrated live batches `AZ+BA` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - AZ (`6` rewires): normalized `Pair`/`Triple` imports in `pirates-math` (`ShotCalculator`, `MathData`, `PayTableInst`).
+  - BA (`6` rewires): normalized `Pair`/`Triple` imports in `amazon-math` + `amazon` (`MathData`, `PayTableInst`, `EnemyGame`).
+  - retained total: `12` import/signature-boundary rewires across `6` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `web` FAIL, `clashofthegods` PASS.
+  - `web` first-fail moved off `ShotCalculator` Triple mismatch and into deeper pirates consumer boundaries:
+    - `PlayerRoundInfo` Pair type incompatibility (`abs Pair` vs expected `dg Pair`),
+    - `EnemyGame` + `PlayGameState` throws mismatch (`overridden method does not throw com.dgphoenix...CommonException`).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+  - canonical failures remain environment-level Maven dependency resolution in current sandbox (external repo/DNS), not batch-local logic regression.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-172736-hardcut-live-batchAZBA-pirates-amazon-pairtriple-import-rewire12/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/270-hard-cut-live-batchAZBA-pirates-amazon-pairtriple-import-rewire12-report-20260302.md`
+- Measured movement:
+  - `ShotCalculator` Triple boundary lane cleared; first-fail advanced to narrower pirates model boundary set.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

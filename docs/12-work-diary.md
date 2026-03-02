@@ -10248,3 +10248,22 @@
   - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh tightened to `~0.05-0.5h` (`~0.01-0.06` workdays), focused on `ShotCalculator` Triple namespace boundary normalization.
+
+### 2026-03-02 17:30 UTC
+- Continued Project 02 stabilization with integrated live batches `AZ+BA` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - AZ (`6` rewires): `pirates-math` `Pair`/`Triple` import normalization (`ShotCalculator`, `MathData`, `PayTableInst`).
+  - BA (`6` rewires): `amazon-math` + `amazon` `Pair`/`Triple` import normalization (`MathData`, `PayTableInst`, `EnemyGame`).
+  - retained total: `12` import/signature-boundary rewires across `6` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `web` FAIL; `clashofthegods` PASS.
+  - `web` first-fail moved from `ShotCalculator` Triple mismatch to pirates model boundary set (`PlayerRoundInfo` Pair incompatibility and `EnemyGame`/`PlayGameState` throws mismatches).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+  - canonical failures remain infra-level in this sandbox (external Maven repo DNS resolution), not AZ/BA local logic regressions.
+- Measured movement:
+  - prior `ShotCalculator` boundary lane cleared and first-fail advanced to narrower downstream consumers.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-172736-hardcut-live-batchAZBA-pirates-amazon-pairtriple-import-rewire12/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/270-hard-cut-live-batchAZBA-pirates-amazon-pairtriple-import-rewire12-report-20260302.md`
+- Next step:
+  - commit AZ+BA wave, attempt push, then run bounded pirates model boundary alignment (`PlayerRoundInfo` Pair + `EnemyGame/PlayGameState` CommonException lanes).

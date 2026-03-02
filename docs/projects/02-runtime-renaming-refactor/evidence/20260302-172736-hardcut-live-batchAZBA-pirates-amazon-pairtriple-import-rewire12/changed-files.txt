@@ -1,0 +1,6 @@
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathData.java
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/PayTableInst.java
+mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/MathData.java
+mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/PayTableInst.java
+mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java

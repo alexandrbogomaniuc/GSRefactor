@@ -1,0 +1,10 @@
+ M mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/MathData.java
+ M mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/PayTableInst.java
+ M mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java
+ M mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathData.java
+ M mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/PayTableInst.java
+ M mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java
+?? docs/gs-canonical-pack-clean-20260302T163759Z.tar.gz
+?? docs/gs.zip
+?? docs/gs/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260302-172736-hardcut-live-batchAZBA-pirates-amazon-pairtriple-import-rewire12/

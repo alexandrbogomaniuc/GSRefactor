@@ -1,0 +1,115 @@
+diff --git a/mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/MathData.java b/mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/MathData.java
+index 37430c57b..62e295f9f 100644
+--- a/mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/MathData.java
++++ b/mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/MathData.java
+@@ -3,8 +3,8 @@ package com.betsoft.casino.mp.amazon.model.math;
+ import com.betsoft.casino.mp.model.Gem;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+ import com.betsoft.casino.mp.model.gameconfig.GameTools;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.Triple;
++import com.abs.casino.common.util.Pair;
++import com.abs.casino.common.util.Triple;
+ 
+ import java.util.*;
+ import java.util.concurrent.atomic.AtomicReference;
+diff --git a/mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/PayTableInst.java b/mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/PayTableInst.java
+index 3eedb7aaa..284e7c2ec 100644
+--- a/mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/PayTableInst.java
++++ b/mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/PayTableInst.java
+@@ -3,8 +3,8 @@ package com.betsoft.casino.mp.amazon.model.math;
+ import com.betsoft.casino.mp.common.math.*;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+ import com.betsoft.casino.mp.model.gameconfig.*;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.Triple;
++import com.abs.casino.common.util.Pair;
++import com.abs.casino.common.util.Triple;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import java.util.*;
+diff --git a/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java b/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java
+index 373a6420f..04d8ba3b3 100644
+--- a/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java
++++ b/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java
+@@ -13,9 +13,9 @@ import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
+ import com.betsoft.casino.teststand.TestStandFeature;
+ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
+-import com.dgphoenix.casino.common.util.Triple;
++import com.abs.casino.common.util.Pair;
++import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.Triple;
+ import org.apache.logging.log4j.Logger;
+ 
+ import java.util.*;
+diff --git a/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathData.java b/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathData.java
+index ce1af7747..df2722780 100644
+--- a/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathData.java
++++ b/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathData.java
+@@ -1,10 +1,10 @@
+ package com.betsoft.casino.mp.pirates.model.math;
+ 
+-import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.betsoft.casino.mp.model.gameconfig.GameTools;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.Triple;
+-import java.util.*;
++import com.betsoft.casino.mp.model.SpecialWeaponType;
++import com.betsoft.casino.mp.model.gameconfig.GameTools;
++import com.abs.casino.common.util.Pair;
++import com.abs.casino.common.util.Triple;
++import java.util.*;
+ 
+ public class MathData {
+     private static final Map<Integer, Double> rtpWeapons;
+diff --git a/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/PayTableInst.java b/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/PayTableInst.java
+index ca352da07..c9646960b 100644
+--- a/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/PayTableInst.java
++++ b/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/PayTableInst.java
+@@ -1,11 +1,11 @@
+ package com.betsoft.casino.mp.pirates.model.math;
+ 
+-import com.betsoft.casino.mp.common.math.*;
+-import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.Triple;
+-import org.apache.logging.log4j.LogManager;
+-import org.apache.logging.log4j.Logger;
++import com.betsoft.casino.mp.common.math.*;
++import com.betsoft.casino.mp.model.SpecialWeaponType;
++import com.abs.casino.common.util.Pair;
++import com.abs.casino.common.util.Triple;
++import org.apache.logging.log4j.LogManager;
++import org.apache.logging.log4j.Logger;
+ import java.util.*;
+ import java.util.stream.Collectors;
+ 
+diff --git a/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java b/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java
+index 51f7679ac..2be1c61af 100644
+--- a/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java
++++ b/mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java
+@@ -5,14 +5,14 @@ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.gameconfig.GameConfig;
+ import com.betsoft.casino.mp.model.gameconfig.GameTools;
+ import com.betsoft.casino.mp.model.room.IRoomInfo;
+-import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
+-import com.betsoft.casino.teststand.TestStandFeature;
+-import com.betsoft.casino.teststand.TestStandLocal;
+-import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
++import com.betsoft.casino.teststand.TestStandFeature;
++import com.betsoft.casino.teststand.TestStandLocal;
++import com.abs.casino.common.util.Pair;
+ import com.abs.casino.common.util.RNG;
+-import com.dgphoenix.casino.common.util.Triple;
+-import org.apache.logging.log4j.Logger;
++import com.abs.casino.common.util.Triple;
++import com.dgphoenix.casino.common.exception.CommonException;
++import org.apache.logging.log4j.Logger;
+ import java.math.BigDecimal;
+ import java.math.MathContext;
+ import java.util.*;

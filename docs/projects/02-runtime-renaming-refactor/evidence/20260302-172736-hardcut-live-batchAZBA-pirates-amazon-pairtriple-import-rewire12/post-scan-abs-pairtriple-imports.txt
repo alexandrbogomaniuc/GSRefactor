@@ -1,0 +1,12 @@
+mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java:16:import com.abs.casino.common.util.Pair;
+mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java:18:import com.abs.casino.common.util.Triple;
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/PayTableInst.java:5:import com.abs.casino.common.util.Pair;
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/PayTableInst.java:6:import com.abs.casino.common.util.Triple;
+mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/MathData.java:6:import com.abs.casino.common.util.Pair;
+mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/MathData.java:7:import com.abs.casino.common.util.Triple;
+mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/PayTableInst.java:6:import com.abs.casino.common.util.Pair;
+mp-server/games/amazon-math/src/main/java/com/betsoft/casino/mp/amazon/model/math/PayTableInst.java:7:import com.abs.casino.common.util.Triple;
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java:11:import com.abs.casino.common.util.Pair;
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/ShotCalculator.java:13:import com.abs.casino.common.util.Triple;
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathData.java:5:import com.abs.casino.common.util.Pair;
+mp-server/games/pirates-math/src/main/java/com/betsoft/casino/mp/pirates/model/math/MathData.java:6:import com.abs.casino.common.util.Triple;

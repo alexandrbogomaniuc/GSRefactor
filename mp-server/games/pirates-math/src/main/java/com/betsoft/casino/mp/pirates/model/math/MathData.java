@@ -2,8 +2,8 @@ package com.betsoft.casino.mp.pirates.model.math;
 
 import com.betsoft.casino.mp.model.SpecialWeaponType;
 import com.betsoft.casino.mp.model.gameconfig.GameTools;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.Triple;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.util.Triple;
 import java.util.*;
 
 public class MathData {
