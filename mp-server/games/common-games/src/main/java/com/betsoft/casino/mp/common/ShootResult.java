@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.common;
 
 import com.betsoft.casino.mp.model.*;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

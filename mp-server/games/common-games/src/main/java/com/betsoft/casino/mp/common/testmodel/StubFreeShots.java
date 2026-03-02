@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.common.testmodel;
 
 import com.betsoft.casino.mp.model.FreeShotQueueType;
 import com.betsoft.casino.mp.model.IFreeShots;
-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.CBGameException;
+import com.abs.casino.gs.singlegames.tools.cbservtools.CBGameException;
 
 import java.util.HashMap;
 import java.util.Map;

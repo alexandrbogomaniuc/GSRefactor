@@ -7,7 +7,7 @@ import com.betsoft.casino.mp.model.room.ISingleNodeRoomInfo;
 import com.betsoft.casino.mp.service.IRoomInfoService;
 import com.betsoft.casino.mp.service.IRoomPlayerInfoService;
 import com.betsoft.casino.utils.ITransportObject;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.hazelcast.map.listener.MapListener;
 
 import java.util.Collection;

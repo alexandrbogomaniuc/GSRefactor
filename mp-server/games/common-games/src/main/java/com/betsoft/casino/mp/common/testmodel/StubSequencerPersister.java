@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.common.testmodel;
 
-import com.dgphoenix.casino.common.util.ISequencer;
-import com.dgphoenix.casino.common.util.ISequencerPersister;
+import com.abs.casino.common.util.ISequencer;
+import com.abs.casino.common.util.ISequencerPersister;
 
 /**
  * User: flsh

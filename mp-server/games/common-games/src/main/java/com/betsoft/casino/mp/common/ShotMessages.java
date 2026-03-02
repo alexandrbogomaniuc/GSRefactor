@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
 import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.model.room.IRoom;
 import com.betsoft.casino.utils.ITransportObject;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,0 +1,538 @@
+[START] web_compile
+DIR=mp-server
+CMD=mvn -pl web -am -DskipTests compile
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.betsoft.casino:mp-bots:jar:1.0.0-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.springframework.boot:spring-boot-maven-plugin is missing. @ line 236, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project com.betsoft.casino:mp-casino:pom:1.0.0-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Tektosyne                                                          [jar]
+[INFO] mp-casino                                                          [pom]
+[INFO] Casino MP Games core interfaces                                    [jar]
+[INFO] Casino MP Games                                                    [pom]
+[INFO] MP Common Games                                                    [jar]
+[INFO] Max Quest: Crash. Math model                                       [jar]
+[INFO] Max Quest: Crash                                                   [jar]
+[INFO] Max Quest: Max Blast Champions Model data                          [jar]
+[INFO] Max Quest: Max Blast Champions                                     [jar]
+[INFO] Casino MP Games core                                               [jar]
+[INFO] Pirates math model                                                 [jar]
+[INFO] Pirates: Dead Mans Cove                                            [jar]
+[INFO] Max Quest: Amazon. Math model                                      [jar]
+[INFO] Max Quest: Amazon                                                  [jar]
+[INFO] Pirates common math model                                          [jar]
+[INFO] Pirates: POV                                                       [jar]
+[INFO] Pirates: DMC                                                       [jar]
+[INFO] MQ: Revenge of Ra. Math model                                      [jar]
+[INFO] MQ: Revenge of Ra                                                  [jar]
+[INFO] Max Quest: Dragonstone. Math model                                 [jar]
+[INFO] Max Quest: Dragonstone                                             [jar]
+[INFO] Max Quest: Clash of the Gods. Math model                           [jar]
+[INFO] Max Quest: Clash of the Gods                                       [jar]
+[INFO] Max Quest: BG Dragonstone. Math model                              [jar]
+[INFO] Max Quest: BG Dragonstone                                          [jar]
+[INFO] Max Quest: Mission Amazon. Math model                              [jar]
+[INFO] Max Quest: Mission Amazon                                          [jar]
+[INFO] BG Max Quest: Mission Amazon. Math model                           [jar]
+[INFO] BG Max Quest: Mission Amazon                                       [jar]
+[INFO] Max Quest: Sector X. Math model                                    [jar]
+[INFO] Max Quest: Sector X                                                [jar]
+[INFO] BG Max Quest: Sector X. Math model                                 [jar]
+[INFO] BG Max Quest: Sector X                                             [jar]
+[INFO] Casino MP Games persistance layer                                  [jar]
+[INFO] Kafka interfaces                                                   [jar]
+[INFO] mp-bots                                                            [jar]
+[INFO] Casino MP Games Web                                                [war]
+[INFO] 
+[INFO] ----------------------< org.kynosarges:tektosyne >----------------------
+[INFO] Building Tektosyne 6.0.1-BSG                                      [1/37]
+[INFO]   from tektosyne/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ tektosyne ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/tektosyne/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ tektosyne ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 62 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/tektosyne/target/classes
+[INFO] 
+[INFO] --------------------< com.betsoft.casino:mp-casino >--------------------
+[INFO] Building mp-casino 1.0.0-SNAPSHOT                                 [2/37]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:core-interfaces >----------------
+[INFO] Building Casino MP Games core interfaces 1.0.0-SNAPSHOT           [3/37]
+[INFO]   from core-interfaces/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ core-interfaces ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ core-interfaces ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --------------------< com.betsoft.casino.mp:games >---------------------
+[INFO] Building Casino MP Games 1.0.0-SNAPSHOT                           [4/37]
+[INFO]   from games/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:mp-common-games >----------------
+[INFO] Building MP Common Games 1.0.0-SNAPSHOT                           [5/37]
+[INFO]   from games/common-games/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ mp-common-games ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 100 resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ mp-common-games ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 152 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/target/classes
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java: Some input files use or override a deprecated API.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java: Recompile with -Xlint:deprecation for details.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractEnemy.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractEnemy.java: Recompile with -Xlint:unchecked for details.
+[INFO] Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubCurrency.java:[4,1] a type with the same simple name is already defined by the single-type-import of com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayerRoundInfo.java:[168,59] getAdditionalWins() in com.betsoft.casino.mp.common.AbstractPlayerRoundInfo cannot implement getAdditionalWins() in com.betsoft.casino.mp.model.IPlayerRoundInfo
+  return type java.util.Map<java.lang.String,com.abs.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>> is not compatible with java.util.Map<java.lang.String,com.dgphoenix.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGamePlayerRoundInfo.java:[22,17] getAdditionalWins() in com.betsoft.casino.mp.common.AbstractPlayerRoundInfo cannot implement getAdditionalWins() in com.betsoft.casino.mp.model.IPlayerRoundInfo
+  return type java.util.Map<java.lang.String,com.abs.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>> is not compatible with java.util.Map<java.lang.String,com.dgphoenix.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameState.java:[51,17] processSitOut(SEAT) in com.betsoft.casino.mp.common.AbstractGameState cannot implement processSitOut(SEAT) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameState.java:[67,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractGameState cannot implement restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameState.java:[25,17] init() in com.betsoft.casino.mp.common.AbstractGameState cannot implement init() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[136,17] update() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement update() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[38,17] processSitOut(SEAT) in com.betsoft.casino.mp.common.AbstractGameState cannot implement processSitOut(SEAT) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[119,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[84,17] init() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement init() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[33,17] update() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement update() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[281,17] firePlaySubroundFinished(boolean) in com.betsoft.casino.mp.common.AbstractActionPlayGameState cannot implement firePlaySubroundFinished(boolean) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[94,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractActionPlayGameState cannot implement restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[67,17] init() in com.betsoft.casino.mp.common.AbstractActionPlayGameState cannot implement init() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2934,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2903,17] changeTournamentState(com.betsoft.casino.mp.model.ITournamentSession) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement changeTournamentState(com.betsoft.casino.mp.model.ITournamentSession) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2876,17] changeFRBBonusStatus(com.betsoft.casino.mp.model.IActiveFrbSession) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement changeFRBBonusStatus(com.betsoft.casino.mp.model.IActiveFrbSession) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2845,17] changeBonusStatus(com.betsoft.casino.mp.model.IActiveCashBonusSession) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement changeBonusStatus(com.betsoft.casino.mp.model.IActiveCashBonusSession) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2684,17] setGameState(com.betsoft.casino.mp.model.IGameState) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement setGameState(com.betsoft.casino.mp.model.IGameState<?,?,?,?>) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2664,17] setTimerTime(long) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement setTimerTime(long) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2601,17] stopTimer() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement stopTimer() in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2596,17] startTimer() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement startTimer() in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2591,17] restartTimer() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement restartTimer() in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2248,17] processCloseRoom(long) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processCloseRoom(long) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2228,17] processCloseRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ICloseRoom) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processCloseRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ICloseRoom) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2132,29] processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[792,17] processSitOut(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,long,boolean) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processSitOut(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,long,boolean) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[738,17] tryReconnect(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement tryReconnect(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[577,20] shutdownRoomIfEmpty() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement shutdownRoomIfEmpty() in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[331,21] shutdown() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement shutdown() in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[298,17] start() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement start() in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[639,94] incompatible types: java.util.List<com.abs.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java:[108,17] setPeriodical(boolean) in com.betsoft.casino.mp.events.TimedEvent cannot implement setPeriodical(boolean) in com.betsoft.casino.mp.events.ITimedEvent
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java:[83,17] setTime(long) in com.betsoft.casino.mp.events.TimedEvent cannot implement setTime(long) in com.betsoft.casino.mp.events.ITimedEvent
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java:[62,17] continueTimer() in com.betsoft.casino.mp.events.TimedEvent cannot implement continueTimer() in com.betsoft.casino.mp.events.ITimedEvent
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java:[55,30] pauseTimer() in com.betsoft.casino.mp.events.TimedEvent cannot implement pauseTimer() in com.betsoft.casino.mp.events.ITimedEvent
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java:[45,30] stopTimer() in com.betsoft.casino.mp.events.TimedEvent cannot implement stopTimer() in com.betsoft.casino.mp.events.ITimedEvent
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java:[30,17] startTimer() in com.betsoft.casino.mp.events.TimedEvent cannot implement startTimer() in com.betsoft.casino.mp.events.ITimedEvent
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2774,5] setPeriodical(boolean) in com.betsoft.casino.mp.events.TimedEvent cannot implement setPeriodical(boolean) in com.betsoft.casino.mp.events.ITimedEvent
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeGameRoom.java:[26,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeGameRoom.java:[79,33] getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.common.AbstractSingleNodeGameRoom cannot implement getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeGameRoom.java:[114,16] processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.common.AbstractSingleNodeGameRoom cannot implement processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java:[39,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java:[449,33] getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.common.AbstractActionGameRoom cannot implement getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[14,8] com.betsoft.casino.mp.common.ShootResult is not abstract and does not override abstract method setAdditionalWins(java.util.List<com.dgphoenix.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>>) in com.betsoft.casino.mp.model.IShootResult
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[354,39] getAdditionalWins() in com.betsoft.casino.mp.common.ShootResult cannot implement getAdditionalWins() in com.betsoft.casino.mp.model.IShootResult
+  return type java.util.List<com.abs.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>> is not compatible with java.util.List<com.dgphoenix.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[329,35] getNewFreeShots() in com.betsoft.casino.mp.common.ShootResult cannot implement getNewFreeShots() in com.betsoft.casino.mp.model.IShootResult
+  return type com.abs.casino.common.util.Pair<java.lang.Integer,java.lang.Integer> is not compatible with com.dgphoenix.casino.common.util.Pair<java.lang.Integer,java.lang.Integer>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[328,5] method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[333,5] method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[353,5] method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[359,17] name clash: setAdditionalWins(java.util.List<com.abs.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>>) in com.betsoft.casino.mp.common.ShootResult and setAdditionalWins(java.util.List<com.dgphoenix.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>>) in com.betsoft.casino.mp.model.IShootResult have the same erasure, yet neither overrides the other
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[358,5] method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java:[222,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java:[185,17] onTimer(boolean) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement onTimer(boolean) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java:[136,17] firePlayersCountChanged() in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement firePlayersCountChanged() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java:[215,17] processSitOut(SEAT) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement processSitOut(SEAT) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java:[209,17] processSitIn(SEAT) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement processSitIn(SEAT) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java:[118,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java:[54,17] init() in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement init() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeWaitingPlayerGameState.java:[8,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java:[33,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java:[520,33] getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.common.AbstractMultiNodeGameRoom cannot implement getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java:[114,16] processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.common.AbstractMultiNodeGameRoom cannot implement processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java:[84,17] tryReconnect(SEAT) in com.betsoft.casino.mp.common.AbstractMultiNodeGameRoom cannot implement tryReconnect(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQualifyGameState.java:[112,17] onTimer(boolean) in com.betsoft.casino.mp.common.AbstractQualifyGameState cannot implement onTimer(boolean) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQualifyGameState.java:[33,17] processSitOut(SEAT) in com.betsoft.casino.mp.common.AbstractGameState cannot implement processSitOut(SEAT) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQualifyGameState.java:[105,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractQualifyGameState cannot implement restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQualifyGameState.java:[72,17] init() in com.betsoft.casino.mp.common.AbstractQualifyGameState cannot implement init() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPausedGameState.java:[61,17] onTimer(boolean) in com.betsoft.casino.mp.common.AbstractPausedGameState cannot implement onTimer(boolean) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPausedGameState.java:[27,17] processSitOut(SEAT) in com.betsoft.casino.mp.common.AbstractGameState cannot implement processSitOut(SEAT) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPausedGameState.java:[54,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractPausedGameState cannot implement restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPausedGameState.java:[42,17] init() in com.betsoft.casino.mp.common.AbstractPausedGameState cannot implement init() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeWaitingPlayerGameState.java:[12,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractBattlegroundWaitingPlayersGameState.java:[23,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractBattlegroundWaitingPlayersGameState.java:[99,17] onTimer(boolean) in com.betsoft.casino.mp.AbstractBattlegroundWaitingPlayersGameState cannot implement onTimer(boolean) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractBattlegroundWaitingPlayersGameState.java:[45,17] firePlayersCountChanged() in com.betsoft.casino.mp.AbstractBattlegroundWaitingPlayersGameState cannot implement firePlayersCountChanged() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundPlayGameState.java:[14,17] update() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement update() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[44,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1851,17] setGameState(com.betsoft.casino.mp.model.IGameState) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement setGameState(com.betsoft.casino.mp.model.IGameState<?,?,?,?>) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1614,33] getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[2025,29] processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1809,16] processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1154,111] incompatible types: java.util.List<com.abs.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSeat.java:[214,17] makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.common.AbstractSeat cannot implement makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.model.ISeat
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeSeat.java:[14,17] makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.common.AbstractSeat cannot implement makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.model.ISeat
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSocketService.java:[59,25] sitIn(java.lang.String,long,java.lang.String,java.lang.String,java.lang.Long,long,long,long,int,java.lang.Long,java.lang.String) in com.betsoft.casino.mp.common.testmodel.StubSocketService cannot implement sitIn(java.lang.String,long,java.lang.String,java.lang.String,java.lang.Long,long,long,long,int,java.lang.Long,java.lang.String) in com.betsoft.casino.mp.service.ISocketService
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractClosedGameState.java:[22,17] processSitOut(SEAT) in com.betsoft.casino.mp.common.AbstractGameState cannot implement processSitOut(SEAT) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionEnemyGame.java:[41,24] doShoot(ENEMY,SEAT,com.betsoft.casino.mp.model.Money,boolean,boolean,double,com.betsoft.casino.mp.service.ITransportObjectsFactoryService) in com.betsoft.casino.mp.common.AbstractActionEnemyGame cannot implement doShoot(ENEMY,SEAT,com.betsoft.casino.mp.model.Money,boolean,boolean,double,com.betsoft.casino.mp.service.ITransportObjectsFactoryService) in com.betsoft.casino.mp.model.IGame
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubCurrency.java:[6,8] com.betsoft.casino.mp.common.testmodel.StubCurrency is not abstract and does not override abstract method isDefault(long) in com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubRoomInfoService.java:[91,17] remove(long) in com.betsoft.casino.mp.common.testmodel.StubRoomInfoService cannot implement remove(long) in com.betsoft.casino.mp.service.IRoomInfoService
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractMultiNodeSeat.java:[25,17] makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.common.AbstractSeat cannot implement makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.model.ISeat
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionSeat.java:[646,17] transferWinToAmmo() in com.betsoft.casino.mp.common.AbstractActionSeat cannot implement transferWinToAmmo() in com.betsoft.casino.mp.model.IActionGameSeat
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionSeat.java:[30,17] makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.common.AbstractSeat cannot implement makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.model.ISeat
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[139,25] processCloseLobbyConnection(com.betsoft.casino.mp.web.ILobbySocketClient) in <anonymous com.betsoft.casino.mp.common.testmodel.TestApplicationContext$2> cannot implement processCloseLobbyConnection(com.betsoft.casino.mp.web.ILobbySocketClient) in com.betsoft.casino.mp.service.ILobbySessionService
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[181,81] <anonymous com.betsoft.casino.mp.common.testmodel.TestApplicationContext$4> is not abstract and does not override abstract method prepareBattlegroundRoundResults(java.util.List<com.dgphoenix.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>,com.betsoft.casino.mp.model.room.IRoom) in com.betsoft.casino.mp.service.IAnalyticsDBClientService
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[193,46] name clash: prepareRoundResult(java.util.List<com.abs.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>,com.betsoft.casino.mp.model.room.IRoom) in <anonymous com.betsoft.casino.mp.common.testmodel.TestApplicationContext$4> and prepareRoundResult(java.util.List<com.dgphoenix.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>,com.betsoft.casino.mp.model.room.IRoom) in com.betsoft.casino.mp.service.IAnalyticsDBClientService have the same erasure, yet neither overrides the other
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[192,13] method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[198,46] name clash: prepareBattlegroundRoundResults(java.util.List<com.abs.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>,com.betsoft.casino.mp.model.room.IRoom) in <anonymous com.betsoft.casino.mp.common.testmodel.TestApplicationContext$4> and prepareBattlegroundRoundResults(java.util.List<com.dgphoenix.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>,com.betsoft.casino.mp.model.room.IRoom) in com.betsoft.casino.mp.service.IAnalyticsDBClientService have the same erasure, yet neither overrides the other
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[197,13] method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractPrivateBTGWaitingGameState.java:[10,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[INFO] 100 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Tektosyne 6.0.1-BSG ................................ SUCCESS [  0.971 s]
+[INFO] mp-casino 1.0.0-SNAPSHOT ........................... SUCCESS [  0.000 s]
+[INFO] Casino MP Games core interfaces 1.0.0-SNAPSHOT ..... SUCCESS [  0.237 s]
+[INFO] Casino MP Games 1.0.0-SNAPSHOT ..................... SUCCESS [  0.001 s]
+[INFO] MP Common Games 1.0.0-SNAPSHOT ..................... FAILURE [  1.363 s]
+[INFO] Max Quest: Crash. Math model 1.0.0-SNAPSHOT ........ SKIPPED
+[INFO] Max Quest: Crash 1.0.0-SNAPSHOT .................... SKIPPED
+[INFO] Max Quest: Max Blast Champions Model data 1.0.0-SNAPSHOT SKIPPED
+[INFO] Max Quest: Max Blast Champions 1.0.0-SNAPSHOT ...... SKIPPED
+[INFO] Casino MP Games core 1.0.0-SNAPSHOT ................ SKIPPED
+[INFO] Pirates math model 1.0.0-SNAPSHOT .................. SKIPPED
+[INFO] Pirates: Dead Mans Cove 1.0.0-SNAPSHOT ............. SKIPPED
+[INFO] Max Quest: Amazon. Math model 1.0.0-SNAPSHOT ....... SKIPPED
+[INFO] Max Quest: Amazon 1.0.0-SNAPSHOT ................... SKIPPED
+[INFO] Pirates common math model 1.0.0-SNAPSHOT ........... SKIPPED
+[INFO] Pirates: POV 1.0.0-SNAPSHOT ........................ SKIPPED
+[INFO] Pirates: DMC 1.0.0-SNAPSHOT ........................ SKIPPED
+[INFO] MQ: Revenge of Ra. Math model 1.0.0-SNAPSHOT ....... SKIPPED
+[INFO] MQ: Revenge of Ra 1.0.0-SNAPSHOT ................... SKIPPED
+[INFO] Max Quest: Dragonstone. Math model 1.0.0-SNAPSHOT .. SKIPPED
+[INFO] Max Quest: Dragonstone 1.0.0-SNAPSHOT .............. SKIPPED
+[INFO] Max Quest: Clash of the Gods. Math model 1.0.0-SNAPSHOT SKIPPED
+[INFO] Max Quest: Clash of the Gods 1.0.0-SNAPSHOT ........ SKIPPED
+[INFO] Max Quest: BG Dragonstone. Math model 1.0.0-SNAPSHOT SKIPPED
+[INFO] Max Quest: BG Dragonstone 1.0.0-SNAPSHOT ........... SKIPPED
+[INFO] Max Quest: Mission Amazon. Math model 1.0.0-SNAPSHOT SKIPPED
+[INFO] Max Quest: Mission Amazon 1.0.0-SNAPSHOT ........... SKIPPED
+[INFO] BG Max Quest: Mission Amazon. Math model 1.0.0-SNAPSHOT SKIPPED
+[INFO] BG Max Quest: Mission Amazon 1.0.0-SNAPSHOT ........ SKIPPED
+[INFO] Max Quest: Sector X. Math model 1.0.0-SNAPSHOT ..... SKIPPED
+[INFO] Max Quest: Sector X 1.0.0-SNAPSHOT ................. SKIPPED
+[INFO] BG Max Quest: Sector X. Math model 1.0.0-SNAPSHOT .. SKIPPED
+[INFO] BG Max Quest: Sector X 1.0.0-SNAPSHOT .............. SKIPPED
+[INFO] Casino MP Games persistance layer 1.0.0-SNAPSHOT ... SKIPPED
+[INFO] Kafka interfaces 1.0.0-SNAPSHOT .................... SKIPPED
+[INFO] mp-bots 1.0.0-SNAPSHOT ............................. SKIPPED
+[INFO] Casino MP Games Web 1.0.0-SNAPSHOT ................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.737 s
+[INFO] Finished at: 2026-03-02T15:04:46Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project mp-common-games: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubCurrency.java:[4,1] a type with the same simple name is already defined by the single-type-import of com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayerRoundInfo.java:[168,59] getAdditionalWins() in com.betsoft.casino.mp.common.AbstractPlayerRoundInfo cannot implement getAdditionalWins() in com.betsoft.casino.mp.model.IPlayerRoundInfo
+[ERROR]   return type java.util.Map<java.lang.String,com.abs.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>> is not compatible with java.util.Map<java.lang.String,com.dgphoenix.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGamePlayerRoundInfo.java:[22,17] getAdditionalWins() in com.betsoft.casino.mp.common.AbstractPlayerRoundInfo cannot implement getAdditionalWins() in com.betsoft.casino.mp.model.IPlayerRoundInfo
+[ERROR]   return type java.util.Map<java.lang.String,com.abs.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>> is not compatible with java.util.Map<java.lang.String,com.dgphoenix.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameState.java:[51,17] processSitOut(SEAT) in com.betsoft.casino.mp.common.AbstractGameState cannot implement processSitOut(SEAT) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameState.java:[67,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractGameState cannot implement restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameState.java:[25,17] init() in com.betsoft.casino.mp.common.AbstractGameState cannot implement init() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[136,17] update() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement update() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[38,17] processSitOut(SEAT) in com.betsoft.casino.mp.common.AbstractGameState cannot implement processSitOut(SEAT) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[119,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[84,17] init() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement init() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[33,17] update() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement update() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[281,17] firePlaySubroundFinished(boolean) in com.betsoft.casino.mp.common.AbstractActionPlayGameState cannot implement firePlaySubroundFinished(boolean) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[94,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractActionPlayGameState cannot implement restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[67,17] init() in com.betsoft.casino.mp.common.AbstractActionPlayGameState cannot implement init() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2934,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2903,17] changeTournamentState(com.betsoft.casino.mp.model.ITournamentSession) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement changeTournamentState(com.betsoft.casino.mp.model.ITournamentSession) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2876,17] changeFRBBonusStatus(com.betsoft.casino.mp.model.IActiveFrbSession) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement changeFRBBonusStatus(com.betsoft.casino.mp.model.IActiveFrbSession) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2845,17] changeBonusStatus(com.betsoft.casino.mp.model.IActiveCashBonusSession) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement changeBonusStatus(com.betsoft.casino.mp.model.IActiveCashBonusSession) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2684,17] setGameState(com.betsoft.casino.mp.model.IGameState) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement setGameState(com.betsoft.casino.mp.model.IGameState<?,?,?,?>) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2664,17] setTimerTime(long) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement setTimerTime(long) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2601,17] stopTimer() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement stopTimer() in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2596,17] startTimer() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement startTimer() in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2591,17] restartTimer() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement restartTimer() in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2248,17] processCloseRoom(long) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processCloseRoom(long) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2228,17] processCloseRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ICloseRoom) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processCloseRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ICloseRoom) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2132,29] processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[792,17] processSitOut(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,long,boolean) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processSitOut(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,long,boolean) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[738,17] tryReconnect(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement tryReconnect(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[577,20] shutdownRoomIfEmpty() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement shutdownRoomIfEmpty() in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[331,21] shutdown() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement shutdown() in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[298,17] start() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement start() in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[639,94] incompatible types: java.util.List<com.abs.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java:[108,17] setPeriodical(boolean) in com.betsoft.casino.mp.events.TimedEvent cannot implement setPeriodical(boolean) in com.betsoft.casino.mp.events.ITimedEvent
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java:[83,17] setTime(long) in com.betsoft.casino.mp.events.TimedEvent cannot implement setTime(long) in com.betsoft.casino.mp.events.ITimedEvent
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java:[62,17] continueTimer() in com.betsoft.casino.mp.events.TimedEvent cannot implement continueTimer() in com.betsoft.casino.mp.events.ITimedEvent
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java:[55,30] pauseTimer() in com.betsoft.casino.mp.events.TimedEvent cannot implement pauseTimer() in com.betsoft.casino.mp.events.ITimedEvent
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java:[45,30] stopTimer() in com.betsoft.casino.mp.events.TimedEvent cannot implement stopTimer() in com.betsoft.casino.mp.events.ITimedEvent
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java:[30,17] startTimer() in com.betsoft.casino.mp.events.TimedEvent cannot implement startTimer() in com.betsoft.casino.mp.events.ITimedEvent
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2774,5] setPeriodical(boolean) in com.betsoft.casino.mp.events.TimedEvent cannot implement setPeriodical(boolean) in com.betsoft.casino.mp.events.ITimedEvent
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeGameRoom.java:[26,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeGameRoom.java:[79,33] getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.common.AbstractSingleNodeGameRoom cannot implement getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeGameRoom.java:[114,16] processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.common.AbstractSingleNodeGameRoom cannot implement processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java:[39,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java:[449,33] getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.common.AbstractActionGameRoom cannot implement getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[14,8] com.betsoft.casino.mp.common.ShootResult is not abstract and does not override abstract method setAdditionalWins(java.util.List<com.dgphoenix.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>>) in com.betsoft.casino.mp.model.IShootResult
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[354,39] getAdditionalWins() in com.betsoft.casino.mp.common.ShootResult cannot implement getAdditionalWins() in com.betsoft.casino.mp.model.IShootResult
+[ERROR]   return type java.util.List<com.abs.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>> is not compatible with java.util.List<com.dgphoenix.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[329,35] getNewFreeShots() in com.betsoft.casino.mp.common.ShootResult cannot implement getNewFreeShots() in com.betsoft.casino.mp.model.IShootResult
+[ERROR]   return type com.abs.casino.common.util.Pair<java.lang.Integer,java.lang.Integer> is not compatible with com.dgphoenix.casino.common.util.Pair<java.lang.Integer,java.lang.Integer>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[328,5] method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[333,5] method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[353,5] method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[359,17] name clash: setAdditionalWins(java.util.List<com.abs.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>>) in com.betsoft.casino.mp.common.ShootResult and setAdditionalWins(java.util.List<com.dgphoenix.casino.common.util.Pair<java.lang.Integer,com.betsoft.casino.mp.model.Money>>) in com.betsoft.casino.mp.model.IShootResult have the same erasure, yet neither overrides the other
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java:[358,5] method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java:[222,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java:[185,17] onTimer(boolean) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement onTimer(boolean) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java:[136,17] firePlayersCountChanged() in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement firePlayersCountChanged() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java:[215,17] processSitOut(SEAT) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement processSitOut(SEAT) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java:[209,17] processSitIn(SEAT) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement processSitIn(SEAT) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java:[118,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java:[54,17] init() in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement init() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeWaitingPlayerGameState.java:[8,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java:[33,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java:[520,33] getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.common.AbstractMultiNodeGameRoom cannot implement getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java:[114,16] processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.common.AbstractMultiNodeGameRoom cannot implement processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java:[84,17] tryReconnect(SEAT) in com.betsoft.casino.mp.common.AbstractMultiNodeGameRoom cannot implement tryReconnect(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQualifyGameState.java:[112,17] onTimer(boolean) in com.betsoft.casino.mp.common.AbstractQualifyGameState cannot implement onTimer(boolean) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQualifyGameState.java:[33,17] processSitOut(SEAT) in com.betsoft.casino.mp.common.AbstractGameState cannot implement processSitOut(SEAT) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQualifyGameState.java:[105,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractQualifyGameState cannot implement restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQualifyGameState.java:[72,17] init() in com.betsoft.casino.mp.common.AbstractQualifyGameState cannot implement init() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPausedGameState.java:[61,17] onTimer(boolean) in com.betsoft.casino.mp.common.AbstractPausedGameState cannot implement onTimer(boolean) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPausedGameState.java:[27,17] processSitOut(SEAT) in com.betsoft.casino.mp.common.AbstractGameState cannot implement processSitOut(SEAT) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPausedGameState.java:[54,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractPausedGameState cannot implement restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPausedGameState.java:[42,17] init() in com.betsoft.casino.mp.common.AbstractPausedGameState cannot implement init() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeWaitingPlayerGameState.java:[12,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractBattlegroundWaitingPlayersGameState.java:[23,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractBattlegroundWaitingPlayersGameState.java:[99,17] onTimer(boolean) in com.betsoft.casino.mp.AbstractBattlegroundWaitingPlayersGameState cannot implement onTimer(boolean) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractBattlegroundWaitingPlayersGameState.java:[45,17] firePlayersCountChanged() in com.betsoft.casino.mp.AbstractBattlegroundWaitingPlayersGameState cannot implement firePlayersCountChanged() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundPlayGameState.java:[14,17] update() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement update() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[44,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1851,17] setGameState(com.betsoft.casino.mp.model.IGameState) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement setGameState(com.betsoft.casino.mp.model.IGameState<?,?,?,?>) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1614,33] getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[2025,29] processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1809,16] processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1154,111] incompatible types: java.util.List<com.abs.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSeat.java:[214,17] makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.common.AbstractSeat cannot implement makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.model.ISeat
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeSeat.java:[14,17] makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.common.AbstractSeat cannot implement makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.model.ISeat
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSocketService.java:[59,25] sitIn(java.lang.String,long,java.lang.String,java.lang.String,java.lang.Long,long,long,long,int,java.lang.Long,java.lang.String) in com.betsoft.casino.mp.common.testmodel.StubSocketService cannot implement sitIn(java.lang.String,long,java.lang.String,java.lang.String,java.lang.Long,long,long,long,int,java.lang.Long,java.lang.String) in com.betsoft.casino.mp.service.ISocketService
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractClosedGameState.java:[22,17] processSitOut(SEAT) in com.betsoft.casino.mp.common.AbstractGameState cannot implement processSitOut(SEAT) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionEnemyGame.java:[41,24] doShoot(ENEMY,SEAT,com.betsoft.casino.mp.model.Money,boolean,boolean,double,com.betsoft.casino.mp.service.ITransportObjectsFactoryService) in com.betsoft.casino.mp.common.AbstractActionEnemyGame cannot implement doShoot(ENEMY,SEAT,com.betsoft.casino.mp.model.Money,boolean,boolean,double,com.betsoft.casino.mp.service.ITransportObjectsFactoryService) in com.betsoft.casino.mp.model.IGame
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubCurrency.java:[6,8] com.betsoft.casino.mp.common.testmodel.StubCurrency is not abstract and does not override abstract method isDefault(long) in com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubRoomInfoService.java:[91,17] remove(long) in com.betsoft.casino.mp.common.testmodel.StubRoomInfoService cannot implement remove(long) in com.betsoft.casino.mp.service.IRoomInfoService
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractMultiNodeSeat.java:[25,17] makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.common.AbstractSeat cannot implement makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.model.ISeat
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionSeat.java:[646,17] transferWinToAmmo() in com.betsoft.casino.mp.common.AbstractActionSeat cannot implement transferWinToAmmo() in com.betsoft.casino.mp.model.IActionGameSeat
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionSeat.java:[30,17] makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.common.AbstractSeat cannot implement makeRebuyFromWin(com.betsoft.casino.mp.model.Money) in com.betsoft.casino.mp.model.ISeat
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[139,25] processCloseLobbyConnection(com.betsoft.casino.mp.web.ILobbySocketClient) in <anonymous com.betsoft.casino.mp.common.testmodel.TestApplicationContext$2> cannot implement processCloseLobbyConnection(com.betsoft.casino.mp.web.ILobbySocketClient) in com.betsoft.casino.mp.service.ILobbySessionService
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[181,81] <anonymous com.betsoft.casino.mp.common.testmodel.TestApplicationContext$4> is not abstract and does not override abstract method prepareBattlegroundRoundResults(java.util.List<com.dgphoenix.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>,com.betsoft.casino.mp.model.room.IRoom) in com.betsoft.casino.mp.service.IAnalyticsDBClientService
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[193,46] name clash: prepareRoundResult(java.util.List<com.abs.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>,com.betsoft.casino.mp.model.room.IRoom) in <anonymous com.betsoft.casino.mp.common.testmodel.TestApplicationContext$4> and prepareRoundResult(java.util.List<com.dgphoenix.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>,com.betsoft.casino.mp.model.room.IRoom) in com.betsoft.casino.mp.service.IAnalyticsDBClientService have the same erasure, yet neither overrides the other
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[192,13] method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[198,46] name clash: prepareBattlegroundRoundResults(java.util.List<com.abs.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>,com.betsoft.casino.mp.model.room.IRoom) in <anonymous com.betsoft.casino.mp.common.testmodel.TestApplicationContext$4> and prepareBattlegroundRoundResults(java.util.List<com.dgphoenix.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>,com.betsoft.casino.mp.model.room.IRoom) in com.betsoft.casino.mp.service.IAnalyticsDBClientService have the same erasure, yet neither overrides the other
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[197,13] method does not override or implement a method from a supertype
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractPrivateBTGWaitingGameState.java:[10,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractWaitingPlayersGameState cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :mp-common-games
+[END] web_compile rc=1

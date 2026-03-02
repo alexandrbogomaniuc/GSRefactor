@@ -1,0 +1,20 @@
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractBattlegroundWaitingPlayersGameState.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractPrivateBTGWaitingGameState.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundPlayGameState.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPausedGameState.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQualifyGameState.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSeat.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeGameRoom.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/LootBoxStat.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RealWeaponCounts.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShotMessages.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubFreeShots.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubRoomInfoService.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSocketService.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java
+ M mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEventManager.java
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260302-150403-hardcut-live-batchAFAG-common-games-import-rewire22/

@@ -5108,3 +5108,28 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - `common-games` legacy imports (`^import com.dgphoenix`) reduced from `55` to `22` in this wave (delta `-33`).
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 15:24 UTC (Hard-cut live Batch AF+AG)
+- Continued Project 02 stabilization with live `Batch AF + Batch AG` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Changes:
+  - Batch AF rewired `11` imports in 11 files (`CommonException` lanes).
+  - Batch AG rewired `11` imports in 8 files (`Pair` + testmodel utility interface lanes).
+  - Total retained rewires: `22` across `19` files (import-only; no logic edits).
+- Validation:
+  - targeted mp fast gates:
+    - `mvn -pl games/common-games -am -DskipTests compile` -> FAIL (`mp-common-games` first-fail)
+    - `mvn -pl web -am -DskipTests compile` -> FAIL (`mp-common-games` first-fail)
+    - `mvn -pl games/clashofthegods -am -DskipTests compile` -> FAIL (`mp-common-games` first-fail)
+  - first-fail profile moved off residual `com.dgphoenix` import symbols to `StubCurrency` import collision + wider `IGameState`/`IPlayerRoundInfo` type-boundary mismatches.
+  - canonical full matrix:
+    - `fast_gate_batchA FAIL STEP09`
+    - `fast_gate_batchB FAIL STEP09`
+    - `prewarm PASS`
+    - `validation FAIL STEP09`
+    - `STEP09 retry1 rc=2`
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-150403-hardcut-live-batchAFAG-common-games-import-rewire22/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/261-hard-cut-live-batchAFAG-common-games-import-rewire22-report-20260302.md`
+- Measured movement:
+  - `common-games` legacy imports reduced from `22` to `0` (delta `-22`).
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

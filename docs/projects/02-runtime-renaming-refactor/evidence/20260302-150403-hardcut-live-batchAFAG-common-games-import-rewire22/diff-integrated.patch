@@ -1,0 +1,248 @@
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractBattlegroundWaitingPlayersGameState.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractBattlegroundWaitingPlayersGameState.java
+index b39de1b3b..9cd52ec54 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractBattlegroundWaitingPlayersGameState.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractBattlegroundWaitingPlayersGameState.java
+@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.model.IBattlegroundRoom;
+ import com.betsoft.casino.mp.model.IGameState;
+ import com.betsoft.casino.mp.model.IMap;
+ import com.betsoft.casino.mp.model.RoomState;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractPrivateBTGWaitingGameState.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractPrivateBTGWaitingGameState.java
+index 1ad74d194..23268ffab 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractPrivateBTGWaitingGameState.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/AbstractPrivateBTGWaitingGameState.java
+@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.model.IBattlegroundRoom;
+ import com.betsoft.casino.mp.model.IGameState;
+ import com.betsoft.casino.mp.model.IMap;
+ import com.betsoft.casino.mp.model.RoomState;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ 
+ public abstract class AbstractPrivateBTGWaitingGameState<GAMEROOM extends IBattlegroundRoom, SEAT extends IActionGameSeat, MAP extends IMap, GS extends IGameState>
+         extends AbstractBattlegroundWaitingPlayersGameState<GAMEROOM, SEAT, MAP, GS> {
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundPlayGameState.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundPlayGameState.java
+index 8f2c22f28..5a8f9924a 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundPlayGameState.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundPlayGameState.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
+ import com.betsoft.casino.mp.model.IBattlegroundSeat;
+ import com.betsoft.casino.mp.model.IGameState;
+ import com.betsoft.casino.mp.model.IMap;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ 
+ import java.util.Collections;
+ import java.util.List;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPausedGameState.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPausedGameState.java
+index daf33b720..df28571fd 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPausedGameState.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPausedGameState.java
+@@ -7,7 +7,7 @@ import com.betsoft.casino.mp.model.IMap;
+ import com.betsoft.casino.mp.model.ISeat;
+ import com.betsoft.casino.mp.model.RoomState;
+ import com.betsoft.casino.mp.model.room.IRoom;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQualifyGameState.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQualifyGameState.java
+index 8c55e6b2f..e1278be0b 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQualifyGameState.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQualifyGameState.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
+ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.room.IRoom;
+ import com.betsoft.casino.mp.model.room.IRoomInfo;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSeat.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSeat.java
+index 032682616..cdf5004dd 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSeat.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSeat.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.common;
+ 
+ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.web.IGameSocketClient;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeGameRoom.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeGameRoom.java
+index def9da437..5f257cbf1 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeGameRoom.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeGameRoom.java
+@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.model.room.ISingleNodeRoomInfo;
+ import com.betsoft.casino.mp.service.*;
+ import com.betsoft.casino.mp.web.IGameSocketClient;
+ import com.betsoft.casino.utils.ITransportObject;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.hazelcast.core.IExecutorService;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.context.ApplicationContext;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java
+index b95427857..7e01e0e01 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractWaitingPlayersGameState.java
+@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.model.IMap;
+ import com.betsoft.casino.mp.model.ISeat;
+ import com.betsoft.casino.mp.model.RoomState;
+ import com.betsoft.casino.mp.model.room.IRoom;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/LootBoxStat.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/LootBoxStat.java
+index de19fb3f4..388f4b6af 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/LootBoxStat.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/LootBoxStat.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.common;
+ 
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;
+ import com.esotericsoftware.kryo.io.Input;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RealWeaponCounts.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RealWeaponCounts.java
+index 1967fdd64..41c3eec15 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RealWeaponCounts.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RealWeaponCounts.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.common;
+ 
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;
+ import com.esotericsoftware.kryo.io.Input;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java
+index 4a206f4c1..fee5543dd 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShootResult.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.mp.common;
+ 
+ import com.betsoft.casino.mp.model.*;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ 
+ import java.util.ArrayList;
+ import java.util.LinkedList;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShotMessages.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShotMessages.java
+index 5fbe01ce2..2eeb7c2c6 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShotMessages.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShotMessages.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
+ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.room.IRoom;
+ import com.betsoft.casino.utils.ITransportObject;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubFreeShots.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubFreeShots.java
+index 46a92102d..0b4804e49 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubFreeShots.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubFreeShots.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.common.testmodel;
+ 
+ import com.betsoft.casino.mp.model.FreeShotQueueType;
+ import com.betsoft.casino.mp.model.IFreeShots;
+-import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.CBGameException;
++import com.abs.casino.gs.singlegames.tools.cbservtools.CBGameException;
+ 
+ import java.util.HashMap;
+ import java.util.Map;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubRoomInfoService.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubRoomInfoService.java
+index e34b206cb..032c7563e 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubRoomInfoService.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubRoomInfoService.java
+@@ -7,7 +7,7 @@ import com.betsoft.casino.mp.model.room.ISingleNodeRoomInfo;
+ import com.betsoft.casino.mp.service.IRoomInfoService;
+ import com.betsoft.casino.mp.service.IRoomPlayerInfoService;
+ import com.betsoft.casino.utils.ITransportObject;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.hazelcast.map.listener.MapListener;
+ 
+ import java.util.Collection;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java
+index 0fa584b87..b898aa045 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.mp.common.testmodel;
+ 
+-import com.dgphoenix.casino.common.util.ISequencer;
+-import com.dgphoenix.casino.common.util.ISequencerPersister;
++import com.abs.casino.common.util.ISequencer;
++import com.abs.casino.common.util.ISequencerPersister;
+ 
+ /**
+  * User: flsh
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSocketService.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSocketService.java
+index 320733a92..f4a7c0068 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSocketService.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSocketService.java
+@@ -8,7 +8,7 @@ import com.betsoft.casino.mp.model.onlineplayer.OnlinePlayer;
+ import com.betsoft.casino.mp.model.quests.IQuest;
+ import com.betsoft.casino.mp.service.ISocketService;
+ import com.abs.casino.common.currency.CurrencyRate;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import org.springframework.web.reactive.socket.WebSocketMessage;
+ import reactor.core.Disposable;
+ import reactor.core.publisher.FluxSink;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java
+index 95a1b5ba4..d9748e355 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java
+@@ -11,9 +11,9 @@ import com.betsoft.casino.mp.service.*;
+ import com.betsoft.casino.mp.web.IGameSocketClient;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+ import com.abs.casino.common.currency.CurrencyRate;
+-import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.LongIdGenerator;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.exception.CommonException;
++import com.abs.casino.common.util.LongIdGenerator;
++import com.abs.casino.common.util.Pair;
+ import org.springframework.beans.BeanUtils;
+ import org.springframework.beans.BeansException;
+ import org.springframework.beans.TypeConverter;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java
+index e142e8a01..0bc033b96 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEvent.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.events;
+ 
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ 
+ import java.util.Date;
+ 
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEventManager.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEventManager.java
+index 638e41cd6..0f044330c 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEventManager.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/events/TimedEventManager.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.events;
+ 
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.abs.casino.common.util.logkit.ThreadLog;
+ 
+ import java.util.ArrayList;

@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.model.IBattlegroundRoom;
 import com.betsoft.casino.mp.model.IGameState;
 import com.betsoft.casino.mp.model.IMap;
 import com.betsoft.casino.mp.model.RoomState;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

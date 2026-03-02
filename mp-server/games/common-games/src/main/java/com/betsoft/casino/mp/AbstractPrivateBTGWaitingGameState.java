@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.model.IBattlegroundRoom;
 import com.betsoft.casino.mp.model.IGameState;
 import com.betsoft.casino.mp.model.IMap;
 import com.betsoft.casino.mp.model.RoomState;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 public abstract class AbstractPrivateBTGWaitingGameState<GAMEROOM extends IBattlegroundRoom, SEAT extends IActionGameSeat, MAP extends IMap, GS extends IGameState>
         extends AbstractBattlegroundWaitingPlayersGameState<GAMEROOM, SEAT, MAP, GS> {

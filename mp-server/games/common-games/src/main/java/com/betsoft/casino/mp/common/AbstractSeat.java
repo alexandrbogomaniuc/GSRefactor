@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.common;
 
 import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.web.IGameSocketClient;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

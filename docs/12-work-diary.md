@@ -9976,3 +9976,20 @@
   - `common-games` legacy imports reduced from `55` to `22`.
 - Next step:
   - execute next bounded batch on the final `22` `common-games` legacy imports, then re-run fast gates and full matrix before push.
+
+### 2026-03-02 15:24 UTC
+- Continued Project 02 hard-cut stabilization with live `Batch AF + AG` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - AF: `11` import rewires (`CommonException`) across events/waiting/socket files.
+  - AG: `11` import rewires (`Pair`, `CBGameException`, `LongIdGenerator`, `ISequencer`, `ISequencerPersister`) across testmodel/common files.
+  - retained total: `22` import-only rewires across `19` files.
+- Validation:
+  - targeted mp fast gates remain FAIL at `mp-common-games` first-fail.
+  - first-fail profile now shifted from residual `com.dgphoenix` symbol gaps to `StubCurrency` import collision + broader `IGameState`/`IPlayerRoundInfo` type-boundary mismatches.
+  - canonical full matrix profile remains stable: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 rc=2`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-150403-hardcut-live-batchAFAG-common-games-import-rewire22/`
+- Measured movement:
+  - `common-games` legacy imports (`^import com.dgphoenix`) reduced from `22` to `0`.
+- Next step:
+  - commit/push this wave and continue with low-risk post-import type-boundary normalization batches in `mp-common-games`.

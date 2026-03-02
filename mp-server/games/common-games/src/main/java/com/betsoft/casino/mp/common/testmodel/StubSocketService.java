@@ -8,7 +8,7 @@ import com.betsoft.casino.mp.model.onlineplayer.OnlinePlayer;
 import com.betsoft.casino.mp.model.quests.IQuest;
 import com.betsoft.casino.mp.service.ISocketService;
 import com.abs.casino.common.currency.CurrencyRate;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import org.springframework.web.reactive.socket.WebSocketMessage;
 import reactor.core.Disposable;
 import reactor.core.publisher.FluxSink;
