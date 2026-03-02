@@ -11,7 +11,7 @@ import com.betsoft.casino.mp.model.movement.Trajectory;
 import com.betsoft.casino.mp.model.room.ISingleNodeRoomInfo;
 import com.betsoft.casino.mp.service.*;
 import com.betsoft.casino.mp.web.IGameSocketClient;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.hazelcast.core.IExecutorService;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.ApplicationContext;

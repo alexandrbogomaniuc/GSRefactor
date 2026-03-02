@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.bgdragonstone.model;
 
 import com.betsoft.casino.mp.AbstractBattlegroundWaitingPlayersGameState;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 public class WaitingPlayersGameState extends AbstractBattlegroundWaitingPlayersGameState<GameRoom, Seat, GameMap, WaitingPlayersGameState> {
     public WaitingPlayersGameState() {}

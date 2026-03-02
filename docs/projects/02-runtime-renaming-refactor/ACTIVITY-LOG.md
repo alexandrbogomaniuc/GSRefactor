@@ -5438,3 +5438,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared `revengeofra` head-fail lane and advanced downstream into `dragonstone` boundary harmonization.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 20:58 UTC (Hard-cut live Batch BN+BO)
+- Continued Project 02 stabilization with integrated live batches `BN+BO` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BN (`9` rewires): normalized `dragonstone` `Pair` (`PlayerRoundInfo`/`PlayGameState`/`GameMap`) and `CommonException` (`PlayGameState`/`GameRoom`/`QualifyGameState`/`WaitingPlayersGameState`/`RoomSeats`/`EnemyGame`) imports.
+  - BO (`10` rewires): normalized `bg_dragonstone` `Pair` (`PlayerRoundInfo`/`PlayGameState`/`GameMap`) and `CommonException` (`PlayGameState`/`GameRoom`/`QualifyGameState`/`WaitingPlayersGameState`/`PrivateBTGWaitingGameState`/`RoomSeats`/`EnemyGame`) imports.
+  - retained total: `19` import/signature-boundary rewires across `17` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `web` FAIL, harmonized `clashofthegods` compile PASS.
+  - `web` first-fail shifted from dragonstone boundaries into `mp-server/bots` unresolved legacy RNG lane (`com.dgphoenix.casino.common.util.RNG`).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not BN/BO import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-202723-hardcut-live-batchBNBO-dragonstone-boundary-import-rewire19/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/277-hard-cut-live-batchBNBO-dragonstone-boundary-import-rewire19-report-20260302.md`
+- Measured movement:
+  - cleared dragonstone/bg_dragonstone boundary head-fail lane and advanced downstream into bots RNG harmonization.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

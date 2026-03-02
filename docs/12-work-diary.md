@@ -10499,3 +10499,22 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.90-6.50h` (`~0.11-0.81` workdays), next lane is `dragonstone` Pair/CommonException boundary harmonization.
+
+### 2026-03-02 20:58 UTC
+- Continued Project 02 stabilization with integrated live batches `BN+BO` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BN (`9` rewires): `dragonstone` `Pair` + `CommonException` boundary import normalization.
+  - BO (`10` rewires): `bg_dragonstone` `Pair` + `CommonException` boundary import normalization.
+  - retained total: `19` import/signature-boundary rewires across `17` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `web` FAIL; harmonized `clashofthegods` compile PASS.
+  - `web` first-fail shifted from `dragonstone` to `mp-server/bots` unresolved legacy RNG import lane (`com.dgphoenix.casino.common.util.RNG`).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-202723-hardcut-live-batchBNBO-dragonstone-boundary-import-rewire19/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/277-hard-cut-live-batchBNBO-dragonstone-boundary-import-rewire19-report-20260302.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- Next step:
+  - commit/push BN+BO checkpoint, then execute bounded `mp-server/bots` RNG import harmonization wave.

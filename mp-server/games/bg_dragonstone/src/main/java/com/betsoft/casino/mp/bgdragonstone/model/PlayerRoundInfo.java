@@ -7,7 +7,7 @@ import com.betsoft.casino.mp.bgdragonstone.model.math.MathData;
 import com.betsoft.casino.mp.model.GameType;
 import com.betsoft.casino.mp.model.IEnemyType;
 import com.betsoft.casino.mp.model.Money;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 import com.google.common.util.concurrent.AtomicDouble;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;

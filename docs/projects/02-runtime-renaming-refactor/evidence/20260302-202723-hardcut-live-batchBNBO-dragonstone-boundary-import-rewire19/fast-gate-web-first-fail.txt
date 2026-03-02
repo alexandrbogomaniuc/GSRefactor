@@ -1,0 +1,40 @@
+849:[ERROR] COMPILATION ERROR : 
+851:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PiratesWithBuyInSpecialWeapons.java:[4,40] cannot find symbol
+854:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PaidBurstShootingStrategy.java:[4,40] cannot find symbol
+857:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/AbstractBot.java:[14,40] cannot find symbol
+860:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/LobbyBot.java:[12,40] cannot find symbol
+863:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedBattleGroundRoomBot.java:[25,40] cannot find symbol
+866:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundDragonStoneStrategy.java:[5,40] cannot find symbol
+869:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/IRoomNaturalBotStrategy.java:[4,40] cannot find symbol
+872:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/BattleGroundRoomBot.java:[21,40] cannot find symbol
+875:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/model/RicochetBullet.java:[13,54] cannot find symbol
+878:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/model/RicochetBullet.java:[13,1] static import only from classes and interfaces
+879:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedMaxBlastChampionsRoomBot.java:[13,40] cannot find symbol
+882:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BurstShootingStrategyWithoutBuySW.java:[4,40] cannot find symbol
+885:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/AbstractCrashGameBotStrategy.java:[5,40] cannot find symbol
+888:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/Ra2PaidShotStrategyWithId.java:[5,40] cannot find symbol
+891:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundMissionAmazonStrategy.java:[5,40] cannot find symbol
+894:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BurstShootingStrategy.java:[4,40] cannot find symbol
+897:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/MonotonousShootingStrategy.java:[3,40] cannot find symbol
+900:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/CogStrategyWithWeaponId.java:[5,40] cannot find symbol
+903:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundSectorXStrategy.java:[5,40] cannot find symbol
+906:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/CryoGunPaidShots.java:[4,40] cannot find symbol
+909:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/DSPaidShotStrategyWithId.java:[5,40] cannot find symbol
+912:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/MinesRequest.java:[11,40] cannot find symbol
+915:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/SectorXStrategy.java:[10,40] cannot find symbol
+918:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/MissionAmazonStrategy.java:[5,40] cannot find symbol
+921:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/PurchaseWeaponLootBoxRequest.java:[13,40] cannot find symbol
+924:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/SpecialShootingStrategy.java:[3,40] cannot find symbol
+927:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PiratesWithoutBuyInSpecialWeapons.java:[4,40] cannot find symbol
+930:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/NaturalBattleGroundSectorXStrategy.java:[20,40] cannot find symbol
+981:[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.7.0:compile (default-compile) on project mp-bots: Compilation failure: Compilation failure: 
+982:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PiratesWithBuyInSpecialWeapons.java:[4,40] cannot find symbol
+983:[ERROR]   symbol:   class RNG
+984:[ERROR]   location: package com.dgphoenix.casino.common.util
+985:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PaidBurstShootingStrategy.java:[4,40] cannot find symbol
+986:[ERROR]   symbol:   class RNG
+987:[ERROR]   location: package com.dgphoenix.casino.common.util
+988:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/AbstractBot.java:[14,40] cannot find symbol
+989:[ERROR]   symbol:   class RNG
+990:[ERROR]   location: package com.dgphoenix.casino.common.util
+991:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/LobbyBot.java:[12,40] cannot find symbol

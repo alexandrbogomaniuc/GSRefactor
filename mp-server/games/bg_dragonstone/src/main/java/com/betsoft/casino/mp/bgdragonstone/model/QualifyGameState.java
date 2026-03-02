@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.bgdragonstone.model;
 
 import com.betsoft.casino.mp.common.AbstractQualifyGameState;
 import com.betsoft.casino.mp.model.IGameState;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 public class QualifyGameState extends AbstractQualifyGameState<GameRoom, Seat, GameMap, QualifyGameState> {
 

@@ -1,0 +1,17 @@
+mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/PlayerRoundInfo.java
+mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/PlayGameState.java
+mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/GameRoom.java
+mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/GameMap.java
+mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/QualifyGameState.java
+mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/WaitingPlayersGameState.java
+mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/RoomSeats.java
+mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/EnemyGame.java
+mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/PlayerRoundInfo.java
+mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/PlayGameState.java
+mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/GameRoom.java
+mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/GameMap.java
+mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/QualifyGameState.java
+mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/WaitingPlayersGameState.java
+mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/PrivateBTGWaitingGameState.java
+mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/RoomSeats.java
+mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/EnemyGame.java

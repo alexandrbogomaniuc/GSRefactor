@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.dragonstone.model;
 
 import com.betsoft.casino.mp.common.AbstractQualifyGameState;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 /**
  * User: flsh
