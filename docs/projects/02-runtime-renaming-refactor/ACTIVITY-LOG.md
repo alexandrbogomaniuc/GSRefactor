@@ -5402,3 +5402,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared amazon exception/Pair boundary lane; fail-shift advanced to pirates-common-math Triple namespace harmonization.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 19:33 UTC (Hard-cut live Batch BJ+BK)
+- Continued Project 02 stabilization with integrated live batches `BJ+BK` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BJ (`13` rewires): normalized `pirates-common-math` Pair/Triple imports and `piratespov` CommonException/Pair boundaries.
+  - BK (`15` rewires): normalized `piratesdmc` CommonException/Pair/Triple boundaries, `revengeofra-math` Pair/Triple boundaries, and `revengeofra/EnemyGame` CommonException/Pair/Triple boundaries.
+  - retained total: `28` import/signature-boundary rewires across `18` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `web` FAIL, harmonized `clashofthegods` compile PASS.
+  - `web` first-fail moved from `pirates-common-math` to `revengeofra` boundary lane (`PlayerRoundInfo` Pair mismatches + `GameRoom/PlayGameState/WaitingPlayersGameState/QualifyGameState` throws-contract drift).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not BJ/BK import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-192813-hardcut-live-batchBJBK-pirates-chain-boundary-import-rewire28/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/275-hard-cut-live-batchBJBK-pirates-chain-boundary-import-rewire28-report-20260302.md`
+- Measured movement:
+  - previous pirates-common-math Triple head-fail cleared; fail-shift advanced downstream into revengeofra boundary harmonization.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

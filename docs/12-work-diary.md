@@ -10431,3 +10431,22 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.60-4.00h` (`~0.08-0.50` workdays), next lane is `pirates-common-math` Triple namespace harmonization.
+
+### 2026-03-02 19:33 UTC
+- Continued Project 02 stabilization with integrated live batches `BJ+BK` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BJ (`13` rewires): `pirates-common-math` Pair/Triple and `piratespov` CommonException/Pair boundary normalization.
+  - BK (`15` rewires): `piratesdmc` CommonException/Pair/Triple, `revengeofra-math` Pair/Triple, and `revengeofra/EnemyGame` CommonException/Pair/Triple boundary normalization.
+  - retained total: `28` import/signature-boundary rewires across `18` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `web` FAIL; harmonized `clashofthegods` compile PASS.
+  - `web` first-fail shifted from `pirates-common-math` Triple to `revengeofra` boundary lane (`PlayerRoundInfo` Pair + `GameRoom/PlayGameState/WaitingPlayersGameState/QualifyGameState` throws-contract drift).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-192813-hardcut-live-batchBJBK-pirates-chain-boundary-import-rewire28/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/275-hard-cut-live-batchBJBK-pirates-chain-boundary-import-rewire28-report-20260302.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- Next step:
+  - commit/push BJ+BK checkpoint, then execute bounded `revengeofra` CommonException/Pair/Triple boundary harmonization wave.

@@ -3,8 +3,8 @@ package com.betsoft.casino.mp.piratescommon.model.math;
 import com.betsoft.casino.mp.model.SpecialWeaponType;
 import com.betsoft.casino.mp.model.gameconfig.GameTools;
 import com.betsoft.casino.mp.piratescommon.model.math.data.*;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.Triple;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.util.Triple;
 import com.google.common.util.concurrent.AtomicDouble;
 
 import java.util.*;

@@ -11,7 +11,7 @@ import com.betsoft.casino.mp.piratescommon.model.math.EnemyType;
 import com.betsoft.casino.mp.piratescommon.model.math.ShotCalculator;
 import com.betsoft.casino.mp.service.IGameConfigService;
 import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import org.apache.logging.log4j.Logger;
 import java.util.List;
 
