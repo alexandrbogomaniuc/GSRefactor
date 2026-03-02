@@ -10610,3 +10610,16 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-222311-hardcut-live-batchBTBU-web-packages-cassandra-import-rewire29/`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/280-hard-cut-live-batchBTBU-web-packages-cassandra-import-rewire29-report-20260302.md`
 - Result: unresolved package lane is cleared; next action is bounded type/signature boundary harmonization in web layer.
+
+### 2026-03-02 22:55 UTC
+- Push checkpoint for `Batch BT+BU` completed.
+- Commit pushed to `origin/main`:
+  - `8b22b3dcd` (`refactor: hard-cut batchBTBU web package imports`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-222311-hardcut-live-batchBTBU-web-packages-cassandra-import-rewire29/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/280-hard-cut-live-batchBTBU-web-packages-cassandra-import-rewire29-report-20260302.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.20-2.50h` (`~0.03-0.31` workdays), next lane is web boundary harmonization for type/signature compatibility.
