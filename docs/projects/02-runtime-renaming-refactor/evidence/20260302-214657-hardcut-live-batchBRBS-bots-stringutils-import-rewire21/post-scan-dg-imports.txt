@@ -1,0 +1,8 @@
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java:9:import com.dgphoenix.casino.common.cache.Identifiable;
+mp-server/bots/src/main/java/com/betsoft/casino/bots/ManagedStarter.java:10:import com.dgphoenix.casino.common.exception.CommonException;
+mp-server/bots/src/main/java/com/betsoft/casino/bots/service/MQBBotServiceHandler.java:14:import com.dgphoenix.casino.common.exception.CommonException;
+mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/MQBApiClient.java:22:import com.dgphoenix.casino.common.exception.CommonException;
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodePrivateRoomInfoService.java:10:import com.dgphoenix.casino.common.exception.CommonException;
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotConfigInfoService.java:9:import com.dgphoenix.casino.common.util.CollectionUtils;
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotManagerService.java:18:import com.dgphoenix.casino.common.exception.CommonException;
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotManagerService.java:19:import com.dgphoenix.casino.common.util.Pair;

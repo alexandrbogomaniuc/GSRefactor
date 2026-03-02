@@ -1,0 +1,40 @@
+842:[ERROR] COMPILATION ERROR : 
+844:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:[32,1] package com.dgphoenix.casino.common.mp does not exist
+845:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:[76,38] package com.dgphoenix.casino.kafka.dto does not exist
+846:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:[77,38] package com.dgphoenix.casino.kafka.dto does not exist
+847:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:[115,38] package com.dgphoenix.casino.kafka.dto does not exist
+848:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:[2116,12] cannot find symbol
+851:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:[2260,13] cannot find symbol
+854:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java:[30,38] package com.dgphoenix.casino.common.mp does not exist
+855:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java:[31,38] package com.dgphoenix.casino.common.mp does not exist
+856:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java:[32,38] package com.dgphoenix.casino.common.mp does not exist
+857:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java:[33,38] package com.dgphoenix.casino.common.mp does not exist
+858:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RemoteUnlocker.java:[4,38] cannot find symbol
+861:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RemoteUnlocker.java:[20,40] cannot find symbol
+863:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebSocketRouter.java:[27,38] cannot find symbol
+866:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebSocketRouter.java:[291,36] cannot find symbol
+869:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebSocketRouter.java:[296,12] cannot find symbol
+920:[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project web: Compilation failure: Compilation failure: 
+921:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:[32,1] package com.dgphoenix.casino.common.mp does not exist
+922:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:[76,38] package com.dgphoenix.casino.kafka.dto does not exist
+923:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:[77,38] package com.dgphoenix.casino.kafka.dto does not exist
+924:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:[115,38] package com.dgphoenix.casino.kafka.dto does not exist
+925:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:[2116,12] cannot find symbol
+926:[ERROR]   symbol:   class MQData
+927:[ERROR]   location: class com.betsoft.casino.mp.web.service.SocketService
+928:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SocketService.java:[2260,13] cannot find symbol
+929:[ERROR]   symbol:   class MQData
+930:[ERROR]   location: class com.betsoft.casino.mp.web.service.SocketService
+931:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java:[30,38] package com.dgphoenix.casino.common.mp does not exist
+932:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java:[31,38] package com.dgphoenix.casino.common.mp does not exist
+933:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java:[32,38] package com.dgphoenix.casino.common.mp does not exist
+934:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/EnterLobbyHandler.java:[33,38] package com.dgphoenix.casino.common.mp does not exist
+935:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RemoteUnlocker.java:[4,38] cannot find symbol
+936:[ERROR]   symbol:   class IRemoteUnlocker
+937:[ERROR]   location: package com.dgphoenix.casino.cassandra
+938:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/RemoteUnlocker.java:[20,40] cannot find symbol
+939:[ERROR]   symbol: class IRemoteUnlocker
+940:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebSocketRouter.java:[27,38] cannot find symbol
+941:[ERROR]   symbol:   class IRemoteUnlocker
+942:[ERROR]   location: package com.dgphoenix.casino.cassandra
+943:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/config/WebSocketRouter.java:[291,36] cannot find symbol

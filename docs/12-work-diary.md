@@ -10567,3 +10567,18 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.50-4.00h` (`~0.06-0.50` workdays), next lane is bots string-utils dependency alignment (`RicochetBullet` `DateTimeUtils`).
+
+### 2026-03-02 22:13 UTC
+- Continued Project 02 stabilization with integrated `BR+BS` wave in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BR (`10` rewires): bots `StringUtils` import normalization and `RicochetBullet` static `DateTimeUtils` normalization.
+  - BS (`11` rewires): core/core-interfaces `StringUtils` import normalization.
+  - retained total: `21` import-only rewires across `21` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL, harmonized COTG compile PASS.
+  - `web` first-fail now narrowed to unresolved legacy package lane (`com.dgphoenix.casino.common.mp`, `com.dgphoenix.casino.kafka.dto`, `com.dgphoenix.casino.cassandra.IRemoteUnlocker`).
+  - canonical rerun profile remains `STEP09` FAIL (known smoke-stage external/runtime lane), with prewarm PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-214657-hardcut-live-batchBRBS-bots-stringutils-import-rewire21/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/279-hard-cut-live-batchBRBS-bots-stringutils-import-rewire21-report-20260302.md`
+- Result: bots fail-head cleared; next action is push BR+BS checkpoint and continue with web package-lane normalization.

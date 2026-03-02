@@ -13,7 +13,7 @@ import com.betsoft.casino.mp.model.room.IRoomInfo;
 import com.betsoft.casino.mp.service.IPrivateRoomInfoService;
 import com.betsoft.casino.mp.service.IRoomServiceFactory;
 import com.betsoft.casino.mp.service.ISocketService;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.hazelcast.core.EntryEvent;
 import com.hazelcast.core.EntryListener;
 import com.hazelcast.core.MapEvent;

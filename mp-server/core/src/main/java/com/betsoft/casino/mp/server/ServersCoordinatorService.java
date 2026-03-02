@@ -31,7 +31,7 @@ import org.apache.zookeeper.KeeperException;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.betsoft.casino.mp.service.ServerConfigDto;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 
 
 public class ServersCoordinatorService implements ServerCoordinatorInfoProvider, Closeable {

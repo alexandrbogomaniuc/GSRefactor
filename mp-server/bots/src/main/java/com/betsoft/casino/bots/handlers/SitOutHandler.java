@@ -6,7 +6,7 @@ import com.betsoft.casino.bots.UnifiedBot;
 import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
 import com.betsoft.casino.bots.mqb.ManagedMaxBlastChampionsRoomBot;
 import com.betsoft.casino.mp.transport.SitOutResponse;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

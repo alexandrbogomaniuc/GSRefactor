@@ -5474,3 +5474,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared bots RNG import frontier and advanced downstream to the narrower bots string-utils dependency lane.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 22:13 UTC (Hard-cut live Batch BR+BS)
+- Continued Project 02 stabilization with integrated live batches `BR+BS` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BR (`10` rewires): normalized bots `StringUtils` imports and `RicochetBullet` static `DateTimeUtils` import (`com.dgphoenix -> com.abs`).
+  - BS (`11` rewires): normalized core/core-interfaces `StringUtils` imports (`com.dgphoenix -> com.abs`).
+  - retained total: `21` import-only rewires across `21` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL, harmonized `clashofthegods` compile PASS.
+  - `web` first-fail shifted off bots string-utils lane into web unresolved package lane (`common.mp`, `kafka.dto`, `IRemoteUnlocker`).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not BR/BS import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-214657-hardcut-live-batchBRBS-bots-stringutils-import-rewire21/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/279-hard-cut-live-batchBRBS-bots-stringutils-import-rewire21-report-20260302.md`
+- Measured movement:
+  - cleared bots string-utils `RicochetBullet` fail-head and advanced first-fail into web package normalization lane.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

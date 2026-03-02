@@ -1,0 +1,54 @@
+## main...origin/main
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/ArgsParser.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/ManagedStarter.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/SitOutHandler.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/model/RicochetBullet.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/MQBApiClient.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedBattleGroundRoomBot.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/BulletRequest.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/ShotRequest.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/service/MQBBotServiceHandler.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IPrivateRoomPlayersStatusService.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/friends/UpdateFriendsResponse.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/onlineplayer/UpdateOnlinePlayersResponse.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/privateroom/UpdatePrivateRoomResponse.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/server/ServersCoordinatorService.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomPlayersStatusService.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotConfigInfoService.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotManagerService.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodePrivateRoomInfoService.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/RoomPlayersMonitorService.java
+?? docs/gs-canonical-pack-clean-20260302T163759Z.tar.gz
+?? docs/gs-canonical-pack-clean-final-20260302T183537Z.tar.gz
+?? docs/gs.zip
+?? docs/gs/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260302-214657-hardcut-live-batchBRBS-bots-stringutils-import-rewire21/
+
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/ArgsParser.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/ManagedStarter.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/SitOutHandler.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/model/RicochetBullet.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/MQBApiClient.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedBattleGroundRoomBot.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/BulletRequest.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/ShotRequest.java
+ M mp-server/bots/src/main/java/com/betsoft/casino/bots/service/MQBBotServiceHandler.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IPrivateRoomPlayersStatusService.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/friends/UpdateFriendsResponse.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/onlineplayer/UpdateOnlinePlayersResponse.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/privateroom/UpdatePrivateRoomResponse.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/server/ServersCoordinatorService.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomPlayersStatusService.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotConfigInfoService.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotManagerService.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodePrivateRoomInfoService.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/RoomPlayersMonitorService.java
+?? docs/gs-canonical-pack-clean-20260302T163759Z.tar.gz
+?? docs/gs-canonical-pack-clean-final-20260302T183537Z.tar.gz
+?? docs/gs.zip
+?? docs/gs/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260302-214657-hardcut-live-batchBRBS-bots-stringutils-import-rewire21/

@@ -9,7 +9,7 @@ import com.betsoft.casino.utils.InboundObject;
 import com.dgphoenix.casino.common.cache.Identifiable;
 import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.ILongIdGenerator;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import org.apache.logging.log4j.Logger;
 
 import java.util.*;

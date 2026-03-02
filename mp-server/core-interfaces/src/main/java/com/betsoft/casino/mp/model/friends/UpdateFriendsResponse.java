@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.model.friends;
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 
 public class UpdateFriendsResponse {
     private int code;

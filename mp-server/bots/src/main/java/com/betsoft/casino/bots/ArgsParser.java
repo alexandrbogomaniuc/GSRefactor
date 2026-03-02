@@ -1,6 +1,6 @@
 package com.betsoft.casino.bots;
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;

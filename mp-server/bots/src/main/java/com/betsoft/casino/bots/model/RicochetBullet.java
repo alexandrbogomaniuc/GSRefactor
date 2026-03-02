@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.List;
 
 import static com.betsoft.casino.bots.utils.GeometryUtils.*;
-import static com.dgphoenix.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
+import static com.abs.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
 
 public class RicochetBullet {
 

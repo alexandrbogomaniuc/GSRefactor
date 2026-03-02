@@ -7,7 +7,7 @@ import com.betsoft.casino.mp.model.bots.TimeFrame;
 import com.abs.casino.common.exception.AlreadyExistsException;
 import com.abs.casino.common.exception.ObjectNotFoundException;
 import com.dgphoenix.casino.common.util.CollectionUtils;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import com.hazelcast.query.EntryObject;

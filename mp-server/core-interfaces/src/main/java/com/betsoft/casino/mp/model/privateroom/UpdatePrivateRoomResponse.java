@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.model.privateroom;
 
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 
 public class UpdatePrivateRoomResponse {
     private int code;

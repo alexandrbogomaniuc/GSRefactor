@@ -1,0 +1,270 @@
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/ArgsParser.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/ArgsParser.java
+index b6b801022..183f2b1f5 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/ArgsParser.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/ArgsParser.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.bots;
+ 
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ 
+ import java.util.*;
+ import java.util.stream.Collectors;
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/ManagedStarter.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/ManagedStarter.java
+index fe52641e8..50dc7f910 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/ManagedStarter.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/ManagedStarter.java
+@@ -8,7 +8,7 @@ import com.betsoft.casino.bots.service.MQBBotServiceHandler;
+ import com.betsoft.casino.bots.service.kafka.KafkaMessageService;
+ import com.betsoft.casino.bots.service.kafka.KafkaRecieverService;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/SitOutHandler.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/SitOutHandler.java
+index 4fbfc59b3..b17c2b361 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/SitOutHandler.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/handlers/SitOutHandler.java
+@@ -6,7 +6,7 @@ import com.betsoft.casino.bots.UnifiedBot;
+ import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
+ import com.betsoft.casino.bots.mqb.ManagedMaxBlastChampionsRoomBot;
+ import com.betsoft.casino.mp.transport.SitOutResponse;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/model/RicochetBullet.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/model/RicochetBullet.java
+index 755f104f3..1cf68f819 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/model/RicochetBullet.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/model/RicochetBullet.java
+@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
+ import java.util.List;
+ 
+ import static com.betsoft.casino.bots.utils.GeometryUtils.*;
+-import static com.dgphoenix.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
++import static com.abs.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
+ 
+ public class RicochetBullet {
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/MQBApiClient.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/MQBApiClient.java
+index c78addee5..b210ecafd 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/MQBApiClient.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/MQBApiClient.java
+@@ -20,7 +20,7 @@ import org.springframework.util.MultiValueMap;
+ import org.springframework.web.client.RestTemplate;
+ 
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ 
+ /**
+  * User: flsh
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedBattleGroundRoomBot.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedBattleGroundRoomBot.java
+index 88b38ab5a..e081142da 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedBattleGroundRoomBot.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedBattleGroundRoomBot.java
+@@ -23,7 +23,7 @@ import com.betsoft.casino.mp.transport.Observer;
+ import com.betsoft.casino.mp.transport.RoomEnemy;
+ import com.betsoft.casino.mp.web.IMessageSerializer;
+ import com.abs.casino.common.util.RNG;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ 
+ import java.util.ArrayList;
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/BulletRequest.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/BulletRequest.java
+index cd0b59d04..9bf2e0b2d 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/BulletRequest.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/BulletRequest.java
+@@ -8,7 +8,7 @@ import com.betsoft.casino.bots.strategies.IRoomNaturalBotStrategy;
+ import com.betsoft.casino.mp.transport.Bullet;
+ import com.betsoft.casino.mp.web.ISocketClient;
+ import com.betsoft.casino.utils.ITransportObject;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ 
+ import static com.betsoft.casino.utils.DateTimeUtils.toHumanReadableFormat;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/ShotRequest.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/ShotRequest.java
+index 4a56d3acd..0bc0f4f34 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/ShotRequest.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/ShotRequest.java
+@@ -11,7 +11,7 @@ import com.betsoft.casino.mp.transport.*;
+ import com.betsoft.casino.mp.utils.ErrorCodes;
+ import com.betsoft.casino.mp.web.ISocketClient;
+ import com.betsoft.casino.utils.ITransportObject;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ 
+ import java.util.List;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/service/MQBBotServiceHandler.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/service/MQBBotServiceHandler.java
+index 10a388117..b0b4b4dfe 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/service/MQBBotServiceHandler.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/service/MQBBotServiceHandler.java
+@@ -12,7 +12,7 @@ import com.betsoft.casino.mp.service.BotManagerService;
+ import com.betsoft.casino.mp.web.GsonFactory;
+ import com.betsoft.casino.mp.web.GsonMessageSerializer;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import com.abs.casino.kafka.dto.KafkaHandlerException;
+ import com.abs.casino.kafka.dto.bots.response.BotLogInResultDto;
+ import com.abs.casino.kafka.dto.bots.response.BotLogOutResultDto;
+diff --git a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IPrivateRoomPlayersStatusService.java b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IPrivateRoomPlayersStatusService.java
+index b6bfbb3fa..745a960ef 100644
+--- a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IPrivateRoomPlayersStatusService.java
++++ b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IPrivateRoomPlayersStatusService.java
+@@ -13,7 +13,7 @@ import com.betsoft.casino.mp.model.room.IRoomInfo;
+ import com.betsoft.casino.mp.service.IPrivateRoomInfoService;
+ import com.betsoft.casino.mp.service.IRoomServiceFactory;
+ import com.betsoft.casino.mp.service.ISocketService;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import com.hazelcast.core.EntryEvent;
+ import com.hazelcast.core.EntryListener;
+ import com.hazelcast.core.MapEvent;
+diff --git a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/friends/UpdateFriendsResponse.java b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/friends/UpdateFriendsResponse.java
+index 291eb3d6f..97b3bfc0d 100644
+--- a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/friends/UpdateFriendsResponse.java
++++ b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/friends/UpdateFriendsResponse.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.model.friends;
+ 
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ 
+ public class UpdateFriendsResponse {
+     private int code;
+diff --git a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/onlineplayer/UpdateOnlinePlayersResponse.java b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/onlineplayer/UpdateOnlinePlayersResponse.java
+index ef0e4d7d6..8d597db7e 100644
+--- a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/onlineplayer/UpdateOnlinePlayersResponse.java
++++ b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/onlineplayer/UpdateOnlinePlayersResponse.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.mp.model.onlineplayer;
+ 
+ import com.betsoft.casino.mp.model.friends.Friends;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ 
+ import java.util.List;
+ 
+diff --git a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/privateroom/UpdatePrivateRoomResponse.java b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/privateroom/UpdatePrivateRoomResponse.java
+index bd3c34aa0..47cec5580 100644
+--- a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/privateroom/UpdatePrivateRoomResponse.java
++++ b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/privateroom/UpdatePrivateRoomResponse.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.model.privateroom;
+ 
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ 
+ public class UpdatePrivateRoomResponse {
+     private int code;
+diff --git a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java
+index db77fd6be..4d80787ab 100644
+--- a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java
++++ b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/room/IRoom.java
+@@ -9,7 +9,7 @@ import com.betsoft.casino.utils.InboundObject;
+ import com.dgphoenix.casino.common.cache.Identifiable;
+ import com.abs.casino.common.exception.CommonException;
+ import com.abs.casino.common.util.ILongIdGenerator;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import org.apache.logging.log4j.Logger;
+ 
+ import java.util.*;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/server/ServersCoordinatorService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/server/ServersCoordinatorService.java
+index 0be4df545..79d04baf9 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/server/ServersCoordinatorService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/server/ServersCoordinatorService.java
+@@ -31,7 +31,7 @@ import org.apache.zookeeper.KeeperException;
+ import org.springframework.beans.factory.annotation.Value;
+ 
+ import com.betsoft.casino.mp.service.ServerConfigDto;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ 
+ 
+ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider, Closeable {
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java
+index 37dbb2b00..5193b215b 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java
+@@ -8,7 +8,7 @@ import com.betsoft.casino.mp.model.privateroom.UpdatePrivateRoomResponse;
+ import com.betsoft.casino.mp.model.room.IRoomInfo;
+ import com.abs.casino.common.exception.CommonException;
+ import com.abs.casino.common.util.RNG;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import com.hazelcast.core.HazelcastInstance;
+ import com.hazelcast.query.EntryObject;
+ import com.hazelcast.query.Predicate;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomPlayersStatusService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomPlayersStatusService.java
+index e017fe2d5..1015b62e9 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomPlayersStatusService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomPlayersStatusService.java
+@@ -13,7 +13,7 @@ import com.betsoft.casino.mp.model.privateroom.UpdatePrivateRoomResponse;
+ import com.betsoft.casino.mp.model.room.IRoom;
+ import com.betsoft.casino.mp.model.room.IRoomInfo;
+ import com.betsoft.casino.mp.web.IGameSocketClient;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import com.hazelcast.core.HazelcastInstance;
+ import com.hazelcast.core.IMap;
+ import com.hazelcast.map.listener.MapListener;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotConfigInfoService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotConfigInfoService.java
+index dbad8c2f9..bd6f6b963 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotConfigInfoService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotConfigInfoService.java
+@@ -7,7 +7,7 @@ import com.betsoft.casino.mp.model.bots.TimeFrame;
+ import com.abs.casino.common.exception.AlreadyExistsException;
+ import com.abs.casino.common.exception.ObjectNotFoundException;
+ import com.dgphoenix.casino.common.util.CollectionUtils;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import com.hazelcast.core.HazelcastInstance;
+ import com.hazelcast.core.IMap;
+ import com.hazelcast.query.EntryObject;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotManagerService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotManagerService.java
+index dd3c9b5f4..f00de3f04 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotManagerService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotManagerService.java
+@@ -18,7 +18,7 @@ import com.betsoft.casino.mp.web.ILobbySocketClient;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+ import com.abs.casino.common.util.RNG;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import com.hazelcast.core.HazelcastInstance;
+ import com.hazelcast.core.IMap;
+ import com.hazelcast.query.EntryObject;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodePrivateRoomInfoService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodePrivateRoomInfoService.java
+index ebecadb84..795e3014e 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodePrivateRoomInfoService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodePrivateRoomInfoService.java
+@@ -9,7 +9,7 @@ import com.betsoft.casino.mp.model.privateroom.UpdatePrivateRoomResponse;
+ import com.betsoft.casino.mp.model.room.IMultiNodeRoom;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.abs.casino.common.util.RNG;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import com.hazelcast.core.HazelcastInstance;
+ import com.hazelcast.query.EntryObject;
+ import com.hazelcast.query.Predicate;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/RoomPlayersMonitorService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/RoomPlayersMonitorService.java
+index 865979480..59c8a9483 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/RoomPlayersMonitorService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/RoomPlayersMonitorService.java
+@@ -14,7 +14,7 @@ import com.betsoft.casino.mp.model.room.IRoom;
+ import com.betsoft.casino.mp.model.room.IRoomInfo;
+ import com.betsoft.casino.mp.web.IGameSocketClient;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import com.hazelcast.core.HazelcastInstance;
+ import com.hazelcast.core.IMap;
+ import com.hazelcast.query.EntryObject;

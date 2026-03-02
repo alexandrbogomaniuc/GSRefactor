@@ -8,7 +8,7 @@ import com.betsoft.casino.bots.strategies.IRoomNaturalBotStrategy;
 import com.betsoft.casino.mp.transport.Bullet;
 import com.betsoft.casino.mp.web.ISocketClient;
 import com.betsoft.casino.utils.ITransportObject;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 
 import static com.betsoft.casino.utils.DateTimeUtils.toHumanReadableFormat;
 

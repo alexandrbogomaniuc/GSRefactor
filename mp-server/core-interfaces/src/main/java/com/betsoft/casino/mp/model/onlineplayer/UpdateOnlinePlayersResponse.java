@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.model.onlineplayer;
 
 import com.betsoft.casino.mp.model.friends.Friends;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 
 import java.util.List;
 

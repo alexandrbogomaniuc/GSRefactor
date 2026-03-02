@@ -18,7 +18,7 @@ import com.betsoft.casino.mp.web.ILobbySocketClient;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.Pair;
 import com.abs.casino.common.util.RNG;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import com.hazelcast.query.EntryObject;

@@ -8,7 +8,7 @@ import com.betsoft.casino.bots.service.MQBBotServiceHandler;
 import com.betsoft.casino.bots.service.kafka.KafkaMessageService;
 import com.betsoft.casino.bots.service.kafka.KafkaRecieverService;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
