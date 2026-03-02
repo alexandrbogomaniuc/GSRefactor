@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.model.RoomState;
 import com.betsoft.casino.mp.model.room.IMultiNodeRoomInfo;
 import com.betsoft.casino.mp.service.*;
 import com.betsoft.casino.mp.web.IGameSocketClient;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.hazelcast.core.IExecutorService;
 
 import java.util.Map;

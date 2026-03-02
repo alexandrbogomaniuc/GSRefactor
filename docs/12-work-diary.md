@@ -10064,3 +10064,22 @@
   - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh maintained at `~2-5h` (`~0.25-0.63` workdays).
+
+### 2026-03-02 16:20 UTC
+- Continued Project 02 stabilization with integrated live batches `AN+AO` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - AN (`clashofthegods`): normalized legacy imports (`CommonException`, `RNG`, `Pair`, `Triple`) to `com.abs` across 8 files.
+  - AO (`bg_maxblastchampions`): normalized legacy imports (`CommonException`, `Pair`) to `com.abs` across 6 files.
+  - retained total: `23` import/signature-boundary rewires across `14` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `web` and `clashofthegods` remain FAIL with first-fail now narrowed to:
+    - `mp-server/core` residual `RNG` imports (web path),
+    - `GameTools.getRandomPair` Triple boundary mismatch in `clashofthegods`.
+  - canonical matrix is infra-blocked in this sandbox at `STEP01/PRE01` due external Maven repository resolution limits; this is not a local logic regression signal.
+- Measured movement:
+  - `clashofthegods` targeted legacy imports reduced `15 -> 0`.
+  - `bg_maxblastchampions` targeted legacy imports reduced `8 -> 0`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-161217-hardcut-live-batchANAO-cotg-bgmax-import-rewire23/`
+- Next step:
+  - execute next bounded waves for `mp-server/core` RNG imports and `GameTools` Triple boundary alignment.

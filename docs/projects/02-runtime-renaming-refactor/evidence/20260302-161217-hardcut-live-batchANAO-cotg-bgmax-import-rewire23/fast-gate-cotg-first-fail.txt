@@ -1,0 +1,20 @@
+100:[ERROR] COMPILATION ERROR : 
+102:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/EnemyGame.java:[417,51] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+107:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/EnemyGame.java:[496,39] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+112:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/EnemyGame.java:[511,57] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+135:[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project clashofthegods: Compilation failure: Compilation failure: 
+136:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/EnemyGame.java:[417,51] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+137:[ERROR]   required: java.util.List<com.dgphoenix.casino.common.util.Triple<T,V,java.lang.Double>>
+138:[ERROR]   found: java.util.List<com.abs.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>>
+139:[ERROR]   reason: cannot infer type-variable(s) T,V
+140:[ERROR]     (argument mismatch; java.util.List<com.abs.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Triple<T,V,java.lang.Double>>)
+141:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/EnemyGame.java:[496,39] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+142:[ERROR]   required: java.util.List<com.dgphoenix.casino.common.util.Triple<T,V,java.lang.Double>>
+143:[ERROR]   found: java.util.List<com.abs.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>>
+144:[ERROR]   reason: cannot infer type-variable(s) T,V
+145:[ERROR]     (argument mismatch; java.util.List<com.abs.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Triple<T,V,java.lang.Double>>)
+146:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/EnemyGame.java:[511,57] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+147:[ERROR]   required: java.util.List<com.dgphoenix.casino.common.util.Triple<T,V,java.lang.Double>>
+148:[ERROR]   found: java.util.List<com.abs.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>>
+149:[ERROR]   reason: cannot infer type-variable(s) T,V
+150:[ERROR]     (argument mismatch; java.util.List<com.abs.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Triple<T,V,java.lang.Double>>)

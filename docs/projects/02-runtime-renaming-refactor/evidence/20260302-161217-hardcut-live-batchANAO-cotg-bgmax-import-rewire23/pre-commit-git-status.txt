@@ -1,0 +1,16 @@
+ M mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java
+ M mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/GameRoom.java
+ M mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/PlayGameState.java
+ M mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/QualifyGameState.java
+ M mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/RoomSeats.java
+ M mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/WaitingPlayersGameState.java
+ M mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/EnemyGame.java
+ M mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/GameMap.java
+ M mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/GameRoom.java
+ M mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/PlayGameState.java
+ M mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/PlayerRoundInfo.java
+ M mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/QualifyGameState.java
+ M mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/RoomSeats.java
+ M mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/WaitingPlayersGameState.java
+?? docs/gs/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260302-161217-hardcut-live-batchANAO-cotg-bgmax-import-rewire23/

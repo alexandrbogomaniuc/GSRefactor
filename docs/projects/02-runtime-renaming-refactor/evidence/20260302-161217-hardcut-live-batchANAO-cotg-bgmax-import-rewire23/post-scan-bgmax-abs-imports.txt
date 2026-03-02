@@ -1,0 +1,8 @@
+/Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/QualifyGameState.java:7:import com.abs.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/WaitingPlayersGameState.java:11:import com.abs.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/WaitingPlayersGameState.java:12:import com.abs.casino.common.util.Pair;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/RoomSeats.java:3:import com.abs.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/GameRoom.java:9:import com.abs.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java:27:import com.abs.casino.common.exception.CommonException;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java:28:import com.abs.casino.common.util.Pair;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/PlayGameState.java:14:import com.abs.casino.common.exception.CommonException;

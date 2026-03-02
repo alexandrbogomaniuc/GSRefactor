@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.common.AbstractQualifyGameState;
 import com.betsoft.casino.mp.common.SharedCrashGameState;
 import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.model.room.IRoomInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 import java.util.Map;
 import java.util.concurrent.Executors;

@@ -5182,3 +5182,29 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `bg_maxblastchampions` targeted legacy utility imports `5 -> 0`.
   - `clashofthegods-math` enemy `Pair/Triple` legacy imports `11 -> 0`.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 16:20 UTC (Hard-cut live Batch AN+AO)
+- Continued Project 02 stabilization in `/Users/alexb/Documents/Dev/Dev_new` with parallel non-overlapping import/signature normalization.
+- Changes:
+  - Batch AN (`8` files): rewired `clashofthegods` legacy imports (`CommonException`, `RNG`, `Pair`, `Triple`) from `com.dgphoenix` to `com.abs`.
+  - Batch AO (`6` files): rewired `bg_maxblastchampions` legacy imports (`CommonException`, `Pair`) from `com.dgphoenix` to `com.abs`.
+  - Total retained rewires: `23` across `14` files.
+- Validation:
+  - targeted mp fast gates:
+    - `mvn -pl games/common-games -am -DskipTests compile` -> PASS
+    - `mvn -pl web -am -DskipTests compile` -> FAIL (first-fail moved to `mp-server/core` residual `RNG` imports)
+    - `mvn -pl games/clashofthegods -am -DskipTests compile` -> FAIL (`EnemyGame`/`GameTools.getRandomPair` Triple boundary mismatch)
+  - canonical matrix:
+    - `fast_gate_batchA FAIL STEP01`
+    - `fast_gate_batchB FAIL STEP01`
+    - `prewarm FAIL PRE01`
+    - `validation FAIL PRE01`
+    - `STEP09 retry SKIP`
+  - canonical failure remains environment-level Maven dependency resolution blocker in this sandbox (external repo access), not a batch-local logic regression.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-161217-hardcut-live-batchANAO-cotg-bgmax-import-rewire23/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/264-hard-cut-live-batchANAO-cotg-bgmax-import-rewire23-report-20260302.md`
+- Measured movement:
+  - `clashofthegods` targeted legacy imports `15 -> 0`.
+  - `bg_maxblastchampions` targeted legacy imports `8 -> 0`.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

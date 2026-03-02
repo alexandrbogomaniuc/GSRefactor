@@ -1,0 +1,14 @@
+mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java
+mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/GameRoom.java
+mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/PlayGameState.java
+mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/QualifyGameState.java
+mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/RoomSeats.java
+mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/WaitingPlayersGameState.java
+mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/EnemyGame.java
+mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/GameMap.java
+mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/GameRoom.java
+mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/PlayGameState.java
+mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/PlayerRoundInfo.java
+mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/QualifyGameState.java
+mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/RoomSeats.java
+mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/WaitingPlayersGameState.java

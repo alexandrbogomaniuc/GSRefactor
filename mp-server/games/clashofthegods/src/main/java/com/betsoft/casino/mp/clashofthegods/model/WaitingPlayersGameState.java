@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.clashofthegods.model;
 
 import com.betsoft.casino.mp.common.AbstractSingleNodeWaitingPlayerGameState;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 
 public class WaitingPlayersGameState extends AbstractSingleNodeWaitingPlayerGameState<GameRoom, Seat, GameMap, WaitingPlayersGameState> {
     public WaitingPlayersGameState() {}
