@@ -10158,3 +10158,22 @@
   - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh tightened to `~0.4-1.8h` (`~0.05-0.23` workdays), focused on residual `CommonException` inheritor alignment in `mp-server/core`.
+
+### 2026-03-02 17:03 UTC
+- Continued Project 02 stabilization with integrated live batches `AT+AU` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - AT (`1` rewire): `BGPrivateRoomInfoService` `CommonException` import normalization.
+  - AU (`1` rewire): `IdGenerator` `CommonException` import normalization.
+  - retained total: `2` import/signature-boundary rewires across `2` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `web` FAIL; `clashofthegods` PASS.
+  - `web` first-fail moved to `AddWinOperationProcessor` boundary handling (`unreported com.abs...CommonException`).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+  - canonical failures remain infra-level in this sandbox (external Maven repo DNS resolution), not AT/AU local logic regressions.
+- Measured movement:
+  - prior `BGPrivateRoomInfoService` mixed namespace fail cleared and first-fail advanced to next payment-lane consumer.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-165532-hardcut-live-batchATAU-core-commonexception-rewire2/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/267-hard-cut-live-batchATAU-core-commonexception-rewire2-report-20260302.md`
+- Next step:
+  - commit AT+AU wave, attempt push, then run next bounded cleanup on payment-lane `CommonException` boundary (`AddWinOperationProcessor`).

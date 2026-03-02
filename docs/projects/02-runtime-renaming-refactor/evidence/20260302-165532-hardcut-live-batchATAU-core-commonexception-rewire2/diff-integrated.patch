@@ -1,0 +1,25 @@
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java
+index 280e9e3c0..37dbb2b00 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java
+@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.model.privateroom.PrivateRoom;
+ import com.betsoft.casino.mp.model.privateroom.Status;
+ import com.betsoft.casino.mp.model.privateroom.UpdatePrivateRoomResponse;
+ import com.betsoft.casino.mp.model.room.IRoomInfo;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.hazelcast.core.HazelcastInstance;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/IdGenerator.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/IdGenerator.java
+index e6e256f27..cd51ebb03 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/IdGenerator.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/IdGenerator.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.service;
+ 
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.abs.casino.common.util.ILongIdGenerator;
+ import com.abs.casino.common.util.ISequencer;
+ import com.abs.casino.common.util.ISequencerPersister;

@@ -1,0 +1,15 @@
+161:[ERROR] COMPILATION ERROR : 
+163:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/core/src/main/java/com/betsoft/casino/mp/payment/AddWinOperationProcessor.java:[44,66] unreported exception com.abs.casino.common.exception.CommonException; must be caught or declared to be thrown
+212:[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project core: Compilation failure
+213:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/core/src/main/java/com/betsoft/casino/mp/payment/AddWinOperationProcessor.java:[44,66] unreported exception com.abs.casino.common.exception.CommonException; must be caught or declared to be thrown
+214:[ERROR] 
+215:[ERROR] -> [Help 1]
+216:[ERROR] 
+217:[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+218:[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+219:[ERROR] 
+220:[ERROR] For more information about the errors and possible solutions, please read the following articles:
+221:[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+222:[ERROR] 
+223:[ERROR] After correcting the problems, you can resume the build with the command
+224:[ERROR]   mvn <args> -rf :core

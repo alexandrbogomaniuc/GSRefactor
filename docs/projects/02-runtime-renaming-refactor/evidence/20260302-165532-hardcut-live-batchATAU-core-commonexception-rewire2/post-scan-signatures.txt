@@ -1,0 +1,3 @@
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java:354:                } catch (CommonException e) {
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/IdGenerator.java:46:        } catch (CommonException e) {
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/IdGenerator.java:70:    public ISequencer getSequencer(String name) throws CommonException {

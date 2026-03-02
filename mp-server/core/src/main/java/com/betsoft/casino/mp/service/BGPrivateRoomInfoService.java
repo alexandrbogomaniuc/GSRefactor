@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.model.privateroom.PrivateRoom;
 import com.betsoft.casino.mp.model.privateroom.Status;
 import com.betsoft.casino.mp.model.privateroom.UpdatePrivateRoomResponse;
 import com.betsoft.casino.mp.model.room.IRoomInfo;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.hazelcast.core.HazelcastInstance;

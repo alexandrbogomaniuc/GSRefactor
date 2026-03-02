@@ -1,0 +1,2 @@
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/IdGenerator.java

@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.service;
 
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.ILongIdGenerator;
 import com.abs.casino.common.util.ISequencer;
 import com.abs.casino.common.util.ISequencerPersister;
