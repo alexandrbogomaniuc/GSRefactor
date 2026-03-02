@@ -11,8 +11,8 @@ import com.betsoft.casino.mp.common.math.MathEnemy;
 import com.betsoft.casino.mp.common.testmodel.*;
 import com.betsoft.casino.mp.model.*;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.util.RNG;
 import com.google.gson.Gson;
 
 import java.io.*;

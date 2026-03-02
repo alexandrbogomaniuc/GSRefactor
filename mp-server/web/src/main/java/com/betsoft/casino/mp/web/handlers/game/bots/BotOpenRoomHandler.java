@@ -16,7 +16,7 @@ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
 import com.betsoft.casino.mp.web.socket.BotGameClient;
 import com.betsoft.casino.utils.ITransportObject;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.reactive.socket.WebSocketSession;

@@ -1,0 +1,226 @@
+diff --git a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/gameconfig/GameTools.java b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/gameconfig/GameTools.java
+index 7ab7166ba..c16cbc53e 100644
+--- a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/gameconfig/GameTools.java
++++ b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/gameconfig/GameTools.java
+@@ -1,8 +1,8 @@
+ package com.betsoft.casino.mp.model.gameconfig;
+ 
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.abs.casino.common.util.RNG;
+-import com.dgphoenix.casino.common.util.Triple;
++import com.abs.casino.common.util.Pair;
++import com.abs.casino.common.util.RNG;
++import com.abs.casino.common.util.Triple;
+ 
+ import java.math.BigDecimal;
+ import java.math.MathContext;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/model/Member.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/model/Member.java
+index d3e7a947c..fcae2690a 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/model/Member.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/model/Member.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.model;
+ 
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java
+index aba2a1578..280e9e3c0 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java
+@@ -7,7 +7,7 @@ import com.betsoft.casino.mp.model.privateroom.Status;
+ import com.betsoft.casino.mp.model.privateroom.UpdatePrivateRoomResponse;
+ import com.betsoft.casino.mp.model.room.IRoomInfo;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.hazelcast.core.HazelcastInstance;
+ import com.hazelcast.query.EntryObject;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotManagerService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotManagerService.java
+index 4f290c53f..dd3c9b5f4 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotManagerService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotManagerService.java
+@@ -17,7 +17,7 @@ import com.betsoft.casino.mp.web.IGameSocketClient;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.hazelcast.core.HazelcastInstance;
+ import com.hazelcast.core.IMap;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodePrivateRoomInfoService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodePrivateRoomInfoService.java
+index 00f273add..ebecadb84 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodePrivateRoomInfoService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodePrivateRoomInfoService.java
+@@ -8,7 +8,7 @@ import com.betsoft.casino.mp.model.privateroom.Status;
+ import com.betsoft.casino.mp.model.privateroom.UpdatePrivateRoomResponse;
+ import com.betsoft.casino.mp.model.room.IMultiNodeRoom;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.hazelcast.core.HazelcastInstance;
+ import com.hazelcast.query.EntryObject;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodeRoomInfoService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodeRoomInfoService.java
+index e974eff13..bbb03285d 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodeRoomInfoService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodeRoomInfoService.java
+@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.room.IMultiNodeRoom;
+ import com.betsoft.casino.mp.model.room.IRoomInfo;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.hazelcast.core.HazelcastInstance;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/NicknameGenerator.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/NicknameGenerator.java
+index b0f315182..4d4d438ba 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/NicknameGenerator.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/NicknameGenerator.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.service;
+ 
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/SingleNodeRoomInfoService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/SingleNodeRoomInfoService.java
+index 0b6e122ee..97cf7a1dd 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/SingleNodeRoomInfoService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/SingleNodeRoomInfoService.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.service;
+ 
+ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.room.IRoomInfo;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.hazelcast.core.HazelcastInstance;
+ import com.hazelcast.query.EntryObject;
+ import com.hazelcast.query.Predicate;
+diff --git a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java
+index c5b435e17..9ba71bc36 100644
+--- a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java
++++ b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java
+@@ -15,7 +15,7 @@ import com.betsoft.casino.mp.model.movement.Trajectory;
+ import com.betsoft.casino.mp.model.room.ISingleNodeRoomInfo;
+ import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
+ import com.dgphoenix.casino.common.util.LongIdGenerator;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.google.gson.Gson;
+ import reactor.core.publisher.Mono;
+ 
+diff --git a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestPoints.java b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestPoints.java
+index d4c8da7c0..4d1849e9f 100644
+--- a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestPoints.java
++++ b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestPoints.java
+@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.common.scenarios.SpawnGroup;
+ import com.betsoft.casino.mp.common.scenarios.SpawnScenario;
+ import com.betsoft.casino.mp.model.movement.Point;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+-import com.dgphoenix.casino.common.util.Triple;
++import com.abs.casino.common.util.Triple;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+ 
+diff --git a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java
+index f13bc0f93..2e5655efc 100644
+--- a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java
++++ b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java
+@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.clashofthegods.model.math.enemies.IEnemyData;
+ import com.betsoft.casino.mp.model.GameType;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ 
+ import java.util.Comparator;
+ import java.util.Optional;
+@@ -51,4 +51,4 @@ public class TestWrongWeapons {
+             }
+         }
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java
+index ff94b7695..3d4bb0dbb 100644
+--- a/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java
++++ b/mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java
+@@ -8,12 +8,12 @@ import com.betsoft.casino.mp.common.ShootResult;
+ import com.betsoft.casino.mp.common.Weapon;
+ import com.betsoft.casino.mp.common.WeaponSource;
+ import com.betsoft.casino.mp.common.math.MathEnemy;
+-import com.betsoft.casino.mp.common.testmodel.*;
+-import com.betsoft.casino.mp.model.*;
+-import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
+-import com.google.gson.Gson;
++import com.betsoft.casino.mp.common.testmodel.*;
++import com.betsoft.casino.mp.model.*;
++import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.util.Pair;
++import com.abs.casino.common.util.RNG;
++import com.google.gson.Gson;
+ 
+ import java.io.*;
+ import java.math.BigDecimal;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/bots/BotOpenRoomHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/bots/BotOpenRoomHandler.java
+index b0ae92517..3c149fad3 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/bots/BotOpenRoomHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/bots/BotOpenRoomHandler.java
+@@ -16,7 +16,7 @@ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
+ import com.betsoft.casino.mp.web.socket.BotGameClient;
+ import com.betsoft.casino.utils.ITransportObject;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.web.reactive.socket.WebSocketSession;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
+index 4cb7a18f1..62a1ff6fc 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
+@@ -35,7 +35,7 @@ import com.betsoft.casino.utils.ITransportObject;
+ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+ import com.abs.casino.common.cache.Identifiable;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.abs.casino.kafka.dto.*;
+ import com.abs.casino.kafka.dto.privateroom.request.*;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/BotService.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/BotService.java
+index 0cebeddb9..fb691e268 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/BotService.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/BotService.java
+@@ -9,7 +9,7 @@ import com.betsoft.casino.mp.service.SingleNodeRoomInfoService;
+ import com.betsoft.casino.mp.web.IMessageSerializer;
+ import com.betsoft.casino.mp.web.socket.BotGameClient;
+ import com.betsoft.casino.mp.web.socket.BotGameWebSocketHandler;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java
+index 1f723d9a8..46a39884c 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java
+@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.service.INicknameService;
+ import com.betsoft.casino.mp.service.ISocketService;
+ import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.stereotype.Service;

@@ -1,0 +1,50 @@
+[2026-03-02T16:31:02Z] START STEP01
+[2026-03-02T16:31:02Z] START STEP01
+[2026-03-02T16:31:02Z] DIR gs-server/common
+[2026-03-02T16:31:02Z] DIR gs-server/common
+[2026-03-02T16:31:02Z] CMD mvn -DskipTests install
+[2026-03-02T16:31:02Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 342 source files to /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-common ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-common ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-common ---
+[INFO] Building jar: /Users/alexb/Documents/Dev/Dev_new/gs-server/common/target/gsn-common-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-common ---
+[INFO] Installing /Users/alexb/Documents/Dev/Dev_new/gs-server/common/pom.xml to /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common/1.0-SNAPSHOT/gsn-common-1.0-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.825 s
+[INFO] Finished at: 2026-03-02T16:31:08Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-install-plugin:3.1.2:install (default-install) on project gsn-common: Failed to install artifact com.dgphoenix.casino:gsn-common:pom:1.0-SNAPSHOT: /Users/alexb/.m2/repository/com/dgphoenix/casino/gsn-common/1.0-SNAPSHOT/gsn-common-1.0-SNAPSHOT.pom.6383531910573225892.tmp: Operation not permitted -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[2026-03-02T16:31:08Z] FAIL STEP01 rc=1
+[2026-03-02T16:31:08Z] FAIL STEP01 rc=1

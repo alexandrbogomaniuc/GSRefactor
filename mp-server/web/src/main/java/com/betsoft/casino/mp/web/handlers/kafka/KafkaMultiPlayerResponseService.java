@@ -35,7 +35,7 @@ import com.betsoft.casino.utils.ITransportObject;
 import com.dgphoenix.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.common.cache.Identifiable;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.abs.casino.kafka.dto.*;
 import com.abs.casino.kafka.dto.privateroom.request.*;

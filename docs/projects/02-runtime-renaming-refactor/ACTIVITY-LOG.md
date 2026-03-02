@@ -5208,3 +5208,24 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `clashofthegods` targeted legacy imports `15 -> 0`.
   - `bg_maxblastchampions` targeted legacy imports `8 -> 0`.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 16:32 UTC (Hard-cut live Batch AP+AQ)
+- Continued Project 02 stabilization with integrated live batches `AP+AQ` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - AP (`11` rewires): normalized targeted `RNG` import lanes (`com.dgphoenix -> com.abs`) across `mp-server/core` + `mp-server/web`.
+  - AQ (`7` rewires): normalized `GameTools` Pair/Triple imports and `clashofthegods` test imports (`RNG`, `Pair`, `Triple`).
+  - retained total: `18` import/signature-boundary rewires across `16` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `web` FAIL, `clashofthegods` PASS.
+  - `web` first-fail narrowed to interface-boundary mismatches in service contracts:
+    - `IRoomInfoService` vs `AbstractRoomInfoService` throws mismatch,
+    - `ILobbySessionService` vs `LobbySessionService` throws mismatch,
+    - `IAnalyticsDBClientService` vs `BigQueryClientService` `Pair` generic boundary/override clash.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+  - canonical failure remains environment-level Maven dependency resolution in current sandbox (external repo/DNS), not batch-local logic regression.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-162733-hardcut-live-batchAPAQ-core-web-gametools-import-rewire18/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/265-hard-cut-live-batchAPAQ-core-web-gametools-import-rewire18-report-20260302.md`
+- Measured movement:
+  - AP/AQ targeted import lanes fully rewired (`18/18`), including `clashofthegods` consumer compile recovery to PASS.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

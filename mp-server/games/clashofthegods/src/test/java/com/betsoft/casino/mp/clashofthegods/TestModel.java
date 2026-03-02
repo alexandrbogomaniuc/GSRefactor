@@ -15,7 +15,7 @@ import com.betsoft.casino.mp.model.movement.Trajectory;
 import com.betsoft.casino.mp.model.room.ISingleNodeRoomInfo;
 import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
 import com.dgphoenix.casino.common.util.LongIdGenerator;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.google.gson.Gson;
 import reactor.core.publisher.Mono;
 

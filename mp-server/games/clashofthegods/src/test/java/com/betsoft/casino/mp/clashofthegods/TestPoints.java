@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.common.scenarios.SpawnGroup;
 import com.betsoft.casino.mp.common.scenarios.SpawnScenario;
 import com.betsoft.casino.mp.model.movement.Point;
 import com.betsoft.casino.mp.model.movement.Trajectory;
-import com.dgphoenix.casino.common.util.Triple;
+import com.abs.casino.common.util.Triple;
 import org.kynosarges.tektosyne.geometry.PointD;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 

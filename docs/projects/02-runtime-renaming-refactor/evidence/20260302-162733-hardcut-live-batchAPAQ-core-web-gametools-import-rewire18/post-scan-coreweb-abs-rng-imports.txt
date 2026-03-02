@@ -1,0 +1,11 @@
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodePrivateRoomInfoService.java:11:import com.abs.casino.common.util.RNG;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core/src/main/java/com/betsoft/casino/mp/service/NicknameGenerator.java:3:import com.abs.casino.common.util.RNG;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodeRoomInfoService.java:8:import com.abs.casino.common.util.RNG;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotManagerService.java:20:import com.abs.casino.common.util.RNG;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core/src/main/java/com/betsoft/casino/mp/service/SingleNodeRoomInfoService.java:5:import com.abs.casino.common.util.RNG;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java:10:import com.abs.casino.common.util.RNG;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/BotService.java:12:import com.abs.casino.common.util.RNG;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java:9:import com.abs.casino.common.util.RNG;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/core/src/main/java/com/betsoft/casino/mp/model/Member.java:3:import com.abs.casino.common.util.RNG;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java:38:import com.abs.casino.common.util.RNG;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/bots/BotOpenRoomHandler.java:19:import com.abs.casino.common.util.RNG;

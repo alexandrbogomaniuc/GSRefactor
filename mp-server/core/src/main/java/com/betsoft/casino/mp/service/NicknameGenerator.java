@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.service;
 
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

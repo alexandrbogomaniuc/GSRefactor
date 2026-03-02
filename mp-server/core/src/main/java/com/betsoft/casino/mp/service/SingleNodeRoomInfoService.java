@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.service;
 
 import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.model.room.IRoomInfo;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.query.EntryObject;
 import com.hazelcast.query.Predicate;

@@ -9,7 +9,7 @@ import com.betsoft.casino.mp.service.SingleNodeRoomInfoService;
 import com.betsoft.casino.mp.web.IMessageSerializer;
 import com.betsoft.casino.mp.web.socket.BotGameClient;
 import com.betsoft.casino.mp.web.socket.BotGameWebSocketHandler;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

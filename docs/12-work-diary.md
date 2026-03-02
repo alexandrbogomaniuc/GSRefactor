@@ -10094,3 +10094,25 @@
   - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh maintained at `~1.5-4h` (`~0.19-0.50` workdays).
+
+### 2026-03-02 16:32 UTC
+- Continued Project 02 stabilization with integrated live batches `AP+AQ` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - AP (`11` rewires): normalized targeted `RNG` import lanes (`com.dgphoenix -> com.abs`) across `mp-server/core` and `mp-server/web`.
+  - AQ (`7` rewires): normalized `GameTools` Pair/Triple imports and `clashofthegods` test imports (`RNG`, `Pair`, `Triple`).
+  - retained total: `18` import/signature-boundary rewires across `16` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `web` FAIL; `clashofthegods` PASS.
+  - `web` first-fail moved to narrower service contract boundary mismatches:
+    - `IRoomInfoService`/`AbstractRoomInfoService` throws mismatch,
+    - `ILobbySessionService`/`LobbySessionService` throws mismatch,
+    - `IAnalyticsDBClientService`/`BigQueryClientService` `Pair` generic boundary + override clash.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+  - canonical failures remain infra-level in this sandbox (external Maven repo DNS resolution), not AP/AQ local logic regressions.
+- Measured movement:
+  - AP/AQ targeted import lanes fully rewired (`18/18`), and `clashofthegods` consumer fast gate recovered to PASS.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-162733-hardcut-live-batchAPAQ-core-web-gametools-import-rewire18/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/265-hard-cut-live-batchAPAQ-core-web-gametools-import-rewire18-report-20260302.md`
+- Next step:
+  - commit AP+AQ wave, attempt push, then continue with bounded interface-boundary normalization on the current `web` first-fail lane.

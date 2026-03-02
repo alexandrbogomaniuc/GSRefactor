@@ -1,0 +1,16 @@
+mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/gameconfig/GameTools.java
+mp-server/core/src/main/java/com/betsoft/casino/mp/model/Member.java
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/BGPrivateRoomInfoService.java
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/BotManagerService.java
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodePrivateRoomInfoService.java
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/MultiNodeRoomInfoService.java
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/NicknameGenerator.java
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/SingleNodeRoomInfoService.java
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestModel.java
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestPoints.java
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/TestWrongWeapons.java
+mp-server/games/clashofthegods/src/test/java/com/betsoft/casino/mp/clashofthegods/model/TestMathModel.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/bots/BotOpenRoomHandler.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/kafka/KafkaMultiPlayerResponseService.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/BotService.java
+mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/NicknameService.java

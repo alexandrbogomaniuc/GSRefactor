@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
 import com.betsoft.casino.mp.clashofthegods.model.math.enemies.IEnemyData;
 import com.betsoft.casino.mp.model.GameType;
 import com.betsoft.casino.mp.model.SpecialWeaponType;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 
 import java.util.Comparator;
 import java.util.Optional;
