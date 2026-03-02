@@ -1,6 +1,6 @@
 package com.betsoft.casino.mp.model;
 
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 
 import java.util.Arrays;
 import java.util.List;

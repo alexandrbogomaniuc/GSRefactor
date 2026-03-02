@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.model.privateroom.Status;
 import com.betsoft.casino.mp.model.privateroom.UpdatePrivateRoomResponse;
 import com.betsoft.casino.mp.model.room.IRoom;
 import com.betsoft.casino.mp.model.room.IRoomInfo;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import com.hazelcast.spring.context.SpringAware;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,0 +1,679 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.betsoft.casino:mp-bots:jar:1.0.0-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.springframework.boot:spring-boot-maven-plugin is missing. @ line 236, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project com.betsoft.casino:mp-casino:pom:1.0.0-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Tektosyne                                                          [jar]
+[INFO] mp-casino                                                          [pom]
+[INFO] Casino MP Games core interfaces                                    [jar]
+[INFO] Casino MP Games                                                    [pom]
+[INFO] MP Common Games                                                    [jar]
+[INFO] Max Quest: Clash of the Gods. Math model                           [jar]
+[INFO] 
+[INFO] ----------------------< org.kynosarges:tektosyne >----------------------
+[INFO] Building Tektosyne 6.0.1-BSG                                       [1/6]
+[INFO]   from tektosyne/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ tektosyne ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/tektosyne/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ tektosyne ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 62 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/tektosyne/target/classes
+[INFO] 
+[INFO] --------------------< com.betsoft.casino:mp-casino >--------------------
+[INFO] Building mp-casino 1.0.0-SNAPSHOT                                  [2/6]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:core-interfaces >----------------
+[INFO] Building Casino MP Games core interfaces 1.0.0-SNAPSHOT            [3/6]
+[INFO]   from core-interfaces/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ core-interfaces ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ core-interfaces ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --------------------< com.betsoft.casino.mp:games >---------------------
+[INFO] Building Casino MP Games 1.0.0-SNAPSHOT                            [4/6]
+[INFO]   from games/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:mp-common-games >----------------
+[INFO] Building MP Common Games 1.0.0-SNAPSHOT                            [5/6]
+[INFO]   from games/common-games/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ mp-common-games ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 100 resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ mp-common-games ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 152 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/target/classes
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java: Some input files use or override a deprecated API.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java: Recompile with -Xlint:deprecation for details.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractEnemy.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractEnemy.java: Recompile with -Xlint:unchecked for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayerRoundInfo.java:[7,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[13,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[28,38] package com.dgphoenix.casino.common.mp does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[29,40] cannot find symbol
+  symbol:   class ILongIdGenerator
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[31,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[7,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/GameMapStore.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[76,31] cannot find symbol
+  symbol:   class ILongIdGenerator
+  location: class com.betsoft.casino.mp.common.AbstractGameRoom<GAME,MAP,SEAT,SNAPSHOT,ENEMY,ENEMY_TYPE,ROOM_INFO,RPI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[352,12] cannot find symbol
+  symbol:   class ILongIdGenerator
+  location: class com.betsoft.casino.mp.common.AbstractGameRoom<GAME,MAP,SEAT,SNAPSHOT,ENEMY,ENEMY_TYPE,ROOM_INFO,RPI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/FreeAngleTrajectoryGenerator.java:[3,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubMember.java:[4,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/BullBossTrajectoryGenerator.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[5,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[5,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/BossTrajectoryGenerator.java:[4,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[23,38] package com.dgphoenix.casino.common.mp does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MinStepTrajectoryGenerator.java:[5,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/BezierCurveGenerator.java:[11,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractRoomService.java:[8,38] package com.dgphoenix.casino.common.mp does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShamanTrajectoryGenerator.java:[7,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractEnemyGame.java:[9,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/WeaponCarrierTrajectoryGenerator.java:[5,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalSwarmTrajectoryGenerator.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubCurrency.java:[4,1] a type with the same simple name is already defined by the single-type-import of com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalTrajectoryGenerator.java:[5,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/TrajectoryGenerator3D.java:[8,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[3,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SpiderSwarmAngleTrajectoryGenerator.java:[5,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/HorusTrajectoryGenerator.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[3,40] cannot find symbol
+  symbol:   class ISequencer
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[4,40] cannot find symbol
+  symbol:   class ISequencerPersister
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[10,48] cannot find symbol
+  symbol: class ISequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[12,12] cannot find symbol
+  symbol:   class ISequencer
+  location: class com.betsoft.casino.mp.common.testmodel.StubSequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[54,39] cannot find symbol
+  symbol:   class ISequencer
+  location: class com.betsoft.casino.mp.common.testmodel.StubSequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[54,12] cannot find symbol
+  symbol:   class ISequencer
+  location: class com.betsoft.casino.mp.common.testmodel.StubSequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SwarmTrajectoryGenerator.java:[9,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/GargoyleTrajectoryGenerator.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/DualSpeedTrajectoryGenerator.java:[3,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameMap.java:[9,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[15,40] cannot find symbol
+  symbol:   class LongIdGenerator
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubFreeShots.java:[5,61] package com.dgphoenix.casino.gs.singlegames.tools.cbservtools does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubFreeShots.java:[95,41] cannot find symbol
+  symbol:   class CBGameException
+  location: class com.betsoft.casino.mp.common.testmodel.StubFreeShots
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/RushTrajectoryGenerator3D.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/SwarmTrajectoryGenerator3D.java:[7,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/WizardTrajectoryGenerator.java:[5,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TeleportTrajectoryGenerator.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayerRoundInfo.java:[968,31] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.AbstractPlayerRoundInfo<ENEMY_TYPE,ENEMY_STAT,PRI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[191,30] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.AbstractPlayGameState<GAMEROOM,SEAT,MAP,GS>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[197,30] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.AbstractPlayGameState<GAMEROOM,SEAT,MAP,GS>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[138,29] cannot find symbol
+  symbol:   class ILongIdGenerator
+  location: class com.betsoft.casino.mp.common.AbstractGameRoom<GAME,MAP,SEAT,SNAPSHOT,ENEMY,ENEMY_TYPE,ROOM_INFO,RPI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[555,50] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.AbstractGameRoom<GAME,MAP,SEAT,SNAPSHOT,ENEMY,ENEMY_TYPE,ROOM_INFO,RPI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[1194,48] cannot find symbol
+  symbol:   variable TransactionErrorCodes
+  location: class com.betsoft.casino.mp.common.AbstractGameRoom<GAME,MAP,SEAT,SNAPSHOT,ENEMY,ENEMY_TYPE,ROOM_INFO,RPI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[1847,52] cannot find symbol
+  symbol:   variable TransactionErrorCodes
+  location: class com.betsoft.casino.mp.common.AbstractGameRoom<GAME,MAP,SEAT,SNAPSHOT,ENEMY,ENEMY_TYPE,ROOM_INFO,RPI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[54,13] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[102,28] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[107,29] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[125,30] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[127,28] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[133,28] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[145,29] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[157,28] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[170,26] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[241,41] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/GameMapStore.java:[115,44] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.GameMapStore
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java:[41,21] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.TrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java:[97,21] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.TrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java:[110,21] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.TrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java:[140,43] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.TrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java:[157,41] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.TrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java:[160,41] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.TrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/FreeAngleTrajectoryGenerator.java:[25,24] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.FreeAngleTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/FreeAngleTrajectoryGenerator.java:[32,25] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.FreeAngleTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/FreeAngleTrajectoryGenerator.java:[40,22] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.FreeAngleTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubMember.java:[27,41] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.testmodel.StubMember
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubMember.java:[28,16] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.testmodel.StubMember
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubMember.java:[31,23] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.testmodel.StubMember
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/BullBossTrajectoryGenerator.java:[35,21] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.BullBossTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/BullBossTrajectoryGenerator.java:[48,44] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.BullBossTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[97,36] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[111,21] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[130,85] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[163,19] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[164,19] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[179,40] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[180,40] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[182,20] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[42,21] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.JumpTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[72,24] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.JumpTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[79,21] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.JumpTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[80,32] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.JumpTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[83,32] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.JumpTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[87,28] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.JumpTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[90,28] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.JumpTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/BossTrajectoryGenerator.java:[59,24] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.BossTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/BossTrajectoryGenerator.java:[69,21] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.BossTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1362,48] cannot find symbol
+  symbol:   variable TransactionErrorCodes
+  location: class com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom<GAME,MAP,SEAT,SNAPSHOT,ENEMY,ENEMY_TYPE,ROOM_INFO,RPI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MinStepTrajectoryGenerator.java:[31,25] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.MinStepTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MinStepTrajectoryGenerator.java:[116,26] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.MinStepTrajectoryGenerator
+[INFO] 100 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Tektosyne 6.0.1-BSG ................................ SUCCESS [  1.201 s]
+[INFO] mp-casino 1.0.0-SNAPSHOT ........................... SUCCESS [  0.000 s]
+[INFO] Casino MP Games core interfaces 1.0.0-SNAPSHOT ..... SUCCESS [  0.364 s]
+[INFO] Casino MP Games 1.0.0-SNAPSHOT ..................... SUCCESS [  0.000 s]
+[INFO] MP Common Games 1.0.0-SNAPSHOT ..................... FAILURE [  2.331 s]
+[INFO] Max Quest: Clash of the Gods. Math model 1.0.0-SNAPSHOT SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.221 s
+[INFO] Finished at: 2026-03-02T13:59:16Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project mp-common-games: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayerRoundInfo.java:[7,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[13,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[28,38] package com.dgphoenix.casino.common.mp does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[29,40] cannot find symbol
+[ERROR]   symbol:   class ILongIdGenerator
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[31,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[7,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/GameMapStore.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[76,31] cannot find symbol
+[ERROR]   symbol:   class ILongIdGenerator
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractGameRoom<GAME,MAP,SEAT,SNAPSHOT,ENEMY,ENEMY_TYPE,ROOM_INFO,RPI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[352,12] cannot find symbol
+[ERROR]   symbol:   class ILongIdGenerator
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractGameRoom<GAME,MAP,SEAT,SNAPSHOT,ENEMY,ENEMY_TYPE,ROOM_INFO,RPI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/FreeAngleTrajectoryGenerator.java:[3,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubMember.java:[4,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/BullBossTrajectoryGenerator.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[5,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[5,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/BossTrajectoryGenerator.java:[4,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[23,38] package com.dgphoenix.casino.common.mp does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MinStepTrajectoryGenerator.java:[5,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/BezierCurveGenerator.java:[11,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractRoomService.java:[8,38] package com.dgphoenix.casino.common.mp does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShamanTrajectoryGenerator.java:[7,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractEnemyGame.java:[9,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/WeaponCarrierTrajectoryGenerator.java:[5,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalSwarmTrajectoryGenerator.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubCurrency.java:[4,1] a type with the same simple name is already defined by the single-type-import of com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalTrajectoryGenerator.java:[5,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/TrajectoryGenerator3D.java:[8,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[3,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SpiderSwarmAngleTrajectoryGenerator.java:[5,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/HorusTrajectoryGenerator.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[3,40] cannot find symbol
+[ERROR]   symbol:   class ISequencer
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[4,40] cannot find symbol
+[ERROR]   symbol:   class ISequencerPersister
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[10,48] cannot find symbol
+[ERROR]   symbol: class ISequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[12,12] cannot find symbol
+[ERROR]   symbol:   class ISequencer
+[ERROR]   location: class com.betsoft.casino.mp.common.testmodel.StubSequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[54,39] cannot find symbol
+[ERROR]   symbol:   class ISequencer
+[ERROR]   location: class com.betsoft.casino.mp.common.testmodel.StubSequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[54,12] cannot find symbol
+[ERROR]   symbol:   class ISequencer
+[ERROR]   location: class com.betsoft.casino.mp.common.testmodel.StubSequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SwarmTrajectoryGenerator.java:[9,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/GargoyleTrajectoryGenerator.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/DualSpeedTrajectoryGenerator.java:[3,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameMap.java:[9,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[15,40] cannot find symbol
+[ERROR]   symbol:   class LongIdGenerator
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubFreeShots.java:[5,61] package com.dgphoenix.casino.gs.singlegames.tools.cbservtools does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubFreeShots.java:[95,41] cannot find symbol
+[ERROR]   symbol:   class CBGameException
+[ERROR]   location: class com.betsoft.casino.mp.common.testmodel.StubFreeShots
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/RushTrajectoryGenerator3D.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/SwarmTrajectoryGenerator3D.java:[7,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/WizardTrajectoryGenerator.java:[5,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TeleportTrajectoryGenerator.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayerRoundInfo.java:[968,31] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractPlayerRoundInfo<ENEMY_TYPE,ENEMY_STAT,PRI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[191,30] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractPlayGameState<GAMEROOM,SEAT,MAP,GS>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[197,30] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractPlayGameState<GAMEROOM,SEAT,MAP,GS>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[138,29] cannot find symbol
+[ERROR]   symbol:   class ILongIdGenerator
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractGameRoom<GAME,MAP,SEAT,SNAPSHOT,ENEMY,ENEMY_TYPE,ROOM_INFO,RPI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[555,50] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractGameRoom<GAME,MAP,SEAT,SNAPSHOT,ENEMY,ENEMY_TYPE,ROOM_INFO,RPI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[1194,48] cannot find symbol
+[ERROR]   symbol:   variable TransactionErrorCodes
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractGameRoom<GAME,MAP,SEAT,SNAPSHOT,ENEMY,ENEMY_TYPE,ROOM_INFO,RPI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[1847,52] cannot find symbol
+[ERROR]   symbol:   variable TransactionErrorCodes
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractGameRoom<GAME,MAP,SEAT,SNAPSHOT,ENEMY,ENEMY_TYPE,ROOM_INFO,RPI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[54,13] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[102,28] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[107,29] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[125,30] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[127,28] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[133,28] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[145,29] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[157,28] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[170,26] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java:[241,41] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractQuestManager<TREASURE_GROUP,TREASURE,ENEMY_TYPE,ENEMY_GROUP>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/GameMapStore.java:[115,44] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.GameMapStore
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java:[41,21] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.TrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java:[97,21] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.TrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java:[110,21] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.TrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java:[140,43] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.TrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java:[157,41] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.TrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java:[160,41] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.TrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/FreeAngleTrajectoryGenerator.java:[25,24] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.FreeAngleTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/FreeAngleTrajectoryGenerator.java:[32,25] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.FreeAngleTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/FreeAngleTrajectoryGenerator.java:[40,22] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.FreeAngleTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubMember.java:[27,41] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.testmodel.StubMember
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubMember.java:[28,16] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.testmodel.StubMember
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubMember.java:[31,23] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.testmodel.StubMember
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/BullBossTrajectoryGenerator.java:[35,21] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.BullBossTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/BullBossTrajectoryGenerator.java:[48,44] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.BullBossTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[97,36] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[111,21] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[130,85] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[163,19] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[164,19] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[179,40] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[180,40] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java:[182,20] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.RatSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[42,21] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.JumpTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[72,24] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.JumpTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[79,21] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.JumpTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[80,32] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.JumpTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[83,32] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.JumpTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[87,28] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.JumpTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java:[90,28] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.JumpTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/BossTrajectoryGenerator.java:[59,24] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.BossTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/BossTrajectoryGenerator.java:[69,21] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.BossTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1362,48] cannot find symbol
+[ERROR]   symbol:   variable TransactionErrorCodes
+[ERROR]   location: class com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom<GAME,MAP,SEAT,SNAPSHOT,ENEMY,ENEMY_TYPE,ROOM_INFO,RPI>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MinStepTrajectoryGenerator.java:[31,25] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.MinStepTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MinStepTrajectoryGenerator.java:[116,26] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.MinStepTrajectoryGenerator
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :mp-common-games

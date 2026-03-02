@@ -9,7 +9,7 @@ import com.betsoft.casino.mp.utils.ErrorCodes;
 import com.betsoft.casino.mp.web.service.LobbyManager;
 import com.betsoft.casino.mp.web.service.RoomServiceFactory;
 import com.betsoft.casino.mp.web.ILobbySocketClient;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

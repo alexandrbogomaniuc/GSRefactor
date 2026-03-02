@@ -9,7 +9,7 @@ import com.betsoft.casino.utils.AESEncryptionDecryption;
 import com.betsoft.casino.utils.ITransportObject;
 import com.betsoft.casino.utils.TInboundObject;
 import com.betsoft.casino.utils.TObject;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import io.netty.buffer.ByteBufAllocator;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;

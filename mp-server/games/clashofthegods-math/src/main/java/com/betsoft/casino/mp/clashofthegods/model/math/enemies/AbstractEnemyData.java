@@ -1,8 +1,8 @@
 package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
 
 import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.Triple;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.util.Triple;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

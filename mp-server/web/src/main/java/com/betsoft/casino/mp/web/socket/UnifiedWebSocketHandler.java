@@ -14,7 +14,7 @@ import com.betsoft.casino.mp.web.handlers.lobby.*;
 import com.betsoft.casino.mp.web.service.RoomServiceFactory;
 import com.betsoft.casino.utils.AESEncryptionDecryption;
 import com.betsoft.casino.utils.TObject;
-import com.dgphoenix.casino.common.util.string.StringUtils;
+import com.abs.casino.common.util.string.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

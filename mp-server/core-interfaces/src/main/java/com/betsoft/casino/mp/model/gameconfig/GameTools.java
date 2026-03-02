@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.model.gameconfig;
 
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.Triple;
 
 import java.math.BigDecimal;

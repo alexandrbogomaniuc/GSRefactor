@@ -1,0 +1,5 @@
+fast-gate batchAA status
+timestamp_utc: 2026-03-02T13:59:35Z
+1) mvn -pl web -am -DskipTests compile: FAIL (first failing module: MP Common Games 1.0.0-SNAPSHOT)
+2) mvn -pl games/clashofthegods-math -am -DskipTests compile: FAIL (first failing module: MP Common Games 1.0.0-SNAPSHOT)
+3) mvn -pl games/clashofthegods -am -DskipTests compile: FAIL (first failing module: MP Common Games 1.0.0-SNAPSHOT)

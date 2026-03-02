@@ -3,8 +3,8 @@ package com.betsoft.casino.mp.server.status;
 import com.betsoft.casino.mp.data.service.ServerConfigService;
 import com.betsoft.casino.mp.kafka.KafkaMessageService;
 import com.betsoft.casino.mp.server.ServerCoordinatorInfoProvider;
-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
-import com.dgphoenix.casino.common.util.ExecutorUtils;
+import com.abs.casino.common.util.ApplicationContextHelper;
+import com.abs.casino.common.util.ExecutorUtils;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

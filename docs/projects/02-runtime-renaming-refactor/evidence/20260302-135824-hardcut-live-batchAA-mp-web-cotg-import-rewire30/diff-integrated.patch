@@ -1,0 +1,321 @@
+diff --git a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/AvatarParts.java b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/AvatarParts.java
+index 822310ff3..57208c108 100644
+--- a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/AvatarParts.java
++++ b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/AvatarParts.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.model;
+ 
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ 
+ import java.util.Arrays;
+ import java.util.List;
+diff --git a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IChestProb.java b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IChestProb.java
+index d60539c37..4d8d35332 100644
+--- a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IChestProb.java
++++ b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IChestProb.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.model;
+ 
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ 
+ /**
+  * User: flsh
+diff --git a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/gameconfig/GameTools.java b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/gameconfig/GameTools.java
+index 05c92aae4..7ab7166ba 100644
+--- a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/gameconfig/GameTools.java
++++ b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/gameconfig/GameTools.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.mp.model.gameconfig;
+ 
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.Triple;
+ 
+ import java.math.BigDecimal;
+diff --git a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/movement/PossiblePoints.java b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/movement/PossiblePoints.java
+index c0b3bc643..b343fb456 100644
+--- a/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/movement/PossiblePoints.java
++++ b/mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/movement/PossiblePoints.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.model.movement;
+ 
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;
+ import com.esotericsoftware.kryo.io.Input;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/MathData.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/MathData.java
+index 2b67604c3..60822438e 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/MathData.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/MathData.java
+@@ -3,8 +3,8 @@ package com.betsoft.casino.mp.clashofthegods.model.math;
+ import com.betsoft.casino.mp.clashofthegods.model.math.enemies.*;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+ import com.betsoft.casino.mp.model.gameconfig.GameTools;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.Triple;
++import com.abs.casino.common.util.Pair;
++import com.abs.casino.common.util.Triple;
+ import com.google.common.util.concurrent.AtomicDouble;
+ 
+ import java.util.*;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/PayTableInst.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/PayTableInst.java
+index ec1f4727d..da30b1c25 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/PayTableInst.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/PayTableInst.java
+@@ -4,8 +4,8 @@ import com.betsoft.casino.mp.clashofthegods.model.math.enemies.IEnemyData;
+ import com.betsoft.casino.mp.common.math.*;
+ import com.betsoft.casino.mp.model.GameType;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.Triple;
++import com.abs.casino.common.util.Pair;
++import com.abs.casino.common.util.Triple;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import java.util.*;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/AbstractEnemyData.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/AbstractEnemyData.java
+index f56b286ac..10b5e3caa 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/AbstractEnemyData.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/AbstractEnemyData.java
+@@ -1,8 +1,8 @@
+ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.Triple;
++import com.abs.casino.common.util.Pair;
++import com.abs.casino.common.util.Triple;
+ import java.util.HashMap;
+ import java.util.List;
+ import java.util.Map;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/BeetleOne.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/BeetleOne.java
+index c731e7128..3ece12af4 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/BeetleOne.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/BeetleOne.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ 
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/DragonFlyRed.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/DragonFlyRed.java
+index d1df85dbc..a89acba03 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/DragonFlyRed.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/DragonFlyRed.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ 
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/EvilSpiritOne.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/EvilSpiritOne.java
+index 943a8a6ff..100e2dcdc 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/EvilSpiritOne.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/EvilSpiritOne.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ 
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Lantern.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Lantern.java
+index 6b4e1956c..f2c130fb4 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Lantern.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Lantern.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ 
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/LizardOne.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/LizardOne.java
+index f69a4bcea..1bbe351f6 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/LizardOne.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/LizardOne.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ 
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Phoenix.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Phoenix.java
+index 525be5886..5ce15d1bd 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Phoenix.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Phoenix.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+ 
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Tiger.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Tiger.java
+index 6a9f19a48..06bfbd970 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Tiger.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Tiger.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ 
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/server/status/ServersStatusWatcher.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/server/status/ServersStatusWatcher.java
+index b6031c533..09cd384f7 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/server/status/ServersStatusWatcher.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/server/status/ServersStatusWatcher.java
+@@ -3,8 +3,8 @@ package com.betsoft.casino.mp.server.status;
+ import com.betsoft.casino.mp.data.service.ServerConfigService;
+ import com.betsoft.casino.mp.kafka.KafkaMessageService;
+ import com.betsoft.casino.mp.server.ServerCoordinatorInfoProvider;
+-import com.dgphoenix.casino.common.util.ApplicationContextHelper;
+-import com.dgphoenix.casino.common.util.ExecutorUtils;
++import com.abs.casino.common.util.ApplicationContextHelper;
++import com.abs.casino.common.util.ExecutorUtils;
+ 
+ import javax.annotation.PostConstruct;
+ import javax.annotation.PreDestroy;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/CheckNicknameAvailabilityHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/CheckNicknameAvailabilityHandler.java
+index c51a27e13..6b241e88b 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/CheckNicknameAvailabilityHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/CheckNicknameAvailabilityHandler.java
+@@ -9,7 +9,7 @@ import com.betsoft.casino.mp.web.handlers.MessageHandler;
+ import com.betsoft.casino.mp.web.service.LobbyManager;
+ import com.betsoft.casino.mp.web.service.NicknameService;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import com.google.gson.Gson;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/FinishGameSessionHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/FinishGameSessionHandler.java
+index f24a16aa5..e1e994bab 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/FinishGameSessionHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/FinishGameSessionHandler.java
+@@ -8,7 +8,7 @@ import com.betsoft.casino.mp.utils.ErrorCodes;
+ import com.betsoft.casino.mp.web.handlers.MessageHandler;
+ import com.betsoft.casino.mp.web.service.*;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import com.google.gson.Gson;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetBattlegroundStartGameUrlHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetBattlegroundStartGameUrlHandler.java
+index a86268c89..8510e86b0 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetBattlegroundStartGameUrlHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetBattlegroundStartGameUrlHandler.java
+@@ -11,8 +11,8 @@ import com.betsoft.casino.mp.web.IGameSocketClient;
+ import com.betsoft.casino.mp.web.service.LobbyManager;
+ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+-import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.exception.CommonException;
++import com.abs.casino.common.util.Pair;
+ import com.google.gson.Gson;
+ import com.hazelcast.core.*;
+ import com.hazelcast.core.Member;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetPrivateBattlegroundStartGameUrlHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetPrivateBattlegroundStartGameUrlHandler.java
+index 8437780d8..5c1a3b408 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetPrivateBattlegroundStartGameUrlHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetPrivateBattlegroundStartGameUrlHandler.java
+@@ -9,8 +9,8 @@ import com.betsoft.casino.mp.utils.ErrorCodes;
+ import com.betsoft.casino.mp.web.service.LobbyManager;
+ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+-import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.exception.CommonException;
++import com.abs.casino.common.util.string.StringUtils;
+ import com.google.gson.Gson;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetStartGameUrlHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetStartGameUrlHandler.java
+index db38f4fee..57bb9273b 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetStartGameUrlHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetStartGameUrlHandler.java
+@@ -9,7 +9,7 @@ import com.betsoft.casino.mp.utils.ErrorCodes;
+ import com.betsoft.casino.mp.web.service.LobbyManager;
+ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.google.gson.Gson;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SitOutTask.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SitOutTask.java
+index 4ba46a1c1..0c865407d 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SitOutTask.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SitOutTask.java
+@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.model.privateroom.Status;
+ import com.betsoft.casino.mp.model.privateroom.UpdatePrivateRoomResponse;
+ import com.betsoft.casino.mp.model.room.IRoom;
+ import com.betsoft.casino.mp.model.room.IRoomInfo;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import com.hazelcast.spring.context.SpringAware;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/AbstractWebSocketHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/AbstractWebSocketHandler.java
+index c9074106e..70e38e1e2 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/AbstractWebSocketHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/AbstractWebSocketHandler.java
+@@ -9,7 +9,7 @@ import com.betsoft.casino.utils.AESEncryptionDecryption;
+ import com.betsoft.casino.utils.ITransportObject;
+ import com.betsoft.casino.utils.TInboundObject;
+ import com.betsoft.casino.utils.TObject;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import io.netty.buffer.ByteBufAllocator;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.beans.factory.annotation.Value;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/LobbyWebSocketHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/LobbyWebSocketHandler.java
+index 57b546900..bdfa1823a 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/LobbyWebSocketHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/LobbyWebSocketHandler.java
+@@ -10,7 +10,7 @@ import com.betsoft.casino.mp.web.ILobbySocketClient;
+ import com.betsoft.casino.mp.web.IMessageSerializer;
+ import com.betsoft.casino.mp.web.handlers.lobby.*;
+ import com.betsoft.casino.utils.TObject;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.beans.factory.annotation.Autowired;
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/UnifiedWebSocketHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/UnifiedWebSocketHandler.java
+index 5aeaf12de..5f0707ce4 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/UnifiedWebSocketHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/UnifiedWebSocketHandler.java
+@@ -14,7 +14,7 @@ import com.betsoft.casino.mp.web.handlers.lobby.*;
+ import com.betsoft.casino.mp.web.service.RoomServiceFactory;
+ import com.betsoft.casino.utils.AESEncryptionDecryption;
+ import com.betsoft.casino.utils.TObject;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.beans.factory.annotation.Autowired;

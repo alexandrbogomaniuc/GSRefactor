@@ -1,0 +1,26 @@
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/AvatarParts.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/IChestProb.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/gameconfig/GameTools.java
+ M mp-server/core-interfaces/src/main/java/com/betsoft/casino/mp/model/movement/PossiblePoints.java
+ M mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/MathData.java
+ M mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/PayTableInst.java
+ M mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/AbstractEnemyData.java
+ M mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/BeetleOne.java
+ M mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/DragonFlyRed.java
+ M mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/EvilSpiritOne.java
+ M mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Lantern.java
+ M mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/LizardOne.java
+ M mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Phoenix.java
+ M mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Tiger.java
+ M mp-server/web/src/main/java/com/betsoft/casino/mp/server/status/ServersStatusWatcher.java
+ M mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/CheckNicknameAvailabilityHandler.java
+ M mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/FinishGameSessionHandler.java
+ M mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetBattlegroundStartGameUrlHandler.java
+ M mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetPrivateBattlegroundStartGameUrlHandler.java
+ M mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/lobby/GetStartGameUrlHandler.java
+ M mp-server/web/src/main/java/com/betsoft/casino/mp/web/service/SitOutTask.java
+ M mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/AbstractWebSocketHandler.java
+ M mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/LobbyWebSocketHandler.java
+ M mp-server/web/src/main/java/com/betsoft/casino/mp/web/socket/UnifiedWebSocketHandler.java
+?? .tmp-current-evidence-path-batchAA.txt
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260302-135824-hardcut-live-batchAA-mp-web-cotg-import-rewire30/

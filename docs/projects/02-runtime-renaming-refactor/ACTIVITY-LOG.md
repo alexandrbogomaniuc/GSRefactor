@@ -5067,3 +5067,17 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - ETA refresh:
   - declaration hard-cut ETA: `0.0h`
   - stabilization closure ETA: `~8-14h` (`~1.0-1.75` workdays), dominated by external STEP09 smoke environment recovery.
+
+## 2026-03-02 13:58 UTC (Hard-cut live Batch AA)
+- Pushed full pending workspace checkpoint to `origin/main` before new refactor execution:
+  - commit `23d606afe` (`chore: checkpoint all pending workspace changes`), rebased over remote `539654173`.
+- Executed batched-safe parallel import refactor in `mp-server` with explorer + two workers:
+  - Batch A (`mp-server/web`): 13 import rewires (`CommonException`, `StringUtils`, `Pair`, `ApplicationContextHelper`, `ExecutorUtils`).
+  - Batch B (`mp-server/games/clashofthegods-math`): 13 import rewires (`Pair`, `Triple`).
+  - Boundary drift fix: 4 `RNG` import rewires in `mp-server/core-interfaces`.
+- Net retained rewires: `30` declarations across `24` files.
+- Validation/evidence:
+  - module fast gates (`mp-server` targeted) fail upstream at `mp-common-games` with unresolved legacy `com.dgphoenix` imports/symbols;
+  - canonical full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL rc=2`, retry1 `rc=2` (known external smoke blocker profile).
+  - evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-135824-hardcut-live-batchAA-mp-web-cotg-import-rewire30/`.
+- Metrics unchanged for declaration burndown baseline (`2277/2277 complete`, remaining `0`); stabilization/import normalization remains in progress.

@@ -9897,3 +9897,33 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260301-115005-hardcut-live-stabilization-canonical-rerun-post-step08fix/`
 - Metrics unchanged (declarations complete): baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`.
 - ETA refresh: stabilization `~8-14h` (`~1.0-1.75` workdays).
+
+### 2026-03-02 13:47 UTC
+- User-directed checkpoint push executed for all pending `Dev_new` workspace changes.
+- Actions:
+  - staged full tree (`git add -A`), committed as `e0065bebb` (`chore: checkpoint all pending workspace changes`),
+  - push initially rejected (remote advanced), rebased onto `origin/main` (`539654173`),
+  - final push succeeded as `23d606afe` to `origin/main`.
+- Evidence:
+  - `git` logs/push output in terminal session.
+- Result:
+  - repository returned to clean tracked state on `main` before starting next hard-cut batch.
+- Next step:
+  - execute new batched-safe import refactor wave with explorer + parallel workers.
+
+### 2026-03-02 13:58 UTC
+- Continued Project 02 hard-cut post-completion stabilization in `/Users/alexb/Documents/Dev/Dev_new` with live `Batch AA` (mp import rewires).
+- Batch content:
+  - worker batchA (`mp-server/web`) rewired 13 imports to `com.abs`.
+  - worker batchB (`mp-server/games/clashofthegods-math`) rewired 13 imports to `com.abs`.
+  - integrated boundary fix rewired 4 residual `RNG` imports in `mp-server/core-interfaces`.
+  - retained total: `30` declaration rewires across `24` files.
+- Validation:
+  - targeted fast gates (`mp-server`): FAIL at `MP Common Games` due unresolved remaining legacy imports/symbols (`RNG`, `com.dgphoenix.casino.common.mp`, `ILongIdGenerator`, `TransactionErrorCodes`).
+  - canonical full matrix: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 rc=2`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-135824-hardcut-live-batchAA-mp-web-cotg-import-rewire30/`
+- Result:
+  - import migration advanced in mp-web/clashofthegods lanes; global declaration metrics remain complete (`2277/2277`).
+- Next step:
+  - continue batched `mp-common-games/core-interfaces` import normalization to recover mp fast-gate compile path.
