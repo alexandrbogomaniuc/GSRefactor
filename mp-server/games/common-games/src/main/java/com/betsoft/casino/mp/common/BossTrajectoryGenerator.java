@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.common;
 
 import com.betsoft.casino.mp.model.movement.Trajectory;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import org.kynosarges.tektosyne.geometry.PointI;
 
 public class BossTrajectoryGenerator extends TrajectoryGenerator {

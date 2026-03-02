@@ -1,7 +1,7 @@
 package com.betsoft.casino.mp.common.testmodel;
 
 import com.betsoft.casino.mp.model.IMember;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

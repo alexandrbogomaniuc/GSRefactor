@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.model.quests.*;
 import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
 import com.betsoft.casino.teststand.TestStandFeature;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 
 import java.util.ArrayList;
 import java.util.List;

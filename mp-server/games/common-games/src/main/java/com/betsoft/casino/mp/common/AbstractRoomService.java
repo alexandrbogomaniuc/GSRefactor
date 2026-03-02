@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.model.room.IRoom;
 import com.betsoft.casino.mp.model.room.IRoomInfo;
 import com.betsoft.casino.mp.service.*;
-import com.dgphoenix.casino.common.mp.TransactionErrorCodes;
+import com.abs.casino.common.mp.TransactionErrorCodes;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IExecutorService;
 import org.apache.logging.log4j.Level;

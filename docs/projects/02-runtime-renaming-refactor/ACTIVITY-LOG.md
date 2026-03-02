@@ -5081,3 +5081,16 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - canonical full matrix: `PRE01-03 PASS`, `STEP01-08 PASS`, `STEP09 FAIL rc=2`, retry1 `rc=2` (known external smoke blocker profile).
   - evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-135824-hardcut-live-batchAA-mp-web-cotg-import-rewire30/`.
 - Metrics unchanged for declaration burndown baseline (`2277/2277 complete`, remaining `0`); stabilization/import normalization remains in progress.
+
+## 2026-03-02 14:21 UTC (Hard-cut live Batch AB+AC)
+- Executed next batched-safe parallel import normalization wave in `mp-server/games/common-games` with explorer + 2 workers.
+- Batch AB (`5` files): `15` import rewires (`RNG`, `Pair`, `StringUtils`, `CommonException`, `StatisticsManager`, `TransactionErrorCodes`, `ILongIdGenerator`).
+- Batch AC (`11` files): `18` import rewires (`RNG`, `Pair`, `Triple`, `StringUtils`, `CommonException`, `StatisticsManager`, `TransactionErrorCodes`).
+- Net retained rewires: `33` declarations across `16` files (import-only).
+- Validation/evidence:
+  - targeted mp fast gates (`common-games`, `web`, `clashofthegods`) still first-fail at `mp-common-games`, but first-fail profile advanced to remaining residual files (e.g., `ShamanTrajectoryGenerator` `RNG` import still legacy).
+  - canonical full matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry rc=2`.
+  - evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-142034-hardcut-live-batchABAC-common-games-import-rewire33/`.
+- Measured progress in blocker module:
+  - `common-games` legacy imports (`^import com.dgphoenix`) reduced `88 -> 55` (delta `-33`).
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

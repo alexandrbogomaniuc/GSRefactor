@@ -9927,3 +9927,27 @@
   - import migration advanced in mp-web/clashofthegods lanes; global declaration metrics remain complete (`2277/2277`).
 - Next step:
   - continue batched `mp-common-games/core-interfaces` import normalization to recover mp fast-gate compile path.
+
+### 2026-03-02 14:21 UTC
+- Continued Project 02 stabilization with parallel live `Batch AB + Batch AC` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Changes:
+  - Batch AB rewired `15` imports in 5 `mp-common-games` files.
+  - Batch AC rewired `18` imports in 11 `mp-common-games` files.
+  - Total retained rewires: `33` across `16` files (import-only; no logic edits).
+- Validation:
+  - targeted mp fast gates:
+    - `mvn -pl games/common-games -am -DskipTests compile` -> FAIL (`mp-common-games` first-fail)
+    - `mvn -pl web -am -DskipTests compile` -> FAIL (`mp-common-games` first-fail)
+    - `mvn -pl games/clashofthegods -am -DskipTests compile` -> FAIL (`mp-common-games` first-fail)
+  - canonical full matrix:
+    - `fast_gate_batchA FAIL STEP09`
+    - `fast_gate_batchB FAIL STEP09`
+    - `prewarm PASS`
+    - `validation FAIL STEP09`
+    - `STEP09 retry1 rc=2`
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-142034-hardcut-live-batchABAC-common-games-import-rewire33/`
+- Measured movement:
+  - `mp-server/games/common-games` legacy import count reduced from `88` to `55`.
+- Next step:
+  - continue batched residual `common-games` import normalization (remaining `55`) to recover mp fast-gate compile path end-to-end.

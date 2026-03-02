@@ -1,0 +1,650 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.betsoft.casino:mp-bots:jar:1.0.0-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.springframework.boot:spring-boot-maven-plugin is missing. @ line 236, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project com.betsoft.casino:mp-casino:pom:1.0.0-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Tektosyne                                                          [jar]
+[INFO] mp-casino                                                          [pom]
+[INFO] Casino MP Games core interfaces                                    [jar]
+[INFO] Casino MP Games                                                    [pom]
+[INFO] MP Common Games                                                    [jar]
+[INFO] Max Quest: Crash. Math model                                       [jar]
+[INFO] Max Quest: Crash                                                   [jar]
+[INFO] Max Quest: Max Blast Champions Model data                          [jar]
+[INFO] Max Quest: Max Blast Champions                                     [jar]
+[INFO] Casino MP Games core                                               [jar]
+[INFO] Pirates math model                                                 [jar]
+[INFO] Pirates: Dead Mans Cove                                            [jar]
+[INFO] Max Quest: Amazon. Math model                                      [jar]
+[INFO] Max Quest: Amazon                                                  [jar]
+[INFO] Pirates common math model                                          [jar]
+[INFO] Pirates: POV                                                       [jar]
+[INFO] Pirates: DMC                                                       [jar]
+[INFO] MQ: Revenge of Ra. Math model                                      [jar]
+[INFO] MQ: Revenge of Ra                                                  [jar]
+[INFO] Max Quest: Dragonstone. Math model                                 [jar]
+[INFO] Max Quest: Dragonstone                                             [jar]
+[INFO] Max Quest: Clash of the Gods. Math model                           [jar]
+[INFO] Max Quest: Clash of the Gods                                       [jar]
+[INFO] Max Quest: BG Dragonstone. Math model                              [jar]
+[INFO] Max Quest: BG Dragonstone                                          [jar]
+[INFO] Max Quest: Mission Amazon. Math model                              [jar]
+[INFO] Max Quest: Mission Amazon                                          [jar]
+[INFO] BG Max Quest: Mission Amazon. Math model                           [jar]
+[INFO] BG Max Quest: Mission Amazon                                       [jar]
+[INFO] Max Quest: Sector X. Math model                                    [jar]
+[INFO] Max Quest: Sector X                                                [jar]
+[INFO] BG Max Quest: Sector X. Math model                                 [jar]
+[INFO] BG Max Quest: Sector X                                             [jar]
+[INFO] Casino MP Games persistance layer                                  [jar]
+[INFO] Kafka interfaces                                                   [jar]
+[INFO] mp-bots                                                            [jar]
+[INFO] Casino MP Games Web                                                [war]
+[INFO] 
+[INFO] ----------------------< org.kynosarges:tektosyne >----------------------
+[INFO] Building Tektosyne 6.0.1-BSG                                      [1/37]
+[INFO]   from tektosyne/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ tektosyne ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/tektosyne/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ tektosyne ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 62 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/tektosyne/target/classes
+[INFO] 
+[INFO] --------------------< com.betsoft.casino:mp-casino >--------------------
+[INFO] Building mp-casino 1.0.0-SNAPSHOT                                 [2/37]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:core-interfaces >----------------
+[INFO] Building Casino MP Games core interfaces 1.0.0-SNAPSHOT           [3/37]
+[INFO]   from core-interfaces/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ core-interfaces ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ core-interfaces ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --------------------< com.betsoft.casino.mp:games >---------------------
+[INFO] Building Casino MP Games 1.0.0-SNAPSHOT                           [4/37]
+[INFO]   from games/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:mp-common-games >----------------
+[INFO] Building MP Common Games 1.0.0-SNAPSHOT                           [5/37]
+[INFO]   from games/common-games/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ mp-common-games ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 100 resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ mp-common-games ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 152 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/target/classes
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java: Some input files use or override a deprecated API.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java: Recompile with -Xlint:deprecation for details.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractEnemy.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractEnemy.java: Recompile with -Xlint:unchecked for details.
+[INFO] Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShamanTrajectoryGenerator.java:[7,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractEnemyGame.java:[9,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/WeaponCarrierTrajectoryGenerator.java:[5,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalSwarmTrajectoryGenerator.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubCurrency.java:[4,1] a type with the same simple name is already defined by the single-type-import of com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalTrajectoryGenerator.java:[5,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/TrajectoryGenerator3D.java:[8,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[3,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SpiderSwarmAngleTrajectoryGenerator.java:[5,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/HorusTrajectoryGenerator.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[3,40] cannot find symbol
+  symbol:   class ISequencer
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[4,40] cannot find symbol
+  symbol:   class ISequencerPersister
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[10,48] cannot find symbol
+  symbol: class ISequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[12,12] cannot find symbol
+  symbol:   class ISequencer
+  location: class com.betsoft.casino.mp.common.testmodel.StubSequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[54,39] cannot find symbol
+  symbol:   class ISequencer
+  location: class com.betsoft.casino.mp.common.testmodel.StubSequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[54,12] cannot find symbol
+  symbol:   class ISequencer
+  location: class com.betsoft.casino.mp.common.testmodel.StubSequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SwarmTrajectoryGenerator.java:[9,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/GargoyleTrajectoryGenerator.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/DualSpeedTrajectoryGenerator.java:[3,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameMap.java:[9,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[15,40] cannot find symbol
+  symbol:   class LongIdGenerator
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubFreeShots.java:[5,61] package com.dgphoenix.casino.gs.singlegames.tools.cbservtools does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubFreeShots.java:[95,41] cannot find symbol
+  symbol:   class CBGameException
+  location: class com.betsoft.casino.mp.common.testmodel.StubFreeShots
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/RushTrajectoryGenerator3D.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/SwarmTrajectoryGenerator3D.java:[7,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/WizardTrajectoryGenerator.java:[5,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TeleportTrajectoryGenerator.java:[6,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayerRoundInfo.java:[168,59] getAdditionalWins() in com.betsoft.casino.mp.common.AbstractPlayerRoundInfo cannot implement getAdditionalWins() in com.betsoft.casino.mp.model.IPlayerRoundInfo
+  return type java.util.Map<java.lang.String,com.abs.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>> is not compatible with java.util.Map<java.lang.String,com.dgphoenix.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayerRoundInfo.java:[712,65] incompatible types: com.dgphoenix.casino.common.util.Pair<java.lang.String,java.lang.Double> cannot be converted to com.abs.casino.common.util.Pair<java.lang.String,java.lang.Double>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGamePlayerRoundInfo.java:[22,17] getAdditionalWins() in com.betsoft.casino.mp.common.AbstractPlayerRoundInfo cannot implement getAdditionalWins() in com.betsoft.casino.mp.model.IPlayerRoundInfo
+  return type java.util.Map<java.lang.String,com.abs.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>> is not compatible with java.util.Map<java.lang.String,com.dgphoenix.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[136,17] update() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement update() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[119,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[84,17] init() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement init() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[33,17] update() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement update() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[67,17] init() in com.betsoft.casino.mp.common.AbstractActionPlayGameState cannot override init() in com.betsoft.casino.mp.common.AbstractPlayGameState
+  overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[79,20] initSeats() in com.betsoft.casino.mp.common.AbstractActionPlayGameState cannot override initSeats() in com.betsoft.casino.mp.common.AbstractPlayGameState
+  overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[94,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractActionPlayGameState cannot override restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractPlayGameState
+  overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2934,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2903,17] changeTournamentState(com.betsoft.casino.mp.model.ITournamentSession) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement changeTournamentState(com.betsoft.casino.mp.model.ITournamentSession) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2876,17] changeFRBBonusStatus(com.betsoft.casino.mp.model.IActiveFrbSession) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement changeFRBBonusStatus(com.betsoft.casino.mp.model.IActiveFrbSession) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2845,17] changeBonusStatus(com.betsoft.casino.mp.model.IActiveCashBonusSession) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement changeBonusStatus(com.betsoft.casino.mp.model.IActiveCashBonusSession) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2684,17] setGameState(com.betsoft.casino.mp.model.IGameState) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement setGameState(com.betsoft.casino.mp.model.IGameState<?,?,?,?>) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2664,17] setTimerTime(long) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement setTimerTime(long) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2601,17] stopTimer() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement stopTimer() in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2596,17] startTimer() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement startTimer() in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2591,17] restartTimer() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement restartTimer() in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2248,17] processCloseRoom(long) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processCloseRoom(long) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2228,17] processCloseRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ICloseRoom) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processCloseRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ICloseRoom) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2132,29] processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[792,17] processSitOut(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,long,boolean) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processSitOut(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,long,boolean) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[738,17] tryReconnect(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement tryReconnect(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[577,20] shutdownRoomIfEmpty() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement shutdownRoomIfEmpty() in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[331,21] shutdown() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement shutdown() in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[298,17] start() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement start() in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[639,94] incompatible types: java.util.List<com.abs.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeGameRoom.java:[26,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java:[39,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java:[86,20] finishSitIn(SEAT) in com.betsoft.casino.mp.common.AbstractActionGameRoom cannot override finishSitIn(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom
+  overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java:[1084,20] convertBulletsForCashBonusSeat(SEAT,com.betsoft.casino.mp.model.IActiveCashBonusSession,com.betsoft.casino.mp.model.Money,com.betsoft.casino.mp.model.Money,com.betsoft.casino.mp.model.IPlayerProfile,com.betsoft.casino.mp.model.IPlayerBet,com.betsoft.casino.mp.model.IRoomPlayerInfo,com.betsoft.casino.mp.web.IGameSocketClient,long,java.util.Set<SEAT>,java.lang.String,java.util.concurrent.CountDownLatch) in com.betsoft.casino.mp.common.AbstractActionGameRoom cannot override convertBulletsForCashBonusSeat(SEAT,com.betsoft.casino.mp.model.IActiveCashBonusSession,com.betsoft.casino.mp.model.Money,com.betsoft.casino.mp.model.Money,com.betsoft.casino.mp.model.IPlayerProfile,com.betsoft.casino.mp.model.IPlayerBet,com.betsoft.casino.mp.model.IRoomPlayerInfo,com.betsoft.casino.mp.web.IGameSocketClient,long,java.util.Set<SEAT>,java.lang.String,java.util.concurrent.CountDownLatch) in com.betsoft.casino.mp.common.AbstractGameRoom
+  overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java:[1243,20] processSitOutForNonFrbMode(SEAT,int,com.betsoft.casino.mp.model.IActiveCashBonusSession,boolean,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,int,int,com.betsoft.casino.mp.model.ITournamentSession,long) in com.betsoft.casino.mp.common.AbstractActionGameRoom cannot override processSitOutForNonFrbMode(SEAT,int,com.betsoft.casino.mp.model.IActiveCashBonusSession,boolean,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,int,int,com.betsoft.casino.mp.model.ITournamentSession,long) in com.betsoft.casino.mp.common.AbstractGameRoom
+  overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java:[33,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java:[84,17] tryReconnect(SEAT) in com.betsoft.casino.mp.common.AbstractMultiNodeGameRoom cannot override tryReconnect(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom
+  overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java:[633,20] processSitOutForNonFrbMode(SEAT,int,com.betsoft.casino.mp.model.IActiveCashBonusSession,boolean,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,int,int,com.betsoft.casino.mp.model.ITournamentSession,long) in com.betsoft.casino.mp.common.AbstractMultiNodeGameRoom cannot override processSitOutForNonFrbMode(SEAT,int,com.betsoft.casino.mp.model.IActiveCashBonusSession,boolean,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,int,int,com.betsoft.casino.mp.model.ITournamentSession,long) in com.betsoft.casino.mp.common.AbstractGameRoom
+  overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundPlayGameState.java:[14,17] update() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement update() in com.betsoft.casino.mp.model.IGameState
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundPlayGameState.java:[22,20] initSeats() in com.betsoft.casino.mp.common.AbstractBattlegroundPlayGameState cannot override initSeats() in com.betsoft.casino.mp.common.AbstractPlayGameState
+  overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[44,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1851,17] setGameState(com.betsoft.casino.mp.model.IGameState) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement setGameState(com.betsoft.casino.mp.model.IGameState<?,?,?,?>) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1614,33] getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[2025,29] processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1809,16] processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.model.room.IRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1052,20] innerProcessShot(SEAT,com.betsoft.casino.mp.model.IShot,boolean) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot override innerProcessShot(SEAT,com.betsoft.casino.mp.model.IShot,boolean) in com.betsoft.casino.mp.common.AbstractActionGameRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1154,111] incompatible types: java.util.List<com.abs.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1242,20] processSitOutForNonFrbMode(SEAT,int,com.betsoft.casino.mp.model.IActiveCashBonusSession,boolean,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,int,int,com.betsoft.casino.mp.model.ITournamentSession,long) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot override processSitOutForNonFrbMode(SEAT,int,com.betsoft.casino.mp.model.IActiveCashBonusSession,boolean,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,int,int,com.betsoft.casino.mp.model.ITournamentSession,long) in com.betsoft.casino.mp.common.AbstractActionGameRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1343,20] handleCloseGameSessionError(SEAT,com.betsoft.casino.mp.model.IRoomPlayerInfo,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,com.betsoft.casino.mp.web.IGameSocketClient,int,int) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot override handleCloseGameSessionError(SEAT,com.betsoft.casino.mp.model.IRoomPlayerInfo,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,com.betsoft.casino.mp.web.IGameSocketClient,int,int) in com.betsoft.casino.mp.common.AbstractActionGameRoom
+  overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShamanTrajectoryGenerator.java:[61,21] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.ShamanTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShamanTrajectoryGenerator.java:[62,21] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.ShamanTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[22,49] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.TrajectoryUtils
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[23,49] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.TrajectoryUtils
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[27,36] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.TrajectoryUtils
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[43,68] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.TrajectoryUtils
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[44,68] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.TrajectoryUtils
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[48,36] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.TrajectoryUtils
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/WeaponCarrierTrajectoryGenerator.java:[46,41] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.WeaponCarrierTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/WeaponCarrierTrajectoryGenerator.java:[49,41] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.WeaponCarrierTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalSwarmTrajectoryGenerator.java:[27,36] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.PortalSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubCurrency.java:[6,8] com.betsoft.casino.mp.common.testmodel.StubCurrency is not abstract and does not override abstract method isDefault(long) in com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalTrajectoryGenerator.java:[44,21] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.PortalTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalTrajectoryGenerator.java:[45,21] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.PortalTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/TrajectoryGenerator3D.java:[136,36] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.movement.generators.TrajectoryGenerator3D
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/TrajectoryGenerator3D.java:[185,29] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.movement.generators.TrajectoryGenerator3D
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[230,55] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.MaxCrashData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[237,40] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.MaxCrashData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[248,33] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.MaxCrashData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[253,12] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.MaxCrashData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[255,24] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.MaxCrashData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[258,24] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.MaxCrashData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[262,38] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.common.MaxCrashData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SpiderSwarmAngleTrajectoryGenerator.java:[29,24] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.movement.SpiderSwarmAngleTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SpiderSwarmAngleTrajectoryGenerator.java:[51,16] cannot find symbol
+  symbol:   variable RNG
+  location: class com.betsoft.casino.mp.movement.SpiderSwarmAngleTrajectoryGenerator
+[INFO] 100 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Tektosyne 6.0.1-BSG ................................ SUCCESS [  0.964 s]
+[INFO] mp-casino 1.0.0-SNAPSHOT ........................... SUCCESS [  0.000 s]
+[INFO] Casino MP Games core interfaces 1.0.0-SNAPSHOT ..... SUCCESS [  0.214 s]
+[INFO] Casino MP Games 1.0.0-SNAPSHOT ..................... SUCCESS [  0.000 s]
+[INFO] MP Common Games 1.0.0-SNAPSHOT ..................... FAILURE [  1.559 s]
+[INFO] Max Quest: Crash. Math model 1.0.0-SNAPSHOT ........ SKIPPED
+[INFO] Max Quest: Crash 1.0.0-SNAPSHOT .................... SKIPPED
+[INFO] Max Quest: Max Blast Champions Model data 1.0.0-SNAPSHOT SKIPPED
+[INFO] Max Quest: Max Blast Champions 1.0.0-SNAPSHOT ...... SKIPPED
+[INFO] Casino MP Games core 1.0.0-SNAPSHOT ................ SKIPPED
+[INFO] Pirates math model 1.0.0-SNAPSHOT .................. SKIPPED
+[INFO] Pirates: Dead Mans Cove 1.0.0-SNAPSHOT ............. SKIPPED
+[INFO] Max Quest: Amazon. Math model 1.0.0-SNAPSHOT ....... SKIPPED
+[INFO] Max Quest: Amazon 1.0.0-SNAPSHOT ................... SKIPPED
+[INFO] Pirates common math model 1.0.0-SNAPSHOT ........... SKIPPED
+[INFO] Pirates: POV 1.0.0-SNAPSHOT ........................ SKIPPED
+[INFO] Pirates: DMC 1.0.0-SNAPSHOT ........................ SKIPPED
+[INFO] MQ: Revenge of Ra. Math model 1.0.0-SNAPSHOT ....... SKIPPED
+[INFO] MQ: Revenge of Ra 1.0.0-SNAPSHOT ................... SKIPPED
+[INFO] Max Quest: Dragonstone. Math model 1.0.0-SNAPSHOT .. SKIPPED
+[INFO] Max Quest: Dragonstone 1.0.0-SNAPSHOT .............. SKIPPED
+[INFO] Max Quest: Clash of the Gods. Math model 1.0.0-SNAPSHOT SKIPPED
+[INFO] Max Quest: Clash of the Gods 1.0.0-SNAPSHOT ........ SKIPPED
+[INFO] Max Quest: BG Dragonstone. Math model 1.0.0-SNAPSHOT SKIPPED
+[INFO] Max Quest: BG Dragonstone 1.0.0-SNAPSHOT ........... SKIPPED
+[INFO] Max Quest: Mission Amazon. Math model 1.0.0-SNAPSHOT SKIPPED
+[INFO] Max Quest: Mission Amazon 1.0.0-SNAPSHOT ........... SKIPPED
+[INFO] BG Max Quest: Mission Amazon. Math model 1.0.0-SNAPSHOT SKIPPED
+[INFO] BG Max Quest: Mission Amazon 1.0.0-SNAPSHOT ........ SKIPPED
+[INFO] Max Quest: Sector X. Math model 1.0.0-SNAPSHOT ..... SKIPPED
+[INFO] Max Quest: Sector X 1.0.0-SNAPSHOT ................. SKIPPED
+[INFO] BG Max Quest: Sector X. Math model 1.0.0-SNAPSHOT .. SKIPPED
+[INFO] BG Max Quest: Sector X 1.0.0-SNAPSHOT .............. SKIPPED
+[INFO] Casino MP Games persistance layer 1.0.0-SNAPSHOT ... SKIPPED
+[INFO] Kafka interfaces 1.0.0-SNAPSHOT .................... SKIPPED
+[INFO] mp-bots 1.0.0-SNAPSHOT ............................. SKIPPED
+[INFO] Casino MP Games Web 1.0.0-SNAPSHOT ................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.956 s
+[INFO] Finished at: 2026-03-02T14:21:19Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project mp-common-games: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShamanTrajectoryGenerator.java:[7,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractEnemyGame.java:[9,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/WeaponCarrierTrajectoryGenerator.java:[5,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalSwarmTrajectoryGenerator.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubCurrency.java:[4,1] a type with the same simple name is already defined by the single-type-import of com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalTrajectoryGenerator.java:[5,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/TrajectoryGenerator3D.java:[8,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[3,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SpiderSwarmAngleTrajectoryGenerator.java:[5,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/HorusTrajectoryGenerator.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[3,40] cannot find symbol
+[ERROR]   symbol:   class ISequencer
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[4,40] cannot find symbol
+[ERROR]   symbol:   class ISequencerPersister
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[10,48] cannot find symbol
+[ERROR]   symbol: class ISequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[12,12] cannot find symbol
+[ERROR]   symbol:   class ISequencer
+[ERROR]   location: class com.betsoft.casino.mp.common.testmodel.StubSequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[54,39] cannot find symbol
+[ERROR]   symbol:   class ISequencer
+[ERROR]   location: class com.betsoft.casino.mp.common.testmodel.StubSequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[54,12] cannot find symbol
+[ERROR]   symbol:   class ISequencer
+[ERROR]   location: class com.betsoft.casino.mp.common.testmodel.StubSequencerPersister
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SwarmTrajectoryGenerator.java:[9,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/GargoyleTrajectoryGenerator.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/DualSpeedTrajectoryGenerator.java:[3,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameMap.java:[9,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/TestApplicationContext.java:[15,40] cannot find symbol
+[ERROR]   symbol:   class LongIdGenerator
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubFreeShots.java:[5,61] package com.dgphoenix.casino.gs.singlegames.tools.cbservtools does not exist
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubFreeShots.java:[95,41] cannot find symbol
+[ERROR]   symbol:   class CBGameException
+[ERROR]   location: class com.betsoft.casino.mp.common.testmodel.StubFreeShots
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/RushTrajectoryGenerator3D.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/SwarmTrajectoryGenerator3D.java:[7,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/WizardTrajectoryGenerator.java:[5,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TeleportTrajectoryGenerator.java:[6,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayerRoundInfo.java:[168,59] getAdditionalWins() in com.betsoft.casino.mp.common.AbstractPlayerRoundInfo cannot implement getAdditionalWins() in com.betsoft.casino.mp.model.IPlayerRoundInfo
+[ERROR]   return type java.util.Map<java.lang.String,com.abs.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>> is not compatible with java.util.Map<java.lang.String,com.dgphoenix.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayerRoundInfo.java:[712,65] incompatible types: com.dgphoenix.casino.common.util.Pair<java.lang.String,java.lang.Double> cannot be converted to com.abs.casino.common.util.Pair<java.lang.String,java.lang.Double>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGamePlayerRoundInfo.java:[22,17] getAdditionalWins() in com.betsoft.casino.mp.common.AbstractPlayerRoundInfo cannot implement getAdditionalWins() in com.betsoft.casino.mp.model.IPlayerRoundInfo
+[ERROR]   return type java.util.Map<java.lang.String,com.abs.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>> is not compatible with java.util.Map<java.lang.String,com.dgphoenix.casino.common.util.Pair<java.util.concurrent.atomic.AtomicInteger,com.google.common.util.concurrent.AtomicDouble>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[136,17] update() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement update() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[119,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java:[84,17] init() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement init() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[33,17] update() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement update() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[67,17] init() in com.betsoft.casino.mp.common.AbstractActionPlayGameState cannot override init() in com.betsoft.casino.mp.common.AbstractPlayGameState
+[ERROR]   overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[79,20] initSeats() in com.betsoft.casino.mp.common.AbstractActionPlayGameState cannot override initSeats() in com.betsoft.casino.mp.common.AbstractPlayGameState
+[ERROR]   overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java:[94,17] restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractActionPlayGameState cannot override restoreGameRoom(GAMEROOM) in com.betsoft.casino.mp.common.AbstractPlayGameState
+[ERROR]   overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2934,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2903,17] changeTournamentState(com.betsoft.casino.mp.model.ITournamentSession) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement changeTournamentState(com.betsoft.casino.mp.model.ITournamentSession) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2876,17] changeFRBBonusStatus(com.betsoft.casino.mp.model.IActiveFrbSession) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement changeFRBBonusStatus(com.betsoft.casino.mp.model.IActiveFrbSession) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2845,17] changeBonusStatus(com.betsoft.casino.mp.model.IActiveCashBonusSession) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement changeBonusStatus(com.betsoft.casino.mp.model.IActiveCashBonusSession) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2684,17] setGameState(com.betsoft.casino.mp.model.IGameState) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement setGameState(com.betsoft.casino.mp.model.IGameState<?,?,?,?>) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2664,17] setTimerTime(long) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement setTimerTime(long) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2601,17] stopTimer() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement stopTimer() in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2596,17] startTimer() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement startTimer() in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2591,17] restartTimer() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement restartTimer() in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2248,17] processCloseRoom(long) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processCloseRoom(long) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2228,17] processCloseRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ICloseRoom) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processCloseRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ICloseRoom) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[2132,29] processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[792,17] processSitOut(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,long,boolean) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement processSitOut(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,long,boolean) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[738,17] tryReconnect(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement tryReconnect(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[577,20] shutdownRoomIfEmpty() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement shutdownRoomIfEmpty() in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[331,21] shutdown() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement shutdown() in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[298,17] start() in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement start() in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java:[639,94] incompatible types: java.util.List<com.abs.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractSingleNodeGameRoom.java:[26,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java:[39,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java:[86,20] finishSitIn(SEAT) in com.betsoft.casino.mp.common.AbstractActionGameRoom cannot override finishSitIn(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom
+[ERROR]   overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java:[1084,20] convertBulletsForCashBonusSeat(SEAT,com.betsoft.casino.mp.model.IActiveCashBonusSession,com.betsoft.casino.mp.model.Money,com.betsoft.casino.mp.model.Money,com.betsoft.casino.mp.model.IPlayerProfile,com.betsoft.casino.mp.model.IPlayerBet,com.betsoft.casino.mp.model.IRoomPlayerInfo,com.betsoft.casino.mp.web.IGameSocketClient,long,java.util.Set<SEAT>,java.lang.String,java.util.concurrent.CountDownLatch) in com.betsoft.casino.mp.common.AbstractActionGameRoom cannot override convertBulletsForCashBonusSeat(SEAT,com.betsoft.casino.mp.model.IActiveCashBonusSession,com.betsoft.casino.mp.model.Money,com.betsoft.casino.mp.model.Money,com.betsoft.casino.mp.model.IPlayerProfile,com.betsoft.casino.mp.model.IPlayerBet,com.betsoft.casino.mp.model.IRoomPlayerInfo,com.betsoft.casino.mp.web.IGameSocketClient,long,java.util.Set<SEAT>,java.lang.String,java.util.concurrent.CountDownLatch) in com.betsoft.casino.mp.common.AbstractGameRoom
+[ERROR]   overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java:[1243,20] processSitOutForNonFrbMode(SEAT,int,com.betsoft.casino.mp.model.IActiveCashBonusSession,boolean,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,int,int,com.betsoft.casino.mp.model.ITournamentSession,long) in com.betsoft.casino.mp.common.AbstractActionGameRoom cannot override processSitOutForNonFrbMode(SEAT,int,com.betsoft.casino.mp.model.IActiveCashBonusSession,boolean,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,int,int,com.betsoft.casino.mp.model.ITournamentSession,long) in com.betsoft.casino.mp.common.AbstractGameRoom
+[ERROR]   overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java:[33,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java:[84,17] tryReconnect(SEAT) in com.betsoft.casino.mp.common.AbstractMultiNodeGameRoom cannot override tryReconnect(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom
+[ERROR]   overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java:[633,20] processSitOutForNonFrbMode(SEAT,int,com.betsoft.casino.mp.model.IActiveCashBonusSession,boolean,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,int,int,com.betsoft.casino.mp.model.ITournamentSession,long) in com.betsoft.casino.mp.common.AbstractMultiNodeGameRoom cannot override processSitOutForNonFrbMode(SEAT,int,com.betsoft.casino.mp.model.IActiveCashBonusSession,boolean,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,int,int,com.betsoft.casino.mp.model.ITournamentSession,long) in com.betsoft.casino.mp.common.AbstractGameRoom
+[ERROR]   overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundPlayGameState.java:[14,17] update() in com.betsoft.casino.mp.common.AbstractPlayGameState cannot implement update() in com.betsoft.casino.mp.model.IGameState
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundPlayGameState.java:[22,20] initSeats() in com.betsoft.casino.mp.common.AbstractBattlegroundPlayGameState cannot override initSeats() in com.betsoft.casino.mp.common.AbstractPlayGameState
+[ERROR]   overridden method does not throw com.dgphoenix.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[44,17] fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.common.AbstractGameRoom cannot implement fireReBuyAccepted(SEAT) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1851,17] setGameState(com.betsoft.casino.mp.model.IGameState) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement setGameState(com.betsoft.casino.mp.model.IGameState<?,?,?,?>) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1614,33] getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement getRoomInfoResponse(int,com.betsoft.casino.mp.web.IGameSocketClient,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[2025,29] processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement processOpenRoom(com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.IOpenRoom,java.lang.String) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1809,16] processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot implement processSitIn(SEAT,com.betsoft.casino.mp.model.ISitIn) in com.betsoft.casino.mp.model.room.IRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1052,20] innerProcessShot(SEAT,com.betsoft.casino.mp.model.IShot,boolean) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot override innerProcessShot(SEAT,com.betsoft.casino.mp.model.IShot,boolean) in com.betsoft.casino.mp.common.AbstractActionGameRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1154,111] incompatible types: java.util.List<com.abs.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>> cannot be converted to java.util.List<com.dgphoenix.casino.common.util.Pair<com.betsoft.casino.mp.model.ISeat,com.betsoft.casino.mp.model.IRoundResult>>
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1242,20] processSitOutForNonFrbMode(SEAT,int,com.betsoft.casino.mp.model.IActiveCashBonusSession,boolean,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,int,int,com.betsoft.casino.mp.model.ITournamentSession,long) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot override processSitOutForNonFrbMode(SEAT,int,com.betsoft.casino.mp.model.IActiveCashBonusSession,boolean,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,int,int,int,com.betsoft.casino.mp.model.ITournamentSession,long) in com.betsoft.casino.mp.common.AbstractActionGameRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java:[1343,20] handleCloseGameSessionError(SEAT,com.betsoft.casino.mp.model.IRoomPlayerInfo,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,com.betsoft.casino.mp.web.IGameSocketClient,int,int) in com.betsoft.casino.mp.common.AbstractBattlegroundGameRoom cannot override handleCloseGameSessionError(SEAT,com.betsoft.casino.mp.model.IRoomPlayerInfo,com.betsoft.casino.mp.web.IGameSocketClient,com.betsoft.casino.mp.model.ISitOut,com.betsoft.casino.mp.web.IGameSocketClient,int,int) in com.betsoft.casino.mp.common.AbstractActionGameRoom
+[ERROR]   overridden method does not throw com.abs.casino.common.exception.CommonException
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShamanTrajectoryGenerator.java:[61,21] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.ShamanTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShamanTrajectoryGenerator.java:[62,21] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.ShamanTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[22,49] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.TrajectoryUtils
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[23,49] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.TrajectoryUtils
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[27,36] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.TrajectoryUtils
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[43,68] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.TrajectoryUtils
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[44,68] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.TrajectoryUtils
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java:[48,36] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.TrajectoryUtils
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/WeaponCarrierTrajectoryGenerator.java:[46,41] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.WeaponCarrierTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/WeaponCarrierTrajectoryGenerator.java:[49,41] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.WeaponCarrierTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalSwarmTrajectoryGenerator.java:[27,36] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.PortalSwarmTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubCurrency.java:[6,8] com.betsoft.casino.mp.common.testmodel.StubCurrency is not abstract and does not override abstract method isDefault(long) in com.abs.casino.common.cache.data.currency.ICurrency
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalTrajectoryGenerator.java:[44,21] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.PortalTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalTrajectoryGenerator.java:[45,21] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.PortalTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/TrajectoryGenerator3D.java:[136,36] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.movement.generators.TrajectoryGenerator3D
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/TrajectoryGenerator3D.java:[185,29] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.movement.generators.TrajectoryGenerator3D
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[230,55] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.MaxCrashData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[237,40] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.MaxCrashData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[248,33] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.MaxCrashData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[253,12] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.MaxCrashData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[255,24] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.MaxCrashData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[258,24] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.MaxCrashData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java:[262,38] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.common.MaxCrashData
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SpiderSwarmAngleTrajectoryGenerator.java:[29,24] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.movement.SpiderSwarmAngleTrajectoryGenerator
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SpiderSwarmAngleTrajectoryGenerator.java:[51,16] cannot find symbol
+[ERROR]   symbol:   variable RNG
+[ERROR]   location: class com.betsoft.casino.mp.movement.SpiderSwarmAngleTrajectoryGenerator
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :mp-common-games

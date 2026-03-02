@@ -1,0 +1,16 @@
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractBattlegroundGameRoom.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameRoom.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayGameState.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractPlayerRoundInfo.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractQuestManager.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractRoomService.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/BossTrajectoryGenerator.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/BullBossTrajectoryGenerator.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/FreeAngleTrajectoryGenerator.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/GameMapStore.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/JumpTrajectoryGenerator.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MinStepTrajectoryGenerator.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/RatSwarmTrajectoryGenerator.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryGenerator.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubMember.java
+mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/BezierCurveGenerator.java
