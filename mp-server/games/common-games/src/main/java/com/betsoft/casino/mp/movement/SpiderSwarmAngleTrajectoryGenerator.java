@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.movement;
 
 import com.betsoft.casino.mp.model.movement.Point;
 import com.betsoft.casino.mp.model.movement.Trajectory;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 
 import java.util.ArrayList;
 import java.util.List;

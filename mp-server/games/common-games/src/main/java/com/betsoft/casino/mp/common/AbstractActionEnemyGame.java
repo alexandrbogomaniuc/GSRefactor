@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
 import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.service.IGameConfigService;
 import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Map;

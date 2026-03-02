@@ -9951,3 +9951,28 @@
   - `mp-server/games/common-games` legacy import count reduced from `88` to `55`.
 - Next step:
   - continue batched residual `common-games` import normalization (remaining `55`) to recover mp fast-gate compile path end-to-end.
+
+### 2026-03-02 14:47 UTC
+- Continued Project 02 stabilization with live `Batch AD + Batch AE` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Changes:
+  - Batch AD rewired `16` imports in 8 files.
+  - Batch AE rewired `17` imports in 16 files.
+  - Total retained rewires: `33` across `24` files (import-only).
+- Validation:
+  - targeted mp fast gates:
+    - `mvn -pl games/common-games -am -DskipTests compile` -> FAIL (`mp-common-games` first-fail)
+    - `mvn -pl web -am -DskipTests compile` -> FAIL (`mp-common-games` first-fail)
+    - `mvn -pl games/clashofthegods -am -DskipTests compile` -> FAIL (`mp-common-games` first-fail)
+  - first-fail signature narrowed to residual issues (`StubCurrency` import collision and `StubSequencerPersister` unresolved symbols).
+  - canonical full matrix:
+    - `fast_gate_batchA FAIL STEP09`
+    - `fast_gate_batchB FAIL STEP09`
+    - `prewarm PASS`
+    - `validation FAIL STEP09`
+    - `STEP09 retry1 rc=2`
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-143929-hardcut-live-batchADAE-common-games-import-rewire33/`
+- Measured movement:
+  - `common-games` legacy imports reduced from `55` to `22`.
+- Next step:
+  - execute next bounded batch on the final `22` `common-games` legacy imports, then re-run fast gates and full matrix before push.

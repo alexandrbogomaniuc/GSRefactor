@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.model.IGameMapShape;
 import com.betsoft.casino.mp.model.movement.Trajectory;
 import com.betsoft.casino.mp.movement.common.Offset;
 import com.betsoft.casino.mp.movement.common.Step;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import org.kynosarges.tektosyne.geometry.PointI;
 
 import java.util.ArrayList;

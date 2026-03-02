@@ -1,0 +1,38 @@
+batchADAE fast-gate status
+timestamp_utc=2026-03-02T14:50:02Z
+
+1) common-games command: FAIL
+first_failing_module: MP Common Games 1.0.0-SNAPSHOT
+key_first_failure_lines:
+  [ERROR] COMPILATION ERROR : 
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubCurrency.java:[4,1] a type with the same simple name is already defined by the single-type-import of com.abs.casino.common.cache.data.currency.ICurrency
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[3,40] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[4,40] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[10,48] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[12,12] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[54,39] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[54,12] cannot find symbol
+
+2) web command: FAIL
+first_failing_module: MP Common Games 1.0.0-SNAPSHOT
+key_first_failure_lines:
+  [ERROR] COMPILATION ERROR : 
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubCurrency.java:[4,1] a type with the same simple name is already defined by the single-type-import of com.abs.casino.common.cache.data.currency.ICurrency
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[3,40] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[4,40] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[10,48] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[12,12] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[54,39] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[54,12] cannot find symbol
+
+3) clashofthegods command: FAIL
+first_failing_module: MP Common Games 1.0.0-SNAPSHOT
+key_first_failure_lines:
+  [ERROR] COMPILATION ERROR : 
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubCurrency.java:[4,1] a type with the same simple name is already defined by the single-type-import of com.abs.casino.common.cache.data.currency.ICurrency
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[3,40] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[4,40] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[10,48] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[12,12] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[54,39] cannot find symbol
+  [ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/testmodel/StubSequencerPersister.java:[54,12] cannot find symbol

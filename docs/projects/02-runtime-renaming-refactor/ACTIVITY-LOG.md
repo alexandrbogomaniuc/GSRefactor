@@ -5094,3 +5094,17 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured progress in blocker module:
   - `common-games` legacy imports (`^import com.dgphoenix`) reduced `88 -> 55` (delta `-33`).
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 14:47 UTC (Hard-cut live Batch AD+AE)
+- Executed another parallel import-only wave in `mp-server/games/common-games` after Batch AB+AC.
+- Batch AD (`8` files): `16` import rewires.
+- Batch AE (`16` files): `17` import rewires.
+- Net retained rewires: `33` declarations across `24` files.
+- Validation/evidence:
+  - targeted fast gates (`common-games`, `web`, `clashofthegods`) still first-fail at `mp-common-games`.
+  - first-fail profile narrowed from broad RNG legacy set to residual hotspots (`StubCurrency` import collision + `StubSequencerPersister` unresolved legacy symbols).
+  - canonical full matrix remains stable: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry rc=2`.
+  - evidence: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-143929-hardcut-live-batchADAE-common-games-import-rewire33/`.
+- Measured movement:
+  - `common-games` legacy imports (`^import com.dgphoenix`) reduced from `55` to `22` in this wave (delta `-33`).
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

@@ -1,0 +1,329 @@
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/WizardTrajectoryGenerator.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/WizardTrajectoryGenerator.java
+index bb99cc825..9723e7a28 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/WizardTrajectoryGenerator.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/WizardTrajectoryGenerator.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp;
+ 
+ import com.betsoft.casino.mp.common.*;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ import org.kynosarges.tektosyne.geometry.PointI;
+ 
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionEnemyGame.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionEnemyGame.java
+index e6fb5c823..1fba65575 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionEnemyGame.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionEnemyGame.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
+ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.service.IGameConfigService;
+ import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import org.apache.logging.log4j.Logger;
+ 
+ import java.util.Map;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java
+index b6e1f2a97..c87701126 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionGameRoom.java
+@@ -16,9 +16,9 @@ import com.betsoft.casino.mp.service.*;
+ import com.betsoft.casino.mp.utils.ErrorCodes;
+ import com.betsoft.casino.mp.web.IGameSocketClient;
+ import com.betsoft.casino.utils.TObject;
+-import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
++import com.abs.casino.common.exception.CommonException;
++import com.abs.casino.common.util.Pair;
++import com.abs.casino.common.web.statistics.StatisticsManager;
+ import com.hazelcast.core.IExecutorService;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.context.ApplicationContext;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java
+index 1746d2874..46b07bf16 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionPlayGameState.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.common;
+ 
+ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionSeat.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionSeat.java
+index 9b70ecfa8..7aaac812a 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionSeat.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractActionSeat.java
+@@ -2,9 +2,9 @@ package com.betsoft.casino.mp.common;
+ 
+ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.web.IGameSocketClient;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.abs.casino.common.util.ConcurrentHashSet;
+-import com.dgphoenix.casino.common.util.string.StringUtils;
++import com.abs.casino.common.util.string.StringUtils;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractEnemyGame.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractEnemyGame.java
+index 5bea69026..d5cd2dc29 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractEnemyGame.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractEnemyGame.java
+@@ -4,9 +4,9 @@ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.gameconfig.GameConfig;
+ import com.betsoft.casino.mp.service.IGameConfigService;
+ import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
+-import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.exception.CommonException;
++import com.abs.casino.common.util.Pair;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.Logger;
+ 
+ import java.util.List;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameMap.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameMap.java
+index 9b185beac..546b48ad0 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameMap.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameMap.java
+@@ -5,9 +5,9 @@ import com.betsoft.casino.mp.common.scenarios.SpawnScenario;
+ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.movement.*;
+ import com.abs.casino.common.cache.JsonSelfSerializable;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
+-import com.dgphoenix.casino.common.util.Triple;
++import com.abs.casino.common.util.Pair;
++import com.abs.casino.common.util.RNG;
++import com.abs.casino.common.util.Triple;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;
+ import com.esotericsoftware.kryo.io.Input;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameState.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameState.java
+index 63218d463..083819a17 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameState.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractGameState.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
+ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.room.IRoom;
+ import com.betsoft.casino.mp.model.room.IRoomInfo;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ 
+ /**
+  * User: flsh
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java
+index a7a31fb07..bce145ee2 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/AbstractMultiNodeGameRoom.java
+@@ -12,8 +12,8 @@ import com.betsoft.casino.mp.service.*;
+ import com.betsoft.casino.mp.web.IGameSocketClient;
+ import com.betsoft.casino.utils.ITransportObject;
+ import com.betsoft.casino.utils.TObject;
+-import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
++import com.abs.casino.common.exception.CommonException;
++import com.abs.casino.common.web.statistics.StatisticsManager;
+ import com.hazelcast.core.IExecutorService;
+ import org.apache.logging.log4j.Logger;
+ import org.springframework.context.ApplicationContext;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/DualSpeedTrajectoryGenerator.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/DualSpeedTrajectoryGenerator.java
+index 996792fab..6821a989b 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/DualSpeedTrajectoryGenerator.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/DualSpeedTrajectoryGenerator.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.common;
+ 
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointI;
+ 
+ public class DualSpeedTrajectoryGenerator extends TrajectoryGenerator {
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/GargoyleTrajectoryGenerator.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/GargoyleTrajectoryGenerator.java
+index a58728d17..9af1e4ff9 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/GargoyleTrajectoryGenerator.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/GargoyleTrajectoryGenerator.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
+ import com.betsoft.casino.mp.model.movement.InvulnerablePoint;
+ import com.betsoft.casino.mp.model.movement.TeleportPoint;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointI;
+ 
+ import static com.betsoft.casino.mp.common.TrajectoryUtils.distance;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/HorusTrajectoryGenerator.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/HorusTrajectoryGenerator.java
+index dd4bf8112..ba42a4d58 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/HorusTrajectoryGenerator.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/HorusTrajectoryGenerator.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
+ import com.betsoft.casino.mp.model.movement.InvulnerablePoint;
+ import com.betsoft.casino.mp.model.movement.Point;
+ import com.betsoft.casino.mp.model.movement.TeleportPoint;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointI;
+ 
+ public class HorusTrajectoryGenerator  extends TrajectoryGenerator {
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java
+index f6b8a3382..58e2f9596 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/MaxCrashData.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.mp.common;
+ 
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.KryoSerializable;
+ import com.esotericsoftware.kryo.io.Input;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalSwarmTrajectoryGenerator.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalSwarmTrajectoryGenerator.java
+index c49eb040d..116f65194 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalSwarmTrajectoryGenerator.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalSwarmTrajectoryGenerator.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
+ import com.betsoft.casino.mp.model.movement.Point;
+ import com.betsoft.casino.mp.model.movement.PortalPoint;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ 
+ import java.util.ArrayList;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalTrajectoryGenerator.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalTrajectoryGenerator.java
+index b2f9c77b5..3f2079dd3 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalTrajectoryGenerator.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/PortalTrajectoryGenerator.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.common;
+ 
+ import com.betsoft.casino.mp.model.movement.Point;
+ import com.betsoft.casino.mp.model.movement.PortalPoint;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointI;
+ 
+ public class PortalTrajectoryGenerator extends TrajectoryGenerator {
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShamanTrajectoryGenerator.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShamanTrajectoryGenerator.java
+index 4308847e5..9c28a236a 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShamanTrajectoryGenerator.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/ShamanTrajectoryGenerator.java
+@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.model.movement.InvulnerablePoint;
+ import com.betsoft.casino.mp.model.movement.Point;
+ import com.betsoft.casino.mp.model.movement.TeleportPoint;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ import org.kynosarges.tektosyne.geometry.PointI;
+ 
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TeleportTrajectoryGenerator.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TeleportTrajectoryGenerator.java
+index 3bc42a59e..1c8592fd8 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TeleportTrajectoryGenerator.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TeleportTrajectoryGenerator.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
+ import com.betsoft.casino.mp.model.movement.InvulnerablePoint;
+ import com.betsoft.casino.mp.model.movement.TeleportPoint;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointI;
+ 
+ import java.util.List;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java
+index 254bea55f..11ccb8e1b 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/TrajectoryUtils.java
+@@ -3,8 +3,8 @@ package com.betsoft.casino.mp.common;
+ import com.betsoft.casino.mp.model.movement.MathUtils;
+ import com.betsoft.casino.mp.model.movement.Point;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+-import com.dgphoenix.casino.common.util.RNG;
+-import com.dgphoenix.casino.common.util.Triple;
++import com.abs.casino.common.util.RNG;
++import com.abs.casino.common.util.Triple;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ import org.kynosarges.tektosyne.geometry.PointI;
+ 
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/WeaponCarrierTrajectoryGenerator.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/WeaponCarrierTrajectoryGenerator.java
+index 0ad1a5158..1a6e80dc4 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/WeaponCarrierTrajectoryGenerator.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/common/WeaponCarrierTrajectoryGenerator.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.common;
+ 
+ import com.betsoft.casino.mp.model.IGameMapShape;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointI;
+ 
+ public class WeaponCarrierTrajectoryGenerator extends TrajectoryGenerator {
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SpiderSwarmAngleTrajectoryGenerator.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SpiderSwarmAngleTrajectoryGenerator.java
+index 2a39a8354..3dbfe81b7 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SpiderSwarmAngleTrajectoryGenerator.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SpiderSwarmAngleTrajectoryGenerator.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.movement;
+ 
+ import com.betsoft.casino.mp.model.movement.Point;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ 
+ import java.util.ArrayList;
+ import java.util.List;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SwarmTrajectoryGenerator.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SwarmTrajectoryGenerator.java
+index 75e525117..94ed6bcd9 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SwarmTrajectoryGenerator.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/SwarmTrajectoryGenerator.java
+@@ -6,7 +6,7 @@ import com.betsoft.casino.mp.model.IGameMapShape;
+ import com.betsoft.casino.mp.model.movement.Point;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+ import com.betsoft.casino.mp.movement.common.Offset;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointI;
+ 
+ import java.util.ArrayList;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/RushTrajectoryGenerator3D.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/RushTrajectoryGenerator3D.java
+index 277742a00..f570d736b 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/RushTrajectoryGenerator3D.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/RushTrajectoryGenerator3D.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.movement.generators;
+ import com.betsoft.casino.mp.model.IGameMapShape;
+ import com.betsoft.casino.mp.model.movement.Point;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ import org.kynosarges.tektosyne.geometry.PointI;
+ 
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/SwarmTrajectoryGenerator3D.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/SwarmTrajectoryGenerator3D.java
+index c24eb137c..ec5ea1f97 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/SwarmTrajectoryGenerator3D.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/SwarmTrajectoryGenerator3D.java
+@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.model.IGameMapShape;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+ import com.betsoft.casino.mp.movement.common.Offset;
+ import com.betsoft.casino.mp.movement.common.Step;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointI;
+ 
+ import java.util.ArrayList;
+diff --git a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/TrajectoryGenerator3D.java b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/TrajectoryGenerator3D.java
+index 71a918ce8..22a561d5f 100644
+--- a/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/TrajectoryGenerator3D.java
++++ b/mp-server/games/common-games/src/main/java/com/betsoft/casino/mp/movement/generators/TrajectoryGenerator3D.java
+@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.model.IGameMapShape;
+ import com.betsoft.casino.mp.model.movement.Point;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+ import com.betsoft.casino.mp.movement.common.Step;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointI;
+ 
+ import java.util.ArrayList;

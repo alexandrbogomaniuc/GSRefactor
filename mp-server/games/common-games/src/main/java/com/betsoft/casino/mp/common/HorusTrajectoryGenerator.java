@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.common;
 import com.betsoft.casino.mp.model.movement.InvulnerablePoint;
 import com.betsoft.casino.mp.model.movement.Point;
 import com.betsoft.casino.mp.model.movement.TeleportPoint;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import org.kynosarges.tektosyne.geometry.PointI;
 
 public class HorusTrajectoryGenerator  extends TrajectoryGenerator {

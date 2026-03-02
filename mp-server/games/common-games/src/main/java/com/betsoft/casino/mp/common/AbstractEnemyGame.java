@@ -4,9 +4,9 @@ import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.model.gameconfig.GameConfig;
 import com.betsoft.casino.mp.service.IGameConfigService;
 import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.Pair;
+import com.abs.casino.common.util.RNG;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
