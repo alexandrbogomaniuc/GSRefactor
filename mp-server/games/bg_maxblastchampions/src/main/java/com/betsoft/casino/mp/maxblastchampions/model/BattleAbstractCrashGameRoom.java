@@ -26,7 +26,7 @@ import com.betsoft.casino.utils.ITransportObject;
 import com.betsoft.casino.utils.TObject;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import com.hazelcast.core.IExecutorService;
 import org.apache.logging.log4j.Logger;
@@ -42,7 +42,7 @@ import java.util.stream.Collectors;
 
 import static com.betsoft.casino.mp.utils.ErrorCodes.TOO_MANY_PLAYER;
 import static com.betsoft.casino.utils.TObject.SERVER_RID;
-import static com.dgphoenix.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
+import static com.abs.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
 
 //cannot make this class abstract for prevent Kryo serialization errors
 @SuppressWarnings({"rawtypes", "unchecked"})

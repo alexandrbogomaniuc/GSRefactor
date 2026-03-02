@@ -10036,3 +10036,20 @@
   - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh remains `~3-6h` (`~0.38-0.75` workdays).
+
+### 2026-03-02 16:11 UTC
+- Continued Project 02 stabilization with live batches `AL+AM` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - AL (`bg_maxblastchampions`): normalized `RNG` + static `DateTimeUtils` imports to `com.abs` in 4 files (`5` rewires).
+  - AM (`clashofthegods-math` enemies): normalized `Pair`/`Triple` imports to `com.abs` in 10 files (`11` rewires).
+  - retained total: `16` import-only rewires across `14` files.
+- Validation:
+  - targeted fast gates: `common-games` PASS; `web` and `clashofthegods` still FAIL with first-fail shifted to residual boundary/import hotspots (`bg_maxblastchampions` CommonException/Pair mismatch lane; `clashofthegods` RNG imports).
+  - canonical matrix in this sandbox is now infra-blocked at `STEP01/PRE01` because Maven cannot resolve `repo.maven.apache.org` (network-restricted session), so canonical output is not code-signal comparable to prior STEP09 profile.
+- Measured movement:
+  - `bg_maxblastchampions` targeted legacy utility imports reduced `5 -> 0`.
+  - `clashofthegods-math` enemy legacy Pair/Triple imports reduced `11 -> 0`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-160241-hardcut-live-batchALAM-bgmaxblast-cotgmath-import-rewire16/`
+- Next step:
+  - run next bounded batches on `clashofthegods` residual `RNG` imports and `bg_maxblastchampions` `CommonException`/`Pair` boundary signatures.

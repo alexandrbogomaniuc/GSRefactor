@@ -1,0 +1,193 @@
+diff --git a/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java b/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java
+index 9a49ddc0a..54ddc248d 100644
+--- a/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java
++++ b/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java
+@@ -26,7 +26,7 @@ import com.betsoft.casino.utils.ITransportObject;
+ import com.betsoft.casino.utils.TObject;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.hazelcast.core.IExecutorService;
+ import org.apache.logging.log4j.Logger;
+@@ -42,7 +42,7 @@ import java.util.stream.Collectors;
+ 
+ import static com.betsoft.casino.mp.utils.ErrorCodes.TOO_MANY_PLAYER;
+ import static com.betsoft.casino.utils.TObject.SERVER_RID;
+-import static com.dgphoenix.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
++import static com.abs.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
+ 
+ //cannot make this class abstract for prevent Kryo serialization errors
+ @SuppressWarnings({"rawtypes", "unchecked"})
+diff --git a/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/MaxBlastChampionsTestStand.java b/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/MaxBlastChampionsTestStand.java
+index 1e4cbe015..8a0f8f748 100644
+--- a/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/MaxBlastChampionsTestStand.java
++++ b/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/MaxBlastChampionsTestStand.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.maxblastchampions.model;
+ import com.betsoft.casino.mp.model.GameType;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+ import com.betsoft.casino.teststand.TestStandFeature;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import java.util.Arrays;
+ import java.util.List;
+ import java.util.Map;
+diff --git a/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/PlayGameState.java b/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/PlayGameState.java
+index 70ef0d4c8..713cf4846 100644
+--- a/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/PlayGameState.java
++++ b/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/PlayGameState.java
+@@ -12,7 +12,7 @@ import com.betsoft.casino.mp.model.battleground.IBgPlace;
+ import com.betsoft.casino.mp.utils.ErrorCodes;
+ import com.betsoft.casino.utils.TInboundObject;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/WaitingPlayersGameState.java b/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/WaitingPlayersGameState.java
+index 12ca613c6..d5d01c6e4 100644
+--- a/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/WaitingPlayersGameState.java
++++ b/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/WaitingPlayersGameState.java
+@@ -10,7 +10,7 @@ import com.betsoft.casino.utils.ITransportObject;
+ import com.betsoft.casino.utils.TInboundObject;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/BeetleTwo.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/BeetleTwo.java
+index c16c2e49f..01b828aaf 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/BeetleTwo.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/BeetleTwo.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ 
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/DragonFlyGreen.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/DragonFlyGreen.java
+index 768910c50..dd0500a5d 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/DragonFlyGreen.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/DragonFlyGreen.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ 
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/EvilSpiritTwo.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/EvilSpiritTwo.java
+index 48bff1f39..cfc0e05e5 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/EvilSpiritTwo.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/EvilSpiritTwo.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ 
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/GoldenDragon.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/GoldenDragon.java
+index ed67e0edc..9f5c63c86 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/GoldenDragon.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/GoldenDragon.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.getHP;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/IEnemyData.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/IEnemyData.java
+index 9eae389d5..0552d81f4 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/IEnemyData.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/IEnemyData.java
+@@ -1,8 +1,8 @@
+ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+-import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.Triple;
++import com.abs.casino.common.util.Pair;
++import com.abs.casino.common.util.Triple;
+ 
+ import java.util.Collections;
+ import java.util.HashMap;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Lizard.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Lizard.java
+index ca437a191..3f535f3d9 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Lizard.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Lizard.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ import java.util.HashMap;
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/LizardTwo.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/LizardTwo.java
+index 698886920..c8dbe9993 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/LizardTwo.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/LizardTwo.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ 
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Owl.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Owl.java
+index 1b4f0c845..a6cc77b77 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Owl.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Owl.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+ 
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/SilverDragon.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/SilverDragon.java
+index c166d2435..26b278bea 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/SilverDragon.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/SilverDragon.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+ 
+diff --git a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Snake.java b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Snake.java
+index 014094419..6b16c4650 100644
+--- a/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Snake.java
++++ b/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Snake.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
+ 
+ import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import java.util.Collections;
+ import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
+ 

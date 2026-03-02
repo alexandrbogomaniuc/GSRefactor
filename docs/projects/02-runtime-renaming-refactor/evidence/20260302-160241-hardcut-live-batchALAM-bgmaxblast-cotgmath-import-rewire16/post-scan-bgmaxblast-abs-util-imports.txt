@@ -1,0 +1,5 @@
+/Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/PlayGameState.java:15:import com.abs.casino.common.util.RNG;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java:29:import com.abs.casino.common.util.RNG;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java:45:import static com.abs.casino.common.util.string.DateTimeUtils.toHumanReadableFormat;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/WaitingPlayersGameState.java:13:import com.abs.casino.common.util.RNG;
+/Users/alexb/Documents/Dev/Dev_new/mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/MaxBlastChampionsTestStand.java:6:import com.abs.casino.common.util.RNG;

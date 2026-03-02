@@ -1,0 +1,14 @@
+mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/BattleAbstractCrashGameRoom.java
+mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/MaxBlastChampionsTestStand.java
+mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/PlayGameState.java
+mp-server/games/bg_maxblastchampions/src/main/java/com/betsoft/casino/mp/maxblastchampions/model/WaitingPlayersGameState.java
+mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/BeetleTwo.java
+mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/DragonFlyGreen.java
+mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/EvilSpiritTwo.java
+mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/GoldenDragon.java
+mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/IEnemyData.java
+mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Lizard.java
+mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/LizardTwo.java
+mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Owl.java
+mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/SilverDragon.java
+mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Snake.java

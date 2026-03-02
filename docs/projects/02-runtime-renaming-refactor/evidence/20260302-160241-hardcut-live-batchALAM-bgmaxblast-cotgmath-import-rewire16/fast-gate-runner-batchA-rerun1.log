@@ -1,0 +1,28 @@
+[2026-03-02T16:06:03Z] START STEP01
+[2026-03-02T16:06:03Z] START STEP01
+[2026-03-02T16:06:03Z] DIR gs-server/common
+[2026-03-02T16:06:03Z] DIR gs-server/common
+[2026-03-02T16:06:03Z] CMD mvn -DskipTests install
+[2026-03-02T16:06:03Z] CMD mvn -DskipTests install
+[INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-framework-bom/4.3.14.RELEASE/spring-framework-bom-4.3.14.RELEASE.pom
+[ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[ERROR] Non-resolvable import POM: The following artifacts could not be resolved: org.springframework:spring-framework-bom:pom:4.3.14.RELEASE (absent): Could not transfer artifact org.springframework:spring-framework-bom:pom:4.3.14.RELEASE from/to central (https://repo.maven.apache.org/maven2): repo.maven.apache.org: nodename nor servname provided, or not known @ com.dgphoenix.casino:gsn-casino-project:1.0.0-SNAPSHOT, /Users/alexb/Documents/Dev/Dev_new/gs-server/pom.xml, line 29, column 25
+[ERROR] 'dependencies.dependency.version' for org.springframework:spring-context:jar is missing. @ line 165, column 21
+[ERROR] 'dependencies.dependency.version' for org.springframework:spring-web:jar is missing. @ line 190, column 21
+ @ 
+[ERROR] The build could not read 1 project -> [Help 1]
+[ERROR]   
+[ERROR]   The project com.dgphoenix.casino:gsn-common:1.0-SNAPSHOT (/Users/alexb/Documents/Dev/Dev_new/gs-server/common/pom.xml) has 3 errors
+[ERROR]     Non-resolvable import POM: The following artifacts could not be resolved: org.springframework:spring-framework-bom:pom:4.3.14.RELEASE (absent): Could not transfer artifact org.springframework:spring-framework-bom:pom:4.3.14.RELEASE from/to central (https://repo.maven.apache.org/maven2): repo.maven.apache.org: nodename nor servname provided, or not known @ com.dgphoenix.casino:gsn-casino-project:1.0.0-SNAPSHOT, /Users/alexb/Documents/Dev/Dev_new/gs-server/pom.xml, line 29, column 25: Unknown host repo.maven.apache.org: nodename nor servname provided, or not known -> [Help 2]
+[ERROR]     'dependencies.dependency.version' for org.springframework:spring-context:jar is missing. @ line 165, column 21
+[ERROR]     'dependencies.dependency.version' for org.springframework:spring-web:jar is missing. @ line 190, column 21
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+[ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/UnresolvableModelException
+[2026-03-02T16:06:06Z] FAIL STEP01 rc=1
+[2026-03-02T16:06:06Z] FAIL STEP01 rc=1

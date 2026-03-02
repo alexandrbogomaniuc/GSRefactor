@@ -12,7 +12,7 @@ import com.betsoft.casino.mp.model.battleground.IBgPlace;
 import com.betsoft.casino.mp.utils.ErrorCodes;
 import com.betsoft.casino.utils.TInboundObject;
 import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

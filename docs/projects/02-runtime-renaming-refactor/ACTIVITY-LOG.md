@@ -5162,3 +5162,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
   - `core-interfaces` legacy `Pair` imports: `6 -> 3`.
   - `common-games` compile gate recovered from FAIL to PASS.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 16:11 UTC (Hard-cut live Batch AL+AM)
+- Continued Project 02 stabilization in `/Users/alexb/Documents/Dev/Dev_new` with parallel low-risk import-only wave.
+- Changes:
+  - Batch AL (`4` files, `5` rewires): `bg_maxblastchampions` `RNG` + static `DateTimeUtils` import normalization (`com.dgphoenix -> com.abs`).
+  - Batch AM (`10` files, `11` rewires): `clashofthegods-math` enemies `Pair`/`Triple` import normalization (`com.dgphoenix -> com.abs`).
+  - Total retained rewires: `16` across `14` files.
+- Validation:
+  - targeted mp fast gates:
+    - `mvn -pl games/common-games -am -DskipTests compile` -> PASS
+    - `mvn -pl web -am -DskipTests compile` -> FAIL (first-fail: `bg_maxblastchampions` `CommonException`/`Pair` boundary mismatches)
+    - `mvn -pl games/clashofthegods -am -DskipTests compile` -> FAIL (first-fail moved to `clashofthegods` residual `RNG` imports)
+  - canonical matrix reruns now blocked by environment dependency resolution (`repo.maven.apache.org` unreachable in current sandbox), producing `STEP01/PRE01` failures unrelated to this batch code changes.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-160241-hardcut-live-batchALAM-bgmaxblast-cotgmath-import-rewire16/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/263-hard-cut-live-batchALAM-bgmaxblast-cotgmath-import-rewire16-report-20260302.md`
+- Measured movement:
+  - `bg_maxblastchampions` targeted legacy utility imports `5 -> 0`.
+  - `clashofthegods-math` enemy `Pair/Triple` legacy imports `11 -> 0`.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

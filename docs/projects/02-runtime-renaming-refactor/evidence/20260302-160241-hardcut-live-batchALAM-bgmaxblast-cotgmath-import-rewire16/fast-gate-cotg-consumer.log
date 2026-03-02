@@ -1,0 +1,148 @@
+[START] cotg_compile
+DIR=mp-server
+CMD=mvn -pl games/clashofthegods -am -DskipTests compile
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.betsoft.casino:mp-bots:jar:1.0.0-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.springframework.boot:spring-boot-maven-plugin is missing. @ line 236, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project com.betsoft.casino:mp-casino:pom:1.0.0-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Tektosyne                                                          [jar]
+[INFO] mp-casino                                                          [pom]
+[INFO] Casino MP Games core interfaces                                    [jar]
+[INFO] Casino MP Games                                                    [pom]
+[INFO] MP Common Games                                                    [jar]
+[INFO] Max Quest: Clash of the Gods. Math model                           [jar]
+[INFO] Max Quest: Clash of the Gods                                       [jar]
+[INFO] 
+[INFO] ----------------------< org.kynosarges:tektosyne >----------------------
+[INFO] Building Tektosyne 6.0.1-BSG                                       [1/7]
+[INFO]   from tektosyne/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ tektosyne ---
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/tektosyne/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ tektosyne ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 62 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/tektosyne/target/classes
+[INFO] 
+[INFO] --------------------< com.betsoft.casino:mp-casino >--------------------
+[INFO] Building mp-casino 1.0.0-SNAPSHOT                                  [2/7]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:core-interfaces >----------------
+[INFO] Building Casino MP Games core interfaces 1.0.0-SNAPSHOT            [3/7]
+[INFO]   from core-interfaces/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ core-interfaces ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/core-interfaces/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ core-interfaces ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --------------------< com.betsoft.casino.mp:games >---------------------
+[INFO] Building Casino MP Games 1.0.0-SNAPSHOT                            [4/7]
+[INFO]   from games/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------< com.betsoft.casino.mp:mp-common-games >----------------
+[INFO] Building MP Common Games 1.0.0-SNAPSHOT                            [5/7]
+[INFO]   from games/common-games/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ mp-common-games ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 100 resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ mp-common-games ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] -------------< com.betsoft.casino.mp:clashofthegods-math >--------------
+[INFO] Building Max Quest: Clash of the Gods. Math model 1.0.0-SNAPSHOT   [6/7]
+[INFO]   from games/clashofthegods-math/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ clashofthegods-math ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods-math/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ clashofthegods-math ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 33 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods-math/target/classes
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Owl.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods-math/src/main/java/com/betsoft/casino/mp/clashofthegods/model/math/enemies/Owl.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] ----------------< com.betsoft.casino.mp:clashofthegods >----------------
+[INFO] Building Max Quest: Clash of the Gods 1.0.0-SNAPSHOT               [7/7]
+[INFO]   from games/clashofthegods/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ clashofthegods ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ clashofthegods ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 15 source files to /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/EnemyGame.java:[15,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/GameMap.java:[16,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/PlayGameState.java:[14,40] cannot find symbol
+  symbol:   class RNG
+  location: package com.dgphoenix.casino.common.util
+[INFO] 3 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Tektosyne 6.0.1-BSG ................................ SUCCESS [  2.202 s]
+[INFO] mp-casino 1.0.0-SNAPSHOT ........................... SUCCESS [  0.005 s]
+[INFO] Casino MP Games core interfaces 1.0.0-SNAPSHOT ..... SUCCESS [  0.688 s]
+[INFO] Casino MP Games 1.0.0-SNAPSHOT ..................... SUCCESS [  0.001 s]
+[INFO] MP Common Games 1.0.0-SNAPSHOT ..................... SUCCESS [  1.311 s]
+[INFO] Max Quest: Clash of the Gods. Math model 1.0.0-SNAPSHOT SUCCESS [  0.992 s]
+[INFO] Max Quest: Clash of the Gods 1.0.0-SNAPSHOT ........ FAILURE [  0.868 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.533 s
+[INFO] Finished at: 2026-03-02T16:03:58Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project clashofthegods: Compilation failure: Compilation failure: 
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/EnemyGame.java:[15,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/GameMap.java:[16,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/PlayGameState.java:[14,40] cannot find symbol
+[ERROR]   symbol:   class RNG
+[ERROR]   location: package com.dgphoenix.casino.common.util
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :clashofthegods
+[END] cotg_compile rc=1

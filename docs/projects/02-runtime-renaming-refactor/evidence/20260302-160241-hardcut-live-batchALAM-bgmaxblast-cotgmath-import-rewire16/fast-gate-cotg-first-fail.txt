@@ -1,0 +1,20 @@
+99:[ERROR] COMPILATION ERROR : 
+101:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/EnemyGame.java:[15,40] cannot find symbol
+104:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/GameMap.java:[16,40] cannot find symbol
+107:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/PlayGameState.java:[14,40] cannot find symbol
+128:[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project clashofthegods: Compilation failure: Compilation failure: 
+129:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/EnemyGame.java:[15,40] cannot find symbol
+130:[ERROR]   symbol:   class RNG
+131:[ERROR]   location: package com.dgphoenix.casino.common.util
+132:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/GameMap.java:[16,40] cannot find symbol
+133:[ERROR]   symbol:   class RNG
+134:[ERROR]   location: package com.dgphoenix.casino.common.util
+135:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/clashofthegods/src/main/java/com/betsoft/casino/mp/clashofthegods/model/PlayGameState.java:[14,40] cannot find symbol
+136:[ERROR]   symbol:   class RNG
+137:[ERROR]   location: package com.dgphoenix.casino.common.util
+138:[ERROR] -> [Help 1]
+139:[ERROR] 
+140:[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+141:[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+142:[ERROR] 
+143:[ERROR] For more information about the errors and possible solutions, please read the following articles:

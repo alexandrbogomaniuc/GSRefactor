@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.clashofthegods.model.math.enemies;
 
 import com.betsoft.casino.mp.clashofthegods.model.math.WeaponData;
 import com.betsoft.casino.mp.model.SpecialWeaponType;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 import java.util.Collections;
 import java.util.HashMap;
 import static com.betsoft.casino.mp.clashofthegods.model.math.MathData.*;
