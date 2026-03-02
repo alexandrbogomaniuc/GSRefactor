@@ -10638,3 +10638,16 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-230338-hardcut-live-batchBVBW-web-boundary-signature-import-rewire12/`
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/281-hard-cut-live-batchBVBW-web-boundary-signature-import-rewire11-report-20260302.md`
 - Result: downstream web fail frontier is now localized; next action is bounded two-file harmonization (`RoomServiceFactory`, `KafkaMultiPlayerResponseService`).
+
+### 2026-03-02 23:30 UTC
+- Push checkpoint for `Batch BV+BW` completed.
+- Commit pushed to `origin/main`:
+  - `9b0869a70` (`refactor: hard-cut batchBVBW web boundary signatures`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-230338-hardcut-live-batchBVBW-web-boundary-signature-import-rewire12/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/281-hard-cut-live-batchBVBW-web-boundary-signature-import-rewire11-report-20260302.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.10-1.80h` (`~0.01-0.23` workdays), next lane is bounded two-file harmonization (`RoomServiceFactory`, `KafkaMultiPlayerResponseService`).
