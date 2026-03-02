@@ -8,7 +8,7 @@ import com.betsoft.casino.mp.model.battleground.IBgPlace;
 import com.betsoft.casino.mp.model.playerinfo.AbstractBattlegroundRoomPlayerInfo;
 import com.betsoft.casino.mp.model.room.IRoom;
 import com.betsoft.casino.mp.utils.ObjectFileWriterUtil;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.util.Pair;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.cloud.bigquery.*;

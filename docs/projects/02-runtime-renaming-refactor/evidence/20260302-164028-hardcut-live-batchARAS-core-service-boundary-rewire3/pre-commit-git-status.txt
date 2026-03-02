@@ -1,0 +1,6 @@
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/AbstractRoomInfoService.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/BigQueryClientService.java
+ M mp-server/core/src/main/java/com/betsoft/casino/mp/service/LobbySessionService.java
+?? docs/gs-canonical-pack-clean-20260302T163759Z.tar.gz
+?? docs/gs/
+?? docs/projects/02-runtime-renaming-refactor/evidence/20260302-164028-hardcut-live-batchARAS-core-service-boundary-rewire3/

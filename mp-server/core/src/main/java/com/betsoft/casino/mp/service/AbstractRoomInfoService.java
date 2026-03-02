@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.model.room.IRoom;
 import com.betsoft.casino.mp.model.room.IRoomInfo;
 import com.betsoft.casino.utils.ITransportObject;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.Pair;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IExecutorService;

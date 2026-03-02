@@ -5229,3 +5229,22 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - AP/AQ targeted import lanes fully rewired (`18/18`), including `clashofthegods` consumer compile recovery to PASS.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 16:55 UTC (Hard-cut live Batch AR+AS)
+- Continued Project 02 stabilization with integrated live batches `AR+AS` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - AR (`2` rewires): normalized `CommonException` imports in `AbstractRoomInfoService` and `LobbySessionService` (`com.dgphoenix -> com.abs`).
+  - AS (`1` rewire): normalized `Pair` import in `BigQueryClientService` (`com.dgphoenix -> com.abs`).
+  - retained total: `3` import/signature-boundary rewires across `3` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `web` FAIL, `clashofthegods` PASS.
+  - `web` first-fail narrowed to single-file boundary lane in `BGPrivateRoomInfoService`:
+    - mixed `CommonException` namespaces in try/catch boundary (`dgphoenix` catch vs `abs` throws).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+  - canonical failures remain environment-level Maven dependency resolution in current sandbox (external repo/DNS), not batch-local logic regression.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-164028-hardcut-live-batchARAS-core-service-boundary-rewire3/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/266-hard-cut-live-batchARAS-core-service-boundary-rewire3-report-20260302.md`
+- Measured movement:
+  - cleared prior interface/override mismatch lane (`IRoomInfoService`/`ILobbySessionService`/`IAnalyticsDBClientService`) and reduced `web` to one residual file-level boundary issue.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

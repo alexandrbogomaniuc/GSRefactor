@@ -1,0 +1,3 @@
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/AbstractRoomInfoService.java
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/LobbySessionService.java
+mp-server/core/src/main/java/com/betsoft/casino/mp/service/BigQueryClientService.java

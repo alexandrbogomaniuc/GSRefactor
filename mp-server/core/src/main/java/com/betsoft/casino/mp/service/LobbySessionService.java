@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.model.ILobbySession;
 import com.betsoft.casino.mp.model.LobbySession;
 import com.betsoft.casino.mp.web.ILobbySocketClient;
 import com.betsoft.casino.mp.web.ISocketClient;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import com.hazelcast.query.EntryObject;

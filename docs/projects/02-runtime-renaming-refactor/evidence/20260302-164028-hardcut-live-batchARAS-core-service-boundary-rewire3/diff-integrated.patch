@@ -1,0 +1,39 @@
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/AbstractRoomInfoService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/AbstractRoomInfoService.java
+index c4d1855e5..1d9cf9eeb 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/AbstractRoomInfoService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/AbstractRoomInfoService.java
+@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.room.IRoom;
+ import com.betsoft.casino.mp.model.room.IRoomInfo;
+ import com.betsoft.casino.utils.ITransportObject;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+ import com.hazelcast.core.HazelcastInstance;
+ import com.hazelcast.core.IExecutorService;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BigQueryClientService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BigQueryClientService.java
+index 0b330a078..a84183421 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BigQueryClientService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/BigQueryClientService.java
+@@ -8,7 +8,7 @@ import com.betsoft.casino.mp.model.battleground.IBgPlace;
+ import com.betsoft.casino.mp.model.playerinfo.AbstractBattlegroundRoomPlayerInfo;
+ import com.betsoft.casino.mp.model.room.IRoom;
+ import com.betsoft.casino.mp.utils.ObjectFileWriterUtil;
+-import com.dgphoenix.casino.common.util.Pair;
++import com.abs.casino.common.util.Pair;
+ import com.fasterxml.jackson.core.JsonProcessingException;
+ import com.fasterxml.jackson.databind.ObjectMapper;
+ import com.google.cloud.bigquery.*;
+diff --git a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/LobbySessionService.java b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/LobbySessionService.java
+index 2aa451cf0..d18c480ec 100644
+--- a/mp-server/core/src/main/java/com/betsoft/casino/mp/service/LobbySessionService.java
++++ b/mp-server/core/src/main/java/com/betsoft/casino/mp/service/LobbySessionService.java
+@@ -4,7 +4,7 @@ import com.betsoft.casino.mp.model.ILobbySession;
+ import com.betsoft.casino.mp.model.LobbySession;
+ import com.betsoft.casino.mp.web.ILobbySocketClient;
+ import com.betsoft.casino.mp.web.ISocketClient;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.hazelcast.core.HazelcastInstance;
+ import com.hazelcast.core.IMap;
+ import com.hazelcast.query.EntryObject;

@@ -10127,3 +10127,23 @@
   - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh tightened to `~0.75-2.5h` (`~0.09-0.31` workdays), focused on remaining web service-interface boundary normalization.
+
+### 2026-03-02 16:55 UTC
+- Continued Project 02 stabilization with integrated live batches `AR+AS` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - AR (`2` rewires): `CommonException` import normalization in `AbstractRoomInfoService` and `LobbySessionService`.
+  - AS (`1` rewire): `Pair` import normalization in `BigQueryClientService`.
+  - retained total: `3` import/signature-boundary rewires across `3` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `web` FAIL; `clashofthegods` PASS.
+  - `web` first-fail narrowed to `BGPrivateRoomInfoService` mixed `CommonException` namespace boundary in try/catch.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP01`, `fast_gate_batchB FAIL STEP01`, `prewarm FAIL PRE01`, `validation FAIL PRE01`, `STEP09 retry SKIP`.
+  - canonical failures remain infra-level in this sandbox (external Maven repo DNS resolution), not AR/AS local logic regressions.
+- Measured movement:
+  - prior service-contract mismatch lane (`IRoomInfoService` / `ILobbySessionService` / `IAnalyticsDBClientService`) cleared from first-fail.
+  - residual `web` fail lane reduced to a single inheritor file for next bounded pass.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-164028-hardcut-live-batchARAS-core-service-boundary-rewire3/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/266-hard-cut-live-batchARAS-core-service-boundary-rewire3-report-20260302.md`
+- Next step:
+  - commit AR+AS wave, attempt push, then execute bounded cleanup on `BGPrivateRoomInfoService` and remaining inheritor exception imports.
