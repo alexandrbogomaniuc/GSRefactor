@@ -2,7 +2,7 @@ package com.betsoft.casino.bots.strategies;
 
 import com.betsoft.casino.bots.AstronautBetData;
 import com.betsoft.casino.bots.IUnifiedBotStrategy;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 

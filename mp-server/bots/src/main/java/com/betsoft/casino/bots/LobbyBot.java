@@ -9,7 +9,7 @@ import com.betsoft.casino.mp.common.math.SWPaidCosts;
 import com.betsoft.casino.mp.transport.BalanceUpdated;
 import com.betsoft.casino.mp.transport.Error;
 import com.betsoft.casino.mp.web.IMessageSerializer;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

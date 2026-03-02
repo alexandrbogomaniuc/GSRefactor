@@ -1,0 +1,4 @@
+common_games_compile=0
+bots_compile=1
+web_compile=1
+cotg_compile=1

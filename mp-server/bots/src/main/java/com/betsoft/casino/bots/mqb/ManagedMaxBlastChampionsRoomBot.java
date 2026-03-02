@@ -10,7 +10,7 @@ import com.betsoft.casino.mp.common.math.SWPaidCosts;
 import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.transport.*;
 import com.betsoft.casino.mp.web.IMessageSerializer;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import org.springframework.web.reactive.socket.WebSocketMessage;
 import org.springframework.web.reactive.socket.WebSocketSession;
 import org.springframework.web.reactive.socket.client.ReactorNettyWebSocketClient;

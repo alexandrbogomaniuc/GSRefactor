@@ -1,0 +1,336 @@
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/AbstractBot.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/AbstractBot.java
+index 228e9faa2..b701e0093 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/AbstractBot.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/AbstractBot.java
+@@ -11,7 +11,7 @@ import com.betsoft.casino.mp.web.IMessageSerializer;
+ import com.betsoft.casino.mp.web.ISocketClient;
+ import com.betsoft.casino.utils.ITransportObject;
+ import com.betsoft.casino.utils.TObject;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.web.statistics.StatisticsManager;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/BattleGroundRoomBot.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/BattleGroundRoomBot.java
+index 2f5414efc..5f8adaa02 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/BattleGroundRoomBot.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/BattleGroundRoomBot.java
+@@ -18,7 +18,7 @@ import com.betsoft.casino.mp.model.battleground.IRoomBattlegroundInfo;
+ import com.betsoft.casino.mp.model.movement.Point;
+ import com.betsoft.casino.mp.transport.*;
+ import com.betsoft.casino.mp.web.IMessageSerializer;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ import org.springframework.core.io.Resource;
+ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/LobbyBot.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/LobbyBot.java
+index d7aefa898..b07ea9f69 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/LobbyBot.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/LobbyBot.java
+@@ -9,7 +9,7 @@ import com.betsoft.casino.mp.common.math.SWPaidCosts;
+ import com.betsoft.casino.mp.transport.BalanceUpdated;
+ import com.betsoft.casino.mp.transport.Error;
+ import com.betsoft.casino.mp.web.IMessageSerializer;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.Map;
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedBattleGroundRoomBot.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedBattleGroundRoomBot.java
+index bea4080be..88b38ab5a 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedBattleGroundRoomBot.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedBattleGroundRoomBot.java
+@@ -22,7 +22,7 @@ import com.betsoft.casino.mp.model.movement.Trajectory;
+ import com.betsoft.casino.mp.transport.Observer;
+ import com.betsoft.casino.mp.transport.RoomEnemy;
+ import com.betsoft.casino.mp.web.IMessageSerializer;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedMaxBlastChampionsRoomBot.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedMaxBlastChampionsRoomBot.java
+index 197af8a2d..2db481b38 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedMaxBlastChampionsRoomBot.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/mqb/ManagedMaxBlastChampionsRoomBot.java
+@@ -10,7 +10,7 @@ import com.betsoft.casino.mp.common.math.SWPaidCosts;
+ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.transport.*;
+ import com.betsoft.casino.mp.web.IMessageSerializer;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.springframework.web.reactive.socket.WebSocketMessage;
+ import org.springframework.web.reactive.socket.WebSocketSession;
+ import org.springframework.web.reactive.socket.client.ReactorNettyWebSocketClient;
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/MinesRequest.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/MinesRequest.java
+index 7b37d197c..ebdd7c333 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/MinesRequest.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/MinesRequest.java
+@@ -8,7 +8,7 @@ import com.betsoft.casino.mp.transport.MineCoordinates;
+ import com.betsoft.casino.mp.utils.ErrorCodes;
+ import com.betsoft.casino.mp.web.ISocketClient;
+ import com.betsoft.casino.utils.ITransportObject;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ 
+ public class MinesRequest extends AbstractBotRequest {
+     private final IRoomBot bot;
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/PurchaseWeaponLootBoxRequest.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/PurchaseWeaponLootBoxRequest.java
+index 14a376d01..e7dc9843e 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/PurchaseWeaponLootBoxRequest.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/requests/PurchaseWeaponLootBoxRequest.java
+@@ -10,7 +10,7 @@ import com.betsoft.casino.mp.web.ISocketClient;
+ import com.betsoft.casino.mp.utils.ErrorCodes;
+ import com.betsoft.casino.utils.ITransportObject;
+ import com.betsoft.casino.utils.TObject;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/AbstractCrashGameBotStrategy.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/AbstractCrashGameBotStrategy.java
+index c2a2f5022..b267de9df 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/AbstractCrashGameBotStrategy.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/AbstractCrashGameBotStrategy.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.bots.AstronautBetData;
+ import com.betsoft.casino.bots.IUnifiedBotStrategy;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import java.math.BigDecimal;
+ import java.math.RoundingMode;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundDragonStoneStrategy.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundDragonStoneStrategy.java
+index fd6415646..f997c7d70 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundDragonStoneStrategy.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundDragonStoneStrategy.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.mp.model.GameType;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundMissionAmazonStrategy.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundMissionAmazonStrategy.java
+index 8df5e029b..974b77c28 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundMissionAmazonStrategy.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundMissionAmazonStrategy.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.mp.model.GameType;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundSectorXStrategy.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundSectorXStrategy.java
+index 0bf1117c9..a69a40de5 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundSectorXStrategy.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BattleGroundSectorXStrategy.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.mp.model.GameType;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BurstShootingStrategy.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BurstShootingStrategy.java
+index ee466b096..cc647239d 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BurstShootingStrategy.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BurstShootingStrategy.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BurstShootingStrategyWithoutBuySW.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BurstShootingStrategyWithoutBuySW.java
+index 18e88f476..48c3266e4 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BurstShootingStrategyWithoutBuySW.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/BurstShootingStrategyWithoutBuySW.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/CogStrategyWithWeaponId.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/CogStrategyWithWeaponId.java
+index 5ed086f64..3f8c7fab1 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/CogStrategyWithWeaponId.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/CogStrategyWithWeaponId.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.mp.model.GameType;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/CryoGunPaidShots.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/CryoGunPaidShots.java
+index 3c7ff484c..a1f023ba9 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/CryoGunPaidShots.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/CryoGunPaidShots.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/DSPaidShotStrategyWithId.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/DSPaidShotStrategyWithId.java
+index 8a827b13f..9bb696a1e 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/DSPaidShotStrategyWithId.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/DSPaidShotStrategyWithId.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.mp.model.GameType;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/IRoomNaturalBotStrategy.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/IRoomNaturalBotStrategy.java
+index a1f501ab6..df514d410 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/IRoomNaturalBotStrategy.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/IRoomNaturalBotStrategy.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.bots.model.EnemySize;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.Logger;
+ 
+ import java.util.HashMap;
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/MissionAmazonStrategy.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/MissionAmazonStrategy.java
+index 19858fb34..fbbf86a94 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/MissionAmazonStrategy.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/MissionAmazonStrategy.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.mp.model.GameType;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/MonotonousShootingStrategy.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/MonotonousShootingStrategy.java
+index f6587e6ec..14e7e6cc9 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/MonotonousShootingStrategy.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/MonotonousShootingStrategy.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.bots.strategies;
+ 
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ 
+ public class MonotonousShootingStrategy implements IRoomBotStrategy {
+     private static final int MIN_WAIT_BETWEEN_ACTIONS = 200;
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/NaturalBattleGroundSectorXStrategy.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/NaturalBattleGroundSectorXStrategy.java
+index 018ac1676..dc131a1a8 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/NaturalBattleGroundSectorXStrategy.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/NaturalBattleGroundSectorXStrategy.java
+@@ -17,7 +17,7 @@ import com.betsoft.casino.mp.model.movement.Trajectory;
+ import com.betsoft.casino.mp.transport.PointExt;
+ import com.betsoft.casino.mp.transport.RoomEnemy;
+ import com.betsoft.casino.utils.TObject;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.Triple;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PaidBurstShootingStrategy.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PaidBurstShootingStrategy.java
+index 04c86918c..484edf238 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PaidBurstShootingStrategy.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PaidBurstShootingStrategy.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PiratesWithBuyInSpecialWeapons.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PiratesWithBuyInSpecialWeapons.java
+index 86b8d3530..d2c085fea 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PiratesWithBuyInSpecialWeapons.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PiratesWithBuyInSpecialWeapons.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PiratesWithoutBuyInSpecialWeapons.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PiratesWithoutBuyInSpecialWeapons.java
+index 7063da0e5..2751d1672 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PiratesWithoutBuyInSpecialWeapons.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/PiratesWithoutBuyInSpecialWeapons.java
+@@ -1,7 +1,7 @@
+ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/Ra2PaidShotStrategyWithId.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/Ra2PaidShotStrategyWithId.java
+index 179f45fb7..7680df610 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/Ra2PaidShotStrategyWithId.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/Ra2PaidShotStrategyWithId.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.bots.strategies;
+ 
+ import com.betsoft.casino.mp.model.GameType;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ import java.util.HashMap;
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/SectorXStrategy.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/SectorXStrategy.java
+index fb4d436ab..5a25680e2 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/SectorXStrategy.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/SectorXStrategy.java
+@@ -7,7 +7,7 @@ import com.betsoft.casino.bots.RoomBot;
+ import com.betsoft.casino.mp.sectorx.model.math.EnemyType;
+ import com.betsoft.casino.mp.model.IRoomEnemy;
+ import com.betsoft.casino.mp.transport.RoomEnemy;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/SpecialShootingStrategy.java b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/SpecialShootingStrategy.java
+index 1e1f9a3f0..da2a54465 100644
+--- a/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/SpecialShootingStrategy.java
++++ b/mp-server/bots/src/main/java/com/betsoft/casino/bots/strategies/SpecialShootingStrategy.java
+@@ -1,6 +1,6 @@
+ package com.betsoft.casino.bots.strategies;
+ 
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+ 

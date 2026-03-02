@@ -7,7 +7,7 @@ import com.betsoft.casino.bots.RoomBot;
 import com.betsoft.casino.mp.sectorx.model.math.EnemyType;
 import com.betsoft.casino.mp.model.IRoomEnemy;
 import com.betsoft.casino.mp.transport.RoomEnemy;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

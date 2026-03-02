@@ -2,7 +2,7 @@ package com.betsoft.casino.bots.strategies;
 
 import com.betsoft.casino.mp.model.GameType;
 import com.betsoft.casino.mp.model.SpecialWeaponType;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.HashMap;

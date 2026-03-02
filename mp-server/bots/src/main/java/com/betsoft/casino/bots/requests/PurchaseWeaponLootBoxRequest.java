@@ -10,7 +10,7 @@ import com.betsoft.casino.mp.web.ISocketClient;
 import com.betsoft.casino.mp.utils.ErrorCodes;
 import com.betsoft.casino.utils.ITransportObject;
 import com.betsoft.casino.utils.TObject;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

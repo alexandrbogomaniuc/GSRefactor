@@ -10533,3 +10533,22 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.70-5.50h` (`~0.09-0.69` workdays), next lane is `mp-server/bots` RNG import harmonization.
+
+### 2026-03-02 21:36 UTC
+- Continued Project 02 stabilization with integrated live batches `BP+BQ` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BP (`13` rewires): bots infra/shared strategy `RNG` import normalization.
+  - BQ (`13` rewires): bots game-specific strategy `RNG` import normalization.
+  - retained total: `26` import-only rewires across `26` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `bots` FAIL; `web` FAIL; harmonized `clashofthegods` compile PASS.
+  - `bots`/`web` first-fail shifted from unresolved `RNG` imports to `RicochetBullet` static `DateTimeUtils` dependency lane.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-210858-hardcut-live-batchBPBQ-bots-rng-import-rewire26/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/278-hard-cut-live-batchBPBQ-bots-rng-import-rewire26-report-20260302.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- Next step:
+  - commit/push BP+BQ checkpoint, then execute bounded bots string-utils dependency harmonization (`RicochetBullet` lane).

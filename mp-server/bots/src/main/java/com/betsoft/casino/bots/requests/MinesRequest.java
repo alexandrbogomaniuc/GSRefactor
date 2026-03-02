@@ -8,7 +8,7 @@ import com.betsoft.casino.mp.transport.MineCoordinates;
 import com.betsoft.casino.mp.utils.ErrorCodes;
 import com.betsoft.casino.mp.web.ISocketClient;
 import com.betsoft.casino.utils.ITransportObject;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 
 public class MinesRequest extends AbstractBotRequest {
     private final IRoomBot bot;

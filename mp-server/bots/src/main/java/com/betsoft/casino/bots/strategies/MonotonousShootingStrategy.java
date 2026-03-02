@@ -1,6 +1,6 @@
 package com.betsoft.casino.bots.strategies;
 
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 
 public class MonotonousShootingStrategy implements IRoomBotStrategy {
     private static final int MIN_WAIT_BETWEEN_ACTIONS = 200;

@@ -22,7 +22,7 @@ import com.betsoft.casino.mp.model.movement.Trajectory;
 import com.betsoft.casino.mp.transport.Observer;
 import com.betsoft.casino.mp.transport.RoomEnemy;
 import com.betsoft.casino.mp.web.IMessageSerializer;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import org.kynosarges.tektosyne.geometry.PointD;
 

@@ -17,7 +17,7 @@ import com.betsoft.casino.mp.model.movement.Trajectory;
 import com.betsoft.casino.mp.transport.PointExt;
 import com.betsoft.casino.mp.transport.RoomEnemy;
 import com.betsoft.casino.utils.TObject;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.Triple;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

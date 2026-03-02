@@ -5456,3 +5456,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared dragonstone/bg_dragonstone boundary head-fail lane and advanced downstream into bots RNG harmonization.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 21:36 UTC (Hard-cut live Batch BP+BQ)
+- Continued Project 02 stabilization with integrated live batches `BP+BQ` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BP (`13` rewires): normalized bots infra/shared strategy `RNG` imports (`com.dgphoenix -> com.abs`).
+  - BQ (`13` rewires): normalized bots game-specific strategy `RNG` imports (`com.dgphoenix -> com.abs`).
+  - retained total: `26` import-only rewires across `26` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` FAIL, `web` FAIL, harmonized `clashofthegods` compile PASS.
+  - `bots`/`web` first-fail shifted from unresolved `RNG` imports to `RicochetBullet` static `DateTimeUtils` import lane (`com.dgphoenix.casino.common.util.string.DateTimeUtils`).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not BP/BQ import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-210858-hardcut-live-batchBPBQ-bots-rng-import-rewire26/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/278-hard-cut-live-batchBPBQ-bots-rng-import-rewire26-report-20260302.md`
+- Measured movement:
+  - cleared bots RNG import frontier and advanced downstream to the narrower bots string-utils dependency lane.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

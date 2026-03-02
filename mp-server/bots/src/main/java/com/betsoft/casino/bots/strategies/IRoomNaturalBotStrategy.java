@@ -1,7 +1,7 @@
 package com.betsoft.casino.bots.strategies;
 
 import com.betsoft.casino.bots.model.EnemySize;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;

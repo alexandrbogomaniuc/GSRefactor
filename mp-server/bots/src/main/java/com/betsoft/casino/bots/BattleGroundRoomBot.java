@@ -18,7 +18,7 @@ import com.betsoft.casino.mp.model.battleground.IRoomBattlegroundInfo;
 import com.betsoft.casino.mp.model.movement.Point;
 import com.betsoft.casino.mp.transport.*;
 import com.betsoft.casino.mp.web.IMessageSerializer;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import org.kynosarges.tektosyne.geometry.PointD;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;

@@ -1,0 +1,18 @@
+620:[ERROR] COMPILATION ERROR : 
+622:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/model/RicochetBullet.java:[13,54] cannot find symbol
+625:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/model/RicochetBullet.java:[13,1] static import only from classes and interfaces
+657:[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.7.0:compile (default-compile) on project mp-bots: Compilation failure: Compilation failure: 
+658:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/model/RicochetBullet.java:[13,54] cannot find symbol
+659:[ERROR]   symbol:   class DateTimeUtils
+660:[ERROR]   location: package com.dgphoenix.casino.common.util.string
+661:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/bots/src/main/java/com/betsoft/casino/bots/model/RicochetBullet.java:[13,1] static import only from classes and interfaces
+662:[ERROR] -> [Help 1]
+663:[ERROR] 
+664:[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+665:[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+666:[ERROR] 
+667:[ERROR] For more information about the errors and possible solutions, please read the following articles:
+668:[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+669:[ERROR] 
+670:[ERROR] After correcting the problems, you can resume the build with the command
+671:[ERROR]   mvn <args> -rf :mp-bots
