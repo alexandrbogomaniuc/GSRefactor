@@ -5364,3 +5364,23 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - residual pirates Pair/Triple/CommonException boundary lane cleared in targeted files; first-fail advanced to amazon RNG import normalization.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 18:45 UTC (Hard-cut live Batch BF+BG)
+- Continued Project 02 stabilization with integrated live batches `BF+BG` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BF (`12` rewires): normalized `RNG` imports across amazon + pirates-common-math + piratespov + piratesdmc + revengeofra.
+  - BG (`14` rewires): normalized `RNG` imports across dragonstone + bg_dragonstone families.
+  - retained total: `26` import-only rewires across `26` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `web` FAIL, harmonized `clashofthegods` compile PASS.
+  - `web` first-fail moved off unresolved RNG symbols into amazon boundary mismatches:
+    - `CommonException` throws/override mismatch lane in amazon room/state/enemy classes,
+    - mixed `Pair` namespace incompatibilities in amazon `PlayerRoundInfo` and `PlayGameState`.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not BF/BG import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-184147-hardcut-live-batchBFBG-multi-game-rng-import-rewire26/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/273-hard-cut-live-batchBFBG-multi-game-rng-import-rewire26-report-20260302.md`
+- Measured movement:
+  - unresolved RNG import frontier cleared for targeted families; fail-shift advanced to narrower amazon exception/Pair boundary lane.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

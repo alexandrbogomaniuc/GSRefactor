@@ -10342,3 +10342,43 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.30-2.00h` (`~0.04-0.25` workdays), next lane is amazon RNG import normalization from current web first-fail.
+
+### 2026-03-02 18:36 UTC
+- Produced final clean GS canonical export from single canonical source path:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/gs/`
+- Hygiene actions:
+  - removed metadata/temp artifacts from source pack (`.DS_Store`, `__MACOSX`, `._*`, `*.tmp`, `*.temp`, `*.swp`, `*.swo`, `*~`).
+  - regenerated proof files:
+    - `UPSTREAM_PACK_STATUS.md`
+    - `PACK_INTEGRITY_REPORT.md`
+    - `FILE_HASH_MANIFEST.sha256`
+- Validation evidence:
+  - canonical-doc stale-path grep: no matches for `/Users/alexb/Documents/Dev/`.
+  - `/slot/v1/history` appears only in `obsolete/README.md`.
+  - no legacy `/v1/*` browser endpoint naming in canonical docs.
+  - JSON parse: OK for all fixtures/schemas + `contract-lock.json`.
+  - contract-lock verification: OK (`markdown=7`, `fixtures=20`, `schemas=16`).
+  - hash manifest verification: OK (`entries=49`).
+- Fresh export:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/gs-canonical-pack-clean-final-20260302T183537Z.tar.gz`
+  - SHA-256: `2b79cf96fc9a6012baedc581ebdd4fd164a17b678a316a91249904afe6017caf`
+  - archive metadata check: OK (no forbidden AppleDouble/macOS temp artifacts).
+
+### 2026-03-02 18:45 UTC
+- Continued Project 02 stabilization with integrated live batches `BF+BG` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BF (`12` rewires): `RNG` import normalization across amazon + pirates-common-math + piratespov + piratesdmc + revengeofra.
+  - BG (`14` rewires): `RNG` import normalization across dragonstone + bg_dragonstone families.
+  - retained total: `26` import-only rewires across `26` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `web` FAIL; harmonized `clashofthegods` compile PASS.
+  - `web` first-fail shifted from unresolved RNG symbols to amazon `CommonException` throws-contract and `Pair` boundary mismatches.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-184147-hardcut-live-batchBFBG-multi-game-rng-import-rewire26/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/273-hard-cut-live-batchBFBG-multi-game-rng-import-rewire26-report-20260302.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- Next step:
+  - commit/push BF+BG checkpoint, then execute bounded amazon exception/Pair boundary normalization wave.

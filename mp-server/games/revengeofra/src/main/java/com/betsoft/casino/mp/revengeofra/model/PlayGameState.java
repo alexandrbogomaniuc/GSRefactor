@@ -12,7 +12,7 @@ import com.betsoft.casino.teststand.TestStandLocal;
 import com.betsoft.casino.utils.TObject;
 import com.dgphoenix.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.dgphoenix.casino.common.util.Triple;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import org.kynosarges.tektosyne.geometry.PointD;

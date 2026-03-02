@@ -13,7 +13,7 @@ import com.betsoft.casino.mp.movement.generators.TrajectoryGenerator3D;
 import com.betsoft.casino.mp.piratescommon.model.math.EnemyPrize;
 import com.betsoft.casino.mp.piratescommon.model.math.EnemyType;
 import com.betsoft.casino.mp.piratescommon.model.math.MathData;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

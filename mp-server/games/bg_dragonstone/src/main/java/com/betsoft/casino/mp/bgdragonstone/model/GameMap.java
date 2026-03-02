@@ -11,7 +11,7 @@ import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.model.movement.*;
 import com.betsoft.casino.mp.movement.SpiderSwarmAngleTrajectoryGenerator;
 import com.dgphoenix.casino.common.util.Pair;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;

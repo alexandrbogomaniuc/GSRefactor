@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.bgdragonstone.model;
 import com.betsoft.casino.mp.model.GameType;
 import com.betsoft.casino.mp.model.SpecialWeaponType;
 import com.betsoft.casino.teststand.TestStandFeature;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;

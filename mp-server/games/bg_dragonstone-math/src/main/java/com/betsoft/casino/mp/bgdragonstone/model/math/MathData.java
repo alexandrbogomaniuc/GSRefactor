@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.bgdragonstone.model.math;
 
 import com.betsoft.casino.mp.bgdragonstone.model.math.config.GameConfig;
 import com.betsoft.casino.mp.model.gameconfig.GameTools;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import java.util.*;
 
 public class MathData {

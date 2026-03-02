@@ -1,0 +1,365 @@
+diff --git a/docs/12-work-diary.md b/docs/12-work-diary.md
+index 610402a47..18eb128a5 100644
+--- a/docs/12-work-diary.md
++++ b/docs/12-work-diary.md
+@@ -10342,3 +10342,24 @@
+   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+ - ETA refresh:
+   - stabilization/import-normalization remaining `~0.30-2.00h` (`~0.04-0.25` workdays), next lane is amazon RNG import normalization from current web first-fail.
++
++### 2026-03-02 18:36 UTC
++- Produced final clean GS canonical export from single canonical source path:
++  - `/Users/alexb/Documents/Dev/Dev_new/docs/gs/`
++- Hygiene actions:
++  - removed metadata/temp artifacts from source pack (`.DS_Store`, `__MACOSX`, `._*`, `*.tmp`, `*.temp`, `*.swp`, `*.swo`, `*~`).
++  - regenerated proof files:
++    - `UPSTREAM_PACK_STATUS.md`
++    - `PACK_INTEGRITY_REPORT.md`
++    - `FILE_HASH_MANIFEST.sha256`
++- Validation evidence:
++  - canonical-doc stale-path grep: no matches for `/Users/alexb/Documents/Dev/`.
++  - `/slot/v1/history` appears only in `obsolete/README.md`.
++  - no legacy `/v1/*` browser endpoint naming in canonical docs.
++  - JSON parse: OK for all fixtures/schemas + `contract-lock.json`.
++  - contract-lock verification: OK (`markdown=7`, `fixtures=20`, `schemas=16`).
++  - hash manifest verification: OK (`entries=49`).
++- Fresh export:
++  - `/Users/alexb/Documents/Dev/Dev_new/docs/gs-canonical-pack-clean-final-20260302T183537Z.tar.gz`
++  - SHA-256: `2b79cf96fc9a6012baedc581ebdd4fd164a17b678a316a91249904afe6017caf`
++  - archive metadata check: OK (no forbidden AppleDouble/macOS temp artifacts).
+diff --git a/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java b/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java
+index 04d8ba3b3..f3337abbb 100644
+--- a/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java
++++ b/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java
+@@ -14,7 +14,7 @@ import com.betsoft.casino.teststand.TestStandFeature;
+ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.abs.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.abs.casino.common.util.Triple;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/GameMap.java b/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/GameMap.java
+index 5761edd00..2510e0eea 100644
+--- a/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/GameMap.java
++++ b/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/GameMap.java
+@@ -10,7 +10,7 @@ import com.betsoft.casino.mp.model.movement.Point;
+ import com.betsoft.casino.mp.model.movement.TeleportPoint;
+ import com.betsoft.casino.mp.model.movement.Trajectory;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/PlayGameState.java b/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/PlayGameState.java
+index eefafcfc0..2a44f05d4 100644
+--- a/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/PlayGameState.java
++++ b/mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/PlayGameState.java
+@@ -15,7 +15,7 @@ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.betsoft.casino.utils.TObject;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ 
+ import java.util.*;
+diff --git a/mp-server/games/bg_dragonstone-math/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/math/MathData.java b/mp-server/games/bg_dragonstone-math/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/math/MathData.java
+index 971d01f73..7e669a8e7 100644
+--- a/mp-server/games/bg_dragonstone-math/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/math/MathData.java
++++ b/mp-server/games/bg_dragonstone-math/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/math/MathData.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.bgdragonstone.model.math;
+ 
+ import com.betsoft.casino.mp.bgdragonstone.model.math.config.GameConfig;
+ import com.betsoft.casino.mp.model.gameconfig.GameTools;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import java.util.*;
+ 
+ public class MathData {
+diff --git a/mp-server/games/bg_dragonstone-math/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/math/config/SpawnConfig.java b/mp-server/games/bg_dragonstone-math/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/math/config/SpawnConfig.java
+index ae6a075be..1208ab185 100644
+--- a/mp-server/games/bg_dragonstone-math/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/math/config/SpawnConfig.java
++++ b/mp-server/games/bg_dragonstone-math/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/math/config/SpawnConfig.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.bgdragonstone.model.math.config;
+ import com.betsoft.casino.mp.bgdragonstone.model.math.EnemyType;
+ import com.betsoft.casino.mp.bgdragonstone.model.math.SpawnData;
+ import com.betsoft.casino.mp.model.gameconfig.ISpawnConfig;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ 
+ import java.util.Map;
+ 
+diff --git a/mp-server/games/bg_dragonstone-math/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/math/slot/MiniSlot.java b/mp-server/games/bg_dragonstone-math/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/math/slot/MiniSlot.java
+index 166ff26d0..1a47c0828 100644
+--- a/mp-server/games/bg_dragonstone-math/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/math/slot/MiniSlot.java
++++ b/mp-server/games/bg_dragonstone-math/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/math/slot/MiniSlot.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.bgdragonstone.model.math.slot;
+ 
+ import com.betsoft.casino.mp.bgdragonstone.model.math.config.SlotParams;
+ import com.betsoft.casino.mp.model.ISpinResult;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+diff --git a/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/BGDragonStoneTestStand.java b/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/BGDragonStoneTestStand.java
+index 4830ca04c..17c20a2a7 100644
+--- a/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/BGDragonStoneTestStand.java
++++ b/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/BGDragonStoneTestStand.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.bgdragonstone.model;
+ import com.betsoft.casino.mp.model.GameType;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+ import com.betsoft.casino.teststand.TestStandFeature;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import java.util.Arrays;
+ import java.util.List;
+ import java.util.Map;
+diff --git a/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/EnemyGame.java b/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/EnemyGame.java
+index 725471dee..7ad219205 100644
+--- a/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/EnemyGame.java
++++ b/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/EnemyGame.java
+@@ -19,7 +19,7 @@ import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
+ import com.betsoft.casino.teststand.TestStandFeature;
+ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.Logger;
+ import java.util.*;
+ import static com.betsoft.casino.mp.bgdragonstone.model.math.EnemyRange.SPECTERS;
+diff --git a/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/GameMap.java b/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/GameMap.java
+index af0c063ab..3f9e8dcfd 100644
+--- a/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/GameMap.java
++++ b/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/GameMap.java
+@@ -11,7 +11,7 @@ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.movement.*;
+ import com.betsoft.casino.mp.movement.SpiderSwarmAngleTrajectoryGenerator;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/PlayGameState.java b/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/PlayGameState.java
+index 632f541ae..63882de10 100644
+--- a/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/PlayGameState.java
++++ b/mp-server/games/bg_dragonstone/src/main/java/com/betsoft/casino/mp/bgdragonstone/model/PlayGameState.java
+@@ -15,7 +15,7 @@ import com.betsoft.casino.utils.TInboundObject;
+ import com.betsoft.casino.utils.TObject;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ 
+diff --git a/mp-server/games/dragonstone-math/src/main/java/com/betsoft/casino/mp/dragonstone/model/math/MathData.java b/mp-server/games/dragonstone-math/src/main/java/com/betsoft/casino/mp/dragonstone/model/math/MathData.java
+index a57c9f2da..466bb1500 100644
+--- a/mp-server/games/dragonstone-math/src/main/java/com/betsoft/casino/mp/dragonstone/model/math/MathData.java
++++ b/mp-server/games/dragonstone-math/src/main/java/com/betsoft/casino/mp/dragonstone/model/math/MathData.java
+@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.dragonstone.model.math.config.GameConfig;
+ import com.betsoft.casino.mp.dragonstone.model.math.config.WeaponDrop;
+ import com.betsoft.casino.mp.model.gameconfig.GameTools;
+ import com.betsoft.casino.mp.model.movement.MathUtils;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ 
+ import java.util.*;
+ 
+diff --git a/mp-server/games/dragonstone-math/src/main/java/com/betsoft/casino/mp/dragonstone/model/math/config/SpawnConfig.java b/mp-server/games/dragonstone-math/src/main/java/com/betsoft/casino/mp/dragonstone/model/math/config/SpawnConfig.java
+index b8f96c386..558832022 100644
+--- a/mp-server/games/dragonstone-math/src/main/java/com/betsoft/casino/mp/dragonstone/model/math/config/SpawnConfig.java
++++ b/mp-server/games/dragonstone-math/src/main/java/com/betsoft/casino/mp/dragonstone/model/math/config/SpawnConfig.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.dragonstone.model.math.config;
+ import com.betsoft.casino.mp.dragonstone.model.math.EnemyType;
+ import com.betsoft.casino.mp.dragonstone.model.math.SpawnData;
+ import com.betsoft.casino.mp.model.gameconfig.ISpawnConfig;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ 
+ import java.util.Map;
+ 
+diff --git a/mp-server/games/dragonstone-math/src/main/java/com/betsoft/casino/mp/dragonstone/model/math/slot/MiniSlot.java b/mp-server/games/dragonstone-math/src/main/java/com/betsoft/casino/mp/dragonstone/model/math/slot/MiniSlot.java
+index 83c02bd9a..264bf227f 100644
+--- a/mp-server/games/dragonstone-math/src/main/java/com/betsoft/casino/mp/dragonstone/model/math/slot/MiniSlot.java
++++ b/mp-server/games/dragonstone-math/src/main/java/com/betsoft/casino/mp/dragonstone/model/math/slot/MiniSlot.java
+@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.dragonstone.model.math.slot;
+ 
+ import com.betsoft.casino.mp.dragonstone.model.math.config.SlotParams;
+ import com.betsoft.casino.mp.model.ISpinResult;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+diff --git a/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/DragonStoneTestStand.java b/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/DragonStoneTestStand.java
+index d84e996ce..79208016d 100644
+--- a/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/DragonStoneTestStand.java
++++ b/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/DragonStoneTestStand.java
+@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.dragonstone.model;
+ import com.betsoft.casino.mp.model.GameType;
+ import com.betsoft.casino.mp.model.SpecialWeaponType;
+ import com.betsoft.casino.teststand.TestStandFeature;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ 
+ import java.util.Arrays;
+ import java.util.List;
+diff --git a/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/EnemyGame.java b/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/EnemyGame.java
+index b534b031e..83a65d668 100644
+--- a/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/EnemyGame.java
++++ b/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/EnemyGame.java
+@@ -20,7 +20,7 @@ import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
+ import com.betsoft.casino.teststand.TestStandFeature;
+ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.dgphoenix.casino.common.exception.CommonException;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import org.apache.logging.log4j.Logger;
+ 
+ import java.util.*;
+diff --git a/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/GameMap.java b/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/GameMap.java
+index 50cf347fc..5178b729b 100644
+--- a/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/GameMap.java
++++ b/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/GameMap.java
+@@ -11,7 +11,7 @@ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.movement.*;
+ import com.betsoft.casino.mp.movement.SpiderSwarmAngleTrajectoryGenerator;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/PlayGameState.java b/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/PlayGameState.java
+index a5fff2ab8..b1998fb08 100644
+--- a/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/PlayGameState.java
++++ b/mp-server/games/dragonstone/src/main/java/com/betsoft/casino/mp/dragonstone/model/PlayGameState.java
+@@ -14,7 +14,7 @@ import com.betsoft.casino.teststand.TeststandConst;
+ import com.betsoft.casino.utils.TObject;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ 
+diff --git a/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/MathQuestData.java b/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/MathQuestData.java
+index a0edfedb3..5789cb8e9 100644
+--- a/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/MathQuestData.java
++++ b/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/MathQuestData.java
+@@ -1,5 +1,5 @@
+ package com.betsoft.casino.mp.piratescommon.model.math;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.google.common.util.concurrent.AtomicDouble;
+ import java.util.HashMap;
+ import java.util.Map;
+diff --git a/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java b/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java
+index 6575d52eb..47c65578d 100644
+--- a/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java
++++ b/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java
+@@ -9,7 +9,7 @@ import com.betsoft.casino.teststand.TestStandFeature;
+ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.abs.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.Triple;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/GameMap.java b/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/GameMap.java
+index fe5954dae..35db5af98 100644
+--- a/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/GameMap.java
++++ b/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/GameMap.java
+@@ -17,7 +17,7 @@ import com.betsoft.casino.mp.piratescommon.model.math.EnemyPrize;
+ import com.betsoft.casino.mp.piratescommon.model.math.EnemyType;
+ import com.betsoft.casino.mp.piratescommon.model.math.MathData;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/PlayGameState.java b/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/PlayGameState.java
+index cc07d39db..3b01bc82b 100644
+--- a/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/PlayGameState.java
++++ b/mp-server/games/piratesdmc/src/main/java/com/betsoft/casino/mp/piratesdmc/model/PlayGameState.java
+@@ -14,7 +14,7 @@ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.betsoft.casino.utils.TObject;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.Triple;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import com.google.common.collect.ImmutableList;
+diff --git a/mp-server/games/piratespov/src/main/java/com/betsoft/casino/mp/piratespov/model/GameMap.java b/mp-server/games/piratespov/src/main/java/com/betsoft/casino/mp/piratespov/model/GameMap.java
+index 0ead091ba..6adac9443 100644
+--- a/mp-server/games/piratespov/src/main/java/com/betsoft/casino/mp/piratespov/model/GameMap.java
++++ b/mp-server/games/piratespov/src/main/java/com/betsoft/casino/mp/piratespov/model/GameMap.java
+@@ -13,7 +13,7 @@ import com.betsoft.casino.mp.movement.generators.TrajectoryGenerator3D;
+ import com.betsoft.casino.mp.piratescommon.model.math.EnemyPrize;
+ import com.betsoft.casino.mp.piratescommon.model.math.EnemyType;
+ import com.betsoft.casino.mp.piratescommon.model.math.MathData;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/piratespov/src/main/java/com/betsoft/casino/mp/piratespov/model/PlayGameState.java b/mp-server/games/piratespov/src/main/java/com/betsoft/casino/mp/piratespov/model/PlayGameState.java
+index 1cc2c7e27..c89f1bec4 100644
+--- a/mp-server/games/piratespov/src/main/java/com/betsoft/casino/mp/piratespov/model/PlayGameState.java
++++ b/mp-server/games/piratespov/src/main/java/com/betsoft/casino/mp/piratespov/model/PlayGameState.java
+@@ -13,7 +13,7 @@ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.betsoft.casino.utils.TObject;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import org.kynosarges.tektosyne.geometry.PointD;
+ 
+diff --git a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/EnemyGame.java b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/EnemyGame.java
+index bcc4c9304..2719c4e7f 100644
+--- a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/EnemyGame.java
++++ b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/EnemyGame.java
+@@ -14,7 +14,7 @@ import com.betsoft.casino.teststand.TestStandFeature;
+ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.Triple;
+ import org.apache.logging.log4j.Logger;
+ 
+diff --git a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/GameMap.java b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/GameMap.java
+index f1210c222..bc0a6c6c4 100644
+--- a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/GameMap.java
++++ b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/GameMap.java
+@@ -9,7 +9,7 @@ import com.betsoft.casino.mp.model.*;
+ import com.betsoft.casino.mp.model.movement.*;
+ import com.betsoft.casino.mp.revengeofra.model.math.*;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.esotericsoftware.kryo.Kryo;
+ import com.esotericsoftware.kryo.io.Input;
+ import com.esotericsoftware.kryo.io.Output;
+diff --git a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayGameState.java b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayGameState.java
+index b92ec6b8a..5f5a5c880 100644
+--- a/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayGameState.java
++++ b/mp-server/games/revengeofra/src/main/java/com/betsoft/casino/mp/revengeofra/model/PlayGameState.java
+@@ -12,7 +12,7 @@ import com.betsoft.casino.teststand.TestStandLocal;
+ import com.betsoft.casino.utils.TObject;
+ import com.dgphoenix.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.Pair;
+-import com.dgphoenix.casino.common.util.RNG;
++import com.abs.casino.common.util.RNG;
+ import com.dgphoenix.casino.common.util.Triple;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import org.kynosarges.tektosyne.geometry.PointD;

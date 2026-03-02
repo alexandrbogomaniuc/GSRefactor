@@ -2,7 +2,7 @@ package com.betsoft.casino.mp.bgdragonstone.model.math.slot;
 
 import com.betsoft.casino.mp.bgdragonstone.model.math.config.SlotParams;
 import com.betsoft.casino.mp.model.ISpinResult;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import java.util.ArrayList;
 import java.util.List;
 

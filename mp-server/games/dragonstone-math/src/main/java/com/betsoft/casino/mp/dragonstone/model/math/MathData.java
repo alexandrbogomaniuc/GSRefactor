@@ -5,7 +5,7 @@ import com.betsoft.casino.mp.dragonstone.model.math.config.GameConfig;
 import com.betsoft.casino.mp.dragonstone.model.math.config.WeaponDrop;
 import com.betsoft.casino.mp.model.gameconfig.GameTools;
 import com.betsoft.casino.mp.model.movement.MathUtils;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 
 import java.util.*;
 

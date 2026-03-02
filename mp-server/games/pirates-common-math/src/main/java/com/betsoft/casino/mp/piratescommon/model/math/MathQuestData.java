@@ -1,5 +1,5 @@
 package com.betsoft.casino.mp.piratescommon.model.math;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 import com.google.common.util.concurrent.AtomicDouble;
 import java.util.HashMap;
 import java.util.Map;

@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.dragonstone.model.math.config;
 import com.betsoft.casino.mp.dragonstone.model.math.EnemyType;
 import com.betsoft.casino.mp.dragonstone.model.math.SpawnData;
 import com.betsoft.casino.mp.model.gameconfig.ISpawnConfig;
-import com.dgphoenix.casino.common.util.RNG;
+import com.abs.casino.common.util.RNG;
 
 import java.util.Map;
 
