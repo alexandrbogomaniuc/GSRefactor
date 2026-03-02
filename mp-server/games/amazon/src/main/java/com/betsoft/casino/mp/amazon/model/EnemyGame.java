@@ -12,7 +12,7 @@ import com.betsoft.casino.mp.service.IGameConfigService;
 import com.betsoft.casino.mp.service.ITransportObjectsFactoryService;
 import com.betsoft.casino.teststand.TestStandFeature;
 import com.betsoft.casino.teststand.TestStandLocal;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.abs.casino.common.util.Pair;
 import com.abs.casino.common.util.RNG;
 import com.abs.casino.common.util.Triple;

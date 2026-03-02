@@ -3,7 +3,7 @@ package com.betsoft.casino.mp.amazon.model;
 import java.io.IOException;
 
 import com.betsoft.casino.mp.common.AbstractQualifyGameState;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

@@ -1,0 +1,2 @@
+mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/RoomSeats.java:3:import com.dgphoenix.casino.common.exception.CommonException;
+mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/GameMap.java:12:import com.dgphoenix.casino.common.util.Pair;

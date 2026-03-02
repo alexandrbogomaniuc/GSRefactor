@@ -1,0 +1,6 @@
+mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/EnemyGame.java
+mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/GameRoom.java
+mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/PlayGameState.java
+mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/PlayerRoundInfo.java
+mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/QualifyGameState.java
+mp-server/games/amazon/src/main/java/com/betsoft/casino/mp/amazon/model/WaitingPlayersGameState.java

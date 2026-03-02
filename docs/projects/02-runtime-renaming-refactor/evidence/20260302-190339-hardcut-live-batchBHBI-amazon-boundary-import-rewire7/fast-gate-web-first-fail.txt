@@ -1,0 +1,30 @@
+229:[ERROR] COMPILATION ERROR : 
+231:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java:[328,51] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+236:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java:[368,57] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+241:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java:[393,35] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+294:[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.0:compile (default-compile) on project pirates-common-math: Compilation failure: Compilation failure: 
+295:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java:[328,51] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+296:[ERROR]   required: java.util.List<com.abs.casino.common.util.Triple<T,V,java.lang.Double>>
+297:[ERROR]   found: java.util.List<com.dgphoenix.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>>
+298:[ERROR]   reason: cannot infer type-variable(s) T,V
+299:[ERROR]     (argument mismatch; java.util.List<com.dgphoenix.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>> cannot be converted to java.util.List<com.abs.casino.common.util.Triple<T,V,java.lang.Double>>)
+300:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java:[368,57] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+301:[ERROR]   required: java.util.List<com.abs.casino.common.util.Triple<T,V,java.lang.Double>>
+302:[ERROR]   found: java.util.List<com.dgphoenix.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>>
+303:[ERROR]   reason: cannot infer type-variable(s) T,V
+304:[ERROR]     (argument mismatch; java.util.List<com.dgphoenix.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>> cannot be converted to java.util.List<com.abs.casino.common.util.Triple<T,V,java.lang.Double>>)
+305:[ERROR] /Users/alexb/Documents/Dev/Dev_new/mp-server/games/pirates-common-math/src/main/java/com/betsoft/casino/mp/piratescommon/model/math/ShotCalculator.java:[393,35] method getRandomPair in class com.betsoft.casino.mp.model.gameconfig.GameTools cannot be applied to given types;
+306:[ERROR]   required: java.util.List<com.abs.casino.common.util.Triple<T,V,java.lang.Double>>
+307:[ERROR]   found: java.util.List<com.dgphoenix.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>>
+308:[ERROR]   reason: cannot infer type-variable(s) T,V
+309:[ERROR]     (argument mismatch; java.util.List<com.dgphoenix.casino.common.util.Triple<java.lang.Integer,java.lang.Integer,java.lang.Double>> cannot be converted to java.util.List<com.abs.casino.common.util.Triple<T,V,java.lang.Double>>)
+310:[ERROR] -> [Help 1]
+311:[ERROR] 
+312:[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+313:[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+314:[ERROR] 
+315:[ERROR] For more information about the errors and possible solutions, please read the following articles:
+316:[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+317:[ERROR] 
+318:[ERROR] After correcting the problems, you can resume the build with the command
+319:[ERROR]   mvn <args> -rf :pirates-common-math

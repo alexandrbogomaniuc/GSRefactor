@@ -13,8 +13,8 @@ import com.betsoft.casino.mp.model.quests.ITreasureProgress;
 import com.betsoft.casino.teststand.TestStandFeature;
 import com.betsoft.casino.teststand.TestStandLocal;
 import com.betsoft.casino.utils.TObject;
-import com.dgphoenix.casino.common.exception.CommonException;
-import com.dgphoenix.casino.common.util.Pair;
+import com.abs.casino.common.exception.CommonException;
+import com.abs.casino.common.util.Pair;
 import com.abs.casino.common.util.RNG;
 import org.kynosarges.tektosyne.geometry.PointD;
 

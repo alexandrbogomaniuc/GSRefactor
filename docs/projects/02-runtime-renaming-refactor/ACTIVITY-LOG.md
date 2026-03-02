@@ -5384,3 +5384,21 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - unresolved RNG import frontier cleared for targeted families; fail-shift advanced to narrower amazon exception/Pair boundary lane.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-02 19:06 UTC (Hard-cut live Batch BH+BI)
+- Continued Project 02 stabilization with integrated live batches `BH+BI` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BH (`2` rewires): normalized `PlayGameState` `CommonException` + `Pair` imports (`com.dgphoenix -> com.abs`).
+  - BI (`5` rewires): normalized amazon `CommonException` imports in `QualifyGameState`, `WaitingPlayersGameState`, `GameRoom`, `EnemyGame` and `Pair` import in `PlayerRoundInfo`.
+  - retained total: `7` import/signature-boundary rewires across `6` files.
+- Validation:
+  - targeted gates: `common-games` PASS, `web` FAIL, harmonized `clashofthegods` compile PASS.
+  - `web` first-fail moved off amazon and into `pirates-common-math` Triple boundary mismatch (`ShotCalculator` `GameTools.getRandomPair` call chain).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not BH/BI import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-190339-hardcut-live-batchBHBI-amazon-boundary-import-rewire7/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/274-hard-cut-live-batchBHBI-amazon-boundary-import-rewire7-report-20260302.md`
+- Measured movement:
+  - cleared amazon exception/Pair boundary lane; fail-shift advanced to pirates-common-math Triple namespace harmonization.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

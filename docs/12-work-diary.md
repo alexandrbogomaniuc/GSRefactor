@@ -10397,3 +10397,22 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~1.00-6.00h` (`~0.13-0.75` workdays), next lane is amazon `CommonException` throws-contract and `Pair` namespace harmonization.
+
+### 2026-03-02 19:06 UTC
+- Continued Project 02 stabilization with integrated live batches `BH+BI` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - BH (`2` rewires): `PlayGameState` `CommonException` + `Pair` import normalization.
+  - BI (`5` rewires): `CommonException` import normalization in `QualifyGameState`, `WaitingPlayersGameState`, `GameRoom`, `EnemyGame`, plus `PlayerRoundInfo` `Pair` import normalization.
+  - retained total: `7` import/signature-boundary rewires across `6` files.
+- Validation:
+  - targeted gates: `common-games` PASS; `web` FAIL; harmonized `clashofthegods` compile PASS.
+  - `web` first-fail shifted from amazon to `pirates-common-math` Triple namespace boundary (`ShotCalculator` vs `GameTools.getRandomPair`).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+- Evidence/report:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260302-190339-hardcut-live-batchBHBI-amazon-boundary-import-rewire7/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/274-hard-cut-live-batchBHBI-amazon-boundary-import-rewire7-report-20260302.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- Next step:
+  - commit/push BH+BI checkpoint, then execute bounded `pirates-common-math` Triple boundary harmonization wave.
