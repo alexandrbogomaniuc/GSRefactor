@@ -11141,3 +11141,20 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - runtime closure/signoff remaining `~0.00-0.25h` (`~0.00-0.03` workdays), pending optional observation-only checkpoint.
+
+### 2026-03-03 08:36 UTC
+- Per request, pulled latest Git state first in `/Users/alexb/Documents/Dev/Dev_new` (`git pull --rebase origin main`), then re-applied local work.
+- Produced one fresh clean GS canonical export from:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/gs/`
+- Final export artifact:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/gs-canonical-pack-clean-final-20260303T080756Z.tar.gz`
+  - SHA-256: `31c7e8fa375f3e617d36ea8f200c0909ef18717be58a2f8a1748cda236d74058`
+- Proof/hygiene actions completed:
+  - regenerated `UPSTREAM_PACK_STATUS.md`, `PACK_INTEGRITY_REPORT.md`, `FILE_HASH_MANIFEST.sha256`.
+  - removed metadata junk from source (`.DS_Store`, `__MACOSX`, `._*`, temp/swap files).
+  - archive junk scan PASS.
+  - stale canonical path grep PASS, history alias scope PASS, legacy `/v1/*` canonical grep PASS.
+  - JSON parse PASS and `contract-lock` verification PASS (`7/20/16`).
+- Git commits/pushes completed on `main`:
+  - `e58d70a8f`, `9fa347a9f`, `012fc3208`, `78f80cdd9`, `df6ad0952`, `a4ddd4145`.
+- Note: background `run-validation.sh` loops were observed mutating evidence logs during commit window; processes were terminated and remaining evidence deltas were committed/pushed.
