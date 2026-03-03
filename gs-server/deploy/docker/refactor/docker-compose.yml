@@ -4,7 +4,9 @@ services:
   gs:
     build: ../configs/gs
     image: refactor-jetty-gs
+    init: true
     restart: unless-stopped
+    stop_grace_period: 30s
     environment:
       - CASSANDRA_HOST=${CASSANDRA_HOST}
       - CASSANDRA_PORT=${CASSANDRA_PORT}
@@ -33,7 +35,9 @@ services:
   mp:
     build: ../configs/gs
     image: refactor-jetty-gs
+    init: true
     restart: unless-stopped
+    stop_grace_period: 30s
     working_dir: /app
     environment:
       - CASSANDRA_HOST=${CASSANDRA_HOST}
@@ -98,7 +102,9 @@ services:
 
   c1-refactor:
     image: ${CASSANDRA_REFACTOR_TARGET_IMAGE:-cassandra:4.1}
+    init: true
     restart: unless-stopped
+    stop_grace_period: 90s
     volumes:
       - "../../../../Doker/runtime-gs/logs/cassandra-refactor:/var/log/cassandra"
       - "refactor-cassandra-target-data:/var/lib/cassandra"
@@ -113,7 +119,9 @@ services:
 
   zookeeper:
     image: zookeeper:3.8
+    init: true
     restart: unless-stopped
+    stop_grace_period: 45s
     networks:
       - refactor-network
     environment:
@@ -123,7 +131,9 @@ services:
 
   kafka:
     image: confluentinc/cp-kafka:7.3.2
+    init: true
     restart: unless-stopped
+    stop_grace_period: 60s
     networks:
       - refactor-network
     depends_on:
@@ -156,7 +166,9 @@ services:
   static:
     build: ../configs/static
     image: refactor-static
+    init: true
     restart: unless-stopped
+    stop_grace_period: 30s
     volumes:
       - "../../../../Doker/runtime-gs/webapps/gs/ROOT:/www/html/gss:ro"
       - "../../../../Doker/runtime-gs/static:/www/html/stat"

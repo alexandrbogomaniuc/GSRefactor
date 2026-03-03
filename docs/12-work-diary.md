@@ -11049,3 +11049,21 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - residual runtime closure (`STEP09` repeated-run consistency / soak) `~0.10-1.50h` (`~0.01-0.19` workdays), with latest full matrix first-pass PASS.
+
+### 2026-03-03 07:57 UTC
+- Continued Project 02 stabilization in `/Users/alexb/Documents/Dev/Dev_new` with integrated hard-cut wave `CU+CV`.
+- Batch content:
+  - `CV`: added startup quiescence controls in `refactor-start.sh` (`REFACTOR_STRICT_READINESS`, edge stability checks, warm alias bounded retries) and applied core service lifecycle controls in compose (`init` + `stop_grace_period` for `gs/mp/c1-refactor/zookeeper/kafka/static`).
+  - `CU`: added post-success stability passes in `refactor-onboard.mjs` (`REFACTOR_SMOKE_STABILITY_PASSES`, `REFACTOR_SMOKE_STABILITY_GAP_MS`, `REFACTOR_SMOKE_STABILITY_RETRIES`, `REFACTOR_SMOKE_STABILITY_DELAY_MS`) and updated README.
+- Validation outcomes:
+  - targeted fast gates: `common-games PASS`, `bots PASS`, `web PASS`, `clashofthegods PASS`.
+  - full matrix profile: `fast_gate_batchA PASS`, `fast_gate_batchB PASS`, `prewarm PASS`, `validation PASS`, `STEP09 retry1 SKIP`.
+  - key movement: first-pass STEP09 remains stable while smoke now enforces additional post-pass consistency checks.
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-075103-hardcut-live-batchCUCV-step09-soak-quiescence/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/296-hard-cut-live-batchCUCV-step09-soak-quiescence-rewire20-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - residual runtime closure (`STEP09` repeated-run soak and final signoff) `~0.05-1.00h` (`~0.01-0.13` workdays).

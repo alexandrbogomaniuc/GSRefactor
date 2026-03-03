@@ -1,0 +1,35 @@
+gs-server/deploy/scripts/refactor-start.sh:60:REFACTOR_STRICT_READINESS="${REFACTOR_STRICT_READINESS:-1}"
+gs-server/deploy/scripts/refactor-start.sh:63:REFACTOR_EDGE_STABILITY_CHECKS="${REFACTOR_EDGE_STABILITY_CHECKS:-3}"
+gs-server/deploy/scripts/refactor-start.sh:64:REFACTOR_EDGE_STABILITY_DELAY_SEC="${REFACTOR_EDGE_STABILITY_DELAY_SEC:-3}"
+gs-server/deploy/scripts/refactor-start.sh:65:REFACTOR_WARM_ALIAS_RETRIES="${REFACTOR_WARM_ALIAS_RETRIES:-3}"
+gs-server/deploy/scripts/refactor-start.sh:66:REFACTOR_WARM_ALIAS_DELAY_SEC="${REFACTOR_WARM_ALIAS_DELAY_SEC:-2}"
+gs-server/deploy/scripts/refactor-start.sh:285:  local checks="${REFACTOR_EDGE_STABILITY_CHECKS}"
+gs-server/deploy/scripts/refactor-start.sh:286:  local delay="${REFACTOR_EDGE_STABILITY_DELAY_SEC}"
+gs-server/deploy/scripts/refactor-start.sh:357:  local strict="${REFACTOR_STRICT_READINESS}"
+gs-server/deploy/scripts/refactor-start.sh:379:  local retries="${REFACTOR_WARM_ALIAS_RETRIES}"
+gs-server/deploy/scripts/refactor-start.sh:380:  local delay="${REFACTOR_WARM_ALIAS_DELAY_SEC}"
+gs-server/deploy/scripts/refactor-start.sh:424:      if is_truthy "$REFACTOR_STRICT_READINESS"; then
+gs-server/deploy/scripts/refactor-onboard.mjs:709:    log('STABILITY-PASS: no stability checks resolved; skipping additional passes.');
+gs-server/deploy/scripts/refactor-onboard.mjs:717:      `STABILITY-PASS: running pass ${pass}/${totalPasses} on ${stabilityChecks.length} critical checks (retries=${maxAttempts}, delayMs=${retryDelayMs}).`
+gs-server/deploy/scripts/refactor-onboard.mjs:735:    log(`STABILITY-PASS: pass ${pass}/${totalPasses} succeeded.`);
+gs-server/deploy/scripts/refactor-onboard.mjs:810:  const stabilityPasses = Math.max(1, parsePositiveIntEnv('REFACTOR_SMOKE_STABILITY_PASSES', 2));
+gs-server/deploy/scripts/refactor-onboard.mjs:811:  const stabilityGapMs = Math.max(0, Number(process.env.REFACTOR_SMOKE_STABILITY_GAP_MS ?? '1500'));
+gs-server/deploy/scripts/refactor-onboard.mjs:812:  const stabilityRetries = Math.max(1, parsePositiveIntEnv('REFACTOR_SMOKE_STABILITY_RETRIES', 2));
+gs-server/deploy/scripts/refactor-onboard.mjs:813:  const stabilityDelayMs = Math.max(250, Number(process.env.REFACTOR_SMOKE_STABILITY_DELAY_MS ?? '1000'));
+gs-server/deploy/docker/refactor/README.md:84:  - `REFACTOR_SMOKE_STABILITY_PASSES=2` runs extra post-pass consistency probes after initial smoke success.
+gs-server/deploy/docker/refactor/README.md:85:  - `REFACTOR_SMOKE_STABILITY_GAP_MS=1500` waits between stability passes.
+gs-server/deploy/docker/refactor/README.md:86:  - `REFACTOR_SMOKE_STABILITY_RETRIES=2` retry count per stability pass check.
+gs-server/deploy/docker/refactor/README.md:87:  - `REFACTOR_SMOKE_STABILITY_DELAY_MS=1000` delay between retries during stability passes.
+gs-server/deploy/docker/refactor/README.md:88:  - Set `REFACTOR_SMOKE_STABILITY_PASSES=1` to disable additional stability passes when quick triage speed is preferred.
+gs-server/deploy/docker/refactor/docker-compose.yml:7:    init: true
+gs-server/deploy/docker/refactor/docker-compose.yml:9:    stop_grace_period: 30s
+gs-server/deploy/docker/refactor/docker-compose.yml:38:    init: true
+gs-server/deploy/docker/refactor/docker-compose.yml:40:    stop_grace_period: 30s
+gs-server/deploy/docker/refactor/docker-compose.yml:105:    init: true
+gs-server/deploy/docker/refactor/docker-compose.yml:107:    stop_grace_period: 90s
+gs-server/deploy/docker/refactor/docker-compose.yml:122:    init: true
+gs-server/deploy/docker/refactor/docker-compose.yml:124:    stop_grace_period: 45s
+gs-server/deploy/docker/refactor/docker-compose.yml:134:    init: true
+gs-server/deploy/docker/refactor/docker-compose.yml:136:    stop_grace_period: 60s
+gs-server/deploy/docker/refactor/docker-compose.yml:169:    init: true
+gs-server/deploy/docker/refactor/docker-compose.yml:171:    stop_grace_period: 30s

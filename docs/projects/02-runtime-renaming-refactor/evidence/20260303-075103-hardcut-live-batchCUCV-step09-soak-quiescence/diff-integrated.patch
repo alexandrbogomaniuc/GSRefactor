@@ -1,0 +1,373 @@
+diff --git a/gs-server/deploy/docker/refactor/README.md b/gs-server/deploy/docker/refactor/README.md
+index ba7bc4b4e..c80ba7805 100644
+--- a/gs-server/deploy/docker/refactor/README.md
++++ b/gs-server/deploy/docker/refactor/README.md
+@@ -80,6 +80,12 @@ curl -sS http://127.0.0.1:18078/health
+ - Infra auto-recovery knobs (default enabled):
+   - `REFACTOR_SMOKE_AUTORECOVER=1` enables recovery when infra signals are detected (`0` disables).
+   - `REFACTOR_SMOKE_RECOVERY_ATTEMPTS=2` controls bounded recovery attempts (`0` means no attempts even if auto-recovery is enabled).
++- Stability-pass knobs (default enabled):
++  - `REFACTOR_SMOKE_STABILITY_PASSES=2` runs extra post-pass consistency probes after initial smoke success.
++  - `REFACTOR_SMOKE_STABILITY_GAP_MS=1500` waits between stability passes.
++  - `REFACTOR_SMOKE_STABILITY_RETRIES=2` retry count per stability pass check.
++  - `REFACTOR_SMOKE_STABILITY_DELAY_MS=1000` delay between retries during stability passes.
++  - Set `REFACTOR_SMOKE_STABILITY_PASSES=1` to disable additional stability passes when quick triage speed is preferred.
+ - Infra diagnostics emitted on infra-blocked path:
+   - `docker compose -p refactor -f ./gs-server/deploy/docker/refactor/docker-compose.yml ps c1-refactor zookeeper kafka mp gs static` summary.
+   - Per-core-service diagnostics include `status`, `restartCount`, and `uptimeSeconds` (`c1-refactor`, `zookeeper`, `kafka`, `mp`, `gs`, `static`).
+@@ -91,6 +97,8 @@ curl -sS http://127.0.0.1:18078/health
+   - Waits (`3s` for `gs/static`-only recovery, `10s` when core services are included), then re-runs smoke probes.
+   - If recovery clears failures, smoke continues and can return `0`.
+   - If recovery does not clear failures, smoke stays infra-blocked and returns `3` with diagnostics.
++- Success semantics:
++  - Smoke exits `0` only after initial pass success and all configured stability passes succeed.
+ - Quick triage order when launch alias fails:
+   1. Check GS direct launch probe (`:18081/cwstartgamev2.do?...`) from smoke output.
+   2. Check GS support probe (`:18081/support/bankSelectAction.do?...`) from smoke output.
+diff --git a/gs-server/deploy/docker/refactor/docker-compose.yml b/gs-server/deploy/docker/refactor/docker-compose.yml
+index f338d063c..648cafd5c 100644
+--- a/gs-server/deploy/docker/refactor/docker-compose.yml
++++ b/gs-server/deploy/docker/refactor/docker-compose.yml
+@@ -4,7 +4,9 @@ services:
+   gs:
+     build: ../configs/gs
+     image: refactor-jetty-gs
++    init: true
+     restart: unless-stopped
++    stop_grace_period: 30s
+     environment:
+       - CASSANDRA_HOST=${CASSANDRA_HOST}
+       - CASSANDRA_PORT=${CASSANDRA_PORT}
+@@ -33,7 +35,9 @@ services:
+   mp:
+     build: ../configs/gs
+     image: refactor-jetty-gs
++    init: true
+     restart: unless-stopped
++    stop_grace_period: 30s
+     working_dir: /app
+     environment:
+       - CASSANDRA_HOST=${CASSANDRA_HOST}
+@@ -98,7 +102,9 @@ services:
+ 
+   c1-refactor:
+     image: ${CASSANDRA_REFACTOR_TARGET_IMAGE:-cassandra:4.1}
++    init: true
+     restart: unless-stopped
++    stop_grace_period: 90s
+     volumes:
+       - "../../../../Doker/runtime-gs/logs/cassandra-refactor:/var/log/cassandra"
+       - "refactor-cassandra-target-data:/var/lib/cassandra"
+@@ -113,7 +119,9 @@ services:
+ 
+   zookeeper:
+     image: zookeeper:3.8
++    init: true
+     restart: unless-stopped
++    stop_grace_period: 45s
+     networks:
+       - refactor-network
+     environment:
+@@ -123,7 +131,9 @@ services:
+ 
+   kafka:
+     image: confluentinc/cp-kafka:7.3.2
++    init: true
+     restart: unless-stopped
++    stop_grace_period: 60s
+     networks:
+       - refactor-network
+     depends_on:
+@@ -156,7 +166,9 @@ services:
+   static:
+     build: ../configs/static
+     image: refactor-static
++    init: true
+     restart: unless-stopped
++    stop_grace_period: 30s
+     volumes:
+       - "../../../../Doker/runtime-gs/webapps/gs/ROOT:/www/html/gss:ro"
+       - "../../../../Doker/runtime-gs/static:/www/html/stat"
+diff --git a/gs-server/deploy/scripts/refactor-onboard.mjs b/gs-server/deploy/scripts/refactor-onboard.mjs
+index ba00e0f66..2b4847d3c 100755
+--- a/gs-server/deploy/scripts/refactor-onboard.mjs
++++ b/gs-server/deploy/scripts/refactor-onboard.mjs
+@@ -692,6 +692,50 @@ async function runSmokePass(checks, { maxAttempts, retryDelayMs }) {
+   };
+ }
+ 
++function buildSmokeStabilityChecks(checks) {
++  const stabilityChecks = checks.filter((check) => check.stabilityCritical === true);
++  return stabilityChecks.length > 0 ? stabilityChecks : checks.filter((check) => check.required !== false);
++}
++
++async function runSmokeStabilityPasses(
++  checks,
++  { totalPasses, gapMs, maxAttempts, retryDelayMs, isInfraBlockedFailure, emitFailureHints }
++) {
++  if (totalPasses <= 1) {
++    return;
++  }
++  const stabilityChecks = buildSmokeStabilityChecks(checks);
++  if (stabilityChecks.length === 0) {
++    log('STABILITY-PASS: no stability checks resolved; skipping additional passes.');
++    return;
++  }
++  for (let pass = 2; pass <= totalPasses; pass += 1) {
++    if (gapMs > 0) {
++      await sleep(gapMs);
++    }
++    log(
++      `STABILITY-PASS: running pass ${pass}/${totalPasses} on ${stabilityChecks.length} critical checks (retries=${maxAttempts}, delayMs=${retryDelayMs}).`
++    );
++    const outcome = await runSmokePass(stabilityChecks, { maxAttempts, retryDelayMs });
++    if (outcome.failures > 0) {
++      if (emitFailureHints) {
++        emitFailureHints(outcome);
++      }
++      if (isInfraBlockedFailure(outcome)) {
++        fail(
++          `Smoke stability pass ${pass}/${totalPasses} failed with infrastructure signals. See diagnostics above.`,
++          3
++        );
++      }
++      fail(
++        `Smoke stability pass ${pass}/${totalPasses} failed (${outcome.failures} failure(s)). See lines above.`,
++        2
++      );
++    }
++    log(`STABILITY-PASS: pass ${pass}/${totalPasses} succeeded.`);
++  }
++}
++
+ async function smokeChecks() {
+   const primaryLaunchUrl = buildLaunchUrl();
+   const gsDirectLaunchUrl = buildGsDirectLaunchUrl();
+@@ -699,7 +743,12 @@ async function smokeChecks() {
+ 
+   checks.push(
+     // Use a concrete static game asset instead of "/" to avoid startup-time proxy false negatives.
+-    { label: 'Static asset route', url: 'http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json', okStatuses: [200] },
++    {
++      label: 'Static asset route',
++      url: 'http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json',
++      okStatuses: [200],
++      stabilityCritical: true,
++    },
+     // Diagnostic-only signal: can flap during startup even when launch path is healthy.
+     {
+       label: 'GS support route (diagnostic)',
+@@ -714,8 +763,14 @@ async function smokeChecks() {
+       okStatuses: [200],
+       required: false,
+       gsDirectProbe: true,
++      stabilityCritical: true,
++    },
++    {
++      label: 'Config service health',
++      url: 'http://127.0.0.1:18072/health',
++      okStatuses: [200],
++      stabilityCritical: true,
+     },
+-    { label: 'Config service health', url: 'http://127.0.0.1:18072/health', okStatuses: [200] },
+     { label: 'Dependency health: session-service', url: SESSION_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
+     { label: 'Dependency health: gameplay-orchestrator', url: GAMEPLAY_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
+     { label: 'Dependency health: wallet-adapter', url: WALLET_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
+@@ -725,6 +780,7 @@ async function smokeChecks() {
+       url: primaryLaunchUrl,
+       okStatuses: [200],
+       isLaunchAlias: true,
++      stabilityCritical: true,
+     },
+   );
+ 
+@@ -751,6 +807,10 @@ async function smokeChecks() {
+ 
+   const maxAttempts = Math.max(1, Number(process.env.REFACTOR_SMOKE_RETRIES ?? '10'));
+   const retryDelayMs = Math.max(250, Number(process.env.REFACTOR_SMOKE_DELAY_MS ?? '3000'));
++  const stabilityPasses = Math.max(1, parsePositiveIntEnv('REFACTOR_SMOKE_STABILITY_PASSES', 2));
++  const stabilityGapMs = Math.max(0, Number(process.env.REFACTOR_SMOKE_STABILITY_GAP_MS ?? '1500'));
++  const stabilityRetries = Math.max(1, parsePositiveIntEnv('REFACTOR_SMOKE_STABILITY_RETRIES', 2));
++  const stabilityDelayMs = Math.max(250, Number(process.env.REFACTOR_SMOKE_STABILITY_DELAY_MS ?? '1000'));
+ 
+   const autoRecoverEnabled = parseBooleanEnv('REFACTOR_SMOKE_AUTORECOVER', true);
+   const maxRecoveryAttempts = parsePositiveIntEnv('REFACTOR_SMOKE_RECOVERY_ATTEMPTS', 2);
+@@ -804,6 +864,27 @@ async function smokeChecks() {
+     fail(`Smoke checks failed (${outcome.failures} failure(s)). See lines above.`, 2);
+   }
+ 
++  await runSmokeStabilityPasses(checks, {
++    totalPasses: stabilityPasses,
++    gapMs: stabilityGapMs,
++    maxAttempts: stabilityRetries,
++    retryDelayMs: stabilityDelayMs,
++    isInfraBlockedFailure: (passOutcome) => passOutcome.launchAliasFailed && collectInfraSignals(passOutcome).length > 0,
++    emitFailureHints: (passOutcome) => {
++      if (!passOutcome.launchAliasFailed) {
++        return;
++      }
++      const infraSignals = collectInfraSignals(passOutcome);
++      if (infraSignals.length > 0) {
++        emitNginxUpstreamHints();
++        emitInfraDiagnostics();
++        log(
++          `INFRA-BLOCKED: Stability pass launch alias failed with infrastructure signals (${infraSignals.join(', ')}).`
++        );
++      }
++    },
++  });
++
+   log('Smoke checks passed. The refactor launch alias is reachable.');
+ }
+ 
+diff --git a/gs-server/deploy/scripts/refactor-start.sh b/gs-server/deploy/scripts/refactor-start.sh
+index 5f04b1bca..38c2551fc 100755
+--- a/gs-server/deploy/scripts/refactor-start.sh
++++ b/gs-server/deploy/scripts/refactor-start.sh
+@@ -57,12 +57,23 @@ STATIC_EXTERNAL_HOST="${STATIC_EXTERNAL_HOST:-$(cluster_cfg_or_default STATIC_EX
+ STATIC_EXTERNAL_PORT="${STATIC_EXTERNAL_PORT:-$(cluster_cfg_or_default STATIC_EXTERNAL_PORT "18080")}"
+ REFACTOR_READY_RETRIES="${REFACTOR_READY_RETRIES:-30}"
+ REFACTOR_READY_DELAY_SEC="${REFACTOR_READY_DELAY_SEC:-2}"
++REFACTOR_STRICT_READINESS="${REFACTOR_STRICT_READINESS:-1}"
+ REFACTOR_CORE_STABILITY_CHECKS="${REFACTOR_CORE_STABILITY_CHECKS:-3}"
+ REFACTOR_CORE_STABILITY_DELAY_SEC="${REFACTOR_CORE_STABILITY_DELAY_SEC:-3}"
++REFACTOR_EDGE_STABILITY_CHECKS="${REFACTOR_EDGE_STABILITY_CHECKS:-3}"
++REFACTOR_EDGE_STABILITY_DELAY_SEC="${REFACTOR_EDGE_STABILITY_DELAY_SEC:-3}"
++REFACTOR_WARM_ALIAS_RETRIES="${REFACTOR_WARM_ALIAS_RETRIES:-3}"
++REFACTOR_WARM_ALIAS_DELAY_SEC="${REFACTOR_WARM_ALIAS_DELAY_SEC:-2}"
+ 
+ log() { printf '[refactor-start] %s\n' "$*"; }
+ die() { printf '[refactor-start] ERROR: %s\n' "$*" >&2; exit 1; }
+ run() { log "$*"; "$@"; }
++is_truthy() {
++  case "${1:-}" in
++    1|true|TRUE|yes|YES|on|ON) return 0 ;;
++    *) return 1 ;;
++  esac
++}
+ usage() {
+   cat <<'EOF'
+ Usage: refactor-start.sh [up|preflight|smoke]
+@@ -269,6 +280,48 @@ start_edge_services() {
+   )
+ }
+ 
++verify_edge_services_stable() {
++  local edge_services=(gs static)
++  local checks="${REFACTOR_EDGE_STABILITY_CHECKS}"
++  local delay="${REFACTOR_EDGE_STABILITY_DELAY_SEC}"
++  local check_idx=1
++  local attempted_recovery=0
++  local service
++  local down=()
++
++  while (( check_idx <= checks )); do
++    down=()
++    for service in "${edge_services[@]}"; do
++      if ! service_running "$service"; then
++        down+=("$service")
++      fi
++    done
++
++    if (( ${#down[@]} > 0 )); then
++      if (( attempted_recovery == 0 )); then
++        log "warn: edge services not running: ${down[*]} (attempting one recovery up)"
++        (
++          cd "$REFACTOR_DIR"
++          run docker compose -p refactor --env-file .env up -d "${down[@]}"
++        )
++        attempted_recovery=1
++        sleep 4
++        continue
++      fi
++      die "edge services unstable during stability check ${check_idx}/${checks}: ${down[*]}"
++    fi
++
++    if (( check_idx < checks )); then
++      sleep "$delay"
++    fi
++    ((check_idx++))
++  done
++
++  for service in "${edge_services[@]}"; do
++    log "edge service stable: ${service} (restartCount=$(service_restart_count "$service"))"
++  done
++}
++
+ build_launch_url() {
+   local bank_id="$1"
+   local subcasino_id="$2"
+@@ -301,25 +354,44 @@ wait_for_health() {
+ }
+ 
+ wait_for_refactor_readiness() {
++  local strict="${REFACTOR_STRICT_READINESS}"
++  local readiness_failures=()
++
+   log "Waiting for refactor service readiness"
+-  wait_for_health "gs" "http://${GS_EXTERNAL_HOST}:${GS_EXTERNAL_PORT}/support/bankSelectAction.do?bankId=${LAUNCH_BANK_ID}" || true
+-  wait_for_health "static" "http://${STATIC_EXTERNAL_HOST}:${STATIC_EXTERNAL_PORT}/html5pc/actiongames/dragonstone/lobby/version.json" || true
+-  wait_for_health "config-service" "http://127.0.0.1:${CONFIG_SERVICE_PORT}/health" || true
+-  wait_for_health "session-service" "http://127.0.0.1:${SESSION_SERVICE_PORT}/health" || true
+-  wait_for_health "gameplay-orchestrator" "http://127.0.0.1:${GAMEPLAY_ORCHESTRATOR_PORT}/health" || true
+-  wait_for_health "wallet-adapter" "http://127.0.0.1:${WALLET_ADAPTER_PORT}/health" || true
+-  wait_for_health "protocol-adapter" "http://127.0.0.1:${PROTOCOL_ADAPTER_PORT}/health" || true
++  wait_for_health "gs" "http://${GS_EXTERNAL_HOST}:${GS_EXTERNAL_PORT}/support/bankSelectAction.do?bankId=${LAUNCH_BANK_ID}" || readiness_failures+=("gs")
++  wait_for_health "static" "http://${STATIC_EXTERNAL_HOST}:${STATIC_EXTERNAL_PORT}/html5pc/actiongames/dragonstone/lobby/version.json" || readiness_failures+=("static")
++  wait_for_health "config-service" "http://127.0.0.1:${CONFIG_SERVICE_PORT}/health" || readiness_failures+=("config-service")
++  wait_for_health "session-service" "http://127.0.0.1:${SESSION_SERVICE_PORT}/health" || readiness_failures+=("session-service")
++  wait_for_health "gameplay-orchestrator" "http://127.0.0.1:${GAMEPLAY_ORCHESTRATOR_PORT}/health" || readiness_failures+=("gameplay-orchestrator")
++  wait_for_health "wallet-adapter" "http://127.0.0.1:${WALLET_ADAPTER_PORT}/health" || readiness_failures+=("wallet-adapter")
++  wait_for_health "protocol-adapter" "http://127.0.0.1:${PROTOCOL_ADAPTER_PORT}/health" || readiness_failures+=("protocol-adapter")
++
++  if (( ${#readiness_failures[@]} > 0 )); then
++    if is_truthy "$strict"; then
++      die "strict readiness failed for: ${readiness_failures[*]}"
++    fi
++    log "warn: non-strict readiness mode; continuing with failed checks: ${readiness_failures[*]}"
++  fi
+ }
+ 
+ warm_launch_alias_probe() {
+   local launch_url
++  local retries="${REFACTOR_WARM_ALIAS_RETRIES}"
++  local delay="${REFACTOR_WARM_ALIAS_DELAY_SEC}"
++  local attempt=1
+   launch_url="$(build_launch_url "$LAUNCH_BANK_ID" "$LAUNCH_SUBCASINO_ID" "$LAUNCH_GAME_ID" "$LAUNCH_MODE" "$LAUNCH_TOKEN" "$LAUNCH_LANG")"
+-  if curl -fsS --max-time 8 "$launch_url" >/dev/null 2>&1; then
+-    log "warm alias probe ok (${launch_url})"
+-  else
+-    log "warn: warm alias probe failed (${launch_url})"
+-    return 1
+-  fi
++  while (( attempt <= retries )); do
++    if curl -fsS --max-time 8 "$launch_url" >/dev/null 2>&1; then
++      log "warm alias probe ok attempt ${attempt}/${retries} (${launch_url})"
++      return 0
++    fi
++    if (( attempt < retries )); then
++      sleep "$delay"
++    fi
++    ((attempt++))
++  done
++  log "warn: warm alias probe failed after ${retries} attempts (${launch_url})"
++  return 1
+ }
+ 
+ post_checks() {
+@@ -346,8 +418,14 @@ case "$ACTION" in
+     start_stack
+     verify_core_services_running
+     start_edge_services
++    verify_edge_services_stable
+     wait_for_refactor_readiness
+-    warm_launch_alias_probe || true
++    if ! warm_launch_alias_probe; then
++      if is_truthy "$REFACTOR_STRICT_READINESS"; then
++        die "strict readiness failed: warm alias probe"
++      fi
++      log "warn: non-strict readiness mode; continuing despite warm alias probe failure"
++    fi
+     post_checks
+     ;;
+   preflight)

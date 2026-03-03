@@ -80,6 +80,12 @@ curl -sS http://127.0.0.1:18078/health
 - Infra auto-recovery knobs (default enabled):
   - `REFACTOR_SMOKE_AUTORECOVER=1` enables recovery when infra signals are detected (`0` disables).
   - `REFACTOR_SMOKE_RECOVERY_ATTEMPTS=2` controls bounded recovery attempts (`0` means no attempts even if auto-recovery is enabled).
+- Stability-pass knobs (default enabled):
+  - `REFACTOR_SMOKE_STABILITY_PASSES=2` runs extra post-pass consistency probes after initial smoke success.
+  - `REFACTOR_SMOKE_STABILITY_GAP_MS=1500` waits between stability passes.
+  - `REFACTOR_SMOKE_STABILITY_RETRIES=2` retry count per stability pass check.
+  - `REFACTOR_SMOKE_STABILITY_DELAY_MS=1000` delay between retries during stability passes.
+  - Set `REFACTOR_SMOKE_STABILITY_PASSES=1` to disable additional stability passes when quick triage speed is preferred.
 - Infra diagnostics emitted on infra-blocked path:
   - `docker compose -p refactor -f ./gs-server/deploy/docker/refactor/docker-compose.yml ps c1-refactor zookeeper kafka mp gs static` summary.
   - Per-core-service diagnostics include `status`, `restartCount`, and `uptimeSeconds` (`c1-refactor`, `zookeeper`, `kafka`, `mp`, `gs`, `static`).
@@ -91,6 +97,8 @@ curl -sS http://127.0.0.1:18078/health
   - Waits (`3s` for `gs/static`-only recovery, `10s` when core services are included), then re-runs smoke probes.
   - If recovery clears failures, smoke continues and can return `0`.
   - If recovery does not clear failures, smoke stays infra-blocked and returns `3` with diagnostics.
+- Success semantics:
+  - Smoke exits `0` only after initial pass success and all configured stability passes succeed.
 - Quick triage order when launch alias fails:
   1. Check GS direct launch probe (`:18081/cwstartgamev2.do?...`) from smoke output.
   2. Check GS support probe (`:18081/support/bankSelectAction.do?...`) from smoke output.

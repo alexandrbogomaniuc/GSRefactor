@@ -692,6 +692,50 @@ async function runSmokePass(checks, { maxAttempts, retryDelayMs }) {
   };
 }
 
+function buildSmokeStabilityChecks(checks) {
+  const stabilityChecks = checks.filter((check) => check.stabilityCritical === true);
+  return stabilityChecks.length > 0 ? stabilityChecks : checks.filter((check) => check.required !== false);
+}
+
+async function runSmokeStabilityPasses(
+  checks,
+  { totalPasses, gapMs, maxAttempts, retryDelayMs, isInfraBlockedFailure, emitFailureHints }
+) {
+  if (totalPasses <= 1) {
+    return;
+  }
+  const stabilityChecks = buildSmokeStabilityChecks(checks);
+  if (stabilityChecks.length === 0) {
+    log('STABILITY-PASS: no stability checks resolved; skipping additional passes.');
+    return;
+  }
+  for (let pass = 2; pass <= totalPasses; pass += 1) {
+    if (gapMs > 0) {
+      await sleep(gapMs);
+    }
+    log(
+      `STABILITY-PASS: running pass ${pass}/${totalPasses} on ${stabilityChecks.length} critical checks (retries=${maxAttempts}, delayMs=${retryDelayMs}).`
+    );
+    const outcome = await runSmokePass(stabilityChecks, { maxAttempts, retryDelayMs });
+    if (outcome.failures > 0) {
+      if (emitFailureHints) {
+        emitFailureHints(outcome);
+      }
+      if (isInfraBlockedFailure(outcome)) {
+        fail(
+          `Smoke stability pass ${pass}/${totalPasses} failed with infrastructure signals. See diagnostics above.`,
+          3
+        );
+      }
+      fail(
+        `Smoke stability pass ${pass}/${totalPasses} failed (${outcome.failures} failure(s)). See lines above.`,
+        2
+      );
+    }
+    log(`STABILITY-PASS: pass ${pass}/${totalPasses} succeeded.`);
+  }
+}
+
 async function smokeChecks() {
   const primaryLaunchUrl = buildLaunchUrl();
   const gsDirectLaunchUrl = buildGsDirectLaunchUrl();
@@ -699,7 +743,12 @@ async function smokeChecks() {
 
   checks.push(
     // Use a concrete static game asset instead of "/" to avoid startup-time proxy false negatives.
-    { label: 'Static asset route', url: 'http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json', okStatuses: [200] },
+    {
+      label: 'Static asset route',
+      url: 'http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json',
+      okStatuses: [200],
+      stabilityCritical: true,
+    },
     // Diagnostic-only signal: can flap during startup even when launch path is healthy.
     {
       label: 'GS support route (diagnostic)',
@@ -714,8 +763,14 @@ async function smokeChecks() {
       okStatuses: [200],
       required: false,
       gsDirectProbe: true,
+      stabilityCritical: true,
     },
-    { label: 'Config service health', url: 'http://127.0.0.1:18072/health', okStatuses: [200] },
+    {
+      label: 'Config service health',
+      url: 'http://127.0.0.1:18072/health',
+      okStatuses: [200],
+      stabilityCritical: true,
+    },
     { label: 'Dependency health: session-service', url: SESSION_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
     { label: 'Dependency health: gameplay-orchestrator', url: GAMEPLAY_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
     { label: 'Dependency health: wallet-adapter', url: WALLET_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
@@ -725,6 +780,7 @@ async function smokeChecks() {
       url: primaryLaunchUrl,
       okStatuses: [200],
       isLaunchAlias: true,
+      stabilityCritical: true,
     },
   );
 
@@ -751,6 +807,10 @@ async function smokeChecks() {
 
   const maxAttempts = Math.max(1, Number(process.env.REFACTOR_SMOKE_RETRIES ?? '10'));
   const retryDelayMs = Math.max(250, Number(process.env.REFACTOR_SMOKE_DELAY_MS ?? '3000'));
+  const stabilityPasses = Math.max(1, parsePositiveIntEnv('REFACTOR_SMOKE_STABILITY_PASSES', 2));
+  const stabilityGapMs = Math.max(0, Number(process.env.REFACTOR_SMOKE_STABILITY_GAP_MS ?? '1500'));
+  const stabilityRetries = Math.max(1, parsePositiveIntEnv('REFACTOR_SMOKE_STABILITY_RETRIES', 2));
+  const stabilityDelayMs = Math.max(250, Number(process.env.REFACTOR_SMOKE_STABILITY_DELAY_MS ?? '1000'));
 
   const autoRecoverEnabled = parseBooleanEnv('REFACTOR_SMOKE_AUTORECOVER', true);
   const maxRecoveryAttempts = parsePositiveIntEnv('REFACTOR_SMOKE_RECOVERY_ATTEMPTS', 2);
@@ -803,6 +863,27 @@ async function smokeChecks() {
     }
     fail(`Smoke checks failed (${outcome.failures} failure(s)). See lines above.`, 2);
   }
+
+  await runSmokeStabilityPasses(checks, {
+    totalPasses: stabilityPasses,
+    gapMs: stabilityGapMs,
+    maxAttempts: stabilityRetries,
+    retryDelayMs: stabilityDelayMs,
+    isInfraBlockedFailure: (passOutcome) => passOutcome.launchAliasFailed && collectInfraSignals(passOutcome).length > 0,
+    emitFailureHints: (passOutcome) => {
+      if (!passOutcome.launchAliasFailed) {
+        return;
+      }
+      const infraSignals = collectInfraSignals(passOutcome);
+      if (infraSignals.length > 0) {
+        emitNginxUpstreamHints();
+        emitInfraDiagnostics();
+        log(
+          `INFRA-BLOCKED: Stability pass launch alias failed with infrastructure signals (${infraSignals.join(', ')}).`
+        );
+      }
+    },
+  });
 
   log('Smoke checks passed. The refactor launch alias is reachable.');
 }

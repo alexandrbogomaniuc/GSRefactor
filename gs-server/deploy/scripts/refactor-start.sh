@@ -57,12 +57,23 @@ STATIC_EXTERNAL_HOST="${STATIC_EXTERNAL_HOST:-$(cluster_cfg_or_default STATIC_EX
 STATIC_EXTERNAL_PORT="${STATIC_EXTERNAL_PORT:-$(cluster_cfg_or_default STATIC_EXTERNAL_PORT "18080")}"
 REFACTOR_READY_RETRIES="${REFACTOR_READY_RETRIES:-30}"
 REFACTOR_READY_DELAY_SEC="${REFACTOR_READY_DELAY_SEC:-2}"
+REFACTOR_STRICT_READINESS="${REFACTOR_STRICT_READINESS:-1}"
 REFACTOR_CORE_STABILITY_CHECKS="${REFACTOR_CORE_STABILITY_CHECKS:-3}"
 REFACTOR_CORE_STABILITY_DELAY_SEC="${REFACTOR_CORE_STABILITY_DELAY_SEC:-3}"
+REFACTOR_EDGE_STABILITY_CHECKS="${REFACTOR_EDGE_STABILITY_CHECKS:-3}"
+REFACTOR_EDGE_STABILITY_DELAY_SEC="${REFACTOR_EDGE_STABILITY_DELAY_SEC:-3}"
+REFACTOR_WARM_ALIAS_RETRIES="${REFACTOR_WARM_ALIAS_RETRIES:-3}"
+REFACTOR_WARM_ALIAS_DELAY_SEC="${REFACTOR_WARM_ALIAS_DELAY_SEC:-2}"
 
 log() { printf '[refactor-start] %s\n' "$*"; }
 die() { printf '[refactor-start] ERROR: %s\n' "$*" >&2; exit 1; }
 run() { log "$*"; "$@"; }
+is_truthy() {
+  case "${1:-}" in
+    1|true|TRUE|yes|YES|on|ON) return 0 ;;
+    *) return 1 ;;
+  esac
+}
 usage() {
   cat <<'EOF'
 Usage: refactor-start.sh [up|preflight|smoke]
@@ -269,6 +280,48 @@ start_edge_services() {
   )
 }
 
+verify_edge_services_stable() {
+  local edge_services=(gs static)
+  local checks="${REFACTOR_EDGE_STABILITY_CHECKS}"
+  local delay="${REFACTOR_EDGE_STABILITY_DELAY_SEC}"
+  local check_idx=1
+  local attempted_recovery=0
+  local service
+  local down=()
+
+  while (( check_idx <= checks )); do
+    down=()
+    for service in "${edge_services[@]}"; do
+      if ! service_running "$service"; then
+        down+=("$service")
+      fi
+    done
+
+    if (( ${#down[@]} > 0 )); then
+      if (( attempted_recovery == 0 )); then
+        log "warn: edge services not running: ${down[*]} (attempting one recovery up)"
+        (
+          cd "$REFACTOR_DIR"
+          run docker compose -p refactor --env-file .env up -d "${down[@]}"
+        )
+        attempted_recovery=1
+        sleep 4
+        continue
+      fi
+      die "edge services unstable during stability check ${check_idx}/${checks}: ${down[*]}"
+    fi
+
+    if (( check_idx < checks )); then
+      sleep "$delay"
+    fi
+    ((check_idx++))
+  done
+
+  for service in "${edge_services[@]}"; do
+    log "edge service stable: ${service} (restartCount=$(service_restart_count "$service"))"
+  done
+}
+
 build_launch_url() {
   local bank_id="$1"
   local subcasino_id="$2"
@@ -301,25 +354,44 @@ wait_for_health() {
 }
 
 wait_for_refactor_readiness() {
+  local strict="${REFACTOR_STRICT_READINESS}"
+  local readiness_failures=()
+
   log "Waiting for refactor service readiness"
-  wait_for_health "gs" "http://${GS_EXTERNAL_HOST}:${GS_EXTERNAL_PORT}/support/bankSelectAction.do?bankId=${LAUNCH_BANK_ID}" || true
-  wait_for_health "static" "http://${STATIC_EXTERNAL_HOST}:${STATIC_EXTERNAL_PORT}/html5pc/actiongames/dragonstone/lobby/version.json" || true
-  wait_for_health "config-service" "http://127.0.0.1:${CONFIG_SERVICE_PORT}/health" || true
-  wait_for_health "session-service" "http://127.0.0.1:${SESSION_SERVICE_PORT}/health" || true
-  wait_for_health "gameplay-orchestrator" "http://127.0.0.1:${GAMEPLAY_ORCHESTRATOR_PORT}/health" || true
-  wait_for_health "wallet-adapter" "http://127.0.0.1:${WALLET_ADAPTER_PORT}/health" || true
-  wait_for_health "protocol-adapter" "http://127.0.0.1:${PROTOCOL_ADAPTER_PORT}/health" || true
+  wait_for_health "gs" "http://${GS_EXTERNAL_HOST}:${GS_EXTERNAL_PORT}/support/bankSelectAction.do?bankId=${LAUNCH_BANK_ID}" || readiness_failures+=("gs")
+  wait_for_health "static" "http://${STATIC_EXTERNAL_HOST}:${STATIC_EXTERNAL_PORT}/html5pc/actiongames/dragonstone/lobby/version.json" || readiness_failures+=("static")
+  wait_for_health "config-service" "http://127.0.0.1:${CONFIG_SERVICE_PORT}/health" || readiness_failures+=("config-service")
+  wait_for_health "session-service" "http://127.0.0.1:${SESSION_SERVICE_PORT}/health" || readiness_failures+=("session-service")
+  wait_for_health "gameplay-orchestrator" "http://127.0.0.1:${GAMEPLAY_ORCHESTRATOR_PORT}/health" || readiness_failures+=("gameplay-orchestrator")
+  wait_for_health "wallet-adapter" "http://127.0.0.1:${WALLET_ADAPTER_PORT}/health" || readiness_failures+=("wallet-adapter")
+  wait_for_health "protocol-adapter" "http://127.0.0.1:${PROTOCOL_ADAPTER_PORT}/health" || readiness_failures+=("protocol-adapter")
+
+  if (( ${#readiness_failures[@]} > 0 )); then
+    if is_truthy "$strict"; then
+      die "strict readiness failed for: ${readiness_failures[*]}"
+    fi
+    log "warn: non-strict readiness mode; continuing with failed checks: ${readiness_failures[*]}"
+  fi
 }
 
 warm_launch_alias_probe() {
   local launch_url
+  local retries="${REFACTOR_WARM_ALIAS_RETRIES}"
+  local delay="${REFACTOR_WARM_ALIAS_DELAY_SEC}"
+  local attempt=1
   launch_url="$(build_launch_url "$LAUNCH_BANK_ID" "$LAUNCH_SUBCASINO_ID" "$LAUNCH_GAME_ID" "$LAUNCH_MODE" "$LAUNCH_TOKEN" "$LAUNCH_LANG")"
-  if curl -fsS --max-time 8 "$launch_url" >/dev/null 2>&1; then
-    log "warm alias probe ok (${launch_url})"
-  else
-    log "warn: warm alias probe failed (${launch_url})"
-    return 1
-  fi
+  while (( attempt <= retries )); do
+    if curl -fsS --max-time 8 "$launch_url" >/dev/null 2>&1; then
+      log "warm alias probe ok attempt ${attempt}/${retries} (${launch_url})"
+      return 0
+    fi
+    if (( attempt < retries )); then
+      sleep "$delay"
+    fi
+    ((attempt++))
+  done
+  log "warn: warm alias probe failed after ${retries} attempts (${launch_url})"
+  return 1
 }
 
 post_checks() {
@@ -346,8 +418,14 @@ case "$ACTION" in
     start_stack
     verify_core_services_running
     start_edge_services
+    verify_edge_services_stable
     wait_for_refactor_readiness
-    warm_launch_alias_probe || true
+    if ! warm_launch_alias_probe; then
+      if is_truthy "$REFACTOR_STRICT_READINESS"; then
+        die "strict readiness failed: warm alias probe"
+      fi
+      log "warn: non-strict readiness mode; continuing despite warm alias probe failure"
+    fi
     post_checks
     ;;
   preflight)
