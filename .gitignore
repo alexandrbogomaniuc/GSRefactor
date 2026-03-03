@@ -1,4 +1,4 @@
-.DS_Store
+﻿.DS_Store
 .m2repo/
 tmp/
 Dev_new/
@@ -12,3 +12,13 @@ legacy-games-client/sectorx/
 legacy-games-client/sectorx_btg/
 Casino side/**/.git/
 Casino side/**/.idea/
+
+# Root temp evidence / audit artifacts
+.tmp-current-evidence-path-*
+.tmp-w*.txt
+
+# Local audit artifacts
+Gamesv1/*_AUDIT.zip
+Gamesv1/REVIEW_*.txt
+Gamesv1/REVIEW_PATCH.patch
+exports/
