@@ -10987,3 +10987,21 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - residual runtime closure (`STEP09` core-infra stability) `~0.50-6.00h` (`~0.06-0.75` workdays), with in-run auto-recovery and deterministic infra diagnostics now enabled.
+
+### 2026-03-03 07:30 UTC
+- Continued Project 02 stabilization in `/Users/alexb/Documents/Dev/Dev_new` with integrated hard-cut wave `CR+CS`.
+- Batch content:
+  - `CR` (`11` edits): fixed `mp` startup script regression and copy race, tuned `c1-refactor`/`kafka` heaps, added start-flow core stability checks.
+  - `CS` (`9` edits): targeted smoke recovery list (unhealthy core services + `gs/static`), restart-aware infra diagnostics (`status`/`restartCount`), explicit `restarting` infra signal, README triage update.
+- Validation outcomes:
+  - targeted fast gates: `common-games PASS`, `bots PASS`, `web PASS`, `clashofthegods PASS`.
+  - full matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 PASS rc=0`.
+  - key movement: retry lane now passes (`rc=0`) after targeted recovery in-run.
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-070507-hardcut-live-batchCRCS-step09-targeted-recovery-stability/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/294-hard-cut-live-batchCRCS-step09-targeted-recovery-stability-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - residual runtime closure (`STEP09` first-pass stability and repeated-run consistency) `~0.25-3.00h` (`~0.03-0.38` workdays).

@@ -57,6 +57,8 @@ STATIC_EXTERNAL_HOST="${STATIC_EXTERNAL_HOST:-$(cluster_cfg_or_default STATIC_EX
 STATIC_EXTERNAL_PORT="${STATIC_EXTERNAL_PORT:-$(cluster_cfg_or_default STATIC_EXTERNAL_PORT "18080")}"
 REFACTOR_READY_RETRIES="${REFACTOR_READY_RETRIES:-30}"
 REFACTOR_READY_DELAY_SEC="${REFACTOR_READY_DELAY_SEC:-2}"
+REFACTOR_CORE_STABILITY_CHECKS="${REFACTOR_CORE_STABILITY_CHECKS:-3}"
+REFACTOR_CORE_STABILITY_DELAY_SEC="${REFACTOR_CORE_STABILITY_DELAY_SEC:-3}"
 
 log() { printf '[refactor-start] %s\n' "$*"; }
 die() { printf '[refactor-start] ERROR: %s\n' "$*" >&2; exit 1; }
@@ -186,6 +188,43 @@ service_running() {
   [[ "$(docker inspect -f '{{.State.Running}}' "$cid" 2>/dev/null || echo false)" == "true" ]]
 }
 
+service_restart_count() {
+  local service="$1"
+  local cid
+  cid="$(cd "$REFACTOR_DIR" && docker compose -p refactor --env-file .env ps -q "$service" 2>/dev/null | head -n1 || true)"
+  [[ -n "$cid" ]] || { printf 'n/a\n'; return 0; }
+  docker inspect -f '{{.RestartCount}}' "$cid" 2>/dev/null || printf 'n/a\n'
+}
+
+verify_core_services_stable() {
+  local core_services=("$@")
+  local checks="${REFACTOR_CORE_STABILITY_CHECKS}"
+  local delay="${REFACTOR_CORE_STABILITY_DELAY_SEC}"
+  local check_idx=1
+  local service
+  local unstable=()
+
+  while (( check_idx <= checks )); do
+    unstable=()
+    for service in "${core_services[@]}"; do
+      if ! service_running "$service"; then
+        unstable+=("$service")
+      fi
+    done
+    if (( ${#unstable[@]} > 0 )); then
+      die "core services unstable during stability check ${check_idx}/${checks}: ${unstable[*]}"
+    fi
+    if (( check_idx < checks )); then
+      sleep "$delay"
+    fi
+    ((check_idx++))
+  done
+
+  for service in "${core_services[@]}"; do
+    log "core service stable: ${service} (restartCount=$(service_restart_count "$service"))"
+  done
+}
+
 verify_core_services_running() {
   local core_services=(c1-refactor zookeeper kafka mp)
   local down=()
@@ -220,6 +259,7 @@ verify_core_services_running() {
     die "core services failed to recover: ${still_down[*]}"
   fi
   log "core services recovered: ${down[*]}"
+  verify_core_services_stable "${core_services[@]}"
 }
 
 start_edge_services() {

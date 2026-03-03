@@ -5737,3 +5737,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - compile lane remains fully green; STEP09 lane now self-diagnoses and self-attempts recovery in-run, reducing manual forensics overhead.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-03 07:30 UTC (Hard-cut live Batch CR+CS)
+- Continued Project 02 stabilization with integrated live batches `CR+CS` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - `CR` (`11` edits): fixed `mp` bootstrap command regression/syntax, race-safe MP copy retry, reduced `c1-refactor` and `kafka` heap pressure, added core-service stability checks in start flow.
+  - `CS` (`9` edits): targeted smoke recovery (unhealthy core subset + `gs/static`), infra diagnostics extended with per-service `status`/`restartCount`, explicit `restarting` infra signal, README triage update.
+  - retained total: `20` targeted edits across runtime-safe infra scripts/config/docs.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` PASS, `clashofthegods` PASS.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 PASS rc=0`.
+  - key movement: STEP09 retry recovered to PASS within-run via targeted recovery path.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-070507-hardcut-live-batchCRCS-step09-targeted-recovery-stability/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/294-hard-cut-live-batchCRCS-step09-targeted-recovery-stability-report-20260303.md`
+- Measured movement:
+  - first reproducible STEP09 retry pass (`rc=0`) after targeted recovery diagnostics.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

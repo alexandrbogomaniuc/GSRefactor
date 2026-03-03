@@ -82,9 +82,12 @@ curl -sS http://127.0.0.1:18078/health
   - `REFACTOR_SMOKE_RECOVERY_ATTEMPTS=1` controls bounded recovery attempts (`0` means no attempts even if auto-recovery is enabled).
 - Infra diagnostics emitted on infra-blocked path:
   - `docker compose -p refactor -f ./gs-server/deploy/docker/refactor/docker-compose.yml ps c1-refactor zookeeper kafka mp gs static` summary.
-  - `docker inspect` state checks for exited core containers, including `OOMKilled`, `ExitCode`, and `FinishedAt`.
+  - Per-core-service diagnostics include `status` + `restartCount` (`c1-refactor`, `zookeeper`, `kafka`, `mp`, `gs`, `static`).
+  - `restarting` is emitted as an explicit unhealthy infra signal.
+  - `docker inspect` state checks for exited core containers include `OOMKilled`, `ExitCode`, and `FinishedAt`.
 - Recovery behavior when infra signals are present:
-  - Runs `docker compose up -d c1-refactor zookeeper kafka mp gs static`.
+  - Builds recovery targets from unhealthy core services (`restarting`/`exited`/`not-running`), then always includes `gs` and `static`.
+  - Runs `docker compose up -d <targeted-services>`.
   - Waits briefly, then re-runs smoke probes.
   - If recovery clears failures, smoke continues and can return `0`.
   - If recovery does not clear failures, smoke stays infra-blocked and returns `3` with diagnostics.
@@ -92,7 +95,7 @@ curl -sS http://127.0.0.1:18078/health
   1. Check GS direct launch probe (`:18081/cwstartgamev2.do?...`) from smoke output.
   2. Check GS support probe (`:18081/support/bankSelectAction.do?...`) from smoke output.
   3. Check dependency probe lines (`session-service`, `gameplay-orchestrator`, `wallet-adapter`, `protocol-adapter`).
-  4. Read the `INFRA-DIAG` compose summary and exited-container `OOMKilled` lines.
+  4. Read the `INFRA-DIAG` compose summary plus per-service `status`/`restartCount` lines (especially `restarting`).
   5. If infra signals appear, inspect nginx error hints for `could not be resolved` and `connect() failed` messages.
 
 ## Isolation policy

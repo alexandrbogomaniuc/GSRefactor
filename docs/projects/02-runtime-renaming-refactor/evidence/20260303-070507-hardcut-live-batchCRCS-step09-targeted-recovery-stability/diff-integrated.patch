@@ -1,0 +1,436 @@
+diff --git a/gs-server/deploy/docker/refactor/README.md b/gs-server/deploy/docker/refactor/README.md
+index 322eae4aa..7e66c6a34 100644
+--- a/gs-server/deploy/docker/refactor/README.md
++++ b/gs-server/deploy/docker/refactor/README.md
+@@ -82,9 +82,12 @@ curl -sS http://127.0.0.1:18078/health
+   - `REFACTOR_SMOKE_RECOVERY_ATTEMPTS=1` controls bounded recovery attempts (`0` means no attempts even if auto-recovery is enabled).
+ - Infra diagnostics emitted on infra-blocked path:
+   - `docker compose -p refactor -f ./gs-server/deploy/docker/refactor/docker-compose.yml ps c1-refactor zookeeper kafka mp gs static` summary.
+-  - `docker inspect` state checks for exited core containers, including `OOMKilled`, `ExitCode`, and `FinishedAt`.
++  - Per-core-service diagnostics include `status` + `restartCount` (`c1-refactor`, `zookeeper`, `kafka`, `mp`, `gs`, `static`).
++  - `restarting` is emitted as an explicit unhealthy infra signal.
++  - `docker inspect` state checks for exited core containers include `OOMKilled`, `ExitCode`, and `FinishedAt`.
+ - Recovery behavior when infra signals are present:
+-  - Runs `docker compose up -d c1-refactor zookeeper kafka mp gs static`.
++  - Builds recovery targets from unhealthy core services (`restarting`/`exited`/`not-running`), then always includes `gs` and `static`.
++  - Runs `docker compose up -d <targeted-services>`.
+   - Waits briefly, then re-runs smoke probes.
+   - If recovery clears failures, smoke continues and can return `0`.
+   - If recovery does not clear failures, smoke stays infra-blocked and returns `3` with diagnostics.
+@@ -92,7 +95,7 @@ curl -sS http://127.0.0.1:18078/health
+   1. Check GS direct launch probe (`:18081/cwstartgamev2.do?...`) from smoke output.
+   2. Check GS support probe (`:18081/support/bankSelectAction.do?...`) from smoke output.
+   3. Check dependency probe lines (`session-service`, `gameplay-orchestrator`, `wallet-adapter`, `protocol-adapter`).
+-  4. Read the `INFRA-DIAG` compose summary and exited-container `OOMKilled` lines.
++  4. Read the `INFRA-DIAG` compose summary plus per-service `status`/`restartCount` lines (especially `restarting`).
+   5. If infra signals appear, inspect nginx error hints for `could not be resolved` and `connect() failed` messages.
+ 
+ ## Isolation policy
+diff --git a/gs-server/deploy/docker/refactor/docker-compose.yml b/gs-server/deploy/docker/refactor/docker-compose.yml
+index 66bc784a1..f338d063c 100644
+--- a/gs-server/deploy/docker/refactor/docker-compose.yml
++++ b/gs-server/deploy/docker/refactor/docker-compose.yml
+@@ -53,13 +53,15 @@ services:
+     command: >
+       sh -lc "MP_WEBROOT=/tmp/web-mp-casino;
+       rm -rf $$MP_WEBROOT
+-      && COPY_OK=0
+-      && for ATTEMPT in 1 2 3; do
+-           cp -R /legacy-mp-target/web-mp-casino $$MP_WEBROOT && COPY_OK=1 && break;
++      && COPY_OK=0;
++      for ATTEMPT in 1 2 3; do
++           rm -rf $$MP_WEBROOT;
++           mkdir -p $$MP_WEBROOT;
++           cp -R /legacy-mp-target/web-mp-casino/. $$MP_WEBROOT/ && COPY_OK=1 && break;
+            echo mp bootstrap copy failed attempt $$ATTEMPT >&2;
+            sleep 2;
+-         done
+-      && [ $$COPY_OK -eq 1 ]
++         done;
++      [ $$COPY_OK -eq 1 ] || exit 1
+       && sed -i 's#<hosts>.*</hosts>#<hosts>${CASSANDRA_HOST}:${CASSANDRA_PORT}</hosts>#' $$MP_WEBROOT/WEB-INF/classes/mp-keyspace-config.xml
+       && /wait-for-cassandra-and-start.sh
+       && java -DMP_SERVER_ID=1
+@@ -103,8 +105,8 @@ services:
+     networks:
+       - refactor-network
+     environment:
+-      - MAX_HEAP_SIZE=512M
+-      - HEAP_NEWSIZE=128M
++      - MAX_HEAP_SIZE=384M
++      - HEAP_NEWSIZE=96M
+       - CASSANDRA_CLUSTER_NAME=refactor-target-upgrade
+     ports:
+       - "19412:9042"
+@@ -137,7 +139,7 @@ services:
+       - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1
+       - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1
+       - KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0
+-      - KAFKA_HEAP_OPTS=-Xms256m -Xmx512m
++      - KAFKA_HEAP_OPTS=-Xms128m -Xmx384m
+     ports:
+       - "19092:29092"
+ 
+diff --git a/gs-server/deploy/scripts/refactor-onboard.mjs b/gs-server/deploy/scripts/refactor-onboard.mjs
+index 5579faf51..bacf9b760 100755
+--- a/gs-server/deploy/scripts/refactor-onboard.mjs
++++ b/gs-server/deploy/scripts/refactor-onboard.mjs
+@@ -68,6 +68,7 @@ const DEFAULT_NGINX_ERROR_LOG_PATH = cfg(
+ );
+ const REFACTOR_COMPOSE_PROJECT = 'refactor';
+ const CORE_INFRA_SERVICES = ['c1-refactor', 'zookeeper', 'kafka', 'mp', 'gs', 'static'];
++const RECOVERY_ALWAYS_INCLUDE = ['gs', 'static'];
+ const SMOKE_RECOVERY_WAIT_MS = 3000;
+ 
+ function log(msg) {
+@@ -380,82 +381,210 @@ function emitNginxUpstreamHints() {
+   }
+ }
+ 
+-function collectInfraSignals(outcome) {
+-  const signals = new Set(outcome.downDependencies ?? []);
+-  if (outcome.gsDirectFailed) {
+-    signals.add('GS direct launch probe');
++function normalizeCoreServiceStatus(rawStatus) {
++  const status = String(rawStatus ?? '').trim().toLowerCase();
++  if (!status) return 'not-running';
++  if (status === 'running' || status === 'restarting' || status === 'exited') {
++    return status;
+   }
+-  if (outcome.gsSupportFailed) {
+-    signals.add('GS support route probe');
++  if (status === 'created' || status === 'dead' || status === 'removing' || status === 'paused') {
++    return 'not-running';
+   }
+-  return [...signals];
++  return status;
+ }
+ 
+-function emitInfraDiagnostics() {
+-  if (!hasCommand('docker')) {
+-    logErr('INFRA-DIAG: docker command not found; cannot emit compose diagnostics.');
+-    return;
+-  }
++function isUnhealthyCoreStatus(status) {
++  return status === 'restarting' || status === 'exited' || status === 'not-running';
++}
+ 
+-  logErr(`INFRA-DIAG: docker compose ps summary (core: ${CORE_INFRA_SERVICES.join(', ')})`);
+-  const ps = runCapture('docker', composeArgs(['ps', ...CORE_INFRA_SERVICES]));
+-  if (ps.ok) {
+-    logOutputLines('INFRA-DIAG: ', ps.stdout, 80, logErr);
+-  } else {
+-    logErr(`INFRA-DIAG: docker compose ps failed (exit ${ps.status}).`);
+-    logOutputLines('INFRA-DIAG: ', ps.stderr || ps.stdout, 40, logErr);
++function inspectCoreInfraServices() {
++  if (!hasCommand('docker')) {
++    return {
++      dockerAvailable: false,
++      serviceStates: [],
++    };
+   }
+ 
+-  let exitedInspected = 0;
++  const serviceStates = [];
+   for (const service of CORE_INFRA_SERVICES) {
+     const idsRes = runCapture('docker', composeArgs(['ps', '-q', service]));
+     if (!idsRes.ok) {
+-      logErr(`INFRA-DIAG: unable to resolve container id for ${service} (exit ${idsRes.status}).`);
++      serviceStates.push({
++        service,
++        status: 'not-running',
++        restartCount: 'n/a',
++        containerId: null,
++        inspectError: `compose ps -q failed (exit ${idsRes.status})`,
++      });
+       continue;
+     }
++
+     const ids = idsRes.stdout
+       .split(/\r?\n/)
+       .map((line) => line.trim())
+       .filter(Boolean);
++
++    if (ids.length === 0) {
++      serviceStates.push({
++        service,
++        status: 'not-running',
++        restartCount: 'n/a',
++        containerId: null,
++      });
++      continue;
++    }
++
++    let aggregatedStatus = 'running';
++    let maxRestartCount = 0;
++    let hasRestartCount = false;
++    let selectedContainerId = ids[0];
++    let selectedExitDetails = null;
++    let selectedInspectError = null;
++
+     for (const id of ids) {
+-      const inspectRes = runCapture('docker', ['inspect', '--format', '{{json .State}}', id]);
++      const inspectRes = runCapture('docker', ['inspect', id]);
+       if (!inspectRes.ok) {
+-        logErr(`INFRA-DIAG: docker inspect failed for ${service} (${id.slice(0, 12)}) (exit ${inspectRes.status}).`);
++        aggregatedStatus = 'not-running';
++        selectedInspectError = `docker inspect failed for ${id.slice(0, 12)} (exit ${inspectRes.status})`;
++        selectedContainerId = id;
+         continue;
+       }
+-      let state;
++
++      let inspectObj;
+       try {
+-        state = JSON.parse(inspectRes.stdout.trim());
++        const parsed = JSON.parse(inspectRes.stdout);
++        inspectObj = Array.isArray(parsed) ? parsed[0] : parsed;
+       } catch {
+-        logErr(`INFRA-DIAG: could not parse state for ${service} (${id.slice(0, 12)}).`);
++        aggregatedStatus = 'not-running';
++        selectedInspectError = `could not parse docker inspect output for ${id.slice(0, 12)}`;
++        selectedContainerId = id;
+         continue;
+       }
+-      const status = String(state?.Status ?? '').toLowerCase();
+-      if (status !== 'exited') {
+-        continue;
++
++      const status = normalizeCoreServiceStatus(inspectObj?.State?.Status);
++      const parsedRestartCount = Number(inspectObj?.RestartCount);
++      if (Number.isFinite(parsedRestartCount)) {
++        hasRestartCount = true;
++        maxRestartCount = Math.max(maxRestartCount, parsedRestartCount);
++      }
++
++      if (status === 'restarting') {
++        aggregatedStatus = 'restarting';
++        selectedContainerId = id;
++      } else if (status === 'exited' && aggregatedStatus !== 'restarting') {
++        aggregatedStatus = 'exited';
++        selectedContainerId = id;
++        selectedExitDetails = {
++          oomKilled: Boolean(inspectObj?.State?.OOMKilled),
++          exitCode: inspectObj?.State?.ExitCode ?? 'n/a',
++          finishedAt: inspectObj?.State?.FinishedAt ?? 'n/a',
++          stateError: inspectObj?.State?.Error ? String(inspectObj.State.Error) : '',
++        };
++      } else if (status !== 'running' && aggregatedStatus === 'running') {
++        aggregatedStatus = 'not-running';
++        selectedContainerId = id;
+       }
+-      exitedInspected += 1;
+-      const oomKilled = Boolean(state?.OOMKilled);
+-      const exitCode = state?.ExitCode ?? 'n/a';
+-      const finishedAt = state?.FinishedAt ?? 'n/a';
+-      const stateError = state?.Error ? String(state.Error) : '';
+-      logErr(
+-        `INFRA-DIAG: exited ${service} (${id.slice(0, 12)}) OOMKilled=${oomKilled} exitCode=${exitCode} finishedAt=${finishedAt}${
+-          stateError ? ` error=${stateError}` : ''
+-        }`
+-      );
+     }
++
++    serviceStates.push({
++      service,
++      status: aggregatedStatus,
++      restartCount: hasRestartCount ? maxRestartCount : 'n/a',
++      containerId: selectedContainerId,
++      exitDetails: selectedExitDetails,
++      inspectError: selectedInspectError,
++    });
++  }
++
++  return {
++    dockerAvailable: true,
++    serviceStates,
++  };
++}
++
++function collectInfraSignals(outcome, coreInfra = null) {
++  const signals = new Set(outcome.downDependencies ?? []);
++  if (outcome.gsDirectFailed) {
++    signals.add('GS direct launch probe');
++  }
++  if (outcome.gsSupportFailed) {
++    signals.add('GS support route probe');
++  }
++  for (const state of coreInfra?.serviceStates ?? []) {
++    if (state.status === 'restarting') {
++      signals.add(`core service restarting: ${state.service}`);
++    } else if (state.status === 'exited') {
++      signals.add(`core service exited: ${state.service}`);
++    } else if (state.status === 'not-running') {
++      signals.add(`core service not-running: ${state.service}`);
++    }
++  }
++  return [...signals];
++}
++
++function emitInfraDiagnostics(coreInfra = inspectCoreInfraServices()) {
++  if (!coreInfra.dockerAvailable) {
++    logErr('INFRA-DIAG: docker command not found; cannot emit compose diagnostics.');
++    return coreInfra;
++  }
++
++  logErr(`INFRA-DIAG: docker compose ps summary (core: ${CORE_INFRA_SERVICES.join(', ')})`);
++  const ps = runCapture('docker', composeArgs(['ps', ...CORE_INFRA_SERVICES]));
++  if (ps.ok) {
++    logOutputLines('INFRA-DIAG: ', ps.stdout, 80, logErr);
++  } else {
++    logErr(`INFRA-DIAG: docker compose ps failed (exit ${ps.status}).`);
++    logOutputLines('INFRA-DIAG: ', ps.stderr || ps.stdout, 40, logErr);
++  }
++
++  let exitedInspected = 0;
++  for (const state of coreInfra.serviceStates) {
++    const unhealthy = isUnhealthyCoreStatus(state.status);
++    const containerLabel = state.containerId ? ` container=${state.containerId.slice(0, 12)}` : '';
++    logErr(
++      `INFRA-DIAG: service ${state.service} status=${state.status} restartCount=${state.restartCount}${containerLabel}${
++        unhealthy ? ' unhealthy=true' : ' unhealthy=false'
++      }`
++    );
++    if (state.status === 'restarting') {
++      logErr(`INFRA-DIAG: unhealthy signal -> ${state.service} is restarting (restartCount=${state.restartCount}).`);
++    }
++    if (state.inspectError) {
++      logErr(`INFRA-DIAG: ${state.service} inspect warning: ${state.inspectError}`);
++    }
++    if (state.status !== 'exited' || !state.exitDetails) {
++      continue;
++    }
++    exitedInspected += 1;
++    const { oomKilled, exitCode, finishedAt, stateError } = state.exitDetails;
++    logErr(
++      `INFRA-DIAG: exited ${state.service}${containerLabel} OOMKilled=${oomKilled} exitCode=${exitCode} finishedAt=${finishedAt}${
++        stateError ? ` error=${stateError}` : ''
++      }`
++    );
+   }
+   if (exitedInspected === 0) {
+     logErr('INFRA-DIAG: no exited core containers found for OOMKilled inspection.');
+   }
++  return coreInfra;
++}
++
++function buildSmokeRecoveryTargets(coreInfra = null) {
++  const targets = new Set(RECOVERY_ALWAYS_INCLUDE);
++  for (const state of coreInfra?.serviceStates ?? []) {
++    if (isUnhealthyCoreStatus(state.status)) {
++      targets.add(state.service);
++    }
++  }
++  return CORE_INFRA_SERVICES.filter((service) => targets.has(service));
+ }
+ 
+-function runSmokeAutoRecovery(attempt, totalAttempts) {
++function runSmokeAutoRecovery(attempt, totalAttempts, targets) {
++  const services = targets.length > 0 ? targets : RECOVERY_ALWAYS_INCLUDE;
+   logErr(
+-    `SMOKE-RECOVERY: attempt ${attempt}/${totalAttempts} running docker compose up -d ${CORE_INFRA_SERVICES.join(' ')}`
++    `SMOKE-RECOVERY: attempt ${attempt}/${totalAttempts} running docker compose up -d ${services.join(' ')}`
+   );
+-  const upRes = runCapture('docker', composeArgs(['up', '-d', ...CORE_INFRA_SERVICES]));
++  const upRes = runCapture('docker', composeArgs(['up', '-d', ...services]));
+   if (!upRes.ok) {
+     logErr(`SMOKE-RECOVERY: compose up failed (exit ${upRes.status}).`);
+     logOutputLines('SMOKE-RECOVERY: ', upRes.stderr || upRes.stdout, 40, logErr);
+@@ -581,13 +710,15 @@ async function smokeChecks() {
+ 
+   let outcome = await runSmokePass(checks, { maxAttempts, retryDelayMs });
+   if (outcome.launchAliasFailed) {
+-    let infraSignals = collectInfraSignals(outcome);
++    let coreInfra = inspectCoreInfraServices();
++    let infraSignals = collectInfraSignals(outcome, coreInfra);
+     if (infraSignals.length > 0) {
+       emitNginxUpstreamHints();
+-      emitInfraDiagnostics();
++      coreInfra = emitInfraDiagnostics(coreInfra);
+       if (autoRecoverEnabled && maxRecoveryAttempts > 0) {
++        let recoveryTargets = buildSmokeRecoveryTargets(coreInfra);
+         for (let attempt = 1; attempt <= maxRecoveryAttempts; attempt += 1) {
+-          const upOk = runSmokeAutoRecovery(attempt, maxRecoveryAttempts);
++          const upOk = runSmokeAutoRecovery(attempt, maxRecoveryAttempts, recoveryTargets);
+           if (!upOk) {
+             continue;
+           }
+@@ -599,9 +730,11 @@ async function smokeChecks() {
+             log('Smoke checks passed. The refactor launch alias is reachable.');
+             return;
+           }
+-          infraSignals = collectInfraSignals(outcome);
++          coreInfra = inspectCoreInfraServices();
++          infraSignals = collectInfraSignals(outcome, coreInfra);
+           emitNginxUpstreamHints();
+-          emitInfraDiagnostics();
++          coreInfra = emitInfraDiagnostics(coreInfra);
++          recoveryTargets = buildSmokeRecoveryTargets(coreInfra);
+         }
+       } else if (!autoRecoverEnabled) {
+         log('SMOKE-RECOVERY: disabled via REFACTOR_SMOKE_AUTORECOVER=0.');
+diff --git a/gs-server/deploy/scripts/refactor-start.sh b/gs-server/deploy/scripts/refactor-start.sh
+index 9ed35e22f..5f04b1bca 100755
+--- a/gs-server/deploy/scripts/refactor-start.sh
++++ b/gs-server/deploy/scripts/refactor-start.sh
+@@ -57,6 +57,8 @@ STATIC_EXTERNAL_HOST="${STATIC_EXTERNAL_HOST:-$(cluster_cfg_or_default STATIC_EX
+ STATIC_EXTERNAL_PORT="${STATIC_EXTERNAL_PORT:-$(cluster_cfg_or_default STATIC_EXTERNAL_PORT "18080")}"
+ REFACTOR_READY_RETRIES="${REFACTOR_READY_RETRIES:-30}"
+ REFACTOR_READY_DELAY_SEC="${REFACTOR_READY_DELAY_SEC:-2}"
++REFACTOR_CORE_STABILITY_CHECKS="${REFACTOR_CORE_STABILITY_CHECKS:-3}"
++REFACTOR_CORE_STABILITY_DELAY_SEC="${REFACTOR_CORE_STABILITY_DELAY_SEC:-3}"
+ 
+ log() { printf '[refactor-start] %s\n' "$*"; }
+ die() { printf '[refactor-start] ERROR: %s\n' "$*" >&2; exit 1; }
+@@ -186,6 +188,43 @@ service_running() {
+   [[ "$(docker inspect -f '{{.State.Running}}' "$cid" 2>/dev/null || echo false)" == "true" ]]
+ }
+ 
++service_restart_count() {
++  local service="$1"
++  local cid
++  cid="$(cd "$REFACTOR_DIR" && docker compose -p refactor --env-file .env ps -q "$service" 2>/dev/null | head -n1 || true)"
++  [[ -n "$cid" ]] || { printf 'n/a\n'; return 0; }
++  docker inspect -f '{{.RestartCount}}' "$cid" 2>/dev/null || printf 'n/a\n'
++}
++
++verify_core_services_stable() {
++  local core_services=("$@")
++  local checks="${REFACTOR_CORE_STABILITY_CHECKS}"
++  local delay="${REFACTOR_CORE_STABILITY_DELAY_SEC}"
++  local check_idx=1
++  local service
++  local unstable=()
++
++  while (( check_idx <= checks )); do
++    unstable=()
++    for service in "${core_services[@]}"; do
++      if ! service_running "$service"; then
++        unstable+=("$service")
++      fi
++    done
++    if (( ${#unstable[@]} > 0 )); then
++      die "core services unstable during stability check ${check_idx}/${checks}: ${unstable[*]}"
++    fi
++    if (( check_idx < checks )); then
++      sleep "$delay"
++    fi
++    ((check_idx++))
++  done
++
++  for service in "${core_services[@]}"; do
++    log "core service stable: ${service} (restartCount=$(service_restart_count "$service"))"
++  done
++}
++
+ verify_core_services_running() {
+   local core_services=(c1-refactor zookeeper kafka mp)
+   local down=()
+@@ -220,6 +259,7 @@ verify_core_services_running() {
+     die "core services failed to recover: ${still_down[*]}"
+   fi
+   log "core services recovered: ${down[*]}"
++  verify_core_services_stable "${core_services[@]}"
+ }
+ 
+ start_edge_services() {

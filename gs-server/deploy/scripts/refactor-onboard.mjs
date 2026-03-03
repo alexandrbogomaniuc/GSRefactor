@@ -68,6 +68,7 @@ const DEFAULT_NGINX_ERROR_LOG_PATH = cfg(
 );
 const REFACTOR_COMPOSE_PROJECT = 'refactor';
 const CORE_INFRA_SERVICES = ['c1-refactor', 'zookeeper', 'kafka', 'mp', 'gs', 'static'];
+const RECOVERY_ALWAYS_INCLUDE = ['gs', 'static'];
 const SMOKE_RECOVERY_WAIT_MS = 3000;
 
 function log(msg) {
@@ -380,7 +381,128 @@ function emitNginxUpstreamHints() {
   }
 }
 
-function collectInfraSignals(outcome) {
+function normalizeCoreServiceStatus(rawStatus) {
+  const status = String(rawStatus ?? '').trim().toLowerCase();
+  if (!status) return 'not-running';
+  if (status === 'running' || status === 'restarting' || status === 'exited') {
+    return status;
+  }
+  if (status === 'created' || status === 'dead' || status === 'removing' || status === 'paused') {
+    return 'not-running';
+  }
+  return status;
+}
+
+function isUnhealthyCoreStatus(status) {
+  return status === 'restarting' || status === 'exited' || status === 'not-running';
+}
+
+function inspectCoreInfraServices() {
+  if (!hasCommand('docker')) {
+    return {
+      dockerAvailable: false,
+      serviceStates: [],
+    };
+  }
+
+  const serviceStates = [];
+  for (const service of CORE_INFRA_SERVICES) {
+    const idsRes = runCapture('docker', composeArgs(['ps', '-q', service]));
+    if (!idsRes.ok) {
+      serviceStates.push({
+        service,
+        status: 'not-running',
+        restartCount: 'n/a',
+        containerId: null,
+        inspectError: `compose ps -q failed (exit ${idsRes.status})`,
+      });
+      continue;
+    }
+
+    const ids = idsRes.stdout
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+
+    if (ids.length === 0) {
+      serviceStates.push({
+        service,
+        status: 'not-running',
+        restartCount: 'n/a',
+        containerId: null,
+      });
+      continue;
+    }
+
+    let aggregatedStatus = 'running';
+    let maxRestartCount = 0;
+    let hasRestartCount = false;
+    let selectedContainerId = ids[0];
+    let selectedExitDetails = null;
+    let selectedInspectError = null;
+
+    for (const id of ids) {
+      const inspectRes = runCapture('docker', ['inspect', id]);
+      if (!inspectRes.ok) {
+        aggregatedStatus = 'not-running';
+        selectedInspectError = `docker inspect failed for ${id.slice(0, 12)} (exit ${inspectRes.status})`;
+        selectedContainerId = id;
+        continue;
+      }
+
+      let inspectObj;
+      try {
+        const parsed = JSON.parse(inspectRes.stdout);
+        inspectObj = Array.isArray(parsed) ? parsed[0] : parsed;
+      } catch {
+        aggregatedStatus = 'not-running';
+        selectedInspectError = `could not parse docker inspect output for ${id.slice(0, 12)}`;
+        selectedContainerId = id;
+        continue;
+      }
+
+      const status = normalizeCoreServiceStatus(inspectObj?.State?.Status);
+      const parsedRestartCount = Number(inspectObj?.RestartCount);
+      if (Number.isFinite(parsedRestartCount)) {
+        hasRestartCount = true;
+        maxRestartCount = Math.max(maxRestartCount, parsedRestartCount);
+      }
+
+      if (status === 'restarting') {
+        aggregatedStatus = 'restarting';
+        selectedContainerId = id;
+      } else if (status === 'exited' && aggregatedStatus !== 'restarting') {
+        aggregatedStatus = 'exited';
+        selectedContainerId = id;
+        selectedExitDetails = {
+          oomKilled: Boolean(inspectObj?.State?.OOMKilled),
+          exitCode: inspectObj?.State?.ExitCode ?? 'n/a',
+          finishedAt: inspectObj?.State?.FinishedAt ?? 'n/a',
+          stateError: inspectObj?.State?.Error ? String(inspectObj.State.Error) : '',
+        };
+      } else if (status !== 'running' && aggregatedStatus === 'running') {
+        aggregatedStatus = 'not-running';
+        selectedContainerId = id;
+      }
+    }
+
+    serviceStates.push({
+      service,
+      status: aggregatedStatus,
+      restartCount: hasRestartCount ? maxRestartCount : 'n/a',
+      containerId: selectedContainerId,
+      exitDetails: selectedExitDetails,
+      inspectError: selectedInspectError,
+    });
+  }
+
+  return {
+    dockerAvailable: true,
+    serviceStates,
+  };
+}
+
+function collectInfraSignals(outcome, coreInfra = null) {
   const signals = new Set(outcome.downDependencies ?? []);
   if (outcome.gsDirectFailed) {
     signals.add('GS direct launch probe');
@@ -388,13 +510,22 @@ function collectInfraSignals(outcome) {
   if (outcome.gsSupportFailed) {
     signals.add('GS support route probe');
   }
+  for (const state of coreInfra?.serviceStates ?? []) {
+    if (state.status === 'restarting') {
+      signals.add(`core service restarting: ${state.service}`);
+    } else if (state.status === 'exited') {
+      signals.add(`core service exited: ${state.service}`);
+    } else if (state.status === 'not-running') {
+      signals.add(`core service not-running: ${state.service}`);
+    }
+  }
   return [...signals];
 }
 
-function emitInfraDiagnostics() {
-  if (!hasCommand('docker')) {
+function emitInfraDiagnostics(coreInfra = inspectCoreInfraServices()) {
+  if (!coreInfra.dockerAvailable) {
     logErr('INFRA-DIAG: docker command not found; cannot emit compose diagnostics.');
-    return;
+    return coreInfra;
   }
 
   logErr(`INFRA-DIAG: docker compose ps summary (core: ${CORE_INFRA_SERVICES.join(', ')})`);
@@ -407,55 +538,53 @@ function emitInfraDiagnostics() {
   }
 
   let exitedInspected = 0;
-  for (const service of CORE_INFRA_SERVICES) {
-    const idsRes = runCapture('docker', composeArgs(['ps', '-q', service]));
-    if (!idsRes.ok) {
-      logErr(`INFRA-DIAG: unable to resolve container id for ${service} (exit ${idsRes.status}).`);
+  for (const state of coreInfra.serviceStates) {
+    const unhealthy = isUnhealthyCoreStatus(state.status);
+    const containerLabel = state.containerId ? ` container=${state.containerId.slice(0, 12)}` : '';
+    logErr(
+      `INFRA-DIAG: service ${state.service} status=${state.status} restartCount=${state.restartCount}${containerLabel}${
+        unhealthy ? ' unhealthy=true' : ' unhealthy=false'
+      }`
+    );
+    if (state.status === 'restarting') {
+      logErr(`INFRA-DIAG: unhealthy signal -> ${state.service} is restarting (restartCount=${state.restartCount}).`);
+    }
+    if (state.inspectError) {
+      logErr(`INFRA-DIAG: ${state.service} inspect warning: ${state.inspectError}`);
+    }
+    if (state.status !== 'exited' || !state.exitDetails) {
       continue;
     }
-    const ids = idsRes.stdout
-      .split(/\r?\n/)
-      .map((line) => line.trim())
-      .filter(Boolean);
-    for (const id of ids) {
-      const inspectRes = runCapture('docker', ['inspect', '--format', '{{json .State}}', id]);
-      if (!inspectRes.ok) {
-        logErr(`INFRA-DIAG: docker inspect failed for ${service} (${id.slice(0, 12)}) (exit ${inspectRes.status}).`);
-        continue;
-      }
-      let state;
-      try {
-        state = JSON.parse(inspectRes.stdout.trim());
-      } catch {
-        logErr(`INFRA-DIAG: could not parse state for ${service} (${id.slice(0, 12)}).`);
-        continue;
-      }
-      const status = String(state?.Status ?? '').toLowerCase();
-      if (status !== 'exited') {
-        continue;
-      }
-      exitedInspected += 1;
-      const oomKilled = Boolean(state?.OOMKilled);
-      const exitCode = state?.ExitCode ?? 'n/a';
-      const finishedAt = state?.FinishedAt ?? 'n/a';
-      const stateError = state?.Error ? String(state.Error) : '';
-      logErr(
-        `INFRA-DIAG: exited ${service} (${id.slice(0, 12)}) OOMKilled=${oomKilled} exitCode=${exitCode} finishedAt=${finishedAt}${
-          stateError ? ` error=${stateError}` : ''
-        }`
-      );
-    }
+    exitedInspected += 1;
+    const { oomKilled, exitCode, finishedAt, stateError } = state.exitDetails;
+    logErr(
+      `INFRA-DIAG: exited ${state.service}${containerLabel} OOMKilled=${oomKilled} exitCode=${exitCode} finishedAt=${finishedAt}${
+        stateError ? ` error=${stateError}` : ''
+      }`
+    );
   }
   if (exitedInspected === 0) {
     logErr('INFRA-DIAG: no exited core containers found for OOMKilled inspection.');
   }
+  return coreInfra;
 }
 
-function runSmokeAutoRecovery(attempt, totalAttempts) {
+function buildSmokeRecoveryTargets(coreInfra = null) {
+  const targets = new Set(RECOVERY_ALWAYS_INCLUDE);
+  for (const state of coreInfra?.serviceStates ?? []) {
+    if (isUnhealthyCoreStatus(state.status)) {
+      targets.add(state.service);
+    }
+  }
+  return CORE_INFRA_SERVICES.filter((service) => targets.has(service));
+}
+
+function runSmokeAutoRecovery(attempt, totalAttempts, targets) {
+  const services = targets.length > 0 ? targets : RECOVERY_ALWAYS_INCLUDE;
   logErr(
-    `SMOKE-RECOVERY: attempt ${attempt}/${totalAttempts} running docker compose up -d ${CORE_INFRA_SERVICES.join(' ')}`
+    `SMOKE-RECOVERY: attempt ${attempt}/${totalAttempts} running docker compose up -d ${services.join(' ')}`
   );
-  const upRes = runCapture('docker', composeArgs(['up', '-d', ...CORE_INFRA_SERVICES]));
+  const upRes = runCapture('docker', composeArgs(['up', '-d', ...services]));
   if (!upRes.ok) {
     logErr(`SMOKE-RECOVERY: compose up failed (exit ${upRes.status}).`);
     logOutputLines('SMOKE-RECOVERY: ', upRes.stderr || upRes.stdout, 40, logErr);
@@ -581,13 +710,15 @@ async function smokeChecks() {
 
   let outcome = await runSmokePass(checks, { maxAttempts, retryDelayMs });
   if (outcome.launchAliasFailed) {
-    let infraSignals = collectInfraSignals(outcome);
+    let coreInfra = inspectCoreInfraServices();
+    let infraSignals = collectInfraSignals(outcome, coreInfra);
     if (infraSignals.length > 0) {
       emitNginxUpstreamHints();
-      emitInfraDiagnostics();
+      coreInfra = emitInfraDiagnostics(coreInfra);
       if (autoRecoverEnabled && maxRecoveryAttempts > 0) {
+        let recoveryTargets = buildSmokeRecoveryTargets(coreInfra);
         for (let attempt = 1; attempt <= maxRecoveryAttempts; attempt += 1) {
-          const upOk = runSmokeAutoRecovery(attempt, maxRecoveryAttempts);
+          const upOk = runSmokeAutoRecovery(attempt, maxRecoveryAttempts, recoveryTargets);
           if (!upOk) {
             continue;
           }
@@ -599,9 +730,11 @@ async function smokeChecks() {
             log('Smoke checks passed. The refactor launch alias is reachable.');
             return;
           }
-          infraSignals = collectInfraSignals(outcome);
+          coreInfra = inspectCoreInfraServices();
+          infraSignals = collectInfraSignals(outcome, coreInfra);
           emitNginxUpstreamHints();
-          emitInfraDiagnostics();
+          coreInfra = emitInfraDiagnostics(coreInfra);
+          recoveryTargets = buildSmokeRecoveryTargets(coreInfra);
         }
       } else if (!autoRecoverEnabled) {
         log('SMOKE-RECOVERY: disabled via REFACTOR_SMOKE_AUTORECOVER=0.');

@@ -1,0 +1,52 @@
+[2026-03-03T07:27:54Z] START STEP09-retry1
+[2026-03-03T07:27:54Z] DIR .
+[2026-03-03T07:27:54Z] CMD node gs-server/deploy/scripts/refactor-onboard.mjs smoke (timeout=300s)
+[refactor-onboard] PASS: Static asset route (http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json) -> HTTP 200
+[refactor-onboard] WARN: GS support route (diagnostic) (http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6275) -> read ECONNRESET after 10 attempts
+[refactor-onboard] WARN: GS direct launch (cwstartgamev2) (http://127.0.0.1:18081/cwstartgamev2.do?bankId=6275&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> read ECONNRESET after 10 attempts
+[refactor-onboard] PASS: Config service health (http://127.0.0.1:18072/health) -> HTTP 200
+[refactor-onboard] PASS: Dependency health: session-service (http://127.0.0.1:18073/health) -> HTTP 200
+[refactor-onboard] PASS: Dependency health: gameplay-orchestrator (http://127.0.0.1:18074/health) -> HTTP 200
+[refactor-onboard] PASS: Dependency health: wallet-adapter (http://127.0.0.1:18075/health) -> HTTP 200
+[refactor-onboard] PASS: Dependency health: protocol-adapter (http://127.0.0.1:18078/health) -> HTTP 200
+[refactor-onboard] FAIL: Launch alias (startgame) (http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 502 after 10 attempts
+[refactor-onboard] WARN: Launch alias (secondary) (http://127.0.0.1:18080/startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 502 after 10 attempts
+[refactor-onboard] NGINX-HINT: upstream errors seen in /Users/alexb/Documents/Dev/Dev_new/Doker/runtime-gs/logs/nginx/error.log (tail excerpt):
+[refactor-onboard] NGINX-HINT: 2026/03/03 07:29:24 [error] 27#27: *633 connect() failed (111: Connection refused) while connecting to upstream, client: 162.159.200.123, server: localhost, request: "GET /startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en HTTP/1.1", upstream: "http://172.23.0.15:8080/cwstartgamev2.do?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en", host: "127.0.0.1:18080"
+[refactor-onboard] NGINX-HINT: 2026/03/03 07:29:27 [error] 27#27: *635 connect() failed (111: Connection refused) while connecting to upstream, client: 162.159.200.123, server: localhost, request: "GET /startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en HTTP/1.1", upstream: "http://172.23.0.15:8080/cwstartgamev2.do?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en", host: "127.0.0.1:18080"
+[refactor-onboard] NGINX-HINT: 2026/03/03 07:29:30 [error] 27#27: *637 connect() failed (111: Connection refused) while connecting to upstream, client: 162.159.200.123, server: localhost, request: "GET /startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en HTTP/1.1", upstream: "http://172.23.0.15:8080/cwstartgamev2.do?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en", host: "127.0.0.1:18080"
+[refactor-onboard] NGINX-HINT: 2026/03/03 07:29:33 [error] 27#27: *639 connect() failed (111: Connection refused) while connecting to upstream, client: 172.67.221.59, server: localhost, request: "GET /startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en HTTP/1.1", upstream: "http://172.23.0.15:8080/cwstartgamev2.do?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en", host: "127.0.0.1:18080"
+[refactor-onboard] NGINX-HINT: 2026/03/03 07:29:36 [error] 27#27: *641 connect() failed (111: Connection refused) while connecting to upstream, client: 172.67.221.59, server: localhost, request: "GET /startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en HTTP/1.1", upstream: "http://172.23.0.15:8080/cwstartgamev2.do?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en", host: "127.0.0.1:18080"
+[refactor-onboard] NGINX-HINT: 2026/03/03 07:29:39 [error] 27#27: *643 connect() failed (111: Connection refused) while connecting to upstream, client: 172.67.221.59, server: localhost, request: "GET /startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en HTTP/1.1", upstream: "http://172.23.0.15:8080/cwstartgamev2.do?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en", host: "127.0.0.1:18080"
+[refactor-onboard] NGINX-HINT: 2026/03/03 07:29:42 [error] 27#27: *645 connect() failed (111: Connection refused) while connecting to upstream, client: 172.67.221.59, server: localhost, request: "GET /startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en HTTP/1.1", upstream: "http://172.23.0.15:8080/cwstartgamev2.do?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en", host: "127.0.0.1:18080"
+[refactor-onboard] NGINX-HINT: 2026/03/03 07:29:45 [error] 27#27: *647 connect() failed (111: Connection refused) while connecting to upstream, client: 172.67.221.59, server: localhost, request: "GET /startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en HTTP/1.1", upstream: "http://172.23.0.15:8080/cwstartgamev2.do?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en", host: "127.0.0.1:18080"
+[refactor-onboard] INFRA-DIAG: docker compose ps summary (core: c1-refactor, zookeeper, kafka, mp, gs, static)
+[refactor-onboard] INFRA-DIAG: NAME                     IMAGE                         COMMAND                  SERVICE       CREATED             STATUS              PORTS
+[refactor-onboard] INFRA-DIAG: refactor-c1-refactor-1   cassandra:4.1                 "docker-entrypoint.s…"   c1-refactor   25 minutes ago      Up About a minute   0.0.0.0:19412->9042/tcp, [::]:19412->9042/tcp
+[refactor-onboard] INFRA-DIAG: refactor-gs-1            refactor-jetty-gs             "/docker-entrypoint.…"   gs            About an hour ago   Up About an hour    0.0.0.0:16000->6000/tcp, [::]:16000->6000/tcp, 0.0.0.0:16001->6001/tcp, [::]:16001->6001/tcp, 0.0.0.0:18081->8080/tcp, [::]:18081->8080/tcp, 0.0.0.0:19000->9000/tcp, [::]:19000->9000/tcp
+[refactor-onboard] INFRA-DIAG: refactor-kafka-1         confluentinc/cp-kafka:7.3.2   "/etc/confluent/dock…"   kafka         25 minutes ago      Up About a minute   0.0.0.0:19092->29092/tcp, [::]:19092->29092/tcp
+[refactor-onboard] INFRA-DIAG: refactor-mp-1            refactor-jetty-gs             "/docker-entrypoint.…"   mp            25 minutes ago      Up 25 minutes       0.0.0.0:16300->6300/tcp, [::]:16300->6300/tcp, 0.0.0.0:16301->6301/tcp, [::]:16301->6301/tcp
+[refactor-onboard] INFRA-DIAG: refactor-static-1        refactor-static               "/bin/sh -c 'service…"   static        About an hour ago   Up About an hour    0.0.0.0:18080->80/tcp, [::]:18080->80/tcp
+[refactor-onboard] INFRA-DIAG: refactor-zookeeper-1     zookeeper:3.8                 "/docker-entrypoint.…"   zookeeper     About an hour ago   Up About a minute   0.0.0.0:12181->2181/tcp, [::]:12181->2181/tcp
+[refactor-onboard] INFRA-DIAG: service c1-refactor status=running restartCount=161 container=e57ecf9e4a66 unhealthy=false
+[refactor-onboard] INFRA-DIAG: service zookeeper status=running restartCount=152 container=d1e0655e5904 unhealthy=false
+[refactor-onboard] INFRA-DIAG: service kafka status=running restartCount=25 container=b1f56173d96c unhealthy=false
+[refactor-onboard] INFRA-DIAG: service mp status=running restartCount=0 container=05a7177ac954 unhealthy=false
+[refactor-onboard] INFRA-DIAG: service gs status=running restartCount=0 container=6f4283f02326 unhealthy=false
+[refactor-onboard] INFRA-DIAG: service static status=running restartCount=0 container=6c014e9d79c1 unhealthy=false
+[refactor-onboard] INFRA-DIAG: no exited core containers found for OOMKilled inspection.
+[refactor-onboard] SMOKE-RECOVERY: attempt 1/1 running docker compose up -d gs static
+[refactor-onboard] SMOKE-RECOVERY: waiting 3000ms before re-probing smoke checks.
+[refactor-onboard] PASS: Static asset route (http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json) -> HTTP 200
+[refactor-onboard] PASS: GS support route (diagnostic) (http://127.0.0.1:18081/support/bankSelectAction.do?bankId=6275) -> HTTP 200 (attempt 3/10)
+[refactor-onboard] PASS: GS direct launch (cwstartgamev2) (http://127.0.0.1:18081/cwstartgamev2.do?bankId=6275&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 200
+[refactor-onboard] PASS: Config service health (http://127.0.0.1:18072/health) -> HTTP 200
+[refactor-onboard] PASS: Dependency health: session-service (http://127.0.0.1:18073/health) -> HTTP 200
+[refactor-onboard] PASS: Dependency health: gameplay-orchestrator (http://127.0.0.1:18074/health) -> HTTP 200
+[refactor-onboard] PASS: Dependency health: wallet-adapter (http://127.0.0.1:18075/health) -> HTTP 200
+[refactor-onboard] PASS: Dependency health: protocol-adapter (http://127.0.0.1:18078/health) -> HTTP 200
+[refactor-onboard] PASS: Launch alias (startgame) (http://127.0.0.1:18080/startgame?bankId=6275&subCasinoId=507&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 200
+[refactor-onboard] PASS: Launch alias (secondary) (http://127.0.0.1:18080/startgame?bankId=6274&subCasinoId=508&gameId=838&mode=real&token=bav_game_session_001&lang=en) -> HTTP 200
+[refactor-onboard] SMOKE-RECOVERY: recovery succeeded on attempt 1/1.
+[refactor-onboard] Smoke checks passed. The refactor launch alias is reachable.
+[2026-03-03T07:29:58Z] PASS STEP09-retry1 rc=0
