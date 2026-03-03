@@ -72,6 +72,17 @@ curl -sS http://127.0.0.1:18079/health
 curl -sS http://127.0.0.1:18078/health
 ```
 
+## Smoke exit codes and triage
+- `node ./gs-server/deploy/scripts/refactor-onboard.mjs smoke` exit code semantics:
+  - `0`: smoke checks passed.
+  - `2`: functional smoke failure (required checks failed and launch alias did not show upstream/downstream infra signals).
+  - `3`: infra-blocked smoke failure (launch alias failed while GS direct/support probe and/or dependency health probes are down).
+- Quick triage order when launch alias fails:
+  1. Check GS direct launch probe (`:18081/cwstartgamev2.do?...`) from smoke output.
+  2. Check GS support probe (`:18081/support/bankSelectAction.do?...`) from smoke output.
+  3. Check dependency probe lines (`session-service`, `gameplay-orchestrator`, `wallet-adapter`, `protocol-adapter`).
+  4. If infra signals appear, inspect nginx error hints for `could not be resolved` and `connect() failed` messages.
+
 ## Isolation policy
 - No mounts from outside the `Dev_new` repository are required for the default refactor-only startup path.
 - No changes to existing compose files under `deploy/docker/configs`.

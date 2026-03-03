@@ -54,10 +54,18 @@ const DEFAULT_SECONDARY_LAUNCH_GAME_ID = cfg('SECONDARY_LAUNCH_GAME_ID', DEFAULT
 const DEFAULT_SECONDARY_LAUNCH_MODE = cfg('SECONDARY_LAUNCH_MODE', DEFAULT_LAUNCH_MODE);
 const DEFAULT_SECONDARY_LAUNCH_TOKEN = cfg('SECONDARY_LAUNCH_TOKEN', DEFAULT_LAUNCH_TOKEN);
 const DEFAULT_SECONDARY_LAUNCH_LANG = cfg('SECONDARY_LAUNCH_LANG', DEFAULT_LAUNCH_LANG);
+const DEFAULT_GS_DIRECT_LAUNCH_BASE_URL = cfg(
+  'GS_DIRECT_LAUNCH_BASE_URL',
+  `http://${cfg('GS_EXTERNAL_HOST', '127.0.0.1')}:${cfg('GS_EXTERNAL_PORT', '18081')}/cwstartgamev2.do`
+);
 const SESSION_SERVICE_HEALTH_URL = `http://${cfg('SESSION_SERVICE_EXTERNAL_HOST', '127.0.0.1')}:${cfg('SESSION_SERVICE_EXTERNAL_PORT', '18073')}/health`;
 const GAMEPLAY_SERVICE_HEALTH_URL = `http://${cfg('GAMEPLAY_ORCHESTRATOR_EXTERNAL_HOST', '127.0.0.1')}:${cfg('GAMEPLAY_ORCHESTRATOR_EXTERNAL_PORT', '18074')}/health`;
 const WALLET_SERVICE_HEALTH_URL = `http://${cfg('WALLET_ADAPTER_EXTERNAL_HOST', '127.0.0.1')}:${cfg('WALLET_ADAPTER_EXTERNAL_PORT', '18075')}/health`;
 const PROTOCOL_SERVICE_HEALTH_URL = `http://${cfg('PROTOCOL_ADAPTER_EXTERNAL_HOST', '127.0.0.1')}:${cfg('PROTOCOL_ADAPTER_EXTERNAL_PORT', '18078')}/health`;
+const DEFAULT_NGINX_ERROR_LOG_PATH = cfg(
+  'NGINX_ERROR_LOG_PATH',
+  path.join(DEV_NEW_ROOT, 'Doker', 'runtime-gs', 'logs', 'nginx', 'error.log')
+);
 
 function log(msg) {
   process.stdout.write(`[refactor-onboard] ${msg}\n`);
@@ -181,6 +189,24 @@ function buildLaunchUrl({
   return `${baseUrl}?${search.toString()}`;
 }
 
+function buildGsDirectLaunchUrl({
+  bankId = DEFAULT_LAUNCH_BANK_ID,
+  gameId = DEFAULT_LAUNCH_GAME_ID,
+  mode = DEFAULT_LAUNCH_MODE,
+  token = DEFAULT_LAUNCH_TOKEN,
+  lang = DEFAULT_LAUNCH_LANG,
+  baseUrl = DEFAULT_GS_DIRECT_LAUNCH_BASE_URL,
+} = {}) {
+  const search = new URLSearchParams({
+    bankId: String(bankId),
+    gameId: String(gameId),
+    mode: String(mode),
+    token: String(token),
+    lang: String(lang),
+  });
+  return `${baseUrl}?${search.toString()}`;
+}
+
 function runBashScript(scriptPath, scriptArgs = []) {
   const bashBin = resolveBash();
   return run(bashBin, [scriptPath, ...scriptArgs]);
@@ -256,15 +282,51 @@ async function retryingHttpCheck(
   return { ok: false, result: lastResult, error: lastError, attempt: attempts };
 }
 
+function emitNginxUpstreamHints() {
+  try {
+    if (!existsSync(DEFAULT_NGINX_ERROR_LOG_PATH)) {
+      return;
+    }
+    const raw = readFileSync(DEFAULT_NGINX_ERROR_LOG_PATH, 'utf8');
+    const lines = raw.trimEnd().split(/\r?\n/);
+    const lastLines = lines.slice(-300);
+    const hintRegex = /could not be resolved|connect\(\) failed/i;
+    const matches = lastLines.filter((line) => hintRegex.test(line));
+    if (matches.length === 0) {
+      return;
+    }
+    log(`NGINX-HINT: upstream errors seen in ${DEFAULT_NGINX_ERROR_LOG_PATH} (tail excerpt):`);
+    for (const line of matches.slice(-8)) {
+      log(`NGINX-HINT: ${line}`);
+    }
+  } catch (err) {
+    log(`WARN: Unable to read nginx error hints: ${err?.message ?? 'unknown error'}`);
+  }
+}
+
 async function smokeChecks() {
   const primaryLaunchUrl = buildLaunchUrl();
+  const gsDirectLaunchUrl = buildGsDirectLaunchUrl();
   const checks = [];
 
   checks.push(
     // Use a concrete static game asset instead of "/" to avoid startup-time proxy false negatives.
     { label: 'Static asset route', url: 'http://127.0.0.1:18080/html5pc/actiongames/dragonstone/lobby/version.json', okStatuses: [200] },
     // Diagnostic-only signal: can flap during startup even when launch path is healthy.
-    { label: 'GS support route (diagnostic)', url: `http://127.0.0.1:18081/support/bankSelectAction.do?bankId=${encodeURIComponent(DEFAULT_LAUNCH_BANK_ID)}`, okStatuses: [200], required: false },
+    {
+      label: 'GS support route (diagnostic)',
+      url: `http://127.0.0.1:18081/support/bankSelectAction.do?bankId=${encodeURIComponent(DEFAULT_LAUNCH_BANK_ID)}`,
+      okStatuses: [200],
+      required: false,
+      supportProbe: true,
+    },
+    {
+      label: 'GS direct launch (cwstartgamev2)',
+      url: gsDirectLaunchUrl,
+      okStatuses: [200],
+      required: false,
+      gsDirectProbe: true,
+    },
     { label: 'Config service health', url: 'http://127.0.0.1:18072/health', okStatuses: [200] },
     { label: 'Dependency health: session-service', url: SESSION_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
     { label: 'Dependency health: gameplay-orchestrator', url: GAMEPLAY_SERVICE_HEALTH_URL, okStatuses: [200], required: false, dependency: true },
@@ -304,6 +366,8 @@ async function smokeChecks() {
 
   let failures = 0;
   let launchAliasFailed = false;
+  let gsSupportFailed = false;
+  let gsDirectFailed = false;
   const downDependencies = [];
   for (const check of checks) {
     const outcome = await retryingHttpCheck(check, {
@@ -325,6 +389,12 @@ async function smokeChecks() {
       if (check.dependency) {
         downDependencies.push(check.label);
       }
+      if (check.supportProbe) {
+        gsSupportFailed = true;
+      }
+      if (check.gsDirectProbe) {
+        gsDirectFailed = true;
+      }
       const prefix = required ? 'FAIL' : 'WARN';
       if (outcome.result) {
         log(`${prefix}: ${check.label} (${check.url}) -> HTTP ${outcome.result.status} after ${maxAttempts} attempts`);
@@ -334,12 +404,26 @@ async function smokeChecks() {
     }
   }
 
-  if (launchAliasFailed && downDependencies.length > 0) {
-    log(`INFRA-BLOCKED: Launch alias failed while dependency probes are down (${downDependencies.join(', ')}).`);
-    fail(`Smoke checks infra-blocked by dependency outage (${downDependencies.length} down). See lines above.`, 3);
+  if (launchAliasFailed) {
+    const infraSignals = [...downDependencies];
+    if (gsDirectFailed) {
+      infraSignals.push('GS direct launch probe');
+    }
+    if (gsSupportFailed) {
+      infraSignals.push('GS support route probe');
+    }
+    if (infraSignals.length > 0) {
+      emitNginxUpstreamHints();
+      log(`INFRA-BLOCKED: Launch alias failed while infrastructure probes are down (${infraSignals.join(', ')}).`);
+      fail(`Smoke checks infra-blocked by upstream/runtime outage (${infraSignals.length} signals). See lines above.`, 3);
+    }
+    log('WARN: Launch alias failed while GS direct/support probes remained healthy; keeping functional classification (rc=2).');
   }
 
   if (failures > 0) {
+    if (launchAliasFailed) {
+      emitNginxUpstreamHints();
+    }
     fail(`Smoke checks failed (${failures} failure(s)). See lines above.`, 2);
   }
 

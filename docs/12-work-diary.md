@@ -10925,3 +10925,21 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.01-0.15h` (`~0.00-0.02` workdays), dominated by persistent launch-alias `HTTP 502` in `STEP09`.
+
+### 2026-03-03 06:15 UTC
+- Continued Project 02 stabilization in `/Users/alexb/Documents/Dev/Dev_new` with integrated hard-cut wave `CN+CO`.
+- Batch content:
+  - `CN` (`10` edits): stack/orchestration resilience (`GS_BACKEND_HOST=gs`, compose restart policy for `gs/static`, nginx resolver tuning, readiness waits + warm alias probe, synced cluster-host outputs).
+  - `CO` (`7` edits): smoke diagnostics hardening (direct GS launch probe, GS-support/direct signal separation, nginx upstream hints, `INFRA-BLOCKED rc=3` on alias fail with upstream-down signals, README triage semantics).
+- Validation outcomes:
+  - targeted fast gates: `common-games PASS`, `bots PASS`, `web PASS`, `clashofthegods PASS`.
+  - full matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=3`.
+  - `STEP09` retry now carries explicit upstream evidence (`GS direct/support ECONNRESET`, nginx `connect() failed`) and classifies as infra-blocked.
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-060341-hardcut-live-batchCNCO-step09-upstream-resilience/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/292-hard-cut-live-batchCNCO-step09-upstream-resilience-rewire17-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - residual runtime closure (`STEP09` upstream stability) `~0.25-4.00h` (`~0.03-0.50` workdays).

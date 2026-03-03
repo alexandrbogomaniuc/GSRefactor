@@ -51,6 +51,10 @@ SESSION_SERVICE_PORT="${SESSION_SERVICE_PORT:-$(cluster_cfg_or_default SESSION_S
 GAMEPLAY_ORCHESTRATOR_PORT="${GAMEPLAY_ORCHESTRATOR_PORT:-$(cluster_cfg_or_default GAMEPLAY_ORCHESTRATOR_PORT "18074")}"
 WALLET_ADAPTER_PORT="${WALLET_ADAPTER_PORT:-$(cluster_cfg_or_default WALLET_ADAPTER_PORT "18075")}"
 PROTOCOL_ADAPTER_PORT="${PROTOCOL_ADAPTER_PORT:-$(cluster_cfg_or_default PROTOCOL_ADAPTER_PORT "18078")}"
+GS_EXTERNAL_HOST="${GS_EXTERNAL_HOST:-$(cluster_cfg_or_default GS_EXTERNAL_HOST "127.0.0.1")}"
+GS_EXTERNAL_PORT="${GS_EXTERNAL_PORT:-$(cluster_cfg_or_default GS_EXTERNAL_PORT "18081")}"
+STATIC_EXTERNAL_HOST="${STATIC_EXTERNAL_HOST:-$(cluster_cfg_or_default STATIC_EXTERNAL_HOST "127.0.0.1")}"
+STATIC_EXTERNAL_PORT="${STATIC_EXTERNAL_PORT:-$(cluster_cfg_or_default STATIC_EXTERNAL_PORT "18080")}"
 REFACTOR_READY_RETRIES="${REFACTOR_READY_RETRIES:-30}"
 REFACTOR_READY_DELAY_SEC="${REFACTOR_READY_DELAY_SEC:-2}"
 
@@ -207,11 +211,24 @@ wait_for_health() {
 
 wait_for_refactor_readiness() {
   log "Waiting for refactor service readiness"
+  wait_for_health "gs" "http://${GS_EXTERNAL_HOST}:${GS_EXTERNAL_PORT}/support/bankSelectAction.do?bankId=${LAUNCH_BANK_ID}" || true
+  wait_for_health "static" "http://${STATIC_EXTERNAL_HOST}:${STATIC_EXTERNAL_PORT}/html5pc/actiongames/dragonstone/lobby/version.json" || true
   wait_for_health "config-service" "http://127.0.0.1:${CONFIG_SERVICE_PORT}/health" || true
   wait_for_health "session-service" "http://127.0.0.1:${SESSION_SERVICE_PORT}/health" || true
   wait_for_health "gameplay-orchestrator" "http://127.0.0.1:${GAMEPLAY_ORCHESTRATOR_PORT}/health" || true
   wait_for_health "wallet-adapter" "http://127.0.0.1:${WALLET_ADAPTER_PORT}/health" || true
   wait_for_health "protocol-adapter" "http://127.0.0.1:${PROTOCOL_ADAPTER_PORT}/health" || true
+}
+
+warm_launch_alias_probe() {
+  local launch_url
+  launch_url="$(build_launch_url "$LAUNCH_BANK_ID" "$LAUNCH_SUBCASINO_ID" "$LAUNCH_GAME_ID" "$LAUNCH_MODE" "$LAUNCH_TOKEN" "$LAUNCH_LANG")"
+  if curl -fsS --max-time 8 "$launch_url" >/dev/null 2>&1; then
+    log "warm alias probe ok (${launch_url})"
+  else
+    log "warn: warm alias probe failed (${launch_url})"
+    return 1
+  fi
 }
 
 post_checks() {
@@ -237,6 +254,7 @@ case "$ACTION" in
     ensure_runtime_assets
     start_stack
     wait_for_refactor_readiness
+    warm_launch_alias_probe || true
     post_checks
     ;;
   preflight)

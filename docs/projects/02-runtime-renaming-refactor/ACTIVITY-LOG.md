@@ -5703,3 +5703,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - improved `STEP09` diagnostic fidelity while preserving compile-green posture and runtime safety.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-03 06:15 UTC (Hard-cut live Batch CN+CO)
+- Continued Project 02 stabilization with integrated live batches `CN+CO` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - `CN` (`10` edits): upstream/orchestration hardening (`GS_BACKEND_HOST=gs`, compose restart policy for `gs/static`, nginx resolver TTL + timeout tuning, readiness waits + warm launch probe in start flow, synced cluster host outputs).
+  - `CO` (`7` edits): smoke diagnostics/classification hardening (direct GS launch probe, GS support/direct signal separation, nginx upstream hint extraction, `INFRA-BLOCKED rc=3` when alias fails with upstream-down signals, README triage semantics).
+  - retained total: `17` targeted edits across runtime-safe config/script/docs boundaries.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` PASS, `clashofthegods` PASS.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=3`.
+  - `STEP09` retry now correctly classifies upstream outage lane (`rc=3`) with explicit GS-direct/support and nginx-hint evidence.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-060341-hardcut-live-batchCNCO-step09-upstream-resilience/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/292-hard-cut-live-batchCNCO-step09-upstream-resilience-rewire17-report-20260303.md`
+- Measured movement:
+  - compile lane remains fully green; `STEP09` failure mode is now consistently separated as infrastructure/upstream outage instead of functional ambiguity.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

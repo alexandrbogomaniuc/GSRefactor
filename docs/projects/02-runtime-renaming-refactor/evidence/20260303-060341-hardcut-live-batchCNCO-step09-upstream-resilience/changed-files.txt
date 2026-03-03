@@ -1,0 +1,11 @@
+gs-server/deploy/config/cluster-hosts.properties
+gs-server/deploy/docker/configs/.env
+gs-server/deploy/docker/configs/static/cluster-hosts.inc
+gs-server/deploy/docker/configs/static/games
+gs-server/deploy/docker/refactor/.cluster-hosts.env
+gs-server/deploy/docker/refactor/.env
+gs-server/deploy/docker/refactor/README.md
+gs-server/deploy/docker/refactor/docker-compose.yml
+gs-server/deploy/scripts/refactor-onboard.mjs
+gs-server/deploy/scripts/refactor-start.sh
+gs-server/game-server/web-gs/src/main/resources/cluster-hosts.properties

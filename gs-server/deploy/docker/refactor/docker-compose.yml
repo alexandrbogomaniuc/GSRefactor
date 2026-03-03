@@ -4,6 +4,7 @@ services:
   gs:
     build: ../configs/gs
     image: refactor-jetty-gs
+    restart: unless-stopped
     environment:
       - CASSANDRA_HOST=${CASSANDRA_HOST}
       - CASSANDRA_PORT=${CASSANDRA_PORT}
@@ -141,6 +142,7 @@ services:
   static:
     build: ../configs/static
     image: refactor-static
+    restart: unless-stopped
     volumes:
       - "../../../../Doker/runtime-gs/webapps/gs/ROOT:/www/html/gss:ro"
       - "../../../../Doker/runtime-gs/static:/www/html/stat"
