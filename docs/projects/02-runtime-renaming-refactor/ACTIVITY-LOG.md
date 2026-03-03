@@ -5548,3 +5548,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared previous two-file fail lane and narrowed to localized `SitInHandler` boundary harmonization.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-03 01:32 UTC (Hard-cut live Batch BZ)
+- Continued Project 02 stabilization with live batch `BZ` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - `SitInHandler` `CommonException` namespace alignment (`com.dgphoenix -> com.abs`) and one catch-guard compatibility expansion for dual-namespace transition behavior.
+  - retained total: `2` targeted rewires across `1` file.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL, harmonized `clashofthegods` compile PASS.
+  - `web` first-fail remains in `SitInHandler` but moved deeper from previous line cluster into narrower boundary points (`BuyInFailedException` lane and one residual legacy `CommonException` point).
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not BZ import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-011018-hardcut-live-batchBZ-sitinhandler-exception-boundary-rewire2/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/283-hard-cut-live-batchBZ-sitinhandler-exception-boundary-rewire2-report-20260303.md`
+- Measured movement:
+  - prior SitInHandler fail lines cleared; residual fail-head narrowed to localized points within the same file.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

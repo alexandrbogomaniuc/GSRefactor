@@ -1,0 +1,2 @@
+36:import com.abs.casino.common.exception.CommonException;
+483:                            if (!(e instanceof CommonException) && !(e instanceof com.dgphoenix.casino.common.exception.CommonException)) { //error message already sended

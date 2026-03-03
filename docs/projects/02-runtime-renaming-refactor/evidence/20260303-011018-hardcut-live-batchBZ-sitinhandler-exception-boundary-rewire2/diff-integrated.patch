@@ -1,0 +1,26 @@
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitInHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitInHandler.java
+index f0ef1f0e6..dd1c4b273 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitInHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/SitInHandler.java
+@@ -33,7 +33,7 @@ import com.betsoft.casino.mp.web.service.SitOutTask;
+ import com.betsoft.casino.mp.web.service.SocketService;
+ import com.abs.casino.cassandra.CassandraPersistenceManager;
+ import com.abs.casino.common.currency.CurrencyRate;
+-import com.dgphoenix.casino.common.exception.CommonException;
++import com.abs.casino.common.exception.CommonException;
+ import com.dgphoenix.casino.common.util.string.StringUtils;
+ import org.apache.logging.log4j.LogManager;
+ import org.apache.logging.log4j.Logger;
+@@ -480,9 +480,9 @@ public class SitInHandler extends AbstractRoomHandler<SitIn, IGameSocketClient>
+                         } catch (Exception e) {
+                             getLog().error("Cannot sitIn, roomPlayer={}", roomPlayer, e);
+                             room.rollbackSitIn(seat);
+-                            if (!(e instanceof CommonException)) { //error message already sended
+-                                throw e;
+-                            }
++                            if (!(e instanceof CommonException) && !(e instanceof com.dgphoenix.casino.common.exception.CommonException)) { //error message already sended
++                                throw e;
++                            }
+                         }
+                     } else if (sitInResult == TOO_MANY_PLAYER) {
+                         sendErrorMessage(client, TOO_MANY_PLAYER, "Too many players", message.getRid());

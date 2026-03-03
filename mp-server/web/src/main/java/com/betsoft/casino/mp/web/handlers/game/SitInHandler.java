@@ -33,7 +33,7 @@ import com.betsoft.casino.mp.web.service.SitOutTask;
 import com.betsoft.casino.mp.web.service.SocketService;
 import com.abs.casino.cassandra.CassandraPersistenceManager;
 import com.abs.casino.common.currency.CurrencyRate;
-import com.dgphoenix.casino.common.exception.CommonException;
+import com.abs.casino.common.exception.CommonException;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -480,7 +480,7 @@ public class SitInHandler extends AbstractRoomHandler<SitIn, IGameSocketClient> 
                         } catch (Exception e) {
                             getLog().error("Cannot sitIn, roomPlayer={}", roomPlayer, e);
                             room.rollbackSitIn(seat);
-                            if (!(e instanceof CommonException)) { //error message already sended
+                            if (!(e instanceof CommonException) && !(e instanceof com.dgphoenix.casino.common.exception.CommonException)) { //error message already sended
                                 throw e;
                             }
                         }

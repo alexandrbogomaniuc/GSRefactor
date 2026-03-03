@@ -10679,3 +10679,17 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.05-1.20h` (`~0.01-0.15` workdays), next lane is localized `SitInHandler` exception-namespace boundary harmonization.
+
+### 2026-03-03 01:32 UTC
+- Continued Project 02 stabilization with `BZ` wave in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - `SitInHandler` `CommonException` namespace alignment plus transitional dual-namespace catch guard to preserve current error-path behavior.
+  - retained total: `2` targeted rewires in `SitInHandler`.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` FAIL, harmonized COTG compile PASS.
+  - web compile fail-head remains only in `SitInHandler` and moved to deeper localized points (`BuyInFailedException` boundary and one residual legacy exception boundary).
+  - canonical rerun profile remains `STEP09` FAIL (known smoke-stage external/runtime lane), with prewarm PASS.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-011018-hardcut-live-batchBZ-sitinhandler-exception-boundary-rewire2/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/283-hard-cut-live-batchBZ-sitinhandler-exception-boundary-rewire2-report-20260303.md`
+- Result: fail frontier remains confined to `SitInHandler`; next bounded pass can finish this lane.
