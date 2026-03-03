@@ -85,7 +85,13 @@ public class BotOpenRoomHandler extends AbstractRoomHandler<OpenRoom, BotGameCli
     @SuppressWarnings("unchecked")
     private void openRoom(BotGameClient client, IRoom room, OpenRoom message) throws CommonException {
         client.sendMessage(new GetBalanceResponse(System.currentTimeMillis(), message.getRid(), BOT_BALANCE));
-        ITransportObject result = room.processOpenRoom(client, message, getRoomInfoService(client).getRoom(message.getRoomId()).getCurrency());
+        String currency = getRoomInfoService(client).getRoom(message.getRoomId()).getCurrency();
+        ITransportObject result;
+        try {
+            result = room.processOpenRoom(client, message, currency);
+        } catch (com.abs.casino.common.exception.CommonException e) {
+            throw new CommonException(e.getMessage(), e);
+        }
         client.setEnterDate(System.currentTimeMillis());
         client.setRoomId(message.getRoomId());
         client.sendMessage(result, message);

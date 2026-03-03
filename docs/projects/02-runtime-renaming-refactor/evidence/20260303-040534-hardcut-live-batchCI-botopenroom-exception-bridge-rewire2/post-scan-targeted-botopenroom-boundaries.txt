@@ -1,0 +1,3 @@
+86:    private void openRoom(BotGameClient client, IRoom room, OpenRoom message) throws CommonException {
+91:            result = room.processOpenRoom(client, message, currency);
+92:        } catch (com.abs.casino.common.exception.CommonException e) {

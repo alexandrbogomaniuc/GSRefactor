@@ -5652,3 +5652,20 @@ Project: RENAME-FINAL (runtime class/package/config naming refactor)
 - Measured movement:
   - cleared `GetBattlegroundStartGameUrlHandler` fail-head and advanced to `BotOpenRoomHandler` localized boundary lane.
 - Weighted completion metrics remain unchanged (declaration baseline already complete).
+
+## 2026-03-03 05:05 UTC (Hard-cut live Batch CI)
+- Continued Project 02 stabilization with live batch `CI` in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - CI (`1` rewire): `BotOpenRoomHandler` exception boundary harmonization for `processOpenRoom(...)` via ABS-to-legacy bridge.
+  - retained total: `1` targeted rewire across `1` file.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` PASS, `clashofthegods` compile gate FAIL in known lane.
+  - web compile gate reached green after this batch.
+  - canonical matrix profile: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+  - canonical failures remain in known smoke-stage external/runtime lane, not CI import-local semantics.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-040534-hardcut-live-batchCI-botopenroom-exception-bridge-rewire2/`
+  - report: `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/289-hard-cut-live-batchCI-botopenroom-exception-bridge-rewire2-report-20260303.md`
+- Measured movement:
+  - cleared localized `BotOpenRoomHandler` fail-head; targeted web gate is now green.
+- Weighted completion metrics remain unchanged (declaration baseline already complete).

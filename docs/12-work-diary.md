@@ -10848,3 +10848,17 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - stabilization/import-normalization remaining `~0.01-0.30h` (`~0.00-0.04` workdays), next lane is localized `BotOpenRoomHandler` exception-boundary harmonization.
+
+### 2026-03-03 05:05 UTC
+- Continued Project 02 stabilization with `CI` wave in `/Users/alexb/Documents/Dev/Dev_new`.
+- Batch content:
+  - `BotOpenRoomHandler#openRoom(...)` now catches `com.abs...CommonException` around `room.processOpenRoom(...)` and rethrows legacy `com.dgphoenix...CommonException` to preserve contract compatibility.
+  - retained total: `1` targeted rewire across `1` file.
+- Validation:
+  - targeted gates: `common-games` PASS, `bots` PASS, `web` PASS.
+  - canonical rerun profile unchanged: `fast_gate_batchA FAIL STEP09`, `fast_gate_batchB FAIL STEP09`, `prewarm PASS`, `validation FAIL STEP09`, `STEP09 retry1 FAIL rc=2`.
+- Evidence:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-040534-hardcut-live-batchCI-botopenroom-exception-bridge-rewire2/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/289-hard-cut-live-batchCI-botopenroom-exception-bridge-rewire2-report-20260303.md`
+- Result:
+  - localized bot-open-room boundary lane is cleared; targeted web compile gate is green.

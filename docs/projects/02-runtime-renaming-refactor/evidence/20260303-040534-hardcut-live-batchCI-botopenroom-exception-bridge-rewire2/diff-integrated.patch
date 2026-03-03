@@ -1,0 +1,33 @@
+diff --git a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/bots/BotOpenRoomHandler.java b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/bots/BotOpenRoomHandler.java
+index 3c149fad3..70d87aa34 100644
+--- a/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/bots/BotOpenRoomHandler.java
++++ b/mp-server/web/src/main/java/com/betsoft/casino/mp/web/handlers/game/bots/BotOpenRoomHandler.java
+@@ -82,14 +82,20 @@ public class BotOpenRoomHandler extends AbstractRoomHandler<OpenRoom, BotGameCli
+         return new Avatar(RNG.nextInt(2), RNG.nextInt(2), RNG.nextInt(2));
+     }
+ 
+-    @SuppressWarnings("unchecked")
+-    private void openRoom(BotGameClient client, IRoom room, OpenRoom message) throws CommonException {
+-        client.sendMessage(new GetBalanceResponse(System.currentTimeMillis(), message.getRid(), BOT_BALANCE));
+-        ITransportObject result = room.processOpenRoom(client, message, getRoomInfoService(client).getRoom(message.getRoomId()).getCurrency());
+-        client.setEnterDate(System.currentTimeMillis());
+-        client.setRoomId(message.getRoomId());
+-        client.sendMessage(result, message);
+-    }
++    @SuppressWarnings("unchecked")
++    private void openRoom(BotGameClient client, IRoom room, OpenRoom message) throws CommonException {
++        client.sendMessage(new GetBalanceResponse(System.currentTimeMillis(), message.getRid(), BOT_BALANCE));
++        String currency = getRoomInfoService(client).getRoom(message.getRoomId()).getCurrency();
++        ITransportObject result;
++        try {
++            result = room.processOpenRoom(client, message, currency);
++        } catch (com.abs.casino.common.exception.CommonException e) {
++            throw new CommonException(e.getMessage(), e);
++        }
++        client.setEnterDate(System.currentTimeMillis());
++        client.setRoomId(message.getRoomId());
++        client.sendMessage(result, message);
++    }
+ 
+     @Override
+     public Logger getLog() {
