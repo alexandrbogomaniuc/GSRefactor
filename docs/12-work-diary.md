@@ -10722,3 +10722,16 @@
   - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/284-hard-cut-live-batchCACB-web-exception-bridge-rewire10-report-20260303.md`
 - Result:
   - fail frontier advanced to `SitOutHandler`; next bounded pass can finish this localized exception lane.
+
+### 2026-03-03 02:17 UTC
+- Push checkpoint for `Batch CA+CB` completed.
+- Commit pushed to `origin/main`:
+  - `fad3b42d1` (`refactor: hard-cut batchCACB web exception bridge`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-014918-hardcut-live-batchCACB-web-exception-bridge/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/284-hard-cut-live-batchCACB-web-exception-bridge-rewire10-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - stabilization/import-normalization remaining `~0.02-0.75h` (`~0.00-0.09` workdays), next lane is localized `SitOutHandler` exception-boundary harmonization.
