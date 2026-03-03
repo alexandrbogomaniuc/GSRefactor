@@ -11036,3 +11036,16 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - residual runtime closure (`STEP09` repeated-run consistency / soak) `~0.10-1.50h` (`~0.01-0.19` workdays).
+
+### 2026-03-03 07:42 UTC
+- Push checkpoint for `Batch CT` completed.
+- Commit pushed to `origin/main`:
+  - `e5362d818` (`refactor: hard-cut batchCT step09 first-pass stability`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-073447-hardcut-live-batchCT-step09-firstpass-stability/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/295-hard-cut-live-batchCT-step09-firstpass-stability-rewire12-report-20260303.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - residual runtime closure (`STEP09` repeated-run consistency / soak) `~0.10-1.50h` (`~0.01-0.19` workdays), with latest full matrix first-pass PASS.
