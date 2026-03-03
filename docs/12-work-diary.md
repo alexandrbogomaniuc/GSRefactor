@@ -11127,3 +11127,17 @@
   - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
 - ETA refresh:
   - runtime closure/signoff remaining `~0.00-0.25h` (`~0.00-0.03` workdays).
+
+### 2026-03-03 08:24 UTC
+- Push checkpoint for `Batch CY` (final signoff refresh) completed.
+- Commit pushed to `origin/main`:
+  - `8b1966b5d` (`docs: final hard-cut signoff evidence refresh`).
+- Evidence/report anchor:
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/evidence/20260303-081828-hardcut-live-final-signoff-evidence/`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/298-hard-cut-live-final-signoff-report-20260303.md`
+  - `/Users/alexb/Documents/Dev/Dev_new/docs/projects/02-runtime-renaming-refactor/11-hard-cut-signoff-report.md`
+- Metrics unchanged:
+  - baseline `2277`, reduced `2277`, remaining `0`, burndown `100.000000%`
+  - Project 02 `54.645725%`, Core `77.322863%`, Portfolio `88.661431%`
+- ETA refresh:
+  - runtime closure/signoff remaining `~0.00-0.25h` (`~0.00-0.03` workdays), pending optional observation-only checkpoint.
